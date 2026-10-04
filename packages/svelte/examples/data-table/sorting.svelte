@@ -1,7 +1,7 @@
 <script lang="ts">
+import { Table } from "@pisagor/svelte";
 import type { SortingState } from "@pisagor/svelte/data-table";
 import { DataTable } from "@pisagor/svelte/data-table";
-import { Table } from "@pisagor/svelte/table";
 
 const data = [
   { id: "1", name: "Ada", role: "Admin" },

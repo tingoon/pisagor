@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { PasswordField } from "../../src/fields/password-field";
+import { PasswordField } from "@pisagor/vue-form";
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ImageCropper } from "../../src/components/image-cropper";
+import { ImageCropper } from "@pisagor/vue";
 </script>
 
 <template>

@@ -13,7 +13,7 @@ import shortcutsRaw from "./shortcuts.tsx?raw";
 import with_scrollRaw from "./with-scroll.tsx?raw";
 import with_separatorRaw from "./with-separator.tsx?raw";
 
-export const imports = `import { DropdownMenu } from "@pisagor/react/dropdown-menu";`;
+export const imports = `import { DropdownMenu } from "@pisagor/react";`;
 
 export const sources = {
   Checkboxes: stripTsxExample(checkboxesRaw),
@@ -31,16 +31,16 @@ export const sources = {
   WithSeparator: stripTsxExample(with_separatorRaw),
 } as const;
 
-export { Checkboxes } from "./checkboxes";
-export { Default } from "./default";
-export { Destructive } from "./destructive";
-export { GroupLabel } from "./group-label";
-export { Icons } from "./icons";
-export { Link } from "./link";
-export { Nested } from "./nested";
-export { Placements } from "./placements";
-export { QuickItem } from "./quick-item";
-export { RadioGroup } from "./radio-group";
-export { Shortcuts } from "./shortcuts";
-export { WithScroll } from "./with-scroll";
-export { WithSeparator } from "./with-separator";
+export * from "./checkboxes";
+export * from "./default";
+export * from "./destructive";
+export * from "./group-label";
+export * from "./icons";
+export * from "./link";
+export * from "./nested";
+export * from "./placements";
+export * from "./quick-item";
+export * from "./radio-group";
+export * from "./shortcuts";
+export * from "./with-scroll";
+export * from "./with-separator";

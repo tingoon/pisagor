@@ -1,6 +1,5 @@
 <script lang="ts">
-import { parseColor } from "@pisagor/svelte";
-import { ColorPicker } from "@pisagor/svelte/color-picker";
+import { ColorPicker, parseColor } from "@pisagor/svelte";
 
 
 let value = $state("#0485F7");

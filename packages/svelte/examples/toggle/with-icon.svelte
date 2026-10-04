@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Toggle } from "@pisagor/svelte/toggle";
+import { Toggle } from "@pisagor/svelte";
 import TextBIcon from "phosphor-svelte/lib/TextBIcon";
 </script>
 

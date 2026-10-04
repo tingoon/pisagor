@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Kbd } from "../../src/components/kbd";
+import { Kbd } from "@pisagor/vue";
 </script>
 
 <template>

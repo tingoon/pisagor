@@ -3,7 +3,7 @@ import compactRaw from "./compact.svelte?raw";
 import compoundRaw from "./compound.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
 
-export const imports = `import { EmptyState } from "@pisagor/svelte/empty-state";`;
+export const imports = `import { EmptyState } from "@pisagor/svelte";`;
 
 export const sources = {
   Compact: stripSvelteExample(compactRaw),

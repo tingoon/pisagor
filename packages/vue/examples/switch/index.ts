@@ -7,7 +7,7 @@ import on_surfaceRaw from "./on-surface.vue?raw";
 import sizesRaw from "./sizes.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 
-export const imports = `import { Switch } from "@pisagor/vue/switch";`;
+export const imports = `import { Switch } from "@pisagor/vue";`;
 
 export const sources = {
   Controlled: stripVueExample(controlledRaw),

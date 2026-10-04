@@ -1,7 +1,6 @@
 import { useDisclosure } from "@mantine/hooks";
 import { WarningIcon } from "@phosphor-icons/react";
-import { Announcement, Badge, Button } from "@pisagor/react";
-import { AppShell } from "@pisagor/react/app-shell";
+import { Announcement, AppShell, Badge, Button } from "@pisagor/react";
 import { mainContent } from "./helpers";
 export function Banner() {
   const [opened, { close }] = useDisclosure(true);

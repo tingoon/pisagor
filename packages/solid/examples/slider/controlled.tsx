@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Field } from "@pisagor/solid";
-import { Slider } from "@pisagor/solid/slider";
+import { Field, Slider } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
   const [value, setValue] = createSignal<number[]>([40]);

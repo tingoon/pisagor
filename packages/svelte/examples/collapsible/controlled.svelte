@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Collapsible } from "@pisagor/svelte/collapsible";
+import { Button, Collapsible } from "@pisagor/svelte";
 
 let open = $state(false);
 </script>

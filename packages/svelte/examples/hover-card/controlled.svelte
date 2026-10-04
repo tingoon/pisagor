@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte/button";
-import { HoverCard } from "@pisagor/svelte/hover-card";
+import { Button, HoverCard } from "@pisagor/svelte";
 
 let open = $state(false);
 </script>

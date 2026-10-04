@@ -4,7 +4,7 @@ import defaultRaw from "./default.vue?raw";
 import expand_depthRaw from "./expand-depth.vue?raw";
 import map_setRaw from "./map-set.vue?raw";
 
-export const imports = `import { JsonTreeView } from "@pisagor/vue/json-tree-view";`;
+export const imports = `import { JsonTreeView } from "@pisagor/vue";`;
 
 export const sources = {
   DataTypes: stripVueExample(data_typesRaw),

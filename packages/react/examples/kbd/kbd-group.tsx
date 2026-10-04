@@ -1,4 +1,4 @@
-import { Kbd } from "@pisagor/react/kbd";
+import { Kbd } from "@pisagor/react";
 
 export function KbdGroup() {
   return (

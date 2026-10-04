@@ -10,7 +10,7 @@ import pause_on_hoverRaw from "./pause-on-hover.svelte?raw";
 import reverseRaw from "./reverse.svelte?raw";
 import spacingRaw from "./spacing.svelte?raw";
 
-export const imports = `import { Marquee } from "@pisagor/svelte/marquee";`;
+export const imports = `import { Marquee } from "@pisagor/svelte";`;
 
 export const sources = {
   Autofill: stripSvelteExample(autofillRaw),

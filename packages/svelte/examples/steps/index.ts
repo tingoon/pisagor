@@ -7,7 +7,7 @@ import loadingRaw from "./loading.svelte?raw";
 import titleRaw from "./title.svelte?raw";
 import verticalRaw from "./vertical.svelte?raw";
 
-export const imports = `import { Steps } from "@pisagor/svelte/steps";`;
+export const imports = `import { Steps } from "@pisagor/svelte";`;
 
 export const sources = {
   Controlled: stripSvelteExample(controlledRaw),

@@ -1,5 +1,4 @@
-import { Button, Card } from "@pisagor/react";
-import { Calendar } from "@pisagor/react/calendar";
+import { Button, Calendar, Card } from "@pisagor/react";
 export function Presets() {
   const presets = [
     { label: "Last 7 days", value: "last7Days" as const },

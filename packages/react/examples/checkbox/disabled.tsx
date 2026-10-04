@@ -1,4 +1,4 @@
-import { Checkbox } from "@pisagor/react/checkbox";
+import { Checkbox } from "@pisagor/react";
 
 export function Disabled() {
   return <Checkbox disabled />;

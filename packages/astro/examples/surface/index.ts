@@ -5,7 +5,7 @@ import paddingRaw from "./padding.astro?raw";
 import variantsRaw from "./variants.astro?raw";
 
 export const imports = `---
-import { Surface } from "@pisagor/astro/surface";
+import { Surface } from "@pisagor/astro";
 ---`;
 
 export const sources = {

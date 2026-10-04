@@ -13,7 +13,7 @@ import shortcutsRaw from "./shortcuts.vue?raw";
 import with_scrollRaw from "./with-scroll.vue?raw";
 import with_separatorRaw from "./with-separator.vue?raw";
 
-export const imports = `import { DropdownMenu } from "@pisagor/vue/dropdown-menu";`;
+export const imports = `import { DropdownMenu } from "@pisagor/vue";`;
 
 export const sources = {
   Checkboxes: stripVueExample(checkboxesRaw),

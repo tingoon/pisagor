@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 import { useFileUpload } from "@ark-ui/solid/file-upload";
-import { Button } from "@pisagor/solid";
-import { FileUpload } from "@pisagor/solid/file-upload";
+import { Button, FileUpload } from "@pisagor/solid";
 import { XIcon } from "@pisagor/solid/icons";
 export function CustomPreview() {
   const CustomPreviewList = () => {

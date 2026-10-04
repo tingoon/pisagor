@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Separator } from "@pisagor/svelte/separator";
+import { Separator } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-col gap-2 text-sm">

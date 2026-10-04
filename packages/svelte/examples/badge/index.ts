@@ -7,7 +7,7 @@ import variantsRaw from "./variants.svelte?raw";
 import with_linkRaw from "./with-link.svelte?raw";
 import with_spinnerRaw from "./with-spinner.svelte?raw";
 
-export const imports = `import { Badge } from "@pisagor/svelte/badge";`;
+export const imports = `import { Badge } from "@pisagor/svelte";`;
 
 export const sources = {
   CustomColor: stripSvelteExample(custom_colorRaw),

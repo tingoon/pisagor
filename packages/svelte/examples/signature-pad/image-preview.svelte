@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Field } from "@pisagor/svelte";
-import { SignaturePad } from "@pisagor/svelte/signature-pad";
+import { Field, SignaturePad } from "@pisagor/svelte";
 
 let imageUrl = $state<string | null>(null);
 </script>

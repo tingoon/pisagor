@@ -19,7 +19,7 @@ import textarea_fieldRaw from "./textarea-field.svelte?raw";
 import with_errorRaw from "./with-error.svelte?raw";
 import with_input_groupRaw from "./with-input-group.svelte?raw";
 
-export const imports = `import { Field } from "@pisagor/svelte/field";`;
+export const imports = `import { Field } from "@pisagor/svelte";`;
 
 export const sources = {
   AutocompleteField: stripSvelteExample(autocomplete_fieldRaw),

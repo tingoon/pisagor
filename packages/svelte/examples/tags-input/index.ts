@@ -17,7 +17,7 @@ import validationRaw from "./validation.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_comboboxRaw from "./with-combobox.svelte?raw";
 
-export const imports = `import { TagsInput } from "@pisagor/svelte/tags-input";`;
+export const imports = `import { TagsInput } from "@pisagor/svelte";`;
 
 export const sources = {
   BlurBehavior: stripSvelteExample(blur_behaviorRaw),

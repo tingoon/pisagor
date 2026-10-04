@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button, Card } from "@pisagor/svelte";
-import { Calendar } from "@pisagor/svelte/calendar";
+import { Button, Calendar, Card } from "@pisagor/svelte";
 
 const presets = [
   { label: "Last 7 days", value: "last7Days" as const },

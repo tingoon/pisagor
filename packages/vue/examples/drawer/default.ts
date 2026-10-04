@@ -1,6 +1,5 @@
+import { Button, Drawer } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Drawer } from "../../src/components/drawer";
-import { outlineButtonClass } from "../../src/internal/story-button";
 
 export default defineComponent({
   name: "Default",
@@ -8,7 +7,7 @@ export default defineComponent({
     return () =>
       h(Drawer, null, () => [
         h(Drawer.Trigger, { asChild: true }, () =>
-          h("button", { class: outlineButtonClass(), type: "button" }, "Open"),
+          h(Button, { type: "button", variant: "outline" }, "Open"),
         ),
         h(Drawer.Content, null, () =>
           h(Drawer.ContentInner, null, () => [
@@ -26,11 +25,7 @@ export default defineComponent({
             ),
             h(Drawer.Footer, null, () =>
               h(Drawer.CloseTrigger, { asChild: true }, () =>
-                h(
-                  "button",
-                  { class: outlineButtonClass(), type: "button" },
-                  "Save",
-                ),
+                h(Button, { type: "button", variant: "outline" }, "Save"),
               ),
             ),
           ]),

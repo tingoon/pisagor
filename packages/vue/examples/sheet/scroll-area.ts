@@ -1,6 +1,5 @@
+import { Button, Sheet } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Sheet } from "../../src/components/sheet";
-import { outlineButtonClass } from "../../src/internal/story-button";
 
 const termsSections = [
   {
@@ -35,7 +34,7 @@ export default defineComponent({
     return () =>
       h(Sheet, null, () => [
         h(Sheet.Trigger, { asChild: true }, () =>
-          h("button", { class: outlineButtonClass(), type: "button" }, "Open"),
+          h(Button, { type: "button", variant: "outline" }, "Open"),
         ),
         h(Sheet.Content, null, () => [
           h(Sheet.Header, { title: "Terms and conditions" }),
@@ -54,18 +53,10 @@ export default defineComponent({
           ),
           h(Sheet.Footer, null, () => [
             h(Sheet.CloseTrigger, { asChild: true }, () =>
-              h(
-                "button",
-                { class: outlineButtonClass(), type: "button" },
-                "Cancel",
-              ),
+              h(Button, { type: "button", variant: "outline" }, "Cancel"),
             ),
             h(Sheet.CloseTrigger, { asChild: true }, () =>
-              h(
-                "button",
-                { class: outlineButtonClass(), type: "button" },
-                "Agree",
-              ),
+              h(Button, { type: "button", variant: "outline" }, "Agree"),
             ),
           ]),
         ]),

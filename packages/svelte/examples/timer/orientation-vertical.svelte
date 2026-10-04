@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Card } from "@pisagor/svelte";
-import { Timer } from "@pisagor/svelte/timer";
+import { Card, Timer } from "@pisagor/svelte";
 </script>
 
 <Card class="rounded-3xl [--space:--spacing(6)]">

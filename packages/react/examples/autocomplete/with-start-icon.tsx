@@ -1,7 +1,6 @@
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { AppleLogoIcon } from "@phosphor-icons/react";
-import { InputGroup } from "@pisagor/react";
-import { Autocomplete } from "@pisagor/react/autocomplete";
+import { Autocomplete, InputGroup } from "@pisagor/react";
 export function WithStartIcon() {
   const initialItems = [
     { label: "Apple", value: "apple" },

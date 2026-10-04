@@ -1,6 +1,5 @@
 <script lang="ts">
-import { RadioGroup } from "@pisagor/svelte";
-import { Field } from "@pisagor/svelte/field";
+import { Field, RadioGroup } from "@pisagor/svelte";
 </script>
 
 <Field.Set>

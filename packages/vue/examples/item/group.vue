@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { PhPlus } from "@phosphor-icons/vue";
-
-import { Avatar, Button } from "@pisagor/vue";
-import { Item } from "../../src/components/item";
+import { Avatar, Button, Item } from "@pisagor/vue";
 import { people } from "./helpers";
 </script>
 

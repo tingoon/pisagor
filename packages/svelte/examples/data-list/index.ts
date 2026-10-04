@@ -6,7 +6,7 @@ import orientation_horizontalRaw from "./orientation-horizontal.svelte?raw";
 import orientation_verticalRaw from "./orientation-vertical.svelte?raw";
 import separatorRaw from "./separator.svelte?raw";
 
-export const imports = `import { DataList } from "@pisagor/svelte/data-list";`;
+export const imports = `import { DataList } from "@pisagor/svelte";`;
 
 export const sources = {
   Compound: stripSvelteExample(compoundRaw),

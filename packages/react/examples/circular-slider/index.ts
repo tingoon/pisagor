@@ -9,7 +9,7 @@ import thicknessRaw from "./thickness.tsx?raw";
 import with_markersRaw from "./with-markers.tsx?raw";
 import with_valueRaw from "./with-value.tsx?raw";
 
-export const imports = `import { CircularSlider } from "@pisagor/react/circular-slider";`;
+export const imports = `import { CircularSlider } from "@pisagor/react";`;
 
 export const sources = {
   Controlled: stripTsxExample(controlledRaw),
@@ -23,12 +23,12 @@ export const sources = {
   WithValue: stripTsxExample(with_valueRaw),
 } as const;
 
-export { Controlled } from "./controlled";
-export { CustomMarkers } from "./custom-markers";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { Sizes } from "./sizes";
-export { Step } from "./step";
-export { Thickness } from "./thickness";
-export { WithMarkers } from "./with-markers";
-export { WithValue } from "./with-value";
+export * from "./controlled";
+export * from "./custom-markers";
+export * from "./default";
+export * from "./disabled";
+export * from "./sizes";
+export * from "./step";
+export * from "./thickness";
+export * from "./with-markers";
+export * from "./with-value";

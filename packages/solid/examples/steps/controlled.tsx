@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid";
-import { Steps } from "@pisagor/solid/steps";
+import { Button, Steps } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
   const items = [

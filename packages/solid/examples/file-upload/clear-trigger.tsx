@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid";
-import { FileUpload } from "@pisagor/solid/file-upload";
+import { Button, FileUpload } from "@pisagor/solid";
 import { TrashIcon } from "@pisagor/solid/icons";
 export function ClearTrigger() {
   return (

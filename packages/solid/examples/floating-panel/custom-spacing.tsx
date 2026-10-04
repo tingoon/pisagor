@@ -1,7 +1,12 @@
 /** @jsxImportSource solid-js */
 import { createListCollection } from "@ark-ui/solid/collection";
-import { Button, Field, NumberInput, Select } from "@pisagor/solid";
-import { FloatingPanel } from "@pisagor/solid/floating-panel";
+import {
+  Button,
+  Field,
+  FloatingPanel,
+  NumberInput,
+  Select,
+} from "@pisagor/solid";
 import { GearSixIcon, XIcon } from "@pisagor/solid/icons";
 export function CustomSpacing() {
   const collection = createListCollection({

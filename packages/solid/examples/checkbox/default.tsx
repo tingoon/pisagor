@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Checkbox } from "@pisagor/solid/checkbox";
-import { Field } from "@pisagor/solid/field";
+import { Checkbox, Field } from "@pisagor/solid";
 
 export function Default() {
   return (

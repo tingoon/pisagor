@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Kbd } from "@pisagor/solid";
-import { InputGroup } from "@pisagor/solid/input-group";
+import { InputGroup, Kbd } from "@pisagor/solid";
 export function WithKeyboardShortcut() {
   return (
     <InputGroup>

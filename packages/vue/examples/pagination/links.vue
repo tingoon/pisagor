@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
-import { Pagination } from "../../src/components/pagination";
+import { Pagination } from "@pisagor/vue";
 </script>
 
 <template>

@@ -1,5 +1,4 @@
-import { Input } from "@pisagor/react";
-import { Highlight } from "@pisagor/react/highlight";
+import { Highlight, Input } from "@pisagor/react";
 import { useState } from "react";
 export function SearchQuery() {
   const searchResults = ["Spotlight bulb", "Spot cleaner", "Spot ceiling"];

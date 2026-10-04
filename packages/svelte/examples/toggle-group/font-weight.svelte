@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ToggleGroup } from "@pisagor/svelte/toggle-group";
+import { ToggleGroup } from "@pisagor/svelte";
 import { cn } from "@pisagor/utils";
 
 const FONT_WEIGHTS = [

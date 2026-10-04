@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Avatar } from "@pisagor/svelte/avatar";
+import { Avatar } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap gap-2">

@@ -4,7 +4,7 @@ import defaultRaw from "./default.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 import with_trendRaw from "./with-trend.tsx?raw";
 
-export const imports = `import { Stat } from "@pisagor/react/stat";`;
+export const imports = `import { Stat } from "@pisagor/react";`;
 
 export const sources = {
   Compound: stripTsxExample(compoundRaw),
@@ -13,7 +13,7 @@ export const sources = {
   WithTrend: stripTsxExample(with_trendRaw),
 } as const;
 
-export { Compound } from "./compound";
-export { Default } from "./default";
-export { Variants } from "./variants";
-export { WithTrend } from "./with-trend";
+export * from "./compound";
+export * from "./default";
+export * from "./variants";
+export * from "./with-trend";

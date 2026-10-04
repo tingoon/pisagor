@@ -1,9 +1,7 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
-
+import { Autocomplete } from "@pisagor/vue";
 import { computed } from "vue";
-
-import { Autocomplete } from "../../src/components/autocomplete";
 
 const initialItems = [
   { continent: "North America", label: "Canada", value: "ca" },

@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Input, parseColor } from "@pisagor/solid";
-import { ColorPicker } from "@pisagor/solid/color-picker";
+import { ColorPicker, Input, parseColor } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function InputControlled() {
   const [value, setValue] = createSignal("#eb5e41");

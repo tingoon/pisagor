@@ -14,7 +14,7 @@ import variantsRaw from "./variants.tsx?raw";
 import with_textareaRaw from "./with-textarea.tsx?raw";
 import without_controlsRaw from "./without-controls.tsx?raw";
 
-export const imports = `import { Editable } from "@pisagor/react/editable";`;
+export const imports = `import { Editable } from "@pisagor/react";`;
 
 export const sources = {
   ActivationClick: stripTsxExample(activation_clickRaw),
@@ -33,17 +33,17 @@ export const sources = {
   WithTextarea: stripTsxExample(with_textareaRaw),
 } as const;
 
-export { ActivationClick } from "./activation-click";
-export { ActivationFocus } from "./activation-focus";
-export { ActivationNone } from "./activation-none";
-export { Controlled } from "./controlled";
-export { Dblclick } from "./dblclick";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { Invalid } from "./invalid";
-export { OrientationHorizontal } from "./orientation-horizontal";
-export { OrientationVertical } from "./orientation-vertical";
-export { Sizes } from "./sizes";
-export { Variants } from "./variants";
-export { WithTextarea } from "./with-textarea";
-export { WithoutControls } from "./without-controls";
+export * from "./activation-click";
+export * from "./activation-focus";
+export * from "./activation-none";
+export * from "./controlled";
+export * from "./dblclick";
+export * from "./default";
+export * from "./disabled";
+export * from "./invalid";
+export * from "./orientation-horizontal";
+export * from "./orientation-vertical";
+export * from "./sizes";
+export * from "./variants";
+export * from "./with-textarea";
+export * from "./without-controls";

@@ -4,7 +4,7 @@ import iconRaw from "./icon.astro?raw";
 import productRaw from "./product.astro?raw";
 
 export const imports = `---
-import { Card } from "@pisagor/astro/card";
+import { Card } from "@pisagor/astro";
 ---`;
 
 export const sources = {

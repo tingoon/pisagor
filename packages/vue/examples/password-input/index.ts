@@ -10,7 +10,7 @@ import invalidRaw from "./invalid.vue?raw";
 import on_surfaceRaw from "./on-surface.vue?raw";
 import sizesRaw from "./sizes.vue?raw";
 
-export const imports = `import { PasswordInput } from "@pisagor/vue/password-input";`;
+export const imports = `import { PasswordInput } from "@pisagor/vue";`;
 
 export const sources = {
   Autocomplete: stripVueExample(autocompleteRaw),

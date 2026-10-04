@@ -1,4 +1,4 @@
-import { DateField } from "../../src/fields/date-field";
+import { DateField } from "@pisagor/react-form";
 
 export function Disabled() {
   return (

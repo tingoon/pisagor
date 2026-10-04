@@ -17,7 +17,7 @@ import with_filterRaw from "./with-filter.svelte?raw";
 import with_iconRaw from "./with-icon.svelte?raw";
 import with_popoverRaw from "./with-popover.svelte?raw";
 
-export const imports = `import { Listbox } from "@pisagor/svelte/listbox";`;
+export const imports = `import { Listbox } from "@pisagor/svelte";`;
 
 export const sources = {
   Compound: stripSvelteExample(compoundRaw),

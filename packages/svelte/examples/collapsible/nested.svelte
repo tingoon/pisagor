@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button, Card, Clipboard } from "@pisagor/svelte";
-import { Collapsible } from "@pisagor/svelte/collapsible";
+import { Button, Card, Clipboard, Collapsible } from "@pisagor/svelte";
 </script>
 
 <Card class="w-80">

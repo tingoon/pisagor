@@ -6,7 +6,7 @@ import variantsRaw from "./variants.ts?raw";
 import with_actionRaw from "./with-action.ts?raw";
 import with_iconRaw from "./with-icon.ts?raw";
 
-export const imports = `import { Alert } from "@pisagor/vue/alert";`;
+export const imports = `import { Alert } from "@pisagor/vue";`;
 
 export const sources = {
   Compound: stripVueExample(compoundRaw),

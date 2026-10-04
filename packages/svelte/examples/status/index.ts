@@ -6,7 +6,7 @@ import sizesRaw from "./sizes.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_iconRaw from "./with-icon.svelte?raw";
 
-export const imports = `import { Status } from "@pisagor/svelte/status";`;
+export const imports = `import { Status } from "@pisagor/svelte";`;
 
 export const sources = {
   CustomColor: stripSvelteExample(custom_colorRaw),

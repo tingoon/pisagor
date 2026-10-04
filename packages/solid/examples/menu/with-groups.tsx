@@ -1,10 +1,11 @@
 /** @jsxImportSource solid-js */
+
+import { Menu } from "@pisagor/solid";
 import {
   ArchiveIcon,
   HouseIcon,
   MagnifyingGlassIcon,
 } from "@pisagor/solid/icons";
-import { Menu } from "@pisagor/solid/menu";
 
 export function WithGroups() {
   return (

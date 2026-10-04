@@ -5,7 +5,7 @@ import defaultRaw from "./default.tsx?raw";
 import linksRaw from "./links.tsx?raw";
 import page_rangeRaw from "./page-range.tsx?raw";
 
-export const imports = `import { Pagination } from "@pisagor/react/pagination";`;
+export const imports = `import { Pagination } from "@pisagor/react";`;
 
 export const sources = {
   Controlled: stripTsxExample(controlledRaw),
@@ -15,8 +15,8 @@ export const sources = {
   PageRange: stripTsxExample(page_rangeRaw),
 } as const;
 
-export { Controlled } from "./controlled";
-export { CustomComposition } from "./custom-composition";
-export { Default } from "./default";
-export { Links } from "./links";
-export { PageRange } from "./page-range";
+export * from "./controlled";
+export * from "./custom-composition";
+export * from "./default";
+export * from "./links";
+export * from "./page-range";

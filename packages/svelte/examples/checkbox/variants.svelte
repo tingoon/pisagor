@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Checkbox } from "@pisagor/svelte/checkbox";
+import { Checkbox } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap items-center gap-2">

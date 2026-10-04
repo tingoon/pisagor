@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button, Field, Input } from "@pisagor/svelte";
-import { Popover } from "@pisagor/svelte/popover";
+import { Button, Field, Input, Popover } from "@pisagor/svelte";
 </script>
 
 <Popover>

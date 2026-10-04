@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Surface } from "@pisagor/vue";
-import { Slider } from "../../src/components/slider";
+import { Slider, Surface } from "@pisagor/vue";
 </script>
 
 <template>

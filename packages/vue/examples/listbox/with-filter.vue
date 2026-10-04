@@ -1,9 +1,8 @@
 <script lang="ts" setup>
 import { useListCollection } from "@ark-ui/vue/collection";
 import { useFilter } from "@ark-ui/vue/locale";
-import { Input, Item } from "@pisagor/vue";
+import { Input, Item, Listbox } from "@pisagor/vue";
 import { computed, ref } from "vue";
-import { Listbox } from "../../src/components/listbox";
 
 const search = ref("");
 const filterUtils = useFilter({ sensitivity: "base" });

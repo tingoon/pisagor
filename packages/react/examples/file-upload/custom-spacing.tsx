@@ -1,4 +1,4 @@
-import { FileUpload } from "@pisagor/react/file-upload";
+import { FileUpload } from "@pisagor/react";
 
 export function CustomSpacing() {
   return (

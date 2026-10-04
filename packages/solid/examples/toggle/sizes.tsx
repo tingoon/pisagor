@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Toggle } from "@pisagor/solid/toggle";
+import { Toggle } from "@pisagor/solid";
 
 export function Sizes() {
   return (

@@ -1,10 +1,11 @@
 import { PhArrowSquareOut, PhLink } from "@phosphor-icons/vue";
+import { createTreeCollection, TreeView } from "@pisagor/vue";
 import type { VNode } from "vue";
 import { defineComponent, h } from "vue";
-import { createTreeCollection, TreeView } from "../../src/components/tree-view";
-import type { ArkPart } from "../../src/internal/types";
 import type { TreeNodeWithLink } from "./data";
 import { docsLinkTree } from "./data";
+
+type ArkPart = Parameters<typeof h>[0];
 
 export default defineComponent({
   name: "Links",

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Select } from "../../src/components/select";
+import { Select } from "@pisagor/vue";
 
 const items = ["Banana", "Apple", "Orange", "Pineapple"];
 const placeholder = "Select a fruit";

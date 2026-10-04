@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react";
-import { Tooltip } from "@pisagor/react/tooltip";
+import { Button, Tooltip } from "@pisagor/react";
 export function Disabled() {
   return (
     <Tooltip

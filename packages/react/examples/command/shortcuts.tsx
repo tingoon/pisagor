@@ -1,5 +1,5 @@
 import { useFilter, useListCollection } from "@ark-ui/react";
-import { Command } from "@pisagor/react/command";
+import { Command } from "@pisagor/react";
 
 export function Shortcuts() {
   const initialItems = [

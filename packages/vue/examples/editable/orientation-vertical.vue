@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhCheck, PhX } from "@phosphor-icons/vue";
-import { Button, Textarea } from "@pisagor/vue";
-import { Editable } from "../../src/components/editable";
+import { Button, Editable, Textarea } from "@pisagor/vue";
 </script>
 
 <template>

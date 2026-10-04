@@ -1,5 +1,4 @@
-import { Field } from "@pisagor/react";
-import { Textarea } from "@pisagor/react/textarea";
+import { Field, Textarea } from "@pisagor/react";
 import { useState } from "react";
 export function Controlled() {
   const [message, setMessage] = useState("");

@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { ImageCropper } from "@pisagor/svelte/image-cropper";
+import { Button, ImageCropper } from "@pisagor/svelte";
 import MagnifyingGlassMinusIcon from "phosphor-svelte/lib/MagnifyingGlassMinusIcon";
 import MagnifyingGlassPlusIcon from "phosphor-svelte/lib/MagnifyingGlassPlusIcon";
 

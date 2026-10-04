@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Switch } from "@pisagor/svelte/switch";
+import { Switch } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap items-center gap-2">

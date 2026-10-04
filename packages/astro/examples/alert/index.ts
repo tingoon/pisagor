@@ -6,7 +6,7 @@ import variantsRaw from "./variants.astro?raw";
 import with_iconRaw from "./with-icon.astro?raw";
 
 export const imports = `---
-import { Alert } from "@pisagor/astro/alert";
+import { Alert } from "@pisagor/astro";
 ---`;
 
 export const sources = {

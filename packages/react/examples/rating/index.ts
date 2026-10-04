@@ -10,7 +10,7 @@ import invalidRaw from "./invalid.tsx?raw";
 import readonlyRaw from "./readonly.tsx?raw";
 import testimonialRaw from "./testimonial.tsx?raw";
 
-export const imports = `import { Rating } from "@pisagor/react/rating";`;
+export const imports = `import { Rating } from "@pisagor/react";`;
 
 export const sources = {
   Controlled: stripTsxExample(controlledRaw),
@@ -25,13 +25,13 @@ export const sources = {
   Testimonial: stripTsxExample(testimonialRaw),
 } as const;
 
-export { Controlled } from "./controlled";
-export { Count } from "./count";
-export { CustomColor } from "./custom-color";
-export { CustomIcon } from "./custom-icon";
-export { CustomSize } from "./custom-size";
-export { Disabled } from "./disabled";
-export { HalfStar } from "./half-star";
-export { Invalid } from "./invalid";
-export { Readonly } from "./readonly";
-export { Testimonial } from "./testimonial";
+export * from "./controlled";
+export * from "./count";
+export * from "./custom-color";
+export * from "./custom-icon";
+export * from "./custom-size";
+export * from "./disabled";
+export * from "./half-star";
+export * from "./invalid";
+export * from "./readonly";
+export * from "./testimonial";

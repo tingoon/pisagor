@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button, DropdownMenu } from "@pisagor/solid";
-import { ActionBar } from "@pisagor/solid/action-bar";
+import { ActionBar, Button, DropdownMenu } from "@pisagor/solid";
 import {
   ArchiveIcon,
   CopyIcon,

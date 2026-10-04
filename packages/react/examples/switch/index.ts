@@ -6,7 +6,7 @@ import invalidRaw from "./invalid.tsx?raw";
 import sizesRaw from "./sizes.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 
-export const imports = `import { Switch } from "@pisagor/react/switch";`;
+export const imports = `import { Switch } from "@pisagor/react";`;
 
 export const sources = {
   Controlled: stripTsxExample(controlledRaw),
@@ -17,9 +17,9 @@ export const sources = {
   Variants: stripTsxExample(variantsRaw),
 } as const;
 
-export { Controlled } from "./controlled";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { Invalid } from "./invalid";
-export { Sizes } from "./sizes";
-export { Variants } from "./variants";
+export * from "./controlled";
+export * from "./default";
+export * from "./disabled";
+export * from "./invalid";
+export * from "./sizes";
+export * from "./variants";

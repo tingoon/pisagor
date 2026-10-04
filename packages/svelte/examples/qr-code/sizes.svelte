@@ -1,5 +1,5 @@
 <script lang="ts">
-import { QrCode } from "@pisagor/svelte/qr-code";
+import { QrCode } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap items-end justify-center gap-2">

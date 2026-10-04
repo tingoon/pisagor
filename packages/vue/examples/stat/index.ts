@@ -4,7 +4,7 @@ import defaultRaw from "./default.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import with_trendRaw from "./with-trend.vue?raw";
 
-export const imports = `import { Stat } from "@pisagor/vue/stat";`;
+export const imports = `import { Stat } from "@pisagor/vue";`;
 
 export const sources = {
   Compound: stripVueExample(compoundRaw),

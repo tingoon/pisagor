@@ -1,4 +1,4 @@
-import { Autocomplete } from "@pisagor/react/autocomplete";
+import { Autocomplete } from "@pisagor/react";
 
 export function Default() {
   return (

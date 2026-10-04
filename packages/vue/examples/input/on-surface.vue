@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Surface } from "@pisagor/vue";
-import { Input } from "../../src/components/input";
+import { Input, Surface } from "@pisagor/vue";
 </script>
 
 <template>

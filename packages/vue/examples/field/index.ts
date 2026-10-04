@@ -21,7 +21,7 @@ import with_errorRaw from "./with-error.vue?raw";
 import with_input_groupRaw from "./with-input-group.vue?raw";
 import with_separatorRaw from "./with-separator.vue?raw";
 
-export const imports = `import { Field } from "@pisagor/vue/field";`;
+export const imports = `import { Field } from "@pisagor/vue";`;
 
 export const sources = {
   AutocompleteField: stripVueExample(autocomplete_fieldRaw),

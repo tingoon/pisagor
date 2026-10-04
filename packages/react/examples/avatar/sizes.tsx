@@ -1,4 +1,4 @@
-import { Avatar } from "@pisagor/react/avatar";
+import { Avatar } from "@pisagor/react";
 
 export function Sizes() {
   return (

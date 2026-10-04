@@ -2,7 +2,7 @@ import { stripAstroExample } from "@pisagor/utils";
 import defaultRaw from "./default.astro?raw";
 
 export const imports = `---
-import { VisuallyHidden } from "@pisagor/astro/visually-hidden";
+import { VisuallyHidden } from "@pisagor/astro";
 ---`;
 
 export const sources = {

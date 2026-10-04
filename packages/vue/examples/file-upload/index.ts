@@ -14,7 +14,7 @@ import on_surfaceRaw from "./on-surface.vue?raw";
 import triggerRaw from "./trigger.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 
-export const imports = `import { FileUpload } from "@pisagor/vue/file-upload";`;
+export const imports = `import { FileUpload } from "@pisagor/vue";`;
 
 export const sources = {
   AcceptedFileTypes: stripVueExample(accepted_file_typesRaw),

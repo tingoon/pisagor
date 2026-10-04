@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Slider } from "@pisagor/svelte";
-import { Field } from "@pisagor/svelte/field";
+import { Field, Slider } from "@pisagor/svelte";
 </script>
 
 <Field class="items-stretch gap-3">

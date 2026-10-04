@@ -1,6 +1,6 @@
 import { Badge, Table } from "@pisagor/vue";
+import { type ColumnDef, DataTable } from "@pisagor/vue/data-table";
 import { defineComponent, h } from "vue";
-import { type ColumnDef, DataTable } from "../../src/data-table";
 
 interface User {
   email: string;

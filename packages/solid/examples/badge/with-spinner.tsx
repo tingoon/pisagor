@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Spinner } from "@pisagor/solid";
-import { Badge } from "@pisagor/solid/badge";
+import { Badge, Spinner } from "@pisagor/solid";
 export function WithSpinner() {
   return (
     <div class="flex flex-wrap items-center gap-2">

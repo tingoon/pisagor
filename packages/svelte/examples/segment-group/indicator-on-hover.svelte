@@ -1,5 +1,5 @@
 <script lang="ts">
-import { SegmentGroup } from "@pisagor/svelte/segment-group";
+import { SegmentGroup } from "@pisagor/svelte";
 
 const pages = ["Profile", "Account", "Security", "Notifications"];
 let value = $state("Profile");

@@ -1,4 +1,4 @@
-import { Format } from "@pisagor/react/format";
+import { Format } from "@pisagor/react";
 
 export function Default() {
   return (

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Card } from "@pisagor/vue";
-import { Accordion } from "../../src/components/accordion";
+import { Accordion, Card } from "@pisagor/vue";
 import { faqItems } from "./helpers";
 
 const items = faqItems();

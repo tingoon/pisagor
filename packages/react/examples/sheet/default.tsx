@@ -1,5 +1,4 @@
-import { Button, Field, Input } from "@pisagor/react";
-import { Sheet } from "@pisagor/react/sheet";
+import { Button, Field, Input, Sheet } from "@pisagor/react";
 export function Default() {
   return (
     <Sheet>

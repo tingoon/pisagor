@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid";
-import { Tabs } from "@pisagor/solid/tabs";
+import { Button, Tabs } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
   const [value, setValue] = createSignal("profile");

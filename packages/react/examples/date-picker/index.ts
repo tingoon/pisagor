@@ -10,7 +10,7 @@ import timeRaw from "./time.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 import with_presetsRaw from "./with-presets.tsx?raw";
 
-export const imports = `import { DatePicker } from "@pisagor/react/date-picker";`;
+export const imports = `import { DatePicker } from "@pisagor/react";`;
 
 export const sources = {
   Clearable: stripTsxExample(clearableRaw),
@@ -25,13 +25,13 @@ export const sources = {
   WithPresets: stripTsxExample(with_presetsRaw),
 } as const;
 
-export { Clearable } from "./clearable";
-export { CustomFormat } from "./custom-format";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { Input } from "./input";
-export { Invalid } from "./invalid";
-export { Range } from "./range";
-export { Time } from "./time";
-export { Variants } from "./variants";
-export { WithPresets } from "./with-presets";
+export * from "./clearable";
+export * from "./custom-format";
+export * from "./default";
+export * from "./disabled";
+export * from "./input";
+export * from "./invalid";
+export * from "./range";
+export * from "./time";
+export * from "./variants";
+export * from "./with-presets";

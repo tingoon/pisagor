@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { QrCode } from "../../src/components/qr-code";
+import { QrCode } from "@pisagor/vue";
 
 const eccLevels = ["L", "M", "Q", "H"] as const;
 </script>

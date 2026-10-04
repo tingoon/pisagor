@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Stat } from "@pisagor/svelte/stat";
+import { Stat } from "@pisagor/svelte";
 </script>
 
 <div class="grid gap-2 sm:grid-cols-3">

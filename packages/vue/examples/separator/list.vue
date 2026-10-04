@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Separator } from "../../src/components/separator";
+import { Separator } from "@pisagor/vue";
 </script>
 
 <template>

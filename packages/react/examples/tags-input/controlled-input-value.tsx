@@ -1,5 +1,4 @@
-import { Button, Field } from "@pisagor/react";
-import { TagsInput } from "@pisagor/react/tags-input";
+import { Button, Field, TagsInput } from "@pisagor/react";
 import { useState } from "react";
 export function ControlledInputValue() {
   const [inputValue, setInputValue] = useState("");

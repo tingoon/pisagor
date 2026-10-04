@@ -1,11 +1,5 @@
-import { Field, Input } from "@pisagor/vue";
+import { Button, Dialog, Field, Input } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Dialog } from "../../src/components/dialog";
-import {
-  defaultButtonClass,
-  ghostButtonClass,
-  outlineButtonClass,
-} from "../../src/internal/story-button";
 
 export default defineComponent({
   name: "Nested",
@@ -13,7 +7,7 @@ export default defineComponent({
     return () =>
       h(Dialog, null, () => [
         h(Dialog.Trigger, { asChild: true }, () =>
-          h("button", { class: outlineButtonClass(), type: "button" }, "Open"),
+          h(Button, { type: "button", variant: "outline" }, "Open"),
         ),
         h(Dialog.Content, null, () => [
           h(Dialog.Header, {
@@ -38,8 +32,8 @@ export default defineComponent({
             h(Dialog, null, () => [
               h(Dialog.Trigger, { asChild: true }, () =>
                 h(
-                  "button",
-                  { class: outlineButtonClass(), type: "button" },
+                  Button,
+                  { type: "button", variant: "outline" },
                   "Edit details",
                 ),
               ),
@@ -65,17 +59,9 @@ export default defineComponent({
                 ),
                 h(Dialog.Footer, null, () => [
                   h(Dialog.CloseTrigger, { asChild: true }, () =>
-                    h(
-                      "button",
-                      { class: ghostButtonClass(), type: "button" },
-                      "Cancel",
-                    ),
+                    h(Button, { type: "button", variant: "ghost" }, "Cancel"),
                   ),
-                  h(
-                    "button",
-                    { class: defaultButtonClass(), type: "submit" },
-                    "Save changes",
-                  ),
+                  h(Button, { type: "submit" }, "Save changes"),
                 ]),
               ]),
             ]),

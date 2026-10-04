@@ -17,7 +17,7 @@ import validationRaw from "./validation.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 import with_comboboxRaw from "./with-combobox.tsx?raw";
 
-export const imports = `import { TagsInput } from "@pisagor/react/tags-input";`;
+export const imports = `import { TagsInput } from "@pisagor/react";`;
 
 export const sources = {
   BlurBehavior: stripTsxExample(blur_behaviorRaw),
@@ -39,20 +39,20 @@ export const sources = {
   WithCombobox: stripTsxExample(with_comboboxRaw),
 } as const;
 
-export { BlurBehavior } from "./blur-behavior";
-export { Controlled } from "./controlled";
-export { ControlledInputValue } from "./controlled-input-value";
-export { CustomDelimiter } from "./custom-delimiter";
-export { Default } from "./default";
-export { DisableEditing } from "./disable-editing";
-export { Disabled } from "./disabled";
-export { Invalid } from "./invalid";
-export { MaxLength } from "./max-length";
-export { MaxTags } from "./max-tags";
-export { MaxWithOverflow } from "./max-with-overflow";
-export { PasteBehavior } from "./paste-behavior";
-export { SanitizeValue } from "./sanitize-value";
-export { Sizes } from "./sizes";
-export { Validation } from "./validation";
-export { Variants } from "./variants";
-export { WithCombobox } from "./with-combobox";
+export * from "./blur-behavior";
+export * from "./controlled";
+export * from "./controlled-input-value";
+export * from "./custom-delimiter";
+export * from "./default";
+export * from "./disable-editing";
+export * from "./disabled";
+export * from "./invalid";
+export * from "./max-length";
+export * from "./max-tags";
+export * from "./max-with-overflow";
+export * from "./paste-behavior";
+export * from "./sanitize-value";
+export * from "./sizes";
+export * from "./validation";
+export * from "./variants";
+export * from "./with-combobox";

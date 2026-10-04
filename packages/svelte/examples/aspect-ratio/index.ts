@@ -5,7 +5,7 @@ import responsiveRaw from "./responsive.svelte?raw";
 import squareRaw from "./square.svelte?raw";
 import videoRaw from "./video.svelte?raw";
 
-export const imports = `import { AspectRatio } from "@pisagor/svelte/aspect-ratio";`;
+export const imports = `import { AspectRatio } from "@pisagor/svelte";`;
 
 export const sources = {
   Default: stripSvelteExample(defaultRaw),

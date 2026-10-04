@@ -1,5 +1,4 @@
-import { Card, Field, Input } from "@pisagor/react";
-import { Editable } from "@pisagor/react/editable";
+import { Card, Editable, Field, Input } from "@pisagor/react";
 export function WithoutControls() {
   return (
     <Card>

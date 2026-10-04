@@ -8,7 +8,7 @@ import disabledRaw from "./disabled.svelte?raw";
 import invalidRaw from "./invalid.svelte?raw";
 import sizesRaw from "./sizes.svelte?raw";
 
-export const imports = `import { PasswordInput } from "@pisagor/svelte/password-input";`;
+export const imports = `import { PasswordInput } from "@pisagor/svelte";`;
 
 export const sources = {
   Autocomplete: stripSvelteExample(autocompleteRaw),

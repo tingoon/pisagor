@@ -1,5 +1,4 @@
-import { InputGroup } from "@pisagor/react";
-import { ColorPicker } from "@pisagor/react/color-picker";
+import { ColorPicker, InputGroup } from "@pisagor/react";
 export function Variants() {
   return (
     <div className="flex flex-col gap-2">

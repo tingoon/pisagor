@@ -1,8 +1,7 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid";
+import { Button, Steps } from "@pisagor/solid";
 import { CaretLeftIcon, CaretRightIcon } from "@pisagor/solid/icons";
-import { Steps } from "@pisagor/solid/steps";
 export function Vertical() {
   const items = [
     { description: "Personal", title: "Info" },

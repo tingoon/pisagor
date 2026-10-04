@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { InputOTP } from "../../src/components/input-otp";
+import { InputOTP } from "@pisagor/vue";
 </script>
 
 <template>

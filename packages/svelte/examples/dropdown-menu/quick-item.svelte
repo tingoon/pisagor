@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { DropdownMenu } from "@pisagor/svelte/dropdown-menu";
+import { Button, DropdownMenu } from "@pisagor/svelte";
 import {
   ArrowClockwiseIcon,
   ChatCircleIcon,

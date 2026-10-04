@@ -13,7 +13,7 @@ import shortcutsRaw from "./shortcuts.svelte?raw";
 import with_scrollRaw from "./with-scroll.svelte?raw";
 import with_separatorRaw from "./with-separator.svelte?raw";
 
-export const imports = `import { DropdownMenu } from "@pisagor/svelte/dropdown-menu";`;
+export const imports = `import { DropdownMenu } from "@pisagor/svelte";`;
 
 export const sources = {
   Checkboxes: stripSvelteExample(checkboxesRaw),

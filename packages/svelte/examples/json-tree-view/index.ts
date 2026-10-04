@@ -4,7 +4,7 @@ import defaultRaw from "./default.svelte?raw";
 import expand_depthRaw from "./expand-depth.svelte?raw";
 import map_setRaw from "./map-set.svelte?raw";
 
-export const imports = `import { JsonTreeView } from "@pisagor/svelte/json-tree-view";`;
+export const imports = `import { JsonTreeView } from "@pisagor/svelte";`;
 
 export const sources = {
   DataTypes: stripSvelteExample(data_typesRaw),

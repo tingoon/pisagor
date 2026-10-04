@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button, ButtonGroup } from "@pisagor/solid";
-import { CircularProgress } from "@pisagor/solid/circular-progress";
+import { Button, ButtonGroup, CircularProgress } from "@pisagor/solid";
 import { MinusIcon, PlusIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";
 export function Controlled() {

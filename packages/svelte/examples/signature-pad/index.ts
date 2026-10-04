@@ -5,7 +5,7 @@ import disabledRaw from "./disabled.svelte?raw";
 import image_previewRaw from "./image-preview.svelte?raw";
 import invalidRaw from "./invalid.svelte?raw";
 
-export const imports = `import { SignaturePad } from "@pisagor/svelte/signature-pad";`;
+export const imports = `import { SignaturePad } from "@pisagor/svelte";`;
 
 export const sources = {
   Controlled: stripSvelteExample(controlledRaw),

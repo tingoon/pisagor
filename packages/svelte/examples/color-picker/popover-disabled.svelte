@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { ColorPicker } from "@pisagor/svelte/color-picker";
+import { Button, ColorPicker } from "@pisagor/svelte";
 </script>
 
 <ColorPicker disabled value="#eb5e41" >

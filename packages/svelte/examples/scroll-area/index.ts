@@ -5,7 +5,7 @@ import horizontalRaw from "./horizontal.svelte?raw";
 import nestedRaw from "./nested.svelte?raw";
 import scroll_fadeRaw from "./scroll-fade.svelte?raw";
 
-export const imports = `import { ScrollArea } from "@pisagor/svelte/scroll-area";`;
+export const imports = `import { ScrollArea } from "@pisagor/svelte";`;
 
 export const sources = {
   BothDirections: stripSvelteExample(both_directionsRaw),

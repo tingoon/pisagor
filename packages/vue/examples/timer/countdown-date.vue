@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Card } from "@pisagor/vue";
-import { Timer } from "../../src/components/timer";
+import { Card, Timer } from "@pisagor/vue";
 
 const startMs = Math.max(0, targetDate.getTime() - Date.now());
 </script>

@@ -2,7 +2,7 @@ import { stripVueExample } from "@pisagor/utils";
 import defaultRaw from "./default.ts?raw";
 import wrappingRaw from "./wrapping.ts?raw";
 
-export const imports = `import { NavigationMenu } from "@pisagor/vue/navigation-menu";`;
+export const imports = `import { NavigationMenu } from "@pisagor/vue";`;
 
 export const sources = {
   Default: stripVueExample(defaultRaw),

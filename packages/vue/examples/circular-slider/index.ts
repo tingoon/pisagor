@@ -10,7 +10,7 @@ import thicknessRaw from "./thickness.vue?raw";
 import with_markersRaw from "./with-markers.vue?raw";
 import with_valueRaw from "./with-value.vue?raw";
 
-export const imports = `import { CircularSlider } from "@pisagor/vue/circular-slider";`;
+export const imports = `import { CircularSlider } from "@pisagor/vue";`;
 
 export const sources = {
   Controlled: stripVueExample(controlledRaw),

@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react";
-import { Popover } from "@pisagor/react/popover";
+import { Button, Popover } from "@pisagor/react";
 export function CloseBehavior() {
   return (
     <div className="flex flex-wrap justify-center gap-2">

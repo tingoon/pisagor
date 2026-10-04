@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Field } from "@pisagor/svelte";
-import { Checkbox } from "@pisagor/svelte/checkbox";
+import { Checkbox, Field } from "@pisagor/svelte";
 </script>
 
 <Field.Group>

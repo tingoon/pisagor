@@ -1,9 +1,8 @@
 /** @jsxImportSource solid-js */
 
-import { createTreeCollection } from "@pisagor/solid";
+import type { NodeProviderProps } from "@pisagor/solid";
+import { createTreeCollection, TreeView } from "@pisagor/solid";
 import { PackageIcon } from "@pisagor/solid/icons";
-import type { NodeProviderProps } from "@pisagor/solid/tree-view";
-import { TreeView } from "@pisagor/solid/tree-view";
 export function CustomIconsFolder() {
   const collection = createTreeCollection({
     rootNode: {

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { TagsInput } from "../../src/components/tags-input";
+import { TagsInput } from "@pisagor/vue";
 
 const defaultValue = ["React", "Solid"];
 </script>

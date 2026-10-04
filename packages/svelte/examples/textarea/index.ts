@@ -6,7 +6,7 @@ import disabledRaw from "./disabled.svelte?raw";
 import invalidRaw from "./invalid.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 
-export const imports = `import { Textarea } from "@pisagor/svelte/textarea";`;
+export const imports = `import { Textarea } from "@pisagor/svelte";`;
 
 export const sources = {
   Autoresize: stripSvelteExample(autoresizeRaw),

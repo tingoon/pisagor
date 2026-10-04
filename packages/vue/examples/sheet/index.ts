@@ -8,7 +8,7 @@ import non_modalRaw from "./non-modal.ts?raw";
 import scroll_areaRaw from "./scroll-area.ts?raw";
 import sidesRaw from "./sides.ts?raw";
 
-export const imports = `import { Sheet } from "@pisagor/vue/sheet";`;
+export const imports = `import { Sheet } from "@pisagor/vue";`;
 
 export const sources = {
   CloseBehavior: stripVueExample(close_behaviorRaw),

@@ -1,6 +1,5 @@
 import { useFilter, useListCollection } from "@ark-ui/react";
-import { Combobox } from "@pisagor/react";
-import { Field } from "@pisagor/react/field";
+import { Combobox, Field } from "@pisagor/react";
 export function ComboboxField() {
   const initialItems = [
     { label: "Apple", value: "apple" },

@@ -6,7 +6,7 @@ import multiple_queriesRaw from "./multiple-queries.vue?raw";
 import search_queryRaw from "./search-query.vue?raw";
 import squiggleRaw from "./squiggle.vue?raw";
 
-export const imports = `import { Highlight } from "@pisagor/vue/highlight";`;
+export const imports = `import { Highlight } from "@pisagor/vue";`;
 
 export const sources = {
   CustomStyle: stripVueExample(custom_styleRaw),

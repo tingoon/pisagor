@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { InputGroup } from "@pisagor/solid/input-group";
+import { InputGroup } from "@pisagor/solid";
 
 export function Default() {
   return (

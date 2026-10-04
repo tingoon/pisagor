@@ -1,12 +1,11 @@
 /** @jsxImportSource solid-js */
 import { createListCollection } from "@ark-ui/solid/collection";
-import { Item, Separator } from "@pisagor/solid";
+import { Item, Listbox, Separator } from "@pisagor/solid";
 import {
   PencilSimpleIcon,
   PlusSquareIcon,
   TrashIcon,
 } from "@pisagor/solid/icons";
-import { Listbox } from "@pisagor/solid/listbox";
 export function SelectionNone() {
   const collection = createListCollection({
     items: [

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Card } from "@pisagor/vue";
-import { Calendar } from "../../src/components/calendar";
+import { Calendar, Card } from "@pisagor/vue";
 
 const isWeekend = (date: { year: number; month: number; day: number }) => {
   const dayOfWeek = new Date(date.year, date.month - 1, date.day).getDay();

@@ -5,7 +5,7 @@ import disabledRaw from "./disabled.svelte?raw";
 import nestedRaw from "./nested.svelte?raw";
 import partial_collapseRaw from "./partial-collapse.svelte?raw";
 
-export const imports = `import { Collapsible } from "@pisagor/svelte/collapsible";`;
+export const imports = `import { Collapsible } from "@pisagor/svelte";`;
 
 export const sources = {
   Controlled: stripSvelteExample(controlledRaw),

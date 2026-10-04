@@ -13,7 +13,7 @@ import with_clear_buttonRaw from "./with-clear-button.svelte?raw";
 import with_scrollRaw from "./with-scroll.svelte?raw";
 import with_start_iconRaw from "./with-start-icon.svelte?raw";
 
-export const imports = `import { Combobox } from "@pisagor/svelte/combobox";`;
+export const imports = `import { Combobox } from "@pisagor/svelte";`;
 
 export const sources = {
   Autohighlight: stripSvelteExample(autohighlightRaw),

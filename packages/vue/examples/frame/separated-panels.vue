@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Frame } from "../../src/components/frame";
+import { Frame } from "@pisagor/vue";
 </script>
 
 <template>

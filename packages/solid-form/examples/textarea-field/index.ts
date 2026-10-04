@@ -9,5 +9,5 @@ export const sources = {
   Invalid: stripTsxExample(invalidRaw),
 } as const;
 
-export { Disabled } from "./disabled";
-export { Invalid } from "./invalid";
+export * from "./disabled";
+export * from "./invalid";

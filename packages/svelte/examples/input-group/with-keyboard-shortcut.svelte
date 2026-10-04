@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Kbd } from "@pisagor/svelte";
-import { InputGroup } from "@pisagor/svelte/input-group";
+import { InputGroup, Kbd } from "@pisagor/svelte";
 </script>
 
 <InputGroup>

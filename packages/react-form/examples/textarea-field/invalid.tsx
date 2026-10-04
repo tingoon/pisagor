@@ -1,4 +1,4 @@
-import { TextareaField } from "../../src/fields/textarea-field";
+import { TextareaField } from "@pisagor/react-form";
 
 export function Invalid() {
   return (

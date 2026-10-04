@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { PhCalendar } from "@phosphor-icons/vue";
-import { Button, Calendar } from "@pisagor/vue";
+import { Button, Calendar, DatePicker } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { DatePicker } from "../../src/components/date-picker";
 
 interface WeekDay {
   narrow: string;

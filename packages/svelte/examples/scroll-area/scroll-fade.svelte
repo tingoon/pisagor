@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Separator } from "@pisagor/svelte";
-import { ScrollArea } from "@pisagor/svelte/scroll-area";
+import { ScrollArea, Separator } from "@pisagor/svelte";
 
 const tags = Array.from({ length: 50 }, (_, i) => `v1.0.0-beta.${i}`);
 </script>

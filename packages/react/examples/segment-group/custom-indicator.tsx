@@ -1,4 +1,4 @@
-import { SegmentGroup } from "@pisagor/react/segment-group";
+import { SegmentGroup } from "@pisagor/react";
 
 export function CustomIndicator() {
   const items = ["Profile", "Account", "Security", "Notifications"];

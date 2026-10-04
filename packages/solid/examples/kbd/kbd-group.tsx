@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Kbd } from "@pisagor/solid/kbd";
+import { Kbd } from "@pisagor/solid";
 
 export function KbdGroup() {
   return (

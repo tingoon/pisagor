@@ -5,10 +5,10 @@ import {
   Field,
   Input,
   Select,
+  Surface,
   Switch,
   Textarea,
 } from "@pisagor/solid";
-import { Surface } from "@pisagor/solid/surface";
 
 const selectCollection = createListCollection({
   items: ["Design", "Engineering", "Marketing"],

@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { RadioGroup } from "@pisagor/solid";
-import { Field } from "@pisagor/solid/field";
+import { Field, RadioGroup } from "@pisagor/solid";
 export function RadioGroupField() {
   return (
     <Field.Set>

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Stat } from "@pisagor/svelte/stat";
+import { Stat } from "@pisagor/svelte";
 import ArrowUpIcon from "phosphor-svelte/lib/ArrowUpIcon";
 </script>
 

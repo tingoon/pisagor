@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { ImageCropper } from "@pisagor/solid/image-cropper";
+import { ImageCropper } from "@pisagor/solid";
 
 export function InitialCrop() {
   return (

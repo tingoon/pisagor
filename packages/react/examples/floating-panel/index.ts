@@ -4,7 +4,7 @@ import controlled_sizeRaw from "./controlled-size.tsx?raw";
 import custom_spacingRaw from "./custom-spacing.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 
-export const imports = `import { FloatingPanel } from "@pisagor/react/floating-panel";`;
+export const imports = `import { FloatingPanel } from "@pisagor/react";`;
 
 export const sources = {
   ControlledPosition: stripTsxExample(controlled_positionRaw),
@@ -13,7 +13,7 @@ export const sources = {
   Default: stripTsxExample(defaultRaw),
 } as const;
 
-export { ControlledPosition } from "./controlled-position";
-export { ControlledSize } from "./controlled-size";
-export { CustomSpacing } from "./custom-spacing";
-export { Default } from "./default";
+export * from "./controlled-position";
+export * from "./controlled-size";
+export * from "./custom-spacing";
+export * from "./default";

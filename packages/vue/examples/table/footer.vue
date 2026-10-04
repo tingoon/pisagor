@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Table } from "../../src/components/table";
+import { Table } from "@pisagor/vue";
 
 const items = [
   { id: "1", item: "Wireless mouse", qty: 2, unitPrice: 29.99 },

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { TagsInput } from "@pisagor/vue";
 import { ref } from "vue";
-import { TagsInput } from "../../src/components/tags-input";
 
 const value = ref(["React", "Solid", "Vue"]);
 </script>

@@ -14,7 +14,7 @@ import presetsRaw from "./presets.vue?raw";
 import rangeRaw from "./range.vue?raw";
 import select_todayRaw from "./select-today.vue?raw";
 
-export const imports = `import { Calendar } from "@pisagor/vue/calendar";`;
+export const imports = `import { Calendar } from "@pisagor/vue";`;
 
 export const sources = {
   BookedDates: stripVueExample(booked_datesRaw),

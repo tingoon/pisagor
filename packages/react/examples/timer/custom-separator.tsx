@@ -1,5 +1,4 @@
-import { Card } from "@pisagor/react";
-import { Timer } from "@pisagor/react/timer";
+import { Card, Timer } from "@pisagor/react";
 export function CustomSeparator() {
   return (
     <Card className="rounded-3xl [--space:--spacing(6)]">

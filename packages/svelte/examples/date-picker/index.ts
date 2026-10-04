@@ -10,7 +10,7 @@ import timeRaw from "./time.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_presetsRaw from "./with-presets.svelte?raw";
 
-export const imports = `import { DatePicker } from "@pisagor/svelte/date-picker";`;
+export const imports = `import { DatePicker } from "@pisagor/svelte";`;
 
 export const sources = {
   Clearable: stripSvelteExample(clearableRaw),

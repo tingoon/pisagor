@@ -1,6 +1,5 @@
 import { createListCollection } from "@ark-ui/react";
-import { Item } from "@pisagor/react";
-import { Listbox } from "@pisagor/react/listbox";
+import { Item, Listbox } from "@pisagor/react";
 import { useState } from "react";
 export function Controlled() {
   const collection = createListCollection({

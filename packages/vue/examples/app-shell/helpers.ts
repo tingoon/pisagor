@@ -1,5 +1,5 @@
+import { AppShell, useAppShell } from "@pisagor/vue";
 import { defineComponent, h, type VNodeChild } from "vue";
-import { AppShell, useAppShell } from "../../src/components/app-shell";
 
 const LOREM =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";

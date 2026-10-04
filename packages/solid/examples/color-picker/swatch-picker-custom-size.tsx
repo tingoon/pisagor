@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { ColorPicker } from "@pisagor/solid/color-picker";
+import { ColorPicker } from "@pisagor/solid";
 
 export function SwatchPickerCustomSize() {
   return (

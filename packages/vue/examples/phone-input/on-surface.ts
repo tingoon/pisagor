@@ -1,5 +1,6 @@
 import { Surface } from "@pisagor/vue";
-import { PhoneInput } from "../../src/phone-input";
+import { PhoneInput } from "@pisagor/vue/phone-input";
+
 export function OnSurface() {
   return {
     components: { PhoneInput, Surface },

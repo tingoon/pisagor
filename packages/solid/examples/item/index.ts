@@ -10,7 +10,7 @@ import variantsRaw from "./variants.tsx?raw";
 import with_avatarRaw from "./with-avatar.tsx?raw";
 import with_mediaRaw from "./with-media.tsx?raw";
 
-export const imports = `import { Item } from "@pisagor/solid/item";`;
+export const imports = `import { Item } from "@pisagor/solid";`;
 
 export const sources = {
   CustomSpacing: stripTsxExample(custom_spacingRaw),
@@ -25,13 +25,13 @@ export const sources = {
   WithMedia: stripTsxExample(with_mediaRaw),
 } as const;
 
-export { CustomSpacing } from "./custom-spacing";
-export { Default } from "./default";
-export { Group } from "./group";
-export { Header } from "./header";
-export { Icon } from "./icon";
-export { Image } from "./image";
-export { Link } from "./link";
-export { Variants } from "./variants";
-export { WithAvatar } from "./with-avatar";
-export { WithMedia } from "./with-media";
+export * from "./custom-spacing";
+export * from "./default";
+export * from "./group";
+export * from "./header";
+export * from "./icon";
+export * from "./image";
+export * from "./link";
+export * from "./variants";
+export * from "./with-avatar";
+export * from "./with-media";

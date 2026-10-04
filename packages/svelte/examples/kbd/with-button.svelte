@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Kbd } from "@pisagor/svelte/kbd";
+import { Button, Kbd } from "@pisagor/svelte";
 import FloppyDiskIcon from "phosphor-svelte/lib/FloppyDiskIcon";
 </script>
 

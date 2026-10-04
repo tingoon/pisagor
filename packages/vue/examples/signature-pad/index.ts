@@ -6,7 +6,7 @@ import image_previewRaw from "./image-preview.vue?raw";
 import invalidRaw from "./invalid.vue?raw";
 import on_surfaceRaw from "./on-surface.vue?raw";
 
-export const imports = `import { SignaturePad } from "@pisagor/vue/signature-pad";`;
+export const imports = `import { SignaturePad } from "@pisagor/vue";`;
 
 export const sources = {
   Controlled: stripVueExample(controlledRaw),

@@ -6,7 +6,7 @@ import orientation_horizontalRaw from "./orientation-horizontal.tsx?raw";
 import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
 import separatorRaw from "./separator.tsx?raw";
 
-export const imports = `import { DataList } from "@pisagor/solid/data-list";`;
+export const imports = `import { DataList } from "@pisagor/solid";`;
 
 export const sources = {
   Compound: stripTsxExample(compoundRaw),
@@ -17,9 +17,9 @@ export const sources = {
   Separator: stripTsxExample(separatorRaw),
 } as const;
 
-export { Compound } from "./compound";
-export { Default } from "./default";
-export { InfoTip } from "./info-tip";
-export { OrientationHorizontal } from "./orientation-horizontal";
-export { OrientationVertical } from "./orientation-vertical";
-export { Separator } from "./separator";
+export * from "./compound";
+export * from "./default";
+export * from "./info-tip";
+export * from "./orientation-horizontal";
+export * from "./orientation-vertical";
+export * from "./separator";

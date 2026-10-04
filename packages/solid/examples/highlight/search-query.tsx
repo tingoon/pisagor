@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Input } from "@pisagor/solid";
-import { Highlight } from "@pisagor/solid/highlight";
+import { Highlight, Input } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function SearchQuery() {
   const searchResults = ["Spotlight bulb", "Spot cleaner", "Spot ceiling"];

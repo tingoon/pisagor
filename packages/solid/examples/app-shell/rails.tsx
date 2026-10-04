@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { useAppShell } from "@pisagor/solid";
-import { AppShell } from "@pisagor/solid/app-shell";
+import { AppShell, useAppShell } from "@pisagor/solid";
 import { mainContent, regionTitle } from "./helpers";
 
 function ActiveRailPanelContent() {

@@ -7,7 +7,7 @@ import indeterminateRaw from "./indeterminate.svelte?raw";
 import invalidRaw from "./invalid.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 
-export const imports = `import { Checkbox } from "@pisagor/svelte/checkbox";`;
+export const imports = `import { Checkbox } from "@pisagor/svelte";`;
 
 export const sources = {
   CheckboxGroup: stripSvelteExample(checkbox_groupRaw),

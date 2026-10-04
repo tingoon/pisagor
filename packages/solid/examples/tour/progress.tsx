@@ -1,7 +1,7 @@
 /** @jsxImportSource solid-js */
-import { Button, useTourContext } from "@pisagor/solid";
-import type { TourStepType } from "@pisagor/solid/tour";
-import { Tour } from "@pisagor/solid/tour";
+
+import type { TourStepType } from "@pisagor/solid";
+import { Button, Tour, useTourContext } from "@pisagor/solid";
 export function Progress() {
   const TourProgressBar = () => {
     const { tour } = useTourContext();

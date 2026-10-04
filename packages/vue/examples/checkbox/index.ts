@@ -8,7 +8,7 @@ import invalidRaw from "./invalid.vue?raw";
 import on_surfaceRaw from "./on-surface.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 
-export const imports = `import { Checkbox } from "@pisagor/vue/checkbox";`;
+export const imports = `import { Checkbox } from "@pisagor/vue";`;
 
 export const sources = {
   CheckboxGroup: stripVueExample(checkbox_groupRaw),

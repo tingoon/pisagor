@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ToggleGroup } from "../../src/components/toggle-group";
+import { ToggleGroup } from "@pisagor/vue";
 
 const items = [
   { children: "Bold", value: "bold" },

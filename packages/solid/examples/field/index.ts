@@ -19,7 +19,7 @@ import textarea_fieldRaw from "./textarea-field.tsx?raw";
 import with_errorRaw from "./with-error.tsx?raw";
 import with_input_groupRaw from "./with-input-group.tsx?raw";
 
-export const imports = `import { Field } from "@pisagor/solid/field";`;
+export const imports = `import { Field } from "@pisagor/solid";`;
 
 export const sources = {
   AutocompleteField: stripTsxExample(autocomplete_fieldRaw),
@@ -43,22 +43,22 @@ export const sources = {
   WithInputGroup: stripTsxExample(with_input_groupRaw),
 } as const;
 
-export { AutocompleteField } from "./autocomplete-field";
-export { CheckboxField } from "./checkbox-field";
-export { CheckboxGroupField } from "./checkbox-group-field";
-export { ComboboxField } from "./combobox-field";
-export { ComboboxMultipleField } from "./combobox-multiple-field";
-export { Default } from "./default";
-export { DisabledField } from "./disabled-field";
-export { FieldGroup } from "./field-group";
-export { NumberInputStory } from "./number-input-story";
-export { OrientationHorizontal } from "./orientation-horizontal";
-export { OrientationVertical } from "./orientation-vertical";
-export { RadioGroupField } from "./radio-group-field";
-export { RequiredField } from "./required-field";
-export { SelectField } from "./select-field";
-export { SliderField } from "./slider-field";
-export { SwitchField } from "./switch-field";
-export { TextareaField } from "./textarea-field";
-export { WithError } from "./with-error";
-export { WithInputGroup } from "./with-input-group";
+export * from "./autocomplete-field";
+export * from "./checkbox-field";
+export * from "./checkbox-group-field";
+export * from "./combobox-field";
+export * from "./combobox-multiple-field";
+export * from "./default";
+export * from "./disabled-field";
+export * from "./field-group";
+export * from "./number-input-story";
+export * from "./orientation-horizontal";
+export * from "./orientation-vertical";
+export * from "./radio-group-field";
+export * from "./required-field";
+export * from "./select-field";
+export * from "./slider-field";
+export * from "./switch-field";
+export * from "./textarea-field";
+export * from "./with-error";
+export * from "./with-input-group";

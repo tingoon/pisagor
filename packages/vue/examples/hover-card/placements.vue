@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Button } from "@pisagor/vue";
-import { HoverCard } from "../../src/components/hover-card";
+import { Button, HoverCard } from "@pisagor/vue";
 
 const placements = ["left", "top", "bottom", "right"] as const;
 </script>

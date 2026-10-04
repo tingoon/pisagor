@@ -5,7 +5,7 @@ import error_correctionRaw from "./error-correction.vue?raw";
 import overlayRaw from "./overlay.vue?raw";
 import sizesRaw from "./sizes.vue?raw";
 
-export const imports = `import { QrCode } from "@pisagor/vue/qr-code";`;
+export const imports = `import { QrCode } from "@pisagor/vue";`;
 
 export const sources = {
   Default: stripVueExample(defaultRaw),

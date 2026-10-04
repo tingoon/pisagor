@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button } from "@pisagor/solid";
-import { FileUpload } from "@pisagor/solid/file-upload";
+import { Button, FileUpload } from "@pisagor/solid";
 export function Variants() {
   return (
     <div class="flex flex-col gap-2">

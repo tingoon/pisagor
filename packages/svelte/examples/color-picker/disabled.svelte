@@ -1,6 +1,5 @@
 <script lang="ts">
-import { ColorPicker } from "@pisagor/svelte/color-picker";
-import { Input } from "@pisagor/svelte/input";
+import { ColorPicker, Input } from "@pisagor/svelte";
 </script>
 
 <ColorPicker defaultValue="#eb5e41" disabled>

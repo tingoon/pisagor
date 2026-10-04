@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Field } from "@pisagor/svelte";
-import { TagsInput } from "@pisagor/svelte/tags-input";
+import { Field, TagsInput } from "@pisagor/svelte";
 
 const tagDelimiter = /[,\s]+/;
 </script>

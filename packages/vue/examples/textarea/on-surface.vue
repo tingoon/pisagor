@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Surface } from "@pisagor/vue";
-import { Textarea } from "../../src/components/textarea";
+import { Surface, Textarea } from "@pisagor/vue";
 </script>
 
 <template>

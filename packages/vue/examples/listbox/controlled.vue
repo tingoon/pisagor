@@ -1,9 +1,7 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
-
-import { Item } from "@pisagor/vue";
+import { Item, Listbox } from "@pisagor/vue";
 import { ref } from "vue";
-import { Listbox } from "../../src/components/listbox";
 
 const value = ref(["md"]);
 const collection = createListCollection({

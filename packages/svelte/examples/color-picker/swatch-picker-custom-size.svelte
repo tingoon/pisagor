@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ColorPicker } from "@pisagor/svelte/color-picker";
+import { ColorPicker } from "@pisagor/svelte";
 </script>
 
 <ColorPicker class="w-full flex-wrap justify-center gap-2" inline>

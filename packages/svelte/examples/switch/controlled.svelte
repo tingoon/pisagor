@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Field } from "@pisagor/svelte";
-import { Switch } from "@pisagor/svelte/switch";
+import { Field, Switch } from "@pisagor/svelte";
 
 let checked = $state(false);
 

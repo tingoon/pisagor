@@ -6,7 +6,7 @@ import with_iconRaw from "./with-icon.svelte?raw";
 import with_linkRaw from "./with-link.svelte?raw";
 import without_badgeRaw from "./without-badge.svelte?raw";
 
-export const imports = `import { Announcement } from "@pisagor/svelte/announcement";`;
+export const imports = `import { Announcement } from "@pisagor/svelte";`;
 
 export const sources = {
   Compound: stripSvelteExample(compoundRaw),

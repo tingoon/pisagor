@@ -11,7 +11,7 @@ import sizesRaw from "./sizes.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_iconRaw from "./with-icon.svelte?raw";
 
-export const imports = `import { Button } from "@pisagor/svelte/button";`;
+export const imports = `import { Button } from "@pisagor/svelte";`;
 
 export const sources = {
   AsChild: stripSvelteExample(as_childRaw),

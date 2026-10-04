@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button, ScrollArea } from "@pisagor/solid";
-import { Scrollspy } from "@pisagor/solid/scrollspy";
+import { Button, ScrollArea, Scrollspy } from "@pisagor/solid";
 import { horizontalSections } from "./helpers";
 
 export function Horizontal() {

@@ -1,5 +1,4 @@
-import { Badge } from "@pisagor/react";
-import { Announcement } from "@pisagor/react/announcement";
+import { Announcement, Badge } from "@pisagor/react";
 export function Default() {
   return (
     <Announcement

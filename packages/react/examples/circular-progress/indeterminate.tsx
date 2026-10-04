@@ -1,5 +1,4 @@
-import { Field } from "@pisagor/react";
-import { CircularProgress } from "@pisagor/react/circular-progress";
+import { CircularProgress, Field } from "@pisagor/react";
 export function Indeterminate() {
   return (
     <Field>

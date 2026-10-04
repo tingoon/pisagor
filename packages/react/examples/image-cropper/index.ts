@@ -8,7 +8,7 @@ import initial_cropRaw from "./initial-crop.tsx?raw";
 import min_max_sizeRaw from "./min-max-size.tsx?raw";
 import zoom_limitsRaw from "./zoom-limits.tsx?raw";
 
-export const imports = `import { ImageCropper } from "@pisagor/react/image-cropper";`;
+export const imports = `import { ImageCropper } from "@pisagor/react";`;
 
 export const sources = {
   AspectRatio: stripTsxExample(aspect_ratioRaw),
@@ -21,11 +21,11 @@ export const sources = {
   ZoomLimits: stripTsxExample(zoom_limitsRaw),
 } as const;
 
-export { AspectRatio } from "./aspect-ratio";
-export { CircleCrop } from "./circle-crop";
-export { ControlledZoom } from "./controlled-zoom";
-export { Default } from "./default";
-export { FixedCropArea } from "./fixed-crop-area";
-export { InitialCrop } from "./initial-crop";
-export { MinMaxSize } from "./min-max-size";
-export { ZoomLimits } from "./zoom-limits";
+export * from "./aspect-ratio";
+export * from "./circle-crop";
+export * from "./controlled-zoom";
+export * from "./default";
+export * from "./fixed-crop-area";
+export * from "./initial-crop";
+export * from "./min-max-size";
+export * from "./zoom-limits";

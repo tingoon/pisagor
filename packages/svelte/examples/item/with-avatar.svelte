@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Avatar, Button } from "@pisagor/svelte";
-import { Item } from "@pisagor/svelte/item";
+import { Avatar, Button, Item } from "@pisagor/svelte";
 </script>
 
 <Item variant="outline">

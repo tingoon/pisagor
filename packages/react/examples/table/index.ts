@@ -5,7 +5,7 @@ import footerRaw from "./footer.tsx?raw";
 import not_hoverableRaw from "./not-hoverable.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 
-export const imports = `import { Table } from "@pisagor/react/table";`;
+export const imports = `import { Table } from "@pisagor/react";`;
 
 export const sources = {
   Actions: stripTsxExample(actionsRaw),
@@ -15,8 +15,8 @@ export const sources = {
   Variants: stripTsxExample(variantsRaw),
 } as const;
 
-export { Actions } from "./actions";
-export { Default } from "./default";
-export { Footer } from "./footer";
-export { NotHoverable } from "./not-hoverable";
-export { Variants } from "./variants";
+export * from "./actions";
+export * from "./default";
+export * from "./footer";
+export * from "./not-hoverable";
+export * from "./variants";

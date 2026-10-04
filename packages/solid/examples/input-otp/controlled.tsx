@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { InputOTP } from "@pisagor/solid/input-otp";
+import { InputOTP } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
   const [value, setValue] = createSignal([""]);

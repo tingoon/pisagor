@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Badge } from "@pisagor/vue";
-import { Table } from "../../src/components/table";
+import { Badge, Table } from "@pisagor/vue";
 import { workspaceUsers } from "./helpers";
 </script>
 

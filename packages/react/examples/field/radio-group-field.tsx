@@ -1,5 +1,4 @@
-import { RadioGroup } from "@pisagor/react";
-import { Field } from "@pisagor/react/field";
+import { Field, RadioGroup } from "@pisagor/react";
 export function RadioGroupField() {
   return (
     <Field.Set>

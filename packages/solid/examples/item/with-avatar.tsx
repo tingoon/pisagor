@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Avatar, Button } from "@pisagor/solid";
-import { Item } from "@pisagor/solid/item";
+import { Avatar, Button, Item } from "@pisagor/solid";
 export function WithAvatar() {
   return (
     <Item variant="outline">

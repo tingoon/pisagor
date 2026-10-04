@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { Button } from "@pisagor/vue";
+import { Button, Clipboard } from "@pisagor/vue";
 import { ref } from "vue";
-import { Clipboard } from "../../src/components/clipboard";
 
 const value = ref("https://example.com/docs");
 </script>

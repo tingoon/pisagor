@@ -8,7 +8,7 @@ import placementsRaw from "./placements.vue?raw";
 import with_dialogRaw from "./with-dialog.vue?raw";
 import with_menuRaw from "./with-menu.vue?raw";
 
-export const imports = `import { ActionBar } from "@pisagor/vue/action-bar";`;
+export const imports = `import { ActionBar } from "@pisagor/vue";`;
 
 export const sources = {
   CloseTrigger: stripVueExample(close_triggerRaw),

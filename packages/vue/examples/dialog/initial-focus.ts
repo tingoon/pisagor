@@ -1,10 +1,5 @@
-import { Field, Input } from "@pisagor/vue";
+import { Button, Dialog, Field, Input } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Dialog } from "../../src/components/dialog";
-import {
-  defaultButtonClass,
-  outlineButtonClass,
-} from "../../src/internal/story-button";
 
 export default defineComponent({
   name: "InitialFocus",
@@ -17,7 +12,7 @@ export default defineComponent({
     return () =>
       h(Dialog, { initialFocusEl }, () => [
         h(Dialog.Trigger, { asChild: true }, () =>
-          h("button", { class: outlineButtonClass(), type: "button" }, "Open"),
+          h(Button, { type: "button", variant: "outline" }, "Open"),
         ),
         h(Dialog.Content, null, () => [
           h(Dialog.Header, {
@@ -42,18 +37,10 @@ export default defineComponent({
           ),
           h(Dialog.Footer, null, () => [
             h(Dialog.CloseTrigger, { asChild: true }, () =>
-              h(
-                "button",
-                { class: outlineButtonClass(), type: "button" },
-                "Cancel",
-              ),
+              h(Button, { type: "button", variant: "outline" }, "Cancel"),
             ),
             h(Dialog.CloseTrigger, { asChild: true }, () =>
-              h(
-                "button",
-                { class: defaultButtonClass(), type: "button" },
-                "Save",
-              ),
+              h(Button, { type: "button" }, "Save"),
             ),
           ]),
         ]),

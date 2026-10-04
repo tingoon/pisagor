@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Surface } from "@pisagor/vue";
-import { Switch } from "../../src/components/switch";
+import { Surface, Switch } from "@pisagor/vue";
 </script>
 
 <template>

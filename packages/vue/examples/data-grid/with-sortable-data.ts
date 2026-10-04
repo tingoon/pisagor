@@ -6,8 +6,8 @@ import type {
   ColumnDef,
   HeaderContext,
 } from "@pisagor/vue/data-grid";
+import { DataGrid } from "@pisagor/vue/data-grid";
 import { computed, defineComponent, h, type PropType, ref } from "vue";
-import { DataGrid } from "../../src/data-grid";
 
 type ArkPart = Parameters<typeof h>[0];
 

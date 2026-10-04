@@ -4,7 +4,7 @@ import inline_navigationRaw from "./inline-navigation.vue?raw";
 import listRaw from "./list.vue?raw";
 import verticalRaw from "./vertical.vue?raw";
 
-export const imports = `import { Separator } from "@pisagor/vue/separator";`;
+export const imports = `import { Separator } from "@pisagor/vue";`;
 
 export const sources = {
   Default: stripVueExample(defaultRaw),

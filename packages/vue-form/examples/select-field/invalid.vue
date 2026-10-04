@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { SelectField } from "../../src/fields/select-field";
+import { SelectField } from "@pisagor/vue-form";
 </script>
 
 <template>

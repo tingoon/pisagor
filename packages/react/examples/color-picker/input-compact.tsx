@@ -1,6 +1,5 @@
 import { PercentIcon } from "@phosphor-icons/react";
-import { InputGroup, parseColor, Separator } from "@pisagor/react";
-import { ColorPicker } from "@pisagor/react/color-picker";
+import { ColorPicker, InputGroup, parseColor, Separator } from "@pisagor/react";
 export function InputCompact() {
   return (
     <ColorPicker

@@ -12,7 +12,7 @@ import variantsRaw from "./variants.vue?raw";
 import verticalRaw from "./vertical.vue?raw";
 import with_labelRaw from "./with-label.vue?raw";
 
-export const imports = `import { Slider } from "@pisagor/vue/slider";`;
+export const imports = `import { Slider } from "@pisagor/vue";`;
 
 export const sources = {
   Controlled: stripVueExample(controlledRaw),

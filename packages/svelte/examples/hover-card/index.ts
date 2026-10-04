@@ -5,7 +5,7 @@ import disabledRaw from "./disabled.svelte?raw";
 import placementsRaw from "./placements.svelte?raw";
 import triggers_delaysRaw from "./triggers-delays.svelte?raw";
 
-export const imports = `import { HoverCard } from "@pisagor/svelte/hover-card";`;
+export const imports = `import { HoverCard } from "@pisagor/svelte";`;
 
 export const sources = {
   Controlled: stripSvelteExample(controlledRaw),

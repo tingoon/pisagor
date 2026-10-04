@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte/button";
-import { ButtonGroup } from "@pisagor/svelte/button-group";
+import { Button, ButtonGroup } from "@pisagor/svelte";
 </script>
 
 <ButtonGroup>

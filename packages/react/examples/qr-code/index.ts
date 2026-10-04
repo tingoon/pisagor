@@ -5,7 +5,7 @@ import error_correctionRaw from "./error-correction.tsx?raw";
 import overlayRaw from "./overlay.tsx?raw";
 import sizesRaw from "./sizes.tsx?raw";
 
-export const imports = `import { QrCode } from "@pisagor/react/qr-code";`;
+export const imports = `import { QrCode } from "@pisagor/react";`;
 
 export const sources = {
   Default: stripTsxExample(defaultRaw),
@@ -15,8 +15,8 @@ export const sources = {
   Sizes: stripTsxExample(sizesRaw),
 } as const;
 
-export { Default } from "./default";
-export { Download } from "./download";
-export { ErrorCorrection } from "./error-correction";
-export { Overlay } from "./overlay";
-export { Sizes } from "./sizes";
+export * from "./default";
+export * from "./download";
+export * from "./error-correction";
+export * from "./overlay";
+export * from "./sizes";

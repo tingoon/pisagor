@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Steps } from "@pisagor/svelte/steps";
+import { Steps } from "@pisagor/svelte";
 import CreditCardIcon from "phosphor-svelte/lib/CreditCardIcon";
 import HardDriveIcon from "phosphor-svelte/lib/HardDriveIcon";
 import UserIcon from "phosphor-svelte/lib/UserIcon";

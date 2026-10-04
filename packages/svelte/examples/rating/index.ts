@@ -11,7 +11,7 @@ import invalidRaw from "./invalid.svelte?raw";
 import readonlyRaw from "./readonly.svelte?raw";
 import testimonialRaw from "./testimonial.svelte?raw";
 
-export const imports = `import { Rating } from "@pisagor/svelte/rating";`;
+export const imports = `import { Rating } from "@pisagor/svelte";`;
 
 export const sources = {
   Controlled: stripSvelteExample(controlledRaw),

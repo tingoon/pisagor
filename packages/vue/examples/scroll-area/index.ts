@@ -5,7 +5,7 @@ import horizontalRaw from "./horizontal.vue?raw";
 import nestedRaw from "./nested.vue?raw";
 import scroll_fadeRaw from "./scroll-fade.vue?raw";
 
-export const imports = `import { ScrollArea } from "@pisagor/vue/scroll-area";`;
+export const imports = `import { ScrollArea } from "@pisagor/vue";`;
 
 export const sources = {
   BothDirections: stripVueExample(both_directionsRaw),

@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid";
-import { Dialog } from "@pisagor/solid/dialog";
+import { Button, Dialog } from "@pisagor/solid";
 import { Portal } from "solid-js/web";
 export function ScrollArea() {
   return (

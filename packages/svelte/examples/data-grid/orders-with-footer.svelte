@@ -1,6 +1,6 @@
 <script lang="ts">
+import { Table } from "@pisagor/svelte";
 import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import { Table } from "@pisagor/svelte/table";
 
 type Order = { id: string; product: string; qty: number; total: number };
 

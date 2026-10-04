@@ -8,7 +8,7 @@ import no_close_buttonRaw from "./no-close-button.svelte?raw";
 import non_modalRaw from "./non-modal.svelte?raw";
 import scroll_areaRaw from "./scroll-area.svelte?raw";
 
-export const imports = `import { Dialog } from "@pisagor/svelte/dialog";`;
+export const imports = `import { Dialog } from "@pisagor/svelte";`;
 
 export const sources = {
   CloseBehavior: stripSvelteExample(close_behaviorRaw),

@@ -1,5 +1,4 @@
-import { InputGroup } from "@pisagor/react";
-import { ColorPicker } from "@pisagor/react/color-picker";
+import { ColorPicker, InputGroup } from "@pisagor/react";
 export function Default() {
   return (
     <ColorPicker>

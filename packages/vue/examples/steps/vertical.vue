@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
-import { Steps } from "../../src/components/steps";
+import { Button, Steps } from "@pisagor/vue";
 
 const items = [
   { description: "Personal", title: "Info" },

@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { CircularProgress } from "@pisagor/solid/circular-progress";
+import { CircularProgress } from "@pisagor/solid";
 
 export function Thickness() {
   return (

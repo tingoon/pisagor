@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Field } from "@pisagor/solid/field";
-import { Switch } from "@pisagor/solid/switch";
+import { Field, Switch } from "@pisagor/solid";
 
 export function Default() {
   return (

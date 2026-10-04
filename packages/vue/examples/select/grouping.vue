@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
+import { Select } from "@pisagor/vue";
 import { computed } from "vue";
-import { Select } from "../../src/components/select";
 
 const collection = createListCollection({
   groupBy: (item) => item.category,

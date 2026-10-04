@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { FloatingPanel } from "@pisagor/svelte/floating-panel";
+import { Button, FloatingPanel } from "@pisagor/svelte";
 import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
 import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";

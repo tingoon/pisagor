@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Avatar, Button } from "@pisagor/svelte";
-import { HoverCard } from "@pisagor/svelte/hover-card";
+import { Avatar, Button, HoverCard } from "@pisagor/svelte";
 import { MapPinIcon } from "@pisagor/svelte/icons";
 </script>
 

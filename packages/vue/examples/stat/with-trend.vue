@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Stat } from "../../src/components/stat";
+import { Stat } from "@pisagor/vue";
 
 const upTrend = { direction: "up" as const, value: 12.5 };
 const downTrend = { direction: "down" as const, value: 4.2 };

@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte/button";
-import { Sheet } from "@pisagor/svelte/sheet";
+import { Button, Sheet } from "@pisagor/svelte";
 
 const sides = ["top", "right", "bottom", "left"] as const;
 </script>

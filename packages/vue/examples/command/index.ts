@@ -6,7 +6,7 @@ import shortcutsRaw from "./shortcuts.ts?raw";
 import with_dialogRaw from "./with-dialog.ts?raw";
 import with_footerRaw from "./with-footer.ts?raw";
 
-export const imports = `import { Command } from "@pisagor/vue/command";`;
+export const imports = `import { Command } from "@pisagor/vue";`;
 
 export const sources = {
   Default: stripVueExample(defaultRaw),

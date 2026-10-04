@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Resizable } from "@pisagor/svelte/resizable";
+import { Resizable } from "@pisagor/svelte";
 import { panelClassName } from "./helpers";
 </script>
 

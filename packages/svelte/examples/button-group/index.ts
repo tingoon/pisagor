@@ -5,7 +5,7 @@ import orientation_horizontalRaw from "./orientation-horizontal.svelte?raw";
 import orientation_verticalRaw from "./orientation-vertical.svelte?raw";
 import with_separatorRaw from "./with-separator.svelte?raw";
 
-export const imports = `import { ButtonGroup } from "@pisagor/svelte/button-group";`;
+export const imports = `import { ButtonGroup } from "@pisagor/svelte";`;
 
 export const sources = {
   Default: stripSvelteExample(defaultRaw),

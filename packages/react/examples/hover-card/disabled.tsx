@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react";
-import { HoverCard } from "@pisagor/react/hover-card";
+import { Button, HoverCard } from "@pisagor/react";
 export function Disabled() {
   return (
     <HoverCard disabled>

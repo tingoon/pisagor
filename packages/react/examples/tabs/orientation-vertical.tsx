@@ -1,4 +1,4 @@
-import { Tabs } from "@pisagor/react/tabs";
+import { Tabs } from "@pisagor/react";
 import { numberedTabs } from "./helpers";
 
 export function OrientationVertical() {

@@ -7,7 +7,7 @@ import multipleRaw from "./multiple.svelte?raw";
 import non_collapsibleRaw from "./non-collapsible.svelte?raw";
 import with_cardRaw from "./with-card.svelte?raw";
 
-export const imports = `import { Accordion } from "@pisagor/svelte/accordion";`;
+export const imports = `import { Accordion } from "@pisagor/svelte";`;
 
 export const sources = {
   Compound: stripSvelteExample(compoundRaw),

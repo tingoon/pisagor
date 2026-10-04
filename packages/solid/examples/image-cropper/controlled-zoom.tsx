@@ -1,11 +1,10 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid";
+import { Button, ImageCropper } from "@pisagor/solid";
 import {
   MagnifyingGlassMinusIcon,
   MagnifyingGlassPlusIcon,
 } from "@pisagor/solid/icons";
-import { ImageCropper } from "@pisagor/solid/image-cropper";
 import { createSignal } from "solid-js";
 export function ControlledZoom() {
   const [zoom, setZoom] = createSignal(1);

@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { ColorPicker } from "@pisagor/solid/color-picker";
+import { ColorPicker } from "@pisagor/solid";
 import { SparkleIcon } from "@pisagor/solid/icons";
 
 export function SwatchPickerCustomIndicator() {

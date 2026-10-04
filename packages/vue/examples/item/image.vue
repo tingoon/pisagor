@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Item } from "../../src/components/item";
+import { Item } from "@pisagor/vue";
 
 const images = [
   {

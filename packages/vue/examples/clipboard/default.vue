@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Clipboard } from "../../src/components/clipboard";
+import { Clipboard } from "@pisagor/vue";
 </script>
 
 <template>

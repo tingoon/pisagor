@@ -1,12 +1,6 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { DropdownMenu } from "@pisagor/svelte/dropdown-menu";
-import {
-  CopyIcon,
-  GearIcon,
-  SignOutIcon,
-  UserIcon,
-} from "@pisagor/svelte/icons";
+import { Button, DropdownMenu } from "@pisagor/svelte";
+import { CopyIcon, GearIcon, SignOutIcon, UserIcon } from "@pisagor/svelte/icons";
 </script>
 
 <DropdownMenu>

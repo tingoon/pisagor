@@ -1,5 +1,4 @@
-import { Field } from "@pisagor/react";
-import { Textarea } from "@pisagor/react/textarea";
+import { Field, Textarea } from "@pisagor/react";
 
 export function Invalid() {
   return (

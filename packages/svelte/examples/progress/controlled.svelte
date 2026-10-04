@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button, ButtonGroup, Field } from "@pisagor/svelte";
-import { Progress } from "@pisagor/svelte/progress";
+import { Button, ButtonGroup, Field, Progress } from "@pisagor/svelte";
 import MinusIcon from "phosphor-svelte/lib/MinusIcon";
 import PlusIcon from "phosphor-svelte/lib/PlusIcon";
 

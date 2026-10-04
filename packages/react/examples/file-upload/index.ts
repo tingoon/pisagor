@@ -13,7 +13,7 @@ import multiple_filesRaw from "./multiple-files.tsx?raw";
 import triggerRaw from "./trigger.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 
-export const imports = `import { FileUpload } from "@pisagor/react/file-upload";`;
+export const imports = `import { FileUpload } from "@pisagor/react";`;
 
 export const sources = {
   AcceptedFileTypes: stripTsxExample(accepted_file_typesRaw),
@@ -31,16 +31,16 @@ export const sources = {
   Variants: stripTsxExample(variantsRaw),
 } as const;
 
-export { AcceptedFileTypes } from "./accepted-file-types";
-export { ClearTrigger } from "./clear-trigger";
-export { CustomPreview } from "./custom-preview";
-export { CustomSpacing } from "./custom-spacing";
-export { Default } from "./default";
-export { DirectoryUpload } from "./directory-upload";
-export { Disabled } from "./disabled";
-export { Dropzone } from "./dropzone";
-export { Invalid } from "./invalid";
-export { MediaCapture } from "./media-capture";
-export { MultipleFiles } from "./multiple-files";
-export { Trigger } from "./trigger";
-export { Variants } from "./variants";
+export * from "./accepted-file-types";
+export * from "./clear-trigger";
+export * from "./custom-preview";
+export * from "./custom-spacing";
+export * from "./default";
+export * from "./directory-upload";
+export * from "./disabled";
+export * from "./dropzone";
+export * from "./invalid";
+export * from "./media-capture";
+export * from "./multiple-files";
+export * from "./trigger";
+export * from "./variants";

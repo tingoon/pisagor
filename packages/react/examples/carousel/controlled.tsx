@@ -1,4 +1,4 @@
-import { Carousel } from "@pisagor/react/carousel";
+import { Carousel } from "@pisagor/react";
 import { useState } from "react";
 import { numberedSlides } from "./helpers";
 

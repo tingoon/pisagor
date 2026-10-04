@@ -1,8 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte/button";
-import { Field } from "@pisagor/svelte/field";
-import { Input } from "@pisagor/svelte/input";
-import { Sheet } from "@pisagor/svelte/sheet";
+import { Button, Field, Input, Sheet } from "@pisagor/svelte";
 </script>
 
 <Sheet>

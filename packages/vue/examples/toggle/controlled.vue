@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { Toggle } from "@pisagor/vue";
 import { ref } from "vue";
-import { Toggle } from "../../src/components/toggle";
 
 const pressed = ref(false);
 </script>

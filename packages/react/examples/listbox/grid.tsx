@@ -1,6 +1,5 @@
 import { createGridCollection } from "@ark-ui/react/collection";
-import { Item } from "@pisagor/react";
-import { Listbox } from "@pisagor/react/listbox";
+import { Item, Listbox } from "@pisagor/react";
 import type { CSSProperties } from "react";
 export function Grid() {
   const collection = createGridCollection({

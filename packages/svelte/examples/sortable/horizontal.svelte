@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Sortable } from "@pisagor/svelte/sortable";
+import { Sortable } from "@pisagor/svelte";
 
 const labels: Record<string, string> = {
   a: "Design system tokens",

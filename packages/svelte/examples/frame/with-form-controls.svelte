@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Field, Input, Switch } from "@pisagor/svelte";
-import { Frame } from "@pisagor/svelte/frame";
+import { Field, Frame, Input, Switch } from "@pisagor/svelte";
 </script>
 
 <Frame>

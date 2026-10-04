@@ -8,7 +8,7 @@ import on_files_changeRaw from "./on-files-change.svelte?raw";
 import sizesRaw from "./sizes.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 
-export const imports = `import { FileInput } from "@pisagor/svelte/file-input";`;
+export const imports = `import { FileInput } from "@pisagor/svelte";`;
 
 export const sources = {
   Accept: stripSvelteExample(acceptRaw),

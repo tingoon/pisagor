@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Table } from "@pisagor/svelte/table";
+import { Table } from "@pisagor/svelte";
 
 const items = [
     { id: "1", item: "Wireless mouse", qty: 2, unitPrice: 29.99 },

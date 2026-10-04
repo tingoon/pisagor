@@ -8,7 +8,7 @@ import disabledRaw from "./disabled.tsx?raw";
 import invalidRaw from "./invalid.tsx?raw";
 import sizesRaw from "./sizes.tsx?raw";
 
-export const imports = `import { PasswordInput } from "@pisagor/solid/password-input";`;
+export const imports = `import { PasswordInput } from "@pisagor/solid";`;
 
 export const sources = {
   Autocomplete: stripTsxExample(autocompleteRaw),
@@ -21,11 +21,11 @@ export const sources = {
   Sizes: stripTsxExample(sizesRaw),
 } as const;
 
-export { AutoHide } from "./auto-hide";
-export { Autocomplete } from "./autocomplete";
-export { Controlled } from "./controlled";
-export { ControlledVisibility } from "./controlled-visibility";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { Invalid } from "./invalid";
-export { Sizes } from "./sizes";
+export * from "./auto-hide";
+export * from "./autocomplete";
+export * from "./controlled";
+export * from "./controlled-visibility";
+export * from "./default";
+export * from "./disabled";
+export * from "./invalid";
+export * from "./sizes";

@@ -4,7 +4,7 @@ import inline_navigationRaw from "./inline-navigation.svelte?raw";
 import listRaw from "./list.svelte?raw";
 import verticalRaw from "./vertical.svelte?raw";
 
-export const imports = `import { Separator } from "@pisagor/svelte/separator";`;
+export const imports = `import { Separator } from "@pisagor/svelte";`;
 
 export const sources = {
   Default: stripSvelteExample(defaultRaw),

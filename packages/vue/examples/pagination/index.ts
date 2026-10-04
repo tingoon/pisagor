@@ -5,7 +5,7 @@ import defaultRaw from "./default.vue?raw";
 import linksRaw from "./links.vue?raw";
 import page_rangeRaw from "./page-range.vue?raw";
 
-export const imports = `import { Pagination } from "@pisagor/vue/pagination";`;
+export const imports = `import { Pagination } from "@pisagor/vue";`;
 
 export const sources = {
   Controlled: stripVueExample(controlledRaw),

@@ -3,7 +3,7 @@ import defaultRaw from "./default.astro?raw";
 import groupRaw from "./group.astro?raw";
 
 export const imports = `---
-import { Kbd } from "@pisagor/astro/kbd";
+import { Kbd } from "@pisagor/astro";
 ---`;
 
 export const sources = {

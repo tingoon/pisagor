@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Slider } from "@pisagor/solid";
-import { Field } from "@pisagor/solid/field";
+import { Field, Slider } from "@pisagor/solid";
 export function SliderField() {
   return (
     <Field class="items-stretch gap-3">

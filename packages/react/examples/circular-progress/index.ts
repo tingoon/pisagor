@@ -6,7 +6,7 @@ import sizesRaw from "./sizes.tsx?raw";
 import thicknessRaw from "./thickness.tsx?raw";
 import with_valueRaw from "./with-value.tsx?raw";
 
-export const imports = `import { CircularProgress } from "@pisagor/react/circular-progress";`;
+export const imports = `import { CircularProgress } from "@pisagor/react";`;
 
 export const sources = {
   Controlled: stripTsxExample(controlledRaw),
@@ -17,9 +17,9 @@ export const sources = {
   WithValue: stripTsxExample(with_valueRaw),
 } as const;
 
-export { Controlled } from "./controlled";
-export { Default } from "./default";
-export { Indeterminate } from "./indeterminate";
-export { Sizes } from "./sizes";
-export { Thickness } from "./thickness";
-export { WithValue } from "./with-value";
+export * from "./controlled";
+export * from "./default";
+export * from "./indeterminate";
+export * from "./sizes";
+export * from "./thickness";
+export * from "./with-value";

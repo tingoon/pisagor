@@ -1,4 +1,4 @@
-import { EmptyState } from "@pisagor/react/empty-state";
+import { EmptyState } from "@pisagor/react";
 
 export function Compact() {
   return (

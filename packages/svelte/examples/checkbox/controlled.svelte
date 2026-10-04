@@ -1,7 +1,6 @@
 <script lang="ts">
-import { Field } from "@pisagor/svelte";
-import type { CheckboxCheckedState } from "@pisagor/svelte/checkbox";
-import { Checkbox } from "@pisagor/svelte/checkbox";
+import type { CheckboxCheckedState } from "@pisagor/svelte";
+import { Checkbox, Field } from "@pisagor/svelte";
 
 let checked: CheckboxCheckedState = $state(false);
 

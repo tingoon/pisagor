@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { NumberInput } from "../../src/components/number-input";
+import { NumberInput } from "@pisagor/vue";
 </script>
 
 <template>

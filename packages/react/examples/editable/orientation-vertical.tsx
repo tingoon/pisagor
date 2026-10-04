@@ -1,6 +1,5 @@
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
-import { Button, Textarea } from "@pisagor/react";
-import { Editable } from "@pisagor/react/editable";
+import { Button, Editable, Textarea } from "@pisagor/react";
 export function OrientationVertical() {
   return (
     <Editable>

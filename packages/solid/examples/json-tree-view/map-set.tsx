@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { JsonTreeView } from "@pisagor/solid/json-tree-view";
+import { JsonTreeView } from "@pisagor/solid";
 import { mapSetData } from "./helpers";
 
 export function MapSet() {

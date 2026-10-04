@@ -6,7 +6,7 @@ import different_iconRaw from "./different-icon.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 import with_labelRaw from "./with-label.tsx?raw";
 
-export const imports = `import { Clipboard } from "@pisagor/react/clipboard";`;
+export const imports = `import { Clipboard } from "@pisagor/react";`;
 
 export const sources = {
   Controlled: stripTsxExample(controlledRaw),
@@ -17,9 +17,9 @@ export const sources = {
   WithLabel: stripTsxExample(with_labelRaw),
 } as const;
 
-export { Controlled } from "./controlled";
-export { CustomTimeout } from "./custom-timeout";
-export { Default } from "./default";
-export { DifferentIcon } from "./different-icon";
-export { Variants } from "./variants";
-export { WithLabel } from "./with-label";
+export * from "./controlled";
+export * from "./custom-timeout";
+export * from "./default";
+export * from "./different-icon";
+export * from "./variants";
+export * from "./with-label";

@@ -1,6 +1,5 @@
 import { DownloadIcon, FileTextIcon } from "@phosphor-icons/react";
-import { Button, Item } from "@pisagor/react";
-import { DownloadTrigger } from "@pisagor/react/download-trigger";
+import { Button, DownloadTrigger, Item } from "@pisagor/react";
 import { sampleText } from "./helpers";
 
 export function Default() {

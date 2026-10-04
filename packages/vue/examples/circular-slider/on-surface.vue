@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Surface } from "@pisagor/vue";
-import { CircularSlider } from "../../src/components/circular-slider";
+import { CircularSlider, Surface } from "@pisagor/vue";
 </script>
 
 <template>

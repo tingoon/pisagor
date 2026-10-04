@@ -17,7 +17,7 @@ import with_filterRaw from "./with-filter.tsx?raw";
 import with_iconRaw from "./with-icon.tsx?raw";
 import with_popoverRaw from "./with-popover.tsx?raw";
 
-export const imports = `import { Listbox } from "@pisagor/react/listbox";`;
+export const imports = `import { Listbox } from "@pisagor/react";`;
 
 export const sources = {
   Compound: stripTsxExample(compoundRaw),
@@ -39,20 +39,20 @@ export const sources = {
   WithPopover: stripTsxExample(with_popoverRaw),
 } as const;
 
-export { Compound } from "./compound";
-export { Controlled } from "./controlled";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { DisabledItem } from "./disabled-item";
-export { Grid } from "./grid";
-export { Grouping } from "./grouping";
-export { Horizontal } from "./horizontal";
-export { ImageExplorer } from "./image-explorer";
-export { SelectionExtended } from "./selection-extended";
-export { SelectionMultiple } from "./selection-multiple";
-export { SelectionNone } from "./selection-none";
-export { TransferList } from "./transfer-list";
-export { WithDescription } from "./with-description";
-export { WithFilter } from "./with-filter";
-export { WithIcon } from "./with-icon";
-export { WithPopover } from "./with-popover";
+export * from "./compound";
+export * from "./controlled";
+export * from "./default";
+export * from "./disabled";
+export * from "./disabled-item";
+export * from "./grid";
+export * from "./grouping";
+export * from "./horizontal";
+export * from "./image-explorer";
+export * from "./selection-extended";
+export * from "./selection-multiple";
+export * from "./selection-none";
+export * from "./transfer-list";
+export * from "./with-description";
+export * from "./with-filter";
+export * from "./with-icon";
+export * from "./with-popover";

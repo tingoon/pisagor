@@ -10,7 +10,7 @@ import multiple_selectionRaw from "./multiple-selection.ts?raw";
 import renameRaw from "./rename.ts?raw";
 import with_context_menuRaw from "./with-context-menu.ts?raw";
 
-export const imports = `import { TreeView } from "@pisagor/vue/tree-view";`;
+export const imports = `import { TreeView } from "@pisagor/vue";`;
 
 export const sources = {
   CheckboxTree: stripVueExample(checkbox_treeRaw),

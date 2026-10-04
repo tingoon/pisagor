@@ -4,7 +4,7 @@ import indeterminateRaw from "./indeterminate.astro?raw";
 import with_labelRaw from "./with-label.astro?raw";
 
 export const imports = `---
-import { Progress } from "@pisagor/astro/progress";
+import { Progress } from "@pisagor/astro";
 ---`;
 
 export const sources = {

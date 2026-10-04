@@ -1,13 +1,12 @@
 /** @jsxImportSource solid-js */
 
-import { Button, Card } from "@pisagor/solid";
+import { Button, Card, Timer } from "@pisagor/solid";
 import {
   ArrowCounterClockwiseIcon,
   GearIcon,
   PauseIcon,
   PlayIcon,
 } from "@pisagor/solid/icons";
-import { Timer } from "@pisagor/solid/timer";
 export function Pomodoro() {
   return (
     <Card class="rounded-3xl [--space:--spacing(6)]">

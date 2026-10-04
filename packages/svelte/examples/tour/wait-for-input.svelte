@@ -1,7 +1,13 @@
 <script lang="ts">
 import { waitForEvent } from "@ark-ui/svelte/tour";
-import { Button, Checkbox, Field, Input } from "@pisagor/svelte";
-import { Tour, type TourStepDetails } from "@pisagor/svelte/tour";
+import {
+  Button,
+  Checkbox,
+  Field,
+  Input,
+  Tour,
+  type TourStepDetails,
+} from "@pisagor/svelte";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

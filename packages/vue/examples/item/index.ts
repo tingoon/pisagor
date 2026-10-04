@@ -10,7 +10,7 @@ import variantsRaw from "./variants.vue?raw";
 import with_avatarRaw from "./with-avatar.vue?raw";
 import with_mediaRaw from "./with-media.vue?raw";
 
-export const imports = `import { Item } from "@pisagor/vue/item";`;
+export const imports = `import { Item } from "@pisagor/vue";`;
 
 export const sources = {
   CustomSpacing: stripVueExample(custom_spacingRaw),

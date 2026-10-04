@@ -6,8 +6,7 @@ import {
   PhTrash,
   PhX,
 } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
-import { ActionBar } from "../../src/components/action-bar";
+import { ActionBar, Button } from "@pisagor/vue";
 </script>
 
 <template>

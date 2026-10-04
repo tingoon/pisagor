@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { InputGroup } from "@pisagor/solid";
-import { ColorPicker } from "@pisagor/solid/color-picker";
+import { ColorPicker, InputGroup } from "@pisagor/solid";
 export function Invalid() {
   return (
     <ColorPicker defaultValue="#eb5e41" invalid>

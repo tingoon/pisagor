@@ -1,5 +1,4 @@
-import { Input } from "@pisagor/react";
-import { ColorPicker } from "@pisagor/react/color-picker";
+import { ColorPicker, Input } from "@pisagor/react";
 export function Disabled() {
   return (
     <ColorPicker defaultValue="#eb5e41" disabled>

@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { toast } from "@pisagor/svelte/toast";
+import { Button, toast } from "@pisagor/svelte";
 </script>
 
 <Button

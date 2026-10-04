@@ -7,7 +7,7 @@ import indeterminateRaw from "./indeterminate.tsx?raw";
 import invalidRaw from "./invalid.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 
-export const imports = `import { Checkbox } from "@pisagor/solid/checkbox";`;
+export const imports = `import { Checkbox } from "@pisagor/solid";`;
 
 export const sources = {
   CheckboxGroup: stripTsxExample(checkbox_groupRaw),
@@ -19,10 +19,10 @@ export const sources = {
   Variants: stripTsxExample(variantsRaw),
 } as const;
 
-export { CheckboxGroup } from "./checkbox-group";
-export { Controlled } from "./controlled";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { Indeterminate } from "./indeterminate";
-export { Invalid } from "./invalid";
-export { Variants } from "./variants";
+export * from "./checkbox-group";
+export * from "./controlled";
+export * from "./default";
+export * from "./disabled";
+export * from "./indeterminate";
+export * from "./invalid";
+export * from "./variants";

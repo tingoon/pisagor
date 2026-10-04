@@ -1,5 +1,4 @@
-import { Card } from "@pisagor/react";
-import { Calendar } from "@pisagor/react/calendar";
+import { Calendar, Card } from "@pisagor/react";
 export function MonthYearSelector() {
   return (
     <Card className="[--space:--spacing(2)]">

@@ -1,7 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte/button";
-import { Field } from "@pisagor/svelte/field";
-import { TagsInput } from "@pisagor/svelte/tags-input";
+import { Button, Field, TagsInput } from "@pisagor/svelte";
 
 let inputValue = $state("");
 </script>

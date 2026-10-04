@@ -1,5 +1,4 @@
-import { parseColor } from "@pisagor/react";
-import { ColorPicker } from "@pisagor/react/color-picker";
+import { ColorPicker, parseColor } from "@pisagor/react";
 import { useState } from "react";
 export function SwatchPickerControlled() {
   const swatches = ["#0485F7", "#EF4444", "#F59E0B", "#10B981"];

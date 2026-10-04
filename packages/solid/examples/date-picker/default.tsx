@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { DatePicker } from "@pisagor/solid/date-picker";
+import { DatePicker } from "@pisagor/solid";
 
 export function Default() {
   return (

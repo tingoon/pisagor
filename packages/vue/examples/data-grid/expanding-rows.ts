@@ -5,9 +5,9 @@ import type {
   ColumnDef,
   DataGridFeatures,
 } from "@pisagor/vue/data-grid";
+import { DataGrid } from "@pisagor/vue/data-grid";
 import type { ExpandedState, Row, RowData } from "@tanstack/vue-table";
 import { computed, defineComponent, h, ref } from "vue";
-import { DataGrid } from "../../src/data-grid";
 
 type DataGridRow<TData extends RowData> = Row<DataGridFeatures, TData>;
 

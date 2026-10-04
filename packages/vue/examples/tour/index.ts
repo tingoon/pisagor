@@ -11,7 +11,7 @@ import wait_for_clickRaw from "./wait-for-click.vue?raw";
 import wait_for_elementRaw from "./wait-for-element.vue?raw";
 import wait_for_inputRaw from "./wait-for-input.vue?raw";
 
-export const imports = `import { Tour } from "@pisagor/vue/tour";`;
+export const imports = `import { Tour } from "@pisagor/vue";`;
 
 export const sources = {
   Async: stripVueExample(asyncRaw),

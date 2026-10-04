@@ -1,6 +1,5 @@
 <script lang="ts">
-import { ScrollArea } from "@pisagor/svelte";
-import { BottomNavigation } from "@pisagor/svelte/bottom-navigation";
+import { BottomNavigation, ScrollArea } from "@pisagor/svelte";
 import BellIcon from "phosphor-svelte/lib/BellIcon";
 import HouseIcon from "phosphor-svelte/lib/HouseIcon";
 import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";

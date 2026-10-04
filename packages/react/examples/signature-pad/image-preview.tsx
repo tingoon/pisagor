@@ -1,5 +1,4 @@
-import { Field } from "@pisagor/react";
-import { SignaturePad } from "@pisagor/react/signature-pad";
+import { Field, SignaturePad } from "@pisagor/react";
 import { useState } from "react";
 export function ImagePreview() {
   const [imageUrl, setImageUrl] = useState<string | null>(null);

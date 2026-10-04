@@ -8,7 +8,7 @@ import multiple_panelsRaw from "./multiple-panels.vue?raw";
 import orientation_horizontalRaw from "./orientation-horizontal.vue?raw";
 import orientation_verticalRaw from "./orientation-vertical.vue?raw";
 
-export const imports = `import { Resizable } from "@pisagor/vue/resizable";`;
+export const imports = `import { Resizable } from "@pisagor/vue";`;
 
 export const sources = {
   Collapsible: stripVueExample(collapsibleRaw),

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { SignaturePad } from "@pisagor/vue";
 import { ref } from "vue";
-import { SignaturePad } from "../../src/components/signature-pad";
 
 const paths = ref([]);
 function updatePaths(..._args: unknown[]) {

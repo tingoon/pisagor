@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button } from "@pisagor/solid";
-import { ColorPicker } from "@pisagor/solid/color-picker";
+import { Button, ColorPicker } from "@pisagor/solid";
 export function PopoverDisabled() {
   return (
     <ColorPicker defaultValue="#eb5e41" disabled>

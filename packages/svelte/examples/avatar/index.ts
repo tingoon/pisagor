@@ -7,7 +7,7 @@ import fallbacksRaw from "./fallbacks.svelte?raw";
 import shapesRaw from "./shapes.svelte?raw";
 import sizesRaw from "./sizes.svelte?raw";
 
-export const imports = `import { Avatar } from "@pisagor/svelte/avatar";`;
+export const imports = `import { Avatar } from "@pisagor/svelte";`;
 
 export const sources = {
   AvatarGroup: stripSvelteExample(avatar_groupRaw),

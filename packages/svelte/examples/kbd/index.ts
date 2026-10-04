@@ -5,7 +5,7 @@ import variantsRaw from "./variants.svelte?raw";
 import with_buttonRaw from "./with-button.svelte?raw";
 import with_tooltipRaw from "./with-tooltip.svelte?raw";
 
-export const imports = `import { Kbd } from "@pisagor/svelte/kbd";`;
+export const imports = `import { Kbd } from "@pisagor/svelte";`;
 
 export const sources = {
   Default: stripSvelteExample(defaultRaw),

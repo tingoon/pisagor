@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Tabs } from "@pisagor/solid/tabs";
+import { Tabs } from "@pisagor/solid";
 import { numberedTabs } from "./helpers";
 
 export function OrientationHorizontal() {

@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Field } from "@pisagor/solid";
-import { Switch } from "@pisagor/solid/switch";
+import { Field, Switch } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
   const [checked, setChecked] = createSignal(false);

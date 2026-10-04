@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Field } from "@pisagor/solid";
-import { Textarea } from "@pisagor/solid/textarea";
+import { Field, Textarea } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
   const [message, setMessage] = createSignal("");

@@ -11,7 +11,7 @@ import wait_for_clickRaw from "./wait-for-click.svelte?raw";
 import wait_for_elementRaw from "./wait-for-element.svelte?raw";
 import wait_for_inputRaw from "./wait-for-input.svelte?raw";
 
-export const imports = `import { Tour } from "@pisagor/svelte/tour";`;
+export const imports = `import { Tour } from "@pisagor/svelte";`;
 
 export const sources = {
   Async: stripSvelteExample(asyncRaw),

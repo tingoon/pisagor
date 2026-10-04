@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Avatar, AvatarGroup } from "../../src/components/avatar";
+import { Avatar, AvatarGroup } from "@pisagor/vue";
 
 const users = [
   {

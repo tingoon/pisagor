@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Alert } from "@pisagor/solid/alert";
+import { Alert } from "@pisagor/solid";
 import { SparkleIcon } from "@pisagor/solid/icons";
 
 export function WithIcon() {

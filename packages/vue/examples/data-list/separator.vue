@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { DataList } from "../../src/components/data-list";
+import { DataList } from "@pisagor/vue";
 
 const data = [
   { label: "First name", value: "Jane" },

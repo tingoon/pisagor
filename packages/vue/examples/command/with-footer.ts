@@ -5,10 +5,11 @@ import {
   PhArrowDown,
   PhArrowUp,
 } from "@phosphor-icons/vue";
-import { Kbd } from "@pisagor/vue";
+import { Command, Kbd } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Command } from "../../src/components/command";
-import type { ArkPart } from "../../src/internal/types";
+
+type ArkPart = Parameters<typeof h>[0];
+
 export default defineComponent({
   name: "WithFooter",
   setup() {

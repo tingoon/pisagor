@@ -5,9 +5,7 @@ import {
   PhPencilSimple,
   PhTrash,
 } from "@phosphor-icons/vue";
-
-import { Button, DropdownMenu } from "@pisagor/vue";
-import { Table } from "../../src/components/table";
+import { Button, DropdownMenu, Table } from "@pisagor/vue";
 import { workspaceUsers } from "./helpers";
 </script>
 

@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Accordion } from "@pisagor/solid/accordion";
+import { Accordion } from "@pisagor/solid";
 import { faqItems } from "./helpers";
 
 export function Default() {

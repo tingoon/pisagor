@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhFolder } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
-import { FileUpload } from "../../src/components/file-upload";
+import { Button, FileUpload } from "@pisagor/vue";
 </script>
 
 <template>

@@ -8,7 +8,7 @@ import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 import with_iconsRaw from "./with-icons.tsx?raw";
 
-export const imports = `import { Tabs } from "@pisagor/solid/tabs";`;
+export const imports = `import { Tabs } from "@pisagor/solid";`;
 
 export const sources = {
   Compound: stripTsxExample(compoundRaw),
@@ -21,11 +21,11 @@ export const sources = {
   WithIcons: stripTsxExample(with_iconsRaw),
 } as const;
 
-export { Compound } from "./compound";
-export { Controlled } from "./controlled";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { OrientationHorizontal } from "./orientation-horizontal";
-export { OrientationVertical } from "./orientation-vertical";
-export { Variants } from "./variants";
-export { WithIcons } from "./with-icons";
+export * from "./compound";
+export * from "./controlled";
+export * from "./default";
+export * from "./disabled";
+export * from "./orientation-horizontal";
+export * from "./orientation-vertical";
+export * from "./variants";
+export * from "./with-icons";

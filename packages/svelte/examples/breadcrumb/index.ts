@@ -6,7 +6,7 @@ import defaultRaw from "./default.svelte?raw";
 import with_linkRaw from "./with-link.svelte?raw";
 import with_menuRaw from "./with-menu.svelte?raw";
 
-export const imports = `import { Breadcrumb } from "@pisagor/svelte/breadcrumb";`;
+export const imports = `import { Breadcrumb } from "@pisagor/svelte";`;
 
 export const sources = {
   Collapsed: stripSvelteExample(collapsedRaw),

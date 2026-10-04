@@ -5,7 +5,7 @@ import paddingRaw from "./padding.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_form_controlsRaw from "./with-form-controls.svelte?raw";
 
-export const imports = `import { Surface } from "@pisagor/svelte/surface";`;
+export const imports = `import { Surface } from "@pisagor/svelte";`;
 
 export const sources = {
   Default: stripSvelteExample(defaultRaw),

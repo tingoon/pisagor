@@ -12,7 +12,7 @@ import sizesRaw from "./sizes.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_scrollRaw from "./with-scroll.svelte?raw";
 
-export const imports = `import { Select } from "@pisagor/svelte/select";`;
+export const imports = `import { Select } from "@pisagor/svelte";`;
 
 export const sources = {
   Compound: stripSvelteExample(compoundRaw),

@@ -8,7 +8,7 @@ import fallbacksRaw from "./fallbacks.vue?raw";
 import shapesRaw from "./shapes.vue?raw";
 import sizesRaw from "./sizes.vue?raw";
 
-export const imports = `import { Avatar } from "@pisagor/vue/avatar";`;
+export const imports = `import { Avatar } from "@pisagor/vue";`;
 
 export const sources = {
   Compound: stripVueExample(compoundRaw),

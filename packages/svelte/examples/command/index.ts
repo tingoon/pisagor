@@ -6,7 +6,7 @@ import shortcutsRaw from "./shortcuts.svelte?raw";
 import with_dialogRaw from "./with-dialog.svelte?raw";
 import with_footerRaw from "./with-footer.svelte?raw";
 
-export const imports = `import { Command } from "@pisagor/svelte/command";`;
+export const imports = `import { Command } from "@pisagor/svelte";`;
 
 export const sources = {
   Default: stripSvelteExample(defaultRaw),

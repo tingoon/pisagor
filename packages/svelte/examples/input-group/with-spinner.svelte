@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Spinner } from "@pisagor/svelte";
-import { InputGroup } from "@pisagor/svelte/input-group";
+import { InputGroup, Spinner } from "@pisagor/svelte";
 </script>
 
 <InputGroup data-disabled>

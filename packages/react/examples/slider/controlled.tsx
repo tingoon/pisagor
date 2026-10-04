@@ -1,5 +1,4 @@
-import { Field } from "@pisagor/react";
-import { Slider } from "@pisagor/react/slider";
+import { Field, Slider } from "@pisagor/react";
 import { useState } from "react";
 export function Controlled() {
   const [value, setValue] = useState<number[]>([40]);

@@ -1,7 +1,6 @@
 <script lang="ts">
 import { createListCollection } from "@ark-ui/svelte/collection";
-import { Select } from "@pisagor/svelte";
-import { Field } from "@pisagor/svelte/field";
+import { Field, Select } from "@pisagor/svelte";
 
 const collection = createListCollection({
     items: ["Brazil", "Mexico", "Ireland"],

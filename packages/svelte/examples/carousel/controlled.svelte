@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Carousel } from "@pisagor/svelte/carousel";
+import { Carousel } from "@pisagor/svelte";
 import { numberedSlides } from "./helpers";
 
 let page = $state(0);

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { File } from "../../src/components/file";
+import { File } from "@pisagor/vue";
 </script>
 
 <template>

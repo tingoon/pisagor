@@ -23,7 +23,7 @@ import pRaw from "./p.tsx?raw";
 import separatorRaw from "./separator.tsx?raw";
 import smallRaw from "./small.tsx?raw";
 
-export const imports = `import { Prose } from "@pisagor/react/prose";`;
+export const imports = `import { Prose } from "@pisagor/react";`;
 
 export const sources = {
   A: stripTsxExample(aRaw),
@@ -51,26 +51,26 @@ export const sources = {
   Small: stripTsxExample(smallRaw),
 } as const;
 
-export { A } from "./a";
-export { Blockquote } from "./blockquote";
-export { Default } from "./default";
-export { Details } from "./details";
-export { Dl } from "./dl";
-export { H1 } from "./h1";
-export { H2 } from "./h2";
-export { H3 } from "./h3";
-export { H4 } from "./h4";
-export { H5 } from "./h5";
-export { H6 } from "./h6";
-export { Html } from "./html";
-export { HtmlTable } from "./html-table";
-export { InlineCode } from "./inline-code";
-export { Kbd } from "./kbd";
-export { List } from "./list";
-export { Mark } from "./mark";
-export { Media } from "./media";
-export { NotProse } from "./not-prose";
-export { Ol } from "./ol";
-export { P } from "./p";
-export { Separator } from "./separator";
-export { Small } from "./small";
+export * from "./a";
+export * from "./blockquote";
+export * from "./default";
+export * from "./details";
+export * from "./dl";
+export * from "./h1";
+export * from "./h2";
+export * from "./h3";
+export * from "./h4";
+export * from "./h5";
+export * from "./h6";
+export * from "./html";
+export * from "./html-table";
+export * from "./inline-code";
+export * from "./kbd";
+export * from "./list";
+export * from "./mark";
+export * from "./media";
+export * from "./not-prose";
+export * from "./ol";
+export * from "./p";
+export * from "./separator";
+export * from "./small";

@@ -15,8 +15,8 @@ export const sources = {
   Invalid: stripTsxExample(invalidRaw),
 } as const;
 
-export { Compound } from "./compound";
-export { Controlled } from "./controlled";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { Invalid } from "./invalid";
+export * from "./compound";
+export * from "./controlled";
+export * from "./default";
+export * from "./disabled";
+export * from "./invalid";

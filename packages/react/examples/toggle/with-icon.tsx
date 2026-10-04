@@ -1,5 +1,5 @@
 import { TextBIcon } from "@phosphor-icons/react";
-import { Toggle } from "@pisagor/react/toggle";
+import { Toggle } from "@pisagor/react";
 
 export function WithIcon() {
   return (

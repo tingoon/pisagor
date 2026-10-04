@@ -1,5 +1,5 @@
 <script lang="ts">
-import { useTourContext } from "@pisagor/svelte/tour";
+import { useTourContext } from "@pisagor/svelte";
 
 const { tour } = useTourContext();
 </script>

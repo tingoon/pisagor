@@ -9,7 +9,7 @@ import nestedRaw from "./nested.svelte?raw";
 import placementsRaw from "./placements.svelte?raw";
 import scroll_areaRaw from "./scroll-area.svelte?raw";
 
-export const imports = `import { Popover } from "@pisagor/svelte/popover";`;
+export const imports = `import { Popover } from "@pisagor/svelte";`;
 
 export const sources = {
   Anchor: stripSvelteExample(anchorRaw),

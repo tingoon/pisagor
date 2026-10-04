@@ -1,5 +1,4 @@
-import { Button, Card, Clipboard } from "@pisagor/react";
-import { Collapsible } from "@pisagor/react/collapsible";
+import { Button, Card, Clipboard, Collapsible } from "@pisagor/react";
 export function Nested() {
   return (
     <Card className="w-80">

@@ -10,7 +10,7 @@ import number_storyRaw from "./number-story.svelte?raw";
 import relative_timeRaw from "./relative-time.svelte?raw";
 import relative_time_shortRaw from "./relative-time-short.svelte?raw";
 
-export const imports = `import { Format } from "@pisagor/svelte/format";`;
+export const imports = `import { Format } from "@pisagor/svelte";`;
 
 export const sources = {
   Byte: stripSvelteExample(byteRaw),

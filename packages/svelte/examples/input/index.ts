@@ -8,7 +8,7 @@ import invalidRaw from "./invalid.svelte?raw";
 import sizesRaw from "./sizes.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 
-export const imports = `import { Input } from "@pisagor/svelte/input";`;
+export const imports = `import { Input } from "@pisagor/svelte";`;
 
 export const sources = {
   Clearable: stripSvelteExample(clearableRaw),

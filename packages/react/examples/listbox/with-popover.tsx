@@ -1,8 +1,7 @@
 import { useListCollection } from "@ark-ui/react/collection";
 import { useFilter } from "@ark-ui/react/locale";
 import { CaretUpDownIcon } from "@phosphor-icons/react";
-import { Button, Input, Popover } from "@pisagor/react";
-import { Listbox } from "@pisagor/react/listbox";
+import { Button, Input, Listbox, Popover } from "@pisagor/react";
 import { useState } from "react";
 export function WithPopover() {
   const [search, setSearch] = useState("");

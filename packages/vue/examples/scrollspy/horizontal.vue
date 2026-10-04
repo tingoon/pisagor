@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { Button, ScrollArea } from "@pisagor/vue";
+import { Button, ScrollArea, Scrollspy } from "@pisagor/vue";
 import { ref } from "vue";
-import { Scrollspy } from "../../src/components/scrollspy";
 
 const parentRef = ref<HTMLElement | null>(null);
 const horizontalSections = [

@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhArrowCounterClockwise, PhPlay } from "@phosphor-icons/vue";
-import { Button, Card } from "@pisagor/vue";
-import { Timer } from "../../src/components/timer";
+import { Button, Card, Timer } from "@pisagor/vue";
 </script>
 
 <template>

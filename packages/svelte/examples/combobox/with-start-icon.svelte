@@ -1,8 +1,7 @@
 <script lang="ts">
 import { useListCollection } from "@ark-ui/svelte/collection";
 import { useFilter } from "@ark-ui/svelte/locale";
-import { InputGroup } from "@pisagor/svelte";
-import { Combobox } from "@pisagor/svelte/combobox";
+import { Combobox, InputGroup } from "@pisagor/svelte";
 import AppleLogoIcon from "phosphor-svelte/lib/AppleLogoIcon";
 
 const initialItems = [

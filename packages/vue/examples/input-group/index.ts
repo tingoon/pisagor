@@ -15,7 +15,7 @@ import with_spinnerRaw from "./with-spinner.vue?raw";
 import with_textRaw from "./with-text.vue?raw";
 import with_textareaRaw from "./with-textarea.vue?raw";
 
-export const imports = `import { InputGroup } from "@pisagor/vue/input-group";`;
+export const imports = `import { InputGroup } from "@pisagor/vue";`;
 
 export const sources = {
   AlignBlockEnd: stripVueExample(align_block_endRaw),

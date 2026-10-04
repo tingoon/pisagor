@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Sortable } from "../../src/components/sortable";
+import { Sortable } from "@pisagor/vue";
 
 const _labels: Record<string, string> = {
   a: "Design system tokens",

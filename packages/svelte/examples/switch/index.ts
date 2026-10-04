@@ -6,7 +6,7 @@ import invalidRaw from "./invalid.svelte?raw";
 import sizesRaw from "./sizes.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 
-export const imports = `import { Switch } from "@pisagor/svelte/switch";`;
+export const imports = `import { Switch } from "@pisagor/svelte";`;
 
 export const sources = {
   Controlled: stripSvelteExample(controlledRaw),

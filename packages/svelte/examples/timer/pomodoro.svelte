@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button, Card } from "@pisagor/svelte";
-import { Timer } from "@pisagor/svelte/timer";
+import { Button, Card, Timer } from "@pisagor/svelte";
 import ArrowCounterClockwiseIcon from "phosphor-svelte/lib/ArrowCounterClockwiseIcon";
 import GearIcon from "phosphor-svelte/lib/GearIcon";
 import PauseIcon from "phosphor-svelte/lib/PauseIcon";

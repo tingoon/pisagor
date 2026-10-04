@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { InputOTP } from "@pisagor/solid/input-otp";
+import { InputOTP } from "@pisagor/solid";
 
 export function CustomSize() {
   return (

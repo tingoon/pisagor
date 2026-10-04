@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid";
-import { Clipboard } from "@pisagor/solid/clipboard";
+import { Button, Clipboard } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
   const [value, setValue] = createSignal("https://example.com/docs");

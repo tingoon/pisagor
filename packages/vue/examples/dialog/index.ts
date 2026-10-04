@@ -8,7 +8,7 @@ import no_close_buttonRaw from "./no-close-button.ts?raw";
 import non_modalRaw from "./non-modal.ts?raw";
 import scroll_areaRaw from "./scroll-area.ts?raw";
 
-export const imports = `import { Dialog } from "@pisagor/vue/dialog";`;
+export const imports = `import { Dialog } from "@pisagor/vue";`;
 
 export const sources = {
   CloseBehavior: stripVueExample(close_behaviorRaw),

@@ -1,7 +1,6 @@
 <script lang="ts">
 import { waitForElement, waitForEvent } from "@ark-ui/svelte/tour";
-import { Button } from "@pisagor/svelte";
-import { Tour, type TourStepDetails } from "@pisagor/svelte/tour";
+import { Button, Tour, type TourStepDetails } from "@pisagor/svelte";
 import PlusIcon from "phosphor-svelte/lib/PlusIcon";
 
 const steps: TourStepDetails[] = [

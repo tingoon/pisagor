@@ -1,6 +1,5 @@
 import { ArrowUpIcon, PlusIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react";
-import { InputGroup } from "@pisagor/react/input-group";
+import { Button, InputGroup } from "@pisagor/react";
 export function WithTextarea() {
   return (
     <InputGroup>

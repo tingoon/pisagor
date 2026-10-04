@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Alert } from "@pisagor/svelte/alert";
+import { Alert } from "@pisagor/svelte";
 import SparkleIcon from "phosphor-svelte/lib/SparkleIcon";
 </script>
 

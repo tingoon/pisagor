@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Card } from "@pisagor/svelte/card";
+import { Button, Card } from "@pisagor/svelte";
 import CurrencyDollarIcon from "phosphor-svelte/lib/CurrencyDollarIcon";
 </script>
 

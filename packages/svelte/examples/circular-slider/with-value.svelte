@@ -1,5 +1,5 @@
 <script lang="ts">
-import { CircularSlider } from "@pisagor/svelte/circular-slider";
+import { CircularSlider } from "@pisagor/svelte";
 import ThermometerIcon from "phosphor-svelte/lib/ThermometerIcon";
 </script>
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Avatar } from "@pisagor/svelte/avatar";
+import { Avatar } from "@pisagor/svelte";
 import UserIcon from "phosphor-svelte/lib/UserIcon";
 </script>
 

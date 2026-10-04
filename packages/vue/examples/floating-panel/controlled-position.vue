@@ -7,9 +7,8 @@ import {
   PhGearSix,
   PhX,
 } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
+import { Button, FloatingPanel } from "@pisagor/vue";
 import { ref } from "vue";
-import { FloatingPanel } from "../../src/components/floating-panel";
 
 const position = ref({ x: 200, y: 200 });
 function onPositionChange(details: { position: { x: number; y: number } }) {

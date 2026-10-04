@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { AvatarGroup } from "@pisagor/solid/avatar";
+import { AvatarGroup } from "@pisagor/solid";
 
 const users = [
   {

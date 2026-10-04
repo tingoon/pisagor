@@ -2,7 +2,7 @@ import { stripAstroExample } from "@pisagor/utils";
 import defaultRaw from "./default.astro?raw";
 
 export const imports = `---
-import { EmptyState } from "@pisagor/astro/empty-state";
+import { EmptyState } from "@pisagor/astro";
 ---`;
 
 export const sources = {

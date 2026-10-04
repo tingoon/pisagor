@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhDownloadSimple } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
-import { File } from "../../src/components/file";
+import { Button, File } from "@pisagor/vue";
 </script>
 
 <template>

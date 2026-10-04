@@ -1,5 +1,5 @@
+import { AppShell } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { AppShell } from "../../src/components/app-shell";
 import { mainContent, regionTitle } from "./helpers";
 
 export default defineComponent({

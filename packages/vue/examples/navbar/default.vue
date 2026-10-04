@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Navbar } from "../../src/components/navbar";
+import { Navbar } from "@pisagor/vue";
 </script>
 
 <template>

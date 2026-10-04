@@ -1,7 +1,7 @@
 import { stripVueExample } from "@pisagor/utils";
 import defaultRaw from "./default.ts?raw";
 
-export const imports = `import { Sidebar } from "@pisagor/vue/sidebar";`;
+export const imports = `import { Sidebar } from "@pisagor/vue";`;
 
 export const sources = {
   Default: stripVueExample(defaultRaw),

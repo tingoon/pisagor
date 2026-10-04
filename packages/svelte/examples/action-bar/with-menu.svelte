@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button, DropdownMenu } from "@pisagor/svelte";
-import { ActionBar } from "@pisagor/svelte/action-bar";
+import { ActionBar, Button, DropdownMenu } from "@pisagor/svelte";
 import {
   ArchiveIcon,
   CopyIcon,

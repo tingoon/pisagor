@@ -1,6 +1,6 @@
 import { PhArchive, PhHouse, PhMagnifyingGlass } from "@phosphor-icons/vue";
+import { Menu } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Menu } from "../../src/components/menu";
 
 export default defineComponent({
   name: "WithGroups",

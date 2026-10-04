@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Tabs } from "@pisagor/svelte/tabs";
+import { Button, Tabs } from "@pisagor/svelte";
 
 let value = $state("profile");
 </script>

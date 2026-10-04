@@ -4,7 +4,7 @@ import controlled_sizeRaw from "./controlled-size.vue?raw";
 import custom_spacingRaw from "./custom-spacing.vue?raw";
 import defaultRaw from "./default.vue?raw";
 
-export const imports = `import { FloatingPanel } from "@pisagor/vue/floating-panel";`;
+export const imports = `import { FloatingPanel } from "@pisagor/vue";`;
 
 export const sources = {
   ControlledPosition: stripVueExample(controlled_positionRaw),

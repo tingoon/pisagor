@@ -1,8 +1,7 @@
 <script lang="ts">
-import { Checkbox } from "@pisagor/svelte";
+import { Checkbox, Table } from "@pisagor/svelte";
 import type { VisibilityState } from "@pisagor/svelte/data-grid";
 import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import { Table } from "@pisagor/svelte/table";
 import { allUsers, userColumns } from "./helpers";
 
 const columns = [...userColumns];

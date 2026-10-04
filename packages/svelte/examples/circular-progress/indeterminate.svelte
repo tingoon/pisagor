@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Field } from "@pisagor/svelte";
-import { CircularProgress } from "@pisagor/svelte/circular-progress";
+import { CircularProgress, Field } from "@pisagor/svelte";
 </script>
 
 <Field>

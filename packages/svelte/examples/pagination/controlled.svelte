@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Pagination } from "@pisagor/svelte/pagination";
+import { Pagination } from "@pisagor/svelte";
 
 let page = $state(1);
 

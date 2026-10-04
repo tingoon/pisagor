@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { PhMinus, PhPlus } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
+import { Button, CircularProgress } from "@pisagor/vue";
 import { ref } from "vue";
-import { CircularProgress } from "../../src/components/circular-progress";
 
 const value = ref(55);
 </script>

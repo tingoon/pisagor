@@ -7,7 +7,7 @@ import videoRaw from "./video.astro?raw";
 import widescreenRaw from "./widescreen.astro?raw";
 
 export const imports = `---
-import { AspectRatio } from "@pisagor/astro/aspect-ratio";
+import { AspectRatio } from "@pisagor/astro";
 ---`;
 
 export const sources = {

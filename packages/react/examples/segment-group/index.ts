@@ -10,7 +10,7 @@ import orientation_horizontalRaw from "./orientation-horizontal.tsx?raw";
 import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 
-export const imports = `import { SegmentGroup } from "@pisagor/react/segment-group";`;
+export const imports = `import { SegmentGroup } from "@pisagor/react";`;
 
 export const sources = {
   Compound: stripTsxExample(compoundRaw),
@@ -25,13 +25,13 @@ export const sources = {
   Variants: stripTsxExample(variantsRaw),
 } as const;
 
-export { Compound } from "./compound";
-export { Controlled } from "./controlled";
-export { CustomIndicator } from "./custom-indicator";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { DisabledItem } from "./disabled-item";
-export { IndicatorOnHover } from "./indicator-on-hover";
-export { OrientationHorizontal } from "./orientation-horizontal";
-export { OrientationVertical } from "./orientation-vertical";
-export { Variants } from "./variants";
+export * from "./compound";
+export * from "./controlled";
+export * from "./custom-indicator";
+export * from "./default";
+export * from "./disabled";
+export * from "./disabled-item";
+export * from "./indicator-on-hover";
+export * from "./orientation-horizontal";
+export * from "./orientation-vertical";
+export * from "./variants";

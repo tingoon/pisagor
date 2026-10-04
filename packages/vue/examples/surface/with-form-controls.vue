@@ -1,7 +1,14 @@
 <script lang="ts" setup>
-import { Checkbox, Field, Input, Select, Switch, Textarea } from "@pisagor/vue";
+import {
+  Checkbox,
+  Field,
+  Input,
+  Select,
+  Surface,
+  Switch,
+  Textarea,
+} from "@pisagor/vue";
 import { defineComponent } from "vue";
-import { Surface } from "../../src/components/surface";
 
 const FormControlsDemo = defineComponent({
   components: { Checkbox, Field, Input, Select, Switch, Textarea },

@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Card } from "@pisagor/solid";
-import { Timer } from "@pisagor/solid/timer";
+import { Card, Timer } from "@pisagor/solid";
 export function CountdownDate() {
   const formatDate = (date: Date) =>
     date.toLocaleDateString(undefined, { dateStyle: "medium" });

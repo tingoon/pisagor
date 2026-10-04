@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button, Input } from "@pisagor/solid";
-import { ColorPicker } from "@pisagor/solid/color-picker";
+import { Button, ColorPicker, Input } from "@pisagor/solid";
 export function PopoverWithChannelEditing() {
   return (
     <ColorPicker format="rgba">

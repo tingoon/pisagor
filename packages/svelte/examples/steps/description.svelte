@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Steps } from "@pisagor/svelte/steps";
+import { Steps } from "@pisagor/svelte";
 
 const items = [
     { description: "Personal", title: "Info" },

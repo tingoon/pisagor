@@ -1,6 +1,5 @@
-import { createTreeCollection } from "@pisagor/react";
-import type { NodeProviderProps } from "@pisagor/react/tree-view";
-import { TreeView } from "@pisagor/react/tree-view";
+import type { NodeProviderProps } from "@pisagor/react";
+import { createTreeCollection, TreeView } from "@pisagor/react";
 import { useState } from "react";
 export function Rename() {
   const initialCollection = createTreeCollection({

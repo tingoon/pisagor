@@ -1,5 +1,5 @@
 <script lang="ts">
-import { type TreeNodeType, TreeView } from "@pisagor/svelte/tree-view";
+import { type TreeNodeType, TreeView } from "@pisagor/svelte";
 import ArrowSquareOutIcon from "phosphor-svelte/lib/ArrowSquareOutIcon";
 import LinkIcon from "phosphor-svelte/lib/LinkIcon";
 import TreeNodeLink from "./tree-node-link.svelte";

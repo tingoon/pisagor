@@ -1,6 +1,6 @@
 import { PhArrowUpRight } from "@phosphor-icons/vue";
+import { Announcement } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Announcement } from "../../src/components/announcement";
 
 export default defineComponent({
   name: "WithoutBadge",

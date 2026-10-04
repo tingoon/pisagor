@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { SwitchField } from "../../src/fields/switch-field";
+import { SwitchField } from "@pisagor/vue-form";
 </script>
 
 <template>

@@ -11,7 +11,7 @@ import wait_for_clickRaw from "./wait-for-click.tsx?raw";
 import wait_for_elementRaw from "./wait-for-element.tsx?raw";
 import wait_for_inputRaw from "./wait-for-input.tsx?raw";
 
-export const imports = `import { Tour } from "@pisagor/react/tour";`;
+export const imports = `import { Tour } from "@pisagor/react";`;
 
 export const sources = {
   Async: stripTsxExample(asyncRaw),
@@ -27,14 +27,14 @@ export const sources = {
   WaitForInput: stripTsxExample(wait_for_inputRaw),
 } as const;
 
-export { Async } from "./async";
-export { CustomSpacing } from "./custom-spacing";
-export { Default } from "./default";
-export { Events } from "./events";
-export { KeyboardNavigation } from "./keyboard-navigation";
-export { Progress } from "./progress";
-export { Skip } from "./skip";
-export { StepTypes } from "./step-types";
-export { WaitForClick } from "./wait-for-click";
-export { WaitForElement } from "./wait-for-element";
-export { WaitForInput } from "./wait-for-input";
+export * from "./async";
+export * from "./custom-spacing";
+export * from "./default";
+export * from "./events";
+export * from "./keyboard-navigation";
+export * from "./progress";
+export * from "./skip";
+export * from "./step-types";
+export * from "./wait-for-click";
+export * from "./wait-for-element";
+export * from "./wait-for-input";

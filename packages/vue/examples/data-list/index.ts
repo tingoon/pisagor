@@ -6,7 +6,7 @@ import orientation_horizontalRaw from "./orientation-horizontal.vue?raw";
 import orientation_verticalRaw from "./orientation-vertical.vue?raw";
 import separatorRaw from "./separator.vue?raw";
 
-export const imports = `import { DataList } from "@pisagor/vue/data-list";`;
+export const imports = `import { DataList } from "@pisagor/vue";`;
 
 export const sources = {
   Compound: stripVueExample(compoundRaw),

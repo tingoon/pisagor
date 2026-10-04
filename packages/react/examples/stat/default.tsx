@@ -1,4 +1,4 @@
-import { Stat } from "@pisagor/react/stat";
+import { Stat } from "@pisagor/react";
 
 export function Default() {
   return (

@@ -1,4 +1,4 @@
-import { OtpField } from "../../src/fields/otp-field";
+import { OtpField } from "@pisagor/react-form";
 
 export function Invalid() {
   return (

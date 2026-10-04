@@ -6,7 +6,7 @@ import number_currencyRaw from "./number-currency.astro?raw";
 import relative_timeRaw from "./relative-time.astro?raw";
 
 export const imports = `---
-import { Format } from "@pisagor/astro/format";
+import { Format } from "@pisagor/astro";
 ---`;
 
 export const sources = {

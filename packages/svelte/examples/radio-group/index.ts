@@ -7,7 +7,7 @@ import invalidRaw from "./invalid.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_descriptionRaw from "./with-description.svelte?raw";
 
-export const imports = `import { RadioGroup } from "@pisagor/svelte/radio-group";`;
+export const imports = `import { RadioGroup } from "@pisagor/svelte";`;
 
 export const sources = {
   Compound: stripSvelteExample(compoundRaw),

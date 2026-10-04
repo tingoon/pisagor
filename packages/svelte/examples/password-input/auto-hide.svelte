@@ -1,5 +1,5 @@
 <script lang="ts">
-import { PasswordInput } from "@pisagor/svelte/password-input";
+import { PasswordInput } from "@pisagor/svelte";
 
 let visible = $state(false);
 

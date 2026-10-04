@@ -1,4 +1,4 @@
-import { NumberInput } from "@pisagor/react/number-input";
+import { NumberInput } from "@pisagor/react";
 import { useState } from "react";
 
 export function Controlled() {

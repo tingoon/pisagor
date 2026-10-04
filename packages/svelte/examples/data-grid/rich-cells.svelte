@@ -1,11 +1,11 @@
 <script lang="ts">
+import { Table } from "@pisagor/svelte";
 /**
  * JSX Avatar/Badge cell factories from React/Solid do not port cleanly into
  * ColumnDef `cell` for Svelte (need components / snippets). This example keeps
  * the same columns/data shape; compose rich UI in the row template when needed.
  */
 import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import { Table } from "@pisagor/svelte/table";
 import { allUsers } from "./helpers";
 
 const columns = [

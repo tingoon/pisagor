@@ -23,7 +23,7 @@ import pRaw from "./p.svelte?raw";
 import separatorRaw from "./separator.svelte?raw";
 import smallRaw from "./small.svelte?raw";
 
-export const imports = `import { Prose } from "@pisagor/svelte/prose";`;
+export const imports = `import { Prose } from "@pisagor/svelte";`;
 
 export const sources = {
   A: stripSvelteExample(aRaw),

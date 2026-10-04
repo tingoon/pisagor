@@ -1,4 +1,4 @@
-import { JsonTreeView } from "@pisagor/react/json-tree-view";
+import { JsonTreeView } from "@pisagor/react";
 import { defaultData } from "./helpers";
 
 export function Default() {

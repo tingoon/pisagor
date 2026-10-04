@@ -30,7 +30,7 @@ import swatch_picker_custom_sizeRaw from "./swatch-picker-custom-size.tsx?raw";
 import swatch_picker_disabledRaw from "./swatch-picker-disabled.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 
-export const imports = `import { ColorPicker } from "@pisagor/solid/color-picker";`;
+export const imports = `import { ColorPicker } from "@pisagor/solid";`;
 
 export const sources = {
   AreaChannels: stripTsxExample(area_channelsRaw),
@@ -67,33 +67,33 @@ export const sources = {
   Variants: stripTsxExample(variantsRaw),
 } as const;
 
-export { AreaChannels } from "./area-channels";
-export { AreaDots } from "./area-dots";
-export { Clearable } from "./clearable";
-export { CustomSpacing } from "./custom-spacing";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { InputChannel } from "./input-channel";
-export { InputCompact } from "./input-compact";
-export { InputControlled } from "./input-controlled";
-export { InputWithPopover } from "./input-with-popover";
-export { InputWithSwatchPreview } from "./input-with-swatch-preview";
-export { Invalid } from "./invalid";
-export { PopoverDisabled } from "./popover-disabled";
-export { PopoverSlidersOnly } from "./popover-sliders-only";
-export { PopoverWithChannelEditing } from "./popover-with-channel-editing";
-export { PopoverWithSwatchPicker } from "./popover-with-swatch-picker";
-export { SliderAlphaChannel } from "./slider-alpha-channel";
-export { SliderControlled } from "./slider-controlled";
-export { SliderDisabled } from "./slider-disabled";
-export { SliderHsbaChannels } from "./slider-hsba-channels";
-export { SliderHslChannels } from "./slider-hsl-channels";
-export { SliderRgbChannels } from "./slider-rgb-channels";
-export { SliderVertical } from "./slider-vertical";
-export { SwatchPicker } from "./swatch-picker";
-export { SwatchPickerControlled } from "./swatch-picker-controlled";
-export { SwatchPickerCustomIndicator } from "./swatch-picker-custom-indicator";
-export { SwatchPickerCustomRadius } from "./swatch-picker-custom-radius";
-export { SwatchPickerCustomSize } from "./swatch-picker-custom-size";
-export { SwatchPickerDisabled } from "./swatch-picker-disabled";
-export { Variants } from "./variants";
+export * from "./area-channels";
+export * from "./area-dots";
+export * from "./clearable";
+export * from "./custom-spacing";
+export * from "./default";
+export * from "./disabled";
+export * from "./input-channel";
+export * from "./input-compact";
+export * from "./input-controlled";
+export * from "./input-with-popover";
+export * from "./input-with-swatch-preview";
+export * from "./invalid";
+export * from "./popover-disabled";
+export * from "./popover-sliders-only";
+export * from "./popover-with-channel-editing";
+export * from "./popover-with-swatch-picker";
+export * from "./slider-alpha-channel";
+export * from "./slider-controlled";
+export * from "./slider-disabled";
+export * from "./slider-hsba-channels";
+export * from "./slider-hsl-channels";
+export * from "./slider-rgb-channels";
+export * from "./slider-vertical";
+export * from "./swatch-picker";
+export * from "./swatch-picker-controlled";
+export * from "./swatch-picker-custom-indicator";
+export * from "./swatch-picker-custom-radius";
+export * from "./swatch-picker-custom-size";
+export * from "./swatch-picker-disabled";
+export * from "./variants";

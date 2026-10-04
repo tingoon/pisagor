@@ -6,8 +6,7 @@ import {
   PencilIcon,
   ShareIcon,
 } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react";
-import { DropdownMenu } from "@pisagor/react/dropdown-menu";
+import { Button, DropdownMenu } from "@pisagor/react";
 export function QuickItem() {
   return (
     <DropdownMenu>

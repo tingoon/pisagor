@@ -1,5 +1,5 @@
 import { useFilter, useListCollection } from "@ark-ui/react";
-import { Combobox } from "@pisagor/react/combobox";
+import { Combobox } from "@pisagor/react";
 
 export function Variants() {
   const initialItems = [

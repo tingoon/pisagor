@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Textarea } from "@pisagor/vue";
-import { Field } from "../../src/components/field";
+import { Field, Textarea } from "@pisagor/vue";
 </script>
 
 <template>

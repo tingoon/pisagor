@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Button, Checkbox, Field, Input } from "@pisagor/vue";
-import { Tour } from "../../src/components/tour";
+import { Button, Checkbox, Field, Input, Tour } from "@pisagor/vue";
 
 const steps = [
   {

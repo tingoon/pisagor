@@ -12,7 +12,7 @@ import on_surfaceRaw from "./on-surface.vue?raw";
 import readonlyRaw from "./readonly.vue?raw";
 import testimonialRaw from "./testimonial.vue?raw";
 
-export const imports = `import { Rating } from "@pisagor/vue/rating";`;
+export const imports = `import { Rating } from "@pisagor/vue";`;
 
 export const sources = {
   Controlled: stripVueExample(controlledRaw),

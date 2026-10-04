@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { CircularProgress } from "../../src/components/circular-progress";
+import { CircularProgress } from "@pisagor/vue";
 </script>
 
 <template>

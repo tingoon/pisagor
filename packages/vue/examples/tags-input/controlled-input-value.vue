@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { Button, Field } from "@pisagor/vue";
+import { Button, Field, TagsInput } from "@pisagor/vue";
 import { ref } from "vue";
-import { TagsInput } from "../../src/components/tags-input";
 
 const inputValue = ref("");
 </script>

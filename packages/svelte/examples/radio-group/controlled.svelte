@@ -1,5 +1,5 @@
 <script lang="ts">
-import { RadioGroup } from "@pisagor/svelte/radio-group";
+import { RadioGroup } from "@pisagor/svelte";
 
 let value: string | null = $state(null);
 

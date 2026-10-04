@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Card } from "@pisagor/svelte";
-import { Skeleton } from "@pisagor/svelte/skeleton";
+import { Card, Skeleton } from "@pisagor/svelte";
 </script>
 
 <Card>

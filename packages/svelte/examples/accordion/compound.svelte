@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Accordion } from "@pisagor/svelte/accordion";
+import { Accordion } from "@pisagor/svelte";
 </script>
 
 <Accordion.Root defaultValue={["item-1"]}>

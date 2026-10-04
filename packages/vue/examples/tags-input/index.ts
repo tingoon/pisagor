@@ -18,7 +18,7 @@ import validationRaw from "./validation.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import with_comboboxRaw from "./with-combobox.vue?raw";
 
-export const imports = `import { TagsInput } from "@pisagor/vue/tags-input";`;
+export const imports = `import { TagsInput } from "@pisagor/vue";`;
 
 export const sources = {
   BlurBehavior: stripVueExample(blur_behaviorRaw),

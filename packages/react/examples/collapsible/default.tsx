@@ -1,5 +1,4 @@
-import { Badge, Button, Card } from "@pisagor/react";
-import { Collapsible } from "@pisagor/react/collapsible";
+import { Badge, Button, Card, Collapsible } from "@pisagor/react";
 export function Default() {
   return (
     <Card className="w-96">

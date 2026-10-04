@@ -5,7 +5,7 @@ import multipleRaw from "./multiple.tsx?raw";
 import search_queryRaw from "./search-query.tsx?raw";
 import squiggleRaw from "./squiggle.tsx?raw";
 
-export const imports = `import { Highlight } from "@pisagor/react/highlight";`;
+export const imports = `import { Highlight } from "@pisagor/react";`;
 
 export const sources = {
   CustomStyle: stripTsxExample(custom_styleRaw),
@@ -15,8 +15,8 @@ export const sources = {
   Squiggle: stripTsxExample(squiggleRaw),
 } as const;
 
-export { CustomStyle } from "./custom-style";
-export { Default } from "./default";
-export { Multiple } from "./multiple";
-export { SearchQuery } from "./search-query";
-export { Squiggle } from "./squiggle";
+export * from "./custom-style";
+export * from "./default";
+export * from "./multiple";
+export * from "./search-query";
+export * from "./squiggle";

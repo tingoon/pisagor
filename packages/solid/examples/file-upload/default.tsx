@@ -1,7 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button } from "@pisagor/solid/button";
-import { FileUpload } from "@pisagor/solid/file-upload";
-import { Separator } from "@pisagor/solid/separator";
+import { Button, FileUpload, Separator } from "@pisagor/solid";
 
 export function Default() {
   return (

@@ -1,9 +1,8 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
-import { Button, Item } from "@pisagor/vue";
+import { Button, Item, Listbox } from "@pisagor/vue";
 import { computed, ref } from "vue";
-import { Listbox } from "../../src/components/listbox";
 
 const available = ref(["React", "Solid", "Vue", "Svelte", "Angular", "Qwik"]);
 const selected = ref([]);

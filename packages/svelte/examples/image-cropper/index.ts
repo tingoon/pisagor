@@ -8,7 +8,7 @@ import initial_cropRaw from "./initial-crop.svelte?raw";
 import min_max_sizeRaw from "./min-max-size.svelte?raw";
 import zoom_limitsRaw from "./zoom-limits.svelte?raw";
 
-export const imports = `import { ImageCropper } from "@pisagor/svelte/image-cropper";`;
+export const imports = `import { ImageCropper } from "@pisagor/svelte";`;
 
 export const sources = {
   AspectRatio: stripSvelteExample(aspect_ratioRaw),

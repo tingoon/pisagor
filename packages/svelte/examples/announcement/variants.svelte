@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Badge } from "@pisagor/svelte";
-import { Announcement } from "@pisagor/svelte/announcement";
+import { Announcement, Badge } from "@pisagor/svelte";
 import ArrowUpRightIcon from "phosphor-svelte/lib/ArrowUpRightIcon";
 import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
 import WarningIcon from "phosphor-svelte/lib/WarningIcon";

@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Card } from "@pisagor/solid";
+import { Card, Marquee } from "@pisagor/solid";
 import {
   ArrowRightIcon,
   AtomIcon,
@@ -12,7 +12,6 @@ import {
   SparkleIcon,
   StackIcon,
 } from "@pisagor/solid/icons";
-import { Marquee } from "@pisagor/solid/marquee";
 
 const marqueeIcons: Icon[] = [
   GlobeIcon,

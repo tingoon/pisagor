@@ -1,5 +1,5 @@
 <script lang="ts">
-import { AspectRatio } from "@pisagor/svelte/aspect-ratio";
+import { AspectRatio } from "@pisagor/svelte";
 </script>
 
 <AspectRatio class="rounded-xl border bg-muted sm:[--ratio:16/9] md:[--ratio:1/1]">

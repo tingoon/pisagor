@@ -15,7 +15,7 @@ import variantsRaw from "./variants.vue?raw";
 import with_textareaRaw from "./with-textarea.vue?raw";
 import without_controlsRaw from "./without-controls.vue?raw";
 
-export const imports = `import { Editable } from "@pisagor/vue/editable";`;
+export const imports = `import { Editable } from "@pisagor/vue";`;
 
 export const sources = {
   ActivationClick: stripVueExample(activation_clickRaw),

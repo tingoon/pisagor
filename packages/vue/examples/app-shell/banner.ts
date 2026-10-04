@@ -1,8 +1,8 @@
 import { PhWarning } from "@phosphor-icons/vue";
-import { Announcement, Badge, Button } from "@pisagor/vue";
+import { Announcement, AppShell, Badge, Button } from "@pisagor/vue";
 import { defineComponent, h, ref } from "vue";
-import { AppShell } from "../../src/components/app-shell";
 import { mainContent } from "./helpers";
+
 export default defineComponent({
   name: "Banner",
   setup() {

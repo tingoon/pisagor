@@ -3,8 +3,7 @@ import {
   MagnifyingGlassIcon,
   UserIcon,
 } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react";
-import { Sidebar } from "@pisagor/react/sidebar";
+import { Button, Sidebar } from "@pisagor/react";
 export function Default() {
   return (
     <Sidebar.Provider>

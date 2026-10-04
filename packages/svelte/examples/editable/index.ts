@@ -14,7 +14,7 @@ import variantsRaw from "./variants.svelte?raw";
 import with_textareaRaw from "./with-textarea.svelte?raw";
 import without_controlsRaw from "./without-controls.svelte?raw";
 
-export const imports = `import { Editable } from "@pisagor/svelte/editable";`;
+export const imports = `import { Editable } from "@pisagor/svelte";`;
 
 export const sources = {
   ActivationClick: stripSvelteExample(activation_clickRaw),

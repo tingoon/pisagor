@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Surface } from "@pisagor/svelte/surface";
+import { Surface } from "@pisagor/svelte";
 </script>
 
 <div class="grid w-full gap-2 md:grid-cols-2">

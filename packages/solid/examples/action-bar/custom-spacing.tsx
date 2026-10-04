@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid";
-import { ActionBar } from "@pisagor/solid/action-bar";
+import { ActionBar, Button } from "@pisagor/solid";
 import { PencilSimpleIcon, TrashIcon, XIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";
 export function CustomSpacing() {

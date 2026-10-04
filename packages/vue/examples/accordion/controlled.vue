@@ -1,7 +1,6 @@
 <script lang="ts" setup>
+import { Accordion } from "@pisagor/vue";
 import { ref } from "vue";
-
-import { Accordion } from "../../src/components/accordion";
 import { shortFaqItems } from "./helpers";
 
 const value = ref(["item-1"]);

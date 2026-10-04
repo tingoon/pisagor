@@ -1,4 +1,4 @@
-import { ToggleGroup } from "@pisagor/react/toggle-group";
+import { ToggleGroup } from "@pisagor/react";
 
 const items = [
   { children: "Bold", value: "bold" },

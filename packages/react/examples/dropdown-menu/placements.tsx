@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react";
-import { DropdownMenu } from "@pisagor/react/dropdown-menu";
+import { Button, DropdownMenu } from "@pisagor/react";
 export function Placements() {
   const placements = ["left", "top", "bottom", "right"] as const;
   return (

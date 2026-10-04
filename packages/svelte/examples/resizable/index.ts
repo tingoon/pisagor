@@ -8,7 +8,7 @@ import multiple_panelsRaw from "./multiple-panels.svelte?raw";
 import orientation_horizontalRaw from "./orientation-horizontal.svelte?raw";
 import orientation_verticalRaw from "./orientation-vertical.svelte?raw";
 
-export const imports = `import { Resizable } from "@pisagor/svelte/resizable";`;
+export const imports = `import { Resizable } from "@pisagor/svelte";`;
 
 export const sources = {
   Collapsible: stripSvelteExample(collapsibleRaw),

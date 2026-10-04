@@ -4,7 +4,7 @@ import defaultRaw from "./default.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_trendRaw from "./with-trend.svelte?raw";
 
-export const imports = `import { Stat } from "@pisagor/svelte/stat";`;
+export const imports = `import { Stat } from "@pisagor/svelte";`;
 
 export const sources = {
   Compound: stripSvelteExample(compoundRaw),

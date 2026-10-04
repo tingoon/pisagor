@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid";
-import { DownloadTrigger } from "@pisagor/solid/download-trigger";
+import { Button, DownloadTrigger } from "@pisagor/solid";
 import { DownloadIcon } from "@pisagor/solid/icons";
 import { sampleSvg } from "./helpers";
 

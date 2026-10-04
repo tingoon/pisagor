@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button, Field } from "@pisagor/solid";
-import { ColorPicker } from "@pisagor/solid/color-picker";
+import { Button, ColorPicker, Field } from "@pisagor/solid";
 export function PopoverSlidersOnly() {
   return (
     <ColorPicker defaultValue="#eb5e41" format="hsla">

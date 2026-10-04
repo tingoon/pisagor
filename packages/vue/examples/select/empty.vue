@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
-import { Select } from "../../src/components/select";
+import { Select } from "@pisagor/vue";
 
 const collection = createListCollection({
   items: [] as Array<{ label: string; value: string }>,

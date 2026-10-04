@@ -1,5 +1,5 @@
 <script lang="ts">
-import { DropdownMenu } from "@pisagor/svelte/dropdown-menu";
+import { DropdownMenu } from "@pisagor/svelte";
 </script>
 
 <DropdownMenu>

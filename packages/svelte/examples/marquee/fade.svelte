@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Marquee } from "@pisagor/svelte/marquee";
+import { Marquee } from "@pisagor/svelte";
 </script>
 
 <div class="flex w-full flex-col gap-2 overflow-hidden">

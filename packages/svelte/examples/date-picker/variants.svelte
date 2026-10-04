@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Calendar } from "@pisagor/svelte";
-import { DatePicker } from "@pisagor/svelte/date-picker";
+import { Calendar, DatePicker } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-col gap-2">

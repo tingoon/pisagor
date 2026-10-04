@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { Field } from "@pisagor/vue";
+import { Field, SignaturePad } from "@pisagor/vue";
 import { ref } from "vue";
-import { SignaturePad } from "../../src/components/signature-pad";
 
 const imageUrl = ref(null);
 function handleDrawEnd(..._args: unknown[]) {

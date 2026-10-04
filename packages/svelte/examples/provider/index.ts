@@ -1,7 +1,7 @@
 import { stripSvelteExample } from "@pisagor/utils";
 import defaultRaw from "./default.svelte?raw";
 
-export const imports = `import { Provider } from "@pisagor/svelte/provider";`;
+export const imports = `import { Provider } from "@pisagor/svelte";`;
 
 export const sources = {
   Default: stripSvelteExample(defaultRaw),

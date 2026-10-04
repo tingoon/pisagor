@@ -1,4 +1,4 @@
-import { Separator } from "@pisagor/react/separator";
+import { Separator } from "@pisagor/react";
 
 export function List() {
   return (

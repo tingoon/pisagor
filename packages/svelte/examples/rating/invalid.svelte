@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Field } from "@pisagor/svelte";
-import { Rating } from "@pisagor/svelte/rating";
+import { Field, Rating } from "@pisagor/svelte";
 </script>
 
 <Field invalid>

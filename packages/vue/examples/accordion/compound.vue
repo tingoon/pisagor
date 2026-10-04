@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Accordion } from "../../src/components/accordion";
+import { Accordion } from "@pisagor/vue";
 </script>
 
 <template>

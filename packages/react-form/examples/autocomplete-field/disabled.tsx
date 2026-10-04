@@ -1,4 +1,4 @@
-import { AutocompleteField } from "../../src/fields/autocomplete-field";
+import { AutocompleteField } from "@pisagor/react-form";
 import { cityOptions } from "../options";
 
 export function Disabled() {

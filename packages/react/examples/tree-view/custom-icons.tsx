@@ -1,7 +1,10 @@
 import { FileCodeIcon, FileJsIcon, FileTextIcon } from "@phosphor-icons/react";
-import { createFileIcons, createTreeCollection } from "@pisagor/react";
-import type { NodeProviderProps } from "@pisagor/react/tree-view";
-import { TreeView } from "@pisagor/react/tree-view";
+import type { NodeProviderProps } from "@pisagor/react";
+import {
+  createFileIcons,
+  createTreeCollection,
+  TreeView,
+} from "@pisagor/react";
 export function CustomIcons() {
   const fileIcons = createFileIcons({
     ".json": FileJsIcon,

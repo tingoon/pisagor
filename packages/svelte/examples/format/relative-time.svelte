@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Format } from "@pisagor/svelte/format";
+import { Format } from "@pisagor/svelte";
 </script>
 
 <div class="inline-flex items-baseline gap-1">

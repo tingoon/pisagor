@@ -4,7 +4,7 @@ import orientation_horizontalRaw from "./orientation-horizontal.astro?raw";
 import orientation_verticalRaw from "./orientation-vertical.astro?raw";
 
 export const imports = `---
-import { DataList } from "@pisagor/astro/data-list";
+import { DataList } from "@pisagor/astro";
 ---`;
 
 export const sources = {

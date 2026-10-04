@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Field } from "@pisagor/svelte";
-import { RadioGroup } from "@pisagor/svelte/radio-group";
+import { Field, RadioGroup } from "@pisagor/svelte";
 </script>
 
 <RadioGroup.Root defaultValue="all">

@@ -1,8 +1,7 @@
 /** @jsxImportSource solid-js */
 
-import { Badge } from "@pisagor/solid";
+import { Badge, InputGroup } from "@pisagor/solid";
 import { AtIcon } from "@pisagor/solid/icons";
-import { InputGroup } from "@pisagor/solid/input-group";
 export function WithBadge() {
   return (
     <InputGroup>

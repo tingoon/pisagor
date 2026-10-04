@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Button } from "@pisagor/vue";
-import { Swap } from "../../src/components/swap";
+import { Button, Swap } from "@pisagor/vue";
 </script>
 
 <template>

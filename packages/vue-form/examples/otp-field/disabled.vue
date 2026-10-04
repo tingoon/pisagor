@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { OtpField } from "../../src/fields/otp-field";
+import { OtpField } from "@pisagor/vue-form";
 </script>
 
 <template>

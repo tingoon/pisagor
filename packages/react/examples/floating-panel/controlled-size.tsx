@@ -1,6 +1,5 @@
 import { GearSixIcon, XIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react";
-import { FloatingPanel } from "@pisagor/react/floating-panel";
+import { Button, FloatingPanel } from "@pisagor/react";
 import { useState } from "react";
 export function ControlledSize() {
   const [size, setSize] = useState({ height: 200, width: 360 });

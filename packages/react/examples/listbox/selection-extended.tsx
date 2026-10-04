@@ -1,6 +1,5 @@
 import { createListCollection } from "@ark-ui/react";
-import { Item, Kbd } from "@pisagor/react";
-import { Listbox } from "@pisagor/react/listbox";
+import { Item, Kbd, Listbox } from "@pisagor/react";
 export function SelectionExtended() {
   const collection = createListCollection({
     items: [

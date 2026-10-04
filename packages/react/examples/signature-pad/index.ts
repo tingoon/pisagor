@@ -4,7 +4,7 @@ import disabledRaw from "./disabled.tsx?raw";
 import image_previewRaw from "./image-preview.tsx?raw";
 import invalidRaw from "./invalid.tsx?raw";
 
-export const imports = `import { SignaturePad } from "@pisagor/react/signature-pad";`;
+export const imports = `import { SignaturePad } from "@pisagor/react";`;
 
 export const sources = {
   Controlled: stripTsxExample(controlledRaw),
@@ -13,7 +13,7 @@ export const sources = {
   Invalid: stripTsxExample(invalidRaw),
 } as const;
 
-export { Controlled } from "./controlled";
-export { Disabled } from "./disabled";
-export { ImagePreview } from "./image-preview";
-export { Invalid } from "./invalid";
+export * from "./controlled";
+export * from "./disabled";
+export * from "./image-preview";
+export * from "./invalid";

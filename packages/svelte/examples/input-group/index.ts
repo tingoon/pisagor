@@ -13,7 +13,7 @@ import with_keyboard_shortcutRaw from "./with-keyboard-shortcut.svelte?raw";
 import with_spinnerRaw from "./with-spinner.svelte?raw";
 import with_textareaRaw from "./with-textarea.svelte?raw";
 
-export const imports = `import { InputGroup } from "@pisagor/svelte/input-group";`;
+export const imports = `import { InputGroup } from "@pisagor/svelte";`;
 
 export const sources = {
   AlignBlockEnd: stripSvelteExample(align_block_endRaw),

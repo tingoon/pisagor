@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { PhDownload } from "@phosphor-icons/vue";
-
-import { Button } from "@pisagor/vue";
-import { DownloadTrigger } from "../../src/components/download-trigger";
+import { Button, DownloadTrigger } from "@pisagor/vue";
 import { sampleSvg } from "./helpers";
 
 const svg = sampleSvg();

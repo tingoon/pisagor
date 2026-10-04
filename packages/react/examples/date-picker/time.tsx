@@ -1,5 +1,4 @@
-import { Field } from "@pisagor/react";
-import { DatePicker } from "@pisagor/react/date-picker";
+import { DatePicker, Field } from "@pisagor/react";
 export function Time() {
   return (
     <Field>

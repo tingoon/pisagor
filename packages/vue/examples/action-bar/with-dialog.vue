@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhTrash, PhX } from "@phosphor-icons/vue";
-import { AlertDialog, Button } from "@pisagor/vue";
-import { ActionBar } from "../../src/components/action-bar";
+import { ActionBar, AlertDialog, Button } from "@pisagor/vue";
 </script>
 
 <template>

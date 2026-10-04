@@ -1,4 +1,4 @@
-import { Toggle } from "@pisagor/react/toggle";
+import { Toggle } from "@pisagor/react";
 import { useState } from "react";
 
 export function Controlled() {

@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { Button } from "@pisagor/vue";
+import { Button, Swap } from "@pisagor/vue";
 import { ref } from "vue";
-import { Swap } from "../../src/components/swap";
 
 const active = ref(false);
 function toggle() {

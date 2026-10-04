@@ -7,7 +7,7 @@ import multipleRaw from "./multiple.tsx?raw";
 import non_collapsibleRaw from "./non-collapsible.tsx?raw";
 import with_cardRaw from "./with-card.tsx?raw";
 
-export const imports = `import { Accordion } from "@pisagor/solid/accordion";`;
+export const imports = `import { Accordion } from "@pisagor/solid";`;
 
 export const sources = {
   Compound: stripTsxExample(compoundRaw),
@@ -19,10 +19,10 @@ export const sources = {
   WithCard: stripTsxExample(with_cardRaw),
 } as const;
 
-export { Compound } from "./compound";
-export { Controlled } from "./controlled";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { Multiple } from "./multiple";
-export { NonCollapsible } from "./non-collapsible";
-export { WithCard } from "./with-card";
+export * from "./compound";
+export * from "./controlled";
+export * from "./default";
+export * from "./disabled";
+export * from "./multiple";
+export * from "./non-collapsible";
+export * from "./with-card";

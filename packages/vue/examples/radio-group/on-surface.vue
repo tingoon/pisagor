@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Surface } from "@pisagor/vue";
-import { RadioGroup } from "../../src/components/radio-group";
+import { RadioGroup, Surface } from "@pisagor/vue";
 </script>
 
 <template>

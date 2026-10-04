@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { PhFunnel } from "@phosphor-icons/vue";
-import { InputGroup } from "../../src/components/input-group";
+import { InputGroup } from "@pisagor/vue";
 </script>
 
 <template>

@@ -1,6 +1,7 @@
 /** @jsxImportSource solid-js */
+
+import { InputGroup } from "@pisagor/solid";
 import { MagnifyingGlassIcon } from "@pisagor/solid/icons";
-import { InputGroup } from "@pisagor/solid/input-group";
 
 export function Disabled() {
   return (

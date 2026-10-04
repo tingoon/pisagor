@@ -3,7 +3,7 @@ import defaultRaw from "./default.astro?raw";
 import variantsRaw from "./variants.astro?raw";
 
 export const imports = `---
-import { Item } from "@pisagor/astro/item";
+import { Item } from "@pisagor/astro";
 ---`;
 
 export const sources = {

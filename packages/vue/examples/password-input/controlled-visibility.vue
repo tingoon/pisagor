@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { PasswordInput } from "@pisagor/vue";
 import { ref } from "vue";
-import { PasswordInput } from "../../src/components/password-input";
 
 const visible = ref(false);
 const onVisibilityChange = (details) => setVisible(details.visible);

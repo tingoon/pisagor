@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Button } from "@pisagor/vue";
-import { Collapsible } from "../../src/components/collapsible";
+import { Button, Collapsible } from "@pisagor/vue";
 </script>
 
 <template>

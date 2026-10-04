@@ -1,5 +1,4 @@
-import { Card } from "@pisagor/react";
-import { Calendar } from "@pisagor/react/calendar";
+import { Calendar, Card } from "@pisagor/react";
 export function Range() {
   return (
     <Card className="[--space:--spacing(2)]">

@@ -3,7 +3,7 @@ import compoundRaw from "./compound.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import with_actionsRaw from "./with-actions.tsx?raw";
 
-export const imports = `import { File } from "@pisagor/solid/file";`;
+export const imports = `import { File } from "@pisagor/solid";`;
 
 export const sources = {
   Compound: stripTsxExample(compoundRaw),
@@ -11,6 +11,6 @@ export const sources = {
   WithActions: stripTsxExample(with_actionsRaw),
 } as const;
 
-export { Compound } from "./compound";
-export { Default } from "./default";
-export { WithActions } from "./with-actions";
+export * from "./compound";
+export * from "./default";
+export * from "./with-actions";

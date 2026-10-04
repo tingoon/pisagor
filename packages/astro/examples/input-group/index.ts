@@ -4,7 +4,7 @@ import sizesRaw from "./sizes.astro?raw";
 import variantsRaw from "./variants.astro?raw";
 
 export const imports = `---
-import { InputGroup } from "@pisagor/astro/input-group";
+import { InputGroup } from "@pisagor/astro";
 ---`;
 
 export const sources = {

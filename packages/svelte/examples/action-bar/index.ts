@@ -8,7 +8,7 @@ import placementsRaw from "./placements.svelte?raw";
 import with_dialogRaw from "./with-dialog.svelte?raw";
 import with_menuRaw from "./with-menu.svelte?raw";
 
-export const imports = `import { ActionBar } from "@pisagor/svelte/action-bar";`;
+export const imports = `import { ActionBar } from "@pisagor/svelte";`;
 
 export const sources = {
   CloseTrigger: stripSvelteExample(close_triggerRaw),

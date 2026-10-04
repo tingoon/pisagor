@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Alert } from "@pisagor/svelte/alert";
+import { Alert, Button } from "@pisagor/svelte";
 import ClockCounterClockwiseIcon from "phosphor-svelte/lib/ClockCounterClockwiseIcon";
 </script>
 

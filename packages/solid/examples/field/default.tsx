@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Field } from "@pisagor/solid/field";
-import { Input } from "@pisagor/solid/input";
+import { Field, Input } from "@pisagor/solid";
 
 export function Default() {
   return (

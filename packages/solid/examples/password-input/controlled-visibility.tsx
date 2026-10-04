@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { PasswordInput } from "@pisagor/solid/password-input";
+import { PasswordInput } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function ControlledVisibility() {
   const [visible, setVisible] = createSignal(false);

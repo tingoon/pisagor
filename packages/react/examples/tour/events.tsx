@@ -1,6 +1,5 @@
-import { Button } from "@pisagor/react";
-import type { TourStepType } from "@pisagor/react/tour";
-import { Tour } from "@pisagor/react/tour";
+import type { TourStepType } from "@pisagor/react";
+import { Button, Tour } from "@pisagor/react";
 import { useRef, useState } from "react";
 export function Events() {
   const steps: TourStepType[] = [

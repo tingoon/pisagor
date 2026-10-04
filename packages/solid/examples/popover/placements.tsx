@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button } from "@pisagor/solid";
-import { Popover } from "@pisagor/solid/popover";
+import { Button, Popover } from "@pisagor/solid";
 export function Placements() {
   const placements = ["left", "top", "bottom", "right"] as const;
   return (

@@ -5,7 +5,7 @@ import orientation_horizontalRaw from "./orientation-horizontal.vue?raw";
 import orientation_verticalRaw from "./orientation-vertical.vue?raw";
 import with_separatorRaw from "./with-separator.vue?raw";
 
-export const imports = `import { ButtonGroup } from "@pisagor/vue/button-group";`;
+export const imports = `import { ButtonGroup } from "@pisagor/vue";`;
 
 export const sources = {
   Default: stripVueExample(defaultRaw),

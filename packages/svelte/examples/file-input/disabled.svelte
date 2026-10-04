@@ -1,5 +1,5 @@
 <script lang="ts">
-import { FileInput } from "@pisagor/svelte/file-input";
+import { FileInput } from "@pisagor/svelte";
 </script>
 
 <FileInput disabled />

@@ -1,4 +1,4 @@
-import { Timer } from "@pisagor/react/timer";
+import { Timer } from "@pisagor/react";
 
 export function Default() {
   return (

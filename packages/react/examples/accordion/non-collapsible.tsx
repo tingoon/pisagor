@@ -1,4 +1,4 @@
-import { Accordion } from "@pisagor/react/accordion";
+import { Accordion } from "@pisagor/react";
 import { shortFaqItems } from "./helpers";
 
 export function NonCollapsible() {

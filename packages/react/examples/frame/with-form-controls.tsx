@@ -1,5 +1,4 @@
-import { Field, Input, Switch } from "@pisagor/react";
-import { Frame } from "@pisagor/react/frame";
+import { Field, Frame, Input, Switch } from "@pisagor/react";
 
 export function WithFormControls() {
   return (

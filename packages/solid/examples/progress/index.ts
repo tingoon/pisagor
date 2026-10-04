@@ -6,7 +6,7 @@ import orientation_horizontalRaw from "./orientation-horizontal.tsx?raw";
 import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
 import with_labelRaw from "./with-label.tsx?raw";
 
-export const imports = `import { Progress } from "@pisagor/solid/progress";`;
+export const imports = `import { Progress } from "@pisagor/solid";`;
 
 export const sources = {
   Controlled: stripTsxExample(controlledRaw),
@@ -17,9 +17,9 @@ export const sources = {
   WithLabel: stripTsxExample(with_labelRaw),
 } as const;
 
-export { Controlled } from "./controlled";
-export { Default } from "./default";
-export { Indeterminate } from "./indeterminate";
-export { OrientationHorizontal } from "./orientation-horizontal";
-export { OrientationVertical } from "./orientation-vertical";
-export { WithLabel } from "./with-label";
+export * from "./controlled";
+export * from "./default";
+export * from "./indeterminate";
+export * from "./orientation-horizontal";
+export * from "./orientation-vertical";
+export * from "./with-label";

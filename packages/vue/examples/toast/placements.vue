@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Button } from "@pisagor/vue";
-import { Toaster, toast } from "../../src/components/toast";
+import { Button, Toaster, toast } from "@pisagor/vue";
 
 const topEndToaster = createToaster({
   overlap: true,

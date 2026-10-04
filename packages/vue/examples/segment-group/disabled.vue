@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { SegmentGroup } from "../../src/components/segment-group";
+import { SegmentGroup } from "@pisagor/vue";
 
 const items = ["Profile", "Account", "Security", "Notifications"];
 </script>

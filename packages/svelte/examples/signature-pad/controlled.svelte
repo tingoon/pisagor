@@ -1,5 +1,5 @@
 <script lang="ts">
-import { SignaturePad } from "@pisagor/svelte/signature-pad";
+import { SignaturePad } from "@pisagor/svelte";
 
 let paths: string[] = $state([]);
 

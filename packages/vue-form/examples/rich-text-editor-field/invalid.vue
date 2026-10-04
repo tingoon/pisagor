@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { RichTextEditorField } from "../../src/fields/rich-text-editor-field";
+import { RichTextEditorField } from "@pisagor/vue-form";
 </script>
 
 <template>

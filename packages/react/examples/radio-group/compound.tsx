@@ -1,4 +1,4 @@
-import { RadioGroup } from "@pisagor/react/radio-group";
+import { RadioGroup } from "@pisagor/react";
 
 export function Compound() {
   return (

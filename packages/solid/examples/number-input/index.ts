@@ -12,7 +12,7 @@ import sizesRaw from "./sizes.tsx?raw";
 import stepRaw from "./step.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 
-export const imports = `import { NumberInput } from "@pisagor/solid/number-input";`;
+export const imports = `import { NumberInput } from "@pisagor/solid";`;
 
 export const sources = {
   Controlled: stripTsxExample(controlledRaw),
@@ -29,15 +29,15 @@ export const sources = {
   Variants: stripTsxExample(variantsRaw),
 } as const;
 
-export { Controlled } from "./controlled";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { FieldOnly } from "./field-only";
-export { Formatted } from "./formatted";
-export { Invalid } from "./invalid";
-export { MouseWheel } from "./mouse-wheel";
-export { Range } from "./range";
-export { Scrub } from "./scrub";
-export { Sizes } from "./sizes";
-export { Step } from "./step";
-export { Variants } from "./variants";
+export * from "./controlled";
+export * from "./default";
+export * from "./disabled";
+export * from "./field-only";
+export * from "./formatted";
+export * from "./invalid";
+export * from "./mouse-wheel";
+export * from "./range";
+export * from "./scrub";
+export * from "./sizes";
+export * from "./step";
+export * from "./variants";

@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button, DropdownMenu } from "@pisagor/svelte";
-import { Table } from "@pisagor/svelte/table";
+import { Button, DropdownMenu, Table } from "@pisagor/svelte";
 import DotsThreeVerticalIcon from "phosphor-svelte/lib/DotsThreeVerticalIcon";
 import EyeIcon from "phosphor-svelte/lib/EyeIcon";
 import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";

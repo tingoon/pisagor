@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { PhArrowUp } from "@phosphor-icons/vue";
-import { Stat } from "../../src/components/stat";
+import { Stat } from "@pisagor/vue";
 </script>
 
 <template>

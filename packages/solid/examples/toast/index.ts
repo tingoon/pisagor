@@ -8,7 +8,7 @@ import placementsRaw from "./placements.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 import with_promiseRaw from "./with-promise.tsx?raw";
 
-export const imports = `import { Toast } from "@pisagor/solid/toast";`;
+export const imports = `import { Toast } from "@pisagor/solid";`;
 
 export const sources = {
   Action: stripTsxExample(actionRaw),
@@ -21,11 +21,11 @@ export const sources = {
   WithPromise: stripTsxExample(with_promiseRaw),
 } as const;
 
-export { Action } from "./action";
-export { Closable } from "./closable";
-export { Dedupe } from "./dedupe";
-export { Default } from "./default";
-export { Duration } from "./duration";
-export { Placements } from "./placements";
-export { Variants } from "./variants";
-export { WithPromise } from "./with-promise";
+export * from "./action";
+export * from "./closable";
+export * from "./dedupe";
+export * from "./default";
+export * from "./duration";
+export * from "./placements";
+export * from "./variants";
+export * from "./with-promise";

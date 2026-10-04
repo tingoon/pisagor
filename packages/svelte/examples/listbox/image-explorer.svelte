@@ -1,6 +1,6 @@
 <script lang="ts">
 import { createListCollection } from "@ark-ui/svelte/collection";
-import { Listbox } from "@pisagor/svelte/listbox";
+import { Listbox } from "@pisagor/svelte";
 
 const collection = createListCollection({
   items: [

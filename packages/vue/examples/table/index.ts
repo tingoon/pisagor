@@ -5,7 +5,7 @@ import footerRaw from "./footer.vue?raw";
 import not_hoverableRaw from "./not-hoverable.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 
-export const imports = `import { Table } from "@pisagor/vue/table";`;
+export const imports = `import { Table } from "@pisagor/vue";`;
 
 export const sources = {
   Actions: stripVueExample(actionsRaw),

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { CircularSlider } from "../../src/components/circular-slider";
+import { CircularSlider } from "@pisagor/vue";
 
 const sizes = [120, 160, 200] as const;
 </script>

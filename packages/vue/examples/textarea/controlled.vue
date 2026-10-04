@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { Field } from "@pisagor/vue";
+import { Field, Textarea } from "@pisagor/vue";
 import { ref } from "vue";
-import { Textarea } from "../../src/components/textarea";
 
 const message = ref("");
 </script>

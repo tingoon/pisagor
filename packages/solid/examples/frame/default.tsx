@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Frame } from "@pisagor/solid/frame";
+import { Frame } from "@pisagor/solid";
 
 export function Default() {
   return (

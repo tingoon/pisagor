@@ -5,7 +5,7 @@ import variantsRaw from "./variants.tsx?raw";
 import with_buttonRaw from "./with-button.tsx?raw";
 import with_tooltipRaw from "./with-tooltip.tsx?raw";
 
-export const imports = `import { Kbd } from "@pisagor/solid/kbd";`;
+export const imports = `import { Kbd } from "@pisagor/solid";`;
 
 export const sources = {
   Default: stripTsxExample(defaultRaw),
@@ -15,8 +15,8 @@ export const sources = {
   WithTooltip: stripTsxExample(with_tooltipRaw),
 } as const;
 
-export { Default } from "./default";
-export { KbdGroup } from "./kbd-group";
-export { Variants } from "./variants";
-export { WithButton } from "./with-button";
-export { WithTooltip } from "./with-tooltip";
+export * from "./default";
+export * from "./kbd-group";
+export * from "./variants";
+export * from "./with-button";
+export * from "./with-tooltip";

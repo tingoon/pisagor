@@ -5,7 +5,7 @@ import defaultRaw from "./default.svelte?raw";
 import linksRaw from "./links.svelte?raw";
 import page_rangeRaw from "./page-range.svelte?raw";
 
-export const imports = `import { Pagination } from "@pisagor/svelte/pagination";`;
+export const imports = `import { Pagination } from "@pisagor/svelte";`;
 
 export const sources = {
   Controlled: stripSvelteExample(controlledRaw),

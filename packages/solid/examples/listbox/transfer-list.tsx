@@ -1,8 +1,7 @@
 /** @jsxImportSource solid-js */
 import { createListCollection } from "@ark-ui/solid/collection";
-import { Button, Item } from "@pisagor/solid";
+import { Button, Item, Listbox } from "@pisagor/solid";
 import { CaretLeftIcon, CaretRightIcon } from "@pisagor/solid/icons";
-import { Listbox } from "@pisagor/solid/listbox";
 import { createMemo, createSignal, For } from "solid-js";
 
 export function TransferList() {

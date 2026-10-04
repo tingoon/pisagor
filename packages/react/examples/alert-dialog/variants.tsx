@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react";
-import { AlertDialog } from "@pisagor/react/alert-dialog";
+import { AlertDialog, Button } from "@pisagor/react";
 export function Variants() {
   return (
     <div className="flex flex-wrap gap-2">

@@ -8,7 +8,7 @@ import non_modalRaw from "./non-modal.svelte?raw";
 import scroll_areaRaw from "./scroll-area.svelte?raw";
 import sidesRaw from "./sides.svelte?raw";
 
-export const imports = `import { Sheet } from "@pisagor/svelte/sheet";`;
+export const imports = `import { Sheet } from "@pisagor/svelte";`;
 
 export const sources = {
   CloseBehavior: stripSvelteExample(close_behaviorRaw),

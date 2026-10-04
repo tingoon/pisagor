@@ -8,7 +8,7 @@ import placementsRaw from "./placements.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_promiseRaw from "./with-promise.svelte?raw";
 
-export const imports = `import { Toast } from "@pisagor/svelte/toast";`;
+export const imports = `import { Toast } from "@pisagor/svelte";`;
 
 export const sources = {
   Action: stripSvelteExample(actionRaw),

@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { PasswordInput } from "@pisagor/solid/password-input";
+import { PasswordInput } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function AutoHide() {
   const HIDE_DELAY_MS = 3000;

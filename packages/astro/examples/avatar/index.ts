@@ -4,7 +4,7 @@ import sizesRaw from "./sizes.astro?raw";
 import with_imageRaw from "./with-image.astro?raw";
 
 export const imports = `---
-import { Avatar } from "@pisagor/astro/avatar";
+import { Avatar } from "@pisagor/astro";
 ---`;
 
 export const sources = {

@@ -4,7 +4,7 @@ import defaultRaw from "./default.tsx?raw";
 import iconRaw from "./icon.tsx?raw";
 import productRaw from "./product.tsx?raw";
 
-export const imports = `import { Card } from "@pisagor/solid/card";`;
+export const imports = `import { Card } from "@pisagor/solid";`;
 
 export const sources = {
   CustomSpacing: stripTsxExample(custom_spacingRaw),
@@ -13,7 +13,7 @@ export const sources = {
   Product: stripTsxExample(productRaw),
 } as const;
 
-export { CustomSpacing } from "./custom-spacing";
-export { Default } from "./default";
-export { Icon } from "./icon";
-export { Product } from "./product";
+export * from "./custom-spacing";
+export * from "./default";
+export * from "./icon";
+export * from "./product";

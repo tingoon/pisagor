@@ -2,7 +2,7 @@ import { stripAstroExample } from "@pisagor/utils";
 import defaultRaw from "./default.astro?raw";
 
 export const imports = `---
-import { LinkBox } from "@pisagor/astro/link-box";
+import { LinkBox } from "@pisagor/astro";
 ---`;
 
 export const sources = {

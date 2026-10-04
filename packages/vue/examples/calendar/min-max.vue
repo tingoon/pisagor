@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Card } from "@pisagor/vue";
-import { Calendar, parseDate } from "../../src/components/calendar";
+import { Calendar, Card, parseDate } from "@pisagor/vue";
 
 const min = parseDate("2025-03-05");
 const max = parseDate("2025-03-31");

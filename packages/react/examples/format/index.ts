@@ -10,7 +10,7 @@ import number_storyRaw from "./number-story.tsx?raw";
 import relative_timeRaw from "./relative-time.tsx?raw";
 import relative_time_shortRaw from "./relative-time-short.tsx?raw";
 
-export const imports = `import { Format } from "@pisagor/react/format";`;
+export const imports = `import { Format } from "@pisagor/react";`;
 
 export const sources = {
   Byte: stripTsxExample(byteRaw),
@@ -25,13 +25,13 @@ export const sources = {
   RelativeTimeShort: stripTsxExample(relative_time_shortRaw),
 } as const;
 
-export { Byte } from "./byte";
-export { ByteUnitDisplay } from "./byte-unit-display";
-export { ByteUnitSystem } from "./byte-unit-system";
-export { Default } from "./default";
-export { NumberCompact } from "./number-compact";
-export { NumberCurrency } from "./number-currency";
-export { NumberPercent } from "./number-percent";
-export { NumberStory } from "./number-story";
-export { RelativeTime } from "./relative-time";
-export { RelativeTimeShort } from "./relative-time-short";
+export * from "./byte";
+export * from "./byte-unit-display";
+export * from "./byte-unit-system";
+export * from "./default";
+export * from "./number-compact";
+export * from "./number-currency";
+export * from "./number-percent";
+export * from "./number-story";
+export * from "./relative-time";
+export * from "./relative-time-short";

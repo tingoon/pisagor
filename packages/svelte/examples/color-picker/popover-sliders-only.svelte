@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button, Field } from "@pisagor/svelte";
-import { ColorPicker } from "@pisagor/svelte/color-picker";
+import { Button, ColorPicker, Field } from "@pisagor/svelte";
 </script>
 
 <ColorPicker format="hsla" value="#eb5e41" >

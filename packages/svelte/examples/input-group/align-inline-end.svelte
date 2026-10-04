@@ -1,5 +1,5 @@
 <script lang="ts">
-import { InputGroup } from "@pisagor/svelte/input-group";
+import { InputGroup } from "@pisagor/svelte";
 import EyeIcon from "phosphor-svelte/lib/EyeIcon";
 </script>
 

@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Clipboard } from "@pisagor/solid/clipboard";
+import { Clipboard } from "@pisagor/solid";
 import { SparkleIcon } from "@pisagor/solid/icons";
 
 export function DifferentIcon() {

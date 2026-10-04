@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { Progress } from "@pisagor/vue";
 import { ref } from "vue";
-import { Progress } from "../../src/components/progress";
 
 const progress = ref(13);
 </script>

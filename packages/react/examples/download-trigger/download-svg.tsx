@@ -1,6 +1,5 @@
 import { DownloadIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react";
-import { DownloadTrigger } from "@pisagor/react/download-trigger";
+import { Button, DownloadTrigger } from "@pisagor/react";
 import { sampleSvg } from "./helpers";
 
 export function DownloadSvg() {

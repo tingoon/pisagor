@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { PhArrowUpRight, PhPlusCircle } from "@phosphor-icons/vue";
-import { Badge } from "../../src/components/badge";
+import { Badge } from "@pisagor/vue";
 </script>
 
 <template>

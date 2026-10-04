@@ -1,6 +1,5 @@
+import { Button, Sheet } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Sheet } from "../../src/components/sheet";
-import { outlineButtonClass } from "../../src/internal/story-button";
 
 export default defineComponent({
   name: "NonModal",
@@ -8,7 +7,7 @@ export default defineComponent({
     return () =>
       h(Sheet, { modal: false }, () => [
         h(Sheet.Trigger, { asChild: true }, () =>
-          h("button", { class: outlineButtonClass(), type: "button" }, "Open"),
+          h(Button, { type: "button", variant: "outline" }, "Open"),
         ),
         h(Sheet.Content, null, () => [
           h(Sheet.Header, {
@@ -25,11 +24,7 @@ export default defineComponent({
           ),
           h(Sheet.Footer, null, () =>
             h(Sheet.CloseTrigger, { asChild: true }, () =>
-              h(
-                "button",
-                { class: outlineButtonClass(), type: "button" },
-                "Close",
-              ),
+              h(Button, { type: "button", variant: "outline" }, "Close"),
             ),
           ),
         ]),

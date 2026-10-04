@@ -1,7 +1,7 @@
 <script lang="ts">
+import { Table } from "@pisagor/svelte";
 import type { SortingState } from "@pisagor/svelte/data-grid";
 import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import { Table } from "@pisagor/svelte/table";
 
 const data = [
   { id: "1", name: "Ada", role: "Admin" },

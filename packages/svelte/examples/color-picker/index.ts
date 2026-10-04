@@ -30,7 +30,7 @@ import swatch_picker_custom_sizeRaw from "./swatch-picker-custom-size.svelte?raw
 import swatch_picker_disabledRaw from "./swatch-picker-disabled.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 
-export const imports = `import { ColorPicker } from "@pisagor/svelte/color-picker";`;
+export const imports = `import { ColorPicker } from "@pisagor/svelte";`;
 
 export const sources = {
   AreaChannels: stripSvelteExample(area_channelsRaw),

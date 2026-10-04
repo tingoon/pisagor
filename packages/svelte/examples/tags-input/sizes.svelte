@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Field } from "@pisagor/svelte/field";
-import { TagsInput } from "@pisagor/svelte/tags-input";
+import { Field, TagsInput } from "@pisagor/svelte";
 
 const sizes = ["sm", "md", "lg"] as const;
 </script>

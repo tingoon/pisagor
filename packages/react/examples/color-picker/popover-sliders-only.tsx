@@ -1,5 +1,4 @@
-import { Button, Field } from "@pisagor/react";
-import { ColorPicker } from "@pisagor/react/color-picker";
+import { Button, ColorPicker, Field } from "@pisagor/react";
 export function PopoverSlidersOnly() {
   return (
     <ColorPicker defaultValue="#eb5e41" format="hsla">

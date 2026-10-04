@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { InputGroup, parseColor, Separator } from "@pisagor/solid";
-import { ColorPicker } from "@pisagor/solid/color-picker";
+import { ColorPicker, InputGroup, parseColor, Separator } from "@pisagor/solid";
 import { PercentIcon } from "@pisagor/solid/icons";
 export function InputCompact() {
   return (

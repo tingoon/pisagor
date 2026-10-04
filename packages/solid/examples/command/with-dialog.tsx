@@ -2,8 +2,7 @@
 
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
-import { Button, Kbd } from "@pisagor/solid";
-import { Command } from "@pisagor/solid/command";
+import { Button, Command, Kbd } from "@pisagor/solid";
 import { ArrowBendDownLeftIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";
 export function WithDialog() {

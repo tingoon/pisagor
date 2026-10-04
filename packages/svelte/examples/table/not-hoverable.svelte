@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Table } from "@pisagor/svelte/table";
+import { Table } from "@pisagor/svelte";
 import { workspaceUsers } from "./helpers";
 </script>
 

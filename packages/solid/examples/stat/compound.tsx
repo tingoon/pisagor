@@ -1,6 +1,7 @@
 /** @jsxImportSource solid-js */
+
+import { Stat } from "@pisagor/solid";
 import { ArrowUpIcon } from "@pisagor/solid/icons";
-import { Stat } from "@pisagor/solid/stat";
 
 export function Compound() {
   return (

@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button } from "@pisagor/solid";
-import { DropdownMenu } from "@pisagor/solid/dropdown-menu";
+import { Button, DropdownMenu } from "@pisagor/solid";
 export function WithScroll() {
   const items = Array.from({ length: 15 }, (_, i) => `Item ${i + 1}`);
   return (

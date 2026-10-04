@@ -6,7 +6,7 @@ import variantsRaw from "./variants.tsx?raw";
 import with_actionRaw from "./with-action.tsx?raw";
 import with_iconRaw from "./with-icon.tsx?raw";
 
-export const imports = `import { Alert } from "@pisagor/solid/alert";`;
+export const imports = `import { Alert } from "@pisagor/solid";`;
 
 export const sources = {
   Compound: stripTsxExample(compoundRaw),
@@ -17,9 +17,9 @@ export const sources = {
   WithIcon: stripTsxExample(with_iconRaw),
 } as const;
 
-export { Compound } from "./compound";
-export { CustomColor } from "./custom-color";
-export { Default } from "./default";
-export { Variants } from "./variants";
-export { WithAction } from "./with-action";
-export { WithIcon } from "./with-icon";
+export * from "./compound";
+export * from "./custom-color";
+export * from "./default";
+export * from "./variants";
+export * from "./with-action";
+export * from "./with-icon";

@@ -1,6 +1,7 @@
 /** @jsxImportSource solid-js */
+
+import { Steps } from "@pisagor/solid";
 import { CircleNotchIcon } from "@pisagor/solid/icons";
-import { Steps } from "@pisagor/solid/steps";
 
 export function Loading() {
   const items = [

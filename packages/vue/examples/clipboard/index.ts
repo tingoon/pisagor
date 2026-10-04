@@ -7,7 +7,7 @@ import on_surfaceRaw from "./on-surface.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import with_labelRaw from "./with-label.vue?raw";
 
-export const imports = `import { Clipboard } from "@pisagor/vue/clipboard";`;
+export const imports = `import { Clipboard } from "@pisagor/vue";`;
 
 export const sources = {
   Controlled: stripVueExample(controlledRaw),

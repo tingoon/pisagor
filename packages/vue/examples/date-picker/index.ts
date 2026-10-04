@@ -10,7 +10,7 @@ import timeRaw from "./time.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import with_presetsRaw from "./with-presets.vue?raw";
 
-export const imports = `import { DatePicker } from "@pisagor/vue/date-picker";`;
+export const imports = `import { DatePicker } from "@pisagor/vue";`;
 
 export const sources = {
   Clearable: stripVueExample(clearableRaw),

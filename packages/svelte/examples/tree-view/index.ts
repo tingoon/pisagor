@@ -10,7 +10,7 @@ import multiple_selectionRaw from "./multiple-selection.svelte?raw";
 import renameRaw from "./rename.svelte?raw";
 import with_context_menuRaw from "./with-context-menu.svelte?raw";
 
-export const imports = `import { TreeView } from "@pisagor/svelte/tree-view";`;
+export const imports = `import { TreeView } from "@pisagor/svelte";`;
 
 export const sources = {
   CheckboxTree: stripSvelteExample(checkbox_treeRaw),

@@ -1,7 +1,5 @@
 <script lang="ts">
-import { ActionBar } from "@pisagor/svelte/action-bar";
-import { AlertDialog } from "@pisagor/svelte/alert-dialog";
-import { Button } from "@pisagor/svelte/button";
+import { ActionBar, AlertDialog, Button } from "@pisagor/svelte";
 import { TrashIcon, XIcon } from "@pisagor/svelte/icons";
 </script>
 

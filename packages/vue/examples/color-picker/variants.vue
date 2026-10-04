@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { InputGroup } from "@pisagor/vue";
-import { ColorPicker } from "../../src/components/color-picker";
+import { ColorPicker, InputGroup } from "@pisagor/vue";
 </script>
 
 <template>

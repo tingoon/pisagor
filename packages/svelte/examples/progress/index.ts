@@ -6,7 +6,7 @@ import orientation_horizontalRaw from "./orientation-horizontal.svelte?raw";
 import orientation_verticalRaw from "./orientation-vertical.svelte?raw";
 import with_labelRaw from "./with-label.svelte?raw";
 
-export const imports = `import { Progress } from "@pisagor/svelte/progress";`;
+export const imports = `import { Progress } from "@pisagor/svelte";`;
 
 export const sources = {
   Controlled: stripSvelteExample(controlledRaw),

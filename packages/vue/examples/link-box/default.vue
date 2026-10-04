@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { LinkBox } from "../../src/components/link-box";
+import { LinkBox } from "@pisagor/vue";
 </script>
 
 <template>

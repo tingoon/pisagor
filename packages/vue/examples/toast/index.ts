@@ -8,7 +8,7 @@ import placementsRaw from "./placements.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import with_promiseRaw from "./with-promise.vue?raw";
 
-export const imports = `import { toast } from "@pisagor/vue/toast";`;
+export const imports = `import { toast } from "@pisagor/vue";`;
 
 export const sources = {
   Action: stripVueExample(actionRaw),

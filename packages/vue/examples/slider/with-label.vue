@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Field } from "@pisagor/vue";
-import { Slider } from "../../src/components/slider";
+import { Field, Slider } from "@pisagor/vue";
 </script>
 
 <template>

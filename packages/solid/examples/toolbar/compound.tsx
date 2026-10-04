@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button } from "@pisagor/solid";
-import { Toolbar } from "@pisagor/solid/toolbar";
+import { Button, Toolbar } from "@pisagor/solid";
 export function Compound() {
   return (
     <Toolbar.Root>

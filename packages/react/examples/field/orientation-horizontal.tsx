@@ -1,5 +1,4 @@
-import { Switch } from "@pisagor/react";
-import { Field } from "@pisagor/react/field";
+import { Field, Switch } from "@pisagor/react";
 export function OrientationHorizontal() {
   return (
     <Field orientation="horizontal">

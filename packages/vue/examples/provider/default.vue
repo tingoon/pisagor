@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Provider } from "../../src/components/provider";
+import { Provider } from "@pisagor/vue";
 </script>
 
 <template>

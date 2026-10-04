@@ -1,7 +1,7 @@
 <script lang="ts">
 import { useListCollection } from "@ark-ui/svelte/collection";
 import { useFilter } from "@ark-ui/svelte/locale";
-import { Autocomplete } from "@pisagor/svelte/autocomplete";
+import { Autocomplete } from "@pisagor/svelte";
 
 const initialItems = [
     { label: "Apple", value: "apple" },

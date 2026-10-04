@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { ScrollArea } from "@pisagor/solid/scroll-area";
-import { Separator } from "@pisagor/solid/separator";
+import { ScrollArea, Separator } from "@pisagor/solid";
 import { For } from "solid-js";
 
 export function Default() {

@@ -5,7 +5,7 @@ import footerRaw from "./footer.svelte?raw";
 import not_hoverableRaw from "./not-hoverable.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 
-export const imports = `import { Table } from "@pisagor/svelte/table";`;
+export const imports = `import { Table } from "@pisagor/svelte";`;
 
 export const sources = {
   Actions: stripSvelteExample(actionsRaw),

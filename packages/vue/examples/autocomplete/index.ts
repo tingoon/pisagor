@@ -12,7 +12,7 @@ import with_clear_buttonRaw from "./with-clear-button.vue?raw";
 import with_start_iconRaw from "./with-start-icon.vue?raw";
 import with_triggerRaw from "./with-trigger.vue?raw";
 
-export const imports = `import { Autocomplete } from "@pisagor/vue/autocomplete";`;
+export const imports = `import { Autocomplete } from "@pisagor/vue";`;
 
 export const sources = {
   Compound: stripVueExample(compoundRaw),

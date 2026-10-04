@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte/button";
-import { Sheet } from "@pisagor/svelte/sheet";
+import { Button, Sheet } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap justify-center gap-2">

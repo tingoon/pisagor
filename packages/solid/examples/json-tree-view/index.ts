@@ -4,7 +4,7 @@ import defaultRaw from "./default.tsx?raw";
 import expand_depthRaw from "./expand-depth.tsx?raw";
 import map_setRaw from "./map-set.tsx?raw";
 
-export const imports = `import { JsonTreeView } from "@pisagor/solid/json-tree-view";`;
+export const imports = `import { JsonTreeView } from "@pisagor/solid";`;
 
 export const sources = {
   DataTypes: stripTsxExample(data_typesRaw),
@@ -13,7 +13,7 @@ export const sources = {
   MapSet: stripTsxExample(map_setRaw),
 } as const;
 
-export { DataTypes } from "./data-types";
-export { Default } from "./default";
-export { ExpandDepth } from "./expand-depth";
-export { MapSet } from "./map-set";
+export * from "./data-types";
+export * from "./default";
+export * from "./expand-depth";
+export * from "./map-set";

@@ -1,6 +1,5 @@
 import { FloppyDiskIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react";
-import { Kbd } from "@pisagor/react/kbd";
+import { Button, Kbd } from "@pisagor/react";
 export function WithButton() {
   return (
     <Button variant="outline">

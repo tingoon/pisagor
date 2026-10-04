@@ -1,9 +1,8 @@
 /** @jsxImportSource solid-js */
 
-import { createTreeCollection } from "@pisagor/solid";
+import type { NodeProviderProps, TreeNodeType } from "@pisagor/solid";
+import { createTreeCollection, TreeView } from "@pisagor/solid";
 import { ArrowSquareOutIcon, LinkIcon } from "@pisagor/solid/icons";
-import type { NodeProviderProps, TreeNodeType } from "@pisagor/solid/tree-view";
-import { TreeView } from "@pisagor/solid/tree-view";
 export function Links() {
   interface TreeNodeWithLinks extends TreeNodeType<unknown> {
     href?: string;

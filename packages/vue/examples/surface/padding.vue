@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Surface } from "../../src/components/surface";
+import { Surface } from "@pisagor/vue";
 </script>
 
 <template>

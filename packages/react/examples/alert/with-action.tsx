@@ -1,6 +1,5 @@
 import { ClockCounterClockwiseIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react";
-import { Alert } from "@pisagor/react/alert";
+import { Alert, Button } from "@pisagor/react";
 export function WithAction() {
   return (
     <Alert

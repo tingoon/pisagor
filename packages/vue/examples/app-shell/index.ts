@@ -9,7 +9,7 @@ import navigationRaw from "./navigation.ts?raw";
 import panelsRaw from "./panels.ts?raw";
 import railsRaw from "./rails.ts?raw";
 
-export const imports = `import { AppShell } from "@pisagor/vue/app-shell";`;
+export const imports = `import { AppShell } from "@pisagor/vue";`;
 
 export const sources = {
   Banner: stripVueExample(bannerRaw),

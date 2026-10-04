@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { AspectRatio } from "../../src/components/aspect-ratio";
+import { AspectRatio } from "@pisagor/vue";
 </script>
 
 <template>

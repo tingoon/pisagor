@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Input } from "@pisagor/svelte/input";
+import { Input } from "@pisagor/svelte";
 
 let value = $state("Hello world");
 

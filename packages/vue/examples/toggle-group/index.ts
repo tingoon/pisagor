@@ -12,7 +12,7 @@ import spacingRaw from "./spacing.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import verticalRaw from "./vertical.vue?raw";
 
-export const imports = `import { ToggleGroup } from "@pisagor/vue/toggle-group";`;
+export const imports = `import { ToggleGroup } from "@pisagor/vue";`;
 
 export const sources = {
   Compound: stripVueExample(compoundRaw),

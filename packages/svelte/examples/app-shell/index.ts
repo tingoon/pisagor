@@ -9,7 +9,7 @@ import navigationRaw from "./navigation.svelte?raw";
 import panelsRaw from "./panels.svelte?raw";
 import railsRaw from "./rails.svelte?raw";
 
-export const imports = `import { AppShell } from "@pisagor/svelte/app-shell";`;
+export const imports = `import { AppShell } from "@pisagor/svelte";`;
 
 export const sources = {
   Banner: stripSvelteExample(bannerRaw),

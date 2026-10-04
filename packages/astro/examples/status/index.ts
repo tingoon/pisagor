@@ -4,7 +4,7 @@ import sizesRaw from "./sizes.astro?raw";
 import variantsRaw from "./variants.astro?raw";
 
 export const imports = `---
-import { Status } from "@pisagor/astro/status";
+import { Status } from "@pisagor/astro";
 ---`;
 
 export const sources = {

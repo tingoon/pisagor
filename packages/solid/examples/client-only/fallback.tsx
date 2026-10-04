@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { ClientOnly } from "@pisagor/solid/client-only";
+import { ClientOnly } from "@pisagor/solid";
 
 export function Fallback() {
   const CurrentTime = () => {

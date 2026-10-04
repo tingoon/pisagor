@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { PhTextB, PhTextItalic, PhTextUnderline } from "@phosphor-icons/vue";
+import { ToggleGroup } from "@pisagor/vue";
 import { ref } from "vue";
-import { ToggleGroup } from "../../src/components/toggle-group";
 
 const value = ref(["bold"]);
 

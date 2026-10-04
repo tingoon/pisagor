@@ -11,7 +11,7 @@ import sizesRaw from "./sizes.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import with_iconRaw from "./with-icon.vue?raw";
 
-export const imports = `import { Button } from "@pisagor/vue/button";`;
+export const imports = `import { Button } from "@pisagor/vue";`;
 
 export const sources = {
   AsChild: stripVueExample(as_childRaw),

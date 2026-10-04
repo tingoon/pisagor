@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Surface } from "@pisagor/solid/surface";
+import { Surface } from "@pisagor/solid";
 
 export function Padding() {
   return (

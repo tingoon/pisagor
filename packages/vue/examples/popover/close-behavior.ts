@@ -1,6 +1,5 @@
+import { Button, Popover } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Popover } from "../../src/components/popover";
-import { outlineButtonClass } from "../../src/internal/story-button";
 
 export default defineComponent({
   name: "CloseBehavior",
@@ -10,8 +9,8 @@ export default defineComponent({
         h(Popover, { closeOnInteractOutside: false }, () => [
           h(Popover.Trigger, { asChild: true }, () =>
             h(
-              "button",
-              { class: outlineButtonClass(), type: "button" },
+              Button,
+              { type: "button", variant: "outline" },
               "Open outside click",
             ),
           ),
@@ -25,11 +24,7 @@ export default defineComponent({
         ]),
         h(Popover, { closeOnEscape: false }, () => [
           h(Popover.Trigger, { asChild: true }, () =>
-            h(
-              "button",
-              { class: outlineButtonClass(), type: "button" },
-              "Open escape",
-            ),
+            h(Button, { type: "button", variant: "outline" }, "Open escape"),
           ),
           h(Popover.Content, { showCloseButton: true }, () =>
             h(Popover.Header, {

@@ -1,4 +1,4 @@
-import { Toggle } from "@pisagor/react/toggle";
+import { Toggle } from "@pisagor/react";
 
 export function Default() {
   return <Toggle>Toggle</Toggle>;

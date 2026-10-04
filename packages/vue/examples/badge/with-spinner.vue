@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Spinner } from "@pisagor/vue";
-import { Badge } from "../../src/components/badge";
+import { Badge, Spinner } from "@pisagor/vue";
 </script>
 
 <template>

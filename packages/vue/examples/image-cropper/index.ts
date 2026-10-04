@@ -8,7 +8,7 @@ import initial_cropRaw from "./initial-crop.vue?raw";
 import min_max_sizeRaw from "./min-max-size.vue?raw";
 import zoom_limitsRaw from "./zoom-limits.vue?raw";
 
-export const imports = `import { ImageCropper } from "@pisagor/vue/image-cropper";`;
+export const imports = `import { ImageCropper } from "@pisagor/vue";`;
 
 export const sources = {
   AspectRatio: stripVueExample(aspect_ratioRaw),

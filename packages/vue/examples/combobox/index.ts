@@ -14,7 +14,7 @@ import with_clear_buttonRaw from "./with-clear-button.vue?raw";
 import with_scrollRaw from "./with-scroll.vue?raw";
 import with_start_iconRaw from "./with-start-icon.vue?raw";
 
-export const imports = `import { Combobox } from "@pisagor/vue/combobox";`;
+export const imports = `import { Combobox } from "@pisagor/vue";`;
 
 export const sources = {
   Autohighlight: stripVueExample(autohighlightRaw),

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Tabs } from "../../src/components/tabs";
+import { Tabs } from "@pisagor/vue";
 import { variantTabs } from "./helpers";
 
 const defaultItems = variantTabs("Default variant");

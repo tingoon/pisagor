@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 import { PhAppleLogo } from "@phosphor-icons/vue";
-import { InputGroup } from "@pisagor/vue";
-import { Autocomplete } from "../../src/components/autocomplete";
+import { Autocomplete, InputGroup } from "@pisagor/vue";
 
 const initialItems = [
   { label: "Apple", value: "apple" },

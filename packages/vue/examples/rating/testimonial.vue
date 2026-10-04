@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Avatar, Card } from "@pisagor/vue";
-import { Rating } from "../../src/components/rating";
+import { Avatar, Card, Rating } from "@pisagor/vue";
 </script>
 
 <template>

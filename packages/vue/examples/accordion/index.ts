@@ -7,7 +7,7 @@ import multipleRaw from "./multiple.vue?raw";
 import non_collapsibleRaw from "./non-collapsible.vue?raw";
 import with_cardRaw from "./with-card.vue?raw";
 
-export const imports = `import { Accordion } from "@pisagor/vue/accordion";`;
+export const imports = `import { Accordion } from "@pisagor/vue";`;
 
 export const sources = {
   Compound: stripVueExample(compoundRaw),

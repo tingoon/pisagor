@@ -9,7 +9,7 @@ import on_surfaceRaw from "./on-surface.vue?raw";
 import sizesRaw from "./sizes.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 
-export const imports = `import { FileInput } from "@pisagor/vue/file-input";`;
+export const imports = `import { FileInput } from "@pisagor/vue";`;
 
 export const sources = {
   Accept: stripVueExample(acceptRaw),

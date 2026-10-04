@@ -1,6 +1,5 @@
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react";
-import { Steps } from "@pisagor/react/steps";
+import { Button, Steps } from "@pisagor/react";
 export function Default() {
   const steps = Array.from({ length: 3 }, (_, index) => index + 1);
   return (

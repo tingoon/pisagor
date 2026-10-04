@@ -6,7 +6,7 @@ import insetRaw from "./inset.svelte?raw";
 import snap_pointsRaw from "./snap-points.svelte?raw";
 import swipe_directionsRaw from "./swipe-directions.svelte?raw";
 
-export const imports = `import { Drawer } from "@pisagor/svelte/drawer";`;
+export const imports = `import { Drawer } from "@pisagor/svelte";`;
 
 export const sources = {
   CustomSpacing: stripSvelteExample(custom_spacingRaw),

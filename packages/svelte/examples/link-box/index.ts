@@ -3,7 +3,7 @@ import articleRaw from "./article.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
 import with_linkRaw from "./with-link.svelte?raw";
 
-export const imports = `import { LinkBox } from "@pisagor/svelte/link-box";`;
+export const imports = `import { LinkBox } from "@pisagor/svelte";`;
 
 export const sources = {
   Article: stripSvelteExample(articleRaw),

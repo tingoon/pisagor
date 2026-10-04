@@ -10,7 +10,7 @@ import multiple_selectionRaw from "./multiple-selection.tsx?raw";
 import renameRaw from "./rename.tsx?raw";
 import with_context_menuRaw from "./with-context-menu.tsx?raw";
 
-export const imports = `import { TreeView } from "@pisagor/solid/tree-view";`;
+export const imports = `import { TreeView } from "@pisagor/solid";`;
 
 export const sources = {
   CheckboxTree: stripTsxExample(checkbox_treeRaw),
@@ -25,13 +25,13 @@ export const sources = {
   WithContextMenu: stripTsxExample(with_context_menuRaw),
 } as const;
 
-export { CheckboxTree } from "./checkbox-tree";
-export { Controlled } from "./controlled";
-export { CustomIcons } from "./custom-icons";
-export { CustomIconsFolder } from "./custom-icons-folder";
-export { CustomIconsItem } from "./custom-icons-item";
-export { Default } from "./default";
-export { Links } from "./links";
-export { MultipleSelection } from "./multiple-selection";
-export { Rename } from "./rename";
-export { WithContextMenu } from "./with-context-menu";
+export * from "./checkbox-tree";
+export * from "./controlled";
+export * from "./custom-icons";
+export * from "./custom-icons-folder";
+export * from "./custom-icons-item";
+export * from "./default";
+export * from "./links";
+export * from "./multiple-selection";
+export * from "./rename";
+export * from "./with-context-menu";

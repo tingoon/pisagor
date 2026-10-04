@@ -1,6 +1,7 @@
 /** @jsxImportSource solid-js */
+
+import { Steps } from "@pisagor/solid";
 import { CreditCardIcon, HardDriveIcon, UserIcon } from "@pisagor/solid/icons";
-import { Steps } from "@pisagor/solid/steps";
 
 export function Icon() {
   const items = [

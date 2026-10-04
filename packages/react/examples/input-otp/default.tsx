@@ -1,4 +1,4 @@
-import { InputOTP } from "@pisagor/react/input-otp";
+import { InputOTP } from "@pisagor/react";
 
 export function Default() {
   return (

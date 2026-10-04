@@ -9,7 +9,7 @@ import thicknessRaw from "./thickness.svelte?raw";
 import with_markersRaw from "./with-markers.svelte?raw";
 import with_valueRaw from "./with-value.svelte?raw";
 
-export const imports = `import { CircularSlider } from "@pisagor/svelte/circular-slider";`;
+export const imports = `import { CircularSlider } from "@pisagor/svelte";`;
 
 export const sources = {
   Controlled: stripSvelteExample(controlledRaw),

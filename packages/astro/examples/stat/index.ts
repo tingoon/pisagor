@@ -4,7 +4,7 @@ import variantsRaw from "./variants.astro?raw";
 import with_trendRaw from "./with-trend.astro?raw";
 
 export const imports = `---
-import { Stat } from "@pisagor/astro/stat";
+import { Stat } from "@pisagor/astro";
 ---`;
 
 export const sources = {

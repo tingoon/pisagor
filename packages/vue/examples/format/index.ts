@@ -10,7 +10,7 @@ import number_storyRaw from "./number-story.vue?raw";
 import relative_timeRaw from "./relative-time.vue?raw";
 import relative_time_shortRaw from "./relative-time-short.vue?raw";
 
-export const imports = `import { Format } from "@pisagor/vue/format";`;
+export const imports = `import { Format } from "@pisagor/vue";`;
 
 export const sources = {
   Byte: stripVueExample(byteRaw),

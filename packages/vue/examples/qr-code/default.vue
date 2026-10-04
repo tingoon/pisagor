@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { QrCode } from "../../src/components/qr-code";
+import { QrCode } from "@pisagor/vue";
 </script>
 
 <template>

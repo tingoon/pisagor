@@ -6,7 +6,7 @@ import insetRaw from "./inset.ts?raw";
 import snap_pointsRaw from "./snap-points.ts?raw";
 import swipe_directionsRaw from "./swipe-directions.ts?raw";
 
-export const imports = `import { Drawer } from "@pisagor/vue/drawer";`;
+export const imports = `import { Drawer } from "@pisagor/vue";`;
 
 export const sources = {
   CustomSpacing: stripVueExample(custom_spacingRaw),

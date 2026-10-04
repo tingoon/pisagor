@@ -6,7 +6,7 @@ import orientation_horizontalRaw from "./orientation-horizontal.vue?raw";
 import orientation_verticalRaw from "./orientation-vertical.vue?raw";
 import with_labelRaw from "./with-label.vue?raw";
 
-export const imports = `import { Progress } from "@pisagor/vue/progress";`;
+export const imports = `import { Progress } from "@pisagor/vue";`;
 
 export const sources = {
   Controlled: stripVueExample(controlledRaw),

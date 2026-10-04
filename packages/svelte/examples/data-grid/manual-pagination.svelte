@@ -1,8 +1,7 @@
 <script lang="ts">
+import { Pagination, Table } from "@pisagor/svelte";
 import type { PaginationState } from "@pisagor/svelte/data-grid";
 import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import { Pagination } from "@pisagor/svelte/pagination";
-import { Table } from "@pisagor/svelte/table";
 import { allUsers, userColumns } from "./helpers";
 
 const columns = [...userColumns];

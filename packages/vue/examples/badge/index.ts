@@ -7,7 +7,7 @@ import variantsRaw from "./variants.vue?raw";
 import with_linkRaw from "./with-link.vue?raw";
 import with_spinnerRaw from "./with-spinner.vue?raw";
 
-export const imports = `import { Badge } from "@pisagor/vue/badge";`;
+export const imports = `import { Badge } from "@pisagor/vue";`;
 
 export const sources = {
   CustomColor: stripVueExample(custom_colorRaw),

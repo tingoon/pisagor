@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Toggle } from "@pisagor/svelte/toggle";
+import { Toggle } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap items-center gap-2">

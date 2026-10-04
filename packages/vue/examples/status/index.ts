@@ -6,7 +6,7 @@ import sizesRaw from "./sizes.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import with_iconRaw from "./with-icon.vue?raw";
 
-export const imports = `import { Status } from "@pisagor/vue/status";`;
+export const imports = `import { Status } from "@pisagor/vue";`;
 
 export const sources = {
   CustomColor: stripVueExample(custom_colorRaw),

@@ -9,7 +9,7 @@ import orientation_horizontalRaw from "./orientation-horizontal.vue?raw";
 import orientation_verticalRaw from "./orientation-vertical.vue?raw";
 import pomodoroRaw from "./pomodoro.vue?raw";
 
-export const imports = `import { Timer } from "@pisagor/vue/timer";`;
+export const imports = `import { Timer } from "@pisagor/vue";`;
 
 export const sources = {
   Controlled: stripVueExample(controlledRaw),

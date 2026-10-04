@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { NumberInput } from "@pisagor/solid/number-input";
+import { NumberInput } from "@pisagor/solid";
 
 export function Disabled() {
   return (

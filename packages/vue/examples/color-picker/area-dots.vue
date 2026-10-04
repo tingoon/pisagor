@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ColorPicker } from "../../src/components/color-picker";
+import { ColorPicker } from "@pisagor/vue";
 </script>
 
 <template>

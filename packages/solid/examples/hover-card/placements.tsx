@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button } from "@pisagor/solid";
-import { HoverCard } from "@pisagor/solid/hover-card";
+import { Button, HoverCard } from "@pisagor/solid";
 export function Placements() {
   const placements = ["left", "top", "bottom", "right"] as const;
   return (

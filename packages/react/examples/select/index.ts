@@ -12,7 +12,7 @@ import sizesRaw from "./sizes.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 import with_scrollRaw from "./with-scroll.tsx?raw";
 
-export const imports = `import { Select } from "@pisagor/react/select";`;
+export const imports = `import { Select } from "@pisagor/react";`;
 
 export const sources = {
   Compound: stripTsxExample(compoundRaw),
@@ -29,15 +29,15 @@ export const sources = {
   WithScroll: stripTsxExample(with_scrollRaw),
 } as const;
 
-export { Compound } from "./compound";
-export { Controlled } from "./controlled";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { Empty } from "./empty";
-export { Grouping } from "./grouping";
-export { Invalid } from "./invalid";
-export { MaxSelection } from "./max-selection";
-export { Multiple } from "./multiple";
-export { Sizes } from "./sizes";
-export { Variants } from "./variants";
-export { WithScroll } from "./with-scroll";
+export * from "./compound";
+export * from "./controlled";
+export * from "./default";
+export * from "./disabled";
+export * from "./empty";
+export * from "./grouping";
+export * from "./invalid";
+export * from "./max-selection";
+export * from "./multiple";
+export * from "./sizes";
+export * from "./variants";
+export * from "./with-scroll";

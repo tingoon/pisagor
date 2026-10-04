@@ -3,7 +3,7 @@ import defaultRaw from "./default.vue?raw";
 import in_cardRaw from "./in-card.vue?raw";
 import skeleton_text_storyRaw from "./skeleton-text-story.vue?raw";
 
-export const imports = `import { Skeleton } from "@pisagor/vue/skeleton";`;
+export const imports = `import { Skeleton } from "@pisagor/vue";`;
 
 export const sources = {
   Default: stripVueExample(defaultRaw),

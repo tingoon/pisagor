@@ -8,7 +8,7 @@ import placementsRaw from "./placements.tsx?raw";
 import with_dialogRaw from "./with-dialog.tsx?raw";
 import with_menuRaw from "./with-menu.tsx?raw";
 
-export const imports = `import { ActionBar } from "@pisagor/react/action-bar";`;
+export const imports = `import { ActionBar } from "@pisagor/react";`;
 
 export const sources = {
   CloseTrigger: stripTsxExample(close_triggerRaw),
@@ -21,11 +21,11 @@ export const sources = {
   WithMenu: stripTsxExample(with_menuRaw),
 } as const;
 
-export { CloseTrigger } from "./close-trigger";
-export { Controlled } from "./controlled";
-export { CustomSpacing } from "./custom-spacing";
-export { Default } from "./default";
-export { Gutter } from "./gutter";
-export { Placements } from "./placements";
-export { WithDialog } from "./with-dialog";
-export { WithMenu } from "./with-menu";
+export * from "./close-trigger";
+export * from "./controlled";
+export * from "./custom-spacing";
+export * from "./default";
+export * from "./gutter";
+export * from "./placements";
+export * from "./with-dialog";
+export * from "./with-menu";

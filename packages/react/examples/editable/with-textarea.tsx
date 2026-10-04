@@ -1,6 +1,5 @@
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
-import { Button, Card, Field, Textarea } from "@pisagor/react";
-import { Editable } from "@pisagor/react/editable";
+import { Button, Card, Editable, Field, Textarea } from "@pisagor/react";
 export function WithTextarea() {
   return (
     <Card>

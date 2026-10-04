@@ -5,7 +5,7 @@ import multipleRaw from "./multiple.svelte?raw";
 import search_queryRaw from "./search-query.svelte?raw";
 import squiggleRaw from "./squiggle.svelte?raw";
 
-export const imports = `import { Highlight } from "@pisagor/svelte/highlight";`;
+export const imports = `import { Highlight } from "@pisagor/svelte";`;
 
 export const sources = {
   CustomStyle: stripSvelteExample(custom_styleRaw),

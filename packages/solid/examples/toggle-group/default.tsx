@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { ToggleGroup } from "@pisagor/solid/toggle-group";
+import { ToggleGroup } from "@pisagor/solid";
 
 export function Default() {
   return (

@@ -5,7 +5,7 @@ import orientation_verticalRaw from "./orientation-vertical.astro?raw";
 import with_separatorRaw from "./with-separator.astro?raw";
 
 export const imports = `---
-import { ButtonGroup } from "@pisagor/astro/button-group";
+import { ButtonGroup } from "@pisagor/astro";
 ---`;
 
 export const sources = {

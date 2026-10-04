@@ -13,7 +13,7 @@ import multiple_filesRaw from "./multiple-files.svelte?raw";
 import triggerRaw from "./trigger.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 
-export const imports = `import { FileUpload } from "@pisagor/svelte/file-upload";`;
+export const imports = `import { FileUpload } from "@pisagor/svelte";`;
 
 export const sources = {
   AcceptedFileTypes: stripSvelteExample(accepted_file_typesRaw),

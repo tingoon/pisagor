@@ -17,7 +17,7 @@ import with_filterRaw from "./with-filter.vue?raw";
 import with_iconRaw from "./with-icon.vue?raw";
 import with_popoverRaw from "./with-popover.ts?raw";
 
-export const imports = `import { Listbox } from "@pisagor/vue/listbox";`;
+export const imports = `import { Listbox } from "@pisagor/vue";`;
 
 export const sources = {
   Compound: stripVueExample(compoundRaw),

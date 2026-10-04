@@ -7,7 +7,7 @@ import sizesRaw from "./sizes.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_iconRaw from "./with-icon.svelte?raw";
 
-export const imports = `import { Toggle } from "@pisagor/svelte/toggle";`;
+export const imports = `import { Toggle } from "@pisagor/svelte";`;
 
 export const sources = {
   Controlled: stripSvelteExample(controlledRaw),

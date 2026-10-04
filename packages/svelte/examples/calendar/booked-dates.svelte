@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Card } from "@pisagor/svelte";
-import { Calendar } from "@pisagor/svelte/calendar";
+import { Calendar, Card } from "@pisagor/svelte";
 
 const isWeekend = (date: { year: number; month: number; day: number }) => {
     const dayOfWeek = new Date(date.year, date.month - 1, date.day).getDay();

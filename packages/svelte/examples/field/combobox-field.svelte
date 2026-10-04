@@ -1,8 +1,7 @@
 <script lang="ts">
 import { useListCollection } from "@ark-ui/svelte/collection";
 import { useFilter } from "@ark-ui/svelte/locale";
-import { Combobox } from "@pisagor/svelte";
-import { Field } from "@pisagor/svelte/field";
+import { Combobox, Field } from "@pisagor/svelte";
 
 const initialItems = [
     { label: "Apple", value: "apple" },

@@ -9,7 +9,7 @@ import orientation_horizontalRaw from "./orientation-horizontal.tsx?raw";
 import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
 import pomodoroRaw from "./pomodoro.tsx?raw";
 
-export const imports = `import { Timer } from "@pisagor/react/timer";`;
+export const imports = `import { Timer } from "@pisagor/react";`;
 
 export const sources = {
   Controlled: stripTsxExample(controlledRaw),
@@ -23,12 +23,12 @@ export const sources = {
   Pomodoro: stripTsxExample(pomodoroRaw),
 } as const;
 
-export { Controlled } from "./controlled";
-export { Countdown } from "./countdown";
-export { CountdownDate } from "./countdown-date";
-export { CustomSeparator } from "./custom-separator";
-export { Default } from "./default";
-export { Interval } from "./interval";
-export { OrientationHorizontal } from "./orientation-horizontal";
-export { OrientationVertical } from "./orientation-vertical";
-export { Pomodoro } from "./pomodoro";
+export * from "./controlled";
+export * from "./countdown";
+export * from "./countdown-date";
+export * from "./custom-separator";
+export * from "./default";
+export * from "./interval";
+export * from "./orientation-horizontal";
+export * from "./orientation-vertical";
+export * from "./pomodoro";

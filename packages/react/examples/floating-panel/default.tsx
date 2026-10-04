@@ -1,7 +1,12 @@
 import { createListCollection } from "@ark-ui/react";
 import { GearSixIcon, XIcon } from "@phosphor-icons/react";
-import { Button, Field, NumberInput, Select } from "@pisagor/react";
-import { FloatingPanel } from "@pisagor/react/floating-panel";
+import {
+  Button,
+  Field,
+  FloatingPanel,
+  NumberInput,
+  Select,
+} from "@pisagor/react";
 export function Default() {
   const collection = createListCollection({
     items: ["Inter", "Roboto", "Helvetica", "Geist"],

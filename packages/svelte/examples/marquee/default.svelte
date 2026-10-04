@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Marquee } from "@pisagor/svelte/marquee";
+import { Marquee } from "@pisagor/svelte";
 </script>
 
 <Marquee items={["Pisagor", "Svelte", "Ark UI", "Recipes"]} />

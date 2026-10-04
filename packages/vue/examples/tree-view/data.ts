@@ -1,4 +1,4 @@
-import type { TreeNodeType } from "../../src/components/tree-view";
+import type { TreeNodeType } from "@pisagor/vue";
 
 export const sampleFileTree: TreeNodeType = {
   children: [

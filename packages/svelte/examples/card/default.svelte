@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Card } from "@pisagor/svelte/card";
+import { Card } from "@pisagor/svelte";
 </script>
 
 <Card>

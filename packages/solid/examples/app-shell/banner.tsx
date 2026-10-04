@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Announcement, Badge, Button } from "@pisagor/solid";
-import { AppShell } from "@pisagor/solid/app-shell";
+import { Announcement, AppShell, Badge, Button } from "@pisagor/solid";
 import { WarningIcon } from "@pisagor/solid/icons";
 import { createSignal, Show } from "solid-js";
 import { mainContent } from "./helpers";

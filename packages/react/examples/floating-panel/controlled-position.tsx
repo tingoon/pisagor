@@ -6,8 +6,7 @@ import {
   GearSixIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react";
-import { FloatingPanel } from "@pisagor/react/floating-panel";
+import { Button, FloatingPanel } from "@pisagor/react";
 import { useState } from "react";
 export function ControlledPosition() {
   const [position, setPosition] = useState({ x: 200, y: 200 });

@@ -1,8 +1,6 @@
 <script lang="ts">
 import { createListCollection } from "@ark-ui/svelte/collection";
-import { Combobox } from "@pisagor/svelte/combobox";
-import { Field } from "@pisagor/svelte/field";
-import { TagsInput } from "@pisagor/svelte/tags-input";
+import { Combobox, Field, TagsInput } from "@pisagor/svelte";
 
 const frameworks = [
   "React",

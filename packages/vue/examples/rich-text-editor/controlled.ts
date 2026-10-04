@@ -1,5 +1,5 @@
+import { RichTextEditor } from "@pisagor/vue/rich-text-editor";
 import { ref } from "vue";
-import { RichTextEditor } from "../../src/rich-text-editor";
 
 export function Controlled() {
   return {

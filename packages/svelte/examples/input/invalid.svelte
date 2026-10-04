@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Field } from "@pisagor/svelte";
-import { Input } from "@pisagor/svelte/input";
+import { Field, Input } from "@pisagor/svelte";
 </script>
 
 <Field invalid>

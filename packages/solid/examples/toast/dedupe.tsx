@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button } from "@pisagor/solid";
-import { toast } from "@pisagor/solid/toast";
+import { Button, toast } from "@pisagor/solid";
 export function Dedupe() {
   return (
     <div class="flex gap-2">

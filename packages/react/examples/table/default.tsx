@@ -1,6 +1,5 @@
 import type { BadgeVariant } from "@pisagor/react";
-import { Badge } from "@pisagor/react";
-import { Table } from "@pisagor/react/table";
+import { Badge, Table } from "@pisagor/react";
 import { workspaceUsers } from "./helpers";
 export function Default() {
   const statusVariants: Record<string, BadgeVariant> = {

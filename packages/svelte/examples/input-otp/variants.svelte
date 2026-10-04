@@ -1,5 +1,5 @@
 <script lang="ts">
-import { InputOTP } from "@pisagor/svelte/input-otp";
+import { InputOTP } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-col gap-2">

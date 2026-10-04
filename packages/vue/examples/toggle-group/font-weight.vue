@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { ToggleGroup } from "@pisagor/vue";
 import { ref } from "vue";
-import { ToggleGroup } from "../../src/components/toggle-group";
 
 const fontWeights = [
   { className: "font-light", label: "Light", value: "light" },

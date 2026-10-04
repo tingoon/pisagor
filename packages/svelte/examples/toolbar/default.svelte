@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Toolbar } from "@pisagor/svelte/toolbar";
+import { Toolbar } from "@pisagor/svelte";
 </script>
 
 <Toolbar description="Manage your workspace" title="Projects">

@@ -1,8 +1,7 @@
 <script lang="ts">
 import { useListCollection } from "@ark-ui/svelte/collection";
 import { useFilter } from "@ark-ui/svelte/locale";
-import { Button, Kbd } from "@pisagor/svelte";
-import { Command } from "@pisagor/svelte/command";
+import { Button, Command, Kbd } from "@pisagor/svelte";
 import ArrowBendDownLeftIcon from "phosphor-svelte/lib/ArrowBendDownLeftIcon";
 
 const initialItems = [

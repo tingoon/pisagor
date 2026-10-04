@@ -8,7 +8,7 @@ import with_linkRaw from "./with-link.astro?raw";
 import with_spinnerRaw from "./with-spinner.astro?raw";
 
 export const imports = `---
-import { Badge } from "@pisagor/astro/badge";
+import { Badge } from "@pisagor/astro";
 ---`;
 
 export const sources = {

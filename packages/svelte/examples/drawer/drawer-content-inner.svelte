@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button, Field, Input } from "@pisagor/svelte";
-import { Drawer } from "@pisagor/svelte/drawer";
+import { Button, Drawer, Field, Input } from "@pisagor/svelte";
 </script>
 
 <Drawer swipeDirection="down">

@@ -1,5 +1,4 @@
-import { Spinner } from "@pisagor/react";
-import { InputGroup } from "@pisagor/react/input-group";
+import { InputGroup, Spinner } from "@pisagor/react";
 export function WithSpinner() {
   return (
     <InputGroup data-disabled>

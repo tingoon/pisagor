@@ -1,4 +1,4 @@
-import { Sortable } from "@pisagor/react/sortable";
+import { Sortable } from "@pisagor/react";
 import { useState } from "react";
 
 const labels: Record<string, string> = {

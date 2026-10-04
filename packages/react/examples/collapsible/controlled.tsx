@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react";
-import { Collapsible } from "@pisagor/react/collapsible";
+import { Button, Collapsible } from "@pisagor/react";
 import { useState } from "react";
 export function Controlled() {
   const [open, setOpen] = useState(false);

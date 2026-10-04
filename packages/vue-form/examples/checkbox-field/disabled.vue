@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { CheckboxField } from "../../src/fields/checkbox-field";
+import { CheckboxField } from "@pisagor/vue-form";
 </script>
 
 <template>

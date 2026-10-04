@@ -5,7 +5,7 @@ import defaultRaw from "./default.astro?raw";
 import textRaw from "./text.astro?raw";
 
 export const imports = `---
-import { Skeleton } from "@pisagor/astro/skeleton";
+import { Skeleton } from "@pisagor/astro";
 ---`;
 
 export const sources = {

@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { Field } from "@pisagor/vue";
+import { Field, Slider } from "@pisagor/vue";
 import { ref } from "vue";
-import { Slider } from "../../src/components/slider";
 
 const value = ref([40]);
 const onValueChange = setValue;

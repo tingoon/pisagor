@@ -6,7 +6,7 @@ import disabledRaw from "./disabled.tsx?raw";
 import invalidRaw from "./invalid.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 
-export const imports = `import { Textarea } from "@pisagor/solid/textarea";`;
+export const imports = `import { Textarea } from "@pisagor/solid";`;
 
 export const sources = {
   Autoresize: stripTsxExample(autoresizeRaw),
@@ -17,9 +17,9 @@ export const sources = {
   Variants: stripTsxExample(variantsRaw),
 } as const;
 
-export { Autoresize } from "./autoresize";
-export { Controlled } from "./controlled";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { Invalid } from "./invalid";
-export { Variants } from "./variants";
+export * from "./autoresize";
+export * from "./controlled";
+export * from "./default";
+export * from "./disabled";
+export * from "./invalid";
+export * from "./variants";

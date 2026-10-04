@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Status } from "@pisagor/solid/status";
+import { Status } from "@pisagor/solid";
 
 export function CustomColor() {
   return (

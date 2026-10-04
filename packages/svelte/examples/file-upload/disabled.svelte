@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { FileUpload } from "@pisagor/svelte/file-upload";
+import { Button, FileUpload } from "@pisagor/svelte";
 </script>
 
 <FileUpload disabled>

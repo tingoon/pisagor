@@ -5,8 +5,7 @@ import {
   TrashIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { Button, DropdownMenu } from "@pisagor/react";
-import { ActionBar } from "@pisagor/react/action-bar";
+import { ActionBar, Button, DropdownMenu } from "@pisagor/react";
 export function WithMenu() {
   return (
     <ActionBar>

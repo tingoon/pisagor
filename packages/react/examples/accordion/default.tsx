@@ -1,4 +1,4 @@
-import { Accordion } from "@pisagor/react/accordion";
+import { Accordion } from "@pisagor/react";
 import { faqItems } from "./helpers";
 
 export function Default() {

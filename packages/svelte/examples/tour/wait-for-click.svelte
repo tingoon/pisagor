@@ -1,7 +1,6 @@
 <script lang="ts">
 import { waitForEvent } from "@ark-ui/svelte/tour";
-import { Button } from "@pisagor/svelte";
-import { Tour, type TourStepDetails } from "@pisagor/svelte/tour";
+import { Button, Tour, type TourStepDetails } from "@pisagor/svelte";
 
 const steps: TourStepDetails[] = [
   {

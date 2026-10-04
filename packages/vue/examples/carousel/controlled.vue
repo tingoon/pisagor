@@ -1,7 +1,6 @@
 <script lang="ts" setup>
+import { Carousel } from "@pisagor/vue";
 import { ref } from "vue";
-
-import { Carousel } from "../../src/components/carousel";
 import { numberedSlides } from "./helpers";
 
 const slides = numberedSlides(8);

@@ -1,5 +1,5 @@
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
-import { Pagination } from "@pisagor/react/pagination";
+import { Pagination } from "@pisagor/react";
 
 export function Links() {
   return (

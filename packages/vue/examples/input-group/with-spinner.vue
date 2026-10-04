@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Spinner } from "@pisagor/vue";
-import { InputGroup } from "../../src/components/input-group";
+import { InputGroup, Spinner } from "@pisagor/vue";
 </script>
 
 <template>

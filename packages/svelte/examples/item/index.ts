@@ -10,7 +10,7 @@ import variantsRaw from "./variants.svelte?raw";
 import with_avatarRaw from "./with-avatar.svelte?raw";
 import with_mediaRaw from "./with-media.svelte?raw";
 
-export const imports = `import { Item } from "@pisagor/svelte/item";`;
+export const imports = `import { Item } from "@pisagor/svelte";`;
 
 export const sources = {
   CustomSpacing: stripSvelteExample(custom_spacingRaw),

@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { ButtonGroup } from "@pisagor/svelte/button-group";
+import { Button, ButtonGroup } from "@pisagor/svelte";
 import BracketsCurlyIcon from "phosphor-svelte/lib/BracketsCurlyIcon";
 import ImageSquareIcon from "phosphor-svelte/lib/ImageSquareIcon";
 import TextBIcon from "phosphor-svelte/lib/TextBIcon";

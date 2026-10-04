@@ -1,7 +1,7 @@
 <script lang="ts">
+import { Table } from "@pisagor/svelte";
 import type { RowSelectionState } from "@pisagor/svelte/data-grid";
 import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import { Table } from "@pisagor/svelte/table";
 import { allUsers, userColumns } from "./helpers";
 
 const columns = [...userColumns];

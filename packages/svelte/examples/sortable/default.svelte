@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Sortable } from "@pisagor/svelte/sortable";
+import { Sortable } from "@pisagor/svelte";
 
 let items = $state(["one", "two", "three"]);
 </script>

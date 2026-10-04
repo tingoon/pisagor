@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Input } from "@pisagor/vue";
-import { Editable } from "../../src/components/editable";
+import { Editable, Input } from "@pisagor/vue";
 </script>
 
 <template>

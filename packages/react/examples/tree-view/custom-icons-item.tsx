@@ -1,7 +1,6 @@
 import { StarIcon } from "@phosphor-icons/react";
-import { createTreeCollection } from "@pisagor/react";
-import type { NodeProviderProps } from "@pisagor/react/tree-view";
-import { TreeView } from "@pisagor/react/tree-view";
+import type { NodeProviderProps } from "@pisagor/react";
+import { createTreeCollection, TreeView } from "@pisagor/react";
 export function CustomIconsItem() {
   const collection = createTreeCollection({
     rootNode: {

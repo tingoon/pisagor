@@ -1,7 +1,7 @@
 <script lang="ts">
 import { useListCollection } from "@ark-ui/svelte/collection";
 import { useFilter } from "@ark-ui/svelte/locale";
-import { Combobox } from "@pisagor/svelte/combobox";
+import { Combobox } from "@pisagor/svelte";
 
 const initialItems = Array.from({ length: 30 }, (_, i) => ({
     label: `Option ${i + 1}`,

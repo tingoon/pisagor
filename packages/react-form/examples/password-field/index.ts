@@ -11,6 +11,6 @@ export const sources = {
   WithLabelAccessory: stripTsxExample(with_label_accessoryRaw),
 } as const;
 
-export { Disabled } from "./disabled";
-export { Invalid } from "./invalid";
-export { WithLabelAccessory } from "./with-label-accessory";
+export * from "./disabled";
+export * from "./invalid";
+export * from "./with-label-accessory";

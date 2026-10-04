@@ -12,7 +12,7 @@ import spacingRaw from "./spacing.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import verticalRaw from "./vertical.svelte?raw";
 
-export const imports = `import { ToggleGroup } from "@pisagor/svelte/toggle-group";`;
+export const imports = `import { ToggleGroup } from "@pisagor/svelte";`;
 
 export const sources = {
   Compound: stripSvelteExample(compoundRaw),

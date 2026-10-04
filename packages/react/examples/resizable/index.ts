@@ -8,7 +8,7 @@ import multiple_panelsRaw from "./multiple-panels.tsx?raw";
 import orientation_horizontalRaw from "./orientation-horizontal.tsx?raw";
 import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
 
-export const imports = `import { Resizable } from "@pisagor/react/resizable";`;
+export const imports = `import { Resizable } from "@pisagor/react";`;
 
 export const sources = {
   Collapsible: stripTsxExample(collapsibleRaw),
@@ -21,11 +21,11 @@ export const sources = {
   OrientationVertical: stripTsxExample(orientation_verticalRaw),
 } as const;
 
-export { Collapsible } from "./collapsible";
-export { Default } from "./default";
-export { EdgeHandle } from "./edge-handle";
-export { Handle } from "./handle";
-export { MinMax } from "./min-max";
-export { MultiplePanels } from "./multiple-panels";
-export { OrientationHorizontal } from "./orientation-horizontal";
-export { OrientationVertical } from "./orientation-vertical";
+export * from "./collapsible";
+export * from "./default";
+export * from "./edge-handle";
+export * from "./handle";
+export * from "./min-max";
+export * from "./multiple-panels";
+export * from "./orientation-horizontal";
+export * from "./orientation-vertical";

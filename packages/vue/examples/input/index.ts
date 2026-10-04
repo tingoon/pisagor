@@ -10,7 +10,7 @@ import sizesRaw from "./sizes.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import with_fieldRaw from "./with-field.vue?raw";
 
-export const imports = `import { Input } from "@pisagor/vue/input";`;
+export const imports = `import { Input } from "@pisagor/vue";`;
 
 export const sources = {
   Clearable: stripVueExample(clearableRaw),

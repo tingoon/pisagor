@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Carousel } from "@pisagor/svelte/carousel";
+import { Carousel } from "@pisagor/svelte";
 </script>
 
 <Carousel

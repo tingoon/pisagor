@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Separator } from "@pisagor/solid/separator";
+import { Separator } from "@pisagor/solid";
 
 export function InlineNavigation() {
   return (

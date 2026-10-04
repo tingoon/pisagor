@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhMinus, PhPlus } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
-import { ButtonGroup } from "../../src/components/button-group";
+import { Button, ButtonGroup } from "@pisagor/vue";
 </script>
 
 <template>

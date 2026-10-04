@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Badge } from "@pisagor/svelte";
-import { InputGroup } from "@pisagor/svelte/input-group";
+import { Badge, InputGroup } from "@pisagor/svelte";
 import AtIcon from "phosphor-svelte/lib/AtIcon";
 </script>
 

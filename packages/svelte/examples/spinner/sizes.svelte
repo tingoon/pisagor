@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Spinner } from "@pisagor/svelte/spinner";
+import { Spinner } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap items-center gap-2">

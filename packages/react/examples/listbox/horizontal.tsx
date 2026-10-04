@@ -1,6 +1,5 @@
 import { createListCollection } from "@ark-ui/react";
-import { Field } from "@pisagor/react";
-import { Listbox } from "@pisagor/react/listbox";
+import { Field, Listbox } from "@pisagor/react";
 export function Horizontal() {
   const collection = createListCollection({
     items: [

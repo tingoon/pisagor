@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Popover } from "@pisagor/svelte/popover";
+import { Button, Popover } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap justify-center gap-2">

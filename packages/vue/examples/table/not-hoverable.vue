@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Table } from "../../src/components/table";
+import { Table } from "@pisagor/vue";
 import { workspaceUsers } from "./helpers";
 </script>
 

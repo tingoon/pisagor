@@ -10,7 +10,7 @@ import orientation_horizontalRaw from "./orientation-horizontal.vue?raw";
 import orientation_verticalRaw from "./orientation-vertical.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 
-export const imports = `import { SegmentGroup } from "@pisagor/vue/segment-group";`;
+export const imports = `import { SegmentGroup } from "@pisagor/vue";`;
 
 export const sources = {
   Compound: stripVueExample(compoundRaw),

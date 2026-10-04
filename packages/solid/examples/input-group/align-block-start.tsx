@@ -1,6 +1,7 @@
 /** @jsxImportSource solid-js */
+
+import { InputGroup } from "@pisagor/solid";
 import { CopyIcon, FileCodeIcon } from "@pisagor/solid/icons";
-import { InputGroup } from "@pisagor/solid/input-group";
 export function AlignBlockStart() {
   return (
     <div class="flex flex-col gap-2">

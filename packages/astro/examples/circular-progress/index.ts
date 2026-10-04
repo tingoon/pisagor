@@ -5,7 +5,7 @@ import sizesRaw from "./sizes.astro?raw";
 import with_valueRaw from "./with-value.astro?raw";
 
 export const imports = `---
-import { CircularProgress } from "@pisagor/astro/circular-progress";
+import { CircularProgress } from "@pisagor/astro";
 ---`;
 
 export const sources = {

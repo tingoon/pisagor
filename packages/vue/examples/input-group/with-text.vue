@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { InputGroup } from "../../src/components/input-group";
+import { InputGroup } from "@pisagor/vue";
 </script>
 
 <template>

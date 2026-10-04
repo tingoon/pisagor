@@ -1,7 +1,6 @@
 import { useListCollection } from "@ark-ui/react/collection";
 import { useFilter } from "@ark-ui/react/locale";
-import { Input, Item } from "@pisagor/react";
-import { Listbox } from "@pisagor/react/listbox";
+import { Input, Item, Listbox } from "@pisagor/react";
 import { useState } from "react";
 export function WithFilter() {
   const [search, setSearch] = useState("");

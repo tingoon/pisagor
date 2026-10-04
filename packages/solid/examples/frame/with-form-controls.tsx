@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Field, Input, Switch } from "@pisagor/solid";
-import { Frame } from "@pisagor/solid/frame";
+import { Field, Frame, Input, Switch } from "@pisagor/solid";
 
 export function WithFormControls() {
   return (

@@ -1,10 +1,5 @@
-import { Field, Input } from "@pisagor/vue";
+import { Button, Drawer, Field, Input } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Drawer } from "../../src/components/drawer";
-import {
-  defaultButtonClass,
-  outlineButtonClass,
-} from "../../src/internal/story-button";
 
 export default defineComponent({
   name: "DrawerContentInner",
@@ -12,11 +7,7 @@ export default defineComponent({
     return () =>
       h(Drawer, { swipeDirection: "down" }, () => [
         h(Drawer.Trigger, { asChild: true }, () =>
-          h(
-            "button",
-            { class: outlineButtonClass(), type: "button" },
-            "Open drawer",
-          ),
+          h(Button, { type: "button", variant: "outline" }, "Open drawer"),
         ),
         h(Drawer.Content, null, () => [
           h(Drawer.ContentInner, null, () => [
@@ -41,18 +32,10 @@ export default defineComponent({
           h(Drawer.Footer, null, () =>
             h(Drawer.ContentInner, null, () => [
               h(Drawer.CloseTrigger, { asChild: true }, () =>
-                h(
-                  "button",
-                  { class: outlineButtonClass(), type: "button" },
-                  "Cancel",
-                ),
+                h(Button, { type: "button", variant: "outline" }, "Cancel"),
               ),
               h(Drawer.CloseTrigger, { asChild: true }, () =>
-                h(
-                  "button",
-                  { class: defaultButtonClass(), type: "button" },
-                  "Save",
-                ),
+                h(Button, { type: "button" }, "Save"),
               ),
             ]),
           ),

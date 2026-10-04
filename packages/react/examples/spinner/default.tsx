@@ -1,4 +1,4 @@
-import { Spinner } from "@pisagor/react/spinner";
+import { Spinner } from "@pisagor/react";
 
 export function Default() {
   return <Spinner />;

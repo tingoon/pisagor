@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ScrollArea } from "../../src/components/scroll-area";
+import { ScrollArea } from "@pisagor/vue";
 </script>
 
 <template>

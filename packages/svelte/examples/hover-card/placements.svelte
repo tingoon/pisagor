@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { HoverCard } from "@pisagor/svelte/hover-card";
+import { Button, HoverCard } from "@pisagor/svelte";
 
 const placements = ["left", "top", "bottom", "right"] as const;
 </script>

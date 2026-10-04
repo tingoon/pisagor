@@ -11,6 +11,6 @@ export const sources = {
   Sorting: stripTsxExample(sortingRaw),
 } as const;
 
-export { Default } from "./default";
-export { Empty } from "./empty";
-export { Sorting } from "./sorting";
+export * from "./default";
+export * from "./empty";
+export * from "./sorting";

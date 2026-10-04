@@ -11,7 +11,7 @@ import sizesRaw from "./sizes.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 import with_iconRaw from "./with-icon.tsx?raw";
 
-export const imports = `import { Button } from "@pisagor/react/button";`;
+export const imports = `import { Button } from "@pisagor/react";`;
 
 export const sources = {
   AsChild: stripTsxExample(as_childRaw),
@@ -27,14 +27,14 @@ export const sources = {
   WithIcon: stripTsxExample(with_iconRaw),
 } as const;
 
-export { AsChild } from "./as-child";
-export { CustomColor } from "./custom-color";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { Icon } from "./icon";
-export { Loading } from "./loading";
-export { NoClickEffect } from "./no-click-effect";
-export { Pill } from "./pill";
-export { Sizes } from "./sizes";
-export { Variants } from "./variants";
-export { WithIcon } from "./with-icon";
+export * from "./as-child";
+export * from "./custom-color";
+export * from "./default";
+export * from "./disabled";
+export * from "./icon";
+export * from "./loading";
+export * from "./no-click-effect";
+export * from "./pill";
+export * from "./sizes";
+export * from "./variants";
+export * from "./with-icon";

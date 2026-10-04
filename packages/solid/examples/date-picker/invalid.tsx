@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Calendar } from "@pisagor/solid";
-import { DatePicker } from "@pisagor/solid/date-picker";
+import { Calendar, DatePicker } from "@pisagor/solid";
 export function Invalid() {
   return (
     <DatePicker invalid>

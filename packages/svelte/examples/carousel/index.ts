@@ -12,7 +12,7 @@ import spacingRaw from "./spacing.svelte?raw";
 import thumbnail_indicatorRaw from "./thumbnail-indicator.svelte?raw";
 import thumbnail_indicator_verticalRaw from "./thumbnail-indicator-vertical.svelte?raw";
 
-export const imports = `import { Carousel } from "@pisagor/svelte/carousel";`;
+export const imports = `import { Carousel } from "@pisagor/svelte";`;
 
 export const sources = {
   Autoplay: stripSvelteExample(autoplayRaw),

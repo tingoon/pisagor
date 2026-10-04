@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Card } from "@pisagor/svelte";
-import { Timer } from "@pisagor/svelte/timer";
+import { Card, Timer } from "@pisagor/svelte";
 
 const formatDate = (date: Date) =>
     date.toLocaleDateString(undefined, { dateStyle: "medium" });

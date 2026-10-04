@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react";
-import { Steps } from "@pisagor/react/steps";
+import { Button, Steps } from "@pisagor/react";
 import { useState } from "react";
 export function Controlled() {
   const items = [

@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Avatar, Button, Sidebar } from "@pisagor/solid";
+import { Avatar, Button, Navbar, Sidebar } from "@pisagor/solid";
 import {
   BellIcon,
   DatabaseIcon,
@@ -8,7 +8,6 @@ import {
   MagnifyingGlassIcon,
   UserIcon,
 } from "@pisagor/solid/icons";
-import { Navbar } from "@pisagor/solid/navbar";
 export function WithSidebar() {
   return (
     <Sidebar.Provider>

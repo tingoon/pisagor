@@ -1,12 +1,10 @@
 ---
-import AnnouncementRoot from "../../src/components/announcement/announcement-root.astro";
-import AnnouncementTitle from "../../src/components/announcement/announcement-title.astro";
-import Badge from "../../src/components/badge/badge.astro";
+import { Announcement, Badge } from "@pisagor/astro";
 ---
 
-<AnnouncementRoot>
+<Announcement.Root>
   <Badge>Release</Badge>
-  <AnnouncementTitle>
+  <Announcement.Title>
     v2.1.0 — Dark mode, faster builds, and 12 new components
-  </AnnouncementTitle>
-</AnnouncementRoot>
+  </Announcement.Title>
+</Announcement.Root>

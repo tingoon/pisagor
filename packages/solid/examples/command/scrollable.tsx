@@ -1,7 +1,7 @@
 /** @jsxImportSource solid-js */
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
-import { Command } from "@pisagor/solid/command";
+import { Command } from "@pisagor/solid";
 
 export function Scrollable() {
   const initialItems = [

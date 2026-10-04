@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Spinner } from "@pisagor/svelte";
-import { Badge } from "@pisagor/svelte/badge";
+import { Badge, Spinner } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap items-center gap-2">

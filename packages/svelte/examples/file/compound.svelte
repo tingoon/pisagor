@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { File } from "@pisagor/svelte/file";
+import { Button, File } from "@pisagor/svelte";
 import DownloadSimpleIcon from "phosphor-svelte/lib/DownloadSimpleIcon";
 </script>
 

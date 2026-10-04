@@ -15,7 +15,7 @@ import variantsRaw from "./variants.vue?raw";
 import with_fieldRaw from "./with-field.vue?raw";
 import with_scrubberRaw from "./with-scrubber.vue?raw";
 
-export const imports = `import { NumberInput } from "@pisagor/vue/number-input";`;
+export const imports = `import { NumberInput } from "@pisagor/vue";`;
 
 export const sources = {
   Compound: stripVueExample(compoundRaw),

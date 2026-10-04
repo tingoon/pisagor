@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react";
-import { Collapsible } from "@pisagor/react/collapsible";
+import { Button, Collapsible } from "@pisagor/react";
 export function Disabled() {
   return (
     <div>

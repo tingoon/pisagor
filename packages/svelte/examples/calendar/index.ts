@@ -13,7 +13,7 @@ import presetsRaw from "./presets.svelte?raw";
 import rangeRaw from "./range.svelte?raw";
 import select_todayRaw from "./select-today.svelte?raw";
 
-export const imports = `import { Calendar } from "@pisagor/svelte/calendar";`;
+export const imports = `import { Calendar } from "@pisagor/svelte";`;
 
 export const sources = {
   BookedDates: stripSvelteExample(booked_datesRaw),

@@ -12,7 +12,7 @@ import spacingRaw from "./spacing.vue?raw";
 import thumbnail_indicatorRaw from "./thumbnail-indicator.vue?raw";
 import thumbnail_indicator_verticalRaw from "./thumbnail-indicator-vertical.vue?raw";
 
-export const imports = `import { Carousel } from "@pisagor/vue/carousel";`;
+export const imports = `import { Carousel } from "@pisagor/vue";`;
 
 export const sources = {
   Autoplay: stripVueExample(autoplayRaw),

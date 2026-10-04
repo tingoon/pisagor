@@ -6,7 +6,7 @@ import defaultRaw from "./default.tsx?raw";
 import with_linkRaw from "./with-link.tsx?raw";
 import with_menuRaw from "./with-menu.tsx?raw";
 
-export const imports = `import { Breadcrumb } from "@pisagor/react/breadcrumb";`;
+export const imports = `import { Breadcrumb } from "@pisagor/react";`;
 
 export const sources = {
   Collapsed: stripTsxExample(collapsedRaw),
@@ -17,9 +17,9 @@ export const sources = {
   WithMenu: stripTsxExample(with_menuRaw),
 } as const;
 
-export { Collapsed } from "./collapsed";
-export { Compound } from "./compound";
-export { CustomSeparator } from "./custom-separator";
-export { Default } from "./default";
-export { WithLink } from "./with-link";
-export { WithMenu } from "./with-menu";
+export * from "./collapsed";
+export * from "./compound";
+export * from "./custom-separator";
+export * from "./default";
+export * from "./with-link";
+export * from "./with-menu";

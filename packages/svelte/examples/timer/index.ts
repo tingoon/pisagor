@@ -9,7 +9,7 @@ import orientation_horizontalRaw from "./orientation-horizontal.svelte?raw";
 import orientation_verticalRaw from "./orientation-vertical.svelte?raw";
 import pomodoroRaw from "./pomodoro.svelte?raw";
 
-export const imports = `import { Timer } from "@pisagor/svelte/timer";`;
+export const imports = `import { Timer } from "@pisagor/svelte";`;
 
 export const sources = {
   Controlled: stripSvelteExample(controlledRaw),

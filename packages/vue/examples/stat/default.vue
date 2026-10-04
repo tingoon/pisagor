@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Stat } from "../../src/components/stat";
+import { Stat } from "@pisagor/vue";
 
 const description = "Updated 2 minutes ago";
 const label = "Monthly recurring revenue";

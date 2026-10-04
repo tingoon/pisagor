@@ -2,9 +2,9 @@ import { PhDotsThreeVertical } from "@phosphor-icons/vue";
 import type { BadgeVariant } from "@pisagor/vue";
 import { Badge, Button, Table } from "@pisagor/vue";
 import type { CellContext, ColumnDef } from "@pisagor/vue/data-grid";
+import { DataGrid } from "@pisagor/vue/data-grid";
 import type { ColumnPinningState } from "@tanstack/vue-table";
 import { computed, defineComponent, h, ref } from "vue";
-import { DataGrid } from "../../src/data-grid";
 
 type ArkPart = Parameters<typeof h>[0];
 

@@ -1,6 +1,5 @@
 import { DotsThreeIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react";
-import { Item } from "@pisagor/react/item";
+import { Button, Item } from "@pisagor/react";
 export function Default() {
   return (
     <Item variant="outline">

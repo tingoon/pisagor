@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Avatar, Button, Sidebar } from "@pisagor/svelte";
-import { Navbar } from "@pisagor/svelte/navbar";
+import { Avatar, Button, Navbar, Sidebar } from "@pisagor/svelte";
 import BellIcon from "phosphor-svelte/lib/BellIcon";
 import DatabaseIcon from "phosphor-svelte/lib/DatabaseIcon";
 import HouseIcon from "phosphor-svelte/lib/HouseIcon";

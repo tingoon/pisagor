@@ -6,7 +6,7 @@ import sizesRaw from "./sizes.svelte?raw";
 import thicknessRaw from "./thickness.svelte?raw";
 import with_valueRaw from "./with-value.svelte?raw";
 
-export const imports = `import { CircularProgress } from "@pisagor/svelte/circular-progress";`;
+export const imports = `import { CircularProgress } from "@pisagor/svelte";`;
 
 export const sources = {
   Controlled: stripSvelteExample(controlledRaw),

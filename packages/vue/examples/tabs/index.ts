@@ -8,7 +8,7 @@ import orientation_verticalRaw from "./orientation-vertical.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import with_iconsRaw from "./with-icons.vue?raw";
 
-export const imports = `import { Tabs } from "@pisagor/vue/tabs";`;
+export const imports = `import { Tabs } from "@pisagor/vue";`;
 
 export const sources = {
   Compound: stripVueExample(compoundRaw),

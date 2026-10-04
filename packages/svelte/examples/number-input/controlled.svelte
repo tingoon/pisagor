@@ -1,5 +1,5 @@
 <script lang="ts">
-import { NumberInput } from "@pisagor/svelte/number-input";
+import { NumberInput } from "@pisagor/svelte";
 
 let value = $state("1");
 

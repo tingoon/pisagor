@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { Timeline } from "@pisagor/vue";
 import { h } from "vue";
-import { Timeline } from "../../src/components/timeline";
 
 function _items() {
   return [

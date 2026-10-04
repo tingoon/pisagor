@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Item } from "@pisagor/svelte/item";
+import { Item } from "@pisagor/svelte";
 </script>
 
 <Item variant="outline">

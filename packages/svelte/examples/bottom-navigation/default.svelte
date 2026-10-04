@@ -1,5 +1,5 @@
 <script lang="ts">
-import { BottomNavigation } from "@pisagor/svelte/bottom-navigation";
+import { BottomNavigation } from "@pisagor/svelte";
 import HouseIcon from "phosphor-svelte/lib/HouseIcon";
 </script>
 

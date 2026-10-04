@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react";
-import { Sheet } from "@pisagor/react/sheet";
+import { Button, Sheet } from "@pisagor/react";
 export function NonModal() {
   return (
     <Sheet modal={false}>

@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Card, parseDate } from "@pisagor/solid";
-import { Calendar } from "@pisagor/solid/calendar";
+import { Calendar, Card, parseDate } from "@pisagor/solid";
 export function MinMax() {
   return (
     <Card class="[--space:--spacing(2)]">

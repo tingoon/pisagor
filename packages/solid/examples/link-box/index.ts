@@ -3,7 +3,7 @@ import articleRaw from "./article.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import with_linkRaw from "./with-link.tsx?raw";
 
-export const imports = `import { LinkBox } from "@pisagor/solid/link-box";`;
+export const imports = `import { LinkBox } from "@pisagor/solid";`;
 
 export const sources = {
   Article: stripTsxExample(articleRaw),
@@ -11,6 +11,6 @@ export const sources = {
   WithLink: stripTsxExample(with_linkRaw),
 } as const;
 
-export { Article } from "./article";
-export { Default } from "./default";
-export { WithLink } from "./with-link";
+export * from "./article";
+export * from "./default";
+export * from "./with-link";

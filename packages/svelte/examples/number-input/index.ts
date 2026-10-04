@@ -12,7 +12,7 @@ import sizesRaw from "./sizes.svelte?raw";
 import stepRaw from "./step.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 
-export const imports = `import { NumberInput } from "@pisagor/svelte/number-input";`;
+export const imports = `import { NumberInput } from "@pisagor/svelte";`;
 
 export const sources = {
   Controlled: stripSvelteExample(controlledRaw),

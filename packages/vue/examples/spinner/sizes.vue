@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Spinner } from "../../src/components/spinner";
+import { Spinner } from "@pisagor/vue";
 </script>
 
 <template>

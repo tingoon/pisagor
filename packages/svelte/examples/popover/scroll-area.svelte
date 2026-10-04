@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Popover } from "@pisagor/svelte/popover";
+import { Button, Popover } from "@pisagor/svelte";
 
 const items = Array.from({ length: 12 }, (_, i) => ({
     id: i + 1,

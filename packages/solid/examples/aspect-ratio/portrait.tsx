@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { AspectRatio } from "@pisagor/solid/aspect-ratio";
+import { AspectRatio } from "@pisagor/solid";
 
 export function Portrait() {
   return (

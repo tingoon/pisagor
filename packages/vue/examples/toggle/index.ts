@@ -7,7 +7,7 @@ import sizesRaw from "./sizes.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import with_iconRaw from "./with-icon.vue?raw";
 
-export const imports = `import { Toggle } from "@pisagor/vue/toggle";`;
+export const imports = `import { Toggle } from "@pisagor/vue";`;
 
 export const sources = {
   Controlled: stripVueExample(controlledRaw),

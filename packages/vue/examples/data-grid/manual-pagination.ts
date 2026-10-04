@@ -4,6 +4,7 @@ import { Badge, Checkbox, Pagination, Spinner, Table } from "@pisagor/vue";
 import {
   type CellContext,
   type ColumnDef,
+  DataGrid,
   type HeaderContext,
   type PaginationState,
   type SortingState,
@@ -18,7 +19,6 @@ import {
   type PropType,
   ref,
 } from "vue";
-import { DataGrid } from "../../src/data-grid";
 
 type ArkPart = Parameters<typeof h>[0];
 

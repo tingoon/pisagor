@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button, ScrollArea } from "@pisagor/svelte";
-import { Scrollspy } from "@pisagor/svelte/scrollspy";
+import { Button, ScrollArea, Scrollspy } from "@pisagor/svelte";
 import { horizontalSections } from "./helpers";
 
 let parentEl = $state<HTMLDivElement | null>(null);

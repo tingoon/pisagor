@@ -7,7 +7,7 @@ import loadingRaw from "./loading.vue?raw";
 import titleRaw from "./title.vue?raw";
 import verticalRaw from "./vertical.vue?raw";
 
-export const imports = `import { Steps } from "@pisagor/vue/steps";`;
+export const imports = `import { Steps } from "@pisagor/vue";`;
 
 export const sources = {
   Controlled: stripVueExample(controlledRaw),

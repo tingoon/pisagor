@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Checkbox } from "@pisagor/solid/checkbox";
+import { Checkbox } from "@pisagor/solid";
 
 export function Variants() {
   return (

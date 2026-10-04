@@ -5,7 +5,7 @@ import paddingRaw from "./padding.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 import with_form_controlsRaw from "./with-form-controls.tsx?raw";
 
-export const imports = `import { Surface } from "@pisagor/react/surface";`;
+export const imports = `import { Surface } from "@pisagor/react";`;
 
 export const sources = {
   Default: stripTsxExample(defaultRaw),
@@ -15,8 +15,8 @@ export const sources = {
   WithFormControls: stripTsxExample(with_form_controlsRaw),
 } as const;
 
-export { Default } from "./default";
-export { Nested } from "./nested";
-export { Padding } from "./padding";
-export { Variants } from "./variants";
-export { WithFormControls } from "./with-form-controls";
+export * from "./default";
+export * from "./nested";
+export * from "./padding";
+export * from "./variants";
+export * from "./with-form-controls";

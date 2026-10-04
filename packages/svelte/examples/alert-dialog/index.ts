@@ -3,7 +3,7 @@ import compositionRaw from "./composition.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 
-export const imports = `import { AlertDialog } from "@pisagor/svelte/alert-dialog";`;
+export const imports = `import { AlertDialog } from "@pisagor/svelte";`;
 
 export const sources = {
   Composition: stripSvelteExample(compositionRaw),

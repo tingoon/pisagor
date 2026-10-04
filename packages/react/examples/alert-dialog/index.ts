@@ -3,7 +3,7 @@ import compositionRaw from "./composition.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 
-export const imports = `import { AlertDialog } from "@pisagor/react/alert-dialog";`;
+export const imports = `import { AlertDialog } from "@pisagor/react";`;
 
 export const sources = {
   Composition: stripTsxExample(compositionRaw),
@@ -11,6 +11,6 @@ export const sources = {
   Variants: stripTsxExample(variantsRaw),
 } as const;
 
-export { Composition } from "./composition";
-export { Default } from "./default";
-export { Variants } from "./variants";
+export * from "./composition";
+export * from "./default";
+export * from "./variants";

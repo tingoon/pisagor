@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Prose } from "../../src/components/prose";
+import { Prose } from "@pisagor/vue";
 </script>
 
 <template>

@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid";
-import { FloatingPanel } from "@pisagor/solid/floating-panel";
+import { Button, FloatingPanel } from "@pisagor/solid";
 import { GearSixIcon, XIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";
 export function ControlledSize() {

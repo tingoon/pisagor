@@ -1,5 +1,4 @@
-import { Button, Field, Input } from "@pisagor/react";
-import { Drawer } from "@pisagor/react/drawer";
+import { Button, Drawer, Field, Input } from "@pisagor/react";
 export function Inset() {
   return (
     <Drawer>

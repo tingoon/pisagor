@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Avatar, Card } from "@pisagor/svelte";
-import { Rating } from "@pisagor/svelte/rating";
+import { Avatar, Card, Rating } from "@pisagor/svelte";
 </script>
 
 <Card>

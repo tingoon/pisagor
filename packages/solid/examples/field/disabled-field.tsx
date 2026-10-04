@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Input } from "@pisagor/solid";
-import { Field } from "@pisagor/solid/field";
+import { Field, Input } from "@pisagor/solid";
 export function DisabledField() {
   return (
     <Field disabled>

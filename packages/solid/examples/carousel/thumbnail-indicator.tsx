@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Carousel } from "@pisagor/solid/carousel";
+import { Carousel } from "@pisagor/solid";
 import { imageSources } from "./helpers";
 
 export function ThumbnailIndicator() {

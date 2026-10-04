@@ -23,7 +23,7 @@ import pRaw from "./p.vue?raw";
 import separatorRaw from "./separator.vue?raw";
 import smallRaw from "./small.vue?raw";
 
-export const imports = `import { Prose } from "@pisagor/vue/prose";`;
+export const imports = `import { Prose } from "@pisagor/vue";`;
 
 export const sources = {
   A: stripVueExample(aRaw),

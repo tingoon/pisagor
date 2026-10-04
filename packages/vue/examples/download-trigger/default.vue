@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { PhDownload, PhFileText } from "@phosphor-icons/vue";
-
-import { Button, Item } from "@pisagor/vue";
-import { DownloadTrigger } from "../../src/components/download-trigger";
+import { Button, DownloadTrigger, Item } from "@pisagor/vue";
 import { sampleText } from "./helpers";
 
 const text = sampleText();

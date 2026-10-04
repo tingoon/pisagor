@@ -3,7 +3,7 @@ import articleRaw from "./article.vue?raw";
 import defaultRaw from "./default.vue?raw";
 import with_linkRaw from "./with-link.vue?raw";
 
-export const imports = `import { LinkBox } from "@pisagor/vue/link-box";`;
+export const imports = `import { LinkBox } from "@pisagor/vue";`;
 
 export const sources = {
   Article: stripVueExample(articleRaw),

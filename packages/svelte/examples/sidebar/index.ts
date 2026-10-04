@@ -1,7 +1,7 @@
 import { stripSvelteExample } from "@pisagor/utils";
 import defaultRaw from "./default.svelte?raw";
 
-export const imports = `import { Sidebar } from "@pisagor/svelte/sidebar";`;
+export const imports = `import { Sidebar } from "@pisagor/svelte";`;
 
 export const sources = {
   Default: stripSvelteExample(defaultRaw),

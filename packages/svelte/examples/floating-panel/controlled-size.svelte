@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { FloatingPanel } from "@pisagor/svelte/floating-panel";
+import { Button, FloatingPanel } from "@pisagor/svelte";
 import GearSixIcon from "phosphor-svelte/lib/GearSixIcon";
 import XIcon from "phosphor-svelte/lib/XIcon";
 

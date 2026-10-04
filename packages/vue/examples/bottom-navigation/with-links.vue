@@ -5,8 +5,7 @@ import {
   PhMagnifyingGlass,
   PhUser,
 } from "@phosphor-icons/vue";
-import { ScrollArea } from "@pisagor/vue";
-import { BottomNavigation } from "../../src/components/bottom-navigation";
+import { BottomNavigation, ScrollArea } from "@pisagor/vue";
 </script>
 
 <template>

@@ -5,7 +5,7 @@ import responsiveRaw from "./responsive.vue?raw";
 import squareRaw from "./square.vue?raw";
 import videoRaw from "./video.vue?raw";
 
-export const imports = `import { AspectRatio } from "@pisagor/vue/aspect-ratio";`;
+export const imports = `import { AspectRatio } from "@pisagor/vue";`;
 
 export const sources = {
   Default: stripVueExample(defaultRaw),

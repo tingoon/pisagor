@@ -8,7 +8,7 @@ import orientation_verticalRaw from "./orientation-vertical.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_iconsRaw from "./with-icons.svelte?raw";
 
-export const imports = `import { Tabs } from "@pisagor/svelte/tabs";`;
+export const imports = `import { Tabs } from "@pisagor/svelte";`;
 
 export const sources = {
   Compound: stripSvelteExample(compoundRaw),

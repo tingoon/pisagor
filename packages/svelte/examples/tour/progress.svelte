@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Tour, type TourStepDetails } from "@pisagor/svelte/tour";
+import { Button, Tour, type TourStepDetails } from "@pisagor/svelte";
 import TourProgressBar from "./tour-progress-bar.svelte";
 
 const steps: TourStepDetails[] = [

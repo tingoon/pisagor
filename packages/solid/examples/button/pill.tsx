@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid/button";
+import { Button } from "@pisagor/solid";
 import { PlusIcon } from "@pisagor/solid/icons";
 
 export function Pill() {

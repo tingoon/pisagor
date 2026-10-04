@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Item } from "@pisagor/solid/item";
+import { Item } from "@pisagor/solid";
 
 export function Variants() {
   return (

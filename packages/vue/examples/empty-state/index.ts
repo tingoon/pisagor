@@ -3,7 +3,7 @@ import compactRaw from "./compact.vue?raw";
 import compoundRaw from "./compound.vue?raw";
 import defaultRaw from "./default.vue?raw";
 
-export const imports = `import { EmptyState } from "@pisagor/vue/empty-state";`;
+export const imports = `import { EmptyState } from "@pisagor/vue";`;
 
 export const sources = {
   Compact: stripVueExample(compactRaw),

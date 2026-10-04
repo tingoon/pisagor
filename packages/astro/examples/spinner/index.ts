@@ -3,7 +3,7 @@ import defaultRaw from "./default.astro?raw";
 import sizesRaw from "./sizes.astro?raw";
 
 export const imports = `---
-import { Spinner } from "@pisagor/astro/spinner";
+import { Spinner } from "@pisagor/astro";
 ---`;
 
 export const sources = {

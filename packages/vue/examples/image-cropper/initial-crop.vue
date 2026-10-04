@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ImageCropper } from "../../src/components/image-cropper";
+import { ImageCropper } from "@pisagor/vue";
 
 const initialCrop = { height: 0.5, width: 0.5, x: 0.25, y: 0.25 };
 </script>

@@ -1,8 +1,8 @@
-import { Input } from "@pisagor/vue";
+import { Button, Input, Popover } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Popover } from "../../src/components/popover";
-import { outlineButtonClass } from "../../src/internal/story-button";
-import type { ArkPart } from "../../src/internal/types";
+
+type ArkPart = Parameters<typeof h>[0];
+
 export default defineComponent({
   name: "Anchor",
   setup() {
@@ -11,11 +11,7 @@ export default defineComponent({
         h(Popover, null, () =>
           h("div", { class: "flex items-center gap-2" }, [
             h(Popover.Trigger, { asChild: true }, () =>
-              h(
-                "button",
-                { class: outlineButtonClass(), type: "button" },
-                "Open",
-              ),
+              h(Button, { type: "button", variant: "outline" }, "Open"),
             ),
             h(Popover.Anchor, { asChild: true }, () =>
               h(Input as ArkPart, {

@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Menu } from "@pisagor/solid/menu";
+import { Menu } from "@pisagor/solid";
 
 export function Default() {
   return (

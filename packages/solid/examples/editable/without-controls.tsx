@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Card, Field, Input } from "@pisagor/solid";
-import { Editable } from "@pisagor/solid/editable";
+import { Card, Editable, Field, Input } from "@pisagor/solid";
 export function WithoutControls() {
   return (
     <Card>

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Button } from "@pisagor/vue";
-import { Tour } from "../../src/components/tour";
+import { Button, Tour } from "@pisagor/vue";
 
 const steps = [
   {

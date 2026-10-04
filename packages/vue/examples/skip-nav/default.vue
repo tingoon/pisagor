@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { SkipNav } from "../../src/components/skip-nav";
+import { SkipNav } from "@pisagor/vue";
 </script>
 
 <template>

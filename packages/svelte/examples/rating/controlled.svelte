@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Rating } from "@pisagor/svelte/rating";
+import { Rating } from "@pisagor/svelte";
 
 let value = $state(0);
 

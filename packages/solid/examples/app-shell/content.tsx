@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { AppShell } from "@pisagor/solid/app-shell";
+import { AppShell } from "@pisagor/solid";
 import { mainContent, regionTitle } from "./helpers";
 
 export function Content() {

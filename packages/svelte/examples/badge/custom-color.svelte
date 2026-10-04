@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Badge } from "@pisagor/svelte/badge";
+import { Badge } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap gap-2">

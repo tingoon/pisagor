@@ -21,11 +21,11 @@ export const sources = {
   Variants: stripVueExample(variantsRaw),
 } as const;
 
-export { Controlled } from "./controlled";
-export { CustomPopup } from "./custom-popup";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { Invalid } from "./invalid";
-export { OnSurface } from "./on-surface";
-export { Sizes } from "./sizes";
-export { Variants } from "./variants";
+export * from "./controlled";
+export * from "./custom-popup";
+export * from "./default";
+export * from "./disabled";
+export * from "./invalid";
+export * from "./on-surface";
+export * from "./sizes";
+export * from "./variants";

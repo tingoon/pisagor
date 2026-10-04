@@ -1,4 +1,4 @@
-import { Clipboard } from "@pisagor/react/clipboard";
+import { Clipboard } from "@pisagor/react";
 
 export function WithLabel() {
   return (

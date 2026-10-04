@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { AlertDialog, Button } from "@pisagor/solid";
-import { ActionBar } from "@pisagor/solid/action-bar";
+import { ActionBar, AlertDialog, Button } from "@pisagor/solid";
 import { TrashIcon, XIcon } from "@pisagor/solid/icons";
 export function WithDialog() {
   return (

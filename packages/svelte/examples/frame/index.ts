@@ -3,7 +3,7 @@ import defaultRaw from "./default.svelte?raw";
 import separated_panelsRaw from "./separated-panels.svelte?raw";
 import with_form_controlsRaw from "./with-form-controls.svelte?raw";
 
-export const imports = `import { Frame } from "@pisagor/svelte/frame";`;
+export const imports = `import { Frame } from "@pisagor/svelte";`;
 
 export const sources = {
   Default: stripSvelteExample(defaultRaw),

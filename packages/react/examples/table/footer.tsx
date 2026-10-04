@@ -1,4 +1,4 @@
-import { Table } from "@pisagor/react/table";
+import { Table } from "@pisagor/react";
 
 export function Footer() {
   const items = [

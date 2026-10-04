@@ -1,4 +1,4 @@
-import { RichTextEditor } from "../../src/rich-text-editor";
+import { RichTextEditor } from "@pisagor/vue/rich-text-editor";
 
 export function Compound() {
   return {

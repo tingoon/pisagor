@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
-import { Combobox, Field } from "@pisagor/vue";
+import { Combobox, Field, TagsInput } from "@pisagor/vue";
 import { computed, ref } from "vue";
-import { TagsInput } from "../../src/components/tags-input";
 
 const frameworks = ["React", "Solid", "Vue", "Svelte", "Angular", "Qwik"];
 const tags = ref<string[]>(["React", "Vue"]);

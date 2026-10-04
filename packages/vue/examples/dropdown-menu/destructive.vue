@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhCopy, PhPencil, PhTrash } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
-import { DropdownMenu } from "../../src/components/dropdown-menu";
+import { Button, DropdownMenu } from "@pisagor/vue";
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Breadcrumb } from "@pisagor/solid/breadcrumb";
+import { Breadcrumb } from "@pisagor/solid";
 
 export function Default() {
   return (

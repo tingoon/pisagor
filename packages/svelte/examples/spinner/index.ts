@@ -2,7 +2,7 @@ import { stripSvelteExample } from "@pisagor/utils";
 import defaultRaw from "./default.svelte?raw";
 import sizesRaw from "./sizes.svelte?raw";
 
-export const imports = `import { Spinner } from "@pisagor/svelte/spinner";`;
+export const imports = `import { Spinner } from "@pisagor/svelte";`;
 
 export const sources = {
   Default: stripSvelteExample(defaultRaw),

@@ -12,7 +12,7 @@ import separatorRaw from "./separator.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import with_placeholderRaw from "./with-placeholder.vue?raw";
 
-export const imports = `import { InputOTP } from "@pisagor/vue/input-otp";`;
+export const imports = `import { InputOTP } from "@pisagor/vue";`;
 
 export const sources = {
   BlurOnComplete: stripVueExample(blur_on_completeRaw),

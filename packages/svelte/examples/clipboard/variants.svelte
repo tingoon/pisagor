@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Clipboard } from "@pisagor/svelte/clipboard";
+import { Clipboard } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap items-center gap-2">

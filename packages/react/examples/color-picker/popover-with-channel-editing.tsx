@@ -1,5 +1,4 @@
-import { Button, Input } from "@pisagor/react";
-import { ColorPicker } from "@pisagor/react/color-picker";
+import { Button, ColorPicker, Input } from "@pisagor/react";
 export function PopoverWithChannelEditing() {
   return (
     <ColorPicker format="rgba">

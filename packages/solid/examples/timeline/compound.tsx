@@ -1,6 +1,7 @@
 /** @jsxImportSource solid-js */
+
+import { Timeline } from "@pisagor/solid";
 import { CheckCircleIcon, CircleIcon, RocketIcon } from "@pisagor/solid/icons";
-import { Timeline } from "@pisagor/solid/timeline";
 
 export function Compound() {
   return (

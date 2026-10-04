@@ -9,7 +9,7 @@ import variantsRaw from "./variants.vue?raw";
 import with_descriptionRaw from "./with-description.vue?raw";
 import with_fieldRaw from "./with-field.vue?raw";
 
-export const imports = `import { RadioGroup } from "@pisagor/vue/radio-group";`;
+export const imports = `import { RadioGroup } from "@pisagor/vue";`;
 
 export const sources = {
   Compound: stripVueExample(compoundRaw),

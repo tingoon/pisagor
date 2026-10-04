@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Steps } from "../../src/components/steps";
+import { Steps } from "@pisagor/vue";
 
 const items = [
   { description: "Personal", title: "Info" },

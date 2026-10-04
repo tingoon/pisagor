@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { ButtonGroup } from "@pisagor/svelte/button-group";
+import { Button, ButtonGroup } from "@pisagor/svelte";
 import PlayIcon from "phosphor-svelte/lib/PlayIcon";
 import SkipBackIcon from "phosphor-svelte/lib/SkipBackIcon";
 import SkipForwardIcon from "phosphor-svelte/lib/SkipForwardIcon";

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Card } from "../../src/components/card";
+import { Card } from "@pisagor/vue";
 </script>
 
 <template>

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Field } from "@pisagor/vue";
-import { Listbox } from "../../src/components/listbox";
+import { Field, Listbox } from "@pisagor/vue";
 
 const collection = createListCollection({
   items: [

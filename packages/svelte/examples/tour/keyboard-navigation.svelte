@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Tour, type TourStepDetails } from "@pisagor/svelte/tour";
+import { Button, Tour, type TourStepDetails } from "@pisagor/svelte";
 import KeyboardIcon from "phosphor-svelte/lib/KeyboardIcon";
 
 const steps: TourStepDetails[] = [

@@ -7,7 +7,7 @@ import variantsRaw from "./variants.tsx?raw";
 import with_linkRaw from "./with-link.tsx?raw";
 import with_spinnerRaw from "./with-spinner.tsx?raw";
 
-export const imports = `import { Badge } from "@pisagor/react/badge";`;
+export const imports = `import { Badge } from "@pisagor/react";`;
 
 export const sources = {
   CustomColor: stripTsxExample(custom_colorRaw),
@@ -19,10 +19,10 @@ export const sources = {
   WithSpinner: stripTsxExample(with_spinnerRaw),
 } as const;
 
-export { CustomColor } from "./custom-color";
-export { Default } from "./default";
-export { Pill } from "./pill";
-export { Sizes } from "./sizes";
-export { Variants } from "./variants";
-export { WithLink } from "./with-link";
-export { WithSpinner } from "./with-spinner";
+export * from "./custom-color";
+export * from "./default";
+export * from "./pill";
+export * from "./sizes";
+export * from "./variants";
+export * from "./with-link";
+export * from "./with-spinner";

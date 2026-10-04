@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Clipboard } from "@pisagor/svelte/clipboard";
+import { Button, Clipboard } from "@pisagor/svelte";
 
 let value = $state("https://example.com/docs");
 

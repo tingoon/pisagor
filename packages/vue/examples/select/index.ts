@@ -13,7 +13,7 @@ import sizesRaw from "./sizes.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import with_scrollRaw from "./with-scroll.vue?raw";
 
-export const imports = `import { Select } from "@pisagor/vue/select";`;
+export const imports = `import { Select } from "@pisagor/vue";`;
 
 export const sources = {
   Compound: stripVueExample(compoundRaw),

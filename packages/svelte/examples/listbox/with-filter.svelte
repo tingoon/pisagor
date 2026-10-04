@@ -1,8 +1,7 @@
 <script lang="ts">
 import { useListCollection } from "@ark-ui/svelte/collection";
 import { useFilter } from "@ark-ui/svelte/locale";
-import { Input, Item } from "@pisagor/svelte";
-import { Listbox } from "@pisagor/svelte/listbox";
+import { Input, Item, Listbox } from "@pisagor/svelte";
 
 let search = $state("");
 const { contains } = useFilter({ sensitivity: "base" });

@@ -4,7 +4,7 @@ import defaultRaw from "./default.svelte?raw";
 import iconRaw from "./icon.svelte?raw";
 import productRaw from "./product.svelte?raw";
 
-export const imports = `import { Card } from "@pisagor/svelte/card";`;
+export const imports = `import { Card } from "@pisagor/svelte";`;
 
 export const sources = {
   CustomSpacing: stripSvelteExample(custom_spacingRaw),

@@ -1,4 +1,4 @@
-import { Progress } from "@pisagor/react/progress";
+import { Progress } from "@pisagor/react";
 import { useEffect, useState } from "react";
 
 export function Default() {

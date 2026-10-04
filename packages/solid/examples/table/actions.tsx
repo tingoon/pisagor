@@ -1,13 +1,12 @@
 /** @jsxImportSource solid-js */
 
-import { Button, DropdownMenu } from "@pisagor/solid";
+import { Button, DropdownMenu, Table } from "@pisagor/solid";
 import {
   DotsThreeVerticalIcon,
   EyeIcon,
   PencilSimpleIcon,
   TrashIcon,
 } from "@pisagor/solid/icons";
-import { Table } from "@pisagor/solid/table";
 import { workspaceUsers } from "./helpers";
 export function Actions() {
   return (

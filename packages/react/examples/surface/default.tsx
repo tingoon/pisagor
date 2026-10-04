@@ -1,4 +1,4 @@
-import { Surface } from "@pisagor/react/surface";
+import { Surface } from "@pisagor/react";
 
 export function Default() {
   return (

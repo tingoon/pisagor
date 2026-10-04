@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { Pagination } from "@pisagor/vue";
 import { ref } from "vue";
-import { Pagination } from "../../src/components/pagination";
 
 const page = ref(1);
 const onPageChange = (details) => setPage(details.page);

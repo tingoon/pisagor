@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Checkbox } from "@pisagor/vue";
-import { Field } from "../../src/components/field";
+import { Checkbox, Field } from "@pisagor/vue";
 </script>
 
 <template>

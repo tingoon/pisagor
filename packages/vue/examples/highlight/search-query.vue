@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { Input } from "@pisagor/vue";
+import { Highlight, Input } from "@pisagor/vue";
 import { ref } from "vue";
-import { Highlight } from "../../src/components/highlight";
 
 const searchResults = ["Spotlight bulb", "Spot cleaner", "Spot ceiling"];
 const query = ref("spot");

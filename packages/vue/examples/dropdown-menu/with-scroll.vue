@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Button } from "@pisagor/vue";
-import { DropdownMenu } from "../../src/components/dropdown-menu";
+import { Button, DropdownMenu } from "@pisagor/vue";
 
 const items = Array.from({ length: 15 }, (_, i) => `Item ${i + 1}`);
 </script>

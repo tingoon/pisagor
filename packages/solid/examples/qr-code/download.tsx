@@ -1,8 +1,7 @@
 /** @jsxImportSource solid-js */
 
-import { Button, Card, Input } from "@pisagor/solid";
+import { Button, Card, Input, QrCode } from "@pisagor/solid";
 import { DownloadIcon } from "@pisagor/solid/icons";
-import { QrCode } from "@pisagor/solid/qr-code";
 import { createSignal } from "solid-js";
 export function Download() {
   const QUALITY_BY_LEVEL = {

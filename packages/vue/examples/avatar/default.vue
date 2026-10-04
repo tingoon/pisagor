@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Avatar } from "../../src/components/avatar";
+import { Avatar } from "@pisagor/vue";
 
 const src = "https://randomuser.me/api/portraits/women/5.jpg";
 </script>

@@ -1,6 +1,5 @@
 <script lang="ts">
-import { InputGroup } from "@pisagor/svelte";
-import { ColorPicker } from "@pisagor/svelte/color-picker";
+import { ColorPicker, InputGroup } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-col gap-2">

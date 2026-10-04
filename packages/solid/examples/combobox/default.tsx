@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Combobox } from "@pisagor/solid/combobox";
+import { Combobox } from "@pisagor/solid";
 
 export function Default() {
   return <Combobox items={["React", "Solid", "Vue", "Svelte"]} />;

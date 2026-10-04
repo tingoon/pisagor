@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Avatar, AvatarGroup } from "@pisagor/svelte/avatar";
+import { Avatar, AvatarGroup } from "@pisagor/svelte";
 </script>
 
 <AvatarGroup.Root>

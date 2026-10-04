@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { cn } from "@pisagor/utils";
+import { Resizable } from "@pisagor/vue";
 import { ref } from "vue";
-import { Resizable } from "../../src/components/resizable";
 
 function _frameClass(heightClass = "h-96") {
   return cn("mx-auto w-full max-w-4xl", heightClass);

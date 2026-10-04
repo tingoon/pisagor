@@ -1,6 +1,5 @@
 <script lang="ts">
-import { InputGroup } from "@pisagor/svelte";
-import { Field } from "@pisagor/svelte/field";
+import { Field, InputGroup } from "@pisagor/svelte";
 import ArrowRightIcon from "phosphor-svelte/lib/ArrowRightIcon";
 </script>
 

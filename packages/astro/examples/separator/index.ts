@@ -3,7 +3,7 @@ import defaultRaw from "./default.astro?raw";
 import verticalRaw from "./vertical.astro?raw";
 
 export const imports = `---
-import { Separator } from "@pisagor/astro/separator";
+import { Separator } from "@pisagor/astro";
 ---`;
 
 export const sources = {

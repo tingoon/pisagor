@@ -1,6 +1,5 @@
 import { Portal } from "@ark-ui/react/portal";
-import { Button } from "@pisagor/react";
-import { Dialog } from "@pisagor/react/dialog";
+import { Button, Dialog } from "@pisagor/react";
 export function NoCloseButton() {
   return (
     <Dialog.Root>

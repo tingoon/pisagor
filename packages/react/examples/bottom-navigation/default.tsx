@@ -4,8 +4,7 @@ import {
   MagnifyingGlassIcon,
   UserIcon,
 } from "@phosphor-icons/react";
-import { ScrollArea } from "@pisagor/react";
-import { BottomNavigation } from "@pisagor/react/bottom-navigation";
+import { BottomNavigation, ScrollArea } from "@pisagor/react";
 export function Default() {
   return (
     <div className="flex h-72 flex-col overflow-y-auto rounded-lg border bg-muted shadow-lg/5">

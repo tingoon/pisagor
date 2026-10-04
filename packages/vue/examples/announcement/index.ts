@@ -6,7 +6,7 @@ import with_iconRaw from "./with-icon.ts?raw";
 import with_linkRaw from "./with-link.ts?raw";
 import without_badgeRaw from "./without-badge.ts?raw";
 
-export const imports = `import { Announcement } from "@pisagor/vue/announcement";`;
+export const imports = `import { Announcement } from "@pisagor/vue";`;
 
 export const sources = {
   Compound: stripVueExample(compoundRaw),

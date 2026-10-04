@@ -1,5 +1,4 @@
-import { Button, Separator } from "@pisagor/react";
-import { FileUpload } from "@pisagor/react/file-upload";
+import { Button, FileUpload, Separator } from "@pisagor/react";
 export function Default() {
   return (
     <FileUpload>

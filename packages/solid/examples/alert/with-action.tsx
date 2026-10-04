@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid";
-import { Alert } from "@pisagor/solid/alert";
+import { Alert, Button } from "@pisagor/solid";
 import { ClockCounterClockwiseIcon } from "@pisagor/solid/icons";
 export function WithAction() {
   return (

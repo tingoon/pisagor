@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { FileField } from "../../src/fields/file-field";
+import { FileField } from "@pisagor/vue-form";
 </script>
 
 <template>

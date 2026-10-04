@@ -1,19 +1,16 @@
 ---
-import Card from "../../src/components/card/card.astro";
-import CardContent from "../../src/components/card/card-content.astro";
-import CardFooter from "../../src/components/card/card-footer.astro";
-import CardHeader from "../../src/components/card/card-header.astro";
+import { Card } from "@pisagor/astro";
 ---
 
 <Card>
-  <CardHeader
+  <Card.Header
     description="Brief description about the card"
     title="Card header"
   />
-  <CardContent>
+  <Card.Content>
     <p class="text-muted-foreground text-sm">Card content</p>
-  </CardContent>
-  <CardFooter>
+  </Card.Content>
+  <Card.Footer>
     <p class="text-muted-foreground text-sm">Footer</p>
-  </CardFooter>
+  </Card.Footer>
 </Card>

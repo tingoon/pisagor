@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ColorPicker } from "@pisagor/svelte/color-picker";
+import { ColorPicker } from "@pisagor/svelte";
 
 let color = $state("rgba(82, 65, 235, 1)");
 

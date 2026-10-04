@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Surface } from "@pisagor/vue";
-import { Checkbox } from "../../src/components/checkbox";
+import { Checkbox, Surface } from "@pisagor/vue";
 </script>
 
 <template>

@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte/button";
-import { Collapsible } from "@pisagor/svelte/collapsible";
+import { Button, Collapsible } from "@pisagor/svelte";
 </script>
 
 <Collapsible>

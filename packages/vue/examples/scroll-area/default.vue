@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Separator } from "@pisagor/vue";
-import { ScrollArea } from "../../src/components/scroll-area";
+import { ScrollArea, Separator } from "@pisagor/vue";
 
 const tags = Array.from({ length: 50 }, (_, i) => `v1.0.0-beta.${i}`);
 </script>

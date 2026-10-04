@@ -1,9 +1,12 @@
 /** @jsxImportSource solid-js */
 
-import { createFileIcons, createTreeCollection } from "@pisagor/solid";
+import type { NodeProviderProps } from "@pisagor/solid";
+import {
+  createFileIcons,
+  createTreeCollection,
+  TreeView,
+} from "@pisagor/solid";
 import { FileCodeIcon, FileJsIcon, FileTextIcon } from "@pisagor/solid/icons";
-import type { NodeProviderProps } from "@pisagor/solid/tree-view";
-import { TreeView } from "@pisagor/solid/tree-view";
 export function CustomIcons() {
   const fileIcons = createFileIcons({
     ".json": FileJsIcon,

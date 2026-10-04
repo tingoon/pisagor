@@ -1,10 +1,11 @@
 /** @jsxImportSource solid-js */
+
+import { ToggleGroup } from "@pisagor/solid";
 import {
   TextBIcon,
   TextItalicIcon,
   TextUnderlineIcon,
 } from "@pisagor/solid/icons";
-import { ToggleGroup } from "@pisagor/solid/toggle-group";
 
 export function Sizes() {
   return (

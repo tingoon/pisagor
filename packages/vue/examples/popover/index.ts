@@ -9,7 +9,7 @@ import nestedRaw from "./nested.ts?raw";
 import placementsRaw from "./placements.ts?raw";
 import scroll_areaRaw from "./scroll-area.ts?raw";
 
-export const imports = `import { Popover } from "@pisagor/vue/popover";`;
+export const imports = `import { Popover } from "@pisagor/vue";`;
 
 export const sources = {
   Anchor: stripVueExample(anchorRaw),

@@ -1,4 +1,4 @@
-import { AppShell } from "@pisagor/react/app-shell";
+import { AppShell } from "@pisagor/react";
 import { mainContent, regionTitle } from "./helpers";
 
 export function Header() {

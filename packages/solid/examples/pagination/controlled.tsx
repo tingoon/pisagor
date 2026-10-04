@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Pagination } from "@pisagor/solid/pagination";
+import { Pagination } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
   const [page, setPage] = createSignal(1);

@@ -11,7 +11,7 @@ import separatorRaw from "./separator.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_placeholderRaw from "./with-placeholder.svelte?raw";
 
-export const imports = `import { InputOtp } from "@pisagor/svelte/input-otp";`;
+export const imports = `import { InputOtp } from "@pisagor/svelte";`;
 
 export const sources = {
   BlurOnComplete: stripSvelteExample(blur_on_completeRaw),

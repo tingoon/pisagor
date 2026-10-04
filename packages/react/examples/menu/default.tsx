@@ -1,5 +1,5 @@
 import { GearIcon, SignOutIcon, UserIcon } from "@phosphor-icons/react";
-import { Menu } from "@pisagor/react/menu";
+import { Menu } from "@pisagor/react";
 
 export function Default() {
   return (

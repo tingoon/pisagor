@@ -1,4 +1,4 @@
-import { SignaturePad } from "@pisagor/react/signature-pad";
+import { SignaturePad } from "@pisagor/react";
 
 export function Invalid() {
   return <SignaturePad invalid />;

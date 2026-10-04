@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { Checkbox } from "@pisagor/vue";
 import { ref } from "vue";
-import { Checkbox } from "../../src/components/checkbox";
 
 const checked = ref(false);
 </script>

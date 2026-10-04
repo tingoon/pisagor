@@ -1,7 +1,7 @@
 /** @jsxImportSource solid-js */
 
 import { createListCollection } from "@ark-ui/solid/collection";
-import { Listbox } from "@pisagor/solid/listbox";
+import { Listbox } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function ImageExplorer() {
   const collection = createListCollection({

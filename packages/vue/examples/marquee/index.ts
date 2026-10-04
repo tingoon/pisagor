@@ -10,7 +10,7 @@ import pause_on_hoverRaw from "./pause-on-hover.ts?raw";
 import reverseRaw from "./reverse.ts?raw";
 import spacingRaw from "./spacing.ts?raw";
 
-export const imports = `import { Marquee } from "@pisagor/vue/marquee";`;
+export const imports = `import { Marquee } from "@pisagor/vue";`;
 
 export const sources = {
   Autofill: stripVueExample(autofillRaw),

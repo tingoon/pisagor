@@ -6,7 +6,7 @@ import disabledRaw from "./disabled.vue?raw";
 import nestedRaw from "./nested.vue?raw";
 import partial_collapseRaw from "./partial-collapse.vue?raw";
 
-export const imports = `import { Collapsible } from "@pisagor/vue/collapsible";`;
+export const imports = `import { Collapsible } from "@pisagor/vue";`;
 
 export const sources = {
   Compound: stripVueExample(compoundRaw),

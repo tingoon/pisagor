@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Toolbar } from "@pisagor/svelte/toolbar";
+import { Button, Toolbar } from "@pisagor/svelte";
 </script>
 
 <Toolbar.Root>

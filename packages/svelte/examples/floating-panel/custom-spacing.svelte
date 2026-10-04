@@ -1,7 +1,12 @@
 <script lang="ts">
 import { createListCollection } from "@ark-ui/svelte/collection";
-import { Button, Field, NumberInput, Select } from "@pisagor/svelte";
-import { FloatingPanel } from "@pisagor/svelte/floating-panel";
+import {
+  Button,
+  Field,
+  FloatingPanel,
+  NumberInput,
+  Select,
+} from "@pisagor/svelte";
 import GearSixIcon from "phosphor-svelte/lib/GearSixIcon";
 import XIcon from "phosphor-svelte/lib/XIcon";
 

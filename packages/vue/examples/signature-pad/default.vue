@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { SignaturePad } from "../../src/components/signature-pad";
+import { SignaturePad } from "@pisagor/vue";
 </script>
 
 <template>

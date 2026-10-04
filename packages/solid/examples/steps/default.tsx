@@ -1,9 +1,8 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid/button";
-import { Steps } from "@pisagor/solid/steps";
+import { Button, Steps } from "@pisagor/solid";
+import { CaretLeftIcon, CaretRightIcon } from "@pisagor/solid/icons";
 import { For } from "solid-js";
-import { CaretLeftIcon, CaretRightIcon } from "../../src/internal/icons";
 
 export function Default() {
   const steps = [1, 2, 3];

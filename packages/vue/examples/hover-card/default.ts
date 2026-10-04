@@ -1,7 +1,8 @@
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
+import { HoverCard } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { HoverCard } from "../../src/components/hover-card";
+
 export default defineComponent({
   name: "Default",
   setup() {

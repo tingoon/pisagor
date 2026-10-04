@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Field } from "@pisagor/solid";
-import { Checkbox } from "@pisagor/solid/checkbox";
+import { Checkbox, Field } from "@pisagor/solid";
 export function Indeterminate() {
   return (
     <Field.Group>

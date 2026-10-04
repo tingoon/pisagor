@@ -1,7 +1,6 @@
 <script lang="ts">
 import { Portal } from "@ark-ui/svelte/portal";
-import { Button } from "@pisagor/svelte/button";
-import { Dialog } from "@pisagor/svelte/dialog";
+import { Button, Dialog } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap justify-center gap-2">

@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react";
-import { Tabs } from "@pisagor/react/tabs";
+import { Button, Tabs } from "@pisagor/react";
 import { useState } from "react";
 export function Controlled() {
   const [value, setValue] = useState("profile");

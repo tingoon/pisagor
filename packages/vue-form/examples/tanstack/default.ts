@@ -1,6 +1,6 @@
 import { parseDate } from "@pisagor/vue";
+import { useAppForm } from "@pisagor/vue-form/tanstack";
 import { defineComponent, h } from "vue";
-import { useAppForm } from "../../src/tanstack";
 import { cityOptions, countryOptions, planOptions } from "../options";
 
 export default defineComponent({

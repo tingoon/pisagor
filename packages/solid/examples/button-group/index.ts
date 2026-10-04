@@ -5,7 +5,7 @@ import orientation_horizontalRaw from "./orientation-horizontal.tsx?raw";
 import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
 import with_separatorRaw from "./with-separator.tsx?raw";
 
-export const imports = `import { ButtonGroup } from "@pisagor/solid/button-group";`;
+export const imports = `import { ButtonGroup } from "@pisagor/solid";`;
 
 export const sources = {
   Default: stripTsxExample(defaultRaw),
@@ -15,8 +15,8 @@ export const sources = {
   WithSeparator: stripTsxExample(with_separatorRaw),
 } as const;
 
-export { Default } from "./default";
-export { Nested } from "./nested";
-export { OrientationHorizontal } from "./orientation-horizontal";
-export { OrientationVertical } from "./orientation-vertical";
-export { WithSeparator } from "./with-separator";
+export * from "./default";
+export * from "./nested";
+export * from "./orientation-horizontal";
+export * from "./orientation-vertical";
+export * from "./with-separator";

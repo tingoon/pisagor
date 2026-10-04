@@ -11,7 +11,7 @@ import with_clear_buttonRaw from "./with-clear-button.svelte?raw";
 import with_start_iconRaw from "./with-start-icon.svelte?raw";
 import with_triggerRaw from "./with-trigger.svelte?raw";
 
-export const imports = `import { Autocomplete } from "@pisagor/svelte/autocomplete";`;
+export const imports = `import { Autocomplete } from "@pisagor/svelte";`;
 
 export const sources = {
   Compound: stripSvelteExample(compoundRaw),

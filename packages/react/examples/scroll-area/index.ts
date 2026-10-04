@@ -5,7 +5,7 @@ import horizontalRaw from "./horizontal.tsx?raw";
 import nestedRaw from "./nested.tsx?raw";
 import scroll_fadeRaw from "./scroll-fade.tsx?raw";
 
-export const imports = `import { ScrollArea } from "@pisagor/react/scroll-area";`;
+export const imports = `import { ScrollArea } from "@pisagor/react";`;
 
 export const sources = {
   BothDirections: stripTsxExample(both_directionsRaw),
@@ -15,8 +15,8 @@ export const sources = {
   ScrollFade: stripTsxExample(scroll_fadeRaw),
 } as const;
 
-export { BothDirections } from "./both-directions";
-export { Default } from "./default";
-export { Horizontal } from "./horizontal";
-export { Nested } from "./nested";
-export { ScrollFade } from "./scroll-fade";
+export * from "./both-directions";
+export * from "./default";
+export * from "./horizontal";
+export * from "./nested";
+export * from "./scroll-fade";

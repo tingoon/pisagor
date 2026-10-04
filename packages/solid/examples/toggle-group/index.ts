@@ -12,7 +12,7 @@ import spacingRaw from "./spacing.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 import verticalRaw from "./vertical.tsx?raw";
 
-export const imports = `import { ToggleGroup } from "@pisagor/solid/toggle-group";`;
+export const imports = `import { ToggleGroup } from "@pisagor/solid";`;
 
 export const sources = {
   Compound: stripTsxExample(compoundRaw),
@@ -29,15 +29,15 @@ export const sources = {
   Vertical: stripTsxExample(verticalRaw),
 } as const;
 
-export { Compound } from "./compound";
-export { Controlled } from "./controlled";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { DisabledItem } from "./disabled-item";
-export { FontWeight } from "./font-weight";
-export { Horizontal } from "./horizontal";
-export { Single } from "./single";
-export { Sizes } from "./sizes";
-export { Spacing } from "./spacing";
-export { Variants } from "./variants";
-export { Vertical } from "./vertical";
+export * from "./compound";
+export * from "./controlled";
+export * from "./default";
+export * from "./disabled";
+export * from "./disabled-item";
+export * from "./font-weight";
+export * from "./horizontal";
+export * from "./single";
+export * from "./sizes";
+export * from "./spacing";
+export * from "./variants";
+export * from "./vertical";

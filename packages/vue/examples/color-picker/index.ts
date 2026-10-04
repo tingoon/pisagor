@@ -31,7 +31,7 @@ import swatch_picker_custom_sizeRaw from "./swatch-picker-custom-size.vue?raw";
 import swatch_picker_disabledRaw from "./swatch-picker-disabled.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 
-export const imports = `import { ColorPicker } from "@pisagor/vue/color-picker";`;
+export const imports = `import { ColorPicker } from "@pisagor/vue";`;
 
 export const sources = {
   AreaChannels: stripVueExample(area_channelsRaw),

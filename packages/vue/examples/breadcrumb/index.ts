@@ -6,7 +6,7 @@ import defaultRaw from "./default.vue?raw";
 import with_linkRaw from "./with-link.vue?raw";
 import with_menuRaw from "./with-menu.vue?raw";
 
-export const imports = `import { Breadcrumb } from "@pisagor/vue/breadcrumb";`;
+export const imports = `import { Breadcrumb } from "@pisagor/vue";`;
 
 export const sources = {
   Collapsed: stripVueExample(collapsedRaw),

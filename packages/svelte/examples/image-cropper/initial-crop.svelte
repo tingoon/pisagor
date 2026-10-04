@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ImageCropper } from "@pisagor/svelte/image-cropper";
+import { ImageCropper } from "@pisagor/svelte";
 </script>
 
 <ImageCropper>

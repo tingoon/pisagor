@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Surface } from "@pisagor/vue";
-import { Clipboard } from "../../src/components/clipboard";
+import { Clipboard, Surface } from "@pisagor/vue";
 </script>
 
 <template>

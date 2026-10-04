@@ -11,7 +11,7 @@ import variantsRaw from "./variants.svelte?raw";
 import verticalRaw from "./vertical.svelte?raw";
 import with_labelRaw from "./with-label.svelte?raw";
 
-export const imports = `import { Slider } from "@pisagor/svelte/slider";`;
+export const imports = `import { Slider } from "@pisagor/svelte";`;
 
 export const sources = {
   Controlled: stripSvelteExample(controlledRaw),

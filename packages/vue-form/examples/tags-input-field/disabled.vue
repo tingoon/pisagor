@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { TagsInputField } from "../../src/fields/tags-input-field";
+import { TagsInputField } from "@pisagor/vue-form";
 </script>
 
 <template>

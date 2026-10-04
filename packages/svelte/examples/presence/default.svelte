@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Presence } from "@pisagor/svelte/presence";
+import { Presence } from "@pisagor/svelte";
 
 let present = $state(true);
 </script>

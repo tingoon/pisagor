@@ -9,7 +9,7 @@ import on_surfaceRaw from "./on-surface.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import with_fieldRaw from "./with-field.vue?raw";
 
-export const imports = `import { Textarea } from "@pisagor/vue/textarea";`;
+export const imports = `import { Textarea } from "@pisagor/vue";`;
 
 export const sources = {
   Autoresize: stripVueExample(autoresizeRaw),

@@ -1,5 +1,5 @@
 import { CreditCardIcon, HardDriveIcon, UserIcon } from "@phosphor-icons/react";
-import { Steps } from "@pisagor/react/steps";
+import { Steps } from "@pisagor/react";
 
 export function Icon() {
   const items = [

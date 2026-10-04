@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
+import { Combobox } from "@pisagor/vue";
 import { ref } from "vue";
-import { Combobox } from "../../src/components/combobox";
 
 const value = ref<string | undefined>("banana");
 const initialItems = [

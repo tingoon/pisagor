@@ -1,5 +1,4 @@
-import { Card } from "@pisagor/react";
-import { Carousel } from "@pisagor/react/carousel";
+import { Card, Carousel } from "@pisagor/react";
 export function SlidesPerPage() {
   return (
     <Carousel

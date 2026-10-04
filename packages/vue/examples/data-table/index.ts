@@ -9,5 +9,5 @@ export const sources = {
   Sorting: stripVueExample(sortingRaw),
 } as const;
 
-export { Empty } from "./empty";
-export { Sorting } from "./sorting";
+export * from "./empty";
+export * from "./sorting";

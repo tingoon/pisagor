@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { Button } from "@pisagor/vue";
+import { Button, Tour } from "@pisagor/vue";
 import { ref } from "vue";
-import { Tour } from "../../src/components/tour";
 
 const logs = ref([]);
 const onStatusChange = (details) => addLog(`Status: ${details.status}`);

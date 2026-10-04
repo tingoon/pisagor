@@ -1,8 +1,13 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 import { PhGearSix, PhX } from "@phosphor-icons/vue";
-import { Button, Field, NumberInput, Select } from "@pisagor/vue";
-import { FloatingPanel } from "../../src/components/floating-panel";
+import {
+  Button,
+  Field,
+  FloatingPanel,
+  NumberInput,
+  Select,
+} from "@pisagor/vue";
 
 const collection = createListCollection({
   items: ["Inter", "Roboto", "Helvetica", "Geist"],

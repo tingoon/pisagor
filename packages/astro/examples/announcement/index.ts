@@ -5,7 +5,7 @@ import variantsRaw from "./variants.astro?raw";
 import without_badgeRaw from "./without-badge.astro?raw";
 
 export const imports = `---
-import { Announcement } from "@pisagor/astro/announcement";
+import { Announcement } from "@pisagor/astro";
 ---`;
 
 export const sources = {

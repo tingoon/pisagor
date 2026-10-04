@@ -10,7 +10,7 @@ import orientation_horizontalRaw from "./orientation-horizontal.svelte?raw";
 import orientation_verticalRaw from "./orientation-vertical.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 
-export const imports = `import { SegmentGroup } from "@pisagor/svelte/segment-group";`;
+export const imports = `import { SegmentGroup } from "@pisagor/svelte";`;
 
 export const sources = {
   Compound: stripSvelteExample(compoundRaw),

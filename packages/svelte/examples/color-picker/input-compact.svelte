@@ -1,6 +1,5 @@
 <script lang="ts">
-import { InputGroup, parseColor, Separator } from "@pisagor/svelte";
-import { ColorPicker } from "@pisagor/svelte/color-picker";
+import { ColorPicker, InputGroup, parseColor, Separator } from "@pisagor/svelte";
 import { PercentIcon } from "@pisagor/svelte/icons";
 </script>
 

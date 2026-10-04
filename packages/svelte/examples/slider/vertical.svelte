@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Slider } from "@pisagor/svelte/slider";
+import { Slider } from "@pisagor/svelte";
 </script>
 
 <div class="flex items-center justify-center gap-2">

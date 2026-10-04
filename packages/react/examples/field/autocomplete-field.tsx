@@ -1,6 +1,5 @@
 import { useFilter, useListCollection } from "@ark-ui/react";
-import { Autocomplete, Combobox } from "@pisagor/react";
-import { Field } from "@pisagor/react/field";
+import { Autocomplete, Combobox, Field } from "@pisagor/react";
 export function AutocompleteField() {
   const initialItems = [
     { label: "Apple", value: "apple" },

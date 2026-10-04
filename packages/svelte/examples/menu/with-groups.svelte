@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Menu } from "@pisagor/svelte/menu";
+import { Menu } from "@pisagor/svelte";
 import ArchiveIcon from "phosphor-svelte/lib/ArchiveIcon";
 import HouseIcon from "phosphor-svelte/lib/HouseIcon";
 import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";

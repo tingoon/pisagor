@@ -1,5 +1,5 @@
 import { PlusIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
+import { Button } from "@pisagor/react";
 
 export function Pill() {
   return (

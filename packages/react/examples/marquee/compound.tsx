@@ -9,8 +9,7 @@ import {
   SparkleIcon,
   StackIcon,
 } from "@phosphor-icons/react";
-import { Card } from "@pisagor/react";
-import { Marquee } from "@pisagor/react/marquee";
+import { Card, Marquee } from "@pisagor/react";
 
 const marqueeIcons: Icon[] = [
   GlobeIcon,

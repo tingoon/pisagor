@@ -6,7 +6,7 @@ import different_iconRaw from "./different-icon.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_labelRaw from "./with-label.svelte?raw";
 
-export const imports = `import { Clipboard } from "@pisagor/svelte/clipboard";`;
+export const imports = `import { Clipboard } from "@pisagor/svelte";`;
 
 export const sources = {
   Controlled: stripSvelteExample(controlledRaw),

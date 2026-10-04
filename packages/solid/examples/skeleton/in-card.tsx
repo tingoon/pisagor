@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Card } from "@pisagor/solid";
-import { Skeleton } from "@pisagor/solid/skeleton";
+import { Card, Skeleton } from "@pisagor/solid";
 export function InCard() {
   return (
     <Card>

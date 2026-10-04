@@ -1,7 +1,6 @@
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { useTagsInput } from "@ark-ui/react/tags-input";
-import { Combobox, Field } from "@pisagor/react";
-import { TagsInput } from "@pisagor/react/tags-input";
+import { Combobox, Field, TagsInput } from "@pisagor/react";
 import { useId } from "react";
 export function WithCombobox() {
   const frameworkItems = [

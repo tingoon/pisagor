@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button, DropdownMenu } from "@pisagor/svelte";
-import { Breadcrumb } from "@pisagor/svelte/breadcrumb";
+import { Breadcrumb, Button, DropdownMenu } from "@pisagor/svelte";
 </script>
 
 <Breadcrumb.Root>

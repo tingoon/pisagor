@@ -1,6 +1,6 @@
 <script lang="ts">
 import { createListCollection } from "@ark-ui/svelte/collection";
-import { Command } from "@pisagor/svelte/command";
+import { Command } from "@pisagor/svelte";
 
 const items = [
   { label: "Calendar", value: "calendar" },

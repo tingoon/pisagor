@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Card } from "@pisagor/solid";
-import { Timer } from "@pisagor/solid/timer";
+import { Card, Timer } from "@pisagor/solid";
 export function OrientationHorizontal() {
   return (
     <Card class="rounded-3xl [--space:--spacing(6)]">

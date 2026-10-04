@@ -6,7 +6,7 @@ import sizesRaw from "./sizes.vue?raw";
 import thicknessRaw from "./thickness.vue?raw";
 import with_valueRaw from "./with-value.vue?raw";
 
-export const imports = `import { CircularProgress } from "@pisagor/vue/circular-progress";`;
+export const imports = `import { CircularProgress } from "@pisagor/vue";`;
 
 export const sources = {
   Controlled: stripVueExample(controlledRaw),

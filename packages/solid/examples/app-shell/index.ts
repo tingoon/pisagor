@@ -9,7 +9,7 @@ import navigationRaw from "./navigation.tsx?raw";
 import panelsRaw from "./panels.tsx?raw";
 import railsRaw from "./rails.tsx?raw";
 
-export const imports = `import { AppShell } from "@pisagor/solid/app-shell";`;
+export const imports = `import { AppShell } from "@pisagor/solid";`;
 
 export const sources = {
   Banner: stripTsxExample(bannerRaw),
@@ -23,12 +23,12 @@ export const sources = {
   Rails: stripTsxExample(railsRaw),
 } as const;
 
-export { Banner } from "./banner";
-export { Content } from "./content";
-export { Default } from "./default";
-export { Header } from "./header";
-export { Inspectors } from "./inspectors";
-export { Main } from "./main";
-export { Navigation } from "./navigation";
-export { Panels } from "./panels";
-export { Rails } from "./rails";
+export * from "./banner";
+export * from "./content";
+export * from "./default";
+export * from "./header";
+export * from "./inspectors";
+export * from "./main";
+export * from "./navigation";
+export * from "./panels";
+export * from "./rails";

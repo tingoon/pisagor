@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { SegmentGroup } from "@pisagor/solid/segment-group";
+import { SegmentGroup } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
   const items = ["Profile", "Account", "Security", "Notifications"];

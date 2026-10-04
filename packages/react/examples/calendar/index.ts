@@ -13,7 +13,7 @@ import presetsRaw from "./presets.tsx?raw";
 import rangeRaw from "./range.tsx?raw";
 import select_todayRaw from "./select-today.tsx?raw";
 
-export const imports = `import { Calendar } from "@pisagor/react/calendar";`;
+export const imports = `import { Calendar } from "@pisagor/react";`;
 
 export const sources = {
   BookedDates: stripTsxExample(booked_datesRaw),
@@ -31,16 +31,16 @@ export const sources = {
   SelectToday: stripTsxExample(select_todayRaw),
 } as const;
 
-export { BookedDates } from "./booked-dates";
-export { Controlled } from "./controlled";
-export { CustomCellSize } from "./custom-cell-size";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { FixedWeeks } from "./fixed-weeks";
-export { Invalid } from "./invalid";
-export { MinMax } from "./min-max";
-export { MonthYearSelector } from "./month-year-selector";
-export { MultipleMonths } from "./multiple-months";
-export { Presets } from "./presets";
-export { Range } from "./range";
-export { SelectToday } from "./select-today";
+export * from "./booked-dates";
+export * from "./controlled";
+export * from "./custom-cell-size";
+export * from "./default";
+export * from "./disabled";
+export * from "./fixed-weeks";
+export * from "./invalid";
+export * from "./min-max";
+export * from "./month-year-selector";
+export * from "./multiple-months";
+export * from "./presets";
+export * from "./range";
+export * from "./select-today";

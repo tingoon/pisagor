@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { TextareaField } from "../../src/fields/textarea-field";
+import { TextareaField } from "@pisagor/vue-form";
 </script>
 
 <template>

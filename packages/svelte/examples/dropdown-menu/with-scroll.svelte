@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { DropdownMenu } from "@pisagor/svelte/dropdown-menu";
+import { Button, DropdownMenu } from "@pisagor/svelte";
 
 const items = Array.from({ length: 15 }, (_, i) => `Item ${i + 1}`);
 </script>

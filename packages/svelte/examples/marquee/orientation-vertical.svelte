@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Card } from "@pisagor/svelte";
-import { Marquee } from "@pisagor/svelte/marquee";
+import { Card, Marquee } from "@pisagor/svelte";
 </script>
 
 <Marquee.Root>

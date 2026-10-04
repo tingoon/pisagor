@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { ActionBar } from "@pisagor/svelte/action-bar";
+import { ActionBar, Button } from "@pisagor/svelte";
 import { PencilSimpleIcon, TrashIcon, XIcon } from "@pisagor/svelte/icons";
 
 

@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button, Separator } from "@pisagor/svelte";
-import { FileUpload } from "@pisagor/svelte/file-upload";
+import { Button, FileUpload, Separator } from "@pisagor/svelte";
 </script>
 
 <FileUpload maxFiles={5}>

@@ -1,5 +1,4 @@
-import { Button, Field, Input, Select } from "@pisagor/react";
-import { Dialog } from "@pisagor/react/dialog";
+import { Button, Dialog, Field, Input, Select } from "@pisagor/react";
 export function Default() {
   return (
     <Dialog

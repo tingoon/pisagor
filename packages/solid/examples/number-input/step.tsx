@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Field } from "@pisagor/solid";
-import { NumberInput } from "@pisagor/solid/number-input";
+import { Field, NumberInput } from "@pisagor/solid";
 export function Step() {
   return (
     <div class="flex flex-col gap-2">

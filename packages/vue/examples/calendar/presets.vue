@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Button, Card } from "@pisagor/vue";
-import { Calendar } from "../../src/components/calendar";
+import { Button, Calendar, Card } from "@pisagor/vue";
 
 const presets = [
   { label: "Last 7 days", value: "last7Days" },

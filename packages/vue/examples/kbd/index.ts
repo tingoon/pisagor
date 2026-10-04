@@ -5,7 +5,7 @@ import variantsRaw from "./variants.vue?raw";
 import with_buttonRaw from "./with-button.vue?raw";
 import with_tooltipRaw from "./with-tooltip.ts?raw";
 
-export const imports = `import { Kbd } from "@pisagor/vue/kbd";`;
+export const imports = `import { Kbd } from "@pisagor/vue";`;
 
 export const sources = {
   Default: stripVueExample(defaultRaw),

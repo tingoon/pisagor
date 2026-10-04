@@ -4,7 +4,7 @@ import inline_navigationRaw from "./inline-navigation.tsx?raw";
 import listRaw from "./list.tsx?raw";
 import verticalRaw from "./vertical.tsx?raw";
 
-export const imports = `import { Separator } from "@pisagor/solid/separator";`;
+export const imports = `import { Separator } from "@pisagor/solid";`;
 
 export const sources = {
   Default: stripTsxExample(defaultRaw),
@@ -13,7 +13,7 @@ export const sources = {
   Vertical: stripTsxExample(verticalRaw),
 } as const;
 
-export { Default } from "./default";
-export { InlineNavigation } from "./inline-navigation";
-export { List } from "./list";
-export { Vertical } from "./vertical";
+export * from "./default";
+export * from "./inline-navigation";
+export * from "./list";
+export * from "./vertical";

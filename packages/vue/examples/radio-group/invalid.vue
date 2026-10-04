@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { RadioGroup } from "../../src/components/radio-group";
+import { RadioGroup } from "@pisagor/vue";
 
 const items = [
   { label: "Default", value: "default" },

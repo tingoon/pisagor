@@ -1,5 +1,4 @@
-import { Avatar, Button } from "@pisagor/react";
-import { Item } from "@pisagor/react/item";
+import { Avatar, Button, Item } from "@pisagor/react";
 export function WithAvatar() {
   return (
     <Item variant="outline">
