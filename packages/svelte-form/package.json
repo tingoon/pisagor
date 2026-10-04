@@ -18,9 +18,7 @@
   },
   "files": [
     "skills",
-    "src",
-    "!**/*.stories.*",
-    "!**/*.test.*"
+    "src"
   ],
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "license": "MIT",
