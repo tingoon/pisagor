@@ -49,7 +49,9 @@ function handleCheckedChange(
   {...rest}
   class={slots.base({ class: cn(className) })}
   data-variant={variant}
-  onCheckedChange={onCheckedChange || onValueChange ? handleCheckedChange : undefined}
+  onCheckedChange={onCheckedChange || onValueChange
+    ? handleCheckedChange
+    : undefined}
 >
   <SwitchPrimitive.Control
     class={slots.control({ class: cn(classNames?.control) })}

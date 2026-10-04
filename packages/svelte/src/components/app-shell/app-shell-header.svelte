@@ -27,10 +27,10 @@ const ctx = useAppShell();
 <header
   {...rest}
   class={cn(
-  ctx.slots.header(),
-  regionPositionClasses(ctx.slots, position, "row", "header"),
-  className,
-)}
+    ctx.slots.header(),
+    regionPositionClasses(ctx.slots, position, "row", "header"),
+    className,
+  )}
   data-part="header"
   data-position={position}
   data-scope="app-shell"

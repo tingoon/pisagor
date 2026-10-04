@@ -12,7 +12,7 @@ let { class: className, classNames, ...rest }: Props = $props();
   {...rest}
   class={inputGroupControlRecipe({ class: cn(className) })}
   classNames={{
-  ...classNames,
-  clearableRoot: cn(inputGroupControlRecipe(), classNames?.clearableRoot),
-}}
+    ...classNames,
+    clearableRoot: cn(inputGroupControlRecipe(), classNames?.clearableRoot),
+  }}
 />

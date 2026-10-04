@@ -40,8 +40,8 @@ const toasterStyle = $derived(
     toaster={toasterInstance}
   >
     {#snippet children(
-  toastItem,
-)}
+      toastItem,
+    )}
       <ToastItem toast={toastItem} />
     {/snippet}
   </ToasterPrimitive>

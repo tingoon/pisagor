@@ -5,7 +5,7 @@ import { Tabs } from "@pisagor/svelte";
 <Tabs
   defaultValue="a"
   items={[
-  { content: "Panel A", label: "Account", value: "a" },
-  { content: "Panel B", label: "Password", value: "b" },
-]}
+    { content: "Panel A", label: "Account", value: "a" },
+    { content: "Panel B", label: "Password", value: "b" },
+  ]}
 />

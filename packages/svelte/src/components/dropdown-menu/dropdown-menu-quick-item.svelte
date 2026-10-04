@@ -25,8 +25,8 @@ const menuSlots = $derived(context?.slots ?? dropdownMenuRecipe());
 <MenuPrimitive.Item
   {...rest}
   class={recipe({ variant }).base({
-  class: menuSlots.quickItem({ class: cn(className) }),
-})}
+    class: menuSlots.quickItem({ class: cn(className) }),
+  })}
 >
   {@render children?.()}
 </MenuPrimitive.Item>

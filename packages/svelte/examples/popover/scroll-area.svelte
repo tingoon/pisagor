@@ -25,8 +25,8 @@ const items = Array.from({ length: 12 }, (_, i) => ({
     <Popover.Footer>
       <Popover.CloseTrigger>
         {#snippet asChild(
-  props,
-)}
+          props,
+        )}
           <Button {...props()}>Close</Button>
         {/snippet}
       </Popover.CloseTrigger>

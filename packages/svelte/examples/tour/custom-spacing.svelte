@@ -24,8 +24,8 @@ const steps: TourStepDetails[] = [
 <Tour {steps}>
   <Tour.Trigger>
     {#snippet asChild(
-  props,
-)}
+      props,
+    )}
       <Button {...props()} variant="outline">Open</Button>
     {/snippet}
   </Tour.Trigger>

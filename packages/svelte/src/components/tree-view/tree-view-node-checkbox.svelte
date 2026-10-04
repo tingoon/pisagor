@@ -23,7 +23,11 @@ const surfaceVariant = useFormControlSurface();
 
 <TreeViewPrimitive.NodeCheckbox
   {...rest}
-  class={cn(formControlToggleRecipe({ surfaceVariant }), slots.checkbox(), className)}
+  class={cn(
+    formControlToggleRecipe({ surfaceVariant }),
+    slots.checkbox(),
+    className,
+  )}
 >
   <TreeViewPrimitive.NodeCheckboxIndicator {indeterminate}>
     <CheckIcon />

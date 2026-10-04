@@ -58,12 +58,12 @@ setSurfaceContext({
   as="div"
   {...rest}
   class={recipe({
-  bordered,
-  class: cn(className),
-  padding,
-  rounded,
-  variant: surface.variant,
-})}
+    bordered,
+    class: cn(className),
+    padding,
+    rounded,
+    variant: surface.variant,
+  })}
   data-depth={surface.depth}
   data-part="root"
   data-scope="surface"

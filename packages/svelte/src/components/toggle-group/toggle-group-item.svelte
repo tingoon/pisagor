@@ -17,10 +17,10 @@ const ctx = useToggleGroup();
 <ToggleGroupPrimitive.Item
   {...rest}
   class={cn(
-  buttonRecipe({ clickEffect: false, variant: ctx.variant }).base(),
-  toggleRecipe({ size: ctx.size }),
-  ctx.slots.item({ class: cn(className) }),
-)}
+    buttonRecipe({ clickEffect: false, variant: ctx.variant }).base(),
+    toggleRecipe({ size: ctx.size }),
+    ctx.slots.item({ class: cn(className) }),
+  )}
   data-spacing={ctx.spacing}
   data-variant={ctx.variant}
   {value}

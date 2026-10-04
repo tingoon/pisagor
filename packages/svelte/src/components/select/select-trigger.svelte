@@ -42,14 +42,14 @@ const resolvedVariant = $derived(
   <SelectPrimitive.Trigger
     {...rest}
     class={cn(
-  formControlShellRecipe({
-    size,
-    surfaceVariant,
-    variant: resolvedVariant,
-  }),
-  slots.trigger(),
-  className,
-)}
+      formControlShellRecipe({
+        size,
+        surfaceVariant,
+        variant: resolvedVariant,
+      }),
+      slots.trigger(),
+      className,
+    )}
     data-variant={resolvedVariant}
   >
     {@render children?.()}

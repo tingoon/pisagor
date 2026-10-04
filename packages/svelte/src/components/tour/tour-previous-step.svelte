@@ -17,7 +17,10 @@ const prevAction = $derived(
 {#if prevAction}
   <TourPrimitive.ActionTrigger
     action={prevAction}
-    class={cn(buttonRecipe({ size: "sm", variant: "outline" }).base(), className)}
+    class={cn(
+      buttonRecipe({ size: "sm", variant: "outline" }).base(),
+      className,
+    )}
     type="button"
   >
     {#if children}

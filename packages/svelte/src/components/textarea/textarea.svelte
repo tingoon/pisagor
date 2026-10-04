@@ -67,9 +67,9 @@ function handleClear() {
   <Field.Textarea
     {...rest}
     class={cn(
-  formControlShellRecipe({ size: "md", surfaceVariant, variant }),
-  slots.rootLayout({ class: cn(className, classNames?.rootLayout) }),
-)}
+      formControlShellRecipe({ size: "md", surfaceVariant, variant }),
+      slots.rootLayout({ class: cn(className, classNames?.rootLayout) }),
+    )}
     data-variant={variant}
     {disabled}
     oninput={handleInput}
@@ -84,9 +84,9 @@ function handleClear() {
     <Field.Textarea
       {...rest}
       class={slots.clearableRoot({
-  class: cn(className, classNames?.clearableRoot),
-  clearable: canClear,
-})}
+        class: cn(className, classNames?.clearableRoot),
+        clearable: canClear,
+      })}
       data-variant={variant}
       {disabled}
       oninput={handleInput}

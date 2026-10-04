@@ -86,7 +86,9 @@ function handleClear() {
   <InputGroupRoot {size} {variant}>
     <Field.Input
       {...rest}
-      class={slots.clearableRoot({ class: cn(className, classNames?.clearableRoot) })}
+      class={slots.clearableRoot({
+        class: cn(className, classNames?.clearableRoot),
+      })}
       data-size={size}
       {disabled}
       oninput={handleInput}

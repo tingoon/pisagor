@@ -85,11 +85,11 @@ function handleChange(event: Event & { currentTarget: HTMLInputElement }) {
 <Ark
   as="fieldset"
   class={formControlGroupShellRecipe({
-  class: cn(slots.root(), className),
-  size,
-  surfaceVariant,
-  variant,
-})}
+    class: cn(slots.root(), className),
+    size,
+    surfaceVariant,
+    variant,
+  })}
   data-disabled={disabled ? true : undefined}
   data-part="root"
   data-scope="file-input"

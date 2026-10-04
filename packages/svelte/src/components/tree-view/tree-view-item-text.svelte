@@ -35,8 +35,8 @@ function getFileIcon(value: string): Component {
 
 <TreeViewPrimitive.NodeContext>
   {#snippet render(
-  nodeState,
-)}
+    nodeState,
+  )}
     {const state = nodeState()}
     {const ResolvedIcon = getFileIcon(state.value)}
     <span class={slots.icon()} data-part="item-icon" data-scope="tree-view">

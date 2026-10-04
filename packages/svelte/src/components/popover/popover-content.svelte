@@ -40,7 +40,10 @@ setPopoverContentContext({
       {#if showCloseButton}
         <PopoverPrimitive.CloseTrigger
           aria-label="Close"
-          class={cn(buttonRecipe({ size: "icon-sm", variant: "ghost" }).base(), slots.close())}
+          class={cn(
+            buttonRecipe({ size: "icon-sm", variant: "ghost" }).base(),
+            slots.close(),
+          )}
           type="button"
         >
           <XIcon />

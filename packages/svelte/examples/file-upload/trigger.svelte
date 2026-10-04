@@ -7,8 +7,8 @@ import PaperclipIcon from "phosphor-svelte/lib/PaperclipIcon";
   <div class="flex justify-center">
     <FileUpload.Trigger>
       {#snippet asChild(
-  props,
-)}
+        props,
+      )}
         <Button {...props()} variant="outline">
           <PaperclipIcon />
           Browse files

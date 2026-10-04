@@ -10,8 +10,8 @@ import { Button, Input, Popover } from "@pisagor/svelte";
       </Popover.Trigger>
       <Popover.Anchor>
         {#snippet asChild(
-  props,
-)}
+          props,
+        )}
           <Input
             {...props()}
             class="w-full"

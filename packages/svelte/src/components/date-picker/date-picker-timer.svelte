@@ -53,9 +53,9 @@ function handleClear() {
 
 <div
   class={cn(
-  formControlGroupShellRecipe({ size, surfaceVariant, variant }),
-  "group/input-group",
-)}
+    formControlGroupShellRecipe({ size, surfaceVariant, variant }),
+    "group/input-group",
+  )}
   data-part="root"
   data-scope="input-group"
 >

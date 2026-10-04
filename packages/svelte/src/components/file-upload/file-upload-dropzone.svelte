@@ -27,10 +27,10 @@ const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 <FileUploadPrimitive.Dropzone
   {...rest}
   class={cn(
-  formControlZoneRecipe({ surfaceVariant, variant }),
-  slots.dropzone(),
-  className,
-)}
+    formControlZoneRecipe({ surfaceVariant, variant }),
+    slots.dropzone(),
+    className,
+  )}
   data-variant={variant}
 >
   {@render children?.()}

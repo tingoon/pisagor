@@ -32,16 +32,16 @@ const ctx = useSidebar();
   as="button"
   {...rest}
   class={cn(
-  buttonRecipeProp({
-    clickEffect: false,
-    size: "icon-xs",
-    variant: "ghost",
-  }).base(),
-  ctx.slots.menuAction(),
-  !showOnHover &&
-    "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-accent-foreground md:opacity-0",
-  className,
-)}
+    buttonRecipeProp({
+      clickEffect: false,
+      size: "icon-xs",
+      variant: "ghost",
+    }).base(),
+    ctx.slots.menuAction(),
+    !showOnHover &&
+      "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-accent-foreground md:opacity-0",
+    className,
+  )}
   data-part="menu-action"
   data-scope="sidebar"
   data-sidebar="menu-action"

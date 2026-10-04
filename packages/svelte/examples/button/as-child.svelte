@@ -4,8 +4,8 @@ import { Button } from "@pisagor/svelte";
 
 <Button>
   {#snippet asChild(
-  props,
-)}
+    props,
+  )}
     <a href="/login" {...props()}>Login</a>
   {/snippet}
 </Button>

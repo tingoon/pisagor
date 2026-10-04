@@ -75,9 +75,9 @@ function handleValueChange(
   {:else}
     <NumberInputPrimitive.Control
       class={cn(
-  slots.control(),
-  formControlGroupShellRecipe({ size: "md", surfaceVariant, variant }),
-)}
+        slots.control(),
+        formControlGroupShellRecipe({ size: "md", surfaceVariant, variant }),
+      )}
       data-clearable={clearable || undefined}
       data-variant={variant}
     >
@@ -93,8 +93,8 @@ function handleValueChange(
 
       <NumberInputPrimitive.Context>
         {#snippet render(
-  api,
-)}
+          api,
+        )}
           {const hasValue =
             api().value !== undefined &&
             api().value !== null &&

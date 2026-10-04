@@ -21,8 +21,8 @@ let { tabIndex, months = 1, ...rest }: Props = $props();
 
 <CalendarPrimitive.Context>
   {#snippet render(
-  calendar,
-)}
+    calendar,
+  )}
     {const offset = calendar().getOffset({ months })}
     <CalendarTableBody {...rest}>
       {#each offset.weeks as week (getWeekRowKey(week))}

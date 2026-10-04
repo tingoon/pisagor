@@ -19,9 +19,9 @@ const { slots } = useDataGridContext();
     {...rest}
     aria-hidden="true"
     class={slots.columnResizer({
-  class: className,
-  resizing: headerCell.header.column.getIsResizing(),
-})}
+      class: className,
+      resizing: headerCell.header.column.getIsResizing(),
+    })}
     data-part="column-resizer"
     data-scope="data-grid"
     ondblclick={() => headerCell.header.column.resetSize()}

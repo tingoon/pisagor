@@ -8,8 +8,8 @@ let open = $state(false);
   <Collapsible onOpenChange={({ open: next }) => (open = next)} {open}>
     <Collapsible.Trigger>
       {#snippet asChild(
-  props,
-)}
+        props,
+      )}
         <Button {...props()} class="w-full" variant="outline">
           {open ? "Collapse" : "Expand"}
           <Collapsible.Indicator />

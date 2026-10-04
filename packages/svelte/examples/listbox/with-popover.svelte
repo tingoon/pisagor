@@ -30,8 +30,8 @@ function onSearchInput(e: Event & { currentTarget: HTMLInputElement }) {
   <Popover onOpenChange={({ open }) => (isOpen = open)} open={isOpen}>
     <Popover.Trigger>
       {#snippet asChild(
-  props,
-)}
+        props,
+      )}
         <Button {...props()} class="justify-between" variant="outline">
           <Listbox.ValueText placeholder="Select framework" />
           <CaretUpDownIcon class="opacity-64" />

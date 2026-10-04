@@ -10,10 +10,10 @@ const isCorrectOption = value === "comfortable";
   <p>Select the option comfortable</p>
   <RadioGroup
     items={[
-  { label: "Default", value: "default" },
-  { label: "Comfortable", value: "comfortable" },
-  { label: "Compact", value: "compact" },
-]}
+      { label: "Default", value: "default" },
+      { label: "Comfortable", value: "comfortable" },
+      { label: "Compact", value: "compact" },
+    ]}
     onValueChange={(v) => (value = v)}
     {value}
   />

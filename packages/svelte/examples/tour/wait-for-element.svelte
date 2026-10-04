@@ -62,8 +62,8 @@ const addItem = () => {
   <Tour {steps}>
     <Tour.Trigger>
       {#snippet asChild(
-  props,
-)}
+        props,
+      )}
         <Button {...props()} variant="outline">Start tour</Button>
       {/snippet}
     </Tour.Trigger>
@@ -76,7 +76,9 @@ const addItem = () => {
         {#each items as item, index}
           <div
             class="rounded-lg border border-border bg-muted/50 px-4 py-3 text-sm"
-            data-item={index === items.length - 1 && items.length > 2 ? "new" : undefined}
+            data-item={index === items.length - 1 && items.length > 2
+              ? "new"
+              : undefined}
           >
             {item}
           </div>

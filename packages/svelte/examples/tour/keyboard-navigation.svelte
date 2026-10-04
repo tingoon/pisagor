@@ -40,8 +40,8 @@ const steps: TourStepDetails[] = [
   <Tour keyboardNavigation {steps}>
     <Tour.Trigger>
       {#snippet asChild(
-  props,
-)}
+        props,
+      )}
         <Button {...props()} variant="outline">Start tour</Button>
       {/snippet}
     </Tour.Trigger>

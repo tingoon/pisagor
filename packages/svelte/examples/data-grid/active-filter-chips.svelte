@@ -35,7 +35,10 @@ function onColumnFiltersChange(
       <DataGrid.Toolbar class="flex flex-wrap gap-2">
         {#each columnFilters as filter}
           <Button
-            onClick={() => (columnFilters = columnFilters.filter((item) => item.id !== filter.id))}
+            onClick={() =>
+              (columnFilters = columnFilters.filter(
+                (item) => item.id !== filter.id,
+              ))}
             size="xs"
             variant="outline"
           >

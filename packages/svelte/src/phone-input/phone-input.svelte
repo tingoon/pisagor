@@ -221,7 +221,10 @@ function handleCountryChange(nextValue: string[]) {
               {#if phoneInputFlags[country]}
                 <span
                   aria-label={country}
-                  class={cn(slots.flagEmoji(), slots.flag({ class: classNames?.flag }))}
+                  class={cn(
+                    slots.flagEmoji(),
+                    slots.flag({ class: classNames?.flag }),
+                  )}
                   role="img"
                 >
                   {phoneInputFlags[country]}
@@ -229,7 +232,10 @@ function handleCountryChange(nextValue: string[]) {
               {:else}
                 <GlobeIcon
                   aria-hidden
-                  class={cn(slots.flagIcon(), slots.flag({ class: classNames?.flag }))}
+                  class={cn(
+                    slots.flagIcon(),
+                    slots.flag({ class: classNames?.flag }),
+                  )}
                 />
               {/if}
             {/if}

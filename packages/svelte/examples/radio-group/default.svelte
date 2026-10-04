@@ -4,7 +4,7 @@ import { RadioGroup } from "@pisagor/svelte";
 
 <RadioGroup
   items={[
-  { label: "Option A", value: "a" },
-  { label: "Option B", value: "b" },
-]}
+    { label: "Option A", value: "a" },
+    { label: "Option B", value: "b" },
+  ]}
 />

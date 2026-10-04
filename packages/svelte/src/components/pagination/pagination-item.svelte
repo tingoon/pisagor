@@ -16,9 +16,9 @@ const { slots } = usePagination();
 <PaginationPrimitive.Item
   {...rest}
   class={cn(
-  buttonRecipe({ size: "icon-md", variant: "ghost" }).base(),
-  slots.item({ class: cn(className) }),
-)}
+    buttonRecipe({ size: "icon-md", variant: "ghost" }).base(),
+    slots.item({ class: cn(className) }),
+  )}
 >
   {@render children?.()}
 </PaginationPrimitive.Item>

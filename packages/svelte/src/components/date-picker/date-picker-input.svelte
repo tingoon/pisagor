@@ -37,10 +37,10 @@ const variant = $derived(variantProp ?? ctx?.variant ?? ("primary" as const));
   <DatePickerPrimitive.Control>
     <div
       class={cn(
-  formControlGroupShellRecipe({ size, surfaceVariant, variant }),
-  "group/input-group",
-  className,
-)}
+        formControlGroupShellRecipe({ size, surfaceVariant, variant }),
+        "group/input-group",
+        className,
+      )}
       data-part="root"
       data-scope="input-group"
     >

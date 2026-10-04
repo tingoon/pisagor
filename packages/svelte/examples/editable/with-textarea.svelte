@@ -16,8 +16,8 @@ import { CheckIcon, XIcon } from "@pisagor/svelte/icons";
           <Editable.Area>
             <Editable.Input>
               {#snippet asChild(
-  props,
-)}
+                props,
+              )}
                 <Textarea {...props()} class="min-h-24" />
               {/snippet}
             </Editable.Input>

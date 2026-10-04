@@ -56,7 +56,8 @@ function onPaginationChange(
       <div class="mt-3 flex justify-end">
         <Pagination
           count={allUsers.length}
-          onPageChange={(details) => (pagination = { ...pagination, pageIndex: details.page - 1 })}
+          onPageChange={(details) =>
+            (pagination = { ...pagination, pageIndex: details.page - 1 })}
           page={pagination.pageIndex + 1}
           pageSize={pagination.pageSize}
         />

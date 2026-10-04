@@ -39,8 +39,8 @@ setTooltipContext({
 <TooltipPrimitive.Root {...rest} {closeDelay} {openDelay} {positioning}>
   <TooltipPrimitive.Trigger>
     {#snippet asChild(
-  props,
-)}
+      props,
+    )}
       {const merged = props({ class: "inline-flex" })}
       <span {...merged}> {@render children?.()} </span>
     {/snippet}

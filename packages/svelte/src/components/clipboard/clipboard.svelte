@@ -93,7 +93,10 @@ const shellClassName = $derived(
       {/if}
       <ClipboardPrimitive.Trigger
         aria-label={buttonAriaLabel}
-        class={buttonRecipe({ size: buttonSize, variant: buttonVariant }).base()}
+        class={buttonRecipe({
+          size: buttonSize,
+          variant: buttonVariant,
+        }).base()}
         type="button"
       >
         <ClipboardPrimitive.Indicator

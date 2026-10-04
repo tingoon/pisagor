@@ -37,7 +37,8 @@ function onColumnCheckedChange(id: string, checked: boolean | "indeterminate") {
             <Checkbox
               aria-label={`Toggle ${"header" in column ? column.header : id}`}
               checked={columnVisibility[id] !== false}
-              onCheckedChange={({ checked }) => onColumnCheckedChange(id, checked)}
+              onCheckedChange={({ checked }) =>
+                onColumnCheckedChange(id, checked)}
             />
             <span>{"header" in column ? column.header : id}</span>
           </div>

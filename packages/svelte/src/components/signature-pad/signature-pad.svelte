@@ -50,12 +50,12 @@ setSignaturePadContext({
 >
   <SignaturePadPrimitive.Control
     class={cn(
-  formControlZoneRecipe({ surfaceVariant, variant }),
-  slots.control({
-    class: cn(classNames?.control),
-    variant,
-  }),
-)}
+      formControlZoneRecipe({ surfaceVariant, variant }),
+      slots.control({
+        class: cn(classNames?.control),
+        variant,
+      }),
+    )}
     data-invalid={invalid || undefined}
     data-variant={variant}
   >
@@ -65,9 +65,9 @@ setSignaturePadContext({
     <SignaturePadPrimitive.ClearTrigger
       aria-label="Clear signature"
       class={cn(
-  buttonRecipe({ size: "icon-md", variant: "ghost" }).base(),
-  slots.clear({ class: cn(classNames?.clear) }),
-)}
+        buttonRecipe({ size: "icon-md", variant: "ghost" }).base(),
+        slots.clear({ class: cn(classNames?.clear) }),
+      )}
       type="button"
     >
       <ArrowCounterClockwiseIcon />

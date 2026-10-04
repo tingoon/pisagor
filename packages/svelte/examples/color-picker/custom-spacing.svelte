@@ -7,8 +7,8 @@ import { ColorPicker, InputGroup } from "@pisagor/svelte";
     <InputGroup>
       <ColorPicker.Trigger>
         {#snippet asChild(
-  props,
-)}
+          props,
+        )}
           <InputGroup.Addon {...props()}>
             <ColorPicker.SwatchPreview />
           </InputGroup.Addon>
@@ -16,8 +16,8 @@ import { ColorPicker, InputGroup } from "@pisagor/svelte";
       </ColorPicker.Trigger>
       <ColorPicker.Input>
         {#snippet asChild(
-  props,
-)}
+          props,
+        )}
           <InputGroup.Input {...props()} />
         {/snippet}
       </ColorPicker.Input>

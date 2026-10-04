@@ -30,14 +30,14 @@ const ctx = useSidebar();
   as="button"
   {...rest}
   class={cn(
-  buttonRecipeProp({
-    clickEffect: false,
-    size: "icon-xs",
-    variant: "ghost",
-  }).base(),
-  ctx.slots.groupAction(),
-  className,
-)}
+    buttonRecipeProp({
+      clickEffect: false,
+      size: "icon-xs",
+      variant: "ghost",
+    }).base(),
+    ctx.slots.groupAction(),
+    className,
+  )}
   data-part="group-action"
   data-scope="sidebar"
   data-sidebar="group-action"

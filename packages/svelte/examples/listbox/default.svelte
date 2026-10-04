@@ -4,8 +4,8 @@ import { Listbox } from "@pisagor/svelte";
 
 <Listbox
   items={[
-  { label: "React", value: "react" },
-  { label: "Svelte", value: "svelte" },
-  { label: "Vue", value: "vue" },
-]}
+    { label: "React", value: "react" },
+    { label: "Svelte", value: "svelte" },
+    { label: "Vue", value: "vue" },
+  ]}
 />

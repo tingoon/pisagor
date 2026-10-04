@@ -42,11 +42,13 @@ function handlePressedChange(pressed: boolean) {
 <TogglePrimitive.Root
   {...rest}
   class={cn(
-  buttonRecipeProp({ clickEffect: false, variant }).base(),
-  recipe({ size }),
-  className,
-)}
-  onPressedChange={onPressedChange || onValueChange ? handlePressedChange : undefined}
+    buttonRecipeProp({ clickEffect: false, variant }).base(),
+    recipe({ size }),
+    className,
+  )}
+  onPressedChange={onPressedChange || onValueChange
+    ? handlePressedChange
+    : undefined}
 >
   {@render children?.()}
 </TogglePrimitive.Root>

@@ -46,11 +46,12 @@ function handleKeyDown(event: KeyboardEvent) {
   as="button"
   {...rest}
   aria-disabled={sortable.disabled || undefined}
-  aria-label={(rest as { "aria-label"?: string })["aria-label"] ?? "Drag to reorder"}
+  aria-label={(rest as { "aria-label"?: string })["aria-label"] ??
+    "Drag to reorder"}
   class={item.slots.handle({
-  class: className,
-  disabled: sortable.disabled,
-})}
+    class: className,
+    disabled: sortable.disabled,
+  })}
   data-part="handle"
   data-scope="sortable"
   disabled={sortable.disabled || undefined}

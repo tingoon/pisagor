@@ -24,14 +24,14 @@ const actions = $derived(tour().step?.actions ?? []);
         <TourPrimitive.ActionTrigger
           {action}
           class={cn(
-  buttonRecipe({
-    size: "sm",
-    variant:
-      action.action === "dismiss" || action.action === "prev"
-        ? "outline"
-        : "default",
-  }).base(),
-)}
+            buttonRecipe({
+              size: "sm",
+              variant:
+                action.action === "dismiss" || action.action === "prev"
+                  ? "outline"
+                  : "default",
+            }).base(),
+          )}
           type="button"
         >
           {#if action.action === "prev"}

@@ -15,8 +15,8 @@ import UserIcon from "phosphor-svelte/lib/UserIcon";
       <BottomNavigation.List class="absolute">
         <BottomNavigation.Item value="/">
           {#snippet asChild(
-  props,
-)}
+            props,
+          )}
             <a {...props()} href="https://example.com/">
               <BottomNavigation.ItemIcon>
                 <HouseIcon />
@@ -27,8 +27,8 @@ import UserIcon from "phosphor-svelte/lib/UserIcon";
         </BottomNavigation.Item>
         <BottomNavigation.Item value="/docs">
           {#snippet asChild(
-  props,
-)}
+            props,
+          )}
             <a {...props()} href="https://example.com/search">
               <BottomNavigation.ItemIcon>
                 <MagnifyingGlassIcon />
@@ -39,8 +39,8 @@ import UserIcon from "phosphor-svelte/lib/UserIcon";
         </BottomNavigation.Item>
         <BottomNavigation.Item value="/docs/components">
           {#snippet asChild(
-  props,
-)}
+            props,
+          )}
             <a {...props()} href="https://example.com/news">
               <BottomNavigation.ItemIcon>
                 <BellIcon />
@@ -51,8 +51,8 @@ import UserIcon from "phosphor-svelte/lib/UserIcon";
         </BottomNavigation.Item>
         <BottomNavigation.Item value="/docs/components">
           {#snippet asChild(
-  props,
-)}
+            props,
+          )}
             <a {...props()} href="https://example.com/profile">
               <BottomNavigation.ItemIcon>
                 <UserIcon />

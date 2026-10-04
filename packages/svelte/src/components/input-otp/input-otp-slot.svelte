@@ -29,8 +29,8 @@ const variant = $derived(variantProp ?? ctx.variant ?? "primary");
 <PinInputPrimitive.Input
   {...rest}
   class={cn(
-  inputRootRecipe({ size, surfaceVariant, variant }),
-  ctx.slots.input({ class: cn(className) }),
-)}
+    inputRootRecipe({ size, surfaceVariant, variant }),
+    ctx.slots.input({ class: cn(className) }),
+  )}
   {index}
 />

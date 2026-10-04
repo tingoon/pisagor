@@ -30,12 +30,14 @@ let { indexPath, node }: Props = $props();
   {:else}
     <TreeView.Item>
       {#snippet asChild(
-  props,
-)}
+        props,
+      )}
         <a
           {...props()}
           href={node.href ?? "#"}
-          rel={node.href?.startsWith("http") ? "noopener noreferrer" : undefined}
+          rel={node.href?.startsWith("http")
+            ? "noopener noreferrer"
+            : undefined}
           target={node.href?.startsWith("http") ? "_blank" : undefined}
         >
           <TreeView.ItemText icon={LinkIcon}>

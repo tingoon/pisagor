@@ -47,12 +47,12 @@ const previewShellClass = $derived(
 <EditablePrimitive.Preview
   {...rest}
   class={cn(
-  buttonRecipeProp({ clickEffect: false, size, variant }).base(),
-  previewShellClass,
-  slots.preview(),
-  previewShellClass ? "dark:hover:bg-transparent" : undefined,
-  className,
-)}
+    buttonRecipeProp({ clickEffect: false, size, variant }).base(),
+    previewShellClass,
+    slots.preview(),
+    previewShellClass ? "dark:hover:bg-transparent" : undefined,
+    className,
+  )}
   data-variant={resolvedVariant}
 >
   {@render children?.()}

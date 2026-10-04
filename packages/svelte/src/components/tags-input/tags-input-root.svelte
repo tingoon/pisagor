@@ -55,8 +55,8 @@ function handleValueChange(details: { value: string[] }) {
   <TagsInputControl {clearable} {size} {variant}>
     <TagsInputPrimitive.Context>
       {#snippet render(
-  api,
-)}
+        api,
+      )}
         {#each api().value as value, index (value)}
           <TagsInputItem {index} {value} />
         {/each}

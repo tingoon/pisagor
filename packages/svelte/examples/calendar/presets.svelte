@@ -27,8 +27,8 @@ const presets = [
       {#each presets as preset}
         <Calendar.PresetTrigger value={preset.value}>
           {#snippet asChild(
-  props,
-)}
+            props,
+          )}
             <Button {...props()} class="flex-1" size="sm" variant="outline">
               {preset.label}
             </Button>

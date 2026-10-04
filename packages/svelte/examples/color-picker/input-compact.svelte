@@ -18,16 +18,16 @@ import { PercentIcon } from "@pisagor/svelte/icons";
       </ColorPicker.Trigger>
       <ColorPicker.Input channel="hex" class="flex-1">
         {#snippet asChild(
-  props,
-)}
+          props,
+        )}
           <InputGroup.Input {...props()} />
         {/snippet}
       </ColorPicker.Input>
       <Separator orientation="vertical" />
       <ColorPicker.Input channel="alpha">
         {#snippet asChild(
-  props,
-)}
+          props,
+        )}
           <InputGroup.Input
             {...props()}
             aria-label="Opacity percentage"

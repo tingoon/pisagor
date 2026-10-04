@@ -85,11 +85,11 @@ setAppShellRailContext({
 <aside
   {...rest}
   class={cn(
-  ctx.slots.rail(),
-  placement === "start" ? "border-e" : "border-s",
-  regionPositionClasses(ctx.slots, position, "column"),
-  className,
-)}
+    ctx.slots.rail(),
+    placement === "start" ? "border-e" : "border-s",
+    regionPositionClasses(ctx.slots, position, "column"),
+    className,
+  )}
   data-part="rail"
   data-placement={placement}
   data-position={position}

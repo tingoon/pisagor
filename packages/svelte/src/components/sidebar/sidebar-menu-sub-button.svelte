@@ -32,10 +32,10 @@ const ctx = useSidebar();
   as="a"
   {...rest}
   class={cn(
-  buttonRecipeProp({ clickEffect: false, size, variant: "ghost" }).base(),
-  ctx.slots.menuSubButton(),
-  className,
-)}
+    buttonRecipeProp({ clickEffect: false, size, variant: "ghost" }).base(),
+    ctx.slots.menuSubButton(),
+    className,
+  )}
   data-active={isActive}
   data-part="menu-sub-button"
   data-scope="sidebar"

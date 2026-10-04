@@ -4,7 +4,7 @@ import { DataList } from "@pisagor/svelte";
 
 <DataList
   items={[
-  { label: "Name", value: "Pisagor" },
-  { label: "Status", value: "Active" },
-]}
+    { label: "Name", value: "Pisagor" },
+    { label: "Status", value: "Active" },
+  ]}
 />

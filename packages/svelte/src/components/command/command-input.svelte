@@ -32,9 +32,9 @@ onMount(() => {
 <ComboboxControl class={slots.control()}>
   <div
     class={cn(
-  formControlGroupShellRecipe({ size, surfaceVariant, variant: "primary" }),
-  slots.input({ class: cn(className) }),
-)}
+      formControlGroupShellRecipe({ size, surfaceVariant, variant: "primary" }),
+      slots.input({ class: cn(className) }),
+    )}
     data-part="root"
     data-scope="input-group"
     bind:this={shellEl}

@@ -33,8 +33,8 @@ const branch = useTreeViewBranch();
   <TreeViewBranchIndicator />
   <TreeViewPrimitive.NodeContext>
     {#snippet render(
-  nodeState,
-)}
+      nodeState,
+    )}
       {const state = nodeState()}
       {#if state.renaming}
         <TreeViewNodeInput />

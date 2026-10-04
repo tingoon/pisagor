@@ -70,9 +70,9 @@ function handleClick(
   <Tooltip
     {...tooltipProps}
     positioning={{
-  placement: rail.placement === "end" ? "left" : "right",
-  ...tooltipProps.positioning,
-}}
+      placement: rail.placement === "end" ? "left" : "right",
+      ...tooltipProps.positioning,
+    }}
   >
     <Button
       {...rest}

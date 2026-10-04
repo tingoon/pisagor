@@ -17,9 +17,9 @@ const { slots } = useCarousel();
   {...rest}
   aria-label="Next"
   class={cn(
-  buttonRecipe({ pill: true, size: "icon-md", variant: "outline" }).base(),
-  slots.nextTrigger({ class: cn(className) }),
-)}
+    buttonRecipe({ pill: true, size: "icon-md", variant: "outline" }).base(),
+    slots.nextTrigger({ class: cn(className) }),
+  )}
   type="button"
 >
   <CaretRightIcon aria-hidden="true" />

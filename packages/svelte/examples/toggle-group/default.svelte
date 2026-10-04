@@ -4,7 +4,7 @@ import { ToggleGroup } from "@pisagor/svelte";
 
 <ToggleGroup
   items={[
-  { children: "Bold", value: "bold" },
-  { children: "Italic", value: "italic" },
-]}
+    { children: "Bold", value: "bold" },
+    { children: "Italic", value: "italic" },
+  ]}
 />

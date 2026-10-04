@@ -15,8 +15,8 @@ let { format = "narrow", ...rest }: Props = $props();
 
 <CalendarPrimitive.Context>
   {#snippet render(
-  calendar,
-)}
+    calendar,
+  )}
     <CalendarTableHead {...rest}>
       <CalendarTableRow>
         {#each calendar().weekDays as weekDay (weekDay.short)}

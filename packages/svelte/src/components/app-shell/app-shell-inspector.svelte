@@ -106,12 +106,18 @@ $effect(() => {
 <aside
   {...rest}
   class={cn(
-  ctx.slots.inspector(),
-  placement === "start" ? "border-e" : "border-s",
-  regionPositionClasses(ctx.slots, position, "column", undefined, "inspector"),
-  open ? "opacity-100" : "pointer-events-none opacity-0",
-  className,
-)}
+    ctx.slots.inspector(),
+    placement === "start" ? "border-e" : "border-s",
+    regionPositionClasses(
+      ctx.slots,
+      position,
+      "column",
+      undefined,
+      "inspector",
+    ),
+    open ? "opacity-100" : "pointer-events-none opacity-0",
+    className,
+  )}
   data-part="inspector"
   data-placement={placement}
   data-position={position}
@@ -123,7 +129,8 @@ $effect(() => {
     <Resizable.EdgeHandle
       handlePosition={resizableProps.handlePosition}
       label={`Resize ${placement} inspector`}
-      onResizeChange={(nextWidth) => ctx.setRegionVar(regionVar, `${nextWidth}px`)}
+      onResizeChange={(nextWidth) =>
+        ctx.setRegionVar(regionVar, `${nextWidth}px`)}
       onResizeEnd={() => ctx.setRegionResizing(false)}
       onResizeStart={() => ctx.setRegionResizing(true)}
       onWidthChange={(w) => (widthPx = w)}

@@ -24,7 +24,8 @@ const { collection, filter } = useListCollection({
     class="w-full"
     {collection}
     onInputValueChange={({ inputValue }) => filter(inputValue)}
-    onValueChange={(next) => (value = next.at?.(0) ?? (Array.isArray(next) ? next[0] : next))}
+    onValueChange={(next) =>
+      (value = next.at?.(0) ?? (Array.isArray(next) ? next[0] : next))}
     value={value ? [value] : []}
   >
     <Autocomplete.Input placeholder="Select a fruit..." />

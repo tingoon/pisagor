@@ -18,9 +18,9 @@ const { slots } = useTagsInputItem();
   {...rest}
   aria-label="Remove tag"
   class={cn(
-  buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),
-  slots.delete({ class: cn(className) }),
-)}
+    buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),
+    slots.delete({ class: cn(className) }),
+  )}
   type="button"
 >
   {#if children}

@@ -4,8 +4,8 @@ import { LinkBox } from "@pisagor/svelte";
 
 <LinkBox>
   {#snippet asChild(
-  props,
-)}
+    props,
+  )}
     <article {...props()} class="rounded-xl border p-4">
       <span class="text-muted-foreground text-sm">
         <time datetime="2026-03-03T15:30:00Z">3 days ago</time>

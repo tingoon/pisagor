@@ -25,8 +25,8 @@ let { actions, description, title, trigger, ...rest }: Props = $props();
   {#if trigger}
     <AlertDialogTrigger>
       {#snippet asChild(
-  props,
-)}
+        props,
+      )}
         {const merged = props({})}
         <span {...merged} style="display: contents"> {@render trigger()} </span>
       {/snippet}

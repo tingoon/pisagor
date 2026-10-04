@@ -44,11 +44,13 @@ function handleCheckedChange(
 <CheckboxPrimitive.Root
   {...rest}
   class={cn(
-  formControlToggleRecipe({ size: "md", surfaceVariant, variant }),
-  slots.base({ class: cn(className) }),
-)}
+    formControlToggleRecipe({ size: "md", surfaceVariant, variant }),
+    slots.base({ class: cn(className) }),
+  )}
   data-variant={variant}
-  onCheckedChange={onCheckedChange || onValueChange ? handleCheckedChange : undefined}
+  onCheckedChange={onCheckedChange || onValueChange
+    ? handleCheckedChange
+    : undefined}
 >
   <CheckboxPrimitive.Control>
     <CheckboxPrimitive.Indicator class={slots.indicator()}>

@@ -5,8 +5,8 @@ import ArrowUpRightIcon from "phosphor-svelte/lib/ArrowUpRightIcon";
 
 <Announcement.Root>
   {#snippet asChild(
-  props,
-)}
+    props,
+  )}
     <a {...props()} href="/">
       <Badge>Latest update</Badge>
       <Announcement.Title>

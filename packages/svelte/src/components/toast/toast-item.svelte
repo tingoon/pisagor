@@ -145,9 +145,9 @@ function renderMaybeSnippet(value: unknown): value is Snippet {
         {...closeTriggerProps}
         aria-label="Close"
         class={cn(
-  buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),
-  slots.close({ class: cn(classNames?.close) }),
-)}
+          buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),
+          slots.close({ class: cn(classNames?.close) }),
+        )}
         type="button"
       >
         <XIcon />

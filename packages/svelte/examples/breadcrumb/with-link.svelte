@@ -7,8 +7,8 @@ import { Breadcrumb } from "@pisagor/svelte";
     <Breadcrumb.Item>
       <Breadcrumb.Link>
         {#snippet asChild(
-  props,
-)}
+          props,
+        )}
           <a {...props()} href="/docs">Docs</a>
         {/snippet}
       </Breadcrumb.Link>
@@ -17,8 +17,8 @@ import { Breadcrumb } from "@pisagor/svelte";
     <Breadcrumb.Item>
       <Breadcrumb.Link>
         {#snippet asChild(
-  props,
-)}
+          props,
+        )}
           <a {...props()} href="/docs/components">Components</a>
         {/snippet}
       </Breadcrumb.Link>

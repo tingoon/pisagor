@@ -4,8 +4,8 @@ import { Carousel } from "@pisagor/svelte";
 
 <Carousel
   slides={[
-  { content: "Slide 1", key: "1" },
-  { content: "Slide 2", key: "2" },
-  { content: "Slide 3", key: "3" },
-]}
+    { content: "Slide 1", key: "1" },
+    { content: "Slide 2", key: "2" },
+    { content: "Slide 3", key: "3" },
+  ]}
 />

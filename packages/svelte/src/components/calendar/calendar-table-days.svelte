@@ -18,8 +18,8 @@ let { tabIndex, ...rest }: Props = $props();
 
 <CalendarPrimitive.Context>
   {#snippet render(
-  calendar,
-)}
+    calendar,
+  )}
     <CalendarTableBody {...rest}>
       {#each calendar().weeks as week (getWeekRowKey(week))}
         <CalendarTableRow>

@@ -10,8 +10,8 @@ import { ColorPicker, InputGroup } from "@pisagor/svelte";
       </InputGroup.Addon>
       <ColorPicker.Input>
         {#snippet asChild(
-  props,
-)}
+          props,
+        )}
           <InputGroup.Input {...props()} />
         {/snippet}
       </ColorPicker.Input>

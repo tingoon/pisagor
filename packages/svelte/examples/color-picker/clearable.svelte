@@ -21,8 +21,8 @@ let value = $state("#eb5e41");
           </ColorPicker.Trigger>
           <ColorPicker.Input>
             {#snippet asChild(
-  props,
-)}
+              props,
+            )}
               <InputGroup.Input {...props()} clearable={false} />
             {/snippet}
           </ColorPicker.Input>

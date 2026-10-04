@@ -14,8 +14,8 @@ let { size = "lg", variant = "outline", children, ...rest }: Props = $props();
 
 <CalendarPrimitive.Context>
   {#snippet render(
-  calendar,
-)}
+    calendar,
+  )}
     <Button
       {...rest}
       data-part="today-trigger"

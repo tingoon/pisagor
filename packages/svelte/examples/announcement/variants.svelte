@@ -29,8 +29,8 @@ import WarningIcon from "phosphor-svelte/lib/WarningIcon";
   </Announcement>
   <Announcement.Root>
     {#snippet asChild(
-  props,
-)}
+      props,
+    )}
       <a {...props()} href="https://example.com/announcement">
         <Badge variant="success"> <CheckCircleIcon /> Deployed </Badge>
         <Announcement.Title>

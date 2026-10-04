@@ -19,8 +19,8 @@ const slots = $derived(ctx?.slots ?? selectRecipe());
 
 <SelectPrimitive.Context>
   {#snippet render(
-  select,
-)}
+    select,
+  )}
     {#if select().empty}
       <Ark
         as="div"

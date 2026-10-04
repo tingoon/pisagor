@@ -33,7 +33,10 @@ const { slots } = useDialog();
   {#if showCloseButton}
     <DialogPrimitive.CloseTrigger
       aria-label="Close"
-      class={cn(buttonRecipe({ size: "icon-sm", variant: "ghost" }).base(), slots.inline())}
+      class={cn(
+        buttonRecipe({ size: "icon-sm", variant: "ghost" }).base(),
+        slots.inline(),
+      )}
       type="button"
     >
       <XIcon />

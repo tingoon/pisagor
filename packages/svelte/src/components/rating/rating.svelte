@@ -66,8 +66,8 @@ function handleValueChange(
   >
     <RatingGroupPrimitive.Context>
       {#snippet render(
-  api,
-)}
+        api,
+      )}
         {#each api().items as item (item)}
           <RatingGroupPrimitive.Item
             class={slots.item({ class: cn(classNames?.item) })}
@@ -75,8 +75,8 @@ function handleValueChange(
           >
             <RatingGroupPrimitive.ItemContext>
               {#snippet render(
-  itemApi,
-)}
+                itemApi,
+              )}
                 {const state = itemApi()}
                 <span
                   class={slots.indicator({ class: cn(classNames?.indicator) })}

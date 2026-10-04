@@ -36,7 +36,10 @@ const slots = $derived(recipe());
   class={slots.base({ class: cn(className) })}
 >
   <RadioGroupPrimitive.ItemControl
-    class={cn(formControlRadioToggleRecipe({ surfaceVariant, variant }), slots.control())}
+    class={cn(
+      formControlRadioToggleRecipe({ surfaceVariant, variant }),
+      slots.control(),
+    )}
     data-variant={variant}
   />
   <RadioGroupPrimitive.ItemText>

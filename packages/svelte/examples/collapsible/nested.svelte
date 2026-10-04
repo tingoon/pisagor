@@ -11,8 +11,8 @@ import { Button, Card, Clipboard, Collapsible } from "@pisagor/svelte";
     <Collapsible>
       <Collapsible.Trigger>
         {#snippet asChild(
-  props,
-)}
+          props,
+        )}
           <Button {...props()} class="w-full" variant="outline">
             View details
             <Collapsible.Indicator />
@@ -27,8 +27,8 @@ import { Button, Card, Clipboard, Collapsible } from "@pisagor/svelte";
         <Collapsible>
           <Collapsible.Trigger>
             {#snippet asChild(
-  props,
-)}
+              props,
+            )}
               <Button {...props()} class="w-full" size="sm" variant="outline">
                 Install dependencies
                 <Collapsible.Indicator />

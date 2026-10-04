@@ -9,8 +9,8 @@ let value = $state("#eb5e41");
     <ColorPicker.Control>
       <ColorPicker.Input>
         {#snippet asChild(
-  props,
-)}
+          props,
+        )}
           <Input {...props()} />
         {/snippet}
       </ColorPicker.Input>

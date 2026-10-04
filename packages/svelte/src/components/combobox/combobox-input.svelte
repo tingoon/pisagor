@@ -48,10 +48,10 @@ const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 <ComboboxControl data-size={size}>
   <div
     class={cn(
-  formControlGroupShellRecipe({ size, surfaceVariant, variant }),
-  "group/input-group",
-  className,
-)}
+      formControlGroupShellRecipe({ size, surfaceVariant, variant }),
+      "group/input-group",
+      className,
+    )}
     data-part="root"
     data-scope="input-group"
   >

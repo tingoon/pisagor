@@ -18,9 +18,9 @@ const { slots } = useTagsInput();
   {...rest}
   aria-label="Clear"
   class={cn(
-  buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),
-  slots.clearTrigger({ class: cn(className) }),
-)}
+    buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),
+    slots.clearTrigger({ class: cn(className) }),
+  )}
   type="button"
 >
   {#if children}

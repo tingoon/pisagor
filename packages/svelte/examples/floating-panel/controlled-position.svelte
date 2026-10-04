@@ -17,8 +17,8 @@ let position = $state({ x: 120, y: 80 });
   >
     <FloatingPanel.Trigger>
       {#snippet asChild(
-  props,
-)}
+        props,
+      )}
         <Button {...props()} variant="outline">Open</Button>
       {/snippet}
     </FloatingPanel.Trigger>
@@ -32,8 +32,8 @@ let position = $state({ x: 120, y: 80 });
           <FloatingPanel.Restore />
           <FloatingPanel.CloseTrigger>
             {#snippet asChild(
-  props,
-)}
+              props,
+            )}
               <Button {...props()} aria-label="Close" size="icon-sm">
                 <XIcon aria-hidden />
               </Button>

@@ -23,8 +23,8 @@ function grow() {
 <FloatingPanel onSizeChange={(details) => (size = details.size)} {size}>
   <FloatingPanel.Trigger>
     {#snippet asChild(
-  props,
-)}
+      props,
+    )}
       <Button {...props()} variant="outline">Open</Button>
     {/snippet}
   </FloatingPanel.Trigger>
@@ -38,8 +38,8 @@ function grow() {
         <FloatingPanel.Restore />
         <FloatingPanel.CloseTrigger>
           {#snippet asChild(
-  props,
-)}
+            props,
+          )}
             <Button {...props()} aria-label="Close" size="icon-sm">
               <XIcon aria-hidden />
             </Button>

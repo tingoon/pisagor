@@ -46,13 +46,14 @@ const addLog = (message: string) => {
 <div class="flex flex-col gap-2">
   <Tour
     onStatusChange={(details) => addLog(`Status: ${details.status}`)}
-    onStepChange={(details) => addLog(`Step changed: ${details.stepId ?? "unknown"}`)}
+    onStepChange={(details) =>
+      addLog(`Step changed: ${details.stepId ?? "unknown"}`)}
     {steps}
   >
     <Tour.Trigger>
       {#snippet asChild(
-  props,
-)}
+        props,
+      )}
         <Button {...props()} variant="outline">Start tour</Button>
       {/snippet}
     </Tour.Trigger>

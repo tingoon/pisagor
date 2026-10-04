@@ -11,11 +11,11 @@ let { classNames, ...rest }: Props = $props();
 <Textarea
   {...rest}
   classNames={{
-  ...classNames,
-  clearableRoot: cn(
-    inputGroupTextareaControlRecipe(),
-    classNames?.clearableRoot,
-  ),
-  rootLayout: cn(inputGroupTextareaControlRecipe(), classNames?.rootLayout),
-}}
+    ...classNames,
+    clearableRoot: cn(
+      inputGroupTextareaControlRecipe(),
+      classNames?.clearableRoot,
+    ),
+    rootLayout: cn(inputGroupTextareaControlRecipe(), classNames?.rootLayout),
+  }}
 />

@@ -33,17 +33,17 @@ const { slots } = useDrawer();
   <DrawerBackdrop />
   <DrawerPrimitive.Context>
     {#snippet children(
-  api,
-)}
+      api,
+    )}
       {const swipeDirection = api().swipeDirection}
       <DrawerPositioner {variant}>
         <DrawerPrimitive.Content
           {...rest}
           class={slots.content({
-  class: cn(className),
-  placement: SWIPE_DIRECTION_TO_PLACEMENT[swipeDirection],
-  variant,
-})}
+            class: cn(className),
+            placement: SWIPE_DIRECTION_TO_PLACEMENT[swipeDirection],
+            variant,
+          })}
         >
           <DrawerGrabber />
           {@render contentChildren?.()}

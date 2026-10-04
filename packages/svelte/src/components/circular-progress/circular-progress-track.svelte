@@ -60,7 +60,9 @@ const metrics = $derived.by(() => {
     data-scope="circular-progress"
     r={metrics.radius}
     stroke-dasharray={metrics.circumference}
-    stroke-dashoffset={metrics.value == null ? metrics.circumference * 0.7 : metrics.dashOffset}
+    stroke-dashoffset={metrics.value == null
+      ? metrics.circumference * 0.7
+      : metrics.dashOffset}
     stroke-linecap="round"
     stroke-width={thickness}
   ></circle>

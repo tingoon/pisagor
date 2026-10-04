@@ -62,10 +62,10 @@ $effect(() => {
 <div
   {...rest}
   class={cn(
-  ctx.slots.banner(),
-  regionPositionClasses(ctx.slots, position, "row", "banner"),
-  className,
-)}
+    ctx.slots.banner(),
+    regionPositionClasses(ctx.slots, position, "row", "banner"),
+    className,
+  )}
   data-part="banner"
   data-position={position}
   data-scope="app-shell"

@@ -18,10 +18,10 @@ const { slots } = useCalendar();
   {...rest}
   aria-label="Previous month"
   class={cn(
-  buttonRecipe({ size: "icon-md", variant: "ghost" }).base(),
-  slots.prevTrigger(),
-  className,
-)}
+    buttonRecipe({ size: "icon-md", variant: "ghost" }).base(),
+    slots.prevTrigger(),
+    className,
+  )}
   type="button"
 >
   {#if children}

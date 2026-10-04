@@ -27,8 +27,8 @@ import { workspaceUsers } from "./helpers";
           <DropdownMenu positioning={{ placement: "left-end" }}>
             <DropdownMenu.Trigger>
               {#snippet asChild(
-  props,
-)}
+                props,
+              )}
                 <Button
                   {...props()}
                   aria-label="More options"

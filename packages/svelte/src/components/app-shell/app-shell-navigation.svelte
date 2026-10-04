@@ -62,10 +62,10 @@ $effect(() => {
 <nav
   {...rest}
   class={cn(
-  ctx.slots.navigation(),
-  regionPositionClasses(ctx.slots, position, "row", "navigation"),
-  className,
-)}
+    ctx.slots.navigation(),
+    regionPositionClasses(ctx.slots, position, "row", "navigation"),
+    className,
+  )}
   data-part="navigation"
   data-position={position}
   data-scope="app-shell"
