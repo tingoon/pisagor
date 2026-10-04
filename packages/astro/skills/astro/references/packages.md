@@ -23,7 +23,8 @@ bun add @pisagor/utils
 | Need | Import |
 | ---- | ------ |
 | Components | `import { Button } from "@pisagor/astro"` |
-| Recipe | `import { buttonRecipe } from "@pisagor/recipes/button"` |
+| Recipe | `import { buttonRecipe } from "@pisagor/recipes"` |
+| Props | `import type { ButtonProps } from "@pisagor/props"` |
 | `cn()` | `import { cn } from "@pisagor/utils"` (optional package) |
 
 Prop for classes: **`class`**.

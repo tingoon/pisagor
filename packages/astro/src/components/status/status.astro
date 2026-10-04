@@ -1,8 +1,9 @@
 ---
-import { type StatusVariantProps, statusRecipe } from "@pisagor/recipes/status";
+import type { StatusProps as StatusSharedProps } from "@pisagor/props";
+import { statusRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"span"> & StatusVariantProps;
+type Props = HTMLAttributes<"span"> & StatusSharedProps;
 
 const {
   size = "md",

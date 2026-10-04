@@ -1,5 +1,5 @@
 ---
-import type { TimelineVariantProps } from "@pisagor/recipes/timeline";
+import type { TimelineProps as TimelineSharedProps } from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
 import TimelineContent from "./timeline-content.astro";
 import TimelineDescription from "./timeline-description.astro";
@@ -16,7 +16,7 @@ interface TimelinePresetItem {
   indicator?: string;
 }
 
-interface Props extends HTMLAttributes<"ol">, TimelineVariantProps {
+interface Props extends HTMLAttributes<"ol">, TimelineSharedProps {
   items?: TimelinePresetItem[];
 }
 

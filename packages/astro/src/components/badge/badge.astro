@@ -1,8 +1,9 @@
 ---
-import { type BadgeVariantProps, badgeRecipe } from "@pisagor/recipes/badge";
+import type { BadgeProps as BadgeSharedProps } from "@pisagor/props";
+import { badgeRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"span"> & BadgeVariantProps;
+type Props = HTMLAttributes<"span"> & BadgeSharedProps;
 
 const {
   pill = false,

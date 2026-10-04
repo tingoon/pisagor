@@ -1,8 +1,9 @@
 ---
-import { type CardVariantProps, cardRecipe } from "@pisagor/recipes/card";
+import type { CardProps as CardSharedProps } from "@pisagor/props";
+import { cardRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"div"> & CardVariantProps;
+type Props = HTMLAttributes<"div"> & CardSharedProps;
 
 const { variant = "default", class: className, ...rest } = Astro.props;
 const slots = cardRecipe();

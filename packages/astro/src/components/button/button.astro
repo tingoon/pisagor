@@ -1,9 +1,10 @@
 ---
-import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes/button";
+import type { ButtonProps as ButtonSharedProps } from "@pisagor/props";
+import { buttonRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 import Spinner from "../spinner/spinner.astro";
 
-type Props = HTMLAttributes<"button"> & ButtonVariantProps;
+type Props = HTMLAttributes<"button"> & ButtonSharedProps;
 
 const {
   clickEffect = true,
