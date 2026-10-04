@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "jsx": "preserve",
-    "noUncheckedSideEffectImports": false,
     "paths": {
       "#/storybook/*": ["./.storybook/*"],
       "#/vue-form/examples/*": ["../../packages/vue-form/examples/*"],

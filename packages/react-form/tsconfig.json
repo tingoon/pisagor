@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "jsx": "react-jsx",
-    "noUncheckedSideEffectImports": false,
     "types": ["bun", "node"]
   },
   "extends": "../../tsconfig.json",
