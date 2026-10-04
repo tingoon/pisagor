@@ -2,7 +2,7 @@ import type { ComponentDocs } from "./component-docs-types";
 import type { Framework } from "./nav";
 import type { PropRow } from "./props/types";
 
-/** Astro markdown module from docs content / package docs. */
+/** Astro markdown module from docs content. */
 export type SkillMdModule = {
   // Astro component factory (not a framework UI component).
   Content: (props?: Record<string, unknown>) => unknown;
@@ -18,13 +18,10 @@ export type ExampleModule = {
 
 export type ComponentDocKind = "component" | "form";
 
-/** Doc panes. Legacy `usage` / `examples` remain for redirects. */
-export type SkillPaneId = "design" | "develop" | "usage" | "examples";
+/** Doc panes. */
+export type SkillPaneId = "design" | "develop";
 
 export type SkillPanes = Partial<Record<SkillPaneId, SkillMdModule>>;
-
-/** Canonical panes on disk. Legacy `usage` / `examples` remain for redirects. */
-export const SKILL_PANE_IDS: SkillPaneId[] = ["design", "develop"];
 
 const DEFAULT_PACKAGE: Record<Framework, string> = {
   astro: "@pisagor/astro",
@@ -95,41 +92,25 @@ const sharedDesignByKind: Record<
   form: import.meta.glob<SkillMdModule>("../content/forms/*/design.md"),
 };
 
-/** Per-framework develop docs — `packages/<fw>/docs/<id>.md`. */
+/** Per-framework develop docs — `content/<fw>/{components,forms}/<id>.md`. */
 const developByFramework: Record<
   Framework,
   Record<string, () => Promise<SkillMdModule>>
 > = {
-  astro: import.meta.glob<SkillMdModule>(
-    "../../../../packages/astro/docs/*.md",
-  ),
-  react: import.meta.glob<SkillMdModule>(
-    "../../../../packages/react/docs/*.md",
-  ),
-  solid: import.meta.glob<SkillMdModule>(
-    "../../../../packages/solid/docs/*.md",
-  ),
-  svelte: import.meta.glob<SkillMdModule>(
-    "../../../../packages/svelte/docs/*.md",
-  ),
-  vue: import.meta.glob<SkillMdModule>("../../../../packages/vue/docs/*.md"),
+  astro: import.meta.glob<SkillMdModule>("../content/astro/components/*.md"),
+  react: import.meta.glob<SkillMdModule>("../content/react/components/*.md"),
+  solid: import.meta.glob<SkillMdModule>("../content/solid/components/*.md"),
+  svelte: import.meta.glob<SkillMdModule>("../content/svelte/components/*.md"),
+  vue: import.meta.glob<SkillMdModule>("../content/vue/components/*.md"),
 };
 
 const formDevelopByFramework: Partial<
   Record<Framework, Record<string, () => Promise<SkillMdModule>>>
 > = {
-  react: import.meta.glob<SkillMdModule>(
-    "../../../../packages/react-form/docs/*.md",
-  ),
-  solid: import.meta.glob<SkillMdModule>(
-    "../../../../packages/solid-form/docs/*.md",
-  ),
-  svelte: import.meta.glob<SkillMdModule>(
-    "../../../../packages/svelte-form/docs/*.md",
-  ),
-  vue: import.meta.glob<SkillMdModule>(
-    "../../../../packages/vue-form/docs/*.md",
-  ),
+  react: import.meta.glob<SkillMdModule>("../content/react/forms/*.md"),
+  solid: import.meta.glob<SkillMdModule>("../content/solid/forms/*.md"),
+  svelte: import.meta.glob<SkillMdModule>("../content/svelte/forms/*.md"),
+  vue: import.meta.glob<SkillMdModule>("../content/vue/forms/*.md"),
 };
 
 // Example barrels (eager — need components + sources at build time).
@@ -184,9 +165,18 @@ function toCamelCase(id: string): string {
   return id.replace(/-([a-z])/g, (_, char: string) => char.toUpperCase());
 }
 
-/** Package develop doc `…/docs/<id>.md`. */
+/** Develop doc `…/content/<fw>/{components,forms}/<id>.md`. */
 function idFromDevelopPath(path: string): string | undefined {
-  return /\/docs\/([^/]+)\.md$/.exec(path)?.[1];
+  return /\/content\/[^/]+\/(?:components|forms)\/([^/]+)\.md$/.exec(path)?.[1];
+}
+
+function developPathSuffix(
+  framework: Framework,
+  id: string,
+  kind: ComponentDocKind,
+): string {
+  const area = kind === "form" ? "forms" : "components";
+  return `/content/${framework}/${area}/${id}.md`;
 }
 
 function findGlobKey(
@@ -205,7 +195,7 @@ function developModules(
     : developByFramework[framework];
 }
 
-/** Component ids from package `docs/<id>.md` filenames. */
+/** Component ids from `content/<fw>/{components,forms}/<id>.md` filenames. */
 export function listComponentIds(
   framework: Framework,
   kind: ComponentDocKind = "component",
@@ -234,9 +224,8 @@ export async function loadSkillMd(
   id: string,
   kind: ComponentDocKind = "component",
 ): Promise<SkillMdModule> {
-  // Ensure the framework package ships this component before using shared meta.
-  if (!hasSkillFolder(framework, id, kind)) {
-    throw new Error(`Missing ${framework} docs for "${id}" (${kind})`);
+  if (!hasDevelopDoc(framework, id, kind)) {
+    throw new Error(`Missing ${framework} develop docs for "${id}" (${kind})`);
   }
   const modules = sharedMetadataByKind[kind];
   const area = kind === "form" ? "forms" : "components";
@@ -253,31 +242,31 @@ export async function loadSkillMd(
   };
 }
 
-/** True when the package has `docs/<id>.md` (split develop + shared design). */
-export function hasSkillFolder(
+/** True when `content/<fw>/{components,forms}/<id>.md` exists. */
+function hasDevelopDoc(
   framework: Framework,
   id: string,
   kind: ComponentDocKind = "component",
 ): boolean {
   const modules = developModules(framework, kind);
   if (!modules) return false;
-  return Boolean(findGlobKey(modules, `/docs/${id}.md`));
+  return Boolean(findGlobKey(modules, developPathSuffix(framework, id, kind)));
 }
 
-/** Load develop (package) + design (shared content) panes. */
+/** Load develop + shared design panes. */
 export async function loadSkillPanes(
   framework: Framework,
   id: string,
   kind: ComponentDocKind = "component",
 ): Promise<SkillPanes> {
-  if (!hasSkillFolder(framework, id, kind)) return {};
+  if (!hasDevelopDoc(framework, id, kind)) return {};
 
   const panes: SkillPanes = {};
   const area = kind === "form" ? "forms" : "components";
 
   const developMods = developModules(framework, kind);
   const developKey = developMods
-    ? findGlobKey(developMods, `/docs/${id}.md`)
+    ? findGlobKey(developMods, developPathSuffix(framework, id, kind))
     : undefined;
   const developLoader = developKey ? developMods?.[developKey] : undefined;
   if (developLoader) {
@@ -306,8 +295,6 @@ export async function loadSkillPanes(
 const DOC_TAB_LABELS: Record<SkillPaneId, string> = {
   design: "Design",
   develop: "Develop",
-  examples: "Examples",
-  usage: "Usage",
 };
 
 export type ComponentDocTab = {
@@ -340,11 +327,6 @@ export async function getDefaultComponentTab(
   return tabs[0]?.id ?? "develop";
 }
 
-/** Former Examples / Usage routes that now live under Develop. */
-export function isLegacyComponentTab(tab: string): boolean {
-  return tab === "examples" || tab === "usage";
-}
-
 /** Static paths for `/…/components|forms/<id>/<tab>`. */
 export async function listComponentTabStaticPaths(
   framework: Framework,
@@ -357,11 +339,6 @@ export async function listComponentTabStaticPaths(
     for (const tab of tabs) {
       paths.push({ params: { id, tab: tab.id } });
     }
-    // Legacy Examples / Usage routes redirect to unified Develop.
-    paths.push(
-      { params: { id, tab: "examples" } },
-      { params: { id, tab: "usage" } },
-    );
   }
   return paths;
 }
