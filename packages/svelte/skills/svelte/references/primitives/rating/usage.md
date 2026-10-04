@@ -1,5 +1,0 @@
-## Import
-
-```ts
-import { Rating } from "@pisagor/svelte";
-```

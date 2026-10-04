@@ -38,16 +38,13 @@ Prefer the **folder** form (tabs on the docs site):
 
 ```
 references/primitives/<id>/
-  metadata.md    # YAML frontmatter only (title, description, api, taxonomy, aliases?)
+  metadata.md    # YAML frontmatter only
   design.md      # When to use (Prefer / Avoid)
-  usage.md       # Recommended API, Import, Anatomy
-  examples.md    # ### titles + :::example ExportName
-  develop.md     # Accessibility / keyboard (Props table is appended by the docs app)
+  develop.md     # Import, Anatomy, ## Examples (:::example), a11y notes
 ```
 
-Docs tabs (order): **Examples** → **Usage** → **Design** → **Develop**.
-Each tab is a real route: `/svelte/components/<id>/<tab>` (e.g. `…/tooltip/usage`).
-`/svelte/components/<id>` redirects to the default tab.
+Docs tabs: **Develop** (default) → **Design**.
+Routes: `/svelte/components/<id>/develop` and `/design`. Legacy `/usage` and `/examples` redirect to develop.
 
 Flat `references/primitives/<id>.md` is legacy (single file with YAML + body); the docs app still maps it into tabs.
 
