@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
     "jsx": "preserve",
-    "noUncheckedSideEffectImports": false,
-    "paths": {
-      "#/storybook/*": ["../../apps/vue/.storybook/*"]
-    },
     "types": ["node"]
   },
   "extends": "../../tsconfig.json",

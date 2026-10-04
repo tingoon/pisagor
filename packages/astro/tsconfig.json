@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
     "jsx": "preserve",
-    "paths": {
-      "#/storybook/*": ["../../apps/astro/.storybook/*"]
-    },
     "types": ["astro/client"]
   },
   "extends": "../../tsconfig.json",
