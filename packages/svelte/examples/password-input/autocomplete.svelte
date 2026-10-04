@@ -3,6 +3,6 @@ import { PasswordInput } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-col gap-2">
-  <PasswordInput autoComplete="current-password" placeholder="••••••••" />
-  <PasswordInput autoComplete="new-password" placeholder="••••••••" />
+  <PasswordInput autocomplete="current-password" placeholder="••••••••" />
+  <PasswordInput autocomplete="new-password" placeholder="••••••••" />
 </div>
