@@ -53,7 +53,7 @@ File-level Vue rules: [Vue Style Guide](../vue.mdc).
 
 When a compound component uses package-local provide/inject (`createContext` from package `internal/utils`, relative path by depth):
 
-- Put context value types, `createContext(...)`, and consumer helpers in `<name>.context.ts`.
+- Put context value types, `createContext("Foo")<FooValue>()` / `createContext("Foo")<FooValue>({ … })`, and consumer helpers in `<name>.context.ts`.
 - Export `provideX` / `useX` (and `useXContextRef` when needed) from that file; keep Root/Part `h()` trees in `<name>.ts`.
 - Provide with `provideX(computed(() => value))` (or a `MaybeRef`) — match existing `createContext` helpers; do not invent a parallel inject key.
 - Do not keep a `#region Context` in `<name>.ts` for **new** work — import from `./<name>.context` instead. Migrating inline `#region Context` blocks into `.context.ts` is preferred when touching that file.
@@ -70,7 +70,7 @@ Applies to the published workspace component package (`@pisagor/vue`):
 - One folder per public component — layout above is required.
 - Require `index.ts` barrel (package export map, e.g. `@pisagor/vue/*`).
 - Do **not** add `*.stories.ts` under `packages/vue` — stories belong in `apps/vue` — [Storybook](stories.mdc).
-- Import recipes from `@pisagor/recipes/<name>` — do not add local `*.recipe.ts` shims or call `tv()`.
+- Import recipes from `@pisagor/recipes` — do not add local `*.recipe.ts` shims or call `tv()`.
 
 ### Storybook app (`apps/vue`)
 
@@ -83,10 +83,20 @@ Applies to the published workspace component package (`@pisagor/vue`):
 - **Stories** in `apps/vue` (`.stories.ts`) use the public export map (e.g. `import { Button } from "@pisagor/vue"`). Heavy components use dedicated subpaths (`@pisagor/vue/data-grid`, …).
 - Apps and other packages use the public export map for that package (light barrel or heavy subpath).
 - For cyclic pairs (e.g. `input` ↔ `input-group` ↔ `textarea`), import the concrete module file, not the barrel `index.ts`.
-- Import `{name}Recipe` / `{Name}VariantProps` from `@pisagor/recipes/<name>` — see [Styling](#styling). Do not define `tv()` in component packages. Do not add `<name>.recipe.ts` shims.
+- Import `{name}Recipe` / `{Name}VariantProps` from `@pisagor/recipes` — see [Styling](#styling). Do not define `tv()` in component packages. Do not add `<name>.recipe.ts` shims.
+- Shared visual prop contracts (`variant` / `size` / `recipe` / recipe-linked fields) come from `@pisagor/props` — see [Shared props (`@pisagor/props`)](#shared-props-pisagorprops).
 - Use relative imports (`../internal/utils` or `../../internal/utils` by depth, `../hooks` / `../../hooks`, siblings) within the package.
 - Import icons from `@phosphor-icons/vue` (e.g. `PhCaretDown`).
 - Class merging: `cn` from `@pisagor/utils`.
+
+### Shared props (`@pisagor/props`)
+
+Framework-agnostic visual props live in [`@pisagor/props`](../../../packages/props). Recipe `tv()` stays in `@pisagor/recipes`; props re-exports the shared surface (`{Name}VariantProps`, optional `recipe`).
+
+- Import: `import type { FooProps as FooSharedProps } from "@pisagor/props"`.
+- Public `FooProps` **extends** `FooSharedProps` (plus Ark/DOM / framework-only fields). Do not re-declare `recipe` or variant fields already on the shared type.
+- Framework packages own only framework-specific props (event names, slots, refs, `class`, `classNames`, sub-element bags).
+- Template: React [`button.tsx`](../../../packages/react/src/components/button/button.tsx) / Vue [`button.ts`](../../../packages/vue/src/components/button/button.ts).
 
 ---
 
@@ -118,7 +128,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component. Same
 - Export via `Object.assign(FooShorthand, { Root, Item, Trigger, … })` when shorthand exists; otherwise `Object.assign(FooRoot, { … })`.
 - Public surface is `Foo.Root` / `Foo.Part` only. Flat `FooPart` barrel re-exports are forbidden; do not ship a dual compound + flat surface.
 - Detached presets (flat `FooField`) must attach on the namespace as `Foo.Field`. No parallel flat compat export.
-- Utils and composables may remain named exports outside the namespace. Do not re-export `{name}Recipe` from the component barrel — consumers import recipes from `@pisagor/recipes/<name>`.
+- Utils and composables may remain named exports outside the namespace. Do not re-export `{name}Recipe` from the component barrel — consumers import recipes from `@pisagor/recipes`.
 - `parameters.metadata.api` must match the real barrel surface (`compound` / `compound-shorthand` only when the barrel is a true `Foo.Root` / `Foo.Part` namespace).
 
 **Shorthand:**
@@ -237,9 +247,9 @@ Public props are a **dual surface**: a TypeScript `interface` (consumer types / 
 ### Do
 
 - Export `interface FooProps` when props are part of the public API.
-- Combine with recipe types: `export interface ButtonProps extends ButtonVariantProps { … }`.
+- Prefer extending `@pisagor/props` shared props: `export interface ButtonProps extends ButtonSharedProps { … }`. Combine with recipe types only when a shared module does not exist yet (`extends ButtonVariantProps`).
 - Use `Omit<…>` when a convenience prop conflicts with an Ark prop signature.
-- Extend recipe `{Name}VariantProps` from `@pisagor/recipes/<name>`. Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — [TypeScript Style Guide](../typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
+- Prefer extending `@pisagor/props` shared props for `recipe` / variant fields over declaring them locally. When a shared module does not exist yet, extend recipe `{Name}VariantProps` from `@pisagor/recipes`. Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — [TypeScript Style Guide](../typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
 - Runtime props: declare every public prop with `PropType<…>`, defaults via `default`, and `type: Boolean` / `Number` / `String` / `Object` / `Array` / `Function` as appropriate.
 - Styling entry: use **`class`** (Vue), not `className`. Type as `class?: unknown` (or `ClassValue` when already imported) so object/array class bindings work.
 - Multi-slot overrides: `classNames?: VariantClassNames<{Name}RecipeSlot>` from `../../internal/types`.
@@ -275,7 +285,7 @@ const controlProps = { "data-variant": resolved.variant };
 ```
 
 - Local `type FormControlVariant = "primary" | "secondary"` — do not import a shared form-control module.
-- Import shell recipes from `@pisagor/recipes/form-control` (`formControlShellRecipe`, `formControlToggleRecipe`, …).
+- Import shell recipes from `@pisagor/recipes` (`formControlShellRecipe`, `formControlToggleRecipe`, …).
 - Resolve **`surfaceVariant`** from `useFormControlSurface()` (nearest Surface / Frame) so soft fills stay visible on muted chrome.
 - Do **not** auto-resolve primary/secondary shell `variant` from Surface context — pass `variant="secondary"` (or `controlVariant` on Clipboard) only when intentionally opting into the quieter shell.
 
@@ -305,8 +315,8 @@ Recipes (`tv()`) are owned by **`@pisagor/recipes`**. Component packages import 
 
 ### Consuming recipes
 
-- Import from the recipe subpath: `import { buttonRecipe, type ButtonVariantProps } from "@pisagor/recipes/button"`. Prefer `@pisagor/recipes/<name>` over the root barrel for a tight import graph.
-- Shared form-control shells: `import { formControlShellRecipe, … } from "@pisagor/recipes/form-control"`.
+- Import from the recipes barrel: `import { buttonRecipe, type ButtonVariantProps } from "@pisagor/recipes"`.
+- Shared form-control shells: `import { formControlShellRecipe, … } from "@pisagor/recipes"`.
 - Prefer recipe-exported `{Name}VariantProps` / slot types over re-deriving `VariantProps<typeof …>` when the recipe already exports them.
 - Mirror recipe `defaultVariants` in runtime `props.default`; document with TSDoc `@defaultValue`.
 - **`cn()`:** one logical concern per string; consumer `class` last.

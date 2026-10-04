@@ -47,7 +47,7 @@ Package UI is **Solid JSX** in `.tsx` files (`solid-js` + `@ark-ui/solid`).
 
 When a compound component uses package-local Solid context (`createContext` from package `utils`, relative path by depth):
 
-- Put context value types, `createContext(...)()`, and consumer hooks in `<name>.context.tsx`.
+- Put context value types, `createContext("Foo")<FooValue>()` / `createContext("Foo")<FooValue>({ … })`, and consumer hooks in `<name>.context.tsx`.
 - Export `{ FooContext, useFoo }` from that file; keep Root/Part JSX in `<name>.tsx`.
 - Provide with `<FooContext value={…}>` (the helper’s Provider takes a `value` prop) — do not invent a parallel context key.
 - Public props / part props stay in `<name>.tsx`. Context value types that public props reference live in the context file (`import type`).
@@ -60,7 +60,7 @@ When a compound component uses package-local Solid context (`createContext` from
 
 - One folder per public component — layout above is required.
 - Require `index.ts` barrel (package export map, e.g. `@pisagor/solid/*`).
-- Import recipes from `@pisagor/recipes/<name>` — do not add local `*.recipe.ts` shims or call `tv()`.
+- Import recipes from `@pisagor/recipes` — do not add local `*.recipe.ts` shims or call `tv()`.
 
 ### Block demo app (`apps/solid`)
 
@@ -73,10 +73,20 @@ When a compound component uses package-local Solid context (`createContext` from
 - Within package source, prefer **relative** imports between siblings (e.g. `../button`, `../surface/use-form-control-surface`).
 - Apps and other packages use the public export map (light barrel or heavy subpath).
 - For cyclic pairs, import the concrete module file, not the barrel `index.ts`.
-- Import `{name}Recipe` / `{Name}VariantProps` from `@pisagor/recipes/<name>` — see [Styling](#styling).
+- Import `{name}Recipe` / `{Name}VariantProps` from `@pisagor/recipes` — see [Styling](#styling).
+- Shared visual prop contracts (`variant` / `size` / `recipe` / recipe-linked fields) come from `@pisagor/props` — see [Shared props (`@pisagor/props`)](#shared-props-pisagorprops).
 - Use relative imports (`../../utils` / `../utils` by depth, `../../hooks` / `../hooks`, siblings) within the package.
 - Icons: prefer `@squidlab/phosphor-solid` (re-exported as `@pisagor/solid/icons` for consumers). Shared SVG stand-ins may live in `src/internal/icons` when matching existing parts.
 - Class merging: `cn` from `@pisagor/utils`.
+
+### Shared props (`@pisagor/props`)
+
+Framework-agnostic visual props live in [`@pisagor/props`](../../../packages/props). Recipe `tv()` stays in `@pisagor/recipes`; props re-exports the shared surface (`{Name}VariantProps`, optional `recipe`).
+
+- Import: `import type { FooProps as FooSharedProps } from "@pisagor/props"`.
+- Public `FooProps` **extends** `FooSharedProps` (plus Ark/DOM / framework-only fields). Do not re-declare `recipe` or variant fields already on the shared type.
+- Framework packages own only framework-specific props (event names, slots, refs, `class`, `classNames`, sub-element bags).
+- Template: React [`button.tsx`](../../../packages/react/src/components/button/button.tsx) / Solid button under `packages/solid/src/components/button/`.
 
 ---
 
@@ -113,8 +123,8 @@ Recipes (`tv()`) are owned by **`@pisagor/recipes`**. Components import them; th
 
 ### Consuming recipes
 
-- Import from the recipe subpath: `import { buttonRecipe, type ButtonVariantProps } from "@pisagor/recipes/button"`.
-- Shared form-control shells: `import { formControlShellRecipe, … } from "@pisagor/recipes/form-control"`.
+- Import from the recipes barrel: `import { buttonRecipe, type ButtonVariantProps } from "@pisagor/recipes"`.
+- Shared form-control shells: `import { formControlShellRecipe, … } from "@pisagor/recipes"`.
 - Pass `surfaceVariant: useFormControlSurface()` into shell recipes so soft fills stay visible on muted Surface / Frame chrome. Do **not** auto-resolve primary/secondary shell `variant` from Surface.
 - **`cn()`:** one logical concern per string; consumer `class` last.
 - Use **semantic tokens** (`bg-muted`, `text-muted-foreground`).

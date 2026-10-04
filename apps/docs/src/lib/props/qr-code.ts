@@ -4,7 +4,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/qr-code` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (native HTML attributes omitted). */
 export const qrCodeProps: PropRow[] = [
   {
     defaultValue: "qrCodeRecipe",

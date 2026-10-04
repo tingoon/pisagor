@@ -4,7 +4,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/sortable` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (native HTML attributes omitted). */
 export const sortableProps: PropRow[] = [
   {
     defaultValue: "`vertical`",
