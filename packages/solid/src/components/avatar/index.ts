@@ -9,8 +9,7 @@ export type {
   AvatarImageProps,
 } from "@ark-ui/solid/avatar";
 
-export type { AvatarProps } from "./avatar";
-export { Avatar } from "./avatar";
+export { Avatar, type AvatarProps } from "./avatar";
 export type {
   AvatarGroupCountProps,
   AvatarGroupProps,

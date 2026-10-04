@@ -5,5 +5,4 @@ export type {
   SliderTrackProps,
 } from "@ark-ui/solid/slider";
 
-export type { SliderProps } from "./slider";
-export { Slider } from "./slider";
+export { Slider, type SliderProps } from "./slider";

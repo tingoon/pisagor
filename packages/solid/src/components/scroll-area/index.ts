@@ -4,5 +4,4 @@ export type {
   ScrollAreaViewportProps,
 } from "@ark-ui/solid/scroll-area";
 
-export type { ScrollAreaProps } from "./scroll-area";
-export { ScrollArea } from "./scroll-area";
+export { ScrollArea, type ScrollAreaProps } from "./scroll-area";
