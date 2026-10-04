@@ -5,6 +5,5 @@
     "types": ["bun", "node"]
   },
   "extends": "../../tsconfig.json",
-  "files": ["./css-modules.d.ts", "./react-global.d.ts"],
-  "include": ["src", "skills"]
+  "include": ["src", "examples", "global.d.ts"]
 }
