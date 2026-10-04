@@ -1,8 +1,9 @@
 import { Spinner } from "@pisagor/astro/spinner";
 import DefaultExample from "#/astro/examples/spinner/default.astro";
 import SizesExample from "#/astro/examples/spinner/sizes.astro";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: Spinner,
   parameters: {
     docs: {
@@ -12,16 +13,16 @@ export default {
     },
   },
   title: "Components/Feedback/Spinner",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   tags: ["autodocs"],
-};
+});
 
-export const Default = {
+export const Default = meta.story({
   render: () => ({ component: DefaultExample }),
-};
+});
 
-export const Sizes = {
+export const Sizes = meta.story({
   render: () => ({ component: SizesExample }),
-};
+});

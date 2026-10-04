@@ -2,8 +2,9 @@ import { FormatNumber } from "@pisagor/astro/format";
 import DefaultExample from "#/astro/examples/format/default.astro";
 import NumberCompactExample from "#/astro/examples/format/number-compact.astro";
 import RelativeTimeExample from "#/astro/examples/format/relative-time.astro";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: FormatNumber,
   parameters: {
     docs: {
@@ -14,20 +15,20 @@ export default {
     },
   },
   title: "Components/Data Display/Format",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   tags: ["autodocs"],
-};
+});
 
-export const Default = {
+export const Default = meta.story({
   render: () => ({ component: DefaultExample }),
-};
+});
 
-export const NumberCompact = {
+export const NumberCompact = meta.story({
   render: () => ({ component: NumberCompactExample }),
-};
+});
 
-export const RelativeTime = {
+export const RelativeTime = meta.story({
   render: () => ({ component: RelativeTimeExample }),
-};
+});

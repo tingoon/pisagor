@@ -1,4 +1,6 @@
-import type { Preview } from "@storybook-astro/framework";
+import addonA11y from "@storybook/addon-a11y";
+import addonDocs from "@storybook/addon-docs";
+import { definePreview } from "@storybook-astro/framework";
 import AppWrapper from "./decorators/app-wrapper.astro";
 import "../src/styles.css";
 
@@ -22,7 +24,8 @@ const wrapAstroStory = (
   };
 };
 
-const preview: Preview = {
+export default definePreview({
+  addons: [addonA11y(), addonDocs()],
   decorators: [wrapAstroStory],
   globalTypes: {
     direction: {
@@ -66,6 +69,4 @@ const preview: Preview = {
       },
     },
   },
-};
-
-export default preview;
+});

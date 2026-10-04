@@ -1,6 +1,7 @@
 import { Table } from "@pisagor/astro/table";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: Table,
   parameters: {
     docs: {
@@ -11,9 +12,9 @@ export default {
     },
   },
   title: "Components/Data Display/Table",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   render: () => ({
     component: Table,
     slots: {
@@ -68,4 +69,4 @@ export const Playground = {
     },
   }),
   tags: ["autodocs"],
-};
+});

@@ -4,8 +4,9 @@ import DisabledExample from "#/astro/examples/button/disabled.astro";
 import LoadingExample from "#/astro/examples/button/loading.astro";
 import SizesExample from "#/astro/examples/button/sizes.astro";
 import VariantsExample from "#/astro/examples/button/variants.astro";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: Button,
   parameters: {
     docs: {
@@ -16,31 +17,31 @@ export default {
     },
   },
   title: "Components/Actions/Button",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   args: {
     slots: { default: "Button" },
   },
   tags: ["autodocs"],
-};
+});
 
-export const Default = {
+export const Default = meta.story({
   render: () => ({ component: DefaultExample }),
-};
+});
 
-export const Sizes = {
+export const Sizes = meta.story({
   render: () => ({ component: SizesExample }),
-};
+});
 
-export const Variants = {
+export const Variants = meta.story({
   render: () => ({ component: VariantsExample }),
-};
+});
 
-export const Loading = {
+export const Loading = meta.story({
   render: () => ({ component: LoadingExample }),
-};
+});
 
-export const Disabled = {
+export const Disabled = meta.story({
   render: () => ({ component: DisabledExample }),
-};
+});

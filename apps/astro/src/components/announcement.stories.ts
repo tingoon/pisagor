@@ -1,7 +1,8 @@
 import { Announcement } from "@pisagor/astro/announcement";
 import { Badge } from "@pisagor/astro/badge";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: Announcement,
   parameters: {
     docs: {
@@ -12,9 +13,9 @@ export default {
     },
   },
   title: "Components/Feedback/Announcement",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   args: {
     slots: {
       badge: { component: Badge, slots: { default: "Release" } },
@@ -22,4 +23,4 @@ export const Playground = {
     title: "v2.1.0 — Dark mode, faster builds, and 12 new components",
   },
   tags: ["autodocs"],
-};
+});

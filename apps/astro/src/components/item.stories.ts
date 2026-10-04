@@ -1,6 +1,7 @@
 import { Item } from "@pisagor/astro/item";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: Item,
   parameters: {
     docs: {
@@ -11,9 +12,9 @@ export default {
     },
   },
   title: "Components/Data Display/Item",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   render: () => ({
     component: Item,
     props: { variant: "outline" },
@@ -42,4 +43,4 @@ export const Playground = {
     },
   }),
   tags: ["autodocs"],
-};
+});

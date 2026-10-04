@@ -1,6 +1,7 @@
 import { Prose } from "@pisagor/astro/prose";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: Prose,
   parameters: {
     docs: {
@@ -11,9 +12,9 @@ export default {
     },
   },
   title: "Components/Data Display/Prose",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   args: {
     slots: {
       default: `
@@ -27,4 +28,4 @@ export const Playground = {
     },
   },
   tags: ["autodocs"],
-};
+});

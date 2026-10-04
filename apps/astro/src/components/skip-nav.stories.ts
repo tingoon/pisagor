@@ -1,7 +1,8 @@
 import { SkipNavContent, SkipNavLink } from "@pisagor/astro/skip-nav";
+import preview from "#/storybook/preview";
 import StoryFrame from "../../.storybook/story-frame.astro";
 
-export default {
+const meta = preview.meta({
   component: SkipNavContent,
   parameters: {
     docs: {
@@ -12,9 +13,9 @@ export default {
     },
   },
   title: "Components/Navigation/Skip Nav",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   render: () => ({
     component: StoryFrame,
     slots: {
@@ -38,4 +39,4 @@ export const Playground = {
     },
   }),
   tags: ["autodocs"],
-};
+});

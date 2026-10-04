@@ -1,6 +1,7 @@
 import { InputGroup } from "@pisagor/astro/input-group";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: InputGroup,
   parameters: {
     docs: {
@@ -11,9 +12,9 @@ export default {
     },
   },
   title: "Components/Forms/Input Group",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   render: () => ({
     component: InputGroup,
     slots: {
@@ -33,4 +34,4 @@ export const Playground = {
     },
   }),
   tags: ["autodocs"],
-};
+});

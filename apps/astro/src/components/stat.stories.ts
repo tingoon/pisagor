@@ -1,6 +1,7 @@
 import { Stat } from "@pisagor/astro/stat";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: Stat,
   parameters: {
     docs: {
@@ -11,13 +12,13 @@ export default {
     },
   },
   title: "Components/Data Display/Stat",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   args: {
     description: "+20.1% from last month",
     label: "Total Revenue",
     value: "$45,231.89",
   },
   tags: ["autodocs"],
-};
+});

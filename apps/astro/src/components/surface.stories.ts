@@ -1,8 +1,9 @@
 import { Surface } from "@pisagor/astro/surface";
 import DefaultExample from "#/astro/examples/surface/default.astro";
 import NestedExample from "#/astro/examples/surface/nested.astro";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: Surface,
   parameters: {
     docs: {
@@ -13,20 +14,20 @@ export default {
     },
   },
   title: "Components/Layout/Surface",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   args: {
     class: "p-4",
     slots: { default: "Surface" },
   },
   tags: ["autodocs"],
-};
+});
 
-export const Default = {
+export const Default = meta.story({
   render: () => ({ component: DefaultExample }),
-};
+});
 
-export const Nested = {
+export const Nested = meta.story({
   render: () => ({ component: NestedExample }),
-};
+});

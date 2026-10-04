@@ -2,8 +2,9 @@ import { Alert } from "@pisagor/astro/alert";
 import CompoundExample from "#/astro/examples/alert/compound.astro";
 import DefaultExample from "#/astro/examples/alert/default.astro";
 import VariantsExample from "#/astro/examples/alert/variants.astro";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: Alert,
   parameters: {
     docs: {
@@ -14,24 +15,24 @@ export default {
     },
   },
   title: "Components/Feedback/Alert",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   args: {
     description: "You can add components to your app using the cli.",
     title: "Heads up!",
   },
   tags: ["autodocs"],
-};
+});
 
-export const Compound = {
+export const Compound = meta.story({
   render: () => ({ component: CompoundExample }),
-};
+});
 
-export const Default = {
+export const Default = meta.story({
   render: () => ({ component: DefaultExample }),
-};
+});
 
-export const Variants = {
+export const Variants = meta.story({
   render: () => ({ component: VariantsExample }),
-};
+});

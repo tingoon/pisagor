@@ -1,8 +1,9 @@
 import { AspectRatio } from "@pisagor/astro/aspect-ratio";
 import DefaultExample from "#/astro/examples/aspect-ratio/default.astro";
 import WidescreenExample from "#/astro/examples/aspect-ratio/widescreen.astro";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: AspectRatio,
   parameters: {
     docs: {
@@ -13,9 +14,9 @@ export default {
     },
   },
   title: "Components/Layout/Aspect Ratio",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   args: {
     class: "max-w-sm rounded-xl border bg-muted",
     slots: {
@@ -24,12 +25,12 @@ export const Playground = {
     },
   },
   tags: ["autodocs"],
-};
+});
 
-export const Default = {
+export const Default = meta.story({
   render: () => ({ component: DefaultExample }),
-};
+});
 
-export const Widescreen = {
+export const Widescreen = meta.story({
   render: () => ({ component: WidescreenExample }),
-};
+});

@@ -1,6 +1,7 @@
 import { Breadcrumb } from "@pisagor/astro/breadcrumb";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: Breadcrumb,
   parameters: {
     docs: {
@@ -11,9 +12,9 @@ export default {
     },
   },
   title: "Components/Navigation/Breadcrumb",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   args: {
     items: [
       { href: "/", label: "Home" },
@@ -22,4 +23,4 @@ export const Playground = {
     ],
   },
   tags: ["autodocs"],
-};
+});

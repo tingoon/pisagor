@@ -1,6 +1,7 @@
 import { LinkBox } from "@pisagor/astro/link-box";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: LinkBox,
   parameters: {
     docs: {
@@ -11,9 +12,9 @@ export default {
     },
   },
   title: "Components/Utilities/Link Box",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   render: () => ({
     component: LinkBox,
     props: { class: "rounded-xl border p-4" },
@@ -31,4 +32,4 @@ export const Playground = {
     },
   }),
   tags: ["autodocs"],
-};
+});

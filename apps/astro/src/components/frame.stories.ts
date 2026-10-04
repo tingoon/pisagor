@@ -1,6 +1,7 @@
 import { Frame } from "@pisagor/astro/frame";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: Frame,
   parameters: {
     docs: {
@@ -11,9 +12,9 @@ export default {
     },
   },
   title: "Components/Media/Frame",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   render: () => ({
     component: Frame,
     slots: {
@@ -47,4 +48,4 @@ export const Playground = {
     },
   }),
   tags: ["autodocs"],
-};
+});
