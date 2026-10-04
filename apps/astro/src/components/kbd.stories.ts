@@ -1,6 +1,5 @@
 import { Kbd } from "@pisagor/astro";
-import DefaultExample from "#/astro/examples/kbd/default.astro";
-import GroupExample from "#/astro/examples/kbd/group.astro";
+import * as Examples from "#/astro/examples/kbd";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -23,9 +22,9 @@ export const Playground = meta.story({
 });
 
 export const Default = meta.story({
-  render: () => ({ component: DefaultExample }),
+  render: () => ({ component: Examples.Default }),
 });
 
 export const Group = meta.story({
-  render: () => ({ component: GroupExample }),
+  render: () => ({ component: Examples.Group }),
 });

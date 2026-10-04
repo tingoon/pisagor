@@ -1,6 +1,5 @@
 import { Surface } from "@pisagor/astro";
-import DefaultExample from "#/astro/examples/surface/default.astro";
-import NestedExample from "#/astro/examples/surface/nested.astro";
+import * as Examples from "#/astro/examples/surface";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -25,9 +24,17 @@ export const Playground = meta.story({
 });
 
 export const Default = meta.story({
-  render: () => ({ component: DefaultExample }),
+  render: () => ({ component: Examples.Default }),
 });
 
 export const Nested = meta.story({
-  render: () => ({ component: NestedExample }),
+  render: () => ({ component: Examples.Nested }),
+});
+
+export const Padding = meta.story({
+  render: () => ({ component: Examples.Padding }),
+});
+
+export const Variants = meta.story({
+  render: () => ({ component: Examples.Variants }),
 });

@@ -1,4 +1,5 @@
 import { Table } from "@pisagor/astro";
+import * as Examples from "#/astro/examples/table";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -69,4 +70,12 @@ export const Playground = meta.story({
     },
   }),
   tags: ["autodocs"],
+});
+
+export const Default = meta.story({
+  render: () => ({ component: Examples.Default }),
+});
+
+export const Variants = meta.story({
+  render: () => ({ component: Examples.Variants }),
 });

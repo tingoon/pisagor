@@ -1,6 +1,5 @@
 import { AspectRatio } from "@pisagor/astro";
-import DefaultExample from "#/astro/examples/aspect-ratio/default.astro";
-import WidescreenExample from "#/astro/examples/aspect-ratio/widescreen.astro";
+import * as Examples from "#/astro/examples/aspect-ratio";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -28,9 +27,25 @@ export const Playground = meta.story({
 });
 
 export const Default = meta.story({
-  render: () => ({ component: DefaultExample }),
+  render: () => ({ component: Examples.Default }),
 });
 
 export const Widescreen = meta.story({
-  render: () => ({ component: WidescreenExample }),
+  render: () => ({ component: Examples.Widescreen }),
+});
+
+export const Portrait = meta.story({
+  render: () => ({ component: Examples.Portrait }),
+});
+
+export const Responsive = meta.story({
+  render: () => ({ component: Examples.Responsive }),
+});
+
+export const Square = meta.story({
+  render: () => ({ component: Examples.Square }),
+});
+
+export const Video = meta.story({
+  render: () => ({ component: Examples.Video }),
 });

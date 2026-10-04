@@ -1,7 +1,5 @@
 import { Alert } from "@pisagor/astro";
-import CompoundExample from "#/astro/examples/alert/compound.astro";
-import DefaultExample from "#/astro/examples/alert/default.astro";
-import VariantsExample from "#/astro/examples/alert/variants.astro";
+import * as Examples from "#/astro/examples/alert";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -26,13 +24,21 @@ export const Playground = meta.story({
 });
 
 export const Compound = meta.story({
-  render: () => ({ component: CompoundExample }),
+  render: () => ({ component: Examples.Compound }),
 });
 
 export const Default = meta.story({
-  render: () => ({ component: DefaultExample }),
+  render: () => ({ component: Examples.Default }),
 });
 
 export const Variants = meta.story({
-  render: () => ({ component: VariantsExample }),
+  render: () => ({ component: Examples.Variants }),
+});
+
+export const CustomColor = meta.story({
+  render: () => ({ component: Examples.CustomColor }),
+});
+
+export const WithIcon = meta.story({
+  render: () => ({ component: Examples.WithIcon }),
 });

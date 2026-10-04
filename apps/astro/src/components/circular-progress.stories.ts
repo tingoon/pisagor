@@ -1,7 +1,5 @@
 import { CircularProgress } from "@pisagor/astro";
-import DefaultExample from "#/astro/examples/circular-progress/default.astro";
-import IndeterminateExample from "#/astro/examples/circular-progress/indeterminate.astro";
-import WithValueExample from "#/astro/examples/circular-progress/with-value.astro";
+import * as Examples from "#/astro/examples/circular-progress";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -25,13 +23,17 @@ export const Playground = meta.story({
 });
 
 export const Default = meta.story({
-  render: () => ({ component: DefaultExample }),
+  render: () => ({ component: Examples.Default }),
 });
 
 export const Indeterminate = meta.story({
-  render: () => ({ component: IndeterminateExample }),
+  render: () => ({ component: Examples.Indeterminate }),
 });
 
 export const WithValue = meta.story({
-  render: () => ({ component: WithValueExample }),
+  render: () => ({ component: Examples.WithValue }),
+});
+
+export const Sizes = meta.story({
+  render: () => ({ component: Examples.Sizes }),
 });

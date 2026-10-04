@@ -1,7 +1,5 @@
 import { Progress } from "@pisagor/astro";
-import DefaultExample from "#/astro/examples/progress/default.astro";
-import IndeterminateExample from "#/astro/examples/progress/indeterminate.astro";
-import WithLabelExample from "#/astro/examples/progress/with-label.astro";
+import * as Examples from "#/astro/examples/progress";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -25,13 +23,13 @@ export const Playground = meta.story({
 });
 
 export const Default = meta.story({
-  render: () => ({ component: DefaultExample }),
+  render: () => ({ component: Examples.Default }),
 });
 
 export const Indeterminate = meta.story({
-  render: () => ({ component: IndeterminateExample }),
+  render: () => ({ component: Examples.Indeterminate }),
 });
 
 export const WithLabel = meta.story({
-  render: () => ({ component: WithLabelExample }),
+  render: () => ({ component: Examples.WithLabel }),
 });

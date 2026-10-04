@@ -1,6 +1,5 @@
 import { Status } from "@pisagor/astro";
-import DefaultExample from "#/astro/examples/status/default.astro";
-import VariantsExample from "#/astro/examples/status/variants.astro";
+import * as Examples from "#/astro/examples/status";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -20,9 +19,13 @@ export const Playground = meta.story({
 });
 
 export const Default = meta.story({
-  render: () => ({ component: DefaultExample }),
+  render: () => ({ component: Examples.Default }),
 });
 
 export const Variants = meta.story({
-  render: () => ({ component: VariantsExample }),
+  render: () => ({ component: Examples.Variants }),
+});
+
+export const Sizes = meta.story({
+  render: () => ({ component: Examples.Sizes }),
 });

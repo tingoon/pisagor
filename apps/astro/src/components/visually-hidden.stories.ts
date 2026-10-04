@@ -1,4 +1,5 @@
 import { VisuallyHidden } from "@pisagor/astro";
+import * as Examples from "#/astro/examples/visually-hidden";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -19,4 +20,8 @@ export const Playground = meta.story({
     slots: { default: "Screen reader only label" },
   },
   tags: ["autodocs"],
+});
+
+export const Default = meta.story({
+  render: () => ({ component: Examples.Default }),
 });

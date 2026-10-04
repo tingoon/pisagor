@@ -1,6 +1,5 @@
 import { Highlight } from "@pisagor/astro";
-import DefaultExample from "#/astro/examples/highlight/default.astro";
-import MultipleExample from "#/astro/examples/highlight/multiple.astro";
+import * as Examples from "#/astro/examples/highlight";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -21,9 +20,9 @@ export const Playground = meta.story({
 });
 
 export const Default = meta.story({
-  render: () => ({ component: DefaultExample }),
+  render: () => ({ component: Examples.Default }),
 });
 
 export const Multiple = meta.story({
-  render: () => ({ component: MultipleExample }),
+  render: () => ({ component: Examples.Multiple }),
 });

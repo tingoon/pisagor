@@ -1,4 +1,5 @@
 import { SkipNavContent, SkipNavLink } from "@pisagor/astro";
+import * as Examples from "#/astro/examples/skip-nav";
 import preview from "#/storybook/preview";
 import StoryFrame from "../../.storybook/story-frame.astro";
 
@@ -39,4 +40,8 @@ export const Playground = meta.story({
     },
   }),
   tags: ["autodocs"],
+});
+
+export const Default = meta.story({
+  render: () => ({ component: Examples.Default }),
 });
