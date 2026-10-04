@@ -3,6 +3,10 @@ import { tv, type VariantProps } from "tailwind-variants";
 export const dialogRecipe = tv({
   defaultVariants: {
     /**
+     * Stick content to the bottom edge on small viewports.
+     */
+    bottomStickOnMobile: true,
+    /**
      * Control size.
      */
     size: "md",

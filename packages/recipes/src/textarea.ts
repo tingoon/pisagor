@@ -1,6 +1,12 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const textareaRecipe = tv({
+  defaultVariants: {
+    /**
+     * Reserve end padding for the clear control.
+     */
+    clearable: false,
+  },
   slots: {
     clearAddon: ["absolute top-1.5 right-1.5 self-start p-0"],
     clearableRoot: [

@@ -2,7 +2,13 @@ import { tv } from "tailwind-variants";
 
 export const passwordStrengthBlock = tv({
   defaultVariants: {
+    /**
+     * Whether the password requirement is satisfied.
+     */
     met: false,
+    /**
+     * Strength meter segment color.
+     */
     tone: "idle",
   },
   slots: {

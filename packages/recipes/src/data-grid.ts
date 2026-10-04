@@ -1,6 +1,16 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const dataGridRecipe = tv({
+  defaultVariants: {
+    /**
+     * Active column resize drag state.
+     */
+    resizing: false,
+    /**
+     * Enable column sizing / resizer layout.
+     */
+    sizing: false,
+  },
   slots: {
     anchor: "hidden",
     base: ["flex w-full flex-col gap-3"],

@@ -8,6 +8,10 @@ export const surfaceRecipe = tv({
      */
     bordered: false,
     /**
+     * Inner spacing.
+     */
+    padding: "none",
+    /**
      * Rounded corners.
      */
     rounded: true,
