@@ -14,6 +14,12 @@ import "@pisagor/svelte-form/styles";
 | Fields | `@pisagor/svelte-form` | Standalone field components (`TextField`, `SelectField`, …) |
 | TanStack | `@pisagor/svelte-form/tanstack` | `createAppForm`, connected field components, form helpers |
 
-Depends on `@pisagor/svelte`. Peers: `svelte` ^5, `tailwindcss` ^4.
+Peers: `@pisagor/svelte`, `svelte` ^5, `tailwindcss` ^4. Optional peer: `@tanstack/svelte-form` (for `./tanstack` only).
+
+```bash
+bun add @pisagor/svelte @pisagor/svelte-form
+# optional — required only for ./tanstack
+bun add @tanstack/svelte-form
+```
 
 `PhoneField` and `RichTextEditorField` import `@pisagor/svelte/phone-input` and `@pisagor/svelte/rich-text-editor`.

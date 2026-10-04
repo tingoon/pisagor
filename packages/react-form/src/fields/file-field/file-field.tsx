@@ -1,5 +1,4 @@
-import type { FileInputProps } from "@pisagor/react";
-import { FileInput } from "@pisagor/react";
+import { FileInput, type FileInputProps } from "@pisagor/react";
 import {
   type FieldPresentationProps,
   FieldShell,

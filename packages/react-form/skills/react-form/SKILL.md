@@ -50,8 +50,8 @@ Example sources live under `assets/examples/<id>/` (also available via MCP `get_
 ## Install
 
 ```bash
-bun add @pisagor/react-form
-# optional TanStack bindings
+bun add @pisagor/react @pisagor/react-form
+# optional — required only for ./tanstack
 bun add @tanstack/react-form
 ```
 

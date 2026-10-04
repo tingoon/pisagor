@@ -1,5 +1,4 @@
-import type { CheckboxProps } from "@pisagor/solid";
-import { Checkbox, Field } from "@pisagor/solid";
+import { Checkbox, type CheckboxProps, Field } from "@pisagor/solid";
 import { Show, splitProps } from "solid-js";
 import type { FieldPresentationProps } from "../../internal/field-shell";
 

@@ -1,5 +1,4 @@
-import type { SwitchProps } from "@pisagor/solid";
-import { Field, Switch } from "@pisagor/solid";
+import { Field, Switch, type SwitchProps } from "@pisagor/solid";
 import { Show, splitProps } from "solid-js";
 import type { FieldPresentationProps } from "../../internal/field-shell";
 

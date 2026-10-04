@@ -1,5 +1,4 @@
-import type { AutocompleteProps } from "@pisagor/solid";
-import { Autocomplete } from "@pisagor/solid";
+import { Autocomplete, type AutocompleteProps } from "@pisagor/solid";
 import { splitProps } from "solid-js";
 import {
   type FieldPresentationProps,

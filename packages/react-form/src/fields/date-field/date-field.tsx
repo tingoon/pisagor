@@ -1,5 +1,4 @@
-import type { DatePickerProps } from "@pisagor/react";
-import { DatePicker } from "@pisagor/react";
+import { DatePicker, type DatePickerProps } from "@pisagor/react";
 import {
   type FieldPresentationProps,
   FieldShell,

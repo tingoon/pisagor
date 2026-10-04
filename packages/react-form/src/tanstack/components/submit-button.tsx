@@ -1,5 +1,4 @@
-import type { ButtonProps } from "@pisagor/react";
-import { Button } from "@pisagor/react";
+import { Button, type ButtonProps } from "@pisagor/react";
 import type { ReactNode } from "react";
 import { useFormContext } from "../contexts";
 

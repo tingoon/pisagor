@@ -1,5 +1,5 @@
 <script lang="ts">
-import { TagsInput } from "@pisagor/svelte/tags-input";
+import { TagsInput } from "@pisagor/svelte";
 import type { ComponentProps, Snippet } from "svelte";
 import FieldShell from "../../internal/field-shell.svelte";
 

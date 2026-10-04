@@ -1,5 +1,4 @@
-import type { FileInputProps } from "@pisagor/vue";
-import { FileInput } from "@pisagor/vue";
+import { FileInput, type FileInputProps } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import {
   type FieldPresentationProps,

@@ -1,5 +1,4 @@
-import type { PasswordInputProps } from "@pisagor/react";
-import { PasswordInput } from "@pisagor/react";
+import { PasswordInput, type PasswordInputProps } from "@pisagor/react";
 import {
   type FieldPresentationProps,
   FieldShell,

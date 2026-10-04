@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Field } from "@pisagor/svelte/field";
-import { RadioGroup } from "@pisagor/svelte/radio-group";
+import { Field, RadioGroup } from "@pisagor/svelte";
 import type { ComponentProps, Snippet } from "svelte";
 
 type RadioGroupRootProps = ComponentProps<typeof RadioGroup.Root>;

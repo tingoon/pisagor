@@ -1,5 +1,4 @@
-import type { ButtonProps } from "@pisagor/vue";
-import { Button } from "@pisagor/vue";
+import { Button, type ButtonProps } from "@pisagor/vue";
 import { defineComponent, h, type VNodeChild } from "vue";
 import { useFormContext } from "../contexts";
 

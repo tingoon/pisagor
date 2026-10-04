@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Checkbox } from "@pisagor/svelte/checkbox";
-import { Field } from "@pisagor/svelte/field";
+import { Checkbox, Field } from "@pisagor/svelte";
 import type { ComponentProps, Snippet } from "svelte";
 
 type CheckboxProps = ComponentProps<typeof Checkbox>;

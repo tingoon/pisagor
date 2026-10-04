@@ -1,5 +1,4 @@
-import type { InputOTPProps } from "@pisagor/solid";
-import { InputOTP } from "@pisagor/solid";
+import { InputOTP, type InputOTPProps } from "@pisagor/solid";
 import { createMemo, For, Show, splitProps } from "solid-js";
 import {
   type FieldPresentationProps,

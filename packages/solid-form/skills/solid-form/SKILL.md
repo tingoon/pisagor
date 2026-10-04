@@ -50,8 +50,8 @@ Example sources live under `assets/examples/<id>/` (also available via MCP `get_
 ## Install
 
 ```bash
-bun add @pisagor/solid-form
-# optional TanStack bindings
+bun add @pisagor/solid @pisagor/solid-form
+# optional — required only for ./tanstack
 bun add @tanstack/solid-form
 ```
 

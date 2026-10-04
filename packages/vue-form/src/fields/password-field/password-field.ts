@@ -1,5 +1,4 @@
-import type { PasswordInputProps } from "@pisagor/vue";
-import { PasswordInput } from "@pisagor/vue";
+import { PasswordInput, type PasswordInputProps } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import {
   type FieldPresentationProps,

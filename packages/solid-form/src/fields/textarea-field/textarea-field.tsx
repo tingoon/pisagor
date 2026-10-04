@@ -1,5 +1,4 @@
-import type { TextareaProps } from "@pisagor/solid";
-import { Textarea } from "@pisagor/solid";
+import { Textarea, type TextareaProps } from "@pisagor/solid";
 import { splitProps } from "solid-js";
 import {
   type FieldPresentationProps,

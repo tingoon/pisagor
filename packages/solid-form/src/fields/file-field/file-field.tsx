@@ -1,5 +1,4 @@
-import type { FileInputProps } from "@pisagor/solid";
-import { FileInput } from "@pisagor/solid";
+import { FileInput, type FileInputProps } from "@pisagor/solid";
 import { splitProps } from "solid-js";
 import {
   type FieldPresentationProps,

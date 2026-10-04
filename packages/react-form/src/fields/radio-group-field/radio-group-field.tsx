@@ -1,5 +1,4 @@
-import type { RadioGroupRootProps } from "@pisagor/react";
-import { Field, RadioGroup } from "@pisagor/react";
+import { Field, RadioGroup, type RadioGroupRootProps } from "@pisagor/react";
 import type { ReactNode } from "react";
 import type { FieldPresentationProps } from "../../internal/field-shell";
 

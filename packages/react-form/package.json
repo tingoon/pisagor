@@ -2,13 +2,11 @@
   "bugs": {
     "url": "https://github.com/tingoon/pisagor/issues"
   },
-  "dependencies": {
-    "@pisagor/react": "workspace:*",
-    "@pisagor/utils": "workspace:*",
-    "@tanstack/react-form": "^1.33.5"
-  },
   "description": "Labeled form fields and TanStack Form bindings for @pisagor/react.",
   "devDependencies": {
+    "@pisagor/react": "workspace:*",
+    "@pisagor/utils": "workspace:*",
+    "@tanstack/react-form": "^1.33.5",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "react": "catalog:",
@@ -30,9 +28,16 @@
   "license": "MIT",
   "name": "@pisagor/react-form",
   "peerDependencies": {
+    "@pisagor/react": "workspace:^",
+    "@tanstack/react-form": "^1.33.5",
     "react": "^19",
     "react-dom": "^19",
     "tailwindcss": "^4"
+  },
+  "peerDependenciesMeta": {
+    "@tanstack/react-form": {
+      "optional": true
+    }
   },
   "repository": {
     "directory": "packages/react-form",

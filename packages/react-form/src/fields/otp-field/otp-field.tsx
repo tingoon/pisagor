@@ -1,5 +1,4 @@
-import type { InputOTPProps } from "@pisagor/react";
-import { InputOTP } from "@pisagor/react";
+import { InputOTP, type InputOTPProps } from "@pisagor/react";
 import type { ReactNode } from "react";
 import {
   type FieldPresentationProps,

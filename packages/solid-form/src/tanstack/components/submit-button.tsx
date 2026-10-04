@@ -1,5 +1,4 @@
-import type { ButtonProps } from "@pisagor/solid";
-import { Button } from "@pisagor/solid";
+import { Button, type ButtonProps } from "@pisagor/solid";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { useFormContext } from "../contexts";

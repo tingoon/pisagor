@@ -1,5 +1,4 @@
-import type { RadioGroupRootProps } from "@pisagor/vue";
-import { Field, RadioGroup } from "@pisagor/vue";
+import { Field, RadioGroup, type RadioGroupRootProps } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { FieldPresentationProps } from "../../internal/field-shell";
 

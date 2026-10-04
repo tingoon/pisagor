@@ -1,5 +1,4 @@
-import type { SelectProps } from "@pisagor/vue";
-import { Select } from "@pisagor/vue";
+import { Select, type SelectProps } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import {
   type FieldPresentationProps,

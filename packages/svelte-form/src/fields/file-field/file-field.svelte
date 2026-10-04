@@ -1,5 +1,5 @@
 <script lang="ts">
-import { FileInput } from "@pisagor/svelte/file-input";
+import { FileInput } from "@pisagor/svelte";
 import type { ComponentProps, Snippet } from "svelte";
 import FieldShell from "../../internal/field-shell.svelte";
 

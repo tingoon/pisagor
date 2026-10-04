@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Slider } from "@pisagor/svelte/slider";
+import { Slider } from "@pisagor/svelte";
 import type { ComponentProps, Snippet } from "svelte";
 import FieldShell from "../../internal/field-shell.svelte";
 

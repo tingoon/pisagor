@@ -50,8 +50,8 @@ Example sources live under `assets/examples/<id>/` (also available via MCP `get_
 ## Install
 
 ```bash
-bun add @pisagor/svelte-form
-# optional TanStack bindings
+bun add @pisagor/svelte @pisagor/svelte-form
+# optional — required only for ./tanstack
 bun add @tanstack/svelte-form
 ```
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Autocomplete } from "@pisagor/svelte/autocomplete";
+import { Autocomplete } from "@pisagor/svelte";
 import type { ComponentProps, Snippet } from "svelte";
 import FieldShell from "../../internal/field-shell.svelte";
 
