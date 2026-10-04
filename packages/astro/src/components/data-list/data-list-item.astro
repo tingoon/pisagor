@@ -19,18 +19,18 @@ const hasLabel = Astro.slots.has("default");
   data-scope="data-list"
 >
   {hasLabel && (
-  <dt class={slots.label()} data-part="item-label" data-scope="data-list">
-    <slot />
-  </dt>
-)}
+    <dt class={slots.label()} data-part="item-label" data-scope="data-list">
+      <slot />
+    </dt>
+  )}
   {value !== undefined && (
-  <dd class={slots.value()} data-part="item-value" data-scope="data-list">
-    {value}
-  </dd>
-)}
+    <dd class={slots.value()} data-part="item-value" data-scope="data-list">
+      {value}
+    </dd>
+  )}
   {Astro.slots.has("value") && (
-  <dd class={slots.value()} data-part="item-value" data-scope="data-list">
-    <slot name="value" />
-  </dd>
-)}
+    <dd class={slots.value()} data-part="item-value" data-scope="data-list">
+      <slot name="value" />
+    </dd>
+  )}
 </div>

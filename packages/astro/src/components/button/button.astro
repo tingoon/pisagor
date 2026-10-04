@@ -35,14 +35,14 @@ const content = loading ? await Astro.slots.render("default") : "";
   type={type}
 >
   {loading ? (
-  <>
-    <span aria-hidden class={slots.hidden()} set:html={content} />
-    <span class={slots.srOnly()} set:html={content} />
-    <span class={slots.spinner()}>
-      <Spinner aria-hidden />
-    </span>
-  </>
-) : (
-  <slot />
-)}
+    <>
+      <span aria-hidden class={slots.hidden()} set:html={content} />
+      <span class={slots.srOnly()} set:html={content} />
+      <span class={slots.spinner()}>
+        <Spinner aria-hidden />
+      </span>
+    </>
+  ) : (
+    <slot />
+  )}
 </button>
