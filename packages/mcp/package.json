@@ -9,9 +9,10 @@
     "@modelcontextprotocol/sdk": "^1.30.0",
     "zod": "^4.6.5"
   },
-  "description": "MCP server for Pisagor UI. Reads catalogs from installed @pisagor/* packages.",
+  "description": "MCP server for Pisagor UI. Ships package catalogs and exposes tools for installed @pisagor/* packages.",
 
   "files": [
+    "*.gen.json",
     "src"
   ],
   "homepage": "https://github.com/tingoon/pisagor#readme",

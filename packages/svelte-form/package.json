@@ -17,7 +17,6 @@
     "./tanstack": "./src/tanstack/index.ts"
   },
   "files": [
-    "catalog.gen.json",
     "skills",
     "src",
     "!**/*.stories.*",

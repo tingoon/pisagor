@@ -1,6 +1,6 @@
 # @pisagor/mcp
 
-MCP server for Pisagor UI. Discovers **installed** `@pisagor/*` packages and reads each package’s `catalog.gen.json`. No framework flag — only what the project has installed is available.
+MCP server for Pisagor UI. Discovers **installed** `@pisagor/*` packages and reads matching catalogs shipped with this package (`react.gen.json`, `react-form.gen.json`, …). No framework flag — only what the project has installed is available.
 
 If nothing is installed, tools return install instructions.
 
@@ -42,4 +42,4 @@ Catalog generation lives in `@pisagor/scripts`, not this package:
 bun run --filter @pisagor/scripts generate
 ```
 
-Writes `catalog.gen.json` into each UI package (`react`, `vue`, `solid`, `svelte`, `astro`, `*-form`, `recipes`). Component examples come from each package’s `skills/*/assets/examples`. Run before publish.
+Writes `{package}.gen.json` into `@pisagor/mcp` (`react.gen.json`, `react-form.gen.json`, `recipes.gen.json`, …). Component examples come from each UI package’s `examples/`. Run before publish.
