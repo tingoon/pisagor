@@ -15,8 +15,8 @@ const form = useFormContext();
 
 <form.Subscribe selector={(state) => state.isSubmitting}>
   {#snippet children(
-  isSubmitting,
-)}
+    isSubmitting,
+  )}
     <Button {...buttonProps} loading={loading ?? isSubmitting} type="submit">
       {@render children?.()}
     </Button>

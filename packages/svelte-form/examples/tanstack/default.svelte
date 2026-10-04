@@ -26,8 +26,8 @@ const form = createAppForm(() => ({
 <Root class="flex flex-col gap-6" {form}>
   <form.AppField name="email">
     {#snippet children(
-  field,
-)}
+      field,
+    )}
       <field.TextField
         autocomplete="email"
         id="tanstack-form-email"
@@ -40,8 +40,8 @@ const form = createAppForm(() => ({
 
   <form.AppField name="password">
     {#snippet children(
-  field,
-)}
+      field,
+    )}
       <field.PasswordField
         autocomplete="current-password"
         id="tanstack-form-password"
@@ -53,8 +53,8 @@ const form = createAppForm(() => ({
 
   <form.AppField name="country">
     {#snippet children(
-  field,
-)}
+      field,
+    )}
       <field.SelectField
         description="Used for shipping estimates."
         id="tanstack-form-country"
@@ -67,8 +67,8 @@ const form = createAppForm(() => ({
 
   <form.AppField name="city">
     {#snippet children(
-  field,
-)}
+      field,
+    )}
       <field.AutocompleteField
         description="Start typing to filter options."
         id="tanstack-form-city"
@@ -80,8 +80,8 @@ const form = createAppForm(() => ({
 
   <form.AppField name="plan">
     {#snippet children(
-  field,
-)}
+      field,
+    )}
       <field.RadioGroupField
         description="You can change this anytime in billing settings."
         id="tanstack-form-plan"
@@ -93,8 +93,8 @@ const form = createAppForm(() => ({
 
   <form.AppField name="acceptedTerms">
     {#snippet children(
-  field,
-)}
+      field,
+    )}
       <field.CheckboxField
         id="tanstack-form-accepted-terms"
         label="I accept the terms and conditions"
