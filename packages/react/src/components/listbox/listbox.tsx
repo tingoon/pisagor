@@ -16,8 +16,8 @@ import type {
 import { Listbox as ListboxPrimitive } from "@ark-ui/react/listbox";
 import { CheckIcon } from "@phosphor-icons/react";
 import type {
-  ListboxItemProps as ListboxItemSharedProps,
-  ListboxProps as ListboxRootSharedProps,
+  ListboxItemProps as BaseListboxItemProps,
+  ListboxProps as BaseListboxRootProps,
 } from "@pisagor/props";
 import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
 
@@ -42,7 +42,7 @@ export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   "onValueChange"
 > & {
   onValueChange?: (value: string | string[]) => void;
-} & ListboxRootSharedProps;
+} & BaseListboxRootProps;
 
 export interface ListboxProps
   extends Omit<ListboxRootProps, "children" | "collection"> {
@@ -52,7 +52,7 @@ export interface ListboxProps
 
 export interface ListboxItemProps
   extends ListboxPrimitiveItemProps,
-    ListboxItemSharedProps {}
+    BaseListboxItemProps {}
 
 export interface ListboxItemGroupProps extends ListboxPrimitiveItemGroupProps {
   /** The heading of the listbox item group. */

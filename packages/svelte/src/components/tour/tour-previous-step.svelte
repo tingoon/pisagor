@@ -9,7 +9,9 @@ import { useTourContext } from "./tour.context";
 type Props = { children?: Snippet; class?: string | undefined };
 let { children, class: className }: Props = $props();
 const { tour } = useTourContext();
-const prevAction = $derived(tour().step?.actions?.find((a) => a.action === "prev"));
+const prevAction = $derived(
+  tour().step?.actions?.find((a) => a.action === "prev"),
+);
 </script>
 
 {#if prevAction}

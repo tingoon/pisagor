@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Surface } from "@pisagor/vue";
-import { Rating } from "../../src/components/rating";
+import { Rating, Surface } from "@pisagor/vue";
 </script>
 
 <template>

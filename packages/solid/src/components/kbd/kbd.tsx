@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/solid/factory";
 import type {
-  KbdGroupProps as KbdGroupSharedProps,
-  KbdProps as KbdSharedProps,
+  KbdGroupProps as BaseKbdGroupProps,
+  KbdProps as BaseKbdProps,
 } from "@pisagor/props";
 import { kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -10,11 +10,11 @@ import { splitProps } from "solid-js";
 
 export interface KbdProps
   extends ComponentProps<typeof ark.kbd>,
-    KbdSharedProps {}
+    BaseKbdProps {}
 
 export interface KbdGroupProps
   extends ComponentProps<typeof ark.div>,
-    KbdGroupSharedProps {}
+    BaseKbdGroupProps {}
 
 export function Kbd(props: KbdProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "recipe", "variant"]);

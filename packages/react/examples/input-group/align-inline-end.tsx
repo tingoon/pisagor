@@ -1,5 +1,5 @@
 import { EyeIcon } from "@phosphor-icons/react";
-import { InputGroup } from "@pisagor/react/input-group";
+import { InputGroup } from "@pisagor/react";
 
 export function AlignInlineEnd() {
   return (

@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Input } from "@pisagor/svelte";
-import { Highlight } from "@pisagor/svelte/highlight";
+import { Highlight, Input } from "@pisagor/svelte";
 
 const searchResults = ["Spotlight bulb", "Spot cleaner", "Spot ceiling"];
 let query = $state("spot");

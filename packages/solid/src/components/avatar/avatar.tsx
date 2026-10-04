@@ -4,7 +4,7 @@ import {
   Avatar as AvatarPrimitive,
   type AvatarRootProps as AvatarPrimitiveRootProps,
 } from "@ark-ui/solid/avatar";
-import type { AvatarProps as AvatarRootSharedProps } from "@pisagor/props";
+import type { AvatarProps as BaseAvatarRootProps } from "@pisagor/props";
 import {
   type AvatarRecipeSlot,
   type AvatarVariantProps,
@@ -20,7 +20,7 @@ type AvatarClassNames = VariantClassNames<AvatarRecipeSlot>;
 
 type AvatarRootProps = AvatarPrimitiveRootProps &
   AvatarVariantProps &
-  AvatarRootSharedProps;
+  BaseAvatarRootProps;
 
 export interface AvatarProps extends Omit<AvatarRootProps, "children"> {
   alt?: string;

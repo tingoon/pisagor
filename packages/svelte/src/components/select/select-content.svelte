@@ -15,7 +15,10 @@ const slots = $derived(ctx?.slots ?? selectRecipe());
 
 <Portal>
   <SelectPrimitive.Positioner>
-    <SelectPrimitive.Content {...rest} class={slots.content({ class: cn(className) })}>
+    <SelectPrimitive.Content
+      {...rest}
+      class={slots.content({ class: cn(className) })}
+    >
       {@render children?.()}
     </SelectPrimitive.Content>
   </SelectPrimitive.Positioner>

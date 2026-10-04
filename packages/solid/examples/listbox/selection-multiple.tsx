@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 import { createListCollection } from "@ark-ui/solid/collection";
-import { Item } from "@pisagor/solid";
-import { Listbox } from "@pisagor/solid/listbox";
+import { Item, Listbox } from "@pisagor/solid";
 export function SelectionMultiple() {
   const collection = createListCollection({
     items: [

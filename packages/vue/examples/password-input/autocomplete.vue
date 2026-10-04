@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { PasswordInput } from "../../src/components/password-input";
+import { PasswordInput } from "@pisagor/vue";
 </script>
 
 <template>

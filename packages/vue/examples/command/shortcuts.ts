@@ -1,8 +1,9 @@
 import { useListCollection } from "@ark-ui/vue/collection";
 import { useFilter } from "@ark-ui/vue/locale";
+import { Command } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Command } from "../../src/components/command";
-import type { ArkPart } from "../../src/internal/types";
+
+type ArkPart = Parameters<typeof h>[0];
 
 export default defineComponent({
   name: "Shortcuts",

@@ -14,8 +14,8 @@ import {
   useTagsInputContext,
 } from "@ark-ui/solid/tags-input";
 import type {
-  TagsInputItemProps as TagsInputItemSharedProps,
-  TagsInputProps as TagsInputSharedProps,
+  TagsInputItemProps as BaseTagsInputItemProps,
+  TagsInputProps as BaseTagsInputProps,
 } from "@pisagor/props";
 import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
@@ -35,9 +35,7 @@ export type TagsInputRootProps = Omit<
 > &
   Pick<InputGroupProps, "size" | "variant">;
 
-export interface TagsInputProps
-  extends TagsInputRootProps,
-    TagsInputSharedProps {
+export interface TagsInputProps extends TagsInputRootProps, BaseTagsInputProps {
   clearable?: boolean;
   placeholder?: string;
   onValueChange?: (value: string[]) => void;
@@ -52,14 +50,14 @@ export interface TagsInputControlProps
 export interface TagsInputItemProps
   extends TagsInputPrimitiveItemProps,
     Pick<InputGroupProps, "size">,
-    TagsInputItemSharedProps {
+    BaseTagsInputItemProps {
   showDelete?: boolean;
 }
 
 export interface TagsInputRootProviderProps
   extends TagsInputPrimitiveRootProviderProps,
     Pick<InputGroupProps, "size">,
-    TagsInputSharedProps {
+    BaseTagsInputProps {
   clearable?: boolean;
 }
 

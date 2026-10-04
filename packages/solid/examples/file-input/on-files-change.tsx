@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { FileInput } from "@pisagor/solid/file-input";
+import { FileInput } from "@pisagor/solid";
 
 export function OnFilesChange() {
   return (

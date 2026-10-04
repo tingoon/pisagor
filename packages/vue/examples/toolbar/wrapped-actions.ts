@@ -1,6 +1,6 @@
-import { Button } from "@pisagor/vue";
+import { Button, Toolbar } from "@pisagor/vue";
 import { defineComponent, Fragment, h } from "vue";
-import { Toolbar } from "../../src/components/toolbar";
+
 export default defineComponent({
   name: "WrappedActions",
   setup() {

@@ -1,4 +1,4 @@
-import { InputGroup } from "@pisagor/react/input-group";
+import { InputGroup } from "@pisagor/react";
 export function AlignBlockEnd() {
   return (
     <div className="flex flex-col gap-2">

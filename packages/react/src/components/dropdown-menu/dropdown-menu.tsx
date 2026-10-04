@@ -18,12 +18,12 @@ import type {
 import { Menu as MenuPrimitive } from "@ark-ui/react/menu";
 import { CaretRightIcon, CheckIcon } from "@phosphor-icons/react";
 import type {
-  DropdownMenuItemProps as DropdownMenuCheckboxItemSharedProps,
-  DropdownMenuProps as DropdownMenuContentSharedProps,
-  DropdownMenuItemProps as DropdownMenuItemSharedProps,
-  DropdownMenuItemProps as DropdownMenuRadioItemSharedProps,
-  DropdownMenuProps as DropdownMenuSubContentSharedProps,
-  DropdownMenuItemProps as DropdownMenuTriggerItemSharedProps,
+  DropdownMenuItemProps as BaseDropdownMenuCheckboxItemProps,
+  DropdownMenuProps as BaseDropdownMenuContentProps,
+  DropdownMenuItemProps as BaseDropdownMenuItemProps,
+  DropdownMenuItemProps as BaseDropdownMenuRadioItemProps,
+  DropdownMenuProps as BaseDropdownMenuSubContentProps,
+  DropdownMenuItemProps as BaseDropdownMenuTriggerItemProps,
 } from "@pisagor/props";
 import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
@@ -37,7 +37,7 @@ export interface DropdownMenuItemGroupProps extends MenuItemGroupProps {
 
 export interface DropdownMenuItemProps
   extends MenuItemProps,
-    DropdownMenuItemSharedProps {}
+    BaseDropdownMenuItemProps {}
 
 export interface DropdownMenuRadioItemGroupProps
   extends MenuRadioItemGroupProps {
@@ -53,17 +53,17 @@ export type DropdownMenuPositionerProps = MenuPositionerProps;
 
 export interface DropdownMenuCheckboxItemProps
   extends MenuCheckboxItemProps,
-    DropdownMenuCheckboxItemSharedProps {}
+    BaseDropdownMenuCheckboxItemProps {}
 
 export type DropdownMenuItemGroupLabelProps = MenuItemGroupLabelProps;
 
 export interface DropdownMenuRadioItemProps
   extends MenuRadioItemProps,
-    DropdownMenuRadioItemSharedProps {}
+    BaseDropdownMenuRadioItemProps {}
 
 export interface DropdownMenuSubContentProps
   extends MenuContentProps,
-    DropdownMenuSubContentSharedProps {}
+    BaseDropdownMenuSubContentProps {}
 
 export type DropdownMenuArrowProps = MenuArrowProps;
 
@@ -71,11 +71,11 @@ export type DropdownMenuSeparatorProps = MenuSeparatorProps;
 
 export interface DropdownMenuTriggerItemProps
   extends MenuTriggerItemProps,
-    DropdownMenuTriggerItemSharedProps {}
+    BaseDropdownMenuTriggerItemProps {}
 
 export interface DropdownMenuContentProps
   extends MenuContentProps,
-    DropdownMenuContentSharedProps {}
+    BaseDropdownMenuContentProps {}
 
 export type DropdownMenuShortcutProps = ComponentProps<typeof ark.span>;
 // #endregion

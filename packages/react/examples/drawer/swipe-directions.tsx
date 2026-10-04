@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react";
-import { Drawer } from "@pisagor/react/drawer";
+import { Button, Drawer } from "@pisagor/react";
 export function SwipeDirections() {
   return (
     <div className="flex flex-wrap justify-center gap-2">

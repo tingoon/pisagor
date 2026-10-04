@@ -28,7 +28,9 @@ const surfaceVariant = useFormControlSurface();
 >
   <Separator class={slots.inline()} />
   {#if children}
-    <span class={formControlSeparatorRecipe({ surfaceVariant, variant: "primary" })}>
+    <span
+      class={formControlSeparatorRecipe({ surfaceVariant, variant: "primary" })}
+    >
       {@render children()}
     </span>
   {/if}

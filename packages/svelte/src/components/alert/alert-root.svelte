@@ -1,18 +1,23 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { AlertProps as AlertSharedProps } from "@pisagor/props";
+import type { AlertProps as BaseAlertProps } from "@pisagor/props";
 import { alertRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setAlertContext } from "./alert.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title"> &
-  {
-    children?: import("svelte").Snippet;
-    class?: string | undefined;
-  } & AlertSharedProps;
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title"> & {
+  children?: import("svelte").Snippet;
+  class?: string | undefined;
+} & BaseAlertProps;
 
-let { variant, children, recipe = alertRecipe, class: className, ...rest }: Props = $props();
+let {
+  variant,
+  children,
+  recipe = alertRecipe,
+  class: className,
+  ...rest
+}: Props = $props();
 
 const slots = $derived(recipe({ variant }));
 

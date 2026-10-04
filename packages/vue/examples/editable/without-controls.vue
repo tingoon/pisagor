@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Card, Field, Input } from "@pisagor/vue";
-import { Editable } from "../../src/components/editable";
+import { Card, Editable, Field, Input } from "@pisagor/vue";
 </script>
 
 <template>

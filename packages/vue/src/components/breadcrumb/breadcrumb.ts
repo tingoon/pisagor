@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
-import type { BreadcrumbItemProps as BreadcrumbItemSharedProps } from "@pisagor/props";
+import type { BreadcrumbItemProps as BaseBreadcrumbItemProps } from "@pisagor/props";
 import {
   type BreadcrumbItemRecipe,
   type BreadcrumbRecipe,
@@ -38,7 +38,7 @@ interface BreadcrumbItemContextValue {
   slots: BreadcrumbItemRecipe;
 }
 
-export interface BreadcrumbItemProps extends BreadcrumbItemSharedProps {
+export interface BreadcrumbItemProps extends BaseBreadcrumbItemProps {
   /**
    * Style recipe. Defaults to `breadcrumbRecipe` from `@pisagor/recipes/breadcrumb`.
    *

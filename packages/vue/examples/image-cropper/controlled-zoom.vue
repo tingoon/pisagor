@@ -3,9 +3,8 @@ import {
   PhMagnifyingGlassMinus,
   PhMagnifyingGlassPlus,
 } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
+import { Button, ImageCropper } from "@pisagor/vue";
 import { ref } from "vue";
-import { ImageCropper } from "../../src/components/image-cropper";
 
 const zoom = ref(1);
 function onZoomChange(details: { zoom: number }) {

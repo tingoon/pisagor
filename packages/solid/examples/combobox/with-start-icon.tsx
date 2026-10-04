@@ -1,8 +1,7 @@
 /** @jsxImportSource solid-js */
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
-import { InputGroup } from "@pisagor/solid";
-import { Combobox } from "@pisagor/solid/combobox";
+import { Combobox, InputGroup } from "@pisagor/solid";
 import { AppleLogoIcon } from "@pisagor/solid/icons";
 export function WithStartIcon() {
   const initialItems = [

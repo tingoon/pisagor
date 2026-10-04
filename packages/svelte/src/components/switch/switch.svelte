@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { SwitchRootProps } from "@ark-ui/svelte/switch";
 import { Switch as SwitchPrimitive } from "@ark-ui/svelte/switch";
-import type { SwitchProps as SwitchSharedProps } from "@pisagor/props";
+import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -9,14 +9,13 @@ import { setSwitchContext } from "./switch.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<SwitchRootProps, "class" | "children"> &
-  {
+type Props = Omit<SwitchRootProps, "class" | "children"> & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   onValueChange?: (value: boolean) => void;
   class?: string | undefined;
   classNames?: Partial<Record<SwitchRecipeSlot, string>>;
-  } & SwitchSharedProps;
+} & BaseSwitchProps;
 
 let {
   variant: variantProp,
@@ -52,8 +51,12 @@ function handleCheckedChange(
   data-variant={variant}
   onCheckedChange={onCheckedChange || onValueChange ? handleCheckedChange : undefined}
 >
-  <SwitchPrimitive.Control class={slots.control({ class: cn(classNames?.control) })}>
-    <SwitchPrimitive.Thumb class={slots.thumb({ class: cn(classNames?.thumb) })} />
+  <SwitchPrimitive.Control
+    class={slots.control({ class: cn(classNames?.control) })}
+  >
+    <SwitchPrimitive.Thumb
+      class={slots.thumb({ class: cn(classNames?.thumb) })}
+    />
   </SwitchPrimitive.Control>
   <SwitchPrimitive.HiddenInput />
 </SwitchPrimitive.Root>

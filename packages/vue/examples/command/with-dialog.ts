@@ -1,10 +1,11 @@
 import { useListCollection } from "@ark-ui/vue/collection";
 import { useFilter } from "@ark-ui/vue/locale";
 import { PhArrowBendDownLeft } from "@phosphor-icons/vue";
-import { Button, Kbd } from "@pisagor/vue";
+import { Button, Command, Kbd } from "@pisagor/vue";
 import { defineComponent, h, ref } from "vue";
-import { Command } from "../../src/components/command";
-import type { ArkPart } from "../../src/internal/types";
+
+type ArkPart = Parameters<typeof h>[0];
+
 export default defineComponent({
   name: "WithDialog",
   setup() {

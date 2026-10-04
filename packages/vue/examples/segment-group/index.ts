@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import compoundRaw from "./compound.vue?raw";
 import controlledRaw from "./controlled.vue?raw";
 import custom_indicatorRaw from "./custom-indicator.vue?raw";
@@ -10,19 +9,19 @@ import orientation_horizontalRaw from "./orientation-horizontal.vue?raw";
 import orientation_verticalRaw from "./orientation-vertical.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 
-export const imports = `import { SegmentGroup } from "@pisagor/vue/segment-group";`;
+export const imports = `import { SegmentGroup } from "@pisagor/vue";`;
 
 export const sources = {
-  Compound: stripVueExample(compoundRaw),
-  Controlled: stripVueExample(controlledRaw),
-  CustomIndicator: stripVueExample(custom_indicatorRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  DisabledItem: stripVueExample(disabled_itemRaw),
-  IndicatorOnHover: stripVueExample(indicator_on_hoverRaw),
-  OrientationHorizontal: stripVueExample(orientation_horizontalRaw),
-  OrientationVertical: stripVueExample(orientation_verticalRaw),
-  Variants: stripVueExample(variantsRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  CustomIndicator: custom_indicatorRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  DisabledItem: disabled_itemRaw,
+  IndicatorOnHover: indicator_on_hoverRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  Variants: variantsRaw,
 } as const;
 
 export { default as Compound } from "./compound.vue";

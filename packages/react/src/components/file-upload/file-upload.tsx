@@ -16,8 +16,8 @@ import {
 } from "@ark-ui/react/file-upload";
 import { UploadIcon, XIcon } from "@phosphor-icons/react";
 import type {
-  FileUploadItemProps as FileUploadItemSharedProps,
-  FileUploadProps as FileUploadRootSharedProps,
+  FileUploadItemProps as BaseFileUploadItemProps,
+  FileUploadProps as BaseFileUploadRootProps,
 } from "@pisagor/props";
 import {
   fileUploadItemRecipe,
@@ -41,13 +41,13 @@ type FormControlVariant = "primary" | "secondary";
 
 export interface FileUploadItemRootProps
   extends FileUploadItemProps,
-    FileUploadItemSharedProps {}
+    BaseFileUploadItemProps {}
 
 export type FileUploadListProps = Omit<FileUploadItemRootProps, "file">;
 
 export interface FileUploadRootProps
   extends FileUploadPrimitiveRootProps,
-    FileUploadRootSharedProps {
+    BaseFileUploadRootProps {
   onValueChange?: (value: File[]) => void;
 }
 

@@ -9,4 +9,9 @@ let { class: className, classNames, ...rest }: Props = $props();
 const ctx = useSidebar();
 </script>
 
-<Input {...rest} class={ctx.slots.input({ class: className })} {classNames} data-sidebar="input" />
+<Input
+  {...rest}
+  class={ctx.slots.input({ class: className })}
+  {classNames}
+  data-sidebar="input"
+/>

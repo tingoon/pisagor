@@ -1,5 +1,5 @@
 import { createListCollection } from "@ark-ui/react";
-import { Listbox } from "@pisagor/react/listbox";
+import { Listbox } from "@pisagor/react";
 import { useState } from "react";
 export function ImageExplorer() {
   const collection = createListCollection({

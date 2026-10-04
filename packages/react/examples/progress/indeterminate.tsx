@@ -1,5 +1,4 @@
-import { Field } from "@pisagor/react";
-import { Progress } from "@pisagor/react/progress";
+import { Field, Progress } from "@pisagor/react";
 export function Indeterminate() {
   return (
     <Field>

@@ -1,9 +1,8 @@
 <script lang="ts">
-import { Field } from "@pisagor/svelte";
-import { DatePicker } from "@pisagor/svelte/date-picker";
+import { DatePicker, Field } from "@pisagor/svelte";
 </script>
 
 <Field>
-      <Field.Label>Time</Field.Label>
-      <DatePicker.Timer />
-    </Field>
+  <Field.Label>Time</Field.Label>
+  <DatePicker.Timer />
+</Field>

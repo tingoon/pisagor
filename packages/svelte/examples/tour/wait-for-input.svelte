@@ -1,14 +1,21 @@
 <script lang="ts">
 import { waitForEvent } from "@ark-ui/svelte/tour";
-import { Button, Checkbox, Field, Input } from "@pisagor/svelte";
-import { Tour, type TourStepDetails } from "@pisagor/svelte/tour";
+import {
+  Button,
+  Checkbox,
+  Field,
+  Input,
+  Tour,
+  type TourStepDetails,
+} from "@pisagor/svelte";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const steps: TourStepDetails[] = [
   {
     actions: [{ action: "next", label: "Start" }],
-    description: "Learn how to fill out the form by following the guided steps.",
+    description:
+      "Learn how to fill out the form by following the guided steps.",
     id: "intro",
     title: "Form tutorial",
     type: "dialog",
@@ -17,9 +24,13 @@ const steps: TourStepDetails[] = [
     description: "Type your name in the input field to continue.",
     effect({ next, target, show }) {
       show();
-      const [promise, cancel] = waitForEvent<HTMLInputElement>(target, "input", {
-        predicate: (el) => el.value.trim().length >= 2,
-      });
+      const [promise, cancel] = waitForEvent<HTMLInputElement>(
+        target,
+        "input",
+        {
+          predicate: (el) => el.value.trim().length >= 2,
+        },
+      );
       promise.then(() => next());
       return cancel;
     },
@@ -32,9 +43,13 @@ const steps: TourStepDetails[] = [
     description: "Now enter a valid email address.",
     effect({ next, target, show }) {
       show();
-      const [promise, cancel] = waitForEvent<HTMLInputElement>(target, "input", {
-        predicate: (el) => emailRegex.test(el.value),
-      });
+      const [promise, cancel] = waitForEvent<HTMLInputElement>(
+        target,
+        "input",
+        {
+          predicate: (el) => emailRegex.test(el.value),
+        },
+      );
       promise.then(() => next());
       return cancel;
     },
@@ -47,9 +62,13 @@ const steps: TourStepDetails[] = [
     description: "Check the checkbox to accept the terms.",
     effect({ next, target, show }) {
       show();
-      const [promise, cancel] = waitForEvent<HTMLInputElement>(target, "change", {
-        predicate: (el) => el.checked,
-      });
+      const [promise, cancel] = waitForEvent<HTMLInputElement>(
+        target,
+        "change",
+        {
+          predicate: (el) => el.checked,
+        },
+      );
       promise.then(() => next());
       return cancel;
     },
@@ -71,11 +90,15 @@ const steps: TourStepDetails[] = [
 <div class="flex flex-col gap-2">
   <Tour {steps}>
     <Tour.Trigger>
-      {#snippet asChild(props)}
+      {#snippet asChild(
+  props,
+)}
         <Button {...props()} variant="outline">Start form tutorial</Button>
       {/snippet}
     </Tour.Trigger>
-    <div class="flex flex-col gap-2 rounded-lg border border-border bg-muted/50 p-4">
+    <div
+      class="flex flex-col gap-2 rounded-lg border border-border bg-muted/50 p-4"
+    >
       <Field>
         <Field.Label for="input-name">Name</Field.Label>
         <Input id="input-name" placeholder="Enter your name" type="text" />
@@ -86,7 +109,9 @@ const steps: TourStepDetails[] = [
       </Field>
       <Field orientation="horizontal">
         <Checkbox id="checkbox-terms" />
-        <Field.Label for="checkbox-terms">I accept the terms and conditions</Field.Label>
+        <Field.Label for="checkbox-terms"
+          >I accept the terms and conditions</Field.Label
+        >
       </Field>
     </div>
     <Tour.Content>

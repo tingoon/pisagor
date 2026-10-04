@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import compoundRaw from "./compound.vue?raw";
 import controlledRaw from "./controlled.vue?raw";
 import defaultRaw from "./default.vue?raw";
@@ -17,26 +16,26 @@ import with_filterRaw from "./with-filter.vue?raw";
 import with_iconRaw from "./with-icon.vue?raw";
 import with_popoverRaw from "./with-popover.ts?raw";
 
-export const imports = `import { Listbox } from "@pisagor/vue/listbox";`;
+export const imports = `import { Listbox } from "@pisagor/vue";`;
 
 export const sources = {
-  Compound: stripVueExample(compoundRaw),
-  Controlled: stripVueExample(controlledRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  DisabledItem: stripVueExample(disabled_itemRaw),
-  Grid: stripVueExample(gridRaw),
-  Grouping: stripVueExample(groupingRaw),
-  Horizontal: stripVueExample(horizontalRaw),
-  ImageExplorer: stripVueExample(image_explorerRaw),
-  SelectionExtended: stripVueExample(selection_extendedRaw),
-  SelectionMultiple: stripVueExample(selection_multipleRaw),
-  SelectionNone: stripVueExample(selection_noneRaw),
-  TransferList: stripVueExample(transfer_listRaw),
-  WithDescription: stripVueExample(with_descriptionRaw),
-  WithFilter: stripVueExample(with_filterRaw),
-  WithIcon: stripVueExample(with_iconRaw),
-  WithPopover: stripVueExample(with_popoverRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  DisabledItem: disabled_itemRaw,
+  Grid: gridRaw,
+  Grouping: groupingRaw,
+  Horizontal: horizontalRaw,
+  ImageExplorer: image_explorerRaw,
+  SelectionExtended: selection_extendedRaw,
+  SelectionMultiple: selection_multipleRaw,
+  SelectionNone: selection_noneRaw,
+  TransferList: transfer_listRaw,
+  WithDescription: with_descriptionRaw,
+  WithFilter: with_filterRaw,
+  WithIcon: with_iconRaw,
+  WithPopover: with_popoverRaw,
 } as const;
 
 export { default as Compound } from "./compound.vue";

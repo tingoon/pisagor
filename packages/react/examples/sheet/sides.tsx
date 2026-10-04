@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react";
-import { Sheet } from "@pisagor/react/sheet";
+import { Button, Sheet } from "@pisagor/react";
 export function Sides() {
   return (
     <div className="flex flex-wrap justify-center gap-2">

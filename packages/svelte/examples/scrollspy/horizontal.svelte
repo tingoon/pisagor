@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button, ScrollArea } from "@pisagor/svelte";
-import { Scrollspy } from "@pisagor/svelte/scrollspy";
+import { Button, ScrollArea, Scrollspy } from "@pisagor/svelte";
 import { horizontalSections } from "./helpers";
 
 let parentEl = $state<HTMLDivElement | null>(null);
@@ -8,11 +7,7 @@ let parentEl = $state<HTMLDivElement | null>(null);
 
 <div class="w-full space-y-5">
   <div class="flex w-full gap-2">
-    <Scrollspy
-      class="flex gap-2.5"
-      offset={50}
-      targetRef={() => parentEl}
-    >
+    <Scrollspy class="flex gap-2.5" offset={50} targetRef={() => parentEl}>
       {#each horizontalSections as item}
         <Button
           class="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"

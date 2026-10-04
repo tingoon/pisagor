@@ -1,13 +1,13 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { ButtonProps as ButtonSharedProps } from "@pisagor/props";
+import type { ButtonProps as BaseButtonProps } from "@pisagor/props";
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLButtonAttributes } from "svelte/elements";
 import Spinner from "../spinner/spinner.svelte";
 
 type Props = Omit<HTMLButtonAttributes, "class" | "disabled" | "type"> &
-  ButtonSharedProps & {
+  BaseButtonProps & {
     children?: import("svelte").Snippet;
     class?: string | undefined;
     disabled?: boolean | null;
@@ -45,7 +45,9 @@ const slots = $derived(recipe({ clickEffect, loading, pill, size, variant }));
   type={type ?? "button"}
 >
   {#if loading}
-    <span aria-hidden="true" class={slots.hidden()}> {@render children?.()} </span>
+    <span aria-hidden="true" class={slots.hidden()}>
+      {@render children?.()}
+    </span>
     <span class={slots.srOnly()}> {@render children?.()} </span>
     <span class={slots.spinner()}>
       <Spinner aria-hidden="true" />

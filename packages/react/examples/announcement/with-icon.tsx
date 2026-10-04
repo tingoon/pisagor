@@ -1,6 +1,5 @@
 import { SparkleIcon } from "@phosphor-icons/react";
-import { Badge } from "@pisagor/react";
-import { Announcement } from "@pisagor/react/announcement";
+import { Announcement, Badge } from "@pisagor/react";
 export function WithIcon() {
   return (
     <Announcement

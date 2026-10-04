@@ -1,6 +1,5 @@
 ---
-import InputGroup from "../../src/components/input-group/input-group.astro";
-import InputGroupAddon from "../../src/components/input-group/input-group-addon.astro";
+import { InputGroup } from "@pisagor/astro";
 ---
 
 <InputGroup>
@@ -9,5 +8,5 @@ import InputGroupAddon from "../../src/components/input-group/input-group-addon.
     placeholder="Search..."
     type="search"
   >
-  <InputGroupAddon>⌕</InputGroupAddon>
+  <InputGroup.Addon>⌕</InputGroup.Addon>
 </InputGroup>

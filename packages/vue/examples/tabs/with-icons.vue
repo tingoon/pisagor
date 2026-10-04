@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { PhGear, PhShield, PhUser } from "@phosphor-icons/vue";
+import { Tabs } from "@pisagor/vue";
 import { h } from "vue";
-import { Tabs } from "../../src/components/tabs";
 
 const items = [
   {

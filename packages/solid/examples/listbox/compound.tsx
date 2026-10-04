@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 import { createListCollection } from "@ark-ui/solid/collection";
-import { Listbox } from "@pisagor/solid/listbox";
+import { Listbox } from "@pisagor/solid";
 export function Compound() {
   const collection = createListCollection({
     items: [

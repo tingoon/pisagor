@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { ContextMenu } from "@pisagor/solid/context-menu";
+import { ContextMenu } from "@pisagor/solid";
 
 export function Default() {
   return (

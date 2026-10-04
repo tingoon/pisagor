@@ -22,7 +22,12 @@ const slots = $derived(ctx?.slots ?? selectRecipe());
   select,
 )}
     {#if select().empty}
-      <Ark as="div" {...rest} class={slots.empty({ class: cn(className) })} role="presentation">
+      <Ark
+        as="div"
+        {...rest}
+        class={slots.empty({ class: cn(className) })}
+        role="presentation"
+      >
         {@render children?.()}
       </Ark>
     {/if}

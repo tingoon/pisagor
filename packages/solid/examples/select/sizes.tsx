@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 import { createListCollection } from "@ark-ui/solid/collection";
-import { Select } from "@pisagor/solid/select";
+import { Select } from "@pisagor/solid";
 
 export function Sizes() {
   const collection = createListCollection({

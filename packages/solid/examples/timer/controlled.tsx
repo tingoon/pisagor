@@ -1,8 +1,7 @@
 /** @jsxImportSource solid-js */
 
-import { Button, Card } from "@pisagor/solid";
+import { Button, Card, Timer } from "@pisagor/solid";
 import { ArrowCounterClockwiseIcon, PlayIcon } from "@pisagor/solid/icons";
-import { Timer } from "@pisagor/solid/timer";
 import { createSignal } from "solid-js";
 export function Controlled() {
   const [ticks, setTicks] = createSignal(0);

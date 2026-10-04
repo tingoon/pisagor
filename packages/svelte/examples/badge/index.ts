@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import custom_colorRaw from "./custom-color.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
 import pillRaw from "./pill.svelte?raw";
@@ -7,16 +6,16 @@ import variantsRaw from "./variants.svelte?raw";
 import with_linkRaw from "./with-link.svelte?raw";
 import with_spinnerRaw from "./with-spinner.svelte?raw";
 
-export const imports = `import { Badge } from "@pisagor/svelte/badge";`;
+export const imports = `import { Badge } from "@pisagor/svelte";`;
 
 export const sources = {
-  CustomColor: stripSvelteExample(custom_colorRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Pill: stripSvelteExample(pillRaw),
-  Sizes: stripSvelteExample(sizesRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  WithLink: stripSvelteExample(with_linkRaw),
-  WithSpinner: stripSvelteExample(with_spinnerRaw),
+  CustomColor: custom_colorRaw,
+  Default: defaultRaw,
+  Pill: pillRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithLink: with_linkRaw,
+  WithSpinner: with_spinnerRaw,
 } as const;
 
 export { default as CustomColor } from "./custom-color.svelte";

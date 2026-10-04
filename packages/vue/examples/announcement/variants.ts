@@ -1,7 +1,7 @@
 import { PhArrowUpRight, PhCheckCircle, PhWarning } from "@phosphor-icons/vue";
-import { Badge } from "@pisagor/vue";
+import { Announcement, Badge } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Announcement } from "../../src/components/announcement";
+
 export default defineComponent({
   name: "Variants",
   setup() {

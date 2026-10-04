@@ -4,7 +4,9 @@ import { AngleSlider as AngleSliderPrimitive } from "@ark-ui/svelte/angle-slider
 import { cn } from "@pisagor/utils";
 import { useCircularSlider } from "./circular-slider.context";
 
-type Props = Omit<AngleSliderThumbProps, "class"> & { class?: string | undefined };
+type Props = Omit<AngleSliderThumbProps, "class"> & {
+  class?: string | undefined;
+};
 let { class: className, ...rest }: Props = $props();
 const { thumbSize, ringRadius, slots } = useCircularSlider();
 const halfThumb = $derived(thumbSize / 2);

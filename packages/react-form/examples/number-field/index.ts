@@ -1,13 +1,12 @@
-import { stripTsxExample } from "@pisagor/utils";
 import disabledRaw from "./disabled.tsx?raw";
 import invalidRaw from "./invalid.tsx?raw";
 
 export const imports = `import { NumberField } from "@pisagor/react-form";`;
 
 export const sources = {
-  Disabled: stripTsxExample(disabledRaw),
-  Invalid: stripTsxExample(invalidRaw),
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
 } as const;
 
-export { Disabled } from "./disabled";
-export { Invalid } from "./invalid";
+export * from "./disabled";
+export * from "./invalid";

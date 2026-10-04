@@ -1,6 +1,5 @@
 <script lang="ts">
-import { AlertDialog } from "@pisagor/svelte/alert-dialog";
-import { Button } from "@pisagor/svelte/button";
+import { AlertDialog, Button } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap gap-2">
@@ -28,7 +27,9 @@ import { Button } from "@pisagor/svelte/button";
     {#snippet actions()}
       <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
       <AlertDialog.CloseTrigger>
-        <AlertDialog.Action variant="destructive">Delete project</AlertDialog.Action>
+        <AlertDialog.Action variant="destructive"
+          >Delete project</AlertDialog.Action
+        >
       </AlertDialog.CloseTrigger>
     {/snippet}
   </AlertDialog>

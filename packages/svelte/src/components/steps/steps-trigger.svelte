@@ -10,6 +10,9 @@ let { class: className, children, ...rest }: Props = $props();
 const { slots } = useStepsItem();
 </script>
 
-<StepsPrimitive.Trigger {...rest} class={slots.trigger({ class: cn(className) })}>
+<StepsPrimitive.Trigger
+  {...rest}
+  class={slots.trigger({ class: cn(className) })}
+>
   {@render children?.()}
 </StepsPrimitive.Trigger>

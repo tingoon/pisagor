@@ -4,7 +4,11 @@ import { Combobox as ComboboxPrimitive } from "@ark-ui/svelte/combobox";
 
 type Props = ComboboxClearTriggerProps;
 
-let { "aria-label": ariaLabel = "Clear selected value(s)", children, ...rest }: Props = $props();
+let {
+  "aria-label": ariaLabel = "Clear selected value(s)",
+  children,
+  ...rest
+}: Props = $props();
 </script>
 
 <ComboboxPrimitive.ClearTrigger {...rest} aria-label={ariaLabel}>

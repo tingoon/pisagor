@@ -1,11 +1,11 @@
 import { ark } from "@ark-ui/vue/factory";
-import type { StatusProps as StatusSharedProps } from "@pisagor/props";
+import type { StatusProps as BaseStatusProps } from "@pisagor/props";
 import { statusRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
-export interface StatusProps extends StatusSharedProps {
+export interface StatusProps extends BaseStatusProps {
   class?: unknown;
 }
 // #endregion

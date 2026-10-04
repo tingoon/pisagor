@@ -1,4 +1,4 @@
-import { Button } from "@pisagor/react/button";
+import { Button } from "@pisagor/react";
 
 export function NoClickEffect() {
   return <Button clickEffect={false}>Button</Button>;

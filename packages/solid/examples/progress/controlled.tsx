@@ -1,8 +1,7 @@
 /** @jsxImportSource solid-js */
 
-import { Button, ButtonGroup, Field } from "@pisagor/solid";
+import { Button, ButtonGroup, Field, Progress } from "@pisagor/solid";
 import { MinusIcon, PlusIcon } from "@pisagor/solid/icons";
-import { Progress } from "@pisagor/solid/progress";
 import { createSignal } from "solid-js";
 export function Controlled() {
   const [value, setValue] = createSignal(50);

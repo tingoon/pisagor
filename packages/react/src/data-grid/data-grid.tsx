@@ -1,4 +1,4 @@
-import type { DataGridProps as DataGridSharedProps } from "@pisagor/props";
+import type { DataGridProps as BaseDataGridProps } from "@pisagor/props";
 import { dataGridRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { RowData, TableOptions } from "@tanstack/react-table";
@@ -55,7 +55,7 @@ export type DataGridProps<TData extends RowData> = {
    */
   features?: DataGridFeatures;
 } & Omit<TableOptions<DataGridFeatures, TData>, "features"> &
-  DataGridSharedProps;
+  BaseDataGridProps;
 
 interface DataGridHeaderProps {
   children: ReactNode;

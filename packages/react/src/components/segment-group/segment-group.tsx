@@ -5,7 +5,7 @@ import type {
   SegmentGroupRootProps as SegmentGroupPrimitiveRootProps,
 } from "@ark-ui/react/segment-group";
 import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/react/segment-group";
-import type { SegmentGroupProps as SegmentGroupRootSharedProps } from "@pisagor/props";
+import type { SegmentGroupProps as BaseSegmentGroupRootProps } from "@pisagor/props";
 import { segmentGroupRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { SegmentGroupContext, useSegmentGroup } from "./segment-group.context";
@@ -21,7 +21,7 @@ interface SegmentGroupPresetItem {
 
 export interface SegmentGroupRootProps
   extends Omit<SegmentGroupPrimitiveRootProps, "onValueChange">,
-    SegmentGroupRootSharedProps {
+    BaseSegmentGroupRootProps {
   /**
    * The visual variant of the segment group.
    *

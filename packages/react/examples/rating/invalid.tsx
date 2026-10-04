@@ -1,5 +1,4 @@
-import { Field } from "@pisagor/react";
-import { Rating } from "@pisagor/react/rating";
+import { Field, Rating } from "@pisagor/react";
 
 export function Invalid() {
   return (

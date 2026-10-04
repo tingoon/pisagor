@@ -1,4 +1,4 @@
-import { Card } from "@pisagor/react/card";
+import { Card } from "@pisagor/react";
 
 export function Product() {
   return (

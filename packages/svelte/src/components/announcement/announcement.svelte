@@ -1,17 +1,19 @@
 <script lang="ts">
-import type { AnnouncementProps as AnnouncementSharedProps } from "@pisagor/props";
+import type { AnnouncementProps as BaseAnnouncementProps } from "@pisagor/props";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import AnnouncementRoot from "./announcement-root.svelte";
 import AnnouncementTitle from "./announcement-title.svelte";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title" | "children" | "role"> &
-  {
+type Props = Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "class" | "title" | "children" | "role"
+> & {
   badge?: Snippet;
   class?: string | undefined;
   role?: "status" | "alert";
   title?: string | Snippet;
-  } & AnnouncementSharedProps;
+} & BaseAnnouncementProps;
 
 let { badge, title, class: className, recipe, role, ...rest }: Props = $props();
 </script>

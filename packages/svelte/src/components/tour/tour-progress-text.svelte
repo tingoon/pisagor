@@ -12,6 +12,9 @@ let { class: className, children, ...rest }: Props = $props();
 const { slots } = useTourContext();
 </script>
 
-<TourPrimitive.ProgressText {...rest} class={slots.progressText({ class: cn(className) })}>
+<TourPrimitive.ProgressText
+  {...rest}
+  class={slots.progressText({ class: cn(className) })}
+>
   {@render children?.()}
 </TourPrimitive.ProgressText>

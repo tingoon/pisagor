@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
 import disabledRaw from "./disabled.svelte?raw";
@@ -7,16 +6,16 @@ import sizesRaw from "./sizes.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_iconRaw from "./with-icon.svelte?raw";
 
-export const imports = `import { Toggle } from "@pisagor/svelte/toggle";`;
+export const imports = `import { Toggle } from "@pisagor/svelte";`;
 
 export const sources = {
-  Controlled: stripSvelteExample(controlledRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  IconGroup: stripSvelteExample(icon_groupRaw),
-  Sizes: stripSvelteExample(sizesRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  WithIcon: stripSvelteExample(with_iconRaw),
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  IconGroup: icon_groupRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithIcon: with_iconRaw,
 } as const;
 
 export { default as Controlled } from "./controlled.svelte";

@@ -1,6 +1,5 @@
 import { Portal } from "@ark-ui/react/portal";
-import { Button, Field, Input, Select } from "@pisagor/react";
-import { Dialog } from "@pisagor/react/dialog";
+import { Button, Dialog, Field, Input, Select } from "@pisagor/react";
 export function CustomSpacing() {
   return (
     <Dialog.Root>

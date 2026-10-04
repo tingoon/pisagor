@@ -1,4 +1,4 @@
-import { Pagination } from "@pisagor/react/pagination";
+import { Pagination } from "@pisagor/react";
 
 export function CustomComposition() {
   return (

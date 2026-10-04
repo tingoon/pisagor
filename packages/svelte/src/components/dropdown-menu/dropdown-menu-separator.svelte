@@ -12,4 +12,7 @@ const context = useDropdownMenu();
 const slots = $derived(context?.slots ?? dropdownMenuRecipe());
 </script>
 
-<MenuPrimitive.Separator {...rest} class={slots.separator({ class: cn(className) })} />
+<MenuPrimitive.Separator
+  {...rest}
+  class={slots.separator({ class: cn(className) })}
+/>

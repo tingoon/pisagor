@@ -1,6 +1,6 @@
 import { PhSparkle } from "@phosphor-icons/vue";
+import { Clipboard } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Clipboard } from "../../src/components/clipboard";
 
 export default defineComponent({
   name: "DifferentIcon",

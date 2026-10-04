@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Steps } from "@pisagor/solid/steps";
+import { Steps } from "@pisagor/solid";
 
 export function Title() {
   const items = ["Info", "Docs", "Team"];

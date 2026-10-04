@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Button } from "@pisagor/vue";
-import { Toolbar } from "../../src/components/toolbar";
+import { Button, Toolbar } from "@pisagor/vue";
 </script>
 
 <template>

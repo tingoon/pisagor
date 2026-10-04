@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Surface } from "@pisagor/vue";
-import { InputOTP } from "../../src/components/input-otp";
+import { InputOTP, Surface } from "@pisagor/vue";
 </script>
 
 <template>

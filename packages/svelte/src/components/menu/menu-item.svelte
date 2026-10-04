@@ -1,18 +1,17 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { MenuItemProps as MenuItemSharedProps } from "@pisagor/props";
+import type { MenuItemProps as BaseMenuItemProps } from "@pisagor/props";
 import { menuItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLButtonAttributes } from "svelte/elements";
 import { useMenu } from "./menu.context";
 
-type Props = Omit<HTMLButtonAttributes, "class" | "type"> &
-  {
-    children?: Snippet;
-    class?: string | undefined;
-    type?: "button" | "reset" | "submit";
-  } & MenuItemSharedProps;
+type Props = Omit<HTMLButtonAttributes, "class" | "type"> & {
+  children?: Snippet;
+  class?: string | undefined;
+  type?: "button" | "reset" | "submit";
+} & BaseMenuItemProps;
 
 let {
   variant = "default",
@@ -26,7 +25,13 @@ let {
 const { slots } = useMenu();
 </script>
 
-<Ark as="li" class={slots.wrapper()} data-part="item-wrapper" data-scope="menu" role="none">
+<Ark
+  as="li"
+  class={slots.wrapper()}
+  data-part="item-wrapper"
+  data-scope="menu"
+  role="none"
+>
   <Ark
     as="button"
     {...rest}

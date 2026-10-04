@@ -1,16 +1,15 @@
-import { stripAstroExample } from "@pisagor/utils";
 import defaultRaw from "./default.astro?raw";
 import iconRaw from "./icon.astro?raw";
 import productRaw from "./product.astro?raw";
 
 export const imports = `---
-import { Card } from "@pisagor/astro/card";
+import { Card } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  Default: stripAstroExample(defaultRaw),
-  Icon: stripAstroExample(iconRaw),
-  Product: stripAstroExample(productRaw),
+  Default: defaultRaw,
+  Icon: iconRaw,
+  Product: productRaw,
 } as const;
 
 export { default as Default } from "./default.astro";

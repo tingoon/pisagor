@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Sheet } from "@pisagor/svelte/sheet";
+import { Sheet } from "@pisagor/svelte";
 </script>
 
 <Sheet>

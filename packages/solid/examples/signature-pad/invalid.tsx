@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { SignaturePad } from "@pisagor/solid/signature-pad";
+import { SignaturePad } from "@pisagor/solid";
 
 export function Invalid() {
   return <SignaturePad invalid />;

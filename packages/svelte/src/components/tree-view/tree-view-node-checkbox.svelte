@@ -8,7 +8,9 @@ import MinusIcon from "phosphor-svelte/lib/MinusIcon";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { useTreeViewItem } from "./tree-view.context";
 
-type Props = Omit<TreeViewNodeCheckboxProps, "class"> & { class?: string | undefined };
+type Props = Omit<TreeViewNodeCheckboxProps, "class"> & {
+  class?: string | undefined;
+};
 let { class: className, ...rest }: Props = $props();
 const item = useTreeViewItem();
 const slots = $derived(item?.slots ?? treeViewItemRecipe());

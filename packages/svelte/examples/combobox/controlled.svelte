@@ -1,7 +1,7 @@
 <script lang="ts">
 import { useListCollection } from "@ark-ui/svelte/collection";
 import { useFilter } from "@ark-ui/svelte/locale";
-import { Combobox } from "@pisagor/svelte/combobox";
+import { Combobox } from "@pisagor/svelte";
 
 const initialItems = [
   { label: "Apple", value: "apple" },
@@ -17,6 +17,11 @@ const { collection, filter } = useListCollection({
   filter: contains,
   initialItems,
 });
+
+function onValueChange(next: string | string[]) {
+  const arr = Array.isArray(next) ? next : [next];
+  value = arr[0];
+}
 </script>
 
 <div class="flex flex-col gap-2">
@@ -24,10 +29,7 @@ const { collection, filter } = useListCollection({
     {collection}
     inputValue={value ?? ""}
     onInputValueChange={({ inputValue }) => filter(inputValue)}
-    onValueChange={(next) => {
-      const arr = Array.isArray(next) ? next : [next];
-      value = arr[0];
-    }}
+    {onValueChange}
   >
     <Combobox.Input placeholder="Select a fruit..." />
     <Combobox.Content>

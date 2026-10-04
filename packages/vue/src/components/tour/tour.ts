@@ -6,7 +6,7 @@ import {
   useTour,
 } from "@ark-ui/vue/tour";
 import { PhCaretLeft, PhCaretRight, PhX } from "@phosphor-icons/vue";
-import type { TourProps as TourRootSharedProps } from "@pisagor/props";
+import type { TourProps as BaseTourRootProps } from "@pisagor/props";
 import { dialogRecipe, type TourRecipe, tourRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
@@ -40,7 +40,7 @@ interface TourContextProps {
   tour: UnwrapRef<UseTourReturn>;
 }
 
-export interface TourRootProps extends TourRootSharedProps {
+export interface TourRootProps extends BaseTourRootProps {
   /** Whether to enable arrow key navigation between steps */
   keyboardNavigation?: boolean;
   /**

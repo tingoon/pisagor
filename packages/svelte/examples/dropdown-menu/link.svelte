@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte/button";
-import { DropdownMenu } from "@pisagor/svelte/dropdown-menu";
+import { Button, DropdownMenu } from "@pisagor/svelte";
 import { ArrowSquareOutIcon } from "@pisagor/svelte/icons";
 </script>
 
@@ -10,8 +9,15 @@ import { ArrowSquareOutIcon } from "@pisagor/svelte/icons";
   </DropdownMenu.Trigger>
   <DropdownMenu.Content class="w-40">
     <DropdownMenu.Item value="docs">
-      {#snippet asChild(props)}
-        <a {...props()} href="https://example.com/docs" rel="noopener noreferrer" target="_blank">
+      {#snippet asChild(
+  props,
+)}
+        <a
+          {...props()}
+          href="https://example.com/docs"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
           External link
           <DropdownMenu.Shortcut>
             <ArrowSquareOutIcon />
@@ -20,7 +26,9 @@ import { ArrowSquareOutIcon } from "@pisagor/svelte/icons";
       {/snippet}
     </DropdownMenu.Item>
     <DropdownMenu.Item value="components">
-      {#snippet asChild(props)}
+      {#snippet asChild(
+  props,
+)}
         <a {...props()} href="/docs/components">View docs</a>
       {/snippet}
     </DropdownMenu.Item>

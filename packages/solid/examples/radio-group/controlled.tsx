@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { RadioGroup } from "@pisagor/solid/radio-group";
+import { RadioGroup } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
   const [value, setValue] = createSignal<string | null>(null);

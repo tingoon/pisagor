@@ -1,4 +1,4 @@
-import { NumberField } from "../../src/fields/number-field";
+import { NumberField } from "@pisagor/react-form";
 
 export function Disabled() {
   return (

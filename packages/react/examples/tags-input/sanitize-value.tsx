@@ -1,5 +1,4 @@
-import { Field } from "@pisagor/react";
-import { TagsInput } from "@pisagor/react/tags-input";
+import { Field, TagsInput } from "@pisagor/react";
 export function SanitizeValue() {
   return (
     <Field>

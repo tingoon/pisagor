@@ -1,6 +1,5 @@
+import { Button, Sheet } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Sheet } from "../../src/components/sheet";
-import { outlineButtonClass } from "../../src/internal/story-button";
 
 export default defineComponent({
   name: "CloseBehavior",
@@ -10,8 +9,8 @@ export default defineComponent({
         h(Sheet, { closeOnInteractOutside: false }, () => [
           h(Sheet.Trigger, { asChild: true }, () =>
             h(
-              "button",
-              { class: outlineButtonClass(), type: "button" },
+              Button,
+              { type: "button", variant: "outline" },
               "No close on outside click",
             ),
           ),
@@ -26,8 +25,8 @@ export default defineComponent({
         h(Sheet, { closeOnEscape: false }, () => [
           h(Sheet.Trigger, { asChild: true }, () =>
             h(
-              "button",
-              { class: outlineButtonClass(), type: "button" },
+              Button,
+              { type: "button", variant: "outline" },
               "No close on Escape",
             ),
           ),

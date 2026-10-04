@@ -4,8 +4,7 @@ import {
   PlusSquareIcon,
   TrashIcon,
 } from "@phosphor-icons/react";
-import { Item, Separator } from "@pisagor/react";
-import { Listbox } from "@pisagor/react/listbox";
+import { Item, Listbox, Separator } from "@pisagor/react";
 export function SelectionNone() {
   const collection = createListCollection({
     items: [

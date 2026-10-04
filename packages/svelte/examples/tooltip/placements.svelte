@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Tooltip } from "@pisagor/svelte/tooltip";
+import { Button, Tooltip } from "@pisagor/svelte";
 
 const placements = ["left", "top", "bottom", "right"] as const;
 </script>

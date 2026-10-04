@@ -1,17 +1,16 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Toolbar } from "@pisagor/svelte/toolbar";
+import { Button, Toolbar } from "@pisagor/svelte";
 </script>
 
 <Toolbar.Root>
-      <Toolbar.Heading>
-        <Toolbar.Title>Projects</Toolbar.Title>
-        <Toolbar.Description>
-          Manage deployments and monitor activity.
-        </Toolbar.Description>
-      </Toolbar.Heading>
-      <Toolbar.Actions>
-        <Button variant="outline">Import</Button>
-        <Button>New project</Button>
-      </Toolbar.Actions>
-    </Toolbar.Root>
+  <Toolbar.Heading>
+    <Toolbar.Title>Projects</Toolbar.Title>
+    <Toolbar.Description>
+      Manage deployments and monitor activity.
+    </Toolbar.Description>
+  </Toolbar.Heading>
+  <Toolbar.Actions>
+    <Button variant="outline">Import</Button>
+    <Button>New project</Button>
+  </Toolbar.Actions>
+</Toolbar.Root>

@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import booked_datesRaw from "./booked-dates.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
 import custom_cell_sizeRaw from "./custom-cell-size.svelte?raw";
@@ -13,22 +12,22 @@ import presetsRaw from "./presets.svelte?raw";
 import rangeRaw from "./range.svelte?raw";
 import select_todayRaw from "./select-today.svelte?raw";
 
-export const imports = `import { Calendar } from "@pisagor/svelte/calendar";`;
+export const imports = `import { Calendar } from "@pisagor/svelte";`;
 
 export const sources = {
-  BookedDates: stripSvelteExample(booked_datesRaw),
-  Controlled: stripSvelteExample(controlledRaw),
-  CustomCellSize: stripSvelteExample(custom_cell_sizeRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  FixedWeeks: stripSvelteExample(fixed_weeksRaw),
-  Invalid: stripSvelteExample(invalidRaw),
-  MinMax: stripSvelteExample(min_maxRaw),
-  MonthYearSelector: stripSvelteExample(month_year_selectorRaw),
-  MultipleMonths: stripSvelteExample(multiple_monthsRaw),
-  Presets: stripSvelteExample(presetsRaw),
-  Range: stripSvelteExample(rangeRaw),
-  SelectToday: stripSvelteExample(select_todayRaw),
+  BookedDates: booked_datesRaw,
+  Controlled: controlledRaw,
+  CustomCellSize: custom_cell_sizeRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  FixedWeeks: fixed_weeksRaw,
+  Invalid: invalidRaw,
+  MinMax: min_maxRaw,
+  MonthYearSelector: month_year_selectorRaw,
+  MultipleMonths: multiple_monthsRaw,
+  Presets: presetsRaw,
+  Range: rangeRaw,
+  SelectToday: select_todayRaw,
 } as const;
 
 export { default as BookedDates } from "./booked-dates.svelte";

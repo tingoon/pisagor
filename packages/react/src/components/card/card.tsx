@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import type { CardProps as CardRootSharedProps } from "@pisagor/props";
+import type { CardProps as BaseCardRootProps } from "@pisagor/props";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { CardContext, useCard } from "./card.context";
@@ -7,7 +7,7 @@ import { CardContext, useCard } from "./card.context";
 // #region Types
 export interface CardRootProps
   extends ComponentProps<typeof ark.div>,
-    CardRootSharedProps {}
+    BaseCardRootProps {}
 
 export type CardMediaProps = ComponentProps<typeof ark.div> & CardVariantProps;
 

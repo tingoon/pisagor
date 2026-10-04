@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Badge } from "@pisagor/solid/badge";
+import { Badge } from "@pisagor/solid";
 import { ArrowUpRightIcon, PlusCircleIcon } from "@pisagor/solid/icons";
 
 export function WithLink() {

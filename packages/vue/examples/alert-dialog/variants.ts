@@ -1,6 +1,5 @@
+import { AlertDialog, Button } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { AlertDialog } from "../../src/components/alert-dialog";
-import { outlineButtonClass } from "../../src/internal/story-button";
 
 export default defineComponent({
   name: "Variants",
@@ -9,11 +8,7 @@ export default defineComponent({
       h("div", { class: "flex flex-wrap gap-2" }, [
         h(AlertDialog, null, () => [
           h(AlertDialog.Trigger, { asChild: true }, () =>
-            h(
-              "button",
-              { class: outlineButtonClass(), type: "button" },
-              "Default",
-            ),
+            h(Button, { type: "button", variant: "outline" }, "Default"),
           ),
           h(AlertDialog.Content, null, () => [
             h(AlertDialog.Header, {
@@ -31,11 +26,7 @@ export default defineComponent({
         ]),
         h(AlertDialog, null, () => [
           h(AlertDialog.Trigger, { asChild: true }, () =>
-            h(
-              "button",
-              { class: outlineButtonClass(), type: "button" },
-              "Destructive",
-            ),
+            h(Button, { type: "button", variant: "outline" }, "Destructive"),
           ),
           h(AlertDialog.Content, null, () => [
             h(AlertDialog.Header, {

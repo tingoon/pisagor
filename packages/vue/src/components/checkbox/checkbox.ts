@@ -1,8 +1,8 @@
 import { Checkbox as CheckboxPrimitive } from "@ark-ui/vue/checkbox";
 import { PhCheck, PhMinus } from "@phosphor-icons/vue";
 import type {
-  CheckboxGroupProps as CheckboxGroupSharedProps,
-  CheckboxProps as CheckboxSharedProps,
+  CheckboxGroupProps as BaseCheckboxGroupProps,
+  CheckboxProps as BaseCheckboxProps,
 } from "@pisagor/props";
 import {
   checkboxGroupRecipe,
@@ -18,11 +18,11 @@ type FormControlVariant = "primary" | "secondary";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface CheckboxGroupProps extends CheckboxGroupSharedProps {
+export interface CheckboxGroupProps extends BaseCheckboxGroupProps {
   class?: unknown;
 }
 
-export interface CheckboxProps extends CheckboxSharedProps {
+export interface CheckboxProps extends BaseCheckboxProps {
   class?: unknown;
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;

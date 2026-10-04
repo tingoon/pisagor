@@ -1,6 +1,5 @@
 import { AtIcon } from "@phosphor-icons/react";
-import { Badge } from "@pisagor/react";
-import { InputGroup } from "@pisagor/react/input-group";
+import { Badge, InputGroup } from "@pisagor/react";
 export function WithBadge() {
   return (
     <InputGroup>

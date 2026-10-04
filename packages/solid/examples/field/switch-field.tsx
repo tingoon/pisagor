@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Switch } from "@pisagor/solid";
-import { Field } from "@pisagor/solid/field";
+import { Field, Switch } from "@pisagor/solid";
 export function SwitchField() {
   return (
     <Field orientation="horizontal">

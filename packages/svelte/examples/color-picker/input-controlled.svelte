@@ -1,15 +1,16 @@
 <script lang="ts">
-import { Input, parseColor } from "@pisagor/svelte";
-import { ColorPicker } from "@pisagor/svelte/color-picker";
+import { ColorPicker, Input, parseColor } from "@pisagor/svelte";
 
 let value = $state("#eb5e41");
 </script>
 
 <div class="flex flex-col gap-2">
-  <ColorPicker onValueChange={(v) => (value = v)} value={value}>
+  <ColorPicker onValueChange={(v) => (value = v)} {value}>
     <ColorPicker.Control>
       <ColorPicker.Input>
-        {#snippet asChild(props)}
+        {#snippet asChild(
+  props,
+)}
           <Input {...props()} />
         {/snippet}
       </ColorPicker.Input>

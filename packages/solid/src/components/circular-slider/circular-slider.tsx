@@ -11,7 +11,7 @@ import {
   AngleSlider as AngleSliderPrimitive,
   useAngleSliderContext,
 } from "@ark-ui/solid/angle-slider";
-import type { CircularSliderProps as CircularSliderSharedProps } from "@pisagor/props";
+import type { CircularSliderProps as BaseCircularSliderProps } from "@pisagor/props";
 import { circularSliderRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
@@ -32,7 +32,7 @@ export type CircularSliderRootProps = Omit<
 export interface CircularSliderProps
   extends CircularSliderRootProps,
     Partial<Pick<CircularSliderContextValue, "thickness" | "size">>,
-    CircularSliderSharedProps {
+    BaseCircularSliderProps {
   markers?: boolean | number[];
   markersAtSteps?: boolean;
   onValueChange?: (value: number) => void;

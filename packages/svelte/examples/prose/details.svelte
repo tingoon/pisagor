@@ -1,13 +1,13 @@
 <script lang="ts">
-import { Prose } from "@pisagor/svelte/prose";
+import { Prose } from "@pisagor/svelte";
 </script>
 
 <Prose>
-      <details>
-        <summary>How did the joke tax end?</summary>
-        <p>
-          The king repealed the tax after seeing how much happier his subjects
-          were. Jokester was declared a hero.
-        </p>
-      </details>
-    </Prose>
+  <details>
+    <summary>How did the joke tax end?</summary>
+    <p>
+      The king repealed the tax after seeing how much happier his subjects were.
+      Jokester was declared a hero.
+    </p>
+  </details>
+</Prose>

@@ -55,7 +55,6 @@
         "@pisagor/solid-form": "workspace:*",
         "@pisagor/svelte": "workspace:*",
         "@pisagor/svelte-form": "workspace:*",
-        "@pisagor/utils": "workspace:*",
         "@pisagor/vue": "workspace:*",
         "@pisagor/vue-form": "workspace:*",
         "@tanstack/highlight": "^0.1.0",
@@ -172,7 +171,7 @@
     },
     "packages/astro": {
       "name": "@pisagor/astro",
-      "version": "0.2.1",
+      "version": "0.3.0",
       "dependencies": {
         "@pisagor/props": "workspace:*",
         "@pisagor/recipes": "workspace:*",
@@ -191,7 +190,7 @@
     },
     "packages/mcp": {
       "name": "@pisagor/mcp",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "bin": {
         "pisagor-mcp": "./src/stdio.ts",
       },
@@ -202,14 +201,14 @@
     },
     "packages/props": {
       "name": "@pisagor/props",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "dependencies": {
         "@pisagor/recipes": "workspace:*",
       },
     },
     "packages/react": {
       "name": "@pisagor/react",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "dependencies": {
         "@ark-ui/react": "^5.39.2",
         "@mantine/hooks": "^9.6.2",
@@ -241,10 +240,9 @@
     },
     "packages/react-form": {
       "name": "@pisagor/react-form",
-      "version": "0.1.1",
+      "version": "0.2.0",
       "devDependencies": {
         "@pisagor/react": "workspace:*",
-        "@pisagor/utils": "workspace:*",
         "@tanstack/react-form": "^1.33.5",
         "@types/react": "catalog:",
         "@types/react-dom": "catalog:",
@@ -264,14 +262,14 @@
     },
     "packages/recipes": {
       "name": "@pisagor/recipes",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "dependencies": {
         "tailwind-variants": "^3.3.1",
       },
     },
     "packages/solid": {
       "name": "@pisagor/solid",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "dependencies": {
         "@ark-ui/solid": "^5.39.2",
         "@pisagor/props": "workspace:*",
@@ -300,10 +298,9 @@
     },
     "packages/solid-form": {
       "name": "@pisagor/solid-form",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "devDependencies": {
         "@pisagor/solid": "workspace:*",
-        "@pisagor/utils": "workspace:*",
         "@tanstack/solid-form": "^1.33.5",
         "solid-js": "catalog:",
       },
@@ -319,7 +316,7 @@
     },
     "packages/svelte": {
       "name": "@pisagor/svelte",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "dependencies": {
         "@ark-ui/svelte": "^5.24.2",
         "@pisagor/props": "workspace:*",
@@ -348,10 +345,9 @@
     },
     "packages/svelte-form": {
       "name": "@pisagor/svelte-form",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "devDependencies": {
         "@pisagor/svelte": "workspace:*",
-        "@pisagor/utils": "workspace:*",
         "@tanstack/svelte-form": "^1.33.5",
         "svelte": "catalog:",
         "svelte-check-native": "^1.8.0",
@@ -369,14 +365,14 @@
     },
     "packages/tokens": {
       "name": "@pisagor/tokens",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "peerDependencies": {
         "tailwindcss": "^4",
       },
     },
     "packages/utils": {
       "name": "@pisagor/utils",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "dependencies": {
         "clsx": "^2.1.1",
         "tailwind-merge": "^3.7.0",
@@ -384,7 +380,7 @@
     },
     "packages/vue": {
       "name": "@pisagor/vue",
-      "version": "0.2.0",
+      "version": "0.3.0",
       "dependencies": {
         "@ark-ui/vue": "^5.39.2",
         "@phosphor-icons/vue": "^2.2.1",
@@ -411,9 +407,8 @@
     },
     "packages/vue-form": {
       "name": "@pisagor/vue-form",
-      "version": "0.1.1",
+      "version": "0.2.0",
       "devDependencies": {
-        "@pisagor/utils": "workspace:*",
         "@pisagor/vue": "workspace:*",
         "@tanstack/vue-form": "^1.33.5",
         "vue": "catalog:",

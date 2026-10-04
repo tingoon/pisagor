@@ -12,7 +12,7 @@ import {
 } from "@ark-ui/react/date-picker";
 import { Portal } from "@ark-ui/react/portal";
 import { CalendarIcon, ClockIcon, XIcon } from "@phosphor-icons/react";
-import type { DatePickerProps as DatePickerSharedProps } from "@pisagor/props";
+import type { DatePickerProps as BaseDatePickerProps } from "@pisagor/props";
 import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
 
 import { useContext } from "react";
@@ -51,7 +51,7 @@ export interface DatePickerInputProps
 
 export interface DatePickerTimerProps
   extends Omit<InputProps, "recipe">,
-    DatePickerSharedProps {
+    BaseDatePickerProps {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -71,7 +71,7 @@ export interface DatePickerContentProps
 
 export interface DatePickerRootProps
   extends Omit<DatePickerPrimitiveRootProps, "onValueChange">,
-    DatePickerSharedProps {
+    BaseDatePickerProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   onValueChange?: (value: DatePickerRootProps["value"]) => void;

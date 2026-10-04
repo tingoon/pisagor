@@ -1,11 +1,14 @@
 <script lang="ts">
-import type { InputGroupButtonProps as InputGroupButtonSharedProps } from "@pisagor/props";
+import type { InputGroupButtonProps as BaseInputGroupButtonProps } from "@pisagor/props";
 import { inputGroupButtonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import Button from "../button/button.svelte";
 
-type Props = Omit<import("svelte").ComponentProps<typeof Button>, "size" | "recipe"> &
-  InputGroupButtonSharedProps;
+type Props = Omit<
+  import("svelte").ComponentProps<typeof Button>,
+  "size" | "recipe"
+> &
+  BaseInputGroupButtonProps;
 
 let {
   size = "xs",

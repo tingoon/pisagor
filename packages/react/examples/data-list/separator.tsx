@@ -1,4 +1,4 @@
-import { DataList } from "@pisagor/react/data-list";
+import { DataList } from "@pisagor/react";
 
 export function Separator() {
   const data = [

@@ -1,5 +1,4 @@
-import { Field } from "@pisagor/react";
-import { Checkbox } from "@pisagor/react/checkbox";
+import { Checkbox, Field } from "@pisagor/react";
 export function CheckboxGroup() {
   return (
     <Field.Set>

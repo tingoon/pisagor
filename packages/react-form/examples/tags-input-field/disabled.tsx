@@ -1,4 +1,4 @@
-import { TagsInputField } from "../../src/fields/tags-input-field";
+import { TagsInputField } from "@pisagor/react-form";
 
 export function Disabled() {
   return (

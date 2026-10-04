@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ContextMenu } from "@pisagor/svelte/context-menu";
+import { ContextMenu } from "@pisagor/svelte";
 </script>
 
 <ContextMenu>
@@ -12,6 +12,8 @@ import { ContextMenu } from "@pisagor/svelte/context-menu";
     <ContextMenu.Item value="copy">Copy</ContextMenu.Item>
     <ContextMenu.Item value="paste">Paste</ContextMenu.Item>
     <ContextMenu.Separator />
-    <ContextMenu.Item value="delete" variant="destructive">Delete</ContextMenu.Item>
+    <ContextMenu.Item value="delete" variant="destructive"
+      >Delete</ContextMenu.Item
+    >
   </ContextMenu.Content>
 </ContextMenu>

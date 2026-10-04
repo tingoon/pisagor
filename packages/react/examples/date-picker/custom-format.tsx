@@ -1,6 +1,5 @@
 import { CalendarIcon } from "@phosphor-icons/react";
-import { Button, Calendar, parseDate } from "@pisagor/react";
-import { DatePicker } from "@pisagor/react/date-picker";
+import { Button, Calendar, DatePicker, parseDate } from "@pisagor/react";
 import { useState } from "react";
 export function CustomFormat() {
   const [value, setValue] = useState([parseDate("2025-01-15")]);

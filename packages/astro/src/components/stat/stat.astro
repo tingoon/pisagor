@@ -1,5 +1,5 @@
 ---
-import type { StatProps as StatSharedProps } from "@pisagor/props";
+import type { StatProps as BaseStatProps } from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
 import StatDescription from "./stat-description.astro";
 import StatLabel from "./stat-label.astro";
@@ -7,7 +7,7 @@ import StatRoot from "./stat-root.astro";
 import StatTrend from "./stat-trend.astro";
 import StatValue from "./stat-value.astro";
 
-interface Props extends HTMLAttributes<"div">, StatSharedProps {
+interface Props extends HTMLAttributes<"div">, BaseStatProps {
   /** Metric label. */
   label?: string;
   /** Primary metric value. */

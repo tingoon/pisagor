@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button } from "@pisagor/solid";
-import { Tooltip } from "@pisagor/solid/tooltip";
+import { Button, Tooltip } from "@pisagor/solid";
 export function Placements() {
   const placements = ["left", "top", "bottom", "right"] as const;
 

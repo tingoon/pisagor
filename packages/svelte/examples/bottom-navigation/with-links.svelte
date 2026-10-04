@@ -1,19 +1,22 @@
 <script lang="ts">
-import { ScrollArea } from "@pisagor/svelte";
-import { BottomNavigation } from "@pisagor/svelte/bottom-navigation";
+import { BottomNavigation, ScrollArea } from "@pisagor/svelte";
 import BellIcon from "phosphor-svelte/lib/BellIcon";
 import HouseIcon from "phosphor-svelte/lib/HouseIcon";
 import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
 import UserIcon from "phosphor-svelte/lib/UserIcon";
 </script>
 
-<div class="flex h-72 flex-col overflow-y-auto rounded-lg border bg-muted shadow-lg/5">
+<div
+  class="flex h-72 flex-col overflow-y-auto rounded-lg border bg-muted shadow-lg/5"
+>
   <ScrollArea>
     <div class="h-96"></div>
     <BottomNavigation defaultValue="/docs">
       <BottomNavigation.List class="absolute">
         <BottomNavigation.Item value="/">
-          {#snippet asChild(props)}
+          {#snippet asChild(
+  props,
+)}
             <a {...props()} href="https://example.com/">
               <BottomNavigation.ItemIcon>
                 <HouseIcon />
@@ -23,7 +26,9 @@ import UserIcon from "phosphor-svelte/lib/UserIcon";
           {/snippet}
         </BottomNavigation.Item>
         <BottomNavigation.Item value="/docs">
-          {#snippet asChild(props)}
+          {#snippet asChild(
+  props,
+)}
             <a {...props()} href="https://example.com/search">
               <BottomNavigation.ItemIcon>
                 <MagnifyingGlassIcon />
@@ -33,7 +38,9 @@ import UserIcon from "phosphor-svelte/lib/UserIcon";
           {/snippet}
         </BottomNavigation.Item>
         <BottomNavigation.Item value="/docs/components">
-          {#snippet asChild(props)}
+          {#snippet asChild(
+  props,
+)}
             <a {...props()} href="https://example.com/news">
               <BottomNavigation.ItemIcon>
                 <BellIcon />
@@ -43,7 +50,9 @@ import UserIcon from "phosphor-svelte/lib/UserIcon";
           {/snippet}
         </BottomNavigation.Item>
         <BottomNavigation.Item value="/docs/components">
-          {#snippet asChild(props)}
+          {#snippet asChild(
+  props,
+)}
             <a {...props()} href="https://example.com/profile">
               <BottomNavigation.ItemIcon>
                 <UserIcon />

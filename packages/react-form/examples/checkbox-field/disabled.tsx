@@ -1,4 +1,4 @@
-import { CheckboxField } from "../../src/fields/checkbox-field";
+import { CheckboxField } from "@pisagor/react-form";
 
 export function Disabled() {
   return (

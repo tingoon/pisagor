@@ -9,7 +9,7 @@ import type {
   EditableSubmitTriggerProps,
 } from "@ark-ui/react/editable";
 import { Editable as EditablePrimitive } from "@ark-ui/react/editable";
-import type { EditableProps as EditableSharedProps } from "@pisagor/props";
+import type { EditableProps as BaseEditableProps } from "@pisagor/props";
 import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 
 import { cn } from "@pisagor/utils";
@@ -25,7 +25,7 @@ export type EditableRootProps = Omit<
   "onValueChange" | "value" | "defaultValue"
 >;
 
-export interface EditableProps extends EditableRootProps, EditableSharedProps {
+export interface EditableProps extends EditableRootProps, BaseEditableProps {
   /** The orientation of the editable */
   orientation?: "horizontal" | "vertical";
   /**

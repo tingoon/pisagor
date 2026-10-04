@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { InputGroup } from "@pisagor/solid";
-import { Field } from "@pisagor/solid/field";
+import { Field, InputGroup } from "@pisagor/solid";
 import { ArrowRightIcon } from "@pisagor/solid/icons";
 export function WithInputGroup() {
   return (

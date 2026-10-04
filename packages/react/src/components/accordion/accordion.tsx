@@ -6,7 +6,7 @@ import type {
 } from "@ark-ui/react/accordion";
 import { Accordion as AccordionPrimitive } from "@ark-ui/react/accordion";
 import { CaretDownIcon } from "@phosphor-icons/react";
-import type { AccordionItemProps as AccordionItemSharedProps } from "@pisagor/props";
+import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
 import { accordionItemRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { AccordionItemContext, useAccordionItem } from "./accordion.context";
@@ -14,7 +14,7 @@ import { AccordionItemContext, useAccordionItem } from "./accordion.context";
 // #region Types
 export interface AccordionItemProps
   extends AccordionPrimitiveItemProps,
-    AccordionItemSharedProps {}
+    BaseAccordionItemProps {}
 
 interface AccordionPresetItem {
   value: string;

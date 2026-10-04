@@ -27,9 +27,9 @@ import {
   MinusIcon,
 } from "@phosphor-icons/react";
 import type {
-  TreeViewBranchProps as TreeViewBranchSharedProps,
-  TreeViewItemProps as TreeViewItemSharedProps,
-  TreeViewProps as TreeViewSharedProps,
+  TreeViewBranchProps as BaseTreeViewBranchProps,
+  TreeViewItemProps as BaseTreeViewItemProps,
+  TreeViewProps as BaseTreeViewProps,
 } from "@pisagor/props";
 import {
   formControlToggleRecipe,
@@ -65,15 +65,15 @@ export type TreeCollection = arkTreeCollection;
 export interface TreeViewProps
   extends TreeViewPrimitive.RootComponentProps,
     TreeViewContextProps,
-    TreeViewSharedProps {}
+    BaseTreeViewProps {}
 
 export interface TreeViewBranchProps
   extends TreeViewPrimitiveBranchProps,
-    TreeViewBranchSharedProps {}
+    BaseTreeViewBranchProps {}
 
 export interface TreeViewItemProps
   extends TreeViewPrimitiveItemProps,
-    TreeViewItemSharedProps {}
+    BaseTreeViewItemProps {}
 
 export type NodeProviderProps<T extends TreeNodeType = TreeNodeType> =
   TreeViewPrimitive.NodeProviderProps<T>;

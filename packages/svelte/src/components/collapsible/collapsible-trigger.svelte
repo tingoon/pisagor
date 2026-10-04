@@ -12,6 +12,9 @@ let { class: className, children, ...rest }: Props = $props();
 const { slots } = useCollapsible();
 </script>
 
-<CollapsiblePrimitive.Trigger {...rest} class={slots.trigger({ class: cn(className) })}>
+<CollapsiblePrimitive.Trigger
+  {...rest}
+  class={slots.trigger({ class: cn(className) })}
+>
   {@render children?.()}
 </CollapsiblePrimitive.Trigger>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Alert } from "../../src/components/alert";
+import { Alert } from "@pisagor/vue";
 </script>
 
 <template>

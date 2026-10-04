@@ -1,7 +1,6 @@
 <script lang="ts" setup>
+import { Textarea } from "@pisagor/vue";
 import { ref } from "vue";
-
-import { Textarea } from "../../src/components/textarea";
 
 const value = ref("");
 </script>

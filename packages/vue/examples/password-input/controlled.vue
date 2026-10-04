@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { PasswordInput } from "@pisagor/vue";
 import { ref } from "vue";
-import { PasswordInput } from "../../src/components/password-input";
 
 const password = ref("");
 const onChange = (event) => setPassword(event.target.value);

@@ -1,7 +1,6 @@
 <script lang="ts" setup>
+import { SegmentGroup } from "@pisagor/vue";
 import { ref } from "vue";
-
-import { SegmentGroup } from "../../src/components/segment-group";
 
 const pages = ["Profile", "Account", "Security", "Notifications"];
 const onValueChange = (value) => setValue(value ?? "Profile");

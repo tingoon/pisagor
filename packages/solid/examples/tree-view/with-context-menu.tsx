@@ -1,14 +1,13 @@
 /** @jsxImportSource solid-js */
 
-import { ContextMenu, createTreeCollection } from "@pisagor/solid";
+import type { NodeProviderProps } from "@pisagor/solid";
+import { ContextMenu, createTreeCollection, TreeView } from "@pisagor/solid";
 import {
   FilePlusIcon,
   FolderPlusIcon,
   PencilSimpleIcon,
   TrashIcon,
 } from "@pisagor/solid/icons";
-import type { NodeProviderProps } from "@pisagor/solid/tree-view";
-import { TreeView } from "@pisagor/solid/tree-view";
 export function WithContextMenu() {
   const collection = createTreeCollection({
     rootNode: {

@@ -6,4 +6,6 @@ type Props = DrawerCloseTriggerProps;
 let { children, ...rest }: Props = $props();
 </script>
 
-<DrawerPrimitive.CloseTrigger {...rest}> {@render children?.()} </DrawerPrimitive.CloseTrigger>
+<DrawerPrimitive.CloseTrigger {...rest}>
+  {@render children?.()}
+</DrawerPrimitive.CloseTrigger>

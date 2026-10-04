@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { PhFish } from "@phosphor-icons/vue";
-import { QrCode } from "../../src/components/qr-code";
+import { QrCode } from "@pisagor/vue";
 </script>
 
 <template>

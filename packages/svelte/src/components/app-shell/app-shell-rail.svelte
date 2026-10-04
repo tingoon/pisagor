@@ -2,7 +2,10 @@
 import { cn } from "@pisagor/utils";
 import { onDestroy } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
-import type { AppShellPlacement, AppShellRegionPosition } from "./app-shell.context";
+import type {
+  AppShellPlacement,
+  AppShellRegionPosition,
+} from "./app-shell.context";
 import { useAppShell } from "./app-shell.context";
 import { APP_SHELL_RAIL_WIDTH } from "./constants";
 import { setAppShellRailContext } from "./rail.context";

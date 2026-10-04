@@ -1,9 +1,6 @@
 <script lang="ts">
 import { Portal } from "@ark-ui/svelte/portal";
-import { Button } from "@pisagor/svelte/button";
-import { Dialog } from "@pisagor/svelte/dialog";
-import { Field } from "@pisagor/svelte/field";
-import { Input } from "@pisagor/svelte/input";
+import { Button, Dialog, Field, Input } from "@pisagor/svelte";
 </script>
 
 <Dialog.Root>
@@ -16,7 +13,9 @@ import { Input } from "@pisagor/svelte/input";
       <Dialog.Content>
         <Dialog.Header>
           <Dialog.Title>Manage team member</Dialog.Title>
-          <Dialog.Description>View and manage a user in your team.</Dialog.Description>
+          <Dialog.Description
+            >View and manage a user in your team.</Dialog.Description
+          >
         </Dialog.Header>
         <Dialog.Body class="grid gap-2">
           <div class="grid gap-1">
@@ -39,7 +38,10 @@ import { Input } from "@pisagor/svelte/input";
                 <Dialog.Content showCloseButton={false}>
                   <Dialog.Header>
                     <Dialog.Title>Edit details</Dialog.Title>
-                    <Dialog.Description>Make changes to the member&apos;s information.</Dialog.Description>
+                    <Dialog.Description
+                      >Make changes to the member&apos;s
+                      information.</Dialog.Description
+                    >
                   </Dialog.Header>
                   <Dialog.Body>
                     <Field.Group>

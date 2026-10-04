@@ -20,7 +20,7 @@ import {
   Combobox as ComboboxPrimitive,
   useComboboxContext,
 } from "@ark-ui/solid/combobox";
-import type { ComboboxProps as ComboboxRootSharedProps } from "@pisagor/props";
+import type { ComboboxProps as BaseComboboxRootProps } from "@pisagor/props";
 import {
   type ComboboxVariantProps,
   comboboxRecipe,
@@ -48,7 +48,7 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
 > & {
   variant?: FormControlVariant;
   onValueChange?: (value: string[]) => void;
-} & ComboboxRootSharedProps;
+} & BaseComboboxRootProps;
 
 export interface ComboboxProps
   extends Omit<ComboboxRootProps, "children" | "collection"> {

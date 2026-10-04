@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Timer } from "../../src/components/timer";
+import { Timer } from "@pisagor/vue";
 </script>
 
 <template>

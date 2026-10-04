@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { SkipNav } from "@pisagor/solid/skip-nav";
+import { SkipNav } from "@pisagor/solid";
 
 export function Default() {
   return (

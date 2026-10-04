@@ -1,7 +1,8 @@
-import { Button, Kbd } from "@pisagor/vue";
+import { Button, Kbd, Tooltip } from "@pisagor/vue";
 import { defineComponent, Fragment, h } from "vue";
-import { Tooltip } from "../../src/components/tooltip";
-import type { ArkPart } from "../../src/internal/types";
+
+type ArkPart = Parameters<typeof h>[0];
+
 export default defineComponent({
   name: "WithKeyboardShortcut",
   setup() {

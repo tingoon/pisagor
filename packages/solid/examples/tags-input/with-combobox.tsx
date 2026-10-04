@@ -2,8 +2,7 @@
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { useTagsInput } from "@ark-ui/solid/tags-input";
-import { Combobox, Field } from "@pisagor/solid";
-import { TagsInput } from "@pisagor/solid/tags-input";
+import { Combobox, Field, TagsInput } from "@pisagor/solid";
 import { createMemo, createUniqueId, For } from "solid-js";
 
 export function WithCombobox() {

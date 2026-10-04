@@ -1,4 +1,4 @@
-import { AvatarGroup } from "@pisagor/react/avatar";
+import { AvatarGroup } from "@pisagor/react";
 
 const users = [
   {

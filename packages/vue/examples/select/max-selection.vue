@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
+import { Select } from "@pisagor/vue";
 import { ref } from "vue";
-import { Select } from "../../src/components/select";
 
 const MAX_SELECTION = 3;
 

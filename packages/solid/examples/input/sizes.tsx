@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Input } from "@pisagor/solid/input";
+import { Input } from "@pisagor/solid";
 
 export function Sizes() {
   return (

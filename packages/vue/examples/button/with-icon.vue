@@ -6,7 +6,7 @@ import {
   PhHeart,
   PhPlus,
 } from "@phosphor-icons/vue";
-import { Button } from "../../src/components/button";
+import { Button } from "@pisagor/vue";
 </script>
 
 <template>

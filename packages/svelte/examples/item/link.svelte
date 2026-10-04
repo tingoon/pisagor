@@ -1,11 +1,13 @@
 <script lang="ts">
-import { Item } from "@pisagor/svelte/item";
+import { Item } from "@pisagor/svelte";
 import ArrowSquareOutIcon from "phosphor-svelte/lib/ArrowSquareOutIcon";
 </script>
 
 <Item.Group class="gap-2">
   <Item variant="muted">
-    {#snippet asChild(props)}
+    {#snippet asChild(
+  props,
+)}
       <a {...props()} href="https://example.com/docs">
         <Item.Content>
           <Item.Title>Visit our documentation</Item.Title>
@@ -17,7 +19,9 @@ import ArrowSquareOutIcon from "phosphor-svelte/lib/ArrowSquareOutIcon";
     {/snippet}
   </Item>
   <Item variant="outline">
-    {#snippet asChild(props)}
+    {#snippet asChild(
+  props,
+)}
       <a
         {...props()}
         href="https://example.com/resources"

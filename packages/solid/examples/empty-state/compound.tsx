@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid";
-import { EmptyState } from "@pisagor/solid/empty-state";
+import { Button, EmptyState } from "@pisagor/solid";
 import { MagnifyingGlassIcon } from "@pisagor/solid/icons";
 export function Compound() {
   return (

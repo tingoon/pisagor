@@ -1,16 +1,15 @@
 <script lang="ts">
 import type { FileUploadRootProps as ArkRootProps } from "@ark-ui/svelte/file-upload";
 import { FileUpload as FileUploadPrimitive } from "@ark-ui/svelte/file-upload";
-import type { FileUploadProps as FileUploadSharedProps } from "@pisagor/props";
+import type { FileUploadProps as BaseFileUploadProps } from "@pisagor/props";
 import { fileUploadRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setFileUploadContext } from "./file-upload.context";
 
-type Props = Omit<ArkRootProps, "class"> &
-  {
+type Props = Omit<ArkRootProps, "class"> & {
   class?: string | undefined;
   onValueChange?: (value: globalThis.File[]) => void;
-  } & FileUploadSharedProps;
+} & BaseFileUploadProps;
 
 let {
   children,
@@ -27,15 +26,19 @@ setFileUploadContext({
     return slots;
   },
 });
+
+function handleFileChange(
+  details: Parameters<NonNullable<Props["onFileChange"]>>[0],
+) {
+  onFileChange?.(details);
+  onValueChange?.(details.acceptedFiles);
+}
 </script>
 
 <FileUploadPrimitive.Root
   {...rest}
   class={slots.base({ class: cn(className) })}
-  onFileChange={(details) => {
-  onFileChange?.(details);
-  onValueChange?.(details.acceptedFiles);
-}}
+  onFileChange={handleFileChange}
 >
   {@render children?.()}
   <FileUploadPrimitive.HiddenInput />

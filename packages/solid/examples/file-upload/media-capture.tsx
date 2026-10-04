@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid";
-import { FileUpload } from "@pisagor/solid/file-upload";
+import { Button, FileUpload } from "@pisagor/solid";
 import { CameraIcon } from "@pisagor/solid/icons";
 export function MediaCapture() {
   return (

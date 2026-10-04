@@ -11,7 +11,12 @@ type Props = {
   thickness?: number;
 };
 
-let { size = 32, thickness = 4, rangeClassName, class: className }: Props = $props();
+let {
+  size = 32,
+  thickness = 4,
+  rangeClassName,
+  class: className,
+}: Props = $props();
 
 const { slots } = useCircularProgressSlots();
 const progress = useProgressContext();
@@ -21,7 +26,8 @@ const metrics = $derived.by(() => {
   const radius = size / 2 - thickness / 2;
   const circumference = 2 * Math.PI * radius;
   const range = Math.max(max - min, 1);
-  const normalizedValue = value == null ? min : Math.min(Math.max(value, min), max);
+  const normalizedValue =
+    value == null ? min : Math.min(Math.max(value, min), max);
   const percent = (normalizedValue - min) / range;
   const dashOffset = circumference * (1 - percent);
   return { circumference, dashOffset, radius, value };

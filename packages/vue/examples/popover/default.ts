@@ -1,6 +1,5 @@
+import { Button, Popover } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Popover } from "../../src/components/popover";
-import { outlineButtonClass } from "../../src/internal/story-button";
 
 export default defineComponent({
   name: "Default",
@@ -8,7 +7,7 @@ export default defineComponent({
     return () =>
       h(Popover, null, () => [
         h(Popover.Trigger, { asChild: true }, () =>
-          h("button", { class: outlineButtonClass(), type: "button" }, "Open"),
+          h(Button, { type: "button", variant: "outline" }, "Open"),
         ),
         h(Popover.Content, null, () =>
           h("div", { class: "w-80" }, [

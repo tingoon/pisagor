@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Field } from "@pisagor/solid";
-import { Rating } from "@pisagor/solid/rating";
+import { Field, Rating } from "@pisagor/solid";
 
 export function Invalid() {
   return (

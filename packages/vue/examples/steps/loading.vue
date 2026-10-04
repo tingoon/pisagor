@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { PhCircleNotch } from "@phosphor-icons/vue";
-import { Steps } from "../../src/components/steps";
+import { Steps } from "@pisagor/vue";
 
 const items = [
   { id: "step-1", loading: true },

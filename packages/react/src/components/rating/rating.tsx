@@ -5,7 +5,7 @@ import {
   type RatingGroupRootProps,
 } from "@ark-ui/react/rating-group";
 import { StarIcon } from "@phosphor-icons/react";
-import type { RatingProps as RatingRootSharedProps } from "@pisagor/props";
+import type { RatingProps as BaseRatingRootProps } from "@pisagor/props";
 import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactElement, ReactNode } from "react";
@@ -27,7 +27,7 @@ type RatingClassNames = VariantClassNames<RatingRecipeSlot>;
 type RatingRootProps = RatingGroupRootProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-} & RatingRootSharedProps;
+} & BaseRatingRootProps;
 
 export interface RatingProps
   extends Omit<RatingRootProps, "children" | "onValueChange"> {

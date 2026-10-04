@@ -1,6 +1,6 @@
 <script lang="ts">
+import { Table } from "@pisagor/svelte";
 import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import { Table } from "@pisagor/svelte/table";
 import { allUsers } from "./helpers";
 
 const columns = [
@@ -23,25 +23,25 @@ const columns = [
       <DataGrid.Toolbar>
         <p class="font-medium text-sm">Explicit column widths</p>
       </DataGrid.Toolbar>
-  <Table>
-    <Table.Header>
-      <DataGrid.Header>
-        <DataGrid.HeaderRow>
-          <DataGrid.Head />
-        </DataGrid.HeaderRow>
-      </DataGrid.Header>
-    </Table.Header>
-    <Table.Body>
-      <DataGrid.Body>
-        {#snippet empty()}
-          <DataGrid.Empty />
-        {/snippet}
-        <DataGrid.Row>
-          <DataGrid.Cell />
-        </DataGrid.Row>
-      </DataGrid.Body>
-    </Table.Body>
-  </Table>
+      <Table>
+        <Table.Header>
+          <DataGrid.Header>
+            <DataGrid.HeaderRow>
+              <DataGrid.Head />
+            </DataGrid.HeaderRow>
+          </DataGrid.Header>
+        </Table.Header>
+        <Table.Body>
+          <DataGrid.Body>
+            {#snippet empty()}
+              <DataGrid.Empty />
+            {/snippet}
+            <DataGrid.Row>
+              <DataGrid.Cell />
+            </DataGrid.Row>
+          </DataGrid.Body>
+        </Table.Body>
+      </Table>
     </DataGrid>
   </div>
 </div>

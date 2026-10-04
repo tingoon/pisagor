@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import blur_on_completeRaw from "./blur-on-complete.vue?raw";
 import controlledRaw from "./controlled.vue?raw";
 import custom_sizeRaw from "./custom-size.vue?raw";
@@ -12,21 +11,21 @@ import separatorRaw from "./separator.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import with_placeholderRaw from "./with-placeholder.vue?raw";
 
-export const imports = `import { InputOTP } from "@pisagor/vue/input-otp";`;
+export const imports = `import { InputOTP } from "@pisagor/vue";`;
 
 export const sources = {
-  BlurOnComplete: stripVueExample(blur_on_completeRaw),
-  Controlled: stripVueExample(controlledRaw),
-  CustomSize: stripVueExample(custom_sizeRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  FourDigits: stripVueExample(four_digitsRaw),
-  Invalid: stripVueExample(invalidRaw),
-  Mask: stripVueExample(maskRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  Separator: stripVueExample(separatorRaw),
-  Variants: stripVueExample(variantsRaw),
-  WithPlaceholder: stripVueExample(with_placeholderRaw),
+  BlurOnComplete: blur_on_completeRaw,
+  Controlled: controlledRaw,
+  CustomSize: custom_sizeRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  FourDigits: four_digitsRaw,
+  Invalid: invalidRaw,
+  Mask: maskRaw,
+  OnSurface: on_surfaceRaw,
+  Separator: separatorRaw,
+  Variants: variantsRaw,
+  WithPlaceholder: with_placeholderRaw,
 } as const;
 
 export { default as BlurOnComplete } from "./blur-on-complete.vue";

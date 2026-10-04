@@ -1,4 +1,4 @@
-import { Listbox } from "@pisagor/react/listbox";
+import { Listbox } from "@pisagor/react";
 
 export function Default() {
   return (

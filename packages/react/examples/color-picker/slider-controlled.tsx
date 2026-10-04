@@ -1,4 +1,4 @@
-import { ColorPicker } from "@pisagor/react/color-picker";
+import { ColorPicker } from "@pisagor/react";
 import { useState } from "react";
 
 export function SliderControlled() {

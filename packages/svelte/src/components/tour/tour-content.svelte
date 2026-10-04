@@ -12,13 +12,21 @@ type Props = Omit<ArkProps, "class"> & {
   showCloseButton?: boolean;
 };
 
-let { showCloseButton = true, children, class: className, ...rest }: Props = $props();
+let {
+  showCloseButton = true,
+  children,
+  class: className,
+  ...rest
+}: Props = $props();
 const { slots } = useTourContext();
 </script>
 
 <Portal>
   <TourPrimitive.Positioner class={slots.positioner()}>
-    <TourPrimitive.Content {...rest} class={slots.content({ class: cn(className) })}>
+    <TourPrimitive.Content
+      {...rest}
+      class={slots.content({ class: cn(className) })}
+    >
       {#if showCloseButton}
         <TourPrimitive.CloseTrigger
           aria-label="Close"

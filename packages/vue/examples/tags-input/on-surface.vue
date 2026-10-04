@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Surface } from "@pisagor/vue";
-import { TagsInput } from "../../src/components/tags-input";
+import { Surface, TagsInput } from "@pisagor/vue";
 
 const defaultValue = ["React", "Solid", "Vue"];
 </script>

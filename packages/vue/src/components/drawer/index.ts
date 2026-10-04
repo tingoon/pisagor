@@ -1,6 +1,6 @@
-export {
-  Drawer,
-  type DrawerBodyProps,
-  type DrawerHeaderProps,
-  type DrawerProps,
+export type {
+  DrawerBodyProps,
+  DrawerHeaderProps,
+  DrawerProps,
 } from "./drawer";
+export { Drawer } from "./drawer";

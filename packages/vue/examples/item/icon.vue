@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhShieldWarning } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
-import { Item } from "../../src/components/item";
+import { Button, Item } from "@pisagor/vue";
 </script>
 
 <template>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Format } from "../../src/components/format";
+import { Format } from "@pisagor/vue";
 
 const relativeDate = new Date(Date.now() - 1000 * 60 * 60 * 24);
 </script>

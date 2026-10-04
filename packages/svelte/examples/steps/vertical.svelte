@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Steps } from "@pisagor/svelte/steps";
+import { Button, Steps } from "@pisagor/svelte";
 import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 
@@ -42,7 +41,9 @@ const items = [
     </Steps.CompletedContent>
     <div class="flex flex-row-reverse gap-2">
       <Steps.NextTrigger>
-        {#snippet asChild(props)}
+        {#snippet asChild(
+  props,
+)}
           <Button {...props()} variant="outline">
             Next
             <CaretRightIcon />
@@ -50,7 +51,9 @@ const items = [
         {/snippet}
       </Steps.NextTrigger>
       <Steps.PrevTrigger>
-        {#snippet asChild(props)}
+        {#snippet asChild(
+  props,
+)}
           <Button {...props()} variant="outline">
             <CaretLeftIcon />
             Back

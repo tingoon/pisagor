@@ -14,14 +14,19 @@ const { table } = useDataGridContext();
 const { row } = useDataGridRowContext();
 const sizingEnabled = $derived(Boolean(table.options.enableColumnResizing));
 
-function sizeStyle(column: { columnDef: { minSize?: number }; getSize: () => number }) {
+function sizeStyle(column: {
+  columnDef: { minSize?: number };
+  getSize: () => number;
+}) {
   if (!sizingEnabled) return undefined;
   return `min-width: ${column.columnDef.minSize}px; width: ${column.getSize()}px`;
 }
 </script>
 
 {#if columnId}
-  {@const cell = row.getVisibleCells().find((item) => item.column.id === columnId)}
+  {const cell = row
+    .getVisibleCells()
+    .find((item) => item.column.id === columnId)}
   {#if cell}
     <Table.Cell
       {...rest}

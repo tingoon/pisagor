@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Item } from "@pisagor/vue";
-import { Listbox } from "../../src/components/listbox";
+import { Item, Listbox } from "@pisagor/vue";
 
 const collection = createListCollection({
   groupBy: (item) => (item as { region: string }).region,

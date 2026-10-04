@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import as_childRaw from "./as-child.vue?raw";
 import custom_colorRaw from "./custom-color.vue?raw";
 import defaultRaw from "./default.vue?raw";
@@ -11,20 +10,20 @@ import sizesRaw from "./sizes.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import with_iconRaw from "./with-icon.vue?raw";
 
-export const imports = `import { Button } from "@pisagor/vue/button";`;
+export const imports = `import { Button } from "@pisagor/vue";`;
 
 export const sources = {
-  AsChild: stripVueExample(as_childRaw),
-  CustomColor: stripVueExample(custom_colorRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  Icon: stripVueExample(iconRaw),
-  Loading: stripVueExample(loadingRaw),
-  NoClickEffect: stripVueExample(no_click_effectRaw),
-  Pill: stripVueExample(pillRaw),
-  Sizes: stripVueExample(sizesRaw),
-  Variants: stripVueExample(variantsRaw),
-  WithIcon: stripVueExample(with_iconRaw),
+  AsChild: as_childRaw,
+  CustomColor: custom_colorRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Icon: iconRaw,
+  Loading: loadingRaw,
+  NoClickEffect: no_click_effectRaw,
+  Pill: pillRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithIcon: with_iconRaw,
 } as const;
 
 export { default as AsChild } from "./as-child.vue";

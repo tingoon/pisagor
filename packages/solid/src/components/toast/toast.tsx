@@ -13,8 +13,8 @@ import {
   Toast as ToastPrimitive,
 } from "@ark-ui/solid/toast";
 import type {
-  ToastProps as ToasterRootSharedProps,
-  ToastItemProps as ToastItemRootSharedProps,
+  ToastProps as BaseToasterRootProps,
+  ToastItemProps as BaseToastItemRootProps,
 } from "@pisagor/props";
 import {
   type ToastItemRecipeSlot,
@@ -40,7 +40,7 @@ type ToastItemClassNames = VariantClassNames<ToastItemRecipeSlot>;
 
 export interface ToasterRootProps
   extends Omit<ToasterPrimitiveProps, "toaster" | "children">,
-    ToasterRootSharedProps {}
+    BaseToasterRootProps {}
 
 export interface ToasterProps extends ToasterRootProps {
   toaster?: CreateToasterReturn<JSX.Element>;
@@ -48,7 +48,7 @@ export interface ToasterProps extends ToasterRootProps {
 
 export interface ToastItemRootProps
   extends ToastRootProps,
-    ToastItemRootSharedProps {}
+    BaseToastItemRootProps {}
 
 export interface ToastItemProps extends ToastItemRootProps {
   classNames?: ToastItemClassNames;

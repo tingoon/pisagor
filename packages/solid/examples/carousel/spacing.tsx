@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Carousel } from "@pisagor/solid/carousel";
+import { Carousel } from "@pisagor/solid";
 import { numberedSlides } from "./helpers";
 
 export function Spacing() {

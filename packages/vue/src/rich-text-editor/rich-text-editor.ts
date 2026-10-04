@@ -6,7 +6,7 @@ import {
   PhTextItalic,
   PhTextStrikethrough,
 } from "@phosphor-icons/vue";
-import type { RichTextEditorProps as RichTextEditorRootSharedProps } from "@pisagor/props";
+import type { RichTextEditorProps as BaseRichTextEditorRootProps } from "@pisagor/props";
 import {
   formControlShellRecipe,
   type RichTextEditorRecipe,
@@ -39,7 +39,7 @@ interface RichTextEditorContextValue {
   slots: RichTextEditorRecipe;
 }
 
-export interface RichTextEditorRootProps extends RichTextEditorRootSharedProps {
+export interface RichTextEditorRootProps extends BaseRichTextEditorRootProps {
   "aria-label"?: string;
   /** Initial HTML content for uncontrolled usage. */
   defaultValue?: string;

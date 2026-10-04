@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { EmptyState } from "@pisagor/solid/empty-state";
+import { EmptyState } from "@pisagor/solid";
 
 export function Compact() {
   return (

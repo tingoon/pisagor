@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Skeleton } from "@pisagor/solid/skeleton";
+import { Skeleton } from "@pisagor/solid";
 
 export function SkeletonText() {
   return (

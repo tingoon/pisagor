@@ -2,7 +2,7 @@ import type { CollectionItem, ListCollection } from "@ark-ui/vue/collection";
 import { Combobox as ComboboxPrimitive } from "@ark-ui/vue/combobox";
 import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
 import { PhMagnifyingGlass } from "@phosphor-icons/vue";
-import type { CommandProps as CommandSharedProps } from "@pisagor/props";
+import type { CommandProps as BaseCommandProps } from "@pisagor/props";
 import { comboboxRecipe, commandRecipe, dialogRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
@@ -23,11 +23,11 @@ type ArkPart = Parameters<typeof h>[0];
 // #region Types
 export interface CommandProps<T extends CollectionItem = CollectionItem>
   extends Omit<ComboboxRootProps<T>, "recipe">,
-    CommandSharedProps {}
+    BaseCommandProps {}
 
 interface CommandDialogContentProps
   extends DialogContentProps,
-    CommandSharedProps {
+    BaseCommandProps {
   /**
    * The description of the dialog
    *

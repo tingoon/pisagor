@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import actionRaw from "./action.svelte?raw";
 import closableRaw from "./closable.svelte?raw";
 import dedupeRaw from "./dedupe.svelte?raw";
@@ -8,17 +7,17 @@ import placementsRaw from "./placements.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_promiseRaw from "./with-promise.svelte?raw";
 
-export const imports = `import { Toast } from "@pisagor/svelte/toast";`;
+export const imports = `import { Toast } from "@pisagor/svelte";`;
 
 export const sources = {
-  Action: stripSvelteExample(actionRaw),
-  Closable: stripSvelteExample(closableRaw),
-  Dedupe: stripSvelteExample(dedupeRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Duration: stripSvelteExample(durationRaw),
-  Placements: stripSvelteExample(placementsRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  WithPromise: stripSvelteExample(with_promiseRaw),
+  Action: actionRaw,
+  Closable: closableRaw,
+  Dedupe: dedupeRaw,
+  Default: defaultRaw,
+  Duration: durationRaw,
+  Placements: placementsRaw,
+  Variants: variantsRaw,
+  WithPromise: with_promiseRaw,
 } as const;
 
 export { default as Action } from "./action.svelte";

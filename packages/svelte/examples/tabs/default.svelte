@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Tabs } from "@pisagor/svelte/tabs";
+import { Tabs } from "@pisagor/svelte";
 </script>
 
 <Tabs

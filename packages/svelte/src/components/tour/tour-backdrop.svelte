@@ -6,11 +6,14 @@ import { cn } from "@pisagor/utils";
 import { useTourContext } from "./tour.context";
 
 type Props = { class?: string | undefined; dialogRecipe?: typeof dialogRecipe };
-let { class: className, dialogRecipe: dialogRecipeProp = dialogRecipe }: Props = $props();
+let { class: className, dialogRecipe: dialogRecipeProp = dialogRecipe }: Props =
+  $props();
 const { slots } = useTourContext();
 const dialogSlots = $derived(dialogRecipeProp());
 </script>
 
 <Portal>
-  <TourPrimitive.Backdrop class={cn(dialogSlots.backdrop(), slots.backdrop(), className)} />
+  <TourPrimitive.Backdrop
+    class={cn(dialogSlots.backdrop(), slots.backdrop(), className)}
+  />
 </Portal>

@@ -1,5 +1,5 @@
+import { NavigationMenu } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { NavigationMenu } from "../../src/components/navigation-menu";
 
 export default defineComponent({
   name: "Wrapping",

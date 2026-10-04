@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { ToggleGroup } from "@pisagor/solid/toggle-group";
+import { ToggleGroup } from "@pisagor/solid";
 import { cn } from "@pisagor/utils";
 import { createSignal } from "solid-js";
 export function FontWeight() {

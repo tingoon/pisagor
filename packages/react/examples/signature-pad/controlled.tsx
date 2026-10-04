@@ -1,4 +1,4 @@
-import { SignaturePad } from "@pisagor/react/signature-pad";
+import { SignaturePad } from "@pisagor/react";
 import { useState } from "react";
 
 export function Controlled() {

@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { Button } from "@pisagor/vue";
+import { Button, HoverCard } from "@pisagor/vue";
 import { ref } from "vue";
-import { HoverCard } from "../../src/components/hover-card";
 
 const open = ref(false);
 const onOpenChange = ({ open: isOpen }) => setOpen(isOpen);

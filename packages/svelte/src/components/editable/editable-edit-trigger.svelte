@@ -6,4 +6,6 @@ type Props = EditableEditTriggerProps;
 let { children, ...rest }: Props = $props();
 </script>
 
-<EditablePrimitive.EditTrigger {...rest}> {@render children?.()} </EditablePrimitive.EditTrigger>
+<EditablePrimitive.EditTrigger {...rest}>
+  {@render children?.()}
+</EditablePrimitive.EditTrigger>

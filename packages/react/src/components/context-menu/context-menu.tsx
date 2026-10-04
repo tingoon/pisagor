@@ -2,7 +2,7 @@ import {
   type MenuContextTriggerProps,
   Menu as MenuPrimitive,
 } from "@ark-ui/react/menu";
-import type { ContextMenuProps as ContextMenuContextTriggerSharedProps } from "@pisagor/props";
+import type { ContextMenuProps as BaseContextMenuContextTriggerProps } from "@pisagor/props";
 import { contextMenuRecipe } from "@pisagor/recipes";
 import type {
   DropdownMenuContentProps,
@@ -20,7 +20,7 @@ export type ContextMenuRootProps = DropdownMenuRootProps;
 
 export interface ContextMenuContextTriggerProps
   extends MenuContextTriggerProps,
-    ContextMenuContextTriggerSharedProps {}
+    BaseContextMenuContextTriggerProps {}
 // #endregion
 
 // #region Parts

@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhCheck, PhPencilSimple } from "@phosphor-icons/vue";
-import { Button, Card, Field, Input } from "@pisagor/vue";
-import { Editable } from "../../src/components/editable";
+import { Button, Card, Editable, Field, Input } from "@pisagor/vue";
 </script>
 
 <template>

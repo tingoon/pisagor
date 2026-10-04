@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Autocomplete } from "../../src/components/autocomplete";
+import { Autocomplete } from "@pisagor/vue";
 
 const items = [
   { label: "Apple", value: "apple" },

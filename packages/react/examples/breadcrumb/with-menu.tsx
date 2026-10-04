@@ -1,5 +1,4 @@
-import { Button, DropdownMenu } from "@pisagor/react";
-import { Breadcrumb } from "@pisagor/react/breadcrumb";
+import { Breadcrumb, Button, DropdownMenu } from "@pisagor/react";
 export function WithMenu() {
   return (
     <Breadcrumb.Root>

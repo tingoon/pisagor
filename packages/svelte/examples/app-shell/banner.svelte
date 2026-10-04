@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Announcement, Badge, Button } from "@pisagor/svelte";
-import { AppShell } from "@pisagor/svelte/app-shell";
+import { Announcement, AppShell, Badge, Button } from "@pisagor/svelte";
 import WarningIcon from "phosphor-svelte/lib/WarningIcon";
 import { loremParagraphs } from "./helpers";
 

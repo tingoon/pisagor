@@ -5,10 +5,11 @@ import {
   PhMagnifyingGlass,
   PhUser,
 } from "@phosphor-icons/vue";
-import { Avatar, Button, Sidebar } from "@pisagor/vue";
+import { Avatar, Button, Navbar, Sidebar } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Navbar } from "../../src/components/navbar";
-import type { ArkPart } from "../../src/internal/types";
+
+type ArkPart = Parameters<typeof h>[0];
+
 export default defineComponent({
   name: "WithSidebar",
   setup() {

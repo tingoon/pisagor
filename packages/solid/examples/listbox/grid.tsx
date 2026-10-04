@@ -1,8 +1,7 @@
 /** @jsxImportSource solid-js */
 
 import { createGridCollection } from "@ark-ui/solid/collection";
-import { Item } from "@pisagor/solid";
-import { Listbox } from "@pisagor/solid/listbox";
+import { Item, Listbox } from "@pisagor/solid";
 export function Grid() {
   const collection = createGridCollection({
     columnCount: 5,

@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhPencilSimple, PhPlusSquare, PhTrash } from "@phosphor-icons/vue";
-import { Item, Separator } from "@pisagor/vue";
-import { Listbox } from "../../src/components/listbox";
+import { Item, Listbox, Separator } from "@pisagor/vue";
 
 const collection = createListCollection({
   items: [

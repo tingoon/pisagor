@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button, Textarea } from "@pisagor/solid";
-import { Editable } from "@pisagor/solid/editable";
+import { Button, Editable, Textarea } from "@pisagor/solid";
 import { CheckIcon, XIcon } from "@pisagor/solid/icons";
 export function OrientationVertical() {
   return (

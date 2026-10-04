@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/solid/factory";
-import type { NavbarProps as NavbarRootSharedProps } from "@pisagor/props";
+import type { NavbarProps as BaseNavbarRootProps } from "@pisagor/props";
 import { navbarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -8,7 +8,7 @@ import { NavbarContext, useNavbar } from "./navbar.context";
 
 export interface NavbarRootProps
   extends ComponentProps<typeof ark.header>,
-    NavbarRootSharedProps {}
+    BaseNavbarRootProps {}
 
 export type NavbarPartProps = ComponentProps<typeof ark.div>;
 export type NavbarNavProps = ComponentProps<typeof ark.nav>;

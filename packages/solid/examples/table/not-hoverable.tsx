@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Table } from "@pisagor/solid/table";
+import { Table } from "@pisagor/solid";
 import { workspaceUsers } from "./helpers";
 
 export function NotHoverable() {

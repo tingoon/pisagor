@@ -4,7 +4,9 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useBreadcrumbItem } from "./breadcrumb.context";
 
-type Props = Omit<HTMLAttributes<HTMLSpanElement>, "class"> & { class?: string | undefined };
+type Props = Omit<HTMLAttributes<HTMLSpanElement>, "class"> & {
+  class?: string | undefined;
+};
 let { class: className, children, ...rest }: Props = $props();
 const { slots } = useBreadcrumbItem();
 </script>

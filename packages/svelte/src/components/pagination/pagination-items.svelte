@@ -8,10 +8,12 @@ import PaginationItem from "./pagination-item.svelte";
   {#snippet render(
   pagination,
 )}
-    {@const pages = pagination().pages}
+    {const pages = pagination().pages}
     {#each pages as page, index (page.type === "page" ? page.value : `ellipsis-${index}`)}
       {#if page.type === "page"}
-        <PaginationItem type="page" value={page.value}>{page.value}</PaginationItem>
+        <PaginationItem type="page" value={page.value}
+          >{page.value}</PaginationItem
+        >
       {:else}
         <PaginationEllipsis {index} />
       {/if}

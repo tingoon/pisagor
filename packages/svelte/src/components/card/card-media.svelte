@@ -1,17 +1,21 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { CardProps as CardSharedProps } from "@pisagor/props";
+import type { CardProps as BaseCardProps } from "@pisagor/props";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useCard } from "./card.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
-  {
-    children?: import("svelte").Snippet;
-    class?: string | undefined;
-  } & CardSharedProps;
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+  children?: import("svelte").Snippet;
+  class?: string | undefined;
+} & BaseCardProps;
 
-let { variant = "default", children, class: className, ...rest }: Props = $props();
+let {
+  variant = "default",
+  children,
+  class: className,
+  ...rest
+}: Props = $props();
 
 const { slots } = useCard();
 </script>

@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Input } from "@pisagor/solid";
-import { Editable } from "@pisagor/solid/editable";
+import { Editable, Input } from "@pisagor/solid";
 export function Variants() {
   return (
     <div class="flex flex-col gap-2">

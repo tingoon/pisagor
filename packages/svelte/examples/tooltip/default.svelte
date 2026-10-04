@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte/button";
-import { Tooltip } from "@pisagor/svelte/tooltip";
+import { Button, Tooltip } from "@pisagor/svelte";
 </script>
 
 <Tooltip content="Bold">

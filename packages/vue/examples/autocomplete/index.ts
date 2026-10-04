@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import compoundRaw from "./compound.vue?raw";
 import controlledRaw from "./controlled.vue?raw";
 import defaultRaw from "./default.vue?raw";
@@ -12,21 +11,21 @@ import with_clear_buttonRaw from "./with-clear-button.vue?raw";
 import with_start_iconRaw from "./with-start-icon.vue?raw";
 import with_triggerRaw from "./with-trigger.vue?raw";
 
-export const imports = `import { Autocomplete } from "@pisagor/vue/autocomplete";`;
+export const imports = `import { Autocomplete } from "@pisagor/vue";`;
 
 export const sources = {
-  Compound: stripVueExample(compoundRaw),
-  Controlled: stripVueExample(controlledRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  Group: stripVueExample(groupRaw),
-  Invalid: stripVueExample(invalidRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  Sizes: stripVueExample(sizesRaw),
-  Variants: stripVueExample(variantsRaw),
-  WithClearButton: stripVueExample(with_clear_buttonRaw),
-  WithStartIcon: stripVueExample(with_start_iconRaw),
-  WithTrigger: stripVueExample(with_triggerRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Group: groupRaw,
+  Invalid: invalidRaw,
+  OnSurface: on_surfaceRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithClearButton: with_clear_buttonRaw,
+  WithStartIcon: with_start_iconRaw,
+  WithTrigger: with_triggerRaw,
 } as const;
 
 export { default as Compound } from "./compound.vue";

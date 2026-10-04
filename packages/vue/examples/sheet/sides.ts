@@ -1,6 +1,5 @@
+import { Button, Sheet } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Sheet } from "../../src/components/sheet";
-import { outlineButtonClass } from "../../src/internal/story-button";
 
 const sidePlacements = [
   {
@@ -35,11 +34,7 @@ export default defineComponent({
         sidePlacements.map((side) =>
           h(Sheet, { key: side.placement }, () => [
             h(Sheet.Trigger, { asChild: true }, () =>
-              h(
-                "button",
-                { class: outlineButtonClass(), type: "button" },
-                side.label,
-              ),
+              h(Button, { type: "button", variant: "outline" }, side.label),
             ),
             h(Sheet.Content, { placement: side.placement }, () => [
               h(Sheet.Header, { title: `${side.label} placement sheet` }),

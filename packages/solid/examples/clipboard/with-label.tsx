@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Clipboard } from "@pisagor/solid/clipboard";
+import { Clipboard } from "@pisagor/solid";
 
 export function WithLabel() {
   return (

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { type TreeNodeType, TreeView } from "@pisagor/svelte/tree-view";
+import { type TreeNodeType, TreeView } from "@pisagor/svelte";
 import ArrowSquareOutIcon from "phosphor-svelte/lib/ArrowSquareOutIcon";
 import LinkIcon from "phosphor-svelte/lib/LinkIcon";
 import TreeNodeLink from "./tree-node-link.svelte";
@@ -20,13 +20,18 @@ let { indexPath, node }: Props = $props();
       <TreeView.BranchControl icon={null}>{node.name}</TreeView.BranchControl>
       <TreeView.BranchContent>
         {#each node.children as child, index}
-          <TreeNodeLink indexPath={[...indexPath, index]} node={child as Node} />
+          <TreeNodeLink
+            indexPath={[...indexPath, index]}
+            node={child as Node}
+          />
         {/each}
       </TreeView.BranchContent>
     </TreeView.Branch>
   {:else}
     <TreeView.Item>
-      {#snippet asChild(props)}
+      {#snippet asChild(
+  props,
+)}
         <a
           {...props()}
           href={node.href ?? "#"}

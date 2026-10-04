@@ -1,6 +1,5 @@
+import { AlertDialog, Button } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { AlertDialog } from "../../src/components/alert-dialog";
-import { outlineButtonClass } from "../../src/internal/story-button";
 
 export default defineComponent({
   name: "Default",
@@ -8,7 +7,7 @@ export default defineComponent({
     return () =>
       h(AlertDialog, null, () => [
         h(AlertDialog.Trigger, { asChild: true }, () =>
-          h("button", { class: outlineButtonClass(), type: "button" }, "Open"),
+          h(Button, { type: "button", variant: "outline" }, "Open"),
         ),
         h(AlertDialog.Content, null, () => [
           h(AlertDialog.Header, {

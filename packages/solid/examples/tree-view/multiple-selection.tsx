@@ -1,7 +1,7 @@
 /** @jsxImportSource solid-js */
-import { createTreeCollection } from "@pisagor/solid";
-import type { NodeProviderProps } from "@pisagor/solid/tree-view";
-import { TreeView } from "@pisagor/solid/tree-view";
+
+import type { NodeProviderProps } from "@pisagor/solid";
+import { createTreeCollection, TreeView } from "@pisagor/solid";
 export function MultipleSelection() {
   const collection = createTreeCollection({
     rootNode: {

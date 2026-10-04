@@ -1,8 +1,7 @@
 /** @jsxImportSource solid-js */
 import { waitForEvent } from "@ark-ui/solid/tour";
-import { Button } from "@pisagor/solid";
-import type { TourStepType } from "@pisagor/solid/tour";
-import { Tour } from "@pisagor/solid/tour";
+import type { TourStepType } from "@pisagor/solid";
+import { Button, Tour } from "@pisagor/solid";
 export function WaitForClick() {
   const steps: TourStepType[] = [
     {

@@ -1,5 +1,5 @@
 import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/vue/toggle-group";
-import type { ToggleGroupProps as ToggleGroupRootSharedProps } from "@pisagor/props";
+import type { ToggleGroupProps as BaseToggleGroupRootProps } from "@pisagor/props";
 import { type ToggleGroupRecipe, toggleGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
@@ -16,7 +16,7 @@ interface ToggleGroupContextValue {
   variant: ToggleGroupVariant;
 }
 
-export interface ToggleGroupRootProps extends ToggleGroupRootSharedProps {
+export interface ToggleGroupRootProps extends BaseToggleGroupRootProps {
   class?: unknown;
   defaultValue?: string[];
   disabled?: boolean;

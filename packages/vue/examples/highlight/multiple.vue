@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Highlight } from "../../src/components/highlight";
+import { Highlight } from "@pisagor/vue";
 </script>
 
 <template>

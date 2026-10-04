@@ -4,7 +4,9 @@ import { Field as FieldPrimitive } from "@ark-ui/svelte/field";
 import { cn } from "@pisagor/utils";
 import { useFieldSlots } from "./field.context";
 
-type Props = Omit<FieldRequiredIndicatorProps, "class"> & { class?: string | undefined };
+type Props = Omit<FieldRequiredIndicatorProps, "class"> & {
+  class?: string | undefined;
+};
 
 let { children, class: className, ...rest }: Props = $props();
 const slots = useFieldSlots();

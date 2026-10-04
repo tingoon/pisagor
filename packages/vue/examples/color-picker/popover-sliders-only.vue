@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Button, Field } from "@pisagor/vue";
-import { ColorPicker } from "../../src/components/color-picker";
+import { Button, ColorPicker, Field } from "@pisagor/vue";
 </script>
 
 <template>

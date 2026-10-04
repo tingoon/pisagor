@@ -1,5 +1,4 @@
-import { Field } from "@pisagor/react";
-import { NumberInput } from "@pisagor/react/number-input";
+import { Field, NumberInput } from "@pisagor/react";
 export function Step() {
   return (
     <div className="flex flex-col gap-2">

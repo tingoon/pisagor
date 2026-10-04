@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Card } from "@pisagor/solid";
-import { Accordion } from "@pisagor/solid/accordion";
+import { Accordion, Card } from "@pisagor/solid";
 import { faqItems } from "./helpers";
 
 export function WithCard() {

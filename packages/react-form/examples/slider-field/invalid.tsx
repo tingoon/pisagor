@@ -1,4 +1,4 @@
-import { SliderField } from "../../src/fields/slider-field";
+import { SliderField } from "@pisagor/react-form";
 
 export function Invalid() {
   return (

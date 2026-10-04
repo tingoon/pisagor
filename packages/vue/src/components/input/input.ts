@@ -1,5 +1,5 @@
 import { Field as FieldPrimitive } from "@ark-ui/vue/field";
-import type { InputProps as InputSharedProps } from "@pisagor/props";
+import type { InputProps as BaseInputProps } from "@pisagor/props";
 import {
   type InputRecipeSlot,
   inputRecipe,
@@ -24,7 +24,7 @@ type InputClassNames = VariantClassNames<InputRecipeSlot>;
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
-export interface InputProps extends InputSharedProps {
+export interface InputProps extends BaseInputProps {
   /**
    * Style recipe. Defaults to `inputRootRecipe` from `@pisagor/recipes/input-root`.
    *

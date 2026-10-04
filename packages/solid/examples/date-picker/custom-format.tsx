@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button, Calendar, parseDate } from "@pisagor/solid";
-import { DatePicker } from "@pisagor/solid/date-picker";
+import { Button, Calendar, DatePicker, parseDate } from "@pisagor/solid";
 import { CalendarIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";
 export function CustomFormat() {

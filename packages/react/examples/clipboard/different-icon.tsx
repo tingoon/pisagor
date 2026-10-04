@@ -1,5 +1,5 @@
 import { SparkleIcon } from "@phosphor-icons/react";
-import { Clipboard } from "@pisagor/react/clipboard";
+import { Clipboard } from "@pisagor/react";
 
 export function DifferentIcon() {
   return (

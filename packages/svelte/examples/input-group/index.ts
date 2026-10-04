@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import align_block_endRaw from "./align-block-end.svelte?raw";
 import align_block_startRaw from "./align-block-start.svelte?raw";
 import align_inline_endRaw from "./align-inline-end.svelte?raw";
@@ -13,22 +12,22 @@ import with_keyboard_shortcutRaw from "./with-keyboard-shortcut.svelte?raw";
 import with_spinnerRaw from "./with-spinner.svelte?raw";
 import with_textareaRaw from "./with-textarea.svelte?raw";
 
-export const imports = `import { InputGroup } from "@pisagor/svelte/input-group";`;
+export const imports = `import { InputGroup } from "@pisagor/svelte";`;
 
 export const sources = {
-  AlignBlockEnd: stripSvelteExample(align_block_endRaw),
-  AlignBlockStart: stripSvelteExample(align_block_startRaw),
-  AlignInlineEnd: stripSvelteExample(align_inline_endRaw),
-  AlignInlineStart: stripSvelteExample(align_inline_startRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  Invalid: stripSvelteExample(invalidRaw),
-  Sizes: stripSvelteExample(sizesRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  WithBadge: stripSvelteExample(with_badgeRaw),
-  WithKeyboardShortcut: stripSvelteExample(with_keyboard_shortcutRaw),
-  WithSpinner: stripSvelteExample(with_spinnerRaw),
-  WithTextarea: stripSvelteExample(with_textareaRaw),
+  AlignBlockEnd: align_block_endRaw,
+  AlignBlockStart: align_block_startRaw,
+  AlignInlineEnd: align_inline_endRaw,
+  AlignInlineStart: align_inline_startRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithBadge: with_badgeRaw,
+  WithKeyboardShortcut: with_keyboard_shortcutRaw,
+  WithSpinner: with_spinnerRaw,
+  WithTextarea: with_textareaRaw,
 } as const;
 
 export { default as AlignBlockEnd } from "./align-block-end.svelte";

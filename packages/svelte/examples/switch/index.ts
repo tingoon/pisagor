@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
 import disabledRaw from "./disabled.svelte?raw";
@@ -6,15 +5,15 @@ import invalidRaw from "./invalid.svelte?raw";
 import sizesRaw from "./sizes.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 
-export const imports = `import { Switch } from "@pisagor/svelte/switch";`;
+export const imports = `import { Switch } from "@pisagor/svelte";`;
 
 export const sources = {
-  Controlled: stripSvelteExample(controlledRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  Invalid: stripSvelteExample(invalidRaw),
-  Sizes: stripSvelteExample(sizesRaw),
-  Variants: stripSvelteExample(variantsRaw),
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
 } as const;
 
 export { default as Controlled } from "./controlled.svelte";

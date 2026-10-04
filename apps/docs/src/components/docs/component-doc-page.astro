@@ -12,7 +12,6 @@ import {
   type ComponentDocKind,
   defaultPackageName,
   getExampleExport,
-  hasSkillFolder,
   listComponentDocTabs,
   loadExamples,
   loadProps,
@@ -44,9 +43,8 @@ const kind = Astro.props.kind ?? "component";
 const activeTab = Astro.props.tab;
 const anatomySrc = resolveAnatomySrc(id);
 
-const { Content, frontmatter } = await loadSkillMd(framework, id, kind);
+const { frontmatter } = await loadSkillMd(framework, id, kind);
 const panes = await loadSkillPanes(framework, id, kind);
-const isSplit = hasSkillFolder(framework, id, kind);
 const docs = frontmatter as ComponentDocs;
 const examples = loadExamples(framework, id, kind);
 const propsRows = loadProps(id);
@@ -65,7 +63,6 @@ if (!tabs.some((t) => t.id === activeTab)) {
 
 const DesignContent = panes.design?.Content;
 const DevelopContent = panes.develop?.Content;
-const UsageContent = panes.usage?.Content;
 
 const paneForToc = activeTab === "design" ? "design" : "develop";
 const paneHeadings = extractTocHeadings(
@@ -167,13 +164,7 @@ const tocTabLinkClass =
     {activeTab === "develop" ? (
   <div aria-labelledby="doc-tab-develop" id="doc-panel-develop" role="tabpanel">
     <div class:list={[proseClass, exampleDocs.length > 0 ? "mb-10" : ""]}>
-      {isSplit && DevelopContent ? (
-        <DevelopContent />
-      ) : isSplit && UsageContent ? (
-        <UsageContent />
-      ) : (
-        <Content />
-      )}
+      {DevelopContent ? <DevelopContent /> : null}
     </div>
 
     {exampleDocs.length > 0 ? (

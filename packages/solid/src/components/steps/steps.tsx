@@ -13,8 +13,8 @@ import type {
 } from "@ark-ui/solid/steps";
 import { Steps as StepsPrimitive } from "@ark-ui/solid/steps";
 import type {
-  StepsItemProps as StepsItemSharedProps,
-  StepsProps as StepsRootSharedProps,
+  StepsItemProps as BaseStepsItemProps,
+  StepsProps as BaseStepsRootProps,
 } from "@pisagor/props";
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -30,11 +30,11 @@ import {
 
 export interface StepsRootProps
   extends StepsPrimitiveRootProps,
-    StepsRootSharedProps {}
+    BaseStepsRootProps {}
 
 export interface StepsItemProps
   extends StepsPrimitiveItemProps,
-    StepsItemSharedProps {}
+    BaseStepsItemProps {}
 
 export type StepsTitleProps = ComponentProps<typeof ark.span>;
 export type StepsDescriptionProps = ComponentProps<typeof ark.span>;

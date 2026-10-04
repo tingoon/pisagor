@@ -1,4 +1,4 @@
-import type { SpinnerProps as SpinnerSharedProps } from "@pisagor/props";
+import type { SpinnerProps as BaseSpinnerProps } from "@pisagor/props";
 import { spinnerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
@@ -6,7 +6,7 @@ import { splitProps } from "solid-js";
 
 export interface SpinnerProps
   extends JSX.SvgSVGAttributes<SVGSVGElement>,
-    SpinnerSharedProps {}
+    BaseSpinnerProps {}
 
 export function Spinner(props: SpinnerProps): JSX.Element {
   const [local, rest] = splitProps(props, [

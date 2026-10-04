@@ -6,14 +6,19 @@ import { cn } from "@pisagor/utils";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 import { useListboxItem } from "./listbox.context";
 
-type Props = Omit<ListboxItemIndicatorProps, "class"> & { class?: string | undefined };
+type Props = Omit<ListboxItemIndicatorProps, "class"> & {
+  class?: string | undefined;
+};
 
 let { class: className, children, ...rest }: Props = $props();
 const ctx = useListboxItem();
 const slots = $derived(ctx?.slots ?? listboxItemRecipe());
 </script>
 
-<ListboxPrimitive.ItemIndicator {...rest} class={slots.indicator({ class: cn(className) })}>
+<ListboxPrimitive.ItemIndicator
+  {...rest}
+  class={slots.indicator({ class: cn(className) })}
+>
   {#if children}
     {@render children()}
   {:else}

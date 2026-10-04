@@ -1,7 +1,6 @@
 import { cn } from "@pisagor/utils";
+import { Button, Presence } from "@pisagor/vue";
 import { defineComponent, h, ref } from "vue";
-import { Presence } from "../../src/components/presence";
-import { outlineButtonClass } from "../../src/internal/story-button";
 
 export default defineComponent({
   name: "Default",
@@ -11,13 +10,13 @@ export default defineComponent({
     return () =>
       h("div", { class: "relative" }, [
         h(
-          "button",
+          Button,
           {
-            class: outlineButtonClass(),
             onClick: () => {
               present.value = !present.value;
             },
             type: "button",
+            variant: "outline",
           },
           "Toggle",
         ),

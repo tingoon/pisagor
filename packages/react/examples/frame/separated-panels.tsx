@@ -1,4 +1,4 @@
-import { Frame } from "@pisagor/react/frame";
+import { Frame } from "@pisagor/react";
 
 export function SeparatedPanels() {
   return (

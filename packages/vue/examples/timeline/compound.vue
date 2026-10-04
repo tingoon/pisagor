@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { PhCheckCircle, PhCircle, PhRocket } from "@phosphor-icons/vue";
-import { Timeline } from "../../src/components/timeline";
+import { Timeline } from "@pisagor/vue";
 </script>
 
 <template>

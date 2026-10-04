@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { PhPlus } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
+import { Button, Tour } from "@pisagor/vue";
 import { ref } from "vue";
-import { Tour } from "../../src/components/tour";
 
 const items = ref(["Item 1", "Item 2"]);
 const addItem = () => {

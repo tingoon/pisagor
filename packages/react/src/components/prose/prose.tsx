@@ -1,12 +1,12 @@
 import { ark } from "@ark-ui/react/factory";
-import type { ProseProps as ProseSharedProps } from "@pisagor/props";
+import type { ProseProps as BaseProseProps } from "@pisagor/props";
 import { proseRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 
 // #region Types
 export interface ProseProps
   extends Omit<ComponentProps<typeof ark.div>, "dangerouslySetInnerHTML">,
-    ProseSharedProps {
+    BaseProseProps {
   /**
    * Trusted HTML content rendered via `dangerouslySetInnerHTML`.
    *

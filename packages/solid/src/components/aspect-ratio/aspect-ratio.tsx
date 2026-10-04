@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/solid/factory";
-import type { AspectRatioProps as AspectRatioSharedProps } from "@pisagor/props";
+import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
 import { aspectRatioRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -7,7 +7,7 @@ import { splitProps } from "solid-js";
 
 export interface AspectRatioProps
   extends ComponentProps<typeof ark.div>,
-    AspectRatioSharedProps {}
+    BaseAspectRatioProps {}
 
 export function AspectRatio(props: AspectRatioProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "recipe"]);

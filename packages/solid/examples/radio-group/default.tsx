@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { RadioGroup } from "@pisagor/solid/radio-group";
+import { RadioGroup } from "@pisagor/solid";
 
 export function Default() {
   return (

@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Spinner } from "@pisagor/solid";
-import { InputGroup } from "@pisagor/solid/input-group";
+import { InputGroup, Spinner } from "@pisagor/solid";
 export function WithSpinner() {
   return (
     <InputGroup data-disabled>

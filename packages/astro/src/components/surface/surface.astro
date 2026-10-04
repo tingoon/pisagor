@@ -1,9 +1,9 @@
 ---
-import type { SurfaceProps as SurfaceSharedProps } from "@pisagor/props";
+import type { SurfaceProps as BaseSurfaceProps } from "@pisagor/props";
 import { surfaceRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-type SurfaceVariant = NonNullable<SurfaceSharedProps["variant"]>;
+type SurfaceVariant = NonNullable<BaseSurfaceProps["variant"]>;
 
 const AUTO_VARIANTS = [
   "default",
@@ -12,7 +12,7 @@ const AUTO_VARIANTS = [
   "tertiary",
 ] as const satisfies readonly SurfaceVariant[];
 
-interface Props extends HTMLAttributes<"div">, SurfaceSharedProps {
+interface Props extends HTMLAttributes<"div">, BaseSurfaceProps {
   /**
    * Nesting depth used when `variant` is omitted.
    *

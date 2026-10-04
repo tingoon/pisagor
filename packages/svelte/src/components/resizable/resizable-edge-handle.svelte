@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { ResizableEdgeHandleProps as ResizableEdgeHandleSharedProps } from "@pisagor/props";
+import type { ResizableEdgeHandleProps as BaseResizableEdgeHandleProps } from "@pisagor/props";
 import { resizableEdgeHandleRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import DotsSixVerticalIcon from "phosphor-svelte/lib/DotsSixVerticalIcon";
@@ -8,8 +8,7 @@ import type { HTMLButtonAttributes } from "svelte/elements";
 type ResizableHandlePosition = "bottom" | "center" | "top";
 type ResizableEdgePlacement = "end" | "start";
 
-type Props = Omit<HTMLButtonAttributes, "class"> &
-  {
+type Props = Omit<HTMLButtonAttributes, "class"> & {
   class?: string | undefined;
   handlePosition?: ResizableHandlePosition;
   label: string;
@@ -20,7 +19,7 @@ type Props = Omit<HTMLButtonAttributes, "class"> &
   onWidthChange: (width: number) => void;
   placement: ResizableEdgePlacement;
   width: number;
-  } & ResizableEdgeHandleSharedProps;
+} & BaseResizableEdgeHandleProps;
 
 let {
   placement,
@@ -58,6 +57,48 @@ function applyWidth(nextWidth: number) {
   onResizeChange?.(nextWidth);
   onWidthChange(nextWidth);
 }
+
+function handleDoubleClick(event: MouseEvent) {
+  event.preventDefault();
+  onResizeEnd?.();
+  applyWidth(initialWidth);
+}
+
+function handleLostPointerCapture() {
+  onResizeEnd?.();
+  onWidthChange(liveWidth);
+}
+
+function handlePointerDown(
+  event: PointerEvent & { currentTarget: HTMLButtonElement },
+) {
+  event.currentTarget.setPointerCapture(event.pointerId);
+  startX = event.clientX;
+  startWidth = width;
+  liveWidth = width;
+  onResizeStart?.();
+}
+
+function handlePointerMove(
+  event: PointerEvent & { currentTarget: HTMLButtonElement },
+) {
+  if (!event.currentTarget.hasPointerCapture(event.pointerId)) return;
+  const delta = event.clientX - startX;
+  const next = Math.max(
+    minWidth,
+    isStart ? startWidth + delta : startWidth - delta,
+  );
+  liveWidth = next;
+  onResizeChange?.(next);
+}
+
+function handlePointerUp(
+  event: PointerEvent & { currentTarget: HTMLButtonElement },
+) {
+  event.currentTarget.releasePointerCapture(event.pointerId);
+  onResizeEnd?.();
+  onWidthChange(liveWidth);
+}
 </script>
 
 <button
@@ -67,34 +108,11 @@ function applyWidth(nextWidth: number) {
   data-handle-position={handlePosition}
   data-part="edge-handle"
   data-scope="resizable"
-  ondblclick={(event) => {
-  event.preventDefault();
-  onResizeEnd?.();
-  applyWidth(initialWidth);
-}}
-  onlostpointercapture={() => {
-  onResizeEnd?.();
-  onWidthChange(liveWidth);
-}}
-  onpointerdown={(event) => {
-  event.currentTarget.setPointerCapture(event.pointerId);
-  startX = event.clientX;
-  startWidth = width;
-  liveWidth = width;
-  onResizeStart?.();
-}}
-  onpointermove={(event) => {
-  if (!event.currentTarget.hasPointerCapture(event.pointerId)) return;
-  const delta = event.clientX - startX;
-  const next = Math.max(minWidth, isStart ? startWidth + delta : startWidth - delta);
-  liveWidth = next;
-  onResizeChange?.(next);
-}}
-  onpointerup={(event) => {
-  event.currentTarget.releasePointerCapture(event.pointerId);
-  onResizeEnd?.();
-  onWidthChange(liveWidth);
-}}
+  ondblclick={handleDoubleClick}
+  onlostpointercapture={handleLostPointerCapture}
+  onpointerdown={handlePointerDown}
+  onpointermove={handlePointerMove}
+  onpointerup={handlePointerUp}
   type="button"
 >
   <span class={edgeHandle.grip()}>

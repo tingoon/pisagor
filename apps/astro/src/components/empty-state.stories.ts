@@ -1,7 +1,8 @@
 import { Button } from "@pisagor/astro/button";
 import { EmptyState } from "@pisagor/astro/empty-state";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: EmptyState,
   parameters: {
     docs: {
@@ -11,9 +12,9 @@ export default {
     },
   },
   title: "Components/Feedback/Empty State",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   args: {
     description: "Create your first project to get started.",
     slots: {
@@ -22,4 +23,4 @@ export const Playground = {
     title: "No projects yet",
   },
   tags: ["autodocs"],
-};
+});

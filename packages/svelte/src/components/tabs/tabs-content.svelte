@@ -10,6 +10,9 @@ let { class: className, children, ...rest }: Props = $props();
 const { slots } = useTabs();
 </script>
 
-<TabsPrimitive.Content {...rest} class={slots.content({ class: cn(className) })}>
+<TabsPrimitive.Content
+  {...rest}
+  class={slots.content({ class: cn(className) })}
+>
   {@render children?.()}
 </TabsPrimitive.Content>

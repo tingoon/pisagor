@@ -1,6 +1,7 @@
 /** @jsxImportSource solid-js */
+
+import { QrCode } from "@pisagor/solid";
 import { FishIcon } from "@pisagor/solid/icons";
-import { QrCode } from "@pisagor/solid/qr-code";
 
 export function Overlay() {
   return (

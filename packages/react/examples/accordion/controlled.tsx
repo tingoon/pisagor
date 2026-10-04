@@ -1,4 +1,4 @@
-import { Accordion } from "@pisagor/react/accordion";
+import { Accordion } from "@pisagor/react";
 import { useState } from "react";
 import { shortFaqItems } from "./helpers";
 

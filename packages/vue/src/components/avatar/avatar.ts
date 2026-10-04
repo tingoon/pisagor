@@ -1,5 +1,5 @@
 import { AvatarFallback, AvatarImage, AvatarRoot } from "@ark-ui/vue/avatar";
-import type { AvatarProps as AvatarSharedProps } from "@pisagor/props";
+import type { AvatarProps as BaseAvatarProps } from "@pisagor/props";
 import {
   type AvatarRecipeSlot,
   type AvatarVariantProps,
@@ -16,7 +16,7 @@ export type AvatarSize = NonNullable<AvatarVariantProps["size"]>;
 
 export type AvatarClassNames = VariantClassNames<AvatarRecipeSlot>;
 
-export interface AvatarProps extends AvatarSharedProps {
+export interface AvatarProps extends BaseAvatarProps {
   classNames?: AvatarClassNames;
   /** Renders the avatar image with the provided src */
   src?: string;

@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Tour, type TourStepDetails } from "@pisagor/svelte/tour";
+import { Button, Tour, type TourStepDetails } from "@pisagor/svelte";
 
 const steps: TourStepDetails[] = [
   {
@@ -16,7 +15,8 @@ const steps: TourStepDetails[] = [
       { action: "prev", label: "Back" },
       { action: "next", label: "Next" },
     ],
-    description: "This step appears as a tooltip anchored to a specific element.",
+    description:
+      "This step appears as a tooltip anchored to a specific element.",
     id: "tooltip-step",
     target: () => document.querySelector<HTMLElement>("#tour-target-element"),
     title: "Tooltip step",
@@ -47,7 +47,9 @@ const steps: TourStepDetails[] = [
 <div class="flex flex-col gap-2">
   <Tour {steps}>
     <Tour.Trigger>
-      {#snippet asChild(props)}
+      {#snippet asChild(
+  props,
+)}
         <Button {...props()} variant="outline">Start tour</Button>
       {/snippet}
     </Tour.Trigger>

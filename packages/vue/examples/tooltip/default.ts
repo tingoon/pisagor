@@ -1,8 +1,9 @@
 import { PhTextB } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
+import { Button, Tooltip } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Tooltip } from "../../src/components/tooltip";
-import type { ArkPart } from "../../src/internal/types";
+
+type ArkPart = Parameters<typeof h>[0];
+
 export default defineComponent({
   name: "Default",
   setup() {

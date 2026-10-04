@@ -5,8 +5,7 @@ import {
   TrashIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react";
-import { ActionBar } from "@pisagor/react/action-bar";
+import { ActionBar, Button } from "@pisagor/react";
 import { useState } from "react";
 export function Placements() {
   type Placement = "bottom" | "bottom-start" | "bottom-end";

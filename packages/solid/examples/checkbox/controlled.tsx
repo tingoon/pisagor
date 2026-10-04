@@ -1,8 +1,7 @@
 /** @jsxImportSource solid-js */
 
-import { Field } from "@pisagor/solid";
-import type { CheckboxCheckedState } from "@pisagor/solid/checkbox";
-import { Checkbox } from "@pisagor/solid/checkbox";
+import type { CheckboxCheckedState } from "@pisagor/solid";
+import { Checkbox, Field } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
   const [checked, setChecked] = createSignal<CheckboxCheckedState>(false);

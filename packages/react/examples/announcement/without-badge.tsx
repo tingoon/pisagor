@@ -1,5 +1,5 @@
 import { ArrowUpRightIcon } from "@phosphor-icons/react";
-import { Announcement } from "@pisagor/react/announcement";
+import { Announcement } from "@pisagor/react";
 
 export function WithoutBadge() {
   return (

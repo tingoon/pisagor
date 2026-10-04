@@ -1,5 +1,5 @@
 <script lang="ts">
-import { JsonTreeView } from "@pisagor/svelte/json-tree-view";
+import { JsonTreeView } from "@pisagor/svelte";
 import { dataTypesData } from "./helpers";
 </script>
 

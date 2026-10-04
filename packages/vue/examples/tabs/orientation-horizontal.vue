@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Tabs } from "../../src/components/tabs";
+import { Tabs } from "@pisagor/vue";
 import { numberedTabs } from "./helpers";
 
 const items = numberedTabs();

@@ -5,7 +5,7 @@ import {
   type SwitchRootProps as SwitchPrimitiveRootProps,
   type SwitchThumbProps,
 } from "@ark-ui/solid/switch";
-import type { SwitchProps as SwitchRootSharedProps } from "@pisagor/props";
+import type { SwitchProps as BaseSwitchRootProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
@@ -19,7 +19,7 @@ type SwitchClassNames = VariantClassNames<SwitchRecipeSlot>;
 
 type SwitchRootProps = SwitchPrimitiveRootProps & {
   variant?: FormControlVariant;
-} & SwitchRootSharedProps;
+} & BaseSwitchRootProps;
 
 export interface SwitchProps extends Omit<SwitchRootProps, "children"> {
   onValueChange?: (value: boolean) => void;

@@ -5,8 +5,7 @@ import {
   MagnifyingGlassIcon,
   UserIcon,
 } from "@phosphor-icons/react";
-import { Avatar, Button, Sidebar } from "@pisagor/react";
-import { Navbar } from "@pisagor/react/navbar";
+import { Avatar, Button, Navbar, Sidebar } from "@pisagor/react";
 export function WithSidebar() {
   return (
     <Sidebar.Provider>

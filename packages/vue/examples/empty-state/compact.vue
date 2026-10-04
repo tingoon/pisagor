@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { EmptyState } from "../../src/components/empty-state";
+import { EmptyState } from "@pisagor/vue";
 </script>
 
 <template>

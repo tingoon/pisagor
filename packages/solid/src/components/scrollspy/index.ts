@@ -1,2 +1,1 @@
-export type { ScrollspyProps } from "./scrollspy";
-export { Scrollspy } from "./scrollspy";
+export { Scrollspy, type ScrollspyProps } from "./scrollspy";

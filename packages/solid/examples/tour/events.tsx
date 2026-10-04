@@ -1,7 +1,7 @@
 /** @jsxImportSource solid-js */
-import { Button } from "@pisagor/solid";
-import type { TourStepType } from "@pisagor/solid/tour";
-import { Tour } from "@pisagor/solid/tour";
+
+import type { TourStepType } from "@pisagor/solid";
+import { Button, Tour } from "@pisagor/solid";
 import { createSignal, For } from "solid-js";
 
 export function Events() {

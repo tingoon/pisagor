@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import compoundRaw from "./compound.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
 import custom_indicatorRaw from "./custom-indicator.svelte?raw";
@@ -10,19 +9,19 @@ import orientation_horizontalRaw from "./orientation-horizontal.svelte?raw";
 import orientation_verticalRaw from "./orientation-vertical.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 
-export const imports = `import { SegmentGroup } from "@pisagor/svelte/segment-group";`;
+export const imports = `import { SegmentGroup } from "@pisagor/svelte";`;
 
 export const sources = {
-  Compound: stripSvelteExample(compoundRaw),
-  Controlled: stripSvelteExample(controlledRaw),
-  CustomIndicator: stripSvelteExample(custom_indicatorRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  DisabledItem: stripSvelteExample(disabled_itemRaw),
-  IndicatorOnHover: stripSvelteExample(indicator_on_hoverRaw),
-  OrientationHorizontal: stripSvelteExample(orientation_horizontalRaw),
-  OrientationVertical: stripSvelteExample(orientation_verticalRaw),
-  Variants: stripSvelteExample(variantsRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  CustomIndicator: custom_indicatorRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  DisabledItem: disabled_itemRaw,
+  IndicatorOnHover: indicator_on_hoverRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  Variants: variantsRaw,
 } as const;
 
 export { default as Compound } from "./compound.svelte";

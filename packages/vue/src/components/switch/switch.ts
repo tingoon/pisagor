@@ -1,5 +1,5 @@
 import { Switch as SwitchPrimitive } from "@ark-ui/vue/switch";
-import type { SwitchProps as SwitchSharedProps } from "@pisagor/props";
+import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -12,7 +12,7 @@ type SwitchClassNames = VariantClassNames<SwitchRecipeSlot>;
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface SwitchProps extends SwitchSharedProps {
+export interface SwitchProps extends BaseSwitchProps {
   class?: unknown;
 }
 // #endregion

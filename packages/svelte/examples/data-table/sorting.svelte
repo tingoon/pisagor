@@ -1,7 +1,7 @@
 <script lang="ts">
+import { Table } from "@pisagor/svelte";
 import type { SortingState } from "@pisagor/svelte/data-table";
 import { DataTable } from "@pisagor/svelte/data-table";
-import { Table } from "@pisagor/svelte/table";
 
 const data = [
   { id: "1", name: "Ada", role: "Admin" },
@@ -15,16 +15,15 @@ const columns = [
 ];
 
 let sorting = $state<SortingState>([{ desc: false, id: "name" }]);
+
+function onSortingChange(
+  updater: SortingState | ((prev: SortingState) => SortingState),
+) {
+  sorting = typeof updater === "function" ? updater(sorting) : updater;
+}
 </script>
 
-<DataTable
-  {columns}
-  {data}
-  onSortingChange={(updater) => {
-    sorting = typeof updater === "function" ? updater(sorting) : updater;
-  }}
-  {sorting}
->
+<DataTable {columns} {data} {onSortingChange} {sorting}>
   <Table>
     <Table.Header>
       <DataTable.Header>

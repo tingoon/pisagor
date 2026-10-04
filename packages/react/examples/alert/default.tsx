@@ -1,4 +1,4 @@
-import { Alert } from "@pisagor/react/alert";
+import { Alert } from "@pisagor/react";
 
 export function Default() {
   return (

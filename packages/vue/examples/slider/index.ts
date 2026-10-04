@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.vue?raw";
 import defaultRaw from "./default.vue?raw";
 import disabledRaw from "./disabled.vue?raw";
@@ -12,21 +11,21 @@ import variantsRaw from "./variants.vue?raw";
 import verticalRaw from "./vertical.vue?raw";
 import with_labelRaw from "./with-label.vue?raw";
 
-export const imports = `import { Slider } from "@pisagor/vue/slider";`;
+export const imports = `import { Slider } from "@pisagor/vue";`;
 
 export const sources = {
-  Controlled: stripVueExample(controlledRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  Invalid: stripVueExample(invalidRaw),
-  Marks: stripVueExample(marksRaw),
-  MinMax: stripVueExample(min_maxRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  Range: stripVueExample(rangeRaw),
-  Step: stripVueExample(stepRaw),
-  Variants: stripVueExample(variantsRaw),
-  Vertical: stripVueExample(verticalRaw),
-  WithLabel: stripVueExample(with_labelRaw),
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  Marks: marksRaw,
+  MinMax: min_maxRaw,
+  OnSurface: on_surfaceRaw,
+  Range: rangeRaw,
+  Step: stepRaw,
+  Variants: variantsRaw,
+  Vertical: verticalRaw,
+  WithLabel: with_labelRaw,
 } as const;
 
 export { default as Controlled } from "./controlled.vue";

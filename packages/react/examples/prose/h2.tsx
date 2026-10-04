@@ -1,4 +1,4 @@
-import { Prose } from "@pisagor/react/prose";
+import { Prose } from "@pisagor/react";
 
 export function H2() {
   return (

@@ -1,4 +1,4 @@
-import { ColorPicker } from "@pisagor/react/color-picker";
+import { ColorPicker } from "@pisagor/react";
 
 export function SliderAlphaChannel() {
   return (

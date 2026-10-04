@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Tabs } from "@pisagor/svelte/tabs";
+import { Button, Tabs } from "@pisagor/svelte";
 
 let value = $state("profile");
 </script>
@@ -8,22 +7,22 @@ let value = $state("profile");
 <div class="flex flex-col gap-2">
   <Tabs
     items={[
-      {
-        content: "Manage your profile information and preferences.",
-        label: "Profile",
-        value: "profile",
-      },
-      {
-        content: "Customize notifications, theme, and text density.",
-        label: "Settings",
-        value: "settings",
-      },
-      {
-        content: "Update your password and security settings.",
-        label: "Security",
-        value: "security",
-      },
-    ]}
+  {
+    content: "Manage your profile information and preferences.",
+    label: "Profile",
+    value: "profile",
+  },
+  {
+    content: "Customize notifications, theme, and text density.",
+    label: "Settings",
+    value: "settings",
+  },
+  {
+    content: "Update your password and security settings.",
+    label: "Security",
+    value: "security",
+  },
+]}
     onValueChange={(e) => (value = e.value)}
     {value}
   />

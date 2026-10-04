@@ -6,4 +6,8 @@ type Props = ComponentProps<typeof DropdownMenuShortcut>;
 let { ...rest }: Props = $props();
 </script>
 
-<DropdownMenuShortcut {...rest} data-part="shortcut" data-scope="context-menu" />
+<DropdownMenuShortcut
+  {...rest}
+  data-part="shortcut"
+  data-scope="context-menu"
+/>

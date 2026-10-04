@@ -1,7 +1,6 @@
 <script lang="ts">
 import { waitForEvent } from "@ark-ui/svelte/tour";
-import { Button } from "@pisagor/svelte";
-import { Tour, type TourStepDetails } from "@pisagor/svelte/tour";
+import { Button, Tour, type TourStepDetails } from "@pisagor/svelte";
 
 const steps: TourStepDetails[] = [
   {
@@ -64,7 +63,9 @@ const steps: TourStepDetails[] = [
 <div class="flex flex-col gap-2">
   <Tour {steps}>
     <Tour.Trigger>
-      {#snippet asChild(props)}
+      {#snippet asChild(
+  props,
+)}
         <Button {...props()} variant="outline">Start interactive tour</Button>
       {/snippet}
     </Tour.Trigger>

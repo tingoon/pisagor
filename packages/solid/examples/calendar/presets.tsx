@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button, Card } from "@pisagor/solid";
-import { Calendar } from "@pisagor/solid/calendar";
+import { Button, Calendar, Card } from "@pisagor/solid";
 export function Presets() {
   const presets = [
     { label: "Last 7 days", value: "last7Days" as const },

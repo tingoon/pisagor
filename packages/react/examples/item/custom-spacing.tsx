@@ -1,5 +1,5 @@
 import { UserIcon } from "@phosphor-icons/react";
-import { Item } from "@pisagor/react/item";
+import { Item } from "@pisagor/react";
 
 export function CustomSpacing() {
   return (

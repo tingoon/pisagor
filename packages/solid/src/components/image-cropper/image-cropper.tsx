@@ -6,7 +6,7 @@ import type {
   ImageCropperSelectionProps as ImageCropperPrimitiveSelectionProps,
 } from "@ark-ui/solid/image-cropper";
 import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/solid/image-cropper";
-import type { ImageCropperProps as ImageCropperRootSharedProps } from "@pisagor/props";
+import type { ImageCropperProps as BaseImageCropperRootProps } from "@pisagor/props";
 import { imageCropperRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
@@ -15,7 +15,7 @@ import { ImageCropperContext, useImageCropper } from "./image-cropper.context";
 
 export interface ImageCropperRootProps
   extends Omit<ImageCropperPrimitiveRootProps, "src" | "cropShape">,
-    ImageCropperRootSharedProps {
+    BaseImageCropperRootProps {
   src?: string;
   alt?: string;
   cropShape?: "rectangle" | "circle";

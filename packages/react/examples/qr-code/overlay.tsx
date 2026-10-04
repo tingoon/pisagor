@@ -1,5 +1,5 @@
 import { FishIcon } from "@phosphor-icons/react";
-import { QrCode } from "@pisagor/react/qr-code";
+import { QrCode } from "@pisagor/react";
 
 export function Overlay() {
   return (

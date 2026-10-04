@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { ColorPicker } from "@pisagor/vue";
 import { ref } from "vue";
-import { ColorPicker } from "../../src/components/color-picker";
 
 const swatches = ["#0485F7", "#EF4444", "#F59E0B", "#10B981"];
 const value = ref("#0485F7");

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import type { EmptyStateProps as EmptyStateSharedProps } from "@pisagor/props";
+import type { EmptyStateProps as BaseEmptyStateProps } from "@pisagor/props";
 import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
@@ -10,7 +10,7 @@ type ArkPart = Parameters<typeof h>[0];
 // #region Types
 type EmptyStateClassNames = VariantClassNames<EmptyStateRecipeSlot>;
 
-export interface EmptyStateProps extends EmptyStateSharedProps {
+export interface EmptyStateProps extends BaseEmptyStateProps {
   actions?: VNodeChild;
   class?: unknown;
   classNames?: EmptyStateClassNames;

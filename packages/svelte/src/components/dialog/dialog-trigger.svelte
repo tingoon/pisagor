@@ -6,4 +6,6 @@ type Props = DialogTriggerProps;
 let { children, ...rest }: Props = $props();
 </script>
 
-<DialogPrimitive.Trigger {...rest}> {@render children?.()} </DialogPrimitive.Trigger>
+<DialogPrimitive.Trigger {...rest}>
+  {@render children?.()}
+</DialogPrimitive.Trigger>

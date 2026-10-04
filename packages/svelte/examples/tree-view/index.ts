@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import checkbox_treeRaw from "./checkbox-tree.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
 import custom_iconsRaw from "./custom-icons.svelte?raw";
@@ -10,19 +9,19 @@ import multiple_selectionRaw from "./multiple-selection.svelte?raw";
 import renameRaw from "./rename.svelte?raw";
 import with_context_menuRaw from "./with-context-menu.svelte?raw";
 
-export const imports = `import { TreeView } from "@pisagor/svelte/tree-view";`;
+export const imports = `import { TreeView } from "@pisagor/svelte";`;
 
 export const sources = {
-  CheckboxTree: stripSvelteExample(checkbox_treeRaw),
-  Controlled: stripSvelteExample(controlledRaw),
-  CustomIcons: stripSvelteExample(custom_iconsRaw),
-  CustomIconsFolder: stripSvelteExample(custom_icons_folderRaw),
-  CustomIconsItem: stripSvelteExample(custom_icons_itemRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Links: stripSvelteExample(linksRaw),
-  MultipleSelection: stripSvelteExample(multiple_selectionRaw),
-  Rename: stripSvelteExample(renameRaw),
-  WithContextMenu: stripSvelteExample(with_context_menuRaw),
+  CheckboxTree: checkbox_treeRaw,
+  Controlled: controlledRaw,
+  CustomIcons: custom_iconsRaw,
+  CustomIconsFolder: custom_icons_folderRaw,
+  CustomIconsItem: custom_icons_itemRaw,
+  Default: defaultRaw,
+  Links: linksRaw,
+  MultipleSelection: multiple_selectionRaw,
+  Rename: renameRaw,
+  WithContextMenu: with_context_menuRaw,
 } as const;
 
 export { default as CheckboxTree } from "./checkbox-tree.svelte";

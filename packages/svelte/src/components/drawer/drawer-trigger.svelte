@@ -6,4 +6,6 @@ type Props = DrawerTriggerProps;
 let { children, ...rest }: Props = $props();
 </script>
 
-<DrawerPrimitive.Trigger {...rest}> {@render children?.()} </DrawerPrimitive.Trigger>
+<DrawerPrimitive.Trigger {...rest}>
+  {@render children?.()}
+</DrawerPrimitive.Trigger>

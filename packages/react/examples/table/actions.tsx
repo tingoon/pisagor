@@ -4,8 +4,7 @@ import {
   PencilSimpleIcon,
   TrashIcon,
 } from "@phosphor-icons/react";
-import { Button, DropdownMenu } from "@pisagor/react";
-import { Table } from "@pisagor/react/table";
+import { Button, DropdownMenu, Table } from "@pisagor/react";
 import { workspaceUsers } from "./helpers";
 export function Actions() {
   return (

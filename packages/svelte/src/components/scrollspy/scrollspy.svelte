@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { ScrollspyProps as ScrollspySharedProps } from "@pisagor/props";
+import type { ScrollspyProps as BaseScrollspyProps } from "@pisagor/props";
 import { scrollspyRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { onMount } from "svelte";
@@ -7,8 +7,7 @@ import type { HTMLAttributes } from "svelte/elements";
 
 type ScrollTarget = HTMLElement | Document | null | undefined;
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
   class?: string | undefined;
   history?: boolean;
   offset?: number;
@@ -16,7 +15,7 @@ type Props = Omit<HTMLAttributes<HTMLElement>, "class"> &
   smooth?: boolean;
   /** Bindable scroll target element (or document). */
   target?: ScrollTarget;
-  } & ScrollspySharedProps;
+} & BaseScrollspyProps;
 
 let {
   history = true,
@@ -40,7 +39,9 @@ let activeId = $state<string | null>(null);
 function resolveScrollElement(t: ScrollTarget): HTMLElement {
   if (t === document || !t) return document.documentElement;
   if (t instanceof HTMLElement) {
-    const viewport = t.querySelector('[data-scope="scroll-area"][data-part="viewport"]');
+    const viewport = t.querySelector(
+      '[data-scope="scroll-area"][data-part="viewport"]',
+    );
     if (viewport instanceof HTMLElement) return viewport;
     return t;
   }
@@ -50,14 +51,19 @@ function resolveScrollElement(t: ScrollTarget): HTMLElement {
 function resolveScrollTarget(t: ScrollTarget): HTMLElement | Window {
   if (t === document || !t) return window;
   if (t instanceof HTMLElement) {
-    const viewport = t.querySelector('[data-scope="scroll-area"][data-part="viewport"]');
+    const viewport = t.querySelector(
+      '[data-scope="scroll-area"][data-part="viewport"]',
+    );
     if (viewport instanceof HTMLElement) return viewport;
     return t;
   }
   return window;
 }
 
-function getSectionScrollOffset(section: HTMLElement, _scrollEl: HTMLElement): number {
+function getSectionScrollOffset(
+  section: HTMLElement,
+  _scrollEl: HTMLElement,
+): number {
   const sectionOffset = section.getAttribute(SCROLLSPY_OFFSET);
   const local = sectionOffset ? Number(sectionOffset) || 0 : 0;
   return offset + local;
@@ -66,11 +72,14 @@ function getSectionScrollOffset(section: HTMLElement, _scrollEl: HTMLElement): n
 function updateActive() {
   if (!rootEl) return;
   const scrollEl = resolveScrollElement(target);
-  const anchors = Array.from(rootEl.querySelectorAll<HTMLElement>(SCROLLSPY_ANCHOR_SELECTOR));
+  const anchors = Array.from(
+    rootEl.querySelectorAll<HTMLElement>(SCROLLSPY_ANCHOR_SELECTOR),
+  );
   if (anchors.length === 0) return;
 
   let current = anchors[0]?.getAttribute(SCROLLSPY_ANCHOR) ?? null;
-  const scrollTop = scrollEl === document.documentElement ? window.scrollY : scrollEl.scrollTop;
+  const scrollTop =
+    scrollEl === document.documentElement ? window.scrollY : scrollEl.scrollTop;
 
   for (const anchor of anchors) {
     const id = anchor.getAttribute(SCROLLSPY_ANCHOR);
@@ -79,7 +88,9 @@ function updateActive() {
     if (!section) continue;
     const top =
       section.getBoundingClientRect().top +
-      (scrollEl === document.documentElement ? window.scrollY : scrollEl.scrollTop) -
+      (scrollEl === document.documentElement
+        ? window.scrollY
+        : scrollEl.scrollTop) -
       getSectionScrollOffset(section, scrollEl);
     if (scrollTop + 1 >= top) current = id;
   }
@@ -101,7 +112,9 @@ function updateActive() {
 }
 
 function activateAnchor(event: MouseEvent | KeyboardEvent) {
-  const el = (event.target as HTMLElement | null)?.closest?.(SCROLLSPY_ANCHOR_SELECTOR);
+  const el = (event.target as HTMLElement | null)?.closest?.(
+    SCROLLSPY_ANCHOR_SELECTOR,
+  );
   if (!(el instanceof HTMLElement) || !rootEl?.contains(el)) return;
   const id = el.getAttribute(SCROLLSPY_ANCHOR);
   if (!id) return;
@@ -111,13 +124,18 @@ function activateAnchor(event: MouseEvent | KeyboardEvent) {
   const scrollEl = resolveScrollElement(target);
   const top =
     section.getBoundingClientRect().top +
-    (scrollEl === document.documentElement ? window.scrollY : scrollEl.scrollTop) -
+    (scrollEl === document.documentElement
+      ? window.scrollY
+      : scrollEl.scrollTop) -
     getSectionScrollOffset(section, scrollEl);
   const scrollTarget = resolveScrollTarget(target);
   if (scrollTarget === window) {
     window.scrollTo({ behavior: smooth ? "smooth" : "auto", top });
   } else {
-    (scrollTarget as HTMLElement).scrollTo({ behavior: smooth ? "smooth" : "auto", top });
+    (scrollTarget as HTMLElement).scrollTo({
+      behavior: smooth ? "smooth" : "auto",
+      top,
+    });
   }
 }
 

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { RadioGroup } from "@pisagor/vue";
 import { ref } from "vue";
-import { RadioGroup } from "../../src/components/radio-group";
 
 const value = ref(null);
 const items = [

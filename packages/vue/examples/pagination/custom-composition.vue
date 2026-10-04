@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Pagination } from "../../src/components/pagination";
+import { Pagination } from "@pisagor/vue";
 </script>
 
 <template>

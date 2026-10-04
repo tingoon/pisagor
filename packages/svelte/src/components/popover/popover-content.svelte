@@ -2,17 +2,16 @@
 import type { PopoverContentProps as ArkPopoverContentProps } from "@ark-ui/svelte/popover";
 import { Popover as PopoverPrimitive } from "@ark-ui/svelte/popover";
 import { Portal } from "@ark-ui/svelte/portal";
-import type { PopoverProps as PopoverSharedProps } from "@pisagor/props";
+import type { PopoverProps as BasePopoverProps } from "@pisagor/props";
 import { buttonRecipe, popoverRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import { setPopoverContentContext } from "./popover.context";
 
-type Props = Omit<ArkPopoverContentProps, "class"> &
-  {
+type Props = Omit<ArkPopoverContentProps, "class"> & {
   class?: string | undefined;
   showCloseButton?: boolean;
-  } & PopoverSharedProps;
+} & BasePopoverProps;
 
 let {
   showCloseButton = false,
@@ -33,7 +32,10 @@ setPopoverContentContext({
 
 <Portal>
   <PopoverPrimitive.Positioner>
-    <PopoverPrimitive.Content {...rest} class={slots.base({ class: cn(className) })}>
+    <PopoverPrimitive.Content
+      {...rest}
+      class={slots.base({ class: cn(className) })}
+    >
       {@render children?.()}
       {#if showCloseButton}
         <PopoverPrimitive.CloseTrigger

@@ -1,16 +1,14 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte/button";
-import { Toaster, toast } from "@pisagor/svelte/toast";
-</script>
+import { Button, Toaster, toast } from "@pisagor/svelte";
 
-<Toaster />
-<Button
-  onclick={() =>
+function showToast() {
   toast.create({
     description: "Your changes have been saved.",
     title: "Success",
     type: "success",
-  })}
->
-  Show toast
-</Button>
+  });
+}
+</script>
+
+<Toaster />
+<Button onclick={showToast}>Show toast</Button>

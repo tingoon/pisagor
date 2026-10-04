@@ -1,19 +1,18 @@
-import { stripTsxExample } from "@pisagor/utils";
 import custom_spacingRaw from "./custom-spacing.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import iconRaw from "./icon.tsx?raw";
 import productRaw from "./product.tsx?raw";
 
-export const imports = `import { Card } from "@pisagor/react/card";`;
+export const imports = `import { Card } from "@pisagor/react";`;
 
 export const sources = {
-  CustomSpacing: stripTsxExample(custom_spacingRaw),
-  Default: stripTsxExample(defaultRaw),
-  Icon: stripTsxExample(iconRaw),
-  Product: stripTsxExample(productRaw),
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  Icon: iconRaw,
+  Product: productRaw,
 } as const;
 
-export { CustomSpacing } from "./custom-spacing";
-export { Default } from "./default";
-export { Icon } from "./icon";
-export { Product } from "./product";
+export * from "./custom-spacing";
+export * from "./default";
+export * from "./icon";
+export * from "./product";

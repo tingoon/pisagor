@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Card } from "@pisagor/solid/card";
+import { Card } from "@pisagor/solid";
 
 export function CustomSpacing() {
   return (

@@ -6,4 +6,6 @@ type Props = HoverCardTriggerProps;
 let { children, ...rest }: Props = $props();
 </script>
 
-<HoverCardPrimitive.Trigger {...rest}> {@render children?.()} </HoverCardPrimitive.Trigger>
+<HoverCardPrimitive.Trigger {...rest}>
+  {@render children?.()}
+</HoverCardPrimitive.Trigger>

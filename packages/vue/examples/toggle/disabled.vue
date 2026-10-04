@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Toggle } from "../../src/components/toggle";
+import { Toggle } from "@pisagor/vue";
 </script>
 
 <template>

@@ -1,4 +1,4 @@
-import { Steps } from "@pisagor/react/steps";
+import { Steps } from "@pisagor/react";
 
 export function Title() {
   const items = ["Info", "Docs", "Team"];

@@ -1,13 +1,19 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { FileUpload } from "@pisagor/svelte/file-upload";
+import { Button, FileUpload } from "@pisagor/svelte";
 import TrashIcon from "phosphor-svelte/lib/TrashIcon";
 </script>
 
 <FileUpload>
   <FileUpload.ClearTrigger class="absolute top-2 right-2">
-    {#snippet asChild(props)}
-      <Button {...props()} aria-label="Clear files" size="icon-sm" variant="ghost">
+    {#snippet asChild(
+  props,
+)}
+      <Button
+        {...props()}
+        aria-label="Clear files"
+        size="icon-sm"
+        variant="ghost"
+      >
         <TrashIcon />
       </Button>
     {/snippet}

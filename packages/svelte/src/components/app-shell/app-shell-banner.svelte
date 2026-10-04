@@ -18,7 +18,13 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "style"> & {
   style?: string | undefined;
 };
 
-let { position = "fixed", class: className, style, children, ...rest }: Props = $props();
+let {
+  position = "fixed",
+  class: className,
+  style,
+  children,
+  ...rest
+}: Props = $props();
 
 const ctx = useAppShell();
 let el = $state<HTMLDivElement | null>(null);
@@ -38,7 +44,10 @@ $effect(() => {
     return;
   }
   const syncHeight = () => {
-    ctx.setFixedStackVar(APP_SHELL_BANNER_HEIGHT_VAR, `${element.offsetHeight}px`);
+    ctx.setFixedStackVar(
+      APP_SHELL_BANNER_HEIGHT_VAR,
+      `${element.offsetHeight}px`,
+    );
   };
   syncHeight();
   const observer = new ResizeObserver(syncHeight);
@@ -52,7 +61,11 @@ $effect(() => {
 
 <div
   {...rest}
-  class={cn(ctx.slots.banner(), regionPositionClasses(ctx.slots, position, "row", "banner"), className)}
+  class={cn(
+  ctx.slots.banner(),
+  regionPositionClasses(ctx.slots, position, "row", "banner"),
+  className,
+)}
   data-part="banner"
   data-position={position}
   data-scope="app-shell"

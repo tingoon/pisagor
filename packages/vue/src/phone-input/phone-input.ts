@@ -1,6 +1,6 @@
 import { createListCollection } from "@ark-ui/vue/collection";
 import { PhCaretUpDown, PhGlobe } from "@phosphor-icons/vue";
-import type { PhoneInputProps as PhoneInputSharedProps } from "@pisagor/props";
+import type { PhoneInputProps as BasePhoneInputProps } from "@pisagor/props";
 import { type PhoneInputRecipeSlot, phoneInputRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
@@ -29,7 +29,7 @@ interface CountrySelectOption {
   value: Country;
 }
 
-export interface PhoneInputProps extends PhoneInputSharedProps {
+export interface PhoneInputProps extends BasePhoneInputProps {
   /**
    * Visual shell variant. Defaults to `primary`.
    */

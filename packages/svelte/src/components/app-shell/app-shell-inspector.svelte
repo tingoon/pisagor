@@ -9,7 +9,12 @@ import type {
   AppShellResizableProps,
 } from "./app-shell.context";
 import { useAppShell } from "./app-shell.context";
-import { gridAreaFor, mergeResizableProps, regionPositionClasses, regionVarFor } from "./region";
+import {
+  gridAreaFor,
+  mergeResizableProps,
+  regionPositionClasses,
+  regionVarFor,
+} from "./region";
 
 type Props = Omit<HTMLAttributes<HTMLElement>, "class" | "style"> & {
   children?: import("svelte").Snippet;
@@ -121,9 +126,7 @@ $effect(() => {
       onResizeChange={(nextWidth) => ctx.setRegionVar(regionVar, `${nextWidth}px`)}
       onResizeEnd={() => ctx.setRegionResizing(false)}
       onResizeStart={() => ctx.setRegionResizing(true)}
-      onWidthChange={(w) => {
-  widthPx = w;
-}}
+      onWidthChange={(w) => (widthPx = w)}
       {placement}
       width={widthPx}
     />

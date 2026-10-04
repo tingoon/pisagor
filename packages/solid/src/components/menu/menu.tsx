@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/solid/factory";
 import type {
-  MenuItemProps as MenuItemSharedProps,
-  MenuProps as MenuRootSharedProps,
+  MenuItemProps as BaseMenuItemProps,
+  MenuProps as BaseMenuRootProps,
 } from "@pisagor/props";
 import { menuItemRecipe, menuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -11,14 +11,14 @@ import { MenuContext, useMenu } from "./menu.context";
 
 export interface MenuRootProps
   extends ComponentProps<typeof ark.nav>,
-    MenuRootSharedProps {}
+    BaseMenuRootProps {}
 
 export type MenuPartProps = ComponentProps<typeof ark.div>;
 export type MenuListProps = ComponentProps<typeof ark.ul>;
 
 export interface MenuItemProps
   extends ComponentProps<typeof ark.button>,
-    MenuItemSharedProps {}
+    BaseMenuItemProps {}
 
 export interface MenuLinkProps extends ComponentProps<typeof ark.a> {
   active?: boolean;

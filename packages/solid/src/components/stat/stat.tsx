@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/solid/factory";
 import type {
-  StatProps as StatRootSharedProps,
-  StatTrendProps as StatTrendSharedProps,
+  StatProps as BaseStatRootProps,
+  StatTrendProps as BaseStatTrendProps,
 } from "@pisagor/props";
 import {
   type StatRecipeSlot,
@@ -18,11 +18,11 @@ type StatLabelProps = ComponentProps<typeof ark.div>;
 type StatValueProps = ComponentProps<typeof ark.div>;
 type StatDescriptionProps = ComponentProps<typeof ark.p>;
 
-type StatTrendProps = ComponentProps<typeof ark.div> & StatTrendSharedProps;
+type StatTrendProps = ComponentProps<typeof ark.div> & BaseStatTrendProps;
 
 type StatClassNames = VariantClassNames<StatRecipeSlot>;
 
-type StatRootProps = ComponentProps<typeof ark.div> & StatRootSharedProps;
+type StatRootProps = ComponentProps<typeof ark.div> & BaseStatRootProps;
 
 export interface StatProps extends Omit<StatRootProps, "children"> {
   description?: JSX.Element;

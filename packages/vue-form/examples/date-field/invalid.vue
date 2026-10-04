@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { DateField } from "../../src/fields/date-field";
+import { DateField } from "@pisagor/vue-form";
 </script>
 
 <template>

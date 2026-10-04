@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Card } from "@pisagor/solid";
-import { Calendar } from "@pisagor/solid/calendar";
+import { Calendar, Card } from "@pisagor/solid";
 export function BookedDates() {
   const isWeekend = (date: { year: number; month: number; day: number }) => {
     const dayOfWeek = new Date(date.year, date.month - 1, date.day).getDay();

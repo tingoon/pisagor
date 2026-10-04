@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Stat } from "../../src/components/stat";
+import { Stat } from "@pisagor/vue";
 </script>
 
 <template>

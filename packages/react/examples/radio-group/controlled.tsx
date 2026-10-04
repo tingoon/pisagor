@@ -1,4 +1,4 @@
-import { RadioGroup } from "@pisagor/react/radio-group";
+import { RadioGroup } from "@pisagor/react";
 import { useState } from "react";
 
 export function Controlled() {

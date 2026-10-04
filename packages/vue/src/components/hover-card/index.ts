@@ -1,3 +1,2 @@
-export type { HoverCardArrowProps } from "./hover-card";
-
-export { HoverCard, type HoverCardProps } from "./hover-card";
+export type { HoverCardArrowProps, HoverCardProps } from "./hover-card";
+export { HoverCard } from "./hover-card";

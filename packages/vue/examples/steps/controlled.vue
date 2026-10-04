@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { Button } from "@pisagor/vue";
+import { Button, Steps } from "@pisagor/vue";
 import { ref } from "vue";
-import { Steps } from "../../src/components/steps";
 
 const step = ref(0);
 const items = [

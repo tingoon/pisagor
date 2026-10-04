@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhMagnifyingGlass } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
-import { EmptyState } from "../../src/components/empty-state";
+import { Button, EmptyState } from "@pisagor/vue";
 </script>
 
 <template>

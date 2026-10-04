@@ -1,7 +1,7 @@
-export {
-  AlertDialog,
-  type AlertDialogBodyProps,
-  type AlertDialogContentProps,
-  type AlertDialogHeaderProps,
-  type AlertDialogProps,
+export type {
+  AlertDialogBodyProps,
+  AlertDialogContentProps,
+  AlertDialogHeaderProps,
+  AlertDialogProps,
 } from "./alert-dialog";
+export { AlertDialog } from "./alert-dialog";

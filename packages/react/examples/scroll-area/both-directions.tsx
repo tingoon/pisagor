@@ -1,4 +1,4 @@
-import { ScrollArea } from "@pisagor/react/scroll-area";
+import { ScrollArea } from "@pisagor/react";
 
 export function BothDirections() {
   return (

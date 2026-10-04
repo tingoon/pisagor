@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import blur_on_completeRaw from "./blur-on-complete.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
 import custom_sizeRaw from "./custom-size.svelte?raw";
@@ -11,20 +10,20 @@ import separatorRaw from "./separator.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_placeholderRaw from "./with-placeholder.svelte?raw";
 
-export const imports = `import { InputOtp } from "@pisagor/svelte/input-otp";`;
+export const imports = `import { InputOtp } from "@pisagor/svelte";`;
 
 export const sources = {
-  BlurOnComplete: stripSvelteExample(blur_on_completeRaw),
-  Controlled: stripSvelteExample(controlledRaw),
-  CustomSize: stripSvelteExample(custom_sizeRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  FourDigits: stripSvelteExample(four_digitsRaw),
-  Invalid: stripSvelteExample(invalidRaw),
-  Mask: stripSvelteExample(maskRaw),
-  Separator: stripSvelteExample(separatorRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  WithPlaceholder: stripSvelteExample(with_placeholderRaw),
+  BlurOnComplete: blur_on_completeRaw,
+  Controlled: controlledRaw,
+  CustomSize: custom_sizeRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  FourDigits: four_digitsRaw,
+  Invalid: invalidRaw,
+  Mask: maskRaw,
+  Separator: separatorRaw,
+  Variants: variantsRaw,
+  WithPlaceholder: with_placeholderRaw,
 } as const;
 
 export { default as BlurOnComplete } from "./blur-on-complete.svelte";

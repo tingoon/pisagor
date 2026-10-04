@@ -12,7 +12,10 @@ const ctx = useComboboxRoot();
 const slots = $derived(ctx?.slots ?? comboboxRecipe());
 </script>
 
-<ComboboxPrimitive.Empty {...rest} class={slots.empty({ class: cn(className) })}>
+<ComboboxPrimitive.Empty
+  {...rest}
+  class={slots.empty({ class: cn(className) })}
+>
   {#if children}
     {@render children()}
   {:else}

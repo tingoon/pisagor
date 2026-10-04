@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { PhTextB, PhTextItalic, PhTextUnderline } from "@phosphor-icons/vue";
-import { Toggle } from "../../src/components/toggle";
+import { Toggle } from "@pisagor/vue";
 </script>
 
 <template>

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { Switch } from "@pisagor/vue";
 import { ref } from "vue";
-import { Switch } from "../../src/components/switch";
 
 const checked = ref(false);
 </script>

@@ -1,15 +1,14 @@
 <script lang="ts">
 import type { ScrollAreaRootProps } from "@ark-ui/svelte/scroll-area";
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/svelte/scroll-area";
-import type { ScrollAreaProps as ScrollAreaSharedProps } from "@pisagor/props";
+import type { ScrollAreaProps as BaseScrollAreaProps } from "@pisagor/props";
 import { scrollAreaRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setScrollAreaContext } from "./scroll-area.context";
 
-type Props = Omit<ScrollAreaRootProps, "class"> &
-  {
-    class?: string | undefined;
-  } & ScrollAreaSharedProps;
+type Props = Omit<ScrollAreaRootProps, "class"> & {
+  class?: string | undefined;
+} & BaseScrollAreaProps;
 
 let {
   scrollFade = false,
@@ -28,6 +27,9 @@ setScrollAreaContext({
 });
 </script>
 
-<ScrollAreaPrimitive.Root {...rest} class={slots.base({ class: cn(className) })}>
+<ScrollAreaPrimitive.Root
+  {...rest}
+  class={slots.base({ class: cn(className) })}
+>
   {@render children?.()}
 </ScrollAreaPrimitive.Root>

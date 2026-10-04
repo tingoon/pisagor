@@ -3,8 +3,9 @@ import DefaultExample from "#/astro/examples/badge/default.astro";
 import PillExample from "#/astro/examples/badge/pill.astro";
 import SizesExample from "#/astro/examples/badge/sizes.astro";
 import VariantsExample from "#/astro/examples/badge/variants.astro";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: Badge,
   parameters: {
     docs: {
@@ -15,27 +16,27 @@ export default {
     },
   },
   title: "Components/Data Display/Badge",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   args: {
     slots: { default: "Badge" },
   },
   tags: ["autodocs"],
-};
+});
 
-export const Default = {
+export const Default = meta.story({
   render: () => ({ component: DefaultExample }),
-};
+});
 
-export const Sizes = {
+export const Sizes = meta.story({
   render: () => ({ component: SizesExample }),
-};
+});
 
-export const Variants = {
+export const Variants = meta.story({
   render: () => ({ component: VariantsExample }),
-};
+});
 
-export const Pill = {
+export const Pill = meta.story({
   render: () => ({ component: PillExample }),
-};
+});

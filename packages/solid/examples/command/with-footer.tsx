@@ -1,8 +1,7 @@
 /** @jsxImportSource solid-js */
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
-import { Kbd } from "@pisagor/solid";
-import { Command } from "@pisagor/solid/command";
+import { Command, Kbd } from "@pisagor/solid";
 import {
   ArrowBendDownLeftIcon,
   ArrowDownIcon,

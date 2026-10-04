@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Steps } from "@pisagor/svelte/steps";
+import { Steps } from "@pisagor/svelte";
 import CircleNotchIcon from "phosphor-svelte/lib/CircleNotchIcon";
 
 const items = [

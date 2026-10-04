@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { Button, useTourContext } from "@pisagor/vue";
+import { Button, Tour, useTourContext } from "@pisagor/vue";
 import { defineComponent, h, toValue } from "vue";
-import { Tour } from "../../src/components/tour";
 
 const TourProgressBar = defineComponent({
   name: "TourProgressBar",

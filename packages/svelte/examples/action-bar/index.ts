@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import close_triggerRaw from "./close-trigger.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
 import custom_spacingRaw from "./custom-spacing.svelte?raw";
@@ -8,17 +7,17 @@ import placementsRaw from "./placements.svelte?raw";
 import with_dialogRaw from "./with-dialog.svelte?raw";
 import with_menuRaw from "./with-menu.svelte?raw";
 
-export const imports = `import { ActionBar } from "@pisagor/svelte/action-bar";`;
+export const imports = `import { ActionBar } from "@pisagor/svelte";`;
 
 export const sources = {
-  CloseTrigger: stripSvelteExample(close_triggerRaw),
-  Controlled: stripSvelteExample(controlledRaw),
-  CustomSpacing: stripSvelteExample(custom_spacingRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Gutter: stripSvelteExample(gutterRaw),
-  Placements: stripSvelteExample(placementsRaw),
-  WithDialog: stripSvelteExample(with_dialogRaw),
-  WithMenu: stripSvelteExample(with_menuRaw),
+  CloseTrigger: close_triggerRaw,
+  Controlled: controlledRaw,
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  Gutter: gutterRaw,
+  Placements: placementsRaw,
+  WithDialog: with_dialogRaw,
+  WithMenu: with_menuRaw,
 } as const;
 
 export { default as CloseTrigger } from "./close-trigger.svelte";

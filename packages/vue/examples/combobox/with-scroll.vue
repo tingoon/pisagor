@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
-
-import { Combobox } from "../../src/components/combobox";
+import { Combobox } from "@pisagor/vue";
 
 const initialItems = [
   { label: "Apple", value: "apple" },

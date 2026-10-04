@@ -1,7 +1,11 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { FileInputProps as FileInputSharedProps } from "@pisagor/props";
-import { type FormControlGroupShellVariantProps, fileInputRecipe, formControlGroupShellRecipe } from "@pisagor/recipes";
+import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
+import {
+  type FormControlGroupShellVariantProps,
+  fileInputRecipe,
+  formControlGroupShellRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLInputAttributes } from "svelte/elements";
 import { InputGroup } from "../input-group";
@@ -14,15 +18,14 @@ type Props = Omit<
   HTMLInputAttributes,
   "class" | "defaultValue" | "onChange" | "size" | "type" | "value"
 > &
-  FormControlGroupShellVariantProps &
-  {
+  FormControlGroupShellVariantProps & {
     browseLabel?: string;
     class?: string | undefined;
     invalid?: boolean;
     onFilesChange?: (files: globalThis.File[]) => void;
     onValueChange?: (files: globalThis.File[]) => void;
     placeholder?: string;
-  } & FileInputSharedProps;
+  } & BaseFileInputProps;
 
 let {
   size = "md",
@@ -70,7 +73,9 @@ function openPicker() {
 
 function handleChange(event: Event & { currentTarget: HTMLInputElement }) {
   onchange?.(event as never);
-  const files = event.currentTarget.files ? Array.from(event.currentTarget.files) : [];
+  const files = event.currentTarget.files
+    ? Array.from(event.currentTarget.files)
+    : [];
   onFilesChange?.(files);
   onValueChange?.(files);
   fileLabel = formatFileLabel(files);
@@ -114,7 +119,10 @@ function handleChange(event: Event & { currentTarget: HTMLInputElement }) {
       {browseLabel}
     </InputGroup.Button>
   </InputGroup.Addon>
-  <InputGroup.Text class={slots.label()} onclick={disabled ? undefined : openPicker}>
+  <InputGroup.Text
+    class={slots.label()}
+    onclick={disabled ? undefined : openPicker}
+  >
     {fileLabel ?? placeholder}
   </InputGroup.Text>
 </Ark>

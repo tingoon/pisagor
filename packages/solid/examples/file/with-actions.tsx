@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid";
-import { File } from "@pisagor/solid/file";
+import { Button, File } from "@pisagor/solid";
 import { DownloadSimpleIcon, TrashIcon } from "@pisagor/solid/icons";
 export function WithActions() {
   return (

@@ -1,9 +1,10 @@
 import { PhPackage } from "@phosphor-icons/vue";
+import type { TreeNodeType } from "@pisagor/vue";
+import { createTreeCollection, TreeView } from "@pisagor/vue";
 import type { VNode } from "vue";
 import { defineComponent, h } from "vue";
-import type { TreeNodeType } from "../../src/components/tree-view";
-import { createTreeCollection, TreeView } from "../../src/components/tree-view";
-import type { ArkPart } from "../../src/internal/types";
+
+type ArkPart = Parameters<typeof h>[0];
 
 export default defineComponent({
   name: "CustomIconsFolder",

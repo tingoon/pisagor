@@ -1,9 +1,9 @@
 ---
-import type { TimelineProps as TimelineSharedProps } from "@pisagor/props";
+import type { TimelineProps as BaseTimelineProps } from "@pisagor/props";
 import { timelineRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"ol"> & TimelineSharedProps;
+type Props = HTMLAttributes<"ol"> & BaseTimelineProps;
 
 const { orientation = "vertical", class: className, ...rest } = Astro.props;
 ---

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Skeleton } from "@pisagor/svelte/skeleton";
+import { Skeleton } from "@pisagor/svelte";
 </script>
 
 <div class="flex items-center gap-2">

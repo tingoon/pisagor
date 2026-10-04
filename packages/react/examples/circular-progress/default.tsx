@@ -1,4 +1,4 @@
-import { CircularProgress } from "@pisagor/react/circular-progress";
+import { CircularProgress } from "@pisagor/react";
 import { useEffect, useState } from "react";
 
 export function Default() {

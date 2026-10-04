@@ -1,14 +1,13 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte/button";
-import { Card } from "@pisagor/svelte/card";
-import { Editable } from "@pisagor/svelte/editable";
-import { Field } from "@pisagor/svelte/field";
+import { Button, Card, Editable, Field, Textarea } from "@pisagor/svelte";
 import { CheckIcon, XIcon } from "@pisagor/svelte/icons";
-import { Textarea } from "@pisagor/svelte/textarea";
 </script>
 
 <Card>
-  <Card.Header description="Double-click the text to start editing" title="Edit description" />
+  <Card.Header
+    description="Double-click the text to start editing"
+    title="Edit description"
+  />
   <Card.Content>
     <Field.Group>
       <Field>
@@ -16,7 +15,9 @@ import { Textarea } from "@pisagor/svelte/textarea";
         <Editable>
           <Editable.Area>
             <Editable.Input>
-              {#snippet asChild(props)}
+              {#snippet asChild(
+  props,
+)}
                 <Textarea {...props()} class="min-h-24" />
               {/snippet}
             </Editable.Input>
@@ -24,10 +25,14 @@ import { Textarea } from "@pisagor/svelte/textarea";
           </Editable.Area>
           <Editable.Control>
             <Editable.CancelTrigger>
-              <Button aria-label="Cancel" size="icon-md" variant="outline"><XIcon /></Button>
+              <Button aria-label="Cancel" size="icon-md" variant="outline"
+                ><XIcon /></Button
+              >
             </Editable.CancelTrigger>
             <Editable.SubmitTrigger>
-              <Button aria-label="Save" size="icon-md" variant="outline"><CheckIcon /></Button>
+              <Button aria-label="Save" size="icon-md" variant="outline"
+                ><CheckIcon /></Button
+              >
             </Editable.SubmitTrigger>
           </Editable.Control>
         </Editable>

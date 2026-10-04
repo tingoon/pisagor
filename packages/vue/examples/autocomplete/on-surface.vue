@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
-
-import { Surface } from "@pisagor/vue";
-import { Autocomplete } from "../../src/components/autocomplete";
+import { Autocomplete, Surface } from "@pisagor/vue";
 
 const initialItems = [
   { label: "Apple", value: "apple" },

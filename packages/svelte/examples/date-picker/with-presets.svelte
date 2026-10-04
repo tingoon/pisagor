@@ -1,7 +1,5 @@
 <script lang="ts">
-import { Button, Calendar } from "@pisagor/svelte";
-import { parseDate } from "@pisagor/svelte/calendar";
-import { DatePicker } from "@pisagor/svelte/date-picker";
+import { Button, Calendar, DatePicker, parseDate } from "@pisagor/svelte";
 import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
 
 const presets = [
@@ -14,7 +12,9 @@ const presets = [
 
 <DatePicker defaultValue={[parseDate(new Date())]}>
   <DatePicker.Trigger>
-    {#snippet asChild(props)}
+    {#snippet asChild(
+  props,
+)}
       <Button {...props()} variant="outline">
         <CalendarIcon />
         <DatePicker.ValueText />
@@ -27,15 +27,11 @@ const presets = [
         <div class="flex h-full flex-col sm:border-e sm:pe-3">
           {#each presets as preset}
             <DatePicker.PresetTrigger
-              value={[
-                parseDate(
-                  new Date(
-                    new Date().setDate(new Date().getDate() + preset.days),
-                  ),
-                ),
-              ]}
+              value={[parseDate(new Date(new Date().setDate(new Date().getDate() + preset.days)))]}
             >
-              {#snippet asChild(props)}
+              {#snippet asChild(
+  props,
+)}
                 <Button
                   {...props()}
                   class="w-full justify-start"

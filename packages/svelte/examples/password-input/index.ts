@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import auto_hideRaw from "./auto-hide.svelte?raw";
 import autocompleteRaw from "./autocomplete.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
@@ -8,17 +7,17 @@ import disabledRaw from "./disabled.svelte?raw";
 import invalidRaw from "./invalid.svelte?raw";
 import sizesRaw from "./sizes.svelte?raw";
 
-export const imports = `import { PasswordInput } from "@pisagor/svelte/password-input";`;
+export const imports = `import { PasswordInput } from "@pisagor/svelte";`;
 
 export const sources = {
-  Autocomplete: stripSvelteExample(autocompleteRaw),
-  AutoHide: stripSvelteExample(auto_hideRaw),
-  Controlled: stripSvelteExample(controlledRaw),
-  ControlledVisibility: stripSvelteExample(controlled_visibilityRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  Invalid: stripSvelteExample(invalidRaw),
-  Sizes: stripSvelteExample(sizesRaw),
+  Autocomplete: autocompleteRaw,
+  AutoHide: auto_hideRaw,
+  Controlled: controlledRaw,
+  ControlledVisibility: controlled_visibilityRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  Sizes: sizesRaw,
 } as const;
 
 export { default as AutoHide } from "./auto-hide.svelte";

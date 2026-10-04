@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { RadioGroupProps as RadioGroupSharedProps } from "@pisagor/props";
+import type { RadioGroupProps as BaseRadioGroupProps } from "@pisagor/props";
 import type { Snippet } from "svelte";
 import RadioGroupItem from "./radio-group-item.svelte";
 import RadioGroupRoot from "./radio-group-root.svelte";
@@ -16,7 +16,7 @@ type Props = {
   orientation?: "horizontal" | "vertical";
   value?: string | null;
   children?: Snippet;
-  } & RadioGroupSharedProps;
+} & BaseRadioGroupProps;
 
 let { items = [], children, ...rest }: Props = $props();
 </script>

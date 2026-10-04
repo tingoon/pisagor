@@ -1,12 +1,11 @@
-import { stripAstroExample } from "@pisagor/utils";
 import defaultRaw from "./default.astro?raw";
 
 export const imports = `---
-import { Frame } from "@pisagor/astro/frame";
+import { Frame } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  Default: stripAstroExample(defaultRaw),
+  Default: defaultRaw,
 } as const;
 
 export { default as Default } from "./default.astro";

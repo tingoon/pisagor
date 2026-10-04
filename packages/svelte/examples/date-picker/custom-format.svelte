@@ -1,7 +1,5 @@
 <script lang="ts">
-import { Button, Calendar } from "@pisagor/svelte";
-import { parseDate } from "@pisagor/svelte/calendar";
-import { DatePicker } from "@pisagor/svelte/date-picker";
+import { Button, Calendar, DatePicker, parseDate } from "@pisagor/svelte";
 import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
 
 let value = $state([parseDate("2025-01-15")]);
@@ -15,7 +13,9 @@ const formattedDate = $derived(
 
 <DatePicker onValueChange={(details) => (value = details.value ?? [])} {value}>
   <DatePicker.Trigger>
-    {#snippet asChild(props)}
+    {#snippet asChild(
+  props,
+)}
       <Button {...props()} variant="outline">
         <CalendarIcon />
         {formattedDate}

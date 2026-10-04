@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Card } from "@pisagor/svelte";
-import { Carousel } from "@pisagor/svelte/carousel";
+import { Card, Carousel } from "@pisagor/svelte";
 
 const count = 16;
 </script>

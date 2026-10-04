@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ClientOnly } from "../../src/components/client-only";
+import { ClientOnly } from "@pisagor/vue";
 </script>
 
 <template>

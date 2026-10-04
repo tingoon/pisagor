@@ -1,1 +1,2 @@
-export { Kbd, KbdGroup, type KbdGroupProps, type KbdProps } from "./kbd";
+export type { KbdGroupProps, KbdProps } from "./kbd";
+export { Kbd, KbdGroup } from "./kbd";

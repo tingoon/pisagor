@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import checkbox_treeRaw from "./checkbox-tree.ts?raw";
 import controlledRaw from "./controlled.ts?raw";
 import custom_iconsRaw from "./custom-icons.ts?raw";
@@ -10,19 +9,19 @@ import multiple_selectionRaw from "./multiple-selection.ts?raw";
 import renameRaw from "./rename.ts?raw";
 import with_context_menuRaw from "./with-context-menu.ts?raw";
 
-export const imports = `import { TreeView } from "@pisagor/vue/tree-view";`;
+export const imports = `import { TreeView } from "@pisagor/vue";`;
 
 export const sources = {
-  CheckboxTree: stripVueExample(checkbox_treeRaw),
-  Controlled: stripVueExample(controlledRaw),
-  CustomIcons: stripVueExample(custom_iconsRaw),
-  CustomIconsFolder: stripVueExample(custom_icons_folderRaw),
-  CustomIconsItem: stripVueExample(custom_icons_itemRaw),
-  Default: stripVueExample(defaultRaw),
-  Links: stripVueExample(linksRaw),
-  MultipleSelection: stripVueExample(multiple_selectionRaw),
-  Rename: stripVueExample(renameRaw),
-  WithContextMenu: stripVueExample(with_context_menuRaw),
+  CheckboxTree: checkbox_treeRaw,
+  Controlled: controlledRaw,
+  CustomIcons: custom_iconsRaw,
+  CustomIconsFolder: custom_icons_folderRaw,
+  CustomIconsItem: custom_icons_itemRaw,
+  Default: defaultRaw,
+  Links: linksRaw,
+  MultipleSelection: multiple_selectionRaw,
+  Rename: renameRaw,
+  WithContextMenu: with_context_menuRaw,
 } as const;
 
 export { default as CheckboxTree } from "./checkbox-tree";

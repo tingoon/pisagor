@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import compoundRaw from "./compound.vue?raw";
 import controlledRaw from "./controlled.vue?raw";
 import defaultRaw from "./default.vue?raw";
@@ -15,24 +14,24 @@ import variantsRaw from "./variants.vue?raw";
 import with_fieldRaw from "./with-field.vue?raw";
 import with_scrubberRaw from "./with-scrubber.vue?raw";
 
-export const imports = `import { NumberInput } from "@pisagor/vue/number-input";`;
+export const imports = `import { NumberInput } from "@pisagor/vue";`;
 
 export const sources = {
-  Compound: stripVueExample(compoundRaw),
-  Controlled: stripVueExample(controlledRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  FieldOnly: stripVueExample(field_onlyRaw),
-  Formatted: stripVueExample(formattedRaw),
-  Invalid: stripVueExample(invalidRaw),
-  MouseWheel: stripVueExample(mouse_wheelRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  Range: stripVueExample(rangeRaw),
-  Sizes: stripVueExample(sizesRaw),
-  Step: stripVueExample(stepRaw),
-  Variants: stripVueExample(variantsRaw),
-  WithField: stripVueExample(with_fieldRaw),
-  WithScrubber: stripVueExample(with_scrubberRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  FieldOnly: field_onlyRaw,
+  Formatted: formattedRaw,
+  Invalid: invalidRaw,
+  MouseWheel: mouse_wheelRaw,
+  OnSurface: on_surfaceRaw,
+  Range: rangeRaw,
+  Sizes: sizesRaw,
+  Step: stepRaw,
+  Variants: variantsRaw,
+  WithField: with_fieldRaw,
+  WithScrubber: with_scrubberRaw,
 } as const;
 
 export { default as Compound } from "./compound.vue";

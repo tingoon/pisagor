@@ -1,5 +1,4 @@
-import { Input } from "@pisagor/react";
-import { Field } from "@pisagor/react/field";
+import { Field, Input } from "@pisagor/react";
 export function DisabledField() {
   return (
     <Field disabled>

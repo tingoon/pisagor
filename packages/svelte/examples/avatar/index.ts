@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import avatar_groupRaw from "./avatar-group.svelte?raw";
 import compoundRaw from "./compound.svelte?raw";
 import countRaw from "./count.svelte?raw";
@@ -7,16 +6,16 @@ import fallbacksRaw from "./fallbacks.svelte?raw";
 import shapesRaw from "./shapes.svelte?raw";
 import sizesRaw from "./sizes.svelte?raw";
 
-export const imports = `import { Avatar } from "@pisagor/svelte/avatar";`;
+export const imports = `import { Avatar } from "@pisagor/svelte";`;
 
 export const sources = {
-  AvatarGroup: stripSvelteExample(avatar_groupRaw),
-  Compound: stripSvelteExample(compoundRaw),
-  Count: stripSvelteExample(countRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Fallbacks: stripSvelteExample(fallbacksRaw),
-  Shapes: stripSvelteExample(shapesRaw),
-  Sizes: stripSvelteExample(sizesRaw),
+  AvatarGroup: avatar_groupRaw,
+  Compound: compoundRaw,
+  Count: countRaw,
+  Default: defaultRaw,
+  Fallbacks: fallbacksRaw,
+  Shapes: shapesRaw,
+  Sizes: sizesRaw,
 } as const;
 
 export { default as AvatarGroup } from "./avatar-group.svelte";

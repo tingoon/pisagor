@@ -1,4 +1,4 @@
-import { AspectRatio } from "@pisagor/react/aspect-ratio";
+import { AspectRatio } from "@pisagor/react";
 
 export function Portrait() {
   return (

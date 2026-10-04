@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button, Field, Input } from "@pisagor/solid";
-import { Popover } from "@pisagor/solid/popover";
+import { Button, Field, Input, Popover } from "@pisagor/solid";
 export function CustomSpacing() {
   return (
     <Popover>

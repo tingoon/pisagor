@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Format } from "@pisagor/solid/format";
+import { Format } from "@pisagor/solid";
 
 export function NumberCompact() {
   return (

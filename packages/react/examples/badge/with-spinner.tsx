@@ -1,5 +1,4 @@
-import { Spinner } from "@pisagor/react";
-import { Badge } from "@pisagor/react/badge";
+import { Badge, Spinner } from "@pisagor/react";
 export function WithSpinner() {
   return (
     <div className="flex flex-wrap items-center gap-2">

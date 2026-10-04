@@ -6,7 +6,9 @@ import { cn } from "@pisagor/utils";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 import { useCarousel } from "./carousel.context";
 
-type Props = Omit<CarouselNextTriggerProps, "class"> & { class?: string | undefined };
+type Props = Omit<CarouselNextTriggerProps, "class"> & {
+  class?: string | undefined;
+};
 let { class: className, ...rest }: Props = $props();
 const { slots } = useCarousel();
 </script>

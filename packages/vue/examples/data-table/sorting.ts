@@ -1,12 +1,12 @@
 import { PhCaretDown, PhCaretUp } from "@phosphor-icons/vue";
 import { Badge, Table } from "@pisagor/vue";
-import { computed, defineComponent, h, ref } from "vue";
 import {
   type ColumnDef,
   DataTable,
   type SortingState,
   useDataTable,
-} from "../../src/data-table";
+} from "@pisagor/vue/data-table";
+import { computed, defineComponent, h, ref } from "vue";
 
 interface User {
   email: string;

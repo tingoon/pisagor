@@ -26,7 +26,10 @@ const actions = $derived(tour().step?.actions ?? []);
           class={cn(
   buttonRecipe({
     size: "sm",
-    variant: action.action === "dismiss" || action.action === "prev" ? "outline" : "default",
+    variant:
+      action.action === "dismiss" || action.action === "prev"
+        ? "outline"
+        : "default",
   }).base(),
 )}
           type="button"

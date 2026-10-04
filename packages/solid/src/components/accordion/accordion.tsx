@@ -5,7 +5,7 @@ import {
   type AccordionItemProps as AccordionPrimitiveItemProps,
   type AccordionRootProps,
 } from "@ark-ui/solid/accordion";
-import type { AccordionItemProps as AccordionItemSharedProps } from "@pisagor/props";
+import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
 import { accordionItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
@@ -15,7 +15,7 @@ import { AccordionItemContext, useAccordionItem } from "./accordion.context";
 
 export interface AccordionItemProps
   extends AccordionPrimitiveItemProps,
-    AccordionItemSharedProps {}
+    BaseAccordionItemProps {}
 
 interface AccordionPresetItem {
   value: string;

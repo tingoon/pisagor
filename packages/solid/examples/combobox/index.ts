@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import autohighlightRaw from "./autohighlight.tsx?raw";
 import compoundRaw from "./compound.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
@@ -13,34 +12,34 @@ import with_clear_buttonRaw from "./with-clear-button.tsx?raw";
 import with_scrollRaw from "./with-scroll.tsx?raw";
 import with_start_iconRaw from "./with-start-icon.tsx?raw";
 
-export const imports = `import { Combobox } from "@pisagor/solid/combobox";`;
+export const imports = `import { Combobox } from "@pisagor/solid";`;
 
 export const sources = {
-  Autohighlight: stripTsxExample(autohighlightRaw),
-  Compound: stripTsxExample(compoundRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  Group: stripTsxExample(groupRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  Multiple: stripTsxExample(multipleRaw),
-  Sizes: stripTsxExample(sizesRaw),
-  Variants: stripTsxExample(variantsRaw),
-  WithClearButton: stripTsxExample(with_clear_buttonRaw),
-  WithScroll: stripTsxExample(with_scrollRaw),
-  WithStartIcon: stripTsxExample(with_start_iconRaw),
+  Autohighlight: autohighlightRaw,
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Group: groupRaw,
+  Invalid: invalidRaw,
+  Multiple: multipleRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithClearButton: with_clear_buttonRaw,
+  WithScroll: with_scrollRaw,
+  WithStartIcon: with_start_iconRaw,
 } as const;
 
-export { Autohighlight } from "./autohighlight";
-export { Compound } from "./compound";
-export { Controlled } from "./controlled";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { Group } from "./group";
-export { Invalid } from "./invalid";
-export { Multiple } from "./multiple";
-export { Sizes } from "./sizes";
-export { Variants } from "./variants";
-export { WithClearButton } from "./with-clear-button";
-export { WithScroll } from "./with-scroll";
-export { WithStartIcon } from "./with-start-icon";
+export * from "./autohighlight";
+export * from "./compound";
+export * from "./controlled";
+export * from "./default";
+export * from "./disabled";
+export * from "./group";
+export * from "./invalid";
+export * from "./multiple";
+export * from "./sizes";
+export * from "./variants";
+export * from "./with-clear-button";
+export * from "./with-scroll";
+export * from "./with-start-icon";

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/solid/factory";
-import type { FileInputProps as FileInputSharedProps } from "@pisagor/props";
+import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
 import {
   type FormControlGroupShellVariantProps,
   fileInputRecipe,
@@ -27,14 +27,14 @@ type NativeFileInputProps = Omit<
 
 type FileInputRootProps = ComponentProps<typeof ark.div> &
   FileInputVariantProps &
-  FileInputSharedProps & {
+  BaseFileInputProps & {
     disabled?: boolean;
   };
 
 export interface FileInputProps
   extends NativeFileInputProps,
     FileInputVariantProps,
-    FileInputSharedProps {
+    BaseFileInputProps {
   invalid?: boolean;
   browseLabel?: string;
   placeholder?: string;

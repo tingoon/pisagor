@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid";
-import { FloatingPanel } from "@pisagor/solid/floating-panel";
+import { Button, FloatingPanel } from "@pisagor/solid";
 import {
   CaretDownIcon,
   CaretLeftIcon,

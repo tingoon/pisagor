@@ -1,4 +1,4 @@
-import { CircularSlider } from "@pisagor/react/circular-slider";
+import { CircularSlider } from "@pisagor/react";
 
 export function Sizes() {
   return (

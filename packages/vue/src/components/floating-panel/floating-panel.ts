@@ -1,6 +1,6 @@
 import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/vue/floating-panel";
 import { PhArrowsOut, PhCornersIn, PhMinus } from "@phosphor-icons/vue";
-import type { FloatingPanelProps as FloatingPanelRootSharedProps } from "@pisagor/props";
+import type { FloatingPanelProps as BaseFloatingPanelRootProps } from "@pisagor/props";
 import {
   type FloatingPanelRecipe,
   floatingPanelRecipe,
@@ -49,7 +49,7 @@ interface FloatingPanelBodyProps {
   scrollFade?: boolean;
 }
 
-export interface FloatingPanelRootProps extends FloatingPanelRootSharedProps {
+export interface FloatingPanelRootProps extends BaseFloatingPanelRootProps {
   class?: unknown;
 }
 // #endregion

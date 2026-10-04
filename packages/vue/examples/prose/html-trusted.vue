@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Prose } from "../../src/components/prose";
+import { Prose } from "@pisagor/vue";
 
 const html =
   '<p>Trusted <strong>HTML</strong> content with a <a href="#">link</a>.</p>';

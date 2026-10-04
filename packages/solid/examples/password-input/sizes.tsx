@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { PasswordInput } from "@pisagor/solid/password-input";
+import { PasswordInput } from "@pisagor/solid";
 
 export function Sizes() {
   return (

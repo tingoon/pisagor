@@ -1,5 +1,4 @@
-import { Slider } from "@pisagor/react";
-import { Field } from "@pisagor/react/field";
+import { Field, Slider } from "@pisagor/react";
 export function SliderField() {
   return (
     <Field className="items-stretch gap-3">

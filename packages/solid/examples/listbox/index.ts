@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import compoundRaw from "./compound.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
@@ -17,42 +16,42 @@ import with_filterRaw from "./with-filter.tsx?raw";
 import with_iconRaw from "./with-icon.tsx?raw";
 import with_popoverRaw from "./with-popover.tsx?raw";
 
-export const imports = `import { Listbox } from "@pisagor/solid/listbox";`;
+export const imports = `import { Listbox } from "@pisagor/solid";`;
 
 export const sources = {
-  Compound: stripTsxExample(compoundRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  DisabledItem: stripTsxExample(disabled_itemRaw),
-  Grid: stripTsxExample(gridRaw),
-  Grouping: stripTsxExample(groupingRaw),
-  Horizontal: stripTsxExample(horizontalRaw),
-  ImageExplorer: stripTsxExample(image_explorerRaw),
-  SelectionExtended: stripTsxExample(selection_extendedRaw),
-  SelectionMultiple: stripTsxExample(selection_multipleRaw),
-  SelectionNone: stripTsxExample(selection_noneRaw),
-  TransferList: stripTsxExample(transfer_listRaw),
-  WithDescription: stripTsxExample(with_descriptionRaw),
-  WithFilter: stripTsxExample(with_filterRaw),
-  WithIcon: stripTsxExample(with_iconRaw),
-  WithPopover: stripTsxExample(with_popoverRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  DisabledItem: disabled_itemRaw,
+  Grid: gridRaw,
+  Grouping: groupingRaw,
+  Horizontal: horizontalRaw,
+  ImageExplorer: image_explorerRaw,
+  SelectionExtended: selection_extendedRaw,
+  SelectionMultiple: selection_multipleRaw,
+  SelectionNone: selection_noneRaw,
+  TransferList: transfer_listRaw,
+  WithDescription: with_descriptionRaw,
+  WithFilter: with_filterRaw,
+  WithIcon: with_iconRaw,
+  WithPopover: with_popoverRaw,
 } as const;
 
-export { Compound } from "./compound";
-export { Controlled } from "./controlled";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { DisabledItem } from "./disabled-item";
-export { Grid } from "./grid";
-export { Grouping } from "./grouping";
-export { Horizontal } from "./horizontal";
-export { ImageExplorer } from "./image-explorer";
-export { SelectionExtended } from "./selection-extended";
-export { SelectionMultiple } from "./selection-multiple";
-export { SelectionNone } from "./selection-none";
-export { TransferList } from "./transfer-list";
-export { WithDescription } from "./with-description";
-export { WithFilter } from "./with-filter";
-export { WithIcon } from "./with-icon";
-export { WithPopover } from "./with-popover";
+export * from "./compound";
+export * from "./controlled";
+export * from "./default";
+export * from "./disabled";
+export * from "./disabled-item";
+export * from "./grid";
+export * from "./grouping";
+export * from "./horizontal";
+export * from "./image-explorer";
+export * from "./selection-extended";
+export * from "./selection-multiple";
+export * from "./selection-none";
+export * from "./transfer-list";
+export * from "./with-description";
+export * from "./with-filter";
+export * from "./with-icon";
+export * from "./with-popover";

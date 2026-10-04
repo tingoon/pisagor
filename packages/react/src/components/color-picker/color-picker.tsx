@@ -22,7 +22,7 @@ import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
 import { useUncontrolled } from "@mantine/hooks";
 import { CheckIcon, EyedropperIcon, XIcon } from "@phosphor-icons/react";
-import type { ColorPickerProps as ColorPickerSharedProps } from "@pisagor/props";
+import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { type ComponentProps, useMemo } from "react";
@@ -43,7 +43,7 @@ export type ColorPickerRootProps = Omit<
 
 export interface ColorPickerProps
   extends ColorPickerRootProps,
-    ColorPickerSharedProps {
+    BaseColorPickerProps {
   /** Visual shell variant for preset field input. When omitted, resolves from `Surface`. */
   variant?: FormControlVariant;
   /**

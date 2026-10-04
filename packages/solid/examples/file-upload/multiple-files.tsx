@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button, Separator } from "@pisagor/solid";
-import { FileUpload } from "@pisagor/solid/file-upload";
+import { Button, FileUpload, Separator } from "@pisagor/solid";
 export function MultipleFiles() {
   return (
     <FileUpload maxFiles={5}>

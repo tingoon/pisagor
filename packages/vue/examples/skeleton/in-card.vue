@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Card } from "@pisagor/vue";
-import { Skeleton } from "../../src/components/skeleton";
+import { Card, Skeleton } from "@pisagor/vue";
 </script>
 
 <template>

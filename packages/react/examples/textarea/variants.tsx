@@ -1,4 +1,4 @@
-import { Textarea } from "@pisagor/react/textarea";
+import { Textarea } from "@pisagor/react";
 
 export function Variants() {
   return (

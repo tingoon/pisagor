@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import active_filter_chipsRaw from "./active-filter-chips.ts?raw";
 import column_filtersRaw from "./column-filters.ts?raw";
 import column_layoutRaw from "./column-layout.ts?raw";
@@ -25,49 +24,49 @@ import with_sortable_dataRaw from "./with-sortable-data.ts?raw";
 export const imports = `import { DataGrid } from "@pisagor/vue/data-grid";`;
 
 export const sources = {
-  ActiveFilterChips: stripVueExample(active_filter_chipsRaw),
-  ColumnFilters: stripVueExample(column_filtersRaw),
-  ColumnLayout: stripVueExample(column_layoutRaw),
-  ColumnPinning: stripVueExample(column_pinningRaw),
-  ColumnResize: stripVueExample(column_resizeRaw),
-  ColumnVisibility: stripVueExample(column_visibilityRaw),
-  ExpandingRows: stripVueExample(expanding_rowsRaw),
-  FilterHead: stripVueExample(filter_headRaw),
-  GlobalSelection: stripVueExample(global_selectionRaw),
-  GroupedRows: stripVueExample(grouped_rowsRaw),
-  LoadingState: stripVueExample(loading_stateRaw),
-  ManualPagination: stripVueExample(manual_paginationRaw),
-  MultiGrouping: stripVueExample(multi_groupingRaw),
-  OrdersWithFooter: stripVueExample(orders_with_footerRaw),
-  Paginated: stripVueExample(paginatedRaw),
-  RichCells: stripVueExample(rich_cellsRaw),
-  RowDetails: stripVueExample(row_detailsRaw),
-  RowSelection: stripVueExample(row_selectionRaw),
-  Sorting: stripVueExample(sortingRaw),
-  StripedVariant: stripVueExample(striped_variantRaw),
-  Virtualized: stripVueExample(virtualizedRaw),
-  WithSortableData: stripVueExample(with_sortable_dataRaw),
+  ActiveFilterChips: active_filter_chipsRaw,
+  ColumnFilters: column_filtersRaw,
+  ColumnLayout: column_layoutRaw,
+  ColumnPinning: column_pinningRaw,
+  ColumnResize: column_resizeRaw,
+  ColumnVisibility: column_visibilityRaw,
+  ExpandingRows: expanding_rowsRaw,
+  FilterHead: filter_headRaw,
+  GlobalSelection: global_selectionRaw,
+  GroupedRows: grouped_rowsRaw,
+  LoadingState: loading_stateRaw,
+  ManualPagination: manual_paginationRaw,
+  MultiGrouping: multi_groupingRaw,
+  OrdersWithFooter: orders_with_footerRaw,
+  Paginated: paginatedRaw,
+  RichCells: rich_cellsRaw,
+  RowDetails: row_detailsRaw,
+  RowSelection: row_selectionRaw,
+  Sorting: sortingRaw,
+  StripedVariant: striped_variantRaw,
+  Virtualized: virtualizedRaw,
+  WithSortableData: with_sortable_dataRaw,
 } as const;
 
-export { ActiveFilterChips } from "./active-filter-chips";
-export { ColumnFilters } from "./column-filters";
-export { ColumnLayout } from "./column-layout";
-export { ColumnPinning } from "./column-pinning";
-export { ColumnResize } from "./column-resize";
-export { ColumnVisibility } from "./column-visibility";
-export { ExpandingRows } from "./expanding-rows";
-export { FilterHead } from "./filter-head";
-export { GlobalSelection } from "./global-selection";
-export { GroupedRows } from "./grouped-rows";
-export { LoadingState } from "./loading-state";
-export { ManualPagination } from "./manual-pagination";
-export { MultiGrouping } from "./multi-grouping";
-export { OrdersWithFooter } from "./orders-with-footer";
-export { Paginated } from "./paginated";
-export { RichCells } from "./rich-cells";
-export { RowDetails } from "./row-details";
-export { RowSelection } from "./row-selection";
-export { Sorting } from "./sorting";
-export { StripedVariant } from "./striped-variant";
-export { Virtualized } from "./virtualized";
-export { WithSortableData } from "./with-sortable-data";
+export * from "./active-filter-chips";
+export * from "./column-filters";
+export * from "./column-layout";
+export * from "./column-pinning";
+export * from "./column-resize";
+export * from "./column-visibility";
+export * from "./expanding-rows";
+export * from "./filter-head";
+export * from "./global-selection";
+export * from "./grouped-rows";
+export * from "./loading-state";
+export * from "./manual-pagination";
+export * from "./multi-grouping";
+export * from "./orders-with-footer";
+export * from "./paginated";
+export * from "./rich-cells";
+export * from "./row-details";
+export * from "./row-selection";
+export * from "./sorting";
+export * from "./striped-variant";
+export * from "./virtualized";
+export * from "./with-sortable-data";

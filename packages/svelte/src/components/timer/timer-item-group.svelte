@@ -1,16 +1,15 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { TimerItemGroupProps as TimerItemGroupSharedProps } from "@pisagor/props";
+import type { TimerItemGroupProps as BaseTimerItemGroupProps } from "@pisagor/props";
 import { timerItemGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setTimerItemGroupContext } from "./timer.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
   class?: string | undefined;
   orientation?: "horizontal" | "vertical";
-  } & TimerItemGroupSharedProps;
+} & BaseTimerItemGroupProps;
 
 let {
   orientation = "vertical",

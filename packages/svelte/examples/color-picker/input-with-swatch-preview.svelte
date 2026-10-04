@@ -1,6 +1,5 @@
 <script lang="ts">
-import { InputGroup } from "@pisagor/svelte";
-import { ColorPicker } from "@pisagor/svelte/color-picker";
+import { ColorPicker, InputGroup } from "@pisagor/svelte";
 </script>
 
 <ColorPicker defaultValue="#eb5e41">
@@ -10,7 +9,9 @@ import { ColorPicker } from "@pisagor/svelte/color-picker";
         <ColorPicker.SwatchPreview />
       </InputGroup.Addon>
       <ColorPicker.Input>
-        {#snippet asChild(props)}
+        {#snippet asChild(
+  props,
+)}
           <InputGroup.Input {...props()} />
         {/snippet}
       </ColorPicker.Input>

@@ -1,6 +1,6 @@
 import { Field } from "@pisagor/vue";
+import { PhoneInput } from "@pisagor/vue/phone-input";
 import { ref } from "vue";
-import { PhoneInput } from "../../src/phone-input";
 
 export function Controlled() {
   return {

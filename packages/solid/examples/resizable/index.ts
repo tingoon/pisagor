@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import collapsibleRaw from "./collapsible.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import edge_handleRaw from "./edge-handle.tsx?raw";
@@ -8,24 +7,24 @@ import multiple_panelsRaw from "./multiple-panels.tsx?raw";
 import orientation_horizontalRaw from "./orientation-horizontal.tsx?raw";
 import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
 
-export const imports = `import { Resizable } from "@pisagor/solid/resizable";`;
+export const imports = `import { Resizable } from "@pisagor/solid";`;
 
 export const sources = {
-  Collapsible: stripTsxExample(collapsibleRaw),
-  Default: stripTsxExample(defaultRaw),
-  EdgeHandle: stripTsxExample(edge_handleRaw),
-  Handle: stripTsxExample(handleRaw),
-  MinMax: stripTsxExample(min_maxRaw),
-  MultiplePanels: stripTsxExample(multiple_panelsRaw),
-  OrientationHorizontal: stripTsxExample(orientation_horizontalRaw),
-  OrientationVertical: stripTsxExample(orientation_verticalRaw),
+  Collapsible: collapsibleRaw,
+  Default: defaultRaw,
+  EdgeHandle: edge_handleRaw,
+  Handle: handleRaw,
+  MinMax: min_maxRaw,
+  MultiplePanels: multiple_panelsRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
 } as const;
 
-export { Collapsible } from "./collapsible";
-export { Default } from "./default";
-export { EdgeHandle } from "./edge-handle";
-export { Handle } from "./handle";
-export { MinMax } from "./min-max";
-export { MultiplePanels } from "./multiple-panels";
-export { OrientationHorizontal } from "./orientation-horizontal";
-export { OrientationVertical } from "./orientation-vertical";
+export * from "./collapsible";
+export * from "./default";
+export * from "./edge-handle";
+export * from "./handle";
+export * from "./min-max";
+export * from "./multiple-panels";
+export * from "./orientation-horizontal";
+export * from "./orientation-vertical";

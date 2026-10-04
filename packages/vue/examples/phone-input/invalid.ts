@@ -1,4 +1,4 @@
-import { PhoneInput } from "../../src/phone-input";
+import { PhoneInput } from "@pisagor/vue/phone-input";
 
 export function Invalid() {
   return {

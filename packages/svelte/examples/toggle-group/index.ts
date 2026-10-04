@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import compoundRaw from "./compound.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -12,21 +11,21 @@ import spacingRaw from "./spacing.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import verticalRaw from "./vertical.svelte?raw";
 
-export const imports = `import { ToggleGroup } from "@pisagor/svelte/toggle-group";`;
+export const imports = `import { ToggleGroup } from "@pisagor/svelte";`;
 
 export const sources = {
-  Compound: stripSvelteExample(compoundRaw),
-  Controlled: stripSvelteExample(controlledRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  DisabledItem: stripSvelteExample(disabled_itemRaw),
-  FontWeight: stripSvelteExample(font_weightRaw),
-  Horizontal: stripSvelteExample(horizontalRaw),
-  Single: stripSvelteExample(singleRaw),
-  Sizes: stripSvelteExample(sizesRaw),
-  Spacing: stripSvelteExample(spacingRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  Vertical: stripSvelteExample(verticalRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  DisabledItem: disabled_itemRaw,
+  FontWeight: font_weightRaw,
+  Horizontal: horizontalRaw,
+  Single: singleRaw,
+  Sizes: sizesRaw,
+  Spacing: spacingRaw,
+  Variants: variantsRaw,
+  Vertical: verticalRaw,
 } as const;
 
 export { default as Compound } from "./compound.svelte";

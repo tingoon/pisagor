@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.vue?raw";
 import defaultRaw from "./default.vue?raw";
 import disabledRaw from "./disabled.vue?raw";
@@ -7,16 +6,16 @@ import on_surfaceRaw from "./on-surface.vue?raw";
 import sizesRaw from "./sizes.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 
-export const imports = `import { Switch } from "@pisagor/vue/switch";`;
+export const imports = `import { Switch } from "@pisagor/vue";`;
 
 export const sources = {
-  Controlled: stripVueExample(controlledRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  Invalid: stripVueExample(invalidRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  Sizes: stripVueExample(sizesRaw),
-  Variants: stripVueExample(variantsRaw),
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  OnSurface: on_surfaceRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
 } as const;
 
 export { default as Controlled } from "./controlled.vue";

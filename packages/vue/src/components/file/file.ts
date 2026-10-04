@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhFile } from "@phosphor-icons/vue";
-import type { FileProps as FileSharedProps } from "@pisagor/props";
+import type { FileProps as BaseFileProps } from "@pisagor/props";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { Format } from "../format";
@@ -10,7 +10,7 @@ export type FileMediaVariant = NonNullable<FileVariantProps["variant"]>;
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface FileProps extends FileSharedProps {
+export interface FileProps extends BaseFileProps {
   class?: unknown;
   /** Leading media; defaults to a file icon. */
   media?: VNodeChild;

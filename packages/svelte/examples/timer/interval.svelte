@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button, Card } from "@pisagor/svelte";
-import { Timer } from "@pisagor/svelte/timer";
+import { Button, Card, Timer } from "@pisagor/svelte";
 import PauseIcon from "phosphor-svelte/lib/PauseIcon";
 import PlayIcon from "phosphor-svelte/lib/PlayIcon";
 </script>
@@ -21,15 +20,29 @@ import PlayIcon from "phosphor-svelte/lib/PlayIcon";
       </Timer.Area>
       <Timer.Control class="w-full justify-center">
         <Timer.Play>
-          {#snippet asChild(props)}
-            <Button {...props()} aria-label="Play" size="icon-sm" variant="ghost">
+          {#snippet asChild(
+  props,
+)}
+            <Button
+              {...props()}
+              aria-label="Play"
+              size="icon-sm"
+              variant="ghost"
+            >
               <PlayIcon />
             </Button>
           {/snippet}
         </Timer.Play>
         <Timer.Pause>
-          {#snippet asChild(props)}
-            <Button {...props()} aria-label="Pause" size="icon-sm" variant="ghost">
+          {#snippet asChild(
+  props,
+)}
+            <Button
+              {...props()}
+              aria-label="Pause"
+              size="icon-sm"
+              variant="ghost"
+            >
               <PauseIcon />
             </Button>
           {/snippet}

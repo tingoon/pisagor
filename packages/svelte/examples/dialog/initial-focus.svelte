@@ -1,9 +1,6 @@
 <script lang="ts">
 import { Portal } from "@ark-ui/svelte/portal";
-import { Button } from "@pisagor/svelte/button";
-import { Dialog } from "@pisagor/svelte/dialog";
-import { Field } from "@pisagor/svelte/field";
-import { Input } from "@pisagor/svelte/input";
+import { Button, Dialog, Field, Input } from "@pisagor/svelte";
 
 const initialFocusEl = () =>
   document.getElementById("dialog-initial-focus-input") as HTMLElement | null;
@@ -19,7 +16,10 @@ const initialFocusEl = () =>
       <Dialog.Content>
         <Dialog.Header>
           <Dialog.Title>Edit profile</Dialog.Title>
-          <Dialog.Description>The first input will be focused when the dialog opens.</Dialog.Description>
+          <Dialog.Description
+            >The first input will be focused when the dialog
+            opens.</Dialog.Description
+          >
         </Dialog.Header>
         <Dialog.Body>
           <Field.Group>

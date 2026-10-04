@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button } from "@pisagor/solid/button";
-import { Tour } from "@pisagor/solid/tour";
+import { Button, Tour } from "@pisagor/solid";
 
 export function Default() {
   return (

@@ -1,4 +1,3 @@
-import { stripAstroExample } from "@pisagor/utils";
 import defaultRaw from "./default.astro?raw";
 import portraitRaw from "./portrait.astro?raw";
 import responsiveRaw from "./responsive.astro?raw";
@@ -7,16 +6,16 @@ import videoRaw from "./video.astro?raw";
 import widescreenRaw from "./widescreen.astro?raw";
 
 export const imports = `---
-import { AspectRatio } from "@pisagor/astro/aspect-ratio";
+import { AspectRatio } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  Default: stripAstroExample(defaultRaw),
-  Portrait: stripAstroExample(portraitRaw),
-  Responsive: stripAstroExample(responsiveRaw),
-  Square: stripAstroExample(squareRaw),
-  Video: stripAstroExample(videoRaw),
-  Widescreen: stripAstroExample(widescreenRaw),
+  Default: defaultRaw,
+  Portrait: portraitRaw,
+  Responsive: responsiveRaw,
+  Square: squareRaw,
+  Video: videoRaw,
+  Widescreen: widescreenRaw,
 } as const;
 
 export { default as Default } from "./default.astro";

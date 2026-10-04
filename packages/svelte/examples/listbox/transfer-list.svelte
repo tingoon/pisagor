@@ -1,7 +1,6 @@
 <script lang="ts">
 import { createListCollection } from "@ark-ui/svelte/collection";
-import { Button, Item } from "@pisagor/svelte";
-import { Listbox } from "@pisagor/svelte/listbox";
+import { Button, Item, Listbox } from "@pisagor/svelte";
 import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 
@@ -42,8 +41,7 @@ const moveToAvailable = () => {
       <Listbox.Root
         class="min-h-40"
         collection={availableCollection}
-        onValueChange={(next) =>
-          (availableValue = Array.isArray(next) ? next : [next])}
+        onValueChange={(next) => (availableValue = Array.isArray(next) ? next : [next])}
         selectionMode="multiple"
         value={availableValue}
       >
@@ -87,8 +85,7 @@ const moveToAvailable = () => {
       <Listbox.Root
         class="min-h-40"
         collection={selectedCollection}
-        onValueChange={(next) =>
-          (selectedValue = Array.isArray(next) ? next : [next])}
+        onValueChange={(next) => (selectedValue = Array.isArray(next) ? next : [next])}
         selectionMode="multiple"
         value={selectedValue}
       >

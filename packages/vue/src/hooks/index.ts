@@ -1,13 +1,8 @@
 export { useMediaQuery } from "@vueuse/core";
-export {
-  type ClearableChangeEvent,
-  useClearableInput,
-} from "./use-clearable-input";
-export { type UseDisclosureReturn, useDisclosure } from "./use-disclosure";
+export type { ClearableChangeEvent } from "./use-clearable-input";
+export { useClearableInput } from "./use-clearable-input";
+export type { UseDisclosureReturn } from "./use-disclosure";
+export { useDisclosure } from "./use-disclosure";
 export { MOBILE_BREAKPOINT, useIsMobile } from "./use-is-mobile";
-export {
-  assignRef,
-  mergeRefs,
-  type PossibleRef,
-  useMergedRef,
-} from "./use-merged-ref";
+export type { PossibleRef } from "./use-merged-ref";
+export { assignRef, mergeRefs, useMergedRef } from "./use-merged-ref";

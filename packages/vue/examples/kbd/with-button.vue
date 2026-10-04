@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhFloppyDisk } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
-import { Kbd } from "../../src/components/kbd";
+import { Button, Kbd } from "@pisagor/vue";
 </script>
 
 <template>

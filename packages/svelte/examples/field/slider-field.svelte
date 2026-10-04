@@ -1,11 +1,8 @@
 <script lang="ts">
-import { Slider } from "@pisagor/svelte";
-import { Field } from "@pisagor/svelte/field";
+import { Field, Slider } from "@pisagor/svelte";
 </script>
 
 <Field class="items-stretch gap-3">
-      <Slider defaultValue={[50]} label="Volume" />
-      <Field.Description>
-        Adjust the volume of the media player
-      </Field.Description>
-    </Field>
+  <Slider defaultValue={[50]} label="Volume" />
+  <Field.Description> Adjust the volume of the media player </Field.Description>
+</Field>

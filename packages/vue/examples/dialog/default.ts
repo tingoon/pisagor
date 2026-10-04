@@ -1,6 +1,5 @@
+import { Button, Dialog } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Dialog } from "../../src/components/dialog";
-import { outlineButtonClass } from "../../src/internal/story-button";
 
 export default defineComponent({
   name: "Default",
@@ -8,7 +7,7 @@ export default defineComponent({
     return () =>
       h(Dialog, null, () => [
         h(Dialog.Trigger, { asChild: true }, () =>
-          h("button", { class: outlineButtonClass(), type: "button" }, "Open"),
+          h(Button, { type: "button", variant: "outline" }, "Open"),
         ),
         h(Dialog.Content, null, () => [
           h(Dialog.Header, {
@@ -24,18 +23,10 @@ export default defineComponent({
           ),
           h(Dialog.Footer, null, () => [
             h(Dialog.CloseTrigger, { asChild: true }, () =>
-              h(
-                "button",
-                { class: outlineButtonClass(), type: "button" },
-                "Cancel",
-              ),
+              h(Button, { type: "button", variant: "outline" }, "Cancel"),
             ),
             h(Dialog.CloseTrigger, { asChild: true }, () =>
-              h(
-                "button",
-                { class: outlineButtonClass(), type: "button" },
-                "Save",
-              ),
+              h(Button, { type: "button", variant: "outline" }, "Save"),
             ),
           ]),
         ]),

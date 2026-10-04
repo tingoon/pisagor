@@ -15,8 +15,8 @@ import type {
 } from "@ark-ui/solid/listbox";
 import { Listbox as ListboxPrimitive } from "@ark-ui/solid/listbox";
 import type {
-  ListboxItemProps as ListboxItemSharedProps,
-  ListboxProps as ListboxRootSharedProps,
+  ListboxItemProps as BaseListboxItemProps,
+  ListboxProps as BaseListboxRootProps,
 } from "@pisagor/props";
 import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -42,7 +42,7 @@ export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   "onValueChange"
 > & {
   onValueChange?: (value: string | string[]) => void;
-} & ListboxRootSharedProps;
+} & BaseListboxRootProps;
 
 export interface ListboxProps
   extends Omit<ListboxRootProps, "children" | "collection"> {
@@ -52,7 +52,7 @@ export interface ListboxProps
 
 export interface ListboxItemProps
   extends ListboxPrimitiveItemProps,
-    ListboxItemSharedProps {}
+    BaseListboxItemProps {}
 
 export interface ListboxItemGroupProps extends ListboxPrimitiveItemGroupProps {
   heading?: string;

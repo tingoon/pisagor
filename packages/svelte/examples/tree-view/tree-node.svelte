@@ -1,5 +1,5 @@
 <script lang="ts">
-import { type TreeNodeType, TreeView } from "@pisagor/svelte/tree-view";
+import { type TreeNodeType, TreeView } from "@pisagor/svelte";
 import TreeNode from "./tree-node.svelte";
 
 type Props = {

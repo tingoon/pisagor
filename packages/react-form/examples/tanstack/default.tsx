@@ -1,5 +1,5 @@
 import { parseDate } from "@pisagor/react";
-import { useAppForm } from "../../src/tanstack";
+import { useAppForm } from "@pisagor/react-form/tanstack";
 import { cityOptions, countryOptions, planOptions } from "../options";
 
 export function Default() {

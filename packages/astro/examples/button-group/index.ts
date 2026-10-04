@@ -1,18 +1,17 @@
-import { stripAstroExample } from "@pisagor/utils";
 import defaultRaw from "./default.astro?raw";
 import orientation_horizontalRaw from "./orientation-horizontal.astro?raw";
 import orientation_verticalRaw from "./orientation-vertical.astro?raw";
 import with_separatorRaw from "./with-separator.astro?raw";
 
 export const imports = `---
-import { ButtonGroup } from "@pisagor/astro/button-group";
+import { ButtonGroup } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  Default: stripAstroExample(defaultRaw),
-  OrientationHorizontal: stripAstroExample(orientation_horizontalRaw),
-  OrientationVertical: stripAstroExample(orientation_verticalRaw),
-  WithSeparator: stripAstroExample(with_separatorRaw),
+  Default: defaultRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  WithSeparator: with_separatorRaw,
 } as const;
 
 export { default as Default } from "./default.astro";

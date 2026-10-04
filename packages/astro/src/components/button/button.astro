@@ -1,10 +1,10 @@
 ---
-import type { ButtonProps as ButtonSharedProps } from "@pisagor/props";
+import type { ButtonProps as BaseButtonProps } from "@pisagor/props";
 import { buttonRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 import Spinner from "../spinner/spinner.astro";
 
-type Props = HTMLAttributes<"button"> & ButtonSharedProps;
+type Props = HTMLAttributes<"button"> & BaseButtonProps;
 
 const {
   clickEffect = true,

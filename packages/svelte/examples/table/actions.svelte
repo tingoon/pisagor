@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button, DropdownMenu } from "@pisagor/svelte";
-import { Table } from "@pisagor/svelte/table";
+import { Button, DropdownMenu, Table } from "@pisagor/svelte";
 import DotsThreeVerticalIcon from "phosphor-svelte/lib/DotsThreeVerticalIcon";
 import EyeIcon from "phosphor-svelte/lib/EyeIcon";
 import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";
@@ -27,7 +26,9 @@ import { workspaceUsers } from "./helpers";
         <Table.Cell class="text-right">
           <DropdownMenu positioning={{ placement: "left-end" }}>
             <DropdownMenu.Trigger>
-              {#snippet asChild(props)}
+              {#snippet asChild(
+  props,
+)}
                 <Button
                   {...props()}
                   aria-label="More options"

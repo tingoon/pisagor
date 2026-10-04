@@ -1,8 +1,13 @@
 <script lang="ts">
 import type { SignaturePadRootProps as ArkRootProps } from "@ark-ui/svelte/signature-pad";
 import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/svelte/signature-pad";
-import type { SignaturePadProps as SignaturePadSharedProps } from "@pisagor/props";
-import { buttonRecipe, formControlZoneRecipe, type SignaturePadRecipeSlot, signaturePadRecipe } from "@pisagor/recipes";
+import type { SignaturePadProps as BaseSignaturePadProps } from "@pisagor/props";
+import {
+  buttonRecipe,
+  formControlZoneRecipe,
+  type SignaturePadRecipeSlot,
+  signaturePadRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import ArrowCounterClockwiseIcon from "phosphor-svelte/lib/ArrowCounterClockwiseIcon";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -10,13 +15,12 @@ import { setSignaturePadContext } from "./signature-pad.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<ArkRootProps, "class" | "children"> &
-  {
+type Props = Omit<ArkRootProps, "class" | "children"> & {
   class?: string | undefined;
   classNames?: Partial<Record<SignaturePadRecipeSlot, string>>;
   invalid?: boolean;
   variant?: FormControlVariant;
-  } & SignaturePadSharedProps;
+} & BaseSignaturePadProps;
 
 let {
   variant: variantProp,
@@ -55,7 +59,9 @@ setSignaturePadContext({
     data-invalid={invalid || undefined}
     data-variant={variant}
   >
-    <SignaturePadPrimitive.Segment class={slots.segment({ class: cn(classNames?.segment) })} />
+    <SignaturePadPrimitive.Segment
+      class={slots.segment({ class: cn(classNames?.segment) })}
+    />
     <SignaturePadPrimitive.ClearTrigger
       aria-label="Clear signature"
       class={cn(
@@ -66,6 +72,8 @@ setSignaturePadContext({
     >
       <ArrowCounterClockwiseIcon />
     </SignaturePadPrimitive.ClearTrigger>
-    <SignaturePadPrimitive.Guide class={slots.guide({ class: cn(classNames?.guide) })} />
+    <SignaturePadPrimitive.Guide
+      class={slots.guide({ class: cn(classNames?.guide) })}
+    />
   </SignaturePadPrimitive.Control>
 </SignaturePadPrimitive.Root>

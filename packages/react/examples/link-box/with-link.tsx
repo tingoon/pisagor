@@ -1,4 +1,4 @@
-import { LinkBox } from "@pisagor/react/link-box";
+import { LinkBox } from "@pisagor/react";
 
 export function WithLink() {
   return (

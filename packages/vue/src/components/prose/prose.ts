@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import type { ProseProps as ProseSharedProps } from "@pisagor/props";
+import type { ProseProps as BaseProseProps } from "@pisagor/props";
 import { proseRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
@@ -7,7 +7,7 @@ import { defineComponent, h, type PropType } from "vue";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface ProseProps extends ProseSharedProps {
+export interface ProseProps extends BaseProseProps {
   class?: unknown;
   /**
    * Trusted HTML content rendered as-is.

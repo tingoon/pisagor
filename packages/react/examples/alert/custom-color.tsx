@@ -1,5 +1,5 @@
 import { MagicWandIcon } from "@phosphor-icons/react";
-import { Alert } from "@pisagor/react/alert";
+import { Alert } from "@pisagor/react";
 
 export function CustomColor() {
   return (

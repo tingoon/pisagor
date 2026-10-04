@@ -1,5 +1,4 @@
-import { Button, Input } from "@pisagor/react";
-import { Popover } from "@pisagor/react/popover";
+import { Button, Input, Popover } from "@pisagor/react";
 export function Anchor() {
   return (
     <div>

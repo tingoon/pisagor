@@ -21,8 +21,14 @@ const pageValue = $derived.by(() => {
   return page;
 });
 
-const variant = $derived(typeof page === "number" ? ("outline" as const) : ("ghost" as const));
-const classes = $derived(buttonRecipe({ variant }).base({ class: cn(className) }));
+const variant = $derived(
+  typeof page === "number" ? ("outline" as const) : ("ghost" as const),
+);
+const classes = $derived(
+  buttonRecipe({ variant }).base({ class: cn(className) }),
+);
 </script>
 
-<a class={classes} href={`?page=${pageValue}`} {...rest}> {@render children?.()} </a>
+<a class={classes} href={`?page=${pageValue}`} {...rest}>
+  {@render children?.()}
+</a>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { CircularSlider } from "../../src/components/circular-slider";
+import { CircularSlider } from "@pisagor/vue";
 </script>
 
 <template>

@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button } from "@pisagor/solid";
-import { Collapsible } from "@pisagor/solid/collapsible";
+import { Button, Collapsible } from "@pisagor/solid";
 export function PartialCollapse() {
   return (
     <Collapsible class="w-96" collapsedHeight="50px">

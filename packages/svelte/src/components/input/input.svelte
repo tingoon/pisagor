@@ -1,8 +1,13 @@
 <script lang="ts">
 import type { FieldInputProps } from "@ark-ui/svelte/field";
 import { Field } from "@ark-ui/svelte/field";
-import type { InputProps as InputSharedProps } from "@pisagor/props";
-import { type InputRecipeSlot, type InputRootVariantProps, inputRecipe, inputRootRecipe } from "@pisagor/recipes";
+import type { InputProps as BaseInputProps } from "@pisagor/props";
+import {
+  type InputRecipeSlot,
+  type InputRootVariantProps,
+  inputRecipe,
+  inputRootRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import InputGroupRoot from "../input-group/input-group-root.svelte";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -11,8 +16,7 @@ import InputClearAddon from "./input-clear-addon.svelte";
 type FormControlVariant = "primary" | "secondary";
 
 type Props = Omit<FieldInputProps, "class" | "size"> &
-  InputRootVariantProps &
-  {
+  InputRootVariantProps & {
     /**
      * Whether to show a clear button when the input has a value.
      * @defaultValue false
@@ -23,7 +27,7 @@ type Props = Omit<FieldInputProps, "class" | "size"> &
     /** Called with the string value when the input changes. */
     onValueChange?: (value: string) => void;
     rootRecipe?: typeof inputRootRecipe;
-  } & InputSharedProps;
+  } & BaseInputProps;
 
 let {
   size = "md",
@@ -46,7 +50,9 @@ const surfaceVariant = useFormControlSurface();
 const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 const slots = $derived(recipe());
 
-const skipClearable = $derived(!clearable || type === "file" || type === "password");
+const skipClearable = $derived(
+  !clearable || type === "file" || type === "password",
+);
 const canClear = $derived(
   !skipClearable && !disabled && !readonly && String(value ?? "").length > 0,
 );

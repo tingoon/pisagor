@@ -1,5 +1,5 @@
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/vue/hover-card";
-import type { HoverCardProps as HoverCardSharedProps } from "@pisagor/props";
+import type { HoverCardProps as BaseHoverCardProps } from "@pisagor/props";
 import { hoverCardRecipe } from "@pisagor/recipes";
 import {
   type CSSProperties,
@@ -10,7 +10,7 @@ import {
 } from "vue";
 
 // #region Types
-export interface HoverCardProps extends HoverCardSharedProps {
+export interface HoverCardProps extends BaseHoverCardProps {
   closeDelay?: number;
   lazyMount?: boolean;
   openDelay?: number;
@@ -18,7 +18,7 @@ export interface HoverCardProps extends HoverCardSharedProps {
   unmountOnExit?: boolean;
 }
 
-export interface HoverCardArrowProps extends HoverCardSharedProps {
+export interface HoverCardArrowProps extends BaseHoverCardProps {
   class?: unknown;
 }
 // #endregion

@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Announcement } from "@pisagor/solid/announcement";
-import { Badge } from "@pisagor/solid/badge";
+import { Announcement, Badge } from "@pisagor/solid";
 
 export function Default() {
   return (

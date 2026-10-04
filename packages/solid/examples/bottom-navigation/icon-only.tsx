@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { ScrollArea } from "@pisagor/solid";
-import { BottomNavigation } from "@pisagor/solid/bottom-navigation";
+import { BottomNavigation, ScrollArea } from "@pisagor/solid";
 import {
   BellIcon,
   HouseIcon,

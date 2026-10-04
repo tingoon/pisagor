@@ -1,4 +1,4 @@
-import { Status } from "@pisagor/react/status";
+import { Status } from "@pisagor/react";
 
 export function CustomColor() {
   return (

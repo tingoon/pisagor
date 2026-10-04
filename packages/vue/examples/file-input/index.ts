@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import acceptRaw from "./accept.vue?raw";
 import defaultRaw from "./default.vue?raw";
 import disabledRaw from "./disabled.vue?raw";
@@ -9,18 +8,18 @@ import on_surfaceRaw from "./on-surface.vue?raw";
 import sizesRaw from "./sizes.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 
-export const imports = `import { FileInput } from "@pisagor/vue/file-input";`;
+export const imports = `import { FileInput } from "@pisagor/vue";`;
 
 export const sources = {
-  Accept: stripVueExample(acceptRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  Invalid: stripVueExample(invalidRaw),
-  Multiple: stripVueExample(multipleRaw),
-  OnFilesChange: stripVueExample(on_files_changeRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  Sizes: stripVueExample(sizesRaw),
-  Variants: stripVueExample(variantsRaw),
+  Accept: acceptRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  Multiple: multipleRaw,
+  OnFilesChange: on_files_changeRaw,
+  OnSurface: on_surfaceRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
 } as const;
 
 export { default as Accept } from "./accept.vue";

@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Badge } from "@pisagor/solid";
-import { Announcement } from "@pisagor/solid/announcement";
+import { Announcement, Badge } from "@pisagor/solid";
 export function Compound() {
   return (
     <Announcement.Root>

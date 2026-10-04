@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react";
-import { Clipboard } from "@pisagor/react/clipboard";
+import { Button, Clipboard } from "@pisagor/react";
 import { useState } from "react";
 export function Controlled() {
   const [value, setValue] = useState("https://example.com/docs");

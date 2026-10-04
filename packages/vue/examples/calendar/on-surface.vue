@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Card, Surface } from "@pisagor/vue";
-import { Calendar } from "../../src/components/calendar";
+import { Calendar, Card, Surface } from "@pisagor/vue";
 </script>
 
 <template>

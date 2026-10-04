@@ -14,7 +14,10 @@ let { children, heading, class: className, ...rest }: Props = $props();
 const { slots } = useListbox();
 </script>
 
-<ListboxPrimitive.ItemGroup {...rest} class={slots.itemGroup({ class: cn(className) })}>
+<ListboxPrimitive.ItemGroup
+  {...rest}
+  class={slots.itemGroup({ class: cn(className) })}
+>
   {#if heading}
     <ListboxItemGroupLabel>{heading}</ListboxItemGroupLabel>
   {/if}

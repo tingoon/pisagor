@@ -1,5 +1,4 @@
-import { Card, parseDate } from "@pisagor/react";
-import { Calendar } from "@pisagor/react/calendar";
+import { Calendar, Card, parseDate } from "@pisagor/react";
 export function MinMax() {
   return (
     <Card className="[--space:--spacing(2)]">

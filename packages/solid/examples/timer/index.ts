@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.tsx?raw";
 import countdownRaw from "./countdown.tsx?raw";
 import countdown_dateRaw from "./countdown-date.tsx?raw";
@@ -9,26 +8,26 @@ import orientation_horizontalRaw from "./orientation-horizontal.tsx?raw";
 import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
 import pomodoroRaw from "./pomodoro.tsx?raw";
 
-export const imports = `import { Timer } from "@pisagor/solid/timer";`;
+export const imports = `import { Timer } from "@pisagor/solid";`;
 
 export const sources = {
-  Controlled: stripTsxExample(controlledRaw),
-  Countdown: stripTsxExample(countdownRaw),
-  CountdownDate: stripTsxExample(countdown_dateRaw),
-  CustomSeparator: stripTsxExample(custom_separatorRaw),
-  Default: stripTsxExample(defaultRaw),
-  Interval: stripTsxExample(intervalRaw),
-  OrientationHorizontal: stripTsxExample(orientation_horizontalRaw),
-  OrientationVertical: stripTsxExample(orientation_verticalRaw),
-  Pomodoro: stripTsxExample(pomodoroRaw),
+  Controlled: controlledRaw,
+  Countdown: countdownRaw,
+  CountdownDate: countdown_dateRaw,
+  CustomSeparator: custom_separatorRaw,
+  Default: defaultRaw,
+  Interval: intervalRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  Pomodoro: pomodoroRaw,
 } as const;
 
-export { Controlled } from "./controlled";
-export { Countdown } from "./countdown";
-export { CountdownDate } from "./countdown-date";
-export { CustomSeparator } from "./custom-separator";
-export { Default } from "./default";
-export { Interval } from "./interval";
-export { OrientationHorizontal } from "./orientation-horizontal";
-export { OrientationVertical } from "./orientation-vertical";
-export { Pomodoro } from "./pomodoro";
+export * from "./controlled";
+export * from "./countdown";
+export * from "./countdown-date";
+export * from "./custom-separator";
+export * from "./default";
+export * from "./interval";
+export * from "./orientation-horizontal";
+export * from "./orientation-vertical";
+export * from "./pomodoro";

@@ -1,10 +1,10 @@
 import { ark } from "@ark-ui/vue/factory";
-import type { AnnouncementProps as AnnouncementSharedProps } from "@pisagor/props";
+import type { AnnouncementProps as BaseAnnouncementProps } from "@pisagor/props";
 import { announcementRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 // #region Types
-export interface AnnouncementProps extends AnnouncementSharedProps {
+export interface AnnouncementProps extends BaseAnnouncementProps {
   class?: unknown;
   /**
    * The ARIA role of the announcement.

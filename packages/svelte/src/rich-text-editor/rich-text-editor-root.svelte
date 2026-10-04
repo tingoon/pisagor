@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { RichTextEditorProps as RichTextEditorSharedProps } from "@pisagor/props";
+import type { RichTextEditorProps as BaseRichTextEditorProps } from "@pisagor/props";
 import { formControlShellRecipe, richTextEditorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { Editor } from "@tiptap/core";
@@ -13,8 +13,7 @@ import { setRichTextEditorContext } from "./rich-text-editor.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<HTMLAttributes<HTMLFieldSetElement>, "class" | "onblur"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLFieldSetElement>, "class" | "onblur"> & {
   variant?: FormControlVariant;
   defaultValue?: string;
   value?: string;
@@ -28,7 +27,7 @@ type Props = Omit<HTMLAttributes<HTMLFieldSetElement>, "class" | "onblur"> &
   children?: import("svelte").Snippet;
   class?: string | undefined;
   id?: string | undefined | null;
-  } & RichTextEditorSharedProps;
+} & BaseRichTextEditorProps;
 
 let {
   variant: variantProp,
@@ -51,7 +50,9 @@ let {
 const surfaceVariant = useFormControlSurface();
 const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 const slots = $derived(recipe());
-const resolvedAriaLabel = $derived(ariaLabel ?? (id ? undefined : "Rich text editor"));
+const resolvedAriaLabel = $derived(
+  ariaLabel ?? (id ? undefined : "Rich text editor"),
+);
 
 let hostEl = $state<HTMLDivElement | null>(null);
 let editor = $state<Editor | undefined>(undefined);

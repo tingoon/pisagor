@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import clearableRaw from "./clearable.vue?raw";
 import custom_formatRaw from "./custom-format.vue?raw";
 import defaultRaw from "./default.vue?raw";
@@ -10,19 +9,19 @@ import timeRaw from "./time.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import with_presetsRaw from "./with-presets.vue?raw";
 
-export const imports = `import { DatePicker } from "@pisagor/vue/date-picker";`;
+export const imports = `import { DatePicker } from "@pisagor/vue";`;
 
 export const sources = {
-  Clearable: stripVueExample(clearableRaw),
-  CustomFormat: stripVueExample(custom_formatRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  Input: stripVueExample(inputRaw),
-  Invalid: stripVueExample(invalidRaw),
-  Range: stripVueExample(rangeRaw),
-  Time: stripVueExample(timeRaw),
-  Variants: stripVueExample(variantsRaw),
-  WithPresets: stripVueExample(with_presetsRaw),
+  Clearable: clearableRaw,
+  CustomFormat: custom_formatRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Input: inputRaw,
+  Invalid: invalidRaw,
+  Range: rangeRaw,
+  Time: timeRaw,
+  Variants: variantsRaw,
+  WithPresets: with_presetsRaw,
 } as const;
 
 export { default as Clearable } from "./clearable.vue";

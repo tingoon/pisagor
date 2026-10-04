@@ -1,11 +1,11 @@
 /** @jsxImportSource solid-js */
 
+import { Table } from "@pisagor/solid";
 import {
   type ColumnDef,
   DataTable,
   dataTableFeatures,
 } from "@pisagor/solid/data-table";
-import { Table } from "@pisagor/solid/table";
 
 type Person = { name: string; age: number };
 

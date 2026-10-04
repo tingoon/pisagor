@@ -1,4 +1,4 @@
-import { RichTextEditorField } from "../../src/fields/rich-text-editor-field";
+import { RichTextEditorField } from "@pisagor/react-form";
 
 export function Disabled() {
   return (

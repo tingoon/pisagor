@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Timeline } from "@pisagor/solid/timeline";
+import { Timeline } from "@pisagor/solid";
 
 export function Default() {
   return (

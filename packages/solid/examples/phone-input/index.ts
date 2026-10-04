@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.tsx?raw";
 import custom_popupRaw from "./custom-popup.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
@@ -10,19 +9,19 @@ import variantsRaw from "./variants.tsx?raw";
 export const imports = `import { PhoneInput } from "@pisagor/solid/phone-input";`;
 
 export const sources = {
-  Controlled: stripTsxExample(controlledRaw),
-  CustomPopup: stripTsxExample(custom_popupRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  Sizes: stripTsxExample(sizesRaw),
-  Variants: stripTsxExample(variantsRaw),
+  Controlled: controlledRaw,
+  CustomPopup: custom_popupRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
 } as const;
 
-export { Controlled } from "./controlled";
-export { CustomPopup } from "./custom-popup";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { Invalid } from "./invalid";
-export { Sizes } from "./sizes";
-export { Variants } from "./variants";
+export * from "./controlled";
+export * from "./custom-popup";
+export * from "./default";
+export * from "./disabled";
+export * from "./invalid";
+export * from "./sizes";
+export * from "./variants";

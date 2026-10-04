@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { PhPlus } from "@phosphor-icons/vue";
-import { Status } from "../../src/components/status";
+import { Status } from "@pisagor/vue";
 </script>
 
 <template>

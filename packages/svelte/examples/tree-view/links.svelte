@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTreeCollection, TreeView } from "@pisagor/svelte/tree-view";
+import { createTreeCollection, TreeView } from "@pisagor/svelte";
 import TreeNodeLink from "./tree-node-link.svelte";
 
 const collection = createTreeCollection({
@@ -8,7 +8,11 @@ const collection = createTreeCollection({
       {
         children: [
           { href: "/docs", id: "docs/introduction", name: "Introduction" },
-          { href: "/docs/components", id: "docs/components", name: "Components" },
+          {
+            href: "/docs/components",
+            id: "docs/components",
+            name: "Components",
+          },
         ],
         id: "docs",
         name: "Documentation",

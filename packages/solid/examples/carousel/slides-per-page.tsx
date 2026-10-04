@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Card } from "@pisagor/solid";
-import { Carousel } from "@pisagor/solid/carousel";
+import { Card, Carousel } from "@pisagor/solid";
 export function SlidesPerPage() {
   return (
     <Carousel

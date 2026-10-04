@@ -1,10 +1,5 @@
+import { Button, Dialog } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Dialog } from "../../src/components/dialog";
-import {
-  defaultButtonClass,
-  ghostButtonClass,
-  outlineButtonClass,
-} from "../../src/internal/story-button";
 
 export default defineComponent({
   name: "ScrollArea",
@@ -12,7 +7,7 @@ export default defineComponent({
     return () =>
       h(Dialog, null, () => [
         h(Dialog.Trigger, { asChild: true }, () =>
-          h("button", { class: outlineButtonClass(), type: "button" }, "Open"),
+          h(Button, { type: "button", variant: "outline" }, "Open"),
         ),
         h(Dialog.Content, { size: "lg" }, () => [
           h(Dialog.Header, { title: "Terms and conditions" }),
@@ -53,18 +48,10 @@ export default defineComponent({
           ),
           h(Dialog.Footer, null, () => [
             h(Dialog.CloseTrigger, { asChild: true }, () =>
-              h(
-                "button",
-                { class: ghostButtonClass(), type: "button" },
-                "Cancel",
-              ),
+              h(Button, { type: "button", variant: "ghost" }, "Cancel"),
             ),
             h(Dialog.CloseTrigger, { asChild: true }, () =>
-              h(
-                "button",
-                { class: defaultButtonClass(), type: "button" },
-                "Agree",
-              ),
+              h(Button, { type: "button" }, "Agree"),
             ),
           ]),
         ]),

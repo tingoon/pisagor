@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import type { TableProps as TableSharedProps } from "@pisagor/props";
+import type { TableProps as BaseTableProps } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { TableContext, useTable } from "./table.context";
@@ -7,7 +7,7 @@ import { TableContext, useTable } from "./table.context";
 // #region Types
 export interface TableProps
   extends ComponentProps<typeof ark.table>,
-    TableSharedProps {
+    BaseTableProps {
   /**
    * The variant of the table.
    *

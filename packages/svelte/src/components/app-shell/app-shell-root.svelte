@@ -1,6 +1,6 @@
 <script lang="ts">
 import { useHotkey } from "@ark-ui/svelte/hotkeys";
-import type { AppShellProps as AppShellSharedProps } from "@pisagor/props";
+import type { AppShellProps as BaseAppShellProps } from "@pisagor/props";
 import { appShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
@@ -17,14 +17,19 @@ import {
   ZERO_REGION_VARS,
 } from "./app-shell.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "style"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "style"> & {
   children?: import("svelte").Snippet;
   class?: string | undefined;
   style?: string | undefined;
-  } & AppShellSharedProps;
+} & BaseAppShellProps;
 
-let { recipe = appShellRecipe, class: className, style, children, ...rest }: Props = $props();
+let {
+  recipe = appShellRecipe,
+  class: className,
+  style,
+  children,
+  ...rest
+}: Props = $props();
 
 const slots = $derived(recipe());
 let regionRevision = $state(0);
@@ -36,7 +41,8 @@ let navigationCount = $state(0);
 let shellElement = $state<HTMLDivElement | null>(null);
 
 const panelStates: Partial<Record<AppShellPlacement, AppShellSideState>> = {};
-const inspectorStates: Partial<Record<AppShellPlacement, AppShellSideState>> = {};
+const inspectorStates: Partial<Record<AppShellPlacement, AppShellSideState>> =
+  {};
 const railStates: Partial<Record<AppShellPlacement, AppShellRailState>> = {};
 
 const hasBanner = $derived(bannerCount > 0);
@@ -135,7 +141,8 @@ const APP_SHELL_CONTENT_ROW =
   '"start-inspector start-rail start-panel main end-panel end-rail end-inspector"';
 const APP_SHELL_NAV_ROW =
   '"start-inspector navigation navigation navigation navigation navigation end-inspector"';
-const APP_SHELL_BANNER_ROW = '"banner banner banner banner banner banner banner"';
+const APP_SHELL_BANNER_ROW =
+  '"banner banner banner banner banner banner banner"';
 
 const gridTemplateAreas = $derived.by(() => {
   if (hasBanner && hasNavigation) {
@@ -147,7 +154,11 @@ const gridTemplateAreas = $derived.by(() => {
 });
 
 const gridTemplateRows = $derived(
-  [...(hasBanner ? ["auto"] : []), ...(hasNavigation ? ["auto"] : []), "auto"].join(" "),
+  [
+    ...(hasBanner ? ["auto"] : []),
+    ...(hasNavigation ? ["auto"] : []),
+    "auto",
+  ].join(" "),
 );
 
 const shellStyle = $derived(

@@ -1,5 +1,5 @@
 import { Table } from "@pisagor/vue";
-import { DataGrid } from "../../src/data-grid";
+import { DataGrid } from "@pisagor/vue/data-grid";
 
 interface User {
   email: string;

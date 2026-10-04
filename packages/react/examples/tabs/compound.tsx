@@ -1,4 +1,4 @@
-import { Tabs } from "@pisagor/react/tabs";
+import { Tabs } from "@pisagor/react";
 
 export function Compound() {
   return (

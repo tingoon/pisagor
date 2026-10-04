@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
 import disabledRaw from "./disabled.svelte?raw";
@@ -12,21 +11,21 @@ import sizesRaw from "./sizes.svelte?raw";
 import stepRaw from "./step.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 
-export const imports = `import { NumberInput } from "@pisagor/svelte/number-input";`;
+export const imports = `import { NumberInput } from "@pisagor/svelte";`;
 
 export const sources = {
-  Controlled: stripSvelteExample(controlledRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  FieldOnly: stripSvelteExample(field_onlyRaw),
-  Formatted: stripSvelteExample(formattedRaw),
-  Invalid: stripSvelteExample(invalidRaw),
-  MouseWheel: stripSvelteExample(mouse_wheelRaw),
-  Range: stripSvelteExample(rangeRaw),
-  Scrub: stripSvelteExample(scrubRaw),
-  Sizes: stripSvelteExample(sizesRaw),
-  Step: stripSvelteExample(stepRaw),
-  Variants: stripSvelteExample(variantsRaw),
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  FieldOnly: field_onlyRaw,
+  Formatted: formattedRaw,
+  Invalid: invalidRaw,
+  MouseWheel: mouse_wheelRaw,
+  Range: rangeRaw,
+  Scrub: scrubRaw,
+  Sizes: sizesRaw,
+  Step: stepRaw,
+  Variants: variantsRaw,
 } as const;
 
 export { default as Controlled } from "./controlled.svelte";

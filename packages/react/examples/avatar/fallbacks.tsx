@@ -1,5 +1,5 @@
 import { UserIcon } from "@phosphor-icons/react";
-import { Avatar } from "@pisagor/react/avatar";
+import { Avatar } from "@pisagor/react";
 
 export function Fallbacks() {
   return (

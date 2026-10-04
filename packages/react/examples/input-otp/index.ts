@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import blur_on_completeRaw from "./blur-on-complete.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import custom_sizeRaw from "./custom-size.tsx?raw";
@@ -11,30 +10,30 @@ import separatorRaw from "./separator.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 import with_placeholderRaw from "./with-placeholder.tsx?raw";
 
-export const imports = `import { InputOTP } from "@pisagor/react/input-otp";`;
+export const imports = `import { InputOTP } from "@pisagor/react";`;
 
 export const sources = {
-  BlurOnComplete: stripTsxExample(blur_on_completeRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  CustomSize: stripTsxExample(custom_sizeRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  FourDigits: stripTsxExample(four_digitsRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  Mask: stripTsxExample(maskRaw),
-  Separator: stripTsxExample(separatorRaw),
-  Variants: stripTsxExample(variantsRaw),
-  WithPlaceholder: stripTsxExample(with_placeholderRaw),
+  BlurOnComplete: blur_on_completeRaw,
+  Controlled: controlledRaw,
+  CustomSize: custom_sizeRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  FourDigits: four_digitsRaw,
+  Invalid: invalidRaw,
+  Mask: maskRaw,
+  Separator: separatorRaw,
+  Variants: variantsRaw,
+  WithPlaceholder: with_placeholderRaw,
 } as const;
 
-export { BlurOnComplete } from "./blur-on-complete";
-export { Controlled } from "./controlled";
-export { CustomSize } from "./custom-size";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { FourDigits } from "./four-digits";
-export { Invalid } from "./invalid";
-export { Mask } from "./mask";
-export { Separator } from "./separator";
-export { Variants } from "./variants";
-export { WithPlaceholder } from "./with-placeholder";
+export * from "./blur-on-complete";
+export * from "./controlled";
+export * from "./custom-size";
+export * from "./default";
+export * from "./disabled";
+export * from "./four-digits";
+export * from "./invalid";
+export * from "./mask";
+export * from "./separator";
+export * from "./variants";
+export * from "./with-placeholder";

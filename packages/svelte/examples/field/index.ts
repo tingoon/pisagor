@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import autocomplete_fieldRaw from "./autocomplete-field.svelte?raw";
 import checkbox_fieldRaw from "./checkbox-field.svelte?raw";
 import checkbox_group_fieldRaw from "./checkbox-group-field.svelte?raw";
@@ -19,28 +18,28 @@ import textarea_fieldRaw from "./textarea-field.svelte?raw";
 import with_errorRaw from "./with-error.svelte?raw";
 import with_input_groupRaw from "./with-input-group.svelte?raw";
 
-export const imports = `import { Field } from "@pisagor/svelte/field";`;
+export const imports = `import { Field } from "@pisagor/svelte";`;
 
 export const sources = {
-  AutocompleteField: stripSvelteExample(autocomplete_fieldRaw),
-  CheckboxField: stripSvelteExample(checkbox_fieldRaw),
-  CheckboxGroupField: stripSvelteExample(checkbox_group_fieldRaw),
-  ComboboxField: stripSvelteExample(combobox_fieldRaw),
-  ComboboxMultipleField: stripSvelteExample(combobox_multiple_fieldRaw),
-  Default: stripSvelteExample(defaultRaw),
-  DisabledField: stripSvelteExample(disabled_fieldRaw),
-  FieldGroup: stripSvelteExample(field_groupRaw),
-  NumberInputStory: stripSvelteExample(number_input_storyRaw),
-  OrientationHorizontal: stripSvelteExample(orientation_horizontalRaw),
-  OrientationVertical: stripSvelteExample(orientation_verticalRaw),
-  RadioGroupField: stripSvelteExample(radio_group_fieldRaw),
-  RequiredField: stripSvelteExample(required_fieldRaw),
-  SelectField: stripSvelteExample(select_fieldRaw),
-  SliderField: stripSvelteExample(slider_fieldRaw),
-  SwitchField: stripSvelteExample(switch_fieldRaw),
-  TextareaField: stripSvelteExample(textarea_fieldRaw),
-  WithError: stripSvelteExample(with_errorRaw),
-  WithInputGroup: stripSvelteExample(with_input_groupRaw),
+  AutocompleteField: autocomplete_fieldRaw,
+  CheckboxField: checkbox_fieldRaw,
+  CheckboxGroupField: checkbox_group_fieldRaw,
+  ComboboxField: combobox_fieldRaw,
+  ComboboxMultipleField: combobox_multiple_fieldRaw,
+  Default: defaultRaw,
+  DisabledField: disabled_fieldRaw,
+  FieldGroup: field_groupRaw,
+  NumberInputStory: number_input_storyRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  RadioGroupField: radio_group_fieldRaw,
+  RequiredField: required_fieldRaw,
+  SelectField: select_fieldRaw,
+  SliderField: slider_fieldRaw,
+  SwitchField: switch_fieldRaw,
+  TextareaField: textarea_fieldRaw,
+  WithError: with_errorRaw,
+  WithInputGroup: with_input_groupRaw,
 } as const;
 
 export { default as AutocompleteField } from "./autocomplete-field.svelte";

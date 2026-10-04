@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhInfo } from "@phosphor-icons/vue";
-import { Button, Popover } from "@pisagor/vue";
-import { DataList } from "../../src/components/data-list";
+import { Button, DataList, Popover } from "@pisagor/vue";
 
 const data = [
   {

@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import compoundRaw from "./compound.vue?raw";
 import controlledRaw from "./controlled.vue?raw";
 import defaultRaw from "./default.vue?raw";
@@ -7,16 +6,16 @@ import multipleRaw from "./multiple.vue?raw";
 import non_collapsibleRaw from "./non-collapsible.vue?raw";
 import with_cardRaw from "./with-card.vue?raw";
 
-export const imports = `import { Accordion } from "@pisagor/vue/accordion";`;
+export const imports = `import { Accordion } from "@pisagor/vue";`;
 
 export const sources = {
-  Compound: stripVueExample(compoundRaw),
-  Controlled: stripVueExample(controlledRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  Multiple: stripVueExample(multipleRaw),
-  NonCollapsible: stripVueExample(non_collapsibleRaw),
-  WithCard: stripVueExample(with_cardRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Multiple: multipleRaw,
+  NonCollapsible: non_collapsibleRaw,
+  WithCard: with_cardRaw,
 } as const;
 
 export { default as Compound } from "./compound.vue";

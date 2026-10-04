@@ -3,7 +3,7 @@ import {
   TextItalicIcon,
   TextUnderlineIcon,
 } from "@phosphor-icons/react";
-import { ToggleGroup } from "@pisagor/react/toggle-group";
+import { ToggleGroup } from "@pisagor/react";
 
 export function Compound() {
   return (

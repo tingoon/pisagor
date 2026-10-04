@@ -1,15 +1,15 @@
-import { Field, Input } from "@pisagor/vue";
+import { Button, Field, Input, Sheet } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Sheet } from "../../src/components/sheet";
-import { outlineButtonClass } from "../../src/internal/story-button";
-import type { ArkPart } from "../../src/internal/types";
+
+type ArkPart = Parameters<typeof h>[0];
+
 export default defineComponent({
   name: "CustomSpacing",
   setup() {
     return () =>
       h(Sheet, null, () => [
         h(Sheet.Trigger, { asChild: true }, () =>
-          h("button", { class: outlineButtonClass(), type: "button" }, "Open"),
+          h(Button, { type: "button", variant: "outline" }, "Open"),
         ),
         h(
           Sheet.Content as ArkPart,
@@ -34,16 +34,12 @@ export default defineComponent({
             ),
             h(Sheet.Footer, null, () => [
               h(Sheet.CloseTrigger, { asChild: true }, () =>
-                h(
-                  "button",
-                  { class: outlineButtonClass(), type: "button" },
-                  "Cancel",
-                ),
+                h(Button, { type: "button", variant: "outline" }, "Cancel"),
               ),
               h(Sheet.CloseTrigger, { asChild: true }, () =>
                 h(
-                  "button",
-                  { class: outlineButtonClass(), type: "button" },
+                  Button,
+                  { type: "button", variant: "outline" },
                   "Save changes",
                 ),
               ),

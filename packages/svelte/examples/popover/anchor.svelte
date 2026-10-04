@@ -1,7 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte/button";
-import { Input } from "@pisagor/svelte/input";
-import { Popover } from "@pisagor/svelte/popover";
+import { Button, Input, Popover } from "@pisagor/svelte";
 </script>
 
 <div>
@@ -11,8 +9,14 @@ import { Popover } from "@pisagor/svelte/popover";
         <Button variant="outline">Open</Button>
       </Popover.Trigger>
       <Popover.Anchor>
-        {#snippet asChild(props)}
-          <Input {...props()} class="w-full" placeholder="jane.doe@example.com" />
+        {#snippet asChild(
+  props,
+)}
+          <Input
+            {...props()}
+            class="w-full"
+            placeholder="jane.doe@example.com"
+          />
         {/snippet}
       </Popover.Anchor>
       <Popover.Content class="w-56">

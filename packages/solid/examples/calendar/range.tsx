@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Card } from "@pisagor/solid";
-import { Calendar } from "@pisagor/solid/calendar";
+import { Calendar, Card } from "@pisagor/solid";
 export function Range() {
   return (
     <Card class="[--space:--spacing(2)]">

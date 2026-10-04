@@ -6,7 +6,7 @@ import type {
 } from "@ark-ui/react/password-input";
 import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/react/password-input";
 import { EyeIcon, EyeSlashIcon, XIcon } from "@phosphor-icons/react";
-import type { PasswordInputProps as PasswordInputSharedProps } from "@pisagor/props";
+import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
 import { passwordInputRecipe } from "@pisagor/recipes";
 import type { RefAttributes } from "react";
 import { useClearableInput } from "../../hooks";
@@ -33,7 +33,7 @@ export interface PasswordInputProps
   extends PasswordInputRootProps,
     Omit<PasswordInputInputProps, "className" | "size">,
     RefAttributes<HTMLInputElement>,
-    PasswordInputSharedProps {
+    BasePasswordInputProps {
   size?: InputGroupProps["size"];
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;

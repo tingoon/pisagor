@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import aRaw from "./a.vue?raw";
 import blockquoteRaw from "./blockquote.vue?raw";
 import defaultRaw from "./default.vue?raw";
@@ -23,32 +22,32 @@ import pRaw from "./p.vue?raw";
 import separatorRaw from "./separator.vue?raw";
 import smallRaw from "./small.vue?raw";
 
-export const imports = `import { Prose } from "@pisagor/vue/prose";`;
+export const imports = `import { Prose } from "@pisagor/vue";`;
 
 export const sources = {
-  A: stripVueExample(aRaw),
-  Blockquote: stripVueExample(blockquoteRaw),
-  Default: stripVueExample(defaultRaw),
-  Details: stripVueExample(detailsRaw),
-  Dl: stripVueExample(dlRaw),
-  H1: stripVueExample(h1Raw),
-  H2: stripVueExample(h2Raw),
-  H3: stripVueExample(h3Raw),
-  H4: stripVueExample(h4Raw),
-  H5: stripVueExample(h5Raw),
-  H6: stripVueExample(h6Raw),
-  HtmlTable: stripVueExample(html_tableRaw),
-  HtmlTrusted: stripVueExample(html_trustedRaw),
-  InlineCode: stripVueExample(inline_codeRaw),
-  Kbd: stripVueExample(kbdRaw),
-  List: stripVueExample(listRaw),
-  Mark: stripVueExample(markRaw),
-  Media: stripVueExample(mediaRaw),
-  NotProse: stripVueExample(not_proseRaw),
-  Ol: stripVueExample(olRaw),
-  P: stripVueExample(pRaw),
-  Separator: stripVueExample(separatorRaw),
-  Small: stripVueExample(smallRaw),
+  A: aRaw,
+  Blockquote: blockquoteRaw,
+  Default: defaultRaw,
+  Details: detailsRaw,
+  Dl: dlRaw,
+  H1: h1Raw,
+  H2: h2Raw,
+  H3: h3Raw,
+  H4: h4Raw,
+  H5: h5Raw,
+  H6: h6Raw,
+  HtmlTable: html_tableRaw,
+  HtmlTrusted: html_trustedRaw,
+  InlineCode: inline_codeRaw,
+  Kbd: kbdRaw,
+  List: listRaw,
+  Mark: markRaw,
+  Media: mediaRaw,
+  NotProse: not_proseRaw,
+  Ol: olRaw,
+  P: pRaw,
+  Separator: separatorRaw,
+  Small: smallRaw,
 } as const;
 
 export { default as A } from "./a.vue";

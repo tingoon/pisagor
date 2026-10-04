@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { FileUpload } from "@pisagor/svelte/file-upload";
+import { Button, FileUpload } from "@pisagor/svelte";
 import XIcon from "phosphor-svelte/lib/XIcon";
 
 let files = $state<File[]>([]);
@@ -15,11 +14,16 @@ let files = $state<File[]>([]);
     <FileUpload.ItemGroup class="grid grid-cols-4 gap-2">
       {#each files as file}
         <FileUpload.Item {file}>
-          <FileUpload.ItemPreview class="size-auto w-full rounded-2xl" type="image/*">
+          <FileUpload.ItemPreview
+            class="size-auto w-full rounded-2xl"
+            type="image/*"
+          >
             <FileUpload.ItemPreviewImage />
           </FileUpload.ItemPreview>
           <FileUpload.ItemDeleteTrigger>
-            {#snippet asChild(props)}
+            {#snippet asChild(
+  props,
+)}
               <Button
                 {...props()}
                 aria-label="Remove file"

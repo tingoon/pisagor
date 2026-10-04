@@ -1,14 +1,13 @@
-import { stripVueExample } from "@pisagor/utils";
 import compoundRaw from "./compound.vue?raw";
 import defaultRaw from "./default.vue?raw";
 import horizontalRaw from "./horizontal.vue?raw";
 
-export const imports = `import { Timeline } from "@pisagor/vue/timeline";`;
+export const imports = `import { Timeline } from "@pisagor/vue";`;
 
 export const sources = {
-  Compound: stripVueExample(compoundRaw),
-  Default: stripVueExample(defaultRaw),
-  Horizontal: stripVueExample(horizontalRaw),
+  Compound: compoundRaw,
+  Default: defaultRaw,
+  Horizontal: horizontalRaw,
 } as const;
 
 export { default as Compound } from "./compound.vue";

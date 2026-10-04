@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Editable } from "@pisagor/svelte/editable";
+import { Editable } from "@pisagor/svelte";
 </script>
 
 <Editable defaultValue="Click to edit" placeholder="Enter text…">

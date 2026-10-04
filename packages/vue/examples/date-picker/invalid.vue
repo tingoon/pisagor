@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { Calendar } from "@pisagor/vue";
+import { Calendar, DatePicker } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { DatePicker } from "../../src/components/date-picker";
 
 interface WeekDay {
   narrow: string;

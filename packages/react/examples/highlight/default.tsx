@@ -1,4 +1,4 @@
-import { Highlight } from "@pisagor/react/highlight";
+import { Highlight } from "@pisagor/react";
 
 export function Default() {
   return (

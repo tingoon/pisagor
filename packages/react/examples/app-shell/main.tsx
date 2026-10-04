@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { AppShell } from "@pisagor/react/app-shell";
+import { AppShell } from "@pisagor/react";
 import { regionTitle } from "./helpers";
 
 export function Main() {

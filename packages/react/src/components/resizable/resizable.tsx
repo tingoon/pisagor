@@ -9,9 +9,9 @@ import type {
 import { Splitter as SplitterPrimitive } from "@ark-ui/react/splitter";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
 import type {
-  ResizableEdgeHandleProps as ResizableEdgeHandleSharedProps,
-  ResizableProps as ResizableRootProviderSharedProps,
-  ResizableProps as ResizableRootSharedProps,
+  ResizableEdgeHandleProps as BaseResizableEdgeHandleProps,
+  ResizableProps as BaseResizableRootProps,
+  ResizableProps as BaseResizableRootProviderProps,
 } from "@pisagor/props";
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import { type ComponentProps, useCallback, useRef } from "react";
@@ -37,7 +37,7 @@ export type ResizableEdgePlacement = "end" | "start";
 
 export interface ResizableEdgeHandleProps
   extends ComponentProps<"button">,
-    ResizableEdgeHandleSharedProps {
+    BaseResizableEdgeHandleProps {
   /** Which edge of the resizable region the handle sits on. */
   placement: ResizableEdgePlacement;
   /** Vertical placement of the visible grip. @defaultValue `"center"` */
@@ -70,7 +70,7 @@ export interface ResizableResizeTriggerProps
 
 export interface ResizableRootProps
   extends SplitterRootProps,
-    ResizableRootSharedProps {}
+    BaseResizableRootProps {}
 
 export type ResizablePanelProps = SplitterPanelProps;
 
@@ -81,7 +81,7 @@ export type ResizableContextProps = SplitterContextProps;
 
 export interface ResizableRootProviderProps
   extends SplitterRootProviderProps,
-    ResizableRootProviderSharedProps {}
+    BaseResizableRootProviderProps {}
 // #endregion
 
 // #region Parts

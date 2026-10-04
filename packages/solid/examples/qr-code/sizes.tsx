@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { QrCode } from "@pisagor/solid/qr-code";
+import { QrCode } from "@pisagor/solid";
 
 export function Sizes() {
   return (

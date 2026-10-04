@@ -1,7 +1,7 @@
 <script lang="ts">
 import { useListCollection } from "@ark-ui/svelte/collection";
 import { useFilter } from "@ark-ui/svelte/locale";
-import { Command } from "@pisagor/svelte/command";
+import { Command } from "@pisagor/svelte";
 
 const initialItems = [
   { group: "Frameworks", label: "Angular", value: "angular" },
@@ -24,7 +24,11 @@ const initialItems = [
   { group: "Meta-frameworks", label: "Blitz.js", value: "blitzjs" },
   { group: "Meta-frameworks", label: "Redwood", value: "redwood" },
   { group: "Meta-frameworks", label: "T3 Stack", value: "t3" },
-  { group: "Meta-frameworks", label: "TanStack Start", value: "tanstack-start" },
+  {
+    group: "Meta-frameworks",
+    label: "TanStack Start",
+    value: "tanstack-start",
+  },
   { group: "Meta-frameworks", label: "Wasp", value: "wasp" },
 ];
 const { contains } = useFilter({ sensitivity: "base" });
@@ -35,7 +39,10 @@ const { collection, filter } = useListCollection({
 });
 </script>
 
-<Command {collection} onInputValueChange={({ inputValue }) => filter(inputValue)}>
+<Command
+  {collection}
+  onInputValueChange={({ inputValue }) => filter(inputValue)}
+>
   <Command.Input placeholder="Search frameworks..." />
   <Command.Content>
     <Command.Empty />

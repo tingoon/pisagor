@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { PhCalendar } from "@phosphor-icons/vue";
-import { Button, Field } from "@pisagor/vue";
+import { Button, DatePicker, Field, parseDate } from "@pisagor/vue";
 import { ref } from "vue";
-import { DatePicker, parseDate } from "../../src/components/date-picker";
 
 const value = ref([parseDate("2025-06-15")]);
 

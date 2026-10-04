@@ -2,8 +2,7 @@ import {
   MagnifyingGlassMinusIcon,
   MagnifyingGlassPlusIcon,
 } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react";
-import { ImageCropper } from "@pisagor/react/image-cropper";
+import { Button, ImageCropper } from "@pisagor/react";
 import { useState } from "react";
 export function ControlledZoom() {
   const [zoom, setZoom] = useState(1);

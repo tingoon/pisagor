@@ -1,10 +1,11 @@
 import { useListCollection } from "@ark-ui/vue/collection";
 import { useFilter } from "@ark-ui/vue/locale";
 import { PhCaretUpDown } from "@phosphor-icons/vue";
-import { Button, Input, Popover } from "@pisagor/vue";
+import { Button, Input, Listbox, Popover } from "@pisagor/vue";
 import { computed, defineComponent, h, ref } from "vue";
-import { Listbox } from "../../src/components/listbox";
-import type { ArkPart } from "../../src/internal/types";
+
+type ArkPart = Parameters<typeof h>[0];
+
 export default defineComponent({
   name: "WithPopover",
   setup() {

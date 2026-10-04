@@ -1,4 +1,4 @@
-import { Breadcrumb } from "@pisagor/react/breadcrumb";
+import { Breadcrumb } from "@pisagor/react";
 
 export function WithLink() {
   return (

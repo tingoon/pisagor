@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/solid/factory";
-import type { AnnouncementProps as AnnouncementSharedProps } from "@pisagor/props";
+import type { AnnouncementProps as BaseAnnouncementProps } from "@pisagor/props";
 import { announcementRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -9,7 +9,7 @@ import { AnnouncementContext, useAnnouncement } from "./announcement.context";
 type AnnouncementTitleProps = ComponentProps<typeof ark.span>;
 
 type AnnouncementRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
-  AnnouncementSharedProps & {
+  BaseAnnouncementProps & {
     role?: "status" | "alert";
   };
 

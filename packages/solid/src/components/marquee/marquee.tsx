@@ -5,7 +5,7 @@ import type {
   MarqueeRootProps as MarqueePrimitiveRootProps,
 } from "@ark-ui/solid/marquee";
 import { Marquee as MarqueePrimitive } from "@ark-ui/solid/marquee";
-import type { MarqueeProps as MarqueeRootSharedProps } from "@pisagor/props";
+import type { MarqueeProps as BaseMarqueeRootProps } from "@pisagor/props";
 import { marqueeRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
@@ -14,7 +14,7 @@ import { MarqueeContext, useMarquee } from "./marquee.context";
 
 export interface MarqueeRootProps
   extends Omit<MarqueePrimitiveRootProps, "side">,
-    MarqueeRootSharedProps {
+    BaseMarqueeRootProps {
   orientation?: "horizontal" | "vertical";
   showEdges?: boolean;
 }

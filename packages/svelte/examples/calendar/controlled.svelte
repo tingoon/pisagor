@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Card } from "@pisagor/svelte";
-import { Calendar, parseDate } from "@pisagor/svelte/calendar";
+import { Calendar, Card, parseDate } from "@pisagor/svelte";
 
 let value = $state([parseDate(new Date(Date.now()))]);
 </script>

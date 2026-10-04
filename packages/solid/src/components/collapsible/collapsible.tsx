@@ -5,7 +5,7 @@ import {
   type CollapsibleRootProps as CollapsiblePrimitiveRootProps,
   type CollapsibleTriggerProps,
 } from "@ark-ui/solid/collapsible";
-import type { CollapsibleProps as CollapsibleRootSharedProps } from "@pisagor/props";
+import type { CollapsibleProps as BaseCollapsibleRootProps } from "@pisagor/props";
 import { collapsibleRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
@@ -15,7 +15,7 @@ import { CollapsibleContext, useCollapsible } from "./collapsible.context";
 
 export interface CollapsibleRootProps
   extends CollapsiblePrimitiveRootProps,
-    CollapsibleRootSharedProps {}
+    BaseCollapsibleRootProps {}
 
 export function CollapsibleRoot(props: CollapsibleRootProps): JSX.Element {
   const [local, rest] = splitProps(props, [

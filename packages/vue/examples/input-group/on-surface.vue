@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhMagnifyingGlass } from "@phosphor-icons/vue";
-import { Surface } from "@pisagor/vue";
-import { InputGroup } from "../../src/components/input-group";
+import { InputGroup, Surface } from "@pisagor/vue";
 </script>
 
 <template>

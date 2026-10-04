@@ -2,8 +2,8 @@ import type { CollectionItem } from "@ark-ui/react/collection";
 import { Portal } from "@ark-ui/react/portal";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import type {
-  CommandProps as CommandDialogContentSharedProps,
-  CommandProps as CommandSharedProps,
+  CommandProps as BaseCommandDialogContentProps,
+  CommandProps as BaseCommandProps,
 } from "@pisagor/props";
 import { commandRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
@@ -31,7 +31,7 @@ import { CommandContext, useCommand } from "./command.context";
 // #region Types
 export interface CommandDialogContentProps
   extends DialogContentProps,
-    CommandDialogContentSharedProps {
+    BaseCommandDialogContentProps {
   /**
    * The description of the dialog
    *
@@ -62,7 +62,7 @@ export type CommandContentProps = ComboboxContentProps;
 
 export interface CommandProps<T extends CollectionItem = CollectionItem>
   extends Omit<ComboboxRootProps<T>, "recipe">,
-    CommandSharedProps {
+    BaseCommandProps {
   className?: string;
 }
 

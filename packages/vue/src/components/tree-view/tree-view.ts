@@ -13,10 +13,10 @@ import {
   PhMinus,
 } from "@phosphor-icons/vue";
 import type {
-  TreeViewBranchProps as TreeViewBranchSharedProps,
-  TreeViewItemProps as TreeViewItemSharedProps,
-  TreeViewItemProps as TreeViewItemTitleSharedProps,
-  TreeViewProps as TreeViewSharedProps,
+  TreeViewBranchProps as BaseTreeViewBranchProps,
+  TreeViewItemProps as BaseTreeViewItemProps,
+  TreeViewItemProps as BaseTreeViewItemTitleProps,
+  TreeViewProps as BaseTreeViewProps,
 } from "@pisagor/props";
 import {
   formControlToggleRecipe,
@@ -44,7 +44,7 @@ interface TreeViewContextValue {
   fileIcons?: Record<string, unknown | null>;
 }
 
-export interface TreeViewProps extends TreeViewSharedProps {
+export interface TreeViewProps extends BaseTreeViewProps {
   fileIcons?: Record<string, unknown | null>;
   lazyMount?: boolean;
   unmountOnExit?: boolean;
@@ -55,15 +55,15 @@ export interface NodeProviderProps<T extends TreeNodeType = TreeNodeType> {
   value: T;
 }
 
-export interface TreeViewBranchProps extends TreeViewBranchSharedProps {
+export interface TreeViewBranchProps extends BaseTreeViewBranchProps {
   class?: unknown;
 }
 
-export interface TreeViewItemProps extends TreeViewItemSharedProps {
+export interface TreeViewItemProps extends BaseTreeViewItemProps {
   class?: unknown;
 }
 
-export interface TreeViewItemTitleProps extends TreeViewItemTitleSharedProps {
+export interface TreeViewItemTitleProps extends BaseTreeViewItemTitleProps {
   class?: unknown;
 }
 // #endregion

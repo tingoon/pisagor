@@ -10,7 +10,9 @@ type Props = DatePickerTableBodyProps & {
   tabIndex?: number | null;
 };
 
-function getWeekRowKey(week: Array<{ day: number; month: number; year: number }>) {
+function getWeekRowKey(
+  week: Array<{ day: number; month: number; year: number }>,
+) {
   return week.map((day) => `${day.year}-${day.month}-${day.day}`).join("/");
 }
 
@@ -21,7 +23,7 @@ let { tabIndex, months = 1, ...rest }: Props = $props();
   {#snippet render(
   calendar,
 )}
-    {@const offset = calendar().getOffset({ months })}
+    {const offset = calendar().getOffset({ months })}
     <CalendarTableBody {...rest}>
       {#each offset.weeks as week (getWeekRowKey(week))}
         <CalendarTableRow>

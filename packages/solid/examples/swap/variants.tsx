@@ -1,8 +1,7 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid";
+import { Button, Swap } from "@pisagor/solid";
 import { MoonIcon, SunIcon } from "@pisagor/solid/icons";
-import { Swap } from "@pisagor/solid/swap";
 import { createSignal } from "solid-js";
 export function Variants() {
   const [fade, setFade] = createSignal(false);

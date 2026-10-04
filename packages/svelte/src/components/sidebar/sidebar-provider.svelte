@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
 import { useHotkey } from "@ark-ui/svelte/hotkeys";
-import type { SidebarProps as SidebarSharedProps } from "@pisagor/props";
+import type { SidebarProps as BaseSidebarProps } from "@pisagor/props";
 import { sidebarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { onMount } from "svelte";
@@ -31,7 +31,7 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "style"> & {
    */
   onOpenChange?: (open: boolean) => void;
   style?: string | undefined;
-} & SidebarSharedProps;
+} & BaseSidebarProps;
 
 let {
   defaultOpen = true,
@@ -58,7 +58,9 @@ onMount(() => {
 });
 
 const slots = $derived(recipe());
-const sidebarState = $derived(open ? ("expanded" as const) : ("collapsed" as const));
+const sidebarState = $derived(
+  open ? ("expanded" as const) : ("collapsed" as const),
+);
 
 function setOpen(value: boolean) {
   open = value;
@@ -109,7 +111,11 @@ setSidebarContext({
 });
 
 const wrapperStyle = $derived(
-  [`--sidebar-width: ${SIDEBAR_WIDTH}`, `--sidebar-width-icon: ${SIDEBAR_WIDTH_ICON}`, style ?? ""]
+  [
+    `--sidebar-width: ${SIDEBAR_WIDTH}`,
+    `--sidebar-width-icon: ${SIDEBAR_WIDTH_ICON}`,
+    style ?? "",
+  ]
     .filter(Boolean)
     .join("; "),
 );

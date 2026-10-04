@@ -1,4 +1,4 @@
-import { NavigationMenu } from "@pisagor/react/navigation-menu";
+import { NavigationMenu } from "@pisagor/react";
 
 export function Wrapping() {
   return (

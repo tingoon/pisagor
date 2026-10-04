@@ -1,13 +1,19 @@
 <script lang="ts">
 import type { ToggleGroupRootProps as ArkToggleGroupRootProps } from "@ark-ui/svelte/toggle-group";
 import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/svelte/toggle-group";
-import type { ToggleGroupProps as ToggleGroupSharedProps } from "@pisagor/props";
-import { type ButtonVariantProps, type ToggleVariantProps, toggleGroupRecipe } from "@pisagor/recipes";
+import type { ToggleGroupProps as BaseToggleGroupProps } from "@pisagor/props";
+import {
+  type ButtonVariantProps,
+  type ToggleVariantProps,
+  toggleGroupRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setToggleGroupContext } from "./toggle-group.context";
 
-type Props = Omit<ArkToggleGroupRootProps, "class" | "onValueChange" | "style"> &
-  {
+type Props = Omit<
+  ArkToggleGroupRootProps,
+  "class" | "onValueChange" | "style"
+> & {
   children?: import("svelte").Snippet;
   class?: string | undefined;
   onValueChange?: (value: string[]) => void;
@@ -15,7 +21,7 @@ type Props = Omit<ArkToggleGroupRootProps, "class" | "onValueChange" | "style"> 
   spacing?: number;
   variant?: Extract<ButtonVariantProps["variant"], "outline" | "ghost">;
   style?: string | undefined;
-  } & ToggleGroupSharedProps;
+} & BaseToggleGroupProps;
 
 let {
   orientation = "horizontal",
@@ -54,7 +60,9 @@ function handleValueChange(
   onValueChange?.(details.value);
 }
 
-const mergedStyle = $derived([style, `--gap: ${spacing}`].filter(Boolean).join("; "));
+const mergedStyle = $derived(
+  [style, `--gap: ${spacing}`].filter(Boolean).join("; "),
+);
 </script>
 
 <ToggleGroupPrimitive.Root

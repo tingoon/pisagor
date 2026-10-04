@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Button } from "@pisagor/vue";
-import { DropdownMenu } from "../../src/components/dropdown-menu";
+import { Button, DropdownMenu } from "@pisagor/vue";
 
 const placements = ["left", "top", "bottom", "right"] as const;
 </script>

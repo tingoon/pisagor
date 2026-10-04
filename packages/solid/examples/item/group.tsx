@@ -1,8 +1,7 @@
 /** @jsxImportSource solid-js */
 
-import { Avatar, Button } from "@pisagor/solid";
+import { Avatar, Button, Item } from "@pisagor/solid";
 import { PlusIcon } from "@pisagor/solid/icons";
-import { Item } from "@pisagor/solid/item";
 import { people } from "./helpers";
 export function Group() {
   return (

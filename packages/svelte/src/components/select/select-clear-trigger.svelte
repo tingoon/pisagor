@@ -5,7 +5,9 @@ import { selectRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useSelectRoot } from "./select.context";
 
-type Props = Omit<SelectClearTriggerProps, "class"> & { class?: string | undefined };
+type Props = Omit<SelectClearTriggerProps, "class"> & {
+  class?: string | undefined;
+};
 
 let { class: className, children, ...rest }: Props = $props();
 const ctx = useSelectRoot();

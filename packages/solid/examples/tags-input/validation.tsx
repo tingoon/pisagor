@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Field } from "@pisagor/solid";
-import { TagsInput } from "@pisagor/solid/tags-input";
+import { Field, TagsInput } from "@pisagor/solid";
 export function Validation() {
   const validTagPattern = /^[a-zA-Z0-9-]+$/;
   return (

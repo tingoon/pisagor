@@ -1,6 +1,6 @@
 <script lang="ts">
 import { useHotkey } from "@ark-ui/svelte/hotkeys";
-import type { ActionBarProps as ActionBarSharedProps } from "@pisagor/props";
+import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
 import { actionBarRecipe, buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
@@ -25,9 +25,12 @@ type Props = {
   lazyMount?: boolean;
   onOpenChange?: (open: boolean) => void;
   open?: boolean;
-  positioning?: { gutter?: string; placement?: "bottom" | "bottom-start" | "bottom-end" };
+  positioning?: {
+    gutter?: string;
+    placement?: "bottom" | "bottom-start" | "bottom-end";
+  };
   unmountOnExit?: boolean;
-  } & ActionBarSharedProps;
+} & BaseActionBarProps;
 
 let {
   closeOnEscape = true,
@@ -89,7 +92,9 @@ setActionBarContext({
   },
 });
 
-const hasPreset = $derived(count !== undefined || (actions && actions.length > 0));
+const hasPreset = $derived(
+  count !== undefined || (actions && actions.length > 0),
+);
 </script>
 
 {@render children?.()}

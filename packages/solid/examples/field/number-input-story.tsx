@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { NumberInput } from "@pisagor/solid";
-import { Field } from "@pisagor/solid/field";
+import { Field, NumberInput } from "@pisagor/solid";
 export function NumberInputStory() {
   return (
     <Field>

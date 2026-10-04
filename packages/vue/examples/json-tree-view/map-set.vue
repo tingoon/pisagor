@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { JsonTreeView } from "../../src/components/json-tree-view";
+import { JsonTreeView } from "@pisagor/vue";
 import { mapSetData } from "./helpers";
 
 const data = mapSetData();

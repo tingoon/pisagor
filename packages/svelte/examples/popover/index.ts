@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import anchorRaw from "./anchor.svelte?raw";
 import close_behaviorRaw from "./close-behavior.svelte?raw";
 import close_buttonRaw from "./close-button.svelte?raw";
@@ -9,18 +8,18 @@ import nestedRaw from "./nested.svelte?raw";
 import placementsRaw from "./placements.svelte?raw";
 import scroll_areaRaw from "./scroll-area.svelte?raw";
 
-export const imports = `import { Popover } from "@pisagor/svelte/popover";`;
+export const imports = `import { Popover } from "@pisagor/svelte";`;
 
 export const sources = {
-  Anchor: stripSvelteExample(anchorRaw),
-  CloseBehavior: stripSvelteExample(close_behaviorRaw),
-  CloseButton: stripSvelteExample(close_buttonRaw),
-  CustomSpacing: stripSvelteExample(custom_spacingRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Modal: stripSvelteExample(modalRaw),
-  Nested: stripSvelteExample(nestedRaw),
-  Placements: stripSvelteExample(placementsRaw),
-  ScrollArea: stripSvelteExample(scroll_areaRaw),
+  Anchor: anchorRaw,
+  CloseBehavior: close_behaviorRaw,
+  CloseButton: close_buttonRaw,
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  Modal: modalRaw,
+  Nested: nestedRaw,
+  Placements: placementsRaw,
+  ScrollArea: scroll_areaRaw,
 } as const;
 
 export { default as Anchor } from "./anchor.svelte";

@@ -5,13 +5,18 @@ import { comboboxRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useComboboxRoot } from "./combobox.context";
 
-type Props = Omit<ComboboxItemGroupLabelProps, "class"> & { class?: string | undefined };
+type Props = Omit<ComboboxItemGroupLabelProps, "class"> & {
+  class?: string | undefined;
+};
 
 let { class: className, children, ...rest }: Props = $props();
 const ctx = useComboboxRoot();
 const slots = $derived(ctx?.slots ?? comboboxRecipe());
 </script>
 
-<ComboboxPrimitive.ItemGroupLabel {...rest} class={slots.itemGroupLabel({ class: cn(className) })}>
+<ComboboxPrimitive.ItemGroupLabel
+  {...rest}
+  class={slots.itemGroupLabel({ class: cn(className) })}
+>
   {@render children?.()}
 </ComboboxPrimitive.ItemGroupLabel>

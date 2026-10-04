@@ -1,8 +1,7 @@
 import { waitForElement, waitForEvent } from "@ark-ui/react/tour";
 import { PlusIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react";
-import type { TourStepType } from "@pisagor/react/tour";
-import { Tour } from "@pisagor/react/tour";
+import type { TourStepType } from "@pisagor/react";
+import { Button, Tour } from "@pisagor/react";
 import { useState } from "react";
 export function WaitForElement() {
   const steps: TourStepType[] = [

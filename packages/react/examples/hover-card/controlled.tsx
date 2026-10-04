@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react";
-import { HoverCard } from "@pisagor/react/hover-card";
+import { Button, HoverCard } from "@pisagor/react";
 import { useState } from "react";
 export function Controlled() {
   const [open, setOpen] = useState(false);

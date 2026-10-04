@@ -1,17 +1,21 @@
 <script lang="ts">
 import type { SplitterRootProps } from "@ark-ui/svelte/splitter";
 import { Splitter as SplitterPrimitive } from "@ark-ui/svelte/splitter";
-import type { ResizableProps as ResizableSharedProps } from "@pisagor/props";
+import type { ResizableProps as BaseResizableProps } from "@pisagor/props";
 import { resizableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setResizableContext } from "./resizable.context";
 
-type Props = Omit<SplitterRootProps, "class"> &
-  {
+type Props = Omit<SplitterRootProps, "class"> & {
   class?: string | undefined;
-  } & ResizableSharedProps;
+} & BaseResizableProps;
 
-let { children, recipe = resizableRecipe, class: className, ...rest }: Props = $props();
+let {
+  children,
+  recipe = resizableRecipe,
+  class: className,
+  ...rest
+}: Props = $props();
 const slots = $derived(recipe());
 setResizableContext({
   get slots() {

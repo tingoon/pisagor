@@ -1,4 +1,4 @@
-import { Provider } from "@pisagor/react/provider";
+import { Provider } from "@pisagor/react";
 
 export function Default() {
   return (

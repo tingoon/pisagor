@@ -10,12 +10,12 @@
     "types": ["vite/client", "node"]
   },
   "extends": "../../tsconfig.json",
-  "files": ["./vue-global.d.ts"],
   "include": [
     "src",
     ".storybook",
     "vite.config.ts",
     "env.d.ts",
-    "src/**/*.stories.ts"
+    "src/**/*.stories.ts",
+    "global.d.ts"
   ]
 }

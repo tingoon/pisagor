@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { Card } from "@pisagor/vue";
+import { Calendar, Card, parseDate } from "@pisagor/vue";
 import { ref } from "vue";
-import { Calendar, parseDate } from "../../src/components/calendar";
 
 const value = ref([parseDate(new Date())]);
 

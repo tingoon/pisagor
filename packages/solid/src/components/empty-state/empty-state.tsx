@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/solid/factory";
-import type { EmptyStateProps as EmptyStateSharedProps } from "@pisagor/props";
+import type { EmptyStateProps as BaseEmptyStateProps } from "@pisagor/props";
 import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -14,7 +14,7 @@ type EmptyStateMediaProps = ComponentProps<typeof ark.div>;
 type EmptyStateClassNames = VariantClassNames<EmptyStateRecipeSlot>;
 
 type EmptyStateRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
-  EmptyStateSharedProps;
+  BaseEmptyStateProps;
 
 export interface EmptyStateProps extends Omit<EmptyStateRootProps, "children"> {
   actions?: JSX.Element;

@@ -6,8 +6,15 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useActionBar } from "./action-bar.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & { class?: string | undefined };
-let { "aria-labelledby": ariaLabelledby, class: className, children, ...rest }: Props = $props();
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+  class?: string | undefined;
+};
+let {
+  "aria-labelledby": ariaLabelledby,
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 const ctx = useActionBar();
 const placement = $derived(ctx.positioning.placement);
 const gutter = $derived(ctx.positioning.gutter);

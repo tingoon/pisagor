@@ -15,7 +15,12 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
   scrollFade?: boolean;
 };
 
-let { scrollFade = false, class: className, children, ...rest }: Props = $props();
+let {
+  scrollFade = false,
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 const ctx = useSidebar();
 </script>
 

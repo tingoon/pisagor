@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import autocomplete_fieldRaw from "./autocomplete-field.vue?raw";
 import checkbox_fieldRaw from "./checkbox-field.vue?raw";
 import checkbox_group_fieldRaw from "./checkbox-group-field.vue?raw";
@@ -21,30 +20,30 @@ import with_errorRaw from "./with-error.vue?raw";
 import with_input_groupRaw from "./with-input-group.vue?raw";
 import with_separatorRaw from "./with-separator.vue?raw";
 
-export const imports = `import { Field } from "@pisagor/vue/field";`;
+export const imports = `import { Field } from "@pisagor/vue";`;
 
 export const sources = {
-  AutocompleteField: stripVueExample(autocomplete_fieldRaw),
-  CheckboxField: stripVueExample(checkbox_fieldRaw),
-  CheckboxGroupField: stripVueExample(checkbox_group_fieldRaw),
-  ComboboxField: stripVueExample(combobox_fieldRaw),
-  ComboboxMultipleField: stripVueExample(combobox_multiple_fieldRaw),
-  Default: stripVueExample(defaultRaw),
-  DisabledField: stripVueExample(disabled_fieldRaw),
-  FieldGroup: stripVueExample(field_groupRaw),
-  NumberInputStory: stripVueExample(number_input_storyRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  OrientationHorizontal: stripVueExample(orientation_horizontalRaw),
-  OrientationVertical: stripVueExample(orientation_verticalRaw),
-  RadioGroupField: stripVueExample(radio_group_fieldRaw),
-  RequiredField: stripVueExample(required_fieldRaw),
-  SelectField: stripVueExample(select_fieldRaw),
-  SliderField: stripVueExample(slider_fieldRaw),
-  SwitchField: stripVueExample(switch_fieldRaw),
-  TextareaField: stripVueExample(textarea_fieldRaw),
-  WithError: stripVueExample(with_errorRaw),
-  WithInputGroup: stripVueExample(with_input_groupRaw),
-  WithSeparator: stripVueExample(with_separatorRaw),
+  AutocompleteField: autocomplete_fieldRaw,
+  CheckboxField: checkbox_fieldRaw,
+  CheckboxGroupField: checkbox_group_fieldRaw,
+  ComboboxField: combobox_fieldRaw,
+  ComboboxMultipleField: combobox_multiple_fieldRaw,
+  Default: defaultRaw,
+  DisabledField: disabled_fieldRaw,
+  FieldGroup: field_groupRaw,
+  NumberInputStory: number_input_storyRaw,
+  OnSurface: on_surfaceRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  RadioGroupField: radio_group_fieldRaw,
+  RequiredField: required_fieldRaw,
+  SelectField: select_fieldRaw,
+  SliderField: slider_fieldRaw,
+  SwitchField: switch_fieldRaw,
+  TextareaField: textarea_fieldRaw,
+  WithError: with_errorRaw,
+  WithInputGroup: with_input_groupRaw,
+  WithSeparator: with_separatorRaw,
 } as const;
 
 export { default as AutocompleteField } from "./autocomplete-field.vue";

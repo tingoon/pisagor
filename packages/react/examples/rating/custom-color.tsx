@@ -1,4 +1,4 @@
-import { Rating } from "@pisagor/react/rating";
+import { Rating } from "@pisagor/react";
 
 export function CustomColor() {
   return (

@@ -1,14 +1,13 @@
-import { stripVueExample } from "@pisagor/utils";
 import compoundRaw from "./compound.vue?raw";
 import defaultRaw from "./default.ts?raw";
 import wrapped_actionsRaw from "./wrapped-actions.ts?raw";
 
-export const imports = `import { Toolbar } from "@pisagor/vue/toolbar";`;
+export const imports = `import { Toolbar } from "@pisagor/vue";`;
 
 export const sources = {
-  Compound: stripVueExample(compoundRaw),
-  Default: stripVueExample(defaultRaw),
-  WrappedActions: stripVueExample(wrapped_actionsRaw),
+  Compound: compoundRaw,
+  Default: defaultRaw,
+  WrappedActions: wrapped_actionsRaw,
 } as const;
 
 export { default as Compound } from "./compound.vue";

@@ -1,13 +1,13 @@
 <script lang="ts">
-import { Button, Calendar } from "@pisagor/svelte";
-import { parseDate } from "@pisagor/svelte/calendar";
-import { DatePicker } from "@pisagor/svelte/date-picker";
+import { Button, Calendar, DatePicker, parseDate } from "@pisagor/svelte";
 import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
 </script>
 
 <DatePicker focusedValue={parseDate(new Date())} selectionMode="range">
   <DatePicker.Trigger>
-    {#snippet asChild(props)}
+    {#snippet asChild(
+  props,
+)}
       <Button {...props()} variant="outline">
         <CalendarIcon />
         <DatePicker.ValueText placeholder="Pick a date range" />

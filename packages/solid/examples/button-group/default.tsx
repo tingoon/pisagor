@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button } from "@pisagor/solid/button";
-import { ButtonGroup } from "@pisagor/solid/button-group";
+import { Button, ButtonGroup } from "@pisagor/solid";
 
 export function Default() {
   return (

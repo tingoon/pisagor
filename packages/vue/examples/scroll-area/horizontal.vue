@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ScrollArea } from "../../src/components/scroll-area";
+import { ScrollArea } from "@pisagor/vue";
 
 const items = Array.from({ length: 10 }, (_, i) => `Item ${i + 1}`);
 </script>

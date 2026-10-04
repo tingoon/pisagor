@@ -13,7 +13,6 @@
     "@pisagor/solid-form": "workspace:*",
     "@pisagor/svelte": "workspace:*",
     "@pisagor/svelte-form": "workspace:*",
-    "@pisagor/utils": "workspace:*",
     "@pisagor/vue": "workspace:*",
     "@pisagor/vue-form": "workspace:*",
     "@tanstack/highlight": "^0.1.0",

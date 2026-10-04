@@ -6,8 +6,8 @@ import {
   type RadioGroupRootProps as RadioGroupPrimitiveRootProps,
 } from "@ark-ui/solid/radio-group";
 import type {
-  RadioGroupItemProps as RadioGroupItemSharedProps,
-  RadioGroupProps as RadioGroupRootSharedProps,
+  RadioGroupItemProps as BaseRadioGroupItemProps,
+  RadioGroupProps as BaseRadioGroupRootProps,
 } from "@pisagor/props";
 import {
   formControlRadioToggleRecipe,
@@ -30,7 +30,7 @@ interface RadioGroupPresetItem {
 
 export interface RadioGroupRootProps
   extends Omit<RadioGroupPrimitiveRootProps, "onValueChange">,
-    RadioGroupRootSharedProps {
+    BaseRadioGroupRootProps {
   onValueChange?: (value: string | null) => void;
 }
 
@@ -40,7 +40,7 @@ export interface RadioGroupProps extends Omit<RadioGroupRootProps, "children"> {
 
 export interface RadioGroupItemProps
   extends RadioGroupPrimitiveItemProps,
-    RadioGroupItemSharedProps {
+    BaseRadioGroupItemProps {
   variant?: FormControlVariant;
 }
 

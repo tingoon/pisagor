@@ -1,15 +1,14 @@
 <script lang="ts">
-import { NumberInput } from "@pisagor/svelte";
-import { Field } from "@pisagor/svelte/field";
+import { Field, NumberInput } from "@pisagor/svelte";
 </script>
 
 <Field>
-      <NumberInput defaultValue="50" max={100} min={1}>
-        <NumberInput.Scrubber>Quantity</NumberInput.Scrubber>
-        <NumberInput.Control>
-          <NumberInput.DecrementTrigger />
-          <NumberInput.Input />
-          <NumberInput.IncrementTrigger />
-        </NumberInput.Control>
-      </NumberInput>
-    </Field>
+  <NumberInput defaultValue="50" max={100} min={1}>
+    <NumberInput.Scrubber>Quantity</NumberInput.Scrubber>
+    <NumberInput.Control>
+      <NumberInput.DecrementTrigger />
+      <NumberInput.Input />
+      <NumberInput.IncrementTrigger />
+    </NumberInput.Control>
+  </NumberInput>
+</Field>

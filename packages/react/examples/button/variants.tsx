@@ -1,4 +1,4 @@
-import { Button } from "@pisagor/react/button";
+import { Button } from "@pisagor/react";
 
 export function Variants() {
   return (

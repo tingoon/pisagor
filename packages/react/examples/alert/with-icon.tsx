@@ -1,5 +1,5 @@
 import { SparkleIcon } from "@phosphor-icons/react";
-import { Alert } from "@pisagor/react/alert";
+import { Alert } from "@pisagor/react";
 
 export function WithIcon() {
   return (

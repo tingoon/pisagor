@@ -11,7 +11,10 @@ import CarouselRoot from "./carousel-root.svelte";
 
 type PresetItem = { content: Snippet | string; key?: string };
 
-type Props = Omit<ComponentProps<typeof CarouselRoot>, "children" | "slideCount"> & {
+type Props = Omit<
+  ComponentProps<typeof CarouselRoot>,
+  "children" | "slideCount"
+> & {
   slides?: PresetItem[];
 };
 

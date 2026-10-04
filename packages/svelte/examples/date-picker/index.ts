@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import clearableRaw from "./clearable.svelte?raw";
 import custom_formatRaw from "./custom-format.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -10,19 +9,19 @@ import timeRaw from "./time.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_presetsRaw from "./with-presets.svelte?raw";
 
-export const imports = `import { DatePicker } from "@pisagor/svelte/date-picker";`;
+export const imports = `import { DatePicker } from "@pisagor/svelte";`;
 
 export const sources = {
-  Clearable: stripSvelteExample(clearableRaw),
-  CustomFormat: stripSvelteExample(custom_formatRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  Input: stripSvelteExample(inputRaw),
-  Invalid: stripSvelteExample(invalidRaw),
-  Range: stripSvelteExample(rangeRaw),
-  Time: stripSvelteExample(timeRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  WithPresets: stripSvelteExample(with_presetsRaw),
+  Clearable: clearableRaw,
+  CustomFormat: custom_formatRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Input: inputRaw,
+  Invalid: invalidRaw,
+  Range: rangeRaw,
+  Time: timeRaw,
+  Variants: variantsRaw,
+  WithPresets: with_presetsRaw,
 } as const;
 
 export { default as Clearable } from "./clearable.svelte";

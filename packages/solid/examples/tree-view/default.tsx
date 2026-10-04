@@ -5,7 +5,7 @@ import {
   type NodeProviderProps,
   type TreeNodeType,
   TreeView,
-} from "@pisagor/solid/tree-view";
+} from "@pisagor/solid";
 import { For, Show } from "solid-js";
 
 const collection = createTreeCollection<TreeNodeType>({

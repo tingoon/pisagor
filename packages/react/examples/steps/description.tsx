@@ -1,4 +1,4 @@
-import { Steps } from "@pisagor/react/steps";
+import { Steps } from "@pisagor/react";
 
 export function Description() {
   const items = [

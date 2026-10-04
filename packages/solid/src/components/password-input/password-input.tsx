@@ -5,7 +5,7 @@ import {
   type PasswordInputRootProps as PasswordInputPrimitiveRootProps,
   type PasswordInputVisibilityTriggerProps as PasswordInputPrimitiveVisibilityTriggerProps,
 } from "@ark-ui/solid/password-input";
-import type { PasswordInputProps as PasswordInputSharedProps } from "@pisagor/props";
+import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
 import { passwordInputRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
@@ -34,7 +34,7 @@ export type PasswordInputVisibilityTriggerProps = Omit<
 export interface PasswordInputProps
   extends PasswordInputRootProps,
     Omit<PasswordInputInputProps, "class" | "size">,
-    PasswordInputSharedProps {
+    BasePasswordInputProps {
   size?: InputGroupProps["size"];
   variant?: FormControlVariant;
   defaultValue?: string | number | readonly string[];

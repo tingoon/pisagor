@@ -1,12 +1,12 @@
 import { ark } from "@ark-ui/react/factory";
-import type { SeparatorProps as SeparatorSharedProps } from "@pisagor/props";
+import type { SeparatorProps as BaseSeparatorProps } from "@pisagor/props";
 import { separatorRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 
 // #region Types
 export interface SeparatorProps
   extends ComponentProps<typeof ark.div>,
-    SeparatorSharedProps {
+    BaseSeparatorProps {
   /**
    * The orientation of the separator.
    *

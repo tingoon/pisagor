@@ -5,7 +5,7 @@ import {
   type ProgressValueTextProps,
   useProgressContext,
 } from "@ark-ui/react/progress";
-import type { CircularProgressProps as CircularProgressRootSharedProps } from "@pisagor/props";
+import type { CircularProgressProps as BaseCircularProgressRootProps } from "@pisagor/props";
 import {
   type CircularProgressRecipeSlot,
   circularProgressRecipe,
@@ -25,7 +25,7 @@ type CircularProgressValueProps = ProgressValueTextProps;
 type CircularProgressClassNames = VariantClassNames<CircularProgressRecipeSlot>;
 
 type CircularProgressRootProps = ProgressRootProps &
-  CircularProgressRootSharedProps;
+  BaseCircularProgressRootProps;
 
 export interface CircularProgressProps
   extends Omit<CircularProgressRootProps, "children"> {

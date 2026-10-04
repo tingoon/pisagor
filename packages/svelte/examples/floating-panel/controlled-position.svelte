@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { FloatingPanel } from "@pisagor/svelte/floating-panel";
+import { Button, FloatingPanel } from "@pisagor/svelte";
 import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
 import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
@@ -17,7 +16,9 @@ let position = $state({ x: 120, y: 80 });
     {position}
   >
     <FloatingPanel.Trigger>
-      {#snippet asChild(props)}
+      {#snippet asChild(
+  props,
+)}
         <Button {...props()} variant="outline">Open</Button>
       {/snippet}
     </FloatingPanel.Trigger>
@@ -30,7 +31,9 @@ let position = $state({ x: 120, y: 80 });
           <FloatingPanel.Maximize />
           <FloatingPanel.Restore />
           <FloatingPanel.CloseTrigger>
-            {#snippet asChild(props)}
+            {#snippet asChild(
+  props,
+)}
               <Button {...props()} aria-label="Close" size="icon-sm">
                 <XIcon aria-hidden />
               </Button>

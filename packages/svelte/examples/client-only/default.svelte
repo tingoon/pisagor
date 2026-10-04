@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ClientOnly } from "@pisagor/svelte/client-only";
+import { ClientOnly } from "@pisagor/svelte";
 </script>
 
 <ClientOnly>

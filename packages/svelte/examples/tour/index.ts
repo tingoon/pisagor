@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import asyncRaw from "./async.svelte?raw";
 import custom_spacingRaw from "./custom-spacing.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -11,20 +10,20 @@ import wait_for_clickRaw from "./wait-for-click.svelte?raw";
 import wait_for_elementRaw from "./wait-for-element.svelte?raw";
 import wait_for_inputRaw from "./wait-for-input.svelte?raw";
 
-export const imports = `import { Tour } from "@pisagor/svelte/tour";`;
+export const imports = `import { Tour } from "@pisagor/svelte";`;
 
 export const sources = {
-  Async: stripSvelteExample(asyncRaw),
-  CustomSpacing: stripSvelteExample(custom_spacingRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Events: stripSvelteExample(eventsRaw),
-  KeyboardNavigation: stripSvelteExample(keyboard_navigationRaw),
-  Progress: stripSvelteExample(progressRaw),
-  Skip: stripSvelteExample(skipRaw),
-  StepTypes: stripSvelteExample(step_typesRaw),
-  WaitForClick: stripSvelteExample(wait_for_clickRaw),
-  WaitForElement: stripSvelteExample(wait_for_elementRaw),
-  WaitForInput: stripSvelteExample(wait_for_inputRaw),
+  Async: asyncRaw,
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  Events: eventsRaw,
+  KeyboardNavigation: keyboard_navigationRaw,
+  Progress: progressRaw,
+  Skip: skipRaw,
+  StepTypes: step_typesRaw,
+  WaitForClick: wait_for_clickRaw,
+  WaitForElement: wait_for_elementRaw,
+  WaitForInput: wait_for_inputRaw,
 } as const;
 
 export { default as Async } from "./async.svelte";

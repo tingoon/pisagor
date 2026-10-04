@@ -1,6 +1,6 @@
-export {
-  Popover,
-  type PopoverContentProps,
-  type PopoverHeaderProps,
-  type PopoverProps,
+export type {
+  PopoverContentProps,
+  PopoverHeaderProps,
+  PopoverProps,
 } from "./popover";
+export { Popover } from "./popover";

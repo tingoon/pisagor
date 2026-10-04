@@ -1,6 +1,6 @@
 <script lang="ts">
 import { createListCollection } from "@ark-ui/svelte/collection";
-import { Select } from "@pisagor/svelte/select";
+import { Select } from "@pisagor/svelte";
 
 const collection = createListCollection({
   groupBy: (item) => (item as { category: string }).category,

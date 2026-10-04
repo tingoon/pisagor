@@ -1,5 +1,5 @@
 <script lang="ts">
-import { AlertDialog } from "@pisagor/svelte/alert-dialog";
+import { AlertDialog } from "@pisagor/svelte";
 </script>
 
 <AlertDialog.Root>
@@ -7,7 +7,9 @@ import { AlertDialog } from "@pisagor/svelte/alert-dialog";
   <AlertDialog.Content>
     <AlertDialog.Header>
       <AlertDialog.Title>Are you sure?</AlertDialog.Title>
-      <AlertDialog.Description> This action cannot be undone. </AlertDialog.Description>
+      <AlertDialog.Description>
+        This action cannot be undone.
+      </AlertDialog.Description>
     </AlertDialog.Header>
     <AlertDialog.Footer>
       <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>

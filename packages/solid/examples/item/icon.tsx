@@ -1,8 +1,7 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid";
+import { Button, Item } from "@pisagor/solid";
 import { ShieldWarningIcon } from "@pisagor/solid/icons";
-import { Item } from "@pisagor/solid/item";
 export function Icon() {
   return (
     <Item variant="outline">

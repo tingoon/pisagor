@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 import { createListCollection } from "@ark-ui/solid/collection";
-import { Item, Kbd } from "@pisagor/solid";
-import { Listbox } from "@pisagor/solid/listbox";
+import { Item, Kbd, Listbox } from "@pisagor/solid";
 export function SelectionExtended() {
   const collection = createListCollection({
     items: [

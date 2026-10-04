@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Field } from "@pisagor/vue";
-import { DatePicker } from "../../src/components/date-picker";
+import { DatePicker, Field } from "@pisagor/vue";
 </script>
 
 <template>

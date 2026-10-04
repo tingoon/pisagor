@@ -1,7 +1,6 @@
 <script lang="ts">
 import { createGridCollection } from "@ark-ui/svelte/collection";
-import { Item } from "@pisagor/svelte";
-import { Listbox } from "@pisagor/svelte/listbox";
+import { Item, Listbox } from "@pisagor/svelte";
 
 const collection = createGridCollection({
   columnCount: 5,
@@ -39,7 +38,9 @@ const collection = createGridCollection({
       >
         {#each collection.items as item}
           <Listbox.Item {item}>
-            <Listbox.ItemText class="text-center text-xl">{item.label}</Listbox.ItemText>
+            <Listbox.ItemText class="text-center text-xl"
+              >{item.label}</Listbox.ItemText
+            >
           </Listbox.Item>
         {/each}
       </Listbox.Content>

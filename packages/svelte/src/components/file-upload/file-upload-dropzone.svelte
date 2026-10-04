@@ -13,7 +13,12 @@ type Props = Omit<ArkProps, "class"> & {
   variant?: FormControlVariant;
 };
 
-let { variant: variantProp, class: className, children, ...rest }: Props = $props();
+let {
+  variant: variantProp,
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 const { slots } = useFileUpload();
 const surfaceVariant = useFormControlSurface();
 const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
@@ -21,7 +26,11 @@ const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 
 <FileUploadPrimitive.Dropzone
   {...rest}
-  class={cn(formControlZoneRecipe({ surfaceVariant, variant }), slots.dropzone(), className)}
+  class={cn(
+  formControlZoneRecipe({ surfaceVariant, variant }),
+  slots.dropzone(),
+  className,
+)}
   data-variant={variant}
 >
   {@render children?.()}

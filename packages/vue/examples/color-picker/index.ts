@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import area_channelsRaw from "./area-channels.vue?raw";
 import area_dotsRaw from "./area-dots.vue?raw";
 import clearableRaw from "./clearable.vue?raw";
@@ -31,42 +30,40 @@ import swatch_picker_custom_sizeRaw from "./swatch-picker-custom-size.vue?raw";
 import swatch_picker_disabledRaw from "./swatch-picker-disabled.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 
-export const imports = `import { ColorPicker } from "@pisagor/vue/color-picker";`;
+export const imports = `import { ColorPicker } from "@pisagor/vue";`;
 
 export const sources = {
-  AreaChannels: stripVueExample(area_channelsRaw),
-  AreaDots: stripVueExample(area_dotsRaw),
-  Clearable: stripVueExample(clearableRaw),
-  CustomSpacing: stripVueExample(custom_spacingRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  InputChannel: stripVueExample(input_channelRaw),
-  InputCompact: stripVueExample(input_compactRaw),
-  InputControlled: stripVueExample(input_controlledRaw),
-  InputWithPopover: stripVueExample(input_with_popoverRaw),
-  InputWithSwatchPreview: stripVueExample(input_with_swatch_previewRaw),
-  Invalid: stripVueExample(invalidRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  PopoverDisabled: stripVueExample(popover_disabledRaw),
-  PopoverSlidersOnly: stripVueExample(popover_sliders_onlyRaw),
-  PopoverWithChannelEditing: stripVueExample(popover_with_channel_editingRaw),
-  PopoverWithSwatchPicker: stripVueExample(popover_with_swatch_pickerRaw),
-  SliderAlphaChannel: stripVueExample(slider_alpha_channelRaw),
-  SliderControlled: stripVueExample(slider_controlledRaw),
-  SliderDisabled: stripVueExample(slider_disabledRaw),
-  SliderHsbaChannels: stripVueExample(slider_hsba_channelsRaw),
-  SliderHslChannels: stripVueExample(slider_hsl_channelsRaw),
-  SliderRgbChannels: stripVueExample(slider_rgb_channelsRaw),
-  SliderVertical: stripVueExample(slider_verticalRaw),
-  SwatchPicker: stripVueExample(swatch_pickerRaw),
-  SwatchPickerControlled: stripVueExample(swatch_picker_controlledRaw),
-  SwatchPickerCustomIndicator: stripVueExample(
-    swatch_picker_custom_indicatorRaw,
-  ),
-  SwatchPickerCustomRadius: stripVueExample(swatch_picker_custom_radiusRaw),
-  SwatchPickerCustomSize: stripVueExample(swatch_picker_custom_sizeRaw),
-  SwatchPickerDisabled: stripVueExample(swatch_picker_disabledRaw),
-  Variants: stripVueExample(variantsRaw),
+  AreaChannels: area_channelsRaw,
+  AreaDots: area_dotsRaw,
+  Clearable: clearableRaw,
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  InputChannel: input_channelRaw,
+  InputCompact: input_compactRaw,
+  InputControlled: input_controlledRaw,
+  InputWithPopover: input_with_popoverRaw,
+  InputWithSwatchPreview: input_with_swatch_previewRaw,
+  Invalid: invalidRaw,
+  OnSurface: on_surfaceRaw,
+  PopoverDisabled: popover_disabledRaw,
+  PopoverSlidersOnly: popover_sliders_onlyRaw,
+  PopoverWithChannelEditing: popover_with_channel_editingRaw,
+  PopoverWithSwatchPicker: popover_with_swatch_pickerRaw,
+  SliderAlphaChannel: slider_alpha_channelRaw,
+  SliderControlled: slider_controlledRaw,
+  SliderDisabled: slider_disabledRaw,
+  SliderHsbaChannels: slider_hsba_channelsRaw,
+  SliderHslChannels: slider_hsl_channelsRaw,
+  SliderRgbChannels: slider_rgb_channelsRaw,
+  SliderVertical: slider_verticalRaw,
+  SwatchPicker: swatch_pickerRaw,
+  SwatchPickerControlled: swatch_picker_controlledRaw,
+  SwatchPickerCustomIndicator: swatch_picker_custom_indicatorRaw,
+  SwatchPickerCustomRadius: swatch_picker_custom_radiusRaw,
+  SwatchPickerCustomSize: swatch_picker_custom_sizeRaw,
+  SwatchPickerDisabled: swatch_picker_disabledRaw,
+  Variants: variantsRaw,
 } as const;
 
 export { default as AreaChannels } from "./area-channels.vue";

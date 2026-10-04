@@ -1,8 +1,7 @@
 <script lang="ts">
 import { useListCollection } from "@ark-ui/svelte/collection";
 import { useFilter } from "@ark-ui/svelte/locale";
-import { Button, Kbd } from "@pisagor/svelte";
-import { Command } from "@pisagor/svelte/command";
+import { Button, Command, Kbd } from "@pisagor/svelte";
 import ArrowBendDownLeftIcon from "phosphor-svelte/lib/ArrowBendDownLeftIcon";
 
 const initialItems = [
@@ -25,7 +24,9 @@ const { collection, filter } = useListCollection({
 
 <Command.Dialog onOpenChange={({ open: next }) => (open = next)} {open}>
   <Command.DialogTrigger>
-    {#snippet asChild(props)}
+    {#snippet asChild(
+  props,
+)}
       <Button {...props()} variant="outline">Open Command Palette</Button>
     {/snippet}
   </Command.DialogTrigger>

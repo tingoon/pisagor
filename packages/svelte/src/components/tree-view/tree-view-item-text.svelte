@@ -13,13 +13,20 @@ type Props = Omit<ArkProps, "class"> & {
   icon?: Component;
 };
 
-let { children, icon: Icon = FileIcon, class: className, ...rest }: Props = $props();
+let {
+  children,
+  icon: Icon = FileIcon,
+  class: className,
+  ...rest
+}: Props = $props();
 const { fileIcons } = useTreeView();
 const item = useTreeViewItem();
 const slots = $derived(item?.slots ?? treeViewItemRecipe());
 
 function getFileIcon(value: string): Component {
-  const name = value.includes(".") ? value.split(".").at(-1)?.toLowerCase() : null;
+  const name = value.includes(".")
+    ? value.split(".").at(-1)?.toLowerCase()
+    : null;
   const extension = name ? `.${name}` : null;
   const resolved = extension ? fileIcons?.[extension] : undefined;
   return (resolved ?? Icon) as Component;
@@ -30,15 +37,18 @@ function getFileIcon(value: string): Component {
   {#snippet render(
   nodeState,
 )}
-    {@const state = nodeState()}
-    {@const ResolvedIcon = getFileIcon(state.value)}
+    {const state = nodeState()}
+    {const ResolvedIcon = getFileIcon(state.value)}
     <span class={slots.icon()} data-part="item-icon" data-scope="tree-view">
       <ResolvedIcon />
     </span>
     {#if state.renaming}
       <TreeViewNodeInput />
     {:else}
-      <TreeViewPrimitive.ItemText {...rest} class={slots.title({ class: cn(className) })}>
+      <TreeViewPrimitive.ItemText
+        {...rest}
+        class={slots.title({ class: cn(className) })}
+      >
         {@render children?.()}
       </TreeViewPrimitive.ItemText>
     {/if}

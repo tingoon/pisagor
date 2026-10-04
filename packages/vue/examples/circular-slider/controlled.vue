@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { CircularSlider } from "@pisagor/vue";
 import { ref } from "vue";
-import { CircularSlider } from "../../src/components/circular-slider";
 
 const value = ref(45);
 const onValueChange = setValue;

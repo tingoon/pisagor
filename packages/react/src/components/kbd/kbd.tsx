@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
 import type {
-  KbdGroupProps as KbdGroupSharedProps,
-  KbdProps as KbdSharedProps,
+  KbdGroupProps as BaseKbdGroupProps,
+  KbdProps as BaseKbdProps,
 } from "@pisagor/props";
 import { kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
@@ -9,11 +9,11 @@ import type { ComponentProps } from "react";
 // #region Types
 export interface KbdProps
   extends ComponentProps<typeof ark.kbd>,
-    KbdSharedProps {}
+    BaseKbdProps {}
 
 export interface KbdGroupProps
   extends ComponentProps<typeof ark.div>,
-    KbdGroupSharedProps {}
+    BaseKbdGroupProps {}
 // #endregion
 
 // #region Parts

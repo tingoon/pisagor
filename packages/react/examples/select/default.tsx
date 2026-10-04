@@ -1,4 +1,4 @@
-import { Select } from "@pisagor/react/select";
+import { Select } from "@pisagor/react";
 
 export function Default() {
   return (

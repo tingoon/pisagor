@@ -14,7 +14,13 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title"> & {
   title?: string;
 };
 
-let { children, description, title, class: className, ...rest }: Props = $props();
+let {
+  children,
+  description,
+  title,
+  class: className,
+  ...rest
+}: Props = $props();
 const { slots } = useDrawer();
 </script>
 

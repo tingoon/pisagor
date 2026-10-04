@@ -1,5 +1,4 @@
-import { Button, ScrollArea } from "@pisagor/react";
-import { Scrollspy } from "@pisagor/react/scrollspy";
+import { Button, ScrollArea, Scrollspy } from "@pisagor/react";
 import { useRef } from "react";
 import { horizontalSections } from "./helpers";
 export function Horizontal() {

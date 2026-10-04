@@ -1,5 +1,5 @@
 import { createListCollection } from "@ark-ui/react";
-import { Select } from "@pisagor/react/select";
+import { Select } from "@pisagor/react";
 
 export function Grouping() {
   const collection = createListCollection({

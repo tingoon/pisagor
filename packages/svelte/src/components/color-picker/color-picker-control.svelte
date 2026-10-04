@@ -12,6 +12,9 @@ let { children, class: className, ...rest }: Props = $props();
 const { slots } = useColorPicker();
 </script>
 
-<ColorPickerPrimitive.Control {...rest} class={slots.control({ class: cn(className) })}>
+<ColorPickerPrimitive.Control
+  {...rest}
+  class={slots.control({ class: cn(className) })}
+>
   {@render children?.()}
 </ColorPickerPrimitive.Control>

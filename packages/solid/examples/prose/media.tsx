@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Prose } from "@pisagor/solid/prose";
+import { Prose } from "@pisagor/solid";
 
 export function Media() {
   return (

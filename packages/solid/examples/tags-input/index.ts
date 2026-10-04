@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import blur_behaviorRaw from "./blur-behavior.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import controlled_input_valueRaw from "./controlled-input-value.tsx?raw";
@@ -17,42 +16,42 @@ import validationRaw from "./validation.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 import with_comboboxRaw from "./with-combobox.tsx?raw";
 
-export const imports = `import { TagsInput } from "@pisagor/solid/tags-input";`;
+export const imports = `import { TagsInput } from "@pisagor/solid";`;
 
 export const sources = {
-  BlurBehavior: stripTsxExample(blur_behaviorRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  ControlledInputValue: stripTsxExample(controlled_input_valueRaw),
-  CustomDelimiter: stripTsxExample(custom_delimiterRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  DisableEditing: stripTsxExample(disable_editingRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  MaxLength: stripTsxExample(max_lengthRaw),
-  MaxTags: stripTsxExample(max_tagsRaw),
-  MaxWithOverflow: stripTsxExample(max_with_overflowRaw),
-  PasteBehavior: stripTsxExample(paste_behaviorRaw),
-  SanitizeValue: stripTsxExample(sanitize_valueRaw),
-  Sizes: stripTsxExample(sizesRaw),
-  Validation: stripTsxExample(validationRaw),
-  Variants: stripTsxExample(variantsRaw),
-  WithCombobox: stripTsxExample(with_comboboxRaw),
+  BlurBehavior: blur_behaviorRaw,
+  Controlled: controlledRaw,
+  ControlledInputValue: controlled_input_valueRaw,
+  CustomDelimiter: custom_delimiterRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  DisableEditing: disable_editingRaw,
+  Invalid: invalidRaw,
+  MaxLength: max_lengthRaw,
+  MaxTags: max_tagsRaw,
+  MaxWithOverflow: max_with_overflowRaw,
+  PasteBehavior: paste_behaviorRaw,
+  SanitizeValue: sanitize_valueRaw,
+  Sizes: sizesRaw,
+  Validation: validationRaw,
+  Variants: variantsRaw,
+  WithCombobox: with_comboboxRaw,
 } as const;
 
-export { BlurBehavior } from "./blur-behavior";
-export { Controlled } from "./controlled";
-export { ControlledInputValue } from "./controlled-input-value";
-export { CustomDelimiter } from "./custom-delimiter";
-export { Default } from "./default";
-export { DisableEditing } from "./disable-editing";
-export { Disabled } from "./disabled";
-export { Invalid } from "./invalid";
-export { MaxLength } from "./max-length";
-export { MaxTags } from "./max-tags";
-export { MaxWithOverflow } from "./max-with-overflow";
-export { PasteBehavior } from "./paste-behavior";
-export { SanitizeValue } from "./sanitize-value";
-export { Sizes } from "./sizes";
-export { Validation } from "./validation";
-export { Variants } from "./variants";
-export { WithCombobox } from "./with-combobox";
+export * from "./blur-behavior";
+export * from "./controlled";
+export * from "./controlled-input-value";
+export * from "./custom-delimiter";
+export * from "./default";
+export * from "./disable-editing";
+export * from "./disabled";
+export * from "./invalid";
+export * from "./max-length";
+export * from "./max-tags";
+export * from "./max-with-overflow";
+export * from "./paste-behavior";
+export * from "./sanitize-value";
+export * from "./sizes";
+export * from "./validation";
+export * from "./variants";
+export * from "./with-combobox";

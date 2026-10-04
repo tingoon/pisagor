@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Skeleton } from "../../src/components/skeleton";
+import { Skeleton } from "@pisagor/vue";
 </script>
 
 <template>

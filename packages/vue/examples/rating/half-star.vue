@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Rating } from "../../src/components/rating";
+import { Rating } from "@pisagor/vue";
 </script>
 
 <template>

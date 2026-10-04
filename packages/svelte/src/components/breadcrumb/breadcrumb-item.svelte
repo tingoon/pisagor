@@ -1,17 +1,21 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { BreadcrumbItemProps as BreadcrumbItemSharedProps } from "@pisagor/props";
+import type { BreadcrumbItemProps as BaseBreadcrumbItemProps } from "@pisagor/props";
 import { breadcrumbItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setBreadcrumbItemContext } from "./breadcrumb.context";
 
-type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> & {
   class?: string | undefined;
-  } & BreadcrumbItemSharedProps;
+} & BaseBreadcrumbItemProps;
 
-let { children, recipe = breadcrumbItemRecipe, class: className, ...rest }: Props = $props();
+let {
+  children,
+  recipe = breadcrumbItemRecipe,
+  class: className,
+  ...rest
+}: Props = $props();
 
 const slots = $derived(recipe());
 setBreadcrumbItemContext({

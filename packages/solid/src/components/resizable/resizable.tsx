@@ -8,9 +8,9 @@ import type {
 } from "@ark-ui/solid/splitter";
 import { Splitter as SplitterPrimitive } from "@ark-ui/solid/splitter";
 import type {
-  ResizableEdgeHandleProps as ResizableEdgeHandleSharedProps,
-  ResizableProps as ResizableRootSharedProps,
-  ResizableProps as ResizableSharedProps,
+  ResizableEdgeHandleProps as BaseResizableEdgeHandleProps,
+  ResizableProps as BaseResizableProps,
+  ResizableProps as BaseResizableRootProps,
 } from "@pisagor/props";
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -38,7 +38,7 @@ export type ResizableEdgePlacement = "end" | "start";
 
 export interface ResizableEdgeHandleProps
   extends ComponentProps<"button">,
-    ResizableEdgeHandleSharedProps {
+    BaseResizableEdgeHandleProps {
   placement: ResizableEdgePlacement;
   handlePosition?: ResizableHandlePosition;
   minWidth?: number;
@@ -57,7 +57,7 @@ export interface ResizableResizeTriggerProps
 
 export interface ResizableRootProps
   extends SplitterRootProps,
-    ResizableRootSharedProps {}
+    BaseResizableRootProps {}
 
 export type ResizablePanelProps = SplitterPanelProps;
 export type ResizableResizeTriggerIndicatorProps =
@@ -66,7 +66,7 @@ export type ResizableContextProps = SplitterContextProps;
 
 export interface ResizableRootProviderProps
   extends SplitterRootProviderProps,
-    ResizableSharedProps {}
+    BaseResizableProps {}
 
 export function ResizableEdgeHandle(
   props: ResizableEdgeHandleProps,

@@ -1,10 +1,9 @@
-import { stripTsxExample } from "@pisagor/utils";
 import defaultRaw from "./default.tsx?raw";
 
-export const imports = `import { VisuallyHidden } from "@pisagor/solid/visually-hidden";`;
+export const imports = `import { VisuallyHidden } from "@pisagor/solid";`;
 
 export const sources = {
-  Default: stripTsxExample(defaultRaw),
+  Default: defaultRaw,
 } as const;
 
-export { Default } from "./default";
+export * from "./default";

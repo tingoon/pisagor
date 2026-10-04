@@ -25,35 +25,35 @@ export default defineConfig({
       entry: [".storybook/**/*", "src/**/*"],
       ignoreDependencies: ["chromatic"],
     },
-    // Entries come from package.json `exports` (+ package docs/examples/skills).
+    // Entries come from package.json `exports` (+ examples/skills).
     // No blanket ignoreIssues on src/components or heavy modules — fix real unused deps/files.
     "packages/astro": {
-      entry: ["docs/**/*", "examples/**/*", "skills/**/*"],
+      entry: ["examples/**/*", "skills/**/*"],
     },
     "packages/mcp": {},
     "packages/props": {
       entry: ["skills/**/*"],
     },
     "packages/react": {
-      entry: ["docs/**/*", "examples/**/*", "skills/**/*"],
+      entry: ["examples/**/*", "skills/**/*"],
     },
     "packages/react-form": {
-      entry: ["docs/**/*", "examples/**/*", "skills/**/*"],
+      entry: ["examples/**/*", "skills/**/*"],
     },
     "packages/recipes": {
       entry: ["skills/**/*"],
     },
     "packages/solid": {
-      entry: ["docs/**/*", "examples/**/*", "skills/**/*"],
+      entry: ["examples/**/*", "skills/**/*"],
     },
     "packages/solid-form": {
-      entry: ["docs/**/*", "examples/**/*", "skills/**/*"],
+      entry: ["examples/**/*", "skills/**/*"],
     },
     "packages/svelte": {
-      entry: ["docs/**/*", "examples/**/*", "skills/**/*"],
+      entry: ["examples/**/*", "skills/**/*"],
     },
     "packages/svelte-form": {
-      entry: ["docs/**/*", "examples/**/*", "skills/**/*"],
+      entry: ["examples/**/*", "skills/**/*"],
     },
     "packages/tokens": {
       entry: ["skills/**/*"],
@@ -62,10 +62,10 @@ export default defineConfig({
       entry: ["skills/**/*"],
     },
     "packages/vue": {
-      entry: ["docs/**/*", "examples/**/*", "skills/**/*"],
+      entry: ["examples/**/*", "skills/**/*"],
     },
     "packages/vue-form": {
-      entry: ["docs/**/*", "examples/**/*", "skills/**/*"],
+      entry: ["examples/**/*", "skills/**/*"],
     },
     scripts: {
       entry: ["src/**/*"],

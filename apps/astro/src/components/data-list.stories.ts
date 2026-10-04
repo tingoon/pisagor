@@ -1,6 +1,7 @@
 import { DataList } from "@pisagor/astro/data-list";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: DataList,
   parameters: {
     docs: {
@@ -10,9 +11,9 @@ export default {
     },
   },
   title: "Components/Data Display/Data List",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   args: {
     items: [
       { label: "Name", value: "Ada Lovelace" },
@@ -21,4 +22,4 @@ export const Playground = {
     ],
   },
   tags: ["autodocs"],
-};
+});

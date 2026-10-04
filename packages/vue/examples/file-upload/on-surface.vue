@@ -1,9 +1,8 @@
 <script lang="ts" setup>
 import { useFileUploadContext } from "@ark-ui/vue/file-upload";
 import { PhX } from "@phosphor-icons/vue";
-import { Button, Surface } from "@pisagor/vue";
+import { Button, FileUpload, Surface } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { FileUpload } from "../../src/components/file-upload";
 
 type ArkPart = Parameters<typeof h>[0];
 

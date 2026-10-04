@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { ColorPicker } from "@pisagor/vue";
 import { ref } from "vue";
-import { ColorPicker } from "../../src/components/color-picker";
 
 const color = ref("rgba(82, 65, 235, 1)");
 const onValueChange = setColor;

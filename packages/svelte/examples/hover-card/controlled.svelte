@@ -1,17 +1,11 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte/button";
-import { HoverCard } from "@pisagor/svelte/hover-card";
+import { Button, HoverCard } from "@pisagor/svelte";
 
 let open = $state(false);
 </script>
 
 <div class="flex flex-col gap-2">
-  <HoverCard
-    onOpenChange={(details) => {
-      open = details.open;
-    }}
-    {open}
-  >
+  <HoverCard onOpenChange={(details) => (open = details.open)} {open}>
     <HoverCard.Trigger>
       <Button variant="outline">Hover here</Button>
     </HoverCard.Trigger>

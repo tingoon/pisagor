@@ -1,6 +1,5 @@
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
-import { Button, ButtonGroup, Field } from "@pisagor/react";
-import { Progress } from "@pisagor/react/progress";
+import { Button, ButtonGroup, Field, Progress } from "@pisagor/react";
 import { useState } from "react";
 export function Controlled() {
   const [value, setValue] = useState(50);

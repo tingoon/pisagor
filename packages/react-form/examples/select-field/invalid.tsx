@@ -1,4 +1,4 @@
-import { SelectField } from "../../src/fields/select-field";
+import { SelectField } from "@pisagor/react-form";
 import { countryOptions } from "../options";
 
 export function Invalid() {

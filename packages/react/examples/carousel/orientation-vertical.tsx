@@ -1,4 +1,4 @@
-import { Carousel } from "@pisagor/react/carousel";
+import { Carousel } from "@pisagor/react";
 import { imageSlides } from "./helpers";
 
 export function OrientationVertical() {

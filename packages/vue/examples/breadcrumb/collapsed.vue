@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Breadcrumb } from "../../src/components/breadcrumb";
+import { Breadcrumb } from "@pisagor/vue";
 </script>
 
 <template>

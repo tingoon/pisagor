@@ -1,12 +1,12 @@
 <script lang="ts">
-import type { ItemProps as ItemSharedProps } from "@pisagor/props";
+import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { itemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import Separator from "../separator/separator.svelte";
 
 type Props = {
   class?: string | undefined;
-  } & ItemSharedProps;
+} & BaseItemProps;
 
 let { recipe = itemRecipe, class: className, ...rest }: Props = $props();
 

@@ -7,4 +7,6 @@ type Props = AccordionRootProps;
 let { collapsible = true, children, ...rest }: Props = $props();
 </script>
 
-<AccordionPrimitive.Root {...rest} {collapsible}> {@render children?.()} </AccordionPrimitive.Root>
+<AccordionPrimitive.Root {...rest} {collapsible}>
+  {@render children?.()}
+</AccordionPrimitive.Root>

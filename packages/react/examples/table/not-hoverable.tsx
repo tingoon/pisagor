@@ -1,4 +1,4 @@
-import { Table } from "@pisagor/react/table";
+import { Table } from "@pisagor/react";
 import { workspaceUsers } from "./helpers";
 
 export function NotHoverable() {

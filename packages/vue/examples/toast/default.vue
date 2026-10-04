@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Button } from "@pisagor/vue";
-import { toast } from "../../src/components/toast";
+import { Button, toast } from "@pisagor/vue";
 
 function handleClick() {
   toast.create({ description: "handleClick", title: "Toast" });

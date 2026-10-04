@@ -1,6 +1,6 @@
 <script lang="ts">
+import { Table } from "@pisagor/svelte";
 import { DataTable, dataTableFeatures } from "@pisagor/svelte/data-table";
-import { Table } from "@pisagor/svelte/table";
 
 const data = [
   { email: "ada@example.com", id: "1", name: "Ada Lovelace" },

@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button, Kbd } from "@pisagor/solid";
-import { Tooltip } from "@pisagor/solid/tooltip";
+import { Button, Kbd, Tooltip } from "@pisagor/solid";
 export function WithKeyboardShortcut() {
   return (
     <Tooltip

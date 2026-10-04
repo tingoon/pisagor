@@ -15,9 +15,9 @@ import {
 } from "@ark-ui/react/tags-input";
 import { XIcon } from "@phosphor-icons/react";
 import type {
-  TagsInputItemProps as TagsInputItemSharedProps,
-  TagsInputProps as TagsInputRootProviderSharedProps,
-  TagsInputProps as TagsInputSharedProps,
+  TagsInputItemProps as BaseTagsInputItemProps,
+  TagsInputProps as BaseTagsInputProps,
+  TagsInputProps as BaseTagsInputRootProviderProps,
 } from "@pisagor/props";
 import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
@@ -36,9 +36,7 @@ export type TagsInputRootProps = Omit<
 > &
   Pick<InputGroupProps, "size" | "variant">;
 
-export interface TagsInputProps
-  extends TagsInputRootProps,
-    TagsInputSharedProps {
+export interface TagsInputProps extends TagsInputRootProps, BaseTagsInputProps {
   /**
    * Whether to show the clear button.
    *
@@ -64,7 +62,7 @@ export interface TagsInputControlProps
 export interface TagsInputItemProps
   extends TagsInputPrimitiveItemProps,
     Pick<InputGroupProps, "size">,
-    TagsInputItemSharedProps {
+    BaseTagsInputItemProps {
   /**
    * Whether to show the clear trigger.
    *
@@ -76,7 +74,7 @@ export interface TagsInputItemProps
 export interface TagsInputRootProviderProps
   extends TagsInputPrimitiveRootProviderProps,
     Pick<InputGroupProps, "size">,
-    TagsInputRootProviderSharedProps {
+    BaseTagsInputRootProviderProps {
   /**
    * Whether to show the clear button.
    *

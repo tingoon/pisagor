@@ -4,7 +4,9 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useActionBar } from "./action-bar.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & { class?: string | undefined };
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+  class?: string | undefined;
+};
 let { class: className, children, ...rest }: Props = $props();
 const ctx = useActionBar();
 </script>

@@ -1,7 +1,7 @@
 import type { CollectionItem } from "@ark-ui/solid/collection";
 import type {
-  CommandProps as CommandDialogContentSharedProps,
-  CommandProps as CommandSharedProps,
+  CommandProps as BaseCommandDialogContentProps,
+  CommandProps as BaseCommandProps,
 } from "@pisagor/props";
 import { commandRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
@@ -31,7 +31,7 @@ import { CommandContext, useCommand } from "./command.context";
 
 export interface CommandDialogContentProps
   extends DialogContentProps,
-    CommandDialogContentSharedProps {
+    BaseCommandDialogContentProps {
   description?: string;
   title?: string;
 }
@@ -46,7 +46,7 @@ export type CommandContentProps = ComboboxContentProps;
 
 export interface CommandProps<T extends CollectionItem = CollectionItem>
   extends Omit<ComboboxRootProps<T>, "recipe">,
-    CommandSharedProps {
+    BaseCommandProps {
   class?: string;
 }
 

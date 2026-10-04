@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import compoundRaw from "./compound.vue?raw";
 import controlledRaw from "./controlled.vue?raw";
 import defaultRaw from "./default.vue?raw";
@@ -9,18 +8,18 @@ import variantsRaw from "./variants.vue?raw";
 import with_descriptionRaw from "./with-description.vue?raw";
 import with_fieldRaw from "./with-field.vue?raw";
 
-export const imports = `import { RadioGroup } from "@pisagor/vue/radio-group";`;
+export const imports = `import { RadioGroup } from "@pisagor/vue";`;
 
 export const sources = {
-  Compound: stripVueExample(compoundRaw),
-  Controlled: stripVueExample(controlledRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  Invalid: stripVueExample(invalidRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  Variants: stripVueExample(variantsRaw),
-  WithDescription: stripVueExample(with_descriptionRaw),
-  WithField: stripVueExample(with_fieldRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  OnSurface: on_surfaceRaw,
+  Variants: variantsRaw,
+  WithDescription: with_descriptionRaw,
+  WithField: with_fieldRaw,
 } as const;
 
 export { default as Compound } from "./compound.vue";

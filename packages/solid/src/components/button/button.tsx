@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/solid/factory";
-import type { ButtonProps as ButtonSharedProps } from "@pisagor/props";
+import type { ButtonProps as BaseButtonProps } from "@pisagor/props";
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -8,7 +8,7 @@ import { Spinner } from "../spinner";
 
 export interface ButtonProps
   extends ComponentProps<typeof ark.button>,
-    ButtonSharedProps {}
+    BaseButtonProps {}
 
 export function Button(props: ButtonProps): JSX.Element {
   const [local, rest] = splitProps(props, [

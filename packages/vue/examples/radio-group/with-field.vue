@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Field } from "@pisagor/vue";
-import { RadioGroup } from "../../src/components/radio-group";
+import { Field, RadioGroup } from "@pisagor/vue";
 </script>
 
 <template>

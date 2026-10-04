@@ -1,10 +1,10 @@
 <script lang="ts">
-import { Prose } from "@pisagor/svelte/prose";
+import { Prose } from "@pisagor/svelte";
 </script>
 
 <Prose
-      html={`
+  html={`
           <h2>Trusted HTML</h2>
           <p>Content rendered through the <code>html</code> prop for CMS markup.</p>
         `}
-    />
+/>

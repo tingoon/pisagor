@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { CircularSlider } from "@pisagor/solid/circular-slider";
+import { CircularSlider } from "@pisagor/solid";
 
 export function CustomMarkers() {
   return (

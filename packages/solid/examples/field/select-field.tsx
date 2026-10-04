@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 import { createListCollection } from "@ark-ui/solid/collection";
-import { Select } from "@pisagor/solid";
-import { Field } from "@pisagor/solid/field";
+import { Field, Select } from "@pisagor/solid";
 export function SelectField() {
   const collection = createListCollection({
     items: ["Brazil", "Mexico", "Ireland"],

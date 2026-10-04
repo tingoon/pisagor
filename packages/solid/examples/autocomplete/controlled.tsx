@@ -2,7 +2,7 @@
 
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
-import { Autocomplete } from "@pisagor/solid/autocomplete";
+import { Autocomplete } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
   const initialItems = [

@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import compoundRaw from "./compound.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -12,21 +11,21 @@ import sizesRaw from "./sizes.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_scrollRaw from "./with-scroll.svelte?raw";
 
-export const imports = `import { Select } from "@pisagor/svelte/select";`;
+export const imports = `import { Select } from "@pisagor/svelte";`;
 
 export const sources = {
-  Compound: stripSvelteExample(compoundRaw),
-  Controlled: stripSvelteExample(controlledRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  Empty: stripSvelteExample(emptyRaw),
-  Grouping: stripSvelteExample(groupingRaw),
-  Invalid: stripSvelteExample(invalidRaw),
-  MaxSelection: stripSvelteExample(max_selectionRaw),
-  Multiple: stripSvelteExample(multipleRaw),
-  Sizes: stripSvelteExample(sizesRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  WithScroll: stripSvelteExample(with_scrollRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Empty: emptyRaw,
+  Grouping: groupingRaw,
+  Invalid: invalidRaw,
+  MaxSelection: max_selectionRaw,
+  Multiple: multipleRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithScroll: with_scrollRaw,
 } as const;
 
 export { default as Compound } from "./compound.svelte";

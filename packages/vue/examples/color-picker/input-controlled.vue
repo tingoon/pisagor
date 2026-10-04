@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { Input } from "@pisagor/vue";
+import { ColorPicker, Input } from "@pisagor/vue";
 import { ref } from "vue";
-import { ColorPicker } from "../../src/components/color-picker";
 
 const value = ref("#eb5e41");
 const onValueChange = setValue;

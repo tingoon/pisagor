@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button, DropdownMenu } from "@pisagor/solid";
-import { Breadcrumb } from "@pisagor/solid/breadcrumb";
+import { Breadcrumb, Button, DropdownMenu } from "@pisagor/solid";
 export function WithMenu() {
   return (
     <Breadcrumb.Root>

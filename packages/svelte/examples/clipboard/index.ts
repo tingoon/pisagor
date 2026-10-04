@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.svelte?raw";
 import custom_timeoutRaw from "./custom-timeout.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -6,15 +5,15 @@ import different_iconRaw from "./different-icon.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_labelRaw from "./with-label.svelte?raw";
 
-export const imports = `import { Clipboard } from "@pisagor/svelte/clipboard";`;
+export const imports = `import { Clipboard } from "@pisagor/svelte";`;
 
 export const sources = {
-  Controlled: stripSvelteExample(controlledRaw),
-  CustomTimeout: stripSvelteExample(custom_timeoutRaw),
-  Default: stripSvelteExample(defaultRaw),
-  DifferentIcon: stripSvelteExample(different_iconRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  WithLabel: stripSvelteExample(with_labelRaw),
+  Controlled: controlledRaw,
+  CustomTimeout: custom_timeoutRaw,
+  Default: defaultRaw,
+  DifferentIcon: different_iconRaw,
+  Variants: variantsRaw,
+  WithLabel: with_labelRaw,
 } as const;
 
 export { default as Controlled } from "./controlled.svelte";

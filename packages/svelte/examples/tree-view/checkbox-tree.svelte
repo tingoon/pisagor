@@ -1,5 +1,5 @@
 <script lang="ts">
-import { TreeView } from "@pisagor/svelte/tree-view";
+import { TreeView } from "@pisagor/svelte";
 import { createDemoCollection } from "./helpers";
 import TreeNodeCheckbox from "./tree-node-checkbox.svelte";
 

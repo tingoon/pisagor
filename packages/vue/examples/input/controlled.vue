@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { Input } from "@pisagor/vue";
 import { ref } from "vue";
-import { Input } from "../../src/components/input";
 
 const value = ref("");
 

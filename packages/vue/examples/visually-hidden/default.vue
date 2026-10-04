@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Button } from "@pisagor/vue";
-import { VisuallyHidden } from "../../src/components/visually-hidden";
+import { Button, VisuallyHidden } from "@pisagor/vue";
 </script>
 
 <template>

@@ -1,7 +1,8 @@
 import { Button } from "@pisagor/astro/button";
 import { Card } from "@pisagor/astro/card";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: Card,
   parameters: {
     docs: {
@@ -12,9 +13,9 @@ export default {
     },
   },
   title: "Components/Layout/Card",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   render: () => ({
     component: Card,
     props: { class: "w-80" },
@@ -44,4 +45,4 @@ export const Playground = {
     },
   }),
   tags: ["autodocs"],
-};
+});

@@ -12,7 +12,10 @@ let { classNames, ...rest }: Props = $props();
   {...rest}
   classNames={{
   ...classNames,
-  clearableRoot: cn(inputGroupTextareaControlRecipe(), classNames?.clearableRoot),
+  clearableRoot: cn(
+    inputGroupTextareaControlRecipe(),
+    classNames?.clearableRoot,
+  ),
   rootLayout: cn(inputGroupTextareaControlRecipe(), classNames?.rootLayout),
 }}
 />

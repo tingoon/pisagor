@@ -1,6 +1,11 @@
 <script lang="ts">
-import type { DatePickerProps as DatePickerSharedProps } from "@pisagor/props";
-import { datePickerRecipe, type FormControlGroupShellVariantProps, formControlGroupShellRecipe, inputGroupControlRecipe } from "@pisagor/recipes";
+import type { DatePickerProps as BaseDatePickerProps } from "@pisagor/props";
+import {
+  datePickerRecipe,
+  type FormControlGroupShellVariantProps,
+  formControlGroupShellRecipe,
+  inputGroupControlRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import ClockIcon from "phosphor-svelte/lib/ClockIcon";
 import type { Snippet } from "svelte";
@@ -10,13 +15,12 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { useDatePicker } from "./date-picker.context";
 
 type Props = Omit<HTMLInputAttributes, "class" | "size" | "type" | "value"> &
-  FormControlGroupShellVariantProps &
-  {
+  FormControlGroupShellVariantProps & {
     children?: Snippet;
     class?: string | undefined;
     clearable?: boolean;
     value?: string | undefined;
-  } & DatePickerSharedProps;
+  } & BaseDatePickerProps;
 
 let {
   clearable = false,
@@ -36,7 +40,10 @@ const slots = $derived(ctx?.slots ?? recipe());
 const surfaceVariant = useFormControlSurface();
 const variant = $derived(variantProp ?? ctx?.variant ?? ("primary" as const));
 const canClear = $derived(
-  clearable && !disabled && !readonly && Boolean(value && String(value).length > 0),
+  clearable &&
+    !disabled &&
+    !readonly &&
+    Boolean(value && String(value).length > 0),
 );
 
 function handleClear() {
@@ -45,7 +52,10 @@ function handleClear() {
 </script>
 
 <div
-  class={cn(formControlGroupShellRecipe({ size, surfaceVariant, variant }), "group/input-group")}
+  class={cn(
+  formControlGroupShellRecipe({ size, surfaceVariant, variant }),
+  "group/input-group",
+)}
   data-part="root"
   data-scope="input-group"
 >

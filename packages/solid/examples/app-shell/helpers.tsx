@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { AppShell } from "@pisagor/solid/app-shell";
+import { AppShell } from "@pisagor/solid";
 import type { JSX } from "solid-js";
 import { For } from "solid-js";
 

@@ -11,7 +11,12 @@ type Props = Omit<FloatingPanelStageTriggerProps, "stage" | "class"> & {
   variant?: "ghost" | "outline";
 };
 
-let { size = "icon-xs", variant = "ghost", class: className, ...rest }: Props = $props();
+let {
+  size = "icon-xs",
+  variant = "ghost",
+  class: className,
+  ...rest
+}: Props = $props();
 </script>
 
 <FloatingPanelPrimitive.StageTrigger

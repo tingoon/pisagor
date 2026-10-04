@@ -1,4 +1,4 @@
-import { Skeleton } from "@pisagor/react/skeleton";
+import { Skeleton } from "@pisagor/react";
 
 export function Default() {
   return (

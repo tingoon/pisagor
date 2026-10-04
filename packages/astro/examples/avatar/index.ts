@@ -1,16 +1,15 @@
-import { stripAstroExample } from "@pisagor/utils";
 import defaultRaw from "./default.astro?raw";
 import sizesRaw from "./sizes.astro?raw";
 import with_imageRaw from "./with-image.astro?raw";
 
 export const imports = `---
-import { Avatar } from "@pisagor/astro/avatar";
+import { Avatar } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  Default: stripAstroExample(defaultRaw),
-  Sizes: stripAstroExample(sizesRaw),
-  WithImage: stripAstroExample(with_imageRaw),
+  Default: defaultRaw,
+  Sizes: sizesRaw,
+  WithImage: with_imageRaw,
 } as const;
 
 export { default as Default } from "./default.astro";

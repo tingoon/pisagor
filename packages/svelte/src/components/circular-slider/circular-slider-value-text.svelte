@@ -19,6 +19,9 @@ const { slots } = useCircularSlider();
 const value = $derived(api().value);
 </script>
 
-<AngleSliderPrimitive.ValueText {...rest} class={slots.value({ class: cn(className) })}>
+<AngleSliderPrimitive.ValueText
+  {...rest}
+  class={slots.value({ class: cn(className) })}
+>
   {prefix} {value} {suffix}
 </AngleSliderPrimitive.ValueText>

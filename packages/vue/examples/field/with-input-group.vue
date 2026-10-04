@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhArrowRight } from "@phosphor-icons/vue";
-import { InputGroup } from "@pisagor/vue";
-import { Field } from "../../src/components/field";
+import { Field, InputGroup } from "@pisagor/vue";
 </script>
 
 <template>

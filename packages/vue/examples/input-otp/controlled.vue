@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { InputOTP } from "@pisagor/vue";
 import { ref } from "vue";
-import { InputOTP } from "../../src/components/input-otp";
 
 const value = ref([""]);
 const onValueChange = setValue;

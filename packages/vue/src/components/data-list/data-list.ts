@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/vue/factory";
 import type {
-  DataListItemProps as DataListItemSharedProps,
-  DataListProps as DataListRootSharedProps,
+  DataListItemProps as BaseDataListItemProps,
+  DataListProps as BaseDataListRootProps,
 } from "@pisagor/props";
 import {
   type DataListItemRecipeSlot,
@@ -21,7 +21,7 @@ type DataListClassNames = VariantClassNames<DataListItemRecipeSlot>;
 
 type ArkPart = Parameters<typeof h>[0];
 
-interface DataListRootProps extends DataListRootSharedProps {
+interface DataListRootProps extends BaseDataListRootProps {
   /**
    * The orientation of the data list.
    *
@@ -35,7 +35,7 @@ export interface DataListProps extends Omit<DataListRootProps, "children"> {
   items?: DataListPresetItem[];
 }
 
-export interface DataListItemProps extends DataListItemSharedProps {
+export interface DataListItemProps extends BaseDataListItemProps {
   class?: unknown;
   classNames?: DataListClassNames;
   value?: VNodeChild;

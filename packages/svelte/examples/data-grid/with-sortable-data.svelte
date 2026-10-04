@@ -1,11 +1,17 @@
 <script lang="ts">
+import { Table } from "@pisagor/svelte";
 import type { SortingState } from "@pisagor/svelte/data-grid";
 import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import { Table } from "@pisagor/svelte/table";
 import { allUsers, userColumns } from "./helpers";
 
 const columns = [...userColumns];
 let sorting = $state<SortingState>([{ desc: false, id: "name" }]);
+
+function onSortingChange(
+  updater: SortingState | ((prev: SortingState) => SortingState),
+) {
+  sorting = typeof updater === "function" ? updater(sorting) : updater;
+}
 </script>
 
 <div class="flex w-full flex-col gap-3">
@@ -14,9 +20,7 @@ let sorting = $state<SortingState>([{ desc: false, id: "name" }]);
       {columns}
       data={allUsers}
       features={dataGridFeatures}
-      onSortingChange={(updater) => {
-        sorting = typeof updater === "function" ? updater(sorting) : updater;
-      }}
+      {onSortingChange}
       {sorting}
     >
       <DataGrid.Toolbar>
@@ -25,25 +29,25 @@ let sorting = $state<SortingState>([{ desc: false, id: "name" }]);
           {sorting[0]?.desc ? " (desc)" : " (asc)"}
         </p>
       </DataGrid.Toolbar>
-  <Table>
-    <Table.Header>
-      <DataGrid.Header>
-        <DataGrid.HeaderRow>
-          <DataGrid.Head />
-        </DataGrid.HeaderRow>
-      </DataGrid.Header>
-    </Table.Header>
-    <Table.Body>
-      <DataGrid.Body>
-        {#snippet empty()}
-          <DataGrid.Empty />
-        {/snippet}
-        <DataGrid.Row>
-          <DataGrid.Cell />
-        </DataGrid.Row>
-      </DataGrid.Body>
-    </Table.Body>
-  </Table>
+      <Table>
+        <Table.Header>
+          <DataGrid.Header>
+            <DataGrid.HeaderRow>
+              <DataGrid.Head />
+            </DataGrid.HeaderRow>
+          </DataGrid.Header>
+        </Table.Header>
+        <Table.Body>
+          <DataGrid.Body>
+            {#snippet empty()}
+              <DataGrid.Empty />
+            {/snippet}
+            <DataGrid.Row>
+              <DataGrid.Cell />
+            </DataGrid.Row>
+          </DataGrid.Body>
+        </Table.Body>
+      </Table>
     </DataGrid>
   </div>
 </div>

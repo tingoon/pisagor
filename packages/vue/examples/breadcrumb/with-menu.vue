@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Button, DropdownMenu } from "@pisagor/vue";
-import { Breadcrumb } from "../../src/components/breadcrumb";
+import { Breadcrumb, Button, DropdownMenu } from "@pisagor/vue";
 </script>
 
 <template>

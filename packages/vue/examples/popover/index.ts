@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import anchorRaw from "./anchor.ts?raw";
 import close_behaviorRaw from "./close-behavior.ts?raw";
 import close_buttonRaw from "./close-button.ts?raw";
@@ -9,18 +8,18 @@ import nestedRaw from "./nested.ts?raw";
 import placementsRaw from "./placements.ts?raw";
 import scroll_areaRaw from "./scroll-area.ts?raw";
 
-export const imports = `import { Popover } from "@pisagor/vue/popover";`;
+export const imports = `import { Popover } from "@pisagor/vue";`;
 
 export const sources = {
-  Anchor: stripVueExample(anchorRaw),
-  CloseBehavior: stripVueExample(close_behaviorRaw),
-  CloseButton: stripVueExample(close_buttonRaw),
-  CustomSpacing: stripVueExample(custom_spacingRaw),
-  Default: stripVueExample(defaultRaw),
-  Modal: stripVueExample(modalRaw),
-  Nested: stripVueExample(nestedRaw),
-  Placements: stripVueExample(placementsRaw),
-  ScrollArea: stripVueExample(scroll_areaRaw),
+  Anchor: anchorRaw,
+  CloseBehavior: close_behaviorRaw,
+  CloseButton: close_buttonRaw,
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  Modal: modalRaw,
+  Nested: nestedRaw,
+  Placements: placementsRaw,
+  ScrollArea: scroll_areaRaw,
 } as const;
 
 export { default as Anchor } from "./anchor";

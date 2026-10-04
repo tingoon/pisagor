@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTreeCollection, TreeView } from "@pisagor/svelte/tree-view";
+import { createTreeCollection, TreeView } from "@pisagor/svelte";
 import PackageIcon from "phosphor-svelte/lib/PackageIcon";
 import TreeNodeFolder from "./tree-node-folder.svelte";
 

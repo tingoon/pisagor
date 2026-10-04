@@ -1,5 +1,4 @@
-import { Field } from "@pisagor/react";
-import { Slider } from "@pisagor/react/slider";
+import { Field, Slider } from "@pisagor/react";
 export function WithLabel() {
   return (
     <Field>

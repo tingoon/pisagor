@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Swap } from "@pisagor/svelte/swap";
+import { Button, Swap } from "@pisagor/svelte";
 import MoonIcon from "phosphor-svelte/lib/MoonIcon";
 import SunIcon from "phosphor-svelte/lib/SunIcon";
 

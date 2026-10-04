@@ -1,7 +1,8 @@
 import { Button } from "@pisagor/astro/button";
 import { ButtonGroup } from "@pisagor/astro/button-group";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: ButtonGroup,
   parameters: {
     docs: {
@@ -11,9 +12,9 @@ export default {
     },
   },
   title: "Components/Actions/Button Group",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   render: () => ({
     component: ButtonGroup,
     slots: {
@@ -39,4 +40,4 @@ export const Playground = {
     },
   }),
   tags: ["autodocs"],
-};
+});

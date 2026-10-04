@@ -1,6 +1,5 @@
+import { Button, Drawer } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Drawer } from "../../src/components/drawer";
-import { outlineButtonClass } from "../../src/internal/story-button";
 
 export default defineComponent({
   name: "SwipeDirections",
@@ -9,11 +8,7 @@ export default defineComponent({
       h("div", { class: "flex flex-wrap justify-center gap-2" }, [
         h(Drawer, { swipeDirection: "down" }, () => [
           h(Drawer.Trigger, { asChild: true }, () =>
-            h(
-              "button",
-              { class: outlineButtonClass(), type: "button" },
-              "Bottom",
-            ),
+            h(Button, { type: "button", variant: "outline" }, "Bottom"),
           ),
           h(Drawer.Content, null, () => [
             h(Drawer.Header, { title: "Bottom drawer" }),
@@ -28,7 +23,7 @@ export default defineComponent({
         ]),
         h(Drawer, { swipeDirection: "up" }, () => [
           h(Drawer.Trigger, { asChild: true }, () =>
-            h("button", { class: outlineButtonClass(), type: "button" }, "Top"),
+            h(Button, { type: "button", variant: "outline" }, "Top"),
           ),
           h(Drawer.Content, null, () => [
             h(Drawer.Header, { title: "Top drawer" }),
@@ -43,11 +38,7 @@ export default defineComponent({
         ]),
         h(Drawer, { swipeDirection: "start" }, () => [
           h(Drawer.Trigger, { asChild: true }, () =>
-            h(
-              "button",
-              { class: outlineButtonClass(), type: "button" },
-              "Left",
-            ),
+            h(Button, { type: "button", variant: "outline" }, "Left"),
           ),
           h(Drawer.Content, null, () => [
             h(Drawer.Header, { title: "Start drawer" }),
@@ -62,11 +53,7 @@ export default defineComponent({
         ]),
         h(Drawer, { swipeDirection: "end" }, () => [
           h(Drawer.Trigger, { asChild: true }, () =>
-            h(
-              "button",
-              { class: outlineButtonClass(), type: "button" },
-              "Right",
-            ),
+            h(Button, { type: "button", variant: "outline" }, "Right"),
           ),
           h(Drawer.Content, null, () => [
             h(Drawer.Header, { title: "End drawer" }),

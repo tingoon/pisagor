@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import type { FileInputProps as FileInputSharedProps } from "@pisagor/props";
+import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
 import {
   type FormControlGroupShellVariantProps,
   fileInputRecipe,
@@ -33,7 +33,7 @@ type NativeFileInputProps = Omit<
 
 type FileInputRootProps = ComponentProps<typeof ark.div> &
   FileInputVariantProps &
-  FileInputSharedProps & {
+  BaseFileInputProps & {
     /** Disables the control and sets `data-disabled` on the root. */
     disabled?: boolean;
   };
@@ -41,7 +41,7 @@ type FileInputRootProps = ComponentProps<typeof ark.div> &
 export interface FileInputProps
   extends NativeFileInputProps,
     FileInputVariantProps,
-    FileInputSharedProps {
+    BaseFileInputProps {
   /** Marks the control invalid for styling and assistive tech. */
   invalid?: boolean;
   /** Label for the browse button. */

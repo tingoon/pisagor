@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { PhArrowSquareOut } from "@phosphor-icons/vue";
-import { Item } from "../../src/components/item";
+import { Item } from "@pisagor/vue";
 </script>
 
 <template>

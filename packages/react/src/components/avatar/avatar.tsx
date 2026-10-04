@@ -4,7 +4,7 @@ import {
   Avatar as AvatarPrimitive,
   type AvatarRootProps as AvatarPrimitiveRootProps,
 } from "@ark-ui/react/avatar";
-import type { AvatarProps as AvatarRootSharedProps } from "@pisagor/props";
+import type { AvatarProps as BaseAvatarRootProps } from "@pisagor/props";
 import { type AvatarRecipeSlot, avatarRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
@@ -13,7 +13,7 @@ import { AvatarContext, useAvatar } from "./avatar.context";
 // #region Types
 type AvatarClassNames = VariantClassNames<AvatarRecipeSlot>;
 
-type AvatarRootProps = AvatarPrimitiveRootProps & AvatarRootSharedProps;
+type AvatarRootProps = AvatarPrimitiveRootProps & BaseAvatarRootProps;
 
 export interface AvatarProps extends Omit<AvatarRootProps, "children"> {
   /** Alt text for the avatar image */

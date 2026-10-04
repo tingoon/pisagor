@@ -1,18 +1,22 @@
 <script lang="ts">
 import type { MenuTriggerItemProps } from "@ark-ui/svelte/menu";
 import { Menu as MenuPrimitive } from "@ark-ui/svelte/menu";
-import type { DropdownMenuItemProps as DropdownMenuItemSharedProps } from "@pisagor/props";
+import type { DropdownMenuItemProps as BaseDropdownMenuItemProps } from "@pisagor/props";
 import { dropdownMenuItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 import DropdownMenuShortcut from "./dropdown-menu-shortcut.svelte";
 
-type Props = Omit<MenuTriggerItemProps, "class"> &
-  {
+type Props = Omit<MenuTriggerItemProps, "class"> & {
   class?: string | undefined;
-  } & DropdownMenuItemSharedProps;
+} & BaseDropdownMenuItemProps;
 
-let { recipe = dropdownMenuItemRecipe, class: className, children, ...rest }: Props = $props();
+let {
+  recipe = dropdownMenuItemRecipe,
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 </script>
 
 <MenuPrimitive.TriggerItem

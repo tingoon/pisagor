@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { FileUpload } from "@pisagor/svelte/file-upload";
+import { Button, FileUpload } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-col gap-2">
@@ -9,7 +8,9 @@ import { FileUpload } from "@pisagor/svelte/file-upload";
       <FileUpload.DropzoneIcon />
       <FileUpload.Title>Primary</FileUpload.Title>
       <FileUpload.Trigger>
-        {#snippet asChild(props)}
+        {#snippet asChild(
+  props,
+)}
           <Button {...props()}>Browse files</Button>
         {/snippet}
       </FileUpload.Trigger>
@@ -20,7 +21,9 @@ import { FileUpload } from "@pisagor/svelte/file-upload";
       <FileUpload.DropzoneIcon />
       <FileUpload.Title>Secondary</FileUpload.Title>
       <FileUpload.Trigger>
-        {#snippet asChild(props)}
+        {#snippet asChild(
+  props,
+)}
           <Button {...props()}>Browse files</Button>
         {/snippet}
       </FileUpload.Trigger>

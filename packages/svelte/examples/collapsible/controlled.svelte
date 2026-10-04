@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Collapsible } from "@pisagor/svelte/collapsible";
+import { Button, Collapsible } from "@pisagor/svelte";
 
 let open = $state(false);
 </script>
@@ -8,7 +7,9 @@ let open = $state(false);
 <div class="w-64 space-y-2">
   <Collapsible onOpenChange={({ open: next }) => (open = next)} {open}>
     <Collapsible.Trigger>
-      {#snippet asChild(props)}
+      {#snippet asChild(
+  props,
+)}
         <Button {...props()} class="w-full" variant="outline">
           {open ? "Collapse" : "Expand"}
           <Collapsible.Indicator />

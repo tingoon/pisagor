@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.svelte?raw";
 import countRaw from "./count.svelte?raw";
 import custom_colorRaw from "./custom-color.svelte?raw";
@@ -11,20 +10,20 @@ import invalidRaw from "./invalid.svelte?raw";
 import readonlyRaw from "./readonly.svelte?raw";
 import testimonialRaw from "./testimonial.svelte?raw";
 
-export const imports = `import { Rating } from "@pisagor/svelte/rating";`;
+export const imports = `import { Rating } from "@pisagor/svelte";`;
 
 export const sources = {
-  Controlled: stripSvelteExample(controlledRaw),
-  Count: stripSvelteExample(countRaw),
-  CustomColor: stripSvelteExample(custom_colorRaw),
-  CustomIcon: stripSvelteExample(custom_iconRaw),
-  CustomSize: stripSvelteExample(custom_sizeRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  HalfStar: stripSvelteExample(half_starRaw),
-  Invalid: stripSvelteExample(invalidRaw),
-  Readonly: stripSvelteExample(readonlyRaw),
-  Testimonial: stripSvelteExample(testimonialRaw),
+  Controlled: controlledRaw,
+  Count: countRaw,
+  CustomColor: custom_colorRaw,
+  CustomIcon: custom_iconRaw,
+  CustomSize: custom_sizeRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  HalfStar: half_starRaw,
+  Invalid: invalidRaw,
+  Readonly: readonlyRaw,
+  Testimonial: testimonialRaw,
 } as const;
 
 export { default as Controlled } from "./controlled.svelte";

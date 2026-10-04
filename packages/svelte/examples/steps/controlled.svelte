@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Steps } from "@pisagor/svelte/steps";
+import { Button, Steps } from "@pisagor/svelte";
 
 const items = [
   {

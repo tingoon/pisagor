@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/solid/factory";
 import type {
-  DataListItemProps as DataListItemSharedProps,
-  DataListProps as DataListRootSharedProps,
+  DataListItemProps as BaseDataListItemProps,
+  DataListProps as BaseDataListRootProps,
 } from "@pisagor/props";
 import {
   type DataListItemRecipeSlot,
@@ -23,7 +23,7 @@ interface DataListPresetItem {
 
 export interface DataListRootProps
   extends ComponentProps<typeof ark.dl>,
-    DataListRootSharedProps {
+    BaseDataListRootProps {
   orientation?: "horizontal" | "vertical";
 }
 
@@ -33,7 +33,7 @@ export interface DataListProps extends Omit<DataListRootProps, "children"> {
 
 export interface DataListItemProps
   extends ComponentProps<typeof ark.div>,
-    DataListItemSharedProps {
+    BaseDataListItemProps {
   value?: JSX.Element;
   classNames?: DataListClassNames;
 }

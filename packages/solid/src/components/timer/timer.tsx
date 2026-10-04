@@ -9,8 +9,8 @@ import type {
 } from "@ark-ui/solid/timer";
 import { Timer as TimerPrimitive, useTimerContext } from "@ark-ui/solid/timer";
 import type {
-  TimerItemGroupProps as TimerItemGroupSharedProps,
-  TimerProps as TimerRootSharedProps,
+  TimerItemGroupProps as BaseTimerItemGroupProps,
+  TimerProps as BaseTimerRootProps,
 } from "@pisagor/props";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -27,7 +27,7 @@ type TimerUnit = "hours" | "minutes" | "seconds";
 
 export interface TimerItemGroupProps
   extends ComponentProps<typeof ark.div>,
-    TimerItemGroupSharedProps {
+    BaseTimerItemGroupProps {
   orientation?: "horizontal" | "vertical";
 }
 
@@ -36,7 +36,7 @@ export interface TimerActionProps
 
 export interface TimerRootProps
   extends TimerPrimitiveRootProps,
-    TimerRootSharedProps {
+    BaseTimerRootProps {
   units?: TimerUnit[];
   isControlsVisible?: boolean;
 }

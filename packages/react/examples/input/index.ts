@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import clearableRaw from "./clearable.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
@@ -8,24 +7,24 @@ import invalidRaw from "./invalid.tsx?raw";
 import sizesRaw from "./sizes.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 
-export const imports = `import { Input } from "@pisagor/react/input";`;
+export const imports = `import { Input } from "@pisagor/react";`;
 
 export const sources = {
-  Clearable: stripTsxExample(clearableRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  File: stripTsxExample(fileRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  Sizes: stripTsxExample(sizesRaw),
-  Variants: stripTsxExample(variantsRaw),
+  Clearable: clearableRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  File: fileRaw,
+  Invalid: invalidRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
 } as const;
 
-export { Clearable } from "./clearable";
-export { Controlled } from "./controlled";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { File } from "./file";
-export { Invalid } from "./invalid";
-export { Sizes } from "./sizes";
-export { Variants } from "./variants";
+export * from "./clearable";
+export * from "./controlled";
+export * from "./default";
+export * from "./disabled";
+export * from "./file";
+export * from "./invalid";
+export * from "./sizes";
+export * from "./variants";

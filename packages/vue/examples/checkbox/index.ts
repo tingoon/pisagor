@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import checkbox_groupRaw from "./checkbox-group.vue?raw";
 import controlledRaw from "./controlled.vue?raw";
 import defaultRaw from "./default.vue?raw";
@@ -8,17 +7,17 @@ import invalidRaw from "./invalid.vue?raw";
 import on_surfaceRaw from "./on-surface.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 
-export const imports = `import { Checkbox } from "@pisagor/vue/checkbox";`;
+export const imports = `import { Checkbox } from "@pisagor/vue";`;
 
 export const sources = {
-  CheckboxGroup: stripVueExample(checkbox_groupRaw),
-  Controlled: stripVueExample(controlledRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  Indeterminate: stripVueExample(indeterminateRaw),
-  Invalid: stripVueExample(invalidRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  Variants: stripVueExample(variantsRaw),
+  CheckboxGroup: checkbox_groupRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Indeterminate: indeterminateRaw,
+  Invalid: invalidRaw,
+  OnSurface: on_surfaceRaw,
+  Variants: variantsRaw,
 } as const;
 
 export { default as CheckboxGroup } from "./checkbox-group.vue";

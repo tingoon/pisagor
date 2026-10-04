@@ -1,5 +1,5 @@
 import { GearIcon, ShieldIcon, UserIcon } from "@phosphor-icons/react";
-import { Tabs } from "@pisagor/react/tabs";
+import { Tabs } from "@pisagor/react";
 
 export function WithIcons() {
   return (

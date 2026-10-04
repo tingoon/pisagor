@@ -1,7 +1,10 @@
 <script lang="ts">
 import { Portal } from "@ark-ui/svelte/portal";
-import { type CreateToasterReturn, Toaster as ToasterPrimitive } from "@ark-ui/svelte/toast";
-import type { ToastProps as ToastSharedProps } from "@pisagor/props";
+import {
+  type CreateToasterReturn,
+  Toaster as ToasterPrimitive,
+} from "@ark-ui/svelte/toast";
+import type { ToastProps as BaseToastProps } from "@pisagor/props";
 import { toastRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { toast as defaultToast } from "./toast";
@@ -10,12 +13,11 @@ import ToastItem from "./toast-item.svelte";
 type Props = Omit<
   import("@ark-ui/svelte/toast").ToasterProps,
   "toaster" | "children" | "class" | "style"
-> &
-  {
+> & {
   class?: string | undefined;
   style?: string | undefined;
   toaster?: CreateToasterReturn;
-  } & ToastSharedProps;
+} & BaseToastProps;
 
 let {
   toaster: toasterInstance = defaultToast,
@@ -25,7 +27,9 @@ let {
   ...rest
 }: Props = $props();
 
-const toasterStyle = $derived(["--width: 356px", style].filter(Boolean).join("; "));
+const toasterStyle = $derived(
+  ["--width: 356px", style].filter(Boolean).join("; "),
+);
 </script>
 
 <Portal>

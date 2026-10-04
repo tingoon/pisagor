@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { CheckboxRootProps } from "@ark-ui/svelte/checkbox";
 import { Checkbox as CheckboxPrimitive } from "@ark-ui/svelte/checkbox";
-import type { CheckboxProps as CheckboxSharedProps } from "@pisagor/props";
+import type { CheckboxProps as BaseCheckboxProps } from "@pisagor/props";
 import { checkboxRecipe, formControlToggleRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
@@ -10,15 +10,14 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<CheckboxRootProps, "class"> &
-  {
+type Props = Omit<CheckboxRootProps, "class"> & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   onValueChange?: (value: boolean) => void;
   class?: string | undefined;
   /** Forwarded to the hidden input (Svelte DOM attr). */
   tabindex?: number | null;
-  } & CheckboxSharedProps;
+} & BaseCheckboxProps;
 
 let {
   variant: variantProp,

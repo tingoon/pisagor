@@ -1,12 +1,14 @@
 <script lang="ts">
-import { Breadcrumb } from "@pisagor/svelte/breadcrumb";
+import { Breadcrumb } from "@pisagor/svelte";
 </script>
 
 <Breadcrumb.Root>
   <Breadcrumb.List>
     <Breadcrumb.Item>
       <Breadcrumb.Link>
-        {#snippet asChild(props)}
+        {#snippet asChild(
+  props,
+)}
           <a {...props()} href="/docs">Docs</a>
         {/snippet}
       </Breadcrumb.Link>
@@ -14,7 +16,9 @@ import { Breadcrumb } from "@pisagor/svelte/breadcrumb";
     <Breadcrumb.Separator />
     <Breadcrumb.Item>
       <Breadcrumb.Link>
-        {#snippet asChild(props)}
+        {#snippet asChild(
+  props,
+)}
           <a {...props()} href="/docs/components">Components</a>
         {/snippet}
       </Breadcrumb.Link>

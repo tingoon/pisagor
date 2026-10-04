@@ -1,5 +1,5 @@
 import { useFilter, useListCollection } from "@ark-ui/react";
-import { Autocomplete } from "@pisagor/react/autocomplete";
+import { Autocomplete } from "@pisagor/react";
 
 export function Compound() {
   const initialItems = [

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Format } from "../../src/components/format";
+import { Format } from "@pisagor/vue";
 </script>
 
 <template>

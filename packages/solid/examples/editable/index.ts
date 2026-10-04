@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import activation_clickRaw from "./activation-click.tsx?raw";
 import activation_focusRaw from "./activation-focus.tsx?raw";
 import activation_noneRaw from "./activation-none.tsx?raw";
@@ -14,36 +13,36 @@ import variantsRaw from "./variants.tsx?raw";
 import with_textareaRaw from "./with-textarea.tsx?raw";
 import without_controlsRaw from "./without-controls.tsx?raw";
 
-export const imports = `import { Editable } from "@pisagor/solid/editable";`;
+export const imports = `import { Editable } from "@pisagor/solid";`;
 
 export const sources = {
-  ActivationClick: stripTsxExample(activation_clickRaw),
-  ActivationFocus: stripTsxExample(activation_focusRaw),
-  ActivationNone: stripTsxExample(activation_noneRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  Dblclick: stripTsxExample(dblclickRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  OrientationHorizontal: stripTsxExample(orientation_horizontalRaw),
-  OrientationVertical: stripTsxExample(orientation_verticalRaw),
-  Sizes: stripTsxExample(sizesRaw),
-  Variants: stripTsxExample(variantsRaw),
-  WithoutControls: stripTsxExample(without_controlsRaw),
-  WithTextarea: stripTsxExample(with_textareaRaw),
+  ActivationClick: activation_clickRaw,
+  ActivationFocus: activation_focusRaw,
+  ActivationNone: activation_noneRaw,
+  Controlled: controlledRaw,
+  Dblclick: dblclickRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithoutControls: without_controlsRaw,
+  WithTextarea: with_textareaRaw,
 } as const;
 
-export { ActivationClick } from "./activation-click";
-export { ActivationFocus } from "./activation-focus";
-export { ActivationNone } from "./activation-none";
-export { Controlled } from "./controlled";
-export { Dblclick } from "./dblclick";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { Invalid } from "./invalid";
-export { OrientationHorizontal } from "./orientation-horizontal";
-export { OrientationVertical } from "./orientation-vertical";
-export { Sizes } from "./sizes";
-export { Variants } from "./variants";
-export { WithTextarea } from "./with-textarea";
-export { WithoutControls } from "./without-controls";
+export * from "./activation-click";
+export * from "./activation-focus";
+export * from "./activation-none";
+export * from "./controlled";
+export * from "./dblclick";
+export * from "./default";
+export * from "./disabled";
+export * from "./invalid";
+export * from "./orientation-horizontal";
+export * from "./orientation-vertical";
+export * from "./sizes";
+export * from "./variants";
+export * from "./with-textarea";
+export * from "./without-controls";

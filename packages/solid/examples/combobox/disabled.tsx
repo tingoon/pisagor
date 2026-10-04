@@ -1,7 +1,7 @@
 /** @jsxImportSource solid-js */
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
-import { Combobox } from "@pisagor/solid/combobox";
+import { Combobox } from "@pisagor/solid";
 
 export function Disabled() {
   const initialItems = [

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { Tabs } from "@pisagor/vue";
 import { ref } from "vue";
-import { Tabs } from "../../src/components/tabs";
 import { profileTabs } from "./helpers";
 
 const items = profileTabs();

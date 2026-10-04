@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { Rating } from "@pisagor/vue";
 import { ref } from "vue";
-import { Rating } from "../../src/components/rating";
 
 const value = ref(0);
 const onValueChange = (value) => setValue(value ?? 0);

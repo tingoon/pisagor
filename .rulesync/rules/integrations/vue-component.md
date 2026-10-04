@@ -93,8 +93,8 @@ Applies to the published workspace component package (`@pisagor/vue`):
 
 Framework-agnostic visual props live in [`@pisagor/props`](../../../packages/props). Recipe `tv()` stays in `@pisagor/recipes`; props re-exports the shared surface (`{Name}VariantProps`, optional `recipe`).
 
-- Import: `import type { FooProps as FooSharedProps } from "@pisagor/props"`.
-- Public `FooProps` **extends** `FooSharedProps` (plus Ark/DOM / framework-only fields). Do not re-declare `recipe` or variant fields already on the shared type.
+- Import: `import type { FooProps as BaseFooProps } from "@pisagor/props"`.
+- Public `FooProps` **extends** `BaseFooProps` (plus Ark/DOM / framework-only fields). Do not re-declare `recipe` or variant fields already on the shared type.
 - Framework packages own only framework-specific props (event names, slots, refs, `class`, `classNames`, sub-element bags).
 - Template: React [`button.tsx`](../../../packages/react/src/components/button/button.tsx) / Vue [`button.ts`](../../../packages/vue/src/components/button/button.ts).
 
@@ -247,7 +247,7 @@ Public props are a **dual surface**: a TypeScript `interface` (consumer types / 
 ### Do
 
 - Export `interface FooProps` when props are part of the public API.
-- Prefer extending `@pisagor/props` shared props: `export interface ButtonProps extends ButtonSharedProps { … }`. Combine with recipe types only when a shared module does not exist yet (`extends ButtonVariantProps`).
+- Prefer extending `@pisagor/props` shared props: `export interface ButtonProps extends BaseButtonProps { … }`. Combine with recipe types only when a shared module does not exist yet (`extends ButtonVariantProps`).
 - Use `Omit<…>` when a convenience prop conflicts with an Ark prop signature.
 - Prefer extending `@pisagor/props` shared props for `recipe` / variant fields over declaring them locally. When a shared module does not exist yet, extend recipe `{Name}VariantProps` from `@pisagor/recipes`. Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — [TypeScript Style Guide](../typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
 - Runtime props: declare every public prop with `PropType<…>`, defaults via `default`, and `type: Boolean` / `Number` / `String` / `Object` / `Array` / `Function` as appropriate.

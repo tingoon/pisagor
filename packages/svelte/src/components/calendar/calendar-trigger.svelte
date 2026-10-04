@@ -6,4 +6,6 @@ type Props = DatePickerTriggerProps;
 let { children, ...rest }: Props = $props();
 </script>
 
-<CalendarPrimitive.Trigger {...rest}>{@render children?.()}</CalendarPrimitive.Trigger>
+<CalendarPrimitive.Trigger {...rest}
+  >{@render children?.()}</CalendarPrimitive.Trigger
+>

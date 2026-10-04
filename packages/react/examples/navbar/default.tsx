@@ -1,6 +1,5 @@
 import { BellIcon, DatabaseIcon } from "@phosphor-icons/react";
-import { Avatar, Button, NavigationMenu } from "@pisagor/react";
-import { Navbar } from "@pisagor/react/navbar";
+import { Avatar, Button, Navbar, NavigationMenu } from "@pisagor/react";
 export function Default() {
   return (
     <Navbar>

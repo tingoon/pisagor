@@ -1,5 +1,4 @@
-import { Calendar } from "@pisagor/react";
-import { DatePicker } from "@pisagor/react/date-picker";
+import { Calendar, DatePicker } from "@pisagor/react";
 export function Variants() {
   return (
     <div className="flex flex-col gap-2">

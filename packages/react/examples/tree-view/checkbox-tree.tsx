@@ -1,6 +1,5 @@
-import { createTreeCollection } from "@pisagor/react";
-import type { TreeNodeType } from "@pisagor/react/tree-view";
-import { TreeView } from "@pisagor/react/tree-view";
+import type { TreeNodeType } from "@pisagor/react";
+import { createTreeCollection, TreeView } from "@pisagor/react";
 import { useState } from "react";
 export function CheckboxTree() {
   const collection = createTreeCollection({

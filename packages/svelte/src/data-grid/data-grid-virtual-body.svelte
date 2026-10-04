@@ -63,14 +63,17 @@ const paddingBottom = $derived(
 {#if rows.length > 0}
   {#if paddingTop > 0}
     <tr data-part="virtual-spacer" data-scope="data-grid" bind:this={anchorEl}>
-      <td colspan={table.getAllColumns().length} style={`height: ${paddingTop}px`}></td>
+      <td
+        colspan={table.getAllColumns().length}
+        style={`height: ${paddingTop}px`}
+      ></td>
     </tr>
   {:else}
     <tr class={slots.anchor()} bind:this={anchorEl}></tr>
   {/if}
 
   {#each virtualRows as virtualRow (virtualRow.key)}
-    {@const row = rows[virtualRow.index]}
+    {const row = rows[virtualRow.index]}
     {#if row}
       <DataGridRowProvider {row}> {@render children?.()} </DataGridRowProvider>
     {/if}
@@ -78,7 +81,10 @@ const paddingBottom = $derived(
 
   {#if paddingBottom > 0}
     <tr data-part="virtual-spacer" data-scope="data-grid">
-      <td colspan={table.getAllColumns().length} style={`height: ${paddingBottom}px`}></td>
+      <td
+        colspan={table.getAllColumns().length}
+        style={`height: ${paddingBottom}px`}
+      ></td>
     </tr>
   {/if}
 {:else}

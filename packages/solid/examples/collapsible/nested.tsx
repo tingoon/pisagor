@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button, Card, Clipboard } from "@pisagor/solid";
-import { Collapsible } from "@pisagor/solid/collapsible";
+import { Button, Card, Clipboard, Collapsible } from "@pisagor/solid";
 export function Nested() {
   return (
     <Card class="w-80">

@@ -1,6 +1,6 @@
 import { Clipboard as ClipboardPrimitive } from "@ark-ui/vue/clipboard";
 import { PhCheck, PhClipboard } from "@phosphor-icons/vue";
-import type { ClipboardProps as ClipboardSharedProps } from "@pisagor/props";
+import type { ClipboardProps as BaseClipboardProps } from "@pisagor/props";
 import {
   type ClipboardRecipeSlot,
   type ClipboardVariantProps,
@@ -20,7 +20,7 @@ type ClipboardClassNames = VariantClassNames<ClipboardRecipeSlot>;
 
 type ClipboardValueSize = ClipboardVariantProps["valueSize"];
 
-export interface ClipboardProps extends ClipboardSharedProps {
+export interface ClipboardProps extends BaseClipboardProps {
   class?: unknown;
   /** Slot class names */
   classNames?: ClipboardClassNames;

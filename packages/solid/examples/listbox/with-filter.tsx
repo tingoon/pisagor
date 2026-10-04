@@ -2,8 +2,7 @@
 
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
-import { Input, Item } from "@pisagor/solid";
-import { Listbox } from "@pisagor/solid/listbox";
+import { Input, Item, Listbox } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function WithFilter() {
   const [search, setSearch] = createSignal("");

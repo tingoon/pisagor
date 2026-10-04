@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import autoplayRaw from "./autoplay.vue?raw";
 import compoundRaw from "./compound.vue?raw";
 import controlledRaw from "./controlled.vue?raw";
@@ -12,21 +11,21 @@ import spacingRaw from "./spacing.vue?raw";
 import thumbnail_indicatorRaw from "./thumbnail-indicator.vue?raw";
 import thumbnail_indicator_verticalRaw from "./thumbnail-indicator-vertical.vue?raw";
 
-export const imports = `import { Carousel } from "@pisagor/vue/carousel";`;
+export const imports = `import { Carousel } from "@pisagor/vue";`;
 
 export const sources = {
-  Autoplay: stripVueExample(autoplayRaw),
-  Compound: stripVueExample(compoundRaw),
-  Controlled: stripVueExample(controlledRaw),
-  Default: stripVueExample(defaultRaw),
-  Loop: stripVueExample(loopRaw),
-  MouseDrag: stripVueExample(mouse_dragRaw),
-  OrientationHorizontal: stripVueExample(orientation_horizontalRaw),
-  OrientationVertical: stripVueExample(orientation_verticalRaw),
-  SlidesPerPage: stripVueExample(slides_per_pageRaw),
-  Spacing: stripVueExample(spacingRaw),
-  ThumbnailIndicator: stripVueExample(thumbnail_indicatorRaw),
-  ThumbnailIndicatorVertical: stripVueExample(thumbnail_indicator_verticalRaw),
+  Autoplay: autoplayRaw,
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Loop: loopRaw,
+  MouseDrag: mouse_dragRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  SlidesPerPage: slides_per_pageRaw,
+  Spacing: spacingRaw,
+  ThumbnailIndicator: thumbnail_indicatorRaw,
+  ThumbnailIndicatorVertical: thumbnail_indicator_verticalRaw,
 } as const;
 
 export { default as Autoplay } from "./autoplay.vue";

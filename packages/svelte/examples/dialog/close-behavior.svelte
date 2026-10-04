@@ -1,7 +1,6 @@
 <script lang="ts">
 import { Portal } from "@ark-ui/svelte/portal";
-import { Button } from "@pisagor/svelte/button";
-import { Dialog } from "@pisagor/svelte/dialog";
+import { Button, Dialog } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap justify-center gap-2">
@@ -16,7 +15,8 @@ import { Dialog } from "@pisagor/svelte/dialog";
           <Dialog.Header>
             <Dialog.Title>Stays on outside click</Dialog.Title>
             <Dialog.Description>
-              Clicking outside does not close this dialog. Press ESC or use the button to close.
+              Clicking outside does not close this dialog. Press ESC or use the
+              button to close.
             </Dialog.Description>
           </Dialog.Header>
         </Dialog.Content>
@@ -34,7 +34,8 @@ import { Dialog } from "@pisagor/svelte/dialog";
           <Dialog.Header>
             <Dialog.Title>Escape key unavailable</Dialog.Title>
             <Dialog.Description>
-              Pressing Escape does not close this dialog. Click outside or use the close button.
+              Pressing Escape does not close this dialog. Click outside or use
+              the close button.
             </Dialog.Description>
           </Dialog.Header>
         </Dialog.Content>

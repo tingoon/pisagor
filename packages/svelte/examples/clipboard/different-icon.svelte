@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Clipboard } from "@pisagor/svelte/clipboard";
+import { Clipboard } from "@pisagor/svelte";
 import SparkleIcon from "phosphor-svelte/lib/SparkleIcon";
 </script>
 

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { PhCopy, PhPencil, PhTrash } from "@phosphor-icons/vue";
-import { ContextMenu } from "../../src/components/context-menu";
+import { ContextMenu } from "@pisagor/vue";
 </script>
 
 <template>

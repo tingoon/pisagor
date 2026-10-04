@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Surface } from "@pisagor/vue";
-import { SignaturePad } from "../../src/components/signature-pad";
+import { SignaturePad, Surface } from "@pisagor/vue";
 </script>
 
 <template>

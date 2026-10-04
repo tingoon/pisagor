@@ -8,6 +8,5 @@
     "types": ["node"]
   },
   "extends": "../../tsconfig.json",
-  "files": ["./vue-global.d.ts"],
-  "include": ["src"]
+  "include": ["src", "examples", "global.d.ts"]
 }

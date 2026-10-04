@@ -19,7 +19,7 @@ import {
   useSelectContext,
 } from "@ark-ui/react/select";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
-import type { SelectProps as SelectRootSharedProps } from "@pisagor/props";
+import type { SelectProps as BaseSelectRootProps } from "@pisagor/props";
 import {
   type FormControlShellVariantProps,
   formControlShellRecipe,
@@ -49,7 +49,7 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
    */
   variant?: FormControlVariant;
   onValueChange?: (value: string | string[]) => void;
-} & SelectRootSharedProps;
+} & BaseSelectRootProps;
 
 export interface SelectProps
   extends Omit<SelectRootProps, "children" | "collection"> {

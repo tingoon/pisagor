@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import custom_spacingRaw from "./custom-spacing.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
 import groupRaw from "./group.svelte?raw";
@@ -10,19 +9,19 @@ import variantsRaw from "./variants.svelte?raw";
 import with_avatarRaw from "./with-avatar.svelte?raw";
 import with_mediaRaw from "./with-media.svelte?raw";
 
-export const imports = `import { Item } from "@pisagor/svelte/item";`;
+export const imports = `import { Item } from "@pisagor/svelte";`;
 
 export const sources = {
-  CustomSpacing: stripSvelteExample(custom_spacingRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Group: stripSvelteExample(groupRaw),
-  Header: stripSvelteExample(headerRaw),
-  Icon: stripSvelteExample(iconRaw),
-  Image: stripSvelteExample(imageRaw),
-  Link: stripSvelteExample(linkRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  WithAvatar: stripSvelteExample(with_avatarRaw),
-  WithMedia: stripSvelteExample(with_mediaRaw),
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  Group: groupRaw,
+  Header: headerRaw,
+  Icon: iconRaw,
+  Image: imageRaw,
+  Link: linkRaw,
+  Variants: variantsRaw,
+  WithAvatar: with_avatarRaw,
+  WithMedia: with_mediaRaw,
 } as const;
 
 export { default as CustomSpacing } from "./custom-spacing.svelte";

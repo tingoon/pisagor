@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button, Card } from "@pisagor/svelte";
-import { Calendar } from "@pisagor/svelte/calendar";
+import { Button, Calendar, Card } from "@pisagor/svelte";
 
 const presets = [
   { label: "Last 7 days", value: "last7Days" as const },
@@ -27,7 +26,9 @@ const presets = [
     <Card.Footer class="flex flex-wrap">
       {#each presets as preset}
         <Calendar.PresetTrigger value={preset.value}>
-          {#snippet asChild(props)}
+          {#snippet asChild(
+  props,
+)}
             <Button {...props()} class="flex-1" size="sm" variant="outline">
               {preset.label}
             </Button>

@@ -1,5 +1,5 @@
 import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
-import type { DialogProps as DialogSharedProps } from "@pisagor/props";
+import type { DialogProps as BaseDialogProps } from "@pisagor/props";
 import {
   type DialogRecipe,
   type DialogVariantProps,
@@ -43,7 +43,7 @@ export interface DialogHeaderProps {
   title?: string;
 }
 
-export interface DialogProps extends DialogSharedProps {
+export interface DialogProps extends BaseDialogProps {
   collapsible?: boolean;
   lazyMount?: boolean;
   modal?: boolean;

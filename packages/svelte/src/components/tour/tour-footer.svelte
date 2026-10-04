@@ -2,7 +2,9 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { HTMLAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & { class?: string | undefined };
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+  class?: string | undefined;
+};
 let { children, class: className, ...rest }: Props = $props();
 </script>
 

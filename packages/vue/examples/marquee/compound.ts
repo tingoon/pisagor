@@ -8,9 +8,8 @@ import {
   PhSparkle,
   PhStack,
 } from "@phosphor-icons/vue";
-import { Card } from "@pisagor/vue";
+import { Card, Marquee } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Marquee } from "../../src/components/marquee";
 
 const marqueeIcons = [
   PhGlobe,

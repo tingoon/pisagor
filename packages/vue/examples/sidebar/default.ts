@@ -1,7 +1,7 @@
 import { PhHouse, PhMagnifyingGlass, PhUser } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
+import { Button, Sidebar } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Sidebar } from "../../src/components/sidebar";
+
 export default defineComponent({
   name: "Default",
   setup() {

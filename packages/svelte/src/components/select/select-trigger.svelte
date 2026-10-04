@@ -1,7 +1,11 @@
 <script lang="ts">
 import type { SelectTriggerProps as ArkSelectTriggerProps } from "@ark-ui/svelte/select";
 import { Select as SelectPrimitive } from "@ark-ui/svelte/select";
-import { type FormControlShellVariantProps, formControlShellRecipe, selectRecipe } from "@pisagor/recipes";
+import {
+  type FormControlShellVariantProps,
+  formControlShellRecipe,
+  selectRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CaretUpDownIcon from "phosphor-svelte/lib/CaretUpDownIcon";
 import XIcon from "phosphor-svelte/lib/XIcon";
@@ -29,7 +33,9 @@ let {
 const ctx = useSelectRoot();
 const slots = $derived(ctx?.slots ?? selectRecipe());
 const surfaceVariant = useFormControlSurface();
-const resolvedVariant = $derived(variantProp ?? ("primary" as FormControlVariant));
+const resolvedVariant = $derived(
+  variantProp ?? ("primary" as FormControlVariant),
+);
 </script>
 
 <SelectPrimitive.Control>

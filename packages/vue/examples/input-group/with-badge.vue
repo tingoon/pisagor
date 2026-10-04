@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhAt } from "@phosphor-icons/vue";
-import { Badge } from "@pisagor/vue";
-import { InputGroup } from "../../src/components/input-group";
+import { Badge, InputGroup } from "@pisagor/vue";
 </script>
 
 <template>

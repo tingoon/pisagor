@@ -1,8 +1,8 @@
 import type { BadgeVariant } from "@pisagor/vue";
 import { Avatar, Badge, Table } from "@pisagor/vue";
 import type { CellContext, ColumnDef } from "@pisagor/vue/data-grid";
+import { DataGrid } from "@pisagor/vue/data-grid";
 import { defineComponent, h } from "vue";
-import { DataGrid } from "../../src/data-grid";
 
 type ArkPart = Parameters<typeof h>[0];
 

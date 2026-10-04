@@ -1,7 +1,6 @@
 <script lang="ts">
 import { Portal } from "@ark-ui/svelte/portal";
-import { Button } from "@pisagor/svelte/button";
-import { Dialog } from "@pisagor/svelte/dialog";
+import { Button, Dialog } from "@pisagor/svelte";
 </script>
 
 <Dialog.Root>
@@ -15,7 +14,8 @@ import { Dialog } from "@pisagor/svelte/dialog";
         <Dialog.Header>
           <Dialog.Title>No close button</Dialog.Title>
           <Dialog.Description>
-            You can only close this dialog using the buttons in the footer, by pressing Escape or by clicking the backdrop.
+            You can only close this dialog using the buttons in the footer, by
+            pressing Escape or by clicking the backdrop.
           </Dialog.Description>
         </Dialog.Header>
       </Dialog.Content>

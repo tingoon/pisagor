@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhUser } from "@phosphor-icons/vue";
-
-import { Avatar } from "../../src/components/avatar";
+import { Avatar } from "@pisagor/vue";
 
 const userIcon = PhUser;
 </script>

@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { SegmentGroup } from "@pisagor/solid/segment-group";
+import { SegmentGroup } from "@pisagor/solid";
 
 export function DisabledItem() {
   const items = ["Profile", "Account", "Security", "Notifications"];

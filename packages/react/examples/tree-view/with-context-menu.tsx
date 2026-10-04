@@ -4,9 +4,8 @@ import {
   PencilSimpleIcon,
   TrashIcon,
 } from "@phosphor-icons/react";
-import { ContextMenu, createTreeCollection } from "@pisagor/react";
-import type { NodeProviderProps } from "@pisagor/react/tree-view";
-import { TreeView } from "@pisagor/react/tree-view";
+import type { NodeProviderProps } from "@pisagor/react";
+import { ContextMenu, createTreeCollection, TreeView } from "@pisagor/react";
 export function WithContextMenu() {
   const collection = createTreeCollection({
     rootNode: {

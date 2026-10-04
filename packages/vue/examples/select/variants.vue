@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Select } from "../../src/components/select";
+import { Select } from "@pisagor/vue";
 
 const collection = createListCollection({
   items: ["Apple", "Banana", "Orange"],

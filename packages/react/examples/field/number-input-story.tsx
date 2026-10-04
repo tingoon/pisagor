@@ -1,5 +1,4 @@
-import { NumberInput } from "@pisagor/react";
-import { Field } from "@pisagor/react/field";
+import { Field, NumberInput } from "@pisagor/react";
 export function NumberInputStory() {
   return (
     <Field>

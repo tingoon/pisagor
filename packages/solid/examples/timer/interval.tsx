@@ -1,8 +1,7 @@
 /** @jsxImportSource solid-js */
 
-import { Button, Card } from "@pisagor/solid";
+import { Button, Card, Timer } from "@pisagor/solid";
 import { PauseIcon, PlayIcon } from "@pisagor/solid/icons";
-import { Timer } from "@pisagor/solid/timer";
 export function Interval() {
   return (
     <Card class="rounded-3xl [--space:--spacing(6)]">

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Carousel } from "../../src/components/carousel";
+import { Carousel } from "@pisagor/vue";
 import { imageSources } from "./helpers";
 
 const slides = imageSources();

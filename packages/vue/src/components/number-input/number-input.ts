@@ -1,6 +1,6 @@
 import { NumberInput as NumberInputPrimitive } from "@ark-ui/vue/number-input";
 import { PhMinus, PhPlus } from "@phosphor-icons/vue";
-import type { NumberInputProps as NumberInputSharedProps } from "@pisagor/props";
+import type { NumberInputProps as BaseNumberInputProps } from "@pisagor/props";
 import {
   type FormControlGroupShellVariantProps,
   formControlGroupShellRecipe,
@@ -21,7 +21,7 @@ type ArkPart = Parameters<typeof h>[0];
 // #region Types
 export interface NumberInputProps
   extends FormControlGroupShellVariantProps,
-    NumberInputSharedProps {
+    BaseNumberInputProps {
   class?: unknown;
   clearable?: boolean;
   defaultValue?: string;

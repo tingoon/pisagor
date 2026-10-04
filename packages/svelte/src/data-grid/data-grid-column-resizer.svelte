@@ -1,6 +1,9 @@
 <script lang="ts">
 import type { HTMLAttributes } from "svelte/elements";
-import { useDataGridContext, useDataGridHeaderCellContext } from "./data-grid.context";
+import {
+  useDataGridContext,
+  useDataGridHeaderCellContext,
+} from "./data-grid.context";
 
 type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
   class?: string | undefined;
@@ -15,7 +18,10 @@ const { slots } = useDataGridContext();
   <div
     {...rest}
     aria-hidden="true"
-    class={slots.columnResizer({ class: className, resizing: headerCell.header.column.getIsResizing() })}
+    class={slots.columnResizer({
+  class: className,
+  resizing: headerCell.header.column.getIsResizing(),
+})}
     data-part="column-resizer"
     data-scope="data-grid"
     ondblclick={() => headerCell.header.column.resetSize()}

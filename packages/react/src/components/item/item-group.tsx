@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
 import type {
-  ItemProps as ItemGroupSharedProps,
-  ItemProps as ItemSeparatorSharedProps,
+  ItemProps as BaseItemGroupProps,
+  ItemProps as BaseItemSeparatorProps,
 } from "@pisagor/props";
 import { itemRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
@@ -11,11 +11,11 @@ import { ItemGroupContext } from "./item-group.context";
 // #region Types
 export interface ItemGroupProps
   extends ComponentProps<typeof ark.div>,
-    ItemGroupSharedProps {}
+    BaseItemGroupProps {}
 
 export interface ItemSeparatorProps
   extends Omit<SeparatorProps, "recipe">,
-    ItemSeparatorSharedProps {}
+    BaseItemSeparatorProps {}
 // #endregion
 
 // #region Parts

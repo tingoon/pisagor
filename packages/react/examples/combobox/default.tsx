@@ -1,4 +1,4 @@
-import { Combobox } from "@pisagor/react/combobox";
+import { Combobox } from "@pisagor/react";
 
 export function Default() {
   return (

@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/vue/factory";
 import type {
-  StatProps as StatSharedProps,
-  StatTrendProps as StatTrendSharedProps,
+  StatProps as BaseStatProps,
+  StatTrendProps as BaseStatTrendProps,
 } from "@pisagor/props";
 import {
   type StatRecipeSlot,
@@ -22,7 +22,7 @@ type StatTrendVariant = NonNullable<StatTrendVariantProps["trend"]>;
 
 type StatClassNames = VariantClassNames<StatRecipeSlot>;
 
-export interface StatProps extends StatSharedProps {
+export interface StatProps extends BaseStatProps {
   class?: unknown;
   classNames?: StatClassNames;
 
@@ -37,7 +37,7 @@ export interface StatProps extends StatSharedProps {
   trendProps?: Record<string, unknown>;
 }
 
-export interface StatTrendProps extends StatTrendSharedProps {
+export interface StatTrendProps extends BaseStatTrendProps {
   class?: unknown;
 }
 // #endregion

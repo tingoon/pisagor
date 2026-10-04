@@ -1,14 +1,13 @@
-import { stripAstroExample } from "@pisagor/utils";
 import defaultRaw from "./default.astro?raw";
 import sizesRaw from "./sizes.astro?raw";
 
 export const imports = `---
-import { Spinner } from "@pisagor/astro/spinner";
+import { Spinner } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  Default: stripAstroExample(defaultRaw),
-  Sizes: stripAstroExample(sizesRaw),
+  Default: defaultRaw,
+  Sizes: sizesRaw,
 } as const;
 
 export { default as Default } from "./default.astro";

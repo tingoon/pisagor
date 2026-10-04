@@ -4,10 +4,10 @@ import {
   Field,
   Input,
   Select,
+  Surface,
   Switch,
   Textarea,
 } from "@pisagor/react";
-import { Surface } from "@pisagor/react/surface";
 
 const selectCollection = createListCollection({
   items: ["Design", "Engineering", "Marketing"],

@@ -1,8 +1,9 @@
 import { Status } from "@pisagor/astro/status";
 import DefaultExample from "#/astro/examples/status/default.astro";
 import VariantsExample from "#/astro/examples/status/variants.astro";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: Status,
   parameters: {
     docs: {
@@ -12,16 +13,16 @@ export default {
     },
   },
   title: "Components/Feedback/Status",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   tags: ["autodocs"],
-};
+});
 
-export const Default = {
+export const Default = meta.story({
   render: () => ({ component: DefaultExample }),
-};
+});
 
-export const Variants = {
+export const Variants = meta.story({
   render: () => ({ component: VariantsExample }),
-};
+});

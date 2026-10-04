@@ -1,5 +1,10 @@
 <script lang="ts">
-import { Stat } from "@pisagor/svelte/stat";
+import { Stat } from "@pisagor/svelte";
 </script>
 
-<Stat description="vs last week" label="Revenue" trend="+12.5%" value="$45.2K" />
+<Stat
+  description="vs last week"
+  label="Revenue"
+  trend="+12.5%"
+  value="$45.2K"
+/>

@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import as_childRaw from "./as-child.tsx?raw";
 import custom_colorRaw from "./custom-color.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
@@ -11,30 +10,30 @@ import sizesRaw from "./sizes.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 import with_iconRaw from "./with-icon.tsx?raw";
 
-export const imports = `import { Button } from "@pisagor/solid/button";`;
+export const imports = `import { Button } from "@pisagor/solid";`;
 
 export const sources = {
-  AsChild: stripTsxExample(as_childRaw),
-  CustomColor: stripTsxExample(custom_colorRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  Icon: stripTsxExample(iconRaw),
-  Loading: stripTsxExample(loadingRaw),
-  NoClickEffect: stripTsxExample(no_click_effectRaw),
-  Pill: stripTsxExample(pillRaw),
-  Sizes: stripTsxExample(sizesRaw),
-  Variants: stripTsxExample(variantsRaw),
-  WithIcon: stripTsxExample(with_iconRaw),
+  AsChild: as_childRaw,
+  CustomColor: custom_colorRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Icon: iconRaw,
+  Loading: loadingRaw,
+  NoClickEffect: no_click_effectRaw,
+  Pill: pillRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithIcon: with_iconRaw,
 } as const;
 
-export { AsChild } from "./as-child";
-export { CustomColor } from "./custom-color";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { Icon } from "./icon";
-export { Loading } from "./loading";
-export { NoClickEffect } from "./no-click-effect";
-export { Pill } from "./pill";
-export { Sizes } from "./sizes";
-export { Variants } from "./variants";
-export { WithIcon } from "./with-icon";
+export * from "./as-child";
+export * from "./custom-color";
+export * from "./default";
+export * from "./disabled";
+export * from "./icon";
+export * from "./loading";
+export * from "./no-click-effect";
+export * from "./pill";
+export * from "./sizes";
+export * from "./variants";
+export * from "./with-icon";

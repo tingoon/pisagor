@@ -1,7 +1,6 @@
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { ArrowBendDownLeftIcon } from "@phosphor-icons/react";
-import { Button, Kbd } from "@pisagor/react";
-import { Command } from "@pisagor/react/command";
+import { Button, Command, Kbd } from "@pisagor/react";
 import { useState } from "react";
 export function WithDialog() {
   const initialItems = [

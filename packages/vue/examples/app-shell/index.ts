@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import bannerRaw from "./banner.ts?raw";
 import contentRaw from "./content.ts?raw";
 import defaultRaw from "./default.ts?raw";
@@ -9,18 +8,18 @@ import navigationRaw from "./navigation.ts?raw";
 import panelsRaw from "./panels.ts?raw";
 import railsRaw from "./rails.ts?raw";
 
-export const imports = `import { AppShell } from "@pisagor/vue/app-shell";`;
+export const imports = `import { AppShell } from "@pisagor/vue";`;
 
 export const sources = {
-  Banner: stripVueExample(bannerRaw),
-  Content: stripVueExample(contentRaw),
-  Default: stripVueExample(defaultRaw),
-  Header: stripVueExample(headerRaw),
-  Inspectors: stripVueExample(inspectorsRaw),
-  Main: stripVueExample(mainRaw),
-  Navigation: stripVueExample(navigationRaw),
-  Panels: stripVueExample(panelsRaw),
-  Rails: stripVueExample(railsRaw),
+  Banner: bannerRaw,
+  Content: contentRaw,
+  Default: defaultRaw,
+  Header: headerRaw,
+  Inspectors: inspectorsRaw,
+  Main: mainRaw,
+  Navigation: navigationRaw,
+  Panels: panelsRaw,
+  Rails: railsRaw,
 } as const;
 
 export { default as Banner } from "./banner";

@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { DataGridProps as DataGridSharedProps } from "@pisagor/props";
+import type { DataGridProps as BaseDataGridProps } from "@pisagor/props";
 import { dataGridRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { RowData, TableOptions } from "@tanstack/svelte-table";
@@ -12,8 +12,8 @@ type Props = {
   class?: string | undefined;
   features?: DataGridFeatures;
   columnResizeMode?: "onChange" | "onEnd";
-} &
-  Omit<TableOptions<DataGridFeatures, RowData>, "features"> & DataGridSharedProps;
+} & Omit<TableOptions<DataGridFeatures, RowData>, "features"> &
+  BaseDataGridProps;
 
 let {
   children,
@@ -50,6 +50,10 @@ setDataGridContext({
 });
 </script>
 
-<div class={slots.base({ class: cn(className) })} data-part="root" data-scope="data-grid">
+<div
+  class={slots.base({ class: cn(className) })}
+  data-part="root"
+  data-scope="data-grid"
+>
   {@render children?.()}
 </div>

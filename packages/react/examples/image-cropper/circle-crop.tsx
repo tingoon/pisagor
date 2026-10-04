@@ -1,4 +1,4 @@
-import { ImageCropper } from "@pisagor/react/image-cropper";
+import { ImageCropper } from "@pisagor/react";
 
 export function CircleCrop() {
   return (

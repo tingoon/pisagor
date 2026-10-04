@@ -1,8 +1,7 @@
 /** @jsxImportSource solid-js */
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
-import { Combobox } from "@pisagor/solid";
-import { Field } from "@pisagor/solid/field";
+import { Combobox, Field } from "@pisagor/solid";
 export function ComboboxField() {
   const initialItems = [
     { label: "Apple", value: "apple" },

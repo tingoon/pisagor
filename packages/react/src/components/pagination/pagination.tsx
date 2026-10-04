@@ -15,7 +15,7 @@ import {
   CaretRightIcon,
   DotsThreeIcon,
 } from "@phosphor-icons/react";
-import type { PaginationProps as PaginationRootSharedProps } from "@pisagor/props";
+import type { PaginationProps as BasePaginationRootProps } from "@pisagor/props";
 import { paginationRecipe } from "@pisagor/recipes";
 
 import { Button, type ButtonProps } from "../button";
@@ -24,7 +24,7 @@ import { PaginationContext, usePagination } from "./pagination.context";
 // #region Types
 export interface PaginationRootProps
   extends PaginationPrimitiveRootProps,
-    PaginationRootSharedProps {}
+    BasePaginationRootProps {}
 
 export type PaginationItemsProps = Omit<PaginationContextProps, "children">;
 

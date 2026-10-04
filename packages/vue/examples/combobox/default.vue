@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Combobox } from "../../src/components/combobox";
+import { Combobox } from "@pisagor/vue";
 
 const items = [
   { label: "Apple", value: "apple" },

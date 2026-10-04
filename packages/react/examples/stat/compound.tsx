@@ -1,5 +1,5 @@
 import { ArrowUpIcon } from "@phosphor-icons/react";
-import { Stat } from "@pisagor/react/stat";
+import { Stat } from "@pisagor/react";
 
 export function Compound() {
   return (

@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { FileUpload } from "@pisagor/solid/file-upload";
+import { FileUpload } from "@pisagor/solid";
 
 export function AcceptedFileTypes() {
   return (

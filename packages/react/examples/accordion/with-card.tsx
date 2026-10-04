@@ -1,5 +1,4 @@
-import { Card } from "@pisagor/react";
-import { Accordion } from "@pisagor/react/accordion";
+import { Accordion, Card } from "@pisagor/react";
 import { faqItems } from "./helpers";
 
 export function WithCard() {

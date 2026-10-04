@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Sortable } from "@pisagor/svelte/sortable";
+import { Sortable } from "@pisagor/svelte";
 
 const labels: Record<string, string> = {
   a: "Design system tokens",
@@ -11,7 +11,11 @@ const labels: Record<string, string> = {
 let items = $state(["a", "b", "c", "d"]);
 </script>
 
-<Sortable {items} onValueChange={(next) => (items = next)} orientation="horizontal">
+<Sortable
+  {items}
+  onValueChange={(next) => (items = next)}
+  orientation="horizontal"
+>
   {#each items as id (id)}
     <Sortable.Item class="min-w-36" value={id}>
       <Sortable.ItemContent>

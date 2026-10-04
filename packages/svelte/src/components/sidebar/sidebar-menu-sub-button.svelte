@@ -1,22 +1,21 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { ButtonProps as ButtonSharedProps } from "@pisagor/props";
+import type { ButtonProps as BaseButtonProps } from "@pisagor/props";
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAnchorAttributes } from "svelte/elements";
 import { useSidebar } from "./sidebar.context";
 
-type Props = Omit<HTMLAnchorAttributes, "class"> &
-  {
-    children?: import("svelte").Snippet;
-    class?: string | undefined;
-    isActive?: boolean;
-    /**
-     * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
-     * @defaultValue buttonRecipe
-     */
-    buttonRecipe?: typeof buttonRecipe;
-  } & ButtonSharedProps;
+type Props = Omit<HTMLAnchorAttributes, "class"> & {
+  children?: import("svelte").Snippet;
+  class?: string | undefined;
+  isActive?: boolean;
+  /**
+   * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
+   * @defaultValue buttonRecipe
+   */
+  buttonRecipe?: typeof buttonRecipe;
+} & BaseButtonProps;
 
 let {
   size = "md",

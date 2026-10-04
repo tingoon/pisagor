@@ -1,7 +1,4 @@
-import {
-  createTreeCollection,
-  type TreeNodeType,
-} from "@pisagor/svelte/tree-view";
+import { createTreeCollection, type TreeNodeType } from "@pisagor/svelte";
 
 export const demoRoot = {
   children: [

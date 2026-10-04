@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/solid/factory";
-import type { LinkBoxProps as LinkBoxRootSharedProps } from "@pisagor/props";
+import type { LinkBoxProps as BaseLinkBoxRootProps } from "@pisagor/props";
 import { linkBoxRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -8,7 +8,7 @@ import { LinkBoxContext, useLinkBox } from "./link-box.context";
 
 export interface LinkBoxRootProps
   extends ComponentProps<typeof ark.div>,
-    LinkBoxRootSharedProps {}
+    BaseLinkBoxRootProps {}
 
 export type LinkOverlayLinkProps = ComponentProps<typeof ark.a>;
 

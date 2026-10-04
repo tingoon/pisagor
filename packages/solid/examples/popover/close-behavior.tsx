@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button } from "@pisagor/solid";
-import { Popover } from "@pisagor/solid/popover";
+import { Button, Popover } from "@pisagor/solid";
 export function CloseBehavior() {
   return (
     <div class="flex flex-wrap justify-center gap-2">

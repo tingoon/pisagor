@@ -4,6 +4,7 @@ import { Badge, Table } from "@pisagor/vue";
 import {
   type CellContext,
   type ColumnDef,
+  DataGrid,
   type DataGridFeatures,
   renderDataGridCell,
   useDataGrid,
@@ -17,7 +18,6 @@ import {
   ref,
   type VNodeChild,
 } from "vue";
-import { DataGrid } from "../../src/data-grid";
 
 type ArkPart = Parameters<typeof h>[0];
 

@@ -43,7 +43,9 @@ let {
 const rail = useAppShellRail();
 const ctx = useAppShell();
 const panelPlacement = $derived(panelPlacementProp ?? rail.placement);
-const active = $derived(isActive ?? (railId !== undefined && rail.activeRailId === railId));
+const active = $derived(
+  isActive ?? (railId !== undefined && rail.activeRailId === railId),
+);
 
 const tooltipProps = $derived.by((): TooltipConfig | undefined => {
   if (!tooltip) return undefined;
@@ -51,7 +53,9 @@ const tooltipProps = $derived.by((): TooltipConfig | undefined => {
   return tooltip;
 });
 
-function handleClick(event: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement }) {
+function handleClick(
+  event: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement },
+) {
   onclick?.(event);
   if (railId) {
     rail.setActiveRailId(railId);

@@ -1,4 +1,4 @@
-import { PasswordInput } from "@pisagor/react/password-input";
+import { PasswordInput } from "@pisagor/react";
 
 export function Autocomplete() {
   return (

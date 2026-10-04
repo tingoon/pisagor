@@ -1,6 +1,6 @@
 import { Accordion as AccordionPrimitive } from "@ark-ui/vue/accordion";
 import { PhCaretDown } from "@phosphor-icons/vue";
-import type { AccordionItemProps as AccordionItemSharedProps } from "@pisagor/props";
+import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
 import { accordionItemRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
@@ -19,7 +19,7 @@ export interface AccordionProps {
   unmountOnExit?: boolean;
 }
 
-export interface AccordionItemProps extends AccordionItemSharedProps {
+export interface AccordionItemProps extends BaseAccordionItemProps {
   class?: unknown;
 }
 // #endregion

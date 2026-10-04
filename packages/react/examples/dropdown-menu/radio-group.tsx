@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react";
-import { DropdownMenu } from "@pisagor/react/dropdown-menu";
+import { Button, DropdownMenu } from "@pisagor/react";
 export function RadioGroup() {
   return (
     <DropdownMenu>

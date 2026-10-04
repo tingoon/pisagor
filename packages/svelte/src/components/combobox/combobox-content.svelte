@@ -20,13 +20,19 @@ const slots = $derived(ctx?.slots ?? comboboxRecipe());
 {#if portalled}
   <Portal>
     <ComboboxPositioner>
-      <ComboboxPrimitive.Content {...rest} class={slots.content({ class: cn(className) })}>
+      <ComboboxPrimitive.Content
+        {...rest}
+        class={slots.content({ class: cn(className) })}
+      >
         {@render children?.()}
       </ComboboxPrimitive.Content>
     </ComboboxPositioner>
   </Portal>
 {:else}
-  <ComboboxPrimitive.Content {...rest} class={slots.content({ class: cn(className) })}>
+  <ComboboxPrimitive.Content
+    {...rest}
+    class={slots.content({ class: cn(className) })}
+  >
     {@render children?.()}
   </ComboboxPrimitive.Content>
 {/if}

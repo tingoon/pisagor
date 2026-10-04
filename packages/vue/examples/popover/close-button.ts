@@ -1,7 +1,7 @@
+import { Button, Popover } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Popover } from "../../src/components/popover";
-import { outlineButtonClass } from "../../src/internal/story-button";
-import type { ArkPart } from "../../src/internal/types";
+
+type ArkPart = Parameters<typeof h>[0];
 
 export default defineComponent({
   name: "CloseButton",
@@ -9,7 +9,7 @@ export default defineComponent({
     return () =>
       h(Popover, null, () => [
         h(Popover.Trigger, { asChild: true }, () =>
-          h("button", { class: outlineButtonClass(), type: "button" }, "Open"),
+          h(Button, { type: "button", variant: "outline" }, "Open"),
         ),
         h(
           Popover.Content as ArkPart,

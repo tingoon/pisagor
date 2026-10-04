@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { SignaturePad } from "@pisagor/solid/signature-pad";
+import { SignaturePad } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
   const [paths, setPaths] = createSignal<string[]>([]);

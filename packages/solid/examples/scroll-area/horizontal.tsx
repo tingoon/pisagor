@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { ScrollArea } from "@pisagor/solid/scroll-area";
+import { ScrollArea } from "@pisagor/solid";
 
 export function Horizontal() {
   return (

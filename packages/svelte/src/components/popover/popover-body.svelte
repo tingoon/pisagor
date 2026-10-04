@@ -13,4 +13,6 @@ let { children, class: className, ...rest }: Props = $props();
 const { slots } = usePopoverContent();
 </script>
 
-<Ark as="div" {...rest} class={slots.body({ class: cn(className) })}> {@render children?.()} </Ark>
+<Ark as="div" {...rest} class={slots.body({ class: cn(className) })}>
+  {@render children?.()}
+</Ark>

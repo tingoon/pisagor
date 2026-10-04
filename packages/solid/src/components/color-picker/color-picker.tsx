@@ -19,7 +19,7 @@ import {
   useColorPickerContext,
 } from "@ark-ui/solid/color-picker";
 import { ark } from "@ark-ui/solid/factory";
-import type { ColorPickerProps as ColorPickerSharedProps } from "@pisagor/props";
+import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -42,7 +42,7 @@ export type ColorPickerRootProps = Omit<
 
 export interface ColorPickerProps
   extends ColorPickerRootProps,
-    ColorPickerSharedProps {
+    BaseColorPickerProps {
   variant?: FormControlVariant;
   clearable?: boolean;
   defaultValue?: string;

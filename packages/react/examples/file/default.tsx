@@ -1,4 +1,4 @@
-import { File } from "@pisagor/react/file";
+import { File } from "@pisagor/react";
 
 export function Default() {
   return (

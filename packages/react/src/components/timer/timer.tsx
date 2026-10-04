@@ -9,8 +9,8 @@ import type {
 } from "@ark-ui/react/timer";
 import { Timer as TimerPrimitive, useTimerContext } from "@ark-ui/react/timer";
 import type {
-  TimerItemGroupProps as TimerItemGroupSharedProps,
-  TimerProps as TimerRootSharedProps,
+  TimerItemGroupProps as BaseTimerItemGroupProps,
+  TimerProps as BaseTimerRootProps,
 } from "@pisagor/props";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
@@ -27,7 +27,7 @@ type TimerUnit = "hours" | "minutes" | "seconds";
 
 export interface TimerItemGroupProps
   extends ComponentProps<typeof ark.div>,
-    TimerItemGroupSharedProps {
+    BaseTimerItemGroupProps {
   /**
    * The orientation of the timer item group.
    *
@@ -41,7 +41,7 @@ export interface TimerActionProps
 
 export interface TimerRootProps
   extends TimerPrimitiveRootProps,
-    TimerRootSharedProps {
+    BaseTimerRootProps {
   units?: TimerUnit[];
   /** Auto-render Timer.Control with play and reset buttons */
   isControlsVisible?: boolean;

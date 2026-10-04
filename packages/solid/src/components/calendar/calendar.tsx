@@ -25,8 +25,8 @@ import {
   DatePicker as CalendarPrimitive,
 } from "@ark-ui/solid/date-picker";
 import type {
-  CalendarProps as CalendarSharedProps,
-  CalendarTableCellProps as CalendarTableCellSharedProps,
+  CalendarProps as BaseCalendarProps,
+  CalendarTableCellProps as BaseCalendarTableCellProps,
 } from "@pisagor/props";
 import {
   calendarRecipe,
@@ -67,7 +67,7 @@ export type CalendarTableHeaderProps = DatePickerTableHeaderProps;
 
 export interface CalendarTableCellProps
   extends DatePickerTableCellProps,
-    CalendarTableCellSharedProps {}
+    BaseCalendarTableCellProps {}
 
 export interface CalendarWeekDaysProps extends CalendarTableHeadProps {
   format?: "narrow" | "short" | "long";
@@ -81,7 +81,7 @@ export interface CalendarTableNextMonthProps extends CalendarTableBodyProps {
 
 export type CalendarRootProps = DatePickerRootProps;
 
-export interface CalendarProps extends CalendarRootProps, CalendarSharedProps {
+export interface CalendarProps extends CalendarRootProps, BaseCalendarProps {
   variant?: FormControlVariant;
 }
 

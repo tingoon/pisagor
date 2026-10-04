@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import compoundRaw from "./compound.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
@@ -12,32 +11,32 @@ import sizesRaw from "./sizes.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 import with_scrollRaw from "./with-scroll.tsx?raw";
 
-export const imports = `import { Select } from "@pisagor/react/select";`;
+export const imports = `import { Select } from "@pisagor/react";`;
 
 export const sources = {
-  Compound: stripTsxExample(compoundRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  Empty: stripTsxExample(emptyRaw),
-  Grouping: stripTsxExample(groupingRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  MaxSelection: stripTsxExample(max_selectionRaw),
-  Multiple: stripTsxExample(multipleRaw),
-  Sizes: stripTsxExample(sizesRaw),
-  Variants: stripTsxExample(variantsRaw),
-  WithScroll: stripTsxExample(with_scrollRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Empty: emptyRaw,
+  Grouping: groupingRaw,
+  Invalid: invalidRaw,
+  MaxSelection: max_selectionRaw,
+  Multiple: multipleRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithScroll: with_scrollRaw,
 } as const;
 
-export { Compound } from "./compound";
-export { Controlled } from "./controlled";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { Empty } from "./empty";
-export { Grouping } from "./grouping";
-export { Invalid } from "./invalid";
-export { MaxSelection } from "./max-selection";
-export { Multiple } from "./multiple";
-export { Sizes } from "./sizes";
-export { Variants } from "./variants";
-export { WithScroll } from "./with-scroll";
+export * from "./compound";
+export * from "./controlled";
+export * from "./default";
+export * from "./disabled";
+export * from "./empty";
+export * from "./grouping";
+export * from "./invalid";
+export * from "./max-selection";
+export * from "./multiple";
+export * from "./sizes";
+export * from "./variants";
+export * from "./with-scroll";

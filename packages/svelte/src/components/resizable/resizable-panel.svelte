@@ -5,4 +5,6 @@ import { Splitter as SplitterPrimitive } from "@ark-ui/svelte/splitter";
 let { children, ...rest }: SplitterPanelProps = $props();
 </script>
 
-<SplitterPrimitive.Panel {...rest}> {@render children?.()} </SplitterPrimitive.Panel>
+<SplitterPrimitive.Panel {...rest}>
+  {@render children?.()}
+</SplitterPrimitive.Panel>

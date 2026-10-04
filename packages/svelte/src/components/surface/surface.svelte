@@ -1,10 +1,14 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { SurfaceProps as SurfaceSharedProps } from "@pisagor/props";
+import type { SurfaceProps as BaseSurfaceProps } from "@pisagor/props";
 import { surfaceRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { type SurfaceVariant, setSurfaceContext, useSurface } from "./surface.context";
+import {
+  type SurfaceVariant,
+  setSurfaceContext,
+  useSurface,
+} from "./surface.context";
 
 const AUTO_VARIANTS = [
   "default",
@@ -13,11 +17,10 @@ const AUTO_VARIANTS = [
   "tertiary",
 ] as const satisfies readonly SurfaceVariant[];
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
-  {
-    children?: import("svelte").Snippet;
-    class?: string | undefined;
-  } & SurfaceSharedProps;
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+  children?: import("svelte").Snippet;
+  class?: string | undefined;
+} & BaseSurfaceProps;
 
 let {
   bordered = false,
@@ -35,7 +38,9 @@ const parent = useSurface();
 const surface = $derived.by(() => {
   const depth = parent ? parent.depth + 1 : 0;
   const variant =
-    variantProp ?? AUTO_VARIANTS[Math.min(depth, AUTO_VARIANTS.length - 1)] ?? "default";
+    variantProp ??
+    AUTO_VARIANTS[Math.min(depth, AUTO_VARIANTS.length - 1)] ??
+    "default";
   return { depth, variant };
 });
 

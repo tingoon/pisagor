@@ -1,5 +1,4 @@
-import { useAppShell } from "@pisagor/react";
-import { AppShell } from "@pisagor/react/app-shell";
+import { AppShell, useAppShell } from "@pisagor/react";
 import { mainContent, regionTitle } from "./helpers";
 
 function ActiveRailPanelContent() {

@@ -1,7 +1,7 @@
 <script lang="ts">
+import { Table } from "@pisagor/svelte";
 import type { SortingState } from "@pisagor/svelte/data-grid";
 import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import { Table } from "@pisagor/svelte/table";
 
 const data = [
   { id: "1", name: "Ada", role: "Admin" },
@@ -15,15 +15,19 @@ const columns = [
 ];
 
 let sorting = $state<SortingState>([{ desc: false, id: "name" }]);
+
+function onSortingChange(
+  updater: SortingState | ((prev: SortingState) => SortingState),
+) {
+  sorting = typeof updater === "function" ? updater(sorting) : updater;
+}
 </script>
 
 <DataGrid
   {columns}
   {data}
   features={dataGridFeatures}
-  onSortingChange={(updater) => {
-    sorting = typeof updater === "function" ? updater(sorting) : updater;
-  }}
+  {onSortingChange}
   {sorting}
 >
   <Table>

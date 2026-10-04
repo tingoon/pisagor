@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhCurrencyDollar } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
-import { Card } from "../../src/components/card";
+import { Button, Card } from "@pisagor/vue";
 </script>
 
 <template>

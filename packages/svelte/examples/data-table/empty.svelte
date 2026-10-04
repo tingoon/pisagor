@@ -1,6 +1,6 @@
 <script lang="ts">
+import { Table } from "@pisagor/svelte";
 import { DataTable } from "@pisagor/svelte/data-table";
-import { Table } from "@pisagor/svelte/table";
 
 const data: Array<{ id: string; name: string; role: string }> = [];
 const columns = [

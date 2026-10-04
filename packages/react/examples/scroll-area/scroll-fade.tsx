@@ -1,5 +1,4 @@
-import { Separator } from "@pisagor/react";
-import { ScrollArea } from "@pisagor/react/scroll-area";
+import { ScrollArea, Separator } from "@pisagor/react";
 import { Fragment } from "react";
 export function ScrollFade() {
   const tags = Array.from({ length: 50 }, (_, i) => `v1.0.0-beta.${i}`);

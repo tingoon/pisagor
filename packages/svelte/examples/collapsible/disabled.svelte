@@ -1,12 +1,13 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { Collapsible } from "@pisagor/svelte/collapsible";
+import { Button, Collapsible } from "@pisagor/svelte";
 </script>
 
 <div>
   <Collapsible disabled>
     <Collapsible.Trigger>
-      {#snippet asChild(props)}
+      {#snippet asChild(
+  props,
+)}
         <Button {...props()} class="w-full" variant="outline">
           Disabled collapsible
           <Collapsible.Indicator />

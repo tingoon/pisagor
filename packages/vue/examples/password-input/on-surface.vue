@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Surface } from "@pisagor/vue";
-import { PasswordInput } from "../../src/components/password-input";
+import { PasswordInput, Surface } from "@pisagor/vue";
 </script>
 
 <template>

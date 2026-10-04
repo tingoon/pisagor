@@ -1,5 +1,5 @@
 import { Popover as PopoverPrimitive } from "@ark-ui/vue/popover";
-import type { PopoverProps as PopoverContentSharedProps } from "@pisagor/props";
+import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
 import { popoverRecipe } from "@pisagor/recipes";
 import {
   type CSSProperties,
@@ -11,7 +11,7 @@ import {
 import { renderIconCloseButton } from "../../internal/close-button";
 
 // #region Types
-export interface PopoverContentProps extends PopoverContentSharedProps {
+export interface PopoverContentProps extends BasePopoverContentProps {
   class?: unknown;
   showCloseButton?: boolean;
 }

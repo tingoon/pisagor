@@ -1,4 +1,4 @@
-import { TagsInput } from "@pisagor/react/tags-input";
+import { TagsInput } from "@pisagor/react";
 
 export function Default() {
   const defaultValue = ["React", "Solid", "Vue", "Svelte"];

@@ -1,9 +1,8 @@
 <script lang="ts">
-import { Field } from "@pisagor/svelte";
-import { Progress } from "@pisagor/svelte/progress";
+import { Field, Progress } from "@pisagor/svelte";
 </script>
 
 <Field>
-      <Field.Label>Establishing connection...</Field.Label>
-      <Progress />
-    </Field>
+  <Field.Label>Establishing connection...</Field.Label>
+  <Progress />
+</Field>

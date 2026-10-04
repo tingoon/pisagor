@@ -1,5 +1,4 @@
-import { Field } from "@pisagor/react";
-import { RadioGroup } from "@pisagor/react/radio-group";
+import { Field, RadioGroup } from "@pisagor/react";
 export function WithDescription() {
   return (
     <RadioGroup.Root defaultValue="all">

@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Progress } from "@pisagor/solid/progress";
+import { Progress } from "@pisagor/solid";
 
 export function OrientationHorizontal() {
   return <Progress value={60} />;

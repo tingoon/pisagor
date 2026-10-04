@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import autocomplete_fieldRaw from "./autocomplete-field.tsx?raw";
 import checkbox_fieldRaw from "./checkbox-field.tsx?raw";
 import checkbox_group_fieldRaw from "./checkbox-group-field.tsx?raw";
@@ -19,46 +18,46 @@ import textarea_fieldRaw from "./textarea-field.tsx?raw";
 import with_errorRaw from "./with-error.tsx?raw";
 import with_input_groupRaw from "./with-input-group.tsx?raw";
 
-export const imports = `import { Field } from "@pisagor/solid/field";`;
+export const imports = `import { Field } from "@pisagor/solid";`;
 
 export const sources = {
-  AutocompleteField: stripTsxExample(autocomplete_fieldRaw),
-  CheckboxField: stripTsxExample(checkbox_fieldRaw),
-  CheckboxGroupField: stripTsxExample(checkbox_group_fieldRaw),
-  ComboboxField: stripTsxExample(combobox_fieldRaw),
-  ComboboxMultipleField: stripTsxExample(combobox_multiple_fieldRaw),
-  Default: stripTsxExample(defaultRaw),
-  DisabledField: stripTsxExample(disabled_fieldRaw),
-  FieldGroup: stripTsxExample(field_groupRaw),
-  NumberInputStory: stripTsxExample(number_input_storyRaw),
-  OrientationHorizontal: stripTsxExample(orientation_horizontalRaw),
-  OrientationVertical: stripTsxExample(orientation_verticalRaw),
-  RadioGroupField: stripTsxExample(radio_group_fieldRaw),
-  RequiredField: stripTsxExample(required_fieldRaw),
-  SelectField: stripTsxExample(select_fieldRaw),
-  SliderField: stripTsxExample(slider_fieldRaw),
-  SwitchField: stripTsxExample(switch_fieldRaw),
-  TextareaField: stripTsxExample(textarea_fieldRaw),
-  WithError: stripTsxExample(with_errorRaw),
-  WithInputGroup: stripTsxExample(with_input_groupRaw),
+  AutocompleteField: autocomplete_fieldRaw,
+  CheckboxField: checkbox_fieldRaw,
+  CheckboxGroupField: checkbox_group_fieldRaw,
+  ComboboxField: combobox_fieldRaw,
+  ComboboxMultipleField: combobox_multiple_fieldRaw,
+  Default: defaultRaw,
+  DisabledField: disabled_fieldRaw,
+  FieldGroup: field_groupRaw,
+  NumberInputStory: number_input_storyRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  RadioGroupField: radio_group_fieldRaw,
+  RequiredField: required_fieldRaw,
+  SelectField: select_fieldRaw,
+  SliderField: slider_fieldRaw,
+  SwitchField: switch_fieldRaw,
+  TextareaField: textarea_fieldRaw,
+  WithError: with_errorRaw,
+  WithInputGroup: with_input_groupRaw,
 } as const;
 
-export { AutocompleteField } from "./autocomplete-field";
-export { CheckboxField } from "./checkbox-field";
-export { CheckboxGroupField } from "./checkbox-group-field";
-export { ComboboxField } from "./combobox-field";
-export { ComboboxMultipleField } from "./combobox-multiple-field";
-export { Default } from "./default";
-export { DisabledField } from "./disabled-field";
-export { FieldGroup } from "./field-group";
-export { NumberInputStory } from "./number-input-story";
-export { OrientationHorizontal } from "./orientation-horizontal";
-export { OrientationVertical } from "./orientation-vertical";
-export { RadioGroupField } from "./radio-group-field";
-export { RequiredField } from "./required-field";
-export { SelectField } from "./select-field";
-export { SliderField } from "./slider-field";
-export { SwitchField } from "./switch-field";
-export { TextareaField } from "./textarea-field";
-export { WithError } from "./with-error";
-export { WithInputGroup } from "./with-input-group";
+export * from "./autocomplete-field";
+export * from "./checkbox-field";
+export * from "./checkbox-group-field";
+export * from "./combobox-field";
+export * from "./combobox-multiple-field";
+export * from "./default";
+export * from "./disabled-field";
+export * from "./field-group";
+export * from "./number-input-story";
+export * from "./orientation-horizontal";
+export * from "./orientation-vertical";
+export * from "./radio-group-field";
+export * from "./required-field";
+export * from "./select-field";
+export * from "./slider-field";
+export * from "./switch-field";
+export * from "./textarea-field";
+export * from "./with-error";
+export * from "./with-input-group";

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/solid/factory";
-import type { SeparatorProps as SeparatorSharedProps } from "@pisagor/props";
+import type { SeparatorProps as BaseSeparatorProps } from "@pisagor/props";
 import { separatorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -7,7 +7,7 @@ import { splitProps } from "solid-js";
 
 export interface SeparatorProps
   extends ComponentProps<typeof ark.div>,
-    SeparatorSharedProps {
+    BaseSeparatorProps {
   orientation?: "horizontal" | "vertical";
 }
 

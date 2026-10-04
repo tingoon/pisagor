@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { PhMapPin } from "@phosphor-icons/vue";
-import { Avatar, Button } from "@pisagor/vue";
-import { HoverCard } from "../../src/components/hover-card";
+import { Avatar, Button, HoverCard } from "@pisagor/vue";
 </script>
 
 <template>

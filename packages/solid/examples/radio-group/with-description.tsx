@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Field } from "@pisagor/solid";
-import { RadioGroup } from "@pisagor/solid/radio-group";
+import { Field, RadioGroup } from "@pisagor/solid";
 export function WithDescription() {
   return (
     <RadioGroup.Root defaultValue="all">

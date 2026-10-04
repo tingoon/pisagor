@@ -1,4 +1,4 @@
-import { QrCode } from "@pisagor/react/qr-code";
+import { QrCode } from "@pisagor/react";
 
 export function Sizes() {
   return (

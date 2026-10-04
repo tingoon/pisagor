@@ -1,5 +1,4 @@
-import { Button, Tooltip } from "@pisagor/react";
-import { Kbd } from "@pisagor/react/kbd";
+import { Button, Kbd, Tooltip } from "@pisagor/react";
 export function WithTooltip() {
   return (
     <Tooltip

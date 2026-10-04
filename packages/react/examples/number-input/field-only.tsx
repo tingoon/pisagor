@@ -1,4 +1,4 @@
-import { NumberInput } from "@pisagor/react/number-input";
+import { NumberInput } from "@pisagor/react";
 
 export function FieldOnly() {
   return (

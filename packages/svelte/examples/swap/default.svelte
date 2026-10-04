@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Swap } from "@pisagor/svelte/swap";
+import { Swap } from "@pisagor/svelte";
 
 let swap = $state(false);
 </script>

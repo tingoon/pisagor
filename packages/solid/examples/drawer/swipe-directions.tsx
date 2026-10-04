@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button } from "@pisagor/solid";
-import { Drawer } from "@pisagor/solid/drawer";
+import { Button, Drawer } from "@pisagor/solid";
 export function SwipeDirections() {
   return (
     <div class="flex flex-wrap justify-center gap-2">

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Avatar, Button } from "@pisagor/vue";
-import { Item } from "../../src/components/item";
+import { Avatar, Button, Item } from "@pisagor/vue";
 </script>
 
 <template>

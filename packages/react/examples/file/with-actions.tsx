@@ -1,6 +1,5 @@
 import { DownloadSimpleIcon, TrashIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react";
-import { File } from "@pisagor/react/file";
+import { Button, File } from "@pisagor/react";
 export function WithActions() {
   return (
     <File

@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
-
-import { Surface } from "@pisagor/vue";
-import { Select } from "../../src/components/select";
+import { Select, Surface } from "@pisagor/vue";
 
 const initialItems = [
   { label: "Apple", value: "apple" },

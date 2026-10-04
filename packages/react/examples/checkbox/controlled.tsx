@@ -1,6 +1,5 @@
-import { Field } from "@pisagor/react";
-import type { CheckboxCheckedState } from "@pisagor/react/checkbox";
-import { Checkbox } from "@pisagor/react/checkbox";
+import type { CheckboxCheckedState } from "@pisagor/react";
+import { Checkbox, Field } from "@pisagor/react";
 import { useState } from "react";
 export function Controlled() {
   const [checked, setChecked] = useState<CheckboxCheckedState>(false);

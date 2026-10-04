@@ -1,7 +1,6 @@
 import { ArrowSquareOutIcon, LinkIcon } from "@phosphor-icons/react";
-import { createTreeCollection } from "@pisagor/react";
-import type { NodeProviderProps, TreeNodeType } from "@pisagor/react/tree-view";
-import { TreeView } from "@pisagor/react/tree-view";
+import type { NodeProviderProps, TreeNodeType } from "@pisagor/react";
+import { createTreeCollection, TreeView } from "@pisagor/react";
 export function Links() {
   interface TreeNodeWithLinks extends TreeNodeType<unknown> {
     href?: string;

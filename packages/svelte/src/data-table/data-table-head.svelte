@@ -14,9 +14,16 @@ const { headerGroup } = useDataTableHeaderGroupContext();
 </script>
 
 {#if columnId}
-  {@const header = headerGroup.headers.find((item) => item.column.id === columnId)}
+  {const header = headerGroup.headers.find(
+    (item) => item.column.id === columnId,
+  )}
   {#if header}
-    <Table.Head {...rest} class={className} data-part="head" data-scope="data-table">
+    <Table.Head
+      {...rest}
+      class={className}
+      data-part="head"
+      data-scope="data-table"
+    >
       {#if children}
         {@render children()}
       {:else}
@@ -26,7 +33,12 @@ const { headerGroup } = useDataTableHeaderGroupContext();
   {/if}
 {:else}
   {#each headerGroup.headers as header (header.id)}
-    <Table.Head {...rest} class={className} data-part="head" data-scope="data-table">
+    <Table.Head
+      {...rest}
+      class={className}
+      data-part="head"
+      data-scope="data-table"
+    >
       <FlexRender {header} />
     </Table.Head>
   {/each}

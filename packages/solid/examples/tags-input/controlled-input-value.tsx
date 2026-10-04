@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button, Field } from "@pisagor/solid";
-import { TagsInput } from "@pisagor/solid/tags-input";
+import { Button, Field, TagsInput } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function ControlledInputValue() {
   const [inputValue, setInputValue] = createSignal("");

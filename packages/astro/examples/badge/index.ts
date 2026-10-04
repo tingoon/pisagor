@@ -1,4 +1,3 @@
-import { stripAstroExample } from "@pisagor/utils";
 import custom_colorRaw from "./custom-color.astro?raw";
 import defaultRaw from "./default.astro?raw";
 import pillRaw from "./pill.astro?raw";
@@ -8,17 +7,17 @@ import with_linkRaw from "./with-link.astro?raw";
 import with_spinnerRaw from "./with-spinner.astro?raw";
 
 export const imports = `---
-import { Badge } from "@pisagor/astro/badge";
+import { Badge } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  CustomColor: stripAstroExample(custom_colorRaw),
-  Default: stripAstroExample(defaultRaw),
-  Pill: stripAstroExample(pillRaw),
-  Sizes: stripAstroExample(sizesRaw),
-  Variants: stripAstroExample(variantsRaw),
-  WithLink: stripAstroExample(with_linkRaw),
-  WithSpinner: stripAstroExample(with_spinnerRaw),
+  CustomColor: custom_colorRaw,
+  Default: defaultRaw,
+  Pill: pillRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithLink: with_linkRaw,
+  WithSpinner: with_spinnerRaw,
 } as const;
 
 export { default as CustomColor } from "./custom-color.astro";

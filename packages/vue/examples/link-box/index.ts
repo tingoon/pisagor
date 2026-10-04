@@ -1,14 +1,13 @@
-import { stripVueExample } from "@pisagor/utils";
 import articleRaw from "./article.vue?raw";
 import defaultRaw from "./default.vue?raw";
 import with_linkRaw from "./with-link.vue?raw";
 
-export const imports = `import { LinkBox } from "@pisagor/vue/link-box";`;
+export const imports = `import { LinkBox } from "@pisagor/vue";`;
 
 export const sources = {
-  Article: stripVueExample(articleRaw),
-  Default: stripVueExample(defaultRaw),
-  WithLink: stripVueExample(with_linkRaw),
+  Article: articleRaw,
+  Default: defaultRaw,
+  WithLink: with_linkRaw,
 } as const;
 
 export { default as Article } from "./article.vue";

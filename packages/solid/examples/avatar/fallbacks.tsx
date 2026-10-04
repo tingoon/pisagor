@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Avatar } from "@pisagor/solid/avatar";
+import { Avatar } from "@pisagor/solid";
 import { UserIcon } from "@pisagor/solid/icons";
 
 export function Fallbacks() {

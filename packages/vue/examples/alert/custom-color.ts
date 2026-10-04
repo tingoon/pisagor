@@ -1,6 +1,6 @@
 import { PhMagicWand } from "@phosphor-icons/vue";
+import { Alert } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Alert } from "../../src/components/alert";
 
 export default defineComponent({
   name: "CustomColor",

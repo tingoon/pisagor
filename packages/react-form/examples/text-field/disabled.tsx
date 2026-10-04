@@ -1,4 +1,4 @@
-import { TextField } from "../../src/fields/text-field";
+import { TextField } from "@pisagor/react-form";
 
 export function Disabled() {
   return (

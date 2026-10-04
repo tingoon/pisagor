@@ -5,13 +5,18 @@ import { comboboxRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useComboboxRoot } from "./combobox.context";
 
-type Props = Omit<ComboboxControlProps, "class"> & { class?: string | undefined };
+type Props = Omit<ComboboxControlProps, "class"> & {
+  class?: string | undefined;
+};
 
 let { class: className, children, ...rest }: Props = $props();
 const ctx = useComboboxRoot();
 const slots = $derived(ctx?.slots ?? comboboxRecipe());
 </script>
 
-<ComboboxPrimitive.Control {...rest} class={slots.control({ class: cn(className) })}>
+<ComboboxPrimitive.Control
+  {...rest}
+  class={slots.control({ class: cn(className) })}
+>
   {@render children?.()}
 </ComboboxPrimitive.Control>

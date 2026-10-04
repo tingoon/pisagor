@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.vue?raw";
 import custom_markersRaw from "./custom-markers.vue?raw";
 import defaultRaw from "./default.vue?raw";
@@ -10,19 +9,19 @@ import thicknessRaw from "./thickness.vue?raw";
 import with_markersRaw from "./with-markers.vue?raw";
 import with_valueRaw from "./with-value.vue?raw";
 
-export const imports = `import { CircularSlider } from "@pisagor/vue/circular-slider";`;
+export const imports = `import { CircularSlider } from "@pisagor/vue";`;
 
 export const sources = {
-  Controlled: stripVueExample(controlledRaw),
-  CustomMarkers: stripVueExample(custom_markersRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  Sizes: stripVueExample(sizesRaw),
-  Step: stripVueExample(stepRaw),
-  Thickness: stripVueExample(thicknessRaw),
-  WithMarkers: stripVueExample(with_markersRaw),
-  WithValue: stripVueExample(with_valueRaw),
+  Controlled: controlledRaw,
+  CustomMarkers: custom_markersRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  OnSurface: on_surfaceRaw,
+  Sizes: sizesRaw,
+  Step: stepRaw,
+  Thickness: thicknessRaw,
+  WithMarkers: with_markersRaw,
+  WithValue: with_valueRaw,
 } as const;
 
 export { default as Controlled } from "./controlled.vue";

@@ -1,10 +1,6 @@
 <script lang="ts">
 import { Portal } from "@ark-ui/svelte/portal";
-import { Button } from "@pisagor/svelte/button";
-import { Dialog } from "@pisagor/svelte/dialog";
-import { Field } from "@pisagor/svelte/field";
-import { Input } from "@pisagor/svelte/input";
-import { Select } from "@pisagor/svelte/select";
+import { Button, Dialog, Field, Input, Select } from "@pisagor/svelte";
 </script>
 
 <Dialog.Root>
@@ -17,7 +13,9 @@ import { Select } from "@pisagor/svelte/select";
       <Dialog.Content class="[--space:--spacing(4)] sm:[--space:--spacing(8)]">
         <Dialog.Header>
           <Dialog.Title>Edit project</Dialog.Title>
-          <Dialog.Description>Make changes to your project settings.</Dialog.Description>
+          <Dialog.Description
+            >Make changes to your project settings.</Dialog.Description
+          >
         </Dialog.Header>
         <Dialog.Body>
           <Field.Set>
@@ -30,9 +28,9 @@ import { Select } from "@pisagor/svelte/select";
                 <Field.Label>Main branch</Field.Label>
                 <Select
                   items={[
-                    { label: "main", value: "main" },
-                    { label: "develop", value: "develop" },
-                  ]}
+  { label: "main", value: "main" },
+  { label: "develop", value: "develop" },
+]}
                   placeholder="Select branch"
                 />
               </Field>

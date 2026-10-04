@@ -1,4 +1,4 @@
-import { AppShell } from "@pisagor/react/app-shell";
+import { AppShell } from "@pisagor/react";
 import type { ReactNode } from "react";
 
 const LOREM_PARAGRAPH =

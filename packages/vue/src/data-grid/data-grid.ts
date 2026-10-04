@@ -1,4 +1,4 @@
-import type { DataGridProps as DataGridSharedProps } from "@pisagor/props";
+import type { DataGridProps as BaseDataGridProps } from "@pisagor/props";
 import { type DataGridRecipe, dataGridRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type {
@@ -63,7 +63,7 @@ export type DataGridProps<TData extends RowData = RowData> = {
    * @defaultValue dataGridFeatures
    */
   features?: DataGridFeatures;
-} & DataGridSharedProps &
+} & BaseDataGridProps &
   Omit<TableOptions<DataGridFeatures, TData>, "features">;
 
 interface DataGridHeadProps {

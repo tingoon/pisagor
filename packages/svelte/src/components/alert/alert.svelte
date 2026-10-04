@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { AlertProps as AlertSharedProps } from "@pisagor/props";
+import type { AlertProps as BaseAlertProps } from "@pisagor/props";
 import type { AlertRecipeSlot } from "@pisagor/recipes";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
@@ -8,15 +8,17 @@ import AlertDescription from "./alert-description.svelte";
 import AlertRoot from "./alert-root.svelte";
 import AlertTitle from "./alert-title.svelte";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title" | "children"> &
-  {
-    action?: string | Snippet;
-    class?: string | undefined;
-    classNames?: Partial<Record<AlertRecipeSlot, string>>;
-    description?: string | Snippet;
-    icon?: Snippet;
-    title?: string | Snippet;
-  } & AlertSharedProps;
+type Props = Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "class" | "title" | "children"
+> & {
+  action?: string | Snippet;
+  class?: string | undefined;
+  classNames?: Partial<Record<AlertRecipeSlot, string>>;
+  description?: string | Snippet;
+  icon?: Snippet;
+  title?: string | Snippet;
+} & BaseAlertProps;
 
 let {
   variant,

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { NumberInput } from "@pisagor/vue";
 import { ref } from "vue";
-import { NumberInput } from "../../src/components/number-input";
 
 const value = ref("1");
 const onValueChange = (value) => setValue(String(value));

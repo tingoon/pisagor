@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Card, parseDate } from "@pisagor/solid";
-import { Calendar } from "@pisagor/solid/calendar";
+import { Calendar, Card, parseDate } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
   const [value, setValue] = createSignal([parseDate(new Date(Date.now()))]);

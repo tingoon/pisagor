@@ -4,12 +4,12 @@ import { Badge, Button, Checkbox, DropdownMenu, Table } from "@pisagor/vue";
 import {
   type CellContext,
   type ColumnDef,
+  DataGrid,
   type HeaderContext,
   useDataGrid,
   type VisibilityState,
 } from "@pisagor/vue/data-grid";
 import { computed, defineComponent, h, type PropType, ref } from "vue";
-import { DataGrid } from "../../src/data-grid";
 
 type ArkPart = Parameters<typeof h>[0];
 

@@ -1,4 +1,4 @@
-import { PhoneField } from "../../src/fields/phone-field";
+import { PhoneField } from "@pisagor/react-form";
 
 export function Disabled() {
   return (

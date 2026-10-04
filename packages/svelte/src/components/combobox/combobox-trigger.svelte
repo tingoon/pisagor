@@ -6,7 +6,9 @@ import { cn } from "@pisagor/utils";
 import CaretUpDownIcon from "phosphor-svelte/lib/CaretUpDownIcon";
 import { useComboboxRoot } from "./combobox.context";
 
-type Props = Omit<ComboboxTriggerProps, "class"> & { class?: string | undefined };
+type Props = Omit<ComboboxTriggerProps, "class"> & {
+  class?: string | undefined;
+};
 
 let { children, class: className, ...rest }: Props = $props();
 const ctx = useComboboxRoot();

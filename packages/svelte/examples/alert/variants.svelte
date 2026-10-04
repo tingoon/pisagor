@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Alert } from "@pisagor/svelte/alert";
+import { Alert } from "@pisagor/svelte";
 import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
 import ChecksIcon from "phosphor-svelte/lib/ChecksIcon";
 import ClockCounterClockwiseIcon from "phosphor-svelte/lib/ClockCounterClockwiseIcon";

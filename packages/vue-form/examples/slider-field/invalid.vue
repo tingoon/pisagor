@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { SliderField } from "../../src/fields/slider-field";
+import { SliderField } from "@pisagor/vue-form";
 </script>
 
 <template>

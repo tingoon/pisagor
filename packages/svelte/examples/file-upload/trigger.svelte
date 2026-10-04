@@ -1,13 +1,14 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { FileUpload } from "@pisagor/svelte/file-upload";
+import { Button, FileUpload } from "@pisagor/svelte";
 import PaperclipIcon from "phosphor-svelte/lib/PaperclipIcon";
 </script>
 
 <FileUpload>
   <div class="flex justify-center">
     <FileUpload.Trigger>
-      {#snippet asChild(props)}
+      {#snippet asChild(
+  props,
+)}
         <Button {...props()} variant="outline">
           <PaperclipIcon />
           Browse files

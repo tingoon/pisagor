@@ -1,4 +1,4 @@
-import type { DataTableProps as DataTableSharedProps } from "@pisagor/props";
+import type { DataTableProps as BaseDataTableProps } from "@pisagor/props";
 import { type DataTableRecipe, dataTableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type {
@@ -52,7 +52,7 @@ export type DataTableProps<TData extends RowData = RowData> = {
    * @defaultValue dataTableFeatures
    */
   features?: DataTableFeatures;
-} & DataTableSharedProps &
+} & BaseDataTableProps &
   Omit<TableOptions<DataTableFeatures, TData>, "features">;
 // #endregion
 

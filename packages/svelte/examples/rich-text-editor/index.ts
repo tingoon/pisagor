@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import compoundRaw from "./compound.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -8,11 +7,11 @@ import invalidRaw from "./invalid.svelte?raw";
 export const imports = `import { RichTextEditor } from "@pisagor/svelte/rich-text-editor";`;
 
 export const sources = {
-  Compound: stripSvelteExample(compoundRaw),
-  Controlled: stripSvelteExample(controlledRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  Invalid: stripSvelteExample(invalidRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
 } as const;
 
 export { default as Compound } from "./compound.svelte";

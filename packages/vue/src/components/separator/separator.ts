@@ -1,9 +1,9 @@
-import type { SeparatorProps as SeparatorSharedProps } from "@pisagor/props";
+import type { SeparatorProps as BaseSeparatorProps } from "@pisagor/props";
 import { separatorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
-export interface SeparatorProps extends SeparatorSharedProps {
+export interface SeparatorProps extends BaseSeparatorProps {
   class?: unknown;
   dataPart?: string;
   dataScope?: string;

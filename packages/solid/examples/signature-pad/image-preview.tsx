@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Field } from "@pisagor/solid";
-import { SignaturePad } from "@pisagor/solid/signature-pad";
+import { Field, SignaturePad } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function ImagePreview() {
   const [imageUrl, setImageUrl] = createSignal<string | null>(null);

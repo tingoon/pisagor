@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Progress } from "../../src/components/progress";
+import { Progress } from "@pisagor/vue";
 </script>
 
 <template>

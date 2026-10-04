@@ -1,6 +1,7 @@
 /** @jsxImportSource solid-js */
+
+import { Toggle } from "@pisagor/solid";
 import { TextBIcon } from "@pisagor/solid/icons";
-import { Toggle } from "@pisagor/solid/toggle";
 
 export function WithIcon() {
   return (

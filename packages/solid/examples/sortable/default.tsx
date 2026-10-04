@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Sortable } from "@pisagor/solid/sortable";
+import { Sortable } from "@pisagor/solid";
 import { createSignal, For } from "solid-js";
 
 export function Default() {

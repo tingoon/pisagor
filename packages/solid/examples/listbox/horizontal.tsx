@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 import { createListCollection } from "@ark-ui/solid/collection";
-import { Field } from "@pisagor/solid";
-import { Listbox } from "@pisagor/solid/listbox";
+import { Field, Listbox } from "@pisagor/solid";
 export function Horizontal() {
   const collection = createListCollection({
     items: [

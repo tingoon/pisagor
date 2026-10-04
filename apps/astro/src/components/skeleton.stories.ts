@@ -3,8 +3,9 @@ import CircleExample from "#/astro/examples/skeleton/circle.astro";
 import CompositionExample from "#/astro/examples/skeleton/composition.astro";
 import DefaultExample from "#/astro/examples/skeleton/default.astro";
 import TextExample from "#/astro/examples/skeleton/text.astro";
+import preview from "#/storybook/preview";
 
-export default {
+const meta = preview.meta({
   component: Skeleton,
   parameters: {
     docs: {
@@ -14,27 +15,27 @@ export default {
     },
   },
   title: "Components/Feedback/Skeleton",
-};
+});
 
-export const Playground = {
+export const Playground = meta.story({
   args: {
     class: "h-4 w-48",
   },
   tags: ["autodocs"],
-};
+});
 
-export const Circle = {
+export const Circle = meta.story({
   render: () => ({ component: CircleExample }),
-};
+});
 
-export const Composition = {
+export const Composition = meta.story({
   render: () => ({ component: CompositionExample }),
-};
+});
 
-export const Default = {
+export const Default = meta.story({
   render: () => ({ component: DefaultExample }),
-};
+});
 
-export const Text = {
+export const Text = meta.story({
   render: () => ({ component: TextExample }),
-};
+});

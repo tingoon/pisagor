@@ -1,6 +1,5 @@
 import { PlusIcon } from "@phosphor-icons/react";
-import { Avatar, Button } from "@pisagor/react";
-import { Item } from "@pisagor/react/item";
+import { Avatar, Button, Item } from "@pisagor/react";
 import { people } from "./helpers";
 export function Group() {
   return (

@@ -4,7 +4,7 @@ import {
   PinInput as PinInputPrimitive,
   type PinInputRootProps,
 } from "@ark-ui/react/pin-input";
-import type { InputOtpProps as InputOTPSharedProps } from "@pisagor/props";
+import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
 import { inputOtpRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { Input, type InputProps } from "../input/input";
@@ -14,7 +14,7 @@ import { InputOTPContext, useInputOTP } from "./input-otp.context";
 export type InputOTPRootProps = Omit<PinInputRootProps, "onValueChange"> &
   Pick<InputProps, "size" | "variant">;
 
-export interface InputOTPProps extends InputOTPRootProps, InputOTPSharedProps {
+export interface InputOTPProps extends InputOTPRootProps, BaseInputOTPProps {
   onValueChange?: (value: string[]) => void;
 }
 

@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react";
-import { ColorPicker } from "@pisagor/react/color-picker";
+import { Button, ColorPicker } from "@pisagor/react";
 export function PopoverDisabled() {
   return (
     <ColorPicker defaultValue="#eb5e41" disabled>

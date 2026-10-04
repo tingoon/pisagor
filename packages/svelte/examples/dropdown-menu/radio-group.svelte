@@ -1,19 +1,16 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { DropdownMenu } from "@pisagor/svelte/dropdown-menu";
+import { Button, DropdownMenu } from "@pisagor/svelte";
 </script>
 
 <DropdownMenu>
-      <DropdownMenu.Trigger>
-            <Button variant="outline">
-            Open
-          </Button>
-          </DropdownMenu.Trigger>
-      <DropdownMenu.Content class="w-40">
-        <DropdownMenu.RadioItemGroup value="dark">
-          <DropdownMenu.RadioItem value="light">Light</DropdownMenu.RadioItem>
-          <DropdownMenu.RadioItem value="dark">Dark</DropdownMenu.RadioItem>
-          <DropdownMenu.RadioItem value="system">System</DropdownMenu.RadioItem>
-        </DropdownMenu.RadioItemGroup>
-      </DropdownMenu.Content>
-    </DropdownMenu>
+  <DropdownMenu.Trigger>
+    <Button variant="outline"> Open </Button>
+  </DropdownMenu.Trigger>
+  <DropdownMenu.Content class="w-40">
+    <DropdownMenu.RadioItemGroup value="dark">
+      <DropdownMenu.RadioItem value="light">Light</DropdownMenu.RadioItem>
+      <DropdownMenu.RadioItem value="dark">Dark</DropdownMenu.RadioItem>
+      <DropdownMenu.RadioItem value="system">System</DropdownMenu.RadioItem>
+    </DropdownMenu.RadioItemGroup>
+  </DropdownMenu.Content>
+</DropdownMenu>

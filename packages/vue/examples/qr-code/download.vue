@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { PhDownload } from "@phosphor-icons/vue";
-import { Button, Card, Input } from "@pisagor/vue";
+import { Button, Card, Input, QrCode } from "@pisagor/vue";
 import { ref } from "vue";
-import { QrCode } from "../../src/components/qr-code";
 
 const value = ref("");
 </script>

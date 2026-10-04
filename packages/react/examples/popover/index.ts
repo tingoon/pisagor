@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import anchorRaw from "./anchor.tsx?raw";
 import close_behaviorRaw from "./close-behavior.tsx?raw";
 import close_buttonRaw from "./close-button.tsx?raw";
@@ -9,26 +8,26 @@ import nestedRaw from "./nested.tsx?raw";
 import placementsRaw from "./placements.tsx?raw";
 import scroll_areaRaw from "./scroll-area.tsx?raw";
 
-export const imports = `import { Popover } from "@pisagor/react/popover";`;
+export const imports = `import { Popover } from "@pisagor/react";`;
 
 export const sources = {
-  Anchor: stripTsxExample(anchorRaw),
-  CloseBehavior: stripTsxExample(close_behaviorRaw),
-  CloseButton: stripTsxExample(close_buttonRaw),
-  CustomSpacing: stripTsxExample(custom_spacingRaw),
-  Default: stripTsxExample(defaultRaw),
-  Modal: stripTsxExample(modalRaw),
-  Nested: stripTsxExample(nestedRaw),
-  Placements: stripTsxExample(placementsRaw),
-  ScrollArea: stripTsxExample(scroll_areaRaw),
+  Anchor: anchorRaw,
+  CloseBehavior: close_behaviorRaw,
+  CloseButton: close_buttonRaw,
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  Modal: modalRaw,
+  Nested: nestedRaw,
+  Placements: placementsRaw,
+  ScrollArea: scroll_areaRaw,
 } as const;
 
-export { Anchor } from "./anchor";
-export { CloseBehavior } from "./close-behavior";
-export { CloseButton } from "./close-button";
-export { CustomSpacing } from "./custom-spacing";
-export { Default } from "./default";
-export { Modal } from "./modal";
-export { Nested } from "./nested";
-export { Placements } from "./placements";
-export { ScrollArea } from "./scroll-area";
+export * from "./anchor";
+export * from "./close-behavior";
+export * from "./close-button";
+export * from "./custom-spacing";
+export * from "./default";
+export * from "./modal";
+export * from "./nested";
+export * from "./placements";
+export * from "./scroll-area";

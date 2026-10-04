@@ -20,7 +20,9 @@ let {
 
 const ctx = useSidebar();
 
-function handleClick(event: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement }) {
+function handleClick(
+  event: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement },
+) {
   onclick?.(event);
   ctx.toggleSidebar();
 }

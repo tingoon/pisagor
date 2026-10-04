@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import { FileUpload } from "@pisagor/svelte/file-upload";
+import { Button, FileUpload } from "@pisagor/svelte";
 </script>
 
 <FileUpload disabled>
@@ -8,7 +7,9 @@ import { FileUpload } from "@pisagor/svelte/file-upload";
     <FileUpload.DropzoneIcon />
     <FileUpload.Title>Drop files here</FileUpload.Title>
     <FileUpload.Trigger>
-      {#snippet asChild(props)}
+      {#snippet asChild(
+  props,
+)}
         <Button {...props()}>Browse files</Button>
       {/snippet}
     </FileUpload.Trigger>

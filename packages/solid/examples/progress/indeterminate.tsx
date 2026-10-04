@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Field } from "@pisagor/solid";
-import { Progress } from "@pisagor/solid/progress";
+import { Field, Progress } from "@pisagor/solid";
 export function Indeterminate() {
   return (
     <Field>

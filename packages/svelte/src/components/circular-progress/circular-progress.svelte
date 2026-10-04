@@ -1,15 +1,17 @@
 <script lang="ts">
 import type { ProgressRootProps } from "@ark-ui/svelte/progress";
 import { Progress as ProgressPrimitive } from "@ark-ui/svelte/progress";
-import type { CircularProgressProps as CircularProgressSharedProps } from "@pisagor/props";
-import { type CircularProgressRecipeSlot, circularProgressRecipe } from "@pisagor/recipes";
+import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
+import {
+  type CircularProgressRecipeSlot,
+  circularProgressRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import { setCircularProgressContext } from "./circular-progress.context";
 import CircularProgressTrack from "./circular-progress-track.svelte";
 
-type Props = Omit<ProgressRootProps, "class" | "children" | "value"> &
-  {
+type Props = Omit<ProgressRootProps, "class" | "children" | "value"> & {
   children?: Snippet;
   class?: string | undefined;
   classNames?: Partial<Record<CircularProgressRecipeSlot, string>>;
@@ -31,7 +33,7 @@ type Props = Omit<ProgressRootProps, "class" | "children" | "value"> &
    */
   thickness?: number;
   value?: number;
-  } & CircularProgressSharedProps;
+} & BaseCircularProgressProps;
 
 let {
   size = 32,
@@ -62,7 +64,9 @@ setCircularProgressContext({
 >
   {#if isValueVisible}
     <span class={slots.valueWrapper({ class: cn(classNames?.valueWrapper) })}>
-      <ProgressPrimitive.ValueText class={slots.value({ class: cn(classNames?.value) })} />
+      <ProgressPrimitive.ValueText
+        class={slots.value({ class: cn(classNames?.value) })}
+      />
     </span>
   {/if}
 

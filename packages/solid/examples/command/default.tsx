@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 import { createListCollection } from "@ark-ui/solid/collection";
-import { Button } from "@pisagor/solid/button";
-import { Command } from "@pisagor/solid/command";
+import { Button, Command } from "@pisagor/solid";
 
 const items = [
   { label: "Calendar", value: "calendar" },

@@ -1,14 +1,11 @@
 import { PhFileCode, PhFileJs, PhFileText } from "@phosphor-icons/vue";
+import type { TreeNodeType } from "@pisagor/vue";
+import { createFileIcons, createTreeCollection, TreeView } from "@pisagor/vue";
 import type { VNode } from "vue";
 import { defineComponent, h } from "vue";
-import type { TreeNodeType } from "../../src/components/tree-view";
-import {
-  createFileIcons,
-  createTreeCollection,
-  TreeView,
-} from "../../src/components/tree-view";
-import type { ArkPart } from "../../src/internal/types";
 import { sampleFileTree } from "./data";
+
+type ArkPart = Parameters<typeof h>[0];
 
 export default defineComponent({
   name: "CustomIcons",

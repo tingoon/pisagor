@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import type { AnnouncementProps as AnnouncementRootSharedProps } from "@pisagor/props";
+import type { AnnouncementProps as BaseAnnouncementRootProps } from "@pisagor/props";
 import { announcementRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
 import { AnnouncementContext, useAnnouncement } from "./announcement.context";
@@ -14,7 +14,7 @@ type AnnouncementRootProps = Omit<ComponentProps<typeof ark.div>, "title"> & {
    * @defaultValue "status"
    */
   role?: "status" | "alert";
-} & AnnouncementRootSharedProps;
+} & BaseAnnouncementRootProps;
 
 export interface AnnouncementProps
   extends Omit<AnnouncementRootProps, "children"> {

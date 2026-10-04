@@ -1,4 +1,4 @@
-import { SwitchField } from "../../src/fields/switch-field";
+import { SwitchField } from "@pisagor/react-form";
 
 export function Invalid() {
   return (

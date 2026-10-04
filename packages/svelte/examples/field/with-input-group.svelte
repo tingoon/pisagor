@@ -1,22 +1,17 @@
 <script lang="ts">
-import { InputGroup } from "@pisagor/svelte";
-import { Field } from "@pisagor/svelte/field";
+import { Field, InputGroup } from "@pisagor/svelte";
 import ArrowRightIcon from "phosphor-svelte/lib/ArrowRightIcon";
 </script>
 
 <Field>
-      <Field.Label>Subscribe</Field.Label>
-      <InputGroup>
-        <InputGroup.Input placeholder="Your best email" type="email" />
-        <InputGroup.Addon align="inline-end">
-          <InputGroup.Button
-            aria-label="Subscribe"
-            size="icon-xs"
-            variant="ghost"
-          >
-            <ArrowRightIcon aria-hidden />
-          </InputGroup.Button>
-        </InputGroup.Addon>
-      </InputGroup>
-      <Field.Error>Please enter a valid email address.</Field.Error>
-    </Field>
+  <Field.Label>Subscribe</Field.Label>
+  <InputGroup>
+    <InputGroup.Input placeholder="Your best email" type="email" />
+    <InputGroup.Addon align="inline-end">
+      <InputGroup.Button aria-label="Subscribe" size="icon-xs" variant="ghost">
+        <ArrowRightIcon aria-hidden />
+      </InputGroup.Button>
+    </InputGroup.Addon>
+  </InputGroup>
+  <Field.Error>Please enter a valid email address.</Field.Error>
+</Field>

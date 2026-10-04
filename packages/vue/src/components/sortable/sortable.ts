@@ -1,8 +1,8 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhDotsSixVertical } from "@phosphor-icons/vue";
 import type {
-  SortableItemProps as SortableItemSharedProps,
-  SortableProps as SortableRootSharedProps,
+  SortableItemProps as BaseSortableItemProps,
+  SortableProps as BaseSortableRootProps,
 } from "@pisagor/props";
 import {
   type SortableItemRecipe,
@@ -44,7 +44,7 @@ interface SortableItemContextValue {
   slots: SortableItemRecipe;
 }
 
-export interface SortableRootProps extends SortableRootSharedProps {
+export interface SortableRootProps extends BaseSortableRootProps {
   items: string[];
   onValueChange?: (items: string[]) => void;
   orientation?: SortableOrientation;
@@ -52,7 +52,7 @@ export interface SortableRootProps extends SortableRootSharedProps {
   class?: unknown;
 }
 
-export interface SortableItemProps extends SortableItemSharedProps {
+export interface SortableItemProps extends BaseSortableItemProps {
   value: string;
   class?: unknown;
 }

@@ -1,18 +1,17 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import defaultRaw from "./default.svelte?raw";
 import portraitRaw from "./portrait.svelte?raw";
 import responsiveRaw from "./responsive.svelte?raw";
 import squareRaw from "./square.svelte?raw";
 import videoRaw from "./video.svelte?raw";
 
-export const imports = `import { AspectRatio } from "@pisagor/svelte/aspect-ratio";`;
+export const imports = `import { AspectRatio } from "@pisagor/svelte";`;
 
 export const sources = {
-  Default: stripSvelteExample(defaultRaw),
-  Portrait: stripSvelteExample(portraitRaw),
-  Responsive: stripSvelteExample(responsiveRaw),
-  Square: stripSvelteExample(squareRaw),
-  Video: stripSvelteExample(videoRaw),
+  Default: defaultRaw,
+  Portrait: portraitRaw,
+  Responsive: responsiveRaw,
+  Square: squareRaw,
+  Video: videoRaw,
 } as const;
 
 export { default as Default } from "./default.svelte";

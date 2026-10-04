@@ -1,16 +1,15 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import defaultRaw from "./default.svelte?raw";
 import inline_navigationRaw from "./inline-navigation.svelte?raw";
 import listRaw from "./list.svelte?raw";
 import verticalRaw from "./vertical.svelte?raw";
 
-export const imports = `import { Separator } from "@pisagor/svelte/separator";`;
+export const imports = `import { Separator } from "@pisagor/svelte";`;
 
 export const sources = {
-  Default: stripSvelteExample(defaultRaw),
-  InlineNavigation: stripSvelteExample(inline_navigationRaw),
-  List: stripSvelteExample(listRaw),
-  Vertical: stripSvelteExample(verticalRaw),
+  Default: defaultRaw,
+  InlineNavigation: inline_navigationRaw,
+  List: listRaw,
+  Vertical: verticalRaw,
 } as const;
 
 export { default as Default } from "./default.svelte";

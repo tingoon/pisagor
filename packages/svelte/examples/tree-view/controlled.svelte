@@ -1,5 +1,5 @@
 <script lang="ts">
-import { TreeView } from "@pisagor/svelte/tree-view";
+import { TreeView } from "@pisagor/svelte";
 import { createDemoCollection } from "./helpers";
 import TreeNode from "./tree-node.svelte";
 
@@ -22,5 +22,7 @@ const isCorrectSelection = $derived(selected[0] === "components/input.tsx");
       {/each}
     </TreeView.Tree>
   </TreeView>
-  <p class="text-muted-foreground text-sm">{isCorrectSelection ? "✅" : "❌"}</p>
+  <p class="text-muted-foreground text-sm">
+    {isCorrectSelection ? "✅" : "❌"}
+  </p>
 </div>

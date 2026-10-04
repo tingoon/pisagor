@@ -1,4 +1,4 @@
-import { Timeline } from "@pisagor/react/timeline";
+import { Timeline } from "@pisagor/react";
 
 export function Horizontal() {
   return (

@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button, Popover } from "@pisagor/svelte";
-import { DataList } from "@pisagor/svelte/data-list";
+import { Button, DataList, Popover } from "@pisagor/svelte";
 import InfoIcon from "phosphor-svelte/lib/InfoIcon";
 
 const data = [
@@ -27,7 +26,9 @@ const data = [
       {item.label}
       <Popover modal={false} positioning={{ placement: "top" }}>
         <Popover.Trigger>
-          {#snippet asChild(props)}
+          {#snippet asChild(
+  props,
+)}
             <Button
               {...props()}
               aria-label={`Info about ${item.label}`}

@@ -5,8 +5,8 @@ import {
 } from "@ark-ui/vue/file-upload";
 import { PhUpload, PhX } from "@phosphor-icons/vue";
 import type {
-  FileUploadItemProps as FileUploadItemSharedProps,
-  FileUploadProps as FileUploadRootSharedProps,
+  FileUploadItemProps as BaseFileUploadItemProps,
+  FileUploadProps as BaseFileUploadRootProps,
 } from "@pisagor/props";
 import {
   fileUploadItemRecipe,
@@ -23,7 +23,7 @@ type FormControlVariant = "primary" | "secondary";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface FileUploadRootProps extends FileUploadRootSharedProps {
+export interface FileUploadRootProps extends BaseFileUploadRootProps {
   onValueChange?: (value: File[]) => void;
   class?: unknown;
 }
@@ -34,7 +34,7 @@ interface FileUploadDropzoneProps {
   variant?: FormControlVariant;
 }
 
-export interface FileUploadItemProps extends FileUploadItemSharedProps {
+export interface FileUploadItemProps extends BaseFileUploadItemProps {
   class?: unknown;
 }
 // #endregion

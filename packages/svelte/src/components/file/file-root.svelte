@@ -1,17 +1,21 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { FileProps as FileSharedProps } from "@pisagor/props";
+import type { FileProps as BaseFileProps } from "@pisagor/props";
 import { fileRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setFileContext } from "./file.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
   class?: string | undefined;
-  } & FileSharedProps;
+} & BaseFileProps;
 
-let { children, recipe = fileRecipe, class: className, ...rest }: Props = $props();
+let {
+  children,
+  recipe = fileRecipe,
+  class: className,
+  ...rest
+}: Props = $props();
 const slots = $derived(recipe());
 setFileContext({
   get slots() {

@@ -1,8 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte/button";
-import { Field } from "@pisagor/svelte/field";
-import { Input } from "@pisagor/svelte/input";
-import { Sheet } from "@pisagor/svelte/sheet";
+import { Button, Field, Input, Sheet } from "@pisagor/svelte";
 </script>
 
 <Sheet>
@@ -12,7 +9,10 @@ import { Sheet } from "@pisagor/svelte/sheet";
   <Sheet.Content variant="inset">
     <Sheet.Header>
       <Sheet.Title>Inset sheet</Sheet.Title>
-      <Sheet.Description>This sheet uses the inset variant with rounded corners and padding.</Sheet.Description>
+      <Sheet.Description
+        >This sheet uses the inset variant with rounded corners and
+        padding.</Sheet.Description
+      >
     </Sheet.Header>
     <Sheet.Body>
       <Field.Group>

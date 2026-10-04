@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react";
-import { toast } from "@pisagor/react/toast";
+import { Button, toast } from "@pisagor/react";
 export function Duration() {
   return (
     <div className="flex flex-wrap gap-2">

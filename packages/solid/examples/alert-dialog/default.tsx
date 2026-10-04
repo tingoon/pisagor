@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { AlertDialog } from "@pisagor/solid/alert-dialog";
-import { Button } from "@pisagor/solid/button";
+import { AlertDialog, Button } from "@pisagor/solid";
 
 export function Default() {
   return (

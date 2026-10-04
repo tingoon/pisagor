@@ -1,6 +1,6 @@
 import { Carousel as CarouselPrimitive } from "@ark-ui/vue/carousel";
 import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
-import type { CarouselProps as CarouselSharedProps } from "@pisagor/props";
+import type { CarouselProps as BaseCarouselProps } from "@pisagor/props";
 import { carouselRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
@@ -12,7 +12,7 @@ export interface CarouselPresetItem {
   key?: string;
 }
 
-export interface CarouselProps extends CarouselSharedProps {
+export interface CarouselProps extends BaseCarouselProps {
   class?: unknown;
   slides?: CarouselPresetItem[];
   spacing?: string;

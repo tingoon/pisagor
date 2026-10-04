@@ -1,7 +1,7 @@
 import { PhDownloadSimple, PhTrash } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
+import { Button, File } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { File } from "../../src/components/file";
+
 export default defineComponent({
   name: "WithActions",
   setup() {

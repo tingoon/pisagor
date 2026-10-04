@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid";
-import { ButtonGroup } from "@pisagor/solid/button-group";
+import { Button, ButtonGroup } from "@pisagor/solid";
 import { MinusIcon, PlusIcon } from "@pisagor/solid/icons";
 export function OrientationVertical() {
   return (

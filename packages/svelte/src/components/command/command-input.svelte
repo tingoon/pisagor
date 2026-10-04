@@ -1,6 +1,10 @@
 <script lang="ts">
 import type { ComboboxInputProps } from "@ark-ui/svelte/combobox";
-import { type FormControlGroupShellVariantProps, formControlGroupShellRecipe, inputGroupControlRecipe } from "@pisagor/recipes";
+import {
+  type FormControlGroupShellVariantProps,
+  formControlGroupShellRecipe,
+  inputGroupControlRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
 import { onMount } from "svelte";

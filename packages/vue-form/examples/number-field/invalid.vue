@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { NumberField } from "../../src/fields/number-field";
+import { NumberField } from "@pisagor/vue-form";
 </script>
 
 <template>

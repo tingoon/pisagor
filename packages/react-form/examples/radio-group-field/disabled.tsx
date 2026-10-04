@@ -1,4 +1,4 @@
-import { RadioGroupField } from "../../src/fields/radio-group-field";
+import { RadioGroupField } from "@pisagor/react-form";
 import { planOptions } from "../options";
 
 export function Disabled() {

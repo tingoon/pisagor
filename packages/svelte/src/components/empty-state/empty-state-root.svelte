@@ -1,18 +1,22 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { EmptyStateProps as EmptyStateSharedProps } from "@pisagor/props";
+import type { EmptyStateProps as BaseEmptyStateProps } from "@pisagor/props";
 import { emptyStateRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setEmptyStateContext } from "./empty-state.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title"> & {
   children?: import("svelte").Snippet;
   class?: string | undefined;
-  } & EmptyStateSharedProps;
+} & BaseEmptyStateProps;
 
-let { children, recipe = emptyStateRecipe, class: className, ...rest }: Props = $props();
+let {
+  children,
+  recipe = emptyStateRecipe,
+  class: className,
+  ...rest
+}: Props = $props();
 
 const slots = $derived(recipe());
 

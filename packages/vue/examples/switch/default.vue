@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Field } from "@pisagor/vue";
-import { Switch } from "../../src/components/switch";
+import { Field, Switch } from "@pisagor/vue";
 </script>
 
 <template>

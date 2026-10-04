@@ -2,7 +2,10 @@
 import { LocaleProvider } from "@ark-ui/svelte/locale";
 import type { Snippet } from "svelte";
 import { Toaster } from "../toast";
-import { type ProviderMessages, setProviderMessagesContext } from "./provider.context";
+import {
+  type ProviderMessages,
+  setProviderMessagesContext,
+} from "./provider.context";
 
 type Props = {
   children?: Snippet;
@@ -29,7 +32,12 @@ function resolveDir(localeValue: string, dir?: "ltr" | "rtl"): "ltr" | "rtl" {
   return RTL_LANGS.has(language) ? "rtl" : "ltr";
 }
 
-let { dir: dirProp, locale = "en-US", children, messages = {} }: Props = $props();
+let {
+  dir: dirProp,
+  locale = "en-US",
+  children,
+  messages = {},
+}: Props = $props();
 
 const dir = $derived(resolveDir(locale, dirProp));
 
@@ -60,7 +68,12 @@ setProviderMessagesContext(
 </script>
 
 <LocaleProvider {locale}>
-  <div data-dir={dir} data-part="root" data-scope="provider" style="display: contents">
+  <div
+    data-dir={dir}
+    data-part="root"
+    data-scope="provider"
+    style="display: contents"
+  >
     <Toaster />
     {@render children?.()}
   </div>

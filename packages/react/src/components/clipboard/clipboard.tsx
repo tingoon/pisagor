@@ -7,7 +7,7 @@ import type {
 } from "@ark-ui/react/clipboard";
 import { Clipboard as ClipboardPrimitive } from "@ark-ui/react/clipboard";
 import { CheckIcon, ClipboardIcon } from "@phosphor-icons/react";
-import type { ClipboardProps as ClipboardSharedProps } from "@pisagor/props";
+import type { ClipboardProps as BaseClipboardProps } from "@pisagor/props";
 import {
   type ClipboardRecipeSlot,
   type ClipboardVariantProps,
@@ -29,7 +29,7 @@ type ClipboardClassNames = VariantClassNames<ClipboardRecipeSlot>;
 
 export interface ClipboardProps
   extends Omit<ClipboardRootProps, "children">,
-    ClipboardSharedProps {
+    BaseClipboardProps {
   /**
    * Size of the copy button.
    *

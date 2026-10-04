@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte/button";
-import { Sheet } from "@pisagor/svelte/sheet";
+import { Button, Sheet } from "@pisagor/svelte";
 </script>
 
 <Sheet>
@@ -11,12 +10,14 @@ import { Sheet } from "@pisagor/svelte/sheet";
     <Sheet.Header>
       <Sheet.Title>No close button</Sheet.Title>
       <Sheet.Description>
-        You can only close this sheet using the buttons in the footer, by pressing Escape or by clicking the backdrop.
+        You can only close this sheet using the buttons in the footer, by
+        pressing Escape or by clicking the backdrop.
       </Sheet.Description>
     </Sheet.Header>
     <Sheet.Body>
       <p class="text-muted-foreground text-sm">
-        The close button in the top right corner is hidden. Use the footer buttons or press Escape to close.
+        The close button in the top right corner is hidden. Use the footer
+        buttons or press Escape to close.
       </p>
     </Sheet.Body>
     <Sheet.Footer>

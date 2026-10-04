@@ -1,6 +1,5 @@
 import { createListCollection } from "@ark-ui/react";
-import { Select } from "@pisagor/react";
-import { Field } from "@pisagor/react/field";
+import { Field, Select } from "@pisagor/react";
 export function SelectField() {
   const collection = createListCollection({
     items: ["Brazil", "Mexico", "Ireland"],

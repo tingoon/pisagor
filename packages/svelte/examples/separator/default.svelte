@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Separator } from "@pisagor/svelte/separator";
+import { Separator } from "@pisagor/svelte";
 </script>
 
 <Separator />

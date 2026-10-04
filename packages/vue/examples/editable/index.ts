@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import activation_clickRaw from "./activation-click.vue?raw";
 import activation_focusRaw from "./activation-focus.vue?raw";
 import activation_noneRaw from "./activation-none.vue?raw";
@@ -15,24 +14,24 @@ import variantsRaw from "./variants.vue?raw";
 import with_textareaRaw from "./with-textarea.vue?raw";
 import without_controlsRaw from "./without-controls.vue?raw";
 
-export const imports = `import { Editable } from "@pisagor/vue/editable";`;
+export const imports = `import { Editable } from "@pisagor/vue";`;
 
 export const sources = {
-  ActivationClick: stripVueExample(activation_clickRaw),
-  ActivationFocus: stripVueExample(activation_focusRaw),
-  ActivationNone: stripVueExample(activation_noneRaw),
-  Controlled: stripVueExample(controlledRaw),
-  Dblclick: stripVueExample(dblclickRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  Invalid: stripVueExample(invalidRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  OrientationHorizontal: stripVueExample(orientation_horizontalRaw),
-  OrientationVertical: stripVueExample(orientation_verticalRaw),
-  Sizes: stripVueExample(sizesRaw),
-  Variants: stripVueExample(variantsRaw),
-  WithoutControls: stripVueExample(without_controlsRaw),
-  WithTextarea: stripVueExample(with_textareaRaw),
+  ActivationClick: activation_clickRaw,
+  ActivationFocus: activation_focusRaw,
+  ActivationNone: activation_noneRaw,
+  Controlled: controlledRaw,
+  Dblclick: dblclickRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  OnSurface: on_surfaceRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithoutControls: without_controlsRaw,
+  WithTextarea: with_textareaRaw,
 } as const;
 
 export { default as ActivationClick } from "./activation-click.vue";

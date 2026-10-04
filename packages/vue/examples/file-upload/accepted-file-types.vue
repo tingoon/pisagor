@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { FileUpload } from "../../src/components/file-upload";
+import { FileUpload } from "@pisagor/vue";
 </script>
 
 <template>

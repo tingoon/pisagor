@@ -11,7 +11,12 @@ type Props = Omit<ArkContentProps, "class"> & {
   showCalendar?: boolean;
 };
 
-let { showCalendar = true, children, class: className, ...rest }: Props = $props();
+let {
+  showCalendar = true,
+  children,
+  class: className,
+  ...rest
+}: Props = $props();
 const ctx = useDatePicker();
 const slots = $derived(ctx?.slots);
 </script>
@@ -19,7 +24,10 @@ const slots = $derived(ctx?.slots);
 {#if slots}
   <Portal>
     <DatePickerPrimitive.Positioner>
-      <DatePickerPrimitive.Content {...rest} class={slots.content({ class: cn(className) })}>
+      <DatePickerPrimitive.Content
+        {...rest}
+        class={slots.content({ class: cn(className) })}
+      >
         {#if showCalendar && !children}
           <Calendar.ViewControl>
             <Calendar.PrevTrigger />

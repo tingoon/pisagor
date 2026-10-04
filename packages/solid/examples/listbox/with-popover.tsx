@@ -2,9 +2,8 @@
 
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
-import { Button, Input, Popover } from "@pisagor/solid";
+import { Button, Input, Listbox, Popover } from "@pisagor/solid";
 import { CaretUpDownIcon } from "@pisagor/solid/icons";
-import { Listbox } from "@pisagor/solid/listbox";
 import { createSignal } from "solid-js";
 export function WithPopover() {
   const [search, setSearch] = createSignal("");

@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button, Tooltip } from "@pisagor/solid";
-import { Kbd } from "@pisagor/solid/kbd";
+import { Button, Kbd, Tooltip } from "@pisagor/solid";
 export function WithTooltip() {
   return (
     <Tooltip

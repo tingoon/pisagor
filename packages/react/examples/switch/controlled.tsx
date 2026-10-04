@@ -1,5 +1,4 @@
-import { Field } from "@pisagor/react";
-import { Switch } from "@pisagor/react/switch";
+import { Field, Switch } from "@pisagor/react";
 import { useState } from "react";
 export function Controlled() {
   const [checked, setChecked] = useState(false);

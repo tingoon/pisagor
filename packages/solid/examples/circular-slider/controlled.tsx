@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { CircularSlider } from "@pisagor/solid/circular-slider";
+import { CircularSlider } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
   const [value, setValue] = createSignal(45);

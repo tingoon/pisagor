@@ -14,7 +14,7 @@ import type {
 } from "@ark-ui/react/tour";
 import { Tour as TourPrimitive, useTour } from "@ark-ui/react/tour";
 import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react";
-import type { TourProps as TourSharedProps } from "@pisagor/props";
+import type { TourProps as BaseTourProps } from "@pisagor/props";
 import { dialogRecipe, tourRecipe } from "@pisagor/recipes";
 
 import { cn } from "@pisagor/utils";
@@ -35,7 +35,7 @@ export type TourStepType = TourStepDetails;
 
 export type TourRootProps = Omit<TourPrimitiveRootProps, "tour">;
 
-export interface TourProps extends TourRootProps, TourSharedProps {
+export interface TourProps extends TourRootProps, BaseTourProps {
   /** Whether to enable arrow key navigation between steps */
   keyboardNavigation?: boolean;
   /**

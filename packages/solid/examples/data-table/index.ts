@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import defaultRaw from "./default.tsx?raw";
 import emptyRaw from "./empty.tsx?raw";
 import sortingRaw from "./sorting.tsx?raw";
@@ -6,11 +5,11 @@ import sortingRaw from "./sorting.tsx?raw";
 export const imports = `import { DataTable } from "@pisagor/solid/data-table";`;
 
 export const sources = {
-  Default: stripTsxExample(defaultRaw),
-  Empty: stripTsxExample(emptyRaw),
-  Sorting: stripTsxExample(sortingRaw),
+  Default: defaultRaw,
+  Empty: emptyRaw,
+  Sorting: sortingRaw,
 } as const;
 
-export { Default } from "./default";
-export { Empty } from "./empty";
-export { Sorting } from "./sorting";
+export * from "./default";
+export * from "./empty";
+export * from "./sorting";

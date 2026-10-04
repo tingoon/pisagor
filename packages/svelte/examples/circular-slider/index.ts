@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.svelte?raw";
 import custom_markersRaw from "./custom-markers.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -9,18 +8,18 @@ import thicknessRaw from "./thickness.svelte?raw";
 import with_markersRaw from "./with-markers.svelte?raw";
 import with_valueRaw from "./with-value.svelte?raw";
 
-export const imports = `import { CircularSlider } from "@pisagor/svelte/circular-slider";`;
+export const imports = `import { CircularSlider } from "@pisagor/svelte";`;
 
 export const sources = {
-  Controlled: stripSvelteExample(controlledRaw),
-  CustomMarkers: stripSvelteExample(custom_markersRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  Sizes: stripSvelteExample(sizesRaw),
-  Step: stripSvelteExample(stepRaw),
-  Thickness: stripSvelteExample(thicknessRaw),
-  WithMarkers: stripSvelteExample(with_markersRaw),
-  WithValue: stripSvelteExample(with_valueRaw),
+  Controlled: controlledRaw,
+  CustomMarkers: custom_markersRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Sizes: sizesRaw,
+  Step: stepRaw,
+  Thickness: thicknessRaw,
+  WithMarkers: with_markersRaw,
+  WithValue: with_valueRaw,
 } as const;
 
 export { default as Controlled } from "./controlled.svelte";

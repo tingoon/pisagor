@@ -1,4 +1,4 @@
-import { PasswordField } from "../../src/fields/password-field";
+import { PasswordField } from "@pisagor/react-form";
 
 export function Invalid() {
   return (

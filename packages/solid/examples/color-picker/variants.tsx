@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { InputGroup } from "@pisagor/solid";
-import { ColorPicker } from "@pisagor/solid/color-picker";
+import { ColorPicker, InputGroup } from "@pisagor/solid";
 export function Variants() {
   return (
     <div class="flex flex-col gap-2">

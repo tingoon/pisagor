@@ -34,12 +34,5 @@
     "types": ["astro/client"]
   },
   "extends": "../../tsconfig.json",
-  "files": [
-    "./css-modules.d.ts",
-    "./react-global.d.ts",
-    "./solid-global.d.ts",
-    "./svelte-global.d.ts",
-    "./vue-global.d.ts"
-  ],
-  "include": [".astro/types.d.ts", "src", "astro.config.ts"]
+  "include": [".astro/types.d.ts", "src", "astro.config.ts", "global.d.ts"]
 }

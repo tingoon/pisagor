@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import compoundRaw from "./compound.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import custom_indicatorRaw from "./custom-indicator.tsx?raw";
@@ -10,28 +9,28 @@ import orientation_horizontalRaw from "./orientation-horizontal.tsx?raw";
 import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 
-export const imports = `import { SegmentGroup } from "@pisagor/react/segment-group";`;
+export const imports = `import { SegmentGroup } from "@pisagor/react";`;
 
 export const sources = {
-  Compound: stripTsxExample(compoundRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  CustomIndicator: stripTsxExample(custom_indicatorRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  DisabledItem: stripTsxExample(disabled_itemRaw),
-  IndicatorOnHover: stripTsxExample(indicator_on_hoverRaw),
-  OrientationHorizontal: stripTsxExample(orientation_horizontalRaw),
-  OrientationVertical: stripTsxExample(orientation_verticalRaw),
-  Variants: stripTsxExample(variantsRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  CustomIndicator: custom_indicatorRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  DisabledItem: disabled_itemRaw,
+  IndicatorOnHover: indicator_on_hoverRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  Variants: variantsRaw,
 } as const;
 
-export { Compound } from "./compound";
-export { Controlled } from "./controlled";
-export { CustomIndicator } from "./custom-indicator";
-export { Default } from "./default";
-export { Disabled } from "./disabled";
-export { DisabledItem } from "./disabled-item";
-export { IndicatorOnHover } from "./indicator-on-hover";
-export { OrientationHorizontal } from "./orientation-horizontal";
-export { OrientationVertical } from "./orientation-vertical";
-export { Variants } from "./variants";
+export * from "./compound";
+export * from "./controlled";
+export * from "./custom-indicator";
+export * from "./default";
+export * from "./disabled";
+export * from "./disabled-item";
+export * from "./indicator-on-hover";
+export * from "./orientation-horizontal";
+export * from "./orientation-vertical";
+export * from "./variants";

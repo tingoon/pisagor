@@ -1,7 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte/button";
-import { Field } from "@pisagor/svelte/field";
-import { TagsInput } from "@pisagor/svelte/tags-input";
+import { Button, Field, TagsInput } from "@pisagor/svelte";
 
 let inputValue = $state("");
 </script>
@@ -11,7 +9,9 @@ let inputValue = $state("");
     <Button onclick={() => (inputValue = "React")} size="sm" variant="outline">
       Set &quot;React&quot;
     </Button>
-    <Button onclick={() => (inputValue = "")} size="sm" variant="outline">Clear</Button>
+    <Button onclick={() => (inputValue = "")} size="sm" variant="outline"
+      >Clear</Button
+    >
   </div>
   <Field>
     <Field.Label>Frameworks</Field.Label>

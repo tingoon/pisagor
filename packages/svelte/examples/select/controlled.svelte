@@ -1,6 +1,6 @@
 <script lang="ts">
 import { createListCollection } from "@ark-ui/svelte/collection";
-import { Select } from "@pisagor/svelte/select";
+import { Select } from "@pisagor/svelte";
 
 const collection = createListCollection({
   items: [
@@ -15,9 +15,7 @@ let value = $state<string[]>(["react"]);
 
 <Select.Root
   {collection}
-  onValueChange={(next) => {
-    value = Array.isArray(next) ? next : [next];
-  }}
+  onValueChange={(next) => (value = Array.isArray(next) ? next : [next])}
   {value}
 >
   <Select.Trigger>

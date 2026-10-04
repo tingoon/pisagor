@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Kbd } from "@pisagor/vue";
-import { InputGroup } from "../../src/components/input-group";
+import { InputGroup, Kbd } from "@pisagor/vue";
 </script>
 
 <template>

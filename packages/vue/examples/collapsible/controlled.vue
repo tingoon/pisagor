@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { Button } from "@pisagor/vue";
+import { Button, Collapsible } from "@pisagor/vue";
 import { ref } from "vue";
-import { Collapsible } from "../../src/components/collapsible";
 
 const open = ref(false);
 </script>

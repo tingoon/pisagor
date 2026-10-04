@@ -2,7 +2,7 @@
 import type { DialogContentProps } from "@ark-ui/svelte/dialog";
 import { Dialog as DialogPrimitive } from "@ark-ui/svelte/dialog";
 import { Portal } from "@ark-ui/svelte/portal";
-import type { SheetProps as SheetSharedProps } from "@pisagor/props";
+import type { SheetProps as BaseSheetProps } from "@pisagor/props";
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
@@ -10,11 +10,10 @@ import { useSheet } from "./sheet.context";
 import SheetBackdrop from "./sheet-backdrop.svelte";
 import SheetPositioner from "./sheet-positioner.svelte";
 
-type Props = Omit<DialogContentProps, "class"> &
-  {
-    class?: string | undefined;
-    showCloseButton?: boolean;
-  } & SheetSharedProps;
+type Props = Omit<DialogContentProps, "class"> & {
+  class?: string | undefined;
+  showCloseButton?: boolean;
+} & BaseSheetProps;
 
 let {
   placement = "right",

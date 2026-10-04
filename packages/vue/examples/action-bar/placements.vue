@@ -6,9 +6,8 @@ import {
   PhTrash,
   PhX,
 } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
+import { ActionBar, Button } from "@pisagor/vue";
 import { ref } from "vue";
-import { ActionBar } from "../../src/components/action-bar";
 
 const isOpen = ref(false);
 </script>

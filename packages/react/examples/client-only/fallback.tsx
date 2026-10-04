@@ -1,4 +1,4 @@
-import { ClientOnly } from "@pisagor/react/client-only";
+import { ClientOnly } from "@pisagor/react";
 
 export function Fallback() {
   const CurrentTime = () => {

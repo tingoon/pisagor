@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Checkbox } from "../../src/components/checkbox";
+import { Checkbox } from "@pisagor/vue";
 </script>
 
 <template>

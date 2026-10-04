@@ -15,7 +15,13 @@ type Props = Omit<AngleSliderControlProps, "class"> & {
   step?: number;
 };
 
-let { step = 1, markers, markersAtSteps = false, class: className, ...rest }: Props = $props();
+let {
+  step = 1,
+  markers,
+  markersAtSteps = false,
+  class: className,
+  ...rest
+}: Props = $props();
 
 const { slots } = useCircularSlider();
 const CLOCK_MARKER_ANGLES = [0, 60, 120, 180, 240, 300];
@@ -31,7 +37,10 @@ const markerValues = $derived.by(() => {
 });
 </script>
 
-<AngleSliderPrimitive.Control {...rest} class={slots.control({ class: cn(className) })}>
+<AngleSliderPrimitive.Control
+  {...rest}
+  class={slots.control({ class: cn(className) })}
+>
   <CircularSliderProgressRing />
   {#if markerValues}
     <CircularSliderMarkerGroup>

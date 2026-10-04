@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Marquee } from "@pisagor/svelte/marquee";
+import { Marquee } from "@pisagor/svelte";
 </script>
 
 <Marquee.Root>
-      <MarqueeIconRow />
-    </Marquee.Root>
+  <MarqueeIconRow />
+</Marquee.Root>

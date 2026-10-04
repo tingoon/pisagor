@@ -11,7 +11,12 @@ type Props = Omit<SplitterResizeTriggerProps, "class"> & {
   withHandle?: boolean;
 };
 
-let { children, withHandle = false, class: className, ...rest }: Props = $props();
+let {
+  children,
+  withHandle = false,
+  class: className,
+  ...rest
+}: Props = $props();
 const { slots } = useResizable();
 </script>
 

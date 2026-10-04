@@ -1,10 +1,10 @@
 import { QrCode as QrCodePrimitive } from "@ark-ui/vue/qr-code";
-import type { QrCodeProps as QrCodeRootSharedProps } from "@pisagor/props";
+import type { QrCodeProps as BaseQrCodeRootProps } from "@pisagor/props";
 import { qrCodeRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
-export interface QrCodeRootProps extends QrCodeRootSharedProps {
+export interface QrCodeRootProps extends BaseQrCodeRootProps {
   class?: unknown;
 }
 // #endregion

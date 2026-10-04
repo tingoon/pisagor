@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button, Card, Field, Textarea } from "@pisagor/solid";
-import { Editable } from "@pisagor/solid/editable";
+import { Button, Card, Editable, Field, Textarea } from "@pisagor/solid";
 import { CheckIcon, XIcon } from "@pisagor/solid/icons";
 export function WithTextarea() {
   return (

@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte/button";
-import { Sheet } from "@pisagor/svelte/sheet";
+import { Button, Sheet } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap justify-center gap-2">
@@ -12,7 +11,8 @@ import { Sheet } from "@pisagor/svelte/sheet";
       <Sheet.Header>
         <Sheet.Title>Stays on outside click</Sheet.Title>
         <Sheet.Description>
-          Clicking outside does not close this sheet. Press ESC or use the close button.
+          Clicking outside does not close this sheet. Press ESC or use the close
+          button.
         </Sheet.Description>
       </Sheet.Header>
     </Sheet.Content>
@@ -25,7 +25,8 @@ import { Sheet } from "@pisagor/svelte/sheet";
       <Sheet.Header>
         <Sheet.Title>Escape key unavailable</Sheet.Title>
         <Sheet.Description>
-          Pressing Escape does not close this sheet. Click outside or use the close button.
+          Pressing Escape does not close this sheet. Click outside or use the
+          close button.
         </Sheet.Description>
       </Sheet.Header>
     </Sheet.Content>

@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { PhGearSix, PhX } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
+import { Button, FloatingPanel } from "@pisagor/vue";
 import { ref } from "vue";
-import { FloatingPanel } from "../../src/components/floating-panel";
 
 const size = ref({ height: 200, width: 360 });
 function onSizeChange(details: { size: { height: number; width: number } }) {

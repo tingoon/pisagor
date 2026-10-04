@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { DataList } from "@pisagor/solid/data-list";
+import { DataList } from "@pisagor/solid";
 
 export function OrientationHorizontal() {
   return (

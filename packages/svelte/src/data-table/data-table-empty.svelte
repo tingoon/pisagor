@@ -13,7 +13,12 @@ const { slots, table } = useDataTableContext();
 const span = $derived(colSpan ?? table.getAllColumns().length);
 </script>
 
-<Table.Row {...rest} class={className} data-part="empty" data-scope="data-table">
+<Table.Row
+  {...rest}
+  class={className}
+  data-part="empty"
+  data-scope="data-table"
+>
   <Table.Cell class={slots.empty()} colspan={span}>
     {#if children}
       {@render children()}

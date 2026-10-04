@@ -1,8 +1,7 @@
 /** @jsxImportSource solid-js */
 import { waitForEvent } from "@ark-ui/solid/tour";
-import { Button, Checkbox, Field, Input } from "@pisagor/solid";
-import type { TourStepType } from "@pisagor/solid/tour";
-import { Tour } from "@pisagor/solid/tour";
+import type { TourStepType } from "@pisagor/solid";
+import { Button, Checkbox, Field, Input, Tour } from "@pisagor/solid";
 export function WaitForInput() {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

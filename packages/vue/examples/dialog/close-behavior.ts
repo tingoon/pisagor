@@ -1,6 +1,5 @@
+import { Button, Dialog } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Dialog } from "../../src/components/dialog";
-import { outlineButtonClass } from "../../src/internal/story-button";
 
 export default defineComponent({
   name: "CloseBehavior",
@@ -10,8 +9,8 @@ export default defineComponent({
         h(Dialog, { closeOnInteractOutside: false }, () => [
           h(Dialog.Trigger, { asChild: true }, () =>
             h(
-              "button",
-              { class: outlineButtonClass(), type: "button" },
+              Button,
+              { type: "button", variant: "outline" },
               "No close on outside click",
             ),
           ),
@@ -26,8 +25,8 @@ export default defineComponent({
         h(Dialog, { closeOnEscape: false }, () => [
           h(Dialog.Trigger, { asChild: true }, () =>
             h(
-              "button",
-              { class: outlineButtonClass(), type: "button" },
+              Button,
+              { type: "button", variant: "outline" },
               "No close on Escape",
             ),
           ),

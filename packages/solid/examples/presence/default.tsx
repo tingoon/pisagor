@@ -1,7 +1,6 @@
 /** @jsxImportSource solid-js */
 
-import { Button } from "@pisagor/solid/button";
-import { Presence } from "@pisagor/solid/presence";
+import { Button, Presence } from "@pisagor/solid";
 import { cn } from "@pisagor/utils";
 import { createSignal } from "solid-js";
 

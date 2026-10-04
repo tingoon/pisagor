@@ -1,5 +1,4 @@
-import { Card } from "@pisagor/react";
-import { Skeleton } from "@pisagor/react/skeleton";
+import { Card, Skeleton } from "@pisagor/react";
 export function InCard() {
   return (
     <Card>

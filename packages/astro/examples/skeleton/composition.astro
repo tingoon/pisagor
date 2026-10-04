@@ -1,9 +1,8 @@
 ---
-import SkeletonCircle from "../../src/components/skeleton/skeleton-circle.astro";
-import SkeletonText from "../../src/components/skeleton/skeleton-text.astro";
+import { Skeleton } from "@pisagor/astro";
 ---
 
 <div class="flex items-center gap-3">
-  <SkeletonCircle class="size-10" />
-  <SkeletonText class="w-48" lines={2} />
+  <Skeleton.Circle class="size-10" />
+  <Skeleton.Text class="w-48" lines={2} />
 </div>

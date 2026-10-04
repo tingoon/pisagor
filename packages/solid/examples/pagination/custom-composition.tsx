@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Pagination } from "@pisagor/solid/pagination";
+import { Pagination } from "@pisagor/solid";
 
 export function CustomComposition() {
   return (

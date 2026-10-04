@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import aRaw from "./a.svelte?raw";
 import blockquoteRaw from "./blockquote.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -23,32 +22,32 @@ import pRaw from "./p.svelte?raw";
 import separatorRaw from "./separator.svelte?raw";
 import smallRaw from "./small.svelte?raw";
 
-export const imports = `import { Prose } from "@pisagor/svelte/prose";`;
+export const imports = `import { Prose } from "@pisagor/svelte";`;
 
 export const sources = {
-  A: stripSvelteExample(aRaw),
-  Blockquote: stripSvelteExample(blockquoteRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Details: stripSvelteExample(detailsRaw),
-  Dl: stripSvelteExample(dlRaw),
-  H1: stripSvelteExample(h1Raw),
-  H2: stripSvelteExample(h2Raw),
-  H3: stripSvelteExample(h3Raw),
-  H4: stripSvelteExample(h4Raw),
-  H5: stripSvelteExample(h5Raw),
-  H6: stripSvelteExample(h6Raw),
-  Html: stripSvelteExample(htmlRaw),
-  HtmlTable: stripSvelteExample(html_tableRaw),
-  InlineCode: stripSvelteExample(inline_codeRaw),
-  Kbd: stripSvelteExample(kbdRaw),
-  List: stripSvelteExample(listRaw),
-  Mark: stripSvelteExample(markRaw),
-  Media: stripSvelteExample(mediaRaw),
-  NotProse: stripSvelteExample(not_proseRaw),
-  Ol: stripSvelteExample(olRaw),
-  P: stripSvelteExample(pRaw),
-  Separator: stripSvelteExample(separatorRaw),
-  Small: stripSvelteExample(smallRaw),
+  A: aRaw,
+  Blockquote: blockquoteRaw,
+  Default: defaultRaw,
+  Details: detailsRaw,
+  Dl: dlRaw,
+  H1: h1Raw,
+  H2: h2Raw,
+  H3: h3Raw,
+  H4: h4Raw,
+  H5: h5Raw,
+  H6: h6Raw,
+  Html: htmlRaw,
+  HtmlTable: html_tableRaw,
+  InlineCode: inline_codeRaw,
+  Kbd: kbdRaw,
+  List: listRaw,
+  Mark: markRaw,
+  Media: mediaRaw,
+  NotProse: not_proseRaw,
+  Ol: olRaw,
+  P: pRaw,
+  Separator: separatorRaw,
+  Small: smallRaw,
 } as const;
 
 export { default as A } from "./a.svelte";

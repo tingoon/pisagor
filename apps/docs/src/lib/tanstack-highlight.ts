@@ -5,6 +5,7 @@ import { js } from "@tanstack/highlight/languages/js";
 import { json } from "@tanstack/highlight/languages/json";
 import { jsx } from "@tanstack/highlight/languages/jsx";
 import { shell } from "@tanstack/highlight/languages/shell";
+import { svelte } from "@tanstack/highlight/languages/svelte";
 import { ts } from "@tanstack/highlight/languages/ts";
 import { tsx } from "@tanstack/highlight/languages/tsx";
 import { vue } from "@tanstack/highlight/languages/vue";
@@ -12,7 +13,7 @@ import { vue } from "@tanstack/highlight/languages/vue";
 /** Shared docs highlighter (SSR-safe, synchronous). */
 const docsHighlighter = createHighlighter({
   fallbackLanguage: "plaintext",
-  languages: [css, html, js, json, jsx, shell, ts, tsx, vue],
+  languages: [css, html, js, json, jsx, shell, svelte, ts, tsx, vue],
 });
 
 const LANG_ALIASES: Record<string, string> = {

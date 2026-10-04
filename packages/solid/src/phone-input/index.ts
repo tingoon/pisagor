@@ -1,1 +1,2 @@
-export { type Country, PhoneInput, type PhoneInputProps } from "./phone-input";
+export type { Country, PhoneInputProps } from "./phone-input";
+export { PhoneInput } from "./phone-input";

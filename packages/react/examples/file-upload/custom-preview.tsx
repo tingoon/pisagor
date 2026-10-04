@@ -1,7 +1,6 @@
 import { useFileUpload } from "@ark-ui/react/file-upload";
 import { XIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react";
-import { FileUpload } from "@pisagor/react/file-upload";
+import { Button, FileUpload } from "@pisagor/react";
 export function CustomPreview() {
   const CustomPreviewList = () => {
     const fileUpload = useFileUpload();

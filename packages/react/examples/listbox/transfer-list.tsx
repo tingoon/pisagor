@@ -1,7 +1,6 @@
 import { createListCollection } from "@ark-ui/react";
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
-import { Button, Item } from "@pisagor/react";
-import { Listbox } from "@pisagor/react/listbox";
+import { Button, Item, Listbox } from "@pisagor/react";
 import { useCallback, useState } from "react";
 export function TransferList() {
   const [available, setAvailable] = useState(["Brazil", "Ireland"]);

@@ -1,5 +1,4 @@
-import { Checkbox } from "@pisagor/react";
-import { Field } from "@pisagor/react/field";
+import { Checkbox, Field } from "@pisagor/react";
 export function CheckboxField() {
   return (
     <Field orientation="horizontal">

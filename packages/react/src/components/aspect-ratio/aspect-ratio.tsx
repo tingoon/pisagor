@@ -1,12 +1,12 @@
 import { ark } from "@ark-ui/react/factory";
-import type { AspectRatioProps as AspectRatioSharedProps } from "@pisagor/props";
+import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
 import { aspectRatioRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 
 // #region Types
 export interface AspectRatioProps
   extends ComponentProps<typeof ark.div>,
-    AspectRatioSharedProps {}
+    BaseAspectRatioProps {}
 // #endregion
 
 // #region Component

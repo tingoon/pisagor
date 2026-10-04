@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Button, Field, Input } from "@pisagor/solid";
-import { Sheet } from "@pisagor/solid/sheet";
+import { Button, Field, Input, Sheet } from "@pisagor/solid";
 export function CustomSpacing() {
   return (
     <Sheet>

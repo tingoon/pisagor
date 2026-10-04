@@ -5,7 +5,7 @@ import {
   type NumberInputScrubberProps,
 } from "@ark-ui/react/number-input";
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
-import type { NumberInputProps as NumberInputSharedProps } from "@pisagor/props";
+import type { NumberInputProps as BaseNumberInputProps } from "@pisagor/props";
 import {
   formControlGroupShellRecipe,
   numberInputRecipe,
@@ -30,7 +30,7 @@ export type NumberInputRootProps = Omit<
 
 export interface NumberInputProps
   extends NumberInputRootProps,
-    NumberInputSharedProps {
+    BaseNumberInputProps {
   /**
    * Whether to show a clear button when the input has a value.
    *

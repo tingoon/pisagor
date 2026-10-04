@@ -1,9 +1,9 @@
 ---
-import type { ItemProps as ItemSharedProps } from "@pisagor/props";
+import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { itemRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<"div">, ItemSharedProps {}
+interface Props extends HTMLAttributes<"div">, BaseItemProps {}
 
 const { variant = "default", class: className, ...rest } = Astro.props;
 const slots = itemRecipe();

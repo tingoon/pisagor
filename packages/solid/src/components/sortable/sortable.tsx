@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/solid/factory";
 import type {
-  SortableItemProps as SortableItemSharedProps,
-  SortableProps as SortableRootSharedProps,
+  SortableItemProps as BaseSortableItemProps,
+  SortableProps as BaseSortableRootProps,
 } from "@pisagor/props";
 import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -19,7 +19,7 @@ type SortableOrientation = "vertical" | "horizontal";
 
 export interface SortableRootProps
   extends Omit<ComponentProps<typeof ark.div>, "onDragStart">,
-    SortableRootSharedProps {
+    BaseSortableRootProps {
   orientation?: SortableOrientation;
   disabled?: boolean;
   items: string[];
@@ -28,7 +28,7 @@ export interface SortableRootProps
 
 export interface SortableItemProps
   extends ComponentProps<typeof ark.div>,
-    SortableItemSharedProps {
+    BaseSortableItemProps {
   value: string;
 }
 

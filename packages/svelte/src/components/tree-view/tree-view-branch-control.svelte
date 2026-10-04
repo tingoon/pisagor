@@ -26,19 +26,26 @@ const { slots } = useTreeView();
 const branch = useTreeViewBranch();
 </script>
 
-<TreeViewPrimitive.BranchControl {...rest} class={slots.control({ class: cn(className) })}>
+<TreeViewPrimitive.BranchControl
+  {...rest}
+  class={slots.control({ class: cn(className) })}
+>
   <TreeViewBranchIndicator />
   <TreeViewPrimitive.NodeContext>
     {#snippet render(
   nodeState,
 )}
-      {@const state = nodeState()}
+      {const state = nodeState()}
       {#if state.renaming}
         <TreeViewNodeInput />
       {:else}
         <TreeViewPrimitive.BranchText class={branch.slots.title()}>
           {#if Icon !== null && !state.expanded}
-            <span class="inline-flex" data-part="item-icon" data-scope="tree-view">
+            <span
+              class="inline-flex"
+              data-part="item-icon"
+              data-scope="tree-view"
+            >
               {#if Icon}
                 <Icon />
               {:else}
@@ -47,7 +54,11 @@ const branch = useTreeViewBranch();
             </span>
           {/if}
           {#if ExpandedIcon !== null && state.expanded}
-            <span class="inline-flex" data-part="item-icon" data-scope="tree-view">
+            <span
+              class="inline-flex"
+              data-part="item-icon"
+              data-scope="tree-view"
+            >
               {#if ExpandedIcon}
                 <ExpandedIcon />
               {:else}

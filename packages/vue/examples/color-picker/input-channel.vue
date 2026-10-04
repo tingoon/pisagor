@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { Field, Input } from "@pisagor/vue";
-import { ColorPicker, parseColor } from "../../src/components/color-picker";
+import { ColorPicker, Field, Input, parseColor } from "@pisagor/vue";
 
 const rgbaValue = parseColor("#0485F7").toString("rgba");
 const hsbaValue = parseColor("#EF4444").toString("hsba");

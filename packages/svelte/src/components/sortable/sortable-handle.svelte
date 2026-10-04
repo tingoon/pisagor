@@ -5,7 +5,9 @@ import { onMount } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { useSortable, useSortableItem } from "./sortable.context";
 
-type Props = Omit<HTMLAttributes<HTMLButtonElement>, "class"> & { class?: string | undefined };
+type Props = Omit<HTMLAttributes<HTMLButtonElement>, "class"> & {
+  class?: string | undefined;
+};
 let { children, class: className, ...rest }: Props = $props();
 const item = useSortableItem();
 const sortable = useSortable();
@@ -14,6 +16,30 @@ onMount(() => {
   sortable.registerHandle(item.id);
   return () => sortable.unregisterHandle(item.id);
 });
+
+function handleDragStart(event: DragEvent) {
+  if (sortable.disabled) {
+    event.preventDefault();
+    return;
+  }
+  event.stopPropagation();
+  sortable.startDrag(item.id, event);
+}
+
+function handleKeyDown(event: KeyboardEvent) {
+  if (sortable.disabled) return;
+  const movePrev =
+    sortable.orientation === "vertical"
+      ? event.key === "ArrowUp"
+      : event.key === "ArrowLeft";
+  const moveNext =
+    sortable.orientation === "vertical"
+      ? event.key === "ArrowDown"
+      : event.key === "ArrowRight";
+  if (!(event.altKey && (movePrev || moveNext))) return;
+  event.preventDefault();
+  sortable.moveItem(item.id, movePrev ? -1 : 1);
+}
 </script>
 
 <Ark
@@ -30,24 +56,8 @@ onMount(() => {
   disabled={sortable.disabled || undefined}
   draggable={!sortable.disabled}
   ondragend={() => sortable.endDrag()}
-  ondragstart={(event) => {
-  if (sortable.disabled) {
-    event.preventDefault();
-    return;
-  }
-  event.stopPropagation();
-  sortable.startDrag(item.id, event);
-}}
-  onkeydown={(event) => {
-  if (sortable.disabled) return;
-  const movePrev =
-    sortable.orientation === "vertical" ? event.key === "ArrowUp" : event.key === "ArrowLeft";
-  const moveNext =
-    sortable.orientation === "vertical" ? event.key === "ArrowDown" : event.key === "ArrowRight";
-  if (!(event.altKey && (movePrev || moveNext))) return;
-  event.preventDefault();
-  sortable.moveItem(item.id, movePrev ? -1 : 1);
-}}
+  ondragstart={handleDragStart}
+  onkeydown={handleKeyDown}
   type="button"
 >
   {#if children}

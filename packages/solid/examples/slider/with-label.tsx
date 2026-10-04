@@ -1,6 +1,5 @@
 /** @jsxImportSource solid-js */
-import { Field } from "@pisagor/solid";
-import { Slider } from "@pisagor/solid/slider";
+import { Field, Slider } from "@pisagor/solid";
 export function WithLabel() {
   return (
     <Field>

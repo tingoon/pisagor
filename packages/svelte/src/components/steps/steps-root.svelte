@@ -1,17 +1,21 @@
 <script lang="ts">
 import type { StepsRootProps } from "@ark-ui/svelte/steps";
 import { Steps as StepsPrimitive } from "@ark-ui/svelte/steps";
-import type { StepsProps as StepsSharedProps } from "@pisagor/props";
+import type { StepsProps as BaseStepsProps } from "@pisagor/props";
 import { stepsRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setStepsContext } from "./steps.context";
 
-type Props = Omit<StepsRootProps, "class"> &
-  {
+type Props = Omit<StepsRootProps, "class"> & {
   class?: string | undefined;
-  } & StepsSharedProps;
+} & BaseStepsProps;
 
-let { recipe = stepsRecipe, class: className, children, ...rest }: Props = $props();
+let {
+  recipe = stepsRecipe,
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 const slots = $derived(recipe());
 
 setStepsContext({

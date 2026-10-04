@@ -1,7 +1,7 @@
 import { PhClockCounterClockwise } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue";
+import { Alert, Button } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { Alert } from "../../src/components/alert";
+
 export default defineComponent({
   name: "WithAction",
   setup() {

@@ -1,5 +1,5 @@
 /** @jsxImportSource solid-js */
-import { TagsInput } from "@pisagor/solid/tags-input";
+import { TagsInput } from "@pisagor/solid";
 
 export function Variants() {
   const defaultValue = ["React", "Solid"];

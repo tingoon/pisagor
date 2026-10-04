@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { PhGear, PhHouse, PhUser } from "@phosphor-icons/vue";
-import { BottomNavigation } from "../../src/components/bottom-navigation";
+import { BottomNavigation } from "@pisagor/vue";
 </script>
 
 <template>

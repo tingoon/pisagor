@@ -1,13 +1,12 @@
-import { stripTsxExample } from "@pisagor/utils";
 import defaultRaw from "./default.tsx?raw";
 import fallbackRaw from "./fallback.tsx?raw";
 
-export const imports = `import { ClientOnly } from "@pisagor/react/client-only";`;
+export const imports = `import { ClientOnly } from "@pisagor/react";`;
 
 export const sources = {
-  Default: stripTsxExample(defaultRaw),
-  Fallback: stripTsxExample(fallbackRaw),
+  Default: defaultRaw,
+  Fallback: fallbackRaw,
 } as const;
 
-export { Default } from "./default";
-export { Fallback } from "./fallback";
+export * from "./default";
+export * from "./fallback";

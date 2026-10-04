@@ -1,5 +1,5 @@
 import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
-import type { SheetProps as SheetSharedProps } from "@pisagor/props";
+import type { SheetProps as BaseSheetProps } from "@pisagor/props";
 import { type SheetRecipe, sheetRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, reactive, Teleport } from "vue";
 import { renderIconCloseButton } from "../../internal/close-button";
@@ -25,7 +25,7 @@ interface SheetContextValue {
 
 export interface SheetProps
   extends Omit<DialogProps, "recipe">,
-    SheetSharedProps {}
+    BaseSheetProps {}
 // #endregion
 
 // #region Context

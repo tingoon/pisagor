@@ -1,8 +1,8 @@
 import { ark } from "@ark-ui/react/factory";
 import type {
-  SkeletonProps as SkeletonCircleSharedProps,
-  SkeletonProps as SkeletonRootSharedProps,
-  SkeletonProps as SkeletonTextSharedProps,
+  SkeletonProps as BaseSkeletonCircleProps,
+  SkeletonProps as BaseSkeletonRootProps,
+  SkeletonProps as BaseSkeletonTextProps,
 } from "@pisagor/props";
 import { skeletonRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
@@ -10,7 +10,7 @@ import type { ComponentProps } from "react";
 // #region Types
 export interface SkeletonTextProps
   extends ComponentProps<typeof ark.div>,
-    SkeletonTextSharedProps {
+    BaseSkeletonTextProps {
   /**
    * The number of lines of the skeleton text.
    *
@@ -21,11 +21,11 @@ export interface SkeletonTextProps
 
 export interface SkeletonRootProps
   extends ComponentProps<typeof ark.div>,
-    SkeletonRootSharedProps {}
+    BaseSkeletonRootProps {}
 
 export interface SkeletonCircleProps
   extends ComponentProps<typeof ark.div>,
-    SkeletonCircleSharedProps {}
+    BaseSkeletonCircleProps {}
 // #endregion
 
 // #region Parts
