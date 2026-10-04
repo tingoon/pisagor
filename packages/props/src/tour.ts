@@ -1,4 +1,4 @@
-import type { TourRecipeFn } from "@pisagor/recipes/tour";
+import type { TourRecipeFn } from "@pisagor/recipes";
 
 /** Tour props. */
 export interface TourProps {

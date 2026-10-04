@@ -1,4 +1,4 @@
-import type { QrCodeRecipeFn } from "@pisagor/recipes/qr-code";
+import type { QrCodeRecipeFn } from "@pisagor/recipes";
 
 /** QrCode props. */
 export interface QrCodeProps {

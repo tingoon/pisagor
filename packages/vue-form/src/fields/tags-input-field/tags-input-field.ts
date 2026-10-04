@@ -1,5 +1,4 @@
-import type { TagsInputProps } from "@pisagor/vue";
-import { TagsInput } from "@pisagor/vue";
+import { TagsInput, type TagsInputProps } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import {
   type FieldPresentationProps,

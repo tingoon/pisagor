@@ -1,16 +1,11 @@
 import { PhCircleNotch } from "@phosphor-icons/vue";
-import { spinnerRecipe } from "@pisagor/recipes/spinner";
+import type { SpinnerProps as SpinnerSharedProps } from "@pisagor/props";
+import { spinnerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
-export interface SpinnerProps {
-  /**
-   * Style recipe. Defaults to `spinnerRecipe` from `@pisagor/recipes/spinner`.
-   *
-   * @defaultValue spinnerRecipe
-   */
-  recipe?: typeof spinnerRecipe;
+export interface SpinnerProps extends SpinnerSharedProps {
   class?: unknown;
 }
 // #endregion

@@ -1,7 +1,11 @@
+import type {
+  InputGroupControlProps as InputGroupInputSharedProps,
+  InputGroupTextareaControlProps as InputGroupTextareaSharedProps,
+} from "@pisagor/props";
 import {
   inputGroupControlRecipe,
   inputGroupTextareaControlRecipe,
-} from "@pisagor/recipes/input-group";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { Input, type InputProps } from "../input/input";
@@ -10,23 +14,11 @@ import { Textarea, type TextareaProps } from "../textarea/textarea";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface InputGroupInputProps {
-  /**
-   * Style recipe. Defaults to `inputGroupControlRecipe` from `@pisagor/recipes/input-group-control`.
-   *
-   * @defaultValue inputGroupControlRecipe
-   */
-  recipe?: typeof inputGroupControlRecipe;
+export interface InputGroupInputProps extends InputGroupInputSharedProps {
   class?: unknown;
 }
 
-export interface InputGroupTextareaProps {
-  /**
-   * Style recipe. Defaults to `inputGroupTextareaControlRecipe` from `@pisagor/recipes/input-group-textarea-control`.
-   *
-   * @defaultValue inputGroupTextareaControlRecipe
-   */
-  recipe?: typeof inputGroupTextareaControlRecipe;
+export interface InputGroupTextareaProps extends InputGroupTextareaSharedProps {
   class?: unknown;
 }
 // #endregion

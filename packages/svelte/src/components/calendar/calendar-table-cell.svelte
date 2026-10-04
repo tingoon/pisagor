@@ -4,14 +4,15 @@ import type {
   DatePickerTableCellTriggerProps,
 } from "@ark-ui/svelte/date-picker";
 import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
-import { calendarTableCellRecipe } from "@pisagor/recipes/calendar";
+import type { CalendarTableCellProps as CalendarTableCellSharedProps } from "@pisagor/props";
+import { calendarTableCellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
 type Props = Omit<DatePickerTableCellTriggerProps, "class" | "value"> &
-  Pick<DatePickerTableCellProps, "value" | "visibleRange"> & {
+  Pick<DatePickerTableCellProps, "value" | "visibleRange"> &
+  {
     class?: string | undefined;
-    recipe?: typeof calendarTableCellRecipe;
-  };
+  } & CalendarTableCellSharedProps;
 
 let {
   value,

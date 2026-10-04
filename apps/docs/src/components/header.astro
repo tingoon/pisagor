@@ -15,9 +15,9 @@ interface Props {
 }
 ---
 
-<header class="docs-material docs-scroll-edge-b sticky top-0 z-40">
+<header class="sticky top-0 z-40 border-border/60 border-b bg-background">
   <div
-    class="relative mx-auto flex h-14 max-w-384 items-center gap-3 px-4 sm:px-6"
+    class="relative mx-auto flex h-12 w-full max-w-6xl items-center gap-3 px-4 sm:px-5"
   >
     <MobileNav
       currentPath={Astro.props.currentPath}
@@ -30,9 +30,9 @@ interface Props {
       href={frameworkPath(Astro.props.framework)}
     >
       <span
-        class="inline-flex size-8 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-[0_0_24px_-6px] shadow-primary/40 transition duration-100 group-hover:scale-[1.03] group-active:scale-[0.97]"
+        class="inline-flex size-7 items-center justify-center rounded-lg bg-primary text-primary-foreground transition duration-100 group-hover:scale-[1.03] group-active:scale-[0.97]"
       >
-        <Pi aria-hidden size={18} weight="bold" />
+        <Pi aria-hidden size={16} weight="bold" />
       </span>
       <span class="hidden sm:inline">Pisagor</span>
     </a>

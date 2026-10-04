@@ -1,7 +1,7 @@
 import type {
   RadioGroupItemRecipeFn,
   RadioGroupRecipeFn,
-} from "@pisagor/recipes/radio-group";
+} from "@pisagor/recipes";
 
 /** RadioGroup props. */
 export interface RadioGroupProps {

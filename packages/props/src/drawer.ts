@@ -1,7 +1,4 @@
-import type {
-  DrawerRecipeFn,
-  DrawerVariantProps,
-} from "@pisagor/recipes/drawer";
+import type { DrawerRecipeFn, DrawerVariantProps } from "@pisagor/recipes";
 
 /** Drawer props. */
 export interface DrawerProps extends DrawerVariantProps {

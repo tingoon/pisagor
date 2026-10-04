@@ -1,4 +1,4 @@
-import type { DatePickerRecipe } from "@pisagor/recipes/date-picker";
+import type { DatePickerRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 type FormControlVariant = "primary" | "secondary";
@@ -8,9 +8,8 @@ interface DatePickerContextValue {
   variant?: FormControlVariant;
 }
 
-const ctx = createContext<DatePickerContextValue | undefined>({
+const ctx = createContext("DatePicker")<DatePickerContextValue | undefined>({
   defaultValue: undefined,
-  name: "DatePicker",
   strict: false,
 });
 

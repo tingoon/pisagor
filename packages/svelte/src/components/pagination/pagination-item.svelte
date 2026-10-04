@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { PaginationItemProps } from "@ark-ui/svelte/pagination";
 import { Pagination as PaginationPrimitive } from "@ark-ui/svelte/pagination";
-import { buttonRecipe } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { usePagination } from "./pagination.context";
 

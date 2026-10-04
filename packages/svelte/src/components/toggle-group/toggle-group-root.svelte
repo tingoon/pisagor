@@ -1,22 +1,21 @@
 <script lang="ts">
 import type { ToggleGroupRootProps as ArkToggleGroupRootProps } from "@ark-ui/svelte/toggle-group";
 import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/svelte/toggle-group";
-import type { ButtonVariantProps } from "@pisagor/recipes/button";
-import type { ToggleVariantProps } from "@pisagor/recipes/toggle";
-import { toggleGroupRecipe } from "@pisagor/recipes/toggle-group";
+import type { ToggleGroupProps as ToggleGroupSharedProps } from "@pisagor/props";
+import { type ButtonVariantProps, type ToggleVariantProps, toggleGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setToggleGroupContext } from "./toggle-group.context";
 
-type Props = Omit<ArkToggleGroupRootProps, "class" | "onValueChange" | "style"> & {
+type Props = Omit<ArkToggleGroupRootProps, "class" | "onValueChange" | "style"> &
+  {
   children?: import("svelte").Snippet;
   class?: string | undefined;
   onValueChange?: (value: string[]) => void;
-  recipe?: typeof toggleGroupRecipe;
   size?: NonNullable<ToggleVariantProps["size"]>;
   spacing?: number;
   variant?: Extract<ButtonVariantProps["variant"], "outline" | "ghost">;
   style?: string | undefined;
-};
+  } & ToggleGroupSharedProps;
 
 let {
   orientation = "horizontal",

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { inputGroupControlRecipe } from "@pisagor/recipes/input-group";
+import { inputGroupControlRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import Input from "../input/input.svelte";
 

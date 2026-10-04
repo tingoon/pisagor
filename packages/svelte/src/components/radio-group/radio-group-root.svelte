@@ -1,15 +1,16 @@
 <script lang="ts">
 import type { RadioGroupRootProps as ArkRadioGroupRootProps } from "@ark-ui/svelte/radio-group";
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/svelte/radio-group";
-import { radioGroupRecipe } from "@pisagor/recipes/radio-group";
+import type { RadioGroupProps as RadioGroupSharedProps } from "@pisagor/props";
+import { radioGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
-type Props = Omit<ArkRadioGroupRootProps, "class" | "onValueChange"> & {
+type Props = Omit<ArkRadioGroupRootProps, "class" | "onValueChange"> &
+  {
   children?: import("svelte").Snippet;
   class?: string | undefined;
   onValueChange?: (value: string | null) => void;
-  recipe?: typeof radioGroupRecipe;
-};
+  } & RadioGroupSharedProps;
 
 let {
   children,

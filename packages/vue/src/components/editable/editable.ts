@@ -2,8 +2,8 @@ import {
   Editable as EditablePrimitive,
   type EditableValueChangeDetails,
 } from "@ark-ui/vue/editable";
-import { buttonRecipe } from "@pisagor/recipes/button";
-import { editableRecipe } from "@pisagor/recipes/editable";
+import type { EditableProps as EditableSharedProps } from "@pisagor/props";
+import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { ButtonProps } from "../button";
@@ -12,17 +12,11 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 type FormControlVariant = "primary" | "secondary";
 
 // #region Types
-export interface EditableProps {
+export interface EditableProps extends EditableSharedProps {
   /** The activation mode for the preview element. */
   activationMode?: "focus" | "dblclick" | "click" | "none";
   /** Whether the editable should auto-resize to fit the content. */
   autoResize?: boolean;
-  /**
-   * Style recipe. Defaults to `editableRecipe` from `@pisagor/recipes/editable`.
-   *
-   * @defaultValue editableRecipe
-   */
-  recipe?: typeof editableRecipe;
   class?: unknown;
   /** Whether the editable is in edit mode by default. */
   defaultEdit?: boolean;

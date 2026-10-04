@@ -5,10 +5,8 @@ import {
   type ProgressTrackProps,
   type ProgressValueTextProps,
 } from "@ark-ui/solid/progress";
-import {
-  type ProgressRecipeSlot,
-  progressRecipe,
-} from "@pisagor/recipes/progress";
+import type { ProgressProps as ProgressSharedProps } from "@pisagor/props";
+import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -19,10 +17,10 @@ import { ProgressContext, useProgress } from "./progress.context";
 type ProgressHeaderProps = ComponentProps<"div">;
 type ProgressClassNames = VariantClassNames<ProgressRecipeSlot>;
 
-type ProgressRootProps = Omit<ProgressPrimitiveRootProps, "value"> & {
-  recipe?: typeof progressRecipe;
-  value?: number | null;
-};
+type ProgressRootProps = Omit<ProgressPrimitiveRootProps, "value"> &
+  ProgressSharedProps & {
+    value?: number | null;
+  };
 
 export interface ProgressProps extends Omit<ProgressRootProps, "children"> {
   indeterminate?: boolean;

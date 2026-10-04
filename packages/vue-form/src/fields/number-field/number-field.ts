@@ -1,5 +1,4 @@
-import type { NumberInputProps } from "@pisagor/vue";
-import { NumberInput } from "@pisagor/vue";
+import { NumberInput, type NumberInputProps } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import {
   type FieldPresentationProps,

@@ -2,7 +2,7 @@ import type {
   KbdGroupRecipeFn,
   KbdRecipeFn,
   KbdVariantProps,
-} from "@pisagor/recipes/kbd";
+} from "@pisagor/recipes";
 
 /** Kbd props. */
 export interface KbdProps extends KbdVariantProps {

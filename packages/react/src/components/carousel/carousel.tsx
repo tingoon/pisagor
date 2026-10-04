@@ -10,20 +10,16 @@ import type {
 } from "@ark-ui/react/carousel";
 import { Carousel as CarouselPrimitive } from "@ark-ui/react/carousel";
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
-import { carouselRecipe } from "@pisagor/recipes/carousel";
+import type { CarouselProps as CarouselRootSharedProps } from "@pisagor/props";
+import { carouselRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { Button } from "../button";
 import { CarouselContext, useCarousel } from "./carousel.context";
 
 // #region Types
-export interface CarouselRootProps extends CarouselPrimitiveRootProps {
-  /**
-   * Style recipe. Defaults to `carouselRecipe` from `@pisagor/recipes/carousel`.
-   *
-   * @defaultValue carouselRecipe
-   */
-  recipe?: typeof carouselRecipe;
-}
+export interface CarouselRootProps
+  extends CarouselPrimitiveRootProps,
+    CarouselRootSharedProps {}
 
 interface CarouselPresetItem {
   content: ReactNode;

@@ -1,9 +1,10 @@
 import { ark } from "@ark-ui/react/factory";
-import { fileInputRecipe } from "@pisagor/recipes/file-input";
+import type { FileInputProps as FileInputSharedProps } from "@pisagor/props";
 import {
   type FormControlGroupShellVariantProps,
+  fileInputRecipe,
   formControlGroupShellRecipe,
-} from "@pisagor/recipes/form-control";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
   type ChangeEventHandler,
@@ -31,20 +32,16 @@ type NativeFileInputProps = Omit<
 >;
 
 type FileInputRootProps = ComponentProps<typeof ark.div> &
-  FileInputVariantProps & {
+  FileInputVariantProps &
+  FileInputSharedProps & {
     /** Disables the control and sets `data-disabled` on the root. */
     disabled?: boolean;
-    /**
-     * Style recipe. Defaults to `fileInputRecipe` from `@pisagor/recipes/file-input`.
-     *
-     * @defaultValue fileInputRecipe
-     */
-    recipe?: typeof fileInputRecipe;
   };
 
 export interface FileInputProps
   extends NativeFileInputProps,
-    FileInputVariantProps {
+    FileInputVariantProps,
+    FileInputSharedProps {
   /** Marks the control invalid for styling and assistive tech. */
   invalid?: boolean;
   /** Label for the browse button. */
@@ -56,12 +53,6 @@ export interface FileInputProps
   onFilesChange?: (files: File[]) => void;
   /** Alias for `onFilesChange`; matches `FileUpload` callback naming. */
   onValueChange?: (files: File[]) => void;
-  /**
-   * Style recipe. Defaults to `fileInputRecipe` from `@pisagor/recipes/file-input`.
-   *
-   * @defaultValue fileInputRecipe
-   */
-  recipe?: typeof fileInputRecipe;
 }
 
 interface FileInputControlProps extends ComponentProps<"input"> {}

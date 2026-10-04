@@ -1,4 +1,4 @@
-import type { FieldRecipeFn, FieldVariantProps } from "@pisagor/recipes/field";
+import type { FieldRecipeFn, FieldVariantProps } from "@pisagor/recipes";
 
 /** Field props. */
 export interface FieldProps extends FieldVariantProps {

@@ -3,7 +3,8 @@ import {
   PinInput as PinInputPrimitive,
   type PinInputValueChangeDetails,
 } from "@ark-ui/vue/pin-input";
-import { inputOtpRecipe } from "@pisagor/recipes/input-otp";
+import type { InputOtpProps as InputOTPSharedProps } from "@pisagor/props";
+import { inputOtpRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
 type FormControlVariant = "primary" | "secondary";
@@ -20,13 +21,7 @@ import {
 
 type ArkPart = Parameters<typeof h>[0];
 
-export interface InputOTPProps {
-  /**
-   * Style recipe. Defaults to `inputOtpRecipe` from `@pisagor/recipes/input-otp`.
-   *
-   * @defaultValue inputOtpRecipe
-   */
-  recipe?: typeof inputOtpRecipe;
+export interface InputOTPProps extends InputOTPSharedProps {
   class?: ClassValue;
   otp?: boolean;
   placeholder?: string;

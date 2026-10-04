@@ -1,4 +1,4 @@
-import type { JsonTreeViewRecipeFn } from "@pisagor/recipes/json-tree-view";
+import type { JsonTreeViewRecipeFn } from "@pisagor/recipes";
 
 /** JsonTreeView props. */
 export interface JsonTreeViewProps {

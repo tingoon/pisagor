@@ -6,8 +6,9 @@ import {
   TextItalicIcon,
   TextStrikethroughIcon,
 } from "@phosphor-icons/react";
-import { formControlShellRecipe } from "@pisagor/recipes/form-control";
-import { richTextEditorRecipe } from "@pisagor/recipes/rich-text-editor";
+import type { RichTextEditorProps as RichTextEditorRootSharedProps } from "@pisagor/props";
+import { formControlShellRecipe, richTextEditorRecipe } from "@pisagor/recipes";
+
 import { cn } from "@pisagor/utils";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
@@ -24,7 +25,8 @@ import {
 type FormControlVariant = "primary" | "secondary";
 
 export interface RichTextEditorRootProps
-  extends Omit<ComponentProps<typeof ark.div>, "defaultValue" | "onChange"> {
+  extends Omit<ComponentProps<typeof ark.div>, "defaultValue" | "onChange">,
+    RichTextEditorRootSharedProps {
   /**
    * Visual shell variant. Defaults to `primary`.
    */
@@ -64,12 +66,6 @@ export interface RichTextEditorRootProps
    */
   "aria-label"?: string;
   children?: ReactNode;
-  /**
-   * Style recipe. Defaults to `richTextEditorRecipe` from `@pisagor/recipes/rich-text-editor`.
-   *
-   * @defaultValue richTextEditorRecipe
-   */
-  recipe?: typeof richTextEditorRecipe;
 }
 
 export type RichTextEditorToolbarProps = ComponentProps<typeof ark.div>;

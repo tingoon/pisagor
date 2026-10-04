@@ -5,17 +5,18 @@ import type {
   MarqueeRootProps as MarqueePrimitiveRootProps,
 } from "@ark-ui/solid/marquee";
 import { Marquee as MarqueePrimitive } from "@ark-ui/solid/marquee";
-import { marqueeRecipe } from "@pisagor/recipes/marquee";
+import type { MarqueeProps as MarqueeRootSharedProps } from "@pisagor/props";
+import { marqueeRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import { MarqueeContext, useMarquee } from "./marquee.context";
 
 export interface MarqueeRootProps
-  extends Omit<MarqueePrimitiveRootProps, "side"> {
+  extends Omit<MarqueePrimitiveRootProps, "side">,
+    MarqueeRootSharedProps {
   orientation?: "horizontal" | "vertical";
   showEdges?: boolean;
-  recipe?: typeof marqueeRecipe;
 }
 
 export interface MarqueeProps extends Omit<MarqueeRootProps, "children"> {

@@ -1,5 +1,4 @@
-import type { NumberInputProps } from "@pisagor/react";
-import { NumberInput } from "@pisagor/react";
+import { NumberInput, type NumberInputProps } from "@pisagor/react";
 import {
   type FieldPresentationProps,
   FieldShell,

@@ -1,11 +1,13 @@
 import { ark } from "@ark-ui/solid/factory";
-import { statusRecipe } from "@pisagor/recipes/status";
+import type { StatusProps as StatusSharedProps } from "@pisagor/props";
+import { statusRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
-export interface StatusProps extends ComponentProps<typeof ark.span> {
-  recipe?: typeof statusRecipe;
+export interface StatusProps
+  extends ComponentProps<typeof ark.span>,
+    StatusSharedProps {
   size?: import("@pisagor/recipes/status").StatusVariantProps["size"];
   variant?: import("@pisagor/recipes/status").StatusVariantProps["variant"];
 }

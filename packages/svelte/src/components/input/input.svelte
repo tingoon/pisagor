@@ -1,12 +1,8 @@
 <script lang="ts">
 import type { FieldInputProps } from "@ark-ui/svelte/field";
 import { Field } from "@ark-ui/svelte/field";
-import {
-  type InputRecipeSlot,
-  type InputRootVariantProps,
-  inputRecipe,
-  inputRootRecipe,
-} from "@pisagor/recipes/input";
+import type { InputProps as InputSharedProps } from "@pisagor/props";
+import { type InputRecipeSlot, type InputRootVariantProps, inputRecipe, inputRootRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import InputGroupRoot from "../input-group/input-group-root.svelte";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -15,7 +11,8 @@ import InputClearAddon from "./input-clear-addon.svelte";
 type FormControlVariant = "primary" | "secondary";
 
 type Props = Omit<FieldInputProps, "class" | "size"> &
-  InputRootVariantProps & {
+  InputRootVariantProps &
+  {
     /**
      * Whether to show a clear button when the input has a value.
      * @defaultValue false
@@ -25,9 +22,8 @@ type Props = Omit<FieldInputProps, "class" | "size"> &
     classNames?: Partial<Record<InputRecipeSlot, string>>;
     /** Called with the string value when the input changes. */
     onValueChange?: (value: string) => void;
-    recipe?: typeof inputRecipe;
     rootRecipe?: typeof inputRootRecipe;
-  };
+  } & InputSharedProps;
 
 let {
   size = "md",

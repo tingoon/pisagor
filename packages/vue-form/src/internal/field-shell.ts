@@ -1,5 +1,4 @@
-import type { FieldLabelProps, FieldProps } from "@pisagor/vue";
-import { Field } from "@pisagor/vue";
+import { Field, type FieldLabelProps, type FieldProps } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

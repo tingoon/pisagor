@@ -1,4 +1,4 @@
-import type { SignaturePadRecipeFn } from "@pisagor/recipes/signature-pad";
+import type { SignaturePadRecipeFn } from "@pisagor/recipes";
 
 /** SignaturePad props. */
 export interface SignaturePadProps {

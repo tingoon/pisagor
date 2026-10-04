@@ -1,7 +1,7 @@
 <script lang="ts">
 import { useHotkey } from "@ark-ui/svelte/hotkeys";
-import { actionBarRecipe } from "@pisagor/recipes/action-bar";
-import { buttonRecipe } from "@pisagor/recipes/button";
+import type { ActionBarProps as ActionBarSharedProps } from "@pisagor/props";
+import { actionBarRecipe, buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import { setActionBarContext } from "./action-bar.context";
@@ -16,7 +16,6 @@ type ActionItem = {
   label: string;
   onClick: () => void;
 };
-
 type Props = {
   actions?: ActionItem[];
   children?: Snippet;
@@ -27,9 +26,8 @@ type Props = {
   onOpenChange?: (open: boolean) => void;
   open?: boolean;
   positioning?: { gutter?: string; placement?: "bottom" | "bottom-start" | "bottom-end" };
-  recipe?: typeof actionBarRecipe;
   unmountOnExit?: boolean;
-};
+  } & ActionBarSharedProps;
 
 let {
   closeOnEscape = true,

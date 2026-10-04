@@ -2,13 +2,11 @@
   "bugs": {
     "url": "https://github.com/tingoon/pisagor/issues"
   },
-  "dependencies": {
-    "@pisagor/svelte": "workspace:*",
-    "@pisagor/utils": "workspace:*",
-    "@tanstack/svelte-form": "^1.33.5"
-  },
   "description": "Labeled form fields and TanStack Form bindings for @pisagor/svelte.",
   "devDependencies": {
+    "@pisagor/svelte": "workspace:*",
+    "@pisagor/utils": "workspace:*",
+    "@tanstack/svelte-form": "^1.33.5",
     "svelte": "catalog:",
     "svelte-check-native": "^1.8.0",
     "typescript": "catalog:"
@@ -19,7 +17,6 @@
     "./tanstack": "./src/tanstack/index.ts"
   },
   "files": [
-    "catalog.gen.json",
     "skills",
     "src",
     "!**/*.stories.*",
@@ -29,8 +26,15 @@
   "license": "MIT",
   "name": "@pisagor/svelte-form",
   "peerDependencies": {
+    "@pisagor/svelte": "workspace:^",
+    "@tanstack/svelte-form": "^1.33.5",
     "svelte": "^5",
     "tailwindcss": "^4"
+  },
+  "peerDependenciesMeta": {
+    "@tanstack/svelte-form": {
+      "optional": true
+    }
   },
   "repository": {
     "directory": "packages/svelte-form",

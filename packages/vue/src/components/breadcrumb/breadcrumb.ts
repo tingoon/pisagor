@@ -1,11 +1,12 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
+import type { BreadcrumbItemProps as BreadcrumbItemSharedProps } from "@pisagor/props";
 import {
   type BreadcrumbItemRecipe,
   type BreadcrumbRecipe,
   breadcrumbItemRecipe,
   breadcrumbRecipe,
-} from "@pisagor/recipes/breadcrumb";
+} from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createContext } from "../../internal/utils/create-context";
 
@@ -37,19 +38,12 @@ interface BreadcrumbItemContextValue {
   slots: BreadcrumbItemRecipe;
 }
 
-export interface BreadcrumbItemProps {
-  /**
-   * Style recipe. Defaults to `breadcrumbItemRecipe` from `@pisagor/recipes/breadcrumb-item`.
-   *
-   * @defaultValue breadcrumbItemRecipe
-   */
-  itemRecipe?: typeof breadcrumbItemRecipe;
+export interface BreadcrumbItemProps extends BreadcrumbItemSharedProps {
   /**
    * Style recipe. Defaults to `breadcrumbRecipe` from `@pisagor/recipes/breadcrumb`.
    *
    * @defaultValue breadcrumbRecipe
    */
-  recipe?: typeof breadcrumbRecipe;
   class?: unknown;
 }
 // #endregion
@@ -58,14 +52,10 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Context
 const [provideBreadcrumbContext, useBreadcrumbContext] =
-  createContext<BreadcrumbContextValue>({
-    name: "Breadcrumb",
-  });
+  createContext("Breadcrumb")<BreadcrumbContextValue>();
 
 const [provideBreadcrumbItemContext, useBreadcrumbItemContext] =
-  createContext<BreadcrumbItemContextValue>({
-    name: "BreadcrumbItem",
-  });
+  createContext("BreadcrumbItem")<BreadcrumbItemContextValue>();
 // #endregion
 
 // #region Parts
@@ -133,13 +123,13 @@ export const BreadcrumbItem = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: breadcrumbItemRecipe,
       type: Function as PropType<typeof breadcrumbItemRecipe>,
     },
   },
   setup(props, { attrs, slots }) {
-    const recipeSlots = props.itemRecipe();
+    const recipeSlots = props.recipe();
 
     provideBreadcrumbItemContext({ slots: recipeSlots });
 

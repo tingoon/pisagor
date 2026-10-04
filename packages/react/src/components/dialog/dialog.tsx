@@ -12,21 +12,17 @@ import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog";
 import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
-import { type DialogVariantProps, dialogRecipe } from "@pisagor/recipes/dialog";
+import type { DialogProps as DialogRootSharedProps } from "@pisagor/props";
+import { type DialogVariantProps, dialogRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
 import { Button } from "../button";
 import { ScrollArea } from "../scroll-area";
 import { DialogContext, useDialog } from "./dialog.context";
 
 // #region Types
-export interface DialogRootProps extends DialogPrimitiveRootProps {
-  /**
-   * Style recipe. Defaults to `dialogRecipe` from `@pisagor/recipes/dialog`.
-   *
-   * @defaultValue dialogRecipe
-   */
-  recipe?: typeof dialogRecipe;
-}
+export interface DialogRootProps
+  extends DialogPrimitiveRootProps,
+    DialogRootSharedProps {}
 
 export interface DialogContentProps
   extends DialogPrimitiveContentProps,

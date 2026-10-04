@@ -4,14 +4,14 @@ import Sidebar from "#/components/docs/sidebar.astro";
 import TableOfContents from "#/components/docs/table-of-contents.astro";
 import Header from "#/components/header.astro";
 import type { Framework } from "#/lib/nav";
-import { getDocsArea, getSidebarNav, mainNav, stripDocsBase } from "#/lib/nav";
+import { getDocsArea, getSidebarNav, stripDocsBase } from "#/lib/nav";
 import "#/styles/global.css";
 
 interface Props {
   framework: Framework;
   title: string;
   description?: string;
-  /** Override the small label above the title (defaults from docs area). */
+  /** Optional small label above the title (intro defaults to “Get started”). */
   kicker?: string;
   headings?: { depth: number; slug: string; text: string }[];
 }
@@ -22,11 +22,7 @@ const framework = Astro.props.framework;
 const sidebarSections = getSidebarNav(framework, area);
 const pathParts = stripDocsBase(currentPath).split("/").filter(Boolean);
 const isIntro = pathParts.length === 1;
-const kicker =
-  Astro.props.kicker ??
-  (isIntro
-    ? "Get started"
-    : (mainNav.find((item) => item.id === area)?.label ?? "Docs"));
+const kicker = Astro.props.kicker ?? (isIntro ? "Get started" : undefined);
 const description = Astro.props.description ?? "Pisagor UI documentation";
 const title = Astro.props.title;
 const headings = Astro.props.headings ?? [];
@@ -38,7 +34,7 @@ const headings = Astro.props.headings ?? [];
     <BaseHead description={description} title={title} />
   </head>
   <body>
-    <div class="relative z-10 min-h-dvh">
+    <div class="relative z-10 min-h-dvh bg-background">
       <Header
         area={area}
         currentPath={currentPath}
@@ -46,20 +42,28 @@ const headings = Astro.props.headings ?? [];
         sections={sidebarSections}
       />
 
-      <div class="mx-auto flex max-w-384">
+      <div class="mx-auto flex w-full max-w-6xl px-4 sm:px-5">
         <Sidebar area={area} currentPath={currentPath} framework={framework} />
-        <main
-          class="docs-main min-w-0 max-w-3xl flex-1 px-4 py-10 sm:px-8 lg:max-w-208 lg:px-10"
-        >
+        <main class="docs-main min-w-0 flex-1 px-4 py-6 sm:px-6">
           <header class="mb-6">
-            <p class="docs-kicker">{kicker}</p>
+            {kicker ? <p class="docs-kicker">{kicker}</p> : null}
             <h1 class="docs-title">{title}</h1>
             {description ? <p class="docs-lead mt-3">{description}</p> : null}
           </header>
+          <slot name="hero" />
           <slot name="nav" />
           <slot />
         </main>
-        <TableOfContents headings={headings} />
+        {Astro.slots.has("toc-actions") ? (
+  <aside class="scrollbar-thin sticky top-12 hidden h-[calc(100dvh-3rem)] w-[170px] shrink-0 overflow-y-auto py-6 ps-3 [scrollbar-color:color-mix(in_oklab,var(--border)_80%,transparent)_transparent] xl:block">
+    <div class="mb-5">
+      <slot name="toc-actions" />
+    </div>
+    <TableOfContents bare headings={headings} />
+  </aside>
+) : (
+  <TableOfContents headings={headings} />
+)}
       </div>
     </div>
   </body>

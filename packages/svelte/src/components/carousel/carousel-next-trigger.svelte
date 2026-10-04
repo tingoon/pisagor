@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { CarouselNextTriggerProps } from "@ark-ui/svelte/carousel";
 import { Carousel as CarouselPrimitive } from "@ark-ui/svelte/carousel";
-import { buttonRecipe } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 import { useCarousel } from "./carousel.context";

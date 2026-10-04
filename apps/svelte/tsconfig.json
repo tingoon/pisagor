@@ -1,15 +1,5 @@
 {
   "compilerOptions": {
-    "noEmit": true,
-    "paths": {
-      "@pisagor/svelte": ["../../packages/svelte/src/components/index.ts"],
-      "@pisagor/svelte-form": [
-        "../../packages/svelte-form/src/fields/index.ts"
-      ],
-      "@pisagor/svelte-form/*": ["../../packages/svelte-form/src/*"],
-      "@pisagor/svelte/*": ["../../packages/svelte/src/components/*"],
-      "@pisagor/utils": ["../../packages/utils/src/index.ts"]
-    },
     "types": []
   },
   "extends": "../../tsconfig.json",

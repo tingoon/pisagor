@@ -1,7 +1,5 @@
-import {
-  type DataGridRecipe,
-  dataGridRecipe,
-} from "@pisagor/recipes/data-grid";
+import type { DataGridProps as DataGridSharedProps } from "@pisagor/props";
+import { type DataGridRecipe, dataGridRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type {
   Cell,
@@ -58,12 +56,6 @@ interface DataGridRowContextValue<TData extends RowData> {
  * @typeParam TData - Row shape passed to `columns` and `data`.
  */
 export type DataGridProps<TData extends RowData = RowData> = {
-  /**
-   * Style recipe. Defaults to `dataGridRecipe` from `@pisagor/recipes/data-grid`.
-   *
-   * @defaultValue dataGridRecipe
-   */
-  recipe?: typeof dataGridRecipe;
   class?: unknown;
   /**
    * TanStack Table features. Defaults to the DataGrid kitchen-sink preset.
@@ -71,7 +63,8 @@ export type DataGridProps<TData extends RowData = RowData> = {
    * @defaultValue dataGridFeatures
    */
   features?: DataGridFeatures;
-} & Omit<TableOptions<DataGridFeatures, TData>, "features">;
+} & DataGridSharedProps &
+  Omit<TableOptions<DataGridFeatures, TData>, "features">;
 
 interface DataGridHeadProps {
   class?: unknown;
@@ -92,28 +85,21 @@ interface DataGridHeadProps {
 // #endregion
 
 // #region Context + Hooks
-const [provideDataGridContext, useDataGridContextBase] = createContext<
-  DataGridContextValue<RowData>
->({
-  name: "DataGrid",
-});
+const [provideDataGridContext, useDataGridContextBase] =
+  createContext("DataGrid")<DataGridContextValue<RowData>>();
 
 const [provideDataGridHeaderGroupContext, useDataGridHeaderGroupContextBase] =
-  createContext<DataGridHeaderGroupContextValue<RowData>>({
-    name: "DataGridHeaderGroup",
-  });
+  createContext("DataGridHeaderGroup")<
+    DataGridHeaderGroupContextValue<RowData>
+  >();
 
 const [provideDataGridHeaderCellContext, useDataGridHeaderCellContextBase] =
-  createContext<DataGridHeaderCellContextValue<RowData>>({
-    name: "DataGridHeaderCell",
+  createContext("DataGridHeaderCell")<DataGridHeaderCellContextValue<RowData>>({
     strict: false,
   });
 
-const [provideDataGridRowContext, useDataGridRowContextBase] = createContext<
-  DataGridRowContextValue<RowData>
->({
-  name: "DataGridRow",
-});
+const [provideDataGridRowContext, useDataGridRowContextBase] =
+  createContext("DataGridRow")<DataGridRowContextValue<RowData>>();
 
 /**
  * Returns the TanStack Table instance from the nearest DataGrid context.

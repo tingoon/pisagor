@@ -3,6 +3,7 @@
     "url": "https://github.com/tingoon/pisagor/issues"
   },
   "dependencies": {
+    "@pisagor/props": "workspace:*",
     "@pisagor/recipes": "workspace:*",
     "@pisagor/tokens": "workspace:*",
     "@pisagor/utils": "workspace:*",
@@ -49,7 +50,6 @@
     "./visually-hidden": "./src/components/visually-hidden/index.ts"
   },
   "files": [
-    "catalog.gen.json",
     "skills",
     "src",
     "!**/*.stories.*",

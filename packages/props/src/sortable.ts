@@ -2,7 +2,7 @@ import type {
   SortableItemRecipeFn,
   SortableRecipeFn,
   SortableVariantProps,
-} from "@pisagor/recipes/sortable";
+} from "@pisagor/recipes";
 
 /** Sortable props. */
 export interface SortableProps extends SortableVariantProps {

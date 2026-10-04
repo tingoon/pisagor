@@ -5,7 +5,8 @@ import type {
   DialogTriggerProps,
 } from "@ark-ui/solid/dialog";
 import { Dialog as DialogPrimitive } from "@ark-ui/solid/dialog";
-import { type SheetVariantProps, sheetRecipe } from "@pisagor/recipes/sheet";
+import type { SheetProps as SheetSharedProps } from "@pisagor/props";
+import { type SheetVariantProps, sheetRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -32,9 +33,9 @@ export interface SheetContentProps
   showCloseButton?: boolean;
 }
 
-export interface SheetProps extends Omit<DialogRootProps, "recipe"> {
-  recipe?: typeof sheetRecipe;
-}
+export interface SheetProps
+  extends Omit<DialogRootProps, "recipe">,
+    SheetSharedProps {}
 
 export type SheetTriggerProps = DialogTriggerProps;
 export type SheetCloseTriggerProps = DialogCloseTriggerProps;

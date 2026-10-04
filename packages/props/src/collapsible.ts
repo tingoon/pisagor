@@ -1,4 +1,4 @@
-import type { CollapsibleRecipeFn } from "@pisagor/recipes/collapsible";
+import type { CollapsibleRecipeFn } from "@pisagor/recipes";
 
 /** Collapsible props. */
 export interface CollapsibleProps {

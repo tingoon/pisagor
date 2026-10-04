@@ -1,13 +1,12 @@
-import type { SelectRecipe } from "@pisagor/recipes/select";
+import type { SelectRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 export interface SelectRootContextValue {
   slots: SelectRecipe;
 }
 
-const ctx = createContext<SelectRootContextValue | undefined>({
+const ctx = createContext("SelectRoot")<SelectRootContextValue | undefined>({
   defaultValue: undefined,
-  name: "SelectRoot",
   strict: false,
 });
 

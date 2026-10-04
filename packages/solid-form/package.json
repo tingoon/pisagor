@@ -2,13 +2,11 @@
   "bugs": {
     "url": "https://github.com/tingoon/pisagor/issues"
   },
-  "dependencies": {
-    "@pisagor/solid": "workspace:*",
-    "@pisagor/utils": "workspace:*",
-    "@tanstack/solid-form": "^1.33.5"
-  },
   "description": "Labeled form fields and TanStack Form bindings for @pisagor/solid.",
   "devDependencies": {
+    "@pisagor/solid": "workspace:*",
+    "@pisagor/utils": "workspace:*",
+    "@tanstack/solid-form": "^1.33.5",
     "solid-js": "catalog:"
   },
   "exports": {
@@ -17,7 +15,6 @@
     "./tanstack": "./src/tanstack/index.ts"
   },
   "files": [
-    "catalog.gen.json",
     "skills",
     "src",
     "!**/*.stories.*",
@@ -27,8 +24,15 @@
   "license": "MIT",
   "name": "@pisagor/solid-form",
   "peerDependencies": {
+    "@pisagor/solid": "workspace:^",
+    "@tanstack/solid-form": "^1.33.5",
     "solid-js": "^1",
     "tailwindcss": "^4"
+  },
+  "peerDependenciesMeta": {
+    "@tanstack/solid-form": {
+      "optional": true
+    }
   },
   "repository": {
     "directory": "packages/solid-form",

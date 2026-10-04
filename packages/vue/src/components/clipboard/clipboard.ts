@@ -1,11 +1,12 @@
 import { Clipboard as ClipboardPrimitive } from "@ark-ui/vue/clipboard";
 import { PhCheck, PhClipboard } from "@phosphor-icons/vue";
+import type { ClipboardProps as ClipboardSharedProps } from "@pisagor/props";
 import {
   type ClipboardRecipeSlot,
   type ClipboardVariantProps,
   clipboardRecipe,
-} from "@pisagor/recipes/clipboard";
-import { formControlShellRecipe } from "@pisagor/recipes/form-control";
+  formControlShellRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -19,23 +20,7 @@ type ClipboardClassNames = VariantClassNames<ClipboardRecipeSlot>;
 
 type ClipboardValueSize = ClipboardVariantProps["valueSize"];
 
-export interface ClipboardProps extends ClipboardVariantProps {
-  /** Accessible label for icon-only copy buttons */
-  buttonAriaLabel?: string;
-  /**
-   * Size of the copy button.
-   *
-   * @defaultValue "icon-md"
-   */
-  buttonSize?: ButtonProps["size"];
-  /** Variant of the copy button */
-  buttonVariant?: ButtonProps["variant"];
-  /**
-   * Style recipe. Defaults to `clipboardRecipe` from `@pisagor/recipes/clipboard`.
-   *
-   * @defaultValue clipboardRecipe
-   */
-  recipe?: typeof clipboardRecipe;
+export interface ClipboardProps extends ClipboardSharedProps {
   class?: unknown;
   /** Slot class names */
   classNames?: ClipboardClassNames;

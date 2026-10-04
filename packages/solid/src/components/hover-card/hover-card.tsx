@@ -5,16 +5,17 @@ import type {
   HoverCardTriggerProps,
 } from "@ark-ui/solid/hover-card";
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/solid/hover-card";
-import { hoverCardRecipe } from "@pisagor/recipes/hover-card";
+import type { HoverCardProps as HoverCardRootSharedProps } from "@pisagor/props";
+import { hoverCardRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import { HoverCardContext, useHoverCard } from "./hover-card.context";
 
-export interface HoverCardRootProps extends HoverCardPrimitiveRootProps {
-  recipe?: typeof hoverCardRecipe;
-}
+export interface HoverCardRootProps
+  extends HoverCardPrimitiveRootProps,
+    HoverCardRootSharedProps {}
 
 export type HoverCardProps = HoverCardRootProps;
 

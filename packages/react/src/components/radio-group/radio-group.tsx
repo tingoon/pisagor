@@ -5,11 +5,16 @@ import type {
   RadioGroupRootProps as RadioGroupPrimitiveRootProps,
 } from "@ark-ui/react/radio-group";
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/react/radio-group";
-import { formControlRadioToggleRecipe } from "@pisagor/recipes/form-control";
+import type {
+  RadioGroupItemProps as RadioGroupItemSharedProps,
+  RadioGroupProps as RadioGroupRootSharedProps,
+} from "@pisagor/props";
 import {
+  formControlRadioToggleRecipe,
   radioGroupItemRecipe,
   radioGroupRecipe,
-} from "@pisagor/recipes/radio-group";
+} from "@pisagor/recipes";
+
 import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
 import { Field } from "../field";
@@ -25,29 +30,20 @@ interface RadioGroupPresetItem {
 }
 
 export interface RadioGroupRootProps
-  extends Omit<RadioGroupPrimitiveRootProps, "onValueChange"> {
+  extends Omit<RadioGroupPrimitiveRootProps, "onValueChange">,
+    RadioGroupRootSharedProps {
   onValueChange?: (value: string | null) => void;
-  /**
-   * Style recipe. Defaults to `radioGroupRecipe` from `@pisagor/recipes/radio-group`.
-   *
-   * @defaultValue radioGroupRecipe
-   */
-  recipe?: typeof radioGroupRecipe;
 }
 
 export interface RadioGroupProps extends Omit<RadioGroupRootProps, "children"> {
   items?: RadioGroupPresetItem[];
 }
 
-export interface RadioGroupItemProps extends RadioGroupPrimitiveItemProps {
+export interface RadioGroupItemProps
+  extends RadioGroupPrimitiveItemProps,
+    RadioGroupItemSharedProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-  /**
-   * Style recipe. Defaults to `radioGroupItemRecipe` from `@pisagor/recipes/radio-group`.
-   *
-   * @defaultValue radioGroupItemRecipe
-   */
-  recipe?: typeof radioGroupItemRecipe;
 }
 
 // #endregion

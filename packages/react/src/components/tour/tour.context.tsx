@@ -1,5 +1,6 @@
 import type { UseTourReturn } from "@ark-ui/react/tour";
-import type { TourRecipe } from "@pisagor/recipes/tour";
+import type { TourRecipe } from "@pisagor/recipes";
+
 import { createContext } from "../../utils";
 
 export interface TourProviderProps {
@@ -13,6 +14,4 @@ export interface TourProviderProps {
 
 /** Returns the nearest tour context. */
 export const { TourContext, useTour: useTourContext } =
-  createContext<TourProviderProps>()({
-    name: "Tour",
-  });
+  createContext("Tour")<TourProviderProps>();

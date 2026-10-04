@@ -1,7 +1,4 @@
-import type {
-  ListboxItemRecipe,
-  ListboxRecipe,
-} from "@pisagor/recipes/listbox";
+import type { ListboxItemRecipe, ListboxRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 interface ListboxContextValue {
@@ -13,11 +10,12 @@ interface ListboxItemContextValue {
 }
 
 export const { setContext: setListboxContext, getContext: useListbox } =
-  createContext<ListboxContextValue>({ name: "Listbox" });
+  createContext("Listbox")<ListboxContextValue>();
 
-const itemCtx = createContext<ListboxItemContextValue | undefined>({
+const itemCtx = createContext("ListboxItem")<
+  ListboxItemContextValue | undefined
+>({
   defaultValue: undefined,
-  name: "ListboxItem",
   strict: false,
 });
 

@@ -121,7 +121,6 @@
     "./visually-hidden": "./src/visually-hidden.ts"
   },
   "files": [
-    "catalog.gen.json",
     "skills",
     "src"
   ],

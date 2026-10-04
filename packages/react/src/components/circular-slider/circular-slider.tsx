@@ -11,7 +11,8 @@ import {
   AngleSlider as AngleSliderPrimitive,
   useAngleSliderContext,
 } from "@ark-ui/react/angle-slider";
-import { circularSliderRecipe } from "@pisagor/recipes/circular-slider";
+import type { CircularSliderProps as CircularSliderSharedProps } from "@pisagor/props";
+import { circularSliderRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { useMemo } from "react";
 import { Field } from "../field";
@@ -31,18 +32,13 @@ export type CircularSliderRootProps = Omit<
 
 export interface CircularSliderProps
   extends CircularSliderRootProps,
-    Partial<Pick<CircularSliderContextValue, "thickness" | "size">> {
+    Partial<Pick<CircularSliderContextValue, "thickness" | "size">>,
+    CircularSliderSharedProps {
   markers?: boolean | number[];
   markersAtSteps?: boolean;
   onValueChange?: (value: number) => void;
   /** Extra props forwarded to the hidden input element */
   hiddenInputProps?: Omit<CircularSliderHiddenInputProps, "className">;
-  /**
-   * Style recipe. Defaults to `circularSliderRecipe` from `@pisagor/recipes/circular-slider`.
-   *
-   * @defaultValue circularSliderRecipe
-   */
-  recipe?: typeof circularSliderRecipe;
 }
 
 export interface CircularSliderControlProps extends AngleSliderControlProps {

@@ -1,13 +1,16 @@
+import type {
+  InputGroupAddonProps as InputGroupAddonSharedProps,
+  InputGroupButtonProps as InputGroupButtonSharedProps,
+  InputGroupTextProps as InputGroupTextSharedProps,
+} from "@pisagor/props";
 import {
   type FormControlGroupShellVariantProps,
   formControlGroupShellRecipe,
-} from "@pisagor/recipes/form-control";
-import {
   inputGroupAddonRecipe,
   inputGroupButtonRecipe,
   inputGroupRootRecipe,
   inputGroupTextRecipe,
-} from "@pisagor/recipes/input-group";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { Button, type ButtonProps } from "../button/button";
@@ -23,36 +26,19 @@ export interface InputGroupProps extends FormControlGroupShellVariantProps {
   class?: unknown;
 }
 
-export interface InputGroupAddonProps {
+export interface InputGroupAddonProps extends InputGroupAddonSharedProps {
   align?: "block-end" | "block-start" | "inline-end" | "inline-start";
-  /**
-   * Style recipe. Defaults to `inputGroupAddonRecipe` from `@pisagor/recipes/input-group`.
-   *
-   * @defaultValue inputGroupAddonRecipe
-   */
-  recipe?: typeof inputGroupAddonRecipe;
   class?: unknown;
 }
 
 export interface InputGroupButtonProps
-  extends Omit<ButtonProps, "size" | "recipe"> {
+  extends Omit<ButtonProps, "size" | "recipe">,
+    InputGroupButtonSharedProps {
   onClick?: (event: MouseEvent) => void;
   size?: InputGroupButtonSize;
-  /**
-   * Style recipe. Defaults to `inputGroupButtonRecipe` from `@pisagor/recipes/input-group`.
-   *
-   * @defaultValue inputGroupButtonRecipe
-   */
-  recipe?: typeof inputGroupButtonRecipe;
 }
 
-export interface InputGroupTextProps {
-  /**
-   * Style recipe. Defaults to `inputGroupTextRecipe` from `@pisagor/recipes/input-group`.
-   *
-   * @defaultValue inputGroupTextRecipe
-   */
-  recipe?: typeof inputGroupTextRecipe;
+export interface InputGroupTextProps extends InputGroupTextSharedProps {
   class?: unknown;
 }
 // #endregion

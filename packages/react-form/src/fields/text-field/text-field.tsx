@@ -1,5 +1,4 @@
-import type { InputProps } from "@pisagor/react";
-import { Input } from "@pisagor/react";
+import { Input, type InputProps } from "@pisagor/react";
 import {
   type FieldPresentationProps,
   FieldShell,

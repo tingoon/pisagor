@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Select } from "@pisagor/svelte/select";
+import { Select } from "@pisagor/svelte";
 import type { ComponentProps, Snippet } from "svelte";
 import FieldShell from "../../internal/field-shell.svelte";
 

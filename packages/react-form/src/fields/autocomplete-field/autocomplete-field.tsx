@@ -1,5 +1,4 @@
-import type { AutocompleteProps } from "@pisagor/react";
-import { Autocomplete } from "@pisagor/react";
+import { Autocomplete, type AutocompleteProps } from "@pisagor/react";
 import {
   type FieldPresentationProps,
   FieldShell,

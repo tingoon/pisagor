@@ -2,7 +2,8 @@ import type {
   TreeViewBranchRecipe,
   TreeViewItemRecipe,
   TreeViewRecipe,
-} from "@pisagor/recipes/tree-view";
+} from "@pisagor/recipes";
+
 import type { JSX } from "react";
 import { createContext } from "../../utils";
 
@@ -24,17 +25,11 @@ interface TreeViewItemContextValue {
 }
 
 export const { TreeViewContext, useTreeView } =
-  createContext<TreeViewContextValue>()({
-    name: "TreeView",
-  });
+  createContext("TreeView")<TreeViewContextValue>();
 
 export const { TreeViewBranchContext, useTreeViewBranch } =
-  createContext<TreeViewBranchContextValue>()({
-    name: "TreeViewBranch",
-  });
+  createContext("TreeViewBranch")<TreeViewBranchContextValue>();
 
-export const { TreeViewItemContext, useTreeViewItem } =
-  createContext<TreeViewItemContextValue>()({
-    name: "TreeViewItem",
-    strict: false,
-  });
+export const { TreeViewItemContext, useTreeViewItem } = createContext(
+  "TreeViewItem",
+)<TreeViewItemContextValue>({ strict: false });

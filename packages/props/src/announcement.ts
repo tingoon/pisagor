@@ -1,4 +1,4 @@
-import type { AnnouncementRecipeFn } from "@pisagor/recipes/announcement";
+import type { AnnouncementRecipeFn } from "@pisagor/recipes";
 
 /** Announcement props. */
 export interface AnnouncementProps {

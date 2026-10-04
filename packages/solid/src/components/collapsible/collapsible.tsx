@@ -5,16 +5,17 @@ import {
   type CollapsibleRootProps as CollapsiblePrimitiveRootProps,
   type CollapsibleTriggerProps,
 } from "@ark-ui/solid/collapsible";
-import { collapsibleRecipe } from "@pisagor/recipes/collapsible";
+import type { CollapsibleProps as CollapsibleRootSharedProps } from "@pisagor/props";
+import { collapsibleRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { CaretDownIcon } from "../../internal/icons";
 import { CollapsibleContext, useCollapsible } from "./collapsible.context";
 
-export interface CollapsibleRootProps extends CollapsiblePrimitiveRootProps {
-  recipe?: typeof collapsibleRecipe;
-}
+export interface CollapsibleRootProps
+  extends CollapsiblePrimitiveRootProps,
+    CollapsibleRootSharedProps {}
 
 export function CollapsibleRoot(props: CollapsibleRootProps): JSX.Element {
   const [local, rest] = splitProps(props, [

@@ -1,5 +1,4 @@
-import type { AutocompleteProps } from "@pisagor/vue";
-import { Autocomplete } from "@pisagor/vue";
+import { Autocomplete, type AutocompleteProps } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import {
   type FieldPresentationProps,

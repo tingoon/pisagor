@@ -1,4 +1,4 @@
-import type { ActionBarRecipe } from "@pisagor/recipes/action-bar";
+import type { ActionBarRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 interface ActionBarPositioning {
@@ -16,6 +16,6 @@ export interface ActionBarContextValue {
   unmountOnExit?: boolean;
 }
 
-const ctx = createContext<ActionBarContextValue>({ name: "ActionBar" });
+const ctx = createContext("ActionBar")<ActionBarContextValue>();
 export const setActionBarContext = ctx.setContext;
 export const useActionBar = ctx.getContext;

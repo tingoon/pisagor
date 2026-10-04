@@ -1,4 +1,4 @@
-import type { MarqueeRecipeFn } from "@pisagor/recipes/marquee";
+import type { MarqueeRecipeFn } from "@pisagor/recipes";
 
 /** Marquee props. */
 export interface MarqueeProps {

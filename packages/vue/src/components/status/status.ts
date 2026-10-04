@@ -1,16 +1,11 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type StatusVariantProps, statusRecipe } from "@pisagor/recipes/status";
+import type { StatusProps as StatusSharedProps } from "@pisagor/props";
+import { statusRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
-export interface StatusProps extends StatusVariantProps {
-  /**
-   * Style recipe. Defaults to `statusRecipe` from `@pisagor/recipes/status`.
-   *
-   * @defaultValue statusRecipe
-   */
-  recipe?: typeof statusRecipe;
+export interface StatusProps extends StatusSharedProps {
   class?: unknown;
 }
 // #endregion

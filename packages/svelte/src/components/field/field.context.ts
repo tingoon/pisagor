@@ -1,14 +1,12 @@
-import type { FieldRecipe } from "@pisagor/recipes/field";
-import { fieldRecipe } from "@pisagor/recipes/field";
+import { type FieldRecipe, fieldRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 interface FieldContextValue {
   slots: FieldRecipe;
 }
 
-const ctx = createContext<FieldContextValue | undefined>({
+const ctx = createContext("Field")<FieldContextValue | undefined>({
   defaultValue: undefined,
-  name: "Field",
   strict: false,
 });
 

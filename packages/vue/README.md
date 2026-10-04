@@ -20,4 +20,4 @@ Form fields: [`@pisagor/vue-form`](../vue-form) and `@pisagor/vue-form/tanstack`
 
 See the [root README](../../README.md) for Tailwind setup.
 
-Agents: prefer [`@pisagor/mcp`](../mcp) (`bunx @pisagor/mcp`). This package also ships Intent skills under `skills/`.
+Agents: prefer [`@pisagor/mcp`](../mcp) (`bunx @pisagor/mcp`).

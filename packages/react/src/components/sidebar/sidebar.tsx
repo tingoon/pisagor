@@ -1,8 +1,13 @@
 import { useHotkey } from "@ark-ui/react";
 import { ark } from "@ark-ui/react/factory";
 import { SidebarSimpleIcon } from "@phosphor-icons/react";
-import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes/button";
-import { sidebarRecipe } from "@pisagor/recipes/sidebar";
+import type { SidebarProps as SidebarProviderSharedProps } from "@pisagor/props";
+import {
+  type ButtonVariantProps,
+  buttonRecipe,
+  sidebarRecipe,
+} from "@pisagor/recipes";
+
 import { cn } from "@pisagor/utils";
 import {
   type ComponentProps,
@@ -26,7 +31,9 @@ import {
 } from "./sidebar.context";
 
 // #region Types
-export interface SidebarProviderProps extends ComponentProps<"div"> {
+export interface SidebarProviderProps
+  extends ComponentProps<"div">,
+    SidebarProviderSharedProps {
   /**
    * The default open state of the sidebar.
    *
@@ -50,15 +57,10 @@ export interface SidebarProviderProps extends ComponentProps<"div"> {
    * Each update also persists the expanded/collapsed state in `localStorage` under the `sidebar_state` key.
    */
   onOpenChange?: (open: boolean) => void;
-  /**
-   * Style recipe. Defaults to `sidebarRecipe` from `@pisagor/recipes/sidebar`.
-   *
-   * @defaultValue sidebarRecipe
-   */
-  recipe?: typeof sidebarRecipe;
 }
 
-export interface SidebarProps extends SheetProps {
+export interface SidebarProps
+  extends Omit<SheetProps, "placement" | "recipe" | "variant"> {
   placement?: "left" | "right";
   variant?: "sidebar" | "floating" | "inset";
   collapsible?: "offcanvas" | "icon" | "none";

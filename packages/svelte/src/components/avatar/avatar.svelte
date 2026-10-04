@@ -1,24 +1,20 @@
 <script lang="ts">
 import type { AvatarRootProps } from "@ark-ui/svelte/avatar";
 import { Avatar as AvatarPrimitive } from "@ark-ui/svelte/avatar";
-import {
-  type AvatarRecipeSlot,
-  type AvatarVariantProps,
-  avatarRecipe,
-} from "@pisagor/recipes/avatar";
+import type { AvatarProps as AvatarSharedProps } from "@pisagor/props";
+import { type AvatarRecipeSlot, avatarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import { setAvatarContext } from "./avatar.context";
 
 type Props = Omit<AvatarRootProps, "class" | "children"> &
-  AvatarVariantProps & {
+  {
     alt?: string;
     class?: string | undefined;
     classNames?: Partial<Record<AvatarRecipeSlot, string>>;
     fallback?: string | Snippet;
-    recipe?: typeof avatarRecipe;
     src?: string;
-  };
+  } & AvatarSharedProps;
 
 let {
   shape = "circle",

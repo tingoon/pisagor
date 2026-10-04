@@ -1,14 +1,16 @@
 import { ark } from "@ark-ui/solid/factory";
-import { tableRecipe } from "@pisagor/recipes/table";
+import type { TableProps as TableSharedProps } from "@pisagor/props";
+import { tableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { TableContext, useTable } from "./table.context";
 
-export interface TableProps extends ComponentProps<typeof ark.table> {
+export interface TableProps
+  extends ComponentProps<typeof ark.table>,
+    TableSharedProps {
   variant?: "plain" | "striped";
   isHoverable?: boolean;
-  recipe?: typeof tableRecipe;
 }
 
 export type TableHeaderProps = ComponentProps<typeof ark.thead>;

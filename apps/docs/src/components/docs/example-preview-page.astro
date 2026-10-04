@@ -1,0 +1,86 @@
+---
+import BaseHead from "#/components/base-head.astro";
+import { ReactExampleIsland } from "#/components/docs/react-example-island";
+import { SolidExampleIsland } from "#/components/docs/solid-example-island";
+import SvelteExampleIsland from "#/components/docs/svelte-example-island.svelte";
+import VueExampleIsland from "#/components/docs/vue-example-island.vue";
+import {
+  type ComponentDocKind,
+  getExampleExport,
+  loadExamples,
+  loadSkillMd,
+} from "#/lib/component-doc";
+import type { Framework } from "#/lib/nav";
+import "#/styles/global.css";
+
+interface Props {
+  framework: Framework;
+  kind: ComponentDocKind;
+  id: string;
+  example: string;
+}
+
+const { framework, kind, id, example } = Astro.props;
+const examples = loadExamples(framework, id, kind);
+const exampleExport = getExampleExport(examples, example);
+const AstroExample =
+  framework === "astro"
+    ? (exampleExport as (props?: Record<string, unknown>) => unknown)
+    : null;
+const { frontmatter } = await loadSkillMd(framework, id, kind);
+const title = `${frontmatter.title ?? id} · ${example}`;
+---
+
+<!doctype html>
+<html data-framework={framework} data-preview-standalone lang="en">
+  <head>
+    <BaseHead description={`Live preview: ${title}`} title={title} />
+    <!-- Query theme must be client-side — static pages ignore search params. -->
+    <script is:inline>
+    (() => {
+      const theme = new URLSearchParams(location.search).get("theme");
+      if (theme !== "dark" && theme !== "light") return;
+      document.documentElement.classList.toggle("dark", theme === "dark");
+      document.documentElement.classList.toggle("light", theme === "light");
+      document.documentElement.style.colorScheme = theme;
+    })();
+    </script>
+  </head>
+  <body class="m-0 min-h-dvh bg-background p-0 text-foreground">
+    <main class="min-h-dvh w-full">
+      {framework === "react" ? (
+  <ReactExampleIsland
+    client:only="react"
+    componentId={id}
+    exportName={example}
+    kind={kind}
+  />
+) : null}
+      {framework === "vue" ? (
+  <VueExampleIsland
+    client:only="vue"
+    componentId={id}
+    exportName={example}
+    kind={kind}
+  />
+) : null}
+      {framework === "solid" ? (
+  <SolidExampleIsland
+    client:only="solid-js"
+    componentId={id}
+    exportName={example}
+    kind={kind}
+  />
+) : null}
+      {framework === "svelte" ? (
+  <SvelteExampleIsland
+    client:only="svelte"
+    componentId={id}
+    exportName={example}
+    kind={kind}
+  />
+) : null}
+      {framework === "astro" && AstroExample ? <AstroExample /> : null}
+    </main>
+  </body>
+</html>

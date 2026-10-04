@@ -1,15 +1,15 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { type KbdVariantProps, kbdRecipe } from "@pisagor/recipes/kbd";
+import type { KbdProps as KbdSharedProps } from "@pisagor/props";
+import { kbdRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
 type Props = Omit<HTMLAttributes<HTMLElement>, "class"> &
-  KbdVariantProps & {
+  {
     children?: import("svelte").Snippet;
     class?: string | undefined;
-    recipe?: typeof kbdRecipe;
-  };
+  } & KbdSharedProps;
 
 let {
   variant = "default",

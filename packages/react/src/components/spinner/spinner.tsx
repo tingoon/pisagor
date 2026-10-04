@@ -1,16 +1,12 @@
 import { CircleNotchIcon } from "@phosphor-icons/react";
-import { spinnerRecipe } from "@pisagor/recipes/spinner";
+import type { SpinnerProps as SpinnerSharedProps } from "@pisagor/props";
+import { spinnerRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 
 // #region Types
-export interface SpinnerProps extends ComponentProps<"svg"> {
-  /**
-   * Style recipe. Defaults to `spinnerRecipe` from `@pisagor/recipes/spinner`.
-   *
-   * @defaultValue spinnerRecipe
-   */
-  recipe?: typeof spinnerRecipe;
-}
+export interface SpinnerProps
+  extends ComponentProps<"svg">,
+    SpinnerSharedProps {}
 // #endregion
 
 // #region Component

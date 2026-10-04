@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ListboxItemTextProps } from "@ark-ui/svelte/listbox";
 import { Listbox as ListboxPrimitive } from "@ark-ui/svelte/listbox";
-import { listboxItemRecipe } from "@pisagor/recipes/listbox";
+import { listboxItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useListboxItem } from "./listbox.context";
 

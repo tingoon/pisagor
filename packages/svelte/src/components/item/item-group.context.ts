@@ -1,10 +1,9 @@
-import type { ItemVariantProps } from "@pisagor/recipes/item";
+import type { ItemVariantProps } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 export type ItemGroupContextValue = ItemVariantProps;
 
-const ctx = createContext<ItemGroupContextValue>({
-  name: "ItemGroup",
+const ctx = createContext("ItemGroup")<ItemGroupContextValue>({
   strict: false,
 });
 

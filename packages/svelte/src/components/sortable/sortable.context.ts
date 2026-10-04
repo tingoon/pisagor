@@ -1,4 +1,4 @@
-import type { SortableItemRecipe } from "@pisagor/recipes/sortable";
+import type { SortableItemRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 export interface SortableContextValue {
@@ -20,8 +20,8 @@ interface SortableItemContextValue {
   slots: SortableItemRecipe;
 }
 
-const root = createContext<SortableContextValue>({ name: "Sortable" });
-const item = createContext<SortableItemContextValue>({ name: "SortableItem" });
+const root = createContext("Sortable")<SortableContextValue>();
+const item = createContext("SortableItem")<SortableItemContextValue>();
 
 export const setSortableContext = root.setContext;
 export const useSortable = root.getContext;

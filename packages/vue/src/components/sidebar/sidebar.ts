@@ -1,5 +1,6 @@
 import { PhSidebarSimple } from "@phosphor-icons/vue";
-import { sidebarRecipe } from "@pisagor/recipes/sidebar";
+import type { SidebarProps as SidebarProviderSharedProps } from "@pisagor/props";
+import { sidebarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];
@@ -32,25 +33,9 @@ export interface SidebarProps {
   variant?: SidebarVariant;
 }
 
-export interface SidebarProviderProps extends Omit<SidebarProps, "className"> {
-  /**
-   * The default open state of the sidebar.
-   *
-   * @defaultValue true
-   */
-  defaultOpen?: boolean;
-  /**
-   * Controlled open state.
-   */
-  open?: boolean;
-  onOpenChange?: (open: boolean) => void;
-  /**
-   * Style recipe. Defaults to `sidebarRecipe` from `@pisagor/recipes/sidebar`.
-   *
-   * @defaultValue sidebarRecipe
-   */
-  recipe?: typeof sidebarRecipe;
-}
+export interface SidebarProviderProps
+  extends Omit<SidebarProps, "className">,
+    SidebarProviderSharedProps {}
 
 interface SidebarContextValue {
   isMobile: boolean;
@@ -66,11 +51,9 @@ interface SidebarContextValue {
 // #endregion
 
 // #region Context
-const [provideSidebarContext, useSidebarContext] =
-  createContext<SidebarContextValue>({
-    name: "Sidebar",
-    strict: false,
-  });
+const [provideSidebarContext, useSidebarContext] = createContext(
+  "Sidebar",
+)<SidebarContextValue>({ strict: false });
 
 export const useSidebar = () => useSidebarContext();
 // #endregion

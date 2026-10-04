@@ -1,5 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
-import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes/item";
+import type { ItemProps as ItemSharedProps } from "@pisagor/props";
+import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
@@ -8,9 +9,7 @@ import { useItemGroup } from "./item-group.context";
 
 export interface ItemProps
   extends ComponentProps<typeof ark.div>,
-    ItemVariantProps {
-  recipe?: typeof itemRecipe;
-}
+    ItemSharedProps {}
 
 export type ItemMediaProps = ComponentProps<typeof ark.div> & ItemVariantProps;
 export type ItemHeaderProps = ComponentProps<typeof ark.div>;

@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg
+  aria-label="Action bar over a recessed selection list"
+  fill="none"
+  role="img"
+  viewBox="0 0 800 450"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <title>Action bar anatomy</title>
+  <defs>
+    <linearGradient id="ab-glass" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#000" stop-opacity="0.58" />
+    </linearGradient>
+    <linearGradient id="ab-row" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#000" stop-opacity="0.08" />
+    </linearGradient>
+    <filter
+      color-interpolation-filters="sRGB"
+      filterUnits="userSpaceOnUse"
+      height="168"
+      id="ab-lift"
+      width="812"
+      x="-6"
+      y="198"
+    >
+      <feDropShadow
+        dx="0"
+        dy="16"
+        flood-color="#000"
+        flood-opacity="0.28"
+        stdDeviation="20"
+      />
+    </filter>
+  </defs>
+  <g opacity="0.55">
+    <g>
+      <rect
+        fill="url(#ab-row)"
+        height="20.16"
+        rx="6"
+        width="374.4"
+        x="212.8"
+        y="72"
+      />
+      <rect
+        fill="#fff"
+        fill-opacity="0.75"
+        height="10"
+        rx="2.5"
+        stroke="#fff"
+        stroke-opacity="0.35"
+        stroke-width="1"
+        width="10"
+        x="224.8"
+        y="77.08"
+      />
+      <path
+        d="M227.3 82.08l2 2 3.8-4"
+        stroke="#000"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-opacity="0.55"
+        stroke-width="1.2"
+      />
+      <rect
+        fill="#fff"
+        fill-opacity="0.35"
+        height="5"
+        rx="2.5"
+        width="140"
+        x="244.8"
+        y="79.58"
+      />
+    </g>
+    <g>
+      <rect
+        fill="url(#ab-row)"
+        height="20.16"
+        rx="6"
+        width="374.4"
+        x="212.8"
+        y="97.92"
+      />
+      <rect
+        fill="#fff"
+        fill-opacity="0.75"
+        height="10"
+        rx="2.5"
+        stroke="#fff"
+        stroke-opacity="0.35"
+        stroke-width="1"
+        width="10"
+        x="224.8"
+        y="103"
+      />
+      <path
+        d="M227.3 108l2 2 3.8-4"
+        stroke="#000"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-opacity="0.55"
+        stroke-width="1.2"
+      />
+      <rect
+        fill="#fff"
+        fill-opacity="0.35"
+        height="5"
+        rx="2.5"
+        width="112"
+        x="244.8"
+        y="105.5"
+      />
+    </g>
+    <g>
+      <rect
+        fill="url(#ab-row)"
+        height="20.16"
+        rx="6"
+        width="374.4"
+        x="212.8"
+        y="123.84"
+      />
+      <rect
+        fill="#fff"
+        fill-opacity="0.75"
+        height="10"
+        rx="2.5"
+        stroke="#fff"
+        stroke-opacity="0.35"
+        stroke-width="1"
+        width="10"
+        x="224.8"
+        y="128.92000000000002"
+      />
+      <path
+        d="M227.3 133.92000000000002l2 2 3.8-4"
+        stroke="#000"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-opacity="0.55"
+        stroke-width="1.2"
+      />
+      <rect
+        fill="#fff"
+        fill-opacity="0.35"
+        height="5"
+        rx="2.5"
+        width="168"
+        x="244.8"
+        y="131.42000000000002"
+      />
+    </g>
+    <g>
+      <rect
+        fill="url(#ab-row)"
+        height="20.16"
+        rx="6"
+        width="374.4"
+        x="212.8"
+        y="149.76"
+      />
+      <rect
+        fill="transparent"
+        height="10"
+        rx="2.5"
+        stroke="#fff"
+        stroke-opacity="0.35"
+        stroke-width="1"
+        width="10"
+        x="224.8"
+        y="154.84"
+      />
+      <rect
+        fill="#fff"
+        fill-opacity="0.35"
+        height="5"
+        rx="2.5"
+        width="98"
+        x="244.8"
+        y="157.34"
+      />
+    </g>
+    <g>
+      <rect
+        fill="url(#ab-row)"
+        height="20.16"
+        rx="6"
+        width="374.4"
+        x="212.8"
+        y="175.68"
+      />
+      <rect
+        fill="transparent"
+        height="10"
+        rx="2.5"
+        stroke="#fff"
+        stroke-opacity="0.35"
+        stroke-width="1"
+        width="10"
+        x="224.8"
+        y="180.76000000000002"
+      />
+      <rect
+        fill="#fff"
+        fill-opacity="0.35"
+        height="5"
+        rx="2.5"
+        width="128"
+        x="244.8"
+        y="183.26000000000002"
+      />
+    </g>
+  </g>
+  <g filter="url(#ab-lift)">
+    <rect
+      fill="url(#ab-glass)"
+      height="72"
+      rx="32.400000000000006"
+      stroke="#fff"
+      stroke-opacity="0.28"
+      stroke-width="1.25"
+      width="716"
+      x="42"
+      y="234"
+    />
+  </g>
+  <text
+    fill="#fff"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="19.5"
+    font-weight="600"
+    letter-spacing="-0.01em"
+    x="57"
+    y="277.68"
+  >
+    3 selected
+  </text>
+  <line
+    stroke="#fff"
+    stroke-opacity="0.32"
+    stroke-width="1.25"
+    x1="201"
+    x2="201"
+    y1="256.56"
+    y2="283.44"
+  />
+
+  <g>
+    <rect
+      fill="#fff"
+      fill-opacity="0.12"
+      height="48"
+      rx="18"
+      width="114"
+      x="208"
+      y="246"
+    />
+    <g
+      stroke="#fff"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2.0250000000000004"
+      transform="translate(226 258) scale(1.5)"
+    >
+      <path d="M2.2 11.2 10.4 3l2.4 2.4-8.2 8.2H2.2v-2.4z" fill="none" />
+      <path d="m9.2 4.2 2.4 2.4" fill="none" />
+    </g>
+    <text
+      fill="#fff"
+      font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+      font-size="19.5"
+      font-weight="500"
+      x="262"
+      y="277.68"
+    >
+      Edit
+    </text>
+  </g>
+
+  <g>
+    <rect
+      fill="#fff"
+      fill-opacity="0.12"
+      height="48"
+      rx="18"
+      width="141"
+      x="328"
+      y="246"
+    />
+    <g
+      stroke="#fff"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2.0250000000000004"
+      transform="translate(346 258) scale(1.5)"
+    >
+      <path d="M8 2.5v7" fill="none" />
+      <path d="m5 7 3 3 3-3" fill="none" />
+      <path d="M3.5 12.5h9" fill="none" />
+    </g>
+    <text
+      fill="#fff"
+      font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+      font-size="19.5"
+      font-weight="500"
+      x="382"
+      y="277.68"
+    >
+      Export
+    </text>
+  </g>
+
+  <g>
+    <rect
+      fill="#fff"
+      fill-opacity="0.12"
+      height="48"
+      rx="18"
+      width="153"
+      x="475"
+      y="246"
+    />
+    <g
+      stroke="#fff"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2.0250000000000004"
+      transform="translate(493 258) scale(1.5)"
+    >
+      <path d="M2.5 4.5h11l-1 2.5H3.5l-1-2.5z" fill="none" />
+      <path d="M3.5 7v6.5a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7" fill="none" />
+      <path d="M6.5 9.5h3" fill="none" />
+    </g>
+    <text
+      fill="#fff"
+      font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+      font-size="19.5"
+      font-weight="500"
+      x="529"
+      y="277.68"
+    >
+      Archive
+    </text>
+  </g>
+  <line
+    stroke="#fff"
+    stroke-opacity="0.32"
+    stroke-width="1.25"
+    x1="634"
+    x2="634"
+    y1="256.56"
+    y2="283.44"
+  />
+  <rect
+    fill="#fff"
+    fill-opacity="0.12"
+    height="48"
+    rx="18"
+    width="48"
+    x="641"
+    y="246"
+  />
+  <g
+    stroke="#fff"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-opacity="0.92"
+    stroke-width="1.9500000000000002"
+    transform="translate(653 258) scale(1.5)"
+  >
+    <path d="M3 4.5h10" fill="none" />
+    <path
+      d="M5.5 4.5V3.2A1.2 1.2 0 0 1 6.7 2h2.6a1.2 1.2 0 0 1 1.2 1.2v1.3"
+      fill="none"
+    />
+    <path
+      d="M4.2 4.5l.7 9a1.2 1.2 0 0 0 1.2 1h3.8a1.2 1.2 0 0 0 1.2-1l.7-9"
+      fill="none"
+    />
+  </g>
+  <rect
+    fill="#fff"
+    fill-opacity="0.1"
+    height="48"
+    rx="18"
+    width="48"
+    x="695"
+    y="246"
+  />
+  <path
+    d="M710.36 261.36l17.28 17.28m0-17.28-17.28 17.28"
+    stroke="#fff"
+    stroke-linecap="round"
+    stroke-opacity="0.8"
+    stroke-width="2.0250000000000004"
+  />
+</svg>

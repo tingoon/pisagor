@@ -1,5 +1,5 @@
-import { fileInputRecipe } from "@pisagor/recipes/file-input";
-import { formControlGroupShellRecipe } from "@pisagor/recipes/form-control";
+import type { FileInputProps as FileInputSharedProps } from "@pisagor/props";
+import { fileInputRecipe, formControlGroupShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, ref } from "vue";
 import {
@@ -14,17 +14,11 @@ type FormControlVariant = "primary" | "secondary";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface FileInputProps {
+export interface FileInputProps extends FileInputSharedProps {
   accept?: string;
   /** Label for the browse button. */
   browseLabel?: string;
   capture?: "environment" | "user";
-  /**
-   * Style recipe. Defaults to `fileInputRecipe` from `@pisagor/recipes/file-input`.
-   *
-   * @defaultValue fileInputRecipe
-   */
-  recipe?: typeof fileInputRecipe;
   class?: unknown;
   disabled?: boolean;
   id?: string;

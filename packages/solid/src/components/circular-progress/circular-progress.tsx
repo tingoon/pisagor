@@ -5,10 +5,11 @@ import {
   type ProgressValueTextProps,
   useProgressContext,
 } from "@ark-ui/solid/progress";
+import type { CircularProgressProps as CircularProgressSharedProps } from "@pisagor/props";
 import {
   type CircularProgressRecipeSlot,
   circularProgressRecipe,
-} from "@pisagor/recipes/circular-progress";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -22,9 +23,8 @@ type CircularProgressTrackProps = ComponentProps<typeof ark.svg>;
 type CircularProgressValueProps = ProgressValueTextProps;
 type CircularProgressClassNames = VariantClassNames<CircularProgressRecipeSlot>;
 
-type CircularProgressRootProps = ProgressRootProps & {
-  recipe?: typeof circularProgressRecipe;
-};
+type CircularProgressRootProps = ProgressRootProps &
+  CircularProgressSharedProps;
 
 export interface CircularProgressProps
   extends Omit<CircularProgressRootProps, "children"> {

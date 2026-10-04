@@ -9,7 +9,8 @@ import type {
   SliderValueTextProps,
 } from "@ark-ui/react/slider";
 import { Slider as SliderPrimitive } from "@ark-ui/react/slider";
-import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes/slider";
+import type { SliderProps as SliderRootSharedProps } from "@pisagor/props";
+import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
@@ -27,13 +28,7 @@ type SliderClassNames = VariantClassNames<SliderRecipeSlot>;
 type SliderRootProps = SliderPrimitiveRootProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-  /**
-   * Style recipe. Defaults to `sliderRecipe` from `@pisagor/recipes/slider`.
-   *
-   * @defaultValue sliderRecipe
-   */
-  recipe?: typeof sliderRecipe;
-};
+} & SliderRootSharedProps;
 
 export interface SliderProps
   extends Omit<SliderRootProps, "children" | "onValueChange"> {

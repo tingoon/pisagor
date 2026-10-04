@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte/button";
+import { Button } from "@pisagor/svelte";
 import type { ComponentProps, Snippet } from "svelte";
 import { useFormContext } from "../contexts";
 

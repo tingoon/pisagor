@@ -1,4 +1,4 @@
-import type { NavbarRecipeFn } from "@pisagor/recipes/navbar";
+import type { NavbarRecipeFn } from "@pisagor/recipes";
 
 /** Navbar props. */
 export interface NavbarProps {

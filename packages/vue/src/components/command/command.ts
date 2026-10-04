@@ -2,9 +2,8 @@ import type { CollectionItem, ListCollection } from "@ark-ui/vue/collection";
 import { Combobox as ComboboxPrimitive } from "@ark-ui/vue/combobox";
 import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
 import { PhMagnifyingGlass } from "@phosphor-icons/vue";
-import { comboboxRecipe } from "@pisagor/recipes/combobox";
-import { commandRecipe } from "@pisagor/recipes/command";
-import { dialogRecipe } from "@pisagor/recipes/dialog";
+import type { CommandProps as CommandSharedProps } from "@pisagor/props";
+import { comboboxRecipe, commandRecipe, dialogRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
   defineComponent,
@@ -23,9 +22,12 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface CommandProps<T extends CollectionItem = CollectionItem>
-  extends ComboboxRootProps<T> {}
+  extends Omit<ComboboxRootProps<T>, "recipe">,
+    CommandSharedProps {}
 
-interface CommandDialogContentProps extends DialogContentProps {
+interface CommandDialogContentProps
+  extends DialogContentProps,
+    CommandSharedProps {
   /**
    * The description of the dialog
    *
@@ -38,12 +40,6 @@ interface CommandDialogContentProps extends DialogContentProps {
    * @defaultValue "Command Palette"
    */
   title?: string;
-  /**
-   * Style recipe. Defaults to `commandRecipe` from `@pisagor/recipes/command`.
-   *
-   * @defaultValue commandRecipe
-   */
-  recipe?: typeof commandRecipe;
 }
 
 interface CommandInputProps {

@@ -1,5 +1,4 @@
-import type { FieldLabelProps, FieldProps } from "@pisagor/solid";
-import { Field } from "@pisagor/solid";
+import { Field, type FieldLabelProps, type FieldProps } from "@pisagor/solid";
 import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 

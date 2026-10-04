@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { avatarGroupRecipe } from "@pisagor/recipes/avatar";
+import type { AvatarGroupProps as AvatarGroupSharedProps } from "@pisagor/props";
+import { avatarGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import Avatar from "./avatar.svelte";
@@ -8,12 +9,12 @@ import { setAvatarGroupContext } from "./avatar-group.context";
 
 type User = { fallback?: string; name?: string; src?: string };
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "children"> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "children"> &
+  {
   class?: string | undefined;
   max?: number;
-  recipe?: typeof avatarGroupRecipe;
   users: User[];
-};
+  } & AvatarGroupSharedProps;
 
 let { max, users, recipe = avatarGroupRecipe, class: className, ...rest }: Props = $props();
 

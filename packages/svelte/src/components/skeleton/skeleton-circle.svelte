@@ -1,14 +1,15 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { skeletonRecipe } from "@pisagor/recipes/skeleton";
+import type { SkeletonProps as SkeletonSharedProps } from "@pisagor/props";
+import { skeletonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
+  {
   children?: import("svelte").Snippet;
   class?: string | undefined;
-  recipe?: typeof skeletonRecipe;
-};
+  } & SkeletonSharedProps;
 
 let { recipe = skeletonRecipe, class: className, children, ...rest }: Props = $props();
 

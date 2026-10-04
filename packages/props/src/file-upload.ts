@@ -1,7 +1,7 @@
 import type {
   FileUploadItemRecipeFn,
   FileUploadRecipeFn,
-} from "@pisagor/recipes/file-upload";
+} from "@pisagor/recipes";
 
 /** FileUpload props. */
 export interface FileUploadProps {

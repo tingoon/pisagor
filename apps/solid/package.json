@@ -5,6 +5,7 @@
     "@pisagor/solid": "workspace:*",
     "@pisagor/solid-form": "workspace:*",
     "@pisagor/utils": "workspace:*",
+    "@tanstack/solid-form": "^1.33.5",
     "solid-js": "catalog:",
     "zod": "^4.6.5"
   },

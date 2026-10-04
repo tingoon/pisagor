@@ -1,10 +1,10 @@
 <script lang="ts">
 import { type ToastOptions, Toast as ToastPrimitive } from "@ark-ui/svelte/toast";
+import type { ToastItemProps as ToastItemSharedProps } from "@pisagor/props";
+import { buttonRecipe, type ToastItemRecipeSlot, toastItemRecipe } from "@pisagor/recipes";
 
 type Accessor<T> = () => T;
 
-import { buttonRecipe } from "@pisagor/recipes/button";
-import { type ToastItemRecipeSlot, toastItemRecipe } from "@pisagor/recipes/toast";
 import { cn } from "@pisagor/utils";
 import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
 import InfoIcon from "phosphor-svelte/lib/InfoIcon";
@@ -16,7 +16,8 @@ import type { HTMLAttributes } from "svelte/elements";
 import Spinner from "../spinner/spinner.svelte";
 import { setToastItemContext } from "./toast.context";
 
-type Props = Omit<import("@ark-ui/svelte/toast").ToastRootProps, "class"> & {
+type Props = Omit<import("@ark-ui/svelte/toast").ToastRootProps, "class"> &
+  {
   actionTriggerProps?: Omit<
     import("@ark-ui/svelte/toast").ToastActionTriggerProps,
     "children" | "class"
@@ -33,10 +34,9 @@ type Props = Omit<import("@ark-ui/svelte/toast").ToastRootProps, "class"> & {
     "children" | "class"
   >;
   iconProps?: Omit<HTMLAttributes<HTMLDivElement>, "class">;
-  itemRecipe?: typeof toastItemRecipe;
   titleProps?: Omit<import("@ark-ui/svelte/toast").ToastTitleProps, "children" | "class">;
   toast: Accessor<ToastOptions>;
-};
+  } & ToastItemSharedProps;
 
 let {
   actionsProps,
@@ -48,11 +48,11 @@ let {
   toast: toastAccessor,
   class: className,
   classNames,
-  itemRecipe = toastItemRecipe,
+  recipe = toastItemRecipe,
   ...rest
 }: Props = $props();
 
-const slots = $derived(itemRecipe());
+const slots = $derived(recipe());
 setToastItemContext({
   get slots() {
     return slots;

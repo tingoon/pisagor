@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Field } from "@pisagor/svelte/field";
+import { Field } from "@pisagor/svelte";
 import type { ComponentProps, Snippet } from "svelte";
 
 type FieldProps = ComponentProps<typeof Field>;

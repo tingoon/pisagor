@@ -9,7 +9,8 @@ import {
   type SliderTrackProps,
   type SliderValueTextProps,
 } from "@ark-ui/solid/slider";
-import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes/slider";
+import type { SliderProps as SliderSharedProps } from "@pisagor/props";
+import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
@@ -21,10 +22,10 @@ type FormControlVariant = "primary" | "secondary";
 type SliderValueProps = SliderValueTextProps;
 type SliderClassNames = VariantClassNames<SliderRecipeSlot>;
 
-type SliderRootProps = SliderPrimitiveRootProps & {
-  variant?: FormControlVariant;
-  recipe?: typeof sliderRecipe;
-};
+type SliderRootProps = SliderPrimitiveRootProps &
+  SliderSharedProps & {
+    variant?: FormControlVariant;
+  };
 
 export interface SliderProps
   extends Omit<SliderRootProps, "children" | "onValueChange"> {

@@ -1,4 +1,4 @@
-import type { AppShellRecipeFn } from "@pisagor/recipes/app-shell";
+import type { AppShellRecipeFn } from "@pisagor/recipes";
 
 /** AppShell props. */
 export interface AppShellProps {

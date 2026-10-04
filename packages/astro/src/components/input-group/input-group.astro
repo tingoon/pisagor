@@ -1,15 +1,15 @@
 ---
+import type { FormControlGroupShellProps as FormControlGroupShellSharedProps } from "@pisagor/props";
 import {
-  type FormControlGroupShellVariantProps,
   formControlGroupShellRecipe,
-} from "@pisagor/recipes/form-control";
-import { inputGroupRootRecipe } from "@pisagor/recipes/input-group";
+  inputGroupRootRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "astro/types";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = HTMLAttributes<"div"> & FormControlGroupShellVariantProps;
+type Props = HTMLAttributes<"div"> & FormControlGroupShellSharedProps;
 
 const {
   size = "md",

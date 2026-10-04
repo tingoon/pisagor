@@ -1,4 +1,4 @@
-import type { SegmentGroupRecipeFn } from "@pisagor/recipes/segment-group";
+import type { SegmentGroupRecipeFn } from "@pisagor/recipes";
 
 /** SegmentGroup props. */
 export interface SegmentGroupProps {

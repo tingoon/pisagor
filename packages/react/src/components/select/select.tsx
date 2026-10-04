@@ -19,12 +19,13 @@ import {
   useSelectContext,
 } from "@ark-ui/react/select";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
+import type { SelectProps as SelectRootSharedProps } from "@pisagor/props";
 import {
   type FormControlShellVariantProps,
   formControlShellRecipe,
-} from "@pisagor/recipes/form-control";
+  selectRecipe,
+} from "@pisagor/recipes";
 
-import { selectRecipe } from "@pisagor/recipes/select";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { Separator, type SeparatorProps } from "../separator";
@@ -48,13 +49,7 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
    */
   variant?: FormControlVariant;
   onValueChange?: (value: string | string[]) => void;
-  /**
-   * Style recipe. Defaults to `selectRecipe` from `@pisagor/recipes/select`.
-   *
-   * @defaultValue selectRecipe
-   */
-  recipe?: typeof selectRecipe;
-};
+} & SelectRootSharedProps;
 
 export interface SelectProps
   extends Omit<SelectRootProps, "children" | "collection"> {

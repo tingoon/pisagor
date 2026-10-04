@@ -2,17 +2,17 @@
 import type { PopoverContentProps as ArkPopoverContentProps } from "@ark-ui/svelte/popover";
 import { Popover as PopoverPrimitive } from "@ark-ui/svelte/popover";
 import { Portal } from "@ark-ui/svelte/portal";
-import { buttonRecipe } from "@pisagor/recipes/button";
-import { popoverRecipe } from "@pisagor/recipes/popover";
+import type { PopoverProps as PopoverSharedProps } from "@pisagor/props";
+import { buttonRecipe, popoverRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import { setPopoverContentContext } from "./popover.context";
 
-type Props = Omit<ArkPopoverContentProps, "class"> & {
+type Props = Omit<ArkPopoverContentProps, "class"> &
+  {
   class?: string | undefined;
-  recipe?: typeof popoverRecipe;
   showCloseButton?: boolean;
-};
+  } & PopoverSharedProps;
 
 let {
   showCloseButton = false,

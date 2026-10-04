@@ -1,4 +1,4 @@
-import type { CircularSliderRecipeFn } from "@pisagor/recipes/circular-slider";
+import type { CircularSliderRecipeFn } from "@pisagor/recipes";
 
 /** CircularSlider props. */
 export interface CircularSliderProps {

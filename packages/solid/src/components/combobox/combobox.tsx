@@ -20,11 +20,12 @@ import {
   Combobox as ComboboxPrimitive,
   useComboboxContext,
 } from "@ark-ui/solid/combobox";
+import type { ComboboxProps as ComboboxRootSharedProps } from "@pisagor/props";
 import {
   type ComboboxVariantProps,
   comboboxRecipe,
-} from "@pisagor/recipes/combobox";
-import type { InputRootVariantProps } from "@pisagor/recipes/input";
+  type InputRootVariantProps,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
@@ -47,8 +48,7 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
 > & {
   variant?: FormControlVariant;
   onValueChange?: (value: string[]) => void;
-  recipe?: typeof comboboxRecipe;
-};
+} & ComboboxRootSharedProps;
 
 export interface ComboboxProps
   extends Omit<ComboboxRootProps, "children" | "collection"> {

@@ -4,23 +4,19 @@ import {
   type JsonTreeViewTreeProps,
 } from "@ark-ui/react/json-tree-view";
 import { CaretRightIcon } from "@phosphor-icons/react";
+import type { JsonTreeViewProps as JsonTreeViewRootSharedProps } from "@pisagor/props";
 import {
   type JsonTreeViewRecipeSlot,
   jsonTreeViewRecipe,
-} from "@pisagor/recipes/json-tree-view";
+} from "@pisagor/recipes";
 
 import type { VariantClassNames } from "../../internal/types";
 import { JsonTreeViewContext, useJsonTreeView } from "./json-tree-view.context";
 
 // #region Types
-export interface JsonTreeViewRootProps extends JsonTreeViewPrimitiveRootProps {
-  /**
-   * Style recipe. Defaults to `jsonTreeViewRecipe` from `@pisagor/recipes/json-tree-view`.
-   *
-   * @defaultValue jsonTreeViewRecipe
-   */
-  recipe?: typeof jsonTreeViewRecipe;
-}
+export interface JsonTreeViewRootProps
+  extends JsonTreeViewPrimitiveRootProps,
+    JsonTreeViewRootSharedProps {}
 
 type JsonTreeViewClassNames = VariantClassNames<JsonTreeViewRecipeSlot>;
 

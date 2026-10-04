@@ -1,8 +1,6 @@
 import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/vue/toggle-group";
-import {
-  type ToggleGroupRecipe,
-  toggleGroupRecipe,
-} from "@pisagor/recipes/toggle-group";
+import type { ToggleGroupProps as ToggleGroupRootSharedProps } from "@pisagor/props";
+import { type ToggleGroupRecipe, toggleGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createContext } from "../../internal/utils/create-context";
@@ -18,13 +16,7 @@ interface ToggleGroupContextValue {
   variant: ToggleGroupVariant;
 }
 
-export interface ToggleGroupRootProps {
-  /**
-   * Style recipe. Defaults to `toggleGroupRecipe` from `@pisagor/recipes/toggle-group`.
-   *
-   * @defaultValue toggleGroupRecipe
-   */
-  recipe?: typeof toggleGroupRecipe;
+export interface ToggleGroupRootProps extends ToggleGroupRootSharedProps {
   class?: unknown;
   defaultValue?: string[];
   disabled?: boolean;
@@ -51,11 +43,9 @@ export interface ToggleGroupItemProps {
 
 type ArkPart = Parameters<typeof h>[0];
 
-const [ToggleGroupContextProvider, useToggleGroupContext] =
-  createContext<ToggleGroupContextValue>({
-    name: "ToggleGroup",
-    strict: false,
-  });
+const [ToggleGroupContextProvider, useToggleGroupContext] = createContext(
+  "ToggleGroup",
+)<ToggleGroupContextValue>({ strict: false });
 
 export const ToggleGroupRoot = defineComponent({
   inheritAttrs: false,

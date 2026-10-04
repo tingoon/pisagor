@@ -1,18 +1,13 @@
 import { Highlight as HighlightPrimitive } from "@ark-ui/vue/highlight";
-import { highlightRecipe } from "@pisagor/recipes/highlight";
+import type { HighlightProps as HighlightSharedProps } from "@pisagor/props";
+import { highlightRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface HighlightProps {
-  /**
-   * Style recipe. Defaults to `highlightRecipe` from `@pisagor/recipes/highlight`.
-   *
-   * @defaultValue highlightRecipe
-   */
-  recipe?: typeof highlightRecipe;
+export interface HighlightProps extends HighlightSharedProps {
   class?: unknown;
 }
 // #endregion

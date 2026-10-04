@@ -1,5 +1,4 @@
-import type { SliderProps } from "@pisagor/solid";
-import { Slider } from "@pisagor/solid";
+import { Slider, type SliderProps } from "@pisagor/solid";
 import { splitProps } from "solid-js";
 import {
   type FieldPresentationProps,

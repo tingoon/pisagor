@@ -1,11 +1,15 @@
 import { ark } from "@ark-ui/vue/factory";
+import type {
+  StatProps as StatSharedProps,
+  StatTrendProps as StatTrendSharedProps,
+} from "@pisagor/props";
 import {
   type StatRecipeSlot,
   type StatTrendVariantProps,
   type StatVariantProps,
   statRecipe,
   statTrendRecipe,
-} from "@pisagor/recipes/stat";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -18,13 +22,7 @@ type StatTrendVariant = NonNullable<StatTrendVariantProps["trend"]>;
 
 type StatClassNames = VariantClassNames<StatRecipeSlot>;
 
-export interface StatProps extends StatVariantProps {
-  /**
-   * Style recipe. Defaults to `statRecipe` from `@pisagor/recipes/stat`.
-   *
-   * @defaultValue statRecipe
-   */
-  recipe?: typeof statRecipe;
+export interface StatProps extends StatSharedProps {
   class?: unknown;
   classNames?: StatClassNames;
 
@@ -39,13 +37,7 @@ export interface StatProps extends StatVariantProps {
   trendProps?: Record<string, unknown>;
 }
 
-export interface StatTrendProps {
-  /**
-   * Style recipe. Defaults to `statTrendRecipe` from `@pisagor/recipes/stat-trend`.
-   *
-   * @defaultValue statTrendRecipe
-   */
-  trendRecipe?: typeof statTrendRecipe;
+export interface StatTrendProps extends StatTrendSharedProps {
   class?: unknown;
 }
 // #endregion
@@ -207,11 +199,11 @@ export const StatTrend = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    trend: { default: "neutral", type: String as PropType<StatTrendVariant> },
-    trendRecipe: {
+    recipe: {
       default: statTrendRecipe,
       type: Function as PropType<typeof statTrendRecipe>,
     },
+    trend: { default: "neutral", type: String as PropType<StatTrendVariant> },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -219,7 +211,7 @@ export const StatTrend = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(props.trendRecipe({ trend: props.trend }), props.class),
+          class: cn(props.recipe({ trend: props.trend }), props.class),
           "data-part": "trend",
           "data-scope": "stat",
           "data-trend": props.trend,

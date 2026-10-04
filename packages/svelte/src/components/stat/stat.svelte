@@ -1,5 +1,6 @@
 <script lang="ts">
-import type { StatRecipeSlot, StatVariantProps } from "@pisagor/recipes/stat";
+import type { StatProps as StatSharedProps } from "@pisagor/props";
+import type { StatRecipeSlot } from "@pisagor/recipes";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import StatDescription from "./stat-description.svelte";
@@ -9,15 +10,14 @@ import StatTrend from "./stat-trend.svelte";
 import StatValue from "./stat-value.svelte";
 
 type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "children"> &
-  StatVariantProps & {
+  {
     class?: string | undefined;
     classNames?: Partial<Record<StatRecipeSlot, string>>;
     description?: string | Snippet;
     label?: string | Snippet;
-    recipe?: typeof import("@pisagor/recipes/stat").statRecipe;
     trend?: string | Snippet;
     value?: string | Snippet;
-  };
+  } & StatSharedProps;
 
 let {
   variant,

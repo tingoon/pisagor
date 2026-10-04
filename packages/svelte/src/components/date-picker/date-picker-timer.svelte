@@ -1,10 +1,6 @@
 <script lang="ts">
-import { datePickerRecipe } from "@pisagor/recipes/date-picker";
-import {
-  type FormControlGroupShellVariantProps,
-  formControlGroupShellRecipe,
-} from "@pisagor/recipes/form-control";
-import { inputGroupControlRecipe } from "@pisagor/recipes/input-group";
+import type { DatePickerProps as DatePickerSharedProps } from "@pisagor/props";
+import { datePickerRecipe, type FormControlGroupShellVariantProps, formControlGroupShellRecipe, inputGroupControlRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import ClockIcon from "phosphor-svelte/lib/ClockIcon";
 import type { Snippet } from "svelte";
@@ -14,13 +10,13 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { useDatePicker } from "./date-picker.context";
 
 type Props = Omit<HTMLInputAttributes, "class" | "size" | "type" | "value"> &
-  FormControlGroupShellVariantProps & {
+  FormControlGroupShellVariantProps &
+  {
     children?: Snippet;
     class?: string | undefined;
     clearable?: boolean;
-    recipe?: typeof datePickerRecipe;
     value?: string | undefined;
-  };
+  } & DatePickerSharedProps;
 
 let {
   clearable = false,

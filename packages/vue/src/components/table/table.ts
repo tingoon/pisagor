@@ -1,9 +1,11 @@
 import { ark } from "@ark-ui/vue/factory";
-import { tableRecipe } from "@pisagor/recipes/table";
+import type { TableProps as TableSharedProps } from "@pisagor/props";
+import { tableRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
-export interface TableProps {
+export interface TableProps extends TableSharedProps {
+  class?: unknown;
   /**
    * Whether the table rows are hoverable.
    *
@@ -16,13 +18,6 @@ export interface TableProps {
    * @defaultValue "plain"
    */
   variant?: "plain" | "striped";
-  /**
-   * Style recipe. Defaults to `tableRecipe` from `@pisagor/recipes/table`.
-   *
-   * @defaultValue tableRecipe
-   */
-  recipe?: typeof tableRecipe;
-  class?: unknown;
 }
 
 type ArkPart = Parameters<typeof h>[0];

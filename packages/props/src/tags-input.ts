@@ -1,7 +1,7 @@
 import type {
   TagsInputItemRecipeFn,
   TagsInputRecipeFn,
-} from "@pisagor/recipes/tags-input";
+} from "@pisagor/recipes";
 
 /** TagsInput props. */
 export interface TagsInputProps {

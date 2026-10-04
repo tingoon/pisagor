@@ -1,5 +1,6 @@
 <script lang="ts">
-import type { EmptyStateRecipeSlot } from "@pisagor/recipes/empty-state";
+import type { EmptyStateProps as EmptyStateSharedProps } from "@pisagor/props";
+import type { EmptyStateRecipeSlot } from "@pisagor/recipes";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import EmptyStateActions from "./empty-state-actions.svelte";
@@ -8,15 +9,15 @@ import EmptyStateMedia from "./empty-state-media.svelte";
 import EmptyStateRoot from "./empty-state-root.svelte";
 import EmptyStateTitle from "./empty-state-title.svelte";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title" | "children"> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title" | "children"> &
+  {
   actions?: string | Snippet;
   class?: string | undefined;
   classNames?: Partial<Record<EmptyStateRecipeSlot, string>>;
   description?: string | Snippet;
   media?: Snippet;
-  recipe?: import("@pisagor/recipes/empty-state").EmptyStateRecipeFn;
   title?: string | Snippet;
-};
+  } & EmptyStateSharedProps;
 
 let {
   actions,

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { buttonRecipe } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import DialogCloseTrigger from "../dialog/dialog-close-trigger.svelte";

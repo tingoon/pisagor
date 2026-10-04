@@ -1,8 +1,9 @@
 ---
-import { type StatVariantProps, statRecipe } from "@pisagor/recipes/stat";
+import type { StatProps as StatSharedProps } from "@pisagor/props";
+import { statRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"div"> & StatVariantProps;
+type Props = HTMLAttributes<"div"> & StatSharedProps;
 
 const { variant = "outline", class: className, ...rest } = Astro.props;
 const slots = statRecipe();

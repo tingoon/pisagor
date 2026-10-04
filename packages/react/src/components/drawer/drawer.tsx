@@ -11,20 +11,16 @@ import type {
 import { Drawer as DrawerPrimitive } from "@ark-ui/react/drawer";
 import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
-import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes/drawer";
+import type { DrawerProps as DrawerRootSharedProps } from "@pisagor/props";
+import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { ScrollArea } from "../scroll-area";
 import { DrawerContext, useDrawer } from "./drawer.context";
 
 // #region Types
-export interface DrawerRootProps extends DrawerPrimitiveRootProps {
-  /**
-   * Style recipe. Defaults to `drawerRecipe` from `@pisagor/recipes/drawer`.
-   *
-   * @defaultValue drawerRecipe
-   */
-  recipe?: typeof drawerRecipe;
-}
+export interface DrawerRootProps
+  extends DrawerPrimitiveRootProps,
+    DrawerRootSharedProps {}
 
 export type DrawerPositionerProps = DrawerPrimitivePositionerProps &
   Pick<DrawerVariantProps, "variant">;

@@ -9,7 +9,8 @@ import type {
   CarouselRootProps as CarouselPrimitiveRootProps,
 } from "@ark-ui/solid/carousel";
 import { Carousel as CarouselPrimitive } from "@ark-ui/solid/carousel";
-import { carouselRecipe } from "@pisagor/recipes/carousel";
+import type { CarouselProps as CarouselRootSharedProps } from "@pisagor/props";
+import { carouselRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
@@ -17,9 +18,9 @@ import { CaretLeftIcon, CaretRightIcon } from "../../internal/icons";
 import { Button } from "../button";
 import { CarouselContext, useCarousel } from "./carousel.context";
 
-export interface CarouselRootProps extends CarouselPrimitiveRootProps {
-  recipe?: typeof carouselRecipe;
-}
+export interface CarouselRootProps
+  extends CarouselPrimitiveRootProps,
+    CarouselRootSharedProps {}
 
 interface CarouselPresetItem {
   content: JSX.Element;

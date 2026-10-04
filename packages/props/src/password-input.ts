@@ -1,4 +1,4 @@
-import type { PasswordInputRecipeFn } from "@pisagor/recipes/password-input";
+import type { PasswordInputRecipeFn } from "@pisagor/recipes";
 
 /** PasswordInput props. */
 export interface PasswordInputProps {

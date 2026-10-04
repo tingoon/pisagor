@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Portal } from "@ark-ui/svelte/portal";
 import { Tour as TourPrimitive } from "@ark-ui/svelte/tour";
-import { dialogRecipe } from "@pisagor/recipes/dialog";
+import { dialogRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useTourContext } from "./tour.context";
 

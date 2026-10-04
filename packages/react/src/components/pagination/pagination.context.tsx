@@ -1,4 +1,5 @@
-import type { PaginationRecipe } from "@pisagor/recipes/pagination";
+import type { PaginationRecipe } from "@pisagor/recipes";
+
 import { createContext } from "../../utils";
 
 interface PaginationContextValue {
@@ -6,6 +7,4 @@ interface PaginationContextValue {
 }
 
 export const { PaginationContext, usePagination } =
-  createContext<PaginationContextValue>()({
-    name: "Pagination",
-  });
+  createContext("Pagination")<PaginationContextValue>();

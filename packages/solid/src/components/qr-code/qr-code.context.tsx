@@ -1,12 +1,9 @@
-import type { QrCodeRecipe } from "@pisagor/recipes/qr-code";
+import type { QrCodeRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils";
 
 interface QrCodeContextValue {
   slots: QrCodeRecipe;
 }
 
-export const { QrCodeContext, useQrCode } = createContext<QrCodeContextValue>()(
-  {
-    name: "QrCode",
-  },
-);
+export const { QrCodeContext, useQrCode } =
+  createContext("QrCode")<QrCodeContextValue>();

@@ -7,10 +7,12 @@ import type {
   SplitterRootProviderProps,
 } from "@ark-ui/solid/splitter";
 import { Splitter as SplitterPrimitive } from "@ark-ui/solid/splitter";
-import {
-  resizableEdgeHandleRecipe,
-  resizableRecipe,
-} from "@pisagor/recipes/resizable";
+import type {
+  ResizableEdgeHandleProps as ResizableEdgeHandleSharedProps,
+  ResizableProps as ResizableRootSharedProps,
+  ResizableProps as ResizableSharedProps,
+} from "@pisagor/props";
+import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -34,7 +36,9 @@ export {
 export type ResizableHandlePosition = "bottom" | "center" | "top";
 export type ResizableEdgePlacement = "end" | "start";
 
-export interface ResizableEdgeHandleProps extends ComponentProps<"button"> {
+export interface ResizableEdgeHandleProps
+  extends ComponentProps<"button">,
+    ResizableEdgeHandleSharedProps {
   placement: ResizableEdgePlacement;
   handlePosition?: ResizableHandlePosition;
   minWidth?: number;
@@ -44,7 +48,6 @@ export interface ResizableEdgeHandleProps extends ComponentProps<"button"> {
   onResizeEnd?: () => void;
   onResizeStart?: () => void;
   onWidthChange: (width: number) => void;
-  recipe?: typeof resizableEdgeHandleRecipe;
 }
 
 export interface ResizableResizeTriggerProps
@@ -52,18 +55,18 @@ export interface ResizableResizeTriggerProps
   withHandle?: boolean;
 }
 
-export interface ResizableRootProps extends SplitterRootProps {
-  recipe?: typeof resizableRecipe;
-}
+export interface ResizableRootProps
+  extends SplitterRootProps,
+    ResizableRootSharedProps {}
 
 export type ResizablePanelProps = SplitterPanelProps;
 export type ResizableResizeTriggerIndicatorProps =
   SplitterResizeTriggerIndicatorProps;
 export type ResizableContextProps = SplitterContextProps;
 
-export interface ResizableRootProviderProps extends SplitterRootProviderProps {
-  recipe?: typeof resizableRecipe;
-}
+export interface ResizableRootProviderProps
+  extends SplitterRootProviderProps,
+    ResizableSharedProps {}
 
 export function ResizableEdgeHandle(
   props: ResizableEdgeHandleProps,

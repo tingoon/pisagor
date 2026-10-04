@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { type DataListItemRecipeSlot, dataListItemRecipe } from "@pisagor/recipes/data-list";
+import type { DataListItemProps as DataListItemSharedProps } from "@pisagor/props";
+import { type DataListItemRecipeSlot, dataListItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
@@ -8,24 +9,24 @@ import { setDataListItemContext } from "./data-list.context";
 import DataListItemLabel from "./data-list-item-label.svelte";
 import DataListItemValue from "./data-list-item-value.svelte";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
+  {
   children?: Snippet;
   class?: string | undefined;
   classNames?: Partial<Record<DataListItemRecipeSlot, string>>;
-  itemRecipe?: typeof dataListItemRecipe;
   value?: string | Snippet;
-};
+  } & DataListItemSharedProps;
 
 let {
   value,
   children,
-  itemRecipe = dataListItemRecipe,
+  recipe = dataListItemRecipe,
   class: className,
   classNames,
   ...rest
 }: Props = $props();
 
-const slots = $derived(itemRecipe());
+const slots = $derived(recipe());
 
 setDataListItemContext({
   get slots() {

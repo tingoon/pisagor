@@ -1,4 +1,4 @@
-import type { ScrollspyRecipeFn } from "@pisagor/recipes/scrollspy";
+import type { ScrollspyRecipeFn } from "@pisagor/recipes";
 
 /** Scrollspy props. */
 export interface ScrollspyProps {

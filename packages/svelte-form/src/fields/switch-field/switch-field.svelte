@@ -1,6 +1,5 @@
 <script lang="ts">
-import { Field } from "@pisagor/svelte/field";
-import { Switch } from "@pisagor/svelte/switch";
+import { Field, Switch } from "@pisagor/svelte";
 import type { ComponentProps, Snippet } from "svelte";
 
 type SwitchProps = ComponentProps<typeof Switch>;

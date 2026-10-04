@@ -1,5 +1,4 @@
-import type { FieldLabelProps, FieldProps } from "@pisagor/react";
-import { Field } from "@pisagor/react";
+import { Field, type FieldLabelProps, type FieldProps } from "@pisagor/react";
 import type { ReactNode } from "react";
 
 export interface FieldPresentationProps {

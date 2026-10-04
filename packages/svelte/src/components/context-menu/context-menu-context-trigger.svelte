@@ -1,13 +1,14 @@
 <script lang="ts">
 import type { MenuContextTriggerProps } from "@ark-ui/svelte/menu";
 import { Menu as MenuPrimitive } from "@ark-ui/svelte/menu";
-import { contextMenuRecipe } from "@pisagor/recipes/context-menu";
+import type { ContextMenuProps as ContextMenuSharedProps } from "@pisagor/props";
+import { contextMenuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
-type Props = Omit<MenuContextTriggerProps, "class"> & {
+type Props = Omit<MenuContextTriggerProps, "class"> &
+  {
   class?: string | undefined;
-  recipe?: typeof contextMenuRecipe;
-};
+  } & ContextMenuSharedProps;
 
 let { recipe = contextMenuRecipe, class: className, children, ...rest }: Props = $props();
 </script>

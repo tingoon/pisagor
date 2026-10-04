@@ -3,11 +3,15 @@ import { createListCollection } from "@ark-ui/vue/collection";
 import type { ListboxRootProps as ArkListboxRootProps } from "@ark-ui/vue/listbox";
 import { Listbox as ListboxPrimitive } from "@ark-ui/vue/listbox";
 import { PhCheck } from "@phosphor-icons/vue";
+import type {
+  ListboxItemProps as ListboxItemSharedProps,
+  ListboxProps as ListboxRootSharedProps,
+} from "@pisagor/props";
 import {
   type ListboxItemVariantProps,
   listboxItemRecipe,
   listboxRecipe,
-} from "@pisagor/recipes/listbox";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { DropdownMenu } from "../dropdown-menu";
@@ -23,27 +27,15 @@ export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   ArkListboxRootProps<T>,
   "collection" | "onValueChange"
 > & {
-  /**
-   * Style recipe. Defaults to `listboxRecipe` from `@pisagor/recipes/listbox`.
-   *
-   * @defaultValue listboxRecipe
-   */
-  recipe?: typeof listboxRecipe;
   collection?: ListCollection<T>;
   onValueChange?: (value: string | string[]) => void;
-};
+} & ListboxRootSharedProps;
 
 export interface ListboxProps extends Omit<ListboxRootProps, "children"> {
   items?: ListboxPresetItem[];
 }
 
-export interface ListboxItemProps {
-  /**
-   * Style recipe. Defaults to `listboxItemRecipe` from `@pisagor/recipes/listbox-item`.
-   *
-   * @defaultValue listboxItemRecipe
-   */
-  itemRecipe?: typeof listboxItemRecipe;
+export interface ListboxItemProps extends ListboxItemSharedProps {
   class?: unknown;
 }
 // #endregion
@@ -133,7 +125,7 @@ export const ListboxItem = defineComponent({
       type: [String, Object, Array] as PropType<unknown>,
     },
     item: { default: undefined, type: Object as PropType<unknown> },
-    itemRecipe: {
+    recipe: {
       default: listboxItemRecipe,
       type: Function as PropType<typeof listboxItemRecipe>,
     },
@@ -144,7 +136,7 @@ export const ListboxItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = props.itemRecipe({ variant: props.variant });
+      const variantSlots = props.recipe({ variant: props.variant });
 
       return h(
         ListboxPrimitive.Item as ArkPart,
@@ -169,14 +161,14 @@ export const ListboxItemText = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: listboxItemRecipe,
       type: Function as PropType<typeof listboxItemRecipe>,
     },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = props.itemRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ListboxPrimitive.ItemText as ArkPart,
@@ -304,14 +296,14 @@ export const ListboxItemIndicator = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: listboxItemRecipe,
       type: Function as PropType<typeof listboxItemRecipe>,
     },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = props.itemRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ListboxPrimitive.ItemIndicator as ArkPart,

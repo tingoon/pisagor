@@ -1,18 +1,12 @@
 import { ark } from "@ark-ui/react/factory";
-import { type StatusVariantProps, statusRecipe } from "@pisagor/recipes/status";
+import type { StatusProps as StatusSharedProps } from "@pisagor/props";
+import { statusRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 
 // #region Types
 export interface StatusProps
   extends ComponentProps<typeof ark.span>,
-    StatusVariantProps {
-  /**
-   * Style recipe. Defaults to `statusRecipe` from `@pisagor/recipes/status`.
-   *
-   * @defaultValue statusRecipe
-   */
-  recipe?: typeof statusRecipe;
-}
+    StatusSharedProps {}
 // #endregion
 
 // #region Component

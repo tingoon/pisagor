@@ -2,13 +2,11 @@
   "bugs": {
     "url": "https://github.com/tingoon/pisagor/issues"
   },
-  "dependencies": {
-    "@pisagor/utils": "workspace:*",
-    "@pisagor/vue": "workspace:*",
-    "@tanstack/vue-form": "^1.33.5"
-  },
   "description": "Labeled form fields and TanStack Form bindings for @pisagor/vue.",
   "devDependencies": {
+    "@pisagor/utils": "workspace:*",
+    "@pisagor/vue": "workspace:*",
+    "@tanstack/vue-form": "^1.33.5",
     "vue": "catalog:"
   },
   "exports": {
@@ -17,7 +15,6 @@
     "./tanstack": "./src/tanstack/index.ts"
   },
   "files": [
-    "catalog.gen.json",
     "skills",
     "src",
     "!**/*.stories.*",
@@ -27,8 +24,15 @@
   "license": "MIT",
   "name": "@pisagor/vue-form",
   "peerDependencies": {
+    "@pisagor/vue": "workspace:^",
+    "@tanstack/vue-form": "^1.33.5",
     "tailwindcss": "^4",
     "vue": "^3.5"
+  },
+  "peerDependenciesMeta": {
+    "@tanstack/vue-form": {
+      "optional": true
+    }
   },
   "repository": {
     "directory": "packages/vue-form",

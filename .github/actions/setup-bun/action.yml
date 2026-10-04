@@ -1,5 +1,11 @@
 name: Setup Bun
-description: Install Bun, restore the package download cache, and install dependencies
+description: Install Bun, restore caches, and install dependencies
+
+inputs:
+  turbo-cache:
+    description: Restore the local .turbo cache alongside the Bun install cache
+    required: false
+    default: "false"
 
 runs:
   using: composite
@@ -12,6 +18,14 @@ runs:
         key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
         restore-keys: |
           ${{ runner.os }}-bun-
+
+    - if: inputs.turbo-cache == 'true'
+      uses: actions/cache@v6
+      with:
+        path: .turbo
+        key: ${{ runner.os }}-turbo-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-turbo-
 
     - run: bun install --frozen-lockfile --ignore-scripts
       shell: bash

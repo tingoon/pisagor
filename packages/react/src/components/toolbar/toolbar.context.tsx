@@ -1,4 +1,5 @@
-import type { ToolbarRecipe } from "@pisagor/recipes/toolbar";
+import type { ToolbarRecipe } from "@pisagor/recipes";
+
 import { createContext } from "../../utils";
 
 interface ToolbarContextValue {
@@ -6,6 +7,4 @@ interface ToolbarContextValue {
 }
 
 export const { ToolbarContext, useToolbar } =
-  createContext<ToolbarContextValue>()({
-    name: "Toolbar",
-  });
+  createContext("Toolbar")<ToolbarContextValue>();

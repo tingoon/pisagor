@@ -17,11 +17,8 @@ interface ComponentMeta {
   aliases?: string[];
 }
 
-const skillRawModules = import.meta.glob(
-  [
-    "../../../../packages/*/skills/*/references/primitives/*.md",
-    "../../../../packages/*/skills/*/references/primitives/*/metadata.md",
-  ],
+const metadataRawModules = import.meta.glob(
+  ["../content/components/*/metadata.md", "../content/forms/*/metadata.md"],
   {
     eager: true,
     import: "default",
@@ -29,27 +26,20 @@ const skillRawModules = import.meta.glob(
   },
 ) as Record<string, string>;
 
-function packagePriority(path: string): number {
-  if (path.includes("/packages/react/")) return 0;
-  if (path.includes("/packages/vue/")) return 1;
-  if (path.includes("/packages/astro/")) return 2;
-  if (path.includes("/packages/solid/")) return 3;
-  if (path.includes("/packages/svelte/")) return 4;
-  return 10;
-}
-
 function idFromMetaPath(path: string): string | undefined {
-  const folder = /\/primitives\/([^/]+)\/metadata\.md$/.exec(path);
-  if (folder?.[1]) return folder[1];
-  const flat = /\/primitives\/([^/]+)\.md$/.exec(path);
-  return flat?.[1];
+  return /\/content\/(?:components|forms)\/([^/]+)\/metadata\.md$/.exec(
+    path,
+  )?.[1];
 }
 
-function metaFromSkillDocs(): Record<string, ComponentMeta> {
+function metaFromContentDocs(): Record<string, ComponentMeta> {
   const out: Record<string, ComponentMeta> = {};
-  const ranked = Object.entries(skillRawModules).sort(
-    ([a], [b]) => packagePriority(a) - packagePriority(b),
-  );
+  // Prefer components over forms when ids collide (they shouldn't).
+  const ranked = Object.entries(metadataRawModules).sort(([a], [b]) => {
+    const aForm = a.includes("/content/forms/") ? 1 : 0;
+    const bForm = b.includes("/content/forms/") ? 1 : 0;
+    return aForm - bForm;
+  });
   for (const [path, raw] of ranked) {
     if (typeof raw !== "string" || !raw.startsWith("---")) continue;
     const id = idFromMetaPath(path);
@@ -70,10 +60,10 @@ function metaFromSkillDocs(): Record<string, ComponentMeta> {
 
 /**
  * Framework-agnostic component catalog metadata.
- * Migrated primitives load api/taxonomy/aliases from skill markdown frontmatter.
+ * Migrated primitives load api/taxonomy/aliases from shared content frontmatter.
  * Entries below fill gaps (no docs page / alternate ids).
  */
-const skillMeta = metaFromSkillDocs();
+const contentMeta = metaFromContentDocs();
 
 const fallbackMeta: Record<string, ComponentMeta> = {
   "avatar-group": {
@@ -95,5 +85,5 @@ const fallbackMeta: Record<string, ComponentMeta> = {
 /** Framework-agnostic component catalog metadata (formerly Storybook parameters.metadata). */
 export const componentMeta: Record<string, ComponentMeta> = {
   ...fallbackMeta,
-  ...skillMeta,
+  ...contentMeta,
 };

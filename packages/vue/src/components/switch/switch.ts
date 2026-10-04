@@ -1,5 +1,6 @@
 import { Switch as SwitchPrimitive } from "@ark-ui/vue/switch";
-import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes/switch";
+import type { SwitchProps as SwitchSharedProps } from "@pisagor/props";
+import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -11,13 +12,7 @@ type SwitchClassNames = VariantClassNames<SwitchRecipeSlot>;
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface SwitchProps {
-  /**
-   * Style recipe. Defaults to `switchRecipe` from `@pisagor/recipes/switch`.
-   *
-   * @defaultValue switchRecipe
-   */
-  recipe?: typeof switchRecipe;
+export interface SwitchProps extends SwitchSharedProps {
   class?: unknown;
 }
 // #endregion

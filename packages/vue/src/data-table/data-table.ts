@@ -1,7 +1,5 @@
-import {
-  type DataTableRecipe,
-  dataTableRecipe,
-} from "@pisagor/recipes/data-table";
+import type { DataTableProps as DataTableSharedProps } from "@pisagor/props";
+import { type DataTableRecipe, dataTableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type {
   Cell,
@@ -47,12 +45,6 @@ interface DataTableRowContextValue<TData extends RowData> {
  * @typeParam TData - Row shape passed to `columns` and `data`.
  */
 export type DataTableProps<TData extends RowData = RowData> = {
-  /**
-   * Style recipe. Defaults to `dataTableRecipe` from `@pisagor/recipes/data-table`.
-   *
-   * @defaultValue dataTableRecipe
-   */
-  recipe?: typeof dataTableRecipe;
   class?: unknown;
   /**
    * TanStack Table features. Defaults to the DataTable feature preset.
@@ -60,26 +52,21 @@ export type DataTableProps<TData extends RowData = RowData> = {
    * @defaultValue dataTableFeatures
    */
   features?: DataTableFeatures;
-} & Omit<TableOptions<DataTableFeatures, TData>, "features">;
+} & DataTableSharedProps &
+  Omit<TableOptions<DataTableFeatures, TData>, "features">;
 // #endregion
 
 // #region Context + Hooks
-const [provideDataTableContext, useDataTableContextBase] = createContext<
-  DataTableContextValue<RowData>
->({
-  name: "DataTable",
-});
+const [provideDataTableContext, useDataTableContextBase] =
+  createContext("DataTable")<DataTableContextValue<RowData>>();
 
 const [provideDataTableHeaderGroupContext, useDataTableHeaderGroupContextBase] =
-  createContext<DataTableHeaderGroupContextValue<RowData>>({
-    name: "DataTableHeaderGroup",
-  });
+  createContext("DataTableHeaderGroup")<
+    DataTableHeaderGroupContextValue<RowData>
+  >();
 
-const [provideDataTableRowContext, useDataTableRowContextBase] = createContext<
-  DataTableRowContextValue<RowData>
->({
-  name: "DataTableRow",
-});
+const [provideDataTableRowContext, useDataTableRowContextBase] =
+  createContext("DataTableRow")<DataTableRowContextValue<RowData>>();
 
 /**
  * Returns the TanStack Table instance from the nearest DataTable context.

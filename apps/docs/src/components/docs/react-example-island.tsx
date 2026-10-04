@@ -12,12 +12,12 @@ type ExampleModule = Record<
  * and resolve the example export inside this module.
  */
 const exampleModules = import.meta.glob<ExampleModule>(
-  "../../../../../packages/react/skills/react/assets/examples/*/index.ts",
+  "../../../../../packages/react/examples/*/index.ts",
   { eager: true },
 );
 
 const formExampleModules = import.meta.glob<ExampleModule>(
-  "../../../../../packages/react-form/skills/react-form/assets/examples/*/index.ts",
+  "../../../../../packages/react-form/examples/*/index.ts",
   { eager: true },
 );
 

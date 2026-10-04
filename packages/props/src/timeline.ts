@@ -2,7 +2,7 @@ import type {
   TimelineItemRecipeFn,
   TimelineRecipeFn,
   TimelineVariantProps,
-} from "@pisagor/recipes/timeline";
+} from "@pisagor/recipes";
 
 /** Timeline props. */
 export interface TimelineProps extends TimelineVariantProps {

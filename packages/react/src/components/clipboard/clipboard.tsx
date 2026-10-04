@@ -7,12 +7,14 @@ import type {
 } from "@ark-ui/react/clipboard";
 import { Clipboard as ClipboardPrimitive } from "@ark-ui/react/clipboard";
 import { CheckIcon, ClipboardIcon } from "@phosphor-icons/react";
+import type { ClipboardProps as ClipboardSharedProps } from "@pisagor/props";
 import {
   type ClipboardRecipeSlot,
   type ClipboardVariantProps,
   clipboardRecipe,
-} from "@pisagor/recipes/clipboard";
-import { formControlShellRecipe } from "@pisagor/recipes/form-control";
+  formControlShellRecipe,
+} from "@pisagor/recipes";
+
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
@@ -27,7 +29,7 @@ type ClipboardClassNames = VariantClassNames<ClipboardRecipeSlot>;
 
 export interface ClipboardProps
   extends Omit<ClipboardRootProps, "children">,
-    ClipboardVariantProps {
+    ClipboardSharedProps {
   /**
    * Size of the copy button.
    *
@@ -55,12 +57,6 @@ export interface ClipboardProps
   copyIcon?: ReactNode;
   /** Optional label rendered above the control. */
   label?: string;
-  /**
-   * Style recipe. Defaults to `clipboardRecipe` from `@pisagor/recipes/clipboard`.
-   *
-   * @defaultValue clipboardRecipe
-   */
-  recipe?: typeof clipboardRecipe;
   /** Slot class names */
   classNames?: ClipboardClassNames;
   /** Extra props forwarded to the label element */

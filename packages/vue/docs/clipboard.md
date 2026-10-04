@@ -1,0 +1,49 @@
+## Import
+
+```ts
+import { Clipboard } from "@pisagor/vue";
+```
+
+## Examples
+
+### Variants
+
+Choose button emphasis to match surrounding actions.
+
+:::example Variants
+
+### Custom Timeout
+
+Change how long the success state shows before resetting.
+
+:::example CustomTimeout
+
+### Different Icon
+
+Swap icons when a different metaphor fits the copied content.
+
+:::example DifferentIcon
+
+### With Label
+
+Show a text label when an icon alone is not clear enough.
+
+:::example WithLabel
+
+### Controlled
+
+Drive copied state from the parent when feedback is coordinated elsewhere.
+
+:::example Controlled
+
+### Default
+
+Copy a value and confirm success on the control.
+
+:::example Default
+
+### On Surface
+
+Tune appearance for controls that sit on a raised or tinted surface instead of the page background.
+
+:::example OnSurface

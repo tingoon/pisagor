@@ -1,16 +1,15 @@
 <script lang="ts">
 import type { ProgressRootProps } from "@ark-ui/svelte/progress";
 import { Progress as ProgressPrimitive } from "@ark-ui/svelte/progress";
-import {
-  type CircularProgressRecipeSlot,
-  circularProgressRecipe,
-} from "@pisagor/recipes/circular-progress";
+import type { CircularProgressProps as CircularProgressSharedProps } from "@pisagor/props";
+import { type CircularProgressRecipeSlot, circularProgressRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import { setCircularProgressContext } from "./circular-progress.context";
 import CircularProgressTrack from "./circular-progress-track.svelte";
 
-type Props = Omit<ProgressRootProps, "class" | "children" | "value"> & {
+type Props = Omit<ProgressRootProps, "class" | "children" | "value"> &
+  {
   children?: Snippet;
   class?: string | undefined;
   classNames?: Partial<Record<CircularProgressRecipeSlot, string>>;
@@ -21,7 +20,6 @@ type Props = Omit<ProgressRootProps, "class" | "children" | "value"> & {
   indeterminate?: boolean;
   /** When true, renders the numeric value text centered inside the circle. */
   isValueVisible?: boolean;
-  recipe?: typeof circularProgressRecipe;
   /**
    * Visual size preset for the progress circle.
    * @defaultValue 32
@@ -33,7 +31,7 @@ type Props = Omit<ProgressRootProps, "class" | "children" | "value"> & {
    */
   thickness?: number;
   value?: number;
-};
+  } & CircularProgressSharedProps;
 
 let {
   size = 32,

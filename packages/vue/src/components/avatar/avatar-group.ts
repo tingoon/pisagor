@@ -1,5 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
-import { avatarGroupRecipe } from "@pisagor/recipes/avatar";
+import type { AvatarGroupProps as AvatarGroupSharedProps } from "@pisagor/props";
+import { avatarGroupRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import { Avatar } from "./avatar";
 
@@ -12,13 +13,7 @@ export interface AvatarGroupUser {
   src?: string;
 }
 
-export interface AvatarGroupProps {
-  /**
-   * Style recipe. Defaults to `avatarGroupRecipe` from `@pisagor/recipes/avatar-group`.
-   *
-   * @defaultValue avatarGroupRecipe
-   */
-  recipe?: typeof avatarGroupRecipe;
+export interface AvatarGroupProps extends AvatarGroupSharedProps {
   class?: unknown;
   /** Maximum number of avatars to show; excess shown as "+N". */
   max?: number;

@@ -1,7 +1,8 @@
 <script generics="T extends Record<string, unknown> = Record<string, unknown>" lang="ts">
 import type { TreeViewRootProps } from "@ark-ui/svelte/tree-view";
 import { TreeView as TreeViewPrimitive } from "@ark-ui/svelte/tree-view";
-import { treeViewRecipe } from "@pisagor/recipes/tree-view";
+import type { TreeViewProps as TreeViewSharedProps } from "@pisagor/props";
+import { treeViewRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component } from "svelte";
 import { setTreeViewContext } from "./tree-view.context";
@@ -9,10 +10,15 @@ import { setTreeViewContext } from "./tree-view.context";
 type Props = Omit<TreeViewRootProps<T>, "class"> & {
   class?: string | undefined;
   fileIcons?: Record<string, Component | null>;
-  recipe?: typeof treeViewRecipe;
-};
+} & TreeViewSharedProps;
 
-let { children, fileIcons, recipe = treeViewRecipe, class: className, ...rest }: Props = $props();
+let {
+  children,
+  fileIcons,
+  recipe = treeViewRecipe,
+  class: className,
+  ...rest
+}: Props = $props();
 
 const slots = $derived(recipe());
 setTreeViewContext({

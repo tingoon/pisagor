@@ -1,9 +1,13 @@
 import { ark } from "@ark-ui/solid/factory";
+import type {
+  DataListItemProps as DataListItemSharedProps,
+  DataListProps as DataListRootSharedProps,
+} from "@pisagor/props";
 import {
   type DataListItemRecipeSlot,
   dataListItemRecipe,
   dataListRecipe,
-} from "@pisagor/recipes/data-list";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
@@ -17,18 +21,20 @@ interface DataListPresetItem {
   value: JSX.Element;
 }
 
-export interface DataListRootProps extends ComponentProps<typeof ark.dl> {
+export interface DataListRootProps
+  extends ComponentProps<typeof ark.dl>,
+    DataListRootSharedProps {
   orientation?: "horizontal" | "vertical";
-  recipe?: typeof dataListRecipe;
 }
 
 export interface DataListProps extends Omit<DataListRootProps, "children"> {
   items?: DataListPresetItem[];
 }
 
-export interface DataListItemProps extends ComponentProps<typeof ark.div> {
+export interface DataListItemProps
+  extends ComponentProps<typeof ark.div>,
+    DataListItemSharedProps {
   value?: JSX.Element;
-  itemRecipe?: typeof dataListItemRecipe;
   classNames?: DataListClassNames;
 }
 
@@ -88,11 +94,11 @@ export function DataListItem(props: DataListItemProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "value",
     "children",
-    "itemRecipe",
+    "recipe",
     "class",
     "classNames",
   ]);
-  const slots = () => (local.itemRecipe ?? dataListItemRecipe)();
+  const slots = () => (local.recipe ?? dataListItemRecipe)();
 
   return (
     <DataListItemContext value={{ slots: slots() }}>

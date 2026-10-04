@@ -3,7 +3,8 @@ import {
   ToggleGroup as ToggleGroupPrimitive,
   type ToggleGroupRootProps as ToggleGroupPrimitiveRootProps,
 } from "@ark-ui/react/toggle-group";
-import { toggleGroupRecipe } from "@pisagor/recipes/toggle-group";
+import type { ToggleGroupProps as ToggleGroupRootSharedProps } from "@pisagor/props";
+import { toggleGroupRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { useMemo } from "react";
 import { Toggle } from "../toggle";
@@ -22,14 +23,9 @@ interface ToggleGroupPresetItem {
 
 export interface ToggleGroupRootProps
   extends Omit<ToggleGroupPrimitiveRootProps, "onValueChange">,
-    Omit<ToggleGroupContextProps, "slots"> {
+    Omit<ToggleGroupContextProps, "slots">,
+    ToggleGroupRootSharedProps {
   onValueChange?: (value: string | string[]) => void;
-  /**
-   * Style recipe. Defaults to `toggleGroupRecipe` from `@pisagor/recipes/toggle-group`.
-   *
-   * @defaultValue toggleGroupRecipe
-   */
-  recipe?: typeof toggleGroupRecipe;
 }
 
 export interface ToggleGroupProps

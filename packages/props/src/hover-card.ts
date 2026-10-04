@@ -1,4 +1,4 @@
-import type { HoverCardRecipeFn } from "@pisagor/recipes/hover-card";
+import type { HoverCardRecipeFn } from "@pisagor/recipes";
 
 /** HoverCard props. */
 export interface HoverCardProps {

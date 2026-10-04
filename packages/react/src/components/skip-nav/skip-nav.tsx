@@ -1,9 +1,15 @@
 import { ark } from "@ark-ui/react/factory";
-import { skipNavRecipe } from "@pisagor/recipes/skip-nav";
+import type {
+  SkipNavProps as SkipNavContentSharedProps,
+  SkipNavProps as SkipNavLinkSharedProps,
+} from "@pisagor/props";
+import { skipNavRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 
 // #region Types
-export interface SkipNavLinkProps extends ComponentProps<typeof ark.a> {
+export interface SkipNavLinkProps
+  extends ComponentProps<typeof ark.a>,
+    SkipNavLinkSharedProps {
   /**
    * The id of the element to skip to.
    *
@@ -13,15 +19,11 @@ export interface SkipNavLinkProps extends ComponentProps<typeof ark.a> {
    * Must match the `id` on the paired `SkipNavContent`.
    */
   id?: string;
-  /**
-   * Style recipe. Defaults to `skipNavRecipe` from `@pisagor/recipes/skip-nav`.
-   *
-   * @defaultValue skipNavRecipe
-   */
-  recipe?: typeof skipNavRecipe;
 }
 
-export interface SkipNavContentProps extends ComponentProps<typeof ark.div> {
+export interface SkipNavContentProps
+  extends ComponentProps<typeof ark.div>,
+    SkipNavContentSharedProps {
   /**
    * The id that SkipNavLink links to.
    *
@@ -31,12 +33,6 @@ export interface SkipNavContentProps extends ComponentProps<typeof ark.div> {
    * Must match the `id` passed to the paired `SkipNavLink`.
    */
   id?: string;
-  /**
-   * Style recipe. Defaults to `skipNavRecipe` from `@pisagor/recipes/skip-nav`.
-   *
-   * @defaultValue skipNavRecipe
-   */
-  recipe?: typeof skipNavRecipe;
 }
 // #endregion
 

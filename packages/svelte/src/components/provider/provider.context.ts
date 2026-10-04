@@ -2,9 +2,8 @@ import { createContext } from "../../utils/create-context";
 
 export type ProviderMessages = Record<string, string>;
 
-const ctx = createContext<ProviderMessages>({
+const ctx = createContext("ProviderMessages")<ProviderMessages>({
   defaultValue: {},
-  name: "ProviderMessages",
   strict: false,
 });
 

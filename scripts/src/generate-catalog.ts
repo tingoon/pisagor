@@ -108,18 +108,9 @@ function findSources(dir: string, name: string): string[] {
 }
 
 function findExamplesRoot(packageDir: string): string | null {
-  const skillsDir = path.join(packageDir, "skills");
-  if (!existsSync(skillsDir)) {
-    return null;
-  }
-  for (const entry of readdirSync(skillsDir)) {
-    if (entry.startsWith(".")) {
-      continue;
-    }
-    const examples = path.join(skillsDir, entry, "assets", "examples");
-    if (existsSync(examples) && statSync(examples).isDirectory()) {
-      return examples;
-    }
+  const examples = path.join(packageDir, "examples");
+  if (existsSync(examples) && statSync(examples).isDirectory()) {
+    return examples;
   }
   return null;
 }
@@ -300,12 +291,14 @@ function frameworkTargets(
   return targets;
 }
 
-function writeCatalog(
-  packageDir: string,
-  catalog: ComponentsCatalog | RecipesCatalog,
-) {
-  mkdirSync(packageDir, { recursive: true });
-  const out = path.join(packageDir, "catalog.gen.json");
+function packageSlug(packageName: string): string {
+  return packageName.replace(/^@pisagor\//, "");
+}
+
+function writeCatalog(catalog: ComponentsCatalog | RecipesCatalog) {
+  const mcpDir = path.join(workspaceRoot, "packages/mcp");
+  mkdirSync(mcpDir, { recursive: true });
+  const out = path.join(mcpDir, `${packageSlug(catalog.package)}.gen.json`);
   writeFileSync(out, `${JSON.stringify(catalog)}\n`);
   const count =
     catalog.kind === "components"
@@ -336,13 +329,10 @@ function main() {
       console.warn(`skip ${target.package}: missing sources`);
       continue;
     }
-    writeCatalog(target.packageDir, buildComponentsCatalog(target));
+    writeCatalog(buildComponentsCatalog(target));
   }
 
-  writeCatalog(
-    path.join(workspaceRoot, "packages/recipes"),
-    buildRecipesCatalog(),
-  );
+  writeCatalog(buildRecipesCatalog());
 }
 
 main();

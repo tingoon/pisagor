@@ -2,12 +2,12 @@ import {
   type FieldInputProps,
   FieldInput as InputPrimitive,
 } from "@ark-ui/solid/field";
+import type { InputProps as InputSharedProps } from "@pisagor/props";
 import {
   type InputRecipeSlot,
-  type InputRootVariantProps,
   inputRecipe,
   inputRootRecipe,
-} from "@pisagor/recipes/input";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -20,16 +20,13 @@ import { InputClearAddon } from "./input-clear-button";
 
 type FormControlVariant = "primary" | "secondary";
 type InputClassNames = VariantClassNames<InputRecipeSlot>;
-type InputVariantProps = InputRootVariantProps;
-
 export interface InputProps
   extends Omit<FieldInputProps, "size">,
-    InputVariantProps {
+    InputSharedProps {
   /** Initial value when uncontrolled. Solid has no native defaultValue on inputs. */
   defaultValue?: string | number | readonly string[];
   clearable?: boolean;
   onValueChange?: (value: string) => void;
-  recipe?: typeof inputRecipe;
   rootRecipe?: typeof inputRootRecipe;
   classNames?: InputClassNames;
 }

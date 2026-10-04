@@ -1,4 +1,5 @@
-import { dataTableRecipe } from "@pisagor/recipes/data-table";
+import type { DataTableProps as DataTableSharedProps } from "@pisagor/props";
+import { dataTableRecipe } from "@pisagor/recipes";
 import type { RowData, TableOptions } from "@tanstack/solid-table";
 import { createTable, flexRender } from "@tanstack/solid-table";
 import type { ComponentProps, JSX } from "solid-js";
@@ -32,8 +33,8 @@ export type DataTableProps<TData extends RowData> = {
   children: JSX.Element;
   class?: string;
   features?: DataTableFeatures;
-  recipe?: typeof dataTableRecipe;
-} & Omit<TableOptions<DataTableFeatures, TData>, "features">;
+} & DataTableSharedProps &
+  Omit<TableOptions<DataTableFeatures, TData>, "features">;
 
 interface DataTableHeaderProps {
   children: JSX.Element;

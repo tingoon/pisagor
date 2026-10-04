@@ -1,4 +1,5 @@
-import type { ColorPickerRecipe } from "@pisagor/recipes/color-picker";
+import type { ColorPickerRecipe } from "@pisagor/recipes";
+
 import { createContext } from "../../utils";
 
 interface ColorPickerContextValue {
@@ -6,6 +7,4 @@ interface ColorPickerContextValue {
 }
 
 export const { ColorPickerContext: ColorPickerSlotsContext, useColorPicker } =
-  createContext<ColorPickerContextValue>()({
-    name: "ColorPicker",
-  });
+  createContext("ColorPicker")<ColorPickerContextValue>();

@@ -1,15 +1,16 @@
 <script lang="ts">
 import type { QrCodeRootProps as ArkRootProps } from "@ark-ui/svelte/qr-code";
 import { QrCode as QrCodePrimitive } from "@ark-ui/svelte/qr-code";
-import { qrCodeRecipe } from "@pisagor/recipes/qr-code";
+import type { QrCodeProps as QrCodeSharedProps } from "@pisagor/props";
+import { qrCodeRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setQrCodeContext } from "./qr-code.context";
 import QrCodeFrame from "./qr-code-frame.svelte";
 
-type Props = Omit<ArkRootProps, "class"> & {
+type Props = Omit<ArkRootProps, "class"> &
+  {
   class?: string | undefined;
-  recipe?: typeof qrCodeRecipe;
-};
+  } & QrCodeSharedProps;
 
 let { recipe = qrCodeRecipe, class: className, children, ...rest }: Props = $props();
 const slots = $derived(recipe());

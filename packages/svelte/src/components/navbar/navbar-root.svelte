@@ -1,14 +1,15 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { navbarRecipe } from "@pisagor/recipes/navbar";
+import type { NavbarProps as NavbarSharedProps } from "@pisagor/props";
+import { navbarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setNavbarContext } from "./navbar.context";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
+type Props = Omit<HTMLAttributes<HTMLElement>, "class"> &
+  {
   class?: string | undefined;
-  recipe?: typeof navbarRecipe;
-};
+  } & NavbarSharedProps;
 
 let { children, recipe = navbarRecipe, class: className, ...rest }: Props = $props();
 const slots = $derived(recipe());

@@ -2,7 +2,7 @@ import type {
   MenuItemRecipeFn,
   MenuItemVariantProps,
   MenuRecipeFn,
-} from "@pisagor/recipes/menu";
+} from "@pisagor/recipes";
 
 /** Menu props. */
 export interface MenuProps {

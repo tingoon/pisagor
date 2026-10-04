@@ -1,15 +1,16 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cardRecipe } from "@pisagor/recipes/card";
+import type { CardProps as CardSharedProps } from "@pisagor/props";
+import { cardRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setCardContext } from "./card.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
+  {
   children?: import("svelte").Snippet;
   class?: string | undefined;
-  recipe?: typeof cardRecipe;
-};
+  } & CardSharedProps;
 
 let { children, recipe = cardRecipe, class: className, ...rest }: Props = $props();
 

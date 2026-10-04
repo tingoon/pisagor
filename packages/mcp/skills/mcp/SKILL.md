@@ -10,7 +10,7 @@ metadata:
 
 # @pisagor/mcp
 
-MCP server for Pisagor UI. It reads catalogs from installed `@pisagor/*` packages. It does not own component, form, chart, recipe, token, or util APIs.
+MCP server for Pisagor UI. It ships `{package}.gen.json` catalogs and exposes tools for installed `@pisagor/*` packages. It does not own component, form, chart, recipe, token, or util APIs.
 
 ```bash
 bunx @pisagor/mcp

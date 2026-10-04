@@ -10,11 +10,15 @@ import {
   PhWarningCircle,
   PhX,
 } from "@phosphor-icons/vue";
+import type {
+  ToastProps as ToasterSharedProps,
+  ToastItemProps as ToastItemSharedProps,
+} from "@pisagor/props";
 import {
   type ToastItemRecipeSlot,
   toastItemRecipe,
   toastRecipe,
-} from "@pisagor/recipes/toast";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];
@@ -42,26 +46,14 @@ type ToastData = {
   action?: ToastAction;
 };
 
-export interface ToasterProps {
+export interface ToasterProps extends ToasterSharedProps {
   toaster?: unknown;
-  /**
-   * Style recipe. Defaults to `toastRecipe` from `@pisagor/recipes/toast`.
-   *
-   * @defaultValue toastRecipe
-   */
-  recipe?: typeof toastRecipe;
   class?: ClassValue;
   style?: Record<string, unknown>;
 }
 
-export interface ToastItemProps {
+export interface ToastItemProps extends ToastItemSharedProps {
   toast: ToastData;
-  /**
-   * Style recipe. Defaults to `toastItemRecipe` from `@pisagor/recipes/toast-item`.
-   *
-   * @defaultValue toastItemRecipe
-   */
-  itemRecipe?: typeof toastItemRecipe;
   class?: ClassValue;
   classNames?: ToastItemClassNames;
   iconProps?: Record<string, unknown>;
@@ -165,7 +157,7 @@ export const ToastItem = defineComponent({
       default: undefined,
       type: Object as PropType<Record<string, unknown>>,
     },
-    itemRecipe: {
+    recipe: {
       default: toastItemRecipe,
       type: Function as PropType<typeof toastItemRecipe>,
     },
@@ -177,7 +169,7 @@ export const ToastItem = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const slots = props.itemRecipe();
+      const slots = props.recipe();
 
       const toastData = props.toast;
       const toastAction = toastData.action;

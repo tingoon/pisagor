@@ -6,19 +6,15 @@ import type {
 } from "@ark-ui/react/accordion";
 import { Accordion as AccordionPrimitive } from "@ark-ui/react/accordion";
 import { CaretDownIcon } from "@phosphor-icons/react";
-import { accordionItemRecipe } from "@pisagor/recipes/accordion";
+import type { AccordionItemProps as AccordionItemSharedProps } from "@pisagor/props";
+import { accordionItemRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { AccordionItemContext, useAccordionItem } from "./accordion.context";
 
 // #region Types
-export interface AccordionItemProps extends AccordionPrimitiveItemProps {
-  /**
-   * Style recipe. Defaults to `accordionItemRecipe` from `@pisagor/recipes/accordion`.
-   *
-   * @defaultValue accordionItemRecipe
-   */
-  itemRecipe?: typeof accordionItemRecipe;
-}
+export interface AccordionItemProps
+  extends AccordionPrimitiveItemProps,
+    AccordionItemSharedProps {}
 
 interface AccordionPresetItem {
   value: string;
@@ -47,11 +43,11 @@ export function AccordionRoot({
 
 export function AccordionItem({
   children,
-  itemRecipe = accordionItemRecipe,
+  recipe = accordionItemRecipe,
   className,
   ...rest
 }: AccordionItemProps) {
-  const slots = itemRecipe();
+  const slots = recipe();
 
   return (
     <AccordionItemContext value={{ slots }}>

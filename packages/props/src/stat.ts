@@ -3,7 +3,7 @@ import type {
   StatTrendRecipeFn,
   StatTrendVariantProps,
   StatVariantProps,
-} from "@pisagor/recipes/stat";
+} from "@pisagor/recipes";
 
 /** Stat props. */
 export interface StatProps extends StatVariantProps {

@@ -1,10 +1,14 @@
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/vue/radio-group";
-import { fieldRecipe } from "@pisagor/recipes/field";
-import { formControlRadioToggleRecipe } from "@pisagor/recipes/form-control";
+import type {
+  RadioGroupItemProps as RadioGroupItemSharedProps,
+  RadioGroupProps as RadioGroupRootSharedProps,
+} from "@pisagor/props";
 import {
+  fieldRecipe,
+  formControlRadioToggleRecipe,
   radioGroupItemRecipe,
   radioGroupRecipe,
-} from "@pisagor/recipes/radio-group";
+} from "@pisagor/recipes";
 import { type ClassValue, cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -20,13 +24,7 @@ export interface RadioGroupPresetItem {
   value: string;
 }
 
-export interface RadioGroupRootProps {
-  /**
-   * Style recipe. Defaults to `radioGroupRecipe` from `@pisagor/recipes/radio-group`.
-   *
-   * @defaultValue radioGroupRecipe
-   */
-  recipe?: typeof radioGroupRecipe;
+export interface RadioGroupRootProps extends RadioGroupRootSharedProps {
   class?: unknown;
   defaultValue?: string | null;
   disabled?: boolean;
@@ -40,13 +38,7 @@ export interface RadioGroupProps extends Omit<RadioGroupRootProps, "class"> {
   items?: RadioGroupPresetItem[];
 }
 
-export interface RadioGroupItemProps {
-  /**
-   * Style recipe. Defaults to `radioGroupItemRecipe` from `@pisagor/recipes/radio-group-item`.
-   *
-   * @defaultValue radioGroupItemRecipe
-   */
-  itemRecipe?: typeof radioGroupItemRecipe;
+export interface RadioGroupItemProps extends RadioGroupItemSharedProps {
   class?: unknown;
   disabled?: boolean;
   tabIndex?: number;
@@ -118,7 +110,7 @@ export const RadioGroupItem = defineComponent({
       type: [String, Object, Array] as PropType<unknown>,
     },
     disabled: { default: undefined, type: Boolean },
-    itemRecipe: {
+    recipe: {
       default: radioGroupItemRecipe,
       type: Function as PropType<typeof radioGroupItemRecipe>,
     },
@@ -142,7 +134,7 @@ export const RadioGroupItem = defineComponent({
         variant: resolved.variant,
       };
       const controlProps = { "data-variant": resolved.variant };
-      const slots = props.itemRecipe();
+      const slots = props.recipe();
 
       return h(
         RadioGroupPrimitive.Item as ArkPart,

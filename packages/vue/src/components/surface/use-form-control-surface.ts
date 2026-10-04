@@ -1,4 +1,4 @@
-import type { FormControlShellVariantProps } from "@pisagor/recipes/form-control";
+import type { FormControlShellVariantProps } from "@pisagor/recipes";
 import { useSurface } from "./surface";
 
 export type FormControlSurfaceVariant =

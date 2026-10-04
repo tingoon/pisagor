@@ -1,7 +1,8 @@
 <script lang="ts">
 import type { TimerRootProps as ArkRootProps } from "@ark-ui/svelte/timer";
 import { Timer as TimerPrimitive } from "@ark-ui/svelte/timer";
-import { timerRecipe } from "@pisagor/recipes/timer";
+import type { TimerProps as TimerSharedProps } from "@pisagor/props";
+import { timerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setTimerContext } from "./timer.context";
 import TimerArea from "./timer-area.svelte";
@@ -15,12 +16,12 @@ import TimerSeparator from "./timer-separator.svelte";
 
 type TimerUnit = "hours" | "minutes" | "seconds";
 
-type Props = Omit<ArkRootProps, "class"> & {
+type Props = Omit<ArkRootProps, "class"> &
+  {
   class?: string | undefined;
   isControlsVisible?: boolean;
-  recipe?: typeof timerRecipe;
   units?: TimerUnit[];
-};
+  } & TimerSharedProps;
 
 let {
   isControlsVisible,

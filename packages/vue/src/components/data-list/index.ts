@@ -2,6 +2,7 @@ import { DataListItem, DataListRoot, DataListShorthand } from "./data-list";
 
 export type {
   DataListItemLabelProps,
+  DataListItemProps,
   DataListProps,
 } from "./data-list";
 

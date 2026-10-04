@@ -2,13 +2,17 @@ import {
   Toggle as TogglePrimitive,
   type ToggleRootProps,
 } from "@ark-ui/react/toggle";
-import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes/button";
-import { type ToggleVariantProps, toggleRecipe } from "@pisagor/recipes/toggle";
+import type { ToggleProps as ToggleSharedProps } from "@pisagor/props";
+import {
+  type ButtonVariantProps,
+  buttonRecipe,
+  toggleRecipe,
+} from "@pisagor/recipes";
 
 import { cn } from "@pisagor/utils";
 
 // #region Types
-export interface ToggleProps extends ToggleRootProps, ToggleVariantProps {
+export interface ToggleProps extends ToggleRootProps, ToggleSharedProps {
   /**
    * The variant of the toggle
    *
@@ -17,12 +21,6 @@ export interface ToggleProps extends ToggleRootProps, ToggleVariantProps {
   variant?: Extract<ButtonVariantProps["variant"], "outline" | "ghost">;
   /** Called with the pressed state when the toggle changes. */
   onValueChange?: (value: boolean) => void;
-  /**
-   * Style recipe. Defaults to `toggleRecipe` from `@pisagor/recipes/toggle`.
-   *
-   * @defaultValue toggleRecipe
-   */
-  recipe?: typeof toggleRecipe;
   /**
    * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
    *

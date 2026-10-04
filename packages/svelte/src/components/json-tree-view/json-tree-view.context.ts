@@ -1,10 +1,10 @@
-import type { JsonTreeViewRecipe } from "@pisagor/recipes/json-tree-view";
+import type { JsonTreeViewRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 interface JsonTreeViewContextValue {
   slots: JsonTreeViewRecipe;
 }
 
-const ctx = createContext<JsonTreeViewContextValue>({ name: "JsonTreeView" });
+const ctx = createContext("JsonTreeView")<JsonTreeViewContextValue>();
 
 export const setJsonTreeViewContext = ctx.setContext;

@@ -17,11 +17,15 @@ import type {
 } from "@ark-ui/react/menu";
 import { Menu as MenuPrimitive } from "@ark-ui/react/menu";
 import { CaretRightIcon, CheckIcon } from "@phosphor-icons/react";
-import {
-  type DropdownMenuItemVariantProps,
-  dropdownMenuItemRecipe,
-  dropdownMenuRecipe,
-} from "@pisagor/recipes/dropdown-menu";
+import type {
+  DropdownMenuItemProps as DropdownMenuCheckboxItemSharedProps,
+  DropdownMenuProps as DropdownMenuContentSharedProps,
+  DropdownMenuItemProps as DropdownMenuItemSharedProps,
+  DropdownMenuItemProps as DropdownMenuRadioItemSharedProps,
+  DropdownMenuProps as DropdownMenuSubContentSharedProps,
+  DropdownMenuItemProps as DropdownMenuTriggerItemSharedProps,
+} from "@pisagor/props";
+import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { DropdownMenuContext, useDropdownMenu } from "./dropdown-menu.context";
 
@@ -33,14 +37,7 @@ export interface DropdownMenuItemGroupProps extends MenuItemGroupProps {
 
 export interface DropdownMenuItemProps
   extends MenuItemProps,
-    DropdownMenuItemVariantProps {
-  /**
-   * Style recipe. Defaults to `dropdownMenuItemRecipe` from `@pisagor/recipes/dropdown-menu`.
-   *
-   * @defaultValue dropdownMenuItemRecipe
-   */
-  recipe?: typeof dropdownMenuItemRecipe;
-}
+    DropdownMenuItemSharedProps {}
 
 export interface DropdownMenuRadioItemGroupProps
   extends MenuRadioItemGroupProps {
@@ -54,56 +51,31 @@ export type DropdownMenuTriggerProps = MenuTriggerProps;
 
 export type DropdownMenuPositionerProps = MenuPositionerProps;
 
-export interface DropdownMenuCheckboxItemProps extends MenuCheckboxItemProps {
-  /**
-   * Style recipe. Defaults to `dropdownMenuItemRecipe` from `@pisagor/recipes/dropdown-menu`.
-   *
-   * @defaultValue dropdownMenuItemRecipe
-   */
-  recipe?: typeof dropdownMenuItemRecipe;
-}
+export interface DropdownMenuCheckboxItemProps
+  extends MenuCheckboxItemProps,
+    DropdownMenuCheckboxItemSharedProps {}
 
 export type DropdownMenuItemGroupLabelProps = MenuItemGroupLabelProps;
 
-export interface DropdownMenuRadioItemProps extends MenuRadioItemProps {
-  /**
-   * Style recipe. Defaults to `dropdownMenuItemRecipe` from `@pisagor/recipes/dropdown-menu`.
-   *
-   * @defaultValue dropdownMenuItemRecipe
-   */
-  recipe?: typeof dropdownMenuItemRecipe;
-}
+export interface DropdownMenuRadioItemProps
+  extends MenuRadioItemProps,
+    DropdownMenuRadioItemSharedProps {}
 
-export interface DropdownMenuSubContentProps extends MenuContentProps {
-  /**
-   * Style recipe. Defaults to `dropdownMenuRecipe` from `@pisagor/recipes/dropdown-menu`.
-   *
-   * @defaultValue dropdownMenuRecipe
-   */
-  recipe?: typeof dropdownMenuRecipe;
-}
+export interface DropdownMenuSubContentProps
+  extends MenuContentProps,
+    DropdownMenuSubContentSharedProps {}
 
 export type DropdownMenuArrowProps = MenuArrowProps;
 
 export type DropdownMenuSeparatorProps = MenuSeparatorProps;
 
-export interface DropdownMenuTriggerItemProps extends MenuTriggerItemProps {
-  /**
-   * Style recipe. Defaults to `dropdownMenuItemRecipe` from `@pisagor/recipes/dropdown-menu`.
-   *
-   * @defaultValue dropdownMenuItemRecipe
-   */
-  recipe?: typeof dropdownMenuItemRecipe;
-}
+export interface DropdownMenuTriggerItemProps
+  extends MenuTriggerItemProps,
+    DropdownMenuTriggerItemSharedProps {}
 
-export interface DropdownMenuContentProps extends MenuContentProps {
-  /**
-   * Style recipe. Defaults to `dropdownMenuRecipe` from `@pisagor/recipes/dropdown-menu`.
-   *
-   * @defaultValue dropdownMenuRecipe
-   */
-  recipe?: typeof dropdownMenuRecipe;
-}
+export interface DropdownMenuContentProps
+  extends MenuContentProps,
+    DropdownMenuContentSharedProps {}
 
 export type DropdownMenuShortcutProps = ComponentProps<typeof ark.span>;
 // #endregion

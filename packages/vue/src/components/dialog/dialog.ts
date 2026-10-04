@@ -1,9 +1,10 @@
 import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
+import type { DialogProps as DialogSharedProps } from "@pisagor/props";
 import {
   type DialogRecipe,
   type DialogVariantProps,
   dialogRecipe,
-} from "@pisagor/recipes/dialog";
+} from "@pisagor/recipes";
 import {
   defineComponent,
   h,
@@ -42,25 +43,17 @@ export interface DialogHeaderProps {
   title?: string;
 }
 
-export interface DialogProps {
+export interface DialogProps extends DialogSharedProps {
   collapsible?: boolean;
   lazyMount?: boolean;
   modal?: boolean;
   unmountOnExit?: boolean;
-  /**
-   * Style recipe. Defaults to `dialogRecipe` from `@pisagor/recipes/dialog`.
-   *
-   * @defaultValue dialogRecipe
-   */
-  recipe?: typeof dialogRecipe;
 }
 // #endregion
 
 // #region Context
 const [provideDialogContext, useDialogLocal] =
-  createContext<DialogContextValue>({
-    name: "DialogLocal",
-  });
+  createContext("DialogLocal")<DialogContextValue>();
 
 export { useDialogLocal as useDialog };
 

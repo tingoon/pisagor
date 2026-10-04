@@ -4,7 +4,8 @@ import {
   RatingGroup as RatingGroupPrimitive,
   type RatingGroupRootProps,
 } from "@ark-ui/solid/rating-group";
-import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes/rating";
+import type { RatingProps as RatingSharedProps } from "@pisagor/props";
+import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
@@ -18,10 +19,10 @@ type RatingItemProps = RatingGroupItemProps;
 type RatingIndicatorProps = ComponentProps<"span">;
 type RatingClassNames = VariantClassNames<RatingRecipeSlot>;
 
-type RatingRootProps = RatingGroupRootProps & {
-  variant?: FormControlVariant;
-  recipe?: typeof ratingRecipe;
-};
+type RatingRootProps = RatingGroupRootProps &
+  RatingSharedProps & {
+    variant?: FormControlVariant;
+  };
 
 export interface RatingProps
   extends Omit<RatingRootProps, "children" | "onValueChange"> {

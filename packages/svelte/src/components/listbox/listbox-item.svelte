@@ -1,25 +1,25 @@
 <script lang="ts">
 import type { ListboxItemProps as ArkListboxItemProps } from "@ark-ui/svelte/listbox";
 import { Listbox as ListboxPrimitive } from "@ark-ui/svelte/listbox";
-import { type ListboxItemVariantProps, listboxItemRecipe } from "@pisagor/recipes/listbox";
+import type { ListboxItemProps as ListboxItemSharedProps } from "@pisagor/props";
+import { listboxItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setListboxItemContext } from "./listbox.context";
 
 type Props = Omit<ArkListboxItemProps, "class"> &
-  ListboxItemVariantProps & {
+  {
     class?: string | undefined;
-    itemRecipe?: typeof listboxItemRecipe;
-  };
+  } & ListboxItemSharedProps;
 
 let {
   variant = "default",
-  itemRecipe = listboxItemRecipe,
+  recipe = listboxItemRecipe,
   class: className,
   children,
   ...rest
 }: Props = $props();
 
-const slots = $derived(itemRecipe({ variant }));
+const slots = $derived(recipe({ variant }));
 setListboxItemContext({
   get slots() {
     return slots;

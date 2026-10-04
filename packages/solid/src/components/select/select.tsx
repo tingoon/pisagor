@@ -17,11 +17,12 @@ import {
   Select as SelectPrimitive,
   useSelectContext,
 } from "@ark-ui/solid/select";
+import type { SelectProps as SelectRootSharedProps } from "@pisagor/props";
 import {
   type FormControlShellVariantProps,
   formControlShellRecipe,
-} from "@pisagor/recipes/form-control";
-import { selectRecipe } from "@pisagor/recipes/select";
+  selectRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
@@ -44,8 +45,7 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
 > & {
   variant?: FormControlVariant;
   onValueChange?: (value: string | string[]) => void;
-  recipe?: typeof selectRecipe;
-};
+} & SelectRootSharedProps;
 
 export interface SelectProps
   extends Omit<SelectRootProps, "children" | "collection"> {

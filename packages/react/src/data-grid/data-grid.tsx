@@ -1,4 +1,5 @@
-import { dataGridRecipe } from "@pisagor/recipes/data-grid";
+import type { DataGridProps as DataGridSharedProps } from "@pisagor/props";
+import { dataGridRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { RowData, TableOptions } from "@tanstack/react-table";
 import { flexRender, useTable } from "@tanstack/react-table";
@@ -53,13 +54,8 @@ export type DataGridProps<TData extends RowData> = {
    * @defaultValue dataGridFeatures
    */
   features?: DataGridFeatures;
-  /**
-   * Style recipe. Defaults to `dataGridRecipe` from `@pisagor/recipes/data-grid`.
-   *
-   * @defaultValue dataGridRecipe
-   */
-  recipe?: typeof dataGridRecipe;
-} & Omit<TableOptions<DataGridFeatures, TData>, "features">;
+} & Omit<TableOptions<DataGridFeatures, TData>, "features"> &
+  DataGridSharedProps;
 
 interface DataGridHeaderProps {
   children: ReactNode;

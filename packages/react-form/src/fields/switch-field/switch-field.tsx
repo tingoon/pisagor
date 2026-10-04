@@ -1,5 +1,4 @@
-import type { SwitchProps } from "@pisagor/react";
-import { Field, Switch } from "@pisagor/react";
+import { Field, Switch, type SwitchProps } from "@pisagor/react";
 import type { FieldPresentationProps } from "../../internal/field-shell";
 
 // #region Types

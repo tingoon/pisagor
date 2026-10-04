@@ -1,4 +1,4 @@
-import type { HighlightRecipeFn } from "@pisagor/recipes/highlight";
+import type { HighlightRecipeFn } from "@pisagor/recipes";
 
 /** Highlight props. */
 export interface HighlightProps {

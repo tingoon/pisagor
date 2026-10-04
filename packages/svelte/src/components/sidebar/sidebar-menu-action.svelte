@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { buttonRecipe } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLButtonAttributes } from "svelte/elements";
 import { useSidebar } from "./sidebar.context";

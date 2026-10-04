@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
-import type { ButtonProps as ButtonSharedProps } from "@pisagor/props/button";
-import { buttonRecipe } from "@pisagor/recipes/button";
+import type { ButtonProps as ButtonSharedProps } from "@pisagor/props";
+import { buttonRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { Spinner } from "../spinner";
 

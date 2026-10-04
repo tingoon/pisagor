@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg
+  aria-label="Color Picker anatomy"
+  fill="none"
+  role="img"
+  viewBox="0 0 800 450"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <title>Color Picker anatomy</title>
+  <defs>
+    <linearGradient id="glass" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.42" />
+      <stop offset="100%" stop-color="#000" stop-opacity="0.56" />
+    </linearGradient>
+    <linearGradient id="well" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.1" />
+    </linearGradient>
+    <filter
+      color-interpolation-filters="sRGB"
+      filterUnits="userSpaceOnUse"
+      height="546"
+      id="lift"
+      width="896"
+      x="-48"
+      y="-48"
+    >
+      <feDropShadow
+        dx="0"
+        dy="12"
+        flood-color="#000"
+        flood-opacity="0.28"
+        stdDeviation="16"
+      />
+    </filter>
+  </defs>
+  <rect
+    fill="url(#glass)"
+    filter="url(#lift)"
+    height="360"
+    rx="43.2"
+    stroke="#fff"
+    stroke-opacity="0.28"
+    stroke-width="1.2"
+    width="440"
+    x="180"
+    y="45"
+  />
+  <rect
+    fill="url(#well)"
+    height="192"
+    rx="24"
+    stroke="#fff"
+    stroke-opacity="0.35"
+    stroke-width="1.2"
+    width="392"
+    x="204"
+    y="69"
+  />
+  <rect
+    fill="#fff"
+    fill-opacity="0.35"
+    height="20"
+    rx="10"
+    width="392"
+    x="204"
+    y="285"
+  />
+  <circle cx="460" cy="295" fill="#fff" r="14" />
+  <circle cx="236" cy="357" fill="#fff" fill-opacity="0.35" r="20" />
+  <circle cx="308" cy="357" fill="#fff" fill-opacity="0.47" r="20" />
+  <circle cx="380" cy="357" fill="#fff" fill-opacity="0.59" r="20" />
+  <circle cx="452" cy="357" fill="#fff" fill-opacity="0.71" r="20" />
+  <circle cx="524" cy="357" fill="#fff" fill-opacity="0.83" r="20" />
+</svg>

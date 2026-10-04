@@ -4,11 +4,12 @@ import {
   ProgressTrack,
   ProgressValueText,
 } from "@ark-ui/vue/progress";
-import { fieldRecipe } from "@pisagor/recipes/field";
+import type { ProgressProps as ProgressSharedProps } from "@pisagor/props";
 import {
+  fieldRecipe,
   type ProgressRecipeSlot,
   progressRecipe,
-} from "@pisagor/recipes/progress";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNode } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -16,13 +17,7 @@ import type { VariantClassNames } from "../../internal/types";
 // #region Types
 type ProgressClassNames = VariantClassNames<ProgressRecipeSlot>;
 
-export interface ProgressProps {
-  /**
-   * Style recipe. Defaults to `progressRecipe` from `@pisagor/recipes/progress`.
-   *
-   * @defaultValue progressRecipe
-   */
-  recipe?: typeof progressRecipe;
+export interface ProgressProps extends ProgressSharedProps {
   class?: unknown;
   classNames?: ProgressClassNames;
   indeterminate?: boolean;

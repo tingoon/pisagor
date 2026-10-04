@@ -1,5 +1,4 @@
-import type { PasswordInputProps } from "@pisagor/solid";
-import { PasswordInput } from "@pisagor/solid";
+import { PasswordInput, type PasswordInputProps } from "@pisagor/solid";
 import { splitProps } from "solid-js";
 import {
   type FieldPresentationProps,

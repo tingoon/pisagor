@@ -1,17 +1,13 @@
 import { ark } from "@ark-ui/react/factory";
-import { navbarRecipe } from "@pisagor/recipes/navbar";
+import type { NavbarProps as NavbarRootSharedProps } from "@pisagor/props";
+import { navbarRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { NavbarContext, useNavbar } from "./navbar.context";
 
 // #region Types
-export interface NavbarRootProps extends ComponentProps<typeof ark.header> {
-  /**
-   * Style recipe. Defaults to `navbarRecipe` from `@pisagor/recipes/navbar`.
-   *
-   * @defaultValue navbarRecipe
-   */
-  recipe?: typeof navbarRecipe;
-}
+export interface NavbarRootProps
+  extends ComponentProps<typeof ark.header>,
+    NavbarRootSharedProps {}
 
 export type NavbarPartProps = ComponentProps<typeof ark.div>;
 

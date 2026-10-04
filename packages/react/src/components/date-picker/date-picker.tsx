@@ -12,8 +12,9 @@ import {
 } from "@ark-ui/react/date-picker";
 import { Portal } from "@ark-ui/react/portal";
 import { CalendarIcon, ClockIcon, XIcon } from "@phosphor-icons/react";
-import { calendarRecipe } from "@pisagor/recipes/calendar";
-import { datePickerRecipe } from "@pisagor/recipes/date-picker";
+import type { DatePickerProps as DatePickerSharedProps } from "@pisagor/props";
+import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
+
 import { useContext } from "react";
 
 import { useClearableInput } from "../../hooks";
@@ -48,20 +49,15 @@ export interface DatePickerInputProps
   clearable?: boolean;
 }
 
-export interface DatePickerTimerProps extends Omit<InputProps, "recipe"> {
+export interface DatePickerTimerProps
+  extends Omit<InputProps, "recipe">,
+    DatePickerSharedProps {
   /**
    * Whether to show a clear button when the input has a value.
    *
    * @defaultValue false
    */
   clearable?: boolean;
-  /**
-   * Style recipe. Defaults to `datePickerRecipe` from `@pisagor/recipes/date-picker`.
-   * Used when rendered outside `DatePicker` (standalone time field).
-   *
-   * @defaultValue datePickerRecipe
-   */
-  recipe?: typeof datePickerRecipe;
 }
 
 export interface DatePickerContentProps
@@ -74,16 +70,11 @@ export interface DatePickerContentProps
 }
 
 export interface DatePickerRootProps
-  extends Omit<DatePickerPrimitiveRootProps, "onValueChange"> {
+  extends Omit<DatePickerPrimitiveRootProps, "onValueChange">,
+    DatePickerSharedProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   onValueChange?: (value: DatePickerRootProps["value"]) => void;
-  /**
-   * Style recipe. Defaults to `datePickerRecipe` from `@pisagor/recipes/date-picker`.
-   *
-   * @defaultValue datePickerRecipe
-   */
-  recipe?: typeof datePickerRecipe;
   /**
    * Calendar style recipe. Defaults to `calendarRecipe` from `@pisagor/recipes/calendar`.
    *

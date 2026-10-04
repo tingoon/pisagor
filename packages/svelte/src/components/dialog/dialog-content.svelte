@@ -1,18 +1,18 @@
 <script lang="ts">
 import type { DialogContentProps as ArkDialogContentProps } from "@ark-ui/svelte/dialog";
 import { Dialog as DialogPrimitive } from "@ark-ui/svelte/dialog";
-import { buttonRecipe } from "@pisagor/recipes/button";
-import type { DialogVariantProps } from "@pisagor/recipes/dialog";
+import type { DialogProps as DialogSharedProps } from "@pisagor/props";
+import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import { useDialog } from "./dialog.context";
 
 type Props = Omit<ArkDialogContentProps, "class"> &
-  DialogVariantProps & {
+  {
     bottomStickOnMobile?: boolean;
     class?: string | undefined;
     showCloseButton?: boolean;
-  };
+  } & DialogSharedProps;
 
 let {
   size = "md",

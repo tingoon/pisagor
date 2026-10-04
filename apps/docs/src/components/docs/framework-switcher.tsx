@@ -26,7 +26,7 @@ export default function FrameworkSwitcher({
   return (
     <fieldset
       aria-label="Framework"
-      className="m-0 inline-flex items-center rounded-full border border-border/70 bg-card/70 p-0.5 shadow-xs backdrop-blur"
+      className="m-0 inline-flex items-center rounded-full border border-border/70 bg-muted/40 p-0.5"
     >
       {frameworks.map((item) => {
         const active = item.id === framework;
@@ -36,13 +36,13 @@ export default function FrameworkSwitcher({
             aria-current={active ? "page" : undefined}
             className={
               active
-                ? "docs-press inline-flex items-center gap-1.5 rounded-full bg-background px-2.5 py-1 font-semibold text-foreground text-xs shadow-xs"
-                : "docs-press inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-medium text-muted-foreground text-xs hover:text-foreground"
+                ? "docs-press inline-flex items-center gap-1.5 rounded-full border border-border/60 bg-background px-2.5 py-1 font-semibold text-foreground text-xs shadow-sm"
+                : "docs-press inline-flex items-center gap-1.5 rounded-full border border-transparent px-2.5 py-1 font-medium text-muted-foreground text-xs hover:text-foreground"
             }
             href={swapFrameworkPath(pathname, item.id)}
             key={item.id}
           >
-            <Icon className="opacity-90" size={13} />
+            <Icon className={active ? "opacity-100" : "opacity-70"} size={13} />
             {item.label}
           </a>
         );

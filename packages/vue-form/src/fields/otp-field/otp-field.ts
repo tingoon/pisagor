@@ -1,5 +1,4 @@
-import type { InputOTPProps } from "@pisagor/vue";
-import { InputOTP } from "@pisagor/vue";
+import { InputOTP, type InputOTPProps } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import {
   type FieldPresentationProps,

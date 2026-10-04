@@ -1,5 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
-import { type FileVariantProps, fileRecipe } from "@pisagor/recipes/file";
+import type { FileProps as FileRootSharedProps } from "@pisagor/props";
+import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -7,9 +8,9 @@ import { FileIcon } from "../../internal/icons";
 import { Format } from "../format";
 import { FileContext, useFile } from "./file.context";
 
-export interface FileRootProps extends ComponentProps<typeof ark.div> {
-  recipe?: typeof fileRecipe;
-}
+export interface FileRootProps
+  extends ComponentProps<typeof ark.div>,
+    FileRootSharedProps {}
 
 export interface FileMediaProps
   extends ComponentProps<typeof ark.div>,

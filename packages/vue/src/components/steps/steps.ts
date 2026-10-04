@@ -1,29 +1,21 @@
 import { ark } from "@ark-ui/vue/factory";
 import { Steps as StepsPrimitive } from "@ark-ui/vue/steps";
 import { PhCheck } from "@phosphor-icons/vue";
-import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes/steps";
+import type {
+  StepsItemProps as StepsItemSharedProps,
+  StepsProps as StepsRootSharedProps,
+} from "@pisagor/props";
+import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface StepsItemProps {
-  /**
-   * Style recipe. Defaults to `stepsItemRecipe` from `@pisagor/recipes/steps-item`.
-   *
-   * @defaultValue stepsItemRecipe
-   */
-  itemRecipe?: typeof stepsItemRecipe;
+export interface StepsItemProps extends StepsItemSharedProps {
   class?: unknown;
 }
 
-export interface StepsRootProps {
-  /**
-   * Style recipe. Defaults to `stepsRecipe` from `@pisagor/recipes/steps`.
-   *
-   * @defaultValue stepsRecipe
-   */
-  recipe?: typeof stepsRecipe;
+export interface StepsRootProps extends StepsRootSharedProps {
   class?: unknown;
 }
 // #endregion
@@ -95,14 +87,14 @@ export const StepsItem = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: stepsItemRecipe,
       type: Function as PropType<typeof stepsItemRecipe>,
     },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = props.itemRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         StepsPrimitive.Item as ArkPart,
@@ -124,14 +116,14 @@ export const StepsTrigger = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: stepsItemRecipe,
       type: Function as PropType<typeof stepsItemRecipe>,
     },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = props.itemRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         StepsPrimitive.Trigger as ArkPart,
@@ -153,14 +145,14 @@ export const StepsIndicator = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: stepsItemRecipe,
       type: Function as PropType<typeof stepsItemRecipe>,
     },
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const variantSlots = props.itemRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         StepsPrimitive.Indicator as ArkPart,
@@ -185,14 +177,14 @@ export const StepsSeparator = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: stepsItemRecipe,
       type: Function as PropType<typeof stepsItemRecipe>,
     },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = props.itemRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         StepsPrimitive.Separator as ArkPart,
@@ -214,14 +206,14 @@ export const StepsTitle = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: stepsItemRecipe,
       type: Function as PropType<typeof stepsItemRecipe>,
     },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = props.itemRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.span as ArkPart,
@@ -245,14 +237,14 @@ export const StepsDescription = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: stepsItemRecipe,
       type: Function as PropType<typeof stepsItemRecipe>,
     },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = props.itemRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.span as ArkPart,

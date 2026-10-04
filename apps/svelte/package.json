@@ -5,6 +5,7 @@
     "@pisagor/svelte": "workspace:*",
     "@pisagor/svelte-form": "workspace:*",
     "@pisagor/utils": "workspace:*",
+    "@tanstack/svelte-form": "^1.33.5",
     "phosphor-svelte": "^3.1.0",
     "svelte": "catalog:",
     "zod": "^4.6.5"

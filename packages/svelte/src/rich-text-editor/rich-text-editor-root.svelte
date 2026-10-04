@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { formControlShellRecipe } from "@pisagor/recipes/form-control";
-import { richTextEditorRecipe } from "@pisagor/recipes/rich-text-editor";
+import type { RichTextEditorProps as RichTextEditorSharedProps } from "@pisagor/props";
+import { formControlShellRecipe, richTextEditorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { Editor } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
@@ -13,7 +13,8 @@ import { setRichTextEditorContext } from "./rich-text-editor.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<HTMLAttributes<HTMLFieldSetElement>, "class" | "onblur"> & {
+type Props = Omit<HTMLAttributes<HTMLFieldSetElement>, "class" | "onblur"> &
+  {
   variant?: FormControlVariant;
   defaultValue?: string;
   value?: string;
@@ -26,9 +27,8 @@ type Props = Omit<HTMLAttributes<HTMLFieldSetElement>, "class" | "onblur"> & {
   "aria-label"?: string | undefined | null;
   children?: import("svelte").Snippet;
   class?: string | undefined;
-  recipe?: typeof richTextEditorRecipe;
   id?: string | undefined | null;
-};
+  } & RichTextEditorSharedProps;
 
 let {
   variant: variantProp,

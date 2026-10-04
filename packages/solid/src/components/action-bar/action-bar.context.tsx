@@ -1,4 +1,4 @@
-import type { ActionBarRecipe } from "@pisagor/recipes/action-bar";
+import type { ActionBarRecipe } from "@pisagor/recipes";
 import type { Accessor } from "solid-js";
 import { createContext } from "../../utils";
 
@@ -18,6 +18,4 @@ export interface ActionBarContextValue {
 }
 
 export const { ActionBarContext, useActionBar } =
-  createContext<ActionBarContextValue>()({
-    name: "ActionBar",
-  });
+  createContext("ActionBar")<ActionBarContextValue>();

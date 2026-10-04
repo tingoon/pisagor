@@ -1,4 +1,4 @@
-import type { TooltipRecipeFn } from "@pisagor/recipes/tooltip";
+import type { TooltipRecipeFn } from "@pisagor/recipes";
 
 /** Tooltip props. */
 export interface TooltipProps {

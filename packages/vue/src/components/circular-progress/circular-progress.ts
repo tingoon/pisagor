@@ -4,23 +4,18 @@ import {
   ProgressValueText,
   useProgressContext,
 } from "@ark-ui/vue/progress";
+import type { CircularProgressProps as CircularProgressSharedProps } from "@pisagor/props";
 import {
   type CircularProgressRecipeSlot,
   circularProgressRecipe,
-} from "@pisagor/recipes/circular-progress";
+} from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType, type VNode } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
 type CircularProgressClassNames = VariantClassNames<CircularProgressRecipeSlot>;
 
-export interface CircularProgressProps {
-  /**
-   * Style recipe. Defaults to `circularProgressRecipe` from `@pisagor/recipes/circular-progress`.
-   *
-   * @defaultValue circularProgressRecipe
-   */
-  recipe?: typeof circularProgressRecipe;
+export interface CircularProgressProps extends CircularProgressSharedProps {
   class?: unknown;
   classNames?: CircularProgressClassNames;
   indeterminate?: boolean;

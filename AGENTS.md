@@ -50,7 +50,7 @@ Instruction priority: [Core Boundaries](./.rulesync/rules/core.md).
 
 `@pisagor/tokens` = CSS theme; `@pisagor/recipes` = shared `tv()` recipes; `@pisagor/props` = framework-agnostic prop types. UI packages import tokens via their `styles` entries.
 
-Package implementation guidance lives in each package’s `skills/` and in [`.rulesync/rules/integrations/`](./.rulesync/rules/integrations/). Prefer [`@pisagor/mcp`](./packages/mcp) (`bunx @pisagor/mcp`) when available.
+Package implementation guidance lives in [`.rulesync/rules/integrations/`](./.rulesync/rules/integrations/). Prefer [`@pisagor/mcp`](./packages/mcp) (`bunx @pisagor/mcp`) when available.
 
 Slash commands: author in [`.rulesync/commands/`](./.rulesync/commands/); Cursor loads [`.cursor/commands/`](./.cursor/commands/).
 

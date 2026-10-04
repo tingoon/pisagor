@@ -1,9 +1,8 @@
 <script lang="ts">
 import type { NumberInputRootProps } from "@ark-ui/svelte/number-input";
 import { NumberInput as NumberInputPrimitive } from "@ark-ui/svelte/number-input";
-import { buttonRecipe } from "@pisagor/recipes/button";
-import { formControlGroupShellRecipe } from "@pisagor/recipes/form-control";
-import { numberInputRecipe } from "@pisagor/recipes/number-input";
+import type { NumberInputProps as NumberInputSharedProps } from "@pisagor/props";
+import { buttonRecipe, formControlGroupShellRecipe, numberInputRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import MinusIcon from "phosphor-svelte/lib/MinusIcon";
 import PlusIcon from "phosphor-svelte/lib/PlusIcon";
@@ -13,16 +12,16 @@ import { setNumberInputContext } from "./number-input.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<NumberInputRootProps, "class" | "children" | "onValueChange"> & {
+type Props = Omit<NumberInputRootProps, "class" | "children" | "onValueChange"> &
+  {
   children?: import("svelte").Snippet;
   clearable?: boolean;
   class?: string | undefined;
   onValueChange?: (value: number) => void;
   placeholder?: string | null | undefined;
-  recipe?: typeof numberInputRecipe;
   size?: "sm" | "md" | "lg";
   variant?: FormControlVariant;
-};
+  } & NumberInputSharedProps;
 
 let {
   size = "md",

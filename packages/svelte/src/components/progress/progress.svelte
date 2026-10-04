@@ -1,12 +1,14 @@
 <script lang="ts">
 import type { ProgressRootProps } from "@ark-ui/svelte/progress";
 import { Progress as ProgressPrimitive } from "@ark-ui/svelte/progress";
-import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes/progress";
+import type { ProgressProps as ProgressSharedProps } from "@pisagor/props";
+import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import { setProgressContext } from "./progress.context";
 
-type Props = Omit<ProgressRootProps, "class" | "children" | "value"> & {
+type Props = Omit<ProgressRootProps, "class" | "children" | "value"> &
+  {
   children?: Snippet;
   class?: string | undefined;
   classNames?: Partial<Record<ProgressRecipeSlot, string>>;
@@ -19,13 +21,12 @@ type Props = Omit<ProgressRootProps, "class" | "children" | "value"> & {
   isValueVisible?: boolean;
   /** Optional label rendered above the progress bar. */
   label?: string;
-  recipe?: typeof progressRecipe;
   /**
    * The value of the progress bar
    * @defaultValue 0
    */
   value?: number;
-};
+  } & ProgressSharedProps;
 
 let {
   orientation = "horizontal",

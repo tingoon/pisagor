@@ -7,11 +7,13 @@ import type {
 } from "@ark-ui/react/signature-pad";
 import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/react/signature-pad";
 import { ArrowCounterClockwiseIcon } from "@phosphor-icons/react";
-import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
+import type { SignaturePadProps as SignaturePadRootSharedProps } from "@pisagor/props";
 import {
+  formControlZoneRecipe,
   type SignaturePadRecipeSlot,
   signaturePadRecipe,
-} from "@pisagor/recipes/signature-pad";
+} from "@pisagor/recipes";
+
 import { cn } from "@pisagor/utils";
 import type { VariantClassNames } from "../../internal/types";
 import { Button } from "../button";
@@ -26,15 +28,9 @@ type SignaturePadClassNames = VariantClassNames<SignaturePadRecipeSlot>;
 type SignaturePadRootProps = SignaturePadPrimitiveRootProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-  /**
-   * Style recipe. Defaults to `signaturePadRecipe` from `@pisagor/recipes/signature-pad`.
-   *
-   * @defaultValue signaturePadRecipe
-   */
-  recipe?: typeof signaturePadRecipe;
   /** Marks the control as invalid for styling and assistive tech. */
   invalid?: boolean;
-};
+} & SignaturePadRootSharedProps;
 
 export interface SignaturePadProps
   extends Omit<SignaturePadRootProps, "children"> {

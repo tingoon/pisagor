@@ -1,5 +1,4 @@
-import { buttonRecipe } from "@pisagor/recipes/button";
-import { dialogRecipe } from "@pisagor/recipes/dialog";
+import { buttonRecipe, dialogRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type {

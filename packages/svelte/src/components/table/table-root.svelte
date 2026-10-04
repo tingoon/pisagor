@@ -1,16 +1,17 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { tableRecipe } from "@pisagor/recipes/table";
+import type { TableProps as TableSharedProps } from "@pisagor/props";
+import { tableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setTableContext } from "./table.context";
 
-type Props = Omit<HTMLAttributes<HTMLTableElement>, "class"> & {
+type Props = Omit<HTMLAttributes<HTMLTableElement>, "class"> &
+  {
   class?: string | undefined;
   isHoverable?: boolean;
-  recipe?: typeof tableRecipe;
   variant?: "plain" | "striped";
-};
+  } & TableSharedProps;
 
 let {
   variant = "plain",

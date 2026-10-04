@@ -6,7 +6,8 @@ import type {
 } from "@ark-ui/react/password-input";
 import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/react/password-input";
 import { EyeIcon, EyeSlashIcon, XIcon } from "@phosphor-icons/react";
-import { passwordInputRecipe } from "@pisagor/recipes/password-input";
+import type { PasswordInputProps as PasswordInputSharedProps } from "@pisagor/props";
+import { passwordInputRecipe } from "@pisagor/recipes";
 import type { RefAttributes } from "react";
 import { useClearableInput } from "../../hooks";
 import {
@@ -31,7 +32,8 @@ export type PasswordInputVisibilityTriggerProps = Omit<
 export interface PasswordInputProps
   extends PasswordInputRootProps,
     Omit<PasswordInputInputProps, "className" | "size">,
-    RefAttributes<HTMLInputElement> {
+    RefAttributes<HTMLInputElement>,
+    PasswordInputSharedProps {
   size?: InputGroupProps["size"];
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
@@ -46,12 +48,6 @@ export interface PasswordInputProps
   clearable?: boolean;
   /** Called with the string value when the input changes. */
   onValueChange?: (value: string) => void;
-  /**
-   * Style recipe. Defaults to `passwordInputRecipe` from `@pisagor/recipes/password-input`.
-   *
-   * @defaultValue passwordInputRecipe
-   */
-  recipe?: typeof passwordInputRecipe;
   clearButtonProps?: InputGroupButtonProps;
   indicatorProps?: PasswordInputIndicatorProps;
   visibilityTriggerProps?: PasswordInputVisibilityTriggerProps;

@@ -1,4 +1,4 @@
-import type { ToggleGroupRecipe } from "@pisagor/recipes/toggle-group";
+import type { ToggleGroupRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils";
 import type { ToggleProps } from "../toggle";
 
@@ -9,6 +9,4 @@ export interface ToggleGroupContextProps
 }
 
 export const { ToggleGroupContext, useToggleGroup } =
-  createContext<ToggleGroupContextProps>()({
-    name: "ToggleGroup",
-  });
+  createContext("ToggleGroup")<ToggleGroupContextProps>();

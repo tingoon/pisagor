@@ -1,21 +1,22 @@
 <script lang="ts">
-import { scrollspyRecipe } from "@pisagor/recipes/scrollspy";
+import type { ScrollspyProps as ScrollspySharedProps } from "@pisagor/props";
+import { scrollspyRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { onMount } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 
 type ScrollTarget = HTMLElement | Document | null | undefined;
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
+type Props = Omit<HTMLAttributes<HTMLElement>, "class"> &
+  {
   class?: string | undefined;
   history?: boolean;
   offset?: number;
   onUpdate?: (id: string) => void;
-  recipe?: typeof scrollspyRecipe;
   smooth?: boolean;
   /** Bindable scroll target element (or document). */
   target?: ScrollTarget;
-};
+  } & ScrollspySharedProps;
 
 let {
   history = true,

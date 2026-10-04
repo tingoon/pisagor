@@ -1,5 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
-import { scrollspyRecipe } from "@pisagor/recipes/scrollspy";
+import type { ScrollspyProps as ScrollspySharedProps } from "@pisagor/props";
+import { scrollspyRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { onCleanup, onMount, splitProps } from "solid-js";
@@ -10,15 +11,11 @@ const SCROLLSPY_ANCHOR = "data-scrollspy-anchor";
 const SCROLLSPY_OFFSET = "data-scrollspy-offset";
 const SCROLLSPY_ANCHOR_SELECTOR = `[${SCROLLSPY_ANCHOR}]`;
 
-export interface ScrollspyProps extends ComponentProps<typeof ark.div> {
+export interface ScrollspyProps
+  extends ComponentProps<typeof ark.div>,
+    ScrollspySharedProps {
   history?: boolean;
   offset?: number;
-  /**
-   * Style recipe. Defaults to `scrollspyRecipe` from `@pisagor/recipes/scrollspy`.
-   *
-   * @defaultValue scrollspyRecipe
-   */
-  recipe?: typeof scrollspyRecipe;
   smooth?: boolean;
   /** Accessor or getter for scroll target element */
   targetRef?: () => ScrollTarget;

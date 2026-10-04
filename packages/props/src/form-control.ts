@@ -11,7 +11,7 @@ import type {
   FormControlToggleVariantProps,
   FormControlZoneRecipeFn,
   FormControlZoneVariantProps,
-} from "@pisagor/recipes/form-control";
+} from "@pisagor/recipes";
 
 /** FormControlShell props. */
 export interface FormControlShellProps extends FormControlShellVariantProps {

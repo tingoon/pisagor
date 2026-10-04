@@ -1,8 +1,7 @@
 <script lang="ts">
 import type { TreeViewNodeCheckboxProps } from "@ark-ui/svelte/tree-view";
 import { TreeView as TreeViewPrimitive } from "@ark-ui/svelte/tree-view";
-import { formControlToggleRecipe } from "@pisagor/recipes/form-control";
-import { treeViewItemRecipe } from "@pisagor/recipes/tree-view";
+import { formControlToggleRecipe, treeViewItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 import MinusIcon from "phosphor-svelte/lib/MinusIcon";

@@ -1,4 +1,4 @@
-import type { FloatingPanelRecipeFn } from "@pisagor/recipes/floating-panel";
+import type { FloatingPanelRecipeFn } from "@pisagor/recipes";
 
 /** FloatingPanel props. */
 export interface FloatingPanelProps {

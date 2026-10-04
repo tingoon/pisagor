@@ -1,5 +1,5 @@
 <script lang="ts">
-import { buttonRecipe } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import EyedropperIcon from "phosphor-svelte/lib/EyedropperIcon";
 import { useColorPicker } from "./color-picker.context";

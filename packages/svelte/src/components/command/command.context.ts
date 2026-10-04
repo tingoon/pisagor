@@ -1,4 +1,4 @@
-import type { CommandRecipe } from "@pisagor/recipes/command";
+import type { CommandRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 interface CommandContextValue {
@@ -6,4 +6,4 @@ interface CommandContextValue {
 }
 
 export const { setContext: setCommandContext, getContext: useCommand } =
-  createContext<CommandContextValue>({ name: "Command" });
+  createContext("Command")<CommandContextValue>();

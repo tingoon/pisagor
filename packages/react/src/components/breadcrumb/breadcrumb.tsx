@@ -1,9 +1,10 @@
 import { ark } from "@ark-ui/react/factory";
 import { CaretRightIcon, DotsThreeIcon } from "@phosphor-icons/react";
-import {
-  breadcrumbItemRecipe,
-  breadcrumbRecipe,
-} from "@pisagor/recipes/breadcrumb";
+import type {
+  BreadcrumbItemProps as BreadcrumbItemSharedProps,
+  BreadcrumbProps as BreadcrumbRootSharedProps,
+} from "@pisagor/props";
+import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
 import { Fragment } from "react";
 import {
@@ -21,32 +22,23 @@ interface BreadcrumbPresetItem {
 }
 
 export type BreadcrumbListProps = ComponentProps<typeof ark.ol>;
-export interface BreadcrumbItemProps extends ComponentProps<typeof ark.li> {
-  /**
-   * Style recipe. Defaults to `breadcrumbItemRecipe` from `@pisagor/recipes/breadcrumb`.
-   *
-   * @defaultValue breadcrumbItemRecipe
-   */
-  itemRecipe?: typeof breadcrumbItemRecipe;
-}
+export interface BreadcrumbItemProps
+  extends ComponentProps<typeof ark.li>,
+    BreadcrumbItemSharedProps {}
 export type BreadcrumbLinkProps = ComponentProps<typeof ark.a>;
 export type BreadcrumbPageProps = ComponentProps<typeof ark.span>;
 export type BreadcrumbSeparatorProps = ComponentProps<typeof ark.li>;
 export type BreadcrumbEllipsisProps = ComponentProps<typeof ark.span>;
 
-export interface BreadcrumbRootProps extends ComponentProps<typeof ark.nav> {
+export interface BreadcrumbRootProps
+  extends ComponentProps<typeof ark.nav>,
+    BreadcrumbRootSharedProps {
   /**
    * Accessible label for the breadcrumb navigation landmark.
    *
    * @defaultValue "Breadcrumb"
    */
   "aria-label"?: string;
-  /**
-   * Style recipe. Defaults to `breadcrumbRecipe` from `@pisagor/recipes/breadcrumb`.
-   *
-   * @defaultValue breadcrumbRecipe
-   */
-  recipe?: typeof breadcrumbRecipe;
 }
 
 export interface BreadcrumbProps extends Omit<BreadcrumbRootProps, "children"> {
@@ -93,11 +85,11 @@ export function BreadcrumbList({ className, ...rest }: BreadcrumbListProps) {
 
 export function BreadcrumbItem({
   children,
-  itemRecipe = breadcrumbItemRecipe,
+  recipe = breadcrumbItemRecipe,
   className,
   ...rest
 }: BreadcrumbItemProps) {
-  const slots = itemRecipe();
+  const slots = recipe();
 
   return (
     <BreadcrumbItemContext value={{ slots }}>

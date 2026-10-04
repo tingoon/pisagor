@@ -50,7 +50,7 @@ Package UI is **Svelte 5 SFCs** (`.svelte`) with runes (`$props()`, `$derived`, 
 
 When a compound component uses package-local context (`createContext` from package `utils/create-context`, relative path by depth — thin wrapper over Ark’s `createContext`):
 
-- Put context value types and `createContext({ name })` in `<name>.context.ts`.
+- Put context value types and `createContext("Foo")<FooValue>()` / `createContext("Foo")<FooValue>({ … })` in `<name>.context.ts`.
 - Export `setFooContext` / `useFoo` (or `useFooContext`) from that file — typically `ctx.setContext` / `ctx.getContext`.
 - Call `setFooContext({ … })` in the root (or provider) `.svelte` during setup; consumers call `useFoo()` in child parts.
 - Prefer getters for reactive context fields when values are `$derived` (e.g. `get slots() { return slots }`).
@@ -63,7 +63,7 @@ When a compound component uses package-local context (`createContext` from packa
 
 - One folder per public component — layout above is required.
 - Require `index.ts` barrel (package export map, e.g. `@pisagor/svelte/*`).
-- Import recipes from `@pisagor/recipes/<name>` — do not add local `*.recipe.ts` shims or call `tv()`.
+- Import recipes from `@pisagor/recipes` — do not add local `*.recipe.ts` shims or call `tv()`.
 
 ### Block demo app (`apps/svelte`)
 
@@ -76,10 +76,20 @@ When a compound component uses package-local context (`createContext` from packa
 - Within package source, prefer **relative** imports between siblings (e.g. `../button/button.svelte`, `../surface/use-form-control-surface`).
 - Apps and other packages use the public export map (light barrel or heavy subpath).
 - For cyclic pairs, import the concrete module / SFC, not the barrel `index.ts`.
-- Import `{name}Recipe` / `{Name}VariantProps` from `@pisagor/recipes/<name>` — see [Styling](#styling).
+- Import `{name}Recipe` / `{Name}VariantProps` from `@pisagor/recipes` — see [Styling](#styling).
+- Shared visual prop contracts (`variant` / `size` / `recipe` / recipe-linked fields) come from `@pisagor/props` — see [Shared props (`@pisagor/props`)](#shared-props-pisagorprops).
 - Use relative imports (`../../utils` / `../utils` by depth, hooks, siblings) within the package.
 - Icons: import from `phosphor-svelte` (e.g. `import XIcon from "phosphor-svelte/lib/XIcon"`).
 - Class merging: `cn` from `@pisagor/utils`.
+
+### Shared props (`@pisagor/props`)
+
+Framework-agnostic visual props live in [`@pisagor/props`](../../../packages/props). Recipe `tv()` stays in `@pisagor/recipes`; props re-exports the shared surface (`{Name}VariantProps`, optional `recipe`).
+
+- Import: `import type { FooProps as FooSharedProps } from "@pisagor/props"`.
+- Public component props **intersect / extend** `FooSharedProps` (plus Ark/DOM / Svelte-only fields). Do not re-declare `recipe` or variant fields already on the shared type.
+- Framework packages own only framework-specific props (event names, snippets, `class`, `classNames`, sub-element bags).
+- Template: React [`button.tsx`](../../../packages/react/src/components/button/button.tsx) / Svelte button under `packages/svelte/src/components/button/`.
 
 ---
 
@@ -140,8 +150,8 @@ Recipes (`tv()`) are owned by **`@pisagor/recipes`**. Components import them; th
 
 ### Consuming recipes
 
-- Import from the recipe subpath: `import { buttonRecipe, type ButtonVariantProps } from "@pisagor/recipes/button"`.
-- Shared form-control shells: `import { formControlShellRecipe, … } from "@pisagor/recipes/form-control"`.
+- Import from the recipes barrel: `import { buttonRecipe, type ButtonVariantProps } from "@pisagor/recipes"`.
+- Shared form-control shells: `import { formControlShellRecipe, … } from "@pisagor/recipes"`.
 - Pass `surfaceVariant` from `useFormControlSurface()` into shell recipes. Do **not** auto-resolve primary/secondary shell `variant` from Surface.
 - Prefer `$derived(recipe({ … }))` for slot maps that depend on props.
 - **`cn()`:** one logical concern per string; consumer `class` last (often bound as `className` after `class: className` destructure).

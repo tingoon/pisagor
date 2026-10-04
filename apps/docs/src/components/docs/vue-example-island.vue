@@ -4,12 +4,12 @@ import { computed } from "vue";
 type ExampleModule = Record<string, unknown>;
 
 const exampleModules = import.meta.glob<ExampleModule>(
-  "../../../../../packages/vue/skills/vue/assets/examples/*/index.ts",
+  "../../../../../packages/vue/examples/*/index.ts",
   { eager: true },
 );
 
 const formExampleModules = import.meta.glob<ExampleModule>(
-  "../../../../../packages/vue-form/skills/vue-form/assets/examples/*/index.ts",
+  "../../../../../packages/vue-form/examples/*/index.ts",
   { eager: true },
 );
 

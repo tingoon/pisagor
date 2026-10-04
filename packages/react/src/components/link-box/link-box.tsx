@@ -1,17 +1,13 @@
 import { ark } from "@ark-ui/react/factory";
-import { linkBoxRecipe } from "@pisagor/recipes/link-box";
+import type { LinkBoxProps as LinkBoxRootSharedProps } from "@pisagor/props";
+import { linkBoxRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { LinkBoxContext, useLinkBox } from "./link-box.context";
 
 // #region Types
-export interface LinkBoxRootProps extends ComponentProps<typeof ark.div> {
-  /**
-   * Style recipe. Defaults to `linkBoxRecipe` from `@pisagor/recipes/link-box`.
-   *
-   * @defaultValue linkBoxRecipe
-   */
-  recipe?: typeof linkBoxRecipe;
-}
+export interface LinkBoxRootProps
+  extends ComponentProps<typeof ark.div>,
+    LinkBoxRootSharedProps {}
 
 export type LinkOverlayLinkProps = ComponentProps<typeof ark.a>;
 // #endregion

@@ -1,5 +1,6 @@
 import { useUncontrolled } from "@mantine/hooks";
-import type { AppShellRecipe } from "@pisagor/recipes/app-shell";
+import type { AppShellRecipe } from "@pisagor/recipes";
+
 import { type RefObject, useCallback, useLayoutEffect, useMemo } from "react";
 import type {
   AppShellFixedStackVar,

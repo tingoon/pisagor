@@ -9,6 +9,4 @@ export interface InputOTPContextValue {
 }
 
 export const [provideInputOTPContext, , useInputOTPContextRef] =
-  createContext<InputOTPContextValue>({
-    name: "InputOTP",
-  });
+  createContext("InputOTP")<InputOTPContextValue>();

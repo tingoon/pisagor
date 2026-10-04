@@ -3,20 +3,21 @@
 Shared `tailwind-variants` (`tv`) recipes for Pisagor components.
 
 ```text
-src/   component recipes — `@pisagor/recipes` / `@pisagor/recipes/<name>`
+src/         component recipes — import from `@pisagor/recipes`
+src/blocks/  block recipes — `@pisagor/recipes/blocks/<name>` only
 ```
 
 ```ts
 import { buttonRecipe } from "@pisagor/recipes";
-// or a tight import:
-import { buttonRecipe } from "@pisagor/recipes/button";
 
 cn(buttonRecipe({ variant: "outline", size: "sm" }).base(), className);
 ```
 
-Prefer `@pisagor/recipes/<name>` when you need a tight import graph; use `@pisagor/recipes` when importing several recipes.
+Use the root barrel for component recipes. Keep `blocks/` on subpaths.
 
-**Tailwind scan:** framework style entries must `@source` this package so utilities used in recipes are generated:
+**Consumers:** import theme CSS from a framework package (e.g. `@import "@pisagor/react/styles"`). Do not `@source` this package from apps — each UI package already scans recipes.
+
+**Maintainers:** framework style entries must `@source` this package so utilities used in recipes are generated:
 
 ```css
 @source "../../recipes/src/**/*.ts";

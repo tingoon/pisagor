@@ -1,21 +1,16 @@
 import { ark } from "@ark-ui/vue/factory";
+import type { ButtonGroupProps as ButtonGroupSharedProps } from "@pisagor/props";
 import {
   type ButtonGroupVariantProps,
   buttonGroupRecipe,
-} from "@pisagor/recipes/button-group";
+} from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import { Separator, type SeparatorProps } from "../separator";
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface ButtonGroupProps extends ButtonGroupVariantProps {
-  /**
-   * Style recipe. Defaults to `buttonGroupRecipe` from `@pisagor/recipes/button-group`.
-   *
-   * @defaultValue buttonGroupRecipe
-   */
-  recipe?: typeof buttonGroupRecipe;
+export interface ButtonGroupProps extends ButtonGroupSharedProps {
   class?: unknown;
 }
 // #endregion

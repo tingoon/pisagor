@@ -1,0 +1,12 @@
+import { SwitchField } from "../../src/fields/switch-field";
+
+export function Disabled() {
+  return (
+    <SwitchField
+      description="Get release updates by email."
+      disabled
+      id="switch-field-notifications-disabled"
+      label="Enable notifications"
+    />
+  );
+}

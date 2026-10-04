@@ -1,18 +1,18 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { type MenuItemVariantProps, menuItemRecipe } from "@pisagor/recipes/menu";
+import type { MenuItemProps as MenuItemSharedProps } from "@pisagor/props";
+import { menuItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLButtonAttributes } from "svelte/elements";
 import { useMenu } from "./menu.context";
 
 type Props = Omit<HTMLButtonAttributes, "class" | "type"> &
-  MenuItemVariantProps & {
+  {
     children?: Snippet;
     class?: string | undefined;
-    recipe?: typeof menuItemRecipe;
     type?: "button" | "reset" | "submit";
-  };
+  } & MenuItemSharedProps;
 
 let {
   variant = "default",

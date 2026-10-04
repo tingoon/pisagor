@@ -1,11 +1,9 @@
 ---
-import {
-  type ButtonGroupVariantProps,
-  buttonGroupRecipe,
-} from "@pisagor/recipes/button-group";
+import type { ButtonGroupProps as ButtonGroupSharedProps } from "@pisagor/props";
+import { buttonGroupRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"fieldset"> & ButtonGroupVariantProps;
+type Props = HTMLAttributes<"fieldset"> & ButtonGroupSharedProps;
 
 const { orientation = "horizontal", class: className, ...rest } = Astro.props;
 const slots = buttonGroupRecipe({ orientation });

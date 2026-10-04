@@ -1,4 +1,4 @@
-import type { SheetRecipe } from "@pisagor/recipes/sheet";
+import type { SheetRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 interface SheetContextValue {
@@ -6,4 +6,4 @@ interface SheetContextValue {
 }
 
 export const { setContext: setSheetContext, getContext: useSheet } =
-  createContext<SheetContextValue>({ name: "Sheet" });
+  createContext("Sheet")<SheetContextValue>();

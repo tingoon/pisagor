@@ -1,5 +1,5 @@
 import { PhX } from "@phosphor-icons/vue";
-import { buttonRecipe } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { h, type VNode } from "vue";
 

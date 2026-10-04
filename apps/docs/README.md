@@ -42,6 +42,7 @@ apps/docs/
 │   │   └── docs/           # docs UI (sidebar, preview, props table, …)
 │   ├── layouts/
 │   │   └── docs-layout.astro
+│   ├── content/            # shared metadata + design (framework-agnostic)
 │   ├── lib/                # nav, packages, props helpers
 │   ├── pages/              # routes only (required by Astro)
 │   │   ├── react/
@@ -57,4 +58,4 @@ apps/docs/
 └── tsconfig.json
 ```
 
-Component examples for demos live in `packages/{react,vue,astro,solid,svelte}/**/examples` (not under `src/pages`).
+Component examples for demos live in `packages/{react,vue,astro,solid,svelte,*-form}/examples` (not under `src/pages`).

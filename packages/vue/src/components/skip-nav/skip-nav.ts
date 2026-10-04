@@ -1,25 +1,11 @@
 import { ark } from "@ark-ui/vue/factory";
-import { skipNavRecipe } from "@pisagor/recipes/skip-nav";
+import type { SkipNavProps as SkipNavLinkSharedProps } from "@pisagor/props";
+import { skipNavRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
-export interface SkipNavLinkProps {
-  /**
-   * The id of the element to skip to.
-   *
-   * @defaultValue "skip-nav-content"
-   *
-   * @remarks
-   * Must match the `id` on the paired `SkipNavContent`.
-   */
-  id?: string;
-  /**
-   * Style recipe. Defaults to `skipNavRecipe` from `@pisagor/recipes/skip-nav`.
-   *
-   * @defaultValue skipNavRecipe
-   */
-  recipe?: typeof skipNavRecipe;
+export interface SkipNavLinkProps extends SkipNavLinkSharedProps {
   class?: unknown;
 }
 

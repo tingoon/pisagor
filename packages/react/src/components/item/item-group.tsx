@@ -1,5 +1,9 @@
 import { ark } from "@ark-ui/react/factory";
-import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes/item";
+import type {
+  ItemProps as ItemGroupSharedProps,
+  ItemProps as ItemSeparatorSharedProps,
+} from "@pisagor/props";
+import { itemRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { Separator, type SeparatorProps } from "../separator";
 import { ItemGroupContext } from "./item-group.context";
@@ -7,23 +11,11 @@ import { ItemGroupContext } from "./item-group.context";
 // #region Types
 export interface ItemGroupProps
   extends ComponentProps<typeof ark.div>,
-    ItemVariantProps {
-  /**
-   * Style recipe. Defaults to `itemRecipe` from `@pisagor/recipes/item`.
-   *
-   * @defaultValue itemRecipe
-   */
-  recipe?: typeof itemRecipe;
-}
+    ItemGroupSharedProps {}
 
-export interface ItemSeparatorProps extends Omit<SeparatorProps, "recipe"> {
-  /**
-   * Style recipe. Defaults to `itemRecipe` from `@pisagor/recipes/item`.
-   *
-   * @defaultValue itemRecipe
-   */
-  recipe?: typeof itemRecipe;
-}
+export interface ItemSeparatorProps
+  extends Omit<SeparatorProps, "recipe">,
+    ItemSeparatorSharedProps {}
 // #endregion
 
 // #region Parts

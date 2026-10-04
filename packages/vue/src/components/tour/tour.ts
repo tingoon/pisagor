@@ -6,8 +6,8 @@ import {
   useTour,
 } from "@ark-ui/vue/tour";
 import { PhCaretLeft, PhCaretRight, PhX } from "@phosphor-icons/vue";
-import { dialogRecipe } from "@pisagor/recipes/dialog";
-import { type TourRecipe, tourRecipe } from "@pisagor/recipes/tour";
+import type { TourProps as TourRootSharedProps } from "@pisagor/props";
+import { dialogRecipe, type TourRecipe, tourRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
   computed,
@@ -40,7 +40,7 @@ interface TourContextProps {
   tour: UnwrapRef<UseTourReturn>;
 }
 
-export interface TourRootProps {
+export interface TourRootProps extends TourRootSharedProps {
   /** Whether to enable arrow key navigation between steps */
   keyboardNavigation?: boolean;
   /**
@@ -74,21 +74,13 @@ export interface TourBackdropProps {
    * @defaultValue dialogRecipe
    */
   dialogRecipe?: typeof dialogRecipe;
-  /**
-   * Style recipe. Defaults to `tourRecipe` from `@pisagor/recipes/tour`.
-   *
-   * @defaultValue tourRecipe
-   */
-  recipe?: typeof tourRecipe;
   class?: unknown;
 }
 // #endregion
 
 // #region Context
 const [provideTourContext, , useTourContextRef] =
-  createContext<TourContextProps>({
-    name: "Tour",
-  });
+  createContext("Tour")<TourContextProps>();
 
 export { useTourContextRef as useTourContext };
 // #endregion

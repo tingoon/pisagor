@@ -1,19 +1,15 @@
 import { ark } from "@ark-ui/react/factory";
 import { FileIcon } from "@phosphor-icons/react";
-import { type FileVariantProps, fileRecipe } from "@pisagor/recipes/file";
+import type { FileProps as FileRootSharedProps } from "@pisagor/props";
+import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
 import { Format } from "../format";
 import { FileContext, useFile } from "./file.context";
 
 // #region Types
-export interface FileRootProps extends ComponentProps<typeof ark.div> {
-  /**
-   * Style recipe. Defaults to `fileRecipe` from `@pisagor/recipes/file`.
-   *
-   * @defaultValue fileRecipe
-   */
-  recipe?: typeof fileRecipe;
-}
+export interface FileRootProps
+  extends ComponentProps<typeof ark.div>,
+    FileRootSharedProps {}
 
 export interface FileMediaProps
   extends ComponentProps<typeof ark.div>,

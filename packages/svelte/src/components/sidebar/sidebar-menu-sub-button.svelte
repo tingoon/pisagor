@@ -1,13 +1,13 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { ButtonVariantProps } from "@pisagor/recipes/button";
-import { buttonRecipe } from "@pisagor/recipes/button";
+import type { ButtonProps as ButtonSharedProps } from "@pisagor/props";
+import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAnchorAttributes } from "svelte/elements";
 import { useSidebar } from "./sidebar.context";
 
 type Props = Omit<HTMLAnchorAttributes, "class"> &
-  ButtonVariantProps & {
+  {
     children?: import("svelte").Snippet;
     class?: string | undefined;
     isActive?: boolean;
@@ -16,7 +16,7 @@ type Props = Omit<HTMLAnchorAttributes, "class"> &
      * @defaultValue buttonRecipe
      */
     buttonRecipe?: typeof buttonRecipe;
-  };
+  } & ButtonSharedProps;
 
 let {
   size = "md",

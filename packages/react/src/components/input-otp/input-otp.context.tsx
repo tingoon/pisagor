@@ -1,4 +1,5 @@
-import type { InputOtpRecipe } from "@pisagor/recipes/input-otp";
+import type { InputOtpRecipe } from "@pisagor/recipes";
+
 import { createContext } from "../../utils";
 import type { InputProps } from "../input/input";
 
@@ -9,6 +10,4 @@ interface InputOTPContextValue {
 }
 
 export const { InputOTPContext, useInputOTP } =
-  createContext<InputOTPContextValue>()({
-    name: "InputOTP",
-  });
+  createContext("InputOTP")<InputOTPContextValue>();

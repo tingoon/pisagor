@@ -1,8 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  type ButtonGroupVariantProps,
-  buttonGroupRecipe,
-} from "@pisagor/recipes/button-group";
+import type { ButtonGroupProps as ButtonGroupSharedProps } from "@pisagor/props";
+import { buttonGroupRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { Separator, type SeparatorProps } from "../separator";
@@ -11,14 +9,7 @@ import { ButtonGroupContext, useButtonGroup } from "./button-group.context";
 // #region Types
 export interface ButtonGroupProps
   extends ComponentProps<typeof ark.fieldset>,
-    ButtonGroupVariantProps {
-  /**
-   * Style recipe. Defaults to `buttonGroupRecipe` from `@pisagor/recipes/button-group`.
-   *
-   * @defaultValue buttonGroupRecipe
-   */
-  recipe?: typeof buttonGroupRecipe;
-}
+    ButtonGroupSharedProps {}
 
 export type ButtonGroupTextProps = ComponentProps<typeof ark.div>;
 // #endregion

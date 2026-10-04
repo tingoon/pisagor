@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { DatePickerMonthSelectProps } from "@ark-ui/svelte/date-picker";
 import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
-import { formControlShellRecipe } from "@pisagor/recipes/form-control";
+import { formControlShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
 import { useFormControlSurface } from "../surface/use-form-control-surface";

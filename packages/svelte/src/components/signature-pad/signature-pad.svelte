@@ -1,9 +1,8 @@
 <script lang="ts">
 import type { SignaturePadRootProps as ArkRootProps } from "@ark-ui/svelte/signature-pad";
 import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/svelte/signature-pad";
-import { buttonRecipe } from "@pisagor/recipes/button";
-import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
-import { type SignaturePadRecipeSlot, signaturePadRecipe } from "@pisagor/recipes/signature-pad";
+import type { SignaturePadProps as SignaturePadSharedProps } from "@pisagor/props";
+import { buttonRecipe, formControlZoneRecipe, type SignaturePadRecipeSlot, signaturePadRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import ArrowCounterClockwiseIcon from "phosphor-svelte/lib/ArrowCounterClockwiseIcon";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -11,13 +10,13 @@ import { setSignaturePadContext } from "./signature-pad.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<ArkRootProps, "class" | "children"> & {
+type Props = Omit<ArkRootProps, "class" | "children"> &
+  {
   class?: string | undefined;
   classNames?: Partial<Record<SignaturePadRecipeSlot, string>>;
   invalid?: boolean;
-  recipe?: typeof signaturePadRecipe;
   variant?: FormControlVariant;
-};
+  } & SignaturePadSharedProps;
 
 let {
   variant: variantProp,

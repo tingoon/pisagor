@@ -1,5 +1,4 @@
-import type { DatePickerProps } from "@pisagor/vue";
-import { DatePicker } from "@pisagor/vue";
+import { DatePicker, type DatePickerProps } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import {
   type FieldPresentationProps,

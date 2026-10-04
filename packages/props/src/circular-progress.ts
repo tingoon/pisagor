@@ -1,4 +1,4 @@
-import type { CircularProgressRecipeFn } from "@pisagor/recipes/circular-progress";
+import type { CircularProgressRecipeFn } from "@pisagor/recipes";
 
 /** CircularProgress props. */
 export interface CircularProgressProps {

@@ -12,8 +12,8 @@ import type {
   TourTitleProps,
 } from "@ark-ui/solid/tour";
 import { Tour as TourPrimitive, useTour } from "@ark-ui/solid/tour";
-import { dialogRecipe } from "@pisagor/recipes/dialog";
-import { tourRecipe } from "@pisagor/recipes/tour";
+import type { TourProps as TourSharedProps } from "@pisagor/props";
+import { dialogRecipe, tourRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import {
@@ -38,12 +38,11 @@ import { TourContext, useTourContext } from "./tour.context";
 export type TourStepType = TourStepDetails;
 export type TourRootProps = Omit<TourPrimitiveRootProps, "tour">;
 
-export interface TourProps extends TourRootProps {
+export interface TourProps extends TourRootProps, TourSharedProps {
   keyboardNavigation?: boolean;
   steps: TourStepDetails[];
   onStatusChange?: (details: { status: string }) => void;
   onStepChange?: (details: { stepId: string | null }) => void;
-  recipe?: typeof tourRecipe;
 }
 
 export type TourTriggerProps = ComponentProps<typeof ark.button>;

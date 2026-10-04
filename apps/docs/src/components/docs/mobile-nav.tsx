@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from "react";
 import type { Framework, NavSection } from "#/lib/nav";
-import { frameworkPath } from "#/lib/nav";
+import SidebarNav from "./sidebar-nav";
 
 export default function MobileNav({
   framework,
@@ -30,7 +30,7 @@ export default function MobileNav({
         aria-controls={panelId}
         aria-expanded={open}
         aria-label={open ? "Close navigation" : "Open navigation"}
-        className="docs-press inline-flex size-8 items-center justify-center rounded-lg border border-border/70 bg-card/60 shadow-xs backdrop-blur"
+        className="docs-press inline-flex size-8 items-center justify-center rounded-lg border border-border/70 bg-background"
         onClick={() => setOpen((value) => !value)}
         type="button"
       >
@@ -62,47 +62,18 @@ export default function MobileNav({
           />
           <div
             aria-label="Navigation"
-            className="docs-material-heavy docs-sheet-panel fixed inset-x-3 top-16 z-50 max-h-[70dvh] overflow-auto rounded-2xl border border-white/20 p-4 shadow-lg dark:border-white/10"
+            className="docs-sheet-panel fixed inset-x-3 top-14 z-50 max-h-[70dvh] overflow-hidden rounded-2xl border border-border/70 bg-background p-4 shadow-lg"
             id={panelId}
             role="dialog"
           >
-            <nav className="flex flex-col gap-5">
-              {sections.map((section) => (
-                <div key={section.title}>
-                  <p className="docs-label mb-3">{section.title}</p>
-                  <ul className="space-y-px">
-                    {section.items.map((item) => {
-                      const href = frameworkPath(framework, item.slug);
-                      const active =
-                        currentPath === href || currentPath === `${href}/`;
-                      const disabled = item.status === "soon";
-                      return (
-                        <li key={item.slug || "index"}>
-                          {disabled ? (
-                            <span className="docs-nav-link flex items-center justify-between rounded-md px-2.5 py-1.5 text-foreground/40">
-                              {item.title}
-                              <span className="docs-label">Soon</span>
-                            </span>
-                          ) : (
-                            <a
-                              className={
-                                active
-                                  ? "docs-press docs-nav-link block rounded-md bg-accent/80 px-2.5 py-1.5 font-medium text-accent-foreground"
-                                  : "docs-press docs-nav-link block rounded-md px-2.5 py-1.5 text-foreground/65 hover:bg-accent/40 hover:text-foreground"
-                              }
-                              href={href}
-                              onClick={() => setOpen(false)}
-                            >
-                              {item.title}
-                            </a>
-                          )}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              ))}
-            </nav>
+            <div className="h-full max-h-[calc(70dvh-2rem)]">
+              <SidebarNav
+                currentPath={currentPath}
+                framework={framework}
+                onNavigate={() => setOpen(false)}
+                sections={sections}
+              />
+            </div>
           </div>
         </>
       ) : null}

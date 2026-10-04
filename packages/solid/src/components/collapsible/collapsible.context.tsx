@@ -1,4 +1,4 @@
-import type { CollapsibleRecipe } from "@pisagor/recipes/collapsible";
+import type { CollapsibleRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils";
 
 interface CollapsibleContextValue {
@@ -6,6 +6,4 @@ interface CollapsibleContextValue {
 }
 
 export const { CollapsibleContext, useCollapsible } =
-  createContext<CollapsibleContextValue>()({
-    name: "Collapsible",
-  });
+  createContext("Collapsible")<CollapsibleContextValue>();

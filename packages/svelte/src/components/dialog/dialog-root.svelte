@@ -1,10 +1,11 @@
 <script lang="ts">
 import type { DialogRootProps } from "@ark-ui/svelte/dialog";
 import { Dialog as DialogPrimitive } from "@ark-ui/svelte/dialog";
-import { dialogRecipe } from "@pisagor/recipes/dialog";
+import type { DialogProps as DialogSharedProps } from "@pisagor/props";
+import { dialogRecipe } from "@pisagor/recipes";
 import { setDialogContext } from "./dialog.context";
 
-type Props = DialogRootProps & { recipe?: typeof dialogRecipe };
+type Props = DialogRootProps & DialogSharedProps;
 
 let { modal = true, recipe = dialogRecipe, children, ...rest }: Props = $props();
 const slots = $derived(recipe());

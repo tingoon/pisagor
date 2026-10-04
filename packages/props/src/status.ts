@@ -1,7 +1,4 @@
-import type {
-  StatusRecipeFn,
-  StatusVariantProps,
-} from "@pisagor/recipes/status";
+import type { StatusRecipeFn, StatusVariantProps } from "@pisagor/recipes";
 
 /** Status props. */
 export interface StatusProps extends StatusVariantProps {

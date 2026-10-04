@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { SelectItemProps } from "@ark-ui/svelte/select";
 import { Select as SelectPrimitive } from "@ark-ui/svelte/select";
-import { selectRecipe } from "@pisagor/recipes/select";
+import { selectRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 import { useSelectRoot } from "./select.context";

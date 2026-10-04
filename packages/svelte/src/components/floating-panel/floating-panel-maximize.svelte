@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { FloatingPanelStageTriggerProps } from "@ark-ui/svelte/floating-panel";
 import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/svelte/floating-panel";
-import { buttonRecipe } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import ArrowsOutIcon from "phosphor-svelte/lib/ArrowsOutIcon";
 

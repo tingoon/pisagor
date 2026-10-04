@@ -1,7 +1,11 @@
 import type { CollectionItem } from "@ark-ui/react/collection";
 import { Portal } from "@ark-ui/react/portal";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
-import { commandRecipe } from "@pisagor/recipes/command";
+import type {
+  CommandProps as CommandDialogContentSharedProps,
+  CommandProps as CommandSharedProps,
+} from "@pisagor/props";
+import { commandRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import type {
   ComboboxContentProps,
@@ -25,7 +29,9 @@ import { Separator } from "../separator";
 import { CommandContext, useCommand } from "./command.context";
 
 // #region Types
-export interface CommandDialogContentProps extends DialogContentProps {
+export interface CommandDialogContentProps
+  extends DialogContentProps,
+    CommandDialogContentSharedProps {
   /**
    * The description of the dialog
    *
@@ -38,12 +44,6 @@ export interface CommandDialogContentProps extends DialogContentProps {
    * @defaultValue "Command Palette"
    */
   title?: string;
-  /**
-   * Style recipe. Defaults to `commandRecipe` from `@pisagor/recipes/command`.
-   *
-   * @defaultValue commandRecipe
-   */
-  recipe?: typeof commandRecipe;
 }
 
 export interface CommandInputProps
@@ -61,14 +61,9 @@ export type CommandListProps = ComboboxListProps;
 export type CommandContentProps = ComboboxContentProps;
 
 export interface CommandProps<T extends CollectionItem = CollectionItem>
-  extends Omit<ComboboxRootProps<T>, "recipe"> {
+  extends Omit<ComboboxRootProps<T>, "recipe">,
+    CommandSharedProps {
   className?: string;
-  /**
-   * Style recipe. Defaults to `commandRecipe` from `@pisagor/recipes/command`.
-   *
-   * @defaultValue commandRecipe
-   */
-  recipe?: typeof commandRecipe;
 }
 
 export type CommandSeparatorProps = ComponentProps<"div">;

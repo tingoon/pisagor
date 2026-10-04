@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Textarea } from "@pisagor/svelte/textarea";
+import { Textarea } from "@pisagor/svelte";
 import type { ComponentProps, Snippet } from "svelte";
 import FieldShell from "../../internal/field-shell.svelte";
 

@@ -2,17 +2,13 @@ import {
   Highlight as HighlightPrimitive,
   type HighlightProps as HighlightPrimitiveProps,
 } from "@ark-ui/react/highlight";
-import { highlightRecipe } from "@pisagor/recipes/highlight";
+import type { HighlightProps as HighlightSharedProps } from "@pisagor/props";
+import { highlightRecipe } from "@pisagor/recipes";
 
 // #region Types
-export interface HighlightProps extends HighlightPrimitiveProps {
-  /**
-   * Style recipe. Defaults to `highlightRecipe` from `@pisagor/recipes/highlight`.
-   *
-   * @defaultValue highlightRecipe
-   */
-  recipe?: typeof highlightRecipe;
-}
+export interface HighlightProps
+  extends HighlightPrimitiveProps,
+    HighlightSharedProps {}
 // #endregion
 
 // #region Component

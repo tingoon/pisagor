@@ -2,12 +2,12 @@ import {
   type FieldInputProps,
   FieldInput as InputPrimitive,
 } from "@ark-ui/react/field";
+import type { InputProps as InputSharedProps } from "@pisagor/props";
 import {
   type InputRecipeSlot,
-  type InputRootVariantProps,
   inputRecipe,
   inputRootRecipe,
-} from "@pisagor/recipes/input";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ChangeEventHandler, RefAttributes } from "react";
 import { useClearableInput } from "../../hooks";
@@ -21,12 +21,10 @@ type FormControlVariant = "primary" | "secondary";
 
 type InputClassNames = VariantClassNames<InputRecipeSlot>;
 
-type InputVariantProps = InputRootVariantProps;
-
 export interface InputProps
   extends Omit<FieldInputProps, "size">,
-    InputVariantProps,
-    RefAttributes<HTMLInputElement> {
+    RefAttributes<HTMLInputElement>,
+    InputSharedProps {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -38,12 +36,6 @@ export interface InputProps
   clearable?: boolean;
   /** Called with the string value when the input changes. */
   onValueChange?: (value: string) => void;
-  /**
-   * Style recipe. Defaults to `inputRecipe` from `@pisagor/recipes/input`.
-   *
-   * @defaultValue inputRecipe
-   */
-  recipe?: typeof inputRecipe;
   /**
    * Root style recipe. Defaults to `inputRootRecipe` from `@pisagor/recipes/input`.
    *

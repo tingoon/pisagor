@@ -15,5 +15,5 @@ Framework-agnostic component prop types (TSDoc). Excludes native HTML attributes
 This package owns prop-type modules only (`src/<component>.ts`). It does not own React/Vue/Solid/Svelte implementations or form fields.
 
 ```ts
-import type { ButtonProps } from "@pisagor/props/button";
+import type { ButtonProps } from "@pisagor/props";
 ```

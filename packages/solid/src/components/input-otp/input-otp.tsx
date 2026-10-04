@@ -4,7 +4,8 @@ import {
   PinInput as PinInputPrimitive,
   type PinInputRootProps,
 } from "@ark-ui/solid/pin-input";
-import { inputOtpRecipe } from "@pisagor/recipes/input-otp";
+import type { InputOtpProps as InputOtpSharedProps } from "@pisagor/props";
+import { inputOtpRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
@@ -14,9 +15,8 @@ import { InputOTPContext, useInputOTP } from "./input-otp.context";
 export type InputOTPRootProps = Omit<PinInputRootProps, "onValueChange"> &
   Pick<InputProps, "size" | "variant">;
 
-export interface InputOTPProps extends InputOTPRootProps {
+export interface InputOTPProps extends InputOTPRootProps, InputOtpSharedProps {
   onValueChange?: (value: string[]) => void;
-  recipe?: typeof inputOtpRecipe;
 }
 
 export type InputOTPSlotProps = PinInputInputProps &

@@ -6,7 +6,8 @@ import type {
   ImageCropperZoomChangeDetails,
 } from "@ark-ui/vue/image-cropper";
 import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/vue/image-cropper";
-import { imageCropperRecipe } from "@pisagor/recipes/image-cropper";
+import type { ImageCropperProps as ImageCropperSharedProps } from "@pisagor/props";
+import { imageCropperRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
@@ -20,20 +21,7 @@ interface CropRect {
 }
 
 // #region Types
-export interface ImageCropperProps {
-  /** Alt text for the auto-rendered image. */
-  alt?: string;
-  /**
-   * The aspect ratio to maintain for the crop area (width / height).
-   * If not provided, the crop area can be freely resized.
-   */
-  aspectRatio?: number;
-  /**
-   * Style recipe. Defaults to `imageCropperRecipe` from `@pisagor/recipes/image-cropper`.
-   *
-   * @defaultValue imageCropperRecipe
-   */
-  recipe?: typeof imageCropperRecipe;
+export interface ImageCropperProps extends ImageCropperSharedProps {
   class?: unknown;
   /** Shape of the crop selection area. */
   cropShape?: "rectangle" | "circle";

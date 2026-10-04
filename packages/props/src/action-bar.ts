@@ -1,7 +1,7 @@
 import type {
   ActionBarRecipeFn,
   ActionBarVariantProps,
-} from "@pisagor/recipes/action-bar";
+} from "@pisagor/recipes";
 
 /** ActionBar props. */
 export interface ActionBarProps extends ActionBarVariantProps {

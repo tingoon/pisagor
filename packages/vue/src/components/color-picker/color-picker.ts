@@ -6,7 +6,8 @@ import {
 } from "@ark-ui/vue/color-picker";
 import { ark } from "@ark-ui/vue/factory";
 import { PhCheck, PhEyedropper, PhX } from "@phosphor-icons/vue";
-import { colorPickerRecipe } from "@pisagor/recipes/color-picker";
+import type { ColorPickerProps as ColorPickerSharedProps } from "@pisagor/props";
+import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
 type FormControlVariant = "primary" | "secondary";
@@ -19,13 +20,7 @@ import { InputGroup } from "../input-group";
 
 type ArkPart = Parameters<typeof h>[0];
 
-export interface ColorPickerProps {
-  /**
-   * Style recipe. Defaults to `colorPickerRecipe` from `@pisagor/recipes/color-picker`.
-   *
-   * @defaultValue colorPickerRecipe
-   */
-  recipe?: typeof colorPickerRecipe;
+export interface ColorPickerProps extends ColorPickerSharedProps {
   class?: ClassValue;
   variant?: FormControlVariant;
   positioning?: unknown;

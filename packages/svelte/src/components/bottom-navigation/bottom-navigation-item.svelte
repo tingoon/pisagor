@@ -1,23 +1,24 @@
 <script lang="ts">
 import type { TabTriggerProps } from "@ark-ui/svelte/tabs";
 import { Tabs as TabsPrimitive } from "@ark-ui/svelte/tabs";
-import { bottomNavigationItemRecipe } from "@pisagor/recipes/bottom-navigation";
+import type { BottomNavigationItemProps as BottomNavigationItemSharedProps } from "@pisagor/props";
+import { bottomNavigationItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setBottomNavigationItemContext } from "./bottom-navigation.context";
 
-type Props = Omit<TabTriggerProps, "class"> & {
+type Props = Omit<TabTriggerProps, "class"> &
+  {
   class?: string | undefined;
-  itemRecipe?: typeof bottomNavigationItemRecipe;
-};
+  } & BottomNavigationItemSharedProps;
 
 let {
   children,
-  itemRecipe = bottomNavigationItemRecipe,
+  recipe = bottomNavigationItemRecipe,
   class: className,
   ...rest
 }: Props = $props();
 
-const slots = $derived(itemRecipe());
+const slots = $derived(recipe());
 setBottomNavigationItemContext({
   get slots() {
     return slots;

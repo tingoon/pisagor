@@ -20,4 +20,4 @@ Form fields: [`@pisagor/react-form`](../react-form) and `@pisagor/react-form/tan
 
 See the [root README](../../README.md) for Tailwind setup.
 
-Agents: prefer [`@pisagor/mcp`](../mcp) (`bunx @pisagor/mcp`). This package also ships Intent skills under `skills/`.
+Agents: prefer [`@pisagor/mcp`](../mcp) (`bunx @pisagor/mcp`).

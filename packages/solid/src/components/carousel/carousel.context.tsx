@@ -1,4 +1,4 @@
-import type { CarouselRecipe } from "@pisagor/recipes/carousel";
+import type { CarouselRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils";
 
 interface CarouselContextValue {
@@ -6,6 +6,4 @@ interface CarouselContextValue {
 }
 
 export const { CarouselContext, useCarousel } =
-  createContext<CarouselContextValue>()({
-    name: "Carousel",
-  });
+  createContext("Carousel")<CarouselContextValue>();

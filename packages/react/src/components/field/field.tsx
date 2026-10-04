@@ -11,8 +11,13 @@ import {
   Fieldset as FieldsetPrimitive,
   type FieldsetRootProps,
 } from "@ark-ui/react/fieldset";
-import { type FieldVariantProps, fieldRecipe } from "@pisagor/recipes/field";
-import { formControlSeparatorRecipe } from "@pisagor/recipes/form-control";
+import type {
+  FieldProps as FieldGroupSharedProps,
+  FieldProps as FieldRootSharedProps,
+  FieldProps as FieldSetSharedProps,
+} from "@pisagor/props";
+import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";
+
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { Separator } from "../separator";
@@ -22,14 +27,7 @@ import { FieldContext, useFieldSlots } from "./field.context";
 // #region Types
 export interface FieldRootProps
   extends FieldPrimitiveRootProps,
-    FieldVariantProps {
-  /**
-   * Style recipe. Defaults to `fieldRecipe` from `@pisagor/recipes/field`.
-   *
-   * @defaultValue fieldRecipe
-   */
-  recipe?: typeof fieldRecipe;
-}
+    FieldRootSharedProps {}
 
 export type FieldProps = FieldRootProps;
 
@@ -38,27 +36,15 @@ export interface FieldLegendProps extends FieldsetLegendProps {
   variant?: "legend" | "label";
 }
 
-export interface FieldSetProps extends FieldsetRootProps {
-  /**
-   * Style recipe. Defaults to `fieldRecipe` from `@pisagor/recipes/field`.
-   *
-   * @defaultValue fieldRecipe
-   */
-  recipe?: typeof fieldRecipe;
-}
+export interface FieldSetProps extends FieldsetRootProps, FieldSetSharedProps {}
 
 export type FieldHelperProps = FieldHelperTextProps;
 
 export type FieldErrorProps = FieldErrorTextProps;
 
-export interface FieldGroupProps extends ComponentProps<typeof ark.div> {
-  /**
-   * Style recipe. Defaults to `fieldRecipe` from `@pisagor/recipes/field`.
-   *
-   * @defaultValue fieldRecipe
-   */
-  recipe?: typeof fieldRecipe;
-}
+export interface FieldGroupProps
+  extends ComponentProps<typeof ark.div>,
+    FieldGroupSharedProps {}
 
 export type FieldContentProps = ComponentProps<typeof ark.div>;
 

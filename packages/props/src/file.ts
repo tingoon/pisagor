@@ -1,4 +1,4 @@
-import type { FileRecipeFn, FileVariantProps } from "@pisagor/recipes/file";
+import type { FileRecipeFn, FileVariantProps } from "@pisagor/recipes";
 
 /** File props. */
 export interface FileProps extends FileVariantProps {

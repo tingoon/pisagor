@@ -1,5 +1,4 @@
-import type { SliderProps } from "@pisagor/vue";
-import { Slider } from "@pisagor/vue";
+import { Slider, type SliderProps } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import {
   type FieldPresentationProps,

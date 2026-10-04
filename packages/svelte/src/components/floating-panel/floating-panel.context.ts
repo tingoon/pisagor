@@ -1,13 +1,14 @@
-import type { FloatingPanelRecipe } from "@pisagor/recipes/floating-panel";
+import type { FloatingPanelRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 interface FloatingPanelContextValue {
   slots: FloatingPanelRecipe;
 }
 
-const ctx = createContext<FloatingPanelContextValue | undefined>({
+const ctx = createContext("FloatingPanel")<
+  FloatingPanelContextValue | undefined
+>({
   defaultValue: undefined,
-  name: "FloatingPanel",
   strict: false,
 });
 

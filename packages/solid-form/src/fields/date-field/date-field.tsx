@@ -1,5 +1,4 @@
-import type { DatePickerProps } from "@pisagor/solid";
-import { DatePicker } from "@pisagor/solid";
+import { DatePicker, type DatePickerProps } from "@pisagor/solid";
 import { splitProps } from "solid-js";
 import {
   type FieldPresentationProps,

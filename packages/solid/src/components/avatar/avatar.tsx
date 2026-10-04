@@ -4,11 +4,12 @@ import {
   Avatar as AvatarPrimitive,
   type AvatarRootProps as AvatarPrimitiveRootProps,
 } from "@ark-ui/solid/avatar";
+import type { AvatarProps as AvatarRootSharedProps } from "@pisagor/props";
 import {
   type AvatarRecipeSlot,
   type AvatarVariantProps,
   avatarRecipe,
-} from "@pisagor/recipes/avatar";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -18,9 +19,8 @@ import { AvatarContext, useAvatar } from "./avatar.context";
 type AvatarClassNames = VariantClassNames<AvatarRecipeSlot>;
 
 type AvatarRootProps = AvatarPrimitiveRootProps &
-  AvatarVariantProps & {
-    recipe?: typeof avatarRecipe;
-  };
+  AvatarVariantProps &
+  AvatarRootSharedProps;
 
 export interface AvatarProps extends Omit<AvatarRootProps, "children"> {
   alt?: string;

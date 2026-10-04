@@ -8,12 +8,12 @@ type ExampleModule = Record<string, unknown>;
  * Pass serializable ids — never Solid components as island props.
  */
 const exampleModules = import.meta.glob<ExampleModule>(
-  "../../../../../packages/solid/skills/solid/assets/examples/*/index.ts",
+  "../../../../../packages/solid/examples/*/index.ts",
   { eager: true },
 );
 
 const formExampleModules = import.meta.glob<ExampleModule>(
-  "../../../../../packages/solid-form/skills/solid-form/assets/examples/*/index.ts",
+  "../../../../../packages/solid-form/examples/*/index.ts",
   { eager: true },
 );
 

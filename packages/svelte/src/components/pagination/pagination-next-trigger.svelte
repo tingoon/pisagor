@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { PaginationNextTriggerProps } from "@ark-ui/svelte/pagination";
 import { Pagination as PaginationPrimitive } from "@ark-ui/svelte/pagination";
-import { buttonRecipe } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 

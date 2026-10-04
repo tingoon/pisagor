@@ -3,7 +3,8 @@ import { ark } from "@ark-ui/react/factory";
 import { Presence } from "@ark-ui/react/presence";
 import { useUncontrolled } from "@mantine/hooks";
 import { XIcon } from "@phosphor-icons/react";
-import { actionBarRecipe } from "@pisagor/recipes/action-bar";
+import type { ActionBarProps as ActionBarSharedProps } from "@pisagor/props";
+import { actionBarRecipe } from "@pisagor/recipes";
 import type {
   ComponentProps,
   MouseEvent,
@@ -33,14 +34,8 @@ interface ActionBarActionItem {
 }
 
 export interface ActionBarProps
-  extends Pick<ActionBarContextValue, "lazyMount" | "unmountOnExit"> {
-  /**
-   * Style recipe. Defaults to `actionBarRecipe` from `@pisagor/recipes/action-bar`.
-   *
-   * @defaultValue actionBarRecipe
-   */
-  recipe?: typeof actionBarRecipe;
-
+  extends Pick<ActionBarContextValue, "lazyMount" | "unmountOnExit">,
+    ActionBarSharedProps {
   /**
    * Whether to close the action bar when the Escape key is pressed.
    *

@@ -6,7 +6,7 @@ import type {
   InputGroupControlRecipeFn,
   InputGroupTextareaControlRecipeFn,
   InputGroupTextRecipeFn,
-} from "@pisagor/recipes/input-group";
+} from "@pisagor/recipes";
 
 /** InputGroupAddon props. */
 export interface InputGroupAddonProps extends InputGroupAddonVariantProps {

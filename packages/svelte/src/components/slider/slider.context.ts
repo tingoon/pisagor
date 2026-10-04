@@ -1,4 +1,4 @@
-import type { SliderRecipe } from "@pisagor/recipes/slider";
+import type { SliderRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 export interface SliderContextValue {
@@ -7,6 +7,6 @@ export interface SliderContextValue {
   trackVariantClass: string;
 }
 
-const ctx = createContext<SliderContextValue>({ name: "Slider" });
+const ctx = createContext("Slider")<SliderContextValue>();
 
 export const setSliderContext = ctx.setContext;

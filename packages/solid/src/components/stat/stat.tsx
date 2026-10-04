@@ -1,11 +1,13 @@
 import { ark } from "@ark-ui/solid/factory";
+import type {
+  StatProps as StatRootSharedProps,
+  StatTrendProps as StatTrendSharedProps,
+} from "@pisagor/props";
 import {
   type StatRecipeSlot,
-  type StatTrendVariantProps,
-  type StatVariantProps,
   statRecipe,
   statTrendRecipe,
-} from "@pisagor/recipes/stat";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -16,17 +18,11 @@ type StatLabelProps = ComponentProps<typeof ark.div>;
 type StatValueProps = ComponentProps<typeof ark.div>;
 type StatDescriptionProps = ComponentProps<typeof ark.p>;
 
-type StatTrendProps = ComponentProps<typeof ark.div> &
-  StatTrendVariantProps & {
-    recipe?: typeof statTrendRecipe;
-  };
+type StatTrendProps = ComponentProps<typeof ark.div> & StatTrendSharedProps;
 
 type StatClassNames = VariantClassNames<StatRecipeSlot>;
 
-type StatRootProps = ComponentProps<typeof ark.div> &
-  StatVariantProps & {
-    recipe?: typeof statRecipe;
-  };
+type StatRootProps = ComponentProps<typeof ark.div> & StatRootSharedProps;
 
 export interface StatProps extends Omit<StatRootProps, "children"> {
   description?: JSX.Element;

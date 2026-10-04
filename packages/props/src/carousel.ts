@@ -1,4 +1,4 @@
-import type { CarouselRecipeFn } from "@pisagor/recipes/carousel";
+import type { CarouselRecipeFn } from "@pisagor/recipes";
 
 /** Carousel props. */
 export interface CarouselProps {

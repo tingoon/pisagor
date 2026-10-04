@@ -1,4 +1,4 @@
-import type { ProgressRecipeFn } from "@pisagor/recipes/progress";
+import type { ProgressRecipeFn } from "@pisagor/recipes";
 
 /** Progress props. */
 export interface ProgressProps {

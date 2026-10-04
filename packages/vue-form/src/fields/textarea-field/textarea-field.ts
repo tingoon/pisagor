@@ -1,5 +1,4 @@
-import type { TextareaProps } from "@pisagor/vue";
-import { Textarea } from "@pisagor/vue";
+import { Textarea, type TextareaProps } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import {
   type FieldPresentationProps,

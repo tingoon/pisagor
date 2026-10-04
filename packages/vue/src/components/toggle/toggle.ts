@@ -1,25 +1,18 @@
 import { Toggle as TogglePrimitive } from "@ark-ui/vue/toggle";
-import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes/button";
-import { type ToggleVariantProps, toggleRecipe } from "@pisagor/recipes/toggle";
+import type { ToggleProps as ToggleSharedProps } from "@pisagor/props";
+import {
+  type ButtonVariantProps,
+  buttonRecipe,
+  type ToggleVariantProps,
+  toggleRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface ToggleProps {
-  /**
-   * Style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
-   *
-   * @defaultValue buttonRecipe
-   */
-  buttonRecipe?: typeof buttonRecipe;
-  /**
-   * Style recipe. Defaults to `toggleRecipe` from `@pisagor/recipes/toggle`.
-   *
-   * @defaultValue toggleRecipe
-   */
-  recipe?: typeof toggleRecipe;
+export interface ToggleProps extends ToggleSharedProps {
   class?: unknown;
 }
 // #endregion

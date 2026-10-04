@@ -1,4 +1,5 @@
-import { dataTableRecipe } from "@pisagor/recipes/data-table";
+import type { DataTableProps as DataTableSharedProps } from "@pisagor/props";
+import { dataTableRecipe } from "@pisagor/recipes";
 import type { RowData, TableOptions } from "@tanstack/react-table";
 import { flexRender, useTable } from "@tanstack/react-table";
 import { type ComponentProps, type ReactNode, useMemo } from "react";
@@ -40,13 +41,8 @@ export type DataTableProps<TData extends RowData> = {
    * @defaultValue dataTableFeatures
    */
   features?: DataTableFeatures;
-  /**
-   * Style recipe. Defaults to `dataTableRecipe` from `@pisagor/recipes/data-table`.
-   *
-   * @defaultValue dataTableRecipe
-   */
-  recipe?: typeof dataTableRecipe;
-} & Omit<TableOptions<DataTableFeatures, TData>, "features">;
+} & Omit<TableOptions<DataTableFeatures, TData>, "features"> &
+  DataTableSharedProps;
 
 interface DataTableHeaderProps {
   children: ReactNode;

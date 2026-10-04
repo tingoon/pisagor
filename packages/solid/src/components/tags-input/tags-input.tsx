@@ -13,10 +13,11 @@ import {
   TagsInput as TagsInputPrimitive,
   useTagsInputContext,
 } from "@ark-ui/solid/tags-input";
-import {
-  tagsInputItemRecipe,
-  tagsInputRecipe,
-} from "@pisagor/recipes/tags-input";
+import type {
+  TagsInputItemProps as TagsInputItemSharedProps,
+  TagsInputProps as TagsInputSharedProps,
+} from "@pisagor/props";
+import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import { XIcon } from "../../internal/icons";
@@ -34,11 +35,12 @@ export type TagsInputRootProps = Omit<
 > &
   Pick<InputGroupProps, "size" | "variant">;
 
-export interface TagsInputProps extends TagsInputRootProps {
+export interface TagsInputProps
+  extends TagsInputRootProps,
+    TagsInputSharedProps {
   clearable?: boolean;
   placeholder?: string;
   onValueChange?: (value: string[]) => void;
-  recipe?: typeof tagsInputRecipe;
 }
 
 export interface TagsInputControlProps
@@ -49,16 +51,16 @@ export interface TagsInputControlProps
 
 export interface TagsInputItemProps
   extends TagsInputPrimitiveItemProps,
-    Pick<InputGroupProps, "size"> {
+    Pick<InputGroupProps, "size">,
+    TagsInputItemSharedProps {
   showDelete?: boolean;
-  itemRecipe?: typeof tagsInputItemRecipe;
 }
 
 export interface TagsInputRootProviderProps
   extends TagsInputPrimitiveRootProviderProps,
-    Pick<InputGroupProps, "size"> {
+    Pick<InputGroupProps, "size">,
+    TagsInputSharedProps {
   clearable?: boolean;
-  recipe?: typeof tagsInputRecipe;
 }
 
 export type TagsInputItemDeleteTriggerProps = ComponentProps<
@@ -150,10 +152,10 @@ export function TagsInputItem(props: TagsInputItemProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "showDelete",
     "children",
-    "itemRecipe",
+    "recipe",
     "class",
   ]);
-  const slots = () => (local.itemRecipe ?? tagsInputItemRecipe)();
+  const slots = () => (local.recipe ?? tagsInputItemRecipe)();
   const showDelete = () => local.showDelete ?? true;
 
   return (

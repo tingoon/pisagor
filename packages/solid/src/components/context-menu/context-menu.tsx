@@ -2,7 +2,8 @@ import {
   type MenuContextTriggerProps,
   Menu as MenuPrimitive,
 } from "@ark-ui/solid/menu";
-import { contextMenuRecipe } from "@pisagor/recipes/context-menu";
+import type { ContextMenuProps as ContextMenuSharedProps } from "@pisagor/props";
+import { contextMenuRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import type {
@@ -19,9 +20,8 @@ import { DropdownMenu } from "../dropdown-menu";
 export type ContextMenuRootProps = DropdownMenuRootProps;
 
 export interface ContextMenuContextTriggerProps
-  extends MenuContextTriggerProps {
-  recipe?: typeof contextMenuRecipe;
-}
+  extends MenuContextTriggerProps,
+    ContextMenuSharedProps {}
 
 export function ContextMenuRoot(props: ContextMenuRootProps): JSX.Element {
   return <DropdownMenu {...props} />;

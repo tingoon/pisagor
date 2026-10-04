@@ -4,7 +4,8 @@ import type {
   AngleSliderRootProps,
 } from "@ark-ui/svelte/angle-slider";
 import { AngleSlider as AngleSliderPrimitive } from "@ark-ui/svelte/angle-slider";
-import { circularSliderRecipe } from "@pisagor/recipes/circular-slider";
+import type { CircularSliderProps as CircularSliderSharedProps } from "@pisagor/props";
+import { circularSliderRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
   type CircularSliderContextValue,
@@ -13,15 +14,15 @@ import {
 import CircularSliderControl from "./circular-slider-control.svelte";
 
 type Props = Omit<AngleSliderRootProps, "class" | "onValueChange" | "children"> &
-  Partial<Pick<CircularSliderContextValue, "thickness" | "size">> & {
+  Partial<Pick<CircularSliderContextValue, "thickness" | "size">> &
+  {
     class?: string | undefined;
     children?: import("svelte").Snippet;
     hiddenInputProps?: Omit<AngleSliderHiddenInputProps, "class">;
     markers?: boolean | number[];
     markersAtSteps?: boolean;
     onValueChange?: (value: number) => void;
-    recipe?: typeof circularSliderRecipe;
-  };
+  } & CircularSliderSharedProps;
 
 let {
   size = 100,

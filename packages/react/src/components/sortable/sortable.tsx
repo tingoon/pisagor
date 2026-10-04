@@ -1,6 +1,10 @@
 import { ark } from "@ark-ui/react/factory";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
-import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes/sortable";
+import type {
+  SortableItemProps as SortableItemSharedProps,
+  SortableProps as SortableRootSharedProps,
+} from "@pisagor/props";
+import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes";
 import type {
   ComponentProps,
   DragEvent,
@@ -19,7 +23,8 @@ import {
 type SortableOrientation = "vertical" | "horizontal";
 
 export interface SortableRootProps
-  extends Omit<ComponentProps<typeof ark.div>, "onDragStart"> {
+  extends Omit<ComponentProps<typeof ark.div>, "onDragStart">,
+    SortableRootSharedProps {
   /**
    * Layout axis for drop indicators and keyboard moves.
    *
@@ -41,23 +46,13 @@ export interface SortableRootProps
    * Called with the reordered ids after a successful drop or keyboard move.
    */
   onValueChange?: (items: string[]) => void;
-  /**
-   * Style recipe. Defaults to `sortableRecipe` from `@pisagor/recipes/sortable`.
-   *
-   * @defaultValue sortableRecipe
-   */
-  recipe?: typeof sortableRecipe;
 }
 
-export interface SortableItemProps extends ComponentProps<typeof ark.div> {
+export interface SortableItemProps
+  extends ComponentProps<typeof ark.div>,
+    SortableItemSharedProps {
   /** Stable id matching an entry in `Sortable.Root` `items`. */
   value: string;
-  /**
-   * Style recipe. Defaults to `sortableItemRecipe` from `@pisagor/recipes/sortable`.
-   *
-   * @defaultValue sortableItemRecipe
-   */
-  itemRecipe?: typeof sortableItemRecipe;
 }
 
 export type SortableHandleProps = ComponentProps<typeof ark.div>;
@@ -324,14 +319,14 @@ export function SortableRoot({
 export function SortableItem({
   value,
   children,
-  itemRecipe = sortableItemRecipe,
+  recipe = sortableItemRecipe,
   className,
   ...rest
 }: SortableItemProps) {
   const { getItemProps, activeId, disabled } = useSortable();
   const itemProps = getItemProps(value);
   const isDragging = activeId === value;
-  const slots = itemRecipe();
+  const slots = recipe();
 
   return (
     <SortableItemContext value={{ id: value, isDragging, slots }}>

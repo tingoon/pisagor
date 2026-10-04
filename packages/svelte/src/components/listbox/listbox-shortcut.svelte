@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { dropdownMenuRecipe } from "@pisagor/recipes/dropdown-menu";
+import { dropdownMenuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";

@@ -13,26 +13,23 @@ import type {
 import { Popover as PopoverPrimitive } from "@ark-ui/react/popover";
 import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
-import { popoverRecipe } from "@pisagor/recipes/popover";
+import type { PopoverProps as PopoverContentSharedProps } from "@pisagor/props";
+import { popoverRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { Button } from "../button";
 import { ScrollArea } from "../scroll-area";
 import { PopoverContentContext, usePopoverContent } from "./popover.context";
 
 // #region Types
-export interface PopoverContentProps extends PopoverPrimitiveContentProps {
+export interface PopoverContentProps
+  extends PopoverPrimitiveContentProps,
+    PopoverContentSharedProps {
   /**
    * Whether to show a close button at the top right corner.
    *
    * @defaultValue false
    */
   showCloseButton?: boolean;
-  /**
-   * Style recipe. Defaults to `popoverRecipe` from `@pisagor/recipes/popover`.
-   *
-   * @defaultValue popoverRecipe
-   */
-  recipe?: typeof popoverRecipe;
 }
 
 export interface PopoverHeaderProps extends ComponentProps<typeof ark.div> {

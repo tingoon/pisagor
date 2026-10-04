@@ -5,7 +5,8 @@ import type {
   SwitchThumbProps,
 } from "@ark-ui/react/switch";
 import { Switch as SwitchPrimitive } from "@ark-ui/react/switch";
-import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes/switch";
+import type { SwitchProps as SwitchRootSharedProps } from "@pisagor/props";
+import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
 
 import type { VariantClassNames } from "../../internal/types";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -19,13 +20,7 @@ type SwitchClassNames = VariantClassNames<SwitchRecipeSlot>;
 type SwitchRootProps = SwitchPrimitiveRootProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-  /**
-   * Style recipe. Defaults to `switchRecipe` from `@pisagor/recipes/switch`.
-   *
-   * @defaultValue switchRecipe
-   */
-  recipe?: typeof switchRecipe;
-};
+} & SwitchRootSharedProps;
 
 export interface SwitchProps extends Omit<SwitchRootProps, "children"> {
   onValueChange?: (value: boolean) => void;

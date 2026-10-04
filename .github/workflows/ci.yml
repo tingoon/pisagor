@@ -3,7 +3,7 @@ name: Checks
 on:
   pull_request:
   push:
-    branches: [ main ]
+    branches: [main]
 
 permissions:
   contents: read
@@ -14,16 +14,67 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  check:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      - uses: ./.github/actions/setup-bun
+      - run: bunx biome ci
+      - run: bunx knip
+
+  type-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
       - uses: vercel/setup-turborepo-remote-cache-action@v1.1.0
         with:
           team: ${{ vars.TURBO_TEAM }}
       - uses: ./.github/actions/setup-bun
-      - run: bunx biome ci
-      - run: bunx knip
-      - run: bun run type-check
-      - run: bun run test
-      - run: bun run build
+        with:
+          turbo-cache: "true"
+      - run: bunx turbo run type-check --affected
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: vercel/setup-turborepo-remote-cache-action@v1.1.0
+        with:
+          team: ${{ vars.TURBO_TEAM }}
+      - uses: ./.github/actions/setup-bun
+        with:
+          turbo-cache: "true"
+      - run: bunx turbo run test --affected
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: vercel/setup-turborepo-remote-cache-action@v1.1.0
+        with:
+          team: ${{ vars.TURBO_TEAM }}
+      - uses: ./.github/actions/setup-bun
+        with:
+          turbo-cache: "true"
+      - run: bunx turbo run build --filter=docs --affected
+        env:
+          DOCS_BASE_PATH: /${{ github.event.repository.name }}/
+          DOCS_SITE: https://tingoon.github.io
+
+  check:
+    needs: [lint, type-check, test, build]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require all jobs
+        run: |
+          test "${{ needs.lint.result }}" = "success"
+          test "${{ needs.type-check.result }}" = "success"
+          test "${{ needs.test.result }}" = "success"
+          test "${{ needs.build.result }}" = "success"

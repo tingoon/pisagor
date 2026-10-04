@@ -1,13 +1,7 @@
 <script lang="ts">
 import type { ComboboxInputProps as ArkInputProps } from "@ark-ui/svelte/combobox";
 import { Combobox as ComboboxPrimitive, useComboboxContext } from "@ark-ui/svelte/combobox";
-import { buttonRecipe } from "@pisagor/recipes/button";
-import { comboboxRecipe } from "@pisagor/recipes/combobox";
-import {
-  type FormControlGroupShellVariantProps,
-  formControlGroupShellRecipe,
-} from "@pisagor/recipes/form-control";
-import { inputGroupControlRecipe } from "@pisagor/recipes/input-group";
+import { buttonRecipe, comboboxRecipe, type FormControlGroupShellVariantProps, formControlGroupShellRecipe, inputGroupControlRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import { useFormControlSurface } from "../surface/use-form-control-surface";

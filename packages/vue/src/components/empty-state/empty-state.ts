@@ -1,8 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
-import {
-  type EmptyStateRecipeSlot,
-  emptyStateRecipe,
-} from "@pisagor/recipes/empty-state";
+import type { EmptyStateProps as EmptyStateSharedProps } from "@pisagor/props";
+import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -12,14 +10,8 @@ type ArkPart = Parameters<typeof h>[0];
 // #region Types
 type EmptyStateClassNames = VariantClassNames<EmptyStateRecipeSlot>;
 
-export interface EmptyStateProps {
+export interface EmptyStateProps extends EmptyStateSharedProps {
   actions?: VNodeChild;
-  /**
-   * Style recipe. Defaults to `emptyStateRecipe` from `@pisagor/recipes/empty-state`.
-   *
-   * @defaultValue emptyStateRecipe
-   */
-  recipe?: typeof emptyStateRecipe;
   class?: unknown;
   classNames?: EmptyStateClassNames;
   description?: VNodeChild;

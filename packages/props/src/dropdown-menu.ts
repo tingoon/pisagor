@@ -2,7 +2,7 @@ import type {
   DropdownMenuItemRecipeFn,
   DropdownMenuItemVariantProps,
   DropdownMenuRecipeFn,
-} from "@pisagor/recipes/dropdown-menu";
+} from "@pisagor/recipes";
 
 /** DropdownMenu props. */
 export interface DropdownMenuProps {

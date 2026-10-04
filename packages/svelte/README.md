@@ -22,4 +22,4 @@ Form fields: [`@pisagor/svelte-form`](../svelte-form) and `@pisagor/svelte-form/
 
 See the [root README](../../README.md) for Tailwind setup.
 
-Agents: prefer [`@pisagor/mcp`](../mcp) (`bunx @pisagor/mcp`). This package also ships Intent skills under `skills/`.
+Agents: prefer [`@pisagor/mcp`](../mcp) (`bunx @pisagor/mcp`).

@@ -10,7 +10,7 @@ import type {
   ToolConfig,
 } from "./types";
 
-/** Known publishable packages MCP can load catalogs from. */
+/** Known publishable packages MCP can load catalogs for. */
 const KNOWN_PACKAGES = [
   { framework: "react" as const, name: "@pisagor/react" },
   { framework: "react" as const, name: "@pisagor/react-form" },
@@ -58,6 +58,14 @@ Install what you need, then restart the MCP server:
 
 MCP: bunx @pisagor/mcp
 `;
+
+function packageSlug(name: string): string {
+  return name.replace(/^@pisagor\//, "");
+}
+
+function mcpPackageRoot(): string {
+  return path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
+}
 
 function tryResolveRoot(specifier: string, from: string): string | null {
   try {
@@ -155,8 +163,11 @@ function collectCandidateRoots(): string[] {
   return [...roots];
 }
 
-function loadCatalog(root: string): ComponentsCatalog | RecipesCatalog | null {
-  const file = path.join(root, "catalog.gen.json");
+function loadCatalog(
+  mcpRoot: string,
+  packageName: string,
+): ComponentsCatalog | RecipesCatalog | null {
+  const file = path.join(mcpRoot, `${packageSlug(packageName)}.gen.json`);
   if (!existsSync(file)) {
     return null;
   }
@@ -170,6 +181,7 @@ function loadCatalog(root: string): ComponentsCatalog | RecipesCatalog | null {
 }
 
 export function discoverPackages(): ToolConfig {
+  const mcpRoot = mcpPackageRoot();
   const byName = new Map<string, ResolvedPackage>();
 
   for (const root of collectCandidateRoots()) {
@@ -180,7 +192,7 @@ export function discoverPackages(): ToolConfig {
     if (byName.has(name)) {
       continue;
     }
-    const catalog = loadCatalog(root);
+    const catalog = loadCatalog(mcpRoot, name);
     if (!catalog) {
       continue;
     }

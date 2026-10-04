@@ -2,12 +2,12 @@
 type ExampleModule = Record<string, unknown>;
 
 const exampleModules = import.meta.glob<ExampleModule>(
-  "../../../../../packages/svelte/skills/svelte/assets/examples/*/index.ts",
+  "../../../../../packages/svelte/examples/*/index.ts",
   { eager: true },
 );
 
 const formExampleModules = import.meta.glob<ExampleModule>(
-  "../../../../../packages/svelte-form/skills/svelte-form/assets/examples/*/index.ts",
+  "../../../../../packages/svelte-form/examples/*/index.ts",
   { eager: true },
 );
 

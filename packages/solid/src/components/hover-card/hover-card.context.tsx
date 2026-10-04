@@ -1,4 +1,4 @@
-import type { HoverCardRecipe } from "@pisagor/recipes/hover-card";
+import type { HoverCardRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils";
 
 interface HoverCardContextValue {
@@ -6,6 +6,4 @@ interface HoverCardContextValue {
 }
 
 export const { HoverCardContext, useHoverCard } =
-  createContext<HoverCardContextValue>()({
-    name: "HoverCard",
-  });
+  createContext("HoverCard")<HoverCardContextValue>();

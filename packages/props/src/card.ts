@@ -1,4 +1,4 @@
-import type { CardRecipeFn, CardVariantProps } from "@pisagor/recipes/card";
+import type { CardRecipeFn, CardVariantProps } from "@pisagor/recipes";
 
 /** Card props. */
 export interface CardProps extends CardVariantProps {

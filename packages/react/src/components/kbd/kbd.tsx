@@ -1,31 +1,19 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  type KbdVariantProps,
-  kbdGroupRecipe,
-  kbdRecipe,
-} from "@pisagor/recipes/kbd";
+import type {
+  KbdGroupProps as KbdGroupSharedProps,
+  KbdProps as KbdSharedProps,
+} from "@pisagor/props";
+import { kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 
 // #region Types
 export interface KbdProps
   extends ComponentProps<typeof ark.kbd>,
-    KbdVariantProps {
-  /**
-   * Style recipe. Defaults to `kbdRecipe` from `@pisagor/recipes/kbd`.
-   *
-   * @defaultValue kbdRecipe
-   */
-  recipe?: typeof kbdRecipe;
-}
+    KbdSharedProps {}
 
-export interface KbdGroupProps extends ComponentProps<typeof ark.div> {
-  /**
-   * Style recipe. Defaults to `kbdGroupRecipe` from `@pisagor/recipes/kbd`.
-   *
-   * @defaultValue kbdGroupRecipe
-   */
-  recipe?: typeof kbdGroupRecipe;
-}
+export interface KbdGroupProps
+  extends ComponentProps<typeof ark.div>,
+    KbdGroupSharedProps {}
 // #endregion
 
 // #region Parts

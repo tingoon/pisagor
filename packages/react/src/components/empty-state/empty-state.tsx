@@ -1,8 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  type EmptyStateRecipeSlot,
-  emptyStateRecipe,
-} from "@pisagor/recipes/empty-state";
+import type { EmptyStateProps as EmptyStateRootSharedProps } from "@pisagor/props";
+import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { EmptyStateContext, useEmptyState } from "./empty-state.context";
@@ -18,14 +16,8 @@ type EmptyStateMediaProps = ComponentProps<typeof ark.div>;
 
 type EmptyStateClassNames = VariantClassNames<EmptyStateRecipeSlot>;
 
-type EmptyStateRootProps = Omit<ComponentProps<typeof ark.div>, "title"> & {
-  /**
-   * Style recipe. Defaults to `emptyStateRecipe` from `@pisagor/recipes/empty-state`.
-   *
-   * @defaultValue emptyStateRecipe
-   */
-  recipe?: typeof emptyStateRecipe;
-};
+type EmptyStateRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
+  EmptyStateRootSharedProps;
 
 export interface EmptyStateProps extends Omit<EmptyStateRootProps, "children"> {
   /** Action buttons or links. */

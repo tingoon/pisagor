@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
 import { Select as SelectPrimitive } from "@ark-ui/svelte/select";
-import { selectRecipe } from "@pisagor/recipes/select";
+import { selectRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";

@@ -1,4 +1,4 @@
-import type { VisuallyHiddenRecipeFn } from "@pisagor/recipes/visually-hidden";
+import type { VisuallyHiddenRecipeFn } from "@pisagor/recipes";
 
 /** VisuallyHidden props. */
 export interface VisuallyHiddenProps {

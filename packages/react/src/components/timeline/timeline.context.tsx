@@ -1,4 +1,5 @@
-import type { TimelineItemRecipe } from "@pisagor/recipes/timeline";
+import type { TimelineItemRecipe } from "@pisagor/recipes";
+
 import { createContext } from "../../utils";
 
 interface TimelineItemContextValue {
@@ -6,6 +7,4 @@ interface TimelineItemContextValue {
 }
 
 export const { TimelineItemContext, useTimelineItem } =
-  createContext<TimelineItemContextValue>()({
-    name: "TimelineItem",
-  });
+  createContext("TimelineItem")<TimelineItemContextValue>();

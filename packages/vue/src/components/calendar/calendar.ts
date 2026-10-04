@@ -4,11 +4,12 @@ import {
   type UseDatePickerContext,
 } from "@ark-ui/vue/date-picker";
 import { PhCaretDown, PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
+import type { CalendarProps as CalendarSharedProps } from "@pisagor/props";
 import {
   calendarRecipe,
   calendarTableCellRecipe,
-} from "@pisagor/recipes/calendar";
-import { formControlShellRecipe } from "@pisagor/recipes/form-control";
+  formControlShellRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type UnwrapRef } from "vue";
 import { Button, type ButtonProps } from "../button";
@@ -41,13 +42,7 @@ interface CalendarTableNextMonthProps {
   tabIndex?: number | string;
 }
 
-export interface CalendarProps {
-  /**
-   * Style recipe. Defaults to `calendarRecipe` from `@pisagor/recipes/calendar`.
-   *
-   * @defaultValue calendarRecipe
-   */
-  recipe?: typeof calendarRecipe;
+export interface CalendarProps extends CalendarSharedProps {
   class?: unknown;
   /** Visual shell variant for embedded selects. Defaults to `primary`. */
   variant?: FormControlVariant;

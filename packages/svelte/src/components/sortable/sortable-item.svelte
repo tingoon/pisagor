@@ -1,19 +1,20 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { sortableItemRecipe } from "@pisagor/recipes/sortable";
+import type { SortableItemProps as SortableItemSharedProps } from "@pisagor/props";
+import { sortableItemRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "svelte/elements";
 import { setSortableItemContext, useSortable } from "./sortable.context";
 
-type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> & {
+type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> &
+  {
   class?: string | undefined;
-  itemRecipe?: typeof sortableItemRecipe;
   value: string;
-};
+  } & SortableItemSharedProps;
 
 let {
   value,
   children,
-  itemRecipe = sortableItemRecipe,
+  recipe = sortableItemRecipe,
   class: className,
   ...rest
 }: Props = $props();
@@ -21,7 +22,7 @@ let {
 const sortable = useSortable();
 const itemProps = $derived(sortable.getItemProps(value));
 const isDragging = $derived(sortable.activeId === value);
-const slots = $derived(itemRecipe());
+const slots = $derived(recipe());
 
 setSortableItemContext({
   get id() {

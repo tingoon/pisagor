@@ -1,5 +1,5 @@
 import type { UseTourReturn } from "@ark-ui/solid/tour";
-import type { TourRecipe } from "@pisagor/recipes/tour";
+import type { TourRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils";
 
 export interface TourProviderProps {
@@ -9,6 +9,4 @@ export interface TourProviderProps {
 }
 
 export const { TourContext, useTour: useTourContext } =
-  createContext<TourProviderProps>()({
-    name: "Tour",
-  });
+  createContext("Tour")<TourProviderProps>();

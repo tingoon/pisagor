@@ -1,8 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
-import {
-  type ToolbarRecipeSlot,
-  toolbarRecipe,
-} from "@pisagor/recipes/toolbar";
+import type { ToolbarProps as ToolbarSharedProps } from "@pisagor/props";
+import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -10,13 +8,7 @@ import type { VariantClassNames } from "../../internal/types";
 type ToolbarClassNames = VariantClassNames<ToolbarRecipeSlot>;
 
 // #region Types
-export interface ToolbarProps {
-  /**
-   * Style recipe. Defaults to `toolbarRecipe` from `@pisagor/recipes/toolbar`.
-   *
-   * @defaultValue toolbarRecipe
-   */
-  recipe?: typeof toolbarRecipe;
+export interface ToolbarProps extends ToolbarSharedProps {
   class?: unknown;
   classNames?: ToolbarClassNames;
   title?: VNodeChild;

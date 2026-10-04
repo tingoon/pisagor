@@ -1,6 +1,10 @@
 import { ark } from "@ark-ui/solid/factory";
-import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes/button";
-import { sidebarRecipe } from "@pisagor/recipes/sidebar";
+import type { SidebarProps as SidebarSharedProps } from "@pisagor/props";
+import {
+  type ButtonVariantProps,
+  buttonRecipe,
+  sidebarRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import {
@@ -26,14 +30,16 @@ import {
   useSidebar,
 } from "./sidebar.context";
 
-export interface SidebarProviderProps extends ComponentProps<"div"> {
+export interface SidebarProviderProps
+  extends ComponentProps<"div">,
+    Pick<SidebarSharedProps, "recipe"> {
   defaultOpen?: boolean;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
-  recipe?: typeof sidebarRecipe;
 }
 
-export interface SidebarProps extends Omit<SheetProps, "class" | "children"> {
+export interface SidebarProps
+  extends Omit<SheetProps, "class" | "children" | "variant" | "recipe"> {
   placement?: "left" | "right";
   variant?: "sidebar" | "floating" | "inset";
   collapsible?: "offcanvas" | "icon" | "none";

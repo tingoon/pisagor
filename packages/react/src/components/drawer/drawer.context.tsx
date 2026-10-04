@@ -1,4 +1,5 @@
-import type { DrawerRecipe } from "@pisagor/recipes/drawer";
+import type { DrawerRecipe } from "@pisagor/recipes";
+
 import { createContext } from "../../utils";
 
 interface DrawerContextValue {
@@ -6,8 +7,5 @@ interface DrawerContextValue {
   slots: DrawerRecipe;
 }
 
-export const { DrawerContext, useDrawer } = createContext<DrawerContextValue>()(
-  {
-    name: "Drawer",
-  },
-);
+export const { DrawerContext, useDrawer } =
+  createContext("Drawer")<DrawerContextValue>();

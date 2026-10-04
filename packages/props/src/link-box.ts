@@ -1,4 +1,4 @@
-import type { LinkBoxRecipeFn } from "@pisagor/recipes/link-box";
+import type { LinkBoxRecipeFn } from "@pisagor/recipes";
 
 /** LinkBox props. */
 export interface LinkBoxProps {

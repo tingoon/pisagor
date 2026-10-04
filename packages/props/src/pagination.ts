@@ -1,4 +1,4 @@
-import type { PaginationRecipeFn } from "@pisagor/recipes/pagination";
+import type { PaginationRecipeFn } from "@pisagor/recipes";
 
 /** Pagination props. */
 export interface PaginationProps {

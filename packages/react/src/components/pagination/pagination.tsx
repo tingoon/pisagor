@@ -15,20 +15,16 @@ import {
   CaretRightIcon,
   DotsThreeIcon,
 } from "@phosphor-icons/react";
-import { paginationRecipe } from "@pisagor/recipes/pagination";
+import type { PaginationProps as PaginationRootSharedProps } from "@pisagor/props";
+import { paginationRecipe } from "@pisagor/recipes";
 
 import { Button, type ButtonProps } from "../button";
 import { PaginationContext, usePagination } from "./pagination.context";
 
 // #region Types
-export interface PaginationRootProps extends PaginationPrimitiveRootProps {
-  /**
-   * Style recipe. Defaults to `paginationRecipe` from `@pisagor/recipes/pagination`.
-   *
-   * @defaultValue paginationRecipe
-   */
-  recipe?: typeof paginationRecipe;
-}
+export interface PaginationRootProps
+  extends PaginationPrimitiveRootProps,
+    PaginationRootSharedProps {}
 
 export type PaginationItemsProps = Omit<PaginationContextProps, "children">;
 

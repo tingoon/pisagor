@@ -4,10 +4,8 @@
     "noUncheckedSideEffectImports": false,
     "paths": {
       "#/storybook/*": ["./.storybook/*"],
-      "#/vue-form/examples/*": [
-        "../../packages/vue-form/skills/vue-form/assets/examples/*"
-      ],
-      "#/vue/examples/*": ["../../packages/vue/skills/vue/assets/examples/*"]
+      "#/vue-form/examples/*": ["../../packages/vue-form/examples/*"],
+      "#/vue/examples/*": ["../../packages/vue/examples/*"]
     },
     "types": ["vite/client", "node"]
   },

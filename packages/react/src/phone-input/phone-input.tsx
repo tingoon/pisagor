@@ -1,10 +1,7 @@
 import { createListCollection } from "@ark-ui/react/collection";
 import { CaretUpDownIcon, GlobeIcon } from "@phosphor-icons/react";
-import {
-  type PhoneInputRecipeSlot,
-  type PhoneInputVariantProps,
-  phoneInputRecipe,
-} from "@pisagor/recipes/phone-input";
+import type { PhoneInputProps as PhoneInputSharedProps } from "@pisagor/props";
+import { type PhoneInputRecipeSlot, phoneInputRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
@@ -55,7 +52,7 @@ export interface PhoneInputProps
       | "countrySelectComponent"
       | "inputComponent"
     >,
-    PhoneInputVariantProps {
+    PhoneInputSharedProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   /** Default country when no value is provided */
@@ -67,12 +64,6 @@ export interface PhoneInputProps
   /** Called with the E.164 phone number when the value changes */
   onChange?: (value: string) => void;
   /** Slot class names */
-  /**
-   * Style recipe. Defaults to `phoneInputRecipe` from `@pisagor/recipes/phone-input`.
-   *
-   * @defaultValue phoneInputRecipe
-   */
-  recipe?: typeof phoneInputRecipe;
   classNames?: PhoneInputClassNames;
   /** Tel input props (except `className`). */
   inputProps?: Omit<

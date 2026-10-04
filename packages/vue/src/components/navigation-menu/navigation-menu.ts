@@ -1,8 +1,9 @@
 import { ark } from "@ark-ui/vue/factory";
+import type { NavigationMenuProps as NavigationMenuRootSharedProps } from "@pisagor/props";
 import {
   type NavigationMenuRecipeSlot,
   navigationMenuRecipe,
-} from "@pisagor/recipes/navigation-menu";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -10,13 +11,7 @@ import type { VariantClassNames } from "../../internal/types";
 // #region Types
 type NavigationMenuClassNames = VariantClassNames<NavigationMenuRecipeSlot>;
 
-export interface NavigationMenuRootProps {
-  /**
-   * Style recipe. Defaults to `navigationMenuRecipe` from `@pisagor/recipes/navigation-menu`.
-   *
-   * @defaultValue navigationMenuRecipe
-   */
-  recipe?: typeof navigationMenuRecipe;
+export interface NavigationMenuRootProps extends NavigationMenuRootSharedProps {
   class?: unknown;
 }
 // #endregion

@@ -1,7 +1,4 @@
-import type {
-  SwitchRecipeFn,
-  SwitchVariantProps,
-} from "@pisagor/recipes/switch";
+import type { SwitchRecipeFn, SwitchVariantProps } from "@pisagor/recipes";
 
 /** Switch props. */
 export interface SwitchProps extends SwitchVariantProps {

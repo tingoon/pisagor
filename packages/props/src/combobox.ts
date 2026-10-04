@@ -1,7 +1,4 @@
-import type {
-  ComboboxRecipeFn,
-  ComboboxVariantProps,
-} from "@pisagor/recipes/combobox";
+import type { ComboboxRecipeFn, ComboboxVariantProps } from "@pisagor/recipes";
 
 /** Combobox props. */
 export interface ComboboxProps extends ComboboxVariantProps {

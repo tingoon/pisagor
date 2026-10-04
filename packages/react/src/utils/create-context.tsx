@@ -4,8 +4,7 @@ import {
   useContext as useReactContext,
 } from "react";
 
-export interface CreateContextOptions<T, Name extends string = string> {
-  name: Name;
+export interface CreateContextOptions<T> {
   strict?: boolean;
   defaultValue?: T;
 }
@@ -22,18 +21,17 @@ type CreateContextResultOptional<Name extends string, T> = {
   [K in `use${Name}`]: () => T | undefined;
 };
 
-export function createContext<T>() {
-  function createNamedContext<const Name extends string>(
-    options: CreateContextOptions<T, Name> & { strict: false },
+export function createContext<const Name extends string>(name: Name) {
+  function createTypedContext<T>(
+    options: CreateContextOptions<T> & { strict: false },
   ): CreateContextResultOptional<Name, T>;
-  function createNamedContext<const Name extends string>(
-    options: CreateContextOptions<T, Name>,
+  function createTypedContext<T>(
+    options?: CreateContextOptions<T>,
   ): CreateContextResult<Name, T>;
-  function createNamedContext<const Name extends string>({
-    name,
+  function createTypedContext<T>({
     strict = true,
     defaultValue,
-  }: CreateContextOptions<T, Name>) {
+  }: CreateContextOptions<T> = {}) {
     const contextName = `${name}Context`;
     const hookName = `use${name}`;
 
@@ -68,5 +66,5 @@ export function createContext<T>() {
     } as CreateContextResult<Name, T> | CreateContextResultOptional<Name, T>;
   }
 
-  return createNamedContext;
+  return createTypedContext;
 }

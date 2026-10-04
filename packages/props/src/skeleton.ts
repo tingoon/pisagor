@@ -1,4 +1,4 @@
-import type { SkeletonRecipeFn } from "@pisagor/recipes/skeleton";
+import type { SkeletonRecipeFn } from "@pisagor/recipes";
 
 /** Skeleton props. */
 export interface SkeletonProps {

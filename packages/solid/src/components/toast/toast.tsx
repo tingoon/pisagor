@@ -12,11 +12,15 @@ import {
   Toaster as ToasterPrimitive,
   Toast as ToastPrimitive,
 } from "@ark-ui/solid/toast";
+import type {
+  ToastProps as ToasterRootSharedProps,
+  ToastItemProps as ToastItemRootSharedProps,
+} from "@pisagor/props";
 import {
   type ToastItemRecipeSlot,
   toastItemRecipe,
   toastRecipe,
-} from "@pisagor/recipes/toast";
+} from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
@@ -35,17 +39,16 @@ import { ToastItemContext, useToastItem } from "./toast.context";
 type ToastItemClassNames = VariantClassNames<ToastItemRecipeSlot>;
 
 export interface ToasterRootProps
-  extends Omit<ToasterPrimitiveProps, "toaster" | "children"> {
-  recipe?: typeof toastRecipe;
-}
+  extends Omit<ToasterPrimitiveProps, "toaster" | "children">,
+    ToasterRootSharedProps {}
 
 export interface ToasterProps extends ToasterRootProps {
   toaster?: CreateToasterReturn<JSX.Element>;
 }
 
-export interface ToastItemRootProps extends ToastRootProps {
-  itemRecipe?: typeof toastItemRecipe;
-}
+export interface ToastItemRootProps
+  extends ToastRootProps,
+    ToastItemRootSharedProps {}
 
 export interface ToastItemProps extends ToastItemRootProps {
   classNames?: ToastItemClassNames;
@@ -108,8 +111,8 @@ const TOAST_ICONS = {
 } as const;
 
 function ToastItemRoot(props: ToastItemRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "itemRecipe", "class"]);
-  const slots = () => (local.itemRecipe ?? toastItemRecipe)();
+  const [local, rest] = splitProps(props, ["children", "recipe", "class"]);
+  const slots = () => (local.recipe ?? toastItemRecipe)();
 
   return (
     <ToastItemContext value={{ slots: slots() }}>

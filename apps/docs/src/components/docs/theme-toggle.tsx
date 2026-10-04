@@ -138,7 +138,7 @@ export default function ThemeToggle() {
         aria-expanded={open}
         aria-haspopup="menu"
         aria-label={`Theme: ${preference}. Resolved ${resolved}.`}
-        className="docs-press inline-flex size-8 items-center justify-center rounded-xl border border-border/70 bg-card/50 text-foreground shadow-xs backdrop-blur hover:bg-accent/60"
+        className="docs-press inline-flex size-8 items-center justify-center rounded-lg border border-border/70 bg-background text-foreground hover:bg-accent/60"
         onClick={() => setOpen((value) => !value)}
         type="button"
       >
@@ -147,7 +147,7 @@ export default function ThemeToggle() {
 
       {open ? (
         <div
-          className="docs-material-heavy docs-sheet-panel docs-sheet-panel-end absolute inset-e-0 z-50 mt-2 min-w-36 overflow-hidden rounded-xl border border-white/20 p-1 text-popover-foreground shadow-md dark:border-white/10"
+          className="docs-sheet-panel docs-sheet-panel-end absolute inset-e-0 z-50 mt-2 min-w-36 overflow-hidden rounded-xl border border-border/70 bg-background p-1 text-popover-foreground shadow-md"
           id={menuId}
           role="menu"
         >
