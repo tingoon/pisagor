@@ -5,8 +5,12 @@ import {
   type NumberInputScrubberProps,
 } from "@ark-ui/react/number-input";
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
-import { formControlGroupShellRecipe } from "@pisagor/recipes/form-control";
-import { numberInputRecipe } from "@pisagor/recipes/number-input";
+import type { NumberInputProps as NumberInputSharedProps } from "@pisagor/props";
+import {
+  formControlGroupShellRecipe,
+  numberInputRecipe,
+} from "@pisagor/recipes";
+
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { Button } from "../button";
@@ -24,7 +28,9 @@ export type NumberInputRootProps = Omit<
 > &
   Pick<InputProps, "size" | "variant">;
 
-export interface NumberInputProps extends NumberInputRootProps {
+export interface NumberInputProps
+  extends NumberInputRootProps,
+    NumberInputSharedProps {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -35,12 +41,6 @@ export interface NumberInputProps extends NumberInputRootProps {
   placeholder?: string;
   /** Called with the numeric value when the input changes. */
   onValueChange?: (value: number) => void;
-  /**
-   * Style recipe. Defaults to `numberInputRecipe` from `@pisagor/recipes/number-input`.
-   *
-   * @defaultValue numberInputRecipe
-   */
-  recipe?: typeof numberInputRecipe;
 }
 
 export interface NumberInputControlProps

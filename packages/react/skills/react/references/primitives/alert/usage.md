@@ -31,8 +31,6 @@
 import { Alert } from "@pisagor/react";
 ```
 
-Style with `@pisagor/recipes/alert` — no app-level `tv()`.
-
 ## Anatomy
 
 ```tsx

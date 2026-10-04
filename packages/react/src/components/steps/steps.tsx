@@ -13,7 +13,11 @@ import type {
 } from "@ark-ui/react/steps";
 import { Steps as StepsPrimitive } from "@ark-ui/react/steps";
 import { CheckIcon } from "@phosphor-icons/react";
-import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes/steps";
+import type {
+  StepsItemProps as StepsItemSharedProps,
+  StepsProps as StepsRootSharedProps,
+} from "@pisagor/props";
+import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import {
   StepsContext,
@@ -23,23 +27,13 @@ import {
 } from "./steps.context";
 
 // #region Types
-export interface StepsRootProps extends StepsPrimitiveRootProps {
-  /**
-   * Style recipe. Defaults to `stepsRecipe` from `@pisagor/recipes/steps`.
-   *
-   * @defaultValue stepsRecipe
-   */
-  recipe?: typeof stepsRecipe;
-}
+export interface StepsRootProps
+  extends StepsPrimitiveRootProps,
+    StepsRootSharedProps {}
 
-export interface StepsItemProps extends StepsPrimitiveItemProps {
-  /**
-   * Style recipe. Defaults to `stepsItemRecipe` from `@pisagor/recipes/steps`.
-   *
-   * @defaultValue stepsItemRecipe
-   */
-  itemRecipe?: typeof stepsItemRecipe;
-}
+export interface StepsItemProps
+  extends StepsPrimitiveItemProps,
+    StepsItemSharedProps {}
 
 export type StepsTitleProps = ComponentProps<typeof ark.span>;
 
@@ -74,11 +68,11 @@ export function StepsList({ className, ...rest }: StepsListProps) {
 
 export function StepsItem({
   children,
-  itemRecipe = stepsItemRecipe,
+  recipe = stepsItemRecipe,
   className,
   ...rest
 }: StepsItemProps) {
-  const slots = itemRecipe();
+  const slots = recipe();
 
   return (
     <StepsItemContext value={{ slots }}>

@@ -1,4 +1,5 @@
-import type { SidebarRecipe } from "@pisagor/recipes/sidebar";
+import type { SidebarRecipe } from "@pisagor/recipes";
+
 import { createContext } from "../../utils";
 
 interface SidebarContextProps {
@@ -19,8 +20,6 @@ interface SidebarContextProps {
  * @returns Sidebar open state, mobile state, and layout helpers.
  */
 export const { SidebarContext, useSidebar } =
-  createContext<SidebarContextProps>()({
-    name: "Sidebar",
-  });
+  createContext("Sidebar")<SidebarContextProps>();
 
 export type { SidebarContextProps };

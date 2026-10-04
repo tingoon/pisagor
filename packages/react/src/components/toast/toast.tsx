@@ -20,11 +20,15 @@ import {
   WarningIcon,
   XIcon,
 } from "@phosphor-icons/react";
+import type {
+  ToastProps as ToasterRootSharedProps,
+  ToastItemProps as ToastItemSharedProps,
+} from "@pisagor/props";
 import {
   type ToastItemRecipeSlot,
   toastItemRecipe,
   toastRecipe,
-} from "@pisagor/recipes/toast";
+} from "@pisagor/recipes";
 import type { ComponentProps, CSSProperties, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { Button } from "../button";
@@ -35,28 +39,17 @@ import { ToastItemContext, useToastItem } from "./toast.context";
 type ToastItemClassNames = VariantClassNames<ToastItemRecipeSlot>;
 
 export interface ToasterRootProps
-  extends Omit<ToasterPrimitiveProps, "toaster" | "children"> {
-  /**
-   * Style recipe. Defaults to `toastRecipe` from `@pisagor/recipes/toast`.
-   *
-   * @defaultValue toastRecipe
-   */
-  recipe?: typeof toastRecipe;
-}
+  extends Omit<ToasterPrimitiveProps, "toaster" | "children">,
+    ToasterRootSharedProps {}
 
 export interface ToasterProps extends ToasterRootProps {
   /** Toaster instance */
   toaster?: CreateToasterReturn<ReactNode>;
 }
 
-export interface ToastItemRootProps extends ToastRootProps {
-  /**
-   * Style recipe. Defaults to `toastItemRecipe` from `@pisagor/recipes/toast`.
-   *
-   * @defaultValue toastItemRecipe
-   */
-  itemRecipe?: typeof toastItemRecipe;
-}
+export interface ToastItemRootProps
+  extends ToastRootProps,
+    ToastItemSharedProps {}
 
 export interface ToastItemProps extends ToastItemRootProps {
   /** Slot class names */
@@ -122,11 +115,11 @@ const TOAST_ICONS = {
 
 function ToastItemRoot({
   children,
-  itemRecipe = toastItemRecipe,
+  recipe = toastItemRecipe,
   className,
   ...rest
 }: ToastItemRootProps) {
-  const slots = itemRecipe();
+  const slots = recipe();
 
   return (
     <ToastItemContext value={{ slots }}>

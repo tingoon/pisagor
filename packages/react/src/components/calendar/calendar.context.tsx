@@ -1,4 +1,5 @@
-import type { CalendarRecipe } from "@pisagor/recipes/calendar";
+import type { CalendarRecipe } from "@pisagor/recipes";
+
 import { createContext } from "../../utils";
 
 interface CalendarContextValue {
@@ -6,6 +7,4 @@ interface CalendarContextValue {
 }
 
 export const { CalendarContext: CalendarSlotsContext, useCalendar } =
-  createContext<CalendarContextValue>()({
-    name: "Calendar",
-  });
+  createContext("Calendar")<CalendarContextValue>();

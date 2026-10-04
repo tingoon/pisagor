@@ -1,8 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  type ToolbarRecipeSlot,
-  toolbarRecipe,
-} from "@pisagor/recipes/toolbar";
+import type { ToolbarProps as ToolbarRootSharedProps } from "@pisagor/props";
+import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { ToolbarContext, useToolbar } from "./toolbar.context";
@@ -18,14 +16,8 @@ type ToolbarHeadingProps = ComponentProps<typeof ark.div>;
 
 type ToolbarClassNames = VariantClassNames<ToolbarRecipeSlot>;
 
-type ToolbarRootProps = Omit<ComponentProps<typeof ark.div>, "title"> & {
-  /**
-   * Style recipe. Defaults to `toolbarRecipe` from `@pisagor/recipes/toolbar`.
-   *
-   * @defaultValue toolbarRecipe
-   */
-  recipe?: typeof toolbarRecipe;
-};
+type ToolbarRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
+  ToolbarRootSharedProps;
 
 export interface ToolbarProps extends Omit<ToolbarRootProps, "children"> {
   /** Trailing action buttons or controls. */

@@ -14,8 +14,9 @@ import type {
 } from "@ark-ui/react/tour";
 import { Tour as TourPrimitive, useTour } from "@ark-ui/react/tour";
 import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react";
-import { dialogRecipe } from "@pisagor/recipes/dialog";
-import { tourRecipe } from "@pisagor/recipes/tour";
+import type { TourProps as TourSharedProps } from "@pisagor/props";
+import { dialogRecipe, tourRecipe } from "@pisagor/recipes";
+
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, MouseEvent } from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -34,7 +35,7 @@ export type TourStepType = TourStepDetails;
 
 export type TourRootProps = Omit<TourPrimitiveRootProps, "tour">;
 
-export interface TourProps extends TourRootProps {
+export interface TourProps extends TourRootProps, TourSharedProps {
   /** Whether to enable arrow key navigation between steps */
   keyboardNavigation?: boolean;
   /**
@@ -47,12 +48,6 @@ export interface TourProps extends TourRootProps {
   onStatusChange?: (details: { status: string }) => void;
   /** Called when the current step changes */
   onStepChange?: (details: { stepId: string | null }) => void;
-  /**
-   * Style recipe. Defaults to `tourRecipe` from `@pisagor/recipes/tour`.
-   *
-   * @defaultValue tourRecipe
-   */
-  recipe?: typeof tourRecipe;
 }
 
 export type TourTriggerProps = ComponentProps<typeof ark.button>;

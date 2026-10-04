@@ -3,7 +3,8 @@ import {
   Swap as SwapPrimitive,
   type SwapRootProps,
 } from "@ark-ui/react/swap";
-import { type SwapVariantProps, swapRecipe } from "@pisagor/recipes/swap";
+import type { SwapProps as SwapSharedProps } from "@pisagor/props";
+import { swapRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 
 // #region Types
@@ -11,17 +12,11 @@ export type SwapOnIndicatorProps = SwapIndicatorProps;
 
 export type SwapOffIndicatorProps = SwapIndicatorProps;
 
-export interface SwapProps extends SwapRootProps, SwapVariantProps {
+export interface SwapProps extends SwapRootProps, SwapSharedProps {
   /** Content shown when swapped off. */
   off?: ReactNode;
   /** Content shown when swapped on. */
   on?: ReactNode;
-  /**
-   * Style recipe. Defaults to `swapRecipe` from `@pisagor/recipes/swap`.
-   *
-   * @defaultValue swapRecipe
-   */
-  recipe?: typeof swapRecipe;
   /** Extra props forwarded to the off indicator element */
   offIndicatorProps?: Omit<
     SwapOffIndicatorProps,

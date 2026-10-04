@@ -1,4 +1,5 @@
-import type { SegmentGroupRecipe } from "@pisagor/recipes/segment-group";
+import type { SegmentGroupRecipe } from "@pisagor/recipes";
+
 import { createContext } from "../../utils";
 
 interface SegmentGroupContextValue {
@@ -6,6 +7,4 @@ interface SegmentGroupContextValue {
 }
 
 export const { SegmentGroupContext, useSegmentGroup } =
-  createContext<SegmentGroupContextValue>()({
-    name: "SegmentGroup",
-  });
+  createContext("SegmentGroup")<SegmentGroupContextValue>();

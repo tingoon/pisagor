@@ -1,8 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  type SurfaceVariantProps,
-  surfaceRecipe,
-} from "@pisagor/recipes/surface";
+import type { SurfaceProps as SurfaceSharedProps } from "@pisagor/props";
+import { surfaceRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import {
@@ -21,14 +19,7 @@ const AUTO_VARIANTS = [
 
 export interface SurfaceProps
   extends ComponentProps<typeof ark.div>,
-    SurfaceVariantProps {
-  /**
-   * Style recipe. Defaults to `surfaceRecipe` from `@pisagor/recipes/surface`.
-   *
-   * @defaultValue surfaceRecipe
-   */
-  recipe?: typeof surfaceRecipe;
-}
+    SurfaceSharedProps {}
 // #endregion
 
 // #region Component

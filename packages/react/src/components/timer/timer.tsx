@@ -8,7 +8,11 @@ import type {
   TimerSeparatorProps,
 } from "@ark-ui/react/timer";
 import { Timer as TimerPrimitive, useTimerContext } from "@ark-ui/react/timer";
-import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes/timer";
+import type {
+  TimerItemGroupProps as TimerItemGroupSharedProps,
+  TimerProps as TimerRootSharedProps,
+} from "@pisagor/props";
+import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { Fragment } from "react";
 import {
@@ -21,34 +25,26 @@ import {
 // #region Types
 type TimerUnit = "hours" | "minutes" | "seconds";
 
-export interface TimerItemGroupProps extends ComponentProps<typeof ark.div> {
+export interface TimerItemGroupProps
+  extends ComponentProps<typeof ark.div>,
+    TimerItemGroupSharedProps {
   /**
    * The orientation of the timer item group.
    *
    * @defaultValue "vertical"
    */
   orientation?: "horizontal" | "vertical";
-  /**
-   * Style recipe. Defaults to `timerItemGroupRecipe` from `@pisagor/recipes/timer`.
-   *
-   * @defaultValue timerItemGroupRecipe
-   */
-  itemGroupRecipe?: typeof timerItemGroupRecipe;
 }
 
 export interface TimerActionProps
   extends Omit<TimerActionTriggerProps, "action"> {}
 
-export interface TimerRootProps extends TimerPrimitiveRootProps {
+export interface TimerRootProps
+  extends TimerPrimitiveRootProps,
+    TimerRootSharedProps {
   units?: TimerUnit[];
   /** Auto-render Timer.Control with play and reset buttons */
   isControlsVisible?: boolean;
-  /**
-   * Style recipe. Defaults to `timerRecipe` from `@pisagor/recipes/timer`.
-   *
-   * @defaultValue timerRecipe
-   */
-  recipe?: typeof timerRecipe;
 }
 
 export type TimerItemLabelProps = ComponentProps<typeof ark.div>;
@@ -104,11 +100,11 @@ export function TimerArea({ className, ...rest }: TimerAreaProps) {
 export function TimerItemGroup({
   orientation = "vertical",
   children,
-  itemGroupRecipe = timerItemGroupRecipe,
+  recipe = timerItemGroupRecipe,
   className,
   ...rest
 }: TimerItemGroupProps) {
-  const slots = itemGroupRecipe();
+  const slots = recipe();
 
   return (
     <TimerItemGroupContext value={{ slots }}>

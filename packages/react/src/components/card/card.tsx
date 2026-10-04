@@ -1,17 +1,13 @@
 import { ark } from "@ark-ui/react/factory";
-import { type CardVariantProps, cardRecipe } from "@pisagor/recipes/card";
+import type { CardProps as CardRootSharedProps } from "@pisagor/props";
+import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { CardContext, useCard } from "./card.context";
 
 // #region Types
-export interface CardRootProps extends ComponentProps<typeof ark.div> {
-  /**
-   * Style recipe. Defaults to `cardRecipe` from `@pisagor/recipes/card`.
-   *
-   * @defaultValue cardRecipe
-   */
-  recipe?: typeof cardRecipe;
-}
+export interface CardRootProps
+  extends ComponentProps<typeof ark.div>,
+    CardRootSharedProps {}
 
 export type CardMediaProps = ComponentProps<typeof ark.div> & CardVariantProps;
 

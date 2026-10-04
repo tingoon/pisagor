@@ -8,10 +8,12 @@ import type {
 } from "@ark-ui/react/splitter";
 import { Splitter as SplitterPrimitive } from "@ark-ui/react/splitter";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
-import {
-  resizableEdgeHandleRecipe,
-  resizableRecipe,
-} from "@pisagor/recipes/resizable";
+import type {
+  ResizableEdgeHandleProps as ResizableEdgeHandleSharedProps,
+  ResizableProps as ResizableRootProviderSharedProps,
+  ResizableProps as ResizableRootSharedProps,
+} from "@pisagor/props";
+import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import { type ComponentProps, useCallback, useRef } from "react";
 import { ResizableSlotsContext, useResizable } from "./resizable.context";
 
@@ -33,7 +35,9 @@ export {
 export type ResizableHandlePosition = "bottom" | "center" | "top";
 export type ResizableEdgePlacement = "end" | "start";
 
-export interface ResizableEdgeHandleProps extends ComponentProps<"button"> {
+export interface ResizableEdgeHandleProps
+  extends ComponentProps<"button">,
+    ResizableEdgeHandleSharedProps {
   /** Which edge of the resizable region the handle sits on. */
   placement: ResizableEdgePlacement;
   /** Vertical placement of the visible grip. @defaultValue `"center"` */
@@ -52,12 +56,6 @@ export interface ResizableEdgeHandleProps extends ComponentProps<"button"> {
   onResizeStart?: () => void;
   /** Called when the width settles after drag or double-click reset. */
   onWidthChange: (width: number) => void;
-  /**
-   * Style recipe. Defaults to `resizableEdgeHandleRecipe` from `@pisagor/recipes/resizable`.
-   *
-   * @defaultValue resizableEdgeHandleRecipe
-   */
-  recipe?: typeof resizableEdgeHandleRecipe;
 }
 
 export interface ResizableResizeTriggerProps
@@ -70,14 +68,9 @@ export interface ResizableResizeTriggerProps
   withHandle?: boolean;
 }
 
-export interface ResizableRootProps extends SplitterRootProps {
-  /**
-   * Style recipe. Defaults to `resizableRecipe` from `@pisagor/recipes/resizable`.
-   *
-   * @defaultValue resizableRecipe
-   */
-  recipe?: typeof resizableRecipe;
-}
+export interface ResizableRootProps
+  extends SplitterRootProps,
+    ResizableRootSharedProps {}
 
 export type ResizablePanelProps = SplitterPanelProps;
 
@@ -86,14 +79,9 @@ export type ResizableResizeTriggerIndicatorProps =
 
 export type ResizableContextProps = SplitterContextProps;
 
-export interface ResizableRootProviderProps extends SplitterRootProviderProps {
-  /**
-   * Style recipe. Defaults to `resizableRecipe` from `@pisagor/recipes/resizable`.
-   *
-   * @defaultValue resizableRecipe
-   */
-  recipe?: typeof resizableRecipe;
-}
+export interface ResizableRootProviderProps
+  extends SplitterRootProviderProps,
+    ResizableRootProviderSharedProps {}
 // #endregion
 
 // #region Parts

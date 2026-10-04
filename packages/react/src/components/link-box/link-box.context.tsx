@@ -1,4 +1,5 @@
-import type { LinkBoxRecipe } from "@pisagor/recipes/link-box";
+import type { LinkBoxRecipe } from "@pisagor/recipes";
+
 import { createContext } from "../../utils";
 
 interface LinkBoxContextValue {
@@ -6,6 +7,4 @@ interface LinkBoxContextValue {
 }
 
 export const { LinkBoxContext, useLinkBox } =
-  createContext<LinkBoxContextValue>()({
-    name: "LinkBox",
-  });
+  createContext("LinkBox")<LinkBoxContextValue>();

@@ -9,8 +9,8 @@ import type {
   EditableSubmitTriggerProps,
 } from "@ark-ui/react/editable";
 import { Editable as EditablePrimitive } from "@ark-ui/react/editable";
-import { buttonRecipe } from "@pisagor/recipes/button";
-import { editableRecipe } from "@pisagor/recipes/editable";
+import type { EditableProps as EditableSharedProps } from "@pisagor/props";
+import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 
 import { cn } from "@pisagor/utils";
 import type { ButtonProps } from "../button";
@@ -25,7 +25,7 @@ export type EditableRootProps = Omit<
   "onValueChange" | "value" | "defaultValue"
 >;
 
-export interface EditableProps extends EditableRootProps {
+export interface EditableProps extends EditableRootProps, EditableSharedProps {
   /** The orientation of the editable */
   orientation?: "horizontal" | "vertical";
   /**
@@ -49,12 +49,6 @@ export interface EditableProps extends EditableRootProps {
    * Receives the string value directly, not Ark UI event details.
    */
   onValueChange?: (value: string) => void;
-  /**
-   * Style recipe. Defaults to `editableRecipe` from `@pisagor/recipes/editable`.
-   *
-   * @defaultValue editableRecipe
-   */
-  recipe?: typeof editableRecipe;
 }
 
 export interface EditableInputProps

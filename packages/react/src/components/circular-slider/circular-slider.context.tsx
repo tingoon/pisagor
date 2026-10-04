@@ -1,4 +1,5 @@
-import type { CircularSliderRecipe } from "@pisagor/recipes/circular-slider";
+import type { CircularSliderRecipe } from "@pisagor/recipes";
+
 import { createContext } from "../../utils";
 
 export interface CircularSliderContextValue {
@@ -11,6 +12,4 @@ export interface CircularSliderContextValue {
 }
 
 export const { CircularSliderContext, useCircularSlider } =
-  createContext<CircularSliderContextValue>()({
-    name: "CircularSlider",
-  });
+  createContext("CircularSlider")<CircularSliderContextValue>();

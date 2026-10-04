@@ -1,11 +1,13 @@
 import { ark } from "@ark-ui/react/factory";
+import type {
+  StatProps as StatRootSharedProps,
+  StatTrendProps as StatTrendSharedProps,
+} from "@pisagor/props";
 import {
   type StatRecipeSlot,
-  type StatTrendVariantProps,
-  type StatVariantProps,
   statRecipe,
   statTrendRecipe,
-} from "@pisagor/recipes/stat";
+} from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { StatContext, useStat } from "./stat.context";
@@ -17,27 +19,11 @@ type StatValueProps = ComponentProps<typeof ark.div>;
 
 type StatDescriptionProps = ComponentProps<typeof ark.p>;
 
-type StatTrendProps = ComponentProps<typeof ark.div> &
-  StatTrendVariantProps & {
-    /**
-     * Style recipe. Defaults to `statTrendRecipe` from `@pisagor/recipes/stat`.
-     *
-     * @defaultValue statTrendRecipe
-     */
-    recipe?: typeof statTrendRecipe;
-  };
+type StatTrendProps = ComponentProps<typeof ark.div> & StatTrendSharedProps;
 
 type StatClassNames = VariantClassNames<StatRecipeSlot>;
 
-type StatRootProps = ComponentProps<typeof ark.div> &
-  StatVariantProps & {
-    /**
-     * Style recipe. Defaults to `statRecipe` from `@pisagor/recipes/stat`.
-     *
-     * @defaultValue statRecipe
-     */
-    recipe?: typeof statRecipe;
-  };
+type StatRootProps = ComponentProps<typeof ark.div> & StatRootSharedProps;
 
 export interface StatProps extends Omit<StatRootProps, "children"> {
   /** Supporting copy below the value. */

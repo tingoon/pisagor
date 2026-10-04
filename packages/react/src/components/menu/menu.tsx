@@ -1,22 +1,17 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  type MenuItemVariantProps,
-  menuItemRecipe,
-  menuRecipe,
-} from "@pisagor/recipes/menu";
+import type {
+  MenuItemProps as MenuItemSharedProps,
+  MenuProps as MenuRootSharedProps,
+} from "@pisagor/props";
+import { menuItemRecipe, menuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { MenuContext, useMenu } from "./menu.context";
 
 // #region Types
-export interface MenuRootProps extends ComponentProps<typeof ark.nav> {
-  /**
-   * Style recipe. Defaults to `menuRecipe` from `@pisagor/recipes/menu`.
-   *
-   * @defaultValue menuRecipe
-   */
-  recipe?: typeof menuRecipe;
-}
+export interface MenuRootProps
+  extends ComponentProps<typeof ark.nav>,
+    MenuRootSharedProps {}
 
 export type MenuPartProps = ComponentProps<typeof ark.div>;
 
@@ -24,14 +19,7 @@ export type MenuListProps = ComponentProps<typeof ark.ul>;
 
 export interface MenuItemProps
   extends ComponentProps<typeof ark.button>,
-    MenuItemVariantProps {
-  /**
-   * Style recipe. Defaults to `menuItemRecipe` from `@pisagor/recipes/menu`.
-   *
-   * @defaultValue menuItemRecipe
-   */
-  recipe?: typeof menuItemRecipe;
-}
+    MenuItemSharedProps {}
 
 export interface MenuLinkProps extends ComponentProps<typeof ark.a> {
   /** Whether the link represents the current page */

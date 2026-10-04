@@ -1,4 +1,5 @@
-import type { ButtonGroupRecipe } from "@pisagor/recipes/button-group";
+import type { ButtonGroupRecipe } from "@pisagor/recipes";
+
 import { createContext } from "../../utils";
 
 interface ButtonGroupContextValue {
@@ -6,6 +7,4 @@ interface ButtonGroupContextValue {
 }
 
 export const { ButtonGroupContext, useButtonGroup } =
-  createContext<ButtonGroupContextValue>()({
-    name: "ButtonGroup",
-  });
+  createContext("ButtonGroup")<ButtonGroupContextValue>();

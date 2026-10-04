@@ -5,19 +5,15 @@ import type {
   QrCodeRootProps as QrCodePrimitiveRootProps,
 } from "@ark-ui/react/qr-code";
 import { QrCode as QrCodePrimitive } from "@ark-ui/react/qr-code";
-import { qrCodeRecipe } from "@pisagor/recipes/qr-code";
+import type { QrCodeProps as QrCodeRootSharedProps } from "@pisagor/props";
+import { qrCodeRecipe } from "@pisagor/recipes";
 
 import { QrCodeContext, useQrCode } from "./qr-code.context";
 
 // #region Types
-export interface QrCodeRootProps extends QrCodePrimitiveRootProps {
-  /**
-   * Style recipe. Defaults to `qrCodeRecipe` from `@pisagor/recipes/qr-code`.
-   *
-   * @defaultValue qrCodeRecipe
-   */
-  recipe?: typeof qrCodeRecipe;
-}
+export interface QrCodeRootProps
+  extends QrCodePrimitiveRootProps,
+    QrCodeRootSharedProps {}
 
 export type QrCodeDownloadProps = QrCodeDownloadTriggerProps;
 // #endregion

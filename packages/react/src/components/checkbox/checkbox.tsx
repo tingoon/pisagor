@@ -5,8 +5,15 @@ import {
   type CheckboxRootProps,
 } from "@ark-ui/react/checkbox";
 import { CheckIcon, MinusIcon } from "@phosphor-icons/react";
-import { checkboxGroupRecipe, checkboxRecipe } from "@pisagor/recipes/checkbox";
-import { formControlToggleRecipe } from "@pisagor/recipes/form-control";
+import type {
+  CheckboxGroupProps as CheckboxGroupSharedProps,
+  CheckboxProps as CheckboxSharedProps,
+} from "@pisagor/props";
+import {
+  checkboxGroupRecipe,
+  checkboxRecipe,
+  formControlToggleRecipe,
+} from "@pisagor/recipes";
 
 import { cn } from "@pisagor/utils";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -15,26 +22,15 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 type FormControlVariant = "primary" | "secondary";
 
 export interface CheckboxGroupProps
-  extends Omit<CheckboxPrimitiveGroupProps, "onValueChange"> {
+  extends Omit<CheckboxPrimitiveGroupProps, "onValueChange">,
+    CheckboxGroupSharedProps {
   onValueChange?: (value: string[]) => void;
-  /**
-   * Style recipe. Defaults to `checkboxGroupRecipe` from `@pisagor/recipes/checkbox`.
-   *
-   * @defaultValue checkboxGroupRecipe
-   */
-  recipe?: typeof checkboxGroupRecipe;
 }
 
-export interface CheckboxProps extends CheckboxRootProps {
+export interface CheckboxProps extends CheckboxRootProps, CheckboxSharedProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   onValueChange?: (value: boolean) => void;
-  /**
-   * Style recipe. Defaults to `checkboxRecipe` from `@pisagor/recipes/checkbox`.
-   *
-   * @defaultValue checkboxRecipe
-   */
-  recipe?: typeof checkboxRecipe;
 }
 
 type CheckboxIndicatorPartProps = CheckboxIndicatorProps & {

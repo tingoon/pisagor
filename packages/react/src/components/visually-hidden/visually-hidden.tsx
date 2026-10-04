@@ -1,16 +1,12 @@
 import { ark } from "@ark-ui/react/factory";
-import { visuallyHiddenRecipe } from "@pisagor/recipes/visually-hidden";
+import type { VisuallyHiddenProps as VisuallyHiddenSharedProps } from "@pisagor/props";
+import { visuallyHiddenRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 
 // #region Types
-export interface VisuallyHiddenProps extends ComponentProps<typeof ark.span> {
-  /**
-   * Style recipe. Defaults to `visuallyHiddenRecipe` from `@pisagor/recipes/visually-hidden`.
-   *
-   * @defaultValue visuallyHiddenRecipe
-   */
-  recipe?: typeof visuallyHiddenRecipe;
-}
+export interface VisuallyHiddenProps
+  extends ComponentProps<typeof ark.span>,
+    VisuallyHiddenSharedProps {}
 // #endregion
 
 // #region Component

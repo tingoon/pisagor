@@ -1,4 +1,5 @@
-import type { RichTextEditorRecipe } from "@pisagor/recipes/rich-text-editor";
+import type { RichTextEditorRecipe } from "@pisagor/recipes";
+
 import type { Editor } from "@tiptap/react";
 import { createContext } from "../utils";
 
@@ -10,9 +11,7 @@ interface RichTextEditorContextValue {
 export const {
   RichTextEditorContext,
   useRichTextEditor: useRichTextEditorState,
-} = createContext<RichTextEditorContextValue>()({
-  name: "RichTextEditor",
-});
+} = createContext("RichTextEditor")<RichTextEditorContextValue>();
 
 /**
  * Access the TipTap editor instance from the nearest RichTextEditor root.

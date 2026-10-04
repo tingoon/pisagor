@@ -1,9 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  type AlertRecipeSlot,
-  type AlertVariantProps,
-  alertRecipe,
-} from "@pisagor/recipes/alert";
+import type { AlertProps as AlertRootSharedProps } from "@pisagor/props";
+import { type AlertRecipeSlot, alertRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { AlertContext, useAlert } from "./alert.context";
@@ -18,14 +15,7 @@ type AlertActionProps = ComponentProps<typeof ark.div>;
 type AlertClassNames = VariantClassNames<AlertRecipeSlot>;
 
 type AlertRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
-  AlertVariantProps & {
-    /**
-     * Style recipe. Defaults to `alertRecipe` from `@pisagor/recipes/alert`.
-     *
-     * @defaultValue alertRecipe
-     */
-    recipe?: typeof alertRecipe;
-  };
+  AlertRootSharedProps;
 
 export interface AlertProps extends Omit<AlertRootProps, "children"> {
   /** Trailing action area. */

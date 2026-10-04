@@ -19,5 +19,3 @@
 ```tsx
 import { Tooltip } from "@pisagor/react";
 ```
-
-Style with `@pisagor/recipes/tooltip` — no app-level `tv()`.

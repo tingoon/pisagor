@@ -1,32 +1,20 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  type TimelineVariantProps,
-  timelineItemRecipe,
-  timelineRecipe,
-} from "@pisagor/recipes/timeline";
+import type {
+  TimelineItemProps as TimelineItemSharedProps,
+  TimelineProps as TimelineRootSharedProps,
+} from "@pisagor/props";
+import { timelineItemRecipe, timelineRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
 import { TimelineItemContext, useTimelineItem } from "./timeline.context";
 
 // #region Types
 export interface TimelineRootProps
   extends ComponentProps<typeof ark.ol>,
-    TimelineVariantProps {
-  /**
-   * Style recipe. Defaults to `timelineRecipe` from `@pisagor/recipes/timeline`.
-   *
-   * @defaultValue timelineRecipe
-   */
-  recipe?: typeof timelineRecipe;
-}
+    TimelineRootSharedProps {}
 
-export interface TimelineItemProps extends ComponentProps<typeof ark.li> {
-  /**
-   * Style recipe. Defaults to `timelineItemRecipe` from `@pisagor/recipes/timeline`.
-   *
-   * @defaultValue timelineItemRecipe
-   */
-  itemRecipe?: typeof timelineItemRecipe;
-}
+export interface TimelineItemProps
+  extends ComponentProps<typeof ark.li>,
+    TimelineItemSharedProps {}
 
 export type TimelineIndicatorProps = ComponentProps<typeof ark.div>;
 
@@ -71,11 +59,11 @@ export function TimelineRoot({
 
 export function TimelineItem({
   children,
-  itemRecipe = timelineItemRecipe,
+  recipe = timelineItemRecipe,
   className,
   ...rest
 }: TimelineItemProps) {
-  const slots = itemRecipe();
+  const slots = recipe();
 
   return (
     <TimelineItemContext value={{ slots }}>

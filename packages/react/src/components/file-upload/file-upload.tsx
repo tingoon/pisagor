@@ -15,11 +15,16 @@ import {
   useFileUploadContext,
 } from "@ark-ui/react/file-upload";
 import { UploadIcon, XIcon } from "@phosphor-icons/react";
+import type {
+  FileUploadItemProps as FileUploadItemSharedProps,
+  FileUploadProps as FileUploadRootSharedProps,
+} from "@pisagor/props";
 import {
   fileUploadItemRecipe,
   fileUploadRecipe,
-} from "@pisagor/recipes/file-upload";
-import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
+  formControlZoneRecipe,
+} from "@pisagor/recipes";
+
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { Button } from "../button";
@@ -34,25 +39,16 @@ import {
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 
-export interface FileUploadItemRootProps extends FileUploadItemProps {
-  /**
-   * Style recipe. Defaults to `fileUploadItemRecipe` from `@pisagor/recipes/file-upload`.
-   *
-   * @defaultValue fileUploadItemRecipe
-   */
-  itemRecipe?: typeof fileUploadItemRecipe;
-}
+export interface FileUploadItemRootProps
+  extends FileUploadItemProps,
+    FileUploadItemSharedProps {}
 
 export type FileUploadListProps = Omit<FileUploadItemRootProps, "file">;
 
-export interface FileUploadRootProps extends FileUploadPrimitiveRootProps {
+export interface FileUploadRootProps
+  extends FileUploadPrimitiveRootProps,
+    FileUploadRootSharedProps {
   onValueChange?: (value: File[]) => void;
-  /**
-   * Style recipe. Defaults to `fileUploadRecipe` from `@pisagor/recipes/file-upload`.
-   *
-   * @defaultValue fileUploadRecipe
-   */
-  recipe?: typeof fileUploadRecipe;
 }
 
 export interface FileUploadDropzoneProps
@@ -212,12 +208,12 @@ export function FileUploadItemGroup(props: FileUploadItemGroupProps) {
 
 export function FileUploadList({
   className,
-  itemRecipe = fileUploadItemRecipe,
+  recipe = fileUploadItemRecipe,
   ...rest
 }: FileUploadListProps) {
   const fileUpload = useFileUploadContext();
   const { slots } = useFileUpload();
-  const itemSlots = itemRecipe();
+  const itemSlots = recipe();
 
   const files = fileUpload.acceptedFiles;
 
@@ -239,8 +235,8 @@ export function FileUploadList({
             {...rest}
             className={itemSlots.listItem({ className })}
             file={file}
-            itemRecipe={itemRecipe}
             key={key}
+            recipe={recipe}
           >
             <FileUploadItemPreview
               {...(isImage ? { type: "image/*" } : { type: ".*" })}
@@ -277,11 +273,11 @@ export function FileUploadList({
 
 export function FileUploadItem({
   children,
-  itemRecipe = fileUploadItemRecipe,
+  recipe = fileUploadItemRecipe,
   className,
   ...rest
 }: FileUploadItemRootProps) {
-  const slots = itemRecipe();
+  const slots = recipe();
 
   return (
     <FileUploadItemContext value={{ slots }}>

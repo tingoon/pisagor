@@ -15,7 +15,8 @@ import type {
 import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/react/floating-panel";
 import { Portal } from "@ark-ui/react/portal";
 import { ArrowsOutIcon, CornersInIcon, MinusIcon } from "@phosphor-icons/react";
-import { floatingPanelRecipe } from "@pisagor/recipes/floating-panel";
+import type { FloatingPanelProps as FloatingPanelRootSharedProps } from "@pisagor/props";
+import { floatingPanelRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { Button, type ButtonProps } from "../button";
 import { ScrollArea } from "../scroll-area";
@@ -26,14 +27,8 @@ import {
 
 // #region Types
 export interface FloatingPanelRootProps
-  extends FloatingPanelPrimitiveRootProps {
-  /**
-   * Style recipe. Defaults to `floatingPanelRecipe` from `@pisagor/recipes/floating-panel`.
-   *
-   * @defaultValue floatingPanelRecipe
-   */
-  recipe?: typeof floatingPanelRecipe;
-}
+  extends FloatingPanelPrimitiveRootProps,
+    FloatingPanelRootSharedProps {}
 
 export interface FloatingPanelContentProps
   extends FloatingPanelPrimitiveContentProps {

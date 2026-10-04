@@ -5,14 +5,16 @@ import type {
   MarqueeRootProps as MarqueePrimitiveRootProps,
 } from "@ark-ui/react/marquee";
 import { Marquee as MarqueePrimitive } from "@ark-ui/react/marquee";
-import { marqueeRecipe } from "@pisagor/recipes/marquee";
+import type { MarqueeProps as MarqueeRootSharedProps } from "@pisagor/props";
+import { marqueeRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { Children, isValidElement } from "react";
 import { MarqueeContext, useMarquee } from "./marquee.context";
 
 // #region Types
 export interface MarqueeRootProps
-  extends Omit<MarqueePrimitiveRootProps, "side"> {
+  extends Omit<MarqueePrimitiveRootProps, "side">,
+    MarqueeRootSharedProps {
   /**
    *
    * @defaultValue "horizontal"
@@ -24,12 +26,6 @@ export interface MarqueeRootProps
    * @defaultValue true
    */
   showEdges?: boolean;
-  /**
-   * Style recipe. Defaults to `marqueeRecipe` from `@pisagor/recipes/marquee`.
-   *
-   * @defaultValue marqueeRecipe
-   */
-  recipe?: typeof marqueeRecipe;
 }
 
 export interface MarqueeProps extends Omit<MarqueeRootProps, "children"> {

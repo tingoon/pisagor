@@ -1,5 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
-import { frameRecipe } from "@pisagor/recipes/frame";
+import type { FrameProps as FrameRootSharedProps } from "@pisagor/props";
+import { frameRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { SurfaceContext } from "../surface/surface.context";
 import { FrameContext, useFrame } from "./frame.context";
@@ -7,14 +8,9 @@ import { FrameContext, useFrame } from "./frame.context";
 // #region Types
 export type FrameHeaderProps = ComponentProps<typeof ark.header>;
 
-export interface FrameRootProps extends ComponentProps<typeof ark.div> {
-  /**
-   * Style recipe. Defaults to `frameRecipe` from `@pisagor/recipes/frame`.
-   *
-   * @defaultValue frameRecipe
-   */
-  recipe?: typeof frameRecipe;
-}
+export interface FrameRootProps
+  extends ComponentProps<typeof ark.div>,
+    FrameRootSharedProps {}
 
 export type FramePanelProps = ComponentProps<typeof ark.div>;
 

@@ -23,7 +23,8 @@ bun add @pisagor/react-form
 | Components | `import { Button } from "@pisagor/react"` |
 | Heavy (subpath only) | `import { DataGrid } from "@pisagor/react/data-grid"` |
 | Form fields | `import { TextField } from "@pisagor/react-form"` |
-| Recipe | `import { buttonRecipe } from "@pisagor/recipes/button"` |
+| Recipe | `import { buttonRecipe } from "@pisagor/recipes"` |
+| Props | `import type { ButtonProps } from "@pisagor/props"` |
 | `cn()` | `import { cn } from "@pisagor/utils"` |
 
 Prop for classes: **`className`**.

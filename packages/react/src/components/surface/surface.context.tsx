@@ -1,4 +1,5 @@
-import type { SurfaceVariantProps } from "@pisagor/recipes/surface";
+import type { SurfaceVariantProps } from "@pisagor/recipes";
+
 import { createContext } from "../../utils";
 
 export type SurfaceVariant = NonNullable<SurfaceVariantProps["variant"]>;
@@ -8,8 +9,6 @@ export interface SurfaceContextValue {
   variant: SurfaceVariant;
 }
 
-export const { SurfaceContext, useSurface } =
-  createContext<SurfaceContextValue>()({
-    name: "Surface",
-    strict: false,
-  });
+export const { SurfaceContext, useSurface } = createContext(
+  "Surface",
+)<SurfaceContextValue>({ strict: false });

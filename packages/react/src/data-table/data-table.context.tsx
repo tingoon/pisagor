@@ -1,4 +1,5 @@
-import type { DataTableRecipe } from "@pisagor/recipes/data-table";
+import type { DataTableRecipe } from "@pisagor/recipes";
+
 import type {
   Cell,
   Column,
@@ -23,22 +24,16 @@ interface DataTableRowContextValue<TData extends RowData> {
   row: Row<DataTableFeatures, TData>;
 }
 
-export const { DataTableContext, useDataTable } = createContext<
-  DataTableContextValue<RowData>
->()({
-  name: "DataTable",
-});
+export const { DataTableContext, useDataTable } =
+  createContext("DataTable")<DataTableContextValue<RowData>>();
 
 export const { DataTableHeaderGroupContext, useDataTableHeaderGroup } =
-  createContext<DataTableHeaderGroupContextValue<RowData>>()({
-    name: "DataTableHeaderGroup",
-  });
+  createContext("DataTableHeaderGroup")<
+    DataTableHeaderGroupContextValue<RowData>
+  >();
 
-export const { DataTableRowContext, useDataTableRow } = createContext<
-  DataTableRowContextValue<RowData>
->()({
-  name: "DataTableRow",
-});
+export const { DataTableRowContext, useDataTableRow } =
+  createContext("DataTableRow")<DataTableRowContextValue<RowData>>();
 
 export function useDataTableContext<TData extends RowData>() {
   return useDataTable() as DataTableContextValue<TData>;

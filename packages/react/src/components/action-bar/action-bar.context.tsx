@@ -1,4 +1,5 @@
-import type { ActionBarRecipe } from "@pisagor/recipes/action-bar";
+import type { ActionBarRecipe } from "@pisagor/recipes";
+
 import { createContext } from "../../utils";
 
 interface ActionBarPositioning {
@@ -37,6 +38,4 @@ export interface ActionBarContextValue {
  * Returns the nearest action bar context.
  */
 export const { ActionBarContext, useActionBar } =
-  createContext<ActionBarContextValue>()({
-    name: "ActionBar",
-  });
+  createContext("ActionBar")<ActionBarContextValue>();

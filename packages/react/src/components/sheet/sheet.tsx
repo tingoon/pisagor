@@ -7,7 +7,8 @@ import type {
 import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog";
 import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
-import { type SheetVariantProps, sheetRecipe } from "@pisagor/recipes/sheet";
+import type { SheetProps as SheetSharedProps } from "@pisagor/props";
+import { type SheetVariantProps, sheetRecipe } from "@pisagor/recipes";
 
 import { Button } from "../button";
 import type {
@@ -36,14 +37,7 @@ export interface SheetContentProps
   showCloseButton?: boolean;
 }
 
-export interface SheetProps extends DialogRootProps {
-  /**
-   * Style recipe. Defaults to `sheetRecipe` from `@pisagor/recipes/sheet`.
-   *
-   * @defaultValue sheetRecipe
-   */
-  recipe?: typeof sheetRecipe;
-}
+export interface SheetProps extends DialogRootProps, SheetSharedProps {}
 
 export type SheetTriggerProps = DialogTriggerProps;
 

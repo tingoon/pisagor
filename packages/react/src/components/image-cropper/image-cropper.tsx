@@ -6,13 +6,15 @@ import type {
   ImageCropperSelectionProps as ImageCropperPrimitiveSelectionProps,
 } from "@ark-ui/react/image-cropper";
 import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/react/image-cropper";
-import { imageCropperRecipe } from "@pisagor/recipes/image-cropper";
+import type { ImageCropperProps as ImageCropperRootSharedProps } from "@pisagor/props";
+import { imageCropperRecipe } from "@pisagor/recipes";
 
 import { ImageCropperContext, useImageCropper } from "./image-cropper.context";
 
 // #region Types
 export interface ImageCropperRootProps
-  extends Omit<ImageCropperPrimitiveRootProps, "src" | "cropShape"> {
+  extends Omit<ImageCropperPrimitiveRootProps, "src" | "cropShape">,
+    ImageCropperRootSharedProps {
   /**
    * Image URL for the auto-rendered cropper layout.
    *
@@ -24,12 +26,6 @@ export interface ImageCropperRootProps
   alt?: string;
   /** Shape of the crop selection area. */
   cropShape?: "rectangle" | "circle";
-  /**
-   * Style recipe. Defaults to `imageCropperRecipe` from `@pisagor/recipes/image-cropper`.
-   *
-   * @defaultValue imageCropperRecipe
-   */
-  recipe?: typeof imageCropperRecipe;
 }
 
 export interface ImageCropperSelectionProps

@@ -1,16 +1,19 @@
 import { ark } from "@ark-ui/react/factory";
+import type {
+  InputGroupAddonProps as InputGroupAddonSharedProps,
+  InputGroupButtonProps as InputGroupButtonSharedProps,
+  InputGroupTextProps as InputGroupTextSharedProps,
+} from "@pisagor/props";
 import {
   type FormControlGroupShellVariantProps,
   formControlGroupShellRecipe,
-} from "@pisagor/recipes/form-control";
-import {
-  type InputGroupAddonVariantProps,
   type InputGroupButtonVariantProps,
   inputGroupAddonRecipe,
   inputGroupButtonRecipe,
   inputGroupRootRecipe,
   inputGroupTextRecipe,
-} from "@pisagor/recipes/input-group";
+} from "@pisagor/recipes";
+
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, MouseEvent } from "react";
 import { Button, type ButtonProps } from "../button";
@@ -25,34 +28,16 @@ export interface InputGroupProps
 
 export interface InputGroupAddonProps
   extends ComponentProps<typeof ark.div>,
-    InputGroupAddonVariantProps {
-  /**
-   * Style recipe. Defaults to `inputGroupAddonRecipe` from `@pisagor/recipes/input-group`.
-   *
-   * @defaultValue inputGroupAddonRecipe
-   */
-  recipe?: typeof inputGroupAddonRecipe;
-}
+    InputGroupAddonSharedProps {}
 
 export interface InputGroupButtonProps
   extends Omit<ButtonProps, "size" | "recipe">,
-    InputGroupButtonVariantProps {
-  /**
-   * Style recipe. Defaults to `inputGroupButtonRecipe` from `@pisagor/recipes/input-group`.
-   *
-   * @defaultValue inputGroupButtonRecipe
-   */
-  recipe?: typeof inputGroupButtonRecipe;
-}
+    InputGroupButtonVariantProps,
+    InputGroupButtonSharedProps {}
 
-export interface InputGroupTextProps extends ComponentProps<typeof ark.span> {
-  /**
-   * Style recipe. Defaults to `inputGroupTextRecipe` from `@pisagor/recipes/input-group`.
-   *
-   * @defaultValue inputGroupTextRecipe
-   */
-  recipe?: typeof inputGroupTextRecipe;
-}
+export interface InputGroupTextProps
+  extends ComponentProps<typeof ark.span>,
+    InputGroupTextSharedProps {}
 // #endregion
 
 // #region Parts

@@ -2,11 +2,13 @@ import {
   Field as FieldPrimitive,
   type FieldTextareaProps,
 } from "@ark-ui/react/field";
-import { formControlShellRecipe } from "@pisagor/recipes/form-control";
+import type { TextareaProps as TextareaSharedProps } from "@pisagor/props";
 import {
+  formControlShellRecipe,
   type TextareaRecipeSlot,
   textareaRecipe,
-} from "@pisagor/recipes/textarea";
+} from "@pisagor/recipes";
+
 import { cn } from "@pisagor/utils";
 import type { ChangeEventHandler, ReactNode, RefAttributes } from "react";
 import { useClearableInput } from "../../hooks";
@@ -32,7 +34,7 @@ type TextareaRootProps = FieldTextareaProps &
     variant?: FormControlVariant;
   };
 
-export interface TextareaProps extends TextareaRootProps {
+export interface TextareaProps extends TextareaRootProps, TextareaSharedProps {
   /**
    * Whether to show a clear button when the textarea has a value.
    *
@@ -41,12 +43,6 @@ export interface TextareaProps extends TextareaRootProps {
   clearable?: boolean;
   /** Called with the string value when the textarea changes. */
   onValueChange?: (value: string) => void;
-  /**
-   * Style recipe. Defaults to `textareaRecipe` from `@pisagor/recipes/textarea`.
-   *
-   * @defaultValue textareaRecipe
-   */
-  recipe?: typeof textareaRecipe;
   /** Slot class names */
   classNames?: TextareaClassNames;
 }

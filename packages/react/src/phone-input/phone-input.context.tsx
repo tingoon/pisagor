@@ -2,7 +2,8 @@ import type {
   PhoneInputRecipe,
   PhoneInputRecipeSlot,
   PhoneInputVariantProps,
-} from "@pisagor/recipes/phone-input";
+} from "@pisagor/recipes";
+
 import type { ComboboxContentProps } from "../components/combobox";
 import type { InputProps } from "../components/input";
 import type { VariantClassNames } from "../internal/types";
@@ -28,6 +29,4 @@ interface PhoneInputContextValue {
 }
 
 export const { PhoneInputContext, usePhoneInput } =
-  createContext<PhoneInputContextValue>()({
-    name: "PhoneInput",
-  });
+  createContext("PhoneInput")<PhoneInputContextValue>();

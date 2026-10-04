@@ -1,7 +1,8 @@
 import type {
   BottomNavigationItemRecipe,
   BottomNavigationRecipe,
-} from "@pisagor/recipes/bottom-navigation";
+} from "@pisagor/recipes";
+
 import { createContext } from "../../utils";
 
 interface BottomNavigationContextValue {
@@ -13,11 +14,7 @@ interface BottomNavigationItemContextValue {
 }
 
 export const { BottomNavigationContext, useBottomNavigation } =
-  createContext<BottomNavigationContextValue>()({
-    name: "BottomNavigation",
-  });
+  createContext("BottomNavigation")<BottomNavigationContextValue>();
 
 export const { BottomNavigationItemContext, useBottomNavigationItem } =
-  createContext<BottomNavigationItemContextValue>()({
-    name: "BottomNavigationItem",
-  });
+  createContext("BottomNavigationItem")<BottomNavigationItemContextValue>();

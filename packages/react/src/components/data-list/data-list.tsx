@@ -1,9 +1,13 @@
 import { ark } from "@ark-ui/react/factory";
+import type {
+  DataListItemProps as DataListItemSharedProps,
+  DataListProps as DataListRootSharedProps,
+} from "@pisagor/props";
 import {
   type DataListItemRecipeSlot,
   dataListItemRecipe,
   dataListRecipe,
-} from "@pisagor/recipes/data-list";
+} from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { DataListItemContext, useDataListItem } from "./data-list.context";
@@ -16,33 +20,25 @@ interface DataListPresetItem {
   value: ReactNode;
 }
 
-export interface DataListRootProps extends ComponentProps<typeof ark.dl> {
+export interface DataListRootProps
+  extends ComponentProps<typeof ark.dl>,
+    DataListRootSharedProps {
   /**
    * The orientation of the data list.
    *
    * @defaultValue "horizontal"
    */
   orientation?: "horizontal" | "vertical";
-  /**
-   * Style recipe. Defaults to `dataListRecipe` from `@pisagor/recipes/data-list`.
-   *
-   * @defaultValue dataListRecipe
-   */
-  recipe?: typeof dataListRecipe;
 }
 
 export interface DataListProps extends Omit<DataListRootProps, "children"> {
   items?: DataListPresetItem[];
 }
 
-export interface DataListItemProps extends ComponentProps<typeof ark.div> {
+export interface DataListItemProps
+  extends ComponentProps<typeof ark.div>,
+    DataListItemSharedProps {
   value?: ReactNode;
-  /**
-   * Style recipe. Defaults to `dataListItemRecipe` from `@pisagor/recipes/data-list`.
-   *
-   * @defaultValue dataListItemRecipe
-   */
-  itemRecipe?: typeof dataListItemRecipe;
   /** Slot class names */
   classNames?: DataListClassNames;
 }
@@ -102,12 +98,12 @@ function DataListItemValue({ className, ...rest }: DataListItemValueProps) {
 export function DataListItem({
   value,
   children,
-  itemRecipe = dataListItemRecipe,
+  recipe = dataListItemRecipe,
   className,
   classNames,
   ...rest
 }: DataListItemProps) {
-  const slots = itemRecipe();
+  const slots = recipe();
 
   return (
     <DataListItemContext value={{ slots }}>

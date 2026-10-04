@@ -1,4 +1,5 @@
-import type { ComboboxRecipe } from "@pisagor/recipes/combobox";
+import type { ComboboxRecipe } from "@pisagor/recipes";
+
 import { createContext } from "../../utils";
 
 export interface ComboboxRootContextValue {
@@ -6,8 +7,6 @@ export interface ComboboxRootContextValue {
   slots: ComboboxRecipe;
 }
 
-export const { ComboboxRootContext, useComboboxRoot } =
-  createContext<ComboboxRootContextValue>()({
-    name: "ComboboxRoot",
-    strict: false,
-  });
+export const { ComboboxRootContext, useComboboxRoot } = createContext(
+  "ComboboxRoot",
+)<ComboboxRootContextValue>({ strict: false });

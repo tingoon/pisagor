@@ -14,10 +14,12 @@ import {
   useTagsInputContext,
 } from "@ark-ui/react/tags-input";
 import { XIcon } from "@phosphor-icons/react";
-import {
-  tagsInputItemRecipe,
-  tagsInputRecipe,
-} from "@pisagor/recipes/tags-input";
+import type {
+  TagsInputItemProps as TagsInputItemSharedProps,
+  TagsInputProps as TagsInputRootProviderSharedProps,
+  TagsInputProps as TagsInputSharedProps,
+} from "@pisagor/props";
+import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { InputGroup, type InputGroupProps } from "../input-group";
 import {
@@ -34,7 +36,9 @@ export type TagsInputRootProps = Omit<
 > &
   Pick<InputGroupProps, "size" | "variant">;
 
-export interface TagsInputProps extends TagsInputRootProps {
+export interface TagsInputProps
+  extends TagsInputRootProps,
+    TagsInputSharedProps {
   /**
    * Whether to show the clear button.
    *
@@ -44,12 +48,6 @@ export interface TagsInputProps extends TagsInputRootProps {
   /** Placeholder for the shorthand input. Defaults to empty. */
   placeholder?: string;
   onValueChange?: (value: string[]) => void;
-  /**
-   * Style recipe. Defaults to `tagsInputRecipe` from `@pisagor/recipes/tags-input`.
-   *
-   * @defaultValue tagsInputRecipe
-   */
-  recipe?: typeof tagsInputRecipe;
 }
 
 export interface TagsInputControlProps
@@ -65,36 +63,26 @@ export interface TagsInputControlProps
 
 export interface TagsInputItemProps
   extends TagsInputPrimitiveItemProps,
-    Pick<InputGroupProps, "size"> {
+    Pick<InputGroupProps, "size">,
+    TagsInputItemSharedProps {
   /**
    * Whether to show the clear trigger.
    *
    * @defaultValue false
    */
   showDelete?: boolean;
-  /**
-   * Style recipe. Defaults to `tagsInputItemRecipe` from `@pisagor/recipes/tags-input`.
-   *
-   * @defaultValue tagsInputItemRecipe
-   */
-  itemRecipe?: typeof tagsInputItemRecipe;
 }
 
 export interface TagsInputRootProviderProps
   extends TagsInputPrimitiveRootProviderProps,
-    Pick<InputGroupProps, "size"> {
+    Pick<InputGroupProps, "size">,
+    TagsInputRootProviderSharedProps {
   /**
    * Whether to show the clear button.
    *
    * @defaultValue false
    */
   clearable?: boolean;
-  /**
-   * Style recipe. Defaults to `tagsInputRecipe` from `@pisagor/recipes/tags-input`.
-   *
-   * @defaultValue tagsInputRecipe
-   */
-  recipe?: typeof tagsInputRecipe;
 }
 
 export type TagsInputItemDeleteTriggerProps = ComponentProps<
@@ -181,11 +169,11 @@ export function TagsInputControl({
 export function TagsInputItem({
   showDelete = true,
   children,
-  itemRecipe = tagsInputItemRecipe,
+  recipe = tagsInputItemRecipe,
   className,
   ...rest
 }: TagsInputItemProps) {
-  const slots = itemRecipe();
+  const slots = recipe();
 
   return (
     <TagsInputItemContext value={{ slots }}>

@@ -5,10 +5,11 @@ import {
   type ProgressValueTextProps,
   useProgressContext,
 } from "@ark-ui/react/progress";
+import type { CircularProgressProps as CircularProgressRootSharedProps } from "@pisagor/props";
 import {
   type CircularProgressRecipeSlot,
   circularProgressRecipe,
-} from "@pisagor/recipes/circular-progress";
+} from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import {
@@ -23,14 +24,8 @@ type CircularProgressValueProps = ProgressValueTextProps;
 
 type CircularProgressClassNames = VariantClassNames<CircularProgressRecipeSlot>;
 
-type CircularProgressRootProps = ProgressRootProps & {
-  /**
-   * Style recipe. Defaults to `circularProgressRecipe` from `@pisagor/recipes/circular-progress`.
-   *
-   * @defaultValue circularProgressRecipe
-   */
-  recipe?: typeof circularProgressRecipe;
-};
+type CircularProgressRootProps = ProgressRootProps &
+  CircularProgressRootSharedProps;
 
 export interface CircularProgressProps
   extends Omit<CircularProgressRootProps, "children"> {

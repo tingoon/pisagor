@@ -1,5 +1,6 @@
 import { useUncontrolled } from "@mantine/hooks";
-import type { AppShellRecipe } from "@pisagor/recipes/app-shell";
+import type { AppShellRecipe } from "@pisagor/recipes";
+
 import { type RefObject, useCallback } from "react";
 import { createContext } from "../../utils";
 
@@ -107,9 +108,7 @@ export const ZERO_REGION_VARS: Record<AppShellRegionVar, string> = {
 };
 
 export const { AppShellContext, useAppShell } =
-  createContext<AppShellContextValue>()({
-    name: "AppShell",
-  });
+  createContext("AppShell")<AppShellContextValue>();
 
 export function useSideState({
   defaultOpen = false,

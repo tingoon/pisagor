@@ -5,10 +5,14 @@ import {
   type TabsRootProps,
   type TabTriggerProps,
 } from "@ark-ui/react/tabs";
+import type {
+  BottomNavigationItemProps as BottomNavigationItemSharedProps,
+  BottomNavigationProps as BottomNavigationRootSharedProps,
+} from "@pisagor/props";
 import {
   bottomNavigationItemRecipe,
   bottomNavigationRecipe,
-} from "@pisagor/recipes/bottom-navigation";
+} from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import {
   BottomNavigationContext,
@@ -18,27 +22,17 @@ import {
 } from "./bottom-navigation.context";
 
 // #region Types
-export interface BottomNavigationRootProps extends TabsRootProps {
-  /**
-   * Style recipe. Defaults to `bottomNavigationRecipe` from `@pisagor/recipes/bottom-navigation`.
-   *
-   * @defaultValue bottomNavigationRecipe
-   */
-  recipe?: typeof bottomNavigationRecipe;
-}
+export interface BottomNavigationRootProps
+  extends TabsRootProps,
+    BottomNavigationRootSharedProps {}
 
 export type BottomNavigationProps = BottomNavigationRootProps;
 
 export type BottomNavigationListProps = TabListProps;
 
-export interface BottomNavigationItemProps extends TabTriggerProps {
-  /**
-   * Style recipe. Defaults to `bottomNavigationItemRecipe` from `@pisagor/recipes/bottom-navigation`.
-   *
-   * @defaultValue bottomNavigationItemRecipe
-   */
-  itemRecipe?: typeof bottomNavigationItemRecipe;
-}
+export interface BottomNavigationItemProps
+  extends TabTriggerProps,
+    BottomNavigationItemSharedProps {}
 
 export type BottomNavigationItemIconProps = ComponentProps<typeof ark.span>;
 
@@ -71,11 +65,11 @@ export function BottomNavigationList({
 
 export function BottomNavigationItem({
   children,
-  itemRecipe = bottomNavigationItemRecipe,
+  recipe = bottomNavigationItemRecipe,
   className,
   ...rest
 }: BottomNavigationItemProps) {
-  const slots = itemRecipe();
+  const slots = recipe();
 
   return (
     <BottomNavigationItemContext value={{ slots }}>

@@ -1,40 +1,31 @@
 import { ark } from "@ark-ui/react/factory";
-import { skeletonRecipe } from "@pisagor/recipes/skeleton";
+import type {
+  SkeletonProps as SkeletonCircleSharedProps,
+  SkeletonProps as SkeletonRootSharedProps,
+  SkeletonProps as SkeletonTextSharedProps,
+} from "@pisagor/props";
+import { skeletonRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 
 // #region Types
-export interface SkeletonTextProps extends ComponentProps<typeof ark.div> {
+export interface SkeletonTextProps
+  extends ComponentProps<typeof ark.div>,
+    SkeletonTextSharedProps {
   /**
    * The number of lines of the skeleton text.
    *
    * @defaultValue 1
    */
   lines?: number;
-  /**
-   * Style recipe. Defaults to `skeletonRecipe` from `@pisagor/recipes/skeleton`.
-   *
-   * @defaultValue skeletonRecipe
-   */
-  recipe?: typeof skeletonRecipe;
 }
 
-export interface SkeletonRootProps extends ComponentProps<typeof ark.div> {
-  /**
-   * Style recipe. Defaults to `skeletonRecipe` from `@pisagor/recipes/skeleton`.
-   *
-   * @defaultValue skeletonRecipe
-   */
-  recipe?: typeof skeletonRecipe;
-}
+export interface SkeletonRootProps
+  extends ComponentProps<typeof ark.div>,
+    SkeletonRootSharedProps {}
 
-export interface SkeletonCircleProps extends ComponentProps<typeof ark.div> {
-  /**
-   * Style recipe. Defaults to `skeletonRecipe` from `@pisagor/recipes/skeleton`.
-   *
-   * @defaultValue skeletonRecipe
-   */
-  recipe?: typeof skeletonRecipe;
-}
+export interface SkeletonCircleProps
+  extends ComponentProps<typeof ark.div>,
+    SkeletonCircleSharedProps {}
 // #endregion
 
 // #region Parts

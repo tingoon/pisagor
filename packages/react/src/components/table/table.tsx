@@ -1,10 +1,13 @@
 import { ark } from "@ark-ui/react/factory";
-import { tableRecipe } from "@pisagor/recipes/table";
+import type { TableProps as TableSharedProps } from "@pisagor/props";
+import { tableRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { TableContext, useTable } from "./table.context";
 
 // #region Types
-export interface TableProps extends ComponentProps<typeof ark.table> {
+export interface TableProps
+  extends ComponentProps<typeof ark.table>,
+    TableSharedProps {
   /**
    * The variant of the table.
    *
@@ -17,12 +20,6 @@ export interface TableProps extends ComponentProps<typeof ark.table> {
    * @defaultValue true
    */
   isHoverable?: boolean;
-  /**
-   * Style recipe. Defaults to `tableRecipe` from `@pisagor/recipes/table`.
-   *
-   * @defaultValue tableRecipe
-   */
-  recipe?: typeof tableRecipe;
 }
 
 export type TableHeaderProps = ComponentProps<typeof ark.thead>;

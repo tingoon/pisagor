@@ -6,19 +6,15 @@ import type {
   HoverCardTriggerProps,
 } from "@ark-ui/react/hover-card";
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/react/hover-card";
-import { hoverCardRecipe } from "@pisagor/recipes/hover-card";
+import type { HoverCardProps as HoverCardRootSharedProps } from "@pisagor/props";
+import { hoverCardRecipe } from "@pisagor/recipes";
 
 import { HoverCardContext, useHoverCard } from "./hover-card.context";
 
 // #region Types
-export interface HoverCardRootProps extends HoverCardPrimitiveRootProps {
-  /**
-   * Style recipe. Defaults to `hoverCardRecipe` from `@pisagor/recipes/hover-card`.
-   *
-   * @defaultValue hoverCardRecipe
-   */
-  recipe?: typeof hoverCardRecipe;
-}
+export interface HoverCardRootProps
+  extends HoverCardPrimitiveRootProps,
+    HoverCardRootSharedProps {}
 
 export type HoverCardProps = HoverCardRootProps;
 

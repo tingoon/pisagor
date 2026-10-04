@@ -1,18 +1,14 @@
 import { ark } from "@ark-ui/react/factory";
-import { avatarGroupRecipe } from "@pisagor/recipes/avatar";
+import type { AvatarGroupProps as AvatarGroupRootSharedProps } from "@pisagor/props";
+import { avatarGroupRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { Avatar } from "./avatar";
 import { AvatarGroupContext, useAvatarGroup } from "./avatar-group.context";
 
 // #region Types
-export interface AvatarGroupRootProps extends ComponentProps<typeof ark.div> {
-  /**
-   * Style recipe. Defaults to `avatarGroupRecipe` from `@pisagor/recipes/avatar`.
-   *
-   * @defaultValue avatarGroupRecipe
-   */
-  recipe?: typeof avatarGroupRecipe;
-}
+export interface AvatarGroupRootProps
+  extends ComponentProps<typeof ark.div>,
+    AvatarGroupRootSharedProps {}
 
 export interface AvatarGroupProps
   extends Omit<AvatarGroupRootProps, "children"> {

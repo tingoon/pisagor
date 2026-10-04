@@ -5,7 +5,8 @@ import type {
   SegmentGroupRootProps as SegmentGroupPrimitiveRootProps,
 } from "@ark-ui/react/segment-group";
 import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/react/segment-group";
-import { segmentGroupRecipe } from "@pisagor/recipes/segment-group";
+import type { SegmentGroupProps as SegmentGroupRootSharedProps } from "@pisagor/props";
+import { segmentGroupRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { SegmentGroupContext, useSegmentGroup } from "./segment-group.context";
 
@@ -19,7 +20,8 @@ interface SegmentGroupPresetItem {
 }
 
 export interface SegmentGroupRootProps
-  extends Omit<SegmentGroupPrimitiveRootProps, "onValueChange"> {
+  extends Omit<SegmentGroupPrimitiveRootProps, "onValueChange">,
+    SegmentGroupRootSharedProps {
   /**
    * The visual variant of the segment group.
    *
@@ -27,12 +29,6 @@ export interface SegmentGroupRootProps
    */
   variant?: SegmentGroupVariant;
   onValueChange?: (value: string | null) => void;
-  /**
-   * Style recipe. Defaults to `segmentGroupRecipe` from `@pisagor/recipes/segment-group`.
-   *
-   * @defaultValue segmentGroupRecipe
-   */
-  recipe?: typeof segmentGroupRecipe;
 }
 
 export interface SegmentGroupProps

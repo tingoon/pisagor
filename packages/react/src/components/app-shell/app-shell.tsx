@@ -1,5 +1,6 @@
 import { useHotkey } from "@ark-ui/react";
-import { appShellRecipe } from "@pisagor/recipes/app-shell";
+import type { AppShellProps as AppShellRootSharedProps } from "@pisagor/props";
+import { appShellRecipe } from "@pisagor/recipes";
 import {
   type ComponentProps,
   useCallback,
@@ -66,14 +67,9 @@ function buildGridRows(hasBanner: boolean, hasNavigation: boolean) {
   ].join(" ");
 }
 
-export interface AppShellRootProps extends ComponentProps<"div"> {
-  /**
-   * Style recipe. Defaults to `appShellRecipe` from `@pisagor/recipes/app-shell`.
-   *
-   * @defaultValue appShellRecipe
-   */
-  recipe?: typeof appShellRecipe;
-}
+export interface AppShellRootProps
+  extends ComponentProps<"div">,
+    AppShellRootSharedProps {}
 
 function useShellGridStyle(childSlots: AppShellSlots) {
   const hasBanner = Boolean(childSlots.banner);

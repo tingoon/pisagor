@@ -29,11 +29,15 @@ import {
   CaretLeftIcon,
   CaretRightIcon,
 } from "@phosphor-icons/react";
+import type {
+  CalendarProps as CalendarSharedProps,
+  CalendarTableCellProps as CalendarTableCellSharedProps,
+} from "@pisagor/props";
 import {
   calendarRecipe,
   calendarTableCellRecipe,
-} from "@pisagor/recipes/calendar";
-import { formControlShellRecipe } from "@pisagor/recipes/form-control";
+  formControlShellRecipe,
+} from "@pisagor/recipes";
 
 import { cn } from "@pisagor/utils";
 import { Button, type ButtonProps } from "../button";
@@ -77,14 +81,9 @@ export type CalendarTableRowProps = DatePickerTableRowProps;
 
 export type CalendarTableHeaderProps = DatePickerTableHeaderProps;
 
-export interface CalendarTableCellProps extends DatePickerTableCellProps {
-  /**
-   * Style recipe. Defaults to `calendarTableCellRecipe` from `@pisagor/recipes/calendar`.
-   *
-   * @defaultValue calendarTableCellRecipe
-   */
-  recipe?: typeof calendarTableCellRecipe;
-}
+export interface CalendarTableCellProps
+  extends DatePickerTableCellProps,
+    CalendarTableCellSharedProps {}
 
 export interface CalendarWeekDaysProps extends CalendarTableHeadProps {
   /**
@@ -108,15 +107,9 @@ export interface CalendarTableNextMonthProps extends CalendarTableBodyProps {
 
 export type CalendarRootProps = DatePickerRootProps;
 
-export interface CalendarProps extends CalendarRootProps {
+export interface CalendarProps extends CalendarRootProps, CalendarSharedProps {
   /** Visual shell variant for embedded selects. Defaults to `primary`. */
   variant?: FormControlVariant;
-  /**
-   * Style recipe. Defaults to `calendarRecipe` from `@pisagor/recipes/calendar`.
-   *
-   * @defaultValue calendarRecipe
-   */
-  recipe?: typeof calendarRecipe;
 }
 // #endregion
 

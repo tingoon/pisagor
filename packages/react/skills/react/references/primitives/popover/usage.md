@@ -24,8 +24,6 @@
 import { Popover } from "@pisagor/react";
 ```
 
-Style with `@pisagor/recipes/popover` — no app-level `tv()`.
-
 ## Anatomy
 
 ```tsx

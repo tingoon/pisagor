@@ -1,5 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
-import { navigationMenuRecipe } from "@pisagor/recipes/navigation-menu";
+import type { NavigationMenuProps as NavigationMenuSharedProps } from "@pisagor/props";
+import { navigationMenuRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import {
   NavigationMenuContext,
@@ -7,14 +8,9 @@ import {
 } from "./navigation-menu.context";
 
 // #region Types
-export interface NavigationMenuProps extends ComponentProps<typeof ark.nav> {
-  /**
-   * Style recipe. Defaults to `navigationMenuRecipe` from `@pisagor/recipes/navigation-menu`.
-   *
-   * @defaultValue navigationMenuRecipe
-   */
-  recipe?: typeof navigationMenuRecipe;
-}
+export interface NavigationMenuProps
+  extends ComponentProps<typeof ark.nav>,
+    NavigationMenuSharedProps {}
 
 export type NavigationMenuPartProps = ComponentProps<typeof ark.ul>;
 

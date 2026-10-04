@@ -1,21 +1,18 @@
 import { ark } from "@ark-ui/react/factory";
-import { separatorRecipe } from "@pisagor/recipes/separator";
+import type { SeparatorProps as SeparatorSharedProps } from "@pisagor/props";
+import { separatorRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 
 // #region Types
-export interface SeparatorProps extends ComponentProps<typeof ark.div> {
+export interface SeparatorProps
+  extends ComponentProps<typeof ark.div>,
+    SeparatorSharedProps {
   /**
    * The orientation of the separator.
    *
    * @defaultValue "horizontal"
    */
   orientation?: "horizontal" | "vertical";
-  /**
-   * Style recipe. Defaults to `separatorRecipe` from `@pisagor/recipes/separator`.
-   *
-   * @defaultValue separatorRecipe
-   */
-  recipe?: typeof separatorRecipe;
 }
 // #endregion
 

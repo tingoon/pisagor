@@ -15,11 +15,11 @@ import type {
 } from "@ark-ui/react/listbox";
 import { Listbox as ListboxPrimitive } from "@ark-ui/react/listbox";
 import { CheckIcon } from "@phosphor-icons/react";
-import {
-  type ListboxItemVariantProps,
-  listboxItemRecipe,
-  listboxRecipe,
-} from "@pisagor/recipes/listbox";
+import type {
+  ListboxItemProps as ListboxItemSharedProps,
+  ListboxProps as ListboxRootSharedProps,
+} from "@pisagor/props";
+import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
 
 import { useMemo } from "react";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "../dropdown-menu";
@@ -42,13 +42,7 @@ export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   "onValueChange"
 > & {
   onValueChange?: (value: string | string[]) => void;
-  /**
-   * Style recipe. Defaults to `listboxRecipe` from `@pisagor/recipes/listbox`.
-   *
-   * @defaultValue listboxRecipe
-   */
-  recipe?: typeof listboxRecipe;
-};
+} & ListboxRootSharedProps;
 
 export interface ListboxProps
   extends Omit<ListboxRootProps, "children" | "collection"> {
@@ -58,14 +52,7 @@ export interface ListboxProps
 
 export interface ListboxItemProps
   extends ListboxPrimitiveItemProps,
-    ListboxItemVariantProps {
-  /**
-   * Style recipe. Defaults to `listboxItemRecipe` from `@pisagor/recipes/listbox`.
-   *
-   * @defaultValue listboxItemRecipe
-   */
-  itemRecipe?: typeof listboxItemRecipe;
-}
+    ListboxItemSharedProps {}
 
 export interface ListboxItemGroupProps extends ListboxPrimitiveItemGroupProps {
   /** The heading of the listbox item group. */
@@ -113,11 +100,11 @@ export function ListboxContent({ className, ...rest }: ListboxContentProps) {
 export function ListboxItem({
   variant = "default",
   children,
-  itemRecipe = listboxItemRecipe,
+  recipe = listboxItemRecipe,
   className,
   ...rest
 }: ListboxItemProps) {
-  const slots = useMemo(() => itemRecipe({ variant }), [variant, itemRecipe]);
+  const slots = useMemo(() => recipe({ variant }), [variant, recipe]);
 
   return (
     <ListboxItemContext value={{ slots }}>
