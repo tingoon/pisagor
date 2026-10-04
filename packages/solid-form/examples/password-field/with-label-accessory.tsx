@@ -4,7 +4,7 @@ import { PasswordField } from "@pisagor/solid-form";
 export function WithLabelAccessory() {
   return (
     <PasswordField
-      autoComplete="current-password"
+      autocomplete="current-password"
       id="password-field-accessory"
       label="Password"
       labelAccessory={

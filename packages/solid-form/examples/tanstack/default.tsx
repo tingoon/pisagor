@@ -31,7 +31,7 @@ export function Default() {
       <form.AppField name="email">
         {(field) => (
           <field.TextField
-            autoComplete="email"
+            autocomplete="email"
             id="tanstack-form-email"
             label="Email"
             placeholder="you@example.com"
@@ -43,7 +43,7 @@ export function Default() {
       <form.AppField name="password">
         {(field) => (
           <field.PasswordField
-            autoComplete="current-password"
+            autocomplete="current-password"
             id="tanstack-form-password"
             label="Password"
             placeholder="Enter your password"
