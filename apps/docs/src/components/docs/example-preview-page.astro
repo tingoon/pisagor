@@ -49,37 +49,37 @@ const title = `${frontmatter.title ?? id} · ${example}`;
   <body class="m-0 min-h-dvh bg-background p-0 text-foreground">
     <main class="min-h-dvh w-full">
       {framework === "react" ? (
-  <ReactExampleIsland
-    client:only="react"
-    componentId={id}
-    exportName={example}
-    kind={kind}
-  />
-) : null}
+        <ReactExampleIsland
+          client:only="react"
+          componentId={id}
+          exportName={example}
+          kind={kind}
+        />
+      ) : null}
       {framework === "vue" ? (
-  <VueExampleIsland
-    client:only="vue"
-    componentId={id}
-    exportName={example}
-    kind={kind}
-  />
-) : null}
+        <VueExampleIsland
+          client:only="vue"
+          componentId={id}
+          exportName={example}
+          kind={kind}
+        />
+      ) : null}
       {framework === "solid" ? (
-  <SolidExampleIsland
-    client:only="solid-js"
-    componentId={id}
-    exportName={example}
-    kind={kind}
-  />
-) : null}
+        <SolidExampleIsland
+          client:only="solid-js"
+          componentId={id}
+          exportName={example}
+          kind={kind}
+        />
+      ) : null}
       {framework === "svelte" ? (
-  <SvelteExampleIsland
-    client:only="svelte"
-    componentId={id}
-    exportName={example}
-    kind={kind}
-  />
-) : null}
+        <SvelteExampleIsland
+          client:only="svelte"
+          componentId={id}
+          exportName={example}
+          kind={kind}
+        />
+      ) : null}
       {framework === "astro" && AstroExample ? <AstroExample /> : null}
     </main>
   </body>

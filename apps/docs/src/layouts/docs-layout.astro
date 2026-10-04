@@ -55,15 +55,15 @@ const headings = Astro.props.headings ?? [];
           <slot />
         </main>
         {Astro.slots.has("toc-actions") ? (
-  <aside class="scrollbar-thin sticky top-12 hidden h-[calc(100dvh-3rem)] w-[170px] shrink-0 overflow-y-auto py-6 ps-3 [scrollbar-color:color-mix(in_oklab,var(--border)_80%,transparent)_transparent] xl:block">
-    <div class="mb-5">
-      <slot name="toc-actions" />
-    </div>
-    <TableOfContents bare headings={headings} />
-  </aside>
-) : (
-  <TableOfContents headings={headings} />
-)}
+          <aside class="scrollbar-thin sticky top-12 hidden h-[calc(100dvh-3rem)] w-[170px] shrink-0 overflow-y-auto py-6 ps-3 [scrollbar-color:color-mix(in_oklab,var(--border)_80%,transparent)_transparent] xl:block">
+            <div class="mb-5">
+              <slot name="toc-actions" />
+            </div>
+            <TableOfContents bare headings={headings} />
+          </aside>
+        ) : (
+          <TableOfContents headings={headings} />
+        )}
       </div>
     </div>
   </body>

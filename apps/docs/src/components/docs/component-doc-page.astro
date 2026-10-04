@@ -102,17 +102,17 @@ const tocTabLinkClass =
   title={docs.title}
 >
   {anatomySrc && (
-  <figure class="docs-anatomy" slot="hero">
-    <img
-      alt={`${docs.title} anatomy`}
-      class="docs-anatomy-image"
-      decoding="async"
-      height="450"
-      src={anatomySrc}
-      width="800"
-    />
-  </figure>
-)}
+    <figure class="docs-anatomy" slot="hero">
+      <img
+        alt={`${docs.title} anatomy`}
+        class="docs-anatomy-image"
+        decoding="async"
+        height="450"
+        src={anatomySrc}
+        width="800"
+      />
+    </figure>
+  )}
 
   <div
     aria-label="Documentation sections"
@@ -121,18 +121,18 @@ const tocTabLinkClass =
     slot="toc-actions"
   >
     {tabs.map((tab) => (
-  <a
-    aria-controls={`doc-panel-${tab.id}`}
-    aria-selected={tab.id === activeTab ? "true" : "false"}
-    class={tocTabLinkClass}
-    data-active={tab.id === activeTab ? "" : undefined}
-    href={tabHref(tab.id)}
-    id={`doc-tab-${tab.id}`}
-    role="tab"
-  >
-    {tab.label}
-  </a>
-))}
+      <a
+        aria-controls={`doc-panel-${tab.id}`}
+        aria-selected={tab.id === activeTab ? "true" : "false"}
+        class={tocTabLinkClass}
+        data-active={tab.id === activeTab ? "" : undefined}
+        href={tabHref(tab.id)}
+        id={`doc-tab-${tab.id}`}
+        role="tab"
+      >
+        {tab.label}
+      </a>
+    ))}
   </div>
 
   <div class="mb-8 xl:hidden" slot="nav">
@@ -142,127 +142,134 @@ const tocTabLinkClass =
       role="tablist"
     >
       {tabs.map((tab) => (
-  <a
-    aria-controls={`doc-panel-${tab.id}`}
-    aria-selected={tab.id === activeTab ? "true" : "false"}
-    class={tabLinkClass}
-    data-active={tab.id === activeTab ? "" : undefined}
-    href={tabHref(tab.id)}
-    role="tab"
-  >
-    {tab.label}
-  </a>
-))}
+        <a
+          aria-controls={`doc-panel-${tab.id}`}
+          aria-selected={tab.id === activeTab ? "true" : "false"}
+          class={tabLinkClass}
+          data-active={tab.id === activeTab ? "" : undefined}
+          href={tabHref(tab.id)}
+          role="tab"
+        >
+          {tab.label}
+        </a>
+      ))}
     </div>
   </div>
 
   {activeTab === "develop" && (
-  <ComponentHeader framework={framework} id={id} packageName={pkg} />
-)}
+    <ComponentHeader framework={framework} id={id} packageName={pkg} />
+  )}
 
   <div>
     {activeTab === "develop" ? (
-  <div aria-labelledby="doc-tab-develop" id="doc-panel-develop" role="tabpanel">
-    <div class:list={[proseClass, exampleDocs.length > 0 ? "mb-10" : ""]}>
-      {DevelopContent ? <DevelopContent /> : null}
-    </div>
+      <div
+        aria-labelledby="doc-tab-develop"
+        id="doc-panel-develop"
+        role="tabpanel"
+      >
+        <div class:list={[proseClass, exampleDocs.length > 0 ? "mb-10" : ""]}>
+          {DevelopContent ? <DevelopContent /> : null}
+        </div>
 
-    {exampleDocs.length > 0 ? (
-      <>
-        <h2 class="mb-3 font-semibold text-2xl tracking-tight" id="examples">
-          Examples
-        </h2>
-        {exampleDocs.map((ex) => {
-          const Example = getExampleExport(examples, ex.exportName);
-          const code = examples.sources[ex.exportName];
-          if (!code) return null;
-          return (
-            <>
-              <h3
-                class="mt-10 mb-3 font-semibold text-xl tracking-tight"
-                id={ex.id}
-              >
-                {ex.title}
-              </h3>
-              {ex.description ? (
-                <p class="mb-3 text-foreground/80 text-sm leading-7">
-                  {ex.description}
-                </p>
-              ) : null}
-              <ComponentPreview
-                code={code}
-                language={language}
-                packageName={pkg}
-                previewHref={withDocsBase(
-                  `/preview/${framework}/${kind}/${id}/${ex.exportName}`,
-                )}
-                title={ex.title}
-              >
-                {framework === "react" ? (
-                  <ReactExampleIsland
-                    client:only="react"
-                    componentId={id}
-                    exportName={ex.exportName}
-                    kind={kind}
-                  />
-                ) : null}
-                {framework === "vue" ? (
-                  <VueExampleIsland
-                    client:only="vue"
-                    componentId={id}
-                    exportName={ex.exportName}
-                    kind={kind}
-                  />
-                ) : null}
-                {framework === "solid" ? (
-                  <SolidExampleIsland
-                    client:only="solid-js"
-                    componentId={id}
-                    exportName={ex.exportName}
-                    kind={kind}
-                  />
-                ) : null}
-                {framework === "svelte" ? (
-                  <SvelteExampleIsland
-                    client:only="svelte"
-                    componentId={id}
-                    exportName={ex.exportName}
-                    kind={kind}
-                  />
-                ) : null}
-                {framework === "astro" ? <Example /> : null}
-              </ComponentPreview>
-            </>
-          );
-        })}
-      </>
+        {exampleDocs.length > 0 ? (
+          <>
+            <h2
+              class="mb-3 font-semibold text-2xl tracking-tight"
+              id="examples"
+            >
+              Examples
+            </h2>
+            {exampleDocs.map((ex) => {
+              const Example = getExampleExport(examples, ex.exportName);
+              const code = examples.sources[ex.exportName];
+              if (!code) return null;
+              return (
+                <>
+                  <h3
+                    class="mt-10 mb-3 font-semibold text-xl tracking-tight"
+                    id={ex.id}
+                  >
+                    {ex.title}
+                  </h3>
+                  {ex.description ? (
+                    <p class="mb-3 text-foreground/80 text-sm leading-7">
+                      {ex.description}
+                    </p>
+                  ) : null}
+                  <ComponentPreview
+                    code={code}
+                    language={language}
+                    packageName={pkg}
+                    previewHref={withDocsBase(
+                      `/preview/${framework}/${kind}/${id}/${ex.exportName}`,
+                    )}
+                    title={ex.title}
+                  >
+                    {framework === "react" ? (
+                      <ReactExampleIsland
+                        client:only="react"
+                        componentId={id}
+                        exportName={ex.exportName}
+                        kind={kind}
+                      />
+                    ) : null}
+                    {framework === "vue" ? (
+                      <VueExampleIsland
+                        client:only="vue"
+                        componentId={id}
+                        exportName={ex.exportName}
+                        kind={kind}
+                      />
+                    ) : null}
+                    {framework === "solid" ? (
+                      <SolidExampleIsland
+                        client:only="solid-js"
+                        componentId={id}
+                        exportName={ex.exportName}
+                        kind={kind}
+                      />
+                    ) : null}
+                    {framework === "svelte" ? (
+                      <SvelteExampleIsland
+                        client:only="svelte"
+                        componentId={id}
+                        exportName={ex.exportName}
+                        kind={kind}
+                      />
+                    ) : null}
+                    {framework === "astro" ? <Example /> : null}
+                  </ComponentPreview>
+                </>
+              );
+            })}
+          </>
+        ) : null}
+
+        <div class="mt-10">
+          <h2 class="mb-3 font-semibold text-2xl tracking-tight" id="props">
+            Props
+          </h2>
+          {propsRows ? (
+            <PropsTable rows={propsRows} />
+          ) : (
+            <p class="text-muted-foreground text-sm">
+              This utility has no dedicated entries in{" "}
+              <code>@pisagor/props</code> yet.
+            </p>
+          )}
+        </div>
+      </div>
     ) : null}
 
-    <div class="mt-10">
-      <h2 class="mb-3 font-semibold text-2xl tracking-tight" id="props">
-        Props
-      </h2>
-      {propsRows ? (
-        <PropsTable rows={propsRows} />
-      ) : (
-        <p class="text-muted-foreground text-sm">
-          This utility has no dedicated entries in <code>@pisagor/props</code>{" "}
-          yet.
-        </p>
-      )}
-    </div>
-  </div>
-) : null}
-
     {activeTab === "design" && DesignContent ? (
-  <div
-    aria-labelledby="doc-tab-design"
-    class:list={[proseClass, "[&>h2:first-child]:!mt-0"]}
-    id="doc-panel-design"
-    role="tabpanel"
-  >
-    <DesignContent />
-  </div>
-) : null}
+      <div
+        aria-labelledby="doc-tab-design"
+        class:list={[proseClass, "[&>h2:first-child]:!mt-0"]}
+        id="doc-panel-design"
+        role="tabpanel"
+      >
+        <DesignContent />
+      </div>
+    ) : null}
   </div>
 </DocsLayout>

@@ -38,9 +38,9 @@ const iconBtn =
   data-package={packageName}
   data-preview-href={previewHref}
   class:list={[
-  "my-7 overflow-hidden rounded-xl border border-border/70 bg-card shadow-sm",
-  Astro.props.class,
-]}
+    "my-7 overflow-hidden rounded-xl border border-border/70 bg-card shadow-sm",
+    Astro.props.class,
+  ]}
 >
   <!-- Toolbar -->
   <div
@@ -187,8 +187,10 @@ const iconBtn =
               {packageName}
             </li>
             {dependencies.map((dep) => (
-  <li class="rounded-md px-1.5 py-1 text-muted-foreground">{dep}</li>
-))}
+              <li class="rounded-md px-1.5 py-1 text-muted-foreground">
+                {dep}
+              </li>
+            ))}
           </ul>
         </div>
       </div>
