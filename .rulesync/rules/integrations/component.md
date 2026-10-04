@@ -18,7 +18,7 @@ Framework-agnostic product naming and catalog policy for Pisagor component packa
 
 **Sibling frameworks:** `react`, `vue`, `solid`, `svelte`, and `astro` (Astro is a static subset). Full interactive sets: `@pisagor/react`, `@pisagor/vue`, `@pisagor/solid`, `@pisagor/svelte` (forms: `@pisagor/{framework}-form`). Implementation patterns: [React Component Patterns](react-component.mdc), [Vue Component Patterns](vue-component.mdc), [Solid Component Patterns](solid-component.mdc), [Svelte Component Patterns](svelte-component.mdc). Storybook hosts: `apps/react`, `apps/vue`, `apps/astro` — package source stays story-free. `apps/solid` / `apps/svelte` are block demo hosts (`solid-blocks` / `svelte-blocks`), not Storybook.
 
-Import paths below use `@pisagor/{pkg}/…` — substitute `react`, `vue`, `solid`, `svelte`, or `astro` as appropriate.
+Import paths below use `@pisagor/{pkg}` for light components — substitute `react`, `vue`, `solid`, `svelte`, or `astro` as appropriate. Heavy modules stay on dedicated subpaths (`data-grid`, `data-table`, `phone-input`, `rich-text-editor`).
 
 ---
 
@@ -45,12 +45,12 @@ Import paths below use `@pisagor/{pkg}/…` — substitute `react`, `vue`, `soli
 
 | Need | Component | Import |
 | ---- | --------- | ------ |
-| Top app bar with brand, nav, actions | `navbar` | `@pisagor/{pkg}/navbar` |
-| Collapsible app sidebar | `sidebar` | `@pisagor/{pkg}/sidebar` |
-| Site-wide horizontal nav with dropdowns | `navigation-menu` | `@pisagor/{pkg}/navigation-menu` |
-| Always-visible nav link list | `menu` | `@pisagor/{pkg}/menu` |
-| Popup actions from a trigger | `dropdown-menu` | `@pisagor/{pkg}/dropdown-menu` |
-| Mobile bottom tab bar | `bottom-navigation` | `@pisagor/{pkg}/bottom-navigation` |
+| Top app bar with brand, nav, actions | `navbar` | `@pisagor/{pkg}` |
+| Collapsible app sidebar | `sidebar` | `@pisagor/{pkg}` |
+| Site-wide horizontal nav with dropdowns | `navigation-menu` | `@pisagor/{pkg}` |
+| Always-visible nav link list | `menu` | `@pisagor/{pkg}` |
+| Popup actions from a trigger | `dropdown-menu` | `@pisagor/{pkg}` |
+| Mobile bottom tab bar | `bottom-navigation` | `@pisagor/{pkg}` |
 
 ### New component checklist
 

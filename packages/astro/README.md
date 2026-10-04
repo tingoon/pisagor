@@ -3,7 +3,7 @@
 Static Astro UI components on Tailwind CSS recipes.
 
 ```ts
-import { Button } from "@pisagor/astro/button";
+import { Button } from "@pisagor/astro";
 import "@pisagor/astro/styles";
 ```
 

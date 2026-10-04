@@ -23,7 +23,7 @@ How to build shared UI components in `packages/react` (`@pisagor/react`). Genera
 
 Folder name, main file, and component export name align: **kebab-case folder** → **`<name>.tsx`** → **PascalCase** component (e.g. `accordion/` → `accordion.tsx` → `Accordion`).
 
-**Light** components live under `src/components/<name>/` (root barrel + `./*`). **Heavy** modules live under `src/<name>/` with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/react-form`.
+**Light** components live under `src/components/<name>/` and export only from the root barrel (`@pisagor/react`). **Heavy** modules live under `src/<name>/` with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/react-form`.
 
 ```text
 <kebab-name>/
@@ -56,7 +56,7 @@ File-level React rules: [React Style Guide](../react.mdc).
 Applies to the published workspace component package (`@pisagor/react`):
 
 - One folder per public component — layout above is required.
-- Require `index.ts` barrel (package export map, e.g. `@pisagor/react/*`).
+- Require `index.ts` barrel (re-exported from the root `@pisagor/react` map).
 - Do **not** add `*.stories.tsx` under `packages/react` — stories belong in `apps/react` — [Storybook](stories.mdc).
 
 ### Storybook app (`apps/react`)
@@ -166,7 +166,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component.
 | **Closed + behavior** | Single export; convenience props; single-element or thin recipe from `@pisagor/recipes` |
 | **Closed + primitive wrapper** | Thin styled layer over one headless part |
 | **Closed + Ark passthrough** | No styling/behavior — `export { Foo, type FooProps } from "@ark-ui/react/foo"` (no wrapper component) |
-| **Composition layer** | Composes other package exports (e.g. `@pisagor/react/*`); no new primitive |
+| **Composition layer** | Composes other package exports (e.g. `@pisagor/react`); no new primitive |
 
 **Example:**
 

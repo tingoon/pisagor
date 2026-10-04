@@ -24,7 +24,7 @@ How to build shared UI components in `packages/vue` (`@pisagor/vue`). General Vu
 
 Folder name, main file, and component export name align: **kebab-case folder** → **`<name>.ts`** → **PascalCase** component (e.g. `accordion/` → `accordion.ts` → `Accordion`).
 
-**Light** components live under `src/components/<name>/` (root barrel + `./*`). **Heavy** modules live under `src/<name>/` with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/vue-form`.
+**Light** components live under `src/components/<name>/` and export only from the root barrel (`@pisagor/vue`). **Heavy** modules live under `src/<name>/` with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/vue-form`.
 
 ```text
 <kebab-name>/
@@ -68,7 +68,7 @@ When a compound component uses package-local provide/inject (`createContext` fro
 Applies to the published workspace component package (`@pisagor/vue`):
 
 - One folder per public component — layout above is required.
-- Require `index.ts` barrel (package export map, e.g. `@pisagor/vue/*`).
+- Require `index.ts` barrel (re-exported from the root `@pisagor/vue` map).
 - Do **not** add `*.stories.ts` under `packages/vue` — stories belong in `apps/vue` — [Storybook](stories.mdc).
 - Import recipes from `@pisagor/recipes` — do not add local `*.recipe.ts` shims or call `tv()`.
 
