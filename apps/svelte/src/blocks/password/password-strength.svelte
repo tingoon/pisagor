@@ -67,8 +67,11 @@ const id = "password-strength";
     {#each PASSWORD_REQUIREMENTS as requirement, index}
       <div
         class={passwordStrengthBlock({
-  tone: index < strengthScore ? passwordStrengthTone(strengthScore) : "idle",
-}).segment()}
+          tone:
+            index < strengthScore
+              ? passwordStrengthTone(strengthScore)
+              : "idle",
+        }).segment()}
       ></div>
     {/each}
   </div>

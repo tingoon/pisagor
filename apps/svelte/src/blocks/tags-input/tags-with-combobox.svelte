@@ -33,11 +33,11 @@ const collection = $derived(
     allowCustomValue
     {collection}
     onValueChange={(value) => {
-  const next = value[0];
-  if (next && !tags.includes(next)) {
-    tags = [...tags, next];
-  }
-}}
+      const next = value[0];
+      if (next && !tags.includes(next)) {
+        tags = [...tags, next];
+      }
+    }}
     selectionBehavior="clear"
     value={[]}
   >

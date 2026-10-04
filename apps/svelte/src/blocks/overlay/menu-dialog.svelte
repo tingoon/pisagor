@@ -32,8 +32,8 @@ let isOpen = $state(false);
   </DropdownMenu>
   <Dialog.Root
     onOpenChange={(details) => {
-  isOpen = typeof details === "boolean" ? details : Boolean(details?.open);
-}}
+      isOpen = typeof details === "boolean" ? details : Boolean(details?.open);
+    }}
     open={isOpen}
   >
     <Dialog.Content>

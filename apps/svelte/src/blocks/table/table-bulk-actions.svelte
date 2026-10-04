@@ -76,8 +76,8 @@ function handleSelectRow(id: string, checked: boolean | "indeterminate") {
 <div class={cn(styles.root(), className)}>
   <ActionBar
     onOpenChange={(open) => {
-  if (!open) selectedIds = [];
-}}
+      if (!open) selectedIds = [];
+    }}
     open={isOpen}
   >
     <Table>
@@ -108,7 +108,8 @@ function handleSelectRow(id: string, checked: boolean | "indeterminate") {
               <Checkbox
                 aria-label={`Select order ${order.id}`}
                 checked={selectedIds.includes(order.id)}
-                onCheckedChange={({ checked }) => handleSelectRow(order.id, checked)}
+                onCheckedChange={({ checked }) =>
+                  handleSelectRow(order.id, checked)}
               />
             </Table.Cell>
             <Table.Cell class={styles.id()}>{order.id}</Table.Cell>

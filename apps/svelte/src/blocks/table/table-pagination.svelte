@@ -57,7 +57,8 @@ const paginatedUsers = $derived(
       <div class={styles.pageSizeLabel()}>Items per page:</div>
       <Select
         items={["2", "3", "4"]}
-        onValueChange={(value) => (pageSize = Number(Array.isArray(value) ? value[0] : value))}
+        onValueChange={(value) =>
+          (pageSize = Number(Array.isArray(value) ? value[0] : value))}
         value={[String(pageSize)]}
       />
     </div>
