@@ -1,6 +1,6 @@
-export {
-  Sheet,
-  type SheetBodyProps,
-  type SheetHeaderProps,
-  type SheetProps,
+export type {
+  SheetBodyProps,
+  SheetHeaderProps,
+  SheetProps,
 } from "./sheet";
+export { Sheet } from "./sheet";

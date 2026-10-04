@@ -1,2 +1,1 @@
-export type { SliderProps } from "./slider";
-export { Slider } from "./slider";
+export { Slider, type SliderProps } from "./slider";
