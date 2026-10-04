@@ -21,21 +21,23 @@ bun add @pisagor/recipes
 ## Import
 
 ```ts
-import { buttonRecipe } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes";
 ```
+
+Block recipes stay on subpaths: `@pisagor/recipes/blocks/<name>`.
 
 ## Rules
 
 - **Library look stays in recipes** — no local `tv()` / duplicate variant maps in framework packages.
 - Framework components only wire `recipe` → `class` / slots; they do not redefine appearance.
 - Layout / one-off consumer spacing → `className` / `class` on the component, not a new recipe.
-- Add or change variants in `@pisagor/recipes/<name>`, then use from framework packages.
+- Add or change variants in `@pisagor/recipes` (`src/<name>.ts`), then import from the root barrel in framework packages.
 - Prefer a recipe even for minimal / empty `base` when a component exposes a class surface (e.g. `scrollspy`).
 
 ## Gold pattern
 
 ```ts
-import { buttonRecipe } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes";
 
 export function Button({ recipe = buttonRecipe, className, ...rest }) {
   const slots = recipe({ /* variants */ });
@@ -59,4 +61,5 @@ These have **no className/style surface** of their own (re-exports, context, or 
 
 ## Source
 
-`@pisagor/recipes/<name>` → `src/<name>.ts`
+`@pisagor/recipes` barrel → `src/<name>.ts`  
+`@pisagor/recipes/blocks/<name>` → `src/blocks/<name>.ts`
