@@ -1,20 +1,20 @@
 <script lang="ts">
 import type { SwapIndicatorProps, SwapRootProps } from "@ark-ui/svelte/swap";
 import { Swap as SwapPrimitive } from "@ark-ui/svelte/swap";
-import { type SwapVariantProps, swapRecipe } from "@pisagor/recipes/swap";
+import type { SwapProps as SwapSharedProps } from "@pisagor/props";
+import { swapRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 
 type Props = Omit<SwapRootProps, "class" | "children"> &
-  SwapVariantProps & {
+  {
     class?: string | undefined;
     children?: Snippet;
     off?: Snippet;
     on?: Snippet;
     offIndicatorProps?: Omit<SwapIndicatorProps, "children" | "type" | "class">;
     onIndicatorProps?: Omit<SwapIndicatorProps, "children" | "type" | "class">;
-    recipe?: typeof swapRecipe;
-  };
+  } & SwapSharedProps;
 
 let {
   variant = "fade",

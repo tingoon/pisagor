@@ -1,15 +1,15 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { type BadgeVariantProps, badgeRecipe } from "@pisagor/recipes/badge";
+import type { BadgeProps as BadgeSharedProps } from "@pisagor/props";
+import { badgeRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
 type Props = Omit<HTMLAttributes<HTMLSpanElement>, "class"> &
-  BadgeVariantProps & {
+  {
     children?: import("svelte").Snippet;
     class?: string | undefined;
-    recipe?: typeof badgeRecipe;
-  };
+  } & BadgeSharedProps;
 
 let {
   pill = false,

@@ -1,8 +1,7 @@
 <script lang="ts">
 import type { ComboboxTriggerProps } from "@ark-ui/svelte/combobox";
 import { Combobox as ComboboxPrimitive } from "@ark-ui/svelte/combobox";
-import { buttonRecipe } from "@pisagor/recipes/button";
-import { comboboxRecipe } from "@pisagor/recipes/combobox";
+import { buttonRecipe, comboboxRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CaretUpDownIcon from "phosphor-svelte/lib/CaretUpDownIcon";
 import { useComboboxRoot } from "./combobox.context";

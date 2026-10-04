@@ -2,7 +2,7 @@
 import type { FloatingPanelContentProps as ArkProps } from "@ark-ui/svelte/floating-panel";
 import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/svelte/floating-panel";
 import { Portal } from "@ark-ui/svelte/portal";
-import { floatingPanelRecipe } from "@pisagor/recipes/floating-panel";
+import { floatingPanelRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useFloatingPanel } from "./floating-panel.context";
 import FloatingPanelResizeTrigger from "./floating-panel-resize-trigger.svelte";

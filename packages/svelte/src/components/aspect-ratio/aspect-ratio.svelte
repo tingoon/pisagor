@@ -1,14 +1,15 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { aspectRatioRecipe } from "@pisagor/recipes/aspect-ratio";
+import type { AspectRatioProps as AspectRatioSharedProps } from "@pisagor/props";
+import { aspectRatioRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
+type Props = Omit<HTMLAttributes<HTMLElement>, "class"> &
+  {
   children?: import("svelte").Snippet;
   class?: string | undefined;
-  recipe?: typeof aspectRatioRecipe;
-};
+  } & AspectRatioSharedProps;
 
 let { recipe = aspectRatioRecipe, class: className, children, ...rest }: Props = $props();
 </script>

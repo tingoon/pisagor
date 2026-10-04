@@ -1,14 +1,16 @@
 <script lang="ts">
 import type { SliderRootProps } from "@ark-ui/svelte/slider";
 import { Slider as SliderPrimitive } from "@ark-ui/svelte/slider";
-import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes/slider";
+import type { SliderProps as SliderSharedProps } from "@pisagor/props";
+import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import { setSliderContext } from "./slider.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<SliderRootProps, "class" | "children" | "onValueChange"> & {
+type Props = Omit<SliderRootProps, "class" | "children" | "onValueChange"> &
+  {
   children?: Snippet;
   class?: string | undefined;
   classNames?: Partial<Record<SliderRecipeSlot, string>>;
@@ -16,12 +18,11 @@ type Props = Omit<SliderRootProps, "class" | "children" | "onValueChange"> & {
   markerInterval?: number;
   markerLabels?: string[];
   onValueChange?: (value: number[]) => void;
-  recipe?: typeof sliderRecipe;
   showMarkers?: boolean;
   showValue?: boolean;
   tabindex?: number | null;
   variant?: FormControlVariant;
-};
+  } & SliderSharedProps;
 
 let {
   variant: variantProp,

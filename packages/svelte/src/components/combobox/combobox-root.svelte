@@ -2,16 +2,17 @@
 import type { CollectionItem } from "@ark-ui/svelte/collection";
 import type { ComboboxRootProps as ArkRootProps } from "@ark-ui/svelte/combobox";
 import { Combobox as ComboboxPrimitive } from "@ark-ui/svelte/combobox";
-import { comboboxRecipe } from "@pisagor/recipes/combobox";
+import type { ComboboxProps as ComboboxSharedProps } from "@pisagor/props";
+import { comboboxRecipe } from "@pisagor/recipes";
 import { setComboboxRootContext } from "./combobox.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<ArkRootProps<CollectionItem>, "onValueChange"> & {
+type Props = Omit<ArkRootProps<CollectionItem>, "onValueChange"> &
+  {
   onValueChange?: (value: string[]) => void;
-  recipe?: typeof comboboxRecipe;
   variant?: FormControlVariant;
-};
+  } & ComboboxSharedProps;
 
 let {
   openOnClick = true,

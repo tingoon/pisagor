@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { MenuArrowProps } from "@ark-ui/svelte/menu";
 import { Menu as MenuPrimitive } from "@ark-ui/svelte/menu";
-import { dropdownMenuRecipe } from "@pisagor/recipes/dropdown-menu";
+import { dropdownMenuRecipe } from "@pisagor/recipes";
 import { useDropdownMenu } from "./dropdown-menu.context";
 
 type Props = Omit<MenuArrowProps, "style"> & {

@@ -1,7 +1,8 @@
 <script lang="ts">
 import type { TagsInputItemProps as ArkItemProps } from "@ark-ui/svelte/tags-input";
 import { TagsInput as TagsInputPrimitive } from "@ark-ui/svelte/tags-input";
-import { tagsInputItemRecipe } from "@pisagor/recipes/tags-input";
+import type { TagsInputItemProps as TagsInputItemSharedProps } from "@pisagor/props";
+import { tagsInputItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setTagsInputItemContext } from "./tags-input.context";
 import TagsInputItemDeleteTrigger from "./tags-input-item-delete-trigger.svelte";
@@ -9,21 +10,21 @@ import TagsInputItemInput from "./tags-input-item-input.svelte";
 import TagsInputItemPreview from "./tags-input-item-preview.svelte";
 import TagsInputItemText from "./tags-input-item-text.svelte";
 
-type Props = Omit<ArkItemProps, "class"> & {
+type Props = Omit<ArkItemProps, "class"> &
+  {
   class?: string | undefined;
-  itemRecipe?: typeof tagsInputItemRecipe;
   showDelete?: boolean;
-};
+  } & TagsInputItemSharedProps;
 
 let {
   showDelete = true,
   children,
-  itemRecipe = tagsInputItemRecipe,
+  recipe = tagsInputItemRecipe,
   class: className,
   ...rest
 }: Props = $props();
 
-const slots = $derived(itemRecipe());
+const slots = $derived(recipe());
 setTagsInputItemContext({
   get slots() {
     return slots;

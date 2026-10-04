@@ -1,5 +1,6 @@
 <script lang="ts">
-import { spinnerRecipe } from "@pisagor/recipes/spinner";
+import type { SpinnerProps as SpinnerSharedProps } from "@pisagor/props";
+import { spinnerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CircleNotchIcon from "phosphor-svelte/lib/CircleNotchIcon";
 
@@ -7,8 +8,7 @@ type Props = {
   "aria-hidden"?: boolean | "true" | "false" | undefined;
   "aria-label"?: string | undefined;
   class?: string | undefined;
-  recipe?: typeof spinnerRecipe;
-};
+  } & SpinnerSharedProps;
 
 let {
   "aria-hidden": ariaHidden,

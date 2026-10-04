@@ -1,15 +1,16 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { emptyStateRecipe } from "@pisagor/recipes/empty-state";
+import type { EmptyStateProps as EmptyStateSharedProps } from "@pisagor/props";
+import { emptyStateRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setEmptyStateContext } from "./empty-state.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title"> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title"> &
+  {
   children?: import("svelte").Snippet;
   class?: string | undefined;
-  recipe?: typeof emptyStateRecipe;
-};
+  } & EmptyStateSharedProps;
 
 let { children, recipe = emptyStateRecipe, class: className, ...rest }: Props = $props();
 

@@ -1,7 +1,4 @@
-import type {
-  BreadcrumbItemRecipe,
-  BreadcrumbRecipe,
-} from "@pisagor/recipes/breadcrumb";
+import type { BreadcrumbItemRecipe, BreadcrumbRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 interface BreadcrumbContextValue {
@@ -12,10 +9,8 @@ interface BreadcrumbItemContextValue {
   slots: BreadcrumbItemRecipe;
 }
 
-const root = createContext<BreadcrumbContextValue>({ name: "Breadcrumb" });
-const item = createContext<BreadcrumbItemContextValue>({
-  name: "BreadcrumbItem",
-});
+const root = createContext("Breadcrumb")<BreadcrumbContextValue>();
+const item = createContext("BreadcrumbItem")<BreadcrumbItemContextValue>();
 
 export const setBreadcrumbContext = root.setContext;
 export const useBreadcrumb = root.getContext;

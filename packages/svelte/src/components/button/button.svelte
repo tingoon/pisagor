@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { ButtonProps as ButtonSharedProps } from "@pisagor/props/button";
-import { buttonRecipe } from "@pisagor/recipes/button";
+import type { ButtonProps as ButtonSharedProps } from "@pisagor/props";
+import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLButtonAttributes } from "svelte/elements";
 import Spinner from "../spinner/spinner.svelte";

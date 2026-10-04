@@ -1,14 +1,15 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { separatorRecipe } from "@pisagor/recipes/separator";
+import type { SeparatorProps as SeparatorSharedProps } from "@pisagor/props";
+import { separatorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAttributes<HTMLHRElement>, "class"> & {
+type Props = Omit<HTMLAttributes<HTMLHRElement>, "class"> &
+  {
   class?: string | undefined;
-  recipe?: typeof separatorRecipe;
   orientation?: "horizontal" | "vertical";
-};
+  } & SeparatorSharedProps;
 
 let {
   recipe = separatorRecipe,

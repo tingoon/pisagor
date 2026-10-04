@@ -2,15 +2,16 @@
 import type { CollectionItem } from "@ark-ui/svelte/collection";
 import type { ListboxRootProps as ArkListboxRootProps } from "@ark-ui/svelte/listbox";
 import { Listbox as ListboxPrimitive } from "@ark-ui/svelte/listbox";
-import { listboxRecipe } from "@pisagor/recipes/listbox";
+import type { ListboxProps as ListboxSharedProps } from "@pisagor/props";
+import { listboxRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setListboxContext } from "./listbox.context";
 
-type Props = Omit<ArkListboxRootProps<CollectionItem>, "class" | "onValueChange"> & {
+type Props = Omit<ArkListboxRootProps<CollectionItem>, "class" | "onValueChange"> &
+  {
   class?: string | undefined;
   onValueChange?: (value: string[]) => void;
-  recipe?: typeof listboxRecipe;
-};
+  } & ListboxSharedProps;
 
 let {
   recipe = listboxRecipe,

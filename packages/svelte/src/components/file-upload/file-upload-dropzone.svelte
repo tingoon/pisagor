@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { FileUploadDropzoneProps as ArkProps } from "@ark-ui/svelte/file-upload";
 import { FileUpload as FileUploadPrimitive } from "@ark-ui/svelte/file-upload";
-import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
+import { formControlZoneRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { useFileUpload } from "./file-upload.context";

@@ -1,5 +1,6 @@
 <script lang="ts">
-import { dataTableRecipe } from "@pisagor/recipes/data-table";
+import type { DataTableProps as DataTableSharedProps } from "@pisagor/props";
+import { dataTableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { RowData, TableOptions } from "@tanstack/svelte-table";
 import { createTable } from "@tanstack/svelte-table";
@@ -10,8 +11,8 @@ type Props = {
   children?: import("svelte").Snippet;
   class?: string | undefined;
   features?: DataTableFeatures;
-  recipe?: typeof dataTableRecipe;
-} & Omit<TableOptions<DataTableFeatures, RowData>, "features">;
+} &
+  Omit<TableOptions<DataTableFeatures, RowData>, "features"> & DataTableSharedProps;
 
 let {
   children,

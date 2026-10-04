@@ -1,10 +1,7 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { fileInputRecipe } from "@pisagor/recipes/file-input";
-import {
-  type FormControlGroupShellVariantProps,
-  formControlGroupShellRecipe,
-} from "@pisagor/recipes/form-control";
+import type { FileInputProps as FileInputSharedProps } from "@pisagor/props";
+import { type FormControlGroupShellVariantProps, fileInputRecipe, formControlGroupShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLInputAttributes } from "svelte/elements";
 import { InputGroup } from "../input-group";
@@ -17,15 +14,15 @@ type Props = Omit<
   HTMLInputAttributes,
   "class" | "defaultValue" | "onChange" | "size" | "type" | "value"
 > &
-  FormControlGroupShellVariantProps & {
+  FormControlGroupShellVariantProps &
+  {
     browseLabel?: string;
     class?: string | undefined;
     invalid?: boolean;
     onFilesChange?: (files: globalThis.File[]) => void;
     onValueChange?: (files: globalThis.File[]) => void;
     placeholder?: string;
-    recipe?: typeof fileInputRecipe;
-  };
+  } & FileInputSharedProps;
 
 let {
   size = "md",

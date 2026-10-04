@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { EditablePreviewProps as ArkEditablePreviewProps } from "@ark-ui/svelte/editable";
 import { Editable as EditablePrimitive } from "@ark-ui/svelte/editable";
-import type { ButtonProps } from "@pisagor/props/button";
-import { buttonRecipe } from "@pisagor/recipes/button";
+import type { ButtonProps } from "@pisagor/props";
+import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { useEditable } from "./editable.context";

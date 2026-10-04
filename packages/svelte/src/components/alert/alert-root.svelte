@@ -1,16 +1,16 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { type AlertVariantProps, alertRecipe } from "@pisagor/recipes/alert";
+import type { AlertProps as AlertSharedProps } from "@pisagor/props";
+import { alertRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setAlertContext } from "./alert.context";
 
 type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title"> &
-  AlertVariantProps & {
+  {
     children?: import("svelte").Snippet;
     class?: string | undefined;
-    recipe?: typeof alertRecipe;
-  };
+  } & AlertSharedProps;
 
 let { variant, children, recipe = alertRecipe, class: className, ...rest }: Props = $props();
 

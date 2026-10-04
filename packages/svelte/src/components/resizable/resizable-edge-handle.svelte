@@ -1,5 +1,6 @@
 <script lang="ts">
-import { resizableEdgeHandleRecipe } from "@pisagor/recipes/resizable";
+import type { ResizableEdgeHandleProps as ResizableEdgeHandleSharedProps } from "@pisagor/props";
+import { resizableEdgeHandleRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import DotsSixVerticalIcon from "phosphor-svelte/lib/DotsSixVerticalIcon";
 import type { HTMLButtonAttributes } from "svelte/elements";
@@ -7,7 +8,8 @@ import type { HTMLButtonAttributes } from "svelte/elements";
 type ResizableHandlePosition = "bottom" | "center" | "top";
 type ResizableEdgePlacement = "end" | "start";
 
-type Props = Omit<HTMLButtonAttributes, "class"> & {
+type Props = Omit<HTMLButtonAttributes, "class"> &
+  {
   class?: string | undefined;
   handlePosition?: ResizableHandlePosition;
   label: string;
@@ -17,9 +19,8 @@ type Props = Omit<HTMLButtonAttributes, "class"> & {
   onResizeStart?: () => void;
   onWidthChange: (width: number) => void;
   placement: ResizableEdgePlacement;
-  recipe?: typeof resizableEdgeHandleRecipe;
   width: number;
-};
+  } & ResizableEdgeHandleSharedProps;
 
 let {
   placement,

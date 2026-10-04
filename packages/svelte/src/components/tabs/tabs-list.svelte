@@ -1,14 +1,14 @@
 <script lang="ts">
 import type { TabListProps as ArkTabsListProps } from "@ark-ui/svelte/tabs";
 import { Tabs as TabsPrimitive } from "@ark-ui/svelte/tabs";
-import type { TabsVariantProps } from "@pisagor/recipes/tabs";
+import type { TabsProps as TabsSharedProps } from "@pisagor/props";
 import { cn } from "@pisagor/utils";
 import { useTabs } from "./tabs.context";
 
 type Props = Omit<ArkTabsListProps, "class"> &
-  Pick<TabsVariantProps, "variant"> & {
+  {
     class?: string | undefined;
-  };
+  } & TabsSharedProps;
 
 let { variant = "default", children, class: className, ...rest }: Props = $props();
 const { slots } = useTabs();

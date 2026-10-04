@@ -1,9 +1,9 @@
-import type { AvatarRecipe } from "@pisagor/recipes/avatar";
+import type { AvatarRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 export interface AvatarContextValue {
   slots: AvatarRecipe;
 }
 
-const ctx = createContext<AvatarContextValue>({ name: "Avatar" });
+const ctx = createContext("Avatar")<AvatarContextValue>();
 export const setAvatarContext = ctx.setContext;

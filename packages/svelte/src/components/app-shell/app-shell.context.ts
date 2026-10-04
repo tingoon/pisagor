@@ -1,4 +1,4 @@
-import type { AppShellRecipe } from "@pisagor/recipes/app-shell";
+import type { AppShellRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 export type AppShellPlacement = "start" | "end";
@@ -93,6 +93,6 @@ export interface AppShellContextValue {
   slots: AppShellRecipe;
 }
 
-const ctx = createContext<AppShellContextValue>({ name: "AppShell" });
+const ctx = createContext("AppShell")<AppShellContextValue>();
 export const setAppShellContext = ctx.setContext;
 export const useAppShell = ctx.getContext;

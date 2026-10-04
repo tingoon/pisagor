@@ -1,19 +1,19 @@
 <script lang="ts">
 import type { DatePickerRootProps as ArkRootProps } from "@ark-ui/svelte/date-picker";
 import { DatePicker as DatePickerPrimitive } from "@ark-ui/svelte/date-picker";
-import { calendarRecipe } from "@pisagor/recipes/calendar";
-import { datePickerRecipe } from "@pisagor/recipes/date-picker";
+import type { DatePickerProps as DatePickerSharedProps } from "@pisagor/props";
+import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
 import { setCalendarSlotsContext } from "../calendar/calendar.context";
 import { setDatePickerSlotsContext } from "./date-picker.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<ArkRootProps, "onValueChange"> & {
+type Props = Omit<ArkRootProps, "onValueChange"> &
+  {
   calendarRecipe?: typeof calendarRecipe;
   onValueChange?: (value: ArkRootProps["value"]) => void;
-  recipe?: typeof datePickerRecipe;
   variant?: FormControlVariant;
-};
+  } & DatePickerSharedProps;
 
 let {
   variant,

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { usePaginationContext } from "@ark-ui/svelte/pagination";
-import { buttonRecipe } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAnchorAttributes } from "svelte/elements";

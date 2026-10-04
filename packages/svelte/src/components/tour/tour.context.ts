@@ -1,5 +1,5 @@
 import type { UseTourReturn } from "@ark-ui/svelte/tour";
-import type { TourRecipe } from "@pisagor/recipes/tour";
+import type { TourRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 export interface TourProviderProps {
@@ -8,6 +8,6 @@ export interface TourProviderProps {
   tour: UseTourReturn;
 }
 
-const ctx = createContext<TourProviderProps>({ name: "Tour" });
+const ctx = createContext("Tour")<TourProviderProps>();
 export const setTourContext = ctx.setContext;
 export const useTourContext = ctx.getContext;

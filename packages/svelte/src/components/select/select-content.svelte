@@ -2,7 +2,7 @@
 import { Portal } from "@ark-ui/svelte/portal";
 import type { SelectContentProps } from "@ark-ui/svelte/select";
 import { Select as SelectPrimitive } from "@ark-ui/svelte/select";
-import { selectRecipe } from "@pisagor/recipes/select";
+import { selectRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useSelectRoot } from "./select.context";
 

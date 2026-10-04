@@ -1,4 +1,4 @@
-import type { NavigationMenuRecipe } from "@pisagor/recipes/navigation-menu";
+import type { NavigationMenuRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 interface NavigationMenuContextValue {
@@ -8,4 +8,4 @@ interface NavigationMenuContextValue {
 export const {
   setContext: setNavigationMenuContext,
   getContext: useNavigationMenu,
-} = createContext<NavigationMenuContextValue>({ name: "NavigationMenu" });
+} = createContext("NavigationMenu")<NavigationMenuContextValue>();

@@ -1,4 +1,4 @@
-import type { DataTableRecipe } from "@pisagor/recipes/data-table";
+import type { DataTableRecipe } from "@pisagor/recipes";
 import type {
   Column,
   HeaderGroup,
@@ -22,19 +22,17 @@ export interface DataTableRowContextValue {
   row: Row<DataTableFeatures, RowData>;
 }
 
-const rootCtx = createContext<DataTableContextValue>({ name: "DataTable" });
+const rootCtx = createContext("DataTable")<DataTableContextValue>();
 export const setDataTableContext = rootCtx.setContext;
 export const useDataTableContext = rootCtx.getContext;
 
-const headerGroupCtx = createContext<DataTableHeaderGroupContextValue>({
-  name: "DataTableHeaderGroup",
-});
+const headerGroupCtx = createContext(
+  "DataTableHeaderGroup",
+)<DataTableHeaderGroupContextValue>();
 export const setDataTableHeaderGroupContext = headerGroupCtx.setContext;
 export const useDataTableHeaderGroupContext = headerGroupCtx.getContext;
 
-const rowCtx = createContext<DataTableRowContextValue>({
-  name: "DataTableRow",
-});
+const rowCtx = createContext("DataTableRow")<DataTableRowContextValue>();
 export const setDataTableRowContext = rowCtx.setContext;
 export const useDataTableRowContext = rowCtx.getContext;
 

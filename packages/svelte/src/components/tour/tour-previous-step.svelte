@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Tour as TourPrimitive } from "@ark-ui/svelte/tour";
-import { buttonRecipe } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
 import type { Snippet } from "svelte";

@@ -2,7 +2,7 @@ import type {
   TreeViewBranchRecipe,
   TreeViewItemRecipe,
   TreeViewRecipe,
-} from "@pisagor/recipes/tree-view";
+} from "@pisagor/recipes";
 import type { Component } from "svelte";
 import { createContext } from "../../utils/create-context";
 
@@ -22,13 +22,12 @@ interface TreeViewItemContextValue {
   slots: TreeViewItemRecipe;
 }
 
-const root = createContext<TreeViewContextValue>({ name: "TreeView" });
-const branch = createContext<TreeViewBranchContextValue>({
-  name: "TreeViewBranch",
-});
-const item = createContext<TreeViewItemContextValue | undefined>({
+const root = createContext("TreeView")<TreeViewContextValue>();
+const branch = createContext("TreeViewBranch")<TreeViewBranchContextValue>();
+const item = createContext("TreeViewItem")<
+  TreeViewItemContextValue | undefined
+>({
   defaultValue: undefined,
-  name: "TreeViewItem",
   strict: false,
 });
 

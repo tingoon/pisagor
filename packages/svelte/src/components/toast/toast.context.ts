@@ -1,4 +1,4 @@
-import type { ToastItemRecipe } from "@pisagor/recipes/toast";
+import type { ToastItemRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 interface ToastItemContextValue {
@@ -6,4 +6,4 @@ interface ToastItemContextValue {
 }
 
 export const { setContext: setToastItemContext, getContext: useToastItem } =
-  createContext<ToastItemContextValue>({ name: "ToastItem" });
+  createContext("ToastItem")<ToastItemContextValue>();

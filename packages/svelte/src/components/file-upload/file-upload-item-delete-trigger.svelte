@@ -1,6 +1,6 @@
 <script lang="ts">
 import { FileUpload as FileUploadPrimitive } from "@ark-ui/svelte/file-upload";
-import { buttonRecipe } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import { useFileUploadItem } from "./file-upload.context";

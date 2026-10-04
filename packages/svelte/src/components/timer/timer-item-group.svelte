@@ -1,25 +1,26 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { timerItemGroupRecipe } from "@pisagor/recipes/timer";
+import type { TimerItemGroupProps as TimerItemGroupSharedProps } from "@pisagor/props";
+import { timerItemGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setTimerItemGroupContext } from "./timer.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
+  {
   class?: string | undefined;
-  itemGroupRecipe?: typeof timerItemGroupRecipe;
   orientation?: "horizontal" | "vertical";
-};
+  } & TimerItemGroupSharedProps;
 
 let {
   orientation = "vertical",
   children,
-  itemGroupRecipe = timerItemGroupRecipe,
+  recipe = timerItemGroupRecipe,
   class: className,
   ...rest
 }: Props = $props();
 
-const slots = $derived(itemGroupRecipe());
+const slots = $derived(recipe());
 setTimerItemGroupContext({
   get slots() {
     return slots;

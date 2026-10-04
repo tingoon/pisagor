@@ -1,14 +1,8 @@
 <script lang="ts">
 import type { ClipboardRootProps } from "@ark-ui/svelte/clipboard";
 import { Clipboard as ClipboardPrimitive } from "@ark-ui/svelte/clipboard";
-import type { ButtonProps } from "@pisagor/props/button";
-import { buttonRecipe } from "@pisagor/recipes/button";
-import {
-  type ClipboardRecipeSlot,
-  type ClipboardVariantProps,
-  clipboardRecipe,
-} from "@pisagor/recipes/clipboard";
-import { formControlShellRecipe } from "@pisagor/recipes/form-control";
+import type { ButtonProps, ClipboardProps as ClipboardSharedProps } from "@pisagor/props";
+import { buttonRecipe, type ClipboardRecipeSlot, clipboardRecipe, formControlShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 import ClipboardIcon from "phosphor-svelte/lib/ClipboardIcon";
@@ -20,7 +14,7 @@ import { setClipboardContext } from "./clipboard.context";
 type FormControlVariant = "primary" | "secondary";
 
 type Props = Omit<ClipboardRootProps, "class" | "children"> &
-  ClipboardVariantProps & {
+  {
     buttonAriaLabel?: string;
     buttonSize?: ButtonProps["size"];
     buttonVariant?: ButtonProps["variant"];
@@ -32,9 +26,8 @@ type Props = Omit<ClipboardRootProps, "class" | "children"> &
     copyIcon?: Snippet;
     label?: string;
     labelProps?: Omit<HTMLAttributes<HTMLSpanElement>, "children" | "class">;
-    recipe?: typeof clipboardRecipe;
     variant?: "button" | "input" | "value";
-  };
+  } & ClipboardSharedProps;
 
 let {
   buttonSize = "icon-md",

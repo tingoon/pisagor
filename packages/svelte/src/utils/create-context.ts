@@ -1,8 +1,6 @@
 import { createContext as createArkContext } from "@ark-ui/svelte/utils";
 
 export interface CreateContextOptions<T> {
-  /** Context name used in error messages. */
-  name: string;
   /** Value returned when no provider is present and `strict` is false. */
   defaultValue?: T;
   /** Throw when consumed outside a provider. @defaultValue true */
@@ -17,19 +15,26 @@ export interface CreatedContext<T> {
 }
 
 /** Thin wrapper around Ark UI's `createContext` with a consistent API. */
-export function createContext<T>(
-  options: CreateContextOptions<T>,
-): CreatedContext<T> {
-  const [setContextValue, getContextValue] = createArkContext<T>({
-    defaultValue: options.defaultValue,
-    hookName: options.hookName ?? `use${options.name}`,
-    name: options.name,
-    providerName: options.providerName ?? `${options.name}Provider`,
-    strict: options.strict ?? true,
-  });
+export function createContext<const Name extends string>(name: Name) {
+  function createTypedContext<T>({
+    defaultValue,
+    strict = true,
+    hookName,
+    providerName,
+  }: CreateContextOptions<T> = {}): CreatedContext<T> {
+    const [setContextValue, getContextValue] = createArkContext<T>({
+      defaultValue,
+      hookName: hookName ?? `use${name}`,
+      name,
+      providerName: providerName ?? `${name}Provider`,
+      strict,
+    });
 
-  return {
-    getContext: getContextValue,
-    setContext: setContextValue,
-  };
+    return {
+      getContext: getContextValue,
+      setContext: setContextValue,
+    };
+  }
+
+  return createTypedContext;
 }

@@ -1,4 +1,4 @@
-import type { ClipboardRecipe } from "@pisagor/recipes/clipboard";
+import type { ClipboardRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 interface ClipboardContextValue {
@@ -6,4 +6,4 @@ interface ClipboardContextValue {
 }
 
 export const { setContext: setClipboardContext, getContext: useClipboard } =
-  createContext<ClipboardContextValue>({ name: "Clipboard" });
+  createContext("Clipboard")<ClipboardContextValue>();

@@ -1,4 +1,4 @@
-import type { AppShellRecipe } from "@pisagor/recipes/app-shell";
+import type { AppShellRecipe } from "@pisagor/recipes";
 import type {
   AppShellPlacement,
   AppShellRegionPosition,

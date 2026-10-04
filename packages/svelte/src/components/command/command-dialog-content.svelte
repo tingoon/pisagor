@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Portal } from "@ark-ui/svelte/portal";
-import { commandRecipe } from "@pisagor/recipes/command";
+import type { CommandProps as CommandSharedProps } from "@pisagor/props";
+import { commandRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "svelte";
 import DialogBackdrop from "../dialog/dialog-backdrop.svelte";
@@ -11,11 +12,13 @@ import DialogPositioner from "../dialog/dialog-positioner.svelte";
 import DialogTitle from "../dialog/dialog-title.svelte";
 import { setCommandContext } from "./command.context";
 
-type Props = Omit<ComponentProps<typeof DialogContent>, "showCloseButton" | "title"> & {
+type Props = Omit<
+  ComponentProps<typeof DialogContent>,
+  "showCloseButton" | "title" | "recipe"
+> & {
   description?: string;
-  recipe?: typeof commandRecipe;
   title?: string;
-};
+} & CommandSharedProps;
 
 let {
   size = "lg",

@@ -1,18 +1,19 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { sortableRecipe } from "@pisagor/recipes/sortable";
+import type { SortableProps as SortableSharedProps } from "@pisagor/props";
+import { sortableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setSortableContext } from "./sortable.context";
 
-type Props = Omit<HTMLAttributes<HTMLUListElement>, "class"> & {
+type Props = Omit<HTMLAttributes<HTMLUListElement>, "class"> &
+  {
   class?: string | undefined;
   disabled?: boolean;
   items: string[];
   onValueChange?: (items: string[]) => void;
   orientation?: "vertical" | "horizontal";
-  recipe?: typeof sortableRecipe;
-};
+  } & SortableSharedProps;
 
 let {
   orientation = "vertical",

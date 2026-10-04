@@ -1,4 +1,4 @@
-import type { RichTextEditorRecipe } from "@pisagor/recipes/rich-text-editor";
+import type { RichTextEditorRecipe } from "@pisagor/recipes";
 import type { Editor } from "@tiptap/core";
 import { createContext } from "../utils/create-context";
 
@@ -9,9 +9,7 @@ export interface RichTextEditorContextValue {
   slots: RichTextEditorRecipe;
 }
 
-const ctx = createContext<RichTextEditorContextValue>({
-  name: "RichTextEditor",
-});
+const ctx = createContext("RichTextEditor")<RichTextEditorContextValue>();
 export const setRichTextEditorContext = ctx.setContext;
 export const useRichTextEditorState = ctx.getContext;
 

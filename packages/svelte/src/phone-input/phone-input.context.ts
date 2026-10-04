@@ -2,7 +2,7 @@ import type {
   PhoneInputRecipe,
   PhoneInputRecipeSlot,
   PhoneInputVariantProps,
-} from "@pisagor/recipes/phone-input";
+} from "@pisagor/recipes";
 import type { ComponentProps } from "svelte";
 import type ComboboxContent from "../components/combobox/combobox-content.svelte";
 import type Input from "../components/input/input.svelte";
@@ -30,5 +30,5 @@ export interface PhoneInputContextValue {
   variant?: FormControlVariant;
 }
 
-const ctx = createContext<PhoneInputContextValue>({ name: "PhoneInput" });
+const ctx = createContext("PhoneInput")<PhoneInputContextValue>();
 export const setPhoneInputContext = ctx.setContext;

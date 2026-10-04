@@ -1,12 +1,7 @@
 <script lang="ts">
 import type { DatePickerInputProps as ArkInputProps } from "@ark-ui/svelte/date-picker";
 import { DatePicker as DatePickerPrimitive } from "@ark-ui/svelte/date-picker";
-import { buttonRecipe } from "@pisagor/recipes/button";
-import {
-  type FormControlGroupShellVariantProps,
-  formControlGroupShellRecipe,
-} from "@pisagor/recipes/form-control";
-import { inputGroupControlRecipe } from "@pisagor/recipes/input-group";
+import { buttonRecipe, type FormControlGroupShellVariantProps, formControlGroupShellRecipe, inputGroupControlRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
 import { useFormControlSurface } from "../surface/use-form-control-surface";

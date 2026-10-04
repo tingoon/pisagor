@@ -1,10 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import {
-  type FormControlGroupShellVariantProps,
-  formControlGroupShellRecipe,
-} from "@pisagor/recipes/form-control";
-import { inputGroupRootRecipe } from "@pisagor/recipes/input-group";
+import { type FormControlGroupShellVariantProps, formControlGroupShellRecipe, inputGroupRootRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useFormControlSurface } from "../surface/use-form-control-surface";

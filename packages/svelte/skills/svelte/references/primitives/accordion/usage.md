@@ -4,4 +4,4 @@
 import { Accordion } from "@pisagor/svelte";
 ```
 
-Prefer shorthand `items` for FAQ lists; use `Accordion.Root` for custom structure. Style with `@pisagor/recipes/accordion` — no app-level `tv()`.
+Prefer shorthand `items` for FAQ lists; use `Accordion.Root` for custom structure.

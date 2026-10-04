@@ -1,6 +1,6 @@
 <script lang="ts">
 import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
-import type { ButtonProps } from "@pisagor/props/button";
+import type { ButtonProps } from "@pisagor/props";
 import type { ComponentProps } from "svelte";
 import Button from "../button/button.svelte";
 

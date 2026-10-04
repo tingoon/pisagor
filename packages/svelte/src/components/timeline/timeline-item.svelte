@@ -1,18 +1,19 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { timelineItemRecipe } from "@pisagor/recipes/timeline";
+import type { TimelineItemProps as TimelineItemSharedProps } from "@pisagor/props";
+import { timelineItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setTimelineItemContext } from "./timeline.context";
 
-type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> & {
+type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> &
+  {
   class?: string | undefined;
-  itemRecipe?: typeof timelineItemRecipe;
-};
+  } & TimelineItemSharedProps;
 
-let { children, itemRecipe = timelineItemRecipe, class: className, ...rest }: Props = $props();
+let { children, recipe = timelineItemRecipe, class: className, ...rest }: Props = $props();
 
-const slots = $derived(itemRecipe());
+const slots = $derived(recipe());
 setTimelineItemContext({
   get slots() {
     return slots;

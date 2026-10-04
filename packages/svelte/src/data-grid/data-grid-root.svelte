@@ -1,5 +1,6 @@
 <script lang="ts">
-import { dataGridRecipe } from "@pisagor/recipes/data-grid";
+import type { DataGridProps as DataGridSharedProps } from "@pisagor/props";
+import { dataGridRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { RowData, TableOptions } from "@tanstack/svelte-table";
 import { createTable } from "@tanstack/svelte-table";
@@ -10,9 +11,9 @@ type Props = {
   children?: import("svelte").Snippet;
   class?: string | undefined;
   features?: DataGridFeatures;
-  recipe?: typeof dataGridRecipe;
   columnResizeMode?: "onChange" | "onEnd";
-} & Omit<TableOptions<DataGridFeatures, RowData>, "features">;
+} &
+  Omit<TableOptions<DataGridFeatures, RowData>, "features"> & DataGridSharedProps;
 
 let {
   children,

@@ -1,4 +1,4 @@
-import type { SidebarRecipe } from "@pisagor/recipes/sidebar";
+import type { SidebarRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 export interface SidebarContextProps {
@@ -13,6 +13,6 @@ export interface SidebarContextProps {
   toggleSidebar: () => void;
 }
 
-const ctx = createContext<SidebarContextProps>({ name: "Sidebar" });
+const ctx = createContext("Sidebar")<SidebarContextProps>();
 export const setSidebarContext = ctx.setContext;
 export const useSidebar = ctx.getContext;

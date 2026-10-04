@@ -1,16 +1,17 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { menuRecipe } from "@pisagor/recipes/menu";
+import type { MenuProps as MenuSharedProps } from "@pisagor/props";
+import { menuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { setMenuContext } from "./menu.context";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
+type Props = Omit<HTMLAttributes<HTMLElement>, "class"> &
+  {
   children?: Snippet;
   class?: string | undefined;
-  recipe?: typeof menuRecipe;
-};
+  } & MenuSharedProps;
 
 let {
   "aria-label": ariaLabel = "Menu",

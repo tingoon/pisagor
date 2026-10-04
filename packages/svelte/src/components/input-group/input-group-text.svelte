@@ -1,14 +1,15 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { inputGroupTextRecipe } from "@pisagor/recipes/input-group";
+import type { InputGroupTextProps as InputGroupTextSharedProps } from "@pisagor/props";
+import { inputGroupTextRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAttributes<HTMLSpanElement>, "class"> & {
+type Props = Omit<HTMLAttributes<HTMLSpanElement>, "class"> &
+  {
   children?: import("svelte").Snippet;
   class?: string | undefined;
-  recipe?: typeof inputGroupTextRecipe;
-};
+  } & InputGroupTextSharedProps;
 
 let { recipe = inputGroupTextRecipe, class: className, children, ...rest }: Props = $props();
 </script>

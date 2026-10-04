@@ -1,7 +1,8 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
 import { useHotkey } from "@ark-ui/svelte/hotkeys";
-import { sidebarRecipe } from "@pisagor/recipes/sidebar";
+import type { SidebarProps as SidebarSharedProps } from "@pisagor/props";
+import { sidebarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { onMount } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
@@ -29,13 +30,8 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "style"> & {
    * Called when the open state of the sidebar changes.
    */
   onOpenChange?: (open: boolean) => void;
-  /**
-   * Style recipe. Defaults to `sidebarRecipe` from `@pisagor/recipes/sidebar`.
-   * @defaultValue sidebarRecipe
-   */
-  recipe?: typeof sidebarRecipe;
   style?: string | undefined;
-};
+} & SidebarSharedProps;
 
 let {
   defaultOpen = true,

@@ -1,13 +1,14 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { breadcrumbRecipe } from "@pisagor/recipes/breadcrumb";
+import type { BreadcrumbProps as BreadcrumbSharedProps } from "@pisagor/props";
+import { breadcrumbRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "svelte/elements";
 import { setBreadcrumbContext } from "./breadcrumb.context";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
+type Props = Omit<HTMLAttributes<HTMLElement>, "class"> &
+  {
   class?: string | undefined;
-  recipe?: typeof breadcrumbRecipe;
-};
+  } & BreadcrumbSharedProps;
 
 let {
   "aria-label": ariaLabel = "Breadcrumb",

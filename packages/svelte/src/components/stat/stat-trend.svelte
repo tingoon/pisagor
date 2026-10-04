@@ -1,15 +1,15 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { type StatTrendVariantProps, statTrendRecipe } from "@pisagor/recipes/stat";
+import type { StatTrendProps as StatTrendSharedProps } from "@pisagor/props";
+import { statTrendRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
 type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
-  StatTrendVariantProps & {
+  {
     children?: import("svelte").Snippet;
     class?: string | undefined;
-    recipe?: typeof statTrendRecipe;
-  };
+  } & StatTrendSharedProps;
 
 let {
   trend = "neutral",

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { inputGroupTextareaControlRecipe } from "@pisagor/recipes/input-group";
+import { inputGroupTextareaControlRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import Textarea from "../textarea/textarea.svelte";
 

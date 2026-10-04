@@ -1,4 +1,4 @@
-import type { MenuRecipe } from "@pisagor/recipes/menu";
+import type { MenuRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils/create-context";
 
 interface MenuContextValue {
@@ -6,6 +6,4 @@ interface MenuContextValue {
 }
 
 export const { setContext: setMenuContext, getContext: useMenu } =
-  createContext<MenuContextValue>({
-    name: "Menu",
-  });
+  createContext("Menu")<MenuContextValue>();

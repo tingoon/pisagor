@@ -1,8 +1,8 @@
 <script lang="ts">
 import type { FieldTextareaProps } from "@ark-ui/svelte/field";
 import { Field } from "@ark-ui/svelte/field";
-import { formControlShellRecipe } from "@pisagor/recipes/form-control";
-import { type TextareaRecipeSlot, textareaRecipe } from "@pisagor/recipes/textarea";
+import type { TextareaProps as TextareaSharedProps } from "@pisagor/props";
+import { formControlShellRecipe, type TextareaRecipeSlot, textareaRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import InputClearButton from "../input/input-clear-button.svelte";
 import InputGroupAddon from "../input-group/input-group-addon.svelte";
@@ -11,7 +11,8 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<FieldTextareaProps, "class"> & {
+type Props = Omit<FieldTextareaProps, "class"> &
+  {
   /**
    * Whether to show a clear button when the textarea has a value.
    * @defaultValue false
@@ -21,10 +22,9 @@ type Props = Omit<FieldTextareaProps, "class"> & {
   classNames?: Partial<Record<TextareaRecipeSlot, string>>;
   /** Called with the string value when the textarea changes. */
   onValueChange?: (value: string) => void;
-  recipe?: typeof textareaRecipe;
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-};
+  } & TextareaSharedProps;
 
 let {
   variant: variantProp,

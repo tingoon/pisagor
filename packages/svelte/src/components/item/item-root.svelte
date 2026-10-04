@@ -1,17 +1,17 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes/item";
+import type { ItemProps as ItemSharedProps } from "@pisagor/props";
+import { itemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setItemContext } from "./item.context";
 import { useItemGroup } from "./item-group.context";
 
 type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
-  ItemVariantProps & {
+  {
     children?: import("svelte").Snippet;
     class?: string | undefined;
-    recipe?: typeof itemRecipe;
-  };
+  } & ItemSharedProps;
 
 let {
   variant: variantProp,

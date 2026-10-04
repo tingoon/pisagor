@@ -1,4 +1,4 @@
-import type { DataGridRecipe } from "@pisagor/recipes/data-grid";
+import type { DataGridRecipe } from "@pisagor/recipes";
 import type {
   Column,
   Header,
@@ -27,26 +27,23 @@ export interface DataGridRowContextValue {
   row: Row<DataGridFeatures, RowData>;
 }
 
-const rootCtx = createContext<DataGridContextValue>({ name: "DataGrid" });
+const rootCtx = createContext("DataGrid")<DataGridContextValue>();
 export const setDataGridContext = rootCtx.setContext;
 export const useDataGridContext = rootCtx.getContext;
 
-const headerGroupCtx = createContext<DataGridHeaderGroupContextValue>({
-  name: "DataGridHeaderGroup",
-});
+const headerGroupCtx = createContext(
+  "DataGridHeaderGroup",
+)<DataGridHeaderGroupContextValue>();
 export const setDataGridHeaderGroupContext = headerGroupCtx.setContext;
 export const useDataGridHeaderGroupContext = headerGroupCtx.getContext;
 
-const headerCellCtx = createContext<DataGridHeaderCellContextValue | undefined>(
-  {
-    name: "DataGridHeaderCell",
-    strict: false,
-  },
-);
+const headerCellCtx = createContext("DataGridHeaderCell")<
+  DataGridHeaderCellContextValue | undefined
+>({ strict: false });
 export const setDataGridHeaderCellContext = headerCellCtx.setContext;
 export const useDataGridHeaderCellContext = headerCellCtx.getContext;
 
-const rowCtx = createContext<DataGridRowContextValue>({ name: "DataGridRow" });
+const rowCtx = createContext("DataGridRow")<DataGridRowContextValue>();
 export const setDataGridRowContext = rowCtx.setContext;
 export const useDataGridRowContext = rowCtx.getContext;
 

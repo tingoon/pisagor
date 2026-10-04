@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { type SurfaceVariantProps, surfaceRecipe } from "@pisagor/recipes/surface";
+import type { SurfaceProps as SurfaceSharedProps } from "@pisagor/props";
+import { surfaceRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { type SurfaceVariant, setSurfaceContext, useSurface } from "./surface.context";
@@ -13,11 +14,10 @@ const AUTO_VARIANTS = [
 ] as const satisfies readonly SurfaceVariant[];
 
 type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
-  SurfaceVariantProps & {
+  {
     children?: import("svelte").Snippet;
     class?: string | undefined;
-    recipe?: typeof surfaceRecipe;
-  };
+  } & SurfaceSharedProps;
 
 let {
   bordered = false,

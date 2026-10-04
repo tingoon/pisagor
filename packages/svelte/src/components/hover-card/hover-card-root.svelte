@@ -1,10 +1,11 @@
 <script lang="ts">
 import type { HoverCardRootProps } from "@ark-ui/svelte/hover-card";
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/svelte/hover-card";
-import { hoverCardRecipe } from "@pisagor/recipes/hover-card";
+import type { HoverCardProps as HoverCardSharedProps } from "@pisagor/props";
+import { hoverCardRecipe } from "@pisagor/recipes";
 import { setHoverCardContext } from "./hover-card.context";
 
-type Props = HoverCardRootProps & { recipe?: typeof hoverCardRecipe };
+type Props = HoverCardRootProps & HoverCardSharedProps;
 
 let {
   closeDelay = 300,

@@ -1,6 +1,7 @@
 <script lang="ts">
 import { useFileUploadContext } from "@ark-ui/svelte/file-upload";
-import { fileUploadItemRecipe } from "@pisagor/recipes/file-upload";
+import type { FileUploadItemProps as FileUploadItemSharedProps } from "@pisagor/props";
+import { fileUploadItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useFileUpload } from "./file-upload.context";
 import FileUploadItem from "./file-upload-item.svelte";
@@ -13,13 +14,12 @@ import FileUploadItemSize from "./file-upload-item-size.svelte";
 
 type Props = {
   class?: string | undefined;
-  itemRecipe?: typeof fileUploadItemRecipe;
-};
+  } & FileUploadItemSharedProps;
 
-let { class: className, itemRecipe = fileUploadItemRecipe }: Props = $props();
+let { class: className, recipe = fileUploadItemRecipe }: Props = $props();
 const api = useFileUploadContext();
 const { slots } = useFileUpload();
-const itemSlots = $derived(itemRecipe());
+const itemSlots = $derived(recipe());
 const files = $derived(api().acceptedFiles);
 </script>
 
@@ -28,7 +28,7 @@ const files = $derived(api().acceptedFiles);
     {#each files as file, index (`${file.name}-${index}`)}
       {@const isImage = file.type.startsWith("image/")}
       {@const extension = file.name.split(".").pop()}
-      <FileUploadItem class={itemSlots.listItem({ class: cn(className) })} {file} {itemRecipe}>
+      <FileUploadItem class={itemSlots.listItem({ class: cn(className) })} {file} {recipe}>
         <FileUploadItemPreview class={itemSlots.listPreview()} type={isImage ? "image/*" : ".*"}>
           {#if isImage}
             <FileUploadItemPreviewImage />

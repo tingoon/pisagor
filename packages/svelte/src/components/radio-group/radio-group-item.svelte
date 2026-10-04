@@ -1,19 +1,19 @@
 <script lang="ts">
 import type { RadioGroupItemProps as ArkRadioGroupItemProps } from "@ark-ui/svelte/radio-group";
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/svelte/radio-group";
-import { formControlRadioToggleRecipe } from "@pisagor/recipes/form-control";
-import { radioGroupItemRecipe } from "@pisagor/recipes/radio-group";
+import type { RadioGroupItemProps as RadioGroupItemSharedProps } from "@pisagor/props";
+import { formControlRadioToggleRecipe, radioGroupItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<ArkRadioGroupItemProps, "class"> & {
+type Props = Omit<ArkRadioGroupItemProps, "class"> &
+  {
   variant?: FormControlVariant;
   class?: string | undefined;
-  recipe?: typeof radioGroupItemRecipe;
   tabindex?: number | null;
-};
+  } & RadioGroupItemSharedProps;
 
 let {
   variant: variantProp,

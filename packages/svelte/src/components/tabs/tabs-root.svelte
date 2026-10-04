@@ -1,14 +1,15 @@
 <script lang="ts">
 import type { TabsRootProps } from "@ark-ui/svelte/tabs";
 import { Tabs as TabsPrimitive } from "@ark-ui/svelte/tabs";
-import { tabsRecipe } from "@pisagor/recipes/tabs";
+import type { TabsProps as TabsSharedProps } from "@pisagor/props";
+import { tabsRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setTabsContext } from "./tabs.context";
 
-type Props = Omit<TabsRootProps, "class"> & {
+type Props = Omit<TabsRootProps, "class"> &
+  {
   class?: string | undefined;
-  recipe?: typeof tabsRecipe;
-};
+  } & TabsSharedProps;
 
 let { children, recipe = tabsRecipe, class: className, ...rest }: Props = $props();
 const slots = $derived(recipe());

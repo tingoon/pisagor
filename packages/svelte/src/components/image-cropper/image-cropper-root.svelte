@@ -1,19 +1,20 @@
 <script lang="ts">
 import type { ImageCropperRootProps as ArkRootProps } from "@ark-ui/svelte/image-cropper";
 import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/svelte/image-cropper";
-import { imageCropperRecipe } from "@pisagor/recipes/image-cropper";
+import type { ImageCropperProps as ImageCropperSharedProps } from "@pisagor/props";
+import { imageCropperRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setImageCropperContext } from "./image-cropper.context";
 import ImageCropperImage from "./image-cropper-image.svelte";
 import ImageCropperSelection from "./image-cropper-selection.svelte";
 
-type Props = Omit<ArkRootProps, "class" | "src" | "cropShape"> & {
+type Props = Omit<ArkRootProps, "class" | "src" | "cropShape"> &
+  {
   alt?: string;
   class?: string | undefined;
   cropShape?: "rectangle" | "circle";
-  recipe?: typeof imageCropperRecipe;
   src?: string;
-};
+  } & ImageCropperSharedProps;
 
 let {
   alt,
