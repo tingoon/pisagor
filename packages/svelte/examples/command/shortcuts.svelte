@@ -11,10 +11,12 @@ const initialItems = [
   { label: "Undo", shortcut: "⌘Z", value: "undo" },
   { label: "Find", shortcut: "⌘F", value: "find" },
 ];
-const { contains } = useFilter({ sensitivity: "base" });
+const filters = useFilter({ sensitivity: "base" });
 
 const { collection, filter } = useListCollection({
-  filter: contains,
+  filter(itemString, filterText) {
+    return filters().contains(itemString, filterText);
+  },
   initialItems,
 });
 </script>
@@ -27,7 +29,7 @@ const { collection, filter } = useListCollection({
   <Command.Content>
     <Command.Empty />
     <Command.List>
-      {#each collection.items as item}
+      {#each collection().items as item}
         <Command.Item {item}>
           {item.label}
           <Command.Shortcut>{item.shortcut}</Command.Shortcut>

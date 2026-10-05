@@ -1,5 +1,7 @@
 <script lang="ts">
 import { Field, TagsInput } from "@pisagor/svelte";
+
+let value = $state(["react"]);
 </script>
 
 <Field>
@@ -7,7 +9,7 @@ import { Field, TagsInput } from "@pisagor/svelte";
   <TagsInput
     class="w-full"
     sanitizeValue={(value) => value.trim().toLowerCase()}
-    value={["react"]}
+    {value}
   >
     {#each value as tag, index}
       <TagsInput.Item {index} value={tag}>{tag}</TagsInput.Item>

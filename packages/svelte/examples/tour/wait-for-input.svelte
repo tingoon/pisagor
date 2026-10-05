@@ -1,7 +1,7 @@
 <script lang="ts">
 import { waitForEvent } from "@ark-ui/svelte/tour";
+import { buttonRecipe } from "@pisagor/recipes";
 import {
-  Button,
   Checkbox,
   Field,
   Input,
@@ -89,13 +89,9 @@ const steps: TourStepDetails[] = [
 
 <div class="flex flex-col gap-2">
   <Tour {steps}>
-    <Tour.Trigger>
-      {#snippet asChild(
-        props,
-      )}
-        <Button {...props()} variant="outline">Start form tutorial</Button>
-      {/snippet}
-    </Tour.Trigger>
+    <Tour.Trigger class={buttonRecipe({ variant: "outline" }).base()}
+      >Start form tutorial</Tour.Trigger
+    >
     <div
       class="flex flex-col gap-2 rounded-lg border border-border bg-muted/50 p-4"
     >

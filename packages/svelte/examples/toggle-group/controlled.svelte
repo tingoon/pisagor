@@ -9,7 +9,7 @@ let value = $state(["bold"]);
 
 <div class="flex flex-col items-center gap-2">
   <ToggleGroup.Root
-    onValueChange={(value) => (value = Array.isArray(value ? value : [value]))}
+    onValueChange={(next) => (value = Array.isArray(next) ? next : [next])}
     {value}
   >
     <ToggleGroup.Item aria-label="Toggle bold" value="bold">

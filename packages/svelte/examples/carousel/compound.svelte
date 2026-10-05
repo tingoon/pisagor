@@ -11,7 +11,7 @@ const slides = numberedSlides(8);
     <Carousel.NextTrigger>Next</Carousel.NextTrigger>
   </Carousel.Control>
   <Carousel.ItemGroup>
-    {#each slides as slide}
+    {#each slides as slide, index}
       <Carousel.Item {index}>
         {slide.content}
       </Carousel.Item>

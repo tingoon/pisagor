@@ -27,7 +27,7 @@ const data = [
       <Popover modal={false} positioning={{ placement: "top" }}>
         <Popover.Trigger>
           {#snippet asChild(
-            props,
+            props: any,
           )}
             <Button
               {...props()}

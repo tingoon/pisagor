@@ -21,7 +21,7 @@ function onSortingChange(
       data={allUsers}
       features={dataGridFeatures}
       {onSortingChange}
-      {sorting}
+      state={{ sorting }}
     >
       <DataGrid.Toolbar>
         <p class="font-medium text-sm">

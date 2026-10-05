@@ -23,7 +23,7 @@ function onSortingChange(
 }
 </script>
 
-<DataTable {columns} {data} {onSortingChange} {sorting}>
+<DataTable {columns} {data} {onSortingChange} state={{ sorting }}>
   <Table>
     <Table.Header>
       <DataTable.Header>

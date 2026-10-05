@@ -27,18 +27,14 @@ import WarningIcon from "phosphor-svelte/lib/WarningIcon";
       <Badge variant="info">Maintenance</Badge>
     {/snippet}
   </Announcement>
-  <Announcement.Root>
-    {#snippet asChild(
-      props,
-    )}
-      <a {...props()} href="https://example.com/announcement">
-        <Badge variant="success"> <CheckCircleIcon /> Deployed </Badge>
-        <Announcement.Title>
-          Production build completed in 2m 34s <ArrowUpRightIcon />
-        </Announcement.Title>
-      </a>
-    {/snippet}
-  </Announcement.Root>
+  <a class="block" href="https://example.com/announcement">
+    <Announcement.Root>
+      <Badge variant="success"> <CheckCircleIcon /> Deployed </Badge>
+      <Announcement.Title>
+        Production build completed in 2m 34s <ArrowUpRightIcon />
+      </Announcement.Title>
+    </Announcement.Root>
+  </a>
   <Announcement
     title="Your free trial expires in 3 days. Upgrade to keep access."
   >

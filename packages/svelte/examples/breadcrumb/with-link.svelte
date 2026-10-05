@@ -5,23 +5,11 @@ import { Breadcrumb } from "@pisagor/svelte";
 <Breadcrumb.Root>
   <Breadcrumb.List>
     <Breadcrumb.Item>
-      <Breadcrumb.Link>
-        {#snippet asChild(
-          props,
-        )}
-          <a {...props()} href="/docs">Docs</a>
-        {/snippet}
-      </Breadcrumb.Link>
+      <Breadcrumb.Link href="/docs">Docs</Breadcrumb.Link>
     </Breadcrumb.Item>
     <Breadcrumb.Separator />
     <Breadcrumb.Item>
-      <Breadcrumb.Link>
-        {#snippet asChild(
-          props,
-        )}
-          <a {...props()} href="/docs/components">Components</a>
-        {/snippet}
-      </Breadcrumb.Link>
+      <Breadcrumb.Link href="/docs/components">Components</Breadcrumb.Link>
     </Breadcrumb.Item>
     <Breadcrumb.Separator />
     <Breadcrumb.Item>

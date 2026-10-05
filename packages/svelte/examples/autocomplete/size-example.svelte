@@ -3,6 +3,12 @@ import { useListCollection } from "@ark-ui/svelte/collection";
 import { useFilter } from "@ark-ui/svelte/locale";
 import { Autocomplete } from "@pisagor/svelte";
 
+interface Props {
+  size: "sm" | "md" | "lg";
+}
+
+const { size }: Props = $props();
+
 const initialItems = [
   { label: "Apple", value: "apple" },
   { label: "Banana", value: "banana" },
@@ -22,7 +28,7 @@ const { collection, filter } = useListCollection({
   {collection}
   onInputValueChange={({ inputValue }) => filter(inputValue)}
 >
-  <Autocomplete.Input placeholder="Select a fruit..." showTrigger />
+  <Autocomplete.Input clearable placeholder={`Size ${size}`} {size} />
   <Autocomplete.Content>
     <Autocomplete.Empty />
     <Autocomplete.List>

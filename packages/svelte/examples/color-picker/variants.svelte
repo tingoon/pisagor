@@ -3,7 +3,7 @@ import { ColorPicker, InputGroup } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-col gap-2">
-  <ColorPicker format="hsla" value="#eb5e41" variant="primary">
+  <ColorPicker format="hsla" value="#eb5e41">
     <ColorPicker.Control>
       <InputGroup>
         <ColorPicker.Trigger>
@@ -11,9 +11,9 @@ import { ColorPicker, InputGroup } from "@pisagor/svelte";
             <ColorPicker.SwatchPreview />
           </InputGroup.Addon>
         </ColorPicker.Trigger>
-        <ColorPicker.Input>
+        <ColorPicker.Input channel="hex">
           {#snippet asChild(
-            props,
+            props: any,
           )}
             <InputGroup.Input {...props()} placeholder="Primary" />
           {/snippet}
@@ -21,7 +21,7 @@ import { ColorPicker, InputGroup } from "@pisagor/svelte";
       </InputGroup>
     </ColorPicker.Control>
   </ColorPicker>
-  <ColorPicker format="hsla" value="#eb5e41" variant="secondary">
+  <ColorPicker format="hsla" value="#eb5e41">
     <ColorPicker.Control>
       <InputGroup>
         <ColorPicker.Trigger>
@@ -29,9 +29,9 @@ import { ColorPicker, InputGroup } from "@pisagor/svelte";
             <ColorPicker.SwatchPreview />
           </InputGroup.Addon>
         </ColorPicker.Trigger>
-        <ColorPicker.Input>
+        <ColorPicker.Input channel="hex">
           {#snippet asChild(
-            props,
+            props: any,
           )}
             <InputGroup.Input {...props()} placeholder="Secondary" />
           {/snippet}

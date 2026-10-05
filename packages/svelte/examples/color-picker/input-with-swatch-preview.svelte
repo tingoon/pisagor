@@ -8,9 +8,9 @@ import { ColorPicker, InputGroup } from "@pisagor/svelte";
       <InputGroup.Addon align="inline-start">
         <ColorPicker.SwatchPreview />
       </InputGroup.Addon>
-      <ColorPicker.Input>
+      <ColorPicker.Input channel="hex">
         {#snippet asChild(
-          props,
+          props: any,
         )}
           <InputGroup.Input {...props()} />
         {/snippet}

@@ -6,8 +6,8 @@ import { allUsers, userColumns } from "./helpers";
 
 const columns = [...userColumns];
 let columnPinning = $state<ColumnPinningState>({
-  left: ["name"],
-  right: ["status"],
+  end: ["status"],
+  start: ["name"],
 });
 
 function onColumnPinningChange(

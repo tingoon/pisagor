@@ -6,7 +6,7 @@ import { Button, ColorPicker, Input } from "@pisagor/svelte";
   <ColorPicker.Control>
     <ColorPicker.Trigger>
       {#snippet asChild(
-        props,
+        props: any,
       )}
         <Button {...props()} size="lg" variant="ghost">
           <ColorPicker.SwatchPreview class="size-6" />
@@ -23,21 +23,21 @@ import { Button, ColorPicker, Input } from "@pisagor/svelte";
     <div class="grid grid-cols-3 gap-2">
       <ColorPicker.Input channel="red">
         {#snippet asChild(
-          props,
+          props: any,
         )}
           <Input {...props()} />
         {/snippet}
       </ColorPicker.Input>
       <ColorPicker.Input channel="green">
         {#snippet asChild(
-          props,
+          props: any,
         )}
           <Input {...props()} />
         {/snippet}
       </ColorPicker.Input>
       <ColorPicker.Input channel="blue">
         {#snippet asChild(
-          props,
+          props: any,
         )}
           <Input {...props()} />
         {/snippet}

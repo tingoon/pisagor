@@ -48,8 +48,8 @@ function onExpandedChange(
       {columns}
       {data}
       features={dataGridFeatures}
-      getRowId={(row) => row.id}
-      getSubRows={(row) => row.subRows}
+      getRowId={(row: OrgNode) => row.id}
+      getSubRows={(row: OrgNode) => row.subRows}
       {onExpandedChange}
       state={{ expanded }}
     >

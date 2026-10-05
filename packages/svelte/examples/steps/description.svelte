@@ -10,7 +10,7 @@ const items = [
 
 <Steps count={items.length}>
   <Steps.List>
-    {#each items as item}
+    {#each items as item, index}
       <Steps.Item {index}>
         <Steps.Trigger>
           <Steps.Indicator>{index + 1}</Steps.Indicator>

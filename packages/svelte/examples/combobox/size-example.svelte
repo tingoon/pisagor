@@ -3,10 +3,17 @@ import { useListCollection } from "@ark-ui/svelte/collection";
 import { useFilter } from "@ark-ui/svelte/locale";
 import { Combobox } from "@pisagor/svelte";
 
-const initialItems = Array.from({ length: 30 }, (_, i) => ({
-  label: `Option ${i + 1}`,
-  value: `option-${i + 1}`,
-}));
+interface Props {
+  size: "sm" | "md" | "lg";
+}
+
+const { size }: Props = $props();
+
+const initialItems = [
+  { label: "Apple", value: "apple" },
+  { label: "Banana", value: "banana" },
+  { label: "Cherry", value: "cherry" },
+];
 const filters = useFilter({ sensitivity: "base" });
 
 const { collection, filter } = useListCollection({
@@ -21,8 +28,8 @@ const { collection, filter } = useListCollection({
   {collection}
   onInputValueChange={({ inputValue }) => filter(inputValue)}
 >
-  <Combobox.Input placeholder="Search..." />
-  <Combobox.Content class="max-h-60">
+  <Combobox.Input placeholder={`Size ${size}`} {size} />
+  <Combobox.Content>
     <Combobox.List>
       {#each collection().items as item}
         <Combobox.Item {item}>

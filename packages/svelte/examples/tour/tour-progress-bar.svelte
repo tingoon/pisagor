@@ -9,6 +9,6 @@ const { tour } = useTourContext();
 >
   <div
     class="h-full bg-primary transition-[width]"
-    style={`width: ${tour.getProgressPercent()}%`}
+    style={`width: ${tour().getProgressPercent()}%`}
   ></div>
 </div>

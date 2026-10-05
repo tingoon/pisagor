@@ -11,7 +11,7 @@ const slides = imageSources();
     <Carousel.NextTrigger>Next</Carousel.NextTrigger>
 
     <Carousel.ItemGroup>
-      {#each slides as slide}
+      {#each slides as slide, index}
         <Carousel.Item {index}>
           <img alt={slide.alt} height={300} src={slide.src} width={500}>
         </Carousel.Item>
@@ -19,7 +19,7 @@ const slides = imageSources();
     </Carousel.ItemGroup>
   </Carousel.Control>
   <Carousel.IndicatorGroup class="mt-4">
-    {#each slides as slide}
+    {#each slides as slide, index}
       <Carousel.Indicator class="size-10 rounded-md" {index}>
         <img alt={slide.alt} height={40} src={slide.src} width={40}>
       </Carousel.Indicator>

@@ -1,5 +1,6 @@
 <script lang="ts">
 import { waitForElement, waitForEvent } from "@ark-ui/svelte/tour";
+import { buttonRecipe } from "@pisagor/recipes";
 import { Button, Tour, type TourStepDetails } from "@pisagor/svelte";
 import PlusIcon from "phosphor-svelte/lib/PlusIcon";
 
@@ -60,13 +61,9 @@ const addItem = () => {
 
 <div class="flex flex-col gap-2">
   <Tour {steps}>
-    <Tour.Trigger>
-      {#snippet asChild(
-        props,
-      )}
-        <Button {...props()} variant="outline">Start tour</Button>
-      {/snippet}
-    </Tour.Trigger>
+    <Tour.Trigger class={buttonRecipe({ variant: "outline" }).base()}
+      >Start tour</Tour.Trigger
+    >
     <div class="flex flex-col gap-2">
       <Button id="btn-add-item" onclick={addItem} size="sm" variant="outline">
         <PlusIcon class="size-4" />

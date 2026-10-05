@@ -1,5 +1,6 @@
 <script lang="ts">
 import { Surface } from "@pisagor/svelte";
+import FormControlsDemo from "./form-controls-demo.svelte";
 </script>
 
 <Surface bordered padding="md" variant="default">

@@ -15,8 +15,8 @@ const columns = [
 ];
 </script>
 
-<DataGrid {columns} {data} features={dataGridFeatures} variant="striped">
-  <Table>
+<DataGrid {columns} {data} features={dataGridFeatures}>
+  <Table variant="striped">
     <Table.Header>
       <DataGrid.Header>
         <DataGrid.HeaderRow>

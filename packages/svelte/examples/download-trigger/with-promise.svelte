@@ -16,7 +16,7 @@ const data = () =>
 
 <DownloadTrigger {data} fileName="data.json" mimeType="application/json">
   {#snippet asChild(
-    props,
+    props: any,
   )}
     <Button {...props()} size="lg" variant="outline">
       <DownloadIcon />

@@ -8,17 +8,7 @@ import { Button, Input, Popover } from "@pisagor/svelte";
       <Popover.Trigger>
         <Button variant="outline">Open</Button>
       </Popover.Trigger>
-      <Popover.Anchor>
-        {#snippet asChild(
-          props,
-        )}
-          <Input
-            {...props()}
-            class="w-full"
-            placeholder="jane.doe@example.com"
-          />
-        {/snippet}
-      </Popover.Anchor>
+      <Input class="w-full" placeholder="jane.doe@example.com" />
       <Popover.Content class="w-56">
         <Popover.Header
           description="We'll send you a link to reset your password."

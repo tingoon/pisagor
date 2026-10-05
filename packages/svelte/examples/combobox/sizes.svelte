@@ -1,4 +1,5 @@
 <script lang="ts">
+import SizeExample from "./size-example.svelte";
 </script>
 
 <div class="flex flex-col gap-2">

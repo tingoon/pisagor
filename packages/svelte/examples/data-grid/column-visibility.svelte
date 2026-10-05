@@ -31,16 +31,15 @@ function onColumnCheckedChange(id: string, checked: boolean | "indeterminate") {
       <DataGrid.Toolbar class="flex flex-wrap gap-3">
         <p class="font-medium text-sm">Toggle columns</p>
         {#each columns as column}
-          {const id =
-            "accessorKey" in column ? String(column.accessorKey) : column.id}
+          {@const id = String(column.accessorKey)}
           <div class="flex items-center gap-2 text-sm">
             <Checkbox
-              aria-label={`Toggle ${"header" in column ? column.header : id}`}
+              aria-label={`Toggle ${column.header}`}
               checked={columnVisibility[id] !== false}
               onCheckedChange={({ checked }) =>
                 onColumnCheckedChange(id, checked)}
             />
-            <span>{"header" in column ? column.header : id}</span>
+            <span>{column.header}</span>
           </div>
         {/each}
       </DataGrid.Toolbar>

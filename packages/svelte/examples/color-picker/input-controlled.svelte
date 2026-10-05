@@ -7,9 +7,9 @@ let value = $state("#eb5e41");
 <div class="flex flex-col gap-2">
   <ColorPicker onValueChange={(v) => (value = v)} {value}>
     <ColorPicker.Control>
-      <ColorPicker.Input>
+      <ColorPicker.Input channel="hex">
         {#snippet asChild(
-          props,
+          props: any,
         )}
           <Input {...props()} />
         {/snippet}

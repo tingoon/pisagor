@@ -20,7 +20,9 @@ const collection = createListCollection({
     <Listbox.Content class="overflow-x-auto">
       {#each collection.items as item}
         <Listbox.Item class="w-full flex-col items-start" {item}>
-          <div class="aspect-square size-20 w-full rounded-lg bg-foreground" />
+          <div
+            class="aspect-square size-20 w-full rounded-lg bg-foreground"
+          ></div>
           <div>
             <Listbox.ItemText>{item.title}</Listbox.ItemText>
             <p class="text-muted-foreground text-xs">{item.artist}</p>

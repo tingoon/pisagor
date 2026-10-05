@@ -8,7 +8,7 @@ import { Button, FileUpload } from "@pisagor/svelte";
     <FileUpload.Title>Drop files here</FileUpload.Title>
     <FileUpload.Trigger>
       {#snippet asChild(
-        props,
+        props: any,
       )}
         <Button {...props()}>Browse files</Button>
       {/snippet}

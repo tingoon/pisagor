@@ -2,10 +2,4 @@
 import { NumberInput } from "@pisagor/svelte";
 </script>
 
-<NumberInput>
-  <NumberInput.Control>
-    <NumberInput.DecrementTrigger />
-    <NumberInput.Input />
-    <NumberInput.IncrementTrigger />
-  </NumberInput.Control>
-</NumberInput>
+<NumberInput defaultValue="0" max={10} min={0} />

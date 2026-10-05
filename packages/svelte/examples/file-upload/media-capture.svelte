@@ -7,7 +7,7 @@ import CameraIcon from "phosphor-svelte/lib/CameraIcon";
   <div class="flex justify-center">
     <FileUpload.Trigger>
       {#snippet asChild(
-        props,
+        props: any,
       )}
         <Button {...props()} variant="outline">
           <CameraIcon />

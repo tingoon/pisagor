@@ -13,7 +13,7 @@ const presets = [
 <DatePicker defaultValue={[parseDate(new Date())]}>
   <DatePicker.Trigger>
     {#snippet asChild(
-      props,
+      props: any,
     )}
       <Button {...props()} variant="outline">
         <CalendarIcon />
@@ -36,7 +36,7 @@ const presets = [
               ]}
             >
               {#snippet asChild(
-                props,
+                props: any,
               )}
                 <Button
                   {...props()}
