@@ -1,9 +1,9 @@
 <script lang="ts">
 import type { DataTableProps as BaseDataTableProps } from "@pisagor/props";
 import { dataTableRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { RowData, TableOptions } from "@tanstack/svelte-table";
 import { createTable } from "@tanstack/svelte-table";
+import { reactiveTableOptions } from "../utils";
 import { setDataTableContext } from "./data-table.context";
 import {
   type DataTableFeatures,
@@ -29,16 +29,22 @@ let {
 
 const slots = $derived(recipe());
 
-const table = createTable({
-  ...restOptions,
-  get columns() {
-    return columns;
-  },
-  get data() {
-    return data;
-  },
-  features,
-});
+const table = createTable(
+  reactiveTableOptions(
+    {
+      get columns() {
+        return columns;
+      },
+      get data() {
+        return data;
+      },
+      get features() {
+        return features;
+      },
+    },
+    () => restOptions,
+  ),
+);
 
 setDataTableContext({
   get slots() {
@@ -51,7 +57,7 @@ setDataTableContext({
 </script>
 
 <div
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-part="root"
   data-scope="data-table"
 >
