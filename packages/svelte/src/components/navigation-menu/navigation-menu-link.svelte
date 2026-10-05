@@ -1,14 +1,11 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
+import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAnchorAttributes } from "svelte/elements";
 import { useNavigationMenu } from "./navigation-menu.context";
 
-type Props = Omit<HTMLAnchorAttributes, "class"> & {
-  active?: boolean;
-  children?: Snippet;
-  class?: string | undefined;
-};
+type Props = HTMLAnchorAttributes & { active?: boolean; children?: Snippet };
 
 let { active = false, class: className, children, ...rest }: Props = $props();
 const { slots } = useNavigationMenu();
@@ -18,7 +15,7 @@ const { slots } = useNavigationMenu();
   as="a"
   {...rest}
   aria-current={active ? "page" : undefined}
-  class={slots.link({ class: className })}
+  class={slots.link({ class: cn(className) })}
   data-active={active ? "" : undefined}
   data-part="link"
   data-scope="navigation-menu"

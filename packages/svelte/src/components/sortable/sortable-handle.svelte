@@ -1,14 +1,16 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
+import { cn } from "@pisagor/utils";
 import DotsSixVerticalIcon from "phosphor-svelte/lib/DotsSixVerticalIcon";
 import { onMount } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { useSortable, useSortableItem } from "./sortable.context";
 
-type Props = Omit<HTMLAttributes<HTMLButtonElement>, "class"> & {
-  class?: string | undefined;
-};
-let { children, class: className, ...rest }: Props = $props();
+let {
+  children,
+  class: className,
+  ...rest
+}: HTMLAttributes<HTMLButtonElement> = $props();
 const item = useSortableItem();
 const sortable = useSortable();
 
@@ -49,7 +51,7 @@ function handleKeyDown(event: KeyboardEvent) {
   aria-label={(rest as { "aria-label"?: string })["aria-label"] ??
     "Drag to reorder"}
   class={item.slots.handle({
-    class: className,
+    class: cn(className),
     disabled: sortable.disabled,
   })}
   data-part="handle"

@@ -1,19 +1,21 @@
 <script lang="ts">
-import type { TagsInputRootProps as ArkRootProps } from "@ark-ui/svelte/tags-input";
-import { TagsInput as TagsInputPrimitive } from "@ark-ui/svelte/tags-input";
+import {
+  type TagsInputRootProps as ArkRootProps,
+  TagsInput as TagsInputPrimitive,
+} from "@ark-ui/svelte/tags-input";
 import type { TagsInputProps as BaseTagsInputProps } from "@pisagor/props";
 import {
   type FormControlGroupShellVariantProps,
   tagsInputRecipe,
 } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import { setTagsInputSlotsContext } from "./tags-input.context";
 import TagsInputControl from "./tags-input-control.svelte";
 import TagsInputInput from "./tags-input-input.svelte";
 import TagsInputItem from "./tags-input-item.svelte";
 
-type Props = Omit<ArkRootProps, "class" | "onValueChange"> &
+type Props = Omit<ArkRootProps, "onValueChange"> &
   Pick<FormControlGroupShellVariantProps, "size" | "variant"> & {
-    class?: string | undefined;
     clearable?: boolean;
     onValueChange?: (value: string[]) => void;
     placeholder?: string;
@@ -46,7 +48,7 @@ function handleValueChange(details: { value: string[] }) {
 
 <TagsInputPrimitive.Root
   {...rest}
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   data-size={size}
   {editable}
   onValueChange={onValueChange ? handleValueChange : undefined}

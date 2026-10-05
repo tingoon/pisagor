@@ -2,8 +2,7 @@
 import type { ComponentProps } from "svelte";
 import DialogCloseTrigger from "../dialog/dialog-close-trigger.svelte";
 
-type Props = ComponentProps<typeof DialogCloseTrigger>;
-let props: Props = $props();
+let props: ComponentProps<typeof DialogCloseTrigger> = $props();
 </script>
 
 <DialogCloseTrigger {...props} />

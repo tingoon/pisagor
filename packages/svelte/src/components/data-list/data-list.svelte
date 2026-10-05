@@ -8,8 +8,7 @@ type DataListPresetItem = {
   label: string;
   value: string;
 };
-type Props = Omit<HTMLAttributes<HTMLDListElement>, "class" | "children"> & {
-  class?: string | undefined;
+type Props = Omit<HTMLAttributes<HTMLDListElement>, "children"> & {
   items?: DataListPresetItem[];
   orientation?: "horizontal" | "vertical";
 } & BaseDataListProps;

@@ -2,11 +2,11 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { SortableProps as BaseSortableProps } from "@pisagor/props";
 import { sortableRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setSortableContext } from "./sortable.context";
 
-type Props = Omit<HTMLAttributes<HTMLUListElement>, "class"> & {
-  class?: string | undefined;
+type Props = HTMLAttributes<HTMLUListElement> & {
   disabled?: boolean;
   items: string[];
   onValueChange?: (items: string[]) => void;
@@ -162,7 +162,7 @@ setSortableContext({
 <Ark
   as="ul"
   {...rest}
-  class={recipe({ class: className, orientation })}
+  class={recipe({ class: cn(className), orientation })}
   data-orientation={orientation}
   data-part="root"
   data-scope="sortable"

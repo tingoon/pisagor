@@ -2,8 +2,7 @@
 import type { ComponentProps } from "svelte";
 import CalendarPresetTrigger from "../calendar/calendar-preset-trigger.svelte";
 
-type Props = ComponentProps<typeof CalendarPresetTrigger>;
-let props: Props = $props();
+let props: ComponentProps<typeof CalendarPresetTrigger> = $props();
 </script>
 
 <CalendarPresetTrigger {...props} />

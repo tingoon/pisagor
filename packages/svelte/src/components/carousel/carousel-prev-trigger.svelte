@@ -1,15 +1,14 @@
 <script lang="ts">
-import type { CarouselPrevTriggerProps } from "@ark-ui/svelte/carousel";
-import { Carousel as CarouselPrimitive } from "@ark-ui/svelte/carousel";
+import {
+  type CarouselPrevTriggerProps,
+  Carousel as CarouselPrimitive,
+} from "@ark-ui/svelte/carousel";
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
 import { useCarousel } from "./carousel.context";
 
-type Props = Omit<CarouselPrevTriggerProps, "class"> & {
-  class?: string | undefined;
-};
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: CarouselPrevTriggerProps = $props();
 const { slots } = useCarousel();
 </script>
 
@@ -18,7 +17,7 @@ const { slots } = useCarousel();
   aria-label="Previous"
   class={cn(
     buttonRecipe({ pill: true, size: "icon-md", variant: "outline" }).base(),
-    slots.prevTrigger({ class: className }),
+    slots.prevTrigger({ class: cn(className) }),
   )}
   type="button"
 >

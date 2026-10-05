@@ -1,13 +1,15 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
 import { floatingPanelRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useFloatingPanel } from "./floating-panel.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
-  class?: string | undefined;
-};
-let { children, class: className, ...rest }: Props = $props();
+let {
+  children,
+  class: className,
+  ...rest
+}: HTMLAttributes<HTMLDivElement> = $props();
 const ctx = useFloatingPanel();
 const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
 </script>
@@ -15,7 +17,7 @@ const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
 <Ark
   as="div"
   {...rest}
-  class={slots.footer({ class: className })}
+  class={slots.footer({ class: cn(className) })}
   data-part="footer"
   data-scope="floating-panel"
 >

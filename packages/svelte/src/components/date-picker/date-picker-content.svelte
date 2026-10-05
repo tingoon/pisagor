@@ -1,14 +1,14 @@
 <script lang="ts">
-import type { DatePickerContentProps as ArkContentProps } from "@ark-ui/svelte/date-picker";
-import { DatePicker as DatePickerPrimitive } from "@ark-ui/svelte/date-picker";
+import {
+  type DatePickerContentProps as ArkContentProps,
+  DatePicker as DatePickerPrimitive,
+} from "@ark-ui/svelte/date-picker";
 import { Portal } from "@ark-ui/svelte/portal";
+import { cn } from "@pisagor/utils";
 import { Calendar } from "../calendar";
 import { useDatePicker } from "./date-picker.context";
 
-type Props = Omit<ArkContentProps, "class"> & {
-  class?: string | undefined;
-  showCalendar?: boolean;
-};
+type Props = ArkContentProps & { showCalendar?: boolean };
 
 let {
   showCalendar = true,
@@ -25,7 +25,7 @@ const slots = $derived(ctx?.slots);
     <DatePickerPrimitive.Positioner>
       <DatePickerPrimitive.Content
         {...rest}
-        class={slots.content({ class: className })}
+        class={slots.content({ class: cn(className) })}
       >
         {#if showCalendar && !children}
           <Calendar.ViewControl>

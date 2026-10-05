@@ -11,10 +11,9 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<HTMLAttributes<HTMLFieldSetElement>, "class"> &
+type Props = HTMLAttributes<HTMLFieldSetElement> &
   FormControlGroupShellVariantProps & {
     children?: import("svelte").Snippet;
-    class?: string | undefined;
   };
 
 let {

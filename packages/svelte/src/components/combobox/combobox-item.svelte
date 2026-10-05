@@ -1,14 +1,15 @@
 <script lang="ts">
-import type { ComboboxItemProps as ArkItemProps } from "@ark-ui/svelte/combobox";
-import { Combobox as ComboboxPrimitive } from "@ark-ui/svelte/combobox";
+import {
+  type ComboboxItemProps as ArkItemProps,
+  Combobox as ComboboxPrimitive,
+} from "@ark-ui/svelte/combobox";
 import type { ComboboxProps as BaseComboboxProps } from "@pisagor/props";
 import { comboboxRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 import { useComboboxRoot } from "./combobox.context";
 
-type Props = Omit<ArkItemProps, "class"> & {
-  class?: string | undefined;
-} & BaseComboboxProps;
+type Props = ArkItemProps & BaseComboboxProps;
 
 let {
   showIndicator = true,
@@ -22,7 +23,7 @@ const slots = $derived(ctx?.slots ?? comboboxRecipe());
 
 <ComboboxPrimitive.Item
   {...rest}
-  class={slots.item({ class: className, showIndicator })}
+  class={slots.item({ class: cn(className), showIndicator })}
   persistFocus
 >
   {@render children?.()}

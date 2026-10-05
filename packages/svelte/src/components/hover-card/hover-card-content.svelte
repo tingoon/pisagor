@@ -1,14 +1,13 @@
 <script lang="ts">
-import type { HoverCardContentProps } from "@ark-ui/svelte/hover-card";
-import { HoverCard as HoverCardPrimitive } from "@ark-ui/svelte/hover-card";
+import {
+  type HoverCardContentProps,
+  HoverCard as HoverCardPrimitive,
+} from "@ark-ui/svelte/hover-card";
 import { Portal } from "@ark-ui/svelte/portal";
+import { cn } from "@pisagor/utils";
 import { useHoverCard } from "./hover-card.context";
 
-type Props = Omit<HoverCardContentProps, "class"> & {
-  class?: string | undefined;
-};
-
-let { children, class: className, ...rest }: Props = $props();
+let { children, class: className, ...rest }: HoverCardContentProps = $props();
 const { slots } = useHoverCard();
 </script>
 
@@ -16,7 +15,7 @@ const { slots } = useHoverCard();
   <HoverCardPrimitive.Positioner>
     <HoverCardPrimitive.Content
       {...rest}
-      class={slots.content({ class: className })}
+      class={slots.content({ class: cn(className) })}
     >
       {@render children?.()}
       <HoverCardPrimitive.Arrow

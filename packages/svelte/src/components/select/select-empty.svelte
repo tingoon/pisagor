@@ -2,13 +2,13 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import { Select as SelectPrimitive } from "@ark-ui/svelte/select";
 import { selectRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { useSelectRoot } from "./select.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: Snippet;
-  class?: string | undefined;
 };
 
 let { class: className, children, ...rest }: Props = $props();
@@ -24,7 +24,7 @@ const slots = $derived(ctx?.slots ?? selectRecipe());
       <Ark
         as="div"
         {...rest}
-        class={slots.empty({ class: className })}
+        class={slots.empty({ class: cn(className) })}
         role="presentation"
       >
         {@render children?.()}

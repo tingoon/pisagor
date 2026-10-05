@@ -3,13 +3,17 @@ import { Ark } from "@ark-ui/svelte/factory";
 import type { HTMLButtonAttributes } from "svelte/elements";
 import { useTourContext } from "./tour.context";
 
-type Props = Omit<HTMLButtonAttributes, "class"> & {
-  class?: string | undefined;
-};
-let { onclick, children, class: className, ...rest }: Props = $props();
+let {
+  onclick,
+  children,
+  class: className,
+  ...rest
+}: HTMLButtonAttributes = $props();
 const { handleStart } = useTourContext();
 
-function handleClick(e: Parameters<NonNullable<Props["onclick"]>>[0]) {
+function handleClick(
+  e: Parameters<NonNullable<HTMLButtonAttributes["onclick"]>>[0],
+) {
   handleStart();
   onclick?.(e);
 }

@@ -23,27 +23,23 @@ import type { HTMLAttributes } from "svelte/elements";
 import Spinner from "../spinner/spinner.svelte";
 import { setToastItemContext } from "./toast.context";
 
-type Props = Omit<import("@ark-ui/svelte/toast").ToastRootProps, "class"> & {
+type Props = import("@ark-ui/svelte/toast").ToastRootProps & {
   actionTriggerProps?: Omit<
     import("@ark-ui/svelte/toast").ToastActionTriggerProps,
-    "children" | "class"
+    "children"
   >;
-  actionsProps?: Omit<HTMLAttributes<HTMLDivElement>, "class">;
-  class?: string | undefined;
+  actionsProps?: HTMLAttributes<HTMLDivElement>;
   classNames?: Partial<Record<ToastItemRecipeSlot, string>>;
   closeTriggerProps?: Omit<
     import("@ark-ui/svelte/toast").ToastCloseTriggerProps,
-    "children" | "class"
+    "children"
   >;
   descriptionProps?: Omit<
     import("@ark-ui/svelte/toast").ToastDescriptionProps,
-    "children" | "class"
+    "children"
   >;
-  iconProps?: Omit<HTMLAttributes<HTMLDivElement>, "class">;
-  titleProps?: Omit<
-    import("@ark-ui/svelte/toast").ToastTitleProps,
-    "children" | "class"
-  >;
+  iconProps?: HTMLAttributes<HTMLDivElement>;
+  titleProps?: Omit<import("@ark-ui/svelte/toast").ToastTitleProps, "children">;
   toast: Accessor<ToastOptions>;
 } & BaseToastItemProps;
 
@@ -77,7 +73,7 @@ function renderMaybeSnippet(value: unknown): value is Snippet {
 }
 </script>
 
-<ToastPrimitive.Root {...rest} class={slots.base({ class: className })}>
+<ToastPrimitive.Root {...rest} class={slots.base({ class: cn(className) })}>
   <div class={slots.content({ class: classNames?.content })}>
     <div
       {...iconProps}

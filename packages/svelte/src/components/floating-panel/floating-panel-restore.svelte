@@ -1,14 +1,15 @@
 <script lang="ts">
-import type { FloatingPanelStageTriggerProps } from "@ark-ui/svelte/floating-panel";
-import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/svelte/floating-panel";
+import {
+  FloatingPanel as FloatingPanelPrimitive,
+  type FloatingPanelStageTriggerProps,
+} from "@ark-ui/svelte/floating-panel";
 import { buttonRecipe, floatingPanelRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import ArrowsOutIcon from "phosphor-svelte/lib/ArrowsOutIcon";
 import CornersInIcon from "phosphor-svelte/lib/CornersInIcon";
 import { useFloatingPanel } from "./floating-panel.context";
 
-type Props = Omit<FloatingPanelStageTriggerProps, "stage" | "class"> & {
-  class?: string | undefined;
+type Props = Omit<FloatingPanelStageTriggerProps, "stage"> & {
   size?: "icon-xs" | "icon-sm" | "icon-md";
   variant?: "ghost" | "outline";
 };

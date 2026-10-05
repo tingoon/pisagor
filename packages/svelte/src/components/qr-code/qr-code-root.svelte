@@ -1,14 +1,15 @@
 <script lang="ts">
-import type { QrCodeRootProps as ArkRootProps } from "@ark-ui/svelte/qr-code";
-import { QrCode as QrCodePrimitive } from "@ark-ui/svelte/qr-code";
+import {
+  type QrCodeRootProps as ArkRootProps,
+  QrCode as QrCodePrimitive,
+} from "@ark-ui/svelte/qr-code";
 import type { QrCodeProps as BaseQrCodeProps } from "@pisagor/props";
 import { qrCodeRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import { setQrCodeContext } from "./qr-code.context";
 import QrCodeFrame from "./qr-code-frame.svelte";
 
-type Props = Omit<ArkRootProps, "class"> & {
-  class?: string | undefined;
-} & BaseQrCodeProps;
+type Props = ArkRootProps & BaseQrCodeProps;
 
 let {
   recipe = qrCodeRecipe,
@@ -25,7 +26,7 @@ setQrCodeContext({
 });
 </script>
 
-<QrCodePrimitive.Root {...rest} class={slots.base({ class: className })}>
+<QrCodePrimitive.Root {...rest} class={slots.base({ class: cn(className) })}>
   {#if children}
     {@render children()}
   {:else}

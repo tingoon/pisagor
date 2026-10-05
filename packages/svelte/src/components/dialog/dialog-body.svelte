@@ -1,12 +1,12 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { ScrollArea } from "../scroll-area";
 import { useDialog } from "./dialog.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   scrollFade?: boolean;
 };
 
@@ -23,7 +23,7 @@ const { slots } = useDialog();
   <Ark
     as="div"
     {...rest}
-    class={slots.body({ class: className })}
+    class={slots.body({ class: cn(className) })}
     data-part="body"
     data-scope="dialog"
   >

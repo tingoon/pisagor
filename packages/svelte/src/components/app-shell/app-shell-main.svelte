@@ -1,10 +1,10 @@
 <script lang="ts">
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useAppShell } from "./app-shell.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "style"> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   style?: string | undefined;
 };
 
@@ -14,7 +14,7 @@ const ctx = useAppShell();
 
 <div
   {...rest}
-  class={ctx.slots.main({ class: className })}
+  class={ctx.slots.main({ class: cn(className) })}
   data-part="main"
   data-scope="app-shell"
   style={`grid-area: main; ${style ?? ""}`}

@@ -2,8 +2,7 @@
 import type { ComponentProps } from "svelte";
 import DialogTitle from "../dialog/dialog-title.svelte";
 
-type Props = ComponentProps<typeof DialogTitle>;
-let props: Props = $props();
+let props: ComponentProps<typeof DialogTitle> = $props();
 </script>
 
 <DialogTitle {...props} />

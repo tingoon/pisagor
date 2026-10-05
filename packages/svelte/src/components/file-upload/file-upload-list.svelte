@@ -2,6 +2,8 @@
 import { useFileUploadContext } from "@ark-ui/svelte/file-upload";
 import type { FileUploadItemProps as BaseFileUploadItemProps } from "@pisagor/props";
 import { fileUploadItemRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
+import type { ClassValue } from "svelte/elements";
 import { useFileUpload } from "./file-upload.context";
 import FileUploadItem from "./file-upload-item.svelte";
 import FileUploadItemDeleteTrigger from "./file-upload-item-delete-trigger.svelte";
@@ -11,9 +13,7 @@ import FileUploadItemPreview from "./file-upload-item-preview.svelte";
 import FileUploadItemPreviewImage from "./file-upload-item-preview-image.svelte";
 import FileUploadItemSize from "./file-upload-item-size.svelte";
 
-type Props = {
-  class?: string | undefined;
-} & BaseFileUploadItemProps;
+type Props = { class?: ClassValue } & BaseFileUploadItemProps;
 
 let { class: className, recipe = fileUploadItemRecipe }: Props = $props();
 const api = useFileUploadContext();
@@ -28,7 +28,7 @@ const files = $derived(api().acceptedFiles);
       {const isImage = file.type.startsWith("image/")}
       {const extension = file.name.split(".").pop()}
       <FileUploadItem
-        class={itemSlots.listItem({ class: className })}
+        class={itemSlots.listItem({ class: cn(className) })}
         {file}
         {recipe}
       >

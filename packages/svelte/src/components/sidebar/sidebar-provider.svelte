@@ -3,6 +3,7 @@ import { Ark } from "@ark-ui/svelte/factory";
 import { useHotkey } from "@ark-ui/svelte/hotkeys";
 import type { SidebarProps as BaseSidebarProps } from "@pisagor/props";
 import { sidebarRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import { onMount } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import {
@@ -13,9 +14,8 @@ import {
 } from "./constants";
 import { setSidebarContext } from "./sidebar.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "style"> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   /**
    * The default open state of the sidebar.
    * @defaultValue true
@@ -123,7 +123,7 @@ const wrapperStyle = $derived(
 <Ark
   as="div"
   {...rest}
-  class={slots.wrapper({ class: className })}
+  class={slots.wrapper({ class: cn(className) })}
   data-part="wrapper"
   data-scope="sidebar"
   style={wrapperStyle}

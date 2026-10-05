@@ -1,10 +1,12 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
 import { useProgressContext } from "@ark-ui/svelte/progress";
+import { cn } from "@pisagor/utils";
+import type { ClassValue } from "svelte/elements";
 import { useCircularProgressSlots } from "./circular-progress.context";
 
 type Props = {
-  class?: string | undefined;
+  class?: ClassValue;
   rangeClassName?: string;
   size?: number;
   thickness?: number;
@@ -36,7 +38,7 @@ const metrics = $derived.by(() => {
 <Ark
   aria-hidden="true"
   as="svg"
-  class={slots.track({ class: className })}
+  class={slots.track({ class: cn(className) })}
   data-part="circle"
   data-scope="circular-progress"
   height={size}

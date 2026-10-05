@@ -1,9 +1,11 @@
 <script lang="ts">
 import { Tour as TourPrimitive } from "@ark-ui/svelte/tour";
+import { cn } from "@pisagor/utils";
+import type { ClassValue } from "svelte/elements";
 import { useTourContext } from "./tour.context";
 
 type Props = {
-  class?: string | undefined;
+  class?: ClassValue;
   children?: import("svelte").Snippet;
   [key: string]: unknown;
 };
@@ -13,7 +15,7 @@ const { slots } = useTourContext();
 
 <TourPrimitive.Description
   {...rest}
-  class={slots.description({ class: className })}
+  class={slots.description({ class: cn(className) })}
 >
   {@render children?.()}
 </TourPrimitive.Description>

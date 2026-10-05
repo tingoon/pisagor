@@ -2,6 +2,7 @@
 import { useHotkey } from "@ark-ui/svelte/hotkeys";
 import type { AppShellProps as BaseAppShellProps } from "@pisagor/props";
 import { appShellRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import {
   APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS,
@@ -16,9 +17,8 @@ import {
   ZERO_REGION_VARS,
 } from "./app-shell.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "style"> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   style?: string | undefined;
 } & BaseAppShellProps;
 
@@ -176,7 +176,7 @@ const shellStyle = $derived(
 
 <div
   {...rest}
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   data-part="root"
   data-resizing={regionResizing ? "" : undefined}
   data-scope="app-shell"

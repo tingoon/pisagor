@@ -2,14 +2,12 @@
 import { cn } from "@pisagor/utils";
 import { onDestroy, onMount } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
-import type { AppShellRegionPosition } from "./app-shell.context";
-import { useAppShell } from "./app-shell.context";
+import { type AppShellRegionPosition, useAppShell } from "./app-shell.context";
 import { APP_SHELL_BANNER_HEIGHT_VAR } from "./constants";
 import { regionPositionClasses } from "./region";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "style"> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   /**
    * Scroll behavior for the banner row.
    * @defaultValue "fixed"

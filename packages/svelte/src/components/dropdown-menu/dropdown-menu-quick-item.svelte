@@ -1,13 +1,11 @@
 <script lang="ts">
-import type { MenuItemProps } from "@ark-ui/svelte/menu";
-import { Menu as MenuPrimitive } from "@ark-ui/svelte/menu";
+import { type MenuItemProps, Menu as MenuPrimitive } from "@ark-ui/svelte/menu";
 import type { DropdownMenuItemProps as BaseDropdownMenuItemProps } from "@pisagor/props";
 import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import { useDropdownMenu } from "./dropdown-menu.context";
 
-type Props = Omit<MenuItemProps, "class"> & {
-  class?: string | undefined;
-} & BaseDropdownMenuItemProps;
+type Props = MenuItemProps & BaseDropdownMenuItemProps;
 
 let {
   variant = "default",
@@ -24,7 +22,7 @@ const menuSlots = $derived(context?.slots ?? dropdownMenuRecipe());
 <MenuPrimitive.Item
   {...rest}
   class={recipe({ variant }).base({
-    class: menuSlots.quickItem({ class: className }),
+    class: menuSlots.quickItem({ class: cn(className) }),
   })}
 >
   {@render children?.()}

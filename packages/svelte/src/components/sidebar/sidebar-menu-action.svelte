@@ -5,9 +5,8 @@ import { cn } from "@pisagor/utils";
 import type { HTMLButtonAttributes } from "svelte/elements";
 import { useSidebar } from "./sidebar.context";
 
-type Props = Omit<HTMLButtonAttributes, "class" | "type"> & {
+type Props = Omit<HTMLButtonAttributes, "type"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   showOnHover?: boolean;
   /**
    * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.

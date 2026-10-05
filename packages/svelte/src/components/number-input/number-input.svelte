@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { NumberInputRootProps } from "@ark-ui/svelte/number-input";
-import { NumberInput as NumberInputPrimitive } from "@ark-ui/svelte/number-input";
+import {
+  NumberInput as NumberInputPrimitive,
+  type NumberInputRootProps,
+} from "@ark-ui/svelte/number-input";
 import type { NumberInputProps as BaseNumberInputProps } from "@pisagor/props";
 import {
   buttonRecipe,
@@ -16,13 +18,9 @@ import { setNumberInputContext } from "./number-input.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<
-  NumberInputRootProps,
-  "class" | "children" | "onValueChange"
-> & {
+type Props = Omit<NumberInputRootProps, "children" | "onValueChange"> & {
   children?: import("svelte").Snippet;
   clearable?: boolean;
-  class?: string | undefined;
   onValueChange?: (value: number) => void;
   placeholder?: string | null | undefined;
   size?: "sm" | "md" | "lg";
@@ -66,7 +64,7 @@ function handleValueChange(
 
 <NumberInputPrimitive.Root
   {...rest}
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   data-size={size}
   onValueChange={onValueChange ? handleValueChange : undefined}
 >

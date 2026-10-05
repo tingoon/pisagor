@@ -2,11 +2,11 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { BadgeProps as BaseBadgeProps } from "@pisagor/props";
 import { badgeRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAttributes<HTMLSpanElement>, "class"> & {
+type Props = HTMLAttributes<HTMLSpanElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 } & BaseBadgeProps;
 
 let {
@@ -23,7 +23,7 @@ let {
 <Ark
   as="span"
   {...rest}
-  class={recipe({ class: className, pill, size, variant })}
+  class={recipe({ class: cn(className), pill, size, variant })}
   data-part="root"
   data-scope="badge"
   data-size={size}

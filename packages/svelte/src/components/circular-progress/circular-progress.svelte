@@ -1,18 +1,20 @@
 <script lang="ts">
-import type { ProgressRootProps } from "@ark-ui/svelte/progress";
-import { Progress as ProgressPrimitive } from "@ark-ui/svelte/progress";
+import {
+  Progress as ProgressPrimitive,
+  type ProgressRootProps,
+} from "@ark-ui/svelte/progress";
 import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
 import {
   type CircularProgressRecipeSlot,
   circularProgressRecipe,
 } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import { setCircularProgressContext } from "./circular-progress.context";
 import CircularProgressTrack from "./circular-progress-track.svelte";
 
-type Props = Omit<ProgressRootProps, "class" | "children" | "value"> & {
+type Props = Omit<ProgressRootProps, "children" | "value"> & {
   children?: Snippet;
-  class?: string | undefined;
   classNames?: Partial<Record<CircularProgressRecipeSlot, string>>;
   /**
    * Whether to show indeterminate progress.
@@ -58,7 +60,7 @@ setCircularProgressContext({
 
 <ProgressPrimitive.Root
   {...rest}
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   value={indeterminate ? null : value}
 >
   {#if isValueVisible}

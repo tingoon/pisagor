@@ -6,7 +6,7 @@ import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 import { useTourContext } from "./tour.context";
 
-type Props = { class?: string | undefined };
+type Props = { class?: import("svelte/elements").ClassValue };
 let { class: className }: Props = $props();
 const { slots, tour } = useTourContext();
 const dialogSlots = $derived(dialogRecipe());
@@ -16,7 +16,7 @@ const actions = $derived(tour().step?.actions ?? []);
 {#if actions.length > 0}
   <TourPrimitive.Control>
     <div
-      class={cn(dialogSlots.footer(), slots.actions({ class: className }))}
+      class={cn(dialogSlots.footer(), slots.actions({ class: cn(className) }))}
       data-part="actions"
       data-scope="tour"
     >

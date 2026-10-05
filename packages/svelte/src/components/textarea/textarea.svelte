@@ -1,6 +1,5 @@
 <script lang="ts">
-import type { FieldTextareaProps } from "@ark-ui/svelte/field";
-import { Field } from "@ark-ui/svelte/field";
+import { Field, type FieldTextareaProps } from "@ark-ui/svelte/field";
 import type { TextareaProps as BaseTextareaProps } from "@pisagor/props";
 import {
   formControlShellRecipe,
@@ -15,13 +14,12 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<FieldTextareaProps, "class"> & {
+type Props = FieldTextareaProps & {
   /**
    * Whether to show a clear button when the textarea has a value.
    * @defaultValue false
    */
   clearable?: boolean;
-  class?: string | undefined;
   classNames?: Partial<Record<TextareaRecipeSlot, string>>;
   /** Called with the string value when the textarea changes. */
   onValueChange?: (value: string) => void;

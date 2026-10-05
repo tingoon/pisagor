@@ -2,12 +2,11 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { TimelineItemProps as BaseTimelineItemProps } from "@pisagor/props";
 import { timelineItemRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setTimelineItemContext } from "./timeline.context";
 
-type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> & {
-  class?: string | undefined;
-} & BaseTimelineItemProps;
+type Props = HTMLAttributes<HTMLLIElement> & BaseTimelineItemProps;
 
 let {
   children,
@@ -27,7 +26,7 @@ setTimelineItemContext({
 <Ark
   as="li"
   {...rest}
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   data-part="item"
   data-scope="timeline"
 >

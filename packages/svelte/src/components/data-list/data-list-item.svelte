@@ -5,15 +5,15 @@ import {
   type DataListItemRecipeSlot,
   dataListItemRecipe,
 } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { setDataListItemContext } from "./data-list.context";
 import DataListItemLabel from "./data-list-item-label.svelte";
 import DataListItemValue from "./data-list-item-value.svelte";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: Snippet;
-  class?: string | undefined;
   classNames?: Partial<Record<DataListItemRecipeSlot, string>>;
   value?: string | Snippet;
 } & BaseDataListItemProps;
@@ -39,7 +39,7 @@ setDataListItemContext({
 <Ark
   as="div"
   {...rest}
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   data-part="item"
   data-scope="data-list"
 >

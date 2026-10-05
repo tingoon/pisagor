@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { TreeViewNodeCheckboxProps } from "@ark-ui/svelte/tree-view";
-import { TreeView as TreeViewPrimitive } from "@ark-ui/svelte/tree-view";
+import {
+  type TreeViewNodeCheckboxProps,
+  TreeView as TreeViewPrimitive,
+} from "@ark-ui/svelte/tree-view";
 import { formControlToggleRecipe, treeViewItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
@@ -8,10 +10,7 @@ import MinusIcon from "phosphor-svelte/lib/MinusIcon";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { useTreeViewItem } from "./tree-view.context";
 
-type Props = Omit<TreeViewNodeCheckboxProps, "class"> & {
-  class?: string | undefined;
-};
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: TreeViewNodeCheckboxProps = $props();
 const item = useTreeViewItem();
 const slots = $derived(item?.slots ?? treeViewItemRecipe());
 const surfaceVariant = useFormControlSurface();

@@ -1,13 +1,14 @@
 <script lang="ts">
-import type { SplitterRootProps } from "@ark-ui/svelte/splitter";
-import { Splitter as SplitterPrimitive } from "@ark-ui/svelte/splitter";
+import {
+  Splitter as SplitterPrimitive,
+  type SplitterRootProps,
+} from "@ark-ui/svelte/splitter";
 import type { ResizableProps as BaseResizableProps } from "@pisagor/props";
 import { resizableRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import { setResizableContext } from "./resizable.context";
 
-type Props = Omit<SplitterRootProps, "class"> & {
-  class?: string | undefined;
-} & BaseResizableProps;
+type Props = SplitterRootProps & BaseResizableProps;
 
 let {
   children,
@@ -23,6 +24,6 @@ setResizableContext({
 });
 </script>
 
-<SplitterPrimitive.Root {...rest} class={slots.base({ class: className })}>
+<SplitterPrimitive.Root {...rest} class={slots.base({ class: cn(className) })}>
   {@render children?.()}
 </SplitterPrimitive.Root>

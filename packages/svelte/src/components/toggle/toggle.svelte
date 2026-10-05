@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { ToggleRootProps } from "@ark-ui/svelte/toggle";
-import { Toggle as TogglePrimitive } from "@ark-ui/svelte/toggle";
+import {
+  Toggle as TogglePrimitive,
+  type ToggleRootProps,
+} from "@ark-ui/svelte/toggle";
 import type { ToggleProps as BaseToggleProps } from "@pisagor/props";
 import {
   type ButtonVariantProps,
@@ -9,7 +11,7 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
-type Props = Omit<ToggleRootProps, "class"> & {
+type Props = ToggleRootProps & {
   /**
    * The variant of the toggle
    * @defaultValue "ghost"
@@ -17,7 +19,6 @@ type Props = Omit<ToggleRootProps, "class"> & {
   variant?: Extract<ButtonVariantProps["variant"], "outline" | "ghost">;
   /** Called with the pressed state when the toggle changes. */
   onValueChange?: (value: boolean) => void;
-  class?: string | undefined;
   buttonRecipe?: typeof buttonRecipe;
 } & BaseToggleProps;
 

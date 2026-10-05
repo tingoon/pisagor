@@ -1,11 +1,11 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { Skeleton } from "../skeleton";
 import { useSidebar } from "./sidebar.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "style"> & {
-  class?: string | undefined;
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
   showIcon?: boolean;
   style?: string | undefined;
 };
@@ -17,7 +17,7 @@ const ctx = useSidebar();
 <Ark
   as="div"
   {...rest}
-  class={ctx.slots.menuSkeleton({ class: className })}
+  class={ctx.slots.menuSkeleton({ class: cn(className) })}
   data-part="menu-skeleton"
   data-scope="sidebar"
   data-sidebar="menu-skeleton"

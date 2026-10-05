@@ -1,13 +1,14 @@
 <script lang="ts">
-import type { CarouselRootProps as ArkRootProps } from "@ark-ui/svelte/carousel";
-import { Carousel as CarouselPrimitive } from "@ark-ui/svelte/carousel";
+import {
+  type CarouselRootProps as ArkRootProps,
+  Carousel as CarouselPrimitive,
+} from "@ark-ui/svelte/carousel";
 import type { CarouselProps as BaseCarouselProps } from "@pisagor/props";
 import { carouselRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import { setCarouselContext } from "./carousel.context";
 
-type Props = Omit<ArkRootProps, "class"> & {
-  class?: string | undefined;
-} & BaseCarouselProps;
+type Props = ArkRootProps & BaseCarouselProps;
 
 let {
   children,
@@ -27,7 +28,7 @@ setCarouselContext({
 
 <CarouselPrimitive.Root
   {...rest}
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   {spacing}
 >
   {@render children?.()}

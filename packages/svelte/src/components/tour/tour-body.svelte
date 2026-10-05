@@ -3,8 +3,7 @@ import { Ark } from "@ark-ui/svelte/factory";
 import type { HTMLAttributes } from "svelte/elements";
 import { ScrollArea } from "../scroll-area";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
-  class?: string | undefined;
+type Props = HTMLAttributes<HTMLDivElement> & {
   scrollFade?: boolean;
 };
 

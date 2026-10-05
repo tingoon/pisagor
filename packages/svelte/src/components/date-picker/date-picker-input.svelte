@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { DatePickerInputProps as ArkInputProps } from "@ark-ui/svelte/date-picker";
-import { DatePicker as DatePickerPrimitive } from "@ark-ui/svelte/date-picker";
+import {
+  type DatePickerInputProps as ArkInputProps,
+  DatePicker as DatePickerPrimitive,
+} from "@ark-ui/svelte/date-picker";
 import {
   buttonRecipe,
   type FormControlGroupShellVariantProps,
@@ -13,11 +15,8 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { useDatePicker } from "./date-picker.context";
 import DatePickerClearTrigger from "./date-picker-clear-trigger.svelte";
 
-type Props = Omit<ArkInputProps, "class" | "size"> &
-  FormControlGroupShellVariantProps & {
-    class?: string | undefined;
-    clearable?: boolean;
-  };
+type Props = Omit<ArkInputProps, "size"> &
+  FormControlGroupShellVariantProps & { clearable?: boolean };
 
 let {
   size = "md",

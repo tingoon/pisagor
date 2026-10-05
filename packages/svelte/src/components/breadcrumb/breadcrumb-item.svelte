@@ -2,12 +2,11 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { BreadcrumbItemProps as BaseBreadcrumbItemProps } from "@pisagor/props";
 import { breadcrumbItemRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setBreadcrumbItemContext } from "./breadcrumb.context";
 
-type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> & {
-  class?: string | undefined;
-} & BaseBreadcrumbItemProps;
+type Props = HTMLAttributes<HTMLLIElement> & BaseBreadcrumbItemProps;
 
 let {
   children,
@@ -27,7 +26,7 @@ setBreadcrumbItemContext({
 <Ark
   as="li"
   {...rest}
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   data-part="item"
   data-scope="breadcrumb"
 >

@@ -1,17 +1,20 @@
 <script lang="ts">
+import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "svelte";
 import { Input } from "../input";
 import { useSidebar } from "./sidebar.context";
 
-type Props = ComponentProps<typeof Input>;
-
-let { class: className, classNames, ...rest }: Props = $props();
+let {
+  class: className,
+  classNames,
+  ...rest
+}: ComponentProps<typeof Input> = $props();
 const ctx = useSidebar();
 </script>
 
 <Input
   {...rest}
-  class={ctx.slots.input({ class: className })}
+  class={ctx.slots.input({ class: cn(className) })}
   {classNames}
   data-sidebar="input"
 />

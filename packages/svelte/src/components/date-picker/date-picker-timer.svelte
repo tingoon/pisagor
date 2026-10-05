@@ -14,10 +14,9 @@ import InputClearButton from "../input/input-clear-button.svelte";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { useDatePicker } from "./date-picker.context";
 
-type Props = Omit<HTMLInputAttributes, "class" | "size" | "type" | "value"> &
+type Props = Omit<HTMLInputAttributes, "size" | "type" | "value"> &
   FormControlGroupShellVariantProps & {
     children?: Snippet;
-    class?: string | undefined;
     clearable?: boolean;
     value?: string | undefined;
   } & BaseDatePickerProps;
@@ -64,7 +63,7 @@ function handleClear() {
   </div>
   <input
     {...rest}
-    class={cn(inputGroupControlRecipe(), slots.timer({ class: className }))}
+    class={cn(inputGroupControlRecipe(), slots.timer({ class: cn(className) }))}
     {disabled}
     {oninput}
     {readonly}

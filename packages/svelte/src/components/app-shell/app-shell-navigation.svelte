@@ -2,14 +2,12 @@
 import { cn } from "@pisagor/utils";
 import { onDestroy, onMount } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
-import type { AppShellRegionPosition } from "./app-shell.context";
-import { useAppShell } from "./app-shell.context";
+import { type AppShellRegionPosition, useAppShell } from "./app-shell.context";
 import { APP_SHELL_NAVIGATION_HEIGHT_VAR } from "./constants";
 import { regionPositionClasses } from "./region";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class" | "style"> & {
+type Props = Omit<HTMLAttributes<HTMLElement>, "style"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   /**
    * Scroll behavior for the navigation row.
    * @defaultValue "fixed"

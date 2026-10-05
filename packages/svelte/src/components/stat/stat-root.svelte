@@ -2,12 +2,12 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { StatProps as BaseStatProps } from "@pisagor/props";
 import { statRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setStatContext } from "./stat.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 } & BaseStatProps;
 
 let {
@@ -30,7 +30,7 @@ setStatContext({
 <Ark
   as="div"
   {...rest}
-  class={slots.base({ class: className, variant })}
+  class={slots.base({ class: cn(className), variant })}
   data-part="root"
   data-scope="stat"
   data-variant={variant}

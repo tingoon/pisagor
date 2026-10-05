@@ -1,16 +1,17 @@
 <script lang="ts">
-import type { DrawerContentProps } from "@ark-ui/svelte/drawer";
-import { Drawer as DrawerPrimitive } from "@ark-ui/svelte/drawer";
+import {
+  type DrawerContentProps,
+  Drawer as DrawerPrimitive,
+} from "@ark-ui/svelte/drawer";
 import { Portal } from "@ark-ui/svelte/portal";
 import type { DrawerProps as BaseDrawerProps } from "@pisagor/props";
+import { cn } from "@pisagor/utils";
 import { useDrawer } from "./drawer.context";
 import DrawerBackdrop from "./drawer-backdrop.svelte";
 import DrawerGrabber from "./drawer-grabber.svelte";
 import DrawerPositioner from "./drawer-positioner.svelte";
 
-type Props = Omit<DrawerContentProps, "class"> & {
-  class?: string | undefined;
-} & BaseDrawerProps;
+type Props = DrawerContentProps & BaseDrawerProps;
 
 const SWIPE_DIRECTION_TO_PLACEMENT = {
   down: "down",
@@ -39,7 +40,7 @@ const { slots } = useDrawer();
         <DrawerPrimitive.Content
           {...rest}
           class={slots.content({
-            class: className,
+            class: cn(className),
             placement: SWIPE_DIRECTION_TO_PLACEMENT[swipeDirection],
             variant,
           })}

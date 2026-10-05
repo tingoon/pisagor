@@ -2,15 +2,12 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { AnnouncementProps as BaseAnnouncementProps } from "@pisagor/props";
 import { announcementRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setAnnouncementContext } from "./announcement.context";
 
-type Props = Omit<
-  HTMLAttributes<HTMLDivElement>,
-  "class" | "title" | "role"
-> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "title" | "role"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   role?: "status" | "alert";
 } & BaseAnnouncementProps;
 
@@ -34,7 +31,7 @@ setAnnouncementContext({
 <Ark
   as="div"
   {...rest}
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   data-part="root"
   data-scope="announcement"
   {role}

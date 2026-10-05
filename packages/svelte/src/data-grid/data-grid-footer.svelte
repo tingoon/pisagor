@@ -1,10 +1,10 @@
 <script lang="ts">
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useDataGridContext } from "./data-grid.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 };
 
 let { class: className, children, ...rest }: Props = $props();
@@ -13,7 +13,7 @@ const { slots } = useDataGridContext();
 
 <div
   {...rest}
-  class={slots.footer({ class: className })}
+  class={slots.footer({ class: cn(className) })}
   data-part="footer"
   data-scope="data-grid"
 >

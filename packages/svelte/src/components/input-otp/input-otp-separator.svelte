@@ -1,13 +1,10 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useInputOTP } from "./input-otp.context";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
-  class?: string | undefined;
-};
-
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: HTMLAttributes<HTMLElement> = $props();
 
 const { slots } = useInputOTP();
 </script>
@@ -15,7 +12,7 @@ const { slots } = useInputOTP();
 <Ark
   as="hr"
   {...rest}
-  class={slots.separator({ class: className })}
+  class={slots.separator({ class: cn(className) })}
   data-part="separator"
   data-scope="input-otp"
 />

@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { RatingGroupRootProps } from "@ark-ui/svelte/rating-group";
-import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/svelte/rating-group";
+import {
+  RatingGroup as RatingGroupPrimitive,
+  type RatingGroupRootProps,
+} from "@ark-ui/svelte/rating-group";
 import type { RatingProps as BaseRatingProps } from "@pisagor/props";
 import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -10,13 +12,10 @@ import { setRatingContext } from "./rating.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<
-  RatingGroupRootProps,
-  "class" | "children" | "onValueChange"
-> & {
-  class?: string | undefined;
-  classNames?: Partial<Record<RatingRecipeSlot, string>>;
-  /** Custom icon component (defaults to StarIcon). */
+type Props = Omit<RatingGroupRootProps, "children" | "onValueChange"> & {
+  classNames?: Partial<
+    Record<RatingRecipeSlot, string>
+  > /** Custom icon component (defaults to StarIcon). */;
   icon?: Component;
   onValueChange?: (value: number) => void;
   variant?: FormControlVariant;

@@ -1,14 +1,14 @@
 <script lang="ts">
 import type { ResizableEdgeHandleProps as BaseResizableEdgeHandleProps } from "@pisagor/props";
 import { resizableEdgeHandleRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import DotsSixVerticalIcon from "phosphor-svelte/lib/DotsSixVerticalIcon";
 import type { HTMLButtonAttributes } from "svelte/elements";
 
 type ResizableHandlePosition = "bottom" | "center" | "top";
 type ResizableEdgePlacement = "end" | "start";
 
-type Props = Omit<HTMLButtonAttributes, "class"> & {
-  class?: string | undefined;
+type Props = HTMLButtonAttributes & {
   handlePosition?: ResizableHandlePosition;
   label: string;
   minWidth?: number;
@@ -103,7 +103,7 @@ function handlePointerUp(
 <button
   {...rest}
   aria-label={label}
-  class={edgeHandle.base({ class: className })}
+  class={edgeHandle.base({ class: cn(className) })}
   data-handle-position={handlePosition}
   data-part="edge-handle"
   data-scope="resizable"

@@ -1,20 +1,19 @@
 <script lang="ts">
-import type { ToggleGroupRootProps as ArkToggleGroupRootProps } from "@ark-ui/svelte/toggle-group";
-import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/svelte/toggle-group";
+import {
+  type ToggleGroupRootProps as ArkToggleGroupRootProps,
+  ToggleGroup as ToggleGroupPrimitive,
+} from "@ark-ui/svelte/toggle-group";
 import type { ToggleGroupProps as BaseToggleGroupProps } from "@pisagor/props";
 import {
   type ButtonVariantProps,
   type ToggleVariantProps,
   toggleGroupRecipe,
 } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import { setToggleGroupContext } from "./toggle-group.context";
 
-type Props = Omit<
-  ArkToggleGroupRootProps,
-  "class" | "onValueChange" | "style"
-> & {
+type Props = Omit<ArkToggleGroupRootProps, "onValueChange" | "style"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   onValueChange?: (value: string[]) => void;
   size?: NonNullable<ToggleVariantProps["size"]>;
   spacing?: number;
@@ -66,7 +65,7 @@ const mergedStyle = $derived(
 
 <ToggleGroupPrimitive.Root
   {...rest}
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   {multiple}
   onValueChange={onValueChange ? handleValueChange : undefined}
   {orientation}

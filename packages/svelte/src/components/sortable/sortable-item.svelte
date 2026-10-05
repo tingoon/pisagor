@@ -2,11 +2,11 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { SortableItemProps as BaseSortableItemProps } from "@pisagor/props";
 import { sortableItemRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setSortableItemContext, useSortable } from "./sortable.context";
 
-type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> & {
-  class?: string | undefined;
+type Props = HTMLAttributes<HTMLLIElement> & {
   value: string;
 } & BaseSortableItemProps;
 
@@ -40,7 +40,7 @@ setSortableItemContext({
   as="li"
   {...rest}
   {...itemProps}
-  class={slots.base({ class: className, disabled: sortable.disabled })}
+  class={slots.base({ class: cn(className), disabled: sortable.disabled })}
   data-part="item"
   data-scope="sortable"
 >

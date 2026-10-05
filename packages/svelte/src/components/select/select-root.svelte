@@ -1,7 +1,9 @@
 <script lang="ts">
 import type { CollectionItem } from "@ark-ui/svelte/collection";
-import type { SelectRootProps as ArkSelectRootProps } from "@ark-ui/svelte/select";
-import { Select as SelectPrimitive } from "@ark-ui/svelte/select";
+import {
+  type SelectRootProps as ArkSelectRootProps,
+  Select as SelectPrimitive,
+} from "@ark-ui/svelte/select";
 import type { SelectProps as BaseSelectProps } from "@pisagor/props";
 import { selectRecipe } from "@pisagor/recipes";
 import { setSelectRootContext } from "./select.context";

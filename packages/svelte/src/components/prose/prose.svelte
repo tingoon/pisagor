@@ -2,11 +2,11 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { ProseProps as BaseProseProps } from "@pisagor/props";
 import { proseRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
+type Props = HTMLAttributes<HTMLElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   html?: string;
 } & BaseProseProps;
 
@@ -23,7 +23,7 @@ let {
   <Ark
     as="div"
     {...rest}
-    class={recipe({ class: className })}
+    class={recipe({ class: cn(className) })}
     data-part="root"
     data-scope="prose"
   >
@@ -33,7 +33,7 @@ let {
   <Ark
     as="div"
     {...rest}
-    class={recipe({ class: className })}
+    class={recipe({ class: cn(className) })}
     data-part="root"
     data-scope="prose"
   >

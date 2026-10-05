@@ -1,14 +1,16 @@
 <script lang="ts">
-import type { AvatarRootProps } from "@ark-ui/svelte/avatar";
-import { Avatar as AvatarPrimitive } from "@ark-ui/svelte/avatar";
+import {
+  Avatar as AvatarPrimitive,
+  type AvatarRootProps,
+} from "@ark-ui/svelte/avatar";
 import type { AvatarProps as BaseAvatarProps } from "@pisagor/props";
 import { type AvatarRecipeSlot, avatarRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import { setAvatarContext } from "./avatar.context";
 
-type Props = Omit<AvatarRootProps, "class" | "children"> & {
+type Props = Omit<AvatarRootProps, "children"> & {
   alt?: string;
-  class?: string | undefined;
   classNames?: Partial<Record<AvatarRecipeSlot, string>>;
   fallback?: string | Snippet;
   src?: string;
@@ -37,7 +39,7 @@ setAvatarContext({
 
 <AvatarPrimitive.Root
   {...rest}
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   data-shape={shape}
   data-size={size}
 >

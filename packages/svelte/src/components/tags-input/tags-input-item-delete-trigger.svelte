@@ -1,16 +1,18 @@
 <script lang="ts">
-import type { TagsInputItemDeleteTriggerProps } from "@ark-ui/svelte/tags-input";
-import { TagsInput as TagsInputPrimitive } from "@ark-ui/svelte/tags-input";
+import {
+  type TagsInputItemDeleteTriggerProps,
+  TagsInput as TagsInputPrimitive,
+} from "@ark-ui/svelte/tags-input";
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import { useTagsInputItem } from "./tags-input.context";
 
-type Props = Omit<TagsInputItemDeleteTriggerProps, "class"> & {
-  class?: string | undefined;
-};
-
-let { class: className, children, ...rest }: Props = $props();
+let {
+  class: className,
+  children,
+  ...rest
+}: TagsInputItemDeleteTriggerProps = $props();
 const { slots } = useTagsInputItem();
 </script>
 
@@ -19,7 +21,7 @@ const { slots } = useTagsInputItem();
   aria-label="Remove tag"
   class={cn(
     buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),
-    slots.delete({ class: className }),
+    slots.delete({ class: cn(className) }),
   )}
   type="button"
 >

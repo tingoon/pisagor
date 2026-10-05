@@ -14,16 +14,12 @@ import ScrollAreaScrollbar from "./scroll-area-scrollbar.svelte";
 import ScrollAreaThumb from "./scroll-area-thumb.svelte";
 import ScrollAreaViewport from "./scroll-area-viewport.svelte";
 
-type Props = Omit<ScrollAreaRootProps, "class" | "children"> & {
+type Props = Omit<ScrollAreaRootProps, "children"> & {
   children?: Snippet;
-  class?: string | undefined;
   classNames?: Partial<Record<ScrollAreaRecipeSlot, string>>;
-  scrollbarProps?: Omit<
-    ScrollAreaScrollbarProps,
-    "children" | "class" | "orientation"
-  >;
-  thumbProps?: Omit<ScrollAreaThumbProps, "children" | "class">;
-  viewportProps?: Omit<ScrollAreaViewportProps, "children" | "class">;
+  scrollbarProps?: Omit<ScrollAreaScrollbarProps, "children" | "orientation">;
+  thumbProps?: Omit<ScrollAreaThumbProps, "children">;
+  viewportProps?: Omit<ScrollAreaViewportProps, "children">;
 } & BaseScrollAreaProps;
 
 let {

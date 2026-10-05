@@ -1,18 +1,19 @@
 <script lang="ts">
-import type { SwitchRootProps } from "@ark-ui/svelte/switch";
-import { Switch as SwitchPrimitive } from "@ark-ui/svelte/switch";
+import {
+  Switch as SwitchPrimitive,
+  type SwitchRootProps,
+} from "@ark-ui/svelte/switch";
 import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { setSwitchContext } from "./switch.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<SwitchRootProps, "class" | "children"> & {
-  /** Visual shell variant. Defaults to `primary`. */
-  variant?: FormControlVariant;
+type Props = Omit<SwitchRootProps, "children"> & {
+  /** Visual shell variant. Defaults to `primary`. */ variant?: FormControlVariant;
   onValueChange?: (value: boolean) => void;
-  class?: string | undefined;
   classNames?: Partial<Record<SwitchRecipeSlot, string>>;
 } & BaseSwitchProps;
 
@@ -46,7 +47,7 @@ function handleCheckedChange(
 
 <SwitchPrimitive.Root
   {...rest}
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   data-variant={variant}
   onCheckedChange={onCheckedChange || onValueChange
     ? handleCheckedChange

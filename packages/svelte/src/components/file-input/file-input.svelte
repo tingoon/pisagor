@@ -16,11 +16,10 @@ type FormControlVariant = "primary" | "secondary";
 
 type Props = Omit<
   HTMLInputAttributes,
-  "class" | "defaultValue" | "onChange" | "size" | "type" | "value"
+  "defaultValue" | "onChange" | "size" | "type" | "value"
 > &
   FormControlGroupShellVariantProps & {
     browseLabel?: string;
-    class?: string | undefined;
     invalid?: boolean;
     onFilesChange?: (files: globalThis.File[]) => void;
     onValueChange?: (files: globalThis.File[]) => void;

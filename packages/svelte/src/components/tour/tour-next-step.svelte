@@ -4,9 +4,13 @@ import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 import type { Snippet } from "svelte";
+import type { ClassValue } from "svelte/elements";
 import { useTourContext } from "./tour.context";
 
-type Props = { children?: Snippet; class?: string | undefined };
+type Props = {
+  class?: ClassValue;
+  children?: Snippet;
+};
 let { children, class: className }: Props = $props();
 const { tour } = useTourContext();
 const action = $derived(

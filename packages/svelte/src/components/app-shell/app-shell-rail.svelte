@@ -11,9 +11,8 @@ import { APP_SHELL_RAIL_WIDTH } from "./constants";
 import { setAppShellRailContext } from "./rail.context";
 import { gridAreaFor, regionPositionClasses, regionVarFor } from "./region";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class" | "style"> & {
+type Props = Omit<HTMLAttributes<HTMLElement>, "style"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   /**
    * Grid column side for the rail.
    * @defaultValue "start"

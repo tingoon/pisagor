@@ -3,9 +3,13 @@ import { Portal } from "@ark-ui/svelte/portal";
 import { Tour as TourPrimitive } from "@ark-ui/svelte/tour";
 import { dialogRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
+import type { ClassValue } from "svelte/elements";
 import { useTourContext } from "./tour.context";
 
-type Props = { class?: string | undefined; dialogRecipe?: typeof dialogRecipe };
+type Props = {
+  class?: ClassValue;
+  dialogRecipe?: typeof dialogRecipe;
+};
 let { class: className, dialogRecipe: dialogRecipeProp = dialogRecipe }: Props =
   $props();
 const { slots } = useTourContext();

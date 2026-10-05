@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { DatePickerTableBodyProps } from "@ark-ui/svelte/date-picker";
-import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
+import {
+  DatePicker as CalendarPrimitive,
+  type DatePickerTableBodyProps,
+} from "@ark-ui/svelte/date-picker";
 import CalendarTableBody from "./calendar-table-body.svelte";
 import CalendarTableCell from "./calendar-table-cell.svelte";
 import CalendarTableRow from "./calendar-table-row.svelte";

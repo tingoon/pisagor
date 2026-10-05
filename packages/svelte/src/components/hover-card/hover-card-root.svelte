@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { HoverCardRootProps } from "@ark-ui/svelte/hover-card";
-import { HoverCard as HoverCardPrimitive } from "@ark-ui/svelte/hover-card";
+import {
+  HoverCard as HoverCardPrimitive,
+  type HoverCardRootProps,
+} from "@ark-ui/svelte/hover-card";
 import type { HoverCardProps as BaseHoverCardProps } from "@pisagor/props";
 import { hoverCardRecipe } from "@pisagor/recipes";
 import { setHoverCardContext } from "./hover-card.context";

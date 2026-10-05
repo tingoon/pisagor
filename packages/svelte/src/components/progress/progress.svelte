@@ -1,14 +1,16 @@
 <script lang="ts">
-import type { ProgressRootProps } from "@ark-ui/svelte/progress";
-import { Progress as ProgressPrimitive } from "@ark-ui/svelte/progress";
+import {
+  Progress as ProgressPrimitive,
+  type ProgressRootProps,
+} from "@ark-ui/svelte/progress";
 import type { ProgressProps as BaseProgressProps } from "@pisagor/props";
 import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import { setProgressContext } from "./progress.context";
 
-type Props = Omit<ProgressRootProps, "class" | "children" | "value"> & {
+type Props = Omit<ProgressRootProps, "children" | "value"> & {
   children?: Snippet;
-  class?: string | undefined;
   classNames?: Partial<Record<ProgressRecipeSlot, string>>;
   /**
    * Whether to show indeterminate progress.
@@ -51,7 +53,7 @@ setProgressContext({
 
 <ProgressPrimitive.Root
   {...rest}
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   {orientation}
   value={indeterminate ? null : value}
 >

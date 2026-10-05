@@ -1,13 +1,13 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { usePopoverContent } from "./popover.context";
 import PopoverDescription from "./popover-description.svelte";
 import PopoverTitle from "./popover-title.svelte";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   description?: string;
   title?: string;
 };
@@ -22,7 +22,7 @@ let {
 const { slots } = usePopoverContent();
 </script>
 
-<Ark as="div" {...rest} class={slots.header({ class: className })}>
+<Ark as="div" {...rest} class={slots.header({ class: cn(className) })}>
   {#if title}
     <PopoverTitle>{title}</PopoverTitle>
   {/if}

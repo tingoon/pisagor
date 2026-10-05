@@ -1,19 +1,21 @@
 <script generics="TData extends RowData = RowData" lang="ts">
 import type { DataGridProps as BaseDataGridProps } from "@pisagor/props";
 import { dataGridRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type {
   RowData,
   TableOptions,
   Table as TableType,
 } from "@tanstack/svelte-table";
 import { createTable } from "@tanstack/svelte-table";
+import type { ClassValue } from "svelte/elements";
 import { reactiveTableOptions } from "../utils";
 import { setDataGridContext } from "./data-grid.context";
 import { type DataGridFeatures, dataGridFeatures } from "./data-grid.features";
 
 type Props = {
+  class?: ClassValue;
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   features?: DataGridFeatures;
   columnResizeMode?: "onChange" | "onEnd";
 } & Omit<TableOptions<DataGridFeatures, TData>, "features"> &
@@ -63,7 +65,7 @@ setDataGridContext({
 </script>
 
 <div
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   data-part="root"
   data-scope="data-grid"
 >

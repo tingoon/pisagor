@@ -2,11 +2,11 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
 import { aspectRatioRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
+type Props = HTMLAttributes<HTMLElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 } & BaseAspectRatioProps;
 
 let {
@@ -20,7 +20,7 @@ let {
 <Ark
   as="div"
   {...rest}
-  class={recipe({ class: className })}
+  class={recipe({ class: cn(className) })}
   data-part="root"
   data-scope="aspect-ratio"
 >

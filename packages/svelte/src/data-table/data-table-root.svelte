@@ -1,8 +1,10 @@
 <script lang="ts">
 import type { DataTableProps as BaseDataTableProps } from "@pisagor/props";
 import { dataTableRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { RowData, TableOptions } from "@tanstack/svelte-table";
 import { createTable } from "@tanstack/svelte-table";
+import type { ClassValue } from "svelte/elements";
 import { reactiveTableOptions } from "../utils";
 import { setDataTableContext } from "./data-table.context";
 import {
@@ -11,8 +13,8 @@ import {
 } from "./data-table.features";
 
 type Props = {
+  class?: ClassValue;
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   features?: DataTableFeatures;
 } & Omit<TableOptions<DataTableFeatures, RowData>, "features"> &
   BaseDataTableProps;
@@ -57,7 +59,7 @@ setDataTableContext({
 </script>
 
 <div
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   data-part="root"
   data-scope="data-table"
 >

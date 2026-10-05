@@ -1,13 +1,13 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useCard } from "./card.context";
 import CardDescription from "./card-description.svelte";
 import CardTitle from "./card-title.svelte";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   description?: string;
   title?: string;
 };
@@ -26,7 +26,7 @@ const { slots } = useCard();
 <Ark
   as="div"
   {...rest}
-  class={slots.header({ class: className })}
+  class={slots.header({ class: cn(className) })}
   data-part="header"
   data-scope="card"
 >

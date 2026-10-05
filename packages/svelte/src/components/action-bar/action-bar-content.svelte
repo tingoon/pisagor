@@ -2,18 +2,16 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import { Portal } from "@ark-ui/svelte/portal";
 import { Presence } from "@ark-ui/svelte/presence";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useActionBar } from "./action-bar.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
-  class?: string | undefined;
-};
 let {
   "aria-labelledby": ariaLabelledby,
   class: className,
   children,
   ...rest
-}: Props = $props();
+}: HTMLAttributes<HTMLDivElement> = $props();
 const ctx = useActionBar();
 const placement = $derived(ctx.positioning.placement);
 const gutter = $derived(ctx.positioning.gutter);
@@ -34,7 +32,7 @@ const gutter = $derived(ctx.positioning.gutter);
       as="div"
       {...rest}
       aria-labelledby={ariaLabelledby}
-      class={ctx.slots.content({ class: className })}
+      class={ctx.slots.content({ class: cn(className) })}
       data-part="content"
       data-scope="action-bar"
       role="toolbar"

@@ -10,6 +10,7 @@ import {
   inputGroupControlRecipe,
   passwordInputRecipe,
 } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import EyeIcon from "phosphor-svelte/lib/EyeIcon";
 import EyeSlashIcon from "phosphor-svelte/lib/EyeSlashIcon";
 import XIcon from "phosphor-svelte/lib/XIcon";
@@ -25,9 +26,8 @@ type PasswordInputRootProps = Pick<
 >;
 
 type Props = PasswordInputRootProps &
-  Omit<PasswordInputInputProps, "class" | "size" | "children"> & {
+  Omit<PasswordInputInputProps, "size" | "children"> & {
     clearable?: boolean;
-    class?: string | undefined;
     disabled?: boolean | null;
     onValueChange?: (value: string) => void;
     placeholder?: string | null | undefined;
@@ -75,7 +75,7 @@ function handleClear() {
 </script>
 
 <PasswordInputPrimitive.Root
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   data-size={size}
   {defaultVisible}
   {invalid}

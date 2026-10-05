@@ -1,9 +1,9 @@
 <script lang="ts">
+import { cn } from "@pisagor/utils";
 import type { ComponentProps, Snippet } from "svelte";
 import Button from "../button/button.svelte";
 import Swap from "../swap/swap.svelte";
-import type { AppShellPlacement } from "./app-shell.context";
-import { useAppShell } from "./app-shell.context";
+import { type AppShellPlacement, useAppShell } from "./app-shell.context";
 
 type Props = Omit<
   ComponentProps<typeof Button>,
@@ -53,7 +53,7 @@ function handleClick(
   {...rest}
   aria-label={ariaLabel ?? `Toggle ${placement} region`}
   aria-pressed={open}
-  class={ctx.slots.inline({ class: className })}
+  class={ctx.slots.inline({ class: cn(className) })}
   data-placement={placement}
   data-scope="app-shell"
   data-state={open ? "open" : "closed"}

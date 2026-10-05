@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { SelectItemGroupProps as ArkSelectItemGroupProps } from "@ark-ui/svelte/select";
-import { Select as SelectPrimitive } from "@ark-ui/svelte/select";
+import {
+  type SelectItemGroupProps as ArkSelectItemGroupProps,
+  Select as SelectPrimitive,
+} from "@ark-ui/svelte/select";
 import type { Snippet } from "svelte";
 import SelectItemGroupLabel from "./select-item-group-label.svelte";
 

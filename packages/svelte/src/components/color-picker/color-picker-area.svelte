@@ -1,13 +1,12 @@
 <script lang="ts">
-import type { ColorPickerAreaProps } from "@ark-ui/svelte/color-picker";
-import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte/color-picker";
+import {
+  type ColorPickerAreaProps,
+  ColorPicker as ColorPickerPrimitive,
+} from "@ark-ui/svelte/color-picker";
 import { cn } from "@pisagor/utils";
 import { useColorPicker } from "./color-picker.context";
 
-type Props = Omit<ColorPickerAreaProps, "class"> & {
-  class?: string | undefined;
-  showDots?: boolean;
-};
+type Props = ColorPickerAreaProps & { showDots?: boolean };
 let { children, class: className, showDots = false, ...rest }: Props = $props();
 const { slots } = useColorPicker();
 </script>

@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { ClipboardRootProps } from "@ark-ui/svelte/clipboard";
-import { Clipboard as ClipboardPrimitive } from "@ark-ui/svelte/clipboard";
+import {
+  Clipboard as ClipboardPrimitive,
+  type ClipboardRootProps,
+} from "@ark-ui/svelte/clipboard";
 import type {
   ClipboardProps as BaseClipboardProps,
   ButtonProps,
@@ -21,18 +23,17 @@ import { setClipboardContext } from "./clipboard.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<ClipboardRootProps, "class" | "children"> & {
+type Props = Omit<ClipboardRootProps, "children"> & {
   buttonAriaLabel?: string;
   buttonSize?: ButtonProps["size"];
   buttonVariant?: ButtonProps["variant"];
   children?: Snippet;
-  class?: string | undefined;
   classNames?: Partial<Record<ClipboardRecipeSlot, string>>;
   controlVariant?: FormControlVariant;
   copiedIcon?: Snippet;
   copyIcon?: Snippet;
   label?: string;
-  labelProps?: Omit<HTMLAttributes<HTMLSpanElement>, "children" | "class">;
+  labelProps?: Omit<HTMLAttributes<HTMLSpanElement>, "children">;
   variant?: "button" | "input" | "value";
 } & BaseClipboardProps;
 

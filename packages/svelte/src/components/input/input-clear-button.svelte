@@ -1,9 +1,10 @@
 <script lang="ts">
 import XIcon from "phosphor-svelte/lib/XIcon";
+import type { ClassValue } from "svelte/elements";
 import InputGroupButton from "../input-group/input-group-button.svelte";
 
 type Props = {
-  class?: string | undefined;
+  class?: ClassValue;
   onClear: () => void;
 };
 

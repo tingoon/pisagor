@@ -16,9 +16,8 @@ import {
   regionVarFor,
 } from "./region";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class" | "style"> & {
+type Props = Omit<HTMLAttributes<HTMLElement>, "style"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   /**
    * Grid column side for the inspector.
    * @defaultValue "end"

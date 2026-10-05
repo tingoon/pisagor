@@ -2,8 +2,7 @@
 import type { ComponentProps } from "svelte";
 import DialogBackdrop from "../dialog/dialog-backdrop.svelte";
 
-type Props = ComponentProps<typeof DialogBackdrop>;
-let props: Props = $props();
+let props: ComponentProps<typeof DialogBackdrop> = $props();
 </script>
 
 <DialogBackdrop {...props} />

@@ -1,18 +1,18 @@
 <script lang="ts">
-import type { CarouselControlProps } from "@ark-ui/svelte/carousel";
-import { Carousel as CarouselPrimitive } from "@ark-ui/svelte/carousel";
+import {
+  type CarouselControlProps,
+  Carousel as CarouselPrimitive,
+} from "@ark-ui/svelte/carousel";
+import { cn } from "@pisagor/utils";
 import { useCarousel } from "./carousel.context";
 
-type Props = Omit<CarouselControlProps, "class"> & {
-  class?: string | undefined;
-};
-let { class: className, children, ...rest }: Props = $props();
+let { class: className, children, ...rest }: CarouselControlProps = $props();
 const { slots } = useCarousel();
 </script>
 
 <CarouselPrimitive.Control
   {...rest}
-  class={slots.control({ class: className })}
+  class={slots.control({ class: cn(className) })}
 >
   {@render children?.()}
 </CarouselPrimitive.Control>

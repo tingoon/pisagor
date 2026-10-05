@@ -1,13 +1,15 @@
 <script lang="ts">
-import type { PinInputRootProps } from "@ark-ui/svelte/pin-input";
-import { PinInput as PinInputPrimitive } from "@ark-ui/svelte/pin-input";
+import {
+  PinInput as PinInputPrimitive,
+  type PinInputRootProps,
+} from "@ark-ui/svelte/pin-input";
 import type { InputOtpProps as BaseInputOtpProps } from "@pisagor/props";
 import { inputOtpRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import { setInputOTPContext } from "./input-otp.context";
 
-type Props = Omit<PinInputRootProps, "class" | "onValueChange"> & {
+type Props = Omit<PinInputRootProps, "onValueChange"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   onValueChange?: (value: string[]) => void;
   size?: "sm" | "md" | "lg";
   variant?: "primary" | "secondary";
@@ -53,7 +55,7 @@ function handleValueChange(
   {otp}
   placeholder={placeholder ?? ""}
 >
-  <PinInputPrimitive.Control class={slots.control({ class: className })}>
+  <PinInputPrimitive.Control class={slots.control({ class: cn(className) })}>
     {@render children?.()}
   </PinInputPrimitive.Control>
   <PinInputPrimitive.HiddenInput />

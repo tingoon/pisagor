@@ -1,13 +1,15 @@
 <script lang="ts">
-import type { MarqueeRootProps as ArkRootProps } from "@ark-ui/svelte/marquee";
-import { Marquee as MarqueePrimitive } from "@ark-ui/svelte/marquee";
+import {
+  type MarqueeRootProps as ArkRootProps,
+  Marquee as MarqueePrimitive,
+} from "@ark-ui/svelte/marquee";
 import type { MarqueeProps as BaseMarqueeProps } from "@pisagor/props";
 import { marqueeRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import { setMarqueeContext } from "./marquee.context";
 import MarqueeEdge from "./marquee-edge.svelte";
 
-type Props = Omit<ArkRootProps, "class" | "side"> & {
-  class?: string | undefined;
+type Props = Omit<ArkRootProps, "side"> & {
   orientation?: "horizontal" | "vertical";
   showEdges?: boolean;
 } & BaseMarqueeProps;
@@ -34,7 +36,7 @@ setMarqueeContext({
 
 <MarqueePrimitive.Root
   {...rest}
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   data-orientation={orientation}
   {side}
   {spacing}

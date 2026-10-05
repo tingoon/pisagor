@@ -1,13 +1,13 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { Sheet } from "../sheet";
 import { SIDEBAR_WIDTH_MOBILE } from "./constants";
 import { useSidebar } from "./sidebar.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "style"> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   style?: string | undefined;
   placement?: "left" | "right";
   variant?: "sidebar" | "floating" | "inset";
@@ -32,7 +32,7 @@ const padded = $derived(variant === "floating" || variant === "inset");
   <Ark
     as="div"
     {...rest}
-    class={ctx.slots.base({ class: className })}
+    class={ctx.slots.base({ class: cn(className) })}
     data-part="root"
     data-scope="sidebar"
     {style}
@@ -65,7 +65,7 @@ const padded = $derived(variant === "floating" || variant === "inset");
   <Ark
     as="div"
     {...rest}
-    class={ctx.slots.peer({ class: className })}
+    class={ctx.slots.peer({ class: cn(className) })}
     data-collapsible={ctx.state === "collapsed" ? collapsible : ""}
     data-part="root"
     data-placement={placement}
@@ -82,7 +82,7 @@ const padded = $derived(variant === "floating" || variant === "inset");
     />
     <Ark
       as="div"
-      class={ctx.slots.container({ class: className, padded, placement })}
+      class={ctx.slots.container({ class: cn(className), padded, placement })}
       data-part="container"
       data-scope="sidebar"
     >

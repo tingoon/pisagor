@@ -1,16 +1,18 @@
 <script lang="ts">
-import type { DatePickerPrevTriggerProps } from "@ark-ui/svelte/date-picker";
-import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
+import {
+  DatePicker as CalendarPrimitive,
+  type DatePickerPrevTriggerProps,
+} from "@ark-ui/svelte/date-picker";
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
 import { useCalendar } from "./calendar.context";
 
-type Props = Omit<DatePickerPrevTriggerProps, "class"> & {
-  class?: string | undefined;
-};
-
-let { class: className, children, ...rest }: Props = $props();
+let {
+  class: className,
+  children,
+  ...rest
+}: DatePickerPrevTriggerProps = $props();
 const { slots } = useCalendar();
 </script>
 

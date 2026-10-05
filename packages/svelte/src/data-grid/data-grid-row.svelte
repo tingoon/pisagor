@@ -1,10 +1,10 @@
 <script lang="ts">
+import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "svelte";
 import { Table } from "../components/table";
 import { useDataGridContext, useDataGridRowContext } from "./data-grid.context";
 
-type Props = ComponentProps<typeof Table.Row>;
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: ComponentProps<typeof Table.Row> = $props();
 const { slots } = useDataGridContext();
 const { row } = useDataGridRowContext();
 </script>
@@ -13,7 +13,7 @@ const { row } = useDataGridRowContext();
   {...rest}
   aria-expanded={row.getCanExpand() ? row.getIsExpanded() : undefined}
   aria-selected={row.getIsSelected()}
-  class={slots.row({ class: className })}
+  class={slots.row({ class: cn(className) })}
   data-depth={row.depth}
   data-expanded={row.getIsExpanded() ? "true" : undefined}
   data-grouped={row.getIsGrouped() ? "true" : undefined}

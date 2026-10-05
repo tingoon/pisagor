@@ -2,12 +2,12 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { itemRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setItemGroupContext } from "./item-group.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 } & BaseItemProps;
 
 let {
@@ -30,7 +30,7 @@ setItemGroupContext({
 <Ark
   as="div"
   {...rest}
-  class={slots.group({ class: className })}
+  class={slots.group({ class: cn(className) })}
   data-part="group"
   data-scope="item"
   data-variant={variant}

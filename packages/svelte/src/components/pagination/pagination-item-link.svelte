@@ -1,12 +1,12 @@
 <script lang="ts">
 import { usePaginationContext } from "@ark-ui/svelte/pagination";
 import { buttonRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAnchorAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAnchorAttributes, "class" | "href"> & {
+type Props = Omit<HTMLAnchorAttributes, "href"> & {
   children?: Snippet;
-  class?: string | undefined;
   page?: "previous" | "next" | number;
 };
 
@@ -23,7 +23,9 @@ const pageValue = $derived.by(() => {
 const variant = $derived(
   typeof page === "number" ? ("outline" as const) : ("ghost" as const),
 );
-const classes = $derived(buttonRecipe({ variant }).base({ class: className }));
+const classes = $derived(
+  buttonRecipe({ variant }).base({ class: cn(className) }),
+);
 </script>
 
 <a class={classes} href={`?page=${pageValue}`} {...rest}>

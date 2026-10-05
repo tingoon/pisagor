@@ -4,10 +4,7 @@ import DotsThreeIcon from "phosphor-svelte/lib/DotsThreeIcon";
 import type { HTMLAttributes } from "svelte/elements";
 import { useBreadcrumb } from "./breadcrumb.context";
 
-type Props = Omit<HTMLAttributes<HTMLSpanElement>, "class"> & {
-  class?: string | undefined;
-};
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: HTMLAttributes<HTMLSpanElement> = $props();
 const { slots } = useBreadcrumb();
 </script>
 

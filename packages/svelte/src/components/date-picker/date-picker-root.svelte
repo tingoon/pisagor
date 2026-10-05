@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { DatePickerRootProps as ArkRootProps } from "@ark-ui/svelte/date-picker";
-import { DatePicker as DatePickerPrimitive } from "@ark-ui/svelte/date-picker";
+import {
+  type DatePickerRootProps as ArkRootProps,
+  DatePicker as DatePickerPrimitive,
+} from "@ark-ui/svelte/date-picker";
 import type { DatePickerProps as BaseDatePickerProps } from "@pisagor/props";
 import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
 import { setCalendarSlotsContext } from "../calendar/calendar.context";

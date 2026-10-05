@@ -1,17 +1,15 @@
 <script lang="ts">
-import type { DatePickerMonthSelectProps } from "@ark-ui/svelte/date-picker";
-import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
+import {
+  DatePicker as CalendarPrimitive,
+  type DatePickerMonthSelectProps,
+} from "@ark-ui/svelte/date-picker";
 import { formControlShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { useCalendar } from "./calendar.context";
 
-type Props = Omit<DatePickerMonthSelectProps, "class"> & {
-  class?: string | undefined;
-};
-
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: DatePickerMonthSelectProps = $props();
 const { slots } = useCalendar();
 const surfaceVariant = useFormControlSurface();
 const selectClassName = $derived(

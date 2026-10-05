@@ -2,12 +2,12 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { CardProps as BaseCardProps } from "@pisagor/props";
 import { cardRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setCardContext } from "./card.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 } & BaseCardProps;
 
 let {
@@ -29,7 +29,7 @@ setCardContext({
 <Ark
   as="div"
   {...rest}
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   data-part="root"
   data-scope="card"
 >

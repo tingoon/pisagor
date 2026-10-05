@@ -1,12 +1,12 @@
 <script lang="ts">
-import type { AngleSliderMarkerProps } from "@ark-ui/svelte/angle-slider";
-import { AngleSlider as AngleSliderPrimitive } from "@ark-ui/svelte/angle-slider";
+import {
+  type AngleSliderMarkerProps,
+  AngleSlider as AngleSliderPrimitive,
+} from "@ark-ui/svelte/angle-slider";
+import { cn } from "@pisagor/utils";
 import { useCircularSlider } from "./circular-slider.context";
 
-type Props = Omit<AngleSliderMarkerProps, "class"> & {
-  class?: string | undefined;
-};
-let { class: className, style, ...rest }: Props = $props();
+let { class: className, style, ...rest }: AngleSliderMarkerProps = $props();
 const { size, thickness, slots } = useCircularSlider();
 
 const ringRadius = $derived(size / 2 - thickness / 2);
@@ -19,6 +19,6 @@ const markerOffset = $derived(
 
 <AngleSliderPrimitive.Marker
   {...rest}
-  class={slots.marker({ class: className })}
+  class={slots.marker({ class: cn(className) })}
   style={`${style ?? ""}; --marker-height: ${markerHeight}px; --marker-offset: ${markerOffset}px; --marker-width: ${markerWidth}px;`}
 />

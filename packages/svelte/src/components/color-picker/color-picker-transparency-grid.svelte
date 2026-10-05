@@ -1,9 +1,11 @@
 <script lang="ts">
 import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte/color-picker";
+import { cn } from "@pisagor/utils";
+import type { ClassValue } from "svelte/elements";
 import { useColorPicker } from "./color-picker.context";
 
 type Props = {
-  class?: string | undefined;
+  class?: ClassValue;
   children?: import("svelte").Snippet;
   [key: string]: unknown;
 };
@@ -13,5 +15,5 @@ const { slots } = useColorPicker();
 
 <ColorPickerPrimitive.TransparencyGrid
   {...rest}
-  class={slots.transparencyGrid({ class: className })}
+  class={slots.transparencyGrid({ class: cn(className) })}
 > </ColorPickerPrimitive.TransparencyGrid>

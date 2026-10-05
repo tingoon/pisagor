@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { SelectTriggerProps as ArkSelectTriggerProps } from "@ark-ui/svelte/select";
-import { Select as SelectPrimitive } from "@ark-ui/svelte/select";
+import {
+  type SelectTriggerProps as ArkSelectTriggerProps,
+  Select as SelectPrimitive,
+} from "@ark-ui/svelte/select";
 import {
   type FormControlShellVariantProps,
   formControlShellRecipe,
@@ -15,11 +17,8 @@ import SelectClearTrigger from "./select-clear-trigger.svelte";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<ArkSelectTriggerProps, "class" | "size"> &
-  FormControlShellVariantProps & {
-    class?: string | undefined;
-    clearable?: boolean;
-  };
+type Props = Omit<ArkSelectTriggerProps, "size"> &
+  FormControlShellVariantProps & { clearable?: boolean };
 
 let {
   size = "md",

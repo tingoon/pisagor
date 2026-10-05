@@ -12,8 +12,7 @@ type TabsPresetItem = {
   label: string;
   value: string;
 };
-type Props = Omit<TabsRootProps, "children" | "class"> & {
-  class?: string | undefined;
+type Props = Omit<TabsRootProps, "children"> & {
   items?: TabsPresetItem[];
 } & BaseTabsProps;
 

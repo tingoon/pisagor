@@ -1,5 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
+import { cn } from "@pisagor/utils";
 import ListBulletsIcon from "phosphor-svelte/lib/ListBulletsIcon";
 import ListNumbersIcon from "phosphor-svelte/lib/ListNumbersIcon";
 import TextBIcon from "phosphor-svelte/lib/TextBIcon";
@@ -10,9 +11,8 @@ import Toggle from "../components/toggle/toggle.svelte";
 import VisuallyHidden from "../components/visually-hidden/visually-hidden.svelte";
 import { useRichTextEditorState } from "./rich-text-editor.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 };
 
 let { children, class: className, ...rest }: Props = $props();
@@ -54,7 +54,7 @@ const orderedList = $derived(
   <Ark
     as="div"
     {...rest}
-    class={ctx.slots.toolbar({ class: className })}
+    class={ctx.slots.toolbar({ class: cn(className) })}
     data-part="toolbar"
     data-scope="rich-text-editor"
   >

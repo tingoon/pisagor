@@ -1,20 +1,18 @@
 <script lang="ts">
 import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte/color-picker";
 import { Ark } from "@ark-ui/svelte/factory";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useColorPicker } from "./color-picker.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
-  class?: string | undefined;
-};
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
 const { slots } = useColorPicker();
 </script>
 
 <Ark
   as="div"
   {...rest}
-  class={slots.inputSwatch({ class: className })}
+  class={slots.inputSwatch({ class: cn(className) })}
   data-part="input-swatch"
   data-scope="color-picker"
 >

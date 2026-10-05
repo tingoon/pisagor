@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { SignaturePadRootProps as ArkRootProps } from "@ark-ui/svelte/signature-pad";
-import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/svelte/signature-pad";
+import {
+  type SignaturePadRootProps as ArkRootProps,
+  SignaturePad as SignaturePadPrimitive,
+} from "@ark-ui/svelte/signature-pad";
 import type { SignaturePadProps as BaseSignaturePadProps } from "@pisagor/props";
 import {
   buttonRecipe,
@@ -15,8 +17,7 @@ import { setSignaturePadContext } from "./signature-pad.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<ArkRootProps, "class" | "children"> & {
-  class?: string | undefined;
+type Props = Omit<ArkRootProps, "children"> & {
   classNames?: Partial<Record<SignaturePadRecipeSlot, string>>;
   invalid?: boolean;
   variant?: FormControlVariant;
@@ -45,7 +46,7 @@ setSignaturePadContext({
 <SignaturePadPrimitive.Root
   {...rest}
   aria-invalid={invalid || undefined}
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   data-invalid={invalid || undefined}
 >
   <SignaturePadPrimitive.Control

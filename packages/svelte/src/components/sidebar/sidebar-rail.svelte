@@ -1,13 +1,10 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
+import { cn } from "@pisagor/utils";
 import type { HTMLButtonAttributes } from "svelte/elements";
 import { useSidebar } from "./sidebar.context";
 
-type Props = Omit<HTMLButtonAttributes, "class"> & {
-  class?: string | undefined;
-};
-
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: HTMLButtonAttributes = $props();
 const ctx = useSidebar();
 </script>
 
@@ -15,7 +12,7 @@ const ctx = useSidebar();
   as="button"
   {...rest}
   aria-label="Toggle sidebar"
-  class={ctx.slots.rail({ class: className })}
+  class={ctx.slots.rail({ class: cn(className) })}
   data-part="rail"
   data-scope="sidebar"
   data-sidebar="rail"

@@ -1,12 +1,12 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setSurfaceContext } from "../surface/surface.context";
 import { useFrame } from "./frame.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 };
 
 let { children, class: className, ...rest }: Props = $props();
@@ -19,7 +19,7 @@ setSurfaceContext({ depth: 1, variant: "default" });
 <Ark
   as="div"
   {...rest}
-  class={slots.panel({ class: className })}
+  class={slots.panel({ class: cn(className) })}
   data-part="panel"
   data-scope="frame"
 >

@@ -2,6 +2,7 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { SurfaceProps as BaseSurfaceProps } from "@pisagor/props";
 import { surfaceRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import {
   type SurfaceVariant,
@@ -16,9 +17,8 @@ const AUTO_VARIANTS = [
   "tertiary",
 ] as const satisfies readonly SurfaceVariant[];
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 } & BaseSurfaceProps;
 
 let {
@@ -58,7 +58,7 @@ setSurfaceContext({
   {...rest}
   class={recipe({
     bordered,
-    class: className,
+    class: cn(className),
     padding,
     rounded,
     variant: surface.variant,

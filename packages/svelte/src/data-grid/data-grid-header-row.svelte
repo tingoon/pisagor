@@ -2,8 +2,7 @@
 import type { ComponentProps } from "svelte";
 import { Table } from "../components/table";
 
-type Props = ComponentProps<typeof Table.Row>;
-let props: Props = $props();
+let props: ComponentProps<typeof Table.Row> = $props();
 </script>
 
 <Table.Row {...props} data-part="header-row" data-scope="data-grid" />

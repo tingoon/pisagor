@@ -21,9 +21,8 @@ import ComboboxTrigger from "./combobox-trigger.svelte";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<ArkInputProps, "class" | "size"> &
+type Props = Omit<ArkInputProps, "size"> &
   FormControlGroupShellVariantProps & {
-    class?: string | undefined;
     clearable?: boolean;
     showTrigger?: boolean;
   };

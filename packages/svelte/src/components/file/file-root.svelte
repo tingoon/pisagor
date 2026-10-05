@@ -2,12 +2,11 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { FileProps as BaseFileProps } from "@pisagor/props";
 import { fileRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setFileContext } from "./file.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
-  class?: string | undefined;
-} & BaseFileProps;
+type Props = HTMLAttributes<HTMLDivElement> & BaseFileProps;
 
 let {
   children,
@@ -26,7 +25,7 @@ setFileContext({
 <Ark
   as="div"
   {...rest}
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   data-part="root"
   data-scope="file"
 >

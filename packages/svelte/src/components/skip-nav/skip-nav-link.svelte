@@ -2,13 +2,13 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { SkipNavProps as BaseSkipNavProps } from "@pisagor/props";
 import { skipNavRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { HTMLAnchorAttributes } from "svelte/elements";
 
 const SKIP_NAV_ID = "skip-nav-content";
 
-type Props = Omit<HTMLAnchorAttributes, "class" | "href" | "id"> & {
+type Props = Omit<HTMLAnchorAttributes, "href" | "id"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   id?: string;
 } & BaseSkipNavProps;
 
@@ -26,7 +26,7 @@ const slots = $derived(recipe());
 <Ark
   as="a"
   {...rest}
-  class={slots.link({ class: className })}
+  class={slots.link({ class: cn(className) })}
   data-part="link"
   data-scope="skip-nav"
   href={`#${id}`}

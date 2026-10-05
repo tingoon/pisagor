@@ -2,14 +2,14 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { AvatarGroupProps as BaseAvatarGroupProps } from "@pisagor/props";
 import { avatarGroupRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import Avatar from "./avatar.svelte";
 import { setAvatarGroupContext } from "./avatar-group.context";
 
 type User = { fallback?: string; name?: string; src?: string };
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "children"> & {
-  class?: string | undefined;
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
   max?: number;
   users: User[];
 } & BaseAvatarGroupProps;
@@ -38,7 +38,7 @@ setAvatarGroupContext({
 <Ark
   as="div"
   {...rest}
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   data-part="group"
   data-scope="avatar"
 >

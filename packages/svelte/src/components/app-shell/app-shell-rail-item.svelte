@@ -1,9 +1,9 @@
 <script lang="ts">
+import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "svelte";
 import Button from "../button/button.svelte";
 import Tooltip from "../tooltip/tooltip.svelte";
-import type { AppShellPlacement } from "./app-shell.context";
-import { useAppShell } from "./app-shell.context";
+import { type AppShellPlacement, useAppShell } from "./app-shell.context";
 import { useAppShellRail } from "./rail.context";
 
 type TooltipConfig = Omit<ComponentProps<typeof Tooltip>, "children">;
@@ -77,7 +77,7 @@ function handleClick(
     <Button
       {...rest}
       aria-current={active ? "page" : undefined}
-      class={ctx.slots.railItem({ class: className })}
+      class={ctx.slots.railItem({ class: cn(className) })}
       {clickEffect}
       data-active={active}
       data-part="rail-item"
@@ -94,7 +94,7 @@ function handleClick(
   <Button
     {...rest}
     aria-current={active ? "page" : undefined}
-    class={ctx.slots.railItem({ class: className })}
+    class={ctx.slots.railItem({ class: cn(className) })}
     {clickEffect}
     data-active={active}
     data-part="rail-item"

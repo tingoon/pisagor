@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { SliderRootProps } from "@ark-ui/svelte/slider";
-import { Slider as SliderPrimitive } from "@ark-ui/svelte/slider";
+import {
+  Slider as SliderPrimitive,
+  type SliderRootProps,
+} from "@ark-ui/svelte/slider";
 import type { SliderProps as BaseSliderProps } from "@pisagor/props";
 import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -9,9 +11,8 @@ import { setSliderContext } from "./slider.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<SliderRootProps, "class" | "children" | "onValueChange"> & {
+type Props = Omit<SliderRootProps, "children" | "onValueChange"> & {
   children?: Snippet;
-  class?: string | undefined;
   classNames?: Partial<Record<SliderRecipeSlot, string>>;
   label?: string;
   markerInterval?: number;
@@ -79,7 +80,7 @@ function handleValueChange(
 
 <SliderPrimitive.Root
   {...rest}
-  class={slots.base({ class: className })}
+  class={slots.base({ class: cn(className) })}
   data-variant={variant}
   {defaultValue}
   {max}

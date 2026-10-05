@@ -13,7 +13,7 @@ import { setRichTextEditorContext } from "./rich-text-editor.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<HTMLAttributes<HTMLFieldSetElement>, "class" | "onblur"> & {
+type Props = Omit<HTMLAttributes<HTMLFieldSetElement>, "onblur"> & {
   variant?: FormControlVariant;
   defaultValue?: string;
   value?: string;
@@ -25,7 +25,6 @@ type Props = Omit<HTMLAttributes<HTMLFieldSetElement>, "class" | "onblur"> & {
   invalid?: boolean;
   "aria-label"?: string | undefined | null;
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   id?: string | undefined | null;
 } & BaseRichTextEditorProps;
 
@@ -146,7 +145,7 @@ setRichTextEditorContext({
   aria-readonly={readOnly || undefined}
   class={cn(
     formControlShellRecipe({ surfaceVariant, variant }),
-    slots.base({ class: className }),
+    slots.base({ class: cn(className) }),
   )}
   data-disabled={disabled ? "true" : undefined}
   data-invalid={invalid ? "true" : undefined}

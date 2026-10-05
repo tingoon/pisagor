@@ -2,8 +2,7 @@
 import type { ComponentProps } from "svelte";
 import { Combobox } from "../combobox";
 
-type Props = ComponentProps<typeof Combobox>;
-let props: Props = $props();
+let props: ComponentProps<typeof Combobox> = $props();
 </script>
 
 <Combobox {...props} allowCustomValue inputBehavior="autocomplete" />

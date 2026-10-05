@@ -1,12 +1,12 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
+import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { useFieldSlots } from "./field.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: Snippet;
-  class?: string | undefined;
 };
 
 let { class: className, children, ...rest }: Props = $props();
@@ -16,7 +16,7 @@ const slots = useFieldSlots();
 <Ark
   as="div"
   {...rest}
-  class={slots.title({ class: className })}
+  class={slots.title({ class: cn(className) })}
   data-part="title"
   data-scope="field"
 >

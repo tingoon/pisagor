@@ -1,15 +1,17 @@
 <script lang="ts">
-import type { PaginationPrevTriggerProps } from "@ark-ui/svelte/pagination";
-import { Pagination as PaginationPrimitive } from "@ark-ui/svelte/pagination";
+import {
+  type PaginationPrevTriggerProps,
+  Pagination as PaginationPrimitive,
+} from "@ark-ui/svelte/pagination";
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
 
-type Props = Omit<PaginationPrevTriggerProps, "class"> & {
-  class?: string | undefined;
-};
-
-let { children, class: className, ...rest }: Props = $props();
+let {
+  children,
+  class: className,
+  ...rest
+}: PaginationPrevTriggerProps = $props();
 </script>
 
 <PaginationPrimitive.PrevTrigger
