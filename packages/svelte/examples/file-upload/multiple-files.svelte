@@ -13,7 +13,7 @@ import { Button, FileUpload, Separator } from "@pisagor/svelte";
     </div>
     <FileUpload.Trigger>
       {#snippet asChild(
-        props: any,
+        props,
       )}
         <Button {...props()}>Browse files</Button>
       {/snippet}

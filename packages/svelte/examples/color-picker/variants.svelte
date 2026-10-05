@@ -13,7 +13,7 @@ import { ColorPicker, InputGroup } from "@pisagor/svelte";
         </ColorPicker.Trigger>
         <ColorPicker.Input channel="hex">
           {#snippet asChild(
-            props: any,
+            props,
           )}
             <InputGroup.Input {...props()} placeholder="Primary" />
           {/snippet}
@@ -31,7 +31,7 @@ import { ColorPicker, InputGroup } from "@pisagor/svelte";
         </ColorPicker.Trigger>
         <ColorPicker.Input channel="hex">
           {#snippet asChild(
-            props: any,
+            props,
           )}
             <InputGroup.Input {...props()} placeholder="Secondary" />
           {/snippet}

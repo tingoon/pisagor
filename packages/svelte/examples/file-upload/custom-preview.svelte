@@ -22,7 +22,7 @@ let files = $state<File[]>([]);
           </FileUpload.ItemPreview>
           <FileUpload.ItemDeleteTrigger>
             {#snippet asChild(
-              props: any,
+              props,
             )}
               <Button
                 {...props()}

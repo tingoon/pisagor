@@ -9,7 +9,7 @@ let value = $state("#eb5e41");
     <ColorPicker.Control>
       <ColorPicker.Input channel="hex">
         {#snippet asChild(
-          props: any,
+          props,
         )}
           <Input {...props()} />
         {/snippet}

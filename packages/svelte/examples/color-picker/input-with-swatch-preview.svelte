@@ -10,7 +10,7 @@ import { ColorPicker, InputGroup } from "@pisagor/svelte";
       </InputGroup.Addon>
       <ColorPicker.Input channel="hex">
         {#snippet asChild(
-          props: any,
+          props,
         )}
           <InputGroup.Input {...props()} />
         {/snippet}

@@ -12,7 +12,7 @@ import { Breadcrumb, Button, DropdownMenu } from "@pisagor/svelte";
       <DropdownMenu positioning={{ placement: "bottom-start" }}>
         <DropdownMenu.Trigger>
           {#snippet asChild(
-            props: any,
+            props,
           )}
             <Button
               {...props()}

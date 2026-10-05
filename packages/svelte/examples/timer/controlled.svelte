@@ -33,7 +33,7 @@ let completed = $state(false);
         <Timer.Control>
           <Timer.Start>
             {#snippet asChild(
-              props: any,
+              props,
             )}
               <Button
                 {...props()}
@@ -47,7 +47,7 @@ let completed = $state(false);
           </Timer.Start>
           <Timer.Reset>
             {#snippet asChild(
-              props: any,
+              props,
             )}
               <Button
                 {...props()}

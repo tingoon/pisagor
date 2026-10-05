@@ -18,7 +18,7 @@ import { PercentIcon } from "@pisagor/svelte/icons";
       </ColorPicker.Trigger>
       <ColorPicker.Input channel="hex" class="flex-1">
         {#snippet asChild(
-          props: any,
+          props,
         )}
           <InputGroup.Input {...props()} />
         {/snippet}
@@ -26,7 +26,7 @@ import { PercentIcon } from "@pisagor/svelte/icons";
       <Separator orientation="vertical" />
       <ColorPicker.Input channel="alpha">
         {#snippet asChild(
-          props: any,
+          props,
         )}
           <InputGroup.Input
             {...props()}

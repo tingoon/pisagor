@@ -32,7 +32,7 @@ import { Button, Drawer, Field, Input } from "@pisagor/svelte";
         </Drawer.CloseTrigger>
         <Drawer.CloseTrigger>
           {#snippet asChild(
-            props: any,
+            props,
           )}
             <Button {...props()}>Save changes</Button>
           {/snippet}

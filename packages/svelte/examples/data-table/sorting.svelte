@@ -1,7 +1,6 @@
 <script lang="ts">
 import { Table } from "@pisagor/svelte";
-import type { SortingState } from "@pisagor/svelte/data-table";
-import { DataTable } from "@pisagor/svelte/data-table";
+import { DataTable, type SortingState } from "@pisagor/svelte/data-table";
 
 const data = [
   { id: "1", name: "Ada", role: "Admin" },

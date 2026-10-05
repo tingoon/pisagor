@@ -27,7 +27,7 @@ import { workspaceUsers } from "./helpers";
           <DropdownMenu positioning={{ placement: "left-end" }}>
             <DropdownMenu.Trigger>
               {#snippet asChild(
-                props: any,
+                props,
               )}
                 <Button
                   {...props()}

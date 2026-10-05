@@ -21,7 +21,7 @@ import PlayIcon from "phosphor-svelte/lib/PlayIcon";
       <Timer.Control class="w-full justify-center">
         <Timer.Play>
           {#snippet asChild(
-            props: any,
+            props,
           )}
             <Button
               {...props()}
@@ -35,7 +35,7 @@ import PlayIcon from "phosphor-svelte/lib/PlayIcon";
         </Timer.Play>
         <Timer.Pause>
           {#snippet asChild(
-            props: any,
+            props,
           )}
             <Button
               {...props()}

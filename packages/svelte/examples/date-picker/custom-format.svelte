@@ -14,7 +14,7 @@ const formattedDate = $derived(
 <DatePicker onValueChange={(next) => (value = next ?? [])} {value}>
   <DatePicker.Trigger>
     {#snippet asChild(
-      props: any,
+      props,
     )}
       <Button {...props()} variant="outline">
         <CalendarIcon />

@@ -8,7 +8,7 @@ import { CheckIcon, XIcon } from "@pisagor/svelte/icons";
     <Editable.Area>
       <Editable.Input>
         {#snippet asChild(
-          props: any,
+          props,
         )}
           <Input {...props()} size="sm" />
         {/snippet}
@@ -32,7 +32,7 @@ import { CheckIcon, XIcon } from "@pisagor/svelte/icons";
     <Editable.Area>
       <Editable.Input>
         {#snippet asChild(
-          props: any,
+          props,
         )}
           <Input {...props()} size="md" />
         {/snippet}
@@ -56,7 +56,7 @@ import { CheckIcon, XIcon } from "@pisagor/svelte/icons";
     <Editable.Area>
       <Editable.Input>
         {#snippet asChild(
-          props: any,
+          props,
         )}
           <Input {...props()} size="lg" />
         {/snippet}

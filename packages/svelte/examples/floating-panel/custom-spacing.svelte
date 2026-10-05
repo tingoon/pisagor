@@ -18,7 +18,7 @@ const collection = createListCollection({
 <FloatingPanel defaultSize={{ height: 300, width: 360 }}>
   <FloatingPanel.Trigger>
     {#snippet asChild(
-      props: any,
+      props,
     )}
       <Button {...props()} variant="outline">Open</Button>
     {/snippet}
@@ -35,7 +35,7 @@ const collection = createListCollection({
         <FloatingPanel.Restore />
         <FloatingPanel.CloseTrigger>
           {#snippet asChild(
-            props: any,
+            props,
           )}
             <Button {...props()} aria-label="Close" size="icon-xs">
               <XIcon aria-hidden />

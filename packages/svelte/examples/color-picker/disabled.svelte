@@ -6,7 +6,7 @@ import { ColorPicker, Input } from "@pisagor/svelte";
   <ColorPicker.Control>
     <ColorPicker.Input channel="hex">
       {#snippet asChild(
-        props: any,
+        props,
       )}
         <Input {...props()} placeholder="#EB5E41" />
       {/snippet}

@@ -6,7 +6,7 @@ import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
 <DatePicker focusedValue={parseDate(new Date())} selectionMode="range">
   <DatePicker.Trigger>
     {#snippet asChild(
-      props: any,
+      props,
     )}
       <Button {...props()} variant="outline">
         <CalendarIcon />

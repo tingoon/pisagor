@@ -18,7 +18,7 @@ let value = $state([parseDate("2025-06-15")]);
     <DatePicker onValueChange={(next) => (value = next ?? [])} {value}>
       <DatePicker.Trigger>
         {#snippet asChild(
-          props: any,
+          props,
         )}
           <Button {...props()} variant="outline">
             <CalendarIcon />

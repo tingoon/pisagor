@@ -42,7 +42,7 @@ const items = [
     <div class="flex flex-row-reverse gap-2">
       <Steps.NextTrigger>
         {#snippet asChild(
-          props: any,
+          props,
         )}
           <Button {...props()} variant="outline">
             Next
@@ -52,7 +52,7 @@ const items = [
       </Steps.NextTrigger>
       <Steps.PrevTrigger>
         {#snippet asChild(
-          props: any,
+          props,
         )}
           <Button {...props()} variant="outline">
             <CaretLeftIcon />

@@ -9,7 +9,7 @@ import { Button, FileUpload } from "@pisagor/svelte";
       <FileUpload.Title>Primary</FileUpload.Title>
       <FileUpload.Trigger>
         {#snippet asChild(
-          props: any,
+          props,
         )}
           <Button {...props()}>Browse files</Button>
         {/snippet}
@@ -22,7 +22,7 @@ import { Button, FileUpload } from "@pisagor/svelte";
       <FileUpload.Title>Secondary</FileUpload.Title>
       <FileUpload.Trigger>
         {#snippet asChild(
-          props: any,
+          props,
         )}
           <Button {...props()}>Browse files</Button>
         {/snippet}
