@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Menu } from "@pisagor/solid";
 
 export function Default() {

@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { ActionBar, Button } from "@pisagor/solid";
 import {
   ArchiveIcon,
@@ -23,7 +21,7 @@ export function Gutter() {
               setIsOpen(true);
               setGutter(value);
             }}
-            variant={gutter() === value && isOpen ? "secondary" : "outline"}
+            variant={gutter() === value && isOpen() ? "secondary" : "outline"}
           >
             {`Gutter ${value}`}
           </Button>
@@ -32,7 +30,7 @@ export function Gutter() {
       <ActionBar
         onOpenChange={setIsOpen}
         open={isOpen()}
-        positioning={{ gutter, placement: "bottom" }}
+        positioning={{ gutter: gutter(), placement: "bottom" }}
       >
         <ActionBar.Content aria-label="Bulk actions">
           <ActionBar.Value count={3} />

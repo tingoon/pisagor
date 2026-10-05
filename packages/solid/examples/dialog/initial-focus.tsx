@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, Dialog, Field, Input } from "@pisagor/solid";
 import { Portal } from "solid-js/web";
 

@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Avatar } from "@pisagor/solid";
 import { UserIcon } from "@pisagor/solid/icons";
 

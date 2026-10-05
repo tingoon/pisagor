@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { AppShell } from "@pisagor/solid";
 import { mainContent, regionTitle } from "./helpers";
 

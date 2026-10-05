@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Button, Checkbox, Pagination, Table } from "@pisagor/solid";
 import type {

@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { LinkBox } from "@pisagor/solid";
 
 export function Default() {

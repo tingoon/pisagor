@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import type { NodeProviderProps, TreeNodeType } from "@pisagor/solid";
 import { createTreeCollection, TreeView } from "@pisagor/solid";
 import { ArrowSquareOutIcon, LinkIcon } from "@pisagor/solid/icons";

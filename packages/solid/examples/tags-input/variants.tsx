@@ -1,5 +1,5 @@
-/** @jsxImportSource solid-js */
 import { TagsInput } from "@pisagor/solid";
+import { For } from "solid-js";
 
 export function Variants() {
   const defaultValue = ["React", "Solid"];
@@ -8,24 +8,28 @@ export function Variants() {
     <div class="flex flex-col gap-2">
       <TagsInput class="w-full" defaultValue={defaultValue} variant="primary">
         <TagsInput.Context>
-          {({ value }) =>
-            value.map((tag, index) => (
-              <TagsInput.Item index={index} value={tag}>
-                {tag}
-              </TagsInput.Item>
-            ))
-          }
+          {(api) => (
+            <For each={api().value}>
+              {(tag, index) => (
+                <TagsInput.Item index={index()} value={tag}>
+                  {tag}
+                </TagsInput.Item>
+              )}
+            </For>
+          )}
         </TagsInput.Context>
       </TagsInput>
       <TagsInput class="w-full" defaultValue={defaultValue} variant="secondary">
         <TagsInput.Context>
-          {({ value }) =>
-            value.map((tag, index) => (
-              <TagsInput.Item index={index} value={tag}>
-                {tag}
-              </TagsInput.Item>
-            ))
-          }
+          {(api) => (
+            <For each={api().value}>
+              {(tag, index) => (
+                <TagsInput.Item index={index()} value={tag}>
+                  {tag}
+                </TagsInput.Item>
+              )}
+            </For>
+          )}
         </TagsInput.Context>
       </TagsInput>
     </div>

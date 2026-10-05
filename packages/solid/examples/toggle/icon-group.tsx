@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Toggle } from "@pisagor/solid";
 import {
   TextBIcon,

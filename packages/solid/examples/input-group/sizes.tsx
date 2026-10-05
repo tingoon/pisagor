@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { InputGroup } from "@pisagor/solid";
 import { MagnifyingGlassIcon } from "@pisagor/solid/icons";
 

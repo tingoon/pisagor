@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Alert } from "@pisagor/solid";
 
 export function Default() {

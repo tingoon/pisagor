@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { createToaster } from "@ark-ui/solid/toast";
 import { Button, Toaster } from "@pisagor/solid";
 export function Placements() {

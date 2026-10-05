@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Button, DownloadTrigger } from "@pisagor/solid";
 import { DownloadIcon } from "@pisagor/solid/icons";
 

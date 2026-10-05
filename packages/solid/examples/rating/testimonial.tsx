@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Avatar, Card, Rating } from "@pisagor/solid";
 export function Testimonial() {
   return (

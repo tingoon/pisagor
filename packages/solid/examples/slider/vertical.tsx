@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Slider } from "@pisagor/solid";
 
 export function Vertical() {

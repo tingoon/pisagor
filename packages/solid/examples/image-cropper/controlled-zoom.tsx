@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, ImageCropper } from "@pisagor/solid";
 import {
   MagnifyingGlassMinusIcon,
@@ -21,7 +19,7 @@ export function ControlledZoom() {
       <div class="flex gap-1">
         <Button
           aria-label="Zoom out"
-          onClick={() => setZoom(Math.max(0, zoom - 0.25))}
+          onClick={() => setZoom(Math.max(0, zoom() - 0.25))}
           size="icon-sm"
           variant="outline"
         >
@@ -29,7 +27,7 @@ export function ControlledZoom() {
         </Button>
         <Button
           aria-label="Zoom in"
-          onClick={() => setZoom(Math.min(3, zoom + 0.25))}
+          onClick={() => setZoom(Math.min(3, zoom() + 0.25))}
           size="icon-sm"
           variant="outline"
         >

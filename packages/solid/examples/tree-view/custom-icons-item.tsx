@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import type { NodeProviderProps } from "@pisagor/solid";
 import { createTreeCollection, TreeView } from "@pisagor/solid";
 import { StarIcon } from "@pisagor/solid/icons";

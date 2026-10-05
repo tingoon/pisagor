@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { ToggleGroup } from "@pisagor/solid";
 
 const items = [

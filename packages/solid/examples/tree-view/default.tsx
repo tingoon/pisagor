@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import {
   createTreeCollection,
   type NodeProviderProps,

@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, Card, Timer } from "@pisagor/solid";
 import { PauseIcon, PlayIcon } from "@pisagor/solid/icons";
 export function Interval() {

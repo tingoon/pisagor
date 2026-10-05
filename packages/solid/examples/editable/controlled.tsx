@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, Card, Editable, Field, Input } from "@pisagor/solid";
 import { CheckIcon, PencilSimpleIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";

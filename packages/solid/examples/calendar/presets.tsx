@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Button, Calendar, Card } from "@pisagor/solid";
 export function Presets() {
   const presets = [

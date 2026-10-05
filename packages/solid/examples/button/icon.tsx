@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button } from "@pisagor/solid";
 import { StarIcon } from "@pisagor/solid/icons";
 

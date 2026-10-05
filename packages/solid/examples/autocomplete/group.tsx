@@ -1,7 +1,7 @@
-/** @jsxImportSource solid-js */
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Autocomplete } from "@pisagor/solid";
+import { For } from "solid-js";
 
 export function Group() {
   const initialItems = [
@@ -15,30 +15,36 @@ export function Group() {
     { continent: "Asia", label: "South Korea", value: "kr" },
     { continent: "Asia", label: "China", value: "cn" },
   ];
-  const { contains } = useFilter({ sensitivity: "base" });
+  const filterFn = useFilter({ sensitivity: "base" });
 
   const { collection, filter } = useListCollection({
-    filter: contains,
+    filter: filterFn().contains,
     groupBy: (item) => item.continent,
     initialItems,
   });
 
   return (
     <Autocomplete.Root
-      collection={collection}
+      collection={collection()}
       onInputValueChange={({ inputValue }) => filter(inputValue)}
     >
       <Autocomplete.Input placeholder="Select a timezone" />
       <Autocomplete.Content class="w-60">
         <Autocomplete.Empty />
         <Autocomplete.List>
-          {collection.group().map(([continent, group]) => (
-            <Autocomplete.ItemGroup heading={continent}>
-              {group.map((item) => (
-                <Autocomplete.Item item={item}>{item.label}</Autocomplete.Item>
-              ))}
-            </Autocomplete.ItemGroup>
-          ))}
+          <For each={collection().group()}>
+            {([continent, group]) => (
+              <Autocomplete.ItemGroup heading={continent}>
+                <For each={group}>
+                  {(item) => (
+                    <Autocomplete.Item item={item}>
+                      {item.label}
+                    </Autocomplete.Item>
+                  )}
+                </For>
+              </Autocomplete.ItemGroup>
+            )}
+          </For>
         </Autocomplete.List>
       </Autocomplete.Content>
     </Autocomplete.Root>

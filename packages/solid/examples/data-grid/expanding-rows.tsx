@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Table } from "@pisagor/solid";
 import type { ColumnDef } from "@pisagor/solid/data-grid";
 import { DataGrid } from "@pisagor/solid/data-grid";
@@ -117,7 +115,7 @@ export function ExpandingRows() {
       cell: ({ row }) => (
         <div
           class="flex items-center gap-2"
-          style={{ paddingInlineStart: `${row.depth * 1.25}rem` }}
+          style={{ "padding-inline-start": `${row.depth * 1.25}rem` }}
         >
           {row.getCanExpand() ? (
             <button

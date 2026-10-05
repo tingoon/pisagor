@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Button, Sheet } from "@pisagor/solid";
 export function Sides() {
   return (

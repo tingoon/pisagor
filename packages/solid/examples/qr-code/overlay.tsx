@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { QrCode } from "@pisagor/solid";
 import { FishIcon } from "@pisagor/solid/icons";
 

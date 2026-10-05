@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Prose } from "@pisagor/solid";
 
 export function H5() {

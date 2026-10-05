@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { parseDate } from "@pisagor/solid";
 import { useAppForm } from "@pisagor/solid-form/tanstack";
 import { cityOptions, countryOptions, planOptions } from "../options";

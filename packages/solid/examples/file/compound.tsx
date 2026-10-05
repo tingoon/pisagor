@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, File } from "@pisagor/solid";
 import { DownloadSimpleIcon } from "@pisagor/solid/icons";
 export function Compound() {

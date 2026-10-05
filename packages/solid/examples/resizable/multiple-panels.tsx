@@ -1,14 +1,13 @@
-/** @jsxImportSource solid-js */
-
 import { Resizable } from "@pisagor/solid";
 import { cn } from "@pisagor/utils";
+import type { JSX } from "solid-js";
 
 function ResizableFrame({
   children,
   heightClassName = "h-96",
   className,
 }: {
-  children: ReactNode;
+  children: JSX.Element;
   className?: string;
   heightClassName?: string;
 }) {

@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Select } from "@pisagor/solid";
 
 export function Default() {

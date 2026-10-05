@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Badge, Button, Card, Collapsible } from "@pisagor/solid";
 
 export function Default() {

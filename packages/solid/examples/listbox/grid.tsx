@@ -1,7 +1,7 @@
-/** @jsxImportSource solid-js */
-
 import { createGridCollection } from "@ark-ui/solid/collection";
 import { Item, Listbox } from "@pisagor/solid";
+import { For, type JSX } from "solid-js";
+
 export function Grid() {
   const collection = createGridCollection({
     columnCount: 5,
@@ -35,16 +35,20 @@ export function Grid() {
           <Listbox.Content
             class="grid grid-cols-[repeat(var(--column-count),1fr)] gap-1"
             style={
-              { "--column-count": collection.columnCount } as CSSProperties
+              {
+                "--column-count": collection.columnCount,
+              } as JSX.CSSProperties
             }
           >
-            {collection.items.map((item) => (
-              <Listbox.Item item={item}>
-                <Listbox.ItemText class="text-center text-xl">
-                  {item.label}
-                </Listbox.ItemText>
-              </Listbox.Item>
-            ))}
+            <For each={collection.items}>
+              {(item) => (
+                <Listbox.Item item={item}>
+                  <Listbox.ItemText class="text-center text-xl">
+                    {item.label}
+                  </Listbox.ItemText>
+                </Listbox.Item>
+              )}
+            </For>
           </Listbox.Content>
         </Listbox.Root>
       </Item>

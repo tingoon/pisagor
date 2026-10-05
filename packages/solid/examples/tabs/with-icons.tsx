@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Tabs } from "@pisagor/solid";
 import { GearIcon, ShieldIcon, UserIcon } from "@pisagor/solid/icons";
 

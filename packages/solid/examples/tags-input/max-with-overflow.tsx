@@ -1,5 +1,6 @@
-/** @jsxImportSource solid-js */
 import { Field, TagsInput } from "@pisagor/solid";
+import { For } from "solid-js";
+
 export function MaxWithOverflow() {
   return (
     <Field>
@@ -11,13 +12,15 @@ export function MaxWithOverflow() {
         max={3}
       >
         <TagsInput.Context>
-          {({ value }) =>
-            value.map((tag, index) => (
-              <TagsInput.Item index={index} value={tag}>
-                {tag}
-              </TagsInput.Item>
-            ))
-          }
+          {(api) => (
+            <For each={api().value}>
+              {(tag, index) => (
+                <TagsInput.Item index={index()} value={tag}>
+                  {tag}
+                </TagsInput.Item>
+              )}
+            </For>
+          )}
         </TagsInput.Context>
       </TagsInput>
     </Field>

@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { TextField } from "@pisagor/solid-form";
 
 export function Disabled() {

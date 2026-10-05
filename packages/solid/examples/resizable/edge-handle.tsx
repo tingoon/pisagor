@@ -1,15 +1,13 @@
-/** @jsxImportSource solid-js */
-
 import { Resizable } from "@pisagor/solid";
 import { cn } from "@pisagor/utils";
-import { createSignal } from "solid-js";
+import { createSignal, type JSX } from "solid-js";
 
 function ResizableFrame({
   children,
   heightClassName = "h-96",
   className,
 }: {
-  children: ReactNode;
+  children: JSX.Element;
   className?: string;
   heightClassName?: string;
 }) {
@@ -24,7 +22,7 @@ export function EdgeHandle() {
       <div class="flex size-full overflow-hidden rounded-md border">
         <aside
           class="relative flex shrink-0 flex-col overflow-visible border-e bg-muted text-muted-foreground"
-          style={{ width }}
+          style={{ width: `${width()}px` }}
         >
           <Resizable.EdgeHandle
             handlePosition="top"

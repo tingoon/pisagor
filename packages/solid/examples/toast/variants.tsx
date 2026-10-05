@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Button, toast } from "@pisagor/solid";
 export function Variants() {
   return (

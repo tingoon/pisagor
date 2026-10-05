@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { ActionBar, Button } from "@pisagor/solid";
 import {
   ArchiveIcon,
@@ -41,7 +39,7 @@ export function Placements() {
       <ActionBar
         onOpenChange={setIsOpen}
         open={isOpen()}
-        positioning={{ placement }}
+        positioning={{ placement: placement() }}
       >
         <ActionBar.Content aria-label="Bulk actions">
           <ActionBar.Value count={5} />

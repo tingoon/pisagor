@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Button, Toolbar } from "@pisagor/solid";
 export function WrappedActions() {
   return (

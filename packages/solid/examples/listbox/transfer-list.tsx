@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Button, Item, Listbox } from "@pisagor/solid";
 import { CaretLeftIcon, CaretRightIcon } from "@pisagor/solid/icons";

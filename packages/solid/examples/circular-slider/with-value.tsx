@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { CircularSlider } from "@pisagor/solid";
 import { ThermometerIcon } from "@pisagor/solid/icons";
 

@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { SelectField } from "@pisagor/solid-form";
 import { countryOptions } from "../options";
 

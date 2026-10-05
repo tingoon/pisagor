@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { AlertDialog, Button } from "@pisagor/solid";
 export function Composition() {
   return (

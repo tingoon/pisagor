@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { ActionBar, Button } from "@pisagor/solid";
 import { PencilSimpleIcon, TrashIcon, XIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";

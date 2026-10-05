@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Button, HoverCard } from "@pisagor/solid";
 export function Placements() {
   const placements = ["left", "top", "bottom", "right"] as const;

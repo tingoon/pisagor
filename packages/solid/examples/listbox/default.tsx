@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Listbox } from "@pisagor/solid";
 
 export function Default() {

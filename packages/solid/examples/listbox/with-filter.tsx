@@ -1,16 +1,14 @@
-/** @jsxImportSource solid-js */
-
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Input, Item, Listbox } from "@pisagor/solid";
-import { createSignal } from "solid-js";
+import { createSignal, For } from "solid-js";
 export function WithFilter() {
   const [search, setSearch] = createSignal("");
 
-  const { contains } = useFilter({ sensitivity: "base" });
+  const filterFn = useFilter({ sensitivity: "base" });
 
   const { collection, filter } = useListCollection({
-    filter: contains,
+    filter: filterFn().contains,
     initialItems: [
       { label: "Brazil", value: "br" },
       { label: "Mexico", value: "mx" },
@@ -18,7 +16,7 @@ export function WithFilter() {
     ],
   });
 
-  const isEmpty = collection.items.length === 0 && search;
+  const isEmpty = () => collection().items.length === 0 && search();
 
   return (
     <Item.Group variant="outline">
@@ -32,18 +30,20 @@ export function WithFilter() {
           placeholder="Search..."
           value={search()}
         />
-        <Listbox.Root collection={collection}>
+        <Listbox.Root collection={collection()}>
           <Listbox.Content>
-            {collection.items.map((item) => (
-              <Listbox.Item item={item}>
-                <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
-              </Listbox.Item>
-            ))}
+            <For each={collection().items}>
+              {(item) => (
+                <Listbox.Item item={item}>
+                  <Listbox.ItemText>{item.label}</Listbox.ItemText>
+                  <Listbox.ItemIndicator />
+                </Listbox.Item>
+              )}
+            </For>
 
-            {isEmpty && (
+            {isEmpty() && (
               <Listbox.Empty>
-                No results found. Try a different search().
+                No results found. Try a different search.
               </Listbox.Empty>
             )}
           </Listbox.Content>

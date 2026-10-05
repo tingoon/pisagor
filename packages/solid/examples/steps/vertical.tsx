@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, Steps } from "@pisagor/solid";
 import { CaretLeftIcon, CaretRightIcon } from "@pisagor/solid/icons";
 export function Vertical() {

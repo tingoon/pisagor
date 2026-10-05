@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Avatar, Button, Navbar, Sidebar } from "@pisagor/solid";
 import {
   BellIcon,

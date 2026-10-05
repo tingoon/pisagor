@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Field, Textarea } from "@pisagor/solid";
 
 export function Invalid() {

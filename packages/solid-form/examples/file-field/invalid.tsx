@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { FileField } from "@pisagor/solid-form";
 
 export function Invalid() {

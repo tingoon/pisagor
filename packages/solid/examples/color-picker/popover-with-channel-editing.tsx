@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Button, ColorPicker, Input } from "@pisagor/solid";
 export function PopoverWithChannelEditing() {
   return (

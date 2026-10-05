@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Button, ColorPicker, Field } from "@pisagor/solid";
 export function PopoverSlidersOnly() {
   return (

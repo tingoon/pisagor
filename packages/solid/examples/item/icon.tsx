@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, Item } from "@pisagor/solid";
 import { ShieldWarningIcon } from "@pisagor/solid/icons";
 export function Icon() {

@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Button, Card, Clipboard, Collapsible } from "@pisagor/solid";
 export function Nested() {
   return (

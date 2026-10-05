@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Table } from "@pisagor/solid";
 import {
   type ColumnDef,

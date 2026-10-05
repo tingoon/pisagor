@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, Card, Input, QrCode } from "@pisagor/solid";
 import { DownloadIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";

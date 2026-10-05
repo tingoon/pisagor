@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Pagination } from "@pisagor/solid";
 import { CaretLeftIcon, CaretRightIcon } from "@pisagor/solid/icons";
 

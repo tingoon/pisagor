@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { PasswordInput } from "@pisagor/solid";
 
 export function Autocomplete() {

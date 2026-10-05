@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Field, Select } from "@pisagor/solid";
 export function SelectField() {

@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, FloatingPanel } from "@pisagor/solid";
 import {
   CaretDownIcon,

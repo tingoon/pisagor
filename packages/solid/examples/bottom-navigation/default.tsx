@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { BottomNavigation } from "@pisagor/solid";
 
 export function Default() {

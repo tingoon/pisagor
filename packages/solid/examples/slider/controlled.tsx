@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Field, Slider } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {

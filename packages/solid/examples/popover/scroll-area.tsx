@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Button, Popover } from "@pisagor/solid";
 export function ScrollArea() {
   const items = Array.from({ length: 12 }, (_, i) => ({

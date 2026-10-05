@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { ColorPicker, InputGroup } from "@pisagor/solid";
 export function CustomSpacing() {
   return (

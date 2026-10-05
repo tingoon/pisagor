@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { SliderField } from "@pisagor/solid-form";
 
 export function Disabled() {

@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Item } from "@pisagor/solid";
 
 export function Image() {

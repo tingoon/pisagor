@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, DataList, Popover } from "@pisagor/solid";
 import { InfoIcon } from "@pisagor/solid/icons";
 export function InfoTip() {

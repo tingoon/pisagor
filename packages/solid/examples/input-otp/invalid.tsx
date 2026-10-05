@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { InputOTP } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Invalid() {

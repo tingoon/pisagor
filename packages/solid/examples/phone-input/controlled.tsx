@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Field } from "@pisagor/solid";
 import { PhoneInput } from "@pisagor/solid/phone-input";
 import { createSignal } from "solid-js";

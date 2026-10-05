@@ -1,7 +1,6 @@
-/** @jsxImportSource solid-js */
-
 import { Button, Field, TagsInput } from "@pisagor/solid";
-import { createSignal } from "solid-js";
+import { createSignal, For } from "solid-js";
+
 export function ControlledInputValue() {
   const [inputValue, setInputValue] = createSignal("");
 
@@ -28,13 +27,15 @@ export function ControlledInputValue() {
           onInputValueChange={(details) => setInputValue(details.inputValue)}
         >
           <TagsInput.Context>
-            {({ value }) =>
-              value.map((tag, index) => (
-                <TagsInput.Item index={index} value={tag}>
-                  {tag}
-                </TagsInput.Item>
-              ))
-            }
+            {(api) => (
+              <For each={api().value}>
+                {(tag, index) => (
+                  <TagsInput.Item index={index()} value={tag}>
+                    {tag}
+                  </TagsInput.Item>
+                )}
+              </For>
+            )}
           </TagsInput.Context>
         </TagsInput>
       </Field>

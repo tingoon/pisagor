@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Editable, Input } from "@pisagor/solid";
 export function Variants() {
   return (

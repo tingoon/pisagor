@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Checkbox, Field } from "@pisagor/solid";
 export function CheckboxField() {
   return (

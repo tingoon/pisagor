@@ -1,9 +1,8 @@
-/** @jsxImportSource solid-js */
 import { Button, Editable } from "@pisagor/solid";
 
 export function Default() {
   return (
-    <Editable.Root defaultValue="Click to edit">
+    <Editable defaultValue="Click to edit">
       <Editable.Area>
         <Editable.Preview />
         <Editable.Input />
@@ -31,6 +30,6 @@ export function Default() {
           )}
         />
       </Editable.Control>
-    </Editable.Root>
+    </Editable>
   );
 }

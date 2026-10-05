@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { ColorPicker, parseColor } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function SwatchPickerControlled() {
@@ -20,7 +18,7 @@ export function SwatchPickerControlled() {
         </ColorPicker.SwatchGroup>
       </ColorPicker>
       <p class="text-center text-muted-foreground text-sm">
-        {parseColor(value).toString("hex")}
+        {parseColor(value()).toString("hex")}
       </p>
     </div>
   );

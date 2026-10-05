@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Card, Skeleton } from "@pisagor/solid";
 export function InCard() {
   return (

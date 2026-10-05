@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Clipboard } from "@pisagor/solid";
 
 export function Default() {

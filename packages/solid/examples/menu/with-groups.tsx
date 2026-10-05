@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Menu } from "@pisagor/solid";
 import {
   ArchiveIcon,

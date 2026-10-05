@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, Calendar, DatePicker, parseDate } from "@pisagor/solid";
 import { CalendarIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";
@@ -12,7 +10,7 @@ export function CustomFormat() {
 
   return (
     <DatePicker
-      onValueChange={(value) => setValue(value() ?? [])}
+      onValueChange={(value) => setValue(value ?? [])}
       value={value()}
     >
       <DatePicker.Trigger

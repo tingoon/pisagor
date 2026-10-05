@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { CircularSlider } from "@pisagor/solid";
 
 export function Sizes() {

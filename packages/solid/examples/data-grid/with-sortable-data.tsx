@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Checkbox, Sortable, Table } from "@pisagor/solid";
 import type { ColumnDef } from "@pisagor/solid/data-grid";
@@ -234,8 +232,8 @@ function useUserColumns(options?: {
 }
 
 export function WithSortableData() {
-  const [data, setData] = createSignal(() => allUsers.slice(0, 6));
-  const itemIds = data().map((user) => user.id);
+  const [data, setData] = createSignal(allUsers.slice(0, 6));
+  const itemIds = createMemo(() => data().map((user) => user.id));
   const columns = useUserColumns();
 
   return (
@@ -254,7 +252,7 @@ export function WithSortableData() {
         </DataGrid.Toolbar>
         <div class="flex flex-col gap-3">
           <Sortable
-            items={itemIds}
+            items={itemIds()}
             onValueChange={(nextIds) => {
               setData((current) => {
                 const byId = new Map(current.map((user) => [user.id, user]));

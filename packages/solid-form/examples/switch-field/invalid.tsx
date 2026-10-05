@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { SwitchField } from "@pisagor/solid-form";
 
 export function Invalid() {

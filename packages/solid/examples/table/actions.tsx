@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, DropdownMenu, Table } from "@pisagor/solid";
 import {
   DotsThreeVerticalIcon,

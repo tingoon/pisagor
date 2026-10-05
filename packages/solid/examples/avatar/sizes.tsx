@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Avatar } from "@pisagor/solid";
 
 export function Sizes() {

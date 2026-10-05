@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Announcement, Badge } from "@pisagor/solid";
 import {
   ArrowUpRightIcon,

@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { SegmentGroup } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function IndicatorOnHover() {
@@ -10,8 +8,8 @@ export function IndicatorOnHover() {
   return (
     <SegmentGroup.Root
       class="rounded-lg"
-      onValueChange={(value) => setValue(value() ?? "Profile")}
-      value={hoverValue() ?? value}
+      onValueChange={(value) => setValue(value ?? "Profile")}
+      value={hoverValue() ?? value()}
     >
       {pages.map((page) => (
         <SegmentGroup.Item

@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { FileUpload } from "@pisagor/solid";
 
 export function Dropzone() {

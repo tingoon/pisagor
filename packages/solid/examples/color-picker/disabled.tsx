@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { ColorPicker, Input } from "@pisagor/solid";
 export function Disabled() {
   return (

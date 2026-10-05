@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, ButtonGroup } from "@pisagor/solid";
 import { PlayIcon, SkipBackIcon, SkipForwardIcon } from "@pisagor/solid/icons";
 export function OrientationHorizontal() {

@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import type { BadgeVariant } from "@pisagor/solid";
 import {
   Badge,
@@ -309,7 +307,7 @@ export function ColumnFilters() {
   const columns = useUserColumns();
 
   const columnsWithFilters = createMemo<ColumnDef<User>[]>(() =>
-    columns.map((column) => {
+    columns().map((column) => {
       if (!("accessorKey" in column)) {
         return column;
       }

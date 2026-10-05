@@ -1,10 +1,9 @@
-/** @jsxImportSource solid-js */
-
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Button, Command, Kbd } from "@pisagor/solid";
 import { ArrowBendDownLeftIcon } from "@pisagor/solid/icons";
-import { createSignal } from "solid-js";
+import { createSignal, For } from "solid-js";
+
 export function WithDialog() {
   const initialItems = [
     { group: "File", label: "New file", shortcut: "⌘N", value: "new" },
@@ -16,10 +15,10 @@ export function WithDialog() {
     { group: "Edit", label: "Copy", shortcut: "⌘C", value: "copy" },
   ];
   const [open, setOpen] = createSignal(false);
-  const { contains } = useFilter({ sensitivity: "base" });
+  const filterFn = useFilter({ sensitivity: "base" });
 
   const { collection, filter } = useListCollection({
-    filter: contains,
+    filter: filterFn().contains,
     groupBy: (item) => item.group,
     initialItems,
   });
@@ -35,7 +34,7 @@ export function WithDialog() {
       />
       <Command.DialogContent>
         <Command
-          collection={collection}
+          collection={collection()}
           onInputValueChange={({ inputValue }) => filter(inputValue)}
           onValueChange={() => setOpen(false)}
         >
@@ -45,16 +44,20 @@ export function WithDialog() {
               No results found. Try a different search.
             </Command.Empty>
             <Command.List>
-              {collection.group().map(([group, items]) => (
-                <Command.ItemGroup heading={group}>
-                  {items.map((item) => (
-                    <Command.Item item={item}>
-                      {item.label}
-                      <Command.Shortcut>{item.shortcut}</Command.Shortcut>
-                    </Command.Item>
-                  ))}
-                </Command.ItemGroup>
-              ))}
+              <For each={collection().group()}>
+                {([group, items]) => (
+                  <Command.ItemGroup heading={group}>
+                    <For each={items}>
+                      {(item) => (
+                        <Command.Item item={item}>
+                          {item.label}
+                          <Command.Shortcut>{item.shortcut}</Command.Shortcut>
+                        </Command.Item>
+                      )}
+                    </For>
+                  </Command.ItemGroup>
+                )}
+              </For>
             </Command.List>
           </Command.Content>
           <Command.Footer>

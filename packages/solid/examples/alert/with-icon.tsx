@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Alert } from "@pisagor/solid";
 import { SparkleIcon } from "@pisagor/solid/icons";
 

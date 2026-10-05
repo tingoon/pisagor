@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Button, Item } from "@pisagor/solid";
 
 export function Default() {

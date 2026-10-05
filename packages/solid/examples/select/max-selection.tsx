@@ -1,18 +1,17 @@
-/** @jsxImportSource solid-js */
-
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Select } from "@pisagor/solid";
-import { createSignal } from "solid-js";
+import { createSignal, For } from "solid-js";
+
 export function MaxSelection() {
   const MAX_SELECTION = 3;
   const renderValue = (value: string[]) => {
-    if (value().length === 0) {
+    if (value.length === 0) {
       return "Select 3 frameworks";
     }
 
-    const firstValue = value?.at(0) ?? "";
+    const firstValue = value.at(0) ?? "";
     const additionalValues =
-      value().length > 1 ? ` (+${value().length - 1} more)` : "";
+      value.length > 1 ? ` (+${value.length - 1} more)` : "";
 
     return firstValue + additionalValues;
   };
@@ -41,13 +40,13 @@ export function MaxSelection() {
     >
       <Select.Trigger>
         <Select.ValueText class="capitalize">
-          <Select.Context>{({ value }) => renderValue(value)}</Select.Context>
+          <Select.Context>{(api) => renderValue(api().value)}</Select.Context>
         </Select.ValueText>
       </Select.Trigger>
       <Select.Content>
-        {collection.items.map((item) => (
-          <Select.Item item={item}>{item.label}</Select.Item>
-        ))}
+        <For each={collection.items}>
+          {(item) => <Select.Item item={item}>{item.label}</Select.Item>}
+        </For>
       </Select.Content>
     </Select.Root>
   );

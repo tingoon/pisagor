@@ -1,19 +1,18 @@
-/** @jsxImportSource solid-js */
-
 import { Card, Marquee } from "@pisagor/solid";
 import {
   ArrowRightIcon,
   AtomIcon,
   DeviceMobileIcon,
   GlobeIcon,
-  type Icon,
+  type IconProps,
   LightningIcon,
   RobotIcon,
   SparkleIcon,
   StackIcon,
 } from "@pisagor/solid/icons";
+import type { Component } from "solid-js";
 
-const marqueeIcons: Icon[] = [
+const marqueeIcons: Component<IconProps>[] = [
   GlobeIcon,
   DeviceMobileIcon,
   ArrowRightIcon,

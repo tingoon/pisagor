@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Tabs } from "@pisagor/solid";
 import { numberedTabs } from "./helpers";
 

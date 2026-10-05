@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Card, Carousel } from "@pisagor/solid";
 export function SlidesPerPage() {
   return (
