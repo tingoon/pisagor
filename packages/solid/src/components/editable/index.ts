@@ -31,6 +31,5 @@ export const Editable = Object.assign(EditableRoot, {
   EditTrigger: EditableEditTrigger,
   Input: EditableInput,
   Preview: EditablePreview,
-  Root: EditableRoot,
   SubmitTrigger: EditableSubmitTrigger,
 });

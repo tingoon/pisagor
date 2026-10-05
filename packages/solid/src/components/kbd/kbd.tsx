@@ -16,7 +16,7 @@ export interface KbdGroupProps
   extends ComponentProps<typeof ark.div>,
     BaseKbdGroupProps {}
 
-export function Kbd(props: KbdProps): JSX.Element {
+export function KbdRoot(props: KbdProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "recipe", "variant"]);
   return (
     <ark.kbd

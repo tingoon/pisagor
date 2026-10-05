@@ -26,6 +26,7 @@ export const Menu = Object.assign(MenuRoot, {
   Item: MenuItem,
   Link: MenuLink,
   List: MenuList,
+  Root: MenuRoot,
   Separator: MenuSeparator,
   Shortcut: MenuShortcut,
 });
