@@ -32,7 +32,7 @@ Folder name, main file, and component export name align: **kebab-case folder** �
 └── [optional splits]         # large sub-modules only
 ```
 
-Package source stays **story-free**. There is no Storybook app for Solid today — block demos live in `apps/solid` (`solid-blocks`). Do **not** add `*.stories.*` under `packages/solid`. If/when Storybook is added, stories go in the app, not the package.
+Package source stays **story-free**. There is no Storybook app for Solid today — stories live in `apps/solid` (`solid-stories`). Do **not** add `*.stories.*` under `packages/solid`. If/when Storybook is added, stories go in the app, not the package.
 
 ### Implementation surface
 
@@ -62,9 +62,9 @@ When a compound component uses package-local Solid context (`createContext` from
 - Require `index.ts` barrel (re-exported from the root `@pisagor/solid` map).
 - Import recipes from `@pisagor/recipes` — do not add local `*.recipe.ts` shims or call `tv()`.
 
-### Block demo app (`apps/solid`)
+### Stories app (`apps/solid`)
 
-- `apps/solid` is a **block host** (`solid-blocks`), not Storybook.
+- `apps/solid` is a **stories host** (`solid-stories`), not Storybook.
 - Demo blocks live under `apps/solid/src/blocks/…` and import the public export map (`@pisagor/solid`, heavy subpaths, `@pisagor/solid-form`).
 - Do not require `*.stories.tsx` in the package or the app.
 

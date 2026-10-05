@@ -30,7 +30,7 @@ const collection = $derived(
   <Combobox.Root
     allowCustomValue
     {collection}
-    onValueChange={(value) => {
+    onValueChange={(value: string[]) => {
       const next = value[0];
       if (next && !tags.includes(next)) {
         tags = [...tags, next];
@@ -41,7 +41,7 @@ const collection = $derived(
   >
     <TagsInput
       class={styles.root()}
-      onValueChange={(v) => (tags = v)}
+      onValueChange={(v: string[]) => (tags = v)}
       placeholder="Search framework"
       value={tags}
     />

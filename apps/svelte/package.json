@@ -10,13 +10,16 @@
     "svelte": "catalog:",
     "zod": "^4.6.5"
   },
-  "description": "Svelte block demos for Pisagor docs.",
+  "description": "Svelte stories for @pisagor/svelte.",
   "devDependencies": {
+    "svelte-check-native": "^1.8.0",
     "typescript": "catalog:"
   },
-  "name": "svelte-blocks",
+  "name": "svelte-stories",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "type-check": "svelte-check-native --tsconfig ./tsconfig.json"
+  },
   "type": "module",
   "version": "0.0.0"
 }

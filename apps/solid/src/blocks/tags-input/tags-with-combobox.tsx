@@ -21,9 +21,10 @@ export function TagsWithCombobox() {
   ];
   const uid = createUniqueId();
 
-  const { contains } = useFilter({ sensitivity: "base" });
+  const filterApi = useFilter({ sensitivity: "base" });
   const { collection, filter } = useListCollection({
-    filter: contains,
+    filter: (itemText, filterText) =>
+      filterApi().contains(itemText, filterText),
     initialItems: frameworkItems,
   });
 

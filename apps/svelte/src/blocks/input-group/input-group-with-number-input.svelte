@@ -3,9 +3,7 @@ import { InputGroup, NumberInput } from "@pisagor/svelte";
 </script>
 
 <InputGroup>
-  <NumberInput aria-label="Enter the amount" value="10">
-    <NumberInput.Input />
-  </NumberInput>
+  <NumberInput aria-label="Enter the amount" value="10" />
   <InputGroup.Addon>
     <InputGroup.Text>€</InputGroup.Text>
   </InputGroup.Addon>

@@ -9,12 +9,5 @@
     "types": ["vite/client", "node"]
   },
   "extends": "../../tsconfig.json",
-  "include": [
-    "src",
-    ".storybook",
-    "vite.config.ts",
-    "env.d.ts",
-    "src/**/*.stories.ts",
-    "global.d.ts"
-  ]
+  "include": ["src", ".storybook", "vite.config.ts", "env.d.ts", "global.d.ts"]
 }

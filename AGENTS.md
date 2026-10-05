@@ -27,8 +27,8 @@ Instruction priority: [Core Boundaries](./.rulesync/rules/core.md).
 │   ├── react/                React Storybook (port 4001)
 │   ├── vue/                  Vue Storybook (port 4002)
 │   ├── astro/                Astro Storybook (port 4003)
-│   ├── solid/                Solid block demos (docs)
-│   └── svelte/               Svelte block demos (docs)
+│   ├── solid/                Solid stories (docs)
+│   └── svelte/               Svelte stories (docs)
 ├── packages/
 │   ├── react/                React UI (`@pisagor/react`)
 │   ├── react-form/           React form fields (`@pisagor/react-form`)

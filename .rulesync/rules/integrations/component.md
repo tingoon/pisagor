@@ -16,7 +16,7 @@ cursor:
 
 Framework-agnostic product naming and catalog policy for Pisagor component packages.
 
-**Sibling frameworks:** `react`, `vue`, `solid`, `svelte`, and `astro` (Astro is a static subset). Full interactive sets: `@pisagor/react`, `@pisagor/vue`, `@pisagor/solid`, `@pisagor/svelte` (forms: `@pisagor/{framework}-form`). Implementation patterns: [React Component Patterns](react-component.mdc), [Vue Component Patterns](vue-component.mdc), [Solid Component Patterns](solid-component.mdc), [Svelte Component Patterns](svelte-component.mdc). Storybook hosts: `apps/react`, `apps/vue`, `apps/astro` — package source stays story-free. `apps/solid` / `apps/svelte` are block demo hosts (`solid-blocks` / `svelte-blocks`), not Storybook.
+**Sibling frameworks:** `react`, `vue`, `solid`, `svelte`, and `astro` (Astro is a static subset). Full interactive sets: `@pisagor/react`, `@pisagor/vue`, `@pisagor/solid`, `@pisagor/svelte` (forms: `@pisagor/{framework}-form`). Implementation patterns: [React Component Patterns](react-component.mdc), [Vue Component Patterns](vue-component.mdc), [Solid Component Patterns](solid-component.mdc), [Svelte Component Patterns](svelte-component.mdc). Storybook hosts: `apps/react`, `apps/vue`, `apps/astro` — package source stays story-free. `apps/solid` / `apps/svelte` are story hosts (`solid-stories` / `svelte-stories`), not Storybook.
 
 Import paths below use `@pisagor/{pkg}` for light components — substitute `react`, `vue`, `solid`, `svelte`, or `astro` as appropriate. Heavy modules stay on dedicated subpaths (`data-grid`, `data-table`, `phone-input`, `rich-text-editor`).
 

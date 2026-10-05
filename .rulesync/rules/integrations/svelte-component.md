@@ -34,7 +34,7 @@ Folder name and component export name align: **kebab-case folder** → **PascalC
 └── [optional splits]         # large sub-modules only
 ```
 
-Package source stays **story-free**. There is no Storybook app for Svelte today — block demos live in `apps/svelte` (`svelte-blocks`). Do **not** add `*.stories.*` under `packages/svelte`. If/when Storybook is added, stories go in the app, not the package.
+Package source stays **story-free**. There is no Storybook app for Svelte today — stories live in `apps/svelte` (`svelte-stories`). Do **not** add `*.stories.*` under `packages/svelte`. If/when Storybook is added, stories go in the app, not the package.
 
 ### Implementation surface
 
@@ -65,9 +65,9 @@ When a compound component uses package-local context (`createContext` from packa
 - Require `index.ts` barrel (re-exported from the root `@pisagor/svelte` map).
 - Import recipes from `@pisagor/recipes` — do not add local `*.recipe.ts` shims or call `tv()`.
 
-### Block demo app (`apps/svelte`)
+### Stories app (`apps/svelte`)
 
-- `apps/svelte` is a **block host** (`svelte-blocks`), not Storybook.
+- `apps/svelte` is a **stories host** (`svelte-stories`), not Storybook.
 - Demo blocks live under `apps/svelte/src/blocks/…` and import the public export map (`@pisagor/svelte`, heavy subpaths, `@pisagor/svelte-form`).
 - Do not require `*.stories.svelte` / `*.stories.ts` in the package or the app.
 

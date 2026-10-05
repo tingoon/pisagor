@@ -109,7 +109,7 @@
       },
     },
     "apps/solid": {
-      "name": "solid-blocks",
+      "name": "solid-stories",
       "version": "0.0.0",
       "dependencies": {
         "@ark-ui/solid": "^5.39.2",
@@ -126,7 +126,7 @@
       },
     },
     "apps/svelte": {
-      "name": "svelte-blocks",
+      "name": "svelte-stories",
       "version": "0.0.0",
       "dependencies": {
         "@ark-ui/svelte": "^5.24.2",
@@ -140,6 +140,7 @@
         "zod": "^4.6.5",
       },
       "devDependencies": {
+        "svelte-check-native": "^1.8.0",
         "typescript": "catalog:",
       },
     },
@@ -2740,11 +2741,11 @@
 
     "smol-toml": ["smol-toml@1.9.0", "", {}, "sha512-hpd+HLON7HdZXqYchMM/+LaTTbdK0AU3NngIJ4KVyWbY9bfQqdL9cD+4yf6dUoU2Ap4VsU0JkQi6FxAI1B2mXQ=="],
 
-    "solid-blocks": ["solid-blocks@workspace:apps/solid"],
-
     "solid-js": ["solid-js@1.9.15", "", { "dependencies": { "csstype": "^3.1.0", "seroval": "~1.5.4", "seroval-plugins": "~1.5.4" } }, "sha512-EeiY2xfpZJqPLjXspVEKjAII4yv8NyG//NxZ3IpOFHdUNnnTyL0uJOeS9LWGvA7cFCz5y94cjFwYlmw5Luncsg=="],
 
     "solid-refresh": ["solid-refresh@0.6.3", "", { "dependencies": { "@babel/generator": "^7.23.6", "@babel/helper-module-imports": "^7.22.15", "@babel/types": "^7.23.6" }, "peerDependencies": { "solid-js": "^1.3" } }, "sha512-F3aPsX6hVw9ttm5LYlth8Q15x6MlI/J3Dn+o3EQyRTtTxidepSTwAYdozt01/YA+7ObcciagGEyXIopGZzQtbA=="],
+
+    "solid-stories": ["solid-stories@workspace:apps/solid"],
 
     "solid-tiptap": ["solid-tiptap@0.8.0", "", { "peerDependencies": { "@tiptap/core": "^3", "@tiptap/pm": "^3", "solid-js": "^1.7" } }, "sha512-SiwfZhpuI57iuyJmCMv5YvsjFdO6Gyy8L/ynBamvWCT2r0L9Hk/3Dj/zfCufGAiHeEdSWK+6fGhmZ8dbvMJRaA=="],
 
@@ -2790,8 +2791,6 @@
 
     "svelte": ["svelte@5.57.1", "", { "dependencies": { "@jridgewell/remapping": "^2.3.5", "@jridgewell/sourcemap-codec": "^1.6.0", "@sveltejs/acorn-typescript": "^1.0.13", "@types/estree": "^1.0.9", "acorn": "^8.18.0", "aria-query": "5.3.1", "axobject-query": "^4.1.0", "clsx": "^2.1.1", "devalue": "^5.9.2", "esm-env": "^1.2.1", "esrap": "^2.3.6", "is-reference": "^3.0.3", "locate-character": "^3.0.0", "magic-string": "^0.30.11", "zimmerframe": "^1.1.2" } }, "sha512-Uqj49lWKB+iSSnneuwiYYJ7MZgkB+eXr0LXBhv4uDuAkXqnWmq65Sxflfvp0Lc6MdKjMUxGaeOKWJqz5SNiVIA=="],
 
-    "svelte-blocks": ["svelte-blocks@workspace:apps/svelte"],
-
     "svelte-check-native": ["svelte-check-native@1.8.0", "", { "optionalDependencies": { "svelte-check-native-darwin-arm64": "1.8.0", "svelte-check-native-darwin-x64": "1.8.0", "svelte-check-native-linux-arm64": "1.8.0", "svelte-check-native-linux-x64": "1.8.0", "svelte-check-native-win32-x64": "1.8.0" }, "peerDependencies": { "@typescript/native-preview": ">=7.0.0-dev.0", "typescript": "*" }, "optionalPeers": ["@typescript/native-preview", "typescript"], "bin": { "svelte-check-native": "bin/svelte-check-native.js" } }, "sha512-lD517MiTSgPjQxUsbPbMwKIRyv2vuRgxgkvE2NjVQRVcrJmR/xt4qNay4RaMl8OAqgQC/R64hNlMsrBFcK4+dg=="],
 
     "svelte-check-native-darwin-arm64": ["svelte-check-native-darwin-arm64@1.8.0", "", { "os": "darwin", "cpu": "arm64" }, "sha512-K/t7ZIiWo7a2dkcd85M1wgIbSOxz0X7lTwMmqQvP2FwgGcni+eQt5j4G8iiKcn0C9TjfGx8VhfQ7eU9A2HUDLg=="],
@@ -2803,6 +2802,8 @@
     "svelte-check-native-linux-x64": ["svelte-check-native-linux-x64@1.8.0", "", { "os": "linux", "cpu": "x64" }, "sha512-bloNIocAF/vwh9iyuglDm5R4dgeoNu7AgKnAA1E0LoRK6kb+aaF7pPUghHhEGPHwSjEQoE10z+F+YA/euzcEfA=="],
 
     "svelte-check-native-win32-x64": ["svelte-check-native-win32-x64@1.8.0", "", { "os": "win32", "cpu": "x64" }, "sha512-EM3zXZGrw3ZPbmH7Ja/sip6dWuI7kkQWTUvT08ySDEYRsm5UH9xRiBaNo6hcBNeIMuw8j84DIOnve1DHrfet3g=="],
+
+    "svelte-stories": ["svelte-stories@workspace:apps/svelte"],
 
     "svelte2tsx": ["svelte2tsx@0.7.61", "", { "dependencies": { "dedent-js": "^1.0.1", "scule": "^1.3.0" }, "peerDependencies": { "svelte": "^3.55 || ^4.0.0-next.0 || ^4.0 || ^5.0.0-next.0", "typescript": "^4.9.4 || ^5.0.0 || ^6.0.0" } }, "sha512-EpQ/+UHITBULeUojx/LLD3uTYasZXcX1BrqlrzfLUnT9vdUhaOWK59a3ryWcFU8L0sY1SP+gRhJ2Beiis98+qw=="],
 

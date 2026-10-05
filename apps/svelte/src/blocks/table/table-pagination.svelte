@@ -57,16 +57,16 @@ const paginatedUsers = $derived(
       <div class={styles.pageSizeLabel()}>Items per page:</div>
       <Select
         items={["2", "3", "4"]}
-        onValueChange={(value) =>
-          (pageSize = Number(Array.isArray(value) ? value[0] : value))}
+        onValueChange={(value: string[]) => (pageSize = Number(value[0]))}
         value={[String(pageSize)]}
       />
     </div>
     <Pagination
       class={styles.pagination()}
       count={users.length}
-      onPageChange={({ page: next }) => (page = next)}
-      onPageSizeChange={({ pageSize: next }) => (pageSize = next)}
+      onPageChange={({ page: next }: { page: number }) => (page = next)}
+      onPageSizeChange={({ pageSize: next }: { pageSize: number }) =>
+        (pageSize = next)}
       {page}
       {pageSize}
     >

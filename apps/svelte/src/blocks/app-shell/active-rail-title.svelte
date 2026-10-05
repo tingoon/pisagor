@@ -18,7 +18,7 @@ const RAIL_ITEMS = [
 ] as const;
 
 const { railStates } = useAppShell();
-const activeRailId = $derived(railStates.current.start?.activeRailId?.());
+const activeRailId = $derived(railStates.start?.activeRailId);
 const activeItem = $derived(
   RAIL_ITEMS.find((item) => item.id === activeRailId),
 );

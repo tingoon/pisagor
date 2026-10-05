@@ -9,13 +9,15 @@
     "solid-js": "catalog:",
     "zod": "^4.6.5"
   },
-  "description": "Solid block demos for Pisagor docs.",
+  "description": "Solid stories for @pisagor/solid.",
   "devDependencies": {
     "typescript": "catalog:"
   },
-  "name": "solid-blocks",
+  "name": "solid-stories",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "type-check": "tsc --noEmit"
+  },
   "type": "module",
   "version": "0.0.0"
 }

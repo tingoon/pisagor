@@ -21,8 +21,8 @@ function onSubmit(e: Event) {
         <Field.Label>Message</Field.Label>
         <Textarea
           name="message"
-          oninput={(e) => {
-            message = (e.currentTarget as HTMLTextAreaElement).value;
+          onValueChange={(value: string) => {
+            message = value;
             error = null;
           }}
           placeholder="Type your message here"

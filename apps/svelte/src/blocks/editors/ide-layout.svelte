@@ -80,7 +80,11 @@ function handleSelectNode(selectedNodes: TreeNodeType[]) {
   <div class={styles.sidebar()}>
     <TreeView
       {collection}
-      onSelectionChange={({ selectedNodes }) => handleSelectNode(selectedNodes)}
+      onSelectionChange={({
+        selectedNodes,
+      }: {
+        selectedNodes: TreeNodeType[];
+      }) => handleSelectNode(selectedNodes)}
     >
       <TreeView.Tree>
         {#each collection.rootNode.children ?? [] as node, index}
