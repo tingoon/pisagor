@@ -7,9 +7,8 @@ import type { HTMLAnchorAttributes } from "svelte/elements";
 
 const SKIP_NAV_ID = "skip-nav-content";
 
-type Props = Omit<HTMLAnchorAttributes, "class" | "href" | "id"> & {
+type Props = Omit<HTMLAnchorAttributes, "href" | "id"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   id?: string;
 } & BaseSkipNavProps;
 

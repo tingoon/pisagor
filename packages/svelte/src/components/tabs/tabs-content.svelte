@@ -1,12 +1,12 @@
 <script lang="ts">
-import type { TabContentProps } from "@ark-ui/svelte/tabs";
-import { Tabs as TabsPrimitive } from "@ark-ui/svelte/tabs";
+import {
+  type TabContentProps,
+  Tabs as TabsPrimitive,
+} from "@ark-ui/svelte/tabs";
 import { cn } from "@pisagor/utils";
 import { useTabs } from "./tabs.context";
 
-type Props = Omit<TabContentProps, "class"> & { class?: string | undefined };
-
-let { class: className, children, ...rest }: Props = $props();
+let { class: className, children, ...rest }: TabContentProps = $props();
 const { slots } = useTabs();
 </script>
 

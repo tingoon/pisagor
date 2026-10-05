@@ -4,9 +4,7 @@ import type { ComponentProps } from "svelte";
 import Separator from "../separator/separator.svelte";
 import { useCommand } from "./command.context";
 
-type Props = ComponentProps<typeof Separator>;
-
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: ComponentProps<typeof Separator> = $props();
 const { slots } = useCommand();
 </script>
 

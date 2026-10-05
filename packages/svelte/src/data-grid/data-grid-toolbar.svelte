@@ -3,9 +3,8 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useDataGridContext } from "./data-grid.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 };
 
 let { class: className, children, ...rest }: Props = $props();

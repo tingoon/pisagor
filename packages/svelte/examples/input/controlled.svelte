@@ -5,7 +5,7 @@ let value = $state("");
 </script>
 
 <Input
-  onChange={({ target }) => (value = target.value)}
+  onValueChange={(next) => (value = next)}
   placeholder="Enter your message"
   {value}
 />

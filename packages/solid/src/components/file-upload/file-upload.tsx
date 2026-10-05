@@ -81,7 +81,7 @@ export function FileUploadRoot(props: FileUploadRootProps): JSX.Element {
     <FileUploadContext value={{ slots: slots() }}>
       <FileUploadPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         onFileChange={(details) => {
           local.onFileChange?.(details);
           local.onValueChange?.(details.acceptedFiles);
@@ -128,7 +128,7 @@ export function FileUploadDropzoneIcon(
   return (
     <ark.div
       {...rest}
-      class={slots.dropzoneIcon({ class: cn(local.class) })}
+      class={slots.dropzoneIcon({ class: local.class })}
       data-part="dropzone-icon"
       data-scope="file-upload"
     >
@@ -143,7 +143,7 @@ export function FileUploadTitle(props: FileUploadTitleProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.title({ class: cn(local.class) })}
+      class={slots.title({ class: local.class })}
       data-part="title"
       data-scope="file-upload"
     />
@@ -158,7 +158,7 @@ export function FileUploadDescription(
   return (
     <ark.div
       {...rest}
-      class={slots.description({ class: cn(local.class) })}
+      class={slots.description({ class: local.class })}
       data-part="title"
       data-scope="file-upload"
     />
@@ -171,7 +171,7 @@ export function FileUploadHelper(props: FileUploadHelperProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.helper({ class: cn(local.class) })}
+      class={slots.helper({ class: local.class })}
       data-part="dropzone-helper"
       data-scope="file-upload"
     />
@@ -202,7 +202,7 @@ export function FileUploadList(props: FileUploadListProps): JSX.Element {
             return (
               <FileUploadItem
                 {...rest}
-                class={itemSlots().listItem({ class: cn(local.class) })}
+                class={itemSlots().listItem({ class: local.class })}
                 file={file}
                 recipe={recipe()}
               >
@@ -252,7 +252,7 @@ export function FileUploadItem(props: FileUploadItemRootProps): JSX.Element {
     <FileUploadItemContext value={{ slots: slots() }}>
       <FileUploadPrimitive.Item
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
       >
         {local.children}
       </FileUploadPrimitive.Item>
@@ -268,7 +268,7 @@ export function FileUploadItemPreview(
   return (
     <FileUploadPrimitive.ItemPreview
       {...rest}
-      class={slots.preview({ class: cn(local.class) })}
+      class={slots.preview({ class: local.class })}
     />
   );
 }
@@ -281,7 +281,7 @@ export function FileUploadItemPreviewImage(
   return (
     <FileUploadPrimitive.ItemPreviewImage
       {...rest}
-      class={slots.previewImage({ class: cn(local.class) })}
+      class={slots.previewImage({ class: local.class })}
     />
   );
 }
@@ -294,7 +294,7 @@ export function FileUploadItemName(
   return (
     <FileUploadPrimitive.ItemName
       {...rest}
-      class={slots.name({ class: cn(local.class) })}
+      class={slots.name({ class: local.class })}
     />
   );
 }
@@ -307,7 +307,7 @@ export function FileUploadItemSize(
   return (
     <FileUploadPrimitive.ItemSizeText
       {...rest}
-      class={slots.size({ class: cn(local.class) })}
+      class={slots.size({ class: local.class })}
     />
   );
 }
@@ -320,7 +320,7 @@ export function FileUploadItemDeleteTrigger(
   return (
     <FileUploadPrimitive.ItemDeleteTrigger
       {...rest}
-      class={slots.deleteTrigger({ class: cn(local.class) })}
+      class={slots.deleteTrigger({ class: local.class })}
     />
   );
 }

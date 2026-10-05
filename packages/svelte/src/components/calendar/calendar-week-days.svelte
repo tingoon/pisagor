@@ -1,12 +1,13 @@
 <script lang="ts">
-import type { DatePickerTableHeadProps } from "@ark-ui/svelte/date-picker";
-import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
+import {
+  DatePicker as CalendarPrimitive,
+  type DatePickerTableHeadProps,
+} from "@ark-ui/svelte/date-picker";
 import CalendarTableHead from "./calendar-table-head.svelte";
 import CalendarTableHeader from "./calendar-table-header.svelte";
 import CalendarTableRow from "./calendar-table-row.svelte";
 
-type Props = Omit<DatePickerTableHeadProps, "class"> & {
-  class?: string | undefined;
+type Props = DatePickerTableHeadProps & {
   format?: "narrow" | "short" | "long";
 };
 
@@ -15,8 +16,8 @@ let { format = "narrow", ...rest }: Props = $props();
 
 <CalendarPrimitive.Context>
   {#snippet render(
-  calendar,
-)}
+    calendar,
+  )}
     <CalendarTableHead {...rest}>
       <CalendarTableRow>
         {#each calendar().weekDays as weekDay (weekDay.short)}

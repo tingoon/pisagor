@@ -4,9 +4,8 @@ import type { HTMLAttributes } from "svelte/elements";
 import { ScrollArea } from "../scroll-area";
 import { useAppShell } from "./app-shell.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 };
 
 let { class: className, children, ...rest }: Props = $props();

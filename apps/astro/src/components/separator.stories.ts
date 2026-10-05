@@ -1,6 +1,5 @@
-import { Separator } from "@pisagor/astro/separator";
-import DefaultExample from "#/astro/examples/separator/default.astro";
-import VerticalExample from "#/astro/examples/separator/vertical.astro";
+import { Separator } from "@pisagor/astro";
+import * as Examples from "#/astro/examples/separator";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -20,9 +19,9 @@ export const Playground = meta.story({
 });
 
 export const Default = meta.story({
-  render: () => ({ component: DefaultExample }),
+  render: () => ({ component: Examples.Default }),
 });
 
 export const Vertical = meta.story({
-  render: () => ({ component: VerticalExample }),
+  render: () => ({ component: Examples.Vertical }),
 });

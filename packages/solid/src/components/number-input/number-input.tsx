@@ -67,7 +67,7 @@ export function NumberInputRoot(props: NumberInputProps): JSX.Element {
     <NumberInputContext value={{ slots: slots() }}>
       <NumberInputPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-size={size()}
         onValueChange={
           local.onValueChange
@@ -160,7 +160,7 @@ export function NumberInputDecrementTrigger(
       asChild={(triggerProps) => (
         <Button
           {...triggerProps({
-            class: slots.decrementTrigger({ class: cn(local.class) }),
+            class: slots.decrementTrigger({ class: local.class }),
           })}
           aria-label="Decrement"
           variant="ghost"
@@ -184,7 +184,7 @@ export function NumberInputIncrementTrigger(
       asChild={(triggerProps) => (
         <Button
           {...triggerProps({
-            class: slots.incrementTrigger({ class: cn(local.class) }),
+            class: slots.incrementTrigger({ class: local.class }),
           })}
           aria-label="Increment"
           variant="ghost"
@@ -209,7 +209,7 @@ export function NumberInputInput(props: InputProps): JSX.Element {
     <NumberInputPrimitive.Input
       asChild={(inputProps) => (
         <Input
-          {...inputProps({ class: slots.input({ class: cn(local.class) }) })}
+          {...inputProps({ class: slots.input({ class: local.class }) })}
           {...rest}
           classNames={local.classNames}
           size={local.size}
@@ -229,7 +229,7 @@ export function NumberInputScrubber(
   return (
     <NumberInputPrimitive.Scrubber
       {...rest}
-      class={slots.scrubber({ class: cn(local.class) })}
+      class={slots.scrubber({ class: local.class })}
     >
       <NumberInputPrimitive.Label>{local.children}</NumberInputPrimitive.Label>
     </NumberInputPrimitive.Scrubber>

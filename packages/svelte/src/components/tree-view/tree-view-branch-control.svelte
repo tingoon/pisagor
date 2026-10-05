@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { TreeViewBranchControlProps as ArkProps } from "@ark-ui/svelte/tree-view";
-import { TreeView as TreeViewPrimitive } from "@ark-ui/svelte/tree-view";
+import {
+  type TreeViewBranchControlProps as ArkProps,
+  TreeView as TreeViewPrimitive,
+} from "@ark-ui/svelte/tree-view";
 import { cn } from "@pisagor/utils";
 import FolderIcon from "phosphor-svelte/lib/FolderIcon";
 import FolderOpenIcon from "phosphor-svelte/lib/FolderOpenIcon";
@@ -9,8 +11,7 @@ import { useTreeView, useTreeViewBranch } from "./tree-view.context";
 import TreeViewBranchIndicator from "./tree-view-branch-indicator.svelte";
 import TreeViewNodeInput from "./tree-view-node-input.svelte";
 
-type Props = Omit<ArkProps, "class"> & {
-  class?: string | undefined;
+type Props = ArkProps & {
   expandedIcon?: Component | null;
   icon?: Component | null;
 };
@@ -33,8 +34,8 @@ const branch = useTreeViewBranch();
   <TreeViewBranchIndicator />
   <TreeViewPrimitive.NodeContext>
     {#snippet render(
-  nodeState,
-)}
+      nodeState,
+    )}
       {const state = nodeState()}
       {#if state.renaming}
         <TreeViewNodeInput />

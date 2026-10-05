@@ -21,7 +21,7 @@ const paragraphs = loremParagraphs(8);
           </Badge>
         {/snippet}
       </Announcement>
-      <Button onClick={() => (opened = false)} pill size="sm">Dismiss</Button>
+      <Button onclick={() => (opened = false)} pill size="sm">Dismiss</Button>
     </AppShell.Banner>
   {/if}
   <AppShell.Main>

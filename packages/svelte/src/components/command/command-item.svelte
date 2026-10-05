@@ -1,11 +1,9 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "svelte";
 import ComboboxItem from "../combobox/combobox-item.svelte";
 
-type Props = ComponentProps<typeof ComboboxItem>;
-
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: ComponentProps<typeof ComboboxItem> =
+  $props();
 </script>
 
-<ComboboxItem {...rest} class={cn(className)} showIndicator={false} />
+<ComboboxItem {...rest} class={className} showIndicator={false} />

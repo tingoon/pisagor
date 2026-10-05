@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { ImageCropper } from "@pisagor/solid";
 
 export function Default() {

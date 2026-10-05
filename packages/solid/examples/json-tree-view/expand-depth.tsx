@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { JsonTreeView } from "@pisagor/solid";
 import { expandDepthData } from "./helpers";
 

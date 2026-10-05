@@ -2,10 +2,11 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import { useProgressContext } from "@ark-ui/svelte/progress";
 import { cn } from "@pisagor/utils";
+import type { ClassValue } from "svelte/elements";
 import { useCircularProgressSlots } from "./circular-progress.context";
 
 type Props = {
-  class?: string | undefined;
+  class?: ClassValue;
   rangeClassName?: string;
   size?: number;
   thickness?: number;
@@ -53,14 +54,16 @@ const metrics = $derived.by(() => {
     stroke-width={thickness}
   ></circle>
   <circle
-    class={slots.range({ class: cn(rangeClassName) })}
+    class={slots.range({ class: rangeClassName })}
     cx={size / 2}
     cy={size / 2}
     data-part="range"
     data-scope="circular-progress"
     r={metrics.radius}
     stroke-dasharray={metrics.circumference}
-    stroke-dashoffset={metrics.value == null ? metrics.circumference * 0.7 : metrics.dashOffset}
+    stroke-dashoffset={metrics.value == null
+      ? metrics.circumference * 0.7
+      : metrics.dashOffset}
     stroke-linecap="round"
     stroke-width={thickness}
   ></circle>

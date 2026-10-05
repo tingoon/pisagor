@@ -1,13 +1,12 @@
 <script lang="ts">
-import type { DatePickerLabelProps } from "@ark-ui/svelte/date-picker";
-import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
+import {
+  DatePicker as CalendarPrimitive,
+  type DatePickerLabelProps,
+} from "@ark-ui/svelte/date-picker";
 import { cn } from "@pisagor/utils";
 import { useCalendar } from "./calendar.context";
 
-type Props = Omit<DatePickerLabelProps, "class"> & {
-  class?: string | undefined;
-};
-let { class: className, children, ...rest }: Props = $props();
+let { class: className, children, ...rest }: DatePickerLabelProps = $props();
 const { slots } = useCalendar();
 </script>
 

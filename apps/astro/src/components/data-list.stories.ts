@@ -1,4 +1,5 @@
-import { DataList } from "@pisagor/astro/data-list";
+import { DataList } from "@pisagor/astro";
+import * as Examples from "#/astro/examples/data-list";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -22,4 +23,16 @@ export const Playground = meta.story({
     ],
   },
   tags: ["autodocs"],
+});
+
+export const Default = meta.story({
+  render: () => ({ component: Examples.Default }),
+});
+
+export const OrientationHorizontal = meta.story({
+  render: () => ({ component: Examples.OrientationHorizontal }),
+});
+
+export const OrientationVertical = meta.story({
+  render: () => ({ component: Examples.OrientationVertical }),
 });

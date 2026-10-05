@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, Card, Timer } from "@pisagor/solid";
 import { ArrowCounterClockwiseIcon, PlayIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";

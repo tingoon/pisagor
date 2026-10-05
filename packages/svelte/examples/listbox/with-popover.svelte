@@ -6,9 +6,11 @@ import CaretUpDownIcon from "phosphor-svelte/lib/CaretUpDownIcon";
 
 let search = $state("");
 let isOpen = $state(false);
-const { contains } = useFilter({ sensitivity: "base" });
+const filters = useFilter({ sensitivity: "base" });
 const { collection, filter } = useListCollection({
-  filter: contains,
+  filter(itemString, filterText) {
+    return filters().contains(itemString, filterText);
+  },
   initialItems: [
     { label: "Brazil", value: "br" },
     { label: "Mexico", value: "mx" },
@@ -17,7 +19,7 @@ const { collection, filter } = useListCollection({
   ],
 });
 
-const isEmpty = $derived(collection.items.length === 0 && search);
+const isEmpty = $derived(collection().items.length === 0 && search);
 
 function onSearchInput(e: Event & { currentTarget: HTMLInputElement }) {
   const next = e.currentTarget.value;
@@ -26,12 +28,12 @@ function onSearchInput(e: Event & { currentTarget: HTMLInputElement }) {
 }
 </script>
 
-<Listbox.Root {collection} onSelect={() => (isOpen = false)}>
+<Listbox.Root collection={collection()} onSelect={() => (isOpen = false)}>
   <Popover onOpenChange={({ open }) => (isOpen = open)} open={isOpen}>
     <Popover.Trigger>
       {#snippet asChild(
-  props,
-)}
+        props,
+      )}
         <Button {...props()} class="justify-between" variant="outline">
           <Listbox.ValueText placeholder="Select framework" />
           <CaretUpDownIcon class="opacity-64" />
@@ -41,7 +43,7 @@ function onSearchInput(e: Event & { currentTarget: HTMLInputElement }) {
     <Popover.Content class="min-w-64 gap-2 p-1">
       <Input oninput={onSearchInput} placeholder="Search..." value={search} />
       <Listbox.Content>
-        {#each collection.items as item}
+        {#each collection().items as item}
           <Listbox.Item {item}>
             <Listbox.ItemText>{item.label}</Listbox.ItemText>
             <Listbox.ItemIndicator />

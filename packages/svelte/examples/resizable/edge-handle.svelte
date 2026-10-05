@@ -4,11 +4,11 @@ import { Resizable } from "@pisagor/svelte";
 let width = $state(256);
 </script>
 
-<ResizableFrame>
+<div class="h-96 w-full">
   <div class="flex size-full overflow-hidden rounded-md border">
     <aside
       class="relative flex shrink-0 flex-col overflow-visible border-e bg-muted text-muted-foreground"
-      style={{ width }}
+      style={`width: ${width}px`}
     >
       <Resizable.EdgeHandle
         handlePosition="top"
@@ -28,4 +28,4 @@ let width = $state(256);
       Main
     </div>
   </div>
-</ResizableFrame>
+</div>

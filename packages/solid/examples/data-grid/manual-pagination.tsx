@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Button, Checkbox, Spinner, Table } from "@pisagor/solid";
 import type {
@@ -301,11 +299,13 @@ export function ManualPagination() {
     return next;
   });
 
-  const pageCount = Math.ceil(sortedData.length / pagination().pageSize);
-  const pageData = sortedData.slice(
-    pagination().pageIndex * pagination().pageSize,
-    (pagination().pageIndex + 1) * pagination().pageSize,
-  );
+  const pageCount = () =>
+    Math.ceil(sortedData().length / pagination().pageSize);
+  const pageData = () =>
+    sortedData().slice(
+      pagination().pageIndex * pagination().pageSize,
+      (pagination().pageIndex + 1) * pagination().pageSize,
+    );
 
   createEffect(() => {
     pagination();
@@ -327,12 +327,12 @@ export function ManualPagination() {
         ) : null}
         <DataGrid<User>
           columns={columns()}
-          data={pageData}
+          data={pageData()}
           manualPagination
           manualSorting
           onPaginationChange={setPagination}
           onSortingChange={setSorting}
-          pageCount={pageCount}
+          pageCount={pageCount()}
           state={{ pagination: pagination(), sorting: sorting() }}
         >
           <DataGrid.Toolbar>
@@ -343,7 +343,7 @@ export function ManualPagination() {
             </p>
           </DataGrid.Toolbar>
           <DataGridView colSpan={6} />
-          <ManualPaginationBar total={sortedData.length} />
+          <ManualPaginationBar total={sortedData().length} />
         </DataGrid>
       </div>
     </DataGridShell>

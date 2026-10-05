@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { waitForEvent } from "@ark-ui/solid/tour";
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Checkbox, Field, Input, Tour } from "@pisagor/solid";

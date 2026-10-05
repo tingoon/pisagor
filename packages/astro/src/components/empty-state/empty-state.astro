@@ -23,19 +23,21 @@ const hasDescription =
 
 <EmptyStateRoot {...rest}>
   {hasMedia && (
-  <EmptyStateMedia>
-    <slot name="media" />
-  </EmptyStateMedia>
-)}
-  {hasTitle && <EmptyStateTitle>{title ?? <slot name="title" />}</EmptyStateTitle>}
+    <EmptyStateMedia>
+      <slot name="media" />
+    </EmptyStateMedia>
+  )}
+  {hasTitle && (
+    <EmptyStateTitle>{title ?? <slot name="title" />}</EmptyStateTitle>
+  )}
   {hasDescription && (
-  <EmptyStateDescription>
-    {description ?? <slot name="description" />}
-  </EmptyStateDescription>
-)}
+    <EmptyStateDescription>
+      {description ?? <slot name="description" />}
+    </EmptyStateDescription>
+  )}
   {hasActions && (
-  <EmptyStateActions>
-    <slot name="actions" />
-  </EmptyStateActions>
-)}
+    <EmptyStateActions>
+      <slot name="actions" />
+    </EmptyStateActions>
+  )}
 </EmptyStateRoot>

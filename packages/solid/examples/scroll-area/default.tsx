@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { ScrollArea, Separator } from "@pisagor/solid";
 import { For } from "solid-js";
 

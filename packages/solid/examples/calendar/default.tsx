@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Calendar } from "@pisagor/solid";
 
 export function Default() {

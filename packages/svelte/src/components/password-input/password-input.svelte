@@ -1,5 +1,8 @@
 <script lang="ts">
-import type { PasswordInputRootProps } from "@ark-ui/svelte/password-input";
+import type {
+  PasswordInputInputProps,
+  PasswordInputRootProps as PasswordInputPrimitiveRootProps,
+} from "@ark-ui/svelte/password-input";
 import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/svelte/password-input";
 import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
 import {
@@ -17,17 +20,22 @@ import InputGroupRoot from "../input-group/input-group-root.svelte";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<PasswordInputRootProps, "class" | "children"> & {
-  clearable?: boolean;
-  class?: string | undefined;
-  disabled?: boolean | null;
-  onValueChange?: (value: string) => void;
-  placeholder?: string | null | undefined;
-  readonly?: boolean | null;
-  size?: "sm" | "md" | "lg";
-  value?: string | undefined;
-  variant?: FormControlVariant;
-} & BasePasswordInputProps;
+type PasswordInputRootProps = Pick<
+  PasswordInputPrimitiveRootProps,
+  "defaultVisible" | "invalid" | "onVisibilityChange" | "visible"
+>;
+
+type Props = PasswordInputRootProps &
+  Omit<PasswordInputInputProps, "size" | "children"> & {
+    clearable?: boolean;
+    disabled?: boolean | null;
+    onValueChange?: (value: string) => void;
+    placeholder?: string | null | undefined;
+    readonly?: boolean | null;
+    size?: "sm" | "md" | "lg";
+    value?: string | undefined;
+    variant?: FormControlVariant;
+  } & BasePasswordInputProps;
 
 let {
   size = "md",
@@ -40,11 +48,12 @@ let {
   value = $bindable<string | undefined>(undefined),
   visible = $bindable<boolean | undefined>(undefined),
   placeholder,
+  oninput,
   onValueChange,
   onVisibilityChange,
   recipe = passwordInputRecipe,
   class: className,
-  ...rest
+  ...inputProps
 }: Props = $props();
 
 const slots = $derived(recipe());
@@ -53,8 +62,10 @@ const canClear = $derived(
 );
 
 function handleInput(event: Event & { currentTarget: HTMLInputElement }) {
-  value = event.currentTarget.value;
-  onValueChange?.(event.currentTarget.value);
+  const next = event.currentTarget.value;
+  value = next;
+  onValueChange?.(next);
+  oninput?.(event as never);
 }
 
 function handleClear() {
@@ -64,7 +75,6 @@ function handleClear() {
 </script>
 
 <PasswordInputPrimitive.Root
-  {...rest}
   class={slots.base({ class: cn(className) })}
   data-size={size}
   {defaultVisible}
@@ -80,6 +90,7 @@ function handleClear() {
       {variant}
     >
       <PasswordInputPrimitive.Input
+        {...inputProps}
         class={inputGroupControlRecipe()}
         {disabled}
         oninput={handleInput}
@@ -107,7 +118,7 @@ function handleClear() {
       <InputGroupAddon align="inline-end">
         <PasswordInputPrimitive.VisibilityTrigger
           aria-label="Toggle password visibility"
-          class={cn(inputGroupButtonRecipe({ size: "icon-xs" }))}
+          class={inputGroupButtonRecipe({ size: "icon-xs" })}
           type="button"
         >
           <PasswordInputPrimitive.Indicator>

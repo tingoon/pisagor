@@ -1,11 +1,12 @@
 <script lang="ts">
-import type { TimerAreaProps } from "@ark-ui/svelte/timer";
-import { Timer as TimerPrimitive } from "@ark-ui/svelte/timer";
+import {
+  type TimerAreaProps,
+  Timer as TimerPrimitive,
+} from "@ark-ui/svelte/timer";
 import { cn } from "@pisagor/utils";
 import { useTimer } from "./timer.context";
 
-type Props = Omit<TimerAreaProps, "class"> & { class?: string | undefined };
-let { class: className, children, ...rest }: Props = $props();
+let { class: className, children, ...rest }: TimerAreaProps = $props();
 const { slots } = useTimer();
 </script>
 

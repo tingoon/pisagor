@@ -6,9 +6,8 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setStatContext } from "./stat.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 } & BaseStatProps;
 
 let {

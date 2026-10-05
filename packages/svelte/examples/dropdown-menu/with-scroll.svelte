@@ -9,7 +9,7 @@ const items = Array.from({ length: 15 }, (_, i) => `Item ${i + 1}`);
     <Button variant="outline"> Open </Button>
   </DropdownMenu.Trigger>
   <DropdownMenu.Content class="max-h-60 min-w-40">
-    {#each items as label}
+    {#each items as label, index}
       <DropdownMenu.Item value={`item-${index + 1}`}>
         {label}
       </DropdownMenu.Item>

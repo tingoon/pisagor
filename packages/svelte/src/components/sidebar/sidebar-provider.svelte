@@ -14,9 +14,8 @@ import {
 } from "./constants";
 import { setSidebarContext } from "./sidebar.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "style"> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   /**
    * The default open state of the sidebar.
    * @defaultValue true

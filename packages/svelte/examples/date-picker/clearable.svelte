@@ -8,24 +8,18 @@ let value = $state([parseDate("2025-06-15")]);
 <div class="flex flex-col gap-2">
   <Field>
     <Field.Label>Input variant</Field.Label>
-    <DatePicker
-      onValueChange={(details) => (value = details.value ?? [])}
-      {value}
-    >
+    <DatePicker onValueChange={(next) => (value = next ?? [])} {value}>
       <DatePicker.Input clearable placeholder="Select date" />
       <DatePicker.Content />
     </DatePicker>
   </Field>
   <Field>
     <Field.Label>Trigger variant</Field.Label>
-    <DatePicker
-      onValueChange={(details) => (value = details.value ?? [])}
-      {value}
-    >
+    <DatePicker onValueChange={(next) => (value = next ?? [])} {value}>
       <DatePicker.Trigger>
         {#snippet asChild(
-  props,
-)}
+          props,
+        )}
           <Button {...props()} variant="outline">
             <CalendarIcon />
             <DatePicker.ValueText placeholder="Pick a date" />

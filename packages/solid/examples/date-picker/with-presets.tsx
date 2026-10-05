@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, Calendar, DatePicker, parseDate } from "@pisagor/solid";
 import { CalendarIcon } from "@pisagor/solid/icons";
 export function WithPresets() {

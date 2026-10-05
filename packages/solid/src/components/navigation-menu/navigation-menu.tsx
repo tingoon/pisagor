@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
 import { navigationMenuRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import {
@@ -28,7 +27,7 @@ export function NavigationMenuRoot(props: NavigationMenuProps): JSX.Element {
     <NavigationMenuContext value={{ slots: slots() }}>
       <ark.nav
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-part="root"
         data-scope="navigation-menu"
       >
@@ -46,7 +45,7 @@ export function NavigationMenuList(
   return (
     <ark.ul
       {...rest}
-      class={slots.list({ class: cn(local.class) })}
+      class={slots.list({ class: local.class })}
       data-part="list"
       data-scope="navigation-menu"
     />
@@ -61,7 +60,7 @@ export function NavigationMenuItem(
   return (
     <ark.li
       {...rest}
-      class={slots.item({ class: cn(local.class) })}
+      class={slots.item({ class: local.class })}
       data-part="item"
       data-scope="navigation-menu"
     />
@@ -79,7 +78,7 @@ export function NavigationMenuLink(
     <ark.a
       {...rest}
       aria-current={active() ? "page" : undefined}
-      class={slots.link({ class: cn(local.class) })}
+      class={slots.link({ class: local.class })}
       data-active={active()}
       data-part="link"
       data-scope="navigation-menu"

@@ -7,9 +7,8 @@ import type { Snippet } from "svelte";
 import type { HTMLButtonAttributes } from "svelte/elements";
 import { useMenu } from "./menu.context";
 
-type Props = Omit<HTMLButtonAttributes, "class" | "type"> & {
+type Props = Omit<HTMLButtonAttributes, "type"> & {
   children?: Snippet;
-  class?: string | undefined;
   type?: "button" | "reset" | "submit";
 } & BaseMenuItemProps;
 

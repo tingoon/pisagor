@@ -8,10 +8,10 @@ import { panelClassName } from "./helpers";
     class="size-full rounded-md border"
     defaultSize={[20, 60, 20]}
     panels={[
-  { id: "1", minSize: 20 },
-  { id: "2", minSize: 40 },
-  { id: "3", minSize: 20 },
-]}
+      { id: "1", minSize: 20 },
+      { id: "2", minSize: 40 },
+      { id: "3", minSize: 20 },
+    ]}
   >
     <Resizable.Panel class={panelClassName()} id="1">Left</Resizable.Panel>
     <Resizable.ResizeTrigger id="1:2" withHandle />

@@ -17,9 +17,8 @@ const AUTO_VARIANTS = [
   "tertiary",
 ] as const satisfies readonly SurfaceVariant[];
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 } & BaseSurfaceProps;
 
 let {
@@ -58,12 +57,12 @@ setSurfaceContext({
   as="div"
   {...rest}
   class={recipe({
-  bordered,
-  class: cn(className),
-  padding,
-  rounded,
-  variant: surface.variant,
-})}
+    bordered,
+    class: cn(className),
+    padding,
+    rounded,
+    variant: surface.variant,
+  })}
   data-depth={surface.depth}
   data-part="root"
   data-scope="surface"

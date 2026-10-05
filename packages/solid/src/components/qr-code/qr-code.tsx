@@ -7,7 +7,6 @@ import type {
 import { QrCode as QrCodePrimitive } from "@ark-ui/solid/qr-code";
 import type { QrCodeProps as BaseQrCodeRootProps } from "@pisagor/props";
 import { qrCodeRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { QrCodeContext, useQrCode } from "./qr-code.context";
@@ -26,7 +25,7 @@ export function QrCodeRoot(props: QrCodeRootProps): JSX.Element {
     <QrCodeContext value={{ slots: slots() }}>
       <QrCodePrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
       >
         {local.children ?? <QrCodeFrame />}
       </QrCodePrimitive.Root>

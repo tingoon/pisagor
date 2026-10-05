@@ -6,8 +6,7 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setTimerItemGroupContext } from "./timer.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
-  class?: string | undefined;
+type Props = HTMLAttributes<HTMLDivElement> & {
   orientation?: "horizontal" | "vertical";
 } & BaseTimerItemGroupProps;
 

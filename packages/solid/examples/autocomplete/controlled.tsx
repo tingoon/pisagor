@@ -1,9 +1,8 @@
-/** @jsxImportSource solid-js */
-
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Autocomplete } from "@pisagor/solid";
-import { createSignal } from "solid-js";
+import { createSignal, For } from "solid-js";
+
 export function Controlled() {
   const initialItems = [
     { label: "Apple", value: "apple" },
@@ -12,11 +11,15 @@ export function Controlled() {
     { label: "Date", value: "date" },
   ];
   const [value, setValue] = createSignal<string | undefined>("banana");
+  const selected = () => {
+    const current = value();
+    return current ? [current] : [];
+  };
 
-  const { contains } = useFilter({ sensitivity: "base" });
+  const filterFn = useFilter({ sensitivity: "base" });
 
   const { collection, filter } = useListCollection({
-    filter: contains,
+    filter: filterFn().contains,
     initialItems,
   });
 
@@ -24,18 +27,20 @@ export function Controlled() {
     <div class="flex flex-col gap-2">
       <Autocomplete.Root
         class="w-full"
-        collection={collection}
+        collection={collection()}
         onInputValueChange={({ inputValue }) => filter(inputValue)}
-        onValueChange={(value) => setValue(value().at(0))}
-        value={value() ? [value] : []}
+        onValueChange={(next) => setValue(next.at(0))}
+        value={selected()}
       >
         <Autocomplete.Input placeholder="Select a fruit..." />
         <Autocomplete.Content>
           <Autocomplete.Empty />
           <Autocomplete.List>
-            {collection.items.map((item) => (
-              <Autocomplete.Item item={item}>{item.label}</Autocomplete.Item>
-            ))}
+            <For each={collection().items}>
+              {(item) => (
+                <Autocomplete.Item item={item}>{item.label}</Autocomplete.Item>
+              )}
+            </For>
           </Autocomplete.List>
         </Autocomplete.Content>
       </Autocomplete.Root>

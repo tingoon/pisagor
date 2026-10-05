@@ -1,13 +1,14 @@
 <script lang="ts">
-import type { FileUploadRootProps as ArkRootProps } from "@ark-ui/svelte/file-upload";
-import { FileUpload as FileUploadPrimitive } from "@ark-ui/svelte/file-upload";
+import {
+  type FileUploadRootProps as ArkRootProps,
+  FileUpload as FileUploadPrimitive,
+} from "@ark-ui/svelte/file-upload";
 import type { FileUploadProps as BaseFileUploadProps } from "@pisagor/props";
 import { fileUploadRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setFileUploadContext } from "./file-upload.context";
 
-type Props = Omit<ArkRootProps, "class"> & {
-  class?: string | undefined;
+type Props = ArkRootProps & {
   onValueChange?: (value: globalThis.File[]) => void;
 } & BaseFileUploadProps;
 

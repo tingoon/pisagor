@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, InputGroup } from "@pisagor/solid";
 import { ArrowUpIcon, PlusIcon } from "@pisagor/solid/icons";
 export function WithTextarea() {

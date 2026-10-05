@@ -1,15 +1,16 @@
 <script lang="ts">
-import type { ProgressRootProps } from "@ark-ui/svelte/progress";
-import { Progress as ProgressPrimitive } from "@ark-ui/svelte/progress";
+import {
+  Progress as ProgressPrimitive,
+  type ProgressRootProps,
+} from "@ark-ui/svelte/progress";
 import type { ProgressProps as BaseProgressProps } from "@pisagor/props";
 import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import { setProgressContext } from "./progress.context";
 
-type Props = Omit<ProgressRootProps, "class" | "children" | "value"> & {
+type Props = Omit<ProgressRootProps, "children" | "value"> & {
   children?: Snippet;
-  class?: string | undefined;
   classNames?: Partial<Record<ProgressRecipeSlot, string>>;
   /**
    * Whether to show indeterminate progress.
@@ -57,13 +58,13 @@ setProgressContext({
   value={indeterminate ? null : value}
 >
   {#if showHeader}
-    <div class={slots.header({ class: cn(classNames?.header) })}>
+    <div class={slots.header({ class: classNames?.header })}>
       {#if label}
         <span>{label}</span>
       {/if}
       {#if isValueVisible}
         <ProgressPrimitive.ValueText
-          class={slots.value({ class: cn(classNames?.value) })}
+          class={slots.value({ class: classNames?.value })}
         />
       {/if}
     </div>
@@ -71,11 +72,9 @@ setProgressContext({
 
   {@render children?.()}
 
-  <ProgressPrimitive.Track
-    class={slots.track({ class: cn(classNames?.track) })}
-  >
+  <ProgressPrimitive.Track class={slots.track({ class: classNames?.track })}>
     <ProgressPrimitive.Range
-      class={slots.range({ class: cn(classNames?.range) })}
+      class={slots.range({ class: classNames?.range })}
     />
   </ProgressPrimitive.Track>
 </ProgressPrimitive.Root>

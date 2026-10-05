@@ -11,7 +11,6 @@ import type {
 import { Carousel as CarouselPrimitive } from "@ark-ui/solid/carousel";
 import type { CarouselProps as BaseCarouselRootProps } from "@pisagor/props";
 import { carouselRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
 import { CaretLeftIcon, CaretRightIcon } from "../../internal/icons";
@@ -45,7 +44,7 @@ export function CarouselRoot(props: CarouselRootProps): JSX.Element {
     <CarouselContext value={{ slots: slots() }}>
       <CarouselPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         spacing={local.spacing ?? "16px"}
       >
         {local.children}

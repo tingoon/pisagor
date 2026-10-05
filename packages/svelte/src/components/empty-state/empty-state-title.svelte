@@ -4,9 +4,8 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useEmptyState } from "./empty-state.context";
 
-type Props = Omit<HTMLAttributes<HTMLHeadingElement>, "class"> & {
+type Props = HTMLAttributes<HTMLHeadingElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 };
 
 let { children, class: className, ...rest }: Props = $props();

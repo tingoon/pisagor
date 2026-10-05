@@ -35,8 +35,8 @@ const qualityLabel = $derived(QUALITY_BY_LEVEL[getQualityLevel(value.length)]);
       <div class="flex items-center gap-2">
         <QrCode.Download fileName="qr-code" mimeType="image/png">
           {#snippet asChild(
-  props,
-)}
+            props,
+          )}
             <Button
               {...props()}
               aria-label="Download PNG"
@@ -51,8 +51,8 @@ const qualityLabel = $derived(QUALITY_BY_LEVEL[getQualityLevel(value.length)]);
         </QrCode.Download>
         <QrCode.Download fileName="qr-code" mimeType="image/svg+xml">
           {#snippet asChild(
-  props,
-)}
+            props,
+          )}
             <Button
               {...props()}
               aria-label="Download SVG"

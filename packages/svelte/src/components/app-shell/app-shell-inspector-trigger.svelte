@@ -2,8 +2,7 @@
 import ArrowsInLineHorizontalIcon from "phosphor-svelte/lib/ArrowsInLineHorizontalIcon";
 import ArrowsOutLineHorizontalIcon from "phosphor-svelte/lib/ArrowsOutLineHorizontalIcon";
 import type { ComponentProps, Snippet } from "svelte";
-import type { AppShellPlacement } from "./app-shell.context";
-import { useAppShell } from "./app-shell.context";
+import { type AppShellPlacement, useAppShell } from "./app-shell.context";
 import AppShellSideTrigger from "./app-shell-side-trigger.svelte";
 
 type Props = Omit<

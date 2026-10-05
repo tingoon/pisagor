@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, DatePicker, Field, parseDate } from "@pisagor/solid";
 import { CalendarIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";
@@ -11,7 +9,7 @@ export function Clearable() {
       <Field>
         <Field.Label>Input variant</Field.Label>
         <DatePicker
-          onValueChange={(value) => setValue(value() ?? [])}
+          onValueChange={(value) => setValue(value ?? [])}
           value={value()}
         >
           <DatePicker.Input placeholder="Select date" />
@@ -21,7 +19,7 @@ export function Clearable() {
       <Field>
         <Field.Label>Trigger variant</Field.Label>
         <DatePicker
-          onValueChange={(value) => setValue(value() ?? [])}
+          onValueChange={(value) => setValue(value ?? [])}
           value={value()}
         >
           <DatePicker.Trigger

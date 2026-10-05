@@ -1,14 +1,14 @@
 <script lang="ts">
-import type { ListboxItemProps as ArkListboxItemProps } from "@ark-ui/svelte/listbox";
-import { Listbox as ListboxPrimitive } from "@ark-ui/svelte/listbox";
+import {
+  type ListboxItemProps as ArkListboxItemProps,
+  Listbox as ListboxPrimitive,
+} from "@ark-ui/svelte/listbox";
 import type { ListboxItemProps as BaseListboxItemProps } from "@pisagor/props";
 import { listboxItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setListboxItemContext } from "./listbox.context";
 
-type Props = Omit<ArkListboxItemProps, "class"> & {
-  class?: string | undefined;
-} & BaseListboxItemProps;
+type Props = ArkListboxItemProps & BaseListboxItemProps;
 
 let {
   variant = "default",

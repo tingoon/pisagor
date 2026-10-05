@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { LinkBox } from "@pisagor/solid";
 
 export function WithLink() {
@@ -6,9 +5,16 @@ export function WithLink() {
     <LinkBox
       asChild={(props) => (
         <article {...props()} class="flex flex-col gap-2 rounded-xl border p-4">
-          <LinkBox.Overlay asChild>
-            <a href="https://example.com/blog/simple-post">Blog post title</a>
-          </LinkBox.Overlay>
+          <LinkBox.Overlay
+            asChild={(overlayProps) => (
+              <a
+                {...overlayProps()}
+                href="https://example.com/blog/simple-post"
+              >
+                Blog post title
+              </a>
+            )}
+          />
           <p class="text-muted-foreground text-sm">A sample blog post.</p>
           <a
             class="text-primary underline"

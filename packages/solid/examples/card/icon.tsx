@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, Card } from "@pisagor/solid";
 import { CurrencyDollarIcon } from "@pisagor/solid/icons";
 export function Icon() {

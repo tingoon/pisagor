@@ -6,9 +6,7 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setBreadcrumbItemContext } from "./breadcrumb.context";
 
-type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> & {
-  class?: string | undefined;
-} & BaseBreadcrumbItemProps;
+type Props = HTMLAttributes<HTMLLIElement> & BaseBreadcrumbItemProps;
 
 let {
   children,

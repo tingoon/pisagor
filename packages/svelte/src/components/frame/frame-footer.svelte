@@ -4,9 +4,8 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useFrame } from "./frame.context";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
+type Props = HTMLAttributes<HTMLElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 };
 
 let { children, class: className, ...rest }: Props = $props();

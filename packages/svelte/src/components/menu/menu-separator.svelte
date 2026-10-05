@@ -4,11 +4,7 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useMenu } from "./menu.context";
 
-type Props = Omit<HTMLAttributes<HTMLHRElement>, "class"> & {
-  class?: string | undefined;
-};
-
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: HTMLAttributes<HTMLHRElement> = $props();
 const { slots } = useMenu();
 </script>
 

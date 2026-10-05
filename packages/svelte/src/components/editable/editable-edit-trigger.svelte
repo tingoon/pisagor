@@ -1,9 +1,10 @@
 <script lang="ts">
-import type { EditableEditTriggerProps } from "@ark-ui/svelte/editable";
-import { Editable as EditablePrimitive } from "@ark-ui/svelte/editable";
+import {
+  type EditableEditTriggerProps,
+  Editable as EditablePrimitive,
+} from "@ark-ui/svelte/editable";
 
-type Props = EditableEditTriggerProps;
-let { children, ...rest }: Props = $props();
+let { children, ...rest }: EditableEditTriggerProps = $props();
 </script>
 
 <EditablePrimitive.EditTrigger {...rest}>

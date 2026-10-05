@@ -1,13 +1,12 @@
 <script lang="ts">
-import type { CarouselItemGroupProps } from "@ark-ui/svelte/carousel";
-import { Carousel as CarouselPrimitive } from "@ark-ui/svelte/carousel";
+import {
+  type CarouselItemGroupProps,
+  Carousel as CarouselPrimitive,
+} from "@ark-ui/svelte/carousel";
 import { cn } from "@pisagor/utils";
 import { useCarousel } from "./carousel.context";
 
-type Props = Omit<CarouselItemGroupProps, "class"> & {
-  class?: string | undefined;
-};
-let { class: className, children, ...rest }: Props = $props();
+let { class: className, children, ...rest }: CarouselItemGroupProps = $props();
 const { slots } = useCarousel();
 </script>
 

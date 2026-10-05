@@ -20,25 +20,29 @@ let loading = $state(true);
     <input type="checkbox" bind:checked={loading}>
     Loading
   </label>
-  <DataGrid {columns} {data} features={dataGridFeatures} {loading}>
-    <Table>
-      <Table.Header>
-        <DataGrid.Header>
-          <DataGrid.HeaderRow>
-            <DataGrid.Head />
-          </DataGrid.HeaderRow>
-        </DataGrid.Header>
-      </Table.Header>
-      <Table.Body>
-        <DataGrid.Body>
-          {#snippet empty()}
-            <DataGrid.Empty />
-          {/snippet}
-          <DataGrid.Row>
-            <DataGrid.Cell />
-          </DataGrid.Row>
-        </DataGrid.Body>
-      </Table.Body>
-    </Table>
-  </DataGrid>
+  {#if loading}
+    <p class="text-muted-foreground text-sm">Loading…</p>
+  {:else}
+    <DataGrid {columns} {data} features={dataGridFeatures}>
+      <Table>
+        <Table.Header>
+          <DataGrid.Header>
+            <DataGrid.HeaderRow>
+              <DataGrid.Head />
+            </DataGrid.HeaderRow>
+          </DataGrid.Header>
+        </Table.Header>
+        <Table.Body>
+          <DataGrid.Body>
+            {#snippet empty()}
+              <DataGrid.Empty />
+            {/snippet}
+            <DataGrid.Row>
+              <DataGrid.Cell />
+            </DataGrid.Row>
+          </DataGrid.Body>
+        </Table.Body>
+      </Table>
+    </DataGrid>
+  {/if}
 </div>

@@ -1,13 +1,12 @@
 <script lang="ts">
-import type { ImageCropperGridProps } from "@ark-ui/svelte/image-cropper";
-import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/svelte/image-cropper";
+import {
+  type ImageCropperGridProps,
+  ImageCropper as ImageCropperPrimitive,
+} from "@ark-ui/svelte/image-cropper";
 import { cn } from "@pisagor/utils";
 import { useImageCropper } from "./image-cropper.context";
 
-type Props = Omit<ImageCropperGridProps, "class"> & {
-  class?: string | undefined;
-};
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: ImageCropperGridProps = $props();
 const { slots } = useImageCropper();
 </script>
 

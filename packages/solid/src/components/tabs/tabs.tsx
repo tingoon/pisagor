@@ -7,7 +7,6 @@ import type {
 import { Tabs as TabsPrimitive } from "@ark-ui/solid/tabs";
 import type { TabsProps as BaseTabsRootProps } from "@pisagor/props";
 import { type TabsVariantProps, tabsRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
 import { TabsContext, useTabs } from "./tabs.context";
@@ -41,7 +40,7 @@ export function TabsRoot(props: TabsRootProps): JSX.Element {
     <TabsContext value={{ slots: slots() }}>
       <TabsPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
       >
         {local.children}
       </TabsPrimitive.Root>
@@ -57,7 +56,7 @@ export function TabsList(props: TabsListProps): JSX.Element {
   return (
     <TabsPrimitive.List
       {...rest}
-      class={slots.list({ class: cn(local.class), variant: variant() })}
+      class={slots.list({ class: local.class, variant: variant() })}
     >
       {local.children}
       <TabsPrimitive.Indicator
@@ -73,7 +72,7 @@ export function TabsTrigger(props: TabsTriggerProps): JSX.Element {
   return (
     <TabsPrimitive.Trigger
       {...rest}
-      class={slots.trigger({ class: cn(local.class) })}
+      class={slots.trigger({ class: local.class })}
     />
   );
 }
@@ -84,7 +83,7 @@ export function TabsContent(props: TabsContentProps): JSX.Element {
   return (
     <TabsPrimitive.Content
       {...rest}
-      class={slots.content({ class: cn(local.class) })}
+      class={slots.content({ class: local.class })}
     />
   );
 }

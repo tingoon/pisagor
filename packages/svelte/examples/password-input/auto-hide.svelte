@@ -5,12 +5,12 @@ let visible = $state(false);
 
 const HIDE_DELAY_MS = 3000;
 
-const handleVisibilityChange = (visible: boolean) => {
-  setVisible(visible);
+const handleVisibilityChange = (nextVisible: boolean) => {
+  visible = nextVisible;
 
-  if (visible) {
+  if (nextVisible) {
     setTimeout(() => {
-      setVisible(false);
+      visible = false;
     }, HIDE_DELAY_MS);
   }
 };

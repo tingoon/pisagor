@@ -14,9 +14,11 @@ const initialItems = [
   { continent: "Asia", label: "South Korea", value: "kr" },
   { continent: "Asia", label: "China", value: "cn" },
 ];
-const { contains } = useFilter({ sensitivity: "base" });
+const filters = useFilter({ sensitivity: "base" });
 const { collection, filter } = useListCollection({
-  filter: contains,
+  filter(itemString, filterText) {
+    return filters().contains(itemString, filterText);
+  },
   groupBy: (item) => item.continent,
   initialItems,
 });
@@ -30,7 +32,7 @@ const { collection, filter } = useListCollection({
   <Autocomplete.Content class="w-60">
     <Autocomplete.Empty />
     <Autocomplete.List>
-      {#each collection.group() as [continent, group]}
+      {#each collection().group() as [continent, group]}
         <Autocomplete.ItemGroup heading={continent}>
           {#each group as item}
             <Autocomplete.Item {item}>{item.label}</Autocomplete.Item>

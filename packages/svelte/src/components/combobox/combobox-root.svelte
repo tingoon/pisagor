@@ -1,7 +1,9 @@
 <script lang="ts">
 import type { CollectionItem } from "@ark-ui/svelte/collection";
-import type { ComboboxRootProps as ArkRootProps } from "@ark-ui/svelte/combobox";
-import { Combobox as ComboboxPrimitive } from "@ark-ui/svelte/combobox";
+import {
+  type ComboboxRootProps as ArkRootProps,
+  Combobox as ComboboxPrimitive,
+} from "@ark-ui/svelte/combobox";
 import type { ComboboxProps as BaseComboboxProps } from "@pisagor/props";
 import { comboboxRecipe } from "@pisagor/recipes";
 import { setComboboxRootContext } from "./combobox.context";

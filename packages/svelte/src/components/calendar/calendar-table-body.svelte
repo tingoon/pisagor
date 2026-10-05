@@ -1,9 +1,10 @@
 <script lang="ts">
-import type { DatePickerTableBodyProps } from "@ark-ui/svelte/date-picker";
-import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
+import {
+  DatePicker as CalendarPrimitive,
+  type DatePickerTableBodyProps,
+} from "@ark-ui/svelte/date-picker";
 
-type Props = DatePickerTableBodyProps;
-let { children, ...rest }: Props = $props();
+let { children, ...rest }: DatePickerTableBodyProps = $props();
 </script>
 
 <CalendarPrimitive.TableBody {...rest}

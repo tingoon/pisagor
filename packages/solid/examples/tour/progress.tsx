@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour, useTourContext } from "@pisagor/solid";
 export function Progress() {
@@ -9,7 +7,7 @@ export function Progress() {
       <div class="absolute right-0 bottom-0 left-0 h-1 overflow-hidden rounded-b-2xl bg-muted">
         <div
           class="h-full bg-primary transition-[width]"
-          style={{ width: `${tour.getProgressPercent()}%` }}
+          style={{ width: `${tour().getProgressPercent()}%` }}
         />
       </div>
     );

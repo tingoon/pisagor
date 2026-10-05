@@ -1,14 +1,11 @@
 <script lang="ts">
-import type { MenuRootProps } from "@ark-ui/svelte/menu";
-import { Menu as MenuPrimitive } from "@ark-ui/svelte/menu";
-
-type Props = MenuRootProps;
+import { Menu as MenuPrimitive, type MenuRootProps } from "@ark-ui/svelte/menu";
 
 let {
   positioning = { placement: "bottom-end" },
   children,
   ...rest
-}: Props = $props();
+}: MenuRootProps = $props();
 </script>
 
 <MenuPrimitive.Root {...rest} {positioning}>

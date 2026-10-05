@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Button, Table } from "@pisagor/solid";
 import type { ColumnDef } from "@pisagor/solid/data-grid";
@@ -135,7 +133,7 @@ export function ColumnPinning() {
           <Table.Header>
             <DataGrid.Header>
               <DataGrid.HeaderRow>
-                {columns.map((column) => {
+                {columns().map((column) => {
                   const id =
                     "accessorKey" in column
                       ? String(column.accessorKey)
@@ -163,7 +161,7 @@ export function ColumnPinning() {
           <Table.Body>
             <DataGrid.Body empty={<DataGrid.Empty colSpan={6} />}>
               <DataGrid.Row>
-                {columns.map((column) => {
+                {columns().map((column) => {
                   const id =
                     "accessorKey" in column
                       ? String(column.accessorKey)

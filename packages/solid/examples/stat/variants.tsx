@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Stat } from "@pisagor/solid";
 
 export function Variants() {

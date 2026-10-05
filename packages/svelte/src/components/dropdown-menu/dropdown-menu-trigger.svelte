@@ -1,9 +1,10 @@
 <script lang="ts">
-import type { MenuTriggerProps } from "@ark-ui/svelte/menu";
-import { Menu as MenuPrimitive } from "@ark-ui/svelte/menu";
+import {
+  Menu as MenuPrimitive,
+  type MenuTriggerProps,
+} from "@ark-ui/svelte/menu";
 
-type Props = MenuTriggerProps;
-let { children, ...rest }: Props = $props();
+let { children, ...rest }: MenuTriggerProps = $props();
 </script>
 
 <MenuPrimitive.Trigger {...rest}>

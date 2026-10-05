@@ -6,9 +6,8 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setAlertContext } from "./alert.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title"> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "title"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 } & BaseAlertProps;
 
 let {

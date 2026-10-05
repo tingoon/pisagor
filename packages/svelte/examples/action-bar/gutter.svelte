@@ -22,7 +22,7 @@ function openWithGutter(value: (typeof gutters)[number]) {
 <div class="flex flex-wrap gap-2">
   {#each gutters as value}
     <Button
-      onClick={() => openWithGutter(value)}
+      onclick={() => openWithGutter(value)}
       variant={gutter === value && isOpen ? "secondary" : "outline"}
     >
       {`Gutter ${value}`}

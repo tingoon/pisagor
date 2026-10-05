@@ -6,7 +6,7 @@ import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 import { useTourContext } from "./tour.context";
 
-type Props = { class?: string | undefined };
+type Props = { class?: import("svelte/elements").ClassValue };
 let { class: className }: Props = $props();
 const { slots, tour } = useTourContext();
 const dialogSlots = $derived(dialogRecipe());
@@ -24,14 +24,14 @@ const actions = $derived(tour().step?.actions ?? []);
         <TourPrimitive.ActionTrigger
           {action}
           class={cn(
-  buttonRecipe({
-    size: "sm",
-    variant:
-      action.action === "dismiss" || action.action === "prev"
-        ? "outline"
-        : "default",
-  }).base(),
-)}
+            buttonRecipe({
+              size: "sm",
+              variant:
+                action.action === "dismiss" || action.action === "prev"
+                  ? "outline"
+                  : "default",
+            }).base(),
+          )}
           type="button"
         >
           {#if action.action === "prev"}

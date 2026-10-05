@@ -5,8 +5,8 @@ import { RadioGroup } from "@pisagor/svelte";
 <RadioGroup
   invalid
   items={[
-  { label: "Default", value: "default" },
-  { label: "Comfortable", value: "comfortable" },
-  { label: "Compact", value: "compact" },
-]}
+    { label: "Default", value: "default" },
+    { label: "Comfortable", value: "comfortable" },
+    { label: "Compact", value: "compact" },
+  ]}
 />

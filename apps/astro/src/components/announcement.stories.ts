@@ -1,5 +1,5 @@
-import { Announcement } from "@pisagor/astro/announcement";
-import { Badge } from "@pisagor/astro/badge";
+import { Announcement, Badge } from "@pisagor/astro";
+import * as Examples from "#/astro/examples/announcement";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -23,4 +23,20 @@ export const Playground = meta.story({
     title: "v2.1.0 — Dark mode, faster builds, and 12 new components",
   },
   tags: ["autodocs"],
+});
+
+export const Compound = meta.story({
+  render: () => ({ component: Examples.Compound }),
+});
+
+export const Default = meta.story({
+  render: () => ({ component: Examples.Default }),
+});
+
+export const Variants = meta.story({
+  render: () => ({ component: Examples.Variants }),
+});
+
+export const WithoutBadge = meta.story({
+  render: () => ({ component: Examples.WithoutBadge }),
 });

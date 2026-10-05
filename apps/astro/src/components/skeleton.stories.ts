@@ -1,8 +1,5 @@
-import { Skeleton } from "@pisagor/astro/skeleton";
-import CircleExample from "#/astro/examples/skeleton/circle.astro";
-import CompositionExample from "#/astro/examples/skeleton/composition.astro";
-import DefaultExample from "#/astro/examples/skeleton/default.astro";
-import TextExample from "#/astro/examples/skeleton/text.astro";
+import { Skeleton } from "@pisagor/astro";
+import * as Examples from "#/astro/examples/skeleton";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -25,17 +22,17 @@ export const Playground = meta.story({
 });
 
 export const Circle = meta.story({
-  render: () => ({ component: CircleExample }),
+  render: () => ({ component: Examples.Circle }),
 });
 
 export const Composition = meta.story({
-  render: () => ({ component: CompositionExample }),
+  render: () => ({ component: Examples.Composition }),
 });
 
 export const Default = meta.story({
-  render: () => ({ component: DefaultExample }),
+  render: () => ({ component: Examples.Default }),
 });
 
 export const Text = meta.story({
-  render: () => ({ component: TextExample }),
+  render: () => ({ component: Examples.Text }),
 });

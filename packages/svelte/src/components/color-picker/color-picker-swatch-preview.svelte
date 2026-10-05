@@ -5,10 +5,7 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useColorPicker } from "./color-picker.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
-  class?: string | undefined;
-};
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
 const { slots } = useColorPicker();
 </script>
 

@@ -31,7 +31,6 @@ const {
   useAppForm: baseUseAppForm,
   withForm,
   withFieldGroup,
-  extendForm,
 } = createFormHook({
   fieldComponents: {
     AutocompleteField,
@@ -95,4 +94,4 @@ export function useAppForm<
   };
 }
 
-export { extendForm, withFieldGroup, withForm };
+export { withFieldGroup, withForm };

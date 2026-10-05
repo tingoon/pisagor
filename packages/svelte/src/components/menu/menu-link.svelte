@@ -5,11 +5,7 @@ import type { Snippet } from "svelte";
 import type { HTMLAnchorAttributes } from "svelte/elements";
 import { useMenu } from "./menu.context";
 
-type Props = Omit<HTMLAnchorAttributes, "class"> & {
-  active?: boolean;
-  children?: Snippet;
-  class?: string | undefined;
-};
+type Props = HTMLAnchorAttributes & { active?: boolean; children?: Snippet };
 
 let { active = false, class: className, children, ...rest }: Props = $props();
 const { slots } = useMenu();

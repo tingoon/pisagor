@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { BottomNavigation, ScrollArea } from "@pisagor/solid";
 import {
   BellIcon,

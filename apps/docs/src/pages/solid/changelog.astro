@@ -1,7 +1,7 @@
 ---
+import { Content, getHeadings } from "#/changelog/solid";
 import Changelog from "#/components/docs/changelog.astro";
 import DocsLayout from "#/layouts/docs-layout.astro";
-import { Content, getHeadings } from "#/solid/CHANGELOG.md";
 
 const headings = getHeadings().filter((heading) => heading.depth === 2);
 ---

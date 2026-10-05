@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Calendar, Card } from "@pisagor/solid";
 export function MonthYearSelector() {
   return (

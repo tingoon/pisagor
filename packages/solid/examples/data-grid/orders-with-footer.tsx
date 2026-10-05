@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Table } from "@pisagor/solid";
 import type { ColumnDef, SortingState } from "@pisagor/solid/data-grid";

@@ -3,8 +3,7 @@ import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { useTagsInput } from "@ark-ui/solid/tags-input";
 import { tagsWithComboboxBlock } from "@pisagor/recipes/blocks/tags-input";
-import { Combobox, Field } from "@pisagor/solid";
-import { TagsInput } from "@pisagor/solid/tags-input";
+import { Combobox, Field, TagsInput } from "@pisagor/solid";
 import { createMemo, createUniqueId, For } from "solid-js";
 
 const styles = tagsWithComboboxBlock();
@@ -22,9 +21,10 @@ export function TagsWithCombobox() {
   ];
   const uid = createUniqueId();
 
-  const { contains } = useFilter({ sensitivity: "base" });
+  const filterApi = useFilter({ sensitivity: "base" });
   const { collection, filter } = useListCollection({
-    filter: contains,
+    filter: (itemText, filterText) =>
+      filterApi().contains(itemText, filterText),
     initialItems: frameworkItems,
   });
 

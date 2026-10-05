@@ -12,9 +12,8 @@ import ToastItem from "./toast-item.svelte";
 
 type Props = Omit<
   import("@ark-ui/svelte/toast").ToasterProps,
-  "toaster" | "children" | "class" | "style"
+  "toaster" | "children" | "style"
 > & {
-  class?: string | undefined;
   style?: string | undefined;
   toaster?: CreateToasterReturn;
 } & BaseToastProps;
@@ -40,8 +39,8 @@ const toasterStyle = $derived(
     toaster={toasterInstance}
   >
     {#snippet children(
-  toastItem,
-)}
+      toastItem,
+    )}
       <ToastItem toast={toastItem} />
     {/snippet}
   </ToasterPrimitive>

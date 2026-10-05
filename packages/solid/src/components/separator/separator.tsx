@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { SeparatorProps as BaseSeparatorProps } from "@pisagor/props";
 import { separatorRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
@@ -19,7 +18,7 @@ export function Separator(props: SeparatorProps): JSX.Element {
     <ark.div
       {...rest}
       aria-orientation={local.orientation ?? "horizontal"}
-      class={recipeFn()({ class: cn(local.class) })}
+      class={recipeFn()({ class: local.class })}
       data-orientation={local.orientation ?? "horizontal"}
       data-part="root"
       data-scope="separator"

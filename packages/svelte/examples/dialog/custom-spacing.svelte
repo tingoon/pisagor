@@ -28,9 +28,9 @@ import { Button, Dialog, Field, Input, Select } from "@pisagor/svelte";
                 <Field.Label>Main branch</Field.Label>
                 <Select
                   items={[
-  { label: "main", value: "main" },
-  { label: "develop", value: "develop" },
-]}
+                    { label: "main", value: "main" },
+                    { label: "develop", value: "develop" },
+                  ]}
                   placeholder="Select branch"
                 />
               </Field>

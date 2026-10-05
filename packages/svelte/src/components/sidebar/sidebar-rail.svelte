@@ -4,11 +4,7 @@ import { cn } from "@pisagor/utils";
 import type { HTMLButtonAttributes } from "svelte/elements";
 import { useSidebar } from "./sidebar.context";
 
-type Props = Omit<HTMLButtonAttributes, "class"> & {
-  class?: string | undefined;
-};
-
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: HTMLButtonAttributes = $props();
 const ctx = useSidebar();
 </script>
 

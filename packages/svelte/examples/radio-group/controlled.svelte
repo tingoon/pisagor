@@ -3,17 +3,17 @@ import { RadioGroup } from "@pisagor/svelte";
 
 let value: string | null = $state(null);
 
-const isCorrectOption = value === "comfortable";
+const isCorrectOption = $derived(value === "comfortable");
 </script>
 
 <div class="flex flex-col items-center gap-2 text-center text-sm">
   <p>Select the option comfortable</p>
   <RadioGroup
     items={[
-  { label: "Default", value: "default" },
-  { label: "Comfortable", value: "comfortable" },
-  { label: "Compact", value: "compact" },
-]}
+      { label: "Default", value: "default" },
+      { label: "Comfortable", value: "comfortable" },
+      { label: "Compact", value: "compact" },
+    ]}
     onValueChange={(v) => (value = v)}
     {value}
   />

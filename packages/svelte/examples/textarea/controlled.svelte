@@ -6,7 +6,7 @@ let message = $state("");
 
 <Field class="flex flex-col gap-3">
   <Textarea
-    onChange={({ target }) => (message = target.value)}
+    onValueChange={(next) => (message = next)}
     placeholder="Type your message here"
     value={message}
   />

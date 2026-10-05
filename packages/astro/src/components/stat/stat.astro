@@ -28,13 +28,13 @@ const hasTrend = Astro.slots.has("trend");
   {hasLabel && <StatLabel>{label ?? <slot name="label" />}</StatLabel>}
   {hasValue && <StatValue>{value ?? <slot name="value" />}</StatValue>}
   {hasDescription && (
-  <StatDescription>
-    {description ?? <slot name="description" />}
-  </StatDescription>
-)}
+    <StatDescription>
+      {description ?? <slot name="description" />}
+    </StatDescription>
+  )}
   {hasTrend && (
-  <StatTrend>
-    <slot name="trend" />
-  </StatTrend>
-)}
+    <StatTrend>
+      <slot name="trend" />
+    </StatTrend>
+  )}
 </StatRoot>

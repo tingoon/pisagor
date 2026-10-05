@@ -7,10 +7,9 @@ import AnnouncementTitle from "./announcement-title.svelte";
 
 type Props = Omit<
   HTMLAttributes<HTMLDivElement>,
-  "class" | "title" | "children" | "role"
+  "title" | "children" | "role"
 > & {
   badge?: Snippet;
-  class?: string | undefined;
   role?: "status" | "alert";
   title?: string | Snippet;
 } & BaseAnnouncementProps;

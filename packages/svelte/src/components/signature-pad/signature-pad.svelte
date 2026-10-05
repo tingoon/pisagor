@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { SignaturePadRootProps as ArkRootProps } from "@ark-ui/svelte/signature-pad";
-import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/svelte/signature-pad";
+import {
+  type SignaturePadRootProps as ArkRootProps,
+  SignaturePad as SignaturePadPrimitive,
+} from "@ark-ui/svelte/signature-pad";
 import type { SignaturePadProps as BaseSignaturePadProps } from "@pisagor/props";
 import {
   buttonRecipe,
@@ -15,8 +17,7 @@ import { setSignaturePadContext } from "./signature-pad.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<ArkRootProps, "class" | "children"> & {
-  class?: string | undefined;
+type Props = Omit<ArkRootProps, "children"> & {
   classNames?: Partial<Record<SignaturePadRecipeSlot, string>>;
   invalid?: boolean;
   variant?: FormControlVariant;
@@ -50,30 +51,30 @@ setSignaturePadContext({
 >
   <SignaturePadPrimitive.Control
     class={cn(
-  formControlZoneRecipe({ surfaceVariant, variant }),
-  slots.control({
-    class: cn(classNames?.control),
-    variant,
-  }),
-)}
+      formControlZoneRecipe({ surfaceVariant, variant }),
+      slots.control({
+        class: classNames?.control,
+        variant,
+      }),
+    )}
     data-invalid={invalid || undefined}
     data-variant={variant}
   >
     <SignaturePadPrimitive.Segment
-      class={slots.segment({ class: cn(classNames?.segment) })}
+      class={slots.segment({ class: classNames?.segment })}
     />
     <SignaturePadPrimitive.ClearTrigger
       aria-label="Clear signature"
       class={cn(
-  buttonRecipe({ size: "icon-md", variant: "ghost" }).base(),
-  slots.clear({ class: cn(classNames?.clear) }),
-)}
+        buttonRecipe({ size: "icon-md", variant: "ghost" }).base(),
+        slots.clear({ class: classNames?.clear }),
+      )}
       type="button"
     >
       <ArrowCounterClockwiseIcon />
     </SignaturePadPrimitive.ClearTrigger>
     <SignaturePadPrimitive.Guide
-      class={slots.guide({ class: cn(classNames?.guide) })}
+      class={slots.guide({ class: classNames?.guide })}
     />
   </SignaturePadPrimitive.Control>
 </SignaturePadPrimitive.Root>

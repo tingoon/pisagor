@@ -23,27 +23,23 @@ import type { HTMLAttributes } from "svelte/elements";
 import Spinner from "../spinner/spinner.svelte";
 import { setToastItemContext } from "./toast.context";
 
-type Props = Omit<import("@ark-ui/svelte/toast").ToastRootProps, "class"> & {
+type Props = import("@ark-ui/svelte/toast").ToastRootProps & {
   actionTriggerProps?: Omit<
     import("@ark-ui/svelte/toast").ToastActionTriggerProps,
-    "children" | "class"
+    "children"
   >;
-  actionsProps?: Omit<HTMLAttributes<HTMLDivElement>, "class">;
-  class?: string | undefined;
+  actionsProps?: HTMLAttributes<HTMLDivElement>;
   classNames?: Partial<Record<ToastItemRecipeSlot, string>>;
   closeTriggerProps?: Omit<
     import("@ark-ui/svelte/toast").ToastCloseTriggerProps,
-    "children" | "class"
+    "children"
   >;
   descriptionProps?: Omit<
     import("@ark-ui/svelte/toast").ToastDescriptionProps,
-    "children" | "class"
+    "children"
   >;
-  iconProps?: Omit<HTMLAttributes<HTMLDivElement>, "class">;
-  titleProps?: Omit<
-    import("@ark-ui/svelte/toast").ToastTitleProps,
-    "children" | "class"
-  >;
+  iconProps?: HTMLAttributes<HTMLDivElement>;
+  titleProps?: Omit<import("@ark-ui/svelte/toast").ToastTitleProps, "children">;
   toast: Accessor<ToastOptions>;
 } & BaseToastItemProps;
 
@@ -78,10 +74,10 @@ function renderMaybeSnippet(value: unknown): value is Snippet {
 </script>
 
 <ToastPrimitive.Root {...rest} class={slots.base({ class: cn(className) })}>
-  <div class={slots.content({ class: cn(classNames?.content) })}>
+  <div class={slots.content({ class: classNames?.content })}>
     <div
       {...iconProps}
-      class={slots.icon({ class: cn(classNames?.icon) })}
+      class={slots.icon({ class: classNames?.icon })}
       data-part="icon"
       data-scope="toast"
     >
@@ -98,10 +94,10 @@ function renderMaybeSnippet(value: unknown): value is Snippet {
       {/if}
     </div>
 
-    <div class={slots.body({ class: cn(classNames?.body) })}>
+    <div class={slots.body({ class: classNames?.body })}>
       <ToastPrimitive.Title
         {...titleProps}
-        class={slots.title({ class: cn(classNames?.title) })}
+        class={slots.title({ class: classNames?.title })}
       >
         {#if renderMaybeSnippet(toastData.title)}
           {@render toastData.title()}
@@ -113,7 +109,7 @@ function renderMaybeSnippet(value: unknown): value is Snippet {
       {#if toastData.description}
         <ToastPrimitive.Description
           {...descriptionProps}
-          class={slots.description({ class: cn(classNames?.description) })}
+          class={slots.description({ class: classNames?.description })}
         >
           {#if renderMaybeSnippet(toastData.description)}
             {@render toastData.description()}
@@ -125,10 +121,7 @@ function renderMaybeSnippet(value: unknown): value is Snippet {
     </div>
   </div>
 
-  <div
-    {...actionsProps}
-    class={slots.actions({ class: cn(classNames?.actions) })}
-  >
+  <div {...actionsProps} class={slots.actions({ class: classNames?.actions })}>
     {#if toastData.action}
       <ToastPrimitive.ActionTrigger
         {...actionTriggerProps}
@@ -145,9 +138,9 @@ function renderMaybeSnippet(value: unknown): value is Snippet {
         {...closeTriggerProps}
         aria-label="Close"
         class={cn(
-  buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),
-  slots.close({ class: cn(classNames?.close) }),
-)}
+          buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),
+          slots.close({ class: classNames?.close }),
+        )}
         type="button"
       >
         <XIcon />

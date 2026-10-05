@@ -4,8 +4,8 @@ import { Breadcrumb } from "@pisagor/svelte";
 
 <Breadcrumb
   items={[
-  { href: "/", label: "Home" },
-  { href: "/docs", label: "Docs" },
-  { isCurrentPage: true, label: "Breadcrumb" },
-]}
+    { href: "/", label: "Home" },
+    { href: "/docs", label: "Docs" },
+    { isCurrentPage: true, label: "Breadcrumb" },
+  ]}
 />

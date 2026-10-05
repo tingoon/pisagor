@@ -1,9 +1,10 @@
 <script lang="ts">
-import type { DatePickerPresetTriggerProps } from "@ark-ui/svelte/date-picker";
-import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
+import {
+  DatePicker as CalendarPrimitive,
+  type DatePickerPresetTriggerProps,
+} from "@ark-ui/svelte/date-picker";
 
-type Props = DatePickerPresetTriggerProps;
-let { children, ...rest }: Props = $props();
+let { children, ...rest }: DatePickerPresetTriggerProps = $props();
 </script>
 
 <CalendarPrimitive.PresetTrigger {...rest}

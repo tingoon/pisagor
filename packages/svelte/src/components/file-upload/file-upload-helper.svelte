@@ -4,10 +4,11 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useFileUpload } from "./file-upload.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
-  class?: string | undefined;
-};
-let { class: className, children, ...rest }: Props = $props();
+let {
+  class: className,
+  children,
+  ...rest
+}: HTMLAttributes<HTMLDivElement> = $props();
 const { slots } = useFileUpload();
 </script>
 

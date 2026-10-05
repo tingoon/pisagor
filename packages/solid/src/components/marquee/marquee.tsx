@@ -7,7 +7,6 @@ import type {
 import { Marquee as MarqueePrimitive } from "@ark-ui/solid/marquee";
 import type { MarqueeProps as BaseMarqueeRootProps } from "@pisagor/props";
 import { marqueeRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import { MarqueeContext, useMarquee } from "./marquee.context";
@@ -42,7 +41,7 @@ export function MarqueeRoot(props: MarqueeRootProps): JSX.Element {
     <MarqueeContext value={{ slots: slots() }}>
       <MarqueePrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-orientation={orientation()}
         side={side()}
         spacing={local.spacing ?? "16px"}

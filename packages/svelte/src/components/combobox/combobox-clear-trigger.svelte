@@ -1,14 +1,14 @@
 <script lang="ts">
-import type { ComboboxClearTriggerProps } from "@ark-ui/svelte/combobox";
-import { Combobox as ComboboxPrimitive } from "@ark-ui/svelte/combobox";
-
-type Props = ComboboxClearTriggerProps;
+import {
+  type ComboboxClearTriggerProps,
+  Combobox as ComboboxPrimitive,
+} from "@ark-ui/svelte/combobox";
 
 let {
   "aria-label": ariaLabel = "Clear selected value(s)",
   children,
   ...rest
-}: Props = $props();
+}: ComboboxClearTriggerProps = $props();
 </script>
 
 <ComboboxPrimitive.ClearTrigger {...rest} aria-label={ariaLabel}>

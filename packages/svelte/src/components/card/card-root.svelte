@@ -6,9 +6,8 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setCardContext } from "./card.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 } & BaseCardProps;
 
 let {

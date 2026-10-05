@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Field, Switch } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
@@ -10,7 +8,7 @@ export function Controlled() {
       <Field orientation="horizontal">
         <Switch
           checked={checked()}
-          onCheckedChange={({ checked }) => setChecked(checked() ?? false)}
+          onCheckedChange={({ checked }) => setChecked(checked === true)}
         />
         <Field.Content>
           <Field.Label>Enable notifications</Field.Label>

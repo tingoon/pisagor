@@ -16,7 +16,8 @@ import {
 } from "libphonenumber-js";
 import CaretUpDownIcon from "phosphor-svelte/lib/CaretUpDownIcon";
 import GlobeIcon from "phosphor-svelte/lib/GlobeIcon";
-import type { ComponentProps } from "svelte";
+import { type ComponentProps, untrack } from "svelte";
+import type { ClassValue } from "svelte/elements";
 import { Combobox } from "../components/combobox";
 import type ComboboxContent from "../components/combobox/combobox-content.svelte";
 import type Input from "../components/input/input.svelte";
@@ -30,6 +31,7 @@ type PhoneInputClassNames = Partial<
 >;
 type Country = CountryCode;
 type Props = {
+  class?: ClassValue;
   variant?: FormControlVariant;
   defaultCountry?: Country;
   invalid?: boolean;
@@ -42,7 +44,6 @@ type Props = {
   placeholder?: string;
   name?: string;
   id?: string;
-  class?: string | undefined;
   classNames?: PhoneInputClassNames;
   inputProps?: Omit<
     ComponentProps<typeof Input>,
@@ -81,8 +82,8 @@ let internalCountry = $state<Country>("US" as Country);
 let display = $state("");
 
 // Initialize uncontrolled display/country once from props.
-internalCountry = resolveCountry(value, defaultCountry);
-display = formatNational(value, internalCountry);
+internalCountry = untrack(() => resolveCountry(value, defaultCountry));
+display = untrack(() => formatNational(value, internalCountry));
 
 const country = $derived(
   value !== undefined
@@ -180,7 +181,7 @@ function handleCountryChange(nextValue: string[]) {
 </script>
 
 <InputGroup
-  class={cn(className)}
+  class={className}
   data-disabled={disabled || undefined}
   data-part="root"
   data-scope="phone-input"
@@ -221,7 +222,10 @@ function handleCountryChange(nextValue: string[]) {
               {#if phoneInputFlags[country]}
                 <span
                   aria-label={country}
-                  class={cn(slots.flagEmoji(), slots.flag({ class: classNames?.flag }))}
+                  class={cn(
+                    slots.flagEmoji(),
+                    slots.flag({ class: classNames?.flag }),
+                  )}
                   role="img"
                 >
                   {phoneInputFlags[country]}
@@ -229,7 +233,10 @@ function handleCountryChange(nextValue: string[]) {
               {:else}
                 <GlobeIcon
                   aria-hidden
-                  class={cn(slots.flagIcon(), slots.flag({ class: classNames?.flag }))}
+                  class={cn(
+                    slots.flagIcon(),
+                    slots.flag({ class: classNames?.flag }),
+                  )}
                 />
               {/if}
             {/if}

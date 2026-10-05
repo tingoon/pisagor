@@ -6,9 +6,7 @@ import FileIcon from "phosphor-svelte/lib/FileIcon";
 import type { HTMLAttributes } from "svelte/elements";
 import { useFile } from "./file.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
-  class?: string | undefined;
-} & BaseFileProps;
+type Props = HTMLAttributes<HTMLDivElement> & BaseFileProps;
 
 let { variant = "icon", children, class: className, ...rest }: Props = $props();
 const { slots } = useFile();

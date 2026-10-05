@@ -4,7 +4,6 @@ import type {
   TimelineProps as BaseTimelineRootProps,
 } from "@pisagor/props";
 import { timelineItemRecipe, timelineRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import { TimelineItemContext, useTimelineItem } from "./timeline.context";
@@ -40,7 +39,7 @@ export function TimelineRoot(props: TimelineRootProps): JSX.Element {
     <ark.ol
       {...rest}
       class={(local.recipe ?? timelineRecipe)({
-        class: cn(local.class),
+        class: local.class,
         orientation: local.orientation ?? "vertical",
       })}
       data-orientation={local.orientation ?? "vertical"}
@@ -57,7 +56,7 @@ export function TimelineItem(props: TimelineItemProps): JSX.Element {
     <TimelineItemContext value={{ slots: slots() }}>
       <ark.li
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-part="item"
         data-scope="timeline"
       >
@@ -73,7 +72,7 @@ export function TimelineIndicator(props: TimelineIndicatorProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.indicator({ class: cn(local.class) })}
+      class={slots.indicator({ class: local.class })}
       data-part="indicator"
       data-scope="timeline"
     >
@@ -89,7 +88,7 @@ export function TimelineSeparator(props: TimelineSeparatorProps): JSX.Element {
     <ark.div
       {...rest}
       aria-hidden="true"
-      class={slots.separator({ class: cn(local.class) })}
+      class={slots.separator({ class: local.class })}
       data-part="separator"
       data-scope="timeline"
     />
@@ -102,7 +101,7 @@ export function TimelineContent(props: TimelineContentProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.content({ class: cn(local.class) })}
+      class={slots.content({ class: local.class })}
       data-part="content"
       data-scope="timeline"
     />
@@ -115,7 +114,7 @@ export function TimelineTitle(props: TimelineTitleProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.title({ class: cn(local.class) })}
+      class={slots.title({ class: local.class })}
       data-part="title"
       data-scope="timeline"
     />
@@ -130,7 +129,7 @@ export function TimelineDescription(
   return (
     <ark.div
       {...rest}
-      class={slots.description({ class: cn(local.class) })}
+      class={slots.description({ class: local.class })}
       data-part="description"
       data-scope="timeline"
     />

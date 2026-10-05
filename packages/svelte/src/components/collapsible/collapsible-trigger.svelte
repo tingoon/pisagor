@@ -1,14 +1,12 @@
 <script lang="ts">
-import type { CollapsibleTriggerProps } from "@ark-ui/svelte/collapsible";
-import { Collapsible as CollapsiblePrimitive } from "@ark-ui/svelte/collapsible";
+import {
+  Collapsible as CollapsiblePrimitive,
+  type CollapsibleTriggerProps,
+} from "@ark-ui/svelte/collapsible";
 import { cn } from "@pisagor/utils";
 import { useCollapsible } from "./collapsible.context";
 
-type Props = Omit<CollapsibleTriggerProps, "class"> & {
-  class?: string | undefined;
-};
-
-let { class: className, children, ...rest }: Props = $props();
+let { class: className, children, ...rest }: CollapsibleTriggerProps = $props();
 const { slots } = useCollapsible();
 </script>
 

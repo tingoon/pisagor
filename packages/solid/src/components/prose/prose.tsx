@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { ProseProps as BaseProseProps } from "@pisagor/props";
 import { proseRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 
@@ -25,7 +24,7 @@ export function Prose(props: ProseProps): JSX.Element {
       fallback={
         <ark.div
           {...rest}
-          class={recipe()({ class: cn(local.class) })}
+          class={recipe()({ class: local.class })}
           data-part="root"
           data-scope="prose"
         >
@@ -37,7 +36,7 @@ export function Prose(props: ProseProps): JSX.Element {
       {(html) => (
         <ark.div
           {...rest}
-          class={recipe()({ class: cn(local.class) })}
+          class={recipe()({ class: local.class })}
           data-part="root"
           data-scope="prose"
           innerHTML={html()}

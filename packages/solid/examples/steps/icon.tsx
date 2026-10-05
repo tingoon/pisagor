@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Steps } from "@pisagor/solid";
 import { CreditCardIcon, HardDriveIcon, UserIcon } from "@pisagor/solid/icons";
 

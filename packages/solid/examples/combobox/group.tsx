@@ -1,7 +1,7 @@
-/** @jsxImportSource solid-js */
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Combobox } from "@pisagor/solid";
+import { For } from "solid-js";
 
 export function Group() {
   const initialItems = [
@@ -15,29 +15,33 @@ export function Group() {
     { continent: "Asia", label: "South Korea", value: "kr" },
     { continent: "Asia", label: "China", value: "cn" },
   ];
-  const { contains } = useFilter({ sensitivity: "base" });
+  const filterFn = useFilter({ sensitivity: "base" });
 
   const { collection, filter } = useListCollection({
-    filter: contains,
+    filter: filterFn().contains,
     groupBy: (item) => item.continent,
     initialItems,
   });
 
   return (
     <Combobox.Root
-      collection={collection}
+      collection={collection()}
       onInputValueChange={({ inputValue }) => filter(inputValue)}
     >
       <Combobox.Input placeholder="Select a timezone" />
       <Combobox.Content class="w-60">
         <Combobox.List>
-          {collection.group().map(([continent, group]) => (
-            <Combobox.ItemGroup heading={continent}>
-              {group.map((item) => (
-                <Combobox.Item item={item}>{item.label}</Combobox.Item>
-              ))}
-            </Combobox.ItemGroup>
-          ))}
+          <For each={collection().group()}>
+            {([continent, group]) => (
+              <Combobox.ItemGroup heading={continent}>
+                <For each={group}>
+                  {(item) => (
+                    <Combobox.Item item={item}>{item.label}</Combobox.Item>
+                  )}
+                </For>
+              </Combobox.ItemGroup>
+            )}
+          </For>
         </Combobox.List>
       </Combobox.Content>
     </Combobox.Root>

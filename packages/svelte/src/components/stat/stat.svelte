@@ -9,8 +9,7 @@ import StatRoot from "./stat-root.svelte";
 import StatTrend from "./stat-trend.svelte";
 import StatValue from "./stat-value.svelte";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "children"> & {
-  class?: string | undefined;
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
   classNames?: Partial<Record<StatRecipeSlot, string>>;
   description?: string | Snippet;
   label?: string | Snippet;

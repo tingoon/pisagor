@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { ScrollArea } from "@pisagor/solid";
 
 export function Nested() {

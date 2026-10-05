@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Avatar, Button, HoverCard } from "@pisagor/solid";
 import { MapPinIcon } from "@pisagor/solid/icons";
 export function TriggersDelays() {

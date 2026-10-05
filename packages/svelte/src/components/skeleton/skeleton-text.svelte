@@ -5,8 +5,7 @@ import { skeletonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
-  class?: string | undefined;
+type Props = HTMLAttributes<HTMLDivElement> & {
   lines?: number;
 } & BaseSkeletonProps;
 

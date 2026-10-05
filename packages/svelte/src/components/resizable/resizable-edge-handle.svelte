@@ -8,8 +8,7 @@ import type { HTMLButtonAttributes } from "svelte/elements";
 type ResizableHandlePosition = "bottom" | "center" | "top";
 type ResizableEdgePlacement = "end" | "start";
 
-type Props = Omit<HTMLButtonAttributes, "class"> & {
-  class?: string | undefined;
+type Props = HTMLButtonAttributes & {
   handlePosition?: ResizableHandlePosition;
   label: string;
   minWidth?: number;

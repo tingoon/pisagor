@@ -4,8 +4,7 @@ import { cn } from "@pisagor/utils";
 import type { HTMLTdAttributes } from "svelte/elements";
 import { useTable } from "./table.context";
 
-type Props = Omit<HTMLTdAttributes, "class"> & {
-  class?: string | undefined;
+type Props = HTMLTdAttributes & {
   colspan?: number | string | undefined | null;
   colSpan?: number | string | undefined | null;
 };

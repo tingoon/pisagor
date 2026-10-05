@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Badge, Table } from "@pisagor/solid";
 import {
   type ColumnDef,

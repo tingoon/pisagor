@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { RatingGroupRootProps } from "@ark-ui/svelte/rating-group";
-import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/svelte/rating-group";
+import {
+  RatingGroup as RatingGroupPrimitive,
+  type RatingGroupRootProps,
+} from "@ark-ui/svelte/rating-group";
 import type { RatingProps as BaseRatingProps } from "@pisagor/props";
 import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -10,13 +12,10 @@ import { setRatingContext } from "./rating.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<
-  RatingGroupRootProps,
-  "class" | "children" | "onValueChange"
-> & {
-  class?: string | undefined;
-  classNames?: Partial<Record<RatingRecipeSlot, string>>;
-  /** Custom icon component (defaults to StarIcon). */
+type Props = Omit<RatingGroupRootProps, "children" | "onValueChange"> & {
+  classNames?: Partial<
+    Record<RatingRecipeSlot, string>
+  > /** Custom icon component (defaults to StarIcon). */;
   icon?: Component;
   onValueChange?: (value: number) => void;
   variant?: FormControlVariant;
@@ -62,24 +61,24 @@ function handleValueChange(
   onValueChange={onValueChange ? handleValueChange : undefined}
 >
   <RatingGroupPrimitive.Control
-    class={slots.control({ class: cn(classNames?.control) })}
+    class={slots.control({ class: classNames?.control })}
   >
     <RatingGroupPrimitive.Context>
       {#snippet render(
-  api,
-)}
+        api,
+      )}
         {#each api().items as item (item)}
           <RatingGroupPrimitive.Item
-            class={slots.item({ class: cn(classNames?.item) })}
+            class={slots.item({ class: classNames?.item })}
             index={item}
           >
             <RatingGroupPrimitive.ItemContext>
               {#snippet render(
-  itemApi,
-)}
+                itemApi,
+              )}
                 {const state = itemApi()}
                 <span
-                  class={slots.indicator({ class: cn(classNames?.indicator) })}
+                  class={slots.indicator({ class: classNames?.indicator })}
                   data-half={state.half ? "" : undefined}
                   data-highlighted={state.highlighted ? "" : undefined}
                   data-part="item-indicator"

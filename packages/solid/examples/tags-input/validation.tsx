@@ -1,5 +1,6 @@
-/** @jsxImportSource solid-js */
 import { Field, TagsInput } from "@pisagor/solid";
+import { For } from "solid-js";
+
 export function Validation() {
   const validTagPattern = /^[a-zA-Z0-9-]+$/;
   return (
@@ -18,13 +19,15 @@ export function Validation() {
         }}
       >
         <TagsInput.Context>
-          {({ value }) =>
-            value.map((tag, index) => (
-              <TagsInput.Item index={index} value={tag}>
-                {tag}
-              </TagsInput.Item>
-            ))
-          }
+          {(api) => (
+            <For each={api().value}>
+              {(tag, index) => (
+                <TagsInput.Item index={index()} value={tag}>
+                  {tag}
+                </TagsInput.Item>
+              )}
+            </For>
+          )}
         </TagsInput.Context>
       </TagsInput>
     </Field>

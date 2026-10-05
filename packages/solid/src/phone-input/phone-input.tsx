@@ -77,7 +77,7 @@ function PhoneInputContainer(props: PhoneInputContainerProps): JSX.Element {
   return (
     <InputGroup
       {...rest}
-      class={cn(local.class)}
+      class={local.class}
       data-part="root"
       data-scope="phone-input"
       data-size={ctx.size}
@@ -324,7 +324,7 @@ export function PhoneInput(props: PhoneInputProps): JSX.Element {
   return (
     <PhoneInputContext value={contextValue()}>
       <PhoneInputContainer
-        class={cn(local.class)}
+        class={local.class}
         data-disabled={local.disabled || undefined}
       >
         <PhoneInputCountrySelect

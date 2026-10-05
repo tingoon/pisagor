@@ -1,7 +1,6 @@
 <script lang="ts">
 import { Table } from "@pisagor/svelte";
-import type { SortingState } from "@pisagor/svelte/data-table";
-import { DataTable } from "@pisagor/svelte/data-table";
+import { DataTable, type SortingState } from "@pisagor/svelte/data-table";
 
 const data = [
   { id: "1", name: "Ada", role: "Admin" },
@@ -23,7 +22,7 @@ function onSortingChange(
 }
 </script>
 
-<DataTable {columns} {data} {onSortingChange} {sorting}>
+<DataTable {columns} {data} {onSortingChange} state={{ sorting }}>
   <Table>
     <Table.Header>
       <DataTable.Header>

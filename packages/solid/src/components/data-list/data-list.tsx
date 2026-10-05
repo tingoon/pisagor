@@ -8,7 +8,6 @@ import {
   dataListItemRecipe,
   dataListRecipe,
 } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import type { VariantClassNames } from "../../internal/types";
@@ -52,7 +51,7 @@ export function DataListRoot(props: DataListRootProps): JSX.Element {
   return (
     <ark.dl
       {...rest}
-      class={(local.recipe ?? dataListRecipe)({ class: cn(local.class) })}
+      class={(local.recipe ?? dataListRecipe)({ class: local.class })}
       data-orientation={local.orientation ?? "horizontal"}
       data-part="root"
       data-scope="data-list"
@@ -69,7 +68,7 @@ function DataListItemLabel(props: DataListItemLabelProps): JSX.Element {
   return (
     <ark.dt
       {...rest}
-      class={slots.label({ class: cn(local.class) })}
+      class={slots.label({ class: local.class })}
       data-part="item-label"
       data-scope="data-list"
     />
@@ -83,7 +82,7 @@ function DataListItemValue(props: DataListItemValueProps): JSX.Element {
   return (
     <ark.dd
       {...rest}
-      class={slots.value({ class: cn(local.class) })}
+      class={slots.value({ class: local.class })}
       data-part="item-value"
       data-scope="data-list"
     />
@@ -104,7 +103,7 @@ export function DataListItem(props: DataListItemProps): JSX.Element {
     <DataListItemContext value={{ slots: slots() }}>
       <ark.div
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-part="item"
         data-scope="data-list"
       >

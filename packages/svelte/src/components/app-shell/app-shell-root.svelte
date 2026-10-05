@@ -17,9 +17,8 @@ import {
   ZERO_REGION_VARS,
 } from "./app-shell.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "style"> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   style?: string | undefined;
 } & BaseAppShellProps;
 

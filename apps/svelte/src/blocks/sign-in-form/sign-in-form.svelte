@@ -46,8 +46,8 @@ const form = createAppForm(() => ({
     </div>
     <form.AppField name="email">
       {#snippet children(
-  field,
-)}
+        field,
+      )}
         <field.TextField
           autocomplete="email"
           id="form-email"
@@ -59,8 +59,8 @@ const form = createAppForm(() => ({
     </form.AppField>
     <form.AppField name="password">
       {#snippet children(
-  field,
-)}
+        field,
+      )}
         <field.PasswordField
           autocomplete="current-password"
           id="form-password"
@@ -77,8 +77,8 @@ const form = createAppForm(() => ({
     <Field.Separator>Or continue with</Field.Separator>
     <form.AppField name="rememberMe">
       {#snippet children(
-  field,
-)}
+        field,
+      )}
         <field.CheckboxField
           id="form-remember"
           label="Remember me on this device"

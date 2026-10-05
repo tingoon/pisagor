@@ -1,15 +1,14 @@
 <script lang="ts">
-import type { ImageCropperSelectionProps as ArkSelectionProps } from "@ark-ui/svelte/image-cropper";
-import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/svelte/image-cropper";
+import {
+  type ImageCropperSelectionProps as ArkSelectionProps,
+  ImageCropper as ImageCropperPrimitive,
+} from "@ark-ui/svelte/image-cropper";
 import { cn } from "@pisagor/utils";
 import { useImageCropper } from "./image-cropper.context";
 import ImageCropperGrid from "./image-cropper-grid.svelte";
 import ImageCropperHandle from "./image-cropper-handle.svelte";
 
-type Props = Omit<ArkSelectionProps, "class"> & {
-  axis?: "horizontal" | "vertical" | "both";
-  class?: string | undefined;
-};
+type Props = ArkSelectionProps & { axis?: "horizontal" | "vertical" | "both" };
 
 let { axis = "both", children, class: className, ...rest }: Props = $props();
 const { slots } = useImageCropper();

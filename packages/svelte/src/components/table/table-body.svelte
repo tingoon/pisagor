@@ -4,11 +4,11 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useTable } from "./table.context";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
-  class?: string | undefined;
-};
-
-let { class: className, children, ...rest }: Props = $props();
+let {
+  class: className,
+  children,
+  ...rest
+}: HTMLAttributes<HTMLElement> = $props();
 const { slots } = useTable();
 </script>
 

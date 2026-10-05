@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Badge, Spinner } from "@pisagor/solid";
 export function WithSpinner() {
   return (

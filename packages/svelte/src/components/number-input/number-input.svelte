@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { NumberInputRootProps } from "@ark-ui/svelte/number-input";
-import { NumberInput as NumberInputPrimitive } from "@ark-ui/svelte/number-input";
+import {
+  NumberInput as NumberInputPrimitive,
+  type NumberInputRootProps,
+} from "@ark-ui/svelte/number-input";
 import type { NumberInputProps as BaseNumberInputProps } from "@pisagor/props";
 import {
   buttonRecipe,
@@ -16,13 +18,9 @@ import { setNumberInputContext } from "./number-input.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<
-  NumberInputRootProps,
-  "class" | "children" | "onValueChange"
-> & {
+type Props = Omit<NumberInputRootProps, "children" | "onValueChange"> & {
   children?: import("svelte").Snippet;
   clearable?: boolean;
-  class?: string | undefined;
   onValueChange?: (value: number) => void;
   placeholder?: string | null | undefined;
   size?: "sm" | "md" | "lg";
@@ -75,9 +73,9 @@ function handleValueChange(
   {:else}
     <NumberInputPrimitive.Control
       class={cn(
-  slots.control(),
-  formControlGroupShellRecipe({ size: "md", surfaceVariant, variant }),
-)}
+        slots.control(),
+        formControlGroupShellRecipe({ size: "md", surfaceVariant, variant }),
+      )}
       data-clearable={clearable || undefined}
       data-variant={variant}
     >
@@ -93,8 +91,8 @@ function handleValueChange(
 
       <NumberInputPrimitive.Context>
         {#snippet render(
-  api,
-)}
+          api,
+        )}
           {const hasValue =
             api().value !== undefined &&
             api().value !== null &&

@@ -29,7 +29,6 @@ import {
   type InputRootVariantProps,
 } from "@pisagor/recipes";
 
-import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
 import { Button } from "../button";
 import { InputGroup } from "../input-group";
@@ -162,7 +161,7 @@ export function ComboboxInput({
 
   return (
     <ComboboxControl data-size={size}>
-      <InputGroup className={cn(className)} size={size} variant={variantProp}>
+      <InputGroup className={className} size={size} variant={variantProp}>
         {children}
         <ComboboxPrimitive.Input asChild>
           <InputGroup.Input {...rest} />

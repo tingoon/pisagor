@@ -6,10 +6,9 @@ import { cn } from "@pisagor/utils";
 import type { HTMLButtonAttributes } from "svelte/elements";
 import Spinner from "../spinner/spinner.svelte";
 
-type Props = Omit<HTMLButtonAttributes, "class" | "disabled" | "type"> &
+type Props = Omit<HTMLButtonAttributes, "disabled" | "type"> &
   BaseButtonProps & {
     children?: import("svelte").Snippet;
-    class?: string | undefined;
     disabled?: boolean | null;
     type?: "button" | "reset" | "submit" | null;
   };

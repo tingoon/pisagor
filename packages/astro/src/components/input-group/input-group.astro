@@ -23,10 +23,10 @@ const variant = variantProp ?? ("primary" as FormControlVariant);
 <div
   {...rest}
   class={formControlGroupShellRecipe({
-  className: cn(inputGroupRootRecipe(), className),
-  size,
-  variant,
-})}
+    className: cn(inputGroupRootRecipe(), className),
+    size,
+    variant,
+  })}
   data-part="root"
   data-scope="input-group"
   data-size={size}

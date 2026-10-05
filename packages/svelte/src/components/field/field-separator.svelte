@@ -8,9 +8,8 @@ import Separator from "../separator/separator.svelte";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { useFieldSlots } from "./field.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: Snippet;
-  class?: string | undefined;
 };
 
 let { children, class: className, ...rest }: Props = $props();

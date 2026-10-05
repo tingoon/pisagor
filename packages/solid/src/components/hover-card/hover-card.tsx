@@ -7,7 +7,6 @@ import type {
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/solid/hover-card";
 import type { HoverCardProps as BaseHoverCardRootProps } from "@pisagor/props";
 import { hoverCardRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
@@ -76,7 +75,7 @@ export function HoverCardContent(props: HoverCardContentProps): JSX.Element {
       <HoverCardPrimitive.Positioner>
         <HoverCardPrimitive.Content
           {...rest}
-          class={slots.content({ class: cn(local.class) })}
+          class={slots.content({ class: local.class })}
         >
           {local.children}
           <HoverCardArrow />

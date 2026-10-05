@@ -5,9 +5,8 @@ import { inputGroupTextRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAttributes<HTMLSpanElement>, "class"> & {
+type Props = HTMLAttributes<HTMLSpanElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 } & BaseInputGroupTextProps;
 
 let {

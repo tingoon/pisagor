@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Button, Drawer } from "@pisagor/solid";
 export function SwipeDirections() {
   return (

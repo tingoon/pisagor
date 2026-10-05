@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Button, ColorPicker } from "@pisagor/solid";
 export function PopoverDisabled() {
   return (

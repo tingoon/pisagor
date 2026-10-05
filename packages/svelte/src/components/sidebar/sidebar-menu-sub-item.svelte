@@ -4,9 +4,8 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useSidebar } from "./sidebar.context";
 
-type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> & {
+type Props = HTMLAttributes<HTMLLIElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 };
 
 let { class: className, children, ...rest }: Props = $props();

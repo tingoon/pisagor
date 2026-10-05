@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Button, DropdownMenu } from "@pisagor/solid";
 export function WithScroll() {
   const items = Array.from({ length: 15 }, (_, i) => `Item ${i + 1}`);

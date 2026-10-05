@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
 import { buttonGroupRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { Separator, type SeparatorProps } from "../separator";
@@ -27,7 +26,7 @@ export function ButtonGroupRoot(props: ButtonGroupProps): JSX.Element {
     <ButtonGroupContext value={{ slots: slots() }}>
       <ark.fieldset
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-orientation={local.orientation}
         data-part="root"
         data-scope="button-group"
@@ -45,7 +44,7 @@ export function ButtonGroupText(props: ButtonGroupTextProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.text({ class: cn(local.class) })}
+      class={slots.text({ class: local.class })}
       data-part="text"
       data-scope="button-group"
     />
@@ -59,7 +58,7 @@ export function ButtonGroupSeparator(props: SeparatorProps): JSX.Element {
   return (
     <Separator
       {...rest}
-      class={slots.separator({ class: cn(local.class) })}
+      class={slots.separator({ class: local.class })}
       data-part="separator"
       data-scope="button-group"
       orientation={local.orientation ?? "vertical"}

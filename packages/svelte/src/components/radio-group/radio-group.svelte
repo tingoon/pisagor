@@ -1,6 +1,5 @@
 <script lang="ts">
-import type { RadioGroupProps as BaseRadioGroupProps } from "@pisagor/props";
-import type { Snippet } from "svelte";
+import type { ComponentProps } from "svelte";
 import RadioGroupItem from "./radio-group-item.svelte";
 import RadioGroupRoot from "./radio-group-root.svelte";
 
@@ -9,14 +8,9 @@ type RadioGroupPresetItem = {
   label: string;
   value: string;
 };
-type Props = {
-  class?: string | undefined;
+type Props = ComponentProps<typeof RadioGroupRoot> & {
   items?: RadioGroupPresetItem[];
-  onValueChange?: (value: string | null) => void;
-  orientation?: "horizontal" | "vertical";
-  value?: string | null;
-  children?: Snippet;
-} & BaseRadioGroupProps;
+};
 
 let { items = [], children, ...rest }: Props = $props();
 </script>

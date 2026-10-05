@@ -6,9 +6,8 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAnchorAttributes } from "svelte/elements";
 import { useSidebar } from "./sidebar.context";
 
-type Props = Omit<HTMLAnchorAttributes, "class"> & {
+type Props = HTMLAnchorAttributes & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   isActive?: boolean;
   /**
    * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
@@ -32,10 +31,10 @@ const ctx = useSidebar();
   as="a"
   {...rest}
   class={cn(
-  buttonRecipeProp({ clickEffect: false, size, variant: "ghost" }).base(),
-  ctx.slots.menuSubButton(),
-  className,
-)}
+    buttonRecipeProp({ clickEffect: false, size, variant: "ghost" }).base(),
+    ctx.slots.menuSubButton(),
+    className,
+  )}
   data-active={isActive}
   data-part="menu-sub-button"
   data-scope="sidebar"

@@ -6,9 +6,8 @@ import { useCard } from "./card.context";
 import CardDescription from "./card-description.svelte";
 import CardTitle from "./card-title.svelte";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   description?: string;
   title?: string;
 };

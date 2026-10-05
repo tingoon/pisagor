@@ -1,12 +1,10 @@
-/** @jsxImportSource solid-js */
-
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Button, Checkbox, Skeleton, Table } from "@pisagor/solid";
 import type { ColumnDef } from "@pisagor/solid/data-grid";
 import { DataGrid } from "@pisagor/solid/data-grid";
 import { CaretDownIcon, CaretUpIcon } from "@pisagor/solid/icons";
 import type { JSX } from "solid-js";
-import { createMemo, createSignal } from "solid-js";
+import { createEffect, createMemo, createSignal, onCleanup } from "solid-js";
 
 interface User {
   department: string;
@@ -237,9 +235,13 @@ export function LoadingState() {
   const [isLoading, setIsLoading] = createSignal(true);
   const columns = useUserColumns();
 
-  useEffect(() => {
+  createEffect(() => {
+    if (!isLoading()) {
+      return;
+    }
+
     const timer = window.setTimeout(() => setIsLoading(false), 1200);
-    return () => window.clearTimeout(timer);
+    onCleanup(() => window.clearTimeout(timer));
   });
 
   return (

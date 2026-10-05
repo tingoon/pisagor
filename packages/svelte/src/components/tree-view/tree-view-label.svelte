@@ -1,11 +1,12 @@
 <script lang="ts">
-import type { TreeViewLabelProps } from "@ark-ui/svelte/tree-view";
-import { TreeView as TreeViewPrimitive } from "@ark-ui/svelte/tree-view";
+import {
+  type TreeViewLabelProps,
+  TreeView as TreeViewPrimitive,
+} from "@ark-ui/svelte/tree-view";
 import { cn } from "@pisagor/utils";
 import { useTreeView } from "./tree-view.context";
 
-type Props = Omit<TreeViewLabelProps, "class"> & { class?: string | undefined };
-let { class: className, children, ...rest }: Props = $props();
+let { class: className, children, ...rest }: TreeViewLabelProps = $props();
 const { slots } = useTreeView();
 </script>
 

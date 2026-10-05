@@ -4,10 +4,7 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAnchorAttributes } from "svelte/elements";
 import { useLinkBox } from "./link-box.context";
 
-type Props = Omit<HTMLAnchorAttributes, "class"> & {
-  children?: import("svelte").Snippet;
-  class?: string | undefined;
-};
+type Props = HTMLAnchorAttributes & { children?: import("svelte").Snippet };
 
 let { children, class: className, ...rest }: Props = $props();
 

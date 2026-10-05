@@ -1,4 +1,5 @@
 <script lang="ts">
+import { cn } from "@pisagor/utils";
 import SidebarSimpleIcon from "phosphor-svelte/lib/SidebarSimpleIcon";
 import type { ComponentProps } from "svelte";
 import Button from "../button/button.svelte";
@@ -30,7 +31,7 @@ function handleClick(
 
 <Button
   {...rest}
-  class={ctx.slots.trigger({ class: className })}
+  class={ctx.slots.trigger({ class: cn(className) })}
   data-part="trigger"
   data-scope="sidebar"
   data-sidebar="trigger"

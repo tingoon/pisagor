@@ -6,9 +6,7 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setToolbarContext } from "./toolbar.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title"> & {
-  class?: string | undefined;
-} & BaseToolbarProps;
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "title"> & BaseToolbarProps;
 
 let {
   children,

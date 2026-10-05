@@ -10,8 +10,8 @@ import { ArrowSquareOutIcon } from "@pisagor/svelte/icons";
   <DropdownMenu.Content class="w-40">
     <DropdownMenu.Item value="docs">
       {#snippet asChild(
-  props,
-)}
+        props,
+      )}
         <a
           {...props()}
           href="https://example.com/docs"
@@ -27,8 +27,8 @@ import { ArrowSquareOutIcon } from "@pisagor/svelte/icons";
     </DropdownMenu.Item>
     <DropdownMenu.Item value="components">
       {#snippet asChild(
-  props,
-)}
+        props,
+      )}
         <a {...props()} href="/docs/components">View docs</a>
       {/snippet}
     </DropdownMenu.Item>

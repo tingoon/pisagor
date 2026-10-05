@@ -23,7 +23,8 @@ let { items = [], ...rest }: Props = $props();
 </script>
 
 <TimelineRoot {...rest}>
-  {#each items as item, index (item.id ?? (typeof item.title === "string" ? item.title : index))}
+  {#each items as item, index (item.id ??
+    (typeof item.title === "string" ? item.title : index))}
     <TimelineItem>
       <TimelineSeparator />
       <TimelineIndicator>

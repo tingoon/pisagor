@@ -1,5 +1,6 @@
 <script lang="ts">
 import { Card, Marquee } from "@pisagor/svelte";
+import { marqueeIcons } from "./marquee-icon-row.svelte";
 </script>
 
 <Marquee.Root>

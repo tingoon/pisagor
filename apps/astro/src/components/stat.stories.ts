@@ -1,4 +1,5 @@
-import { Stat } from "@pisagor/astro/stat";
+import { Stat } from "@pisagor/astro";
+import * as Examples from "#/astro/examples/stat";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -21,4 +22,16 @@ export const Playground = meta.story({
     value: "$45,231.89",
   },
   tags: ["autodocs"],
+});
+
+export const Default = meta.story({
+  render: () => ({ component: Examples.Default }),
+});
+
+export const Variants = meta.story({
+  render: () => ({ component: Examples.Variants }),
+});
+
+export const WithTrend = meta.story({
+  render: () => ({ component: Examples.WithTrend }),
 });

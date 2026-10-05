@@ -1,15 +1,13 @@
 <script lang="ts">
-import type { PaginationEllipsisProps } from "@ark-ui/svelte/pagination";
-import { Pagination as PaginationPrimitive } from "@ark-ui/svelte/pagination";
+import {
+  type PaginationEllipsisProps,
+  Pagination as PaginationPrimitive,
+} from "@ark-ui/svelte/pagination";
 import { cn } from "@pisagor/utils";
 import DotsThreeIcon from "phosphor-svelte/lib/DotsThreeIcon";
 import { usePagination } from "./pagination.context";
 
-type Props = Omit<PaginationEllipsisProps, "class"> & {
-  class?: string | undefined;
-};
-
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: PaginationEllipsisProps = $props();
 const { slots } = usePagination();
 </script>
 

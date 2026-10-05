@@ -1,5 +1,6 @@
 <script lang="ts">
-import { Button, Tour, type TourStepDetails } from "@pisagor/svelte";
+import { buttonRecipe } from "@pisagor/recipes";
+import { Tour, type TourStepDetails } from "@pisagor/svelte";
 
 const steps: TourStepDetails[] = [
   {
@@ -22,13 +23,9 @@ const steps: TourStepDetails[] = [
 </script>
 
 <Tour {steps}>
-  <Tour.Trigger>
-    {#snippet asChild(
-  props,
-)}
-      <Button {...props()} variant="outline">Open</Button>
-    {/snippet}
-  </Tour.Trigger>
+  <Tour.Trigger class={buttonRecipe({ variant: "outline" }).base()}
+    >Open</Tour.Trigger
+  >
   <Tour.Content class="[--space:--spacing(2)]">
     <Tour.Header>
       <Tour.ProgressText />

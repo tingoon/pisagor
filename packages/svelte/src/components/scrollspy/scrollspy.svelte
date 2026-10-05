@@ -7,8 +7,7 @@ import type { HTMLAttributes } from "svelte/elements";
 
 type ScrollTarget = HTMLElement | Document | null | undefined;
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
-  class?: string | undefined;
+type Props = HTMLAttributes<HTMLElement> & {
   history?: boolean;
   offset?: number;
   onUpdate?: (id: string) => void;

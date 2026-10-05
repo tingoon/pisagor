@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Stat } from "@pisagor/solid";
 import { ArrowDownIcon, ArrowUpIcon } from "@pisagor/solid/icons";
 

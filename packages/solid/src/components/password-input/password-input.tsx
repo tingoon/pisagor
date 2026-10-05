@@ -7,7 +7,6 @@ import {
 } from "@ark-ui/solid/password-input";
 import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
 import { passwordInputRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { useClearableInput } from "../../hooks";
@@ -116,7 +115,7 @@ export function PasswordInput(props: PasswordInputProps): JSX.Element {
 
   return (
     <PasswordInputPrimitive.Root
-      class={slots().base({ class: cn(local.class) })}
+      class={slots().base({ class: local.class })}
       data-size={size()}
       defaultVisible={local.defaultVisible}
       invalid={local.invalid}

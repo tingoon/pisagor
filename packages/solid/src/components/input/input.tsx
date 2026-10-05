@@ -122,7 +122,7 @@ export function Input(props: InputProps): JSX.Element {
         <InputPrimitive
           {...rest}
           class={rootRecipeFn()({
-            class: cn(local.class),
+            class: local.class,
             size: size(),
             ...shellArgs(),
           })}

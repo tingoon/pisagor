@@ -1,7 +1,12 @@
 <script lang="ts">
 import { ideLayoutBlock } from "@pisagor/recipes/blocks/editors";
-import { Button, createTreeCollection, Tabs, TreeView } from "@pisagor/svelte";
-import type { TreeNodeType } from "@pisagor/svelte/tree-view";
+import {
+  Button,
+  createTreeCollection,
+  Tabs,
+  type TreeNodeType,
+  TreeView,
+} from "@pisagor/svelte";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
 
@@ -75,7 +80,11 @@ function handleSelectNode(selectedNodes: TreeNodeType[]) {
   <div class={styles.sidebar()}>
     <TreeView
       {collection}
-      onSelectionChange={({ selectedNodes }) => handleSelectNode(selectedNodes)}
+      onSelectionChange={({
+        selectedNodes,
+      }: {
+        selectedNodes: TreeNodeType[];
+      }) => handleSelectNode(selectedNodes)}
     >
       <TreeView.Tree>
         {#each collection.rootNode.children ?? [] as node, index}

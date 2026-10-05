@@ -1,6 +1,6 @@
 <script lang="ts">
 import { cn } from "@pisagor/utils";
-import { onDestroy } from "svelte";
+import { onDestroy, untrack } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { Resizable } from "../resizable";
 import type {
@@ -16,9 +16,8 @@ import {
   regionVarFor,
 } from "./region";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class" | "style"> & {
+type Props = Omit<HTMLAttributes<HTMLElement>, "style"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   /**
    * Grid column side for the panel.
    * @defaultValue "start"
@@ -65,7 +64,7 @@ const resizableProps = $derived(
   mergeResizableProps(ctx.defaultPanelResizableProps, resizablePropsProp),
 );
 const regionVar = $derived(regionVarFor(placement, "panel"));
-let widthPx = $state(defaultWidth);
+let widthPx = $state(untrack(() => defaultWidth));
 
 function setOpen(value: boolean | ((current: boolean) => boolean)) {
   const next = typeof value === "function" ? value(open) : value;
@@ -106,12 +105,12 @@ $effect(() => {
 <aside
   {...rest}
   class={cn(
-  ctx.slots.panel(),
-  placement === "start" ? "border-e border-border" : "border-s border-border",
-  regionPositionClasses(ctx.slots, position, "column"),
-  open ? "opacity-100" : "pointer-events-none opacity-0",
-  className,
-)}
+    ctx.slots.panel(),
+    placement === "start" ? "border-e border-border" : "border-s border-border",
+    regionPositionClasses(ctx.slots, position, "column"),
+    open ? "opacity-100" : "pointer-events-none opacity-0",
+    className,
+  )}
   data-part="panel"
   data-placement={placement}
   data-position={position}
@@ -123,7 +122,8 @@ $effect(() => {
     <Resizable.EdgeHandle
       handlePosition={resizableProps.handlePosition}
       label={`Resize ${placement} panel`}
-      onResizeChange={(nextWidth) => ctx.setRegionVar(regionVar, `${nextWidth}px`)}
+      onResizeChange={(nextWidth) =>
+        ctx.setRegionVar(regionVar, `${nextWidth}px`)}
       onResizeEnd={() => ctx.setRegionResizing(false)}
       onResizeStart={() => ctx.setRegionResizing(true)}
       onWidthChange={(w) => (widthPx = w)}

@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Avatar, Button, HoverCard } from "@pisagor/solid";
 
 export function Default() {

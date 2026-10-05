@@ -1,8 +1,5 @@
-import { Badge } from "@pisagor/astro/badge";
-import DefaultExample from "#/astro/examples/badge/default.astro";
-import PillExample from "#/astro/examples/badge/pill.astro";
-import SizesExample from "#/astro/examples/badge/sizes.astro";
-import VariantsExample from "#/astro/examples/badge/variants.astro";
+import { Badge } from "@pisagor/astro";
+import * as Examples from "#/astro/examples/badge";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -26,17 +23,29 @@ export const Playground = meta.story({
 });
 
 export const Default = meta.story({
-  render: () => ({ component: DefaultExample }),
+  render: () => ({ component: Examples.Default }),
 });
 
 export const Sizes = meta.story({
-  render: () => ({ component: SizesExample }),
+  render: () => ({ component: Examples.Sizes }),
 });
 
 export const Variants = meta.story({
-  render: () => ({ component: VariantsExample }),
+  render: () => ({ component: Examples.Variants }),
 });
 
 export const Pill = meta.story({
-  render: () => ({ component: PillExample }),
+  render: () => ({ component: Examples.Pill }),
+});
+
+export const CustomColor = meta.story({
+  render: () => ({ component: Examples.CustomColor }),
+});
+
+export const WithLink = meta.story({
+  render: () => ({ component: Examples.WithLink }),
+});
+
+export const WithSpinner = meta.story({
+  render: () => ({ component: Examples.WithSpinner }),
 });

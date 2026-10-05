@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Field, Input } from "@pisagor/solid";
 export function RequiredField() {
   return (

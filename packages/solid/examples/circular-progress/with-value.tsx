@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { CircularProgress } from "@pisagor/solid";
 
 export function WithValue() {

@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { DatePickerTableBodyProps } from "@ark-ui/svelte/date-picker";
-import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
+import {
+  DatePicker as CalendarPrimitive,
+  type DatePickerTableBodyProps,
+} from "@ark-ui/svelte/date-picker";
 import CalendarTableBody from "./calendar-table-body.svelte";
 import CalendarTableCell from "./calendar-table-cell.svelte";
 import CalendarTableRow from "./calendar-table-row.svelte";
@@ -21,8 +23,8 @@ let { tabIndex, months = 1, ...rest }: Props = $props();
 
 <CalendarPrimitive.Context>
   {#snippet render(
-  calendar,
-)}
+    calendar,
+  )}
     {const offset = calendar().getOffset({ months })}
     <CalendarTableBody {...rest}>
       {#each offset.weeks as week (getWeekRowKey(week))}

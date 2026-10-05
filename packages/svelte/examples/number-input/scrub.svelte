@@ -1,12 +1,8 @@
 <script lang="ts">
-import { NumberInput } from "@pisagor/svelte";
+import { Field, NumberInput } from "@pisagor/svelte";
 </script>
 
-<NumberInput>
-  <NumberInput.Scrubber>Quantity</NumberInput.Scrubber>
-  <NumberInput.Control>
-    <NumberInput.DecrementTrigger />
-    <NumberInput.Input />
-    <NumberInput.IncrementTrigger />
-  </NumberInput.Control>
-</NumberInput>
+<Field>
+  <Field.Label>Quantity</Field.Label>
+  <NumberInput defaultValue="1" />
+</Field>

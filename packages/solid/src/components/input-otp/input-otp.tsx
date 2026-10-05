@@ -6,7 +6,6 @@ import {
 } from "@ark-ui/solid/pin-input";
 import type { InputOtpProps as BaseInputOtpProps } from "@pisagor/props";
 import { inputOtpRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { Input, type InputProps } from "../input/input";
@@ -53,7 +52,7 @@ export function InputOTPRoot(props: InputOTPProps): JSX.Element {
         placeholder={local.placeholder ?? ""}
       >
         <PinInputPrimitive.Control
-          class={slots().control({ class: cn(local.class) })}
+          class={slots().control({ class: local.class })}
         >
           {local.children}
         </PinInputPrimitive.Control>
@@ -72,7 +71,7 @@ export function InputOTPSlot(props: InputOTPSlotProps): JSX.Element {
       {...rest}
       asChild={(inputProps) => (
         <Input
-          {...inputProps({ class: slots.input({ class: cn(local.class) }) })}
+          {...inputProps({ class: slots.input({ class: local.class }) })}
           size={local.size ?? contextSize}
           variant={local.variant ?? contextVariant}
         />
@@ -88,7 +87,7 @@ export function InputOTPSeparator(props: InputOTPSeparatorProps): JSX.Element {
   return (
     <ark.hr
       {...rest}
-      class={slots.separator({ class: cn(local.class) })}
+      class={slots.separator({ class: local.class })}
       data-part="separator"
       data-scope="input-otp"
     />

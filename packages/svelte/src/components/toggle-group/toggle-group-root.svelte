@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { ToggleGroupRootProps as ArkToggleGroupRootProps } from "@ark-ui/svelte/toggle-group";
-import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/svelte/toggle-group";
+import {
+  type ToggleGroupRootProps as ArkToggleGroupRootProps,
+  ToggleGroup as ToggleGroupPrimitive,
+} from "@ark-ui/svelte/toggle-group";
 import type { ToggleGroupProps as BaseToggleGroupProps } from "@pisagor/props";
 import {
   type ButtonVariantProps,
@@ -10,12 +12,8 @@ import {
 import { cn } from "@pisagor/utils";
 import { setToggleGroupContext } from "./toggle-group.context";
 
-type Props = Omit<
-  ArkToggleGroupRootProps,
-  "class" | "onValueChange" | "style"
-> & {
+type Props = Omit<ArkToggleGroupRootProps, "onValueChange" | "style"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   onValueChange?: (value: string[]) => void;
   size?: NonNullable<ToggleVariantProps["size"]>;
   spacing?: number;

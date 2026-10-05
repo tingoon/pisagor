@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Steps } from "@pisagor/solid";
 
 export function Title() {

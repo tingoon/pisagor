@@ -1,15 +1,13 @@
 <script lang="ts">
-import type { SelectClearTriggerProps } from "@ark-ui/svelte/select";
-import { Select as SelectPrimitive } from "@ark-ui/svelte/select";
+import {
+  type SelectClearTriggerProps,
+  Select as SelectPrimitive,
+} from "@ark-ui/svelte/select";
 import { selectRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useSelectRoot } from "./select.context";
 
-type Props = Omit<SelectClearTriggerProps, "class"> & {
-  class?: string | undefined;
-};
-
-let { class: className, children, ...rest }: Props = $props();
+let { class: className, children, ...rest }: SelectClearTriggerProps = $props();
 const ctx = useSelectRoot();
 const slots = $derived(ctx?.slots ?? selectRecipe());
 </script>

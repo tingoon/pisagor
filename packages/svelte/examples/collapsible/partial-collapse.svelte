@@ -5,8 +5,8 @@ import { Button, Collapsible } from "@pisagor/svelte";
 <Collapsible class="w-96" collapsedHeight="50px">
   <Collapsible.Trigger>
     {#snippet asChild(
-  props,
-)}
+      props,
+    )}
       <Button {...props()} class="w-full" variant="outline">
         Read more
         <Collapsible.Indicator />
@@ -32,8 +32,8 @@ import { Button, Collapsible } from "@pisagor/svelte";
     </p>
     <Collapsible.Trigger>
       {#snippet asChild(
-  props,
-)}
+        props,
+      )}
         <Button {...props()} class="w-full" variant="outline">
           Collapse (cannot be focused when collapsed)
           <Collapsible.Indicator />

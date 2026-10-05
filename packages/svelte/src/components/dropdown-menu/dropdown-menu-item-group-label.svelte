@@ -1,15 +1,13 @@
 <script lang="ts">
-import type { MenuItemGroupLabelProps } from "@ark-ui/svelte/menu";
-import { Menu as MenuPrimitive } from "@ark-ui/svelte/menu";
+import {
+  type MenuItemGroupLabelProps,
+  Menu as MenuPrimitive,
+} from "@ark-ui/svelte/menu";
 import { dropdownMenuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useDropdownMenu } from "./dropdown-menu.context";
 
-type Props = Omit<MenuItemGroupLabelProps, "class"> & {
-  class?: string | undefined;
-};
-
-let { class: className, children, ...rest }: Props = $props();
+let { class: className, children, ...rest }: MenuItemGroupLabelProps = $props();
 const context = useDropdownMenu();
 const slots = $derived(context?.slots ?? dropdownMenuRecipe());
 </script>

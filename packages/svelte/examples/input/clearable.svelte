@@ -6,7 +6,7 @@ let value = $state("Hello world");
 
 <Input
   clearable
-  onChange={({ target }) => (value = target.value)}
+  onValueChange={(next) => (value = next)}
   placeholder="Type to search..."
   {value}
 />

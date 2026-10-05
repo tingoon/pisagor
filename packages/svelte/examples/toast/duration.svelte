@@ -28,7 +28,7 @@ function showPersistent() {
 </script>
 
 <div class="flex flex-wrap gap-2">
-  <Button onClick={showShort} variant="outline">2 seconds</Button>
-  <Button onClick={showLong} variant="outline">10 seconds</Button>
-  <Button onClick={showPersistent} variant="outline">Until dismissed</Button>
+  <Button onclick={showShort} variant="outline">2 seconds</Button>
+  <Button onclick={showLong} variant="outline">10 seconds</Button>
+  <Button onclick={showPersistent} variant="outline">Until dismissed</Button>
 </div>

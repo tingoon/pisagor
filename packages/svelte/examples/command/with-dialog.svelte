@@ -14,9 +14,11 @@ const initialItems = [
   { group: "Edit", label: "Copy", shortcut: "⌘C", value: "copy" },
 ];
 let open = $state(false);
-const { contains } = useFilter({ sensitivity: "base" });
+const filters = useFilter({ sensitivity: "base" });
 const { collection, filter } = useListCollection({
-  filter: contains,
+  filter(itemString, filterText) {
+    return filters().contains(itemString, filterText);
+  },
   groupBy: (item) => item.group,
   initialItems,
 });
@@ -25,8 +27,8 @@ const { collection, filter } = useListCollection({
 <Command.Dialog onOpenChange={({ open: next }) => (open = next)} {open}>
   <Command.DialogTrigger>
     {#snippet asChild(
-  props,
-)}
+      props,
+    )}
       <Button {...props()} variant="outline">Open Command Palette</Button>
     {/snippet}
   </Command.DialogTrigger>
@@ -40,7 +42,7 @@ const { collection, filter } = useListCollection({
       <Command.Content>
         <Command.Empty>No results found. Try a different search.</Command.Empty>
         <Command.List>
-          {#each collection.group() as [group, items]}
+          {#each collection().group() as [group, items]}
             <Command.ItemGroup heading={group}>
               {#each items as item}
                 <Command.Item {item}>

@@ -14,9 +14,11 @@ const initialItems = [
   { continent: "Asia", label: "South Korea", value: "kr" },
   { continent: "Asia", label: "China", value: "cn" },
 ];
-const { contains } = useFilter({ sensitivity: "base" });
+const filters = useFilter({ sensitivity: "base" });
 const { collection, filter } = useListCollection({
-  filter: contains,
+  filter(itemString, filterText) {
+    return filters().contains(itemString, filterText);
+  },
   groupBy: (item) => item.continent,
   initialItems,
 });
@@ -29,7 +31,7 @@ const { collection, filter } = useListCollection({
   <Combobox.Input placeholder="Select a timezone" />
   <Combobox.Content class="w-60">
     <Combobox.List>
-      {#each collection.group() as [continent, group]}
+      {#each collection().group() as [continent, group]}
         <Combobox.ItemGroup heading={continent}>
           {#each group as item}
             <Combobox.Item {item}>{item.label}</Combobox.Item>

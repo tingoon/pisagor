@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, DropdownMenu } from "@pisagor/solid";
 import {
   ArrowClockwiseIcon,

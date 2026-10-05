@@ -1,15 +1,16 @@
 <script lang="ts">
-import type { AvatarRootProps } from "@ark-ui/svelte/avatar";
-import { Avatar as AvatarPrimitive } from "@ark-ui/svelte/avatar";
+import {
+  Avatar as AvatarPrimitive,
+  type AvatarRootProps,
+} from "@ark-ui/svelte/avatar";
 import type { AvatarProps as BaseAvatarProps } from "@pisagor/props";
 import { type AvatarRecipeSlot, avatarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import { setAvatarContext } from "./avatar.context";
 
-type Props = Omit<AvatarRootProps, "class" | "children"> & {
+type Props = Omit<AvatarRootProps, "children"> & {
   alt?: string;
-  class?: string | undefined;
   classNames?: Partial<Record<AvatarRecipeSlot, string>>;
   fallback?: string | Snippet;
   src?: string;
@@ -45,13 +46,13 @@ setAvatarContext({
   {#if src}
     <AvatarPrimitive.Image
       {alt}
-      class={slots.image({ class: cn(classNames?.image) })}
+      class={slots.image({ class: classNames?.image })}
       {src}
     />
   {/if}
   {#if fallback !== undefined}
     <AvatarPrimitive.Fallback
-      class={slots.fallback({ class: cn(classNames?.fallback) })}
+      class={slots.fallback({ class: classNames?.fallback })}
     >
       {#if typeof fallback === "string"}
         {fallback}

@@ -4,9 +4,8 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useAnnouncement } from "./announcement.context";
 
-type Props = Omit<HTMLAttributes<HTMLSpanElement>, "class"> & {
+type Props = HTMLAttributes<HTMLSpanElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 };
 
 let { children, class: className, ...rest }: Props = $props();

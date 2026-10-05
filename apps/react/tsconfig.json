@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "jsx": "react-jsx",
-    "noUncheckedSideEffectImports": false,
     "paths": {
       "#/react-form/examples/*": ["../../packages/react-form/examples/*"],
       "#/react/examples/*": ["../../packages/react/examples/*"],

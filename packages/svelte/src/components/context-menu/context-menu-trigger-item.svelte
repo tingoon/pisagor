@@ -2,8 +2,7 @@
 import type { ComponentProps } from "svelte";
 import DropdownPart from "../dropdown-menu/dropdown-menu-trigger-item.svelte";
 
-type Props = ComponentProps<typeof DropdownPart>;
-let props: Props = $props();
+let props: ComponentProps<typeof DropdownPart> = $props();
 </script>
 
 <DropdownPart {...props} />

@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Select, Table } from "@pisagor/solid";
 import type { ColumnDef } from "@pisagor/solid/data-grid";
@@ -174,7 +172,7 @@ export function GroupedRows() {
         getRowId={(row: User) => row.id}
         onExpandedChange={setExpanded}
         onGroupingChange={setGrouping}
-        state={{ expanded: expanded(), grouping }}
+        state={{ expanded: expanded(), grouping: grouping() }}
       >
         <DataGrid.Toolbar>
           <div class="flex flex-wrap items-center gap-2">

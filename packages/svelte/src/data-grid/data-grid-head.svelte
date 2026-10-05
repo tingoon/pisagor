@@ -46,9 +46,9 @@ function sizeStyle(column: {
       <Table.Head
         {...rest}
         class={slots.head({
-  class: cn(filter && slots.filterHead(), className),
-  sizing: sizingEnabled,
-})}
+          class: cn(filter && slots.filterHead(), className),
+          sizing: sizingEnabled,
+        })}
         data-part="head"
         data-scope="data-grid"
         style={[sizeStyle(header.column), style].filter(Boolean).join("; ")}
@@ -70,9 +70,9 @@ function sizeStyle(column: {
       <Table.Head
         {...rest}
         class={slots.head({
-  class: cn(filter && slots.filterHead(), className),
-  sizing: sizingEnabled,
-})}
+          class: cn(filter && slots.filterHead(), className),
+          sizing: sizingEnabled,
+        })}
         data-part="head"
         data-scope="data-grid"
         style={[sizeStyle(header.column), style].filter(Boolean).join("; ")}

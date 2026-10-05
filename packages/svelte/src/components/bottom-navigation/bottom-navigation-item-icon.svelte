@@ -4,10 +4,11 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useBottomNavigationItem } from "./bottom-navigation.context";
 
-type Props = Omit<HTMLAttributes<HTMLSpanElement>, "class"> & {
-  class?: string | undefined;
-};
-let { class: className, children, ...rest }: Props = $props();
+let {
+  class: className,
+  children,
+  ...rest
+}: HTMLAttributes<HTMLSpanElement> = $props();
 const { slots } = useBottomNavigationItem();
 </script>
 

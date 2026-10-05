@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { useTagsInput } from "@ark-ui/solid/tags-input";
@@ -18,9 +17,9 @@ export function WithCombobox() {
   ];
   const uid = createUniqueId();
 
-  const { contains } = useFilter({ sensitivity: "base" });
+  const filterFn = useFilter({ sensitivity: "base" });
   const { collection, filter } = useListCollection({
-    filter: contains,
+    filter: filterFn().contains,
     initialItems: frameworkItems,
   });
 

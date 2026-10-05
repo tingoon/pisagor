@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { CircularProgress, Field } from "@pisagor/solid";
 export function Indeterminate() {
   return (

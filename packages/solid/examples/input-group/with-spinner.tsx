@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { InputGroup, Spinner } from "@pisagor/solid";
 export function WithSpinner() {
   return (

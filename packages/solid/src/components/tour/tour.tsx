@@ -140,7 +140,7 @@ export function TourContent(props: TourContentProps): JSX.Element {
       <TourPositioner>
         <TourPrimitive.Content
           {...rest}
-          class={slots.content({ class: cn(local.class) })}
+          class={slots.content({ class: local.class })}
         >
           <Show
             fallback={
@@ -193,7 +193,7 @@ export function TourBody(props: DialogBodyProps): JSX.Element {
     <ScrollArea scrollFade={local.scrollFade ?? false}>
       <ark.div
         {...rest}
-        class={dialogSlots.body({ class: cn(local.class) })}
+        class={dialogSlots.body({ class: local.class })}
         data-part="body"
         data-scope="tour"
       />
@@ -213,7 +213,7 @@ export function TourHeader(props: DialogHeaderProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={dialogSlots.header({ class: cn(local.class) })}
+      class={dialogSlots.header({ class: local.class })}
       data-part="header"
       data-scope="tour"
     >
@@ -227,10 +227,7 @@ export function TourTitle(props: TourTitleProps): JSX.Element {
   const { slots, tour } = useTourContext();
 
   return (
-    <TourPrimitive.Title
-      {...rest}
-      class={slots.title({ class: cn(local.class) })}
-    >
+    <TourPrimitive.Title {...rest} class={slots.title({ class: local.class })}>
       {tour().step?.title}
     </TourPrimitive.Title>
   );
@@ -243,7 +240,7 @@ export function TourDescription(props: TourDescriptionProps): JSX.Element {
   return (
     <TourPrimitive.Description
       {...rest}
-      class={slots.description({ class: cn(local.class) })}
+      class={slots.description({ class: local.class })}
     >
       {tour().step?.description}
     </TourPrimitive.Description>
@@ -257,7 +254,7 @@ export function TourProgressText(props: TourProgressTextProps): JSX.Element {
   return (
     <TourPrimitive.ProgressText
       {...rest}
-      class={slots.progressText({ class: cn(local.class) })}
+      class={slots.progressText({ class: local.class })}
     >
       {tour().getProgressText()}
     </TourPrimitive.ProgressText>
@@ -278,7 +275,7 @@ export function TourFooter(props: DialogFooterProps): JSX.Element {
       asChild={(controlProps) => (
         <ark.div
           {...controlProps({
-            class: dialogSlots.footer({ class: cn(local.class) }),
+            class: dialogSlots.footer({ class: local.class }),
           })}
           data-part="control"
           data-scope="tour"
@@ -305,7 +302,7 @@ export function TourActions(props: DialogFooterProps): JSX.Element {
             {...controlProps({
               class: cn(
                 dialogSlots.footer(),
-                slots.actions({ class: cn(local.class) }),
+                slots.actions({ class: local.class }),
               ),
             })}
             data-part="actions"

@@ -58,7 +58,7 @@ export function EditableRoot(props: EditableProps): JSX.Element {
     <EditableContext value={{ slots: slots() }}>
       <EditablePrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-orientation={orientation()}
         defaultValue={local.defaultValue}
         onValueChange={

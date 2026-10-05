@@ -1,9 +1,10 @@
 <script lang="ts">
-import type { EditableSubmitTriggerProps } from "@ark-ui/svelte/editable";
-import { Editable as EditablePrimitive } from "@ark-ui/svelte/editable";
+import {
+  Editable as EditablePrimitive,
+  type EditableSubmitTriggerProps,
+} from "@ark-ui/svelte/editable";
 
-type Props = EditableSubmitTriggerProps;
-let { children, ...rest }: Props = $props();
+let { children, ...rest }: EditableSubmitTriggerProps = $props();
 </script>
 
 <EditablePrimitive.SubmitTrigger {...rest}>

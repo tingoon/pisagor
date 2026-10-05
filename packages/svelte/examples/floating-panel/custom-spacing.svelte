@@ -18,8 +18,8 @@ const collection = createListCollection({
 <FloatingPanel defaultSize={{ height: 300, width: 360 }}>
   <FloatingPanel.Trigger>
     {#snippet asChild(
-  props,
-)}
+      props,
+    )}
       <Button {...props()} variant="outline">Open</Button>
     {/snippet}
   </FloatingPanel.Trigger>
@@ -35,8 +35,8 @@ const collection = createListCollection({
         <FloatingPanel.Restore />
         <FloatingPanel.CloseTrigger>
           {#snippet asChild(
-  props,
-)}
+            props,
+          )}
             <Button {...props()} aria-label="Close" size="icon-xs">
               <XIcon aria-hidden />
             </Button>
@@ -60,13 +60,7 @@ const collection = createListCollection({
       </Field>
       <Field>
         <Field.Label>Font size</Field.Label>
-        <NumberInput class="w-full" defaultValue="16">
-          <NumberInput.Control>
-            <NumberInput.DecrementTrigger />
-            <NumberInput.Input />
-            <NumberInput.IncrementTrigger />
-          </NumberInput.Control>
-        </NumberInput>
+        <NumberInput class="w-full" defaultValue="16" />
       </Field>
     </FloatingPanel.Body>
     <FloatingPanel.Footer>

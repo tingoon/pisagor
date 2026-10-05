@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { FileUploadDropzoneProps as ArkProps } from "@ark-ui/svelte/file-upload";
-import { FileUpload as FileUploadPrimitive } from "@ark-ui/svelte/file-upload";
+import {
+  type FileUploadDropzoneProps as ArkProps,
+  FileUpload as FileUploadPrimitive,
+} from "@ark-ui/svelte/file-upload";
 import { formControlZoneRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -8,10 +10,7 @@ import { useFileUpload } from "./file-upload.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<ArkProps, "class"> & {
-  class?: string | undefined;
-  variant?: FormControlVariant;
-};
+type Props = ArkProps & { variant?: FormControlVariant };
 
 let {
   variant: variantProp,
@@ -27,10 +26,10 @@ const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 <FileUploadPrimitive.Dropzone
   {...rest}
   class={cn(
-  formControlZoneRecipe({ surfaceVariant, variant }),
-  slots.dropzone(),
-  className,
-)}
+    formControlZoneRecipe({ surfaceVariant, variant }),
+    slots.dropzone(),
+    className,
+  )}
   data-variant={variant}
 >
   {@render children?.()}

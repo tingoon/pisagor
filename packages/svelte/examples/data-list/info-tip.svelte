@@ -27,8 +27,8 @@ const data = [
       <Popover modal={false} positioning={{ placement: "top" }}>
         <Popover.Trigger>
           {#snippet asChild(
-  props,
-)}
+            props,
+          )}
             <Button
               {...props()}
               aria-label={`Info about ${item.label}`}

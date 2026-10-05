@@ -1,6 +1,6 @@
-/** @jsxImportSource solid-js */
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Select } from "@pisagor/solid";
+import { For } from "solid-js";
 
 export function Multiple() {
   const renderValue = (value: string[]) => {
@@ -8,7 +8,7 @@ export function Multiple() {
       return "Select languages…";
     }
 
-    const firstValue = value?.at(0) ?? "";
+    const firstValue = value.at(0) ?? "";
     const additionalValues =
       value.length > 1 ? ` (+${value.length - 1} more)` : "";
 
@@ -31,13 +31,13 @@ export function Multiple() {
     >
       <Select.Trigger>
         <Select.ValueText class="capitalize">
-          <Select.Context>{({ value }) => renderValue(value)}</Select.Context>
+          <Select.Context>{(api) => renderValue(api().value)}</Select.Context>
         </Select.ValueText>
       </Select.Trigger>
       <Select.Content>
-        {collection.items.map((item) => (
-          <Select.Item item={item}>{item.label}</Select.Item>
-        ))}
+        <For each={collection.items}>
+          {(item) => <Select.Item item={item}>{item.label}</Select.Item>}
+        </For>
       </Select.Content>
     </Select.Root>
   );

@@ -28,7 +28,7 @@ function onSortingChange(
   {data}
   features={dataGridFeatures}
   {onSortingChange}
-  {sorting}
+  state={{ sorting }}
 >
   <Table>
     <Table.Header>

@@ -155,7 +155,7 @@ export const ImageCropperRoot = defineComponent({
           h(
             ImageCropperPrimitive.Viewport as ArkPart,
             {
-              class: cn(props.recipe().viewport()),
+              class: props.recipe().viewport(),
             },
             () =>
               props.src

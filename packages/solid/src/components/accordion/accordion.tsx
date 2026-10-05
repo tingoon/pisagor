@@ -7,7 +7,6 @@ import {
 } from "@ark-ui/solid/accordion";
 import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
 import { accordionItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
 import { CaretDownIcon } from "../../internal/icons";
@@ -45,7 +44,7 @@ export function AccordionItem(props: AccordionItemProps): JSX.Element {
     <AccordionItemContext value={{ slots: slots() }}>
       <AccordionPrimitive.Item
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
       >
         {local.children}
       </AccordionPrimitive.Item>
@@ -62,7 +61,7 @@ export function AccordionItemTrigger(
   return (
     <AccordionPrimitive.ItemTrigger
       {...rest}
-      class={slots.trigger({ class: cn(local.class) })}
+      class={slots.trigger({ class: local.class })}
     >
       {local.children}
       <AccordionPrimitive.ItemIndicator>
@@ -81,7 +80,7 @@ export function AccordionItemContent(
   return (
     <AccordionPrimitive.ItemContent
       {...rest}
-      class={slots.content({ class: cn(local.class) })}
+      class={slots.content({ class: local.class })}
     >
       <div class={slots.body()}>{local.children}</div>
     </AccordionPrimitive.ItemContent>

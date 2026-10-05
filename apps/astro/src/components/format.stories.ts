@@ -1,7 +1,5 @@
-import { FormatNumber } from "@pisagor/astro/format";
-import DefaultExample from "#/astro/examples/format/default.astro";
-import NumberCompactExample from "#/astro/examples/format/number-compact.astro";
-import RelativeTimeExample from "#/astro/examples/format/relative-time.astro";
+import { FormatNumber } from "@pisagor/astro";
+import * as Examples from "#/astro/examples/format";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -22,13 +20,21 @@ export const Playground = meta.story({
 });
 
 export const Default = meta.story({
-  render: () => ({ component: DefaultExample }),
+  render: () => ({ component: Examples.Default }),
 });
 
 export const NumberCompact = meta.story({
-  render: () => ({ component: NumberCompactExample }),
+  render: () => ({ component: Examples.NumberCompact }),
 });
 
 export const RelativeTime = meta.story({
-  render: () => ({ component: RelativeTimeExample }),
+  render: () => ({ component: Examples.RelativeTime }),
+});
+
+export const Byte = meta.story({
+  render: () => ({ component: Examples.Byte }),
+});
+
+export const NumberCurrency = meta.story({
+  render: () => ({ component: Examples.NumberCurrency }),
 });

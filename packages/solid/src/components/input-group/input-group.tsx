@@ -14,7 +14,7 @@ export function InputGroupInput(props: InputProps): JSX.Element {
   return (
     <Input
       {...rest}
-      class={inputGroupControlRecipe({ class: cn(local.class) })}
+      class={inputGroupControlRecipe({ class: local.class })}
       classNames={{
         ...local.classNames,
         clearableRoot: cn(

@@ -4,9 +4,13 @@ import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
 import type { Snippet } from "svelte";
+import type { ClassValue } from "svelte/elements";
 import { useTourContext } from "./tour.context";
 
-type Props = { children?: Snippet; class?: string | undefined };
+type Props = {
+  class?: ClassValue;
+  children?: Snippet;
+};
 let { children, class: className }: Props = $props();
 const { tour } = useTourContext();
 const prevAction = $derived(
@@ -17,7 +21,10 @@ const prevAction = $derived(
 {#if prevAction}
   <TourPrimitive.ActionTrigger
     action={prevAction}
-    class={cn(buttonRecipe({ size: "sm", variant: "outline" }).base(), className)}
+    class={cn(
+      buttonRecipe({ size: "sm", variant: "outline" }).base(),
+      className,
+    )}
     type="button"
   >
     {#if children}

@@ -5,9 +5,8 @@ import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { useFieldSlots } from "./field.context";
 
-type Props = Omit<HTMLAttributes<HTMLParagraphElement>, "class"> & {
+type Props = HTMLAttributes<HTMLParagraphElement> & {
   children?: Snippet;
-  class?: string | undefined;
 };
 
 let { class: className, children, ...rest }: Props = $props();

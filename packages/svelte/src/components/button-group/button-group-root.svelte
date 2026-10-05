@@ -6,9 +6,8 @@ import { cn } from "@pisagor/utils";
 import type { HTMLFieldsetAttributes } from "svelte/elements";
 import { setButtonGroupContext } from "./button-group.context";
 
-type Props = Omit<HTMLFieldsetAttributes, "class"> & {
+type Props = HTMLFieldsetAttributes & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 } & BaseButtonGroupProps;
 
 let {

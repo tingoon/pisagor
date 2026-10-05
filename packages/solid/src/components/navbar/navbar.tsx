@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { NavbarProps as BaseNavbarRootProps } from "@pisagor/props";
 import { navbarRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { NavbarContext, useNavbar } from "./navbar.context";
@@ -21,7 +20,7 @@ export function NavbarRoot(props: NavbarRootProps): JSX.Element {
     <NavbarContext value={{ slots: slots() }}>
       <ark.header
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-part="root"
         data-scope="navbar"
       >
@@ -37,7 +36,7 @@ export function NavbarBrand(props: NavbarPartProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.brand({ class: cn(local.class) })}
+      class={slots.brand({ class: local.class })}
       data-part="brand"
       data-scope="navbar"
     />
@@ -50,7 +49,7 @@ export function NavbarContent(props: NavbarPartProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.content({ class: cn(local.class) })}
+      class={slots.content({ class: local.class })}
       data-part="content"
       data-scope="navbar"
     />
@@ -64,7 +63,7 @@ export function NavbarNav(props: NavbarNavProps): JSX.Element {
     <ark.nav
       {...rest}
       aria-label={local["aria-label"] ?? "Main"}
-      class={slots.nav({ class: cn(local.class) })}
+      class={slots.nav({ class: local.class })}
       data-part="nav"
       data-scope="navbar"
     />
@@ -77,7 +76,7 @@ export function NavbarActions(props: NavbarPartProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.actions({ class: cn(local.class) })}
+      class={slots.actions({ class: local.class })}
       data-part="actions"
       data-scope="navbar"
     />

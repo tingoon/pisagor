@@ -1,9 +1,10 @@
 <script lang="ts">
-import type { DialogCloseTriggerProps } from "@ark-ui/svelte/dialog";
-import { Dialog as DialogPrimitive } from "@ark-ui/svelte/dialog";
+import {
+  type DialogCloseTriggerProps,
+  Dialog as DialogPrimitive,
+} from "@ark-ui/svelte/dialog";
 
-type Props = DialogCloseTriggerProps;
-let { children, ...rest }: Props = $props();
+let { children, ...rest }: DialogCloseTriggerProps = $props();
 </script>
 
 <DialogPrimitive.CloseTrigger {...rest}>

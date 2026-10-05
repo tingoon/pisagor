@@ -10,7 +10,7 @@ let hoverValue = $state<string | null>(null);
   {#each pages as page}
     <SegmentGroup.Item
       class="px-2 py-1.5 text-sm"
-      onClick={() => (value = page)}
+      onclick={() => (value = page)}
       onmouseenter={() => (hoverValue = page)}
       onmouseleave={() => (hoverValue = null)}
       value={page}

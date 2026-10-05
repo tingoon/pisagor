@@ -1,9 +1,7 @@
 <script lang="ts">
 import { createListCollection } from "@ark-ui/svelte/collection";
 import { tagsWithComboboxBlock } from "@pisagor/recipes/blocks/tags-input";
-import { Combobox } from "@pisagor/svelte/combobox";
-import { Field } from "@pisagor/svelte/field";
-import { TagsInput } from "@pisagor/svelte/tags-input";
+import { Combobox, Field, TagsInput } from "@pisagor/svelte";
 
 const styles = tagsWithComboboxBlock();
 
@@ -32,18 +30,18 @@ const collection = $derived(
   <Combobox.Root
     allowCustomValue
     {collection}
-    onValueChange={(value) => {
-  const next = value[0];
-  if (next && !tags.includes(next)) {
-    tags = [...tags, next];
-  }
-}}
+    onValueChange={(value: string[]) => {
+      const next = value[0];
+      if (next && !tags.includes(next)) {
+        tags = [...tags, next];
+      }
+    }}
     selectionBehavior="clear"
     value={[]}
   >
     <TagsInput
       class={styles.root()}
-      onValueChange={(v) => (tags = v)}
+      onValueChange={(v: string[]) => (tags = v)}
       placeholder="Search framework"
       value={tags}
     />

@@ -3,13 +3,17 @@ import { Ark } from "@ark-ui/svelte/factory";
 import type { HTMLButtonAttributes } from "svelte/elements";
 import { useActionBar } from "./action-bar.context";
 
-type Props = Omit<HTMLButtonAttributes, "class"> & {
-  class?: string | undefined;
-};
-let { onclick, class: className, children, ...rest }: Props = $props();
+let {
+  onclick,
+  class: className,
+  children,
+  ...rest
+}: HTMLButtonAttributes = $props();
 const ctx = useActionBar();
 
-function handleClick(e: Parameters<NonNullable<Props["onclick"]>>[0]) {
+function handleClick(
+  e: Parameters<NonNullable<HTMLButtonAttributes["onclick"]>>[0],
+) {
   ctx.onOpen?.();
   onclick?.(e);
 }

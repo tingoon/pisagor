@@ -1,5 +1,5 @@
-import { Button } from "@pisagor/astro/button";
-import { Card } from "@pisagor/astro/card";
+import { Button, Card } from "@pisagor/astro";
+import * as Examples from "#/astro/examples/card";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -45,4 +45,16 @@ export const Playground = meta.story({
     },
   }),
   tags: ["autodocs"],
+});
+
+export const Default = meta.story({
+  render: () => ({ component: Examples.Default }),
+});
+
+export const Icon = meta.story({
+  render: () => ({ component: Examples.Icon }),
+});
+
+export const Product = meta.story({
+  render: () => ({ component: Examples.Product }),
 });

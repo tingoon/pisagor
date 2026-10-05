@@ -1,14 +1,14 @@
 <script lang="ts">
-import type { FieldsetRootProps } from "@ark-ui/svelte/fieldset";
-import { Fieldset as FieldsetPrimitive } from "@ark-ui/svelte/fieldset";
+import {
+  Fieldset as FieldsetPrimitive,
+  type FieldsetRootProps,
+} from "@ark-ui/svelte/fieldset";
 import type { FieldProps as BaseFieldProps } from "@pisagor/props";
 import { fieldRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setFieldContext } from "./field.context";
 
-type Props = Omit<FieldsetRootProps, "class"> & {
-  class?: string | undefined;
-} & BaseFieldProps;
+type Props = FieldsetRootProps & BaseFieldProps;
 
 let {
   recipe = fieldRecipe,

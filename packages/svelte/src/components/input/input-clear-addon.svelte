@@ -1,9 +1,10 @@
 <script lang="ts">
+import type { ClassValue } from "svelte/elements";
 import InputGroupAddon from "../input-group/input-group-addon.svelte";
 import InputClearButton from "./input-clear-button.svelte";
 
 type Props = {
-  class?: string | undefined;
+  class?: ClassValue;
   onClear: () => void;
 };
 

@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Carousel } from "@pisagor/solid";
 import { imageSources } from "./helpers";
 

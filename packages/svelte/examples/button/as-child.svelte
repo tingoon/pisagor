@@ -1,11 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
+import { buttonRecipe } from "@pisagor/recipes";
 </script>
 
-<Button>
-  {#snippet asChild(
-  props,
-)}
-    <a href="/login" {...props()}>Login</a>
-  {/snippet}
-</Button>
+<a class={buttonRecipe().base()} href="/login">Login</a>

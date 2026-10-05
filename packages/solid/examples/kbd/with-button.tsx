@@ -1,7 +1,6 @@
-/** @jsxImportSource solid-js */
-
 import { Button, Kbd } from "@pisagor/solid";
 import { FloppyDiskIcon } from "@pisagor/solid/icons";
+
 export function WithButton() {
   return (
     <Button variant="outline">

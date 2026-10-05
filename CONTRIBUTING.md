@@ -21,7 +21,7 @@ bun run dev
 - React Storybook: http://localhost:4001.
 - Vue Storybook: http://localhost:4002.
 - Astro Storybook: http://localhost:4003.
-- Solid / Svelte: block demos under `apps/solid` and `apps/svelte` (used by the docs site; no Storybook apps yet).
+- Solid / Svelte: stories under `apps/solid` (`solid-stories`) and `apps/svelte` (`svelte-stories`) (used by the docs site; no Storybook apps yet).
 
 ## CI
 

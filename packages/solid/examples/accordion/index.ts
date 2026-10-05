@@ -6,7 +6,8 @@ import multipleRaw from "./multiple.tsx?raw";
 import non_collapsibleRaw from "./non-collapsible.tsx?raw";
 import with_cardRaw from "./with-card.tsx?raw";
 
-export const imports = `import { Accordion } from "@pisagor/solid";`;
+export const imports = `import { Accordion } from "@pisagor/solid";
+import { For, createSignal } from "solid-js";`;
 
 export const sources = {
   Compound: compoundRaw,

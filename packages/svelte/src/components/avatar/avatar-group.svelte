@@ -9,8 +9,7 @@ import { setAvatarGroupContext } from "./avatar-group.context";
 
 type User = { fallback?: string; name?: string; src?: string };
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "children"> & {
-  class?: string | undefined;
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
   max?: number;
   users: User[];
 } & BaseAvatarGroupProps;

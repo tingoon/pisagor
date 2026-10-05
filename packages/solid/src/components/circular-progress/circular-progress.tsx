@@ -10,7 +10,6 @@ import {
   type CircularProgressRecipeSlot,
   circularProgressRecipe,
 } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import type { VariantClassNames } from "../../internal/types";
@@ -59,7 +58,7 @@ function CircularProgressRoot(props: CircularProgressRootProps): JSX.Element {
     <CircularProgressSlotsContext value={{ slots: slots() }}>
       <ProgressPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
       >
         {local.children}
       </ProgressPrimitive.Root>
@@ -73,7 +72,7 @@ function CircularProgressValueWrapper(props: {
 }): JSX.Element {
   const { slots } = useCircularProgressSlots();
   return (
-    <span class={slots.valueWrapper({ class: cn(props.class) })}>
+    <span class={slots.valueWrapper({ class: props.class })}>
       {props.children}
     </span>
   );
@@ -85,7 +84,7 @@ function CircularProgressValue(props: CircularProgressValueProps): JSX.Element {
   return (
     <ProgressPrimitive.ValueText
       {...rest}
-      class={slots.value({ class: cn(local.class) })}
+      class={slots.value({ class: local.class })}
     />
   );
 }
@@ -114,7 +113,7 @@ function CircularProgressTrack(
     <ark.svg
       {...props.trackProps}
       aria-hidden="true"
-      class={slots.track({ class: cn(props.class) })}
+      class={slots.track({ class: props.class })}
       data-part="circle"
       data-scope="circular-progress"
       height={size()}
@@ -130,7 +129,7 @@ function CircularProgressTrack(
         stroke-width={thickness()}
       />
       <circle
-        class={slots.range({ class: cn(props.rangeClassName) })}
+        class={slots.range({ class: props.rangeClassName })}
         cx={size() / 2}
         cy={size() / 2}
         data-part="range"

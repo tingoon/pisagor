@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { TagsInputItemProps as ArkItemProps } from "@ark-ui/svelte/tags-input";
-import { TagsInput as TagsInputPrimitive } from "@ark-ui/svelte/tags-input";
+import {
+  type TagsInputItemProps as ArkItemProps,
+  TagsInput as TagsInputPrimitive,
+} from "@ark-ui/svelte/tags-input";
 import type { TagsInputItemProps as BaseTagsInputItemProps } from "@pisagor/props";
 import { tagsInputItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -10,10 +12,7 @@ import TagsInputItemInput from "./tags-input-item-input.svelte";
 import TagsInputItemPreview from "./tags-input-item-preview.svelte";
 import TagsInputItemText from "./tags-input-item-text.svelte";
 
-type Props = Omit<ArkItemProps, "class"> & {
-  class?: string | undefined;
-  showDelete?: boolean;
-} & BaseTagsInputItemProps;
+type Props = ArkItemProps & { showDelete?: boolean } & BaseTagsInputItemProps;
 
 let {
   showDelete = true,

@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { useHighlight } from "@ark-ui/solid/highlight";
 import { For, Show } from "solid-js";
 

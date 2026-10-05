@@ -18,6 +18,6 @@ function showWithoutId() {
 </script>
 
 <div class="flex gap-2">
-  <Button onClick={showWithId} variant="outline">Toast with id</Button>
-  <Button onClick={showWithoutId} variant="outline">Toast without id</Button>
+  <Button onclick={showWithId} variant="outline">Toast with id</Button>
+  <Button onclick={showWithoutId} variant="outline">Toast without id</Button>
 </div>

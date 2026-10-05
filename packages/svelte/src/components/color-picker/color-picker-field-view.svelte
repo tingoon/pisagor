@@ -1,6 +1,5 @@
 <script lang="ts">
 import { buttonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import EyedropperIcon from "phosphor-svelte/lib/EyedropperIcon";
 import { useColorPicker } from "./color-picker.context";
 import ColorPickerChannelSlider from "./color-picker-channel-slider.svelte";
@@ -16,7 +15,7 @@ const { slots } = useColorPicker();
     <ColorPickerChannelSlider channel="alpha" />
     <ColorPickerEyeDropperTrigger
       aria-label="Eye dropper"
-      class={cn(buttonRecipe({ size: "icon-sm", variant: "outline" }).base())}
+      class={buttonRecipe({ size: "icon-sm", variant: "outline" }).base()}
       type="button"
     >
       <EyedropperIcon />

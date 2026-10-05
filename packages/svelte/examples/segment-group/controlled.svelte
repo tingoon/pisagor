@@ -7,7 +7,7 @@ let value = $state<string | null>("Profile");
 
 <SegmentGroup.Root
   class="rounded-lg"
-  onValueChange={(next) => (value = typeof next === "string" ? next : (next?.value ?? next))}
+  onValueChange={(next) => (value = next)}
   {value}
 >
   {#each items as item}

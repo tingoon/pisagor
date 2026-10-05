@@ -1,16 +1,15 @@
 <script lang="ts">
 import { Portal } from "@ark-ui/svelte/portal";
-import type { TourContentProps as ArkProps } from "@ark-ui/svelte/tour";
-import { Tour as TourPrimitive } from "@ark-ui/svelte/tour";
+import {
+  type TourContentProps as ArkProps,
+  Tour as TourPrimitive,
+} from "@ark-ui/svelte/tour";
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import { useTourContext } from "./tour.context";
 
-type Props = Omit<ArkProps, "class"> & {
-  class?: string | undefined;
-  showCloseButton?: boolean;
-};
+type Props = ArkProps & { showCloseButton?: boolean };
 
 let {
   showCloseButton = true,
@@ -30,7 +29,10 @@ const { slots } = useTourContext();
       {#if showCloseButton}
         <TourPrimitive.CloseTrigger
           aria-label="Close"
-          class={cn(buttonRecipe({ size: "icon-sm", variant: "ghost" }).base(), slots.close())}
+          class={cn(
+            buttonRecipe({ size: "icon-sm", variant: "ghost" }).base(),
+            slots.close(),
+          )}
           type="button"
         >
           <XIcon />

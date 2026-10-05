@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { EmptyStateProps as BaseEmptyStateProps } from "@pisagor/props";
 import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import type { VariantClassNames } from "../../internal/types";
@@ -36,7 +35,7 @@ export function EmptyStateRoot(props: EmptyStateRootProps): JSX.Element {
     <EmptyStateContext value={{ slots: slots() }}>
       <ark.div
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-part="root"
         data-scope="empty-state"
       >
@@ -53,7 +52,7 @@ export function EmptyStateMedia(props: EmptyStateMediaProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.media({ class: cn(local.class) })}
+      class={slots.media({ class: local.class })}
       data-part="media"
       data-scope="empty-state"
     />
@@ -67,7 +66,7 @@ export function EmptyStateTitle(props: EmptyStateTitleProps): JSX.Element {
   return (
     <ark.h3
       {...rest}
-      class={slots.title({ class: cn(local.class) })}
+      class={slots.title({ class: local.class })}
       data-part="title"
       data-scope="empty-state"
     />
@@ -83,7 +82,7 @@ export function EmptyStateDescription(
   return (
     <ark.p
       {...rest}
-      class={slots.description({ class: cn(local.class) })}
+      class={slots.description({ class: local.class })}
       data-part="description"
       data-scope="empty-state"
     />
@@ -97,7 +96,7 @@ export function EmptyStateActions(props: EmptyStateActionsProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.actions({ class: cn(local.class) })}
+      class={slots.actions({ class: local.class })}
       data-part="actions"
       data-scope="empty-state"
     />

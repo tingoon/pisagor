@@ -7,7 +7,6 @@ import {
 } from "@ark-ui/solid/switch";
 import type { SwitchProps as BaseSwitchRootProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import type { VariantClassNames } from "../../internal/types";
@@ -48,7 +47,7 @@ function SwitchRoot(props: SwitchRootProps): JSX.Element {
     <SwitchContext value={{ slots: slots() }}>
       <SwitchPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-variant={variant()}
       >
         {local.children}
@@ -64,7 +63,7 @@ function SwitchControl(props: SwitchControlProps): JSX.Element {
   return (
     <SwitchPrimitive.Control
       {...rest}
-      class={slots.control({ class: cn(local.class) })}
+      class={slots.control({ class: local.class })}
     >
       {local.children}
     </SwitchPrimitive.Control>
@@ -78,7 +77,7 @@ function SwitchThumb(props: SwitchThumbProps): JSX.Element {
   return (
     <SwitchPrimitive.Thumb
       {...rest}
-      class={slots.thumb({ class: cn(local.class) })}
+      class={slots.thumb({ class: local.class })}
     />
   );
 }

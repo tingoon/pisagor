@@ -7,9 +7,8 @@ import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { useSelectRoot } from "./select.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: Snippet;
-  class?: string | undefined;
 };
 
 let { class: className, children, ...rest }: Props = $props();
@@ -19,8 +18,8 @@ const slots = $derived(ctx?.slots ?? selectRecipe());
 
 <SelectPrimitive.Context>
   {#snippet render(
-  select,
-)}
+    select,
+  )}
     {#if select().empty}
       <Ark
         as="div"

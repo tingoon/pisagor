@@ -1,14 +1,14 @@
 <script lang="ts">
-import type { ScrollAreaRootProps } from "@ark-ui/svelte/scroll-area";
-import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/svelte/scroll-area";
+import {
+  ScrollArea as ScrollAreaPrimitive,
+  type ScrollAreaRootProps,
+} from "@ark-ui/svelte/scroll-area";
 import type { ScrollAreaProps as BaseScrollAreaProps } from "@pisagor/props";
 import { scrollAreaRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setScrollAreaContext } from "./scroll-area.context";
 
-type Props = Omit<ScrollAreaRootProps, "class"> & {
-  class?: string | undefined;
-} & BaseScrollAreaProps;
+type Props = ScrollAreaRootProps & BaseScrollAreaProps;
 
 let {
   scrollFade = false,

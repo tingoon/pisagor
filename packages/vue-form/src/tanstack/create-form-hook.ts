@@ -160,26 +160,7 @@ function createFormHook({
     };
   }
 
-  function extendForm(extension: {
-    fieldComponents?: Record<string, Component>;
-    formComponents?: Record<string, Component>;
-  }) {
-    return createFormHook({
-      fieldComponents: {
-        ...fieldComponents,
-        ...extension.fieldComponents,
-      },
-      fieldContext,
-      formComponents: {
-        ...formComponents,
-        ...extension.formComponents,
-      },
-      formContext,
-    });
-  }
-
   return {
-    extendForm,
     useAppForm: useAppFormBase,
     useTypedAppFormContext: useFormContext,
     withFieldGroup,
@@ -191,7 +172,6 @@ const {
   useAppForm: baseUseAppForm,
   withForm,
   withFieldGroup,
-  extendForm,
 } = createFormHook({
   fieldComponents: {
     AutocompleteField,
@@ -256,4 +236,4 @@ export function useAppForm<
   };
 }
 
-export { extendForm, withFieldGroup, withForm };
+export { withFieldGroup, withForm };

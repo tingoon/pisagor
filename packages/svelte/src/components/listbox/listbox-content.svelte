@@ -1,14 +1,12 @@
 <script lang="ts">
-import type { ListboxContentProps } from "@ark-ui/svelte/listbox";
-import { Listbox as ListboxPrimitive } from "@ark-ui/svelte/listbox";
+import {
+  type ListboxContentProps,
+  Listbox as ListboxPrimitive,
+} from "@ark-ui/svelte/listbox";
 import { cn } from "@pisagor/utils";
 import { useListbox } from "./listbox.context";
 
-type Props = Omit<ListboxContentProps, "class"> & {
-  class?: string | undefined;
-};
-
-let { class: className, children, ...rest }: Props = $props();
+let { class: className, children, ...rest }: ListboxContentProps = $props();
 const { slots } = useListbox();
 </script>
 

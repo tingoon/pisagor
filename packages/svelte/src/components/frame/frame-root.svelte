@@ -7,9 +7,8 @@ import type { HTMLAttributes } from "svelte/elements";
 import { setSurfaceContext } from "../surface/surface.context";
 import { setFrameContext } from "./frame.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 } & BaseFrameProps;
 
 let {

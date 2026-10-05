@@ -1,9 +1,8 @@
-/** @jsxImportSource solid-js */
-
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Combobox } from "@pisagor/solid";
-import { createSignal } from "solid-js";
+import { createSignal, For } from "solid-js";
+
 export function Controlled() {
   const initialItems = [
     { label: "Apple", value: "apple" },
@@ -13,10 +12,10 @@ export function Controlled() {
   ];
   const [value, setValue] = createSignal<string | undefined>("banana");
 
-  const { contains } = useFilter({ sensitivity: "base" });
+  const filterFn = useFilter({ sensitivity: "base" });
 
   const { collection, filter } = useListCollection({
-    filter: contains,
+    filter: filterFn().contains,
     initialItems,
   });
 
@@ -24,17 +23,19 @@ export function Controlled() {
     <div class="flex flex-col gap-2">
       <Combobox.Root
         class="w-full"
-        collection={collection}
+        collection={collection()}
         inputValue={value()}
         onInputValueChange={({ inputValue }) => filter(inputValue)}
-        onValueChange={(value) => setValue(value()[0])}
+        onValueChange={(next) => setValue(next[0])}
       >
         <Combobox.Input placeholder="Select a fruit..." />
         <Combobox.Content>
           <Combobox.List>
-            {collection.items.map((item) => (
-              <Combobox.Item item={item}>{item.label}</Combobox.Item>
-            ))}
+            <For each={collection().items}>
+              {(item) => (
+                <Combobox.Item item={item}>{item.label}</Combobox.Item>
+              )}
+            </For>
           </Combobox.List>
         </Combobox.Content>
       </Combobox.Root>

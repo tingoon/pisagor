@@ -5,9 +5,8 @@ import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { useNavigationMenu } from "./navigation-menu.context";
 
-type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> & {
+type Props = HTMLAttributes<HTMLLIElement> & {
   children?: Snippet;
-  class?: string | undefined;
 };
 
 let { class: className, children, ...rest }: Props = $props();

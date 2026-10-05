@@ -1,10 +1,9 @@
-/** @jsxImportSource solid-js */
 import { TextField } from "@pisagor/solid-form";
 
 export function Disabled() {
   return (
     <TextField
-      autoComplete="email"
+      autocomplete="email"
       disabled
       id="text-field-email-disabled"
       label="Email"

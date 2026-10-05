@@ -1,9 +1,5 @@
-import { Button } from "@pisagor/astro/button";
-import DefaultExample from "#/astro/examples/button/default.astro";
-import DisabledExample from "#/astro/examples/button/disabled.astro";
-import LoadingExample from "#/astro/examples/button/loading.astro";
-import SizesExample from "#/astro/examples/button/sizes.astro";
-import VariantsExample from "#/astro/examples/button/variants.astro";
+import { Button } from "@pisagor/astro";
+import * as Examples from "#/astro/examples/button";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -27,21 +23,37 @@ export const Playground = meta.story({
 });
 
 export const Default = meta.story({
-  render: () => ({ component: DefaultExample }),
+  render: () => ({ component: Examples.Default }),
 });
 
 export const Sizes = meta.story({
-  render: () => ({ component: SizesExample }),
+  render: () => ({ component: Examples.Sizes }),
 });
 
 export const Variants = meta.story({
-  render: () => ({ component: VariantsExample }),
+  render: () => ({ component: Examples.Variants }),
 });
 
 export const Loading = meta.story({
-  render: () => ({ component: LoadingExample }),
+  render: () => ({ component: Examples.Loading }),
 });
 
 export const Disabled = meta.story({
-  render: () => ({ component: DisabledExample }),
+  render: () => ({ component: Examples.Disabled }),
+});
+
+export const Icon = meta.story({
+  render: () => ({ component: Examples.Icon }),
+});
+
+export const NoClickEffect = meta.story({
+  render: () => ({ component: Examples.NoClickEffect }),
+});
+
+export const Pill = meta.story({
+  render: () => ({ component: Examples.Pill }),
+});
+
+export const WithIcon = meta.story({
+  render: () => ({ component: Examples.WithIcon }),
 });

@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Badge, Table } from "@pisagor/solid";
 import { type ColumnDef, DataTable } from "@pisagor/solid/data-table";
 import { createMemo } from "solid-js";

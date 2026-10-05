@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { PopoverContentProps as ArkPopoverContentProps } from "@ark-ui/svelte/popover";
-import { Popover as PopoverPrimitive } from "@ark-ui/svelte/popover";
+import {
+  type PopoverContentProps as ArkPopoverContentProps,
+  Popover as PopoverPrimitive,
+} from "@ark-ui/svelte/popover";
 import { Portal } from "@ark-ui/svelte/portal";
 import type { PopoverProps as BasePopoverProps } from "@pisagor/props";
 import { buttonRecipe, popoverRecipe } from "@pisagor/recipes";
@@ -8,8 +10,7 @@ import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import { setPopoverContentContext } from "./popover.context";
 
-type Props = Omit<ArkPopoverContentProps, "class"> & {
-  class?: string | undefined;
+type Props = ArkPopoverContentProps & {
   showCloseButton?: boolean;
 } & BasePopoverProps;
 
@@ -40,7 +41,10 @@ setPopoverContentContext({
       {#if showCloseButton}
         <PopoverPrimitive.CloseTrigger
           aria-label="Close"
-          class={cn(buttonRecipe({ size: "icon-sm", variant: "ghost" }).base(), slots.close())}
+          class={cn(
+            buttonRecipe({ size: "icon-sm", variant: "ghost" }).base(),
+            slots.close(),
+          )}
           type="button"
         >
           <XIcon />

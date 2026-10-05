@@ -2,7 +2,6 @@
 import { useHotkey } from "@ark-ui/svelte/hotkeys";
 import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
 import { actionBarRecipe, buttonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import { setActionBarContext } from "./action-bar.context";
 import ActionBarBody from "./action-bar-body.svelte";
@@ -110,7 +109,7 @@ const hasPreset = $derived(
       <ActionBarBody>
         {#each actions as action (action.label)}
           <button
-            class={cn(buttonRecipe({ size: "sm", variant: "ghost" }).base())}
+            class={buttonRecipe({ size: "sm", variant: "ghost" }).base()}
             disabled={action.disabled}
             onclick={action.onClick}
             type="button"

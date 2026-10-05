@@ -2,7 +2,7 @@
 import { Table } from "@pisagor/svelte";
 import type { RowSelectionState } from "@pisagor/svelte/data-grid";
 import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import { allUsers, userColumns } from "./helpers";
+import { allUsers, type User, userColumns } from "./helpers";
 
 const columns = [...userColumns];
 let rowSelection = $state<RowSelectionState>({ "1": true, "2": true });
@@ -23,8 +23,7 @@ function onRowSelectionChange(
       data={allUsers}
       enableRowSelection
       features={dataGridFeatures}
-      getRowId={(row) => row.id}
-      {globalFilter}
+      getRowId={(row: User) => row.id}
       onGlobalFilterChange={(value) => (globalFilter = value)}
       {onRowSelectionChange}
       state={{ globalFilter, rowSelection }}

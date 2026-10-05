@@ -1,10 +1,11 @@
 <script lang="ts">
 import { cn } from "@pisagor/utils";
+import type { ClassValue } from "svelte/elements";
 import Separator from "../separator/separator.svelte";
 import { useButtonGroup } from "./button-group.context";
 
 type Props = {
-  class?: string | undefined;
+  class?: ClassValue;
   orientation?: "horizontal" | "vertical";
 };
 

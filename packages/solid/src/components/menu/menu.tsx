@@ -42,7 +42,7 @@ export function MenuRoot(props: MenuRootProps): JSX.Element {
       <ark.nav
         {...rest}
         aria-label={local["aria-label"] ?? "Menu"}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-part="root"
         data-scope="menu"
       >
@@ -58,7 +58,7 @@ export function MenuList(props: MenuListProps): JSX.Element {
   return (
     <ark.ul
       {...rest}
-      class={slots.list({ class: cn(local.class) })}
+      class={slots.list({ class: local.class })}
       data-part="list"
       data-scope="menu"
       role="list"
@@ -72,7 +72,7 @@ export function MenuGroup(props: MenuPartProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.group({ class: cn(local.class) })}
+      class={slots.group({ class: local.class })}
       data-part="group"
       data-scope="menu"
       role="group"
@@ -86,7 +86,7 @@ export function MenuGroupLabel(props: MenuGroupLabelProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.groupLabel({ class: cn(local.class) })}
+      class={slots.groupLabel({ class: local.class })}
       data-part="group-label"
       data-scope="menu"
     />
@@ -138,7 +138,7 @@ export function MenuLink(props: MenuLinkProps): JSX.Element {
       <ark.a
         {...rest}
         aria-current={active() ? "page" : undefined}
-        class={slots.link({ class: cn(local.class) })}
+        class={slots.link({ class: local.class })}
         data-active={active()}
         data-part="link"
         data-scope="menu"
@@ -154,7 +154,7 @@ export function MenuSeparator(props: MenuSeparatorProps): JSX.Element {
     <ark.div
       {...rest}
       aria-hidden
-      class={slots.separator({ class: cn(local.class) })}
+      class={slots.separator({ class: local.class })}
       data-part="separator"
       data-scope="menu"
       role="separator"
@@ -168,7 +168,7 @@ export function MenuShortcut(props: MenuShortcutProps): JSX.Element {
   return (
     <ark.span
       {...rest}
-      class={slots.shortcut({ class: cn(local.class) })}
+      class={slots.shortcut({ class: local.class })}
       data-part="shortcut"
       data-scope="menu"
     />

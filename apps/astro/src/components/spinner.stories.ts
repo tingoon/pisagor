@@ -1,6 +1,5 @@
-import { Spinner } from "@pisagor/astro/spinner";
-import DefaultExample from "#/astro/examples/spinner/default.astro";
-import SizesExample from "#/astro/examples/spinner/sizes.astro";
+import { Spinner } from "@pisagor/astro";
+import * as Examples from "#/astro/examples/spinner";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -20,9 +19,9 @@ export const Playground = meta.story({
 });
 
 export const Default = meta.story({
-  render: () => ({ component: DefaultExample }),
+  render: () => ({ component: Examples.Default }),
 });
 
 export const Sizes = meta.story({
-  render: () => ({ component: SizesExample }),
+  render: () => ({ component: Examples.Sizes }),
 });

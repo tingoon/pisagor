@@ -1,13 +1,16 @@
 <script lang="ts">
-import type { AngleSliderMarkerGroupProps } from "@ark-ui/svelte/angle-slider";
-import { AngleSlider as AngleSliderPrimitive } from "@ark-ui/svelte/angle-slider";
+import {
+  type AngleSliderMarkerGroupProps,
+  AngleSlider as AngleSliderPrimitive,
+} from "@ark-ui/svelte/angle-slider";
 import { cn } from "@pisagor/utils";
 import { useCircularSlider } from "./circular-slider.context";
 
-type Props = Omit<AngleSliderMarkerGroupProps, "class"> & {
-  class?: string | undefined;
-};
-let { class: className, children, ...rest }: Props = $props();
+let {
+  class: className,
+  children,
+  ...rest
+}: AngleSliderMarkerGroupProps = $props();
 const { slots } = useCircularSlider();
 </script>
 

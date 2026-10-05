@@ -4,11 +4,7 @@ import type { Action } from "svelte/action";
 import type { HTMLAttributes } from "svelte/elements";
 import { useRichTextEditorState } from "./rich-text-editor.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
-  class?: string | undefined;
-};
-
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
 const ctx = useRichTextEditorState();
 
 const register: Action<HTMLDivElement> = (node) => {

@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Field, SignaturePad } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function ImagePreview() {
@@ -18,11 +16,11 @@ export function ImagePreview() {
           <img
             alt="Your signature as captured from the pad above"
             class="size-full dark:invert"
-            src={imageUrl()}
+            src={imageUrl() ?? undefined}
             style={{
               height: "100%",
               inset: 0,
-              objectFit: "cover",
+              "object-fit": "cover",
               position: "absolute",
               width: "100%",
             }}

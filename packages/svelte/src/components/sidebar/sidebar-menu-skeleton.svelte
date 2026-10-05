@@ -5,8 +5,7 @@ import type { HTMLAttributes } from "svelte/elements";
 import { Skeleton } from "../skeleton";
 import { useSidebar } from "./sidebar.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "style"> & {
-  class?: string | undefined;
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
   showIcon?: boolean;
   style?: string | undefined;
 };

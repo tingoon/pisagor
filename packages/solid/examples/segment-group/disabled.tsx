@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { SegmentGroup } from "@pisagor/solid";
 
 export function Disabled() {

@@ -50,7 +50,7 @@ const id = "password-strength";
       aria-describedby={`${id}-description`}
       autocomplete="new-password"
       {id}
-      oninput={(e) => (password = (e.currentTarget as HTMLInputElement).value)}
+      onValueChange={(value: string) => (password = value)}
       placeholder="Create a strong password"
       value={password}
     />
@@ -64,11 +64,14 @@ const id = "password-strength";
     class={styles.meter()}
     role="progressbar"
   >
-    {#each PASSWORD_REQUIREMENTS as requirement, index}
+    {#each PASSWORD_REQUIREMENTS as _requirement, index}
       <div
         class={passwordStrengthBlock({
-  tone: index < strengthScore ? passwordStrengthTone(strengthScore) : "idle",
-}).segment()}
+          tone:
+            index < strengthScore
+              ? passwordStrengthTone(strengthScore)
+              : "idle",
+        }).segment()}
       ></div>
     {/each}
   </div>

@@ -6,9 +6,7 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setTimelineItemContext } from "./timeline.context";
 
-type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> & {
-  class?: string | undefined;
-} & BaseTimelineItemProps;
+type Props = HTMLAttributes<HTMLLIElement> & BaseTimelineItemProps;
 
 let {
   children,

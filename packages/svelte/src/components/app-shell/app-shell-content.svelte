@@ -3,9 +3,8 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useAppShell } from "./app-shell.context";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
+type Props = HTMLAttributes<HTMLElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 };
 
 let { class: className, children, ...rest }: Props = $props();

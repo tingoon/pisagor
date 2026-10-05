@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { SegmentGroupRootProps as ArkRootProps } from "@ark-ui/svelte/segment-group";
-import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/svelte/segment-group";
+import {
+  type SegmentGroupRootProps as ArkRootProps,
+  SegmentGroup as SegmentGroupPrimitive,
+} from "@ark-ui/svelte/segment-group";
 import type { SegmentGroupProps as BaseSegmentGroupProps } from "@pisagor/props";
 import { segmentGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -9,8 +11,7 @@ import SegmentGroupIndicator from "./segment-group-indicator.svelte";
 
 type SegmentGroupVariant = "default" | "underline";
 
-type Props = Omit<ArkRootProps, "class" | "onValueChange"> & {
-  class?: string | undefined;
+type Props = Omit<ArkRootProps, "onValueChange"> & {
   onValueChange?: (value: string | null) => void;
   variant?: SegmentGroupVariant;
 } & BaseSegmentGroupProps;

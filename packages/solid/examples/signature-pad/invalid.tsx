@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { SignaturePad } from "@pisagor/solid";
 
 export function Invalid() {

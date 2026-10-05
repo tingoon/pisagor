@@ -13,10 +13,8 @@ import ComboboxFieldInput from "../combobox/combobox-field-input.svelte";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { useCommand } from "./command.context";
 
-type Props = Omit<ComboboxInputProps, "class" | "size"> &
-  Pick<FormControlGroupShellVariantProps, "size"> & {
-    class?: string | undefined;
-  };
+type Props = Omit<ComboboxInputProps, "size"> &
+  Pick<FormControlGroupShellVariantProps, "size">;
 
 let { size = "md", class: className, ...rest }: Props = $props();
 const { slots } = useCommand();
@@ -32,9 +30,9 @@ onMount(() => {
 <ComboboxControl class={slots.control()}>
   <div
     class={cn(
-  formControlGroupShellRecipe({ size, surfaceVariant, variant: "primary" }),
-  slots.input({ class: cn(className) }),
-)}
+      formControlGroupShellRecipe({ size, surfaceVariant, variant: "primary" }),
+      slots.input({ class: cn(className) }),
+    )}
     data-part="root"
     data-scope="input-group"
     bind:this={shellEl}

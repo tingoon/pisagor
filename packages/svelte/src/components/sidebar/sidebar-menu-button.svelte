@@ -1,4 +1,5 @@
 <script lang="ts">
+import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "svelte";
 import Button from "../button/button.svelte";
 import Tooltip from "../tooltip/tooltip.svelte";
@@ -49,7 +50,7 @@ const showTooltip = $derived(
   >
     <Button
       {...rest}
-      class={ctx.slots.menuButton({ class: className })}
+      class={ctx.slots.menuButton({ class: cn(className) })}
       {clickEffect}
       data-active={isActive}
       data-part="menu-button"
@@ -65,7 +66,7 @@ const showTooltip = $derived(
 {:else}
   <Button
     {...rest}
-    class={ctx.slots.menuButton({ class: className })}
+    class={ctx.slots.menuButton({ class: cn(className) })}
     {clickEffect}
     data-active={isActive}
     data-part="menu-button"

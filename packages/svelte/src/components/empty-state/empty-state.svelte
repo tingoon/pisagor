@@ -9,12 +9,8 @@ import EmptyStateMedia from "./empty-state-media.svelte";
 import EmptyStateRoot from "./empty-state-root.svelte";
 import EmptyStateTitle from "./empty-state-title.svelte";
 
-type Props = Omit<
-  HTMLAttributes<HTMLDivElement>,
-  "class" | "title" | "children"
-> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "title" | "children"> & {
   actions?: string | Snippet;
-  class?: string | undefined;
   classNames?: Partial<Record<EmptyStateRecipeSlot, string>>;
   description?: string | Snippet;
   media?: Snippet;

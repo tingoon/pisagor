@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Card } from "@pisagor/solid";
 
 export function Default() {

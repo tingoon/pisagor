@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { InputGroup } from "@pisagor/solid";
 import { CopyIcon, FileCodeIcon } from "@pisagor/solid/icons";
 export function AlignBlockStart() {

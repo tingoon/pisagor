@@ -6,9 +6,8 @@ import { usePopoverContent } from "./popover.context";
 import PopoverDescription from "./popover-description.svelte";
 import PopoverTitle from "./popover-title.svelte";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   description?: string;
   title?: string;
 };

@@ -12,9 +12,11 @@ const initialItems = [
 
 let value = $state<string | undefined>("banana");
 
-const { contains } = useFilter({ sensitivity: "base" });
+const filters = useFilter({ sensitivity: "base" });
 const { collection, filter } = useListCollection({
-  filter: contains,
+  filter(itemString, filterText) {
+    return filters().contains(itemString, filterText);
+  },
   initialItems,
 });
 </script>
@@ -24,14 +26,15 @@ const { collection, filter } = useListCollection({
     class="w-full"
     {collection}
     onInputValueChange={({ inputValue }) => filter(inputValue)}
-    onValueChange={(next) => (value = next.at?.(0) ?? (Array.isArray(next) ? next[0] : next))}
+    onValueChange={(next) =>
+      (value = next.at?.(0) ?? (Array.isArray(next) ? next[0] : next))}
     value={value ? [value] : []}
   >
     <Autocomplete.Input placeholder="Select a fruit..." />
     <Autocomplete.Content>
       <Autocomplete.Empty />
       <Autocomplete.List>
-        {#each collection.items as item}
+        {#each collection().items as item}
           <Autocomplete.Item {item}>{item.label}</Autocomplete.Item>
         {/each}
       </Autocomplete.List>

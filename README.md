@@ -32,7 +32,7 @@ Peers (pick the matching framework): `react` ^19 + `react-dom` ^19, `vue` ^3.5, 
 
 Optional form packages: `@pisagor/react-form`, `@pisagor/vue-form`, `@pisagor/solid-form`, `@pisagor/svelte-form` (no Astro form package).
 
-The root barrels for React / Vue / Solid / Svelte export **light** components only. Heavy components are subpath-only: `data-grid`, `data-table`, `rich-text-editor`, `phone-input`. Astro is a static subset with per-component subpaths (e.g. `@pisagor/astro/button`).
+The root barrels for React / Vue / Solid / Svelte export **light** components only. Heavy components are subpath-only: `data-grid`, `data-table`, `rich-text-editor`, `phone-input`. Astro is a static subset on the same light barrel (`@pisagor/astro`).
 
 ## Usage
 

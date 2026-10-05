@@ -3,8 +3,10 @@
  * Renders a package CHANGELOG.md Astro markdown `Content` with docs styling.
  * Omit `Content` to show the empty state (e.g. packages without a changelog yet).
  */
+import type { AstroComponentFactory } from "astro/runtime/server";
+
 interface Props {
-  Content?: (props?: Record<string, unknown>) => unknown;
+  Content?: AstroComponentFactory;
 }
 
 const { Content } = Astro.props;

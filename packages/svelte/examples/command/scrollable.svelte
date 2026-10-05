@@ -31,9 +31,11 @@ const initialItems = [
   },
   { group: "Meta-frameworks", label: "Wasp", value: "wasp" },
 ];
-const { contains } = useFilter({ sensitivity: "base" });
+const filters = useFilter({ sensitivity: "base" });
 const { collection, filter } = useListCollection({
-  filter: contains,
+  filter(itemString, filterText) {
+    return filters().contains(itemString, filterText);
+  },
   groupBy: (item) => item.group,
   initialItems,
 });
@@ -47,7 +49,7 @@ const { collection, filter } = useListCollection({
   <Command.Content>
     <Command.Empty />
     <Command.List>
-      {#each collection.group() as [group, items]}
+      {#each collection().group() as [group, items]}
         <Command.ItemGroup heading={group}>
           {#each items as item}
             <Command.Item {item}>{item.label}</Command.Item>

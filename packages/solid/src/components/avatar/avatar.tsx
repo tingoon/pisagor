@@ -10,7 +10,6 @@ import {
   type AvatarVariantProps,
   avatarRecipe,
 } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import type { VariantClassNames } from "../../internal/types";
@@ -48,7 +47,7 @@ function AvatarRoot(props: AvatarRootProps): JSX.Element {
     <AvatarContext value={{ slots: slots() }}>
       <AvatarPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-shape={shape()}
         data-size={size()}
       >
@@ -64,7 +63,7 @@ function AvatarImage(props: AvatarImageProps): JSX.Element {
   return (
     <AvatarPrimitive.Image
       {...rest}
-      class={slots.image({ class: cn(local.class) })}
+      class={slots.image({ class: local.class })}
     />
   );
 }
@@ -75,7 +74,7 @@ function AvatarFallback(props: AvatarFallbackProps): JSX.Element {
   return (
     <AvatarPrimitive.Fallback
       {...rest}
-      class={slots.fallback({ class: cn(local.class) })}
+      class={slots.fallback({ class: local.class })}
     />
   );
 }

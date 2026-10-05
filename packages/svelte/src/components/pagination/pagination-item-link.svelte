@@ -5,9 +5,8 @@ import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAnchorAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAnchorAttributes, "class" | "href"> & {
+type Props = Omit<HTMLAnchorAttributes, "href"> & {
   children?: Snippet;
-  class?: string | undefined;
   page?: "previous" | "next" | number;
 };
 

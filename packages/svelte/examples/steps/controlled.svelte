@@ -46,12 +46,12 @@ let step = $state(0);
     </Steps.CompletedContent>
   </Steps>
   <div class="flex gap-2">
-    <Button onClick={() => (step = Math.max(0, step - 1))} variant="outline">
+    <Button onclick={() => (step = Math.max(0, step - 1))} variant="outline">
       Back
     </Button>
-    <Button onClick={() => (step = Math.min(items.length, step + 1))}>
+    <Button onclick={() => (step = Math.min(items.length, step + 1))}>
       Next
     </Button>
-    <Button onClick={() => (step = 0)} variant="ghost">Reset</Button>
+    <Button onclick={() => (step = 0)} variant="ghost">Reset</Button>
   </div>
 </div>

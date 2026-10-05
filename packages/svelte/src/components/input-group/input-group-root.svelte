@@ -11,10 +11,9 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<HTMLAttributes<HTMLFieldSetElement>, "class"> &
+type Props = HTMLAttributes<HTMLFieldSetElement> &
   FormControlGroupShellVariantProps & {
     children?: import("svelte").Snippet;
-    class?: string | undefined;
   };
 
 let {
@@ -33,11 +32,11 @@ const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
   as="fieldset"
   {...rest}
   class={formControlGroupShellRecipe({
-  class: cn(inputGroupRootRecipe(), className),
-  size,
-  surfaceVariant,
-  variant,
-})}
+    class: cn(inputGroupRootRecipe(), className),
+    size,
+    surfaceVariant,
+    variant,
+  })}
   data-part="root"
   data-scope="input-group"
   data-size={size}

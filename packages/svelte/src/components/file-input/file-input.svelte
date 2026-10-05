@@ -16,11 +16,10 @@ type FormControlVariant = "primary" | "secondary";
 
 type Props = Omit<
   HTMLInputAttributes,
-  "class" | "defaultValue" | "onChange" | "size" | "type" | "value"
+  "defaultValue" | "onChange" | "size" | "type" | "value"
 > &
   FormControlGroupShellVariantProps & {
     browseLabel?: string;
-    class?: string | undefined;
     invalid?: boolean;
     onFilesChange?: (files: globalThis.File[]) => void;
     onValueChange?: (files: globalThis.File[]) => void;
@@ -85,11 +84,11 @@ function handleChange(event: Event & { currentTarget: HTMLInputElement }) {
 <Ark
   as="fieldset"
   class={formControlGroupShellRecipe({
-  class: cn(slots.root(), className),
-  size,
-  surfaceVariant,
-  variant,
-})}
+    class: cn(slots.root(), className),
+    size,
+    surfaceVariant,
+    variant,
+  })}
   data-disabled={disabled ? true : undefined}
   data-part="root"
   data-scope="file-input"

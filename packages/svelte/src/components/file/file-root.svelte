@@ -6,9 +6,7 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setFileContext } from "./file.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
-  class?: string | undefined;
-} & BaseFileProps;
+type Props = HTMLAttributes<HTMLDivElement> & BaseFileProps;
 
 let {
   children,

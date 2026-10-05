@@ -27,8 +27,8 @@ import PlayIcon from "phosphor-svelte/lib/PlayIcon";
       <Timer.Control class="w-full justify-center">
         <Timer.Reset hidden={false}>
           {#snippet asChild(
-  props,
-)}
+            props,
+          )}
             <Button
               {...props()}
               aria-label="Reset"
@@ -41,8 +41,8 @@ import PlayIcon from "phosphor-svelte/lib/PlayIcon";
         </Timer.Reset>
         <Timer.Pause>
           {#snippet asChild(
-  props,
-)}
+            props,
+          )}
             <Button
               {...props()}
               aria-label="Pause"
@@ -55,8 +55,8 @@ import PlayIcon from "phosphor-svelte/lib/PlayIcon";
         </Timer.Pause>
         <Timer.Play>
           {#snippet asChild(
-  props,
-)}
+            props,
+          )}
             <Button
               {...props()}
               aria-label="Play"

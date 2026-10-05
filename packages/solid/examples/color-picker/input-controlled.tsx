@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { ColorPicker, Input, parseColor } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function InputControlled() {
@@ -13,7 +11,7 @@ export function InputControlled() {
         </ColorPicker.Control>
       </ColorPicker>
       <p class="text-center text-muted-foreground text-sm">
-        {parseColor(value).toString("hex")}
+        {parseColor(value()).toString("hex")}
       </p>
     </div>
   );

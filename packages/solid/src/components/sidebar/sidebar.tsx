@@ -180,7 +180,7 @@ export function SidebarProvider(props: SidebarProviderProps): JSX.Element {
     <SidebarContext value={contextValue}>
       <ark.div
         {...rest}
-        class={slots().wrapper({ class: cn(local.class) })}
+        class={slots().wrapper({ class: local.class })}
         data-part="wrapper"
         data-scope="sidebar"
         style={style()}
@@ -212,7 +212,7 @@ export function SidebarRoot(props: SidebarProps): JSX.Element {
           fallback={
             <ark.div
               {...rest}
-              class={slots.peer({ class: cn(local.class) })}
+              class={slots.peer({ class: local.class })}
               data-collapsible={state() === "collapsed" ? collapsible() : ""}
               data-part="root"
               data-placement={placement()}
@@ -227,7 +227,7 @@ export function SidebarRoot(props: SidebarProps): JSX.Element {
               />
               <ark.div
                 class={slots.container({
-                  class: cn(local.class),
+                  class: local.class,
                   padded: padded(),
                   placement: placement(),
                 })}
@@ -274,7 +274,7 @@ export function SidebarRoot(props: SidebarProps): JSX.Element {
     >
       <ark.div
         {...rest}
-        class={slots.base({ class: cn(local.class) })}
+        class={slots.base({ class: local.class })}
         data-part="root"
         data-scope="sidebar"
       >
@@ -291,7 +291,7 @@ export function SidebarTrigger(props: ButtonProps): JSX.Element {
   return (
     <Button
       {...rest}
-      class={slots.trigger({ class: cn(local.class) })}
+      class={slots.trigger({ class: local.class })}
       data-part="trigger"
       data-scope="sidebar"
       data-sidebar="trigger"
@@ -316,7 +316,7 @@ export function SidebarRail(props: SidebarRailProps): JSX.Element {
     <ark.button
       {...rest}
       aria-label="Toggle sidebar"
-      class={slots.rail({ class: cn(local.class) })}
+      class={slots.rail({ class: local.class })}
       data-part="rail"
       data-scope="sidebar"
       data-sidebar="rail"
@@ -334,7 +334,7 @@ export function SidebarInset(props: SidebarInsetProps): JSX.Element {
   return (
     <ark.main
       {...rest}
-      class={slots.inset({ class: cn(local.class) })}
+      class={slots.inset({ class: local.class })}
       data-part="inset"
       data-scope="sidebar"
     />
@@ -347,7 +347,7 @@ export function SidebarInput(props: InputProps): JSX.Element {
   return (
     <Input
       {...rest}
-      class={slots.input({ class: cn(local.class) })}
+      class={slots.input({ class: local.class })}
       classNames={local.classNames}
       data-sidebar="input"
     />
@@ -360,7 +360,7 @@ export function SidebarHeader(props: SidebarHeaderProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.header({ class: cn(local.class) })}
+      class={slots.header({ class: local.class })}
       data-part="header"
       data-scope="sidebar"
       data-sidebar="header"
@@ -374,7 +374,7 @@ export function SidebarFooter(props: SidebarFooterProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.footer({ class: cn(local.class) })}
+      class={slots.footer({ class: local.class })}
       data-part="footer"
       data-scope="sidebar"
       data-sidebar="footer"
@@ -388,7 +388,7 @@ export function SidebarSeparator(props: SeparatorProps): JSX.Element {
   return (
     <Separator
       {...rest}
-      class={slots.separator({ class: cn(local.class) })}
+      class={slots.separator({ class: local.class })}
       data-part="separator"
       data-scope="sidebar"
       data-sidebar="separator"
@@ -406,7 +406,7 @@ export function SidebarContent(props: SidebarContentProps): JSX.Element {
     >
       <ark.div
         {...rest}
-        class={slots.content({ class: cn(local.class) })}
+        class={slots.content({ class: local.class })}
         data-part="content"
         data-scope="sidebar"
         data-sidebar="content"
@@ -421,7 +421,7 @@ export function SidebarGroup(props: SidebarGroupProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.group({ class: cn(local.class) })}
+      class={slots.group({ class: local.class })}
       data-part="group"
       data-scope="sidebar"
       data-sidebar="group"
@@ -435,7 +435,7 @@ export function SidebarGroupLabel(props: SidebarGroupLabelProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.groupLabel({ class: cn(local.class) })}
+      class={slots.groupLabel({ class: local.class })}
       data-part="group-label"
       data-scope="sidebar"
       data-sidebar="group-label"
@@ -478,7 +478,7 @@ export function SidebarGroupContent(
   return (
     <ark.div
       {...rest}
-      class={slots.groupContent({ class: cn(local.class) })}
+      class={slots.groupContent({ class: local.class })}
       data-part="group-content"
       data-scope="sidebar"
       data-sidebar="group-content"
@@ -492,7 +492,7 @@ export function SidebarMenu(props: SidebarMenuProps): JSX.Element {
   return (
     <ark.ul
       {...rest}
-      class={slots.menu({ class: cn(local.class) })}
+      class={slots.menu({ class: local.class })}
       data-part="menu"
       data-scope="sidebar"
       data-sidebar="menu"
@@ -506,7 +506,7 @@ export function SidebarMenuItem(props: SidebarMenuItemProps): JSX.Element {
   return (
     <ark.li
       {...rest}
-      class={slots.menuItem({ class: cn(local.class) })}
+      class={slots.menuItem({ class: local.class })}
       data-part="menu-item"
       data-scope="sidebar"
       data-sidebar="menu-item"
@@ -530,7 +530,7 @@ export function SidebarMenuButton(props: SidebarMenuButtonProps): JSX.Element {
   const button = (
     <Button
       {...rest}
-      class={slots.menuButton({ class: cn(local.class) })}
+      class={slots.menuButton({ class: local.class })}
       clickEffect={false}
       data-active={local.isActive ?? false}
       data-part="menu-button"
@@ -606,7 +606,7 @@ export function SidebarMenuBadge(props: SidebarMenuBadgeProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.menuBadge({ class: cn(local.class) })}
+      class={slots.menuBadge({ class: local.class })}
       data-part="menu-badge"
       data-scope="sidebar"
       data-sidebar="menu-badge"
@@ -623,7 +623,7 @@ export function SidebarMenuSkeleton(
   return (
     <ark.div
       {...rest}
-      class={slots.menuSkeleton({ class: cn(local.class) })}
+      class={slots.menuSkeleton({ class: local.class })}
       data-part="menu-skeleton"
       data-scope="sidebar"
       data-sidebar="menu-skeleton"
@@ -649,7 +649,7 @@ export function SidebarMenuSub(props: SidebarMenuSubProps): JSX.Element {
   return (
     <ark.ul
       {...rest}
-      class={slots.menuSub({ class: cn(local.class) })}
+      class={slots.menuSub({ class: local.class })}
       data-part="menu-sub"
       data-scope="sidebar"
       data-sidebar="menu-sub"
@@ -665,7 +665,7 @@ export function SidebarMenuSubItem(
   return (
     <ark.li
       {...rest}
-      class={slots.menuSubItem({ class: cn(local.class) })}
+      class={slots.menuSubItem({ class: local.class })}
       data-part="menu-sub-item"
       data-scope="sidebar"
       data-sidebar="menu-sub-item"

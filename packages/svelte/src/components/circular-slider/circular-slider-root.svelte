@@ -13,14 +13,10 @@ import {
 } from "./circular-slider.context";
 import CircularSliderControl from "./circular-slider-control.svelte";
 
-type Props = Omit<
-  AngleSliderRootProps,
-  "class" | "onValueChange" | "children"
-> &
+type Props = Omit<AngleSliderRootProps, "onValueChange" | "children"> &
   Partial<Pick<CircularSliderContextValue, "thickness" | "size">> & {
-    class?: string | undefined;
     children?: import("svelte").Snippet;
-    hiddenInputProps?: Omit<AngleSliderHiddenInputProps, "class">;
+    hiddenInputProps?: AngleSliderHiddenInputProps;
     markers?: boolean | number[];
     markersAtSteps?: boolean;
     onValueChange?: (value: number) => void;

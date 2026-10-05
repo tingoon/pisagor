@@ -12,9 +12,11 @@ const initialItems = [
 
 let value = $state<string | undefined>("banana");
 
-const { contains } = useFilter({ sensitivity: "base" });
+const filters = useFilter({ sensitivity: "base" });
 const { collection, filter } = useListCollection({
-  filter: contains,
+  filter(itemString, filterText) {
+    return filters().contains(itemString, filterText);
+  },
   initialItems,
 });
 
@@ -34,7 +36,7 @@ function onValueChange(next: string | string[]) {
     <Combobox.Input placeholder="Select a fruit..." />
     <Combobox.Content>
       <Combobox.List>
-        {#each collection.items as item}
+        {#each collection().items as item}
           <Combobox.Item {item}>{item.label}</Combobox.Item>
         {/each}
       </Combobox.List>

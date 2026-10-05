@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Calendar, Card, parseDate } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function MultipleMonths() {

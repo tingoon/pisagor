@@ -12,7 +12,6 @@ import {
 } from "@ark-ui/solid/pagination";
 import type { PaginationProps as BasePaginationRootProps } from "@pisagor/props";
 import { paginationRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import {
@@ -41,7 +40,7 @@ export function PaginationRoot(props: PaginationRootProps): JSX.Element {
     <PaginationContext value={{ slots: slots() }}>
       <PaginationPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
       >
         <Show
           fallback={
@@ -101,7 +100,7 @@ export function PaginationItem(props: PaginationItemProps): JSX.Element {
       {...rest}
       asChild={(itemProps) => (
         <Button
-          {...itemProps({ class: slots.item({ class: cn(local.class) }) })}
+          {...itemProps({ class: slots.item({ class: local.class }) })}
           size="icon-md"
           variant="ghost"
         >
@@ -171,7 +170,7 @@ export function PaginationEllipsis(
   return (
     <PaginationPrimitive.Ellipsis
       {...rest}
-      class={slots.ellipsis({ class: cn(local.class) })}
+      class={slots.ellipsis({ class: local.class })}
     >
       <DotsThreeIcon />
     </PaginationPrimitive.Ellipsis>

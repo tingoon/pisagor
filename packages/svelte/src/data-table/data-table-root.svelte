@@ -4,6 +4,8 @@ import { dataTableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { RowData, TableOptions } from "@tanstack/svelte-table";
 import { createTable } from "@tanstack/svelte-table";
+import type { ClassValue } from "svelte/elements";
+import { reactiveTableOptions } from "../utils";
 import { setDataTableContext } from "./data-table.context";
 import {
   type DataTableFeatures,
@@ -11,8 +13,8 @@ import {
 } from "./data-table.features";
 
 type Props = {
+  class?: ClassValue;
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   features?: DataTableFeatures;
 } & Omit<TableOptions<DataTableFeatures, RowData>, "features"> &
   BaseDataTableProps;
@@ -29,16 +31,22 @@ let {
 
 const slots = $derived(recipe());
 
-const table = createTable({
-  ...restOptions,
-  get columns() {
-    return columns;
-  },
-  get data() {
-    return data;
-  },
-  features,
-});
+const table = createTable(
+  reactiveTableOptions(
+    {
+      get columns() {
+        return columns;
+      },
+      get data() {
+        return data;
+      },
+      get features() {
+        return features;
+      },
+    },
+    () => restOptions,
+  ),
+);
 
 setDataTableContext({
   get slots() {

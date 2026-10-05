@@ -52,7 +52,7 @@ function SignaturePadRoot(props: SignaturePadRootProps): JSX.Element {
       <SignaturePadPrimitive.Root
         {...rest}
         aria-invalid={invalid() || undefined}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-invalid={invalid() || undefined}
       >
         {local.children}

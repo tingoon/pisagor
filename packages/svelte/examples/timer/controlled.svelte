@@ -33,8 +33,8 @@ let completed = $state(false);
         <Timer.Control>
           <Timer.Start>
             {#snippet asChild(
-  props,
-)}
+              props,
+            )}
               <Button
                 {...props()}
                 aria-label="Start"
@@ -47,8 +47,8 @@ let completed = $state(false);
           </Timer.Start>
           <Timer.Reset>
             {#snippet asChild(
-  props,
-)}
+              props,
+            )}
               <Button
                 {...props()}
                 aria-label="Reset"

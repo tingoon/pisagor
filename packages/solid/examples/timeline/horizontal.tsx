@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Timeline } from "@pisagor/solid";
 
 export function Horizontal() {

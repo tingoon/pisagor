@@ -1,14 +1,14 @@
 <script lang="ts">
-import type { StepsRootProps } from "@ark-ui/svelte/steps";
-import { Steps as StepsPrimitive } from "@ark-ui/svelte/steps";
+import {
+  Steps as StepsPrimitive,
+  type StepsRootProps,
+} from "@ark-ui/svelte/steps";
 import type { StepsProps as BaseStepsProps } from "@pisagor/props";
 import { stepsRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setStepsContext } from "./steps.context";
 
-type Props = Omit<StepsRootProps, "class"> & {
-  class?: string | undefined;
-} & BaseStepsProps;
+type Props = StepsRootProps & BaseStepsProps;
 
 let {
   recipe = stepsRecipe,

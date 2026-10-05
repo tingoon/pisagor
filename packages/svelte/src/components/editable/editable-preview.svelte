@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { EditablePreviewProps as ArkEditablePreviewProps } from "@ark-ui/svelte/editable";
-import { Editable as EditablePrimitive } from "@ark-ui/svelte/editable";
+import {
+  type EditablePreviewProps as ArkEditablePreviewProps,
+  Editable as EditablePrimitive,
+} from "@ark-ui/svelte/editable";
 import type { ButtonProps } from "@pisagor/props";
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -9,9 +11,8 @@ import { useEditable } from "./editable.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<ArkEditablePreviewProps, "class"> & {
+type Props = ArkEditablePreviewProps & {
   buttonRecipe?: typeof buttonRecipe;
-  class?: string | undefined;
   controlVariant?: FormControlVariant;
   size?: ButtonProps["size"];
   variant?: ButtonProps["variant"];
@@ -47,12 +48,12 @@ const previewShellClass = $derived(
 <EditablePrimitive.Preview
   {...rest}
   class={cn(
-  buttonRecipeProp({ clickEffect: false, size, variant }).base(),
-  previewShellClass,
-  slots.preview(),
-  previewShellClass ? "dark:hover:bg-transparent" : undefined,
-  className,
-)}
+    buttonRecipeProp({ clickEffect: false, size, variant }).base(),
+    previewShellClass,
+    slots.preview(),
+    previewShellClass ? "dark:hover:bg-transparent" : undefined,
+    className,
+  )}
   data-variant={resolvedVariant}
 >
   {@render children?.()}

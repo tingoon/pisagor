@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, Swap } from "@pisagor/solid";
 import { MoonIcon, SunIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";

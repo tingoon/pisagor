@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Field, Listbox } from "@pisagor/solid";
 export function Horizontal() {

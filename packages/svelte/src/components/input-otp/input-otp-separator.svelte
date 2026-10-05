@@ -4,11 +4,7 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useInputOTP } from "./input-otp.context";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
-  class?: string | undefined;
-};
-
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: HTMLAttributes<HTMLElement> = $props();
 
 const { slots } = useInputOTP();
 </script>

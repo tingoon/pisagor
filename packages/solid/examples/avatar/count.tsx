@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Avatar, AvatarGroup } from "@pisagor/solid";
 
 const users = [

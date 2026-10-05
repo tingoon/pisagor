@@ -8,10 +8,9 @@ import type { CalendarTableCellProps as BaseCalendarTableCellProps } from "@pisa
 import { calendarTableCellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
-type Props = Omit<DatePickerTableCellTriggerProps, "class" | "value"> &
-  Pick<DatePickerTableCellProps, "value" | "visibleRange"> & {
-    class?: string | undefined;
-  } & BaseCalendarTableCellProps;
+type Props = Omit<DatePickerTableCellTriggerProps, "value"> &
+  Pick<DatePickerTableCellProps, "value" | "visibleRange"> &
+  BaseCalendarTableCellProps;
 
 let {
   value,

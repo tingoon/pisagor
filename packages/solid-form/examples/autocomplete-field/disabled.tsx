@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { AutocompleteField } from "@pisagor/solid-form";
 import { cityOptions } from "../options";
 

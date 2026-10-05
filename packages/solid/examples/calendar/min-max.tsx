@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Calendar, Card, parseDate } from "@pisagor/solid";
 export function MinMax() {
   return (

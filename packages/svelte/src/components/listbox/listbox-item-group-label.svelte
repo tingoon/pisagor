@@ -1,14 +1,16 @@
 <script lang="ts">
-import type { ListboxItemGroupLabelProps } from "@ark-ui/svelte/listbox";
-import { Listbox as ListboxPrimitive } from "@ark-ui/svelte/listbox";
+import {
+  type ListboxItemGroupLabelProps,
+  Listbox as ListboxPrimitive,
+} from "@ark-ui/svelte/listbox";
 import { cn } from "@pisagor/utils";
 import { useListbox } from "./listbox.context";
 
-type Props = Omit<ListboxItemGroupLabelProps, "class"> & {
-  class?: string | undefined;
-};
-
-let { class: className, children, ...rest }: Props = $props();
+let {
+  class: className,
+  children,
+  ...rest
+}: ListboxItemGroupLabelProps = $props();
 const { slots } = useListbox();
 </script>
 

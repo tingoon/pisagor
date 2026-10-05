@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { ToolbarProps as BaseToolbarProps } from "@pisagor/props";
 import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import type { VariantClassNames } from "../../internal/types";
@@ -33,7 +32,7 @@ export function ToolbarRoot(props: ToolbarRootProps): JSX.Element {
     <ToolbarContext value={{ slots: slots() }}>
       <ark.div
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-part="root"
         data-scope="toolbar"
       >
@@ -49,7 +48,7 @@ export function ToolbarHeading(props: ToolbarHeadingProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.heading({ class: cn(local.class) })}
+      class={slots.heading({ class: local.class })}
       data-part="heading"
       data-scope="toolbar"
     />
@@ -62,7 +61,7 @@ export function ToolbarTitle(props: ToolbarTitleProps): JSX.Element {
   return (
     <ark.h2
       {...rest}
-      class={slots.title({ class: cn(local.class) })}
+      class={slots.title({ class: local.class })}
       data-part="title"
       data-scope="toolbar"
     />
@@ -77,7 +76,7 @@ export function ToolbarDescription(
   return (
     <ark.p
       {...rest}
-      class={slots.description({ class: cn(local.class) })}
+      class={slots.description({ class: local.class })}
       data-part="description"
       data-scope="toolbar"
     />
@@ -90,7 +89,7 @@ export function ToolbarActions(props: ToolbarActionsProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.actions({ class: cn(local.class) })}
+      class={slots.actions({ class: local.class })}
       data-part="actions"
       data-scope="toolbar"
     />

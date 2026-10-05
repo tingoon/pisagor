@@ -5,7 +5,6 @@ export {
   useFormContext,
 } from "./contexts";
 export {
-  extendForm,
   useAppForm,
   withFieldGroup,
   withForm,

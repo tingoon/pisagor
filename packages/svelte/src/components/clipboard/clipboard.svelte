@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { ClipboardRootProps } from "@ark-ui/svelte/clipboard";
-import { Clipboard as ClipboardPrimitive } from "@ark-ui/svelte/clipboard";
+import {
+  Clipboard as ClipboardPrimitive,
+  type ClipboardRootProps,
+} from "@ark-ui/svelte/clipboard";
 import type {
   ClipboardProps as BaseClipboardProps,
   ButtonProps,
@@ -21,18 +23,17 @@ import { setClipboardContext } from "./clipboard.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<ClipboardRootProps, "class" | "children"> & {
+type Props = Omit<ClipboardRootProps, "children"> & {
   buttonAriaLabel?: string;
   buttonSize?: ButtonProps["size"];
   buttonVariant?: ButtonProps["variant"];
   children?: Snippet;
-  class?: string | undefined;
   classNames?: Partial<Record<ClipboardRecipeSlot, string>>;
   controlVariant?: FormControlVariant;
   copiedIcon?: Snippet;
   copyIcon?: Snippet;
   label?: string;
-  labelProps?: Omit<HTMLAttributes<HTMLSpanElement>, "children" | "class">;
+  labelProps?: Omit<HTMLAttributes<HTMLSpanElement>, "children">;
   variant?: "button" | "input" | "value";
 } & BaseClipboardProps;
 
@@ -76,7 +77,7 @@ const shellClassName = $derived(
 {#snippet control()}
   <ClipboardPrimitive.Root {...rest} class={className}>
     <ClipboardPrimitive.Control
-      class={slots.control({ class: cn(classNames?.control) })}
+      class={slots.control({ class: classNames?.control })}
     >
       {#if variant === "input"}
         <ClipboardPrimitive.Input
@@ -93,11 +94,14 @@ const shellClassName = $derived(
       {/if}
       <ClipboardPrimitive.Trigger
         aria-label={buttonAriaLabel}
-        class={buttonRecipe({ size: buttonSize, variant: buttonVariant }).base()}
+        class={buttonRecipe({
+          size: buttonSize,
+          variant: buttonVariant,
+        }).base()}
         type="button"
       >
         <ClipboardPrimitive.Indicator
-          class={slots.indicator({ class: cn(classNames?.indicator) })}
+          class={slots.indicator({ class: classNames?.indicator })}
         >
           {#snippet copied()}
             {#if copiedIcon}
@@ -118,8 +122,8 @@ const shellClassName = $derived(
 {/snippet}
 
 {#if label}
-  <div class={slots.field({ class: cn(classNames?.field) })}>
-    <span {...labelProps} class={slots.label({ class: cn(classNames?.label) })}
+  <div class={slots.field({ class: classNames?.field })}>
+    <span {...labelProps} class={slots.label({ class: classNames?.label })}
       >{label}</span
     >
     {@render control()}

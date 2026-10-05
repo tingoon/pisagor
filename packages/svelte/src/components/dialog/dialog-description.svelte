@@ -1,13 +1,12 @@
 <script lang="ts">
-import type { DialogDescriptionProps } from "@ark-ui/svelte/dialog";
-import { Dialog as DialogPrimitive } from "@ark-ui/svelte/dialog";
+import {
+  type DialogDescriptionProps,
+  Dialog as DialogPrimitive,
+} from "@ark-ui/svelte/dialog";
 import { cn } from "@pisagor/utils";
 import { useDialog } from "./dialog.context";
 
-type Props = Omit<DialogDescriptionProps, "class"> & {
-  class?: string | undefined;
-};
-let { children, class: className, ...rest }: Props = $props();
+let { children, class: className, ...rest }: DialogDescriptionProps = $props();
 const { slots } = useDialog();
 </script>
 

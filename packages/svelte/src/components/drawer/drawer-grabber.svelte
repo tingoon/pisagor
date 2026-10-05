@@ -1,13 +1,13 @@
 <script lang="ts">
-import type { DrawerGrabberProps } from "@ark-ui/svelte/drawer";
-import { Drawer as DrawerPrimitive } from "@ark-ui/svelte/drawer";
+import {
+  type DrawerGrabberProps,
+  Drawer as DrawerPrimitive,
+} from "@ark-ui/svelte/drawer";
 import { Ark } from "@ark-ui/svelte/factory";
 import { cn } from "@pisagor/utils";
 import { useDrawer } from "./drawer.context";
 
-type Props = Omit<DrawerGrabberProps, "class"> & { class?: string | undefined };
-
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: DrawerGrabberProps = $props();
 const { slots } = useDrawer();
 </script>
 

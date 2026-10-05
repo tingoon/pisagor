@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { CheckboxRootProps } from "@ark-ui/svelte/checkbox";
-import { Checkbox as CheckboxPrimitive } from "@ark-ui/svelte/checkbox";
+import {
+  Checkbox as CheckboxPrimitive,
+  type CheckboxRootProps,
+} from "@ark-ui/svelte/checkbox";
 import type { CheckboxProps as BaseCheckboxProps } from "@pisagor/props";
 import { checkboxRecipe, formControlToggleRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -10,11 +12,9 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<CheckboxRootProps, "class"> & {
-  /** Visual shell variant. Defaults to `primary`. */
-  variant?: FormControlVariant;
+type Props = CheckboxRootProps & {
+  /** Visual shell variant. Defaults to `primary`. */ variant?: FormControlVariant;
   onValueChange?: (value: boolean) => void;
-  class?: string | undefined;
   /** Forwarded to the hidden input (Svelte DOM attr). */
   tabindex?: number | null;
 } & BaseCheckboxProps;
@@ -44,11 +44,13 @@ function handleCheckedChange(
 <CheckboxPrimitive.Root
   {...rest}
   class={cn(
-  formControlToggleRecipe({ size: "md", surfaceVariant, variant }),
-  slots.base({ class: cn(className) }),
-)}
+    formControlToggleRecipe({ size: "md", surfaceVariant, variant }),
+    slots.base({ class: cn(className) }),
+  )}
   data-variant={variant}
-  onCheckedChange={onCheckedChange || onValueChange ? handleCheckedChange : undefined}
+  onCheckedChange={onCheckedChange || onValueChange
+    ? handleCheckedChange
+    : undefined}
 >
   <CheckboxPrimitive.Control>
     <CheckboxPrimitive.Indicator class={slots.indicator()}>

@@ -1,18 +1,16 @@
-/** @jsxImportSource solid-js */
-
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Button, Input, Listbox, Popover } from "@pisagor/solid";
 import { CaretUpDownIcon } from "@pisagor/solid/icons";
-import { createSignal } from "solid-js";
+import { createSignal, For } from "solid-js";
 export function WithPopover() {
   const [search, setSearch] = createSignal("");
   const [isOpen, setIsOpen] = createSignal(false);
 
-  const { contains } = useFilter({ sensitivity: "base" });
+  const filterFn = useFilter({ sensitivity: "base" });
 
   const { collection, filter } = useListCollection({
-    filter: contains,
+    filter: filterFn().contains,
     initialItems: [
       { label: "Brazil", value: "br" },
       { label: "Mexico", value: "mx" },
@@ -21,11 +19,11 @@ export function WithPopover() {
     ],
   });
 
-  const isEmpty = collection.items.length === 0 && search;
+  const isEmpty = () => collection().items.length === 0 && search();
 
   return (
     <Listbox.Root
-      collection={collection}
+      collection={collection()}
       onSelect={() => {
         setIsOpen(false);
       }}
@@ -50,16 +48,18 @@ export function WithPopover() {
             value={search()}
           />
           <Listbox.Content>
-            {collection.items.map((item) => (
-              <Listbox.Item item={item}>
-                <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
-              </Listbox.Item>
-            ))}
+            <For each={collection().items}>
+              {(item) => (
+                <Listbox.Item item={item}>
+                  <Listbox.ItemText>{item.label}</Listbox.ItemText>
+                  <Listbox.ItemIndicator />
+                </Listbox.Item>
+              )}
+            </For>
 
-            {isEmpty && (
+            {isEmpty() && (
               <Listbox.Empty>
-                No results found. Try a different search().
+                No results found. Try a different search.
               </Listbox.Empty>
             )}
           </Listbox.Content>

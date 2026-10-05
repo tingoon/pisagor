@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { InputOTP } from "@pisagor/solid";
 
 export function Separator() {

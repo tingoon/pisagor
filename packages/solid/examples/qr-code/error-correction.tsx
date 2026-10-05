@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { QrCode } from "@pisagor/solid";
 
 export function ErrorCorrection() {

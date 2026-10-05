@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Card, Timer } from "@pisagor/solid";
 export function CountdownDate() {
   const formatDate = (date: Date) =>

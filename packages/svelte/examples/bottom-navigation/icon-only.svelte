@@ -10,7 +10,7 @@ import UserIcon from "phosphor-svelte/lib/UserIcon";
   class="flex h-72 flex-col overflow-y-auto rounded-lg border bg-muted shadow-lg/5"
 >
   <ScrollArea>
-    <div class="h-96" />
+    <div class="h-96"></div>
     <BottomNavigation defaultValue="home">
       <BottomNavigation.List class="absolute">
         <BottomNavigation.Item aria-label="Home" value="home">

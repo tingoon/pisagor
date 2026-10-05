@@ -9,11 +9,7 @@ import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setColorPickerContext } from "./color-picker.context";
 
-type Props = Omit<
-  ArkRootProps,
-  "class" | "defaultValue" | "value" | "onValueChange"
-> & {
-  class?: string | undefined;
+type Props = Omit<ArkRootProps, "defaultValue" | "value" | "onValueChange"> & {
   defaultValue?: string;
   onValueChange?: (value: string) => void;
   value?: string;

@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Carousel } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 import { numberedSlides } from "./helpers";

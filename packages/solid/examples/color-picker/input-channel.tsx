@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { ColorPicker, Field, Input, parseColor } from "@pisagor/solid";
 export function InputChannel() {
   return (

@@ -5,9 +5,8 @@ import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAttributes<HTMLSpanElement>, "class"> & {
+type Props = HTMLAttributes<HTMLSpanElement> & {
   children?: Snippet;
-  class?: string | undefined;
 };
 
 let { class: className, children, ...rest }: Props = $props();

@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { LinkBoxProps as BaseLinkBoxRootProps } from "@pisagor/props";
 import { linkBoxRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { LinkBoxContext, useLinkBox } from "./link-box.context";
@@ -20,7 +19,7 @@ export function LinkBoxRoot(props: LinkBoxRootProps): JSX.Element {
     <LinkBoxContext value={{ slots: slots() }}>
       <ark.div
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-part="root"
         data-scope="link-box"
       >
@@ -37,7 +36,7 @@ export function LinkOverlayLink(props: LinkOverlayLinkProps): JSX.Element {
   return (
     <ark.a
       {...rest}
-      class={slots.overlay({ class: cn(local.class) })}
+      class={slots.overlay({ class: local.class })}
       data-part="overlay"
       data-scope="link-box"
     />

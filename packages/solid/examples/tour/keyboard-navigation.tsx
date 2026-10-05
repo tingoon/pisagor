@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour } from "@pisagor/solid";
 import { KeyboardIcon } from "@pisagor/solid/icons";

@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { DrawerRootProps } from "@ark-ui/svelte/drawer";
-import { Drawer as DrawerPrimitive } from "@ark-ui/svelte/drawer";
+import {
+  Drawer as DrawerPrimitive,
+  type DrawerRootProps,
+} from "@ark-ui/svelte/drawer";
 import type { DrawerProps as BaseDrawerProps } from "@pisagor/props";
 import { drawerRecipe } from "@pisagor/recipes";
 import { setDrawerContext } from "./drawer.context";

@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Scrollspy } from "@pisagor/solid";
 
 export function Default() {

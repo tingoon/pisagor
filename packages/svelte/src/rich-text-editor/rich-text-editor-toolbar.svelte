@@ -11,9 +11,8 @@ import Toggle from "../components/toggle/toggle.svelte";
 import VisuallyHidden from "../components/visually-hidden/visually-hidden.svelte";
 import { useRichTextEditorState } from "./rich-text-editor.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
 };
 
 let { children, class: className, ...rest }: Props = $props();
@@ -75,7 +74,8 @@ const orderedList = $derived(
         </Toggle>
         <Toggle
           aria-label="Italic"
-          onPressedChange={() => ctx.editor?.chain().focus().toggleItalic().run()}
+          onPressedChange={() =>
+            ctx.editor?.chain().focus().toggleItalic().run()}
           pressed={italic}
           size="sm"
           variant="ghost"
@@ -85,7 +85,8 @@ const orderedList = $derived(
         </Toggle>
         <Toggle
           aria-label="Strikethrough"
-          onPressedChange={() => ctx.editor?.chain().focus().toggleStrike().run()}
+          onPressedChange={() =>
+            ctx.editor?.chain().focus().toggleStrike().run()}
           pressed={strike}
           size="sm"
           variant="ghost"
@@ -95,7 +96,8 @@ const orderedList = $derived(
         </Toggle>
         <Toggle
           aria-label="Bullet list"
-          onPressedChange={() => ctx.editor?.chain().focus().toggleBulletList().run()}
+          onPressedChange={() =>
+            ctx.editor?.chain().focus().toggleBulletList().run()}
           pressed={bulletList}
           size="sm"
           variant="ghost"
@@ -105,7 +107,8 @@ const orderedList = $derived(
         </Toggle>
         <Toggle
           aria-label="Ordered list"
-          onPressedChange={() => ctx.editor?.chain().focus().toggleOrderedList().run()}
+          onPressedChange={() =>
+            ctx.editor?.chain().focus().toggleOrderedList().run()}
           pressed={orderedList}
           size="sm"
           variant="ghost"

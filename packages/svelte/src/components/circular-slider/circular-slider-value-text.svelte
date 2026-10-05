@@ -7,11 +7,7 @@ import {
 import { cn } from "@pisagor/utils";
 import { useCircularSlider } from "./circular-slider.context";
 
-type Props = Omit<AngleSliderValueTextProps, "class"> & {
-  class?: string | undefined;
-  prefix?: string;
-  suffix?: string;
-};
+type Props = AngleSliderValueTextProps & { prefix?: string; suffix?: string };
 
 let { prefix = "", suffix = "", class: className, ...rest }: Props = $props();
 const api = useAngleSliderContext();

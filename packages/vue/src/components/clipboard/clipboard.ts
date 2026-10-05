@@ -165,7 +165,7 @@ export const Clipboard = defineComponent({
         ClipboardPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(props.class),
+          class: props.class,
           defaultValue: props.defaultValue,
           ids: props.ids,
           modelValue: props.value,

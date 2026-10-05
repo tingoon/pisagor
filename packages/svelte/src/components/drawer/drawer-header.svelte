@@ -7,9 +7,8 @@ import { useDrawer } from "./drawer.context";
 import DrawerDescription from "./drawer-description.svelte";
 import DrawerTitle from "./drawer-title.svelte";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title"> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "title"> & {
   children?: Snippet;
-  class?: string | undefined;
   description?: string;
   title?: string;
 };

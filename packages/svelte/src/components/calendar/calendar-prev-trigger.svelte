@@ -1,16 +1,18 @@
 <script lang="ts">
-import type { DatePickerPrevTriggerProps } from "@ark-ui/svelte/date-picker";
-import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
+import {
+  DatePicker as CalendarPrimitive,
+  type DatePickerPrevTriggerProps,
+} from "@ark-ui/svelte/date-picker";
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
 import { useCalendar } from "./calendar.context";
 
-type Props = Omit<DatePickerPrevTriggerProps, "class"> & {
-  class?: string | undefined;
-};
-
-let { class: className, children, ...rest }: Props = $props();
+let {
+  class: className,
+  children,
+  ...rest
+}: DatePickerPrevTriggerProps = $props();
 const { slots } = useCalendar();
 </script>
 
@@ -18,10 +20,10 @@ const { slots } = useCalendar();
   {...rest}
   aria-label="Previous month"
   class={cn(
-  buttonRecipe({ size: "icon-md", variant: "ghost" }).base(),
-  slots.prevTrigger(),
-  className,
-)}
+    buttonRecipe({ size: "icon-md", variant: "ghost" }).base(),
+    slots.prevTrigger(),
+    className,
+  )}
   type="button"
 >
   {#if children}

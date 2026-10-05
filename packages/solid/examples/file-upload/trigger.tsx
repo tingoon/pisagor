@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, FileUpload } from "@pisagor/solid";
 import { PaperclipIcon } from "@pisagor/solid/icons";
 export function Trigger() {

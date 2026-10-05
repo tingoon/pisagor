@@ -12,9 +12,8 @@ import { setDataListItemContext } from "./data-list.context";
 import DataListItemLabel from "./data-list-item-label.svelte";
 import DataListItemValue from "./data-list-item-value.svelte";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: Snippet;
-  class?: string | undefined;
   classNames?: Partial<Record<DataListItemRecipeSlot, string>>;
   value?: string | Snippet;
 } & BaseDataListItemProps;

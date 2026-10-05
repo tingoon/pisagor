@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Field, Slider } from "@pisagor/solid";
 export function WithLabel() {
   return (

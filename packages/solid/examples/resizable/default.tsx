@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Resizable } from "@pisagor/solid";
 import { cn } from "@pisagor/utils";
 

@@ -11,11 +11,11 @@ const formattedDate = $derived(
 );
 </script>
 
-<DatePicker onValueChange={(details) => (value = details.value ?? [])} {value}>
+<DatePicker onValueChange={(next) => (value = next ?? [])} {value}>
   <DatePicker.Trigger>
     {#snippet asChild(
-  props,
-)}
+      props,
+    )}
       <Button {...props()} variant="outline">
         <CalendarIcon />
         {formattedDate}

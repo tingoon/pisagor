@@ -1,7 +1,7 @@
 ---
+import { Content, getHeadings } from "#/changelog/react";
 import Changelog from "#/components/docs/changelog.astro";
 import DocsLayout from "#/layouts/docs-layout.astro";
-import { Content, getHeadings } from "#/react/CHANGELOG.md";
 
 const headings = getHeadings().filter((heading) => heading.depth === 2);
 ---

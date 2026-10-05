@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { TreeViewItemTextProps as ArkProps } from "@ark-ui/svelte/tree-view";
-import { TreeView as TreeViewPrimitive } from "@ark-ui/svelte/tree-view";
+import {
+  type TreeViewItemTextProps as ArkProps,
+  TreeView as TreeViewPrimitive,
+} from "@ark-ui/svelte/tree-view";
 import { treeViewItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import FileIcon from "phosphor-svelte/lib/FileIcon";
@@ -8,10 +10,7 @@ import type { Component } from "svelte";
 import { useTreeView, useTreeViewItem } from "./tree-view.context";
 import TreeViewNodeInput from "./tree-view-node-input.svelte";
 
-type Props = Omit<ArkProps, "class"> & {
-  class?: string | undefined;
-  icon?: Component;
-};
+type Props = ArkProps & { icon?: Component };
 
 let {
   children,
@@ -35,8 +34,8 @@ function getFileIcon(value: string): Component {
 
 <TreeViewPrimitive.NodeContext>
   {#snippet render(
-  nodeState,
-)}
+    nodeState,
+  )}
     {const state = nodeState()}
     {const ResolvedIcon = getFileIcon(state.value)}
     <span class={slots.icon()} data-part="item-icon" data-scope="tree-view">

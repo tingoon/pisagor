@@ -1,11 +1,12 @@
 <script lang="ts">
-import type { PopoverTitleProps } from "@ark-ui/svelte/popover";
-import { Popover as PopoverPrimitive } from "@ark-ui/svelte/popover";
+import {
+  Popover as PopoverPrimitive,
+  type PopoverTitleProps,
+} from "@ark-ui/svelte/popover";
 import { cn } from "@pisagor/utils";
 import { usePopoverContent } from "./popover.context";
 
-type Props = Omit<PopoverTitleProps, "class"> & { class?: string | undefined };
-let { children, class: className, ...rest }: Props = $props();
+let { children, class: className, ...rest }: PopoverTitleProps = $props();
 const { slots } = usePopoverContent();
 </script>
 

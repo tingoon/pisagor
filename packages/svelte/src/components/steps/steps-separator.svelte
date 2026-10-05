@@ -1,14 +1,12 @@
 <script lang="ts">
-import type { StepsSeparatorProps } from "@ark-ui/svelte/steps";
-import { Steps as StepsPrimitive } from "@ark-ui/svelte/steps";
+import {
+  Steps as StepsPrimitive,
+  type StepsSeparatorProps,
+} from "@ark-ui/svelte/steps";
 import { cn } from "@pisagor/utils";
 import { useStepsItem } from "./steps.context";
 
-type Props = Omit<StepsSeparatorProps, "class"> & {
-  class?: string | undefined;
-};
-
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: StepsSeparatorProps = $props();
 const { slots } = useStepsItem();
 </script>
 

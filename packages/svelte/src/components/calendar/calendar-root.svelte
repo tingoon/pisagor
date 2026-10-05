@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { DatePickerRootProps } from "@ark-ui/svelte/date-picker";
-import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
+import {
+  DatePicker as CalendarPrimitive,
+  type DatePickerRootProps,
+} from "@ark-ui/svelte/date-picker";
 import type { CalendarProps as BaseCalendarProps } from "@pisagor/props";
 import { calendarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -8,8 +10,7 @@ import { setCalendarSlotsContext } from "./calendar.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<DatePickerRootProps, "class"> & {
-  class?: string | undefined;
+type Props = DatePickerRootProps & {
   variant?: FormControlVariant;
 } & BaseCalendarProps;
 

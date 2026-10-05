@@ -22,8 +22,8 @@ let files = $state<File[]>([]);
           </FileUpload.ItemPreview>
           <FileUpload.ItemDeleteTrigger>
             {#snippet asChild(
-  props,
-)}
+              props,
+            )}
               <Button
                 {...props()}
                 aria-label="Remove file"

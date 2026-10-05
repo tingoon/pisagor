@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Accordion, Card } from "@pisagor/solid";
 import { faqItems } from "./helpers";
 

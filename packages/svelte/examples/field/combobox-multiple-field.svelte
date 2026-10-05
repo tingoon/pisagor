@@ -15,10 +15,12 @@ const initialItems = [
   { label: "Peach", value: "peach" },
   { label: "Pear", value: "pear" },
 ];
-const { contains } = useFilter({ sensitivity: "base" });
+const filters = useFilter({ sensitivity: "base" });
 
 const { collection, filter } = useListCollection({
-  filter: contains,
+  filter(itemString, filterText) {
+    return filters().contains(itemString, filterText);
+  },
   initialItems,
 });
 </script>
@@ -33,7 +35,7 @@ const { collection, filter } = useListCollection({
     <Combobox.Input aria-label="Select items" placeholder="Select items…" />
     <Combobox.Content>
       <Combobox.List>
-        {#each collection.items as item}
+        {#each collection().items as item}
           <Combobox.Item {item}>
             {item.label}
           </Combobox.Item>

@@ -2,7 +2,7 @@
 import { Table } from "@pisagor/svelte";
 import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
 import type { ExpandedState } from "@tanstack/svelte-table";
-import { allUsers, userColumns } from "./helpers";
+import { allUsers, type User, userColumns } from "./helpers";
 
 const columns = [...userColumns];
 let expanded = $state<ExpandedState>({});
@@ -21,7 +21,7 @@ function onExpandedChange(
       data={allUsers.slice(0, 8)}
       features={dataGridFeatures}
       getRowCanExpand={() => true}
-      getRowId={(row) => row.id}
+      getRowId={(row: User) => row.id}
       {onExpandedChange}
       state={{ expanded }}
     >

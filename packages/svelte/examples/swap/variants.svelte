@@ -12,7 +12,7 @@ let scale = $state(false);
 <div class="flex flex-wrap gap-2">
   <Button
     aria-label="Toggle theme"
-    onClick={() => (fade = !fade)}
+    onclick={() => (fade = !fade)}
     size="icon-lg"
     variant="outline"
   >
@@ -27,7 +27,7 @@ let scale = $state(false);
   </Button>
   <Button
     aria-label="Toggle theme"
-    onClick={() => (flip = !flip)}
+    onclick={() => (flip = !flip)}
     size="icon-lg"
     variant="outline"
   >
@@ -42,7 +42,7 @@ let scale = $state(false);
   </Button>
   <Button
     aria-label="Toggle theme"
-    onClick={() => (rotate = !rotate)}
+    onclick={() => (rotate = !rotate)}
     size="icon-lg"
     variant="outline"
   >
@@ -57,7 +57,7 @@ let scale = $state(false);
   </Button>
   <Button
     aria-label="Toggle theme"
-    onClick={() => (scale = !scale)}
+    onclick={() => (scale = !scale)}
     size="icon-lg"
     variant="outline"
   >

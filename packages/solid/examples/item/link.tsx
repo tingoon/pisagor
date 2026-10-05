@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Item } from "@pisagor/solid";
 import { ArrowSquareOutIcon } from "@pisagor/solid/icons";
 

@@ -7,7 +7,6 @@ import type {
 import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/solid/segment-group";
 import type { SegmentGroupProps as BaseSegmentGroupRootProps } from "@pisagor/props";
 import { segmentGroupRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import { SegmentGroupContext, useSegmentGroup } from "./segment-group.context";
@@ -51,7 +50,7 @@ export function SegmentGroupRoot(props: SegmentGroupRootProps): JSX.Element {
     <SegmentGroupContext value={{ slots: slots() }}>
       <SegmentGroupPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-variant={local.variant ?? "default"}
         onValueChange={
           local.onValueChange

@@ -8,9 +8,9 @@ import { panelClassName } from "./helpers";
     class="size-full rounded-md border"
     defaultSize={[25, 75]}
     panels={[
-  { collapsedSize: 0, collapsible: true, id: "sidebar", minSize: 15 },
-  { id: "main", minSize: 40 },
-]}
+      { collapsedSize: 0, collapsible: true, id: "sidebar", minSize: 15 },
+      { id: "main", minSize: 40 },
+    ]}
   >
     <Resizable.Panel class={panelClassName()} id="sidebar"
       >Sidebar</Resizable.Panel

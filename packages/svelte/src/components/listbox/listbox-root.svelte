@@ -1,17 +1,15 @@
 <script lang="ts">
 import type { CollectionItem } from "@ark-ui/svelte/collection";
-import type { ListboxRootProps as ArkListboxRootProps } from "@ark-ui/svelte/listbox";
-import { Listbox as ListboxPrimitive } from "@ark-ui/svelte/listbox";
+import {
+  type ListboxRootProps as ArkListboxRootProps,
+  Listbox as ListboxPrimitive,
+} from "@ark-ui/svelte/listbox";
 import type { ListboxProps as BaseListboxProps } from "@pisagor/props";
 import { listboxRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setListboxContext } from "./listbox.context";
 
-type Props = Omit<
-  ArkListboxRootProps<CollectionItem>,
-  "class" | "onValueChange"
-> & {
-  class?: string | undefined;
+type Props = Omit<ArkListboxRootProps<CollectionItem>, "onValueChange"> & {
   onValueChange?: (value: string[]) => void;
 } & BaseListboxProps;
 

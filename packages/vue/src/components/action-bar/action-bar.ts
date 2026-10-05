@@ -254,7 +254,7 @@ export const ActionBarTrigger = defineComponent({
         {
           ...attrs,
           "aria-expanded": context?.isOpen ? "true" : "false",
-          class: cn(attrs.class),
+          class: attrs.class,
           "data-part": "trigger",
           "data-scope": "action-bar",
           "data-state": context?.isOpen ? "open" : "closed",
@@ -295,7 +295,7 @@ export const ActionBarContent = defineComponent({
         h(
           "div",
           {
-            class: cn(context.slots.positioner({ placement })),
+            class: context.slots.positioner({ placement }),
             "data-part": "positioner",
             "data-placement": placement,
             "data-scope": "action-bar",

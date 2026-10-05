@@ -4,8 +4,7 @@ import type { ComponentProps } from "svelte";
 import { useDialog } from "../dialog/dialog.context";
 import DialogBody from "../dialog/dialog-body.svelte";
 
-type Props = ComponentProps<typeof DialogBody>;
-let { class: className, ...rest }: Props = $props();
+let { class: className, ...rest }: ComponentProps<typeof DialogBody> = $props();
 const { slots } = useDialog();
 </script>
 

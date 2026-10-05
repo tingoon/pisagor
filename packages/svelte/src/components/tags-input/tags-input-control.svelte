@@ -15,9 +15,8 @@ import TagsInputClearTrigger from "./tags-input-clear-trigger.svelte";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<ArkControlProps, "class"> &
+type Props = ArkControlProps &
   Pick<FormControlGroupShellVariantProps, "size" | "variant"> & {
-    class?: string | undefined;
     clearable?: boolean;
   };
 
@@ -39,9 +38,9 @@ const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 <TagsInputPrimitive.Control
   {...rest}
   class={cn(
-  formControlGroupShellRecipe({ size, surfaceVariant, variant }),
-  slots.control({ class: cn(className) }),
-)}
+    formControlGroupShellRecipe({ size, surfaceVariant, variant }),
+    slots.control({ class: cn(className) }),
+  )}
 >
   {@render children?.()}
   {#if clearable && api().value.length > 0}

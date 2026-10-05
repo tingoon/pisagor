@@ -5,10 +5,11 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useFloatingPanel } from "./floating-panel.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
-  class?: string | undefined;
-};
-let { children, class: className, ...rest }: Props = $props();
+let {
+  children,
+  class: className,
+  ...rest
+}: HTMLAttributes<HTMLDivElement> = $props();
 const ctx = useFloatingPanel();
 const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
 </script>

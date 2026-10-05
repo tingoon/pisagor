@@ -1,7 +1,5 @@
-import { Avatar } from "@pisagor/astro/avatar";
-import DefaultExample from "#/astro/examples/avatar/default.astro";
-import SizesExample from "#/astro/examples/avatar/sizes.astro";
-import WithImageExample from "#/astro/examples/avatar/with-image.astro";
+import { Avatar } from "@pisagor/astro";
+import * as Examples from "#/astro/examples/avatar";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -24,13 +22,13 @@ export const Playground = meta.story({
 });
 
 export const Default = meta.story({
-  render: () => ({ component: DefaultExample }),
+  render: () => ({ component: Examples.Default }),
 });
 
 export const Sizes = meta.story({
-  render: () => ({ component: SizesExample }),
+  render: () => ({ component: Examples.Sizes }),
 });
 
 export const WithImage = meta.story({
-  render: () => ({ component: WithImageExample }),
+  render: () => ({ component: Examples.WithImage }),
 });

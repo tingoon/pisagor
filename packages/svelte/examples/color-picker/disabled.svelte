@@ -4,10 +4,10 @@ import { ColorPicker, Input } from "@pisagor/svelte";
 
 <ColorPicker defaultValue="#eb5e41" disabled>
   <ColorPicker.Control>
-    <ColorPicker.Input>
+    <ColorPicker.Input channel="hex">
       {#snippet asChild(
-  props,
-)}
+        props,
+      )}
         <Input {...props()} placeholder="#EB5E41" />
       {/snippet}
     </ColorPicker.Input>

@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Calendar, DatePicker } from "@pisagor/solid";
 export function Invalid() {
   return (

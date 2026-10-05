@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Highlight } from "@pisagor/solid";
 
 export function CustomStyle() {

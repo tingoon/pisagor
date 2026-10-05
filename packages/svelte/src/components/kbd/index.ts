@@ -1,2 +1,6 @@
-export { default as Kbd } from "./kbd.svelte";
-export { default as KbdGroup } from "./kbd-group.svelte";
+import KbdRoot from "./kbd.svelte";
+import KbdGroup from "./kbd-group.svelte";
+
+export const Kbd = Object.assign(KbdRoot, {
+  Group: KbdGroup,
+});

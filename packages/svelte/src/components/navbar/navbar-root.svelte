@@ -6,9 +6,7 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setNavbarContext } from "./navbar.context";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
-  class?: string | undefined;
-} & BaseNavbarProps;
+type Props = HTMLAttributes<HTMLElement> & BaseNavbarProps;
 
 let {
   children,

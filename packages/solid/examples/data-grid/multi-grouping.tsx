@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Table } from "@pisagor/solid";
 import type { ColumnDef } from "@pisagor/solid/data-grid";
@@ -176,7 +174,7 @@ export function MultiGrouping() {
         getRowId={(row: User) => row.id}
         onExpandedChange={setExpanded}
         onGroupingChange={setGrouping}
-        state={{ expanded: expanded(), grouping }}
+        state={{ expanded: expanded(), grouping: grouping() }}
       >
         <DataGrid.Toolbar>
           <p class="text-muted-foreground text-sm">

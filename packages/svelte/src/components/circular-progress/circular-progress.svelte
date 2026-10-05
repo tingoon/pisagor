@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { ProgressRootProps } from "@ark-ui/svelte/progress";
-import { Progress as ProgressPrimitive } from "@ark-ui/svelte/progress";
+import {
+  Progress as ProgressPrimitive,
+  type ProgressRootProps,
+} from "@ark-ui/svelte/progress";
 import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
 import {
   type CircularProgressRecipeSlot,
@@ -11,9 +13,8 @@ import type { Snippet } from "svelte";
 import { setCircularProgressContext } from "./circular-progress.context";
 import CircularProgressTrack from "./circular-progress-track.svelte";
 
-type Props = Omit<ProgressRootProps, "class" | "children" | "value"> & {
+type Props = Omit<ProgressRootProps, "children" | "value"> & {
   children?: Snippet;
-  class?: string | undefined;
   classNames?: Partial<Record<CircularProgressRecipeSlot, string>>;
   /**
    * Whether to show indeterminate progress.
@@ -63,9 +64,9 @@ setCircularProgressContext({
   value={indeterminate ? null : value}
 >
   {#if isValueVisible}
-    <span class={slots.valueWrapper({ class: cn(classNames?.valueWrapper) })}>
+    <span class={slots.valueWrapper({ class: classNames?.valueWrapper })}>
       <ProgressPrimitive.ValueText
-        class={slots.value({ class: cn(classNames?.value) })}
+        class={slots.value({ class: classNames?.value })}
       />
     </span>
   {/if}

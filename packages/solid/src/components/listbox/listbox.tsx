@@ -19,7 +19,6 @@ import type {
   ListboxProps as BaseListboxRootProps,
 } from "@pisagor/props";
 import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
 import { CheckIcon } from "../../internal/icons";
@@ -73,7 +72,7 @@ export function ListboxRoot<T extends CollectionItem = CollectionItem>(
     <ListboxContext value={{ slots: slots() }}>
       <ListboxPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         onValueChange={
           local.onValueChange
             ? (details) => local.onValueChange?.(details.value)

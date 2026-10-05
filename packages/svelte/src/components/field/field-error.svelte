@@ -1,14 +1,12 @@
 <script lang="ts">
-import type { FieldErrorTextProps } from "@ark-ui/svelte/field";
-import { Field as FieldPrimitive } from "@ark-ui/svelte/field";
+import {
+  type FieldErrorTextProps,
+  Field as FieldPrimitive,
+} from "@ark-ui/svelte/field";
 import { cn } from "@pisagor/utils";
 import { useFieldSlots } from "./field.context";
 
-type Props = Omit<FieldErrorTextProps, "class"> & {
-  class?: string | undefined;
-};
-
-let { class: className, children, ...rest }: Props = $props();
+let { class: className, children, ...rest }: FieldErrorTextProps = $props();
 const slots = useFieldSlots();
 </script>
 

@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Button } from "@pisagor/solid";
 
 export function Loading() {

@@ -11,10 +11,8 @@ import {
 let isOpen = $state(false);
 </script>
 
-<ActionBar onOpenChange={setIsOpen} open={isOpen}>
-  <Button onClick={() => (isOpen = (prev) => !prev)} variant="outline">
-    Toggle
-  </Button>
+<ActionBar onOpenChange={(open) => (isOpen = open)} open={isOpen}>
+  <Button onclick={() => (isOpen = !isOpen)} variant="outline">Toggle</Button>
   <ActionBar.Content aria-label="Bulk actions">
     <ActionBar.Value count={2} />
     <ActionBar.Separator />
@@ -44,5 +42,4 @@ let isOpen = $state(false);
       </Button>
     </ActionBar.Close>
   </ActionBar.Content>
-</ActionBar
->)(isOpen
+</ActionBar>

@@ -1,12 +1,13 @@
 <script lang="ts">
 import { type TreeNodeType, TreeView } from "@pisagor/svelte";
+import type { Component } from "svelte";
 import TreeNodeFolder from "./tree-node-folder.svelte";
 
 type Props = {
   indexPath: number[];
   node: TreeNodeType & {
-    expandedIcon?: unknown;
-    icon?: unknown;
+    expandedIcon?: Component | null;
+    icon?: Component | null;
   };
 };
 

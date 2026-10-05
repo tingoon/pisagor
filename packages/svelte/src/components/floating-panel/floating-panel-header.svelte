@@ -1,15 +1,18 @@
 <script lang="ts">
-import type { FloatingPanelHeaderProps } from "@ark-ui/svelte/floating-panel";
-import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/svelte/floating-panel";
+import {
+  type FloatingPanelHeaderProps,
+  FloatingPanel as FloatingPanelPrimitive,
+} from "@ark-ui/svelte/floating-panel";
 import { floatingPanelRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useFloatingPanel } from "./floating-panel.context";
 import FloatingPanelDragTrigger from "./floating-panel-drag-trigger.svelte";
 
-type Props = Omit<FloatingPanelHeaderProps, "class"> & {
-  class?: string | undefined;
-};
-let { children, class: className, ...rest }: Props = $props();
+let {
+  children,
+  class: className,
+  ...rest
+}: FloatingPanelHeaderProps = $props();
 const ctx = useFloatingPanel();
 const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
 </script>

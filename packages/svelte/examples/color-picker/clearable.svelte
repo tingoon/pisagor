@@ -19,10 +19,10 @@ let value = $state("#eb5e41");
               <ColorPicker.SwatchPreview />
             </InputGroup.Addon>
           </ColorPicker.Trigger>
-          <ColorPicker.Input>
+          <ColorPicker.Input channel="hex">
             {#snippet asChild(
-  props,
-)}
+              props,
+            )}
               <InputGroup.Input {...props()} clearable={false} />
             {/snippet}
           </ColorPicker.Input>

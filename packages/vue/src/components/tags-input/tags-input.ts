@@ -345,7 +345,9 @@ export const TagsInputControl = defineComponent({
             InputGroup as ArkPart,
             {
               class: slots.control({
-                class: cn((attrs as { class?: ClassValue }).class),
+                class: (attrs as { class?: ClassValue }).class as
+                  | string
+                  | undefined,
               }),
               size: props.size,
               variant: props.variant,

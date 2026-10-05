@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { AnnouncementProps as BaseAnnouncementProps } from "@pisagor/props";
 import { announcementRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { AnnouncementContext, useAnnouncement } from "./announcement.context";
@@ -33,7 +32,7 @@ export function AnnouncementRoot(props: AnnouncementRootProps): JSX.Element {
     <AnnouncementContext value={{ slots: slots() }}>
       <ark.div
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-part="root"
         data-scope="announcement"
         role={local.role ?? "status"}
@@ -51,7 +50,7 @@ export function AnnouncementTitle(props: AnnouncementTitleProps): JSX.Element {
   return (
     <ark.span
       {...rest}
-      class={slots.title({ class: cn(local.class) })}
+      class={slots.title({ class: local.class })}
       data-part="title"
       data-scope="announcement"
     />

@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { RadioGroup } from "@pisagor/solid";
 
 export function Compound() {

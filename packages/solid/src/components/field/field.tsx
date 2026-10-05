@@ -13,7 +13,6 @@ import {
 } from "@ark-ui/solid/fieldset";
 import type { FieldProps as BaseFieldProps } from "@pisagor/props";
 import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { Separator } from "../separator";
@@ -66,7 +65,7 @@ export function FieldRoot(props: FieldRootProps): JSX.Element {
     <FieldContext value={{ slots: slots() }}>
       <FieldPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-orientation={orientation()}
       >
         {local.children}
@@ -83,7 +82,7 @@ export function FieldSet(props: FieldSetProps): JSX.Element {
     <FieldContext value={{ slots: slots() }}>
       <FieldsetPrimitive.Root
         {...rest}
-        class={slots().set({ class: cn(local.class) })}
+        class={slots().set({ class: local.class })}
       >
         {local.children}
       </FieldsetPrimitive.Root>
@@ -97,7 +96,7 @@ export function FieldLegend(props: FieldLegendProps): JSX.Element {
   return (
     <FieldsetPrimitive.Legend
       {...rest}
-      class={slots.legend({ class: cn(local.class) })}
+      class={slots.legend({ class: local.class })}
       data-variant={local.variant ?? "legend"}
     />
   );
@@ -111,7 +110,7 @@ export function FieldGroup(props: FieldGroupProps): JSX.Element {
     <FieldContext value={{ slots: slots() }}>
       <ark.div
         {...rest}
-        class={slots().group({ class: cn(local.class) })}
+        class={slots().group({ class: local.class })}
         data-part="group"
         data-scope="field"
       >
@@ -127,7 +126,7 @@ export function FieldContent(props: FieldContentProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.content({ class: cn(local.class) })}
+      class={slots.content({ class: local.class })}
       data-part="content"
       data-scope="field"
     />
@@ -140,7 +139,7 @@ export function FieldLabel(props: FieldLabelProps): JSX.Element {
   return (
     <FieldPrimitive.Label
       {...rest}
-      class={slots.label({ class: cn(local.class) })}
+      class={slots.label({ class: local.class })}
     />
   );
 }
@@ -155,7 +154,7 @@ export function FieldRequiredIndicator(
     <FieldPrimitive.RequiredIndicator
       {...rest}
       aria-hidden
-      class={slots.requiredIndicator({ class: cn(local.class) })}
+      class={slots.requiredIndicator({ class: local.class })}
     >
       {local.children ?? "*"}
     </FieldPrimitive.RequiredIndicator>
@@ -168,7 +167,7 @@ export function FieldTitle(props: FieldTitleProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.title({ class: cn(local.class) })}
+      class={slots.title({ class: local.class })}
       data-part="title"
       data-scope="field"
     />
@@ -181,7 +180,7 @@ export function FieldDescription(props: FieldDescriptionProps): JSX.Element {
   return (
     <ark.p
       {...rest}
-      class={slots.description({ class: cn(local.class) })}
+      class={slots.description({ class: local.class })}
       data-part="description"
       data-scope="field"
     />
@@ -196,7 +195,7 @@ export function FieldSeparator(props: FieldSeparatorProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.separator({ class: cn(local.class) })}
+      class={slots.separator({ class: local.class })}
       data-content={!!local.children}
       data-part="separator"
       data-scope="field"
@@ -222,7 +221,7 @@ export function FieldHelper(props: FieldHelperProps): JSX.Element {
   return (
     <FieldPrimitive.HelperText
       {...rest}
-      class={slots.helper({ class: cn(local.class) })}
+      class={slots.helper({ class: local.class })}
     />
   );
 }
@@ -233,7 +232,7 @@ export function FieldError(props: FieldErrorProps): JSX.Element {
   return (
     <FieldPrimitive.ErrorText
       {...rest}
-      class={slots.error({ class: cn(local.class) })}
+      class={slots.error({ class: local.class })}
     />
   );
 }

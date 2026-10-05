@@ -5,9 +5,8 @@ import { cn } from "@pisagor/utils";
 import type { HTMLButtonAttributes } from "svelte/elements";
 import { useSidebar } from "./sidebar.context";
 
-type Props = Omit<HTMLButtonAttributes, "class" | "type"> & {
+type Props = Omit<HTMLButtonAttributes, "type"> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   /**
    * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
    * @defaultValue buttonRecipe
@@ -30,14 +29,14 @@ const ctx = useSidebar();
   as="button"
   {...rest}
   class={cn(
-  buttonRecipeProp({
-    clickEffect: false,
-    size: "icon-xs",
-    variant: "ghost",
-  }).base(),
-  ctx.slots.groupAction(),
-  className,
-)}
+    buttonRecipeProp({
+      clickEffect: false,
+      size: "icon-xs",
+      variant: "ghost",
+    }).base(),
+    ctx.slots.groupAction(),
+    className,
+  )}
   data-part="group-action"
   data-scope="sidebar"
   data-sidebar="group-action"

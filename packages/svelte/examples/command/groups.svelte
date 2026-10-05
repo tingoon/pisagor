@@ -11,9 +11,11 @@ const initialItems = [
   { group: "Countries", label: "United Kingdom", value: "uk" },
   { group: "Countries", label: "Germany", value: "de" },
 ];
-const { contains } = useFilter({ sensitivity: "base" });
+const filters = useFilter({ sensitivity: "base" });
 const { collection, filter } = useListCollection({
-  filter: contains,
+  filter(itemString, filterText) {
+    return filters().contains(itemString, filterText);
+  },
   groupBy: (item) => item.group,
   initialItems,
 });
@@ -27,7 +29,7 @@ const { collection, filter } = useListCollection({
   <Command.Content>
     <Command.Empty />
     <Command.List>
-      {#each collection.group() as [group, items], index}
+      {#each collection().group() as [group, items], index}
         {#if index !== 0}
           <Command.Separator />
         {/if}

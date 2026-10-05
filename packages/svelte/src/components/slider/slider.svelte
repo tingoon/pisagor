@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { SliderRootProps } from "@ark-ui/svelte/slider";
-import { Slider as SliderPrimitive } from "@ark-ui/svelte/slider";
+import {
+  Slider as SliderPrimitive,
+  type SliderRootProps,
+} from "@ark-ui/svelte/slider";
 import type { SliderProps as BaseSliderProps } from "@pisagor/props";
 import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -9,9 +11,8 @@ import { setSliderContext } from "./slider.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<SliderRootProps, "class" | "children" | "onValueChange"> & {
+type Props = Omit<SliderRootProps, "children" | "onValueChange"> & {
   children?: Snippet;
-  class?: string | undefined;
   classNames?: Partial<Record<SliderRecipeSlot, string>>;
   label?: string;
   markerInterval?: number;
@@ -88,13 +89,13 @@ function handleValueChange(
   bind:value
 >
   {#if label !== undefined || showValue}
-    <div class={slots.header({ class: cn(classNames?.header) })}>
+    <div class={slots.header({ class: classNames?.header })}>
       {#if label !== undefined}
         <SliderPrimitive.Label>{label}</SliderPrimitive.Label>
       {/if}
       {#if showValue}
         <SliderPrimitive.ValueText
-          class={slots.value({ class: cn(classNames?.value) })}
+          class={slots.value({ class: classNames?.value })}
         />
       {/if}
     </div>
@@ -103,13 +104,13 @@ function handleValueChange(
   {@render children?.()}
 
   <SliderPrimitive.Control
-    class={slots.control({ class: cn(classNames?.control) })}
+    class={slots.control({ class: classNames?.control })}
   >
     <SliderPrimitive.Track
       class={slots.track({ class: cn(trackVariantClass, classNames?.track) })}
     >
       <SliderPrimitive.Range
-        class={slots.range({ class: cn(classNames?.range) })}
+        class={slots.range({ class: classNames?.range })}
       />
     </SliderPrimitive.Track>
 
@@ -126,20 +127,18 @@ function handleValueChange(
 
   {#if showMarkers}
     <SliderPrimitive.MarkerGroup
-      class={slots.markerGroup({ class: cn(classNames?.markerGroup) })}
+      class={slots.markerGroup({ class: classNames?.markerGroup })}
     >
       {#each Array.from({ length: max + 1 }) as _, index (index)}
         <SliderPrimitive.Marker
-          class={slots.marker({ class: cn(classNames?.marker) })}
+          class={slots.marker({ class: classNames?.marker })}
           data-interval={index % markerInterval === 0 ? undefined : ""}
           value={index}
         >
           <span
-            class={slots.markerTick({ class: cn(classNames?.markerTick) })}
+            class={slots.markerTick({ class: classNames?.markerTick })}
           ></span>
-          <span
-            class={slots.markerLabel({ class: cn(classNames?.markerLabel) })}
-          >
+          <span class={slots.markerLabel({ class: classNames?.markerLabel })}>
             {markerLabels[index] ?? index}
           </span>
         </SliderPrimitive.Marker>

@@ -1,7 +1,7 @@
-/** @jsxImportSource solid-js */
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Autocomplete } from "@pisagor/solid";
+import { For } from "solid-js";
 
 export function WithTrigger() {
   const initialItems = [
@@ -9,25 +9,27 @@ export function WithTrigger() {
     { label: "Banana", value: "banana" },
     { label: "Cherry", value: "cherry" },
   ];
-  const { contains } = useFilter({ sensitivity: "base" });
+  const filterFn = useFilter({ sensitivity: "base" });
 
   const { collection, filter } = useListCollection({
-    filter: contains,
+    filter: filterFn().contains,
     initialItems,
   });
 
   return (
     <Autocomplete.Root
-      collection={collection}
+      collection={collection()}
       onInputValueChange={({ inputValue }) => filter(inputValue)}
     >
       <Autocomplete.Input placeholder="Select a fruit..." showTrigger />
       <Autocomplete.Content>
         <Autocomplete.Empty />
         <Autocomplete.List>
-          {collection.items.map((item) => (
-            <Autocomplete.Item item={item}>{item.label}</Autocomplete.Item>
-          ))}
+          <For each={collection().items}>
+            {(item) => (
+              <Autocomplete.Item item={item}>{item.label}</Autocomplete.Item>
+            )}
+          </For>
         </Autocomplete.List>
       </Autocomplete.Content>
     </Autocomplete.Root>

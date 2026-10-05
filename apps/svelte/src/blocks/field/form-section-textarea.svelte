@@ -21,10 +21,10 @@ function onSubmit(e: Event) {
         <Field.Label>Message</Field.Label>
         <Textarea
           name="message"
-          oninput={(e) => {
-  message = (e.currentTarget as HTMLTextAreaElement).value;
-  error = null;
-}}
+          onValueChange={(value: string) => {
+            message = value;
+            error = null;
+          }}
           placeholder="Type your message here"
           value={message}
         />
@@ -38,9 +38,9 @@ function onSubmit(e: Event) {
         <Button type="submit">Submit</Button>
         <Button
           onclick={() => {
-  message = "";
-  error = null;
-}}
+            message = "";
+            error = null;
+          }}
           type="button"
           variant="outline"
         >

@@ -1,4 +1,5 @@
-import { Timeline } from "@pisagor/astro/timeline";
+import { Timeline } from "@pisagor/astro";
+import * as Examples from "#/astro/examples/timeline";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -35,4 +36,8 @@ export const Playground = meta.story({
     ],
   },
   tags: ["autodocs"],
+});
+
+export const Default = meta.story({
+  render: () => ({ component: Examples.Default }),
 });

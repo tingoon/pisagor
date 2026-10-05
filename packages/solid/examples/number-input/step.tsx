@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Field, NumberInput } from "@pisagor/solid";
 export function Step() {
   return (

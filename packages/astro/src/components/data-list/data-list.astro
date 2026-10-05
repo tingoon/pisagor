@@ -23,7 +23,7 @@ const { orientation = "horizontal", items = [], ...rest } = Astro.props;
 
 <DataListRoot {...rest} orientation={orientation}>
   {items.map((item) => (
-  <DataListItem value={item.value}>{item.label}</DataListItem>
-))}
+    <DataListItem value={item.value}>{item.label}</DataListItem>
+  ))}
   <slot />
 </DataListRoot>

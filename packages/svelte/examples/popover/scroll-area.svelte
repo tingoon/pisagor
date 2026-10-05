@@ -5,9 +5,11 @@ const items = Array.from({ length: 12 }, (_, i) => ({
   id: i + 1,
   label: `Item ${i + 1}`,
 }));
+
+let open = $state(false);
 </script>
 
-<Popover>
+<Popover onOpenChange={({ open: next }) => (open = next)} {open}>
   <Popover.Trigger>
     <Button variant="outline"> Open </Button>
   </Popover.Trigger>
@@ -23,13 +25,7 @@ const items = Array.from({ length: 12 }, (_, i) => ({
       </ul>
     </Popover.Body>
     <Popover.Footer>
-      <Popover.CloseTrigger>
-        {#snippet asChild(
-  props,
-)}
-          <Button {...props()}>Close</Button>
-        {/snippet}
-      </Popover.CloseTrigger>
+      <Button onclick={() => (open = false)}>Close</Button>
     </Popover.Footer>
   </Popover.Content>
 </Popover>

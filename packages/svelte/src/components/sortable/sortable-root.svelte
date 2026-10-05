@@ -6,8 +6,7 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setSortableContext } from "./sortable.context";
 
-type Props = Omit<HTMLAttributes<HTMLUListElement>, "class"> & {
-  class?: string | undefined;
+type Props = HTMLAttributes<HTMLUListElement> & {
   disabled?: boolean;
   items: string[];
   onValueChange?: (items: string[]) => void;

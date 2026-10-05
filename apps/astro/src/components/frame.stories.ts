@@ -1,4 +1,5 @@
-import { Frame } from "@pisagor/astro/frame";
+import { Frame } from "@pisagor/astro";
+import * as Examples from "#/astro/examples/frame";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -48,4 +49,8 @@ export const Playground = meta.story({
     },
   }),
   tags: ["autodocs"],
+});
+
+export const Default = meta.story({
+  render: () => ({ component: Examples.Default }),
 });

@@ -3,7 +3,7 @@ import { InputOTP } from "@pisagor/svelte";
 
 let value = $state([""]);
 
-const isCorrect = value.join("") === "1234";
+const isCorrect = $derived(value.join("") === "1234");
 </script>
 
 <InputOTP invalid={!isCorrect} onValueChange={(v) => (value = v)} {value}>

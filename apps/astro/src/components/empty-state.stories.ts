@@ -1,5 +1,5 @@
-import { Button } from "@pisagor/astro/button";
-import { EmptyState } from "@pisagor/astro/empty-state";
+import { Button, EmptyState } from "@pisagor/astro";
+import * as Examples from "#/astro/examples/empty-state";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -23,4 +23,8 @@ export const Playground = meta.story({
     title: "No projects yet",
   },
   tags: ["autodocs"],
+});
+
+export const Default = meta.story({
+  render: () => ({ component: Examples.Default }),
 });

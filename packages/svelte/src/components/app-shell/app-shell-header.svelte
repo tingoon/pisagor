@@ -1,13 +1,11 @@
 <script lang="ts">
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import type { AppShellRegionPosition } from "./app-shell.context";
-import { useAppShell } from "./app-shell.context";
+import { type AppShellRegionPosition, useAppShell } from "./app-shell.context";
 import { regionPositionClasses } from "./region";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
+type Props = HTMLAttributes<HTMLElement> & {
   children?: import("svelte").Snippet;
-  class?: string | undefined;
   /**
    * Scroll behavior for the page header row inside `AppShell.Main`.
    * @defaultValue "fixed"
@@ -27,10 +25,10 @@ const ctx = useAppShell();
 <header
   {...rest}
   class={cn(
-  ctx.slots.header(),
-  regionPositionClasses(ctx.slots, position, "row", "header"),
-  className,
-)}
+    ctx.slots.header(),
+    regionPositionClasses(ctx.slots, position, "row", "header"),
+    className,
+  )}
   data-part="header"
   data-position={position}
   data-scope="app-shell"

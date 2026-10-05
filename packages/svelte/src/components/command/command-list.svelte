@@ -4,9 +4,11 @@ import type { ComponentProps } from "svelte";
 import ComboboxList from "../combobox/combobox-list.svelte";
 import { useCommand } from "./command.context";
 
-type Props = ComponentProps<typeof ComboboxList>;
-
-let { class: className, children, ...rest }: Props = $props();
+let {
+  class: className,
+  children,
+  ...rest
+}: ComponentProps<typeof ComboboxList> = $props();
 const { slots } = useCommand();
 </script>
 

@@ -1,9 +1,10 @@
 <script lang="ts">
-import type { DialogTriggerProps } from "@ark-ui/svelte/dialog";
-import { Dialog as DialogPrimitive } from "@ark-ui/svelte/dialog";
+import {
+  Dialog as DialogPrimitive,
+  type DialogTriggerProps,
+} from "@ark-ui/svelte/dialog";
 
-type Props = DialogTriggerProps;
-let { children, ...rest }: Props = $props();
+let { children, ...rest }: DialogTriggerProps = $props();
 </script>
 
 <DialogPrimitive.Trigger {...rest}>

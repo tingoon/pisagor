@@ -26,4 +26,4 @@ function runPromise() {
 }
 </script>
 
-<Button onClick={runPromise} variant="outline">Run Promise</Button>
+<Button onclick={runPromise} variant="outline">Run Promise</Button>

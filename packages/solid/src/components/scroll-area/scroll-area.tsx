@@ -11,7 +11,6 @@ import {
   type ScrollAreaVariantProps,
   scrollAreaRecipe,
 } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import type { VariantClassNames } from "../../internal/types";
@@ -50,7 +49,7 @@ function ScrollAreaRoot(props: ScrollAreaRootProps): JSX.Element {
     <ScrollAreaContext value={{ slots: slots() }}>
       <ScrollAreaPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
       >
         {local.children}
       </ScrollAreaPrimitive.Root>
@@ -65,7 +64,7 @@ function ScrollAreaViewport(props: ScrollAreaViewportProps): JSX.Element {
   return (
     <ScrollAreaPrimitive.Viewport
       {...rest}
-      class={slots.viewport({ class: cn(local.class) })}
+      class={slots.viewport({ class: local.class })}
     >
       <ScrollAreaPrimitive.Content>
         {local.children}
@@ -81,7 +80,7 @@ function ScrollAreaScrollbar(props: ScrollAreaScrollbarProps): JSX.Element {
   return (
     <ScrollAreaPrimitive.Scrollbar
       {...rest}
-      class={slots.scrollbar({ class: cn(local.class) })}
+      class={slots.scrollbar({ class: local.class })}
       orientation={local.orientation}
     >
       {local.children}
@@ -95,7 +94,7 @@ function ScrollAreaThumb(props: ScrollAreaThumbProps): JSX.Element {
   return (
     <ScrollAreaPrimitive.Thumb
       {...rest}
-      class={slots.thumb({ class: cn(local.class) })}
+      class={slots.thumb({ class: local.class })}
     />
   );
 }

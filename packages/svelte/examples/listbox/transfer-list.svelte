@@ -41,7 +41,8 @@ const moveToAvailable = () => {
       <Listbox.Root
         class="min-h-40"
         collection={availableCollection}
-        onValueChange={(next) => (availableValue = Array.isArray(next) ? next : [next])}
+        onValueChange={(next) =>
+          (availableValue = Array.isArray(next) ? next : [next])}
         selectionMode="multiple"
         value={availableValue}
       >
@@ -63,7 +64,7 @@ const moveToAvailable = () => {
     <Button
       aria-label="Move to selected"
       disabled={availableValue.length === 0}
-      onClick={moveToSelected}
+      onclick={moveToSelected}
       size="icon-sm"
       variant="outline"
     >
@@ -72,7 +73,7 @@ const moveToAvailable = () => {
     <Button
       aria-label="Move to available"
       disabled={selectedValue.length === 0}
-      onClick={moveToAvailable}
+      onclick={moveToAvailable}
       size="icon-sm"
       variant="outline"
     >
@@ -85,7 +86,8 @@ const moveToAvailable = () => {
       <Listbox.Root
         class="min-h-40"
         collection={selectedCollection}
-        onValueChange={(next) => (selectedValue = Array.isArray(next) ? next : [next])}
+        onValueChange={(next) =>
+          (selectedValue = Array.isArray(next) ? next : [next])}
         selectionMode="multiple"
         value={selectedValue}
       >

@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import { Field, Switch } from "@pisagor/solid";
 export function SwitchField() {
   return (

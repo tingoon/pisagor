@@ -17,7 +17,7 @@ let zoom = $state(1);
   <div class="flex gap-1">
     <Button
       aria-label="Zoom out"
-      onClick={() => (zoom = Math.max(0, zoom - 0.25))}
+      onclick={() => (zoom = Math.max(0, zoom - 0.25))}
       size="icon-sm"
       variant="outline"
     >
@@ -25,7 +25,7 @@ let zoom = $state(1);
     </Button>
     <Button
       aria-label="Zoom in"
-      onClick={() => (zoom = Math.min(3, zoom + 0.25))}
+      onclick={() => (zoom = Math.min(3, zoom + 0.25))}
       size="icon-sm"
       variant="outline"
     >

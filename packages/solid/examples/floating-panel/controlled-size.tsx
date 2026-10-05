@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { Button, FloatingPanel } from "@pisagor/solid";
 import { GearSixIcon, XIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";

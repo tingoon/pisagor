@@ -74,7 +74,7 @@ export function CheckboxGroup(props: CheckboxGroupProps): JSX.Element {
   return (
     <CheckboxPrimitive.Group
       {...rest}
-      class={(local.recipe ?? checkboxGroupRecipe)({ class: cn(local.class) })}
+      class={(local.recipe ?? checkboxGroupRecipe)({ class: local.class })}
       onValueChange={local.onValueChange}
     />
   );
@@ -103,7 +103,7 @@ export function CheckboxRoot(props: CheckboxProps): JSX.Element {
           surfaceVariant,
           variant: variant(),
         }),
-        slots().base({ class: cn(local.class) }),
+        slots().base({ class: local.class }),
       )}
       data-variant={variant()}
       onCheckedChange={
@@ -136,7 +136,7 @@ function CheckboxIndicator(props: CheckboxIndicatorPartProps): JSX.Element {
   return (
     <CheckboxPrimitive.Indicator
       {...rest}
-      class={slots().indicator({ class: cn(local.class) })}
+      class={slots().indicator({ class: local.class })}
     />
   );
 }

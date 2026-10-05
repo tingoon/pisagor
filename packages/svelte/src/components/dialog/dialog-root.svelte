@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { DialogRootProps } from "@ark-ui/svelte/dialog";
-import { Dialog as DialogPrimitive } from "@ark-ui/svelte/dialog";
+import {
+  Dialog as DialogPrimitive,
+  type DialogRootProps,
+} from "@ark-ui/svelte/dialog";
 import type { DialogProps as BaseDialogProps } from "@pisagor/props";
 import { dialogRecipe } from "@pisagor/recipes";
 import { setDialogContext } from "./dialog.context";

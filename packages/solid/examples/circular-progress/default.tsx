@@ -1,5 +1,3 @@
-/** @jsxImportSource solid-js */
-
 import { CircularProgress } from "@pisagor/solid";
 import { createSignal, onCleanup, onMount } from "solid-js";
 

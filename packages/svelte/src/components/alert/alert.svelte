@@ -8,12 +8,8 @@ import AlertDescription from "./alert-description.svelte";
 import AlertRoot from "./alert-root.svelte";
 import AlertTitle from "./alert-title.svelte";
 
-type Props = Omit<
-  HTMLAttributes<HTMLDivElement>,
-  "class" | "title" | "children"
-> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "title" | "children"> & {
   action?: string | Snippet;
-  class?: string | undefined;
   classNames?: Partial<Record<AlertRecipeSlot, string>>;
   description?: string | Snippet;
   icon?: Snippet;

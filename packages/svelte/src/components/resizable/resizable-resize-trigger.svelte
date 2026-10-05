@@ -1,15 +1,14 @@
 <script lang="ts">
-import type { SplitterResizeTriggerProps } from "@ark-ui/svelte/splitter";
-import { Splitter as SplitterPrimitive } from "@ark-ui/svelte/splitter";
+import {
+  Splitter as SplitterPrimitive,
+  type SplitterResizeTriggerProps,
+} from "@ark-ui/svelte/splitter";
 import { cn } from "@pisagor/utils";
 import DotsSixVerticalIcon from "phosphor-svelte/lib/DotsSixVerticalIcon";
 import { useResizable } from "./resizable.context";
 import ResizableResizeTriggerIndicator from "./resizable-resize-trigger-indicator.svelte";
 
-type Props = Omit<SplitterResizeTriggerProps, "class"> & {
-  class?: string | undefined;
-  withHandle?: boolean;
-};
+type Props = SplitterResizeTriggerProps & { withHandle?: boolean };
 
 let {
   children,

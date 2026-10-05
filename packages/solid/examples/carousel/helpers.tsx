@@ -1,4 +1,3 @@
-/** @jsxImportSource solid-js */
 import type { JSX } from "solid-js";
 
 export function numberedSlides(count: number) {

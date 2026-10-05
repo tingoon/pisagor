@@ -1,16 +1,18 @@
 <script lang="ts">
-import { FileUpload as FileUploadPrimitive } from "@ark-ui/svelte/file-upload";
+import {
+  type FileUploadItemDeleteTriggerProps,
+  FileUpload as FileUploadPrimitive,
+} from "@ark-ui/svelte/file-upload";
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import { useFileUploadItem } from "./file-upload.context";
 
-type Props = {
-  class?: string | undefined;
-  children?: import("svelte").Snippet;
-  [key: string]: unknown;
-};
-let { class: className, children, ...rest }: Props = $props();
+let {
+  class: className,
+  children,
+  ...rest
+}: FileUploadItemDeleteTriggerProps = $props();
 const { slots } = useFileUploadItem();
 </script>
 
@@ -18,9 +20,9 @@ const { slots } = useFileUploadItem();
   {...rest}
   aria-label="Remove file"
   class={cn(
-  buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),
-  slots.deleteTrigger({ class: cn(className) }),
-)}
+    buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),
+    slots.deleteTrigger({ class: cn(className) }),
+  )}
   type="button"
 >
   {#if children}

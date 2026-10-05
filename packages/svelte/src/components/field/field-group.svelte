@@ -7,9 +7,8 @@ import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { setFieldContext } from "./field.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = HTMLAttributes<HTMLDivElement> & {
   children?: Snippet;
-  class?: string | undefined;
 } & BaseFieldProps;
 
 let {

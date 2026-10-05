@@ -1,10 +1,12 @@
 <script lang="ts">
 import { Field, TagsInput } from "@pisagor/svelte";
+
+let value = $state<string[]>([]);
 </script>
 
 <Field>
   <Field.Label>Frameworks</Field.Label>
-  <TagsInput addOnPaste class="w-full" delimiter="," value={[]}>
+  <TagsInput addOnPaste class="w-full" delimiter="," {value}>
     {#each value as tag, index}
       <TagsInput.Item {index} value={tag}>{tag}</TagsInput.Item>
     {/each}

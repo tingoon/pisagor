@@ -1,9 +1,13 @@
 <script lang="ts">
 import { parseColor, useColorPickerContext } from "@ark-ui/svelte/color-picker";
 import XIcon from "phosphor-svelte/lib/XIcon";
+import type { ClassValue } from "svelte/elements";
 import { InputGroup } from "../input-group";
 
-type Props = { class?: string | undefined; clearable?: boolean };
+type Props = {
+  class?: ClassValue;
+  clearable?: boolean;
+};
 let { clearable = false, class: className }: Props = $props();
 const api = useColorPickerContext();
 

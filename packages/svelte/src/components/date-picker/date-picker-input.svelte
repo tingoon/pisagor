@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { DatePickerInputProps as ArkInputProps } from "@ark-ui/svelte/date-picker";
-import { DatePicker as DatePickerPrimitive } from "@ark-ui/svelte/date-picker";
+import {
+  type DatePickerInputProps as ArkInputProps,
+  DatePicker as DatePickerPrimitive,
+} from "@ark-ui/svelte/date-picker";
 import {
   buttonRecipe,
   type FormControlGroupShellVariantProps,
@@ -13,11 +15,8 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { useDatePicker } from "./date-picker.context";
 import DatePickerClearTrigger from "./date-picker-clear-trigger.svelte";
 
-type Props = Omit<ArkInputProps, "class" | "size"> &
-  FormControlGroupShellVariantProps & {
-    class?: string | undefined;
-    clearable?: boolean;
-  };
+type Props = Omit<ArkInputProps, "size"> &
+  FormControlGroupShellVariantProps & { clearable?: boolean };
 
 let {
   size = "md",
@@ -37,10 +36,10 @@ const variant = $derived(variantProp ?? ctx?.variant ?? ("primary" as const));
   <DatePickerPrimitive.Control>
     <div
       class={cn(
-  formControlGroupShellRecipe({ size, surfaceVariant, variant }),
-  "group/input-group",
-  className,
-)}
+        formControlGroupShellRecipe({ size, surfaceVariant, variant }),
+        "group/input-group",
+        className,
+      )}
       data-part="root"
       data-scope="input-group"
     >
@@ -54,7 +53,7 @@ const variant = $derived(variantProp ?? ctx?.variant ?? ("primary" as const));
         {/if}
         <DatePickerPrimitive.Trigger
           aria-label="Open calendar"
-          class={cn(buttonRecipe({ size: "icon-xs", variant: "ghost" }).base())}
+          class={buttonRecipe({ size: "icon-xs", variant: "ghost" }).base()}
           type="button"
         >
           <CalendarIcon aria-hidden="true" class={slots.icon()} />

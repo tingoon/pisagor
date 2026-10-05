@@ -13,7 +13,6 @@ import {
   bottomNavigationItemRecipe,
   bottomNavigationRecipe,
 } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import {
@@ -47,7 +46,7 @@ export function BottomNavigationRoot(
     <BottomNavigationContext value={{ slots: slots() }}>
       <TabsPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
       />
     </BottomNavigationContext>
   );
@@ -59,10 +58,7 @@ export function BottomNavigationList(
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useBottomNavigation();
   return (
-    <TabsPrimitive.List
-      {...rest}
-      class={slots.list({ class: cn(local.class) })}
-    />
+    <TabsPrimitive.List {...rest} class={slots.list({ class: local.class })} />
   );
 }
 
@@ -76,7 +72,7 @@ export function BottomNavigationItem(
     <BottomNavigationItemContext value={{ slots: slots() }}>
       <TabsPrimitive.Trigger
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
       >
         {local.children}
       </TabsPrimitive.Trigger>
@@ -93,7 +89,7 @@ export function BottomNavigationItemIcon(
     <ark.span
       {...rest}
       aria-hidden
-      class={slots.icon({ class: cn(local.class) })}
+      class={slots.icon({ class: local.class })}
       data-part="item-icon"
       data-scope="bottom-navigation"
     />
@@ -108,7 +104,7 @@ export function BottomNavigationItemLabel(
   return (
     <ark.span
       {...rest}
-      class={slots.label({ class: cn(local.class) })}
+      class={slots.label({ class: local.class })}
       data-part="item-label"
       data-scope="bottom-navigation"
     />

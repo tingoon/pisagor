@@ -8,7 +8,6 @@ import type {
 import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/solid/image-cropper";
 import type { ImageCropperProps as BaseImageCropperRootProps } from "@pisagor/props";
 import { imageCropperRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { ImageCropperContext, useImageCropper } from "./image-cropper.context";
@@ -41,7 +40,7 @@ export function ImageCropperRoot(props: ImageCropperRootProps): JSX.Element {
     <ImageCropperContext value={{ slots: slots() }}>
       <ImageCropperPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         cropShape={local.cropShape}
       >
         <ImageCropperPrimitive.Viewport class={slots().viewport()}>

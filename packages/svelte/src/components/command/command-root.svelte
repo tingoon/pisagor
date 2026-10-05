@@ -6,9 +6,8 @@ import type { ComponentProps } from "svelte";
 import ComboboxRoot from "../combobox/combobox-root.svelte";
 import { setCommandContext } from "./command.context";
 
-type Props = Omit<ComponentProps<typeof ComboboxRoot>, "recipe" | "class"> & {
-  class?: string | undefined;
-} & BaseCommandProps;
+type Props = Omit<ComponentProps<typeof ComboboxRoot>, "recipe"> &
+  BaseCommandProps;
 
 let {
   recipe = commandRecipe,

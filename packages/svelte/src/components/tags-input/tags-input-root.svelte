@@ -1,6 +1,8 @@
 <script lang="ts">
-import type { TagsInputRootProps as ArkRootProps } from "@ark-ui/svelte/tags-input";
-import { TagsInput as TagsInputPrimitive } from "@ark-ui/svelte/tags-input";
+import {
+  type TagsInputRootProps as ArkRootProps,
+  TagsInput as TagsInputPrimitive,
+} from "@ark-ui/svelte/tags-input";
 import type { TagsInputProps as BaseTagsInputProps } from "@pisagor/props";
 import {
   type FormControlGroupShellVariantProps,
@@ -12,9 +14,8 @@ import TagsInputControl from "./tags-input-control.svelte";
 import TagsInputInput from "./tags-input-input.svelte";
 import TagsInputItem from "./tags-input-item.svelte";
 
-type Props = Omit<ArkRootProps, "class" | "onValueChange"> &
+type Props = Omit<ArkRootProps, "onValueChange"> &
   Pick<FormControlGroupShellVariantProps, "size" | "variant"> & {
-    class?: string | undefined;
     clearable?: boolean;
     onValueChange?: (value: string[]) => void;
     placeholder?: string;
@@ -55,8 +56,8 @@ function handleValueChange(details: { value: string[] }) {
   <TagsInputControl {clearable} {size} {variant}>
     <TagsInputPrimitive.Context>
       {#snippet render(
-  api,
-)}
+        api,
+      )}
         {#each api().value as value, index (value)}
           <TagsInputItem {index} {value} />
         {/each}
