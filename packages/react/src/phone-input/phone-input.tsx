@@ -88,7 +88,7 @@ function PhoneInputContainer({
   return (
     <InputGroup
       {...rest}
-      className={cn(className)}
+      className={className}
       data-part="root"
       data-scope="phone-input"
       data-size={size}
@@ -290,7 +290,7 @@ export function PhoneInput({
     <PhoneInputContext value={contextValue}>
       <RPNPhoneInput
         {...rest}
-        className={cn(className)}
+        className={className}
         containerComponent={PhoneInputContainer}
         countrySelectComponent={PhoneInputCountrySelect}
         data-disabled={disabled || undefined}
