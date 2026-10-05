@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { SpinnerProps as BaseSpinnerProps } from "@pisagor/props";
 import { spinnerRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import CircleNotchIcon from "phosphor-svelte/lib/CircleNotchIcon";
 
 type Props = {
@@ -21,7 +20,7 @@ let {
 <CircleNotchIcon
   aria-hidden={ariaHidden}
   aria-label={ariaHidden ? undefined : (ariaLabel ?? "Loading")}
-  class={recipe({ class: cn(className) })}
+  class={recipe({ class: className })}
   data-part="root"
   data-scope="spinner"
   role="status"

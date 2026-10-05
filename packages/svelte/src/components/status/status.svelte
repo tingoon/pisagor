@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { StatusProps as BaseStatusProps } from "@pisagor/props";
 import { statusRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
 type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
@@ -23,7 +22,7 @@ let {
 <Ark
   as="span"
   {...rest}
-  class={recipe({ class: cn(className), size, variant })}
+  class={recipe({ class: className, size, variant })}
   data-part="indicator"
   data-scope="status"
   data-size={size}

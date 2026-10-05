@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { TableProps as BaseTableProps } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setTableContext } from "./table.context";
 
@@ -33,7 +32,7 @@ setTableContext({
   <Ark
     as="table"
     {...rest}
-    class={slots.base({ class: cn(className) })}
+    class={slots.base({ class: className })}
     data-hoverable={isHoverable}
     data-part="root"
     data-scope="table"

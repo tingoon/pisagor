@@ -1,6 +1,5 @@
 <script lang="ts">
 import { selectRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "svelte";
 import Separator from "../separator/separator.svelte";
 import { useSelectRoot } from "./select.context";
@@ -14,7 +13,7 @@ const slots = $derived(ctx?.slots ?? selectRecipe());
 
 <Separator
   {...rest}
-  class={slots.separator({ class: cn(className) })}
+  class={slots.separator({ class: className })}
   data-part="separator"
   data-scope="select"
 />

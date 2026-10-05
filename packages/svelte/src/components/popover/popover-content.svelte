@@ -34,7 +34,7 @@ setPopoverContentContext({
   <PopoverPrimitive.Positioner>
     <PopoverPrimitive.Content
       {...rest}
-      class={slots.base({ class: cn(className) })}
+      class={slots.base({ class: className })}
     >
       {@render children?.()}
       {#if showCloseButton}

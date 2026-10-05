@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useBottomNavigationItem } from "./bottom-navigation.context";
 
@@ -14,7 +13,7 @@ const { slots } = useBottomNavigationItem();
 <Ark
   as="span"
   {...rest}
-  class={slots.label({ class: cn(className) })}
+  class={slots.label({ class: className })}
   data-part="item-label"
   data-scope="bottom-navigation"
 >

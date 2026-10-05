@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { ScrollArea } from "../scroll-area";
@@ -25,7 +24,7 @@ const { slots } = useDrawer();
   <Ark
     as="div"
     {...rest}
-    class={slots.body({ class: cn(className) })}
+    class={slots.body({ class: className })}
     data-part="body"
     data-scope="drawer"
   >

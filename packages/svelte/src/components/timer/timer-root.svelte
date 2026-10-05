@@ -3,7 +3,6 @@ import type { TimerRootProps as ArkRootProps } from "@ark-ui/svelte/timer";
 import { Timer as TimerPrimitive } from "@ark-ui/svelte/timer";
 import type { TimerProps as BaseTimerProps } from "@pisagor/props";
 import { timerRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { setTimerContext } from "./timer.context";
 import TimerArea from "./timer-area.svelte";
 import TimerControl from "./timer-control.svelte";
@@ -39,7 +38,7 @@ setTimerContext({
 });
 </script>
 
-<TimerPrimitive.Root {...rest} class={slots.base({ class: cn(className) })}>
+<TimerPrimitive.Root {...rest} class={slots.base({ class: className })}>
   {#if units}
     <TimerArea>
       {#each units as unit, index (unit)}

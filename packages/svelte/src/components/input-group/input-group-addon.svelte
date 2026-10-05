@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { InputGroupAddonProps as BaseInputGroupAddonProps } from "@pisagor/props";
 import { inputGroupAddonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
 type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
@@ -29,7 +28,7 @@ function handleClick(event: MouseEvent & { currentTarget: HTMLDivElement }) {
 <Ark
   as="div"
   {...rest}
-  class={recipe({ align, class: cn(className) })}
+  class={recipe({ align, class: className })}
   data-align={align}
   data-part="addon"
   data-scope="input-group"

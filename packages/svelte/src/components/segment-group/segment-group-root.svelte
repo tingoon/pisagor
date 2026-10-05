@@ -3,7 +3,6 @@ import type { SegmentGroupRootProps as ArkRootProps } from "@ark-ui/svelte/segme
 import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/svelte/segment-group";
 import type { SegmentGroupProps as BaseSegmentGroupProps } from "@pisagor/props";
 import { segmentGroupRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { setSegmentGroupContext } from "./segment-group.context";
 import SegmentGroupIndicator from "./segment-group-indicator.svelte";
 
@@ -41,7 +40,7 @@ function handleValueChange(
 
 <SegmentGroupPrimitive.Root
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-variant={variant}
   onValueChange={onValueChange ? handleValueChange : undefined}
   {orientation}

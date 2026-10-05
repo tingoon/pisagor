@@ -9,7 +9,6 @@ import {
   type JsonTreeViewRecipeSlot,
   jsonTreeViewRecipe,
 } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 import { setJsonTreeViewContext } from "./json-tree-view.context";
 
@@ -41,14 +40,11 @@ setJsonTreeViewContext({
   <CaretRightIcon />
 {/snippet}
 
-<JsonTreeViewPrimitive.Root
-  {...rest}
-  class={slots.base({ class: cn(className) })}
->
+<JsonTreeViewPrimitive.Root {...rest} class={slots.base({ class: className })}>
   <JsonTreeViewPrimitive.Tree
     {...treeProps}
     {arrow}
-    class={slots.tree({ class: cn(classNames?.tree) })}
+    class={slots.tree({ class: classNames?.tree })}
     {renderValue}
   />
 </JsonTreeViewPrimitive.Root>

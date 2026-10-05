@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useItem } from "./item.context";
 
@@ -17,7 +16,7 @@ const { slots } = useItem();
 <Ark
   as="div"
   {...rest}
-  class={slots.header({ class: cn(className) })}
+  class={slots.header({ class: className })}
   data-part="header"
   data-scope="item"
 >

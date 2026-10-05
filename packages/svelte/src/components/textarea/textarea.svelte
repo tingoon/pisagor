@@ -77,10 +77,7 @@ function handleClear() {
     bind:value
   />
 {:else}
-  <InputGroupRoot
-    class={slots.group({ class: cn(classNames?.group) })}
-    {variant}
-  >
+  <InputGroupRoot class={slots.group({ class: classNames?.group })} {variant}>
     <Field.Textarea
       {...rest}
       class={slots.clearableRoot({

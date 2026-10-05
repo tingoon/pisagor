@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { CollapsibleTriggerProps } from "@ark-ui/svelte/collapsible";
 import { Collapsible as CollapsiblePrimitive } from "@ark-ui/svelte/collapsible";
-import { cn } from "@pisagor/utils";
 import { useCollapsible } from "./collapsible.context";
 
 type Props = Omit<CollapsibleTriggerProps, "class"> & {
@@ -14,7 +13,7 @@ const { slots } = useCollapsible();
 
 <CollapsiblePrimitive.Trigger
   {...rest}
-  class={slots.trigger({ class: cn(className) })}
+  class={slots.trigger({ class: className })}
 >
   {@render children?.()}
 </CollapsiblePrimitive.Trigger>

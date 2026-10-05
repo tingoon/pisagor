@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { StepsCompletedContentProps } from "@ark-ui/svelte/steps";
 import { Steps as StepsPrimitive } from "@ark-ui/svelte/steps";
-import { cn } from "@pisagor/utils";
 import { useSteps } from "./steps.context";
 
 type Props = Omit<StepsCompletedContentProps, "class"> & {
@@ -14,7 +13,7 @@ const { slots } = useSteps();
 
 <StepsPrimitive.CompletedContent
   {...rest}
-  class={slots.completedContent({ class: cn(className) })}
+  class={slots.completedContent({ class: className })}
 >
   {@render children?.()}
 </StepsPrimitive.CompletedContent>

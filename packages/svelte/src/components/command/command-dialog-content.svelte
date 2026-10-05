@@ -2,7 +2,6 @@
 import { Portal } from "@ark-ui/svelte/portal";
 import type { CommandProps as BaseCommandProps } from "@pisagor/props";
 import { commandRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "svelte";
 import DialogBackdrop from "../dialog/dialog-backdrop.svelte";
 import DialogContent from "../dialog/dialog-content.svelte";
@@ -43,7 +42,7 @@ setCommandContext({
   <DialogPositioner>
     <DialogContent
       {...rest}
-      class={slots.dialogContent({ class: cn(className) })}
+      class={slots.dialogContent({ class: className })}
       showCloseButton={false}
       {size}
     >

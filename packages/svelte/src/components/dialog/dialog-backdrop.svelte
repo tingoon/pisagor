@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { DialogBackdropProps } from "@ark-ui/svelte/dialog";
 import { Dialog as DialogPrimitive } from "@ark-ui/svelte/dialog";
-import { cn } from "@pisagor/utils";
 import { useDialog } from "./dialog.context";
 
 type Props = Omit<DialogBackdropProps, "class"> & {
@@ -14,6 +13,6 @@ const { modal, slots } = useDialog();
 {#if modal}
   <DialogPrimitive.Backdrop
     {...rest}
-    class={slots.backdrop({ class: cn(className) })}
+    class={slots.backdrop({ class: className })}
   />
 {/if}

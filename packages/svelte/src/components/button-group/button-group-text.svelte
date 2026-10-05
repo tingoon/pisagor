@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useButtonGroup } from "./button-group.context";
 
@@ -17,7 +16,7 @@ const { slots } = useButtonGroup();
 <Ark
   as="div"
   {...rest}
-  class={slots.text({ class: cn(className) })}
+  class={slots.text({ class: className })}
   data-part="text"
   data-scope="button-group"
 >

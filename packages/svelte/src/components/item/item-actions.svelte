@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useItem } from "./item.context";
 
@@ -17,7 +16,7 @@ const { slots } = useItem();
 <Ark
   as="div"
   {...rest}
-  class={slots.actions({ class: cn(className) })}
+  class={slots.actions({ class: className })}
   data-part="actions"
   data-scope="item"
 >

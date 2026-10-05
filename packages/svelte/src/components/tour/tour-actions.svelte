@@ -16,7 +16,7 @@ const actions = $derived(tour().step?.actions ?? []);
 {#if actions.length > 0}
   <TourPrimitive.Control>
     <div
-      class={cn(dialogSlots.footer(), slots.actions({ class: cn(className) }))}
+      class={cn(dialogSlots.footer(), slots.actions({ class: className }))}
       data-part="actions"
       data-scope="tour"
     >

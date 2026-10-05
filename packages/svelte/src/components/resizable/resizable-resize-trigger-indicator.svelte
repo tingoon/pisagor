@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { SplitterResizeTriggerIndicatorProps } from "@ark-ui/svelte/splitter";
 import { Splitter as SplitterPrimitive } from "@ark-ui/svelte/splitter";
-import { cn } from "@pisagor/utils";
 import { useResizable } from "./resizable.context";
 
 type Props = Omit<SplitterResizeTriggerIndicatorProps, "class"> & {
@@ -13,5 +12,5 @@ const { slots } = useResizable();
 
 <SplitterPrimitive.ResizeTriggerIndicator
   {...rest}
-  class={slots.resizeTriggerIndicator({ class: cn(className) })}
+  class={slots.resizeTriggerIndicator({ class: className })}
 />

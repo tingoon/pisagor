@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { DataListProps as BaseDataListProps } from "@pisagor/props";
 import { dataListRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
 type Props = Omit<HTMLAttributes<HTMLDListElement>, "class"> & {
@@ -23,7 +22,7 @@ let {
 <Ark
   as="dl"
   {...rest}
-  class={recipe({ class: cn(className) })}
+  class={recipe({ class: className })}
   data-orientation={orientation}
   data-part="root"
   data-scope="data-list"

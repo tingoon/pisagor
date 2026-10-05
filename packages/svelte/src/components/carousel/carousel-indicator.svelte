@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { CarouselIndicatorProps } from "@ark-ui/svelte/carousel";
 import { Carousel as CarouselPrimitive } from "@ark-ui/svelte/carousel";
-import { cn } from "@pisagor/utils";
 import { useCarousel } from "./carousel.context";
 
 type Props = Omit<CarouselIndicatorProps, "class"> & {
@@ -13,5 +12,5 @@ const { slots } = useCarousel();
 
 <CarouselPrimitive.Indicator
   {...rest}
-  class={slots.indicator({ class: cn(className) })}
+  class={slots.indicator({ class: className })}
 />

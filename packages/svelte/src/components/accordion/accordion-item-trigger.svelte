@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { AccordionItemTriggerProps } from "@ark-ui/svelte/accordion";
 import { Accordion as AccordionPrimitive } from "@ark-ui/svelte/accordion";
-import { cn } from "@pisagor/utils";
 import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
 import { useAccordionItem } from "./accordion.context";
 
@@ -15,7 +14,7 @@ const { slots } = useAccordionItem();
 
 <AccordionPrimitive.ItemTrigger
   {...rest}
-  class={slots.trigger({ class: cn(className) })}
+  class={slots.trigger({ class: className })}
 >
   {@render children?.()}
   <AccordionPrimitive.ItemIndicator>

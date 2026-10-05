@@ -4,7 +4,6 @@ import {
   AngleSlider as AngleSliderPrimitive,
   useAngleSliderContext,
 } from "@ark-ui/svelte/angle-slider";
-import { cn } from "@pisagor/utils";
 import { useCircularSlider } from "./circular-slider.context";
 
 type Props = Omit<AngleSliderValueTextProps, "class"> & {
@@ -21,7 +20,7 @@ const value = $derived(api().value);
 
 <AngleSliderPrimitive.ValueText
   {...rest}
-  class={slots.value({ class: cn(className) })}
+  class={slots.value({ class: className })}
 >
   {prefix} {value} {suffix}
 </AngleSliderPrimitive.ValueText>

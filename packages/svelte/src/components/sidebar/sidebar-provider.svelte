@@ -3,7 +3,6 @@ import { Ark } from "@ark-ui/svelte/factory";
 import { useHotkey } from "@ark-ui/svelte/hotkeys";
 import type { SidebarProps as BaseSidebarProps } from "@pisagor/props";
 import { sidebarRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { onMount } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import {
@@ -124,7 +123,7 @@ const wrapperStyle = $derived(
 <Ark
   as="div"
   {...rest}
-  class={slots.wrapper({ class: cn(className) })}
+  class={slots.wrapper({ class: className })}
   data-part="wrapper"
   data-scope="sidebar"
   style={wrapperStyle}

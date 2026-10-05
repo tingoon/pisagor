@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { useDrawer } from "./drawer.context";
@@ -17,7 +16,7 @@ const { slots } = useDrawer();
 <Ark
   as="div"
   {...rest}
-  class={slots.contentInner({ class: cn(className) })}
+  class={slots.contentInner({ class: className })}
   data-part="content-inner"
   data-scope="drawer"
 >

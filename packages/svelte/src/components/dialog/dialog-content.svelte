@@ -27,7 +27,7 @@ const { slots } = useDialog();
 
 <DialogPrimitive.Content
   {...rest}
-  class={slots.content({ bottomStickOnMobile, class: cn(className), size })}
+  class={slots.content({ bottomStickOnMobile, class: className, size })}
 >
   {@render children?.()}
   {#if showCloseButton}

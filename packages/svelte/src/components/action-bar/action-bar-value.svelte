@@ -1,5 +1,4 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "svelte";
 import { Badge } from "../badge";
 import { useActionBar } from "./action-bar.context";
@@ -15,7 +14,7 @@ const ctx = useActionBar();
 
 <Badge
   {...rest}
-  class={ctx.slots.value({ class: cn(className) })}
+  class={ctx.slots.value({ class: className })}
   data-part="value"
   data-scope="action-bar"
   variant="secondary"

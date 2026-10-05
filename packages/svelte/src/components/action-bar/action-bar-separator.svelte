@@ -1,5 +1,4 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
 import { Separator } from "../separator";
 import { useActionBar } from "./action-bar.context";
 
@@ -10,7 +9,7 @@ const ctx = useActionBar();
 
 <Separator
   {...rest}
-  class={ctx.slots.separator({ class: cn(className) })}
+  class={ctx.slots.separator({ class: className })}
   data-part="separator"
   data-scope="action-bar"
 />

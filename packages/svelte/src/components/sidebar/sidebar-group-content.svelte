@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useSidebar } from "./sidebar.context";
 
@@ -16,7 +15,7 @@ const ctx = useSidebar();
 <Ark
   as="div"
   {...rest}
-  class={ctx.slots.groupContent({ class: cn(className) })}
+  class={ctx.slots.groupContent({ class: className })}
   data-part="group-content"
   data-scope="sidebar"
   data-sidebar="group-content"

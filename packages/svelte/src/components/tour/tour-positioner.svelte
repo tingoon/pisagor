@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { TourPositionerProps } from "@ark-ui/svelte/tour";
 import { Tour as TourPrimitive } from "@ark-ui/svelte/tour";
-import { cn } from "@pisagor/utils";
 import { useTourContext } from "./tour.context";
 
 type Props = Omit<TourPositionerProps, "class"> & {
@@ -13,7 +12,7 @@ const { slots } = useTourContext();
 
 <TourPrimitive.Positioner
   {...rest}
-  class={slots.positioner({ class: cn(className) })}
+  class={slots.positioner({ class: className })}
 >
   {@render children?.()}
 </TourPrimitive.Positioner>

@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setSurfaceContext } from "../surface/surface.context";
 import { useFrame } from "./frame.context";
@@ -20,7 +19,7 @@ setSurfaceContext({ depth: 1, variant: "default" });
 <Ark
   as="div"
   {...rest}
-  class={slots.panel({ class: cn(className) })}
+  class={slots.panel({ class: className })}
   data-part="panel"
   data-scope="frame"
 >

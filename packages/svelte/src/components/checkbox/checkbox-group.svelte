@@ -3,7 +3,6 @@ import type { CheckboxGroupProps as ArkCheckboxGroupProps } from "@ark-ui/svelte
 import { Checkbox as CheckboxPrimitive } from "@ark-ui/svelte/checkbox";
 import type { CheckboxGroupProps as BaseCheckboxGroupProps } from "@pisagor/props";
 import { checkboxGroupRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 
 type Props = Omit<ArkCheckboxGroupProps, "class" | "onValueChange"> & {
   children?: import("svelte").Snippet;
@@ -22,7 +21,7 @@ let {
 
 <CheckboxPrimitive.Group
   {...rest}
-  class={recipe({ class: cn(className) })}
+  class={recipe({ class: className })}
   {onValueChange}
 >
   {@render children?.()}

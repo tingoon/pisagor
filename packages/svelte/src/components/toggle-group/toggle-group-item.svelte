@@ -19,7 +19,7 @@ const ctx = useToggleGroup();
   class={cn(
     buttonRecipe({ clickEffect: false, variant: ctx.variant }).base(),
     toggleRecipe({ size: ctx.size }),
-    ctx.slots.item({ class: cn(className) }),
+    ctx.slots.item({ class: className }),
   )}
   data-spacing={ctx.spacing}
   data-variant={ctx.variant}

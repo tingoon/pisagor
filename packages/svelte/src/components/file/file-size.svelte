@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { Format } from "../format";
 import { useFile } from "./file.context";
@@ -17,7 +16,7 @@ const { slots } = useFile();
 <Ark
   as="div"
   {...rest}
-  class={slots.size({ class: cn(className) })}
+  class={slots.size({ class: className })}
   data-part="size"
   data-scope="file"
 >

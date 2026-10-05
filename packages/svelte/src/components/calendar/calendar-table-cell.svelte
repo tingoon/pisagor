@@ -6,7 +6,6 @@ import type {
 import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
 import type { CalendarTableCellProps as BaseCalendarTableCellProps } from "@pisagor/props";
 import { calendarTableCellRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 
 type Props = Omit<DatePickerTableCellTriggerProps, "class" | "value"> &
   Pick<DatePickerTableCellProps, "value" | "visibleRange"> & {
@@ -28,7 +27,7 @@ const slots = $derived(recipe());
 <CalendarPrimitive.TableCell class={slots.base()} {value} {visibleRange}>
   <CalendarPrimitive.TableCellTrigger
     {...rest}
-    class={slots.trigger({ class: cn(className) })}
+    class={slots.trigger({ class: className })}
   >
     {@render children?.()}
   </CalendarPrimitive.TableCellTrigger>

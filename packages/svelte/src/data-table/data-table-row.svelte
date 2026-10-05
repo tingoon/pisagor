@@ -1,5 +1,4 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "svelte";
 import { Table } from "../components/table";
 import { useDataTableRowContext } from "./data-table.context";
@@ -12,7 +11,7 @@ const { row } = useDataTableRowContext();
 <Table.Row
   {...rest}
   aria-selected={row.getIsSelected()}
-  class={cn(className)}
+  class={className}
   data-part="row"
   data-scope="data-table"
   data-state={row.getIsSelected() ? "selected" : undefined}

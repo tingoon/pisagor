@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { AngleSliderControlProps } from "@ark-ui/svelte/angle-slider";
 import { AngleSlider as AngleSliderPrimitive } from "@ark-ui/svelte/angle-slider";
-import { cn } from "@pisagor/utils";
 import { useCircularSlider } from "./circular-slider.context";
 import CircularSliderMarker from "./circular-slider-marker.svelte";
 import CircularSliderMarkerGroup from "./circular-slider-marker-group.svelte";
@@ -39,7 +38,7 @@ const markerValues = $derived.by(() => {
 
 <AngleSliderPrimitive.Control
   {...rest}
-  class={slots.control({ class: cn(className) })}
+  class={slots.control({ class: className })}
 >
   <CircularSliderProgressRing />
   {#if markerValues}

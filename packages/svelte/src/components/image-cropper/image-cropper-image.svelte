@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { ImageCropperImageProps } from "@ark-ui/svelte/image-cropper";
 import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/svelte/image-cropper";
-import { cn } from "@pisagor/utils";
 import { useImageCropper } from "./image-cropper.context";
 
 type Props = Omit<ImageCropperImageProps, "class"> & {
@@ -13,5 +12,5 @@ const { slots } = useImageCropper();
 
 <ImageCropperPrimitive.Image
   {...rest}
-  class={slots.image({ class: cn(className) })}
+  class={slots.image({ class: className })}
 />

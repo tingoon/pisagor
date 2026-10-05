@@ -3,7 +3,6 @@ import type { MenuRadioItemProps } from "@ark-ui/svelte/menu";
 import { Menu as MenuPrimitive } from "@ark-ui/svelte/menu";
 import type { DropdownMenuItemProps as BaseDropdownMenuItemProps } from "@pisagor/props";
 import { dropdownMenuItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 
 type Props = Omit<MenuRadioItemProps, "class"> & {
@@ -19,7 +18,7 @@ let {
 const slots = $derived(recipe({ inset: true, variant: "default" }));
 </script>
 
-<MenuPrimitive.RadioItem {...rest} class={slots.base({ class: cn(className) })}>
+<MenuPrimitive.RadioItem {...rest} class={slots.base({ class: className })}>
   <MenuPrimitive.ItemIndicator class={slots.indicator()}>
     <CheckIcon />
   </MenuPrimitive.ItemIndicator>

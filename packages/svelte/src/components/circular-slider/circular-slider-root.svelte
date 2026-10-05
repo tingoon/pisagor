@@ -6,7 +6,6 @@ import type {
 import { AngleSlider as AngleSliderPrimitive } from "@ark-ui/svelte/angle-slider";
 import type { CircularSliderProps as BaseCircularSliderProps } from "@pisagor/props";
 import { circularSliderRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import {
   type CircularSliderContextValue,
   setCircularSliderContext,
@@ -78,7 +77,7 @@ function handleValueChange(details: { value: number }) {
 
 <AngleSliderPrimitive.Root
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   onValueChange={onValueChange ? handleValueChange : undefined}
   {step}
   style={`--thickness: ${thickness}px; height: ${size}px; width: ${size}px;`}

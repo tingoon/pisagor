@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { ScrollArea } from "../scroll-area";
 import { useSidebar } from "./sidebar.context";
@@ -28,7 +27,7 @@ const ctx = useSidebar();
   <Ark
     as="div"
     {...rest}
-    class={ctx.slots.content({ class: cn(className) })}
+    class={ctx.slots.content({ class: className })}
     data-part="content"
     data-scope="sidebar"
     data-sidebar="content"

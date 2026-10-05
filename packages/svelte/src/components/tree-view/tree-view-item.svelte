@@ -3,7 +3,6 @@ import type { TreeViewItemProps } from "@ark-ui/svelte/tree-view";
 import { TreeView as TreeViewPrimitive } from "@ark-ui/svelte/tree-view";
 import type { TreeViewItemProps as BaseTreeViewItemProps } from "@pisagor/props";
 import { treeViewItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { setTreeViewItemContext, useTreeView } from "./tree-view.context";
 
 type Props = Omit<TreeViewItemProps, "class"> & {
@@ -26,9 +25,6 @@ setTreeViewItemContext({
 });
 </script>
 
-<TreeViewPrimitive.Item
-  {...rest}
-  class={slots.control({ class: cn(className) })}
->
+<TreeViewPrimitive.Item {...rest} class={slots.control({ class: className })}>
   {@render children?.()}
 </TreeViewPrimitive.Item>

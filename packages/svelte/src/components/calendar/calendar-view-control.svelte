@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { DatePickerViewControlProps } from "@ark-ui/svelte/date-picker";
 import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
-import { cn } from "@pisagor/utils";
 import { useCalendar } from "./calendar.context";
 
 type Props = Omit<DatePickerViewControlProps, "class"> & {
@@ -13,7 +12,7 @@ const { slots } = useCalendar();
 
 <CalendarPrimitive.ViewControl
   {...rest}
-  class={slots.viewControl({ class: cn(className) })}
+  class={slots.viewControl({ class: className })}
 >
   {@render children?.()}
 </CalendarPrimitive.ViewControl>

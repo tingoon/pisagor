@@ -1,5 +1,4 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "svelte";
 import DialogBody from "../dialog/dialog-body.svelte";
 import { useSheet } from "./sheet.context";
@@ -11,7 +10,7 @@ const { slots } = useSheet();
 
 <DialogBody
   {...rest}
-  class={slots.body({ class: cn(className) })}
+  class={slots.body({ class: className })}
   data-part="body"
   data-scope="sheet"
 />

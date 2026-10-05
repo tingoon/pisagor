@@ -52,7 +52,7 @@ setTooltipContext({
         class={slots.content({ class: cn(className, classNames?.content) })}
       >
         <TooltipPrimitive.Arrow
-          class={slots.arrow({ class: cn(classNames?.arrow) })}
+          class={slots.arrow({ class: classNames?.arrow })}
         >
           <TooltipPrimitive.ArrowTip />
         </TooltipPrimitive.Arrow>

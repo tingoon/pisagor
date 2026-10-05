@@ -1,7 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
 import type { CardProps as BaseCardProps } from "@pisagor/props";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useCard } from "./card.context";
 
@@ -23,7 +22,7 @@ const { slots } = useCard();
 <Ark
   as="div"
   {...rest}
-  class={slots.media({ class: cn(className), variant })}
+  class={slots.media({ class: className, variant })}
   data-part="media"
   data-scope="card"
   data-variant={variant}

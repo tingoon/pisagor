@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { AccordionItemContentProps } from "@ark-ui/svelte/accordion";
 import { Accordion as AccordionPrimitive } from "@ark-ui/svelte/accordion";
-import { cn } from "@pisagor/utils";
 import { useAccordionItem } from "./accordion.context";
 
 type Props = Omit<AccordionItemContentProps, "class"> & {
@@ -14,7 +13,7 @@ const { slots } = useAccordionItem();
 
 <AccordionPrimitive.ItemContent
   {...rest}
-  class={slots.content({ class: cn(className) })}
+  class={slots.content({ class: className })}
 >
   <div class={slots.body()}>
     {@render children?.()}

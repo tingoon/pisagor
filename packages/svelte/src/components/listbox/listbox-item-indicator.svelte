@@ -2,7 +2,6 @@
 import type { ListboxItemIndicatorProps } from "@ark-ui/svelte/listbox";
 import { Listbox as ListboxPrimitive } from "@ark-ui/svelte/listbox";
 import { listboxItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 import { useListboxItem } from "./listbox.context";
 
@@ -17,7 +16,7 @@ const slots = $derived(ctx?.slots ?? listboxItemRecipe());
 
 <ListboxPrimitive.ItemIndicator
   {...rest}
-  class={slots.indicator({ class: cn(className) })}
+  class={slots.indicator({ class: className })}
 >
   {#if children}
     {@render children()}

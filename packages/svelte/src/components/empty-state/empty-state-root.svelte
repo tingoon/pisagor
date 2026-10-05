@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { EmptyStateProps as BaseEmptyStateProps } from "@pisagor/props";
 import { emptyStateRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setEmptyStateContext } from "./empty-state.context";
 
@@ -30,7 +29,7 @@ setEmptyStateContext({
 <Ark
   as="div"
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-part="root"
   data-scope="empty-state"
 >

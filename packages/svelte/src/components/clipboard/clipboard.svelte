@@ -76,7 +76,7 @@ const shellClassName = $derived(
 {#snippet control()}
   <ClipboardPrimitive.Root {...rest} class={className}>
     <ClipboardPrimitive.Control
-      class={slots.control({ class: cn(classNames?.control) })}
+      class={slots.control({ class: classNames?.control })}
     >
       {#if variant === "input"}
         <ClipboardPrimitive.Input
@@ -100,7 +100,7 @@ const shellClassName = $derived(
         type="button"
       >
         <ClipboardPrimitive.Indicator
-          class={slots.indicator({ class: cn(classNames?.indicator) })}
+          class={slots.indicator({ class: classNames?.indicator })}
         >
           {#snippet copied()}
             {#if copiedIcon}
@@ -121,8 +121,8 @@ const shellClassName = $derived(
 {/snippet}
 
 {#if label}
-  <div class={slots.field({ class: cn(classNames?.field) })}>
-    <span {...labelProps} class={slots.label({ class: cn(classNames?.label) })}
+  <div class={slots.field({ class: classNames?.field })}>
+    <span {...labelProps} class={slots.label({ class: classNames?.label })}
       >{label}</span
     >
     {@render control()}

@@ -3,7 +3,6 @@ import type { MenuTriggerItemProps } from "@ark-ui/svelte/menu";
 import { Menu as MenuPrimitive } from "@ark-ui/svelte/menu";
 import type { DropdownMenuItemProps as BaseDropdownMenuItemProps } from "@pisagor/props";
 import { dropdownMenuItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 import DropdownMenuShortcut from "./dropdown-menu-shortcut.svelte";
 
@@ -21,7 +20,7 @@ let {
 
 <MenuPrimitive.TriggerItem
   {...rest}
-  class={recipe({ variant: "default" }).base({ class: cn(className) })}
+  class={recipe({ variant: "default" }).base({ class: className })}
 >
   {@render children?.()}
   <DropdownMenuShortcut>

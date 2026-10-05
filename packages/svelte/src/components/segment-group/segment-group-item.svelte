@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { SegmentGroupItemProps as ArkItemProps } from "@ark-ui/svelte/segment-group";
 import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/svelte/segment-group";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import { useSegmentGroup } from "./segment-group.context";
 
@@ -14,10 +13,7 @@ let { children, text, class: className, ...rest }: Props = $props();
 const { slots } = useSegmentGroup();
 </script>
 
-<SegmentGroupPrimitive.Item
-  {...rest}
-  class={slots.item({ class: cn(className) })}
->
+<SegmentGroupPrimitive.Item {...rest} class={slots.item({ class: className })}>
   {#if children}
     <SegmentGroupPrimitive.ItemText class={slots.itemText()}>
       {@render children()}

@@ -1,5 +1,4 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useAppShell } from "./app-shell.context";
 
@@ -15,7 +14,7 @@ const ctx = useAppShell();
 
 <div
   {...rest}
-  class={ctx.slots.main({ class: cn(className) })}
+  class={ctx.slots.main({ class: className })}
   data-part="main"
   data-scope="app-shell"
   style={`grid-area: main; ${style ?? ""}`}

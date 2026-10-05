@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useNavbar } from "./navbar.context";
 
@@ -14,7 +13,7 @@ const { slots } = useNavbar();
 <Ark
   as="div"
   {...rest}
-  class={slots.content({ class: cn(className) })}
+  class={slots.content({ class: className })}
   data-part="content"
   data-scope="navbar"
 >

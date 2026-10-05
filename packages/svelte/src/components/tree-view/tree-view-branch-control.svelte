@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { TreeViewBranchControlProps as ArkProps } from "@ark-ui/svelte/tree-view";
 import { TreeView as TreeViewPrimitive } from "@ark-ui/svelte/tree-view";
-import { cn } from "@pisagor/utils";
 import FolderIcon from "phosphor-svelte/lib/FolderIcon";
 import FolderOpenIcon from "phosphor-svelte/lib/FolderOpenIcon";
 import type { Component } from "svelte";
@@ -28,7 +27,7 @@ const branch = useTreeViewBranch();
 
 <TreeViewPrimitive.BranchControl
   {...rest}
-  class={slots.control({ class: cn(className) })}
+  class={slots.control({ class: className })}
 >
   <TreeViewBranchIndicator />
   <TreeViewPrimitive.NodeContext>

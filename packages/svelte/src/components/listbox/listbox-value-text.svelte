@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { ListboxValueTextProps } from "@ark-ui/svelte/listbox";
 import { Listbox as ListboxPrimitive } from "@ark-ui/svelte/listbox";
-import { cn } from "@pisagor/utils";
 import { useListbox } from "./listbox.context";
 
 type Props = Omit<ListboxValueTextProps, "class"> & {
@@ -14,5 +13,5 @@ const { slots } = useListbox();
 
 <ListboxPrimitive.ValueText
   {...rest}
-  class={slots.valueText({ class: cn(className) })}
+  class={slots.valueText({ class: className })}
 />

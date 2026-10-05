@@ -3,7 +3,6 @@ import type { ComboboxContentProps as ArkContentProps } from "@ark-ui/svelte/com
 import { Combobox as ComboboxPrimitive } from "@ark-ui/svelte/combobox";
 import { Portal } from "@ark-ui/svelte/portal";
 import { comboboxRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { useComboboxRoot } from "./combobox.context";
 import ComboboxPositioner from "./combobox-positioner.svelte";
 
@@ -22,7 +21,7 @@ const slots = $derived(ctx?.slots ?? comboboxRecipe());
     <ComboboxPositioner>
       <ComboboxPrimitive.Content
         {...rest}
-        class={slots.content({ class: cn(className) })}
+        class={slots.content({ class: className })}
       >
         {@render children?.()}
       </ComboboxPrimitive.Content>
@@ -31,7 +30,7 @@ const slots = $derived(ctx?.slots ?? comboboxRecipe());
 {:else}
   <ComboboxPrimitive.Content
     {...rest}
-    class={slots.content({ class: cn(className) })}
+    class={slots.content({ class: className })}
   >
     {@render children?.()}
   </ComboboxPrimitive.Content>

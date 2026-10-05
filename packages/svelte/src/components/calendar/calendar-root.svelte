@@ -3,7 +3,6 @@ import type { DatePickerRootProps } from "@ark-ui/svelte/date-picker";
 import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
 import type { CalendarProps as BaseCalendarProps } from "@pisagor/props";
 import { calendarRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { setCalendarSlotsContext } from "./calendar.context";
 
 type FormControlVariant = "primary" | "secondary";
@@ -31,7 +30,7 @@ setCalendarSlotsContext({
 
 <CalendarPrimitive.Root
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   inline
 >
   {@render children?.()}

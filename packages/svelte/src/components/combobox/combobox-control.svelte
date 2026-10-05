@@ -2,7 +2,6 @@
 import type { ComboboxControlProps } from "@ark-ui/svelte/combobox";
 import { Combobox as ComboboxPrimitive } from "@ark-ui/svelte/combobox";
 import { comboboxRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { useComboboxRoot } from "./combobox.context";
 
 type Props = Omit<ComboboxControlProps, "class"> & {
@@ -16,7 +15,7 @@ const slots = $derived(ctx?.slots ?? comboboxRecipe());
 
 <ComboboxPrimitive.Control
   {...rest}
-  class={slots.control({ class: cn(className) })}
+  class={slots.control({ class: className })}
 >
   {@render children?.()}
 </ComboboxPrimitive.Control>

@@ -3,7 +3,6 @@ import type { SwapIndicatorProps, SwapRootProps } from "@ark-ui/svelte/swap";
 import { Swap as SwapPrimitive } from "@ark-ui/svelte/swap";
 import type { SwapProps as BaseSwapProps } from "@pisagor/props";
 import { swapRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 
 type Props = Omit<SwapRootProps, "class" | "children"> & {
@@ -28,7 +27,7 @@ let {
 }: Props = $props();
 </script>
 
-<SwapPrimitive.Root {...rest} class={recipe({ class: cn(className), variant })}>
+<SwapPrimitive.Root {...rest} class={recipe({ class: className, variant })}>
   {#if on}
     <SwapPrimitive.Indicator {...onIndicatorProps} type="on">
       {@render on()}

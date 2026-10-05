@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { StepsSeparatorProps } from "@ark-ui/svelte/steps";
 import { Steps as StepsPrimitive } from "@ark-ui/svelte/steps";
-import { cn } from "@pisagor/utils";
 import { useStepsItem } from "./steps.context";
 
 type Props = Omit<StepsSeparatorProps, "class"> & {
@@ -14,5 +13,5 @@ const { slots } = useStepsItem();
 
 <StepsPrimitive.Separator
   {...rest}
-  class={slots.separator({ class: cn(className) })}
+  class={slots.separator({ class: className })}
 />

@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { AnnouncementProps as BaseAnnouncementProps } from "@pisagor/props";
 import { announcementRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setAnnouncementContext } from "./announcement.context";
 
@@ -35,7 +34,7 @@ setAnnouncementContext({
 <Ark
   as="div"
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-part="root"
   data-scope="announcement"
   {role}

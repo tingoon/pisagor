@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import ListBulletsIcon from "phosphor-svelte/lib/ListBulletsIcon";
 import ListNumbersIcon from "phosphor-svelte/lib/ListNumbersIcon";
 import TextBIcon from "phosphor-svelte/lib/TextBIcon";
@@ -55,7 +54,7 @@ const orderedList = $derived(
   <Ark
     as="div"
     {...rest}
-    class={ctx.slots.toolbar({ class: cn(className) })}
+    class={ctx.slots.toolbar({ class: className })}
     data-part="toolbar"
     data-scope="rich-text-editor"
   >

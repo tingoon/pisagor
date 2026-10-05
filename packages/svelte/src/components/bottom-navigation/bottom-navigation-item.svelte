@@ -3,7 +3,6 @@ import type { TabTriggerProps } from "@ark-ui/svelte/tabs";
 import { Tabs as TabsPrimitive } from "@ark-ui/svelte/tabs";
 import type { BottomNavigationItemProps as BaseBottomNavigationItemProps } from "@pisagor/props";
 import { bottomNavigationItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { setBottomNavigationItemContext } from "./bottom-navigation.context";
 
 type Props = Omit<TabTriggerProps, "class"> & {
@@ -25,6 +24,6 @@ setBottomNavigationItemContext({
 });
 </script>
 
-<TabsPrimitive.Trigger {...rest} class={slots.base({ class: cn(className) })}>
+<TabsPrimitive.Trigger {...rest} class={slots.base({ class: className })}>
   {@render children?.()}
 </TabsPrimitive.Trigger>

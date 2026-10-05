@@ -66,7 +66,7 @@ function handleValueChange(
 
 <NumberInputPrimitive.Root
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-size={size}
   onValueChange={onValueChange ? handleValueChange : undefined}
 >

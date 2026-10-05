@@ -10,7 +10,6 @@ import {
   inputGroupControlRecipe,
   passwordInputRecipe,
 } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import EyeIcon from "phosphor-svelte/lib/EyeIcon";
 import EyeSlashIcon from "phosphor-svelte/lib/EyeSlashIcon";
 import XIcon from "phosphor-svelte/lib/XIcon";
@@ -76,7 +75,7 @@ function handleClear() {
 </script>
 
 <PasswordInputPrimitive.Root
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-size={size}
   {defaultVisible}
   {invalid}
@@ -119,7 +118,7 @@ function handleClear() {
       <InputGroupAddon align="inline-end">
         <PasswordInputPrimitive.VisibilityTrigger
           aria-label="Toggle password visibility"
-          class={cn(inputGroupButtonRecipe({ size: "icon-xs" }))}
+          class={inputGroupButtonRecipe({ size: "icon-xs" })}
           type="button"
         >
           <PasswordInputPrimitive.Indicator>

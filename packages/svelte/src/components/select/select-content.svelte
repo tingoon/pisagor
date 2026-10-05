@@ -3,7 +3,6 @@ import { Portal } from "@ark-ui/svelte/portal";
 import type { SelectContentProps } from "@ark-ui/svelte/select";
 import { Select as SelectPrimitive } from "@ark-ui/svelte/select";
 import { selectRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { useSelectRoot } from "./select.context";
 
 type Props = Omit<SelectContentProps, "class"> & { class?: string | undefined };
@@ -17,7 +16,7 @@ const slots = $derived(ctx?.slots ?? selectRecipe());
   <SelectPrimitive.Positioner>
     <SelectPrimitive.Content
       {...rest}
-      class={slots.content({ class: cn(className) })}
+      class={slots.content({ class: className })}
     >
       {@render children?.()}
     </SelectPrimitive.Content>

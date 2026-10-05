@@ -19,7 +19,7 @@ const { slots } = useFileUploadItem();
   aria-label="Remove file"
   class={cn(
     buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),
-    slots.deleteTrigger({ class: cn(className) }),
+    slots.deleteTrigger({ class: className }),
   )}
   type="button"
 >

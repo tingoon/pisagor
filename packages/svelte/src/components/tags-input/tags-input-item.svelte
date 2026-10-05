@@ -3,7 +3,6 @@ import type { TagsInputItemProps as ArkItemProps } from "@ark-ui/svelte/tags-inp
 import { TagsInput as TagsInputPrimitive } from "@ark-ui/svelte/tags-input";
 import type { TagsInputItemProps as BaseTagsInputItemProps } from "@pisagor/props";
 import { tagsInputItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { setTagsInputItemContext } from "./tags-input.context";
 import TagsInputItemDeleteTrigger from "./tags-input-item-delete-trigger.svelte";
 import TagsInputItemInput from "./tags-input-item-input.svelte";
@@ -31,7 +30,7 @@ setTagsInputItemContext({
 });
 </script>
 
-<TagsInputPrimitive.Item {...rest} class={slots.base({ class: cn(className) })}>
+<TagsInputPrimitive.Item {...rest} class={slots.base({ class: className })}>
   <TagsInputItemPreview>
     <TagsInputItemText>
       {#if children}

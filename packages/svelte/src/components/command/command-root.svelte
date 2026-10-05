@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { CommandProps as BaseCommandProps } from "@pisagor/props";
 import { commandRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "svelte";
 import ComboboxRoot from "../combobox/combobox-root.svelte";
 import { setCommandContext } from "./command.context";
@@ -26,7 +25,7 @@ setCommandContext({
 
 <ComboboxRoot
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   closeOnSelect={false}
   disableLayer
   inputBehavior="autohighlight"

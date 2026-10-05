@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { DatePickerTableHeaderProps } from "@ark-ui/svelte/date-picker";
 import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
-import { cn } from "@pisagor/utils";
 import { useCalendar } from "./calendar.context";
 
 type Props = Omit<DatePickerTableHeaderProps, "class"> & {
@@ -13,7 +12,7 @@ const { slots } = useCalendar();
 
 <CalendarPrimitive.TableHeader
   {...rest}
-  class={slots.tableHeader({ class: cn(className) })}
+  class={slots.tableHeader({ class: className })}
 >
   {@render children?.()}
 </CalendarPrimitive.TableHeader>

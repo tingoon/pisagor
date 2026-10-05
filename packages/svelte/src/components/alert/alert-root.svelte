@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { AlertProps as BaseAlertProps } from "@pisagor/props";
 import { alertRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setAlertContext } from "./alert.context";
 
@@ -31,7 +30,7 @@ setAlertContext({
 <Ark
   as="div"
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-part="root"
   data-scope="alert"
 >

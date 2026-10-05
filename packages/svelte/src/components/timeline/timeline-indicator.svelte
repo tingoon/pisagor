@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useTimelineItem } from "./timeline.context";
 
@@ -14,7 +13,7 @@ const { slots } = useTimelineItem();
 <Ark
   as="div"
   {...rest}
-  class={slots.indicator({ class: cn(className) })}
+  class={slots.indicator({ class: className })}
   data-part="indicator"
   data-scope="timeline"
 >

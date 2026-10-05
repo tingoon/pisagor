@@ -5,7 +5,6 @@ import {
   type DataListItemRecipeSlot,
   dataListItemRecipe,
 } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { setDataListItemContext } from "./data-list.context";
@@ -40,7 +39,7 @@ setDataListItemContext({
 <Ark
   as="div"
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-part="item"
   data-scope="data-list"
 >

@@ -180,7 +180,7 @@ function handleCountryChange(nextValue: string[]) {
 </script>
 
 <InputGroup
-  class={cn(className)}
+  class={className}
   data-disabled={disabled || undefined}
   data-part="root"
   data-scope="phone-input"

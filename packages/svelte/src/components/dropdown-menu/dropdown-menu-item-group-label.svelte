@@ -2,7 +2,6 @@
 import type { MenuItemGroupLabelProps } from "@ark-ui/svelte/menu";
 import { Menu as MenuPrimitive } from "@ark-ui/svelte/menu";
 import { dropdownMenuRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { useDropdownMenu } from "./dropdown-menu.context";
 
 type Props = Omit<MenuItemGroupLabelProps, "class"> & {
@@ -16,7 +15,7 @@ const slots = $derived(context?.slots ?? dropdownMenuRecipe());
 
 <MenuPrimitive.ItemGroupLabel
   {...rest}
-  class={slots.itemGroupLabel({ class: cn(className) })}
+  class={slots.itemGroupLabel({ class: className })}
 >
   {@render children?.()}
 </MenuPrimitive.ItemGroupLabel>

@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
 import { buttonGroupRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLFieldsetAttributes } from "svelte/elements";
 import { setButtonGroupContext } from "./button-group.context";
 
@@ -31,7 +30,7 @@ setButtonGroupContext({
 <Ark
   as="fieldset"
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-orientation={orientation}
   data-part="root"
   data-scope="button-group"

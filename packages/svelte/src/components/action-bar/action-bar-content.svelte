@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import { Portal } from "@ark-ui/svelte/portal";
 import { Presence } from "@ark-ui/svelte/presence";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useActionBar } from "./action-bar.context";
 
@@ -35,7 +34,7 @@ const gutter = $derived(ctx.positioning.gutter);
       as="div"
       {...rest}
       aria-labelledby={ariaLabelledby}
-      class={ctx.slots.content({ class: cn(className) })}
+      class={ctx.slots.content({ class: className })}
       data-part="content"
       data-scope="action-bar"
       role="toolbar"

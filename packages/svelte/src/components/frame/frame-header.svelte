@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useFrame } from "./frame.context";
 
@@ -17,7 +16,7 @@ const { slots } = useFrame();
 <Ark
   as="header"
   {...rest}
-  class={slots.panelHeader({ class: cn(className) })}
+  class={slots.panelHeader({ class: className })}
   data-part="panel-header"
   data-scope="frame"
 >

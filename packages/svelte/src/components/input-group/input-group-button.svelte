@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { InputGroupButtonProps as BaseInputGroupButtonProps } from "@pisagor/props";
 import { inputGroupButtonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import Button from "../button/button.svelte";
 
 type Props = Omit<
@@ -22,7 +21,7 @@ let {
 
 <Button
   {...rest}
-  class={recipe({ class: cn(className), size })}
+  class={recipe({ class: className, size })}
   data-part="button"
   data-scope="input-group"
   data-size={size}

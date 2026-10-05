@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { SeparatorProps as BaseSeparatorProps } from "@pisagor/props";
 import { separatorRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
 type Props = Omit<HTMLAttributes<HTMLHRElement>, "class"> & {
@@ -22,7 +21,7 @@ let {
   as="hr"
   {...rest}
   aria-orientation={orientation}
-  class={recipe({ class: cn(className) })}
+  class={recipe({ class: className })}
   data-orientation={orientation}
   data-part="root"
   data-scope="separator"

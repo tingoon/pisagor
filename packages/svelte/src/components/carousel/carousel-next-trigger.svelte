@@ -18,7 +18,7 @@ const { slots } = useCarousel();
   aria-label="Next"
   class={cn(
     buttonRecipe({ pill: true, size: "icon-md", variant: "outline" }).base(),
-    slots.nextTrigger({ class: cn(className) }),
+    slots.nextTrigger({ class: className }),
   )}
   type="button"
 >

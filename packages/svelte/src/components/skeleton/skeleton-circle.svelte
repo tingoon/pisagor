@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { SkeletonProps as BaseSkeletonProps } from "@pisagor/props";
 import { skeletonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
 type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
@@ -23,7 +22,7 @@ const slots = $derived(recipe());
 <Ark
   as="div"
   {...rest}
-  class={slots.circle({ class: cn(className) })}
+  class={slots.circle({ class: className })}
   data-part="circle"
   data-scope="skeleton"
 >

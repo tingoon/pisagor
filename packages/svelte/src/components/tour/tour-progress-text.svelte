@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Tour as TourPrimitive } from "@ark-ui/svelte/tour";
-import { cn } from "@pisagor/utils";
 import { useTourContext } from "./tour.context";
 
 type Props = {
@@ -14,7 +13,7 @@ const { slots } = useTourContext();
 
 <TourPrimitive.ProgressText
   {...rest}
-  class={slots.progressText({ class: cn(className) })}
+  class={slots.progressText({ class: className })}
 >
   {@render children?.()}
 </TourPrimitive.ProgressText>

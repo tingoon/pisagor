@@ -30,7 +30,7 @@ const variant = $derived(variantProp ?? ctx.variant ?? "primary");
   {...rest}
   class={cn(
     inputRootRecipe({ size, surfaceVariant, variant }),
-    ctx.slots.input({ class: cn(className) }),
+    ctx.slots.input({ class: className }),
   )}
   {index}
 />

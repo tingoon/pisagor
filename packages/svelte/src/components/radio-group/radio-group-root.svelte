@@ -3,7 +3,6 @@ import type { RadioGroupRootProps as ArkRadioGroupRootProps } from "@ark-ui/svel
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/svelte/radio-group";
 import type { RadioGroupProps as BaseRadioGroupProps } from "@pisagor/props";
 import { radioGroupRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 
 type Props = Omit<ArkRadioGroupRootProps, "class" | "onValueChange"> & {
   children?: import("svelte").Snippet;
@@ -28,7 +27,7 @@ function handleValueChange(
 
 <RadioGroupPrimitive.Root
   {...rest}
-  class={recipe({ class: cn(className) })}
+  class={recipe({ class: className })}
   onValueChange={onValueChange ? handleValueChange : undefined}
 >
   {@render children?.()}

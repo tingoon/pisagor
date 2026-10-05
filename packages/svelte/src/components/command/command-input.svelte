@@ -33,7 +33,7 @@ onMount(() => {
   <div
     class={cn(
       formControlGroupShellRecipe({ size, surfaceVariant, variant: "primary" }),
-      slots.input({ class: cn(className) }),
+      slots.input({ class: className }),
     )}
     data-part="root"
     data-scope="input-group"

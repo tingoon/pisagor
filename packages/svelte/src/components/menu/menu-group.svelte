@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { useMenu } from "./menu.context";
@@ -17,7 +16,7 @@ const { slots } = useMenu();
 <Ark
   as="div"
   {...rest}
-  class={slots.group({ class: cn(className) })}
+  class={slots.group({ class: className })}
   data-part="group"
   data-scope="menu"
 >

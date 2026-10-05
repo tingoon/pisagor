@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { ScrollAreaThumbProps } from "@ark-ui/svelte/scroll-area";
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/svelte/scroll-area";
-import { cn } from "@pisagor/utils";
 import { useScrollArea } from "./scroll-area.context";
 
 type Props = Omit<ScrollAreaThumbProps, "class"> & {
@@ -14,5 +13,5 @@ const { slots } = useScrollArea();
 
 <ScrollAreaPrimitive.Thumb
   {...rest}
-  class={slots.thumb({ class: cn(className) })}
+  class={slots.thumb({ class: className })}
 />

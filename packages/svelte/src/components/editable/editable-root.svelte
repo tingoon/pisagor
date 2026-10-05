@@ -3,7 +3,6 @@ import type { EditableRootProps as ArkEditableRootProps } from "@ark-ui/svelte/e
 import { Editable as EditablePrimitive } from "@ark-ui/svelte/editable";
 import type { EditableProps as BaseEditableProps } from "@pisagor/props";
 import { editableRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { setEditableContext } from "./editable.context";
 
 type Props = Omit<
@@ -43,7 +42,7 @@ function handleValueChange(details: { value: string }) {
 
 <EditablePrimitive.Root
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-orientation={orientation}
   {defaultValue}
   onValueChange={onValueChange ? handleValueChange : undefined}

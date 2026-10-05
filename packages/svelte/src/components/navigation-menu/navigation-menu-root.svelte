@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
 import { navigationMenuRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { setNavigationMenuContext } from "./navigation-menu.context";
@@ -29,7 +28,7 @@ setNavigationMenuContext({
 <Ark
   as="nav"
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-part="root"
   data-scope="navigation-menu"
 >

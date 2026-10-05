@@ -3,7 +3,6 @@ import type { FileUploadRootProps as ArkRootProps } from "@ark-ui/svelte/file-up
 import { FileUpload as FileUploadPrimitive } from "@ark-ui/svelte/file-upload";
 import type { FileUploadProps as BaseFileUploadProps } from "@pisagor/props";
 import { fileUploadRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { setFileUploadContext } from "./file-upload.context";
 
 type Props = Omit<ArkRootProps, "class"> & {
@@ -37,7 +36,7 @@ function handleFileChange(
 
 <FileUploadPrimitive.Root
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   onFileChange={handleFileChange}
 >
   {@render children?.()}

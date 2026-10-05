@@ -1,7 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
 import type { FileProps as BaseFileProps } from "@pisagor/props";
-import { cn } from "@pisagor/utils";
 import FileIcon from "phosphor-svelte/lib/FileIcon";
 import type { HTMLAttributes } from "svelte/elements";
 import { useFile } from "./file.context";
@@ -17,7 +16,7 @@ const { slots } = useFile();
 <Ark
   as="div"
   {...rest}
-  class={slots.media({ class: cn(className), variant })}
+  class={slots.media({ class: className, variant })}
   data-part="media"
   data-scope="file"
   data-variant={variant}

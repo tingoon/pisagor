@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { useNavigationMenu } from "./navigation-menu.context";
@@ -17,7 +16,7 @@ const { slots } = useNavigationMenu();
 <Ark
   as="li"
   {...rest}
-  class={slots.item({ class: cn(className) })}
+  class={slots.item({ class: className })}
   data-part="item"
   data-scope="navigation-menu"
 >

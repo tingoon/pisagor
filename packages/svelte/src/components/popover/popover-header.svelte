@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { usePopoverContent } from "./popover.context";
 import PopoverDescription from "./popover-description.svelte";
@@ -23,7 +22,7 @@ let {
 const { slots } = usePopoverContent();
 </script>
 
-<Ark as="div" {...rest} class={slots.header({ class: cn(className) })}>
+<Ark as="div" {...rest} class={slots.header({ class: className })}>
   {#if title}
     <PopoverTitle>{title}</PopoverTitle>
   {/if}

@@ -6,7 +6,6 @@ import {
   type FormControlGroupShellVariantProps,
   tagsInputRecipe,
 } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { setTagsInputSlotsContext } from "./tags-input.context";
 import TagsInputControl from "./tags-input-control.svelte";
 import TagsInputInput from "./tags-input-input.svelte";
@@ -47,7 +46,7 @@ function handleValueChange(details: { value: string[] }) {
 
 <TagsInputPrimitive.Root
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-size={size}
   {editable}
   onValueChange={onValueChange ? handleValueChange : undefined}

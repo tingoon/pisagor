@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useEmptyState } from "./empty-state.context";
 
@@ -17,7 +16,7 @@ const { slots } = useEmptyState();
 <Ark
   as="div"
   {...rest}
-  class={slots.media({ class: cn(className) })}
+  class={slots.media({ class: className })}
   data-part="media"
   data-scope="empty-state"
 >

@@ -3,7 +3,6 @@ import type { QrCodeRootProps as ArkRootProps } from "@ark-ui/svelte/qr-code";
 import { QrCode as QrCodePrimitive } from "@ark-ui/svelte/qr-code";
 import type { QrCodeProps as BaseQrCodeProps } from "@pisagor/props";
 import { qrCodeRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { setQrCodeContext } from "./qr-code.context";
 import QrCodeFrame from "./qr-code-frame.svelte";
 
@@ -26,7 +25,7 @@ setQrCodeContext({
 });
 </script>
 
-<QrCodePrimitive.Root {...rest} class={slots.base({ class: cn(className) })}>
+<QrCodePrimitive.Root {...rest} class={slots.base({ class: className })}>
   {#if children}
     {@render children()}
   {:else}

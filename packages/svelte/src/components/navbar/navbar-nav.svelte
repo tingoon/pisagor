@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useNavbar } from "./navbar.context";
 
@@ -20,7 +19,7 @@ const { slots } = useNavbar();
   as="nav"
   {...rest}
   aria-label={ariaLabel}
-  class={slots.nav({ class: cn(className) })}
+  class={slots.nav({ class: className })}
   data-part="nav"
   data-scope="navbar"
 >

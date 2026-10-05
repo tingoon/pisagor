@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useSidebar } from "./sidebar.context";
 
@@ -16,7 +15,7 @@ const ctx = useSidebar();
 <Ark
   as="li"
   {...rest}
-  class={ctx.slots.menuSubItem({ class: cn(className) })}
+  class={ctx.slots.menuSubItem({ class: className })}
   data-part="menu-sub-item"
   data-scope="sidebar"
   data-sidebar="menu-sub-item"

@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { AvatarGroupProps as BaseAvatarGroupProps } from "@pisagor/props";
 import { avatarGroupRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import Avatar from "./avatar.svelte";
 import { setAvatarGroupContext } from "./avatar-group.context";
@@ -39,7 +38,7 @@ setAvatarGroupContext({
 <Ark
   as="div"
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-part="group"
   data-scope="avatar"
 >

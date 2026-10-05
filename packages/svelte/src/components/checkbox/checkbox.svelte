@@ -45,7 +45,7 @@ function handleCheckedChange(
   {...rest}
   class={cn(
     formControlToggleRecipe({ size: "md", surfaceVariant, variant }),
-    slots.base({ class: cn(className) }),
+    slots.base({ class: className }),
   )}
   data-variant={variant}
   onCheckedChange={onCheckedChange || onValueChange

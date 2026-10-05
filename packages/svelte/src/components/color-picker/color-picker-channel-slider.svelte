@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { ColorPickerChannelSliderProps } from "@ark-ui/svelte/color-picker";
 import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte/color-picker";
-import { cn } from "@pisagor/utils";
 import { useColorPicker } from "./color-picker.context";
 
 type Props = Omit<ColorPickerChannelSliderProps, "class"> & {
@@ -13,7 +12,7 @@ const { slots } = useColorPicker();
 
 <ColorPickerPrimitive.ChannelSlider
   {...rest}
-  class={slots.channelSlider({ class: cn(className) })}
+  class={slots.channelSlider({ class: className })}
 >
   {@render children?.()}
   <ColorPickerPrimitive.ChannelSliderTrack class={slots.channelSliderTrack()} />

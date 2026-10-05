@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { AngleSliderMarkerGroupProps } from "@ark-ui/svelte/angle-slider";
 import { AngleSlider as AngleSliderPrimitive } from "@ark-ui/svelte/angle-slider";
-import { cn } from "@pisagor/utils";
 import { useCircularSlider } from "./circular-slider.context";
 
 type Props = Omit<AngleSliderMarkerGroupProps, "class"> & {
@@ -13,7 +12,7 @@ const { slots } = useCircularSlider();
 
 <AngleSliderPrimitive.MarkerGroup
   {...rest}
-  class={slots.markerGroup({ class: cn(className) })}
+  class={slots.markerGroup({ class: className })}
 >
   {@render children?.()}
 </AngleSliderPrimitive.MarkerGroup>

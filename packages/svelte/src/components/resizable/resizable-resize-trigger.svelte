@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { SplitterResizeTriggerProps } from "@ark-ui/svelte/splitter";
 import { Splitter as SplitterPrimitive } from "@ark-ui/svelte/splitter";
-import { cn } from "@pisagor/utils";
 import DotsSixVerticalIcon from "phosphor-svelte/lib/DotsSixVerticalIcon";
 import { useResizable } from "./resizable.context";
 import ResizableResizeTriggerIndicator from "./resizable-resize-trigger-indicator.svelte";
@@ -23,7 +22,7 @@ const { slots } = useResizable();
 <SplitterPrimitive.ResizeTrigger
   {...rest}
   aria-label="Resize"
-  class={slots.resizeTrigger({ class: cn(className) })}
+  class={slots.resizeTrigger({ class: className })}
 >
   {#if withHandle}
     <div class={slots.resizeTriggerHandle()}>

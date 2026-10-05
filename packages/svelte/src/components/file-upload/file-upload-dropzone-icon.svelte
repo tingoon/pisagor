@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import UploadIcon from "phosphor-svelte/lib/UploadIcon";
 import type { HTMLAttributes } from "svelte/elements";
 import { useFileUpload } from "./file-upload.context";
@@ -15,7 +14,7 @@ const { slots } = useFileUpload();
 <Ark
   as="div"
   {...rest}
-  class={slots.dropzoneIcon({ class: cn(className) })}
+  class={slots.dropzoneIcon({ class: className })}
   data-part="dropzone-icon"
   data-scope="file-upload"
 >

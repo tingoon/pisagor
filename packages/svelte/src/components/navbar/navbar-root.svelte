@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { NavbarProps as BaseNavbarProps } from "@pisagor/props";
 import { navbarRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setNavbarContext } from "./navbar.context";
 
@@ -27,7 +26,7 @@ setNavbarContext({
 <Ark
   as="header"
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-part="root"
   data-scope="navbar"
 >

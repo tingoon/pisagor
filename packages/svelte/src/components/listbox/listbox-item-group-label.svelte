@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { ListboxItemGroupLabelProps } from "@ark-ui/svelte/listbox";
 import { Listbox as ListboxPrimitive } from "@ark-ui/svelte/listbox";
-import { cn } from "@pisagor/utils";
 import { useListbox } from "./listbox.context";
 
 type Props = Omit<ListboxItemGroupLabelProps, "class"> & {
@@ -14,7 +13,7 @@ const { slots } = useListbox();
 
 <ListboxPrimitive.ItemGroupLabel
   {...rest}
-  class={slots.itemGroupLabel({ class: cn(className) })}
+  class={slots.itemGroupLabel({ class: className })}
 >
   {@render children?.()}
 </ListboxPrimitive.ItemGroupLabel>

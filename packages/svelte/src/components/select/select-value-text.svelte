@@ -2,7 +2,6 @@
 import type { SelectValueTextProps } from "@ark-ui/svelte/select";
 import { Select as SelectPrimitive } from "@ark-ui/svelte/select";
 import { selectRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { useSelectRoot } from "./select.context";
 
 type Props = Omit<SelectValueTextProps, "class"> & {
@@ -16,5 +15,5 @@ const slots = $derived(ctx?.slots ?? selectRecipe());
 
 <SelectPrimitive.ValueText
   {...rest}
-  class={slots.valueText({ class: cn(className) })}
+  class={slots.valueText({ class: className })}
 />

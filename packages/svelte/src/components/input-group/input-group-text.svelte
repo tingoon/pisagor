@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { InputGroupTextProps as BaseInputGroupTextProps } from "@pisagor/props";
 import { inputGroupTextRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
 type Props = Omit<HTMLAttributes<HTMLSpanElement>, "class"> & {
@@ -21,7 +20,7 @@ let {
 <Ark
   as="span"
   {...rest}
-  class={recipe({ class: cn(className) })}
+  class={recipe({ class: className })}
   data-part="text"
   data-scope="input-group"
 >

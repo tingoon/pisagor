@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { ScrollAreaViewportProps } from "@ark-ui/svelte/scroll-area";
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/svelte/scroll-area";
-import { cn } from "@pisagor/utils";
 import { useScrollArea } from "./scroll-area.context";
 
 type Props = Omit<ScrollAreaViewportProps, "class"> & {
@@ -14,7 +13,7 @@ const { slots } = useScrollArea();
 
 <ScrollAreaPrimitive.Viewport
   {...rest}
-  class={slots.viewport({ class: cn(className) })}
+  class={slots.viewport({ class: className })}
 >
   <ScrollAreaPrimitive.Content>
     {@render children?.()}

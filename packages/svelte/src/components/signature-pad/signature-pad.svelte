@@ -45,14 +45,14 @@ setSignaturePadContext({
 <SignaturePadPrimitive.Root
   {...rest}
   aria-invalid={invalid || undefined}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-invalid={invalid || undefined}
 >
   <SignaturePadPrimitive.Control
     class={cn(
       formControlZoneRecipe({ surfaceVariant, variant }),
       slots.control({
-        class: cn(classNames?.control),
+        class: classNames?.control,
         variant,
       }),
     )}
@@ -60,20 +60,20 @@ setSignaturePadContext({
     data-variant={variant}
   >
     <SignaturePadPrimitive.Segment
-      class={slots.segment({ class: cn(classNames?.segment) })}
+      class={slots.segment({ class: classNames?.segment })}
     />
     <SignaturePadPrimitive.ClearTrigger
       aria-label="Clear signature"
       class={cn(
         buttonRecipe({ size: "icon-md", variant: "ghost" }).base(),
-        slots.clear({ class: cn(classNames?.clear) }),
+        slots.clear({ class: classNames?.clear }),
       )}
       type="button"
     >
       <ArrowCounterClockwiseIcon />
     </SignaturePadPrimitive.ClearTrigger>
     <SignaturePadPrimitive.Guide
-      class={slots.guide({ class: cn(classNames?.guide) })}
+      class={slots.guide({ class: classNames?.guide })}
     />
   </SignaturePadPrimitive.Control>
 </SignaturePadPrimitive.Root>

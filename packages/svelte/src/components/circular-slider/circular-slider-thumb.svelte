@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { AngleSliderThumbProps } from "@ark-ui/svelte/angle-slider";
 import { AngleSlider as AngleSliderPrimitive } from "@ark-ui/svelte/angle-slider";
-import { cn } from "@pisagor/utils";
 import { useCircularSlider } from "./circular-slider.context";
 
 type Props = Omit<AngleSliderThumbProps, "class"> & {
@@ -14,7 +13,7 @@ const halfThumb = $derived(thumbSize / 2);
 
 <AngleSliderPrimitive.Thumb
   {...rest}
-  class={slots.thumb({ class: cn(className) })}
+  class={slots.thumb({ class: className })}
   style={`--size: ${thumbSize}px;`}
 >
   <span

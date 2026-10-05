@@ -1,5 +1,4 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { ScrollArea } from "../scroll-area";
 import { useAppShell } from "./app-shell.context";
@@ -16,7 +15,7 @@ const ctx = useAppShell();
 <ScrollArea class={ctx.slots.scrollArea()}>
   <div
     {...rest}
-    class={ctx.slots.inspectorContent({ class: cn(className) })}
+    class={ctx.slots.inspectorContent({ class: className })}
     data-part="inspector-content"
     data-scope="app-shell"
   >

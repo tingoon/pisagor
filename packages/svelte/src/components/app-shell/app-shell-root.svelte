@@ -2,7 +2,6 @@
 import { useHotkey } from "@ark-ui/svelte/hotkeys";
 import type { AppShellProps as BaseAppShellProps } from "@pisagor/props";
 import { appShellRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import {
   APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS,
@@ -177,7 +176,7 @@ const shellStyle = $derived(
 
 <div
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-part="root"
   data-resizing={regionResizing ? "" : undefined}
   data-scope="app-shell"

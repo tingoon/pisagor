@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { ButtonProps as BaseButtonProps } from "@pisagor/props";
 import { buttonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLButtonAttributes } from "svelte/elements";
 import Spinner from "../spinner/spinner.svelte";
 
@@ -35,7 +34,7 @@ const slots = $derived(recipe({ clickEffect, loading, pill, size, variant }));
   as="button"
   {...rest}
   aria-busy={loading || undefined}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-part="root"
   data-scope="button"
   data-size={size}

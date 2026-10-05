@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useBreadcrumb } from "./breadcrumb.context";
 
@@ -14,7 +13,7 @@ const { slots } = useBreadcrumb();
 <Ark
   as="ol"
   {...rest}
-  class={slots.list({ class: cn(className) })}
+  class={slots.list({ class: className })}
   data-part="list"
   data-scope="breadcrumb"
 >

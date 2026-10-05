@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { StepsIndicatorProps } from "@ark-ui/svelte/steps";
 import { Steps as StepsPrimitive } from "@ark-ui/svelte/steps";
-import { cn } from "@pisagor/utils";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 import { useStepsItem } from "./steps.context";
 
@@ -15,7 +14,7 @@ const { slots } = useStepsItem();
 
 <StepsPrimitive.Indicator
   {...rest}
-  class={slots.indicator({ class: cn(className) })}
+  class={slots.indicator({ class: className })}
 >
   <span class={slots.label()}>{@render children?.()}</span>
   <CheckIcon class={slots.check()} />

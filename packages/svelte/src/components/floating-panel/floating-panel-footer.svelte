@@ -1,7 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
 import { floatingPanelRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useFloatingPanel } from "./floating-panel.context";
 
@@ -16,7 +15,7 @@ const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
 <Ark
   as="div"
   {...rest}
-  class={slots.footer({ class: cn(className) })}
+  class={slots.footer({ class: className })}
   data-part="footer"
   data-scope="floating-panel"
 >

@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { FrameProps as BaseFrameProps } from "@pisagor/props";
 import { frameRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setSurfaceContext } from "../surface/surface.context";
 import { setFrameContext } from "./frame.context";
@@ -32,7 +31,7 @@ setFrameContext({
 <Ark
   as="div"
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-part="root"
   data-scope="frame"
 >

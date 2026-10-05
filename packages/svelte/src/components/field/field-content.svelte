@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { useFieldSlots } from "./field.context";
@@ -17,7 +16,7 @@ const slots = useFieldSlots();
 <Ark
   as="div"
   {...rest}
-  class={slots.content({ class: cn(className) })}
+  class={slots.content({ class: className })}
   data-part="content"
   data-scope="field"
 >

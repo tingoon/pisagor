@@ -1,5 +1,4 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
 import Separator from "../separator/separator.svelte";
 import { useButtonGroup } from "./button-group.context";
 
@@ -15,7 +14,7 @@ const { slots } = useButtonGroup();
 
 <Separator
   {...rest}
-  class={slots.separator({ class: cn(className) })}
+  class={slots.separator({ class: className })}
   data-part="separator"
   data-scope="button-group"
   {orientation}

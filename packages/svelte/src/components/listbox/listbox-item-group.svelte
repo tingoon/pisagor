@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { ListboxItemGroupProps as ArkProps } from "@ark-ui/svelte/listbox";
 import { Listbox as ListboxPrimitive } from "@ark-ui/svelte/listbox";
-import { cn } from "@pisagor/utils";
 import { useListbox } from "./listbox.context";
 import ListboxItemGroupLabel from "./listbox-item-group-label.svelte";
 
@@ -16,7 +15,7 @@ const { slots } = useListbox();
 
 <ListboxPrimitive.ItemGroup
   {...rest}
-  class={slots.itemGroup({ class: cn(className) })}
+  class={slots.itemGroup({ class: className })}
 >
   {#if heading}
     <ListboxItemGroupLabel>{heading}</ListboxItemGroupLabel>

@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useToolbar } from "./toolbar.context";
 
@@ -14,7 +13,7 @@ const { slots } = useToolbar();
 <Ark
   as="p"
   {...rest}
-  class={slots.description({ class: cn(className) })}
+  class={slots.description({ class: className })}
   data-part="description"
   data-scope="toolbar"
 >

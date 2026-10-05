@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { useCommand } from "./command.context";
@@ -17,7 +16,7 @@ const { slots } = useCommand();
 <Ark
   as="span"
   {...rest}
-  class={slots.shortcut({ class: cn(className) })}
+  class={slots.shortcut({ class: className })}
   data-part="shortcut"
   data-scope="command"
 >

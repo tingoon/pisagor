@@ -73,7 +73,7 @@ function handleClear() {
 {#if skipClearable}
   <Field.Input
     {...rest}
-    class={rootRecipe({ class: cn(className), size, surfaceVariant, variant })}
+    class={rootRecipe({ class: className, size, surfaceVariant, variant })}
     data-size={size}
     data-variant={variant}
     {disabled}

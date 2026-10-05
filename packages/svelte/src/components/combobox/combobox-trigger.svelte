@@ -20,7 +20,7 @@ const slots = $derived(ctx?.slots ?? comboboxRecipe());
   aria-label="Toggle"
   class={cn(
     buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),
-    slots.trigger({ class: cn(className) }),
+    slots.trigger({ class: className }),
     slots.triggerButton(),
   )}
   type="button"

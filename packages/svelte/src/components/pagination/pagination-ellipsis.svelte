@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { PaginationEllipsisProps } from "@ark-ui/svelte/pagination";
 import { Pagination as PaginationPrimitive } from "@ark-ui/svelte/pagination";
-import { cn } from "@pisagor/utils";
 import DotsThreeIcon from "phosphor-svelte/lib/DotsThreeIcon";
 import { usePagination } from "./pagination.context";
 
@@ -15,7 +14,7 @@ const { slots } = usePagination();
 
 <PaginationPrimitive.Ellipsis
   {...rest}
-  class={slots.ellipsis({ class: cn(className) })}
+  class={slots.ellipsis({ class: className })}
 >
   <DotsThreeIcon />
 </PaginationPrimitive.Ellipsis>

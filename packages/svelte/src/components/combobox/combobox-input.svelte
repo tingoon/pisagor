@@ -64,7 +64,7 @@ const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
       {#if clearable && api().inputValue}
         <ComboboxClearTrigger
           aria-label="Clear"
-          class={cn(buttonRecipe({ size: "icon-xs", variant: "ghost" }).base())}
+          class={buttonRecipe({ size: "icon-xs", variant: "ghost" }).base()}
           type="button"
         >
           <XIcon aria-hidden="true" />

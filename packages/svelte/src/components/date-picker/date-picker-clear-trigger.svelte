@@ -4,7 +4,6 @@ import {
   useDatePickerContext,
 } from "@ark-ui/svelte/date-picker";
 import { buttonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
 
 const api = useDatePickerContext();
@@ -16,7 +15,7 @@ const visible = $derived(
 {#if visible}
   <DatePickerPrimitive.ClearTrigger
     aria-label="Clear"
-    class={cn(buttonRecipe({ size: "icon-xs", variant: "ghost" }).base())}
+    class={buttonRecipe({ size: "icon-xs", variant: "ghost" }).base()}
     type="button"
   >
     <XIcon />

@@ -3,7 +3,6 @@ import type { FieldsetRootProps } from "@ark-ui/svelte/fieldset";
 import { Fieldset as FieldsetPrimitive } from "@ark-ui/svelte/fieldset";
 import type { FieldProps as BaseFieldProps } from "@pisagor/props";
 import { fieldRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { setFieldContext } from "./field.context";
 
 type Props = Omit<FieldsetRootProps, "class"> & {
@@ -24,6 +23,6 @@ setFieldContext({
 });
 </script>
 
-<FieldsetPrimitive.Root {...rest} class={slots.set({ class: cn(className) })}>
+<FieldsetPrimitive.Root {...rest} class={slots.set({ class: className })}>
   {@render children?.()}
 </FieldsetPrimitive.Root>

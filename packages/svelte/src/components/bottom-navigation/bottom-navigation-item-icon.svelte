@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useBottomNavigationItem } from "./bottom-navigation.context";
 
@@ -15,7 +14,7 @@ const { slots } = useBottomNavigationItem();
   as="span"
   {...rest}
   aria-hidden="true"
-  class={slots.icon({ class: cn(className) })}
+  class={slots.icon({ class: className })}
   data-part="item-icon"
   data-scope="bottom-navigation"
 >

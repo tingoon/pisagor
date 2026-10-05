@@ -1,7 +1,6 @@
 <script lang="ts">
 import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte/color-picker";
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useColorPicker } from "./color-picker.context";
 
@@ -15,7 +14,7 @@ const { slots } = useColorPicker();
 <Ark
   as="div"
   {...rest}
-  class={slots.inputSwatch({ class: cn(className) })}
+  class={slots.inputSwatch({ class: className })}
   data-part="input-swatch"
   data-scope="color-picker"
 >

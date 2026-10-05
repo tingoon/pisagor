@@ -4,7 +4,6 @@ import type { ListboxRootProps as ArkListboxRootProps } from "@ark-ui/svelte/lis
 import { Listbox as ListboxPrimitive } from "@ark-ui/svelte/listbox";
 import type { ListboxProps as BaseListboxProps } from "@pisagor/props";
 import { listboxRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { setListboxContext } from "./listbox.context";
 
 type Props = Omit<
@@ -37,7 +36,7 @@ function handleValueChange(details: { value: string[] }) {
 
 <ListboxPrimitive.Root
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   onValueChange={onValueChange ? handleValueChange : undefined}
 >
   {@render children?.()}

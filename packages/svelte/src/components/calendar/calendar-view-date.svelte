@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { DatePickerRangeTextProps } from "@ark-ui/svelte/date-picker";
 import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
-import { cn } from "@pisagor/utils";
 import { useCalendar } from "./calendar.context";
 
 type Props = Omit<DatePickerRangeTextProps, "class"> & {
@@ -13,5 +12,5 @@ const { slots } = useCalendar();
 
 <CalendarPrimitive.RangeText
   {...rest}
-  class={slots.rangeText({ class: cn(className) })}
+  class={slots.rangeText({ class: className })}
 />

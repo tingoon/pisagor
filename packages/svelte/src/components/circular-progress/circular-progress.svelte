@@ -6,7 +6,6 @@ import {
   type CircularProgressRecipeSlot,
   circularProgressRecipe,
 } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import { setCircularProgressContext } from "./circular-progress.context";
 import CircularProgressTrack from "./circular-progress-track.svelte";
@@ -59,13 +58,13 @@ setCircularProgressContext({
 
 <ProgressPrimitive.Root
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   value={indeterminate ? null : value}
 >
   {#if isValueVisible}
-    <span class={slots.valueWrapper({ class: cn(classNames?.valueWrapper) })}>
+    <span class={slots.valueWrapper({ class: classNames?.valueWrapper })}>
       <ProgressPrimitive.ValueText
-        class={slots.value({ class: cn(classNames?.value) })}
+        class={slots.value({ class: classNames?.value })}
       />
     </span>
   {/if}

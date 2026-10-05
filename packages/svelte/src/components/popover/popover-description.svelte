@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { PopoverDescriptionProps } from "@ark-ui/svelte/popover";
 import { Popover as PopoverPrimitive } from "@ark-ui/svelte/popover";
-import { cn } from "@pisagor/utils";
 import { usePopoverContent } from "./popover.context";
 
 type Props = Omit<PopoverDescriptionProps, "class"> & {
@@ -13,7 +12,7 @@ const { slots } = usePopoverContent();
 
 <PopoverPrimitive.Description
   {...rest}
-  class={slots.description({ class: cn(className) })}
+  class={slots.description({ class: className })}
 >
   {@render children?.()}
 </PopoverPrimitive.Description>

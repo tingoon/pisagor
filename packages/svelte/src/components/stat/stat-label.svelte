@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useStat } from "./stat.context";
 
@@ -17,7 +16,7 @@ const { slots } = useStat();
 <Ark
   as="div"
   {...rest}
-  class={slots.label({ class: cn(className) })}
+  class={slots.label({ class: className })}
   data-part="label"
   data-scope="stat"
 >

@@ -31,10 +31,7 @@ const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 const slots = $derived(recipe());
 </script>
 
-<RadioGroupPrimitive.Item
-  {...rest}
-  class={slots.base({ class: cn(className) })}
->
+<RadioGroupPrimitive.Item {...rest} class={slots.base({ class: className })}>
   <RadioGroupPrimitive.ItemControl
     class={cn(
       formControlRadioToggleRecipe({ surfaceVariant, variant }),

@@ -7,7 +7,6 @@ import {
   type ToggleVariantProps,
   toggleGroupRecipe,
 } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { setToggleGroupContext } from "./toggle-group.context";
 
 type Props = Omit<
@@ -67,7 +66,7 @@ const mergedStyle = $derived(
 
 <ToggleGroupPrimitive.Root
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   {multiple}
   onValueChange={onValueChange ? handleValueChange : undefined}
   {orientation}

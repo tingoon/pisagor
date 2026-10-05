@@ -62,7 +62,7 @@ function handleValueChange(
   onValueChange={onValueChange ? handleValueChange : undefined}
 >
   <RatingGroupPrimitive.Control
-    class={slots.control({ class: cn(classNames?.control) })}
+    class={slots.control({ class: classNames?.control })}
   >
     <RatingGroupPrimitive.Context>
       {#snippet render(
@@ -70,7 +70,7 @@ function handleValueChange(
       )}
         {#each api().items as item (item)}
           <RatingGroupPrimitive.Item
-            class={slots.item({ class: cn(classNames?.item) })}
+            class={slots.item({ class: classNames?.item })}
             index={item}
           >
             <RatingGroupPrimitive.ItemContext>
@@ -79,7 +79,7 @@ function handleValueChange(
               )}
                 {const state = itemApi()}
                 <span
-                  class={slots.indicator({ class: cn(classNames?.indicator) })}
+                  class={slots.indicator({ class: classNames?.indicator })}
                   data-half={state.half ? "" : undefined}
                   data-highlighted={state.highlighted ? "" : undefined}
                   data-part="item-indicator"

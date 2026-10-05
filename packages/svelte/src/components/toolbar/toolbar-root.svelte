@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { ToolbarProps as BaseToolbarProps } from "@pisagor/props";
 import { toolbarRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setToolbarContext } from "./toolbar.context";
 
@@ -27,7 +26,7 @@ setToolbarContext({
 <Ark
   as="div"
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-part="root"
   data-scope="toolbar"
 >

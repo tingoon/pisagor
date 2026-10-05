@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { CarouselItemGroupProps } from "@ark-ui/svelte/carousel";
 import { Carousel as CarouselPrimitive } from "@ark-ui/svelte/carousel";
-import { cn } from "@pisagor/utils";
 import { useCarousel } from "./carousel.context";
 
 type Props = Omit<CarouselItemGroupProps, "class"> & {
@@ -13,7 +12,7 @@ const { slots } = useCarousel();
 
 <CarouselPrimitive.ItemGroup
   {...rest}
-  class={slots.itemGroup({ class: cn(className) })}
+  class={slots.itemGroup({ class: className })}
 >
   {@render children?.()}
 </CarouselPrimitive.ItemGroup>

@@ -1,5 +1,4 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useAppShell } from "./app-shell.context";
 
@@ -14,7 +13,7 @@ const ctx = useAppShell();
 
 <div
   {...rest}
-  class={ctx.slots.inspectorHeader({ class: cn(className) })}
+  class={ctx.slots.inspectorHeader({ class: className })}
   data-part="inspector-header"
   data-scope="app-shell"
 >

@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { TimerItemGroupProps as BaseTimerItemGroupProps } from "@pisagor/props";
 import { timerItemGroupRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setTimerItemGroupContext } from "./timer.context";
 
@@ -30,7 +29,7 @@ setTimerItemGroupContext({
 <Ark
   as="div"
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-orientation={orientation}
   data-part="item-group"
   data-scope="timer"

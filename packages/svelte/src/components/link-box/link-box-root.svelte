@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { LinkBoxProps as BaseLinkBoxProps } from "@pisagor/props";
 import { linkBoxRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setLinkBoxContext } from "./link-box.context";
 
@@ -30,7 +29,7 @@ setLinkBoxContext({
 <Ark
   as="div"
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-part="root"
   data-scope="link-box"
 >

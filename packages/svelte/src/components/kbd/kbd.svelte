@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { KbdProps as BaseKbdProps } from "@pisagor/props";
 import { kbdRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
 type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
@@ -22,7 +21,7 @@ let {
 <Ark
   as="kbd"
   {...rest}
-  class={recipe({ class: cn(className), variant })}
+  class={recipe({ class: className, variant })}
   data-part="root"
   data-scope="kbd"
 >

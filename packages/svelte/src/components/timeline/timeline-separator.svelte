@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useTimelineItem } from "./timeline.context";
 
@@ -15,7 +14,7 @@ const { slots } = useTimelineItem();
   as="div"
   {...rest}
   aria-hidden="true"
-  class={slots.separator({ class: cn(className) })}
+  class={slots.separator({ class: className })}
   data-part="separator"
   data-scope="timeline"
 >

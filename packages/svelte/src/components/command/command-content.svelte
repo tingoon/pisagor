@@ -1,5 +1,4 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "svelte";
 import ComboboxContent from "../combobox/combobox-content.svelte";
 import { useCommand } from "./command.context";
@@ -12,6 +11,6 @@ const { slots } = useCommand();
 
 <ComboboxContent
   {...rest}
-  class={slots.content({ class: cn(className) })}
+  class={slots.content({ class: className })}
   portalled={false}
 />

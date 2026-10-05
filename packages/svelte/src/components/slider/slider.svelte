@@ -79,7 +79,7 @@ function handleValueChange(
 
 <SliderPrimitive.Root
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-variant={variant}
   {defaultValue}
   {max}
@@ -88,13 +88,13 @@ function handleValueChange(
   bind:value
 >
   {#if label !== undefined || showValue}
-    <div class={slots.header({ class: cn(classNames?.header) })}>
+    <div class={slots.header({ class: classNames?.header })}>
       {#if label !== undefined}
         <SliderPrimitive.Label>{label}</SliderPrimitive.Label>
       {/if}
       {#if showValue}
         <SliderPrimitive.ValueText
-          class={slots.value({ class: cn(classNames?.value) })}
+          class={slots.value({ class: classNames?.value })}
         />
       {/if}
     </div>
@@ -103,13 +103,13 @@ function handleValueChange(
   {@render children?.()}
 
   <SliderPrimitive.Control
-    class={slots.control({ class: cn(classNames?.control) })}
+    class={slots.control({ class: classNames?.control })}
   >
     <SliderPrimitive.Track
       class={slots.track({ class: cn(trackVariantClass, classNames?.track) })}
     >
       <SliderPrimitive.Range
-        class={slots.range({ class: cn(classNames?.range) })}
+        class={slots.range({ class: classNames?.range })}
       />
     </SliderPrimitive.Track>
 
@@ -126,20 +126,18 @@ function handleValueChange(
 
   {#if showMarkers}
     <SliderPrimitive.MarkerGroup
-      class={slots.markerGroup({ class: cn(classNames?.markerGroup) })}
+      class={slots.markerGroup({ class: classNames?.markerGroup })}
     >
       {#each Array.from({ length: max + 1 }) as _, index (index)}
         <SliderPrimitive.Marker
-          class={slots.marker({ class: cn(classNames?.marker) })}
+          class={slots.marker({ class: classNames?.marker })}
           data-interval={index % markerInterval === 0 ? undefined : ""}
           value={index}
         >
           <span
-            class={slots.markerTick({ class: cn(classNames?.markerTick) })}
+            class={slots.markerTick({ class: classNames?.markerTick })}
           ></span>
-          <span
-            class={slots.markerLabel({ class: cn(classNames?.markerLabel) })}
-          >
+          <span class={slots.markerLabel({ class: classNames?.markerLabel })}>
             {markerLabels[index] ?? index}
           </span>
         </SliderPrimitive.Marker>

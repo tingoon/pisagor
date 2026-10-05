@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAnchorAttributes } from "svelte/elements";
 import { useLinkBox } from "./link-box.context";
 
@@ -17,7 +16,7 @@ const { slots } = useLinkBox();
 <Ark
   as="a"
   {...rest}
-  class={slots.overlay({ class: cn(className) })}
+  class={slots.overlay({ class: className })}
   data-part="overlay"
   data-scope="link-box"
 >

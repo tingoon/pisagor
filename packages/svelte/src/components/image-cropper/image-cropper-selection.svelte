@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { ImageCropperSelectionProps as ArkSelectionProps } from "@ark-ui/svelte/image-cropper";
 import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/svelte/image-cropper";
-import { cn } from "@pisagor/utils";
 import { useImageCropper } from "./image-cropper.context";
 import ImageCropperGrid from "./image-cropper-grid.svelte";
 import ImageCropperHandle from "./image-cropper-handle.svelte";
@@ -17,7 +16,7 @@ const { slots } = useImageCropper();
 
 <ImageCropperPrimitive.Selection
   {...rest}
-  class={slots.selection({ class: cn(className) })}
+  class={slots.selection({ class: className })}
 >
   {@render children?.()}
   {#if axis === "horizontal" || axis === "both"}

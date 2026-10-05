@@ -1,7 +1,6 @@
 <script generics="TData extends RowData = RowData" lang="ts">
 import type { DataGridProps as BaseDataGridProps } from "@pisagor/props";
 import { dataGridRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type {
   RowData,
   TableOptions,
@@ -64,7 +63,7 @@ setDataGridContext({
 </script>
 
 <div
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-part="root"
   data-scope="data-grid"
 >

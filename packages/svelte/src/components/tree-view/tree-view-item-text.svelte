@@ -2,7 +2,6 @@
 import type { TreeViewItemTextProps as ArkProps } from "@ark-ui/svelte/tree-view";
 import { TreeView as TreeViewPrimitive } from "@ark-ui/svelte/tree-view";
 import { treeViewItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import FileIcon from "phosphor-svelte/lib/FileIcon";
 import type { Component } from "svelte";
 import { useTreeView, useTreeViewItem } from "./tree-view.context";
@@ -47,7 +46,7 @@ function getFileIcon(value: string): Component {
     {:else}
       <TreeViewPrimitive.ItemText
         {...rest}
-        class={slots.title({ class: cn(className) })}
+        class={slots.title({ class: className })}
       >
         {@render children?.()}
       </TreeViewPrimitive.ItemText>

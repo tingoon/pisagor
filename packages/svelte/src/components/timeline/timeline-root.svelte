@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { TimelineProps as BaseTimelineProps } from "@pisagor/props";
 import { timelineRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
 type Props = Omit<HTMLAttributes<HTMLOListElement>, "class"> & {
@@ -21,7 +20,7 @@ let {
 <Ark
   as="ol"
   {...rest}
-  class={recipe({ class: cn(className), orientation })}
+  class={recipe({ class: className, orientation })}
   data-orientation={orientation}
   data-part="root"
   data-scope="timeline"

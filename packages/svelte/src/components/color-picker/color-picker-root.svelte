@@ -6,7 +6,6 @@ import {
 } from "@ark-ui/svelte/color-picker";
 import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
 import { colorPickerRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { setColorPickerContext } from "./color-picker.context";
 
 type Props = Omit<
@@ -47,7 +46,7 @@ function handleValueChange(details: { valueAsString: string }) {
 
 <ColorPickerPrimitive.Root
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   onValueChange={handleValueChange}
   {positioning}
   value={parsed}

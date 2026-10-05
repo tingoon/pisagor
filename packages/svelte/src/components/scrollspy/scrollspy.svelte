@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { ScrollspyProps as BaseScrollspyProps } from "@pisagor/props";
 import { scrollspyRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { onMount } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 
@@ -162,7 +161,7 @@ onMount(() => {
 
 <nav
   {...rest}
-  class={recipe({ class: cn(className) })}
+  class={recipe({ class: className })}
   data-part="root"
   data-scope="scrollspy"
   onclick={onClick}

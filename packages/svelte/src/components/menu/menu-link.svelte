@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAnchorAttributes } from "svelte/elements";
 import { useMenu } from "./menu.context";
@@ -26,7 +25,7 @@ const { slots } = useMenu();
     as="a"
     {...rest}
     aria-current={active ? "page" : undefined}
-    class={slots.link({ class: cn(className) })}
+    class={slots.link({ class: className })}
     data-active={active ? "" : undefined}
     data-part="link"
     data-scope="menu"

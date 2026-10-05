@@ -1,5 +1,4 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useDataTableContext } from "./data-table.context";
 
@@ -14,7 +13,7 @@ const { slots } = useDataTableContext();
 
 <div
   {...rest}
-  class={slots.toolbar({ class: cn(className) })}
+  class={slots.toolbar({ class: className })}
   data-part="toolbar"
   data-scope="data-table"
 >

@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLButtonAttributes } from "svelte/elements";
 import { useActionBar } from "./action-bar.context";
 
@@ -20,7 +19,7 @@ function handleClick(e: Parameters<NonNullable<Props["onclick"]>>[0]) {
   as="button"
   {...rest}
   aria-label="Close"
-  class={ctx.slots.close({ class: cn(className) })}
+  class={ctx.slots.close({ class: className })}
   data-part="close"
   data-scope="action-bar"
   data-state={ctx.isOpen ? "open" : "closed"}

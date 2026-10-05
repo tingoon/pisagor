@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useTable } from "./table.context";
 
@@ -15,7 +14,7 @@ const { slots } = useTable();
 <Ark
   as="caption"
   {...rest}
-  class={slots.caption({ class: cn(className) })}
+  class={slots.caption({ class: className })}
   data-part="caption"
   data-scope="table"
 >

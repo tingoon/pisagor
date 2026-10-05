@@ -6,7 +6,6 @@ import {
 } from "@ark-ui/svelte/toast";
 import type { ToastProps as BaseToastProps } from "@pisagor/props";
 import { toastRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { toast as defaultToast } from "./toast";
 import ToastItem from "./toast-item.svelte";
 
@@ -35,7 +34,7 @@ const toasterStyle = $derived(
 <Portal>
   <ToasterPrimitive
     {...rest}
-    class={recipe({ class: cn(className) })}
+    class={recipe({ class: className })}
     style={toasterStyle}
     toaster={toasterInstance}
   >

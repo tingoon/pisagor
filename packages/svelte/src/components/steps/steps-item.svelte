@@ -3,7 +3,6 @@ import type { StepsItemProps } from "@ark-ui/svelte/steps";
 import { Steps as StepsPrimitive } from "@ark-ui/svelte/steps";
 import type { StepsItemProps as BaseStepsItemProps } from "@pisagor/props";
 import { stepsItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { setStepsItemContext } from "./steps.context";
 
 type Props = Omit<StepsItemProps, "class"> & {
@@ -25,6 +24,6 @@ setStepsItemContext({
 });
 </script>
 
-<StepsPrimitive.Item {...rest} class={slots.base({ class: cn(className) })}>
+<StepsPrimitive.Item {...rest} class={slots.base({ class: className })}>
   {@render children?.()}
 </StepsPrimitive.Item>

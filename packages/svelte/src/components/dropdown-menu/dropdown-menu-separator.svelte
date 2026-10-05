@@ -2,7 +2,6 @@
 import type { MenuSeparatorProps } from "@ark-ui/svelte/menu";
 import { Menu as MenuPrimitive } from "@ark-ui/svelte/menu";
 import { dropdownMenuRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { useDropdownMenu } from "./dropdown-menu.context";
 
 type Props = Omit<MenuSeparatorProps, "class"> & { class?: string | undefined };
@@ -14,5 +13,5 @@ const slots = $derived(context?.slots ?? dropdownMenuRecipe());
 
 <MenuPrimitive.Separator
   {...rest}
-  class={slots.separator({ class: cn(className) })}
+  class={slots.separator({ class: className })}
 />

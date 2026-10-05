@@ -40,7 +40,7 @@ const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
   {...rest}
   class={cn(
     formControlGroupShellRecipe({ size, surfaceVariant, variant }),
-    slots.control({ class: cn(className) }),
+    slots.control({ class: className }),
   )}
 >
   {@render children?.()}

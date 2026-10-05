@@ -1,5 +1,4 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useDataGridContext } from "./data-grid.context";
 
@@ -14,7 +13,7 @@ const { slots } = useDataGridContext();
 
 <div
   {...rest}
-  class={slots.footer({ class: cn(className) })}
+  class={slots.footer({ class: className })}
   data-part="footer"
   data-scope="data-grid"
 >

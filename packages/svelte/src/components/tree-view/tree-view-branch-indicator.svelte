@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { TreeViewBranchIndicatorProps } from "@ark-ui/svelte/tree-view";
 import { TreeView as TreeViewPrimitive } from "@ark-ui/svelte/tree-view";
-import { cn } from "@pisagor/utils";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 import { useTreeViewBranch } from "./tree-view.context";
 
@@ -14,7 +13,7 @@ const { slots } = useTreeViewBranch();
 
 <TreeViewPrimitive.BranchIndicator
   {...rest}
-  class={slots.indicator({ class: cn(className) })}
+  class={slots.indicator({ class: className })}
 >
   <CaretRightIcon />
 </TreeViewPrimitive.BranchIndicator>

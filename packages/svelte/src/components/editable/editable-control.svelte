@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { EditableControlProps } from "@ark-ui/svelte/editable";
 import { Editable as EditablePrimitive } from "@ark-ui/svelte/editable";
-import { cn } from "@pisagor/utils";
 import { useEditable } from "./editable.context";
 
 type Props = Omit<EditableControlProps, "class"> & {
@@ -14,7 +13,7 @@ const { slots } = useEditable();
 
 <EditablePrimitive.Control
   {...rest}
-  class={slots.control({ class: cn(className) })}
+  class={slots.control({ class: className })}
 >
   {@render children?.()}
 </EditablePrimitive.Control>

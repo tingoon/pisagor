@@ -25,7 +25,7 @@ const { slots } = useTourContext();
   <TourPrimitive.Positioner class={slots.positioner()}>
     <TourPrimitive.Content
       {...rest}
-      class={slots.content({ class: cn(className) })}
+      class={slots.content({ class: className })}
     >
       {#if showCloseButton}
         <TourPrimitive.CloseTrigger

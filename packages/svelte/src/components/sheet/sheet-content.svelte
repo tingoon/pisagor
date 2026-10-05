@@ -32,7 +32,7 @@ const { slots } = useSheet();
   <SheetPositioner {placement} {variant}>
     <DialogPrimitive.Content
       {...rest}
-      class={slots.content({ class: cn(className), placement, variant })}
+      class={slots.content({ class: className, placement, variant })}
     >
       {@render children?.()}
       {#if showCloseButton}

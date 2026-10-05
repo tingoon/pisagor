@@ -1,6 +1,5 @@
 <script lang="ts">
 import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte/color-picker";
-import { cn } from "@pisagor/utils";
 import { useColorPicker } from "./color-picker.context";
 
 type Props = {
@@ -14,5 +13,5 @@ const { slots } = useColorPicker();
 
 <ColorPickerPrimitive.ValueText
   {...rest}
-  class={slots.valueText({ class: cn(className) })}
+  class={slots.valueText({ class: className })}
 > </ColorPickerPrimitive.ValueText>

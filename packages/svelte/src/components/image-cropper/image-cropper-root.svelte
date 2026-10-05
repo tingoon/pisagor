@@ -3,7 +3,6 @@ import type { ImageCropperRootProps as ArkRootProps } from "@ark-ui/svelte/image
 import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/svelte/image-cropper";
 import type { ImageCropperProps as BaseImageCropperProps } from "@pisagor/props";
 import { imageCropperRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { setImageCropperContext } from "./image-cropper.context";
 import ImageCropperImage from "./image-cropper-image.svelte";
 import ImageCropperSelection from "./image-cropper-selection.svelte";
@@ -35,7 +34,7 @@ setImageCropperContext({
 
 <ImageCropperPrimitive.Root
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   {cropShape}
 >
   <ImageCropperPrimitive.Viewport class={slots.viewport()}>

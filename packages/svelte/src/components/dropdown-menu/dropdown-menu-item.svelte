@@ -3,7 +3,6 @@ import type { MenuItemProps } from "@ark-ui/svelte/menu";
 import { Menu as MenuPrimitive } from "@ark-ui/svelte/menu";
 import type { DropdownMenuItemProps as BaseDropdownMenuItemProps } from "@pisagor/props";
 import { dropdownMenuItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 
 type Props = Omit<MenuItemProps, "class"> & {
   class?: string | undefined;
@@ -20,7 +19,7 @@ let {
 
 <MenuPrimitive.Item
   {...rest}
-  class={recipe({ variant }).base({ class: cn(className) })}
+  class={recipe({ variant }).base({ class: className })}
   data-variant={variant}
 >
   {@render children?.()}

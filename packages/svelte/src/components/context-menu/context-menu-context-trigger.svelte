@@ -3,7 +3,6 @@ import type { MenuContextTriggerProps } from "@ark-ui/svelte/menu";
 import { Menu as MenuPrimitive } from "@ark-ui/svelte/menu";
 import type { ContextMenuProps as BaseContextMenuProps } from "@pisagor/props";
 import { contextMenuRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 
 type Props = Omit<MenuContextTriggerProps, "class"> & {
   class?: string | undefined;
@@ -17,9 +16,6 @@ let {
 }: Props = $props();
 </script>
 
-<MenuPrimitive.ContextTrigger
-  {...rest}
-  class={recipe({ class: cn(className) })}
->
+<MenuPrimitive.ContextTrigger {...rest} class={recipe({ class: className })}>
   {@render children?.()}
 </MenuPrimitive.ContextTrigger>

@@ -64,7 +64,7 @@ function handleClear() {
   </div>
   <input
     {...rest}
-    class={cn(inputGroupControlRecipe(), slots.timer({ class: cn(className) }))}
+    class={cn(inputGroupControlRecipe(), slots.timer({ class: className }))}
     {disabled}
     {oninput}
     {readonly}

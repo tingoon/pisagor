@@ -2,7 +2,6 @@
 import type { FloatingPanelTitleProps } from "@ark-ui/svelte/floating-panel";
 import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/svelte/floating-panel";
 import { floatingPanelRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { useFloatingPanel } from "./floating-panel.context";
 
 type Props = Omit<FloatingPanelTitleProps, "class"> & {
@@ -15,7 +14,7 @@ const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
 
 <FloatingPanelPrimitive.Title
   {...rest}
-  class={slots.title({ class: cn(className) })}
+  class={slots.title({ class: className })}
 >
   {@render children?.()}
 </FloatingPanelPrimitive.Title>

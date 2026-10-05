@@ -2,7 +2,6 @@
 import type { ComboboxItemGroupLabelProps } from "@ark-ui/svelte/combobox";
 import { Combobox as ComboboxPrimitive } from "@ark-ui/svelte/combobox";
 import { comboboxRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { useComboboxRoot } from "./combobox.context";
 
 type Props = Omit<ComboboxItemGroupLabelProps, "class"> & {
@@ -16,7 +15,7 @@ const slots = $derived(ctx?.slots ?? comboboxRecipe());
 
 <ComboboxPrimitive.ItemGroupLabel
   {...rest}
-  class={slots.itemGroupLabel({ class: cn(className) })}
+  class={slots.itemGroupLabel({ class: className })}
 >
   {@render children?.()}
 </ComboboxPrimitive.ItemGroupLabel>

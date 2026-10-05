@@ -1,6 +1,5 @@
 <script lang="ts">
 import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte/color-picker";
-import { cn } from "@pisagor/utils";
 import { useColorPicker } from "./color-picker.context";
 
 type Props = {
@@ -14,7 +13,7 @@ const { slots } = useColorPicker();
 
 <ColorPickerPrimitive.SwatchGroup
   {...rest}
-  class={slots.swatchGroup({ class: cn(className) })}
+  class={slots.swatchGroup({ class: className })}
 >
   {@render children?.()}
 </ColorPickerPrimitive.SwatchGroup>

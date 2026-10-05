@@ -54,7 +54,7 @@ const variant = $derived(variantProp ?? ctx?.variant ?? ("primary" as const));
         {/if}
         <DatePickerPrimitive.Trigger
           aria-label="Open calendar"
-          class={cn(buttonRecipe({ size: "icon-xs", variant: "ghost" }).base())}
+          class={buttonRecipe({ size: "icon-xs", variant: "ghost" }).base()}
           type="button"
         >
           <CalendarIcon aria-hidden="true" class={slots.icon()} />

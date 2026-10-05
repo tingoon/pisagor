@@ -3,7 +3,6 @@ import type { FloatingPanelContentProps as ArkProps } from "@ark-ui/svelte/float
 import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/svelte/floating-panel";
 import { Portal } from "@ark-ui/svelte/portal";
 import { floatingPanelRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { useFloatingPanel } from "./floating-panel.context";
 import FloatingPanelResizeTrigger from "./floating-panel-resize-trigger.svelte";
 
@@ -21,7 +20,7 @@ const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
   <FloatingPanelPrimitive.Positioner class={slots.positioner()}>
     <FloatingPanelPrimitive.Content
       {...rest}
-      class={slots.content({ class: cn(className) })}
+      class={slots.content({ class: className })}
     >
       {@render children?.()}
       {#if resizable}

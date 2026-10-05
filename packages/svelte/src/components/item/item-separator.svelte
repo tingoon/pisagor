@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { itemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import Separator from "../separator/separator.svelte";
 
 type Props = {
@@ -15,7 +14,7 @@ const slots = $derived(recipe());
 
 <Separator
   {...rest}
-  class={slots.separator({ class: cn(className) })}
+  class={slots.separator({ class: className })}
   data-part="separator"
   data-scope="item"
   orientation="horizontal"

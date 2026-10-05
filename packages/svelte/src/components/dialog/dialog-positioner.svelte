@@ -1,7 +1,6 @@
 <script lang="ts">
 import type { DialogPositionerProps as ArkDialogPositionerProps } from "@ark-ui/svelte/dialog";
 import { Dialog as DialogPrimitive } from "@ark-ui/svelte/dialog";
-import { cn } from "@pisagor/utils";
 import { useDialog } from "./dialog.context";
 
 type Props = Omit<ArkDialogPositionerProps, "class"> & {
@@ -20,7 +19,7 @@ const { slots } = useDialog();
 
 <DialogPrimitive.Positioner
   {...rest}
-  class={slots.positioner({ bottomStickOnMobile, class: cn(className) })}
+  class={slots.positioner({ bottomStickOnMobile, class: className })}
 >
   {@render children?.()}
 </DialogPrimitive.Positioner>

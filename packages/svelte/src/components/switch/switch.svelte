@@ -3,7 +3,6 @@ import type { SwitchRootProps } from "@ark-ui/svelte/switch";
 import { Switch as SwitchPrimitive } from "@ark-ui/svelte/switch";
 import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { setSwitchContext } from "./switch.context";
 
@@ -47,18 +46,16 @@ function handleCheckedChange(
 
 <SwitchPrimitive.Root
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-variant={variant}
   onCheckedChange={onCheckedChange || onValueChange
     ? handleCheckedChange
     : undefined}
 >
   <SwitchPrimitive.Control
-    class={slots.control({ class: cn(classNames?.control) })}
+    class={slots.control({ class: classNames?.control })}
   >
-    <SwitchPrimitive.Thumb
-      class={slots.thumb({ class: cn(classNames?.thumb) })}
-    />
+    <SwitchPrimitive.Thumb class={slots.thumb({ class: classNames?.thumb })} />
   </SwitchPrimitive.Control>
   <SwitchPrimitive.HiddenInput />
 </SwitchPrimitive.Root>

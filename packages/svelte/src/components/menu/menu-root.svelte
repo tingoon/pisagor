@@ -2,7 +2,6 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { MenuProps as BaseMenuProps } from "@pisagor/props";
 import { menuRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { setMenuContext } from "./menu.context";
@@ -32,7 +31,7 @@ setMenuContext({
   as="nav"
   {...rest}
   aria-label={ariaLabel}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className })}
   data-part="root"
   data-scope="menu"
 >
