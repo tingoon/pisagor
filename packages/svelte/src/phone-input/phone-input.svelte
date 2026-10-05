@@ -16,7 +16,7 @@ import {
 } from "libphonenumber-js";
 import CaretUpDownIcon from "phosphor-svelte/lib/CaretUpDownIcon";
 import GlobeIcon from "phosphor-svelte/lib/GlobeIcon";
-import type { ComponentProps } from "svelte";
+import { type ComponentProps, untrack } from "svelte";
 import { Combobox } from "../components/combobox";
 import type ComboboxContent from "../components/combobox/combobox-content.svelte";
 import type Input from "../components/input/input.svelte";
@@ -81,8 +81,8 @@ let internalCountry = $state<Country>("US" as Country);
 let display = $state("");
 
 // Initialize uncontrolled display/country once from props.
-internalCountry = resolveCountry(value, defaultCountry);
-display = formatNational(value, internalCountry);
+internalCountry = untrack(() => resolveCountry(value, defaultCountry));
+display = untrack(() => formatNational(value, internalCountry));
 
 const country = $derived(
   value !== undefined

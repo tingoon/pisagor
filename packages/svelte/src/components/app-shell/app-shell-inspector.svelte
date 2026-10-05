@@ -1,6 +1,6 @@
 <script lang="ts">
 import { cn } from "@pisagor/utils";
-import { onDestroy } from "svelte";
+import { onDestroy, untrack } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { Resizable } from "../resizable";
 import type {
@@ -65,7 +65,7 @@ const resizableProps = $derived(
   mergeResizableProps(ctx.defaultInspectorResizableProps, resizablePropsProp),
 );
 const regionVar = $derived(regionVarFor(placement, "inspector"));
-let widthPx = $state(defaultWidth);
+let widthPx = $state(untrack(() => defaultWidth));
 
 function setOpen(value: boolean | ((current: boolean) => boolean)) {
   const next = typeof value === "function" ? value(open) : value;
