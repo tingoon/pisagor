@@ -2,6 +2,7 @@
 import type {
   TourRootProps as ArkRootProps,
   TourStepDetails,
+  UseTourProps,
 } from "@ark-ui/svelte/tour";
 import { Tour as TourPrimitive, useTour } from "@ark-ui/svelte/tour";
 import type { TourProps as BaseTourProps } from "@pisagor/props";
@@ -9,13 +10,30 @@ import { tourRecipe } from "@pisagor/recipes";
 import { onDestroy } from "svelte";
 import { setTourContext } from "./tour.context";
 
-type Props = Omit<ArkRootProps, "tour"> & {
-  steps?: TourStepDetails[];
-} & BaseTourProps;
+type Props = Omit<ArkRootProps, "tour"> &
+  Pick<
+    UseTourProps,
+    "keyboardNavigation" | "onStatusChange" | "onStepChange"
+  > & {
+    steps?: TourStepDetails[];
+  } & BaseTourProps;
 
-let { steps = [], recipe = tourRecipe, children, ...rest }: Props = $props();
+let {
+  steps = [],
+  keyboardNavigation,
+  onStatusChange,
+  onStepChange,
+  recipe = tourRecipe,
+  children,
+  ...rest
+}: Props = $props();
 
-const tour = useTour(() => ({ steps }));
+const tour = useTour(() => ({
+  keyboardNavigation,
+  onStatusChange,
+  onStepChange,
+  steps,
+}));
 const slots = $derived(recipe());
 let isStarted = $state(false);
 

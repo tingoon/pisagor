@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { Snippet } from "svelte";
+import type { ComponentProps } from "svelte";
 import ToggleGroupItem from "./toggle-group-item.svelte";
 import ToggleGroupRoot from "./toggle-group-root.svelte";
 
@@ -9,16 +9,8 @@ type ToggleGroupPresetItem = {
   value: string;
 };
 
-type Props = {
-  children?: Snippet;
-  class?: string | undefined;
+type Props = ComponentProps<typeof ToggleGroupRoot> & {
   items?: ToggleGroupPresetItem[];
-  multiple?: boolean;
-  onValueChange?: (value: string[]) => void;
-  orientation?: "horizontal" | "vertical";
-  size?: "sm" | "md" | "lg";
-  spacing?: number;
-  variant?: "outline" | "ghost";
 };
 
 let { items, children, ...rest }: Props = $props();
