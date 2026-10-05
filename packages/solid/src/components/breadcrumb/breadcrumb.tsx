@@ -4,7 +4,6 @@ import type {
   BreadcrumbProps as BaseBreadcrumbProps,
 } from "@pisagor/props";
 import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import { CaretRightIcon, DotsThreeIcon } from "../../internal/icons";
@@ -54,7 +53,7 @@ export function BreadcrumbRoot(props: BreadcrumbRootProps): JSX.Element {
       <ark.nav
         {...rest}
         aria-label={local["aria-label"] ?? "Breadcrumb"}
-        class={cn(local.class)}
+        class={local.class}
         data-part="root"
         data-scope="breadcrumb"
       >
@@ -70,7 +69,7 @@ export function BreadcrumbList(props: BreadcrumbListProps): JSX.Element {
   return (
     <ark.ol
       {...rest}
-      class={slots.list({ class: cn(local.class) })}
+      class={slots.list({ class: local.class })}
       data-part="list"
       data-scope="breadcrumb"
       role="list"
@@ -86,7 +85,7 @@ export function BreadcrumbItem(props: BreadcrumbItemProps): JSX.Element {
     <BreadcrumbItemContext value={{ slots: slots() }}>
       <ark.li
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-part="item"
         data-scope="breadcrumb"
       >
@@ -102,7 +101,7 @@ export function BreadcrumbLink(props: BreadcrumbLinkProps): JSX.Element {
   return (
     <ark.a
       {...rest}
-      class={slots.link({ class: cn(local.class) })}
+      class={slots.link({ class: local.class })}
       data-part="link"
       data-scope="breadcrumb"
     />
@@ -116,7 +115,7 @@ export function BreadcrumbPage(props: BreadcrumbPageProps): JSX.Element {
     <ark.span
       {...rest}
       aria-current="page"
-      class={slots.page({ class: cn(local.class) })}
+      class={slots.page({ class: local.class })}
       data-part="page"
       data-scope="breadcrumb"
     />
@@ -132,7 +131,7 @@ export function BreadcrumbSeparator(
     <ark.li
       {...rest}
       aria-hidden="true"
-      class={slots.separator({ class: cn(local.class) })}
+      class={slots.separator({ class: local.class })}
       data-part="separator"
       data-scope="breadcrumb"
       role="presentation"

@@ -5,7 +5,6 @@ import {
 } from "@ark-ui/solid/toggle-group";
 import type { ToggleGroupProps as BaseToggleGroupRootProps } from "@pisagor/props";
 import { toggleGroupRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
 import { Toggle } from "../toggle";
@@ -65,7 +64,7 @@ export function ToggleGroupRoot(props: ToggleGroupRootProps): JSX.Element {
     >
       <ToggleGroupPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         multiple={multiple()}
         onValueChange={
           local.onValueChange
@@ -95,7 +94,7 @@ export function ToggleGroupItem(props: ToggleGroupItemProps): JSX.Element {
       asChild={(itemProps) => (
         <Toggle
           {...itemProps({
-            class: ctx.slots.item({ class: cn(local.class) }),
+            class: ctx.slots.item({ class: local.class }),
           })}
           {...rest}
           data-spacing={ctx.spacing}

@@ -71,7 +71,7 @@ function RatingControl(props: RatingControlProps): JSX.Element {
   return (
     <RatingGroupPrimitive.Control
       {...rest}
-      class={slots.control({ class: cn(local.class) })}
+      class={slots.control({ class: local.class })}
     >
       {local.children}
     </RatingGroupPrimitive.Control>
@@ -84,7 +84,7 @@ function RatingItem(props: RatingItemProps): JSX.Element {
   return (
     <RatingGroupPrimitive.Item
       {...rest}
-      class={slots.item({ class: cn(local.class) })}
+      class={slots.item({ class: local.class })}
     />
   );
 }
@@ -95,7 +95,7 @@ function RatingIndicator(props: RatingIndicatorProps): JSX.Element {
   return (
     <span
       {...rest}
-      class={slots.indicator({ class: cn(local.class) })}
+      class={slots.indicator({ class: local.class })}
       data-part="item-indicator"
       data-scope="rating"
     >

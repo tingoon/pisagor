@@ -8,7 +8,6 @@ import type {
 import { Tooltip as TooltipPrimitive } from "@ark-ui/solid/tooltip";
 import type { TooltipProps as BaseTooltipRootProps } from "@pisagor/props";
 import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
@@ -67,7 +66,7 @@ function TooltipContent(props: TooltipContentProps): JSX.Element {
   return (
     <TooltipPrimitive.Content
       {...rest}
-      class={slots.content({ class: cn(local.class) })}
+      class={slots.content({ class: local.class })}
     >
       {local.children}
     </TooltipPrimitive.Content>
@@ -80,7 +79,7 @@ function TooltipArrow(props: TooltipArrowProps): JSX.Element {
   return (
     <TooltipPrimitive.Arrow
       {...rest}
-      class={slots.arrow({ class: cn(local.class) })}
+      class={slots.arrow({ class: local.class })}
     >
       {local.children}
     </TooltipPrimitive.Arrow>

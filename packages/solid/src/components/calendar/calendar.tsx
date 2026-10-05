@@ -114,7 +114,7 @@ export function CalendarRoot(props: CalendarProps): JSX.Element {
     <CalendarSlotsContext value={{ slots: slots() }}>
       <CalendarPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         inline
       >
         {local.children}

@@ -87,7 +87,7 @@ export function InputGroupAddon(props: InputGroupAddonProps): JSX.Element {
       {...rest}
       class={(local.recipe ?? inputGroupAddonRecipe)({
         align: align(),
-        class: cn(local.class),
+        class: local.class,
       })}
       data-align={align()}
       data-part="addon"
@@ -110,7 +110,7 @@ export function InputGroupButton(props: InputGroupButtonProps): JSX.Element {
     <Button
       {...rest}
       class={(local.recipe ?? inputGroupButtonRecipe)({
-        class: cn(local.class),
+        class: local.class,
         size: local.size ?? "xs",
       })}
       data-part="button"
@@ -127,7 +127,7 @@ export function InputGroupText(props: InputGroupTextProps): JSX.Element {
   return (
     <ark.span
       {...rest}
-      class={(local.recipe ?? inputGroupTextRecipe)({ class: cn(local.class) })}
+      class={(local.recipe ?? inputGroupTextRecipe)({ class: local.class })}
       data-part="text"
       data-scope="input-group"
     />

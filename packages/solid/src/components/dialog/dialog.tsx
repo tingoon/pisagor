@@ -12,7 +12,6 @@ import { Dialog as DialogPrimitive } from "@ark-ui/solid/dialog";
 import { ark } from "@ark-ui/solid/factory";
 import type { DialogProps as BaseDialogRootProps } from "@pisagor/props";
 import { type DialogVariantProps, dialogRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
@@ -80,7 +79,7 @@ export function DialogBackdrop(props: DialogBackdropProps): JSX.Element {
     <Show when={modal !== false}>
       <DialogPrimitive.Backdrop
         {...rest}
-        class={slots.backdrop({ class: cn(local.class) })}
+        class={slots.backdrop({ class: local.class })}
       />
     </Show>
   );
@@ -95,7 +94,7 @@ export function DialogPositioner(props: DialogPositionerProps): JSX.Element {
       {...rest}
       class={slots.positioner({
         bottomStickOnMobile: local.bottomStickOnMobile,
-        class: cn(local.class),
+        class: local.class,
       })}
     />
   );
@@ -119,7 +118,7 @@ export function DialogContent(props: DialogContentProps): JSX.Element {
       {...rest}
       class={slots.content({
         bottomStickOnMobile: bottomStickOnMobile(),
-        class: cn(local.class),
+        class: local.class,
         size: size(),
       })}
     >
@@ -150,7 +149,7 @@ export function DialogBody(props: DialogBodyProps): JSX.Element {
     <ScrollArea scrollFade={local.scrollFade ?? false}>
       <ark.div
         {...rest}
-        class={slots.body({ class: cn(local.class) })}
+        class={slots.body({ class: local.class })}
         data-part="body"
         data-scope="dialog"
       />
@@ -165,7 +164,7 @@ export function DialogHeader(props: DialogHeaderProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.header({ class: cn(local.class) })}
+      class={slots.header({ class: local.class })}
       data-part="header"
       data-scope="dialog"
     >
@@ -180,7 +179,7 @@ export function DialogTitle(props: DialogTitleProps): JSX.Element {
   return (
     <DialogPrimitive.Title
       {...rest}
-      class={slots.title({ class: cn(local.class) })}
+      class={slots.title({ class: local.class })}
     />
   );
 }
@@ -191,7 +190,7 @@ export function DialogDescription(props: DialogDescriptionProps): JSX.Element {
   return (
     <DialogPrimitive.Description
       {...rest}
-      class={slots.description({ class: cn(local.class) })}
+      class={slots.description({ class: local.class })}
     />
   );
 }
@@ -209,7 +208,7 @@ export function DialogFooter(props: DialogFooterProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.footer({ class: cn(local.class) })}
+      class={slots.footer({ class: local.class })}
       data-part="footer"
       data-scope="dialog"
     />

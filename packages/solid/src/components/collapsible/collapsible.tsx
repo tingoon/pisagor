@@ -7,7 +7,6 @@ import {
 } from "@ark-ui/solid/collapsible";
 import type { CollapsibleProps as BaseCollapsibleRootProps } from "@pisagor/props";
 import { collapsibleRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { CaretDownIcon } from "../../internal/icons";
@@ -33,7 +32,7 @@ export function CollapsibleRoot(props: CollapsibleRootProps): JSX.Element {
     <CollapsibleContext value={{ slots: slots() }}>
       <CollapsiblePrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         collapsedHeight={collapsedHeight()}
         data-partial-collapse={collapsedHeight() ? "" : undefined}
         lazyMount={collapsedHeight() ? false : local.lazyMount}
@@ -53,7 +52,7 @@ export function CollapsibleTrigger(
   return (
     <CollapsiblePrimitive.Trigger
       {...rest}
-      class={slots.trigger({ class: cn(local.class) })}
+      class={slots.trigger({ class: local.class })}
     />
   );
 }
@@ -78,7 +77,7 @@ export function CollapsibleIndicator(
   return (
     <CollapsiblePrimitive.Indicator
       {...rest}
-      class={slots.indicator({ class: cn(local.class) })}
+      class={slots.indicator({ class: local.class })}
     >
       <CaretDownIcon class={slots.icon()} />
     </CollapsiblePrimitive.Indicator>

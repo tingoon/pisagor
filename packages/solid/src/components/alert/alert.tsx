@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { AlertProps as BaseAlertProps } from "@pisagor/props";
 import { type AlertRecipeSlot, alertRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import type { VariantClassNames } from "../../internal/types";
@@ -39,7 +38,7 @@ export function AlertRoot(props: AlertRootProps): JSX.Element {
     <AlertContext value={{ slots: slots() }}>
       <ark.div
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-part="root"
         data-scope="alert"
       >
@@ -56,7 +55,7 @@ export function AlertTitle(props: AlertTitleProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.title({ class: cn(local.class) })}
+      class={slots.title({ class: local.class })}
       data-part="title"
       data-scope="alert"
     >
@@ -72,7 +71,7 @@ export function AlertDescription(props: AlertDescriptionProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.description({ class: cn(local.class) })}
+      class={slots.description({ class: local.class })}
       data-part="description"
       data-scope="alert"
     >
@@ -88,7 +87,7 @@ export function AlertAction(props: AlertActionProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.action({ class: cn(local.class) })}
+      class={slots.action({ class: local.class })}
       data-part="action"
       data-scope="alert"
     >

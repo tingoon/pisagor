@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { AvatarGroupProps as BaseAvatarGroupRootProps } from "@pisagor/props";
 import { avatarGroupRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import { Avatar } from "./avatar";
@@ -27,7 +26,7 @@ export function AvatarGroupRoot(props: AvatarGroupRootProps): JSX.Element {
     <AvatarGroupContext value={{ slots: slots() }}>
       <ark.div
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-part="group"
         data-scope="avatar"
       >
@@ -43,7 +42,7 @@ export function AvatarGroupCount(props: AvatarGroupCountProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.count({ class: cn(local.class) })}
+      class={slots.count({ class: local.class })}
       data-part="group-count"
       data-scope="avatar"
     />

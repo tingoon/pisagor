@@ -13,7 +13,6 @@ import {
 } from "@ark-ui/solid/angle-slider";
 import type { CircularSliderProps as BaseCircularSliderProps } from "@pisagor/props";
 import { circularSliderRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
 import { Field } from "../field";
@@ -97,7 +96,7 @@ export function CircularSliderRoot(props: CircularSliderProps): JSX.Element {
     <CircularSliderContext value={values()}>
       <AngleSliderPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         onValueChange={
           local.onValueChange
             ? (details) => local.onValueChange?.(details.value)
@@ -149,7 +148,7 @@ export function CircularSliderControl(
   return (
     <AngleSliderPrimitive.Control
       {...rest}
-      class={slots.control({ class: cn(local.class) })}
+      class={slots.control({ class: local.class })}
     >
       <CircularSliderProgressRing />
       <Show when={markerValues()}>
@@ -215,7 +214,7 @@ export function CircularSliderThumb(
   return (
     <AngleSliderPrimitive.Thumb
       {...rest}
-      class={slots.thumb({ class: cn(local.class) })}
+      class={slots.thumb({ class: local.class })}
       style={{ "--size": `${thumbSize}px` }}
     >
       <span
@@ -240,7 +239,7 @@ export function CircularSliderValueText(
     <Field.Label
       asChild={(labelProps) => (
         <AngleSliderPrimitive.ValueText
-          {...labelProps({ class: slots.value({ class: cn(local.class) }) })}
+          {...labelProps({ class: slots.value({ class: local.class }) })}
           {...rest}
         >
           {local.prefix} {api().value} {local.suffix}
@@ -258,7 +257,7 @@ export function CircularSliderMarkerGroup(
   return (
     <AngleSliderPrimitive.MarkerGroup
       {...rest}
-      class={slots.markerGroup({ class: cn(local.class) })}
+      class={slots.markerGroup({ class: local.class })}
     />
   );
 }
@@ -278,7 +277,7 @@ export function CircularSliderMarker(
   return (
     <AngleSliderPrimitive.Marker
       {...rest}
-      class={slots.marker({ class: cn(local.class) })}
+      class={slots.marker({ class: local.class })}
       style={{
         ...(typeof local.style === "object" && local.style ? local.style : {}),
         "--marker-height": `${markerHeight}px`,

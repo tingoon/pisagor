@@ -5,7 +5,6 @@ import type {
   SkeletonProps as BaseSkeletonTextProps,
 } from "@pisagor/props";
 import { skeletonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
 
@@ -30,7 +29,7 @@ export function SkeletonRoot(props: SkeletonRootProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots().base({ class: cn(local.class) })}
+      class={slots().base({ class: local.class })}
       data-part="root"
       data-scope="skeleton"
     />
@@ -44,7 +43,7 @@ export function SkeletonCircle(props: SkeletonCircleProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots().circle({ class: cn(local.class) })}
+      class={slots().circle({ class: local.class })}
       data-part="circle"
       data-scope="skeleton"
     />
@@ -59,7 +58,7 @@ export function SkeletonText(props: SkeletonTextProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots().text({ class: cn(local.class) })}
+      class={slots().text({ class: local.class })}
       data-part="text"
       data-scope="skeleton"
     >

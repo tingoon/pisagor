@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { VisuallyHiddenProps as BaseVisuallyHiddenProps } from "@pisagor/props";
 import { visuallyHiddenRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
@@ -16,7 +15,7 @@ export function VisuallyHidden(props: VisuallyHiddenProps): JSX.Element {
   return (
     <ark.span
       {...rest}
-      class={recipeFn()({ class: cn(local.class) })}
+      class={recipeFn()({ class: local.class })}
       data-part="root"
       data-scope="visually-hidden"
     />

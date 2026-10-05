@@ -1,6 +1,5 @@
 import type { SpinnerProps as BaseSpinnerProps } from "@pisagor/props";
 import { spinnerRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
@@ -24,7 +23,7 @@ export function Spinner(props: SpinnerProps): JSX.Element {
       aria-label={
         local["aria-hidden"] ? undefined : (local["aria-label"] ?? "Loading")
       }
-      class={recipe()({ class: cn(local.class) })}
+      class={recipe()({ class: local.class })}
       data-part="root"
       data-scope="spinner"
       fill="none"

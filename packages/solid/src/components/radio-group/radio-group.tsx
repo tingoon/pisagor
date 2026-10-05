@@ -55,7 +55,7 @@ export function RadioGroupRoot(props: RadioGroupRootProps): JSX.Element {
   return (
     <RadioGroupPrimitive.Root
       {...rest}
-      class={(local.recipe ?? radioGroupRecipe)({ class: cn(local.class) })}
+      class={(local.recipe ?? radioGroupRecipe)({ class: local.class })}
       onValueChange={
         local.onValueChange
           ? (details) => local.onValueChange?.(details.value)
@@ -82,7 +82,7 @@ export function RadioGroupItem(props: RadioGroupItemProps): JSX.Element {
   return (
     <RadioGroupPrimitive.Item
       {...rest}
-      class={slots().base({ class: cn(local.class) })}
+      class={slots().base({ class: local.class })}
     >
       <RadioGroupPrimitive.ItemControl
         class={cn(
@@ -110,7 +110,7 @@ export function RadioGroupItemText(
         <RadioGroupPrimitive.ItemText
           {...labelProps()}
           {...rest}
-          class={cn(local.class)}
+          class={local.class}
         >
           {local.children}
         </RadioGroupPrimitive.ItemText>

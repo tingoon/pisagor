@@ -140,7 +140,7 @@ export function ComboboxInput(props: ComboboxInputProps): JSX.Element {
 
   return (
     <ComboboxControl data-size={size()}>
-      <InputGroup class={cn(local.class)} size={size()} variant={local.variant}>
+      <InputGroup class={local.class} size={size()} variant={local.variant}>
         {local.children}
         <ComboboxPrimitive.Input
           asChild={(inputProps) => (

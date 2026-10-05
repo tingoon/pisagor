@@ -119,7 +119,7 @@ export function TreeViewRoot(props: TreeViewProps): JSX.Element {
     <TreeViewContext value={{ fileIcons: local.fileIcons, slots: slots() }}>
       <TreeViewPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
       >
         {local.children}
       </TreeViewPrimitive.Root>
@@ -133,7 +133,7 @@ export function TreeViewLabel(props: TreeViewLabelProps): JSX.Element {
   return (
     <TreeViewPrimitive.Label
       {...rest}
-      class={slots.label({ class: cn(local.class) })}
+      class={slots.label({ class: local.class })}
     />
   );
 }
@@ -144,7 +144,7 @@ export function TreeViewTree(props: TreeViewTreeProps): JSX.Element {
   return (
     <TreeViewPrimitive.Tree
       {...rest}
-      class={slots.tree({ class: cn(local.class) })}
+      class={slots.tree({ class: local.class })}
     />
   );
 }
@@ -163,7 +163,7 @@ export function TreeViewBranch(props: TreeViewBranchProps): JSX.Element {
     <TreeViewBranchContext value={{ slots: slots() }}>
       <TreeViewPrimitive.Branch
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
       >
         {local.children}
       </TreeViewPrimitive.Branch>
@@ -185,7 +185,7 @@ export function TreeViewBranchControl(
   return (
     <TreeViewPrimitive.BranchControl
       {...rest}
-      class={slots.control({ class: cn(local.class) })}
+      class={slots.control({ class: local.class })}
     >
       <TreeViewBranchIndicator />
       <TreeViewBranchTitle expandedIcon={local.expandedIcon} icon={local.icon}>
@@ -213,7 +213,7 @@ function TreeViewBranchTitle(props: TreeViewBranchTitleProps): JSX.Element {
           fallback={
             <TreeViewPrimitive.BranchText
               {...rest}
-              class={slots.title({ class: cn(local.class) })}
+              class={slots.title({ class: local.class })}
             >
               <Show when={Icon() !== null && !nodeState().expanded}>
                 <TreeViewItemIcon>
@@ -256,7 +256,7 @@ export function TreeViewBranchIndicator(
   return (
     <TreeViewPrimitive.BranchIndicator
       {...rest}
-      class={slots.indicator({ class: cn(local.class) })}
+      class={slots.indicator({ class: local.class })}
     >
       <CaretRightIcon />
     </TreeViewPrimitive.BranchIndicator>
@@ -272,7 +272,7 @@ export function TreeViewBranchContent(
   return (
     <TreeViewPrimitive.BranchContent
       {...rest}
-      class={slots.content({ class: cn(local.class) })}
+      class={slots.content({ class: local.class })}
     >
       <TreeViewBranchIndentGuide />
       {local.children}
@@ -288,7 +288,7 @@ function TreeViewBranchIndentGuide(
   return (
     <TreeViewPrimitive.BranchIndentGuide
       {...rest}
-      class={slots.indentGuide({ class: cn(local.class) })}
+      class={slots.indentGuide({ class: local.class })}
     />
   );
 }
@@ -302,7 +302,7 @@ export function TreeViewItem(props: TreeViewItemProps): JSX.Element {
     <TreeViewItemContext value={{ slots: itemSlots() }}>
       <TreeViewPrimitive.Item
         {...rest}
-        class={slots.control({ class: cn(local.class) })}
+        class={slots.control({ class: local.class })}
       >
         {local.children}
       </TreeViewPrimitive.Item>
@@ -355,7 +355,7 @@ function TreeViewItemIcon(props: TreeViewItemIconProps): JSX.Element {
   return (
     <ark.span
       {...rest}
-      class={slots.icon({ class: cn(local.class) })}
+      class={slots.icon({ class: local.class })}
       data-part="item-icon"
       data-scope="tree-view"
     />
@@ -369,7 +369,7 @@ function TreeViewItemTitle(props: TreeViewItemTitleProps): JSX.Element {
   return (
     <TreeViewPrimitive.ItemText
       {...rest}
-      class={slots.title({ class: cn(local.class) })}
+      class={slots.title({ class: local.class })}
     />
   );
 }
@@ -405,7 +405,7 @@ function TreeViewNodeInput(props: TreeViewNodeInputProps): JSX.Element {
   return (
     <TreeViewPrimitive.NodeRenameInput
       {...rest}
-      class={slots.renameInput({ class: cn(local.class) })}
+      class={slots.renameInput({ class: local.class })}
     />
   );
 }

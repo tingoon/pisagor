@@ -7,7 +7,6 @@ import type {
 import { Dialog as DialogPrimitive } from "@ark-ui/solid/dialog";
 import type { SheetProps as BaseSheetProps } from "@pisagor/props";
 import { type SheetVariantProps, sheetRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
@@ -67,7 +66,7 @@ export function SheetPositioner(props: SheetPositionerProps): JSX.Element {
     <DialogPrimitive.Positioner
       {...rest}
       class={slots.positioner({
-        class: cn(local.class),
+        class: local.class,
         placement: local.placement,
         variant: local.variant,
       })}
@@ -95,7 +94,7 @@ export function SheetContent(props: SheetContentProps): JSX.Element {
         <DialogPrimitive.Content
           {...rest}
           class={slots.content({
-            class: cn(local.class),
+            class: local.class,
             placement: placement(),
             variant: variant(),
           })}

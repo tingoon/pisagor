@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { TableProps as BaseTableProps } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { TableContext, useTable } from "./table.context";
@@ -35,7 +34,7 @@ export function TableRoot(props: TableProps): JSX.Element {
       <div class={slots().wrapper()} data-part="wrapper" data-scope="table">
         <ark.table
           {...rest}
-          class={slots().base({ class: cn(local.class) })}
+          class={slots().base({ class: local.class })}
           data-hoverable={local.isHoverable ?? true}
           data-part="root"
           data-scope="table"
@@ -52,7 +51,7 @@ export function TableHeader(props: TableHeaderProps): JSX.Element {
   return (
     <ark.thead
       {...rest}
-      class={slots.header({ class: cn(local.class) })}
+      class={slots.header({ class: local.class })}
       data-part="header"
       data-scope="table"
     />
@@ -65,7 +64,7 @@ export function TableBody(props: TableBodyProps): JSX.Element {
   return (
     <ark.tbody
       {...rest}
-      class={slots.body({ class: cn(local.class) })}
+      class={slots.body({ class: local.class })}
       data-part="body"
       data-scope="table"
     />
@@ -78,7 +77,7 @@ export function TableFooter(props: TableFooterProps): JSX.Element {
   return (
     <ark.tfoot
       {...rest}
-      class={slots.footer({ class: cn(local.class) })}
+      class={slots.footer({ class: local.class })}
       data-part="footer"
       data-scope="table"
     />
@@ -91,7 +90,7 @@ export function TableRow(props: TableRowProps): JSX.Element {
   return (
     <ark.tr
       {...rest}
-      class={slots.row({ class: cn(local.class) })}
+      class={slots.row({ class: local.class })}
       data-part="row"
       data-scope="table"
     />
@@ -104,7 +103,7 @@ export function TableHead(props: TableHeadProps): JSX.Element {
   return (
     <ark.th
       {...rest}
-      class={slots.head({ class: cn(local.class) })}
+      class={slots.head({ class: local.class })}
       data-part="head"
       data-scope="table"
     />
@@ -117,7 +116,7 @@ export function TableCell(props: TableCellProps): JSX.Element {
   return (
     <ark.td
       {...rest}
-      class={slots.cell({ class: cn(local.class) })}
+      class={slots.cell({ class: local.class })}
       data-part="cell"
       data-scope="table"
     />
@@ -130,7 +129,7 @@ export function TableCaption(props: TableCaptionProps): JSX.Element {
   return (
     <ark.caption
       {...rest}
-      class={slots.caption({ class: cn(local.class) })}
+      class={slots.caption({ class: local.class })}
       data-part="caption"
       data-scope="table"
     />

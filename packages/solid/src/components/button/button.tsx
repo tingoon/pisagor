@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { ButtonProps as BaseButtonProps } from "@pisagor/props";
 import { buttonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { Spinner } from "../spinner";
@@ -39,7 +38,7 @@ export function Button(props: ButtonProps): JSX.Element {
     <ark.button
       {...rest}
       aria-busy={loading() || undefined}
-      class={slots().base({ class: cn(local.class) })}
+      class={slots().base({ class: local.class })}
       data-part="root"
       data-scope="button"
       data-size={local.size ?? "md"}

@@ -7,7 +7,6 @@ import {
 } from "@ark-ui/solid/progress";
 import type { ProgressProps as BaseProgressProps } from "@pisagor/props";
 import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import type { VariantClassNames } from "../../internal/types";
@@ -47,7 +46,7 @@ function ProgressRoot(props: ProgressRootProps): JSX.Element {
     <ProgressContext value={{ slots: slots() }}>
       <ProgressPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         orientation={local.orientation ?? "horizontal"}
       >
         {local.children}
@@ -61,7 +60,7 @@ function ProgressHeader(props: ProgressHeaderProps): JSX.Element {
   const { slots } = useProgress();
 
   return (
-    <div {...rest} class={slots.header({ class: cn(local.class) })}>
+    <div {...rest} class={slots.header({ class: local.class })}>
       {local.children}
     </div>
   );
@@ -74,7 +73,7 @@ function ProgressValue(props: ProgressValueTextProps): JSX.Element {
   return (
     <ProgressPrimitive.ValueText
       {...rest}
-      class={slots.value({ class: cn(local.class) })}
+      class={slots.value({ class: local.class })}
     />
   );
 }
@@ -86,7 +85,7 @@ function ProgressTrack(props: ProgressTrackProps): JSX.Element {
   return (
     <ProgressPrimitive.Track
       {...rest}
-      class={slots.track({ class: cn(local.class) })}
+      class={slots.track({ class: local.class })}
     >
       {local.children}
     </ProgressPrimitive.Track>
@@ -100,7 +99,7 @@ function ProgressRange(props: ProgressRangeProps): JSX.Element {
   return (
     <ProgressPrimitive.Range
       {...rest}
-      class={slots.range({ class: cn(local.class) })}
+      class={slots.range({ class: local.class })}
     />
   );
 }

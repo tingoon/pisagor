@@ -123,7 +123,7 @@ export function ColorPickerRoot(props: ColorPickerProps): JSX.Element {
     <ColorPickerSlotsContext value={{ slots: slots() }}>
       <ColorPickerPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         defaultValue={!isControlled() ? parsedColor() : undefined}
         onValueChange={handleValueChange}
         positioning={local.positioning ?? { placement: "top-start" }}
@@ -186,7 +186,7 @@ export function ColorPickerControl(
   return (
     <ColorPickerPrimitive.Control
       {...rest}
-      class={slots.control({ class: cn(local.class) })}
+      class={slots.control({ class: local.class })}
     >
       {local.children}
       <Show when={local.clearable}>
@@ -210,7 +210,7 @@ export function ColorPickerTransparencyGrid(
   return (
     <ColorPickerPrimitive.TransparencyGrid
       {...rest}
-      class={slots.transparencyGrid({ class: cn(local.class) })}
+      class={slots.transparencyGrid({ class: local.class })}
     />
   );
 }
@@ -226,7 +226,7 @@ export function ColorPickerContent(
       <ColorPickerPrimitive.Positioner>
         <ColorPickerPrimitive.Content
           {...rest}
-          class={slots.content({ class: cn(local.class) })}
+          class={slots.content({ class: local.class })}
         />
       </ColorPickerPrimitive.Positioner>
     </Portal>
@@ -239,7 +239,7 @@ export function ColorPickerView(props: ColorPickerViewProps): JSX.Element {
   return (
     <ColorPickerPrimitive.View
       {...rest}
-      class={slots.view({ class: cn(local.class) })}
+      class={slots.view({ class: local.class })}
     />
   );
 }
@@ -253,7 +253,7 @@ export function ColorPickerChannelSlider(
   return (
     <ColorPickerPrimitive.ChannelSlider
       {...rest}
-      class={slots.channelSlider({ class: cn(local.class) })}
+      class={slots.channelSlider({ class: local.class })}
     >
       {local.children}
       <ColorPickerPrimitive.ChannelSliderTrack
@@ -294,7 +294,7 @@ export function ColorPickerSwatchGroup(
   return (
     <ColorPickerPrimitive.SwatchGroup
       {...rest}
-      class={slots.swatchGroup({ class: cn(local.class) })}
+      class={slots.swatchGroup({ class: local.class })}
     />
   );
 }
@@ -307,7 +307,7 @@ export function ColorPickerSwatchTrigger(
   return (
     <ColorPickerPrimitive.SwatchTrigger
       {...rest}
-      class={slots.swatchTrigger({ class: cn(local.class) })}
+      class={slots.swatchTrigger({ class: local.class })}
     />
   );
 }
@@ -318,7 +318,7 @@ export function ColorPickerSwatch(props: ColorPickerSwatchProps): JSX.Element {
   return (
     <ColorPickerPrimitive.Swatch
       {...rest}
-      class={slots.swatch({ class: cn(local.class) })}
+      class={slots.swatch({ class: local.class })}
     />
   );
 }
@@ -332,7 +332,7 @@ export function ColorPickerSwatchIndicator(
   return (
     <ColorPickerPrimitive.SwatchIndicator
       {...rest}
-      class={slots.swatchIndicator({ class: cn(local.class) })}
+      class={slots.swatchIndicator({ class: local.class })}
     >
       {local.children ?? <CheckIcon />}
     </ColorPickerPrimitive.SwatchIndicator>
@@ -347,7 +347,7 @@ export function ColorPickerValueText(
   return (
     <ColorPickerPrimitive.ValueText
       {...rest}
-      class={slots.valueText({ class: cn(local.class) })}
+      class={slots.valueText({ class: local.class })}
     />
   );
 }
@@ -360,7 +360,7 @@ export function ColorPickerValueSwatch(
   return (
     <ColorPickerPrimitive.ValueSwatch
       {...rest}
-      class={slots.valueSwatch({ class: cn(local.class) })}
+      class={slots.valueSwatch({ class: local.class })}
     />
   );
 }
@@ -394,7 +394,7 @@ export function ColorPickerAreaThumb(
   return (
     <ColorPickerPrimitive.AreaThumb
       {...rest}
-      class={slots.areaThumb({ class: cn(local.class) })}
+      class={slots.areaThumb({ class: local.class })}
     />
   );
 }
@@ -418,7 +418,7 @@ export function ColorPickerSwatchPreview(
   return (
     <ark.div
       {...rest}
-      class={slots.inputSwatch({ class: cn(local.class) })}
+      class={slots.inputSwatch({ class: local.class })}
       data-part="input-swatch"
       data-scope="color-picker"
     >

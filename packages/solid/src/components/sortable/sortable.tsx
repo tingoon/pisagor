@@ -4,7 +4,6 @@ import type {
   SortableProps as BaseSortableRootProps,
 } from "@pisagor/props";
 import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createSignal, onCleanup, onMount, splitProps } from "solid-js";
 import { DotsSixVerticalIcon } from "../../internal/icons";
@@ -195,7 +194,7 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
       <ark.div
         {...rest}
         class={(local.recipe ?? sortableRecipe)({
-          class: cn(local.class),
+          class: local.class,
           orientation: orientation(),
         })}
         data-orientation={orientation()}
@@ -228,7 +227,7 @@ export function SortableItem(props: SortableItemProps): JSX.Element {
       <ark.div
         {...rest}
         {...itemProps()}
-        class={slots().base({ class: cn(local.class), disabled })}
+        class={slots().base({ class: local.class, disabled })}
         data-part="item"
         data-scope="sortable"
         role="listitem"
@@ -262,7 +261,7 @@ export function SortableHandle(props: SortableHandleProps): JSX.Element {
       {...rest}
       aria-disabled={disabled || undefined}
       aria-label={local["aria-label"] ?? "Drag to reorder"}
-      class={slots.handle({ class: cn(local.class), disabled })}
+      class={slots.handle({ class: local.class, disabled })}
       data-part="handle"
       data-scope="sortable"
       draggable={!disabled}
@@ -305,7 +304,7 @@ export function SortableItemContent(
   return (
     <ark.div
       {...rest}
-      class={slots.content({ class: cn(local.class) })}
+      class={slots.content({ class: local.class })}
       data-part="item-content"
       data-scope="sortable"
     />

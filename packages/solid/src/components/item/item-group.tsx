@@ -4,7 +4,6 @@ import type {
   ItemProps as BaseItemSeparatorProps,
 } from "@pisagor/props";
 import { itemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { Separator, type SeparatorProps } from "../separator";
@@ -32,7 +31,7 @@ export function ItemGroup(props: ItemGroupProps): JSX.Element {
     <ItemGroupContext value={{ variant: variant() }}>
       <ark.div
         {...rest}
-        class={slots().group({ class: cn(local.class) })}
+        class={slots().group({ class: local.class })}
         data-part="group"
         data-scope="item"
         data-variant={variant()}
@@ -51,7 +50,7 @@ export function ItemSeparator(props: ItemSeparatorProps): JSX.Element {
   return (
     <Separator
       {...rest}
-      class={slots().separator({ class: cn(local.class) })}
+      class={slots().separator({ class: local.class })}
       data-part="separator"
       data-scope="item"
       orientation="horizontal"

@@ -13,7 +13,6 @@ import type {
 import { Popover as PopoverPrimitive } from "@ark-ui/solid/popover";
 import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
 import { popoverRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
@@ -68,7 +67,7 @@ export function PopoverContent(props: PopoverContentProps): JSX.Element {
         <PopoverContentContext value={{ slots: slots() }}>
           <PopoverPrimitive.Content
             {...rest}
-            class={slots().base({ class: cn(local.class) })}
+            class={slots().base({ class: local.class })}
           >
             {local.children}
             <Show when={local.showCloseButton}>
@@ -104,7 +103,7 @@ export function PopoverHeader(props: PopoverHeaderProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.header({ class: cn(local.class) })}
+      class={slots.header({ class: local.class })}
       data-part="header"
       data-scope="popover"
     >
@@ -125,7 +124,7 @@ export function PopoverTitle(props: PopoverTitleProps): JSX.Element {
   return (
     <PopoverPrimitive.Title
       {...rest}
-      class={slots.title({ class: cn(local.class) })}
+      class={slots.title({ class: local.class })}
     />
   );
 }
@@ -138,7 +137,7 @@ export function PopoverDescription(
   return (
     <PopoverPrimitive.Description
       {...rest}
-      class={slots.description({ class: cn(local.class) })}
+      class={slots.description({ class: local.class })}
     />
   );
 }
@@ -151,7 +150,7 @@ export function PopoverBody(props: PopoverBodyProps): JSX.Element {
     <ScrollArea>
       <ark.div
         {...rest}
-        class={slots.body({ class: cn(local.class) })}
+        class={slots.body({ class: local.class })}
         data-part="body"
         data-scope="popover"
       />
@@ -165,7 +164,7 @@ export function PopoverFooter(props: PopoverFooterProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.footer({ class: cn(local.class) })}
+      class={slots.footer({ class: local.class })}
       data-part="footer"
       data-scope="popover"
     />

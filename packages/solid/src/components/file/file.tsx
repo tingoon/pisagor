@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { FileProps as BaseFileRootProps } from "@pisagor/props";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { FileIcon } from "../../internal/icons";
@@ -41,7 +40,7 @@ export function FileRoot(props: FileRootProps): JSX.Element {
     <FileContext value={{ slots: slots() }}>
       <ark.div
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-part="root"
         data-scope="file"
       >
@@ -58,7 +57,7 @@ export function FileMedia(props: FileMediaProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.media({ class: cn(local.class), variant: variant() })}
+      class={slots.media({ class: local.class, variant: variant() })}
       data-part="media"
       data-scope="file"
       data-variant={variant()}
@@ -74,7 +73,7 @@ export function FileContent(props: FileContentProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.content({ class: cn(local.class) })}
+      class={slots.content({ class: local.class })}
       data-part="content"
       data-scope="file"
     />
@@ -87,7 +86,7 @@ export function FileName(props: FileNameProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.name({ class: cn(local.class) })}
+      class={slots.name({ class: local.class })}
       data-part="name"
       data-scope="file"
     />
@@ -100,7 +99,7 @@ export function FileMeta(props: FileMetaProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.meta({ class: cn(local.class) })}
+      class={slots.meta({ class: local.class })}
       data-part="meta"
       data-scope="file"
     />
@@ -113,7 +112,7 @@ export function FileSize(props: FileSizeProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.size({ class: cn(local.class) })}
+      class={slots.size({ class: local.class })}
       data-part="size"
       data-scope="file"
     >
@@ -128,7 +127,7 @@ export function FileActions(props: FileActionsProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.actions({ class: cn(local.class) })}
+      class={slots.actions({ class: local.class })}
       data-part="actions"
       data-scope="file"
     />

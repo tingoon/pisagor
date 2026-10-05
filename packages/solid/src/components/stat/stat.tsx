@@ -8,7 +8,6 @@ import {
   statRecipe,
   statTrendRecipe,
 } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import type { VariantClassNames } from "../../internal/types";
@@ -49,7 +48,7 @@ export function StatRoot(props: StatRootProps): JSX.Element {
     <StatContext value={{ slots: slots() }}>
       <ark.div
         {...rest}
-        class={slots().base({ class: cn(local.class), variant: local.variant })}
+        class={slots().base({ class: local.class, variant: local.variant })}
         data-part="root"
         data-scope="stat"
         data-variant={local.variant}
@@ -67,7 +66,7 @@ export function StatLabel(props: StatLabelProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.label({ class: cn(local.class) })}
+      class={slots.label({ class: local.class })}
       data-part="label"
       data-scope="stat"
     />
@@ -81,7 +80,7 @@ export function StatValue(props: StatValueProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.value({ class: cn(local.class) })}
+      class={slots.value({ class: local.class })}
       data-part="value"
       data-scope="stat"
     />
@@ -95,7 +94,7 @@ export function StatDescription(props: StatDescriptionProps): JSX.Element {
   return (
     <ark.p
       {...rest}
-      class={slots.description({ class: cn(local.class) })}
+      class={slots.description({ class: local.class })}
       data-part="description"
       data-scope="stat"
     />
@@ -109,7 +108,7 @@ export function StatTrend(props: StatTrendProps): JSX.Element {
     <ark.div
       {...rest}
       class={(local.recipe ?? statTrendRecipe)({
-        class: cn(local.class),
+        class: local.class,
         trend: local.trend ?? "neutral",
       })}
       data-part="trend"

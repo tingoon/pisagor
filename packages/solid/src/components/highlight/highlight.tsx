@@ -4,7 +4,6 @@ import {
 } from "@ark-ui/solid/highlight";
 import type { HighlightProps as BaseHighlightProps } from "@pisagor/props";
 import { highlightRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
@@ -17,7 +16,7 @@ export function Highlight(props: HighlightProps): JSX.Element {
   return (
     <HighlightPrimitive
       {...rest}
-      class={(local.recipe ?? highlightRecipe)({ class: cn(local.class) })}
+      class={(local.recipe ?? highlightRecipe)({ class: local.class })}
     />
   );
 }

@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { SurfaceProps as BaseSurfaceProps } from "@pisagor/props";
 import { surfaceRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
 import {
@@ -49,7 +48,7 @@ export function Surface(props: SurfaceProps): JSX.Element {
         {...rest}
         class={(local.recipe ?? surfaceRecipe)({
           bordered: local.bordered ?? false,
-          class: cn(local.class),
+          class: local.class,
           padding: local.padding,
           rounded: local.rounded ?? true,
           variant: surface().variant,

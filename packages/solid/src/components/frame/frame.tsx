@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { FrameProps as BaseFrameProps } from "@pisagor/props";
 import { frameRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { SurfaceContext } from "../surface/surface.context";
@@ -27,7 +26,7 @@ export function FrameRoot(props: FrameRootProps): JSX.Element {
       <FrameContext value={{ slots: slots() }}>
         <ark.div
           {...rest}
-          class={slots().base({ class: cn(local.class) })}
+          class={slots().base({ class: local.class })}
           data-part="root"
           data-scope="frame"
         >
@@ -45,7 +44,7 @@ export function FramePanel(props: FramePanelProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.panel({ class: cn(local.class) })}
+      class={slots.panel({ class: local.class })}
       data-part="panel"
       data-scope="frame"
     >
@@ -63,7 +62,7 @@ export function FrameHeader(props: FrameHeaderProps): JSX.Element {
   return (
     <ark.header
       {...rest}
-      class={slots.panelHeader({ class: cn(local.class) })}
+      class={slots.panelHeader({ class: local.class })}
       data-part="panel-header"
       data-scope="frame"
     >
@@ -79,7 +78,7 @@ export function FrameTitle(props: FrameTitleProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.panelTitle({ class: cn(local.class) })}
+      class={slots.panelTitle({ class: local.class })}
       data-part="panel-title"
       data-scope="frame"
     >
@@ -95,7 +94,7 @@ export function FrameDescription(props: FrameDescriptionProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.panelDescription({ class: cn(local.class) })}
+      class={slots.panelDescription({ class: local.class })}
       data-part="panel-description"
       data-scope="frame"
     >
@@ -111,7 +110,7 @@ export function FrameFooter(props: FrameFooterProps): JSX.Element {
   return (
     <ark.footer
       {...rest}
-      class={slots.panelFooter({ class: cn(local.class) })}
+      class={slots.panelFooter({ class: local.class })}
       data-part="panel-footer"
       data-scope="frame"
     >

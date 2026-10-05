@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { CardProps as BaseCardRootProps } from "@pisagor/props";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { CardContext, useCard } from "./card.context";
@@ -31,7 +30,7 @@ export function CardRoot(props: CardRootProps): JSX.Element {
     <CardContext value={{ slots: slots() }}>
       <ark.div
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-part="root"
         data-scope="card"
       >
@@ -49,7 +48,7 @@ export function CardMedia(props: CardMediaProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.media({ class: cn(local.class), variant: variant() })}
+      class={slots.media({ class: local.class, variant: variant() })}
       data-part="media"
       data-scope="card"
       data-variant={variant()}
@@ -69,7 +68,7 @@ export function CardHeader(props: CardHeaderProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.header({ class: cn(local.class) })}
+      class={slots.header({ class: local.class })}
       data-part="header"
       data-scope="card"
     >
@@ -91,7 +90,7 @@ export function CardTitle(props: CardTitleProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.title({ class: cn(local.class) })}
+      class={slots.title({ class: local.class })}
       data-part="title"
       data-scope="card"
     />
@@ -105,7 +104,7 @@ export function CardDescription(props: CardDescriptionProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.description({ class: cn(local.class) })}
+      class={slots.description({ class: local.class })}
       data-part="description"
       data-scope="card"
     />
@@ -119,7 +118,7 @@ export function CardAction(props: CardActionProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.action({ class: cn(local.class) })}
+      class={slots.action({ class: local.class })}
       data-part="action"
       data-scope="card"
     />
@@ -133,7 +132,7 @@ export function CardContent(props: CardContentProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.content({ class: cn(local.class) })}
+      class={slots.content({ class: local.class })}
       data-part="content"
       data-scope="card"
     />
@@ -147,7 +146,7 @@ export function CardFooter(props: CardFooterProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.footer({ class: cn(local.class) })}
+      class={slots.footer({ class: local.class })}
       data-part="footer"
       data-scope="card"
     />

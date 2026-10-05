@@ -2,7 +2,6 @@ import { ark } from "@ark-ui/solid/factory";
 import { Presence } from "@ark-ui/solid/presence";
 import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
 import { actionBarRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX, ParentProps } from "solid-js";
 import {
   createEffect,
@@ -203,7 +202,7 @@ export function ActionBarContent(props: ActionBarContentProps): JSX.Element {
             <ark.div
               {...rest}
               aria-labelledby={local["aria-labelledby"]}
-              class={slots.content({ class: cn(local.class) })}
+              class={slots.content({ class: local.class })}
               data-part="content"
               data-scope="action-bar"
               role="toolbar"
@@ -227,7 +226,7 @@ export function ActionBarSeparator(
   return (
     <Separator
       {...rest}
-      class={slots.separator({ class: cn(local.class) })}
+      class={slots.separator({ class: local.class })}
       data-part="separator"
       data-scope="action-bar"
       orientation="vertical"
@@ -243,7 +242,7 @@ export function ActionBarClose(props: ActionBarCloseProps): JSX.Element {
     <ark.button
       {...rest}
       aria-label="Close"
-      class={slots.close({ class: cn(local.class) })}
+      class={slots.close({ class: local.class })}
       data-part="close"
       data-scope="action-bar"
       data-state={isOpen() ? "open" : "closed"}
@@ -270,7 +269,7 @@ export function ActionBarValue(props: ActionBarValueProps): JSX.Element {
   return (
     <Badge
       {...rest}
-      class={slots.value({ class: cn(local.class) })}
+      class={slots.value({ class: local.class })}
       data-part="value"
       data-scope="action-bar"
       variant="secondary"
@@ -283,5 +282,5 @@ export function ActionBarValue(props: ActionBarValueProps): JSX.Element {
 export function ActionBarBody(props: ActionBarBodyProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useActionBar();
-  return <ark.div {...rest} class={slots.body({ class: cn(local.class) })} />;
+  return <ark.div {...rest} class={slots.body({ class: local.class })} />;
 }

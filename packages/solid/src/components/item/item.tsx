@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { ItemContext, useItem } from "./item.context";
@@ -34,7 +33,7 @@ export function ItemRoot(props: ItemProps): JSX.Element {
     <ItemContext value={{ slots: slots(), variant: variant() }}>
       <ark.div
         {...rest}
-        class={slots().base({ class: cn(local.class), variant: variant() })}
+        class={slots().base({ class: local.class, variant: variant() })}
         data-part="root"
         data-scope="item"
         data-variant={variant()}
@@ -53,7 +52,7 @@ export function ItemMedia(props: ItemMediaProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.media({ class: cn(local.class), variant: variant() })}
+      class={slots.media({ class: local.class, variant: variant() })}
       data-part="media"
       data-scope="item"
       data-variant={variant()}
@@ -70,7 +69,7 @@ export function ItemContent(props: ItemContentProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.content({ class: cn(local.class) })}
+      class={slots.content({ class: local.class })}
       data-part="content"
       data-scope="item"
     >
@@ -86,7 +85,7 @@ export function ItemTitle(props: ItemTitleProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.title({ class: cn(local.class) })}
+      class={slots.title({ class: local.class })}
       data-part="title"
       data-scope="item"
     >
@@ -102,7 +101,7 @@ export function ItemDescription(props: ItemDescriptionProps): JSX.Element {
   return (
     <ark.p
       {...rest}
-      class={slots.description({ class: cn(local.class) })}
+      class={slots.description({ class: local.class })}
       data-part="description"
       data-scope="item"
     >
@@ -118,7 +117,7 @@ export function ItemActions(props: ItemActionsProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.actions({ class: cn(local.class) })}
+      class={slots.actions({ class: local.class })}
       data-part="actions"
       data-scope="item"
     >
@@ -134,7 +133,7 @@ export function ItemHeader(props: ItemHeaderProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.header({ class: cn(local.class) })}
+      class={slots.header({ class: local.class })}
       data-part="header"
       data-scope="item"
     >
@@ -150,7 +149,7 @@ export function ItemFooter(props: ItemFooterProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.footer({ class: cn(local.class) })}
+      class={slots.footer({ class: local.class })}
       data-part="footer"
       data-scope="item"
     >

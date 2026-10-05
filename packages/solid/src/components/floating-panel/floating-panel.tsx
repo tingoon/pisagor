@@ -15,7 +15,6 @@ import type {
 import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/solid/floating-panel";
 import type { FloatingPanelProps as BaseFloatingPanelRootProps } from "@pisagor/props";
 import { floatingPanelRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
@@ -83,7 +82,7 @@ export function FloatingPanelContent(
       <FloatingPanelPrimitive.Positioner class={slots().positioner()}>
         <FloatingPanelPrimitive.Content
           {...rest}
-          class={slots().content({ class: cn(local.class) })}
+          class={slots().content({ class: local.class })}
         >
           {local.children}
           <Show when={resizable()}>
@@ -119,7 +118,7 @@ export function FloatingPanelHeader(
     <FloatingPanelDragTrigger>
       <FloatingPanelPrimitive.Header
         {...rest}
-        class={slots().header({ class: cn(local.class) })}
+        class={slots().header({ class: local.class })}
       >
         {local.children}
       </FloatingPanelPrimitive.Header>
@@ -137,7 +136,7 @@ export function FloatingPanelControl(
   return (
     <FloatingPanelPrimitive.Control
       {...rest}
-      class={slots().control({ class: cn(local.class) })}
+      class={slots().control({ class: local.class })}
     >
       {local.children}
     </FloatingPanelPrimitive.Control>
@@ -228,7 +227,7 @@ export function FloatingPanelTitle(
   return (
     <FloatingPanelPrimitive.Title
       {...rest}
-      class={slots().title({ class: cn(local.class) })}
+      class={slots().title({ class: local.class })}
     >
       {local.children}
     </FloatingPanelPrimitive.Title>
@@ -262,7 +261,7 @@ export function FloatingPanelBody(props: FloatingPanelBodyProps): JSX.Element {
     <ScrollArea scrollFade={local.scrollFade ?? false}>
       <FloatingPanelPrimitive.Body
         {...rest}
-        class={slots().body({ class: cn(local.class) })}
+        class={slots().body({ class: local.class })}
       >
         {local.children}
       </FloatingPanelPrimitive.Body>
@@ -280,7 +279,7 @@ export function FloatingPanelFooter(
   return (
     <ark.div
       {...rest}
-      class={slots().footer({ class: cn(local.class) })}
+      class={slots().footer({ class: local.class })}
       data-part="footer"
       data-scope="floating-panel"
     >

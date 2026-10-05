@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { StatusProps as BaseStatusProps } from "@pisagor/props";
 import { statusRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
@@ -25,7 +24,7 @@ export function Status(props: StatusProps): JSX.Element {
     <ark.span
       {...rest}
       class={recipeFn()({
-        class: cn(local.class),
+        class: local.class,
         size: local.size,
         variant: local.variant,
       })}

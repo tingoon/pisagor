@@ -13,7 +13,6 @@ import type {
   TimerProps as BaseTimerRootProps,
 } from "@pisagor/props";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import {
@@ -57,7 +56,7 @@ export function TimerRoot(props: TimerRootProps): JSX.Element {
     <TimerContext value={{ slots: slots() }}>
       <TimerPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
       >
         <Show when={local.units}>
           <TimerArea>
@@ -108,7 +107,7 @@ export function TimerItemGroup(props: TimerItemGroupProps): JSX.Element {
     <TimerItemGroupContext value={{ slots: slots() }}>
       <ark.div
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
         data-orientation={local.orientation ?? "vertical"}
         data-part="item-group"
         data-scope="timer"
@@ -133,7 +132,7 @@ export function TimerItemLabel(props: TimerItemLabelProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={slots.label({ class: cn(local.class) })}
+      class={slots.label({ class: local.class })}
       data-part="item-label"
       data-scope="timer"
     />

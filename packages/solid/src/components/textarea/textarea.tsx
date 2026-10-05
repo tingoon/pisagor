@@ -101,7 +101,7 @@ function TextareaGroup(
 
   return (
     <InputGroupRoot
-      class={slots.group({ class: cn(props.class) })}
+      class={slots.group({ class: props.class })}
       variant={props.variant}
     >
       {props.children}

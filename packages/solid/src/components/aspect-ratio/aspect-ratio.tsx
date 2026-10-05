@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
 import { aspectRatioRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
@@ -16,7 +15,7 @@ export function AspectRatio(props: AspectRatioProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={recipeFn()({ class: cn(local.class) })}
+      class={recipeFn()({ class: local.class })}
       data-part="root"
       data-scope="aspect-ratio"
     />

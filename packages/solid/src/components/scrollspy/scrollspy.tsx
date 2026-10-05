@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { ScrollspyProps as BaseScrollspyProps } from "@pisagor/props";
 import { scrollspyRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { onCleanup, onMount, splitProps } from "solid-js";
 
@@ -214,7 +213,7 @@ export function Scrollspy(props: ScrollspyProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={recipeFn()({ class: cn(local.class) })}
+      class={recipeFn()({ class: local.class })}
       data-part="root"
       data-scope="scrollspy"
       ref={(el) => {

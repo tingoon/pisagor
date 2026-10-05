@@ -13,7 +13,6 @@ import type {
   ResizableProps as BaseResizableRootProps,
 } from "@pisagor/props";
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { DotsSixVerticalIcon } from "../../internal/icons";
@@ -110,7 +109,7 @@ export function ResizableEdgeHandle(
     <button
       {...rest}
       aria-label={local.label}
-      class={edgeHandle().base({ class: cn(local.class) })}
+      class={edgeHandle().base({ class: local.class })}
       data-handle-position={handlePosition()}
       data-part="edge-handle"
       data-scope="resizable"
@@ -164,7 +163,7 @@ export function ResizableRoot(props: ResizableRootProps): JSX.Element {
     <ResizableSlotsContext value={{ slots: slots() }}>
       <SplitterPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
       >
         {local.children}
       </SplitterPrimitive.Root>
@@ -184,7 +183,7 @@ export function ResizableResizeTriggerIndicator(
   return (
     <SplitterPrimitive.ResizeTriggerIndicator
       {...rest}
-      class={slots.resizeTriggerIndicator({ class: cn(local.class) })}
+      class={slots.resizeTriggerIndicator({ class: local.class })}
     />
   );
 }
@@ -200,7 +199,7 @@ export function ResizableResizeTrigger(
     <SplitterPrimitive.ResizeTrigger
       {...rest}
       aria-label="Resize"
-      class={slots.resizeTrigger({ class: cn(local.class) })}
+      class={slots.resizeTrigger({ class: local.class })}
     >
       <Show
         fallback={local.children ?? <ResizableResizeTriggerIndicator />}
@@ -228,7 +227,7 @@ export function ResizableRootProvider(
     <ResizableSlotsContext value={{ slots: slots() }}>
       <SplitterPrimitive.RootProvider
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
       >
         {local.children}
       </SplitterPrimitive.RootProvider>

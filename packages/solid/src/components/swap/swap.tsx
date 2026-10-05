@@ -5,7 +5,6 @@ import {
 } from "@ark-ui/solid/swap";
 import type { SwapProps as BaseSwapProps } from "@pisagor/props";
 import { swapRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 
@@ -38,7 +37,7 @@ export function Swap(props: SwapProps): JSX.Element {
     <SwapPrimitive.Root
       {...rest}
       class={(local.recipe ?? swapRecipe)({
-        class: cn(local.class),
+        class: local.class,
         variant: local.variant ?? "fade",
       })}
     >

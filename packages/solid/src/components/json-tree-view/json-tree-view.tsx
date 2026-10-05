@@ -8,7 +8,6 @@ import {
   type JsonTreeViewRecipeSlot,
   jsonTreeViewRecipe,
 } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { CaretRightIcon } from "../../internal/icons";
@@ -36,7 +35,7 @@ function JsonTreeViewRoot(props: JsonTreeViewRootProps): JSX.Element {
     <JsonTreeViewContext value={{ slots: slots() }}>
       <JsonTreeViewPrimitive.Root
         {...rest}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: local.class })}
       >
         {local.children}
       </JsonTreeViewPrimitive.Root>
