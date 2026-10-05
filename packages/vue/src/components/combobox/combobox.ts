@@ -184,7 +184,7 @@ export const ComboboxInput = defineComponent({
         h(
           InputGroup as ArkPart,
           {
-            class: cn(props.class),
+            class: props.class,
             size: props.size,
             variant: props.variant,
           },

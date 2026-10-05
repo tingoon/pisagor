@@ -10,7 +10,6 @@ import {
   type ProgressRecipeSlot,
   progressRecipe,
 } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNode } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
@@ -105,7 +104,7 @@ export const Progress = defineComponent({
                         h(
                           "label",
                           {
-                            class: cn(fieldRecipe().label()),
+                            class: fieldRecipe().label(),
                           },
                           () => props.label,
                         ),

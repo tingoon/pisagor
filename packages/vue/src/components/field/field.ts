@@ -353,7 +353,7 @@ export const FieldSeparator = defineComponent({
           children
             ? h(
                 "span",
-                { class: cn(formControlSeparatorRecipe({ ...shellArgs })) },
+                { class: formControlSeparatorRecipe({ ...shellArgs }) },
                 children,
               )
             : null,

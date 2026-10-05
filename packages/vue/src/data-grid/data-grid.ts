@@ -317,7 +317,7 @@ export const DataGridHeaderRow = defineComponent({
         Table.Row as ArkPart,
         {
           ...attrs,
-          class: cn(props.class),
+          class: props.class,
           "data-part": "header-row",
           "data-scope": "data-grid",
         },

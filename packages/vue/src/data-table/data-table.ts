@@ -242,7 +242,7 @@ export const DataTableHeaderRow = defineComponent({
         Table.Row as ArkPart,
         {
           ...attrs,
-          class: cn(props.class),
+          class: props.class,
           "data-part": "header-row",
           "data-scope": "data-table",
         },
@@ -272,7 +272,7 @@ export const DataTableHead = defineComponent({
           Table.Head as ArkPart,
           {
             ...attrs,
-            class: cn(props.class),
+            class: props.class,
             "data-part": "head",
             "data-scope": "data-table",
             key: header.id,
@@ -355,7 +355,7 @@ export const DataTableRow = defineComponent({
         {
           ...attrs,
           "aria-selected": row.getIsSelected(),
-          class: cn(props.class),
+          class: props.class,
           "data-part": "row",
           "data-scope": "data-table",
           "data-state": row.getIsSelected() ? "selected" : undefined,
@@ -394,7 +394,7 @@ export const DataTableCell = defineComponent({
           Table.Cell as ArkPart,
           {
             ...attrs,
-            class: cn(props.class),
+            class: props.class,
             "data-part": "cell",
             "data-scope": "data-table",
           },
@@ -407,7 +407,7 @@ export const DataTableCell = defineComponent({
           Table.Cell as ArkPart,
           {
             ...attrs,
-            class: cn(props.class),
+            class: props.class,
             "data-part": "cell",
             "data-scope": "data-table",
             key: cell.id,
@@ -439,7 +439,7 @@ export const DataTableEmpty = defineComponent({
         Table.Row as ArkPart,
         {
           ...attrs,
-          class: cn(props.class),
+          class: props.class,
           "data-part": "empty",
           "data-scope": "data-table",
         },

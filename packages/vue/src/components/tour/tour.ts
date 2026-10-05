@@ -231,7 +231,7 @@ export const TourPositioner = defineComponent({
 
       return h(
         TourPrimitive.Positioner as ArkPart,
-        { class: cn(ctx.slots.positioner()), ...attrs },
+        { class: ctx.slots.positioner(), ...attrs },
         slots,
       );
     };

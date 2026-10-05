@@ -1,7 +1,6 @@
 import { Marquee as MarqueePrimitive } from "@ark-ui/vue/marquee";
 import type { MarqueeProps as BaseMarqueeProps } from "@pisagor/props";
 import { marqueeRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 // #region Types
@@ -102,7 +101,9 @@ export const MarqueeContent = defineComponent({
             MarqueePrimitive.Content as ArkPart,
             {
               ...attrs,
-              class: variantSlots.content({ class: cn(attrs.class) }),
+              class: variantSlots.content({
+                class: attrs.class as string | undefined,
+              }),
             },
             children,
           ),
@@ -128,7 +129,9 @@ export const MarqueeItem = defineComponent({
         MarqueePrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: variantSlots.item({ class: cn(attrs.class) }),
+          class: variantSlots.item({
+            class: attrs.class as string | undefined,
+          }),
         },
         slots,
       );
@@ -153,7 +156,9 @@ export const MarqueeEdge = defineComponent({
         MarqueePrimitive.Edge as ArkPart,
         {
           ...attrs,
-          class: variantSlots.edge({ class: cn(attrs.class) }),
+          class: variantSlots.edge({
+            class: attrs.class as string | undefined,
+          }),
         },
         slots,
       );

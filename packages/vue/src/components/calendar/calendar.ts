@@ -680,7 +680,9 @@ export const CalendarTableCell = defineComponent({
             DatePickerPrimitive.TableCellTrigger as ArkPart,
             {
               ...attrs,
-              class: slots.trigger({ class: cn(props.class) }),
+              class: slots.trigger({
+                class: props.class as string | undefined,
+              }),
             },
             children.default,
           ),
