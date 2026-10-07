@@ -19,6 +19,7 @@ import {
   APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS,
   APP_SHELL_DEFAULT_PANEL_RESIZABLE_PROPS,
   AppShellContext,
+  AppShellStylesContext,
   ZERO_FIXED_STACK_VARS,
   ZERO_REGION_VARS,
 } from "./app-shell.context";
@@ -162,7 +163,6 @@ export function AppShellRoot({
       setRegionResizing,
       setRegionVar,
       shellRef,
-      slots,
     }),
     [
       fixedStackVars,
@@ -172,7 +172,6 @@ export function AppShellRoot({
       regionVars,
       setFixedStackVar,
       setRegionVar,
-      slots,
     ],
   );
 
@@ -185,27 +184,29 @@ export function AppShellRoot({
   );
 
   return (
-    <AppShellContext value={contextValue}>
-      <div
-        {...rest}
-        className={slots.base({ className })}
-        data-part="root"
-        data-resizing={regionResizing ? "" : undefined}
-        data-scope="app-shell"
-        ref={shellRef}
-        style={{ ...shellStyle, ...gridStyle, ...style }}
-      >
-        {childSlots.banner}
-        {childSlots.inspectors.start}
-        {childSlots.navigation}
-        {childSlots.inspectors.end}
-        {childSlots.rails.start}
-        {childSlots.panels.start}
-        {childSlots.main}
-        {childSlots.panels.end}
-        {childSlots.rails.end}
-      </div>
-    </AppShellContext>
+    <AppShellStylesContext value={{ slots, variants: {} as never }}>
+      <AppShellContext value={contextValue}>
+        <div
+          {...rest}
+          className={slots.base({ className })}
+          data-part="root"
+          data-resizing={regionResizing ? "" : undefined}
+          data-scope="app-shell"
+          ref={shellRef}
+          style={{ ...shellStyle, ...gridStyle, ...style }}
+        >
+          {childSlots.banner}
+          {childSlots.inspectors.start}
+          {childSlots.navigation}
+          {childSlots.inspectors.end}
+          {childSlots.rails.start}
+          {childSlots.panels.start}
+          {childSlots.main}
+          {childSlots.panels.end}
+          {childSlots.rails.end}
+        </div>
+      </AppShellContext>
+    </AppShellStylesContext>
   );
 }
 

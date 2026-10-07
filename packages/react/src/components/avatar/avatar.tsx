@@ -6,16 +6,37 @@ import {
 } from "@ark-ui/react/avatar";
 import type { AvatarProps as BaseAvatarRootProps } from "@pisagor/props";
 import { type AvatarRecipeSlot, avatarRecipe } from "@pisagor/recipes";
-import type { ReactNode } from "react";
+import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
-import { AvatarContext, useAvatar } from "./avatar.context";
+import { createSlotRecipeContext } from "../../utils";
+
+// #region Context
+const { withContext, withProvider } = createSlotRecipeContext({
+  name: "Avatar",
+  recipe: avatarRecipe,
+});
+// #endregion
+
+// #region Parts
+const AvatarRoot = withProvider(AvatarPrimitive.Root, {
+  name: "Root",
+  slot: "base",
+}) as FunctionComponent<AvatarPrimitiveRootProps & BaseAvatarRootProps>;
+
+const AvatarImage = withContext(AvatarPrimitive.Image, {
+  name: "Image",
+});
+
+const AvatarFallback = withContext(AvatarPrimitive.Fallback, {
+  name: "Fallback",
+});
+// #endregion
 
 // #region Types
 type AvatarClassNames = VariantClassNames<AvatarRecipeSlot>;
 
-type AvatarRootProps = AvatarPrimitiveRootProps & BaseAvatarRootProps;
-
-export interface AvatarProps extends Omit<AvatarRootProps, "children"> {
+export interface AvatarProps
+  extends Omit<ComponentProps<typeof AvatarRoot>, "children"> {
   /** Alt text for the avatar image */
   alt?: string;
   /** Renders the fallback content shown until the image loads */
@@ -28,51 +49,6 @@ export interface AvatarProps extends Omit<AvatarRootProps, "children"> {
   fallbackProps?: Omit<AvatarFallbackProps, "children" | "className">;
   /** Extra props forwarded to the avatar image element */
   imageProps?: Omit<AvatarImageProps, "alt" | "className" | "src">;
-}
-// #endregion
-
-// #region Parts
-function AvatarRoot({
-  shape = "circle",
-  size = "md",
-  children,
-  recipe = avatarRecipe,
-  className,
-  ...rest
-}: AvatarRootProps) {
-  const slots = recipe({ shape, size });
-
-  return (
-    <AvatarContext value={{ slots }}>
-      <AvatarPrimitive.Root
-        {...rest}
-        className={slots.base({ className })}
-        data-shape={shape}
-        data-size={size}
-      >
-        {children}
-      </AvatarPrimitive.Root>
-    </AvatarContext>
-  );
-}
-
-function AvatarImage({ className, ...rest }: AvatarImageProps) {
-  const { slots } = useAvatar();
-
-  return (
-    <AvatarPrimitive.Image {...rest} className={slots.image({ className })} />
-  );
-}
-
-function AvatarFallback({ className, ...rest }: AvatarFallbackProps) {
-  const { slots } = useAvatar();
-
-  return (
-    <AvatarPrimitive.Fallback
-      {...rest}
-      className={slots.fallback({ className })}
-    />
-  );
 }
 // #endregion
 
@@ -110,8 +86,5 @@ export function Avatar({
 // #endregion
 
 // #region Display Names
-AvatarRoot.displayName = "Avatar.Root";
-AvatarImage.displayName = "Avatar.Image";
-AvatarFallback.displayName = "Avatar.Fallback";
 Avatar.displayName = "Avatar";
 // #endregion

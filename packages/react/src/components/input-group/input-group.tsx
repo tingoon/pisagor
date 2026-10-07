@@ -4,7 +4,7 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { Input, type InputProps } from "../input/input";
-import { Textarea, type TextareaProps } from "../textarea/textarea";
+import { Textarea, type TextareaProps } from "../textarea";
 
 // #region Parts
 export function InputGroupInput({

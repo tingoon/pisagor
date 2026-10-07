@@ -1,63 +1,40 @@
 import { ark } from "@ark-ui/react/factory";
 import type { AvatarGroupProps as BaseAvatarGroupRootProps } from "@pisagor/props";
 import { avatarGroupRecipe } from "@pisagor/recipes";
-import type { ComponentProps } from "react";
+import type { ComponentProps, FunctionComponent } from "react";
+import { createSlotRecipeContext } from "../../utils";
 import { Avatar } from "./avatar";
-import { AvatarGroupContext, useAvatarGroup } from "./avatar-group.context";
+
+// #region Context
+const { withContext, withProvider } = createSlotRecipeContext({
+  name: "AvatarGroup",
+  recipe: avatarGroupRecipe,
+});
+// #endregion
+
+// #region Parts
+export const AvatarGroupRoot = withProvider(ark.div, {
+  name: "Root",
+  slot: "base",
+}) as FunctionComponent<
+  ComponentProps<typeof ark.div> & BaseAvatarGroupRootProps
+>;
+
+export const AvatarGroupCount = withContext(ark.div, {
+  name: "Count",
+});
+// #endregion
 
 // #region Types
-export interface AvatarGroupRootProps
-  extends ComponentProps<typeof ark.div>,
-    BaseAvatarGroupRootProps {}
+export type AvatarGroupRootProps = ComponentProps<typeof AvatarGroupRoot>;
+export type AvatarGroupCountProps = ComponentProps<typeof AvatarGroupCount>;
 
 export interface AvatarGroupProps
-  extends Omit<AvatarGroupRootProps, "children"> {
+  extends Omit<ComponentProps<typeof AvatarGroupRoot>, "children"> {
   /** Maximum number of avatars to show; excess shown as "+N". */
   max?: number;
   /** User list rendered as avatars. */
   users: Array<{ src?: string; fallback?: string; name?: string }>;
-}
-
-export type AvatarGroupCountProps = ComponentProps<typeof ark.div>;
-// #endregion
-
-// #region Parts
-export function AvatarGroupRoot({
-  children,
-  recipe = avatarGroupRecipe,
-  className,
-  ...rest
-}: AvatarGroupRootProps) {
-  const slots = recipe();
-
-  return (
-    <AvatarGroupContext value={{ slots }}>
-      <ark.div
-        {...rest}
-        className={slots.base({ className })}
-        data-part="group"
-        data-scope="avatar"
-      >
-        {children}
-      </ark.div>
-    </AvatarGroupContext>
-  );
-}
-
-export function AvatarGroupCount({
-  className,
-  ...rest
-}: AvatarGroupCountProps) {
-  const { slots } = useAvatarGroup();
-
-  return (
-    <ark.div
-      {...rest}
-      className={slots.count({ className })}
-      data-part="group-count"
-      data-scope="avatar"
-    />
-  );
 }
 // #endregion
 
@@ -90,7 +67,5 @@ export function AvatarGroupShorthand({
 // #endregion
 
 // #region Display Names
-AvatarGroupRoot.displayName = "AvatarGroup.Root";
-AvatarGroupCount.displayName = "AvatarGroup.Count";
 AvatarGroupShorthand.displayName = "AvatarGroup";
 // #endregion

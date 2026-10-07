@@ -1,8 +1,8 @@
 import { useUncontrolled } from "@mantine/hooks";
-import type { AppShellRecipe } from "@pisagor/recipes";
+import { appShellRecipe } from "@pisagor/recipes";
 
 import { type RefObject, useCallback } from "react";
-import { createContext } from "../../utils";
+import { createContext, createSlotRecipeContext } from "../../utils";
 
 export type AppShellPlacement = "start" | "end";
 
@@ -66,7 +66,7 @@ export interface AppShellRailState {
   setActiveRailId: (id: string) => void;
 }
 
-interface AppShellContextValue {
+interface AppShellStateValue {
   inspectorStates: RefObject<
     Partial<Record<AppShellPlacement, AppShellSideState>>
   >;
@@ -83,8 +83,6 @@ interface AppShellContextValue {
   setFixedStackVar: (name: AppShellFixedStackVar, value: string) => void;
   setRegionVar: (name: AppShellRegionVar, value: string) => void;
   shellRef: RefObject<HTMLDivElement | null>;
-  /** Slot class recipes from `appShellRecipe`. */
-  slots: AppShellRecipe;
 }
 
 interface UseSideStateOptions {
@@ -107,8 +105,21 @@ export const ZERO_REGION_VARS: Record<AppShellRegionVar, string> = {
   "--app-shell-start-rail-width": "0px",
 };
 
-export const { AppShellContext, useAppShell } =
-  createContext("AppShell")<AppShellContextValue>();
+const { Context: AppShellStylesContext, useStyles: useAppShellStyles } =
+  createSlotRecipeContext({
+    name: "AppShell",
+    recipe: appShellRecipe,
+  });
+
+export { AppShellStylesContext };
+
+export const { AppShellContext, useAppShell: useAppShellState } =
+  createContext("AppShell")<AppShellStateValue>();
+
+/** Nearest app-shell styles + layout state. */
+export function useAppShell() {
+  return { ...useAppShellStyles(), ...useAppShellState() };
+}
 
 export function useSideState({
   defaultOpen = false,
