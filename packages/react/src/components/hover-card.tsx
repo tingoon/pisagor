@@ -8,7 +8,7 @@ import type {
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/react/hover-card";
 import type { HoverCardProps as BaseHoverCardRootProps } from "@pisagor/props";
 import { hoverCardRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 
 // #region Context
 const { Context: HoverCardStylesContext, useStyles: useHoverCard } =

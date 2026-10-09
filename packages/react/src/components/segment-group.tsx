@@ -6,7 +6,7 @@ import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/react/segment-gro
 import type { SegmentGroupProps as BaseSegmentGroupRootProps } from "@pisagor/props";
 import { segmentGroupRecipe } from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode } from "react";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 
 // #region Context
 const {
@@ -102,7 +102,9 @@ export function SegmentGroupItem({
 }
 
 const SegmentGroupItemText = withContext(SegmentGroupPrimitive.ItemText, {
+  defaultProps: { "data-part": "item-text" },
   name: "ItemText",
+  slot: "itemText",
 });
 
 export const SegmentGroupIndicator = withContext(

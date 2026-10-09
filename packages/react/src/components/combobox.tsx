@@ -31,7 +31,7 @@ import {
 
 import type { ReactNode } from "react";
 import { use } from "react";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
 

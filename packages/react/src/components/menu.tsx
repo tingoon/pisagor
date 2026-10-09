@@ -6,7 +6,7 @@ import type {
 import { menuItemRecipe, menuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, FunctionComponent } from "react";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 
 // #region Context
 const {
@@ -69,7 +69,9 @@ export const MenuGroup = withContext(ark.div, {
 });
 
 export const MenuGroupLabel = withContext(ark.div, {
+  defaultProps: { "data-part": "group-label" },
   name: "GroupLabel",
+  slot: "groupLabel",
 });
 
 export function MenuItem({

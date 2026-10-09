@@ -9,7 +9,7 @@ import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
 import type { SheetProps as BaseSheetProps } from "@pisagor/props";
 import { type SheetVariantProps, sheetRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button } from "./button";
 import type {
   DialogBackdropProps,

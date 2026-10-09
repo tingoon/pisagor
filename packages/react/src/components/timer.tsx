@@ -12,7 +12,7 @@ import type {
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
 import { Fragment } from "react";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 
 // #region Context
 const {
@@ -129,7 +129,9 @@ export const TimerItem = withTimerItemGroupContext(TimerPrimitive.Item, {
 });
 
 export const TimerItemLabel = withTimerItemGroupContext(ark.div, {
+  defaultProps: { "data-part": "item-label" },
   name: "ItemLabel",
+  slot: "label",
 });
 
 export function TimerSeparator({

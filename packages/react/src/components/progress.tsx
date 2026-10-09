@@ -8,8 +8,8 @@ import { Progress as ProgressPrimitive } from "@ark-ui/react/progress";
 import type { ProgressProps as BaseProgressRootProps } from "@pisagor/props";
 import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { VariantClassNames } from "../internal/types";
-import { createSlotRecipeContext } from "../utils";
 import { Field } from "./field";
 
 // #region Context
@@ -83,6 +83,7 @@ export function Progress({
   orientation = "horizontal",
   indeterminate = false,
   isValueVisible,
+  defaultValue = 0,
   value,
   children,
   label,
@@ -99,6 +100,7 @@ export function Progress({
     <ProgressRoot
       {...rest}
       className={className}
+      defaultValue={defaultValue}
       orientation={orientation}
       value={indeterminate ? null : value}
     >

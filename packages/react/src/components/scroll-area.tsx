@@ -8,8 +8,8 @@ import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/react/scroll-area";
 import type { ScrollAreaProps as BaseScrollAreaRootProps } from "@pisagor/props";
 import { type ScrollAreaRecipeSlot, scrollAreaRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { VariantClassNames } from "../internal/types";
-import { createSlotRecipeContext } from "../utils";
 
 // #region Context
 const {

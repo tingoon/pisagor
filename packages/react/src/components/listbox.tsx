@@ -21,7 +21,7 @@ import type {
 import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
 
 import { useMemo } from "react";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "./dropdown-menu";
 
 // #region Context

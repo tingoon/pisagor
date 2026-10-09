@@ -14,7 +14,7 @@ import type {
 } from "@pisagor/props";
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 
 // #region Context
 const { withContext: withStepsContext, withProvider: withStepsProvider } =
@@ -103,7 +103,9 @@ export const StepsContent = withStepsContext(StepsPrimitive.Content, {
 export const StepsCompletedContent = withStepsContext(
   StepsPrimitive.CompletedContent,
   {
+    defaultProps: { "data-part": "completed-content" },
     name: "CompletedContent",
+    slot: "completedContent",
   },
 );
 

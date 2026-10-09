@@ -19,7 +19,7 @@ import {
   useState,
 } from "react";
 import { useIsMobile } from "../hooks";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button, type ButtonProps } from "./button";
 import { Input, type InputProps } from "./input";
 import { ScrollArea } from "./scroll-area";

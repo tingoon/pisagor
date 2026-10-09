@@ -7,7 +7,7 @@ import { Collapsible as CollapsiblePrimitive } from "@ark-ui/react/collapsible";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import type { CollapsibleProps as BaseCollapsibleRootProps } from "@pisagor/props";
 import { collapsibleRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 
 // #region Context
 const {

@@ -35,8 +35,8 @@ import type {
   FunctionComponent,
   ReactNode,
 } from "react";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { VariantClassNames } from "../internal/types";
-import { createSlotRecipeContext } from "../utils";
 import { Button } from "./button";
 import { Spinner } from "./spinner";
 

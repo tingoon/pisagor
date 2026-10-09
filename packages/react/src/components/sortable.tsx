@@ -20,10 +20,8 @@ import {
   useRef,
   useState,
 } from "react";
-import {
-  createContext as createNamedContext,
-  createSlotRecipeContext,
-} from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createContext as createNamedContext } from "../utils";
 
 // #region Context
 type SortableOrientation = "vertical" | "horizontal";

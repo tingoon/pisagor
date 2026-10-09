@@ -40,7 +40,7 @@ import {
 } from "@pisagor/recipes";
 
 import { cn } from "@pisagor/utils";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button, type ButtonProps } from "./button";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 

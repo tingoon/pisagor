@@ -27,7 +27,7 @@ import {
 
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button } from "./button";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -189,7 +189,7 @@ export function FileUploadDescription({
     <ark.div
       {...rest}
       className={slots.description({ className })}
-      data-part="title"
+      data-part="description"
       data-scope="file-upload"
     />
   );

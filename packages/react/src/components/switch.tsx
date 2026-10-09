@@ -7,9 +7,8 @@ import type {
 import { Switch as SwitchPrimitive } from "@ark-ui/react/switch";
 import type { SwitchProps as BaseSwitchRootProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
-
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { VariantClassNames } from "../internal/types";
-import { createSlotRecipeContext } from "../utils";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context

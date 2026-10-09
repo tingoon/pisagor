@@ -13,8 +13,8 @@ import {
 } from "@pisagor/recipes";
 
 import { cn } from "@pisagor/utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { VariantClassNames } from "../internal/types";
-import { createSlotRecipeContext } from "../utils";
 import { Button } from "./button";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -78,14 +78,18 @@ function SignaturePadRoot({
 
 function SignaturePadControl({
   invalid,
+  variant = "primary",
   children,
   className,
   ...rest
-}: SignaturePadControlProps & { invalid?: boolean }) {
+}: SignaturePadControlProps & {
+  invalid?: boolean;
+  variant?: FormControlVariant;
+}) {
   const { slots } = useSignaturePad();
   const resolved = {
     surfaceVariant: useFormControlSurface(),
-    variant: "primary" as FormControlVariant,
+    variant,
   };
   const shellArgs = {
     surfaceVariant: resolved.surfaceVariant,
@@ -151,7 +155,11 @@ export function SignaturePad({
       invalid={invalid}
       variant={variant}
     >
-      <SignaturePadControl className={classNames?.control} invalid={invalid}>
+      <SignaturePadControl
+        className={classNames?.control}
+        invalid={invalid}
+        variant={variant}
+      >
         <SignaturePadSegment className={classNames?.segment} />
         <SignaturePadClear className={classNames?.clear} />
         <SignaturePadGuide className={classNames?.guide} />

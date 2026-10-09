@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react/factory";
 import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
 import { buttonGroupRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Separator, type SeparatorProps } from "./separator";
 
 // #region Context

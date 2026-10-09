@@ -17,7 +17,7 @@ import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
 
 import { createContext, use } from "react";
 import { useClearableInput } from "../hooks";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button } from "./button";
 import { Calendar, CalendarSlotsContext } from "./calendar";
 import { Input, type InputProps } from "./input";

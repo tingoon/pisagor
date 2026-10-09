@@ -2,7 +2,8 @@ import { useUncontrolled } from "@mantine/hooks";
 import { appShellRecipe } from "@pisagor/recipes";
 
 import { type RefObject, useCallback } from "react";
-import { createContext, createSlotRecipeContext } from "../../utils";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
+import { createContext } from "../../utils";
 
 export type AppShellPlacement = "start" | "end";
 

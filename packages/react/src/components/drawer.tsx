@@ -13,7 +13,7 @@ import { Portal } from "@ark-ui/react/portal";
 import type { DrawerProps as BaseDrawerRootProps } from "@pisagor/props";
 import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context

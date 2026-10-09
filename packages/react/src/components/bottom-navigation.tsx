@@ -14,7 +14,7 @@ import {
   bottomNavigationRecipe,
 } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 
 // #region Context
 const {
@@ -79,15 +79,18 @@ export const BottomNavigationItem = withBottomNavigationItemProvider(
 export const BottomNavigationItemIcon = withBottomNavigationItemContext(
   ark.span,
   {
-    defaultProps: { "aria-hidden": true },
+    defaultProps: { "aria-hidden": true, "data-part": "item-icon" },
     name: "ItemIcon",
+    slot: "icon",
   },
 );
 
 export const BottomNavigationItemLabel = withBottomNavigationItemContext(
   ark.span,
   {
+    defaultProps: { "data-part": "item-label" },
     name: "ItemLabel",
+    slot: "label",
   },
 );
 // #endregion

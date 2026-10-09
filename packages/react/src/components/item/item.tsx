@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react/factory";
 import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
-import { createSlotRecipeContext } from "../../utils";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
 import { useItemGroup } from "./item-group.context";
 
 // #region Context

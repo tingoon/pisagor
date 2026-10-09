@@ -11,8 +11,8 @@ import {
 
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { VariantClassNames } from "../internal/types";
-import { createSlotRecipeContext } from "../utils";
 import { Button, type ButtonProps } from "./button";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 

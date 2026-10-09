@@ -8,7 +8,7 @@ import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
 import type { CarouselProps as BaseCarouselRootProps } from "@pisagor/props";
 import { carouselRecipe } from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode } from "react";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button } from "./button";
 
 // #region Context
@@ -113,7 +113,9 @@ export function CarouselNextTrigger({
 export const CarouselIndicatorGroup = withContext(
   CarouselPrimitive.IndicatorGroup,
   {
+    defaultProps: { "data-part": "indicator-group" },
     name: "IndicatorGroup",
+    slot: "indicatorGroup",
   },
 );
 
@@ -122,7 +124,9 @@ export const CarouselIndicator = withContext(CarouselPrimitive.Indicator, {
 });
 
 export const CarouselItemGroup = withContext(CarouselPrimitive.ItemGroup, {
+  defaultProps: { "data-part": "item-group" },
   name: "ItemGroup",
+  slot: "itemGroup",
 });
 
 export const CarouselItem = withContext(CarouselPrimitive.Item, {

@@ -10,9 +10,10 @@ import type {
 import { Tooltip as TooltipPrimitive } from "@ark-ui/react/tooltip";
 import type { TooltipProps as BaseTooltipRootProps } from "@pisagor/props";
 import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { ReactElement, ReactNode } from "react";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { VariantClassNames } from "../internal/types";
-import { createSlotRecipeContext } from "../utils";
 
 // #region Context
 const { Context: TooltipStylesContext, withContext } = createSlotRecipeContext({
@@ -43,6 +44,8 @@ export interface TooltipProps extends Omit<TooltipRootProps, "children"> {
   children: ReactElement | TooltipTriggerHandle;
   /** Tooltip text or content */
   content: ReactNode;
+  /** Class merged onto the tooltip content element */
+  className?: string;
   /** Slot class names */
   classNames?: TooltipClassNames;
   /** Extra props forwarded to the tooltip arrow element */
@@ -121,6 +124,7 @@ export function Tooltip({
   contentProps,
   positionerProps,
   triggerProps,
+  className,
   classNames,
   ...rest
 }: TooltipProps) {
@@ -139,7 +143,10 @@ export function Tooltip({
 
       <Portal>
         <TooltipPositioner {...positionerProps}>
-          <TooltipContent {...contentProps} className={classNames?.content}>
+          <TooltipContent
+            {...contentProps}
+            className={cn(className, classNames?.content)}
+          >
             <TooltipArrow {...arrowProps} className={classNames?.arrow}>
               <TooltipPrimitive.ArrowTip />
             </TooltipArrow>

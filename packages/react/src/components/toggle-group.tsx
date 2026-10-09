@@ -7,7 +7,7 @@ import type { ToggleGroupProps as BaseToggleGroupRootProps } from "@pisagor/prop
 import { toggleGroupRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { createContext, use, useMemo } from "react";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Toggle, type ToggleProps } from "./toggle";
 
 // #region Context

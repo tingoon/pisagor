@@ -15,7 +15,7 @@ import type {
 } from "@pisagor/props";
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import { type ComponentProps, useCallback, useRef } from "react";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 
 export type {
   SplitterExpandCollapseDetails as ExpandCollapseDetails,
@@ -193,7 +193,11 @@ export function ResizablePanel(props: ResizablePanelProps) {
 
 export const ResizableResizeTriggerIndicator = withContext(
   SplitterPrimitive.ResizeTriggerIndicator,
-  { name: "ResizeTriggerIndicator" },
+  {
+    defaultProps: { "data-part": "resize-trigger-indicator" },
+    name: "ResizeTriggerIndicator",
+    slot: "resizeTriggerIndicator",
+  },
 );
 
 export function ResizableResizeTrigger({

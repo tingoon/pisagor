@@ -29,7 +29,7 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { use } from "react";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Separator, type SeparatorProps } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 

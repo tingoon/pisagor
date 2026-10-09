@@ -27,7 +27,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button } from "./button";
 import type {
   DialogBackdropProps,

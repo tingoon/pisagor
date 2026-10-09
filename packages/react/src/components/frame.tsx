@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react/factory";
 import type { FrameProps as BaseFrameRootProps } from "@pisagor/props";
 import { frameRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { SurfaceContext } from "./surface/surface.context";
 
 // #region Context

@@ -12,7 +12,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import {
   InputGroupAddon,
   InputGroupButton,

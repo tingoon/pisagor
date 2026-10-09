@@ -7,7 +7,7 @@ import type {
 } from "@pisagor/props";
 import { commandRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
-import { createSlotRecipeContext } from "../utils";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type {
   ComboboxContentProps,
   ComboboxEmptyProps,

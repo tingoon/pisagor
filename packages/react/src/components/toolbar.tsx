@@ -2,8 +2,8 @@ import { ark } from "@ark-ui/react/factory";
 import type { ToolbarProps as BaseToolbarRootProps } from "@pisagor/props";
 import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { VariantClassNames } from "../internal/types";
-import { createSlotRecipeContext } from "../utils";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
