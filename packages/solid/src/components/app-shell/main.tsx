@@ -2,7 +2,7 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import type { AppShellRegionPosition } from "./app-shell.context";
-import { useAppShell } from "./app-shell.context";
+import { useAppShellStyles } from "./app-shell.context";
 import { regionPositionClasses } from "./region";
 
 export interface AppShellHeaderProps extends ComponentProps<"header"> {
@@ -14,12 +14,12 @@ export type AppShellContentProps = ComponentProps<"main">;
 
 export function AppShellMain(props: AppShellMainProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "style"]);
-  const { slots } = useAppShell();
+  const styles = useAppShellStyles();
 
   return (
     <div
       {...rest}
-      class={slots.main({ class: local.class })}
+      class={styles.slots.main({ class: local.class })}
       data-part="main"
       data-scope="app-shell"
       style={{
@@ -36,15 +36,15 @@ export function AppShellMain(props: AppShellMainProps): JSX.Element {
 
 export function AppShellHeader(props: AppShellHeaderProps): JSX.Element {
   const [local, rest] = splitProps(props, ["position", "class"]);
-  const { slots } = useAppShell();
+  const styles = useAppShellStyles();
   const position = () => local.position ?? "fixed";
 
   return (
     <header
       {...rest}
       class={cn(
-        slots.header(),
-        regionPositionClasses(slots, position(), "row", "header"),
+        styles.slots.header(),
+        regionPositionClasses(styles.slots, position(), "row", "header"),
         local.class,
       )}
       data-part="header"
@@ -56,11 +56,11 @@ export function AppShellHeader(props: AppShellHeaderProps): JSX.Element {
 
 export function AppShellContent(props: AppShellContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const { slots } = useAppShell();
+  const styles = useAppShellStyles();
   return (
     <main
       {...rest}
-      class={slots.content({ class: local.class })}
+      class={styles.slots.content({ class: local.class })}
       data-part="content"
       data-scope="app-shell"
     />

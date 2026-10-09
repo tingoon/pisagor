@@ -13,7 +13,7 @@ import type {
   AppShellRegionPosition,
   AppShellResizableProps,
 } from "./app-shell.context";
-import { useAppShell } from "./app-shell.context";
+import { useAppShellState, useAppShellStyles } from "./app-shell.context";
 import {
   gridAreaFor,
   mergeResizableProps,
@@ -63,8 +63,9 @@ export function AppShellInspector(props: AppShellInspectorProps): JSX.Element {
   ]);
   const placement = () => local.placement ?? "end";
   const position = () => local.position ?? "fixed";
-  const { defaultInspectorResizableProps, inspectorStates, slots } =
-    useAppShell();
+  const styles = useAppShellStyles();
+  const { defaultInspectorResizableProps, inspectorStates } =
+    useAppShellState();
   const resizableProps = () =>
     mergeResizableProps(defaultInspectorResizableProps, local.resizableProps);
   const side = useRegisteredSideState({
@@ -85,10 +86,10 @@ export function AppShellInspector(props: AppShellInspectorProps): JSX.Element {
     <aside
       {...rest}
       class={cn(
-        slots.inspector(),
+        styles.slots.inspector(),
         placement() === "start" ? "border-e" : "border-s",
         regionPositionClasses(
-          slots,
+          styles.slots,
           position(),
           "column",
           undefined,
@@ -121,7 +122,7 @@ export function AppShellInspector(props: AppShellInspectorProps): JSX.Element {
           width={widthPx()}
         />
       </Show>
-      <div class={slots.sideBody()}>{local.children}</div>
+      <div class={styles.slots.sideBody()}>{local.children}</div>
     </aside>
   );
 }
@@ -130,11 +131,11 @@ export function AppShellInspectorHeader(
   props: AppShellInspectorHeaderProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const { slots } = useAppShell();
+  const styles = useAppShellStyles();
   return (
     <div
       {...rest}
-      class={slots.inspectorHeader({ class: local.class })}
+      class={styles.slots.inspectorHeader({ class: local.class })}
       data-part="inspector-header"
       data-scope="app-shell"
     />
@@ -145,12 +146,12 @@ export function AppShellInspectorContent(
   props: AppShellInspectorContentProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const { slots } = useAppShell();
+  const styles = useAppShellStyles();
   return (
-    <ScrollArea class={slots.scrollArea()}>
+    <ScrollArea class={styles.slots.scrollArea()}>
       <div
         {...rest}
-        class={slots.inspectorContent({ class: local.class })}
+        class={styles.slots.inspectorContent({ class: local.class })}
         data-part="inspector-content"
         data-scope="app-shell"
       />
@@ -162,11 +163,11 @@ export function AppShellInspectorFooter(
   props: AppShellInspectorFooterProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const { slots } = useAppShell();
+  const styles = useAppShellStyles();
   return (
     <div
       {...rest}
-      class={slots.inspectorFooter({ class: local.class })}
+      class={styles.slots.inspectorFooter({ class: local.class })}
       data-part="inspector-footer"
       data-scope="app-shell"
     />
@@ -185,7 +186,7 @@ export function AppShellInspectorTrigger(
     "class",
   ]);
   const placement = () => local.placement ?? "end";
-  const { inspectorStates } = useAppShell();
+  const { inspectorStates } = useAppShellState();
   const open = useAppShellSideOpen(placement(), inspectorStates);
 
   return (

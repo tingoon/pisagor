@@ -10,10 +10,17 @@ import {
   type AvatarVariantProps,
   avatarRecipe,
 } from "@pisagor/recipes";
-import type { JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
 import type { VariantClassNames } from "../../internal/types";
-import { AvatarContext, useAvatar } from "./avatar.context";
+
+// #region Context
+const { withContext, withProvider } = createSlotRecipeContext({
+  name: "Avatar",
+  recipe: avatarRecipe,
+});
+// #endregion
 
 type AvatarClassNames = VariantClassNames<AvatarRecipeSlot>;
 
@@ -30,54 +37,20 @@ export interface AvatarProps extends Omit<AvatarRootProps, "children"> {
   imageProps?: Omit<AvatarImageProps, "alt" | "class" | "src">;
 }
 
-function AvatarRoot(props: AvatarRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "shape",
-    "size",
-    "children",
-    "recipe",
-    "class",
-  ]);
-  const shape = () => local.shape ?? "circle";
-  const size = () => local.size ?? "md";
-  const slots = () =>
-    (local.recipe ?? avatarRecipe)({ shape: shape(), size: size() });
+const AvatarRoot: Component<AvatarRootProps> = withProvider(
+  AvatarPrimitive.Root,
+  { name: "Root", slot: "base" },
+);
 
-  return (
-    <AvatarContext value={{ slots: slots() }}>
-      <AvatarPrimitive.Root
-        {...rest}
-        class={slots().base({ class: local.class })}
-        data-shape={shape()}
-        data-size={size()}
-      >
-        {local.children}
-      </AvatarPrimitive.Root>
-    </AvatarContext>
-  );
-}
+const AvatarImage: Component<AvatarImageProps> = withContext(
+  AvatarPrimitive.Image,
+  { name: "Image" },
+);
 
-function AvatarImage(props: AvatarImageProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const { slots } = useAvatar();
-  return (
-    <AvatarPrimitive.Image
-      {...rest}
-      class={slots.image({ class: local.class })}
-    />
-  );
-}
-
-function AvatarFallback(props: AvatarFallbackProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const { slots } = useAvatar();
-  return (
-    <AvatarPrimitive.Fallback
-      {...rest}
-      class={slots.fallback({ class: local.class })}
-    />
-  );
-}
+const AvatarFallback: Component<AvatarFallbackProps> = withContext(
+  AvatarPrimitive.Fallback,
+  { name: "Fallback" },
+);
 
 export function Avatar(props: AvatarProps): JSX.Element {
   const [local, rest] = splitProps(props, [

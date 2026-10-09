@@ -1,6 +1,7 @@
-import type { AppShellRecipe } from "@pisagor/recipes";
+import { appShellRecipe } from "@pisagor/recipes";
 import type { Accessor } from "solid-js";
 import { createMemo, createSignal } from "solid-js";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
 import { createContext } from "../../utils";
 
 export type AppShellPlacement = "start" | "end";
@@ -52,7 +53,7 @@ export interface AppShellRailState {
 
 export type MutableRef<T> = { current: T };
 
-interface AppShellContextValue {
+interface AppShellStateValue {
   inspectorStates: MutableRef<
     Partial<Record<AppShellPlacement, AppShellSideState>>
   >;
@@ -71,7 +72,6 @@ interface AppShellContextValue {
   setFixedStackVar: (name: AppShellFixedStackVar, value: string) => void;
   setRegionVar: (name: AppShellRegionVar, value: string) => void;
   shellRef: MutableRef<HTMLDivElement | null>;
-  slots: AppShellRecipe;
 }
 
 interface UseSideStateOptions {
@@ -94,8 +94,28 @@ export const ZERO_REGION_VARS: Record<AppShellRegionVar, string> = {
   "--app-shell-start-rail-width": "0px",
 };
 
-export const { AppShellContext, useAppShell } =
-  createContext("AppShell")<AppShellContextValue>();
+const { Context: AppShellStylesContext, useStyles: useAppShellStyles } =
+  createSlotRecipeContext({
+    name: "AppShell",
+    recipe: appShellRecipe,
+  });
+
+export { AppShellStylesContext, useAppShellStyles };
+
+export const { AppShellContext, useAppShell: useAppShellState } =
+  createContext("AppShell")<AppShellStateValue>();
+
+/** Nearest app-shell styles + layout state (`slots` stays reactive). */
+export function useAppShell() {
+  const styles = useAppShellStyles();
+  const state = useAppShellState();
+  return {
+    ...state,
+    get slots() {
+      return styles.slots;
+    },
+  };
+}
 
 export function useSideState({
   defaultOpen = false,

@@ -13,7 +13,7 @@ import type {
   AppShellRegionPosition,
   AppShellResizableProps,
 } from "./app-shell.context";
-import { useAppShell } from "./app-shell.context";
+import { useAppShellState, useAppShellStyles } from "./app-shell.context";
 import {
   gridAreaFor,
   mergeResizableProps,
@@ -63,7 +63,8 @@ export function AppShellPanel(props: AppShellPanelProps): JSX.Element {
   ]);
   const placement = () => local.placement ?? "start";
   const position = () => local.position ?? "fixed";
-  const { defaultPanelResizableProps, panelStates, slots } = useAppShell();
+  const styles = useAppShellStyles();
+  const { defaultPanelResizableProps, panelStates } = useAppShellState();
   const resizableProps = () =>
     mergeResizableProps(defaultPanelResizableProps, local.resizableProps);
   const side = useRegisteredSideState({
@@ -84,11 +85,11 @@ export function AppShellPanel(props: AppShellPanelProps): JSX.Element {
     <aside
       {...rest}
       class={cn(
-        slots.panel(),
+        styles.slots.panel(),
         placement() === "start"
           ? "border-border border-e"
           : "border-border border-s",
-        regionPositionClasses(slots, position(), "column"),
+        regionPositionClasses(styles.slots, position(), "column"),
         side.open() ? "opacity-100" : "pointer-events-none opacity-0",
         local.class,
       )}
@@ -116,7 +117,7 @@ export function AppShellPanel(props: AppShellPanelProps): JSX.Element {
           width={widthPx()}
         />
       </Show>
-      <div class={slots.sideBody()}>{local.children}</div>
+      <div class={styles.slots.sideBody()}>{local.children}</div>
     </aside>
   );
 }
@@ -125,11 +126,11 @@ export function AppShellPanelHeader(
   props: AppShellPanelHeaderProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const { slots } = useAppShell();
+  const styles = useAppShellStyles();
   return (
     <div
       {...rest}
-      class={slots.panelHeader({ class: local.class })}
+      class={styles.slots.panelHeader({ class: local.class })}
       data-part="panel-header"
       data-scope="app-shell"
     />
@@ -140,12 +141,12 @@ export function AppShellPanelContent(
   props: AppShellPanelContentProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const { slots } = useAppShell();
+  const styles = useAppShellStyles();
   return (
-    <ScrollArea class={slots.scrollArea()}>
+    <ScrollArea class={styles.slots.scrollArea()}>
       <div
         {...rest}
-        class={slots.panelContent({ class: local.class })}
+        class={styles.slots.panelContent({ class: local.class })}
         data-part="panel-content"
         data-scope="app-shell"
       />
@@ -157,11 +158,11 @@ export function AppShellPanelFooter(
   props: AppShellPanelFooterProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const { slots } = useAppShell();
+  const styles = useAppShellStyles();
   return (
     <div
       {...rest}
-      class={slots.panelFooter({ class: local.class })}
+      class={styles.slots.panelFooter({ class: local.class })}
       data-part="panel-footer"
       data-scope="app-shell"
     />
@@ -180,7 +181,7 @@ export function AppShellPanelTrigger(
     "class",
   ]);
   const placement = () => local.placement ?? "start";
-  const { panelStates } = useAppShell();
+  const { panelStates } = useAppShellState();
   const open = useAppShellSideOpen(placement(), panelStates);
 
   return (

@@ -1,10 +1,17 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { AvatarGroupProps as BaseAvatarGroupRootProps } from "@pisagor/props";
 import { avatarGroupRecipe } from "@pisagor/recipes";
-import type { ComponentProps, JSX } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
 import { Avatar } from "./avatar";
-import { AvatarGroupContext, useAvatarGroup } from "./avatar-group.context";
+
+// #region Context
+const { withContext, withProvider } = createSlotRecipeContext({
+  name: "AvatarGroup",
+  recipe: avatarGroupRecipe,
+});
+// #endregion
 
 export interface AvatarGroupRootProps
   extends ComponentProps<typeof ark.div>,
@@ -18,36 +25,15 @@ export interface AvatarGroupProps
 
 export type AvatarGroupCountProps = ComponentProps<typeof ark.div>;
 
-export function AvatarGroupRoot(props: AvatarGroupRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "recipe", "class"]);
-  const slots = () => (local.recipe ?? avatarGroupRecipe)();
+export const AvatarGroupRoot: Component<AvatarGroupRootProps> = withProvider(
+  ark.div,
+  { name: "Root", slot: "base" },
+);
 
-  return (
-    <AvatarGroupContext value={{ slots: slots() }}>
-      <ark.div
-        {...rest}
-        class={slots().base({ class: local.class })}
-        data-part="group"
-        data-scope="avatar"
-      >
-        {local.children}
-      </ark.div>
-    </AvatarGroupContext>
-  );
-}
-
-export function AvatarGroupCount(props: AvatarGroupCountProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const { slots } = useAvatarGroup();
-  return (
-    <ark.div
-      {...rest}
-      class={slots.count({ class: local.class })}
-      data-part="group-count"
-      data-scope="avatar"
-    />
-  );
-}
+export const AvatarGroupCount: Component<AvatarGroupCountProps> = withContext(
+  ark.div,
+  { name: "Count" },
+);
 
 export function AvatarGroupShorthand(props: AvatarGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["max", "users"]);

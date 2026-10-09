@@ -1,7 +1,13 @@
 import type { AppShellProps as BaseAppShellRootProps } from "@pisagor/props";
 import { appShellRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
-import { createEffect, createSignal, onCleanup, splitProps } from "solid-js";
+import {
+  createEffect,
+  createMemo,
+  createSignal,
+  onCleanup,
+  splitProps,
+} from "solid-js";
 import {
   APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS,
   APP_SHELL_DEFAULT_PANEL_RESIZABLE_PROPS,
@@ -11,6 +17,7 @@ import {
   type AppShellRailState,
   type AppShellRegionVar,
   type AppShellSideState,
+  AppShellStylesContext,
   ZERO_FIXED_STACK_VARS,
   ZERO_REGION_VARS,
 } from "./app-shell.context";
@@ -45,7 +52,7 @@ export function AppShellRoot(props: AppShellRootProps): JSX.Element {
     "class",
     "style",
   ]);
-  const slots = () => (local.recipe ?? appShellRecipe)();
+  const slots = createMemo(() => (local.recipe ?? appShellRecipe)());
   const [regionRevision, setRegionRevision] = createSignal(0);
   const [regionVars, setRegionVars] = createSignal({ ...ZERO_REGION_VARS });
   const [fixedStackVars, setFixedStackVars] = createSignal({
@@ -101,48 +108,56 @@ export function AppShellRoot(props: AppShellRootProps): JSX.Element {
   };
 
   return (
-    <AppShellContext
+    <AppShellStylesContext
       value={{
-        defaultInspectorResizableProps:
-          APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS,
-        defaultPanelResizableProps: APP_SHELL_DEFAULT_PANEL_RESIZABLE_PROPS,
-        fixedStackVars,
-        inspectorStates,
-        notifyRegionChange,
-        panelStates,
-        railStates,
-        regionResizing,
-        regionRevision,
-        regionVars,
-        setFixedStackVar,
-        setRegionResizing,
-        setRegionVar,
-        shellRef,
-        slots: slots(),
+        get slots() {
+          return slots();
+        },
+        variants: {},
       }}
     >
-      <div
-        {...rest}
-        class={slots().base({ class: local.class })}
-        data-part="root"
-        data-resizing={regionResizing() ? "" : undefined}
-        data-scope="app-shell"
-        ref={(el) => {
-          shellRef.current = el;
-        }}
-        style={{
-          ...regionVars(),
-          ...fixedStackVars(),
-          ...gridStyle,
-          ...(typeof local.style === "object" &&
-          local.style &&
-          !Array.isArray(local.style)
-            ? (local.style as Record<string, string>)
-            : {}),
+      <AppShellContext
+        value={{
+          defaultInspectorResizableProps:
+            APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS,
+          defaultPanelResizableProps: APP_SHELL_DEFAULT_PANEL_RESIZABLE_PROPS,
+          fixedStackVars,
+          inspectorStates,
+          notifyRegionChange,
+          panelStates,
+          railStates,
+          regionResizing,
+          regionRevision,
+          regionVars,
+          setFixedStackVar,
+          setRegionResizing,
+          setRegionVar,
+          shellRef,
         }}
       >
-        {local.children}
-      </div>
-    </AppShellContext>
+        <div
+          {...rest}
+          class={slots().base({ class: local.class })}
+          data-part="root"
+          data-resizing={regionResizing() ? "" : undefined}
+          data-scope="app-shell"
+          ref={(el) => {
+            shellRef.current = el;
+          }}
+          style={{
+            ...regionVars(),
+            ...fixedStackVars(),
+            ...gridStyle,
+            ...(typeof local.style === "object" &&
+            local.style &&
+            !Array.isArray(local.style)
+              ? (local.style as Record<string, string>)
+              : {}),
+          }}
+        >
+          {local.children}
+        </div>
+      </AppShellContext>
+    </AppShellStylesContext>
   );
 }
