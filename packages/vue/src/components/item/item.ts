@@ -1,15 +1,23 @@
 import { ark } from "@ark-ui/vue/factory";
 import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, unref } from "vue";
-import {
-  provideItemContext,
-  resolveItemVariant,
-  useItemSlots,
-} from "./item.context";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
 import { useItemGroupContextRef } from "./item-group.context";
 
 type ArkPart = Parameters<typeof h>[0];
+
+// #region Context
+const {
+  provideStyles: provideItemStyles,
+  useStyles: useItem,
+  withContext,
+} = createSlotRecipeContext({
+  name: "Item",
+  recipe: itemRecipe,
+});
+// #endregion
 
 // #region Types
 export interface ItemProps extends BaseItemProps {
@@ -28,7 +36,7 @@ export interface ItemHeaderProps {
 // #region Parts
 export const ItemRoot = defineComponent({
   inheritAttrs: false,
-  name: "ItemRoot",
+  name: "Item",
   props: {
     class: {
       default: undefined,
@@ -45,44 +53,44 @@ export const ItemRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const groupRef = useItemGroupContextRef();
-    const itemSlots = props.recipe();
-
-    provideItemContext(
-      computed(() => {
-        const group = groupRef === undefined ? undefined : unref(groupRef);
-
-        return {
-          slots: itemSlots,
-          variant: resolveItemVariant(props.variant, group?.variant),
-        };
-      }),
-    );
-
-    return () => {
+    const variants = computed(() => {
       const group = groupRef === undefined ? undefined : unref(groupRef);
-      const resolvedVariant = resolveItemVariant(props.variant, group?.variant);
 
-      return h(
+      return {
+        ...itemRecipe.defaultVariants,
+        ...props.recipe.defaultVariants,
+        variant: props.variant ?? group?.variant ?? "default",
+      };
+    });
+    const itemSlots = computed(() => props.recipe(variants.value));
+
+    provideItemStyles({
+      get slots() {
+        return itemSlots.value;
+      },
+      get variants() {
+        return variants.value;
+      },
+    });
+
+    return () =>
+      h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: itemSlots.base({
-            class: props.class,
-            variant: resolvedVariant,
-          }),
+          class: itemSlots.value.base({ class: cn(props.class) }),
           "data-part": "root",
           "data-scope": "item",
-          "data-variant": resolvedVariant,
+          "data-variant": variants.value.variant,
         },
         slots.default?.(),
       );
-    };
   },
 });
 
 export const ItemMedia = defineComponent({
   inheritAttrs: false,
-  name: "ItemMedia",
+  name: "Item.Media",
   props: {
     class: {
       default: undefined,
@@ -94,15 +102,15 @@ export const ItemMedia = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const itemSlots = useItemSlots();
+    const styles = useItem();
 
     return () =>
       h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: itemSlots.media({
-            class: props.class,
+          class: styles.slots.media({
+            class: cn(props.class),
             variant: props.variant,
           }),
           "data-part": "media",
@@ -114,159 +122,33 @@ export const ItemMedia = defineComponent({
   },
 });
 
-export const ItemContent = defineComponent({
-  inheritAttrs: false,
-  name: "ItemContent",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const itemSlots = useItemSlots();
-
-    return () =>
-      h(
-        ark.div as ArkPart,
-        {
-          ...attrs,
-          class: itemSlots.content({ class: props.class }),
-          "data-part": "content",
-          "data-scope": "item",
-        },
-        slots.default?.(),
-      );
-  },
+export const ItemContent = withContext(ark.div, {
+  name: "Content",
+  slot: "content",
 });
 
-export const ItemTitle = defineComponent({
-  inheritAttrs: false,
-  name: "ItemTitle",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const itemSlots = useItemSlots();
-
-    return () =>
-      h(
-        ark.div as ArkPart,
-        {
-          ...attrs,
-          class: itemSlots.title({ class: props.class }),
-          "data-part": "title",
-          "data-scope": "item",
-        },
-        slots.default?.(),
-      );
-  },
+export const ItemTitle = withContext(ark.div, {
+  name: "Title",
+  slot: "title",
 });
 
-export const ItemDescription = defineComponent({
-  inheritAttrs: false,
-  name: "ItemDescription",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const itemSlots = useItemSlots();
-
-    return () =>
-      h(
-        ark.p as ArkPart,
-        {
-          ...attrs,
-          class: itemSlots.description({ class: props.class }),
-          "data-part": "description",
-          "data-scope": "item",
-        },
-        slots.default?.(),
-      );
-  },
+export const ItemDescription = withContext(ark.p, {
+  name: "Description",
+  slot: "description",
 });
 
-export const ItemActions = defineComponent({
-  inheritAttrs: false,
-  name: "ItemActions",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const itemSlots = useItemSlots();
-
-    return () =>
-      h(
-        ark.div as ArkPart,
-        {
-          ...attrs,
-          class: itemSlots.actions({ class: props.class }),
-          "data-part": "actions",
-          "data-scope": "item",
-        },
-        slots.default?.(),
-      );
-  },
+export const ItemActions = withContext(ark.div, {
+  name: "Actions",
+  slot: "actions",
 });
 
-export const ItemHeader = defineComponent({
-  inheritAttrs: false,
-  name: "ItemHeader",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const itemSlots = useItemSlots();
-
-    return () =>
-      h(
-        ark.div as ArkPart,
-        {
-          ...attrs,
-          class: itemSlots.header({ class: props.class }),
-          "data-part": "header",
-          "data-scope": "item",
-        },
-        slots.default?.(),
-      );
-  },
+export const ItemHeader = withContext(ark.div, {
+  name: "Header",
+  slot: "header",
 });
 
-export const ItemFooter = defineComponent({
-  inheritAttrs: false,
-  name: "ItemFooter",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    const itemSlots = useItemSlots();
-
-    return () =>
-      h(
-        ark.div as ArkPart,
-        {
-          ...attrs,
-          class: itemSlots.footer({ class: props.class }),
-          "data-part": "footer",
-          "data-scope": "item",
-        },
-        slots.default?.(),
-      );
-  },
+export const ItemFooter = withContext(ark.div, {
+  name: "Footer",
+  slot: "footer",
 });
 // #endregion

@@ -2,9 +2,26 @@ import { ark } from "@ark-ui/vue/factory";
 import type { AvatarGroupProps as BaseAvatarGroupProps } from "@pisagor/props";
 import { avatarGroupRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
 import { Avatar } from "./avatar";
 
-type ArkPart = Parameters<typeof h>[0];
+// #region Context
+const { withContext, withProvider } = createSlotRecipeContext({
+  name: "AvatarGroup",
+  recipe: avatarGroupRecipe,
+});
+// #endregion
+
+// #region Parts
+export const AvatarGroupRoot = withProvider(ark.div, {
+  name: "Root",
+  slot: "base",
+});
+
+export const AvatarGroupCount = withContext(ark.div, {
+  name: "Count",
+});
+// #endregion
 
 // #region Types
 export interface AvatarGroupUser {
@@ -22,69 +39,7 @@ export interface AvatarGroupProps extends BaseAvatarGroupProps {
 }
 // #endregion
 
-// #region Parts
-export const AvatarGroupRoot = defineComponent({
-  inheritAttrs: false,
-  name: "AvatarGroupRoot",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
-    },
-    recipe: {
-      default: avatarGroupRecipe,
-      type: Function as PropType<typeof avatarGroupRecipe>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    return () => {
-      const variantSlots = props.recipe();
-
-      return h(
-        ark.div as ArkPart,
-        {
-          ...attrs,
-          class: variantSlots.base({ class: props.class }),
-          "data-part": "group",
-          "data-scope": "avatar",
-        },
-        slots,
-      );
-    };
-  },
-});
-
-export const AvatarGroupCount = defineComponent({
-  inheritAttrs: false,
-  name: "AvatarGroupCount",
-  props: {
-    class: {
-      default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
-    },
-    recipe: {
-      default: avatarGroupRecipe,
-      type: Function as PropType<typeof avatarGroupRecipe>,
-    },
-  },
-  setup(props, { attrs, slots }) {
-    return () => {
-      const variantSlots = props.recipe();
-
-      return h(
-        ark.div as ArkPart,
-        {
-          ...attrs,
-          class: variantSlots.count({ class: props.class }),
-          "data-part": "group-count",
-          "data-scope": "avatar",
-        },
-        slots,
-      );
-    };
-  },
-});
-
+// #region Shorthand
 export const AvatarGroupShorthand = defineComponent({
   inheritAttrs: false,
   name: "AvatarGroup",

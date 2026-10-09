@@ -1,0 +1,185 @@
+import { Field as FieldPrimitive } from "@ark-ui/vue/field";
+import type { TextareaProps as BaseTextareaProps } from "@pisagor/props";
+import {
+  type FormControlShellVariantProps,
+  formControlShellRecipe,
+  type TextareaRecipeSlot,
+  textareaRecipe,
+} from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
+import { computed, defineComponent, h, type PropType } from "vue";
+import {
+  type ClearableChangeEvent,
+  useClearableInput,
+} from "../hooks/use-clearable-input";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { VariantClassNames } from "../internal/types";
+import { InputClearButton } from "./input/input-clear-button";
+import {
+  InputGroupAddon,
+  InputGroupRoot,
+} from "./input-group/input-group-core";
+import { useFormControlSurface } from "./surface/use-form-control-surface";
+
+// #region Context
+const { Context: TextareaStylesContext } = createSlotRecipeContext({
+  name: "Textarea",
+  recipe: textareaRecipe,
+});
+// #endregion
+
+type FormControlVariant = "primary" | "secondary";
+
+type ArkPart = Parameters<typeof h>[0];
+type TextareaClassNames = VariantClassNames<TextareaRecipeSlot>;
+
+type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
+
+// #region Types
+export interface TextareaProps
+  extends FormControlShellVariantProps,
+    BaseTextareaProps {
+  class?: unknown;
+  classNames?: TextareaClassNames;
+  clearable?: boolean;
+  defaultValue?: string | number | readonly string[];
+  disabled?: boolean;
+  onChange?: ClearableInputChangeHandler;
+  onValueChange?: (value: string) => void;
+  readOnly?: boolean;
+  value?: string | number | readonly string[];
+}
+// #endregion
+
+// #region Component
+export const Textarea = defineComponent({
+  inheritAttrs: false,
+  name: "PisagorTextarea",
+  props: {
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<TextareaClassNames>,
+    },
+    clearable: { default: false, type: Boolean },
+    defaultValue: {
+      default: undefined,
+      type: [String, Number, Array] as PropType<TextareaProps["defaultValue"]>,
+    },
+    disabled: { default: undefined, type: Boolean },
+    onChange: {
+      default: undefined,
+      type: Function as PropType<TextareaProps["onChange"]>,
+    },
+    onValueChange: {
+      default: undefined,
+      type: Function as PropType<TextareaProps["onValueChange"]>,
+    },
+    readOnly: { default: undefined, type: Boolean },
+    value: {
+      default: undefined,
+      type: [String, Number, Array] as PropType<TextareaProps["value"]>,
+    },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant>,
+    },
+  },
+  setup(props, { attrs }) {
+    const surfaceVariant = useFormControlSurface();
+    const resolvedVariant = computed(() => ({
+      surfaceVariant,
+      variant: props.variant ?? ("primary" as FormControlVariant),
+    }));
+
+    const { canClear, handleChange, handleClear, inputRef } = useClearableInput(
+      {
+        clearable: () => props.clearable,
+        defaultValue: props.defaultValue,
+        disabled: () => props.disabled,
+        onChange: props.onChange,
+        onValueChange: props.onValueChange,
+        readOnly: () => props.readOnly,
+        value: () => props.value,
+      },
+    );
+
+    return () => {
+      const resolved = resolvedVariant.value;
+      const skipClearable = !props.clearable;
+      const shellArgs = {
+        surfaceVariant: resolved.surfaceVariant,
+        variant: resolved.variant,
+      };
+      const controlProps = { "data-variant": resolved.variant };
+      const slots = textareaRecipe();
+
+      const changeHandler = skipClearable
+        ? props.onChange || props.onValueChange
+          ? (event: Event) => {
+              const typed = event as ClearableChangeEvent;
+              props.onChange?.(typed);
+              props.onValueChange?.(typed.target.value);
+            }
+          : undefined
+        : handleChange;
+
+      const tree = skipClearable
+        ? h(FieldPrimitive.Textarea as ArkPart, {
+            ...attrs,
+            ...controlProps,
+            class: cn(
+              formControlShellRecipe({ size: "md", ...shellArgs }),
+              slots.rootLayout({
+                class: cn(props.class, props.classNames?.rootLayout),
+              }),
+            ),
+            defaultValue: props.defaultValue,
+            disabled: props.disabled,
+            onInput: changeHandler,
+            readOnly: props.readOnly,
+            value: props.value,
+          })
+        : h(
+            InputGroupRoot as ArkPart,
+            {
+              class: slots.group({ class: props.classNames?.group }),
+              variant: props.variant,
+            },
+            () => [
+              h(FieldPrimitive.Textarea as ArkPart, {
+                ...attrs,
+                class: slots.clearableRoot({
+                  class: cn(props.class, props.classNames?.clearableRoot),
+                  clearable: canClear.value,
+                }),
+                defaultValue: props.defaultValue,
+                disabled: props.disabled,
+                onInput: handleChange,
+                readOnly: props.readOnly,
+                ref: inputRef,
+                value: props.value,
+              }),
+              canClear.value
+                ? h(
+                    InputGroupAddon as ArkPart,
+                    { align: "inline-end", class: slots.clearAddon() },
+                    () =>
+                      h(InputClearButton as ArkPart, { onClear: handleClear }),
+                  )
+                : null,
+            ],
+          );
+
+      return h(
+        TextareaStylesContext,
+        { value: { slots, variants: {} } },
+        () => tree,
+      );
+    };
+  },
+});
+// #endregion
