@@ -1,0 +1,62 @@
+import { Textarea, type TextareaProps } from "@pisagor/react";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../internal/field-shell";
+
+// #region Types
+type TextareaControlProps = Omit<
+  TextareaProps,
+  "name" | "onBlur" | "onChange" | "value"
+>;
+
+export interface TextareaFieldProps
+  extends FieldPresentationProps,
+    TextareaControlProps {
+  name?: string;
+  value?: string;
+  onBlur?: () => void;
+}
+// #endregion
+
+// #region Component
+export function TextareaField({
+  orientation,
+  invalid,
+  name,
+  value,
+  description,
+  error,
+  id,
+  label,
+  labelAccessory,
+  labelProps,
+  onBlur,
+  onValueChange,
+  className,
+  ...textareaProps
+}: TextareaFieldProps) {
+  return (
+    <FieldShell
+      className={className}
+      description={description}
+      error={error}
+      id={id}
+      invalid={invalid}
+      label={label}
+      labelAccessory={labelAccessory}
+      labelProps={labelProps}
+      orientation={orientation}
+    >
+      <Textarea
+        {...textareaProps}
+        {...(value !== undefined ? { value } : {})}
+        id={id}
+        name={name}
+        onBlur={onBlur}
+        onChange={(event) => onValueChange?.(event.target.value)}
+      />
+    </FieldShell>
+  );
+}
+// #endregion
