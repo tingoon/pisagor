@@ -74,6 +74,8 @@ interface ScanTarget {
   extraDirs?: string[];
 }
 
+const COMPONENT_FILE_EXTENSIONS = [".tsx", ".ts", ".astro", ".svelte"];
+
 function listDirs(dir: string): string[] {
   if (!existsSync(dir)) {
     return [];
@@ -92,19 +94,62 @@ function listDirs(dir: string): string[] {
     .sort();
 }
 
+/** Flat single-file components (`src/components/<name>.tsx`) next to foldered ones. */
+function listFlatFiles(dir: string): Map<string, string> {
+  const files = new Map<string, string>();
+  if (!existsSync(dir)) {
+    return files;
+  }
+  for (const file of readdirSync(dir).sort()) {
+    const ext = path.extname(file);
+    if (!COMPONENT_FILE_EXTENSIONS.includes(ext)) {
+      continue;
+    }
+    const name = path.basename(file, ext);
+    if (name === "index" || name.includes(".")) {
+      continue;
+    }
+    const abs = path.join(dir, file);
+    if (statSync(abs).isFile() && !files.has(name)) {
+      files.set(name, abs);
+    }
+  }
+  return files;
+}
+
+const SOURCE_FILE_EXTENSIONS = new Set([...COMPONENT_FILE_EXTENSIONS, ".vue"]);
+
+const SOURCE_SKIP = /\.(?:test|spec|stories)\.[^.]+$|\.d\.ts$/;
+
+/**
+ * Every source file of a foldered component (`<name>.*` first, then
+ * `<name>.context.*`, the remaining part files, and `index.*` last) so
+ * compounds split into one file per part (Svelte, Astro) are fully listed.
+ */
 function findSources(dir: string, name: string): string[] {
-  return [
-    `${name}.tsx`,
-    `${name}.ts`,
-    `${name}.astro`,
-    `${name}.svelte`,
-    `${name}.context.tsx`,
-    `${name}.context.ts`,
-    "index.ts",
-    "index.tsx",
-  ]
-    .map((file) => path.join(dir, file))
-    .filter((file) => existsSync(file));
+  const rank = (file: string) => {
+    const base = file.slice(0, file.length - path.extname(file).length);
+    if (base === name) {
+      return 0;
+    }
+    if (base === `${name}.context`) {
+      return 1;
+    }
+    if (base === "index") {
+      return 3;
+    }
+    return 2;
+  };
+
+  return readdirSync(dir)
+    .filter(
+      (file) =>
+        SOURCE_FILE_EXTENSIONS.has(path.extname(file)) &&
+        !SOURCE_SKIP.test(file) &&
+        statSync(path.join(dir, file)).isFile(),
+    )
+    .sort((a, b) => rank(a) - rank(b) || a.localeCompare(b))
+    .map((file) => path.join(dir, file));
 }
 
 function findExamplesRoot(packageDir: string): string | null {
@@ -176,14 +221,12 @@ function loadExamples(
 }
 
 function buildComponent(
-  dir: string,
+  sourcePaths: string[],
   name: string,
   packageName: string,
   packageDir: string,
   examplesRoot: string | null,
 ): CatalogComponent {
-  const sourcePaths = findSources(dir, name);
-
   return {
     examples: loadExamples(examplesRoot, name, packageDir),
     name,
@@ -203,7 +246,23 @@ function buildComponentsCatalog(target: ScanTarget): ComponentsCatalog {
     byName.set(
       name,
       buildComponent(
-        path.join(target.componentsRoot, name),
+        findSources(path.join(target.componentsRoot, name), name),
+        name,
+        target.package,
+        target.packageDir,
+        examplesRoot,
+      ),
+    );
+  }
+
+  for (const [name, file] of listFlatFiles(target.componentsRoot)) {
+    if (byName.has(name)) {
+      continue;
+    }
+    byName.set(
+      name,
+      buildComponent(
+        [file],
         name,
         target.package,
         target.packageDir,
@@ -217,7 +276,7 @@ function buildComponentsCatalog(target: ScanTarget): ComponentsCatalog {
     byName.set(
       name,
       buildComponent(
-        dir,
+        findSources(dir, name),
         name,
         target.package,
         target.packageDir,
