@@ -14,7 +14,7 @@ import MinusIcon from "phosphor-svelte/lib/MinusIcon";
 import PlusIcon from "phosphor-svelte/lib/PlusIcon";
 import InputClearButton from "../input/input-clear-button.svelte";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
-import { setNumberInputContext } from "./number-input.context";
+import { Context } from "./number-input.context";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -49,7 +49,7 @@ const triggerClass = $derived(
   ),
 );
 
-setNumberInputContext({
+Context.set({
   get slots() {
     return slots;
   },

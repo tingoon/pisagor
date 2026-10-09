@@ -1,58 +1,30 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
 import type { AvatarGroupProps as BaseAvatarGroupProps } from "@pisagor/props";
-import { avatarGroupRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import Avatar from "./avatar.svelte";
-import { setAvatarGroupContext } from "./avatar-group.context";
-
-type User = { fallback?: string; name?: string; src?: string };
+import AvatarGroupCount from "./avatar-group-count.svelte";
+import AvatarGroupRoot from "./avatar-group-root.svelte";
 
 type Props = Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
+  /** Maximum number of avatars to show; excess shown as "+N". */
   max?: number;
-  users: User[];
+  /** User list rendered as avatars. */
+  users: Array<{ fallback?: string; name?: string; src?: string }>;
 } & BaseAvatarGroupProps;
 
-let {
-  max,
-  users,
-  recipe = avatarGroupRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+let { max, users, ...rest }: Props = $props();
 
-const slots = $derived(recipe());
 const visibleUsers = $derived(max !== undefined ? users.slice(0, max) : users);
 const remainingCount = $derived(
   max !== undefined && users.length > max ? users.length - max : 0,
 );
-
-setAvatarGroupContext({
-  get slots() {
-    return slots;
-  },
-});
 </script>
 
-<Ark
-  as="div"
-  {...rest}
-  class={slots.base({ class: cn(className) })}
-  data-part="group"
-  data-scope="avatar"
->
+<AvatarGroupRoot {...rest}>
   {#each visibleUsers as user (user.src ?? user.fallback ?? user.name)}
     <Avatar alt={user.name ?? ""} fallback={user.fallback} src={user.src} />
   {/each}
   {#if remainingCount > 0}
-    <Ark
-      as="div"
-      class={slots.count()}
-      data-part="group-count"
-      data-scope="avatar"
-    >
-      +{remainingCount}
-    </Ark>
+    <AvatarGroupCount>+{remainingCount}</AvatarGroupCount>
   {/if}
-</Ark>
+</AvatarGroupRoot>

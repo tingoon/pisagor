@@ -6,7 +6,7 @@ import {
 import type { ListboxItemProps as BaseListboxItemProps } from "@pisagor/props";
 import { listboxItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { setListboxItemContext } from "./listbox.context";
+import { ListboxItemStylesContext } from "./listbox.context";
 
 type Props = ArkListboxItemProps & BaseListboxItemProps;
 
@@ -19,7 +19,7 @@ let {
 }: Props = $props();
 
 const slots = $derived(recipe({ variant }));
-setListboxItemContext({
+ListboxItemStylesContext.set({
   get slots() {
     return slots;
   },

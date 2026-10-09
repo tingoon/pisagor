@@ -1,49 +1,56 @@
 <script lang="ts">
 import {
+  type RatingGroupControlProps,
+  type RatingGroupItemProps,
   RatingGroup as RatingGroupPrimitive,
   type RatingGroupRootProps,
 } from "@ark-ui/svelte/rating-group";
 import type { RatingProps as BaseRatingProps } from "@pisagor/props";
-import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import type { RatingRecipeSlot } from "@pisagor/recipes";
 import StarIcon from "phosphor-svelte/lib/StarIcon";
 import type { Component } from "svelte";
-import { setRatingContext } from "./rating.context";
+import type { HTMLAttributes } from "svelte/elements";
+import type { VariantClassNames } from "../../internal/types";
+import RatingControl from "./rating-control.svelte";
+import RatingIndicator from "./rating-indicator.svelte";
+import RatingItem from "./rating-item.svelte";
+import RatingRoot from "./rating-root.svelte";
 
 type FormControlVariant = "primary" | "secondary";
 
 type Props = Omit<RatingGroupRootProps, "children" | "onValueChange"> & {
-  classNames?: Partial<
-    Record<RatingRecipeSlot, string>
-  > /** Custom icon component (defaults to StarIcon). */;
+  /** Slot class names */
+  classNames?: VariantClassNames<RatingRecipeSlot>;
+  /** Extra props forwarded to the rating control element */
+  controlProps?: Omit<RatingGroupControlProps, "children" | "class">;
+  /**
+   * The icon component to use for the rating.
+   * @defaultValue StarIcon
+   */
   icon?: Component;
+  /** Extra props forwarded to each rating item indicator element */
+  indicatorProps?: Omit<HTMLAttributes<HTMLSpanElement>, "children" | "class">;
+  /** Extra props forwarded to each rating item element */
+  itemProps?: Omit<RatingGroupItemProps, "children" | "index" | "class">;
+  /**
+   * Called when the rating value changes.
+   *
+   * Receives the numeric value directly, not Ark UI event details.
+   */
   onValueChange?: (value: number) => void;
+  /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
 } & BaseRatingProps;
 
 let {
-  variant: variantProp,
-  allowHalf = false,
-  count = 5,
+  controlProps,
   icon: Icon = StarIcon,
+  indicatorProps,
+  itemProps,
   onValueChange,
-  class: className,
   classNames,
-  recipe = ratingRecipe,
   ...rest
 }: Props = $props();
-
-const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-const slots = $derived(recipe());
-const surfaceTone = $derived(
-  variant === "secondary" ? "opacity-90" : undefined,
-);
-
-setRatingContext({
-  get slots() {
-    return slots;
-  },
-});
 
 function handleValueChange(
   details: Parameters<NonNullable<RatingGroupRootProps["onValueChange"]>>[0],
@@ -52,48 +59,37 @@ function handleValueChange(
 }
 </script>
 
-<RatingGroupPrimitive.Root
+<RatingRoot
   {...rest}
-  {allowHalf}
-  class={slots.base({ class: cn(surfaceTone, className) })}
-  {count}
-  data-variant={variant}
   onValueChange={onValueChange ? handleValueChange : undefined}
 >
-  <RatingGroupPrimitive.Control
-    class={slots.control({ class: classNames?.control })}
-  >
+  <RatingControl {...controlProps} class={classNames?.control}>
     <RatingGroupPrimitive.Context>
       {#snippet render(
         api,
       )}
         {#each api().items as item (item)}
-          <RatingGroupPrimitive.Item
-            class={slots.item({ class: classNames?.item })}
-            index={item}
-          >
+          <RatingItem {...itemProps} class={classNames?.item} index={item}>
             <RatingGroupPrimitive.ItemContext>
               {#snippet render(
-                itemApi,
+                itemState,
               )}
-                {const state = itemApi()}
-                <span
-                  class={slots.indicator({ class: classNames?.indicator })}
-                  data-half={state.half ? "" : undefined}
-                  data-highlighted={state.highlighted ? "" : undefined}
-                  data-part="item-indicator"
-                  data-scope="rating"
+                <RatingIndicator
+                  {...indicatorProps}
+                  class={classNames?.indicator}
+                  data-half={itemState().half ? "" : undefined}
+                  data-highlighted={itemState().highlighted ? "" : undefined}
                 >
                   <Icon data-bg="" />
                   <Icon data-fg="" fill="currentColor" />
-                </span>
+                </RatingIndicator>
               {/snippet}
             </RatingGroupPrimitive.ItemContext>
-          </RatingGroupPrimitive.Item>
+          </RatingItem>
         {/each}
       {/snippet}
     </RatingGroupPrimitive.Context>
 
     <RatingGroupPrimitive.HiddenInput />
-  </RatingGroupPrimitive.Control>
-</RatingGroupPrimitive.Root>
+  </RatingControl>
+</RatingRoot>

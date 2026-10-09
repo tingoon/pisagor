@@ -6,7 +6,7 @@ import {
 import type { ResizableProps as BaseResizableProps } from "@pisagor/props";
 import { resizableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { setResizableContext } from "./resizable.context";
+import { Context } from "./resizable.context";
 
 type Props = SplitterRootProviderProps & BaseResizableProps;
 
@@ -17,7 +17,7 @@ let {
   ...rest
 }: Props = $props();
 const slots = $derived(recipe());
-setResizableContext({
+Context.set({
   get slots() {
     return slots;
   },

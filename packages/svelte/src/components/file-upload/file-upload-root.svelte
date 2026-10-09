@@ -6,7 +6,7 @@ import {
 import type { FileUploadProps as BaseFileUploadProps } from "@pisagor/props";
 import { fileUploadRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { setFileUploadContext } from "./file-upload.context";
+import { Context } from "./file-upload.context";
 
 type Props = ArkRootProps & {
   onValueChange?: (value: globalThis.File[]) => void;
@@ -22,7 +22,7 @@ let {
 }: Props = $props();
 
 const slots = $derived(recipe());
-setFileUploadContext({
+Context.set({
   get slots() {
     return slots;
   },

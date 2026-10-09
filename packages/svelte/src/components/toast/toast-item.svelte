@@ -1,46 +1,42 @@
 <script lang="ts">
-import {
-  type ToastOptions,
-  Toast as ToastPrimitive,
+import type {
+  ToastActionTriggerProps,
+  ToastCloseTriggerProps,
+  ToastDescriptionProps,
+  ToastOptions,
+  ToastRootProps,
+  ToastTitleProps,
 } from "@ark-ui/svelte/toast";
 import type { ToastItemProps as BaseToastItemProps } from "@pisagor/props";
-import {
-  buttonRecipe,
-  type ToastItemRecipeSlot,
-  toastItemRecipe,
-} from "@pisagor/recipes";
-
-type Accessor<T> = () => T;
-
-import { cn } from "@pisagor/utils";
-import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
-import InfoIcon from "phosphor-svelte/lib/InfoIcon";
-import WarningCircleIcon from "phosphor-svelte/lib/WarningCircleIcon";
-import WarningIcon from "phosphor-svelte/lib/WarningIcon";
-import XIcon from "phosphor-svelte/lib/XIcon";
-import type { Snippet } from "svelte";
+import type { ToastItemRecipeSlot } from "@pisagor/recipes";
 import type { HTMLAttributes } from "svelte/elements";
-import Spinner from "../spinner/spinner.svelte";
-import { setToastItemContext } from "./toast.context";
+import type { VariantClassNames } from "../../internal/types";
+import ToastItemContent from "./toast-item-content.svelte";
+import ToastItemRoot from "./toast-item-root.svelte";
 
-type Props = import("@ark-ui/svelte/toast").ToastRootProps & {
+type Props = Omit<ToastRootProps, "children"> & {
+  /** Extra props forwarded to the toast actions container element */
+  actionsProps?: Omit<HTMLAttributes<HTMLDivElement>, "class">;
+  /** Extra props forwarded to the toast action trigger element */
   actionTriggerProps?: Omit<
-    import("@ark-ui/svelte/toast").ToastActionTriggerProps,
-    "children"
+    ToastActionTriggerProps,
+    "asChild" | "children" | "class" | "onclick"
   >;
-  actionsProps?: HTMLAttributes<HTMLDivElement>;
-  classNames?: Partial<Record<ToastItemRecipeSlot, string>>;
+  /** Slot class names */
+  classNames?: VariantClassNames<ToastItemRecipeSlot>;
+  /** Extra props forwarded to the toast close trigger element */
   closeTriggerProps?: Omit<
-    import("@ark-ui/svelte/toast").ToastCloseTriggerProps,
-    "children"
+    ToastCloseTriggerProps,
+    "asChild" | "children" | "class"
   >;
-  descriptionProps?: Omit<
-    import("@ark-ui/svelte/toast").ToastDescriptionProps,
-    "children"
-  >;
-  iconProps?: HTMLAttributes<HTMLDivElement>;
-  titleProps?: Omit<import("@ark-ui/svelte/toast").ToastTitleProps, "children">;
-  toast: Accessor<ToastOptions>;
+  /** Extra props forwarded to the toast description element */
+  descriptionProps?: Omit<ToastDescriptionProps, "children" | "class">;
+  /** Extra props forwarded to the toast icon wrapper element */
+  iconProps?: Omit<HTMLAttributes<HTMLDivElement>, "class">;
+  /** Extra props forwarded to the toast title element */
+  titleProps?: Omit<ToastTitleProps, "children" | "class">;
+  /** The toast item data (accessor from `Toaster`) */
+  toast: () => ToastOptions;
 } & BaseToastItemProps;
 
 let {
@@ -51,100 +47,20 @@ let {
   iconProps,
   titleProps,
   toast: toastAccessor,
-  class: className,
   classNames,
-  recipe = toastItemRecipe,
   ...rest
 }: Props = $props();
-
-const slots = $derived(recipe());
-setToastItemContext({
-  get slots() {
-    return slots;
-  },
-});
-
-const toastData = $derived(toastAccessor());
-const toastType = $derived(toastData.type);
-const isExplicitClosable = $derived(toastData.closable === false);
-
-function renderMaybeSnippet(value: unknown): value is Snippet {
-  return typeof value === "function";
-}
 </script>
 
-<ToastPrimitive.Root {...rest} class={slots.base({ class: cn(className) })}>
-  <div class={slots.content({ class: classNames?.content })}>
-    <div
-      {...iconProps}
-      class={slots.icon({ class: classNames?.icon })}
-      data-part="icon"
-      data-scope="toast"
-    >
-      {#if toastType === "error"}
-        <WarningCircleIcon />
-      {:else if toastType === "info"}
-        <InfoIcon />
-      {:else if toastType === "loading"}
-        <Spinner />
-      {:else if toastType === "success"}
-        <CheckCircleIcon />
-      {:else if toastType === "warning"}
-        <WarningIcon />
-      {/if}
-    </div>
-
-    <div class={slots.body({ class: classNames?.body })}>
-      <ToastPrimitive.Title
-        {...titleProps}
-        class={slots.title({ class: classNames?.title })}
-      >
-        {#if renderMaybeSnippet(toastData.title)}
-          {@render toastData.title()}
-        {:else if toastData.title}
-          {toastData.title}
-        {/if}
-      </ToastPrimitive.Title>
-
-      {#if toastData.description}
-        <ToastPrimitive.Description
-          {...descriptionProps}
-          class={slots.description({ class: classNames?.description })}
-        >
-          {#if renderMaybeSnippet(toastData.description)}
-            {@render toastData.description()}
-          {:else}
-            {toastData.description}
-          {/if}
-        </ToastPrimitive.Description>
-      {/if}
-    </div>
-  </div>
-
-  <div {...actionsProps} class={slots.actions({ class: classNames?.actions })}>
-    {#if toastData.action}
-      <ToastPrimitive.ActionTrigger
-        {...actionTriggerProps}
-        class={buttonRecipe({ size: "sm", variant: "secondary" }).base()}
-        onclick={toastData.action.onClick}
-        type="button"
-      >
-        {toastData.action.label}
-      </ToastPrimitive.ActionTrigger>
-    {/if}
-
-    {#if !isExplicitClosable}
-      <ToastPrimitive.CloseTrigger
-        {...closeTriggerProps}
-        aria-label="Close"
-        class={cn(
-          buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),
-          slots.close({ class: classNames?.close }),
-        )}
-        type="button"
-      >
-        <XIcon />
-      </ToastPrimitive.CloseTrigger>
-    {/if}
-  </div>
-</ToastPrimitive.Root>
+<ToastItemRoot {...rest}>
+  <ToastItemContent
+    {actionsProps}
+    {actionTriggerProps}
+    {classNames}
+    {closeTriggerProps}
+    {descriptionProps}
+    {iconProps}
+    {titleProps}
+    toast={toastAccessor()}
+  />
+</ToastItemRoot>

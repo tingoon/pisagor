@@ -26,7 +26,8 @@ let {
   class: className,
   ...rest
 }: Props = $props();
-const { slots } = useDrawer();
+const styles = useDrawer();
+const slots = $derived(styles.slots);
 </script>
 
 <Portal>

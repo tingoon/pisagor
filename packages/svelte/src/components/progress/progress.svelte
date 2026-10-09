@@ -1,17 +1,25 @@
 <script lang="ts">
-import {
-  Progress as ProgressPrimitive,
-  type ProgressRootProps,
+import type {
+  ProgressRangeProps,
+  ProgressRootProps,
+  ProgressTrackProps,
+  ProgressValueTextProps,
 } from "@ark-ui/svelte/progress";
 import type { ProgressProps as BaseProgressProps } from "@pisagor/props";
-import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import type { ProgressRecipeSlot } from "@pisagor/recipes";
 import type { Snippet } from "svelte";
-import { setProgressContext } from "./progress.context";
+import type { VariantClassNames } from "../../internal/types";
+import { Field } from "../field";
+import ProgressHeader from "./progress-header.svelte";
+import ProgressRange from "./progress-range.svelte";
+import ProgressRoot from "./progress-root.svelte";
+import ProgressTrack from "./progress-track.svelte";
+import ProgressValue from "./progress-value.svelte";
 
 type Props = Omit<ProgressRootProps, "children" | "value"> & {
   children?: Snippet;
-  classNames?: Partial<Record<ProgressRecipeSlot, string>>;
+  /** Slot class names */
+  classNames?: VariantClassNames<ProgressRecipeSlot>;
   /**
    * Whether to show indeterminate progress.
    * @defaultValue false
@@ -21,60 +29,65 @@ type Props = Omit<ProgressRootProps, "children" | "value"> & {
   isValueVisible?: boolean;
   /** Optional label rendered above the progress bar. */
   label?: string;
+  /** Extra props forwarded to the progress range element */
+  rangeProps?: Omit<ProgressRangeProps, "children" | "class">;
+  /** Extra props forwarded to the progress track element */
+  trackProps?: Omit<ProgressTrackProps, "children" | "class">;
   /**
    * The value of the progress bar
    * @defaultValue 0
    */
   value?: number;
+  /** Extra props forwarded to the progress value text element */
+  valueProps?: Omit<ProgressValueTextProps, "children" | "class">;
 } & BaseProgressProps;
 
 let {
   orientation = "horizontal",
   indeterminate = false,
   isValueVisible,
-  value = 0,
+  defaultValue = 0,
+  value,
   children,
   label,
-  class: className,
+  rangeProps,
+  trackProps,
+  valueProps,
   classNames,
-  recipe = progressRecipe,
   ...rest
 }: Props = $props();
 
-const slots = $derived(recipe());
 const showHeader = $derived(Boolean(label || isValueVisible));
-
-setProgressContext({
-  get slots() {
-    return slots;
-  },
-});
 </script>
 
-<ProgressPrimitive.Root
+<ProgressRoot
   {...rest}
-  class={slots.base({ class: cn(className) })}
+  {defaultValue}
   {orientation}
   value={indeterminate ? null : value}
 >
   {#if showHeader}
-    <div class={slots.header({ class: classNames?.header })}>
+    <ProgressHeader class={classNames?.header}>
       {#if label}
-        <span>{label}</span>
+        <Field.Label>{label}</Field.Label>
       {/if}
       {#if isValueVisible}
-        <ProgressPrimitive.ValueText
-          class={slots.value({ class: classNames?.value })}
-        />
+        <Field.Label>
+          {#snippet asChild(
+            props,
+          )}
+            <ProgressValue
+              {...props({ ...valueProps, class: classNames?.value })}
+            />
+          {/snippet}
+        </Field.Label>
       {/if}
-    </div>
+    </ProgressHeader>
   {/if}
 
   {@render children?.()}
 
-  <ProgressPrimitive.Track class={slots.track({ class: classNames?.track })}>
-    <ProgressPrimitive.Range
-      class={slots.range({ class: classNames?.range })}
-    />
-  </ProgressPrimitive.Track>
-</ProgressPrimitive.Root>
+  <ProgressTrack {...trackProps} class={classNames?.track}>
+    <ProgressRange {...rangeProps} class={classNames?.range} />
+  </ProgressTrack>
+</ProgressRoot>

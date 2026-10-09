@@ -1,10 +1,12 @@
-import type { TabsRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { tabsRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-export interface TabsContextValue {
-  slots: TabsRecipe;
-}
-
-const ctx = createContext("Tabs")<TabsContextValue>();
-export const setTabsContext = ctx.setContext;
-export const useTabs = ctx.getContext;
+export const {
+  Context,
+  useStyles: useTabs,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Tabs",
+  recipe: tabsRecipe,
+});

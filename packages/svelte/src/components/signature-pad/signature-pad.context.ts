@@ -1,9 +1,11 @@
-import type { SignaturePadRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { signaturePadRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface SignaturePadContextValue {
-  slots: SignaturePadRecipe;
-}
-
-const ctx = createContext("SignaturePad")<SignaturePadContextValue>();
-export const setSignaturePadContext = ctx.setContext;
+export const {
+  Context,
+  useStyles: useSignaturePad,
+  withContext,
+} = createSlotRecipeContext({
+  name: "SignaturePad",
+  recipe: signaturePadRecipe,
+});

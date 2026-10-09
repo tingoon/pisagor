@@ -3,13 +3,12 @@ import {
   type MarqueeItemProps,
   Marquee as MarqueePrimitive,
 } from "@ark-ui/svelte/marquee";
-import { cn } from "@pisagor/utils";
-import { useMarquee } from "./marquee.context";
+import { withContext } from "./marquee.context";
 
-let { class: className, children, ...rest }: MarqueeItemProps = $props();
-const { slots } = useMarquee();
+let { children, ...rest }: MarqueeItemProps = $props();
+const part = withContext(() => rest, { name: "Item" });
 </script>
 
-<MarqueePrimitive.Item {...rest} class={slots.item({ class: cn(className) })}>
+<MarqueePrimitive.Item {...part.props}>
   {@render children?.()}
 </MarqueePrimitive.Item>

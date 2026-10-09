@@ -6,7 +6,7 @@ import {
 } from "@ark-ui/svelte/combobox";
 import type { ComboboxProps as BaseComboboxProps } from "@pisagor/props";
 import { comboboxRecipe } from "@pisagor/recipes";
-import { setComboboxRootContext } from "./combobox.context";
+import { Context } from "./combobox.context";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -25,7 +25,7 @@ let {
 }: Props = $props();
 
 const slots = $derived(recipe());
-setComboboxRootContext({
+Context.set({
   get slots() {
     return slots;
   },

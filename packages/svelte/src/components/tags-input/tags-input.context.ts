@@ -1,20 +1,23 @@
-import type { TagsInputItemRecipe, TagsInputRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
-
-interface TagsInputSlotsContextValue {
-  slots: TagsInputRecipe;
-}
-
-interface TagsInputItemContextValue {
-  slots: TagsInputItemRecipe;
-}
+import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
 export const {
-  setContext: setTagsInputSlotsContext,
-  getContext: useTagsInput,
-} = createContext("TagsInput")<TagsInputSlotsContextValue>();
+  Context,
+  Context: TagsInputStylesContext,
+  useStyles: useTagsInput,
+  withContext: withTagsInputContext,
+  withProvider: withTagsInputProvider,
+} = createSlotRecipeContext({
+  name: "TagsInput",
+  recipe: tagsInputRecipe,
+});
 
 export const {
-  setContext: setTagsInputItemContext,
-  getContext: useTagsInputItem,
-} = createContext("TagsInputItem")<TagsInputItemContextValue>();
+  Context: TagsInputItemStylesContext,
+  useStyles: useTagsInputItem,
+  withContext: withTagsInputItemContext,
+  withProvider: withTagsInputItemProvider,
+} = createSlotRecipeContext({
+  name: "TagsInput",
+  recipe: tagsInputItemRecipe,
+});

@@ -6,7 +6,8 @@ import type { HTMLAttributes } from "svelte/elements";
 import { useColorPicker } from "./color-picker.context";
 
 let { class: className, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
-const { slots } = useColorPicker();
+const styles = useColorPicker();
+const slots = $derived(styles.slots);
 </script>
 
 <Ark

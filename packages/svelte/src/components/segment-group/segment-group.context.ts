@@ -1,11 +1,12 @@
-import type { SegmentGroupRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { segmentGroupRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface SegmentGroupContextValue {
-  slots: SegmentGroupRecipe;
-}
-
-const ctx = createContext("SegmentGroup")<SegmentGroupContextValue>();
-
-export const setSegmentGroupContext = ctx.setContext;
-export const useSegmentGroup = ctx.getContext;
+export const {
+  Context,
+  useStyles: useSegmentGroup,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "SegmentGroup",
+  recipe: segmentGroupRecipe,
+});

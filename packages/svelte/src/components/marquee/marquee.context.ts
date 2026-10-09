@@ -1,10 +1,12 @@
-import type { MarqueeRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { marqueeRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface MarqueeContextValue {
-  slots: MarqueeRecipe;
-}
-
-const ctx = createContext("Marquee")<MarqueeContextValue>();
-export const setMarqueeContext = ctx.setContext;
-export const useMarquee = ctx.getContext;
+export const {
+  Context,
+  useStyles: useMarquee,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Marquee",
+  recipe: marqueeRecipe,
+});

@@ -3,16 +3,12 @@ import {
   Steps as StepsPrimitive,
   type StepsTriggerProps,
 } from "@ark-ui/svelte/steps";
-import { cn } from "@pisagor/utils";
-import { useStepsItem } from "./steps.context";
+import { withStepsItemContext } from "./steps.context";
 
-let { class: className, children, ...rest }: StepsTriggerProps = $props();
-const { slots } = useStepsItem();
+let { children, ...rest }: StepsTriggerProps = $props();
+const part = withStepsItemContext(() => rest, { name: "Trigger" });
 </script>
 
-<StepsPrimitive.Trigger
-  {...rest}
-  class={slots.trigger({ class: cn(className) })}
->
+<StepsPrimitive.Trigger {...part.props}>
   {@render children?.()}
 </StepsPrimitive.Trigger>

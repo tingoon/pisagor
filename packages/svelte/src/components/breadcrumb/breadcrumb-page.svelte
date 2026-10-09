@@ -1,24 +1,13 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { useBreadcrumbItem } from "./breadcrumb.context";
+import { withBreadcrumbItemContext } from "./breadcrumb.context";
 
-let {
-  class: className,
-  children,
-  ...rest
-}: HTMLAttributes<HTMLSpanElement> = $props();
-const { slots } = useBreadcrumbItem();
+let { children, ...rest }: HTMLAttributes<HTMLSpanElement> = $props();
+const part = withBreadcrumbItemContext(() => rest, {
+  defaultProps: { "aria-current": "page" },
+  name: "Page",
+});
 </script>
 
-<Ark
-  as="span"
-  {...rest}
-  aria-current="page"
-  class={slots.page({ class: cn(className) })}
-  data-part="page"
-  data-scope="breadcrumb"
->
-  {@render children?.()}
-</Ark>
+<Ark as="span" {...part.props}> {@render children?.()} </Ark>

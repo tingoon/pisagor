@@ -1,17 +1,17 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { usePopoverContent } from "./popover.context";
+import { ScrollArea } from "../scroll-area";
+import { withContext } from "./popover.context";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
 };
 
-let { children, class: className, ...rest }: Props = $props();
-const { slots } = usePopoverContent();
+let { children, ...rest }: Props = $props();
+const part = withContext(() => rest, { name: "Body" });
 </script>
 
-<Ark as="div" {...rest} class={slots.body({ class: cn(className) })}>
-  {@render children?.()}
-</Ark>
+<ScrollArea>
+  <Ark as="div" {...part.props}> {@render children?.()} </Ark>
+</ScrollArea>

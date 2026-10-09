@@ -1,10 +1,12 @@
-import type { NavbarRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { navbarRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface NavbarContextValue {
-  slots: NavbarRecipe;
-}
-
-const ctx = createContext("Navbar")<NavbarContextValue>();
-export const setNavbarContext = ctx.setContext;
-export const useNavbar = ctx.getContext;
+export const {
+  Context,
+  useStyles: useNavbar,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Navbar",
+  recipe: navbarRecipe,
+});

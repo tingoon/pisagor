@@ -1,24 +1,18 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { useDataListItem } from "./data-list.context";
+import { withContext } from "./data-list.context";
 
 type Props = HTMLAttributes<HTMLElement> & {
   children?: import("svelte").Snippet;
 };
 
-let { children, class: className, ...rest }: Props = $props();
+let { children, ...rest }: Props = $props();
 
-const { slots } = useDataListItem();
+const part = withContext(() => rest, {
+  defaultProps: { "data-part": "item-label" },
+  name: "Label",
+});
 </script>
 
-<Ark
-  as="dt"
-  {...rest}
-  class={slots.label({ class: cn(className) })}
-  data-part="item-label"
-  data-scope="data-list"
->
-  {@render children?.()}
-</Ark>
+<Ark as="dt" {...part.props}> {@render children?.()} </Ark>

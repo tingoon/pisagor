@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ComponentProps } from "svelte";
-import Button from "../button/button.svelte";
+import Button from "../button.svelte";
 
 type Props = Omit<ComponentProps<typeof Button>, "variant"> & {
   variant?: "default" | "destructive";

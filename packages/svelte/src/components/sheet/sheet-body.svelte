@@ -5,7 +5,8 @@ import DialogBody from "../dialog/dialog-body.svelte";
 import { useSheet } from "./sheet.context";
 
 let { class: className, ...rest }: ComponentProps<typeof DialogBody> = $props();
-const { slots } = useSheet();
+const styles = useSheet();
+const slots = $derived(styles.slots);
 </script>
 
 <DialogBody

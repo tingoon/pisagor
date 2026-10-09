@@ -1,16 +1,12 @@
-import type { FloatingPanelRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { floatingPanelRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface FloatingPanelContextValue {
-  slots: FloatingPanelRecipe;
-}
-
-const ctx = createContext("FloatingPanel")<
-  FloatingPanelContextValue | undefined
->({
-  defaultValue: undefined,
-  strict: false,
+export const {
+  Context,
+  useStyles: useFloatingPanel,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "FloatingPanel",
+  recipe: floatingPanelRecipe,
 });
-
-export const setFloatingPanelContext = ctx.setContext;
-export const useFloatingPanel = ctx.getContext;

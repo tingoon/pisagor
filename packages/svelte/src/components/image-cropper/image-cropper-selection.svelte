@@ -11,7 +11,8 @@ import ImageCropperHandle from "./image-cropper-handle.svelte";
 type Props = ArkSelectionProps & { axis?: "horizontal" | "vertical" | "both" };
 
 let { axis = "both", children, class: className, ...rest }: Props = $props();
-const { slots } = useImageCropper();
+const styles = useImageCropper();
+const slots = $derived(styles.slots);
 </script>
 
 <ImageCropperPrimitive.Selection

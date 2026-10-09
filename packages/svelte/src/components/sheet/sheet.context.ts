@@ -1,9 +1,12 @@
-import type { SheetRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { sheetRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface SheetContextValue {
-  slots: SheetRecipe;
-}
-
-export const { setContext: setSheetContext, getContext: useSheet } =
-  createContext("Sheet")<SheetContextValue>();
+export const {
+  Context,
+  useStyles: useSheet,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Sheet",
+  recipe: sheetRecipe,
+});

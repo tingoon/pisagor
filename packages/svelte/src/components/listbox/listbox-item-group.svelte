@@ -10,7 +10,8 @@ import ListboxItemGroupLabel from "./listbox-item-group-label.svelte";
 type Props = ArkProps & { heading?: string };
 
 let { children, heading, class: className, ...rest }: Props = $props();
-const { slots } = useListbox();
+const styles = useListbox();
+const slots = $derived(styles.slots);
 </script>
 
 <ListboxPrimitive.ItemGroup

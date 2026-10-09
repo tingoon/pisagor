@@ -1,10 +1,12 @@
-import type { PopoverRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { popoverRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-export interface PopoverContentContextValue {
-  slots: PopoverRecipe;
-}
-
-const ctx = createContext("PopoverContent")<PopoverContentContextValue>();
-export const setPopoverContentContext = ctx.setContext;
-export const usePopoverContent = ctx.getContext;
+export const {
+  Context,
+  useStyles: usePopoverContent,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Popover",
+  recipe: popoverRecipe,
+});

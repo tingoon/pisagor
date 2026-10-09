@@ -1,24 +1,19 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { useFrame } from "./frame.context";
+import { withContext } from "./frame.context";
 
 type Props = HTMLAttributes<HTMLElement> & {
   children?: import("svelte").Snippet;
 };
 
-let { children, class: className, ...rest }: Props = $props();
+let { children, ...rest }: Props = $props();
 
-const { slots } = useFrame();
+const part = withContext(() => rest, {
+  defaultProps: { "data-part": "panel-footer" },
+  name: "Footer",
+  slot: "panelFooter",
+});
 </script>
 
-<Ark
-  as="footer"
-  {...rest}
-  class={slots.panelFooter({ class: cn(className) })}
-  data-part="panel-footer"
-  data-scope="frame"
->
-  {@render children?.()}
-</Ark>
+<Ark as="footer" {...part.props}> {@render children?.()} </Ark>

@@ -1,10 +1,12 @@
-import type { CollapsibleRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { collapsibleRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-export interface CollapsibleContextValue {
-  slots: CollapsibleRecipe;
-}
-
-const ctx = createContext("Collapsible")<CollapsibleContextValue>();
-export const setCollapsibleContext = ctx.setContext;
-export const useCollapsible = ctx.getContext;
+export const {
+  Context,
+  useStyles: useCollapsible,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Collapsible",
+  recipe: collapsibleRecipe,
+});

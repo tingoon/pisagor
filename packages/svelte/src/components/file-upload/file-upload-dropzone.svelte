@@ -18,7 +18,8 @@ let {
   children,
   ...rest
 }: Props = $props();
-const { slots } = useFileUpload();
+const styles = useFileUpload();
+const slots = $derived(styles.slots);
 const surfaceVariant = useFormControlSurface();
 const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 </script>

@@ -3,16 +3,12 @@ import {
   type EditableControlProps,
   Editable as EditablePrimitive,
 } from "@ark-ui/svelte/editable";
-import { cn } from "@pisagor/utils";
-import { useEditable } from "./editable.context";
+import { withContext } from "./editable.context";
 
-let { class: className, children, ...rest }: EditableControlProps = $props();
-const { slots } = useEditable();
+let { children, ...rest }: EditableControlProps = $props();
+const part = withContext(() => rest, { name: "Control" });
 </script>
 
-<EditablePrimitive.Control
-  {...rest}
-  class={slots.control({ class: cn(className) })}
->
+<EditablePrimitive.Control {...part.props}>
   {@render children?.()}
 </EditablePrimitive.Control>

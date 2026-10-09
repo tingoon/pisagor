@@ -4,7 +4,7 @@ import type { TableProps as BaseTableProps } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { setTableContext } from "./table.context";
+import { Context } from "./table.context";
 
 type Props = HTMLAttributes<HTMLTableElement> & {
   isHoverable?: boolean;
@@ -21,7 +21,7 @@ let {
 }: Props = $props();
 
 const slots = $derived(recipe());
-setTableContext({
+Context.set({
   get slots() {
     return slots;
   },

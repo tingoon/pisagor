@@ -7,7 +7,8 @@ import { cn } from "@pisagor/utils";
 import { useScrollArea } from "./scroll-area.context";
 
 let { class: className, children, ...rest }: ScrollAreaViewportProps = $props();
-const { slots } = useScrollArea();
+const styles = useScrollArea();
+const slots = $derived(styles.slots);
 </script>
 
 <ScrollAreaPrimitive.Viewport

@@ -15,7 +15,8 @@ let {
   class: className,
   ...rest
 }: Props = $props();
-const { slots } = useTabs();
+const styles = useTabs();
+const slots = $derived(styles.slots);
 </script>
 
 <TabsPrimitive.List

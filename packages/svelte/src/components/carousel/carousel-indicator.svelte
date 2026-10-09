@@ -7,7 +7,8 @@ import { cn } from "@pisagor/utils";
 import { useCarousel } from "./carousel.context";
 
 let { class: className, ...rest }: CarouselIndicatorProps = $props();
-const { slots } = useCarousel();
+const styles = useCarousel();
+const slots = $derived(styles.slots);
 </script>
 
 <CarouselPrimitive.Indicator

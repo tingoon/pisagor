@@ -1,24 +1,15 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { useStat } from "./stat.context";
+import { withContext } from "./stat.context";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
 };
 
-let { children, class: className, ...rest }: Props = $props();
+let { children, ...rest }: Props = $props();
 
-const { slots } = useStat();
+const part = withContext(() => rest, { name: "Value", slot: "value" });
 </script>
 
-<Ark
-  as="div"
-  {...rest}
-  class={slots.value({ class: cn(className) })}
-  data-part="value"
-  data-scope="stat"
->
-  {@render children?.()}
-</Ark>
+<Ark as="div" {...part.props}> {@render children?.()} </Ark>

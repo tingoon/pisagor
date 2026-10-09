@@ -28,7 +28,8 @@ let {
   ...rest
 }: Props = $props();
 
-const { slots } = useEditable();
+const styles = useEditable();
+const slots = $derived(styles.slots);
 const surfaceVariant = useFormControlSurface();
 const resolvedVariant = $derived(
   controlVariant ?? ("primary" as FormControlVariant),

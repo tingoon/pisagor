@@ -4,9 +4,7 @@ import {
   Timer as TimerPrimitive,
 } from "@ark-ui/svelte/timer";
 import type { TimerProps as BaseTimerProps } from "@pisagor/props";
-import { timerRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { setTimerContext } from "./timer.context";
+import { withTimerProvider } from "./timer.context";
 import TimerArea from "./timer-area.svelte";
 import TimerControl from "./timer-control.svelte";
 import TimerItem from "./timer-item.svelte";
@@ -23,24 +21,12 @@ type Props = ArkRootProps & {
   units?: TimerUnit[];
 } & BaseTimerProps;
 
-let {
-  isControlsVisible,
-  children,
-  units,
-  recipe = timerRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+let { isControlsVisible, children, units, ...rest }: Props = $props();
 
-const slots = $derived(recipe());
-setTimerContext({
-  get slots() {
-    return slots;
-  },
-});
+const root = withTimerProvider(() => rest, { name: "Root", slot: "base" });
 </script>
 
-<TimerPrimitive.Root {...rest} class={slots.base({ class: cn(className) })}>
+<TimerPrimitive.Root {...root.props}>
   {#if units}
     <TimerArea>
       {#each units as unit, index (unit)}

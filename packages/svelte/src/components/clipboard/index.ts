@@ -1,4 +1,1 @@
-import Clipboard from "./clipboard.svelte";
-
-export { Clipboard };
-export default Clipboard;
+export { default as Clipboard } from "./clipboard.svelte";

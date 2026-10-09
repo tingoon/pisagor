@@ -13,7 +13,8 @@ let {
   children,
   ...rest
 }: TagsInputClearTriggerProps = $props();
-const { slots } = useTagsInput();
+const styles = useTagsInput();
+const slots = $derived(styles.slots);
 </script>
 
 <TagsInputPrimitive.ClearTrigger

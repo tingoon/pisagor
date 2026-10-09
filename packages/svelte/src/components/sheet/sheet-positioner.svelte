@@ -16,7 +16,8 @@ let {
   children,
   ...rest
 }: Props = $props();
-const { slots } = useSheet();
+const styles = useSheet();
+const slots = $derived(styles.slots);
 </script>
 
 <DialogPrimitive.Positioner

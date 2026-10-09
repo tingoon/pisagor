@@ -1,23 +1,14 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { useBottomNavigationItem } from "./bottom-navigation.context";
+import { withBottomNavigationItemContext } from "./bottom-navigation.context";
 
-let {
-  class: className,
-  children,
-  ...rest
-}: HTMLAttributes<HTMLSpanElement> = $props();
-const { slots } = useBottomNavigationItem();
+let { children, ...rest }: HTMLAttributes<HTMLSpanElement> = $props();
+const part = withBottomNavigationItemContext(() => rest, {
+  defaultProps: { "data-part": "item-label" },
+  name: "ItemLabel",
+  slot: "label",
+});
 </script>
 
-<Ark
-  as="span"
-  {...rest}
-  class={slots.label({ class: cn(className) })}
-  data-part="item-label"
-  data-scope="bottom-navigation"
->
-  {@render children?.()}
-</Ark>
+<Ark as="span" {...part.props}> {@render children?.()} </Ark>

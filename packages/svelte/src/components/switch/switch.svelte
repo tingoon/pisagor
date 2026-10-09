@@ -1,41 +1,43 @@
 <script lang="ts">
 import {
+  type SwitchControlProps,
+  type SwitchHiddenInputProps,
   Switch as SwitchPrimitive,
   type SwitchRootProps,
+  type SwitchThumbProps,
 } from "@ark-ui/svelte/switch";
 import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
-import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { useFormControlSurface } from "../surface/use-form-control-surface";
-import { setSwitchContext } from "./switch.context";
+import type { SwitchRecipeSlot } from "@pisagor/recipes";
+import type { VariantClassNames } from "../../internal/types";
+import SwitchControl from "./switch-control.svelte";
+import SwitchRoot from "./switch-root.svelte";
+import SwitchThumb from "./switch-thumb.svelte";
 
 type FormControlVariant = "primary" | "secondary";
 
 type Props = Omit<SwitchRootProps, "children"> & {
-  /** Visual shell variant. Defaults to `primary`. */ variant?: FormControlVariant;
+  /** Slot class names */
+  classNames?: VariantClassNames<SwitchRecipeSlot>;
+  /** Extra props forwarded to the switch control element */
+  controlProps?: Omit<SwitchControlProps, "children" | "class">;
+  /** Extra props forwarded to the hidden input element (e.g. tabindex) */
+  hiddenInputProps?: Omit<SwitchHiddenInputProps, "class">;
   onValueChange?: (value: boolean) => void;
-  classNames?: Partial<Record<SwitchRecipeSlot, string>>;
+  /** Extra props forwarded to the switch thumb element */
+  thumbProps?: Omit<SwitchThumbProps, "children" | "class">;
+  /** Visual shell variant. Defaults to `primary`. */
+  variant?: FormControlVariant;
 } & BaseSwitchProps;
 
 let {
-  variant: variantProp,
+  controlProps,
+  hiddenInputProps,
+  thumbProps,
   onCheckedChange,
   onValueChange,
-  class: className,
   classNames,
-  recipe = switchRecipe,
   ...rest
 }: Props = $props();
-
-const surfaceVariant = useFormControlSurface();
-const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-const slots = $derived(recipe({ surfaceVariant, variant }));
-
-setSwitchContext({
-  get slots() {
-    return slots;
-  },
-});
 
 function handleCheckedChange(
   details: Parameters<NonNullable<SwitchRootProps["onCheckedChange"]>>[0],
@@ -45,18 +47,14 @@ function handleCheckedChange(
 }
 </script>
 
-<SwitchPrimitive.Root
+<SwitchRoot
   {...rest}
-  class={slots.base({ class: cn(className) })}
-  data-variant={variant}
   onCheckedChange={onCheckedChange || onValueChange
     ? handleCheckedChange
     : undefined}
 >
-  <SwitchPrimitive.Control
-    class={slots.control({ class: classNames?.control })}
-  >
-    <SwitchPrimitive.Thumb class={slots.thumb({ class: classNames?.thumb })} />
-  </SwitchPrimitive.Control>
-  <SwitchPrimitive.HiddenInput />
-</SwitchPrimitive.Root>
+  <SwitchControl {...controlProps} class={classNames?.control}>
+    <SwitchThumb {...thumbProps} class={classNames?.thumb} />
+  </SwitchControl>
+  <SwitchPrimitive.HiddenInput {...hiddenInputProps} />
+</SwitchRoot>

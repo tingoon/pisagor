@@ -1,5 +1,5 @@
 <script lang="ts">
-import { AvatarGroup } from "@pisagor/svelte";
+import { Avatar, AvatarGroup } from "@pisagor/svelte";
 
 const users = [
   {
@@ -25,4 +25,8 @@ const users = [
 ];
 </script>
 
-<AvatarGroup {users} />
+<AvatarGroup.Root>
+  {#each users as user (user.src)}
+    <Avatar alt={user.name} fallback={user.fallback} src={user.src} />
+  {/each}
+</AvatarGroup.Root>

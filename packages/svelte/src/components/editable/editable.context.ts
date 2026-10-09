@@ -1,9 +1,12 @@
-import type { EditableRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { editableRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface EditableContextValue {
-  slots: EditableRecipe;
-}
-
-export const { setContext: setEditableContext, getContext: useEditable } =
-  createContext("Editable")<EditableContextValue>();
+export const {
+  Context,
+  useStyles: useEditable,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Editable",
+  recipe: editableRecipe,
+});

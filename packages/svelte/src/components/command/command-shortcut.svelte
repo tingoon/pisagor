@@ -1,24 +1,14 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
-import { useCommand } from "./command.context";
+import { withContext } from "./command.context";
 
 type Props = HTMLAttributes<HTMLSpanElement> & {
   children?: Snippet;
 };
 
-let { class: className, children, ...rest }: Props = $props();
-const { slots } = useCommand();
+let { children, ...rest }: Props = $props();
+const part = withContext(() => rest, { name: "Shortcut" });
 </script>
 
-<Ark
-  as="span"
-  {...rest}
-  class={slots.shortcut({ class: cn(className) })}
-  data-part="shortcut"
-  data-scope="command"
->
-  {@render children?.()}
-</Ark>
+<span {...part.props}>{@render children?.()}</span>

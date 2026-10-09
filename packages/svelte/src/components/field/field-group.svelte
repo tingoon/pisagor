@@ -5,7 +5,7 @@ import { fieldRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
-import { setFieldContext } from "./field.context";
+import { Context } from "./field.context";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   children?: Snippet;
@@ -18,7 +18,7 @@ let {
   ...rest
 }: Props = $props();
 const slots = $derived(recipe());
-setFieldContext({
+Context.set({
   get slots() {
     return slots;
   },

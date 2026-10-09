@@ -1,7 +1,7 @@
 <script lang="ts">
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "svelte";
-import { Badge } from "../badge";
+import Badge from "../badge.svelte";
 import { useActionBar } from "./action-bar.context";
 
 type Props = Omit<ComponentProps<typeof Badge>, "variant"> & {

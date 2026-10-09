@@ -1,80 +1,32 @@
 <script lang="ts">
-import {
-  type SignaturePadRootProps as ArkRootProps,
-  SignaturePad as SignaturePadPrimitive,
-} from "@ark-ui/svelte/signature-pad";
+import type { SignaturePadRootProps } from "@ark-ui/svelte/signature-pad";
 import type { SignaturePadProps as BaseSignaturePadProps } from "@pisagor/props";
-import {
-  buttonRecipe,
-  formControlZoneRecipe,
-  type SignaturePadRecipeSlot,
-  signaturePadRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import ArrowCounterClockwiseIcon from "phosphor-svelte/lib/ArrowCounterClockwiseIcon";
-import { useFormControlSurface } from "../surface/use-form-control-surface";
-import { setSignaturePadContext } from "./signature-pad.context";
+import type { SignaturePadRecipeSlot } from "@pisagor/recipes";
+import type { VariantClassNames } from "../../internal/types";
+import SignaturePadClear from "./signature-pad-clear.svelte";
+import SignaturePadControl from "./signature-pad-control.svelte";
+import SignaturePadGuide from "./signature-pad-guide.svelte";
+import SignaturePadRoot from "./signature-pad-root.svelte";
+import SignaturePadSegment from "./signature-pad-segment.svelte";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<ArkRootProps, "children"> & {
-  classNames?: Partial<Record<SignaturePadRecipeSlot, string>>;
+type Props = Omit<SignaturePadRootProps, "children"> & {
+  /** Slot class names */
+  classNames?: VariantClassNames<SignaturePadRecipeSlot>;
+  /** Marks the control as invalid for styling and assistive tech. */
   invalid?: boolean;
+  /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
 } & BaseSignaturePadProps;
 
-let {
-  variant: variantProp,
-  invalid = false,
-  class: className,
-  classNames,
-  recipe = signaturePadRecipe,
-  ...rest
-}: Props = $props();
-
-const slots = $derived(recipe());
-const surfaceVariant = useFormControlSurface();
-const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-
-setSignaturePadContext({
-  get slots() {
-    return slots;
-  },
-});
+let { variant, invalid = false, classNames, ...rest }: Props = $props();
 </script>
 
-<SignaturePadPrimitive.Root
-  {...rest}
-  aria-invalid={invalid || undefined}
-  class={slots.base({ class: cn(className) })}
-  data-invalid={invalid || undefined}
->
-  <SignaturePadPrimitive.Control
-    class={cn(
-      formControlZoneRecipe({ surfaceVariant, variant }),
-      slots.control({
-        class: classNames?.control,
-        variant,
-      }),
-    )}
-    data-invalid={invalid || undefined}
-    data-variant={variant}
-  >
-    <SignaturePadPrimitive.Segment
-      class={slots.segment({ class: classNames?.segment })}
-    />
-    <SignaturePadPrimitive.ClearTrigger
-      aria-label="Clear signature"
-      class={cn(
-        buttonRecipe({ size: "icon-md", variant: "ghost" }).base(),
-        slots.clear({ class: classNames?.clear }),
-      )}
-      type="button"
-    >
-      <ArrowCounterClockwiseIcon />
-    </SignaturePadPrimitive.ClearTrigger>
-    <SignaturePadPrimitive.Guide
-      class={slots.guide({ class: classNames?.guide })}
-    />
-  </SignaturePadPrimitive.Control>
-</SignaturePadPrimitive.Root>
+<SignaturePadRoot {...rest} {invalid}>
+  <SignaturePadControl class={classNames?.control} {invalid} {variant}>
+    <SignaturePadSegment class={classNames?.segment} />
+    <SignaturePadClear class={classNames?.clear} />
+    <SignaturePadGuide class={classNames?.guide} />
+  </SignaturePadControl>
+</SignaturePadRoot>

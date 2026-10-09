@@ -5,14 +5,14 @@ import {
 } from "@ark-ui/svelte/drawer";
 import type { DrawerProps as BaseDrawerProps } from "@pisagor/props";
 import { drawerRecipe } from "@pisagor/recipes";
-import { setDrawerContext } from "./drawer.context";
+import { Context } from "./drawer.context";
 
 type Props = DrawerRootProps & BaseDrawerProps;
 
 let { recipe = drawerRecipe, children, ...rest }: Props = $props();
 const slots = $derived(recipe());
 
-setDrawerContext({
+Context.set({
   get slots() {
     return slots;
   },

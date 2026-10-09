@@ -6,7 +6,7 @@ import {
 import type { EditableProps as BaseEditableProps } from "@pisagor/props";
 import { editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { setEditableContext } from "./editable.context";
+import { Context } from "./editable.context";
 
 type Props = Omit<
   ArkEditableRootProps,
@@ -31,7 +31,7 @@ let {
 
 const slots = $derived(recipe());
 
-setEditableContext({
+Context.set({
   get slots() {
     return slots;
   },

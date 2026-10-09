@@ -1,8 +1,8 @@
 <script lang="ts">
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, Snippet } from "svelte";
-import Button from "../button/button.svelte";
-import Swap from "../swap/swap.svelte";
+import Button from "../button.svelte";
+import Swap from "../swap.svelte";
 import { type AppShellPlacement, useAppShell } from "./app-shell.context";
 
 type Props = Omit<

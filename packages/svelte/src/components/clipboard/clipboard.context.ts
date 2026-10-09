@@ -1,9 +1,7 @@
-import type { ClipboardRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { clipboardRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface ClipboardContextValue {
-  slots: ClipboardRecipe;
-}
-
-export const { setContext: setClipboardContext, getContext: useClipboard } =
-  createContext("Clipboard")<ClipboardContextValue>();
+export const { Context, withContext } = createSlotRecipeContext({
+  name: "Clipboard",
+  recipe: clipboardRecipe,
+});

@@ -1,11 +1,12 @@
-import type { DataListItemRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { dataListItemRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-export interface DataListItemContextValue {
-  slots: DataListItemRecipe;
-}
-
-const ctx = createContext("DataListItem")<DataListItemContextValue>();
-
-export const setDataListItemContext = ctx.setContext;
-export const useDataListItem = ctx.getContext;
+export const {
+  Context,
+  useStyles: useDataListItem,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "DataList",
+  recipe: dataListItemRecipe,
+});

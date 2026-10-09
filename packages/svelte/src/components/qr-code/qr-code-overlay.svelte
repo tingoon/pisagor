@@ -3,16 +3,12 @@ import {
   type QrCodeOverlayProps,
   QrCode as QrCodePrimitive,
 } from "@ark-ui/svelte/qr-code";
-import { cn } from "@pisagor/utils";
-import { useQrCode } from "./qr-code.context";
+import { withContext } from "./qr-code.context";
 
-let { class: className, children, ...rest }: QrCodeOverlayProps = $props();
-const { slots } = useQrCode();
+let { children, ...rest }: QrCodeOverlayProps = $props();
+const part = withContext(() => rest, { name: "Overlay" });
 </script>
 
-<QrCodePrimitive.Overlay
-  {...rest}
-  class={slots.overlay({ class: cn(className) })}
->
+<QrCodePrimitive.Overlay {...part.props}>
   {@render children?.()}
 </QrCodePrimitive.Overlay>

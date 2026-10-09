@@ -1,10 +1,11 @@
-import type { RatingRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { ratingRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-export interface RatingContextValue {
-  slots: RatingRecipe;
-}
-
-const ctx = createContext("Rating")<RatingContextValue>();
-
-export const setRatingContext = ctx.setContext;
+export const {
+  Context,
+  useStyles: useRating,
+  withContext,
+} = createSlotRecipeContext({
+  name: "Rating",
+  recipe: ratingRecipe,
+});

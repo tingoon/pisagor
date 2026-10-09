@@ -8,7 +8,6 @@ import type {
   ButtonProps,
 } from "@pisagor/props";
 import {
-  buttonRecipe,
   type ClipboardRecipeSlot,
   clipboardRecipe,
   formControlShellRecipe,
@@ -18,22 +17,49 @@ import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 import ClipboardIcon from "phosphor-svelte/lib/ClipboardIcon";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
+import type { VariantClassNames } from "../../internal/types";
+import Button from "../button.svelte";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
-import { setClipboardContext } from "./clipboard.context";
+import { Context } from "./clipboard.context";
+import ClipboardControl from "./clipboard-control.svelte";
+import ClipboardField from "./clipboard-field.svelte";
+import ClipboardIndicator from "./clipboard-indicator.svelte";
+import ClipboardInput from "./clipboard-input.svelte";
+import ClipboardLabel from "./clipboard-label.svelte";
+import ClipboardRoot from "./clipboard-root.svelte";
+import ClipboardValue from "./clipboard-value.svelte";
 
 type FormControlVariant = "primary" | "secondary";
 
 type Props = Omit<ClipboardRootProps, "children"> & {
+  /** Accessible label for icon-only copy buttons */
   buttonAriaLabel?: string;
+  /**
+   * Size of the copy button.
+   * @defaultValue "icon-md"
+   */
   buttonSize?: ButtonProps["size"];
+  /** Variant of the copy button */
   buttonVariant?: ButtonProps["variant"];
-  children?: Snippet;
-  classNames?: Partial<Record<ClipboardRecipeSlot, string>>;
+  /** Slot class names */
+  classNames?: VariantClassNames<ClipboardRecipeSlot>;
+  /**
+   * Visual shell variant for input/value display modes.
+   * Defaults to `primary`.
+   */
   controlVariant?: FormControlVariant;
+  /** Icon shown after a successful copy */
   copiedIcon?: Snippet;
+  /** Icon shown before copying */
   copyIcon?: Snippet;
+  /** Optional label rendered above the control. */
   label?: string;
-  labelProps?: Omit<HTMLAttributes<HTMLSpanElement>, "children">;
+  /** Extra props forwarded to the label element */
+  labelProps?: Omit<HTMLAttributes<HTMLSpanElement>, "children" | "class">;
+  /**
+   * Display mode for the copy control.
+   * @defaultValue "input"
+   */
   variant?: "button" | "input" | "value";
 } & BaseClipboardProps;
 
@@ -49,85 +75,88 @@ let {
   label,
   labelProps,
   recipe = clipboardRecipe,
-  class: className,
   classNames,
   ...rest
 }: Props = $props();
 
 const slots = $derived(recipe({ valueSize }));
-setClipboardContext({
+Context.set({
   get slots() {
     return slots;
+  },
+  get variants() {
+    return { valueSize };
   },
 });
 
 const surfaceVariant = useFormControlSurface();
-const resolvedVariant = $derived(
+const controlVariant = $derived(
   controlVariantProp ?? ("primary" as FormControlVariant),
 );
 const shellClassName = $derived(
   formControlShellRecipe({
     size: "md",
     surfaceVariant,
-    variant: resolvedVariant,
+    variant: controlVariant,
   }),
 );
 </script>
 
 {#snippet control()}
-  <ClipboardPrimitive.Root {...rest} class={className}>
-    <ClipboardPrimitive.Control
-      class={slots.control({ class: classNames?.control })}
-    >
+  <ClipboardRoot {...rest}>
+    <ClipboardControl class={classNames?.control}>
       {#if variant === "input"}
-        <ClipboardPrimitive.Input
-          class={cn(shellClassName, classNames?.input, slots.input())}
-          data-variant={resolvedVariant}
+        <ClipboardInput
+          class={cn(shellClassName, classNames?.input)}
+          data-variant={controlVariant}
           readonly
         />
       {/if}
       {#if variant === "value"}
-        <ClipboardPrimitive.ValueText
-          class={cn(shellClassName, classNames?.value, slots.value())}
-          data-variant={resolvedVariant}
+        <ClipboardValue
+          class={cn(shellClassName, classNames?.value)}
+          data-variant={controlVariant}
         />
       {/if}
-      <ClipboardPrimitive.Trigger
-        aria-label={buttonAriaLabel}
-        class={buttonRecipe({
-          size: buttonSize,
-          variant: buttonVariant,
-        }).base()}
-        type="button"
-      >
-        <ClipboardPrimitive.Indicator
-          class={slots.indicator({ class: classNames?.indicator })}
-        >
-          {#snippet copied()}
-            {#if copiedIcon}
-              {@render copiedIcon()}
-            {:else}
-              <CheckIcon />
-            {/if}
-          {/snippet}
-          {#if copyIcon}
-            {@render copyIcon()}
-          {:else}
-            <ClipboardIcon />
-          {/if}
-        </ClipboardPrimitive.Indicator>
+      <ClipboardPrimitive.Trigger>
+        {#snippet asChild(
+          props,
+        )}
+          <Button
+            {...props()}
+            aria-label={buttonAriaLabel}
+            size={buttonSize}
+            type="button"
+            variant={buttonVariant}
+          >
+            <ClipboardIndicator class={classNames?.indicator}>
+              {#snippet copied()}
+                {#if copiedIcon}
+                  {@render copiedIcon()}
+                {:else}
+                  <CheckIcon />
+                {/if}
+              {/snippet}
+              {#if copyIcon}
+                {@render copyIcon()}
+              {:else}
+                <ClipboardIcon />
+              {/if}
+            </ClipboardIndicator>
+          </Button>
+        {/snippet}
       </ClipboardPrimitive.Trigger>
-    </ClipboardPrimitive.Control>
-  </ClipboardPrimitive.Root>
+    </ClipboardControl>
+  </ClipboardRoot>
 {/snippet}
 
 {#if label}
-  <div class={slots.field({ class: classNames?.field })}>
-    <span {...labelProps} class={slots.label({ class: classNames?.label })}
-      >{label}</span
-    >
+  <ClipboardField class={classNames?.field}>
+    <ClipboardLabel {...labelProps} class={classNames?.label}>
+      {label}
+    </ClipboardLabel>
     {@render control()}
-  </div>
+  </ClipboardField>
 {:else}
   {@render control()}
 {/if}

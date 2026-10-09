@@ -1,26 +1,17 @@
 <script lang="ts">
 import { Tabs as TabsPrimitive, type TabsRootProps } from "@ark-ui/svelte/tabs";
 import type { BottomNavigationProps as BaseBottomNavigationProps } from "@pisagor/props";
-import { bottomNavigationRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { setBottomNavigationContext } from "./bottom-navigation.context";
+import { withBottomNavigationProvider } from "./bottom-navigation.context";
 
 type Props = TabsRootProps & BaseBottomNavigationProps;
 
-let {
-  recipe = bottomNavigationRecipe,
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
-const slots = $derived(recipe());
-setBottomNavigationContext({
-  get slots() {
-    return slots;
-  },
+let { children, ...rest }: Props = $props();
+const root = withBottomNavigationProvider(() => rest, {
+  name: "Root",
+  slot: "base",
 });
 </script>
 
-<TabsPrimitive.Root {...rest} class={slots.base({ class: cn(className) })}>
+<TabsPrimitive.Root {...root.props}>
   {@render children?.()}
 </TabsPrimitive.Root>

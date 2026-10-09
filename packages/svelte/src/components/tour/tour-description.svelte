@@ -1,21 +1,22 @@
 <script lang="ts">
-import { Tour as TourPrimitive } from "@ark-ui/svelte/tour";
+import {
+  type TourDescriptionProps,
+  Tour as TourPrimitive,
+} from "@ark-ui/svelte/tour";
 import { cn } from "@pisagor/utils";
-import type { ClassValue } from "svelte/elements";
 import { useTourContext } from "./tour.context";
 
-type Props = {
-  class?: ClassValue;
-  children?: import("svelte").Snippet;
-  [key: string]: unknown;
-};
-let { class: className, children, ...rest }: Props = $props();
-const { slots } = useTourContext();
+let { class: className, children, ...rest }: TourDescriptionProps = $props();
+const ctx = useTourContext();
 </script>
 
 <TourPrimitive.Description
   {...rest}
-  class={slots.description({ class: cn(className) })}
+  class={ctx.slots.description({ class: cn(className) })}
 >
-  {@render children?.()}
+  {#if children}
+    {@render children()}
+  {:else}
+    {ctx.tour().step?.description}
+  {/if}
 </TourPrimitive.Description>

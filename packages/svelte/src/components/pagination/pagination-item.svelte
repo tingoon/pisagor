@@ -8,7 +8,8 @@ import { cn } from "@pisagor/utils";
 import { usePagination } from "./pagination.context";
 
 let { class: className, children, ...rest }: PaginationItemProps = $props();
-const { slots } = usePagination();
+const styles = usePagination();
+const slots = $derived(styles.slots);
 </script>
 
 <PaginationPrimitive.Item

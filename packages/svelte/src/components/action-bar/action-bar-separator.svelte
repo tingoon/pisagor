@@ -1,6 +1,6 @@
 <script lang="ts">
 import { cn } from "@pisagor/utils";
-import { Separator } from "../separator";
+import Separator from "../separator.svelte";
 import { useActionBar } from "./action-bar.context";
 
 type Props = { class?: import("svelte/elements").ClassValue };

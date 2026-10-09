@@ -12,7 +12,8 @@ let {
   class: className,
   ...rest
 }: AccordionItemTriggerProps = $props();
-const { slots } = useAccordionItem();
+const styles = useAccordionItem();
+const slots = $derived(styles.slots);
 </script>
 
 <AccordionPrimitive.ItemTrigger

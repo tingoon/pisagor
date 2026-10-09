@@ -2,7 +2,7 @@
 import { cn } from "@pisagor/utils";
 import SidebarSimpleIcon from "phosphor-svelte/lib/SidebarSimpleIcon";
 import type { ComponentProps } from "svelte";
-import Button from "../button/button.svelte";
+import Button from "../button.svelte";
 import { useSidebar } from "./sidebar.context";
 
 type Props = Omit<ComponentProps<typeof Button>, "size" | "variant"> & {

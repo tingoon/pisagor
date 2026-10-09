@@ -1,36 +1,16 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
 import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
-import { navigationMenuRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
-import { setNavigationMenuContext } from "./navigation-menu.context";
+import { withProvider } from "./navigation-menu.context";
 
 type Props = HTMLAttributes<HTMLElement> & {
   children?: Snippet;
 } & BaseNavigationMenuProps;
 
-let {
-  recipe = navigationMenuRecipe,
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
-const slots = $derived(recipe());
-setNavigationMenuContext({
-  get slots() {
-    return slots;
-  },
-});
+let { children, ...rest }: Props = $props();
+const root = withProvider(() => rest, { name: "Root", slot: "base" });
 </script>
 
-<Ark
-  as="nav"
-  {...rest}
-  class={slots.base({ class: cn(className) })}
-  data-part="root"
-  data-scope="navigation-menu"
->
-  {@render children?.()}
-</Ark>
+<Ark as="nav" {...root.props}> {@render children?.()} </Ark>

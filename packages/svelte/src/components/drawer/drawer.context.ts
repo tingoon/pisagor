@@ -1,9 +1,12 @@
-import type { DrawerRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { drawerRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface DrawerContextValue {
-  slots: DrawerRecipe;
-}
-
-export const { setContext: setDrawerContext, getContext: useDrawer } =
-  createContext("Drawer")<DrawerContextValue>();
+export const {
+  Context,
+  useStyles: useDrawer,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Drawer",
+  recipe: drawerRecipe,
+});

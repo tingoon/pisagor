@@ -4,27 +4,17 @@ import {
   type TabTriggerProps,
 } from "@ark-ui/svelte/tabs";
 import type { BottomNavigationItemProps as BaseBottomNavigationItemProps } from "@pisagor/props";
-import { bottomNavigationItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { setBottomNavigationItemContext } from "./bottom-navigation.context";
+import { withBottomNavigationItemProvider } from "./bottom-navigation.context";
 
 type Props = TabTriggerProps & BaseBottomNavigationItemProps;
 
-let {
-  children,
-  recipe = bottomNavigationItemRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
-
-const slots = $derived(recipe());
-setBottomNavigationItemContext({
-  get slots() {
-    return slots;
-  },
+let { children, ...rest }: Props = $props();
+const root = withBottomNavigationItemProvider(() => rest, {
+  name: "Item",
+  slot: "base",
 });
 </script>
 
-<TabsPrimitive.Trigger {...rest} class={slots.base({ class: cn(className) })}>
+<TabsPrimitive.Trigger {...root.props}>
   {@render children?.()}
 </TabsPrimitive.Trigger>

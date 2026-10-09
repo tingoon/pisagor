@@ -1,24 +1,15 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
-import { useNavigationMenu } from "./navigation-menu.context";
+import { withContext } from "./navigation-menu.context";
 
 type Props = HTMLAttributes<HTMLUListElement> & {
   children?: Snippet;
 };
 
-let { class: className, children, ...rest }: Props = $props();
-const { slots } = useNavigationMenu();
+let { children, ...rest }: Props = $props();
+const part = withContext(() => rest, { name: "List" });
 </script>
 
-<Ark
-  as="ul"
-  {...rest}
-  class={slots.list({ class: cn(className) })}
-  data-part="list"
-  data-scope="navigation-menu"
->
-  {@render children?.()}
-</Ark>
+<Ark as="ul" {...part.props}> {@render children?.()} </Ark>

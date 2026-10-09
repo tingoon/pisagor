@@ -1,23 +1,31 @@
 <script lang="ts">
-import { Portal } from "@ark-ui/svelte/portal";
-import { Tour as TourPrimitive } from "@ark-ui/svelte/tour";
+import {
+  type TourBackdropProps as ArkProps,
+  Tour as TourPrimitive,
+} from "@ark-ui/svelte/tour";
 import { dialogRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { ClassValue } from "svelte/elements";
 import { useTourContext } from "./tour.context";
 
-type Props = {
-  class?: ClassValue;
+type Props = ArkProps & {
+  /**
+   * Dialog style recipe. Defaults to `dialogRecipe` from `@pisagor/recipes`.
+   *
+   * @defaultValue dialogRecipe
+   */
   dialogRecipe?: typeof dialogRecipe;
 };
-let { class: className, dialogRecipe: dialogRecipeProp = dialogRecipe }: Props =
-  $props();
-const { slots } = useTourContext();
+
+let {
+  class: className,
+  dialogRecipe: dialogRecipeProp = dialogRecipe,
+  ...rest
+}: Props = $props();
+const ctx = useTourContext();
 const dialogSlots = $derived(dialogRecipeProp());
 </script>
 
-<Portal>
-  <TourPrimitive.Backdrop
-    class={cn(dialogSlots.backdrop(), slots.backdrop(), className)}
-  />
-</Portal>
+<TourPrimitive.Backdrop
+  {...rest}
+  class={cn(dialogSlots.backdrop(), ctx.slots.backdrop(), className)}
+/>

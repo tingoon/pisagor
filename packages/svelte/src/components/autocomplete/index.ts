@@ -1,7 +1,7 @@
 import { Combobox } from "../combobox";
-import { Separator } from "../separator";
 import AutocompleteShorthand from "./autocomplete.svelte";
 import AutocompleteRoot from "./autocomplete-root.svelte";
+import AutocompleteSeparator from "./autocomplete-separator.svelte";
 
 export const Autocomplete = Object.assign(AutocompleteShorthand, {
   ClearTrigger: Combobox.ClearTrigger,
@@ -15,6 +15,6 @@ export const Autocomplete = Object.assign(AutocompleteShorthand, {
   ItemGroupLabel: Combobox.ItemGroupLabel,
   List: Combobox.List,
   Root: AutocompleteRoot,
-  Separator,
+  Separator: AutocompleteSeparator,
   Trigger: Combobox.Trigger,
 });

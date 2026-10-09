@@ -1,9 +1,12 @@
-import type { MenuRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { menuRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface MenuContextValue {
-  slots: MenuRecipe;
-}
-
-export const { setContext: setMenuContext, getContext: useMenu } =
-  createContext("Menu")<MenuContextValue>();
+export const {
+  Context,
+  useStyles: useMenu,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Menu",
+  recipe: menuRecipe,
+});

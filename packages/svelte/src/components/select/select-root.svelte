@@ -6,7 +6,7 @@ import {
 } from "@ark-ui/svelte/select";
 import type { SelectProps as BaseSelectProps } from "@pisagor/props";
 import { selectRecipe } from "@pisagor/recipes";
-import { setSelectRootContext } from "./select.context";
+import { Context } from "./select.context";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -25,7 +25,7 @@ let {
 
 const slots = $derived(recipe());
 
-setSelectRootContext({
+Context.set({
   get slots() {
     return slots;
   },

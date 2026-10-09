@@ -1,23 +1,10 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { useNavbar } from "./navbar.context";
+import { withContext } from "./navbar.context";
 
-let {
-  class: className,
-  children,
-  ...rest
-}: HTMLAttributes<HTMLDivElement> = $props();
-const { slots } = useNavbar();
+let { children, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
+const part = withContext(() => rest, { name: "Actions" });
 </script>
 
-<Ark
-  as="div"
-  {...rest}
-  class={slots.actions({ class: cn(className) })}
-  data-part="actions"
-  data-scope="navbar"
->
-  {@render children?.()}
-</Ark>
+<Ark as="div" {...part.props}> {@render children?.()} </Ark>

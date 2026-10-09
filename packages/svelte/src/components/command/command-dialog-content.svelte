@@ -10,7 +10,7 @@ import DialogDescription from "../dialog/dialog-description.svelte";
 import DialogHeader from "../dialog/dialog-header.svelte";
 import DialogPositioner from "../dialog/dialog-positioner.svelte";
 import DialogTitle from "../dialog/dialog-title.svelte";
-import { setCommandContext } from "./command.context";
+import { Context } from "./command.context";
 
 type Props = Omit<
   ComponentProps<typeof DialogContent>,
@@ -31,7 +31,7 @@ let {
 }: Props = $props();
 
 const slots = $derived(recipe());
-setCommandContext({
+Context.set({
   get slots() {
     return slots;
   },

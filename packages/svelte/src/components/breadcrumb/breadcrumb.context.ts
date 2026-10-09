@@ -1,18 +1,23 @@
-import type { BreadcrumbItemRecipe, BreadcrumbRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface BreadcrumbContextValue {
-  slots: BreadcrumbRecipe;
-}
+export const {
+  Context,
+  Context: BreadcrumbStylesContext,
+  useStyles: useBreadcrumb,
+  withContext: withBreadcrumbContext,
+  withProvider: withBreadcrumbProvider,
+} = createSlotRecipeContext({
+  name: "Breadcrumb",
+  recipe: breadcrumbRecipe,
+});
 
-interface BreadcrumbItemContextValue {
-  slots: BreadcrumbItemRecipe;
-}
-
-const root = createContext("Breadcrumb")<BreadcrumbContextValue>();
-const item = createContext("BreadcrumbItem")<BreadcrumbItemContextValue>();
-
-export const setBreadcrumbContext = root.setContext;
-export const useBreadcrumb = root.getContext;
-export const setBreadcrumbItemContext = item.setContext;
-export const useBreadcrumbItem = item.getContext;
+export const {
+  Context: BreadcrumbItemStylesContext,
+  useStyles: useBreadcrumbItem,
+  withContext: withBreadcrumbItemContext,
+  withProvider: withBreadcrumbItemProvider,
+} = createSlotRecipeContext({
+  name: "BreadcrumbItem",
+  recipe: breadcrumbItemRecipe,
+});

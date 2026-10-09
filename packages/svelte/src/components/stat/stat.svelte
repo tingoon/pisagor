@@ -3,6 +3,7 @@ import type { StatProps as BaseStatProps } from "@pisagor/props";
 import type { StatRecipeSlot } from "@pisagor/recipes";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
+import type { VariantClassNames } from "../../internal/types";
 import StatDescription from "./stat-description.svelte";
 import StatLabel from "./stat-label.svelte";
 import StatRoot from "./stat-root.svelte";
@@ -10,7 +11,7 @@ import StatTrend from "./stat-trend.svelte";
 import StatValue from "./stat-value.svelte";
 
 type Props = Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
-  classNames?: Partial<Record<StatRecipeSlot, string>>;
+  classNames?: VariantClassNames<StatRecipeSlot>;
   description?: string | Snippet;
   label?: string | Snippet;
   trend?: string | Snippet;

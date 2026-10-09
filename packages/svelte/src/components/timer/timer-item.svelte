@@ -3,11 +3,10 @@ import {
   type TimerItemProps,
   Timer as TimerPrimitive,
 } from "@ark-ui/svelte/timer";
-import { cn } from "@pisagor/utils";
-import { useTimerItemGroup } from "./timer.context";
+import { withTimerItemGroupContext } from "./timer.context";
 
-let { class: className, ...rest }: TimerItemProps = $props();
-const { slots } = useTimerItemGroup();
+let { ...rest }: TimerItemProps = $props();
+const part = withTimerItemGroupContext(() => rest, { name: "Item" });
 </script>
 
-<TimerPrimitive.Item {...rest} class={slots.item({ class: cn(className) })} />
+<TimerPrimitive.Item {...part.props} />

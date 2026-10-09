@@ -9,7 +9,8 @@ let {
   class: className,
   ...rest
 }: ComponentProps<typeof ComboboxEmpty> = $props();
-const { slots } = useCommand();
+const styles = useCommand();
+const slots = $derived(styles.slots);
 </script>
 
 <ComboboxEmpty {...rest} class={slots.empty({ class: cn(className) })}>

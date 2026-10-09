@@ -1,9 +1,8 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
-import { useDrawer } from "./drawer.context";
+import { withContext } from "./drawer.context";
 import DrawerDescription from "./drawer-description.svelte";
 import DrawerTitle from "./drawer-title.svelte";
 
@@ -13,23 +12,11 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "title"> & {
   title?: string;
 };
 
-let {
-  children,
-  description,
-  title,
-  class: className,
-  ...rest
-}: Props = $props();
-const { slots } = useDrawer();
+let { children, description, title, ...rest }: Props = $props();
+const part = withContext(() => rest, { name: "Header" });
 </script>
 
-<Ark
-  as="div"
-  {...rest}
-  class={slots.header({ class: cn(className) })}
-  data-part="header"
-  data-scope="drawer"
->
+<Ark as="div" {...part.props}>
   {#if title}
     <DrawerTitle>{title}</DrawerTitle>
   {/if}

@@ -1,10 +1,12 @@
-import type { AccordionItemRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { accordionItemRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-export interface AccordionItemContextValue {
-  slots: AccordionItemRecipe;
-}
-
-const ctx = createContext("AccordionItem")<AccordionItemContextValue>();
-export const setAccordionItemContext = ctx.setContext;
-export const useAccordionItem = ctx.getContext;
+export const {
+  Context,
+  useStyles: useAccordionItem,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Accordion",
+  recipe: accordionItemRecipe,
+});

@@ -8,7 +8,8 @@ import { useColorPicker } from "./color-picker.context";
 
 type Props = ColorPickerAreaProps & { showDots?: boolean };
 let { children, class: className, showDots = false, ...rest }: Props = $props();
-const { slots } = useColorPicker();
+const styles = useColorPicker();
+const slots = $derived(styles.slots);
 </script>
 
 <ColorPickerPrimitive.Area

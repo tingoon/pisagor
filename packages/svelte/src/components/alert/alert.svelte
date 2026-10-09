@@ -3,6 +3,7 @@ import type { AlertProps as BaseAlertProps } from "@pisagor/props";
 import type { AlertRecipeSlot } from "@pisagor/recipes";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
+import type { VariantClassNames } from "../../internal/types";
 import AlertAction from "./alert-action.svelte";
 import AlertDescription from "./alert-description.svelte";
 import AlertRoot from "./alert-root.svelte";
@@ -10,7 +11,7 @@ import AlertTitle from "./alert-title.svelte";
 
 type Props = Omit<HTMLAttributes<HTMLDivElement>, "title" | "children"> & {
   action?: string | Snippet;
-  classNames?: Partial<Record<AlertRecipeSlot, string>>;
+  classNames?: VariantClassNames<AlertRecipeSlot>;
   description?: string | Snippet;
   icon?: Snippet;
   title?: string | Snippet;

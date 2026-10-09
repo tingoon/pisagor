@@ -10,7 +10,8 @@ type Props = {
   [key: string]: unknown;
 };
 let { class: className, ...rest }: Props = $props();
-const { slots } = useColorPicker();
+const styles = useColorPicker();
+const slots = $derived(styles.slots);
 </script>
 
 <ColorPickerPrimitive.ValueText

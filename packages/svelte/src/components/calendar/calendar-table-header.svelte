@@ -11,7 +11,8 @@ let {
   children,
   ...rest
 }: DatePickerTableHeaderProps = $props();
-const { slots } = useCalendar();
+const styles = useCalendar();
+const slots = $derived(styles.slots);
 </script>
 
 <CalendarPrimitive.TableHeader

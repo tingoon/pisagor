@@ -8,7 +8,8 @@ import { cn } from "@pisagor/utils";
 import { useHoverCard } from "./hover-card.context";
 
 let { children, class: className, ...rest }: HoverCardContentProps = $props();
-const { slots } = useHoverCard();
+const styles = useHoverCard();
+const slots = $derived(styles.slots);
 </script>
 
 <Portal>

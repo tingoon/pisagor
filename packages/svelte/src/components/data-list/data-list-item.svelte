@@ -8,13 +8,14 @@ import {
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
-import { setDataListItemContext } from "./data-list.context";
+import type { VariantClassNames } from "../../internal/types";
+import { Context } from "./data-list.context";
 import DataListItemLabel from "./data-list-item-label.svelte";
 import DataListItemValue from "./data-list-item-value.svelte";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   children?: Snippet;
-  classNames?: Partial<Record<DataListItemRecipeSlot, string>>;
+  classNames?: VariantClassNames<DataListItemRecipeSlot>;
   value?: string | Snippet;
 } & BaseDataListItemProps;
 
@@ -29,7 +30,7 @@ let {
 
 const slots = $derived(recipe());
 
-setDataListItemContext({
+Context.set({
   get slots() {
     return slots;
   },

@@ -1,9 +1,7 @@
-import type { AvatarGroupRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { avatarGroupRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-export interface AvatarGroupContextValue {
-  slots: AvatarGroupRecipe;
-}
-
-const ctx = createContext("AvatarGroup")<AvatarGroupContextValue>();
-export const setAvatarGroupContext = ctx.setContext;
+export const { withContext, withProvider } = createSlotRecipeContext({
+  name: "AvatarGroup",
+  recipe: avatarGroupRecipe,
+});

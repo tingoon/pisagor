@@ -1,16 +1,12 @@
-import type { ComboboxRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { comboboxRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-export interface ComboboxRootContextValue {
-  slots: ComboboxRecipe;
+export const { Context, withContext, withProvider } = createSlotRecipeContext({
+  name: "Combobox",
+  recipe: comboboxRecipe,
+});
+
+/** Optional read (`undefined` outside the provider). */
+export function useComboboxRoot() {
+  return Context.get();
 }
-
-const ctx = createContext("ComboboxRoot")<ComboboxRootContextValue | undefined>(
-  {
-    defaultValue: undefined,
-    strict: false,
-  },
-);
-
-export const setComboboxRootContext = ctx.setContext;
-export const useComboboxRoot = ctx.getContext;

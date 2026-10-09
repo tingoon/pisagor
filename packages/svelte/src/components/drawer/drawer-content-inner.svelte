@@ -1,24 +1,19 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
-import { useDrawer } from "./drawer.context";
+import { withContext } from "./drawer.context";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   children?: Snippet;
 };
 
-let { class: className, children, ...rest }: Props = $props();
-const { slots } = useDrawer();
+let { children, ...rest }: Props = $props();
+const part = withContext(() => rest, {
+  defaultProps: { "data-part": "content-inner" },
+  name: "ContentInner",
+  slot: "contentInner",
+});
 </script>
 
-<Ark
-  as="div"
-  {...rest}
-  class={slots.contentInner({ class: cn(className) })}
-  data-part="content-inner"
-  data-scope="drawer"
->
-  {@render children?.()}
-</Ark>
+<Ark as="div" {...part.props}> {@render children?.()} </Ark>

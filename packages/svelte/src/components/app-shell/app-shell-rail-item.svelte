@@ -1,7 +1,7 @@
 <script lang="ts">
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "svelte";
-import Button from "../button/button.svelte";
+import Button from "../button.svelte";
 import Tooltip from "../tooltip/tooltip.svelte";
 import { type AppShellPlacement, useAppShell } from "./app-shell.context";
 import { useAppShellRail } from "./rail.context";

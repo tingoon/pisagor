@@ -1,23 +1,10 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { useBreadcrumb } from "./breadcrumb.context";
+import { withBreadcrumbContext } from "./breadcrumb.context";
 
-let {
-  class: className,
-  children,
-  ...rest
-}: HTMLAttributes<HTMLOListElement> = $props();
-const { slots } = useBreadcrumb();
+let { children, ...rest }: HTMLAttributes<HTMLOListElement> = $props();
+const part = withBreadcrumbContext(() => rest, { name: "List" });
 </script>
 
-<Ark
-  as="ol"
-  {...rest}
-  class={slots.list({ class: cn(className) })}
-  data-part="list"
-  data-scope="breadcrumb"
->
-  {@render children?.()}
-</Ark>
+<Ark as="ol" {...part.props}> {@render children?.()} </Ark>

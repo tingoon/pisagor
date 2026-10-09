@@ -7,7 +7,8 @@ import { cn } from "@pisagor/utils";
 import { useQrCode } from "./qr-code.context";
 
 let { class: className, ...rest }: QrCodeFrameProps = $props();
-const { slots } = useQrCode();
+const styles = useQrCode();
+const slots = $derived(styles.slots);
 </script>
 
 <QrCodePrimitive.Frame {...rest} class={slots.frame({ class: cn(className) })}>

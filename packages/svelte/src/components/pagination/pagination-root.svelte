@@ -4,34 +4,18 @@ import {
   type PaginationRootProps,
 } from "@ark-ui/svelte/pagination";
 import type { PaginationProps as BasePaginationProps } from "@pisagor/props";
-import { paginationRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { setPaginationContext } from "./pagination.context";
+import { withProvider } from "./pagination.context";
 import PaginationItems from "./pagination-items.svelte";
 import PaginationNextTrigger from "./pagination-next-trigger.svelte";
 import PaginationPrevTrigger from "./pagination-prev-trigger.svelte";
 
 type Props = PaginationRootProps & BasePaginationProps;
 
-let {
-  recipe = paginationRecipe,
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
-const slots = $derived(recipe());
-
-setPaginationContext({
-  get slots() {
-    return slots;
-  },
-});
+let { children, ...rest }: Props = $props();
+const root = withProvider(() => rest, { name: "Root", slot: "base" });
 </script>
 
-<PaginationPrimitive.Root
-  {...rest}
-  class={slots.base({ class: cn(className) })}
->
+<PaginationPrimitive.Root {...root.props}>
   {#if children}
     {@render children()}
   {:else}

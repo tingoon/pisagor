@@ -11,7 +11,8 @@ let {
   class: className,
   ...rest
 }: AccordionItemContentProps = $props();
-const { slots } = useAccordionItem();
+const styles = useAccordionItem();
+const slots = $derived(styles.slots);
 </script>
 
 <AccordionPrimitive.ItemContent

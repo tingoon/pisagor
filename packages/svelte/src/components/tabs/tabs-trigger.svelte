@@ -3,16 +3,12 @@ import {
   Tabs as TabsPrimitive,
   type TabTriggerProps,
 } from "@ark-ui/svelte/tabs";
-import { cn } from "@pisagor/utils";
-import { useTabs } from "./tabs.context";
+import { withContext } from "./tabs.context";
 
-let { class: className, children, ...rest }: TabTriggerProps = $props();
-const { slots } = useTabs();
+let { children, ...rest }: TabTriggerProps = $props();
+const part = withContext(() => rest, { name: "Trigger" });
 </script>
 
-<TabsPrimitive.Trigger
-  {...rest}
-  class={slots.trigger({ class: cn(className) })}
->
+<TabsPrimitive.Trigger {...part.props}>
   {@render children?.()}
 </TabsPrimitive.Trigger>

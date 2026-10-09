@@ -5,13 +5,13 @@ import {
 } from "@ark-ui/svelte/floating-panel";
 import type { FloatingPanelProps as BaseFloatingPanelProps } from "@pisagor/props";
 import { floatingPanelRecipe } from "@pisagor/recipes";
-import { setFloatingPanelContext } from "./floating-panel.context";
+import { Context } from "./floating-panel.context";
 
 type Props = ArkRootProps & BaseFloatingPanelProps;
 
 let { children, recipe = floatingPanelRecipe, ...rest }: Props = $props();
 const slots = $derived(recipe());
-setFloatingPanelContext({
+Context.set({
   get slots() {
     return slots;
   },

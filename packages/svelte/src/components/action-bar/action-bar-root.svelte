@@ -2,6 +2,7 @@
 import { useHotkey } from "@ark-ui/svelte/hotkeys";
 import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
 import { actionBarRecipe, buttonRecipe } from "@pisagor/recipes";
+import XIcon from "phosphor-svelte/lib/XIcon";
 import type { Snippet } from "svelte";
 import { setActionBarContext } from "./action-bar.context";
 import ActionBarBody from "./action-bar-body.svelte";
@@ -12,6 +13,7 @@ import ActionBarValue from "./action-bar-value.svelte";
 
 type ActionItem = {
   disabled?: boolean;
+  icon?: Snippet;
   label: string;
   onClick: () => void;
 };
@@ -114,6 +116,7 @@ const hasPreset = $derived(
             onclick={action.onClick}
             type="button"
           >
+            {@render action.icon?.()}
             {action.label}
           </button>
         {/each}
@@ -122,6 +125,6 @@ const hasPreset = $derived(
     {#if actions}
       <ActionBarSeparator />
     {/if}
-    <ActionBarClose>✕</ActionBarClose>
+    <ActionBarClose><XIcon aria-hidden /></ActionBarClose>
   </ActionBarContent>
 {/if}

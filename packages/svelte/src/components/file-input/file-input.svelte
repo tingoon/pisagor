@@ -10,7 +10,7 @@ import { cn } from "@pisagor/utils";
 import type { HTMLInputAttributes } from "svelte/elements";
 import { InputGroup } from "../input-group";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
-import { setFileInputContext } from "./file-input.context";
+import { Context } from "./file-input.context";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -54,7 +54,7 @@ const slots = $derived(recipe());
 const surfaceVariant = useFormControlSurface();
 const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 
-setFileInputContext({
+Context.set({
   get slots() {
     return slots;
   },

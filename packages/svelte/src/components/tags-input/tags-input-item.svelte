@@ -6,7 +6,7 @@ import {
 import type { TagsInputItemProps as BaseTagsInputItemProps } from "@pisagor/props";
 import { tagsInputItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { setTagsInputItemContext } from "./tags-input.context";
+import { TagsInputItemStylesContext } from "./tags-input.context";
 import TagsInputItemDeleteTrigger from "./tags-input-item-delete-trigger.svelte";
 import TagsInputItemInput from "./tags-input-item-input.svelte";
 import TagsInputItemPreview from "./tags-input-item-preview.svelte";
@@ -23,7 +23,7 @@ let {
 }: Props = $props();
 
 const slots = $derived(recipe());
-setTagsInputItemContext({
+TagsInputItemStylesContext.set({
   get slots() {
     return slots;
   },

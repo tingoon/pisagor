@@ -1,11 +1,12 @@
-import type { LinkBoxRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { linkBoxRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-export interface LinkBoxContextValue {
-  slots: LinkBoxRecipe;
-}
-
-const ctx = createContext("LinkBox")<LinkBoxContextValue>();
-
-export const setLinkBoxContext = ctx.setContext;
-export const useLinkBox = ctx.getContext;
+export const {
+  Context,
+  useStyles: useLinkBox,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "LinkBox",
+  recipe: linkBoxRecipe,
+});

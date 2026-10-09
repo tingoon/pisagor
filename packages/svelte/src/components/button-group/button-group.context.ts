@@ -1,11 +1,12 @@
-import type { ButtonGroupRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { buttonGroupRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-export interface ButtonGroupContextValue {
-  slots: ButtonGroupRecipe;
-}
-
-const ctx = createContext("ButtonGroup")<ButtonGroupContextValue>();
-
-export const setButtonGroupContext = ctx.setContext;
-export const useButtonGroup = ctx.getContext;
+export const {
+  Context,
+  useStyles: useButtonGroup,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "ButtonGroup",
+  recipe: buttonGroupRecipe,
+});

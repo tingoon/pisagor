@@ -8,7 +8,8 @@ import { cn } from "@pisagor/utils";
 import { useColorPicker } from "./color-picker.context";
 
 let { children, class: className, ...rest }: ColorPickerContentProps = $props();
-const { slots } = useColorPicker();
+const styles = useColorPicker();
+const slots = $derived(styles.slots);
 </script>
 
 <Portal>

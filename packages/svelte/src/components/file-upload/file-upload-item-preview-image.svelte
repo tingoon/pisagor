@@ -9,7 +9,8 @@ type Props = {
   [key: string]: unknown;
 };
 let { class: className, ...rest }: Props = $props();
-const { slots } = useFileUploadItem();
+const styles = useFileUploadItem();
+const slots = $derived(styles.slots);
 </script>
 
 <FileUploadPrimitive.ItemPreviewImage

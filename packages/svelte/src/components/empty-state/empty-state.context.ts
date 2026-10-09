@@ -1,11 +1,12 @@
-import type { EmptyStateRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { emptyStateRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-export interface EmptyStateContextValue {
-  slots: EmptyStateRecipe;
-}
-
-const ctx = createContext("EmptyState")<EmptyStateContextValue>();
-
-export const setEmptyStateContext = ctx.setContext;
-export const useEmptyState = ctx.getContext;
+export const {
+  Context,
+  useStyles: useEmptyState,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "EmptyState",
+  recipe: emptyStateRecipe,
+});

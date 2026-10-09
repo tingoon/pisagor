@@ -1,0 +1,134 @@
+<script lang="ts">
+import type {
+  PasswordInputInputProps,
+  PasswordInputRootProps as PasswordInputPrimitiveRootProps,
+} from "@ark-ui/svelte/password-input";
+import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/svelte/password-input";
+import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
+import {
+  inputGroupButtonRecipe,
+  inputGroupControlRecipe,
+  passwordInputRecipe,
+} from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
+import EyeIcon from "phosphor-svelte/lib/EyeIcon";
+import EyeSlashIcon from "phosphor-svelte/lib/EyeSlashIcon";
+import XIcon from "phosphor-svelte/lib/XIcon";
+import InputGroupAddon from "./input-group/input-group-addon.svelte";
+import InputGroupButton from "./input-group/input-group-button.svelte";
+import InputGroupRoot from "./input-group/input-group-root.svelte";
+
+type FormControlVariant = "primary" | "secondary";
+
+type PasswordInputRootProps = Pick<
+  PasswordInputPrimitiveRootProps,
+  "defaultVisible" | "invalid" | "onVisibilityChange" | "visible"
+>;
+
+type Props = PasswordInputRootProps &
+  Omit<PasswordInputInputProps, "size" | "children"> & {
+    clearable?: boolean;
+    disabled?: boolean | null;
+    onValueChange?: (value: string) => void;
+    placeholder?: string | null | undefined;
+    readonly?: boolean | null;
+    size?: "sm" | "md" | "lg";
+    value?: string | undefined;
+    variant?: FormControlVariant;
+  } & BasePasswordInputProps;
+
+let {
+  size = "md",
+  variant,
+  clearable = false,
+  defaultVisible,
+  disabled,
+  invalid,
+  readonly,
+  value = $bindable<string | undefined>(undefined),
+  visible = $bindable<boolean | undefined>(undefined),
+  placeholder,
+  oninput,
+  onValueChange,
+  onVisibilityChange,
+  recipe = passwordInputRecipe,
+  class: className,
+  ...inputProps
+}: Props = $props();
+
+const slots = $derived(recipe());
+const canClear = $derived(
+  clearable && !disabled && !readonly && String(value ?? "").length > 0,
+);
+
+function handleInput(event: Event & { currentTarget: HTMLInputElement }) {
+  const next = event.currentTarget.value;
+  value = next;
+  onValueChange?.(next);
+  oninput?.(event as never);
+}
+
+function handleClear() {
+  value = "";
+  onValueChange?.("");
+}
+</script>
+
+<PasswordInputPrimitive.Root
+  class={slots.base({ class: cn(className) })}
+  data-size={size}
+  {defaultVisible}
+  {invalid}
+  {onVisibilityChange}
+  bind:visible
+>
+  <PasswordInputPrimitive.Control class="contents">
+    <InputGroupRoot
+      class={slots.control()}
+      data-clearable={clearable || undefined}
+      {size}
+      {variant}
+    >
+      <PasswordInputPrimitive.Input
+        {...inputProps}
+        class={inputGroupControlRecipe()}
+        {disabled}
+        oninput={handleInput}
+        {placeholder}
+        {readonly}
+        bind:value
+      />
+
+      {#if canClear}
+        <InputGroupAddon align="inline-end" class={slots.clearAddon()}>
+          <InputGroupButton
+            aria-label="Clear"
+            data-part="clear-trigger"
+            data-scope="password-input"
+            onclick={handleClear}
+            size="icon-xs"
+            type="button"
+            variant="ghost"
+          >
+            <XIcon />
+          </InputGroupButton>
+        </InputGroupAddon>
+      {/if}
+
+      <InputGroupAddon align="inline-end">
+        <PasswordInputPrimitive.VisibilityTrigger
+          aria-label="Toggle password visibility"
+          class={inputGroupButtonRecipe({ size: "icon-xs" })}
+          type="button"
+        >
+          <PasswordInputPrimitive.Indicator>
+            {#snippet fallback()}
+              <EyeSlashIcon />
+            {/snippet}
+            <EyeIcon />
+          </PasswordInputPrimitive.Indicator>
+        </PasswordInputPrimitive.VisibilityTrigger>
+      </InputGroupAddon>
+    </InputGroupRoot>
+  </PasswordInputPrimitive.Control>
+</PasswordInputPrimitive.Root>

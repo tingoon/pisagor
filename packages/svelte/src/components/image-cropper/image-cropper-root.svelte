@@ -6,7 +6,7 @@ import {
 import type { ImageCropperProps as BaseImageCropperProps } from "@pisagor/props";
 import { imageCropperRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { setImageCropperContext } from "./image-cropper.context";
+import { Context } from "./image-cropper.context";
 import ImageCropperImage from "./image-cropper-image.svelte";
 import ImageCropperSelection from "./image-cropper-selection.svelte";
 
@@ -27,7 +27,7 @@ let {
 }: Props = $props();
 
 const slots = $derived(recipe());
-setImageCropperContext({
+Context.set({
   get slots() {
     return slots;
   },

@@ -29,7 +29,8 @@ let {
   ...rest
 }: Props = $props();
 
-const { slots } = useTagsInput();
+const styles = useTagsInput();
+const slots = $derived(styles.slots);
 const api = useTagsInputContext();
 const surfaceVariant = useFormControlSurface();
 const variant = $derived(variantProp ?? ("primary" as FormControlVariant));

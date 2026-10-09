@@ -11,7 +11,8 @@ let {
   children,
   ...rest
 }: FileUploadItemPreviewProps = $props();
-const { slots } = useFileUploadItem();
+const styles = useFileUploadItem();
+const slots = $derived(styles.slots);
 </script>
 
 <FileUploadPrimitive.ItemPreview

@@ -1,23 +1,26 @@
-import type {
-  BottomNavigationItemRecipe,
-  BottomNavigationRecipe,
+import {
+  bottomNavigationItemRecipe,
+  bottomNavigationRecipe,
 } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface BottomNavigationContextValue {
-  slots: BottomNavigationRecipe;
-}
+export const {
+  Context,
+  Context: BottomNavigationStylesContext,
+  useStyles: useBottomNavigation,
+  withContext: withBottomNavigationContext,
+  withProvider: withBottomNavigationProvider,
+} = createSlotRecipeContext({
+  name: "BottomNavigation",
+  recipe: bottomNavigationRecipe,
+});
 
-interface BottomNavigationItemContextValue {
-  slots: BottomNavigationItemRecipe;
-}
-
-const root = createContext("BottomNavigation")<BottomNavigationContextValue>();
-const item = createContext(
-  "BottomNavigationItem",
-)<BottomNavigationItemContextValue>();
-
-export const setBottomNavigationContext = root.setContext;
-export const useBottomNavigation = root.getContext;
-export const setBottomNavigationItemContext = item.setContext;
-export const useBottomNavigationItem = item.getContext;
+export const {
+  Context: BottomNavigationItemStylesContext,
+  useStyles: useBottomNavigationItem,
+  withContext: withBottomNavigationItemContext,
+  withProvider: withBottomNavigationItemProvider,
+} = createSlotRecipeContext({
+  name: "BottomNavigation",
+  recipe: bottomNavigationItemRecipe,
+});

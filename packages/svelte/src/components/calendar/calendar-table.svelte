@@ -7,7 +7,8 @@ import { cn } from "@pisagor/utils";
 import { useCalendar } from "./calendar.context";
 
 let { class: className, children, ...rest }: DatePickerTableProps = $props();
-const { slots } = useCalendar();
+const styles = useCalendar();
+const slots = $derived(styles.slots);
 </script>
 
 <CalendarPrimitive.Table

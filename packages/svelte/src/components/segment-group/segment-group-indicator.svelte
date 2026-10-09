@@ -3,14 +3,10 @@ import {
   type SegmentGroupIndicatorProps,
   SegmentGroup as SegmentGroupPrimitive,
 } from "@ark-ui/svelte/segment-group";
-import { cn } from "@pisagor/utils";
-import { useSegmentGroup } from "./segment-group.context";
+import { withContext } from "./segment-group.context";
 
-let { class: className, ...rest }: SegmentGroupIndicatorProps = $props();
-const { slots } = useSegmentGroup();
+let { ...rest }: SegmentGroupIndicatorProps = $props();
+const part = withContext(() => rest, { name: "Indicator" });
 </script>
 
-<SegmentGroupPrimitive.Indicator
-  {...rest}
-  class={slots.indicator({ class: cn(className) })}
-/>
+<SegmentGroupPrimitive.Indicator {...part.props} />

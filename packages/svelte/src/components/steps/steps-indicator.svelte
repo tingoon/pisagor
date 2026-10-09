@@ -8,7 +8,8 @@ import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 import { useStepsItem } from "./steps.context";
 
 let { class: className, children, ...rest }: StepsIndicatorProps = $props();
-const { slots } = useStepsItem();
+const styles = useStepsItem();
+const slots = $derived(styles.slots);
 </script>
 
 <StepsPrimitive.Indicator

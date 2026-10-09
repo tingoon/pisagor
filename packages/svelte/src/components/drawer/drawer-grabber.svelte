@@ -8,7 +8,8 @@ import { cn } from "@pisagor/utils";
 import { useDrawer } from "./drawer.context";
 
 let { class: className, ...rest }: DrawerGrabberProps = $props();
-const { slots } = useDrawer();
+const styles = useDrawer();
+const slots = $derived(styles.slots);
 </script>
 
 <Ark as="div" class={slots.grabberWrapper()}>

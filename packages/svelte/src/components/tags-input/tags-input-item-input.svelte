@@ -7,7 +7,8 @@ import { cn } from "@pisagor/utils";
 import { useTagsInputItem } from "./tags-input.context";
 
 let { class: className, ...rest }: TagsInputItemInputProps = $props();
-const { slots } = useTagsInputItem();
+const styles = useTagsInputItem();
+const slots = $derived(styles.slots);
 </script>
 
 <TagsInputPrimitive.ItemInput

@@ -16,7 +16,8 @@ let {
   ...rest
 }: Props = $props();
 
-const { slots } = useCard();
+const styles = useCard();
+const slots = $derived(styles.slots);
 </script>
 
 <Ark

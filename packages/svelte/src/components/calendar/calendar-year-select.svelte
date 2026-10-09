@@ -10,7 +10,8 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { useCalendar } from "./calendar.context";
 
 let { class: className, ...rest }: DatePickerYearSelectProps = $props();
-const { slots } = useCalendar();
+const styles = useCalendar();
+const slots = $derived(styles.slots);
 const surfaceVariant = useFormControlSurface();
 const selectClassName = $derived(
   cn(

@@ -1,37 +1,17 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
 import type { EmptyStateProps as BaseEmptyStateProps } from "@pisagor/props";
-import { emptyStateRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { setEmptyStateContext } from "./empty-state.context";
+import { withProvider } from "./empty-state.context";
 
 type Props = Omit<HTMLAttributes<HTMLDivElement>, "title"> & {
   children?: import("svelte").Snippet;
 } & BaseEmptyStateProps;
 
-let {
-  children,
-  recipe = emptyStateRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+let { children, ...rest }: Props = $props();
 
-const slots = $derived(recipe());
-
-setEmptyStateContext({
-  get slots() {
-    return slots;
-  },
-});
+const root = withProvider(() => rest, { name: "Root", slot: "base" });
 </script>
 
-<Ark
-  as="div"
-  {...rest}
-  class={slots.base({ class: cn(className) })}
-  data-part="root"
-  data-scope="empty-state"
->
+<div {...root.props}>
   {@render children?.()}
-</Ark>
+</div>

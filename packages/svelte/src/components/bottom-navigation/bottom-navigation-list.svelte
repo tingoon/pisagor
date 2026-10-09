@@ -1,12 +1,11 @@
 <script lang="ts">
 import { type TabListProps, Tabs as TabsPrimitive } from "@ark-ui/svelte/tabs";
-import { cn } from "@pisagor/utils";
-import { useBottomNavigation } from "./bottom-navigation.context";
+import { withBottomNavigationContext } from "./bottom-navigation.context";
 
-let { class: className, children, ...rest }: TabListProps = $props();
-const { slots } = useBottomNavigation();
+let { children, ...rest }: TabListProps = $props();
+const part = withBottomNavigationContext(() => rest, { name: "List" });
 </script>
 
-<TabsPrimitive.List {...rest} class={slots.list({ class: cn(className) })}>
+<TabsPrimitive.List {...part.props}>
   {@render children?.()}
 </TabsPrimitive.List>

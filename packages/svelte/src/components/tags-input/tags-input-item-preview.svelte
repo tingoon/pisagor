@@ -11,7 +11,8 @@ let {
   children,
   ...rest
 }: TagsInputItemPreviewProps = $props();
-const { slots } = useTagsInputItem();
+const styles = useTagsInputItem();
+const slots = $derived(styles.slots);
 </script>
 
 <TagsInputPrimitive.ItemPreview

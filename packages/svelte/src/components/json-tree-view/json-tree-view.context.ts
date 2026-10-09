@@ -1,10 +1,7 @@
-import type { JsonTreeViewRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { jsonTreeViewRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface JsonTreeViewContextValue {
-  slots: JsonTreeViewRecipe;
-}
-
-const ctx = createContext("JsonTreeView")<JsonTreeViewContextValue>();
-
-export const setJsonTreeViewContext = ctx.setContext;
+export const { withContext, withProvider } = createSlotRecipeContext({
+  name: "JsonTreeView",
+  recipe: jsonTreeViewRecipe,
+});

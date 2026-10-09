@@ -1,16 +1,12 @@
-import type { DropdownMenuRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { dropdownMenuRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface DropdownMenuContextValue {
-  slots: DropdownMenuRecipe;
-}
-
-const ctx = createContext("DropdownMenu")<DropdownMenuContextValue | undefined>(
-  {
-    defaultValue: undefined,
-    strict: false,
-  },
-);
-
-export const setDropdownMenuContext = ctx.setContext;
-export const useDropdownMenu = ctx.getContext;
+export const {
+  Context,
+  useStyles: useDropdownMenu,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "DropdownMenu",
+  recipe: dropdownMenuRecipe,
+});

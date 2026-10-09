@@ -7,7 +7,8 @@ import { cn } from "@pisagor/utils";
 import { useMarquee } from "./marquee.context";
 
 let { class: className, children, ...rest }: MarqueeContentProps = $props();
-const { slots } = useMarquee();
+const styles = useMarquee();
+const slots = $derived(styles.slots);
 </script>
 
 <MarqueePrimitive.Viewport class={slots.viewport()}>
