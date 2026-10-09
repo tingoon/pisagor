@@ -41,9 +41,11 @@
   "scripts": {
     "build": "astro build",
     "dev": "astro dev",
+    "docs:sync": "bun scripts/sync-shared-docs.ts",
+    "docs:sync:check": "bun scripts/sync-shared-docs.ts --check",
     "generate:props": "bun scripts/generate-props-tables.ts",
     "preview": "astro preview",
-    "type-check": "tsc --noEmit"
+    "type-check": "bun scripts/sync-shared-docs.ts --check && tsc --noEmit"
   },
   "type": "module",
   "version": "0.0.0"

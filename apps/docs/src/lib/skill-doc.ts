@@ -2,13 +2,9 @@ import { parse as parseYaml } from "yaml";
 import type { ComponentDocs } from "./component-docs-types";
 import type { Framework } from "./nav";
 
-/** Shared design + per-framework develop docs. */
+/** Per-framework design + develop docs (`content/<fw>/{components,forms}/<id>/<pane>.md`). */
 const docRawModules = import.meta.glob(
-  [
-    "../content/components/*/design.md",
-    "../content/forms/*/design.md",
-    "../content/{astro,react,solid,svelte,vue}/{components,forms}/*.md",
-  ],
+  "../content/{astro,react,solid,svelte,vue}/{components,forms}/*/{design,develop}.md",
   {
     eager: true,
     import: "default",
@@ -49,14 +45,6 @@ function contentArea(opts?: { packageName?: string }): "components" | "forms" {
   return opts?.packageName?.endsWith("-form") ? "forms" : "components";
 }
 
-function isDesignPath(
-  path: string,
-  id: string,
-  area: "components" | "forms",
-): boolean {
-  return path.endsWith(`/content/${area}/${id}/design.md`);
-}
-
 function frameworkFromOpts(opts?: {
   framework?: Framework;
   packageName?: string;
@@ -76,19 +64,19 @@ function frameworkFromOpts(opts?: {
   return undefined;
 }
 
-function isDevelopPath(
+function isPanePath(
   path: string,
   id: string,
   area: "components" | "forms",
+  pane: "design" | "develop",
 ): boolean {
   return (
-    /\/content\/(?:astro|react|solid|svelte|vue)\/(?:components|forms)\/[^/]+\.md$/.test(
-      path,
-    ) && path.endsWith(`/${area}/${id}.md`)
+    /\/content\/(?:astro|react|solid|svelte|vue)\//.test(path) &&
+    path.endsWith(`/${area}/${id}/${pane}.md`)
   );
 }
 
-function rankDevelopCandidates(
+function rankFrameworkCandidates(
   candidates: [string, string][],
   opts?: {
     framework?: Framework;
@@ -107,25 +95,17 @@ function rankDevelopCandidates(
   return react ?? candidates[0];
 }
 
-/** Raw markdown for design (shared) or develop (per-framework content). */
+/** Raw markdown for a design or develop pane (per-framework content). */
 export function findSkillPaneRaw(
   id: string,
   pane: "design" | "develop",
   opts?: { framework?: Framework; packageName?: string },
 ): string | undefined {
-  if (pane === "design") {
-    const area = contentArea(opts);
-    const hit = Object.entries(docRawModules).find(([path]) =>
-      isDesignPath(path, id, area),
-    );
-    return hit?.[1];
-  }
-
   const area = contentArea(opts);
   const candidates = Object.entries(docRawModules).filter(([path]) =>
-    isDevelopPath(path, id, area),
+    isPanePath(path, id, area, pane),
   );
-  return rankDevelopCandidates(candidates, opts)?.[1];
+  return rankFrameworkCandidates(candidates, opts)?.[1];
 }
 
 /**

@@ -70,47 +70,119 @@ const PROPS_FILE_ALIASES: Record<string, string> = {
   "textarea-field": "textarea",
 };
 
-/** Shared metadata — `apps/docs/src/content/{components,forms}/<id>/metadata.md`. */
-const sharedMetadataByKind: Record<
-  ComponentDocKind,
-  Record<string, () => Promise<SkillMdModule>>
-> = {
-  component: import.meta.glob<SkillMdModule>(
-    "../content/components/*/metadata.md",
-  ),
-  form: import.meta.glob<SkillMdModule>("../content/forms/*/metadata.md"),
+type PaneModules = Record<string, () => Promise<SkillMdModule>>;
+
+/**
+ * Per-framework docs — `content/<fw>/{components,forms}/<id>/{metadata,design,develop}.md`.
+ * Every framework owns its copy so each URL tree only shows that library's content.
+ */
+type FrameworkPaneGlobs = {
+  design: PaneModules;
+  develop: PaneModules;
+  metadata: PaneModules;
 };
 
-/** Shared design — same file for every framework tab. */
-const sharedDesignByKind: Record<
-  ComponentDocKind,
-  Record<string, () => Promise<SkillMdModule>>
-> = {
-  component: import.meta.glob<SkillMdModule>(
-    "../content/components/*/design.md",
-  ),
-  form: import.meta.glob<SkillMdModule>("../content/forms/*/design.md"),
+const componentPanesByFramework: Record<Framework, FrameworkPaneGlobs> = {
+  astro: {
+    design: import.meta.glob<SkillMdModule>(
+      "../content/astro/components/*/design.md",
+    ),
+    develop: import.meta.glob<SkillMdModule>(
+      "../content/astro/components/*/develop.md",
+    ),
+    metadata: import.meta.glob<SkillMdModule>(
+      "../content/astro/components/*/metadata.md",
+    ),
+  },
+  react: {
+    design: import.meta.glob<SkillMdModule>(
+      "../content/react/components/*/design.md",
+    ),
+    develop: import.meta.glob<SkillMdModule>(
+      "../content/react/components/*/develop.md",
+    ),
+    metadata: import.meta.glob<SkillMdModule>(
+      "../content/react/components/*/metadata.md",
+    ),
+  },
+  solid: {
+    design: import.meta.glob<SkillMdModule>(
+      "../content/solid/components/*/design.md",
+    ),
+    develop: import.meta.glob<SkillMdModule>(
+      "../content/solid/components/*/develop.md",
+    ),
+    metadata: import.meta.glob<SkillMdModule>(
+      "../content/solid/components/*/metadata.md",
+    ),
+  },
+  svelte: {
+    design: import.meta.glob<SkillMdModule>(
+      "../content/svelte/components/*/design.md",
+    ),
+    develop: import.meta.glob<SkillMdModule>(
+      "../content/svelte/components/*/develop.md",
+    ),
+    metadata: import.meta.glob<SkillMdModule>(
+      "../content/svelte/components/*/metadata.md",
+    ),
+  },
+  vue: {
+    design: import.meta.glob<SkillMdModule>(
+      "../content/vue/components/*/design.md",
+    ),
+    develop: import.meta.glob<SkillMdModule>(
+      "../content/vue/components/*/develop.md",
+    ),
+    metadata: import.meta.glob<SkillMdModule>(
+      "../content/vue/components/*/metadata.md",
+    ),
+  },
 };
 
-/** Per-framework develop docs — `content/<fw>/{components,forms}/<id>.md`. */
-const developByFramework: Record<
-  Framework,
-  Record<string, () => Promise<SkillMdModule>>
-> = {
-  astro: import.meta.glob<SkillMdModule>("../content/astro/components/*.md"),
-  react: import.meta.glob<SkillMdModule>("../content/react/components/*.md"),
-  solid: import.meta.glob<SkillMdModule>("../content/solid/components/*.md"),
-  svelte: import.meta.glob<SkillMdModule>("../content/svelte/components/*.md"),
-  vue: import.meta.glob<SkillMdModule>("../content/vue/components/*.md"),
-};
-
-const formDevelopByFramework: Partial<
-  Record<Framework, Record<string, () => Promise<SkillMdModule>>>
-> = {
-  react: import.meta.glob<SkillMdModule>("../content/react/forms/*.md"),
-  solid: import.meta.glob<SkillMdModule>("../content/solid/forms/*.md"),
-  svelte: import.meta.glob<SkillMdModule>("../content/svelte/forms/*.md"),
-  vue: import.meta.glob<SkillMdModule>("../content/vue/forms/*.md"),
+const formPanesByFramework: Partial<Record<Framework, FrameworkPaneGlobs>> = {
+  react: {
+    design: import.meta.glob<SkillMdModule>(
+      "../content/react/forms/*/design.md",
+    ),
+    develop: import.meta.glob<SkillMdModule>(
+      "../content/react/forms/*/develop.md",
+    ),
+    metadata: import.meta.glob<SkillMdModule>(
+      "../content/react/forms/*/metadata.md",
+    ),
+  },
+  solid: {
+    design: import.meta.glob<SkillMdModule>(
+      "../content/solid/forms/*/design.md",
+    ),
+    develop: import.meta.glob<SkillMdModule>(
+      "../content/solid/forms/*/develop.md",
+    ),
+    metadata: import.meta.glob<SkillMdModule>(
+      "../content/solid/forms/*/metadata.md",
+    ),
+  },
+  svelte: {
+    design: import.meta.glob<SkillMdModule>(
+      "../content/svelte/forms/*/design.md",
+    ),
+    develop: import.meta.glob<SkillMdModule>(
+      "../content/svelte/forms/*/develop.md",
+    ),
+    metadata: import.meta.glob<SkillMdModule>(
+      "../content/svelte/forms/*/metadata.md",
+    ),
+  },
+  vue: {
+    design: import.meta.glob<SkillMdModule>("../content/vue/forms/*/design.md"),
+    develop: import.meta.glob<SkillMdModule>(
+      "../content/vue/forms/*/develop.md",
+    ),
+    metadata: import.meta.glob<SkillMdModule>(
+      "../content/vue/forms/*/metadata.md",
+    ),
+  },
 };
 
 // Example barrels (eager — need components + sources at build time).
@@ -165,18 +237,26 @@ function toCamelCase(id: string): string {
   return id.replace(/-([a-z])/g, (_, char: string) => char.toUpperCase());
 }
 
-/** Develop doc `…/content/<fw>/{components,forms}/<id>.md`. */
-function idFromDevelopPath(path: string): string | undefined {
-  return /\/content\/[^/]+\/(?:components|forms)\/([^/]+)\.md$/.exec(path)?.[1];
+type PaneFile = "design" | "develop" | "metadata";
+
+function contentArea(kind: ComponentDocKind): "components" | "forms" {
+  return kind === "form" ? "forms" : "components";
 }
 
-function developPathSuffix(
+/** Develop doc `…/content/<fw>/{components,forms}/<id>/develop.md`. */
+function idFromDevelopPath(path: string): string | undefined {
+  return /\/content\/[^/]+\/(?:components|forms)\/([^/]+)\/develop\.md$/.exec(
+    path,
+  )?.[1];
+}
+
+function panePathSuffix(
   framework: Framework,
   id: string,
   kind: ComponentDocKind,
+  pane: PaneFile,
 ): string {
-  const area = kind === "form" ? "forms" : "components";
-  return `/content/${framework}/${area}/${id}.md`;
+  return `/content/${framework}/${contentArea(kind)}/${id}/${pane}.md`;
 }
 
 function findGlobKey(
@@ -186,21 +266,47 @@ function findGlobKey(
   return Object.keys(modules).find((path) => path.endsWith(suffix));
 }
 
-function developModules(
+function paneModules(
   framework: Framework,
   kind: ComponentDocKind,
-): Record<string, () => Promise<SkillMdModule>> | undefined {
-  return kind === "form"
-    ? formDevelopByFramework[framework]
-    : developByFramework[framework];
+  pane: PaneFile,
+): PaneModules | undefined {
+  const globs =
+    kind === "form"
+      ? formPanesByFramework[framework]
+      : componentPanesByFramework[framework];
+  return globs?.[pane];
 }
 
-/** Component ids from `content/<fw>/{components,forms}/<id>.md` filenames. */
+function paneLoader(
+  framework: Framework,
+  id: string,
+  kind: ComponentDocKind,
+  pane: PaneFile,
+): (() => Promise<SkillMdModule>) | undefined {
+  const modules = paneModules(framework, kind, pane);
+  if (!modules) return undefined;
+  const key = findGlobKey(modules, panePathSuffix(framework, id, kind, pane));
+  return key ? modules[key] : undefined;
+}
+
+async function loadPane(
+  loader: () => Promise<SkillMdModule>,
+): Promise<SkillMdModule> {
+  const mod = await loader();
+  return {
+    Content: mod.Content,
+    frontmatter: mod.frontmatter as ComponentDocs,
+    getHeadings: mod.getHeadings,
+  };
+}
+
+/** Component ids from `content/<fw>/{components,forms}/<id>/develop.md`. */
 export function listComponentIds(
   framework: Framework,
   kind: ComponentDocKind = "component",
 ): string[] {
-  const modules = developModules(framework, kind);
+  const modules = paneModules(framework, kind, "develop");
   if (!modules) return [];
   const ids = new Set(
     Object.keys(modules)
@@ -227,33 +333,23 @@ export async function loadSkillMd(
   if (!hasDevelopDoc(framework, id, kind)) {
     throw new Error(`Missing ${framework} develop docs for "${id}" (${kind})`);
   }
-  const modules = sharedMetadataByKind[kind];
-  const area = kind === "form" ? "forms" : "components";
-  const key = findGlobKey(modules, `/content/${area}/${id}/metadata.md`);
-  const loader = key ? modules[key] : undefined;
+  const loader = paneLoader(framework, id, kind, "metadata");
   if (!loader) {
-    throw new Error(`Missing shared metadata for "${id}" (${kind})`);
+    throw new Error(`Missing ${framework} metadata for "${id}" (${kind})`);
   }
-  const mod = await loader();
-  return {
-    Content: mod.Content,
-    frontmatter: mod.frontmatter as ComponentDocs,
-    getHeadings: mod.getHeadings,
-  };
+  return loadPane(loader);
 }
 
-/** True when `content/<fw>/{components,forms}/<id>.md` exists. */
+/** True when `content/<fw>/{components,forms}/<id>/develop.md` exists. */
 function hasDevelopDoc(
   framework: Framework,
   id: string,
   kind: ComponentDocKind = "component",
 ): boolean {
-  const modules = developModules(framework, kind);
-  if (!modules) return false;
-  return Boolean(findGlobKey(modules, developPathSuffix(framework, id, kind)));
+  return Boolean(paneLoader(framework, id, kind, "develop"));
 }
 
-/** Load develop + shared design panes. */
+/** Load develop + design panes for one framework. */
 export async function loadSkillPanes(
   framework: Framework,
   id: string,
@@ -262,34 +358,10 @@ export async function loadSkillPanes(
   if (!hasDevelopDoc(framework, id, kind)) return {};
 
   const panes: SkillPanes = {};
-  const area = kind === "form" ? "forms" : "components";
-
-  const developMods = developModules(framework, kind);
-  const developKey = developMods
-    ? findGlobKey(developMods, developPathSuffix(framework, id, kind))
-    : undefined;
-  const developLoader = developKey ? developMods?.[developKey] : undefined;
-  if (developLoader) {
-    const mod = await developLoader();
-    panes.develop = {
-      Content: mod.Content,
-      frontmatter: mod.frontmatter as ComponentDocs,
-      getHeadings: mod.getHeadings,
-    };
+  for (const pane of ["develop", "design"] as const) {
+    const loader = paneLoader(framework, id, kind, pane);
+    if (loader) panes[pane] = await loadPane(loader);
   }
-
-  const designMods = sharedDesignByKind[kind];
-  const designKey = findGlobKey(designMods, `/content/${area}/${id}/design.md`);
-  const designLoader = designKey ? designMods[designKey] : undefined;
-  if (designLoader) {
-    const mod = await designLoader();
-    panes.design = {
-      Content: mod.Content,
-      frontmatter: mod.frontmatter as ComponentDocs,
-      getHeadings: mod.getHeadings,
-    };
-  }
-
   return panes;
 }
 const DOC_TAB_LABELS: Record<SkillPaneId, string> = {

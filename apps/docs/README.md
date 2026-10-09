@@ -42,14 +42,19 @@ apps/docs/
 │   │   └── docs/           # docs UI (sidebar, preview, props table, …)
 │   ├── layouts/
 │   │   └── docs-layout.astro
-│   ├── content/            # shared metadata + design (framework-agnostic)
+│   ├── content/            # per-framework docs (components / forms)
+│   │   ├── react/{components,forms}/<id>/{metadata,design,develop}.md
+│   │   ├── solid/...
+│   │   ├── vue/...
+│   │   ├── svelte/...
+│   │   └── astro/components/...   # static subset; no forms
 │   ├── lib/                # nav, packages, props helpers
 │   ├── pages/              # routes only (required by Astro)
-│   │   ├── react/
-│   │   ├── vue/
-│   │   ├── astro/
-│   │   ├── solid/
-│   │   └── svelte/
+│   │   ├── react/{components,forms,blocks}/
+│   │   ├── vue/...
+│   │   ├── solid/...
+│   │   ├── svelte/...
+│   │   └── astro/...
 │   ├── styles/
 │   │   └── global.css
 │   └── snippets/           # optional page-local source samples
