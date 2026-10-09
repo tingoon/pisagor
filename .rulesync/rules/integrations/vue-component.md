@@ -22,16 +22,21 @@ How to build shared UI components in `packages/vue` (`@pisagor/vue`). General Vu
 
 ## Package layout
 
-Folder name, main file, and component export name align: **kebab-case folder** → **`<name>.ts`** → **PascalCase** component (e.g. `accordion/` → `accordion.ts` → `Accordion`).
+Light components live under `src/components/`. Prefer a **flat single file** `src/components/<name>.ts` (kebab-case → PascalCase export, e.g. `accordion.ts` → `Accordion`). Use a **folder** only when the component is multi-file (extra modules, shared context, or sibling parts that need their own files) — keep the same folder set as React (`app-shell`, `avatar`, `input`, `input-group`, `item`, `provider`, `surface`).
 
-**Light** components live under `src/components/<name>/` and export only from the root barrel (`@pisagor/vue`). **Heavy** modules live under `src/<name>/` with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/vue-form`.
+**Heavy** modules live under `src/<name>/` with dedicated package exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/vue-form`.
 
 ```text
-<kebab-name>/
+# Typical (single-file)
+src/components/<name>.ts          # parts + Object.assign compound at bottom
+src/components/index.ts           # root barrel: export * from "./<name>"
+
+# Multi-file (folder only when needed)
+src/components/<name>/
 ├── <name>.ts
-├── index.ts                # public shared packages — required; Storybook-local — optional
-├── <name>.context.ts       # compound shared provide/inject (when present)
-└── [optional splits]       # e.g. input-group-core.ts — large sub-modules only
+├── index.ts                      # re-export public surface
+├── <name>.context.ts             # thin non-style context (when present)
+└── [optional splits]             # e.g. input-group-core.ts
 ```
 
 Package source stays **story-free**. Stories live in the Storybook app `apps/vue` (e.g. `apps/vue/src/components/<name>.stories.ts`), not under `packages/vue`.
@@ -49,26 +54,40 @@ Package UI is **`defineComponent` + `h()` render functions** in `.ts` files — 
 
 File-level Vue rules: [Vue Style Guide](../vue.mdc).
 
+### Slot recipe context (`createSlotRecipeContext`)
+
+Internal helper at `src/internal/create-slot-recipe-context.ts` (not public `utils`). Import relatively by depth (`../internal/create-slot-recipe-context` / `../../internal/…`). **Do not** import it from `vue-form` / blocks.
+
+```ts
+const {
+  Context: FooStylesContext,
+  useStyles: useFoo,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({ name: "Foo", recipe: fooRecipe });
+```
+
+- Factory options: `{ name, recipe }` — PascalCase `name` (kebab-cased for `data-scope`). Part options: `{ name, slot?, defaultProps? }`; `slot` defaults to kebab-case of the part `name` (`Root` → `base`, emitted as `data-part="root"`). For camelCase recipe keys pass `slot` explicitly and set the kebab `data-part` via `defaultProps`.
+- `withProvider` / `withContext` wrap a host element or Ark part. Prefer a **native** tag / `ark.*` by default; use Ark primitives when `asChild` or polymorphism is required.
+- Hand-written roots that need dual providers: `h(FooStylesContext, { value: { get slots() { … }, variants } }, () => …)` (and a thin state context when needed). Mirror React dual-provider components (breadcrumb, timer, steps, bottom-navigation, listbox, tags-input, tree-view, file-upload, command, …) — do not lift every part recipe to the root.
+- Thin **non-style** state uses `createContext` from `../internal/utils/create-context` — keep it separate from the slot-recipe Context.
+- In hand-written parts call `const styles = useFoo()` in `setup` and read `styles.slots.foo()` in the **render** function (do not destructure slots in setup if reactivity is needed).
+
 ### Context file (`<name>.context.ts`)
 
-When a compound component uses package-local provide/inject (`createContext` from package `internal/utils`, relative path by depth):
+Only for **foldered** multi-file components that need shared non-style state:
 
-- Put context value types, `createContext("Foo")<FooValue>()` / `createContext("Foo")<FooValue>({ … })`, and consumer helpers in `<name>.context.ts`.
-- Export `provideX` / `useX` (and `useXContextRef` when needed) from that file; keep Root/Part `h()` trees in `<name>.ts`.
-- Provide with `provideX(computed(() => value))` (or a `MaybeRef`) — match existing `createContext` helpers; do not invent a parallel inject key.
-- Do not keep a `#region Context` in `<name>.ts` for **new** work — import from `./<name>.context` instead. Migrating inline `#region Context` blocks into `.context.ts` is preferred when touching that file.
-- Public props / part props stay in `<name>.ts`. Context value types that public props reference live in the context file and are imported with `import type`.
-- One `<name>.context.ts` per component folder even when there are multiple nested contexts (e.g. data-grid).
-- Do not move Ark `useXContext` re-exports or `XPrimitive.Context` into context files.
-- Barrel hooks (`useDialog`, `useSidebar`, …) re-export from `./<name>.context` (or from `<name>.ts` only when context is still colocated legacy).
-- In `index.ts`, put a blank line between type re-exports and context hook re-exports.
+- Put value types, `createContext("Foo")<FooValue>()`, and consumer helpers in `<name>.context.ts`.
+- Provide with `provideX(computed(() => value))` (or a `MaybeRef`) — match existing `createContext` helpers.
+- Single-file components keep `#region Context` (slot-recipe + thin state) in `<name>.ts`.
+- Do not move Ark `useXContext` / `XPrimitive.Context` into context files.
+- Barrel hooks re-export from `./<name>.context` when that file exists; otherwise from the flat `<name>.ts`.
 
 ### Public shared packages
 
 Applies to the published workspace component package (`@pisagor/vue`):
 
-- One folder per public component — layout above is required.
-- Require `index.ts` barrel (re-exported from the root `@pisagor/vue` map).
+- Flat `<name>.ts` or a multi-file folder — both re-export from the root `@pisagor/vue` barrel.
 - Do **not** add `*.stories.ts` under `packages/vue` — stories belong in `apps/vue` — [Storybook](stories.mdc).
 - Import recipes from `@pisagor/recipes` — do not add local `*.recipe.ts` shims or call `tv()`.
 
@@ -79,13 +98,13 @@ Applies to the published workspace component package (`@pisagor/vue`):
 
 ### Cross-component imports
 
-- Within a shared package's source (`.ts`), prefer **relative** imports between sibling components (e.g. `../button`, `../input-group/input-group-core`).
+- Within a shared package's source (`.ts`), prefer **relative** imports between sibling components (e.g. `./button`, `./input-group/input-group-core` for flat siblings; `../button` only from a nested folder).
 - **Stories** in `apps/vue` (`.stories.ts`) use the public export map (e.g. `import { Button } from "@pisagor/vue"`). Heavy components use dedicated subpaths (`@pisagor/vue/data-grid`, …).
 - Apps and other packages use the public export map for that package (light barrel or heavy subpath).
 - For cyclic pairs (e.g. `input` ↔ `input-group` ↔ `textarea`), import the concrete module file, not the barrel `index.ts`.
 - Import `{name}Recipe` / `{Name}VariantProps` from `@pisagor/recipes` — see [Styling](#styling). Do not define `tv()` in component packages. Do not add `<name>.recipe.ts` shims.
 - Shared visual prop contracts (`variant` / `size` / `recipe` / recipe-linked fields) come from `@pisagor/props` — see [Shared props (`@pisagor/props`)](#shared-props-pisagorprops).
-- Use relative imports (`../internal/utils` or `../../internal/utils` by depth, `../hooks` / `../../hooks`, siblings) within the package.
+- Use relative imports (`../internal/…` from flat files, `../../internal/…` from foldered files; same for `hooks`) within the package.
 - Import icons from `@phosphor-icons/vue` (e.g. `PhCaretDown`).
 - Class merging: `cn` from `@pisagor/utils`.
 
@@ -96,7 +115,7 @@ Framework-agnostic visual props live in [`@pisagor/props`](../../../packages/pro
 - Import: `import type { FooProps as BaseFooProps } from "@pisagor/props"`.
 - Public `FooProps` **extends** `BaseFooProps` (plus Ark/DOM / framework-only fields). Do not re-declare `recipe` or variant fields already on the shared type.
 - Framework packages own only framework-specific props (event names, slots, refs, `class`, `classNames`, sub-element bags).
-- Template: React [`button.tsx`](../../../packages/react/src/components/button/button.tsx) / Vue [`button.ts`](../../../packages/vue/src/components/button/button.ts).
+- Template: React [`button.tsx`](../../../packages/react/src/components/button.tsx) / Vue [`button.ts`](../../../packages/vue/src/components/button.ts).
 
 ---
 
@@ -106,8 +125,8 @@ Choose **closed**, **compound**, or **compound + shorthand** per component. Same
 
 | Model | Use when | Public API | Barrel (`index.ts`) |
 | ----- | -------- | ---------- | ------------------- |
-| **Closed** | Single props surface; no subpart composition | `Foo` | `export { Foo } from "./foo"` |
-| **Compound** | Consumer composes subparts | `Foo.Root`, `Foo.Title`, … | `Object.assign(FooRoot, { … })` |
+| **Closed** | Single props surface; no subpart composition | `Foo` | Flat file export / root barrel `export * from "./foo"` |
+| **Compound** | Consumer composes subparts | `Foo.Root`, `Foo.Title`, … | `Object.assign(FooRoot, { … })` at bottom of `<name>.ts` |
 | **Shorthand** | Repetitive composition wrapper | `FooShorthand` or root preset (`items`, `title`) | Attached via `Object.assign` on compound barrel |
 
 **Shorthand when:**
@@ -144,7 +163,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component. Same
 
 - Export a single `defineComponent` with convenience props and DOM sub-element `*Props` bags (content/behavior — not styling).
 - **Closed multi-slot:** implement private Parts + context (`slots` from `@pisagor/recipes` `{name}Recipe`); compose in `#region Closed` / shorthand region. Do not export parts or part prop types from the barrel — only `Foo` / `FooProps`.
-- Export via `export { Foo } from "./foo"` / `export type { FooProps }` (shared package barrel only).
+- Export `Foo` / `FooProps` from the flat file; root barrel re-exports with `export * from "./foo"`.
 
 **Barrel (both):**
 
@@ -169,7 +188,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component. Same
 | ------- | --- |
 | **Compound + headless** | `{Name}Root` + subparts; Ark Vue primitive; `Object.assign` barrel |
 | **Compound + shorthand** | Compound = source of truth; `FooShorthand` or root preset for common cases |
-| **Compound barrel** | `Object.assign(FooRoot, { Item, Trigger, … })` in `index.ts` |
+| **Compound barrel** | `Object.assign(FooRoot, { Item, Trigger, … })` at bottom of flat `<name>.ts` (or folder `index.ts`) |
 | **Closed + multi-slot recipe** | Single export; import multi-slot `{name}Recipe` from `@pisagor/recipes`; sub-element `classNames` bags |
 | **Closed + behavior** | Single export; convenience props; single-element or thin recipe |
 | **Closed + primitive wrapper** | Thin styled layer over one headless part |
@@ -207,12 +226,13 @@ Every `<name>.ts` file uses `#region` blocks in this order. Skip regions that do
 
 | Order | Region | When |
 | ----- | ------ | ---- |
-| 1 | `Types` | Props, variant prop types (imported from recipes), item interfaces (not context value types when those live in `.context.ts`) |
-| 2 | `Hooks` | File-local composables not exported from `index.ts` |
-| 3 | `Component` / `Parts` | Single export (`Component`) or two+ parts (`Parts`) — not shorthand/closed compose |
-| 4 | `Shorthand` / `Closed` | Preset compose — after all parts (`FooShorthand` or closed `Foo`) |
+| 1 | `Context` | `createSlotRecipeContext` + thin non-style `createContext` (or import from folder `.context.ts`) |
+| 2 | `Types` | Props, variant prop types (imported from recipes), item interfaces |
+| 3 | `Hooks` | File-local composables not exported from the public surface |
+| 4 | `Component` / `Parts` | Single export (`Component`) or two+ parts (`Parts`) — not shorthand/closed compose |
+| 5 | `Shorthand` / `Closed` | Preset compose — after all parts (`FooShorthand` or closed `Foo`) |
 
-Context factory + value types live in [`<name>.context.ts`](#context-file-namecontextts) for new work. Legacy `#region Context` (or `Context + Hooks`) may still appear until migrated — place it **after Types**, **before Parts**, when present. Do **not** add a `#region Variants` — `tv()` recipes live in `@pisagor/recipes`.
+For **foldered** multi-file components, thin non-style context may live in [`<name>.context.ts`](#context-file-namecontextts). Do **not** add a `#region Variants` — `tv()` recipes live in `@pisagor/recipes`.
 
 There is **no** `#region Display Names` — Vue uses the `name` option on each `defineComponent`.
 
@@ -232,7 +252,7 @@ There is **no** `#region Display Names` — Vue uses the `name` option on each `
 ### Do not
 
 - Do not add a `#region Variants` or call `tv()` in component packages — own recipes in `@pisagor/recipes`.
-- Do not add an `Exports` region — public API belongs in `index.ts`.
+- Do not add an `Exports` region — `Object.assign` / named exports live at the bottom of the flat file (or folder `index.ts`).
 - Do not add empty `#region` / `#endregion` pairs — skip regions that have no content.
 - Do not declare `export type` / `export interface` props outside `#region Types` — keep every part props type in Types; Parts only contain components.
 
@@ -252,7 +272,7 @@ Public props are a **dual surface**: a TypeScript `interface` (consumer types / 
 - Prefer extending `@pisagor/props` shared props for `recipe` / variant fields over declaring them locally. When a shared module does not exist yet, extend recipe `{Name}VariantProps` from `@pisagor/recipes`. Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — [TypeScript Style Guide](../typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
 - Runtime props: declare every public prop with `PropType<…>`, defaults via `default`, and `type: Boolean` / `Number` / `String` / `Object` / `Array` / `Function` as appropriate.
 - Styling entry: use **`class`** (Vue), not `className`. Type as `class?: unknown` (or `ClassValue` when already imported) so object/array class bindings work.
-- Multi-slot overrides: `classNames?: VariantClassNames<{Name}RecipeSlot>` from `../../internal/types`.
+- Multi-slot overrides: `classNames?: VariantClassNames<{Name}RecipeSlot>` from `../internal/types` (or `../../internal/types` from a folder).
 - Sub-element bags on shorthand: behavior escape-hatches only — omit ownership of render/styling (`Omit<…, "class">` / no default-slot takeover).
 
 | `Omit` usage | Valid | Invalid |
@@ -319,17 +339,18 @@ Recipes (`tv()`) are owned by **`@pisagor/recipes`**. Component packages import 
 - Shared form-control shells: `import { formControlShellRecipe, … } from "@pisagor/recipes"`.
 - Prefer recipe-exported `{Name}VariantProps` / slot types over re-deriving `VariantProps<typeof …>` when the recipe already exports them.
 - Mirror recipe `defaultVariants` in runtime `props.default`; document with TSDoc `@defaultValue`.
-- **`cn()`:** one logical concern per string; consumer `class` last.
+- **Multi-part / slot recipes:** wire through [`createSlotRecipeContext`](#slot-recipe-context-createslotrecipecontext) (`withProvider` / `withContext` / `useStyles`). The helper emits `data-scope` / `data-part` / variant `data-*` on the host — do not hand-roll a parallel provide/inject for recipe slots.
+- **`cn()`:** one logical concern per string; consumer `class` last (mainly for single-element recipes and thin shells).
 - Use **semantic tokens** (`bg-muted`, `text-muted-foreground`).
 - **Root** always accepts **`class`** — never `rootClass` / `rootClassName`.
 - **Single-element recipes** (top-level `base:`): merge with `cn(fooRecipe({ … }), props.class)` or `fooRecipe({ …, class: props.class })` — no `classNames` prop. The call returns a **string**, not `{ base() }`.
-- **Multi-slot recipes** (`slots:`): `const slots = fooRecipe()` (or `fooRecipe({ … })`); merge via `slots.part({ class: classNames?.part })`; type **`classNames`** as `VariantClassNames<{Name}RecipeSlot>` (`base` is omitted — root styling is always `class`).
+- **Multi-slot recipes** (`slots:`): prefer slot-recipe context; hand-written parts merge via `styles.slots.part({ class: classNames?.part })`; type **`classNames`** as `VariantClassNames<{Name}RecipeSlot>` (`base` is omitted — root styling is always `class`).
 - **Root slot:** `slots.base({ class: props.class })` — never `classNames?.base`.
 - **Shell + slot:** keep outer `cn` only for a separate shell recipe — `cn(shellRecipe(…), slots.part({ class: classNames?.part }))`.
 - Prefer `slots.part({ class })` over `cn(slots.part(), class)`.
 - Apply **motion & focus:** `motion-reduce:transition-none!`; `outline-hidden` + `focus-visible:ring-[3px] focus-visible:ring-ring/32`; style `disabled:`, `data-disabled:`, `aria-disabled:` consistently.
-- On **plain** styled nodes, set **`data-scope="{name}"`** and **`data-part="{part}"`** (root uses `data-part="root"`). On machine-backed parts, omit both. Never override those attributes on a primitive part.
-- Mirror variant props on root when useful (`data-variant`, `data-size`, `data-shape`).
+- On **plain** styled nodes (and slot-recipe hosts), set **`data-scope="{name}"`** and **`data-part="{part}"`** (root uses `data-part="root"`). On machine-backed Ark parts that already emit them, omit both. Never override those attributes on a primitive part.
+- Mirror variant props on root when useful (`data-variant`, `data-size`, `data-shape`) — `withProvider` does this from resolved recipe variants.
 
 ### Authoring recipes (`@pisagor/recipes`)
 

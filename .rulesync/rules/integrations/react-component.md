@@ -21,59 +21,72 @@ How to build shared UI components in `packages/react` (`@pisagor/react`). Genera
 
 ## Package layout
 
-Folder name, main file, and component export name align: **kebab-case folder** → **`<name>.tsx`** → **PascalCase** component (e.g. `accordion/` → `accordion.tsx` → `Accordion`).
+Light components live under `src/components/`. Prefer a **flat single file** `src/components/<name>.tsx` (kebab-case → PascalCase export, e.g. `accordion.tsx` → `Accordion`). Use a **folder** only when the component is multi-file (extra modules, shared context, or sibling parts that need their own files).
 
-**Light** components live under `src/components/<name>/` and export only from the root barrel (`@pisagor/react`). **Heavy** modules live under `src/<name>/` with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/react-form`.
+**Heavy** modules live under `src/<name>/` with dedicated package exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/react-form`.
 
 ```text
-<kebab-name>/
+# Typical (single-file)
+src/components/<name>.tsx          # parts + Object.assign compound at bottom
+src/components/index.ts            # root barrel: export * from "./<name>"
+
+# Multi-file (folder only when needed)
+src/components/<name>/
 ├── <name>.tsx
-├── index.ts                  # public shared packages — required; Storybook-local — optional
-├── <name>.context.tsx        # compound shared React context (when present)
-└── [optional splits]         # e.g. avatar-group.tsx — large sub-modules only
+├── index.ts                       # re-export public surface
+├── <name>.context.tsx             # thin non-style context (when present)
+└── [optional splits]
 ```
 
-Package source stays **story-free**. Stories live in the Storybook app `apps/react` (e.g. `apps/react/src/components/<name>.stories.tsx`), not under `packages/react`.
+Package source stays **story-free**. Stories live in `apps/react` (e.g. `apps/react/src/components/<name>.stories.tsx`).
+
+### Slot recipe context (`createSlotRecipeContext`)
+
+Internal helper at `src/internal/create-slot-recipe-context.tsx` (not public `utils`). Import relatively by depth (`../internal/create-slot-recipe-context` / `../../internal/…`).
+
+```ts
+const {
+  Context: FooStylesContext,
+  useStyles: useFoo,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({ name: "Foo", recipe: fooRecipe });
+```
+
+- Factory options: `{ name, recipe }` — PascalCase `name` (kebab-cased for `data-scope`). Part options: `{ name, slot?, defaultProps? }`; `slot` defaults to kebab-case of the part `name` (`Root` → `base`, emitted as `data-part="root"`). For camelCase recipe keys pass `slot` explicitly and set the kebab `data-part` via `defaultProps`.
+- `withProvider` / `withContext` wrap a host element or Ark part. Prefer a **native** tag / `ark.*` by default; use Ark primitives when `asChild` or polymorphism is required.
+- Hand-written roots that need dual providers: `<FooStylesContext value={{ slots, variants }}>` around the primitive (and a thin state context when needed).
+- Thin **non-style** state uses `createContext` from package `utils` (or raw React `createContext`) — keep it separate from the slot-recipe Context.
 
 ### Context file (`<name>.context.tsx`)
 
-When a compound component uses package-local React context (`createContext` from package `utils`, relative path by depth):
+Only for **foldered** multi-file components that need shared non-style state:
 
-- Put context value types, `createContext("Foo")<FooValue>()` / `createContext("Foo")<FooValue>({ … })`, and consumer hooks in `<name>.context.tsx`.
-- Export the Context and `useX` hook from that file; keep Root/Part JSX in `<name>.tsx`.
-- Provide values with `<FooContext value={…}>` — not `<FooContext.Provider>` ([React Style Guide → Legacy patterns](../react.mdc)).
-- Do not keep a `#region Context` in `<name>.tsx` — import from `./<name>.context` instead.
-- Public props / part props stay in `<name>.tsx`. Context value types that public props reference (`Pick<FooContextValue, …>`) live in the context file and are imported with `import type`.
-- One `<name>.context.tsx` per component folder even when there are multiple nested contexts (e.g. data-grid).
-- Do not move Ark/Zag `useXContext` re-exports or `XPrimitive.Context` into context files.
-- Barrel hooks (`useTourContext`, `useSidebar`, …) re-export from `./<name>.context`, not from `<name>.tsx`.
-- In `index.ts`, put a blank line between type re-exports and context hook re-exports.
-
-File-level React rules: [React Style Guide](../react.mdc).
+- Put value types, `createContext("Foo")<FooValue>()`, and consumer hooks in `<name>.context.tsx`.
+- Provide with `<FooContext value={…}>` — not `<FooContext.Provider>` ([React Style Guide → Legacy patterns](../react.mdc)).
+- Single-file components keep `#region Context` (slot-recipe + thin state) in `<name>.tsx`.
+- Do not move Ark/Zag `useXContext` / `XPrimitive.Context` into context files.
+- Barrel hooks re-export from `./<name>.context` when that file exists.
 
 ### Public shared packages
 
-Applies to the published workspace component package (`@pisagor/react`):
-
-- One folder per public component — layout above is required.
-- Require `index.ts` barrel (re-exported from the root `@pisagor/react` map).
-- Do **not** add `*.stories.tsx` under `packages/react` — stories belong in `apps/react` — [Storybook](stories.mdc).
+- Flat `<name>.tsx` or a multi-file folder — both re-export from the root `@pisagor/react` barrel.
+- Do **not** add `*.stories.tsx` under `packages/react` — [Storybook](stories.mdc).
 
 ### Storybook app (`apps/react`)
 
 - Component and form stories live in `apps/react` (Storybook host), not in the package.
-- Docs UI / local helpers in `apps/react` may use a dedicated folder or a single file; `.stories.tsx` and `index.ts` are optional for non-catalog helpers.
+- Docs UI / local helpers may use a dedicated folder or a single file; `.stories.tsx` and `index.ts` are optional for non-catalog helpers.
 
 ### Cross-component imports
 
-- Within a shared package's source (`.tsx` / `.ts`), prefer **relative** imports between sibling components (e.g. `../button`, `../input-group/input-group-core`).
-- **Stories** in `apps/react` (`.stories.tsx`) use the public export map (e.g. `import { Button } from "@pisagor/react"`). Heavy components use dedicated subpaths (`@pisagor/react/data-grid`, `@pisagor/react/data-table`, …).
-- Apps and other packages use the public export map for that package (light barrel or heavy subpath).
-- For cyclic pairs (e.g. `input` ↔ `input-group` ↔ `textarea`), import the concrete module file, not the barrel `index.ts`.
-- Import `{name}Recipe` / `{Name}VariantProps` from `@pisagor/recipes` — see [Styling](#styling). Do not define `tv()` in component packages. Do not add `<name>.recipe.ts` shims.
-- Shared visual prop contracts (`variant` / `size` / `recipe` / recipe-linked fields) come from `@pisagor/props` — see [Shared props (`@pisagor/props`)](#shared-props-pisagorprops).
-- Use relative imports (`../../utils` or `../utils` by depth, `../../hooks` / `../hooks`, siblings) within the package.
-- Import icons from `@phosphor-icons/react` (e.g. `CaretDownIcon`).
+- Within package source, prefer **relative** imports between siblings (e.g. `../button`, `../input-group/input-group-core`).
+- **Stories** use the public export map (`@pisagor/react`, heavy subpaths).
+- For cyclic pairs, import the concrete module file, not the barrel `index.ts`.
+- Import `{name}Recipe` / `{Name}VariantProps` from `@pisagor/recipes` — see [Styling](#styling). Do not call `tv()` or add `<name>.recipe.ts` shims.
+- Shared visual props from `@pisagor/props` — see [Shared props](#shared-props-pisagorprops).
+- Relative imports by depth: `../utils` / `../../utils`, `../internal/…` / `../../internal/…`, `../hooks`, siblings.
+- Icons from `@phosphor-icons/react`.
 
 ### Shared props (`@pisagor/props`)
 
@@ -82,7 +95,7 @@ Framework-agnostic visual props live in [`@pisagor/props`](../../../packages/pro
 - Import: `import type { FooProps as BaseFooProps } from "@pisagor/props"`.
 - Public `FooProps` **extends** `BaseFooProps` (plus Ark/DOM / framework-only fields). Do not re-declare `recipe` or variant fields already on the shared type.
 - Framework packages own only framework-specific props (event names, slots, refs, `className`, `classNames`, sub-element bags).
-- Template: [`button.tsx`](../../../packages/react/src/components/button/button.tsx).
+- Template: [`button.tsx`](../../../packages/react/src/components/button.tsx).
 
 ---
 
@@ -110,7 +123,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component.
 
 - Name internally `{Name}Root`, `{Name}Item`, …; set `displayName`: root `"Foo.Root"` when a dedicated shorthand export exists, otherwise `"Foo"`; subparts `"Foo.Part"`. Put **every** `displayName` assignment in a single `#region Display Names` at the **end of the file** (after Parts / Shorthand / Closed) — one contiguous list so names can be reviewed together. Do not set `displayName` under each function or at the end of Parts / Shorthand / Closed. Closed single-export files skip Display Names — see [Closed](#do).
 - Implement compound parts first; shorthand composes them — never the reverse.
-- Export via `Object.assign(FooShorthand, { Root, Item, Trigger, … })` when shorthand exists; otherwise `Object.assign(FooRoot, { … })`.
+- Export via `Object.assign(FooShorthand, { Root, Item, Trigger, … })` when shorthand exists; otherwise `Object.assign(FooRoot, { … })` — at the **bottom of `<name>.tsx`** (flat) or in the folder `index.ts`.
 - Public surface is `Foo.Root` / `Foo.Part` only. Flat `FooPart` barrel re-exports are forbidden; do not ship a dual compound + flat surface.
 - Detached presets (flat `FooField`) must attach on the namespace as `Foo.Field` (via `Object.assign` on the compound / shorthand object). No parallel flat compat export.
 - Utils and hooks may remain named exports outside the namespace. Do not re-export `{name}Recipe` from the component barrel — consumers import recipes from `@pisagor/recipes`.
@@ -200,13 +213,14 @@ Every `<name>.tsx` file uses `#region` blocks in this order. Skip regions that d
 
 | Order | Region | When |
 | ----- | ------ | ---- |
-| 1 | `Types` | Props, variant prop types (imported from recipes), item interfaces (not context value types) |
-| 2 | `Hooks` | File-local hooks not exported from `index.ts` |
-| 3 | `Component` / `Parts` | Single export (`Component`) or two+ parts (`Parts`) — not shorthand/closed compose |
-| 4 | `Shorthand` / `Closed` | Preset compose — after all parts (`FooShorthand` or closed `Foo`) |
-| 5 | `Display Names` | All `displayName` assignments — last when needed (compounds / shorthand / labeled parts). Skip for a single closed `Foo`. |
+| 1 | `Context` | `createSlotRecipeContext` + thin in-file state (single-file components) |
+| 2 | `Types` | Props, variant prop types (imported from recipes), item interfaces (not context value types) |
+| 3 | `Hooks` | File-local hooks not exported from the root barrel |
+| 4 | `Component` / `Parts` | Single export (`Component`) or two+ parts (`Parts`) — not shorthand/closed compose |
+| 5 | `Shorthand` / `Closed` | Preset compose — after all parts (`FooShorthand` or closed `Foo`) |
+| 6 | `Display Names` | All `displayName` assignments — last when needed (compounds / shorthand / labeled parts). Skip for a single closed `Foo`. |
 
-Context factory + value types live in [`<name>.context.tsx`](#context-file-namecontexttsx) — not a region in `<name>.tsx`. Do **not** add a `#region Variants` — `tv()` recipes live in `@pisagor/recipes`, not in component files.
+Slot-recipe setup lives in `#region Context` in `<name>.tsx` (or `<name>.context.tsx` for foldered thin state — see [Context file](#context-file-namecontexttsx)). Do **not** add a `#region Variants` — `tv()` recipes live in `@pisagor/recipes`.
 
 ### Do
 
@@ -226,7 +240,7 @@ Context factory + value types live in [`<name>.context.tsx`](#context-file-namec
 - Do not add a `#region Variants` or call `tv()` in component packages — own recipes in `@pisagor/recipes`.
 - Do not add an `Exports` region — public API belongs in `index.ts`.
 - Do not add empty `#region` / `#endregion` pairs — skip regions that have no content.
-- Do not keep a `#region Context` in `<name>.tsx` — use `<name>.context.tsx` instead.
+- Do not move slot-recipe `createSlotRecipeContext` into a public `utils` export — keep it under `src/internal/`.
 - Do not declare `export type` / `export interface` props outside `#region Types` — keep every part props type in Types; Parts only contain component functions.
 
 **Note:** Types region order is file-level type declaration order — not the same as [react.mdc → Props order](../react.mdc) field groups.

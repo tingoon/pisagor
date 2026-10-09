@@ -19,4 +19,4 @@ Local sources in this package:
 
 - `examples/<id>/` — runnable examples
 
-Develop notes: `apps/docs/src/content/svelte/forms/<id>.md`.
+Develop notes: `apps/docs/src/content/svelte/forms/<id>/{metadata,design,develop}.md`.

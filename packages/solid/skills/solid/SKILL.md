@@ -19,4 +19,4 @@ Local sources in this package:
 
 - `examples/<id>/` — runnable examples
 
-Develop notes: `apps/docs/src/content/solid/components/<id>.md`.
+Docs: `apps/docs/src/content/solid/components/<id>/{metadata,design,develop}.md`.

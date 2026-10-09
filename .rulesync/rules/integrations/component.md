@@ -16,7 +16,7 @@ cursor:
 
 Framework-agnostic product naming and catalog policy for Pisagor component packages.
 
-**Sibling frameworks:** `react`, `vue`, `solid`, `svelte`, and `astro` (Astro is a static subset). Full interactive sets: `@pisagor/react`, `@pisagor/vue`, `@pisagor/solid`, `@pisagor/svelte` (forms: `@pisagor/{framework}-form`). Implementation patterns: [React Component Patterns](react-component.mdc), [Vue Component Patterns](vue-component.mdc), [Solid Component Patterns](solid-component.mdc), [Svelte Component Patterns](svelte-component.mdc). Storybook hosts: `apps/react`, `apps/vue`, `apps/astro` — package source stays story-free. `apps/solid` / `apps/svelte` are story hosts (`solid-stories` / `svelte-stories`), not Storybook.
+**Sibling frameworks:** `react`, `vue`, `solid`, `svelte`, and `astro` (Astro is a static subset). Full interactive sets: `@pisagor/react`, `@pisagor/vue`, `@pisagor/solid`, `@pisagor/svelte` (forms: `@pisagor/{framework}-form`). Implementation patterns: [React Component Patterns](react-component.mdc), [Vue Component Patterns](vue-component.mdc), [Solid Component Patterns](solid-component.mdc), [Svelte Component Patterns](svelte-component.mdc), [Astro Component Patterns](astro-component.mdc). Storybook hosts: `apps/react`, `apps/vue`, `apps/astro` — package source stays story-free. `apps/solid` / `apps/svelte` are story hosts (`solid-stories` / `svelte-stories`), not Storybook.
 
 Import paths below use `@pisagor/{pkg}` for light components — substitute `react`, `vue`, `solid`, `svelte`, or `astro` as appropriate. Heavy modules stay on dedicated subpaths (`data-grid`, `data-table`, `phone-input`, `rich-text-editor`).
 
@@ -54,7 +54,7 @@ Import paths below use `@pisagor/{pkg}` for light components — substitute `rea
 
 ### New component checklist
 
-1. kebab-case folder and export path (`dropdown-menu`)
+1. kebab-case file or folder and export path (`dropdown-menu.tsx` / `dropdown-menu/`)
 2. PascalCase component export (`DropdownMenu`)
 3. When the framework has a Storybook app (`apps/react`, `apps/vue`, `apps/astro`), add story meta there (`title`, `parameters.metadata`, docs description) — [Storybook → Meta](stories.mdc). Do not colocate `*.stories.*` inside component packages.
 
