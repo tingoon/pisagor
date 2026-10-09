@@ -1,18 +1,12 @@
 ---
-import { timelineItemRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import { withContext } from "./timeline.context";
 
 type Props = HTMLAttributes<"div">;
 
-const { class: className, ...rest } = Astro.props;
-const slots = timelineItemRecipe();
+const title = withContext(Astro.props, { name: "Title", slot: "title" });
 ---
 
-<div
-  {...rest}
-  class={slots.title({ className })}
-  data-part="title"
-  data-scope="timeline"
->
+<div {...title.props}>
   <slot />
 </div>

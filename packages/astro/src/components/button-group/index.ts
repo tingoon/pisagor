@@ -1,4 +1,4 @@
-import ButtonGroupRoot from "./button-group.astro";
+import ButtonGroupRoot from "./button-group-root.astro";
 import ButtonGroupSeparator from "./button-group-separator.astro";
 import ButtonGroupText from "./button-group-text.astro";
 

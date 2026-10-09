@@ -5,12 +5,17 @@ import type { HTMLAttributes } from "astro/types";
 
 type Props = HTMLAttributes<"div"> & BaseStatTrendProps;
 
-const { trend = "neutral", class: className, ...rest } = Astro.props;
+const {
+  trend = "neutral",
+  recipe = statTrendRecipe,
+  class: className,
+  ...rest
+} = Astro.props;
 ---
 
 <div
   {...rest}
-  class={statTrendRecipe({ className, trend })}
+  class={recipe({ className, trend })}
   data-part="trend"
   data-scope="stat"
   data-trend={trend}

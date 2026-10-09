@@ -1,0 +1,37 @@
+---
+import {
+  type FormControlGroupShellVariantProps,
+  formControlGroupShellRecipe,
+  inputGroupRootRecipe,
+} from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"div"> & FormControlGroupShellVariantProps;
+
+const {
+  size = "md",
+  surfaceVariant,
+  variant = "primary",
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+{/* biome-ignore lint/a11y/useSemanticElements: mirrors the React InputGroup DOM (div role="group") */}
+<div
+  {...rest}
+  class={formControlGroupShellRecipe({
+    className: cn(inputGroupRootRecipe(), className),
+    size,
+    surfaceVariant,
+    variant,
+  })}
+  data-part="root"
+  data-scope="input-group"
+  data-size={size}
+  data-variant={variant}
+  role="group"
+>
+  <slot />
+</div>

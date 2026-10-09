@@ -1,18 +1,12 @@
 ---
-import { tableRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import { withContext } from "./table.context";
 
 type Props = HTMLAttributes<"thead">;
 
-const { class: className, ...rest } = Astro.props;
-const slots = tableRecipe();
+const header = withContext(Astro.props, { name: "Header" });
 ---
 
-<thead
-  {...rest}
-  class={slots.header({ className })}
-  data-part="header"
-  data-scope="table"
->
+<thead {...header.props}>
   <slot />
 </thead>

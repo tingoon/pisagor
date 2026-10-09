@@ -1,18 +1,12 @@
 ---
-import { emptyStateRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import { withContext } from "./empty-state.context";
 
 type Props = HTMLAttributes<"div">;
 
-const { class: className, ...rest } = Astro.props;
-const slots = emptyStateRecipe();
+const media = withContext(Astro.props, { name: "Media", slot: "media" });
 ---
 
-<div
-  {...rest}
-  class={slots.media({ className })}
-  data-part="media"
-  data-scope="empty-state"
->
+<div {...media.props}>
   <slot />
 </div>

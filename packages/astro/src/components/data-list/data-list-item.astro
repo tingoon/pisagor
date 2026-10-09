@@ -1,36 +1,48 @@
 ---
-import { dataListItemRecipe } from "@pisagor/recipes";
+import type { DataListItemProps as BaseDataListItemProps } from "@pisagor/props";
+import type { DataListItemRecipeSlot } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import type { VariantClassNames } from "../../internal/types";
+import { withContext, withProvider } from "./data-list.context";
 
-interface Props extends HTMLAttributes<"div"> {
+interface Props extends HTMLAttributes<"div">, BaseDataListItemProps {
   /** Value rendered as `dd`. */
   value?: string;
+  /** Slot class names */
+  classNames?: VariantClassNames<DataListItemRecipeSlot>;
 }
 
-const { value, class: className, ...rest } = Astro.props;
-const slots = dataListItemRecipe();
+const { value, classNames, ...rest } = Astro.props;
+const item = withProvider(rest, {
+  defaultProps: { "data-part": "item" },
+  name: "Item",
+  slot: "base",
+});
+const label = withContext(
+  { class: classNames?.label },
+  {
+    defaultProps: { "data-part": "item-label" },
+    name: "ItemLabel",
+    slot: "label",
+  },
+);
+const valuePart = withContext(
+  { class: classNames?.value },
+  {
+    defaultProps: { "data-part": "item-value" },
+    name: "ItemValue",
+    slot: "value",
+  },
+);
 const hasLabel = Astro.slots.has("default");
+const hasValue = value !== undefined || Astro.slots.has("value");
 ---
 
-<div
-  {...rest}
-  class={slots.base({ className })}
-  data-part="item"
-  data-scope="data-list"
->
+<div {...item.props}>
   {hasLabel && (
-    <dt class={slots.label()} data-part="item-label" data-scope="data-list">
+    <dt {...label.props}>
       <slot />
     </dt>
   )}
-  {value !== undefined && (
-    <dd class={slots.value()} data-part="item-value" data-scope="data-list">
-      {value}
-    </dd>
-  )}
-  {Astro.slots.has("value") && (
-    <dd class={slots.value()} data-part="item-value" data-scope="data-list">
-      <slot name="value" />
-    </dd>
-  )}
+  {hasValue && <dd {...valuePart.props}>{value ?? <slot name="value" />}</dd>}
 </div>

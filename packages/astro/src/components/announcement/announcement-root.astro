@@ -1,8 +1,11 @@
 ---
-import { announcementRecipe } from "@pisagor/recipes";
+import type { AnnouncementProps as BaseAnnouncementProps } from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
+import { withProvider } from "./announcement.context";
 
-interface Props extends Omit<HTMLAttributes<"div">, "title"> {
+interface Props
+  extends Omit<HTMLAttributes<"div">, "title">,
+    BaseAnnouncementProps {
   /**
    * The ARIA role of the announcement.
    *
@@ -11,16 +14,13 @@ interface Props extends Omit<HTMLAttributes<"div">, "title"> {
   role?: "status" | "alert";
 }
 
-const { role = "status", class: className, ...rest } = Astro.props;
-const slots = announcementRecipe();
+const root = withProvider(Astro.props, {
+  defaultProps: { role: "status" },
+  name: "Root",
+  slot: "base",
+});
 ---
 
-<div
-  {...rest}
-  class={slots.base({ className })}
-  data-part="root"
-  data-scope="announcement"
-  role={role}
->
+<div {...root.props}>
   <slot />
 </div>

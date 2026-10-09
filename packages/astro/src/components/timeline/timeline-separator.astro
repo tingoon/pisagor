@@ -1,17 +1,14 @@
 ---
-import { timelineItemRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import { withContext } from "./timeline.context";
 
 type Props = HTMLAttributes<"div">;
 
-const { class: className, ...rest } = Astro.props;
-const slots = timelineItemRecipe();
+const separator = withContext(Astro.props, {
+  defaultProps: { "aria-hidden": "true" },
+  name: "Separator",
+  slot: "separator",
+});
 ---
 
-<div
-  {...rest}
-  aria-hidden="true"
-  class={slots.separator({ className })}
-  data-part="separator"
-  data-scope="timeline"
-></div>
+<div {...separator.props}></div>

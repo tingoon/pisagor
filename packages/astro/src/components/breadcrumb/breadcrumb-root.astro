@@ -1,7 +1,8 @@
 ---
+import type { BreadcrumbProps as BaseBreadcrumbProps } from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<"nav"> {
+interface Props extends HTMLAttributes<"nav">, BaseBreadcrumbProps {
   /**
    * Accessible label for the breadcrumb navigation landmark.
    *
@@ -10,7 +11,11 @@ interface Props extends HTMLAttributes<"nav"> {
   "aria-label"?: string;
 }
 
-const { "aria-label": ariaLabel = "Breadcrumb", ...rest } = Astro.props;
+const {
+  "aria-label": ariaLabel = "Breadcrumb",
+  recipe: _recipe,
+  ...rest
+} = Astro.props;
 ---
 
 <nav {...rest} aria-label={ariaLabel} data-part="root" data-scope="breadcrumb">

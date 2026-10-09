@@ -1,18 +1,16 @@
 ---
-import { frameRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import { withContext } from "./frame.context";
 
 type Props = HTMLAttributes<"div">;
 
-const { class: className, ...rest } = Astro.props;
-const slots = frameRecipe();
+const description = withContext(Astro.props, {
+  defaultProps: { "data-part": "panel-description" },
+  name: "Description",
+  slot: "panelDescription",
+});
 ---
 
-<div
-  {...rest}
-  class={slots.panelDescription({ className })}
-  data-part="panel-description"
-  data-scope="frame"
->
+<div {...description.props}>
   <slot />
 </div>

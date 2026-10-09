@@ -1,0 +1,19 @@
+---
+import type { SkeletonProps as BaseSkeletonProps } from "@pisagor/props";
+import { skeletonRecipe } from "@pisagor/recipes";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"div"> & BaseSkeletonProps;
+
+const { recipe = skeletonRecipe, class: className, ...rest } = Astro.props;
+const slots = recipe();
+---
+
+<div
+  {...rest}
+  class={slots.base({ className })}
+  data-part="root"
+  data-scope="skeleton"
+>
+  <slot />
+</div>

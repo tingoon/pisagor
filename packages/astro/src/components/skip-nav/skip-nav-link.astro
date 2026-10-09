@@ -1,8 +1,9 @@
 ---
+import type { SkipNavProps as BaseSkipNavProps } from "@pisagor/props";
 import { skipNavRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<"a"> {
+interface Props extends HTMLAttributes<"a">, BaseSkipNavProps {
   /**
    * The id of the element to skip to.
    *
@@ -12,8 +13,13 @@ interface Props extends HTMLAttributes<"a"> {
 }
 
 const SKIP_NAV_ID = "skip-nav-content";
-const { id = SKIP_NAV_ID, class: className, ...rest } = Astro.props;
-const slots = skipNavRecipe();
+const {
+  id = SKIP_NAV_ID,
+  recipe = skipNavRecipe,
+  class: className,
+  ...rest
+} = Astro.props;
+const slots = recipe();
 ---
 
 <a

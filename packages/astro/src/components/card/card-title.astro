@@ -1,18 +1,12 @@
 ---
-import { cardRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import { withContext } from "./card.context";
 
 type Props = HTMLAttributes<"div">;
 
-const { class: className, ...rest } = Astro.props;
-const slots = cardRecipe();
+const title = withContext(Astro.props, { name: "Title", slot: "title" });
 ---
 
-<div
-  {...rest}
-  class={slots.title({ className })}
-  data-part="title"
-  data-scope="card"
->
+<div {...title.props}>
   <slot />
 </div>

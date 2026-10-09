@@ -1,19 +1,14 @@
 ---
-import { breadcrumbItemRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import { withBreadcrumbItemContext } from "./breadcrumb.context";
 
 type Props = HTMLAttributes<"a">;
 
-const { class: className, href, ...rest } = Astro.props;
-const slots = breadcrumbItemRecipe();
+const link = withBreadcrumbItemContext(Astro.props, { name: "Link" });
 ---
 
-<a
-  {...rest}
-  class={slots.link({ className })}
-  data-part="link"
-  data-scope="breadcrumb"
-  href={href}
->
-  <slot>Page</slot>
+{/* biome-ignore lint/a11y/useAnchorContent: content is the default slot */}
+{/* biome-ignore lint/a11y/useValidAnchor: href is forwarded from props */}
+<a {...link.props}>
+  <slot />
 </a>

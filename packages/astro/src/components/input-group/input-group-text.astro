@@ -1,15 +1,20 @@
 ---
+import type { InputGroupTextProps as BaseInputGroupTextProps } from "@pisagor/props";
 import { inputGroupTextRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"span">;
+type Props = HTMLAttributes<"span"> & BaseInputGroupTextProps;
 
-const { class: className, ...rest } = Astro.props;
+const {
+  recipe = inputGroupTextRecipe,
+  class: className,
+  ...rest
+} = Astro.props;
 ---
 
 <span
   {...rest}
-  class={inputGroupTextRecipe({ className })}
+  class={recipe({ className })}
   data-part="text"
   data-scope="input-group"
 >

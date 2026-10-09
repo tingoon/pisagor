@@ -1,18 +1,16 @@
 ---
-import { breadcrumbItemRecipe } from "@pisagor/recipes";
+import type { BreadcrumbItemProps as BaseBreadcrumbItemProps } from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
+import { withBreadcrumbItemProvider } from "./breadcrumb.context";
 
-type Props = HTMLAttributes<"li">;
+type Props = HTMLAttributes<"li"> & BaseBreadcrumbItemProps;
 
-const { class: className, ...rest } = Astro.props;
-const slots = breadcrumbItemRecipe();
+const item = withBreadcrumbItemProvider(Astro.props, {
+  name: "Item",
+  slot: "base",
+});
 ---
 
-<li
-  {...rest}
-  class={slots.base({ className })}
-  data-part="item"
-  data-scope="breadcrumb"
->
+<li {...item.props}>
   <slot />
 </li>

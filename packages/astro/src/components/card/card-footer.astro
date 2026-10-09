@@ -1,18 +1,12 @@
 ---
-import { cardRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import { withContext } from "./card.context";
 
 type Props = HTMLAttributes<"div">;
 
-const { class: className, ...rest } = Astro.props;
-const slots = cardRecipe();
+const footer = withContext(Astro.props, { name: "Footer", slot: "footer" });
 ---
 
-<div
-  {...rest}
-  class={slots.footer({ className })}
-  data-part="footer"
-  data-scope="card"
->
+<div {...footer.props}>
   <slot />
 </div>

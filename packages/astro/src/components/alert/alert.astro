@@ -1,6 +1,8 @@
 ---
 import type { AlertProps as BaseAlertProps } from "@pisagor/props";
+import type { AlertRecipeSlot } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import type { VariantClassNames } from "../../internal/types";
 import AlertAction from "./alert-action.astro";
 import AlertDescription from "./alert-description.astro";
 import AlertRoot from "./alert-root.astro";
@@ -11,9 +13,11 @@ interface Props extends Omit<HTMLAttributes<"div">, "title">, BaseAlertProps {
   title?: string;
   /** Description content. */
   description?: string;
+  /** Slot class names */
+  classNames?: VariantClassNames<AlertRecipeSlot>;
 }
 
-const { variant = "default", title, description, ...rest } = Astro.props;
+const { title, description, classNames, ...rest } = Astro.props;
 const hasIcon = Astro.slots.has("icon");
 const hasAction = Astro.slots.has("action");
 const hasTitle = Astro.slots.has("title") || title !== undefined;
@@ -21,16 +25,20 @@ const hasDescription =
   Astro.slots.has("description") || description !== undefined;
 ---
 
-<AlertRoot {...rest} variant={variant}>
+<AlertRoot {...rest}>
   {hasIcon && <slot name="icon" />}
-  {hasTitle && <AlertTitle>{title ?? <slot name="title" />}</AlertTitle>}
+  {hasTitle && (
+    <AlertTitle class={classNames?.title}>
+      {title ?? <slot name="title" />}
+    </AlertTitle>
+  )}
   {hasDescription && (
-    <AlertDescription>
+    <AlertDescription class={classNames?.description}>
       {description ?? <slot name="description" />}
     </AlertDescription>
   )}
   {hasAction && (
-    <AlertAction>
+    <AlertAction class={classNames?.action}>
       <slot name="action" />
     </AlertAction>
   )}

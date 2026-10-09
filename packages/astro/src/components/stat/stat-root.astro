@@ -1,20 +1,13 @@
 ---
 import type { StatProps as BaseStatProps } from "@pisagor/props";
-import { statRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import { withProvider } from "./stat.context";
 
 type Props = HTMLAttributes<"div"> & BaseStatProps;
 
-const { variant = "outline", class: className, ...rest } = Astro.props;
-const slots = statRecipe();
+const root = withProvider(Astro.props, { name: "Root", slot: "base" });
 ---
 
-<div
-  {...rest}
-  class={slots.base({ className, variant })}
-  data-part="root"
-  data-scope="stat"
-  data-variant={variant}
->
+<div {...root.props}>
   <slot />
 </div>

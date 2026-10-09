@@ -1,19 +1,14 @@
 ---
-import { linkBoxRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import { withContext } from "./link-box.context";
 
 type Props = HTMLAttributes<"a">;
 
-const { class: className, href, ...rest } = Astro.props;
-const slots = linkBoxRecipe();
+const overlay = withContext(Astro.props, { name: "Overlay", slot: "overlay" });
 ---
 
-<a
-  {...rest}
-  class={slots.overlay({ className })}
-  data-part="overlay"
-  data-scope="link-box"
-  href={href}
->
-  <slot>Open</slot>
+{/* biome-ignore lint/a11y/useAnchorContent: content is the default slot */}
+{/* biome-ignore lint/a11y/useValidAnchor: href is forwarded from props */}
+<a {...overlay.props}>
+  <slot />
 </a>

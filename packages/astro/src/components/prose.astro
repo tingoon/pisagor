@@ -1,0 +1,33 @@
+---
+import type { ProseProps as BaseProseProps } from "@pisagor/props";
+import { proseRecipe } from "@pisagor/recipes";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div">, BaseProseProps {
+  /**
+   * Trusted HTML content. When set, the default slot is ignored.
+   */
+  html?: string;
+}
+
+const { html, recipe = proseRecipe, class: className, ...rest } = Astro.props;
+---
+
+{html ? (
+  <div
+    {...rest}
+    class={recipe({ className })}
+    data-part="root"
+    data-scope="prose"
+    set:html={html}
+  />
+) : (
+  <div
+    {...rest}
+    class={recipe({ className })}
+    data-part="root"
+    data-scope="prose"
+  >
+    <slot />
+  </div>
+)}

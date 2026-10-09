@@ -1,18 +1,12 @@
 ---
-import { buttonGroupRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import { withContext } from "./button-group.context";
 
 type Props = HTMLAttributes<"div">;
 
-const { class: className, ...rest } = Astro.props;
-const slots = buttonGroupRecipe();
+const text = withContext(Astro.props, { name: "Text", slot: "text" });
 ---
 
-<div
-  {...rest}
-  class={slots.text({ className })}
-  data-part="text"
-  data-scope="button-group"
->
+<div {...text.props}>
   <slot />
 </div>

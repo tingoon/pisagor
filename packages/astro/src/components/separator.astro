@@ -1,0 +1,32 @@
+---
+import type { SeparatorProps as BaseSeparatorProps } from "@pisagor/props";
+import { separatorRecipe } from "@pisagor/recipes";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div">, BaseSeparatorProps {
+  /**
+   * The orientation of the separator.
+   *
+   * @defaultValue "horizontal"
+   */
+  orientation?: "horizontal" | "vertical";
+}
+
+const {
+  orientation = "horizontal",
+  recipe = separatorRecipe,
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+{/* biome-ignore lint/a11y/useSemanticElements: mirrors the React/Ark Separator DOM (div role="separator") */}
+<div
+  {...rest}
+  aria-orientation={orientation}
+  class={recipe({ className })}
+  data-orientation={orientation}
+  data-part="root"
+  data-scope="separator"
+  role="separator"
+></div>
