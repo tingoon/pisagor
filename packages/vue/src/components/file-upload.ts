@@ -205,7 +205,7 @@ export const FileUploadDropzoneIcon = defineComponent({
           "data-part": "dropzone-icon",
           "data-scope": "file-upload",
         },
-        () => slots.default?.() ?? h(PhUpload),
+        slots.default?.() ?? h(PhUpload),
       );
     };
   },

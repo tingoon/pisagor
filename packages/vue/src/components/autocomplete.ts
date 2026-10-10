@@ -1,7 +1,7 @@
 import type { CollectionItem, ListCollection } from "@ark-ui/vue/collection";
 import { createListCollection } from "@ark-ui/vue/collection";
 import { defineComponent, h, type PropType } from "vue";
-import type { ComboboxRootProps } from "./combobox";
+import type { ComboboxInputProps, ComboboxRootProps } from "./combobox";
 import { Combobox } from "./combobox";
 import { Separator } from "./separator";
 
@@ -57,7 +57,7 @@ export const AutocompleteControl = defineComponent({
   name: "AutocompleteControl",
   setup(_, { attrs, slots }) {
     return () =>
-      h(Combobox.Control as ArkPart, { ...attrs }, slots.default?.());
+      h(Combobox.Control as ArkPart, { ...attrs }, () => slots.default?.());
   },
 });
 
@@ -108,7 +108,7 @@ export const AutocompleteSeparator = defineComponent({
           dataPart: "separator",
           dataScope: "autocomplete",
         },
-        slots.default?.(),
+        () => slots.default?.(),
       );
   },
 });
@@ -123,6 +123,10 @@ export const AutocompleteShorthand = defineComponent({
       type: Array as PropType<
         Array<AutocompletePresetItem | string> | undefined
       >,
+    },
+    size: {
+      default: undefined,
+      type: String as PropType<ComboboxInputProps["size"]>,
     },
     variant: {
       default: undefined,
@@ -143,6 +147,7 @@ export const AutocompleteShorthand = defineComponent({
         {
           ...attrs,
           collection,
+          size: props.size,
           variant: props.variant,
         },
         () => [

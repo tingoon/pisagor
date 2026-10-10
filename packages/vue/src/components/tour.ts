@@ -137,6 +137,10 @@ export const TourRoot = defineComponent({
     );
 
     watchEffect((onCleanup) => {
+      // SSR: watchEffect runs once on the server where `document` is absent.
+      if (typeof document === "undefined") {
+        return;
+      }
       document.body.classList.toggle("relative", isStarted.value);
       onCleanup(() => document.body.classList.remove("relative"));
     });

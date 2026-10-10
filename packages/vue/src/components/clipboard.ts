@@ -131,6 +131,10 @@ export const Clipboard = defineComponent({
       default: undefined,
       type: Function as PropType<ClipboardProps["onValueChange"]>,
     },
+    recipe: {
+      default: clipboardRecipe,
+      type: Function as PropType<typeof clipboardRecipe>,
+    },
     timeout: { default: undefined, type: Number },
     translations: {
       default: undefined,
@@ -160,7 +164,7 @@ export const Clipboard = defineComponent({
         size: "md",
         ...shellArgs,
       });
-      const slots_ = clipboardRecipe({ valueSize: props.valueSize });
+      const slots_ = props.recipe({ valueSize: props.valueSize });
 
       const copiedIcon = props.copiedIcon ?? h(PhCheck);
       const copyIcon = props.copyIcon ?? h(PhClipboard);

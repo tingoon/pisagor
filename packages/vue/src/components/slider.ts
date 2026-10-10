@@ -62,6 +62,10 @@ export const Slider = defineComponent({
       default: undefined,
       type: Function as PropType<SliderProps["onValueChange"]>,
     },
+    recipe: {
+      default: sliderRecipe,
+      type: Function as PropType<typeof sliderRecipe>,
+    },
     showMarkers: { default: false, type: Boolean },
     showValue: { default: false, type: Boolean },
     step: { default: undefined, type: Number },
@@ -85,7 +89,7 @@ export const Slider = defineComponent({
       };
       const trackShellProps = { "data-variant": resolved.variant };
 
-      const variantSlots = sliderRecipe();
+      const variantSlots = props.recipe();
 
       const thumbShadowClass =
         resolved.variant === "secondary" ? "shadow-none" : undefined;
@@ -121,7 +125,7 @@ export const Slider = defineComponent({
             },
             () => [
               (props.label !== undefined || props.showValue) && [
-                h("div", { class: variantSlots.header() }, () => [
+                h("div", { class: variantSlots.header() }, [
                   props.label !== undefined
                     ? h(SliderPrimitive.Label as ArkPart, {}, () => props.label)
                     : null,
@@ -189,8 +193,7 @@ export const Slider = defineComponent({
                             h(
                               "span",
                               { class: variantSlots.markerLabel() },
-                              () =>
-                                props.markerLabels?.[index] ?? String(index),
+                              props.markerLabels?.[index] ?? String(index),
                             ),
                           ],
                         ),

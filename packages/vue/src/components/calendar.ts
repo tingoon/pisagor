@@ -28,6 +28,10 @@ const { provideStyles: provideCalendarStyles, useStyles: useCalendar } =
     name: "Calendar",
     recipe: calendarRecipe,
   });
+
+/** Lets `DatePicker` provide calendar slots so `Calendar.*` parts work inside `DatePicker.Content` (React parity). */
+export { provideCalendarStyles };
+
 // #endregion
 
 type FormControlVariant = "primary" | "secondary";

@@ -885,7 +885,7 @@ export const AppShellPanel = defineComponent({
                 ...regionResizeCallbacks,
               })
             : null,
-          h("div", { class: getSlots().sideBody() }, () => slots.default?.()),
+          h("div", { class: getSlots().sideBody() }, slots.default?.()),
         ],
       );
   },
@@ -1114,7 +1114,7 @@ export const AppShellInspector = defineComponent({
                 ...regionResizeCallbacks,
               })
             : null,
-          h("div", { class: getSlots().sideBody() }, () => slots.default?.()),
+          h("div", { class: getSlots().sideBody() }, slots.default?.()),
         ],
       );
   },

@@ -241,7 +241,7 @@ export const ActionBarRoot = defineComponent({
           },
         },
         () =>
-          h("div", { ...attrs }, () => [
+          h("div", { ...attrs }, [
             slots.default?.(),
             hasPreset
               ? h(ActionBarContent, null, () => [
@@ -352,18 +352,17 @@ export const ActionBarContent = defineComponent({
             "data-scope": "action-bar",
             style: { "--gutter": gutter } as Record<string, unknown>,
           },
-          () =>
-            h(
-              ark.div as ArkPart,
-              {
-                ...attrs,
-                class: styleSlots.content({ class: props.class }),
-                "data-part": "content",
-                "data-scope": "action-bar",
-                role: "toolbar",
-              },
-              slots.default?.(),
-            ),
+          h(
+            ark.div as ArkPart,
+            {
+              ...attrs,
+              class: styleSlots.content({ class: props.class }),
+              "data-part": "content",
+              "data-scope": "action-bar",
+              role: "toolbar",
+            },
+            slots.default?.(),
+          ),
         ),
       );
     };

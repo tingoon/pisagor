@@ -1,4 +1,5 @@
-import { Field as FieldPrimitive } from "@ark-ui/vue/field";
+import { ark } from "@ark-ui/vue/factory";
+import { Field as FieldPrimitive, useFieldContext } from "@ark-ui/vue/field";
 import { Fieldset as FieldsetPrimitive } from "@ark-ui/vue/fieldset";
 import type { FieldProps as BaseFieldProps } from "@pisagor/props";
 import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";
@@ -11,12 +12,25 @@ import { useFormControlSurface } from "./surface/use-form-control-surface";
 // #region Slot recipe context
 const {
   provideStyles: provideFieldStyles,
-  useStyles: useFieldStyles,
+  useOptionalStyles: useOptionalFieldStyles,
   withProvider,
 } = createSlotRecipeContext({
   name: "Field",
   recipe: fieldRecipe,
 });
+
+/**
+ * Parts fall back to the default recipe outside `<Field>` (React
+ * `useFieldSlots` parity), e.g. `CircularSlider.ValueText` wraps `Field.Label`.
+ */
+function useFieldStyles(): { readonly slots: ReturnType<typeof fieldRecipe> } {
+  const styles = useOptionalFieldStyles();
+  return {
+    get slots() {
+      return styles?.slots ?? fieldRecipe();
+    },
+  };
+}
 // #endregion
 
 type FormControlVariant = "primary" | "secondary";
@@ -193,12 +207,15 @@ export const FieldLabel = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const styles = useFieldStyles();
+    // Ark's Field.Label requires a field context; outside `<Field>` (e.g. a
+    // standalone `CircularSlider.ValueText`) render a plain styled label.
+    const field = useFieldContext(undefined);
 
     return () => {
       const variantSlots = styles.slots;
 
       return h(
-        FieldPrimitive.Label as ArkPart,
+        (field ? FieldPrimitive.Label : ark.label) as ArkPart,
         {
           ...attrs,
           asChild: props.asChild,

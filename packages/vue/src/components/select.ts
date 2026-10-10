@@ -19,9 +19,11 @@ import {
   h,
   type PropType,
   Teleport,
+  unref,
   type VNodeChild,
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createContext } from "../internal/utils/create-context";
 import { Separator } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -44,6 +46,11 @@ function useSelectSlots() {
 
 type FormControlVariant = "primary" | "secondary";
 
+/** Root-level control props (`variant`, `size`) read by `Select.Trigger`. */
+const [provideSelectControl, , useSelectControlRef] = createContext(
+  "SelectControl",
+)<FormControlShellVariantProps>({ defaultValue: {}, strict: false });
+
 // #region Types
 interface SelectPresetItem {
   label: string;
@@ -55,9 +62,11 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
   "collection" | "onValueChange"
 > & {
   /**
-   * Visual shell variant. Defaults to `primary`.
+   * Visual shell variant applied to the trigger. Defaults to `primary`.
    */
   variant?: FormControlVariant;
+  /** Trigger size. Defaults to `md`. */
+  size?: FormControlShellVariantProps["size"];
   collection?: ListCollection<T>;
   onValueChange?: (value: string | string[]) => void;
 } & BaseSelectRootProps;
@@ -102,6 +111,10 @@ export const SelectRoot = defineComponent({
       default: selectRecipe,
       type: Function as PropType<typeof selectRecipe>,
     },
+    size: {
+      default: undefined,
+      type: String as PropType<SelectTriggerSize>,
+    },
     unmountOnExit: { default: true, type: Boolean },
     variant: {
       default: undefined,
@@ -110,6 +123,10 @@ export const SelectRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const recipeSlots = computed(() => props.recipe());
+
+    provideSelectControl(
+      computed(() => ({ size: props.size, variant: props.variant })),
+    );
 
     provideSelectStyles({
       get slots() {
@@ -146,7 +163,7 @@ export const SelectTrigger = defineComponent({
       type: [String, Object, Array] as PropType<unknown>,
     },
     clearable: { default: false, type: Boolean },
-    size: { default: "md", type: String as PropType<SelectTriggerSize> },
+    size: { default: undefined, type: String as PropType<SelectTriggerSize> },
     variant: {
       default: undefined,
       type: String as PropType<FormControlVariant | undefined>,
@@ -156,11 +173,15 @@ export const SelectTrigger = defineComponent({
     const getSlots = useSelectSlots();
 
     const surfaceVariant = useFormControlSurface();
+    const controlRef = useSelectControlRef();
 
     return () => {
+      const control = unref(controlRef);
+      const size = props.size ?? control.size ?? "md";
       const resolved = {
         surfaceVariant,
-        variant: props.variant ?? ("primary" as FormControlVariant),
+        variant:
+          props.variant ?? control.variant ?? ("primary" as FormControlVariant),
       };
       const shellArgs = {
         surfaceVariant: resolved.surfaceVariant,
@@ -176,16 +197,16 @@ export const SelectTrigger = defineComponent({
             ...attrs,
             ...controlProps,
             class: cn(
-              formControlShellRecipe({ size: props.size, ...shellArgs }),
+              formControlShellRecipe({ size, ...shellArgs }),
               styleSlots.trigger(),
               props.class,
               attrs.class,
             ),
-            "data-size": props.size,
+            "data-size": size,
           },
           () => [
             slots.default?.(),
-            h("div", { class: styleSlots.triggerActions() }, () => [
+            h("div", { class: styleSlots.triggerActions() }, [
               props.clearable
                 ? h(SelectClearTrigger as ArkPart, null, () =>
                     h(PhX, { "aria-hidden": true }),
@@ -294,7 +315,7 @@ export const SelectContent = defineComponent({
               ...attrs,
               class: cn(styleSlots.content(), props.class, attrs.class),
             },
-            slots.default?.(),
+            () => slots.default?.(),
           ),
         ),
       );
@@ -349,7 +370,7 @@ export const SelectItemGroupLabel = defineComponent({
           ...attrs,
           class: cn(styleSlots.itemGroupLabel(), props.class, attrs.class),
         },
-        slots.default?.(),
+        () => slots.default?.(),
       );
     };
   },
@@ -387,7 +408,9 @@ export const SelectItem = defineComponent({
             },
             children.default?.(),
           ),
-          h("span", { class: styleSlots.itemIndicator() }, () =>
+          h(
+            "span",
+            { class: styleSlots.itemIndicator() },
             h(SelectPrimitive.ItemIndicator as ArkPart, {}, () =>
               h(PhCheck, { "aria-hidden": true }),
             ),
@@ -421,7 +444,7 @@ export const SelectClearTrigger = defineComponent({
           "aria-label": props["aria-label"],
           class: cn(styleSlots.clearTrigger(), props.class, attrs.class),
         },
-        slots.default?.(),
+        () => slots.default?.(),
       );
     };
   },
@@ -475,6 +498,10 @@ export const SelectShorthand = defineComponent({
       default: undefined,
       type: String as PropType<string | undefined>,
     },
+    size: {
+      default: undefined,
+      type: String as PropType<SelectTriggerSize>,
+    },
     variant: {
       default: undefined,
       type: String as PropType<FormControlVariant | undefined>,
@@ -493,6 +520,7 @@ export const SelectShorthand = defineComponent({
         {
           ...attrs,
           collection,
+          size: props.size,
           variant: props.variant,
         },
         () => [

@@ -744,9 +744,9 @@ export const ColorPickerField = defineComponent({
               ColorPickerView as ArkPart,
               { format: "hsla" } as unknown as Parameters<typeof h>[1],
               () => [
-                h("div", { class: getSlots().channelRow() }, () => [
+                h("div", { class: getSlots().channelRow() }, [
                   h(ColorPickerEyeDropperTrigger as ArkPart),
-                  h("div", { class: getSlots().channelStack() }, () => [
+                  h("div", { class: getSlots().channelStack() }, [
                     h(
                       ColorPickerChannelSlider as ArkPart,
                       { channel: "hue" } as unknown as Parameters<typeof h>[1],

@@ -119,6 +119,10 @@ export const Rating = defineComponent({
       type: Function as PropType<RatingProps["onValueChange"]>,
     },
     readOnly: { default: undefined, type: Boolean },
+    recipe: {
+      default: ratingRecipe,
+      type: Function as PropType<typeof ratingRecipe>,
+    },
     value: { default: undefined, type: Number },
     variant: {
       default: undefined,
@@ -133,7 +137,7 @@ export const Rating = defineComponent({
         surfaceVariant,
         variant: props.variant ?? ("primary" as FormControlVariant),
       };
-      const slots = ratingRecipe();
+      const slots = props.recipe();
       const surfaceTone =
         resolved.variant === "secondary" ? "opacity-90" : undefined;
       const icon = props.icon ?? PhStar;

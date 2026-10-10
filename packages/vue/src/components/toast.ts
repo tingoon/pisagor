@@ -200,7 +200,7 @@ const ToastItemContent = defineComponent({
                 "data-part": "icon",
                 "data-scope": "toast",
               },
-              () => icon,
+              icon ? [icon] : undefined,
             ),
             h(
               "div",

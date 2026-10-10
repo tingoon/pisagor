@@ -19,11 +19,23 @@ import { createSlotRecipeContext } from "../internal/create-slot-recipe-context"
 // #region Slot recipe context
 const {
   provideStyles: provideDropdownMenuStyles,
-  useStyles: useDropdownMenuStyles,
+  useOptionalStyles: useOptionalDropdownMenuStyles,
 } = createSlotRecipeContext({
   name: "DropdownMenu",
   recipe: dropdownMenuRecipe,
 });
+
+/** React `useDropdownMenuSlots` parity: default recipe outside a menu (e.g. `Listbox.Shortcut`). */
+function useDropdownMenuStyles(): {
+  readonly slots: ReturnType<typeof dropdownMenuRecipe>;
+} {
+  const styles = useOptionalDropdownMenuStyles();
+  return {
+    get slots() {
+      return styles?.slots ?? dropdownMenuRecipe();
+    },
+  };
+}
 // #endregion
 
 // #region Types

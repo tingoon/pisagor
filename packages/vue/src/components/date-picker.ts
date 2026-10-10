@@ -5,12 +5,21 @@ import {
 } from "@ark-ui/vue/date-picker";
 import { PhCalendar, PhClock, PhX } from "@phosphor-icons/vue";
 import type { DatePickerProps as BaseDatePickerRootProps } from "@pisagor/props";
-import { datePickerRecipe } from "@pisagor/recipes";
+import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { computed, defineComponent, h, type PropType, ref, unref } from "vue";
+import {
+  computed,
+  defineComponent,
+  h,
+  type PropType,
+  ref,
+  Teleport,
+  unref,
+} from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { createContext } from "../internal/utils/create-context";
 import { Button } from "./button";
+import { provideCalendarStyles } from "./calendar";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
 import { InputGroupRoot } from "./input-group/input-group-core";
@@ -19,11 +28,14 @@ type FormControlVariant = "primary" | "secondary";
 type ClassValue = Parameters<typeof cn>[0];
 
 // #region Context
-const { Context: DatePickerStylesContext, useStyles: useDatePickerStyles } =
-  createSlotRecipeContext({
-    name: "DatePicker",
-    recipe: datePickerRecipe,
-  });
+const {
+  Context: DatePickerStylesContext,
+  useOptionalStyles: useOptionalDatePickerStyles,
+  useStyles: useDatePickerStyles,
+} = createSlotRecipeContext({
+  name: "DatePicker",
+  recipe: datePickerRecipe,
+});
 
 const [provideDatePickerVariant, , useDatePickerVariantRef] = createContext(
   "DatePickerVariant",
@@ -32,6 +44,8 @@ const [provideDatePickerVariant, , useDatePickerVariantRef] = createContext(
 
 // #region Types
 export interface DatePickerRootProps extends BaseDatePickerRootProps {
+  /** Calendar style recipe for `Calendar.*` parts inside the picker. */
+  calendarRecipe?: typeof calendarRecipe;
   variant?: FormControlVariant;
   positioning?: unknown;
   onValueChange?: (value: unknown) => void;
@@ -64,6 +78,10 @@ export const DatePickerRoot = defineComponent({
   inheritAttrs: false,
   name: "DatePicker",
   props: {
+    calendarRecipe: {
+      default: calendarRecipe,
+      type: Function as PropType<typeof calendarRecipe>,
+    },
     defaultValue: {
       default: undefined,
       type: null as unknown as PropType<unknown>,
@@ -76,6 +94,10 @@ export const DatePickerRoot = defineComponent({
       default: { placement: "top" },
       type: Object as PropType<unknown>,
     },
+    recipe: {
+      default: datePickerRecipe,
+      type: Function as PropType<typeof datePickerRecipe>,
+    },
     value: { default: undefined, type: null as unknown as PropType<unknown> },
     variant: {
       default: undefined,
@@ -83,8 +105,15 @@ export const DatePickerRoot = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const recipeSlots = computed(() => datePickerRecipe());
+    const recipeSlots = computed(() => props.recipe());
+    const calendarSlots = computed(() => props.calendarRecipe());
 
+    provideCalendarStyles({
+      get slots() {
+        return calendarSlots.value;
+      },
+      variants: {},
+    });
     provideDatePickerVariant(computed(() => props.variant));
 
     return () =>
@@ -268,7 +297,13 @@ export const DatePickerTimer = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useDatePickerStyles();
+    // Standalone `DatePicker.Timer` (React parity): default recipe outside a picker.
+    const optionalStyles = useOptionalDatePickerStyles();
+    const styles = {
+      get slots() {
+        return optionalStyles?.slots ?? datePickerRecipe();
+      },
+    };
     const variantRef = useDatePickerVariantRef();
     const internalValue = ref(
       props.defaultValue !== undefined ? String(props.defaultValue) : "",
@@ -370,11 +405,9 @@ export const DatePickerContent = defineComponent({
         ),
       ];
 
-      return h(
-        "teleport",
-        { to: "body" } as unknown as Parameters<typeof h>[1],
-        () => h(DatePickerPrimitive.Positioner as ArkPart, {}, () => content),
-      );
+      return h(Teleport, { to: "body" }, [
+        h(DatePickerPrimitive.Positioner as ArkPart, {}, () => content),
+      ]);
     };
   },
 });

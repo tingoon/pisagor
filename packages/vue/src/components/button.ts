@@ -77,7 +77,9 @@ export const Button = defineComponent({
                   children.default?.(),
                 ),
                 h("span", { class: slots.srOnly() }, children.default?.()),
-                h("span", { class: slots.spinner() }, () =>
+                h(
+                  "span",
+                  { class: slots.spinner() },
                   h(Spinner, { "aria-hidden": true }),
                 ),
               ]

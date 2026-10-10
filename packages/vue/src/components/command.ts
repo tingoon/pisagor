@@ -165,13 +165,26 @@ export const CommandRoot = defineComponent({
       default: undefined,
       type: Function as PropType<CommandProps["onValueChange"]>,
     },
+    recipe: {
+      default: commandRecipe,
+      type: Function as PropType<typeof commandRecipe>,
+    },
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCommand();
+    // React parity: the root provides its own recipe slots, so a standalone
+    // `<Command>` works without `Command.DialogContent`.
+    const recipeSlots = computed(() => props.recipe());
+
+    provideCommandStyles({
+      get slots() {
+        return recipeSlots.value;
+      },
+      variants: {},
+    });
 
     return () => {
-      const variantSlots = styles.slots;
+      const variantSlots = recipeSlots.value;
 
       return h(
         Combobox.Root as ArkPart,
@@ -289,7 +302,9 @@ export const CommandList = defineComponent({
     return () => {
       const variantSlots = styles.slots;
 
-      return h("div", { class: variantSlots.listWrapper() }, () =>
+      return h(
+        "div",
+        { class: variantSlots.listWrapper() },
         h(
           Combobox.List as ArkPart,
           {

@@ -245,7 +245,9 @@ export const DrawerGrabber = defineComponent({
     return () => {
       const drawerSlots = useDrawerSlots();
 
-      return h("div", { class: drawerSlots.grabberWrapper() }, () =>
+      return h(
+        "div",
+        { class: drawerSlots.grabberWrapper() },
         h(
           DrawerPrimitive.Grabber as ArkPart,
           {

@@ -15,9 +15,11 @@ import {
   h,
   type PropType,
   Teleport,
+  unref,
   type VNodeChild,
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createContext } from "../internal/utils/create-context";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
 
@@ -40,6 +42,16 @@ function useComboboxSlots() {
 
 type FormControlVariant = "primary" | "secondary";
 
+interface ComboboxControlValue {
+  size?: ComboboxInputProps["size"];
+  variant?: FormControlVariant;
+}
+
+/** Root-level control props (`variant`, `size`) read by `Combobox.Input`. */
+const [provideComboboxControl, , useComboboxControlRef] = createContext(
+  "ComboboxControl",
+)<ComboboxControlValue>({ defaultValue: {}, strict: false });
+
 // #region Types
 interface ComboboxPresetItem {
   label: string;
@@ -51,9 +63,11 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   "collection" | "onValueChange"
 > & {
   /**
-   * Visual shell variant. Defaults to `primary`.
+   * Visual shell variant applied to the input. Defaults to `primary`.
    */
   variant?: FormControlVariant;
+  /** Input size. Defaults to `md`. */
+  size?: ComboboxInputProps["size"];
   collection?: ListCollection<T>;
   onValueChange?: (value: string[]) => void;
 } & BaseComboboxRootProps;
@@ -116,6 +130,10 @@ export const ComboboxRoot = defineComponent({
       default: comboboxRecipe,
       type: Function as PropType<typeof comboboxRecipe>,
     },
+    size: {
+      default: undefined,
+      type: String as PropType<ComboboxInputProps["size"]>,
+    },
     unmountOnExit: { default: true, type: Boolean },
     variant: {
       default: undefined,
@@ -124,6 +142,10 @@ export const ComboboxRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const recipeSlots = computed(() => props.recipe());
+
+    provideComboboxControl(
+      computed(() => ({ size: props.size, variant: props.variant })),
+    );
 
     provideComboboxStyles({
       get slots() {
@@ -146,7 +168,7 @@ export const ComboboxRoot = defineComponent({
           openOnClick: props.openOnClick,
           unmountOnExit: props.unmountOnExit,
         },
-        slots.default?.(),
+        () => slots.default?.(),
       );
     };
   },
@@ -174,7 +196,7 @@ export const ComboboxControl = defineComponent({
           ...attrs,
           class: cn(styleSlots.control(), props.class, attrs.class),
         },
-        slots.default?.(),
+        () => slots.default?.(),
       );
     };
   },
@@ -192,7 +214,7 @@ export const ComboboxInput = defineComponent({
     disabled: { default: undefined, type: Boolean },
     showTrigger: { default: true, type: Boolean },
     size: {
-      default: "md",
+      default: undefined,
       type: String as PropType<ComboboxInputProps["size"]>,
     },
     variant: {
@@ -204,17 +226,20 @@ export const ComboboxInput = defineComponent({
     const getSlots = useComboboxSlots();
 
     const api = useCombobox();
+    const controlRef = useComboboxControlRef();
 
     return () => {
       const styleSlots = getSlots();
+      const control = unref(controlRef);
+      const size = props.size ?? control.size ?? "md";
 
-      return h(ComboboxControl as ArkPart, { "data-size": props.size }, () =>
+      return h(ComboboxControl as ArkPart, { "data-size": size }, () =>
         h(
           InputGroup as ArkPart,
           {
             class: props.class,
-            size: props.size,
-            variant: props.variant,
+            size,
+            variant: props.variant ?? control.variant,
           },
           () => [
             slots.default?.(),
@@ -304,7 +329,7 @@ export const ComboboxClearTrigger = defineComponent({
           ...attrs,
           "aria-label": props["aria-label"],
         },
-        slots.default?.(),
+        () => slots.default?.(),
       );
   },
 });
@@ -320,7 +345,7 @@ export const ComboboxFieldInput = defineComponent({
           ...attrs,
           ...(attrs as object),
         },
-        slots.default?.(),
+        () => slots.default?.(),
       );
   },
 });
@@ -335,7 +360,7 @@ export const ComboboxPositioner = defineComponent({
         {
           ...attrs,
         },
-        slots.default?.(),
+        () => slots.default?.(),
       );
   },
 });
@@ -363,7 +388,7 @@ export const ComboboxContent = defineComponent({
               ...attrs,
               class: cn(styleSlots.content(), props.class, attrs.class),
             },
-            slots.default?.(),
+            () => slots.default?.(),
           ),
         ),
       );
@@ -420,7 +445,7 @@ export const ComboboxItemGroupLabel = defineComponent({
           ...attrs,
           class: cn(styleSlots.itemGroupLabel(), props.class, attrs.class),
         },
-        slots.default?.(),
+        () => slots.default?.(),
       );
     };
   },
@@ -456,7 +481,9 @@ export const ComboboxItem = defineComponent({
         () => [
           children.default?.(),
           props.showIndicator
-            ? h("span", { class: styleSlots.itemIndicator() }, () =>
+            ? h(
+                "span",
+                { class: styleSlots.itemIndicator() },
                 h(ComboboxPrimitive.ItemIndicator as ArkPart, {}, () =>
                   h(PhCheck, { "aria-hidden": true }),
                 ),
@@ -489,7 +516,7 @@ export const ComboboxEmpty = defineComponent({
           ...attrs,
           class: cn(styleSlots.empty(), props.class, attrs.class),
         },
-        slots.default?.() ?? "No results found. Try a different search.",
+        () => slots.default?.() ?? "No results found. Try a different search.",
       );
     };
   },
@@ -516,7 +543,7 @@ export const ComboboxList = defineComponent({
           ...attrs,
           class: cn(styleSlots.list(), props.class, attrs.class),
         },
-        slots.default?.(),
+        () => slots.default?.(),
       );
     };
   },
@@ -530,6 +557,14 @@ export const ComboboxShorthand = defineComponent({
     items: {
       default: undefined,
       type: Array as PropType<Array<ComboboxPresetItem | string> | undefined>,
+    },
+    size: {
+      default: undefined,
+      type: String as PropType<ComboboxInputProps["size"]>,
+    },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -545,6 +580,8 @@ export const ComboboxShorthand = defineComponent({
         {
           ...attrs,
           collection,
+          size: props.size,
+          variant: props.variant,
         },
         () => [
           h(ComboboxInput as ArkPart, { clearable: props.clearable }),

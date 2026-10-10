@@ -105,6 +105,10 @@ export const SignaturePad = defineComponent({
       type: Array as PropType<string[] | undefined>,
     },
     readOnly: { default: undefined, type: Boolean },
+    recipe: {
+      default: signaturePadRecipe,
+      type: Function as PropType<typeof signaturePadRecipe>,
+    },
     required: { default: undefined, type: Boolean },
     variant: {
       default: undefined,
@@ -115,7 +119,7 @@ export const SignaturePad = defineComponent({
     const surfaceVariant = useFormControlSurface();
 
     return () => {
-      const slots_ = signaturePadRecipe();
+      const slots_ = props.recipe();
       const resolved = {
         surfaceVariant,
         variant: props.variant ?? ("primary" as FormControlVariant),

@@ -25,6 +25,6 @@ export function renderIconCloseButton(
       ),
       type: "button",
     },
-    () => h(PhX),
+    h(PhX),
   );
 }

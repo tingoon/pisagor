@@ -79,6 +79,10 @@ export const Textarea = defineComponent({
       type: Function as PropType<TextareaProps["onValueChange"]>,
     },
     readOnly: { default: undefined, type: Boolean },
+    recipe: {
+      default: textareaRecipe,
+      type: Function as PropType<typeof textareaRecipe>,
+    },
     value: {
       default: undefined,
       type: [String, Number, Array] as PropType<TextareaProps["value"]>,
@@ -115,7 +119,7 @@ export const Textarea = defineComponent({
         variant: resolved.variant,
       };
       const controlProps = { "data-variant": resolved.variant };
-      const slots = textareaRecipe();
+      const slots = props.recipe();
 
       const changeHandler = skipClearable
         ? props.onChange || props.onValueChange

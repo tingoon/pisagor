@@ -108,7 +108,9 @@ const [provideDataGridRowContext, useDataGridRowContextBase] =
  * @returns The table instance for the current row model.
  */
 export function useDataGrid<TData extends RowData>() {
-  return useDataGridContextBase() as unknown as DataGridContextValue<TData>["table"];
+  const context =
+    useDataGridContextBase() as unknown as DataGridContextValue<TData>;
+  return context.table;
 }
 
 /**

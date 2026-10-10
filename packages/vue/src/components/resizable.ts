@@ -156,7 +156,9 @@ export const ResizableEdgeHandle = defineComponent({
           type: "button",
         },
         () => [
-          h("span", { class: edgeHandle.grip() }, () =>
+          h(
+            "span",
+            { class: edgeHandle.grip() },
             h(PhDotsSixVertical, { class: edgeHandle.icon() }),
           ),
         ],
@@ -217,7 +219,9 @@ export const ResizableResizeTrigger = defineComponent({
         },
         () =>
           props.withHandle
-            ? h("div", { class: styles.slots.resizeTriggerHandle() }, () =>
+            ? h(
+                "div",
+                { class: styles.slots.resizeTriggerHandle() },
                 h(PhDotsSixVertical, {
                   class: styles.slots.resizeTriggerIcon(),
                 }),

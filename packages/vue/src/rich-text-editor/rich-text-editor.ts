@@ -279,7 +279,7 @@ export const RichTextEditorToolbar = defineComponent({
         },
         () =>
           slots.default?.() ?? [
-            h("div", { class: recipeSlots.inline() }, () => [
+            h("div", { class: recipeSlots.inline() }, [
               h(
                 Toggle as ArkPart,
                 {
