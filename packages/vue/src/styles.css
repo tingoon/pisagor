@@ -1,5 +1,5 @@
 @import "tw-animate-css";
 @import "@pisagor/tokens/styles";
+@import "@pisagor/recipes/styles";
 @plugin "@tailwindcss/typography";
 @source "./**/*.ts";
-@source "../../presets/src/**/*.ts";
