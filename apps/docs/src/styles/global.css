@@ -9,9 +9,10 @@
 @import "@pisagor/svelte/styles";
 @import "@pisagor/svelte-form/styles";
 
-/* Scan demos + docs chrome + shared recipes (same path Storybook packages use) */
+/* Scan docs chrome, block demos, presets, and package examples */
 @source "../**/*.{astro,ts,tsx,vue,svelte}";
-@source "../../../packages/recipes/src/**/*.ts";
+@source "../../../packages/presets/src/**/*.ts";
+@source "../recipes/blocks/**/*.ts";
 @source "../../../packages/astro/examples/**/*.{ts,astro}";
 @source "../../../packages/react/examples/**/*.{ts,tsx}";
 @source "../../../packages/react-form/examples/**/*.{ts,tsx}";

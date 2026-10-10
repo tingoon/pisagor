@@ -3,11 +3,12 @@
     "url": "https://github.com/tingoon/pisagor/issues"
   },
   "dependencies": {
-    "@pisagor/presets": "workspace:*"
+    "tailwind-variants": "^3.3.1"
   },
-  "description": "Default recipe entry for Pisagor components (re-exports @pisagor/presets/pisagor).",
+  "description": "Named recipe presets (skins) for Pisagor components.",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/contracts/index.ts",
+    "./pisagor": "./src/pisagor.ts"
   },
   "files": [
     "skills",
@@ -15,9 +16,9 @@
   ],
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "license": "MIT",
-  "name": "@pisagor/recipes",
+  "name": "@pisagor/presets",
   "repository": {
-    "directory": "packages/recipes",
+    "directory": "packages/presets",
     "type": "git",
     "url": "git+https://github.com/tingoon/pisagor.git"
   },
@@ -25,6 +26,6 @@
     "type-check": "tsc"
   },
   "type": "module",
-  "types": "./src/index.ts",
+  "types": "./src/contracts/index.ts",
   "version": "0.3.0"
 }
