@@ -8,6 +8,7 @@ globs:
 cursor:
   alwaysApply: false
 ---
+
 # Solid Component Patterns
 
 How to build shared UI components in `packages/solid` (`@pisagor/solid`).

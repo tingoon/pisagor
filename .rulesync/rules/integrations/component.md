@@ -12,6 +12,7 @@ globs:
 cursor:
   alwaysApply: false
 ---
+
 # Component
 
 Framework-agnostic product naming and catalog policy for Pisagor component packages.

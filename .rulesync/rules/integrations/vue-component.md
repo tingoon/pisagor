@@ -10,6 +10,7 @@ globs:
 cursor:
   alwaysApply: false
 ---
+
 # Vue Component Patterns
 
 How to build shared UI components in `packages/vue` (`@pisagor/vue`). General Vue rules — [Vue Style Guide](../vue.mdc).

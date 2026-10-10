@@ -9,6 +9,7 @@ cursor:
   alwaysApply: true
   globs: []
 ---
+
 # Core Boundaries
 
 ## Instruction priority

@@ -9,6 +9,7 @@ globs:
 cursor:
   alwaysApply: false
 ---
+
 # React Component Patterns
 
 How to build shared UI components in `packages/react` (`@pisagor/react`). General React rules — [React Style Guide](../react.mdc).

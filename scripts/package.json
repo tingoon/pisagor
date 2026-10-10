@@ -9,6 +9,7 @@
     "generate": "bun ./src/generate-catalog.ts && bun ./src/generate-props.ts",
     "generate:catalog": "bun ./src/generate-catalog.ts",
     "generate:props": "bun ./src/generate-props.ts",
+    "split:example-sources": "bun ./src/split-example-sources.ts",
     "type-check": "tsc"
   },
   "type": "module",

@@ -24,7 +24,12 @@ const EXAMPLE_EXTENSIONS = new Set([
   ".vue",
 ]);
 
-const EXAMPLE_SKIP = new Set(["helpers.ts", "helpers.tsx", "index.ts"]);
+const EXAMPLE_SKIP = new Set([
+  "helpers.ts",
+  "helpers.tsx",
+  "index.ts",
+  "sources.ts",
+]);
 
 const EXPORT_NAME =
   /^export\s+(?:async\s+)?(?:function|const)\s+([A-Z][A-Za-z0-9]*)\b/m;
@@ -296,7 +301,12 @@ function buildComponentsCatalog(target: ScanTarget): ComponentsCatalog {
 }
 
 function buildRecipesCatalog(): RecipesCatalog {
-  const recipesRoot = path.join(workspaceRoot, "packages/recipes/src");
+  // `@pisagor/recipes` re-exports `@pisagor/presets/pisagor`; the recipe
+  // sources live in the presets package contracts.
+  const recipesRoot = path.join(
+    workspaceRoot,
+    "packages/presets/src/contracts",
+  );
   const recipes: Record<string, CatalogFile> = {};
   if (existsSync(recipesRoot)) {
     for (const file of readdirSync(recipesRoot)) {

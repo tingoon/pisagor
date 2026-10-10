@@ -8,6 +8,7 @@ globs:
 cursor:
   alwaysApply: false
 ---
+
 # Svelte Component Patterns
 
 How to build shared UI components in `packages/svelte` (`@pisagor/svelte`).

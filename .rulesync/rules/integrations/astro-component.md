@@ -9,6 +9,7 @@ globs:
 cursor:
   alwaysApply: false
 ---
+
 # Astro Component Patterns
 
 How to build shared UI components in `packages/astro` (`@pisagor/astro`). Astro is the **static subset** of the catalog: no client JS, no Ark machines — only components that render meaningfully as HTML + CSS.
