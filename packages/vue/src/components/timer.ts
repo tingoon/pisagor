@@ -23,6 +23,7 @@ const {
 });
 
 const {
+  useOptionalStyles: useOptionalTimerItemGroupStyles,
   withContext: withTimerItemGroupContext,
   withProvider: withTimerItemGroupProvider,
 } = createSlotRecipeContext({
@@ -71,8 +72,33 @@ const TimerItemGroupBase = withTimerItemGroupProvider(ark.div, {
   slot: "base",
 });
 
-export const TimerItem = withTimerItemGroupContext(TimerPrimitive.Item, {
-  name: "Item",
+/** Usable inside or outside `Timer.ItemGroup` (falls back to the default item-group recipe). */
+export const TimerItem = defineComponent({
+  inheritAttrs: false,
+  name: "Timer.Item",
+  props: {
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+  },
+  setup(props, { attrs, slots }) {
+    const styles = useOptionalTimerItemGroupStyles();
+
+    return () =>
+      h(
+        TimerPrimitive.Item as ArkPart,
+        {
+          "data-part": "item",
+          "data-scope": "timer",
+          ...attrs,
+          class: (styles?.slots ?? timerItemGroupRecipe()).item({
+            class: props.class as string | undefined,
+          }),
+        },
+        slots,
+      );
+  },
 });
 
 export const TimerItemLabel = withTimerItemGroupContext(ark.div, {

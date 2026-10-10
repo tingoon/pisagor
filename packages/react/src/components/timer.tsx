@@ -11,7 +11,7 @@ import type {
 } from "@pisagor/props";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
-import { Fragment } from "react";
+import { Fragment, use } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 
 // #region Context
@@ -25,6 +25,7 @@ const {
 });
 
 const {
+  Context: TimerItemGroupStylesContext,
   withContext: withTimerItemGroupContext,
   withProvider: withTimerItemGroupProvider,
 } = createSlotRecipeContext({
@@ -124,9 +125,25 @@ export function TimerItemGroup({
   );
 }
 
-export const TimerItem = withTimerItemGroupContext(TimerPrimitive.Item, {
-  name: "Item",
-});
+/** Usable inside or outside `Timer.ItemGroup` (falls back to the default item-group recipe). */
+export function TimerItem({
+  className,
+  ...rest
+}: ComponentProps<typeof TimerPrimitive.Item>) {
+  const styles = use(TimerItemGroupStylesContext);
+  const slots = styles?.slots ?? timerItemGroupRecipe();
+
+  return (
+    <TimerPrimitive.Item
+      data-part="item"
+      data-scope="timer"
+      {...rest}
+      className={slots.item({ className })}
+    />
+  );
+}
+
+TimerItem.displayName = "Timer.Item";
 
 export const TimerItemLabel = withTimerItemGroupContext(ark.div, {
   defaultProps: { "data-part": "item-label" },
