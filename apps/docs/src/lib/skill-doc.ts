@@ -109,17 +109,6 @@ export function findSkillPaneRaw(
 }
 
 /**
- * Body used to resolve `:::example` directives — develop markdown.
- */
-export function findSkillExamplesBody(
-  id: string,
-  opts?: { framework?: Framework; packageName?: string },
-): string {
-  const develop = findSkillPaneRaw(id, "develop", opts);
-  return develop ? skillDocBody(develop) : "";
-}
-
-/**
  * Markdown body for the pane currently shown on a component docs page.
  */
 export function findDisplayedSkillBody(

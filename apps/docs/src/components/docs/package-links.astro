@@ -1,5 +1,5 @@
 ---
-import { ArrowSquareOut, GithubLogo } from "@phosphor-icons/react";
+import { ArrowSquareOutIcon, GithubLogoIcon } from "@phosphor-icons/react";
 import type { Framework } from "#/lib/nav";
 import { resolvePackageLinks } from "#/lib/packages";
 import { NpmBrandIcon, StorybookBrandIcon } from "./brand-icons";
@@ -48,14 +48,14 @@ const links = [
         target="_blank"
       >
         {link.icon === "github" ? (
-          <GithubLogo aria-hidden size={13} weight="fill" />
+          <GithubLogoIcon aria-hidden size={13} weight="fill" />
         ) : link.icon === "storybook" ? (
           <StorybookBrandIcon size={13} />
         ) : (
           <NpmBrandIcon size={13} />
         )}
         {link.label}
-        <ArrowSquareOut
+        <ArrowSquareOutIcon
           aria-hidden
           className="opacity-40"
           size={11}

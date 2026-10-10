@@ -1,16 +1,37 @@
 ---
+import { Badge, Button } from "@pisagor/astro";
 import { highlightCode } from "#/lib/tanstack-highlight";
 
 interface Props {
-  code: string;
+  /** Source body. Omit when `source*` attrs defer load until Code tab open. */
+  code?: string;
   lang?: string;
   title?: string;
   class?: string;
+  /**
+   * Skip SSR highlighting. Emits plain source (or empty mount when deferred);
+   * highlight on first reveal via `ensureLazyCodeBlock` (ComponentPreview Code tab).
+   */
+  lazy?: boolean;
+  /** Client `import()` locator — no source body in initial HTML. */
+  sourceFramework?: string;
+  sourceId?: string;
+  sourceExport?: string;
+  sourceKind?: "component" | "form" | "block";
 }
 
 const copyId = `copy-${Math.random().toString(36).slice(2, 10)}`;
 
 const code = Astro.props.code ?? "";
+const lazy = Astro.props.lazy ?? false;
+const deferred =
+  lazy &&
+  !code &&
+  Boolean(
+    Astro.props.sourceFramework &&
+      Astro.props.sourceId &&
+      Astro.props.sourceExport,
+  );
 const requestedLang = Astro.props.lang ?? "bash";
 /**
  * Docs Vue snippets come in three shapes:
@@ -20,6 +41,7 @@ const requestedLang = Astro.props.lang ?? "bash";
  *
  * Avoid raw angle-bracket tags in this comment — Astro treats bare
  * script/style openers as real blocks even inside frontmatter docs.
+ * Deferred sources refine lang client-side after fetch.
  */
 const hasVueSfcBlock = /<(?:script|template|style)\b/i.test(code);
 const hasMarkup = /<[A-Za-z]/.test(code);
@@ -27,7 +49,7 @@ const hasMarkup = /<[A-Za-z]/.test(code);
 let lang = requestedLang;
 let badgeLang = requestedLang;
 
-if (requestedLang === "vue" || requestedLang === "vue-html") {
+if (!deferred && (requestedLang === "vue" || requestedLang === "vue-html")) {
   if (requestedLang === "vue-html" || (!hasVueSfcBlock && hasMarkup)) {
     lang = "vue";
     badgeLang = "vue";
@@ -38,14 +60,26 @@ if (requestedLang === "vue" || requestedLang === "vue-html") {
     lang = "ts";
     badgeLang = "ts";
   }
+} else if (requestedLang === "vue-html") {
+  badgeLang = "vue";
+  lang = "vue";
 }
 
-const highlightedHtml = highlightCode(code, lang);
+const highlightedHtml = lazy ? "" : await highlightCode(code, lang);
 ---
 
 <div
   data-codeblock
   data-highlighter="tanstack"
+  data-lang={lang}
+  data-lazy={lazy ? "" : undefined}
+  data-source-export={deferred ? Astro.props.sourceExport : undefined}
+  data-source-framework={deferred ? Astro.props.sourceFramework : undefined}
+  data-source-id={deferred ? Astro.props.sourceId : undefined}
+  data-source-kind={deferred
+    ? (Astro.props.sourceKind ?? "component")
+    : undefined}
+  data-source-pending={deferred ? "" : undefined}
   class:list={[
     "relative overflow-hidden border border-border/70 bg-muted/40",
     Astro.props.class ?? "rounded-xl",
@@ -60,28 +94,42 @@ const highlightedHtml = highlightCode(code, lang);
           {Astro.props.title}
         </span>
       ) : null}
-      <span
-        class="rounded border border-border/70 px-1.5 py-px text-2.5 font-semibold uppercase tracking-wider text-muted-foreground leading-none"
-      >
+      <Badge class="uppercase tracking-wider" size="sm" variant="outline">
         {badgeLang}
-      </span>
+      </Badge>
     </div>
-    <button
+    <Button
       aria-label="Copy code"
-      class="shrink-0 cursor-pointer rounded-md border border-border/70 bg-background/60 px-2 py-0.5 text-xs font-semibold text-muted-foreground transition-colors hover:border-border hover:bg-background hover:text-foreground data-copied:border-primary/45 data-copied:text-primary"
+      class="shrink-0 data-copied:border-primary/45 data-copied:text-primary"
       data-copy-btn
       data-copy-for={copyId}
+      size="xs"
       type="button"
+      variant="outline"
     >
       <span data-copy-idle>Copy</span>
       <span data-copy-done hidden>Copied</span>
-    </button>
+    </Button>
   </div>
-  <div
-    class="overflow-x-auto [&_pre]:m-0! [&_pre]:bg-transparent! [&_pre]:px-4! [&_pre]:py-3! [&_pre]:text-xs! [&_pre]:leading-relaxed! [&_code]:font-mono"
-    data-copy-source={copyId}
-    set:html={highlightedHtml}
-  />
+  {lazy ? (
+    <div
+      class="overflow-x-auto [&_code]:font-mono [&_pre]:m-0! [&_pre]:bg-transparent! [&_pre]:px-4! [&_pre]:py-3! [&_pre]:text-xs! [&_pre]:leading-relaxed!"
+      data-code-mount
+      data-copy-source={copyId}
+    >
+      {deferred ? null : (
+        <pre class="th-code">
+          <code>{code}</code>
+        </pre>
+      )}
+    </div>
+  ) : (
+    <div
+      class="overflow-x-auto [&_code]:font-mono [&_pre]:m-0! [&_pre]:bg-transparent! [&_pre]:px-4! [&_pre]:py-3! [&_pre]:text-xs! [&_pre]:leading-relaxed!"
+      data-copy-source={copyId}
+      set:html={highlightedHtml}
+    />
+  )}
 </div>
 
 <script>

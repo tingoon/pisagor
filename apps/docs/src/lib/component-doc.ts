@@ -10,7 +10,11 @@ export type SkillMdModule = {
   getHeadings: () => { depth: number; slug: string; text: string }[];
 };
 
-/** Example barrel from `packages/<fw>/examples/<id>/index.ts`. */
+/**
+ * Example module for docs SSR.
+ * Non-Astro pages load `sources.ts` (raw code only). Astro loads `index.ts`
+ * (sources + live components for SSR previews).
+ */
 export type ExampleModule = {
   sources: Record<string, string>;
   imports?: string;
@@ -47,7 +51,7 @@ export const PREVIEW_LANGUAGE: Record<Framework, string> = {
 };
 
 /**
- * When the docs page id does not match `props/<id>.ts` export name
+ * When the docs page id does not match `props/<id>.gen.ts` export name
  * (autocomplete → combobox, form fields → underlying control).
  */
 const PROPS_FILE_ALIASES: Record<string, string> = {
@@ -185,53 +189,49 @@ const formPanesByFramework: Partial<Record<Framework, FrameworkPaneGlobs>> = {
   },
 };
 
-// Example barrels (eager — need components + sources at build time).
-const examplesByFramework: Record<Framework, Record<string, ExampleModule>> = {
+// Lazy example modules — one id per page.
+// Astro SSR previews need live components (`index.ts`); other frameworks only
+// need code sources (`sources.ts`) — client islands load `index.ts` separately.
+type ExampleLoaderMap = Record<string, () => Promise<ExampleModule>>;
+
+const examplesByFramework: Record<Framework, ExampleLoaderMap> = {
   astro: import.meta.glob<ExampleModule>(
     "../../../../packages/astro/examples/*/index.ts",
-    { eager: true },
   ),
   react: import.meta.glob<ExampleModule>(
-    "../../../../packages/react/examples/*/index.ts",
-    { eager: true },
+    "../../../../packages/react/examples/*/sources.ts",
   ),
   solid: import.meta.glob<ExampleModule>(
-    "../../../../packages/solid/examples/*/index.ts",
-    { eager: true },
+    "../../../../packages/solid/examples/*/sources.ts",
   ),
   svelte: import.meta.glob<ExampleModule>(
-    "../../../../packages/svelte/examples/*/index.ts",
-    { eager: true },
+    "../../../../packages/svelte/examples/*/sources.ts",
   ),
   vue: import.meta.glob<ExampleModule>(
-    "../../../../packages/vue/examples/*/index.ts",
-    { eager: true },
+    "../../../../packages/vue/examples/*/sources.ts",
   ),
 };
 
-const formExamplesByFramework: Partial<
-  Record<Framework, Record<string, ExampleModule>>
-> = {
+const formExamplesByFramework: Partial<Record<Framework, ExampleLoaderMap>> = {
   react: import.meta.glob<ExampleModule>(
-    "../../../../packages/react-form/examples/*/index.ts",
-    { eager: true },
+    "../../../../packages/react-form/examples/*/sources.ts",
   ),
   solid: import.meta.glob<ExampleModule>(
-    "../../../../packages/solid-form/examples/*/index.ts",
-    { eager: true },
+    "../../../../packages/solid-form/examples/*/sources.ts",
   ),
   svelte: import.meta.glob<ExampleModule>(
-    "../../../../packages/svelte-form/examples/*/index.ts",
-    { eager: true },
+    "../../../../packages/svelte-form/examples/*/sources.ts",
   ),
   vue: import.meta.glob<ExampleModule>(
-    "../../../../packages/vue-form/examples/*/index.ts",
-    { eager: true },
+    "../../../../packages/vue-form/examples/*/sources.ts",
   ),
 };
-const propsModules = import.meta.glob<Record<string, unknown>>("./props/*.ts", {
-  eager: true,
-});
+const propsModules = import.meta.glob<Record<string, unknown>>(
+  "./props/*.gen.ts",
+  {
+    eager: true,
+  },
+);
 
 function toCamelCase(id: string): string {
   return id.replace(/-([a-z])/g, (_, char: string) => char.toUpperCase());
@@ -390,15 +390,6 @@ export async function listComponentDocTabs(
   return tabs;
 }
 
-export async function getDefaultComponentTab(
-  framework: Framework,
-  id: string,
-  kind: ComponentDocKind = "component",
-): Promise<SkillPaneId> {
-  const tabs = await listComponentDocTabs(framework, id, kind);
-  return tabs[0]?.id ?? "develop";
-}
-
 /** Static paths for `/…/components|forms/<id>/<tab>`. */
 export async function listComponentTabStaticPaths(
   framework: Framework,
@@ -415,11 +406,11 @@ export async function listComponentTabStaticPaths(
   return paths;
 }
 
-export function loadExamples(
+export async function loadExamples(
   framework: Framework,
   id: string,
   kind: ComponentDocKind = "component",
-): ExampleModule {
+): Promise<ExampleModule> {
   const modules =
     kind === "form"
       ? formExamplesByFramework[framework]
@@ -427,8 +418,10 @@ export function loadExamples(
   if (!modules) {
     throw new Error(`No examples glob for ${framework}/${kind}`);
   }
-  const key = findGlobKey(modules, `/examples/${id}/index.ts`);
-  const mod = key ? modules[key] : undefined;
+  const file = framework === "astro" ? "index.ts" : "sources.ts";
+  const key = findGlobKey(modules, `/examples/${id}/${file}`);
+  const loader = key ? modules[key] : undefined;
+  const mod = loader ? await loader() : undefined;
   if (!mod?.sources) {
     throw new Error(`Missing ${framework} examples for "${id}"`);
   }
@@ -438,7 +431,7 @@ export function loadExamples(
 /** Props rows when a generated module exists; otherwise `null`. */
 export function loadProps(id: string): PropRow[] | null {
   const propsId = PROPS_FILE_ALIASES[id] ?? id;
-  const key = findGlobKey(propsModules, `/props/${propsId}.ts`);
+  const key = findGlobKey(propsModules, `/props/${propsId}.gen.ts`);
   const mod = key ? propsModules[key] : undefined;
   if (!mod) return null;
   const exportName = `${toCamelCase(propsId)}Props`;
@@ -447,56 +440,28 @@ export function loadProps(id: string): PropRow[] | null {
   return rows as PropRow[];
 }
 
-/** Resolve a named example export for live preview (build-time check). */
+/** Ensure develop markdown `exportName` has a matching `sources` key. */
+export function assertExampleSource(
+  examples: ExampleModule,
+  exportName: string,
+): void {
+  if (exportName === "sources" || exportName === "imports") {
+    throw new Error(`Invalid example exportName "${exportName}"`);
+  }
+  if (typeof examples.sources[exportName] !== "string") {
+    throw new Error(`Missing example source "${exportName}"`);
+  }
+}
+
+/** Resolve a named example export for live Astro SSR preview. */
 export function getExampleExport(
   examples: ExampleModule,
   exportName: string,
 ): unknown {
-  if (exportName === "sources" || exportName === "imports") {
-    throw new Error(`Invalid example exportName "${exportName}"`);
-  }
+  assertExampleSource(examples, exportName);
   const Comp = examples[exportName];
   if (Comp == null || typeof Comp === "string") {
     throw new Error(`Missing example export "${exportName}"`);
   }
   return Comp;
-}
-
-/** Static paths for standalone example preview pages (`/preview/…`). */
-export function listExamplePreviewStaticPaths(): {
-  params: {
-    framework: Framework;
-    kind: ComponentDocKind;
-    id: string;
-    example: string;
-  };
-}[] {
-  const frameworks: Framework[] = ["astro", "react", "solid", "svelte", "vue"];
-  const kinds: ComponentDocKind[] = ["component", "form"];
-  const paths: {
-    params: {
-      framework: Framework;
-      kind: ComponentDocKind;
-      id: string;
-      example: string;
-    };
-  }[] = [];
-
-  for (const framework of frameworks) {
-    for (const kind of kinds) {
-      for (const id of listComponentIds(framework, kind)) {
-        let examples: ExampleModule;
-        try {
-          examples = loadExamples(framework, id, kind);
-        } catch {
-          continue;
-        }
-        for (const example of Object.keys(examples.sources)) {
-          paths.push({ params: { example, framework, id, kind } });
-        }
-      }
-    }
-  }
-
-  return paths;
 }

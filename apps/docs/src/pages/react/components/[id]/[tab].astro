@@ -1,5 +1,6 @@
 ---
 import ComponentDocPage from "#/components/docs/component-doc-page.astro";
+import { ReactExamplesHost } from "#/components/docs/react-examples-host";
 import {
   listComponentTabStaticPaths,
   type SkillPaneId,
@@ -14,3 +15,4 @@ const tab = Astro.params.tab as SkillPaneId;
 ---
 
 <ComponentDocPage framework="react" id={id} tab={tab} />
+{tab === "develop" ? <ReactExamplesHost client:only="react" /> : null}

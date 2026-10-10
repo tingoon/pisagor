@@ -1,11 +1,33 @@
 ---
+import {
+  ArrowSquareOutIcon,
+  BugIcon,
+  CaretUpDownIcon,
+  MoonIcon,
+  SunIcon,
+  TreeStructureIcon,
+} from "@phosphor-icons/react";
+import { Button, Separator, Surface, VisuallyHidden } from "@pisagor/astro";
+import type { Framework } from "#/lib/nav";
 import CodeBlock from "./code-block.astro";
 
 interface Props {
   title?: string;
-  code: string;
+  /**
+   * Inline source (embeds in HTML). Prefer `framework` + `exampleId` +
+   * `exportName` so Code tab loads on demand.
+   */
+  code?: string;
   language?: string;
   class?: string;
+  /** Framework for deferred source `import()` */
+  framework?: Framework;
+  /** Component / form / block id for deferred source load */
+  exampleId?: string;
+  /** `sources` key for deferred source load */
+  exportName?: string;
+  /** Which examples tree to load (`component` default) */
+  kind?: "component" | "form" | "block";
   /** npm / package id shown in the dependencies popover */
   packageName?: string;
   /** Extra dependency names for the popover */
@@ -20,6 +42,11 @@ const title = Astro.props.title;
 const language = Astro.props.language ?? "tsx";
 const packageName = Astro.props.packageName ?? "@pisagor/react";
 const previewHref = Astro.props.previewHref;
+const framework = Astro.props.framework;
+const exampleId = Astro.props.exampleId;
+const exportName = Astro.props.exportName;
+const kind = Astro.props.kind ?? "component";
+const deferSource = Boolean(framework && exampleId && exportName);
 const dependencies = Astro.props.dependencies ?? [
   "@pisagor/recipes",
   "@pisagor/tokens",
@@ -29,8 +56,24 @@ const reportUrl =
   "https://github.com/tingoon/pisagor/issues/new?labels=docs&title=" +
     encodeURIComponent(title ? `Docs preview: ${title}` : "Docs preview issue");
 
-const iconBtn =
-  "docs-press relative inline-flex size-7 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 data-active:bg-muted data-active:text-foreground";
+/** Preview surfaces — `page` is the bare canvas, the rest are Surface variants. */
+const surfaces = [
+  { label: "Page", value: "page" },
+  { label: "Default", value: "default" },
+  { label: "Secondary", value: "secondary" },
+  { label: "Tertiary", value: "tertiary" },
+  { label: "Glass", value: "glass" },
+] as const;
+
+const viewports = [
+  { label: "Desktop", value: "desktop" },
+  { label: "Tablet", value: "tablet" },
+  { label: "Mobile", value: "mobile" },
+] as const;
+
+/** Native select styled like Pisagor's `sm` form control (no Astro Select exists). */
+const selectClass =
+  "h-7 w-full min-w-0 cursor-pointer appearance-none rounded-lg border border-foreground/20 bg-card ps-2 pe-6 text-foreground text-xs shadow-sm outline-hidden transition-[color,box-shadow,background-color,border-color] duration-fast ease-out focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/24 motion-reduce:transition-none! dark:border-input dark:bg-input/30";
 ---
 
 <section
@@ -42,139 +85,78 @@ const iconBtn =
     Astro.props.class,
   ]}
 >
-  <!-- Toolbar -->
   <div
     class="flex flex-wrap items-center gap-1.5 border-b border-border/60 bg-muted/15 px-2 py-1.5 sm:gap-2 sm:px-2.5"
   >
-    <!-- Preview / Code -->
     <div
       aria-label={title ? `${title} view` : "Component view"}
       class="inline-flex rounded-md bg-muted/60 p-0.5"
       role="tablist"
     >
-      <button
+      <Button
         aria-selected="true"
-        class="rounded-sm px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm docs-press"
+        class="docs-press text-muted-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm"
         data-active
         data-view="preview"
         data-view-tab
         role="tab"
+        size="xs"
         type="button"
+        variant="ghost"
       >
         Preview
-      </button>
-      <button
+      </Button>
+      <Button
         aria-selected="false"
-        class="rounded-sm px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm docs-press"
+        class="docs-press text-muted-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm"
         data-view="code"
         data-view-tab
         role="tab"
+        size="xs"
         type="button"
+        variant="ghost"
       >
         Code
-      </button>
+      </Button>
     </div>
 
     <div class="ms-auto flex flex-wrap items-center gap-1">
-      <!-- Toggle mode -->
-      <button
+      <Button
         aria-label="Toggle light and dark mode"
-        class={iconBtn}
         data-theme-toggle
         data-tooltip="Toggle mode"
+        size="icon-sm"
         type="button"
+        variant="ghost"
       >
-        <svg
-          aria-hidden="true"
-          class="size-3.5"
-          data-icon-sun
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-        >
-          <circle cx="12" cy="12" r="4"></circle>
-          <path
-            d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
-            stroke-linecap="round"
-          ></path>
-        </svg>
-        <svg
-          aria-hidden="true"
-          class="size-3.5"
-          data-icon-moon
-          fill="none"
-          hidden
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          ></path>
-        </svg>
-      </button>
+        <SunIcon aria-hidden data-icon-sun size={14} />
+        <MoonIcon aria-hidden data-icon-moon hidden size={14} />
+      </Button>
 
-      <!-- Open in new tab -->
-      <button
+      <Button
         aria-label="Open preview in a new tab"
-        class={iconBtn}
         data-open-tab
         data-tooltip="Open in new tab"
+        size="icon-sm"
         type="button"
+        variant="ghost"
       >
-        <svg
-          aria-hidden="true"
-          class="size-3.5"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M14 3h7v7"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          ></path>
-          <path d="M10 14L21 3" stroke-linecap="round"></path>
-          <path
-            d="M21 14v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h6"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          ></path>
-        </svg>
-      </button>
+        <ArrowSquareOutIcon aria-hidden size={14} />
+      </Button>
 
-      <!-- Dependencies -->
       <div class="relative" data-deps>
-        <button
+        <Button
           aria-expanded="false"
           aria-haspopup="dialog"
           aria-label="Show dependencies"
-          class={iconBtn}
           data-deps-toggle
           data-tooltip="Dependencies"
+          size="icon-sm"
           type="button"
+          variant="ghost"
         >
-          <svg
-            aria-hidden="true"
-            class="size-3.5"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-          >
-            <circle cx="6" cy="6" r="2.5"></circle>
-            <circle cx="18" cy="6" r="2.5"></circle>
-            <circle cx="12" cy="18" r="2.5"></circle>
-            <path
-              d="M8 7.5 10.5 15M16 7.5 13.5 15"
-              stroke-linecap="round"
-            ></path>
-          </svg>
-        </button>
+          <TreeStructureIcon aria-hidden size={14} />
+        </Button>
         <div
           aria-label="Dependencies"
           class="absolute inset-e-0 z-20 mt-1 hidden min-w-56 rounded-lg border border-border/70 bg-popover p-2 text-popover-foreground shadow-lg"
@@ -195,118 +177,46 @@ const iconBtn =
         </div>
       </div>
 
-      <!-- Report an issue -->
       <a
         aria-label="Report an issue"
-        class={iconBtn}
+        class="docs-press inline-flex size-8 items-center justify-center rounded-lg text-muted-foreground hover:bg-accent/60 hover:text-foreground"
         data-tooltip="Report an issue"
         href={reportUrl}
         rel="noreferrer"
         target="_blank"
       >
-        <span class="sr-only">Report an issue</span>
-        <svg
-          aria-hidden="true"
-          class="size-3.5"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M8 9V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v4"
-            stroke-linecap="round"
-          ></path>
-          <path
-            d="M6 9h12v4a6 6 0 0 1-6 6h0a6 6 0 0 1-6-6V9z"
-            stroke-linejoin="round"
-          ></path>
-          <path
-            d="M4 13h2M18 13h2M9 19v2M15 19v2"
-            stroke-linecap="round"
-          ></path>
-        </svg>
+        <VisuallyHidden>Report an issue</VisuallyHidden>
+        <BugIcon aria-hidden size={14} />
       </a>
 
-      <div
-        aria-hidden="true"
-        class="mx-0.5 hidden h-4 w-px bg-border/70 sm:block"
-      ></div>
+      <Separator class="mx-0.5 hidden h-4 sm:block" orientation="vertical" />
 
-      <!-- Desktop / Tablet / Mobile -->
-      <div
-        aria-label="Preview viewport"
-        class="inline-flex rounded-md border border-border/60 bg-background/60 p-0.5"
-        data-viewport-group
-        role="toolbar"
-      >
-        <button
-          aria-label="Desktop viewport"
-          aria-pressed="true"
-          class={iconBtn}
-          data-active
-          data-tooltip="Desktop"
-          data-viewport="desktop"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            class="size-3.5"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
+      {[
+        { key: "surface", label: "Surface", options: surfaces },
+        { key: "viewport", label: "Viewport", options: viewports },
+      ].map((control) => (
+        <span class="relative inline-flex">
+          <select
+            aria-label={control.label}
+            class={selectClass}
+            data-preview-select={control.key}
           >
-            <rect height="12" rx="1.5" width="18" x="3" y="4"></rect>
-            <path d="M8 20h8M12 16v4" stroke-linecap="round"></path>
-          </svg>
-        </button>
-        <button
-          aria-label="Tablet viewport"
-          aria-pressed="false"
-          class={iconBtn}
-          data-tooltip="Tablet"
-          data-viewport="tablet"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            class="size-3.5"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-          >
-            <rect height="18" rx="2" width="12" x="6" y="3"></rect>
-            <path d="M11 17h2" stroke-linecap="round"></path>
-          </svg>
-        </button>
-        <button
-          aria-label="Mobile viewport"
-          aria-pressed="false"
-          class={iconBtn}
-          data-tooltip="Mobile"
-          data-viewport="mobile"
-          type="button"
-        >
-          <svg
-            aria-hidden="true"
-            class="size-3.5"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-          >
-            <rect height="18" rx="2" width="10" x="7" y="3"></rect>
-            <path d="M11 17h2" stroke-linecap="round"></path>
-          </svg>
-        </button>
-      </div>
+            {control.options.map((option, index) => (
+              <option selected={index === 0} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+          <CaretUpDownIcon
+            aria-hidden
+            class="pointer-events-none absolute inset-e-1.5 top-1/2 -translate-y-1/2 text-muted-foreground"
+            size={12}
+          />
+        </span>
+      ))}
     </div>
   </div>
 
-  <!-- Preview canvas (theme scoped here — does not change the docs page).
-       Default matches docs; only set after bind. Toggle is in-memory only. -->
   <div
     class="flex min-h-48 items-center justify-center bg-background bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--primary)_8%,transparent),transparent_60%)] px-4 py-8 text-foreground sm:px-6 sm:py-10"
     data-panel="preview"
@@ -316,94 +226,102 @@ const iconBtn =
       data-preview-stage
       data-viewport="desktop"
     >
-      <slot />
+      <div class="w-full" data-preview-surface="page">
+        <slot />
+      </div>
     </div>
+    {surfaces.map((surface) =>
+      surface.value === "page" ? null : (
+        <template data-surface-template={surface.value}>
+          <Surface
+            bordered
+            class="w-full"
+            padding="lg"
+            variant={surface.value}
+          />
+        </template>
+      ),
+    )}
   </div>
 
-  <!-- Code panel -->
   <div class="hidden" data-panel="code">
     <CodeBlock
       class="rounded-none border-0 border-t border-border/60"
-      code={Astro.props.code}
+      code={deferSource ? undefined : Astro.props.code}
       lang={language}
+      lazy
+      sourceExport={deferSource ? exportName : undefined}
+      sourceFramework={deferSource ? framework : undefined}
+      sourceId={deferSource ? exampleId : undefined}
+      sourceKind={deferSource ? kind : undefined}
     />
   </div>
-
-  <span class="sr-only" data-code-source>{Astro.props.code}</span>
 </section>
 
-<style>
-[data-component-preview] [data-tooltip] {
-  position: relative;
-}
+<script>
+import { ensureLazyCodeBlock } from "#/lib/ensure-lazy-codeblock";
 
-[data-component-preview] [data-tooltip]::after {
-  content: attr(data-tooltip);
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 50%;
-  z-index: 30;
-  width: max-content;
-  max-width: 14rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.375rem;
-  border: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
-  background: var(--popover);
-  color: var(--popover-foreground);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  line-height: 1.25;
-  letter-spacing: 0.01em;
-  white-space: nowrap;
-  box-shadow: 0 4px 14px color-mix(in oklab, black 18%, transparent);
-  opacity: 0;
-  transform: translateX(-50%) translateY(-2px);
-  pointer-events: none;
-  transition:
-    opacity 120ms ease,
-    transform 120ms ease;
-}
+const SURFACE_STORAGE_KEY = "pisagor.docs.preview-surface";
+const SURFACE_EVENT = "pisagor:preview-surface";
 
-[data-component-preview] [data-tooltip]::before {
-  content: "";
-  position: absolute;
-  top: calc(100% + 2px);
-  left: 50%;
-  z-index: 31;
-  width: 6px;
-  height: 6px;
-  border-left: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
-  border-top: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
-  background: var(--popover);
-  opacity: 0;
-  transform: translateX(-50%) rotate(45deg);
-  pointer-events: none;
-  transition: opacity 120ms ease;
-}
-
-[data-component-preview] [data-tooltip]:hover::after,
-[data-component-preview] [data-tooltip]:focus-visible::after {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
-[data-component-preview] [data-tooltip]:hover::before,
-[data-component-preview] [data-tooltip]:focus-visible::before {
-  opacity: 1;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  [data-component-preview] [data-tooltip]::after,
-  [data-component-preview] [data-tooltip]::before {
-    transition: none;
+function readStoredSurface(): string {
+  try {
+    return localStorage.getItem(SURFACE_STORAGE_KEY) ?? "page";
+  } catch {
+    return "page";
   }
 }
-</style>
 
-<script>
+function bindSurface(root: HTMLElement) {
+  const wrapper = root.querySelector<HTMLElement>("[data-preview-surface]");
+  const select = root.querySelector<HTMLSelectElement>(
+    '[data-preview-select="surface"]',
+  );
+  if (!wrapper || !select) return;
+
+  // Class strings come from the real `<Surface>` render, so they track the recipe.
+  const classes = new Map<string, string>([["page", "w-full"]]);
+  for (const tpl of root.querySelectorAll<HTMLTemplateElement>(
+    "template[data-surface-template]",
+  )) {
+    const el = tpl.content.firstElementChild;
+    if (el && tpl.dataset.surfaceTemplate) {
+      classes.set(tpl.dataset.surfaceTemplate, el.className);
+    }
+  }
+
+  function apply(value: string) {
+    const next = classes.has(value) ? value : "page";
+    if (!wrapper) return;
+    wrapper.className = classes.get(next) ?? "w-full";
+    wrapper.dataset.previewSurface = next;
+    if (select) select.value = next;
+  }
+
+  function choose(value: string) {
+    try {
+      localStorage.setItem(SURFACE_STORAGE_KEY, value);
+    } catch {
+      /* ignore */
+    }
+    // Keep every preview on the page in sync.
+    document.dispatchEvent(new CustomEvent(SURFACE_EVENT, { detail: value }));
+  }
+
+  select.addEventListener("change", () => choose(select.value));
+
+  document.addEventListener(SURFACE_EVENT, (event) => {
+    if (!root.isConnected) return;
+    apply(String((event as CustomEvent<string>).detail));
+  });
+
+  apply(readStoredSurface());
+}
+
 function bindPreview(root: HTMLElement) {
   if (root.dataset.bound === "1") return;
   root.dataset.bound = "1";
+  bindSurface(root);
 
   const tabs = [...root.querySelectorAll<HTMLElement>("[data-view-tab]")];
   const previewPanel = root.querySelector<HTMLElement>(
@@ -427,6 +345,9 @@ function bindPreview(root: HTMLElement) {
     }
     previewPanel?.classList.toggle("hidden", view !== "preview");
     codePanel?.classList.toggle("hidden", view !== "code");
+    if (view === "code" && codePanel) {
+      void ensureLazyCodeBlock(codePanel);
+    }
   }
 
   for (const tab of tabs) {
@@ -489,7 +410,7 @@ function bindPreview(root: HTMLElement) {
       return;
     }
 
-    // Fallback for block demos without a preview route (static snapshot).
+    // Fallback when no standalone preview route is set (static snapshot).
     if (!stage) return;
     const styles = [
       ...document.querySelectorAll('link[rel="stylesheet"], style'),
@@ -506,8 +427,8 @@ function bindPreview(root: HTMLElement) {
 <title>${title}</title>
   ${styles}
 </head>
-<body class="min-h-dvh bg-background p-8 text-foreground">
-<div class="mx-auto w-full max-w-5xl">${stage.innerHTML}</div>
+<body class="min-h-dvh bg-background p-0 text-foreground">
+<div class="mx-auto w-full">${stage.innerHTML}</div>
 </body>
 </html>`;
     // `noopener` in windowFeatures returns null — open first, then disown.
@@ -539,26 +460,14 @@ function bindPreview(root: HTMLElement) {
     if (event.key === "Escape") closeDeps();
   });
 
-  function setViewport(size: "desktop" | "tablet" | "mobile") {
-    if (stage) stage.dataset.viewport = size;
-    for (const btn of root.querySelectorAll<HTMLElement>(
-      "[data-viewport-group] [data-viewport]",
-    )) {
-      const active = btn.dataset.viewport === size;
-      btn.toggleAttribute("data-active", active);
-      btn.setAttribute("aria-pressed", active ? "true" : "false");
-    }
-  }
-
-  for (const btn of root.querySelectorAll<HTMLElement>(
-    "[data-viewport-group] [data-viewport]",
-  )) {
-    btn.addEventListener("click", () => {
-      const size = btn.dataset.viewport;
-      if (size === "tablet" || size === "mobile" || size === "desktop")
-        setViewport(size);
-    });
-  }
+  const viewportSelect = root.querySelector<HTMLSelectElement>(
+    '[data-preview-select="viewport"]',
+  );
+  viewportSelect?.addEventListener("change", () => {
+    const size = viewportSelect.value;
+    if (stage && (size === "tablet" || size === "mobile" || size === "desktop"))
+      stage.dataset.viewport = size;
+  });
 }
 
 function bindAll() {

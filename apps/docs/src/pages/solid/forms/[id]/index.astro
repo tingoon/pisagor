@@ -1,0 +1,14 @@
+---
+import { listComponentIds } from "#/lib/component-doc";
+import { withDocsBase } from "#/lib/nav";
+
+export function getStaticPaths() {
+  return listComponentIds("solid", "form").map((id) => ({
+    params: { id },
+  }));
+}
+
+const id = Astro.params.id as string;
+return Astro.redirect(withDocsBase(`/solid/forms/${id}/develop`));
+---
+

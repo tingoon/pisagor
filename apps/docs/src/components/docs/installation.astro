@@ -1,4 +1,6 @@
 ---
+import { Button, Separator } from "@pisagor/astro";
+
 interface Props {
   /** One or more packages, e.g. "@pisagor/react" */
   packages?: string | string[];
@@ -30,7 +32,7 @@ const defaultManual =
     : resolvedPkgs.map((p) => `import { /* … */ } from "${p}";`).join("\n"));
 
 const tabClass =
-  "shrink-0 rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm";
+  "shrink-0 text-muted-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm";
 ---
 
 <div
@@ -69,7 +71,7 @@ const tabClass =
         role="tablist"
       >
         {managers.map((manager) => (
-          <button
+          <Button
             aria-selected={manager.id === defaultManager.id ? "true" : "false"}
             class={tabClass}
             data-active={manager.id === defaultManager.id ? "" : undefined}
@@ -78,25 +80,26 @@ const tabClass =
             data-pm={manager.id}
             data-tab
             role="tab"
+            size="sm"
             type="button"
+            variant="ghost"
           >
             {manager.label}
-          </button>
+          </Button>
         ))}
-        <span
-          aria-hidden="true"
-          class="mx-1 h-4 w-px shrink-0 bg-border"
-        ></span>
-        <button
+        <Separator class="mx-1 h-4" orientation="vertical" />
+        <Button
           aria-selected="false"
           class={tabClass}
           data-mode="manual"
           data-tab
           role="tab"
+          size="sm"
           type="button"
+          variant="ghost"
         >
           Manual
-        </button>
+        </Button>
       </div>
     </div>
 
@@ -119,11 +122,13 @@ const tabClass =
       </p>
     </div>
 
-    <button
+    <Button
       aria-label="Copy to clipboard"
-      class="absolute end-2 bottom-2 inline-flex size-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground data-copied:text-emerald-500 data-[mode=manual]:bottom-auto data-[mode=manual]:top-12"
+      class="absolute end-2 bottom-2 data-copied:text-emerald-500 data-[mode=manual]:bottom-auto data-[mode=manual]:top-12"
       data-copy
+      size="icon-sm"
       type="button"
+      variant="ghost"
     >
       <svg
         aria-hidden="true"
@@ -155,7 +160,7 @@ const tabClass =
           stroke-linejoin="round"
         ></path>
       </svg>
-    </button>
+    </Button>
   </div>
 </div>
 

@@ -1,0 +1,114 @@
+---
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import {
+  loadBlockBody,
+  loadBlockDocs,
+  loadBlockExamples,
+} from "#/lib/block-doc";
+import { assertExampleSource, PREVIEW_LANGUAGE } from "#/lib/component-doc";
+import { renderDevelopSegments } from "#/lib/develop-markdown";
+import type { Framework } from "#/lib/nav";
+import { withDocsBase } from "#/lib/nav";
+
+interface Props {
+  id: string;
+  framework: Framework;
+}
+
+const id = Astro.props.id;
+const framework = Astro.props.framework;
+const docs = loadBlockDocs(framework, id);
+const body = loadBlockBody(framework, id);
+const examples = await loadBlockExamples(framework, id);
+const language = PREVIEW_LANGUAGE[framework];
+const segments = await renderDevelopSegments(body);
+
+const exampleExportNames = segments.flatMap((segment) => {
+  if (segment.type !== "example-section") return [];
+  return segment.items.flatMap((item) => {
+    if (item.type !== "example") return [];
+    assertExampleSource(examples, item.doc.exportName);
+    return examples.sources[item.doc.exportName] ? [item.doc.exportName] : [];
+  });
+});
+
+const proseClass =
+  "docs-skill-md space-y-4 text-sm leading-7 text-foreground/90 [&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-2 [&_code]:rounded-md [&_code]:bg-muted/60 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-3.25 [&_pre_code]:rounded-none [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:text-foreground [&>h2:first-child]:!mt-0 [&_li]:my-1 [&_ol]:my-3 [&_ol]:list-decimal [&_ol]:ps-5 [&_p]:my-3 [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-border/60 [&_pre]:bg-muted/30 [&_pre]:p-4 [&_pre]:text-3.25 [&_strong]:font-semibold [&_table]:my-4 [&_table]:w-full [&_table]:text-left [&_td]:border-b [&_td]:border-border/50 [&_td]:py-2 [&_td]:pe-4 [&_th]:border-b [&_th]:border-border/70 [&_th]:py-2 [&_th]:pe-4 [&_th]:font-semibold [&_ul]:my-3 [&_ul]:list-disc [&_ul]:ps-5";
+---
+
+<DocsLayout
+  description={docs.description}
+  framework={framework}
+  title={docs.title}
+>
+  <div class={proseClass}>
+    {segments.map((segment) => {
+      if (segment.type === "html") {
+        return <Fragment set:html={segment.html} />;
+      }
+
+      if (segment.type !== "example-section") return null;
+
+      return (
+        <>
+          <h2 id={segment.id}>{segment.title}</h2>
+          {segment.items.map((item) => {
+            if (item.type === "html") {
+              return <Fragment set:html={item.html} />;
+            }
+            const ex = item.doc;
+            assertExampleSource(examples, ex.exportName);
+            if (!examples.sources[ex.exportName]) return null;
+            // Prefer ### title when present; otherwise the section h2 is enough.
+            const showExampleHeading = ex.title !== ex.exportName;
+            const HeadingTag = `h${Math.min(Math.max(ex.depth, 3), 6)}`;
+            return (
+              <>
+                {showExampleHeading ? (
+                  <HeadingTag
+                    class="mt-10 mb-3 font-semibold text-xl tracking-tight"
+                    id={ex.id}
+                  >
+                    {ex.title}
+                  </HeadingTag>
+                ) : null}
+                {item.descriptionHtml ? (
+                  <div
+                    class="mb-3 text-foreground/80 text-sm leading-7 [&_p]:my-0!"
+                    set:html={item.descriptionHtml}
+                  />
+                ) : null}
+                <ComponentPreview
+                  exampleId={id}
+                  exportName={ex.exportName}
+                  framework={framework}
+                  kind="block"
+                  language={language}
+                  previewHref={withDocsBase(
+                    `/preview/${framework}/${id}/${ex.exportName}`,
+                  )}
+                  title={ex.title === ex.exportName ? segment.title : ex.title}
+                >
+                  <div
+                    class="min-h-12 w-full"
+                    data-example-slot={ex.exportName}
+                  />
+                </ComponentPreview>
+              </>
+            );
+          })}
+        </>
+      );
+    })}
+  </div>
+
+  {exampleExportNames.length > 0 ? (
+    <div
+      data-block-id={id}
+      data-docs-block-examples-host
+      data-export-names={JSON.stringify(exampleExportNames)}
+      hidden
+    />
+  ) : null}
+</DocsLayout>

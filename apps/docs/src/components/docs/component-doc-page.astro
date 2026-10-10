@@ -2,13 +2,10 @@
 import ComponentHeader from "#/components/docs/component-header.astro";
 import ComponentPreview from "#/components/docs/component-preview.astro";
 import PropsTable from "#/components/docs/props-table.astro";
-import { ReactExampleIsland } from "#/components/docs/react-example-island";
-import { SolidExampleIsland } from "#/components/docs/solid-example-island";
-import SvelteExampleIsland from "#/components/docs/svelte-example-island.svelte";
-import VueExampleIsland from "#/components/docs/vue-example-island.vue";
 import DocsLayout from "#/layouts/docs-layout.astro";
 import { resolveAnatomySrc } from "#/lib/anatomy";
 import {
+  assertExampleSource,
   type ComponentDocKind,
   defaultPackageName,
   getExampleExport,
@@ -21,14 +18,11 @@ import {
   type SkillPaneId,
 } from "#/lib/component-doc";
 import type { ComponentDocs } from "#/lib/component-docs-types";
+import { renderDevelopSegments } from "#/lib/develop-markdown";
 import type { Framework } from "#/lib/nav";
 import { withDocsBase } from "#/lib/nav";
-import {
-  extractTocHeadings,
-  omitExamplesSection,
-  resolveComponentExamples,
-} from "#/lib/parse-example-directives";
-import { findDisplayedSkillBody, findSkillExamplesBody } from "#/lib/skill-doc";
+import { extractTocHeadings } from "#/lib/parse-example-directives";
+import { findDisplayedSkillBody } from "#/lib/skill-doc";
 
 interface Props {
   id: string;
@@ -46,15 +40,14 @@ const anatomySrc = resolveAnatomySrc(id);
 const { frontmatter } = await loadSkillMd(framework, id, kind);
 const panes = await loadSkillPanes(framework, id, kind);
 const docs = frontmatter as ComponentDocs;
-const examples = loadExamples(framework, id, kind);
+const examples =
+  activeTab === "develop" ? await loadExamples(framework, id, kind) : null;
 const propsRows = loadProps(id);
 const pkg = docs.packageName ?? defaultPackageName(framework, kind);
 const language = PREVIEW_LANGUAGE[framework];
 const areaSlug = kind === "form" ? "forms" : "components";
 
 const skillOpts = { framework, packageName: pkg };
-const examplesBody = findSkillExamplesBody(id, skillOpts);
-const exampleDocs = resolveComponentExamples(examplesBody);
 const tabs = await listComponentDocTabs(framework, id, kind);
 
 if (!tabs.some((t) => t.id === activeTab)) {
@@ -62,21 +55,35 @@ if (!tabs.some((t) => t.id === activeTab)) {
 }
 
 const DesignContent = panes.design?.Content;
-const DevelopContent = panes.develop?.Content;
 
 const paneForToc = activeTab === "design" ? "design" : "develop";
+const developBody = findDisplayedSkillBody(id, "develop", skillOpts);
 const paneHeadings = extractTocHeadings(
   findDisplayedSkillBody(id, paneForToc, skillOpts),
 );
-// Develop page shell only renders Examples when directives resolve.
+// Develop markdown is the SSOT: page sections and TOC follow its heading order.
+const developSegments =
+  activeTab === "develop" ? await renderDevelopSegments(developBody) : [];
 const headings = [
-  ...(activeTab === "develop" && exampleDocs.length === 0
-    ? omitExamplesSection(paneHeadings)
-    : paneHeadings),
+  ...paneHeadings,
   ...(activeTab === "develop"
     ? [{ depth: 2, slug: "props", text: "Props" }]
     : []),
 ];
+
+const exampleExportNames =
+  examples == null
+    ? []
+    : developSegments.flatMap((segment) => {
+        if (segment.type !== "example-section") return [];
+        return segment.items.flatMap((item) => {
+          if (item.type !== "example") return [];
+          assertExampleSource(examples, item.doc.exportName);
+          return examples.sources[item.doc.exportName]
+            ? [item.doc.exportName]
+            : [];
+        });
+      });
 
 function tabHref(tabId: SkillPaneId): string {
   return withDocsBase(`/${framework}/${areaSlug}/${id}/${tabId}`);
@@ -167,82 +174,81 @@ const tocTabLinkClass =
         id="doc-panel-develop"
         role="tabpanel"
       >
-        <div class:list={[proseClass, exampleDocs.length > 0 ? "mb-10" : ""]}>
-          {DevelopContent ? <DevelopContent /> : null}
-        </div>
+        {developSegments.length > 0 && examples ? (
+          <div class={proseClass}>
+            {developSegments.map((segment) => {
+              if (segment.type === "html") {
+                return <Fragment set:html={segment.html} />;
+              }
 
-        {exampleDocs.length > 0 ? (
-          <>
-            <h2
-              class="mb-3 font-semibold text-2xl tracking-tight"
-              id="examples"
-            >
-              Examples
-            </h2>
-            {exampleDocs.map((ex) => {
-              const Example = getExampleExport(examples, ex.exportName);
-              const code = examples.sources[ex.exportName];
-              if (!code) return null;
+              if (segment.type !== "example-section") return null;
+
               return (
                 <>
-                  <h3
-                    class="mt-10 mb-3 font-semibold text-xl tracking-tight"
-                    id={ex.id}
-                  >
-                    {ex.title}
-                  </h3>
-                  {ex.description ? (
-                    <p class="mb-3 text-foreground/80 text-sm leading-7">
-                      {ex.description}
-                    </p>
-                  ) : null}
-                  <ComponentPreview
-                    code={code}
-                    language={language}
-                    packageName={pkg}
-                    previewHref={withDocsBase(
-                      `/preview/${framework}/${kind}/${id}/${ex.exportName}`,
-                    )}
-                    title={ex.title}
-                  >
-                    {framework === "react" ? (
-                      <ReactExampleIsland
-                        client:only="react"
-                        componentId={id}
-                        exportName={ex.exportName}
-                        kind={kind}
-                      />
-                    ) : null}
-                    {framework === "vue" ? (
-                      <VueExampleIsland
-                        client:only="vue"
-                        componentId={id}
-                        exportName={ex.exportName}
-                        kind={kind}
-                      />
-                    ) : null}
-                    {framework === "solid" ? (
-                      <SolidExampleIsland
-                        client:only="solid-js"
-                        componentId={id}
-                        exportName={ex.exportName}
-                        kind={kind}
-                      />
-                    ) : null}
-                    {framework === "svelte" ? (
-                      <SvelteExampleIsland
-                        client:only="svelte"
-                        componentId={id}
-                        exportName={ex.exportName}
-                        kind={kind}
-                      />
-                    ) : null}
-                    {framework === "astro" ? <Example /> : null}
-                  </ComponentPreview>
+                  <h2 id={segment.id}>{segment.title}</h2>
+                  {segment.items.map((item) => {
+                    if (item.type === "html") {
+                      return <Fragment set:html={item.html} />;
+                    }
+                    const ex = item.doc;
+                    assertExampleSource(examples, ex.exportName);
+                    const Example =
+                      framework === "astro"
+                        ? getExampleExport(examples, ex.exportName)
+                        : null;
+                    if (!examples.sources[ex.exportName]) return null;
+                    const HeadingTag = `h${Math.min(Math.max(ex.depth, 3), 6)}`;
+                    return (
+                      <>
+                        {item.headed ? (
+                          <HeadingTag
+                            class="mt-10 mb-3 font-semibold text-xl tracking-tight"
+                            id={ex.id}
+                          >
+                            {ex.title}
+                          </HeadingTag>
+                        ) : null}
+                        {item.descriptionHtml ? (
+                          <div
+                            class="mb-3 text-foreground/80 text-sm leading-7 [&_p]:my-0!"
+                            set:html={item.descriptionHtml}
+                          />
+                        ) : null}
+                        <ComponentPreview
+                          exampleId={id}
+                          exportName={ex.exportName}
+                          framework={framework}
+                          kind={kind}
+                          language={language}
+                          packageName={pkg}
+                          title={ex.title}
+                        >
+                          {framework === "astro" ? (
+                            <Example />
+                          ) : (
+                            <div
+                              class="min-h-12 w-full"
+                              data-example-slot={ex.exportName}
+                            />
+                          )}
+                        </ComponentPreview>
+                      </>
+                    );
+                  })}
                 </>
               );
             })}
-          </>
+          </div>
+        ) : null}
+
+        {framework !== "astro" && exampleExportNames.length > 0 ? (
+          <div
+            data-component-id={id}
+            data-docs-examples-host
+            data-export-names={JSON.stringify(exampleExportNames)}
+            data-kind={kind}
+            hidden
+          />
         ) : null}
 
         <div class="mt-10">

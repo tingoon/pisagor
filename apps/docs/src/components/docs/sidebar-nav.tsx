@@ -1,4 +1,4 @@
-import { MagnifyingGlass } from "@phosphor-icons/react";
+import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { useId, useMemo, useState } from "react";
 import type { Framework, NavSection } from "#/lib/nav";
 import { frameworkPath } from "#/lib/nav";
@@ -74,7 +74,7 @@ export default function SidebarNav({
           Filter
         </label>
         <div className="relative">
-          <MagnifyingGlass
+          <MagnifyingGlassIcon
             aria-hidden
             className="pointer-events-none absolute inset-s-2.5 top-1/2 size-3.5 -translate-y-1/2 text-muted-foreground"
             weight="bold"
