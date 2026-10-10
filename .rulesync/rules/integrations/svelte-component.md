@@ -101,7 +101,7 @@ For **foldered** multi-file components. Export `createSlotRecipeContext` binding
 ### Stories app (`apps/svelte`)
 
 - `apps/svelte` is a **stories host** (`svelte-stories`), not Storybook.
-- Demo blocks under `apps/svelte/src/blocks/…` import the public export map.
+- Demo blocks live in `apps/docs/src/blocks/svelte/…` (docs app), not in this package.
 
 ### Cross-component imports
 
@@ -186,6 +186,6 @@ Same rules as [React Component Patterns → Authoring recipes](react-component.m
 
 ## Demos (not Storybook)
 
-- Author block demos in `apps/svelte/src/blocks/…` when documenting compositions for docs.
+- Author block demos in `apps/docs/src/blocks/svelte/…` when documenting compositions for docs.
 - Do **not** add `*.stories.*` under `packages/svelte`.
 - If Storybook is introduced later, host stories in the app (mirror `apps/react`), not in the package — [Storybook](stories.mdc) / [Component](component.mdc).

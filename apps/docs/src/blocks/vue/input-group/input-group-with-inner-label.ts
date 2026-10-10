@@ -1,0 +1,38 @@
+import { PhInfo } from "@phosphor-icons/vue";
+import { Button, Field, InputGroup, Tooltip } from "@pisagor/vue";
+import { defineComponent, h } from "vue";
+import { inputGroupWithInnerLabelBlock } from "#/recipes/blocks/input-group";
+
+const styles = inputGroupWithInnerLabelBlock();
+
+type ArkPart = Parameters<typeof h>[0];
+
+export const InputGroupWithInnerLabel = defineComponent({
+  inheritAttrs: false,
+  name: "InputGroupWithInnerLabel",
+  setup() {
+    return () =>
+      h(Field as ArkPart, null, () =>
+        h(InputGroup as ArkPart, null, () => [
+          h(InputGroup.Input as ArkPart, { placeholder: "John Doe" }),
+          h(InputGroup.Addon as ArkPart, { align: "block-start" }, () => [
+            h(Field.Label as ArkPart, null, () => "Username"),
+            h(Tooltip as ArkPart, {
+              children: h(
+                Button as ArkPart,
+                {
+                  "aria-label": "More info",
+                  class: styles.info(),
+                  size: "icon-xs",
+                  type: "button",
+                  variant: "ghost",
+                },
+                () => h(PhInfo, { "aria-hidden": true }),
+              ),
+              content: "Enter a username for your account",
+            }),
+          ]),
+        ]),
+      );
+  },
+});

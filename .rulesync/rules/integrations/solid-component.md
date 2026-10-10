@@ -64,7 +64,7 @@ Only for **foldered** multi-file components. Same rules as React — provide wit
 ### Stories app (`apps/solid`)
 
 - `apps/solid` is a **stories host** (`solid-stories`), not Storybook.
-- Demo blocks under `apps/solid/src/blocks/…` import the public export map.
+- Demo blocks live in `apps/docs/src/blocks/solid/…` (docs app), not in this package.
 
 ### Cross-component imports
 
@@ -148,6 +148,6 @@ Same rules as [React Component Patterns → Authoring recipes](react-component.m
 
 ## Demos (not Storybook)
 
-- Author block demos in `apps/solid/src/blocks/…` when documenting compositions for docs.
+- Author block demos in `apps/docs/src/blocks/solid/…` when documenting compositions for docs.
 - Do **not** add `*.stories.tsx` under `packages/solid`.
 - If Storybook is introduced later, host stories in the app (mirror `apps/react`), not in the package — [Storybook](stories.mdc) / [Component](component.mdc).

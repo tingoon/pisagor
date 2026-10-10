@@ -1,14 +1,9 @@
 {
   "dependencies": {
-    "@ark-ui/vue": "^5.39.2",
-    "@phosphor-icons/vue": "^2.2.1",
-    "@pisagor/recipes": "workspace:*",
-    "@pisagor/utils": "workspace:*",
     "@pisagor/vue": "workspace:*",
     "@pisagor/vue-form": "workspace:*",
     "@tanstack/vue-form": "^1.33.5",
-    "vue": "catalog:",
-    "zod": "^4.6.5"
+    "vue": "catalog:"
   },
   "description": "Vue Storybook for @pisagor/vue package stories.",
   "devDependencies": {

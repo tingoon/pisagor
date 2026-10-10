@@ -16,10 +16,12 @@ export default defineConfig({
       ignoreDependencies: ["chromatic"],
     },
     "apps/solid": {
-      entry: ["src/**/*"],
+      // Story host shell — blocks live in apps/docs; src is empty until stories return.
+      entry: ["package.json"],
     },
     "apps/svelte": {
-      entry: ["src/**/*"],
+      // Story host shell — blocks live in apps/docs; src is empty until stories return.
+      entry: ["package.json"],
     },
     "apps/vue": {
       entry: [".storybook/**/*", "src/**/*"],

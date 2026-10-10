@@ -1,13 +1,6 @@
 {
   "dependencies": {
-    "@ark-ui/solid": "^5.39.2",
-    "@pisagor/recipes": "workspace:*",
-    "@pisagor/solid": "workspace:*",
-    "@pisagor/solid-form": "workspace:*",
-    "@pisagor/utils": "workspace:*",
-    "@tanstack/solid-form": "^1.33.5",
-    "solid-js": "catalog:",
-    "zod": "^4.6.5"
+    "solid-js": "catalog:"
   },
   "description": "Solid stories for @pisagor/solid.",
   "devDependencies": {

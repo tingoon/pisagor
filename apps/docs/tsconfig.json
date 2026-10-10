@@ -4,14 +4,11 @@
     "jsxImportSource": "react",
     "paths": {
       "#/*": ["./src/*"],
-      "#/changelog/*": ["../../packages/*/CHANGELOG.md"],
-      "#/react/blocks/*": ["../react/src/blocks/*"],
-      "#/solid/blocks/*": ["../solid/src/blocks/*"],
-      "#/svelte/blocks/*": ["../svelte/src/blocks/*"],
-      "#/vue/blocks/*": ["../vue/src/blocks/*"]
+      "#/changelog/*": ["../../packages/*/CHANGELOG.md"]
     },
     "types": ["astro/client"]
   },
+  "exclude": ["src/blocks/solid"],
   "extends": "../../tsconfig.json",
   "include": [".astro/types.d.ts", "src", "astro.config.ts"]
 }
