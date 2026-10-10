@@ -1,7 +1,7 @@
 export {};
 
 declare module "#/changelog/*" {
-  export const Content: import("astro/runtime/server").AstroComponentFactory;
+  export const Content: import("astro/runtime/server/index.js").AstroComponentFactory;
   export function getHeadings(): {
     depth: number;
     slug: string;
@@ -14,11 +14,17 @@ declare module "*.md?raw" {
   export default raw;
 }
 
+declare module "@pisagor/astro/styles";
 declare module "@pisagor/react/styles";
 declare module "@pisagor/solid/styles";
 declare module "@pisagor/svelte/styles";
 declare module "@pisagor/tokens/styles";
 declare module "@pisagor/vue/styles";
+
+declare module "*.css?url" {
+  const href: string;
+  export default href;
+}
 
 declare module "react" {
   interface CSSProperties {

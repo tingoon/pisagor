@@ -8,7 +8,7 @@
     },
     "types": ["astro/client"]
   },
-  "exclude": ["src/blocks/solid"],
+  "exclude": ["src/examples/solid"],
   "extends": "../../tsconfig.json",
   "include": [".astro/types.d.ts", "src", "astro.config.ts"]
 }

@@ -1,0 +1,6 @@
+@import "../global.css";
+@import "@pisagor/vue/styles";
+
+@source "../../examples/vue/**/*.{ts,vue}";
+@source "../../../../packages/vue/examples/**/*.{ts,vue}";
+@source "../../../../packages/vue-form/examples/**/*.{ts,vue}";

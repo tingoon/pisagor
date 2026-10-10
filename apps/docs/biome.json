@@ -22,9 +22,9 @@
     },
     {
       "includes": [
-        "src/blocks/vue/**",
-        "src/blocks/svelte/**",
-        "src/blocks/solid/**",
+        "src/examples/vue/**",
+        "src/examples/svelte/**",
+        "src/examples/solid/**",
         "**/*.svelte",
         "**/*.vue"
       ],

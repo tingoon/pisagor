@@ -1,0 +1,54 @@
+---
+import BaseHead from "#/components/base-head.astro";
+import { SolidBlockExamplesHost } from "#/components/docs/solid-block-examples-host";
+import {
+  listExamplePreviewStaticPathsFor,
+  loadBlockDocs,
+  loadBlockExamples,
+} from "#/lib/block-doc";
+import { assertExampleSource } from "#/lib/component-doc";
+import { frameworkStylesheetUrl } from "#/styles/load-framework-css";
+
+export async function getStaticPaths() {
+  return listExamplePreviewStaticPathsFor("solid");
+}
+
+const framework = "solid" as const;
+
+const id = Astro.params.id as string;
+const example = Astro.params.example as string;
+
+const examples = await loadBlockExamples(framework, id);
+assertExampleSource(examples, example);
+const { title: blockTitle } = loadBlockDocs(framework, id);
+const title = `${blockTitle} · ${example}`;
+const exportNames = [example];
+const stylesheet = await frameworkStylesheetUrl(framework);
+---
+
+<!doctype html>
+<html data-framework={framework} data-preview-standalone lang="en">
+  <head>
+    <BaseHead description={`Live preview: ${title}`} title={title} />
+    <link href={stylesheet} rel="stylesheet">
+    <script is:inline>
+    (() => {
+      const theme = new URLSearchParams(location.search).get("theme");
+      if (theme !== "dark" && theme !== "light") return;
+      document.documentElement.classList.toggle("dark", theme === "dark");
+      document.documentElement.classList.toggle("light", theme === "light");
+      document.documentElement.style.colorScheme = theme;
+    })();
+    </script>
+  </head>
+  <body class="m-0 min-h-dvh bg-background p-0 text-foreground">
+    <main class="min-h-dvh w-full">
+      <div class="min-h-dvh w-full" data-example-slot={example}></div>
+      <SolidBlockExamplesHost
+        blockId={id}
+        exportNames={exportNames}
+        client:only="solid-js"
+      />
+    </main>
+  </body>
+</html>

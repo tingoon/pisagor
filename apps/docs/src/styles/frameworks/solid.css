@@ -1,0 +1,6 @@
+@import "../global.css";
+@import "@pisagor/solid/styles";
+
+@source "../../examples/solid/**/*.{ts,tsx}";
+@source "../../../../packages/solid/examples/**/*.{ts,tsx}";
+@source "../../../../packages/solid-form/examples/**/*.{ts,tsx}";
