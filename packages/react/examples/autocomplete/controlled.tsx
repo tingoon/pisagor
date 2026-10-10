@@ -1,46 +1,23 @@
-import { useFilter, useListCollection } from "@ark-ui/react";
 import { Autocomplete } from "@pisagor/react";
 import { useState } from "react";
 
 export function Controlled() {
-  const initialItems = [
-    { label: "Apple", value: "apple" },
-    { label: "Banana", value: "banana" },
-    { label: "Cherry", value: "cherry" },
-    { label: "Date", value: "date" },
-  ];
-  const [value, setValue] = useState<string | undefined>("banana");
-
-  const { contains } = useFilter({ sensitivity: "base" });
-
-  const { collection, filter } = useListCollection({
-    filter: contains,
-    initialItems,
-  });
+  const [value, setValue] = useState<string[]>(["banana"]);
 
   return (
     <div className="flex flex-col gap-2">
-      <Autocomplete.Root
-        className="w-full"
-        collection={collection}
-        onInputValueChange={({ inputValue }) => filter(inputValue)}
-        onValueChange={(value) => setValue(value.at(0))}
-        value={value ? [value] : []}
-      >
-        <Autocomplete.Input placeholder="Select a fruit..." />
-        <Autocomplete.Content>
-          <Autocomplete.Empty />
-          <Autocomplete.List>
-            {collection.items.map((item) => (
-              <Autocomplete.Item item={item} key={item.value}>
-                {item.label}
-              </Autocomplete.Item>
-            ))}
-          </Autocomplete.List>
-        </Autocomplete.Content>
-      </Autocomplete.Root>
+      <Autocomplete
+        items={[
+          { label: "Apple", value: "apple" },
+          { label: "Banana", value: "banana" },
+          { label: "Cherry", value: "cherry" },
+          { label: "Date", value: "date" },
+        ]}
+        onValueChange={setValue}
+        value={value}
+      />
       <p className="text-center text-muted-foreground text-sm">
-        Selected: {value ?? "(none)"}
+        Selected: {value.at(0) ?? "(none)"}
       </p>
     </div>
   );

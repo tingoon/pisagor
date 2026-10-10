@@ -22,20 +22,21 @@ const marqueeIcons: Icon[] = [
   AtomIcon,
 ];
 
+const items = marqueeIcons.map((IconComponent) => (
+  <Card
+    className="[--space:--spacing(8)]"
+    key={IconComponent.displayName ?? IconComponent.name}
+  >
+    <Card.Content>
+      <IconComponent className="size-10" />
+    </Card.Content>
+  </Card>
+));
+
 export function OrientationVertical() {
   return (
-    <Marquee.Root>
-      <Marquee.Content>
-        {marqueeIcons.map((IconComponent) => (
-          <Marquee.Item key={IconComponent.displayName ?? IconComponent.name}>
-            <Card>
-              <Card.Content className="flex justify-center">
-                <IconComponent className="size-10" />
-              </Card.Content>
-            </Card>
-          </Marquee.Item>
-        ))}
-      </Marquee.Content>
-    </Marquee.Root>
+    <div className="h-80">
+      <Marquee items={items} orientation="vertical" />
+    </div>
   );
 }

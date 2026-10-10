@@ -12,17 +12,17 @@ Choose visual weight or emphasis so the keyboard badge matches importance in the
 
 :::example Variants
 
-### With Button
-
-Place the badge next to a button that performs the same action.
-
-:::example WithButton
-
 ### Kbd Group
 
 Group several keys when the shortcut is a chord.
 
 :::example KbdGroup
+
+### With Button
+
+Place the badge next to a button that performs the same action.
+
+:::example WithButton
 
 ### With Tooltip
 
@@ -30,8 +30,10 @@ Explain the shortcut with a short tooltip when the keys alone are unclear.
 
 :::example WithTooltip
 
-### Default
+## Customization
 
-Show a keyboard key in a monospace badge.
+### Custom recipe
 
-:::example Default
+Extend `kbdRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

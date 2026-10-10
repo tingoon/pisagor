@@ -8,9 +8,15 @@ Part of `@pisagor/react-form`. Style with recipes where available — no app-lev
 
 ## Examples
 
+### Default
+
+A numeric input with stepper buttons, bounded by `min` and `max`.
+
+:::example Default
+
 ### Disabled
 
-Show that the number field is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the number field is unavailable.
 
 :::example Disabled
 

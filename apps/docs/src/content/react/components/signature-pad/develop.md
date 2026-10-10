@@ -6,17 +6,17 @@ import { SignaturePad } from "@pisagor/react";
 
 ## Examples
 
-### Invalid
+### Default
 
-Surface a validation or error state so users know the signature pad needs attention before continuing.
+Capture a handwritten signature with pointer or touch input.
 
-:::example Invalid
+:::example Default
 
-### Disabled
+### Image Preview
 
-Show that signing is unavailable. Prefer explaining why nearby.
+Preview the signature image before submit.
 
-:::example Disabled
+:::example ImagePreview
 
 ### Controlled
 
@@ -24,8 +24,22 @@ Drive stroke data from the parent when signature state lives above.
 
 :::example Controlled
 
-### Image Preview
+### Disabled
 
-Preview the signature image before submit.
+Show that signing is unavailable.
 
-:::example ImagePreview
+:::example Disabled
+
+### Invalid
+
+Surface a validation or error state so users know the signature pad needs attention before continuing.
+
+:::example Invalid
+
+## Customization
+
+### Custom recipe
+
+Extend `signaturePadRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

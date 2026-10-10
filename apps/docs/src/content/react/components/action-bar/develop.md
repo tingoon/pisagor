@@ -4,6 +4,20 @@
 import { ActionBar } from "@pisagor/react";
 ```
 
+## Anatomy
+
+```tsx
+<ActionBar>
+  <ActionBar.Trigger />
+  <ActionBar.Content>
+    <ActionBar.Value />
+    <ActionBar.Separator />
+    <ActionBar.Body />
+    <ActionBar.Close />
+  </ActionBar.Content>
+</ActionBar>
+```
+
 ## Examples
 
 ### Default
@@ -11,12 +25,6 @@ import { ActionBar } from "@pisagor/react";
 The standard bar that appears when selection enables bulk actions.
 
 :::example Default
-
-### Custom Spacing
-
-Tighten or loosen padding when the bar sits in a denser or roomier toolbar.
-
-:::example CustomSpacing
 
 ### Gutter
 
@@ -53,3 +61,19 @@ Manage state from the parent when other UI must stay in sync with this action ba
 Choose placement so the action bar stays near its trigger without covering critical content.
 
 :::example Placements
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Tighten or loosen padding when the bar sits in a denser or roomier toolbar.
+
+:::example CustomSpacing
+
+### Custom recipe
+
+Extend `actionBarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

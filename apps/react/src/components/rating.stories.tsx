@@ -20,42 +20,50 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const CustomColor = meta.story({
-  render: Examples.CustomColor,
+export const Default = meta.story({
+  render: Examples.Default,
 });
 
 export const Count = meta.story({
   render: Examples.Count,
 });
 
-export const CustomIcon = meta.story({
-  render: Examples.CustomIcon,
-});
-
-export const CustomSize = meta.story({
-  render: Examples.CustomSize,
-});
-
 export const HalfStar = meta.story({
   render: Examples.HalfStar,
+});
+
+export const CustomIcon = meta.story({
+  render: Examples.CustomIcon,
 });
 
 export const Testimonial = meta.story({
   render: Examples.Testimonial,
 });
 
-export const Invalid = meta.story({
-  render: Examples.Invalid,
+export const Controlled = meta.story({
+  render: Examples.Controlled,
 });
 
 export const Disabled = meta.story({
   render: Examples.Disabled,
 });
 
+export const Invalid = meta.story({
+  render: Examples.Invalid,
+});
+
 export const Readonly = meta.story({
   render: Examples.Readonly,
 });
 
-export const Controlled = meta.story({
-  render: Examples.Controlled,
+export const CustomColor = meta.story({
+  render: Examples.CustomColor,
+});
+
+export const CustomSize = meta.story({
+  render: Examples.CustomSize,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

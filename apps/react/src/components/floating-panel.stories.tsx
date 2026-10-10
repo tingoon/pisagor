@@ -21,8 +21,8 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const CustomSpacing = meta.story({
-  render: Examples.CustomSpacing,
+export const Default = meta.story({
+  render: Examples.Default,
 });
 
 export const ControlledPosition = meta.story({
@@ -33,6 +33,10 @@ export const ControlledSize = meta.story({
   render: Examples.ControlledSize,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const CustomSpacing = meta.story({
+  render: Examples.CustomSpacing,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

@@ -22,26 +22,20 @@ const marqueeIcons: Icon[] = [
   AtomIcon,
 ];
 
-function MarqueeIconRow() {
-  return (
-    <Marquee.Content>
-      {marqueeIcons.map((IconComponent) => (
-        <Marquee.Item key={IconComponent.displayName ?? IconComponent.name}>
-          <Card className="[--space:--spacing(8)]">
-            <Card.Content>
-              <IconComponent className="size-10" />
-            </Card.Content>
-          </Card>
-        </Marquee.Item>
-      ))}
-    </Marquee.Content>
-  );
-}
-
 export function Compound() {
   return (
     <Marquee.Root>
-      <MarqueeIconRow />
+      <Marquee.Content>
+        {marqueeIcons.map((IconComponent) => (
+          <Marquee.Item key={IconComponent.displayName ?? IconComponent.name}>
+            <Card className="[--space:--spacing(8)]">
+              <Card.Content>
+                <IconComponent className="size-10" />
+              </Card.Content>
+            </Card>
+          </Marquee.Item>
+        ))}
+      </Marquee.Content>
     </Marquee.Root>
   );
 }

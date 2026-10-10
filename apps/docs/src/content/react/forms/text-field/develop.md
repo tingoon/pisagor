@@ -8,9 +8,15 @@ Part of `@pisagor/react-form`. Style with recipes where available — no app-lev
 
 ## Examples
 
+### Default
+
+A single-line text input with label, placeholder, and helper text.
+
+:::example Default
+
 ### Disabled
 
-Show that the field is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the field is unavailable.
 
 :::example Disabled
 

@@ -1,19 +1,3 @@
-## Usage
-
-**Recommended:** the single `Tooltip` export. There is no part composition API.
-
-```tsx
-<Tooltip content="Bold">
-  <Button aria-label="Bold" size="icon-md" variant="outline">
-    <TextBIcon />
-  </Button>
-</Tooltip>
-```
-
-- Pass label content with `content`.
-- Style with `className` / `classNames` and sub-element bags (`contentProps`, …) — do not compose private parts.
-- Icon-only triggers need an accessible name (`aria-label` or visible text).
-
 ## Import
 
 ```tsx
@@ -34,17 +18,25 @@ Include the shortcut in the tooltip when keys reinforce the action.
 
 :::example WithKeyboardShortcut
 
+### Disabled
+
+Show that the tooltip is unavailable.
+
+:::example Disabled
+
 ### Placements
 
 Place the tooltip so it stays near the trigger without covering critical UI.
 
 :::example Placements
 
-### Disabled
+## Customization
 
-Show that the tooltip is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+### Custom recipe
 
-:::example Disabled
+Extend `tooltipRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe
 
 ## Accessibility
 
@@ -54,3 +46,5 @@ Complies with the [Tooltip WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/
 | --- | ----------- |
 | Tab | Opens or closes the tooltip without delay when focus moves to or from the trigger. |
 | Escape | If open, closes the tooltip without delay. |
+
+Icon-only triggers need an accessible name (`aria-label` or visible text).

@@ -4,6 +4,14 @@
 import { LinkBox } from "@pisagor/react";
 ```
 
+## Anatomy
+
+```tsx
+<LinkBox>
+  <LinkBox.Overlay />
+</LinkBox>
+```
+
 ## Examples
 
 ### Default

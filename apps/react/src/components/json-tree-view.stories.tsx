@@ -33,6 +33,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: Examples.Default,
+});
+
 export const DataTypes = meta.story({
   render: Examples.DataTypes,
 });
@@ -45,6 +49,6 @@ export const MapSet = meta.story({
   render: Examples.MapSet,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

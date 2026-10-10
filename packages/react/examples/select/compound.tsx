@@ -5,19 +5,18 @@ export function Compound() {
   const collection = createListCollection({
     items: ["Banana", "Apple", "Orange", "Pineapple"],
   });
+
   return (
     <Select.Root collection={collection}>
       <Select.Trigger>
         <Select.ValueText placeholder="Select a fruit" />
       </Select.Trigger>
       <Select.Content>
-        <Select.ItemGroup heading="Fruits">
-          {collection.items.map((item) => (
-            <Select.Item item={item} key={item}>
-              {item}
-            </Select.Item>
-          ))}
-        </Select.ItemGroup>
+        {collection.items.map((item) => (
+          <Select.Item item={item} key={item}>
+            {item}
+          </Select.Item>
+        ))}
       </Select.Content>
     </Select.Root>
   );

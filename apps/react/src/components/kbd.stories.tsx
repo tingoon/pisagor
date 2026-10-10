@@ -26,18 +26,18 @@ export const Variants = meta.story({
   render: Examples.Variants,
 });
 
-export const WithButton = meta.story({
-  render: Examples.WithButton,
-});
-
 export const KbdGroup = meta.story({
   render: Examples.KbdGroup,
+});
+
+export const WithButton = meta.story({
+  render: Examples.WithButton,
 });
 
 export const WithTooltip = meta.story({
   render: Examples.WithTooltip,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

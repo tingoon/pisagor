@@ -16,7 +16,7 @@ const meta = preview.meta({
 });
 
 export const Playground = meta.story({
-  render: Examples.Default,
+  render: Examples.Variants,
   tags: ["autodocs"],
 });
 
@@ -36,6 +36,6 @@ export const WithFormControls = meta.story({
   render: Examples.WithFormControls,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

@@ -39,3 +39,7 @@ export const Nested = meta.story({
 export const WithSeparator = meta.story({
   render: Examples.WithSeparator,
 });
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
+});

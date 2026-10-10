@@ -1,0 +1,24 @@
+import { Avatar } from "@pisagor/react";
+import { avatarRecipe } from "@pisagor/recipes";
+import { tv } from "tailwind-variants";
+
+const brandAvatarRecipe = tv({
+  extend: avatarRecipe,
+  slots: {
+    base: "ring-2 ring-emerald-500 ring-offset-2 ring-offset-background",
+    fallback:
+      "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-100",
+  },
+  variants: {},
+});
+
+export function CustomRecipe() {
+  return (
+    <Avatar
+      alt="Jane Doe"
+      fallback="JD"
+      recipe={brandAvatarRecipe}
+      src="https://randomuser.me/api/portraits/women/5.jpg"
+    />
+  );
+}

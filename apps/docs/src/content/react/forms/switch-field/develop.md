@@ -8,9 +8,15 @@ Part of `@pisagor/react-form`. Style with recipes where available — no app-lev
 
 ## Examples
 
+### Default
+
+An on/off toggle for settings that apply immediately.
+
+:::example Default
+
 ### Disabled
 
-Show that the switch is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the switch is unavailable.
 
 :::example Disabled
 

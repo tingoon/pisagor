@@ -21,12 +21,12 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Variants = meta.story({
-  render: Examples.Variants,
+export const Default = meta.story({
+  render: Examples.Default,
 });
 
-export const CustomSpacing = meta.story({
-  render: Examples.CustomSpacing,
+export const Variants = meta.story({
+  render: Examples.Variants,
 });
 
 export const AreaChannels = meta.story({
@@ -45,28 +45,12 @@ export const InputCompact = meta.story({
   render: Examples.InputCompact,
 });
 
-export const InputControlled = meta.story({
-  render: Examples.InputControlled,
-});
-
-export const Disabled = meta.story({
-  render: Examples.Disabled,
-});
-
-export const Invalid = meta.story({
-  render: Examples.Invalid,
-});
-
 export const InputWithPopover = meta.story({
   render: Examples.InputWithPopover,
 });
 
 export const InputWithSwatchPreview = meta.story({
   render: Examples.InputWithSwatchPreview,
-});
-
-export const PopoverDisabled = meta.story({
-  render: Examples.PopoverDisabled,
 });
 
 export const PopoverSlidersOnly = meta.story({
@@ -85,14 +69,6 @@ export const SliderAlphaChannel = meta.story({
   render: Examples.SliderAlphaChannel,
 });
 
-export const SliderControlled = meta.story({
-  render: Examples.SliderControlled,
-});
-
-export const SliderDisabled = meta.story({
-  render: Examples.SliderDisabled,
-});
-
 export const SliderHsbaChannels = meta.story({
   render: Examples.SliderHsbaChannels,
 });
@@ -109,12 +85,52 @@ export const SliderVertical = meta.story({
   render: Examples.SliderVertical,
 });
 
-export const SwatchPickerControlled = meta.story({
-  render: Examples.SwatchPickerControlled,
+export const SwatchPicker = meta.story({
+  render: Examples.SwatchPicker,
 });
 
 export const SwatchPickerCustomIndicator = meta.story({
   render: Examples.SwatchPickerCustomIndicator,
+});
+
+export const Clearable = meta.story({
+  render: Examples.Clearable,
+});
+
+export const InputControlled = meta.story({
+  render: Examples.InputControlled,
+});
+
+export const SliderControlled = meta.story({
+  render: Examples.SliderControlled,
+});
+
+export const SwatchPickerControlled = meta.story({
+  render: Examples.SwatchPickerControlled,
+});
+
+export const Disabled = meta.story({
+  render: Examples.Disabled,
+});
+
+export const PopoverDisabled = meta.story({
+  render: Examples.PopoverDisabled,
+});
+
+export const SliderDisabled = meta.story({
+  render: Examples.SliderDisabled,
+});
+
+export const SwatchPickerDisabled = meta.story({
+  render: Examples.SwatchPickerDisabled,
+});
+
+export const Invalid = meta.story({
+  render: Examples.Invalid,
+});
+
+export const CustomSpacing = meta.story({
+  render: Examples.CustomSpacing,
 });
 
 export const SwatchPickerCustomRadius = meta.story({
@@ -125,18 +141,6 @@ export const SwatchPickerCustomSize = meta.story({
   render: Examples.SwatchPickerCustomSize,
 });
 
-export const SwatchPickerDisabled = meta.story({
-  render: Examples.SwatchPickerDisabled,
-});
-
-export const SwatchPicker = meta.story({
-  render: Examples.SwatchPicker,
-});
-
-export const Clearable = meta.story({
-  render: Examples.Clearable,
-});
-
-export const Default = meta.story({
-  render: Examples.Default,
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

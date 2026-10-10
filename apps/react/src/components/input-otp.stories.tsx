@@ -16,24 +16,12 @@ const meta = preview.meta({
 });
 
 export const Playground = meta.story({
-  render: Examples.Default,
+  render: Examples.Variants,
   tags: ["autodocs"],
-});
-
-export const Default = meta.story({
-  render: Examples.Default,
 });
 
 export const Variants = meta.story({
   render: Examples.Variants,
-});
-
-export const BlurOnComplete = meta.story({
-  render: Examples.BlurOnComplete,
-});
-
-export const CustomSize = meta.story({
-  render: Examples.CustomSize,
 });
 
 export const FourDigits = meta.story({
@@ -52,6 +40,10 @@ export const WithPlaceholder = meta.story({
   render: Examples.WithPlaceholder,
 });
 
+export const Controlled = meta.story({
+  render: Examples.Controlled,
+});
+
 export const Disabled = meta.story({
   render: Examples.Disabled,
 });
@@ -60,6 +52,14 @@ export const Invalid = meta.story({
   render: Examples.Invalid,
 });
 
-export const Controlled = meta.story({
-  render: Examples.Controlled,
+export const BlurOnComplete = meta.story({
+  render: Examples.BlurOnComplete,
+});
+
+export const CustomSize = meta.story({
+  render: Examples.CustomSize,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

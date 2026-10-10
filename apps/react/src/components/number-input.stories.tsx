@@ -16,40 +16,32 @@ const meta = preview.meta({
 });
 
 export const Playground = meta.story({
-  render: Examples.Default,
+  render: Examples.Variants,
   tags: ["autodocs"],
-});
-
-export const Sizes = meta.story({
-  render: Examples.Sizes,
 });
 
 export const Variants = meta.story({
   render: Examples.Variants,
 });
 
-export const FieldOnly = meta.story({
-  render: Examples.FieldOnly,
+export const Sizes = meta.story({
+  render: Examples.Sizes,
 });
 
 export const Formatted = meta.story({
   render: Examples.Formatted,
 });
 
-export const MouseWheel = meta.story({
-  render: Examples.MouseWheel,
+export const FieldOnly = meta.story({
+  render: Examples.FieldOnly,
 });
 
-export const Range = meta.story({
-  render: Examples.Range,
+export const Compound = meta.story({
+  render: Examples.Compound,
 });
 
-export const Scrub = meta.story({
-  render: Examples.Scrub,
-});
-
-export const Step = meta.story({
-  render: Examples.Step,
+export const Controlled = meta.story({
+  render: Examples.Controlled,
 });
 
 export const Disabled = meta.story({
@@ -60,10 +52,22 @@ export const Invalid = meta.story({
   render: Examples.Invalid,
 });
 
-export const Controlled = meta.story({
-  render: Examples.Controlled,
+export const Range = meta.story({
+  render: Examples.Range,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const Step = meta.story({
+  render: Examples.Step,
+});
+
+export const MouseWheel = meta.story({
+  render: Examples.MouseWheel,
+});
+
+export const Scrub = meta.story({
+  render: Examples.Scrub,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

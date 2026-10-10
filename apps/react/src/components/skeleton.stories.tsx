@@ -31,3 +31,7 @@ export const SkeletonText = meta.story({
 export const InCard = meta.story({
   render: Examples.InCard,
 });
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
+});

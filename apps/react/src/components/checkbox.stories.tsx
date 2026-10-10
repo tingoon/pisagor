@@ -20,20 +20,12 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: Examples.Default,
+});
+
 export const Variants = meta.story({
   render: Examples.Variants,
-});
-
-export const Disabled = meta.story({
-  render: Examples.Disabled,
-});
-
-export const Indeterminate = meta.story({
-  render: Examples.Indeterminate,
-});
-
-export const Invalid = meta.story({
-  render: Examples.Invalid,
 });
 
 export const CheckboxGroup = meta.story({
@@ -44,6 +36,18 @@ export const Controlled = meta.story({
   render: Examples.Controlled,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const Disabled = meta.story({
+  render: Examples.Disabled,
+});
+
+export const Invalid = meta.story({
+  render: Examples.Invalid,
+});
+
+export const Indeterminate = meta.story({
+  render: Examples.Indeterminate,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

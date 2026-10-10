@@ -24,6 +24,10 @@ export const Default = meta.story({
   render: Examples.Default,
 });
 
+export const Controlled = meta.story({
+  render: Examples.Controlled,
+});
+
 export const Disabled = meta.story({
   render: Examples.Disabled,
 });
@@ -32,10 +36,10 @@ export const TriggersDelays = meta.story({
   render: Examples.TriggersDelays,
 });
 
-export const Controlled = meta.story({
-  render: Examples.Controlled,
-});
-
 export const Placements = meta.story({
   render: Examples.Placements,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

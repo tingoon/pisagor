@@ -32,30 +32,34 @@ export const Range = meta.story({
   render: Examples.Range,
 });
 
-export const CustomFormat = meta.story({
-  render: Examples.CustomFormat,
+export const Time = meta.story({
+  render: Examples.Time,
 });
 
 export const Input = meta.story({
   render: Examples.Input,
 });
 
-export const Invalid = meta.story({
-  render: Examples.Invalid,
+export const WithPresets = meta.story({
+  render: Examples.WithPresets,
 });
 
-export const Disabled = meta.story({
-  render: Examples.Disabled,
+export const CustomFormat = meta.story({
+  render: Examples.CustomFormat,
 });
 
 export const Clearable = meta.story({
   render: Examples.Clearable,
 });
 
-export const Time = meta.story({
-  render: Examples.Time,
+export const Disabled = meta.story({
+  render: Examples.Disabled,
 });
 
-export const WithPresets = meta.story({
-  render: Examples.WithPresets,
+export const Invalid = meta.story({
+  render: Examples.Invalid,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

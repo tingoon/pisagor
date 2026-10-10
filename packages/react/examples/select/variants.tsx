@@ -1,37 +1,12 @@
-import { createListCollection } from "@ark-ui/react";
 import { Select } from "@pisagor/react";
 
-export function Variants() {
-  const collection = createListCollection({
-    items: ["Apple", "Banana", "Orange"],
-  });
+const items = ["Apple", "Banana", "Orange"];
 
+export function Variants() {
   return (
     <div className="flex flex-col gap-2">
-      <Select.Root collection={collection} variant="primary">
-        <Select.Trigger>
-          <Select.ValueText placeholder="Primary" />
-        </Select.Trigger>
-        <Select.Content>
-          {collection.items.map((item) => (
-            <Select.Item item={item} key={item}>
-              {item}
-            </Select.Item>
-          ))}
-        </Select.Content>
-      </Select.Root>
-      <Select.Root collection={collection} variant="secondary">
-        <Select.Trigger>
-          <Select.ValueText placeholder="Secondary" />
-        </Select.Trigger>
-        <Select.Content>
-          {collection.items.map((item) => (
-            <Select.Item item={item} key={item}>
-              {item}
-            </Select.Item>
-          ))}
-        </Select.Content>
-      </Select.Root>
+      <Select items={items} placeholder="Primary" variant="primary" />
+      <Select items={items} placeholder="Secondary" variant="secondary" />
     </div>
   );
 }

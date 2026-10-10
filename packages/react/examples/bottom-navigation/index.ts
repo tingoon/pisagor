@@ -1,15 +1,5 @@
-import defaultRaw from "./default.tsx?raw";
-import icon_onlyRaw from "./icon-only.tsx?raw";
-import with_linksRaw from "./with-links.tsx?raw";
-
-export const imports = `import { BottomNavigation } from "@pisagor/react";`;
-
-export const sources = {
-  Default: defaultRaw,
-  IconOnly: icon_onlyRaw,
-  WithLinks: with_linksRaw,
-} as const;
-
+export * from "./custom-recipe";
 export * from "./default";
 export * from "./icon-only";
+export { imports, sources } from "./sources";
 export * from "./with-links";

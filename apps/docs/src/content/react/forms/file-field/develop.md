@@ -8,9 +8,15 @@ Part of `@pisagor/react-form`. Style with recipes where available — no app-lev
 
 ## Examples
 
+### Default
+
+A file input with label and helper text, limited by `accept`.
+
+:::example Default
+
 ### Disabled
 
-Show that the file field is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the file field is unavailable.
 
 :::example Disabled
 

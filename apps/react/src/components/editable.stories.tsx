@@ -20,24 +20,16 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Invalid = meta.story({
-  render: Examples.Invalid,
-});
-
-export const Disabled = meta.story({
-  render: Examples.Disabled,
-});
-
-export const Sizes = meta.story({
-  render: Examples.Sizes,
+export const Default = meta.story({
+  render: Examples.Default,
 });
 
 export const Variants = meta.story({
   render: Examples.Variants,
 });
 
-export const Dblclick = meta.story({
-  render: Examples.Dblclick,
+export const Sizes = meta.story({
+  render: Examples.Sizes,
 });
 
 export const OrientationHorizontal = meta.story({
@@ -48,12 +40,28 @@ export const OrientationVertical = meta.story({
   render: Examples.OrientationVertical,
 });
 
+export const WithoutControls = meta.story({
+  render: Examples.WithoutControls,
+});
+
 export const WithTextarea = meta.story({
   render: Examples.WithTextarea,
 });
 
-export const WithoutControls = meta.story({
-  render: Examples.WithoutControls,
+export const Controlled = meta.story({
+  render: Examples.Controlled,
+});
+
+export const Disabled = meta.story({
+  render: Examples.Disabled,
+});
+
+export const Invalid = meta.story({
+  render: Examples.Invalid,
+});
+
+export const Dblclick = meta.story({
+  render: Examples.Dblclick,
 });
 
 export const ActivationClick = meta.story({
@@ -68,10 +76,6 @@ export const ActivationNone = meta.story({
   render: Examples.ActivationNone,
 });
 
-export const Controlled = meta.story({
-  render: Examples.Controlled,
-});
-
-export const Default = meta.story({
-  render: Examples.Default,
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

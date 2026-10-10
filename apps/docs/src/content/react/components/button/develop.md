@@ -2,21 +2,11 @@
 
 ```tsx
 import { Button } from "@pisagor/react";
+
+<Button>Save</Button>
 ```
 
 ## Examples
-
-### Default
-
-The filled button for the main action in a view.
-
-:::example Default
-
-### Sizes
-
-Match size to the surrounding layout — smaller in compact toolbars, larger for prominent calls to action. Icon sizes keep square hit targets aligned with text buttons.
-
-:::example Sizes
 
 ### Variants
 
@@ -24,11 +14,11 @@ Choose weight by importance: default for the primary action, secondary or outlin
 
 :::example Variants
 
-### Custom color
+### Sizes
 
-Override the fill when a brand or contextual color matters more than the theme primary. Keep contrast readable and keep hover and focus styles consistent.
+Match size to the surrounding layout — smaller in compact toolbars, larger for prominent calls to action. Icon sizes keep square hit targets aligned with text buttons.
 
-:::example CustomColor
+:::example Sizes
 
 ### Pill
 
@@ -36,11 +26,11 @@ Use a fully rounded shape for chip-like or toolbar actions where softer geometry
 
 :::example Pill
 
-### No click effect
+### With icon
 
-Turn off the press scale when motion would distract or conflict with surrounding interaction feedback.
+Pair an icon with a label to reinforce meaning.
 
-:::example NoClickEffect
+:::example WithIcon
 
 ### Icon
 
@@ -56,7 +46,7 @@ Render the button look on a child element (for example a link) when the control 
 
 ### Disabled
 
-Show that an action is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that an action is unavailable.
 
 :::example Disabled
 
@@ -66,8 +56,24 @@ Keep the control visible while work is in progress and block another press until
 
 :::example Loading
 
-### With icon
+### No click effect
 
-Pair an icon with a label to reinforce meaning. Prefer a leading icon for the action; use a trailing icon when the control opens another place.
+Turn off the press scale when motion would distract or conflict with surrounding interaction feedback.
 
-:::example WithIcon
+:::example NoClickEffect
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Override the fill when a brand or contextual color matters more than the theme primary.
+
+:::example CustomColor
+
+### Custom recipe
+
+Extend `buttonRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

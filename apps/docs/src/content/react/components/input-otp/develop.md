@@ -4,31 +4,22 @@
 import { InputOTP } from "@pisagor/react";
 ```
 
+## Anatomy
+
+```tsx
+<InputOTP>
+  <InputOTP.Slot />
+  <InputOTP.Separator />
+</InputOTP>
+```
+
 ## Examples
-
-### Default
-
-Enter a one-time code across separate digit slots.
-
-:::example Default
 
 ### Variants
 
 Choose visual weight or emphasis so the OTP input matches importance in the surrounding layout.
 
 :::example Variants
-
-### Blur On Complete
-
-Move focus away when all digits are filled.
-
-:::example BlurOnComplete
-
-### Custom Size
-
-Override dimensions when the default size does not fit the layout.
-
-:::example CustomSize
 
 ### Four Digits
 
@@ -54,9 +45,15 @@ Show placeholders in empty slots to hint at expected length.
 
 :::example WithPlaceholder
 
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this OTP input.
+
+:::example Controlled
+
 ### Disabled
 
-Show that the OTP input is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the OTP input is unavailable.
 
 :::example Disabled
 
@@ -66,8 +63,24 @@ Surface a validation or error state so users know the OTP input needs attention 
 
 :::example Invalid
 
-### Controlled
+### Blur On Complete
 
-Manage state from the parent when other UI must stay in sync with this OTP input.
+Move focus away when all digits are filled.
 
-:::example Controlled
+:::example BlurOnComplete
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Override dimensions when the default size does not fit the layout.
+
+:::example CustomSize
+
+### Custom recipe
+
+Extend `inputOtpRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

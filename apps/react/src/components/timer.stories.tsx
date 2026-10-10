@@ -32,20 +32,16 @@ export const OrientationVertical = meta.story({
   render: Examples.OrientationVertical,
 });
 
-export const CountdownDate = meta.story({
-  render: Examples.CountdownDate,
+export const CustomSeparator = meta.story({
+  render: Examples.CustomSeparator,
 });
 
 export const Countdown = meta.story({
   render: Examples.Countdown,
 });
 
-export const CustomSeparator = meta.story({
-  render: Examples.CustomSeparator,
-});
-
-export const Interval = meta.story({
-  render: Examples.Interval,
+export const CountdownDate = meta.story({
+  render: Examples.CountdownDate,
 });
 
 export const Pomodoro = meta.story({
@@ -54,4 +50,12 @@ export const Pomodoro = meta.story({
 
 export const Controlled = meta.story({
   render: Examples.Controlled,
+});
+
+export const Interval = meta.story({
+  render: Examples.Interval,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

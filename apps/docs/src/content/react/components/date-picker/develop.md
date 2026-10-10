@@ -4,6 +4,17 @@
 import { DatePicker } from "@pisagor/react";
 ```
 
+## Anatomy
+
+```tsx
+<DatePicker>
+  <DatePicker.Trigger>
+    <DatePicker.ValueText />
+  </DatePicker.Trigger>
+  <DatePicker.Content />
+</DatePicker>
+```
+
 ## Examples
 
 ### Default
@@ -24,11 +35,11 @@ Pick a start and end date for spans.
 
 :::example Range
 
-### Custom Format
+### Time
 
-Override display format when locale or product needs a specific pattern.
+Include time when the value is a datetime rather than a day alone.
 
-:::example CustomFormat
+:::example Time
 
 ### Input
 
@@ -36,17 +47,17 @@ Type the date in an input when keyboard entry is faster than picking.
 
 :::example Input
 
-### Invalid
+### With Presets
 
-Surface a validation or error state so users know the date picker needs attention before continuing.
+Offer common ranges so users can pick without hunting on the calendar.
 
-:::example Invalid
+:::example WithPresets
 
-### Disabled
+### Custom Format
 
-Show that the date cannot change. Prefer explaining why nearby.
+Override display format when locale or product needs a specific pattern.
 
-:::example Disabled
+:::example CustomFormat
 
 ### Clearable
 
@@ -54,14 +65,22 @@ Offer a clear control when the date is optional.
 
 :::example Clearable
 
-### Time
+### Disabled
 
-Include time when the value is a datetime rather than a day alone.
+Show that the date cannot change.
 
-:::example Time
+:::example Disabled
 
-### With Presets
+### Invalid
 
-Offer common ranges so users can pick without hunting on the calendar.
+Surface a validation or error state so users know the date picker needs attention before continuing.
 
-:::example WithPresets
+:::example Invalid
+
+## Customization
+
+### Custom recipe
+
+Extend `datePickerRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

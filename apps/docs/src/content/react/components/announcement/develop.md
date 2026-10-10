@@ -18,12 +18,6 @@ Add an icon when a symbol helps users recognize the announcement type quickly.
 
 :::example WithIcon
 
-### With Link
-
-Link through to details when the bar should stay short and the full story lives elsewhere.
-
-:::example WithLink
-
 ### Without Badge
 
 Drop the badge treatment when a plain text callout is enough.
@@ -36,8 +30,16 @@ Assemble parts when you need a custom announcement layout.
 
 :::example Compound
 
-### Default
+### As child
 
-A compact product or marketing callout that sits with the page content.
+Link through to details when the bar should stay short and the full story lives elsewhere.
 
-:::example Default
+:::example WithLink
+
+## Customization
+
+### Custom recipe
+
+Extend `announcementRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

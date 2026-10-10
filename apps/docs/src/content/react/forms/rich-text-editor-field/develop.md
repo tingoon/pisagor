@@ -8,9 +8,15 @@ Part of `@pisagor/react-form`. Style with recipes where available — no app-lev
 
 ## Examples
 
+### Default
+
+A formatted text editor with label and helper text for long-form content.
+
+:::example Default
+
 ### Disabled
 
-Show that the editor is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the editor is unavailable.
 
 :::example Disabled
 

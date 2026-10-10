@@ -4,7 +4,7 @@ import { useState } from "react";
 export function Controlled() {
   const [value, setValue] = useState("1");
 
-  const isNumberFive = value === "3";
+  const isNumberThree = value === "3";
 
   return (
     <div className="flex flex-col gap-2 text-center text-sm">
@@ -12,14 +12,8 @@ export function Controlled() {
       <NumberInput
         onValueChange={(value) => setValue(String(value))}
         value={value}
-      >
-        <NumberInput.Control>
-          <NumberInput.DecrementTrigger />
-          <NumberInput.Input />
-          <NumberInput.IncrementTrigger />
-        </NumberInput.Control>
-      </NumberInput>
-      <p className="text-center">{isNumberFive ? "✅" : "❌"}</p>
+      />
+      <p className="text-center">{isNumberThree ? "✅" : "❌"}</p>
     </div>
   );
 }

@@ -27,14 +27,18 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: Examples.Default,
+});
+
+export const WithLabelAccessory = meta.story({
+  render: Examples.WithLabelAccessory,
+});
+
 export const Disabled = meta.story({
   render: Examples.Disabled,
 });
 
 export const Invalid = meta.story({
   render: Examples.Invalid,
-});
-
-export const WithLabelAccessory = meta.story({
-  render: Examples.WithLabelAccessory,
 });

@@ -21,16 +21,12 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Links = meta.story({
-  render: Examples.Links,
+export const Default = meta.story({
+  render: Examples.Default,
 });
 
-export const CheckboxTree = meta.story({
-  render: Examples.CheckboxTree,
-});
-
-export const WithContextMenu = meta.story({
-  render: Examples.WithContextMenu,
+export const CustomIcons = meta.story({
+  render: Examples.CustomIcons,
 });
 
 export const CustomIconsFolder = meta.story({
@@ -41,8 +37,20 @@ export const CustomIconsItem = meta.story({
   render: Examples.CustomIconsItem,
 });
 
-export const CustomIcons = meta.story({
-  render: Examples.CustomIcons,
+export const CheckboxTree = meta.story({
+  render: Examples.CheckboxTree,
+});
+
+export const WithContextMenu = meta.story({
+  render: Examples.WithContextMenu,
+});
+
+export const Links = meta.story({
+  render: Examples.Links,
+});
+
+export const Controlled = meta.story({
+  render: Examples.Controlled,
 });
 
 export const MultipleSelection = meta.story({
@@ -51,12 +59,4 @@ export const MultipleSelection = meta.story({
 
 export const Rename = meta.story({
   render: Examples.Rename,
-});
-
-export const Controlled = meta.story({
-  render: Examples.Controlled,
-});
-
-export const Default = meta.story({
-  render: Examples.Default,
 });

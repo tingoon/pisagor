@@ -28,14 +28,18 @@ export const PartialCollapse = meta.story({
   render: Examples.PartialCollapse,
 });
 
-export const Disabled = meta.story({
-  render: Examples.Disabled,
-});
-
 export const Nested = meta.story({
   render: Examples.Nested,
 });
 
 export const Controlled = meta.story({
   render: Examples.Controlled,
+});
+
+export const Disabled = meta.story({
+  render: Examples.Disabled,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

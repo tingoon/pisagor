@@ -1,23 +1,3 @@
-## Usage
-
-**Recommended:** compose with the root and parts. The default export is the root (`<Popover>`).
-
-```tsx
-<Popover>
-  <Popover.Trigger asChild>
-    <Button variant="outline">Open</Button>
-  </Popover.Trigger>
-  <Popover.Content>
-    <Popover.Header title="Dimensions" description="Set the dimensions for the layer." />
-    <Popover.Body>…</Popover.Body>
-  </Popover.Content>
-</Popover>
-```
-
-- There is no single-prop shorthand for the full tree.
-- Prefer `Popover.Header` `title` / `description` presets when enough; use `Popover.Title` / `Popover.Description` for custom markup.
-- Use `showCloseButton` on `Popover.Content` when dismiss should be obvious.
-
 ## Import
 
 ```tsx
@@ -55,12 +35,6 @@ Add an explicit close control when dismiss should be obvious.
 
 :::example CloseButton
 
-### Modal
-
-Block interaction outside when the popover content needs focus.
-
-:::example Modal
-
 ### Anchor
 
 Position against a custom anchor when the trigger element is not the visual anchor.
@@ -72,6 +46,18 @@ Position against a custom anchor when the trigger element is not the visual anch
 Nest another popover when hierarchy or layered structure is part of the content.
 
 :::example Nested
+
+### Scroll Area
+
+Constrain tall content in a scroll region so the popover chrome stays on screen.
+
+:::example ScrollArea
+
+### Modal
+
+Block interaction outside when the popover content needs focus.
+
+:::example Modal
 
 ### Close Behavior
 
@@ -85,13 +71,11 @@ Choose placement so the popover stays near its trigger without covering critical
 
 :::example Placements
 
-### Scroll Area
+## Customization
 
-Constrain tall content in a scroll region so the popover chrome stays on screen.
+### Class names
 
-:::example ScrollArea
-
-### Custom Spacing
+Pass `className` for a one-off change to a single element.
 
 Override spacing when the default density does not match the surrounding layout.
 

@@ -6,6 +6,12 @@ import { Timeline } from "@pisagor/react";
 
 ## Examples
 
+### Default
+
+Show events or milestones in chronological order.
+
+:::example Default
+
 ### Horizontal
 
 Use a horizontal layout when the timeline should read left to right.
@@ -17,9 +23,3 @@ Use a horizontal layout when the timeline should read left to right.
 Compose timeline parts for a custom history layout.
 
 :::example Compound
-
-### Default
-
-Show events or milestones in chronological order.
-
-:::example Default

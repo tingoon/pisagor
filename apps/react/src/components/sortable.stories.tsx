@@ -20,18 +20,18 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Horizontal = meta.story({
-  render: Examples.Horizontal,
+export const Default = meta.story({
+  render: Examples.Default,
 });
 
-export const Disabled = meta.story({
-  render: Examples.Disabled,
+export const Horizontal = meta.story({
+  render: Examples.Horizontal,
 });
 
 export const WithoutHandle = meta.story({
   render: Examples.WithoutHandle,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const Disabled = meta.story({
+  render: Examples.Disabled,
 });

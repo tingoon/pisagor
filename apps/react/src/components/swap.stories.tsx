@@ -16,14 +16,10 @@ const meta = preview.meta({
 });
 
 export const Playground = meta.story({
-  render: Examples.Default,
+  render: Examples.Variants,
   tags: ["autodocs"],
 });
 
 export const Variants = meta.story({
   render: Examples.Variants,
-});
-
-export const Default = meta.story({
-  render: Examples.Default,
 });

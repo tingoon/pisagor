@@ -4,13 +4,34 @@
 import { FloatingPanel } from "@pisagor/react";
 ```
 
+## Anatomy
+
+```tsx
+<FloatingPanel>
+  <FloatingPanel.Trigger />
+  <FloatingPanel.Content>
+    <FloatingPanel.Header>
+      <FloatingPanel.Title />
+      <FloatingPanel.Control>
+        <FloatingPanel.Minimize />
+        <FloatingPanel.Maximize />
+        <FloatingPanel.Restore />
+        <FloatingPanel.CloseTrigger />
+      </FloatingPanel.Control>
+    </FloatingPanel.Header>
+    <FloatingPanel.Body />
+    <FloatingPanel.Footer />
+  </FloatingPanel.Content>
+</FloatingPanel>
+```
+
 ## Examples
 
-### Custom Spacing
+### Default
 
-Override spacing when the default density does not match the surrounding layout.
+Float a draggable, resizable tool above the workspace.
 
-:::example CustomSpacing
+:::example Default
 
 ### Controlled Position
 
@@ -24,8 +45,18 @@ Drive size from the parent when dimensions must restore a saved layout.
 
 :::example ControlledSize
 
-### Default
+## Customization
 
-Float a draggable, resizable tool above the workspace.
+### Class names
 
-:::example Default
+Pass `className` for a one-off change to a single element.
+
+Override spacing when the default density does not match the surrounding layout.
+
+:::example CustomSpacing
+
+### Custom recipe
+
+Extend `floatingPanelRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

@@ -1,12 +1,4 @@
-import defaultRaw from "./default.tsx?raw";
-import with_sidebarRaw from "./with-sidebar.tsx?raw";
-
-export const imports = `import { Navbar } from "@pisagor/react";`;
-
-export const sources = {
-  Default: defaultRaw,
-  WithSidebar: with_sidebarRaw,
-} as const;
-
+export * from "./custom-recipe";
 export * from "./default";
+export { imports, sources } from "./sources";
 export * from "./with-sidebar";

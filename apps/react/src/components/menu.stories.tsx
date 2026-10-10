@@ -27,3 +27,7 @@ export const Default = meta.story({
 export const WithGroups = meta.story({
   render: Examples.WithGroups,
 });
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
+});

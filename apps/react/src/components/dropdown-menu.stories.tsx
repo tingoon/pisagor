@@ -24,28 +24,32 @@ export const Default = meta.story({
   render: Examples.Default,
 });
 
+export const Icons = meta.story({
+  render: Examples.Icons,
+});
+
 export const Shortcuts = meta.story({
   render: Examples.Shortcuts,
-});
-
-export const Checkboxes = meta.story({
-  render: Examples.Checkboxes,
-});
-
-export const Destructive = meta.story({
-  render: Examples.Destructive,
 });
 
 export const GroupLabel = meta.story({
   render: Examples.GroupLabel,
 });
 
-export const Icons = meta.story({
-  render: Examples.Icons,
+export const WithSeparator = meta.story({
+  render: Examples.WithSeparator,
 });
 
-export const Link = meta.story({
-  render: Examples.Link,
+export const Checkboxes = meta.story({
+  render: Examples.Checkboxes,
+});
+
+export const RadioGroup = meta.story({
+  render: Examples.RadioGroup,
+});
+
+export const Destructive = meta.story({
+  render: Examples.Destructive,
 });
 
 export const Nested = meta.story({
@@ -56,16 +60,12 @@ export const QuickItem = meta.story({
   render: Examples.QuickItem,
 });
 
-export const RadioGroup = meta.story({
-  render: Examples.RadioGroup,
-});
-
 export const WithScroll = meta.story({
   render: Examples.WithScroll,
 });
 
-export const WithSeparator = meta.story({
-  render: Examples.WithSeparator,
+export const Link = meta.story({
+  render: Examples.Link,
 });
 
 export const Placements = meta.story({

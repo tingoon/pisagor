@@ -25,6 +25,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: Examples.Default,
+});
+
 export const Disabled = meta.story({
   render: Examples.Disabled,
 });

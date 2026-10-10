@@ -1,13 +1,5 @@
 import { NumberInput } from "@pisagor/react";
 
 export function Range() {
-  return (
-    <NumberInput>
-      <NumberInput.Control>
-        <NumberInput.DecrementTrigger />
-        <NumberInput.Input />
-        <NumberInput.IncrementTrigger />
-      </NumberInput.Control>
-    </NumberInput>
-  );
+  return <NumberInput defaultValue="5" max={10} min={0} />;
 }

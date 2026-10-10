@@ -8,9 +8,15 @@ Part of `@pisagor/react-form`. Style with recipes where available — no app-lev
 
 ## Examples
 
+### Default
+
+A text input that turns entries into removable tags.
+
+:::example Default
+
 ### Disabled
 
-Show that the tags input is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the tags input is unavailable.
 
 :::example Disabled
 

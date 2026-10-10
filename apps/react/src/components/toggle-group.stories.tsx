@@ -28,12 +28,12 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Sizes = meta.story({
-  render: Examples.Sizes,
-});
-
 export const Variants = meta.story({
   render: Examples.Variants,
+});
+
+export const Sizes = meta.story({
+  render: Examples.Sizes,
 });
 
 export const Horizontal = meta.story({
@@ -48,30 +48,30 @@ export const Spacing = meta.story({
   render: Examples.Spacing,
 });
 
-export const DisabledItem = meta.story({
-  render: Examples.DisabledItem,
-});
-
 export const FontWeight = meta.story({
   render: Examples.FontWeight,
-});
-
-export const Disabled = meta.story({
-  render: Examples.Disabled,
-});
-
-export const Single = meta.story({
-  render: Examples.Single,
-});
-
-export const Controlled = meta.story({
-  render: Examples.Controlled,
 });
 
 export const Compound = meta.story({
   render: Examples.Compound,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const Controlled = meta.story({
+  render: Examples.Controlled,
+});
+
+export const Disabled = meta.story({
+  render: Examples.Disabled,
+});
+
+export const DisabledItem = meta.story({
+  render: Examples.DisabledItem,
+});
+
+export const Single = meta.story({
+  render: Examples.Single,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

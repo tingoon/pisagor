@@ -6,23 +6,17 @@ import { NumberInput } from "@pisagor/react";
 
 ## Examples
 
-### Sizes
-
-Match size to the surrounding layout — smaller in compact chrome, larger where the number input needs emphasis.
-
-:::example Sizes
-
 ### Variants
 
 Choose visual weight or emphasis so the number input matches importance in the surrounding layout.
 
 :::example Variants
 
-### Field Only
+### Sizes
 
-Render the field without extra chrome when the surrounding layout provides labels.
+Match size to the surrounding layout — smaller in compact chrome, larger where the number input needs emphasis.
 
-:::example FieldOnly
+:::example Sizes
 
 ### Formatted
 
@@ -30,33 +24,27 @@ Display a formatted value when units or grouping aid reading.
 
 :::example Formatted
 
-### Mouse Wheel
+### Field Only
 
-Adjust the value with the mouse wheel when rapid changes fit the task.
+Render the field without extra chrome when the surrounding layout provides labels.
 
-:::example MouseWheel
+:::example FieldOnly
 
-### Range
+### Compound
 
-Select a start and end value when the task needs a span rather than a single point.
+Compose the input and stepper triggers from parts when you need a custom layout.
 
-:::example Range
+:::example Compound
 
-### Scrub
+### Controlled
 
-Scrub horizontally to change the value when precise dragging helps.
+Manage state from the parent when other UI must stay in sync with this number input.
 
-:::example Scrub
-
-### Step
-
-Snap changes to a step interval when values should move in fixed increments.
-
-:::example Step
+:::example Controlled
 
 ### Disabled
 
-Show that the number input is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the number input is unavailable.
 
 :::example Disabled
 
@@ -66,14 +54,34 @@ Surface a validation or error state so users know the number input needs attenti
 
 :::example Invalid
 
-### Controlled
+### Range
 
-Manage state from the parent when other UI must stay in sync with this number input.
+Select a start and end value when the task needs a span rather than a single point.
 
-:::example Controlled
+:::example Range
 
-### Default
+### Step
 
-Enter a number with optional steppers.
+Snap changes to a step interval when values should move in fixed increments.
 
-:::example Default
+:::example Step
+
+### Mouse Wheel
+
+Adjust the value with the mouse wheel when rapid changes fit the task.
+
+:::example MouseWheel
+
+### Scrub
+
+Scrub horizontally to change the value when precise dragging helps.
+
+:::example Scrub
+
+## Customization
+
+### Custom recipe
+
+Extend `numberInputRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

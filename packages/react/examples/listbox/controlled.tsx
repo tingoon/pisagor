@@ -1,15 +1,7 @@
-import { createListCollection } from "@ark-ui/react";
 import { Item, Listbox } from "@pisagor/react";
 import { useState } from "react";
+
 export function Controlled() {
-  const collection = createListCollection({
-    items: [
-      { label: "Small", value: "sm" },
-      { label: "Medium", value: "md" },
-      { label: "Large", value: "lg" },
-      { label: "Extra Large", value: "xl" },
-    ],
-  });
   const [value, setValue] = useState(["md"]);
 
   const isLarge = value.includes("lg");
@@ -21,22 +13,18 @@ export function Controlled() {
       </p>
       <Item.Group variant="outline">
         <Item className="p-1">
-          <Listbox.Root
-            collection={collection}
+          <Listbox
+            items={[
+              { label: "Small", value: "sm" },
+              { label: "Medium", value: "md" },
+              { label: "Large", value: "lg" },
+              { label: "Extra Large", value: "xl" },
+            ]}
             onValueChange={(value) =>
               setValue(Array.isArray(value) ? value : [value])
             }
             value={value}
-          >
-            <Listbox.Content>
-              {collection.items.map((item) => (
-                <Listbox.Item item={item} key={item.value}>
-                  <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                  <Listbox.ItemIndicator />
-                </Listbox.Item>
-              ))}
-            </Listbox.Content>
-          </Listbox.Root>
+          />
         </Item>
       </Item.Group>
       <p className="text-center text-muted-foreground text-sm">

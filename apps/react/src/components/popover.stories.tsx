@@ -24,28 +24,24 @@ export const Default = meta.story({
   render: Examples.Default,
 });
 
-export const CustomSpacing = meta.story({
-  render: Examples.CustomSpacing,
+export const CloseButton = meta.story({
+  render: Examples.CloseButton,
 });
 
 export const Anchor = meta.story({
   render: Examples.Anchor,
 });
 
-export const CloseButton = meta.story({
-  render: Examples.CloseButton,
-});
-
 export const Nested = meta.story({
   render: Examples.Nested,
 });
 
-export const Modal = meta.story({
-  render: Examples.Modal,
-});
-
 export const ScrollArea = meta.story({
   render: Examples.ScrollArea,
+});
+
+export const Modal = meta.story({
+  render: Examples.Modal,
 });
 
 export const CloseBehavior = meta.story({
@@ -54,4 +50,8 @@ export const CloseBehavior = meta.story({
 
 export const Placements = meta.story({
   render: Examples.Placements,
+});
+
+export const CustomSpacing = meta.story({
+  render: Examples.CustomSpacing,
 });

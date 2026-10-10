@@ -1,15 +1,5 @@
-import compoundRaw from "./compound.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import with_actionsRaw from "./with-actions.tsx?raw";
-
-export const imports = `import { File } from "@pisagor/react";`;
-
-export const sources = {
-  Compound: compoundRaw,
-  Default: defaultRaw,
-  WithActions: with_actionsRaw,
-} as const;
-
 export * from "./compound";
+export * from "./custom-recipe";
 export * from "./default";
+export { imports, sources } from "./sources";
 export * from "./with-actions";

@@ -4,19 +4,41 @@
 import { ColorPicker } from "@pisagor/react";
 ```
 
+## Anatomy
+
+```tsx
+<ColorPicker>
+  <ColorPicker.Control>
+    <ColorPicker.Trigger>
+      <ColorPicker.SwatchPreview />
+    </ColorPicker.Trigger>
+    <ColorPicker.Input />
+  </ColorPicker.Control>
+  <ColorPicker.Content>
+    <ColorPicker.Area>
+      <ColorPicker.AreaThumb />
+    </ColorPicker.Area>
+    <ColorPicker.View>
+      <ColorPicker.EyeDropperTrigger />
+      <ColorPicker.ChannelSlider />
+    </ColorPicker.View>
+  </ColorPicker.Content>
+</ColorPicker>
+```
+
 ## Examples
+
+### Default
+
+Pick a color with the full visual picker surface.
+
+:::example Default
 
 ### Variants
 
 Choose picker chrome to match compact forms or larger editing panels.
 
 :::example Variants
-
-### Custom Spacing
-
-Adjust spacing when the picker sits in a denser layout.
-
-:::example CustomSpacing
 
 ### Area Channels
 
@@ -42,24 +64,6 @@ Use a compact channel input when space is limited.
 
 :::example InputCompact
 
-### Input Controlled
-
-Control channel inputs from the parent for synced color editors.
-
-:::example InputControlled
-
-### Disabled
-
-Show that color cannot be changed. Prefer explaining why nearby.
-
-:::example Disabled
-
-### Invalid
-
-Surface an invalid color value that needs correction.
-
-:::example Invalid
-
 ### Input With Popover
 
 Open channel editing in a popover attached to a trigger.
@@ -71,12 +75,6 @@ Open channel editing in a popover attached to a trigger.
 Pair inputs with a swatch so typed values stay visually grounded.
 
 :::example InputWithSwatchPreview
-
-### Popover Disabled
-
-Show an unavailable popover trigger when color editing is blocked.
-
-:::example PopoverDisabled
 
 ### Popover Sliders Only
 
@@ -102,18 +100,6 @@ Adjust transparency with an alpha slider when opacity matters.
 
 :::example SliderAlphaChannel
 
-### Slider Controlled
-
-Drive slider channels from the parent when color state lives above the picker.
-
-:::example SliderControlled
-
-### Slider Disabled
-
-Show that slider channels are unavailable. Prefer explaining why nearby.
-
-:::example SliderDisabled
-
 ### Slider Hsba Channels
 
 Edit HSBA channels with sliders when that color model fits the task.
@@ -138,11 +124,11 @@ Orient channel sliders vertically when the layout favors a tall editor.
 
 :::example SliderVertical
 
-### Swatch Picker Controlled
+### Swatch Picker
 
-Drive the selected swatch from the parent when palette state lives above.
+Pick from predefined swatches when freeform color picking is unnecessary.
 
-:::example SwatchPickerControlled
+:::example SwatchPicker
 
 ### Swatch Picker Custom Indicator
 
@@ -150,38 +136,80 @@ Customize the selected-swatch indicator to match brand chrome.
 
 :::example SwatchPickerCustomIndicator
 
-### Swatch Picker Custom Radius
-
-Override swatch corner radius when geometry should match nearby controls.
-
-:::example SwatchPickerCustomRadius
-
-### Swatch Picker Custom Size
-
-Resize swatches when the palette needs denser or larger targets.
-
-:::example SwatchPickerCustomSize
-
-### Swatch Picker Disabled
-
-Show that swatch picking is unavailable. Prefer explaining why nearby.
-
-:::example SwatchPickerDisabled
-
-### Swatch Picker
-
-Pick from predefined swatches when freeform color picking is unnecessary.
-
-:::example SwatchPicker
-
 ### Clearable
 
 Offer a clear control when users often need to remove the selected color.
 
 :::example Clearable
 
-### Default
+### Input Controlled
 
-Pick a color with the full visual picker surface.
+Control channel inputs from the parent for synced color editors.
 
-:::example Default
+:::example InputControlled
+
+### Slider Controlled
+
+Drive slider channels from the parent when color state lives above the picker.
+
+:::example SliderControlled
+
+### Swatch Picker Controlled
+
+Drive the selected swatch from the parent when palette state lives above.
+
+:::example SwatchPickerControlled
+
+### Disabled
+
+Show that color cannot be changed.
+
+:::example Disabled
+
+### Popover Disabled
+
+Show an unavailable popover trigger when color editing is blocked.
+
+:::example PopoverDisabled
+
+### Slider Disabled
+
+Show that slider channels are unavailable.
+
+:::example SliderDisabled
+
+### Swatch Picker Disabled
+
+Show that swatch picking is unavailable.
+
+:::example SwatchPickerDisabled
+
+### Invalid
+
+Surface an invalid color value that needs correction.
+
+:::example Invalid
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Adjust spacing when the picker sits in a denser layout.
+
+:::example CustomSpacing
+
+Override swatch corner radius when geometry should match nearby controls.
+
+:::example SwatchPickerCustomRadius
+
+Resize swatches when the palette needs denser or larger targets.
+
+:::example SwatchPickerCustomSize
+
+### Custom recipe
+
+Extend `colorPickerRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

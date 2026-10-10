@@ -30,8 +30,10 @@ Host form controls on a surface when the group needs a shared background.
 
 :::example WithFormControls
 
-### Default
+## Customization
 
-Apply a semantic background layer for grouped content.
+### Custom recipe
 
-:::example Default
+Extend `surfaceRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe
