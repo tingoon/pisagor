@@ -28,7 +28,14 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
-import { createMemo, For, Show, splitProps, useContext } from "solid-js";
+import {
+  createContext,
+  createMemo,
+  For,
+  Show,
+  splitProps,
+  useContext,
+} from "solid-js";
 import { Portal } from "solid-js/web";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "../internal/icons";
@@ -46,6 +53,9 @@ function useComboboxSlots() {
   const styles = useContext(ComboboxStylesContext);
   return () => styles?.slots ?? comboboxRecipe();
 }
+
+/** Root-level control props (`variant`, `size`) read by `Combobox.Input`. */
+const ComboboxControlContext = createContext<InputRootVariantProps>({});
 
 /** @deprecated Prefer composing within Combobox.Root; kept for public API. */
 export function useComboboxRoot() {
@@ -70,7 +80,10 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   ComboboxPrimitiveRootProps<T>,
   "onValueChange"
 > & {
+  /** Visual shell variant applied to the input. Defaults to `primary`. */
   variant?: FormControlVariant;
+  /** Input size. Defaults to `md`. */
+  size?: InputRootVariantProps["size"];
   onValueChange?: (value: string[]) => void;
 } & BaseComboboxRootProps;
 
@@ -111,10 +124,19 @@ export function ComboboxRoot<T extends CollectionItem = CollectionItem>(
     "children",
     "onValueChange",
     "variant",
+    "size",
     "recipe",
   ]);
 
   const slots = createMemo(() => (local.recipe ?? comboboxRecipe)());
+  const control: InputRootVariantProps = {
+    get size() {
+      return local.size;
+    },
+    get variant() {
+      return local.variant;
+    },
+  };
 
   return (
     <ComboboxStylesContext
@@ -125,17 +147,19 @@ export function ComboboxRoot<T extends CollectionItem = CollectionItem>(
         variants: {},
       }}
     >
-      <ComboboxPrimitive.Root
-        {...rest}
-        onValueChange={
-          local.onValueChange
-            ? (details) => local.onValueChange?.(details.value)
-            : undefined
-        }
-        openOnClick={local.openOnClick ?? true}
-      >
-        {local.children}
-      </ComboboxPrimitive.Root>
+      <ComboboxControlContext.Provider value={control}>
+        <ComboboxPrimitive.Root
+          {...rest}
+          onValueChange={
+            local.onValueChange
+              ? (details) => local.onValueChange?.(details.value)
+              : undefined
+          }
+          openOnClick={local.openOnClick ?? true}
+        >
+          {local.children}
+        </ComboboxPrimitive.Root>
+      </ComboboxControlContext.Provider>
     </ComboboxStylesContext>
   );
 }
@@ -164,13 +188,15 @@ export function ComboboxInput(props: ComboboxInputProps): JSX.Element {
   ]);
   const combobox = useComboboxContext();
   const slots = useComboboxSlots();
-  const size = () => local.size ?? "md";
+  const control = useContext(ComboboxControlContext);
+  const size = () => local.size ?? control.size ?? "md";
+  const variant = () => local.variant ?? control.variant;
   const clearable = () => local.clearable ?? false;
   const showTrigger = () => local.showTrigger ?? true;
 
   return (
     <ComboboxControl data-size={size()}>
-      <InputGroup class={local.class} size={size()} variant={local.variant}>
+      <InputGroup class={local.class} size={size()} variant={variant()}>
         {local.children}
         <ComboboxPrimitive.Input
           asChild={(inputProps) => (

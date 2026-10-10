@@ -28,7 +28,7 @@ import {
 
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import { use } from "react";
+import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Separator, type SeparatorProps } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
@@ -43,6 +43,10 @@ function useSelectSlots() {
   const styles = use(SelectStylesContext);
   return styles?.slots ?? selectRecipe();
 }
+
+/** Root-level control props (`variant`, `size`) read by `Select.Trigger`. */
+const SelectControlContext = createContext<FormControlShellVariantProps>({});
+SelectControlContext.displayName = "SelectControlContext";
 // #endregion
 
 // #region Types
@@ -58,9 +62,13 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
   "onValueChange"
 > & {
   /**
-   * Visual shell variant. Defaults to `primary`.
+   * Visual shell variant applied to the trigger. Defaults to `primary`.
    */
   variant?: FormControlVariant;
+  /**
+   * Trigger size. Defaults to `md`.
+   */
+  size?: FormControlShellVariantProps["size"];
   onValueChange?: (value: string | string[]) => void;
 } & BaseSelectRootProps;
 
@@ -102,6 +110,7 @@ export function SelectRoot<T extends CollectionItem = CollectionItem>({
   children,
   onValueChange,
   variant,
+  size,
   recipe = selectRecipe,
   ...rest
 }: SelectRootProps<T>) {
@@ -109,22 +118,26 @@ export function SelectRoot<T extends CollectionItem = CollectionItem>({
 
   return (
     <SelectStylesContext value={{ slots, variants: {} as never }}>
-      <SelectPrimitive.Root
-        {...rest}
-        onValueChange={
-          onValueChange ? (details) => onValueChange(details.value) : undefined
-        }
-      >
-        {children}
+      <SelectControlContext value={{ size, variant }}>
+        <SelectPrimitive.Root
+          {...rest}
+          onValueChange={
+            onValueChange
+              ? (details) => onValueChange(details.value)
+              : undefined
+          }
+        >
+          {children}
 
-        <SelectPrimitive.HiddenSelect />
-      </SelectPrimitive.Root>
+          <SelectPrimitive.HiddenSelect />
+        </SelectPrimitive.Root>
+      </SelectControlContext>
     </SelectStylesContext>
   );
 }
 
 export function SelectTrigger({
-  size = "md",
+  size: sizeProp,
   variant: variantProp,
   clearable = false,
   children,
@@ -132,9 +145,12 @@ export function SelectTrigger({
   ...rest
 }: SelectTriggerProps) {
   const slots = useSelectSlots();
+  const control = use(SelectControlContext);
+  const size = sizeProp ?? control.size ?? "md";
   const resolved = {
     surfaceVariant: useFormControlSurface(),
-    variant: variantProp ?? ("primary" as FormControlVariant),
+    variant:
+      variantProp ?? control.variant ?? ("primary" as FormControlVariant),
   };
   const shellArgs = {
     surfaceVariant: resolved.surfaceVariant,

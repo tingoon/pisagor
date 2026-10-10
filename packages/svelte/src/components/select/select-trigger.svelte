@@ -12,7 +12,7 @@ import { cn } from "@pisagor/utils";
 import CaretUpDownIcon from "phosphor-svelte/lib/CaretUpDownIcon";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
-import { useSelectRoot } from "./select.context";
+import { useSelectControl, useSelectRoot } from "./select.context";
 import SelectClearTrigger from "./select-clear-trigger.svelte";
 
 type FormControlVariant = "primary" | "secondary";
@@ -21,7 +21,7 @@ type Props = Omit<ArkSelectTriggerProps, "size"> &
   FormControlShellVariantProps & { clearable?: boolean };
 
 let {
-  size = "md",
+  size: sizeProp,
   variant: variantProp,
   clearable = false,
   children,
@@ -30,10 +30,12 @@ let {
 }: Props = $props();
 
 const ctx = useSelectRoot();
+const control = useSelectControl();
+const size = $derived(sizeProp ?? control.size ?? "md");
 const slots = $derived(ctx?.slots ?? selectRecipe());
 const surfaceVariant = useFormControlSurface();
 const resolvedVariant = $derived(
-  variantProp ?? ("primary" as FormControlVariant),
+  variantProp ?? control.variant ?? ("primary" as FormControlVariant),
 );
 </script>
 

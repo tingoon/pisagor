@@ -30,7 +30,7 @@ import {
 } from "@pisagor/recipes";
 
 import type { ReactNode } from "react";
-import { use } from "react";
+import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
@@ -45,6 +45,10 @@ function useComboboxSlots() {
   const styles = use(ComboboxStylesContext);
   return styles?.slots ?? comboboxRecipe();
 }
+
+/** Root-level control props (`variant`, `size`) read by `Combobox.Input`. */
+const ComboboxControlContext = createContext<InputRootVariantProps>({});
+ComboboxControlContext.displayName = "ComboboxControlContext";
 
 /** @deprecated Prefer composing within Combobox.Root; kept for public API. */
 export function useComboboxRoot() {
@@ -65,8 +69,10 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   ComboboxPrimitiveRootProps<T>,
   "onValueChange"
 > & {
-  /** Visual shell variant. Defaults to `primary`. */
+  /** Visual shell variant applied to the input. Defaults to `primary`. */
   variant?: FormControlVariant;
+  /** Input size. Defaults to `md`. */
+  size?: InputRootVariantProps["size"];
   onValueChange?: (value: string[]) => void;
 } & BaseComboboxRootProps;
 
@@ -133,6 +139,7 @@ export function ComboboxRoot<T extends CollectionItem = CollectionItem>({
   children,
   onValueChange,
   variant,
+  size,
   recipe = comboboxRecipe,
   ...rest
 }: ComboboxRootProps<T>) {
@@ -140,15 +147,19 @@ export function ComboboxRoot<T extends CollectionItem = CollectionItem>({
 
   return (
     <ComboboxStylesContext value={{ slots, variants: {} as never }}>
-      <ComboboxPrimitive.Root
-        {...rest}
-        onValueChange={
-          onValueChange ? (details) => onValueChange(details.value) : undefined
-        }
-        openOnClick={openOnClick}
-      >
-        {children}
-      </ComboboxPrimitive.Root>
+      <ComboboxControlContext value={{ size, variant }}>
+        <ComboboxPrimitive.Root
+          {...rest}
+          onValueChange={
+            onValueChange
+              ? (details) => onValueChange(details.value)
+              : undefined
+          }
+          openOnClick={openOnClick}
+        >
+          {children}
+        </ComboboxPrimitive.Root>
+      </ComboboxControlContext>
     </ComboboxStylesContext>
   );
 }
@@ -167,7 +178,7 @@ export function ComboboxControl({ className, ...rest }: ComboboxControlProps) {
 }
 
 export function ComboboxInput({
-  size = "md",
+  size: sizeProp,
   variant: variantProp,
   clearable = false,
   showTrigger = true,
@@ -177,10 +188,13 @@ export function ComboboxInput({
 }: ComboboxInputProps) {
   const { inputValue } = useComboboxContext();
   const slots = useComboboxSlots();
+  const control = use(ComboboxControlContext);
+  const size = sizeProp ?? control.size ?? "md";
+  const variant = variantProp ?? control.variant;
 
   return (
     <ComboboxControl data-size={size}>
-      <InputGroup className={className} size={size} variant={variantProp}>
+      <InputGroup className={className} size={size} variant={variant}>
         {children}
         <ComboboxPrimitive.Input asChild>
           <InputGroup.Input {...rest} />

@@ -25,7 +25,14 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
-import { createMemo, For, Show, splitProps, useContext } from "solid-js";
+import {
+  createContext,
+  createMemo,
+  For,
+  Show,
+  splitProps,
+  useContext,
+} from "solid-js";
 import { Portal } from "solid-js/web";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "../internal/icons";
@@ -43,6 +50,9 @@ function useSelectSlots() {
   const styles = useContext(SelectStylesContext);
   return () => styles?.slots ?? selectRecipe();
 }
+
+/** Root-level control props (`variant`, `size`) read by `Select.Trigger`. */
+const SelectControlContext = createContext<FormControlShellVariantProps>({});
 // #endregion
 
 type FormControlVariant = "primary" | "secondary";
@@ -56,7 +66,10 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
   SelectPrimitiveRootProps<T>,
   "onValueChange"
 > & {
+  /** Visual shell variant applied to the trigger. Defaults to `primary`. */
   variant?: FormControlVariant;
+  /** Trigger size. Defaults to `md`. */
+  size?: FormControlShellVariantProps["size"];
   onValueChange?: (value: string | string[]) => void;
 } & BaseSelectRootProps;
 
@@ -88,10 +101,19 @@ export function SelectRoot<T extends CollectionItem = CollectionItem>(
     "children",
     "onValueChange",
     "variant",
+    "size",
     "recipe",
   ]);
 
   const slots = createMemo(() => (local.recipe ?? selectRecipe)());
+  const control: FormControlShellVariantProps = {
+    get size() {
+      return local.size;
+    },
+    get variant() {
+      return local.variant;
+    },
+  };
 
   return (
     <SelectStylesContext
@@ -102,17 +124,19 @@ export function SelectRoot<T extends CollectionItem = CollectionItem>(
         variants: {},
       }}
     >
-      <SelectPrimitive.Root
-        {...rest}
-        onValueChange={
-          local.onValueChange
-            ? (details) => local.onValueChange?.(details.value)
-            : undefined
-        }
-      >
-        {local.children}
-        <SelectPrimitive.HiddenSelect />
-      </SelectPrimitive.Root>
+      <SelectControlContext.Provider value={control}>
+        <SelectPrimitive.Root
+          {...rest}
+          onValueChange={
+            local.onValueChange
+              ? (details) => local.onValueChange?.(details.value)
+              : undefined
+          }
+        >
+          {local.children}
+          <SelectPrimitive.HiddenSelect />
+        </SelectPrimitive.Root>
+      </SelectControlContext.Provider>
     </SelectStylesContext>
   );
 }
@@ -126,9 +150,11 @@ export function SelectTrigger(props: SelectTriggerProps): JSX.Element {
     "class",
   ]);
   const slots = useSelectSlots();
-  const size = () => local.size ?? "md";
+  const control = useContext(SelectControlContext);
+  const size = () => local.size ?? control.size ?? "md";
   const surfaceVariant = useFormControlSurface();
-  const variant = () => local.variant ?? ("primary" as FormControlVariant);
+  const variant = () =>
+    local.variant ?? control.variant ?? ("primary" as FormControlVariant);
   const clearable = () => local.clearable ?? false;
 
   return (
