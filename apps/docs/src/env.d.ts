@@ -15,14 +15,10 @@ declare module "*.md?raw" {
 }
 
 declare module "@pisagor/react/styles";
-declare module "@pisagor/react-form/styles";
 declare module "@pisagor/solid/styles";
-declare module "@pisagor/solid-form/styles";
 declare module "@pisagor/svelte/styles";
-declare module "@pisagor/svelte-form/styles";
 declare module "@pisagor/tokens/styles";
 declare module "@pisagor/vue/styles";
-declare module "@pisagor/vue-form/styles";
 
 declare module "react" {
   interface CSSProperties {

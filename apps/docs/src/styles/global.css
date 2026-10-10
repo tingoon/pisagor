@@ -1,27 +1,12 @@
 @import "tailwindcss";
 @import "@pisagor/react/styles";
-@import "@pisagor/react-form/styles";
 @import "@pisagor/vue/styles";
-@import "@pisagor/vue-form/styles";
 @import "@pisagor/astro/styles";
 @import "@pisagor/solid/styles";
-@import "@pisagor/solid-form/styles";
 @import "@pisagor/svelte/styles";
-@import "@pisagor/svelte-form/styles";
 
-/* Scan docs chrome, block demos, presets, and package examples */
 @source "../**/*.{astro,ts,tsx,vue,svelte}";
-@source "../../../packages/presets/src/**/*.ts";
-@source "../recipes/blocks/**/*.ts";
-@source "../../../packages/astro/examples/**/*.{ts,astro}";
-@source "../../../packages/react/examples/**/*.{ts,tsx}";
-@source "../../../packages/react-form/examples/**/*.{ts,tsx}";
-@source "../../../packages/solid/examples/**/*.{ts,tsx}";
-@source "../../../packages/solid-form/examples/**/*.{ts,tsx}";
-@source "../../../packages/svelte/examples/**/*.{ts,svelte}";
-@source "../../../packages/svelte-form/examples/**/*.{ts,svelte}";
-@source "../../../packages/vue/examples/**/*.{ts,vue}";
-@source "../../../packages/vue-form/examples/**/*.{ts,vue}";
+@source "../../../packages/*/examples/**/*.{ts,tsx,astro,vue,svelte}";
 
 @theme {
   --leading-relaxed: 1.625;

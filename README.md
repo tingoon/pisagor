@@ -49,14 +49,14 @@ export function App() {
 }
 ```
 
-Import styles once in the app CSS (Tailwind v4). Point `@source` at the package if your scanner does not pick up workspace files:
+Import styles once in the app CSS (Tailwind v4). Framework entries pull tokens, recipe scanning, and package sources — no extra `@source` for the library:
 
 ```css
 @import "tailwindcss";
 @import "@pisagor/react/styles";
 ```
 
-Swap the package name for Vue, Solid, Svelte, or Astro (`@pisagor/vue/styles`, …).
+Swap the package name for Vue, Solid, Svelte, or Astro (`@pisagor/vue/styles`, …). Form packages (`@pisagor/*-form`) are logic wrappers — they have no styles entry.
 
 ## Docs
 

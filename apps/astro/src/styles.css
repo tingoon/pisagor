@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "@pisagor/astro/styles";
 @source "./**/*.{ts,astro}";
-@source "../../../packages/astro/src/**/*.{ts,astro}";
 
 .dark .sbdocs-wrapper {
   background: var(--background);
