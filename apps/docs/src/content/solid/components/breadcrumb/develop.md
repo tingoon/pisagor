@@ -6,6 +6,12 @@ import { Breadcrumb } from "@pisagor/solid";
 
 ## Examples
 
+### Default
+
+The full path from root to the current page.
+
+:::example Default
+
 ### Collapsed
 
 Collapse middle segments when the path is long so the current page stays visible.
@@ -18,11 +24,11 @@ Replace the default separator when brand or locale needs a different divider.
 
 :::example CustomSeparator
 
-### With Link
+### Compound
 
-Link ancestors so users can jump back through the hierarchy.
+Compose items and separators from parts for a custom breadcrumb layout.
 
-:::example WithLink
+:::example Compound
 
 ### With Menu
 
@@ -30,14 +36,16 @@ Park overflow ancestors in a menu when the path cannot show every level.
 
 :::example WithMenu
 
-### Compound
+### As child
 
-Compose items and separators from parts for a custom breadcrumb layout.
+Link ancestors so users can jump back through the hierarchy.
 
-:::example Compound
+:::example WithLink
 
-### Default
+## Customization
 
-The full path from root to the current page.
+### Custom recipe
 
-:::example Default
+Extend `breadcrumbRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

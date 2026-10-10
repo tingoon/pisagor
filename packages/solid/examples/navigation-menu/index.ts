@@ -1,12 +1,4 @@
-import defaultRaw from "./default.tsx?raw";
-import wrappingRaw from "./wrapping.tsx?raw";
-
-export const imports = `import { NavigationMenu } from "@pisagor/solid";`;
-
-export const sources = {
-  Default: defaultRaw,
-  Wrapping: wrappingRaw,
-} as const;
-
+export * from "./custom-recipe";
 export * from "./default";
+export { imports, sources } from "./sources";
 export * from "./wrapping";

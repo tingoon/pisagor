@@ -8,9 +8,15 @@ Part of `@pisagor/solid-form`. Style with recipes where available — no app-lev
 
 ## Examples
 
+### Default
+
+A one-time code input with one slot per digit.
+
+:::example Default
+
 ### Disabled
 
-Show that the OTP field is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the OTP field is unavailable.
 
 :::example Disabled
 

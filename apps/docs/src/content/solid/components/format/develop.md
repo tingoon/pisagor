@@ -12,29 +12,11 @@ Format a value for readable display.
 
 :::example Default
 
-### Byte Unit Display
+### Number Story
 
-Choose how byte units are labeled in the output.
+Format a general number for display.
 
-:::example ByteUnitDisplay
-
-### Byte Unit System
-
-Switch between binary and decimal byte systems.
-
-:::example ByteUnitSystem
-
-### Byte
-
-Format a byte size for storage and download labels.
-
-:::example Byte
-
-### Number Compact
-
-Shorten large numbers when space is tight.
-
-:::example NumberCompact
+:::example NumberStory
 
 ### Number Currency
 
@@ -48,20 +30,38 @@ Format a ratio as a percentage.
 
 :::example NumberPercent
 
-### Number Story
+### Number Compact
 
-Format a general number for display.
+Shorten large numbers when space is tight.
 
-:::example NumberStory
+:::example NumberCompact
 
-### Relative Time Short
+### Byte
 
-Show a short relative time such as 2h.
+Format a byte size for storage and download labels.
 
-:::example RelativeTimeShort
+:::example Byte
+
+### Byte Unit System
+
+Switch between binary and decimal byte systems.
+
+:::example ByteUnitSystem
+
+### Byte Unit Display
+
+Choose how byte units are labeled in the output.
+
+:::example ByteUnitDisplay
 
 ### Relative Time
 
 Show a fuller relative time such as 2 hours ago.
 
 :::example RelativeTime
+
+### Relative Time Short
+
+Show a short relative time such as 2h.
+
+:::example RelativeTimeShort

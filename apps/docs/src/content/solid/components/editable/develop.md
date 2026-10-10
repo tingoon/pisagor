@@ -4,25 +4,28 @@
 import { Editable } from "@pisagor/solid";
 ```
 
+## Anatomy
+
+```tsx
+<Editable>
+  <Editable.Area>
+    <Editable.Input />
+    <Editable.Preview />
+  </Editable.Area>
+  <Editable.Control>
+    <Editable.CancelTrigger />
+    <Editable.SubmitTrigger />
+  </Editable.Control>
+</Editable>
+```
+
 ## Examples
 
-### Invalid
+### Default
 
-Surface validation when the edited value is not allowed.
+Click to edit a value inline where it already appears.
 
-:::example Invalid
-
-### Disabled
-
-Show that editing is unavailable. Prefer explaining why nearby.
-
-:::example Disabled
-
-### Sizes
-
-Match control size to surrounding text density.
-
-:::example Sizes
+:::example Default
 
 ### Variants
 
@@ -30,11 +33,11 @@ Choose field emphasis for the inline editor.
 
 :::example Variants
 
-### Dblclick
+### Sizes
 
-Require double-click to edit when accidental single clicks are common.
+Match control size to surrounding text density.
 
-:::example Dblclick
+:::example Sizes
 
 ### Orientation Horizontal
 
@@ -48,17 +51,41 @@ Stack the editable vertically when items should read in a column.
 
 :::example OrientationVertical
 
+### Without Controls
+
+Hide explicit save/cancel when commit-on-blur is enough.
+
+:::example WithoutControls
+
 ### With Textarea
 
 Edit multi-line values inline.
 
 :::example WithTextarea
 
-### Without Controls
+### Controlled
 
-Hide explicit save/cancel when commit-on-blur is enough.
+Drive value and edit state from the parent.
 
-:::example WithoutControls
+:::example Controlled
+
+### Disabled
+
+Show that editing is unavailable.
+
+:::example Disabled
+
+### Invalid
+
+Surface validation when the edited value is not allowed.
+
+:::example Invalid
+
+### Dblclick
+
+Require double-click to edit when accidental single clicks are common.
+
+:::example Dblclick
 
 ### Activation Click
 
@@ -78,14 +105,10 @@ Start editing only from an explicit programmatic trigger.
 
 :::example ActivationNone
 
-### Controlled
+## Customization
 
-Drive value and edit state from the parent.
+### Custom recipe
 
-:::example Controlled
+Extend `editableRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-### Default
-
-Click to edit a value inline where it already appears.
-
-:::example Default
+:::example CustomRecipe

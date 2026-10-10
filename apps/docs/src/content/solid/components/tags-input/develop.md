@@ -4,13 +4,17 @@
 import { TagsInput } from "@pisagor/solid";
 ```
 
+## Anatomy
+
+```tsx
+<TagsInput>
+  <TagsInput.Context>
+    {({ value }) => value.map((tag, index) => <TagsInput.Item />)}
+  </TagsInput.Context>
+</TagsInput>
+```
+
 ## Examples
-
-### Sizes
-
-Match size to form density.
-
-:::example Sizes
 
 ### Variants
 
@@ -18,51 +22,33 @@ Choose field emphasis to match surrounding inputs.
 
 :::example Variants
 
-### Blur Behavior
+### Sizes
 
-Control what happens to typed text when the field loses focus.
+Match size to form density.
 
-:::example BlurBehavior
+:::example Sizes
 
-### Custom Delimiter
+### With Combobox
 
-Split on custom characters when users paste or type delimited lists.
+Suggest tags from a list while still allowing custom entry.
 
-:::example CustomDelimiter
+:::example WithCombobox
 
-### Disable Editing
+### Controlled
 
-Prevent editing existing tags when only add and remove should be allowed.
+Drive the tag list from the parent when form state lives above.
 
-:::example DisableEditing
+:::example Controlled
 
-### Max Tags
+### Controlled Input Value
 
-Cap how many tags can be added.
+Drive the text being typed from the parent.
 
-:::example MaxTags
-
-### Paste Behavior
-
-Define how pasted text becomes one or many tags.
-
-:::example PasteBehavior
-
-### Sanitize Value
-
-Clean tag text before it is committed.
-
-:::example SanitizeValue
-
-### Validation
-
-Reject invalid tags and explain why.
-
-:::example Validation
+:::example ControlledInputValue
 
 ### Disabled
 
-Show that tags cannot change. Prefer explaining why nearby.
+Show that tags cannot change.
 
 :::example Disabled
 
@@ -72,17 +58,11 @@ Surface a validation error for the tags field.
 
 :::example Invalid
 
-### With Combobox
+### Max Tags
 
-Suggest tags from a list while still allowing custom entry.
+Cap how many tags can be added.
 
-:::example WithCombobox
-
-### Max Length
-
-Limit characters per tag so values stay short.
-
-:::example MaxLength
+:::example MaxTags
 
 ### Max With Overflow
 
@@ -90,20 +70,44 @@ Handle overflow when users hit the tag limit.
 
 :::example MaxWithOverflow
 
-### Controlled Input Value
+### Max Length
 
-Drive the text being typed from the parent.
+Limit characters per tag so values stay short.
 
-:::example ControlledInputValue
+:::example MaxLength
 
-### Controlled
+### Validation
 
-Drive the tag list from the parent when form state lives above.
+Reject invalid tags and explain why.
 
-:::example Controlled
+:::example Validation
 
-### Default
+### Custom Delimiter
 
-Add and remove tags as a list of short values.
+Split on custom characters when users paste or type delimited lists.
 
-:::example Default
+:::example CustomDelimiter
+
+### Blur Behavior
+
+Control what happens to typed text when the field loses focus.
+
+:::example BlurBehavior
+
+### Paste Behavior
+
+Define how pasted text becomes one or many tags.
+
+:::example PasteBehavior
+
+### Disable Editing
+
+Prevent editing existing tags when only add and remove should be allowed.
+
+:::example DisableEditing
+
+### Sanitize Value
+
+Clean tag text before it is committed.
+
+:::example SanitizeValue

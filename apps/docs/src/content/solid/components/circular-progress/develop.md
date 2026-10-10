@@ -6,6 +6,12 @@ import { CircularProgress } from "@pisagor/solid";
 
 ## Examples
 
+### Default
+
+Show completion on a circular track.
+
+:::example Default
+
 ### Sizes
 
 Match ring size to available space and importance.
@@ -24,20 +30,22 @@ Display the numeric percentage next to or inside the ring.
 
 :::example WithValue
 
-### Indeterminate
-
-Animate without a value when progress cannot be measured yet.
-
-:::example Indeterminate
-
 ### Controlled
 
 Drive the value from the parent while async work runs.
 
 :::example Controlled
 
-### Default
+### Indeterminate
 
-Show completion on a circular track.
+Animate without a value when progress cannot be measured yet.
 
-:::example Default
+:::example Indeterminate
+
+## Customization
+
+### Custom recipe
+
+Extend `circularProgressRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

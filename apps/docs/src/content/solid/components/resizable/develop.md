@@ -4,6 +4,16 @@
 import { Resizable } from "@pisagor/solid";
 ```
 
+## Anatomy
+
+```tsx
+<Resizable>
+  <Resizable.Panel />
+  <Resizable.ResizeTrigger />
+  <Resizable.Panel />
+</Resizable>
+```
+
 ## Examples
 
 ### Default
@@ -11,12 +21,6 @@ import { Resizable } from "@pisagor/solid";
 Drag handles to resize adjacent panels.
 
 :::example Default
-
-### Min Max
-
-Clamp values to a minimum and maximum so users cannot pick out-of-range input.
-
-:::example MinMax
 
 ### Orientation Horizontal
 
@@ -48,8 +52,22 @@ Split more than two panels when the workspace has several regions.
 
 :::example MultiplePanels
 
+### Min Max
+
+Clamp values to a minimum and maximum so users cannot pick out-of-range input.
+
+:::example MinMax
+
 ### Collapsible
 
 Allow a panel to collapse when users need maximum space for another region.
 
 :::example Collapsible
+
+## Customization
+
+### Custom recipe
+
+Extend `resizableRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

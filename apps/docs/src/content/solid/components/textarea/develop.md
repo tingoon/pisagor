@@ -12,15 +12,15 @@ Choose emphasis to match surrounding inputs.
 
 :::example Variants
 
-### Autoresize
+### Controlled
 
-Grow with content instead of showing an inner scrollbar early.
+Manage state from the parent when other UI must stay in sync with this textarea.
 
-:::example Autoresize
+:::example Controlled
 
 ### Disabled
 
-Show that editing is unavailable. Prefer explaining why nearby.
+Show that editing is unavailable.
 
 :::example Disabled
 
@@ -30,14 +30,16 @@ Surface a validation error when the text is missing or not allowed.
 
 :::example Invalid
 
-### Controlled
+### Autoresize
 
-Manage state from the parent when other UI must stay in sync with this textarea.
+Grow with content instead of showing an inner scrollbar early.
 
-:::example Controlled
+:::example Autoresize
 
-### Default
+## Customization
 
-Capture multi-line text for messages and notes.
+### Custom recipe
 
-:::example Default
+Extend `textareaRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

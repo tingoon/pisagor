@@ -4,6 +4,30 @@
 import { DropdownMenu } from "@pisagor/solid";
 ```
 
+## Anatomy
+
+```tsx
+<DropdownMenu>
+  <DropdownMenu.Trigger />
+  <DropdownMenu.Content>
+    <DropdownMenu.ItemGroup>
+      <DropdownMenu.Item>
+        <DropdownMenu.Shortcut />
+      </DropdownMenu.Item>
+      <DropdownMenu.CheckboxItem />
+      <DropdownMenu.RadioItemGroup>
+        <DropdownMenu.RadioItem />
+      </DropdownMenu.RadioItemGroup>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Sub>
+        <DropdownMenu.TriggerItem />
+        <DropdownMenu.SubContent />
+      </DropdownMenu.Sub>
+    </DropdownMenu.ItemGroup>
+  </DropdownMenu.Content>
+</DropdownMenu>
+```
+
 ## Examples
 
 ### Default
@@ -12,23 +36,17 @@ Open actions from a trigger button.
 
 :::example Default
 
+### Icons
+
+Lead items with icons for faster recognition.
+
+:::example Icons
+
 ### Shortcuts
 
 Show keyboard shortcuts beside items for power users.
 
 :::example Shortcuts
-
-### Checkboxes
-
-Toggle multiple options inside the menu.
-
-:::example Checkboxes
-
-### Destructive
-
-Call out irreversible actions with destructive emphasis.
-
-:::example Destructive
 
 ### Group Label
 
@@ -36,17 +54,29 @@ Label groups of related menu items.
 
 :::example GroupLabel
 
-### Icons
+### With Separator
 
-Lead items with icons for faster recognition.
+Separate groups so sections stay scannable.
 
-:::example Icons
+:::example WithSeparator
 
-### Link
+### Checkboxes
 
-Navigate with link items when the action leaves the page.
+Toggle multiple options inside the menu.
 
-:::example Link
+:::example Checkboxes
+
+### Radio Group
+
+Pick exactly one option among menu items.
+
+:::example RadioGroup
+
+### Destructive
+
+Call out irreversible actions with destructive emphasis.
+
+:::example Destructive
 
 ### Nested
 
@@ -60,23 +90,17 @@ Offer a compact item treatment for dense menus.
 
 :::example QuickItem
 
-### Radio Group
-
-Pick exactly one option among menu items.
-
-:::example RadioGroup
-
 ### With Scroll
 
 Scroll long menus without growing past the viewport.
 
 :::example WithScroll
 
-### With Separator
+### As child
 
-Separate groups so sections stay scannable.
+Navigate with link items when the action leaves the page.
 
-:::example WithSeparator
+:::example Link
 
 ### Placements
 

@@ -4,6 +4,19 @@
 import { Frame } from "@pisagor/solid";
 ```
 
+## Anatomy
+
+```tsx
+<Frame>
+  <Frame.Header>
+    <Frame.Title />
+    <Frame.Description />
+  </Frame.Header>
+  <Frame.Panel />
+  <Frame.Footer />
+</Frame>
+```
+
 ## Examples
 
 ### Default
@@ -23,3 +36,11 @@ Show multiple framed regions when the workspace splits embeds.
 Host form controls inside the frame when the embed includes settings.
 
 :::example WithFormControls
+
+## Customization
+
+### Custom recipe
+
+Extend `frameRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

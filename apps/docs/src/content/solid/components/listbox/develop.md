@@ -6,23 +6,11 @@ import { Listbox } from "@pisagor/solid";
 
 ## Examples
 
-### Disabled Item
+### Default
 
-Show that a specific option cannot be selected.
+Choose from a scrollable list with clear selection.
 
-:::example DisabledItem
-
-### Grid
-
-Lay options in a grid when tiles scan better than a single column.
-
-:::example Grid
-
-### Grouping
-
-Group options under labels for long lists.
-
-:::example Grouping
+:::example Default
 
 ### Horizontal
 
@@ -30,53 +18,11 @@ Use a horizontal layout when the listbox should read left to right.
 
 :::example Horizontal
 
-### Disabled
+### Grid
 
-Show that the list is unavailable. Prefer explaining why nearby.
+Lay options in a grid when tiles scan better than a single column.
 
-:::example Disabled
-
-### Image Explorer
-
-Browse image options when thumbnails carry meaning.
-
-:::example ImageExplorer
-
-### Selection Extended
-
-Extend selection with modifier keys for power users.
-
-:::example SelectionExtended
-
-### Selection Multiple
-
-Allow more than one selected option.
-
-:::example SelectionMultiple
-
-### Selection None
-
-Support a list without a required selection.
-
-:::example SelectionNone
-
-### Transfer List
-
-Move items between dual lists when assigning membership.
-
-:::example TransferList
-
-### With Description
-
-Add secondary text under each option for clarity.
-
-:::example WithDescription
-
-### With Filter
-
-Filter the list by typing when options are numerous.
-
-:::example WithFilter
+:::example Grid
 
 ### With Icon
 
@@ -84,17 +30,23 @@ Lead options with icons when symbols speed recognition.
 
 :::example WithIcon
 
-### With Popover
+### With Description
 
-Host the listbox inside a popover trigger.
+Add secondary text under each option for clarity.
 
-:::example WithPopover
+:::example WithDescription
 
-### Controlled
+### Grouped
 
-Drive selection from the parent when other UI depends on it.
+Group options under labels for long lists.
 
-:::example Controlled
+:::example Grouping
+
+### With Filter
+
+Filter the list by typing when options are numerous.
+
+:::example WithFilter
 
 ### Compound
 
@@ -102,8 +54,64 @@ Assemble from parts when you need a custom layout beyond the shorthand API.
 
 :::example Compound
 
-### Default
+### With Popover
 
-Choose from a scrollable list with clear selection.
+Host the listbox inside a popover trigger.
 
-:::example Default
+:::example WithPopover
+
+### Transfer List
+
+Move items between dual lists when assigning membership.
+
+:::example TransferList
+
+### Image Explorer
+
+Browse image options when thumbnails carry meaning.
+
+:::example ImageExplorer
+
+### Controlled
+
+Drive selection from the parent when other UI depends on it.
+
+:::example Controlled
+
+### Disabled
+
+Show that the list is unavailable.
+
+:::example Disabled
+
+### Disabled Item
+
+Show that a specific option cannot be selected.
+
+:::example DisabledItem
+
+### Selection Multiple
+
+Allow more than one selected option.
+
+:::example SelectionMultiple
+
+### Selection Extended
+
+Extend selection with modifier keys for power users.
+
+:::example SelectionExtended
+
+### Selection None
+
+Support a list without a required selection.
+
+:::example SelectionNone
+
+## Customization
+
+### Custom recipe
+
+Extend `listboxRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

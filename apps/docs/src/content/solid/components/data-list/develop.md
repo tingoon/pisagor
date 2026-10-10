@@ -6,6 +6,12 @@ import { DataList } from "@pisagor/solid";
 
 ## Examples
 
+### Default
+
+Present label-value pairs for summaries and metadata.
+
+:::example Default
+
 ### Orientation Horizontal
 
 Lay out the data list horizontally when items should read in a row.
@@ -35,9 +41,3 @@ Add a short tip on a label when the field needs explanation without crowding the
 Compose term and value parts for a custom list layout.
 
 :::example Compound
-
-### Default
-
-Present label-value pairs for summaries and metadata.
-
-:::example Default
