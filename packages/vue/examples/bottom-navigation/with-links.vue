@@ -24,9 +24,9 @@ import { BottomNavigation, ScrollArea } from "@pisagor/vue";
           </BottomNavigation.Item>
           <BottomNavigation.Item as-child value="/docs">
             <a href="https://example.com/search">
-              <BottomNavigation.ItemIcon
-                ><PhMagnifyingGlass /></BottomNavigation.ItemIcon
-              >
+              <BottomNavigation.ItemIcon>
+                <PhMagnifyingGlass />
+              </BottomNavigation.ItemIcon>
               <BottomNavigation.ItemLabel>Search</BottomNavigation.ItemLabel>
             </a>
           </BottomNavigation.Item>

@@ -20,8 +20,8 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const MinMax = meta.story({
-  render: exampleRender(Examples.MinMax),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
 export const OrientationHorizontal = meta.story({
@@ -44,10 +44,14 @@ export const MultiplePanels = meta.story({
   render: exampleRender(Examples.MultiplePanels),
 });
 
+export const MinMax = meta.story({
+  render: exampleRender(Examples.MinMax),
+});
+
 export const Collapsible = meta.story({
   render: exampleRender(Examples.Collapsible),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

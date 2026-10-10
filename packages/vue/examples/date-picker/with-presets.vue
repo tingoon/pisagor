@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { PhCalendar } from "@phosphor-icons/vue";
-import { Button, Calendar, DatePicker } from "@pisagor/vue";
+import { Button, Calendar, DatePicker, parseDate } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
 interface WeekDay {
@@ -53,6 +53,10 @@ const presets = [
   { days: 7, label: "In a week" },
 ] as const;
 const defaultValue = [parseDate(new Date())];
+
+function presetValue(days: number) {
+  return [parseDate(new Date(new Date().setDate(new Date().getDate() + days)))];
+}
 </script>
 
 <template>
@@ -71,7 +75,7 @@ const defaultValue = [parseDate(new Date())];
               v-for="preset in presets"
               :key="preset.label"
               :as-child="true"
-              :value="preset.value"
+              :value="presetValue(preset.days)"
             >
               <Button class="w-full justify-start" size="sm" variant="ghost">
                 {{ preset.label }}

@@ -20,8 +20,8 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const OnSurface = meta.story({
-  render: exampleRender(Examples.OnSurface),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
 export const OrientationHorizontal = meta.story({
@@ -52,28 +52,12 @@ export const ComboboxMultipleField = meta.story({
   render: exampleRender(Examples.ComboboxMultipleField),
 });
 
-export const DisabledField = meta.story({
-  render: exampleRender(Examples.DisabledField),
-});
-
-export const FieldGroup = meta.story({
-  render: exampleRender(Examples.FieldGroup),
-});
-
-export const WithInputGroup = meta.story({
-  render: exampleRender(Examples.WithInputGroup),
-});
-
 export const NumberInputStory = meta.story({
   render: exampleRender(Examples.NumberInputStory),
 });
 
 export const RadioGroupField = meta.story({
   render: exampleRender(Examples.RadioGroupField),
-});
-
-export const RequiredField = meta.story({
-  render: exampleRender(Examples.RequiredField),
 });
 
 export const SelectField = meta.story({
@@ -92,14 +76,22 @@ export const TextareaField = meta.story({
   render: exampleRender(Examples.TextareaField),
 });
 
+export const FieldGroup = meta.story({
+  render: exampleRender(Examples.FieldGroup),
+});
+
+export const WithInputGroup = meta.story({
+  render: exampleRender(Examples.WithInputGroup),
+});
+
+export const RequiredField = meta.story({
+  render: exampleRender(Examples.RequiredField),
+});
+
+export const DisabledField = meta.story({
+  render: exampleRender(Examples.DisabledField),
+});
+
 export const WithError = meta.story({
   render: exampleRender(Examples.WithError),
-});
-
-export const WithSeparator = meta.story({
-  render: exampleRender(Examples.WithSeparator),
-});
-
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
 });

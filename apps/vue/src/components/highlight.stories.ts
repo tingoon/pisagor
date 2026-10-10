@@ -17,29 +17,33 @@ const meta = preview.meta({
 });
 
 export const Playground = meta.story({
+  args: {
+    query: "accessible",
+    text: "Build accessible interfaces with reusable UI components.",
+  },
   tags: ["autodocs"],
 });
 
-export const Multiple = meta.story({
-  render: exampleRender(Examples.Multiple),
-});
-
-export const CustomStyle = meta.story({
-  render: exampleRender(Examples.CustomStyle),
-});
-
-export const SearchQuery = meta.story({
-  render: exampleRender(Examples.SearchQuery),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
 export const Squiggle = meta.story({
   render: exampleRender(Examples.Squiggle),
 });
 
-export const MultipleQueries = meta.story({
-  render: exampleRender(Examples.MultipleQueries),
+export const Multiple = meta.story({
+  render: exampleRender(Examples.Multiple),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const SearchQuery = meta.story({
+  render: exampleRender(Examples.SearchQuery),
+});
+
+export const CustomStyle = meta.story({
+  render: exampleRender(Examples.CustomStyle),
+});
+
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

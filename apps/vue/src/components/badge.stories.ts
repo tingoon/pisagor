@@ -24,20 +24,12 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
-});
-
-export const Sizes = meta.story({
-  render: exampleRender(Examples.Sizes),
-});
-
 export const Variants = meta.story({
   render: exampleRender(Examples.Variants),
 });
 
-export const CustomColor = meta.story({
-  render: exampleRender(Examples.CustomColor),
+export const Sizes = meta.story({
+  render: exampleRender(Examples.Sizes),
 });
 
 export const Pill = meta.story({
@@ -50,4 +42,12 @@ export const WithLink = meta.story({
 
 export const WithSpinner = meta.story({
   render: exampleRender(Examples.WithSpinner),
+});
+
+export const CustomColor = meta.story({
+  render: exampleRender(Examples.CustomColor),
+});
+
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

@@ -4,6 +4,14 @@
 import { LinkBox } from "@pisagor/vue";
 ```
 
+## Anatomy
+
+```vue
+<LinkBox>
+  <LinkBox.Overlay />
+</LinkBox>
+```
+
 ## Examples
 
 ### Default

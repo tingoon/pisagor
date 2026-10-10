@@ -6,6 +6,12 @@ import { DataGrid } from "@pisagor/vue/data-grid";
 
 ## Examples
 
+### Striped Variant
+
+Alternate row backgrounds to improve scanning in dense grids.
+
+:::example StripedVariant
+
 ### Active Filter Chips
 
 Show active filters as chips so users can remove them quickly.
@@ -60,12 +66,6 @@ Group rows by a field when hierarchy helps scanning.
 
 :::example GroupedRows
 
-### Loading State
-
-Show loading while rows are fetching so the grid does not look empty by mistake.
-
-:::example LoadingState
-
 ### Manual Pagination
 
 Page on the server when the full dataset cannot load at once.
@@ -114,12 +114,6 @@ Sort by column so users can reorder records.
 
 :::example Sorting
 
-### Striped Variant
-
-Alternate row backgrounds to improve scanning in dense grids.
-
-:::example StripedVariant
-
 ### Virtualized
 
 Virtualize rows for very large datasets.
@@ -132,8 +126,9 @@ Enable sortable columns when users need to reorder records by field.
 
 :::example WithSortableData
 
-### Filter Head
+### Loading State
 
-Place filter controls in the header for quick column filtering.
+Show loading while rows are fetching so the grid does not look empty by mistake.
 
-:::example FilterHead
+:::example LoadingState
+

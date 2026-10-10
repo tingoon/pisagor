@@ -4,6 +4,19 @@
 import { BottomNavigation } from "@pisagor/vue";
 ```
 
+## Anatomy
+
+```vue
+<BottomNavigation>
+  <BottomNavigation.List>
+    <BottomNavigation.Item>
+      <BottomNavigation.ItemIcon />
+      <BottomNavigation.ItemLabel />
+    </BottomNavigation.Item>
+  </BottomNavigation.List>
+</BottomNavigation>
+```
+
 ## Examples
 
 ### Default
@@ -18,8 +31,16 @@ Use icons alone when labels would crowd a narrow bar. Provide accessible names.
 
 :::example IconOnly
 
-### With Links
+### As child
 
 Render destinations as links when each item navigates to a route.
 
 :::example WithLinks
+
+## Customization
+
+### Custom recipe
+
+Extend `bottomNavigationRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

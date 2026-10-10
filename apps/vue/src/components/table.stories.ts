@@ -20,22 +20,26 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Variants = meta.story({
-  render: exampleRender(Examples.Variants),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
-export const Actions = meta.story({
-  render: exampleRender(Examples.Actions),
+export const Variants = meta.story({
+  render: exampleRender(Examples.Variants),
 });
 
 export const Footer = meta.story({
   render: exampleRender(Examples.Footer),
 });
 
+export const Actions = meta.story({
+  render: exampleRender(Examples.Actions),
+});
+
 export const NotHoverable = meta.story({
   render: exampleRender(Examples.NotHoverable),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

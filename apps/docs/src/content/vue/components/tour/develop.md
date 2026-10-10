@@ -4,13 +4,44 @@
 import { Tour } from "@pisagor/vue";
 ```
 
+## Anatomy
+
+```vue
+<Tour>
+  <Tour.Trigger />
+  <Tour.Content>
+    <Tour.Header>
+      <Tour.ProgressText />
+      <Tour.Title />
+      <Tour.Description />
+    </Tour.Header>
+    <Tour.Footer>
+      <Tour.PreviousStep />
+      <Tour.NextStep />
+    </Tour.Footer>
+  </Tour.Content>
+</Tour>
+```
+
 ## Examples
 
-### Custom Spacing
+### Default
 
-Override spacing when the default does not fit the surrounding layout.
+Walk through key UI with guided highlight steps.
 
-:::example CustomSpacing
+:::example Default
+
+### Progress
+
+Show how far through the tour the user has gone.
+
+:::example Progress
+
+### Step Types
+
+Use different step presentations for varied teaching moments.
+
+:::example StepTypes
 
 ### Async
 
@@ -30,23 +61,11 @@ Move between steps with the keyboard.
 
 :::example KeyboardNavigation
 
-### Progress
-
-Show how far through the tour the user has gone.
-
-:::example Progress
-
 ### Skip
 
 Let users exit the tour without finishing every step.
 
 :::example Skip
-
-### Step Types
-
-Use different step presentations for varied teaching moments.
-
-:::example StepTypes
 
 ### Wait For Click
 
@@ -66,8 +85,18 @@ Wait for input in a field before advancing.
 
 :::example WaitForInput
 
-### Default
+## Customization
 
-Walk through key UI with guided highlight steps.
+### Class names
 
-:::example Default
+Pass `class` for a one-off change to a single element.
+
+Override spacing when the default does not fit the surrounding layout.
+
+:::example CustomSpacing
+
+### Custom recipe
+
+Extend `tourRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

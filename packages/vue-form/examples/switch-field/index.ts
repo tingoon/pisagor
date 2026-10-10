@@ -1,12 +1,4 @@
-import disabledRaw from "./disabled.vue?raw";
-import invalidRaw from "./invalid.vue?raw";
-
-export const imports = `import { SwitchField } from "@pisagor/vue-form";`;
-
-export const sources = {
-  Disabled: disabledRaw,
-  Invalid: invalidRaw,
-} as const;
-
+export { default as Default } from "./default.vue";
 export { default as Disabled } from "./disabled.vue";
 export { default as Invalid } from "./invalid.vue";
+export { imports, sources } from "./sources";

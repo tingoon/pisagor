@@ -6,27 +6,33 @@ import { PhoneInput } from "@pisagor/vue/phone-input";
 
 ## Examples
 
-### Default
+### Variants
 
-Basic phone input with a default country and national formatting as the user types.
+Choose visual weight or emphasis so the phone input matches importance in the surrounding layout.
 
-:::example Default
+:::example Variants
 
-### Controlled
+### Sizes
 
-Manage state from the parent when other UI must stay in sync with this phone input. The value is E.164; the field shows a national format for the selected country.
+Match size to the surrounding layout — smaller in compact chrome, larger where the phone input needs emphasis.
 
-:::example Controlled
+:::example Sizes
 
 ### Custom Popup
 
-Pass `popupProps` through to the country Combobox content (positioning and other content attrs).
+Customize the country popup when the default list presentation is not enough.
 
 :::example CustomPopup
 
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this phone input.
+
+:::example Controlled
+
 ### Disabled
 
-Show that the phone input is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the phone input is unavailable.
 
 :::example Disabled
 
@@ -36,20 +42,10 @@ Surface a validation or error state so users know the phone input needs attentio
 
 :::example Invalid
 
-### Sizes
+## Customization
 
-Match size to the surrounding layout — smaller in compact chrome, larger where the phone input needs emphasis.
+### Custom recipe
 
-:::example Sizes
+Extend `phoneInputRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-### Variants
-
-Choose visual weight or emphasis so the phone input matches importance in the surrounding layout.
-
-:::example Variants
-
-### On Surface
-
-Tune appearance for controls that sit on a raised or tinted surface instead of the page background.
-
-:::example OnSurface
+:::example CustomRecipe

@@ -6,11 +6,11 @@ import { Switch } from "@pisagor/vue";
 
 ## Examples
 
-### Sizes
+### Default
 
-Match switch size to surrounding form density.
+Toggle a setting on or off with immediate effect.
 
-:::example Sizes
+:::example Default
 
 ### Variants
 
@@ -18,9 +18,21 @@ Choose emphasis to match other controls in the form.
 
 :::example Variants
 
+### Sizes
+
+Match switch size to surrounding form density.
+
+:::example Sizes
+
+### Controlled
+
+Drive checked state from the parent when other UI depends on it.
+
+:::example Controlled
+
 ### Disabled
 
-Show that the setting cannot change. Prefer explaining why nearby.
+Show that the setting cannot change.
 
 :::example Disabled
 
@@ -30,20 +42,10 @@ Surface a validation error when the setting is required or not allowed.
 
 :::example Invalid
 
-### Controlled
+## Customization
 
-Drive checked state from the parent when other UI depends on it.
+### Custom recipe
 
-:::example Controlled
+Extend `switchRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-### Default
-
-Toggle a setting on or off with immediate effect.
-
-:::example Default
-
-### On Surface
-
-Tune appearance for controls that sit on a raised or tinted surface instead of the page background.
-
-:::example OnSurface
+:::example CustomRecipe

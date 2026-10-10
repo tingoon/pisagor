@@ -20,9 +20,9 @@ import { BottomNavigation, ScrollArea } from "@pisagor/vue";
             <BottomNavigation.ItemIcon><PhHouse /></BottomNavigation.ItemIcon>
           </BottomNavigation.Item>
           <BottomNavigation.Item aria-label="Search" value="search">
-            <BottomNavigation.ItemIcon
-              ><PhMagnifyingGlass /></BottomNavigation.ItemIcon
-            >
+            <BottomNavigation.ItemIcon>
+              <PhMagnifyingGlass />
+            </BottomNavigation.ItemIcon>
           </BottomNavigation.Item>
           <BottomNavigation.Item aria-label="News" value="news">
             <BottomNavigation.ItemIcon><PhBell /></BottomNavigation.ItemIcon>

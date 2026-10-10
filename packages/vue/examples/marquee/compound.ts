@@ -30,7 +30,9 @@ export default defineComponent({
         h(Marquee.Content, null, () =>
           marqueeIcons.map((IconComponent, index) =>
             h(Marquee.Item, { key: index }, () =>
-              h("div", { class: "[--space:--spacing(8)]" }, () =>
+              h(
+                "div",
+                { class: "[--space:--spacing(8)]" },
                 h(Card, null, () =>
                   h(Card.Content, null, () =>
                     h(IconComponent, { class: "size-10" }),

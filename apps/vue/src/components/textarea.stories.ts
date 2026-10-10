@@ -24,12 +24,8 @@ export const Variants = meta.story({
   render: exampleRender(Examples.Variants),
 });
 
-export const OnSurface = meta.story({
-  render: exampleRender(Examples.OnSurface),
-});
-
-export const Autoresize = meta.story({
-  render: exampleRender(Examples.Autoresize),
+export const Controlled = meta.story({
+  render: exampleRender(Examples.Controlled),
 });
 
 export const Disabled = meta.story({
@@ -40,18 +36,14 @@ export const Invalid = meta.story({
   render: exampleRender(Examples.Invalid),
 });
 
-export const Controlled = meta.story({
-  render: exampleRender(Examples.Controlled),
+export const Autoresize = meta.story({
+  render: exampleRender(Examples.Autoresize),
 });
 
 export const Clearable = meta.story({
   render: exampleRender(Examples.Clearable),
 });
 
-export const WithField = meta.story({
-  render: exampleRender(Examples.WithField),
-});
-
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

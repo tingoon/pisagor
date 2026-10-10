@@ -20,16 +20,20 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Sizes = meta.story({
-  render: exampleRender(Examples.Sizes),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
 export const Variants = meta.story({
   render: exampleRender(Examples.Variants),
 });
 
-export const OnSurface = meta.story({
-  render: exampleRender(Examples.OnSurface),
+export const Sizes = meta.story({
+  render: exampleRender(Examples.Sizes),
+});
+
+export const Controlled = meta.story({
+  render: exampleRender(Examples.Controlled),
 });
 
 export const Disabled = meta.story({
@@ -40,10 +44,6 @@ export const Invalid = meta.story({
   render: exampleRender(Examples.Invalid),
 });
 
-export const Controlled = meta.story({
-  render: exampleRender(Examples.Controlled),
-});
-
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

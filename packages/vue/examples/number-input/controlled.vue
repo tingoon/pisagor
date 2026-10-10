@@ -3,7 +3,9 @@ import { NumberInput } from "@pisagor/vue";
 import { ref } from "vue";
 
 const value = ref("1");
-const onValueChange = (value) => setValue(String(value));
+function onValueChange(next: number | string) {
+  value.value = String(next);
+}
 </script>
 
 <template>

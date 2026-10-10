@@ -4,9 +4,9 @@ import { Checkbox, Field } from "@pisagor/vue";
 
 <template>
   <Field.Set>
-    <Field.Legend variant="label"
-      >Select the items you want to show:</Field.Legend
-    >
+    <Field.Legend variant="label">
+      Select the items you want to show:
+    </Field.Legend>
     <Field.Group>
       <Checkbox.Group
         class="gap-3"

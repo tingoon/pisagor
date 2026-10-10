@@ -8,9 +8,15 @@ Part of `@pisagor/vue-form`. Style with recipes where available — no app-level
 
 ## Examples
 
+### Default
+
+A multi-line text input for longer free-form answers.
+
+:::example Default
+
 ### Disabled
 
-Show that the textarea is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the textarea is unavailable.
 
 :::example Disabled
 

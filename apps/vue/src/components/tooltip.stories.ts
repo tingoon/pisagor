@@ -21,18 +21,22 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Disabled = meta.story({
-  render: exampleRender(Examples.Disabled),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
 export const WithKeyboardShortcut = meta.story({
   render: exampleRender(Examples.WithKeyboardShortcut),
 });
 
+export const Disabled = meta.story({
+  render: exampleRender(Examples.Disabled),
+});
+
 export const Placements = meta.story({
   render: exampleRender(Examples.Placements),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

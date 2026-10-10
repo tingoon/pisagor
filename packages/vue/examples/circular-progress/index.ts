@@ -1,24 +1,8 @@
-import controlledRaw from "./controlled.vue?raw";
-import defaultRaw from "./default.vue?raw";
-import indeterminateRaw from "./indeterminate.vue?raw";
-import sizesRaw from "./sizes.vue?raw";
-import thicknessRaw from "./thickness.vue?raw";
-import with_valueRaw from "./with-value.vue?raw";
-
-export const imports = `import { CircularProgress } from "@pisagor/vue";`;
-
-export const sources = {
-  Controlled: controlledRaw,
-  Default: defaultRaw,
-  Indeterminate: indeterminateRaw,
-  Sizes: sizesRaw,
-  Thickness: thicknessRaw,
-  WithValue: with_valueRaw,
-} as const;
-
 export { default as Controlled } from "./controlled.vue";
+export { default as CustomRecipe } from "./custom-recipe.vue";
 export { default as Default } from "./default.vue";
 export { default as Indeterminate } from "./indeterminate.vue";
 export { default as Sizes } from "./sizes.vue";
+export { imports, sources } from "./sources";
 export { default as Thickness } from "./thickness.vue";
 export { default as WithValue } from "./with-value.vue";

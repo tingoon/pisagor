@@ -8,9 +8,15 @@ Part of `@pisagor/vue-form`. Style with recipes where available — no app-level
 
 ## Examples
 
+### Default
+
+A dropdown for choosing one value from a fixed list.
+
+:::example Default
+
 ### Disabled
 
-Show that the select is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the select is unavailable.
 
 :::example Disabled
 

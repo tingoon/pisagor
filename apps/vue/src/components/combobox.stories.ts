@@ -20,24 +20,44 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Sizes = meta.story({
-  render: exampleRender(Examples.Sizes),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
 export const Variants = meta.story({
   render: exampleRender(Examples.Variants),
 });
 
-export const OnSurface = meta.story({
-  render: exampleRender(Examples.OnSurface),
+export const Sizes = meta.story({
+  render: exampleRender(Examples.Sizes),
 });
 
-export const Autohighlight = meta.story({
-  render: exampleRender(Examples.Autohighlight),
+export const WithStartIcon = meta.story({
+  render: exampleRender(Examples.WithStartIcon),
+});
+
+export const WithClearButton = meta.story({
+  render: exampleRender(Examples.WithClearButton),
 });
 
 export const Multiple = meta.story({
   render: exampleRender(Examples.Multiple),
+});
+
+export const Group = meta.story({
+  render: exampleRender(Examples.Group),
+});
+
+export const WithScroll = meta.story({
+  render: exampleRender(Examples.WithScroll),
+});
+
+export const Compound = meta.story({
+  render: exampleRender(Examples.Compound),
+});
+
+export const Controlled = meta.story({
+  render: exampleRender(Examples.Controlled),
 });
 
 export const Disabled = meta.story({
@@ -48,30 +68,10 @@ export const Invalid = meta.story({
   render: exampleRender(Examples.Invalid),
 });
 
-export const Group = meta.story({
-  render: exampleRender(Examples.Group),
+export const Autohighlight = meta.story({
+  render: exampleRender(Examples.Autohighlight),
 });
 
-export const WithClearButton = meta.story({
-  render: exampleRender(Examples.WithClearButton),
-});
-
-export const WithScroll = meta.story({
-  render: exampleRender(Examples.WithScroll),
-});
-
-export const WithStartIcon = meta.story({
-  render: exampleRender(Examples.WithStartIcon),
-});
-
-export const Controlled = meta.story({
-  render: exampleRender(Examples.Controlled),
-});
-
-export const Compound = meta.story({
-  render: exampleRender(Examples.Compound),
-});
-
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

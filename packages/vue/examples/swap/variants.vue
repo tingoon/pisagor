@@ -1,10 +1,39 @@
 <script lang="ts" setup>
+import { PhMoon, PhSun } from "@phosphor-icons/vue";
 import { Button, Swap } from "@pisagor/vue";
+import { h, reactive } from "vue";
+
+type SwapVariant = "blur" | "fade" | "flip" | "rotate" | "scale";
+
+const state = reactive<Record<SwapVariant, boolean>>({
+  blur: false,
+  fade: false,
+  flip: false,
+  rotate: false,
+  scale: false,
+});
+
+function toggle(variant: SwapVariant) {
+  state[variant] = !state[variant];
+}
+
+function renderOff() {
+  return h(PhSun);
+}
+
+function renderOn() {
+  return h(PhMoon);
+}
 </script>
 
 <template>
   <div class="flex flex-wrap items-center gap-2">
-    <Button size="icon-lg" variant="outline" @click="toggle('fade')">
+    <Button
+      aria-label="Toggle theme"
+      size="icon-lg"
+      variant="outline"
+      @click="toggle('fade')"
+    >
       <Swap
         variant="fade"
         :off="renderOff()"
@@ -12,7 +41,12 @@ import { Button, Swap } from "@pisagor/vue";
         :swap="state.fade"
       />
     </Button>
-    <Button size="icon-lg" variant="outline" @click="toggle('blur')">
+    <Button
+      aria-label="Toggle theme"
+      size="icon-lg"
+      variant="outline"
+      @click="toggle('blur')"
+    >
       <Swap
         variant="blur"
         :off="renderOff()"
@@ -20,7 +54,12 @@ import { Button, Swap } from "@pisagor/vue";
         :swap="state.blur"
       />
     </Button>
-    <Button size="icon-lg" variant="outline" @click="toggle('flip')">
+    <Button
+      aria-label="Toggle theme"
+      size="icon-lg"
+      variant="outline"
+      @click="toggle('flip')"
+    >
       <Swap
         variant="flip"
         :off="renderOff()"
@@ -28,7 +67,12 @@ import { Button, Swap } from "@pisagor/vue";
         :swap="state.flip"
       />
     </Button>
-    <Button size="icon-lg" variant="outline" @click="toggle('rotate')">
+    <Button
+      aria-label="Toggle theme"
+      size="icon-lg"
+      variant="outline"
+      @click="toggle('rotate')"
+    >
       <Swap
         variant="rotate"
         :off="renderOff()"
@@ -36,7 +80,12 @@ import { Button, Swap } from "@pisagor/vue";
         :swap="state.rotate"
       />
     </Button>
-    <Button size="icon-lg" variant="outline" @click="toggle('scale')">
+    <Button
+      aria-label="Toggle theme"
+      size="icon-lg"
+      variant="outline"
+      @click="toggle('scale')"
+    >
       <Swap
         variant="scale"
         :off="renderOff()"

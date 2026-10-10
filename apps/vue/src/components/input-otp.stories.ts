@@ -24,18 +24,6 @@ export const Variants = meta.story({
   render: exampleRender(Examples.Variants),
 });
 
-export const OnSurface = meta.story({
-  render: exampleRender(Examples.OnSurface),
-});
-
-export const BlurOnComplete = meta.story({
-  render: exampleRender(Examples.BlurOnComplete),
-});
-
-export const CustomSize = meta.story({
-  render: exampleRender(Examples.CustomSize),
-});
-
 export const FourDigits = meta.story({
   render: exampleRender(Examples.FourDigits),
 });
@@ -52,6 +40,10 @@ export const WithPlaceholder = meta.story({
   render: exampleRender(Examples.WithPlaceholder),
 });
 
+export const Controlled = meta.story({
+  render: exampleRender(Examples.Controlled),
+});
+
 export const Disabled = meta.story({
   render: exampleRender(Examples.Disabled),
 });
@@ -60,10 +52,14 @@ export const Invalid = meta.story({
   render: exampleRender(Examples.Invalid),
 });
 
-export const Controlled = meta.story({
-  render: exampleRender(Examples.Controlled),
+export const BlurOnComplete = meta.story({
+  render: exampleRender(Examples.BlurOnComplete),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomSize = meta.story({
+  render: exampleRender(Examples.CustomSize),
+});
+
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

@@ -1,12 +1,4 @@
-import defaultRaw from "./default.vue?raw";
-import with_sidebarRaw from "./with-sidebar.ts?raw";
-
-export const imports = `import { Navbar } from "@pisagor/vue";`;
-
-export const sources = {
-  Default: defaultRaw,
-  WithSidebar: with_sidebarRaw,
-} as const;
-
+export { default as CustomRecipe } from "./custom-recipe.vue";
 export { default as Default } from "./default.vue";
+export { imports, sources } from "./sources";
 export { default as WithSidebar } from "./with-sidebar";

@@ -1,0 +1,24 @@
+<script lang="ts" setup>
+import { selectRecipe } from "@pisagor/recipes";
+import { Select } from "@pisagor/vue";
+import { tv } from "tailwind-variants";
+
+const brandSelectRecipe = tv({
+  extend: selectRecipe,
+  slots: {
+    content: "border-emerald-500/40",
+    item: "data-highlighted:bg-emerald-500/10 data-highlighted:text-emerald-900 dark:data-highlighted:text-emerald-100",
+    itemIndicator: "text-emerald-600",
+    trigger: "data-[state=open]:border-emerald-600",
+  },
+  variants: {},
+});
+</script>
+
+<template>
+  <Select
+    placeholder="Select a fruit"
+    :items="['Banana', 'Apple', 'Orange', 'Pineapple']"
+    :recipe="brandSelectRecipe"
+  />
+</template>

@@ -20,14 +20,18 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const SkeletonTextStory = meta.story({
-  render: exampleRender(Examples.SkeletonTextStory),
-});
-
 export const Default = meta.story({
   render: exampleRender(Examples.Default),
 });
 
+export const SkeletonText = meta.story({
+  render: exampleRender(Examples.SkeletonText),
+});
+
 export const InCard = meta.story({
   render: exampleRender(Examples.InCard),
+});
+
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

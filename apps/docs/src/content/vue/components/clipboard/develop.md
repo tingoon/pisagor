@@ -12,12 +12,6 @@ Choose button emphasis to match surrounding actions.
 
 :::example Variants
 
-### Custom Timeout
-
-Change how long the success state shows before resetting.
-
-:::example CustomTimeout
-
 ### Different Icon
 
 Swap icons when a different metaphor fits the copied content.
@@ -36,14 +30,16 @@ Drive copied state from the parent when feedback is coordinated elsewhere.
 
 :::example Controlled
 
-### Default
+### Custom Timeout
 
-Copy a value and confirm success on the control.
+Change how long the success state shows before resetting.
 
-:::example Default
+:::example CustomTimeout
 
-### On Surface
+## Customization
 
-Tune appearance for controls that sit on a raised or tinted surface instead of the page background.
+### Custom recipe
 
-:::example OnSurface
+Extend `clipboardRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

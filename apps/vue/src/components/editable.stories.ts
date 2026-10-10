@@ -20,28 +20,16 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Invalid = meta.story({
-  render: exampleRender(Examples.Invalid),
-});
-
-export const Disabled = meta.story({
-  render: exampleRender(Examples.Disabled),
-});
-
-export const Sizes = meta.story({
-  render: exampleRender(Examples.Sizes),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
 export const Variants = meta.story({
   render: exampleRender(Examples.Variants),
 });
 
-export const OnSurface = meta.story({
-  render: exampleRender(Examples.OnSurface),
-});
-
-export const Dblclick = meta.story({
-  render: exampleRender(Examples.Dblclick),
+export const Sizes = meta.story({
+  render: exampleRender(Examples.Sizes),
 });
 
 export const OrientationHorizontal = meta.story({
@@ -52,12 +40,28 @@ export const OrientationVertical = meta.story({
   render: exampleRender(Examples.OrientationVertical),
 });
 
+export const WithoutControls = meta.story({
+  render: exampleRender(Examples.WithoutControls),
+});
+
 export const WithTextarea = meta.story({
   render: exampleRender(Examples.WithTextarea),
 });
 
-export const WithoutControls = meta.story({
-  render: exampleRender(Examples.WithoutControls),
+export const Controlled = meta.story({
+  render: exampleRender(Examples.Controlled),
+});
+
+export const Disabled = meta.story({
+  render: exampleRender(Examples.Disabled),
+});
+
+export const Invalid = meta.story({
+  render: exampleRender(Examples.Invalid),
+});
+
+export const Dblclick = meta.story({
+  render: exampleRender(Examples.Dblclick),
 });
 
 export const ActivationClick = meta.story({
@@ -72,10 +76,6 @@ export const ActivationNone = meta.story({
   render: exampleRender(Examples.ActivationNone),
 });
 
-export const Controlled = meta.story({
-  render: exampleRender(Examples.Controlled),
-});
-
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

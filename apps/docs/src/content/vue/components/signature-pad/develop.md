@@ -6,23 +6,11 @@ import { SignaturePad } from "@pisagor/vue";
 
 ## Examples
 
-### Invalid
+### Default
 
-Surface a validation or error state so users know the signature pad needs attention before continuing.
+Capture a handwritten signature with pointer or touch input.
 
-:::example Invalid
-
-### Disabled
-
-Show that signing is unavailable. Prefer explaining why nearby.
-
-:::example Disabled
-
-### Controlled
-
-Drive stroke data from the parent when signature state lives above.
-
-:::example Controlled
+:::example Default
 
 ### Image Preview
 
@@ -30,14 +18,28 @@ Preview the signature image before submit.
 
 :::example ImagePreview
 
-### Default
+### Controlled
 
-The baseline signature pad for everyday use.
+Drive stroke data from the parent when signature state lives above.
 
-:::example Default
+:::example Controlled
 
-### On Surface
+### Disabled
 
-Tune appearance for controls that sit on a raised or tinted surface instead of the page background.
+Show that signing is unavailable.
 
-:::example OnSurface
+:::example Disabled
+
+### Invalid
+
+Surface a validation or error state so users know the signature pad needs attention before continuing.
+
+:::example Invalid
+
+## Customization
+
+### Custom recipe
+
+Extend `signaturePadRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

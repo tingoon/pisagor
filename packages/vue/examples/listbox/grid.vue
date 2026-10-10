@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { createGridCollection } from "@ark-ui/vue/collection";
 import { Item, Listbox } from "@pisagor/vue";
 
 const collection = createGridCollection({

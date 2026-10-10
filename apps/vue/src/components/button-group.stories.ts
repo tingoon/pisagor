@@ -20,6 +20,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
+});
+
 export const OrientationHorizontal = meta.story({
   render: exampleRender(Examples.OrientationHorizontal),
 });
@@ -36,6 +40,6 @@ export const WithSeparator = meta.story({
   render: exampleRender(Examples.WithSeparator),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

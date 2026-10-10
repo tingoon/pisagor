@@ -4,19 +4,16 @@
 import { InputGroup } from "@pisagor/vue";
 ```
 
+## Anatomy
+
+```vue
+<InputGroup>
+  <InputGroup.Input />
+  <InputGroup.Addon />
+</InputGroup>
+```
+
 ## Examples
-
-### Default
-
-Combine an input with attached addons as one control.
-
-:::example Default
-
-### Sizes
-
-Match size to form density.
-
-:::example Sizes
 
 ### Variants
 
@@ -24,23 +21,11 @@ Choose emphasis to match surrounding inputs.
 
 :::example Variants
 
-### With Textarea
+### Sizes
 
-Attach addons to a multi-line field.
+Match size to form density.
 
-:::example WithTextarea
-
-### Disabled
-
-Show that the grouped field is unavailable.
-
-:::example Disabled
-
-### Invalid
-
-Surface invalid state across the grouped control.
-
-:::example Invalid
+:::example Sizes
 
 ### Align Block End
 
@@ -66,6 +51,12 @@ Place addons at the inline start of the field.
 
 :::example AlignInlineStart
 
+### With Textarea
+
+Attach addons to a multi-line field.
+
+:::example WithTextarea
+
 ### With Badge
 
 Attach a badge when status sits inside the field chrome.
@@ -84,14 +75,14 @@ Show a spinner addon while the field is waiting.
 
 :::example WithSpinner
 
-### On Surface
+### Disabled
 
-Tune appearance for controls that sit on a raised or tinted surface instead of the page background.
+Show that the grouped field is unavailable.
 
-:::example OnSurface
+:::example Disabled
 
-### With Text
+### Invalid
 
-Add textual affordances inside the group when icons alone are not enough.
+Surface invalid state across the grouped control.
 
-:::example WithText
+:::example Invalid

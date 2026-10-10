@@ -2,13 +2,15 @@
 import { RadioGroup } from "@pisagor/vue";
 import { ref } from "vue";
 
-const value = ref(null);
+const value = ref<string | null>(null);
 const items = [
   { label: "Default", value: "default" },
   { label: "Comfortable", value: "comfortable" },
   { label: "Compact", value: "compact" },
 ];
-const onValueChange = setValue;
+function onValueChange(next: typeof value.value) {
+  value.value = next;
+}
 </script>
 
 <template>

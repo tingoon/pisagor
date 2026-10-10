@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 import { Item, Listbox } from "@pisagor/vue";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 const value = ref(["md"]);
 const collection = createListCollection({
@@ -12,8 +12,10 @@ const collection = createListCollection({
     { label: "Extra Large", value: "xl" },
   ],
 });
-const onValueChange = (value) =>
-  setValue(Array.isArray(value) ? value : [value]);
+const isLarge = computed(() => value.value.includes("lg"));
+function onValueChange(next: string | string[]) {
+  value.value = Array.isArray(next) ? next : [next];
+}
 </script>
 
 <template>

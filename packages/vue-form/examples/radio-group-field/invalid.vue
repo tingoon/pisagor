@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { RadioGroupField } from "@pisagor/vue-form";
+import { planOptions } from "../options";
 </script>
 
 <template>

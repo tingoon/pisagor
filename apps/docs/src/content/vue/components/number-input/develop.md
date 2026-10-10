@@ -6,23 +6,17 @@ import { NumberInput } from "@pisagor/vue";
 
 ## Examples
 
-### Sizes
-
-Match size to the surrounding layout — smaller in compact chrome, larger where the number input needs emphasis.
-
-:::example Sizes
-
 ### Variants
 
 Choose visual weight or emphasis so the number input matches importance in the surrounding layout.
 
 :::example Variants
 
-### Field Only
+### Sizes
 
-Render the field without extra chrome when the surrounding layout provides labels.
+Match size to the surrounding layout — smaller in compact chrome, larger where the number input needs emphasis.
 
-:::example FieldOnly
+:::example Sizes
 
 ### Formatted
 
@@ -30,11 +24,35 @@ Display a formatted value when units or grouping aid reading.
 
 :::example Formatted
 
-### Mouse Wheel
+### Field Only
 
-Adjust the value with the mouse wheel when rapid changes fit the task.
+Render the field without extra chrome when the surrounding layout provides labels.
 
-:::example MouseWheel
+:::example FieldOnly
+
+### Compound
+
+Compose the input and stepper triggers from parts when you need a custom layout.
+
+:::example Compound
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this number input.
+
+:::example Controlled
+
+### Disabled
+
+Show that the number input is unavailable.
+
+:::example Disabled
+
+### Invalid
+
+Surface a validation or error state so users know the number input needs attention before continuing.
+
+:::example Invalid
 
 ### Range
 
@@ -48,50 +66,22 @@ Snap changes to a step interval when values should move in fixed increments.
 
 :::example Step
 
-### Disabled
+### Mouse Wheel
 
-Show that the number input is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Adjust the value with the mouse wheel when rapid changes fit the task.
 
-:::example Disabled
+:::example MouseWheel
 
-### Invalid
+### Scrub
 
-Surface a validation or error state so users know the number input needs attention before continuing.
+Scrub horizontally to change the value when precise dragging helps.
 
-:::example Invalid
+:::example Scrub
 
-### Controlled
+## Customization
 
-Manage state from the parent when other UI must stay in sync with this number input.
+### Custom recipe
 
-:::example Controlled
+Extend `numberInputRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-### Default
-
-Enter a number with optional steppers.
-
-:::example Default
-
-### Compound
-
-Compose Number Input parts yourself when the shorthand API cannot express the layout you need.
-
-:::example Compound
-
-### On Surface
-
-Tune appearance for controls that sit on a raised or tinted surface instead of the page background.
-
-:::example OnSurface
-
-### With Field
-
-Wrap the control in a field for label, description, and error messaging.
-
-:::example WithField
-
-### With Scrubber
-
-Drag to scrub the value when fine adjustment by pointer is faster than typing.
-
-:::example WithScrubber
+:::example CustomRecipe

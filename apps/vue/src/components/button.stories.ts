@@ -24,28 +24,20 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const Variants = meta.story({
+  render: exampleRender(Examples.Variants),
 });
 
 export const Sizes = meta.story({
   render: exampleRender(Examples.Sizes),
 });
 
-export const Variants = meta.story({
-  render: exampleRender(Examples.Variants),
-});
-
-export const CustomColor = meta.story({
-  render: exampleRender(Examples.CustomColor),
-});
-
 export const Pill = meta.story({
   render: exampleRender(Examples.Pill),
 });
 
-export const NoClickEffect = meta.story({
-  render: exampleRender(Examples.NoClickEffect),
+export const WithIcon = meta.story({
+  render: exampleRender(Examples.WithIcon),
 });
 
 export const Icon = meta.story({
@@ -64,6 +56,14 @@ export const Loading = meta.story({
   render: exampleRender(Examples.Loading),
 });
 
-export const WithIcon = meta.story({
-  render: exampleRender(Examples.WithIcon),
+export const NoClickEffect = meta.story({
+  render: exampleRender(Examples.NoClickEffect),
+});
+
+export const CustomColor = meta.story({
+  render: exampleRender(Examples.CustomColor),
+});
+
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

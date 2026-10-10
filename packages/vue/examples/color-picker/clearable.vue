@@ -3,7 +3,9 @@ import { ColorPicker, Field, InputGroup } from "@pisagor/vue";
 import { ref } from "vue";
 
 const value = ref("#eb5e41");
-const onValueChange = setValue;
+function onValueChange(next: typeof value.value) {
+  value.value = next;
+}
 </script>
 
 <template>

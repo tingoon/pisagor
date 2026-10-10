@@ -3,7 +3,9 @@ import { Button, HoverCard } from "@pisagor/vue";
 import { ref } from "vue";
 
 const open = ref(false);
-const onOpenChange = ({ open: isOpen }) => setOpen(isOpen);
+function onOpenChange(details: { open: boolean }) {
+  open.value = details.open;
+}
 </script>
 
 <template>

@@ -17,9 +17,9 @@ import { LinkBox } from "@pisagor/vue";
         Learn how to construct a screen reader friendly link overlay for
         accessibility and usability.
       </p>
-      <a href="https://example.com/articles/a11y-link-overlay"
-        >Read the full article</a
-      >
+      <a href="https://example.com/articles/a11y-link-overlay">
+        Read the full article
+      </a>
     </article>
   </LinkBox>
 </template>

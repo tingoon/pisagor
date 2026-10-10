@@ -1,16 +1,47 @@
 <script lang="ts" setup>
 import { PhDownload } from "@phosphor-icons/vue";
 import { Button, Card, Input, QrCode } from "@pisagor/vue";
-import { ref } from "vue";
+import { computed, ref } from "vue";
+
+const QUALITY_BY_LEVEL = {
+  0: "L",
+  20: "M",
+  40: "Q",
+  60: "H",
+} as const;
+
+function getQualityLevel(length: number) {
+  if (length < 20) {
+    return 0;
+  }
+  if (length < 40) {
+    return 20;
+  }
+  if (length < 60) {
+    return 40;
+  }
+  return 60;
+}
 
 const value = ref("");
+const qualityLabel = computed(
+  () => QUALITY_BY_LEVEL[getQualityLevel(value.value.length)],
+);
+
+function onValueChange(next: string) {
+  value.value = next;
+}
 </script>
 
 <template>
   <QrCode :encoding="{ ecc: qualityLabel }" :value="value">
     <Card class="[--space:--spacing(6)]">
       <Card.Content class="flex flex-col justify-center gap-6">
-        <Input placeholder="Generate a QR code" v-model:value="value" />
+        <Input
+          placeholder="Generate a QR code"
+          :value="value"
+          @value-change="onValueChange"
+        />
         <div class="flex flex-col items-center gap-2">
           <p class="font-medium text-muted-foreground text-sm">Live preview</p>
           <QrCode.Frame />

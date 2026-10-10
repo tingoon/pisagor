@@ -12,14 +12,22 @@ Pulse placeholders while content loads.
 
 :::example Default
 
+### Skeleton Text
+
+Approximate lines of text so reading layout stays stable.
+
+:::example SkeletonText
+
 ### In Card
 
 Place skeletons inside a card when that surface is loading.
 
 :::example InCard
 
-### Skeleton Text Story
+## Customization
 
-Pulse text-shaped placeholders while copy is loading.
+### Custom recipe
 
-:::example SkeletonTextStory
+Extend `skeletonRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

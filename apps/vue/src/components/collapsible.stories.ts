@@ -20,12 +20,12 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const PartialCollapse = meta.story({
-  render: exampleRender(Examples.PartialCollapse),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
-export const Disabled = meta.story({
-  render: exampleRender(Examples.Disabled),
+export const PartialCollapse = meta.story({
+  render: exampleRender(Examples.PartialCollapse),
 });
 
 export const Nested = meta.story({
@@ -36,10 +36,10 @@ export const Controlled = meta.story({
   render: exampleRender(Examples.Controlled),
 });
 
-export const Compound = meta.story({
-  render: exampleRender(Examples.Compound),
+export const Disabled = meta.story({
+  render: exampleRender(Examples.Disabled),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

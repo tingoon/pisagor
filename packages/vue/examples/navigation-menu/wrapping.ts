@@ -5,7 +5,9 @@ export default defineComponent({
   name: "Wrapping",
   setup() {
     return () =>
-      h("div", { class: "w-72" }, () =>
+      h(
+        "div",
+        { class: "w-72" },
         h(NavigationMenu, { "aria-label": "Section" }, () =>
           h(NavigationMenu.List, null, () => [
             h(NavigationMenu.Item, null, () =>

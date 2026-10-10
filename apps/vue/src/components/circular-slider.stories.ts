@@ -20,16 +20,12 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const OnSurface = meta.story({
-  render: exampleRender(Examples.OnSurface),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
 export const Sizes = meta.story({
   render: exampleRender(Examples.Sizes),
-});
-
-export const Step = meta.story({
-  render: exampleRender(Examples.Step),
 });
 
 export const Thickness = meta.story({
@@ -40,22 +36,26 @@ export const WithValue = meta.story({
   render: exampleRender(Examples.WithValue),
 });
 
-export const Disabled = meta.story({
-  render: exampleRender(Examples.Disabled),
+export const WithMarkers = meta.story({
+  render: exampleRender(Examples.WithMarkers),
 });
 
 export const CustomMarkers = meta.story({
   render: exampleRender(Examples.CustomMarkers),
 });
 
-export const WithMarkers = meta.story({
-  render: exampleRender(Examples.WithMarkers),
-});
-
 export const Controlled = meta.story({
   render: exampleRender(Examples.Controlled),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const Disabled = meta.story({
+  render: exampleRender(Examples.Disabled),
+});
+
+export const Step = meta.story({
+  render: exampleRender(Examples.Step),
+});
+
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

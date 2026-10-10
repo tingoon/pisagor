@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { useHighlight } from "@ark-ui/vue/highlight";
+
 const chunks = useHighlight({
   query: "real humans",
   text: "Endless scale, powered by real humans.",

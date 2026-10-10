@@ -1,5 +1,11 @@
 <script lang="ts" setup>
+import { PhThermometer } from "@phosphor-icons/vue";
 import { CircularSlider } from "@pisagor/vue";
+import { h } from "vue";
+
+function prefix() {
+  return h(PhThermometer, { class: "size-4" });
+}
 </script>
 
 <template>

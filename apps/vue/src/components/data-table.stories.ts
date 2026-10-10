@@ -20,10 +20,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Empty = meta.story({
-  render: exampleRender(Examples.Empty),
-});
-
 export const Sorting = meta.story({
   render: exampleRender(Examples.Sorting),
+});
+
+export const Empty = meta.story({
+  render: exampleRender(Examples.Empty),
 });

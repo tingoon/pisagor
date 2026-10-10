@@ -6,9 +6,9 @@ import { Field, RadioGroup } from "@pisagor/vue";
   <RadioGroup.Root default-value="all">
     <Field>
       <RadioGroup.Item value="all">Default</RadioGroup.Item>
-      <Field.Description
-        >Standard spacing for most use cases.</Field.Description
-      >
+      <Field.Description>
+        Standard spacing for most use cases.
+      </Field.Description>
     </Field>
     <Field>
       <RadioGroup.Item value="mentions">Comfortable</RadioGroup.Item>

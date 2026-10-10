@@ -33,14 +33,18 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
+});
+
+export const WithLabelAccessory = meta.story({
+  render: exampleRender(Examples.WithLabelAccessory),
+});
+
 export const Disabled = meta.story({
   render: exampleRender(Examples.Disabled),
 });
 
 export const Invalid = meta.story({
   render: exampleRender(Examples.Invalid),
-});
-
-export const WithLabelAccessory = meta.story({
-  render: exampleRender(Examples.WithLabelAccessory),
 });

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { SelectField } from "@pisagor/vue-form";
+import { countryOptions } from "../options";
 </script>
 
 <template>

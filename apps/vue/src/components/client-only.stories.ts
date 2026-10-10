@@ -20,10 +20,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Fallback = meta.story({
-  render: exampleRender(Examples.Fallback),
-});
-
 export const Default = meta.story({
   render: exampleRender(Examples.Default),
+});
+
+export const Fallback = meta.story({
+  render: exampleRender(Examples.Fallback),
 });

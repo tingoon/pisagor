@@ -20,20 +20,12 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const ByteUnitDisplay = meta.story({
-  render: exampleRender(Examples.ByteUnitDisplay),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
-export const ByteUnitSystem = meta.story({
-  render: exampleRender(Examples.ByteUnitSystem),
-});
-
-export const Byte = meta.story({
-  render: exampleRender(Examples.Byte),
-});
-
-export const NumberCompact = meta.story({
-  render: exampleRender(Examples.NumberCompact),
+export const NumberStory = meta.story({
+  render: exampleRender(Examples.NumberStory),
 });
 
 export const NumberCurrency = meta.story({
@@ -44,18 +36,26 @@ export const NumberPercent = meta.story({
   render: exampleRender(Examples.NumberPercent),
 });
 
-export const NumberStory = meta.story({
-  render: exampleRender(Examples.NumberStory),
+export const NumberCompact = meta.story({
+  render: exampleRender(Examples.NumberCompact),
 });
 
-export const RelativeTimeShort = meta.story({
-  render: exampleRender(Examples.RelativeTimeShort),
+export const Byte = meta.story({
+  render: exampleRender(Examples.Byte),
+});
+
+export const ByteUnitSystem = meta.story({
+  render: exampleRender(Examples.ByteUnitSystem),
+});
+
+export const ByteUnitDisplay = meta.story({
+  render: exampleRender(Examples.ByteUnitDisplay),
 });
 
 export const RelativeTime = meta.story({
   render: exampleRender(Examples.RelativeTime),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const RelativeTimeShort = meta.story({
+  render: exampleRender(Examples.RelativeTimeShort),
 });

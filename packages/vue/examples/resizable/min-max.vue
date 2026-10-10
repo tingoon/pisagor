@@ -2,13 +2,11 @@
 import { cn } from "@pisagor/utils";
 import { Resizable } from "@pisagor/vue";
 
-function _frameClass(heightClass = "h-96") {
+function frameClass(heightClass = "h-96") {
   return cn("mx-auto w-full max-w-4xl", heightClass);
 }
 
-function _panelClassName(
-  orientation: "horizontal" | "vertical" = "horizontal",
-) {
+function panelClassName(orientation: "horizontal" | "vertical" = "horizontal") {
   return cn(
     "flex items-center justify-center bg-muted/30 text-sm",
     orientation === "vertical"
@@ -24,13 +22,13 @@ function _panelClassName(
       :default-size="[30, 70]"
       :panels="[{ id: '1', maxSize: 40, minSize: 25 }, { id: '2' }]"
     >
-      <Resizable.Panel id="1" :class="panelClassName()"
-        >Sidebar</Resizable.Panel
-      >
+      <Resizable.Panel id="1" :class="panelClassName()">
+        Sidebar
+      </Resizable.Panel>
       <Resizable.ResizeTrigger id="1:2" with-handle />
-      <Resizable.Panel id="2" :class="panelClassName()"
-        >Content</Resizable.Panel
-      >
+      <Resizable.Panel id="2" :class="panelClassName()">
+        Content
+      </Resizable.Panel>
     </Resizable>
   </div>
 </template>

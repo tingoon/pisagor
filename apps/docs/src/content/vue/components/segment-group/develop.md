@@ -6,6 +6,12 @@ import { SegmentGroup } from "@pisagor/vue";
 
 ## Examples
 
+### Default
+
+Switch between a few related modes in one compact control.
+
+:::example Default
+
 ### Variants
 
 Choose visual weight or emphasis so the segment group matches importance in the surrounding layout.
@@ -24,29 +30,11 @@ Stack the segment group vertically when items should read in a column.
 
 :::example OrientationVertical
 
-### Disabled Item
+### Compound
 
-Show that a specific segment is unavailable.
+Assemble from parts when you need a custom layout beyond the shorthand API.
 
-:::example DisabledItem
-
-### Custom Indicator
-
-Customize the active indicator when brand motion or shape differs from the default.
-
-:::example CustomIndicator
-
-### Indicator On Hover
-
-Preview the indicator on hover when discovering segments should feel responsive.
-
-:::example IndicatorOnHover
-
-### Disabled
-
-Show that the segment group is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
-
-:::example Disabled
+:::example Compound
 
 ### Controlled
 
@@ -54,14 +42,36 @@ Manage state from the parent when other UI must stay in sync with this segment g
 
 :::example Controlled
 
-### Compound
+### Disabled
 
-Assemble from parts when you need a custom layout beyond the shorthand API.
+Show that the segment group is unavailable.
 
-:::example Compound
+:::example Disabled
 
-### Default
+### Disabled Item
 
-Switch between a few related modes in one compact control.
+Show that a specific segment is unavailable.
 
-:::example Default
+:::example DisabledItem
+
+### Indicator On Hover
+
+Preview the indicator on hover when discovering segments should feel responsive.
+
+:::example IndicatorOnHover
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Customize the active indicator when brand motion or shape differs from the default.
+
+:::example CustomIndicator
+
+### Custom recipe
+
+Extend `segmentGroupRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

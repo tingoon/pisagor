@@ -19,6 +19,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
+});
+
 export const Variants = meta.story({
   render: exampleRender(Examples.Variants),
 });
@@ -27,34 +31,34 @@ export const Range = meta.story({
   render: exampleRender(Examples.Range),
 });
 
-export const CustomFormat = meta.story({
-  render: exampleRender(Examples.CustomFormat),
+export const Time = meta.story({
+  render: exampleRender(Examples.Time),
 });
 
 export const Input = meta.story({
   render: exampleRender(Examples.Input),
 });
 
-export const Invalid = meta.story({
-  render: exampleRender(Examples.Invalid),
+export const WithPresets = meta.story({
+  render: exampleRender(Examples.WithPresets),
 });
 
-export const Disabled = meta.story({
-  render: exampleRender(Examples.Disabled),
+export const CustomFormat = meta.story({
+  render: exampleRender(Examples.CustomFormat),
 });
 
 export const Clearable = meta.story({
   render: exampleRender(Examples.Clearable),
 });
 
-export const Time = meta.story({
-  render: exampleRender(Examples.Time),
+export const Disabled = meta.story({
+  render: exampleRender(Examples.Disabled),
 });
 
-export const WithPresets = meta.story({
-  render: exampleRender(Examples.WithPresets),
+export const Invalid = meta.story({
+  render: exampleRender(Examples.Invalid),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

@@ -1,18 +1,7 @@
-import compoundRaw from "./compound.ts?raw";
-import controlledRaw from "./controlled.ts?raw";
-import disabledRaw from "./disabled.ts?raw";
-import invalidRaw from "./invalid.ts?raw";
-
-export const imports = `import { RichTextEditor } from "@pisagor/vue/rich-text-editor";`;
-
-export const sources = {
-  Compound: compoundRaw,
-  Controlled: controlledRaw,
-  Disabled: disabledRaw,
-  Invalid: invalidRaw,
-} as const;
-
-export * from "./compound";
-export * from "./controlled";
-export * from "./disabled";
-export * from "./invalid";
+export { default as Compound } from "./compound.vue";
+export { default as Controlled } from "./controlled.vue";
+export { default as CustomRecipe } from "./custom-recipe.vue";
+export { default as Default } from "./default.vue";
+export { default as Disabled } from "./disabled.vue";
+export { default as Invalid } from "./invalid.vue";
+export { imports, sources } from "./sources";

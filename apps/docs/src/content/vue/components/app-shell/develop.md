@@ -4,6 +4,26 @@
 import { AppShell } from "@pisagor/vue";
 ```
 
+## Anatomy
+
+```vue
+<AppShell>
+  <AppShell.Banner />
+  <AppShell.Navigation />
+  <AppShell.Rail>
+    <AppShell.RailItem />
+  </AppShell.Rail>
+  <AppShell.Panel>
+    <AppShell.PanelContent />
+  </AppShell.Panel>
+  <AppShell.Main>
+    <AppShell.Header>
+      <AppShell.PanelTrigger />
+    </AppShell.Header>
+  </AppShell.Main>
+</AppShell>
+```
+
 ## Examples
 
 ### Default

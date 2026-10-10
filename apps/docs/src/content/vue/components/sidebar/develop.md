@@ -4,6 +4,33 @@
 import { Sidebar } from "@pisagor/vue";
 ```
 
+## Anatomy
+
+```vue
+<Sidebar.Provider>
+  <Sidebar>
+    <Sidebar.Header />
+    <Sidebar.Content>
+      <Sidebar.Group>
+        <Sidebar.GroupLabel />
+        <Sidebar.GroupContent>
+          <Sidebar.Menu>
+            <Sidebar.MenuItem>
+              <Sidebar.MenuButton />
+            </Sidebar.MenuItem>
+          </Sidebar.Menu>
+        </Sidebar.GroupContent>
+      </Sidebar.Group>
+    </Sidebar.Content>
+    <Sidebar.Footer />
+    <Sidebar.Rail />
+  </Sidebar>
+  <Sidebar.Inset>
+    <Sidebar.Trigger />
+  </Sidebar.Inset>
+</Sidebar.Provider>
+```
+
 ## Examples
 
 ### Default

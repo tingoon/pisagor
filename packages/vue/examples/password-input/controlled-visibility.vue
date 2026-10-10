@@ -3,7 +3,9 @@ import { PasswordInput } from "@pisagor/vue";
 import { ref } from "vue";
 
 const visible = ref(false);
-const onVisibilityChange = (details) => setVisible(details.visible);
+function onVisibilityChange(details: { visible: boolean }) {
+  visible.value = details.visible;
+}
 </script>
 
 <template>

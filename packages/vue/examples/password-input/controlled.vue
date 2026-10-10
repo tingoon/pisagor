@@ -3,13 +3,15 @@ import { PasswordInput } from "@pisagor/vue";
 import { ref } from "vue";
 
 const password = ref("");
-const onChange = (event) => setPassword(event.target.value);
+function onValueChange(next: string) {
+  password.value = next;
+}
 </script>
 
 <template>
   <PasswordInput
     placeholder="Enter password"
     :value="password"
-    @change="onChange"
+    @value-change="onValueChange"
   />
 </template>

@@ -6,23 +6,11 @@ import { Highlight } from "@pisagor/vue";
 
 ## Examples
 
-### Multiple
+### Default
 
-Allow more than one open or selected item when users need several at once.
+Emphasize matching substrings in text.
 
-:::example Multiple
-
-### Custom Style
-
-Override highlight style when brand treatment differs from the default.
-
-:::example CustomStyle
-
-### Search Query
-
-Highlight query matches in search results.
-
-:::example SearchQuery
+:::example Default
 
 ### Squiggle
 
@@ -30,14 +18,30 @@ Use a squiggle emphasis when the match needs a distinct treatment.
 
 :::example Squiggle
 
-### Default
+### Multiple
 
-Emphasize matching substrings in text.
+Allow more than one open or selected item when users need several at once.
 
-:::example Default
+:::example Multiple
 
-### Multiple Queries
+### Search Query
 
-Use this highlight pattern when the scenario matches multiple queries.
+Highlight query matches in search results.
 
-:::example MultipleQueries
+:::example SearchQuery
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Override highlight style when brand treatment differs from the default.
+
+:::example CustomStyle
+
+### Custom recipe
+
+Extend `highlightRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

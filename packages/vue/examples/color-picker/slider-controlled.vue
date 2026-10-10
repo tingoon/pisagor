@@ -3,7 +3,9 @@ import { ColorPicker } from "@pisagor/vue";
 import { ref } from "vue";
 
 const color = ref("rgba(82, 65, 235, 1)");
-const onValueChange = setColor;
+function onValueChange(next: typeof color.value) {
+  color.value = next;
+}
 </script>
 
 <template>

@@ -19,44 +19,24 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Sizes = meta.story({
-  render: exampleRender(Examples.Sizes),
-});
-
 export const Variants = meta.story({
   render: exampleRender(Examples.Variants),
 });
 
-export const OnSurface = meta.story({
-  render: exampleRender(Examples.OnSurface),
+export const Sizes = meta.story({
+  render: exampleRender(Examples.Sizes),
 });
 
-export const BlurBehavior = meta.story({
-  render: exampleRender(Examples.BlurBehavior),
+export const WithCombobox = meta.story({
+  render: exampleRender(Examples.WithCombobox),
 });
 
-export const CustomDelimiter = meta.story({
-  render: exampleRender(Examples.CustomDelimiter),
+export const Controlled = meta.story({
+  render: exampleRender(Examples.Controlled),
 });
 
-export const DisableEditing = meta.story({
-  render: exampleRender(Examples.DisableEditing),
-});
-
-export const MaxTags = meta.story({
-  render: exampleRender(Examples.MaxTags),
-});
-
-export const PasteBehavior = meta.story({
-  render: exampleRender(Examples.PasteBehavior),
-});
-
-export const SanitizeValue = meta.story({
-  render: exampleRender(Examples.SanitizeValue),
-});
-
-export const Validation = meta.story({
-  render: exampleRender(Examples.Validation),
+export const ControlledInputValue = meta.story({
+  render: exampleRender(Examples.ControlledInputValue),
 });
 
 export const Disabled = meta.story({
@@ -67,26 +47,38 @@ export const Invalid = meta.story({
   render: exampleRender(Examples.Invalid),
 });
 
-export const WithCombobox = meta.story({
-  render: exampleRender(Examples.WithCombobox),
-});
-
-export const MaxLength = meta.story({
-  render: exampleRender(Examples.MaxLength),
+export const MaxTags = meta.story({
+  render: exampleRender(Examples.MaxTags),
 });
 
 export const MaxWithOverflow = meta.story({
   render: exampleRender(Examples.MaxWithOverflow),
 });
 
-export const ControlledInputValue = meta.story({
-  render: exampleRender(Examples.ControlledInputValue),
+export const MaxLength = meta.story({
+  render: exampleRender(Examples.MaxLength),
 });
 
-export const Controlled = meta.story({
-  render: exampleRender(Examples.Controlled),
+export const Validation = meta.story({
+  render: exampleRender(Examples.Validation),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomDelimiter = meta.story({
+  render: exampleRender(Examples.CustomDelimiter),
+});
+
+export const BlurBehavior = meta.story({
+  render: exampleRender(Examples.BlurBehavior),
+});
+
+export const PasteBehavior = meta.story({
+  render: exampleRender(Examples.PasteBehavior),
+});
+
+export const DisableEditing = meta.story({
+  render: exampleRender(Examples.DisableEditing),
+});
+
+export const SanitizeValue = meta.story({
+  render: exampleRender(Examples.SanitizeValue),
 });

@@ -35,3 +35,11 @@ Nest groups when primary and secondary clusters share one control strip.
 Separate subgroups so distinct action sets stay scannable.
 
 :::example WithSeparator
+
+## Customization
+
+### Custom recipe
+
+Extend `buttonGroupRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

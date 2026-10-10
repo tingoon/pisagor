@@ -24,18 +24,18 @@ export const Variants = meta.story({
   render: exampleRender(Examples.Variants),
 });
 
-export const WithButton = meta.story({
-  render: exampleRender(Examples.WithButton),
+export const KbdGroup = meta.story({
+  render: exampleRender(Examples.KbdGroup),
 });
 
-export const KbdGroupStory = meta.story({
-  render: exampleRender(Examples.KbdGroupStory),
+export const WithButton = meta.story({
+  render: exampleRender(Examples.WithButton),
 });
 
 export const WithTooltip = meta.story({
   render: exampleRender(Examples.WithTooltip),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

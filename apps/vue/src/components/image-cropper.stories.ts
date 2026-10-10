@@ -20,6 +20,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
+});
+
 export const AspectRatio = meta.story({
   render: exampleRender(Examples.AspectRatio),
 });
@@ -48,6 +52,6 @@ export const ControlledZoom = meta.story({
   render: exampleRender(Examples.ControlledZoom),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

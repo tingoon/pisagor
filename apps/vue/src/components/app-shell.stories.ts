@@ -20,6 +20,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
+});
+
 export const Banner = meta.story({
   parameters: {
     docs: {
@@ -90,8 +94,4 @@ export const Content = meta.story({
     },
   },
   render: exampleRender(Examples.Content),
-});
-
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
 });

@@ -20,32 +20,16 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const OnSurface = meta.story({
-  render: exampleRender(Examples.OnSurface),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
 export const Sizes = meta.story({
   render: exampleRender(Examples.Sizes),
 });
 
-export const Clearable = meta.story({
-  render: exampleRender(Examples.Clearable),
-});
-
-export const Disabled = meta.story({
-  render: exampleRender(Examples.Disabled),
-});
-
-export const Invalid = meta.story({
-  render: exampleRender(Examples.Invalid),
-});
-
 export const Autocomplete = meta.story({
   render: exampleRender(Examples.Autocomplete),
-});
-
-export const AutoHide = meta.story({
-  render: exampleRender(Examples.AutoHide),
 });
 
 export const ControlledVisibility = meta.story({
@@ -56,6 +40,18 @@ export const Controlled = meta.story({
   render: exampleRender(Examples.Controlled),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const Disabled = meta.story({
+  render: exampleRender(Examples.Disabled),
+});
+
+export const Invalid = meta.story({
+  render: exampleRender(Examples.Invalid),
+});
+
+export const AutoHide = meta.story({
+  render: exampleRender(Examples.AutoHide),
+});
+
+export const Clearable = meta.story({
+  render: exampleRender(Examples.Clearable),
 });

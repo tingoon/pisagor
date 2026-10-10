@@ -26,18 +26,6 @@ Keep at least one section open when collapsing everything would hide required co
 
 :::example NonCollapsible
 
-### Disabled
-
-Show that a section cannot be opened. Prefer explaining why nearby.
-
-:::example Disabled
-
-### Controlled
-
-Drive open state from the parent when other UI depends on which section is expanded.
-
-:::example Controlled
-
 ### Compound
 
 Compose trigger and content parts when you need a custom section layout.
@@ -49,3 +37,15 @@ Compose trigger and content parts when you need a custom section layout.
 Place accordion sections inside a card surface when the group should read as one unit.
 
 :::example WithCard
+
+### Controlled
+
+Drive open state from the parent when other UI depends on which section is expanded.
+
+:::example Controlled
+
+### Disabled
+
+Show that a section cannot be opened.
+
+:::example Disabled

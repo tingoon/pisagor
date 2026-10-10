@@ -27,9 +27,9 @@ import { ActionBar, AlertDialog, Button } from "@pisagor/vue";
             <AlertDialog.Footer>
               <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
               <AlertDialog.CloseTrigger as-child>
-                <AlertDialog.Action variant="destructive"
-                  >Delete</AlertDialog.Action
-                >
+                <AlertDialog.Action variant="destructive">
+                  Delete
+                </AlertDialog.Action>
               </AlertDialog.CloseTrigger>
             </AlertDialog.Footer>
           </AlertDialog.Content>

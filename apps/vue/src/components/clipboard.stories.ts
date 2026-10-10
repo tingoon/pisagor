@@ -24,14 +24,6 @@ export const Variants = meta.story({
   render: exampleRender(Examples.Variants),
 });
 
-export const OnSurface = meta.story({
-  render: exampleRender(Examples.OnSurface),
-});
-
-export const CustomTimeout = meta.story({
-  render: exampleRender(Examples.CustomTimeout),
-});
-
 export const DifferentIcon = meta.story({
   render: exampleRender(Examples.DifferentIcon),
 });
@@ -44,6 +36,10 @@ export const Controlled = meta.story({
   render: exampleRender(Examples.Controlled),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomTimeout = meta.story({
+  render: exampleRender(Examples.CustomTimeout),
+});
+
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

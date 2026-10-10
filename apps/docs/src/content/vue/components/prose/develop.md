@@ -6,6 +6,12 @@ import { Prose } from "@pisagor/vue";
 
 ## Examples
 
+### Default
+
+Readable long-form text styled for articles and documentation.
+
+:::example Default
+
 ### A
 
 Style inline links inside prose content.
@@ -17,12 +23,6 @@ Style inline links inside prose content.
 Style quotations set apart from surrounding paragraphs.
 
 :::example Blockquote
-
-### Default
-
-Readable long-form text styled for articles and documentation.
-
-:::example Default
 
 ### Details
 
@@ -71,6 +71,12 @@ Style a fifth-level heading when deep outline levels are needed.
 Style the deepest heading level supported in prose.
 
 :::example H6
+
+### Html
+
+Render rich HTML through the prose styles.
+
+:::example Html
 
 ### Html Table
 
@@ -138,8 +144,10 @@ Style Small elements inside long-form prose content.
 
 :::example Small
 
-### Html Trusted
+## Customization
 
-Render trusted HTML through prose when content comes from a safe source.
+### Custom recipe
 
-:::example HtmlTrusted
+Extend `proseRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

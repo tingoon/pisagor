@@ -18,7 +18,7 @@ export default defineComponent({
                       class:
                         "flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground",
                     },
-                    () => h(PhHouse, { class: "size-4" }),
+                    h(PhHouse, { class: "size-4" }),
                   ),
                   h("span", { class: "truncate font-semibold" }, "Pisagor"),
                 ]),
@@ -59,15 +59,11 @@ export default defineComponent({
           h(Sidebar.Rail),
         ]),
         h(Sidebar.Inset, null, () => [
-          h(
-            "header",
-            { class: "flex h-12 items-center gap-2 border-b px-4" },
-            () => [
-              h(Sidebar.Trigger),
-              h("span", { class: "font-medium text-sm" }, "Dashboard"),
-            ],
-          ),
-          h("div", { class: "flex flex-1 flex-col gap-2 p-4" }, () => [
+          h("header", { class: "flex h-12 items-center gap-2 border-b px-4" }, [
+            h(Sidebar.Trigger),
+            h("span", { class: "font-medium text-sm" }, "Dashboard"),
+          ]),
+          h("div", { class: "flex flex-1 flex-col gap-2 p-4" }, [
             h(
               "p",
               { class: "text-muted-foreground text-sm" },

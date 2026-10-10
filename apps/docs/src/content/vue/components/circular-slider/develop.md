@@ -6,17 +6,17 @@ import { CircularSlider } from "@pisagor/vue";
 
 ## Examples
 
+### Default
+
+Choose a value by dragging around a circular track.
+
+:::example Default
+
 ### Sizes
 
 Match control size to the surrounding layout.
 
 :::example Sizes
-
-### Step
-
-Snap to increments when values should move in fixed steps.
-
-:::example Step
 
 ### Thickness
 
@@ -30,11 +30,11 @@ Show the current value so the gesture stays understandable.
 
 :::example WithValue
 
-### Disabled
+### With Markers
 
-Show that the control is unavailable. Prefer explaining why nearby.
+Show markers for key values along the circular track.
 
-:::example Disabled
+:::example WithMarkers
 
 ### Custom Markers
 
@@ -42,26 +42,28 @@ Place custom markers when meaningful points sit on the ring.
 
 :::example CustomMarkers
 
-### With Markers
-
-Show markers for key values along the circular track.
-
-:::example WithMarkers
-
 ### Controlled
 
 Drive the value from the parent when other UI depends on it.
 
 :::example Controlled
 
-### Default
+### Disabled
 
-Choose a value by dragging around a circular track.
+Show that the control is unavailable.
 
-:::example Default
+:::example Disabled
 
-### On Surface
+### Step
 
-Tune appearance for controls that sit on a raised or tinted surface instead of the page background.
+Snap to increments when values should move in fixed steps.
 
-:::example OnSurface
+:::example Step
+
+## Customization
+
+### Custom recipe
+
+Extend `circularSliderRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

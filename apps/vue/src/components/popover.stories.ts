@@ -20,28 +20,28 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const CustomSpacing = meta.story({
-  render: exampleRender(Examples.CustomSpacing),
-});
-
-export const Anchor = meta.story({
-  render: exampleRender(Examples.Anchor),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
 export const CloseButton = meta.story({
   render: exampleRender(Examples.CloseButton),
 });
 
+export const Anchor = meta.story({
+  render: exampleRender(Examples.Anchor),
+});
+
 export const Nested = meta.story({
   render: exampleRender(Examples.Nested),
 });
 
-export const Modal = meta.story({
-  render: exampleRender(Examples.Modal),
-});
-
 export const ScrollArea = meta.story({
   render: exampleRender(Examples.ScrollArea),
+});
+
+export const Modal = meta.story({
+  render: exampleRender(Examples.Modal),
 });
 
 export const CloseBehavior = meta.story({
@@ -52,6 +52,6 @@ export const Placements = meta.story({
   render: exampleRender(Examples.Placements),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomSpacing = meta.story({
+  render: exampleRender(Examples.CustomSpacing),
 });

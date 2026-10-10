@@ -20,6 +20,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
+});
+
 export const OrientationHorizontal = meta.story({
   render: exampleRender(Examples.OrientationHorizontal),
 });
@@ -28,20 +32,16 @@ export const OrientationVertical = meta.story({
   render: exampleRender(Examples.OrientationVertical),
 });
 
-export const CountdownDate = meta.story({
-  render: exampleRender(Examples.CountdownDate),
+export const CustomSeparator = meta.story({
+  render: exampleRender(Examples.CustomSeparator),
 });
 
 export const Countdown = meta.story({
   render: exampleRender(Examples.Countdown),
 });
 
-export const CustomSeparator = meta.story({
-  render: exampleRender(Examples.CustomSeparator),
-});
-
-export const Interval = meta.story({
-  render: exampleRender(Examples.Interval),
+export const CountdownDate = meta.story({
+  render: exampleRender(Examples.CountdownDate),
 });
 
 export const Pomodoro = meta.story({
@@ -52,6 +52,10 @@ export const Controlled = meta.story({
   render: exampleRender(Examples.Controlled),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const Interval = meta.story({
+  render: exampleRender(Examples.Interval),
+});
+
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

@@ -1,29 +1,6 @@
 <script lang="ts" setup>
 import { Timeline } from "@pisagor/vue";
-import { h } from "vue";
 
-function _items() {
-  return [
-    {
-      description: "Kickoff and initial planning.",
-      id: "started",
-      indicator: h("span", { class: "text-primary" }, "✓"),
-      title: "Project started",
-    },
-    {
-      description: "Screens and component system locked in.",
-      id: "design",
-      indicator: h("span", { class: "text-primary" }, "✦"),
-      title: "Design complete",
-    },
-    {
-      description: "Engineering work in progress.",
-      id: "build",
-      indicator: h("span", { class: "text-primary" }, "→"),
-      title: "Implementation",
-    },
-  ];
-}
 const items = [
   { title: "Planned" },
   { title: "In progress" },

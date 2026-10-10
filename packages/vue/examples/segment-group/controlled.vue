@@ -3,8 +3,10 @@ import { SegmentGroup } from "@pisagor/vue";
 import { ref } from "vue";
 
 const items = ["Profile", "Account", "Security", "Notifications"];
-const value = ref("Profile");
-const onValueChange = setValue;
+const value = ref<string | null>("Profile");
+function onValueChange(next: typeof value.value) {
+  value.value = next;
+}
 </script>
 
 <template>

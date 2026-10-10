@@ -6,23 +6,29 @@ import { Avatar } from "@pisagor/vue";
 
 ## Examples
 
-### Compound
+### Default
 
-Compose image, fallback, and badge parts when you need a custom avatar layout.
+The standard avatar for a single person.
 
-:::example Compound
+:::example Default
+
+### Sizes
+
+Match avatar size to list density — smaller in dense rows, larger in profiles.
+
+:::example Sizes
+
+### Shapes
+
+Choose round or squared geometry to match the surrounding visual language.
+
+:::example Shapes
 
 ### Count
 
 Show how many people are represented when listing everyone would take too much space.
 
 :::example Count
-
-### Default
-
-The standard avatar for a single person.
-
-:::example Default
 
 ### Fallbacks
 
@@ -36,20 +42,16 @@ Overlap several avatars in a row for shared ownership or participants.
 
 :::example Group
 
-### Shapes
+### Compound
 
-Choose round or squared geometry to match the surrounding visual language.
+Compose `AvatarGroup.Root` with `Avatar` children when each avatar needs its own props.
 
-:::example Shapes
+:::example Compound
 
-### Sizes
+## Customization
 
-Match avatar size to list density — smaller in dense rows, larger in profiles.
+### Custom recipe
 
-:::example Sizes
+Extend `avatarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-### Fallback Only
-
-Render initials or an icon with no image when a photo is not available.
-
-:::example FallbackOnly
+:::example CustomRecipe
