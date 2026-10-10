@@ -1,0 +1,17 @@
+---
+import { Button, ButtonGroup } from "@pisagor/astro";
+import { buttonGroupRecipe } from "@pisagor/recipes";
+import { tv } from "tailwind-variants";
+
+const brandButtonGroupRecipe = tv({
+  extend: buttonGroupRecipe,
+  slots: { separator: "bg-emerald-500/60" },
+  variants: {},
+});
+---
+
+<ButtonGroup recipe={brandButtonGroupRecipe}>
+  <Button aria-label="Remove" size="icon-md" variant="secondary"> </Button>
+  <ButtonGroup.Separator />
+  <Button aria-label="Add" size="icon-md" variant="secondary"> </Button>
+</ButtonGroup>

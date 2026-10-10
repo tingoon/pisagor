@@ -1,17 +1,19 @@
 ---
-import { Card } from "@pisagor/astro";
+import { Button, Card } from "@pisagor/astro";
 ---
 
 <Card>
-  <Card.Media
-    class="flex size-10 items-center justify-center rounded-lg bg-muted text-lg"
-  >
-    ★
-  </Card.Media>
-  <Card.Header description="Secondary text" title="Feature title" />
+  <Card.Media variant="icon"> </Card.Media>
+  <Card.Header
+    description="Minimum purchase of $100 required. Use code at checkout."
+    title="Get 15% off"
+  />
   <Card.Content>
-    <p class="text-muted-foreground text-sm">
-      Supporting details for this feature.
-    </p>
+    <pre
+      class="rounded-md bg-muted p-2 text-center font-medium text-sm"
+    ><code>15OFF</code></pre>
   </Card.Content>
+  <Card.Footer class="flex-row-reverse">
+    <Button size="sm">Copy code</Button>
+  </Card.Footer>
 </Card>

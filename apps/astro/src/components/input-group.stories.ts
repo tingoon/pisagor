@@ -37,14 +37,50 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Default = meta.story({
-  render: () => ({ component: Examples.Default }),
+export const Variants = meta.story({
+  render: () => ({ component: Examples.Variants }),
 });
 
 export const Sizes = meta.story({
   render: () => ({ component: Examples.Sizes }),
 });
 
-export const Variants = meta.story({
-  render: () => ({ component: Examples.Variants }),
+export const AlignBlockEnd = meta.story({
+  render: () => ({ component: Examples.AlignBlockEnd }),
+});
+
+export const AlignBlockStart = meta.story({
+  render: () => ({ component: Examples.AlignBlockStart }),
+});
+
+export const AlignInlineEnd = meta.story({
+  render: () => ({ component: Examples.AlignInlineEnd }),
+});
+
+export const AlignInlineStart = meta.story({
+  render: () => ({ component: Examples.AlignInlineStart }),
+});
+
+export const WithTextarea = meta.story({
+  render: () => ({ component: Examples.WithTextarea }),
+});
+
+export const WithBadge = meta.story({
+  render: () => ({ component: Examples.WithBadge }),
+});
+
+export const WithKeyboardShortcut = meta.story({
+  render: () => ({ component: Examples.WithKeyboardShortcut }),
+});
+
+export const WithSpinner = meta.story({
+  render: () => ({ component: Examples.WithSpinner }),
+});
+
+export const Disabled = meta.story({
+  render: () => ({ component: Examples.Disabled }),
+});
+
+export const Invalid = meta.story({
+  render: () => ({ component: Examples.Invalid }),
 });

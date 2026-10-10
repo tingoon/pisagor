@@ -6,14 +6,28 @@ import { Kbd } from "@pisagor/astro";
 
 ## Examples
 
-### Default
+### Variants
 
-Show a keyboard key in a monospace badge.
+Choose visual weight or emphasis so the keyboard badge matches importance in the surrounding layout.
 
-:::example Default
+:::example Variants
 
-### Group
+### Kbd Group
 
-Show a key combination by grouping related keys in order.
+Group several keys when the shortcut is a chord.
 
-:::example Group
+:::example KbdGroup
+
+### With Button
+
+Place the badge next to a button that performs the same action.
+
+:::example WithButton
+
+## Customization
+
+### Custom recipe
+
+Extend `kbdRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

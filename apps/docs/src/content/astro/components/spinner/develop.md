@@ -12,8 +12,10 @@ Match size to the surrounding layout — smaller in compact chrome, larger where
 
 :::example Sizes
 
-### Default
+## Customization
 
-A compact spinner for short, indeterminate waits.
+### Custom recipe
 
-:::example Default
+Extend `spinnerRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

@@ -1,5 +1,13 @@
 ---
+import type { BadgeVariant } from "@pisagor/astro";
 import { Badge, Table } from "@pisagor/astro";
+import { workspaceUsers } from "./helpers";
+
+const statusVariants: Record<string, BadgeVariant> = {
+  active: "success",
+  inactive: "destructive",
+  invited: "info",
+};
 ---
 
 <Table>
@@ -13,29 +21,17 @@ import { Badge, Table } from "@pisagor/astro";
     </Table.Row>
   </Table.Header>
   <Table.Body>
-    <Table.Row>
-      <Table.Cell>Jane Doe</Table.Cell>
-      <Table.Cell>jane@example.com</Table.Cell>
-      <Table.Cell>Admin</Table.Cell>
-      <Table.Cell class="text-center">
-        <Badge variant="success">active</Badge>
-      </Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell>John Doe</Table.Cell>
-      <Table.Cell>john@example.com</Table.Cell>
-      <Table.Cell>Editor</Table.Cell>
-      <Table.Cell class="text-center">
-        <Badge variant="info">invited</Badge>
-      </Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell>Alex Kim</Table.Cell>
-      <Table.Cell>alex@example.com</Table.Cell>
-      <Table.Cell>Viewer</Table.Cell>
-      <Table.Cell class="text-center">
-        <Badge variant="destructive">inactive</Badge>
-      </Table.Cell>
-    </Table.Row>
+    {workspaceUsers.map((user) => (
+      <Table.Row>
+        <Table.Cell>{user.name}</Table.Cell>
+        <Table.Cell>{user.email}</Table.Cell>
+        <Table.Cell>{user.role}</Table.Cell>
+        <Table.Cell class="text-center">
+          <Badge class="capitalize" variant={statusVariants[user.status]}>
+            {user.status}
+          </Badge>
+        </Table.Cell>
+      </Table.Row>
+    ))}
   </Table.Body>
 </Table>

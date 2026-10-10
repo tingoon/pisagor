@@ -18,8 +18,22 @@ Match avatar size to list density — smaller in dense rows, larger in profiles.
 
 :::example Sizes
 
-### With Image
+### Shapes
 
-A photo avatar with alt text for a named person.
+Choose round or squared geometry to match the surrounding visual language.
 
-:::example WithImage
+:::example Shapes
+
+### Fallbacks
+
+Fall back to initials or an icon when no photo is available.
+
+:::example Fallbacks
+
+## Customization
+
+### Custom recipe
+
+Extend `avatarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

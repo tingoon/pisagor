@@ -1,11 +1,4 @@
-import defaultRaw from "./default.astro?raw";
-
-export const imports = `---
-import { Frame } from "@pisagor/astro";
----`;
-
-export const sources = {
-  Default: defaultRaw,
-} as const;
-
+export { default as CustomRecipe } from "./custom-recipe.astro";
 export { default as Default } from "./default.astro";
+export { default as SeparatedPanels } from "./separated-panels.astro";
+export { imports, sources } from "./sources";

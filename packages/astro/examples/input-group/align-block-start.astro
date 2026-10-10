@@ -1,0 +1,23 @@
+---
+import { InputGroup } from "@pisagor/astro";
+---
+
+<div class="flex flex-col gap-2">
+  <InputGroup>
+    <textarea
+      class="min-w-0 flex-1 resize-none bg-transparent font-mono text-sm outline-none"
+      placeholder="console.log('Hello, world!');"
+    ></textarea>
+    <InputGroup.Addon align="block-start">
+      <span aria-hidden="true">📄</span>
+      <InputGroup.Text class="font-mono">script.js</InputGroup.Text>
+      <InputGroup.Button aria-label="Copy" class="ml-auto" size="icon-xs">
+        <span aria-hidden="true">⧉</span>
+        <span class="sr-only">Copy</span>
+      </InputGroup.Button>
+    </InputGroup.Addon>
+  </InputGroup>
+  <p class="text-muted-foreground text-sm">
+    Header positioned above the textarea.
+  </p>
+</div>

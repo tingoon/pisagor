@@ -28,3 +28,15 @@ export const Playground = meta.story({
 export const Default = meta.story({
   render: () => ({ component: Examples.Default }),
 });
+
+export const Compact = meta.story({
+  render: () => ({ component: Examples.Compact }),
+});
+
+export const Compound = meta.story({
+  render: () => ({ component: Examples.Compound }),
+});
+
+export const CustomRecipe = meta.story({
+  render: () => ({ component: Examples.CustomRecipe }),
+});

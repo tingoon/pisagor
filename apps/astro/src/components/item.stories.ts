@@ -53,3 +53,39 @@ export const Default = meta.story({
 export const Variants = meta.story({
   render: () => ({ component: Examples.Variants }),
 });
+
+export const Icon = meta.story({
+  render: () => ({ component: Examples.Icon }),
+});
+
+export const Image = meta.story({
+  render: () => ({ component: Examples.Image }),
+});
+
+export const WithMedia = meta.story({
+  render: () => ({ component: Examples.WithMedia }),
+});
+
+export const Header = meta.story({
+  render: () => ({ component: Examples.Header }),
+});
+
+export const Group = meta.story({
+  render: () => ({ component: Examples.Group }),
+});
+
+export const WithAvatar = meta.story({
+  render: () => ({ component: Examples.WithAvatar }),
+});
+
+export const Link = meta.story({
+  render: () => ({ component: Examples.Link }),
+});
+
+export const CustomSpacing = meta.story({
+  render: () => ({ component: Examples.CustomSpacing }),
+});
+
+export const CustomRecipe = meta.story({
+  render: () => ({ component: Examples.CustomRecipe }),
+});

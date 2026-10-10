@@ -41,3 +41,11 @@ export const Playground = meta.story({
 export const Default = meta.story({
   render: () => ({ component: Examples.Default }),
 });
+
+export const Horizontal = meta.story({
+  render: () => ({ component: Examples.Horizontal }),
+});
+
+export const Compound = meta.story({
+  render: () => ({ component: Examples.Compound }),
+});

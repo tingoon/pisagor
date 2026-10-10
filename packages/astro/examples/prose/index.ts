@@ -1,11 +1,25 @@
-import defaultRaw from "./default.astro?raw";
-
-export const imports = `---
-import { Prose } from "@pisagor/astro";
----`;
-
-export const sources = {
-  Default: defaultRaw,
-} as const;
-
+export { default as A } from "./a.astro";
+export { default as Blockquote } from "./blockquote.astro";
+export { default as CustomRecipe } from "./custom-recipe.astro";
 export { default as Default } from "./default.astro";
+export { default as Details } from "./details.astro";
+export { default as Dl } from "./dl.astro";
+export { default as H1 } from "./h1.astro";
+export { default as H2 } from "./h2.astro";
+export { default as H3 } from "./h3.astro";
+export { default as H4 } from "./h4.astro";
+export { default as H5 } from "./h5.astro";
+export { default as H6 } from "./h6.astro";
+export { default as Html } from "./html.astro";
+export { default as HtmlTable } from "./html-table.astro";
+export { default as InlineCode } from "./inline-code.astro";
+export { default as Kbd } from "./kbd.astro";
+export { default as List } from "./list.astro";
+export { default as Mark } from "./mark.astro";
+export { default as Media } from "./media.astro";
+export { default as NotProse } from "./not-prose.astro";
+export { default as Ol } from "./ol.astro";
+export { default as P } from "./p.astro";
+export { default as Separator } from "./separator.astro";
+export { default as Small } from "./small.astro";
+export { imports, sources } from "./sources";

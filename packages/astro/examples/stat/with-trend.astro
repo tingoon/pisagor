@@ -3,10 +3,18 @@ import { Stat } from "@pisagor/astro";
 ---
 
 <div class="grid gap-2 sm:grid-cols-2">
-  <Stat description="Compared with last week" label="New signups" value="1,284">
-    <span slot="trend">↑ +12.6%</span>
-  </Stat>
-  <Stat description="Compared with last month" label="Churn rate" value="3.2%">
-    <span slot="trend">↓ -0.8%</span>
-  </Stat>
+  <Stat
+    description="Compared with last week"
+    label="New signups"
+    trend={<>+12.6%</>}
+    trendProps={{ trend: "up" }}
+    value="1,284"
+  />
+  <Stat
+    description="Compared with last month"
+    label="Churn rate"
+    trend={<>-0.8%</>}
+    trendProps={{ trend: "down" }}
+    value="3.2%"
+  />
 </div>

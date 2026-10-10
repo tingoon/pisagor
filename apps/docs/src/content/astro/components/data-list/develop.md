@@ -23,3 +23,15 @@ Lay out the data list horizontally when items should read in a row.
 Stack the data list vertically when items should read in a column.
 
 :::example OrientationVertical
+
+### Separator
+
+Separate groups of pairs so sections stay scannable.
+
+:::example Separator
+
+### Compound
+
+Compose term and value parts for a custom list layout.
+
+:::example Compound

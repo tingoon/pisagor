@@ -6,11 +6,11 @@ import { Badge } from "@pisagor/astro";
 
 ## Examples
 
-### Default
+### Variants
 
-The compact badge for status, category, or count.
+Choose tone so the badge reflects status severity or category.
 
-:::example Default
+:::example Variants
 
 ### Sizes
 
@@ -18,23 +18,17 @@ Match badge size to nearby text and controls.
 
 :::example Sizes
 
-### Variants
-
-Choose tone so the badge reflects status severity or category.
-
-:::example Variants
-
 ### Pill
 
 Use a fully rounded shape when softer, chip-like geometry fits the layout.
 
 :::example Pill
 
-### Custom Color
+### With Link
 
-Override the fill when a brand or contextual color matters more than the theme default. Keep contrast readable.
+Make the badge navigate when the label itself is a destination.
 
-:::example CustomColor
+:::example WithLink
 
 ### With Spinner
 
@@ -42,8 +36,18 @@ Show a spinner inside the badge when the status is still loading.
 
 :::example WithSpinner
 
-### With Link
+## Customization
 
-Make the badge navigate when the label itself is a destination.
+### Class names
 
-:::example WithLink
+Pass `class` for a one-off change to a single element.
+
+Override the fill when a brand or contextual color matters more than the theme default.
+
+:::example CustomColor
+
+### Custom recipe
+
+Extend `badgeRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

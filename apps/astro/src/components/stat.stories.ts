@@ -35,3 +35,11 @@ export const Variants = meta.story({
 export const WithTrend = meta.story({
   render: () => ({ component: Examples.WithTrend }),
 });
+
+export const Compound = meta.story({
+  render: () => ({ component: Examples.Compound }),
+});
+
+export const CustomRecipe = meta.story({
+  render: () => ({ component: Examples.CustomRecipe }),
+});

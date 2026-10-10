@@ -38,3 +38,11 @@ export const Playground = meta.story({
 export const Default = meta.story({
   render: () => ({ component: Examples.Default }),
 });
+
+export const Article = meta.story({
+  render: () => ({ component: Examples.Article }),
+});
+
+export const WithLink = meta.story({
+  render: () => ({ component: Examples.WithLink }),
+});

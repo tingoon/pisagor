@@ -36,3 +36,11 @@ export const OrientationHorizontal = meta.story({
 export const OrientationVertical = meta.story({
   render: () => ({ component: Examples.OrientationVertical }),
 });
+
+export const Separator = meta.story({
+  render: () => ({ component: Examples.Separator }),
+});
+
+export const Compound = meta.story({
+  render: () => ({ component: Examples.Compound }),
+});

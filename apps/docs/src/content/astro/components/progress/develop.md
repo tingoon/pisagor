@@ -6,6 +6,24 @@ import { Progress } from "@pisagor/astro";
 
 ## Examples
 
+### Default
+
+Show completion along a linear track.
+
+:::example Default
+
+### Orientation Horizontal
+
+Lay out the progress bar horizontally when items should read in a row.
+
+:::example OrientationHorizontal
+
+### Orientation Vertical
+
+Stack the progress bar vertically when items should read in a column.
+
+:::example OrientationVertical
+
 ### With Label
 
 Label the progress so the percentage or status is readable.
@@ -18,8 +36,10 @@ Show an indeterminate state when progress or selection is partial or unknown.
 
 :::example Indeterminate
 
-### Default
+## Customization
 
-Show completion along a linear track.
+### Custom recipe
 
-:::example Default
+Extend `progressRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

@@ -22,24 +22,16 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Default = meta.story({
-  render: () => ({ component: Examples.Default }),
+export const Variants = meta.story({
+  render: () => ({ component: Examples.Variants }),
 });
 
 export const Sizes = meta.story({
   render: () => ({ component: Examples.Sizes }),
 });
 
-export const Variants = meta.story({
-  render: () => ({ component: Examples.Variants }),
-});
-
 export const Pill = meta.story({
   render: () => ({ component: Examples.Pill }),
-});
-
-export const CustomColor = meta.story({
-  render: () => ({ component: Examples.CustomColor }),
 });
 
 export const WithLink = meta.story({
@@ -48,4 +40,12 @@ export const WithLink = meta.story({
 
 export const WithSpinner = meta.story({
   render: () => ({ component: Examples.WithSpinner }),
+});
+
+export const CustomColor = meta.story({
+  render: () => ({ component: Examples.CustomColor }),
+});
+
+export const CustomRecipe = meta.story({
+  render: () => ({ component: Examples.CustomRecipe }),
 });

@@ -26,10 +26,22 @@ export const Default = meta.story({
   render: () => ({ component: Examples.Default }),
 });
 
-export const Indeterminate = meta.story({
-  render: () => ({ component: Examples.Indeterminate }),
+export const OrientationHorizontal = meta.story({
+  render: () => ({ component: Examples.OrientationHorizontal }),
+});
+
+export const OrientationVertical = meta.story({
+  render: () => ({ component: Examples.OrientationVertical }),
 });
 
 export const WithLabel = meta.story({
   render: () => ({ component: Examples.WithLabel }),
+});
+
+export const Indeterminate = meta.story({
+  render: () => ({ component: Examples.Indeterminate }),
+});
+
+export const CustomRecipe = meta.story({
+  render: () => ({ component: Examples.CustomRecipe }),
 });

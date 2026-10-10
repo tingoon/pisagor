@@ -1,0 +1,16 @@
+---
+import { InputGroup } from "@pisagor/astro";
+---
+
+<div class="flex flex-col gap-2">
+  <InputGroup>
+    <InputGroup.Addon align="inline-start">
+      <span aria-hidden="true">▽</span>
+    </InputGroup.Addon>
+    <input
+      class="min-w-0 flex-1 bg-transparent outline-none"
+      placeholder="Search..."
+    >
+  </InputGroup>
+  <p class="text-muted-foreground text-sm">Icon positioned at the start.</p>
+</div>

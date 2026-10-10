@@ -2,21 +2,11 @@
 
 ```ts
 import { Button } from "@pisagor/astro";
+
+<Button>Save</Button>
 ```
 
 ## Examples
-
-### Default
-
-The filled button for the main action in a view.
-
-:::example Default
-
-### Sizes
-
-Match size to the surrounding layout — smaller in compact toolbars, larger for prominent calls to action. Icon sizes keep square hit targets aligned with text buttons.
-
-:::example Sizes
 
 ### Variants
 
@@ -24,9 +14,33 @@ Choose weight by importance: default for the primary action, secondary or outlin
 
 :::example Variants
 
+### Sizes
+
+Match size to the surrounding layout — smaller in compact toolbars, larger for prominent calls to action. Icon sizes keep square hit targets aligned with text buttons.
+
+:::example Sizes
+
+### Pill
+
+Use a fully rounded shape for chip-like or toolbar actions where softer geometry fits the layout.
+
+:::example Pill
+
+### With icon
+
+Pair an icon with a label to reinforce meaning.
+
+:::example WithIcon
+
+### Icon
+
+An icon-only button for a single, well-known action. Always provide an accessible name.
+
+:::example Icon
+
 ### Disabled
 
-Show that an action is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that an action is unavailable.
 
 :::example Disabled
 
@@ -36,26 +50,24 @@ Keep the control visible while work is in progress and block another press until
 
 :::example Loading
 
-### Pill
-
-Use a fully rounded shape for chip-like or toolbar actions where softer geometry fits the layout.
-
-:::example Pill
-
-### Icon
-
-An icon-only button for a single, well-known action. Always provide an accessible name.
-
-:::example Icon
-
-### With icon
-
-Pair an icon with a label to reinforce meaning. Prefer a leading icon for the action; use a trailing icon when the control opens another place.
-
-:::example WithIcon
-
 ### No click effect
 
 Turn off the press scale when motion would distract or conflict with surrounding interaction feedback.
 
 :::example NoClickEffect
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Override the fill when a brand or contextual color matters more than the theme primary.
+
+:::example CustomColor
+
+### Custom recipe
+
+Extend `buttonRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

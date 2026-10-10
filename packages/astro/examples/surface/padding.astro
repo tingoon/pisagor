@@ -2,8 +2,14 @@
 import { Surface } from "@pisagor/astro";
 ---
 
-<div class="flex flex-wrap gap-2">
-  <Surface bordered padding="sm">sm</Surface>
-  <Surface bordered padding="md">md</Surface>
-  <Surface bordered padding="lg">lg</Surface>
+<div class="flex flex-col gap-2">
+  <Surface bordered class="text-sm" padding="sm" variant="secondary">
+    Small padding
+  </Surface>
+  <Surface bordered class="text-sm" padding="md" variant="secondary">
+    Medium padding
+  </Surface>
+  <Surface bordered class="text-sm" padding="lg" variant="secondary">
+    Large padding
+  </Surface>
 </div>

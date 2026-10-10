@@ -1,0 +1,16 @@
+---
+import { Badge, InputGroup } from "@pisagor/astro";
+---
+
+<InputGroup>
+  <InputGroup.Addon align="inline-start">
+    <span aria-hidden="true">⌂</span>
+  </InputGroup.Addon>
+  <input
+    class="min-w-0 flex-1 bg-transparent outline-none"
+    placeholder="Enter tag"
+  >
+  <InputGroup.Addon align="inline-end">
+    <Badge pill size="sm" variant="success">Available</Badge>
+  </InputGroup.Addon>
+</InputGroup>

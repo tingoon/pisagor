@@ -4,18 +4,23 @@ import { Announcement, Badge } from "@pisagor/astro";
 
 <div class="flex flex-col gap-2">
   <Announcement
+    badge={<Badge variant="default">Release</Badge>}
     title="v2.1.0 — Dark mode, faster builds, and 12 new components"
-  >
-    <Badge slot="badge" variant="default">Release</Badge>
-  </Announcement>
+  />
   <Announcement
+    badge={<Badge variant="destructive">Payment failed</Badge>}
     title="Your last invoice couldn't be processed. Update your billing info."
-  >
-    <Badge slot="badge" variant="destructive">Payment failed</Badge>
-  </Announcement>
+  />
   <Announcement
+    badge={<Badge variant="info">Maintenance</Badge>}
     title="Scheduled downtime tonight 2 to 4 a.m. UTC. No action needed."
-  >
-    <Badge slot="badge" variant="info">Maintenance</Badge>
-  </Announcement>
+  />
+  <Announcement
+    badge={<Badge variant="success">Deployed</Badge>}
+    title="Production build completed in 2m 34s"
+  />
+  <Announcement
+    badge={<Badge variant="warning">Trial ending</Badge>}
+    title="Your free trial expires in 3 days. Upgrade to keep access."
+  />
 </div>

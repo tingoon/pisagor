@@ -54,6 +54,14 @@ export const OrientationVertical = meta.story({
   render: () => ({ component: Examples.OrientationVertical }),
 });
 
+export const Nested = meta.story({
+  render: () => ({ component: Examples.Nested }),
+});
+
 export const WithSeparator = meta.story({
   render: () => ({ component: Examples.WithSeparator }),
+});
+
+export const CustomRecipe = meta.story({
+  render: () => ({ component: Examples.CustomRecipe }),
 });

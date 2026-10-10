@@ -1,0 +1,16 @@
+---
+import { Progress } from "@pisagor/astro";
+import { progressRecipe } from "@pisagor/recipes";
+import { tv } from "tailwind-variants";
+
+const brandProgressRecipe = tv({
+  extend: progressRecipe,
+  slots: {
+    range: "bg-emerald-600",
+    track: "bg-emerald-500/20",
+  },
+  variants: {},
+});
+---
+
+<Progress recipe={brandProgressRecipe} value={66} />

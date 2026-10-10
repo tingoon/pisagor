@@ -1,14 +1,12 @@
-import defaultRaw from "./default.astro?raw";
-import variantsRaw from "./variants.astro?raw";
-
-export const imports = `---
-import { Item } from "@pisagor/astro";
----`;
-
-export const sources = {
-  Default: defaultRaw,
-  Variants: variantsRaw,
-} as const;
-
+export { default as CustomRecipe } from "./custom-recipe.astro";
+export { default as CustomSpacing } from "./custom-spacing.astro";
 export { default as Default } from "./default.astro";
+export { default as Group } from "./group.astro";
+export { default as Header } from "./header.astro";
+export { default as Icon } from "./icon.astro";
+export { default as Image } from "./image.astro";
+export { default as Link } from "./link.astro";
+export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.astro";
+export { default as WithAvatar } from "./with-avatar.astro";
+export { default as WithMedia } from "./with-media.astro";

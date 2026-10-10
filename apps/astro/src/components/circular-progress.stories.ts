@@ -26,14 +26,22 @@ export const Default = meta.story({
   render: () => ({ component: Examples.Default }),
 });
 
-export const Indeterminate = meta.story({
-  render: () => ({ component: Examples.Indeterminate }),
+export const Sizes = meta.story({
+  render: () => ({ component: Examples.Sizes }),
+});
+
+export const Thickness = meta.story({
+  render: () => ({ component: Examples.Thickness }),
 });
 
 export const WithValue = meta.story({
   render: () => ({ component: Examples.WithValue }),
 });
 
-export const Sizes = meta.story({
-  render: () => ({ component: Examples.Sizes }),
+export const Indeterminate = meta.story({
+  render: () => ({ component: Examples.Indeterminate }),
+});
+
+export const CustomRecipe = meta.story({
+  render: () => ({ component: Examples.CustomRecipe }),
 });

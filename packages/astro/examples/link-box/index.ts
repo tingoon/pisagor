@@ -1,11 +1,4 @@
-import defaultRaw from "./default.astro?raw";
-
-export const imports = `---
-import { LinkBox } from "@pisagor/astro";
----`;
-
-export const sources = {
-  Default: defaultRaw,
-} as const;
-
+export { default as Article } from "./article.astro";
 export { default as Default } from "./default.astro";
+export { imports, sources } from "./sources";
+export { default as WithLink } from "./with-link.astro";

@@ -54,3 +54,11 @@ export const Playground = meta.story({
 export const Default = meta.story({
   render: () => ({ component: Examples.Default }),
 });
+
+export const SeparatedPanels = meta.story({
+  render: () => ({ component: Examples.SeparatedPanels }),
+});
+
+export const CustomRecipe = meta.story({
+  render: () => ({ component: Examples.CustomRecipe }),
+});

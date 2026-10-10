@@ -12,20 +12,22 @@ Pulse placeholders while content loads.
 
 :::example Default
 
-### Circle
+### Skeleton Text
 
-A circular placeholder sized for avatars and icon slots.
+Approximate lines of text so reading layout stays stable.
 
-:::example Circle
+:::example SkeletonText
 
-### Composition
+### In Card
 
-Combine circle and text skeletons to mirror a list row while it loads.
+Place skeletons inside a card when that surface is loading.
 
-:::example Composition
+:::example InCard
 
-### Text
+## Customization
 
-Multiple text lines when the final content is a paragraph or bio block.
+### Custom recipe
 
-:::example Text
+Extend `skeletonRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe
