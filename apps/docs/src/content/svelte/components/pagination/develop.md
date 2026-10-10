@@ -6,11 +6,11 @@ import { Pagination } from "@pisagor/svelte";
 
 ## Examples
 
-### Links
+### Default
 
-Render items as links when navigation is the primary action.
+Move through pages with previous, next, and page controls.
 
-:::example Links
+:::example Default
 
 ### Page Range
 
@@ -18,7 +18,13 @@ Show a window of page numbers when jumping more than one step matters.
 
 :::example PageRange
 
-### Custom Composition
+### Links
+
+Render items as links when navigation is the primary action.
+
+:::example Links
+
+### Compound
 
 Compose pagination parts when the shorthand layout is not enough.
 
@@ -30,8 +36,10 @@ Manage state from the parent when other UI must stay in sync with this paginatio
 
 :::example Controlled
 
-### Default
+## Customization
 
-Move through pages with previous, next, and page controls.
+### Custom recipe
 
-:::example Default
+Extend `paginationRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

@@ -1,9 +1,16 @@
 <script lang="ts">
-import SizeExample from "./size-example.svelte";
+import { Combobox } from "@pisagor/svelte";
+
+const items = [
+  { label: "Apple", value: "apple" },
+  { label: "Banana", value: "banana" },
+  { label: "Cherry", value: "cherry" },
+];
+const sizes = ["sm", "md", "lg"] as const;
 </script>
 
 <div class="flex flex-col gap-2">
-  <SizeExample size="sm" />
-  <SizeExample size="md" />
-  <SizeExample size="lg" />
+  {#each sizes as size (size)}
+    <Combobox {items} placeholder={`Size ${size}`} {size} />
+  {/each}
 </div>

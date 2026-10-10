@@ -6,6 +6,12 @@ import { JsonTreeView } from "@pisagor/svelte";
 
 ## Examples
 
+### Default
+
+Inspect nested JSON as an expandable tree.
+
+:::example Default
+
 ### Data Types
 
 Highlight value types so structure is easier to scan.
@@ -24,8 +30,10 @@ Render Map and Set values when those structures appear in the data.
 
 :::example MapSet
 
-### Default
+## Customization
 
-Inspect nested JSON as an expandable tree.
+### Custom recipe
 
-:::example Default
+Extend `jsonTreeViewRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

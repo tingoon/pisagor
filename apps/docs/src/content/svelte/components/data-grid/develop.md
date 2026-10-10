@@ -1,10 +1,16 @@
 ## Import
 
 ```ts
-import { DataGrid } from "@pisagor/svelte/data-grid";
+import { type ColumnDef } from "@pisagor/svelte/data-grid";
 ```
 
 ## Examples
+
+### Striped Variant
+
+Alternate row backgrounds to improve scanning in dense grids.
+
+:::example StripedVariant
 
 ### Active Filter Chips
 
@@ -60,12 +66,6 @@ Group rows by a field when hierarchy helps scanning.
 
 :::example GroupedRows
 
-### Loading State
-
-Show loading while rows are fetching so the grid does not look empty by mistake.
-
-:::example LoadingState
-
 ### Manual Pagination
 
 Page on the server when the full dataset cannot load at once.
@@ -114,12 +114,6 @@ Sort by column so users can reorder records.
 
 :::example Sorting
 
-### Striped Variant
-
-Alternate row backgrounds to improve scanning in dense grids.
-
-:::example StripedVariant
-
 ### Virtualized
 
 Virtualize rows for very large datasets.
@@ -132,8 +126,8 @@ Enable sortable columns when users need to reorder records by field.
 
 :::example WithSortableData
 
-### Default
+### Loading State
 
-A feature-rich grid for browsing and acting on tabular data.
+Show loading while rows are fetching so the grid does not look empty by mistake.
 
-:::example Default
+:::example LoadingState

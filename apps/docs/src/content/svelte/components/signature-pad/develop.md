@@ -6,23 +6,11 @@ import { SignaturePad } from "@pisagor/svelte";
 
 ## Examples
 
-### Invalid
+### Default
 
-Surface a validation or error state so users know the signature pad needs attention before continuing.
+Capture a handwritten signature with pointer or touch input.
 
-:::example Invalid
-
-### Disabled
-
-Show that signing is unavailable. Prefer explaining why nearby.
-
-:::example Disabled
-
-### Controlled
-
-Drive stroke data from the parent when signature state lives above.
-
-:::example Controlled
+:::example Default
 
 ### Image Preview
 
@@ -30,8 +18,28 @@ Preview the signature image before submit.
 
 :::example ImagePreview
 
-### Default
+### Controlled
 
-A canvas for capturing a handwritten signature.
+Drive stroke data from the parent when signature state lives above.
 
-:::example Default
+:::example Controlled
+
+### Disabled
+
+Show that signing is unavailable.
+
+:::example Disabled
+
+### Invalid
+
+Surface a validation or error state so users know the signature pad needs attention before continuing.
+
+:::example Invalid
+
+## Customization
+
+### Custom recipe
+
+Extend `signaturePadRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

@@ -1,0 +1,13 @@
+import defaultRaw from "./default.svelte?raw";
+import disabledRaw from "./disabled.svelte?raw";
+import horizontalRaw from "./horizontal.svelte?raw";
+import without_handleRaw from "./without-handle.svelte?raw";
+
+export const imports = `import { Sortable } from "@pisagor/svelte";`;
+
+export const sources = {
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Horizontal: horizontalRaw,
+  WithoutHandle: without_handleRaw,
+} as const;

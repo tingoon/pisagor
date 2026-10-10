@@ -1,6 +1,6 @@
 ## Import
 
-```tsx
+```ts
 import { RadioGroupField } from "@pisagor/svelte-form";
 ```
 
@@ -8,9 +8,15 @@ Part of `@pisagor/svelte-form`. Style with recipes where available — no app-le
 
 ## Examples
 
+### Default
+
+A labeled group of options where exactly one can be chosen.
+
+:::example Default
+
 ### Disabled
 
-Show that the radio group is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the radio group is unavailable.
 
 :::example Disabled
 

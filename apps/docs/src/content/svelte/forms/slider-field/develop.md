@@ -1,6 +1,6 @@
 ## Import
 
-```tsx
+```ts
 import { SliderField } from "@pisagor/svelte-form";
 ```
 
@@ -8,9 +8,15 @@ Part of `@pisagor/svelte-form`. Style with recipes where available — no app-le
 
 ## Examples
 
+### Default
+
+A slider with a label and live value for picking a number in a range.
+
+:::example Default
+
 ### Disabled
 
-Show that the slider is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the slider is unavailable.
 
 :::example Disabled
 

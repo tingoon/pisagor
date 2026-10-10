@@ -6,6 +6,12 @@ import { EmptyState } from "@pisagor/svelte";
 
 ## Examples
 
+### Default
+
+Explain that a view has no data and point to the next action.
+
+:::example Default
+
 ### Compact
 
 Use a denser empty state when the region is small.
@@ -18,8 +24,10 @@ Compose icon, title, and actions from parts for a custom empty layout.
 
 :::example Compound
 
-### Default
+## Customization
 
-Explain that a view has no data and point to the next action.
+### Custom recipe
 
-:::example Default
+Extend `emptyStateRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

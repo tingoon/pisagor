@@ -4,6 +4,17 @@
 import { Field } from "@pisagor/svelte";
 ```
 
+## Anatomy
+
+```tsx
+<Field>
+  <Field.Label />
+  {/* any form control, e.g. <Input /> */}
+  <Field.Description />
+  <Field.Error />
+</Field>
+```
+
 ## Examples
 
 ### Default
@@ -54,24 +65,6 @@ Compose Field around a multi-select Combobox when several values share one field
 
 :::example ComboboxMultipleField
 
-### Disabled Field
-
-Show that the field is unavailable. Prefer explaining why nearby.
-
-:::example DisabledField
-
-### Field Group
-
-Group several fields under shared context.
-
-:::example FieldGroup
-
-### With Input Group
-
-Combine Field with Input Group when addons sit on the control.
-
-:::example WithInputGroup
-
 ### Number Input Story
 
 Compose Field around Number Input when a numeric value needs label and error text.
@@ -83,12 +76,6 @@ Compose Field around Number Input when a numeric value needs label and error tex
 Compose Field around Radio Group when exclusive options share one field label.
 
 :::example RadioGroupField
-
-### Required Field
-
-Mark the field required and surface that expectation in the label.
-
-:::example RequiredField
 
 ### Select Field
 
@@ -113,6 +100,30 @@ Compose Field around Switch when an on/off setting needs label and error text.
 Compose Field around Textarea when multi-line text needs label and error text.
 
 :::example TextareaField
+
+### Field Group
+
+Group several fields under shared context.
+
+:::example FieldGroup
+
+### With Input Group
+
+Combine Field with Input Group when addons sit on the control.
+
+:::example WithInputGroup
+
+### Required Field
+
+Mark the field required and surface that expectation in the label.
+
+:::example RequiredField
+
+### Disabled Field
+
+Show that the field is unavailable.
+
+:::example DisabledField
 
 ### With Error
 

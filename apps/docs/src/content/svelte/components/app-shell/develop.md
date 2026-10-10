@@ -4,6 +4,26 @@
 import { AppShell } from "@pisagor/svelte";
 ```
 
+## Anatomy
+
+```tsx
+<AppShell>
+  <AppShell.Banner />
+  <AppShell.Navigation />
+  <AppShell.Rail>
+    <AppShell.RailItem />
+  </AppShell.Rail>
+  <AppShell.Panel>
+    <AppShell.PanelContent />
+  </AppShell.Panel>
+  <AppShell.Main>
+    <AppShell.Header>
+      <AppShell.PanelTrigger />
+    </AppShell.Header>
+  </AppShell.Main>
+</AppShell>
+```
+
 ## Examples
 
 ### Default

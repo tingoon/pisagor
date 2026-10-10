@@ -6,6 +6,12 @@ import { Prose } from "@pisagor/svelte";
 
 ## Examples
 
+### Default
+
+Readable long-form text styled for articles and documentation.
+
+:::example Default
+
 ### A
 
 Style inline links inside prose content.
@@ -17,12 +23,6 @@ Style inline links inside prose content.
 Style quotations set apart from surrounding paragraphs.
 
 :::example Blockquote
-
-### Default
-
-Readable long-form text styled for articles and documentation.
-
-:::example Default
 
 ### Details
 
@@ -143,3 +143,11 @@ Style Separator elements inside long-form prose content.
 Style Small elements inside long-form prose content.
 
 :::example Small
+
+## Customization
+
+### Custom recipe
+
+Extend `proseRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

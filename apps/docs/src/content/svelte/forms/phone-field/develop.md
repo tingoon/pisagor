@@ -1,6 +1,6 @@
 ## Import
 
-```tsx
+```ts
 import { PhoneField } from "@pisagor/svelte-form";
 ```
 
@@ -8,9 +8,15 @@ Part of `@pisagor/svelte-form`. Style with recipes where available — no app-le
 
 ## Examples
 
+### Default
+
+A phone number input with a country picker set by `defaultCountry`.
+
+:::example Default
+
 ### Disabled
 
-Show that the phone field is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the phone field is unavailable.
 
 :::example Disabled
 

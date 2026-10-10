@@ -6,23 +6,23 @@ import { Toggle } from "@pisagor/svelte";
 
 ## Examples
 
-### Sizes
-
-Match size to toolbar density.
-
-:::example Sizes
-
 ### Variants
 
 Choose emphasis to match surrounding controls.
 
 :::example Variants
 
-### Disabled
+### Sizes
 
-Show that the toggle is unavailable. Prefer explaining why nearby.
+Match size to toolbar density.
 
-:::example Disabled
+:::example Sizes
+
+### With Icon
+
+Pair an icon with the label to reinforce meaning.
+
+:::example WithIcon
 
 ### Icon Group
 
@@ -30,20 +30,22 @@ Group icon toggles when several binary options sit together.
 
 :::example IconGroup
 
-### With Icon
-
-Pair an icon with the label to reinforce meaning. Prefer a leading icon for recognition.
-
-:::example WithIcon
-
 ### Controlled
 
 Drive pressed state from the parent.
 
 :::example Controlled
 
-### Default
+### Disabled
 
-Stay pressed or released for a single binary option.
+Show that the toggle is unavailable.
 
-:::example Default
+:::example Disabled
+
+## Customization
+
+### Custom recipe
+
+Extend `toggleRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

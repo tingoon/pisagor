@@ -1,7 +1,7 @@
 ## Import
 
 ```ts
-import { Toast } from "@pisagor/svelte";
+import { toast } from "@pisagor/svelte";
 ```
 
 ## Examples
@@ -17,6 +17,18 @@ Brief feedback that appears and dismisses after an action.
 Choose visual weight or emphasis so the toast matches importance in the surrounding layout.
 
 :::example Variants
+
+### Action
+
+Offer a follow-up action when the message leads somewhere.
+
+:::example Action
+
+### With Promise
+
+Tie the toast to a promise so pending, success, and error states stay in sync.
+
+:::example WithPromise
 
 ### Duration
 
@@ -35,18 +47,6 @@ Let users dismiss the toast before it expires.
 Prevent duplicate toasts when the same message would otherwise stack.
 
 :::example Dedupe
-
-### Action
-
-Offer a follow-up action when the message leads somewhere.
-
-:::example Action
-
-### With Promise
-
-Tie the toast to a promise so pending, success, and error states stay in sync.
-
-:::example WithPromise
 
 ### Placements
 

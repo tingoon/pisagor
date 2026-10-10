@@ -1,6 +1,6 @@
 ## Import
 
-```tsx
+```ts
 import { PasswordField } from "@pisagor/svelte-form";
 ```
 
@@ -8,9 +8,21 @@ Part of `@pisagor/svelte-form`. Style with recipes where available — no app-le
 
 ## Examples
 
+### Default
+
+A password input with a visibility toggle and requirements as helper text.
+
+:::example Default
+
+### With Label Accessory
+
+Place a secondary action next to the label, such as a Forgot password? link, via `labelAccessory`.
+
+:::example WithLabelAccessory
+
 ### Disabled
 
-Show that the password field is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the password field is unavailable.
 
 :::example Disabled
 
@@ -19,9 +31,3 @@ Show that the password field is unavailable. Prefer explaining why nearby rather
 Surface a validation error under the field so the user knows what to fix before submitting.
 
 :::example Invalid
-
-### With Label Accessory
-
-Place a secondary action next to the label, such as a Forgot password? link, via `labelAccessory`.
-
-:::example WithLabelAccessory

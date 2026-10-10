@@ -6,17 +6,17 @@ import { ToggleGroup } from "@pisagor/svelte";
 
 ## Examples
 
-### Sizes
-
-Match size to the surrounding layout — smaller in compact chrome, larger where the toggle group needs emphasis.
-
-:::example Sizes
-
 ### Variants
 
 Choose visual weight or emphasis so the toggle group matches importance in the surrounding layout.
 
 :::example Variants
+
+### Sizes
+
+Match size to the surrounding layout — smaller in compact chrome, larger where the toggle group needs emphasis.
+
+:::example Sizes
 
 ### Horizontal
 
@@ -36,35 +36,11 @@ Adjust gaps between parts when density needs to match the surrounding UI.
 
 :::example Spacing
 
-### Disabled Item
-
-Show that a specific toggle is unavailable.
-
-:::example DisabledItem
-
 ### Font Weight
 
 Use the group for font-weight choices in a formatting toolbar.
 
 :::example FontWeight
-
-### Disabled
-
-Show that the toggle group is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
-
-:::example Disabled
-
-### Single
-
-Allow only one pressed toggle when options are mutually exclusive.
-
-:::example Single
-
-### Controlled
-
-Manage state from the parent when other UI must stay in sync with this toggle group.
-
-:::example Controlled
 
 ### Compound
 
@@ -72,8 +48,34 @@ Assemble from parts when you need a custom layout beyond the shorthand API.
 
 :::example Compound
 
-### Default
+### Controlled
 
-Choose one or more pressed states from related toggles.
+Manage state from the parent when other UI must stay in sync with this toggle group.
 
-:::example Default
+:::example Controlled
+
+### Disabled
+
+Show that the toggle group is unavailable.
+
+:::example Disabled
+
+### Disabled Item
+
+Show that a specific toggle is unavailable.
+
+:::example DisabledItem
+
+### Single
+
+Allow only one pressed toggle when options are mutually exclusive.
+
+:::example Single
+
+## Customization
+
+### Custom recipe
+
+Extend `toggleGroupRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

@@ -6,11 +6,17 @@ import { PhoneInput } from "@pisagor/svelte/phone-input";
 
 ## Examples
 
-### Controlled
+### Variants
 
-Manage state from the parent when other UI must stay in sync with this phone input.
+Choose visual weight or emphasis so the phone input matches importance in the surrounding layout.
 
-:::example Controlled
+:::example Variants
+
+### Sizes
+
+Match size to the surrounding layout — smaller in compact chrome, larger where the phone input needs emphasis.
+
+:::example Sizes
 
 ### Custom Popup
 
@@ -18,9 +24,15 @@ Customize the country popup when the default list presentation is not enough.
 
 :::example CustomPopup
 
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this phone input.
+
+:::example Controlled
+
 ### Disabled
 
-Show that the phone input is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the phone input is unavailable.
 
 :::example Disabled
 
@@ -30,20 +42,10 @@ Surface a validation or error state so users know the phone input needs attentio
 
 :::example Invalid
 
-### Sizes
+## Customization
 
-Match size to the surrounding layout — smaller in compact chrome, larger where the phone input needs emphasis.
+### Custom recipe
 
-:::example Sizes
+Extend `phoneInputRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-### Variants
-
-Choose visual weight or emphasis so the phone input matches importance in the surrounding layout.
-
-:::example Variants
-
-### Default
-
-A field for international numbers with country selection.
-
-:::example Default
+:::example CustomRecipe

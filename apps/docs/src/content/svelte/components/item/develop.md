@@ -4,6 +4,18 @@
 import { Item } from "@pisagor/svelte";
 ```
 
+## Anatomy
+
+```tsx
+<Item>
+  <Item.Content>
+    <Item.Title />
+    <Item.Description />
+  </Item.Content>
+  <Item.Actions />
+</Item>
+```
+
 ## Examples
 
 ### Default
@@ -24,11 +36,11 @@ Lead with an icon when a symbol is enough.
 
 :::example Icon
 
-### Custom Spacing
+### Image
 
-Override spacing when the default density does not match the surrounding layout.
+Use a larger image treatment for media-forward rows.
 
-:::example CustomSpacing
+:::example Image
 
 ### With Media
 
@@ -36,23 +48,11 @@ Lead with media when imagery helps recognition.
 
 :::example WithMedia
 
-### With Avatar
+### Header
 
-Lead with an avatar when the row represents a person.
+Use item header layout for section introductions in a list.
 
-:::example WithAvatar
-
-### Image
-
-Use a larger image treatment for media-forward rows.
-
-:::example Image
-
-### Link
-
-Navigate when the whole row is a destination.
-
-:::example Link
+:::example Header
 
 ### Group
 
@@ -60,8 +60,30 @@ Group related items so related choices stay visually and semantically together.
 
 :::example Group
 
-### Header
+### With Avatar
 
-Use item header layout for section introductions in a list.
+Lead with an avatar when the row represents a person.
 
-:::example Header
+:::example WithAvatar
+
+### As child
+
+Navigate when the whole row is a destination.
+
+:::example Link
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Override spacing when the default density does not match the surrounding layout.
+
+:::example CustomSpacing
+
+### Custom recipe
+
+Extend `itemRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

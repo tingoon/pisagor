@@ -4,19 +4,16 @@
 import { InputGroup } from "@pisagor/svelte";
 ```
 
+## Anatomy
+
+```tsx
+<InputGroup>
+  <InputGroup.Input />
+  <InputGroup.Addon />
+</InputGroup>
+```
+
 ## Examples
-
-### Default
-
-Combine an input with attached addons as one control.
-
-:::example Default
-
-### Sizes
-
-Match size to form density.
-
-:::example Sizes
 
 ### Variants
 
@@ -24,23 +21,11 @@ Choose emphasis to match surrounding inputs.
 
 :::example Variants
 
-### With Textarea
+### Sizes
 
-Attach addons to a multi-line field.
+Match size to form density.
 
-:::example WithTextarea
-
-### Disabled
-
-Show that the grouped field is unavailable.
-
-:::example Disabled
-
-### Invalid
-
-Surface invalid state across the grouped control.
-
-:::example Invalid
+:::example Sizes
 
 ### Align Block End
 
@@ -66,6 +51,12 @@ Place addons at the inline start of the field.
 
 :::example AlignInlineStart
 
+### With Textarea
+
+Attach addons to a multi-line field.
+
+:::example WithTextarea
+
 ### With Badge
 
 Attach a badge when status sits inside the field chrome.
@@ -83,3 +74,15 @@ Show a shortcut hint inside the field.
 Show a spinner addon while the field is waiting.
 
 :::example WithSpinner
+
+### Disabled
+
+Show that the grouped field is unavailable.
+
+:::example Disabled
+
+### Invalid
+
+Surface invalid state across the grouped control.
+
+:::example Invalid

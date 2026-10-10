@@ -6,6 +6,12 @@ import { Toolbar } from "@pisagor/svelte";
 
 ## Examples
 
+### Default
+
+Place a local heading with related actions in one row.
+
+:::example Default
+
 ### Wrapped Actions
 
 Wrap actions when horizontal space is tight.
@@ -18,8 +24,10 @@ Compose toolbar parts for a custom chrome layout.
 
 :::example Compound
 
-### Default
+## Customization
 
-Place a local heading with related actions in one row.
+### Custom recipe
 
-:::example Default
+Extend `toolbarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

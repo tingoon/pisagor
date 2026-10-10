@@ -1,23 +1,6 @@
-import compoundRaw from "./compound.svelte?raw";
-import defaultRaw from "./default.svelte?raw";
-import variantsRaw from "./variants.svelte?raw";
-import with_iconRaw from "./with-icon.svelte?raw";
-import with_linkRaw from "./with-link.svelte?raw";
-import without_badgeRaw from "./without-badge.svelte?raw";
-
-export const imports = `import { Announcement } from "@pisagor/svelte";`;
-
-export const sources = {
-  Compound: compoundRaw,
-  Default: defaultRaw,
-  Variants: variantsRaw,
-  WithIcon: with_iconRaw,
-  WithLink: with_linkRaw,
-  WithoutBadge: without_badgeRaw,
-} as const;
-
 export { default as Compound } from "./compound.svelte";
-export { default as Default } from "./default.svelte";
+export { default as CustomRecipe } from "./custom-recipe.svelte";
+export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.svelte";
 export { default as WithIcon } from "./with-icon.svelte";
 export { default as WithLink } from "./with-link.svelte";

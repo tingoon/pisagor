@@ -1,6 +1,6 @@
 ## Import
 
-```tsx
+```ts
 import { DateField } from "@pisagor/svelte-form";
 ```
 
@@ -8,9 +8,15 @@ Part of `@pisagor/svelte-form`. Style with recipes where available — no app-le
 
 ## Examples
 
+### Default
+
+A date input with a calendar popup for picking one day.
+
+:::example Default
+
 ### Disabled
 
-Show that the date field is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the date field is unavailable.
 
 :::example Disabled
 

@@ -12,32 +12,34 @@ Choose color tone for availability or severity. Pair with text for accessibility
 
 :::example Variants
 
-### Custom Color
-
-Override the fill or accent when a brand or contextual color matters more than the theme default. Keep contrast readable.
-
-:::example CustomColor
-
-### Custom Size
-
-Resize the indicator to match nearby text and density.
-
-:::example CustomSize
-
-### With Icon
-
-Pair an icon with the label to reinforce meaning. Prefer a leading icon for recognition.
-
-:::example WithIcon
-
 ### Sizes
 
 Match size to the surrounding chrome.
 
 :::example Sizes
 
-### Default
+### With Icon
 
-A compact status signal beside related content.
+Pair an icon with the label to reinforce meaning.
 
-:::example Default
+:::example WithIcon
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Override the fill or accent when a brand or contextual color matters more than the theme default.
+
+:::example CustomColor
+
+Resize the indicator to match nearby text and density.
+
+:::example CustomSize
+
+### Custom recipe
+
+Extend `statusRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

@@ -6,17 +6,17 @@ import { FileInput } from "@pisagor/svelte";
 
 ## Examples
 
-### Default
-
-Capture files with a control aligned to other form inputs.
-
-:::example Default
-
 ### Variants
 
 Choose emphasis to match surrounding inputs.
 
 :::example Variants
+
+### Sizes
+
+Match size to the surrounding layout — smaller in compact chrome, larger where the file input needs emphasis.
+
+:::example Sizes
 
 ### Multiple
 
@@ -30,9 +30,15 @@ Limit selectable types so users only see suitable files.
 
 :::example Accept
 
+### On Files Change
+
+Handle file changes when parent logic must react to each selection.
+
+:::example OnFilesChange
+
 ### Disabled
 
-Show that file picking is unavailable. Prefer explaining why nearby.
+Show that file picking is unavailable.
 
 :::example Disabled
 
@@ -41,15 +47,3 @@ Show that file picking is unavailable. Prefer explaining why nearby.
 Surface a validation error when the file is missing or not allowed.
 
 :::example Invalid
-
-### On Files Change
-
-Handle file changes when parent logic must react to each selection.
-
-:::example OnFilesChange
-
-### Sizes
-
-Match size to the surrounding layout — smaller in compact chrome, larger where the file input needs emphasis.
-
-:::example Sizes

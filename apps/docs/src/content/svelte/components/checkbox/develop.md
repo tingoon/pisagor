@@ -6,29 +6,17 @@ import { Checkbox } from "@pisagor/svelte";
 
 ## Examples
 
+### Default
+
+A single option users can turn on or off.
+
+:::example Default
+
 ### Variants
 
 Choose visual weight to match surrounding form controls.
 
 :::example Variants
-
-### Disabled
-
-Show that the option cannot change. Prefer explaining why nearby.
-
-:::example Disabled
-
-### Indeterminate
-
-Mark a parent checkbox when only some child options are selected.
-
-:::example Indeterminate
-
-### Invalid
-
-Surface a validation error when the choice is required or not allowed.
-
-:::example Invalid
 
 ### Checkbox Group
 
@@ -42,8 +30,28 @@ Drive checked state from the parent when other UI depends on it.
 
 :::example Controlled
 
-### Default
+### Disabled
 
-A single option users can turn on or off.
+Show that the option cannot change.
 
-:::example Default
+:::example Disabled
+
+### Invalid
+
+Surface a validation error when the choice is required or not allowed.
+
+:::example Invalid
+
+### Indeterminate
+
+Mark a parent checkbox when only some child options are selected.
+
+:::example Indeterminate
+
+## Customization
+
+### Custom recipe
+
+Extend `checkboxRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

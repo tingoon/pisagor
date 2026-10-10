@@ -1,6 +1,6 @@
 ## Import
 
-```tsx
+```ts
 import { TextField } from "@pisagor/svelte-form";
 ```
 
@@ -8,9 +8,15 @@ Part of `@pisagor/svelte-form`. Style with recipes where available — no app-le
 
 ## Examples
 
+### Default
+
+A single-line text input with label, placeholder, and helper text.
+
+:::example Default
+
 ### Disabled
 
-Show that the field is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the field is unavailable.
 
 :::example Disabled
 

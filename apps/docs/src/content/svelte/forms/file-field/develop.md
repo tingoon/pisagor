@@ -1,6 +1,6 @@
 ## Import
 
-```tsx
+```ts
 import { FileField } from "@pisagor/svelte-form";
 ```
 
@@ -8,9 +8,15 @@ Part of `@pisagor/svelte-form`. Style with recipes where available — no app-le
 
 ## Examples
 
+### Default
+
+A file input with label and helper text, limited by `accept`.
+
+:::example Default
+
 ### Disabled
 
-Show that the file field is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the file field is unavailable.
 
 :::example Disabled
 

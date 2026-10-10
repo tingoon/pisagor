@@ -4,6 +4,17 @@
 import { Collapsible } from "@pisagor/svelte";
 ```
 
+## Anatomy
+
+```tsx
+<Collapsible>
+  <Collapsible.Trigger>
+    <Collapsible.Indicator />
+  </Collapsible.Trigger>
+  <Collapsible.Content />
+</Collapsible>
+```
+
 ## Examples
 
 ### Default
@@ -18,12 +29,6 @@ Leave a preview visible when users should sense content below the fold.
 
 :::example PartialCollapse
 
-### Disabled
-
-Show that the section cannot expand. Prefer explaining why nearby.
-
-:::example Disabled
-
 ### Nested
 
 Nest collapsibles when content has deeper hierarchy.
@@ -35,3 +40,17 @@ Nest collapsibles when content has deeper hierarchy.
 Drive open state from the parent when other UI depends on it.
 
 :::example Controlled
+
+### Disabled
+
+Show that the section cannot expand.
+
+:::example Disabled
+
+## Customization
+
+### Custom recipe
+
+Extend `collapsibleRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

@@ -4,7 +4,22 @@
 import { ImageCropper } from "@pisagor/svelte";
 ```
 
+## Anatomy
+
+```tsx
+<ImageCropper>
+  <ImageCropper.Image />
+  <ImageCropper.Selection />
+</ImageCropper>
+```
+
 ## Examples
+
+### Default
+
+Crop and adjust an image before save or upload.
+
+:::example Default
 
 ### Aspect Ratio
 
@@ -48,8 +63,10 @@ Drive zoom from the parent when external controls adjust scale.
 
 :::example ControlledZoom
 
-### Default
+## Customization
 
-Crop and adjust an image before save or upload.
+### Custom recipe
 
-:::example Default
+Extend `imageCropperRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+:::example CustomRecipe

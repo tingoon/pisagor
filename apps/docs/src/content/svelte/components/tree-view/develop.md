@@ -4,25 +4,37 @@
 import { TreeView } from "@pisagor/svelte";
 ```
 
+## Anatomy
+
+```tsx
+<TreeView collection={collection}>
+  <TreeView.Tree>
+    <TreeView.NodeProvider>
+      <TreeView.Branch>
+        <TreeView.BranchControl />
+        <TreeView.BranchContent />
+      </TreeView.Branch>
+      <TreeView.Item>
+        <TreeView.ItemText />
+      </TreeView.Item>
+    </TreeView.NodeProvider>
+  </TreeView.Tree>
+</TreeView>
+```
+
 ## Examples
 
-### Links
+### Default
 
-Render items as links when navigation is the primary action.
+Browse nested folders or categories in an expandable tree.
 
-:::example Links
+:::example Default
 
-### Checkbox Tree
+### Custom Icons
 
-Select nodes with checkboxes when membership spans a hierarchy.
+Customize tree icons across folders and items.
 
-:::example CheckboxTree
-
-### With Context Menu
-
-Offer pointer actions on nodes for rename, delete, or other commands.
-
-:::example WithContextMenu
+:::example CustomIcons
 
 ### Custom Icons Folder
 
@@ -36,11 +48,29 @@ Customize item icons to match the content type.
 
 :::example CustomIconsItem
 
-### Custom Icons
+### Checkbox Tree
 
-Customize tree icons across folders and items.
+Select nodes with checkboxes when membership spans a hierarchy.
 
-:::example CustomIcons
+:::example CheckboxTree
+
+### With Context Menu
+
+Offer pointer actions on nodes for rename, delete, or other commands.
+
+:::example WithContextMenu
+
+### As child
+
+Render items as links when navigation is the primary action.
+
+:::example Links
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this tree view.
+
+:::example Controlled
 
 ### Multiple Selection
 
@@ -53,15 +83,3 @@ Allow selecting more than one node.
 Rename a node inline when labels are user-editable.
 
 :::example Rename
-
-### Controlled
-
-Manage state from the parent when other UI must stay in sync with this tree view.
-
-:::example Controlled
-
-### Default
-
-Browse nested folders or categories in an expandable tree.
-
-:::example Default

@@ -6,6 +6,12 @@ import { DownloadTrigger } from "@pisagor/svelte";
 
 ## Examples
 
+### Default
+
+Start a download from a control without navigating away.
+
+:::example Default
+
 ### Download Svg
 
 Download SVG content when the file is vector markup.
@@ -17,9 +23,3 @@ Download SVG content when the file is vector markup.
 Resolve a promise for the file payload when generation is asynchronous.
 
 :::example WithPromise
-
-### Default
-
-Start a download from a control without navigating away.
-
-:::example Default

@@ -4,6 +4,14 @@
 import { LinkBox } from "@pisagor/svelte";
 ```
 
+## Anatomy
+
+```tsx
+<LinkBox>
+  <LinkBox.Overlay />
+</LinkBox>
+```
+
 ## Examples
 
 ### Default

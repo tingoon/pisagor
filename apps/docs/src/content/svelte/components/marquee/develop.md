@@ -6,6 +6,12 @@ import { Marquee } from "@pisagor/svelte";
 
 ## Examples
 
+### Default
+
+Scroll content in a continuous horizontal loop.
+
+:::example Default
+
 ### Orientation Horizontal
 
 Lay out the marquee horizontally when items should read in a row.
@@ -18,35 +24,11 @@ Stack the marquee vertically when items should read in a column.
 
 :::example OrientationVertical
 
-### Pause On Hover
-
-Pause motion on hover so users can read or interact.
-
-:::example PauseOnHover
-
-### Reverse
-
-Reverse direction when the strip should move the other way.
-
-:::example Reverse
-
 ### Spacing
 
 Adjust gaps between parts when density needs to match the surrounding UI.
 
 :::example Spacing
-
-### Autofill
-
-Duplicate items to fill the track when the source list is short.
-
-:::example Autofill
-
-### Custom Speed
-
-Override speed when ambient motion should be slower or faster.
-
-:::example CustomSpeed
 
 ### Fade
 
@@ -60,8 +42,26 @@ Assemble from parts when you need a custom layout beyond the shorthand API.
 
 :::example Compound
 
-### Default
+### Pause On Hover
 
-Scroll content in a continuous horizontal loop.
+Pause motion on hover so users can read or interact.
 
-:::example Default
+:::example PauseOnHover
+
+### Reverse
+
+Reverse direction when the strip should move the other way.
+
+:::example Reverse
+
+### Autofill
+
+Duplicate items to fill the track when the source list is short.
+
+:::example Autofill
+
+### Custom Speed
+
+Override speed when ambient motion should be slower or faster.
+
+:::example CustomSpeed

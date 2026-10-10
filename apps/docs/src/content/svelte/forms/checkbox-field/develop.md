@@ -1,6 +1,6 @@
 ## Import
 
-```tsx
+```ts
 import { CheckboxField } from "@pisagor/svelte-form";
 ```
 
@@ -8,9 +8,15 @@ Part of `@pisagor/svelte-form`. Style with recipes where available — no app-le
 
 ## Examples
 
+### Default
+
+A single checkbox with a label and helper text for opt-ins and agreements.
+
+:::example Default
+
 ### Disabled
 
-Show that the checkbox is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+Show that the checkbox is unavailable.
 
 :::example Disabled
 
