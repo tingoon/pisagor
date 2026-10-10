@@ -7,7 +7,8 @@
   },
   "description": "Default recipe entry for Pisagor components (re-exports @pisagor/presets/pisagor).",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./styles": "./src/styles.css"
   },
   "files": [
     "skills",
@@ -24,6 +25,9 @@
   "scripts": {
     "type-check": "tsc"
   },
+  "sideEffects": [
+    "**/*.css"
+  ],
   "type": "module",
   "types": "./src/index.ts",
   "version": "0.3.0"

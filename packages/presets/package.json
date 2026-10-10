@@ -8,7 +8,8 @@
   "description": "Named recipe presets (skins) for Pisagor components.",
   "exports": {
     ".": "./src/contracts/index.ts",
-    "./pisagor": "./src/pisagor.ts"
+    "./pisagor": "./src/pisagor.ts",
+    "./styles": "./src/styles.css"
   },
   "files": [
     "skills",
@@ -25,6 +26,9 @@
   "scripts": {
     "type-check": "tsc"
   },
+  "sideEffects": [
+    "**/*.css"
+  ],
   "type": "module",
   "types": "./src/contracts/index.ts",
   "version": "0.3.0"
