@@ -1,12 +1,10 @@
 # @pisagor/solid-form
 
-Form fields and TanStack Form integration for Pisagor Solid.
+Form fields and TanStack Form integration for Pisagor Solid. Logic wrappers over `@pisagor/solid`.
 
 ```ts
 import { TextField } from "@pisagor/solid-form";
 import { useAppForm } from "@pisagor/solid-form/tanstack";
-import "@pisagor/solid/styles";
-import "@pisagor/solid-form/styles";
 ```
 
 | Entry | Path | Role |
@@ -14,7 +12,7 @@ import "@pisagor/solid-form/styles";
 | Fields | `@pisagor/solid-form` | Standalone field components (`TextField`, `SelectField`, …) |
 | TanStack | `@pisagor/solid-form/tanstack` | `useAppForm`, connected field components, form helpers |
 
-Peers: `@pisagor/solid`, `solid-js` ^1, `tailwindcss` ^4. Optional peer: `@tanstack/solid-form` (for `./tanstack` only).
+Peers: `@pisagor/solid`, `solid-js` ^1. Optional peer: `@tanstack/solid-form` (for `./tanstack` only).
 
 ```bash
 bun add @pisagor/solid @pisagor/solid-form

@@ -87,7 +87,7 @@ export function SelectField(props: SelectFieldProps) {
           );
         }}
       >
-        <Select.Trigger class="w-full" id={local.id}>
+        <Select.Trigger id={local.id}>
           <Select.ValueText placeholder={placeholder()} />
         </Select.Trigger>
         <Select.Content>

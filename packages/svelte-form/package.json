@@ -12,7 +12,6 @@
   },
   "exports": {
     ".": "./src/fields/index.ts",
-    "./styles": "./src/styles.css",
     "./tanstack": "./src/tanstack/index.ts"
   },
   "files": [
@@ -25,8 +24,7 @@
   "peerDependencies": {
     "@pisagor/svelte": "workspace:^",
     "@tanstack/svelte-form": "^1.33.5",
-    "svelte": "^5",
-    "tailwindcss": "^4"
+    "svelte": "^5"
   },
   "peerDependenciesMeta": {
     "@tanstack/svelte-form": {
@@ -41,9 +39,6 @@
   "scripts": {
     "type-check": "svelte-check-native --tsconfig ./tsconfig.json"
   },
-  "sideEffects": [
-    "**/*.css"
-  ],
   "type": "module",
   "version": "0.1.2"
 }

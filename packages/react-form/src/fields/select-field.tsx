@@ -78,7 +78,7 @@ export function SelectField({
           );
         }}
       >
-        <Select.Trigger className="w-full" id={id}>
+        <Select.Trigger id={id}>
           <Select.ValueText placeholder={placeholder} />
         </Select.Trigger>
         <Select.Content>

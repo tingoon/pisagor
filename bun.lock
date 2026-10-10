@@ -249,7 +249,6 @@
         "@tanstack/react-form": "^1.33.5",
         "react": "^19",
         "react-dom": "^19",
-        "tailwindcss": "^4",
       },
       "optionalPeers": [
         "@tanstack/react-form",
@@ -304,7 +303,6 @@
         "@pisagor/solid": "workspace:^",
         "@tanstack/solid-form": "^1.33.5",
         "solid-js": "^1",
-        "tailwindcss": "^4",
       },
       "optionalPeers": [
         "@tanstack/solid-form",
@@ -354,7 +352,6 @@
         "@pisagor/svelte": "workspace:^",
         "@tanstack/svelte-form": "^1.33.5",
         "svelte": "^5",
-        "tailwindcss": "^4",
       },
       "optionalPeers": [
         "@tanstack/svelte-form",
@@ -414,7 +411,6 @@
       "peerDependencies": {
         "@pisagor/vue": "workspace:^",
         "@tanstack/vue-form": "^1.33.5",
-        "tailwindcss": "^4",
         "vue": "^3.5",
       },
       "optionalPeers": [
