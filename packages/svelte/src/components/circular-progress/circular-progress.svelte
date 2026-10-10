@@ -1,21 +1,24 @@
 <script lang="ts">
 import {
-  Progress as ProgressPrimitive,
   type ProgressRootProps,
+  type ProgressValueTextProps,
+  useProgress,
 } from "@ark-ui/svelte/progress";
 import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
-import {
-  type CircularProgressRecipeSlot,
-  circularProgressRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import type { CircularProgressRecipeSlot } from "@pisagor/recipes";
 import type { Snippet } from "svelte";
-import { setCircularProgressContext } from "./circular-progress.context";
+import type { SVGAttributes } from "svelte/elements";
+import type { VariantClassNames } from "../../internal/types";
+import { getProgressbarProps } from "./circular-progress.context";
+import CircularProgressRoot from "./circular-progress-root.svelte";
 import CircularProgressTrack from "./circular-progress-track.svelte";
+import CircularProgressValue from "./circular-progress-value.svelte";
+import CircularProgressValueWrapper from "./circular-progress-value-wrapper.svelte";
 
-type Props = Omit<ProgressRootProps, "children" | "value"> & {
+type Props = Omit<ProgressRootProps, "children"> & {
   children?: Snippet;
-  classNames?: Partial<Record<CircularProgressRecipeSlot, string>>;
+  /** Slot class names */
+  classNames?: VariantClassNames<CircularProgressRecipeSlot>;
   /**
    * Whether to show indeterminate progress.
    * @defaultValue false
@@ -33,42 +36,63 @@ type Props = Omit<ProgressRootProps, "children" | "value"> & {
    * @defaultValue 4
    */
   thickness?: number;
-  value?: number;
+  /** Extra props forwarded to the circular progress track element */
+  trackProps?: Omit<
+    SVGAttributes<SVGSVGElement>,
+    "class" | "height" | "viewBox" | "width"
+  >;
+  /** Extra props forwarded to the circular progress value element */
+  valueProps?: Omit<ProgressValueTextProps, "children" | "class">;
 } & BaseCircularProgressProps;
 
 let {
   size = 32,
   indeterminate = false,
   isValueVisible,
-  value,
   children,
   thickness = 4,
-  class: className,
+  trackProps,
+  valueProps,
   classNames,
-  recipe = circularProgressRecipe,
+  defaultValue,
+  formatOptions,
+  id,
+  ids,
+  locale,
+  max,
+  min,
+  onValueChange,
+  orientation,
+  translations,
+  value,
   ...rest
 }: Props = $props();
 
-const slots = $derived(recipe());
-
-setCircularProgressContext({
-  get slots() {
-    return slots;
-  },
-});
+const fallbackId = $props.id();
+const progress = useProgress(() => ({
+  defaultValue,
+  formatOptions,
+  id: id ?? fallbackId,
+  ids,
+  locale,
+  max,
+  min,
+  onValueChange,
+  orientation,
+  translations,
+  value: indeterminate ? null : value,
+}));
 </script>
 
-<ProgressPrimitive.Root
+<CircularProgressRoot
   {...rest}
-  class={slots.base({ class: cn(className) })}
-  value={indeterminate ? null : value}
+  {...getProgressbarProps(progress())}
+  value={progress}
 >
   {#if isValueVisible}
-    <span class={slots.valueWrapper({ class: classNames?.valueWrapper })}>
-      <ProgressPrimitive.ValueText
-        class={slots.value({ class: classNames?.value })}
-      />
-    </span>
+    <CircularProgressValueWrapper class={classNames?.valueWrapper}>
+      <CircularProgressValue {...valueProps} class={classNames?.value} />
+    </CircularProgressValueWrapper>
   {/if}
 
   {@render children?.()}
@@ -78,5 +102,6 @@ setCircularProgressContext({
     rangeClassName={classNames?.range}
     {size}
     {thickness}
+    {trackProps}
   />
-</ProgressPrimitive.Root>
+</CircularProgressRoot>

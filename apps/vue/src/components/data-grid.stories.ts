@@ -20,6 +20,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const StripedVariant = meta.story({
+  render: exampleRender(Examples.StripedVariant),
+});
+
 export const ActiveFilterChips = meta.story({
   render: exampleRender(Examples.ActiveFilterChips),
 });
@@ -48,20 +52,12 @@ export const ExpandingRows = meta.story({
   render: exampleRender(Examples.ExpandingRows),
 });
 
-export const FilterHead = meta.story({
-  render: exampleRender(Examples.FilterHead),
-});
-
 export const GlobalSelection = meta.story({
   render: exampleRender(Examples.GlobalSelection),
 });
 
 export const GroupedRows = meta.story({
   render: exampleRender(Examples.GroupedRows),
-});
-
-export const LoadingState = meta.story({
-  render: exampleRender(Examples.LoadingState),
 });
 
 export const ManualPagination = meta.story({
@@ -96,14 +92,14 @@ export const Sorting = meta.story({
   render: exampleRender(Examples.Sorting),
 });
 
-export const StripedVariant = meta.story({
-  render: exampleRender(Examples.StripedVariant),
-});
-
 export const Virtualized = meta.story({
   render: exampleRender(Examples.Virtualized),
 });
 
 export const WithSortableData = meta.story({
   render: exampleRender(Examples.WithSortableData),
+});
+
+export const LoadingState = meta.story({
+  render: exampleRender(Examples.LoadingState),
 });

@@ -21,10 +21,18 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Default = meta.story({
-  render: () => ({ component: Examples.Default }),
+export const Variants = meta.story({
+  render: () => ({ component: Examples.Variants }),
 });
 
-export const Group = meta.story({
-  render: () => ({ component: Examples.Group }),
+export const KbdGroup = meta.story({
+  render: () => ({ component: Examples.KbdGroup }),
+});
+
+export const WithButton = meta.story({
+  render: () => ({ component: Examples.WithButton }),
+});
+
+export const CustomRecipe = meta.story({
+  render: () => ({ component: Examples.CustomRecipe }),
 });

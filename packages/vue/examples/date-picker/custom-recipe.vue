@@ -1,0 +1,74 @@
+<script lang="ts" setup>
+import { PhCalendar } from "@phosphor-icons/vue";
+import { datePickerRecipe } from "@pisagor/recipes";
+import { Button, Calendar, DatePicker } from "@pisagor/vue";
+import { tv } from "tailwind-variants";
+import { defineComponent, h } from "vue";
+
+const brandDatePickerRecipe = tv({
+  extend: datePickerRecipe,
+  slots: {
+    content: "border-emerald-500/40",
+    trigger: "text-emerald-600",
+  },
+  variants: {},
+});
+
+interface WeekDay {
+  narrow: string;
+  short: string;
+}
+
+const CalendarWeekDays = defineComponent({
+  name: "CalendarWeekDays",
+  setup() {
+    return () =>
+      h(Calendar.Context, null, {
+        default: (calendar: { weekDays: WeekDay[] }) =>
+          h(Calendar.TableHead, null, () =>
+            h(Calendar.TableRow, null, () =>
+              calendar.weekDays.map((weekDay) =>
+                h(
+                  Calendar.TableHeader,
+                  { key: weekDay.short },
+                  () => weekDay.narrow,
+                ),
+              ),
+            ),
+          ),
+      });
+  },
+});
+
+const CalendarBody = defineComponent({
+  name: "CalendarBody",
+  setup() {
+    return () => [
+      h(Calendar.ViewControl, null, () => [
+        h(Calendar.PrevTrigger),
+        h(Calendar.MonthSelect),
+        h(Calendar.YearSelect),
+        h(Calendar.NextTrigger),
+      ]),
+      h(Calendar.Table, null, () => [
+        h(CalendarWeekDays),
+        h(Calendar.TableDays),
+      ]),
+    ];
+  },
+});
+</script>
+
+<template>
+  <DatePicker :recipe="brandDatePickerRecipe">
+    <DatePicker.Trigger :as-child="true">
+      <Button variant="outline">
+        <PhCalendar />
+        <DatePicker.ValueText placeholder="Pick a date" />
+      </Button>
+    </DatePicker.Trigger>
+    <DatePicker.Content>
+      <CalendarBody />
+    </DatePicker.Content>
+  </DatePicker>
+</template>

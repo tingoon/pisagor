@@ -5,7 +5,7 @@ import { frameRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setSurfaceContext } from "../surface/surface.context";
-import { setFrameContext } from "./frame.context";
+import { Context } from "./frame.context";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
@@ -21,7 +21,7 @@ let {
 const slots = $derived(recipe());
 
 setSurfaceContext({ depth: 0, variant: "secondary" });
-setFrameContext({
+Context.set({
   get slots() {
     return slots;
   },

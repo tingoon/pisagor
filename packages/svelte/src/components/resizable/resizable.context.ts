@@ -1,10 +1,12 @@
-import type { ResizableRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { resizableRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface ResizableContextValue {
-  slots: ResizableRecipe;
-}
-
-const ctx = createContext("Resizable")<ResizableContextValue>();
-export const setResizableContext = ctx.setContext;
-export const useResizable = ctx.getContext;
+export const {
+  Context,
+  useStyles: useResizable,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Resizable",
+  recipe: resizableRecipe,
+});

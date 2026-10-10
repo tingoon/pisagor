@@ -1,14 +1,5 @@
-import defaultRaw from "./default.astro?raw";
-import groupRaw from "./group.astro?raw";
-
-export const imports = `---
-import { Kbd } from "@pisagor/astro";
----`;
-
-export const sources = {
-  Default: defaultRaw,
-  Group: groupRaw,
-} as const;
-
-export { default as Default } from "./default.astro";
-export { default as Group } from "./group.astro";
+export { default as CustomRecipe } from "./custom-recipe.astro";
+export { default as KbdGroup } from "./kbd-group.astro";
+export { imports, sources } from "./sources";
+export { default as Variants } from "./variants.astro";
+export { default as WithButton } from "./with-button.astro";

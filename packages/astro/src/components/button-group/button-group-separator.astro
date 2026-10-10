@@ -1,7 +1,7 @@
 ---
-import { buttonGroupRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
-import Separator from "../separator/separator.astro";
+import Separator from "../separator.astro";
+import { useButtonGroup } from "./button-group.context";
 
 interface Props extends HTMLAttributes<"div"> {
   /**
@@ -13,12 +13,12 @@ interface Props extends HTMLAttributes<"div"> {
 }
 
 const { orientation = "vertical", class: className, ...rest } = Astro.props;
-const slots = buttonGroupRecipe();
+const { slots } = useButtonGroup();
 ---
 
 <Separator
   {...rest}
-  class={slots.separator({ className })}
+  class={slots.separator({ class: className })}
   data-part="separator"
   data-scope="button-group"
   orientation={orientation}

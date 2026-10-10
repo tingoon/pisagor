@@ -17,8 +17,12 @@ interface ComponentMeta {
   aliases?: string[];
 }
 
+/**
+ * Catalog metadata is framework-agnostic (api/taxonomy/aliases), but each framework
+ * owns its `metadata.md`. React is the superset, so it wins on id collisions.
+ */
 const metadataRawModules = import.meta.glob(
-  ["../content/components/*/metadata.md", "../content/forms/*/metadata.md"],
+  "../content/{react,solid,svelte,vue,astro}/{components,forms}/*/metadata.md",
   {
     eager: true,
     import: "default",
@@ -26,20 +30,27 @@ const metadataRawModules = import.meta.glob(
   },
 ) as Record<string, string>;
 
+const FRAMEWORK_PRIORITY = ["react", "solid", "svelte", "vue", "astro"];
+
 function idFromMetaPath(path: string): string | undefined {
-  return /\/content\/(?:components|forms)\/([^/]+)\/metadata\.md$/.exec(
+  return /\/content\/[^/]+\/(?:components|forms)\/([^/]+)\/metadata\.md$/.exec(
     path,
   )?.[1];
 }
 
+function metaRank(path: string): number {
+  const framework = /\/content\/([^/]+)\//.exec(path)?.[1] ?? "";
+  const fwRank = FRAMEWORK_PRIORITY.indexOf(framework);
+  const formRank = path.includes("/forms/") ? 1 : 0;
+  return formRank * FRAMEWORK_PRIORITY.length + (fwRank < 0 ? 99 : fwRank);
+}
+
 function metaFromContentDocs(): Record<string, ComponentMeta> {
   const out: Record<string, ComponentMeta> = {};
-  // Prefer components over forms when ids collide (they shouldn't).
-  const ranked = Object.entries(metadataRawModules).sort(([a], [b]) => {
-    const aForm = a.includes("/content/forms/") ? 1 : 0;
-    const bForm = b.includes("/content/forms/") ? 1 : 0;
-    return aForm - bForm;
-  });
+  // Prefer components over forms, then React over other frameworks.
+  const ranked = Object.entries(metadataRawModules).sort(
+    ([a], [b]) => metaRank(a) - metaRank(b),
+  );
   for (const [path, raw] of ranked) {
     if (typeof raw !== "string" || !raw.startsWith("---")) continue;
     const id = idFromMetaPath(path);

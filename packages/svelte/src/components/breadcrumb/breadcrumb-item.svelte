@@ -1,34 +1,17 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
 import type { BreadcrumbItemProps as BaseBreadcrumbItemProps } from "@pisagor/props";
-import { breadcrumbItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { setBreadcrumbItemContext } from "./breadcrumb.context";
+import { withBreadcrumbItemProvider } from "./breadcrumb.context";
 
 type Props = HTMLAttributes<HTMLLIElement> & BaseBreadcrumbItemProps;
 
-let {
-  children,
-  recipe = breadcrumbItemRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+let { children, ...rest }: Props = $props();
 
-const slots = $derived(recipe());
-setBreadcrumbItemContext({
-  get slots() {
-    return slots;
-  },
+const item = withBreadcrumbItemProvider(() => rest, {
+  name: "Item",
+  slot: "base",
 });
 </script>
 
-<Ark
-  as="li"
-  {...rest}
-  class={slots.base({ class: cn(className) })}
-  data-part="item"
-  data-scope="breadcrumb"
->
-  {@render children?.()}
-</Ark>
+<Ark as="li" {...item.props}> {@render children?.()} </Ark>

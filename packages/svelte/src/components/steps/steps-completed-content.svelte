@@ -3,20 +3,16 @@ import {
   type StepsCompletedContentProps,
   Steps as StepsPrimitive,
 } from "@ark-ui/svelte/steps";
-import { cn } from "@pisagor/utils";
-import { useSteps } from "./steps.context";
+import { withStepsContext } from "./steps.context";
 
-let {
-  class: className,
-  children,
-  ...rest
-}: StepsCompletedContentProps = $props();
-const { slots } = useSteps();
+let { children, ...rest }: StepsCompletedContentProps = $props();
+const part = withStepsContext(() => rest, {
+  defaultProps: { "data-part": "completed-content" },
+  name: "CompletedContent",
+  slot: "completedContent",
+});
 </script>
 
-<StepsPrimitive.CompletedContent
-  {...rest}
-  class={slots.completedContent({ class: cn(className) })}
->
+<StepsPrimitive.CompletedContent {...part.props}>
   {@render children?.()}
 </StepsPrimitive.CompletedContent>

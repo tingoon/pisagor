@@ -3,15 +3,18 @@ import { SegmentGroup } from "@pisagor/vue";
 import { ref } from "vue";
 
 const pages = ["Profile", "Account", "Security", "Notifications"];
-const onValueChange = (value) => setValue(value ?? "Profile");
+const value = ref("Profile");
+const hoverValue = ref<string | null>(null);
 
-const activeValue = ref("react");
+function onValueChange(next: string | null) {
+  value.value = next ?? "Profile";
+}
 </script>
 
 <template>
   <SegmentGroup.Root
     class="rounded-lg"
-    :value="activeValue"
+    :value="hoverValue ?? value"
     @value-change="onValueChange"
   >
     <SegmentGroup.Item

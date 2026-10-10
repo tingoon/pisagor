@@ -25,3 +25,15 @@ export const Default = meta.story({
 export const Vertical = meta.story({
   render: () => ({ component: Examples.Vertical }),
 });
+
+export const List = meta.story({
+  render: () => ({ component: Examples.List }),
+});
+
+export const InlineNavigation = meta.story({
+  render: () => ({ component: Examples.InlineNavigation }),
+});
+
+export const CustomRecipe = meta.story({
+  render: () => ({ component: Examples.CustomRecipe }),
+});

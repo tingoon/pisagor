@@ -8,7 +8,8 @@ import { useMenu } from "./menu.context";
 type Props = HTMLAnchorAttributes & { active?: boolean; children?: Snippet };
 
 let { active = false, class: className, children, ...rest }: Props = $props();
-const { slots } = useMenu();
+const styles = useMenu();
+const slots = $derived(styles.slots);
 </script>
 
 <Ark

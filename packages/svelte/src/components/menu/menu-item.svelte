@@ -21,7 +21,8 @@ let {
   ...rest
 }: Props = $props();
 
-const { slots } = useMenu();
+const styles = useMenu();
+const slots = $derived(styles.slots);
 </script>
 
 <Ark

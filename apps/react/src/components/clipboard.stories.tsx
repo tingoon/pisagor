@@ -26,10 +26,6 @@ export const Variants = meta.story({
   render: Examples.Variants,
 });
 
-export const CustomTimeout = meta.story({
-  render: Examples.CustomTimeout,
-});
-
 export const DifferentIcon = meta.story({
   render: Examples.DifferentIcon,
 });
@@ -42,6 +38,10 @@ export const Controlled = meta.story({
   render: Examples.Controlled,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const CustomTimeout = meta.story({
+  render: Examples.CustomTimeout,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

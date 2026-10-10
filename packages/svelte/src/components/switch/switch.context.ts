@@ -1,10 +1,7 @@
-import type { SwitchRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { switchRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-export interface SwitchContextValue {
-  slots: SwitchRecipe;
-}
-
-const ctx = createContext("Switch")<SwitchContextValue>();
-
-export const setSwitchContext = ctx.setContext;
+export const { Context, withContext } = createSlotRecipeContext({
+  name: "Switch",
+  recipe: switchRecipe,
+});

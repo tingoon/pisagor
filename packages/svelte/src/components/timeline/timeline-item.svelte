@@ -1,34 +1,18 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
 import type { TimelineItemProps as BaseTimelineItemProps } from "@pisagor/props";
-import { timelineItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { setTimelineItemContext } from "./timeline.context";
+import { withProvider } from "./timeline.context";
 
 type Props = HTMLAttributes<HTMLLIElement> & BaseTimelineItemProps;
 
-let {
-  children,
-  recipe = timelineItemRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+let { children, ...rest }: Props = $props();
 
-const slots = $derived(recipe());
-setTimelineItemContext({
-  get slots() {
-    return slots;
-  },
+const root = withProvider(() => rest, {
+  defaultProps: { "data-part": "item" },
+  name: "Item",
+  slot: "base",
 });
 </script>
 
-<Ark
-  as="li"
-  {...rest}
-  class={slots.base({ class: cn(className) })}
-  data-part="item"
-  data-scope="timeline"
->
-  {@render children?.()}
-</Ark>
+<Ark as="li" {...root.props}> {@render children?.()} </Ark>

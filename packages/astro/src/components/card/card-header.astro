@@ -1,6 +1,6 @@
 ---
-import { cardRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import { useCard } from "./card.context";
 import CardDescription from "./card-description.astro";
 import CardTitle from "./card-title.astro";
 
@@ -12,12 +12,12 @@ interface Props extends HTMLAttributes<"div"> {
 }
 
 const { description, title, class: className, ...rest } = Astro.props;
-const slots = cardRecipe();
+const { slots } = useCard();
 ---
 
 <div
   {...rest}
-  class={slots.header({ className })}
+  class={slots.header({ class: className })}
   data-part="header"
   data-scope="card"
 >

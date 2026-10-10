@@ -1,10 +1,12 @@
-import type { ColorPickerRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { colorPickerRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface ColorPickerContextValue {
-  slots: ColorPickerRecipe;
-}
-
-const ctx = createContext("ColorPicker")<ColorPickerContextValue>();
-export const setColorPickerContext = ctx.setContext;
-export const useColorPicker = ctx.getContext;
+export const {
+  Context,
+  useStyles: useColorPicker,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "ColorPicker",
+  recipe: colorPickerRecipe,
+});

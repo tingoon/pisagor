@@ -1,16 +1,23 @@
-import type { StepsItemRecipe, StepsRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface StepsContextValue {
-  slots: StepsRecipe;
-}
+export const {
+  Context,
+  Context: StepsStylesContext,
+  useStyles: useSteps,
+  withContext: withStepsContext,
+  withProvider: withStepsProvider,
+} = createSlotRecipeContext({
+  name: "Steps",
+  recipe: stepsRecipe,
+});
 
-interface StepsItemContextValue {
-  slots: StepsItemRecipe;
-}
-
-export const { setContext: setStepsContext, getContext: useSteps } =
-  createContext("Steps")<StepsContextValue>();
-
-export const { setContext: setStepsItemContext, getContext: useStepsItem } =
-  createContext("StepsItem")<StepsItemContextValue>();
+export const {
+  Context: StepsItemStylesContext,
+  useStyles: useStepsItem,
+  withContext: withStepsItemContext,
+  withProvider: withStepsItemProvider,
+} = createSlotRecipeContext({
+  name: "Steps",
+  recipe: stepsItemRecipe,
+});

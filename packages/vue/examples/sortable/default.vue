@@ -1,17 +1,18 @@
 <script lang="ts" setup>
 import { Sortable } from "@pisagor/vue";
+import { ref } from "vue";
 
-const _labels: Record<string, string> = {
+const labels: Record<string, string> = {
   a: "Design system tokens",
   b: "Component APIs",
   c: "Storybook coverage",
   d: "Accessibility checks",
 };
 
-import { ref } from "vue";
-
 const items = ref(["a", "b", "c", "d"]);
-const onValueChange = setItems;
+function onValueChange(next: string[]) {
+  items.value = next;
+}
 </script>
 
 <template>

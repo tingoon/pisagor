@@ -24,14 +24,18 @@ export const Default = meta.story({
   render: Examples.Default,
 });
 
-export const CustomSpacing = meta.story({
-  render: Examples.CustomSpacing,
-});
-
 export const Icon = meta.story({
   render: Examples.Icon,
 });
 
 export const Product = meta.story({
   render: Examples.Product,
+});
+
+export const CustomSpacing = meta.story({
+  render: Examples.CustomSpacing,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

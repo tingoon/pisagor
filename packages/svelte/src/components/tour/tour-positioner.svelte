@@ -7,12 +7,12 @@ import { cn } from "@pisagor/utils";
 import { useTourContext } from "./tour.context";
 
 let { children, class: className, ...rest }: TourPositionerProps = $props();
-const { slots } = useTourContext();
+const ctx = useTourContext();
 </script>
 
 <TourPrimitive.Positioner
   {...rest}
-  class={slots.positioner({ class: cn(className) })}
+  class={ctx.slots.positioner({ class: cn(className) })}
 >
   {@render children?.()}
 </TourPrimitive.Positioner>

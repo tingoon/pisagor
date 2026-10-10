@@ -3,18 +3,25 @@ import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { itemRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<"div">, BaseItemProps {}
+type Props = HTMLAttributes<"div"> & BaseItemProps;
 
-const { variant = "default", class: className, ...rest } = Astro.props;
-const slots = itemRecipe();
+const {
+  variant = "default",
+  recipe = itemRecipe,
+  class: className,
+  ...rest
+} = Astro.props;
+const slots = recipe();
 ---
 
+{/* biome-ignore lint/a11y/useSemanticElements: mirrors the React ItemGroup DOM (div role="list") */}
 <div
   {...rest}
   class={slots.group({ className })}
   data-part="group"
   data-scope="item"
   data-variant={variant}
+  role="list"
 >
   <slot />
 </div>

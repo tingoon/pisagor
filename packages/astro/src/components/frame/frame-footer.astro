@@ -1,18 +1,16 @@
 ---
-import { frameRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import { withContext } from "./frame.context";
 
 type Props = HTMLAttributes<"footer">;
 
-const { class: className, ...rest } = Astro.props;
-const slots = frameRecipe();
+const footer = withContext(Astro.props, {
+  defaultProps: { "data-part": "panel-footer" },
+  name: "Footer",
+  slot: "panelFooter",
+});
 ---
 
-<footer
-  {...rest}
-  class={slots.panelFooter({ className })}
-  data-part="panel-footer"
-  data-scope="frame"
->
+<footer {...footer.props}>
   <slot />
 </footer>

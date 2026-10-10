@@ -1,12 +1,4 @@
-import defaultRaw from "./default.ts?raw";
-import wrappingRaw from "./wrapping.ts?raw";
-
-export const imports = `import { NavigationMenu } from "@pisagor/vue";`;
-
-export const sources = {
-  Default: defaultRaw,
-  Wrapping: wrappingRaw,
-} as const;
-
+export { default as CustomRecipe } from "./custom-recipe.vue";
 export { default as Default } from "./default";
+export { imports, sources } from "./sources";
 export { default as Wrapping } from "./wrapping";

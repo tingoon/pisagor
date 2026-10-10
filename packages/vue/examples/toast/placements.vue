@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { createToaster } from "@ark-ui/vue/toast";
 import { Button, Toaster, toast } from "@pisagor/vue";
 
 const topEndToaster = createToaster({
@@ -61,9 +62,9 @@ function handleTopStart() {
         <Button variant="outline" @click="handleTopEnd">Top end</Button>
       </div>
       <div class="flex flex-wrap gap-2">
-        <Button variant="outline" @click="handleBottomStart"
-          >Bottom start</Button
-        >
+        <Button variant="outline" @click="handleBottomStart">
+          Bottom start
+        </Button>
         <Button variant="outline" @click="handleBottom">Bottom center</Button>
         <Button variant="outline" @click="handleBottomEnd">Bottom end</Button>
       </div>

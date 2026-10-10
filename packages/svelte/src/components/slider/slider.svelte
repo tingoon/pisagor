@@ -7,13 +7,14 @@ import type { SliderProps as BaseSliderProps } from "@pisagor/props";
 import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
+import type { VariantClassNames } from "../../internal/types";
 import { setSliderContext } from "./slider.context";
 
 type FormControlVariant = "primary" | "secondary";
 
 type Props = Omit<SliderRootProps, "children" | "onValueChange"> & {
   children?: Snippet;
-  classNames?: Partial<Record<SliderRecipeSlot, string>>;
+  classNames?: VariantClassNames<SliderRecipeSlot>;
   label?: string;
   markerInterval?: number;
   markerLabels?: string[];

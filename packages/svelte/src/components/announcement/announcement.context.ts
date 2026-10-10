@@ -1,11 +1,12 @@
-import type { AnnouncementRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { announcementRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-export interface AnnouncementContextValue {
-  slots: AnnouncementRecipe;
-}
-
-const ctx = createContext("Announcement")<AnnouncementContextValue>();
-
-export const setAnnouncementContext = ctx.setContext;
-export const useAnnouncement = ctx.getContext;
+export const {
+  Context,
+  useStyles: useAnnouncement,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Announcement",
+  recipe: announcementRecipe,
+});

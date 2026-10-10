@@ -26,6 +26,7 @@ type RolldownTransform = {
 
 type OptimizeDepsConfig = {
   rolldownOptions?: {
+    define?: Record<string, string>;
     transform?: RolldownTransform;
     [key: string]: unknown;
   };
@@ -86,13 +87,51 @@ function fixSolidPreserveJsxForDepScan() {
   };
 }
 
+/**
+ * Vite/Rolldown dep prebundling can evaluate React's `jsx-dev-runtime` entry with
+ * `NODE_ENV=production`, which stubs `jsxDEV` to `undefined` and leaves every
+ * React island blank (ExamplesHost included). Force development for the
+ * optimizer while `astro dev` is running.
+ */
+function fixReactJsxDevRuntimeForDepOptimize() {
+  return {
+    config(config: {
+      optimizeDeps?: OptimizeDepsConfig & {
+        esbuildOptions?: { define?: Record<string, string> };
+      };
+    }) {
+      if (process.env.NODE_ENV === "production") return;
+      if (!config.optimizeDeps) config.optimizeDeps = {};
+      const optimizeDeps = config.optimizeDeps;
+      if (!optimizeDeps.rolldownOptions) optimizeDeps.rolldownOptions = {};
+      const rolldown = optimizeDeps.rolldownOptions;
+      rolldown.define = {
+        ...(rolldown.define as Record<string, string> | undefined),
+        "process.env.NODE_ENV": JSON.stringify("development"),
+      };
+      if (!optimizeDeps.esbuildOptions) optimizeDeps.esbuildOptions = {};
+      const esbuild = optimizeDeps.esbuildOptions;
+      esbuild.define = {
+        ...esbuild.define,
+        "process.env.NODE_ENV": JSON.stringify("development"),
+      };
+    },
+    enforce: "pre" as const,
+    name: "pisagor:fix-react-jsx-dev-runtime-dep-optimize",
+  };
+}
+
 export default defineConfig({
   base,
   integrations: [
     react({
       // Keep React Fast Refresh / oxc jsx refresh off non-React sources.
       exclude: [
-        "**/apps/docs/src/components/docs/solid-example-island.tsx",
+        "**/apps/docs/src/examples/solid/**",
+        "**/apps/docs/src/examples/svelte/**",
+        "**/apps/docs/src/examples/vue/**",
+        "**/apps/docs/src/components/docs/solid-examples-host.tsx",
+        "**/apps/docs/src/components/docs/solid-block-examples-host.tsx",
         "**/*.{vue,svelte,astro,css,scss,sass,less,styl,stylus,html,svg,md,mdx}",
         "**/packages/vue/**",
         "**/packages/vue-*/**",
@@ -103,6 +142,11 @@ export default defineConfig({
         "**/packages/svelte/**",
         "**/packages/svelte-*/**",
         "**/packages/astro/**",
+        // Solid packages that ship JSX source (`"solid"` export / raw TSX).
+        "**/node_modules/@squidlab/phosphor-solid/**",
+        "**/node_modules/.bun/@squidlab+phosphor-solid*/**",
+        "**/node_modules/@ark-ui/solid/**",
+        "**/node_modules/.bun/@ark-ui+solid*/**",
       ],
       // Extension-limited: @vitejs/plugin-react maps `include` to Vite 8
       // `oxc.jsxRefreshInclude`. A bare `**` glob also matches CSS, so after
@@ -112,6 +156,7 @@ export default defineConfig({
         "**/packages/react/**/*.{js,jsx,ts,tsx}",
         "**/packages/react-*/**/*.{js,jsx,ts,tsx}",
         "**/apps/react/**/*.{js,jsx,ts,tsx}",
+        "**/apps/docs/src/examples/react/**/*.{js,jsx,ts,tsx}",
         "**/apps/docs/src/**/*.{js,jsx,ts,tsx}",
       ],
     }),
@@ -120,7 +165,15 @@ export default defineConfig({
         "**/packages/solid/**/*.{js,jsx,ts,tsx}",
         "**/packages/solid-*/**/*.{js,jsx,ts,tsx}",
         "**/apps/solid/**/*.{js,jsx,ts,tsx}",
-        "**/apps/docs/src/components/docs/solid-example-island.tsx",
+        "**/apps/docs/src/examples/solid/**/*.{js,jsx,ts,tsx}",
+        "**/apps/docs/src/components/docs/solid-examples-host.tsx",
+        "**/apps/docs/src/components/docs/solid-block-examples-host.tsx",
+        // Deps that ship Solid JSX (`"solid"` condition or raw TSX). Without
+        // these, Vite/oxc emits React `jsxDEV` and previews show "[object Object]".
+        "**/node_modules/@squidlab/phosphor-solid/**/*.{js,jsx,ts,tsx}",
+        "**/node_modules/.bun/@squidlab+phosphor-solid*/**/*.{js,jsx,ts,tsx}",
+        "**/node_modules/@ark-ui/solid/**/*.{js,jsx,ts,tsx}",
+        "**/node_modules/.bun/@ark-ui+solid*/**/*.{js,jsx,ts,tsx}",
       ],
     }),
     svelte(),
@@ -135,7 +188,12 @@ export default defineConfig({
   server: { host: true, port: 4000 },
   site: process.env.DOCS_SITE || "https://tingoon.github.com/pisagor",
   vite: {
+    optimizeDeps: {
+      // Prebundle would transform these Solid JSX sources with React JSX.
+      exclude: ["@squidlab/phosphor-solid", "@ark-ui/solid"],
+    },
     plugins: [
+      fixReactJsxDevRuntimeForDepOptimize(),
       tailwindcss(),
       preventOxcRefreshLeakToVue(),
       fixSolidPreserveJsxForDepScan(),
@@ -153,6 +211,8 @@ export default defineConfig({
         "@pisagor/utils",
         "@pisagor/recipes",
         "@pisagor/tokens",
+        "@squidlab/phosphor-solid",
+        "@ark-ui/solid",
       ],
     },
   },

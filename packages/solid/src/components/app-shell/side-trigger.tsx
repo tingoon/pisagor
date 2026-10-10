@@ -3,7 +3,7 @@ import { splitProps } from "solid-js";
 import { Button, type ButtonProps } from "../button";
 import { Swap } from "../swap";
 import type { AppShellPlacement } from "./app-shell.context";
-import { useAppShell } from "./app-shell.context";
+import { useAppShellStyles } from "./app-shell.context";
 
 export function AppShellSideTrigger(
   props: {
@@ -33,7 +33,7 @@ export function AppShellSideTrigger(
     "onClick",
     "class",
   ]);
-  const { slots } = useAppShell();
+  const styles = useAppShellStyles();
   const resolvedOff = () => local.off ?? local.defaultOff;
   const resolvedOn = () => local.on ?? local.defaultOn;
 
@@ -42,7 +42,7 @@ export function AppShellSideTrigger(
       {...rest}
       aria-label={local["aria-label"] ?? `Toggle ${local.placement} region`}
       aria-pressed={local.open}
-      class={slots.inline({ class: local.class })}
+      class={styles.slots.inline({ class: local.class })}
       data-placement={local.placement}
       data-scope="app-shell"
       data-state={local.open ? "open" : "closed"}

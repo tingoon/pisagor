@@ -20,8 +20,20 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
+});
+
 export const Variants = meta.story({
   render: exampleRender(Examples.Variants),
+});
+
+export const Action = meta.story({
+  render: exampleRender(Examples.Action),
+});
+
+export const WithPromise = meta.story({
+  render: exampleRender(Examples.WithPromise),
 });
 
 export const Duration = meta.story({
@@ -36,18 +48,6 @@ export const Dedupe = meta.story({
   render: exampleRender(Examples.Dedupe),
 });
 
-export const Action = meta.story({
-  render: exampleRender(Examples.Action),
-});
-
-export const WithPromise = meta.story({
-  render: exampleRender(Examples.WithPromise),
-});
-
 export const Placements = meta.story({
   render: exampleRender(Examples.Placements),
-});
-
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
 });

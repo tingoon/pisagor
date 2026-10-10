@@ -451,13 +451,6 @@ const formSections: NavSection[] = [
 const blockSections: NavSection[] = [
   {
     items: [
-      { slug: "blocks", status: "ready", title: "Introduction" },
-      { slug: "blocks/changelog", status: "ready", title: "Changelog" },
-    ],
-    title: "Getting started",
-  },
-  {
-    items: [
       { slug: "blocks/app-shell", status: "ready", title: "App Shell" },
       { slug: "blocks/card", status: "ready", title: "Card" },
     ],
@@ -485,17 +478,6 @@ const blockSections: NavSection[] = [
   {
     items: [{ slug: "blocks/table", status: "ready", title: "Table" }],
     title: "Data",
-  },
-];
-
-/** Astro has no composition-demo runners yet — intro + changelog only. */
-const astroBlockSections: NavSection[] = [
-  {
-    items: [
-      { slug: "blocks", status: "ready", title: "Introduction" },
-      { slug: "blocks/changelog", status: "ready", title: "Changelog" },
-    ],
-    title: "Getting started",
   },
 ];
 
@@ -548,9 +530,6 @@ export function getSidebarNav(
   area: DocsArea,
 ): NavSection[] {
   if (area === "blocks") {
-    if (framework === "astro") {
-      return astroBlockSections;
-    }
     return blockSections;
   }
   if (area === "forms") {
@@ -570,7 +549,7 @@ export function frameworkPath(framework: Framework, slug = "") {
 
 /** Areas each framework ships docs for (main-nav + switcher). */
 const frameworkAreas: Record<Framework, DocsArea[]> = {
-  astro: ["components", "blocks"],
+  astro: ["components"],
   react: ["components", "forms", "blocks"],
   solid: ["components", "forms", "blocks"],
   svelte: ["components", "forms", "blocks"],
@@ -584,7 +563,7 @@ export function getMainNav(framework: Framework) {
 
 /** Intro slug for a docs area (used when a page has no counterpart). */
 function areaIntroSlug(area: DocsArea): string {
-  if (area === "blocks") return "blocks";
+  if (area === "blocks") return "blocks/app-shell";
   if (area === "forms") return "forms";
   return "";
 }

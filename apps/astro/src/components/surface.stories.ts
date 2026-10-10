@@ -23,18 +23,18 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Default = meta.story({
-  render: () => ({ component: Examples.Default }),
-});
-
-export const Nested = meta.story({
-  render: () => ({ component: Examples.Nested }),
+export const Variants = meta.story({
+  render: () => ({ component: Examples.Variants }),
 });
 
 export const Padding = meta.story({
   render: () => ({ component: Examples.Padding }),
 });
 
-export const Variants = meta.story({
-  render: () => ({ component: Examples.Variants }),
+export const Nested = meta.story({
+  render: () => ({ component: Examples.Nested }),
+});
+
+export const CustomRecipe = meta.story({
+  render: () => ({ component: Examples.CustomRecipe }),
 });

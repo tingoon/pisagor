@@ -1,0 +1,37 @@
+import { Checkbox, Field, Surface } from "@pisagor/vue";
+import { defineComponent, h } from "vue";
+import { settingsRowBlock } from "#/recipes/blocks/field";
+
+const styles = settingsRowBlock();
+
+type ArkPart = Parameters<typeof h>[0];
+
+export const SettingsRow = defineComponent({
+  inheritAttrs: false,
+  name: "SettingsRow",
+  setup() {
+    return () =>
+      h(
+        Surface as ArkPart,
+        {
+          bordered: true,
+          class: styles.root(),
+          padding: "md",
+          rounded: true,
+          variant: "secondary",
+        },
+        () =>
+          h(Field as ArkPart, { orientation: "horizontal" }, () => [
+            h(Checkbox as ArkPart, null),
+            h(Field.Content as ArkPart, null, () => [
+              h(Field.Title as ArkPart, null, () => "Enable notifications"),
+              h(
+                Field.Description as ArkPart,
+                null,
+                () => "You can enable or disable notifications at any time.",
+              ),
+            ]),
+          ]),
+      );
+  },
+});

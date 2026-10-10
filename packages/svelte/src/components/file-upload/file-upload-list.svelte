@@ -17,7 +17,8 @@ type Props = { class?: ClassValue } & BaseFileUploadItemProps;
 
 let { class: className, recipe = fileUploadItemRecipe }: Props = $props();
 const api = useFileUploadContext();
-const { slots } = useFileUpload();
+const styles = useFileUpload();
+const slots = $derived(styles.slots);
 const itemSlots = $derived(recipe());
 const files = $derived(api().acceptedFiles);
 </script>

@@ -3,16 +3,12 @@ import {
   type StepsContentProps,
   Steps as StepsPrimitive,
 } from "@ark-ui/svelte/steps";
-import { cn } from "@pisagor/utils";
-import { useSteps } from "./steps.context";
+import { withStepsContext } from "./steps.context";
 
-let { class: className, children, ...rest }: StepsContentProps = $props();
-const { slots } = useSteps();
+let { children, ...rest }: StepsContentProps = $props();
+const part = withStepsContext(() => rest, { name: "Content" });
 </script>
 
-<StepsPrimitive.Content
-  {...rest}
-  class={slots.content({ class: cn(className) })}
->
+<StepsPrimitive.Content {...part.props}>
   {@render children?.()}
 </StepsPrimitive.Content>

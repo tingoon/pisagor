@@ -1,8 +1,8 @@
 ---
-import { VisuallyHidden } from "@pisagor/astro";
+import { Button, VisuallyHidden } from "@pisagor/astro";
 ---
 
-<button type="button">
-  <span aria-hidden>⚙</span>
-  <VisuallyHidden>Settings</VisuallyHidden>
-</button>
+<Button aria-label="Close" size="icon-md" variant="outline">
+  <span aria-hidden="true">×</span>
+  <VisuallyHidden>Close</VisuallyHidden>
+</Button>

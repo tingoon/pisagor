@@ -1,9 +1,12 @@
 <script lang="ts" setup>
 import { Rating } from "@pisagor/vue";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 const value = ref(0);
-const onValueChange = (value) => setValue(value ?? 0);
+const isCorrectRating = computed(() => value.value === 5);
+function onValueChange(next: number | undefined) {
+  value.value = next ?? 0;
+}
 </script>
 
 <template>

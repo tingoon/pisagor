@@ -32,30 +32,34 @@ export const Icon = meta.story({
   render: Examples.Icon,
 });
 
-export const CustomSpacing = meta.story({
-  render: Examples.CustomSpacing,
+export const Image = meta.story({
+  render: Examples.Image,
 });
 
 export const WithMedia = meta.story({
   render: Examples.WithMedia,
 });
 
-export const WithAvatar = meta.story({
-  render: Examples.WithAvatar,
-});
-
-export const Image = meta.story({
-  render: Examples.Image,
-});
-
-export const Link = meta.story({
-  render: Examples.Link,
+export const Header = meta.story({
+  render: Examples.Header,
 });
 
 export const Group = meta.story({
   render: Examples.Group,
 });
 
-export const Header = meta.story({
-  render: Examples.Header,
+export const WithAvatar = meta.story({
+  render: Examples.WithAvatar,
+});
+
+export const Link = meta.story({
+  render: Examples.Link,
+});
+
+export const CustomSpacing = meta.story({
+  render: Examples.CustomSpacing,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

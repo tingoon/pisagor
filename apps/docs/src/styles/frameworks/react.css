@@ -1,0 +1,6 @@
+@import "../global.css";
+@import "@pisagor/react/styles";
+
+@source "../../examples/react/**/*.{ts,tsx}";
+@source "../../../../packages/react/examples/**/*.{ts,tsx}";
+@source "../../../../packages/react-form/examples/**/*.{ts,tsx}";

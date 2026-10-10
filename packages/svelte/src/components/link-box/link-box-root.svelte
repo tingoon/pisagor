@@ -1,37 +1,17 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
 import type { LinkBoxProps as BaseLinkBoxProps } from "@pisagor/props";
-import { linkBoxRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { setLinkBoxContext } from "./link-box.context";
+import { withProvider } from "./link-box.context";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
 } & BaseLinkBoxProps;
 
-let {
-  children,
-  recipe = linkBoxRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+let { children, ...rest }: Props = $props();
 
-const slots = $derived(recipe());
-
-setLinkBoxContext({
-  get slots() {
-    return slots;
-  },
-});
+const root = withProvider(() => rest, { name: "Root", slot: "base" });
 </script>
 
-<Ark
-  as="div"
-  {...rest}
-  class={slots.base({ class: cn(className) })}
-  data-part="root"
-  data-scope="link-box"
->
+<div {...root.props}>
   {@render children?.()}
-</Ark>
+</div>

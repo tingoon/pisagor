@@ -3,16 +3,12 @@ import {
   type CarouselControlProps,
   Carousel as CarouselPrimitive,
 } from "@ark-ui/svelte/carousel";
-import { cn } from "@pisagor/utils";
-import { useCarousel } from "./carousel.context";
+import { withContext } from "./carousel.context";
 
-let { class: className, children, ...rest }: CarouselControlProps = $props();
-const { slots } = useCarousel();
+let { children, ...rest }: CarouselControlProps = $props();
+const part = withContext(() => rest, { name: "Control" });
 </script>
 
-<CarouselPrimitive.Control
-  {...rest}
-  class={slots.control({ class: cn(className) })}
->
+<CarouselPrimitive.Control {...part.props}>
   {@render children?.()}
 </CarouselPrimitive.Control>

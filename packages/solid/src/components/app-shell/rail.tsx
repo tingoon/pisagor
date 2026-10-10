@@ -7,7 +7,7 @@ import type {
   AppShellPlacement,
   AppShellRegionPosition,
 } from "./app-shell.context";
-import { useAppShell } from "./app-shell.context";
+import { useAppShellState, useAppShellStyles } from "./app-shell.context";
 import { APP_SHELL_RAIL_WIDTH } from "./constants";
 import { AppShellRailContext, useAppShellRail } from "./rail.context";
 import {
@@ -47,7 +47,8 @@ export function AppShellRail(props: AppShellRailProps): JSX.Element {
   ]);
   const placement = () => local.placement ?? "start";
   const position = () => local.position ?? "fixed";
-  const { railStates, slots } = useAppShell();
+  const styles = useAppShellStyles();
+  const { railStates } = useAppShellState();
   const regionVar = regionVarFor(placement(), "rail");
   const railState = useRegisteredRailState({
     defaultActiveRailId: local.defaultActiveRailId,
@@ -64,9 +65,9 @@ export function AppShellRail(props: AppShellRailProps): JSX.Element {
       <aside
         {...rest}
         class={cn(
-          slots.rail(),
+          styles.slots.rail(),
           placement() === "start" ? "border-e" : "border-s",
-          regionPositionClasses(slots, position(), "column"),
+          regionPositionClasses(styles.slots, position(), "column"),
           local.class,
         )}
         data-part="rail"
@@ -107,7 +108,8 @@ export function AppShellRailItem(props: AppShellRailItemProps): JSX.Element {
     setActiveRailId,
   } = useAppShellRail();
   const panelPlacement = () => local.panelPlacement ?? railPlacement;
-  const { panelStates, slots } = useAppShell();
+  const styles = useAppShellStyles();
+  const { panelStates } = useAppShellState();
   const active = () =>
     local.isActive ??
     (local.railId !== undefined && activeRailId() === local.railId);
@@ -116,7 +118,7 @@ export function AppShellRailItem(props: AppShellRailItemProps): JSX.Element {
     <Button
       {...rest}
       aria-current={active() ? "page" : undefined}
-      class={slots.railItem({ class: local.class })}
+      class={styles.slots.railItem({ class: local.class })}
       clickEffect={false}
       data-active={active()}
       data-part="rail-item"

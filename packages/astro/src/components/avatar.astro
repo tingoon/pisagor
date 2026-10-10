@@ -1,0 +1,43 @@
+---
+import type { AvatarProps as BaseAvatarProps } from "@pisagor/props";
+import { type AvatarRecipeSlot, avatarRecipe } from "@pisagor/recipes";
+import type { HTMLAttributes } from "astro/types";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { VariantClassNames } from "../internal/types";
+
+interface Props extends HTMLAttributes<"div">, BaseAvatarProps {
+  /** Alt text for the avatar image */
+  alt?: string;
+  /** Fallback text shown when `src` is omitted */
+  fallback?: string;
+  /** Image source URL */
+  src?: string;
+  /** Slot class names */
+  classNames?: VariantClassNames<AvatarRecipeSlot>;
+}
+
+const { withContext, withProvider } = createSlotRecipeContext({
+  name: "Avatar",
+  recipe: avatarRecipe,
+});
+
+const { alt, fallback, src, classNames, ...rest } = Astro.props;
+const root = withProvider(rest, { name: "Root", slot: "base" });
+const image = withContext(
+  { class: classNames?.image, src },
+  { defaultProps: { "data-state": "visible" }, name: "Image" },
+);
+const fallbackPart = withContext(
+  { class: classNames?.fallback },
+  { defaultProps: { "data-state": "visible" }, name: "Fallback" },
+);
+const hasFallback = fallback !== undefined || Astro.slots.has("fallback");
+---
+
+<div {...root.props}>
+  {src ? (
+    <img {...image.props} alt={alt ?? ""} />
+  ) : hasFallback ? (
+    <span {...fallbackPart.props}>{fallback ?? <slot name="fallback" />}</span>
+  ) : null}
+</div>

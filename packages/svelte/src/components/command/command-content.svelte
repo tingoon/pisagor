@@ -6,7 +6,8 @@ import { useCommand } from "./command.context";
 
 let { class: className, ...rest }: ComponentProps<typeof ComboboxContent> =
   $props();
-const { slots } = useCommand();
+const styles = useCommand();
+const slots = $derived(styles.slots);
 </script>
 
 <ComboboxContent

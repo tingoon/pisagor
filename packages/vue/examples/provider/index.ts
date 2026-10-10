@@ -1,9 +1,2 @@
-import defaultRaw from "./default.vue?raw";
-
-export const imports = `import { Provider } from "@pisagor/vue";`;
-
-export const sources = {
-  Default: defaultRaw,
-} as const;
-
 export { default as Default } from "./default.vue";
+export { imports, sources } from "./sources";

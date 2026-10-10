@@ -20,58 +20,58 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const OnSurface = meta.story({
-  render: exampleRender(Examples.OnSurface),
-});
-
-export const Invalid = meta.story({
-  render: exampleRender(Examples.Invalid),
-});
-
-export const Disabled = meta.story({
-  render: exampleRender(Examples.Disabled),
-});
-
-export const BookedDates = meta.story({
-  render: exampleRender(Examples.BookedDates),
-});
-
-export const CustomCellSize = meta.story({
-  render: exampleRender(Examples.CustomCellSize),
-});
-
-export const MinMax = meta.story({
-  render: exampleRender(Examples.MinMax),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
 export const Range = meta.story({
   render: exampleRender(Examples.Range),
 });
 
-export const FixedWeeks = meta.story({
-  render: exampleRender(Examples.FixedWeeks),
+export const MultipleMonths = meta.story({
+  render: exampleRender(Examples.MultipleMonths),
 });
 
 export const MonthYearSelector = meta.story({
   render: exampleRender(Examples.MonthYearSelector),
 });
 
-export const MultipleMonths = meta.story({
-  render: exampleRender(Examples.MultipleMonths),
-});
-
 export const Presets = meta.story({
   render: exampleRender(Examples.Presets),
-});
-
-export const SelectToday = meta.story({
-  render: exampleRender(Examples.SelectToday),
 });
 
 export const Controlled = meta.story({
   render: exampleRender(Examples.Controlled),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const Disabled = meta.story({
+  render: exampleRender(Examples.Disabled),
+});
+
+export const Invalid = meta.story({
+  render: exampleRender(Examples.Invalid),
+});
+
+export const MinMax = meta.story({
+  render: exampleRender(Examples.MinMax),
+});
+
+export const BookedDates = meta.story({
+  render: exampleRender(Examples.BookedDates),
+});
+
+export const FixedWeeks = meta.story({
+  render: exampleRender(Examples.FixedWeeks),
+});
+
+export const SelectToday = meta.story({
+  render: exampleRender(Examples.SelectToday),
+});
+
+export const CustomCellSize = meta.story({
+  render: exampleRender(Examples.CustomCellSize),
+});
+
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

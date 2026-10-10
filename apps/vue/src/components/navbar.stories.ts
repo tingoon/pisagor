@@ -19,6 +19,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
+});
+
 export const WithSidebar = meta.story({
   parameters: {
     docs: {
@@ -31,6 +35,6 @@ export const WithSidebar = meta.story({
   render: exampleRender(Examples.WithSidebar),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

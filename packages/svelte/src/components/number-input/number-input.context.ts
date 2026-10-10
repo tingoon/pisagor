@@ -1,10 +1,12 @@
-import type { NumberInputRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { numberInputRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-export interface NumberInputContextValue {
-  slots: NumberInputRecipe;
-}
-
-const ctx = createContext("NumberInput")<NumberInputContextValue>();
-
-export const setNumberInputContext = ctx.setContext;
+export const {
+  Context,
+  useStyles: useNumberInput,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "NumberInput",
+  recipe: numberInputRecipe,
+});

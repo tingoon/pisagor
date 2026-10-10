@@ -43,9 +43,9 @@ function onSearchChange(next: string) {
             <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
             <Listbox.ItemIndicator />
           </Listbox.Item>
-          <Listbox.Empty v-if="isEmpty"
-            >No results found. Try a different search.</Listbox.Empty
-          >
+          <Listbox.Empty v-if="isEmpty">
+            No results found. Try a different search.
+          </Listbox.Empty>
         </Listbox.Content>
       </Listbox.Root>
     </Item>

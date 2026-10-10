@@ -4,9 +4,7 @@ import {
   SegmentGroup as SegmentGroupPrimitive,
 } from "@ark-ui/svelte/segment-group";
 import type { SegmentGroupProps as BaseSegmentGroupProps } from "@pisagor/props";
-import { segmentGroupRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { setSegmentGroupContext } from "./segment-group.context";
+import { withProvider } from "./segment-group.context";
 import SegmentGroupIndicator from "./segment-group-indicator.svelte";
 
 type SegmentGroupVariant = "default" | "underline";
@@ -21,32 +19,27 @@ let {
   variant = "default",
   children,
   onValueChange,
-  recipe = segmentGroupRecipe,
-  class: className,
   ...rest
 }: Props = $props();
-
-const slots = $derived(recipe());
-setSegmentGroupContext({
-  get slots() {
-    return slots;
-  },
-});
 
 function handleValueChange(
   details: Parameters<NonNullable<ArkRootProps["onValueChange"]>>[0],
 ) {
   onValueChange?.(details.value);
 }
+
+const root = withProvider(
+  () => ({
+    ...rest,
+    "data-variant": variant,
+    onValueChange: onValueChange ? handleValueChange : undefined,
+    orientation,
+  }),
+  { name: "Root", slot: "base" },
+);
 </script>
 
-<SegmentGroupPrimitive.Root
-  {...rest}
-  class={slots.base({ class: cn(className) })}
-  data-variant={variant}
-  onValueChange={onValueChange ? handleValueChange : undefined}
-  {orientation}
->
+<SegmentGroupPrimitive.Root {...root.props}>
   <SegmentGroupIndicator />
   {@render children?.()}
 </SegmentGroupPrimitive.Root>

@@ -332,7 +332,10 @@ function main() {
     const chosen =
       parsed.find((p) => p.interfaceName === prefer) ??
       [...parsed].sort((a, b) => b.fields.length - a.fields.length)[0];
-    fs.writeFileSync(path.join(OUT_DIR, `${slug}.ts`), emitFile(slug, chosen));
+    fs.writeFileSync(
+      path.join(OUT_DIR, `${slug}.gen.ts`),
+      emitFile(slug, chosen),
+    );
     ok++;
   }
 

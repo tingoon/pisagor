@@ -6,7 +6,7 @@ import {
 import type { FieldProps as BaseFieldProps } from "@pisagor/props";
 import { fieldRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { setFieldContext } from "./field.context";
+import { Context } from "./field.context";
 
 type Props = FieldsetRootProps & BaseFieldProps;
 
@@ -17,7 +17,7 @@ let {
   ...rest
 }: Props = $props();
 const slots = $derived(recipe());
-setFieldContext({
+Context.set({
   get slots() {
     return slots;
   },

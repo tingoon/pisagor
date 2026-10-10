@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import { PhArrowCounterClockwise, PhPlay } from "@phosphor-icons/vue";
 import { Button, Card, Timer } from "@pisagor/vue";
+import { ref } from "vue";
+
+const ticks = ref(0);
+const completed = ref(false);
 </script>
 
 <template>

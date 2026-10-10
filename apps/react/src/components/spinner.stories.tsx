@@ -20,10 +20,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Default = meta.story({
+export const Sizes = meta.story({
   render: Examples.Sizes,
 });
 
-export const Sizes = meta.story({
-  render: Examples.Sizes,
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

@@ -9,7 +9,8 @@ import { useFile } from "./file.context";
 type Props = HTMLAttributes<HTMLDivElement> & BaseFileProps;
 
 let { variant = "icon", children, class: className, ...rest }: Props = $props();
-const { slots } = useFile();
+const styles = useFile();
+const slots = $derived(styles.slots);
 </script>
 
 <Ark

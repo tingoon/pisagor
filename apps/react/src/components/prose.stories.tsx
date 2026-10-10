@@ -24,14 +24,6 @@ export const Default = meta.story({
   render: Examples.Default,
 });
 
-export const List = meta.story({
-  render: Examples.List,
-});
-
-export const Separator = meta.story({
-  render: Examples.Separator,
-});
-
 export const A = meta.story({
   render: Examples.A,
 });
@@ -72,12 +64,24 @@ export const H6 = meta.story({
   render: Examples.H6,
 });
 
+export const Html = meta.story({
+  render: Examples.Html,
+});
+
+export const HtmlTable = meta.story({
+  render: Examples.HtmlTable,
+});
+
 export const InlineCode = meta.story({
   render: Examples.InlineCode,
 });
 
 export const Kbd = meta.story({
   render: Examples.Kbd,
+});
+
+export const List = meta.story({
+  render: Examples.List,
 });
 
 export const Mark = meta.story({
@@ -100,14 +104,14 @@ export const P = meta.story({
   render: Examples.P,
 });
 
+export const Separator = meta.story({
+  render: Examples.Separator,
+});
+
 export const Small = meta.story({
   render: Examples.Small,
 });
 
-export const HtmlTable = meta.story({
-  render: Examples.HtmlTable,
-});
-
-export const Html = meta.story({
-  render: Examples.Html,
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

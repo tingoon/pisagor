@@ -6,7 +6,8 @@ import { useSheet } from "./sheet.context";
 
 let { class: className, ...rest }: ComponentProps<typeof DialogFooter> =
   $props();
-const { slots } = useSheet();
+const styles = useSheet();
+const slots = $derived(styles.slots);
 </script>
 
 <DialogFooter

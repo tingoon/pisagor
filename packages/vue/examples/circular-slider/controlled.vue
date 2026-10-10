@@ -3,7 +3,9 @@ import { CircularSlider } from "@pisagor/vue";
 import { ref } from "vue";
 
 const value = ref(45);
-const onValueChange = setValue;
+function onValueChange(next: typeof value.value) {
+  value.value = next;
+}
 </script>
 
 <template>
@@ -15,7 +17,7 @@ const onValueChange = setValue;
       :value="value"
     />
     <div class="text-center text-muted-foreground text-sm">
-      {{ isGreaterThan180 ? "✅" : "❌" }}
+      {{ value > 180 ? "✅" : "❌" }}
     </div>
   </div>
 </template>

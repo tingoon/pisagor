@@ -24,6 +24,10 @@ export const Default = meta.story({
   render: exampleRender(Examples.Default),
 });
 
+export const Vertical = meta.story({
+  render: exampleRender(Examples.Vertical),
+});
+
 export const List = meta.story({
   render: exampleRender(Examples.List),
 });
@@ -32,6 +36,6 @@ export const InlineNavigation = meta.story({
   render: exampleRender(Examples.InlineNavigation),
 });
 
-export const Vertical = meta.story({
-  render: exampleRender(Examples.Vertical),
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

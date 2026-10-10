@@ -1,26 +1,17 @@
-import { createListCollection } from "@ark-ui/react";
 import { Item, Listbox } from "@pisagor/react";
+
 export function Disabled() {
-  const collection = createListCollection({
-    items: [
-      { label: "Brazil", value: "br" },
-      { label: "Mexico", value: "mx" },
-      { label: "Ireland", value: "ie" },
-    ],
-  });
   return (
     <Item.Group variant="outline">
       <Item className="p-1">
-        <Listbox.Root collection={collection} disabled>
-          <Listbox.Content>
-            {collection.items.map((item) => (
-              <Listbox.Item item={item} key={item.value}>
-                <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
-              </Listbox.Item>
-            ))}
-          </Listbox.Content>
-        </Listbox.Root>
+        <Listbox
+          disabled
+          items={[
+            { label: "Brazil", value: "br" },
+            { label: "Mexico", value: "mx" },
+            { label: "Ireland", value: "ie" },
+          ]}
+        />
       </Item>
     </Item.Group>
   );

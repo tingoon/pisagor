@@ -28,6 +28,7 @@
   "linter": {
     "domains": {
       "project": "recommended",
+      "tailwind": "recommended",
       "turborepo": "recommended"
     },
     "rules": {

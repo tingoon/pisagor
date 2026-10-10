@@ -1,7 +1,5 @@
 ---
-import type { HTMLAttributes } from "astro/types";
-
-interface Props extends HTMLAttributes<"span"> {
+interface Props {
   /** Byte value to format. */
   value: number;
   /** BCP 47 locale. Defaults to the runtime default locale. */
@@ -40,16 +38,8 @@ function formatBytes(
   }).format(amount);
 }
 
-const {
-  value,
-  locale,
-  unitDisplay = "short",
-  class: className,
-  ...rest
-} = Astro.props;
+const { value, locale, unitDisplay = "short" } = Astro.props;
 const formatted = formatBytes(value, locale, unitDisplay);
 ---
 
-<span {...rest} class={className} data-part="root" data-scope="format">
-  {formatted}
-</span>
+{formatted}

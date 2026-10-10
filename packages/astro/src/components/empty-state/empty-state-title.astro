@@ -1,18 +1,13 @@
 ---
-import { emptyStateRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import { withContext } from "./empty-state.context";
 
 type Props = HTMLAttributes<"h3">;
 
-const { class: className, ...rest } = Astro.props;
-const slots = emptyStateRecipe();
+const title = withContext(Astro.props, { name: "Title", slot: "title" });
 ---
 
-<h3
-  {...rest}
-  class={slots.title({ className })}
-  data-part="title"
-  data-scope="empty-state"
->
-  <slot>Title</slot>
+{/* biome-ignore lint/a11y/useHeadingContent: content is the default slot */}
+<h3 {...title.props}>
+  <slot />
 </h3>

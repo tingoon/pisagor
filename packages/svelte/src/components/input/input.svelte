@@ -8,6 +8,7 @@ import {
   inputRootRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
+import type { VariantClassNames } from "../../internal/types";
 import InputGroupRoot from "../input-group/input-group-root.svelte";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import InputClearAddon from "./input-clear-addon.svelte";
@@ -21,7 +22,7 @@ type Props = Omit<FieldInputProps, "size"> &
      * @defaultValue false
      */
     clearable?: boolean;
-    classNames?: Partial<Record<InputRecipeSlot, string>>;
+    classNames?: VariantClassNames<InputRecipeSlot>;
     /** Called with the string value when the input changes. */
     onValueChange?: (value: string) => void;
     rootRecipe?: typeof inputRootRecipe;

@@ -11,8 +11,9 @@ const collection = createListCollection({
     { label: "Svelte", value: "svelte" },
   ],
 });
-const onValueChange = (value) =>
-  setValue(Array.isArray(value) ? value : [value]);
+function onValueChange(next: string | string[]) {
+  value.value = Array.isArray(next) ? next : [next];
+}
 </script>
 
 <template>

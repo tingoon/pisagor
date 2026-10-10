@@ -1,4 +1,5 @@
 ---
+import type { DataListProps as BaseDataListProps } from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
 import DataListItem from "./data-list-item.astro";
 import DataListRoot from "./data-list-root.astro";
@@ -8,7 +9,7 @@ interface DataListPresetItem {
   value: string;
 }
 
-interface Props extends HTMLAttributes<"dl"> {
+interface Props extends HTMLAttributes<"dl">, BaseDataListProps {
   /**
    * The orientation of the data list.
    *

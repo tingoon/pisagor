@@ -7,7 +7,8 @@ import { cn } from "@pisagor/utils";
 import { useListbox } from "./listbox.context";
 
 let { class: className, children, ...rest }: ListboxEmptyProps = $props();
-const { slots } = useListbox();
+const styles = useListbox();
+const slots = $derived(styles.slots);
 </script>
 
 <ListboxPrimitive.Empty {...rest} class={slots.empty({ class: cn(className) })}>

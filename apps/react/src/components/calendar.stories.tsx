@@ -24,50 +24,54 @@ export const Default = meta.story({
   render: Examples.Default,
 });
 
-export const Invalid = meta.story({
-  render: Examples.Invalid,
-});
-
-export const Disabled = meta.story({
-  render: Examples.Disabled,
-});
-
-export const BookedDates = meta.story({
-  render: Examples.BookedDates,
-});
-
-export const CustomCellSize = meta.story({
-  render: Examples.CustomCellSize,
-});
-
-export const MinMax = meta.story({
-  render: Examples.MinMax,
-});
-
 export const Range = meta.story({
   render: Examples.Range,
-});
-
-export const FixedWeeks = meta.story({
-  render: Examples.FixedWeeks,
-});
-
-export const MonthYearSelector = meta.story({
-  render: Examples.MonthYearSelector,
 });
 
 export const MultipleMonths = meta.story({
   render: Examples.MultipleMonths,
 });
 
+export const MonthYearSelector = meta.story({
+  render: Examples.MonthYearSelector,
+});
+
 export const Presets = meta.story({
   render: Examples.Presets,
+});
+
+export const Controlled = meta.story({
+  render: Examples.Controlled,
+});
+
+export const Disabled = meta.story({
+  render: Examples.Disabled,
+});
+
+export const Invalid = meta.story({
+  render: Examples.Invalid,
+});
+
+export const MinMax = meta.story({
+  render: Examples.MinMax,
+});
+
+export const BookedDates = meta.story({
+  render: Examples.BookedDates,
+});
+
+export const FixedWeeks = meta.story({
+  render: Examples.FixedWeeks,
 });
 
 export const SelectToday = meta.story({
   render: Examples.SelectToday,
 });
 
-export const Controlled = meta.story({
-  render: Examples.Controlled,
+export const CustomCellSize = meta.story({
+  render: Examples.CustomCellSize,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

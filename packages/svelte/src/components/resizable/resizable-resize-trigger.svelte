@@ -16,7 +16,8 @@ let {
   class: className,
   ...rest
 }: Props = $props();
-const { slots } = useResizable();
+const styles = useResizable();
+const slots = $derived(styles.slots);
 </script>
 
 <SplitterPrimitive.ResizeTrigger

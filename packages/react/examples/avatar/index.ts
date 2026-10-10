@@ -1,27 +1,9 @@
-import avatar_groupRaw from "./avatar-group.tsx?raw";
-import compoundRaw from "./compound.tsx?raw";
-import countRaw from "./count.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import fallbacksRaw from "./fallbacks.tsx?raw";
-import shapesRaw from "./shapes.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-
-export const imports = `import { Avatar } from "@pisagor/react";`;
-
-export const sources = {
-  Compound: compoundRaw,
-  Count: countRaw,
-  Default: defaultRaw,
-  Fallbacks: fallbacksRaw,
-  Group: avatar_groupRaw,
-  Shapes: shapesRaw,
-  Sizes: sizesRaw,
-} as const;
-
 export * from "./avatar-group";
 export * from "./compound";
 export * from "./count";
+export * from "./custom-recipe";
 export * from "./default";
 export * from "./fallbacks";
 export * from "./shapes";
 export * from "./sizes";
+export { imports, sources } from "./sources";

@@ -1,11 +1,16 @@
 {
   "dependencies": {
+    "@ark-ui/react": "^5.39.2",
+    "@ark-ui/solid": "^5.39.2",
+    "@ark-ui/svelte": "^5.24.2",
+    "@ark-ui/vue": "^5.39.2",
     "@astrojs/markdown-remark": "^7.3.0",
     "@astrojs/react": "^6.0.6",
     "@astrojs/solid-js": "^7.0.2",
     "@astrojs/svelte": "^9.0.1",
     "@astrojs/vue": "^7.0.3",
     "@phosphor-icons/react": "^2.1.10",
+    "@phosphor-icons/vue": "^2.2.1",
     "@pisagor/astro": "workspace:*",
     "@pisagor/react": "workspace:*",
     "@pisagor/react-form": "workspace:*",
@@ -13,6 +18,7 @@
     "@pisagor/solid-form": "workspace:*",
     "@pisagor/svelte": "workspace:*",
     "@pisagor/svelte-form": "workspace:*",
+    "@pisagor/utils": "workspace:*",
     "@pisagor/vue": "workspace:*",
     "@pisagor/vue-form": "workspace:*",
     "@tanstack/highlight": "^0.1.0",
@@ -21,12 +27,15 @@
     "@tanstack/svelte-form": "^1.33.5",
     "@tanstack/vue-form": "^1.33.5",
     "astro": "catalog:",
+    "phosphor-svelte": "^3.1.0",
     "react": "catalog:",
     "react-dom": "catalog:",
     "solid-js": "catalog:",
     "svelte": "catalog:",
+    "tailwind-variants": "^3.3.1",
     "vue": "catalog:",
-    "yaml": "^2.9.1"
+    "yaml": "^2.9.1",
+    "zod": "^4.6.5"
   },
   "description": "Pisagor documentation site with per-framework routes and live component demos.",
   "devDependencies": {
@@ -41,9 +50,11 @@
   "scripts": {
     "build": "astro build",
     "dev": "astro dev",
+    "docs:sync": "bun scripts/sync-shared-docs.ts",
+    "docs:sync:check": "bun scripts/sync-shared-docs.ts --check",
     "generate:props": "bun scripts/generate-props-tables.ts",
     "preview": "astro preview",
-    "type-check": "tsc --noEmit"
+    "type-check": "bun scripts/sync-shared-docs.ts --check && tsc --noEmit && tsc --noEmit -p tsconfig.solid.json"
   },
   "type": "module",
   "version": "0.0.0"

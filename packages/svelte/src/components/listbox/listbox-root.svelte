@@ -7,7 +7,7 @@ import {
 import type { ListboxProps as BaseListboxProps } from "@pisagor/props";
 import { listboxRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { setListboxContext } from "./listbox.context";
+import { Context } from "./listbox.context";
 
 type Props = Omit<ArkListboxRootProps<CollectionItem>, "onValueChange"> & {
   onValueChange?: (value: string[]) => void;
@@ -22,7 +22,7 @@ let {
 }: Props = $props();
 
 const slots = $derived(recipe());
-setListboxContext({
+Context.set({
   get slots() {
     return slots;
   },

@@ -1,9 +1,12 @@
-import type { ScrollAreaRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { scrollAreaRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface ScrollAreaContextValue {
-  slots: ScrollAreaRecipe;
-}
-
-export const { setContext: setScrollAreaContext, getContext: useScrollArea } =
-  createContext("ScrollArea")<ScrollAreaContextValue>();
+export const {
+  Context,
+  useStyles: useScrollArea,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "ScrollArea",
+  recipe: scrollAreaRecipe,
+});

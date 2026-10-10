@@ -1,5 +1,7 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
+import { dialogRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { ScrollArea } from "../scroll-area";
 
@@ -13,10 +15,17 @@ let {
   class: className,
   ...rest
 }: Props = $props();
+const dialogSlots = $derived(dialogRecipe());
 </script>
 
 <ScrollArea {scrollFade}>
-  <Ark as="div" {...rest} class={className} data-part="body" data-scope="tour">
+  <Ark
+    as="div"
+    {...rest}
+    class={dialogSlots.body({ class: cn(className) })}
+    data-part="body"
+    data-scope="tour"
+  >
     {@render children?.()}
   </Ark>
 </ScrollArea>

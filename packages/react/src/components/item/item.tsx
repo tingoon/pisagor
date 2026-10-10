@@ -2,27 +2,18 @@ import { ark } from "@ark-ui/react/factory";
 import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
-import { ItemContext, useItem } from "./item.context";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
 import { useItemGroup } from "./item-group.context";
 
-// #region Types
-export interface ItemProps
-  extends ComponentProps<typeof ark.div>,
-    BaseItemProps {}
-
-export type ItemMediaProps = ComponentProps<typeof ark.div> & ItemVariantProps;
-
-export type ItemHeaderProps = ComponentProps<typeof ark.div>;
-
-export type ItemContentProps = ComponentProps<typeof ark.div>;
-
-export type ItemTitleProps = ComponentProps<typeof ark.div>;
-
-export type ItemDescriptionProps = ComponentProps<typeof ark.p>;
-
-export type ItemActionsProps = ComponentProps<typeof ark.div>;
-
-export type ItemFooterProps = ComponentProps<typeof ark.div>;
+// #region Context
+const {
+  Context: ItemStylesContext,
+  useStyles: useItem,
+  withContext,
+} = createSlotRecipeContext({
+  name: "Item",
+  recipe: itemRecipe,
+});
 // #endregion
 
 // #region Parts
@@ -32,23 +23,28 @@ export function ItemRoot({
   recipe = itemRecipe,
   className,
   ...rest
-}: ItemProps) {
+}: ComponentProps<typeof ark.div> & BaseItemProps) {
   const group = useItemGroup();
   const variant = variantProp ?? group?.variant ?? "default";
-  const slots = recipe();
+  const resolved = {
+    ...itemRecipe.defaultVariants,
+    ...recipe.defaultVariants,
+    variant,
+  };
+  const slots = recipe(resolved);
 
   return (
-    <ItemContext value={{ slots, variant }}>
+    <ItemStylesContext value={{ slots, variants: resolved as never }}>
       <ark.div
         {...rest}
-        className={slots.base({ className, variant })}
+        className={slots.base({ className })}
         data-part="root"
         data-scope="item"
         data-variant={variant}
       >
         {children}
       </ark.div>
-    </ItemContext>
+    </ItemStylesContext>
   );
 }
 
@@ -57,7 +53,7 @@ export function ItemMedia({
   children,
   className,
   ...rest
-}: ItemMediaProps) {
+}: ComponentProps<typeof ark.div> & ItemVariantProps) {
   const { slots } = useItem();
 
   return (
@@ -73,116 +69,47 @@ export function ItemMedia({
   );
 }
 
-export function ItemContent({
-  children,
-  className,
-  ...rest
-}: ItemContentProps) {
-  const { slots } = useItem();
+export const ItemContent = withContext(ark.div, {
+  name: "Content",
+  slot: "content",
+});
 
-  return (
-    <ark.div
-      {...rest}
-      className={slots.content({ className })}
-      data-part="content"
-      data-scope="item"
-    >
-      {children}
-    </ark.div>
-  );
-}
+export const ItemTitle = withContext(ark.div, {
+  name: "Title",
+  slot: "title",
+});
 
-export function ItemTitle({ children, className, ...rest }: ItemTitleProps) {
-  const { slots } = useItem();
+export const ItemDescription = withContext(ark.p, {
+  name: "Description",
+  slot: "description",
+});
 
-  return (
-    <ark.div
-      {...rest}
-      className={slots.title({ className })}
-      data-part="title"
-      data-scope="item"
-    >
-      {children}
-    </ark.div>
-  );
-}
+export const ItemActions = withContext(ark.div, {
+  name: "Actions",
+  slot: "actions",
+});
 
-export function ItemDescription({
-  children,
-  className,
-  ...rest
-}: ItemDescriptionProps) {
-  const { slots } = useItem();
+export const ItemHeader = withContext(ark.div, {
+  name: "Header",
+  slot: "header",
+});
 
-  return (
-    <ark.p
-      {...rest}
-      className={slots.description({ className })}
-      data-part="description"
-      data-scope="item"
-    >
-      {children}
-    </ark.p>
-  );
-}
-
-export function ItemActions({
-  children,
-  className,
-  ...rest
-}: ItemActionsProps) {
-  const { slots } = useItem();
-
-  return (
-    <ark.div
-      {...rest}
-      className={slots.actions({ className })}
-      data-part="actions"
-      data-scope="item"
-    >
-      {children}
-    </ark.div>
-  );
-}
-
-export function ItemHeader({ children, className, ...rest }: ItemHeaderProps) {
-  const { slots } = useItem();
-
-  return (
-    <ark.div
-      {...rest}
-      className={slots.header({ className })}
-      data-part="header"
-      data-scope="item"
-    >
-      {children}
-    </ark.div>
-  );
-}
-
-export function ItemFooter({ children, className, ...rest }: ItemFooterProps) {
-  const { slots } = useItem();
-
-  return (
-    <ark.div
-      {...rest}
-      className={slots.footer({ className })}
-      data-part="footer"
-      data-scope="item"
-    >
-      {children}
-    </ark.div>
-  );
-}
+export const ItemFooter = withContext(ark.div, {
+  name: "Footer",
+  slot: "footer",
+});
 // #endregion
 
-// #region Display Names
+// #region Types
+export type ItemProps = ComponentProps<typeof ItemRoot>;
+export type ItemMediaProps = ComponentProps<typeof ItemMedia>;
+export type ItemHeaderProps = ComponentProps<typeof ItemHeader>;
+export type ItemContentProps = ComponentProps<typeof ItemContent>;
+export type ItemTitleProps = ComponentProps<typeof ItemTitle>;
+export type ItemDescriptionProps = ComponentProps<typeof ItemDescription>;
+export type ItemActionsProps = ComponentProps<typeof ItemActions>;
+export type ItemFooterProps = ComponentProps<typeof ItemFooter>;
+// #endregion
+
 ItemRoot.displayName = "Item";
 ItemMedia.displayName = "Item.Media";
-ItemContent.displayName = "Item.Content";
-ItemTitle.displayName = "Item.Title";
-ItemDescription.displayName = "Item.Description";
-ItemActions.displayName = "Item.Actions";
-ItemHeader.displayName = "Item.Header";
-ItemFooter.displayName = "Item.Footer";
-// #endregion

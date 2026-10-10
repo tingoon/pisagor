@@ -20,10 +20,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Horizontal = meta.story({
-  render: exampleRender(Examples.Horizontal),
-});
-
 export const Default = meta.story({
   render: exampleRender(Examples.Default),
+});
+
+export const Horizontal = meta.story({
+  render: exampleRender(Examples.Horizontal),
 });

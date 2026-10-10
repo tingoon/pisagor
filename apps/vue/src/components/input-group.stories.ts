@@ -20,32 +20,12 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Sizes = meta.story({
-  render: exampleRender(Examples.Sizes),
-});
-
 export const Variants = meta.story({
   render: exampleRender(Examples.Variants),
 });
 
-export const OnSurface = meta.story({
-  render: exampleRender(Examples.OnSurface),
-});
-
-export const WithText = meta.story({
-  render: exampleRender(Examples.WithText),
-});
-
-export const WithTextarea = meta.story({
-  render: exampleRender(Examples.WithTextarea),
-});
-
-export const Disabled = meta.story({
-  render: exampleRender(Examples.Disabled),
-});
-
-export const Invalid = meta.story({
-  render: exampleRender(Examples.Invalid),
+export const Sizes = meta.story({
+  render: exampleRender(Examples.Sizes),
 });
 
 export const AlignBlockEnd = meta.story({
@@ -64,6 +44,10 @@ export const AlignInlineStart = meta.story({
   render: exampleRender(Examples.AlignInlineStart),
 });
 
+export const WithTextarea = meta.story({
+  render: exampleRender(Examples.WithTextarea),
+});
+
 export const WithBadge = meta.story({
   render: exampleRender(Examples.WithBadge),
 });
@@ -76,6 +60,10 @@ export const WithSpinner = meta.story({
   render: exampleRender(Examples.WithSpinner),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const Disabled = meta.story({
+  render: exampleRender(Examples.Disabled),
+});
+
+export const Invalid = meta.story({
+  render: exampleRender(Examples.Invalid),
 });

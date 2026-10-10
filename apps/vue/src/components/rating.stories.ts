@@ -19,50 +19,50 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const OnSurface = meta.story({
-  render: exampleRender(Examples.OnSurface),
-});
-
-export const CustomColor = meta.story({
-  render: exampleRender(Examples.CustomColor),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
 export const Count = meta.story({
   render: exampleRender(Examples.Count),
 });
 
-export const CustomIcon = meta.story({
-  render: exampleRender(Examples.CustomIcon),
-});
-
-export const CustomSize = meta.story({
-  render: exampleRender(Examples.CustomSize),
-});
-
 export const HalfStar = meta.story({
   render: exampleRender(Examples.HalfStar),
+});
+
+export const CustomIcon = meta.story({
+  render: exampleRender(Examples.CustomIcon),
 });
 
 export const Testimonial = meta.story({
   render: exampleRender(Examples.Testimonial),
 });
 
-export const Invalid = meta.story({
-  render: exampleRender(Examples.Invalid),
+export const Controlled = meta.story({
+  render: exampleRender(Examples.Controlled),
 });
 
 export const Disabled = meta.story({
   render: exampleRender(Examples.Disabled),
 });
 
+export const Invalid = meta.story({
+  render: exampleRender(Examples.Invalid),
+});
+
 export const Readonly = meta.story({
   render: exampleRender(Examples.Readonly),
 });
 
-export const Controlled = meta.story({
-  render: exampleRender(Examples.Controlled),
+export const CustomColor = meta.story({
+  render: exampleRender(Examples.CustomColor),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomSize = meta.story({
+  render: exampleRender(Examples.CustomSize),
+});
+
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

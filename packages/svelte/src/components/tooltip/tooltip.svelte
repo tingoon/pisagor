@@ -1,70 +1,79 @@
 <script lang="ts">
 import { Portal } from "@ark-ui/svelte/portal";
 import {
+  type TooltipArrowProps,
+  type TooltipContentProps,
+  type TooltipPositionerProps,
   Tooltip as TooltipPrimitive,
   type TooltipRootProps,
+  type TooltipTriggerProps,
 } from "@ark-ui/svelte/tooltip";
 import type { TooltipProps as BaseTooltipProps } from "@pisagor/props";
-import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes";
+import type { TooltipRecipeSlot } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { ClassValue } from "svelte/elements";
-import { setTooltipContext } from "./tooltip.context";
+import type { VariantClassNames } from "../../internal/types";
+import TooltipArrow from "./tooltip-arrow.svelte";
+import TooltipContent from "./tooltip-content.svelte";
+import TooltipRoot from "./tooltip-root.svelte";
 
 type Props = Omit<TooltipRootProps, "children"> & {
+  /** Extra props forwarded to the tooltip arrow element */
+  arrowProps?: Omit<TooltipArrowProps, "children" | "class">;
+  /** Trigger content (wrapped in an inline trigger element) */
   children?: Snippet;
+  /** Class merged onto the tooltip content element */
   class?: ClassValue;
-  classNames?: Partial<Record<TooltipRecipeSlot, string>>;
+  /** Slot class names */
+  classNames?: VariantClassNames<TooltipRecipeSlot>;
+  /** Tooltip text or content */
   content: string | Snippet;
+  /** Extra props forwarded to the tooltip content element */
+  contentProps?: Omit<TooltipContentProps, "children" | "class">;
+  /** Extra props forwarded to the tooltip positioner element */
+  positionerProps?: Omit<TooltipPositionerProps, "children" | "class">;
+  /** Extra props forwarded to the tooltip trigger element */
+  triggerProps?: Omit<TooltipTriggerProps, "asChild" | "children" | "class">;
 } & BaseTooltipProps;
 
 let {
-  closeDelay = 150,
-  openDelay = 400,
-  positioning = { placement: "top" },
+  arrowProps,
   children,
   content,
+  contentProps,
+  positionerProps,
+  triggerProps,
   class: className,
   classNames,
-  recipe = tooltipRecipe,
   ...rest
 }: Props = $props();
-
-const slots = $derived(recipe());
-
-setTooltipContext({
-  get slots() {
-    return slots;
-  },
-});
 </script>
 
-<TooltipPrimitive.Root {...rest} {closeDelay} {openDelay} {positioning}>
-  <TooltipPrimitive.Trigger>
+<TooltipRoot {...rest}>
+  <TooltipPrimitive.Trigger {...triggerProps}>
     {#snippet asChild(
       props,
     )}
-      {const merged = props({ class: "inline-flex" })}
-      <span {...merged}> {@render children?.()} </span>
+      <span {...props({ class: "inline-flex" })}>{@render children?.()}</span>
     {/snippet}
   </TooltipPrimitive.Trigger>
 
   <Portal>
-    <TooltipPrimitive.Positioner>
-      <TooltipPrimitive.Content
-        class={slots.content({ class: cn(className, classNames?.content) })}
+    <TooltipPrimitive.Positioner {...positionerProps}>
+      <TooltipContent
+        {...contentProps}
+        class={cn(className, classNames?.content)}
       >
-        <TooltipPrimitive.Arrow
-          class={slots.arrow({ class: classNames?.arrow })}
-        >
+        <TooltipArrow {...arrowProps} class={classNames?.arrow}>
           <TooltipPrimitive.ArrowTip />
-        </TooltipPrimitive.Arrow>
+        </TooltipArrow>
         {#if typeof content === "string"}
           {content}
         {:else}
           {@render content()}
         {/if}
-      </TooltipPrimitive.Content>
+      </TooltipContent>
     </TooltipPrimitive.Positioner>
   </Portal>
-</TooltipPrimitive.Root>
+</TooltipRoot>

@@ -1,0 +1,14 @@
+---
+import { InputGroup, Spinner } from "@pisagor/astro";
+---
+
+<InputGroup data-disabled>
+  <input
+    class="min-w-0 flex-1 bg-transparent outline-none"
+    disabled
+    placeholder="Loading..."
+  >
+  <InputGroup.Addon align="inline-end">
+    <Spinner aria-label="Loading" />
+  </InputGroup.Addon>
+</InputGroup>

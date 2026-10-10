@@ -1,23 +1,14 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { useFileUpload } from "./file-upload.context";
+import { withFileUploadContext } from "./file-upload.context";
 
-let {
-  class: className,
-  children,
-  ...rest
-}: HTMLAttributes<HTMLDivElement> = $props();
-const { slots } = useFileUpload();
+let { children, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
+const part = withFileUploadContext(() => rest, {
+  defaultProps: { "data-part": "dropzone-helper" },
+  name: "Helper",
+  slot: "helper",
+});
 </script>
 
-<Ark
-  as="div"
-  {...rest}
-  class={slots.helper({ class: cn(className) })}
-  data-part="dropzone-helper"
-  data-scope="file-upload"
->
-  {@render children?.()}
-</Ark>
+<Ark as="div" {...part.props}> {@render children?.()} </Ark>

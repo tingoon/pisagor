@@ -3,16 +3,16 @@ import {
   type CarouselItemGroupProps,
   Carousel as CarouselPrimitive,
 } from "@ark-ui/svelte/carousel";
-import { cn } from "@pisagor/utils";
-import { useCarousel } from "./carousel.context";
+import { withContext } from "./carousel.context";
 
-let { class: className, children, ...rest }: CarouselItemGroupProps = $props();
-const { slots } = useCarousel();
+let { children, ...rest }: CarouselItemGroupProps = $props();
+const part = withContext(() => rest, {
+  defaultProps: { "data-part": "item-group" },
+  name: "ItemGroup",
+  slot: "itemGroup",
+});
 </script>
 
-<CarouselPrimitive.ItemGroup
-  {...rest}
-  class={slots.itemGroup({ class: cn(className) })}
->
+<CarouselPrimitive.ItemGroup {...part.props}>
   {@render children?.()}
 </CarouselPrimitive.ItemGroup>

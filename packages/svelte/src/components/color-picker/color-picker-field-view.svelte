@@ -6,7 +6,8 @@ import ColorPickerChannelSlider from "./color-picker-channel-slider.svelte";
 import ColorPickerEyeDropperTrigger from "./color-picker-eye-dropper-trigger.svelte";
 import ColorPickerView from "./color-picker-view.svelte";
 
-const { slots } = useColorPicker();
+const styles = useColorPicker();
+const slots = $derived(styles.slots);
 </script>
 
 <ColorPickerView format="hsla">

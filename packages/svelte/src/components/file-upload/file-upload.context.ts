@@ -1,18 +1,23 @@
-import type { FileUploadItemRecipe, FileUploadRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { fileUploadItemRecipe, fileUploadRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface FileUploadContextValue {
-  slots: FileUploadRecipe;
-}
+export const {
+  Context,
+  Context: FileUploadStylesContext,
+  useStyles: useFileUpload,
+  withContext: withFileUploadContext,
+  withProvider: withFileUploadProvider,
+} = createSlotRecipeContext({
+  name: "FileUpload",
+  recipe: fileUploadRecipe,
+});
 
-interface FileUploadItemContextValue {
-  slots: FileUploadItemRecipe;
-}
-
-const root = createContext("FileUpload")<FileUploadContextValue>();
-const item = createContext("FileUploadItem")<FileUploadItemContextValue>();
-
-export const setFileUploadContext = root.setContext;
-export const useFileUpload = root.getContext;
-export const setFileUploadItemContext = item.setContext;
-export const useFileUploadItem = item.getContext;
+export const {
+  Context: FileUploadItemStylesContext,
+  useStyles: useFileUploadItem,
+  withContext: withFileUploadItemContext,
+  withProvider: withFileUploadItemProvider,
+} = createSlotRecipeContext({
+  name: "FileUpload",
+  recipe: fileUploadItemRecipe,
+});

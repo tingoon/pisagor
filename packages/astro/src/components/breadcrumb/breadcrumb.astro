@@ -1,4 +1,5 @@
 ---
+import type { BreadcrumbProps as BaseBreadcrumbProps } from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
 import BreadcrumbItem from "./breadcrumb-item.astro";
 import BreadcrumbLink from "./breadcrumb-link.astro";
@@ -13,7 +14,7 @@ interface BreadcrumbPresetItem {
   isCurrentPage?: boolean;
 }
 
-interface Props extends HTMLAttributes<"nav"> {
+interface Props extends HTMLAttributes<"nav">, BaseBreadcrumbProps {
   /**
    * Accessible label for the breadcrumb navigation landmark.
    *

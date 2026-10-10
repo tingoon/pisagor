@@ -24,16 +24,12 @@ export const Default = meta.story({
   render: Examples.Default,
 });
 
-export const CustomSpacing = meta.story({
-  render: Examples.CustomSpacing,
+export const Inset = meta.story({
+  render: Examples.Inset,
 });
 
 export const DrawerContentInner = meta.story({
   render: Examples.DrawerContentInner,
-});
-
-export const Inset = meta.story({
-  render: Examples.Inset,
 });
 
 export const SnapPoints = meta.story({
@@ -42,4 +38,12 @@ export const SnapPoints = meta.story({
 
 export const SwipeDirections = meta.story({
   render: Examples.SwipeDirections,
+});
+
+export const CustomSpacing = meta.story({
+  render: Examples.CustomSpacing,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

@@ -20,12 +20,12 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Horizontal = meta.story({
-  render: Examples.Horizontal,
+export const Default = meta.story({
+  render: Examples.Default,
 });
 
-export const ScrollFade = meta.story({
-  render: Examples.ScrollFade,
+export const Horizontal = meta.story({
+  render: Examples.Horizontal,
 });
 
 export const BothDirections = meta.story({
@@ -36,6 +36,10 @@ export const Nested = meta.story({
   render: Examples.Nested,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const ScrollFade = meta.story({
+  render: Examples.ScrollFade,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

@@ -3,20 +3,12 @@ import {
   ScrollArea as ScrollAreaPrimitive,
   type ScrollAreaScrollbarProps,
 } from "@ark-ui/svelte/scroll-area";
-import { cn } from "@pisagor/utils";
-import { useScrollArea } from "./scroll-area.context";
+import { withContext } from "./scroll-area.context";
 
-let {
-  class: className,
-  children,
-  ...rest
-}: ScrollAreaScrollbarProps = $props();
-const { slots } = useScrollArea();
+let { children, ...rest }: ScrollAreaScrollbarProps = $props();
+const part = withContext(() => rest, { name: "Scrollbar" });
 </script>
 
-<ScrollAreaPrimitive.Scrollbar
-  {...rest}
-  class={slots.scrollbar({ class: cn(className) })}
->
+<ScrollAreaPrimitive.Scrollbar {...part.props}>
   {@render children?.()}
 </ScrollAreaPrimitive.Scrollbar>

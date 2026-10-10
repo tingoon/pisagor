@@ -19,70 +19,74 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const DisabledItem = meta.story({
-  render: exampleRender(Examples.DisabledItem),
-});
-
-export const Grid = meta.story({
-  render: exampleRender(Examples.Grid),
-});
-
-export const Grouping = meta.story({
-  render: exampleRender(Examples.Grouping),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
 export const Horizontal = meta.story({
   render: exampleRender(Examples.Horizontal),
 });
 
-export const Disabled = meta.story({
-  render: exampleRender(Examples.Disabled),
-});
-
-export const ImageExplorer = meta.story({
-  render: exampleRender(Examples.ImageExplorer),
-});
-
-export const SelectionExtended = meta.story({
-  render: exampleRender(Examples.SelectionExtended),
-});
-
-export const SelectionMultiple = meta.story({
-  render: exampleRender(Examples.SelectionMultiple),
-});
-
-export const SelectionNone = meta.story({
-  render: exampleRender(Examples.SelectionNone),
-});
-
-export const TransferList = meta.story({
-  render: exampleRender(Examples.TransferList),
-});
-
-export const WithDescription = meta.story({
-  render: exampleRender(Examples.WithDescription),
-});
-
-export const WithFilter = meta.story({
-  render: exampleRender(Examples.WithFilter),
+export const Grid = meta.story({
+  render: exampleRender(Examples.Grid),
 });
 
 export const WithIcon = meta.story({
   render: exampleRender(Examples.WithIcon),
 });
 
-export const WithPopover = meta.story({
-  render: exampleRender(Examples.WithPopover),
+export const WithDescription = meta.story({
+  render: exampleRender(Examples.WithDescription),
 });
 
-export const Controlled = meta.story({
-  render: exampleRender(Examples.Controlled),
+export const Grouping = meta.story({
+  render: exampleRender(Examples.Grouping),
+});
+
+export const WithFilter = meta.story({
+  render: exampleRender(Examples.WithFilter),
 });
 
 export const Compound = meta.story({
   render: exampleRender(Examples.Compound),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const WithPopover = meta.story({
+  render: exampleRender(Examples.WithPopover),
+});
+
+export const TransferList = meta.story({
+  render: exampleRender(Examples.TransferList),
+});
+
+export const ImageExplorer = meta.story({
+  render: exampleRender(Examples.ImageExplorer),
+});
+
+export const Controlled = meta.story({
+  render: exampleRender(Examples.Controlled),
+});
+
+export const Disabled = meta.story({
+  render: exampleRender(Examples.Disabled),
+});
+
+export const DisabledItem = meta.story({
+  render: exampleRender(Examples.DisabledItem),
+});
+
+export const SelectionMultiple = meta.story({
+  render: exampleRender(Examples.SelectionMultiple),
+});
+
+export const SelectionExtended = meta.story({
+  render: exampleRender(Examples.SelectionExtended),
+});
+
+export const SelectionNone = meta.story({
+  render: exampleRender(Examples.SelectionNone),
+});
+
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

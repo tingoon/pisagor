@@ -2,10 +2,13 @@ import { DataList } from "@pisagor/react";
 
 export function OrientationHorizontal() {
   return (
-    <DataList.Root orientation="horizontal">
-      <DataList.Item value="Jane">First name</DataList.Item>
-      <DataList.Item value="Doe">Last name</DataList.Item>
-      <DataList.Item value="jane.doe@example.com">Email</DataList.Item>
-    </DataList.Root>
+    <DataList
+      items={[
+        { label: "First name", value: "Jane" },
+        { label: "Last name", value: "Doe" },
+        { label: "Email", value: "jane.doe@example.com" },
+      ]}
+      orientation="horizontal"
+    />
   );
 }

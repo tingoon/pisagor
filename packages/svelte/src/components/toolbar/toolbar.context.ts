@@ -1,10 +1,12 @@
-import type { ToolbarRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { toolbarRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface ToolbarContextValue {
-  slots: ToolbarRecipe;
-}
-
-const ctx = createContext("Toolbar")<ToolbarContextValue>();
-export const setToolbarContext = ctx.setContext;
-export const useToolbar = ctx.getContext;
+export const {
+  Context,
+  useStyles: useToolbar,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Toolbar",
+  recipe: toolbarRecipe,
+});

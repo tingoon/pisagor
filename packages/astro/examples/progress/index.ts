@@ -1,17 +1,7 @@
-import defaultRaw from "./default.astro?raw";
-import indeterminateRaw from "./indeterminate.astro?raw";
-import with_labelRaw from "./with-label.astro?raw";
-
-export const imports = `---
-import { Progress } from "@pisagor/astro";
----`;
-
-export const sources = {
-  Default: defaultRaw,
-  Indeterminate: indeterminateRaw,
-  WithLabel: with_labelRaw,
-} as const;
-
+export { default as CustomRecipe } from "./custom-recipe.astro";
 export { default as Default } from "./default.astro";
 export { default as Indeterminate } from "./indeterminate.astro";
+export { default as OrientationHorizontal } from "./orientation-horizontal.astro";
+export { default as OrientationVertical } from "./orientation-vertical.astro";
+export { imports, sources } from "./sources";
 export { default as WithLabel } from "./with-label.astro";

@@ -1,6 +1,12 @@
 <script lang="ts" setup>
 import { Card, Timer } from "@pisagor/vue";
 
+const targetDate = new Date();
+targetDate.setDate(targetDate.getDate() + 7);
+
+const targetLabel = targetDate.toLocaleDateString(undefined, {
+  dateStyle: "medium",
+});
 const startMs = Math.max(0, targetDate.getTime() - Date.now());
 </script>
 

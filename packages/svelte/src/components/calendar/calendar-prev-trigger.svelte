@@ -13,7 +13,8 @@ let {
   children,
   ...rest
 }: DatePickerPrevTriggerProps = $props();
-const { slots } = useCalendar();
+const styles = useCalendar();
+const slots = $derived(styles.slots);
 </script>
 
 <CalendarPrimitive.PrevTrigger

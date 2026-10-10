@@ -1,7 +1,7 @@
 <script lang="ts">
 import { inputGroupTextareaControlRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import Textarea from "../textarea/textarea.svelte";
+import Textarea from "../textarea.svelte";
 
 type Props = import("svelte").ComponentProps<typeof Textarea>;
 

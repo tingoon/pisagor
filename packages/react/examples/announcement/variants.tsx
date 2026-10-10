@@ -1,8 +1,4 @@
-import {
-  ArrowUpRightIcon,
-  CheckCircleIcon,
-  WarningIcon,
-} from "@phosphor-icons/react";
+import { CheckCircleIcon, WarningIcon } from "@phosphor-icons/react";
 import { Announcement, Badge } from "@pisagor/react";
 export function Variants() {
   return (
@@ -23,16 +19,14 @@ export function Variants() {
         badge={<Badge variant="info">Maintenance</Badge>}
         title="Scheduled downtime tonight 2 to 4 a.m. UTC. No action needed."
       />
-      <Announcement.Root asChild>
-        <a href="https://example.com/announcement">
+      <Announcement
+        badge={
           <Badge variant="success">
             <CheckCircleIcon /> Deployed
           </Badge>
-          <Announcement.Title>
-            Production build completed in 2m 34s <ArrowUpRightIcon />
-          </Announcement.Title>
-        </a>
-      </Announcement.Root>
+        }
+        title="Production build completed in 2m 34s"
+      />
       <Announcement
         badge={
           <Badge variant="warning">

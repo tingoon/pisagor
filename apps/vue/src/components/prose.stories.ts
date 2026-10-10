@@ -20,12 +20,8 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const List = meta.story({
-  render: exampleRender(Examples.List),
-});
-
-export const Separator = meta.story({
-  render: exampleRender(Examples.Separator),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
 export const A = meta.story({
@@ -68,12 +64,24 @@ export const H6 = meta.story({
   render: exampleRender(Examples.H6),
 });
 
+export const Html = meta.story({
+  render: exampleRender(Examples.Html),
+});
+
+export const HtmlTable = meta.story({
+  render: exampleRender(Examples.HtmlTable),
+});
+
 export const InlineCode = meta.story({
   render: exampleRender(Examples.InlineCode),
 });
 
 export const Kbd = meta.story({
   render: exampleRender(Examples.Kbd),
+});
+
+export const List = meta.story({
+  render: exampleRender(Examples.List),
 });
 
 export const Mark = meta.story({
@@ -96,18 +104,14 @@ export const P = meta.story({
   render: exampleRender(Examples.P),
 });
 
+export const Separator = meta.story({
+  render: exampleRender(Examples.Separator),
+});
+
 export const Small = meta.story({
   render: exampleRender(Examples.Small),
 });
 
-export const HtmlTable = meta.story({
-  render: exampleRender(Examples.HtmlTable),
-});
-
-export const HtmlTrusted = meta.story({
-  render: exampleRender(Examples.HtmlTrusted),
-});
-
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

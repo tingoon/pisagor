@@ -1,10 +1,12 @@
-import type { FileRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { fileRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface FileContextValue {
-  slots: FileRecipe;
-}
-
-const ctx = createContext("File")<FileContextValue>();
-export const setFileContext = ctx.setContext;
-export const useFile = ctx.getContext;
+export const {
+  Context,
+  useStyles: useFile,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "File",
+  recipe: fileRecipe,
+});

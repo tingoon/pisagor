@@ -27,70 +27,74 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const DisabledItem = meta.story({
-  render: Examples.DisabledItem,
-});
-
-export const Grid = meta.story({
-  render: Examples.Grid,
-});
-
-export const Grouping = meta.story({
-  render: Examples.Grouping,
+export const Default = meta.story({
+  render: Examples.Default,
 });
 
 export const Horizontal = meta.story({
   render: Examples.Horizontal,
 });
 
-export const Disabled = meta.story({
-  render: Examples.Disabled,
-});
-
-export const ImageExplorer = meta.story({
-  render: Examples.ImageExplorer,
-});
-
-export const SelectionExtended = meta.story({
-  render: Examples.SelectionExtended,
-});
-
-export const SelectionMultiple = meta.story({
-  render: Examples.SelectionMultiple,
-});
-
-export const SelectionNone = meta.story({
-  render: Examples.SelectionNone,
-});
-
-export const TransferList = meta.story({
-  render: Examples.TransferList,
-});
-
-export const WithDescription = meta.story({
-  render: Examples.WithDescription,
-});
-
-export const WithFilter = meta.story({
-  render: Examples.WithFilter,
+export const Grid = meta.story({
+  render: Examples.Grid,
 });
 
 export const WithIcon = meta.story({
   render: Examples.WithIcon,
 });
 
-export const WithPopover = meta.story({
-  render: Examples.WithPopover,
+export const WithDescription = meta.story({
+  render: Examples.WithDescription,
 });
 
-export const Controlled = meta.story({
-  render: Examples.Controlled,
+export const Grouping = meta.story({
+  render: Examples.Grouping,
+});
+
+export const WithFilter = meta.story({
+  render: Examples.WithFilter,
 });
 
 export const Compound = meta.story({
   render: Examples.Compound,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const WithPopover = meta.story({
+  render: Examples.WithPopover,
+});
+
+export const TransferList = meta.story({
+  render: Examples.TransferList,
+});
+
+export const ImageExplorer = meta.story({
+  render: Examples.ImageExplorer,
+});
+
+export const Controlled = meta.story({
+  render: Examples.Controlled,
+});
+
+export const Disabled = meta.story({
+  render: Examples.Disabled,
+});
+
+export const DisabledItem = meta.story({
+  render: Examples.DisabledItem,
+});
+
+export const SelectionMultiple = meta.story({
+  render: Examples.SelectionMultiple,
+});
+
+export const SelectionExtended = meta.story({
+  render: Examples.SelectionExtended,
+});
+
+export const SelectionNone = meta.story({
+  render: Examples.SelectionNone,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

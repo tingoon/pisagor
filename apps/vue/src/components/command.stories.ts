@@ -20,26 +20,30 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Scrollable = meta.story({
-  render: exampleRender(Examples.Scrollable),
-});
-
-export const Shortcuts = meta.story({
-  render: exampleRender(Examples.Shortcuts),
-});
-
-export const WithDialog = meta.story({
-  render: exampleRender(Examples.WithDialog),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
 export const Groups = meta.story({
   render: exampleRender(Examples.Groups),
 });
 
+export const Shortcuts = meta.story({
+  render: exampleRender(Examples.Shortcuts),
+});
+
 export const WithFooter = meta.story({
   render: exampleRender(Examples.WithFooter),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const Scrollable = meta.story({
+  render: exampleRender(Examples.Scrollable),
+});
+
+export const WithDialog = meta.story({
+  render: exampleRender(Examples.WithDialog),
+});
+
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

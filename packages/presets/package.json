@@ -1,0 +1,35 @@
+{
+  "bugs": {
+    "url": "https://github.com/tingoon/pisagor/issues"
+  },
+  "dependencies": {
+    "tailwind-variants": "^3.3.1"
+  },
+  "description": "Named recipe presets (skins) for Pisagor components.",
+  "exports": {
+    ".": "./src/contracts/index.ts",
+    "./pisagor": "./src/pisagor.ts",
+    "./styles": "./src/styles.css"
+  },
+  "files": [
+    "skills",
+    "src"
+  ],
+  "homepage": "https://github.com/tingoon/pisagor#readme",
+  "license": "MIT",
+  "name": "@pisagor/presets",
+  "repository": {
+    "directory": "packages/presets",
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git"
+  },
+  "scripts": {
+    "type-check": "tsc"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "type": "module",
+  "types": "./src/contracts/index.ts",
+  "version": "0.3.0"
+}

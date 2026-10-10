@@ -1,9 +1,12 @@
 <script lang="ts" setup>
 import { Field, Slider } from "@pisagor/vue";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 const value = ref([40]);
-const onValueChange = setValue;
+function onValueChange(next: typeof value.value) {
+  value.value = next;
+}
+const isGreaterThan80 = computed(() => (value.value[0] ?? 0) > 80);
 </script>
 
 <template>

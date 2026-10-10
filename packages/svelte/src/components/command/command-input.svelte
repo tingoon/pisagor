@@ -17,7 +17,8 @@ type Props = Omit<ComboboxInputProps, "size"> &
   Pick<FormControlGroupShellVariantProps, "size">;
 
 let { size = "md", class: className, ...rest }: Props = $props();
-const { slots } = useCommand();
+const styles = useCommand();
+const slots = $derived(styles.slots);
 const surfaceVariant = useFormControlSurface();
 
 let shellEl = $state<HTMLDivElement | null>(null);

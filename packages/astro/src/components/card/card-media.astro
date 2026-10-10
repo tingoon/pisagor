@@ -1,17 +1,17 @@
 ---
-import type { CardProps as BaseCardProps } from "@pisagor/props";
-import { cardRecipe } from "@pisagor/recipes";
+import type { CardVariantProps } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import { useCard } from "./card.context";
 
-type Props = HTMLAttributes<"div"> & BaseCardProps;
+type Props = HTMLAttributes<"div"> & CardVariantProps;
 
 const { variant = "default", class: className, ...rest } = Astro.props;
-const slots = cardRecipe();
+const { slots } = useCard();
 ---
 
 <div
   {...rest}
-  class={slots.media({ className, variant })}
+  class={slots.media({ class: className, variant })}
   data-part="media"
   data-scope="card"
   data-variant={variant}

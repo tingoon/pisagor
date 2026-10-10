@@ -14,9 +14,9 @@ import { Breadcrumb } from "@pisagor/vue";
       </Breadcrumb.Item>
       <Breadcrumb.Separator />
       <Breadcrumb.Item>
-        <Breadcrumb.Link href="https://example.com/"
-          >Components</Breadcrumb.Link
-        >
+        <Breadcrumb.Link href="https://example.com/">
+          Components
+        </Breadcrumb.Link>
       </Breadcrumb.Item>
       <Breadcrumb.Separator />
       <Breadcrumb.Item>

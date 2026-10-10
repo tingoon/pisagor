@@ -24,6 +24,14 @@ export const Variants = meta.story({
   render: exampleRender(Examples.Variants),
 });
 
+export const Sizes = meta.story({
+  render: exampleRender(Examples.Sizes),
+});
+
+export const WithIcon = meta.story({
+  render: exampleRender(Examples.WithIcon),
+});
+
 export const CustomColor = meta.story({
   render: exampleRender(Examples.CustomColor),
 });
@@ -32,14 +40,6 @@ export const CustomSize = meta.story({
   render: exampleRender(Examples.CustomSize),
 });
 
-export const WithIcon = meta.story({
-  render: exampleRender(Examples.WithIcon),
-});
-
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
-});
-
-export const Sizes = meta.story({
-  render: exampleRender(Examples.Sizes),
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

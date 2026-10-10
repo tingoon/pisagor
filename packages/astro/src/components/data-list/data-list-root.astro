@@ -1,8 +1,9 @@
 ---
+import type { DataListProps as BaseDataListProps } from "@pisagor/props";
 import { dataListRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<"dl"> {
+interface Props extends HTMLAttributes<"dl">, BaseDataListProps {
   /**
    * The orientation of the data list.
    *
@@ -11,12 +12,17 @@ interface Props extends HTMLAttributes<"dl"> {
   orientation?: "horizontal" | "vertical";
 }
 
-const { orientation = "horizontal", class: className, ...rest } = Astro.props;
+const {
+  orientation = "horizontal",
+  recipe = dataListRecipe,
+  class: className,
+  ...rest
+} = Astro.props;
 ---
 
 <dl
   {...rest}
-  class={dataListRecipe({ className })}
+  class={recipe({ className })}
   data-orientation={orientation}
   data-part="root"
   data-scope="data-list"

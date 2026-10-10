@@ -20,14 +20,14 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
+});
+
 export const Article = meta.story({
   render: exampleRender(Examples.Article),
 });
 
 export const WithLink = meta.story({
   render: exampleRender(Examples.WithLink),
-});
-
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
 });

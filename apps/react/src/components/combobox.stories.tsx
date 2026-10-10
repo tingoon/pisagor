@@ -27,20 +27,44 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Sizes = meta.story({
-  render: Examples.Sizes,
+export const Default = meta.story({
+  render: Examples.Default,
 });
 
 export const Variants = meta.story({
   render: Examples.Variants,
 });
 
-export const Autohighlight = meta.story({
-  render: Examples.Autohighlight,
+export const Sizes = meta.story({
+  render: Examples.Sizes,
+});
+
+export const WithStartIcon = meta.story({
+  render: Examples.WithStartIcon,
+});
+
+export const WithClearButton = meta.story({
+  render: Examples.WithClearButton,
 });
 
 export const Multiple = meta.story({
   render: Examples.Multiple,
+});
+
+export const Group = meta.story({
+  render: Examples.Group,
+});
+
+export const WithScroll = meta.story({
+  render: Examples.WithScroll,
+});
+
+export const Compound = meta.story({
+  render: Examples.Compound,
+});
+
+export const Controlled = meta.story({
+  render: Examples.Controlled,
 });
 
 export const Disabled = meta.story({
@@ -51,30 +75,10 @@ export const Invalid = meta.story({
   render: Examples.Invalid,
 });
 
-export const Group = meta.story({
-  render: Examples.Group,
+export const Autohighlight = meta.story({
+  render: Examples.Autohighlight,
 });
 
-export const WithClearButton = meta.story({
-  render: Examples.WithClearButton,
-});
-
-export const WithScroll = meta.story({
-  render: Examples.WithScroll,
-});
-
-export const WithStartIcon = meta.story({
-  render: Examples.WithStartIcon,
-});
-
-export const Controlled = meta.story({
-  render: Examples.Controlled,
-});
-
-export const Compound = meta.story({
-  render: Examples.Compound,
-});
-
-export const Default = meta.story({
-  render: Examples.Default,
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

@@ -5,12 +5,17 @@ import type { HTMLAttributes } from "astro/types";
 
 type Props = HTMLAttributes<"ol"> & BaseTimelineProps;
 
-const { orientation = "vertical", class: className, ...rest } = Astro.props;
+const {
+  orientation = "vertical",
+  recipe = timelineRecipe,
+  class: className,
+  ...rest
+} = Astro.props;
 ---
 
 <ol
   {...rest}
-  class={timelineRecipe({ className, orientation })}
+  class={recipe({ className, orientation })}
   data-orientation={orientation}
   data-part="root"
   data-scope="timeline"

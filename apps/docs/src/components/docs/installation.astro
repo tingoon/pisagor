@@ -1,4 +1,6 @@
 ---
+import { Button, Separator } from "@pisagor/astro";
+
 interface Props {
   /** One or more packages, e.g. "@pisagor/react" */
   packages?: string | string[];
@@ -15,17 +17,22 @@ const resolvedPkgs = pkgs.length > 0 ? pkgs : ["@pisagor/react"];
 const pkgList = resolvedPkgs.join(" ");
 
 const managers = [
-  { command: `pnpm add ${pkgList}`, id: "pnpm", label: "pnpm" },
   { command: `bun add ${pkgList}`, id: "bun", label: "bun" },
   { command: `npm install ${pkgList}`, id: "npm", label: "npm" },
+  { command: `pnpm add ${pkgList}`, id: "pnpm", label: "pnpm" },
   { command: `yarn add ${pkgList}`, id: "yarn", label: "yarn" },
 ] as const;
+
+const defaultManager = managers[0];
 
 const defaultManual =
   Astro.props.manual ??
   (resolvedPkgs.length === 1
     ? `import { /* … */ } from "${resolvedPkgs[0]}";`
     : resolvedPkgs.map((p) => `import { /* … */ } from "${p}";`).join("\n"));
+
+const tabClass =
+  "shrink-0 text-muted-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm";
 ---
 
 <div
@@ -33,43 +40,14 @@ const defaultManual =
   class:list={["installation not-prose", Astro.props.class]}
 >
   <div
-    aria-label="Installation method"
-    class="mb-3 inline-flex rounded-lg border border-border/70 bg-muted/30 p-0.5"
-    role="tablist"
-  >
-    <button
-      aria-selected="true"
-      class="rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm"
-      data-active
-      data-mode="cli"
-      data-mode-tab
-      role="tab"
-      type="button"
-    >
-      CLI
-    </button>
-    <button
-      aria-selected="false"
-      class="rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm"
-      data-mode="manual"
-      data-mode-tab
-      role="tab"
-      type="button"
-    >
-      Manual
-    </button>
-  </div>
-
-  <div
-    class="overflow-hidden rounded-xl border border-border/70 bg-card"
-    data-panel="cli"
+    class="relative overflow-hidden rounded-xl border border-border/70 bg-card"
   >
     <div
-      class="flex items-center gap-1 border-b border-border/60 px-2 py-1.5 sm:px-2.5"
+      class="flex items-center gap-2 border-b border-border/60 bg-muted/30 px-2 py-1.5"
     >
       <span
         aria-hidden="true"
-        class="me-1 hidden size-7 items-center justify-center text-muted-foreground sm:inline-flex"
+        class="ms-1 hidden size-7 shrink-0 items-center justify-center text-muted-foreground sm:inline-flex"
       >
         <svg
           aria-hidden="true"
@@ -88,126 +66,101 @@ const defaultManual =
       </span>
 
       <div
-        aria-label="Package manager"
+        aria-label="Installation method"
         class="flex min-w-0 flex-1 items-center gap-0.5 overflow-x-auto"
         role="tablist"
       >
         {managers.map((manager) => (
-          <button
-            aria-selected={manager.id === "bun" ? "true" : "false"}
-            class="shrink-0 rounded-md px-2.5 py-1 font-medium text-muted-foreground text-xs transition-colors hover:text-foreground data-active:bg-muted data-active:text-foreground"
-            data-active={manager.id === "bun" ? "" : undefined}
+          <Button
+            aria-selected={manager.id === defaultManager.id ? "true" : "false"}
+            class={tabClass}
+            data-active={manager.id === defaultManager.id ? "" : undefined}
             data-command={manager.command}
+            data-mode="cli"
             data-pm={manager.id}
-            data-pm-tab
+            data-tab
             role="tab"
+            size="sm"
             type="button"
+            variant="ghost"
           >
             {manager.label}
-          </button>
+          </Button>
         ))}
+        <Separator class="mx-1 h-4" orientation="vertical" />
+        <Button
+          aria-selected="false"
+          class={tabClass}
+          data-mode="manual"
+          data-tab
+          role="tab"
+          size="sm"
+          type="button"
+          variant="ghost"
+        >
+          Manual
+        </Button>
       </div>
-
-      <button
-        aria-label="Copy install command"
-        class="ms-auto inline-flex size-8 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground data-copied:text-emerald-500"
-        data-copy
-        type="button"
-      >
-        <svg
-          aria-hidden="true"
-          class="size-3.5"
-          data-copy-idle
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-        >
-          <rect height="13" rx="2" width="13" x="9" y="9"></rect>
-          <path
-            d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-          ></path>
-        </svg>
-        <svg
-          aria-hidden="true"
-          class="size-3.5"
-          data-copy-done
-          fill="none"
-          hidden
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M20 6L9 17l-5-5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          ></path>
-        </svg>
-      </button>
     </div>
 
-    <pre
-      class="overflow-x-auto px-4 py-3.5 font-mono text-3.25 leading-relaxed text-foreground"
-    ><code data-command-text>{managers[1].command}</code></pre>
-  </div>
-
-  <div
-    class="hidden overflow-hidden rounded-xl border border-border/70 bg-card"
-    data-panel="manual"
-  >
-    <div
-      class="flex items-center justify-between gap-3 border-b border-border/60 px-3 py-2"
-    >
-      <span class="text-xs font-medium text-muted-foreground">Import</span>
-      <button
-        aria-label="Copy import snippet"
-        class="inline-flex size-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground data-copied:text-emerald-500"
-        data-copy-manual
-        type="button"
-      >
-        <svg
-          aria-hidden="true"
-          class="size-3.5"
-          data-copy-idle
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-        >
-          <rect height="13" rx="2" width="13" x="9" y="9"></rect>
-          <path
-            d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-          ></path>
-        </svg>
-        <svg
-          aria-hidden="true"
-          class="size-3.5"
-          data-copy-done
-          fill="none"
-          hidden
-          stroke="currentColor"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M20 6L9 17l-5-5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          ></path>
-        </svg>
-      </button>
+    <div data-panel="cli" role="tabpanel">
+      <pre
+        class="overflow-x-auto py-3.5 ps-4 pe-12 font-mono text-3.25 leading-relaxed text-foreground"
+      ><code data-command-text>{defaultManager.command}</code></pre>
     </div>
-    <pre
-      class="overflow-x-auto px-4 py-3.5 font-mono text-3.25 leading-relaxed text-foreground"
-      data-manual-source
-    ><code>{defaultManual}</code></pre>
-    <p
-      class="border-t border-border/60 px-4 py-2.5 text-xs text-muted-foreground"
+
+    <div class="hidden" data-panel="manual" role="tabpanel">
+      <pre
+        class="overflow-x-auto py-3.5 ps-4 pe-12 font-mono text-3.25 leading-relaxed text-foreground"
+        data-manual-source
+      ><code>{defaultManual}</code></pre>
+      <p
+        class="border-t border-border/60 px-4 py-2.5 text-xs text-muted-foreground"
+      >
+        Install the package with your package manager, then import the
+        components you need.
+      </p>
+    </div>
+
+    <Button
+      aria-label="Copy to clipboard"
+      class="absolute end-2 bottom-2 data-copied:text-emerald-500 data-[mode=manual]:bottom-auto data-[mode=manual]:top-12"
+      data-copy
+      size="icon-sm"
+      type="button"
+      variant="ghost"
     >
-      Install the package with your package manager (CLI tab), then import the
-      components you need.
-    </p>
+      <svg
+        aria-hidden="true"
+        class="size-3.5"
+        data-copy-idle
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <rect height="13" rx="2" width="13" x="9" y="9"></rect>
+        <path
+          d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+        ></path>
+      </svg>
+      <svg
+        aria-hidden="true"
+        class="size-3.5"
+        data-copy-done
+        fill="none"
+        hidden
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M20 6L9 17l-5-5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </svg>
+    </Button>
   </div>
 </div>
 
@@ -244,75 +197,59 @@ function bindInstallation(root: HTMLElement) {
   if (root.dataset.bound === "1") return;
   root.dataset.bound = "1";
 
-  const modeTabs = [...root.querySelectorAll<HTMLElement>("[data-mode-tab]")];
+  const tabs = [...root.querySelectorAll<HTMLElement>("[data-tab]")];
+  const pmTabs = tabs.filter((tab) => tab.dataset.pm);
   const cliPanel = root.querySelector<HTMLElement>('[data-panel="cli"]');
   const manualPanel = root.querySelector<HTMLElement>('[data-panel="manual"]');
-  const pmTabs = [...root.querySelectorAll<HTMLElement>("[data-pm-tab]")];
   const commandEl = root.querySelector<HTMLElement>("[data-command-text]");
-  const copyBtn = root.querySelector<HTMLElement>("[data-copy]");
-  const copyManualBtn = root.querySelector<HTMLElement>("[data-copy-manual]");
   const manualSource = root.querySelector<HTMLElement>("[data-manual-source]");
+  const copyBtn = root.querySelector<HTMLElement>("[data-copy]");
+  let mode: "cli" | "manual" = "cli";
 
-  function setMode(mode: "cli" | "manual") {
-    for (const tab of modeTabs) {
-      const active = tab.dataset.mode === mode;
+  function activate(target: HTMLElement) {
+    mode = target.dataset.mode === "manual" ? "manual" : "cli";
+    for (const tab of tabs) {
+      const active = tab === target;
       tab.toggleAttribute("data-active", active);
       tab.setAttribute("aria-selected", active ? "true" : "false");
     }
     cliPanel?.classList.toggle("hidden", mode !== "cli");
     manualPanel?.classList.toggle("hidden", mode !== "manual");
-  }
+    if (copyBtn) copyBtn.dataset.mode = mode;
 
-  function setPm(id: string) {
-    let command = "";
-    for (const tab of pmTabs) {
-      const active = tab.dataset.pm === id;
-      tab.toggleAttribute("data-active", active);
-      tab.setAttribute("aria-selected", active ? "true" : "false");
-      if (active) command = tab.dataset.command ?? "";
-    }
-    if (commandEl && command) commandEl.textContent = command;
-    try {
-      localStorage.setItem(STORAGE_KEY, id);
-    } catch {
-      /* ignore */
+    if (mode === "cli" && target.dataset.pm) {
+      if (commandEl && target.dataset.command) {
+        commandEl.textContent = target.dataset.command;
+      }
+      try {
+        localStorage.setItem(STORAGE_KEY, target.dataset.pm);
+      } catch {
+        /* ignore */
+      }
     }
   }
 
-  for (const tab of modeTabs) {
-    tab.addEventListener("click", () => {
-      setMode(tab.dataset.mode === "manual" ? "manual" : "cli");
-    });
-  }
-
-  for (const tab of pmTabs) {
-    tab.addEventListener("click", () => {
-      if (tab.dataset.pm) setPm(tab.dataset.pm);
-    });
+  for (const tab of tabs) {
+    tab.addEventListener("click", () => activate(tab));
   }
 
   copyBtn?.addEventListener("click", async () => {
-    const text = commandEl?.textContent?.trim() ?? "";
+    const source = mode === "manual" ? manualSource : commandEl;
+    const text = source?.textContent?.trim() ?? "";
     if (!text) return;
     await copyText(text);
     markCopied(copyBtn);
   });
 
-  copyManualBtn?.addEventListener("click", async () => {
-    const text = manualSource?.innerText?.trim() ?? "";
-    if (!text) return;
-    await copyText(text);
-    markCopied(copyManualBtn);
-  });
-
-  let preferred = "bun";
+  let preferred: string | null = null;
   try {
-    preferred = localStorage.getItem(STORAGE_KEY) ?? "bun";
+    preferred = localStorage.getItem(STORAGE_KEY);
   } catch {
     /* ignore */
   }
-  if (!pmTabs.some((t) => t.dataset.pm === preferred)) preferred = "bun";
-  setPm(preferred);
+  const initial =
+    pmTabs.find((tab) => tab.dataset.pm === preferred) ?? pmTabs[0];
+  if (initial) activate(initial);
 }
 
 function bindAll() {

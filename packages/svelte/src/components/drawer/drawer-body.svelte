@@ -1,33 +1,19 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { ScrollArea } from "../scroll-area";
-import { useDrawer } from "./drawer.context";
+import { withContext } from "./drawer.context";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   children?: Snippet;
   scrollFade?: boolean;
 };
 
-let {
-  scrollFade = false,
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
-const { slots } = useDrawer();
+let { scrollFade = false, children, ...rest }: Props = $props();
+const part = withContext(() => rest, { name: "Body" });
 </script>
 
 <ScrollArea {scrollFade}>
-  <Ark
-    as="div"
-    {...rest}
-    class={slots.body({ class: cn(className) })}
-    data-part="body"
-    data-scope="drawer"
-  >
-    {@render children?.()}
-  </Ark>
+  <Ark as="div" {...part.props}> {@render children?.()} </Ark>
 </ScrollArea>

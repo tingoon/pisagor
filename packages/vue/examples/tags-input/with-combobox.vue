@@ -30,7 +30,7 @@ function onComboboxChange(details: { value: string[] }) {
       :value="[]"
       @value-change="onComboboxChange"
     >
-      <TagsInput.Root class="w-full" :value="tags" @value-change="onTagsChange">
+      <TagsInput class="w-full" :value="tags" @value-change="onTagsChange">
         <TagsInput.Context v-slot="{ value }">
           <TagsInput.Item
             v-for="(tag, index) in value"
@@ -44,7 +44,7 @@ function onComboboxChange(details: { value: string[] }) {
             <TagsInput.Input placeholder="Add framework" />
           </Combobox.Control>
         </TagsInput.Context>
-      </TagsInput.Root>
+      </TagsInput>
       <Combobox.Content>
         <Combobox.Item
           v-for="item in collection.items"

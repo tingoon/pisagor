@@ -28,22 +28,22 @@ export const Variants = meta.story({
   render: Examples.Variants,
 });
 
-export const CustomColor = meta.story({
-  render: Examples.CustomColor,
+export const WithIcon = meta.story({
+  render: Examples.WithIcon,
 });
 
 export const WithAction = meta.story({
   render: Examples.WithAction,
 });
 
-export const WithIcon = meta.story({
-  render: Examples.WithIcon,
-});
-
 export const Compound = meta.story({
   render: Examples.Compound,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const CustomColor = meta.story({
+  render: Examples.CustomColor,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

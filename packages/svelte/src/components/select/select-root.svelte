@@ -5,19 +5,26 @@ import {
   Select as SelectPrimitive,
 } from "@ark-ui/svelte/select";
 import type { SelectProps as BaseSelectProps } from "@pisagor/props";
-import { selectRecipe } from "@pisagor/recipes";
-import { setSelectRootContext } from "./select.context";
+import {
+  type FormControlShellVariantProps,
+  selectRecipe,
+} from "@pisagor/recipes";
+import { Context, setSelectControlContext } from "./select.context";
 
 type FormControlVariant = "primary" | "secondary";
 
 type Props = Omit<ArkSelectRootProps<CollectionItem>, "onValueChange"> & {
   onValueChange?: (value: string[]) => void;
+  /** Visual shell variant applied to the trigger. Defaults to `primary`. */
   variant?: FormControlVariant;
+  /** Trigger size. Defaults to `md`. */
+  size?: FormControlShellVariantProps["size"];
 } & BaseSelectProps;
 
 let {
   onValueChange,
-  variant: _variant,
+  variant,
+  size,
   recipe = selectRecipe,
   children,
   ...rest
@@ -25,9 +32,17 @@ let {
 
 const slots = $derived(recipe());
 
-setSelectRootContext({
+Context.set({
   get slots() {
     return slots;
+  },
+});
+setSelectControlContext({
+  get size() {
+    return size;
+  },
+  get variant() {
+    return variant;
   },
 });
 

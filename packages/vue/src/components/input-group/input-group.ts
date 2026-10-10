@@ -9,7 +9,7 @@ import {
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { Input, type InputProps } from "../input/input";
-import { Textarea, type TextareaProps } from "../textarea/textarea";
+import { Textarea, type TextareaProps } from "../textarea";
 
 type ArkPart = Parameters<typeof h>[0];
 

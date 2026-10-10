@@ -1,0 +1,113 @@
+---
+import type { HighlightProps as BaseHighlightProps } from "@pisagor/props";
+import { highlightRecipe } from "@pisagor/recipes";
+import type { HTMLAttributes } from "astro/types";
+
+interface HighlightChunk {
+  match: boolean;
+  text: string;
+}
+
+interface Props extends HTMLAttributes<"mark">, BaseHighlightProps {
+  /** Text to search within. */
+  text: string;
+  /** Query string or list of query strings to highlight. */
+  query: string | string[];
+  /**
+   * Whether matching is case-insensitive.
+   *
+   * @defaultValue false
+   */
+  ignoreCase?: boolean;
+  /**
+   * Whether to highlight every match or only the first.
+   * Must be `true` when `query` is an array.
+   *
+   * @defaultValue `Array.isArray(query)`
+   */
+  matchAll?: boolean;
+  /**
+   * Whether to match whole words only.
+   *
+   * @defaultValue false
+   */
+  exactMatch?: boolean;
+}
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+/**
+ * Mirrors `@zag-js/highlight-word` (used by Ark's `Highlight` in React,
+ * Solid, Vue and Svelte) so the static output matches the other frameworks.
+ */
+function getChunks(
+  text: string,
+  query: string | string[],
+  ignoreCase: boolean,
+  matchAll: boolean,
+  exactMatch: boolean,
+): HighlightChunk[] {
+  const queries = (Array.isArray(query) ? query : [query]).filter(Boolean);
+
+  if (queries.length === 0 || text.length === 0) {
+    return [{ match: false, text }];
+  }
+
+  const source = queries.map(escapeRegExp).join("|");
+  const pattern = new RegExp(
+    exactMatch ? `\\b(${source})\\b` : `(${source})`,
+    `${ignoreCase ? "i" : ""}g`,
+  );
+  const chunks: HighlightChunk[] = [];
+  let lastIndex = 0;
+
+  for (const match of text.matchAll(pattern)) {
+    if (match[0].length === 0) {
+      continue;
+    }
+
+    if (match.index > lastIndex) {
+      chunks.push({ match: false, text: text.slice(lastIndex, match.index) });
+    }
+
+    chunks.push({ match: true, text: match[0] });
+    lastIndex = match.index + match[0].length;
+
+    if (!matchAll) {
+      break;
+    }
+  }
+
+  if (lastIndex < text.length) {
+    chunks.push({ match: false, text: text.slice(lastIndex) });
+  }
+
+  return chunks;
+}
+
+const {
+  text,
+  query,
+  ignoreCase = false,
+  matchAll = Array.isArray(query),
+  exactMatch = false,
+  recipe = highlightRecipe,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const chunks = getChunks(text, query, ignoreCase, matchAll, exactMatch);
+const markClass = recipe({ className });
+---
+
+{chunks.map((chunk) =>
+  chunk.match ? (
+    <mark {...rest} class={markClass}>
+      {chunk.text}
+    </mark>
+  ) : (
+    chunk.text
+  ),
+)}

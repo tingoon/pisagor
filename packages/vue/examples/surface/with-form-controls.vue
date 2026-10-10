@@ -8,44 +8,8 @@ import {
   Switch,
   Textarea,
 } from "@pisagor/vue";
-import { defineComponent } from "vue";
 
-const FormControlsDemo = defineComponent({
-  components: { Checkbox, Field, Input, Select, Switch, Textarea },
-  name: "FormControlsDemo",
-  template: `
-    <Field.Group class="max-w-md">
-      <Field>
-        <Field.Label>Email</Field.Label>
-        <Input clearable placeholder="you@example.com" />
-      </Field>
-
-      <Field>
-        <Field.Label>Notes</Field.Label>
-        <Textarea placeholder="Add context…" :rows="3" />
-      </Field>
-
-      <Field>
-        <Field.Label>Team</Field.Label>
-        <Select :items="['Design', 'Engineering', 'Marketing']" placeholder="Choose a team" />
-      </Field>
-
-      <Field orientation="horizontal">
-        <Switch />
-        <Field.Content>
-          <Field.Label>Email notifications</Field.Label>
-        </Field.Content>
-      </Field>
-
-      <Field orientation="horizontal">
-        <Checkbox />
-        <Field.Content>
-          <Field.Label>Accept terms</Field.Label>
-        </Field.Content>
-      </Field>
-    </Field.Group>
-  `,
-});
+const teams = ["Design", "Engineering", "Marketing"];
 </script>
 
 <template>
@@ -56,6 +20,31 @@ const FormControlsDemo = defineComponent({
         Grouped controls on a surface background.
       </p>
     </div>
-    <FormControlsDemo />
+    <Field.Group>
+      <Field>
+        <Field.Label>Email</Field.Label>
+        <Input clearable placeholder="you@example.com" />
+      </Field>
+      <Field>
+        <Field.Label>Notes</Field.Label>
+        <Textarea placeholder="Add context…" :rows="3" />
+      </Field>
+      <Field>
+        <Field.Label>Team</Field.Label>
+        <Select placeholder="Choose a team" :items="teams" />
+      </Field>
+      <Field orientation="horizontal">
+        <Switch />
+        <Field.Content>
+          <Field.Label>Email notifications</Field.Label>
+        </Field.Content>
+      </Field>
+      <Field orientation="horizontal">
+        <Checkbox />
+        <Field.Content>
+          <Field.Label>Accept terms</Field.Label>
+        </Field.Content>
+      </Field>
+    </Field.Group>
   </Surface>
 </template>

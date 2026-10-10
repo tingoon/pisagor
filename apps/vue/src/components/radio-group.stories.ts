@@ -20,12 +20,24 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
+});
+
 export const Variants = meta.story({
   render: exampleRender(Examples.Variants),
 });
 
-export const OnSurface = meta.story({
-  render: exampleRender(Examples.OnSurface),
+export const WithDescription = meta.story({
+  render: exampleRender(Examples.WithDescription),
+});
+
+export const Compound = meta.story({
+  render: exampleRender(Examples.Compound),
+});
+
+export const Controlled = meta.story({
+  render: exampleRender(Examples.Controlled),
 });
 
 export const Disabled = meta.story({
@@ -34,24 +46,4 @@ export const Disabled = meta.story({
 
 export const Invalid = meta.story({
   render: exampleRender(Examples.Invalid),
-});
-
-export const WithField = meta.story({
-  render: exampleRender(Examples.WithField),
-});
-
-export const WithDescription = meta.story({
-  render: exampleRender(Examples.WithDescription),
-});
-
-export const Controlled = meta.story({
-  render: exampleRender(Examples.Controlled),
-});
-
-export const Compound = meta.story({
-  render: exampleRender(Examples.Compound),
-});
-
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
 });

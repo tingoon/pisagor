@@ -25,18 +25,26 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Compound = meta.story({
-  render: () => ({ component: Examples.Compound }),
-});
-
-export const Default = meta.story({
-  render: () => ({ component: Examples.Default }),
-});
-
 export const Variants = meta.story({
   render: () => ({ component: Examples.Variants }),
 });
 
+export const WithIcon = meta.story({
+  render: () => ({ component: Examples.WithIcon }),
+});
+
 export const WithoutBadge = meta.story({
   render: () => ({ component: Examples.WithoutBadge }),
+});
+
+export const Compound = meta.story({
+  render: () => ({ component: Examples.Compound }),
+});
+
+export const WithLink = meta.story({
+  render: () => ({ component: Examples.WithLink }),
+});
+
+export const CustomRecipe = meta.story({
+  render: () => ({ component: Examples.CustomRecipe }),
 });

@@ -10,7 +10,8 @@ import { useSegmentGroup } from "./segment-group.context";
 type Props = ArkItemProps & { text?: Snippet | string };
 
 let { children, text, class: className, ...rest }: Props = $props();
-const { slots } = useSegmentGroup();
+const styles = useSegmentGroup();
+const slots = $derived(styles.slots);
 </script>
 
 <SegmentGroupPrimitive.Item

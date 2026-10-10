@@ -3,16 +3,12 @@ import {
   Collapsible as CollapsiblePrimitive,
   type CollapsibleTriggerProps,
 } from "@ark-ui/svelte/collapsible";
-import { cn } from "@pisagor/utils";
-import { useCollapsible } from "./collapsible.context";
+import { withContext } from "./collapsible.context";
 
-let { class: className, children, ...rest }: CollapsibleTriggerProps = $props();
-const { slots } = useCollapsible();
+let { children, ...rest }: CollapsibleTriggerProps = $props();
+const part = withContext(() => rest, { name: "Trigger" });
 </script>
 
-<CollapsiblePrimitive.Trigger
-  {...rest}
-  class={slots.trigger({ class: cn(className) })}
->
+<CollapsiblePrimitive.Trigger {...part.props}>
   {@render children?.()}
 </CollapsiblePrimitive.Trigger>

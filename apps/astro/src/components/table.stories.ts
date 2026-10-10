@@ -79,3 +79,15 @@ export const Default = meta.story({
 export const Variants = meta.story({
   render: () => ({ component: Examples.Variants }),
 });
+
+export const Footer = meta.story({
+  render: () => ({ component: Examples.Footer }),
+});
+
+export const NotHoverable = meta.story({
+  render: () => ({ component: Examples.NotHoverable }),
+});
+
+export const CustomRecipe = meta.story({
+  render: () => ({ component: Examples.CustomRecipe }),
+});

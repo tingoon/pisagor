@@ -9,7 +9,8 @@ import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
 import { useCarousel } from "./carousel.context";
 
 let { class: className, ...rest }: CarouselPrevTriggerProps = $props();
-const { slots } = useCarousel();
+const styles = useCarousel();
+const slots = $derived(styles.slots);
 </script>
 
 <CarouselPrimitive.PrevTrigger

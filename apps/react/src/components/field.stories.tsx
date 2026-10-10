@@ -52,28 +52,12 @@ export const ComboboxMultipleField = meta.story({
   render: Examples.ComboboxMultipleField,
 });
 
-export const DisabledField = meta.story({
-  render: Examples.DisabledField,
-});
-
-export const FieldGroup = meta.story({
-  render: Examples.FieldGroup,
-});
-
-export const WithInputGroup = meta.story({
-  render: Examples.WithInputGroup,
-});
-
 export const NumberInputStory = meta.story({
   render: Examples.NumberInputStory,
 });
 
 export const RadioGroupField = meta.story({
   render: Examples.RadioGroupField,
-});
-
-export const RequiredField = meta.story({
-  render: Examples.RequiredField,
 });
 
 export const SelectField = meta.story({
@@ -90,6 +74,22 @@ export const SwitchField = meta.story({
 
 export const TextareaField = meta.story({
   render: Examples.TextareaField,
+});
+
+export const FieldGroup = meta.story({
+  render: Examples.FieldGroup,
+});
+
+export const WithInputGroup = meta.story({
+  render: Examples.WithInputGroup,
+});
+
+export const RequiredField = meta.story({
+  render: Examples.RequiredField,
+});
+
+export const DisabledField = meta.story({
+  render: Examples.DisabledField,
 });
 
 export const WithError = meta.story({

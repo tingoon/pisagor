@@ -24,20 +24,8 @@ export const Default = meta.story({
   render: Examples.Default,
 });
 
-export const ByteUnitDisplay = meta.story({
-  render: Examples.ByteUnitDisplay,
-});
-
-export const ByteUnitSystem = meta.story({
-  render: Examples.ByteUnitSystem,
-});
-
-export const Byte = meta.story({
-  render: Examples.Byte,
-});
-
-export const NumberCompact = meta.story({
-  render: Examples.NumberCompact,
+export const NumberStory = meta.story({
+  render: Examples.NumberStory,
 });
 
 export const NumberCurrency = meta.story({
@@ -48,14 +36,26 @@ export const NumberPercent = meta.story({
   render: Examples.NumberPercent,
 });
 
-export const NumberStory = meta.story({
-  render: Examples.NumberStory,
+export const NumberCompact = meta.story({
+  render: Examples.NumberCompact,
 });
 
-export const RelativeTimeShort = meta.story({
-  render: Examples.RelativeTimeShort,
+export const Byte = meta.story({
+  render: Examples.Byte,
+});
+
+export const ByteUnitSystem = meta.story({
+  render: Examples.ByteUnitSystem,
+});
+
+export const ByteUnitDisplay = meta.story({
+  render: Examples.ByteUnitDisplay,
 });
 
 export const RelativeTime = meta.story({
   render: Examples.RelativeTime,
+});
+
+export const RelativeTimeShort = meta.story({
+  render: Examples.RelativeTimeShort,
 });

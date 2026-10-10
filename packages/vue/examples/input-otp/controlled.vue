@@ -1,9 +1,12 @@
 <script lang="ts" setup>
 import { InputOTP } from "@pisagor/vue";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 const value = ref([""]);
-const onValueChange = setValue;
+function onValueChange(next: typeof value.value) {
+  value.value = next;
+}
+const isCorrect = computed(() => value.value.join("") === "1234");
 </script>
 
 <template>
@@ -16,7 +19,7 @@ const onValueChange = setValue;
       <InputOTP.Slot :index="3" />
     </InputOTP>
     <p class="text-center text-muted-foreground text-sm">
-      {{ isCorrect() ? "✅" : "❌" }}
+      {{ isCorrect ? "✅" : "❌" }}
     </p>
   </div>
 </template>

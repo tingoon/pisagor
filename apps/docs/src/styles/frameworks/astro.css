@@ -1,0 +1,5 @@
+@import "../global.css";
+@import "@pisagor/astro/styles";
+
+@source "../../examples/astro/**/*.{astro,ts}";
+@source "../../../../packages/astro/examples/**/*.{astro,ts}";

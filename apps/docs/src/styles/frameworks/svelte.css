@@ -1,0 +1,6 @@
+@import "../global.css";
+@import "@pisagor/svelte/styles";
+
+@source "../../examples/svelte/**/*.{ts,svelte}";
+@source "../../../../packages/svelte/examples/**/*.{ts,svelte}";
+@source "../../../../packages/svelte-form/examples/**/*.{ts,svelte}";

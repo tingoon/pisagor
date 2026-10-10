@@ -1,38 +1,30 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
 import type { TimerItemGroupProps as BaseTimerItemGroupProps } from "@pisagor/props";
-import { timerItemGroupRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { setTimerItemGroupContext } from "./timer.context";
+import { withTimerItemGroupProvider } from "./timer.context";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
+  /**
+   * The orientation of the timer item group.
+   *
+   * @defaultValue "vertical"
+   */
   orientation?: "horizontal" | "vertical";
 } & BaseTimerItemGroupProps;
 
-let {
-  orientation = "vertical",
-  children,
-  recipe = timerItemGroupRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
-
-const slots = $derived(recipe());
-setTimerItemGroupContext({
-  get slots() {
-    return slots;
-  },
+let { orientation = "vertical", children, ...rest }: Props = $props();
+const root = withTimerItemGroupProvider(() => rest, {
+  name: "ItemGroup",
+  slot: "base",
 });
 </script>
 
 <Ark
   as="div"
-  {...rest}
-  class={slots.base({ class: cn(className) })}
+  {...root.props}
   data-orientation={orientation}
   data-part="item-group"
-  data-scope="timer"
 >
   {@render children?.()}
 </Ark>

@@ -6,7 +6,7 @@ import {
 import type { FileUploadItemProps as BaseFileUploadItemProps } from "@pisagor/props";
 import { fileUploadItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { setFileUploadItemContext } from "./file-upload.context";
+import { FileUploadItemStylesContext } from "./file-upload.context";
 
 type Props = FileUploadItemProps & BaseFileUploadItemProps;
 
@@ -18,7 +18,7 @@ let {
 }: Props = $props();
 
 const slots = $derived(recipe());
-setFileUploadItemContext({
+FileUploadItemStylesContext.set({
   get slots() {
     return slots;
   },

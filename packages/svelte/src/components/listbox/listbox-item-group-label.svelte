@@ -11,7 +11,8 @@ let {
   children,
   ...rest
 }: ListboxItemGroupLabelProps = $props();
-const { slots } = useListbox();
+const styles = useListbox();
+const slots = $derived(styles.slots);
 </script>
 
 <ListboxPrimitive.ItemGroupLabel

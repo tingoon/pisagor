@@ -14,7 +14,7 @@ import {
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
-import { useComboboxRoot } from "./combobox.context";
+import { useComboboxControl, useComboboxRoot } from "./combobox.context";
 import ComboboxClearTrigger from "./combobox-clear-trigger.svelte";
 import ComboboxControl from "./combobox-control.svelte";
 import ComboboxTrigger from "./combobox-trigger.svelte";
@@ -28,7 +28,7 @@ type Props = Omit<ArkInputProps, "size"> &
   };
 
 let {
-  size = "md",
+  size: sizeProp,
   variant: variantProp,
   clearable = false,
   showTrigger = true,
@@ -38,10 +38,14 @@ let {
 }: Props = $props();
 
 const ctx = useComboboxRoot();
+const control = useComboboxControl();
+const size = $derived(sizeProp ?? control.size ?? "md");
 const slots = $derived(ctx?.slots ?? comboboxRecipe());
 const api = useComboboxContext();
 const surfaceVariant = useFormControlSurface();
-const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
+const variant = $derived(
+  variantProp ?? control.variant ?? ("primary" as FormControlVariant),
+);
 </script>
 
 <ComboboxControl data-size={size}>

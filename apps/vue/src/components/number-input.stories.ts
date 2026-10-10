@@ -20,48 +20,28 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Sizes = meta.story({
-  render: exampleRender(Examples.Sizes),
-});
-
 export const Variants = meta.story({
   render: exampleRender(Examples.Variants),
 });
 
-export const OnSurface = meta.story({
-  render: exampleRender(Examples.OnSurface),
-});
-
-export const WithField = meta.story({
-  render: exampleRender(Examples.WithField),
-});
-
-export const FieldOnly = meta.story({
-  render: exampleRender(Examples.FieldOnly),
+export const Sizes = meta.story({
+  render: exampleRender(Examples.Sizes),
 });
 
 export const Formatted = meta.story({
   render: exampleRender(Examples.Formatted),
 });
 
-export const MouseWheel = meta.story({
-  render: exampleRender(Examples.MouseWheel),
-});
-
-export const Range = meta.story({
-  render: exampleRender(Examples.Range),
+export const FieldOnly = meta.story({
+  render: exampleRender(Examples.FieldOnly),
 });
 
 export const Compound = meta.story({
   render: exampleRender(Examples.Compound),
 });
 
-export const WithScrubber = meta.story({
-  render: exampleRender(Examples.WithScrubber),
-});
-
-export const Step = meta.story({
-  render: exampleRender(Examples.Step),
+export const Controlled = meta.story({
+  render: exampleRender(Examples.Controlled),
 });
 
 export const Disabled = meta.story({
@@ -72,10 +52,22 @@ export const Invalid = meta.story({
   render: exampleRender(Examples.Invalid),
 });
 
-export const Controlled = meta.story({
-  render: exampleRender(Examples.Controlled),
+export const Range = meta.story({
+  render: exampleRender(Examples.Range),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const Step = meta.story({
+  render: exampleRender(Examples.Step),
+});
+
+export const MouseWheel = meta.story({
+  render: exampleRender(Examples.MouseWheel),
+});
+
+export const Scrub = meta.story({
+  render: exampleRender(Examples.Scrub),
+});
+
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

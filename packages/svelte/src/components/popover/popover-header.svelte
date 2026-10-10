@@ -1,28 +1,23 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { usePopoverContent } from "./popover.context";
+import { withContext } from "./popover.context";
 import PopoverDescription from "./popover-description.svelte";
 import PopoverTitle from "./popover-title.svelte";
 
-type Props = HTMLAttributes<HTMLDivElement> & {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "title"> & {
   children?: import("svelte").Snippet;
+  /** The description of the popover header */
   description?: string;
+  /** The title of the popover header */
   title?: string;
 };
 
-let {
-  children,
-  description,
-  title,
-  class: className,
-  ...rest
-}: Props = $props();
-const { slots } = usePopoverContent();
+let { children, description, title, ...rest }: Props = $props();
+const part = withContext(() => rest, { name: "Header" });
 </script>
 
-<Ark as="div" {...rest} class={slots.header({ class: cn(className) })}>
+<Ark as="div" {...part.props}>
   {#if title}
     <PopoverTitle>{title}</PopoverTitle>
   {/if}

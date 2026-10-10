@@ -9,7 +9,15 @@ import {
 import { ActionBar, Button } from "@pisagor/vue";
 import { ref } from "vue";
 
+type Placement = "bottom" | "bottom-start" | "bottom-end";
+
 const isOpen = ref(false);
+const placement = ref<Placement>("bottom");
+
+function handleOpenChange(nextPlacement: Placement) {
+  isOpen.value = true;
+  placement.value = nextPlacement;
+}
 </script>
 
 <template>

@@ -26,8 +26,8 @@ export const Variants = meta.story({
   render: Examples.Variants,
 });
 
-export const Autoresize = meta.story({
-  render: Examples.Autoresize,
+export const Controlled = meta.story({
+  render: Examples.Controlled,
 });
 
 export const Disabled = meta.story({
@@ -38,10 +38,14 @@ export const Invalid = meta.story({
   render: Examples.Invalid,
 });
 
-export const Controlled = meta.story({
-  render: Examples.Controlled,
+export const Autoresize = meta.story({
+  render: Examples.Autoresize,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const Clearable = meta.story({
+  render: Examples.Clearable,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

@@ -11,7 +11,8 @@ let {
   children,
   ...rest
 }: DatePickerViewControlProps = $props();
-const { slots } = useCalendar();
+const styles = useCalendar();
+const slots = $derived(styles.slots);
 </script>
 
 <CalendarPrimitive.ViewControl

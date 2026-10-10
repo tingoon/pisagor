@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { AutocompleteField } from "@pisagor/vue-form";
+import { cityOptions } from "../options";
 </script>
 
 <template>

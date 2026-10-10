@@ -15,7 +15,8 @@ let {
   children,
   ...rest
 }: Props = $props();
-const { slots } = useDrawer();
+const styles = useDrawer();
+const slots = $derived(styles.slots);
 </script>
 
 <DrawerPrimitive.Positioner

@@ -3,7 +3,9 @@ import { Pagination } from "@pisagor/vue";
 import { ref } from "vue";
 
 const page = ref(1);
-const onPageChange = (details) => setPage(details.page);
+function onPageChange(details: { page: number }) {
+  page.value = details.page;
+}
 </script>
 
 <template>

@@ -25,10 +25,6 @@ export const Default = meta.story({
   render: Examples.Default,
 });
 
-export const CustomSpacing = meta.story({
-  render: Examples.CustomSpacing,
-});
-
 export const Gutter = meta.story({
   render: Examples.Gutter,
 });
@@ -51,4 +47,12 @@ export const Controlled = meta.story({
 
 export const Placements = meta.story({
   render: Examples.Placements,
+});
+
+export const CustomSpacing = meta.story({
+  render: Examples.CustomSpacing,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

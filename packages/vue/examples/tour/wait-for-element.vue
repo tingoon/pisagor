@@ -5,8 +5,12 @@ import { ref } from "vue";
 
 const items = ref(["Item 1", "Item 2"]);
 const addItem = () => {
-  setItems((prev) => [...prev, `Item ${prev.length + 1}`]);
+  items.value = [...items.value, `Item ${items.value.length + 1}`];
 };
+function isNewItem(index: number) {
+  return index === items.value.length - 1 && items.value.length > 2;
+}
+
 const steps = [
   {
     actions: [{ action: "next", label: "Start" }],

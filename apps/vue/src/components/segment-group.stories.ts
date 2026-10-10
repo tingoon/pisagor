@@ -19,6 +19,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
+});
+
 export const Variants = meta.story({
   render: exampleRender(Examples.Variants),
 });
@@ -31,30 +35,30 @@ export const OrientationVertical = meta.story({
   render: exampleRender(Examples.OrientationVertical),
 });
 
-export const DisabledItem = meta.story({
-  render: exampleRender(Examples.DisabledItem),
-});
-
-export const CustomIndicator = meta.story({
-  render: exampleRender(Examples.CustomIndicator),
-});
-
-export const IndicatorOnHover = meta.story({
-  render: exampleRender(Examples.IndicatorOnHover),
-});
-
-export const Disabled = meta.story({
-  render: exampleRender(Examples.Disabled),
+export const Compound = meta.story({
+  render: exampleRender(Examples.Compound),
 });
 
 export const Controlled = meta.story({
   render: exampleRender(Examples.Controlled),
 });
 
-export const Compound = meta.story({
-  render: exampleRender(Examples.Compound),
+export const Disabled = meta.story({
+  render: exampleRender(Examples.Disabled),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const DisabledItem = meta.story({
+  render: exampleRender(Examples.DisabledItem),
+});
+
+export const IndicatorOnHover = meta.story({
+  render: exampleRender(Examples.IndicatorOnHover),
+});
+
+export const CustomIndicator = meta.story({
+  render: exampleRender(Examples.CustomIndicator),
+});
+
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

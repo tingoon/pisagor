@@ -1,11 +1,27 @@
-import type { ItemRecipe, ItemVariantProps } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import type { ItemVariantProps } from "@pisagor/recipes";
+import { itemRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-export interface ItemContextValue extends ItemVariantProps {
-  slots: ItemRecipe;
+export const {
+  Context,
+  useStyles: useItemStyles,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Item",
+  recipe: itemRecipe,
+});
+
+export function useItem() {
+  return useItemStyles();
 }
 
-const ctx = createContext("Item")<ItemContextValue>();
-
-export const setItemContext = ctx.setContext;
-export const useItem = ctx.getContext;
+export function setItemContext(
+  value: ItemVariantProps & { slots: ReturnType<typeof itemRecipe> },
+) {
+  Context.set({
+    get slots() {
+      return value.slots;
+    },
+  });
+}

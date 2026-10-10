@@ -31,10 +31,6 @@ export const WithIcon = meta.story({
   render: Examples.WithIcon,
 });
 
-export const WithLink = meta.story({
-  render: Examples.WithLink,
-});
-
 export const WithoutBadge = meta.story({
   render: Examples.WithoutBadge,
 });
@@ -43,6 +39,10 @@ export const Compound = meta.story({
   render: Examples.Compound,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const WithLink = meta.story({
+  render: Examples.WithLink,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

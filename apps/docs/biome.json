@@ -19,6 +19,20 @@
           }
         }
       }
+    },
+    {
+      "includes": [
+        "src/examples/vue/**",
+        "src/examples/svelte/**",
+        "src/examples/solid/**",
+        "**/*.svelte",
+        "**/*.vue"
+      ],
+      "linter": {
+        "domains": {
+          "react": "none"
+        }
+      }
     }
   ]
 }

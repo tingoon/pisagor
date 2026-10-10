@@ -5,7 +5,9 @@ import { shortFaqItems } from "./helpers";
 
 const value = ref(["item-1"]);
 const items = shortFaqItems();
-const onValueChange = ({ value }) => setValue(value);
+function onValueChange(details: { value: string[] }) {
+  value.value = details.value;
+}
 </script>
 
 <template>

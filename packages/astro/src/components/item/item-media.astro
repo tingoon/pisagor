@@ -1,17 +1,17 @@
 ---
-import type { ItemProps as BaseItemProps } from "@pisagor/props";
-import { itemRecipe } from "@pisagor/recipes";
+import type { ItemVariantProps } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import { useItem } from "./item.context";
 
-interface Props extends HTMLAttributes<"div">, BaseItemProps {}
+type Props = HTMLAttributes<"div"> & ItemVariantProps;
 
 const { variant = "default", class: className, ...rest } = Astro.props;
-const slots = itemRecipe();
+const { slots } = useItem();
 ---
 
 <div
   {...rest}
-  class={slots.media({ className, variant })}
+  class={slots.media({ class: className, variant })}
   data-part="media"
   data-scope="item"
   data-variant={variant}

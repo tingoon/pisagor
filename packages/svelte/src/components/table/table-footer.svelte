@@ -1,23 +1,10 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { useTable } from "./table.context";
+import { withContext } from "./table.context";
 
-let {
-  class: className,
-  children,
-  ...rest
-}: HTMLAttributes<HTMLElement> = $props();
-const { slots } = useTable();
+let { children, ...rest }: HTMLAttributes<HTMLElement> = $props();
+const part = withContext(() => rest, { name: "Footer" });
 </script>
 
-<Ark
-  as="tfoot"
-  {...rest}
-  class={slots.footer({ class: cn(className) })}
-  data-part="footer"
-  data-scope="table"
->
-  {@render children?.()}
-</Ark>
+<Ark as="tfoot" {...part.props}> {@render children?.()} </Ark>

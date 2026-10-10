@@ -3,15 +3,14 @@ import { cn } from "@pisagor/utils";
 import { Resizable } from "@pisagor/vue";
 import { ref } from "vue";
 
-function _frameClass(heightClass = "h-96") {
+function frameClass(heightClass = "h-96") {
   return cn("mx-auto w-full max-w-4xl", heightClass);
 }
 
 const width = ref(256);
-function _onWidthChange(next: number) {
+function onWidthChange(next: number) {
   width.value = next;
 }
-const onWidthChange = setWidth;
 </script>
 
 <template>

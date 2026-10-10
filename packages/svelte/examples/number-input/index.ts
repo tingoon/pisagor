@@ -1,35 +1,6 @@
-import controlledRaw from "./controlled.svelte?raw";
-import defaultRaw from "./default.svelte?raw";
-import disabledRaw from "./disabled.svelte?raw";
-import field_onlyRaw from "./field-only.svelte?raw";
-import formattedRaw from "./formatted.svelte?raw";
-import invalidRaw from "./invalid.svelte?raw";
-import mouse_wheelRaw from "./mouse-wheel.svelte?raw";
-import rangeRaw from "./range.svelte?raw";
-import scrubRaw from "./scrub.svelte?raw";
-import sizesRaw from "./sizes.svelte?raw";
-import stepRaw from "./step.svelte?raw";
-import variantsRaw from "./variants.svelte?raw";
-
-export const imports = `import { NumberInput } from "@pisagor/svelte";`;
-
-export const sources = {
-  Controlled: controlledRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  FieldOnly: field_onlyRaw,
-  Formatted: formattedRaw,
-  Invalid: invalidRaw,
-  MouseWheel: mouse_wheelRaw,
-  Range: rangeRaw,
-  Scrub: scrubRaw,
-  Sizes: sizesRaw,
-  Step: stepRaw,
-  Variants: variantsRaw,
-} as const;
-
+export { default as Compound } from "./compound.svelte";
 export { default as Controlled } from "./controlled.svelte";
-export { default as Default } from "./default.svelte";
+export { default as CustomRecipe } from "./custom-recipe.svelte";
 export { default as Disabled } from "./disabled.svelte";
 export { default as FieldOnly } from "./field-only.svelte";
 export { default as Formatted } from "./formatted.svelte";
@@ -38,5 +9,6 @@ export { default as MouseWheel } from "./mouse-wheel.svelte";
 export { default as Range } from "./range.svelte";
 export { default as Scrub } from "./scrub.svelte";
 export { default as Sizes } from "./sizes.svelte";
+export { imports, sources } from "./sources";
 export { default as Step } from "./step.svelte";
 export { default as Variants } from "./variants.svelte";

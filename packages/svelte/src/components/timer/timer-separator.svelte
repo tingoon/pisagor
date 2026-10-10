@@ -7,7 +7,8 @@ import { cn } from "@pisagor/utils";
 import { useTimer } from "./timer.context";
 
 let { class: className, children, ...rest }: TimerSeparatorProps = $props();
-const { slots } = useTimer();
+const styles = useTimer();
+const slots = $derived(styles.slots);
 </script>
 
 <TimerPrimitive.Separator

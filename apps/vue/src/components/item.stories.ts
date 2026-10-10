@@ -20,6 +20,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
+});
+
 export const Variants = meta.story({
   render: exampleRender(Examples.Variants),
 });
@@ -28,34 +32,34 @@ export const Icon = meta.story({
   render: exampleRender(Examples.Icon),
 });
 
-export const CustomSpacing = meta.story({
-  render: exampleRender(Examples.CustomSpacing),
+export const Image = meta.story({
+  render: exampleRender(Examples.Image),
 });
 
 export const WithMedia = meta.story({
   render: exampleRender(Examples.WithMedia),
 });
 
-export const WithAvatar = meta.story({
-  render: exampleRender(Examples.WithAvatar),
-});
-
-export const Image = meta.story({
-  render: exampleRender(Examples.Image),
-});
-
-export const Link = meta.story({
-  render: exampleRender(Examples.Link),
+export const Header = meta.story({
+  render: exampleRender(Examples.Header),
 });
 
 export const Group = meta.story({
   render: exampleRender(Examples.Group),
 });
 
-export const Header = meta.story({
-  render: exampleRender(Examples.Header),
+export const WithAvatar = meta.story({
+  render: exampleRender(Examples.WithAvatar),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const Link = meta.story({
+  render: exampleRender(Examples.Link),
+});
+
+export const CustomSpacing = meta.story({
+  render: exampleRender(Examples.CustomSpacing),
+});
+
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

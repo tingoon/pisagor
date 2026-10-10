@@ -1,51 +1,28 @@
 import { SegmentGroup } from "@pisagor/react";
 
-export function Variants() {
-  const items = ["Profile", "Account", "Security", "Notifications"];
+const items = [
+  { label: "Profile", value: "Profile" },
+  { label: "Account", value: "Account" },
+  { label: "Security", value: "Security" },
+  { label: "Notifications", value: "Notifications" },
+];
 
+export function Variants() {
   return (
     <div className="flex flex-col gap-2">
-      <SegmentGroup.Root
+      <SegmentGroup
         className="rounded-lg"
         defaultValue="Profile"
+        items={items}
         variant="default"
-      >
-        {items.map((item) => (
-          <SegmentGroup.Item
-            className="px-2 py-1.5 text-sm"
-            key={item}
-            value={item}
-          >
-            {item}
-          </SegmentGroup.Item>
-        ))}
-      </SegmentGroup.Root>
-      <SegmentGroup.Root defaultValue="Profile" variant="underline">
-        {items.map((item) => (
-          <SegmentGroup.Item
-            className="px-2 py-1.5 text-sm"
-            key={item}
-            value={item}
-          >
-            {item}
-          </SegmentGroup.Item>
-        ))}
-      </SegmentGroup.Root>
-      <SegmentGroup.Root
+      />
+      <SegmentGroup defaultValue="Profile" items={items} variant="underline" />
+      <SegmentGroup
         defaultValue="Profile"
+        items={items}
         orientation="vertical"
         variant="underline"
-      >
-        {items.map((item) => (
-          <SegmentGroup.Item
-            className="px-2 py-1.5 text-sm"
-            key={item}
-            value={item}
-          >
-            {item}
-          </SegmentGroup.Item>
-        ))}
-      </SegmentGroup.Root>
+      />
     </div>
   );
 }

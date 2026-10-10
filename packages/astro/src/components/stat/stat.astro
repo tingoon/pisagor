@@ -1,6 +1,8 @@
 ---
 import type { StatProps as BaseStatProps } from "@pisagor/props";
+import type { StatRecipeSlot } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import type { VariantClassNames } from "../../internal/types";
 import StatDescription from "./stat-description.astro";
 import StatLabel from "./stat-label.astro";
 import StatRoot from "./stat-root.astro";
@@ -14,9 +16,11 @@ interface Props extends HTMLAttributes<"div">, BaseStatProps {
   value?: string;
   /** Supporting copy below the value. */
   description?: string;
+  /** Slot class names */
+  classNames?: VariantClassNames<StatRecipeSlot>;
 }
 
-const { variant = "outline", label, value, description, ...rest } = Astro.props;
+const { label, value, description, classNames, ...rest } = Astro.props;
 const hasLabel = Astro.slots.has("label") || label !== undefined;
 const hasValue = Astro.slots.has("value") || value !== undefined;
 const hasDescription =
@@ -24,11 +28,19 @@ const hasDescription =
 const hasTrend = Astro.slots.has("trend");
 ---
 
-<StatRoot {...rest} variant={variant}>
-  {hasLabel && <StatLabel>{label ?? <slot name="label" />}</StatLabel>}
-  {hasValue && <StatValue>{value ?? <slot name="value" />}</StatValue>}
+<StatRoot {...rest}>
+  {hasLabel && (
+    <StatLabel class={classNames?.label}>
+      {label ?? <slot name="label" />}
+    </StatLabel>
+  )}
+  {hasValue && (
+    <StatValue class={classNames?.value}>
+      {value ?? <slot name="value" />}
+    </StatValue>
+  )}
   {hasDescription && (
-    <StatDescription>
+    <StatDescription class={classNames?.description}>
       {description ?? <slot name="description" />}
     </StatDescription>
   )}

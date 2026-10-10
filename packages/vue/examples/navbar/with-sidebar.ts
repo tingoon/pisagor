@@ -26,7 +26,7 @@ export default defineComponent({
                       class:
                         "flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground",
                     },
-                    () => h(PhDatabase as ArkPart, { class: "size-4" }),
+                    h(PhDatabase as ArkPart, { class: "size-4" }),
                   ),
                   h("span", { class: "truncate font-semibold" }, "Pisagor"),
                 ]),
@@ -87,7 +87,9 @@ export default defineComponent({
               ]),
             ),
           ]),
-          h("div", { class: "flex flex-1 flex-col gap-2 p-4" }, () =>
+          h(
+            "div",
+            { class: "flex flex-1 flex-col gap-2 p-4" },
             h(
               "p",
               { class: "text-muted-foreground text-sm" },

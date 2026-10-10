@@ -20,6 +20,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
+});
+
 export const IconOnly = meta.story({
   render: exampleRender(Examples.IconOnly),
 });
@@ -28,6 +32,6 @@ export const WithLinks = meta.story({
   render: exampleRender(Examples.WithLinks),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

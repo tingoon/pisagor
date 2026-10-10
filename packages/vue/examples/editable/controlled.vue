@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 import { PhCheck, PhPencilSimple } from "@phosphor-icons/vue";
 import { Button, Card, Editable, Field, Input } from "@pisagor/vue";
+import { ref } from "vue";
+
+const isEditing = ref(false);
 </script>
 
 <template>

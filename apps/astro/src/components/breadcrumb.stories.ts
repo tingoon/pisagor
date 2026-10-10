@@ -29,3 +29,23 @@ export const Playground = meta.story({
 export const Default = meta.story({
   render: () => ({ component: Examples.Default }),
 });
+
+export const Collapsed = meta.story({
+  render: () => ({ component: Examples.Collapsed }),
+});
+
+export const CustomSeparator = meta.story({
+  render: () => ({ component: Examples.CustomSeparator }),
+});
+
+export const Compound = meta.story({
+  render: () => ({ component: Examples.Compound }),
+});
+
+export const WithLink = meta.story({
+  render: () => ({ component: Examples.WithLink }),
+});
+
+export const CustomRecipe = meta.story({
+  render: () => ({ component: Examples.CustomRecipe }),
+});

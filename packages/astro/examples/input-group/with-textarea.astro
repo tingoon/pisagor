@@ -1,0 +1,22 @@
+---
+import { Button, InputGroup } from "@pisagor/astro";
+---
+
+<InputGroup>
+  <textarea
+    class="min-w-0 flex-1 resize-none bg-transparent outline-none"
+    placeholder="Ask, Search or Chat…"
+  ></textarea>
+  <InputGroup.Addon align="block-end">
+    <Button
+      aria-label="Add files"
+      class="rounded-full"
+      size="icon-sm"
+      variant="ghost"
+    >
+      +
+    </Button>
+    <InputGroup.Text class="ml-auto">33% used</InputGroup.Text>
+    <Button aria-label="Send" class="rounded-full" size="icon-sm">↑</Button>
+  </InputGroup.Addon>
+</InputGroup>

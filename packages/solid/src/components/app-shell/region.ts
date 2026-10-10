@@ -10,10 +10,10 @@ import type {
   AppShellSideState,
   MutableRef,
 } from "./app-shell.context";
-import { useAppShell, useSideState } from "./app-shell.context";
+import { useAppShellState, useSideState } from "./app-shell.context";
 
 export function useRegionWidth(name: AppShellRegionVar, width: () => string) {
-  const { setRegionVar } = useAppShell();
+  const { setRegionVar } = useAppShellState();
 
   createEffect(() => {
     const value = width();
@@ -49,7 +49,7 @@ export function mergeResizableProps(
 }
 
 export function useShellRegionResizeCallbacks(regionVar: AppShellRegionVar) {
-  const { setRegionResizing, setRegionVar } = useAppShell();
+  const { setRegionResizing, setRegionVar } = useAppShellState();
 
   return {
     onResizeChange: (nextWidth: number) => {
@@ -96,7 +96,7 @@ export function useSyncFixedRegionHeight(
   position: () => AppShellRegionPosition,
   cssVar: AppShellFixedStackVar,
 ) {
-  const { setFixedStackVar } = useAppShell();
+  const { setFixedStackVar } = useAppShellState();
 
   createEffect(() => {
     const element = getEl();
@@ -126,7 +126,7 @@ export function useAppShellSideOpen(
   placement: AppShellPlacement,
   statesRef: MutableRef<Partial<Record<AppShellPlacement, AppShellSideState>>>,
 ) {
-  const { regionRevision } = useAppShell();
+  const { regionRevision } = useAppShellState();
   return () => {
     regionRevision();
     return statesRef.current[placement]?.open() ?? false;
@@ -146,7 +146,7 @@ export function useRegisteredSideState({
   placement: AppShellPlacement;
   statesRef: MutableRef<Partial<Record<AppShellPlacement, AppShellSideState>>>;
 }) {
-  const { notifyRegionChange } = useAppShell();
+  const { notifyRegionChange } = useAppShellState();
   const side = useSideState({ defaultOpen, getControlledOpen, onOpenChange });
 
   const setOpen = (value: boolean | ((current: boolean) => boolean)) => {

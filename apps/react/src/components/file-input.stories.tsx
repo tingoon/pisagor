@@ -16,16 +16,16 @@ const meta = preview.meta({
 });
 
 export const Playground = meta.story({
-  render: Examples.Default,
+  render: Examples.Variants,
   tags: ["autodocs"],
-});
-
-export const Default = meta.story({
-  render: Examples.Default,
 });
 
 export const Variants = meta.story({
   render: Examples.Variants,
+});
+
+export const Sizes = meta.story({
+  render: Examples.Sizes,
 });
 
 export const Multiple = meta.story({
@@ -36,18 +36,14 @@ export const Accept = meta.story({
   render: Examples.Accept,
 });
 
+export const OnFilesChange = meta.story({
+  render: Examples.OnFilesChange,
+});
+
 export const Disabled = meta.story({
   render: Examples.Disabled,
 });
 
 export const Invalid = meta.story({
   render: Examples.Invalid,
-});
-
-export const OnFilesChange = meta.story({
-  render: Examples.OnFilesChange,
-});
-
-export const Sizes = meta.story({
-  render: Examples.Sizes,
 });

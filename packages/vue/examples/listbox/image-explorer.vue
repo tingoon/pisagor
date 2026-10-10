@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 import { Listbox } from "@pisagor/vue";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 const value = ref(["mountain"]);
 const collection = createListCollection({
@@ -33,8 +33,13 @@ const collection = createListCollection({
     },
   ],
 });
-const onValueChange = (value) =>
-  setValue(Array.isArray(value) ? value : [value]);
+const selectedImage = computed(() =>
+  collection.items.find((item) => item.value === value.value.at(0)),
+);
+
+function onValueChange(next: string | string[]) {
+  value.value = Array.isArray(next) ? next : [next];
+}
 </script>
 
 <template>

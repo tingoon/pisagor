@@ -2,8 +2,10 @@
 import { Field, TagsInput } from "@pisagor/vue";
 import { ref } from "vue";
 
-const value = ref(initialValue);
-const onValueChange = setValue;
+const value = ref(["React", "Solid"]);
+function onValueChange(next: typeof value.value) {
+  value.value = next;
+}
 </script>
 
 <template>

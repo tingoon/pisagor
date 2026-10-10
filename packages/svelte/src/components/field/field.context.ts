@@ -1,17 +1,20 @@
-import { type FieldRecipe, fieldRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { fieldRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface FieldContextValue {
-  slots: FieldRecipe;
-}
-
-const ctx = createContext("Field")<FieldContextValue | undefined>({
-  defaultValue: undefined,
-  strict: false,
+export const {
+  Context,
+  useStyles: useFieldRequired,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Field",
+  recipe: fieldRecipe,
 });
 
-export const setFieldContext = ctx.setContext;
-export const useField = ctx.getContext;
+/** Optional — Field parts may render outside a provider (Group/Set shells). */
+export function useField() {
+  return Context.get();
+}
 
 /** Resolves recipe slots from the nearest Field/Group/Set, or a default recipe. */
 export function useFieldSlots(recipe: typeof fieldRecipe = fieldRecipe) {

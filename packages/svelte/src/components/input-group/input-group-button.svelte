@@ -2,7 +2,7 @@
 import type { InputGroupButtonProps as BaseInputGroupButtonProps } from "@pisagor/props";
 import { inputGroupButtonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import Button from "../button/button.svelte";
+import Button from "../button.svelte";
 
 type Props = Omit<
   import("svelte").ComponentProps<typeof Button>,

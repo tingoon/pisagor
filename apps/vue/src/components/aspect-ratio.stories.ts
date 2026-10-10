@@ -20,8 +20,8 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Video = meta.story({
-  render: exampleRender(Examples.Video),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
 export const Portrait = meta.story({
@@ -36,6 +36,6 @@ export const Square = meta.story({
   render: exampleRender(Examples.Square),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const Video = meta.story({
+  render: exampleRender(Examples.Video),
 });

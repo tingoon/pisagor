@@ -23,6 +23,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: Examples.Default,
+});
+
 export const OrientationHorizontal = meta.story({
   render: Examples.OrientationHorizontal,
 });
@@ -31,24 +35,8 @@ export const OrientationVertical = meta.story({
   render: Examples.OrientationVertical,
 });
 
-export const PauseOnHover = meta.story({
-  render: Examples.PauseOnHover,
-});
-
-export const Reverse = meta.story({
-  render: Examples.Reverse,
-});
-
 export const Spacing = meta.story({
   render: Examples.Spacing,
-});
-
-export const Autofill = meta.story({
-  render: Examples.Autofill,
-});
-
-export const CustomSpeed = meta.story({
-  render: Examples.CustomSpeed,
 });
 
 export const Fade = meta.story({
@@ -59,6 +47,18 @@ export const Compound = meta.story({
   render: Examples.Compound,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const PauseOnHover = meta.story({
+  render: Examples.PauseOnHover,
+});
+
+export const Reverse = meta.story({
+  render: Examples.Reverse,
+});
+
+export const Autofill = meta.story({
+  render: Examples.Autofill,
+});
+
+export const CustomSpeed = meta.story({
+  render: Examples.CustomSpeed,
 });

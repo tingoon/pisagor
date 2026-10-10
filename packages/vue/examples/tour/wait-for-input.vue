@@ -96,9 +96,9 @@ const steps = [
         </Field>
         <Field orientation="horizontal">
           <Checkbox id="checkbox-terms" />
-          <Field.Label for="checkbox-terms"
-            >I accept the terms and conditions</Field.Label
-          >
+          <Field.Label for="checkbox-terms">
+            I accept the terms and conditions
+          </Field.Label>
         </Field>
       </div>
       <Tour.Content>

@@ -3,7 +3,7 @@ import { Ark } from "@ark-ui/svelte/factory";
 import type { BreadcrumbProps as BaseBreadcrumbProps } from "@pisagor/props";
 import { breadcrumbRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "svelte/elements";
-import { setBreadcrumbContext } from "./breadcrumb.context";
+import { Context } from "./breadcrumb.context";
 
 type Props = HTMLAttributes<HTMLElement> & BaseBreadcrumbProps;
 
@@ -16,7 +16,7 @@ let {
 }: Props = $props();
 
 const slots = $derived(recipe());
-setBreadcrumbContext({
+Context.set({
   get slots() {
     return slots;
   },

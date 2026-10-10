@@ -1,18 +1,12 @@
 ---
-import { alertRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import { withContext } from "./alert.context";
 
 type Props = HTMLAttributes<"div">;
 
-const { class: className, ...rest } = Astro.props;
-const slots = alertRecipe();
+const title = withContext(Astro.props, { name: "Title" });
 ---
 
-<div
-  {...rest}
-  class={slots.title({ className })}
-  data-part="title"
-  data-scope="alert"
->
+<div {...title.props}>
   <slot />
 </div>

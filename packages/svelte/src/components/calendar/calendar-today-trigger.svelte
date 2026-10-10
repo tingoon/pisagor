@@ -2,7 +2,7 @@
 import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
 import type { ButtonProps } from "@pisagor/props";
 import type { ComponentProps } from "svelte";
-import Button from "../button/button.svelte";
+import Button from "../button.svelte";
 
 type Props = Omit<ComponentProps<typeof Button>, "size" | "variant"> & {
   size?: ButtonProps["size"];

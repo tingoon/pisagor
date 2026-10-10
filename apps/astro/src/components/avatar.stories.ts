@@ -29,6 +29,14 @@ export const Sizes = meta.story({
   render: () => ({ component: Examples.Sizes }),
 });
 
-export const WithImage = meta.story({
-  render: () => ({ component: Examples.WithImage }),
+export const Shapes = meta.story({
+  render: () => ({ component: Examples.Shapes }),
+});
+
+export const Fallbacks = meta.story({
+  render: () => ({ component: Examples.Fallbacks }),
+});
+
+export const CustomRecipe = meta.story({
+  render: () => ({ component: Examples.CustomRecipe }),
 });

@@ -1,64 +1,54 @@
 <script lang="ts">
-import {
-  Avatar as AvatarPrimitive,
-  type AvatarRootProps,
+import type {
+  AvatarFallbackProps,
+  AvatarImageProps,
+  AvatarRootProps,
 } from "@ark-ui/svelte/avatar";
 import type { AvatarProps as BaseAvatarProps } from "@pisagor/props";
-import { type AvatarRecipeSlot, avatarRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import type { AvatarRecipeSlot } from "@pisagor/recipes";
 import type { Snippet } from "svelte";
-import { setAvatarContext } from "./avatar.context";
+import type { VariantClassNames } from "../../internal/types";
+import AvatarFallback from "./avatar-fallback.svelte";
+import AvatarImage from "./avatar-image.svelte";
+import AvatarRoot from "./avatar-root.svelte";
 
 type Props = Omit<AvatarRootProps, "children"> & {
+  /** Alt text for the avatar image */
   alt?: string;
-  classNames?: Partial<Record<AvatarRecipeSlot, string>>;
+  /** Slot class names */
+  classNames?: VariantClassNames<AvatarRecipeSlot>;
+  /** Renders the fallback content shown until the image loads */
   fallback?: string | Snippet;
+  /** Extra props forwarded to the avatar fallback element */
+  fallbackProps?: Omit<AvatarFallbackProps, "children" | "class">;
+  /** Extra props forwarded to the avatar image element */
+  imageProps?: Omit<AvatarImageProps, "alt" | "class" | "src">;
+  /** Renders the avatar image with the provided src */
   src?: string;
 } & BaseAvatarProps;
 
 let {
-  shape = "circle",
-  size = "md",
   alt,
   fallback,
+  fallbackProps,
+  imageProps,
   src,
-  class: className,
   classNames,
-  recipe = avatarRecipe,
   ...rest
 }: Props = $props();
-
-const slots = $derived(recipe({ shape, size }));
-
-setAvatarContext({
-  get slots() {
-    return slots;
-  },
-});
 </script>
 
-<AvatarPrimitive.Root
-  {...rest}
-  class={slots.base({ class: cn(className) })}
-  data-shape={shape}
-  data-size={size}
->
+<AvatarRoot {...rest}>
   {#if src}
-    <AvatarPrimitive.Image
-      {alt}
-      class={slots.image({ class: classNames?.image })}
-      {src}
-    />
+    <AvatarImage {...imageProps} {alt} class={classNames?.image} {src} />
   {/if}
   {#if fallback !== undefined}
-    <AvatarPrimitive.Fallback
-      class={slots.fallback({ class: classNames?.fallback })}
-    >
+    <AvatarFallback {...fallbackProps} class={classNames?.fallback}>
       {#if typeof fallback === "string"}
         {fallback}
       {:else}
         {@render fallback()}
       {/if}
-    </AvatarPrimitive.Fallback>
+    </AvatarFallback>
   {/if}
-</AvatarPrimitive.Root>
+</AvatarRoot>

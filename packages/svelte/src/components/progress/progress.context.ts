@@ -1,10 +1,7 @@
-import type { ProgressRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { progressRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-export interface ProgressContextValue {
-  slots: ProgressRecipe;
-}
-
-const ctx = createContext("Progress")<ProgressContextValue>();
-
-export const setProgressContext = ctx.setContext;
+export const { withContext, withProvider } = createSlotRecipeContext({
+  name: "Progress",
+  recipe: progressRecipe,
+});

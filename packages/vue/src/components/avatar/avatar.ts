@@ -1,4 +1,8 @@
-import { AvatarFallback, AvatarImage, AvatarRoot } from "@ark-ui/vue/avatar";
+import {
+  AvatarFallback as AvatarFallbackPrimitive,
+  AvatarImage as AvatarImagePrimitive,
+  AvatarRoot as AvatarRootPrimitive,
+} from "@ark-ui/vue/avatar";
 import type { AvatarProps as BaseAvatarProps } from "@pisagor/props";
 import {
   type AvatarRecipeSlot,
@@ -6,9 +10,30 @@ import {
   avatarRecipe,
 } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
 import type { VariantClassNames } from "../../internal/types";
 
-type ArkPart = Parameters<typeof h>[0];
+// #region Context
+const { withContext, withProvider } = createSlotRecipeContext({
+  name: "Avatar",
+  recipe: avatarRecipe,
+});
+// #endregion
+
+// #region Parts
+const AvatarRoot = withProvider(AvatarRootPrimitive, {
+  name: "Root",
+  slot: "base",
+});
+
+const AvatarImage = withContext(AvatarImagePrimitive, {
+  name: "Image",
+});
+
+const AvatarFallback = withContext(AvatarFallbackPrimitive, {
+  name: "Fallback",
+});
+// #endregion
 
 // #region Types
 export type AvatarShape = NonNullable<AvatarVariantProps["shape"]>;
@@ -32,10 +57,10 @@ export interface AvatarProps extends BaseAvatarProps {
 }
 // #endregion
 
-// #region Component
+// #region Closed
 export const Avatar = defineComponent({
   inheritAttrs: false,
-  name: "PisagorAvatar",
+  name: "Avatar",
   props: {
     alt: { default: undefined, type: String },
     class: {
@@ -58,41 +83,30 @@ export const Avatar = defineComponent({
       default: undefined,
       type: Object as PropType<Record<string, unknown> | undefined>,
     },
-    recipe: {
-      default: avatarRecipe,
-      type: Function as PropType<typeof avatarRecipe>,
-    },
     shape: { default: "circle", type: String as PropType<AvatarShape> },
     size: { default: "md", type: String as PropType<AvatarSize> },
     src: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
-    return () => {
-      const slots_ = props.recipe({ shape: props.shape, size: props.size });
-
-      return h(
-        AvatarRoot as ArkPart,
-        {
-          ...attrs,
-          class: slots_.base({ class: props.class }),
-          "data-shape": props.shape,
-          "data-size": props.size,
-        },
+    return () =>
+      h(
+        AvatarRoot,
+        { ...attrs, class: props.class, shape: props.shape, size: props.size },
         () => [
           props.src
-            ? h(AvatarImage as ArkPart, {
+            ? h(AvatarImage, {
                 ...(props.imageProps ?? {}),
                 alt: props.alt,
-                class: slots_.image({ class: props.classNames?.image }),
+                class: props.classNames?.image,
                 src: props.src,
               })
             : null,
           props.fallback !== undefined
             ? h(
-                AvatarFallback as ArkPart,
+                AvatarFallback,
                 {
                   ...(props.fallbackProps ?? {}),
-                  class: slots_.fallback({ class: props.classNames?.fallback }),
+                  class: props.classNames?.fallback,
                 },
                 () => props.fallback,
               )
@@ -100,7 +114,6 @@ export const Avatar = defineComponent({
           slots.default?.(),
         ],
       );
-    };
   },
 });
 // #endregion

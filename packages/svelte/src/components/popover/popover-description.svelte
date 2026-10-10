@@ -3,16 +3,12 @@ import {
   type PopoverDescriptionProps,
   Popover as PopoverPrimitive,
 } from "@ark-ui/svelte/popover";
-import { cn } from "@pisagor/utils";
-import { usePopoverContent } from "./popover.context";
+import { withContext } from "./popover.context";
 
-let { children, class: className, ...rest }: PopoverDescriptionProps = $props();
-const { slots } = usePopoverContent();
+let { children, ...rest }: PopoverDescriptionProps = $props();
+const part = withContext(() => rest, { name: "Description" });
 </script>
 
-<PopoverPrimitive.Description
-  {...rest}
-  class={slots.description({ class: cn(className) })}
->
+<PopoverPrimitive.Description {...part.props}>
   {@render children?.()}
 </PopoverPrimitive.Description>

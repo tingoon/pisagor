@@ -16,32 +16,16 @@ const meta = preview.meta({
 });
 
 export const Playground = meta.story({
-  render: Examples.Default,
+  render: Examples.Variants,
   tags: ["autodocs"],
-});
-
-export const Default = meta.story({
-  render: Examples.Default,
-});
-
-export const Sizes = meta.story({
-  render: Examples.Sizes,
 });
 
 export const Variants = meta.story({
   render: Examples.Variants,
 });
 
-export const WithTextarea = meta.story({
-  render: Examples.WithTextarea,
-});
-
-export const Disabled = meta.story({
-  render: Examples.Disabled,
-});
-
-export const Invalid = meta.story({
-  render: Examples.Invalid,
+export const Sizes = meta.story({
+  render: Examples.Sizes,
 });
 
 export const AlignBlockEnd = meta.story({
@@ -60,6 +44,10 @@ export const AlignInlineStart = meta.story({
   render: Examples.AlignInlineStart,
 });
 
+export const WithTextarea = meta.story({
+  render: Examples.WithTextarea,
+});
+
 export const WithBadge = meta.story({
   render: Examples.WithBadge,
 });
@@ -70,4 +58,12 @@ export const WithKeyboardShortcut = meta.story({
 
 export const WithSpinner = meta.story({
   render: Examples.WithSpinner,
+});
+
+export const Disabled = meta.story({
+  render: Examples.Disabled,
+});
+
+export const Invalid = meta.story({
+  render: Examples.Invalid,
 });

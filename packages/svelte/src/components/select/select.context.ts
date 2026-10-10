@@ -1,14 +1,26 @@
-import type { SelectRecipe } from "@pisagor/recipes";
+import {
+  type FormControlShellVariantProps,
+  selectRecipe,
+} from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 import { createContext } from "../../utils/create-context";
 
-export interface SelectRootContextValue {
-  slots: SelectRecipe;
-}
-
-const ctx = createContext("SelectRoot")<SelectRootContextValue | undefined>({
-  defaultValue: undefined,
-  strict: false,
+export const { Context, withContext, withProvider } = createSlotRecipeContext({
+  name: "Select",
+  recipe: selectRecipe,
 });
 
-export const setSelectRootContext = ctx.setContext;
-export const useSelectRoot = ctx.getContext;
+/** Optional read (`undefined` outside the provider). */
+export function useSelectRoot() {
+  return Context.get();
+}
+
+/** Root-level control props (`variant`, `size`) read by the Select control part. */
+const controlCtx = createContext("SelectControl")<FormControlShellVariantProps>(
+  {
+    defaultValue: {},
+    strict: false,
+  },
+);
+export const setSelectControlContext = controlCtx.setContext;
+export const useSelectControl = controlCtx.getContext;

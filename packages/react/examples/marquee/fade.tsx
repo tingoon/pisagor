@@ -22,31 +22,22 @@ const marqueeIcons: Icon[] = [
   AtomIcon,
 ];
 
-function MarqueeIconRow() {
-  return (
-    <Marquee.Content>
-      {marqueeIcons.map((IconComponent) => (
-        <Marquee.Item key={IconComponent.displayName ?? IconComponent.name}>
-          <Card className="[--space:--spacing(8)]">
-            <Card.Content>
-              <IconComponent className="size-10" />
-            </Card.Content>
-          </Card>
-        </Marquee.Item>
-      ))}
-    </Marquee.Content>
-  );
-}
+const items = marqueeIcons.map((IconComponent) => (
+  <Card
+    className="[--space:--spacing(8)]"
+    key={IconComponent.displayName ?? IconComponent.name}
+  >
+    <Card.Content>
+      <IconComponent className="size-10" />
+    </Card.Content>
+  </Card>
+));
 
 export function Fade() {
   return (
     <div className="flex w-full flex-col gap-2 overflow-hidden">
-      <Marquee.Root pauseOnInteraction showEdges={false}>
-        <MarqueeIconRow />
-      </Marquee.Root>
-      <Marquee.Root pauseOnInteraction reverse>
-        <MarqueeIconRow />
-      </Marquee.Root>
+      <Marquee items={items} pauseOnInteraction showEdges={false} />
+      <Marquee items={items} pauseOnInteraction reverse />
     </div>
   );
 }

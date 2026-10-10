@@ -1,30 +1,9 @@
-import avatar_groupRaw from "./avatar-group.vue?raw";
-import compoundRaw from "./compound.vue?raw";
-import countRaw from "./count.vue?raw";
-import defaultRaw from "./default.vue?raw";
-import fallback_onlyRaw from "./fallback-only.vue?raw";
-import fallbacksRaw from "./fallbacks.vue?raw";
-import shapesRaw from "./shapes.vue?raw";
-import sizesRaw from "./sizes.vue?raw";
-
-export const imports = `import { Avatar } from "@pisagor/vue";`;
-
-export const sources = {
-  Compound: compoundRaw,
-  Count: countRaw,
-  Default: defaultRaw,
-  FallbackOnly: fallback_onlyRaw,
-  Fallbacks: fallbacksRaw,
-  Group: avatar_groupRaw,
-  Shapes: shapesRaw,
-  Sizes: sizesRaw,
-} as const;
-
 export { default as Group } from "./avatar-group.vue";
 export { default as Compound } from "./compound.vue";
 export { default as Count } from "./count.vue";
+export { default as CustomRecipe } from "./custom-recipe.vue";
 export { default as Default } from "./default.vue";
-export { default as FallbackOnly } from "./fallback-only.vue";
 export { default as Fallbacks } from "./fallbacks.vue";
 export { default as Shapes } from "./shapes.vue";
 export { default as Sizes } from "./sizes.vue";
+export { imports, sources } from "./sources";

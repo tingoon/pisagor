@@ -24,18 +24,6 @@ export const Default = meta.story({
   render: Examples.Default,
 });
 
-export const Autoplay = meta.story({
-  render: Examples.Autoplay,
-});
-
-export const Loop = meta.story({
-  render: Examples.Loop,
-});
-
-export const MouseDrag = meta.story({
-  render: Examples.MouseDrag,
-});
-
 export const OrientationHorizontal = meta.story({
   render: Examples.OrientationHorizontal,
 });
@@ -52,18 +40,34 @@ export const SlidesPerPage = meta.story({
   render: Examples.SlidesPerPage,
 });
 
+export const ThumbnailIndicator = meta.story({
+  render: Examples.ThumbnailIndicator,
+});
+
 export const ThumbnailIndicatorVertical = meta.story({
   render: Examples.ThumbnailIndicatorVertical,
 });
 
-export const ThumbnailIndicator = meta.story({
-  render: Examples.ThumbnailIndicator,
+export const Compound = meta.story({
+  render: Examples.Compound,
 });
 
 export const Controlled = meta.story({
   render: Examples.Controlled,
 });
 
-export const Compound = meta.story({
-  render: Examples.Compound,
+export const Autoplay = meta.story({
+  render: Examples.Autoplay,
+});
+
+export const Loop = meta.story({
+  render: Examples.Loop,
+});
+
+export const MouseDrag = meta.story({
+  render: Examples.MouseDrag,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

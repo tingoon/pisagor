@@ -1,0 +1,18 @@
+---
+import { Button, Item } from "@pisagor/astro";
+---
+
+<Item variant="outline">
+  <Item.Media variant="icon">
+    <span aria-hidden="true">⚠</span>
+  </Item.Media>
+  <Item.Content>
+    <Item.Title>Security alert</Item.Title>
+    <Item.Description>
+      New login detected from unknown device.
+    </Item.Description>
+  </Item.Content>
+  <Item.Actions>
+    <Button size="sm" variant="outline">Review</Button>
+  </Item.Actions>
+</Item>

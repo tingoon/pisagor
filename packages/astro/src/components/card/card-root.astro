@@ -1,0 +1,13 @@
+---
+import type { CardProps as BaseCardProps } from "@pisagor/props";
+import type { HTMLAttributes } from "astro/types";
+import { withProvider } from "./card.context";
+
+type Props = HTMLAttributes<"div"> & BaseCardProps;
+
+const root = withProvider(Astro.props, { name: "Root", slot: "base" });
+---
+
+<div {...root.props}>
+  <slot />
+</div>

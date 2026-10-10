@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "paths": {
+      "#/*": ["./src/*"]
+    },
+    "types": ["astro/client"]
+  },
+  "extends": "../../tsconfig.json",
+  "include": ["src/examples/solid/**/*.tsx", "src/env.d.ts"]
+}

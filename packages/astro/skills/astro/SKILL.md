@@ -13,10 +13,10 @@ metadata:
 
 Agent discovery: `bunx @pisagor/mcp`.
 
-Human docs: docs site (`/develop` + shared `/design`).
+Human docs: docs site (`/develop` + `/design`).
 
 Local sources in this package:
 
 - `examples/<id>/` — runnable examples
 
-Develop notes: `apps/docs/src/content/astro/components/<id>.md`.
+Docs: `apps/docs/src/content/astro/components/<id>/{metadata,design,develop}.md`.

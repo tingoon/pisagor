@@ -342,7 +342,9 @@ export const PhoneInput = defineComponent({
                   class: slots.popup({ class: classNames?.popup }),
                 },
                 () => [
-                  h("div", { class: slots.searchGroup() }, () =>
+                  h(
+                    "div",
+                    { class: slots.searchGroup() },
                     h(InputGroup as ArkPart, { size }, () =>
                       h(Combobox.FieldInput as ArkPart, { asChild: true }, () =>
                         h(InputGroup.Input as ArkPart, {

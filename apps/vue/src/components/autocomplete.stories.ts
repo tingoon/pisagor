@@ -19,16 +19,40 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Sizes = meta.story({
-  render: exampleRender(Examples.Sizes),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
 export const Variants = meta.story({
   render: exampleRender(Examples.Variants),
 });
 
-export const OnSurface = meta.story({
-  render: exampleRender(Examples.OnSurface),
+export const Sizes = meta.story({
+  render: exampleRender(Examples.Sizes),
+});
+
+export const WithStartIcon = meta.story({
+  render: exampleRender(Examples.WithStartIcon),
+});
+
+export const WithClearButton = meta.story({
+  render: exampleRender(Examples.WithClearButton),
+});
+
+export const WithTrigger = meta.story({
+  render: exampleRender(Examples.WithTrigger),
+});
+
+export const Group = meta.story({
+  render: exampleRender(Examples.Group),
+});
+
+export const Compound = meta.story({
+  render: exampleRender(Examples.Compound),
+});
+
+export const Controlled = meta.story({
+  render: exampleRender(Examples.Controlled),
 });
 
 export const Disabled = meta.story({
@@ -39,30 +63,6 @@ export const Invalid = meta.story({
   render: exampleRender(Examples.Invalid),
 });
 
-export const Group = meta.story({
-  render: exampleRender(Examples.Group),
-});
-
-export const WithClearButton = meta.story({
-  render: exampleRender(Examples.WithClearButton),
-});
-
-export const WithStartIcon = meta.story({
-  render: exampleRender(Examples.WithStartIcon),
-});
-
-export const WithTrigger = meta.story({
-  render: exampleRender(Examples.WithTrigger),
-});
-
-export const Controlled = meta.story({
-  render: exampleRender(Examples.Controlled),
-});
-
-export const Compound = meta.story({
-  render: exampleRender(Examples.Compound),
-});
-
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

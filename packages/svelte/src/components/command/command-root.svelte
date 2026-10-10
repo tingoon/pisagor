@@ -4,7 +4,7 @@ import { commandRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "svelte";
 import ComboboxRoot from "../combobox/combobox-root.svelte";
-import { setCommandContext } from "./command.context";
+import { Context } from "./command.context";
 
 type Props = Omit<ComponentProps<typeof ComboboxRoot>, "recipe"> &
   BaseCommandProps;
@@ -16,7 +16,7 @@ let {
   ...rest
 }: Props = $props();
 const slots = $derived(recipe());
-setCommandContext({
+Context.set({
   get slots() {
     return slots;
   },

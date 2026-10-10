@@ -20,8 +20,16 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const CustomSpacing = meta.story({
-  render: Examples.CustomSpacing,
+export const Default = meta.story({
+  render: Examples.Default,
+});
+
+export const Progress = meta.story({
+  render: Examples.Progress,
+});
+
+export const StepTypes = meta.story({
+  render: Examples.StepTypes,
 });
 
 export const Async = meta.story({
@@ -36,16 +44,8 @@ export const KeyboardNavigation = meta.story({
   render: Examples.KeyboardNavigation,
 });
 
-export const Progress = meta.story({
-  render: Examples.Progress,
-});
-
 export const Skip = meta.story({
   render: Examples.Skip,
-});
-
-export const StepTypes = meta.story({
-  render: Examples.StepTypes,
 });
 
 export const WaitForClick = meta.story({
@@ -60,6 +60,10 @@ export const WaitForInput = meta.story({
   render: Examples.WaitForInput,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const CustomSpacing = meta.story({
+  render: Examples.CustomSpacing,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

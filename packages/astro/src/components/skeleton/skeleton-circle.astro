@@ -1,11 +1,12 @@
 ---
+import type { SkeletonProps as BaseSkeletonProps } from "@pisagor/props";
 import { skeletonRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"div">;
+type Props = HTMLAttributes<"div"> & BaseSkeletonProps;
 
-const { class: className, ...rest } = Astro.props;
-const slots = skeletonRecipe();
+const { recipe = skeletonRecipe, class: className, ...rest } = Astro.props;
+const slots = recipe();
 ---
 
 <div

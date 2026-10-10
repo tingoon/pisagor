@@ -6,7 +6,7 @@ import {
 import type { CalendarProps as BaseCalendarProps } from "@pisagor/props";
 import { calendarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { setCalendarSlotsContext } from "./calendar.context";
+import { Context } from "./calendar.context";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -23,7 +23,7 @@ let {
 }: Props = $props();
 
 const slots = $derived(recipe());
-setCalendarSlotsContext({
+Context.set({
   get slots() {
     return slots;
   },

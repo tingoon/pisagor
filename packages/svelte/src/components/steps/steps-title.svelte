@@ -1,24 +1,15 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
-import { useStepsItem } from "./steps.context";
+import { withStepsItemContext } from "./steps.context";
 
 type Props = HTMLAttributes<HTMLSpanElement> & {
   children?: Snippet;
 };
 
-let { class: className, children, ...rest }: Props = $props();
-const { slots } = useStepsItem();
+let { children, ...rest }: Props = $props();
+const part = withStepsItemContext(() => rest, { name: "Title" });
 </script>
 
-<Ark
-  as="span"
-  {...rest}
-  class={slots.title({ class: cn(className) })}
-  data-part="title"
-  data-scope="steps"
->
-  {@render children?.()}
-</Ark>
+<Ark as="span" {...part.props}> {@render children?.()} </Ark>

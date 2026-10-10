@@ -26,6 +26,14 @@ export const Variants = meta.story({
   render: Examples.Variants,
 });
 
+export const Action = meta.story({
+  render: Examples.Action,
+});
+
+export const WithPromise = meta.story({
+  render: Examples.WithPromise,
+});
+
 export const Duration = meta.story({
   render: Examples.Duration,
 });
@@ -36,14 +44,6 @@ export const Closable = meta.story({
 
 export const Dedupe = meta.story({
   render: Examples.Dedupe,
-});
-
-export const Action = meta.story({
-  render: Examples.Action,
-});
-
-export const WithPromise = meta.story({
-  render: Examples.WithPromise,
 });
 
 export const Placements = meta.story({

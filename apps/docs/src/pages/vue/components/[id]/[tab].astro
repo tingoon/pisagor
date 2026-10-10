@@ -1,5 +1,6 @@
 ---
 import ComponentDocPage from "#/components/docs/component-doc-page.astro";
+import VueExamplesHost from "#/components/docs/vue-examples-host.vue";
 import {
   listComponentTabStaticPaths,
   type SkillPaneId,
@@ -14,3 +15,4 @@ const tab = Astro.params.tab as SkillPaneId;
 ---
 
 <ComponentDocPage framework="vue" id={id} tab={tab} />
+{tab === "develop" ? <VueExamplesHost client:only="vue" /> : null}

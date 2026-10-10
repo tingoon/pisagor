@@ -23,7 +23,3 @@ export const Playground = meta.story({
 export const Variants = meta.story({
   render: exampleRender(Examples.Variants),
 });
-
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
-});

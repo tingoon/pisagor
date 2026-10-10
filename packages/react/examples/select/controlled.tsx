@@ -1,35 +1,21 @@
-import { createListCollection } from "@ark-ui/react";
 import { Select } from "@pisagor/react";
 import { useState } from "react";
 
 export function Controlled() {
-  const collection = createListCollection({
-    items: [
-      { label: "React", value: "react" },
-      { label: "Vue", value: "vue" },
-      { label: "Svelte", value: "svelte" },
-    ],
-  });
   const [value, setValue] = useState<string[]>(["react"]);
 
   return (
-    <Select.Root
-      collection={collection}
+    <Select
+      items={[
+        { label: "React", value: "react" },
+        { label: "Vue", value: "vue" },
+        { label: "Svelte", value: "svelte" },
+      ]}
       onValueChange={(value) =>
         setValue(Array.isArray(value) ? value : [value])
       }
+      placeholder="Select a framework"
       value={value}
-    >
-      <Select.Trigger>
-        <Select.ValueText placeholder="Select a framework" />
-      </Select.Trigger>
-      <Select.Content>
-        {collection.items.map((item) => (
-          <Select.Item item={item} key={item.value}>
-            {item.label}
-          </Select.Item>
-        ))}
-      </Select.Content>
-    </Select.Root>
+    />
   );
 }

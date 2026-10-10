@@ -5,7 +5,7 @@ import type {
 } from "@pisagor/props";
 import { inputGroupButtonRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
-import Button from "../button/button.astro";
+import Button from "../button.astro";
 
 type Props = Omit<
   HTMLAttributes<"button"> & BaseButtonProps,
@@ -16,6 +16,7 @@ type Props = Omit<
 const {
   size = "xs",
   variant = "ghost",
+  recipe = inputGroupButtonRecipe,
   class: className,
   ...rest
 } = Astro.props;
@@ -23,11 +24,10 @@ const {
 
 <Button
   {...rest}
-  class={inputGroupButtonRecipe({ className, size })}
+  class={recipe({ className, size })}
   data-part="button"
   data-scope="input-group"
   data-size={size}
-  size={size}
   variant={variant}
 >
   <slot />

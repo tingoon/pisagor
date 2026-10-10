@@ -1,18 +1,17 @@
 ---
-import { timelineItemRecipe } from "@pisagor/recipes";
+import type { TimelineItemProps as BaseTimelineItemProps } from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
+import { withProvider } from "./timeline.context";
 
-type Props = HTMLAttributes<"li">;
+type Props = HTMLAttributes<"li"> & BaseTimelineItemProps;
 
-const { class: className, ...rest } = Astro.props;
-const slots = timelineItemRecipe();
+const item = withProvider(Astro.props, {
+  defaultProps: { "data-part": "item" },
+  name: "Item",
+  slot: "base",
+});
 ---
 
-<li
-  {...rest}
-  class={slots.base({ className })}
-  data-part="item"
-  data-scope="timeline"
->
+<li {...item.props}>
   <slot />
 </li>

@@ -1,37 +1,19 @@
 <script lang="ts" setup>
 import { Select } from "@pisagor/vue";
 
-const collection = createListCollection({
-  items: [
-    { label: "JavaScript", value: "javascript" },
-    { label: "TypeScript", value: "typescript" },
-    { label: "Python", value: "python" },
-    { label: "Rust", value: "rust" },
-  ],
-});
+const items = [
+  { label: "JavaScript", value: "javascript" },
+  { label: "TypeScript", value: "typescript" },
+  { label: "Python", value: "python" },
+  { label: "Rust", value: "rust" },
+];
 </script>
 
 <template>
-  <Select.Root
+  <Select
     multiple
-    :collection="collection"
+    placeholder="Select languages…"
     :default-value="['javascript', 'typescript']"
-  >
-    <Select.Trigger>
-      <Select.ValueText class="capitalize">
-        <Select.Context v-slot="{ value }">{{
-          renderValue(value)
-        }}</Select.Context>
-      </Select.ValueText>
-    </Select.Trigger>
-    <Select.Content>
-      <Select.Item
-        v-for="item in collection.items"
-        :key="item.value"
-        :item="item"
-      >
-        {{ item.label }}
-      </Select.Item>
-    </Select.Content>
-  </Select.Root>
+    :items="items"
+  />
 </template>

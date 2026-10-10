@@ -27,3 +27,7 @@ export const Default = meta.story({
 export const Wrapping = meta.story({
   render: Examples.Wrapping,
 });
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
+});

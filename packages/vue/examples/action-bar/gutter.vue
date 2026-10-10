@@ -9,8 +9,14 @@ import {
 import { ActionBar, Button } from "@pisagor/vue";
 import { ref } from "vue";
 
-const isOpen = ref(false);
 const gutters = ["24px", "32px"] as const;
+const isOpen = ref(false);
+const gutter = ref<(typeof gutters)[number]>("24px");
+
+function select(value: (typeof gutters)[number]) {
+  isOpen.value = true;
+  gutter.value = value;
+}
 </script>
 
 <template>

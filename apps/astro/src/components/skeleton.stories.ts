@@ -21,18 +21,18 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Circle = meta.story({
-  render: () => ({ component: Examples.Circle }),
-});
-
-export const Composition = meta.story({
-  render: () => ({ component: Examples.Composition }),
-});
-
 export const Default = meta.story({
   render: () => ({ component: Examples.Default }),
 });
 
-export const Text = meta.story({
-  render: () => ({ component: Examples.Text }),
+export const SkeletonText = meta.story({
+  render: () => ({ component: Examples.SkeletonText }),
+});
+
+export const InCard = meta.story({
+  render: () => ({ component: Examples.InCard }),
+});
+
+export const CustomRecipe = meta.story({
+  render: () => ({ component: Examples.CustomRecipe }),
 });

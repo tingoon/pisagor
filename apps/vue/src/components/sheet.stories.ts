@@ -20,12 +20,20 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const CustomSpacing = meta.story({
-  render: exampleRender(Examples.CustomSpacing),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
 export const Inset = meta.story({
   render: exampleRender(Examples.Inset),
+});
+
+export const Sides = meta.story({
+  render: exampleRender(Examples.Sides),
+});
+
+export const ScrollArea = meta.story({
+  render: exampleRender(Examples.ScrollArea),
 });
 
 export const NoCloseButton = meta.story({
@@ -36,18 +44,14 @@ export const NonModal = meta.story({
   render: exampleRender(Examples.NonModal),
 });
 
-export const ScrollArea = meta.story({
-  render: exampleRender(Examples.ScrollArea),
-});
-
-export const Sides = meta.story({
-  render: exampleRender(Examples.Sides),
-});
-
 export const CloseBehavior = meta.story({
   render: exampleRender(Examples.CloseBehavior),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomSpacing = meta.story({
+  render: exampleRender(Examples.CustomSpacing),
+});
+
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

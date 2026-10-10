@@ -8,6 +8,7 @@ globs:
 cursor:
   alwaysApply: false
 ---
+
 # Solid Component Patterns
 
 How to build shared UI components in `packages/solid` (`@pisagor/solid`).
@@ -20,73 +21,62 @@ How to build shared UI components in `packages/solid` (`@pisagor/solid`).
 
 ## Package layout
 
-Folder name, main file, and component export name align: **kebab-case folder** → **`<name>.tsx`** → **PascalCase** component (e.g. `accordion/` → `accordion.tsx` → `Accordion`).
+Light components live under `src/components/`. Prefer a **flat single file** `src/components/<name>.tsx` (kebab-case → PascalCase export). Use a **folder** only when the component is multi-file.
 
-**Light** components live under `src/components/<name>/` and export only from the root barrel (`@pisagor/solid`). **Heavy** modules live under `src/<name>/` with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/solid-form`.
+**Heavy** modules live under `src/<name>/` with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/solid-form`.
 
 ```text
-<kebab-name>/
+# Typical (single-file)
+src/components/<name>.tsx          # parts + Object.assign compound at bottom
+src/components/index.ts            # root barrel: export * from "./<name>"
+
+# Multi-file (folder only when needed)
+src/components/<name>/
 ├── <name>.tsx
-├── index.ts                  # public shared packages — required
-├── <name>.context.tsx        # compound shared Solid context (when present)
-└── [optional splits]         # large sub-modules only
+├── index.ts
+├── <name>.context.tsx             # thin non-style context (when present)
+└── [optional splits]
 ```
 
-Package source stays **story-free**. There is no Storybook app for Solid today — stories live in `apps/solid` (`solid-stories`). Do **not** add `*.stories.*` under `packages/solid`. If/when Storybook is added, stories go in the app, not the package.
+Package source stays **story-free**. Demos live in `apps/solid` (`solid-stories`). Do **not** add `*.stories.*` under `packages/solid`.
 
 ### Implementation surface
 
 Package UI is **Solid JSX** in `.tsx` files (`solid-js` + `@ark-ui/solid`).
 
 - Prefer `splitProps` to separate local props from rest attrs.
-- Alias Ark roots to avoid clashes: `Tooltip as TooltipPrimitive`.
-- Use accessors / derived helpers for recipe slots when values change (`const slots = () => …`).
-- Styling prop is **`class`**, not React’s `className` — Solid DOM uses `class`.
+- Alias Ark roots: `Tooltip as TooltipPrimitive`.
+- Styling prop is **`class`**, not React’s `className`.
+- Slot memos use getters for reactivity: `createMemo` + `get slots() { return slots(); }`.
+
+### Slot recipe context (`createSlotRecipeContext`)
+
+Internal helper at `src/internal/create-slot-recipe-context.tsx` (not public `utils`). Same API as React: `{ name, recipe }`, `withProvider` / `withContext`, `Context` / `useStyles`. Same naming as React: PascalCase `name`; part `slot` defaults to kebab-case (`Root` → `base` → `data-part="root"`); camelCase keys pass `slot` + kebab `data-part` via `defaultProps`. Emitted `data-part` / `data-scope` must match React. Prefer native / `ark.*` hosts; Ark primitives when `asChild` / polymorphism is needed. Thin non-style state uses package `createContext` from `utils` with getter values (Solid idiom).
 
 ### Context file (`<name>.context.tsx`)
 
-When a compound component uses package-local Solid context (`createContext` from package `utils`, relative path by depth):
-
-- Put context value types, `createContext("Foo")<FooValue>()` / `createContext("Foo")<FooValue>({ … })`, and consumer hooks in `<name>.context.tsx`.
-- Export `{ FooContext, useFoo }` from that file; keep Root/Part JSX in `<name>.tsx`.
-- Provide with `<FooContext value={…}>` (the helper’s Provider takes a `value` prop) — do not invent a parallel context key.
-- Public props / part props stay in `<name>.tsx`. Context value types that public props reference live in the context file (`import type`).
-- One `<name>.context.tsx` per component folder even when there are multiple nested contexts (e.g. data-grid / data-table).
-- Do not move Ark/Zag `useXContext` re-exports or `XPrimitive.Context` into context files.
-- Barrel hooks re-export from `./<name>.context`, not from `<name>.tsx`.
-- In `index.ts`, put a blank line between type re-exports and context hook re-exports.
+Only for **foldered** multi-file components. Same rules as React — provide with `<FooContext value={…}>`. Single-file components keep `#region Context` in `<name>.tsx`.
 
 ### Public shared packages
 
-- One folder per public component — layout above is required.
-- Require `index.ts` barrel (re-exported from the root `@pisagor/solid` map).
-- Import recipes from `@pisagor/recipes` — do not add local `*.recipe.ts` shims or call `tv()`.
+- Flat file or multi-file folder — both re-export from the root `@pisagor/solid` barrel.
+- Import recipes from `@pisagor/recipes` — no local `*.recipe.ts` / `tv()`.
 
 ### Stories app (`apps/solid`)
 
 - `apps/solid` is a **stories host** (`solid-stories`), not Storybook.
-- Demo blocks live under `apps/solid/src/blocks/…` and import the public export map (`@pisagor/solid`, heavy subpaths, `@pisagor/solid-form`).
-- Do not require `*.stories.tsx` in the package or the app.
+- Demo blocks live in `apps/docs/src/blocks/solid/…` (docs app), not in this package.
 
 ### Cross-component imports
 
-- Within package source, prefer **relative** imports between siblings (e.g. `../button`, `../surface/use-form-control-surface`).
-- Apps and other packages use the public export map (light barrel or heavy subpath).
-- For cyclic pairs, import the concrete module file, not the barrel `index.ts`.
-- Import `{name}Recipe` / `{Name}VariantProps` from `@pisagor/recipes` — see [Styling](#styling).
-- Shared visual prop contracts (`variant` / `size` / `recipe` / recipe-linked fields) come from `@pisagor/props` — see [Shared props (`@pisagor/props`)](#shared-props-pisagorprops).
-- Use relative imports (`../../utils` / `../utils` by depth, `../../hooks` / `../hooks`, siblings) within the package.
-- Icons: prefer `@squidlab/phosphor-solid` (re-exported as `@pisagor/solid/icons` for consumers). Shared SVG stand-ins may live in `src/internal/icons` when matching existing parts.
+- Relative sibling imports; public map for apps.
+- Relative by depth: `../utils` / `../../utils`, `../internal/…`, `../hooks`.
+- Icons: `@squidlab/phosphor-solid` (also `@pisagor/solid/icons`). Shared SVG stand-ins may live in `src/internal/icons`.
 - Class merging: `cn` from `@pisagor/utils`.
 
 ### Shared props (`@pisagor/props`)
 
-Framework-agnostic visual props live in [`@pisagor/props`](../../../packages/props). Recipe `tv()` stays in `@pisagor/recipes`; props re-exports the shared surface (`{Name}VariantProps`, optional `recipe`).
-
-- Import: `import type { FooProps as BaseFooProps } from "@pisagor/props"`.
-- Public `FooProps` **extends** `BaseFooProps` (plus Ark/DOM / framework-only fields). Do not re-declare `recipe` or variant fields already on the shared type.
-- Framework packages own only framework-specific props (event names, slots, refs, `class`, `classNames`, sub-element bags).
-- Template: React [`button.tsx`](../../../packages/react/src/components/button/button.tsx) / Solid button under `packages/solid/src/components/button/`.
+Same contract as React — extend `BaseFooProps` from `@pisagor/props`. Template: React [`button.tsx`](../../../packages/react/src/components/button.tsx) / Solid [`button.tsx`](../../../packages/solid/src/components/button.tsx).
 
 ---
 
@@ -159,6 +149,6 @@ Same rules as [React Component Patterns → Authoring recipes](react-component.m
 
 ## Demos (not Storybook)
 
-- Author block demos in `apps/solid/src/blocks/…` when documenting compositions for docs.
+- Author block demos in `apps/docs/src/blocks/solid/…` when documenting compositions for docs.
 - Do **not** add `*.stories.tsx` under `packages/solid`.
 - If Storybook is introduced later, host stories in the app (mirror `apps/react`), not in the package — [Storybook](stories.mdc) / [Component](component.mdc).

@@ -5,9 +5,9 @@ import { workspaceUsers } from "./helpers";
 
 <template>
   <Table :is-hoverable="false">
-    <Table.Caption class="sr-only"
-      >Table with row hover disabled (isHoverable=false).</Table.Caption
-    >
+    <Table.Caption class="sr-only">
+      Table with row hover disabled (isHoverable=false).
+    </Table.Caption>
     <Table.Header>
       <Table.Row>
         <Table.Head>Name</Table.Head>

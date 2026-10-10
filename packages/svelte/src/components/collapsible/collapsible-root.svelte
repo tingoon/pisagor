@@ -6,7 +6,7 @@ import {
 import type { CollapsibleProps as BaseCollapsibleProps } from "@pisagor/props";
 import { collapsibleRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { setCollapsibleContext } from "./collapsible.context";
+import { Context } from "./collapsible.context";
 
 type Props = CollapsibleRootProps & BaseCollapsibleProps;
 
@@ -22,7 +22,7 @@ let {
 
 const slots = $derived(recipe());
 
-setCollapsibleContext({
+Context.set({
   get slots() {
     return slots;
   },

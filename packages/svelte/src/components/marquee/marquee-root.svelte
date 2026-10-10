@@ -4,9 +4,7 @@ import {
   Marquee as MarqueePrimitive,
 } from "@ark-ui/svelte/marquee";
 import type { MarqueeProps as BaseMarqueeProps } from "@pisagor/props";
-import { marqueeRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { setMarqueeContext } from "./marquee.context";
+import { withProvider } from "./marquee.context";
 import MarqueeEdge from "./marquee-edge.svelte";
 
 type Props = Omit<ArkRootProps, "side"> & {
@@ -20,28 +18,24 @@ let {
   children,
   spacing = "16px",
   speed = 50,
-  recipe = marqueeRecipe,
-  class: className,
   ...rest
 }: Props = $props();
-
-const slots = $derived(recipe());
-const side = $derived(orientation === "horizontal" ? "start" : "bottom");
-setMarqueeContext({
-  get slots() {
-    return slots;
-  },
-});
+const side = $derived<"start" | "bottom">(
+  orientation === "horizontal" ? "start" : "bottom",
+);
+const root = withProvider(
+  () => ({
+    ...rest,
+    "data-orientation": orientation,
+    side,
+    spacing,
+    speed,
+  }),
+  { name: "Root", slot: "base" },
+);
 </script>
 
-<MarqueePrimitive.Root
-  {...rest}
-  class={slots.base({ class: cn(className) })}
-  data-orientation={orientation}
-  {side}
-  {spacing}
-  {speed}
->
+<MarqueePrimitive.Root {...root.props}>
   {@render children?.()}
   {#if showEdges}
     <MarqueeEdge side={orientation === "horizontal" ? "start" : "top"} />

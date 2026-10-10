@@ -94,14 +94,6 @@ export const NonCollapsible = meta.story({
   render: Examples.NonCollapsible,
 });
 
-export const Disabled = meta.story({
-  render: Examples.Disabled,
-});
-
-export const Controlled = meta.story({
-  render: Examples.Controlled,
-});
-
 export const Compound = meta.story({
   parameters: {
     docs: {
@@ -116,4 +108,12 @@ export const Compound = meta.story({
 
 export const WithCard = meta.story({
   render: Examples.WithCard,
+});
+
+export const Controlled = meta.story({
+  render: Examples.Controlled,
+});
+
+export const Disabled = meta.story({
+  render: Examples.Disabled,
 });

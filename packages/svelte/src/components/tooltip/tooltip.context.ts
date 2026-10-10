@@ -1,9 +1,7 @@
-import type { TooltipRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { tooltipRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-export interface TooltipContextValue {
-  slots: TooltipRecipe;
-}
-
-const ctx = createContext("Tooltip")<TooltipContextValue>();
-export const setTooltipContext = ctx.setContext;
+export const { Context, withContext } = createSlotRecipeContext({
+  name: "Tooltip",
+  recipe: tooltipRecipe,
+});

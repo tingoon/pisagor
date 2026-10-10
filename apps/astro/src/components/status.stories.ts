@@ -18,14 +18,26 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Default = meta.story({
-  render: () => ({ component: Examples.Default }),
-});
-
 export const Variants = meta.story({
   render: () => ({ component: Examples.Variants }),
 });
 
 export const Sizes = meta.story({
   render: () => ({ component: Examples.Sizes }),
+});
+
+export const WithIcon = meta.story({
+  render: () => ({ component: Examples.WithIcon }),
+});
+
+export const CustomColor = meta.story({
+  render: () => ({ component: Examples.CustomColor }),
+});
+
+export const CustomSize = meta.story({
+  render: () => ({ component: Examples.CustomSize }),
+});
+
+export const CustomRecipe = meta.story({
+  render: () => ({ component: Examples.CustomRecipe }),
 });

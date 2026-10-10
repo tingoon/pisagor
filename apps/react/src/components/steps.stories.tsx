@@ -21,30 +21,30 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Icon = meta.story({
-  render: Examples.Icon,
+export const Default = meta.story({
+  render: Examples.Default,
 });
 
 export const Vertical = meta.story({
   render: Examples.Vertical,
 });
 
-export const Loading = meta.story({
-  render: Examples.Loading,
+export const Title = meta.story({
+  render: Examples.Title,
 });
 
 export const Description = meta.story({
   render: Examples.Description,
 });
 
-export const Title = meta.story({
-  render: Examples.Title,
+export const Icon = meta.story({
+  render: Examples.Icon,
 });
 
 export const Controlled = meta.story({
   render: Examples.Controlled,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const Loading = meta.story({
+  render: Examples.Loading,
 });

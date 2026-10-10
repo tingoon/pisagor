@@ -9,7 +9,7 @@ import {
   tagsInputRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { setTagsInputSlotsContext } from "./tags-input.context";
+import { Context } from "./tags-input.context";
 import TagsInputControl from "./tags-input-control.svelte";
 import TagsInputInput from "./tags-input-input.svelte";
 import TagsInputItem from "./tags-input-item.svelte";
@@ -35,7 +35,7 @@ let {
 }: Props = $props();
 
 const slots = $derived(recipe());
-setTagsInputSlotsContext({
+Context.set({
   get slots() {
     return slots;
   },

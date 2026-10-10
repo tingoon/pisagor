@@ -20,6 +20,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
+});
+
 export const Compound = meta.story({
   render: exampleRender(Examples.Compound),
 });
@@ -34,4 +38,8 @@ export const Disabled = meta.story({
 
 export const Invalid = meta.story({
   render: exampleRender(Examples.Invalid),
+});
+
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

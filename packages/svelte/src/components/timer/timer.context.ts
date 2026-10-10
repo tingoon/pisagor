@@ -1,18 +1,23 @@
-import type { TimerItemGroupRecipe, TimerRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface TimerContextValue {
-  slots: TimerRecipe;
-}
+export const {
+  Context,
+  Context: TimerStylesContext,
+  useStyles: useTimer,
+  withContext: withTimerContext,
+  withProvider: withTimerProvider,
+} = createSlotRecipeContext({
+  name: "Timer",
+  recipe: timerRecipe,
+});
 
-interface TimerItemGroupContextValue {
-  slots: TimerItemGroupRecipe;
-}
-
-const root = createContext("Timer")<TimerContextValue>();
-const itemGroup = createContext("TimerItemGroup")<TimerItemGroupContextValue>();
-
-export const setTimerContext = root.setContext;
-export const useTimer = root.getContext;
-export const setTimerItemGroupContext = itemGroup.setContext;
-export const useTimerItemGroup = itemGroup.getContext;
+export const {
+  Context: TimerItemGroupStylesContext,
+  useStyles: useTimerItemGroup,
+  withContext: withTimerItemGroupContext,
+  withProvider: withTimerItemGroupProvider,
+} = createSlotRecipeContext({
+  name: "Timer",
+  recipe: timerItemGroupRecipe,
+});

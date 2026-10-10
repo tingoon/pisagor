@@ -3,7 +3,7 @@ import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { itemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ClassValue } from "svelte/elements";
-import Separator from "../separator/separator.svelte";
+import Separator from "../separator.svelte";
 
 type Props = { class?: ClassValue } & BaseItemProps;
 

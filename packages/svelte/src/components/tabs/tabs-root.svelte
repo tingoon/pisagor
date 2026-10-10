@@ -1,27 +1,14 @@
 <script lang="ts">
 import { Tabs as TabsPrimitive, type TabsRootProps } from "@ark-ui/svelte/tabs";
 import type { TabsProps as BaseTabsProps } from "@pisagor/props";
-import { tabsRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { setTabsContext } from "./tabs.context";
+import { withProvider } from "./tabs.context";
 
 type Props = TabsRootProps & BaseTabsProps;
 
-let {
-  children,
-  recipe = tabsRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
-const slots = $derived(recipe());
-
-setTabsContext({
-  get slots() {
-    return slots;
-  },
-});
+let { children, ...rest }: Props = $props();
+const root = withProvider(() => rest, { name: "Root", slot: "base" });
 </script>
 
-<TabsPrimitive.Root {...rest} class={slots.base({ class: cn(className) })}>
+<TabsPrimitive.Root {...root.props}>
   {@render children?.()}
 </TabsPrimitive.Root>

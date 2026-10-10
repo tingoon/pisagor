@@ -3,13 +3,12 @@ import {
   Drawer as DrawerPrimitive,
   type DrawerTitleProps,
 } from "@ark-ui/svelte/drawer";
-import { cn } from "@pisagor/utils";
-import { useDrawer } from "./drawer.context";
+import { withContext } from "./drawer.context";
 
-let { class: className, children, ...rest }: DrawerTitleProps = $props();
-const { slots } = useDrawer();
+let { children, ...rest }: DrawerTitleProps = $props();
+const part = withContext(() => rest, { name: "Title" });
 </script>
 
-<DrawerPrimitive.Title {...rest} class={slots.title({ class: cn(className) })}>
+<DrawerPrimitive.Title {...part.props}>
   {@render children?.()}
 </DrawerPrimitive.Title>

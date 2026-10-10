@@ -1,9 +1,5 @@
 import { QrCode } from "@pisagor/react";
 
 export function Default() {
-  return (
-    <QrCode>
-      <QrCode.Frame />
-    </QrCode>
-  );
+  return <QrCode value="https://example.com" />;
 }

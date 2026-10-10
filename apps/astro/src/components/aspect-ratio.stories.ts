@@ -30,10 +30,6 @@ export const Default = meta.story({
   render: () => ({ component: Examples.Default }),
 });
 
-export const Widescreen = meta.story({
-  render: () => ({ component: Examples.Widescreen }),
-});
-
 export const Portrait = meta.story({
   render: () => ({ component: Examples.Portrait }),
 });

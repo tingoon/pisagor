@@ -25,7 +25,8 @@ let {
   ...rest
 }: Props = $props();
 
-const { slots } = useSheet();
+const styles = useSheet();
+const slots = $derived(styles.slots);
 </script>
 
 <Portal>

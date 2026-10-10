@@ -5,7 +5,8 @@ import type { HTMLAttributes } from "svelte/elements";
 import { useBreadcrumb } from "./breadcrumb.context";
 
 let { class: className, ...rest }: HTMLAttributes<HTMLSpanElement> = $props();
-const { slots } = useBreadcrumb();
+const styles = useBreadcrumb();
+const slots = $derived(styles.slots);
 </script>
 
 <Ark

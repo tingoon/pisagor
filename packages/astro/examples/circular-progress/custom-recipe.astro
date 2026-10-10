@@ -1,0 +1,13 @@
+---
+import { CircularProgress } from "@pisagor/astro";
+import { circularProgressRecipe } from "@pisagor/recipes";
+import { tv } from "tailwind-variants";
+
+const brandCircularProgressRecipe = tv({
+  extend: circularProgressRecipe,
+  slots: { range: "stroke-emerald-600" },
+  variants: {},
+});
+---
+
+<CircularProgress recipe={brandCircularProgressRecipe} value={66} />

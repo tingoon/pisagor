@@ -7,7 +7,8 @@ import { cn } from "@pisagor/utils";
 import { useImageCropper } from "./image-cropper.context";
 
 let { class: className, ...rest }: ImageCropperHandleProps = $props();
-const { slots } = useImageCropper();
+const styles = useImageCropper();
+const slots = $derived(styles.slots);
 </script>
 
 <ImageCropperPrimitive.Handle

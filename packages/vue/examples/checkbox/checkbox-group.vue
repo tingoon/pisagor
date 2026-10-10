@@ -4,12 +4,12 @@ import { Checkbox, Field } from "@pisagor/vue";
 
 <template>
   <Field.Set>
-    <Field.Legend variant="label"
-      >Show these items on the desktop:</Field.Legend
-    >
-    <Field.Description
-      >Select the items you want to show on the desktop.</Field.Description
-    >
+    <Field.Legend variant="label">
+      Show these items on the desktop:
+    </Field.Legend>
+    <Field.Description>
+      Select the items you want to show on the desktop.
+    </Field.Description>
     <Field.Group>
       <Checkbox.Group
         class="gap-3"

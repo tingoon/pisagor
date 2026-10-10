@@ -1,0 +1,66 @@
+import { Portal } from "@ark-ui/react/portal";
+import { GearIcon, InfoIcon, UserIcon } from "@phosphor-icons/react";
+import { Button, Dialog, DropdownMenu } from "@pisagor/react";
+import { useState } from "react";
+import { menuDialogBlock } from "#/recipes/blocks/overlay";
+
+const styles = menuDialogBlock();
+
+export function MenuDialog() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <DropdownMenu>
+        <DropdownMenu.Trigger asChild>
+          <Button variant="outline">Open menu</Button>
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Content>
+          <DropdownMenu.Item onSelect={() => setIsOpen(true)} value="settings">
+            <GearIcon />
+            Open settings
+          </DropdownMenu.Item>
+          <DropdownMenu.Item disabled value="profile">
+            <UserIcon />
+            View profile
+          </DropdownMenu.Item>
+          <DropdownMenu.Item disabled value="help">
+            <InfoIcon />
+            Help
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu>
+      <Dialog.Root onOpenChange={({ open }) => setIsOpen(open)} open={isOpen}>
+        <Portal>
+          <Dialog.Backdrop />
+
+          <Dialog.Positioner>
+            <Dialog.Content>
+              <Dialog.Header>
+                <Dialog.Title>Settings</Dialog.Title>
+                <Dialog.Description>
+                  Adjust preferences without leaving your current context.
+                </Dialog.Description>
+              </Dialog.Header>
+              <Dialog.Body>
+                <p className={styles.description()}>
+                  You can open dialogs from menu items using the onSelect
+                  handler — the menu closes, then the dialog opens above the
+                  page.
+                </p>
+              </Dialog.Body>
+              <Dialog.Footer>
+                <Dialog.CloseTrigger asChild>
+                  <Button variant="outline">Cancel</Button>
+                </Dialog.CloseTrigger>
+                <Dialog.CloseTrigger asChild>
+                  <Button>Save</Button>
+                </Dialog.CloseTrigger>
+              </Dialog.Footer>
+            </Dialog.Content>
+          </Dialog.Positioner>
+        </Portal>
+      </Dialog.Root>
+    </>
+  );
+}

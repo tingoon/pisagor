@@ -1,24 +1,7 @@
-import controlledRaw from "./controlled.vue?raw";
-import defaultRaw from "./default.vue?raw";
-import disabledRaw from "./disabled.vue?raw";
-import image_previewRaw from "./image-preview.vue?raw";
-import invalidRaw from "./invalid.vue?raw";
-import on_surfaceRaw from "./on-surface.vue?raw";
-
-export const imports = `import { SignaturePad } from "@pisagor/vue";`;
-
-export const sources = {
-  Controlled: controlledRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  ImagePreview: image_previewRaw,
-  Invalid: invalidRaw,
-  OnSurface: on_surfaceRaw,
-} as const;
-
 export { default as Controlled } from "./controlled.vue";
+export { default as CustomRecipe } from "./custom-recipe.vue";
 export { default as Default } from "./default.vue";
 export { default as Disabled } from "./disabled.vue";
 export { default as ImagePreview } from "./image-preview.vue";
 export { default as Invalid } from "./invalid.vue";
-export { default as OnSurface } from "./on-surface.vue";
+export { imports, sources } from "./sources";

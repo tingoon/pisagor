@@ -20,6 +20,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
+});
+
 export const Collapsed = meta.story({
   render: exampleRender(Examples.Collapsed),
 });
@@ -28,18 +32,18 @@ export const CustomSeparator = meta.story({
   render: exampleRender(Examples.CustomSeparator),
 });
 
-export const WithLink = meta.story({
-  render: exampleRender(Examples.WithLink),
+export const Compound = meta.story({
+  render: exampleRender(Examples.Compound),
 });
 
 export const WithMenu = meta.story({
   render: exampleRender(Examples.WithMenu),
 });
 
-export const Compound = meta.story({
-  render: exampleRender(Examples.Compound),
+export const WithLink = meta.story({
+  render: exampleRender(Examples.WithLink),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

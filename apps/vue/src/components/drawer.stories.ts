@@ -20,16 +20,16 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const CustomSpacing = meta.story({
-  render: exampleRender(Examples.CustomSpacing),
-});
-
-export const DrawerContentInner = meta.story({
-  render: exampleRender(Examples.DrawerContentInner),
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
 });
 
 export const Inset = meta.story({
   render: exampleRender(Examples.Inset),
+});
+
+export const DrawerContentInner = meta.story({
+  render: exampleRender(Examples.DrawerContentInner),
 });
 
 export const SnapPoints = meta.story({
@@ -40,6 +40,10 @@ export const SwipeDirections = meta.story({
   render: exampleRender(Examples.SwipeDirections),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const CustomSpacing = meta.story({
+  render: exampleRender(Examples.CustomSpacing),
+});
+
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

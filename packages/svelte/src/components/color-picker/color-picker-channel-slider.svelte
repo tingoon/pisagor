@@ -11,7 +11,8 @@ let {
   class: className,
   ...rest
 }: ColorPickerChannelSliderProps = $props();
-const { slots } = useColorPicker();
+const styles = useColorPicker();
+const slots = $derived(styles.slots);
 </script>
 
 <ColorPickerPrimitive.ChannelSlider

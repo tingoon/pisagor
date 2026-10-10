@@ -1,33 +1,13 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
 import type { FileProps as BaseFileProps } from "@pisagor/props";
-import { fileRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { setFileContext } from "./file.context";
+import { withProvider } from "./file.context";
 
 type Props = HTMLAttributes<HTMLDivElement> & BaseFileProps;
 
-let {
-  children,
-  recipe = fileRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
-const slots = $derived(recipe());
-setFileContext({
-  get slots() {
-    return slots;
-  },
-});
+let { children, ...rest }: Props = $props();
+const root = withProvider(() => rest, { name: "Root", slot: "base" });
 </script>
 
-<Ark
-  as="div"
-  {...rest}
-  class={slots.base({ class: cn(className) })}
-  data-part="root"
-  data-scope="file"
->
-  {@render children?.()}
-</Ark>
+<Ark as="div" {...root.props}> {@render children?.()} </Ark>

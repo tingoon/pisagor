@@ -1,10 +1,12 @@
-import type { TableRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { tableRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface TableContextValue {
-  slots: TableRecipe;
-}
-
-const ctx = createContext("Table")<TableContextValue>();
-export const setTableContext = ctx.setContext;
-export const useTable = ctx.getContext;
+export const {
+  Context,
+  useStyles: useTable,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Table",
+  recipe: tableRecipe,
+});

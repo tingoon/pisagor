@@ -7,7 +7,8 @@ import { cn } from "@pisagor/utils";
 import { useColorPicker } from "./color-picker.context";
 
 let { class: className, children, ...rest }: ColorPickerSwatchProps = $props();
-const { slots } = useColorPicker();
+const styles = useColorPicker();
+const slots = $derived(styles.slots);
 </script>
 
 <ColorPickerPrimitive.Swatch

@@ -3,14 +3,10 @@ import {
   Steps as StepsPrimitive,
   type StepsSeparatorProps,
 } from "@ark-ui/svelte/steps";
-import { cn } from "@pisagor/utils";
-import { useStepsItem } from "./steps.context";
+import { withStepsItemContext } from "./steps.context";
 
-let { class: className, ...rest }: StepsSeparatorProps = $props();
-const { slots } = useStepsItem();
+let { ...rest }: StepsSeparatorProps = $props();
+const part = withStepsItemContext(() => rest, { name: "Separator" });
 </script>
 
-<StepsPrimitive.Separator
-  {...rest}
-  class={slots.separator({ class: cn(className) })}
-/>
+<StepsPrimitive.Separator {...part.props} />

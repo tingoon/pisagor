@@ -7,6 +7,7 @@ import { appShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, VNode, VNodeChild } from "vue";
 import {
+  computed,
   defineComponent,
   h,
   onBeforeUnmount,
@@ -16,6 +17,7 @@ import {
   ref,
   watchEffect,
 } from "vue";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
 import { createContext } from "../../internal/utils/create-context";
 import { Button } from "../button";
 import { Resizable } from "../resizable";
@@ -219,6 +221,14 @@ function useHotkey(toggle: () => void) {
 // #endregion
 
 // #region Contexts
+const {
+  provideStyles: provideAppShellStyles,
+  useOptionalStyles: useOptionalAppShellStyles,
+} = createSlotRecipeContext({
+  name: "AppShell",
+  recipe: appShellRecipe,
+});
+
 interface AppShellContextValue {
   defaultInspectorResizableProps: typeof APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS;
   defaultPanelResizableProps: typeof APP_SHELL_DEFAULT_PANEL_RESIZABLE_PROPS;
@@ -229,8 +239,6 @@ interface AppShellContextValue {
   regionResizing: boolean;
   regionVars: Record<AppShellRegionVar, string>;
   shellRef: { value: HTMLDivElement | null };
-  /** Slot classes from the active style recipe. */
-  styles: ReturnType<typeof appShellRecipe>;
   setFixedStackVar: (name: AppShellFixedStackVar, value: string) => void;
   setRegionResizing: (resizing: boolean) => void;
   setRegionVar: (name: AppShellRegionVar, value: string) => void;
@@ -249,10 +257,11 @@ const [provideAppShellRailContext, useAppShellRail] = createContext(
 
 export { useAppShell, useAppShellRail };
 
-function useAppShellStyles() {
-  return (
-    (useAppShell() as AppShellContextValue | undefined)?.styles ?? defaultStyles
-  );
+/** Slot classes getter for the nearest shell (default recipe outside one). */
+function useAppShellSlots() {
+  const styles = useOptionalAppShellStyles();
+
+  return () => styles?.slots ?? defaultStyles;
 }
 // #endregion
 
@@ -547,11 +556,15 @@ export const AppShellRoot = defineComponent({
       setRegionResizing,
       setRegionVar,
       shellRef: shellRef,
-      styles: props.recipe(),
     });
 
-    watchEffect(() => {
-      contextValue.styles = props.recipe();
+    const shellSlots = computed(() => props.recipe());
+
+    provideAppShellStyles({
+      get slots() {
+        return shellSlots.value;
+      },
+      variants: {},
     });
 
     watchEffect(() => {
@@ -585,7 +598,7 @@ export const AppShellRoot = defineComponent({
         {
           ...attrs,
           class: cn(
-            contextValue.styles.base(),
+            shellSlots.value.base(),
             props.class,
             (attrs as AttrsWithClassStyle).class,
           ),
@@ -626,6 +639,7 @@ export const AppShellBanner = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const getSlots = useAppShellSlots();
     const bannerRef = ref<HTMLElement | null>(null);
     useSyncFixedRegionHeight(
       bannerRef,
@@ -639,13 +653,8 @@ export const AppShellBanner = defineComponent({
         {
           ...attrs,
           class: cn(
-            useAppShellStyles().banner(),
-            regionPositionClasses(
-              useAppShellStyles(),
-              props.position,
-              "row",
-              "banner",
-            ),
+            getSlots().banner(),
+            regionPositionClasses(getSlots(), props.position, "row", "banner"),
             (attrs as AttrsWithClassStyle).class,
           ),
           "data-part": "banner",
@@ -672,6 +681,7 @@ export const AppShellNavigation = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const getSlots = useAppShellSlots();
     const navRef = ref<HTMLElement | null>(null);
     useSyncFixedRegionHeight(
       navRef,
@@ -685,9 +695,9 @@ export const AppShellNavigation = defineComponent({
         {
           ...attrs,
           class: cn(
-            useAppShellStyles().navigation(),
+            getSlots().navigation(),
             regionPositionClasses(
-              useAppShellStyles(),
+              getSlots(),
               props.position,
               "row",
               "navigation",
@@ -712,15 +722,13 @@ export const AppShellMain = defineComponent({
   inheritAttrs: false,
   name: "AppShell.Main",
   setup(_, { attrs, slots }) {
+    const getSlots = useAppShellSlots();
     return () =>
       h(
         "div",
         {
           ...attrs,
-          class: cn(
-            useAppShellStyles().main(),
-            (attrs as AttrsWithClassStyle).class,
-          ),
+          class: cn(getSlots().main(), (attrs as AttrsWithClassStyle).class),
           "data-part": "main",
           "data-scope": "app-shell",
           style: { gridArea: "main", ...(attrs as AttrsWithClassStyle).style },
@@ -740,19 +748,15 @@ export const AppShellHeader = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const getSlots = useAppShellSlots();
     return () =>
       h(
         "header",
         {
           ...attrs,
           class: cn(
-            useAppShellStyles().header(),
-            regionPositionClasses(
-              useAppShellStyles(),
-              props.position,
-              "row",
-              "header",
-            ),
+            getSlots().header(),
+            regionPositionClasses(getSlots(), props.position, "row", "header"),
             (attrs as AttrsWithClassStyle).class,
           ),
           "data-part": "header",
@@ -768,15 +772,13 @@ export const AppShellContent = defineComponent({
   inheritAttrs: false,
   name: "AppShell.Content",
   setup(_, { attrs, slots }) {
+    const getSlots = useAppShellSlots();
     return () =>
       h(
         "main",
         {
           ...attrs,
-          class: cn(
-            useAppShellStyles().content(),
-            (attrs as AttrsWithClassStyle).class,
-          ),
+          class: cn(getSlots().content(), (attrs as AttrsWithClassStyle).class),
           "data-part": "content",
           "data-scope": "app-shell",
         },
@@ -814,6 +816,7 @@ export const AppShellPanel = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const getSlots = useAppShellSlots();
     const { defaultPanelResizableProps, panelStates } =
       useAppShell() as AppShellContextValue;
 
@@ -850,15 +853,11 @@ export const AppShellPanel = defineComponent({
         {
           ...attrs,
           class: cn(
-            useAppShellStyles().panel(),
+            getSlots().panel(),
             props.placement === "start"
               ? "border-e border-border"
               : "border-s border-border",
-            regionPositionClasses(
-              useAppShellStyles(),
-              props.position,
-              "column",
-            ),
+            regionPositionClasses(getSlots(), props.position, "column"),
             side.open ? "opacity-100" : "pointer-events-none opacity-0",
             props.class,
             (attrs as AttrsWithClassStyle).class,
@@ -886,9 +885,7 @@ export const AppShellPanel = defineComponent({
                 ...regionResizeCallbacks,
               })
             : null,
-          h("div", { class: useAppShellStyles().sideBody() }, () =>
-            slots.default?.(),
-          ),
+          h("div", { class: getSlots().sideBody() }, slots.default?.()),
         ],
       );
   },
@@ -898,13 +895,14 @@ export const AppShellPanelHeader = defineComponent({
   inheritAttrs: false,
   name: "AppShell.PanelHeader",
   setup(_, { attrs, slots }) {
+    const getSlots = useAppShellSlots();
     return () =>
       h(
         "div",
         {
           ...attrs,
           class: cn(
-            useAppShellStyles().panelHeader(),
+            getSlots().panelHeader(),
             (attrs as AttrsWithClassStyle).class,
           ),
           "data-part": "panel-header",
@@ -919,17 +917,18 @@ export const AppShellPanelContent = defineComponent({
   inheritAttrs: false,
   name: "AppShell.PanelContent",
   setup(_, { attrs, slots }) {
+    const getSlots = useAppShellSlots();
     return () =>
       h(
         ScrollArea as Component,
-        { class: useAppShellStyles().scrollArea(), ...attrs },
+        { class: getSlots().scrollArea(), ...attrs },
         () =>
           h(
             "div",
             {
               ...attrs,
               class: cn(
-                useAppShellStyles().panelContent(),
+                getSlots().panelContent(),
                 (attrs as AttrsWithClassStyle).class,
               ),
               "data-part": "panel-content",
@@ -945,13 +944,14 @@ export const AppShellPanelFooter = defineComponent({
   inheritAttrs: false,
   name: "AppShell.PanelFooter",
   setup(_, { attrs, slots }) {
+    const getSlots = useAppShellSlots();
     return () =>
       h(
         "div",
         {
           ...attrs,
           class: cn(
-            useAppShellStyles().panelFooter(),
+            getSlots().panelFooter(),
             (attrs as AttrsWithClassStyle).class,
           ),
           "data-part": "panel-footer",
@@ -1042,6 +1042,7 @@ export const AppShellInspector = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const getSlots = useAppShellSlots();
     const { defaultInspectorResizableProps, inspectorStates } =
       useAppShell() as AppShellContextValue;
 
@@ -1077,10 +1078,10 @@ export const AppShellInspector = defineComponent({
         {
           ...attrs,
           class: cn(
-            useAppShellStyles().inspector(),
+            getSlots().inspector(),
             props.placement === "start" ? "border-e" : "border-s",
             regionPositionClasses(
-              useAppShellStyles(),
+              getSlots(),
               props.position,
               "column",
               undefined,
@@ -1113,9 +1114,7 @@ export const AppShellInspector = defineComponent({
                 ...regionResizeCallbacks,
               })
             : null,
-          h("div", { class: useAppShellStyles().sideBody() }, () =>
-            slots.default?.(),
-          ),
+          h("div", { class: getSlots().sideBody() }, slots.default?.()),
         ],
       );
   },
@@ -1125,13 +1124,14 @@ export const AppShellInspectorHeader = defineComponent({
   inheritAttrs: false,
   name: "AppShell.InspectorHeader",
   setup(_, { attrs, slots }) {
+    const getSlots = useAppShellSlots();
     return () =>
       h(
         "div",
         {
           ...attrs,
           class: cn(
-            useAppShellStyles().inspectorHeader(),
+            getSlots().inspectorHeader(),
             (attrs as AttrsWithClassStyle).class,
           ),
           "data-part": "inspector-header",
@@ -1146,17 +1146,18 @@ export const AppShellInspectorContent = defineComponent({
   inheritAttrs: false,
   name: "AppShell.InspectorContent",
   setup(_, { attrs, slots }) {
+    const getSlots = useAppShellSlots();
     return () =>
       h(
         ScrollArea as Component,
-        { class: useAppShellStyles().scrollArea(), ...attrs },
+        { class: getSlots().scrollArea(), ...attrs },
         () =>
           h(
             "div",
             {
               ...attrs,
               class: cn(
-                useAppShellStyles().inspectorContent(),
+                getSlots().inspectorContent(),
                 (attrs as AttrsWithClassStyle).class,
               ),
               "data-part": "inspector-content",
@@ -1172,13 +1173,14 @@ export const AppShellInspectorFooter = defineComponent({
   inheritAttrs: false,
   name: "AppShell.InspectorFooter",
   setup(_, { attrs, slots }) {
+    const getSlots = useAppShellSlots();
     return () =>
       h(
         "div",
         {
           ...attrs,
           class: cn(
-            useAppShellStyles().inspectorFooter(),
+            getSlots().inspectorFooter(),
             (attrs as AttrsWithClassStyle).class,
           ),
           "data-part": "inspector-footer",
@@ -1265,6 +1267,7 @@ export const AppShellRail = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const getSlots = useAppShellSlots();
     const { railStates } = useAppShell() as AppShellContextValue;
 
     const activeRailId = ref(props.activeRailId);
@@ -1291,13 +1294,9 @@ export const AppShellRail = defineComponent({
         {
           ...attrs,
           class: cn(
-            useAppShellStyles().rail(),
+            getSlots().rail(),
             props.placement === "start" ? "border-e" : "border-s",
-            regionPositionClasses(
-              useAppShellStyles(),
-              props.position,
-              "column",
-            ),
+            regionPositionClasses(getSlots(), props.position, "column"),
             (attrs as AttrsWithClassStyle).class,
           ),
           "data-part": "rail",
@@ -1335,6 +1334,7 @@ export const AppShellRailItem = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const getSlots = useAppShellSlots();
     const railState = useAppShellRail() as AppShellRailState;
     const { panelStates } = useAppShell() as AppShellContextValue;
 
@@ -1348,10 +1348,7 @@ export const AppShellRailItem = defineComponent({
       {
         ...(attrs as AttrsWithClassStyle),
         "aria-current": active ? "page" : undefined,
-        class: cn(
-          useAppShellStyles().railItem(),
-          (attrs as AttrsWithClassStyle).class,
-        ),
+        class: cn(getSlots().railItem(), (attrs as AttrsWithClassStyle).class),
         clickEffect: false,
         "data-active": active,
         "data-part": "rail-item",
@@ -1418,6 +1415,7 @@ export const AppShellSideTrigger = defineComponent({
     toggle: { required: true, type: Function as PropType<() => void> },
   },
   setup(props, { attrs, slots }) {
+    const getSlots = useAppShellSlots();
     const resolvedOff = props.off ?? props.defaultOff;
     const resolvedOn = props.on ?? props.defaultOn;
 
@@ -1429,10 +1427,7 @@ export const AppShellSideTrigger = defineComponent({
           "aria-label":
             attrs["aria-label"] ?? `Toggle ${props.placement} region`,
           "aria-pressed": props.open,
-          class: cn(
-            useAppShellStyles().inline(),
-            (attrs as AttrsWithClassStyle).class,
-          ),
+          class: cn(getSlots().inline(), (attrs as AttrsWithClassStyle).class),
           "data-part": props.dataPart,
           "data-placement": props.placement,
           "data-scope": "app-shell",

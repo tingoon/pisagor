@@ -1,10 +1,18 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
-import type { ComponentProps, JSX } from "solid-js";
-import { splitProps } from "solid-js";
-import { ItemContext, useItem } from "./item.context";
+import type { Component, ComponentProps, JSX } from "solid-js";
+import { createMemo, splitProps } from "solid-js";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
 import { useItemGroup } from "./item-group.context";
+
+// #region Context
+const {
+  Context: ItemStylesContext,
+  useStyles: useItem,
+  withContext,
+} = createSlotRecipeContext({ name: "Item", recipe: itemRecipe });
+// #endregion
 
 export interface ItemProps
   extends ComponentProps<typeof ark.div>,
@@ -18,41 +26,49 @@ export type ItemDescriptionProps = ComponentProps<typeof ark.p>;
 export type ItemActionsProps = ComponentProps<typeof ark.div>;
 export type ItemFooterProps = ComponentProps<typeof ark.div>;
 
+/** Inherits `variant` from the nearest ItemGroup when not set. */
 export function ItemRoot(props: ItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "variant",
-    "children",
-    "recipe",
-    "class",
-  ]);
+  const [local, rest] = splitProps(props, ["variant", "recipe", "class"]);
   const group = useItemGroup();
   const variant = () => local.variant ?? group?.variant ?? "default";
-  const slots = () => (local.recipe ?? itemRecipe)();
+  const resolved = () => ({
+    ...itemRecipe.defaultVariants,
+    ...local.recipe?.defaultVariants,
+    variant: variant(),
+  });
+  const slots = createMemo(() => (local.recipe ?? itemRecipe)(resolved()));
 
   return (
-    <ItemContext value={{ slots: slots(), variant: variant() }}>
+    <ItemStylesContext
+      value={{
+        get slots() {
+          return slots();
+        },
+        get variants() {
+          return resolved();
+        },
+      }}
+    >
       <ark.div
         {...rest}
-        class={slots().base({ class: local.class, variant: variant() })}
+        class={slots().base({ class: local.class })}
         data-part="root"
         data-scope="item"
         data-variant={variant()}
-      >
-        {local.children}
-      </ark.div>
-    </ItemContext>
+      />
+    </ItemStylesContext>
   );
 }
 
 export function ItemMedia(props: ItemMediaProps): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "children", "class"]);
-  const { slots } = useItem();
+  const styles = useItem();
   const variant = () => local.variant ?? "default";
 
   return (
     <ark.div
       {...rest}
-      class={slots.media({ class: local.class, variant: variant() })}
+      class={styles.slots.media({ class: local.class, variant: variant() })}
       data-part="media"
       data-scope="item"
       data-variant={variant()}
@@ -62,98 +78,27 @@ export function ItemMedia(props: ItemMediaProps): JSX.Element {
   );
 }
 
-export function ItemContent(props: ItemContentProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const { slots } = useItem();
+export const ItemContent: Component<ItemContentProps> = withContext(ark.div, {
+  name: "Content",
+});
 
-  return (
-    <ark.div
-      {...rest}
-      class={slots.content({ class: local.class })}
-      data-part="content"
-      data-scope="item"
-    >
-      {local.children}
-    </ark.div>
-  );
-}
+export const ItemTitle: Component<ItemTitleProps> = withContext(ark.div, {
+  name: "Title",
+});
 
-export function ItemTitle(props: ItemTitleProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const { slots } = useItem();
+export const ItemDescription: Component<ItemDescriptionProps> = withContext(
+  ark.p,
+  { name: "Description" },
+);
 
-  return (
-    <ark.div
-      {...rest}
-      class={slots.title({ class: local.class })}
-      data-part="title"
-      data-scope="item"
-    >
-      {local.children}
-    </ark.div>
-  );
-}
+export const ItemActions: Component<ItemActionsProps> = withContext(ark.div, {
+  name: "Actions",
+});
 
-export function ItemDescription(props: ItemDescriptionProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const { slots } = useItem();
+export const ItemHeader: Component<ItemHeaderProps> = withContext(ark.div, {
+  name: "Header",
+});
 
-  return (
-    <ark.p
-      {...rest}
-      class={slots.description({ class: local.class })}
-      data-part="description"
-      data-scope="item"
-    >
-      {local.children}
-    </ark.p>
-  );
-}
-
-export function ItemActions(props: ItemActionsProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const { slots } = useItem();
-
-  return (
-    <ark.div
-      {...rest}
-      class={slots.actions({ class: local.class })}
-      data-part="actions"
-      data-scope="item"
-    >
-      {local.children}
-    </ark.div>
-  );
-}
-
-export function ItemHeader(props: ItemHeaderProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const { slots } = useItem();
-
-  return (
-    <ark.div
-      {...rest}
-      class={slots.header({ class: local.class })}
-      data-part="header"
-      data-scope="item"
-    >
-      {local.children}
-    </ark.div>
-  );
-}
-
-export function ItemFooter(props: ItemFooterProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
-  const { slots } = useItem();
-
-  return (
-    <ark.div
-      {...rest}
-      class={slots.footer({ class: local.class })}
-      data-part="footer"
-      data-scope="item"
-    >
-      {local.children}
-    </ark.div>
-  );
-}
+export const ItemFooter: Component<ItemFooterProps> = withContext(ark.div, {
+  name: "Footer",
+});

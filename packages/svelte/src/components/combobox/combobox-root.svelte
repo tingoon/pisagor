@@ -5,29 +5,44 @@ import {
   Combobox as ComboboxPrimitive,
 } from "@ark-ui/svelte/combobox";
 import type { ComboboxProps as BaseComboboxProps } from "@pisagor/props";
-import { comboboxRecipe } from "@pisagor/recipes";
-import { setComboboxRootContext } from "./combobox.context";
+import {
+  comboboxRecipe,
+  type FormControlGroupShellVariantProps,
+} from "@pisagor/recipes";
+import { Context, setComboboxControlContext } from "./combobox.context";
 
 type FormControlVariant = "primary" | "secondary";
 
 type Props = Omit<ArkRootProps<CollectionItem>, "onValueChange"> & {
   onValueChange?: (value: string[]) => void;
+  /** Visual shell variant applied to the input. Defaults to `primary`. */
   variant?: FormControlVariant;
+  /** Input size. Defaults to `md`. */
+  size?: FormControlGroupShellVariantProps["size"];
 } & BaseComboboxProps;
 
 let {
   openOnClick = true,
   children,
   onValueChange,
-  variant: _variant,
+  variant,
+  size,
   recipe = comboboxRecipe,
   ...rest
 }: Props = $props();
 
 const slots = $derived(recipe());
-setComboboxRootContext({
+Context.set({
   get slots() {
     return slots;
+  },
+});
+setComboboxControlContext({
+  get size() {
+    return size;
+  },
+  get variant() {
+    return variant;
   },
 });
 

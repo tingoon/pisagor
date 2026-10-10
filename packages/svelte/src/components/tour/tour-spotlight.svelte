@@ -1,14 +1,16 @@
 <script lang="ts">
-import { Portal } from "@ark-ui/svelte/portal";
-import { Tour as TourPrimitive } from "@ark-ui/svelte/tour";
+import {
+  Tour as TourPrimitive,
+  type TourSpotlightProps,
+} from "@ark-ui/svelte/tour";
 import { cn } from "@pisagor/utils";
 import { useTourContext } from "./tour.context";
 
-type Props = { class?: import("svelte/elements").ClassValue };
-let { class: className }: Props = $props();
-const { slots } = useTourContext();
+let { class: className, ...rest }: TourSpotlightProps = $props();
+const ctx = useTourContext();
 </script>
 
-<Portal>
-  <TourPrimitive.Spotlight class={slots.spotlight({ class: cn(className) })} />
-</Portal>
+<TourPrimitive.Spotlight
+  {...rest}
+  class={ctx.slots.spotlight({ class: cn(className) })}
+/>

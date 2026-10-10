@@ -5,7 +5,7 @@ import {
 } from "@ark-ui/svelte/hover-card";
 import type { HoverCardProps as BaseHoverCardProps } from "@pisagor/props";
 import { hoverCardRecipe } from "@pisagor/recipes";
-import { setHoverCardContext } from "./hover-card.context";
+import { Context } from "./hover-card.context";
 
 type Props = HoverCardRootProps & BaseHoverCardProps;
 
@@ -20,7 +20,7 @@ let {
 
 const slots = $derived(recipe());
 
-setHoverCardContext({
+Context.set({
   get slots() {
     return slots;
   },

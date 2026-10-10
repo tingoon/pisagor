@@ -1,11 +1,12 @@
-import type { FrameRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { frameRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-export interface FrameContextValue {
-  slots: FrameRecipe;
-}
-
-const ctx = createContext("Frame")<FrameContextValue>();
-
-export const setFrameContext = ctx.setContext;
-export const useFrame = ctx.getContext;
+export const {
+  Context,
+  useStyles: useFrame,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Frame",
+  recipe: frameRecipe,
+});

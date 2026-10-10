@@ -8,7 +8,8 @@ import type { PopoverProps as BasePopoverProps } from "@pisagor/props";
 import { buttonRecipe, popoverRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
-import { setPopoverContentContext } from "./popover.context";
+import { Context } from "./popover.context";
+import PopoverPositioner from "./popover-positioner.svelte";
 
 type Props = ArkPopoverContentProps & {
   showCloseButton?: boolean;
@@ -24,15 +25,16 @@ let {
 
 const slots = $derived(recipe());
 
-setPopoverContentContext({
+Context.set({
   get slots() {
     return slots;
   },
+  variants: {},
 });
 </script>
 
 <Portal>
-  <PopoverPrimitive.Positioner>
+  <PopoverPositioner>
     <PopoverPrimitive.Content
       {...rest}
       class={slots.base({ class: cn(className) })}
@@ -51,5 +53,5 @@ setPopoverContentContext({
         </PopoverPrimitive.CloseTrigger>
       {/if}
     </PopoverPrimitive.Content>
-  </PopoverPrimitive.Positioner>
+  </PopoverPositioner>
 </Portal>

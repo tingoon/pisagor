@@ -1,8 +1,9 @@
 ---
+import type { SkeletonProps as BaseSkeletonProps } from "@pisagor/props";
 import { skeletonRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<"div"> {
+interface Props extends HTMLAttributes<"div">, BaseSkeletonProps {
   /**
    * The number of lines of the skeleton text.
    *
@@ -11,8 +12,13 @@ interface Props extends HTMLAttributes<"div"> {
   lines?: number;
 }
 
-const { lines = 2, class: className, ...rest } = Astro.props;
-const slots = skeletonRecipe();
+const {
+  lines = 2,
+  recipe = skeletonRecipe,
+  class: className,
+  ...rest
+} = Astro.props;
+const slots = recipe();
 ---
 
 <div

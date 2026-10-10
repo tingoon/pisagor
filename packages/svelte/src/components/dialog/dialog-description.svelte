@@ -3,16 +3,12 @@ import {
   type DialogDescriptionProps,
   Dialog as DialogPrimitive,
 } from "@ark-ui/svelte/dialog";
-import { cn } from "@pisagor/utils";
-import { useDialog } from "./dialog.context";
+import { withContext } from "./dialog.context";
 
-let { children, class: className, ...rest }: DialogDescriptionProps = $props();
-const { slots } = useDialog();
+let { children, ...rest }: DialogDescriptionProps = $props();
+const part = withContext(() => rest, { name: "Description" });
 </script>
 
-<DialogPrimitive.Description
-  {...rest}
-  class={slots.description({ class: cn(className) })}
->
+<DialogPrimitive.Description {...part.props}>
   {@render children?.()}
 </DialogPrimitive.Description>

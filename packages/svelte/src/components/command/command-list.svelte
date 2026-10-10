@@ -9,7 +9,8 @@ let {
   children,
   ...rest
 }: ComponentProps<typeof ComboboxList> = $props();
-const { slots } = useCommand();
+const styles = useCommand();
+const slots = $derived(styles.slots);
 </script>
 
 <div class={slots.listWrapper()}>

@@ -1,17 +1,13 @@
-import defaultRaw from "./default.astro?raw";
-import sizesRaw from "./sizes.astro?raw";
-import variantsRaw from "./variants.astro?raw";
-
-export const imports = `---
-import { InputGroup } from "@pisagor/astro";
----`;
-
-export const sources = {
-  Default: defaultRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
-} as const;
-
-export { default as Default } from "./default.astro";
+export { default as AlignBlockEnd } from "./align-block-end.astro";
+export { default as AlignBlockStart } from "./align-block-start.astro";
+export { default as AlignInlineEnd } from "./align-inline-end.astro";
+export { default as AlignInlineStart } from "./align-inline-start.astro";
+export { default as Disabled } from "./disabled.astro";
+export { default as Invalid } from "./invalid.astro";
 export { default as Sizes } from "./sizes.astro";
+export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.astro";
+export { default as WithBadge } from "./with-badge.astro";
+export { default as WithKeyboardShortcut } from "./with-keyboard-shortcut.astro";
+export { default as WithSpinner } from "./with-spinner.astro";
+export { default as WithTextarea } from "./with-textarea.astro";

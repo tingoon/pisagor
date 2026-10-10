@@ -10,9 +10,9 @@ const items = [
 
 <template>
   <Table>
-    <Table.Caption class="sr-only"
-      >Order summary with footer totals.</Table.Caption
-    >
+    <Table.Caption class="sr-only">
+      Order summary with footer totals.
+    </Table.Caption>
     <Table.Header>
       <Table.Row>
         <Table.Head>Item</Table.Head>
@@ -25,9 +25,9 @@ const items = [
       <Table.Row v-for="row in items" :key="row.id">
         <Table.Cell>{{ row.item }}</Table.Cell>
         <Table.Cell class="text-right">{{ row.qty }}</Table.Cell>
-        <Table.Cell class="text-right"
-          >${{ row.unitPrice.toFixed(2) }}</Table.Cell
-        >
+        <Table.Cell class="text-right">
+          ${{ row.unitPrice.toFixed(2) }}
+        </Table.Cell>
         <Table.Cell class="text-right">
           ${{ (row.qty * row.unitPrice).toFixed(2) }}
         </Table.Cell>

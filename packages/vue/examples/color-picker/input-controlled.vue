@@ -1,9 +1,12 @@
 <script lang="ts" setup>
-import { ColorPicker, Input } from "@pisagor/vue";
-import { ref } from "vue";
+import { ColorPicker, Input, parseColor } from "@pisagor/vue";
+import { computed, ref } from "vue";
 
 const value = ref("#eb5e41");
-const onValueChange = setValue;
+function onValueChange(next: typeof value.value) {
+  value.value = next;
+}
+const hexValue = computed(() => parseColor(value.value).toString("hex"));
 </script>
 
 <template>

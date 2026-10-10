@@ -16,44 +16,28 @@ const meta = preview.meta({
 });
 
 export const Playground = meta.story({
-  render: Examples.Default,
+  render: Examples.Variants,
   tags: ["autodocs"],
-});
-
-export const Sizes = meta.story({
-  render: Examples.Sizes,
 });
 
 export const Variants = meta.story({
   render: Examples.Variants,
 });
 
-export const BlurBehavior = meta.story({
-  render: Examples.BlurBehavior,
+export const Sizes = meta.story({
+  render: Examples.Sizes,
 });
 
-export const CustomDelimiter = meta.story({
-  render: Examples.CustomDelimiter,
+export const WithCombobox = meta.story({
+  render: Examples.WithCombobox,
 });
 
-export const DisableEditing = meta.story({
-  render: Examples.DisableEditing,
+export const Controlled = meta.story({
+  render: Examples.Controlled,
 });
 
-export const MaxTags = meta.story({
-  render: Examples.MaxTags,
-});
-
-export const PasteBehavior = meta.story({
-  render: Examples.PasteBehavior,
-});
-
-export const SanitizeValue = meta.story({
-  render: Examples.SanitizeValue,
-});
-
-export const Validation = meta.story({
-  render: Examples.Validation,
+export const ControlledInputValue = meta.story({
+  render: Examples.ControlledInputValue,
 });
 
 export const Disabled = meta.story({
@@ -64,26 +48,38 @@ export const Invalid = meta.story({
   render: Examples.Invalid,
 });
 
-export const WithCombobox = meta.story({
-  render: Examples.WithCombobox,
-});
-
-export const MaxLength = meta.story({
-  render: Examples.MaxLength,
+export const MaxTags = meta.story({
+  render: Examples.MaxTags,
 });
 
 export const MaxWithOverflow = meta.story({
   render: Examples.MaxWithOverflow,
 });
 
-export const ControlledInputValue = meta.story({
-  render: Examples.ControlledInputValue,
+export const MaxLength = meta.story({
+  render: Examples.MaxLength,
 });
 
-export const Controlled = meta.story({
-  render: Examples.Controlled,
+export const Validation = meta.story({
+  render: Examples.Validation,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const CustomDelimiter = meta.story({
+  render: Examples.CustomDelimiter,
+});
+
+export const BlurBehavior = meta.story({
+  render: Examples.BlurBehavior,
+});
+
+export const PasteBehavior = meta.story({
+  render: Examples.PasteBehavior,
+});
+
+export const DisableEditing = meta.story({
+  render: Examples.DisableEditing,
+});
+
+export const SanitizeValue = meta.story({
+  render: Examples.SanitizeValue,
 });

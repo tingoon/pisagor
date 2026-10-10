@@ -1,24 +1,15 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { useButtonGroup } from "./button-group.context";
+import { withContext } from "./button-group.context";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
 };
 
-let { children, class: className, ...rest }: Props = $props();
+let { children, ...rest }: Props = $props();
 
-const { slots } = useButtonGroup();
+const part = withContext(() => rest, { name: "Text", slot: "text" });
 </script>
 
-<Ark
-  as="div"
-  {...rest}
-  class={slots.text({ class: cn(className) })}
-  data-part="text"
-  data-scope="button-group"
->
-  {@render children?.()}
-</Ark>
+<Ark as="div" {...part.props}> {@render children?.()} </Ark>

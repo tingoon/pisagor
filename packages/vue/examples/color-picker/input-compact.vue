@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { PhPercent } from "@phosphor-icons/vue";
-import { ColorPicker, InputGroup, Separator } from "@pisagor/vue";
+import { ColorPicker, InputGroup, parseColor, Separator } from "@pisagor/vue";
 
 const defaultValue = parseColor("#0485F7").toString("hsla");
 </script>

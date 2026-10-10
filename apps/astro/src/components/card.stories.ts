@@ -58,3 +58,11 @@ export const Icon = meta.story({
 export const Product = meta.story({
   render: () => ({ component: Examples.Product }),
 });
+
+export const CustomSpacing = meta.story({
+  render: () => ({ component: Examples.CustomSpacing }),
+});
+
+export const CustomRecipe = meta.story({
+  render: () => ({ component: Examples.CustomRecipe }),
+});

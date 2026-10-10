@@ -7,7 +7,7 @@ import {
 import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { setColorPickerContext } from "./color-picker.context";
+import { Context } from "./color-picker.context";
 
 type Props = Omit<ArkRootProps, "defaultValue" | "value" | "onValueChange"> & {
   defaultValue?: string;
@@ -27,7 +27,7 @@ let {
 }: Props = $props();
 
 const slots = $derived(recipe());
-setColorPickerContext({
+Context.set({
   get slots() {
     return slots;
   },

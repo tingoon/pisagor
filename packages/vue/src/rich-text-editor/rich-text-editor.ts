@@ -24,8 +24,8 @@ import {
   watchEffect,
 } from "vue";
 import { useFormControlSurface } from "../components/surface/use-form-control-surface";
-import { Toggle } from "../components/toggle/toggle";
-import { VisuallyHidden } from "../components/visually-hidden/visually-hidden";
+import { Toggle } from "../components/toggle";
+import { VisuallyHidden } from "../components/visually-hidden";
 import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
 
@@ -279,7 +279,7 @@ export const RichTextEditorToolbar = defineComponent({
         },
         () =>
           slots.default?.() ?? [
-            h("div", { class: recipeSlots.inline() }, () => [
+            h("div", { class: recipeSlots.inline() }, [
               h(
                 Toggle as ArkPart,
                 {

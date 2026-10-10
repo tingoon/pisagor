@@ -24,6 +24,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: Examples.Default,
+});
+
 export const Sizes = meta.story({
   render: Examples.Sizes,
 });
@@ -32,10 +36,22 @@ export const Shapes = meta.story({
   render: Examples.Shapes,
 });
 
+export const Count = meta.story({
+  render: Examples.Count,
+});
+
 export const Fallbacks = meta.story({
   render: Examples.Fallbacks,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const Group = meta.story({
+  render: Examples.Group,
+});
+
+export const Compound = meta.story({
+  render: Examples.Compound,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

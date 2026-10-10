@@ -31,3 +31,7 @@ export const IconOnly = meta.story({
 export const WithLinks = meta.story({
   render: Examples.WithLinks,
 });
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
+});

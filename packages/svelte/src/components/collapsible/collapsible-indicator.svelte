@@ -12,7 +12,8 @@ let {
   children,
   ...rest
 }: CollapsibleIndicatorProps = $props();
-const { slots } = useCollapsible();
+const styles = useCollapsible();
+const slots = $derived(styles.slots);
 </script>
 
 <CollapsiblePrimitive.Indicator

@@ -1,22 +1,13 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import type { HTMLAnchorAttributes } from "svelte/elements";
-import { useLinkBox } from "./link-box.context";
+import { withContext } from "./link-box.context";
 
 type Props = HTMLAnchorAttributes & { children?: import("svelte").Snippet };
 
-let { children, class: className, ...rest }: Props = $props();
+let { children, ...rest }: Props = $props();
 
-const { slots } = useLinkBox();
+const part = withContext(() => rest, { name: "Overlay" });
 </script>
 
-<Ark
-  as="a"
-  {...rest}
-  class={slots.overlay({ class: cn(className) })}
-  data-part="overlay"
-  data-scope="link-box"
->
-  {@render children?.()}
-</Ark>
+<Ark as="a" {...part.props}> {@render children?.()} </Ark>

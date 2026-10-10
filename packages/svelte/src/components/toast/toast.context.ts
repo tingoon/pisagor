@@ -1,9 +1,8 @@
-import type { ToastItemRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { toastItemRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface ToastItemContextValue {
-  slots: ToastItemRecipe;
-}
-
-export const { setContext: setToastItemContext, getContext: useToastItem } =
-  createContext("ToastItem")<ToastItemContextValue>();
+export const { useStyles: useToastItem, withProvider } =
+  createSlotRecipeContext({
+    name: "Toast",
+    recipe: toastItemRecipe,
+  });

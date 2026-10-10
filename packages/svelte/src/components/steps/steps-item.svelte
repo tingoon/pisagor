@@ -4,27 +4,14 @@ import {
   Steps as StepsPrimitive,
 } from "@ark-ui/svelte/steps";
 import type { StepsItemProps as BaseStepsItemProps } from "@pisagor/props";
-import { stepsItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { setStepsItemContext } from "./steps.context";
+import { withStepsItemProvider } from "./steps.context";
 
 type Props = StepsItemProps & BaseStepsItemProps;
 
-let {
-  recipe = stepsItemRecipe,
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
-const slots = $derived(recipe());
-
-setStepsItemContext({
-  get slots() {
-    return slots;
-  },
-});
+let { children, ...rest }: Props = $props();
+const root = withStepsItemProvider(() => rest, { name: "Item", slot: "base" });
 </script>
 
-<StepsPrimitive.Item {...rest} class={slots.base({ class: cn(className) })}>
+<StepsPrimitive.Item {...root.props}>
   {@render children?.()}
 </StepsPrimitive.Item>

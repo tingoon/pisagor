@@ -1,10 +1,12 @@
-import type { CarouselRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { carouselRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface CarouselContextValue {
-  slots: CarouselRecipe;
-}
-
-const ctx = createContext("Carousel")<CarouselContextValue>();
-export const setCarouselContext = ctx.setContext;
-export const useCarousel = ctx.getContext;
+export const {
+  Context,
+  useStyles: useCarousel,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Carousel",
+  recipe: carouselRecipe,
+});

@@ -1,16 +1,12 @@
 {
   "dependencies": {
-    "@ark-ui/react": "^5.39.2",
     "@mantine/hooks": "^9.6.2",
     "@phosphor-icons/react": "^2.1.10",
     "@pisagor/react": "workspace:*",
     "@pisagor/react-form": "workspace:*",
-    "@pisagor/recipes": "workspace:*",
-    "@pisagor/utils": "workspace:*",
     "@tanstack/react-form": "^1.33.5",
     "react": "catalog:",
-    "react-dom": "catalog:",
-    "zod": "^4.6.5"
+    "react-dom": "catalog:"
   },
   "description": "React Storybook for @pisagor/react package stories.",
   "devDependencies": {

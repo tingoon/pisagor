@@ -35,14 +35,14 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: Examples.Default,
+});
+
 export const Horizontal = meta.story({
   render: Examples.Horizontal,
 });
 
 export const Compound = meta.story({
   render: Examples.Compound,
-});
-
-export const Default = meta.story({
-  render: Examples.Default,
 });

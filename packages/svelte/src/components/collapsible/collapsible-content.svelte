@@ -6,7 +6,8 @@ import {
 import { useCollapsible } from "./collapsible.context";
 
 let { class: className, children, ...rest }: CollapsibleContentProps = $props();
-const { slots } = useCollapsible();
+const styles = useCollapsible();
+const slots = $derived(styles.slots);
 </script>
 
 <CollapsiblePrimitive.Content {...rest} class={slots.content()}>

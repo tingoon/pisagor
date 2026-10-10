@@ -1,14 +1,20 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { HTMLAttributes } from "svelte/elements";
+import {
+  type TourControlProps,
+  Tour as TourPrimitive,
+} from "@ark-ui/svelte/tour";
+import { dialogRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
 
-let {
-  children,
-  class: className,
-  ...rest
-}: HTMLAttributes<HTMLDivElement> = $props();
+let { children, class: className, ...rest }: TourControlProps = $props();
+const dialogSlots = $derived(dialogRecipe());
 </script>
 
-<Ark as="div" {...rest} class={className} data-part="footer" data-scope="tour">
+<TourPrimitive.Control
+  {...rest}
+  class={dialogSlots.footer({ class: cn(className) })}
+  data-part="control"
+  data-scope="tour"
+>
   {@render children?.()}
-</Ark>
+</TourPrimitive.Control>

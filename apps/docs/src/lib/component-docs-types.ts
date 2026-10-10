@@ -4,6 +4,13 @@ export interface ComponentExampleDoc {
   title: string;
   exportName: string;
   description?: string;
+  /** Heading depth of the example title in develop markdown (`###` → 3). */
+  depth: number;
+  /** Nearest `##` ancestor (e.g. Examples, Customization). */
+  section?: {
+    id: string;
+    title: string;
+  };
 }
 
 export interface ComponentDocs {

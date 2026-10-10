@@ -24,30 +24,38 @@ export const Default = meta.story({
   render: Examples.Default,
 });
 
-export const CustomSpacing = meta.story({
-  render: Examples.CustomSpacing,
-});
-
-export const InitialFocus = meta.story({
-  render: Examples.InitialFocus,
-});
-
-export const Nested = meta.story({
-  render: Examples.Nested,
+export const ScrollArea = meta.story({
+  render: Examples.ScrollArea,
 });
 
 export const NoCloseButton = meta.story({
   render: Examples.NoCloseButton,
 });
 
+export const Nested = meta.story({
+  render: Examples.Nested,
+});
+
+export const Compound = meta.story({
+  render: Examples.Compound,
+});
+
 export const NonModal = meta.story({
   render: Examples.NonModal,
 });
 
-export const ScrollArea = meta.story({
-  render: Examples.ScrollArea,
+export const InitialFocus = meta.story({
+  render: Examples.InitialFocus,
 });
 
 export const CloseBehavior = meta.story({
   render: Examples.CloseBehavior,
+});
+
+export const CustomSpacing = meta.story({
+  render: Examples.CustomSpacing,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

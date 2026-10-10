@@ -1,10 +1,11 @@
 <script lang="ts" setup>
+import { PhCreditCard, PhHardDrive, PhUser } from "@phosphor-icons/vue";
 import { Steps } from "@pisagor/vue";
 
 const items = [
-  { icon: UserIcon, id: "user" },
-  { icon: HardDriveIcon, id: "drive" },
-  { icon: CreditCardIcon, id: "card" },
+  { icon: PhUser, id: "user" },
+  { icon: PhHardDrive, id: "drive" },
+  { icon: PhCreditCard, id: "card" },
 ];
 </script>
 

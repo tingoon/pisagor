@@ -1,10 +1,12 @@
-import type { TimelineItemRecipe } from "@pisagor/recipes";
-import { createContext } from "../../utils/create-context";
+import { timelineItemRecipe } from "@pisagor/recipes";
+import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 
-interface TimelineItemContextValue {
-  slots: TimelineItemRecipe;
-}
-
-const ctx = createContext("TimelineItem")<TimelineItemContextValue>();
-export const setTimelineItemContext = ctx.setContext;
-export const useTimelineItem = ctx.getContext;
+export const {
+  Context,
+  useStyles: useTimelineItem,
+  withContext,
+  withProvider,
+} = createSlotRecipeContext({
+  name: "Timeline",
+  recipe: timelineItemRecipe,
+});

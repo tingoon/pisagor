@@ -2,7 +2,7 @@ import { TagsInput } from "@pisagor/react";
 
 export function Disabled() {
   return (
-    <TagsInput className="w-full">
+    <TagsInput className="w-full" defaultValue={["React", "Solid"]} disabled>
       <TagsInput.Context>
         {({ value }) =>
           value.map((tag, index) => (

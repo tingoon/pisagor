@@ -15,7 +15,7 @@ Framework-agnostic design tokens and Tailwind theme (`@theme`, `:root` / `.dark`
 @import "@pisagor/tokens/styles";
 ```
 
-Framework packages keep their own entry for plugins and `@source` (e.g. `@pisagor/react/styles`, `@pisagor/vue/styles`, `@pisagor/solid/styles`, `@pisagor/svelte/styles`, `@pisagor/astro/styles`) and `@import "@pisagor/tokens/styles"`.
+Framework packages keep their own entry for plugins and sources (e.g. `@pisagor/react/styles`) — they `@import "@pisagor/tokens/styles"` and `@import "@pisagor/recipes/styles"`.
 
 ## Z-index layers
 

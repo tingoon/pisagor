@@ -20,6 +20,10 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
+export const Default = meta.story({
+  render: exampleRender(Examples.Default),
+});
+
 export const Sizes = meta.story({
   render: exampleRender(Examples.Sizes),
 });
@@ -32,14 +36,14 @@ export const WithValue = meta.story({
   render: exampleRender(Examples.WithValue),
 });
 
-export const Indeterminate = meta.story({
-  render: exampleRender(Examples.Indeterminate),
-});
-
 export const Controlled = meta.story({
   render: exampleRender(Examples.Controlled),
 });
 
-export const Default = meta.story({
-  render: exampleRender(Examples.Default),
+export const Indeterminate = meta.story({
+  render: exampleRender(Examples.Indeterminate),
+});
+
+export const CustomRecipe = meta.story({
+  render: exampleRender(Examples.CustomRecipe),
 });

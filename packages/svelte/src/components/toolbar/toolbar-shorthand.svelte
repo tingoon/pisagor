@@ -1,6 +1,7 @@
 <script lang="ts">
 import type { ToolbarRecipeSlot } from "@pisagor/recipes";
 import type { ComponentProps, Snippet } from "svelte";
+import type { VariantClassNames } from "../../internal/types";
 import ToolbarActions from "./toolbar-actions.svelte";
 import ToolbarDescription from "./toolbar-description.svelte";
 import ToolbarHeading from "./toolbar-heading.svelte";
@@ -9,7 +10,7 @@ import ToolbarTitle from "./toolbar-title.svelte";
 
 type Props = Omit<ComponentProps<typeof ToolbarRoot>, "children"> & {
   actions?: Snippet;
-  classNames?: Partial<Record<ToolbarRecipeSlot, string>>;
+  classNames?: VariantClassNames<ToolbarRecipeSlot>;
   description?: Snippet | string;
   title?: Snippet | string;
 };

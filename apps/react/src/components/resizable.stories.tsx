@@ -24,10 +24,6 @@ export const Default = meta.story({
   render: Examples.Default,
 });
 
-export const MinMax = meta.story({
-  render: Examples.MinMax,
-});
-
 export const OrientationHorizontal = meta.story({
   render: Examples.OrientationHorizontal,
 });
@@ -56,6 +52,14 @@ export const MultiplePanels = meta.story({
   render: Examples.MultiplePanels,
 });
 
+export const MinMax = meta.story({
+  render: Examples.MinMax,
+});
+
 export const Collapsible = meta.story({
   render: Examples.Collapsible,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

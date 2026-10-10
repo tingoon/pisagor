@@ -1,25 +1,29 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
 import { useProgressContext } from "@ark-ui/svelte/progress";
-import { cn } from "@pisagor/utils";
-import type { ClassValue } from "svelte/elements";
-import { useCircularProgressSlots } from "./circular-progress.context";
+import type { SVGAttributes } from "svelte/elements";
+import { useCircularProgress } from "./circular-progress.context";
 
 type Props = {
-  class?: ClassValue;
+  class?: string;
   rangeClassName?: string;
   size?: number;
   thickness?: number;
+  trackProps?: Omit<
+    SVGAttributes<SVGSVGElement>,
+    "class" | "height" | "viewBox" | "width"
+  >;
 };
 
 let {
   size = 32,
   thickness = 4,
   rangeClassName,
+  trackProps,
   class: className,
 }: Props = $props();
 
-const { slots } = useCircularProgressSlots();
+const styles = useCircularProgress();
 const progress = useProgressContext();
 
 const metrics = $derived.by(() => {
@@ -36,9 +40,10 @@ const metrics = $derived.by(() => {
 </script>
 
 <Ark
-  aria-hidden="true"
   as="svg"
-  class={slots.track({ class: cn(className) })}
+  {...trackProps}
+  aria-hidden="true"
+  class={styles.slots.track({ class: className })}
   data-part="circle"
   data-scope="circular-progress"
   height={size}
@@ -54,7 +59,7 @@ const metrics = $derived.by(() => {
     stroke-width={thickness}
   ></circle>
   <circle
-    class={slots.range({ class: rangeClassName })}
+    class={styles.slots.range({ class: rangeClassName })}
     cx={size / 2}
     cy={size / 2}
     data-part="range"

@@ -26,3 +26,11 @@ export const Default = meta.story({
 export const Multiple = meta.story({
   render: () => ({ component: Examples.Multiple }),
 });
+
+export const CustomStyle = meta.story({
+  render: () => ({ component: Examples.CustomStyle }),
+});
+
+export const CustomRecipe = meta.story({
+  render: () => ({ component: Examples.CustomRecipe }),
+});

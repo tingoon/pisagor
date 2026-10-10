@@ -31,3 +31,7 @@ export const SeparatedPanels = meta.story({
 export const WithFormControls = meta.story({
   render: Examples.WithFormControls,
 });
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
+});

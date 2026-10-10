@@ -1,12 +1,13 @@
 ---
+import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { itemRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
-import Separator from "../separator/separator.astro";
+import Separator from "../separator.astro";
 
-type Props = HTMLAttributes<"div">;
+type Props = HTMLAttributes<"div"> & BaseItemProps;
 
-const { class: className, ...rest } = Astro.props;
-const slots = itemRecipe();
+const { recipe = itemRecipe, class: className, ...rest } = Astro.props;
+const slots = recipe();
 ---
 
 <Separator

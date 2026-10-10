@@ -1,21 +1,7 @@
-import both_directionsRaw from "./both-directions.svelte?raw";
-import defaultRaw from "./default.svelte?raw";
-import horizontalRaw from "./horizontal.svelte?raw";
-import nestedRaw from "./nested.svelte?raw";
-import scroll_fadeRaw from "./scroll-fade.svelte?raw";
-
-export const imports = `import { ScrollArea } from "@pisagor/svelte";`;
-
-export const sources = {
-  BothDirections: both_directionsRaw,
-  Default: defaultRaw,
-  Horizontal: horizontalRaw,
-  Nested: nestedRaw,
-  ScrollFade: scroll_fadeRaw,
-} as const;
-
 export { default as BothDirections } from "./both-directions.svelte";
+export { default as CustomRecipe } from "./custom-recipe.svelte";
 export { default as Default } from "./default.svelte";
 export { default as Horizontal } from "./horizontal.svelte";
 export { default as Nested } from "./nested.svelte";
 export { default as ScrollFade } from "./scroll-fade.svelte";
+export { imports, sources } from "./sources";

@@ -20,22 +20,26 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Multiple = meta.story({
-  render: Examples.Multiple,
-});
-
-export const CustomStyle = meta.story({
-  render: Examples.CustomStyle,
-});
-
-export const SearchQuery = meta.story({
-  render: Examples.SearchQuery,
+export const Default = meta.story({
+  render: Examples.Default,
 });
 
 export const Squiggle = meta.story({
   render: Examples.Squiggle,
 });
 
-export const Default = meta.story({
-  render: Examples.Default,
+export const Multiple = meta.story({
+  render: Examples.Multiple,
+});
+
+export const SearchQuery = meta.story({
+  render: Examples.SearchQuery,
+});
+
+export const CustomStyle = meta.story({
+  render: Examples.CustomStyle,
+});
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

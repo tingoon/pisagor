@@ -4,7 +4,7 @@ import { formControlSeparatorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
-import Separator from "../separator/separator.svelte";
+import Separator from "../separator.svelte";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { useFieldSlots } from "./field.context";
 

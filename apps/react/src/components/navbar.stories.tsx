@@ -27,3 +27,7 @@ export const Default = meta.story({
 export const WithSidebar = meta.story({
   render: Examples.WithSidebar,
 });
+
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
+});

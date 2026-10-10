@@ -23,28 +23,40 @@ export const Playground = meta.story({
   tags: ["autodocs"],
 });
 
-export const Sizes = meta.story({
-  render: Examples.Sizes,
+export const Default = meta.story({
+  render: Examples.Default,
 });
 
 export const Variants = meta.story({
   render: Examples.Variants,
 });
 
-export const Empty = meta.story({
-  render: Examples.Empty,
+export const Sizes = meta.story({
+  render: Examples.Sizes,
+});
+
+export const Multiple = meta.story({
+  render: Examples.Multiple,
 });
 
 export const Grouping = meta.story({
   render: Examples.Grouping,
 });
 
-export const MaxSelection = meta.story({
-  render: Examples.MaxSelection,
+export const WithScroll = meta.story({
+  render: Examples.WithScroll,
 });
 
-export const Multiple = meta.story({
-  render: Examples.Multiple,
+export const Empty = meta.story({
+  render: Examples.Empty,
+});
+
+export const Compound = meta.story({
+  render: Examples.Compound,
+});
+
+export const Controlled = meta.story({
+  render: Examples.Controlled,
 });
 
 export const Disabled = meta.story({
@@ -55,18 +67,10 @@ export const Invalid = meta.story({
   render: Examples.Invalid,
 });
 
-export const WithScroll = meta.story({
-  render: Examples.WithScroll,
+export const MaxSelection = meta.story({
+  render: Examples.MaxSelection,
 });
 
-export const Controlled = meta.story({
-  render: Examples.Controlled,
-});
-
-export const Compound = meta.story({
-  render: Examples.Compound,
-});
-
-export const Default = meta.story({
-  render: Examples.Default,
+export const CustomRecipe = meta.story({
+  render: Examples.CustomRecipe,
 });

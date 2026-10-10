@@ -7,7 +7,8 @@ import { cn } from "@pisagor/utils";
 import { useFileUploadItem } from "./file-upload.context";
 
 let { class: className, ...rest }: FileUploadItemSizeTextProps = $props();
-const { slots } = useFileUploadItem();
+const styles = useFileUploadItem();
+const slots = $derived(styles.slots);
 </script>
 
 <FileUploadPrimitive.ItemSizeText

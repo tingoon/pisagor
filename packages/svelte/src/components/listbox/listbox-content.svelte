@@ -3,16 +3,12 @@ import {
   type ListboxContentProps,
   Listbox as ListboxPrimitive,
 } from "@ark-ui/svelte/listbox";
-import { cn } from "@pisagor/utils";
-import { useListbox } from "./listbox.context";
+import { withListboxContext } from "./listbox.context";
 
-let { class: className, children, ...rest }: ListboxContentProps = $props();
-const { slots } = useListbox();
+let { children, ...rest }: ListboxContentProps = $props();
+const part = withListboxContext(() => rest, { name: "Content" });
 </script>
 
-<ListboxPrimitive.Content
-  {...rest}
-  class={slots.content({ class: cn(className) })}
->
+<ListboxPrimitive.Content {...part.props}>
   {@render children?.()}
 </ListboxPrimitive.Content>

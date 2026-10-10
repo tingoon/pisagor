@@ -5,12 +5,17 @@ import type { HTMLAttributes } from "astro/types";
 
 type Props = HTMLAttributes<"kbd"> & BaseKbdProps;
 
-const { variant = "default", class: className, ...rest } = Astro.props;
+const {
+  variant = "default",
+  recipe = kbdRecipe,
+  class: className,
+  ...rest
+} = Astro.props;
 ---
 
 <kbd
   {...rest}
-  class={kbdRecipe({ className, variant })}
+  class={recipe({ className, variant })}
   data-part="root"
   data-scope="kbd"
 >

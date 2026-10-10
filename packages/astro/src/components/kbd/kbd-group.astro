@@ -1,17 +1,13 @@
 ---
+import type { KbdGroupProps as BaseKbdGroupProps } from "@pisagor/props";
 import { kbdGroupRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"div">;
+type Props = HTMLAttributes<"div"> & BaseKbdGroupProps;
 
-const { class: className, ...rest } = Astro.props;
+const { recipe = kbdGroupRecipe, class: className, ...rest } = Astro.props;
 ---
 
-<div
-  {...rest}
-  class={kbdGroupRecipe({ className })}
-  data-part="group"
-  data-scope="kbd"
->
+<div {...rest} class={recipe({ className })} data-part="group" data-scope="kbd">
   <slot />
 </div>

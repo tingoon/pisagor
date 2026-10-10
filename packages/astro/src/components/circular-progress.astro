@@ -1,0 +1,158 @@
+---
+import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
+import {
+  type CircularProgressRecipeSlot,
+  circularProgressRecipe,
+} from "@pisagor/recipes";
+import type { HTMLAttributes } from "astro/types";
+import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { VariantClassNames } from "../internal/types";
+
+interface Props extends HTMLAttributes<"div">, BaseCircularProgressProps {
+  /**
+   * Diameter of the circular progress in pixels.
+   *
+   * @defaultValue 32
+   */
+  size?: number;
+  /**
+   * Stroke width of the track and range.
+   *
+   * @defaultValue 4
+   */
+  thickness?: number;
+  /**
+   * Whether to show indeterminate progress.
+   *
+   * @defaultValue false
+   */
+  indeterminate?: boolean;
+  /**
+   * When true, renders the numeric value text in the center.
+   */
+  isValueVisible?: boolean;
+  /**
+   * The value of the progress.
+   *
+   * @defaultValue 0
+   */
+  value?: number;
+  /**
+   * The minimum value.
+   *
+   * @defaultValue 0
+   */
+  min?: number;
+  /**
+   * The maximum value.
+   *
+   * @defaultValue 100
+   */
+  max?: number;
+  /** Slot class names */
+  classNames?: VariantClassNames<CircularProgressRecipeSlot>;
+}
+
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+  name: "CircularProgress",
+  recipe: circularProgressRecipe,
+});
+
+const {
+  size = 32,
+  thickness = 4,
+  indeterminate = false,
+  isValueVisible = false,
+  value = 0,
+  min = 0,
+  max = 100,
+  style,
+  classNames,
+  ...rest
+} = Astro.props;
+
+const radius = size / 2 - thickness / 2;
+const circumference = 2 * Math.PI * radius;
+const range = Math.max(max - min, 1);
+const normalizedValue = Math.min(Math.max(value, min), max);
+const percent = (normalizedValue - min) / range;
+const dashOffset = circumference * (1 - percent);
+const state = indeterminate
+  ? "indeterminate"
+  : normalizedValue === max
+    ? "complete"
+    : "loading";
+const valueText = `${Math.round(percent * 100)}%`;
+const strokeDashoffset = indeterminate ? circumference * 0.7 : dashOffset;
+const rootStyle = indeterminate
+  ? style
+  : [typeof style === "string" ? style : "", `--percent:${percent * 100}`]
+      .filter(Boolean)
+      .join(";");
+
+const { slots } = useStyles();
+const root = withProvider(rest, { name: "Root", slot: "base" });
+const valueWrapper = withContext(
+  { class: classNames?.valueWrapper },
+  {
+    defaultProps: { "data-part": "value-wrapper" },
+    name: "ValueWrapper",
+    slot: "valueWrapper",
+  },
+);
+const valuePart = withContext(
+  { "aria-live": "polite" as const, class: classNames?.value },
+  { name: "Value" },
+);
+---
+
+<div
+  {...root.props}
+  aria-valuemax={indeterminate ? undefined : max}
+  aria-valuemin={indeterminate ? undefined : min}
+  aria-valuenow={indeterminate ? undefined : normalizedValue}
+  aria-valuetext={indeterminate ? undefined : valueText}
+  data-max={max}
+  data-orientation="horizontal"
+  data-state={state}
+  data-value={indeterminate ? undefined : normalizedValue}
+  role="progressbar"
+  style={rootStyle}
+>
+  {isValueVisible && !indeterminate && (
+    <span {...valueWrapper.props}>
+      <span {...valuePart.props}>{valueText}</span>
+    </span>
+  )}
+  <slot />
+  <svg
+    aria-hidden="true"
+    class={slots.track({ class: classNames?.track })}
+    data-part="circle"
+    data-scope="circular-progress"
+    height={size}
+    viewBox={`0 0 ${size} ${size}`}
+    width={size}
+  >
+    <circle
+      cx={size / 2}
+      cy={size / 2}
+      data-part="track-bg"
+      data-scope="circular-progress"
+      r={radius}
+      stroke-width={thickness}
+    ></circle>
+    <circle
+      class={slots.range({ class: classNames?.range })}
+      cx={size / 2}
+      cy={size / 2}
+      data-part="range"
+      data-scope="circular-progress"
+      r={radius}
+      stroke-dasharray={circumference}
+      stroke-dashoffset={strokeDashoffset}
+      stroke-linecap="round"
+      stroke-width={thickness}
+    ></circle>
+  </svg>
+</div>

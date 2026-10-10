@@ -8,7 +8,8 @@ import DotsThreeIcon from "phosphor-svelte/lib/DotsThreeIcon";
 import { usePagination } from "./pagination.context";
 
 let { class: className, ...rest }: PaginationEllipsisProps = $props();
-const { slots } = usePagination();
+const styles = usePagination();
+const slots = $derived(styles.slots);
 </script>
 
 <PaginationPrimitive.Ellipsis
