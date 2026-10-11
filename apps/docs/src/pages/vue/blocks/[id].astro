@@ -1,6 +1,6 @@
 ---
 import BlockDocPage from "#/components/docs/block-doc-page.astro";
-import VueBlockExamplesHost from "#/components/docs/vue-block-examples-host.vue";
+import VueExamplesHost from "#/components/docs/vue-examples-host.vue";
 import { listBlockStaticPaths } from "#/lib/block-doc";
 
 export function getStaticPaths() {
@@ -11,4 +11,4 @@ const id = Astro.params.id as string;
 ---
 
 <BlockDocPage framework="vue" id={id} />
-<VueBlockExamplesHost client:only="vue" />
+<VueExamplesHost client:only="vue" />

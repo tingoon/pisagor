@@ -548,3 +548,26 @@ html.dark .docs-do-dont-do figcaption strong::before {
 html.dark .docs-do-dont-dont figcaption strong::before {
   color: #f87171;
 }
+
+/*
+ * Framed previews (app-shell style examples). A fixed-height scroll box; the
+ * transform makes it the containing block for `position: fixed` descendants,
+ * and viewport-height utilities resolve to the frame instead of the window.
+ */
+.docs-preview-frame {
+  --docs-frame-height: min(36rem, 75dvh);
+  position: relative;
+  display: block;
+  height: var(--docs-frame-height);
+  overflow: auto;
+  overscroll-behavior: contain;
+  transform: translateZ(0);
+}
+
+.docs-preview-frame :where(.min-h-svh, .min-h-dvh, .min-h-screen) {
+  min-height: var(--docs-frame-height);
+}
+
+.docs-preview-frame :where(.h-svh, .h-dvh, .h-screen) {
+  height: var(--docs-frame-height);
+}

@@ -1,13 +1,13 @@
 ---
 import BaseHead from "#/components/base-head.astro";
-import { SolidBlockExamplesHost } from "#/components/docs/solid-block-examples-host";
+import { SolidExamplesHost } from "#/components/docs/solid-examples-host";
 import {
   listExamplePreviewStaticPathsFor,
   loadBlockDocs,
   loadBlockExamples,
 } from "#/lib/block-doc";
 import { assertExampleSource } from "#/lib/component-doc";
-import { frameworkStylesheetUrl } from "#/styles/load-framework-css";
+import { frameworkStylesheetUrls } from "#/styles/load-framework-css";
 
 export async function getStaticPaths() {
   return listExamplePreviewStaticPathsFor("solid");
@@ -23,14 +23,14 @@ assertExampleSource(examples, example);
 const { title: blockTitle } = loadBlockDocs(framework, id);
 const title = `${blockTitle} · ${example}`;
 const exportNames = [example];
-const stylesheet = await frameworkStylesheetUrl(framework);
+const stylesheets = await frameworkStylesheetUrls(framework);
 ---
 
 <!doctype html>
 <html data-framework={framework} data-preview-standalone lang="en">
   <head>
-    <BaseHead description={`Live preview: ${title}`} title={title} />
-    <link href={stylesheet} rel="stylesheet">
+    <BaseHead description={`Live preview: ${title}`} noindex title={title} />
+    {stylesheets.map((href) => <link href={href} rel="stylesheet">)}
     <script is:inline>
     (() => {
       const theme = new URLSearchParams(location.search).get("theme");
@@ -44,9 +44,10 @@ const stylesheet = await frameworkStylesheetUrl(framework);
   <body class="m-0 min-h-dvh bg-background p-0 text-foreground">
     <main class="min-h-dvh w-full">
       <div class="min-h-dvh w-full" data-example-slot={example}></div>
-      <SolidBlockExamplesHost
-        blockId={id}
+      <SolidExamplesHost
         exportNames={exportNames}
+        id={id}
+        kind="block"
         client:only="solid-js"
       />
     </main>

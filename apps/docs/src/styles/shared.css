@@ -1,0 +1,33 @@
+/*
+ * The one docs stylesheet, shared by every page and framework: Tailwind base
+ * + theme, Pisagor tokens, every recipe class (@pisagor/presets), docs chrome,
+ * and the utilities used by each framework package and its examples.
+ *
+ * Framework packages style through the shared recipes, so per-framework
+ * sheets only added ~5 KB of unique utilities on top of ~265 KB of identical
+ * CSS. One sheet keeps cascade order canonical and stays cached when readers
+ * switch frameworks.
+ *
+ * `@pisagor/astro/styles` brings tw-animate, tokens, recipes, typography and
+ * the Astro package sources (the docs chrome renders @pisagor/astro parts).
+ */
+@import "./global.css";
+@import "@pisagor/astro/styles";
+
+@source "../../../../packages/astro/examples/**/*.{astro,ts}";
+@source "../../../../packages/react/src/**/*.{ts,tsx}";
+@source "../../../../packages/react/examples/**/*.{ts,tsx}";
+@source "../../../../packages/react-form/src/**/*.{ts,tsx}";
+@source "../../../../packages/react-form/examples/**/*.{ts,tsx}";
+@source "../../../../packages/solid/src/**/*.{ts,tsx}";
+@source "../../../../packages/solid/examples/**/*.{ts,tsx}";
+@source "../../../../packages/solid-form/src/**/*.{ts,tsx}";
+@source "../../../../packages/solid-form/examples/**/*.{ts,tsx}";
+@source "../../../../packages/svelte/src/**/*.{ts,svelte}";
+@source "../../../../packages/svelte/examples/**/*.{ts,svelte}";
+@source "../../../../packages/svelte-form/src/**/*.{ts,svelte}";
+@source "../../../../packages/svelte-form/examples/**/*.{ts,svelte}";
+@source "../../../../packages/vue/src/**/*.ts";
+@source "../../../../packages/vue/examples/**/*.{ts,vue}";
+@source "../../../../packages/vue-form/src/**/*.ts";
+@source "../../../../packages/vue-form/examples/**/*.{ts,vue}";
