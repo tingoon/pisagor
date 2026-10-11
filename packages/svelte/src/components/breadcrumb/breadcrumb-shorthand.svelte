@@ -23,7 +23,7 @@ let { items, ...rest }: Props = $props();
 <BreadcrumbRoot {...rest}>
   {#if items}
     <BreadcrumbList>
-      {#each items as item, index (item.href ?? item.label)}
+      {#each items as item, index (`${index}:${item.href ?? item.label}`)}
         {#if index > 0}
           <BreadcrumbSeparator />
         {/if}

@@ -7,6 +7,7 @@ import type { CalendarProps as BaseCalendarProps } from "@pisagor/props";
 import { calendarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { Context } from "./calendar.context";
+import CalendarDefaultView from "./calendar-default-view.svelte";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -35,5 +36,5 @@ Context.set({
   class={slots.base({ class: cn(className) })}
   inline
 >
-  {@render children?.()}
+  <CalendarDefaultView>{@render children?.()}</CalendarDefaultView>
 </CalendarPrimitive.Root>
