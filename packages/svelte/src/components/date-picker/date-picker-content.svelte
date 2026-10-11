@@ -6,6 +6,7 @@ import {
 import { Portal } from "@ark-ui/svelte/portal";
 import { cn } from "@pisagor/utils";
 import { Calendar } from "../calendar";
+import CalendarDefaultView from "../calendar/calendar-default-view.svelte";
 import { useDatePicker } from "./date-picker.context";
 
 type Props = ArkContentProps & { showCalendar?: boolean };
@@ -27,20 +28,22 @@ const slots = $derived(ctx?.slots);
         {...rest}
         class={slots.content({ class: cn(className) })}
       >
-        {#if showCalendar && !children}
-          <Calendar.ViewControl>
-            <Calendar.PrevTrigger />
-            <Calendar.MonthSelect />
-            <Calendar.YearSelect />
-            <Calendar.NextTrigger />
-          </Calendar.ViewControl>
-          <Calendar.Table>
-            <Calendar.WeekDays />
-            <Calendar.TableDays />
-          </Calendar.Table>
-        {:else}
-          {@render children?.()}
-        {/if}
+        <CalendarDefaultView>
+          {#if showCalendar && !children}
+            <Calendar.ViewControl>
+              <Calendar.PrevTrigger />
+              <Calendar.MonthSelect />
+              <Calendar.YearSelect />
+              <Calendar.NextTrigger />
+            </Calendar.ViewControl>
+            <Calendar.Table>
+              <Calendar.WeekDays />
+              <Calendar.TableDays />
+            </Calendar.Table>
+          {:else}
+            {@render children?.()}
+          {/if}
+        </CalendarDefaultView>
       </DatePickerPrimitive.Content>
     </DatePickerPrimitive.Positioner>
   </Portal>

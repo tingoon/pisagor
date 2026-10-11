@@ -4,8 +4,14 @@ import Sidebar from "#/components/docs/sidebar.astro";
 import TableOfContents from "#/components/docs/table-of-contents.astro";
 import Header from "#/components/header.astro";
 import type { Framework } from "#/lib/nav";
-import { getDocsArea, getSidebarNav, stripDocsBase } from "#/lib/nav";
-import { frameworkStylesheetUrl } from "#/styles/load-framework-css";
+import {
+  frameworks,
+  getDocsArea,
+  getSidebarNav,
+  mainNav,
+  stripDocsBase,
+} from "#/lib/nav";
+import { frameworkStylesheetUrls } from "#/styles/load-framework-css";
 
 interface Props {
   framework: Framework;
@@ -14,6 +20,10 @@ interface Props {
   /** Optional small label above the title (intro defaults to “Get started”). */
   kicker?: string;
   headings?: { depth: number; slug: string; text: string }[];
+  /** `<title>` text when it should differ from the visible h1. */
+  metaTitle?: string;
+  /** Exclude from search engines, sitemap-facing canonical, and Pagefind. */
+  noindex?: boolean;
 }
 
 const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
@@ -23,17 +33,29 @@ const sidebarSections = getSidebarNav(framework, area);
 const pathParts = stripDocsBase(currentPath).split("/").filter(Boolean);
 const isIntro = pathParts.length === 1;
 const kicker = Astro.props.kicker ?? (isIntro ? "Get started" : undefined);
-const description = Astro.props.description ?? "Pisagor UI documentation";
+const description = Astro.props.description;
 const title = Astro.props.title;
 const headings = Astro.props.headings ?? [];
-const stylesheet = await frameworkStylesheetUrl(framework);
+// Unique <title> per framework/area so the same component across frameworks
+// doesn't produce duplicate titles ("Button – Vue", "Card – Vue Blocks").
+const frameworkLabel =
+  frameworks.find((item) => item.id === framework)?.label ?? framework;
+const areaLabel =
+  area === "components" ? "" : ` ${mainNav.find((i) => i.id === area)?.label}`;
+const metaTitle =
+  Astro.props.metaTitle ?? `${title} – ${frameworkLabel}${areaLabel}`;
+const stylesheets = await frameworkStylesheetUrls(framework);
 ---
 
 <!doctype html>
 <html data-framework={framework} lang="en">
   <head>
-    <BaseHead description={description} title={title} />
-    <link href={stylesheet} rel="stylesheet">
+    <BaseHead
+      description={description}
+      noindex={Astro.props.noindex}
+      title={metaTitle}
+    />
+    {stylesheets.map((href) => <link href={href} rel="stylesheet">)}
   </head>
   <body>
     <div class="relative z-10 min-h-dvh bg-background">
@@ -46,7 +68,13 @@ const stylesheet = await frameworkStylesheetUrl(framework);
 
       <div class="mx-auto flex w-full max-w-6xl px-4 sm:px-5">
         <Sidebar area={area} currentPath={currentPath} framework={framework} />
-        <main class="docs-main min-w-0 flex-1 px-4 py-6 sm:px-6">
+        <main
+          class="docs-main min-w-0 flex-1 px-4 py-6 sm:px-6"
+          data-pagefind-body={Astro.props.noindex ? undefined : ""}
+          data-pagefind-filter={Astro.props.noindex
+            ? undefined
+            : `framework:${framework}`}
+        >
           <header class="mb-6">
             {kicker ? <p class="docs-kicker">{kicker}</p> : null}
             <h1 class="docs-title">{title}</h1>

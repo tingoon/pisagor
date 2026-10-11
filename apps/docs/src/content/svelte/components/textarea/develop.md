@@ -36,6 +36,12 @@ Grow with content instead of showing an inner scrollbar early.
 
 :::example Autoresize
 
+### Clearable
+
+Allow clearing the value when an empty state is a valid reset.
+
+:::example Clearable
+
 ## Customization
 
 ### Custom recipe

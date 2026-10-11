@@ -235,32 +235,33 @@ function useUserColumns(options?: {
   });
 }
 
-function ManualPaginationBar({ total }: { total: number }) {
+function ManualPaginationBar(props: { total: number }) {
   const table = useDataGrid();
-  const { pageIndex, pageSize } = table.store.state.pagination;
-  const pageCount = Math.max(1, Math.ceil(total / pageSize));
-  const from = total === 0 ? 0 : pageIndex * pageSize + 1;
-  const to = Math.min((pageIndex + 1) * pageSize, total);
+  const pageIndex = () => table.store.state.pagination.pageIndex;
+  const pageSize = () => table.store.state.pagination.pageSize;
+  const pageCount = () => Math.max(1, Math.ceil(props.total / pageSize()));
+  const from = () => (props.total === 0 ? 0 : pageIndex() * pageSize() + 1);
+  const to = () => Math.min((pageIndex() + 1) * pageSize(), props.total);
   return (
     <div class="flex flex-wrap items-center justify-between gap-3 border-t pt-3">
       <p class="text-muted-foreground text-sm">
-        Showing {from}–{to} of {total}
+        Showing {from()}–{to()} of {props.total}
       </p>
       <div class="flex items-center gap-2">
         <Button
-          disabled={pageIndex <= 0}
-          onClick={() => table.setPageIndex(pageIndex - 1)}
+          disabled={pageIndex() <= 0}
+          onClick={() => table.setPageIndex(pageIndex() - 1)}
           size="sm"
           variant="outline"
         >
           Previous
         </Button>
         <span class="text-muted-foreground text-sm">
-          {pageIndex + 1} / {pageCount}
+          {pageIndex() + 1} / {pageCount()}
         </span>
         <Button
-          disabled={pageIndex + 1 >= pageCount}
-          onClick={() => table.setPageIndex(pageIndex + 1)}
+          disabled={pageIndex() + 1 >= pageCount()}
+          onClick={() => table.setPageIndex(pageIndex() + 1)}
           size="sm"
           variant="outline"
         >

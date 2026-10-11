@@ -1,4 +1,5 @@
 import autoresizeRaw from "./autoresize.svelte?raw";
+import clearableRaw from "./clearable.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
 import custom_recipeRaw from "./custom-recipe.svelte?raw";
 import disabledRaw from "./disabled.svelte?raw";
@@ -9,6 +10,7 @@ export const imports = `import { Textarea } from "@pisagor/svelte";`;
 
 export const sources = {
   Autoresize: autoresizeRaw,
+  Clearable: clearableRaw,
   Controlled: controlledRaw,
   CustomRecipe: custom_recipeRaw,
   Disabled: disabledRaw,

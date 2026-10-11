@@ -258,7 +258,12 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
 }
 
 export function SortableItem(props: SortableItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["value", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "value",
+    "recipe",
+    "class",
+    "children",
+  ]);
   const sortable = useSortable();
   const itemProps = () => sortable.getItemProps(local.value);
   const isDragging = () => sortable.activeId() === local.value;
@@ -291,7 +296,12 @@ export function SortableItem(props: SortableItemProps): JSX.Element {
           data-part="item"
           data-scope="sortable"
           role="listitem"
-        />
+        >
+          {/* Pass children explicitly: reading them through the merged
+              `itemProps()` source would re-create (and re-register) handles
+              whenever drag state changes, looping forever. */}
+          {local.children}
+        </ark.div>
       </SortableItemStateContext>
     </SortableItemStylesContext>
   );

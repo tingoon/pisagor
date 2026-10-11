@@ -9,12 +9,14 @@ export function Default() {
           description: "This is the first step.",
           id: "step-1",
           title: "Welcome",
+          type: "dialog",
         },
         {
           actions: [{ action: "dismiss", label: "Close" }],
           description: "Tour complete.",
           id: "step-2",
           title: "Done",
+          type: "dialog",
         },
       ]}
     >

@@ -7,7 +7,7 @@ export function WithLink() {
         <Breadcrumb.Item>
           <Breadcrumb.Link
             asChild={(props) => (
-              <a {...props()} href="/docs">
+              <a {...props()} href="https://example.com/docs">
                 Docs
               </a>
             )}
@@ -17,7 +17,7 @@ export function WithLink() {
         <Breadcrumb.Item>
           <Breadcrumb.Link
             asChild={(props) => (
-              <a {...props()} href="/docs/components">
+              <a {...props()} href="https://example.com/docs/components">
                 Components
               </a>
             )}

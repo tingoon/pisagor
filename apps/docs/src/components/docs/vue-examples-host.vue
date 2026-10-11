@@ -1,156 +1,67 @@
 <script lang="ts" setup>
-import { computed, onBeforeUnmount, onMounted, shallowRef, watch } from "vue";
-import { readComponentExamplesHostConfig } from "#/lib/examples-host-config";
-import { whenVisible } from "#/lib/when-visible";
+import { type Component, onBeforeUnmount, onMounted, shallowRef } from "vue";
+import {
+  armExamplesHost,
+  type ExampleGlobs,
+  type ExampleKind,
+  type ExampleModule,
+} from "#/lib/examples-host";
 
-type ExampleModule = Record<string, unknown>;
+const globs: ExampleGlobs = {
+  block: import.meta.glob<ExampleModule>("../../examples/vue/*/index.ts"),
+  component: import.meta.glob<ExampleModule>(
+    "../../../../../packages/vue/examples/*/index.ts",
+  ),
+  form: import.meta.glob<ExampleModule>(
+    "../../../../../packages/vue-form/examples/*/index.ts",
+  ),
+};
 
-const exampleModules = import.meta.glob<ExampleModule>(
-  "../../../../../packages/vue/examples/*/index.ts",
-);
-
-const formExampleModules = import.meta.glob<ExampleModule>(
-  "../../../../../packages/vue-form/examples/*/index.ts",
-);
-
+/** Single client island for every live preview on a Vue docs page. */
 const props = defineProps<{
-  componentId?: string;
+  id?: string;
   exportNames?: string[];
-  kind?: "component" | "form";
+  kind?: ExampleKind;
 }>();
 
-const resolvedComponentId = shallowRef("");
-const mod = shallowRef<ExampleModule | null | undefined>(undefined);
-
-type SlotState = {
-  exportName: string;
-  target: Element | null;
-  visible: boolean;
-};
-
-type ReadySlot = {
-  exportName: string;
+type Mounted = {
+  key: number;
   target: Element;
+  component: Component | null;
+  message: string;
 };
 
-const slots = shallowRef<SlotState[]>([]);
-const stops: Array<() => void> = [];
+// Examples render through Teleport so they share this app's context.
+const mounted = shallowRef<Mounted[]>([]);
+let nextKey = 0;
+let stop: (() => void) | undefined;
 
-function slotSelector(exportName: string): string {
-  return `[data-example-slot="${CSS.escape(exportName)}"]`;
-}
-
-async function loadBarrel(
-  id: string,
-  docKind: "component" | "form",
-): Promise<ExampleModule | null> {
-  const modules = docKind === "form" ? formExampleModules : exampleModules;
-  const key = Object.keys(modules).find((path) =>
-    path.endsWith(`/examples/${id}/index.ts`),
+onMounted(() => {
+  stop = armExamplesHost(
+    globs,
+    { exportNames: props.exportNames, id: props.id, kind: props.kind },
+    (target, component, message) => {
+      const entry: Mounted = {
+        component: (component as Component | null) ?? null,
+        key: nextKey++,
+        message,
+        target,
+      };
+      mounted.value = [...mounted.value, entry];
+      return () => {
+        mounted.value = mounted.value.filter((item) => item !== entry);
+      };
+    },
   );
-  if (!key) return null;
-  return modules[key]();
-}
-
-function resolveExport(exportName: string): unknown {
-  const module = mod.value;
-  if (module === undefined) return undefined;
-  if (exportName === "sources" || exportName === "imports") return null;
-  if (!module) return null;
-  const Comp = module[exportName];
-  if (Comp == null || typeof Comp === "string") return null;
-  return Comp;
-}
-
-function clearStops() {
-  for (const stop of stops) stop();
-  stops.length = 0;
-}
-
-function arm() {
-  clearStops();
-  mod.value = undefined;
-  const config = readComponentExamplesHostConfig({
-    componentId: props.componentId,
-    exportNames: props.exportNames,
-    kind: props.kind,
-  });
-  if (!config) {
-    resolvedComponentId.value = "";
-    slots.value = [];
-    return;
-  }
-  resolvedComponentId.value = config.componentId;
-
-  let started = false;
-  const startLoad = () => {
-    if (started) return;
-    started = true;
-    void loadBarrel(config.componentId, config.kind).then((next) => {
-      mod.value = next;
-    });
-  };
-
-  slots.value = config.exportNames.map((name) => {
-    const target = document.querySelector(slotSelector(name));
-    const state: SlotState = { exportName: name, target, visible: false };
-    if (target) {
-      stops.push(
-        whenVisible(target, () => {
-          state.visible = true;
-          slots.value = [...slots.value];
-          startLoad();
-        }),
-      );
-    }
-    return state;
-  });
-}
-
-onMounted(arm);
-watch(
-  () =>
-    [
-      props.componentId,
-      props.kind,
-      props.exportNames?.join("\0") ?? "",
-    ] as const,
-  () => {
-    arm();
-  },
-);
-onBeforeUnmount(clearStops);
-
-const readySlots = computed((): ReadySlot[] => {
-  const out: ReadySlot[] = [];
-  for (const slot of slots.value) {
-    if (
-      !slot.target ||
-      !slot.visible ||
-      resolveExport(slot.exportName) === undefined
-    ) {
-      continue;
-    }
-    out.push({ exportName: slot.exportName, target: slot.target });
-  }
-  return out;
 });
+onBeforeUnmount(() => stop?.());
 </script>
 
 <template>
   <div aria-hidden="true" data-vue-examples-host="" hidden>
-    <Teleport
-      v-for="slot in readySlots"
-      :key="slot.exportName"
-      :to="slot.target"
-    >
-      <component
-        :is="resolveExport(slot.exportName)"
-        v-if="resolveExport(slot.exportName)"
-      />
-      <p class="text-muted-foreground text-sm" v-else>
-        Missing example “{{ slot.exportName }}” for “{{ resolvedComponentId }}”.
-      </p>
+    <Teleport v-for="item in mounted" :key="item.key" :to="item.target">
+      <component :is="item.component" v-if="item.component" />
+      <p class="text-muted-foreground text-sm" v-else>{{ item.message }}</p>
     </Teleport>
   </div>
 </template>

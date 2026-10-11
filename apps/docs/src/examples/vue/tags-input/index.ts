@@ -1,2 +1,2 @@
 export { sources } from "./sources";
-export * from "./tags-with-combobox";
+export { default as TagsWithCombobox } from "./tags-with-combobox.vue";

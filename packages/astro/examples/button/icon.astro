@@ -1,5 +1,10 @@
 ---
 import { Button } from "@pisagor/astro";
+import { icons } from "./icons";
 ---
 
-<Button size="icon-md" variant="outline"></Button>
+<Button aria-label="Add to favorites" size="icon-md" variant="outline">
+  <svg aria-hidden="true" fill="currentColor" viewBox="0 0 256 256">
+    <path d={icons.star}></path>
+  </svg>
+</Button>

@@ -9,6 +9,6 @@ export function getStaticPaths() {
 }
 
 const id = Astro.params.id as string;
-return Astro.redirect(withDocsBase(`/svelte/components/${id}/develop`));
+return Astro.redirect(withDocsBase(`/svelte/components/${id}/develop`), 301);
 ---
 

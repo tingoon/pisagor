@@ -1,6 +1,6 @@
 ---
 import BlockDocPage from "#/components/docs/block-doc-page.astro";
-import SvelteBlockExamplesHost from "#/components/docs/svelte-block-examples-host.svelte";
+import SvelteExamplesHost from "#/components/docs/svelte-examples-host.svelte";
 import { listBlockStaticPaths } from "#/lib/block-doc";
 
 export function getStaticPaths() {
@@ -11,4 +11,4 @@ const id = Astro.params.id as string;
 ---
 
 <BlockDocPage framework="svelte" id={id} />
-<SvelteBlockExamplesHost client:only="svelte" />
+<SvelteExamplesHost client:only="svelte" />

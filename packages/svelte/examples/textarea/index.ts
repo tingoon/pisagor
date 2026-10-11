@@ -1,4 +1,5 @@
 export { default as Autoresize } from "./autoresize.svelte";
+export { default as Clearable } from "./clearable.svelte";
 export { default as Controlled } from "./controlled.svelte";
 export { default as CustomRecipe } from "./custom-recipe.svelte";
 export { default as Disabled } from "./disabled.svelte";

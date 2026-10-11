@@ -1,6 +1,6 @@
 ---
 import BlockDocPage from "#/components/docs/block-doc-page.astro";
-import { SolidBlockExamplesHost } from "#/components/docs/solid-block-examples-host";
+import { SolidExamplesHost } from "#/components/docs/solid-examples-host";
 import { listBlockStaticPaths } from "#/lib/block-doc";
 
 export function getStaticPaths() {
@@ -11,4 +11,4 @@ const id = Astro.params.id as string;
 ---
 
 <BlockDocPage framework="solid" id={id} />
-<SolidBlockExamplesHost client:only="solid-js" />
+<SolidExamplesHost client:only="solid-js" />

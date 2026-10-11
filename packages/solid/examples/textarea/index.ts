@@ -1,4 +1,5 @@
 export * from "./autoresize";
+export * from "./clearable";
 export * from "./controlled";
 export * from "./custom-recipe";
 export * from "./disabled";

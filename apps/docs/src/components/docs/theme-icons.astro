@@ -1,0 +1,43 @@
+---
+/** Inline theme glyphs shared by the header theme toggle. */
+interface Props {
+  name: "light" | "dark" | "system";
+  class?: string;
+  [key: `data-${string}`]: unknown;
+}
+
+const { name, class: className, ...rest } = Astro.props;
+---
+
+<svg
+  aria-hidden="true"
+  fill="none"
+  viewBox="0 0 24 24"
+  class:list={["size-4", className]}
+  {...rest}
+>
+  {name === "light" ? (
+    <path
+      d="M12 4V2M12 22v-2M4 12H2M22 12h-2M5.64 5.64 4.22 4.22M19.78 19.78l-1.42-1.42M5.64 18.36l-1.42 1.42M19.78 4.22l-1.42 1.42M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-width="1.75"
+    />
+  ) : name === "dark" ? (
+    <path
+      d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5Z"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="1.75"
+    />
+  ) : (
+    <path
+      d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v9A1.5 1.5 0 0 1 18.5 16h-13A1.5 1.5 0 0 1 4 14.5v-9ZM8 20h8M12 16v4"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="1.75"
+    />
+  )}
+</svg>

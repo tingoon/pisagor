@@ -1,0 +1,160 @@
+---
+import type { Framework, NavSection } from "#/lib/nav";
+import SidebarNav from "./sidebar-nav.astro";
+
+interface Props {
+  framework: Framework;
+  sections: NavSection[];
+  currentPath: string;
+}
+
+const panelId = "docs-mobile-nav-panel";
+---
+
+<div class="relative lg:hidden" data-mobile-nav>
+  <button
+    aria-controls={panelId}
+    aria-expanded="false"
+    aria-label="Open navigation"
+    class="docs-press inline-flex size-8 items-center justify-center rounded-lg border border-border/70 bg-background"
+    data-mobile-nav-toggle
+    type="button"
+  >
+    <svg aria-hidden="true" class="size-4" fill="none" viewBox="0 0 24 24">
+      <path
+        d="M4 7h16M4 12h16M4 17h16"
+        data-icon-open
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-width="1.75"
+      ></path>
+      <path
+        class="hidden"
+        d="M6 6l12 12M18 6 6 18"
+        data-icon-close
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-width="1.75"
+      ></path>
+    </svg>
+  </button>
+  <div data-mobile-nav-layer hidden>
+    <button
+      aria-label="Dismiss navigation"
+      class="docs-sheet-scrim fixed inset-0 z-40 cursor-default border-0 bg-black/20 backdrop-blur-[2px]"
+      data-mobile-nav-scrim
+      tabindex="-1"
+      type="button"
+    ></button>
+    <div
+      aria-label="Navigation"
+      aria-modal="true"
+      class="docs-sheet-panel fixed inset-x-3 top-14 z-50 max-h-[70dvh] overflow-hidden rounded-2xl border border-border/70 bg-background p-4 shadow-lg"
+      data-mobile-nav-panel
+      id={panelId}
+      role="dialog"
+    >
+      <div class="h-full max-h-[calc(70dvh-2rem)]">
+        <SidebarNav
+          currentPath={Astro.props.currentPath}
+          framework={Astro.props.framework}
+          idPrefix="mobile-nav"
+          sections={Astro.props.sections}
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const FOCUSABLE =
+  'a[href]:not([hidden]), button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+function bindMobileNav(root: HTMLElement) {
+  if (root.dataset.bound === "1") return;
+  root.dataset.bound = "1";
+  const toggle = root.querySelector<HTMLButtonElement>(
+    "[data-mobile-nav-toggle]",
+  );
+  const layer = root.querySelector<HTMLElement>("[data-mobile-nav-layer]");
+  const panel = root.querySelector<HTMLElement>("[data-mobile-nav-panel]");
+  const scrim = root.querySelector<HTMLElement>("[data-mobile-nav-scrim]");
+  if (!toggle || !layer || !panel) return;
+  const openIcon = toggle.querySelector("[data-icon-open]");
+  const closeIcon = toggle.querySelector("[data-icon-close]");
+
+  const isOpen = () => !layer.hidden;
+
+  function focusables(): HTMLElement[] {
+    const inPanel = [
+      ...(panel?.querySelectorAll<HTMLElement>(FOCUSABLE) ?? []),
+    ].filter((el) => el.offsetParent !== null || el === document.activeElement);
+    return toggle ? [toggle, ...inPanel] : inPanel;
+  }
+
+  function setOpen(next: boolean, restoreFocus = true) {
+    if (!toggle || !layer) return;
+    layer.hidden = !next;
+    toggle.setAttribute("aria-expanded", String(next));
+    toggle.setAttribute(
+      "aria-label",
+      next ? "Close navigation" : "Open navigation",
+    );
+    openIcon?.classList.toggle("hidden", next);
+    closeIcon?.classList.toggle("hidden", !next);
+    if (next) {
+      document.addEventListener("keydown", onKeyDown);
+      // Focus the current page link (not the filter) so phones don't pop the keyboard.
+      const current =
+        panel?.querySelector<HTMLElement>('a[aria-current="page"]') ??
+        panel?.querySelector<HTMLElement>("a[href]");
+      current?.scrollIntoView({ block: "center" });
+      current?.focus({ preventScroll: true });
+    } else {
+      document.removeEventListener("keydown", onKeyDown);
+      if (restoreFocus) toggle.focus();
+    }
+  }
+
+  function onKeyDown(event: KeyboardEvent) {
+    if (!isOpen()) return;
+    if (event.key === "Escape") {
+      event.preventDefault();
+      setOpen(false);
+      return;
+    }
+    if (event.key !== "Tab") return;
+    // Focus trap: cycle between the toggle and the sheet contents.
+    const items = focusables();
+    if (items.length === 0) return;
+    const first = items[0];
+    const last = items[items.length - 1];
+    const active = document.activeElement as HTMLElement | null;
+    const inside = active && (active === toggle || panel?.contains(active));
+    if (event.shiftKey && (active === first || !inside)) {
+      event.preventDefault();
+      last?.focus();
+    } else if (!event.shiftKey && (active === last || !inside)) {
+      event.preventDefault();
+      first?.focus();
+    }
+  }
+
+  toggle.addEventListener("click", () => setOpen(!isOpen()));
+  scrim?.addEventListener("click", () => setOpen(false));
+  panel.addEventListener("click", (event) => {
+    if ((event.target as Element).closest("a[href]")) setOpen(false, false);
+  });
+  window
+    .matchMedia("(min-width: 64rem)")
+    .addEventListener("change", (event) => {
+      if (event.matches && isOpen()) setOpen(false, false);
+    });
+}
+
+for (const root of document.querySelectorAll<HTMLElement>(
+  "[data-mobile-nav]",
+)) {
+  bindMobileNav(root);
+}
+</script>

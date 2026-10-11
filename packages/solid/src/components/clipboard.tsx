@@ -141,7 +141,8 @@ export function Clipboard(props: ClipboardProps): JSX.Element {
       variant: controlVariant(),
     });
 
-  const control = (
+  // Render lazily so parts are created inside ClipboardProvider's context.
+  const control = () => (
     <ClipboardRoot {...rest}>
       <ClipboardControl class={local.classNames?.control}>
         <Show when={variant() === "input"}>
@@ -181,12 +182,12 @@ export function Clipboard(props: ClipboardProps): JSX.Element {
 
   return (
     <ClipboardProvider recipe={local.recipe} valueSize={local.valueSize}>
-      <Show fallback={control} when={local.label}>
+      <Show fallback={control()} when={local.label}>
         <ClipboardField class={local.classNames?.field}>
           <ClipboardLabel {...local.labelProps} class={local.classNames?.label}>
             {local.label}
           </ClipboardLabel>
-          {control}
+          {control()}
         </ClipboardField>
       </Show>
     </ClipboardProvider>

@@ -1,2 +1,2 @@
-export * from "./password-strength";
+export { default as PasswordStrength } from "./password-strength.vue";
 export { sources } from "./sources";

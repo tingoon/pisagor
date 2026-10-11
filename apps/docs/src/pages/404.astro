@@ -1,0 +1,77 @@
+---
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { frameworkPath, frameworks } from "#/lib/nav";
+
+/**
+ * Static 404 (GitHub Pages serves `404.html` for any unknown path). The page is
+ * rendered for React; the inline script retargets the home link and framework
+ * label from the requested URL so `/vue/…` misses send people back to Vue.
+ */
+const fallback = "react" as const;
+const homes = Object.fromEntries(
+  frameworks.map((item) => [
+    item.id,
+    { href: frameworkPath(item.id), label: item.label },
+  ]),
+);
+---
+
+<DocsLayout
+  description="This page doesn't exist or has moved."
+  framework={fallback}
+  kicker="404"
+  noindex
+  title="Page not found"
+>
+  <div data-pagefind-ignore="all">
+    <p class="mb-6 text-muted-foreground">
+      Check the URL, search the docs, or head back to the
+      <span data-404-framework>{homes[fallback]?.label}</span>
+      introduction.
+    </p>
+    <div class="flex flex-wrap gap-2">
+      <a
+        class="docs-press inline-flex h-9 items-center rounded-lg bg-primary px-4 font-medium text-primary-foreground text-sm"
+        data-404-home
+        href={homes[fallback]?.href}
+      >
+        Back to
+        <span class="ms-1" data-404-framework>{homes[fallback]?.label}</span>
+        docs
+      </a>
+      {frameworks.map((item) => (
+        <a
+          class="docs-press inline-flex h-9 items-center rounded-lg border border-border/70 px-3 text-sm hover:bg-accent/60"
+          href={frameworkPath(item.id)}
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+  <script
+    data-base={import.meta.env.BASE_URL}
+    data-homes={JSON.stringify(homes)}
+    is:inline
+  >
+  (() => {
+    const script = document.currentScript;
+    const homes = JSON.parse(script.dataset.homes || "{}");
+    const base = (script.dataset.base || "/").replace(/\/$/, "");
+    const path = location.pathname.startsWith(base)
+      ? location.pathname.slice(base.length)
+      : location.pathname;
+    const id = path.split("/").filter(Boolean)[0];
+    const home = id && homes[id];
+    if (!home) return;
+    const link = document.querySelector("[data-404-home]");
+    if (link) link.href = home.href;
+    for (const el of document.querySelectorAll("[data-404-framework]")) {
+      el.textContent = home.label;
+    }
+    // Keep header framework links pointing at the requested framework root.
+    const brand = document.querySelector('header a[aria-label="Pisagor home"]');
+    if (brand) brand.href = home.href;
+  })();
+  </script>
+</DocsLayout>

@@ -1,12 +1,17 @@
 ---
 import { Button } from "@pisagor/astro";
+import { icons } from "./icons";
 ---
 
 <div class="flex flex-col gap-2">
   {(["xs", "sm", "md", "lg", "xl"] as const).map((size) => (
     <div class="flex items-center gap-2">
       <Button size={size}>Button</Button>
-      <Button size={`icon-${size}`}></Button>
+      <Button aria-label="Add" size={`icon-${size}`}>
+        <svg aria-hidden="true" fill="currentColor" viewBox="0 0 256 256">
+          <path d={icons.plus}></path>
+        </svg>
+      </Button>
     </div>
   ))}
 </div>

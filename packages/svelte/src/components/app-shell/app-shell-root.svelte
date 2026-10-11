@@ -3,6 +3,7 @@ import { useHotkey } from "@ark-ui/svelte/hotkeys";
 import type { AppShellProps as BaseAppShellProps } from "@pisagor/props";
 import { appShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
+import { untrack } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import {
   APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS,
@@ -47,18 +48,22 @@ const railStates: Partial<Record<AppShellPlacement, AppShellRailState>> = {};
 const hasBanner = $derived(bannerCount > 0);
 const hasNavigation = $derived(navigationCount > 0);
 
+// These run inside child `$effect`s; read current state untracked so the
+// caller's effect doesn't depend on what it writes (effect_update_depth_exceeded).
 function notifyRegionChange() {
-  regionRevision += 1;
+  regionRevision = untrack(() => regionRevision) + 1;
 }
 
 function setRegionVar(name: AppShellRegionVar, value: string) {
-  if (regionVars[name] === value) return;
-  regionVars = { ...regionVars, [name]: value };
+  const current = untrack(() => regionVars);
+  if (current[name] === value) return;
+  regionVars = { ...current, [name]: value };
 }
 
 function setFixedStackVar(name: AppShellFixedStackVar, value: string) {
-  if (fixedStackVars[name] === value) return;
-  fixedStackVars = { ...fixedStackVars, [name]: value };
+  const current = untrack(() => fixedStackVars);
+  if (current[name] === value) return;
+  fixedStackVars = { ...current, [name]: value };
 }
 
 function registerBanner() {

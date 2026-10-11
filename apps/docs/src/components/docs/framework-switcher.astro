@@ -1,0 +1,57 @@
+---
+import type { Framework } from "#/lib/nav";
+import { frameworks, swapFrameworkPath } from "#/lib/nav";
+import {
+  AstroBrandIcon,
+  ReactBrandIcon,
+  SolidBrandIcon,
+  SvelteBrandIcon,
+  VueBrandIcon,
+} from "./brand-icons";
+
+interface Props {
+  framework: Framework;
+  pathname: string;
+}
+
+// Server-rendered only (no client directive) — ships zero React to the browser.
+const frameworkIcons = {
+  astro: AstroBrandIcon,
+  react: ReactBrandIcon,
+  solid: SolidBrandIcon,
+  svelte: SvelteBrandIcon,
+  vue: VueBrandIcon,
+} as const;
+---
+
+<nav
+  aria-label="Framework"
+  class="m-0 inline-flex items-center rounded-full border border-border/70 bg-muted/40 p-0.5"
+>
+  {frameworks.map((item) => {
+    const active = item.id === Astro.props.framework;
+    const Icon = frameworkIcons[item.id];
+    return (
+      <a
+        aria-current={active ? "page" : undefined}
+        aria-label={item.label}
+        class:list={[
+          "docs-press inline-flex items-center gap-1.5 rounded-full border px-2 py-1 text-xs sm:px-2.5",
+          active
+            ? "border-border/60 bg-background font-semibold text-foreground shadow-sm"
+            : "border-transparent font-medium text-muted-foreground hover:text-foreground",
+        ]}
+        href={swapFrameworkPath(Astro.props.pathname, item.id)}
+      >
+        <Icon className={active ? "opacity-100" : "opacity-70"} size={13} />
+        <span
+          class:list={[
+            active ? "hidden min-[420px]:inline" : "hidden sm:inline",
+          ]}
+        >
+          {item.label}
+        </span>
+      </a>
+    );
+  })}
+</nav>
