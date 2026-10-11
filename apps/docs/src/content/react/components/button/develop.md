@@ -2,8 +2,6 @@
 
 ```tsx
 import { Button } from "@pisagor/react";
-
-<Button>Save</Button>
 ```
 
 ## Examples

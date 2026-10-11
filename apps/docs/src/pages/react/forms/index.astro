@@ -2,12 +2,10 @@
 import Installation from "#/components/docs/installation.astro";
 import PackageLinks from "#/components/docs/package-links.astro";
 import DocsLayout from "#/layouts/docs-layout.astro";
-import { withDocsBase } from "#/lib/nav";
 
 const headings = [
   { depth: 2, slug: "overview", text: "Overview" },
   { depth: 2, slug: "install", text: "Install" },
-  { depth: 2, slug: "next", text: "Next" },
 ];
 ---
 
@@ -18,7 +16,11 @@ const headings = [
   kicker="Get started"
   title="Introduction"
 >
-  <PackageLinks framework="react" packageName="@pisagor/react-form" />
+  <PackageLinks
+    framework="react"
+    packageName="@pisagor/react-form"
+    slot="title-actions"
+  />
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">
     Overview
   </h2>
@@ -37,20 +39,4 @@ const headings = [
     Install
   </h2>
   <Installation class="mb-6" packages="@pisagor/react-form" />
-
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="next">Next</h2>
-  <p class="text-muted-foreground">
-    Start with{" "}
-    <a
-      class="text-foreground underline-offset-4 hover:underline"
-      href={withDocsBase("/react/forms/text-field")}
-      >Text Field</a
-    >
-    or{" "}
-    <a
-      class="text-foreground underline-offset-4 hover:underline"
-      href={withDocsBase("/react/forms/select-field")}
-      >Select Field</a
-    >.
-  </p>
 </DocsLayout>

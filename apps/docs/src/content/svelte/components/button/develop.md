@@ -2,8 +2,6 @@
 
 ```ts
 import { Button } from "@pisagor/svelte";
-
-<Button>Save</Button>
 ```
 
 ## Examples

@@ -1,6 +1,6 @@
 /**
  * Client behavior for `component-preview.astro`: Preview/Code tabs, lazy code
- * blocks, per-preview light/dark toggle, surface + viewport selects (surface
+ * blocks, per-preview light/dark toggle, surface + viewport menus (surface
  * choice is shared across previews and persisted), dependency popover and
  * "open in new tab".
  */
@@ -17,12 +17,41 @@ function readStoredSurface(): string {
   }
 }
 
+function setMenuValue(menu: HTMLElement, value: string) {
+  const label = menu.querySelector<HTMLElement>("[data-preview-menu-value]");
+  const options = [
+    ...menu.querySelectorAll<HTMLElement>("[data-preview-menu-option]"),
+  ];
+  let matched: HTMLElement | undefined;
+  for (const option of options) {
+    const active = option.dataset.value === value;
+    option.toggleAttribute("data-active", active);
+    option.setAttribute("aria-selected", active ? "true" : "false");
+    if (active) matched = option;
+  }
+  if (label && matched?.dataset.label) {
+    label.textContent = matched.dataset.label;
+  }
+}
+
+function closeMenu(menu: HTMLElement) {
+  const toggle = menu.querySelector<HTMLElement>("[data-preview-menu-toggle]");
+  const panel = menu.querySelector<HTMLElement>("[data-preview-menu-panel]");
+  panel?.classList.add("hidden");
+  toggle?.setAttribute("aria-expanded", "false");
+}
+
+function openMenu(menu: HTMLElement) {
+  const toggle = menu.querySelector<HTMLElement>("[data-preview-menu-toggle]");
+  const panel = menu.querySelector<HTMLElement>("[data-preview-menu-panel]");
+  panel?.classList.remove("hidden");
+  toggle?.setAttribute("aria-expanded", "true");
+}
+
 function bindSurface(root: HTMLElement) {
   const wrapper = root.querySelector<HTMLElement>("[data-preview-surface]");
-  const select = root.querySelector<HTMLSelectElement>(
-    '[data-preview-select="surface"]',
-  );
-  if (!wrapper || !select) return;
+  const menu = root.querySelector<HTMLElement>('[data-preview-menu="surface"]');
+  if (!wrapper || !menu) return;
 
   // Class strings come from the real `<Surface>` render, so they track the recipe.
   const classes = new Map<string, string>([["page", "w-full"]]);
@@ -40,7 +69,7 @@ function bindSurface(root: HTMLElement) {
     if (!wrapper) return;
     wrapper.className = classes.get(next) ?? "w-full";
     wrapper.dataset.previewSurface = next;
-    if (select) select.value = next;
+    setMenuValue(menu, next);
   }
 
   function choose(value: string) {
@@ -53,7 +82,14 @@ function bindSurface(root: HTMLElement) {
     document.dispatchEvent(new CustomEvent(SURFACE_EVENT, { detail: value }));
   }
 
-  select.addEventListener("change", () => choose(select.value));
+  menu.addEventListener("click", (event) => {
+    const option = (event.target as HTMLElement).closest<HTMLElement>(
+      "[data-preview-menu-option]",
+    );
+    if (!option || !menu.contains(option) || !option.dataset.value) return;
+    choose(option.dataset.value);
+    closeMenu(menu);
+  });
 
   document.addEventListener(SURFACE_EVENT, (event) => {
     if (!root.isConnected) return;
@@ -79,6 +115,7 @@ function bindPreview(root: HTMLElement) {
   const depsRoot = root.querySelector<HTMLElement>("[data-deps]");
   const depsToggle = root.querySelector<HTMLElement>("[data-deps-toggle]");
   const depsPanel = root.querySelector<HTMLElement>("[data-deps-panel]");
+  const menus = [...root.querySelectorAll<HTMLElement>("[data-preview-menu]")];
   const sun = themeBtn?.querySelector<HTMLElement>("[data-icon-sun]");
   const moon = themeBtn?.querySelector<HTMLElement>("[data-icon-moon]");
 
@@ -190,28 +227,69 @@ function bindPreview(root: HTMLElement) {
     depsToggle?.setAttribute("aria-expanded", "false");
   }
 
+  function closeMenus(except?: HTMLElement) {
+    for (const menu of menus) {
+      if (menu !== except) closeMenu(menu);
+    }
+  }
+
   depsToggle?.addEventListener("click", (event) => {
     event.stopPropagation();
+    closeMenus();
     const willOpen = depsPanel?.classList.contains("hidden");
     depsPanel?.classList.toggle("hidden", !willOpen);
     depsToggle.setAttribute("aria-expanded", willOpen ? "true" : "false");
   });
 
-  document.addEventListener("click", (event) => {
-    if (!depsRoot) return;
-    if (!depsRoot.contains(event.target as Node)) closeDeps();
-  });
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeDeps();
+  for (const menu of menus) {
+    const toggle = menu.querySelector<HTMLElement>(
+      "[data-preview-menu-toggle]",
+    );
+    toggle?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      closeDeps();
+      const panel = menu.querySelector<HTMLElement>(
+        "[data-preview-menu-panel]",
+      );
+      const willOpen = panel?.classList.contains("hidden");
+      closeMenus(menu);
+      if (willOpen) openMenu(menu);
+      else closeMenu(menu);
+    });
+  }
+
+  const viewportMenu = root.querySelector<HTMLElement>(
+    '[data-preview-menu="viewport"]',
+  );
+  viewportMenu?.addEventListener("click", (event) => {
+    const option = (event.target as HTMLElement).closest<HTMLElement>(
+      "[data-preview-menu-option]",
+    );
+    if (!option || !viewportMenu.contains(option) || !option.dataset.value) {
+      return;
+    }
+    const size = option.dataset.value;
+    if (
+      stage &&
+      (size === "tablet" || size === "mobile" || size === "desktop")
+    ) {
+      stage.dataset.viewport = size;
+      setMenuValue(viewportMenu, size);
+    }
+    closeMenu(viewportMenu);
   });
 
-  const viewportSelect = root.querySelector<HTMLSelectElement>(
-    '[data-preview-select="viewport"]',
-  );
-  viewportSelect?.addEventListener("change", () => {
-    const size = viewportSelect.value;
-    if (stage && (size === "tablet" || size === "mobile" || size === "desktop"))
-      stage.dataset.viewport = size;
+  document.addEventListener("click", (event) => {
+    const target = event.target as Node;
+    if (depsRoot && !depsRoot.contains(target)) closeDeps();
+    for (const menu of menus) {
+      if (!menu.contains(target)) closeMenu(menu);
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    closeDeps();
+    closeMenus();
   });
 }
 

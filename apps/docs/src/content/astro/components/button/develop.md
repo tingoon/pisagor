@@ -2,8 +2,6 @@
 
 ```ts
 import { Button } from "@pisagor/astro";
-
-<Button>Save</Button>
 ```
 
 ## Examples
