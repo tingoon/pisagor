@@ -64,7 +64,7 @@ bunx knip
 bunx taze -r
 ```
 
-Weekly dependency PRs: Actions → **Dependency Updates** (Renovate; config in `renovate.json`). Manual run via **Run workflow**.
+Dependency PRs: [Dependabot](https://docs.github.com/en/code-security/dependabot) (config in `.github/dependabot.yml`).
 
 ## Turborepo Remote Cache
 
