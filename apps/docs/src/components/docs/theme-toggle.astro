@@ -1,0 +1,186 @@
+---
+import ThemeIcon from "./theme-icons.astro";
+
+const options = [
+  { id: "light", label: "Light" },
+  { id: "dark", label: "Dark" },
+  { id: "system", label: "System" },
+] as const;
+---
+
+<div class="relative" data-theme-menu>
+  <button
+    aria-controls="docs-theme-menu"
+    aria-expanded="false"
+    aria-haspopup="menu"
+    aria-label="Theme: system"
+    class="docs-press inline-flex size-8 items-center justify-center rounded-lg border border-border/70 bg-background text-foreground hover:bg-accent/60"
+    data-theme-menu-trigger
+    type="button"
+  >
+    {options.map((option) => (
+      <ThemeIcon
+        class={option.id === "system" ? undefined : "hidden"}
+        data-theme-icon={option.id}
+        name={option.id}
+      />
+    ))}
+  </button>
+
+  <div
+    class="docs-sheet-panel docs-sheet-panel-end absolute inset-e-0 z-50 mt-2 min-w-36 overflow-hidden rounded-xl border border-border/70 bg-background p-1 text-popover-foreground shadow-md"
+    data-theme-menu-list
+    hidden
+    id="docs-theme-menu"
+    role="menu"
+  >
+    {options.map((option) => (
+      <button
+        aria-checked={option.id === "system" ? "true" : "false"}
+        class="docs-press flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-left text-sm hover:bg-accent/60 focus-visible:bg-accent/60 data-active:bg-accent data-active:text-accent-foreground"
+        data-theme-option={option.id}
+        role="menuitemradio"
+        tabindex="-1"
+        type="button"
+      >
+        <ThemeIcon name={option.id} />
+        <span class="flex-1">{option.label}</span>
+        <svg
+          aria-hidden="true"
+          class="size-3.5 opacity-80"
+          data-theme-check
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="m5 12 5 5L20 7"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          ></path>
+        </svg>
+      </button>
+    ))}
+  </div>
+</div>
+
+<script>
+type ThemePreference = "light" | "dark" | "system";
+
+// Keep in sync with the pre-paint script in base-head.astro.
+const STORAGE_KEY = "pisagor-docs-theme";
+const media = window.matchMedia("(prefers-color-scheme: dark)");
+
+function readPreference(): ThemePreference {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === "light" || stored === "dark" || stored === "system")
+      return stored;
+  } catch {
+    /* storage blocked */
+  }
+  return "system";
+}
+
+function resolve(preference: ThemePreference): "light" | "dark" {
+  if (preference !== "system") return preference;
+  return media.matches ? "dark" : "light";
+}
+
+function apply(preference: ThemePreference) {
+  const resolved = resolve(preference);
+  document.documentElement.classList.toggle("dark", resolved === "dark");
+  document.documentElement.style.colorScheme = resolved;
+  for (const root of document.querySelectorAll<HTMLElement>(
+    "[data-theme-menu]",
+  )) {
+    const trigger = root.querySelector("[data-theme-menu-trigger]");
+    trigger?.setAttribute(
+      "aria-label",
+      `Theme: ${preference}. Resolved ${resolved}.`,
+    );
+    for (const icon of root.querySelectorAll<SVGElement>("[data-theme-icon]")) {
+      icon.classList.toggle("hidden", icon.dataset.themeIcon !== preference);
+    }
+    for (const option of root.querySelectorAll<HTMLElement>(
+      "[data-theme-option]",
+    )) {
+      const active = option.dataset.themeOption === preference;
+      option.setAttribute("aria-checked", String(active));
+      option.toggleAttribute("data-active", active);
+      option
+        .querySelector("[data-theme-check]")
+        ?.classList.toggle("invisible", !active);
+    }
+  }
+}
+
+function bindThemeMenu(root: HTMLElement) {
+  if (root.dataset.bound === "1") return;
+  root.dataset.bound = "1";
+  const trigger = root.querySelector<HTMLButtonElement>(
+    "[data-theme-menu-trigger]",
+  );
+  const list = root.querySelector<HTMLElement>("[data-theme-menu-list]");
+  if (!trigger || !list) return;
+  const items = [...list.querySelectorAll<HTMLElement>("[data-theme-option]")];
+
+  function setOpen(next: boolean, focusTrigger = false) {
+    if (!trigger || !list) return;
+    list.hidden = !next;
+    trigger.setAttribute("aria-expanded", String(next));
+    if (next) {
+      const checked =
+        items.find((item) => item.getAttribute("aria-checked") === "true") ??
+        items[0];
+      checked?.focus();
+    } else if (focusTrigger) {
+      trigger.focus();
+    }
+  }
+
+  trigger.addEventListener("click", () => setOpen(list.hidden));
+  for (const item of items) {
+    item.addEventListener("click", () => {
+      const next = (item.dataset.themeOption ?? "system") as ThemePreference;
+      try {
+        localStorage.setItem(STORAGE_KEY, next);
+      } catch {
+        /* storage blocked */
+      }
+      apply(next);
+      setOpen(false, true);
+    });
+  }
+  list.addEventListener("keydown", (event) => {
+    const index = items.indexOf(document.activeElement as HTMLElement);
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      event.preventDefault();
+      const delta = event.key === "ArrowDown" ? 1 : -1;
+      items[(index + delta + items.length) % items.length]?.focus();
+    } else if (event.key === "Home" || event.key === "End") {
+      event.preventDefault();
+      items[event.key === "Home" ? 0 : items.length - 1]?.focus();
+    } else if (event.key === "Tab") {
+      setOpen(false);
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !list.hidden) setOpen(false, true);
+  });
+  document.addEventListener("mousedown", (event) => {
+    if (!list.hidden && !root.contains(event.target as Node)) setOpen(false);
+  });
+}
+
+for (const root of document.querySelectorAll<HTMLElement>(
+  "[data-theme-menu]",
+)) {
+  bindThemeMenu(root);
+}
+apply(readPreference());
+media.addEventListener("change", () => {
+  if (readPreference() === "system") apply("system");
+});
+</script>

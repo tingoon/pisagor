@@ -2,26 +2,74 @@
 interface Props {
   title: string;
   description?: string;
+  /** Keep standalone preview frames and utility pages out of search engines. */
+  noindex?: boolean;
+  /** Override the canonical path (defaults to the current URL). */
+  canonicalPath?: string;
 }
+
+const SITE_NAME = "Pisagor";
+const DEFAULT_DESCRIPTION =
+  "Accessible, themeable UI components for React, Vue, Svelte, Solid, and Astro — built on Ark UI and Tailwind CSS v4.";
+
+const description = Astro.props.description?.trim() || DEFAULT_DESCRIPTION;
+const fullTitle = `${Astro.props.title} · ${SITE_NAME}`;
+
+/** Absolute URL from `site` + current path (Astro.url already includes `base`). */
+function absolute(path: string): string | undefined {
+  if (!Astro.site) return undefined;
+  return new URL(path, Astro.site.origin).href;
+}
+
+const canonicalPath = Astro.props.canonicalPath ?? Astro.url.pathname;
+const canonical = absolute(
+  canonicalPath.endsWith("/") ? canonicalPath : `${canonicalPath}/`,
+);
+const ogImage = absolute(`${import.meta.env.BASE_URL}og.png`);
 ---
 
 <meta charset="UTF-8">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<meta
-  content={Astro.props.description ?? "Pisagor UI documentation"}
-  name="description"
->
+<title>{fullTitle}</title>
+<meta content={description} name="description">
 <meta content="dark light" name="color-scheme">
+{Astro.props.noindex ? <meta content="noindex, nofollow" name="robots"> : null}
+{canonical && !Astro.props.noindex ? (
+  <link href={canonical} rel="canonical">
+) : null}
 <link
   href={`${import.meta.env.BASE_URL}favicon.svg`}
   rel="icon"
   type="image/svg+xml"
 >
-<title>{Astro.props.title} · Pisagor</title>
+{!Astro.props.noindex ? (
+  <link
+    href={`${import.meta.env.BASE_URL}sitemap-index.xml`}
+    rel="sitemap"
+    type="application/xml"
+  />
+) : null}
+
+<meta content="website" property="og:type">
+<meta content={SITE_NAME} property="og:site_name">
+<meta content={fullTitle} property="og:title">
+<meta content={description} property="og:description">
+{canonical ? <meta content={canonical} property="og:url"> : null}
+{ogImage ? <meta content={ogImage} property="og:image"> : null}
+{ogImage ? <meta content="1200" property="og:image:width"> : null}
+{ogImage ? <meta content="630" property="og:image:height"> : null}
+<meta content="summary_large_image" name="twitter:card">
+<meta content={fullTitle} name="twitter:title">
+<meta content={description} name="twitter:description">
+{ogImage ? <meta content={ogImage} name="twitter:image"> : null}
+
 <script is:inline>
 (() => {
   const key = "pisagor-docs-theme";
-  const stored = localStorage.getItem(key);
+  let stored = null;
+  try {
+    stored = localStorage.getItem(key);
+  } catch {}
   const preference =
     stored === "light" || stored === "dark" || stored === "system"
       ? stored
