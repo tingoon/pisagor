@@ -25,8 +25,8 @@
   "peerDependencies": {
     "@pisagor/react": "workspace:^",
     "@tanstack/react-form": "^1.33.5",
-    "react": "^19",
-    "react-dom": "^19"
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
   },
   "peerDependenciesMeta": {
     "@tanstack/react-form": {

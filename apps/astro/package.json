@@ -5,12 +5,12 @@
   "description": "Astro Storybook for @pisagor/astro package stories.",
   "devDependencies": {
     "@storybook-astro/framework": "^1.12.0",
-    "@storybook/addon-a11y": "^10.6.0",
-    "@storybook/addon-docs": "^10.6.0",
+    "@storybook/addon-a11y": "^10.6.1",
+    "@storybook/addon-docs": "^10.6.1",
     "@tailwindcss/vite": "catalog:",
     "astro": "catalog:",
-    "chromatic": "^18.9.4",
-    "storybook": "^10.6.0",
+    "chromatic": "^18.12.0",
+    "storybook": "^10.6.1",
     "tailwindcss": "catalog:",
     "vite": "catalog:"
   },

@@ -14,7 +14,7 @@
   "license": "MIT",
   "name": "@pisagor/tokens",
   "peerDependencies": {
-    "tailwindcss": "^4"
+    "tailwindcss": "^4.3.3"
   },
   "repository": {
     "directory": "packages/tokens",

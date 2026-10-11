@@ -22,7 +22,7 @@
   "peerDependencies": {
     "@pisagor/solid": "workspace:^",
     "@tanstack/solid-form": "^1.33.5",
-    "solid-js": "^1"
+    "solid-js": "^1.9.17"
   },
   "peerDependenciesMeta": {
     "@tanstack/solid-form": {

@@ -27,8 +27,8 @@
   "license": "MIT",
   "name": "@pisagor/astro",
   "peerDependencies": {
-    "astro": "^7",
-    "tailwindcss": "^4"
+    "astro": "^7.3.8",
+    "tailwindcss": "^4.3.3"
   },
   "repository": {
     "directory": "packages/astro",

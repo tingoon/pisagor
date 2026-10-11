@@ -7,7 +7,7 @@
     "@pisagor/svelte": "workspace:*",
     "@tanstack/svelte-form": "^1.33.5",
     "svelte": "catalog:",
-    "svelte-check-native": "^1.8.0",
+    "svelte-check-native": "^1.9.1",
     "typescript": "catalog:"
   },
   "exports": {
@@ -24,7 +24,7 @@
   "peerDependencies": {
     "@pisagor/svelte": "workspace:^",
     "@tanstack/svelte-form": "^1.33.5",
-    "svelte": "^5"
+    "svelte": "^5.57.2"
   },
   "peerDependenciesMeta": {
     "@tanstack/svelte-form": {

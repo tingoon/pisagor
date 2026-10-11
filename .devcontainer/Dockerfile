@@ -1,4 +1,4 @@
-FROM oven/bun:1.4.0-slim
+FROM oven/bun:1.4.3-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 
