@@ -52,6 +52,8 @@ function bindSurface(root: HTMLElement) {
   const wrapper = root.querySelector<HTMLElement>("[data-preview-surface]");
   const menu = root.querySelector<HTMLElement>('[data-preview-menu="surface"]');
   if (!wrapper || !menu) return;
+  const surface = wrapper;
+  const surfaceMenu = menu;
 
   // Class strings come from the real `<Surface>` render, so they track the recipe.
   const classes = new Map<string, string>([["page", "w-full"]]);
@@ -66,10 +68,9 @@ function bindSurface(root: HTMLElement) {
 
   function apply(value: string) {
     const next = classes.has(value) ? value : "page";
-    if (!wrapper) return;
-    wrapper.className = classes.get(next) ?? "w-full";
-    wrapper.dataset.previewSurface = next;
-    setMenuValue(menu, next);
+    surface.className = classes.get(next) ?? "w-full";
+    surface.dataset.previewSurface = next;
+    setMenuValue(surfaceMenu, next);
   }
 
   function choose(value: string) {
@@ -82,13 +83,15 @@ function bindSurface(root: HTMLElement) {
     document.dispatchEvent(new CustomEvent(SURFACE_EVENT, { detail: value }));
   }
 
-  menu.addEventListener("click", (event) => {
+  surfaceMenu.addEventListener("click", (event) => {
     const option = (event.target as HTMLElement).closest<HTMLElement>(
       "[data-preview-menu-option]",
     );
-    if (!option || !menu.contains(option) || !option.dataset.value) return;
+    if (!option || !surfaceMenu.contains(option) || !option.dataset.value) {
+      return;
+    }
     choose(option.dataset.value);
-    closeMenu(menu);
+    closeMenu(surfaceMenu);
   });
 
   document.addEventListener(SURFACE_EVENT, (event) => {
