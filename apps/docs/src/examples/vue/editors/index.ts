@@ -1,4 +1,4 @@
-export * from "./editable-user-card";
-export * from "./ide-layout";
-export * from "./rich-text-toolbar";
+export { default as EditableUserCard } from "./editable-user-card.vue";
+export { default as IdeLayout } from "./ide-layout.vue";
+export { default as RichTextToolbar } from "./rich-text-toolbar.vue";
 export { sources } from "./sources";

@@ -1,2 +1,2 @@
 export { sources } from "./sources";
-export * from "./standard-app-shell";
+export { default as StandardAppShell } from "./standard-app-shell.vue";

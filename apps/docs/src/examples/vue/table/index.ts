@@ -1,4 +1,4 @@
 export { sources } from "./sources";
-export * from "./table-bulk-actions";
-export * from "./table-pagination";
-export * from "./table-row-menu";
+export { default as TableBulkActions } from "./table-bulk-actions.vue";
+export { default as TablePagination } from "./table-pagination.vue";
+export { default as TableRowMenu } from "./table-row-menu.vue";
