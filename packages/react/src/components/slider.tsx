@@ -288,8 +288,9 @@ export function Slider({
     if (Array.isArray(defaultValue)) {
       return defaultValue;
     }
-    return [min, max];
-  }, [value, defaultValue, min, max]);
+    // Uncontrolled default is a single thumb (zag defaults `value` to `[min]`).
+    return [min];
+  }, [value, defaultValue, min]);
 
   const handleValueChange = onValueChange
     ? (details: Parameters<NonNullable<SliderRootProps["onValueChange"]>>[0]) =>
