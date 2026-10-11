@@ -94,7 +94,11 @@ const highlightedHtml = lazy ? "" : await highlightCode(code, lang);
           {Astro.props.title}
         </span>
       ) : null}
-      <Badge class="uppercase tracking-wider" size="sm" variant="outline">
+      <Badge
+        class="h-4 min-w-4 px-1 text-[10px] uppercase leading-none tracking-wider"
+        size="sm"
+        variant="outline"
+      >
         {badgeLang}
       </Badge>
     </div>

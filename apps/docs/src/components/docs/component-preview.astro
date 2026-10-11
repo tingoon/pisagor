@@ -78,9 +78,25 @@ const viewports = [
   { label: "Mobile", value: "mobile" },
 ] as const;
 
-/** Native select styled like Pisagor's `sm` form control (no Astro Select exists). */
-const selectClass =
-  "h-7 w-full min-w-0 cursor-pointer appearance-none rounded-lg border border-foreground/20 bg-card ps-2 pe-6 text-foreground text-xs shadow-sm outline-hidden transition-[color,box-shadow,background-color,border-color] duration-fast ease-out focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/24 motion-reduce:transition-none! dark:border-input dark:bg-input/30";
+const previewMenus = [
+  {
+    key: "surface",
+    label: "Surface",
+    options: surfaces,
+    /** Stable trigger width for longest label (“Secondary”). */
+    triggerClass: "min-w-[6.5rem]",
+  },
+  {
+    key: "viewport",
+    label: "Viewport",
+    options: viewports,
+    /** Stable trigger width for longest label (“Desktop”). */
+    triggerClass: "min-w-[5.75rem]",
+  },
+] as const;
+
+const menuOptionClass =
+  "flex w-full items-center rounded-md px-2 py-1.5 text-start text-xs text-muted-foreground transition-colors hover:bg-muted/70 hover:text-foreground data-active:bg-background data-active:font-medium data-active:text-foreground data-active:shadow-sm";
 ---
 
 <section
@@ -141,16 +157,18 @@ const selectClass =
         <MoonIcon aria-hidden data-icon-moon hidden size={14} />
       </Button>
 
-      <Button
-        aria-label="Open preview in a new tab"
-        data-open-tab
-        data-tooltip="Open in new tab"
-        size="icon-sm"
-        type="button"
-        variant="ghost"
-      >
-        <ArrowSquareOutIcon aria-hidden size={14} />
-      </Button>
+      {kind === "block" ? (
+        <Button
+          aria-label="Open preview in a new tab"
+          data-open-tab
+          data-tooltip="Open in new tab"
+          size="icon-sm"
+          type="button"
+          variant="ghost"
+        >
+          <ArrowSquareOutIcon aria-hidden size={14} />
+        </Button>
+      ) : null}
 
       <div class="relative" data-deps>
         <Button
@@ -199,28 +217,46 @@ const selectClass =
 
       <Separator class="mx-0.5 hidden h-4 sm:block" orientation="vertical" />
 
-      {[
-        { key: "surface", label: "Surface", options: surfaces },
-        { key: "viewport", label: "Viewport", options: viewports },
-      ].map((control) => (
-        <span class="relative inline-flex">
-          <select
+      {previewMenus.map((control) => (
+        <div class="relative" data-preview-menu={control.key}>
+          <Button
+            aria-expanded="false"
+            aria-haspopup="listbox"
             aria-label={control.label}
-            class={selectClass}
-            data-preview-select={control.key}
+            class:list={[
+              "justify-between gap-1 px-2 font-medium text-muted-foreground hover:text-foreground",
+              control.triggerClass,
+            ]}
+            data-preview-menu-toggle
+            size="xs"
+            type="button"
+            variant="ghost"
+          >
+            <span data-preview-menu-value>{control.options[0].label}</span>
+            <CaretUpDownIcon aria-hidden class="opacity-60" size={11} />
+          </Button>
+          <div
+            aria-label={control.label}
+            class="absolute inset-e-0 z-20 mt-1 hidden min-w-36 rounded-lg border border-border/70 bg-popover p-1 text-popover-foreground shadow-lg"
+            data-preview-menu-panel
+            role="listbox"
           >
             {control.options.map((option, index) => (
-              <option selected={index === 0} value={option.value}>
+              <button
+                aria-selected={index === 0 ? "true" : "false"}
+                class={menuOptionClass}
+                data-active={index === 0 ? "" : undefined}
+                data-label={option.label}
+                data-preview-menu-option
+                data-value={option.value}
+                role="option"
+                type="button"
+              >
                 {option.label}
-              </option>
+              </button>
             ))}
-          </select>
-          <CaretUpDownIcon
-            aria-hidden
-            class="pointer-events-none absolute inset-e-1.5 top-1/2 -translate-y-1/2 text-muted-foreground"
-            size={12}
-          />
-        </span>
+          </div>
+        </div>
       ))}
     </div>
   </div>

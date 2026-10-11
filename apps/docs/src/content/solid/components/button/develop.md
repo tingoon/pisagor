@@ -2,8 +2,6 @@
 
 ```tsx
 import { Button } from "@pisagor/solid";
-
-<Button>Save</Button>
 ```
 
 ## Examples

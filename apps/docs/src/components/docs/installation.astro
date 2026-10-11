@@ -1,11 +1,9 @@
 ---
-import { Button, Separator } from "@pisagor/astro";
+import { Button } from "@pisagor/astro";
 
 interface Props {
   /** One or more packages, e.g. "@pisagor/react" */
   packages?: string | string[];
-  /** Optional import / setup snippet shown under Manual */
-  manual?: string;
   class?: string;
 }
 
@@ -24,12 +22,6 @@ const managers = [
 ] as const;
 
 const defaultManager = managers[0];
-
-const defaultManual =
-  Astro.props.manual ??
-  (resolvedPkgs.length === 1
-    ? `import { /* … */ } from "${resolvedPkgs[0]}";`
-    : resolvedPkgs.map((p) => `import { /* … */ } from "${p}";`).join("\n"));
 
 const tabClass =
   "shrink-0 text-muted-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm";
@@ -66,7 +58,7 @@ const tabClass =
       </span>
 
       <div
-        aria-label="Installation method"
+        aria-label="Package manager"
         class="flex min-w-0 flex-1 items-center gap-0.5 overflow-x-auto"
         role="tablist"
       >
@@ -76,7 +68,6 @@ const tabClass =
             class={tabClass}
             data-active={manager.id === defaultManager.id ? "" : undefined}
             data-command={manager.command}
-            data-mode="cli"
             data-pm={manager.id}
             data-tab
             role="tab"
@@ -87,44 +78,18 @@ const tabClass =
             {manager.label}
           </Button>
         ))}
-        <Separator class="mx-1 h-4" orientation="vertical" />
-        <Button
-          aria-selected="false"
-          class={tabClass}
-          data-mode="manual"
-          data-tab
-          role="tab"
-          size="sm"
-          type="button"
-          variant="ghost"
-        >
-          Manual
-        </Button>
       </div>
     </div>
 
-    <div data-panel="cli" role="tabpanel">
+    <div role="tabpanel">
       <pre
         class="overflow-x-auto py-3.5 ps-4 pe-12 font-mono text-3.25 leading-relaxed text-foreground"
       ><code data-command-text>{defaultManager.command}</code></pre>
     </div>
 
-    <div class="hidden" data-panel="manual" role="tabpanel">
-      <pre
-        class="overflow-x-auto py-3.5 ps-4 pe-12 font-mono text-3.25 leading-relaxed text-foreground"
-        data-manual-source
-      ><code>{defaultManual}</code></pre>
-      <p
-        class="border-t border-border/60 px-4 py-2.5 text-xs text-muted-foreground"
-      >
-        Install the package with your package manager, then import the
-        components you need.
-      </p>
-    </div>
-
     <Button
       aria-label="Copy to clipboard"
-      class="absolute end-2 bottom-2 data-copied:text-emerald-500 data-[mode=manual]:bottom-auto data-[mode=manual]:top-12"
+      class="absolute end-2 bottom-2 data-copied:text-emerald-500"
       data-copy
       size="icon-sm"
       type="button"
@@ -198,29 +163,19 @@ function bindInstallation(root: HTMLElement) {
   root.dataset.bound = "1";
 
   const tabs = [...root.querySelectorAll<HTMLElement>("[data-tab]")];
-  const pmTabs = tabs.filter((tab) => tab.dataset.pm);
-  const cliPanel = root.querySelector<HTMLElement>('[data-panel="cli"]');
-  const manualPanel = root.querySelector<HTMLElement>('[data-panel="manual"]');
   const commandEl = root.querySelector<HTMLElement>("[data-command-text]");
-  const manualSource = root.querySelector<HTMLElement>("[data-manual-source]");
   const copyBtn = root.querySelector<HTMLElement>("[data-copy]");
-  let mode: "cli" | "manual" = "cli";
 
   function activate(target: HTMLElement) {
-    mode = target.dataset.mode === "manual" ? "manual" : "cli";
     for (const tab of tabs) {
       const active = tab === target;
       tab.toggleAttribute("data-active", active);
       tab.setAttribute("aria-selected", active ? "true" : "false");
     }
-    cliPanel?.classList.toggle("hidden", mode !== "cli");
-    manualPanel?.classList.toggle("hidden", mode !== "manual");
-    if (copyBtn) copyBtn.dataset.mode = mode;
-
-    if (mode === "cli" && target.dataset.pm) {
-      if (commandEl && target.dataset.command) {
-        commandEl.textContent = target.dataset.command;
-      }
+    if (commandEl && target.dataset.command) {
+      commandEl.textContent = target.dataset.command;
+    }
+    if (target.dataset.pm) {
       try {
         localStorage.setItem(STORAGE_KEY, target.dataset.pm);
       } catch {
@@ -234,8 +189,7 @@ function bindInstallation(root: HTMLElement) {
   }
 
   copyBtn?.addEventListener("click", async () => {
-    const source = mode === "manual" ? manualSource : commandEl;
-    const text = source?.textContent?.trim() ?? "";
+    const text = commandEl?.textContent?.trim() ?? "";
     if (!text) return;
     await copyText(text);
     markCopied(copyBtn);
@@ -247,8 +201,7 @@ function bindInstallation(root: HTMLElement) {
   } catch {
     /* ignore */
   }
-  const initial =
-    pmTabs.find((tab) => tab.dataset.pm === preferred) ?? pmTabs[0];
+  const initial = tabs.find((tab) => tab.dataset.pm === preferred) ?? tabs[0];
   if (initial) activate(initial);
 }
 
