@@ -7,13 +7,13 @@ import { Breadcrumb } from "@pisagor/vue";
     <Breadcrumb.List>
       <Breadcrumb.Item>
         <Breadcrumb.Link as-child>
-          <a href="/docs">Docs</a>
+          <a href="https://example.com/docs">Docs</a>
         </Breadcrumb.Link>
       </Breadcrumb.Item>
       <Breadcrumb.Separator />
       <Breadcrumb.Item>
         <Breadcrumb.Link as-child>
-          <a href="/docs/components">Components</a>
+          <a href="https://example.com/docs/components">Components</a>
         </Breadcrumb.Link>
       </Breadcrumb.Item>
       <Breadcrumb.Separator />

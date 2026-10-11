@@ -1,11 +1,37 @@
 ---
 import { Button } from "@pisagor/astro";
+import { icons } from "./icons";
 ---
 
 <div class="flex flex-wrap gap-2">
-  <Button variant="default"> Add </Button>
-  <Button variant="outline"> Settings </Button>
-  <Button variant="secondary"> Favorite </Button>
-  <Button variant="ghost"> Download </Button>
-  <Button variant="link"> Visit website </Button>
+  <Button variant="default">
+    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 256 256">
+      <path d={icons.plus}></path>
+    </svg>
+    Add
+  </Button>
+  <Button variant="outline">
+    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 256 256">
+      <path d={icons.gear}></path>
+    </svg>
+    Settings
+  </Button>
+  <Button variant="secondary">
+    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 256 256">
+      <path d={icons.heart}></path>
+    </svg>
+    Favorite
+  </Button>
+  <Button variant="ghost">
+    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 256 256">
+      <path d={icons.download}></path>
+    </svg>
+    Download
+  </Button>
+  <Button variant="link">
+    Visit website
+    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 256 256">
+      <path d={icons.arrowSquareOut}></path>
+    </svg>
+  </Button>
 </div>

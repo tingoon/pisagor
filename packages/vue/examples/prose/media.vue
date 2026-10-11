@@ -7,9 +7,9 @@ import { Prose } from "@pisagor/vue";
     <figure>
       <img
         alt="Placeholder"
-        height="200"
-        width="200"
-        :src="'/images/placeholder.svg'"
+        height="250"
+        src="https://picsum.photos/seed/pisagor-prose/400/250"
+        width="400"
       >
       <figcaption>A description of the image.</figcaption>
     </figure>
