@@ -166,25 +166,26 @@ function DataGridView({
 
 function DataGridPaginationBar<TData extends RowData>() {
   const table = useDataGrid<TData>();
-  const { pageIndex, pageSize } = table.store.state.pagination;
-  const total = table.getFilteredRowModel().rows.length;
-  const from = total === 0 ? 0 : pageIndex * pageSize + 1;
-  const to = Math.min((pageIndex + 1) * pageSize, total);
+  const pageIndex = () => table.store.state.pagination.pageIndex;
+  const pageSize = () => table.store.state.pagination.pageSize;
+  const total = () => table.getFilteredRowModel().rows.length;
+  const from = () => (total() === 0 ? 0 : pageIndex() * pageSize() + 1);
+  const to = () => Math.min((pageIndex() + 1) * pageSize(), total());
 
   return (
     <div class="flex flex-wrap items-center justify-between gap-3 border-t pt-3">
       <p class="text-muted-foreground text-sm">
-        Showing {from}–{to} of {total}
+        Showing {from()}–{to()} of {total()}
         {table.getFilteredSelectedRowModel().rows.length > 0
           ? ` · ${table.getFilteredSelectedRowModel().rows.length} selected`
           : null}
       </p>
       <Pagination
         class="mx-0 w-auto justify-end"
-        count={total}
+        count={total()}
         onPageChange={(details) => table.setPageIndex(details.page - 1)}
-        page={pageIndex + 1}
-        pageSize={pageSize}
+        page={pageIndex() + 1}
+        pageSize={pageSize()}
       />
     </div>
   );

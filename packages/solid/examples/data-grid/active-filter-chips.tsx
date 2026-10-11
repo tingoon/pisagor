@@ -10,7 +10,7 @@ import {
 } from "@pisagor/solid/icons";
 import type { ColumnFiltersState, RowData } from "@tanstack/solid-table";
 import type { JSX } from "solid-js";
-import { createMemo, createSignal } from "solid-js";
+import { createMemo, createSignal, For, Show } from "solid-js";
 
 interface User {
   department: string;
@@ -130,69 +130,71 @@ function DataGridView({
 
 function FilterChipsToolbar<TData extends RowData>() {
   const table = useDataGrid<TData>();
-  const filters = table.store.state.columnFilters;
-  const globalFilter = table.store.state.globalFilter;
-
-  if (filters.length === 0 && !globalFilter) {
-    return null;
-  }
+  const filters = () => table.store.state.columnFilters;
+  const globalFilter = () =>
+    table.store.state.globalFilter as string | undefined;
 
   return (
-    <div class="flex flex-wrap items-center gap-2">
-      <span class="text-muted-foreground text-xs">Active filters</span>
-      {globalFilter() ? (
-        <Badge class="gap-1" variant="secondary">
-          Search: {globalFilter()}
-          <button
-            aria-label="Clear search"
-            class="rounded-sm hover:bg-background/60"
-            onClick={() => table.setGlobalFilter("")}
-            type="button"
-          >
-            <XIcon class="size-3" />
-          </button>
-        </Badge>
-      ) : null}
-      {filters.map((filter) => (
-        <Badge class="gap-1 capitalize" variant="secondary">
-          {filter.id}: {String(filter.value)}
-          <button
-            aria-label={`Remove ${filter.id} filter`}
-            class="rounded-sm hover:bg-background/60"
-            onClick={() =>
-              table.getColumn(filter.id)?.setFilterValue(undefined)
-            }
-            type="button"
-          >
-            <XIcon class="size-3" />
-          </button>
-        </Badge>
-      ))}
-    </div>
+    <Show when={filters().length > 0 || globalFilter()}>
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-muted-foreground text-xs">Active filters</span>
+        <Show when={globalFilter()}>
+          <Badge class="gap-1" variant="secondary">
+            Search: {globalFilter()}
+            <button
+              aria-label="Clear search"
+              class="rounded-sm hover:bg-background/60"
+              onClick={() => table.setGlobalFilter("")}
+              type="button"
+            >
+              <XIcon class="size-3" />
+            </button>
+          </Badge>
+        </Show>
+        <For each={filters()}>
+          {(filter) => (
+            <Badge class="gap-1 capitalize" variant="secondary">
+              {filter.id}: {String(filter.value)}
+              <button
+                aria-label={`Remove ${filter.id} filter`}
+                class="rounded-sm hover:bg-background/60"
+                onClick={() =>
+                  table.getColumn(filter.id)?.setFilterValue(undefined)
+                }
+                type="button"
+              >
+                <XIcon class="size-3" />
+              </button>
+            </Badge>
+          )}
+        </For>
+      </div>
+    </Show>
   );
 }
 
 function DataGridPaginationBar<TData extends RowData>() {
   const table = useDataGrid<TData>();
-  const { pageIndex, pageSize } = table.store.state.pagination;
-  const total = table.getFilteredRowModel().rows.length;
-  const from = total === 0 ? 0 : pageIndex * pageSize + 1;
-  const to = Math.min((pageIndex + 1) * pageSize, total);
+  const pageIndex = () => table.store.state.pagination.pageIndex;
+  const pageSize = () => table.store.state.pagination.pageSize;
+  const total = () => table.getFilteredRowModel().rows.length;
+  const from = () => (total() === 0 ? 0 : pageIndex() * pageSize() + 1);
+  const to = () => Math.min((pageIndex() + 1) * pageSize(), total());
 
   return (
     <div class="flex flex-wrap items-center justify-between gap-3 border-t pt-3">
       <p class="text-muted-foreground text-sm">
-        Showing {from}–{to} of {total}
+        Showing {from()}–{to()} of {total()}
         {table.getFilteredSelectedRowModel().rows.length > 0
           ? ` · ${table.getFilteredSelectedRowModel().rows.length} selected`
           : null}
       </p>
       <Pagination
         class="mx-0 w-auto justify-end"
-        count={total}
+        count={total()}
         onPageChange={(details) => table.setPageIndex(details.page - 1)}
-        page={pageIndex + 1}
-        pageSize={pageSize}
+        page={pageIndex() + 1}
+        pageSize={pageSize()}
       />
     </div>
   );

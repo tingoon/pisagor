@@ -269,7 +269,8 @@ export function Slider(props: SliderProps): JSX.Element {
   const values = createMemo(() => {
     if (Array.isArray(local.value)) return local.value;
     if (Array.isArray(local.defaultValue)) return local.defaultValue;
-    return [min(), max()];
+    // Uncontrolled default is a single thumb (zag defaults `value` to `[min]`).
+    return [min()];
   });
 
   return (

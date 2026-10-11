@@ -1,5 +1,5 @@
 import { Sortable } from "@pisagor/solid";
-import { createSignal } from "solid-js";
+import { createSignal, For } from "solid-js";
 
 const labels: Record<string, string> = {
   a: "Design system tokens",
@@ -13,13 +13,15 @@ export function WithoutHandle() {
 
   return (
     <Sortable items={items()} onValueChange={setItems}>
-      {items().map((id) => (
-        <Sortable.Item value={id}>
-          <Sortable.ItemContent>
-            <span class="font-medium text-sm">{labels[id]}</span>
-          </Sortable.ItemContent>
-        </Sortable.Item>
-      ))}
+      <For each={items()}>
+        {(id) => (
+          <Sortable.Item value={id}>
+            <Sortable.ItemContent>
+              <span class="font-medium text-sm">{labels[id]}</span>
+            </Sortable.ItemContent>
+          </Sortable.Item>
+        )}
+      </For>
     </Sortable>
   );
 }
