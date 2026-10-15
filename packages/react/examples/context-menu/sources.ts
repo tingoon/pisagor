@@ -1,7 +1,9 @@
+import checkboxesRaw from "./checkboxes.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 
 export const imports = `import { ContextMenu } from "@pisagor/react";`;
 
 export const sources = {
+  Checkboxes: checkboxesRaw,
   Default: defaultRaw,
 } as const;

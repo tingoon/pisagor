@@ -13,6 +13,7 @@ import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
 import { Fragment, use } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { getMessage, type MessageKey } from "./provider/provider.context";
 
 // #region Context
 const {
@@ -84,7 +85,9 @@ export function TimerRoot({
               {index > 0 && <TimerSeparator />}
               <TimerItemGroup>
                 <TimerItem type={unit} />
-                <TimerItemLabel>{unit}</TimerItemLabel>
+                <TimerItemLabel>
+                  {getMessage(`timer.${unit}` as MessageKey)}
+                </TimerItemLabel>
               </TimerItemGroup>
             </Fragment>
           ))}
@@ -181,7 +184,7 @@ export function TimerPause(props: TimerActionProps) {
     <TimerPrimitive.ActionTrigger
       {...props}
       action="pause"
-      aria-label="Pause"
+      aria-label={getMessage("timer.pause")}
     />
   );
 }
@@ -191,7 +194,7 @@ export function TimerResume(props: TimerActionProps) {
     <TimerPrimitive.ActionTrigger
       {...props}
       action="resume"
-      aria-label="Resume"
+      aria-label={getMessage("timer.resume")}
     />
   );
 }
@@ -201,7 +204,7 @@ export function TimerStart(props: TimerActionProps) {
     <TimerPrimitive.ActionTrigger
       {...props}
       action="start"
-      aria-label="Start"
+      aria-label={getMessage("timer.start")}
     />
   );
 }
@@ -211,7 +214,7 @@ export function TimerReset(props: TimerActionProps) {
     <TimerPrimitive.ActionTrigger
       {...props}
       action="reset"
-      aria-label="Reset"
+      aria-label={getMessage("timer.reset")}
     />
   );
 }
@@ -221,13 +224,17 @@ export function TimerRestart(props: TimerActionProps) {
     <TimerPrimitive.ActionTrigger
       {...props}
       action="restart"
-      aria-label="Restart"
+      aria-label={getMessage("timer.restart")}
     />
   );
 }
 
 export function TimerPlay(props: TimerActionProps) {
-  const { paused } = useTimerContext();
+  const { paused, running } = useTimerContext();
+
+  if (running) {
+    return <TimerPause {...props} />;
+  }
 
   if (paused) {
     return <TimerResume {...props} />;

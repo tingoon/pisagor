@@ -4,6 +4,7 @@ import custom_recipeRaw from "./custom-recipe.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import disabledRaw from "./disabled.tsx?raw";
 import disabled_itemRaw from "./disabled-item.tsx?raw";
+import emptyRaw from "./empty.tsx?raw";
 import gridRaw from "./grid.tsx?raw";
 import groupingRaw from "./grouping.tsx?raw";
 import horizontalRaw from "./horizontal.tsx?raw";
@@ -26,6 +27,7 @@ export const sources = {
   Default: defaultRaw,
   Disabled: disabledRaw,
   DisabledItem: disabled_itemRaw,
+  Empty: emptyRaw,
   Grid: gridRaw,
   Grouping: groupingRaw,
   Horizontal: horizontalRaw,

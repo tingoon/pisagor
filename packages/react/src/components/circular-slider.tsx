@@ -16,7 +16,6 @@ import { circularSliderRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { createContext, use, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { Field } from "./field";
 
 // #region Context
 const {
@@ -270,14 +269,14 @@ export function CircularSliderValueText({
   const { slots } = useCircularSlider();
 
   return (
-    <Field.Label asChild>
-      <AngleSliderPrimitive.ValueText
-        {...rest}
-        className={slots.value({ className })}
-      >
-        {prefix} {value} {suffix}
-      </AngleSliderPrimitive.ValueText>
-    </Field.Label>
+    <AngleSliderPrimitive.ValueText
+      {...rest}
+      className={slots.value({ className })}
+    >
+      {prefix}
+      {value}
+      {suffix}
+    </AngleSliderPrimitive.ValueText>
   );
 }
 

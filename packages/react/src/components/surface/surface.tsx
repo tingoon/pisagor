@@ -14,7 +14,6 @@ const AUTO_VARIANTS = [
   "default",
   "secondary",
   "tertiary",
-  "tertiary",
 ] as const satisfies readonly SurfaceVariant[];
 
 export interface SurfaceProps

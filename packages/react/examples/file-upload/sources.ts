@@ -10,6 +10,7 @@ import dropzoneRaw from "./dropzone.tsx?raw";
 import invalidRaw from "./invalid.tsx?raw";
 import media_captureRaw from "./media-capture.tsx?raw";
 import multiple_filesRaw from "./multiple-files.tsx?raw";
+import rejected_filesRaw from "./rejected-files.tsx?raw";
 import triggerRaw from "./trigger.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 
@@ -28,6 +29,7 @@ export const sources = {
   Invalid: invalidRaw,
   MediaCapture: media_captureRaw,
   MultipleFiles: multiple_filesRaw,
+  RejectedFiles: rejected_filesRaw,
   Trigger: triggerRaw,
   Variants: variantsRaw,
 } as const;

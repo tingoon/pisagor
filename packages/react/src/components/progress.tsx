@@ -10,7 +10,6 @@ import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { VariantClassNames } from "../internal/types";
-import { Field } from "./field";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -106,11 +105,9 @@ export function Progress({
     >
       {showHeader && (
         <ProgressHeader className={classNames?.header}>
-          {label && <Field.Label>{label}</Field.Label>}
+          {label && <ProgressPrimitive.Label>{label}</ProgressPrimitive.Label>}
           {isValueVisible && (
-            <Field.Label asChild>
-              <ProgressValue {...valueProps} className={classNames?.value} />
-            </Field.Label>
+            <ProgressValue {...valueProps} className={classNames?.value} />
           )}
         </ProgressHeader>
       )}

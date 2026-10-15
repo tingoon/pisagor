@@ -29,7 +29,7 @@ const { useStyles: usePagination, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface LocalPaginationRootProps
+export interface PaginationRootProps
   extends PaginationPrimitiveRootProps,
     BasePaginationRootProps {}
 
@@ -38,6 +38,12 @@ export type PaginationItemsProps = Omit<PaginationContextProps, "children">;
 export interface PaginationItemLinkProps extends ButtonProps {
   /** The page number to link to. */
   page?: "previous" | "next" | number;
+  /**
+   * Builds the link URL for a page.
+   *
+   * @defaultValue (page) => `?page=${page}`
+   */
+  getHref?: (page: number) => string;
 }
 // #endregion
 
@@ -45,12 +51,9 @@ export interface PaginationItemLinkProps extends ButtonProps {
 const PaginationRootBase = withProvider(PaginationPrimitive.Root, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<LocalPaginationRootProps>;
+}) as FunctionComponent<PaginationRootProps>;
 
-export function PaginationRoot({
-  children,
-  ...rest
-}: LocalPaginationRootProps) {
+export function PaginationRoot({ children, ...rest }: PaginationRootProps) {
   return (
     <PaginationRootBase {...rest}>
       {children ?? (
@@ -136,6 +139,7 @@ export function PaginationItems(props: PaginationItemsProps) {
 
 export function PaginationItemLink({
   page,
+  getHref = (value) => `?page=${value}`,
   children,
   ...rest
 }: PaginationItemLinkProps) {
@@ -156,14 +160,19 @@ export function PaginationItemLink({
   if (typeof page === "number") {
     return (
       <Button {...rest} asChild variant="outline">
-        <a href={`?page=${pageValue()}`}>{children}</a>
+        <a
+          aria-current={page === pagination.page ? "page" : undefined}
+          href={getHref(pageValue() ?? 1)}
+        >
+          {children}
+        </a>
       </Button>
     );
   }
 
   return (
     <Button {...rest} asChild variant="ghost">
-      <a href={`?page=${pageValue()}`}>{children}</a>
+      <a href={getHref(pageValue() ?? 1)}>{children}</a>
     </Button>
   );
 }
@@ -202,7 +211,6 @@ export type {
   PaginationItemProps,
   PaginationNextTriggerProps,
   PaginationPrevTriggerProps,
-  PaginationRootProps,
 } from "@ark-ui/react/pagination";
 
 export const Pagination = Object.assign(PaginationRoot, {

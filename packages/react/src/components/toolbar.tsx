@@ -1,7 +1,13 @@
 import { ark } from "@ark-ui/react/factory";
 import type { ToolbarProps as BaseToolbarRootProps } from "@pisagor/props";
 import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, ReactNode } from "react";
+import { handleRovingFocusKeyDown } from "@pisagor/utils";
+import type {
+  ComponentProps,
+  FunctionComponent,
+  KeyboardEvent,
+  ReactNode,
+} from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { VariantClassNames } from "../internal/types";
 
@@ -33,6 +39,12 @@ export const ToolbarDescription = withContext(ark.p, {
 });
 
 export const ToolbarActions = withContext(ark.div, {
+  defaultProps: {
+    "aria-orientation": "horizontal",
+    onKeyDown: (event: KeyboardEvent<HTMLDivElement>) =>
+      handleRovingFocusKeyDown(event.nativeEvent),
+    role: "toolbar",
+  },
   name: "Actions",
 });
 // #endregion

@@ -109,6 +109,18 @@ export function createSlotRecipeContext<
   const dataScope = toKebabCase(name);
   StylesContext.displayName = `${name}Context`;
 
+  /** `data-part` / `data-scope` always win over consumer props. */
+  function dataIdentity(
+    defaultProps: Record<string, unknown> | undefined,
+    slot: string,
+  ) {
+    return {
+      "data-part":
+        defaultProps?.["data-part"] ?? (slot === "base" ? "root" : slot),
+      "data-scope": defaultProps?.["data-scope"] ?? dataScope,
+    };
+  }
+
   function useStyles() {
     const styles = use(StylesContext);
 
@@ -159,11 +171,10 @@ export function createSlotRecipeContext<
         StylesContext,
         { value: { slots, variants: resolved } },
         createElement(Component, {
-          "data-part": slot === "base" ? "root" : slot,
-          "data-scope": dataScope,
           ...dataAttrs,
           ...options.defaultProps,
           ...dom,
+          ...dataIdentity(options.defaultProps, slot),
           className: (slots[slot] as SlotFn)({
             className: [defaultClassName, className],
           }),
@@ -194,10 +205,9 @@ export function createSlotRecipeContext<
         | undefined;
 
       return createElement(Component, {
-        "data-part": slot === "base" ? "root" : slot,
-        "data-scope": dataScope,
         ...options.defaultProps,
         ...rest,
+        ...dataIdentity(options.defaultProps, slot),
         className: (slots[slot] as SlotFn)({
           className: [defaultClassName, className],
         }),

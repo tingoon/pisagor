@@ -6,6 +6,7 @@ import {
 } from "@ark-ui/react/avatar";
 import type { AvatarProps as BaseAvatarRootProps } from "@pisagor/props";
 import { type AvatarRecipeSlot, avatarRecipe } from "@pisagor/recipes";
+import { getInitials } from "@pisagor/utils";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
 import type { VariantClassNames } from "../../internal/types";
@@ -41,6 +42,8 @@ export interface AvatarProps
   alt?: string;
   /** Renders the fallback content shown until the image loads */
   fallback?: ReactNode;
+  /** Person name; used as default alt text and to derive initials when no fallback is given */
+  name?: string;
   /** Renders the avatar image with the provided src */
   src?: string;
   /** Slot class names */
@@ -53,23 +56,27 @@ export interface AvatarProps
 // #endregion
 
 // #region Closed
-export function Avatar({
+function AvatarShorthand({
   shape,
   size,
   alt,
-  fallback,
+  fallback: fallbackProp,
   fallbackProps,
   imageProps,
+  name,
   src,
   classNames,
   ...rest
 }: AvatarProps) {
+  const fallback =
+    fallbackProp === undefined && name ? getInitials(name) : fallbackProp;
+
   return (
     <AvatarRoot {...rest} shape={shape} size={size}>
       {src && (
         <AvatarImage
           {...imageProps}
-          alt={alt}
+          alt={alt ?? name}
           className={classNames?.image}
           src={src}
         />
@@ -86,5 +93,11 @@ export function Avatar({
 // #endregion
 
 // #region Display Names
-Avatar.displayName = "Avatar";
+AvatarShorthand.displayName = "Avatar";
 // #endregion
+
+export const Avatar = Object.assign(AvatarShorthand, {
+  Fallback: AvatarFallback,
+  Image: AvatarImage,
+  Root: AvatarRoot,
+});

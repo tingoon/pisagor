@@ -1,6 +1,12 @@
+import {
+  type MessageKey,
+  type ProviderMessages,
+  resolveMessage,
+} from "@pisagor/utils";
+import { use } from "react";
 import { createContext } from "../../utils";
 
-export type ProviderMessages = Record<string, string>;
+export type { MessageKey, ProviderMessages } from "@pisagor/utils";
 
 export const { ProviderMessagesContext, useProviderMessages } = createContext(
   "ProviderMessages",
@@ -10,10 +16,14 @@ export const { ProviderMessagesContext, useProviderMessages } = createContext(
 });
 
 /**
- * Resolve a library message key from the nearest `Provider` message map.
- * Falls back to `fallback` when the key is missing.
+ * Render-time message lookup that is safe inside conditional JSX (uses React `use`).
+ * Returns the nearest `Provider` override, else the built-in English default.
  */
-export function useProviderMessage(key: string, fallback: string) {
-  const messages = useProviderMessages() ?? {};
-  return messages[key] ?? fallback;
+export function getMessage(key: MessageKey) {
+  return resolveMessage(use(ProviderMessagesContext), key);
+}
+
+/** Hook form of {@link getMessage}. */
+export function useProviderMessage(key: MessageKey) {
+  return resolveMessage(useProviderMessages(), key);
 }

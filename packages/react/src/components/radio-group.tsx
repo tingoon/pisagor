@@ -10,18 +10,17 @@ import type {
   RadioGroupProps as BaseRadioGroupRootProps,
 } from "@pisagor/props";
 import {
+  fieldRecipe,
   formControlRadioToggleRecipe,
   radioGroupItemRecipe,
   radioGroupRecipe,
 } from "@pisagor/recipes";
-
 import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
-import { Field } from "./field";
+import type { FormControlVariant } from "../internal/types";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 interface RadioGroupPresetItem {
   disabled?: boolean;
@@ -111,21 +110,23 @@ export function RadioGroupItemText({
   ...rest
 }: RadioGroupItemTextProps) {
   return (
-    <Field.Label asChild>
-      <RadioGroupPrimitive.ItemText {...rest} className={className}>
-        {children}
-      </RadioGroupPrimitive.ItemText>
-    </Field.Label>
+    <RadioGroupPrimitive.ItemText
+      {...rest}
+      className={cn(fieldRecipe().label(), className)}
+    >
+      {children}
+    </RadioGroupPrimitive.ItemText>
   );
 }
 
 export function RadioGroupLabel({ children, ...rest }: RadioGroupLabelProps) {
   return (
-    <Field.Label asChild>
-      <RadioGroupPrimitive.Label {...rest}>
-        {children}
-      </RadioGroupPrimitive.Label>
-    </Field.Label>
+    <RadioGroupPrimitive.Label
+      {...rest}
+      className={cn(fieldRecipe().label(), rest.className)}
+    >
+      {children}
+    </RadioGroupPrimitive.Label>
   );
 }
 // #endregion

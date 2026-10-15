@@ -15,6 +15,7 @@ import { createContext, use, useCallback, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Badge, type BadgeProps } from "./badge";
 import { Button } from "./button";
+import { getMessage } from "./provider/provider.context";
 import { Separator, type SeparatorProps } from "./separator";
 
 // #region Context
@@ -76,6 +77,8 @@ function useActionBar() {
 
 // #region Types
 interface ActionBarActionItem {
+  /** Stable key; defaults to `label`. */
+  id?: string;
   /** Icon rendered before the label */
   icon?: ReactNode;
   /** Button label */
@@ -230,7 +233,7 @@ export function ActionBarRoot({
                 {actions.map((action) => (
                   <Button
                     disabled={action.disabled}
-                    key={action.label}
+                    key={action.id ?? action.label}
                     onClick={action.onClick}
                     size="sm"
                     variant="ghost"
@@ -344,8 +347,8 @@ export function ActionBarClose({
 
   return (
     <ark.button
+      aria-label={getMessage("actionBar.close")}
       {...rest}
-      aria-label="Close"
       className={slots.close({ className })}
       data-part="close"
       data-scope="action-bar"

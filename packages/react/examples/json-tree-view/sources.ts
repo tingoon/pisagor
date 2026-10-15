@@ -1,3 +1,4 @@
+import compoundRaw from "./compound.tsx?raw";
 import custom_recipeRaw from "./custom-recipe.tsx?raw";
 import data_typesRaw from "./data-types.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
@@ -7,6 +8,7 @@ import map_setRaw from "./map-set.tsx?raw";
 export const imports = `import { JsonTreeView } from "@pisagor/react";`;
 
 export const sources = {
+  Compound: compoundRaw,
   CustomRecipe: custom_recipeRaw,
   DataTypes: data_typesRaw,
   Default: defaultRaw,

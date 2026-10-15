@@ -16,6 +16,7 @@ import { popoverRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button } from "./button";
+import { getMessage } from "./provider/provider.context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -92,7 +93,7 @@ export function PopoverContent({
             {!!showCloseButton && (
               <PopoverCloseTrigger asChild>
                 <Button
-                  aria-label="Close"
+                  aria-label={getMessage("popover.close")}
                   className={slots.close()}
                   size="icon-sm"
                   variant="ghost"
@@ -148,7 +149,9 @@ export function PopoverBody({ className, ...rest }: PopoverBodyProps) {
     <ScrollArea>
       <ark.div
         {...rest}
-        className={slots.body({ className })}
+        className={slots.body({
+          className: ["overflow-visible", className].filter(Boolean).join(" "),
+        })}
         data-part="body"
         data-scope="popover"
       />

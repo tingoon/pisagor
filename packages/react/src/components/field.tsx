@@ -64,7 +64,9 @@ export type FieldRequiredIndicatorProps = ComponentProps<typeof ark.span>;
 
 export type FieldTitleProps = ComponentProps<typeof ark.div>;
 
-export type FieldDescriptionProps = ComponentProps<typeof ark.p>;
+export type FieldDescriptionProps = ComponentProps<
+  typeof FieldPrimitive.HelperText
+>;
 
 export type FieldSeparatorProps = ComponentProps<typeof ark.div>;
 // #endregion
@@ -189,7 +191,7 @@ export function FieldDescription({
   const slots = useFieldSlots();
 
   return (
-    <ark.p
+    <FieldPrimitive.HelperText
       {...rest}
       className={slots.description({ className })}
       data-part="description"

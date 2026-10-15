@@ -2,6 +2,7 @@ import type {
   DialogCloseTriggerProps,
   DialogContentProps,
   DialogPositionerProps,
+  DialogRootProps,
   DialogTriggerProps,
 } from "@ark-ui/react/dialog";
 import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog";
@@ -17,10 +18,10 @@ import type {
   DialogDescriptionProps,
   DialogFooterProps,
   DialogHeaderProps,
-  DialogRootProps,
   DialogTitleProps,
 } from "./dialog";
 import { Dialog } from "./dialog";
+import { getMessage } from "./provider/provider.context";
 
 // #region Context
 const { Context: SheetStylesContext, useStyles: useSheet } =
@@ -110,7 +111,7 @@ export function SheetContent({
           {!!showCloseButton && (
             <SheetCloseTrigger asChild>
               <Button
-                aria-label="Close"
+                aria-label={getMessage("sheet.close")}
                 className={slots.inline()}
                 size="icon-sm"
                 variant="ghost"

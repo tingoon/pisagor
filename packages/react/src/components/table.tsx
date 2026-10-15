@@ -3,6 +3,7 @@ import type { TableProps as BaseTableProps } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { SizeScaleProps } from "../internal/types";
 
 // #region Context
 const { Context: TableStylesContext, withContext } = createSlotRecipeContext({
@@ -40,13 +41,14 @@ export type TableCaptionProps = ComponentProps<typeof ark.caption>;
 
 // #region Parts
 export function TableRoot({
+  size = "md",
   variant = "plain",
   isHoverable = true,
   recipe = tableRecipe,
   className,
   ...rest
-}: TableProps) {
-  const slots = recipe();
+}: TableProps & SizeScaleProps) {
+  const slots = recipe({ size });
 
   return (
     <TableStylesContext value={{ slots, variants: {} as never }}>

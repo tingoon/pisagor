@@ -178,11 +178,10 @@ export function useRegisteredSideState({
     [setOpen, side.open, toggle],
   );
 
-  statesRef.current[placement] = registeredSide;
-
   useLayoutEffect(() => {
+    statesRef.current[placement] = registeredSide;
     notifyRegionChange();
-  }, [notifyRegionChange]);
+  }, [notifyRegionChange, placement, registeredSide, statesRef]);
 
   useLayoutEffect(() => {
     return () => {
@@ -217,7 +216,9 @@ export function useRegisteredRailState({
     [activeRailId, placement, setActiveRailId],
   );
 
-  statesRef.current[placement] = railState;
+  useLayoutEffect(() => {
+    statesRef.current[placement] = railState;
+  }, [placement, railState, statesRef]);
 
   useLayoutEffect(() => {
     return () => {

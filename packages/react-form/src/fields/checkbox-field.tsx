@@ -44,7 +44,11 @@ export function CheckboxField({
         invalid={invalid}
         name={name}
         onBlur={onBlur}
-        onValueChange={onValueChange}
+        onCheckedChange={
+          onValueChange
+            ? (details) => onValueChange(details.checked === true)
+            : undefined
+        }
       />
       {hasLabel || description ? (
         <Field.Content>

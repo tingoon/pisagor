@@ -1,3 +1,9 @@
+import {
+  CheckCircleIcon,
+  InfoIcon,
+  WarningCircleIcon,
+  WarningIcon,
+} from "@phosphor-icons/react";
 import type { AlertProps as BaseAlertRootProps } from "@pisagor/props";
 import { type AlertRecipeSlot, alertRecipe } from "@pisagor/recipes";
 import type {
@@ -53,7 +59,10 @@ export interface AlertProps extends Omit<AlertRootProps, "children"> {
   action?: ReactNode;
   /** Description content. */
   description?: ReactNode;
-  /** Leading icon, rendered as a direct child so the grid layout aligns. */
+  /**
+   * Leading icon, rendered as a direct child so the grid layout aligns.
+   * Status variants get a default icon; pass `null` to hide it.
+   */
   icon?: ReactNode;
   /** Bold title line. */
   title?: ReactNode;
@@ -69,6 +78,13 @@ export interface AlertProps extends Omit<AlertRootProps, "children"> {
 // #endregion
 
 // #region Shorthand
+const DEFAULT_ICONS: Record<string, ReactNode> = {
+  destructive: <WarningCircleIcon />,
+  info: <InfoIcon />,
+  success: <CheckCircleIcon />,
+  warning: <WarningIcon />,
+};
+
 export function AlertShorthand({
   variant,
   action,
@@ -84,7 +100,7 @@ export function AlertShorthand({
 }: AlertProps) {
   return (
     <AlertRoot {...rest} className={className} variant={variant}>
-      {icon}
+      {icon === undefined ? DEFAULT_ICONS[variant ?? "default"] : icon}
 
       {title !== undefined && (
         <AlertTitle {...titleProps} className={classNames?.title}>

@@ -11,6 +11,7 @@ export * from "./input-controlled";
 export * from "./input-with-popover";
 export * from "./input-with-swatch-preview";
 export * from "./invalid";
+export * from "./label-format-select";
 export * from "./popover-disabled";
 export * from "./popover-sliders-only";
 export * from "./popover-with-channel-editing";

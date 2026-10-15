@@ -5,6 +5,8 @@ export * from "./default";
 export * from "./disabled";
 export * from "./orientation-horizontal";
 export * from "./orientation-vertical";
+export * from "./sizes";
 export { imports, sources } from "./sources";
 export * from "./variants";
 export * from "./with-icons";
+export * from "./without-indicator";

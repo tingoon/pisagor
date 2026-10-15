@@ -7,7 +7,6 @@ import {
   buttonRecipe,
   sidebarRecipe,
 } from "@pisagor/recipes";
-
 import { cn } from "@pisagor/utils";
 import {
   type ComponentProps,
@@ -15,6 +14,7 @@ import {
   createContext,
   use,
   useCallback,
+  useEffect,
   useMemo,
   useState,
 } from "react";
@@ -22,6 +22,7 @@ import { useIsMobile } from "../hooks";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button, type ButtonProps } from "./button";
 import { Input, type InputProps } from "./input";
+import { getMessage } from "./provider/provider.context";
 import { ScrollArea } from "./scroll-area";
 import { Separator, type SeparatorProps } from "./separator";
 import { Sheet, type SheetProps } from "./sheet";
@@ -76,9 +77,16 @@ export interface SidebarProviderProps
    * @defaultValue true
    *
    * @remarks
-   * Ignored when `open` is set.
+   * Ignored when `open` is set. When uncontrolled, the state persisted in
+   * `localStorage` (`sidebar_state`) wins after mount.
    */
   defaultOpen?: boolean;
+  /**
+   * Whether to disable the `mod+B` toggle hotkey.
+   *
+   * @defaultValue false
+   */
+  disableHotkey?: boolean;
   /**
    * The open state of the sidebar.
    *
@@ -192,16 +200,17 @@ export type SidebarMenuSubItemProps = ComponentProps<typeof ark.li>;
 // #region Constants
 const SIDEBAR_STORAGE_KEY = "sidebar_state";
 
-const SIDEBAR_WIDTH = "16rem";
+const SIDEBAR_WIDTH = "calc(var(--spacing) * 64)";
 
-const SIDEBAR_WIDTH_MOBILE = "18rem";
+const SIDEBAR_WIDTH_MOBILE = "calc(var(--spacing) * 72)";
 
-const SIDEBAR_WIDTH_ICON = "3rem";
+const SIDEBAR_WIDTH_ICON = "calc(var(--spacing) * 12)";
 // #endregion
 
 // #region Parts
 export function SidebarProvider({
   defaultOpen = true,
+  disableHotkey = false,
   open: openProp,
   onOpenChange: setOpenProp,
   recipe = sidebarRecipe,
@@ -214,6 +223,16 @@ export function SidebarProvider({
 
   const [_open, _setOpen] = useState(defaultOpen);
   const open = openProp ?? _open;
+
+  useEffect(() => {
+    if (openProp !== undefined) {
+      return;
+    }
+    const stored = localStorage.getItem(SIDEBAR_STORAGE_KEY);
+    if (stored === "true" || stored === "false") {
+      _setOpen(stored === "true");
+    }
+  }, [openProp]);
   const setOpen = useCallback(
     (value: boolean | ((value: boolean) => boolean)) => {
       const openState = typeof value === "function" ? value(open) : value;
@@ -240,6 +259,7 @@ export function SidebarProvider({
     action: () => {
       toggleSidebar();
     },
+    enabled: !disableHotkey,
     hotkey: "mod+B",
   });
 
@@ -321,8 +341,10 @@ export function SidebarRoot(props: SidebarProps) {
           }
         >
           <Sheet.Header className={slots.mobileHeader()}>
-            <Sheet.Title>Sidebar</Sheet.Title>
-            <Sheet.Description>Displays the mobile sidebar.</Sheet.Description>
+            <Sheet.Title>{getMessage("sidebar.title")}</Sheet.Title>
+            <Sheet.Description>
+              {getMessage("sidebar.description")}
+            </Sheet.Description>
           </Sheet.Header>
           <ark.div className={slots.mobileBody()}>{children}</ark.div>
         </Sheet.Content>
@@ -347,7 +369,7 @@ export function SidebarRoot(props: SidebarProps) {
         data-scope="sidebar"
       />
       <ark.div
-        className={slots.container({ className, padded, placement })}
+        className={slots.container({ padded, placement })}
         data-part="container"
         data-scope="sidebar"
       >
@@ -382,7 +404,9 @@ export function SidebarTrigger({ onClick, className, ...rest }: ButtonProps) {
       variant="ghost"
     >
       <SidebarSimpleIcon className={slots.triggerIcon()} />
-      <ark.span className={slots.triggerLabel()}>Toggle sidebar</ark.span>
+      <ark.span className={slots.triggerLabel()}>
+        {getMessage("sidebar.toggle")}
+      </ark.span>
     </Button>
   );
 }
@@ -392,8 +416,8 @@ export function SidebarRail({ className, ...rest }: SidebarRailProps) {
 
   return (
     <ark.button
+      aria-label={getMessage("sidebar.toggle")}
       {...rest}
-      aria-label="Toggle sidebar"
       className={slots.rail({ className })}
       data-part="rail"
       data-scope="sidebar"
@@ -662,7 +686,7 @@ export function SidebarMenuAction({
           variant: "ghost",
         }).base(),
         slots.menuAction(),
-        !showOnHover &&
+        showOnHover &&
           "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-accent-foreground md:opacity-0",
         className,
       )}

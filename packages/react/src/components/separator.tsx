@@ -13,12 +13,19 @@ export interface SeparatorProps
    * @defaultValue "horizontal"
    */
   orientation?: "horizontal" | "vertical";
+  /**
+   * Purely visual separator: hidden from assistive tech (`role="none"`).
+   *
+   * @defaultValue false
+   */
+  decorative?: boolean;
 }
 // #endregion
 
 // #region Component
 export function Separator({
   orientation = "horizontal",
+  decorative = false,
   recipe = separatorRecipe,
   className,
   ...rest
@@ -26,12 +33,12 @@ export function Separator({
   return (
     <ark.div
       {...rest}
-      aria-orientation={orientation}
+      aria-orientation={decorative ? undefined : orientation}
       className={recipe({ className })}
       data-orientation={orientation}
       data-part="root"
       data-scope="separator"
-      role="separator"
+      role={decorative ? "none" : "separator"}
     />
   );
 }

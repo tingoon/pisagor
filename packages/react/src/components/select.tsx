@@ -25,11 +25,12 @@ import {
   formControlShellRecipe,
   selectRecipe,
 } from "@pisagor/recipes";
-
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { FormControlVariant } from "../internal/types";
+import { getMessage } from "./provider/provider.context";
 import { Separator, type SeparatorProps } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -50,7 +51,6 @@ SelectControlContext.displayName = "SelectControlContext";
 // #endregion
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 interface SelectPresetItem {
   label: string;
@@ -159,7 +159,7 @@ export function SelectTrigger({
   const controlProps = { "data-variant": resolved.variant };
 
   return (
-    <SelectPrimitive.Control>
+    <SelectPrimitive.Control className={slots.control()}>
       <SelectPrimitive.Trigger
         {...rest}
         {...controlProps}
@@ -168,20 +168,21 @@ export function SelectTrigger({
           slots.trigger(),
           className,
         )}
+        data-clearable={clearable || undefined}
       >
         {children}
 
         <div className={slots.triggerActions()}>
-          {clearable && (
-            <SelectClearTrigger>
-              <XIcon />
-            </SelectClearTrigger>
-          )}
           <SelectPrimitive.Indicator>
             <CaretUpDownIcon />
           </SelectPrimitive.Indicator>
         </div>
       </SelectPrimitive.Trigger>
+      {clearable && (
+        <SelectClearTrigger>
+          <XIcon />
+        </SelectClearTrigger>
+      )}
     </SelectPrimitive.Control>
   );
 }
@@ -232,7 +233,7 @@ export function SelectItemGroup({
 }: SelectItemGroupProps) {
   return (
     <SelectPrimitive.ItemGroup {...rest}>
-      {!heading && <SelectItemGroupLabel>{heading}</SelectItemGroupLabel>}
+      {heading && <SelectItemGroupLabel>{heading}</SelectItemGroupLabel>}
 
       {children}
     </SelectPrimitive.ItemGroup>
@@ -279,8 +280,8 @@ export function SelectClearTrigger({
 
   return (
     <SelectPrimitive.ClearTrigger
+      aria-label={getMessage("select.clear")}
       {...rest}
-      aria-label="Clear selected value(s)"
       className={slots.clearTrigger({ className })}
     />
   );

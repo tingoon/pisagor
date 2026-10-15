@@ -10,6 +10,7 @@ import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/prop
 import { accordionItemRecipe } from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { SizeScaleProps } from "../internal/types";
 
 // #region Context
 const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
@@ -19,9 +20,10 @@ const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface LocalAccordionItemProps
+export interface AccordionItemProps
   extends AccordionPrimitiveItemProps,
-    BaseAccordionItemProps {}
+    BaseAccordionItemProps,
+    SizeScaleProps {}
 
 interface AccordionPresetItem {
   value: string;
@@ -32,6 +34,12 @@ interface AccordionPresetItem {
 
 export interface AccordionProps extends Omit<AccordionRootProps, "children"> {
   items?: AccordionPresetItem[];
+  /**
+   * Size scale applied to every item.
+   *
+   * @defaultValue "md"
+   */
+  size?: "sm" | "md" | "lg";
 }
 // #endregion
 
@@ -51,7 +59,7 @@ export function AccordionRoot({
 export const AccordionItem = withProvider(AccordionPrimitive.Item, {
   name: "Item",
   slot: "base",
-}) as FunctionComponent<LocalAccordionItemProps>;
+}) as FunctionComponent<AccordionItemProps>;
 
 export function AccordionItemTrigger({
   children,
@@ -93,13 +101,14 @@ export function AccordionItemContent({
 // #endregion
 
 // #region Shorthand
-export function AccordionShorthand({ items, ...rest }: AccordionProps) {
+export function AccordionShorthand({ items, size, ...rest }: AccordionProps) {
   return (
     <AccordionRoot {...rest}>
       {items?.map((item) => (
         <AccordionItem
           disabled={item.disabled}
           key={item.value}
+          size={size}
           value={item.value}
         >
           <AccordionItemTrigger>{item.title}</AccordionItemTrigger>
@@ -121,7 +130,6 @@ AccordionShorthand.displayName = "Accordion";
 
 export type {
   AccordionItemContentProps,
-  AccordionItemProps,
   AccordionItemTriggerProps,
   AccordionRootProps,
 } from "@ark-ui/react/accordion";

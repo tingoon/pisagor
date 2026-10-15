@@ -8,7 +8,11 @@ import { Switch as SwitchPrimitive } from "@ark-ui/react/switch";
 import type { SwitchProps as BaseSwitchRootProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type {
+  FormControlVariant,
+  SizeScaleProps,
+  VariantClassNames,
+} from "../internal/types";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -19,17 +23,16 @@ const { Context: SwitchStylesContext, withContext } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 type SwitchClassNames = VariantClassNames<SwitchRecipeSlot>;
 
 type SwitchRootProps = SwitchPrimitiveRootProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-} & BaseSwitchRootProps;
+} & BaseSwitchRootProps &
+  SizeScaleProps;
 
 export interface SwitchProps extends Omit<SwitchRootProps, "children"> {
-  onValueChange?: (value: boolean) => void;
   /** Slot class names */
   classNames?: SwitchClassNames;
   /** Extra props forwarded to the switch control element */
@@ -43,6 +46,7 @@ export interface SwitchProps extends Omit<SwitchRootProps, "children"> {
 
 // #region Parts
 function SwitchRoot({
+  size = "md",
   variant: variantProp,
   children,
   recipe = switchRecipe,
@@ -58,7 +62,7 @@ function SwitchRoot({
     variant: resolved.variant,
   };
   const controlShellProps = { "data-variant": resolved.variant };
-  const slots = recipe({ ...shellArgs });
+  const slots = recipe({ ...shellArgs, size });
 
   return (
     <SwitchStylesContext value={{ slots, variants: shellArgs as never }}>
@@ -87,36 +91,18 @@ function SwitchHiddenInput(props: SwitchHiddenInputProps) {
 // #endregion
 
 // #region Closed
-export function Switch({
+function SwitchShorthand({
+  size,
   variant,
   controlProps,
   hiddenInputProps,
   thumbProps,
-  onCheckedChange,
-  onValueChange,
   className,
   classNames,
   ...rest
 }: SwitchProps) {
-  const handleCheckedChange =
-    onCheckedChange || onValueChange
-      ? (
-          details: Parameters<
-            NonNullable<SwitchRootProps["onCheckedChange"]>
-          >[0],
-        ) => {
-          onCheckedChange?.(details);
-          onValueChange?.(details.checked === true);
-        }
-      : undefined;
-
   return (
-    <SwitchRoot
-      {...rest}
-      className={className}
-      onCheckedChange={handleCheckedChange}
-      variant={variant}
-    >
+    <SwitchRoot {...rest} className={className} size={size} variant={variant}>
       <SwitchControl {...controlProps} className={classNames?.control}>
         <SwitchThumb {...thumbProps} className={classNames?.thumb} />
       </SwitchControl>
@@ -130,7 +116,9 @@ export function Switch({
 // #region Display Names
 SwitchRoot.displayName = "Switch.Root";
 SwitchHiddenInput.displayName = "Switch.HiddenInput";
-Switch.displayName = "Switch";
+SwitchShorthand.displayName = "Switch";
+SwitchControl.displayName = "Switch.Control";
+SwitchThumb.displayName = "Switch.Thumb";
 
 // #endregion
 
@@ -139,3 +127,10 @@ export type {
   SwitchHiddenInputProps,
   SwitchThumbProps,
 } from "@ark-ui/react/switch";
+
+export const Switch = Object.assign(SwitchShorthand, {
+  Control: SwitchControl,
+  HiddenInput: SwitchHiddenInput,
+  Root: SwitchRoot,
+  Thumb: SwitchThumb,
+});

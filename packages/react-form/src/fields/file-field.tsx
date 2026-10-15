@@ -8,7 +8,9 @@ import {
 type FileInputControlProps = Omit<
   FileInputProps,
   "invalid" | "name" | "onFilesChange"
->;
+> & {
+  onValueChange?: (files: File[]) => void;
+};
 
 export interface FileFieldProps
   extends FieldPresentationProps,
@@ -52,7 +54,7 @@ export function FileField({
         invalid={invalid}
         name={name}
         onBlur={onBlur}
-        onValueChange={onValueChange}
+        onFilesChange={onValueChange}
       />
     </FieldShell>
   );

@@ -10,27 +10,27 @@ export function Default() {
     <div className="flex h-72 flex-col overflow-y-auto rounded-lg border bg-muted shadow-lg/5">
       <ScrollArea>
         <div className="h-96" />
-        <BottomNavigation defaultValue="home">
+        <BottomNavigation value="home">
           <BottomNavigation.List className="absolute">
-            <BottomNavigation.Item value="home">
+            <BottomNavigation.Item href="#home" value="home">
               <BottomNavigation.ItemIcon>
                 <HouseIcon />
               </BottomNavigation.ItemIcon>
               <BottomNavigation.ItemLabel>Home</BottomNavigation.ItemLabel>
             </BottomNavigation.Item>
-            <BottomNavigation.Item value="search">
+            <BottomNavigation.Item href="#search" value="search">
               <BottomNavigation.ItemIcon>
                 <MagnifyingGlassIcon />
               </BottomNavigation.ItemIcon>
               <BottomNavigation.ItemLabel>Search</BottomNavigation.ItemLabel>
             </BottomNavigation.Item>
-            <BottomNavigation.Item value="news">
+            <BottomNavigation.Item href="#news" value="news">
               <BottomNavigation.ItemIcon>
                 <BellIcon />
               </BottomNavigation.ItemIcon>
               <BottomNavigation.ItemLabel>News</BottomNavigation.ItemLabel>
             </BottomNavigation.Item>
-            <BottomNavigation.Item value="profile">
+            <BottomNavigation.Item href="#profile" value="profile">
               <BottomNavigation.ItemIcon>
                 <UserIcon />
               </BottomNavigation.ItemIcon>

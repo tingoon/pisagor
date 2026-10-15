@@ -8,21 +8,21 @@ import {
 } from "@phosphor-icons/react";
 import type { RichTextEditorProps as BaseRichTextEditorRootProps } from "@pisagor/props";
 import { formControlShellRecipe, richTextEditorRecipe } from "@pisagor/recipes";
-
 import { cn } from "@pisagor/utils";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { type ComponentProps, type ReactNode, useEffect, useMemo } from "react";
+import { getMessage } from "../components/provider/provider.context";
 import { useFormControlSurface } from "../components/surface/use-form-control-surface";
 import { Toggle } from "../components/toggle";
 import { VisuallyHidden } from "../components/visually-hidden";
+import type { FormControlVariant } from "../internal/types";
 import {
   RichTextEditorContext,
   useRichTextEditorState,
 } from "./rich-text-editor.context";
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 export interface RichTextEditorRootProps
   extends Omit<ComponentProps<typeof ark.div>, "defaultValue" | "onChange">,
@@ -100,7 +100,8 @@ export function RichTextEditorRoot({
     variant: resolved.variant,
   };
   const controlProps = { "data-variant": resolved.variant };
-  const resolvedAriaLabel = ariaLabel ?? (id ? undefined : "Rich text editor");
+  const resolvedAriaLabel =
+    ariaLabel ?? (id ? undefined : getMessage("richTextEditor.label"));
   const slots = recipe();
 
   const editor = useEditor({
@@ -236,37 +237,34 @@ export function RichTextEditorToolbar({
       {children ?? (
         <div className={slots.inline()}>
           <Toggle
-            aria-label="Bold"
+            aria-label={getMessage("richTextEditor.bold")}
             onPressedChange={() => editor.chain().focus().toggleBold().run()}
             pressed={activeMarks.bold}
             size="sm"
             variant="ghost"
           >
             <TextBIcon />
-            <VisuallyHidden>Bold</VisuallyHidden>
           </Toggle>
           <Toggle
-            aria-label="Italic"
+            aria-label={getMessage("richTextEditor.italic")}
             onPressedChange={() => editor.chain().focus().toggleItalic().run()}
             pressed={activeMarks.italic}
             size="sm"
             variant="ghost"
           >
             <TextItalicIcon />
-            <VisuallyHidden>Italic</VisuallyHidden>
           </Toggle>
           <Toggle
-            aria-label="Strikethrough"
+            aria-label={getMessage("richTextEditor.strikethrough")}
             onPressedChange={() => editor.chain().focus().toggleStrike().run()}
             pressed={activeMarks.strike}
             size="sm"
             variant="ghost"
           >
             <TextStrikethroughIcon />
-            <VisuallyHidden>Strikethrough</VisuallyHidden>
           </Toggle>
           <Toggle
-            aria-label="Bullet list"
+            aria-label={getMessage("richTextEditor.bulletList")}
             onPressedChange={() =>
               editor.chain().focus().toggleBulletList().run()
             }
@@ -275,10 +273,9 @@ export function RichTextEditorToolbar({
             variant="ghost"
           >
             <ListBulletsIcon />
-            <VisuallyHidden>Bullet list</VisuallyHidden>
           </Toggle>
           <Toggle
-            aria-label="Ordered list"
+            aria-label={getMessage("richTextEditor.orderedList")}
             onPressedChange={() =>
               editor.chain().focus().toggleOrderedList().run()
             }
@@ -287,7 +284,6 @@ export function RichTextEditorToolbar({
             variant="ghost"
           >
             <ListNumbersIcon />
-            <VisuallyHidden>Ordered list</VisuallyHidden>
           </Toggle>
         </div>
       )}

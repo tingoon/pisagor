@@ -1,3 +1,4 @@
+import type { DialogRootProps } from "@ark-ui/react/dialog";
 import { Portal } from "@ark-ui/react/portal";
 import type { ReactNode } from "react";
 import { Button, type ButtonProps } from "./button";
@@ -8,7 +9,6 @@ import type {
   DialogDescriptionProps,
   DialogFooterProps,
   DialogHeaderProps,
-  DialogRootProps,
   DialogTitleProps,
   DialogTriggerProps,
 } from "./dialog";
@@ -121,7 +121,11 @@ export function AlertDialogAction({
   variant = "default",
   ...rest
 }: AlertDialogActionProps) {
-  return <Button {...rest} variant={variant} />;
+  return (
+    <AlertDialogCloseTrigger asChild>
+      <Button {...rest} variant={variant} />
+    </AlertDialogCloseTrigger>
+  );
 }
 
 export function AlertDialogCancel(props: AlertDialogCancelProps) {

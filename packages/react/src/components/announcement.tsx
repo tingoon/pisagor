@@ -13,9 +13,6 @@ const { withContext, withProvider } = createSlotRecipeContext({
 
 // #region Parts
 export const AnnouncementRoot = withProvider(ark.div, {
-  defaultProps: {
-    role: "status",
-  },
   name: "Root",
   slot: "base",
 }) as FunctionComponent<

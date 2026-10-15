@@ -13,6 +13,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { getMessage } from "../components/provider/provider.context";
 import {
   Table,
   type TableCellProps,
@@ -101,7 +102,7 @@ interface DataGridVirtualBodyProps extends DataGridBodyProps {
   /**
    * Height applied to the table scroll wrapper (CSS length).
    *
-   * @defaultValue "24rem"
+   * @defaultValue "calc(var(--spacing) * 96)"
    */
   viewportHeight?: string;
 }
@@ -166,6 +167,21 @@ export function useDataGridRow<TData extends RowData>() {
   return useDataGridRowContext<TData>().row;
 }
 
+function getAriaSort(column: {
+  getCanSort: () => boolean;
+  getIsSorted: () => false | "asc" | "desc";
+}) {
+  if (!column.getCanSort()) {
+    return undefined;
+  }
+  const sorted = column.getIsSorted();
+  return sorted === "asc"
+    ? "ascending"
+    : sorted === "desc"
+      ? "descending"
+      : "none";
+}
+
 function columnSizeStyle<TData extends RowData>(
   column: Column<DataGridFeatures, TData, unknown>,
   enabled: boolean,
@@ -210,7 +226,7 @@ function DataGridColumnResizer({
   ...rest
 }: DataGridColumnResizerProps) {
   const headerCell = useDataGridHeaderCellContext();
-  const { slots } = useDataGridContext();
+  const { slots, table } = useDataGridContext();
 
   if (!headerCell) {
     return null;
@@ -223,9 +239,12 @@ function DataGridColumnResizer({
   }
 
   return (
+    // biome-ignore lint/a11y/useSemanticElements: focusable window-splitter handle; <hr> cannot take focus
     <div
       {...rest}
-      aria-hidden="true"
+      aria-label={getMessage("dataGrid.resizeColumn")}
+      aria-orientation="vertical"
+      aria-valuenow={header.column.getSize()}
       className={slots.columnResizer({
         className,
         resizing: header.column.getIsResizing(),
@@ -233,8 +252,31 @@ function DataGridColumnResizer({
       data-part="column-resizer"
       data-scope="data-grid"
       onDoubleClick={() => header.column.resetSize()}
+      onKeyDown={(event) => {
+        rest.onKeyDown?.(event);
+        const delta =
+          event.key === "ArrowRight" ? 10 : event.key === "ArrowLeft" ? -10 : 0;
+        if (event.key === "Enter") {
+          event.preventDefault();
+          header.column.resetSize();
+          return;
+        }
+        if (!delta) {
+          return;
+        }
+        event.preventDefault();
+        const { minSize = 20, maxSize = Number.POSITIVE_INFINITY } =
+          header.column.columnDef;
+        const size = Math.min(
+          maxSize,
+          Math.max(minSize, header.column.getSize() + delta),
+        );
+        table.setColumnSizing((old) => ({ ...old, [header.column.id]: size }));
+      }}
       onMouseDown={header.getResizeHandler()}
       onTouchStart={header.getResizeHandler()}
+      role="separator"
+      tabIndex={0}
     />
   );
 }
@@ -255,6 +297,7 @@ function DataGridHeadCell<TData extends RowData>({
       value={{ header } as DataGridHeaderCellContextValue<RowData>}
     >
       <Table.Head
+        aria-sort={getAriaSort(header.column)}
         {...rest}
         className={slots.head({
           className: headClassName,
@@ -376,7 +419,7 @@ function DataGridVirtualBody<TData extends RowData>({
   empty = null,
   estimateSize = 40,
   overscan = 8,
-  viewportHeight = "24rem",
+  viewportHeight = "calc(var(--spacing) * 96)",
 }: DataGridVirtualBodyProps) {
   const { slots, table } = useDataGridContext<TData>();
   const rows = table.getRowModel().rows;
@@ -486,13 +529,13 @@ function DataGridRow<TData extends RowData>({
     <Table.Row
       {...rest}
       aria-expanded={row.getCanExpand() ? row.getIsExpanded() : undefined}
-      aria-selected={row.getIsSelected()}
       className={slots.row({ className })}
       data-depth={row.depth}
       data-expanded={row.getIsExpanded() ? "true" : undefined}
       data-grouped={row.getIsGrouped() ? "true" : undefined}
       data-part="row"
       data-scope="data-grid"
+      data-selected={row.getIsSelected() || undefined}
       data-state={row.getIsSelected() ? "selected" : undefined}
       style={style}
     />
@@ -557,7 +600,7 @@ function DataGridCell<TData extends RowData>({
 }
 
 function DataGridEmpty({
-  children = "No results. Try a different search or clear filters.",
+  children = getMessage("dataGrid.empty"),
   colSpan,
   className,
   ...rest

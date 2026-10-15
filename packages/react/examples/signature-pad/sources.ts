@@ -1,3 +1,4 @@
+import compoundRaw from "./compound.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import custom_recipeRaw from "./custom-recipe.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
@@ -8,6 +9,7 @@ import invalidRaw from "./invalid.tsx?raw";
 export const imports = `import { SignaturePad } from "@pisagor/react";`;
 
 export const sources = {
+  Compound: compoundRaw,
   Controlled: controlledRaw,
   CustomRecipe: custom_recipeRaw,
   Default: defaultRaw,

@@ -24,11 +24,12 @@ import {
   fileUploadRecipe,
   formControlZoneRecipe,
 } from "@pisagor/recipes";
-
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { FormControlVariant } from "../internal/types";
 import { Button } from "./button";
+import { getMessage, type MessageKey } from "./provider/provider.context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -46,7 +47,6 @@ const { Context: FileUploadItemStylesContext, useStyles: useFileUploadItem } =
 // #endregion
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 export interface FileUploadItemRootProps
   extends FileUploadItemProps,
@@ -224,59 +224,78 @@ export function FileUploadList({
   const { slots } = useFileUpload();
   const itemSlots = recipe();
 
-  const files = fileUpload.acceptedFiles;
+  const { acceptedFiles, rejectedFiles } = fileUpload;
 
-  if (files.length === 0) {
+  if (acceptedFiles.length === 0 && rejectedFiles.length === 0) {
     return null;
   }
 
-  return (
-    <FileUploadItemGroup className={slots.itemGroup()}>
-      {files.map((file, index) => {
-        const isImage = file.type.startsWith("image/");
+  const renderItem = (file: File, key: string, errors?: string[]) => {
+    const isImage = file.type.startsWith("image/");
 
-        const key = `${file.name}-${index}`;
+    const extension = file.name.split(".").pop();
 
-        const extension = file.name.split(".").pop();
+    return (
+      <FileUploadItem
+        {...rest}
+        className={itemSlots.listItem({ className })}
+        file={file}
+        key={key}
+        recipe={recipe}
+      >
+        <FileUploadItemPreview
+          {...(isImage ? { type: "image/*" } : { type: ".*" })}
+          className={itemSlots.listPreview()}
+        >
+          {isImage ? (
+            <FileUploadItemPreviewImage />
+          ) : (
+            <span className={itemSlots.extension()}>{extension}</span>
+          )}
+        </FileUploadItemPreview>
 
-        return (
-          <FileUploadItem
-            {...rest}
-            className={itemSlots.listItem({ className })}
-            file={file}
-            key={key}
-            recipe={recipe}
-          >
-            <FileUploadItemPreview
-              {...(isImage ? { type: "image/*" } : { type: ".*" })}
-              className={itemSlots.listPreview()}
-            >
-              {isImage ? (
-                <FileUploadItemPreviewImage />
-              ) : (
-                <span className={itemSlots.extension()}>{extension}</span>
-              )}
-            </FileUploadItemPreview>
-
-            <div className={itemSlots.content()}>
-              <FileUploadItemName />
-              <FileUploadItemSize />
+        <div className={itemSlots.content()}>
+          <FileUploadItemName />
+          <FileUploadItemSize />
+          {errors?.map((code) => (
+            <div className={itemSlots.error()} key={code}>
+              {getMessage(`fileUpload.error.${code}` as MessageKey) ?? code}
             </div>
+          ))}
+        </div>
 
-            <FileUploadItemDeleteTrigger asChild>
-              <Button
-                aria-label="Remove file"
-                className={itemSlots.deleteButton()}
-                size="icon-xs"
-                variant="ghost"
-              >
-                <XIcon aria-hidden />
-              </Button>
-            </FileUploadItemDeleteTrigger>
-          </FileUploadItem>
-        );
-      })}
-    </FileUploadItemGroup>
+        <FileUploadItemDeleteTrigger asChild>
+          <Button
+            aria-label={getMessage("fileUpload.removeFile")}
+            className={itemSlots.deleteButton()}
+            size="icon-xs"
+            variant="ghost"
+          >
+            <XIcon aria-hidden />
+          </Button>
+        </FileUploadItemDeleteTrigger>
+      </FileUploadItem>
+    );
+  };
+
+  return (
+    <>
+      {acceptedFiles.length > 0 && (
+        <FileUploadItemGroup className={slots.itemGroup()}>
+          {acceptedFiles.map((file, index) =>
+            renderItem(file, `${file.name}-${index}`),
+          )}
+        </FileUploadItemGroup>
+      )}
+
+      {rejectedFiles.length > 0 && (
+        <FileUploadItemGroup className={slots.itemGroup()} type="rejected">
+          {rejectedFiles.map(({ file, errors }, index) =>
+            renderItem(file, `${file.name}-${index}`, errors),
+          )}
+        </FileUploadItemGroup>
+      )}
+    </>
   );
 }
 

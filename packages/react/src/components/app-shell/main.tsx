@@ -16,15 +16,16 @@ export interface AppShellHeaderProps extends ComponentProps<"header"> {
   position?: AppShellRegionPosition;
 }
 
-export type AppShellMainProps = ComponentProps<"div">;
+/** Renders the `<main>` landmark (page header + content). */
+export type AppShellMainProps = ComponentProps<"main">;
 
-export type AppShellContentProps = ComponentProps<"main">;
+export type AppShellContentProps = ComponentProps<"div">;
 
 export function AppShellMain({ className, style, ...rest }: AppShellMainProps) {
   const { slots } = useAppShell();
 
   return (
-    <div
+    <main
       {...rest}
       className={slots.main({ className })}
       data-part="main"
@@ -60,7 +61,7 @@ export function AppShellContent({ className, ...rest }: AppShellContentProps) {
   const { slots } = useAppShell();
 
   return (
-    <main
+    <div
       {...rest}
       className={slots.content({ className })}
       data-part="content"

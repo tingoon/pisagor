@@ -22,7 +22,7 @@ const {
 // #endregion
 
 // #region Types
-export interface LocalTabsRootProps
+export interface TabsRootProps
   extends TabsPrimitiveRootProps,
     BaseTabsRootProps {}
 
@@ -33,16 +33,27 @@ interface TabsPresetItem {
   disabled?: boolean;
 }
 
-export type TabsListProps = TabListProps & Pick<TabsVariantProps, "variant">;
+export interface TabsListProps
+  extends TabListProps,
+    Pick<TabsVariantProps, "variant"> {
+  /**
+   * Whether to render the animated active-tab indicator.
+   *
+   * @defaultValue true
+   */
+  showIndicator?: boolean;
+}
 
 export type TabsTriggerProps = TabTriggerProps;
 
 export type TabsContentProps = TabContentProps;
 
 export interface TabsProps
-  extends Omit<LocalTabsRootProps, "children">,
+  extends Omit<TabsRootProps, "children">,
     Pick<TabsVariantProps, "variant"> {
   items?: TabsPresetItem[];
+  /** Whether to render the animated active-tab indicator. */
+  showIndicator?: boolean;
 }
 // #endregion
 
@@ -50,10 +61,11 @@ export interface TabsProps
 export const TabsRoot = withProvider(TabsPrimitive.Root, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<LocalTabsRootProps>;
+}) as FunctionComponent<TabsRootProps>;
 
 export function TabsList({
   variant = "default",
+  showIndicator = true,
   children,
   className,
   ...rest
@@ -67,7 +79,9 @@ export function TabsList({
     >
       {children}
 
-      <TabsPrimitive.Indicator className={slots.indicator({ variant })} />
+      {showIndicator && (
+        <TabsPrimitive.Indicator className={slots.indicator({ variant })} />
+      )}
     </TabsPrimitive.List>
   );
 }
@@ -82,10 +96,15 @@ export const TabsContent = withContext(TabsPrimitive.Content, {
 // #endregion
 
 // #region Shorthand
-export function TabsShorthand({ variant, items, ...rest }: TabsProps) {
+export function TabsShorthand({
+  variant,
+  items,
+  showIndicator,
+  ...rest
+}: TabsProps) {
   return (
     <TabsRoot {...rest}>
-      <TabsList variant={variant}>
+      <TabsList showIndicator={showIndicator} variant={variant}>
         {items?.map((tab) => (
           <TabsTrigger
             disabled={tab.disabled}
@@ -112,8 +131,6 @@ TabsList.displayName = "Tabs.List";
 TabsShorthand.displayName = "Tabs";
 
 // #endregion
-
-export type { TabsRootProps } from "@ark-ui/react/tabs";
 
 export const Tabs = Object.assign(TabsShorthand, {
   Content: TabsContent,

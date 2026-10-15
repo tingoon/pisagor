@@ -15,6 +15,11 @@ export interface ProseProps
    * (for example CMS content from your own database).
    */
   html?: string;
+  /**
+   * Sanitizer applied to `html` before rendering, for example
+   * `(html) => DOMPurify.sanitize(html)`. Recommended for user-generated content.
+   */
+  sanitize?: (html: string) => string;
 }
 // #endregion
 
@@ -22,6 +27,7 @@ export interface ProseProps
 export function Prose({
   children,
   html,
+  sanitize,
   recipe = proseRecipe,
   className,
   ...rest
@@ -29,7 +35,13 @@ export function Prose({
   return (
     <ark.div
       {...rest}
-      {...(html ? { dangerouslySetInnerHTML: { __html: html } } : { children })}
+      {...(html
+        ? {
+            dangerouslySetInnerHTML: {
+              __html: sanitize ? sanitize(html) : html,
+            },
+          }
+        : { children })}
       className={recipe({ className })}
       data-part="root"
       data-scope="prose"

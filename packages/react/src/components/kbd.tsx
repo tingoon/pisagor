@@ -5,11 +5,13 @@ import type {
 } from "@pisagor/props";
 import { kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
+import type { SizeScaleProps } from "../internal/types";
 
 // #region Types
 export interface KbdProps
   extends ComponentProps<typeof ark.kbd>,
-    BaseKbdProps {}
+    BaseKbdProps,
+    SizeScaleProps {}
 
 export interface KbdGroupProps
   extends ComponentProps<typeof ark.div>,
@@ -18,6 +20,7 @@ export interface KbdGroupProps
 
 // #region Parts
 export function KbdRoot({
+  size = "md",
   variant = "default",
   recipe = kbdRecipe,
   className,
@@ -26,7 +29,7 @@ export function KbdRoot({
   return (
     <ark.kbd
       {...rest}
-      className={recipe({ className, variant })}
+      className={recipe({ className, size, variant })}
       data-part="root"
       data-scope="kbd"
     />

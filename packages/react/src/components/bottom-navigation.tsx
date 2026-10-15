@@ -1,10 +1,4 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  type TabListProps,
-  Tabs as TabsPrimitive,
-  type TabsRootProps,
-  type TabTriggerProps,
-} from "@ark-ui/react/tabs";
 import type {
   BottomNavigationItemProps as BaseBottomNavigationItemProps,
   BottomNavigationProps as BaseBottomNavigationRootProps,
@@ -13,8 +7,14 @@ import {
   bottomNavigationItemRecipe,
   bottomNavigationRecipe,
 } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent } from "react";
+import {
+  type ComponentProps,
+  createContext,
+  type FunctionComponent,
+  use,
+} from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { getMessage } from "./provider/provider.context";
 
 // #region Context
 const {
@@ -32,20 +32,34 @@ const {
   name: "BottomNavigation",
   recipe: bottomNavigationItemRecipe,
 });
+
+const BottomNavigationValueContext = createContext<string | undefined>(
+  undefined,
+);
 // #endregion
 
 // #region Types
 export interface BottomNavigationRootProps
-  extends TabsRootProps,
-    BaseBottomNavigationRootProps {}
+  extends ComponentProps<typeof ark.nav>,
+    BaseBottomNavigationRootProps {
+  /** Value of the item for the current page; that item gets `aria-current="page"`. */
+  value?: string;
+}
 
 export type BottomNavigationProps = BottomNavigationRootProps;
 
-export type BottomNavigationListProps = TabListProps;
+export type BottomNavigationListProps = ComponentProps<typeof ark.div>;
 
 export interface BottomNavigationItemProps
-  extends TabTriggerProps,
-    BaseBottomNavigationItemProps {}
+  extends ComponentProps<typeof ark.a>,
+    BaseBottomNavigationItemProps {
+  /** Marks the item as the current page. Defaults to `value === root value`. */
+  current?: boolean;
+  /** Whether the item is disabled. */
+  disabled?: boolean;
+  /** Identifier compared with the root `value`. */
+  value?: string;
+}
 
 export type BottomNavigationItemIconProps = ComponentProps<typeof ark.span>;
 
@@ -53,28 +67,57 @@ export type BottomNavigationItemLabelProps = ComponentProps<typeof ark.span>;
 // #endregion
 
 // #region Parts
-export const BottomNavigationRoot = withBottomNavigationProvider(
-  TabsPrimitive.Root,
-  {
-    name: "Root",
-    slot: "base",
-  },
-) as FunctionComponent<BottomNavigationRootProps>;
+const BottomNavigationNav = withBottomNavigationProvider(ark.nav, {
+  name: "Root",
+  slot: "base",
+}) as FunctionComponent<ComponentProps<typeof ark.nav>>;
 
-export const BottomNavigationList = withBottomNavigationContext(
-  TabsPrimitive.List,
-  {
-    name: "List",
-  },
-);
+export function BottomNavigationRoot({
+  value,
+  "aria-label": ariaLabel,
+  ...rest
+}: BottomNavigationRootProps) {
+  return (
+    <BottomNavigationValueContext value={value}>
+      <BottomNavigationNav
+        {...rest}
+        aria-label={ariaLabel ?? getMessage("bottomNavigation.label")}
+      />
+    </BottomNavigationValueContext>
+  );
+}
 
-export const BottomNavigationItem = withBottomNavigationItemProvider(
-  TabsPrimitive.Trigger,
-  {
-    name: "Item",
-    slot: "base",
-  },
-) as FunctionComponent<BottomNavigationItemProps>;
+export const BottomNavigationList = withBottomNavigationContext(ark.div, {
+  name: "List",
+});
+
+const BottomNavigationItemBase = withBottomNavigationItemProvider(ark.a, {
+  name: "Item",
+  slot: "base",
+}) as FunctionComponent<ComponentProps<typeof ark.a>>;
+
+export function BottomNavigationItem({
+  current,
+  disabled,
+  value,
+  ...rest
+}: BottomNavigationItemProps) {
+  const rootValue = use(BottomNavigationValueContext);
+  const isCurrent =
+    current ??
+    (value !== undefined && rootValue !== undefined && value === rootValue);
+
+  return (
+    <BottomNavigationItemBase
+      {...rest}
+      aria-current={isCurrent ? "page" : undefined}
+      aria-disabled={disabled || undefined}
+      data-current={isCurrent ? "" : undefined}
+      data-disabled={disabled ? "" : undefined}
+      tabIndex={disabled ? -1 : rest.tabIndex}
+    />
+  );
+}
 
 export const BottomNavigationItemIcon = withBottomNavigationItemContext(
   ark.span,
@@ -93,6 +136,11 @@ export const BottomNavigationItemLabel = withBottomNavigationItemContext(
     slot: "label",
   },
 );
+// #endregion
+
+// #region Display Names
+BottomNavigationRoot.displayName = "BottomNavigation";
+BottomNavigationItem.displayName = "BottomNavigation.Item";
 // #endregion
 
 export const BottomNavigation = Object.assign(BottomNavigationRoot, {

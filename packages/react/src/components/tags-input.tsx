@@ -23,6 +23,7 @@ import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { InputGroup, type InputGroupProps } from "./input-group";
+import { getMessage } from "./provider/provider.context";
 
 // #region Context
 const { Context: TagsInputStylesContext, useStyles: useTagsInput } =
@@ -127,7 +128,7 @@ export function TagsInputRoot({
           onValueChange ? (details) => onValueChange(details.value) : undefined
         }
       >
-        <TagsInputControl clearable={clearable} variant={variant}>
+        <TagsInputControl clearable={clearable} size={size} variant={variant}>
           <TagsInputPrimitive.Context>
             {(api) =>
               api.value.map((value, index) => (
@@ -166,7 +167,9 @@ export function TagsInputControl({
       >
         {children}
         {clearable && api.value.length > 0 && (
-          <TagsInputClearTrigger aria-label="Clear all tags" />
+          <TagsInputClearTrigger
+            aria-label={getMessage("tagsInput.clearAllTags")}
+          />
         )}
       </InputGroup>
     </TagsInputPrimitive.Control>
@@ -233,7 +236,7 @@ export function TagsInputItemDeleteTrigger({
   return (
     <TagsInputPrimitive.ItemDeleteTrigger {...rest} asChild>
       <InputGroup.Button
-        aria-label="Remove tag"
+        aria-label={getMessage("tagsInput.removeTag")}
         className={slots.delete({ className })}
         size="icon-xs"
         variant="ghost"
@@ -274,7 +277,7 @@ export function TagsInputClearTrigger({
   return (
     <TagsInputPrimitive.ClearTrigger {...rest} asChild>
       <InputGroup.Button
-        aria-label="Clear"
+        aria-label={getMessage("tagsInput.clear")}
         className={slots.clearTrigger({ className })}
         size="icon-xs"
         variant="ghost"

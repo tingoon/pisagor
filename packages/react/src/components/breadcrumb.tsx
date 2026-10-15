@@ -8,6 +8,7 @@ import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { Fragment } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { getMessage } from "./provider/provider.context";
 
 // #region Context
 const {
@@ -59,7 +60,7 @@ export interface BreadcrumbProps extends Omit<BreadcrumbRootProps, "children"> {
 
 // #region Parts
 export function BreadcrumbRoot({
-  "aria-label": ariaLabel = "Breadcrumb",
+  "aria-label": ariaLabel = getMessage("breadcrumb.label"),
   children,
   recipe = breadcrumbRecipe,
   ...rest
@@ -124,18 +125,21 @@ export function BreadcrumbSeparator({
   );
 }
 
-export function BreadcrumbEllipsis(props: BreadcrumbEllipsisProps) {
+export function BreadcrumbEllipsis({
+  className,
+  ...rest
+}: BreadcrumbEllipsisProps) {
   const { slots } = useBreadcrumb();
 
   return (
     <ark.span
-      {...props}
-      aria-hidden="true"
+      {...rest}
+      className={slots.ellipsis({ className })}
       data-part="ellipsis"
       data-scope="breadcrumb"
-      role="presentation"
     >
-      <DotsThreeIcon className={slots.ellipsis()} />
+      <DotsThreeIcon aria-hidden />
+      <span className="sr-only">{getMessage("breadcrumb.more")}</span>
     </ark.span>
   );
 }
@@ -148,7 +152,12 @@ export function BreadcrumbShorthand({ items, ...rest }: BreadcrumbProps) {
       {items && (
         <BreadcrumbList>
           {items.map((item, index) => (
-            <Fragment key={item.href ?? String(item.label)}>
+            <Fragment
+              key={
+                item.href ??
+                (typeof item.label === "string" ? item.label : `item-${index}`)
+              }
+            >
               {index > 0 && <BreadcrumbSeparator />}
               <BreadcrumbItem>
                 {item.isCurrentPage ? (

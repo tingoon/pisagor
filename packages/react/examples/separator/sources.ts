@@ -1,4 +1,5 @@
 import custom_recipeRaw from "./custom-recipe.tsx?raw";
+import decorativeRaw from "./decorative.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import inline_navigationRaw from "./inline-navigation.tsx?raw";
 import listRaw from "./list.tsx?raw";
@@ -8,6 +9,7 @@ export const imports = `import { Separator } from "@pisagor/react";`;
 
 export const sources = {
   CustomRecipe: custom_recipeRaw,
+  Decorative: decorativeRaw,
   Default: defaultRaw,
   InlineNavigation: inline_navigationRaw,
   List: listRaw,

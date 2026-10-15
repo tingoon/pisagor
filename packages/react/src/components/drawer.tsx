@@ -28,7 +28,7 @@ const {
 // #endregion
 
 // #region Types
-export interface LocalDrawerRootProps
+export interface DrawerRootProps
   extends DrawerPrimitiveRootProps,
     BaseDrawerRootProps {}
 
@@ -56,7 +56,9 @@ export interface DrawerBodyProps extends ComponentProps<typeof ark.div> {
 
 export type DrawerContentInnerProps = ComponentProps<typeof ark.div>;
 
-export type DrawerDescriptionProps = ComponentProps<typeof ark.div>;
+export type DrawerDescriptionProps = ComponentProps<
+  typeof DrawerPrimitive.Description
+>;
 
 export type DrawerFooterProps = ComponentProps<typeof ark.div>;
 // #endregion
@@ -65,7 +67,7 @@ export type DrawerFooterProps = ComponentProps<typeof ark.div>;
 export function DrawerRoot({
   recipe = drawerRecipe,
   ...rest
-}: LocalDrawerRootProps) {
+}: DrawerRootProps) {
   const slots = recipe();
 
   return (
@@ -106,10 +108,10 @@ export function DrawerPositioner({
 }
 
 const SWIPE_DIRECTION_TO_PLACEMENT = {
-  down: "down",
+  down: "bottom",
   end: "right",
   start: "left",
-  up: "up",
+  up: "top",
 } as const;
 
 export function DrawerContent({
@@ -212,7 +214,7 @@ export function DrawerDescription({
   const { slots } = useDrawer();
 
   return (
-    <ark.div
+    <DrawerPrimitive.Description
       {...rest}
       className={slots.description({ className })}
       data-part="description"
@@ -278,7 +280,6 @@ export type {
   DrawerBackdropProps,
   DrawerCloseTriggerProps,
   DrawerGrabberProps,
-  DrawerRootProps,
   DrawerTitleProps,
   DrawerTriggerProps,
 } from "@ark-ui/react/drawer";

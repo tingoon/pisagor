@@ -13,12 +13,14 @@ import {
   useState,
 } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { FormControlVariant } from "../internal/types";
 import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupText,
   type InputGroupTextProps,
 } from "./input-group/input-group-core";
+import { getMessage } from "./provider/provider.context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -30,7 +32,6 @@ const { Context: FileInputStylesContext, useStyles: useFileInput } =
 // #endregion
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 type FileInputVariantProps = FormControlGroupShellVariantProps;
 
@@ -59,8 +60,6 @@ export interface FileInputProps
   onChange?: ChangeEventHandler<HTMLInputElement>;
   /** Called with accepted files when the selection changes. */
   onFilesChange?: (files: File[]) => void;
-  /** Alias for `onFilesChange`; matches `FileUpload` callback naming. */
-  onValueChange?: (files: File[]) => void;
 }
 
 interface FileInputControlProps extends ComponentProps<"input"> {}
@@ -164,14 +163,13 @@ export function FileInput({
   multiple,
   name,
   required,
-  browseLabel = "Choose file",
+  browseLabel = getMessage("fileInput.browse"),
   capture,
   id,
-  placeholder = "No file chosen",
+  placeholder = getMessage("fileInput.placeholder"),
   ref,
   onChange,
   onFilesChange,
-  onValueChange,
   recipe,
   className,
   ...rest
@@ -200,7 +198,6 @@ export function FileInput({
     onChange?.(event);
     const files = getSelectedFiles(event.currentTarget);
     onFilesChange?.(files);
-    onValueChange?.(files);
     setFileLabel(formatFileLabel(files));
   };
 
@@ -213,6 +210,7 @@ export function FileInput({
       variant={variant}
     >
       <FileInputControl
+        tabIndex={-1}
         {...rest}
         accept={accept}
         aria-invalid={invalid || undefined}

@@ -3,6 +3,7 @@ import { dataTableRecipe } from "@pisagor/recipes";
 import type { RowData, TableOptions } from "@tanstack/react-table";
 import { flexRender, useTable } from "@tanstack/react-table";
 import { type ComponentProps, type ReactNode, useMemo } from "react";
+import { getMessage } from "../components/provider/provider.context";
 import {
   Table,
   type TableCellProps,
@@ -146,6 +147,21 @@ function DataTableHeaderRow(props: DataTableHeaderRowProps) {
   );
 }
 
+function getAriaSort(column: {
+  getCanSort: () => boolean;
+  getIsSorted: () => false | "asc" | "desc";
+}) {
+  if (!column.getCanSort()) {
+    return undefined;
+  }
+  const sorted = column.getIsSorted();
+  return sorted === "asc"
+    ? "ascending"
+    : sorted === "desc"
+      ? "descending"
+      : "none";
+}
+
 function DataTableHead<TData extends RowData>({
   columnId,
   children,
@@ -165,6 +181,7 @@ function DataTableHead<TData extends RowData>({
 
     return (
       <Table.Head
+        aria-sort={getAriaSort(header.column)}
         {...rest}
         className={className}
         data-part="head"
@@ -180,6 +197,7 @@ function DataTableHead<TData extends RowData>({
     <>
       {headerGroup.headers.map((header) => (
         <Table.Head
+          aria-sort={getAriaSort(header.column)}
           {...rest}
           className={className}
           data-part="head"
@@ -243,10 +261,10 @@ function DataTableRow<TData extends RowData>({
   return (
     <Table.Row
       {...rest}
-      aria-selected={row.getIsSelected()}
       className={className}
       data-part="row"
       data-scope="data-table"
+      data-selected={row.getIsSelected() || undefined}
       data-state={row.getIsSelected() ? "selected" : undefined}
     />
   );
@@ -292,7 +310,7 @@ function DataTableCell<TData extends RowData>({
 }
 
 function DataTableEmpty({
-  children = "No results. Try a different search or clear filters.",
+  children = getMessage("dataTable.empty"),
   colSpan,
   className,
   ...rest

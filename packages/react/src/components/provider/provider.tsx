@@ -13,7 +13,8 @@ export type { ProviderMessages } from "./provider.context";
 export interface ProviderProps {
   /**
    * Document / layout direction. When omitted, inferred from `locale`
-   * (`ar`, `he`, `fa`, `ur` → `rtl`).
+   * (`ar`, `he`, `fa`, `ur` → `rtl`). Applied as `dir` on a
+   * `display: contents` wrapper so descendants inherit it.
    */
   dir?: "ltr" | "rtl";
   locale?: string;
@@ -57,7 +58,9 @@ export function Provider({
             weight: "regular",
           }}
         >
-          {children}
+          <div className="contents" data-scope="provider" dir={dir}>
+            {children}
+          </div>
         </IconContext>
       </ProviderMessagesContext>
     </LocaleProvider>

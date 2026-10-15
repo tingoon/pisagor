@@ -10,14 +10,15 @@ import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/prop
 import { passwordInputRecipe } from "@pisagor/recipes";
 import type { RefAttributes } from "react";
 import { useClearableInput } from "../hooks";
+import type { FormControlVariant } from "../internal/types";
 import {
   InputGroup,
   type InputGroupButtonProps,
   type InputGroupProps,
 } from "./input-group";
+import { getMessage } from "./provider/provider.context";
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 export type PasswordInputRootProps = Pick<
   PasswordInputPrimitiveRootProps,
@@ -55,7 +56,7 @@ export interface PasswordInputProps
 // #endregion
 
 // #region Component
-export function PasswordInput({
+function PasswordInputShorthand({
   size = "md",
   variant,
   clearable = false,
@@ -110,6 +111,7 @@ export function PasswordInput({
         <InputGroup
           className={slots.control()}
           data-clearable={clearable || undefined}
+          size={size}
           variant={variant}
         >
           <PasswordInputPrimitive.Input
@@ -128,7 +130,7 @@ export function PasswordInput({
             <InputGroup.Addon align="inline-end" className={slots.clearAddon()}>
               <InputGroup.Button
                 {...restClearButtonProps}
-                aria-label="Clear"
+                aria-label={getMessage("passwordInput.clear")}
                 data-part="clear-trigger"
                 data-scope="password-input"
                 onClick={(event) => {
@@ -149,7 +151,9 @@ export function PasswordInput({
               asChild
             >
               <InputGroup.Button
-                aria-label="Toggle password visibility"
+                aria-label={getMessage(
+                  "passwordInput.togglePasswordVisibility",
+                )}
                 size="icon-xs"
                 variant="ghost"
               >
@@ -167,6 +171,78 @@ export function PasswordInput({
     </PasswordInputPrimitive.Root>
   );
 }
+
+// #region Parts
+function PasswordInputRoot({
+  recipe = passwordInputRecipe,
+  className,
+  ...rest
+}: PasswordInputPrimitiveRootProps & { recipe?: typeof passwordInputRecipe }) {
+  return (
+    <PasswordInputPrimitive.Root
+      {...rest}
+      className={recipe().base({ className })}
+    />
+  );
+}
+
+function PasswordInputControl({ className, ...rest }: InputGroupProps) {
+  return (
+    <PasswordInputPrimitive.Control asChild>
+      <InputGroup
+        {...rest}
+        className={passwordInputRecipe().control({ className })}
+      />
+    </PasswordInputPrimitive.Control>
+  );
+}
+
+function PasswordInputInput(props: PasswordInputInputProps) {
+  return (
+    <PasswordInputPrimitive.Input {...props} asChild>
+      <InputGroup.Input clearable={false} />
+    </PasswordInputPrimitive.Input>
+  );
+}
+
+function PasswordInputVisibilityTrigger({
+  children,
+  ...rest
+}: PasswordInputPrimitiveVisibilityTriggerProps) {
+  return (
+    <InputGroup.Addon align="inline-end">
+      <PasswordInputPrimitive.VisibilityTrigger {...rest} asChild>
+        <InputGroup.Button
+          aria-label={getMessage("passwordInput.togglePasswordVisibility")}
+          size="icon-xs"
+          variant="ghost"
+        >
+          {children ?? (
+            <PasswordInputPrimitive.Indicator fallback={<EyeSlashIcon />}>
+              <EyeIcon />
+            </PasswordInputPrimitive.Indicator>
+          )}
+        </InputGroup.Button>
+      </PasswordInputPrimitive.VisibilityTrigger>
+    </InputGroup.Addon>
+  );
+}
 // #endregion
+
+// #region Display Names
+PasswordInputShorthand.displayName = "PasswordInput";
+PasswordInputRoot.displayName = "PasswordInput.Root";
+PasswordInputControl.displayName = "PasswordInput.Control";
+PasswordInputInput.displayName = "PasswordInput.Input";
+PasswordInputVisibilityTrigger.displayName = "PasswordInput.VisibilityTrigger";
+// #endregion
+
+export const PasswordInput = Object.assign(PasswordInputShorthand, {
+  Control: PasswordInputControl,
+  Indicator: PasswordInputPrimitive.Indicator,
+  Input: PasswordInputInput,
+  Root: PasswordInputRoot,
+  VisibilityTrigger: PasswordInputVisibilityTrigger,
+});
 
 export type { PasswordInputIndicatorProps } from "@ark-ui/react/password-input";

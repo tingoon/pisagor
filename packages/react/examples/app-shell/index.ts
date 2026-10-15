@@ -1,6 +1,7 @@
 export * from "./banner";
 export * from "./content";
 export * from "./default";
+export * from "./disable-hotkey";
 export * from "./header";
 export * from "./inspectors";
 export * from "./main";
