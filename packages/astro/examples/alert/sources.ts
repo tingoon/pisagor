@@ -4,6 +4,7 @@ import custom_recipeRaw from "./custom-recipe.astro?raw";
 import variantsRaw from "./variants.astro?raw";
 import with_actionRaw from "./with-action.astro?raw";
 import with_iconRaw from "./with-icon.astro?raw";
+import without_iconRaw from "./without-icon.astro?raw";
 
 export const imports = `---
 import { Alert } from "@pisagor/astro";
@@ -16,4 +17,5 @@ export const sources = {
   Variants: variantsRaw,
   WithAction: with_actionRaw,
   WithIcon: with_iconRaw,
+  WithoutIcon: without_iconRaw,
 } as const;

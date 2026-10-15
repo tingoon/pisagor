@@ -1,9 +1,10 @@
 ---
 import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
+import type { SizeScaleProps } from "../../internal/types";
 import { withProvider } from "./button-group.context";
 
-type Props = HTMLAttributes<"fieldset"> & BaseButtonGroupProps;
+type Props = HTMLAttributes<"fieldset"> & BaseButtonGroupProps & SizeScaleProps;
 
 const root = withProvider(Astro.props, { name: "Root", slot: "base" });
 ---

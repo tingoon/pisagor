@@ -5,3 +5,4 @@ export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.astro";
 export { default as WithAction } from "./with-action.astro";
 export { default as WithIcon } from "./with-icon.astro";
+export { default as WithoutIcon } from "./without-icon.astro";

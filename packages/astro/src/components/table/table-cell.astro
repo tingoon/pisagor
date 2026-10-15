@@ -1,12 +1,23 @@
 ---
+import { tableRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import type { SizeScaleProps } from "../../internal/types";
 import { withContext } from "./table.context";
 
-type Props = HTMLAttributes<"td">;
+interface Props extends HTMLAttributes<"td">, SizeScaleProps {}
 
-const cell = withContext(Astro.props, { name: "Cell" });
+/**
+ * Astro parts cannot read the root's size, so pass the same `size` as
+ * `Table` to scale padding (defaults to `md`).
+ */
+const { size, ...props } = Astro.props;
+const part = withContext(props, { name: "Cell" });
+const sizedClass =
+  size === undefined
+    ? part.props.class
+    : tableRecipe({ size }).cell({ class: props.class });
 ---
 
-<td {...cell.props}>
+<td {...part.props} class={sizedClass} data-size={size}>
   <slot />
 </td>

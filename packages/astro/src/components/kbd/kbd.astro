@@ -2,11 +2,13 @@
 import type { KbdProps as BaseKbdProps } from "@pisagor/props";
 import { kbdRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
+import type { SizeScaleProps } from "../../internal/types";
 
-type Props = HTMLAttributes<"kbd"> & BaseKbdProps;
+type Props = HTMLAttributes<"kbd"> & BaseKbdProps & SizeScaleProps;
 
 const {
   variant = "default",
+  size = "md",
   recipe = kbdRecipe,
   class: className,
   ...rest
@@ -15,9 +17,10 @@ const {
 
 <kbd
   {...rest}
-  class={recipe({ className, variant })}
+  class={recipe({ className, size, variant })}
   data-part="root"
   data-scope="kbd"
+  data-size={size}
 >
   <slot />
 </kbd>
