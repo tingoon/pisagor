@@ -19,16 +19,16 @@ export const avatarRecipe = tv({
       "inline-flex shrink-0 items-center justify-center",
       "bg-background",
       "select-none font-medium text-xs",
-      "after:absolute after:inset-0 after:rounded-[inherit] after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten",
+      "after:absolute after:inset-0 after:rounded-inherit after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten",
     ],
     fallback: [
       "size-full",
       "flex items-center justify-center",
       "bg-muted",
-      "rounded-[inherit]",
+      "rounded-inherit",
       "[&_svg]:size-4 group-data-[size=lg]/avatar:[&_svg]:size-4.5 group-data-[size=sm]/avatar:[&_svg]:size-3",
     ],
-    image: ["size-full", "aspect-square object-cover", "rounded-[inherit]"],
+    image: ["size-full", "aspect-square object-cover", "rounded-inherit"],
   },
   variants: {
     shape: {

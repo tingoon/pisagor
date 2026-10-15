@@ -38,12 +38,13 @@ export const fileUploadItemRecipe = tv({
     content: ["min-w-0 flex-1 overflow-hidden"],
     deleteButton: [
       "rounded-lg",
-      "transition-[color,background-color,transform] duration-fast ease-out",
+      "transition duration-fast ease-out",
       "hover:bg-destructive/10 hover:text-destructive",
-      "active:scale-[0.97]",
+      "active:scale-97",
       "motion-reduce:transition-none! motion-reduce:active:scale-100",
     ],
-    deleteTrigger: ["me-auto rtl:ms-auto"],
+    deleteTrigger: ["me-auto"],
+    error: ["text-destructive text-xs"],
     extension: "uppercase",
     listItem: [
       "flex-1 items-start justify-start gap-4",
@@ -57,7 +58,7 @@ export const fileUploadItemRecipe = tv({
     name: ["truncate font-medium text-xs", "min-w-0", "overflow-hidden"],
     preview: [
       "flex shrink-0 items-center justify-center",
-      "font-semibold text-2 text-primary",
+      "font-semibold text-xs text-primary",
       "bg-primary/10",
       "select-none",
       "rounded-full",

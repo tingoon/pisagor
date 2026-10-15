@@ -10,7 +10,7 @@ export const circularSliderRecipe = tv({
     control: ["group/circular-slider-control absolute inset-0"],
     marker: [
       "absolute inset-s-[calc(50%-1px)] top-0 bottom-0 w-0.5",
-      "before:absolute before:inset-s-1/2 before:top-(--marker-offset) before:-translate-x-1/2",
+      "before:absolute before:left-1/2 before:top-(--marker-offset) before:-translate-x-1/2",
       "before:h-(--marker-height) before:w-(--marker-width) before:rounded-md before:bg-border",
       "data-[state=at-value]:before:bg-primary",
       "data-[state=under-value]:before:bg-primary",
@@ -32,10 +32,10 @@ export const circularSliderRecipe = tv({
     thumbHandle: [
       "absolute",
       "shrink-0",
-      "bg-white",
+      "bg-background",
       "size-(--size)",
       "rounded-full shadow-xs/5 ring-2 ring-border",
-      "transition-[box-shadow,transform] duration-fast ease-out",
+      "transition duration-fast ease-out",
       "hover:cursor-grab hover:ring-0.75",
       "motion-reduce:transition-none!",
     ],

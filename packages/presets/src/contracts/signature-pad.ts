@@ -18,7 +18,7 @@ export const signaturePadRecipe = tv({
       "bg-muted",
       "text-muted-foreground",
       "transition-transform duration-fast ease-out",
-      "active:scale-[0.97]",
+      "active:scale-97",
       "motion-reduce:transition-none! motion-reduce:active:scale-100",
     ],
     control: [

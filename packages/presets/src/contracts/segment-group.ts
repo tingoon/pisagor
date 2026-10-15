@@ -1,6 +1,12 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const segmentGroupRecipe = tv({
+  defaultVariants: {
+    /**
+     * Size scale.
+     */
+    size: "md",
+  },
   slots: {
     base: [
       "group/segment-group relative",
@@ -18,11 +24,11 @@ export const segmentGroupRecipe = tv({
       "absolute top-(--top) left-(--left) z-0",
       "h-(--height) w-(--width)",
       "rounded-lg bg-card shadow-sm",
-      "transition-[width,height,left,top,box-shadow] duration-normal ease-emphasized",
+      "transition-all duration-normal ease-emphasized",
       "[transition-property:var(--transition-property,width,height,left,top)]",
       "group-data-[variant=underline]/segment-group:rounded-none group-data-[variant=underline]/segment-group:bg-primary group-data-[variant=underline]/segment-group:shadow-none",
       "data-[orientation=horizontal]:group-data-[variant=underline]/segment-group:top-[calc(var(--top)+var(--height)-1px)]",
-      "data-[orientation=vertical]:group-data-[variant=underline]/segment-group:right-[calc(var(--left)+var(--width)-1px)]",
+      "data-[orientation=vertical]:group-data-[variant=underline]/segment-group:left-[calc(var(--left)+var(--width)-1px)]",
       "data-[orientation=vertical]:group-data-[variant=underline]/segment-group:-translate-x-px",
       "data-[orientation=horizontal]:group-data-[variant=underline]/segment-group:h-0.5",
       "data-[orientation=vertical]:group-data-[variant=underline]/segment-group:w-0.5",
@@ -37,7 +43,7 @@ export const segmentGroupRecipe = tv({
       "cursor-pointer",
       "data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start",
       "rounded-lg border border-transparent",
-      "text-muted-foreground transition-[color,background-color] duration-fast ease-out",
+      "text-muted-foreground transition-colors duration-fast ease-out",
       "hover:text-foreground/72",
       "data-[state=checked]:text-foreground",
       "outline-hidden data-focus-visible:border-primary data-focus-visible:ring-0.75 data-focus-visible:ring-ring/24",
@@ -47,8 +53,22 @@ export const segmentGroupRecipe = tv({
     ],
     itemText: ["relative z-1"],
   },
+  variants: {
+    size: {
+      lg: {
+        base: "p-2",
+        item: "h-10 px-4 text-base",
+      },
+      md: {},
+      sm: {
+        base: "p-1",
+        item: "h-7 px-2.5 text-xs",
+      },
+    },
+  },
 });
 
 export type SegmentGroupRecipeFn = typeof segmentGroupRecipe;
 export type SegmentGroupRecipe = ReturnType<SegmentGroupRecipeFn>;
 export type SegmentGroupRecipeSlot = keyof SegmentGroupRecipe;
+export type SegmentGroupVariantProps = VariantProps<SegmentGroupRecipeFn>;

@@ -1,7 +1,10 @@
 import { tv } from "tailwind-variants";
 
 export const radioGroupRecipe = tv({
-  base: ["flex flex-col gap-3", "data-invalid:text-destructive"],
+  base: [
+    "flex flex-col gap-3 data-[orientation=horizontal]:flex-row data-[orientation=horizontal]:flex-wrap",
+    "data-invalid:text-destructive",
+  ],
 });
 
 export const radioGroupItemRecipe = tv({

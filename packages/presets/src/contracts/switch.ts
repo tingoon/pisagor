@@ -61,6 +61,10 @@ export const switchRecipe = tv({
   ],
   defaultVariants: {
     /**
+     * Size scale.
+     */
+    size: "md",
+    /**
      * Surface variant.
      */
     surfaceVariant: undefined,
@@ -72,7 +76,6 @@ export const switchRecipe = tv({
   slots: {
     base: [
       "group/switch",
-      "[--thumb-size:--spacing(5)] sm:[--thumb-size:--spacing(4)]",
       "h-[calc(var(--thumb-size)+2px)] w-[calc(var(--thumb-size)*2-2px)]",
       "p-px",
       "inline-flex shrink-0 items-center",
@@ -103,6 +106,11 @@ export const switchRecipe = tv({
     ],
   },
   variants: {
+    size: {
+      lg: { base: "[--thumb-size:--spacing(6)]" },
+      md: { base: "[--thumb-size:--spacing(4)]" },
+      sm: { base: "[--thumb-size:--spacing(3)]" },
+    },
     surfaceVariant: surfaceVariantOptions,
     variant: {
       primary: "",

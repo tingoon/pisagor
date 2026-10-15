@@ -1,6 +1,12 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const ratingRecipe = tv({
+  defaultVariants: {
+    /**
+     * Size scale.
+     */
+    size: "md",
+  },
   slots: {
     base: [
       "**:data-[scope=rating]:data-[part=item-indicator]:size-6",
@@ -19,15 +25,27 @@ export const ratingRecipe = tv({
       "inline-flex items-center justify-center",
       "rounded-md",
       "transition-transform duration-fast ease-out",
-      "active:scale-[0.97]",
+      "active:scale-97",
       "not-[[data-disabled],[data-readonly]]:cursor-pointer",
       "data-disabled:opacity-64 data-disabled:grayscale",
       "outline-hidden focus-visible:ring-current not-data-readonly:focus-visible:ring-0.75 focus-visible:ring-offset-1 focus-visible:ring-offset-background",
       "motion-reduce:transition-none! motion-reduce:active:scale-100",
     ],
   },
+  variants: {
+    size: {
+      lg: {
+        base: "**:data-[scope=rating]:data-[part=item-indicator]:size-8",
+      },
+      md: {},
+      sm: {
+        base: "**:data-[scope=rating]:data-[part=item-indicator]:size-4",
+      },
+    },
+  },
 });
 
 export type RatingRecipeFn = typeof ratingRecipe;
 export type RatingRecipe = ReturnType<RatingRecipeFn>;
 export type RatingRecipeSlot = keyof RatingRecipe;
+export type RatingVariantProps = VariantProps<RatingRecipeFn>;

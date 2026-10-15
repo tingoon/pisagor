@@ -18,7 +18,7 @@ export const fileRecipe = tv({
     content: ["min-w-0 flex-1 overflow-hidden"],
     media: [
       "flex shrink-0 items-center justify-center overflow-hidden",
-      "rounded-[calc(var(--radius-2xl)-(--spacing(2)))] bg-muted text-muted-foreground",
+      "rounded-lg bg-muted text-muted-foreground",
     ],
     meta: ["truncate text-muted-foreground text-xs"],
     name: ["truncate font-medium text-foreground"],

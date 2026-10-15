@@ -6,7 +6,7 @@ export const collapsibleRecipe = tv({
     content: [
       "h-(--collapsed-height)",
       "group-data-partial-collapse/collapsible:h-full",
-      "transition-[height] duration-normal ease-out",
+      "transition-all duration-normal ease-out",
       "overflow-hidden",
       "data-[state=open]:animate-expand",
       "data-[state=closed]:animate-collapse",

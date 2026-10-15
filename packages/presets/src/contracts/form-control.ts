@@ -35,7 +35,7 @@ export const formControlShellRecipe = tv({
     "placeholder:text-muted-foreground/64",
     "file:inline-flex file:h-7 file:items-center file:border-0",
     "file:font-medium file:text-foreground file:text-sm",
-    "transition-[color,box-shadow,background-color,border-color] duration-fast ease-out",
+    "transition duration-fast ease-out",
     "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/24",
     "aria-invalid:border-destructive aria-invalid:text-destructive aria-invalid:ring-0.75 aria-invalid:ring-destructive/24",
     "data-invalid:border-destructive data-invalid:text-destructive data-invalid:ring-0.75 data-invalid:ring-destructive/24",
@@ -109,7 +109,7 @@ export const formControlGroupShellRecipe = tv({
     "w-full min-w-0",
     "flex items-center",
     "rounded-lg border border-foreground/20 dark:border-input",
-    "transition-[color,box-shadow,background-color,border-color] duration-fast ease-out",
+    "transition duration-fast ease-out",
     "has-[>textarea]:h-auto",
     "has-[>[data-align=inline-start]]:[&>input]:ps-2",
     "has-[>[data-align=inline-end]]:[&>input]:pe-2",
@@ -233,6 +233,7 @@ export const formControlToggleRecipe = tv({
   },
   variants: {
     size: {
+      lg: "size-5 rounded-sm",
       md: "size-4 rounded-xs",
       sm: "size-3.5 rounded-xs",
     },

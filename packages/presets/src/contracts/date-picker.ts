@@ -3,7 +3,7 @@ import { tv } from "tailwind-variants";
 export const datePickerRecipe = tv({
   slots: {
     content: [
-      "[--cell-size:--spacing(8)]",
+      "[--cell-size:--spacing(9)]",
       "z-[calc(var(--z-index-popover)+var(--layer-index,0))]",
       "w-fit min-w-72",
       "p-3",
@@ -14,7 +14,7 @@ export const datePickerRecipe = tv({
       "origin-(--transform-origin)",
       "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       "data-[state=closed]:animate-out data-[state=open]:animate-in",
-      "data-[state=closed]:zoom-out-[98%] data-[state=open]:zoom-in-[98%]",
+      "data-[state=closed]:zoom-out-98 data-[state=open]:zoom-in-98",
       "motion-reduce:animate-none!",
     ],
     control: ["flex w-fit items-center gap-1"],
@@ -24,7 +24,7 @@ export const datePickerRecipe = tv({
     ],
     trigger: [
       "justify-start",
-      "text-left data-placeholder-shown:[&>span]:text-muted-foreground",
+      "text-start data-placeholder-shown:[&>span]:text-muted-foreground",
       "[&_svg:not([class*='text-'])]:opacity-64",
     ],
     valueText: ["font-medium text-sm"],

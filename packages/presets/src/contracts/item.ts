@@ -3,6 +3,10 @@ import { tv, type VariantProps } from "tailwind-variants";
 export const itemRecipe = tv({
   defaultVariants: {
     /**
+     * Size scale.
+     */
+    size: "md",
+    /**
      * Visual emphasis.
      */
     variant: "default",
@@ -17,8 +21,8 @@ export const itemRecipe = tv({
       "in-[[data-scope=menu][data-part=list]]:p-0",
       "text-sm",
       "rounded-2xl border border-border/50",
-      "transition-[color,background-color,border-color] duration-fast ease-out",
-      "[a]:transition-[color,background-color] [a]:duration-fast [a]:ease-out [a]:hover:bg-muted",
+      "transition-colors duration-fast ease-out",
+      "[a]:transition-colors [a]:duration-fast [a]:ease-out [a]:hover:bg-muted",
       "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/24",
       "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
       "motion-reduce:transition-none!",
@@ -28,7 +32,7 @@ export const itemRecipe = tv({
       "[&+[data-scope=item][data-part=content]]:flex-none",
     ],
     description: [
-      "line-clamp-2 text-left font-normal text-muted-foreground text-sm leading-relaxed",
+      "line-clamp-2 text-start font-normal text-muted-foreground text-sm leading-relaxed",
       "[&>a:hover]:text-primary",
       "[&>a]:underline [&>a]:underline-offset-4",
     ],
@@ -52,6 +56,19 @@ export const itemRecipe = tv({
     ],
   },
   variants: {
+    size: {
+      lg: {
+        base: "text-base [--space:--spacing(4)]",
+        description: "text-base",
+        title: "text-base",
+      },
+      md: {},
+      sm: {
+        base: "text-xs [--space:--spacing(2)]",
+        description: "text-xs",
+        title: "text-xs",
+      },
+    },
     variant: {
       default: {
         base: "border-transparent",

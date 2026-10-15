@@ -29,7 +29,7 @@ export const buttonRecipe = tv({
       "inline-flex shrink-0 items-center justify-center gap-2",
       "whitespace-nowrap font-medium text-sm",
       "rounded-lg",
-      "transition-[color,background-color,border-color,box-shadow,opacity,transform] duration-fast ease-out",
+      "transition duration-fast ease-out",
       "outline-hidden focus-visible:ring-0.75 focus-visible:ring-ring/32",
       "disabled:pointer-events-none disabled:opacity-64",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
@@ -45,7 +45,7 @@ export const buttonRecipe = tv({
   variants: {
     clickEffect: {
       true: {
-        base: "active:not-aria-haspopup:scale-[0.97] motion-reduce:active:scale-100",
+        base: "active:not-aria-haspopup:scale-97 motion-reduce:active:scale-100",
       },
     },
     loading: {
@@ -109,7 +109,7 @@ export const buttonRecipe = tv({
           "text-destructive-foreground",
           "border border-transparent shadow-xs",
           "hover:bg-destructive/90",
-          "focus-visible:border-background focus-visible:ring-white/40",
+          "focus-visible:border-background focus-visible:ring-on-media/40",
         ],
       },
       ghost: {

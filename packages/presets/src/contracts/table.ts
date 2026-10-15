@@ -1,6 +1,12 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const tableRecipe = tv({
+  defaultVariants: {
+    /**
+     * Size scale.
+     */
+    size: "md",
+  },
   slots: {
     base: [
       "group/table",
@@ -22,9 +28,9 @@ export const tableRecipe = tv({
     ],
     head: [
       "h-10 px-2",
-      "text-left align-middle",
+      "text-start align-middle",
       "font-medium text-muted-foreground",
-      "rtl:text-right",
+      "",
       "has-[[role=checkbox]]:ps-2 has-[[role=checkbox]]:pe-0",
     ],
     header: "[&_tr]:border-b",
@@ -38,8 +44,24 @@ export const tableRecipe = tv({
     ],
     wrapper: ["relative w-full overflow-auto"],
   },
+  variants: {
+    size: {
+      lg: {
+        base: "text-base",
+        cell: "p-3",
+        head: "h-12 px-3",
+      },
+      md: {},
+      sm: {
+        base: "text-xs",
+        cell: "p-1.5",
+        head: "h-8 px-1.5",
+      },
+    },
+  },
 });
 
 export type TableRecipeFn = typeof tableRecipe;
 export type TableRecipe = ReturnType<TableRecipeFn>;
 export type TableRecipeSlot = keyof TableRecipe;
+export type TableVariantProps = VariantProps<TableRecipeFn>;

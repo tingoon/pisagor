@@ -6,6 +6,10 @@ export const buttonGroupRecipe = tv({
      * Layout orientation.
      */
     orientation: "horizontal",
+    /**
+     * Size scale.
+     */
+    size: "md",
   },
   slots: {
     base: [
@@ -47,6 +51,15 @@ export const buttonGroupRecipe = tv({
           "[&>*:not(:first-child)]:border-t-0",
           "[&>*:not(:last-child)]:rounded-b-none [&>*:not(:last-child)]:shadow-none",
         ],
+      },
+    },
+    size: {
+      lg: {
+        text: "px-5 text-base",
+      },
+      md: {},
+      sm: {
+        text: "px-3 text-xs",
       },
     },
   },

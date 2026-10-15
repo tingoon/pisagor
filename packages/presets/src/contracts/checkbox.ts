@@ -14,6 +14,7 @@ export const checkboxRecipe = tv({
       "data-invalid:border-destructive data-invalid:text-destructive data-invalid:ring-0.75 data-invalid:ring-destructive/24",
       "dark:not-data-checked:bg-input/32",
     ],
+    control: [],
     indicator: [
       "absolute -inset-px",
       "flex items-center justify-center",
@@ -23,6 +24,8 @@ export const checkboxRecipe = tv({
       "data-[state=unchecked]:hidden",
       "data-[state=indeterminate]:text-foreground",
     ],
+    label: ["font-medium text-foreground text-sm", "data-disabled:opacity-64"],
+    root: ["inline-flex items-center gap-2"],
   },
 });
 

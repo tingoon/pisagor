@@ -13,11 +13,20 @@ export const kbdRecipe = tv({
   ],
   defaultVariants: {
     /**
+     * Size scale.
+     */
+    size: "md",
+    /**
      * Visual emphasis.
      */
     variant: "default",
   },
   variants: {
+    size: {
+      lg: "h-6 min-w-6 px-1.5 text-sm",
+      md: "",
+      sm: "h-4 min-w-4 px-0.5",
+    },
     variant: {
       default: "bg-muted",
       outline: "border border-border",

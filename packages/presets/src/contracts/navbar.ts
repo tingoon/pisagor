@@ -9,7 +9,7 @@ export const navbarRecipe = tv({
       "min-h-14 shrink-0",
       "border-b border-border/40 bg-background/72 px-4 md:px-6",
       "backdrop-blur-xl backdrop-saturate-150",
-      "shadow-[0_1px_0_0_rgb(255_255_255/0.5)] dark:shadow-[0_1px_0_0_rgb(255_255_255/0.06)]",
+      "shadow-edge-b",
       "transparency-reduce:bg-background transparency-reduce:backdrop-blur-none transparency-reduce:backdrop-saturate-100 transparency-reduce:shadow-none",
       "contrast-more:border-border contrast-more:bg-background contrast-more:backdrop-blur-none contrast-more:shadow-none",
     ],

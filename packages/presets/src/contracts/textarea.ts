@@ -6,9 +6,13 @@ export const textareaRecipe = tv({
      * Reserve end padding for the clear control.
      */
     clearable: false,
+    /**
+     * Size scale.
+     */
+    size: "md",
   },
   slots: {
-    clearAddon: ["absolute top-1.5 right-1.5 self-start p-0"],
+    clearAddon: ["absolute top-1.5 inset-e-1.5 self-start p-0"],
     clearableRoot: [
       "field-sizing-content min-h-16 w-full flex-1",
       "px-3 py-2",
@@ -16,7 +20,7 @@ export const textareaRecipe = tv({
       "text-base md:text-sm",
       "resize-none rounded-none border-0 shadow-none",
       "placeholder:text-muted-foreground/64",
-      "transition-[color,box-shadow] duration-fast ease-out",
+      "transition duration-fast ease-out",
       "outline-hidden focus-visible:ring-0",
       "disabled:bg-transparent aria-invalid:ring-0 data-invalid:ring-0",
       "dark:bg-transparent dark:disabled:bg-transparent",
@@ -33,6 +37,17 @@ export const textareaRecipe = tv({
     clearable: {
       true: {
         clearableRoot: "pe-9",
+      },
+    },
+    size: {
+      lg: {
+        clearableRoot: "min-h-20 px-4 py-3 text-base",
+        rootLayout: "min-h-20 px-4 py-3",
+      },
+      md: {},
+      sm: {
+        clearableRoot: "min-h-12 px-2.5 py-1.5 text-sm",
+        rootLayout: "min-h-12 px-2.5 py-1.5",
       },
     },
   },

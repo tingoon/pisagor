@@ -5,7 +5,6 @@ export const floatingPanelRecipe = tv({
     body: [
       "flex flex-col gap-4",
       "p-(--space)",
-      "overflow-auto",
       "in-[[data-scope=floating-panel][data-part=content]:has([data-scope=floating-panel][data-part=footer]:not(.border-t))]:pb-1",
     ],
     content: [
@@ -17,15 +16,15 @@ export const floatingPanelRecipe = tv({
       "bg-popover",
       "text-popover-foreground",
       "rounded-2xl border border-border/50 shadow-md",
-      "transition-[scale,opacity,translate] duration-slow ease-emphasized will-change-transform",
-      "data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%] data-[state=open]:animate-in",
-      "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%] data-[state=closed]:animate-out",
+      "transition duration-slow ease-emphasized will-change-transform",
+      "data-[state=open]:fade-in-0 data-[state=open]:zoom-in-98 data-[state=open]:animate-in",
+      "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-98 data-[state=closed]:animate-out",
       "motion-reduce:animate-none! motion-reduce:transition-none!",
     ],
     control: ["ms-auto flex items-center gap-2 rtl:me-auto"],
     footer: [
       "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-      "sm:rounded-b-[calc(var(--radius-2xl)-1px)]",
+      "sm:rounded-b-2xl",
       "px-(--space) py-4",
       "bg-muted/48",
       "border-t",
