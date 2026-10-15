@@ -5,6 +5,7 @@ import {
   InputGroupButton,
   type InputGroupButtonProps,
 } from "../input-group/input-group-core";
+import { useProviderMessage } from "../provider/provider";
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -27,7 +28,7 @@ export const InputClearButton = defineComponent({
         InputGroupButton as ArkPart,
         {
           ...(attrs as object),
-          "aria-label": "Clear",
+          "aria-label": useProviderMessage("inputClearButton.clear"),
           "data-part": "clear-button",
           "data-scope": "input",
           onClick: props.onClear,

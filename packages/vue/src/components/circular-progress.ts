@@ -15,7 +15,7 @@ import {
 } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType, type VNode } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type { ClassValue, VariantClassNames } from "../internal/types";
 
 // #region Context
 const {
@@ -168,7 +168,7 @@ export const CircularProgress = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     classNames: {
       default: undefined,

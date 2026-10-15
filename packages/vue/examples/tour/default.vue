@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { Button, Tour } from "@pisagor/vue";
+import { Button, Tour, type TourStepType } from "@pisagor/vue";
 
-const steps = [
+const steps: TourStepType[] = [
   {
     actions: [{ action: "next", label: "Start tour" }],
     description: "You gonna learn how to use to install and use the component.",

@@ -5,8 +5,8 @@ import { ref } from "vue";
 const searchResults = ["Spotlight bulb", "Spot cleaner", "Spot ceiling"];
 const query = ref("spot");
 
-function onValueChange(details: { value: string }) {
-  query.value = details.value;
+function onValueChange(value: string) {
+  query.value = value;
 }
 </script>
 

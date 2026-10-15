@@ -13,7 +13,7 @@ import {
   useClearableInput,
 } from "../hooks/use-clearable-input";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type { ClassValue, VariantClassNames } from "../internal/types";
 import { InputClearButton } from "./input/input-clear-button";
 import {
   InputGroupAddon,
@@ -58,7 +58,7 @@ export const Textarea = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     classNames: {
       default: undefined,
@@ -82,6 +82,10 @@ export const Textarea = defineComponent({
     recipe: {
       default: textareaRecipe,
       type: Function as PropType<typeof textareaRecipe>,
+    },
+    size: {
+      default: "md",
+      type: String as PropType<"sm" | "md" | "lg">,
     },
     value: {
       default: undefined,
@@ -119,7 +123,7 @@ export const Textarea = defineComponent({
         variant: resolved.variant,
       };
       const controlProps = { "data-variant": resolved.variant };
-      const slots = props.recipe();
+      const slots = props.recipe({ size: props.size });
 
       const changeHandler = skipClearable
         ? props.onChange || props.onValueChange
@@ -136,7 +140,7 @@ export const Textarea = defineComponent({
             ...attrs,
             ...controlProps,
             class: cn(
-              formControlShellRecipe({ size: "md", ...shellArgs }),
+              formControlShellRecipe({ size: props.size, ...shellArgs }),
               slots.rootLayout({
                 class: cn(props.class, props.classNames?.rootLayout),
               }),

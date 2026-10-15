@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { PhKeyboard } from "@phosphor-icons/vue";
-import { Button, Tour } from "@pisagor/vue";
+import { Button, Tour, type TourStepType } from "@pisagor/vue";
 
-const steps = [
+const steps: TourStepType[] = [
   {
     actions: [{ action: "next", label: "Next" }],
     description: "Press the right arrow key (→) to go to the next step.",

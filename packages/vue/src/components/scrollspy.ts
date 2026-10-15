@@ -9,6 +9,7 @@ import {
   type PropType,
   ref,
 } from "vue";
+import type { ClassValue } from "../internal/types";
 
 // #region Types
 type ScrollTarget = HTMLElement | Document | null | undefined;
@@ -117,7 +118,7 @@ export const Scrollspy = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     history: {
       default: true,

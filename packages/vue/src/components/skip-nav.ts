@@ -3,6 +3,8 @@ import type { SkipNavProps as BaseSkipNavLinkProps } from "@pisagor/props";
 import { skipNavRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
+import type { ClassValue } from "../internal/types";
+import { useProviderMessage } from "./provider/provider";
 
 // #region Types
 export interface SkipNavLinkProps extends BaseSkipNavLinkProps {
@@ -34,7 +36,7 @@ export const SkipNavLink = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     id: { default: SKIP_NAV_ID, type: String },
     recipe: {
@@ -55,7 +57,7 @@ export const SkipNavLink = defineComponent({
           "data-scope": "skip-nav",
           href: `#${props.id}`,
         },
-        slots.default ?? (() => "Skip to content"),
+        slots.default ?? (() => useProviderMessage("skipNav.label")),
       );
   },
 });
@@ -66,7 +68,7 @@ export const SkipNavContent = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     id: { default: SKIP_NAV_ID, type: String },
     recipe: {

@@ -4,6 +4,7 @@ import custom_recipeRaw from "./custom-recipe.vue?raw";
 import defaultRaw from "./default.vue?raw";
 import disabledRaw from "./disabled.vue?raw";
 import disabled_itemRaw from "./disabled-item.vue?raw";
+import emptyRaw from "./empty.vue?raw";
 import gridRaw from "./grid.vue?raw";
 import groupingRaw from "./grouping.vue?raw";
 import horizontalRaw from "./horizontal.vue?raw";
@@ -26,6 +27,7 @@ export const sources = {
   Default: defaultRaw,
   Disabled: disabledRaw,
   DisabledItem: disabled_itemRaw,
+  Empty: emptyRaw,
   Grid: gridRaw,
   Grouping: groupingRaw,
   Horizontal: horizontalRaw,

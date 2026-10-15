@@ -7,6 +7,7 @@ import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/prop
 import { accordionItemRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 
 // #region Context
 const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
@@ -30,6 +31,8 @@ export interface AccordionPresetItem {
 export interface AccordionProps {
   items?: AccordionPresetItem[];
   collapsible?: boolean;
+  /** Size scale applied to every item. */
+  size?: "sm" | "md" | "lg";
   lazyMount?: boolean;
   unmountOnExit?: boolean;
 }
@@ -45,6 +48,10 @@ export const AccordionRoot = defineComponent({
   props: {
     collapsible: { default: true, type: Boolean },
     lazyMount: { default: true, type: Boolean },
+    size: {
+      default: undefined,
+      type: String as PropType<"sm" | "md" | "lg">,
+    },
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
@@ -76,7 +83,7 @@ export const AccordionItemTrigger = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots: children }) {
@@ -105,7 +112,7 @@ export const AccordionItemContent = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots: children }) {
@@ -135,6 +142,10 @@ export const AccordionShorthand = defineComponent({
       type: Array as PropType<AccordionPresetItem[]>,
     },
     lazyMount: { default: true, type: Boolean },
+    size: {
+      default: undefined,
+      type: String as PropType<"sm" | "md" | "lg">,
+    },
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs }) {
@@ -151,7 +162,12 @@ export const AccordionShorthand = defineComponent({
           props.items?.map((item) =>
             h(
               AccordionItem,
-              { disabled: item.disabled, key: item.value, value: item.value },
+              {
+                disabled: item.disabled,
+                key: item.value,
+                size: props.size,
+                value: item.value,
+              },
               () => [
                 h(AccordionItemTrigger, null, () => item.title),
                 h(AccordionItemContent, null, () => item.content),

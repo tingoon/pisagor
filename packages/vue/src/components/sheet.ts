@@ -11,6 +11,7 @@ import {
 } from "vue";
 import { renderIconCloseButton } from "../internal/close-button";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
 import {
   DialogBackdrop,
@@ -102,7 +103,7 @@ export const SheetBackdrop = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -116,7 +117,7 @@ export const SheetPositioner = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     placement: {
       default: undefined,
@@ -153,7 +154,7 @@ export const SheetContent = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     placement: {
       default: "right",
@@ -241,7 +242,7 @@ export const SheetBody = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     scrollFade: { default: false, type: Boolean },
   },
@@ -279,7 +280,7 @@ export const SheetFooter = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {

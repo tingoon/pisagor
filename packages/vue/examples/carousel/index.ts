@@ -1,4 +1,5 @@
 export { default as Autoplay } from "./autoplay.vue";
+export { default as AutoplayControls } from "./autoplay-controls.vue";
 export { default as Compound } from "./compound.vue";
 export { default as Controlled } from "./controlled.vue";
 export { default as CustomRecipe } from "./custom-recipe.vue";

@@ -3,6 +3,7 @@ export { default as Default } from "./default.vue";
 export { default as Destructive } from "./destructive.vue";
 export { default as GroupLabel } from "./group-label.vue";
 export { default as Icons } from "./icons.vue";
+export { default as ItemIndicator } from "./item-indicator.vue";
 export { default as Link } from "./link.vue";
 export { default as Nested } from "./nested.vue";
 export { default as Placements } from "./placements.vue";

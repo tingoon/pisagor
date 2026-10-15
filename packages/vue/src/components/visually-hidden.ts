@@ -3,6 +3,7 @@ import type { VisuallyHiddenProps as BaseVisuallyHiddenProps } from "@pisagor/pr
 import { visuallyHiddenRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
+import type { ClassValue } from "../internal/types";
 
 // #region Types
 export interface VisuallyHiddenProps extends BaseVisuallyHiddenProps {
@@ -22,7 +23,7 @@ export const VisuallyHidden = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: visuallyHiddenRecipe,

@@ -12,6 +12,7 @@ import {
 } from "vue";
 import { renderIconCloseButton } from "../internal/close-button";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 
 // #region Slot recipe context
 const {
@@ -110,7 +111,7 @@ export const PopoverContent = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: popoverRecipe,
@@ -160,7 +161,7 @@ export const PopoverHeader = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     description: String,
     title: String,
@@ -205,7 +206,7 @@ export const PopoverBody = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {

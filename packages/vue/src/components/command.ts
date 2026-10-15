@@ -1,6 +1,11 @@
-import type { CollectionItem, ListCollection } from "@ark-ui/vue/collection";
+import {
+  type CollectionItem,
+  type ListCollection,
+  useListCollection,
+} from "@ark-ui/vue/collection";
 import { Combobox as ComboboxPrimitive } from "@ark-ui/vue/combobox";
 import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
+import { useFilter } from "@ark-ui/vue/locale";
 import { PhMagnifyingGlass } from "@phosphor-icons/vue";
 import type { CommandProps as BaseCommandProps } from "@pisagor/props";
 import { comboboxRecipe, commandRecipe, dialogRecipe } from "@pisagor/recipes";
@@ -14,10 +19,12 @@ import {
   type VNodeChild,
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue, LoosePropValue } from "../internal/types";
 import { Combobox, type ComboboxRootProps } from "./combobox";
 import { Dialog, type DialogContentProps } from "./dialog";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
+import { useProviderMessage } from "./provider/provider";
 import { Separator } from "./separator";
 
 // #region Slot recipe context
@@ -61,6 +68,27 @@ interface CommandInputProps {
    */
   size?: InputProps["size"];
 }
+export interface CommandShorthandItem {
+  /** Optional group heading. */
+  group?: string;
+  /** Leading icon. */
+  icon?: VNodeChild;
+  /** Visible label, also used for filtering. */
+  label: string;
+  /** Keyboard shortcut hint. */
+  shortcut?: string;
+  /** Unique value. */
+  value: string;
+}
+
+export interface CommandShorthandProps {
+  /** Text shown when nothing matches. */
+  emptyText?: VNodeChild;
+  /** Items to render; filtering and grouping are handled for you. */
+  items: CommandShorthandItem[];
+  /** Input placeholder. */
+  placeholder?: string;
+}
 // #endregion
 
 // #region Parts
@@ -86,7 +114,7 @@ export const CommandDialogContent = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     description: {
       default: "Search for a command to run...",
@@ -101,7 +129,7 @@ export const CommandDialogContent = defineComponent({
       type: String as PropType<DialogContentProps["size"]>,
     },
     title: {
-      default: "Command Palette",
+      default: undefined,
       type: String as PropType<CommandDialogContentProps["title"]>,
     },
   },
@@ -136,7 +164,7 @@ export const CommandDialogContent = defineComponent({
               h(Dialog.Header as ArkPart, {
                 class: variantSlots.dialogHeader(),
                 description: props.description,
-                title: props.title,
+                title: props.title ?? useProviderMessage("command.title"),
               }),
               slots.default?.(),
             ],
@@ -154,7 +182,7 @@ export const CommandRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     collection: {
       default: undefined,
@@ -215,7 +243,7 @@ export const CommandContent = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -243,7 +271,7 @@ export const CommandInput = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     size: {
       default: undefined,
@@ -293,7 +321,7 @@ export const CommandList = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -325,7 +353,7 @@ export const CommandEmpty = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -340,7 +368,7 @@ export const CommandEmpty = defineComponent({
           ...attrs,
           class: cn(variantSlots.empty(), props.class, attrs.class),
         },
-        slots.default?.() ?? "No results found. Try a different search.",
+        slots.default?.() ?? useProviderMessage("command.empty"),
       );
     };
   },
@@ -353,7 +381,7 @@ export const CommandItemGroup = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     heading: {
       default: undefined,
@@ -377,7 +405,7 @@ export const CommandItemGroupLabel = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -397,9 +425,9 @@ export const CommandItem = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
-    item: { default: undefined, type: Object as PropType<unknown> },
+    item: { default: undefined, type: Object as PropType<LoosePropValue> },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -425,7 +453,7 @@ export const CommandSeparator = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs }) {
@@ -451,7 +479,7 @@ export const CommandShortcut = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -481,7 +509,7 @@ export const CommandFooter = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -504,6 +532,83 @@ export const CommandFooter = defineComponent({
   },
 });
 CommandFooter.displayName = "Command.Footer";
+
+export const CommandShorthand = defineComponent({
+  inheritAttrs: false,
+  name: "CommandShorthand",
+  props: {
+    emptyText: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
+    items: {
+      required: true,
+      type: Array as PropType<CommandShorthandItem[]>,
+    },
+    placeholder: { default: undefined, type: String },
+  },
+  setup(props, { attrs }) {
+    const filterFn = useFilter({ sensitivity: "base" });
+    const { collection, filter } = useListCollection<CommandShorthandItem>({
+      filter: (itemText, query) => filterFn.value.contains(itemText, query),
+      groupBy: (item) => item.group ?? "",
+      initialItems: props.items,
+      itemToString: (item) => item.label,
+      itemToValue: (item) => item.value,
+    });
+    const placeholder = useProviderMessage("command.placeholder");
+
+    return () => {
+      const groups = collection.value.group();
+      const onInputValueChange = attrs.onInputValueChange as
+        | ((details: { inputValue: string }) => void)
+        | undefined;
+
+      return h(
+        CommandRoot as ArkPart,
+        {
+          ...attrs,
+          collection: collection.value,
+          onInputValueChange: (details: { inputValue: string }) => {
+            filter(details.inputValue);
+            onInputValueChange?.(details);
+          },
+        },
+        () => [
+          h(CommandInput, { placeholder: props.placeholder ?? placeholder }),
+          h(CommandContent, null, () => [
+            h(
+              CommandEmpty,
+              null,
+              props.emptyText ? () => props.emptyText : undefined,
+            ),
+            h(CommandList, null, () =>
+              groups.map(([group, groupItems], index) => {
+                const content = groupItems.map((item) =>
+                  h(CommandItem as ArkPart, { item, key: item.value }, () => [
+                    item.icon,
+                    item.label,
+                    item.shortcut
+                      ? h(CommandShortcut, null, () => item.shortcut)
+                      : null,
+                  ]),
+                );
+
+                return group
+                  ? h(CommandItemGroup, { heading: group, key: group }, () => [
+                      ...content,
+                      index < groups.length - 1 ? h(CommandSeparator) : null,
+                    ])
+                  : content;
+              }),
+            ),
+          ]),
+        ],
+      );
+    };
+  },
+});
+CommandShorthand.displayName = "Command.Shorthand";
 // #endregion
 
 export const Command = Object.assign(CommandRoot, {
@@ -520,4 +625,5 @@ export const Command = Object.assign(CommandRoot, {
   List: CommandList,
   Separator: CommandSeparator,
   Shortcut: CommandShortcut,
+  Shorthand: CommandShorthand,
 });

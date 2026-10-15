@@ -1,9 +1,10 @@
 import { ark } from "@ark-ui/vue/factory";
 import type { ToolbarProps as BaseToolbarRootProps } from "@pisagor/props";
 import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes";
+import { handleRovingFocusKeyDown } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type { ClassValue, VariantClassNames } from "../internal/types";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -31,6 +32,11 @@ export const ToolbarDescription = withContext(ark.p, {
 });
 
 export const ToolbarActions = withContext(ark.div, {
+  defaultProps: {
+    "aria-orientation": "horizontal",
+    onKeydown: handleRovingFocusKeyDown,
+    role: "toolbar",
+  },
   name: "Actions",
 });
 // #endregion
@@ -63,7 +69,10 @@ export const ToolbarShorthand = defineComponent({
       default: undefined,
       type: Object as PropType<Record<string, unknown>>,
     },
-    class: { default: undefined },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     classNames: {
       default: undefined,
       type: Object as PropType<ToolbarClassNames>,

@@ -13,7 +13,10 @@ import {
   computed,
   defineComponent,
   h,
+  type InjectionKey,
+  inject,
   type PropType,
+  provide,
   reactive,
   ref,
   Teleport,
@@ -25,6 +28,7 @@ import { createSlotRecipeContext } from "../internal/create-slot-recipe-context"
 import { createContext } from "../internal/utils/create-context";
 import { Button } from "./button";
 import { DialogBody, DialogFooter, DialogHeader } from "./dialog";
+import { useProviderMessage } from "./provider/provider";
 
 // #region Slot recipe context
 const { provideStyles: provideTourStyles } = createSlotRecipeContext({
@@ -309,7 +313,7 @@ export const TourContent = defineComponent({
                           h(
                             "span",
                             { class: recipeSlots.closeLabel() },
-                            "Close",
+                            useProviderMessage("tour.close"),
                           ),
                         ],
                       ),
@@ -452,10 +456,14 @@ export const TourCloseTrigger = defineComponent({
   },
 });
 
+/** True inside `Tour.Footer`, so `Tour.Actions` does not render a second control. */
+const TourInsideControlKey: InjectionKey<boolean> = Symbol("TourInsideControl");
+
 export const TourFooter = defineComponent({
   inheritAttrs: false,
   name: "Tour.Footer",
   setup(_, { attrs, slots }) {
+    provide(TourInsideControlKey, true);
     return () =>
       h(TourPrimitive.Control as ArkPart, { ...attrs, asChild: true }, () =>
         h(DialogFooter, { dataPart: "control", dataScope: "tour" }, slots),
@@ -473,6 +481,7 @@ export const TourActions = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const insideControl = inject(TourInsideControlKey, false);
     return () => {
       const ctx = toValue(useTourContextRef());
       if (!ctx) return null;
@@ -483,43 +492,53 @@ export const TourActions = defineComponent({
         return null;
       }
 
-      return h(
-        TourPrimitive.Control as ArkPart,
-        { ...attrs, asChild: true },
-        () =>
-          h(
-            DialogFooter as ArkPart,
-            {
-              class: cn(recipeSlots.actions(), props.class),
-              dataPart: "actions",
-              dataScope: "tour",
-            },
-            () =>
-              actions.map((action) =>
-                h(
-                  TourActionTrigger,
-                  { action, asChild: true, key: action.label },
-                  () =>
-                    h(
-                      Button,
-                      {
-                        size: "sm",
-                        variant:
-                          action.action === "dismiss" ||
-                          action.action === "prev"
-                            ? "outline"
-                            : "default",
-                      },
-                      () => [
-                        action.action === "prev" ? h(PhCaretLeft) : null,
-                        action.label,
-                        action.action === "next" ? h(PhCaretRight) : null,
-                      ],
-                    ),
-                ),
+      const content = () =>
+        h(
+          (insideControl ? ark.div : DialogFooter) as ArkPart,
+          insideControl
+            ? {
+                ...attrs,
+                class: cn(recipeSlots.actions(), props.class),
+                "data-part": "actions",
+                "data-scope": "tour",
+              }
+            : {
+                class: cn(recipeSlots.actions(), props.class),
+                dataPart: "actions",
+                dataScope: "tour",
+              },
+          () =>
+            actions.map((action) =>
+              h(
+                TourActionTrigger,
+                { action, asChild: true, key: action.label },
+                () =>
+                  h(
+                    Button,
+                    {
+                      size: "sm",
+                      variant:
+                        action.action === "dismiss" || action.action === "prev"
+                          ? "outline"
+                          : "default",
+                    },
+                    () => [
+                      action.action === "prev" ? h(PhCaretLeft) : null,
+                      action.label,
+                      action.action === "next" ? h(PhCaretRight) : null,
+                    ],
+                  ),
               ),
-          ),
-      );
+            ),
+        );
+
+      return insideControl
+        ? content()
+        : h(
+            TourPrimitive.Control as ArkPart,
+            { ...attrs, asChild: true },
+            content,
+          );
     };
   },
 });

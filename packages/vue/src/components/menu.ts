@@ -5,8 +5,17 @@ import type {
 } from "@pisagor/props";
 import { menuItemRecipe, menuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { defineComponent, h, type PropType } from "vue";
+import {
+  defineComponent,
+  h,
+  type InjectionKey,
+  inject,
+  type PropType,
+  provide,
+} from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
+import { useProviderMessage } from "./provider/provider";
 
 // #region Context
 const {
@@ -39,7 +48,6 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Parts
 const MenuRootBase = withProvider(ark.nav, {
-  defaultProps: { "aria-label": "Menu" },
   name: "Root",
   slot: "base",
 });
@@ -48,13 +56,33 @@ export const MenuRoot = defineComponent({
   inheritAttrs: false,
   name: "Menu",
   setup(_, { attrs, slots }) {
-    return () => h(MenuRootBase, { ...attrs }, slots);
+    return () =>
+      h(
+        MenuRootBase,
+        {
+          ...attrs,
+          "aria-label": attrs["aria-label"] ?? useProviderMessage("menu.label"),
+        },
+        slots,
+      );
   },
 });
 
-export const MenuList = withContext(ark.ul, {
+/** True inside `Menu.List`, so separators render as `<li>`. */
+const MenuInsideListKey: InjectionKey<boolean> = Symbol("MenuInsideList");
+
+const MenuListBase = withContext(ark.ul, {
   defaultProps: { role: "list" },
   name: "List",
+});
+
+export const MenuList = defineComponent({
+  inheritAttrs: false,
+  name: "Menu.List",
+  setup(_, { attrs, slots }) {
+    provide(MenuInsideListKey, true);
+    return () => h(MenuListBase, attrs, slots);
+  },
 });
 
 export const MenuGroup = withContext(ark.div, {
@@ -74,7 +102,7 @@ export const MenuItem = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: menuItemRecipe,
@@ -96,7 +124,6 @@ export const MenuItem = defineComponent({
           class: styles.slots.wrapper(),
           "data-part": "item-wrapper",
           "data-scope": "menu",
-          role: "none",
         },
         () =>
           h(
@@ -122,7 +149,7 @@ export const MenuLink = defineComponent({
     active: { default: false, type: Boolean },
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots: children }) {
@@ -135,7 +162,6 @@ export const MenuLink = defineComponent({
           class: styles.slots.wrapper(),
           "data-part": "item-wrapper",
           "data-scope": "menu",
-          role: "none",
         },
         () =>
           h(
@@ -154,9 +180,23 @@ export const MenuLink = defineComponent({
   },
 });
 
-export const MenuSeparator = withContext(ark.div, {
+const MenuSeparatorDiv = withContext(ark.div, {
   defaultProps: { "aria-hidden": true, role: "separator" },
   name: "Separator",
+});
+
+const MenuSeparatorItem = withContext(ark.li, {
+  defaultProps: { "aria-hidden": true, role: "separator" },
+  name: "Separator",
+});
+
+export const MenuSeparator = defineComponent({
+  inheritAttrs: false,
+  name: "Menu.Separator",
+  setup(_, { attrs }) {
+    const insideList = inject(MenuInsideListKey, false);
+    return () => h(insideList ? MenuSeparatorItem : MenuSeparatorDiv, attrs);
+  },
 });
 
 export const MenuShortcut = withContext(ark.span, {

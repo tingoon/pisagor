@@ -27,12 +27,9 @@ const users = [
 
 <template>
   <AvatarGroup.Root>
-    <Avatar
-      v-for="user in users"
-      :key="user.src"
-      :alt="user.name"
-      :fallback="user.fallback"
-      :src="user.src"
-    />
+    <Avatar.Root v-for="user in users" :key="user.src">
+      <Avatar.Image :alt="user.name" :src="user.src" />
+      <Avatar.Fallback>{{ user.fallback }}</Avatar.Fallback>
+    </Avatar.Root>
   </AvatarGroup.Root>
 </template>

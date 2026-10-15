@@ -6,6 +6,7 @@ import headerRaw from "./header.vue?raw";
 import iconRaw from "./icon.vue?raw";
 import imageRaw from "./image.vue?raw";
 import linkRaw from "./link.vue?raw";
+import sizesRaw from "./sizes.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import with_avatarRaw from "./with-avatar.vue?raw";
 import with_mediaRaw from "./with-media.vue?raw";
@@ -21,6 +22,7 @@ export const sources = {
   Icon: iconRaw,
   Image: imageRaw,
   Link: linkRaw,
+  Sizes: sizesRaw,
   Variants: variantsRaw,
   WithAvatar: with_avatarRaw,
   WithMedia: with_mediaRaw,

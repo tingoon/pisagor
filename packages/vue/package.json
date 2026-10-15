@@ -21,7 +21,9 @@
   },
   "description": "Accessible Vue UI components built on Ark UI and Tailwind CSS v4.",
   "devDependencies": {
-    "vue": "catalog:"
+    "typescript": "^6.0.3",
+    "vue": "catalog:",
+    "vue-tsc": "^3.3.13"
   },
   "exports": {
     ".": "./src/components/index.ts",
@@ -52,7 +54,7 @@
     "url": "git+https://github.com/tingoon/pisagor.git"
   },
   "scripts": {
-    "type-check": "tsc"
+    "type-check": "vue-tsc --noEmit"
   },
   "sideEffects": [
     "**/*.css"

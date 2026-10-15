@@ -2,6 +2,7 @@ import type { SurfaceProps as BaseSurfaceProps } from "@pisagor/props";
 import { type SurfaceVariantProps, surfaceRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
+import type { ClassValue } from "../../internal/types";
 import { createContext } from "../../internal/utils/create-context";
 
 export type SurfaceVariant = NonNullable<SurfaceVariantProps["variant"]>;
@@ -39,7 +40,7 @@ export const Surface = defineComponent({
     bordered: { default: false, type: Boolean },
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     padding: {
       default: undefined,

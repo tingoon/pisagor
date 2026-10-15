@@ -1,4 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
+import { PhArrowDown, PhArrowUp, PhMinus } from "@phosphor-icons/vue";
 import type {
   StatProps as BaseStatProps,
   StatTrendProps as BaseStatTrendProps,
@@ -13,7 +14,8 @@ import {
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type { ClassValue, VariantClassNames } from "../internal/types";
+import { type MessageKey, useProviderMessage } from "./provider/provider";
 
 // #region Slot recipe context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -71,14 +73,25 @@ export const StatDescription = withContext(ark.p, {
   slot: "description",
 });
 
+const TREND_ICONS = {
+  down: PhArrowDown,
+  neutral: PhMinus,
+  up: PhArrowUp,
+};
+
 export const StatTrend = defineComponent({
   inheritAttrs: false,
   name: "StatTrend",
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
+    /**
+     * Icon shown before the content. Defaults to an arrow matching `trend`;
+     * pass `false` to hide it (or use the `icon` slot).
+     */
+    icon: { default: true, type: Boolean },
     recipe: {
       default: statTrendRecipe,
       type: Function as PropType<typeof statTrendRecipe>,
@@ -96,7 +109,20 @@ export const StatTrend = defineComponent({
           "data-scope": "stat",
           "data-trend": props.trend,
         },
-        slots.default?.(),
+        [
+          slots.icon?.() ??
+            (props.icon
+              ? h(TREND_ICONS[props.trend ?? "neutral"], {
+                  "aria-hidden": true,
+                })
+              : null),
+          h(
+            "span",
+            { class: "sr-only" },
+            useProviderMessage(`stat.trend.${props.trend}` as MessageKey),
+          ),
+          slots.default?.(),
+        ],
       );
     };
   },
@@ -108,7 +134,7 @@ export const StatShorthand = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     classNames: {
       default: undefined,

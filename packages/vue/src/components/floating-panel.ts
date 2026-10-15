@@ -16,8 +16,10 @@ import {
   type VNodeChild,
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
 import { Button, type ButtonProps } from "./button";
+import { useProviderMessage } from "./provider/provider";
 import { ScrollArea } from "./scroll-area";
 
 // #region Slot recipe context
@@ -155,7 +157,7 @@ export const FloatingPanelContent = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     resizable: {
       default: true,
@@ -211,7 +213,7 @@ export const FloatingPanelHeader = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -235,7 +237,7 @@ export const FloatingPanelControl = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -257,7 +259,7 @@ export const FloatingPanelMinimize = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     size: {
       default: "icon-xs",
@@ -277,7 +279,7 @@ export const FloatingPanelMinimize = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": "Minimize",
+              "aria-label": useProviderMessage("floatingPanel.minimize"),
               class: props.class,
               size: props.size,
               variant: props.variant,
@@ -294,7 +296,7 @@ export const FloatingPanelMaximize = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     size: {
       default: "icon-xs",
@@ -314,7 +316,7 @@ export const FloatingPanelMaximize = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": "Maximize",
+              "aria-label": useProviderMessage("floatingPanel.maximize"),
               class: props.class,
               size: props.size,
               variant: props.variant,
@@ -331,7 +333,7 @@ export const FloatingPanelRestore = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     size: {
       default: "icon-xs",
@@ -353,7 +355,7 @@ export const FloatingPanelRestore = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": "Restore",
+              "aria-label": useProviderMessage("floatingPanel.restore"),
               class: props.class,
               size: props.size,
               variant: props.variant,
@@ -374,7 +376,7 @@ export const FloatingPanelTitle = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -417,7 +419,7 @@ export const FloatingPanelBody = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     scrollFade: {
       default: false,
@@ -448,7 +450,7 @@ export const FloatingPanelFooter = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {

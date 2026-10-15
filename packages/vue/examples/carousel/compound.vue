@@ -14,7 +14,7 @@ const slides = numberedSlides(8);
     <Carousel.ItemGroup>
       <Carousel.Item
         v-for="(slideId, index) in slides"
-        :key="slideId"
+        :key="slideId.key"
         :index="index"
       >
         <Card>

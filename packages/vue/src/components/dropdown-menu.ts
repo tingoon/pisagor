@@ -15,6 +15,7 @@ import {
   type PropType,
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 
 // #region Slot recipe context
 const {
@@ -113,7 +114,7 @@ export const DropdownMenuPositioner = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -142,7 +143,7 @@ export const DropdownMenuContent = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: dropdownMenuRecipe,
@@ -184,7 +185,7 @@ export const DropdownMenuItemGroupLabel = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -230,7 +231,7 @@ export const DropdownMenuSeparator = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -259,7 +260,7 @@ export const DropdownMenuItem = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: dropdownMenuItemRecipe,
@@ -292,7 +293,7 @@ export const DropdownMenuQuickItem = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: dropdownMenuItemRecipe,
@@ -329,16 +330,20 @@ export const DropdownMenuCheckboxItem = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: dropdownMenuItemRecipe,
       type: Function as PropType<typeof dropdownMenuItemRecipe>,
     },
+    variant: {
+      default: "default",
+      type: String as PropType<"default" | "destructive">,
+    },
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = props.recipe({ inset: true, variant: "default" });
+      const slots = props.recipe({ inset: true, variant: props.variant });
 
       return h(
         MenuPrimitive.CheckboxItem as ArkPart,
@@ -386,16 +391,20 @@ export const DropdownMenuRadioItem = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: dropdownMenuItemRecipe,
       type: Function as PropType<typeof dropdownMenuItemRecipe>,
     },
+    variant: {
+      default: "default",
+      type: String as PropType<"default" | "destructive">,
+    },
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = props.recipe({ inset: true, variant: "default" });
+      const slots = props.recipe({ inset: true, variant: props.variant });
 
       return h(
         MenuPrimitive.RadioItem as ArkPart,
@@ -426,13 +435,14 @@ export const DropdownMenuSub = defineComponent({
   props: {
     lazyMount: { default: true, type: Boolean },
     positioning: {
-      default: () => ({ placement: "bottom-end" }),
+      default: () => ({ placement: "right-start" }),
       type: Object as PropType<Record<string, unknown>>,
     },
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    return () => h(DropdownMenuRoot, { ...attrs, ...props }, slots);
+    return () =>
+      h(MenuPrimitive.Root as ArkPart, { ...attrs, ...props }, slots);
   },
 });
 
@@ -442,7 +452,7 @@ export const DropdownMenuSubContent = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: dropdownMenuRecipe,
@@ -484,7 +494,7 @@ export const DropdownMenuTriggerItem = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: dropdownMenuItemRecipe,
@@ -515,7 +525,7 @@ export const DropdownMenuShortcut = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     dataPart: { default: "shortcut", type: String },
     dataScope: { default: "dropdown-menu", type: String },
@@ -557,7 +567,6 @@ export const DropdownMenuArrow = defineComponent({
           style: {
             "--arrow-background": "var(--popover)",
             "--arrow-size": "calc(1.5 * var(--spacing))",
-            left: "20px",
             ...(attrs.style as CSSProperties | undefined),
           } as CSSProperties,
         },
@@ -571,6 +580,42 @@ export const DropdownMenuArrow = defineComponent({
 });
 // #endregion
 
+export const DropdownMenuItemText = defineComponent({
+  inheritAttrs: false,
+  name: "DropdownMenuItemText",
+  setup(_, { attrs, slots }) {
+    return () =>
+      h(
+        MenuPrimitive.ItemText as ArkPart,
+        {
+          ...attrs,
+          class: dropdownMenuItemRecipe().text({
+            class: attrs.class as string | undefined,
+          }),
+        },
+        slots,
+      );
+  },
+});
+
+export const DropdownMenuItemIndicator = defineComponent({
+  inheritAttrs: false,
+  name: "DropdownMenuItemIndicator",
+  setup(_, { attrs, slots }) {
+    return () =>
+      h(
+        MenuPrimitive.ItemIndicator as ArkPart,
+        {
+          ...attrs,
+          class: dropdownMenuItemRecipe().indicator({
+            class: attrs.class as string | undefined,
+          }),
+        },
+        () => slots.default?.() ?? h(PhCheck),
+      );
+  },
+});
+
 export const DropdownMenu = Object.assign(DropdownMenuRoot, {
   Arrow: DropdownMenuArrow,
   CheckboxItem: DropdownMenuCheckboxItem,
@@ -578,6 +623,8 @@ export const DropdownMenu = Object.assign(DropdownMenuRoot, {
   Item: DropdownMenuItem,
   ItemGroup: DropdownMenuItemGroup,
   ItemGroupLabel: DropdownMenuItemGroupLabel,
+  ItemIndicator: DropdownMenuItemIndicator,
+  ItemText: DropdownMenuItemText,
   Positioner: DropdownMenuPositioner,
   QuickItem: DropdownMenuQuickItem,
   RadioItem: DropdownMenuRadioItem,

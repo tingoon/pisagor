@@ -13,6 +13,8 @@ import {
   type VNodeChild,
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
+import { useProviderMessage } from "./provider/provider";
 
 // #region Context
 const {
@@ -65,7 +67,7 @@ export const BreadcrumbRoot = defineComponent({
   inheritAttrs: false,
   name: "Breadcrumb.Root",
   props: {
-    ariaLabel: { default: "Breadcrumb", type: String },
+    ariaLabel: { default: undefined, type: String },
     recipe: {
       default: breadcrumbRecipe,
       type: Function as PropType<typeof breadcrumbRecipe>,
@@ -86,7 +88,8 @@ export const BreadcrumbRoot = defineComponent({
         ark.nav as ArkPart,
         {
           ...attrs,
-          "aria-label": props.ariaLabel,
+          "aria-label":
+            props.ariaLabel ?? useProviderMessage("breadcrumb.label"),
           "data-part": "root",
           "data-scope": "breadcrumb",
         },
@@ -120,7 +123,7 @@ export const BreadcrumbSeparator = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -167,7 +170,7 @@ export const BreadcrumbShorthand = defineComponent({
   inheritAttrs: false,
   name: "Breadcrumb",
   props: {
-    ariaLabel: { default: "Breadcrumb", type: String },
+    ariaLabel: { default: undefined, type: String },
     items: {
       default: undefined,
       type: Array as PropType<BreadcrumbPresetItem[]>,

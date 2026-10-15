@@ -1,12 +1,20 @@
 <script lang="ts" setup>
-import { Button, Tour } from "@pisagor/vue";
+import { Button, Tour, type TourStepType } from "@pisagor/vue";
 import { ref } from "vue";
 
-const logs = ref([]);
-const onStatusChange = (details) => addLog(`Status: ${details.status}`);
-const onStepChange = (details) =>
+const logs = ref<{ id: number; message: string }[]>([]);
+let nextLogId = 0;
+
+function addLog(message: string) {
+  nextLogId += 1;
+  logs.value = [...logs.value, { id: nextLogId, message }];
+}
+
+const onStatusChange = (details: { status: string }) =>
+  addLog(`Status: ${details.status}`);
+const onStepChange = (details: { stepId: string | null }) =>
   addLog(`Step changed: ${details.stepId ?? "unknown"}`);
-const steps = [
+const steps: TourStepType[] = [
   {
     actions: [{ action: "next", label: "Next" }],
     description: "Watch the event log below",

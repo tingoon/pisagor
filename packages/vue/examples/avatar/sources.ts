@@ -4,6 +4,7 @@ import countRaw from "./count.vue?raw";
 import custom_recipeRaw from "./custom-recipe.vue?raw";
 import defaultRaw from "./default.vue?raw";
 import fallbacksRaw from "./fallbacks.vue?raw";
+import initialsRaw from "./initials.vue?raw";
 import shapesRaw from "./shapes.vue?raw";
 import sizesRaw from "./sizes.vue?raw";
 
@@ -16,6 +17,7 @@ export const sources = {
   Default: defaultRaw,
   Fallbacks: fallbacksRaw,
   Group: avatar_groupRaw,
+  Initials: initialsRaw,
   Shapes: shapesRaw,
   Sizes: sizesRaw,
 } as const;

@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import { PhUser } from "@phosphor-icons/vue";
 import { Avatar } from "@pisagor/vue";
+import { h } from "vue";
 
-const userIcon = PhUser;
+const userIcon = h(PhUser);
 </script>
 
 <template>

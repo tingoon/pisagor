@@ -1,6 +1,7 @@
 import { buttonRecipe, dialogRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
+import type { ClassValue } from "../internal/types";
 import type {
   DialogBodyProps,
   DialogContentProps,
@@ -46,7 +47,7 @@ export const AlertDialogContent = defineComponent({
     bottomStickOnMobile: { default: true, type: Boolean },
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     showCloseButton: { default: false, type: Boolean },
     size: {
@@ -66,7 +67,7 @@ export const AlertDialogBody = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     scrollFade: { default: false, type: Boolean },
   },
@@ -145,7 +146,7 @@ export const AlertDialogAction = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     variant: {
       default: "default",
@@ -175,7 +176,7 @@ export const AlertDialogCancel = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {

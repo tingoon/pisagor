@@ -15,7 +15,9 @@ import {
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue, LoosePropValue } from "../internal/types";
 import { DropdownMenu } from "./dropdown-menu";
+import { useProviderMessage } from "./provider/provider";
 
 // #region Context
 const {
@@ -84,7 +86,7 @@ export const ListboxRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     collection: {
       default: undefined,
@@ -136,7 +138,7 @@ export const ListboxContent = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -164,9 +166,9 @@ export const ListboxItem = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
-    item: { default: undefined, type: Object as PropType<unknown> },
+    item: { default: undefined, type: Object as PropType<LoosePropValue> },
     recipe: {
       default: listboxItemRecipe,
       type: Function as PropType<typeof listboxItemRecipe>,
@@ -212,7 +214,7 @@ export const ListboxItemText = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -240,7 +242,7 @@ export const ListboxItemGroup = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     heading: {
       default: undefined,
@@ -279,7 +281,7 @@ export const ListboxItemGroupLabel = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -309,7 +311,7 @@ export const ListboxValueText = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -339,7 +341,7 @@ export const ListboxItemIndicator = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -369,7 +371,7 @@ export const ListboxEmpty = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -384,7 +386,7 @@ export const ListboxEmpty = defineComponent({
           ...attrs,
           class: variantSlots.empty({ class: cn(props.class, attrs.class) }),
         },
-        slots.default?.(),
+        slots.default?.() ?? useProviderMessage("listbox.empty"),
       );
     };
   },
@@ -397,7 +399,7 @@ export const ListboxShortcut = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -422,12 +424,14 @@ export const ListboxShorthand = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     collection: {
       default: undefined,
       type: Object as PropType<ListCollection<CollectionItem> | undefined>,
     },
+    /** Content shown when there are no items. */
+    emptyText: { default: undefined, type: String },
     items: {
       default: undefined,
       type: Array as PropType<ListboxPresetItem[] | undefined>,
@@ -459,8 +463,9 @@ export const ListboxShorthand = defineComponent({
         },
         () =>
           items
-            ? h(ListboxContent as ArkPart, null, () =>
-                items.map((item) =>
+            ? h(ListboxContent as ArkPart, null, () => [
+                h(ListboxEmpty as ArkPart, null, () => props.emptyText),
+                ...items.map((item) =>
                   h(
                     ListboxItem as ArkPart,
                     {
@@ -472,7 +477,7 @@ export const ListboxShorthand = defineComponent({
                     () => h(ListboxItemText as ArkPart, null, () => item.label),
                   ),
                 ),
-              )
+              ])
             : slots.default?.(),
       );
     };

@@ -1,4 +1,5 @@
 export { default as CustomRecipe } from "./custom-recipe.vue";
+export { default as Decorative } from "./decorative.vue";
 export { default as Default } from "./default.vue";
 export { default as InlineNavigation } from "./inline-navigation.vue";
 export { default as List } from "./list.vue";

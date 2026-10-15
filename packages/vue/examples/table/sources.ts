@@ -3,6 +3,7 @@ import custom_recipeRaw from "./custom-recipe.vue?raw";
 import defaultRaw from "./default.vue?raw";
 import footerRaw from "./footer.vue?raw";
 import not_hoverableRaw from "./not-hoverable.vue?raw";
+import sizesRaw from "./sizes.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 
 export const imports = `import { Table } from "@pisagor/vue";`;
@@ -13,5 +14,6 @@ export const sources = {
   Default: defaultRaw,
   Footer: footerRaw,
   NotHoverable: not_hoverableRaw,
+  Sizes: sizesRaw,
   Variants: variantsRaw,
 } as const;

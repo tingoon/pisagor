@@ -3,11 +3,20 @@ import type { ContextMenuProps as BaseContextMenuContextTriggerProps } from "@pi
 import { contextMenuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNode } from "vue";
+import type { ClassValue } from "../internal/types";
 import type { DropdownMenuRootProps } from "./dropdown-menu";
 import {
+  DropdownMenuArrow,
+  DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuItemGroup,
+  DropdownMenuItemGroupLabel,
+  DropdownMenuItemIndicator,
+  DropdownMenuItemText,
+  DropdownMenuPositioner,
+  DropdownMenuRadioItem,
+  DropdownMenuRadioItemGroup,
   DropdownMenuRoot,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
@@ -56,7 +65,7 @@ export const ContextMenuContextTrigger = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: contextMenuRecipe,
@@ -153,10 +162,18 @@ export const ContextMenuShortcut = defineComponent({
 export type ContextMenuRootProps = DropdownMenuRootProps;
 
 export const ContextMenu = Object.assign(ContextMenuRoot, {
+  Arrow: DropdownMenuArrow,
+  CheckboxItem: DropdownMenuCheckboxItem,
   Content: ContextMenuContent,
   ContextTrigger: ContextMenuContextTrigger,
   Item: ContextMenuItem,
   ItemGroup: ContextMenuItemGroup,
+  ItemGroupLabel: DropdownMenuItemGroupLabel,
+  ItemIndicator: DropdownMenuItemIndicator,
+  ItemText: DropdownMenuItemText,
+  Positioner: DropdownMenuPositioner,
+  RadioItem: DropdownMenuRadioItem,
+  RadioItemGroup: DropdownMenuRadioItemGroup,
   Separator: ContextMenuSeparator,
   Shortcut: ContextMenuShortcut,
   Sub: ContextMenuSub,

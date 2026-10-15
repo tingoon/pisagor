@@ -11,18 +11,24 @@ import {
   computed,
   defineComponent,
   h,
+  type InjectionKey,
+  inject,
   type PropType,
+  provide,
   ref,
   Teleport,
   unref,
+  type VNodeChild,
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { LoosePropValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
 import { Button } from "./button";
 import { provideCalendarStyles } from "./calendar";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
 import { InputGroupRoot } from "./input-group/input-group-core";
+import { useProviderMessage } from "./provider/provider";
 
 type FormControlVariant = "primary" | "secondary";
 type ClassValue = Parameters<typeof cn>[0];
@@ -84,7 +90,7 @@ export const DatePickerRoot = defineComponent({
     },
     defaultValue: {
       default: undefined,
-      type: null as unknown as PropType<unknown>,
+      type: null as unknown as PropType<LoosePropValue>,
     },
     onValueChange: {
       default: undefined,
@@ -92,13 +98,16 @@ export const DatePickerRoot = defineComponent({
     },
     positioning: {
       default: { placement: "top" },
-      type: Object as PropType<unknown>,
+      type: Object as PropType<LoosePropValue>,
     },
     recipe: {
       default: datePickerRecipe,
       type: Function as PropType<typeof datePickerRecipe>,
     },
-    value: { default: undefined, type: null as unknown as PropType<unknown> },
+    value: {
+      default: undefined,
+      type: null as unknown as PropType<LoosePropValue>,
+    },
     variant: {
       default: undefined,
       type: String as PropType<FormControlVariant | undefined>,
@@ -141,6 +150,37 @@ export const DatePickerRoot = defineComponent({
   },
 });
 
+/** True inside a date picker control, so nested parts do not render a second one. */
+const DatePickerInsideControlKey: InjectionKey<boolean> = Symbol(
+  "DatePickerInsideControl",
+);
+
+function maybeControl(
+  insideControl: boolean,
+  props: Record<string, unknown>,
+  children: () => VNodeChild,
+): VNodeChild {
+  return insideControl
+    ? children()
+    : h(DatePickerPrimitive.Control as ArkPart, props, children);
+}
+
+export const DatePickerControl = defineComponent({
+  inheritAttrs: false,
+  name: "DatePicker.Control",
+  setup(_, { attrs, slots }) {
+    const styles = useDatePickerStyles();
+    provide(DatePickerInsideControlKey, true);
+
+    return () =>
+      h(
+        DatePickerPrimitive.Control as ArkPart,
+        { ...attrs, class: cn(styles.slots.control(), attrs.class as string) },
+        slots,
+      );
+  },
+});
+
 export const DatePickerTrigger = defineComponent({
   inheritAttrs: false,
   name: "DatePicker.Trigger",
@@ -149,10 +189,12 @@ export const DatePickerTrigger = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const styles = useDatePickerStyles();
+    const insideControl = inject(DatePickerInsideControlKey, false);
+    if (!insideControl) provide(DatePickerInsideControlKey, true);
 
     return () =>
-      h(
-        DatePickerPrimitive.Control as ArkPart,
+      maybeControl(
+        insideControl,
         {
           ...attrs,
           class: styles.slots.control(),
@@ -185,11 +227,13 @@ export const DatePickerInput = defineComponent({
   },
   setup(props, { attrs }) {
     const variantRef = useDatePickerVariantRef();
+    const insideControl = inject(DatePickerInsideControlKey, false);
+    if (!insideControl) provide(DatePickerInsideControlKey, true);
 
     return () => {
       const contextVariant = unref(variantRef);
 
-      return h(DatePickerPrimitive.Control as ArkPart, { ...attrs }, () =>
+      return maybeControl(insideControl, { ...attrs }, () =>
         h(
           InputGroupRoot as ArkPart,
           {
@@ -210,7 +254,7 @@ export const DatePickerInput = defineComponent({
                 h(
                   Button as ArkPart,
                   {
-                    "aria-label": "Open calendar",
+                    "aria-label": useProviderMessage("datePicker.openCalendar"),
                     size: "icon-md",
                     variant: "ghost",
                   },
@@ -279,7 +323,7 @@ export const DatePickerTimer = defineComponent({
     clearable: { default: false, type: Boolean },
     defaultValue: {
       default: undefined,
-      type: [String, Number, Array] as PropType<unknown>,
+      type: [String, Number, Array] as PropType<LoosePropValue>,
     },
     disabled: { default: undefined, type: Boolean },
     onValueChange: {
@@ -289,7 +333,7 @@ export const DatePickerTimer = defineComponent({
     readOnly: { default: undefined, type: Boolean },
     value: {
       default: undefined,
-      type: [String, Number, Array] as PropType<unknown>,
+      type: [String, Number, Array] as PropType<LoosePropValue>,
     },
     variant: {
       default: undefined,
@@ -466,8 +510,11 @@ const InputClearButton = defineComponent({
 export const DatePicker = Object.assign(DatePickerRoot, {
   ClearTrigger: DatePickerClearTrigger,
   Content: DatePickerContent,
+  Control: DatePickerControl,
   Input: DatePickerInput,
   PresetTrigger: DatePickerPresetTrigger,
+  TimeInput: DatePickerTimer,
+  /** @deprecated Use `TimeInput`. */
   Timer: DatePickerTimer,
   Trigger: DatePickerTrigger,
   ValueText: DatePickerValueText,

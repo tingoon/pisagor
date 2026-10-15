@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import { ClientOnly } from "@pisagor/vue";
+
+const now = new Date().toLocaleTimeString();
 </script>
 
 <template>

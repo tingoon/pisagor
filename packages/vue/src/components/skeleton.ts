@@ -2,6 +2,7 @@ import { ark } from "@ark-ui/vue/factory";
 import type { SkeletonProps as BaseSkeletonProps } from "@pisagor/props";
 import { skeletonRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
+import type { ClassValue } from "../internal/types";
 
 // #region Types
 export interface SkeletonTextProps {
@@ -23,16 +24,20 @@ export const SkeletonRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: skeletonRecipe,
       type: Function as PropType<typeof skeletonRecipe>,
     },
+    size: {
+      default: "md",
+      type: String as PropType<"sm" | "md" | "lg">,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = props.recipe();
+      const variantSlots = props.recipe({ size: props.size });
 
       return h(
         ark.div as ArkPart,
@@ -54,16 +59,20 @@ export const SkeletonCircle = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: skeletonRecipe,
       type: Function as PropType<typeof skeletonRecipe>,
     },
+    size: {
+      default: "md",
+      type: String as PropType<"sm" | "md" | "lg">,
+    },
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = props.recipe();
+      const variantSlots = props.recipe({ size: props.size });
 
       return h(ark.div as ArkPart, {
         ...attrs,
@@ -81,17 +90,21 @@ export const SkeletonText = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     lines: { default: 2, type: Number },
     recipe: {
       default: skeletonRecipe,
       type: Function as PropType<typeof skeletonRecipe>,
     },
+    size: {
+      default: "md",
+      type: String as PropType<"sm" | "md" | "lg">,
+    },
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = props.recipe();
+      const variantSlots = props.recipe({ size: props.size });
 
       return h(
         ark.div as ArkPart,

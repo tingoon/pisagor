@@ -2,6 +2,7 @@ import { ark } from "@ark-ui/vue/factory";
 import type { BadgeProps as BaseBadgeProps } from "@pisagor/props";
 import { type BadgeVariantProps, badgeRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
+import type { ClassValue } from "../internal/types";
 
 // #region Types
 export type BadgeVariant = NonNullable<BadgeVariantProps["variant"]>;
@@ -20,7 +21,7 @@ export const Badge = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     pill: { default: false, type: Boolean },
     recipe: {

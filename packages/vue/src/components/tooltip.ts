@@ -10,7 +10,7 @@ import {
   type VNodeChild,
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type { ClassValue, VariantClassNames } from "../internal/types";
 
 // #region Context
 const { provideStyles: provideTooltipStyles, withContext } =
@@ -31,7 +31,7 @@ export interface TooltipProps extends BaseTooltipProps {
   /** Class merged onto the tooltip content element */
   class?: unknown;
   arrowProps?: Record<string, unknown>;
-  children: VNodeChild | TooltipTriggerHandle;
+  children?: VNodeChild | TooltipTriggerHandle;
   classNames?: TooltipClassNames;
   closeDelay?: number;
   content: VNodeChild;
@@ -107,7 +107,7 @@ const TooltipArrow = withContext(TooltipPrimitive.Arrow, {
 // #endregion
 
 // #region Closed
-export const Tooltip = defineComponent({
+const TooltipShorthand = defineComponent({
   inheritAttrs: false,
   name: "Tooltip",
   props: {
@@ -116,14 +116,14 @@ export const Tooltip = defineComponent({
       type: Object as PropType<Record<string, unknown>>,
     },
     children: {
-      required: true,
+      default: undefined,
       type: [Object, Function, String, Array] as PropType<
         VNodeChild | TooltipTriggerHandle
       >,
     },
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     classNames: {
       default: undefined,
@@ -141,24 +141,30 @@ export const Tooltip = defineComponent({
       default: undefined,
       type: Object as PropType<Record<string, unknown>>,
     },
+    /**
+     * Whether to render the arrow.
+     *
+     * @defaultValue true
+     */
+    showArrow: { default: true, type: Boolean },
     triggerProps: {
       default: undefined,
       type: Object as PropType<Record<string, unknown>>,
     },
   },
-  setup(props, { attrs }) {
+  setup(props, { attrs, slots }) {
     return () => {
-      const trigger = isTriggerHandle(props.children)
+      const children = props.children ?? slots.default?.();
+      const trigger = isTriggerHandle(children)
         ? h(TooltipPrimitive.Context as ArkPart, null, {
             default: (api: {
               getTriggerProps: () => Record<string, unknown>;
-            }) =>
-              (props.children as TooltipTriggerHandle)(api.getTriggerProps()),
+            }) => (children as TooltipTriggerHandle)(api.getTriggerProps()),
           })
         : h(
             TooltipPrimitive.Trigger as ArkPart,
             { ...props.triggerProps, asChild: true },
-            () => props.children,
+            () => children,
           );
 
       return h(TooltipRoot, { ...attrs }, () => [
@@ -175,11 +181,13 @@ export const Tooltip = defineComponent({
                   class: [props.class, props.classNames?.content],
                 },
                 () => [
-                  h(
-                    TooltipArrow,
-                    { ...props.arrowProps, class: props.classNames?.arrow },
-                    () => h(TooltipPrimitive.ArrowTip as ArkPart),
-                  ),
+                  props.showArrow
+                    ? h(
+                        TooltipArrow,
+                        { ...props.arrowProps, class: props.classNames?.arrow },
+                        () => h(TooltipPrimitive.ArrowTip as ArkPart),
+                      )
+                    : null,
                   props.content,
                 ],
               ),
@@ -190,3 +198,12 @@ export const Tooltip = defineComponent({
   },
 });
 // #endregion
+
+export const Tooltip = Object.assign(TooltipShorthand, {
+  Arrow: TooltipArrow,
+  ArrowTip: TooltipPrimitive.ArrowTip,
+  Content: TooltipContent,
+  Positioner: TooltipPrimitive.Positioner,
+  Root: TooltipRoot,
+  Trigger: TooltipPrimitive.Trigger,
+});

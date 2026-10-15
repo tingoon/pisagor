@@ -17,6 +17,7 @@ import {
 } from "vue";
 import { renderIconCloseButton } from "../internal/close-button";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
 
 // #region Slot recipe context
@@ -141,7 +142,7 @@ export const DialogBackdrop = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs }) {
@@ -167,7 +168,7 @@ export const DialogPositioner = defineComponent({
     bottomStickOnMobile: { default: undefined, type: Boolean },
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -196,7 +197,7 @@ export const DialogContent = defineComponent({
     bottomStickOnMobile: { default: true, type: Boolean },
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     showCloseButton: { default: true, type: Boolean },
     size: {
@@ -260,7 +261,7 @@ export const DialogBody = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     dataPart: { default: "body", type: String },
     dataScope: { default: "dialog", type: String },
@@ -291,7 +292,7 @@ export const DialogHeader = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     dataPart: { default: "header", type: String },
     dataScope: { default: "dialog", type: String },
@@ -346,7 +347,7 @@ export const DialogFooter = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     dataPart: { default: "footer", type: String },
     dataScope: { default: "dialog", type: String },

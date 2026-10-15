@@ -10,6 +10,7 @@ import {
   Teleport,
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
 
 // #region Slot recipe context
@@ -55,10 +56,10 @@ function useDrawerSlots() {
 type ArkPart = Parameters<typeof h>[0];
 
 const SWIPE_DIRECTION_TO_PLACEMENT = {
-  down: "down",
+  down: "bottom",
   end: "right",
   start: "left",
-  up: "up",
+  up: "top",
 } as const;
 
 function drawerTeleport(
@@ -110,7 +111,7 @@ export const DrawerBackdrop = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -135,7 +136,7 @@ export const DrawerPositioner = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     variant: {
       default: "default",
@@ -167,7 +168,7 @@ export const DrawerContent = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     variant: {
       default: "default",
@@ -211,7 +212,7 @@ export const DrawerContentInner = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -238,7 +239,7 @@ export const DrawerGrabber = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots: children }) {
@@ -272,7 +273,7 @@ export const DrawerHeader = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     description: String,
     title: String,
@@ -311,7 +312,7 @@ export const DrawerDescription = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -338,7 +339,7 @@ export const DrawerBody = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     scrollFade: { default: false, type: Boolean },
   },
@@ -375,7 +376,7 @@ export const DrawerFooter = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {

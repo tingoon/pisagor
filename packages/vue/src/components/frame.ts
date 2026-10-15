@@ -3,6 +3,7 @@ import type { FrameProps as BaseFrameRootProps } from "@pisagor/props";
 import { frameRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 import {
   provideSurfaceContext,
   type SurfaceVariant,
@@ -35,15 +36,19 @@ export const FrameRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: frameRecipe,
       type: Function as PropType<typeof frameRecipe>,
     },
+    size: {
+      default: "md",
+      type: String as PropType<"sm" | "md" | "lg">,
+    },
   },
   setup(props, { attrs, slots }) {
-    const recipeSlots = computed(() => props.recipe());
+    const recipeSlots = computed(() => props.recipe({ size: props.size }));
 
     provideFrameStyles({
       get slots() {
@@ -84,7 +89,7 @@ export const FramePanel = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {

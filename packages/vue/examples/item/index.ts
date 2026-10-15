@@ -6,6 +6,7 @@ export { default as Header } from "./header.vue";
 export { default as Icon } from "./icon.vue";
 export { default as Image } from "./image.vue";
 export { default as Link } from "./link.vue";
+export { default as Sizes } from "./sizes.vue";
 export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.vue";
 export { default as WithAvatar } from "./with-avatar.vue";

@@ -1,6 +1,7 @@
 export { default as AutoHide } from "./auto-hide.vue";
 export { default as Autocomplete } from "./autocomplete.vue";
 export { default as Clearable } from "./clearable.vue";
+export { default as Compound } from "./compound.vue";
 export { default as Controlled } from "./controlled.vue";
 export { default as ControlledVisibility } from "./controlled-visibility.vue";
 export { default as Default } from "./default.vue";

@@ -4,13 +4,14 @@ import {
   type PinInputValueChangeDetails,
 } from "@ark-ui/vue/pin-input";
 import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
-import { inputOtpRecipe } from "@pisagor/recipes";
+import { inputOtpRecipe, inputRootRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, unref } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
 import type { InputProps } from "./input";
-import { Input } from "./input";
+import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -59,7 +60,7 @@ export const InputOTPRoot = defineComponent({
     blurOnComplete: { default: undefined, type: Boolean },
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     count: { default: undefined, type: Number },
     defaultValue: {
@@ -93,7 +94,9 @@ export const InputOTPRoot = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const recipeSlots = computed(() => props.recipe());
+    const recipeSlots = computed(() =>
+      props.recipe({ size: props.size ?? "md" }),
+    );
 
     provideInputOTPOptions(
       computed(() => ({
@@ -114,7 +117,7 @@ export const InputOTPRoot = defineComponent({
             {
               ...attrs,
               blurOnComplete: props.blurOnComplete,
-              class: variantSlots.base(),
+              class: variantSlots.base({ class: cn(props.class) }),
               count: props.count,
               defaultValue: props.defaultValue,
               disabled: props.disabled,
@@ -132,7 +135,7 @@ export const InputOTPRoot = defineComponent({
               h(
                 PinInputPrimitive.Control as ArkPart,
                 {
-                  class: variantSlots.control({ class: cn(props.class) }),
+                  class: variantSlots.control(),
                 },
                 () => slots.default?.(),
               ),
@@ -150,7 +153,7 @@ export const InputOTPSlot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     size: {
       default: undefined,
@@ -164,24 +167,26 @@ export const InputOTPSlot = defineComponent({
   setup(props, { attrs }) {
     const styles = useInputOTPStyles();
     const optionsRef = useInputOTPOptionsRef();
+    const surfaceVariant = useFormControlSurface();
 
+    // Render a plain input (not Field.Input) so each slot keeps its own pin-input id
+    // instead of every slot inheriting the surrounding Field's id.
     return () => {
       const ctx = unref(optionsRef);
+      const size = props.size ?? ctx.size ?? "md";
+      const variant = props.variant ?? ctx.variant ?? "primary";
 
-      return h(
-        PinInputPrimitive.Input as ArkPart,
-        {
-          ...(attrs as object),
-          asChild: true,
-        },
-        () =>
-          h(Input as ArkPart, {
-            ...(attrs as object),
-            class: styles.slots.input({ class: cn(props.class) }),
-            size: props.size ?? ctx.size,
-            variant: props.variant ?? ctx.variant,
-          }),
-      );
+      return h(PinInputPrimitive.Input as ArkPart, {
+        ...(attrs as object),
+        class: inputRootRecipe({
+          class: styles.slots.input({ class: cn(props.class) }),
+          size,
+          surfaceVariant,
+          variant,
+        }),
+        "data-size": size,
+        "data-variant": variant,
+      });
     };
   },
 });

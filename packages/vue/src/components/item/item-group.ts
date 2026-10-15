@@ -3,6 +3,7 @@ import type { ItemProps as BaseItemGroupProps } from "@pisagor/props";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
+import type { ClassValue } from "../../internal/types";
 import { Separator } from "../separator";
 import { provideItemGroupContext } from "./item-group.context";
 
@@ -21,7 +22,7 @@ export const ItemGroup = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: itemRecipe,
@@ -63,7 +64,7 @@ export const ItemSeparator = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: itemRecipe,

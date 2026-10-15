@@ -2,6 +2,7 @@ import controlledRaw from "./controlled.vue?raw";
 import custom_compositionRaw from "./custom-composition.vue?raw";
 import custom_recipeRaw from "./custom-recipe.vue?raw";
 import defaultRaw from "./default.vue?raw";
+import link_urlsRaw from "./link-urls.vue?raw";
 import linksRaw from "./links.vue?raw";
 import page_rangeRaw from "./page-range.vue?raw";
 
@@ -13,5 +14,6 @@ export const sources = {
   CustomRecipe: custom_recipeRaw,
   Default: defaultRaw,
   Links: linksRaw,
+  LinkUrls: link_urlsRaw,
   PageRange: page_rangeRaw,
 } as const;

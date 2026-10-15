@@ -3,6 +3,7 @@ import type { AvatarGroupProps as BaseAvatarGroupProps } from "@pisagor/props";
 import { avatarGroupRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
+import type { ClassValue } from "../../internal/types";
 import { Avatar } from "./avatar";
 
 // #region Context
@@ -26,6 +27,8 @@ export const AvatarGroupCount = withContext(ark.div, {
 // #region Types
 export interface AvatarGroupUser {
   fallback?: string;
+  /** Stable key; recommended when names or images can repeat. */
+  id?: string;
   name?: string;
   src?: string;
 }
@@ -46,7 +49,7 @@ export const AvatarGroupShorthand = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     max: { default: undefined, type: Number },
     users: { default: () => [], type: Array as PropType<AvatarGroupUser[]> },
@@ -65,7 +68,7 @@ export const AvatarGroupShorthand = defineComponent({
           h(Avatar, {
             alt: user.name ?? "",
             fallback: user.fallback,
-            key: user.src ?? user.fallback ?? user.name,
+            key: user.id ?? user.src ?? user.fallback ?? user.name,
             src: user.src,
           }),
         ),

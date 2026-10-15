@@ -1,3 +1,4 @@
+import compoundRaw from "./compound.vue?raw";
 import controlledRaw from "./controlled.vue?raw";
 import countRaw from "./count.vue?raw";
 import custom_colorRaw from "./custom-color.vue?raw";
@@ -9,11 +10,13 @@ import disabledRaw from "./disabled.vue?raw";
 import half_starRaw from "./half-star.vue?raw";
 import invalidRaw from "./invalid.vue?raw";
 import readonlyRaw from "./readonly.vue?raw";
+import sizesRaw from "./sizes.vue?raw";
 import testimonialRaw from "./testimonial.vue?raw";
 
 export const imports = `import { Rating } from "@pisagor/vue";`;
 
 export const sources = {
+  Compound: compoundRaw,
   Controlled: controlledRaw,
   Count: countRaw,
   CustomColor: custom_colorRaw,
@@ -25,5 +28,6 @@ export const sources = {
   HalfStar: half_starRaw,
   Invalid: invalidRaw,
   Readonly: readonlyRaw,
+  Sizes: sizesRaw,
   Testimonial: testimonialRaw,
 } as const;

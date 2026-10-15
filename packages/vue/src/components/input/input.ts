@@ -11,7 +11,7 @@ import {
   type ClearableChangeEvent,
   useClearableInput,
 } from "../../hooks/use-clearable-input";
-import type { VariantClassNames } from "../../internal/types";
+import type { ClassValue, VariantClassNames } from "../../internal/types";
 import { InputGroupRoot } from "../input-group/input-group-core";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { InputClearAddon } from "./input-clear-button";
@@ -51,7 +51,7 @@ export const Input = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     classNames: {
       default: undefined,

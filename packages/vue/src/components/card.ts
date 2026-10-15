@@ -3,6 +3,7 @@ import type { CardProps as BaseCardRootProps } from "@pisagor/props";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 
 // #region Context
 const {
@@ -37,7 +38,7 @@ export const CardMedia = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     variant: {
       default: "default",
@@ -71,7 +72,7 @@ export const CardHeader = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     description: { default: undefined, type: String },
     title: { default: undefined, type: String },
@@ -89,9 +90,15 @@ export const CardHeader = defineComponent({
           "data-scope": "card",
         },
         () => [
-          props.title ? h(CardTitle, null, () => props.title) : null,
-          props.description
-            ? h(CardDescription, null, () => props.description)
+          props.title != null || slots.title
+            ? h(CardTitle, null, () => slots.title?.() ?? props.title)
+            : null,
+          props.description != null || slots.description
+            ? h(
+                CardDescription,
+                null,
+                () => slots.description?.() ?? props.description,
+              )
             : null,
           slots.default?.(),
         ],
@@ -99,12 +106,12 @@ export const CardHeader = defineComponent({
   },
 });
 
-export const CardTitle = withContext(ark.div, {
+export const CardTitle = withContext(ark.h3, {
   name: "Title",
   slot: "title",
 });
 
-export const CardDescription = withContext(ark.div, {
+export const CardDescription = withContext(ark.p, {
   name: "Description",
   slot: "description",
 });

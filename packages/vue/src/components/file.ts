@@ -4,6 +4,7 @@ import type { FileProps as BaseFileProps } from "@pisagor/props";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 import { Format } from "./format";
 
 // #region Slot recipe context
@@ -47,7 +48,7 @@ export const FileMedia = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     variant: {
       default: "icon",
@@ -99,7 +100,7 @@ export const FileSize = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     value: { required: true, type: Number },
   },
@@ -138,7 +139,7 @@ export const FileShorthand = defineComponent({
     },
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     media: {
       default: undefined,
@@ -175,7 +176,7 @@ export const FileShorthand = defineComponent({
 });
 // #endregion
 
-export const File = Object.assign(FileShorthand, {
+const fileParts = {
   Actions: FileActions,
   Content: FileContent,
   Media: FileMedia,
@@ -183,4 +184,11 @@ export const File = Object.assign(FileShorthand, {
   Name: FileName,
   Root: FileRoot,
   Size: FileSize,
-});
+};
+
+export const FileItem = Object.assign(FileShorthand, fileParts);
+
+/**
+ * @deprecated Use `FileItem`. `File` shadows the global `File` constructor.
+ */
+export const File = Object.assign(FileShorthand, fileParts);

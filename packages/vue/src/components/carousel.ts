@@ -1,11 +1,21 @@
-import { Carousel as CarouselPrimitive } from "@ark-ui/vue/carousel";
-import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
+import {
+  Carousel as CarouselPrimitive,
+  useCarouselContext,
+} from "@ark-ui/vue/carousel";
+import {
+  PhCaretLeft,
+  PhCaretRight,
+  PhPause,
+  PhPlay,
+} from "@phosphor-icons/vue";
 import type { CarouselProps as BaseCarouselProps } from "@pisagor/props";
 import { carouselRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 import { Button } from "./button";
+import { useProviderMessage } from "./provider/provider";
 
 // #region Context
 const {
@@ -45,10 +55,10 @@ export const CarouselRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     slideCount: { required: true, type: Number },
-    spacing: { default: "16px", type: String },
+    spacing: { default: "calc(var(--spacing) * 4)", type: String },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -81,7 +91,7 @@ function createNavTrigger(
     props: {
       class: {
         default: undefined,
-        type: [String, Object, Array] as PropType<unknown>,
+        type: [String, Object, Array] as PropType<ClassValue>,
       },
     },
     setup(props, { attrs }) {
@@ -101,7 +111,9 @@ function createNavTrigger(
             h(
               Button as ArkPart,
               {
-                "aria-label": isPrev ? "Previous" : "Next",
+                "aria-label": isPrev
+                  ? useProviderMessage("carousel.previous")
+                  : useProviderMessage("carousel.next"),
                 clickEffect: false,
                 pill: true,
                 size: "icon-md",
@@ -124,6 +136,45 @@ export const CarouselPrevTrigger = createNavTrigger(
 export const CarouselNextTrigger = createNavTrigger(
   "next",
   CarouselPrimitive.NextTrigger as ArkPart,
+);
+
+export const CarouselAutoplayTrigger = defineComponent({
+  inheritAttrs: false,
+  name: "Carousel.AutoplayTrigger",
+  setup(_, { attrs }) {
+    const carousel = useCarouselContext();
+    const playLabel = useProviderMessage("carousel.play");
+    const pauseLabel = useProviderMessage("carousel.pause");
+
+    return () => {
+      const isPlaying = carousel.value.isPlaying;
+      return h(
+        CarouselPrimitive.AutoplayTrigger as ArkPart,
+        { ...attrs, asChild: true },
+        () =>
+          h(
+            Button as ArkPart,
+            {
+              "aria-label": isPlaying ? pauseLabel : playLabel,
+              clickEffect: false,
+              pill: true,
+              size: "icon-md",
+              variant: "outline",
+            },
+            () => [h(isPlaying ? PhPause : PhPlay, { "aria-hidden": true })],
+          ),
+      );
+    };
+  },
+});
+
+export const CarouselProgressText = withContext(
+  CarouselPrimitive.ProgressText,
+  {
+    defaultProps: { "data-part": "progress-text" },
+    name: "ProgressText",
+    slot: "progressText",
+  },
 );
 
 export const CarouselIndicatorGroup = withContext(
@@ -157,13 +208,13 @@ export const CarouselShorthand = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     slides: {
       default: () => [],
       type: Array as PropType<CarouselPresetItem[]>,
     },
-    spacing: { default: "16px", type: String },
+    spacing: { default: "calc(var(--spacing) * 4)", type: String },
   },
   setup(props, { attrs }) {
     return () =>
@@ -201,6 +252,7 @@ export const CarouselShorthand = defineComponent({
 // #endregion
 
 export const Carousel = Object.assign(CarouselShorthand, {
+  AutoplayTrigger: CarouselAutoplayTrigger,
   Control: CarouselControl,
   Indicator: CarouselIndicator,
   IndicatorGroup: CarouselIndicatorGroup,
@@ -208,5 +260,6 @@ export const Carousel = Object.assign(CarouselShorthand, {
   ItemGroup: CarouselItemGroup,
   NextTrigger: CarouselNextTrigger,
   PrevTrigger: CarouselPrevTrigger,
+  ProgressText: CarouselProgressText,
   Root: CarouselRoot,
 });

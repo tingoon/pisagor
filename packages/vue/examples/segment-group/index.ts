@@ -8,5 +8,6 @@ export { default as DisabledItem } from "./disabled-item.vue";
 export { default as IndicatorOnHover } from "./indicator-on-hover.vue";
 export { default as OrientationHorizontal } from "./orientation-horizontal.vue";
 export { default as OrientationVertical } from "./orientation-vertical.vue";
+export { default as Sizes } from "./sizes.vue";
 export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.vue";

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
+import { waitForElement, waitForEvent } from "@ark-ui/vue/tour";
 import { PhPlus } from "@phosphor-icons/vue";
-import { Button, Tour } from "@pisagor/vue";
+import { Button, Tour, type TourStepType } from "@pisagor/vue";
 import { ref } from "vue";
 
 const items = ref(["Item 1", "Item 2"]);
@@ -11,7 +12,7 @@ function isNewItem(index: number) {
   return index === items.value.length - 1 && items.value.length > 2;
 }
 
-const steps = [
+const steps: TourStepType[] = [
   {
     actions: [{ action: "next", label: "Start" }],
     description:

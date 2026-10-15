@@ -5,7 +5,7 @@ import type {
   SortableProps as BaseSortableRootProps,
 } from "@pisagor/props";
 import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { cn, formatMessage } from "@pisagor/utils";
 import {
   computed,
   defineComponent,
@@ -18,7 +18,9 @@ import {
   watchEffect,
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
+import { useProviderMessage } from "./provider/provider";
 
 // #region Context
 const {
@@ -109,7 +111,7 @@ export const SortableRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     disabled: { default: false, type: Boolean },
     items: { required: true, type: Array as PropType<string[]> },
@@ -174,6 +176,13 @@ export const SortableRoot = defineComponent({
       props.onValueChange?.(reorder(current, from, to));
     };
 
+    const movedTemplate = useProviderMessage("sortable.moved");
+    const moved = ref("");
+    const keyShortcuts = () =>
+      props.orientation === "vertical"
+        ? "Alt+ArrowUp Alt+ArrowDown"
+        : "Alt+ArrowLeft Alt+ArrowRight";
+
     const moveItem = (id: string, delta: -1 | 1) => {
       if (props.disabled) return;
       const current = itemsRef.value;
@@ -182,6 +191,10 @@ export const SortableRoot = defineComponent({
       if (index === -1 || targetIndex < 0 || targetIndex >= current.length)
         return;
       props.onValueChange?.(reorder(current, index, targetIndex));
+      moved.value = formatMessage(movedTemplate, {
+        position: targetIndex + 1,
+        total: current.length,
+      });
     };
 
     const getItemProps = (id: string) => {
@@ -189,6 +202,7 @@ export const SortableRoot = defineComponent({
 
       return {
         "aria-disabled": props.disabled || undefined,
+        "aria-keyshortcuts": itemHasHandle ? undefined : keyShortcuts(),
         "data-dragging": activeId.value === id ? "true" : undefined,
         "data-drop-target":
           overId.value === id && activeId.value !== id ? "true" : undefined,
@@ -291,7 +305,10 @@ export const SortableRoot = defineComponent({
           "data-scope": "sortable",
           role: "list",
         },
-        () => slots.default?.(),
+        () => [
+          slots.default?.(),
+          h("span", { "aria-live": "polite", class: "sr-only" }, moved.value),
+        ],
       );
   },
 });
@@ -302,7 +319,7 @@ export const SortableItem = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: sortableItemRecipe,
@@ -362,7 +379,7 @@ export const SortableHandle = defineComponent({
     ariaLabel: { default: undefined, type: String },
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -388,10 +405,14 @@ export const SortableHandle = defineComponent({
         {
           ...attrs,
           "aria-disabled": sortable.disabled || undefined,
+          "aria-keyshortcuts":
+            sortable.orientation === "vertical"
+              ? "Alt+ArrowUp Alt+ArrowDown"
+              : "Alt+ArrowLeft Alt+ArrowRight",
           "aria-label":
             (attrs["aria-label"] as string | undefined) ??
             props.ariaLabel ??
-            "Drag to reorder",
+            useProviderMessage("sortable.dragHandle"),
           class: getSlots().handle({
             class: cn(props.class, attrs.class),
             disabled: sortable.disabled,
@@ -441,7 +462,7 @@ export const SortableItemContent = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {

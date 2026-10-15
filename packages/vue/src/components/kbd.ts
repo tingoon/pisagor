@@ -6,6 +6,7 @@ import type {
 import { kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
+import type { ClassValue } from "../internal/types";
 
 // #region Types
 export interface KbdProps extends BaseKbdProps {
@@ -26,11 +27,15 @@ export const KbdRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: kbdRecipe,
       type: Function as PropType<typeof kbdRecipe>,
+    },
+    size: {
+      default: "md",
+      type: String as PropType<"sm" | "md" | "lg">,
     },
     variant: {
       default: "default",
@@ -43,7 +48,10 @@ export const KbdRoot = defineComponent({
         ark.kbd as ArkPart,
         {
           ...attrs,
-          class: cn(props.recipe({ variant: props.variant }), props.class),
+          class: cn(
+            props.recipe({ size: props.size, variant: props.variant }),
+            props.class,
+          ),
           "data-part": "root",
           "data-scope": "kbd",
         },
@@ -58,7 +66,7 @@ export const KbdGroup = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: kbdGroupRecipe,

@@ -79,10 +79,59 @@ const RatingIndicator = defineComponent({
       );
   },
 });
+
+const RatingRoot = defineComponent({
+  inheritAttrs: false,
+  name: "Rating.Root",
+  props: {
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
+    recipe: {
+      default: ratingRecipe,
+      type: Function as PropType<typeof ratingRecipe>,
+    },
+    size: {
+      default: "md",
+      type: String as PropType<"sm" | "md" | "lg">,
+    },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
+  },
+  setup(props, { attrs, slots }) {
+    return () => {
+      const variant = props.variant ?? ("primary" as FormControlVariant);
+      const styles = props.recipe({ size: props.size });
+
+      return h(
+        RatingStylesContext,
+        { value: { slots: styles, variants: {} } },
+        () =>
+          h(
+            RatingGroupPrimitive.Root as ArkPart,
+            {
+              ...attrs,
+              class: styles.base({
+                class: cn(
+                  variant === "secondary" ? "opacity-90" : undefined,
+                  props.class,
+                ),
+              }),
+              "data-variant": variant,
+            },
+            slots,
+          ),
+      );
+    };
+  },
+});
 // #endregion
 
 // #region Closed
-export const Rating = defineComponent({
+const RatingShorthand = defineComponent({
   inheritAttrs: false,
   name: "Rating",
   props: {
@@ -123,6 +172,10 @@ export const Rating = defineComponent({
       default: ratingRecipe,
       type: Function as PropType<typeof ratingRecipe>,
     },
+    size: {
+      default: "md",
+      type: String as PropType<"sm" | "md" | "lg">,
+    },
     value: { default: undefined, type: Number },
     variant: {
       default: undefined,
@@ -137,7 +190,7 @@ export const Rating = defineComponent({
         surfaceVariant,
         variant: props.variant ?? ("primary" as FormControlVariant),
       };
-      const slots = props.recipe();
+      const slots = props.recipe({ size: props.size });
       const surfaceTone =
         resolved.variant === "secondary" ? "opacity-90" : undefined;
       const icon = props.icon ?? PhStar;
@@ -215,3 +268,13 @@ export const Rating = defineComponent({
   },
 });
 // #endregion
+
+export const Rating = Object.assign(RatingShorthand, {
+  Context: RatingGroupPrimitive.Context,
+  Control: RatingControl,
+  HiddenInput: RatingGroupPrimitive.HiddenInput,
+  Indicator: RatingIndicator,
+  Item: RatingItem,
+  ItemContext: RatingGroupPrimitive.ItemContext,
+  Root: RatingRoot,
+});

@@ -1,3 +1,4 @@
+export { default as Compound } from "./compound.vue";
 export { default as Controlled } from "./controlled.vue";
 export { default as Count } from "./count.vue";
 export { default as CustomColor } from "./custom-color.vue";
@@ -9,5 +10,6 @@ export { default as Disabled } from "./disabled.vue";
 export { default as HalfStar } from "./half-star.vue";
 export { default as Invalid } from "./invalid.vue";
 export { default as Readonly } from "./readonly.vue";
+export { default as Sizes } from "./sizes.vue";
 export { imports, sources } from "./sources";
 export { default as Testimonial } from "./testimonial.vue";

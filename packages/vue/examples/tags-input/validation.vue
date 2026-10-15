@@ -1,7 +1,15 @@
 <script lang="ts" setup>
 import { Field, TagsInput } from "@pisagor/vue";
 
-const validate = ({ value, inputValue }) => {
+const validTagPattern = /^[a-zA-Z0-9-]+$/;
+
+const validate = ({
+  value,
+  inputValue,
+}: {
+  value: string[];
+  inputValue: string;
+}) => {
   const next = inputValue.trim();
   return (
     Boolean(next) &&

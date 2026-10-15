@@ -9,10 +9,12 @@ import {
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 import { Button } from "./button";
 import { FieldLabel } from "./field";
 import { Input, type InputProps } from "./input";
 import { InputClearButton } from "./input/input-clear-button";
+import { useProviderMessage } from "./provider/provider";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Slot recipe context
@@ -58,7 +60,7 @@ export const NumberInputRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     clearable: { default: false, type: Boolean },
     defaultValue: { default: undefined, type: String },
@@ -90,7 +92,9 @@ export const NumberInputRoot = defineComponent({
       get slots() {
         return recipeSlots.value;
       },
-      variants: {},
+      get variants() {
+        return { size: props.size } as never;
+      },
     });
 
     return () =>
@@ -139,7 +143,7 @@ export const NumberInputControl = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     clearable: { default: false, type: Boolean },
     variant: {
@@ -170,7 +174,12 @@ export const NumberInputControl = defineComponent({
           ...controlProps,
           class: cn(
             styles.slots.control(),
-            formControlGroupShellRecipe({ size: "md", ...shellArgs }),
+            formControlGroupShellRecipe({
+              size:
+                (styles.variants as { size?: "sm" | "md" | "lg" } | undefined)
+                  ?.size ?? "md",
+              ...shellArgs,
+            }),
             props.class,
           ),
           "data-clearable": props.clearable || undefined,
@@ -216,7 +225,7 @@ export const NumberInputDecrementTrigger = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs }) {
@@ -233,7 +242,10 @@ export const NumberInputDecrementTrigger = defineComponent({
         () =>
           h(
             Button as ArkPart,
-            { "aria-label": "Decrement", variant: "ghost" },
+            {
+              "aria-label": useProviderMessage("numberInput.decrement"),
+              variant: "ghost",
+            },
             () => h(PhMinus, { "aria-hidden": true }),
           ),
       );
@@ -246,7 +258,7 @@ export const NumberInputIncrementTrigger = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs }) {
@@ -263,7 +275,10 @@ export const NumberInputIncrementTrigger = defineComponent({
         () =>
           h(
             Button as ArkPart,
-            { "aria-label": "Increment", variant: "ghost" },
+            {
+              "aria-label": useProviderMessage("numberInput.increment"),
+              variant: "ghost",
+            },
             () => h(PhPlus, { "aria-hidden": true }),
           ),
       );
@@ -276,7 +291,7 @@ export const NumberInputInput = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     classNames: {
       default: undefined,
@@ -318,7 +333,7 @@ export const NumberInputScrubber = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {

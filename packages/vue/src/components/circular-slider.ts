@@ -16,6 +16,7 @@ import {
   watchEffect,
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
 import { FieldLabel } from "./field";
 
@@ -68,7 +69,7 @@ export const CircularSliderRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     defaultValue: { default: undefined, type: Number },
     disabled: { default: undefined, type: Boolean },
@@ -166,7 +167,7 @@ export const CircularSliderControl = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     markers: {
       default: undefined,
@@ -271,7 +272,7 @@ export const CircularSliderThumb = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs }) {
@@ -311,7 +312,7 @@ export const CircularSliderValueText = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     prefix: {
       default: "",
@@ -350,7 +351,7 @@ export const CircularSliderMarkerGroup = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -378,7 +379,7 @@ export const CircularSliderMarker = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     value: { required: true, type: Number },
   },

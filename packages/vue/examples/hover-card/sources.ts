@@ -4,6 +4,7 @@ import defaultRaw from "./default.ts?raw";
 import disabledRaw from "./disabled.vue?raw";
 import placementsRaw from "./placements.vue?raw";
 import triggers_delaysRaw from "./triggers-delays.vue?raw";
+import without_arrowRaw from "./without-arrow.vue?raw";
 
 export const imports = `import { HoverCard } from "@pisagor/vue";`;
 
@@ -14,4 +15,5 @@ export const sources = {
   Disabled: disabledRaw,
   Placements: placementsRaw,
   TriggersDelays: triggers_delaysRaw,
+  WithoutArrow: without_arrowRaw,
 } as const;

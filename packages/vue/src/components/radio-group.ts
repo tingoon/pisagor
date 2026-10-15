@@ -11,6 +11,7 @@ import {
 } from "@pisagor/recipes";
 import { type ClassValue, cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
+import type { ClassValue as PropClassValue } from "../internal/types";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
@@ -54,7 +55,7 @@ export const RadioGroupRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<PropClassValue>,
     },
     defaultValue: {
       default: undefined,
@@ -107,7 +108,7 @@ export const RadioGroupItem = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<PropClassValue>,
     },
     disabled: { default: undefined, type: Boolean },
     recipe: {
@@ -168,7 +169,7 @@ export const RadioGroupItemText = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<PropClassValue>,
     },
   },
   setup(props, { attrs, slots }) {

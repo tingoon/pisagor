@@ -5,6 +5,6 @@ import { DatePicker, Field } from "@pisagor/vue";
 <template>
   <Field>
     <Field.Label>Time</Field.Label>
-    <DatePicker.Timer />
+    <DatePicker.TimeInput />
   </Field>
 </template>

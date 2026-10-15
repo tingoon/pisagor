@@ -96,7 +96,7 @@ const emptyNode = h(DataTable.Empty, { colSpan: 3 });
   <DataTable
     :columns="columns"
     :data="users"
-    :get-row-id="(row) => row.id"
+    :get-row-id="(row: User) => row.id"
     :on-sorting-change="handleSortingChange"
     :state="state"
   >
