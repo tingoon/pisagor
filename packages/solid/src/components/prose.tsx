@@ -8,6 +8,11 @@ export interface ProseProps
   extends Omit<ComponentProps<typeof ark.div>, "innerHTML">,
     BaseProseProps {
   html?: string;
+  /**
+   * Sanitizer applied to `html` before injection, e.g.
+   * `(html) => DOMPurify.sanitize(html)`. Recommended for user-generated content.
+   */
+  sanitize?: (html: string) => string;
 }
 
 export function Prose(props: ProseProps): JSX.Element {
@@ -15,6 +20,7 @@ export function Prose(props: ProseProps): JSX.Element {
     "class",
     "recipe",
     "html",
+    "sanitize",
     "children",
   ]);
   const recipe = () => local.recipe ?? proseRecipe;
@@ -39,7 +45,7 @@ export function Prose(props: ProseProps): JSX.Element {
           class={recipe()({ class: local.class })}
           data-part="root"
           data-scope="prose"
-          innerHTML={html()}
+          innerHTML={local.sanitize ? local.sanitize(html()) : html()}
         />
       )}
     </Show>

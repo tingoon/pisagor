@@ -3,6 +3,7 @@ import defaultRaw from "./default.tsx?raw";
 import nestedRaw from "./nested.tsx?raw";
 import orientation_horizontalRaw from "./orientation-horizontal.tsx?raw";
 import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
+import sizesRaw from "./sizes.tsx?raw";
 import with_separatorRaw from "./with-separator.tsx?raw";
 
 export const imports = `import { ButtonGroup } from "@pisagor/solid";`;
@@ -13,5 +14,6 @@ export const sources = {
   Nested: nestedRaw,
   OrientationHorizontal: orientation_horizontalRaw,
   OrientationVertical: orientation_verticalRaw,
+  Sizes: sizesRaw,
   WithSeparator: with_separatorRaw,
 } as const;

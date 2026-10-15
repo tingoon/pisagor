@@ -1,4 +1,5 @@
 export * from "./autoplay";
+export * from "./autoplay-controls";
 export * from "./compound";
 export * from "./controlled";
 export * from "./custom-recipe";

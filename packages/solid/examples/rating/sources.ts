@@ -1,3 +1,4 @@
+import compoundRaw from "./compound.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import countRaw from "./count.tsx?raw";
 import custom_colorRaw from "./custom-color.tsx?raw";
@@ -9,11 +10,13 @@ import disabledRaw from "./disabled.tsx?raw";
 import half_starRaw from "./half-star.tsx?raw";
 import invalidRaw from "./invalid.tsx?raw";
 import readonlyRaw from "./readonly.tsx?raw";
+import sizesRaw from "./sizes.tsx?raw";
 import testimonialRaw from "./testimonial.tsx?raw";
 
 export const imports = `import { Rating } from "@pisagor/solid";`;
 
 export const sources = {
+  Compound: compoundRaw,
   Controlled: controlledRaw,
   Count: countRaw,
   CustomColor: custom_colorRaw,
@@ -25,5 +28,6 @@ export const sources = {
   HalfStar: half_starRaw,
   Invalid: invalidRaw,
   Readonly: readonlyRaw,
+  Sizes: sizesRaw,
   Testimonial: testimonialRaw,
 } as const;

@@ -10,7 +10,11 @@ import {
   type SliderValueTextProps,
 } from "@ark-ui/solid/slider";
 import type { SliderProps as BaseSliderProps } from "@pisagor/props";
-import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes";
+import {
+  fieldRecipe,
+  type SliderRecipeSlot,
+  sliderRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
@@ -237,7 +241,20 @@ function SliderMarkerLabel(props: SliderMarkerLabelProps): JSX.Element {
   );
 }
 
-export function Slider(props: SliderProps): JSX.Element {
+function SliderLabel(
+  props: ComponentProps<typeof SliderPrimitive.Label>,
+): JSX.Element {
+  const [local, rest] = splitProps(props, ["class"]);
+
+  return (
+    <SliderPrimitive.Label
+      {...rest}
+      class={fieldRecipe().label({ class: local.class })}
+    />
+  );
+}
+
+function SliderShorthand(props: SliderProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "variant",
     "defaultValue",
@@ -357,3 +374,18 @@ export type {
   SliderThumbProps,
   SliderTrackProps,
 } from "@ark-ui/solid/slider";
+
+export const Slider = Object.assign(SliderShorthand, {
+  Control: SliderControl,
+  Header: SliderHeader,
+  Label: SliderLabel,
+  Marker: SliderMarker,
+  MarkerGroup: SliderMarkerGroup,
+  MarkerLabel: SliderMarkerLabel,
+  MarkerTick: SliderMarkerTick,
+  Range: SliderRange,
+  Root: SliderRoot,
+  Thumb: SliderThumb,
+  Track: SliderTrack,
+  Value: SliderValue,
+});

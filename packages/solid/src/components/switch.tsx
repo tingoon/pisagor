@@ -37,14 +37,22 @@ export interface SwitchProps extends Omit<SwitchRootProps, "children"> {
 
 /** Surface variant comes from the nearest form-control surface. */
 function SwitchRoot(props: SwitchRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "variant",
+    "recipe",
+    "size",
+    "class",
+  ]);
   const surfaceVariant = useFormControlSurface();
   const shellArgs = () => ({
     surfaceVariant,
     variant: local.variant ?? ("primary" as FormControlVariant),
   });
   const slots = createMemo(() =>
-    (local.recipe ?? switchRecipe)({ ...shellArgs() }),
+    (local.recipe ?? switchRecipe)({
+      ...shellArgs(),
+      size: local.size ?? "md",
+    }),
   );
 
   return (
@@ -81,7 +89,7 @@ function SwitchHiddenInput(props: SwitchHiddenInputProps): JSX.Element {
   return <SwitchPrimitive.HiddenInput {...props} />;
 }
 
-export function Switch(props: SwitchProps): JSX.Element {
+function SwitchShorthand(props: SwitchProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "variant",
     "controlProps",
@@ -120,3 +128,10 @@ export type {
   SwitchHiddenInputProps,
   SwitchThumbProps,
 } from "@ark-ui/solid/switch";
+
+export const Switch = Object.assign(SwitchShorthand, {
+  Control: SwitchControl,
+  HiddenInput: SwitchHiddenInput,
+  Root: SwitchRoot,
+  Thumb: SwitchThumb,
+});

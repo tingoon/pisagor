@@ -44,7 +44,7 @@ const JsonTreeViewTree: Component<JsonTreeViewTreeProps> = withContext(
   { name: "Tree" },
 );
 
-export function JsonTreeView(props: JsonTreeViewProps): JSX.Element {
+function JsonTreeViewShorthand(props: JsonTreeViewProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "renderValue",
     "treeProps",
@@ -65,3 +65,8 @@ export function JsonTreeView(props: JsonTreeViewProps): JSX.Element {
 }
 
 export type { JsonTreeViewTreeProps } from "@ark-ui/solid/json-tree-view";
+
+export const JsonTreeView = Object.assign(JsonTreeViewShorthand, {
+  Root: JsonTreeViewRoot,
+  Tree: JsonTreeViewTree,
+});

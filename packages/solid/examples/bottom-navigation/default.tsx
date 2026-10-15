@@ -2,12 +2,12 @@ import { BottomNavigation } from "@pisagor/solid";
 
 export function Default() {
   return (
-    <BottomNavigation defaultValue="home">
+    <BottomNavigation value="home">
       <BottomNavigation.List>
-        <BottomNavigation.Item value="home">
+        <BottomNavigation.Item href="#home" value="home">
           <BottomNavigation.ItemLabel>Home</BottomNavigation.ItemLabel>
         </BottomNavigation.Item>
-        <BottomNavigation.Item value="search">
+        <BottomNavigation.Item href="#search" value="search">
           <BottomNavigation.ItemLabel>Search</BottomNavigation.ItemLabel>
         </BottomNavigation.Item>
       </BottomNavigation.List>

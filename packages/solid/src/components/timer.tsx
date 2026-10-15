@@ -16,6 +16,7 @@ import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps, useContext } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { useProviderMessage } from "./provider/provider.context";
 
 // #region Context
 const {
@@ -168,9 +169,9 @@ export function TimerActionTrigger(
 export function TimerPause(props: TimerActionProps): JSX.Element {
   return (
     <TimerPrimitive.ActionTrigger
+      aria-label={useProviderMessage("timer.pause")}
       {...props}
       action="pause"
-      aria-label="Pause"
     />
   );
 }
@@ -178,9 +179,9 @@ export function TimerPause(props: TimerActionProps): JSX.Element {
 export function TimerResume(props: TimerActionProps): JSX.Element {
   return (
     <TimerPrimitive.ActionTrigger
+      aria-label={useProviderMessage("timer.resume")}
       {...props}
       action="resume"
-      aria-label="Resume"
     />
   );
 }
@@ -188,9 +189,9 @@ export function TimerResume(props: TimerActionProps): JSX.Element {
 export function TimerStart(props: TimerActionProps): JSX.Element {
   return (
     <TimerPrimitive.ActionTrigger
+      aria-label={useProviderMessage("timer.start")}
       {...props}
       action="start"
-      aria-label="Start"
     />
   );
 }
@@ -198,9 +199,9 @@ export function TimerStart(props: TimerActionProps): JSX.Element {
 export function TimerReset(props: TimerActionProps): JSX.Element {
   return (
     <TimerPrimitive.ActionTrigger
+      aria-label={useProviderMessage("timer.reset")}
       {...props}
       action="reset"
-      aria-label="Reset"
     />
   );
 }
@@ -208,9 +209,9 @@ export function TimerReset(props: TimerActionProps): JSX.Element {
 export function TimerRestart(props: TimerActionProps): JSX.Element {
   return (
     <TimerPrimitive.ActionTrigger
+      aria-label={useProviderMessage("timer.restart")}
       {...props}
       action="restart"
-      aria-label="Restart"
     />
   );
 }

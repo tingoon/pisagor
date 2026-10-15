@@ -43,6 +43,7 @@ import {
   CaretRightIcon,
 } from "../internal/icons";
 import { Button, type ButtonProps } from "./button";
+import { useProviderMessage } from "./provider/provider.context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -307,7 +308,7 @@ export function CalendarPrevTrigger(
       asChild={(triggerProps) => (
         <Button
           {...triggerProps({ class: styles.slots.prevTrigger() })}
-          aria-label="Previous month"
+          aria-label={useProviderMessage("calendar.previousMonth")}
           size="icon-md"
           variant="ghost"
         >
@@ -328,7 +329,7 @@ export function CalendarNextTrigger(
       asChild={(triggerProps) => (
         <Button
           {...triggerProps({ class: styles.slots.nextTrigger() })}
-          aria-label="Next month"
+          aria-label={useProviderMessage("calendar.nextMonth")}
           size="icon-md"
           variant="ghost"
         >

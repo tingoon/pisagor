@@ -43,11 +43,19 @@ const APP_SHELL_BANNER_ROW =
 
 export interface AppShellRootProps
   extends ComponentProps<"div">,
-    BaseAppShellRootProps {}
+    BaseAppShellRootProps {
+  /**
+   * Whether to disable the `mod+\\` hotkey that toggles the start panel.
+   *
+   * @defaultValue false
+   */
+  disableHotkey?: boolean;
+}
 
 export function AppShellRoot(props: AppShellRootProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "children",
+    "disableHotkey",
     "recipe",
     "class",
     "style",
@@ -85,6 +93,9 @@ export function AppShellRoot(props: AppShellRootProps): JSX.Element {
   };
 
   createEffect(() => {
+    if (local.disableHotkey) {
+      return;
+    }
     const onKeyDown = (event: KeyboardEvent) => {
       if ((event.metaKey || event.ctrlKey) && event.code === "Backslash") {
         event.preventDefault();

@@ -1,6 +1,6 @@
 import type {
   HoverCardArrowProps,
-  HoverCardContentProps,
+  HoverCardContentProps as HoverCardPrimitiveContentProps,
   HoverCardRootProps as HoverCardPrimitiveRootProps,
   HoverCardTriggerProps,
 } from "@ark-ui/solid/hover-card";
@@ -8,7 +8,7 @@ import { HoverCard as HoverCardPrimitive } from "@ark-ui/solid/hover-card";
 import type { HoverCardProps as BaseHoverCardRootProps } from "@pisagor/props";
 import { hoverCardRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
-import { createMemo, splitProps } from "solid-js";
+import { createMemo, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 
@@ -26,6 +26,15 @@ export interface LocalHoverCardRootProps
     BaseHoverCardRootProps {}
 
 export type HoverCardProps = LocalHoverCardRootProps;
+
+export interface HoverCardContentProps extends HoverCardPrimitiveContentProps {
+  /**
+   * Whether to render the arrow pointing at the trigger.
+   *
+   * @defaultValue true
+   */
+  showArrow?: boolean;
+}
 // #endregion
 
 // #region Parts
@@ -82,7 +91,7 @@ export function HoverCardArrow(props: HoverCardArrowProps): JSX.Element {
 }
 
 export function HoverCardContent(props: HoverCardContentProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "class"]);
+  const [local, rest] = splitProps(props, ["children", "class", "showArrow"]);
   const styles = useHoverCard();
 
   return (
@@ -93,7 +102,9 @@ export function HoverCardContent(props: HoverCardContentProps): JSX.Element {
           class={styles.slots.content({ class: local.class })}
         >
           {local.children}
-          <HoverCardArrow />
+          <Show when={local.showArrow ?? true}>
+            <HoverCardArrow />
+          </Show>
         </HoverCardPrimitive.Content>
       </HoverCardPrimitive.Positioner>
     </Portal>
@@ -103,7 +114,6 @@ export function HoverCardContent(props: HoverCardContentProps): JSX.Element {
 
 export type {
   HoverCardArrowProps,
-  HoverCardContentProps,
   HoverCardRootProps,
   HoverCardTriggerProps,
 } from "@ark-ui/solid/hover-card";

@@ -41,6 +41,12 @@ export interface TooltipProps extends Omit<TooltipRootProps, "children"> {
   /** Class merged onto the tooltip content element */
   class?: string;
   classNames?: TooltipClassNames;
+  /**
+   * Whether to render the arrow.
+   *
+   * @defaultValue true
+   */
+  showArrow?: boolean;
   arrowProps?: Omit<TooltipArrowProps, "children" | "class">;
   contentProps?: Omit<TooltipContentProps, "children" | "class">;
   positionerProps?: Omit<TooltipPositionerProps, "children" | "class">;
@@ -89,9 +95,10 @@ const TooltipArrow: Component<TooltipArrowProps> = withContext(
 // #endregion
 
 // #region Shorthand
-export function Tooltip(props: TooltipProps): JSX.Element {
+function TooltipShorthand(props: TooltipProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "arrowProps",
+    "showArrow",
     "children",
     "content",
     "contentProps",
@@ -126,9 +133,14 @@ export function Tooltip(props: TooltipProps): JSX.Element {
             {...local.contentProps}
             class={cn(local.class, local.classNames?.content)}
           >
-            <TooltipArrow {...local.arrowProps} class={local.classNames?.arrow}>
-              <TooltipPrimitive.ArrowTip />
-            </TooltipArrow>
+            <Show when={local.showArrow ?? true}>
+              <TooltipArrow
+                {...local.arrowProps}
+                class={local.classNames?.arrow}
+              >
+                <TooltipPrimitive.ArrowTip />
+              </TooltipArrow>
+            </Show>
             {local.content}
           </TooltipContent>
         </TooltipPrimitive.Positioner>
@@ -137,6 +149,15 @@ export function Tooltip(props: TooltipProps): JSX.Element {
   );
 }
 // #endregion
+
+export const Tooltip = Object.assign(TooltipShorthand, {
+  Arrow: TooltipArrow,
+  ArrowTip: TooltipPrimitive.ArrowTip,
+  Content: TooltipContent,
+  Positioner: TooltipPrimitive.Positioner,
+  Root: TooltipRoot,
+  Trigger: TooltipPrimitive.Trigger,
+});
 
 export type {
   TooltipArrowProps,

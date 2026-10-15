@@ -17,6 +17,7 @@ import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { DotsSixVerticalIcon } from "../internal/icons";
+import { useProviderMessage } from "./provider/provider.context";
 
 // #region Context
 const {
@@ -51,6 +52,10 @@ export interface ResizableEdgeHandleProps
   placement: ResizableEdgePlacement;
   handlePosition?: ResizableHandlePosition;
   minWidth?: number;
+  /** Maximum width in pixels, used by the End key and `aria-valuemax`. */
+  maxWidth?: number;
+  /** Width change in pixels per arrow key press. @defaultValue 10 */
+  step?: number;
   width: number;
   label: string;
   onResizeChange?: (width: number) => void;
@@ -85,6 +90,9 @@ export function ResizableEdgeHandle(
     "handlePosition",
     "label",
     "minWidth",
+    "maxWidth",
+    "step",
+    "onKeyDown",
     "width",
     "onResizeChange",
     "onResizeEnd",
@@ -115,10 +123,21 @@ export function ResizableEdgeHandle(
     local.onWidthChange(nextWidth);
   };
 
+  const clamp = (value: number) =>
+    Math.min(
+      local.maxWidth ?? Number.POSITIVE_INFINITY,
+      Math.max(minWidth(), value),
+    );
+
   return (
+    // biome-ignore lint/a11y/useSemanticElements: focusable window-splitter handle; <hr> cannot take focus or children
     <button
       {...rest}
       aria-label={local.label}
+      aria-orientation="vertical"
+      aria-valuemax={local.maxWidth}
+      aria-valuemin={minWidth()}
+      aria-valuenow={Math.round(local.width)}
       class={edgeHandle().base({ class: local.class })}
       data-handle-position={handlePosition()}
       data-part="edge-handle"
@@ -127,6 +146,31 @@ export function ResizableEdgeHandle(
         event.preventDefault();
         local.onResizeEnd?.();
         applyWidth(initialWidth.current);
+      }}
+      onKeyDown={(event) => {
+        if (typeof local.onKeyDown === "function") {
+          local.onKeyDown(event);
+        }
+        const step = local.step ?? 10;
+        const grow = isStart() ? "ArrowRight" : "ArrowLeft";
+        const shrink = isStart() ? "ArrowLeft" : "ArrowRight";
+        const next =
+          event.key === grow
+            ? local.width + step
+            : event.key === shrink
+              ? local.width - step
+              : event.key === "Home"
+                ? minWidth()
+                : event.key === "End" && local.maxWidth !== undefined
+                  ? local.maxWidth
+                  : event.key === "Enter"
+                    ? initialWidth.current
+                    : undefined;
+        if (next === undefined) {
+          return;
+        }
+        event.preventDefault();
+        applyWidth(clamp(next));
       }}
       onLostPointerCapture={() => {
         local.onResizeEnd?.();
@@ -144,8 +188,7 @@ export function ResizableEdgeHandle(
           return;
         }
         const delta = event.clientX - startX.current;
-        const next = Math.max(
-          minWidth(),
+        const next = clamp(
           isStart() ? startWidth.current + delta : startWidth.current - delta,
         );
         liveWidth.current = next;
@@ -156,6 +199,7 @@ export function ResizableEdgeHandle(
         local.onResizeEnd?.();
         local.onWidthChange(liveWidth.current);
       }}
+      role="separator"
       type="button"
     >
       <span class={edgeHandle().grip()}>
@@ -190,8 +234,8 @@ export function ResizableResizeTrigger(
 
   return (
     <SplitterPrimitive.ResizeTrigger
+      aria-label={useProviderMessage("resizable.resize")}
       {...rest}
-      aria-label="Resize"
       class={styles.slots.resizeTrigger({ class: local.class })}
     >
       <Show

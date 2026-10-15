@@ -11,7 +11,12 @@ import {
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { ArrowDownIcon, ArrowUpIcon, MinusIcon } from "../internal/icons";
 import type { VariantClassNames } from "../internal/types";
+import {
+  type MessageKey,
+  useProviderMessage,
+} from "./provider/provider.context";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -26,7 +31,13 @@ export type StatLabelProps = ComponentProps<typeof ark.div>;
 export type StatValueProps = ComponentProps<typeof ark.div>;
 export type StatDescriptionProps = ComponentProps<typeof ark.p>;
 export type StatTrendProps = ComponentProps<typeof ark.div> &
-  BaseStatTrendProps;
+  BaseStatTrendProps & {
+    /**
+     * Icon shown before the content. Defaults to an arrow matching `trend`;
+     * pass `null` to hide it.
+     */
+    icon?: JSX.Element;
+  };
 
 type StatClassNames = VariantClassNames<StatRecipeSlot>;
 
@@ -57,7 +68,13 @@ export const StatDescription = withContext(ark.p, { name: "Description" });
 
 /** Leaf with its own recipe (`trend` variant stays on the part). */
 export function StatTrend(props: StatTrendProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["trend", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "trend",
+    "recipe",
+    "class",
+    "icon",
+    "children",
+  ]);
   const trend = () => local.trend ?? "neutral";
 
   return (
@@ -70,7 +87,21 @@ export function StatTrend(props: StatTrendProps): JSX.Element {
       data-part="trend"
       data-scope="stat"
       data-trend={trend()}
-    />
+    >
+      {"icon" in local ? (
+        local.icon
+      ) : trend() === "up" ? (
+        <ArrowUpIcon aria-hidden />
+      ) : trend() === "down" ? (
+        <ArrowDownIcon aria-hidden />
+      ) : (
+        <MinusIcon aria-hidden />
+      )}
+      <span class="sr-only">
+        {useProviderMessage(`stat.trend.${trend()}` as MessageKey)}
+      </span>
+      {local.children}
+    </ark.div>
   );
 }
 // #endregion

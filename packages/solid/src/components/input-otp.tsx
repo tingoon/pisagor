@@ -5,12 +5,13 @@ import {
   type PinInputRootProps,
 } from "@ark-ui/solid/pin-input";
 import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
-import { inputOtpRecipe } from "@pisagor/recipes";
+import { inputOtpRecipe, inputRootRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { createContext } from "../utils";
-import { Input, type InputProps } from "./input/input";
+import type { InputProps } from "./input/input";
+import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
 const {
@@ -68,7 +69,9 @@ export function InputOTPRoot(props: InputOTPProps): JSX.Element {
     "recipe",
     "class",
   ]);
-  const slots = createMemo(() => (local.recipe ?? inputOtpRecipe)());
+  const slots = createMemo(() =>
+    (local.recipe ?? inputOtpRecipe)({ size: local.size ?? "md" }),
+  );
 
   return (
     <InputOTPStylesContext
@@ -91,7 +94,7 @@ export function InputOTPRoot(props: InputOTPProps): JSX.Element {
       >
         <PinInputPrimitive.Root
           {...rest}
-          class={slots().base()}
+          class={slots().base({ class: local.class })}
           onValueChange={
             local.onValueChange
               ? (details) => local.onValueChange?.(details.value)
@@ -100,9 +103,7 @@ export function InputOTPRoot(props: InputOTPProps): JSX.Element {
           otp={local.otp ?? true}
           placeholder={local.placeholder ?? ""}
         >
-          <PinInputPrimitive.Control
-            class={slots().control({ class: local.class })}
-          >
+          <PinInputPrimitive.Control class={slots().control()}>
             {local.children}
           </PinInputPrimitive.Control>
           <PinInputPrimitive.HiddenInput />
@@ -115,17 +116,23 @@ export function InputOTPRoot(props: InputOTPProps): JSX.Element {
 export function InputOTPSlot(props: InputOTPSlotProps): JSX.Element {
   const [local, rest] = splitProps(props, ["size", "variant", "class"]);
   const ctx = useInputOTP();
+  const surfaceVariant = useFormControlSurface();
+  const size = () => local.size ?? ctx.size ?? "md";
+  const variant = () => local.variant ?? ctx.variant ?? "primary";
 
+  // Render a plain input (not Field.Input) so each slot keeps its own pin-input id
+  // instead of every slot inheriting the surrounding Field's id.
   return (
     <PinInputPrimitive.Input
       {...rest}
-      asChild={(inputProps) => (
-        <Input
-          {...inputProps({ class: ctx.slots.input({ class: local.class }) })}
-          size={local.size ?? ctx.size}
-          variant={local.variant ?? ctx.variant}
-        />
-      )}
+      class={inputRootRecipe({
+        class: ctx.slots.input({ class: local.class }),
+        size: size(),
+        surfaceVariant,
+        variant: variant(),
+      })}
+      data-size={size()}
+      data-variant={variant()}
     />
   );
 }

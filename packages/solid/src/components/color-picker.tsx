@@ -29,6 +29,7 @@ import { createSlotRecipeContext } from "../internal/create-slot-recipe-context"
 import { CheckIcon, EyedropperIcon, XIcon } from "../internal/icons";
 import { Button, type ButtonProps } from "./button";
 import { InputGroup, type InputGroupButtonProps } from "./input-group";
+import { useProviderMessage } from "./provider/provider.context";
 
 // #region Context
 const { Context: ColorPickerSlotsContext, useStyles: useColorPicker } =
@@ -169,8 +170,8 @@ export function ColorPickerClearTrigger(
     <Show when={visible()}>
       <InputGroup.Addon align="inline-end">
         <InputGroup.Button
+          aria-label={useProviderMessage("colorPicker.clearColor")}
           {...rest}
-          aria-label="Clear color"
           class={local.class}
           data-part="clear-trigger"
           data-scope="color-picker"
@@ -284,8 +285,10 @@ export function ColorPickerEyeDropperTrigger(
   props: ColorPickerEyeDropperTriggerProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["size", "variant", "children"]);
+  const label = useProviderMessage("colorPicker.eyeDropper");
   return (
     <ColorPickerPrimitive.EyeDropperTrigger
+      aria-label={label}
       {...rest}
       asChild={(triggerProps) => (
         <Button
@@ -394,7 +397,7 @@ export function ColorPickerArea(props: ColorPickerAreaProps): JSX.Element {
       class={styles.slots.area({
         class: cn(
           local.showDots &&
-            "after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:bg-[radial-gradient(circle,#fff3_1px,#0000_1px)] after:bg-size-[8px_8px]",
+            "after:pointer-events-none after:absolute after:inset-0 after:rounded-inherit after:bg-[radial-gradient(circle,color-mix(in_oklab,var(--color-on-media)_20%,transparent)_1px,transparent_1px)] after:bg-size-(--spacing(2))",
           local.class,
         ),
       })}
@@ -417,6 +420,34 @@ export function ColorPickerAreaThumb(
     <ColorPickerPrimitive.AreaThumb
       {...rest}
       class={styles.slots.areaThumb({ class: local.class })}
+    />
+  );
+}
+
+export function ColorPickerLabel(
+  props: ComponentProps<typeof ColorPickerPrimitive.Label>,
+): JSX.Element {
+  const [local, rest] = splitProps(props, ["class"]);
+  const styles = useColorPicker();
+
+  return (
+    <ColorPickerPrimitive.Label
+      {...rest}
+      class={styles.slots.label({ class: local.class })}
+    />
+  );
+}
+
+export function ColorPickerFormatSelect(
+  props: ComponentProps<typeof ColorPickerPrimitive.FormatSelect>,
+): JSX.Element {
+  const [local, rest] = splitProps(props, ["class"]);
+  const styles = useColorPicker();
+
+  return (
+    <ColorPickerPrimitive.FormatSelect
+      {...rest}
+      class={styles.slots.formatSelect({ class: local.class })}
     />
   );
 }
@@ -455,13 +486,13 @@ export function ColorPickerSwatchPreview(
 }
 
 export function ColorPickerField(props: ColorPickerProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["clearable"]);
+  const [local, rest] = splitProps(props, ["clearable", "variant"]);
   const clearable = () => local.clearable ?? false;
 
   return (
     <ColorPickerRoot {...rest} clearable={clearable()}>
       <ColorPickerControl clearable={false}>
-        <InputGroup>
+        <InputGroup variant={local.variant}>
           <ColorPickerTrigger
             asChild={(triggerProps) => (
               <InputGroup.Addon {...triggerProps()}>
@@ -522,13 +553,16 @@ export type {
 export const ColorPicker = Object.assign(ColorPickerRoot, {
   Area: ColorPickerArea,
   AreaThumb: ColorPickerAreaThumb,
+  ChannelInput: ColorPickerInput,
   ChannelSlider: ColorPickerChannelSlider,
   ClearTrigger: ColorPickerClearTrigger,
   Content: ColorPickerContent,
   Control: ColorPickerControl,
   EyeDropperTrigger: ColorPickerEyeDropperTrigger,
   Field: ColorPickerField,
+  FormatSelect: ColorPickerFormatSelect,
   Input: ColorPickerInput,
+  Label: ColorPickerLabel,
   Swatch: ColorPickerSwatch,
   SwatchGroup: ColorPickerSwatchGroup,
   SwatchIndicator: ColorPickerSwatchIndicator,

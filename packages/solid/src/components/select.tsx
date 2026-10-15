@@ -36,6 +36,7 @@ import {
 import { Portal } from "solid-js/web";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "../internal/icons";
+import { useProviderMessage } from "./provider/provider.context";
 import { Separator, type SeparatorProps } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -284,8 +285,8 @@ export function SelectClearTrigger(
 
   return (
     <SelectPrimitive.ClearTrigger
+      aria-label={useProviderMessage("select.clear")}
       {...rest}
-      aria-label="Clear selected value(s)"
       class={slots().clearTrigger({ class: local.class })}
     />
   );

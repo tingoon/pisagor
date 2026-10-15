@@ -20,6 +20,7 @@ import { createSlotRecipeContext } from "../internal/create-slot-recipe-context"
 import { CheckIcon, ClipboardIcon } from "../internal/icons";
 import type { VariantClassNames } from "../internal/types";
 import { Button, type ButtonProps } from "./button";
+import { useProviderMessage } from "./provider/provider.context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -36,6 +37,8 @@ type ClipboardClassNames = VariantClassNames<ClipboardRecipeSlot>;
 export interface ClipboardProps
   extends Omit<ClipboardRootProps, "children">,
     BaseClipboardProps {
+  /** Size scale for the shell, button and value. @defaultValue "md" */
+  size?: "sm" | "md" | "lg";
   buttonSize?: ButtonProps["size"];
   buttonVariant?: ButtonProps["variant"];
   controlVariant?: FormControlVariant;
@@ -45,12 +48,16 @@ export interface ClipboardProps
   copyIcon?: JSX.Element;
   label?: string;
   classNames?: ClipboardClassNames;
-  labelProps?: Omit<ComponentProps<"span">, "children" | "class">;
+  labelProps?: Omit<
+    ComponentProps<typeof ClipboardPrimitive.Label>,
+    "children" | "class"
+  >;
 }
 
 // #region Parts
 function ClipboardProvider(props: {
   children: JSX.Element;
+  size?: "sm" | "md" | "lg";
   valueSize?: ClipboardVariantProps["valueSize"];
   /**
    * Style recipe. Defaults to `clipboardRecipe` from `@pisagor/recipes/clipboard`.
@@ -61,7 +68,10 @@ function ClipboardProvider(props: {
 }): JSX.Element {
   const valueSize = () => props.valueSize ?? "md";
   const slots = createMemo(() =>
-    (props.recipe ?? clipboardRecipe)({ valueSize: valueSize() }),
+    (props.recipe ?? clipboardRecipe)({
+      size: props.size ?? "md",
+      valueSize: valueSize(),
+    }),
   );
 
   return (
@@ -71,7 +81,7 @@ function ClipboardProvider(props: {
           return slots();
         },
         get variants() {
-          return { valueSize: valueSize() };
+          return { size: props.size ?? "md", valueSize: valueSize() };
         },
       }}
     >
@@ -106,7 +116,7 @@ const ClipboardIndicator: Component<ClipboardIndicatorProps> = withContext(
 
 const ClipboardField = withContext("div", { name: "Field" });
 
-const ClipboardLabel = withContext("span", { name: "Label" });
+const ClipboardLabel = withContext(ClipboardPrimitive.Label, { name: "Label" });
 // #endregion
 
 // #region Shorthand
@@ -114,6 +124,7 @@ export function Clipboard(props: ClipboardProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "buttonSize",
     "buttonVariant",
+    "size",
     "controlVariant",
     "valueSize",
     "variant",
@@ -130,66 +141,75 @@ export function Clipboard(props: ClipboardProps): JSX.Element {
   const controlVariant = () =>
     local.controlVariant ?? ("primary" as FormControlVariant);
   const variant = () => local.variant ?? "input";
-  const buttonSize = () => local.buttonSize ?? "icon-md";
-  const buttonAriaLabel = () => local.buttonAriaLabel ?? "Copy to clipboard";
+  const buttonSize = () =>
+    local.buttonSize ?? (`icon-${local.size ?? "md"}` as ButtonProps["size"]);
+  const buttonAriaLabel = () =>
+    local.buttonAriaLabel ?? useProviderMessage("clipboard.copy");
   const copyIcon = () => local.copyIcon ?? <ClipboardIcon />;
   const copiedIcon = () => local.copiedIcon ?? <CheckIcon />;
   const shellClassName = () =>
     formControlShellRecipe({
-      size: "md",
+      size: local.size ?? "md",
       surfaceVariant,
       variant: controlVariant(),
     });
 
   // Render lazily so parts are created inside ClipboardProvider's context.
   const control = () => (
-    <ClipboardRoot {...rest}>
-      <ClipboardControl class={local.classNames?.control}>
-        <Show when={variant() === "input"}>
-          <ClipboardInput
-            class={cn(shellClassName(), local.classNames?.input)}
-            data-variant={controlVariant()}
-            readOnly
-          />
-        </Show>
-        <Show when={variant() === "value"}>
-          <ClipboardValue
-            class={cn(shellClassName(), local.classNames?.value)}
-            data-variant={controlVariant()}
-          />
-        </Show>
-        <ClipboardPrimitive.Trigger
-          asChild={(triggerProps) => (
-            <Button
-              {...triggerProps()}
-              aria-label={buttonAriaLabel()}
-              size={buttonSize()}
-              type="button"
-              variant={local.buttonVariant}
-            >
-              <ClipboardIndicator
-                class={local.classNames?.indicator}
-                copied={copiedIcon()}
-              >
-                {copyIcon()}
-              </ClipboardIndicator>
-            </Button>
-          )}
+    <ClipboardControl class={local.classNames?.control}>
+      <Show when={variant() === "input"}>
+        <ClipboardInput
+          class={cn(shellClassName(), local.classNames?.input)}
+          data-variant={controlVariant()}
+          readOnly
         />
-      </ClipboardControl>
-    </ClipboardRoot>
+      </Show>
+      <Show when={variant() === "value"}>
+        <ClipboardValue
+          class={cn(shellClassName(), local.classNames?.value)}
+          data-variant={controlVariant()}
+        />
+      </Show>
+      <ClipboardPrimitive.Trigger
+        asChild={(triggerProps) => (
+          <Button
+            {...triggerProps()}
+            aria-label={buttonAriaLabel()}
+            size={buttonSize()}
+            type="button"
+            variant={local.buttonVariant}
+          >
+            <ClipboardIndicator
+              class={local.classNames?.indicator}
+              copied={copiedIcon()}
+            >
+              {copyIcon()}
+            </ClipboardIndicator>
+          </Button>
+        )}
+      />
+    </ClipboardControl>
   );
 
   return (
-    <ClipboardProvider recipe={local.recipe} valueSize={local.valueSize}>
-      <Show fallback={control()} when={local.label}>
-        <ClipboardField class={local.classNames?.field}>
-          <ClipboardLabel {...local.labelProps} class={local.classNames?.label}>
-            {local.label}
-          </ClipboardLabel>
-          {control()}
-        </ClipboardField>
-      </Show>
+    <ClipboardProvider
+      recipe={local.recipe}
+      size={local.size}
+      valueSize={local.valueSize ?? local.size}
+    >
+      <ClipboardRoot {...rest}>
+        <Show fallback={control()} when={local.label}>
+          <ClipboardField class={local.classNames?.field}>
+            <ClipboardLabel
+              {...local.labelProps}
+              class={local.classNames?.label}
+            >
+              {local.label}
+            </ClipboardLabel>
+            {control()}
+          </ClipboardField>
+        </Show>
+      </ClipboardRoot>
     </ClipboardProvider>
   );
 }

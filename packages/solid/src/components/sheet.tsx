@@ -23,6 +23,7 @@ import type {
   DialogTitleProps,
 } from "./dialog";
 import { Dialog } from "./dialog";
+import { useProviderMessage } from "./provider/provider.context";
 
 // #region Context
 const { Context: SheetStylesContext, useStyles: useSheet } =
@@ -117,7 +118,7 @@ export function SheetContent(props: SheetContentProps): JSX.Element {
               asChild={(triggerProps) => (
                 <Button
                   {...triggerProps({ class: styles.slots.inline() })}
-                  aria-label="Close"
+                  aria-label={useProviderMessage("sheet.close")}
                   size="icon-sm"
                   variant="ghost"
                 >

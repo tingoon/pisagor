@@ -1,3 +1,4 @@
+import compoundRaw from "./compound.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import custom_recipeRaw from "./custom-recipe.tsx?raw";
 import disabledRaw from "./disabled.tsx?raw";
@@ -13,6 +14,7 @@ import with_labelRaw from "./with-label.tsx?raw";
 export const imports = `import { Slider } from "@pisagor/solid";`;
 
 export const sources = {
+  Compound: compoundRaw,
   Controlled: controlledRaw,
   CustomRecipe: custom_recipeRaw,
   Disabled: disabledRaw,

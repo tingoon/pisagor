@@ -16,12 +16,18 @@ export interface KbdGroupProps
     BaseKbdGroupProps {}
 
 export function KbdRoot(props: KbdProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class", "recipe", "variant"]);
+  const [local, rest] = splitProps(props, [
+    "class",
+    "recipe",
+    "size",
+    "variant",
+  ]);
   return (
     <ark.kbd
       {...rest}
       class={(local.recipe ?? kbdRecipe)({
         class: local.class,
+        size: local.size ?? "md",
         variant: local.variant,
       })}
       data-part="root"

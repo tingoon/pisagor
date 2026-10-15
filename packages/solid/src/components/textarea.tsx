@@ -13,7 +13,7 @@ import type { JSX, ParentProps } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { useClearableInput } from "../hooks";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type { SizeScaleProps, VariantClassNames } from "../internal/types";
 import { callEventHandler } from "../utils";
 import { Input } from "./input";
 import {
@@ -30,11 +30,12 @@ const { Context: TextareaStylesContext, useStyles: useTextarea } =
 type FormControlVariant = "primary" | "secondary";
 type TextareaClassNames = VariantClassNames<TextareaRecipeSlot>;
 
-type TextareaRootProps = FieldTextareaProps & {
-  variant?: FormControlVariant;
-  /** Initial value when uncontrolled. Solid has no native defaultValue on textareas. */
-  defaultValue?: string | number | readonly string[];
-};
+type TextareaRootProps = FieldTextareaProps &
+  SizeScaleProps & {
+    variant?: FormControlVariant;
+    /** Initial value when uncontrolled. Solid has no native defaultValue on textareas. */
+    defaultValue?: string | number | readonly string[];
+  };
 
 export interface TextareaProps extends TextareaRootProps, BaseTextareaProps {
   clearable?: boolean;
@@ -76,6 +77,7 @@ function TextareaField(
     "class",
     "classNames",
     "defaultValue",
+    "size",
     "ref",
   ]);
   const styles = useTextarea();
@@ -100,7 +102,7 @@ function TextareaField(
       {...rest}
       class={cn(
         formControlShellRecipe({
-          size: "md",
+          size: local.size ?? "md",
           surfaceVariant,
           variant: variant(),
         }),

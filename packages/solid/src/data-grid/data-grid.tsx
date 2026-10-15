@@ -1,6 +1,10 @@
 import type { DataGridProps as BaseDataGridProps } from "@pisagor/props";
 import { dataGridRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import {
+  cn,
+  getColumnAriaSort,
+  handleColumnResizeKeyDown,
+} from "@pisagor/utils";
 import type { RowData, TableOptions } from "@tanstack/solid-table";
 import { createTable, flexRender } from "@tanstack/solid-table";
 import { createVirtualizer } from "@tanstack/solid-virtual";
@@ -13,6 +17,7 @@ import {
   Show,
   splitProps,
 } from "solid-js";
+import { useProviderMessage } from "../components/provider/provider.context";
 import {
   Table,
   type TableCellProps,
@@ -141,7 +146,8 @@ function DataGridHeaderRow(props: DataGridHeaderRowProps): JSX.Element {
 function DataGridColumnResizer(props: DataGridColumnResizerProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const headerCell = useDataGridHeaderCellContext();
-  const { slots } = useDataGridContext();
+  const { slots, table } = useDataGridContext();
+  const resizeLabel = useProviderMessage("dataGrid.resizeColumn");
 
   return (
     <Show when={headerCell}>
@@ -149,9 +155,12 @@ function DataGridColumnResizer(props: DataGridColumnResizerProps): JSX.Element {
         const header = () => cell().header;
         return (
           <Show when={header().column.getCanResize()}>
+            {/* biome-ignore lint/a11y/useSemanticElements: focusable window-splitter handle; <hr> cannot take focus */}
             <div
               {...rest}
-              aria-hidden="true"
+              aria-label={resizeLabel}
+              aria-orientation="vertical"
+              aria-valuenow={header().column.getSize()}
               class={slots.columnResizer({
                 class: local.class,
                 resizing: header().column.getIsResizing(),
@@ -159,8 +168,15 @@ function DataGridColumnResizer(props: DataGridColumnResizerProps): JSX.Element {
               data-part="column-resizer"
               data-scope="data-grid"
               onDblClick={() => header().column.resetSize()}
+              onKeyDown={(event) =>
+                handleColumnResizeKeyDown(event, header().column, (id, size) =>
+                  table.setColumnSizing((old) => ({ ...old, [id]: size })),
+                )
+              }
               onMouseDown={header().getResizeHandler()}
               onTouchStart={header().getResizeHandler()}
+              role="separator"
+              tabIndex={0}
             />
           </Show>
         );
@@ -192,6 +208,7 @@ function DataGridHeadCell<TData extends RowData>(
       }
     >
       <Table.Head
+        aria-sort={getColumnAriaSort(local.header.column)}
         {...rest}
         class={slots.head({ class: headClass(), sizing: sizingEnabled() })}
         data-part="head"
@@ -318,7 +335,8 @@ function DataGridVirtualBody<TData extends RowData>(
   ]);
   const estimateSize = () => local.estimateSize ?? 40;
   const overscan = () => local.overscan ?? 8;
-  const viewportHeight = () => local.viewportHeight ?? "24rem";
+  const viewportHeight = () =>
+    local.viewportHeight ?? "calc(var(--spacing) * 96)";
 
   const { slots, table } = useDataGridContext<TData>();
   const rows = () => table.getRowModel().rows;
@@ -434,13 +452,13 @@ function DataGridRow<TData extends RowData>(
     <Table.Row
       {...rest}
       aria-expanded={row.getCanExpand() ? row.getIsExpanded() : undefined}
-      aria-selected={row.getIsSelected()}
       class={slots.row({ class: local.class })}
       data-depth={row.depth}
       data-expanded={row.getIsExpanded() ? "true" : undefined}
       data-grouped={row.getIsGrouped() ? "true" : undefined}
       data-part="row"
       data-scope="data-grid"
+      data-selected={row.getIsSelected() || undefined}
       data-state={row.getIsSelected() ? "selected" : undefined}
       style={local.style}
     />
@@ -522,8 +540,7 @@ function DataGridEmpty(props: DataGridEmptyProps): JSX.Element {
       data-scope="data-grid"
     >
       <Table.Cell class={slots.empty()} colSpan={span()}>
-        {local.children ??
-          "No results. Try a different search or clear filters."}
+        {local.children ?? useProviderMessage("dataGrid.empty")}
       </Table.Cell>
     </Table.Row>
   );

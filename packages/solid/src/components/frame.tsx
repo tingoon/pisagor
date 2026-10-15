@@ -4,6 +4,7 @@ import { frameRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { SizeScaleProps } from "../internal/types";
 import { SurfaceContext } from "./surface/surface.context";
 
 // #region Context
@@ -20,7 +21,8 @@ const {
 // #region Types
 export interface FrameRootProps
   extends ComponentProps<typeof ark.div>,
-    BaseFrameRootProps {}
+    BaseFrameRootProps,
+    SizeScaleProps {}
 
 export type FramePanelProps = ComponentProps<typeof ark.div>;
 export type FrameHeaderProps = ComponentProps<typeof ark.header>;
@@ -31,8 +33,15 @@ export type FrameFooterProps = ComponentProps<typeof ark.footer>;
 
 // #region Parts
 export function FrameRoot(props: FrameRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "recipe", "class"]);
-  const slots = createMemo(() => (local.recipe ?? frameRecipe)());
+  const [local, rest] = splitProps(props, [
+    "children",
+    "recipe",
+    "size",
+    "class",
+  ]);
+  const slots = createMemo(() =>
+    (local.recipe ?? frameRecipe)({ size: local.size ?? "md" }),
+  );
 
   return (
     <SurfaceContext value={{ depth: 0, variant: "secondary" }}>

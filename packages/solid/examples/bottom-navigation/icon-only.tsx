@@ -10,7 +10,7 @@ export function IconOnly() {
     <div class="flex h-72 flex-col overflow-y-auto rounded-lg border bg-muted shadow-lg/5">
       <ScrollArea>
         <div class="h-96" />
-        <BottomNavigation defaultValue="home">
+        <BottomNavigation value="home">
           <BottomNavigation.List class="absolute">
             <BottomNavigation.Item aria-label="Home" value="home">
               <BottomNavigation.ItemIcon>

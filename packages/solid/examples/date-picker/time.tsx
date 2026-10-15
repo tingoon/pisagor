@@ -3,7 +3,7 @@ export function Time() {
   return (
     <Field>
       <Field.Label>Time</Field.Label>
-      <DatePicker.Timer />
+      <DatePicker.TimeInput />
     </Field>
   );
 }

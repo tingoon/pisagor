@@ -4,6 +4,7 @@ import { tableRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { SizeScaleProps } from "../internal/types";
 
 // #region Context
 const { Context: TableStylesContext, withContext } = createSlotRecipeContext({
@@ -14,7 +15,8 @@ const { Context: TableStylesContext, withContext } = createSlotRecipeContext({
 
 export interface TableProps
   extends ComponentProps<typeof ark.table>,
-    BaseTableProps {
+    BaseTableProps,
+    SizeScaleProps {
   variant?: "plain" | "striped";
   isHoverable?: boolean;
 }
@@ -32,10 +34,13 @@ export function TableRoot(props: TableProps): JSX.Element {
     "variant",
     "isHoverable",
     "recipe",
+    "size",
     "class",
   ]);
 
-  const slots = createMemo(() => (local.recipe ?? tableRecipe)());
+  const slots = createMemo(() =>
+    (local.recipe ?? tableRecipe)({ size: local.size ?? "md" }),
+  );
 
   return (
     <TableStylesContext

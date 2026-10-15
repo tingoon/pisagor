@@ -23,12 +23,13 @@ import {
   fileUploadRecipe,
   formControlZoneRecipe,
 } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { cn, type MessageKey } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { UploadIcon, XIcon } from "../internal/icons";
 import { Button } from "./button";
+import { useProviderMessage } from "./provider/provider.context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -207,57 +208,75 @@ export function FileUploadList(props: FileUploadListProps): JSX.Element {
   const styles = useFileUpload();
   const recipe = () => local.recipe ?? fileUploadItemRecipe;
   const itemSlots = () => recipe()();
-  const files = () => fileUpload().acceptedFiles;
+  const accepted = () => fileUpload().acceptedFiles;
+  const rejected = () => fileUpload().rejectedFiles;
+
+  const renderItem = (file: File, errors?: readonly string[]) => {
+    const isImage = () => file.type.startsWith("image/");
+    const extension = () => file.name.split(".").pop();
+    return (
+      <FileUploadItem
+        {...rest}
+        class={itemSlots().listItem({ class: local.class })}
+        file={file}
+        recipe={recipe()}
+      >
+        <FileUploadItemPreview
+          class={itemSlots().listPreview()}
+          type={isImage() ? "image/*" : ".*"}
+        >
+          <Show
+            fallback={
+              <span class={itemSlots().extension()}>{extension()}</span>
+            }
+            when={isImage()}
+          >
+            <FileUploadItemPreviewImage />
+          </Show>
+        </FileUploadItemPreview>
+        <div class={itemSlots().content()}>
+          <FileUploadItemName />
+          <FileUploadItemSize />
+          <For each={errors}>
+            {(code) => (
+              <div class={itemSlots().error()}>
+                {useProviderMessage(`fileUpload.error.${code}` as MessageKey) ??
+                  code}
+              </div>
+            )}
+          </For>
+        </div>
+        <FileUploadItemDeleteTrigger
+          asChild={(triggerProps) => (
+            <Button
+              {...triggerProps({ class: itemSlots().deleteButton() })}
+              aria-label={useProviderMessage("fileUpload.removeFile")}
+              size="icon-xs"
+              variant="ghost"
+            >
+              <XIcon aria-hidden />
+            </Button>
+          )}
+        />
+      </FileUploadItem>
+    );
+  };
 
   return (
-    <Show when={files().length > 0}>
-      <FileUploadItemGroup class={styles.slots.itemGroup()}>
-        <For each={files()}>
-          {(file) => {
-            const isImage = () => file.type.startsWith("image/");
-            const extension = () => file.name.split(".").pop();
-            return (
-              <FileUploadItem
-                {...rest}
-                class={itemSlots().listItem({ class: local.class })}
-                file={file}
-                recipe={recipe()}
-              >
-                <FileUploadItemPreview
-                  class={itemSlots().listPreview()}
-                  type={isImage() ? "image/*" : ".*"}
-                >
-                  <Show
-                    fallback={
-                      <span class={itemSlots().extension()}>{extension()}</span>
-                    }
-                    when={isImage()}
-                  >
-                    <FileUploadItemPreviewImage />
-                  </Show>
-                </FileUploadItemPreview>
-                <div class={itemSlots().content()}>
-                  <FileUploadItemName />
-                  <FileUploadItemSize />
-                </div>
-                <FileUploadItemDeleteTrigger
-                  asChild={(triggerProps) => (
-                    <Button
-                      {...triggerProps({ class: itemSlots().deleteButton() })}
-                      aria-label="Remove file"
-                      size="icon-xs"
-                      variant="ghost"
-                    >
-                      <XIcon aria-hidden />
-                    </Button>
-                  )}
-                />
-              </FileUploadItem>
-            );
-          }}
-        </For>
-      </FileUploadItemGroup>
-    </Show>
+    <>
+      <Show when={accepted().length > 0}>
+        <FileUploadItemGroup class={styles.slots.itemGroup()}>
+          <For each={accepted()}>{(file) => renderItem(file)}</For>
+        </FileUploadItemGroup>
+      </Show>
+      <Show when={rejected().length > 0}>
+        <FileUploadItemGroup class={styles.slots.itemGroup()} type="rejected">
+          <For each={rejected()}>
+            {(rejection) => renderItem(rejection.file, rejection.errors)}
+          </For>
+        </FileUploadItemGroup>
+      </Show>
+    </>
   );
 }
 

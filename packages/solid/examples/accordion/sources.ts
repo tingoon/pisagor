@@ -4,6 +4,7 @@ import defaultRaw from "./default.tsx?raw";
 import disabledRaw from "./disabled.tsx?raw";
 import multipleRaw from "./multiple.tsx?raw";
 import non_collapsibleRaw from "./non-collapsible.tsx?raw";
+import sizesRaw from "./sizes.tsx?raw";
 import with_cardRaw from "./with-card.tsx?raw";
 
 export const imports = `import { Accordion } from "@pisagor/solid";`;
@@ -15,5 +16,6 @@ export const sources = {
   Disabled: disabledRaw,
   Multiple: multipleRaw,
   NonCollapsible: non_collapsibleRaw,
+  Sizes: sizesRaw,
   WithCard: with_cardRaw,
 } as const;

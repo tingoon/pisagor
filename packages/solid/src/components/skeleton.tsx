@@ -7,24 +7,29 @@ import type {
 import { skeletonRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
+import type { SizeScaleProps } from "../internal/types";
 
 export interface SkeletonTextProps
   extends ComponentProps<typeof ark.div>,
-    BaseSkeletonTextProps {
+    BaseSkeletonTextProps,
+    SizeScaleProps {
   lines?: number;
 }
 
 export interface SkeletonRootProps
   extends ComponentProps<typeof ark.div>,
-    BaseSkeletonRootProps {}
+    BaseSkeletonRootProps,
+    SizeScaleProps {}
 
 export interface SkeletonCircleProps
   extends ComponentProps<typeof ark.div>,
-    BaseSkeletonCircleProps {}
+    BaseSkeletonCircleProps,
+    SizeScaleProps {}
 
 export function SkeletonRoot(props: SkeletonRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["recipe", "class"]);
-  const slots = () => (local.recipe ?? skeletonRecipe)();
+  const [local, rest] = splitProps(props, ["recipe", "size", "class"]);
+  const slots = () =>
+    (local.recipe ?? skeletonRecipe)({ size: local.size ?? "md" });
 
   return (
     <ark.div
@@ -37,8 +42,9 @@ export function SkeletonRoot(props: SkeletonRootProps): JSX.Element {
 }
 
 export function SkeletonCircle(props: SkeletonCircleProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["recipe", "class"]);
-  const slots = () => (local.recipe ?? skeletonRecipe)();
+  const [local, rest] = splitProps(props, ["recipe", "size", "class"]);
+  const slots = () =>
+    (local.recipe ?? skeletonRecipe)({ size: local.size ?? "md" });
 
   return (
     <ark.div
@@ -51,8 +57,9 @@ export function SkeletonCircle(props: SkeletonCircleProps): JSX.Element {
 }
 
 export function SkeletonText(props: SkeletonTextProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["lines", "recipe", "class"]);
-  const slots = () => (local.recipe ?? skeletonRecipe)();
+  const [local, rest] = splitProps(props, ["lines", "recipe", "size", "class"]);
+  const slots = () =>
+    (local.recipe ?? skeletonRecipe)({ size: local.size ?? "md" });
   const lines = () => local.lines ?? 2;
 
   return (

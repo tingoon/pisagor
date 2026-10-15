@@ -6,6 +6,7 @@ import headerRaw from "./header.tsx?raw";
 import iconRaw from "./icon.tsx?raw";
 import imageRaw from "./image.tsx?raw";
 import linkRaw from "./link.tsx?raw";
+import sizesRaw from "./sizes.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 import with_avatarRaw from "./with-avatar.tsx?raw";
 import with_mediaRaw from "./with-media.tsx?raw";
@@ -21,6 +22,7 @@ export const sources = {
   Icon: iconRaw,
   Image: imageRaw,
   Link: linkRaw,
+  Sizes: sizesRaw,
   Variants: variantsRaw,
   WithAvatar: with_avatarRaw,
   WithMedia: with_mediaRaw,

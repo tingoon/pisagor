@@ -37,6 +37,12 @@ export type PaginationItemsProps = Omit<PaginationContextProps, "children">;
 
 export interface PaginationItemLinkProps extends ButtonProps {
   page?: "previous" | "next" | number;
+  /**
+   * Builds the link href for a page.
+   *
+   * @defaultValue (page) => `?page=${page}`
+   */
+  getHref?: (page: number) => string;
 }
 
 const PaginationRootProvider: Component<LocalPaginationRootProps> =
@@ -141,7 +147,7 @@ export function PaginationItems(props: PaginationItemsProps): JSX.Element {
 export function PaginationItemLink(
   props: PaginationItemLinkProps,
 ): JSX.Element {
-  const [local, rest] = splitProps(props, ["page", "children"]);
+  const [local, rest] = splitProps(props, ["page", "children", "getHref"]);
   const pagination = usePaginationContext();
 
   const pageValue = () => {
@@ -156,7 +162,13 @@ export function PaginationItemLink(
     <Button
       {...rest}
       asChild={(buttonProps) => (
-        <a {...buttonProps()} href={`?page=${pageValue()}`}>
+        <a
+          {...buttonProps()}
+          aria-current={local.page === pagination().page ? "page" : undefined}
+          href={(local.getHref ?? ((value) => `?page=${value}`))(
+            pageValue() ?? 1,
+          )}
+        >
           {local.children}
         </a>
       )}

@@ -10,6 +10,7 @@ export * from "./dropzone";
 export * from "./invalid";
 export * from "./media-capture";
 export * from "./multiple-files";
+export * from "./rejected-files";
 export { imports, sources } from "./sources";
 export * from "./trigger";
 export * from "./variants";

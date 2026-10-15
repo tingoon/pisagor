@@ -13,6 +13,7 @@ import {
   createMemo,
   createSignal,
   onCleanup,
+  onMount,
   Show,
   splitProps,
 } from "solid-js";
@@ -22,6 +23,7 @@ import { SidebarSimpleIcon } from "../internal/icons";
 import { createContext } from "../utils";
 import { Button, type ButtonProps } from "./button";
 import { Input, type InputProps } from "./input";
+import { useProviderMessage } from "./provider/provider.context";
 import { ScrollArea } from "./scroll-area";
 import { Separator, type SeparatorProps } from "./separator";
 import { Sheet, type SheetProps } from "./sheet";
@@ -68,7 +70,17 @@ export function useSidebar(): SidebarContextProps {
 export interface SidebarProviderProps
   extends ComponentProps<"div">,
     Pick<BaseSidebarProps, "recipe"> {
+  /**
+   * Initial open state. A stored value in `localStorage` (`sidebar_state`)
+   * wins after mount.
+   */
   defaultOpen?: boolean;
+  /**
+   * Whether to disable the `mod+B` toggle hotkey.
+   *
+   * @defaultValue false
+   */
+  disableHotkey?: boolean;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
 }
@@ -136,6 +148,7 @@ const SIDEBAR_WIDTH_ICON = "3rem";
 export function SidebarProvider(props: SidebarProviderProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "defaultOpen",
+    "disableHotkey",
     "open",
     "onOpenChange",
     "recipe",
@@ -164,6 +177,16 @@ export function SidebarProvider(props: SidebarProviderProps): JSX.Element {
     }
   };
 
+  onMount(() => {
+    if (local.open !== undefined || typeof localStorage === "undefined") {
+      return;
+    }
+    const stored = localStorage.getItem(SIDEBAR_STORAGE_KEY);
+    if (stored === "true" || stored === "false") {
+      setUncontrolledOpen(stored === "true");
+    }
+  });
+
   const toggleSidebar = () => {
     if (isMobile()) {
       setOpenMobile((v) => !v);
@@ -173,6 +196,9 @@ export function SidebarProvider(props: SidebarProviderProps): JSX.Element {
   };
 
   createEffect(() => {
+    if (local.disableHotkey) {
+      return;
+    }
     const onKeyDown = (event: KeyboardEvent) => {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "b") {
         event.preventDefault();
@@ -365,15 +391,15 @@ export function SidebarRail(props: SidebarRailProps): JSX.Element {
 
   return (
     <ark.button
+      aria-label={useProviderMessage("sidebar.toggle")}
       {...rest}
-      aria-label="Toggle sidebar"
       class={styles.slots.rail({ class: local.class })}
       data-part="rail"
       data-scope="sidebar"
       data-sidebar="rail"
       onClick={toggleSidebar}
       tabIndex={-1}
-      title="Toggle sidebar"
+      title={useProviderMessage("sidebar.toggle")}
       type="button"
     />
   );

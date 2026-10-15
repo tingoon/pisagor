@@ -8,7 +8,7 @@ import { Tabs as TabsPrimitive } from "@ark-ui/solid/tabs";
 import type { TabsProps as BaseTabsRootProps } from "@pisagor/props";
 import { type TabsVariantProps, tabsRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
-import { For, splitProps } from "solid-js";
+import { For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 
 // #region Context
@@ -30,7 +30,15 @@ interface TabsPresetItem {
   disabled?: boolean;
 }
 
-export type TabsListProps = TabListProps & Pick<TabsVariantProps, "variant">;
+export type TabsListProps = TabListProps &
+  Pick<TabsVariantProps, "variant"> & {
+    /**
+     * Whether to render the animated active-tab indicator.
+     *
+     * @defaultValue true
+     */
+    showIndicator?: boolean;
+  };
 export type TabsTriggerProps = TabTriggerProps;
 export type TabsContentProps = TabContentProps;
 
@@ -38,6 +46,12 @@ export interface TabsProps
   extends Omit<LocalTabsRootProps, "children">,
     Pick<TabsVariantProps, "variant"> {
   items?: TabsPresetItem[];
+  /**
+   * Whether to render the animated active-tab indicator.
+   *
+   * @defaultValue true
+   */
+  showIndicator?: boolean;
 }
 
 export const TabsRoot: Component<LocalTabsRootProps> = withProvider(
@@ -46,7 +60,12 @@ export const TabsRoot: Component<LocalTabsRootProps> = withProvider(
 );
 
 export function TabsList(props: TabsListProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "children", "class"]);
+  const [local, rest] = splitProps(props, [
+    "variant",
+    "children",
+    "class",
+    "showIndicator",
+  ]);
   const styles = useTabs();
   const variant = () => local.variant ?? "default";
 
@@ -56,9 +75,11 @@ export function TabsList(props: TabsListProps): JSX.Element {
       class={styles.slots.list({ class: local.class, variant: variant() })}
     >
       {local.children}
-      <TabsPrimitive.Indicator
-        class={styles.slots.indicator({ variant: variant() })}
-      />
+      <Show when={local.showIndicator ?? true}>
+        <TabsPrimitive.Indicator
+          class={styles.slots.indicator({ variant: variant() })}
+        />
+      </Show>
     </TabsPrimitive.List>
   );
 }
@@ -74,11 +95,15 @@ export const TabsContent: Component<TabsContentProps> = withContext(
 );
 
 export function TabsShorthand(props: TabsProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "items"]);
+  const [local, rest] = splitProps(props, [
+    "variant",
+    "items",
+    "showIndicator",
+  ]);
 
   return (
     <TabsRoot {...rest}>
-      <TabsList variant={local.variant}>
+      <TabsList showIndicator={local.showIndicator} variant={local.variant}>
         <For each={local.items}>
           {(tab) => (
             <TabsTrigger disabled={tab.disabled} value={tab.value}>

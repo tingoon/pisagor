@@ -3,6 +3,12 @@ import { type AlertRecipeSlot, alertRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import {
+  CheckCircleIcon,
+  InfoIcon,
+  WarningCircleIcon,
+  WarningIcon,
+} from "../internal/icons";
 import type { VariantClassNames } from "../internal/types";
 
 // #region Context
@@ -29,7 +35,10 @@ export interface AlertProps extends Omit<AlertRootProps, "children"> {
   action?: JSX.Element;
   /** Description content. */
   description?: JSX.Element;
-  /** Leading icon, rendered as a direct child so the grid layout aligns. */
+  /**
+   * Leading icon, rendered as a direct child so the grid layout aligns.
+   * Status variants get a default icon; pass `null` to hide it.
+   */
   icon?: JSX.Element;
   /** Bold title line. */
   title?: JSX.Element;
@@ -58,6 +67,21 @@ export const AlertAction = withContext("div", { name: "Action" });
 // #endregion
 
 // #region Shorthand
+function defaultAlertIcon(variant: string | null | undefined): JSX.Element {
+  switch (variant) {
+    case "destructive":
+      return <WarningCircleIcon />;
+    case "info":
+      return <InfoIcon />;
+    case "success":
+      return <CheckCircleIcon />;
+    case "warning":
+      return <WarningIcon />;
+    default:
+      return null;
+  }
+}
+
 export function AlertShorthand(props: AlertProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "action",
@@ -72,7 +96,7 @@ export function AlertShorthand(props: AlertProps): JSX.Element {
 
   return (
     <AlertRoot {...rest}>
-      {local.icon}
+      {"icon" in local ? local.icon : defaultAlertIcon(props.variant)}
       <Show when={local.title !== undefined}>
         <AlertTitle {...local.titleProps} class={local.classNames?.title}>
           {local.title}

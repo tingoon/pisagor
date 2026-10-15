@@ -4,6 +4,7 @@ import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
+import type { SizeScaleProps } from "../../internal/types";
 import { useItemGroup } from "./item-group.context";
 
 // #region Context
@@ -16,7 +17,8 @@ const {
 
 export interface ItemProps
   extends ComponentProps<typeof ark.div>,
-    BaseItemProps {}
+    BaseItemProps,
+    SizeScaleProps {}
 
 export type ItemMediaProps = ComponentProps<typeof ark.div> & ItemVariantProps;
 export type ItemHeaderProps = ComponentProps<typeof ark.div>;
@@ -28,13 +30,19 @@ export type ItemFooterProps = ComponentProps<typeof ark.div>;
 
 /** Inherits `variant` from the nearest ItemGroup when not set. */
 export function ItemRoot(props: ItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "variant",
+    "recipe",
+    "size",
+    "class",
+  ]);
   const group = useItemGroup();
   const variant = () => local.variant ?? group?.variant ?? "default";
   const resolved = () => ({
     ...itemRecipe.defaultVariants,
     ...local.recipe?.defaultVariants,
     variant: variant(),
+    ...(local.size ? { size: local.size } : {}),
   });
   const slots = createMemo(() => (local.recipe ?? itemRecipe)(resolved()));
 

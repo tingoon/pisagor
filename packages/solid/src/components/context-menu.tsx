@@ -90,10 +90,18 @@ export function ContextMenuShortcut(
 }
 
 export const ContextMenu = Object.assign(ContextMenuRoot, {
+  Arrow: DropdownMenu.Arrow,
+  CheckboxItem: DropdownMenu.CheckboxItem,
   Content: ContextMenuContent,
   ContextTrigger: ContextMenuContextTrigger,
   Item: ContextMenuItem,
   ItemGroup: ContextMenuItemGroup,
+  ItemGroupLabel: DropdownMenu.ItemGroupLabel,
+  ItemIndicator: DropdownMenu.ItemIndicator,
+  ItemText: DropdownMenu.ItemText,
+  Positioner: DropdownMenu.Positioner,
+  RadioItem: DropdownMenu.RadioItem,
+  RadioItemGroup: DropdownMenu.RadioItemGroup,
   Separator: ContextMenuSeparator,
   Shortcut: ContextMenuShortcut,
   Sub: ContextMenuSub,

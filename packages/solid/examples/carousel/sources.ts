@@ -1,4 +1,5 @@
 import autoplayRaw from "./autoplay.tsx?raw";
+import autoplay_controlsRaw from "./autoplay-controls.tsx?raw";
 import compoundRaw from "./compound.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import custom_recipeRaw from "./custom-recipe.tsx?raw";
@@ -17,6 +18,7 @@ export const imports = `import { Carousel } from "@pisagor/solid";`;
 
 export const sources = {
   Autoplay: autoplayRaw,
+  AutoplayControls: autoplay_controlsRaw,
   Compound: compoundRaw,
   Controlled: controlledRaw,
   CustomRecipe: custom_recipeRaw,
