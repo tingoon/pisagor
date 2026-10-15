@@ -3,6 +3,7 @@ import type { MarqueeProps as BaseMarqueeProps } from "@pisagor/props";
 import { marqueeRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 
 // #region Context
 const {
@@ -93,7 +94,7 @@ export const MarqueeContent = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {

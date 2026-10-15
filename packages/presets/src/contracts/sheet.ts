@@ -21,7 +21,7 @@ export const sheetRecipe = tv({
       "bg-popover/92 backdrop-blur-2xl backdrop-saturate-150",
       "text-popover-foreground",
       "shadow-lg",
-      "transition-[opacity,translate] duration-slow ease-emphasized will-change-transform",
+      "transition duration-slow ease-emphasized will-change-transform",
       "data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
       "data-[state=open]:fade-in-0 data-[state=open]:animate-in",
       "transparency-reduce:bg-popover transparency-reduce:backdrop-blur-none transparency-reduce:backdrop-saturate-100",
@@ -76,7 +76,7 @@ export const sheetRecipe = tv({
       inset: {
         content: [
           "sm:rounded-3xl sm:border sm:border-border/50",
-          "sm:**:data-[scope=sheet]:data-[part=footer]:rounded-b-[calc(var(--radius-3xl)-1px)]",
+          "sm:**:data-[scope=sheet]:data-[part=footer]:rounded-b-3xl",
         ],
         positioner: "sm:p-4",
       },

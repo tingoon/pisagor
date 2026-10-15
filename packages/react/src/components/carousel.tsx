@@ -3,13 +3,22 @@ import type {
   CarouselPrevTriggerProps,
   CarouselRootProps as CarouselPrimitiveRootProps,
 } from "@ark-ui/react/carousel";
-import { Carousel as CarouselPrimitive } from "@ark-ui/react/carousel";
-import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
+import {
+  Carousel as CarouselPrimitive,
+  useCarouselContext,
+} from "@ark-ui/react/carousel";
+import {
+  CaretLeftIcon,
+  CaretRightIcon,
+  PauseIcon,
+  PlayIcon,
+} from "@phosphor-icons/react";
 import type { CarouselProps as BaseCarouselRootProps } from "@pisagor/props";
 import { carouselRecipe } from "@pisagor/recipes";
-import type { FunctionComponent, ReactNode } from "react";
+import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button } from "./button";
+import { getMessage } from "./provider/provider.context";
 
 // #region Context
 const {
@@ -46,7 +55,7 @@ const CarouselRootBase = withProvider(CarouselPrimitive.Root, {
 
 export function CarouselRoot({
   children,
-  spacing = "16px",
+  spacing = "calc(var(--spacing) * 4)",
   ...rest
 }: CarouselRootProps) {
   return (
@@ -73,7 +82,7 @@ export function CarouselPrevTrigger({
       className={slots.prevTrigger({ className })}
     >
       <Button
-        aria-label="Previous"
+        aria-label={getMessage("carousel.previous")}
         clickEffect={false}
         pill
         size="icon-md"
@@ -98,7 +107,7 @@ export function CarouselNextTrigger({
       className={slots.nextTrigger({ className })}
     >
       <Button
-        aria-label="Next"
+        aria-label={getMessage("carousel.next")}
         clickEffect={false}
         pill
         size="icon-md"
@@ -109,6 +118,42 @@ export function CarouselNextTrigger({
     </CarouselPrimitive.NextTrigger>
   );
 }
+
+export function CarouselAutoplayTrigger({
+  className,
+  ...rest
+}: ComponentProps<typeof CarouselPrimitive.AutoplayTrigger>) {
+  const carousel = useCarouselContext();
+
+  return (
+    <CarouselPrimitive.AutoplayTrigger {...rest} asChild className={className}>
+      <Button
+        aria-label={getMessage(
+          carousel.isPlaying ? "carousel.pause" : "carousel.play",
+        )}
+        clickEffect={false}
+        pill
+        size="icon-md"
+        variant="outline"
+      >
+        {carousel.isPlaying ? (
+          <PauseIcon aria-hidden />
+        ) : (
+          <PlayIcon aria-hidden />
+        )}
+      </Button>
+    </CarouselPrimitive.AutoplayTrigger>
+  );
+}
+
+export const CarouselProgressText = withContext(
+  CarouselPrimitive.ProgressText,
+  {
+    defaultProps: { "data-part": "progress-text" },
+    name: "ProgressText",
+    slot: "progressText",
+  },
+);
 
 export const CarouselIndicatorGroup = withContext(
   CarouselPrimitive.IndicatorGroup,
@@ -180,6 +225,7 @@ export type {
 } from "@ark-ui/react/carousel";
 
 export const Carousel = Object.assign(CarouselShorthand, {
+  AutoplayTrigger: CarouselAutoplayTrigger,
   Control: CarouselControl,
   Indicator: CarouselIndicator,
   IndicatorGroup: CarouselIndicatorGroup,
@@ -187,5 +233,6 @@ export const Carousel = Object.assign(CarouselShorthand, {
   ItemGroup: CarouselItemGroup,
   NextTrigger: CarouselNextTrigger,
   PrevTrigger: CarouselPrevTrigger,
+  ProgressText: CarouselProgressText,
   Root: CarouselRoot,
 });

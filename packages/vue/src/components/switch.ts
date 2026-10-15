@@ -3,7 +3,7 @@ import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type { ClassValue, VariantClassNames } from "../internal/types";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -34,11 +34,15 @@ const SwitchRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: switchRecipe,
       type: Function as PropType<typeof switchRecipe>,
+    },
+    size: {
+      default: "md",
+      type: String as PropType<"sm" | "md" | "lg">,
     },
     variant: {
       default: undefined,
@@ -51,7 +55,9 @@ const SwitchRoot = defineComponent({
       surfaceVariant,
       variant: props.variant ?? ("primary" as FormControlVariant),
     }));
-    const recipeSlots = computed(() => props.recipe({ ...shellArgs.value }));
+    const recipeSlots = computed(() =>
+      props.recipe({ ...shellArgs.value, size: props.size }),
+    );
 
     return () =>
       h(
@@ -90,7 +96,7 @@ const SwitchThumb = withContext(SwitchPrimitive.Thumb, {
 // #endregion
 
 // #region Closed
-export const Switch = defineComponent({
+const SwitchShorthand = defineComponent({
   emits: {
     checkedChange: (_details: { checked: boolean }) => true,
     valueChange: (_value: boolean) => true,
@@ -100,7 +106,7 @@ export const Switch = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     classNames: {
       default: undefined,
@@ -134,3 +140,10 @@ export const Switch = defineComponent({
   },
 });
 // #endregion
+
+export const Switch = Object.assign(SwitchShorthand, {
+  Control: SwitchControl,
+  HiddenInput: SwitchPrimitive.HiddenInput,
+  Root: SwitchRoot,
+  Thumb: SwitchThumb,
+});

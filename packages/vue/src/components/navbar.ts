@@ -4,7 +4,8 @@ import { type NavbarRecipeSlot, navbarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type { ClassValue, VariantClassNames } from "../internal/types";
+import { useProviderMessage } from "./provider/provider";
 
 // #region Slot recipe context
 const {
@@ -45,10 +46,10 @@ export const NavbarNav = defineComponent({
   inheritAttrs: false,
   name: "NavbarNav",
   props: {
-    ariaLabel: { default: "Main", type: String },
+    ariaLabel: { default: undefined, type: String },
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     classNames: {
       default: undefined,
@@ -65,7 +66,7 @@ export const NavbarNav = defineComponent({
         ark.nav as ArkPart,
         {
           ...attrs,
-          "aria-label": props.ariaLabel,
+          "aria-label": props.ariaLabel ?? useProviderMessage("navbar.label"),
           class: slots$.nav({
             class: cn(props.class, attrs.class, props.classNames?.nav),
           }),

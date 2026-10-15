@@ -31,3 +31,7 @@ Compose toolbar parts for a custom chrome layout.
 Extend `toolbarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
 :::example CustomRecipe
+
+## Accessibility
+
+`Toolbar.Actions` renders `role="toolbar"`. Arrow keys move focus between its buttons and links, and Home/End jump to the first or last one. Give it an `aria-label` (via `actionsProps` in the shorthand) when the page has more than one toolbar.

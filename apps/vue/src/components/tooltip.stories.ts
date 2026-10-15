@@ -29,6 +29,10 @@ export const WithKeyboardShortcut = meta.story({
   render: exampleRender(Examples.WithKeyboardShortcut),
 });
 
+export const Compound = meta.story({
+  render: exampleRender(Examples.Compound),
+});
+
 export const Disabled = meta.story({
   render: exampleRender(Examples.Disabled),
 });
@@ -39,4 +43,8 @@ export const Placements = meta.story({
 
 export const CustomRecipe = meta.story({
   render: exampleRender(Examples.CustomRecipe),
+});
+
+export const WithoutArrow = meta.story({
+  render: exampleRender(Examples.WithoutArrow),
 });

@@ -55,3 +55,7 @@ export const AutoHide = meta.story({
 export const Clearable = meta.story({
   render: exampleRender(Examples.Clearable),
 });
+
+export const Compound = meta.story({
+  render: exampleRender(Examples.Compound),
+});

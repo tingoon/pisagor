@@ -12,6 +12,12 @@ Let users pick a score from one to five stars.
 
 :::example Default
 
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+:::example Sizes
+
 ### Count
 
 Set `count` to change how many stars are shown.
@@ -35,6 +41,12 @@ Replace stars with another symbol when the metaphor fits better.
 Present a readonly score in a testimonial-style layout.
 
 :::example Testimonial
+
+### Compound
+
+Compose the rating from parts for custom item rendering.
+
+:::example Compound
 
 ### Controlled
 

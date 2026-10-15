@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Button } from "@pisagor/vue";
+import { Button, toast } from "@pisagor/vue";
 
 const handleAction = () => {
   const id = toast.create({

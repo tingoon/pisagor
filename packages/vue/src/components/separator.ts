@@ -2,12 +2,19 @@ import type { SeparatorProps as BaseSeparatorProps } from "@pisagor/props";
 import { separatorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
+import type { ClassValue } from "../internal/types";
 
 export interface SeparatorProps extends BaseSeparatorProps {
   class?: unknown;
   dataPart?: string;
   dataScope?: string;
   orientation?: "horizontal" | "vertical";
+  /**
+   * Purely visual separator: hidden from assistive tech (`role="none"`).
+   *
+   * @defaultValue false
+   */
+  decorative?: boolean;
 }
 
 export const Separator = defineComponent({
@@ -16,10 +23,11 @@ export const Separator = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     dataPart: { default: "root", type: String },
     dataScope: { default: "separator", type: String },
+    decorative: { default: false, type: Boolean },
     orientation: {
       default: "horizontal",
       type: String as PropType<"horizontal" | "vertical">,
@@ -33,12 +41,12 @@ export const Separator = defineComponent({
     return () =>
       h("div", {
         ...attrs,
-        "aria-orientation": props.orientation,
+        "aria-orientation": props.decorative ? undefined : props.orientation,
         class: cn(props.recipe(), props.class),
         "data-orientation": props.orientation,
         "data-part": props.dataPart,
         "data-scope": props.dataScope,
-        role: "separator",
+        role: props.decorative ? "none" : "separator",
       });
   },
 });

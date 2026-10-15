@@ -8,10 +8,16 @@ import type { HTMLAttributes } from "svelte/elements";
 type Props = HTMLAttributes<HTMLElement> & {
   children?: import("svelte").Snippet;
   html?: string;
+  /**
+   * Sanitizer applied to `html` before injection, e.g.
+   * `(html) => DOMPurify.sanitize(html)`. Recommended for user-generated content.
+   */
+  sanitize?: (html: string) => string;
 } & BaseProseProps;
 
 let {
   html,
+  sanitize,
   recipe = proseRecipe,
   class: className,
   children,
@@ -27,7 +33,7 @@ let {
     data-part="root"
     data-scope="prose"
   >
-    {@html html}
+    {@html sanitize ? sanitize(html) : html}
   </Ark>
 {:else}
   <Ark

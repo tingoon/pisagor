@@ -3,6 +3,10 @@ import { tv, type VariantProps } from "tailwind-variants";
 export const tabsRecipe = tv({
   defaultVariants: {
     /**
+     * Size scale.
+     */
+    size: "md",
+    /**
      * Visual emphasis.
      */
     variant: "default",
@@ -13,7 +17,7 @@ export const tabsRecipe = tv({
     indicator: [
       "absolute inset-s-0 bottom-0",
       "h-(--height) w-(--width)",
-      "transition-[width,translate] duration-normal ease-emphasized",
+      "transition-all duration-normal ease-emphasized",
       "motion-reduce:transition-none!",
     ],
     list: [
@@ -25,23 +29,33 @@ export const tabsRecipe = tv({
     ],
     trigger: [
       "relative",
-      "h-9 sm:h-8",
       "flex shrink-0 grow items-center justify-center gap-1.5",
-      "px-[calc(--spacing(2.5)-1px)]",
+      "px-2.5",
       "whitespace-nowrap font-medium text-sm",
       "rounded-lg border border-transparent",
       "cursor-pointer",
-      "transition-[color,background-color,box-shadow] duration-fast ease-out",
+      "transition duration-fast ease-out",
       "data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start",
       "hover:text-foreground/72",
       "aria-selected:text-foreground",
       "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/24",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
-      "[&_svg:not([class*='size-'])]:size-4.5 sm:[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:-mx-0.5 [&_svg]:shrink-0",
+      "[&_svg]:pointer-events-none [&_svg]:-mx-0.5 [&_svg]:shrink-0",
       "motion-reduce:transition-none!",
     ],
   },
   variants: {
+    size: {
+      lg: {
+        trigger: "h-10 px-3 text-base [&_svg:not([class*='size-'])]:size-5",
+      },
+      md: {
+        trigger: "h-8 [&_svg:not([class*='size-'])]:size-4",
+      },
+      sm: {
+        trigger: "h-7 px-2 text-xs [&_svg:not([class*='size-'])]:size-3.5",
+      },
+    },
     variant: {
       default: {
         indicator: ["-z-1 rounded-lg bg-card shadow-sm"],

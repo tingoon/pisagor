@@ -208,14 +208,19 @@ export function DropdownMenuQuickItem({
 
 export function DropdownMenuCheckboxItem({
   children,
+  variant = "default",
   recipe = dropdownMenuItemRecipe,
   className,
   ...rest
 }: DropdownMenuCheckboxItemProps) {
-  const slots = recipe({ inset: true, variant: "default" });
+  const slots = recipe({ inset: true, variant });
 
   return (
-    <MenuPrimitive.CheckboxItem {...rest} className={slots.base({ className })}>
+    <MenuPrimitive.CheckboxItem
+      {...rest}
+      className={slots.base({ className })}
+      data-variant={variant}
+    >
       <MenuPrimitive.ItemIndicator className={slots.indicator()}>
         <CheckIcon />
       </MenuPrimitive.ItemIndicator>
@@ -224,6 +229,33 @@ export function DropdownMenuCheckboxItem({
         {children}
       </MenuPrimitive.ItemText>
     </MenuPrimitive.CheckboxItem>
+  );
+}
+
+export function DropdownMenuItemText({
+  className,
+  ...rest
+}: ComponentProps<typeof MenuPrimitive.ItemText>) {
+  return (
+    <MenuPrimitive.ItemText
+      {...rest}
+      className={dropdownMenuItemRecipe().text({ className })}
+    />
+  );
+}
+
+export function DropdownMenuItemIndicator({
+  children,
+  className,
+  ...rest
+}: ComponentProps<typeof MenuPrimitive.ItemIndicator>) {
+  return (
+    <MenuPrimitive.ItemIndicator
+      {...rest}
+      className={dropdownMenuItemRecipe().indicator({ className })}
+    >
+      {children ?? <CheckIcon />}
+    </MenuPrimitive.ItemIndicator>
   );
 }
 
@@ -259,14 +291,19 @@ export function DropdownMenuItemGroupLabel({
 
 export function DropdownMenuRadioItem({
   children,
+  variant = "default",
   recipe = dropdownMenuItemRecipe,
   className,
   ...rest
 }: DropdownMenuRadioItemProps) {
-  const slots = recipe({ inset: true, variant: "default" });
+  const slots = recipe({ inset: true, variant });
 
   return (
-    <MenuPrimitive.RadioItem {...rest} className={slots.base({ className })}>
+    <MenuPrimitive.RadioItem
+      {...rest}
+      className={slots.base({ className })}
+      data-variant={variant}
+    >
       <MenuPrimitive.ItemIndicator className={slots.indicator()}>
         <CheckIcon />
       </MenuPrimitive.ItemIndicator>
@@ -278,8 +315,11 @@ export function DropdownMenuRadioItem({
   );
 }
 
-export function DropdownMenuSub(props: DropdownMenuRootProps) {
-  return <DropdownMenuRoot {...props} />;
+export function DropdownMenuSub({
+  positioning = { placement: "right-start" },
+  ...rest
+}: DropdownMenuRootProps) {
+  return <MenuPrimitive.Root {...rest} positioning={positioning} />;
 }
 
 export function DropdownMenuSubContent({
@@ -349,7 +389,6 @@ export function DropdownMenuArrow({ style, ...rest }: DropdownMenuArrowProps) {
         "--arrow-background": "var(--popover)",
         "--arrow-size": "calc(1.5 * var(--spacing))",
         ...style,
-        left: "20px",
       }}
     >
       <MenuPrimitive.ArrowTip className={slots.arrowTip()} />
@@ -385,6 +424,8 @@ export const DropdownMenu = Object.assign(DropdownMenuRoot, {
   Item: DropdownMenuItem,
   ItemGroup: DropdownMenuItemGroup,
   ItemGroupLabel: DropdownMenuItemGroupLabel,
+  ItemIndicator: DropdownMenuItemIndicator,
+  ItemText: DropdownMenuItemText,
   Positioner: DropdownMenuPositioner,
   QuickItem: DropdownMenuQuickItem,
   RadioItem: DropdownMenuRadioItem,

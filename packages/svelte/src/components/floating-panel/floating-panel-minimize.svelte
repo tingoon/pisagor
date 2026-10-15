@@ -6,6 +6,9 @@ import {
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import MinusIcon from "phosphor-svelte/lib/MinusIcon";
+import { useMessageResolver } from "../provider/provider.context";
+
+const t = useMessageResolver();
 
 type Props = Omit<FloatingPanelStageTriggerProps, "stage"> & {
   size?: "icon-xs" | "icon-sm" | "icon-md";
@@ -21,8 +24,8 @@ let {
 </script>
 
 <FloatingPanelPrimitive.StageTrigger
+  aria-label={t("floatingPanel.minimize")}
   {...rest}
-  aria-label="Minimize"
   class={cn(buttonRecipe({ size, variant }).base(), className)}
   stage="minimized"
   type="button"

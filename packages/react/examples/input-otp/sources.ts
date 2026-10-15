@@ -7,6 +7,7 @@ import four_digitsRaw from "./four-digits.tsx?raw";
 import invalidRaw from "./invalid.tsx?raw";
 import maskRaw from "./mask.tsx?raw";
 import separatorRaw from "./separator.tsx?raw";
+import sizesRaw from "./sizes.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 import with_placeholderRaw from "./with-placeholder.tsx?raw";
 
@@ -22,6 +23,7 @@ export const sources = {
   Invalid: invalidRaw,
   Mask: maskRaw,
   Separator: separatorRaw,
+  Sizes: sizesRaw,
   Variants: variantsRaw,
   WithPlaceholder: with_placeholderRaw,
 } as const;

@@ -37,6 +37,12 @@ Choose visual weight or emphasis so the table matches importance in the surround
 
 :::example Variants
 
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default. Astro parts cannot read the root size, so pass the same `size` to `Table.Head` and `Table.Cell`.
+
+:::example Sizes
+
 ### Footer
 
 Add a footer for summaries beneath the rows.

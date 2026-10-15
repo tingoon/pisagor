@@ -137,10 +137,10 @@ export function FileShorthand({
 
 FileMedia.displayName = "File.Media";
 FileSize.displayName = "File.Size";
-FileShorthand.displayName = "File";
+FileShorthand.displayName = "FileItem";
 // #endregion
 
-export const File = Object.assign(FileShorthand, {
+const fileParts = {
   Actions: FileActions,
   Content: FileContent,
   Media: FileMedia,
@@ -148,4 +148,11 @@ export const File = Object.assign(FileShorthand, {
   Name: FileName,
   Root: FileRoot,
   Size: FileSize,
-});
+};
+
+export const FileItem = Object.assign(FileShorthand, fileParts);
+
+/**
+ * @deprecated Use `FileItem`. `File` shadows the global `File` constructor.
+ */
+export const File = Object.assign(FileShorthand, fileParts);

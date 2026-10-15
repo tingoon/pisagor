@@ -1,4 +1,5 @@
 import custom_recipeRaw from "./custom-recipe.svelte?raw";
+import decorativeRaw from "./decorative.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
 import inline_navigationRaw from "./inline-navigation.svelte?raw";
 import listRaw from "./list.svelte?raw";
@@ -8,6 +9,7 @@ export const imports = `import { Separator } from "@pisagor/svelte";`;
 
 export const sources = {
   CustomRecipe: custom_recipeRaw,
+  Decorative: decorativeRaw,
   Default: defaultRaw,
   InlineNavigation: inline_navigationRaw,
   List: listRaw,

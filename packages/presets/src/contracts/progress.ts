@@ -2,11 +2,7 @@ import { tv } from "tailwind-variants";
 
 export const progressRecipe = tv({
   slots: {
-    base: [
-      "flex flex-wrap gap-3",
-      "data-[orientation=horizontal]:w-full",
-      "data-[orientation=vertical]:-scale-y-100",
-    ],
+    base: ["flex flex-wrap gap-3", "data-[orientation=horizontal]:w-full"],
     header: ["flex w-full items-center justify-between"],
     range: [
       "bg-primary",
@@ -19,7 +15,8 @@ export const progressRecipe = tv({
     track: [
       "bg-input",
       "rounded-full",
-      "overflow-x-hidden",
+      "overflow-hidden",
+      "data-[orientation=vertical]:-scale-y-100",
       "data-[orientation=horizontal]:h-2 data-[orientation=horizontal]:w-full",
       "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2",
     ],

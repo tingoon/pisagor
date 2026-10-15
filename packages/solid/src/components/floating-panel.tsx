@@ -21,6 +21,7 @@ import { Portal } from "solid-js/web";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { ArrowsOutIcon, CornersInIcon, MinusIcon } from "../internal/icons";
 import { Button, type ButtonProps } from "./button";
+import { useProviderMessage } from "./provider/provider.context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -167,7 +168,7 @@ export function FloatingPanelMinimize(
       asChild={(triggerProps) => (
         <Button
           {...triggerProps()}
-          aria-label="Minimize"
+          aria-label={useProviderMessage("floatingPanel.minimize")}
           size={local.size ?? "icon-xs"}
           variant={local.variant ?? "ghost"}
         >
@@ -189,7 +190,7 @@ export function FloatingPanelMaximize(
       asChild={(triggerProps) => (
         <Button
           {...triggerProps()}
-          aria-label="Maximize"
+          aria-label={useProviderMessage("floatingPanel.maximize")}
           size={local.size ?? "icon-xs"}
           variant={local.variant ?? "ghost"}
         >
@@ -213,7 +214,7 @@ export function FloatingPanelRestore(
       asChild={(triggerProps) => (
         <Button
           {...triggerProps()}
-          aria-label="Restore"
+          aria-label={useProviderMessage("floatingPanel.restore")}
           size={local.size ?? "icon-xs"}
           variant={local.variant ?? "outline"}
         >

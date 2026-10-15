@@ -18,8 +18,8 @@ type Props = {
   dir?: "ltr" | "rtl";
   locale?: string;
   /**
-   * Optional message map for library default strings. Consumers own localization;
-   * components may look up keys via `useProviderMessages`.
+   * Partial message overrides merged over the built-in English
+   * `defaultMessages` from `@pisagor/utils`.
    */
   messages?: ProviderMessages;
 };
@@ -45,14 +45,14 @@ setProviderMessagesContext(
   new Proxy({} as ProviderMessages, {
     get(_target, prop) {
       if (typeof prop !== "string") return undefined;
-      return messages[prop];
+      return (messages as Record<string, string>)[prop];
     },
     getOwnPropertyDescriptor(_target, prop) {
       if (typeof prop === "string" && Object.hasOwn(messages, prop)) {
         return {
           configurable: true,
           enumerable: true,
-          value: messages[prop],
+          value: (messages as Record<string, string>)[prop],
         };
       }
       return undefined;
@@ -68,12 +68,7 @@ setProviderMessagesContext(
 </script>
 
 <LocaleProvider {locale}>
-  <div
-    data-dir={dir}
-    data-part="root"
-    data-scope="provider"
-    style="display: contents"
-  >
+  <div data-part="root" data-scope="provider" {dir} style="display: contents">
     <Toaster />
     {@render children?.()}
   </div>

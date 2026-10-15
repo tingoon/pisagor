@@ -13,6 +13,7 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
+import type { ClassValue } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 
@@ -50,7 +51,7 @@ export const InputGroupRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     size: { default: "md", type: String as PropType<InputGroupProps["size"]> },
     variant: {
@@ -106,7 +107,7 @@ export const InputGroupAddon = defineComponent({
     },
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: inputGroupAddonRecipe,
@@ -144,7 +145,7 @@ export const InputGroupButton = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: inputGroupButtonRecipe,
@@ -180,7 +181,7 @@ export const InputGroupText = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: inputGroupTextRecipe,

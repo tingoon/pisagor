@@ -11,7 +11,7 @@ export const appShellRecipe = tv({
     base: [
       "group/app-shell",
       "relative grid w-full min-h-svh bg-muted/40 text-foreground",
-      "transition-[grid-template-columns] duration-normal ease-out motion-reduce:transition-none!",
+      "transition-all duration-normal ease-out motion-reduce:transition-none!",
       "data-resizing:transition-none!",
     ],
     content: [
@@ -52,9 +52,9 @@ export const appShellRecipe = tv({
     ],
     railItem: [
       "relative flex size-10 items-center justify-center rounded-xl",
-      "text-muted-foreground transition-[color,background-color,box-shadow,transform] duration-fast ease-out",
+      "text-muted-foreground transition duration-fast ease-out",
       "hover:bg-accent hover:text-accent-foreground",
-      "active:scale-[0.97]",
+      "active:scale-97",
       "focus-visible:outline-hidden focus-visible:ring-0.75 focus-visible:ring-ring/24",
       "data-[active=true]:bg-card data-[active=true]:text-foreground data-[active=true]:shadow-xs",
       "[&_svg:not([class*='size-'])]:size-5 [&_svg]:shrink-0",

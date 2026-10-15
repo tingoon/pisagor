@@ -11,7 +11,7 @@ import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { StarIcon } from "../internal/icons";
-import type { VariantClassNames } from "../internal/types";
+import type { SizeScaleProps, VariantClassNames } from "../internal/types";
 
 // #region Context
 const {
@@ -31,6 +31,7 @@ type RatingIndicatorProps = ComponentProps<"span">;
 type RatingClassNames = VariantClassNames<RatingRecipeSlot>;
 
 type RatingRootProps = RatingGroupRootProps &
+  SizeScaleProps &
   BaseRatingProps & {
     variant?: FormControlVariant;
   };
@@ -53,10 +54,13 @@ function RatingRoot(props: RatingRootProps): JSX.Element {
     "allowHalf",
     "count",
     "recipe",
+    "size",
     "class",
   ]);
   const variant = () => local.variant ?? ("primary" as FormControlVariant);
-  const slots = createMemo(() => (local.recipe ?? ratingRecipe)());
+  const slots = createMemo(() =>
+    (local.recipe ?? ratingRecipe)({ size: local.size ?? "md" }),
+  );
   const surfaceTone = () =>
     variant() === "secondary" ? "opacity-90" : undefined;
 
@@ -104,7 +108,7 @@ function RatingIndicator(props: RatingIndicatorProps): JSX.Element {
   );
 }
 
-export function Rating(props: RatingProps): JSX.Element {
+function RatingShorthand(props: RatingProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "variant",
     "controlProps",
@@ -177,3 +181,13 @@ export function Rating(props: RatingProps): JSX.Element {
     </RatingRoot>
   );
 }
+
+export const Rating = Object.assign(RatingShorthand, {
+  Context: RatingGroupPrimitive.Context,
+  Control: RatingControl,
+  HiddenInput: RatingGroupPrimitive.HiddenInput,
+  Indicator: RatingIndicator,
+  Item: RatingItem,
+  ItemContext: RatingGroupPrimitive.ItemContext,
+  Root: RatingRoot,
+});

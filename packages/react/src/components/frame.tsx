@@ -3,6 +3,7 @@ import type { FrameProps as BaseFrameRootProps } from "@pisagor/props";
 import { frameRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { SizeScaleProps } from "../internal/types";
 import { SurfaceContext } from "./surface/surface.context";
 
 // #region Context
@@ -18,12 +19,13 @@ const {
 
 // #region Parts
 export function FrameRoot({
+  size = "md",
   children,
   recipe = frameRecipe,
   className,
   ...rest
-}: ComponentProps<typeof ark.div> & BaseFrameRootProps) {
-  const slots = recipe();
+}: ComponentProps<typeof ark.div> & BaseFrameRootProps & SizeScaleProps) {
+  const slots = recipe({ size });
 
   return (
     <SurfaceContext value={{ depth: 0, variant: "secondary" }}>

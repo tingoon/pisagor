@@ -7,7 +7,7 @@ import {
 } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type { ClassValue, VariantClassNames } from "../internal/types";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -47,13 +47,13 @@ const JsonTreeViewTree = withContext(JsonTreeViewPrimitive.Tree, {
 // #endregion
 
 // #region Closed
-export const JsonTreeView = defineComponent({
+const JsonTreeViewShorthand = defineComponent({
   inheritAttrs: false,
   name: "JsonTreeView",
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     classNames: {
       default: undefined,
@@ -102,3 +102,8 @@ export const JsonTreeView = defineComponent({
   },
 });
 // #endregion
+
+export const JsonTreeView = Object.assign(JsonTreeViewShorthand, {
+  Root: JsonTreeViewRoot,
+  Tree: JsonTreeViewTree,
+});

@@ -3,6 +3,7 @@ import custom_spacingRaw from "./custom-spacing.astro?raw";
 import defaultRaw from "./default.astro?raw";
 import iconRaw from "./icon.astro?raw";
 import productRaw from "./product.astro?raw";
+import sizesRaw from "./sizes.astro?raw";
 
 export const imports = `---
 import { Card } from "@pisagor/astro";
@@ -14,4 +15,5 @@ export const sources = {
   Default: defaultRaw,
   Icon: iconRaw,
   Product: productRaw,
+  Sizes: sizesRaw,
 } as const;

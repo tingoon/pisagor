@@ -5,8 +5,10 @@ import defaultRaw from "./default.vue?raw";
 import disabledRaw from "./disabled.vue?raw";
 import orientation_horizontalRaw from "./orientation-horizontal.vue?raw";
 import orientation_verticalRaw from "./orientation-vertical.vue?raw";
+import sizesRaw from "./sizes.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import with_iconsRaw from "./with-icons.vue?raw";
+import without_indicatorRaw from "./without-indicator.vue?raw";
 
 export const imports = `import { Tabs } from "@pisagor/vue";`;
 
@@ -18,6 +20,8 @@ export const sources = {
   Disabled: disabledRaw,
   OrientationHorizontal: orientation_horizontalRaw,
   OrientationVertical: orientation_verticalRaw,
+  Sizes: sizesRaw,
   Variants: variantsRaw,
   WithIcons: with_iconsRaw,
+  WithoutIndicator: without_indicatorRaw,
 } as const;

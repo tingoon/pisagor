@@ -23,7 +23,7 @@ export const toastItemRecipe = tv({
       "scale-(--scale) opacity-(--opacity)",
       "transition-all duration-normal will-change-[translate,opacity,scale]",
       "ease-emphasized",
-      "data-[state=closed]:transition-[translate,scale,opacity]",
+      "data-[state=closed]:transition",
       "data-[state=closed]:duration-[300ms,300ms,150ms]",
       "data-[state=closed]:ease-out",
       "transparency-reduce:bg-popover transparency-reduce:backdrop-blur-none transparency-reduce:backdrop-saturate-100",

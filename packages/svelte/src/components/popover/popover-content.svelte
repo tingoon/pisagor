@@ -8,8 +8,11 @@ import type { PopoverProps as BasePopoverProps } from "@pisagor/props";
 import { buttonRecipe, popoverRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
+import { useMessageResolver } from "../provider/provider.context";
 import { Context } from "./popover.context";
 import PopoverPositioner from "./popover-positioner.svelte";
+
+const t = useMessageResolver();
 
 type Props = ArkPopoverContentProps & {
   showCloseButton?: boolean;
@@ -42,7 +45,7 @@ Context.set({
       {@render children?.()}
       {#if showCloseButton}
         <PopoverPrimitive.CloseTrigger
-          aria-label="Close"
+          aria-label={t("popover.close")}
           class={cn(
             buttonRecipe({ size: "icon-sm", variant: "ghost" }).base(),
             slots.close(),

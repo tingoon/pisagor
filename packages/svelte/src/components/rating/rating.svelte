@@ -10,7 +10,7 @@ import type { RatingRecipeSlot } from "@pisagor/recipes";
 import StarIcon from "phosphor-svelte/lib/StarIcon";
 import type { Component } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
-import type { VariantClassNames } from "../../internal/types";
+import type { SizeScaleProps, VariantClassNames } from "../../internal/types";
 import RatingControl from "./rating-control.svelte";
 import RatingIndicator from "./rating-indicator.svelte";
 import RatingItem from "./rating-item.svelte";
@@ -40,7 +40,8 @@ type Props = Omit<RatingGroupRootProps, "children" | "onValueChange"> & {
   onValueChange?: (value: number) => void;
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-} & BaseRatingProps;
+} & BaseRatingProps &
+  SizeScaleProps;
 
 let {
   controlProps,

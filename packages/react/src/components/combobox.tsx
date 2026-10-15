@@ -28,12 +28,13 @@ import {
   comboboxRecipe,
   type InputRootVariantProps,
 } from "@pisagor/recipes";
-
 import type { ReactNode } from "react";
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { FormControlVariant } from "../internal/types";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
+import { getMessage } from "./provider/provider.context";
 
 // #region Context
 const { Context: ComboboxStylesContext } = createSlotRecipeContext({
@@ -49,6 +50,8 @@ function useComboboxSlots() {
 /** Root-level control props (`variant`, `size`) read by `Combobox.Input`. */
 const ComboboxControlContext = createContext<InputRootVariantProps>({});
 ComboboxControlContext.displayName = "ComboboxControlContext";
+/** True inside `Combobox.Control`, so `Combobox.Input` does not render a second control. */
+const ComboboxInsideControlContext = createContext(false);
 
 /** @deprecated Prefer composing within Combobox.Root; kept for public API. */
 export function useComboboxRoot() {
@@ -58,7 +61,6 @@ export function useComboboxRoot() {
 // #endregion
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 interface ComboboxPresetItem {
   label: string;
@@ -170,10 +172,12 @@ export function ComboboxControl({ className, ...rest }: ComboboxControlProps) {
   const slots = useComboboxSlots();
 
   return (
-    <ComboboxPrimitive.Control
-      {...rest}
-      className={slots.control({ className })}
-    />
+    <ComboboxInsideControlContext value={true}>
+      <ComboboxPrimitive.Control
+        {...rest}
+        className={slots.control({ className })}
+      />
+    </ComboboxInsideControlContext>
   );
 }
 
@@ -189,41 +193,46 @@ export function ComboboxInput({
   const { inputValue } = useComboboxContext();
   const slots = useComboboxSlots();
   const control = use(ComboboxControlContext);
+  const insideControl = use(ComboboxInsideControlContext);
   const size = sizeProp ?? control.size ?? "md";
   const variant = variantProp ?? control.variant;
 
-  return (
-    <ComboboxControl data-size={size}>
-      <InputGroup className={className} size={size} variant={variant}>
-        {children}
-        <ComboboxPrimitive.Input asChild>
-          <InputGroup.Input {...rest} />
-        </ComboboxPrimitive.Input>
-        <InputGroup.Addon align="inline-end">
-          {showTrigger && (
+  const group = (
+    <InputGroup className={className} size={size} variant={variant}>
+      {children}
+      <ComboboxPrimitive.Input asChild>
+        <InputGroup.Input {...rest} />
+      </ComboboxPrimitive.Input>
+      <InputGroup.Addon align="inline-end">
+        {showTrigger && (
+          <InputGroup.Button
+            asChild
+            className={slots.triggerHidden()}
+            size="icon-xs"
+            variant="ghost"
+          >
+            <ComboboxTrigger />
+          </InputGroup.Button>
+        )}
+        {clearable && inputValue && (
+          <ComboboxClearTrigger asChild>
             <InputGroup.Button
-              asChild
-              className={slots.triggerHidden()}
+              aria-label={getMessage("combobox.clear")}
               size="icon-xs"
               variant="ghost"
             >
-              <ComboboxTrigger />
+              <XIcon aria-hidden />
             </InputGroup.Button>
-          )}
-          {clearable && inputValue && (
-            <ComboboxClearTrigger asChild>
-              <InputGroup.Button
-                aria-label="Clear"
-                size="icon-xs"
-                variant="ghost"
-              >
-                <XIcon aria-hidden />
-              </InputGroup.Button>
-            </ComboboxClearTrigger>
-          )}
-        </InputGroup.Addon>
-      </InputGroup>
-    </ComboboxControl>
+          </ComboboxClearTrigger>
+        )}
+      </InputGroup.Addon>
+    </InputGroup>
+  );
+
+  return insideControl ? (
+    group
+  ) : (
+    <ComboboxControl data-size={size}>{group}</ComboboxControl>
   );
 }
 
@@ -242,7 +251,7 @@ export function ComboboxTrigger({
     >
       {children ?? (
         <Button
-          aria-label="Toggle"
+          aria-label={getMessage("combobox.toggle")}
           className={slots.triggerButton()}
           variant="ghost"
         >
@@ -254,7 +263,7 @@ export function ComboboxTrigger({
 }
 
 export function ComboboxClearTrigger({
-  "aria-label": ariaLabel = "Clear selected value(s)",
+  "aria-label": ariaLabel = getMessage("combobox.clear"),
   ...rest
 }: ComboboxClearTriggerProps) {
   return <ComboboxPrimitive.ClearTrigger {...rest} aria-label={ariaLabel} />;
@@ -361,7 +370,7 @@ export function ComboboxEmpty({
 
   return (
     <ComboboxPrimitive.Empty {...rest} className={slots.empty({ className })}>
-      {children || "No results found. Try a different search."}
+      {children || getMessage("combobox.empty")}
     </ComboboxPrimitive.Empty>
   );
 }

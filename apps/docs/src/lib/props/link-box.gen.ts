@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/link-box` (native HTML attributes omitted). */
 export const linkBoxProps: PropRow[] = [
   {
-    defaultValue: "linkBoxRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "LinkBoxRecipeFn | undefined",
-  },
+    defaultValue: "linkBoxRecipe",
+    description: "Style recipe override.",
+  }
 ];

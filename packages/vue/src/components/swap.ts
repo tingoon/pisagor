@@ -3,6 +3,7 @@ import type { SwapProps as BaseSwapProps } from "@pisagor/props";
 import { type SwapVariantProps, swapRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
+import type { ClassValue } from "../internal/types";
 
 // #region Types
 export type SwapVariant = NonNullable<SwapVariantProps["variant"]>;
@@ -37,7 +38,7 @@ export const Swap = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     lazyMount: { default: true, type: Boolean },
     off: {

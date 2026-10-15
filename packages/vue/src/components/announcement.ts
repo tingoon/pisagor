@@ -3,6 +3,7 @@ import type { AnnouncementProps as BaseAnnouncementRootProps } from "@pisagor/pr
 import { announcementRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -47,7 +48,10 @@ export const AnnouncementShorthand = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<VNodeChild>,
     },
-    class: { default: undefined },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     title: {
       default: undefined,
       type: [String, Object, Array] as PropType<VNodeChild>,

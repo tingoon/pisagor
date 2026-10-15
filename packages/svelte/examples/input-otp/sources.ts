@@ -7,6 +7,7 @@ import four_digitsRaw from "./four-digits.svelte?raw";
 import invalidRaw from "./invalid.svelte?raw";
 import maskRaw from "./mask.svelte?raw";
 import separatorRaw from "./separator.svelte?raw";
+import sizesRaw from "./sizes.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_placeholderRaw from "./with-placeholder.svelte?raw";
 
@@ -22,6 +23,7 @@ export const sources = {
   Invalid: invalidRaw,
   Mask: maskRaw,
   Separator: separatorRaw,
+  Sizes: sizesRaw,
   Variants: variantsRaw,
   WithPlaceholder: with_placeholderRaw,
 } as const;

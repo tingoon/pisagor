@@ -34,11 +34,11 @@ const {
 // #endregion
 
 // #region Types
-export interface LocalStepsRootProps
+export interface StepsRootProps
   extends StepsPrimitiveRootProps,
     BaseStepsRootProps {}
 
-export interface LocalStepsItemProps
+export interface StepsItemProps
   extends StepsPrimitiveItemProps,
     BaseStepsItemProps {}
 
@@ -51,7 +51,7 @@ export type StepsDescriptionProps = ComponentProps<typeof ark.span>;
 export const StepsRoot = withStepsProvider(StepsPrimitive.Root, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<LocalStepsRootProps>;
+}) as FunctionComponent<StepsRootProps>;
 
 export const StepsList = withStepsContext(StepsPrimitive.List, {
   name: "List",
@@ -60,7 +60,7 @@ export const StepsList = withStepsContext(StepsPrimitive.List, {
 export const StepsItem = withStepsItemProvider(StepsPrimitive.Item, {
   name: "Item",
   slot: "base",
-}) as FunctionComponent<LocalStepsItemProps>;
+}) as FunctionComponent<StepsItemProps>;
 
 export const StepsTrigger = withStepsItemContext(StepsPrimitive.Trigger, {
   name: "Trigger",
@@ -129,11 +129,9 @@ export type {
   StepsCompletedContentProps,
   StepsContentProps,
   StepsIndicatorProps,
-  StepsItemProps,
   StepsListProps,
   StepsNextTriggerProps,
   StepsPrevTriggerProps,
-  StepsRootProps,
   StepsSeparatorProps,
   StepsTriggerProps,
 } from "@ark-ui/react/steps";

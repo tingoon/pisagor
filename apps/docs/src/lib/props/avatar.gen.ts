@@ -4,24 +4,24 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/avatar` (native HTML attributes omitted). */
 export const avatarProps: PropRow[] = [
   {
+    name: "shape",
+    type: "\"circle\" | \"rounded\" | \"square\" | undefined",
     defaultValue: "`circle`",
     description: "Shape of the control.",
-    name: "shape",
-    type: '"circle" | "rounded" | "square" | undefined',
   },
   {
+    name: "size",
+    type: "\"lg\" | \"md\" | \"sm\" | undefined",
     defaultValue: "`md`",
     description: "Control size.",
-    name: "size",
-    type: '"lg" | "md" | "sm" | undefined',
   },
   {
-    defaultValue: "avatarRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "AvatarRecipeFn | undefined",
-  },
+    defaultValue: "avatarRecipe",
+    description: "Style recipe override.",
+  }
 ];

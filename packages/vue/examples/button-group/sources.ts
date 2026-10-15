@@ -3,6 +3,7 @@ import defaultRaw from "./default.vue?raw";
 import nestedRaw from "./nested.vue?raw";
 import orientation_horizontalRaw from "./orientation-horizontal.vue?raw";
 import orientation_verticalRaw from "./orientation-vertical.vue?raw";
+import sizesRaw from "./sizes.vue?raw";
 import with_separatorRaw from "./with-separator.vue?raw";
 
 export const imports = `import { ButtonGroup } from "@pisagor/vue";`;
@@ -13,5 +14,6 @@ export const sources = {
   Nested: nestedRaw,
   OrientationHorizontal: orientation_horizontalRaw,
   OrientationVertical: orientation_verticalRaw,
+  Sizes: sizesRaw,
   WithSeparator: with_separatorRaw,
 } as const;

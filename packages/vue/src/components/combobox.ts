@@ -1,6 +1,9 @@
 import type { CollectionItem, ListCollection } from "@ark-ui/vue/collection";
 import { createListCollection } from "@ark-ui/vue/collection";
-import type { ComboboxRootProps as ArkComboboxRootProps } from "@ark-ui/vue/combobox";
+import type {
+  ComboboxRootProps as ArkComboboxRootProps,
+  ComboboxInputValueChangeDetails,
+} from "@ark-ui/vue/combobox";
 import {
   Combobox as ComboboxPrimitive,
   useComboboxContext as useCombobox,
@@ -13,15 +16,20 @@ import {
   computed,
   defineComponent,
   h,
+  type InjectionKey,
+  inject,
   type PropType,
+  provide,
   Teleport,
   unref,
   type VNodeChild,
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue, LoosePropValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
+import { useProviderMessage } from "./provider/provider";
 
 // #region Context
 const {
@@ -121,6 +129,12 @@ export const ComboboxRoot = defineComponent({
       type: Object as PropType<ListCollection<CollectionItem> | undefined>,
     },
     lazyMount: { default: true, type: Boolean },
+    onInputValueChange: {
+      default: undefined,
+      type: Function as PropType<
+        (details: ComboboxInputValueChangeDetails) => void
+      >,
+    },
     onValueChange: {
       default: undefined,
       type: Function as PropType<ComboboxRootProps["onValueChange"]>,
@@ -161,6 +175,7 @@ export const ComboboxRoot = defineComponent({
           ...attrs,
           collection: props.collection,
           lazyMount: props.lazyMount,
+          onInputValueChange: props.onInputValueChange,
           onValueChange: props.onValueChange
             ? (details: { value: string[] }) =>
                 props.onValueChange?.(details.value)
@@ -174,18 +189,24 @@ export const ComboboxRoot = defineComponent({
   },
 });
 
+/** True inside `Combobox.Control`, so `Combobox.Input` does not render a second control. */
+const ComboboxInsideControlKey: InjectionKey<boolean> = Symbol(
+  "ComboboxInsideControl",
+);
+
 export const ComboboxControl = defineComponent({
   inheritAttrs: false,
   name: "ComboboxControl",
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     // Allow consumers to pass data-size via attrs; styled root uses variants.
   },
   setup(props, { attrs, slots }) {
     const getSlots = useComboboxSlots();
+    provide(ComboboxInsideControlKey, true);
 
     return () => {
       const styleSlots = getSlots();
@@ -208,7 +229,7 @@ export const ComboboxInput = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     clearable: { default: false, type: Boolean },
     disabled: { default: undefined, type: Boolean },
@@ -227,13 +248,14 @@ export const ComboboxInput = defineComponent({
 
     const api = useCombobox();
     const controlRef = useComboboxControlRef();
+    const insideControl = inject(ComboboxInsideControlKey, false);
 
     return () => {
       const styleSlots = getSlots();
       const control = unref(controlRef);
       const size = props.size ?? control.size ?? "md";
 
-      return h(ComboboxControl as ArkPart, { "data-size": size }, () =>
+      const group = () =>
         h(
           InputGroup as ArkPart,
           {
@@ -275,8 +297,11 @@ export const ComboboxInput = defineComponent({
               ],
             ),
           ],
-        ),
-      );
+        );
+
+      return insideControl
+        ? group()
+        : h(ComboboxControl as ArkPart, { "data-size": size }, group);
     };
   },
 });
@@ -287,7 +312,7 @@ export const ComboboxTrigger = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -319,7 +344,7 @@ export const ComboboxClearTrigger = defineComponent({
   inheritAttrs: false,
   name: "ComboboxClearTrigger",
   props: {
-    "aria-label": { default: "Clear selected value(s)", type: String },
+    "aria-label": { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -327,7 +352,8 @@ export const ComboboxClearTrigger = defineComponent({
         ComboboxPrimitive.ClearTrigger as ArkPart,
         {
           ...attrs,
-          "aria-label": props["aria-label"],
+          "aria-label":
+            props["aria-label"] ?? useProviderMessage("select.clear"),
         },
         () => slots.default?.(),
       );
@@ -371,7 +397,7 @@ export const ComboboxContent = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -402,7 +428,7 @@ export const ComboboxItemGroup = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     heading: {
       default: undefined,
@@ -430,7 +456,7 @@ export const ComboboxItemGroupLabel = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -457,9 +483,9 @@ export const ComboboxItem = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
-    item: { default: undefined, type: Object as PropType<unknown> },
+    item: { default: undefined, type: Object as PropType<LoosePropValue> },
     recipe: {
       default: comboboxRecipe,
       type: Function as PropType<typeof comboboxRecipe>,
@@ -501,7 +527,7 @@ export const ComboboxEmpty = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -516,7 +542,7 @@ export const ComboboxEmpty = defineComponent({
           ...attrs,
           class: cn(styleSlots.empty(), props.class, attrs.class),
         },
-        () => slots.default?.() ?? "No results found. Try a different search.",
+        () => slots.default?.() ?? useProviderMessage("combobox.empty"),
       );
     };
   },
@@ -528,7 +554,7 @@ export const ComboboxList = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {

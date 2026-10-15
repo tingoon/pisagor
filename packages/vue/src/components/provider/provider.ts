@@ -1,5 +1,10 @@
 import { LocaleProvider } from "@ark-ui/vue/locale";
 import {
+  type MessageKey,
+  type ProviderMessages,
+  resolveMessage,
+} from "@pisagor/utils";
+import {
   computed,
   defineComponent,
   h,
@@ -9,7 +14,7 @@ import {
 } from "vue";
 
 // #region Types
-export type ProviderMessages = Record<string, string>;
+export type { MessageKey, ProviderMessages } from "@pisagor/utils";
 
 export interface ProviderProps {
   /**
@@ -19,8 +24,8 @@ export interface ProviderProps {
   dir?: "ltr" | "rtl";
   locale?: string;
   /**
-   * Optional message map for library default strings. Consumers own localization;
-   * components may look up keys via `useProviderMessages`.
+   * Partial message overrides merged over the built-in English
+   * `defaultMessages` from `@pisagor/utils`.
    */
   messages?: ProviderMessages;
 }
@@ -31,12 +36,11 @@ const ProviderMessagesKey: InjectionKey<ProviderMessages> =
   Symbol("ProviderMessages");
 
 /**
- * Resolve a library message key from the nearest `Provider` message map.
- * Falls back to `fallback` when the key is missing.
+ * Resolve a library message key. User `messages` from the nearest `Provider`
+ * are merged over the built-in English `defaultMessages`.
  */
-export function useProviderMessage(key: string, fallback: string) {
-  const messages = useProviderMessages() ?? {};
-  return messages[key] ?? fallback;
+export function useProviderMessage(key: MessageKey): string {
+  return resolveMessage(useProviderMessages(), key);
 }
 
 export function useProviderMessages() {
@@ -71,7 +75,15 @@ export const Provider = defineComponent({
   setup(props, { attrs, slots }) {
     const dir = computed(() => resolveDir(props.locale, props.dir));
 
-    provide(ProviderMessagesKey, props.messages);
+    provide(
+      ProviderMessagesKey,
+      new Proxy({} as ProviderMessages, {
+        get: (_target, key) =>
+          typeof key === "string"
+            ? (props.messages as Record<string, string>)[key]
+            : undefined,
+      }),
+    );
 
     return () =>
       h(

@@ -12,6 +12,12 @@ Explain that a view has no data and point to the next action.
 
 :::example Default
 
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+:::example Sizes
+
 ### Compact
 
 Use a denser empty state when the region is small.

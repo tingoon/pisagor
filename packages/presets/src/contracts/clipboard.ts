@@ -3,6 +3,10 @@ import { tv, type VariantProps } from "tailwind-variants";
 export const clipboardRecipe = tv({
   defaultVariants: {
     /**
+     * Size scale.
+     */
+    size: "md",
+    /**
      * Value size.
      */
     valueSize: "md",
@@ -16,6 +20,11 @@ export const clipboardRecipe = tv({
     value: ["inline-flex items-center", "px-3", "text-base md:text-sm"],
   },
   variants: {
+    size: {
+      lg: { input: "h-9", label: "text-base" },
+      md: {},
+      sm: { input: "h-7", label: "text-xs" },
+    },
     valueSize: {
       lg: { value: "h-9" },
       md: { value: "h-8" },

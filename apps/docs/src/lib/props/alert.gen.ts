@@ -4,18 +4,18 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/alert` (native HTML attributes omitted). */
 export const alertProps: PropRow[] = [
   {
+    name: "variant",
+    type: "\"default\" | \"destructive\" | \"info\" | \"success\" | \"warning\" | undefined",
     defaultValue: "`default`",
     description: "Visual emphasis.",
-    name: "variant",
-    type: '"default" | "destructive" | "info" | "success" | "warning" | undefined',
   },
   {
-    defaultValue: "alertRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "AlertRecipeFn | undefined",
-  },
+    defaultValue: "alertRecipe",
+    description: "Style recipe override.",
+  }
 ];

@@ -4,24 +4,24 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/field` (native HTML attributes omitted). */
 export const fieldProps: PropRow[] = [
   {
+    name: "orientation",
+    type: "\"horizontal\" | \"responsive\" | \"vertical\" | undefined",
     defaultValue: "`vertical`",
     description: "Layout orientation.",
-    name: "orientation",
-    type: '"horizontal" | "responsive" | "vertical" | undefined',
   },
   {
-    defaultValue: "`false`",
-    description: "Reverse.",
     name: "reverse",
     type: "boolean | undefined",
+    defaultValue: "`false`",
+    description: "Reverse.",
   },
   {
-    defaultValue: "fieldRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "FieldRecipeFn | undefined",
-  },
+    defaultValue: "fieldRecipe",
+    description: "Style recipe override.",
+  }
 ];

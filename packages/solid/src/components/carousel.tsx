@@ -8,14 +8,23 @@ import type {
   CarouselPrevTriggerProps,
   CarouselRootProps as CarouselPrimitiveRootProps,
 } from "@ark-ui/solid/carousel";
-import { Carousel as CarouselPrimitive } from "@ark-ui/solid/carousel";
+import {
+  Carousel as CarouselPrimitive,
+  useCarouselContext,
+} from "@ark-ui/solid/carousel";
 import type { CarouselProps as BaseCarouselRootProps } from "@pisagor/props";
 import { carouselRecipe } from "@pisagor/recipes";
-import type { Component, JSX } from "solid-js";
-import { For, splitProps } from "solid-js";
+import type { Component, ComponentProps, JSX } from "solid-js";
+import { For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CaretLeftIcon, CaretRightIcon } from "../internal/icons";
+import {
+  CaretLeftIcon,
+  CaretRightIcon,
+  PauseIcon,
+  PlayIcon,
+} from "../internal/icons";
 import { Button } from "./button";
+import { useProviderMessage } from "./provider/provider.context";
 
 // #region Context
 const {
@@ -48,7 +57,10 @@ export function CarouselRoot(props: CarouselRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "spacing"]);
 
   return (
-    <CarouselRootBase {...rest} spacing={local.spacing ?? "16px"}>
+    <CarouselRootBase
+      {...rest}
+      spacing={local.spacing ?? "calc(var(--spacing) * 4)"}
+    >
       {local.children}
     </CarouselRootBase>
   );
@@ -72,7 +84,7 @@ export function CarouselPrevTrigger(
           {...triggerProps({
             class: styles.slots.prevTrigger({ class: local.class }),
           })}
-          aria-label="Previous"
+          aria-label={useProviderMessage("carousel.previous")}
           clickEffect={false}
           pill
           size="icon-md"
@@ -98,7 +110,7 @@ export function CarouselNextTrigger(
           {...triggerProps({
             class: styles.slots.nextTrigger({ class: local.class }),
           })}
-          aria-label="Next"
+          aria-label={useProviderMessage("carousel.next")}
           clickEffect={false}
           pill
           size="icon-md"
@@ -110,6 +122,42 @@ export function CarouselNextTrigger(
     />
   );
 }
+
+export function CarouselAutoplayTrigger(
+  props: ComponentProps<typeof CarouselPrimitive.AutoplayTrigger>,
+): JSX.Element {
+  const carousel = useCarouselContext();
+  const playLabel = useProviderMessage("carousel.play");
+  const pauseLabel = useProviderMessage("carousel.pause");
+
+  return (
+    <CarouselPrimitive.AutoplayTrigger
+      {...props}
+      asChild={(triggerProps) => (
+        <Button
+          {...triggerProps()}
+          aria-label={carousel().isPlaying ? pauseLabel : playLabel}
+          clickEffect={false}
+          pill
+          size="icon-md"
+          variant="outline"
+        >
+          <Show fallback={<PlayIcon aria-hidden />} when={carousel().isPlaying}>
+            <PauseIcon aria-hidden />
+          </Show>
+        </Button>
+      )}
+    />
+  );
+}
+
+export const CarouselProgressText: Component<
+  ComponentProps<typeof CarouselPrimitive.ProgressText>
+> = withContext(CarouselPrimitive.ProgressText, {
+  defaultProps: { "data-part": "progress-text" },
+  name: "ProgressText",
+  slot: "progressText",
+});
 
 export const CarouselIndicatorGroup: Component<CarouselIndicatorGroupProps> =
   withContext(CarouselPrimitive.IndicatorGroup, {
@@ -174,6 +222,7 @@ export type {
 } from "@ark-ui/solid/carousel";
 
 export const Carousel = Object.assign(CarouselShorthand, {
+  AutoplayTrigger: CarouselAutoplayTrigger,
   Control: CarouselControl,
   Indicator: CarouselIndicator,
   IndicatorGroup: CarouselIndicatorGroup,
@@ -181,5 +230,6 @@ export const Carousel = Object.assign(CarouselShorthand, {
   ItemGroup: CarouselItemGroup,
   NextTrigger: CarouselNextTrigger,
   PrevTrigger: CarouselPrevTrigger,
+  ProgressText: CarouselProgressText,
   Root: CarouselRoot,
 });

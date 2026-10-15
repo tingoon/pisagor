@@ -8,6 +8,7 @@ import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { CaretRightIcon, DotsThreeIcon } from "../internal/icons";
+import { useProviderMessage } from "./provider/provider.context";
 
 // #region Context
 const {
@@ -65,7 +66,9 @@ export function BreadcrumbRoot(props: BreadcrumbRootProps): JSX.Element {
     >
       <ark.nav
         {...rest}
-        aria-label={local["aria-label"] ?? "Breadcrumb"}
+        aria-label={
+          local["aria-label"] ?? useProviderMessage("breadcrumb.label")
+        }
         data-part="root"
         data-scope="breadcrumb"
       >

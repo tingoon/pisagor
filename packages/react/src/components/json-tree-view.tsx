@@ -53,7 +53,7 @@ const JsonTreeViewTree = withContext(JsonTreeViewPrimitive.Tree, {
 // #endregion
 
 // #region Closed
-export function JsonTreeView({
+function JsonTreeViewShorthand({
   renderValue,
   treeProps,
   className,
@@ -74,8 +74,13 @@ export function JsonTreeView({
 // #endregion
 
 // #region Display Names
-JsonTreeView.displayName = "JsonTreeView";
+JsonTreeViewShorthand.displayName = "JsonTreeView";
 
 // #endregion
 
 export type { JsonTreeViewTreeProps } from "@ark-ui/react/json-tree-view";
+
+export const JsonTreeView = Object.assign(JsonTreeViewShorthand, {
+  Root: JsonTreeViewRoot,
+  Tree: JsonTreeViewTree,
+});

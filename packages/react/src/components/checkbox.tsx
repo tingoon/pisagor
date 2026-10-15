@@ -1,5 +1,7 @@
 import {
+  type CheckboxControlProps,
   type CheckboxIndicatorProps,
+  type CheckboxLabelProps,
   Checkbox as CheckboxPrimitive,
   type CheckboxGroupProps as CheckboxPrimitiveGroupProps,
   type CheckboxRootProps,
@@ -14,12 +16,11 @@ import {
   checkboxRecipe,
   formControlToggleRecipe,
 } from "@pisagor/recipes";
-
 import { cn } from "@pisagor/utils";
+import type { FormControlVariant, SizeScaleProps } from "../internal/types";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 export interface CheckboxGroupProps
   extends Omit<CheckboxPrimitiveGroupProps, "onValueChange">,
@@ -27,10 +28,12 @@ export interface CheckboxGroupProps
   onValueChange?: (value: string[]) => void;
 }
 
-export interface CheckboxProps extends CheckboxRootProps, BaseCheckboxProps {
+export interface CheckboxProps
+  extends CheckboxRootProps,
+    BaseCheckboxProps,
+    SizeScaleProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-  onValueChange?: (value: boolean) => void;
 }
 
 type CheckboxIndicatorPartProps = CheckboxIndicatorProps & {
@@ -56,10 +59,10 @@ export function CheckboxGroup({
 }
 
 export function CheckboxRoot({
+  size = "md",
   variant: variantProp,
   tabIndex,
   onCheckedChange,
-  onValueChange,
   recipe = checkboxRecipe,
   className,
   ...rest
@@ -75,26 +78,15 @@ export function CheckboxRoot({
   const controlProps = { "data-variant": resolved.variant };
   const slots = recipe();
 
-  const handleCheckedChange =
-    onCheckedChange || onValueChange
-      ? (
-          details: Parameters<NonNullable<CheckboxProps["onCheckedChange"]>>[0],
-        ) => {
-          onCheckedChange?.(details);
-          onValueChange?.(details.checked === true);
-        }
-      : undefined;
-
   return (
     <CheckboxPrimitive.Root
       {...rest}
       {...controlProps}
       className={cn(
-        formControlToggleRecipe({ size: "md", ...shellArgs }),
+        formControlToggleRecipe({ size, ...shellArgs }),
         slots.base({ className }),
       )}
-      onCheckedChange={handleCheckedChange}
-      role="checkbox"
+      onCheckedChange={onCheckedChange}
     >
       <CheckboxPrimitive.Control>
         <CheckboxIndicator recipe={recipe}>
@@ -125,9 +117,80 @@ function CheckboxIndicator({
     />
   );
 }
+
+/** Compound root: lays out `Checkbox.Control` and `Checkbox.Label`. */
+export function CheckboxCompoundRoot({
+  recipe = checkboxRecipe,
+  className,
+  ...rest
+}: CheckboxRootProps & { recipe?: typeof checkboxRecipe }) {
+  return (
+    <CheckboxPrimitive.Root
+      {...rest}
+      className={recipe().root({ className })}
+    />
+  );
+}
+
+/** The styled box; renders check / minus indicators when empty. */
+export function CheckboxControl({
+  size = "md",
+  variant: variantProp,
+  recipe = checkboxRecipe,
+  children,
+  className,
+  ...rest
+}: CheckboxControlProps &
+  SizeScaleProps & {
+    recipe?: typeof checkboxRecipe;
+    variant?: FormControlVariant;
+  }) {
+  const surfaceVariant = useFormControlSurface();
+  const variant = variantProp ?? "primary";
+  const slots = recipe();
+
+  return (
+    <CheckboxPrimitive.Control
+      {...rest}
+      className={cn(
+        formControlToggleRecipe({ size, surfaceVariant, variant }),
+        slots.base(),
+        slots.control({ className }),
+      )}
+      data-variant={variant}
+    >
+      {children ?? (
+        <>
+          <CheckboxIndicator recipe={recipe}>
+            <CheckIcon />
+          </CheckboxIndicator>
+          <CheckboxIndicator indeterminate recipe={recipe}>
+            <MinusIcon />
+          </CheckboxIndicator>
+        </>
+      )}
+    </CheckboxPrimitive.Control>
+  );
+}
+
+export function CheckboxLabel({
+  recipe = checkboxRecipe,
+  className,
+  ...rest
+}: CheckboxLabelProps & { recipe?: typeof checkboxRecipe }) {
+  return (
+    <CheckboxPrimitive.Label
+      {...rest}
+      className={recipe().label({ className })}
+    />
+  );
+}
 // #endregion
 
 // #region Display Names
+CheckboxCompoundRoot.displayName = "Checkbox.Root";
+CheckboxControl.displayName = "Checkbox.Control";
+CheckboxLabel.displayName = "Checkbox.Label";
 CheckboxGroup.displayName = "Checkbox.Group";
 CheckboxRoot.displayName = "Checkbox";
 CheckboxIndicator.displayName = "Checkbox.Indicator";
@@ -140,5 +203,10 @@ export type {
 } from "@ark-ui/react/checkbox";
 
 export const Checkbox = Object.assign(CheckboxRoot, {
+  Control: CheckboxControl,
   Group: CheckboxGroup,
+  HiddenInput: CheckboxPrimitive.HiddenInput,
+  Indicator: CheckboxIndicator,
+  Label: CheckboxLabel,
+  Root: CheckboxCompoundRoot,
 });

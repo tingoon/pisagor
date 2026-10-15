@@ -18,7 +18,6 @@ const arrowStyle = $derived(
   [
     "--arrow-background: var(--popover)",
     "--arrow-size: calc(1.5 * var(--spacing))",
-    "left: 20px",
     style,
   ]
     .filter(Boolean)

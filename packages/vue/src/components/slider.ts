@@ -1,15 +1,27 @@
 import { Slider as SliderPrimitive } from "@ark-ui/vue/slider";
 import type { SliderProps as BaseSliderProps } from "@pisagor/props";
-import { sliderRecipe } from "@pisagor/recipes";
-import { defineComponent, h, type PropType, type VNodeChild } from "vue";
+import { fieldRecipe, sliderRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
+import {
+  computed,
+  defineComponent,
+  h,
+  type InjectionKey,
+  inject,
+  type PropType,
+  provide,
+  type VNodeChild,
+} from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: SliderStylesContext } = createSlotRecipeContext({
-  name: "Slider",
-  recipe: sliderRecipe,
-});
+const { Context: SliderStylesContext, useStyles: useSliderStyles } =
+  createSlotRecipeContext({
+    name: "Slider",
+    recipe: sliderRecipe,
+  });
 // #endregion
 
 type FormControlVariant = "primary" | "secondary";
@@ -34,13 +46,170 @@ export interface SliderProps extends BaseSliderProps {
   variant?: FormControlVariant;
 }
 
-export const Slider = defineComponent({
+// #region Parts
+const SliderVariantKey: InjectionKey<() => FormControlVariant> =
+  Symbol("SliderVariant");
+
+function useSliderVariant() {
+  return inject(SliderVariantKey, () => "primary" as FormControlVariant);
+}
+
+const classProp = {
+  default: undefined,
+  type: [String, Object, Array] as PropType<ClassValue>,
+};
+
+type SliderSlot =
+  | "control"
+  | "header"
+  | "marker"
+  | "markerGroup"
+  | "markerLabel"
+  | "markerTick"
+  | "range"
+  | "thumb"
+  | "track"
+  | "value";
+
+function sliderPart(
+  name: string,
+  component: ArkPart,
+  slot: SliderSlot,
+  extraClass?: (variant: FormControlVariant) => string | undefined,
+) {
+  return defineComponent({
+    inheritAttrs: false,
+    name: `Slider.${name}`,
+    props: { class: classProp },
+    setup(props, { attrs, slots }) {
+      const styles = useSliderStyles();
+      const variant = useSliderVariant();
+
+      return () =>
+        h(
+          component,
+          {
+            ...attrs,
+            class: styles.slots[slot]({
+              class: cn(
+                extraClass?.(variant()),
+                props.class as string | undefined,
+              ),
+            }),
+          },
+          slots,
+        );
+    },
+  });
+}
+
+const SliderRoot = defineComponent({
+  inheritAttrs: false,
+  name: "Slider.Root",
+  props: {
+    class: classProp,
+    recipe: {
+      default: sliderRecipe,
+      type: Function as PropType<typeof sliderRecipe>,
+    },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
+  },
+  setup(props, { attrs, slots }) {
+    const variant = computed(() => props.variant ?? "primary");
+    provide(SliderVariantKey, () => variant.value);
+
+    return () => {
+      const styles = props.recipe();
+
+      return h(
+        SliderStylesContext,
+        { value: { slots: styles, variants: {} } },
+        () =>
+          h(
+            SliderPrimitive.Root as ArkPart,
+            {
+              ...attrs,
+              class: styles.base({ class: props.class }),
+              "data-variant": variant.value,
+            },
+            slots,
+          ),
+      );
+    };
+  },
+});
+
+const SliderHeader = sliderPart("Header", "div", "header");
+const SliderValue = sliderPart(
+  "Value",
+  SliderPrimitive.ValueText as ArkPart,
+  "value",
+);
+const SliderControl = sliderPart(
+  "Control",
+  SliderPrimitive.Control as ArkPart,
+  "control",
+);
+const SliderTrack = sliderPart(
+  "Track",
+  SliderPrimitive.Track as ArkPart,
+  "track",
+  (variant) => (variant === "secondary" ? "bg-muted/40" : "bg-input/64"),
+);
+const SliderRange = sliderPart(
+  "Range",
+  SliderPrimitive.Range as ArkPart,
+  "range",
+);
+const SliderThumb = sliderPart(
+  "Thumb",
+  SliderPrimitive.Thumb as ArkPart,
+  "thumb",
+  (variant) => (variant === "secondary" ? "shadow-none" : undefined),
+);
+const SliderMarkerGroup = sliderPart(
+  "MarkerGroup",
+  SliderPrimitive.MarkerGroup as ArkPart,
+  "markerGroup",
+);
+const SliderMarker = sliderPart(
+  "Marker",
+  SliderPrimitive.Marker as ArkPart,
+  "marker",
+);
+const SliderMarkerTick = sliderPart("MarkerTick", "span", "markerTick");
+const SliderMarkerLabel = sliderPart("MarkerLabel", "span", "markerLabel");
+
+const SliderLabel = defineComponent({
+  inheritAttrs: false,
+  name: "Slider.Label",
+  props: { class: classProp },
+  setup(props, { attrs, slots }) {
+    return () =>
+      h(
+        SliderPrimitive.Label as ArkPart,
+        {
+          ...attrs,
+          class: fieldRecipe().label({
+            class: props.class as string | undefined,
+          }),
+        },
+        slots,
+      );
+  },
+});
+// #endregion
+
+const SliderShorthand = defineComponent({
   inheritAttrs: false,
   name: "PisagorSlider",
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     defaultValue: {
       default: undefined,
@@ -205,4 +374,19 @@ export const Slider = defineComponent({
       );
     };
   },
+});
+
+export const Slider = Object.assign(SliderShorthand, {
+  Control: SliderControl,
+  Header: SliderHeader,
+  Label: SliderLabel,
+  Marker: SliderMarker,
+  MarkerGroup: SliderMarkerGroup,
+  MarkerLabel: SliderMarkerLabel,
+  MarkerTick: SliderMarkerTick,
+  Range: SliderRange,
+  Root: SliderRoot,
+  Thumb: SliderThumb,
+  Track: SliderTrack,
+  Value: SliderValue,
 });

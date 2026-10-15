@@ -1,11 +1,13 @@
 <script lang="ts">
 import type { EmptyStateProps as BaseEmptyStateProps } from "@pisagor/props";
 import type { HTMLAttributes } from "svelte/elements";
+import type { SizeScaleProps } from "../../internal/types";
 import { withProvider } from "./empty-state.context";
 
 type Props = Omit<HTMLAttributes<HTMLDivElement>, "title"> & {
   children?: import("svelte").Snippet;
-} & BaseEmptyStateProps;
+} & BaseEmptyStateProps &
+  SizeScaleProps;
 
 let { children, ...rest }: Props = $props();
 

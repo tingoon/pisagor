@@ -2,6 +2,7 @@ import controlledRaw from "./controlled.tsx?raw";
 import custom_compositionRaw from "./custom-composition.tsx?raw";
 import custom_recipeRaw from "./custom-recipe.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
+import link_urlsRaw from "./link-urls.tsx?raw";
 import linksRaw from "./links.tsx?raw";
 import page_rangeRaw from "./page-range.tsx?raw";
 
@@ -13,5 +14,6 @@ export const sources = {
   CustomRecipe: custom_recipeRaw,
   Default: defaultRaw,
   Links: linksRaw,
+  LinkUrls: link_urlsRaw,
   PageRange: page_rangeRaw,
 } as const;

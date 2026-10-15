@@ -55,6 +55,12 @@ Allow the command list to scroll when items exceed the panel height.
 
 :::example Scrollable
 
+### Shorthand
+
+Pass `items` to `Command.Shorthand` for a filtered, grouped list without composing parts.
+
+:::example Shorthand
+
 ### With Dialog
 
 Host the palette in a dialog when it should take focus as a modal layer.

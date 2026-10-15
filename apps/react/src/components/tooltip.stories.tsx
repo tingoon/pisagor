@@ -36,6 +36,14 @@ export const WithKeyboardShortcut = meta.story({
   render: Examples.WithKeyboardShortcut,
 });
 
+export const WithoutArrow = meta.story({
+  render: Examples.WithoutArrow,
+});
+
+export const Compound = meta.story({
+  render: Examples.Compound,
+});
+
 export const Disabled = meta.story({
   render: Examples.Disabled,
 });

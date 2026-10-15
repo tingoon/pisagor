@@ -1,6 +1,12 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const qrCodeRecipe = tv({
+  defaultVariants: {
+    /**
+     * Size scale.
+     */
+    size: "md",
+  },
   slots: {
     base: [
       "[--qr-code-overlay-size:calc(var(--qr-code-size)/4)] [--qr-code-size:--spacing(32)]",
@@ -11,7 +17,7 @@ export const qrCodeRecipe = tv({
     frame: [
       "size-(--qr-code-size)",
       "bg-background",
-      "fill-black",
+      "fill-foreground",
       "rounded-md",
       "overflow-hidden",
     ],
@@ -20,15 +26,27 @@ export const qrCodeRecipe = tv({
       "absolute inset-0",
       "p-2",
       "flex items-center justify-center",
-      "bg-black",
+      "bg-foreground",
       "text-background",
       "rounded-full",
-      "[&_svg,img]:size-full [&_svg,img]:object-contain",
+      "*:size-full *:object-contain",
     ],
     pattern: "fill-inherit",
+  },
+  variants: {
+    size: {
+      lg: {
+        base: "[--qr-code-size:--spacing(48)]",
+      },
+      md: {},
+      sm: {
+        base: "[--qr-code-size:--spacing(24)]",
+      },
+    },
   },
 });
 
 export type QrCodeRecipeFn = typeof qrCodeRecipe;
 export type QrCodeRecipe = ReturnType<QrCodeRecipeFn>;
 export type QrCodeRecipeSlot = keyof QrCodeRecipe;
+export type QrCodeVariantProps = VariantProps<QrCodeRecipeFn>;

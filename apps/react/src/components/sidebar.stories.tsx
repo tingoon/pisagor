@@ -23,3 +23,7 @@ export const Playground = meta.story({
 export const Default = meta.story({
   render: Examples.Default,
 });
+
+export const DisableHotkey = meta.story({
+  render: Examples.DisableHotkey,
+});

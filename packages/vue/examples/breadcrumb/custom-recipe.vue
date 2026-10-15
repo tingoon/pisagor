@@ -11,15 +11,14 @@ const brandBreadcrumbRecipe = tv({
   },
   variants: {},
 });
+
+const items = [
+  { href: "https://example.com/", label: "Home" },
+  { href: "https://example.com/", label: "Components" },
+  { isCurrentPage: true, label: "Breadcrumb" },
+];
 </script>
 
 <template>
-  <Breadcrumb
-    :items="[
-      { href: 'https://example.com/', label: 'Home' },
-      { href: 'https://example.com/', label: 'Components' },
-      { isCurrentPage: true, label: 'Breadcrumb' },
-    ]"
-    :recipe="brandBreadcrumbRecipe"
-  />
+  <Breadcrumb :items="items" :recipe="brandBreadcrumbRecipe" />
 </template>

@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/circular-slider` (native HTML attributes omitted). */
 export const circularSliderProps: PropRow[] = [
   {
-    defaultValue: "circularSliderRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "CircularSliderRecipeFn | undefined",
-  },
+    defaultValue: "circularSliderRecipe",
+    description: "Style recipe override.",
+  }
 ];

@@ -25,6 +25,7 @@ import {
 import { Combobox, type ComboboxContentProps } from "../components/combobox";
 import type { InputProps } from "../components/input";
 import { InputGroup } from "../components/input-group";
+import { useProviderMessage } from "../components/provider/provider.context";
 import { CaretUpDownIcon, GlobeIcon } from "../internal/icons";
 import type { VariantClassNames } from "../internal/types";
 import { PhoneInputContext, usePhoneInput } from "./phone-input.context";
@@ -160,7 +161,7 @@ function PhoneInputCountrySelect(props: {
       >
         <Combobox.Control class={ctx.slots.countryControl()}>
           <Combobox.Trigger
-            aria-label="Select country"
+            aria-label={useProviderMessage("phoneInput.selectCountry")}
             class={ctx.slots.countrySelect()}
             disabled={isDisabled()}
             onBlur={props.onBlur}
@@ -195,7 +196,7 @@ function PhoneInputCountrySelect(props: {
                 <InputGroup.Input
                   {...inputProps()}
                   class={ctx.slots.search({ class: ctx.classNames?.search })}
-                  placeholder="Search country..."
+                  placeholder={useProviderMessage("phoneInput.search")}
                 />
               )}
             />

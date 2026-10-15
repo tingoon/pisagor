@@ -17,7 +17,7 @@ let {
   empty,
   estimateSize = 40,
   overscan = 8,
-  viewportHeight = "24rem",
+  viewportHeight = "calc(var(--spacing) * 96)",
 }: Props = $props();
 
 const { slots, table } = useDataGridContext();

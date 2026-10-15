@@ -34,7 +34,13 @@ export interface AvatarGroupProps
   /** Maximum number of avatars to show; excess shown as "+N". */
   max?: number;
   /** User list rendered as avatars. */
-  users: Array<{ src?: string; fallback?: string; name?: string }>;
+  users: Array<{
+    /** Stable key; recommended when names or images can repeat. */
+    id?: string;
+    src?: string;
+    fallback?: string;
+    name?: string;
+  }>;
 }
 // #endregion
 
@@ -54,7 +60,7 @@ export function AvatarGroupShorthand({
         <Avatar
           alt={user.name ?? ""}
           fallback={user.fallback}
-          key={user.src ?? user.fallback ?? user.name}
+          key={user.id ?? user.src ?? user.fallback ?? user.name}
           src={user.src}
         />
       ))}

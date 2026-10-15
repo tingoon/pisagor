@@ -5,3 +5,4 @@ export { imports, sources } from "./sources";
 export { default as Variants } from "./variants";
 export { default as WithAction } from "./with-action";
 export { default as WithIcon } from "./with-icon";
+export { default as WithoutIcon } from "./without-icon.vue";

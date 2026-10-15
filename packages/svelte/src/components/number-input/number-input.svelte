@@ -13,8 +13,11 @@ import { cn } from "@pisagor/utils";
 import MinusIcon from "phosphor-svelte/lib/MinusIcon";
 import PlusIcon from "phosphor-svelte/lib/PlusIcon";
 import InputClearButton from "../input/input-clear-button.svelte";
+import { useMessageResolver } from "../provider/provider.context";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { Context } from "./number-input.context";
+
+const t = useMessageResolver();
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -74,13 +77,13 @@ function handleValueChange(
     <NumberInputPrimitive.Control
       class={cn(
         slots.control(),
-        formControlGroupShellRecipe({ size: "md", surfaceVariant, variant }),
+        formControlGroupShellRecipe({ size, surfaceVariant, variant }),
       )}
       data-clearable={clearable || undefined}
       data-variant={variant}
     >
       <NumberInputPrimitive.DecrementTrigger
-        aria-label="Decrement"
+        aria-label={t("numberInput.decrement")}
         class={cn(slots.decrementTrigger(), triggerClass)}
         type="button"
       >
@@ -107,7 +110,7 @@ function handleValueChange(
       </NumberInputPrimitive.Context>
 
       <NumberInputPrimitive.IncrementTrigger
-        aria-label="Increment"
+        aria-label={t("numberInput.increment")}
         class={cn(slots.incrementTrigger(), triggerClass)}
         type="button"
       >

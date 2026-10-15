@@ -27,7 +27,7 @@ let {
   ...rest
 }: Props = $props();
 
-const slots = $derived(recipe());
+const slots = $derived(recipe({ size: size ?? "md" }));
 
 setInputOTPContext({
   get size() {
@@ -50,12 +50,12 @@ function handleValueChange(
 
 <PinInputPrimitive.Root
   {...rest}
-  class={slots.base()}
+  class={slots.base({ class: cn(className) })}
   onValueChange={onValueChange ? handleValueChange : undefined}
   {otp}
   placeholder={placeholder ?? ""}
 >
-  <PinInputPrimitive.Control class={slots.control({ class: cn(className) })}>
+  <PinInputPrimitive.Control class={slots.control()}>
     {@render children?.()}
   </PinInputPrimitive.Control>
   <PinInputPrimitive.HiddenInput />

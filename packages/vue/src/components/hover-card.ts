@@ -10,6 +10,7 @@ import {
   Teleport,
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 
 // #region Context
 const { provideStyles: provideHoverCardStyles, useStyles: useHoverCard } =
@@ -129,8 +130,9 @@ export const HoverCardContent = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
+    showArrow: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
     const styles = useHoverCard();
@@ -144,7 +146,10 @@ export const HoverCardContent = defineComponent({
               ...attrs,
               class: styles.slots.content({ class: props.class }),
             },
-            () => [slots.default?.(), h(HoverCardArrow)],
+            () => [
+              slots.default?.(),
+              props.showArrow ? h(HoverCardArrow) : null,
+            ],
           ),
         ),
       );

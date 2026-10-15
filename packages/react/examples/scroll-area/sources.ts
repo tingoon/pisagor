@@ -1,4 +1,5 @@
 import both_directionsRaw from "./both-directions.tsx?raw";
+import compoundRaw from "./compound.tsx?raw";
 import custom_recipeRaw from "./custom-recipe.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import horizontalRaw from "./horizontal.tsx?raw";
@@ -9,6 +10,7 @@ export const imports = `import { ScrollArea } from "@pisagor/react";`;
 
 export const sources = {
   BothDirections: both_directionsRaw,
+  Compound: compoundRaw,
   CustomRecipe: custom_recipeRaw,
   Default: defaultRaw,
   Horizontal: horizontalRaw,

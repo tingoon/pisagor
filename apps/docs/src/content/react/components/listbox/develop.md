@@ -78,6 +78,12 @@ Drive selection from the parent when other UI depends on it.
 
 :::example Controlled
 
+### Empty
+
+Shown when the collection has no items. Customize it with `emptyText` or render `Listbox.Empty` in compound usage.
+
+:::example Empty
+
 ### Disabled
 
 Show that the list is unavailable.

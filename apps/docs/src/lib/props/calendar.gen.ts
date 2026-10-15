@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/calendar` (native HTML attributes omitted). */
 export const calendarProps: PropRow[] = [
   {
-    defaultValue: "calendarRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "CalendarRecipeFn | undefined",
-  },
+    defaultValue: "calendarRecipe",
+    description: "Style recipe override.",
+  }
 ];

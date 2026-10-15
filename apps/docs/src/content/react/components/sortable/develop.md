@@ -41,3 +41,7 @@ Drag from the whole row when a dedicated handle is unnecessary.
 Show that reordering is unavailable.
 
 :::example Disabled
+
+## Accessibility
+
+Focus an item (or its handle) and press Alt + Arrow keys to move it. The shortcut is exposed with `aria-keyshortcuts`, and each move is announced in a polite live region (`sortable.moved` message). Pointer dragging uses native HTML drag and drop, which does not work with touch input.

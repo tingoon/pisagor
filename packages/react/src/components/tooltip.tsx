@@ -48,6 +48,12 @@ export interface TooltipProps extends Omit<TooltipRootProps, "children"> {
   className?: string;
   /** Slot class names */
   classNames?: TooltipClassNames;
+  /**
+   * Whether to render the arrow pointing at the trigger.
+   *
+   * @defaultValue true
+   */
+  showArrow?: boolean;
   /** Extra props forwarded to the tooltip arrow element */
   arrowProps?: Omit<TooltipArrowProps, "children" | "className">;
   /** Extra props forwarded to the tooltip content element */
@@ -117,8 +123,9 @@ const TooltipArrow = withContext(TooltipPrimitive.Arrow, {
 // #endregion
 
 // #region Closed
-export function Tooltip({
+function TooltipShorthand({
   arrowProps,
+  showArrow = true,
   children,
   content,
   contentProps,
@@ -147,9 +154,11 @@ export function Tooltip({
             {...contentProps}
             className={cn(className, classNames?.content)}
           >
-            <TooltipArrow {...arrowProps} className={classNames?.arrow}>
-              <TooltipPrimitive.ArrowTip />
-            </TooltipArrow>
+            {showArrow && (
+              <TooltipArrow {...arrowProps} className={classNames?.arrow}>
+                <TooltipPrimitive.ArrowTip />
+              </TooltipArrow>
+            )}
 
             {content}
           </TooltipContent>
@@ -164,7 +173,9 @@ export function Tooltip({
 TooltipRoot.displayName = "Tooltip.Root";
 TooltipTrigger.displayName = "Tooltip.Trigger";
 TooltipPositioner.displayName = "Tooltip.Positioner";
-Tooltip.displayName = "Tooltip";
+TooltipShorthand.displayName = "Tooltip";
+TooltipContent.displayName = "Tooltip.Content";
+TooltipArrow.displayName = "Tooltip.Arrow";
 
 // #endregion
 
@@ -174,3 +185,12 @@ export type {
   TooltipPositionerProps,
   TooltipTriggerProps,
 } from "@ark-ui/react/tooltip";
+
+export const Tooltip = Object.assign(TooltipShorthand, {
+  Arrow: TooltipArrow,
+  ArrowTip: TooltipPrimitive.ArrowTip,
+  Content: TooltipContent,
+  Positioner: TooltipPositioner,
+  Root: TooltipRoot,
+  Trigger: TooltipTrigger,
+});

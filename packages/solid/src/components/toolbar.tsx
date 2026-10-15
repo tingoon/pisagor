@@ -1,6 +1,7 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { ToolbarProps as BaseToolbarProps } from "@pisagor/props";
 import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes";
+import { handleRovingFocusKeyDown } from "@pisagor/utils";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
@@ -51,7 +52,14 @@ export const ToolbarDescription: Component<ToolbarDescriptionProps> =
 
 export const ToolbarActions: Component<ToolbarActionsProps> = withContext(
   ark.div,
-  { name: "Actions" },
+  {
+    defaultProps: {
+      "aria-orientation": "horizontal",
+      onKeyDown: handleRovingFocusKeyDown,
+      role: "toolbar",
+    },
+    name: "Actions",
+  },
 );
 
 export function ToolbarShorthand(props: ToolbarProps): JSX.Element {

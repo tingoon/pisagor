@@ -8,9 +8,21 @@ import type { HTMLAnchorAttributes } from "svelte/elements";
 type Props = Omit<HTMLAnchorAttributes, "href"> & {
   children?: Snippet;
   page?: "previous" | "next" | number;
+  /**
+   * Builds the link href for a page.
+   *
+   * @defaultValue (page) => `?page=${page}`
+   */
+  getHref?: (page: number) => string;
 };
 
-let { page, children, class: className, ...rest }: Props = $props();
+let {
+  page,
+  getHref = (value: number) => `?page=${value}`,
+  children,
+  class: className,
+  ...rest
+}: Props = $props();
 const pagination = usePaginationContext();
 
 const pageValue = $derived.by(() => {
@@ -28,6 +40,11 @@ const classes = $derived(
 );
 </script>
 
-<a class={classes} href={`?page=${pageValue}`} {...rest}>
+<a
+  aria-current={page === pagination().page ? "page" : undefined}
+  class={classes}
+  href={getHref(pageValue ?? 1)}
+  {...rest}
+>
   {@render children?.()}
 </a>

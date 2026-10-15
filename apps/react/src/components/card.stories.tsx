@@ -24,6 +24,10 @@ export const Default = meta.story({
   render: Examples.Default,
 });
 
+export const Sizes = meta.story({
+  render: Examples.Sizes,
+});
+
 export const Icon = meta.story({
   render: Examples.Icon,
 });

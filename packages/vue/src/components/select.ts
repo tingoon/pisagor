@@ -23,7 +23,9 @@ import {
   type VNodeChild,
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue, LoosePropValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
+import { useProviderMessage } from "./provider/provider";
 import { Separator } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -160,7 +162,7 @@ export const SelectTrigger = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     clearable: { default: false, type: Boolean },
     size: { default: undefined, type: String as PropType<SelectTriggerSize> },
@@ -229,7 +231,7 @@ export const SelectSeparator = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -259,7 +261,7 @@ export const SelectValueText = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     placeholder: {
       default: undefined,
@@ -298,7 +300,7 @@ export const SelectContent = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -355,7 +357,7 @@ export const SelectItemGroupLabel = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -382,10 +384,10 @@ export const SelectItem = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     // Ark uses `item` for collection items.
-    item: { default: undefined, type: Object as PropType<unknown> },
+    item: { default: undefined, type: Object as PropType<LoosePropValue> },
   },
   setup(props, { attrs, slots: children }) {
     const getSlots = useSelectSlots();
@@ -425,10 +427,10 @@ export const SelectClearTrigger = defineComponent({
   inheritAttrs: false,
   name: "SelectClearTrigger",
   props: {
-    "aria-label": { default: "Clear selected value(s)", type: String },
+    "aria-label": { default: undefined, type: String },
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -441,7 +443,8 @@ export const SelectClearTrigger = defineComponent({
         SelectPrimitive.ClearTrigger as ArkPart,
         {
           ...attrs,
-          "aria-label": props["aria-label"],
+          "aria-label":
+            props["aria-label"] ?? useProviderMessage("select.clear"),
           class: cn(styleSlots.clearTrigger(), props.class, attrs.class),
         },
         () => slots.default?.(),
@@ -456,7 +459,7 @@ export const SelectEmpty = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {

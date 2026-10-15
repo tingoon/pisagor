@@ -4,6 +4,7 @@ import countRaw from "./count.tsx?raw";
 import custom_recipeRaw from "./custom-recipe.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import fallbacksRaw from "./fallbacks.tsx?raw";
+import initialsRaw from "./initials.tsx?raw";
 import shapesRaw from "./shapes.tsx?raw";
 import sizesRaw from "./sizes.tsx?raw";
 
@@ -16,6 +17,7 @@ export const sources = {
   Default: defaultRaw,
   Fallbacks: fallbacksRaw,
   Group: avatar_groupRaw,
+  Initials: initialsRaw,
   Shapes: shapesRaw,
   Sizes: sizesRaw,
 } as const;

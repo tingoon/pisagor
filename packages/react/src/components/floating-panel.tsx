@@ -21,6 +21,7 @@ import type { ComponentProps } from "react";
 import { use } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button, type ButtonProps } from "./button";
+import { getMessage } from "./provider/provider.context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -37,7 +38,7 @@ function useFloatingPanelSlots() {
 // #endregion
 
 // #region Types
-export interface LocalFloatingPanelRootProps
+export interface FloatingPanelRootProps
   extends FloatingPanelPrimitiveRootProps,
     BaseFloatingPanelRootProps {}
 
@@ -79,7 +80,7 @@ export function FloatingPanelRoot({
   children,
   recipe = floatingPanelRecipe,
   ...rest
-}: LocalFloatingPanelRootProps) {
+}: FloatingPanelRootProps) {
   const slots = recipe();
 
   return (
@@ -177,7 +178,11 @@ export function FloatingPanelMinimize({
 }: FloatingPanelMinimizeProps) {
   return (
     <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="minimized">
-      <Button aria-label="Minimize" size={size} variant={variant}>
+      <Button
+        aria-label={getMessage("floatingPanel.minimize")}
+        size={size}
+        variant={variant}
+      >
         <MinusIcon />
       </Button>
     </FloatingPanelPrimitive.StageTrigger>
@@ -191,7 +196,11 @@ export function FloatingPanelMaximize({
 }: FloatingPanelMaximizeProps) {
   return (
     <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="maximized">
-      <Button aria-label="Maximize" size={size} variant={variant}>
+      <Button
+        aria-label={getMessage("floatingPanel.maximize")}
+        size={size}
+        variant={variant}
+      >
         <ArrowsOutIcon />
       </Button>
     </FloatingPanelPrimitive.StageTrigger>
@@ -207,7 +216,11 @@ export function FloatingPanelRestore({
 
   return (
     <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="default">
-      <Button aria-label="Restore" size={size} variant={variant}>
+      <Button
+        aria-label={getMessage("floatingPanel.restore")}
+        size={size}
+        variant={variant}
+      >
         <CornersInIcon className={slots.maximizedIcon()} />
         <ArrowsOutIcon className={slots.minimizedIcon()} />
       </Button>
@@ -315,7 +328,6 @@ export type {
   FloatingPanelDragTriggerProps,
   FloatingPanelHeaderProps,
   FloatingPanelResizeTriggerProps,
-  FloatingPanelRootProps,
   FloatingPanelStageTriggerProps,
   FloatingPanelTitleProps,
   FloatingPanelTriggerProps,

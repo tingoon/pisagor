@@ -12,6 +12,12 @@ A single expandable section for grouping related content under a heading.
 
 :::example Default
 
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+:::example Sizes
+
 ### Multiple
 
 Allow several sections open at once when users compare content across panels.

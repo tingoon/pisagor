@@ -8,6 +8,7 @@ import disabled_itemRaw from "./disabled-item.vue?raw";
 import indicator_on_hoverRaw from "./indicator-on-hover.vue?raw";
 import orientation_horizontalRaw from "./orientation-horizontal.vue?raw";
 import orientation_verticalRaw from "./orientation-vertical.vue?raw";
+import sizesRaw from "./sizes.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 
 export const imports = `import { SegmentGroup } from "@pisagor/vue";`;
@@ -23,5 +24,6 @@ export const sources = {
   IndicatorOnHover: indicator_on_hoverRaw,
   OrientationHorizontal: orientation_horizontalRaw,
   OrientationVertical: orientation_verticalRaw,
+  Sizes: sizesRaw,
   Variants: variantsRaw,
 } as const;

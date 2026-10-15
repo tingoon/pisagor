@@ -47,3 +47,7 @@ export const WithDialog = meta.story({
 export const CustomRecipe = meta.story({
   render: exampleRender(Examples.CustomRecipe),
 });
+
+export const Shorthand = meta.story({
+  render: exampleRender(Examples.Shorthand),
+});

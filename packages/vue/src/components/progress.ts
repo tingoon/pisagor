@@ -7,7 +7,7 @@ import {
 } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type { ClassValue, VariantClassNames } from "../internal/types";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -69,7 +69,7 @@ export const Progress = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     classNames: {
       default: undefined,

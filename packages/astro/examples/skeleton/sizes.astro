@@ -1,0 +1,14 @@
+---
+import { Skeleton } from "@pisagor/astro";
+
+const sizes = ["sm", "md", "lg"] as const;
+---
+
+<div class="flex flex-col gap-4">
+  {sizes.map((size) => (
+    <div class="flex items-center gap-2">
+      <Skeleton.Circle size={size} />
+      <Skeleton.Text lines={2} size={size} />
+    </div>
+  ))}
+</div>

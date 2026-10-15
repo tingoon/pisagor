@@ -10,6 +10,7 @@ import { segmentGroupRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { SizeScaleProps } from "../internal/types";
 
 // #region Context
 const {
@@ -32,7 +33,8 @@ interface SegmentGroupPresetItem {
 
 export interface SegmentGroupRootProps
   extends Omit<SegmentGroupPrimitiveRootProps, "onValueChange">,
-    BaseSegmentGroupRootProps {
+    BaseSegmentGroupRootProps,
+    SizeScaleProps {
   variant?: SegmentGroupVariant;
   onValueChange?: (value: string | null) => void;
 }
@@ -47,7 +49,7 @@ export interface SegmentGroupItemProps extends SegmentGroupPrimitiveItemProps {
 }
 
 const SegmentGroupRootBase: Component<
-  SegmentGroupPrimitiveRootProps & BaseSegmentGroupRootProps
+  SegmentGroupPrimitiveRootProps & BaseSegmentGroupRootProps & SizeScaleProps
 > = withProvider(SegmentGroupPrimitive.Root, {
   name: "Root",
   slot: "base",

@@ -16,12 +16,12 @@ import RPNPhoneInput, {
 import { Combobox, type ComboboxContentProps } from "../components/combobox";
 import type { InputProps } from "../components/input";
 import { InputGroup } from "../components/input-group";
-import type { VariantClassNames } from "../internal/types";
+import { getMessage } from "../components/provider/provider.context";
+import type { FormControlVariant, VariantClassNames } from "../internal/types";
 import { PhoneInputContext, usePhoneInput } from "./phone-input.context";
 import { phoneInputFlags } from "./phone-input-flags";
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 type PhoneInputClassNames = VariantClassNames<PhoneInputRecipeSlot>;
 
@@ -199,7 +199,8 @@ function PhoneInputCountrySelect({
       >
         <Combobox.Control className={slots.countryControl()}>
           <Combobox.Trigger
-            aria-label="Select country"
+            aria-label={getMessage("phoneInput.selectCountry")}
+            asChild
             className={slots.countrySelect()}
             disabled={isDisabled}
             onBlur={onBlur}
@@ -213,7 +214,12 @@ function PhoneInputCountrySelect({
               variant="ghost"
             >
               {value ? (
-                <PhoneInputFlag country={value} countryName={value} />
+                <PhoneInputFlag
+                  country={value}
+                  countryName={
+                    items.find((item) => item.value === value)?.label ?? value
+                  }
+                />
               ) : null}
               {callingCode ? <span>+{callingCode}</span> : null}
               <CaretUpDownIcon aria-hidden className={slots.countryCaret()} />
@@ -230,7 +236,7 @@ function PhoneInputCountrySelect({
             <Combobox.FieldInput asChild>
               <InputGroup.Input
                 className={slots.search({ className: classNames?.search })}
-                placeholder="Search country..."
+                placeholder={getMessage("phoneInput.search")}
               />
             </Combobox.FieldInput>
           </InputGroup>
@@ -246,9 +252,7 @@ function PhoneInputCountrySelect({
             </Combobox.Item>
           ))}
         </Combobox.List>
-        <Combobox.Empty>
-          No country found. Try a different search.
-        </Combobox.Empty>
+        <Combobox.Empty>{getMessage("phoneInput.empty")}</Combobox.Empty>
       </Combobox.Content>
     </Combobox.Root>
   );

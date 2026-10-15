@@ -139,7 +139,7 @@ export function Scrollspy({
       onUpdate?.(sectionId);
 
       if (history && (force || prevIdTracker.current !== sectionId)) {
-        window.history.replaceState({}, "", `#${sectionId}`);
+        window.history.replaceState(window.history.state, "", `#${sectionId}`);
       }
 
       prevIdTracker.current = sectionId;
@@ -275,8 +275,10 @@ export function Scrollspy({
     }
 
     const currentAnchors = anchorElementsRef.current;
-    currentAnchors?.forEach((item) => {
-      item.addEventListener("click", scrollTo(item as HTMLElement));
+    const clickHandlers = (currentAnchors ?? []).map((item) => {
+      const handler = scrollTo(item as HTMLElement);
+      item.addEventListener("click", handler);
+      return [item, handler] as const;
     });
 
     const onScroll = (event: Event) => {
@@ -301,9 +303,9 @@ export function Scrollspy({
 
     return () => {
       window.removeEventListener("scroll", onScroll, true);
-      currentAnchors?.forEach((item) => {
-        item.removeEventListener("click", scrollTo(item as HTMLElement));
-      });
+      for (const [item, handler] of clickHandlers) {
+        item.removeEventListener("click", handler);
+      }
       window.clearTimeout(initialTimeout);
     };
   }, [handleScroll, scrollTo, scrollToHashSection, targetRef]);

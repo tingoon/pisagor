@@ -1,11 +1,15 @@
-import type { CollectionItem } from "@ark-ui/solid/collection";
+import {
+  type CollectionItem,
+  useListCollection,
+} from "@ark-ui/solid/collection";
+import { useFilter } from "@ark-ui/solid/locale";
 import type {
   CommandProps as BaseCommandDialogContentProps,
   CommandProps as BaseCommandProps,
 } from "@pisagor/props";
 import { commandRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
-import { createMemo, splitProps } from "solid-js";
+import { createMemo, For, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { MagnifyingGlassIcon } from "../internal/icons";
@@ -27,6 +31,7 @@ import {
 } from "./dialog";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
+import { useProviderMessage } from "./provider/provider.context";
 import { Separator } from "./separator";
 
 // #region Context
@@ -53,6 +58,29 @@ export interface CommandProps<T extends CollectionItem = CollectionItem>
   extends Omit<ComboboxRootProps<T>, "recipe">,
     BaseCommandProps {
   class?: string;
+}
+
+export interface CommandShorthandItem {
+  /** Optional group heading. */
+  group?: string;
+  /** Leading icon. */
+  icon?: JSX.Element;
+  /** Visible label, also used for filtering. */
+  label: string;
+  /** Keyboard shortcut hint. */
+  shortcut?: string;
+  /** Unique value. */
+  value: string;
+}
+
+export interface CommandShorthandProps
+  extends Omit<CommandProps<CommandShorthandItem>, "collection" | "children"> {
+  /** Text shown when nothing matches. */
+  emptyText?: JSX.Element;
+  /** Items to render; filtering and grouping are handled for you. */
+  items: CommandShorthandItem[];
+  /** Input placeholder. */
+  placeholder?: string;
 }
 
 export type CommandSeparatorProps = ComponentProps<"div">;
@@ -88,7 +116,9 @@ function CommandDialogFrame(
           size={local.size ?? "lg"}
         >
           <Dialog.Header class={styles.slots.dialogHeader()}>
-            <Dialog.Title>{local.title ?? "Command Palette"}</Dialog.Title>
+            <Dialog.Title>
+              {local.title ?? useProviderMessage("command.title")}
+            </Dialog.Title>
             <Dialog.Description>
               {local.description ?? "Search for a command to run..."}
             </Dialog.Description>
@@ -218,7 +248,7 @@ export function CommandEmpty(props: ComboboxEmptyProps): JSX.Element {
       {...rest}
       class={styles.slots.empty({ class: local.class })}
     >
-      {local.children || "No results found. Try a different search."}
+      {local.children || useProviderMessage("command.empty")}
     </Combobox.Empty>
   );
 }
@@ -280,6 +310,70 @@ export function CommandFooter(props: CommandFooterProps): JSX.Element {
   );
 }
 
+export function CommandShorthand(props: CommandShorthandProps): JSX.Element {
+  const [local, rest] = splitProps(props, [
+    "emptyText",
+    "items",
+    "placeholder",
+    "onInputValueChange",
+  ]);
+  const filterFn = useFilter({ sensitivity: "base" });
+  const { collection, filter } = useListCollection<CommandShorthandItem>({
+    filter: (itemText, query) => filterFn().contains(itemText, query),
+    groupBy: (item) => item.group ?? "",
+    initialItems: local.items,
+    itemToString: (item) => item.label,
+    itemToValue: (item) => item.value,
+  });
+  const placeholder = useProviderMessage("command.placeholder");
+
+  return (
+    <CommandRoot
+      {...rest}
+      collection={collection()}
+      onInputValueChange={(details) => {
+        filter(details.inputValue);
+        local.onInputValueChange?.(details);
+      }}
+    >
+      <CommandInput placeholder={local.placeholder ?? placeholder} />
+      <CommandContent>
+        <CommandEmpty>{local.emptyText}</CommandEmpty>
+        <CommandList>
+          <For each={collection().group()}>
+            {([group, groupItems], index) => {
+              const content = (
+                <For each={groupItems}>
+                  {(item) => (
+                    <CommandItem item={item}>
+                      {item.icon}
+                      {item.label}
+                      <Show when={item.shortcut}>
+                        <CommandShortcut>{item.shortcut}</CommandShortcut>
+                      </Show>
+                    </CommandItem>
+                  )}
+                </For>
+              );
+
+              return (
+                <Show fallback={content} when={group}>
+                  <CommandItemGroup heading={group}>
+                    {content}
+                    <Show when={index() < collection().group().length - 1}>
+                      <CommandSeparator />
+                    </Show>
+                  </CommandItemGroup>
+                </Show>
+              );
+            }}
+          </For>
+        </CommandList>
+      </CommandContent>
+    </CommandRoot>
+  );
+}
+
 export const Command = Object.assign(CommandRoot, {
   Content: CommandContent,
   Dialog: CommandDialog,
@@ -294,4 +388,5 @@ export const Command = Object.assign(CommandRoot, {
   List: CommandList,
   Separator: CommandSeparator,
   Shortcut: CommandShortcut,
+  Shorthand: CommandShorthand,
 });

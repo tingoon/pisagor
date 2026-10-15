@@ -20,7 +20,13 @@ export interface AvatarGroupRootProps
 export interface AvatarGroupProps
   extends Omit<AvatarGroupRootProps, "children"> {
   max?: number;
-  users: Array<{ src?: string; fallback?: string; name?: string }>;
+  users: Array<{
+    /** Stable key; recommended when names or images can repeat. */
+    id?: string;
+    src?: string;
+    fallback?: string;
+    name?: string;
+  }>;
 }
 
 export type AvatarGroupCountProps = ComponentProps<typeof ark.div>;

@@ -11,6 +11,7 @@ export { default as InputControlled } from "./input-controlled.vue";
 export { default as InputWithPopover } from "./input-with-popover.vue";
 export { default as InputWithSwatchPreview } from "./input-with-swatch-preview.vue";
 export { default as Invalid } from "./invalid.vue";
+export { default as LabelFormatSelect } from "./label-format-select.vue";
 export { default as PopoverDisabled } from "./popover-disabled.vue";
 export { default as PopoverSlidersOnly } from "./popover-sliders-only.vue";
 export { default as PopoverWithChannelEditing } from "./popover-with-channel-editing.vue";

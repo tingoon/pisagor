@@ -3,6 +3,7 @@ import defaultRaw from "./default.vue?raw";
 import destructiveRaw from "./destructive.vue?raw";
 import group_labelRaw from "./group-label.vue?raw";
 import iconsRaw from "./icons.vue?raw";
+import item_indicatorRaw from "./item-indicator.vue?raw";
 import linkRaw from "./link.vue?raw";
 import nestedRaw from "./nested.vue?raw";
 import placementsRaw from "./placements.vue?raw";
@@ -20,6 +21,7 @@ export const sources = {
   Destructive: destructiveRaw,
   GroupLabel: group_labelRaw,
   Icons: iconsRaw,
+  ItemIndicator: item_indicatorRaw,
   Link: linkRaw,
   Nested: nestedRaw,
   Placements: placementsRaw,

@@ -4,8 +4,10 @@ import type { FieldPresentationProps } from "../internal/field-shell";
 // #region Types
 type SwitchControlProps = Omit<
   SwitchProps,
-  "checked" | "invalid" | "label" | "name"
->;
+  "checked" | "invalid" | "label" | "name" | "onCheckedChange"
+> & {
+  onValueChange?: (checked: boolean) => void;
+};
 
 export interface SwitchFieldProps
   extends FieldPresentationProps,
@@ -45,7 +47,11 @@ export function SwitchField({
         invalid={invalid}
         name={name}
         onBlur={onBlur}
-        onValueChange={onValueChange}
+        onCheckedChange={
+          onValueChange
+            ? (details) => onValueChange(details.checked === true)
+            : undefined
+        }
       />
       {hasLabel || description ? (
         <Field.Content>

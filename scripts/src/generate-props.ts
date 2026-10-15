@@ -17,7 +17,7 @@ import {
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const workspaceRoot = path.resolve(scriptDir, "../..");
 const propsDir = path.join(workspaceRoot, "packages/props");
-const recipesUiDir = path.join(workspaceRoot, "packages/recipes/src");
+const recipesUiDir = path.join(workspaceRoot, "packages/presets/src/contracts");
 const outDir = path.join(workspaceRoot, "apps/docs/src/lib/props");
 
 interface PropDoc {

@@ -8,21 +8,34 @@ export interface SeparatorProps
   extends ComponentProps<typeof ark.div>,
     BaseSeparatorProps {
   orientation?: "horizontal" | "vertical";
+  /**
+   * Purely visual separator: hidden from assistive tech (`role="none"`).
+   *
+   * @defaultValue false
+   */
+  decorative?: boolean;
 }
 
 export function Separator(props: SeparatorProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class", "recipe", "orientation"]);
+  const [local, rest] = splitProps(props, [
+    "class",
+    "recipe",
+    "orientation",
+    "decorative",
+  ]);
   const recipeFn = () => local.recipe ?? separatorRecipe;
 
   return (
     <ark.div
       {...rest}
-      aria-orientation={local.orientation ?? "horizontal"}
+      aria-orientation={
+        local.decorative ? undefined : (local.orientation ?? "horizontal")
+      }
       class={recipeFn()({ class: local.class })}
       data-orientation={local.orientation ?? "horizontal"}
       data-part="root"
       data-scope="separator"
-      role="separator"
+      role={local.decorative ? "none" : "separator"}
     />
   );
 }

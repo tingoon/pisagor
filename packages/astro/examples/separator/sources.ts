@@ -1,4 +1,5 @@
 import custom_recipeRaw from "./custom-recipe.astro?raw";
+import decorativeRaw from "./decorative.astro?raw";
 import defaultRaw from "./default.astro?raw";
 import inline_navigationRaw from "./inline-navigation.astro?raw";
 import listRaw from "./list.astro?raw";
@@ -10,6 +11,7 @@ import { Separator } from "@pisagor/astro";
 
 export const sources = {
   CustomRecipe: custom_recipeRaw,
+  Decorative: decorativeRaw,
   Default: defaultRaw,
   InlineNavigation: inline_navigationRaw,
   List: listRaw,

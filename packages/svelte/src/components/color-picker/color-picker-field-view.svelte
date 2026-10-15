@@ -15,7 +15,6 @@ const slots = $derived(styles.slots);
     <ColorPickerChannelSlider channel="hue" />
     <ColorPickerChannelSlider channel="alpha" />
     <ColorPickerEyeDropperTrigger
-      aria-label="Eye dropper"
       class={buttonRecipe({ size: "icon-sm", variant: "outline" }).base()}
       type="button"
     >

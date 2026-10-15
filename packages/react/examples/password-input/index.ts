@@ -1,5 +1,6 @@
 export * from "./auto-hide";
 export * from "./autocomplete";
+export * from "./compound";
 export * from "./controlled";
 export * from "./controlled-visibility";
 export * from "./default";

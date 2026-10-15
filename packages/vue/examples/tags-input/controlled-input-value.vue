@@ -21,7 +21,7 @@ const inputValue = ref("");
         class="w-full"
         :default-value="['React']"
         :input-value="inputValue"
-        @input-value-change="(details) => (inputValue = details.inputValue)"
+        @input-value-change="(details: { inputValue: string }) => (inputValue = details.inputValue)"
       />
     </Field>
   </div>

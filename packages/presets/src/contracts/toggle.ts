@@ -5,7 +5,7 @@ export const toggleRecipe = tv({
     "relative",
     "data-[state=on]:bg-card data-[state=on]:shadow-sm dark:data-[state=on]:bg-input/64",
     "transition-transform duration-fast ease-out",
-    "active:scale-[0.97]",
+    "active:scale-97",
     "pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 pointer-coarse:after:min-w-11",
     "motion-reduce:transition-none! motion-reduce:active:scale-100",
   ],

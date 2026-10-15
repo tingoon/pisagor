@@ -4,6 +4,9 @@ import { spinnerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CircleNotchIcon from "phosphor-svelte/lib/CircleNotchIcon";
 import type { ClassValue } from "svelte/elements";
+import { useMessageResolver } from "./provider/provider.context";
+
+const t = useMessageResolver();
 
 type Props = {
   class?: ClassValue;
@@ -21,9 +24,9 @@ let {
 
 <CircleNotchIcon
   aria-hidden={ariaHidden}
-  aria-label={ariaHidden ? undefined : (ariaLabel ?? "Loading")}
+  aria-label={ariaHidden ? undefined : (ariaLabel ?? t("spinner.loading"))}
   class={recipe({ class: cn(className) })}
   data-part="root"
   data-scope="spinner"
-  role="status"
+  role="img"
 />

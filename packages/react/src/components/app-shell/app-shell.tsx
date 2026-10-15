@@ -4,6 +4,7 @@ import { appShellRecipe } from "@pisagor/recipes";
 import {
   type ComponentProps,
   useCallback,
+  useImperativeHandle,
   useMemo,
   useRef,
   useState,
@@ -70,7 +71,14 @@ function buildGridRows(hasBanner: boolean, hasNavigation: boolean) {
 
 export interface AppShellRootProps
   extends ComponentProps<"div">,
-    BaseAppShellRootProps {}
+    BaseAppShellRootProps {
+  /**
+   * Whether to disable the `mod+\` hotkey that toggles the start panel.
+   *
+   * @defaultValue false
+   */
+  disableHotkey?: boolean;
+}
 
 function useShellGridStyle(childSlots: AppShellSlots) {
   const hasBanner = Boolean(childSlots.banner);
@@ -88,6 +96,8 @@ function useShellGridStyle(childSlots: AppShellSlots) {
 
 export function AppShellRoot({
   children,
+  disableHotkey = false,
+  ref,
   recipe = appShellRecipe,
   className,
   style,
@@ -111,6 +121,7 @@ export function AppShellRoot({
     Partial<Record<AppShellPlacement, AppShellRailState>>
   >({});
   const shellRef = useRef<HTMLDivElement>(null);
+  useImperativeHandle(ref, () => shellRef.current as HTMLDivElement, []);
   const [regionResizing, setRegionResizing] = useState(false);
   const gridStyle = useShellGridStyle(childSlots);
 
@@ -139,6 +150,7 @@ export function AppShellRoot({
     action: () => {
       panelStates.current.start?.toggle();
     },
+    enabled: !disableHotkey,
     hotkey: "mod+\\",
   });
 

@@ -72,7 +72,7 @@ const ScrollAreaThumb: Component<ScrollAreaThumbProps> = withContext(
   { name: "Thumb" },
 );
 
-export function ScrollArea(props: ScrollAreaProps): JSX.Element {
+function ScrollAreaShorthand(props: ScrollAreaProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "scrollFade",
     "children",
@@ -121,3 +121,11 @@ export type {
   ScrollAreaThumbProps,
   ScrollAreaViewportProps,
 } from "@ark-ui/solid/scroll-area";
+
+export const ScrollArea = Object.assign(ScrollAreaShorthand, {
+  Corner: ScrollAreaPrimitive.Corner,
+  Root: ScrollAreaRoot,
+  Scrollbar: ScrollAreaScrollbar,
+  Thumb: ScrollAreaThumb,
+  Viewport: ScrollAreaViewport,
+});

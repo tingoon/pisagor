@@ -25,7 +25,7 @@ const gutter = $derived(ctx.positioning.gutter);
     data-scope="action-bar"
     lazyMount={ctx.lazyMount}
     present={ctx.isOpen}
-    style={`--gutter: ${gutter}`}
+    style={gutter ? `--gutter: ${gutter}` : undefined}
     unmountOnExit={ctx.unmountOnExit}
   >
     <Ark

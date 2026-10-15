@@ -22,8 +22,9 @@ import {
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, Teleport } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type { LoosePropValue, VariantClassNames } from "../internal/types";
 import { Button } from "./button";
+import { useProviderMessage } from "./provider/provider";
 import { Spinner } from "./spinner";
 
 type ClassValue = Parameters<typeof cn>[0];
@@ -107,7 +108,7 @@ export const ToasterRoot = defineComponent({
       default: undefined,
       type: Object as PropType<Record<string, unknown>>,
     },
-    toaster: { default: undefined, type: Object as PropType<unknown> },
+    toaster: { default: undefined, type: Object as PropType<LoosePropValue> },
   },
   setup(props, { attrs }) {
     return () =>
@@ -279,7 +280,7 @@ const ToastItemContent = defineComponent({
                     h(
                       Button as ArkPart,
                       {
-                        "aria-label": "Close",
+                        "aria-label": useProviderMessage("toast.close"),
                         class: slots.close({
                           class: props.classNames?.close,
                         }),
@@ -304,7 +305,7 @@ export const ToastItem = defineComponent({
     ...itemBagProps,
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs }) {

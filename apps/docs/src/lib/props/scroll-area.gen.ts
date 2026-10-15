@@ -4,18 +4,18 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/scroll-area` (native HTML attributes omitted). */
 export const scrollAreaProps: PropRow[] = [
   {
-    defaultValue: "`false`",
-    description: "Scroll fade.",
     name: "scrollFade",
     type: "boolean | undefined",
+    defaultValue: "`false`",
+    description: "Scroll fade.",
   },
   {
-    defaultValue: "scrollAreaRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "ScrollAreaRecipeFn | undefined",
-  },
+    defaultValue: "scrollAreaRecipe",
+    description: "Style recipe override.",
+  }
 ];

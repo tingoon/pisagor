@@ -1,6 +1,11 @@
+import {
+  type MessageKey,
+  type ProviderMessages,
+  resolveMessage,
+} from "@pisagor/utils";
 import { createContext } from "../../utils";
 
-export type ProviderMessages = Record<string, string>;
+export type { MessageKey, ProviderMessages } from "@pisagor/utils";
 
 export const { ProviderMessagesContext, useProviderMessages } = createContext(
   "ProviderMessages",
@@ -10,10 +15,9 @@ export const { ProviderMessagesContext, useProviderMessages } = createContext(
 });
 
 /**
- * Resolve a library message key from the nearest `Provider` message map.
- * Falls back to `fallback` when the key is missing.
+ * Resolve a library message key. User `messages` from the nearest `Provider`
+ * are merged over the built-in English `defaultMessages`.
  */
-export function useProviderMessage(key: string, fallback: string) {
-  const messages = useProviderMessages() ?? {};
-  return messages[key] ?? fallback;
+export function useProviderMessage(key: MessageKey): string {
+  return resolveMessage(useProviderMessages(), key);
 }

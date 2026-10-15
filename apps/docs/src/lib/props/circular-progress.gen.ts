@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/circular-progress` (native HTML attributes omitted). */
 export const circularProgressProps: PropRow[] = [
   {
-    defaultValue: "circularProgressRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "CircularProgressRecipeFn | undefined",
-  },
+    defaultValue: "circularProgressRecipe",
+    description: "Style recipe override.",
+  }
 ];

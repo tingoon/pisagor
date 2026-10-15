@@ -40,6 +40,10 @@ export const Scrollable = meta.story({
   render: Examples.Scrollable,
 });
 
+export const Shorthand = meta.story({
+  render: Examples.Shorthand,
+});
+
 export const WithDialog = meta.story({
   render: Examples.WithDialog,
 });

@@ -3,6 +3,10 @@ import { tv, type VariantProps } from "tailwind-variants";
 export const cardRecipe = tv({
   defaultVariants: {
     /**
+     * Size scale.
+     */
+    size: "md",
+    /**
      * Visual emphasis.
      */
     variant: "default",
@@ -47,6 +51,17 @@ export const cardRecipe = tv({
     ],
   },
   variants: {
+    size: {
+      lg: {
+        base: "gap-6 [--space:--spacing(8)]",
+        title: "text-2xl",
+      },
+      md: {},
+      sm: {
+        base: "gap-4 [--space:--spacing(4)]",
+        title: "text-lg",
+      },
+    },
     variant: {
       default: {
         media: "bg-transparent",

@@ -14,7 +14,7 @@ import { BottomNavigation, ScrollArea } from "@pisagor/vue";
   >
     <ScrollArea>
       <div class="h-96" />
-      <BottomNavigation default-value="home">
+      <BottomNavigation value="home">
         <BottomNavigation.List class="absolute">
           <BottomNavigation.Item aria-label="Home" value="home">
             <BottomNavigation.ItemIcon><PhHouse /></BottomNavigation.ItemIcon>

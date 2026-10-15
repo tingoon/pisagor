@@ -1,8 +1,14 @@
 <script lang="ts" setup>
 import { tableRecipe } from "@pisagor/recipes";
-import { Badge, Table } from "@pisagor/vue";
+import { Badge, type BadgeVariant, Table } from "@pisagor/vue";
 import { tv } from "tailwind-variants";
 import { workspaceUsers } from "./helpers";
+
+const statusVariants: Record<string, BadgeVariant> = {
+  active: "success",
+  inactive: "destructive",
+  invited: "info",
+};
 
 const brandTableRecipe = tv({
   extend: tableRecipe,

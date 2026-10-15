@@ -2,6 +2,7 @@ import controlledRaw from "./controlled.tsx?raw";
 import custom_recipeRaw from "./custom-recipe.tsx?raw";
 import custom_timeoutRaw from "./custom-timeout.tsx?raw";
 import different_iconRaw from "./different-icon.tsx?raw";
+import sizesRaw from "./sizes.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 import with_labelRaw from "./with-label.tsx?raw";
 
@@ -12,6 +13,7 @@ export const sources = {
   CustomRecipe: custom_recipeRaw,
   CustomTimeout: custom_timeoutRaw,
   DifferentIcon: different_iconRaw,
+  Sizes: sizesRaw,
   Variants: variantsRaw,
   WithLabel: with_labelRaw,
 } as const;

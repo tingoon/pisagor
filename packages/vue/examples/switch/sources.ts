@@ -1,3 +1,4 @@
+import compoundRaw from "./compound.vue?raw";
 import controlledRaw from "./controlled.vue?raw";
 import custom_recipeRaw from "./custom-recipe.vue?raw";
 import defaultRaw from "./default.vue?raw";
@@ -9,6 +10,7 @@ import variantsRaw from "./variants.vue?raw";
 export const imports = `import { Switch } from "@pisagor/vue";`;
 
 export const sources = {
+  Compound: compoundRaw,
   Controlled: controlledRaw,
   CustomRecipe: custom_recipeRaw,
   Default: defaultRaw,

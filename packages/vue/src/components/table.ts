@@ -3,6 +3,7 @@ import type { TableProps as BaseTableProps } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 
 // #region Slot recipe context
 const { provideStyles: provideTableStyles, withContext } =
@@ -39,12 +40,16 @@ export const TableRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     isHoverable: { default: true, type: Boolean },
     recipe: {
       default: tableRecipe,
       type: Function as PropType<typeof tableRecipe>,
+    },
+    size: {
+      default: "md",
+      type: String as PropType<"sm" | "md" | "lg">,
     },
     variant: {
       default: "plain",
@@ -52,7 +57,7 @@ export const TableRoot = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const recipeSlots = computed(() => props.recipe());
+    const recipeSlots = computed(() => props.recipe({ size: props.size }));
 
     provideTableStyles({
       get slots() {

@@ -1,6 +1,7 @@
 import bannerRaw from "./banner.tsx?raw";
 import contentRaw from "./content.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
+import disable_hotkeyRaw from "./disable-hotkey.tsx?raw";
 import headerRaw from "./header.tsx?raw";
 import helpersRaw from "./helpers.tsx?raw";
 import inspectorsRaw from "./inspectors.tsx?raw";
@@ -15,6 +16,7 @@ export const sources = {
   Banner: bannerRaw,
   Content: contentRaw,
   Default: defaultRaw,
+  DisableHotkey: disable_hotkeyRaw,
   Header: headerRaw,
   Helpers: helpersRaw,
   Inspectors: inspectorsRaw,

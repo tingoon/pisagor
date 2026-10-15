@@ -2,6 +2,7 @@ import custom_recipeRaw from "./custom-recipe.astro?raw";
 import defaultRaw from "./default.astro?raw";
 import footerRaw from "./footer.astro?raw";
 import not_hoverableRaw from "./not-hoverable.astro?raw";
+import sizesRaw from "./sizes.astro?raw";
 import variantsRaw from "./variants.astro?raw";
 
 export const imports = `---
@@ -15,5 +16,6 @@ export const sources = {
   Default: defaultRaw,
   Footer: footerRaw,
   NotHoverable: not_hoverableRaw,
+  Sizes: sizesRaw,
   Variants: variantsRaw,
 } as const;

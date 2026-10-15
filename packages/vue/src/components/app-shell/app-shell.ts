@@ -18,6 +18,7 @@ import {
   watchEffect,
 } from "vue";
 import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
+import type { ClassValue } from "../../internal/types";
 import { createContext } from "../../internal/utils/create-context";
 import { Button } from "../button";
 import { Resizable } from "../resizable";
@@ -197,13 +198,13 @@ function regionPositionClasses(
   return styles.regionStickyHeader();
 }
 
-function useHotkey(toggle: () => void) {
+function useHotkey(toggle: () => void, disabled: () => boolean) {
   let handler: ((event: KeyboardEvent) => void) | undefined;
 
   onMounted(() => {
     handler = (event) => {
       const isMod = event.ctrlKey || event.metaKey;
-      if (!isMod) return;
+      if (!isMod || disabled()) return;
       // React uses "Mod+\\"
       if (event.key === "\\") {
         event.preventDefault();
@@ -496,8 +497,12 @@ export const AppShellRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
+    /**
+     * Whether to disable the `mod+\\` hotkey that toggles the start panel.
+     */
+    disableHotkey: { default: false, type: Boolean },
     recipe: {
       default: appShellRecipe,
       type: Function as PropType<typeof appShellRecipe>,
@@ -573,9 +578,12 @@ export const AppShellRoot = defineComponent({
 
     provideAppShellContext(contextValue);
 
-    useHotkey(() => {
-      panelStates.start?.toggle?.();
-    });
+    useHotkey(
+      () => {
+        panelStates.start?.toggle?.();
+      },
+      () => props.disableHotkey,
+    );
 
     return () => {
       const defaultNodes = slots.default?.() ?? [];
@@ -725,7 +733,7 @@ export const AppShellMain = defineComponent({
     const getSlots = useAppShellSlots();
     return () =>
       h(
-        "div",
+        "main",
         {
           ...attrs,
           class: cn(getSlots().main(), (attrs as AttrsWithClassStyle).class),
@@ -775,7 +783,7 @@ export const AppShellContent = defineComponent({
     const getSlots = useAppShellSlots();
     return () =>
       h(
-        "main",
+        "div",
         {
           ...attrs,
           class: cn(getSlots().content(), (attrs as AttrsWithClassStyle).class),
@@ -793,7 +801,7 @@ export const AppShellPanel = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     defaultOpen: { default: false, type: Boolean },
     defaultWidth: { default: 256, type: Number },
@@ -968,7 +976,7 @@ export const AppShellPanelTrigger = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     off: {
       default: undefined,
@@ -1022,7 +1030,7 @@ export const AppShellInspector = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     defaultOpen: { default: false, type: Boolean },
     defaultWidth: { default: 320, type: Number },
@@ -1197,7 +1205,7 @@ export const AppShellInspectorTrigger = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     off: {
       default: undefined,
@@ -1250,7 +1258,7 @@ export const AppShellRail = defineComponent({
     activeRailId: { default: undefined, type: String },
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     defaultActiveRailId: { default: undefined, type: String },
     onActiveRailIdChange: {

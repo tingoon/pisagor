@@ -3,6 +3,7 @@ import custom_spacingRaw from "./custom-spacing.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import iconRaw from "./icon.tsx?raw";
 import productRaw from "./product.tsx?raw";
+import sizesRaw from "./sizes.tsx?raw";
 
 export const imports = `import { Card } from "@pisagor/react";`;
 
@@ -12,4 +13,5 @@ export const sources = {
   Default: defaultRaw,
   Icon: iconRaw,
   Product: productRaw,
+  Sizes: sizesRaw,
 } as const;

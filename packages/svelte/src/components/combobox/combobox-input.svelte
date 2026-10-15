@@ -13,11 +13,19 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
+import { isInsideControl } from "../../internal/inside-control";
+import { useMessageResolver } from "../provider/provider.context";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
-import { useComboboxControl, useComboboxRoot } from "./combobox.context";
+import {
+  COMBOBOX_INSIDE_CONTROL,
+  useComboboxControl,
+  useComboboxRoot,
+} from "./combobox.context";
 import ComboboxClearTrigger from "./combobox-clear-trigger.svelte";
 import ComboboxControl from "./combobox-control.svelte";
 import ComboboxTrigger from "./combobox-trigger.svelte";
+
+const t = useMessageResolver();
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -39,6 +47,7 @@ let {
 
 const ctx = useComboboxRoot();
 const control = useComboboxControl();
+const insideControl = isInsideControl(COMBOBOX_INSIDE_CONTROL);
 const size = $derived(sizeProp ?? control.size ?? "md");
 const slots = $derived(ctx?.slots ?? comboboxRecipe());
 const api = useComboboxContext();
@@ -48,7 +57,7 @@ const variant = $derived(
 );
 </script>
 
-<ComboboxControl data-size={size}>
+{#snippet group()}
   <div
     class={cn(
       formControlGroupShellRecipe({ size, surfaceVariant, variant }),
@@ -66,7 +75,7 @@ const variant = $derived(
       {/if}
       {#if clearable && api().inputValue}
         <ComboboxClearTrigger
-          aria-label="Clear"
+          aria-label={t("combobox.clear")}
           class={buttonRecipe({ size: "icon-xs", variant: "ghost" }).base()}
           type="button"
         >
@@ -75,4 +84,10 @@ const variant = $derived(
       {/if}
     </div>
   </div>
-</ComboboxControl>
+{/snippet}
+
+{#if insideControl}
+  {@render group()}
+{:else}
+  <ComboboxControl data-size={size}>{@render group()}</ComboboxControl>
+{/if}

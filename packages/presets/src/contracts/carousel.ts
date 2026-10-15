@@ -47,6 +47,7 @@ export const carouselRecipe = tv({
       "data-[orientation=horizontal]:-inset-s-12 data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:-translate-y-1/2",
       "data-[orientation=vertical]:-top-12 data-[orientation=vertical]:left-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:rotate-90",
     ],
+    progressText: ["text-muted-foreground text-sm tabular-nums"],
   },
 });
 

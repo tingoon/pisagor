@@ -11,7 +11,11 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactElement, ReactNode } from "react";
 import { cloneElement } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type {
+  FormControlVariant,
+  SizeScaleProps,
+  VariantClassNames,
+} from "../internal/types";
 
 // #region Context
 const {
@@ -25,7 +29,6 @@ const {
 // #endregion
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 type RatingControlProps = RatingGroupControlProps;
 
@@ -38,7 +41,8 @@ type RatingClassNames = VariantClassNames<RatingRecipeSlot>;
 type RatingRootProps = RatingGroupRootProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-} & BaseRatingRootProps;
+} & BaseRatingRootProps &
+  SizeScaleProps;
 
 export interface RatingProps
   extends Omit<RatingRootProps, "children" | "onValueChange"> {
@@ -82,6 +86,7 @@ export interface RatingProps
 
 // #region Parts
 function RatingRoot({
+  size = "md",
   variant: variantProp,
   allowHalf = false,
   count = 5,
@@ -89,12 +94,12 @@ function RatingRoot({
   recipe = ratingRecipe,
   className,
   ...rest
-}: RatingRootProps) {
+}: RatingRootProps & SizeScaleProps) {
   const resolved = {
     surfaceVariant: undefined,
     variant: variantProp ?? ("primary" as FormControlVariant),
   };
-  const slots = recipe();
+  const slots = recipe({ size });
   const surfaceTone =
     resolved.variant === "secondary" ? "opacity-90" : undefined;
 
@@ -142,7 +147,7 @@ function RatingIndicator({
 // #endregion
 
 // #region Closed
-export function Rating({
+function RatingShorthand({
   variant,
   controlProps,
   icon = <StarIcon />,
@@ -212,5 +217,15 @@ export function Rating({
 // #region Display Names
 RatingRoot.displayName = "Rating.Root";
 RatingIndicator.displayName = "Rating.Indicator";
-Rating.displayName = "Rating";
+RatingShorthand.displayName = "Rating";
 // #endregion
+
+export const Rating = Object.assign(RatingShorthand, {
+  Context: RatingGroupPrimitive.Context,
+  Control: RatingControl,
+  HiddenInput: RatingGroupPrimitive.HiddenInput,
+  Indicator: RatingIndicator,
+  Item: RatingItem,
+  ItemContext: RatingGroupPrimitive.ItemContext,
+  Root: RatingRoot,
+});

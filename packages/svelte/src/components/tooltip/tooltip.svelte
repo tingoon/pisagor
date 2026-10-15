@@ -19,6 +19,8 @@ import TooltipContent from "./tooltip-content.svelte";
 import TooltipRoot from "./tooltip-root.svelte";
 
 type Props = Omit<TooltipRootProps, "children"> & {
+  /** Whether to render the arrow. Defaults to `true`. */
+  showArrow?: boolean;
   /** Extra props forwarded to the tooltip arrow element */
   arrowProps?: Omit<TooltipArrowProps, "children" | "class">;
   /** Trigger content (wrapped in an inline trigger element) */
@@ -39,6 +41,7 @@ type Props = Omit<TooltipRootProps, "children"> & {
 
 let {
   arrowProps,
+  showArrow = true,
   children,
   content,
   contentProps,
@@ -65,9 +68,11 @@ let {
         {...contentProps}
         class={cn(className, classNames?.content)}
       >
-        <TooltipArrow {...arrowProps} class={classNames?.arrow}>
-          <TooltipPrimitive.ArrowTip />
-        </TooltipArrow>
+        {#if showArrow}
+          <TooltipArrow {...arrowProps} class={classNames?.arrow}>
+            <TooltipPrimitive.ArrowTip />
+          </TooltipArrow>
+        {/if}
         {#if typeof content === "string"}
           {content}
         {:else}

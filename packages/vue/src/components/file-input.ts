@@ -3,11 +3,13 @@ import { fileInputRecipe, formControlGroupShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, ref } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupText,
 } from "./input-group/input-group-core";
+import { useProviderMessage } from "./provider/provider";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -74,14 +76,14 @@ export const FileInput = defineComponent({
   name: "FileInput",
   props: {
     accept: { default: undefined, type: String },
-    browseLabel: { default: "Choose file", type: String },
+    browseLabel: { default: undefined, type: String },
     capture: {
       default: undefined,
       type: String as PropType<FileInputProps["capture"]>,
     },
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     disabled: { default: undefined, type: Boolean },
     id: { default: undefined, type: String },
@@ -100,7 +102,7 @@ export const FileInput = defineComponent({
       default: undefined,
       type: Function as PropType<FileInputProps["onValueChange"]>,
     },
-    placeholder: { default: "No file chosen", type: String },
+    placeholder: { default: undefined, type: String },
     required: { default: undefined, type: Boolean },
     size: { default: "md", type: String as PropType<FileInputProps["size"]> },
     variant: {
@@ -187,7 +189,8 @@ export const FileInput = defineComponent({
                     onClick: openPicker,
                     type: "button",
                   },
-                  () => props.browseLabel,
+                  () =>
+                    props.browseLabel ?? useProviderMessage("fileInput.browse"),
                 ),
               ),
               h(
@@ -196,7 +199,10 @@ export const FileInput = defineComponent({
                   class: slots.label(),
                   onClick: props.disabled ? undefined : openPicker,
                 },
-                () => fileLabel.value ?? props.placeholder,
+                () =>
+                  fileLabel.value ??
+                  props.placeholder ??
+                  useProviderMessage("fileInput.placeholder"),
               ),
             ],
           ),

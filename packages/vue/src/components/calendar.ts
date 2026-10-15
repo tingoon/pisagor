@@ -20,6 +20,7 @@ import {
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button, type ButtonProps } from "./button";
+import { useProviderMessage } from "./provider/provider";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Slot recipe context
@@ -414,7 +415,7 @@ export const CalendarPrevTrigger = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": "Previous month",
+              "aria-label": useProviderMessage("calendar.previousMonth"),
               class: styles.slots.prevTrigger(),
               size: "icon-md",
               variant: "ghost",
@@ -443,7 +444,7 @@ export const CalendarNextTrigger = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": "Next month",
+              "aria-label": useProviderMessage("calendar.nextMonth"),
               class: styles.slots.nextTrigger(),
               size: "icon-md",
               variant: "ghost",

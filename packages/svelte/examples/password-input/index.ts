@@ -1,5 +1,6 @@
 export { default as AutoHide } from "./auto-hide.svelte";
 export { default as Autocomplete } from "./autocomplete.svelte";
+export { default as Compound } from "./compound.svelte";
 export { default as Controlled } from "./controlled.svelte";
 export { default as ControlledVisibility } from "./controlled-visibility.svelte";
 export { default as Default } from "./default.svelte";

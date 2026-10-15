@@ -24,6 +24,12 @@ Match switch size to surrounding form density.
 
 :::example Sizes
 
+### Compound
+
+Compose `Switch.Root`, `Switch.Control`, `Switch.Thumb` and `Switch.HiddenInput` when you need custom structure.
+
+:::example Compound
+
 ### Controlled
 
 Drive checked state from the parent when other UI depends on it.

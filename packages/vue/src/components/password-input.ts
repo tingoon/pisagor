@@ -7,11 +7,13 @@ import {
   type ClearableChangeEvent,
   useClearableInput,
 } from "../hooks/use-clearable-input";
+import type { ClassValue } from "../internal/types";
 import { InputGroup } from "./input-group";
 import type {
   InputGroupButtonProps,
   InputGroupProps,
 } from "./input-group/input-group-core";
+import { useProviderMessage } from "./provider/provider";
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -40,14 +42,105 @@ export interface PasswordInputProps
 }
 // #endregion
 
+// #region Parts
+const classProp = {
+  default: undefined,
+  type: [String, Object, Array] as PropType<ClassValue>,
+};
+
+const PasswordInputRoot = defineComponent({
+  inheritAttrs: false,
+  name: "PasswordInput.Root",
+  props: {
+    class: classProp,
+    recipe: {
+      default: passwordInputRecipe,
+      type: Function as PropType<typeof passwordInputRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
+    return () =>
+      h(
+        PasswordInputPrimitive.Root as ArkPart,
+        { ...attrs, class: props.recipe().base({ class: props.class }) },
+        slots,
+      );
+  },
+});
+
+const PasswordInputControl = defineComponent({
+  inheritAttrs: false,
+  name: "PasswordInput.Control",
+  props: { class: classProp },
+  setup(props, { attrs, slots }) {
+    return () =>
+      h(PasswordInputPrimitive.Control as ArkPart, { asChild: true }, () =>
+        h(
+          InputGroup as ArkPart,
+          {
+            ...attrs,
+            class: passwordInputRecipe().control({ class: props.class }),
+          },
+          slots,
+        ),
+      );
+  },
+});
+
+const PasswordInputInput = defineComponent({
+  inheritAttrs: false,
+  name: "PasswordInput.Input",
+  setup(_, { attrs }) {
+    return () =>
+      h(
+        PasswordInputPrimitive.Input as ArkPart,
+        { ...attrs, asChild: true },
+        () => h(InputGroup.Input as ArkPart, { clearable: false }),
+      );
+  },
+});
+
+const PasswordInputVisibilityTrigger = defineComponent({
+  inheritAttrs: false,
+  name: "PasswordInput.VisibilityTrigger",
+  setup(_, { attrs, slots }) {
+    const label = useProviderMessage("passwordInput.togglePasswordVisibility");
+
+    return () =>
+      h(InputGroup.Addon as ArkPart, { align: "inline-end" }, () =>
+        h(
+          PasswordInputPrimitive.VisibilityTrigger as ArkPart,
+          { ...attrs, asChild: true },
+          () =>
+            h(
+              InputGroup.Button as ArkPart,
+              {
+                "aria-label": label,
+                size: "icon-xs",
+                type: "button",
+                variant: "ghost",
+              },
+              () =>
+                slots.default?.() ??
+                h(PasswordInputPrimitive.Indicator as ArkPart, null, {
+                  default: () => h(PhEye),
+                  fallback: () => h(PhEyeSlash),
+                }),
+            ),
+        ),
+      );
+  },
+});
+// #endregion
+
 // #region Component
-export const PasswordInput = defineComponent({
+const PasswordInputShorthand = defineComponent({
   inheritAttrs: false,
   name: "PasswordInput",
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     clearable: { default: false, type: Boolean },
     clearButtonProps: {
@@ -158,8 +251,10 @@ export const PasswordInput = defineComponent({
                         h(
                           InputGroup.Button as ArkPart,
                           {
+                            "aria-label": useProviderMessage(
+                              "passwordInput.clear",
+                            ),
                             ...restClearButtonProps,
-                            "aria-label": "Clear",
                             "data-part": "clear-trigger",
                             "data-scope": "password-input",
                             onClick: (event: MouseEvent) => {
@@ -185,7 +280,9 @@ export const PasswordInput = defineComponent({
                       h(
                         InputGroup.Button as ArkPart,
                         {
-                          "aria-label": "Toggle password visibility",
+                          "aria-label": useProviderMessage(
+                            "passwordInput.togglePasswordVisibility",
+                          ),
                           size: "icon-xs",
                           type: "button",
                           variant: "ghost",
@@ -212,3 +309,11 @@ export const PasswordInput = defineComponent({
   },
 });
 // #endregion
+
+export const PasswordInput = Object.assign(PasswordInputShorthand, {
+  Control: PasswordInputControl,
+  Indicator: PasswordInputPrimitive.Indicator,
+  Input: PasswordInputInput,
+  Root: PasswordInputRoot,
+  VisibilityTrigger: PasswordInputVisibilityTrigger,
+});

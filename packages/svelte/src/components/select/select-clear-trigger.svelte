@@ -5,7 +5,10 @@ import {
 } from "@ark-ui/svelte/select";
 import { selectRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
+import { useMessageResolver } from "../provider/provider.context";
 import { useSelectRoot } from "./select.context";
+
+const t = useMessageResolver();
 
 let { class: className, children, ...rest }: SelectClearTriggerProps = $props();
 const ctx = useSelectRoot();
@@ -13,8 +16,8 @@ const slots = $derived(ctx?.slots ?? selectRecipe());
 </script>
 
 <SelectPrimitive.ClearTrigger
+  aria-label={t("select.clear")}
   {...rest}
-  aria-label="Clear selected value(s)"
   class={slots.clearTrigger({ class: cn(className) })}
 >
   {@render children?.()}

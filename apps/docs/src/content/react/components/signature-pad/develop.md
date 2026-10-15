@@ -18,6 +18,12 @@ Preview the signature image before submit.
 
 :::example ImagePreview
 
+### Compound
+
+Compose the pad from `Root`, `Control`, `Segment`, `Clear` and `Guide`.
+
+:::example Compound
+
 ### Controlled
 
 Drive stroke data from the parent when signature state lives above.

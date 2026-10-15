@@ -14,9 +14,12 @@ import { cn } from "@pisagor/utils";
 import EyeIcon from "phosphor-svelte/lib/EyeIcon";
 import EyeSlashIcon from "phosphor-svelte/lib/EyeSlashIcon";
 import XIcon from "phosphor-svelte/lib/XIcon";
-import InputGroupAddon from "./input-group/input-group-addon.svelte";
-import InputGroupButton from "./input-group/input-group-button.svelte";
-import InputGroupRoot from "./input-group/input-group-root.svelte";
+import InputGroupAddon from "../input-group/input-group-addon.svelte";
+import InputGroupButton from "../input-group/input-group-button.svelte";
+import InputGroupRoot from "../input-group/input-group-root.svelte";
+import { useMessageResolver } from "../provider/provider.context";
+
+const t = useMessageResolver();
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -102,7 +105,7 @@ function handleClear() {
       {#if canClear}
         <InputGroupAddon align="inline-end" class={slots.clearAddon()}>
           <InputGroupButton
-            aria-label="Clear"
+            aria-label={t("passwordInput.clear")}
             data-part="clear-trigger"
             data-scope="password-input"
             onclick={handleClear}
@@ -117,7 +120,7 @@ function handleClear() {
 
       <InputGroupAddon align="inline-end">
         <PasswordInputPrimitive.VisibilityTrigger
-          aria-label="Toggle password visibility"
+          aria-label={t("passwordInput.togglePasswordVisibility")}
           class={inputGroupButtonRecipe({ size: "icon-xs" })}
           type="button"
         >

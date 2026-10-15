@@ -24,6 +24,7 @@ import { createMemo, For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { CheckIcon } from "../internal/icons";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "./dropdown-menu";
+import { useProviderMessage } from "./provider/provider.context";
 
 // #region Context
 const {
@@ -52,6 +53,8 @@ export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
 export interface ListboxProps
   extends Omit<ListboxRootProps, "children" | "collection"> {
   collection?: ListboxRootProps["collection"];
+  /** Content shown when there are no items. */
+  emptyText?: JSX.Element;
   items?: ListboxPresetItem[];
 }
 
@@ -197,14 +200,16 @@ export function ListboxItemIndicator(
 }
 
 export function ListboxEmpty(props: ListboxEmptyProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
+  const [local, rest] = splitProps(props, ["class", "children"]);
   const styles = useListbox();
 
   return (
     <ListboxPrimitive.Empty
       {...rest}
       class={styles.slots.empty({ class: local.class })}
-    />
+    >
+      {local.children || useProviderMessage("listbox.empty")}
+    </ListboxPrimitive.Empty>
   );
 }
 
@@ -219,7 +224,7 @@ export function ListboxShortcut(props: DropdownMenuShortcutProps): JSX.Element {
 }
 
 export function ListboxShorthand(props: ListboxProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["collection", "items"]);
+  const [local, rest] = splitProps(props, ["collection", "items", "emptyText"]);
   const items = createMemo(() => local.items ?? []);
   const collection = createMemo(
     () =>
@@ -233,17 +238,16 @@ export function ListboxShorthand(props: ListboxProps): JSX.Element {
 
   return (
     <ListboxRoot {...rest} collection={collection()}>
-      <Show when={items().length > 0}>
-        <ListboxContent>
-          <For each={items()}>
-            {(item) => (
-              <ListboxItem item={item}>
-                <ListboxItemText>{item.label}</ListboxItemText>
-              </ListboxItem>
-            )}
-          </For>
-        </ListboxContent>
-      </Show>
+      <ListboxContent>
+        <ListboxEmpty>{local.emptyText}</ListboxEmpty>
+        <For each={items()}>
+          {(item) => (
+            <ListboxItem item={item}>
+              <ListboxItemText>{item.label}</ListboxItemText>
+            </ListboxItem>
+          )}
+        </For>
+      </ListboxContent>
     </ListboxRoot>
   );
 }

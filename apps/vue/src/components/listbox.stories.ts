@@ -90,3 +90,7 @@ export const SelectionNone = meta.story({
 export const CustomRecipe = meta.story({
   render: exampleRender(Examples.CustomRecipe),
 });
+
+export const Empty = meta.story({
+  render: exampleRender(Examples.Empty),
+});

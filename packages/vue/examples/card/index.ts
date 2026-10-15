@@ -3,4 +3,5 @@ export { default as CustomSpacing } from "./custom-spacing.vue";
 export { default as Default } from "./default.vue";
 export { default as Icon } from "./icon.vue";
 export { default as Product } from "./product.vue";
+export { default as Sizes } from "./sizes.vue";
 export { imports, sources } from "./sources";

@@ -1,6 +1,7 @@
 import auto_hideRaw from "./auto-hide.vue?raw";
 import autocompleteRaw from "./autocomplete.vue?raw";
 import clearableRaw from "./clearable.vue?raw";
+import compoundRaw from "./compound.vue?raw";
 import controlledRaw from "./controlled.vue?raw";
 import controlled_visibilityRaw from "./controlled-visibility.vue?raw";
 import defaultRaw from "./default.vue?raw";
@@ -14,6 +15,7 @@ export const sources = {
   Autocomplete: autocompleteRaw,
   AutoHide: auto_hideRaw,
   Clearable: clearableRaw,
+  Compound: compoundRaw,
   Controlled: controlledRaw,
   ControlledVisibility: controlled_visibilityRaw,
   Default: defaultRaw,

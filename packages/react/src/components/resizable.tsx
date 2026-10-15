@@ -16,6 +16,7 @@ import type {
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import { type ComponentProps, useCallback, useRef } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { getMessage } from "./provider/provider.context";
 
 export type {
   SplitterExpandCollapseDetails as ExpandCollapseDetails,
@@ -56,6 +57,10 @@ export interface ResizableEdgeHandleProps
   handlePosition?: ResizableHandlePosition;
   /** Minimum width in pixels. @defaultValue 1 */
   minWidth?: number;
+  /** Maximum width in pixels, used by the End key and `aria-valuemax`. */
+  maxWidth?: number;
+  /** Width change in pixels per arrow key press. @defaultValue 10 */
+  step?: number;
   /** Current width in pixels. */
   width: number;
   /** Accessible label for the resize control. */
@@ -102,7 +107,10 @@ export function ResizableEdgeHandle({
   handlePosition = "center",
   label,
   minWidth = 1,
+  maxWidth,
+  step = 10,
   width,
+  onKeyDown,
   onResizeChange,
   onResizeEnd,
   onResizeStart,
@@ -128,10 +136,18 @@ export function ResizableEdgeHandle({
     [onResizeChange, onWidthChange],
   );
 
+  const clamp = (value: number) =>
+    Math.min(maxWidth ?? Number.POSITIVE_INFINITY, Math.max(minWidth, value));
+
   return (
+    // biome-ignore lint/a11y/useSemanticElements: focusable window-splitter handle; <hr> cannot take focus or children
     <button
       {...rest}
       aria-label={label}
+      aria-orientation="vertical"
+      aria-valuemax={maxWidth}
+      aria-valuemin={minWidth}
+      aria-valuenow={Math.round(width)}
       className={edgeHandle.base({ className })}
       data-handle-position={handlePosition}
       data-part="edge-handle"
@@ -140,6 +156,28 @@ export function ResizableEdgeHandle({
         event.preventDefault();
         onResizeEnd?.();
         applyWidth(initialWidthRef.current);
+      }}
+      onKeyDown={(event) => {
+        onKeyDown?.(event);
+        const grow = isStart ? "ArrowRight" : "ArrowLeft";
+        const shrink = isStart ? "ArrowLeft" : "ArrowRight";
+        const next =
+          event.key === grow
+            ? width + step
+            : event.key === shrink
+              ? width - step
+              : event.key === "Home"
+                ? minWidth
+                : event.key === "End" && maxWidth !== undefined
+                  ? maxWidth
+                  : event.key === "Enter"
+                    ? initialWidthRef.current
+                    : undefined;
+        if (next === undefined) {
+          return;
+        }
+        event.preventDefault();
+        applyWidth(clamp(next));
       }}
       onLostPointerCapture={() => {
         onResizeEnd?.();
@@ -158,8 +196,7 @@ export function ResizableEdgeHandle({
         }
 
         const delta = event.clientX - startXRef.current;
-        const next = Math.max(
-          minWidth,
+        const next = clamp(
           isStart
             ? startWidthRef.current + delta
             : startWidthRef.current - delta,
@@ -173,6 +210,7 @@ export function ResizableEdgeHandle({
         onResizeEnd?.();
         onWidthChange(liveWidthRef.current);
       }}
+      role="separator"
       type="button"
     >
       <span className={edgeHandle.grip()}>
@@ -210,8 +248,8 @@ export function ResizableResizeTrigger({
 
   return (
     <SplitterPrimitive.ResizeTrigger
+      aria-label={getMessage("resizable.resize")}
       {...rest}
-      aria-label="Resize"
       className={slots.resizeTrigger({ className })}
     >
       {withHandle ? (

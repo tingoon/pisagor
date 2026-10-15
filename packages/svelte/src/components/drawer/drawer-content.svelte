@@ -14,10 +14,10 @@ import DrawerPositioner from "./drawer-positioner.svelte";
 type Props = DrawerContentProps & BaseDrawerProps;
 
 const SWIPE_DIRECTION_TO_PLACEMENT = {
-  down: "down",
+  down: "bottom",
   end: "right",
   start: "left",
-  up: "up",
+  up: "top",
 } as const;
 
 let {

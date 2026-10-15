@@ -24,12 +24,20 @@ export const Default = meta.story({
   render: Examples.Default,
 });
 
+export const Sizes = meta.story({
+  render: Examples.Sizes,
+});
+
 export const Variants = meta.story({
   render: Examples.Variants,
 });
 
 export const CheckboxGroup = meta.story({
   render: Examples.CheckboxGroup,
+});
+
+export const Compound = meta.story({
+  render: Examples.Compound,
 });
 
 export const Controlled = meta.story({

@@ -4,6 +4,7 @@ import custom_recipeRaw from "./custom-recipe.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 import with_actionRaw from "./with-action.tsx?raw";
 import with_iconRaw from "./with-icon.tsx?raw";
+import without_iconRaw from "./without-icon.tsx?raw";
 
 export const imports = `import { Alert } from "@pisagor/react";`;
 
@@ -14,4 +15,5 @@ export const sources = {
   Variants: variantsRaw,
   WithAction: with_actionRaw,
   WithIcon: with_iconRaw,
+  WithoutIcon: without_iconRaw,
 } as const;

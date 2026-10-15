@@ -19,14 +19,7 @@ import type { TourProps as BaseTourProps } from "@pisagor/props";
 import { dialogRecipe, tourRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, MouseEvent } from "react";
-import {
-  createContext,
-  use,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { createContext, use, useCallback, useEffect, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button } from "./button";
 import type {
@@ -35,6 +28,7 @@ import type {
   DialogFooterProps,
   DialogHeaderProps,
 } from "./dialog";
+import { getMessage } from "./provider/provider.context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -108,12 +102,19 @@ export interface TourContentProps extends TourPrimitiveContentProps {
 // #region Parts
 export function TourRoot({
   steps = [],
+  keyboardNavigation,
+  onStatusChange,
+  onStepChange,
   recipe = tourRecipe,
   ...rest
 }: TourProps) {
-  const [isStarted, setIsStarted] = useState(false);
-
-  const tour = useTour({ steps });
+  const tour = useTour({
+    keyboardNavigation,
+    onStatusChange,
+    onStepChange,
+    steps,
+  });
+  const isStarted = tour.open;
 
   const slots = recipe();
 
@@ -130,7 +131,6 @@ export function TourRoot({
   }, [isStarted]);
 
   const handleStart = useCallback(() => {
-    setIsStarted(true);
     tour.start();
   }, [tour]);
 
@@ -229,7 +229,9 @@ export function TourContent({
               >
                 <XIcon />
 
-                <span className={slots.closeLabel()}>Close</span>
+                <span className={slots.closeLabel()}>
+                  {getMessage("tour.close")}
+                </span>
               </Button>
             </TourCloseTrigger>
           )}
@@ -328,6 +330,9 @@ export function TourCloseTrigger(props: TourCloseTriggerProps) {
   return <TourPrimitive.CloseTrigger {...props} />;
 }
 
+/** True inside `Tour.Footer`, so `Tour.Actions` does not render a second control. */
+const TourInsideControlContext = createContext(false);
+
 export function TourFooter({
   children,
   className,
@@ -342,7 +347,9 @@ export function TourFooter({
         data-part="control"
         data-scope="tour"
       >
-        {children}
+        <TourInsideControlContext value={true}>
+          {children}
+        </TourInsideControlContext>
       </ark.div>
     </TourPrimitive.Control>
   );
@@ -352,36 +359,50 @@ export function TourActions({ className, ...rest }: DialogFooterProps) {
   const { slots, tour } = useTourContext();
   const dialogSlots = dialogRecipe();
 
+  const insideControl = use(TourInsideControlContext);
+
   const actions = tour.step?.actions ?? [];
 
   if (actions.length === 0) {
     return null;
   }
 
+  const content = (
+    <ark.div
+      {...(insideControl ? rest : {})}
+      className={cn(
+        !insideControl && dialogSlots.footer(),
+        slots.actions({ className }),
+      )}
+      data-part="actions"
+      data-scope="tour"
+    >
+      {actions.map((action) => (
+        <TourActionTrigger action={action} asChild key={action.label}>
+          <Button
+            size="sm"
+            variant={
+              action.action === "dismiss" || action.action === "prev"
+                ? "outline"
+                : "default"
+            }
+          >
+            {action.action === "prev" && <CaretLeftIcon />}
+            {action.label}
+            {action.action === "next" && <CaretRightIcon />}
+          </Button>
+        </TourActionTrigger>
+      ))}
+    </ark.div>
+  );
+
+  if (insideControl) {
+    return content;
+  }
+
   return (
     <TourPrimitive.Control {...rest} asChild>
-      <ark.div
-        className={cn(dialogSlots.footer(), slots.actions({ className }))}
-        data-part="actions"
-        data-scope="tour"
-      >
-        {actions.map((action) => (
-          <TourActionTrigger action={action} asChild key={action.label}>
-            <Button
-              size="sm"
-              variant={
-                action.action === "dismiss" || action.action === "prev"
-                  ? "outline"
-                  : "default"
-              }
-            >
-              {action.action === "prev" && <CaretLeftIcon />}
-              {action.label}
-              {action.action === "next" && <CaretRightIcon />}
-            </Button>
-          </TourActionTrigger>
-        ))}
-      </ark.div>
+      {content}
     </TourPrimitive.Control>
   );
 }

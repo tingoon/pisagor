@@ -9,15 +9,15 @@ export interface AppShellHeaderProps extends ComponentProps<"header"> {
   position?: AppShellRegionPosition;
 }
 
-export type AppShellMainProps = ComponentProps<"div">;
-export type AppShellContentProps = ComponentProps<"main">;
+export type AppShellMainProps = ComponentProps<"main">;
+export type AppShellContentProps = ComponentProps<"div">;
 
 export function AppShellMain(props: AppShellMainProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "style"]);
   const styles = useAppShellStyles();
 
   return (
-    <div
+    <main
       {...rest}
       class={styles.slots.main({ class: local.class })}
       data-part="main"
@@ -58,7 +58,7 @@ export function AppShellContent(props: AppShellContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useAppShellStyles();
   return (
-    <main
+    <div
       {...rest}
       class={styles.slots.content({ class: local.class })}
       data-part="content"

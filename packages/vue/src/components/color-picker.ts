@@ -9,6 +9,7 @@ import { PhCheck, PhEyedropper, PhX } from "@phosphor-icons/vue";
 import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
+import { useProviderMessage } from "./provider/provider";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -16,6 +17,7 @@ type ClassValue = Parameters<typeof cn>[0];
 
 import { computed, defineComponent, h, type PropType, Teleport } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { LoosePropValue } from "../internal/types";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
 
@@ -78,7 +80,7 @@ export const ColorPickerRoot = defineComponent({
     },
     positioning: {
       default: { placement: "top-start" },
-      type: Object as PropType<unknown>,
+      type: Object as PropType<LoosePropValue>,
     },
     recipe: {
       default: colorPickerRecipe,
@@ -195,8 +197,8 @@ export const ColorPickerClearTrigger = defineComponent({
         h(
           InputGroup.Button as ArkPart,
           {
+            "aria-label": useProviderMessage("colorPicker.clearColor"),
             ...attrs,
-            "aria-label": "Clear color",
             class: cn(props.class, (attrs as { class?: ClassValue }).class),
             "data-part": "clear-trigger",
             "data-scope": "color-picker",
@@ -394,10 +396,13 @@ export const ColorPickerEyeDropperTrigger = defineComponent({
     variant: { default: "outline", type: String },
   },
   setup(props, { attrs, slots }) {
+    const label = useProviderMessage("colorPicker.eyeDropper");
+
     return () =>
       h(
         ColorPickerPrimitive.EyeDropperTrigger as ArkPart,
         {
+          "aria-label": label,
           ...attrs,
           asChild: true,
         } as unknown as Parameters<typeof h>[1],
@@ -606,7 +611,7 @@ export const ColorPickerArea = defineComponent({
           class: slots.area({
             class: cn(
               {
-                "after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:bg-[radial-gradient(circle,#fff3_1px,#0000_1px)] after:bg-size-[8px_8px]":
+                "after:pointer-events-none after:absolute after:inset-0 after:rounded-inherit after:bg-[radial-gradient(circle,color-mix(in_oklab,var(--color-on-media)_20%,transparent)_1px,transparent_1px)] after:bg-size-(--spacing(2))":
                   props.showDots,
               },
               props.class,
@@ -668,6 +673,40 @@ export const ColorPickerInput = defineComponent({
   },
 });
 
+export const ColorPickerLabel = defineComponent({
+  inheritAttrs: false,
+  name: "ColorPicker.Label",
+  setup(_, { attrs, slots }) {
+    const getSlots = useColorPickerSlots();
+    return () =>
+      h(
+        ColorPickerPrimitive.Label as ArkPart,
+        {
+          ...attrs,
+          class: getSlots().label({
+            class: attrs.class as string | undefined,
+          }),
+        },
+        slots,
+      );
+  },
+});
+
+export const ColorPickerFormatSelect = defineComponent({
+  inheritAttrs: false,
+  name: "ColorPicker.FormatSelect",
+  setup(_, { attrs }) {
+    const getSlots = useColorPickerSlots();
+    return () =>
+      h(ColorPickerPrimitive.FormatSelect as ArkPart, {
+        ...attrs,
+        class: getSlots().formatSelect({
+          class: attrs.class as string | undefined,
+        }),
+      });
+  },
+});
+
 export const ColorPickerSwatchPreview = defineComponent({
   inheritAttrs: false,
   name: "ColorPicker.SwatchPreview",
@@ -712,6 +751,10 @@ export const ColorPickerField = defineComponent({
   name: "ColorPicker.Field",
   props: {
     clearable: { default: false, type: Boolean },
+    variant: {
+      default: undefined,
+      type: String as PropType<"primary" | "secondary">,
+    },
   },
   setup(props, { attrs, slots }) {
     const getSlots = useColorPickerSlots();
@@ -722,7 +765,7 @@ export const ColorPickerField = defineComponent({
         { ...attrs, clearable: props.clearable },
         () => [
           h(ColorPickerControl as ArkPart, { clearable: false }, () => [
-            h(InputGroup, {}, () => [
+            h(InputGroup, { variant: props.variant }, () => [
               h(ColorPickerTrigger as ArkPart, { asChild: true }, () =>
                 h(InputGroup.Addon as ArkPart, () =>
                   h(ColorPickerSwatchPreview as ArkPart),
@@ -772,13 +815,16 @@ export const ColorPickerField = defineComponent({
 export const ColorPicker = Object.assign(ColorPickerRoot, {
   Area: ColorPickerArea,
   AreaThumb: ColorPickerAreaThumb,
+  ChannelInput: ColorPickerInput,
   ChannelSlider: ColorPickerChannelSlider,
   ClearTrigger: ColorPickerClearTrigger,
   Content: ColorPickerContent,
   Control: ColorPickerControl,
   EyeDropperTrigger: ColorPickerEyeDropperTrigger,
   Field: ColorPickerField,
+  FormatSelect: ColorPickerFormatSelect,
   Input: ColorPickerInput,
+  Label: ColorPickerLabel,
   Swatch: ColorPickerSwatch,
   SwatchGroup: ColorPickerSwatchGroup,
   SwatchIndicator: ColorPickerSwatchIndicator,

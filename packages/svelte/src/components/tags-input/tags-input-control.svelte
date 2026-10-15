@@ -9,9 +9,12 @@ import {
   formControlGroupShellRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
+import { useMessageResolver } from "../provider/provider.context";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { useTagsInput } from "./tags-input.context";
 import TagsInputClearTrigger from "./tags-input-clear-trigger.svelte";
+
+const t = useMessageResolver();
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -45,6 +48,6 @@ const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 >
   {@render children?.()}
   {#if clearable && api().value.length > 0}
-    <TagsInputClearTrigger aria-label="Clear all tags" />
+    <TagsInputClearTrigger aria-label={t("tagsInput.clearAllTags")} />
   {/if}
 </TagsInputPrimitive.Control>

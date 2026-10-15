@@ -33,7 +33,7 @@ Use icons alone when labels would crowd a narrow bar. Provide accessible names.
 
 ### As child
 
-Render destinations as links when each item navigates to a route.
+Items render as links. Set the root `value` to the current route so the matching item gets `aria-current="page"`, or pass `current` to an item.
 
 :::example WithLinks
 

@@ -6,6 +6,7 @@ import {
 import type { RatingProps as BaseRatingProps } from "@pisagor/props";
 import { ratingRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
+import type { SizeScaleProps } from "../../internal/types";
 import { Context } from "./rating.context";
 
 type FormControlVariant = "primary" | "secondary";
@@ -13,20 +14,22 @@ type FormControlVariant = "primary" | "secondary";
 type Props = RatingGroupRootProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-} & BaseRatingProps;
+} & BaseRatingProps &
+  SizeScaleProps;
 
 let {
   variant: variantProp,
   allowHalf = false,
   count = 5,
   children,
+  size = "md",
   recipe = ratingRecipe,
   class: className,
   ...rest
 }: Props = $props();
 
 const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-const slots = $derived(recipe());
+const slots = $derived(recipe({ size }));
 const surfaceTone = $derived(
   variant === "secondary" ? "opacity-90" : undefined,
 );

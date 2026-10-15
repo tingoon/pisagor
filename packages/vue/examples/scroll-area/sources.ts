@@ -1,4 +1,5 @@
 import both_directionsRaw from "./both-directions.vue?raw";
+import compoundRaw from "./compound.vue?raw";
 import custom_recipeRaw from "./custom-recipe.vue?raw";
 import defaultRaw from "./default.vue?raw";
 import horizontalRaw from "./horizontal.vue?raw";
@@ -9,6 +10,7 @@ export const imports = `import { ScrollArea } from "@pisagor/vue";`;
 
 export const sources = {
   BothDirections: both_directionsRaw,
+  Compound: compoundRaw,
   CustomRecipe: custom_recipeRaw,
   Default: defaultRaw,
   Horizontal: horizontalRaw,

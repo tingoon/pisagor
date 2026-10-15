@@ -1,13 +1,31 @@
 import { ark } from "@ark-ui/vue/factory";
+import { PhCaretDown } from "@phosphor-icons/vue";
 import type { NavigationMenuProps as BaseNavigationMenuRootProps } from "@pisagor/props";
 import {
   type NavigationMenuRecipeSlot,
   navigationMenuRecipe,
 } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { defineComponent, h, type PropType } from "vue";
+import {
+  cn,
+  focusNavigationMenuContentLink,
+  handleNavigationMenuContentKeyDown,
+  handleNavigationMenuListKeyDown,
+} from "@pisagor/utils";
+import {
+  computed,
+  defineComponent,
+  h,
+  type InjectionKey,
+  inject,
+  type PropType,
+  provide,
+  type Ref,
+  ref,
+  useId,
+} from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type { ClassValue, VariantClassNames } from "../internal/types";
+import { useProviderMessage } from "./provider/provider";
 
 // #region Slot recipe context
 const {
@@ -30,18 +48,212 @@ export interface NavigationMenuRootProps extends BaseNavigationMenuRootProps {
 
 type ArkPart = Parameters<typeof h>[0];
 
+interface NavigationMenuItemState {
+  contentId: string;
+  open: Readonly<Ref<boolean>>;
+  setOpen: (open: boolean) => void;
+  trigger: Ref<HTMLElement | null>;
+}
+
+const NavigationMenuOpenKey: InjectionKey<Ref<string | null>> =
+  Symbol("NavigationMenuOpen");
+const NavigationMenuItemKey: InjectionKey<NavigationMenuItemState> =
+  Symbol("NavigationMenuItem");
+
+function useNavigationMenuItem(part: string) {
+  const item = inject(NavigationMenuItemKey, null);
+  if (!item) {
+    throw new Error(
+      `NavigationMenu.${part} must be used in NavigationMenu.Item`,
+    );
+  }
+  return item;
+}
+
+const classProp = {
+  default: undefined,
+  type: [String, Object, Array] as PropType<ClassValue>,
+};
+
+function callHandler(handler: unknown, event: Event) {
+  if (typeof handler === "function") {
+    (handler as (event: Event) => void)(event);
+  }
+}
+
 // #region Parts
-export const NavigationMenuRoot = withProvider(ark.nav, {
+const NavigationMenuNav = withProvider(ark.nav, {
   name: "Root",
   slot: "base",
 });
 
-export const NavigationMenuList = withContext(ark.ul, {
+export const NavigationMenuRoot = defineComponent({
+  inheritAttrs: false,
+  name: "NavigationMenu",
+  setup(_, { attrs, slots }) {
+    const openId = ref<string | null>(null);
+    provide(NavigationMenuOpenKey, openId);
+    const label = useProviderMessage("navigationMenu.label");
+
+    return () =>
+      h(NavigationMenuNav as ArkPart, { "aria-label": label, ...attrs }, slots);
+  },
+});
+
+const NavigationMenuListBase = withContext(ark.ul, {
   name: "List",
 });
 
-export const NavigationMenuItem = withContext(ark.li, {
+export const NavigationMenuList = defineComponent({
+  inheritAttrs: false,
+  name: "NavigationMenu.List",
+  setup(_, { attrs, slots }) {
+    return () =>
+      h(
+        NavigationMenuListBase as ArkPart,
+        {
+          ...attrs,
+          onKeydown: (event: KeyboardEvent) => {
+            callHandler(attrs.onKeydown, event);
+            if (!event.defaultPrevented) {
+              handleNavigationMenuListKeyDown(event);
+            }
+          },
+        },
+        slots,
+      );
+  },
+});
+
+const NavigationMenuItemBase = withContext(ark.li, {
   name: "Item",
+});
+
+export const NavigationMenuItem = defineComponent({
+  inheritAttrs: false,
+  name: "NavigationMenu.Item",
+  setup(_, { attrs, slots }) {
+    const openId = inject(NavigationMenuOpenKey, ref<string | null>(null));
+    const id = useId();
+    const open = computed(() => openId.value === id);
+    const trigger = ref<HTMLElement | null>(null);
+    const setOpen = (value: boolean) => {
+      openId.value = value ? id : null;
+    };
+    provide(NavigationMenuItemKey, {
+      contentId: `${id}-content`,
+      open,
+      setOpen,
+      trigger,
+    });
+
+    return () =>
+      h(
+        NavigationMenuItemBase as ArkPart,
+        {
+          ...attrs,
+          onFocusout: (event: FocusEvent) => {
+            callHandler(attrs.onFocusout, event);
+            const current = event.currentTarget as HTMLElement;
+            if (
+              open.value &&
+              !current.contains(event.relatedTarget as Node | null)
+            ) {
+              setOpen(false);
+            }
+          },
+          onKeydown: (event: KeyboardEvent) => {
+            callHandler(attrs.onKeydown, event);
+            if (open.value && event.key === "Escape") {
+              event.preventDefault();
+              setOpen(false);
+              trigger.value?.focus();
+            }
+          },
+        },
+        slots,
+      );
+  },
+});
+
+export const NavigationMenuTrigger = defineComponent({
+  inheritAttrs: false,
+  name: "NavigationMenu.Trigger",
+  props: { class: classProp },
+  setup(props, { attrs, slots }) {
+    const styles = useNavigationMenu();
+    const item = useNavigationMenuItem("Trigger");
+
+    return () =>
+      h(
+        ark.button as ArkPart,
+        {
+          ...attrs,
+          "aria-controls": item.contentId,
+          "aria-expanded": item.open.value,
+          class: styles.slots.trigger({
+            class: props.class as string | undefined,
+          }),
+          "data-part": "trigger",
+          "data-scope": "navigation-menu",
+          onClick: (event: MouseEvent) => {
+            callHandler(attrs.onClick, event);
+            item.setOpen(!item.open.value);
+          },
+          onKeydown: (event: KeyboardEvent) => {
+            callHandler(attrs.onKeydown, event);
+            if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+              event.preventDefault();
+              item.setOpen(true);
+              const position = event.key === "ArrowDown" ? "first" : "last";
+              requestAnimationFrame(() =>
+                focusNavigationMenuContentLink(item.contentId, position),
+              );
+            }
+          },
+          ref: item.trigger,
+          type: "button",
+        },
+        () => [
+          slots.default?.(),
+          h(PhCaretDown, {
+            "aria-hidden": true,
+            class: styles.slots.indicator(),
+          }),
+        ],
+      );
+  },
+});
+
+export const NavigationMenuContent = defineComponent({
+  inheritAttrs: false,
+  name: "NavigationMenu.Content",
+  props: { class: classProp },
+  setup(props, { attrs, slots }) {
+    const styles = useNavigationMenu();
+    const item = useNavigationMenuItem("Content");
+
+    return () =>
+      h(
+        ark.ul as ArkPart,
+        {
+          ...attrs,
+          class: styles.slots.content({
+            class: props.class as string | undefined,
+          }),
+          "data-part": "content",
+          "data-scope": "navigation-menu",
+          "data-state": item.open.value ? "open" : "closed",
+          hidden: !item.open.value,
+          id: item.contentId,
+          onKeydown: (event: KeyboardEvent) => {
+            callHandler(attrs.onKeydown, event);
+            handleNavigationMenuContentKeyDown(event);
+          },
+        },
+        slots,
+      );
+  },
 });
 
 export const NavigationMenuLink = defineComponent({
@@ -51,7 +263,7 @@ export const NavigationMenuLink = defineComponent({
     active: { default: false, type: Boolean },
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     classNames: {
       default: undefined,
@@ -84,7 +296,9 @@ export const NavigationMenuLink = defineComponent({
 // #endregion
 
 export const NavigationMenu = Object.assign(NavigationMenuRoot, {
+  Content: NavigationMenuContent,
   Item: NavigationMenuItem,
   Link: NavigationMenuLink,
   List: NavigationMenuList,
+  Trigger: NavigationMenuTrigger,
 });

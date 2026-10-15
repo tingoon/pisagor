@@ -81,6 +81,12 @@ Clear selected files in one action.
 
 :::example ClearTrigger
 
+### Rejected Files
+
+`FileUpload.List` also lists rejected files with their validation errors, so users can see why a file was not accepted.
+
+:::example RejectedFiles
+
 ### Disabled
 
 Show that upload is unavailable.

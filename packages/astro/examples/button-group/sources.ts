@@ -3,6 +3,7 @@ import defaultRaw from "./default.astro?raw";
 import nestedRaw from "./nested.astro?raw";
 import orientation_horizontalRaw from "./orientation-horizontal.astro?raw";
 import orientation_verticalRaw from "./orientation-vertical.astro?raw";
+import sizesRaw from "./sizes.astro?raw";
 import with_separatorRaw from "./with-separator.astro?raw";
 
 export const imports = `---
@@ -15,5 +16,6 @@ export const sources = {
   Nested: nestedRaw,
   OrientationHorizontal: orientation_horizontalRaw,
   OrientationVertical: orientation_verticalRaw,
+  Sizes: sizesRaw,
   WithSeparator: with_separatorRaw,
 } as const;

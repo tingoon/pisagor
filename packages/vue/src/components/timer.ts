@@ -11,6 +11,8 @@ import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
+import { useProviderMessage } from "./provider/provider";
 
 // #region Context
 const {
@@ -79,7 +81,7 @@ export const TimerItem = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -117,7 +119,7 @@ export const TimerRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     isControlsVisible: { default: undefined, type: Boolean },
     units: { default: undefined, type: Array as PropType<TimerUnit[]> },
@@ -152,7 +154,7 @@ export const TimerItemGroup = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     orientation: {
       default: "vertical",
@@ -179,7 +181,7 @@ export const TimerSeparator = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -213,7 +215,11 @@ export const TimerPause = defineComponent({
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
-        { ...attrs, action: "pause", "aria-label": "Pause" },
+        {
+          "aria-label": useProviderMessage("timer.pause"),
+          ...attrs,
+          action: "pause",
+        },
         slots,
       );
   },
@@ -226,7 +232,11 @@ export const TimerResume = defineComponent({
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
-        { ...attrs, action: "resume", "aria-label": "Resume" },
+        {
+          "aria-label": useProviderMessage("timer.resume"),
+          ...attrs,
+          action: "resume",
+        },
         slots,
       );
   },
@@ -239,7 +249,11 @@ export const TimerStart = defineComponent({
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
-        { ...attrs, action: "start", "aria-label": "Start" },
+        {
+          "aria-label": useProviderMessage("timer.start"),
+          ...attrs,
+          action: "start",
+        },
         slots,
       );
   },
@@ -252,7 +266,11 @@ export const TimerReset = defineComponent({
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
-        { ...attrs, action: "reset", "aria-label": "Reset" },
+        {
+          "aria-label": useProviderMessage("timer.reset"),
+          ...attrs,
+          action: "reset",
+        },
         slots,
       );
   },
@@ -265,7 +283,11 @@ export const TimerRestart = defineComponent({
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
-        { ...attrs, action: "restart", "aria-label": "Restart" },
+        {
+          "aria-label": useProviderMessage("timer.restart"),
+          ...attrs,
+          action: "restart",
+        },
         slots,
       );
   },

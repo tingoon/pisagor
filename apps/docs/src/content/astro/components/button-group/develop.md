@@ -12,6 +12,12 @@ Related actions clustered as one visual group.
 
 :::example Default
 
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+:::example Sizes
+
 ### Orientation Horizontal
 
 Lay actions in a row for toolbars and footers.

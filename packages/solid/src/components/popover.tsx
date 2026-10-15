@@ -19,6 +19,7 @@ import { Portal } from "solid-js/web";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { XIcon } from "../internal/icons";
 import { Button } from "./button";
+import { useProviderMessage } from "./provider/provider.context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -93,7 +94,7 @@ export function PopoverContent(props: PopoverContentProps): JSX.Element {
                 asChild={(triggerProps) => (
                   <Button
                     {...triggerProps({ class: slots().close() })}
-                    aria-label="Close"
+                    aria-label={useProviderMessage("popover.close")}
                     size="icon-sm"
                     variant="ghost"
                   >
@@ -153,7 +154,9 @@ export function PopoverBody(props: PopoverBodyProps): JSX.Element {
     <ScrollArea>
       <ark.div
         {...rest}
-        class={styles.slots.body({ class: local.class })}
+        class={styles.slots.body({
+          class: ["overflow-visible", local.class].filter(Boolean).join(" "),
+        })}
         data-part="body"
         data-scope="popover"
       />

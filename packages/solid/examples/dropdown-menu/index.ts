@@ -3,6 +3,7 @@ export * from "./default";
 export * from "./destructive";
 export * from "./group-label";
 export * from "./icons";
+export * from "./item-indicator";
 export * from "./link";
 export * from "./nested";
 export * from "./placements";

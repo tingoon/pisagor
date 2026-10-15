@@ -38,10 +38,11 @@ import {
   calendarTableCellRecipe,
   formControlShellRecipe,
 } from "@pisagor/recipes";
-
 import { cn } from "@pisagor/utils";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { FormControlVariant } from "../internal/types";
 import { Button, type ButtonProps } from "./button";
+import { getMessage } from "./provider/provider.context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -56,7 +57,6 @@ export { CalendarSlotsContext };
 // #endregion
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 export type CalendarControlProps = DatePickerControlProps;
 
@@ -126,10 +126,12 @@ export interface CalendarProps extends CalendarRootProps, BaseCalendarProps {
 
 // #region Parts
 function useCalendarSelectShell(className?: string) {
-  const { slots } = useCalendar();
+  const { slots, variants } = useCalendar();
   const resolved = {
     surfaceVariant: useFormControlSurface(),
-    variant: "primary" as FormControlVariant,
+    variant:
+      (variants as { variant?: FormControlVariant }).variant ??
+      ("primary" as FormControlVariant),
   };
   const shellArgs = {
     surfaceVariant: resolved.surfaceVariant,
@@ -169,7 +171,7 @@ export function CalendarRoot({
   const slots = recipe();
 
   return (
-    <CalendarSlotsContext value={{ slots, variants: {} as never }}>
+    <CalendarSlotsContext value={{ slots, variants: { variant } as never }}>
       <CalendarPrimitive.Root
         {...rest}
         className={slots.base({ className })}
@@ -238,7 +240,7 @@ export function CalendarTodayTrigger({
           size={size}
           variant={variant}
         >
-          Today
+          {getMessage("calendar.today")}
         </Button>
       )}
     </CalendarContext>
@@ -337,7 +339,7 @@ export function CalendarPrevTrigger(props: CalendarPrevTriggerProps) {
   return (
     <CalendarPrimitive.PrevTrigger {...props} asChild>
       <Button
-        aria-label="Previous month"
+        aria-label={getMessage("calendar.previousMonth")}
         className={slots.prevTrigger()}
         size="icon-md"
         variant="ghost"
@@ -354,7 +356,7 @@ export function CalendarNextTrigger(props: CalendarNextTriggerProps) {
   return (
     <CalendarPrimitive.NextTrigger {...props} asChild>
       <Button
-        aria-label="Next month"
+        aria-label={getMessage("calendar.nextMonth")}
         className={slots.nextTrigger()}
         size="icon-md"
         variant="ghost"
@@ -501,13 +503,13 @@ export function CalendarTableCell({
 
   return (
     <CalendarPrimitive.TableCell
-      className={slots.base()}
+      className={slots.base({ className })}
       value={value}
       visibleRange={visibleRange}
     >
       <CalendarPrimitive.TableCellTrigger
         {...rest}
-        className={slots.trigger({ className })}
+        className={slots.trigger()}
       />
     </CalendarPrimitive.TableCell>
   );

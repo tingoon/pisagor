@@ -34,6 +34,10 @@ export const Autocomplete = meta.story({
   render: Examples.Autocomplete,
 });
 
+export const Compound = meta.story({
+  render: Examples.Compound,
+});
+
 export const ControlledVisibility = meta.story({
   render: Examples.ControlledVisibility,
 });

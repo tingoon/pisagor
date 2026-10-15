@@ -28,6 +28,14 @@
   --z-index-toast: var(--layer-toast);
   --breakpoint-md: 48rem;
   --color-ring: var(--ring);
+  --color-overlay: var(--overlay);
+  --color-checkerboard: var(--checkerboard);
+  --color-on-media: var(--on-media);
+  --shadow-edge-t: 0 -1px 0 0 var(--edge-highlight);
+  --shadow-edge-b: 0 1px 0 0 var(--edge-highlight);
+  --shadow-swatch:
+    0 0 0 1px var(--swatch-outline), inset 0 0 0 1px var(--swatch-outline);
+  --shadow-scrim: 0 0 0 9999px var(--scrim);
   --color-input: var(--input);
   --color-border: var(--border);
   --color-warning-foreground: var(--warning-foreground);
@@ -188,6 +196,12 @@
   --border: var(--color-neutral-200);
   --input: var(--color-neutral-200);
   --ring: var(--color-neutral-400);
+  --overlay: var(--color-black);
+  --checkerboard: var(--color-neutral-200);
+  --on-media: var(--color-white);
+  --edge-highlight: color-mix(in oklab, var(--color-white) 50%, transparent);
+  --swatch-outline: color-mix(in oklab, var(--color-black) 10%, transparent);
+  --scrim: color-mix(in oklab, var(--color-black) 50%, transparent);
 }
 
 .light {
@@ -224,6 +238,12 @@
   --border: var(--color-neutral-200);
   --input: var(--color-neutral-200);
   --ring: var(--color-neutral-400);
+  --overlay: var(--color-black);
+  --checkerboard: var(--color-neutral-200);
+  --on-media: var(--color-white);
+  --edge-highlight: color-mix(in oklab, var(--color-white) 50%, transparent);
+  --swatch-outline: color-mix(in oklab, var(--color-black) 10%, transparent);
+  --scrim: color-mix(in oklab, var(--color-black) 50%, transparent);
 }
 
 .dark {
@@ -260,6 +280,12 @@
   --border: var(--color-neutral-800);
   --input: var(--color-neutral-800);
   --ring: var(--color-neutral-500);
+  --overlay: var(--color-black);
+  --checkerboard: var(--color-neutral-200);
+  --on-media: var(--color-white);
+  --edge-highlight: color-mix(in oklab, var(--color-white) 6%, transparent);
+  --swatch-outline: color-mix(in oklab, var(--color-black) 10%, transparent);
+  --scrim: color-mix(in oklab, var(--color-black) 50%, transparent);
 }
 
 @layer base {
@@ -283,4 +309,8 @@
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
+}
+
+@utility rounded-inherit {
+  border-radius: inherit;
 }

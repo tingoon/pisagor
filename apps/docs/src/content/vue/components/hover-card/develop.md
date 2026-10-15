@@ -47,6 +47,12 @@ Choose placement so the hover card stays near its trigger without covering criti
 
 ## Customization
 
+### Without Arrow
+
+Hide the arrow when the card should sit flush with the layout.
+
+:::example WithoutArrow
+
 ### Custom recipe
 
 Extend `hoverCardRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.

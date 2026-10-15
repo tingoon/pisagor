@@ -10,6 +10,7 @@ export { default as Dropzone } from "./dropzone.svelte";
 export { default as Invalid } from "./invalid.svelte";
 export { default as MediaCapture } from "./media-capture.svelte";
 export { default as MultipleFiles } from "./multiple-files.svelte";
+export { default as RejectedFiles } from "./rejected-files.svelte";
 export { imports, sources } from "./sources";
 export { default as Trigger } from "./trigger.svelte";
 export { default as Variants } from "./variants.svelte";

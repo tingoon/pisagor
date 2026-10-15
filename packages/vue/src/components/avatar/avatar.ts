@@ -9,9 +9,10 @@ import {
   type AvatarVariantProps,
   avatarRecipe,
 } from "@pisagor/recipes";
+import { getInitials } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../../internal/types";
+import type { ClassValue, VariantClassNames } from "../../internal/types";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -42,6 +43,8 @@ export type AvatarSize = NonNullable<AvatarVariantProps["size"]>;
 export type AvatarClassNames = VariantClassNames<AvatarRecipeSlot>;
 
 export interface AvatarProps extends BaseAvatarProps {
+  /** Person name; used as default alt text and to derive initials when no fallback is given */
+  name?: string;
   classNames?: AvatarClassNames;
   /** Renders the avatar image with the provided src */
   src?: string;
@@ -58,14 +61,14 @@ export interface AvatarProps extends BaseAvatarProps {
 // #endregion
 
 // #region Closed
-export const Avatar = defineComponent({
+const AvatarShorthand = defineComponent({
   inheritAttrs: false,
   name: "Avatar",
   props: {
     alt: { default: undefined, type: String },
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     classNames: {
       default: undefined,
@@ -83,37 +86,49 @@ export const Avatar = defineComponent({
       default: undefined,
       type: Object as PropType<Record<string, unknown> | undefined>,
     },
+    name: { default: undefined, type: String },
     shape: { default: "circle", type: String as PropType<AvatarShape> },
     size: { default: "md", type: String as PropType<AvatarSize> },
     src: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const fallback =
+        props.fallback === undefined && props.name
+          ? getInitials(props.name)
+          : props.fallback;
+      return h(
         AvatarRoot,
         { ...attrs, class: props.class, shape: props.shape, size: props.size },
         () => [
           props.src
             ? h(AvatarImage, {
                 ...(props.imageProps ?? {}),
-                alt: props.alt,
+                alt: props.alt ?? props.name,
                 class: props.classNames?.image,
                 src: props.src,
               })
             : null,
-          props.fallback !== undefined
+          fallback !== undefined
             ? h(
                 AvatarFallback,
                 {
                   ...(props.fallbackProps ?? {}),
                   class: props.classNames?.fallback,
                 },
-                () => props.fallback,
+                () => fallback,
               )
             : null,
           slots.default?.(),
         ],
       );
+    };
   },
 });
 // #endregion
+
+export const Avatar = Object.assign(AvatarShorthand, {
+  Fallback: AvatarFallback,
+  Image: AvatarImage,
+  Root: AvatarRoot,
+});

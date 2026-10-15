@@ -7,6 +7,7 @@ import four_digitsRaw from "./four-digits.vue?raw";
 import invalidRaw from "./invalid.vue?raw";
 import maskRaw from "./mask.vue?raw";
 import separatorRaw from "./separator.vue?raw";
+import sizesRaw from "./sizes.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 import with_placeholderRaw from "./with-placeholder.vue?raw";
 
@@ -22,6 +23,7 @@ export const sources = {
   Invalid: invalidRaw,
   Mask: maskRaw,
   Separator: separatorRaw,
+  Sizes: sizesRaw,
   Variants: variantsRaw,
   WithPlaceholder: with_placeholderRaw,
 } as const;

@@ -7,6 +7,8 @@ import type {
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, ref } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
+import { useProviderMessage } from "./provider/provider";
 
 // #region Slot recipe context
 const {
@@ -27,7 +29,11 @@ export interface ResizableEdgeHandleProps extends BaseResizableEdgeHandleProps {
   handlePosition?: ResizableHandlePosition;
   /** Accessible label for the resize control. */
   label: string;
+  /** Maximum width in pixels, used by the End key and `aria-valuemax`. */
+  maxWidth?: number;
   minWidth?: number;
+  /** Width change in pixels per arrow key press. @defaultValue 10 */
+  step?: number;
   onResizeChange?: (width: number) => void;
   onResizeEnd?: () => void;
   onResizeStart?: () => void;
@@ -55,13 +61,14 @@ export const ResizableEdgeHandle = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     handlePosition: {
       default: "center",
       type: String as PropType<ResizableHandlePosition>,
     },
     label: { required: true, type: String },
+    maxWidth: { default: undefined, type: Number },
     minWidth: { default: 1, type: Number },
     onResizeChange: {
       default: undefined,
@@ -80,6 +87,7 @@ export const ResizableEdgeHandle = defineComponent({
       required: true,
       type: String as PropType<ResizableEdgePlacement>,
     },
+    step: { default: 10, type: Number },
     width: { required: true, type: Number },
   },
   setup(props, { attrs }) {
@@ -90,6 +98,19 @@ export const ResizableEdgeHandle = defineComponent({
     const liveWidthRef = ref(props.width);
 
     const isStart = ref(props.placement === "start");
+
+    const clamp = (value: number) =>
+      Math.min(
+        props.maxWidth ?? Number.POSITIVE_INFINITY,
+        Math.max(props.minWidth ?? 1, value),
+      );
+
+    const applyWidth = (next: number) => {
+      liveWidthRef.value = next;
+      startWidthRef.value = next;
+      props.onResizeChange?.(next);
+      props.onWidthChange(next);
+    };
 
     return () => {
       const edgeHandle = resizableEdgeHandleRecipe({
@@ -102,6 +123,10 @@ export const ResizableEdgeHandle = defineComponent({
         {
           ...attrs,
           "aria-label": props.label,
+          "aria-orientation": "vertical",
+          "aria-valuemax": props.maxWidth,
+          "aria-valuemin": props.minWidth,
+          "aria-valuenow": Math.round(props.width),
           class: edgeHandle.base({ class: props.class }),
           "data-handle-position": props.handlePosition,
           "data-part": "edge-handle",
@@ -114,6 +139,26 @@ export const ResizableEdgeHandle = defineComponent({
             startWidthRef.value = initialWidthRef.value;
             props.onResizeChange?.(initialWidthRef.value);
             props.onWidthChange(initialWidthRef.value);
+          },
+          onKeydown: (event: KeyboardEvent) => {
+            const start = props.placement === "start";
+            const grow = start ? "ArrowRight" : "ArrowLeft";
+            const shrink = start ? "ArrowLeft" : "ArrowRight";
+            const next =
+              event.key === grow
+                ? props.width + props.step
+                : event.key === shrink
+                  ? props.width - props.step
+                  : event.key === "Home"
+                    ? props.minWidth
+                    : event.key === "End" && props.maxWidth !== undefined
+                      ? props.maxWidth
+                      : event.key === "Enter"
+                        ? initialWidthRef.value
+                        : undefined;
+            if (next === undefined) return;
+            event.preventDefault();
+            applyWidth(clamp(next));
           },
           onLostPointerCapture: () => {
             props.onResizeEnd?.();
@@ -136,8 +181,7 @@ export const ResizableEdgeHandle = defineComponent({
             if (!target.hasPointerCapture(event.pointerId)) return;
 
             const delta = event.clientX - startXRef.value;
-            const next = Math.max(
-              props.minWidth ?? 1,
+            const next = clamp(
               isStart.value
                 ? startWidthRef.value + delta
                 : startWidthRef.value - delta,
@@ -153,6 +197,7 @@ export const ResizableEdgeHandle = defineComponent({
             props.onResizeEnd?.();
             props.onWidthChange(liveWidthRef.value);
           },
+          role: "separator",
           type: "button",
         },
         () => [
@@ -202,7 +247,7 @@ export const ResizableResizeTrigger = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     withHandle: { default: false, type: Boolean },
   },
@@ -213,8 +258,8 @@ export const ResizableResizeTrigger = defineComponent({
       h(
         SplitterPrimitive.ResizeTrigger as ArkPart,
         {
+          "aria-label": useProviderMessage("resizable.resize"),
           ...attrs,
-          "aria-label": "Resize",
           class: styles.slots.resizeTrigger({ class: props.class }),
         },
         () =>

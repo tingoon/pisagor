@@ -1,6 +1,12 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const frameRecipe = tv({
+  defaultVariants: {
+    /**
+     * Size scale.
+     */
+    size: "md",
+  },
   slots: {
     base: [
       "relative",
@@ -14,15 +20,34 @@ export const frameRecipe = tv({
       "relative",
       "p-5",
       "bg-card",
-      "rounded-[calc(var(--radius-2xl)-(--spacing(1)))] border border-border/50 shadow-xs",
+      "rounded-xl border border-border/50 shadow-xs",
     ],
     panelDescription: ["text-muted-foreground text-sm leading-relaxed"],
     panelFooter: ["px-5 py-4"],
     panelHeader: ["flex flex-col", "px-5 py-4"],
     panelTitle: ["font-semibold text-sm tracking-tight"],
   },
+  variants: {
+    size: {
+      lg: {
+        base: "p-1.5",
+        panel: "p-6",
+        panelFooter: "px-6 py-5",
+        panelHeader: "px-6 py-5",
+        panelTitle: "text-base",
+      },
+      md: {},
+      sm: {
+        base: "p-0.5",
+        panel: "p-4",
+        panelFooter: "px-4 py-3",
+        panelHeader: "px-4 py-3",
+      },
+    },
+  },
 });
 
 export type FrameRecipeFn = typeof frameRecipe;
 export type FrameRecipe = ReturnType<FrameRecipeFn>;
 export type FrameRecipeSlot = keyof FrameRecipe;
+export type FrameVariantProps = VariantProps<FrameRecipeFn>;

@@ -1,12 +1,24 @@
+import {
+  PhCheckCircle,
+  PhInfo,
+  PhWarning,
+  PhWarningCircle,
+} from "@phosphor-icons/vue";
 import type { AlertProps as BaseAlertRootProps } from "@pisagor/props";
 import {
   type AlertRecipeSlot,
   type AlertVariantProps,
   alertRecipe,
 } from "@pisagor/recipes";
-import { defineComponent, h, type PropType, type VNodeChild } from "vue";
+import {
+  type Component,
+  defineComponent,
+  h,
+  type PropType,
+  type VNodeChild,
+} from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type { ClassValue, VariantClassNames } from "../internal/types";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -42,7 +54,10 @@ export interface AlertProps extends BaseAlertRootProps {
   action?: VNodeChild;
   /** Description content. */
   description?: VNodeChild;
-  /** Leading icon, rendered as a direct child so the grid layout aligns. */
+  /**
+   * Leading icon, rendered as a direct child so the grid layout aligns.
+   * Status variants get a default icon; pass `null` to hide it.
+   */
   icon?: VNodeChild;
   /** Bold title line. */
   title?: VNodeChild;
@@ -59,6 +74,13 @@ export interface AlertProps extends BaseAlertRootProps {
 // #endregion
 
 // #region Shorthand
+const DEFAULT_ICONS: Record<string, Component | undefined> = {
+  destructive: PhWarningCircle,
+  info: PhInfo,
+  success: PhCheckCircle,
+  warning: PhWarning,
+};
+
 export const AlertShorthand = defineComponent({
   inheritAttrs: false,
   name: "Alert",
@@ -71,7 +93,10 @@ export const AlertShorthand = defineComponent({
       default: undefined,
       type: Object as PropType<Record<string, unknown>>,
     },
-    class: { default: undefined },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     classNames: {
       default: undefined,
       type: Object as PropType<AlertClassNames>,
@@ -106,7 +131,14 @@ export const AlertShorthand = defineComponent({
       const nodes: VNodeChild[] = [];
 
       if (props.icon !== undefined) {
-        nodes.push(props.icon);
+        if (props.icon !== null) {
+          nodes.push(props.icon);
+        }
+      } else {
+        const DefaultIcon = DEFAULT_ICONS[props.variant ?? "default"];
+        if (DefaultIcon) {
+          nodes.push(h(DefaultIcon));
+        }
       }
 
       if (props.title !== undefined) {

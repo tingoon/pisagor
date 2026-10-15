@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { Field, TagsInput } from "@pisagor/vue";
 
-const sanitizeValue = (value) => value.trim().toLowerCase();
+const sanitizeValue = (value: string) => value.trim().toLowerCase();
 </script>
 
 <template>

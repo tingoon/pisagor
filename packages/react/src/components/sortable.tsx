@@ -22,6 +22,7 @@ import {
 } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { createContext as createNamedContext } from "../utils";
+import { getMessage } from "./provider/provider.context";
 
 // #region Context
 type SortableOrientation = "vertical" | "horizontal";
@@ -32,6 +33,7 @@ interface SortableContextValue {
   endDrag: () => void;
   getItemProps: (id: string) => {
     "aria-disabled"?: boolean;
+    "aria-keyshortcuts"?: string;
     "data-dragging"?: string;
     "data-drop-target"?: string;
     draggable: boolean;
@@ -155,6 +157,12 @@ export function SortableRoot({
   const [activeId, setActiveId] = useState<string | null>(null);
   const [overId, setOverId] = useState<string | null>(null);
   const [handleIds, setHandleIds] = useState(() => new Set<string>());
+  const [moved, setMoved] = useState<{ position: number; total: number }>();
+  const keyShortcuts =
+    orientation === "vertical"
+      ? "Alt+ArrowUp Alt+ArrowDown"
+      : "Alt+ArrowLeft Alt+ArrowRight";
+  const movedTemplate = getMessage("sortable.moved");
   const activeIdRef = useRef<string | null>(null);
   const itemsRef = useRef(items);
   itemsRef.current = items;
@@ -230,6 +238,7 @@ export function SortableRoot({
       }
 
       onValueChange?.(reorder(current, index, targetIndex));
+      setMoved({ position: targetIndex + 1, total: current.length });
     },
     [disabled, onValueChange],
   );
@@ -240,6 +249,7 @@ export function SortableRoot({
 
       return {
         "aria-disabled": disabled || undefined,
+        "aria-keyshortcuts": itemHasHandle ? undefined : keyShortcuts,
         "data-dragging": activeId === id ? "true" : undefined,
         "data-drop-target":
           overId === id && activeId !== id ? "true" : undefined,
@@ -328,6 +338,7 @@ export function SortableRoot({
       disabled,
       endDrag,
       handleIds,
+      keyShortcuts,
       moveItem,
       orientation,
       overId,
@@ -374,6 +385,12 @@ export function SortableRoot({
       >
         {children}
       </ark.div>
+      <span aria-live="polite" className="sr-only">
+        {moved &&
+          movedTemplate
+            .replace("{position}", String(moved.position))
+            .replace("{total}", String(moved.total))}
+      </span>
     </SortableContext>
   );
 }
@@ -436,7 +453,12 @@ export function SortableHandle({
     <ark.div
       {...rest}
       aria-disabled={disabled || undefined}
-      aria-label={rest["aria-label"] ?? "Drag to reorder"}
+      aria-keyshortcuts={
+        orientation === "vertical"
+          ? "Alt+ArrowUp Alt+ArrowDown"
+          : "Alt+ArrowLeft Alt+ArrowRight"
+      }
+      aria-label={rest["aria-label"] ?? getMessage("sortable.dragHandle")}
       className={slots.handle({ className, disabled })}
       data-part="handle"
       data-scope="sortable"

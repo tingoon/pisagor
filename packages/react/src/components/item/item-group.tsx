@@ -36,7 +36,6 @@ export function ItemGroup({
         data-part="group"
         data-scope="item"
         data-variant={variant}
-        role="list"
       >
         {children}
       </ark.div>

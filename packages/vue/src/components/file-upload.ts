@@ -13,10 +13,12 @@ import {
   fileUploadRecipe,
   formControlZoneRecipe,
 } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { cn, type MessageKey, resolveMessage } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 import { Button } from "./button";
+import { useProviderMessages } from "./provider/provider";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -81,7 +83,7 @@ export const FileUploadRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     onValueChange: {
       default: undefined,
@@ -141,7 +143,7 @@ export const FileUploadDropzone = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     variant: {
       default: undefined,
@@ -188,7 +190,7 @@ export const FileUploadDropzoneIcon = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -217,7 +219,7 @@ export const FileUploadTitle = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -246,7 +248,7 @@ export const FileUploadDescription = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -275,7 +277,7 @@ export const FileUploadHelper = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -313,7 +315,7 @@ export const FileUploadItem = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     file: { required: true, type: Object as PropType<File> },
     recipe: {
@@ -353,7 +355,7 @@ export const FileUploadItemPreview = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     type: { default: undefined, type: String },
   },
@@ -382,7 +384,7 @@ export const FileUploadItemPreviewImage = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs }) {
@@ -405,7 +407,7 @@ export const FileUploadItemName = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -432,7 +434,7 @@ export const FileUploadItemSize = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -459,7 +461,7 @@ export const FileUploadItemDeleteTrigger = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -495,7 +497,7 @@ export const FileUploadList = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs }) {
@@ -503,60 +505,97 @@ export const FileUploadList = defineComponent({
 
     const fileUpload = useFileUploadContext();
 
+    const messages = useProviderMessages();
+
     return () => {
-      const files = fileUpload.value.acceptedFiles;
+      const { acceptedFiles, rejectedFiles } = fileUpload.value;
       const rootSlots = getSlots();
       const itemSlots = fileUploadItemRecipe();
 
-      if (files.length === 0) {
+      if (acceptedFiles.length === 0 && rejectedFiles.length === 0) {
         return null;
       }
 
-      return h(FileUploadItemGroup, { class: rootSlots.itemGroup() }, () =>
-        files.map((file, index) => {
-          const isImage = file.type.startsWith("image/");
-          const key = `${file.name}-${index}`;
-          const extension = file.name.split(".").pop();
+      const renderItem = (
+        file: File,
+        key: string,
+        errors?: readonly string[],
+      ) => {
+        const isImage = file.type.startsWith("image/");
+        const extension = file.name.split(".").pop();
 
-          return h(
-            FileUploadItem as ArkPart,
-            {
-              ...attrs,
-              class: itemSlots.listItem({ class: props.class }),
-              file,
-              key,
-            },
-            () => [
-              h(
-                FileUploadItemPreview as ArkPart,
-                {
-                  class: itemSlots.listPreview(),
-                  type: isImage ? "image/*" : ".*",
-                },
-                () =>
-                  isImage
-                    ? h(FileUploadItemPreviewImage)
-                    : h("span", { class: itemSlots.extension() }, extension),
-              ),
-              h("div", { class: itemSlots.content() }, [
-                h(FileUploadItemName),
-                h(FileUploadItemSize),
-              ]),
-              h(FileUploadItemDeleteTrigger, { asChild: true }, () =>
+        return h(
+          FileUploadItem as ArkPart,
+          {
+            ...attrs,
+            class: itemSlots.listItem({ class: props.class }),
+            file,
+            key,
+          },
+          () => [
+            h(
+              FileUploadItemPreview as ArkPart,
+              {
+                class: itemSlots.listPreview(),
+                type: isImage ? "image/*" : ".*",
+              },
+              () =>
+                isImage
+                  ? h(FileUploadItemPreviewImage)
+                  : h("span", { class: itemSlots.extension() }, extension),
+            ),
+            h("div", { class: itemSlots.content() }, [
+              h(FileUploadItemName),
+              h(FileUploadItemSize),
+              ...(errors ?? []).map((code) =>
                 h(
-                  Button as ArkPart,
-                  {
-                    class: itemSlots.deleteButton(),
-                    size: "icon-xs",
-                    variant: "ghost",
-                  },
-                  () => h(PhX),
+                  "div",
+                  { class: itemSlots.error(), key: code },
+                  resolveMessage(
+                    messages,
+                    `fileUpload.error.${code}` as MessageKey,
+                  ) ?? code,
                 ),
               ),
-            ],
-          );
-        }),
-      );
+            ]),
+            h(FileUploadItemDeleteTrigger, { asChild: true }, () =>
+              h(
+                Button as ArkPart,
+                {
+                  "aria-label": resolveMessage(
+                    messages,
+                    "fileUpload.removeFile",
+                  ),
+                  class: itemSlots.deleteButton(),
+                  size: "icon-xs",
+                  variant: "ghost",
+                },
+                () => h(PhX, { "aria-hidden": true }),
+              ),
+            ),
+          ],
+        );
+      };
+
+      return [
+        acceptedFiles.length > 0
+          ? h(FileUploadItemGroup, { class: rootSlots.itemGroup() }, () =>
+              acceptedFiles.map((file, index) =>
+                renderItem(file, `${file.name}-${index}`),
+              ),
+            )
+          : null,
+        rejectedFiles.length > 0
+          ? h(
+              FileUploadItemGroup,
+              { class: rootSlots.itemGroup(), type: "rejected" },
+              () =>
+                rejectedFiles.map(({ file, errors }, index) =>
+                  renderItem(file, `${file.name}-${index}`, errors),
+                ),
+            )
+          : null,
+      ];
     };
   },
 });

@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/marquee` (native HTML attributes omitted). */
 export const marqueeProps: PropRow[] = [
   {
-    defaultValue: "marqueeRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "MarqueeRecipeFn | undefined",
-  },
+    defaultValue: "marqueeRecipe",
+    description: "Style recipe override.",
+  }
 ];

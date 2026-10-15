@@ -21,6 +21,12 @@ Choose visual weight or emphasis so the OTP input matches importance in the surr
 
 :::example Variants
 
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+:::example Sizes
+
 ### Four Digits
 
 Use four slots when the code length is four.

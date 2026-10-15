@@ -4,6 +4,7 @@ import type { CollapsibleProps as BaseCollapsibleRootProps } from "@pisagor/prop
 import { collapsibleRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 
 // #region Slot recipe context
 const {
@@ -31,7 +32,7 @@ export const CollapsibleRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     collapsedHeight: {
       default: undefined,
@@ -85,7 +86,7 @@ export const CollapsibleContent = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -112,7 +113,7 @@ export const CollapsibleIndicator = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots: children }) {

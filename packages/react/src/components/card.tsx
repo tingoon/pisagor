@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
 import type { CardProps as BaseCardRootProps } from "@pisagor/props";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent } from "react";
+import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 
 // #region Context
@@ -46,8 +46,10 @@ export function CardHeader({
   className,
   ...rest
 }: ComponentProps<typeof ark.div> & {
-  description?: string;
-  title?: string;
+  /** Supporting text rendered in `Card.Description`. */
+  description?: ReactNode;
+  /** Heading rendered in `Card.Title` (an `h3`; use `asChild` on `Card.Title` for another level). */
+  title?: ReactNode;
 }) {
   const { slots } = useCard();
 
@@ -58,21 +60,21 @@ export function CardHeader({
       data-part="header"
       data-scope="card"
     >
-      {!!title && <CardTitle>{title}</CardTitle>}
+      {title != null && <CardTitle>{title}</CardTitle>}
 
-      {!!description && <CardDescription>{description}</CardDescription>}
+      {description != null && <CardDescription>{description}</CardDescription>}
 
       {children}
     </ark.div>
   );
 }
 
-export const CardTitle = withContext(ark.div, {
+export const CardTitle = withContext(ark.h3, {
   name: "Title",
   slot: "title",
 });
 
-export const CardDescription = withContext(ark.div, {
+export const CardDescription = withContext(ark.p, {
   name: "Description",
   slot: "description",
 });

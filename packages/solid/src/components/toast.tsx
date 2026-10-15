@@ -34,6 +34,7 @@ import {
 } from "../internal/icons";
 import type { VariantClassNames } from "../internal/types";
 import { Button } from "./button";
+import { useProviderMessage } from "./provider/provider.context";
 import { Spinner } from "./spinner";
 
 // #region Context
@@ -202,7 +203,7 @@ function ToastItemContent(
                 {...triggerProps({
                   class: styles.slots.close({ class: local.classNames?.close }),
                 })}
-                aria-label="Close"
+                aria-label={useProviderMessage("toast.close")}
                 size="icon-xs"
                 variant="ghost"
               >

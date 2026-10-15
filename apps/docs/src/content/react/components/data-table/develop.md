@@ -8,7 +8,7 @@ import { DataTable } from "@pisagor/react/data-table";
 
 ### Sorting
 
-Sort columns so users can reorder records.
+Sort columns so users can reorder records. Sortable headers expose `aria-sort`.
 
 :::example Sorting
 

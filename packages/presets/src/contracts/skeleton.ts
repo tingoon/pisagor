@@ -1,6 +1,12 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const skeletonRecipe = tv({
+  defaultVariants: {
+    /**
+     * Size scale.
+     */
+    size: "md",
+  },
   slots: {
     base: [
       "rounded-md bg-muted",
@@ -24,8 +30,22 @@ export const skeletonRecipe = tv({
       "motion-reduce:animate-none!",
     ],
   },
+  variants: {
+    size: {
+      lg: {
+        circle: "size-12",
+        text: "gap-3 **:[div]:h-5",
+      },
+      md: {},
+      sm: {
+        circle: "size-8",
+        text: "gap-1.5 **:[div]:h-3",
+      },
+    },
+  },
 });
 
 export type SkeletonRecipeFn = typeof skeletonRecipe;
 export type SkeletonRecipe = ReturnType<SkeletonRecipeFn>;
 export type SkeletonRecipeSlot = keyof SkeletonRecipe;
+export type SkeletonVariantProps = VariantProps<SkeletonRecipeFn>;

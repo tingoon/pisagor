@@ -5,6 +5,7 @@ import type {
 } from "@pisagor/props";
 import { skipNavRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
+import { getMessage } from "./provider/provider.context";
 
 // #region Types
 export interface SkipNavLinkProps
@@ -56,7 +57,7 @@ export function SkipNavLink({
       data-scope="skip-nav"
       href={`#${id}`}
     >
-      {children ?? "Skip to content"}
+      {children ?? getMessage("skipNav.label")}
     </ark.a>
   );
 }

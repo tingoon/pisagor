@@ -4,6 +4,7 @@ import defaultRaw from "./default.svelte?raw";
 import disabledRaw from "./disabled.svelte?raw";
 import multipleRaw from "./multiple.svelte?raw";
 import non_collapsibleRaw from "./non-collapsible.svelte?raw";
+import sizesRaw from "./sizes.svelte?raw";
 import with_cardRaw from "./with-card.svelte?raw";
 
 export const imports = `import { Accordion } from "@pisagor/svelte";`;
@@ -15,5 +16,6 @@ export const sources = {
   Disabled: disabledRaw,
   Multiple: multipleRaw,
   NonCollapsible: non_collapsibleRaw,
+  Sizes: sizesRaw,
   WithCard: with_cardRaw,
 } as const;

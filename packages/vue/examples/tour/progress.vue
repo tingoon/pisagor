@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Button, Tour, useTourContext } from "@pisagor/vue";
+import { Button, Tour, type TourStepType, useTourContext } from "@pisagor/vue";
 import { defineComponent, h, toValue } from "vue";
 
 const TourProgressBar = defineComponent({
@@ -26,7 +26,7 @@ const TourProgressBar = defineComponent({
     };
   },
 });
-const steps = [
+const steps: TourStepType[] = [
   {
     actions: [{ action: "next", label: "Next" }],
     description: "Watch the progress bar at the bottom",

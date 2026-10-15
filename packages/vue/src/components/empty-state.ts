@@ -3,7 +3,7 @@ import type { EmptyStateProps as BaseEmptyStateRootProps } from "@pisagor/props"
 import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type { ClassValue, VariantClassNames } from "../internal/types";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -69,7 +69,10 @@ export const EmptyStateShorthand = defineComponent({
       default: undefined,
       type: Object as PropType<Record<string, unknown>>,
     },
-    class: { default: undefined },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     classNames: {
       default: undefined,
       type: Object as PropType<EmptyStateClassNames>,

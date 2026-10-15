@@ -3,6 +3,7 @@ import custom_recipeRaw from "./custom-recipe.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import footerRaw from "./footer.tsx?raw";
 import not_hoverableRaw from "./not-hoverable.tsx?raw";
+import sizesRaw from "./sizes.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 
 export const imports = `import { Table } from "@pisagor/solid";`;
@@ -13,5 +14,6 @@ export const sources = {
   Default: defaultRaw,
   Footer: footerRaw,
   NotHoverable: not_hoverableRaw,
+  Sizes: sizesRaw,
   Variants: variantsRaw,
 } as const;

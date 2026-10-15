@@ -1,6 +1,8 @@
 import type { CollectionItem, ListCollection } from "@ark-ui/vue/collection";
 import { createListCollection } from "@ark-ui/vue/collection";
+import type { ComboboxInputValueChangeDetails } from "@ark-ui/vue/combobox";
 import { defineComponent, h, type PropType } from "vue";
+import type { ClassValue } from "../internal/types";
 import type { ComboboxInputProps, ComboboxRootProps } from "./combobox";
 import { Combobox } from "./combobox";
 import { Separator } from "./separator";
@@ -38,7 +40,15 @@ type ArkPart = Parameters<typeof h>[0];
 export const AutocompleteRoot = defineComponent({
   inheritAttrs: false,
   name: "AutocompleteRoot",
-  setup(_, { attrs, slots }) {
+  props: {
+    onInputValueChange: {
+      default: undefined,
+      type: Function as PropType<
+        (details: ComboboxInputValueChangeDetails) => void
+      >,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () =>
       h(
         Combobox.Root as ArkPart,
@@ -46,6 +56,7 @@ export const AutocompleteRoot = defineComponent({
           ...attrs,
           allowCustomValue: true,
           inputBehavior: "autocomplete",
+          onInputValueChange: props.onInputValueChange,
         },
         slots,
       );
@@ -95,7 +106,7 @@ export const AutocompleteSeparator = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {

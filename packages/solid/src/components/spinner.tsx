@@ -2,6 +2,7 @@ import type { SpinnerProps as BaseSpinnerProps } from "@pisagor/props";
 import { spinnerRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
+import { useProviderMessage } from "./provider/provider.context";
 
 export interface SpinnerProps
   extends JSX.SvgSVGAttributes<SVGSVGElement>,
@@ -21,13 +22,15 @@ export function Spinner(props: SpinnerProps): JSX.Element {
       {...rest}
       aria-hidden={local["aria-hidden"]}
       aria-label={
-        local["aria-hidden"] ? undefined : (local["aria-label"] ?? "Loading")
+        local["aria-hidden"]
+          ? undefined
+          : (local["aria-label"] ?? useProviderMessage("spinner.loading"))
       }
       class={recipe()({ class: local.class })}
       data-part="root"
       data-scope="spinner"
       fill="none"
-      role="status"
+      role="img"
       viewBox="0 0 256 256"
       xmlns="http://www.w3.org/2000/svg"
     >

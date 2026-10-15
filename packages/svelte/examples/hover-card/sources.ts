@@ -4,6 +4,7 @@ import defaultRaw from "./default.svelte?raw";
 import disabledRaw from "./disabled.svelte?raw";
 import placementsRaw from "./placements.svelte?raw";
 import triggers_delaysRaw from "./triggers-delays.svelte?raw";
+import without_arrowRaw from "./without-arrow.svelte?raw";
 
 export const imports = `import { HoverCard } from "@pisagor/svelte";`;
 
@@ -14,4 +15,5 @@ export const sources = {
   Disabled: disabledRaw,
   Placements: placementsRaw,
   TriggersDelays: triggers_delaysRaw,
+  WithoutArrow: without_arrowRaw,
 } as const;

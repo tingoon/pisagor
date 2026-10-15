@@ -32,6 +32,12 @@ Separate inline nav items without looking like a heavy rule.
 
 ## Customization
 
+### Decorative
+
+Hide purely visual separators from assistive technology.
+
+:::example Decorative
+
 ### Custom recipe
 
 Extend `separatorRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.

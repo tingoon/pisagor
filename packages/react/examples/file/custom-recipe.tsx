@@ -1,4 +1,4 @@
-import { File } from "@pisagor/react";
+import { FileItem } from "@pisagor/react";
 import { fileRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
 
@@ -13,7 +13,7 @@ const brandFileRecipe = tv({
 
 export function CustomRecipe() {
   return (
-    <File
+    <FileItem
       meta="PDF document"
       name="brand-guidelines.pdf"
       recipe={brandFileRecipe}

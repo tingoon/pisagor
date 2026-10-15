@@ -1,6 +1,8 @@
 ---
+import RedirectPage from "#/components/docs/redirect-page.astro";
 import { frameworkPath } from "#/lib/nav";
 
-return Astro.redirect(frameworkPath("solid"), 301);
+const redirectTo = frameworkPath("solid");
 ---
 
+<RedirectPage to={redirectTo} />

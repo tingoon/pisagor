@@ -91,3 +91,7 @@ export const NotHoverable = meta.story({
 export const CustomRecipe = meta.story({
   render: () => ({ component: Examples.CustomRecipe }),
 });
+
+export const Sizes = meta.story({
+  render: () => ({ component: Examples.Sizes }),
+});

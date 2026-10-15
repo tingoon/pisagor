@@ -1,4 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
+import { ArrowDownIcon, ArrowUpIcon, MinusIcon } from "@phosphor-icons/react";
 import type {
   StatProps as BaseStatRootProps,
   StatTrendProps as BaseStatTrendProps,
@@ -11,6 +12,7 @@ import {
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { VariantClassNames } from "../internal/types";
+import { getMessage, type MessageKey } from "./provider/provider.context";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -40,12 +42,28 @@ export const StatDescription = withContext(ark.p, {
   slot: "description",
 });
 
+const TREND_ICONS = {
+  down: <ArrowDownIcon aria-hidden />,
+  neutral: <MinusIcon aria-hidden />,
+  up: <ArrowUpIcon aria-hidden />,
+};
+
+export interface StatTrendOwnProps {
+  /**
+   * Icon shown before the content. Defaults to an arrow matching `trend`;
+   * pass `null` to hide it.
+   */
+  icon?: ReactNode;
+}
+
 export function StatTrend({
   trend = "neutral",
+  icon,
   recipe = statTrendRecipe,
+  children,
   className,
   ...rest
-}: ComponentProps<typeof ark.div> & BaseStatTrendProps) {
+}: ComponentProps<typeof ark.div> & BaseStatTrendProps & StatTrendOwnProps) {
   return (
     <ark.div
       {...rest}
@@ -53,7 +71,13 @@ export function StatTrend({
       data-part="trend"
       data-scope="stat"
       data-trend={trend}
-    />
+    >
+      {icon === undefined ? TREND_ICONS[trend] : icon}
+      <span className="sr-only">
+        {getMessage(`stat.trend.${trend}` as MessageKey)}
+      </span>
+      {children}
+    </ark.div>
   );
 }
 // #endregion

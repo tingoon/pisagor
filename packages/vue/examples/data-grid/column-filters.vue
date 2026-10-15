@@ -156,7 +156,7 @@ const ColumnFilterHeader = defineComponent({
   setup(props, { slots }) {
     return () =>
       h("div", { class: "flex w-full min-w-0 flex-col gap-1.5" }, [
-        h("span", { class: "truncate" }, props.label),
+        h("span", { class: "truncate" }, [props.label]),
         slots.default?.(),
       ]);
   },

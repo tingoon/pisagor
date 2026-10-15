@@ -19,8 +19,6 @@ export interface ToggleProps extends ToggleRootProps, BaseToggleProps {
    * @defaultValue "ghost"
    */
   variant?: Extract<ButtonVariantProps["variant"], "outline" | "ghost">;
-  /** Called with the pressed state when the toggle changes. */
-  onValueChange?: (value: boolean) => void;
   /**
    * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
    *
@@ -34,8 +32,6 @@ export interface ToggleProps extends ToggleRootProps, BaseToggleProps {
 export function Toggle({
   size = "md",
   variant = "ghost",
-  onPressedChange,
-  onValueChange,
   recipe = toggleRecipe,
   buttonRecipe: buttonRecipeProp = buttonRecipe,
   className,
@@ -49,14 +45,6 @@ export function Toggle({
         recipe({ size }),
         className,
       )}
-      onPressedChange={
-        onPressedChange || onValueChange
-          ? (pressed) => {
-              onPressedChange?.(pressed);
-              onValueChange?.(pressed);
-            }
-          : undefined
-      }
     />
   );
 }

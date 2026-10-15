@@ -21,9 +21,16 @@ import {
 type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
   children?: import("svelte").Snippet;
   style?: string | undefined;
+  /**
+   * Whether to disable the `mod+\\` hotkey that toggles the start panel.
+   *
+   * @defaultValue false
+   */
+  disableHotkey?: boolean;
 } & BaseAppShellProps;
 
 let {
+  disableHotkey = false,
   recipe = appShellRecipe,
   class: className,
   style,
@@ -84,6 +91,7 @@ useHotkey(() => ({
   action: () => {
     panelStates.start?.toggle();
   },
+  enabled: !disableHotkey,
   hotkey: "mod+\\",
 }));
 

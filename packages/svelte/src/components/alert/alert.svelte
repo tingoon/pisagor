@@ -1,6 +1,10 @@
 <script lang="ts">
 import type { AlertProps as BaseAlertProps } from "@pisagor/props";
 import type { AlertRecipeSlot } from "@pisagor/recipes";
+import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
+import InfoIcon from "phosphor-svelte/lib/InfoIcon";
+import WarningCircleIcon from "phosphor-svelte/lib/WarningCircleIcon";
+import WarningIcon from "phosphor-svelte/lib/WarningIcon";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import type { VariantClassNames } from "../../internal/types";
@@ -13,7 +17,8 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "title" | "children"> & {
   action?: string | Snippet;
   classNames?: VariantClassNames<AlertRecipeSlot>;
   description?: string | Snippet;
-  icon?: Snippet;
+  /** Leading icon. Status variants get a default icon; pass `null` to hide it. */
+  icon?: Snippet | null;
   title?: string | Snippet;
 } & BaseAlertProps;
 
@@ -33,6 +38,16 @@ let {
 <AlertRoot {...rest} class={className} {recipe} {variant}>
   {#if icon}
     {@render icon()}
+  {:else if icon === undefined}
+    {#if variant === "destructive"}
+      <WarningCircleIcon />
+    {:else if variant === "info"}
+      <InfoIcon />
+    {:else if variant === "success"}
+      <CheckCircleIcon />
+    {:else if variant === "warning"}
+      <WarningIcon />
+    {/if}
   {/if}
 
   {#if title !== undefined}

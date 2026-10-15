@@ -19,27 +19,27 @@ const brandBottomNavigationRecipe = tv({
 >
   <ScrollArea>
     <div class="h-96"></div>
-    <BottomNavigation defaultValue="home" recipe={brandBottomNavigationRecipe}>
+    <BottomNavigation recipe={brandBottomNavigationRecipe} value="home">
       <BottomNavigation.List class="absolute">
-        <BottomNavigation.Item value="home">
+        <BottomNavigation.Item href="#home" value="home">
           <BottomNavigation.ItemIcon>
             <HouseIcon />
           </BottomNavigation.ItemIcon>
           <BottomNavigation.ItemLabel>Home</BottomNavigation.ItemLabel>
         </BottomNavigation.Item>
-        <BottomNavigation.Item value="search">
+        <BottomNavigation.Item href="#search" value="search">
           <BottomNavigation.ItemIcon>
             <MagnifyingGlassIcon />
           </BottomNavigation.ItemIcon>
           <BottomNavigation.ItemLabel>Search</BottomNavigation.ItemLabel>
         </BottomNavigation.Item>
-        <BottomNavigation.Item value="news">
+        <BottomNavigation.Item href="#news" value="news">
           <BottomNavigation.ItemIcon>
             <BellIcon />
           </BottomNavigation.ItemIcon>
           <BottomNavigation.ItemLabel>News</BottomNavigation.ItemLabel>
         </BottomNavigation.Item>
-        <BottomNavigation.Item value="profile">
+        <BottomNavigation.Item href="#profile" value="profile">
           <BottomNavigation.ItemIcon>
             <UserIcon />
           </BottomNavigation.ItemIcon>

@@ -16,6 +16,7 @@ import type { ComponentProps, ReactNode } from "react";
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button } from "./button";
+import { getMessage } from "./provider/provider.context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -35,7 +36,7 @@ export { useDialog };
 // #endregion
 
 // #region Types
-export interface LocalDialogRootProps
+export interface DialogRootProps
   extends DialogPrimitiveRootProps,
     BaseDialogRootProps {}
 
@@ -73,7 +74,7 @@ export interface DialogPositionerProps extends DialogPrimitivePositionerProps {
 
 export type DialogFooterProps = ComponentProps<typeof ark.div>;
 
-export interface DialogProps extends Omit<LocalDialogRootProps, "title"> {
+export interface DialogProps extends Omit<DialogRootProps, "title"> {
   /** Footer actions. */
   actions?: ReactNode;
   /** Header description content. */
@@ -90,7 +91,7 @@ export function DialogRoot({
   modal = true,
   recipe = dialogRecipe,
   ...rest
-}: LocalDialogRootProps) {
+}: DialogRootProps) {
   const slots = recipe();
 
   return (
@@ -157,7 +158,7 @@ export function DialogContent({
       {!!showCloseButton && (
         <DialogCloseTrigger asChild>
           <Button
-            aria-label="Close"
+            aria-label={getMessage("dialog.close")}
             className={slots.inline()}
             size="icon-sm"
             variant="ghost"
@@ -293,7 +294,6 @@ export type {
   DialogBackdropProps,
   DialogCloseTriggerProps,
   DialogDescriptionProps,
-  DialogRootProps,
   DialogTitleProps,
   DialogTriggerProps,
 } from "@ark-ui/react/dialog";

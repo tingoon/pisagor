@@ -53,7 +53,7 @@ export function MarqueeRoot({
   orientation = "horizontal",
   showEdges = true,
   children,
-  spacing = "16px",
+  spacing = "calc(var(--spacing) * 4)",
   speed = 50,
   ...rest
 }: MarqueeRootProps) {

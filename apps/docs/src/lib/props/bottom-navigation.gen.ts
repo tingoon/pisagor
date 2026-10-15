@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/bottom-navigation` (native HTML attributes omitted). */
 export const bottomNavigationProps: PropRow[] = [
   {
-    defaultValue: "bottomNavigationRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "BottomNavigationRecipeFn | undefined",
-  },
+    defaultValue: "bottomNavigationRecipe",
+    description: "Style recipe override.",
+  }
 ];

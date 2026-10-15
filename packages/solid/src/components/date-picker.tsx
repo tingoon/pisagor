@@ -12,8 +12,14 @@ import {
 } from "@ark-ui/solid/date-picker";
 import type { DatePickerProps as BaseDatePickerProps } from "@pisagor/props";
 import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
-import type { JSX } from "solid-js";
-import { createMemo, Show, splitProps, useContext } from "solid-js";
+import type { ComponentProps, JSX } from "solid-js";
+import {
+  createMemo,
+  createContext as createSolidContext,
+  Show,
+  splitProps,
+  useContext,
+} from "solid-js";
 import { Portal } from "solid-js/web";
 import { useClearableInput } from "../hooks";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
@@ -22,6 +28,7 @@ import { createContext } from "../utils";
 import { Calendar, CalendarSlotsContext } from "./calendar";
 import { Input, type InputProps } from "./input";
 import { InputGroup } from "./input-group";
+import { useProviderMessage } from "./provider/provider.context";
 
 // #region Context
 const { Context: DatePickerSlotsContext, useStyles: useDatePickerStyles } =
@@ -137,12 +144,50 @@ export function DatePickerRoot(props: DatePickerRootProps): JSX.Element {
   );
 }
 
+/** True inside a date picker control, so nested parts do not render a second one. */
+const DatePickerInsideControlContext = createSolidContext(false);
+
+export function DatePickerControl(
+  props: ComponentProps<typeof DatePickerPrimitive.Control>,
+): JSX.Element {
+  const [local, rest] = splitProps(props, ["class"]);
+  const styles = useDatePicker();
+
+  return (
+    <DatePickerInsideControlContext.Provider value={true}>
+      <DatePickerPrimitive.Control
+        {...rest}
+        class={styles.slots.control({ class: local.class })}
+      />
+    </DatePickerInsideControlContext.Provider>
+  );
+}
+
+function MaybeDatePickerControl(props: {
+  children: JSX.Element;
+  class?: string;
+}): JSX.Element {
+  const insideControl = useContext(DatePickerInsideControlContext);
+
+  if (insideControl) {
+    return props.children;
+  }
+
+  return (
+    <DatePickerInsideControlContext.Provider value={true}>
+      <DatePickerPrimitive.Control class={props.class}>
+        {props.children}
+      </DatePickerPrimitive.Control>
+    </DatePickerInsideControlContext.Provider>
+  );
+}
+
 export function DatePickerTrigger(props: DatePickerTriggerProps): JSX.Element {
   const [local, rest] = splitProps(props, ["clearable", "children", "class"]);
   const styles = useDatePicker();
 
   return (
-    <DatePickerPrimitive.Control class={styles.slots.control()}>
+    <MaybeDatePickerControl class={styles.slots.control()}>
       <DatePickerPrimitive.Trigger
         {...rest}
         class={styles.slots.trigger({ class: local.class })}
@@ -152,7 +197,7 @@ export function DatePickerTrigger(props: DatePickerTriggerProps): JSX.Element {
       <Show when={local.clearable ?? false}>
         <DatePickerClearTrigger />
       </Show>
-    </DatePickerPrimitive.Control>
+    </MaybeDatePickerControl>
   );
 }
 
@@ -166,7 +211,7 @@ export function DatePickerInput(props: DatePickerInputProps): JSX.Element {
   const styles = useDatePicker();
 
   return (
-    <DatePickerPrimitive.Control>
+    <MaybeDatePickerControl>
       <InputGroup
         class={local.class}
         size={local.size}
@@ -197,7 +242,7 @@ export function DatePickerInput(props: DatePickerInputProps): JSX.Element {
           />
         </InputGroup.Addon>
       </InputGroup>
-    </DatePickerPrimitive.Control>
+    </MaybeDatePickerControl>
   );
 }
 
@@ -210,7 +255,7 @@ export function DatePickerClearTrigger(): JSX.Element {
         asChild={(triggerProps) => (
           <InputGroup.Button
             {...triggerProps()}
-            aria-label="Clear"
+            aria-label={useProviderMessage("datePicker.clear")}
             size="icon-xs"
             type="button"
             variant="ghost"
@@ -376,8 +421,11 @@ export type { DatePickerRootProps as DatePickerProps };
 export const DatePicker = Object.assign(DatePickerRoot, {
   ClearTrigger: DatePickerClearTrigger,
   Content: DatePickerContent,
+  Control: DatePickerControl,
   Input: DatePickerInput,
   PresetTrigger: DatePickerPresetTrigger,
+  TimeInput: DatePickerTimer,
+  /** @deprecated Use `TimeInput`. */
   Timer: DatePickerTimer,
   Trigger: DatePickerTrigger,
   ValueText: DatePickerValueText,

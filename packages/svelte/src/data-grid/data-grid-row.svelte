@@ -12,12 +12,12 @@ const { row } = useDataGridRowContext();
 <Table.Row
   {...rest}
   aria-expanded={row.getCanExpand() ? row.getIsExpanded() : undefined}
-  aria-selected={row.getIsSelected()}
   class={slots.row({ class: cn(className) })}
   data-depth={row.depth}
   data-expanded={row.getIsExpanded() ? "true" : undefined}
   data-grouped={row.getIsGrouped() ? "true" : undefined}
   data-part="row"
   data-scope="data-grid"
+  data-selected={row.getIsSelected() || undefined}
   data-state={row.getIsSelected() ? "selected" : undefined}
 />

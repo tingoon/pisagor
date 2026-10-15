@@ -3,6 +3,7 @@ import defaultRaw from "./default.tsx?raw";
 import destructiveRaw from "./destructive.tsx?raw";
 import group_labelRaw from "./group-label.tsx?raw";
 import iconsRaw from "./icons.tsx?raw";
+import item_indicatorRaw from "./item-indicator.tsx?raw";
 import linkRaw from "./link.tsx?raw";
 import nestedRaw from "./nested.tsx?raw";
 import placementsRaw from "./placements.tsx?raw";
@@ -20,6 +21,7 @@ export const sources = {
   Destructive: destructiveRaw,
   GroupLabel: group_labelRaw,
   Icons: iconsRaw,
+  ItemIndicator: item_indicatorRaw,
   Link: linkRaw,
   Nested: nestedRaw,
   Placements: placementsRaw,

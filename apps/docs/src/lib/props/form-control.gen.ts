@@ -4,30 +4,30 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/form-control` (native HTML attributes omitted). */
 export const formControlProps: PropRow[] = [
   {
+    name: "size",
+    type: "\"lg\" | \"md\" | \"sm\" | undefined",
     defaultValue: "`md`",
     description: "Control size.",
-    name: "size",
-    type: '"lg" | "md" | "sm" | undefined',
   },
   {
-    defaultValue: "undefined",
-    description: "Surface variant.",
     name: "surfaceVariant",
     type: "unknown",
+    defaultValue: "undefined",
+    description: "Surface variant.",
   },
   {
+    name: "variant",
+    type: "\"primary\" | \"secondary\" | undefined",
     defaultValue: "`primary`",
     description: "Visual emphasis.",
-    name: "variant",
-    type: '"primary" | "secondary" | undefined',
   },
   {
-    defaultValue: "formControlShellRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "FormControlShellRecipeFn | undefined",
-  },
+    defaultValue: "formControlShellRecipe",
+    description: "Style recipe override.",
+  }
 ];

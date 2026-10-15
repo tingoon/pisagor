@@ -21,7 +21,7 @@ const {
 // #endregion
 
 // #region Types
-export interface LocalCollapsibleRootProps
+export interface CollapsibleRootProps
   extends CollapsiblePrimitiveRootProps,
     BaseCollapsibleRootProps {}
 // #endregion
@@ -35,7 +35,7 @@ export function CollapsibleRoot({
   recipe = collapsibleRecipe,
   className,
   ...rest
-}: LocalCollapsibleRootProps) {
+}: CollapsibleRootProps) {
   const slots = recipe();
 
   return (
@@ -99,7 +99,6 @@ CollapsibleIndicator.displayName = "Collapsible.Indicator";
 export type {
   CollapsibleContentProps,
   CollapsibleIndicatorProps,
-  CollapsibleRootProps,
   CollapsibleTriggerProps,
 } from "@ark-ui/react/collapsible";
 

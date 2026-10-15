@@ -3,7 +3,7 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useAppShell } from "./app-shell.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
+type Props = Omit<HTMLAttributes<HTMLElement>, "style"> & {
   children?: import("svelte").Snippet;
   style?: string | undefined;
 };
@@ -12,7 +12,7 @@ let { class: className, style, children, ...rest }: Props = $props();
 const ctx = useAppShell();
 </script>
 
-<div
+<main
   {...rest}
   class={ctx.slots.main({ class: cn(className) })}
   data-part="main"
@@ -20,4 +20,4 @@ const ctx = useAppShell();
   style={`grid-area: main; ${style ?? ""}`}
 >
   {@render children?.()}
-</div>
+</main>

@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/timer` (native HTML attributes omitted). */
 export const timerProps: PropRow[] = [
   {
-    defaultValue: "timerRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "TimerRecipeFn | undefined",
-  },
+    defaultValue: "timerRecipe",
+    description: "Style recipe override.",
+  }
 ];

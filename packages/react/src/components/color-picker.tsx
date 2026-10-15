@@ -27,8 +27,10 @@ import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { type ComponentProps, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { FormControlVariant } from "../internal/types";
 import { Button, type ButtonProps } from "./button";
 import { InputGroup, type InputGroupButtonProps } from "./input-group";
+import { getMessage } from "./provider/provider.context";
 
 // #region Context
 const { Context: ColorPickerSlotsContext, useStyles: useColorPicker } =
@@ -39,7 +41,6 @@ const { Context: ColorPickerSlotsContext, useStyles: useColorPicker } =
 // #endregion
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 export type ColorPickerRootProps = Omit<
   ColorPickerPrimitiveRootProps,
@@ -136,7 +137,8 @@ export type ColorPickerSwatchPreviewProps = ComponentProps<typeof ark.div>;
 export const parseColor = parseColorArk;
 
 export function ColorPickerRoot({
-  variant,
+  variant: _variant,
+  clearable: _clearable,
   defaultValue,
   positioning = {
     placement: "top-start",
@@ -209,8 +211,8 @@ export function ColorPickerClearTrigger({
   return (
     <InputGroup.Addon align="inline-end">
       <InputGroup.Button
+        aria-label={getMessage("colorPicker.clearColor")}
         {...rest}
-        aria-label="Clear color"
         className={className}
         data-part="clear-trigger"
         data-scope="color-picker"
@@ -325,7 +327,11 @@ export function ColorPickerEyeDropperTrigger({
   ...rest
 }: ColorPickerEyeDropperTriggerProps) {
   return (
-    <ColorPickerPrimitive.EyeDropperTrigger {...rest} asChild>
+    <ColorPickerPrimitive.EyeDropperTrigger
+      aria-label={getMessage("colorPicker.eyeDropper")}
+      {...rest}
+      asChild
+    >
       <Button size={size} variant={variant}>
         {children || <EyedropperIcon />}
       </Button>
@@ -434,7 +440,7 @@ export function ColorPickerArea({
       className={slots.area({
         className: cn(
           {
-            "after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:bg-[radial-gradient(circle,#fff3_1px,#0000_1px)] after:bg-size-[8px_8px]":
+            "after:pointer-events-none after:absolute after:inset-0 after:rounded-inherit after:bg-[radial-gradient(circle,color-mix(in_oklab,var(--color-on-media)_20%,transparent)_1px,transparent_1px)] after:bg-size-(--spacing(2))":
               showDots,
           },
           className,
@@ -469,6 +475,34 @@ export function ColorPickerInput({
   return <ColorPickerPrimitive.ChannelInput {...rest} channel={channel} />;
 }
 
+export function ColorPickerLabel({
+  className,
+  ...rest
+}: ComponentProps<typeof ColorPickerPrimitive.Label>) {
+  const { slots } = useColorPicker();
+
+  return (
+    <ColorPickerPrimitive.Label
+      {...rest}
+      className={slots.label({ className })}
+    />
+  );
+}
+
+export function ColorPickerFormatSelect({
+  className,
+  ...rest
+}: ComponentProps<typeof ColorPickerPrimitive.FormatSelect>) {
+  const { slots } = useColorPicker();
+
+  return (
+    <ColorPickerPrimitive.FormatSelect
+      {...rest}
+      className={slots.formatSelect({ className })}
+    />
+  );
+}
+
 export function ColorPickerSwatchPreview({
   className,
   ...rest
@@ -496,12 +530,13 @@ export function ColorPickerSwatchPreview({
  */
 export function ColorPickerField({
   clearable = false,
+  variant,
   ...rest
 }: ColorPickerProps) {
   return (
     <ColorPickerRoot {...rest} clearable={clearable}>
       <ColorPickerControl clearable={false}>
-        <InputGroup>
+        <InputGroup variant={variant}>
           <ColorPickerTrigger asChild>
             <InputGroup.Addon>
               <ColorPickerSwatchPreview />
@@ -582,13 +617,16 @@ export type {
 export const ColorPicker = Object.assign(ColorPickerRoot, {
   Area: ColorPickerArea,
   AreaThumb: ColorPickerAreaThumb,
+  ChannelInput: ColorPickerInput,
   ChannelSlider: ColorPickerChannelSlider,
   ClearTrigger: ColorPickerClearTrigger,
   Content: ColorPickerContent,
   Control: ColorPickerControl,
   EyeDropperTrigger: ColorPickerEyeDropperTrigger,
   Field: ColorPickerField,
+  FormatSelect: ColorPickerFormatSelect,
   Input: ColorPickerInput,
+  Label: ColorPickerLabel,
   Swatch: ColorPickerSwatch,
   SwatchGroup: ColorPickerSwatchGroup,
   SwatchIndicator: ColorPickerSwatchIndicator,

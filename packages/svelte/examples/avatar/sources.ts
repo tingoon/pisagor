@@ -4,6 +4,7 @@ import countRaw from "./count.svelte?raw";
 import custom_recipeRaw from "./custom-recipe.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
 import fallbacksRaw from "./fallbacks.svelte?raw";
+import initialsRaw from "./initials.svelte?raw";
 import shapesRaw from "./shapes.svelte?raw";
 import sizesRaw from "./sizes.svelte?raw";
 
@@ -16,6 +17,7 @@ export const sources = {
   Default: defaultRaw,
   Fallbacks: fallbacksRaw,
   Group: avatar_groupRaw,
+  Initials: initialsRaw,
   Shapes: shapesRaw,
   Sizes: sizesRaw,
 } as const;

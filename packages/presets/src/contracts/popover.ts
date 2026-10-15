@@ -15,7 +15,7 @@ export const popoverRecipe = tv({
       "outline-hidden",
       "origin-(--transform-origin)",
       "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-      "data-[state=closed]:zoom-out-[98%] data-[state=open]:zoom-in-[98%]",
+      "data-[state=closed]:zoom-out-98 data-[state=open]:zoom-in-98",
       "data-[state=closed]:animate-out data-[state=open]:animate-in",
       "data-[placement=bottom]:slide-in-from-top-2 data-[state=closed]:data-[placement=bottom]:slide-out-to-top-2",
       "data-[placement=left]:slide-in-from-end-2 data-[state=closed]:data-[placement=left]:slide-out-to-end-2",
@@ -34,7 +34,7 @@ export const popoverRecipe = tv({
     description: ["text-muted-foreground text-sm leading-relaxed"],
     footer: [
       "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-      "sm:rounded-b-[calc(var(--radius-2xl)-1px)]",
+      "sm:rounded-b-2xl",
       "px-(--space) py-4",
       "border-t border-border/40",
     ],

@@ -7,9 +7,12 @@ import { Editor } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
 import { untrack } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
+import { useMessageResolver } from "../components/provider/provider.context";
 import { useFormControlSurface } from "../components/surface/use-form-control-surface";
 import VisuallyHidden from "../components/visually-hidden.svelte";
 import { setRichTextEditorContext } from "./rich-text-editor.context";
+
+const t = useMessageResolver();
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -50,7 +53,7 @@ const surfaceVariant = useFormControlSurface();
 const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 const slots = $derived(recipe());
 const resolvedAriaLabel = $derived(
-  ariaLabel ?? (id ? undefined : "Rich text editor"),
+  ariaLabel ?? (id ? undefined : t("richTextEditor.label")),
 );
 
 let hostEl = $state<HTMLDivElement | null>(null);

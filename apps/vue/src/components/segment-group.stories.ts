@@ -62,3 +62,7 @@ export const CustomIndicator = meta.story({
 export const CustomRecipe = meta.story({
   render: exampleRender(Examples.CustomRecipe),
 });
+
+export const Sizes = meta.story({
+  render: exampleRender(Examples.Sizes),
+});

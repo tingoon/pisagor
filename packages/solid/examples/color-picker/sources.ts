@@ -11,6 +11,7 @@ import input_controlledRaw from "./input-controlled.tsx?raw";
 import input_with_popoverRaw from "./input-with-popover.tsx?raw";
 import input_with_swatch_previewRaw from "./input-with-swatch-preview.tsx?raw";
 import invalidRaw from "./invalid.tsx?raw";
+import label_format_selectRaw from "./label-format-select.tsx?raw";
 import popover_disabledRaw from "./popover-disabled.tsx?raw";
 import popover_sliders_onlyRaw from "./popover-sliders-only.tsx?raw";
 import popover_with_channel_editingRaw from "./popover-with-channel-editing.tsx?raw";
@@ -46,6 +47,7 @@ export const sources = {
   InputWithPopover: input_with_popoverRaw,
   InputWithSwatchPreview: input_with_swatch_previewRaw,
   Invalid: invalidRaw,
+  LabelFormatSelect: label_format_selectRaw,
   PopoverDisabled: popover_disabledRaw,
   PopoverSlidersOnly: popover_sliders_onlyRaw,
   PopoverWithChannelEditing: popover_with_channel_editingRaw,

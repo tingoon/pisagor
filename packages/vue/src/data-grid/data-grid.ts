@@ -1,6 +1,10 @@
 import type { DataGridProps as BaseDataGridProps } from "@pisagor/props";
 import { type DataGridRecipe, dataGridRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import {
+  cn,
+  getColumnAriaSort,
+  handleColumnResizeKeyDown,
+} from "@pisagor/utils";
 import type {
   Cell,
   Column,
@@ -27,6 +31,7 @@ import {
   type VNodeChild,
   watch,
 } from "vue";
+import { useProviderMessage } from "../components/provider/provider";
 import { Table } from "../components/table";
 import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
@@ -353,9 +358,10 @@ export const DataGridColumnResizer = defineComponent({
     class: { type: [String, Object, Array] as PropType<ClassValue> },
   },
   setup(props, { attrs }) {
+    const resizeLabel = useProviderMessage("dataGrid.resizeColumn");
     return () => {
       const headerCell = useDataGridHeaderCellContext<RowData>();
-      const { slots: variantSlots } =
+      const { slots: variantSlots, table } =
         useDataGridContextBase() as unknown as DataGridContextValue<RowData>;
 
       if (!headerCell) {
@@ -370,7 +376,9 @@ export const DataGridColumnResizer = defineComponent({
 
       return h("div", {
         ...attrs,
-        "aria-hidden": "true",
+        "aria-label": resizeLabel,
+        "aria-orientation": "vertical",
+        "aria-valuenow": header.column.getSize(),
         class: variantSlots.columnResizer({
           class: props.class,
           resizing: header.column.getIsResizing(),
@@ -378,8 +386,14 @@ export const DataGridColumnResizer = defineComponent({
         "data-part": "column-resizer",
         "data-scope": "data-grid",
         onDblclick: () => header.column.resetSize(),
+        onKeydown: (event: KeyboardEvent) =>
+          handleColumnResizeKeyDown(event, header.column, (id, size) =>
+            table.setColumnSizing((old) => ({ ...old, [id]: size })),
+          ),
         onMousedown: header.getResizeHandler(),
         onTouchstart: header.getResizeHandler(),
+        role: "separator",
+        tabindex: 0,
       });
     };
   },
@@ -403,6 +417,7 @@ function renderHeadCell(
     h(
       Table.Head as ArkPart,
       {
+        "aria-sort": getColumnAriaSort(header.column),
         ...attrs,
         class: variantSlots.head({ class: headClass, sizing: sizingEnabled }),
         "data-part": "head",
@@ -514,7 +529,7 @@ export const DataGridVirtualBody = defineComponent({
     },
     estimateSize: { default: 40, type: Number },
     overscan: { default: 8, type: Number },
-    viewportHeight: { default: "24rem", type: String },
+    viewportHeight: { default: "calc(var(--spacing) * 96)", type: String },
   },
   setup(props, { slots }) {
     const anchorRef = ref<HTMLTableRowElement | null>(null);
@@ -639,13 +654,13 @@ export const DataGridRow = defineComponent({
         {
           ...attrs,
           "aria-expanded": row.getCanExpand() ? row.getIsExpanded() : undefined,
-          "aria-selected": row.getIsSelected(),
           class: variantSlots.row({ class: props.class }),
           "data-depth": row.depth,
           "data-expanded": row.getIsExpanded() ? "true" : undefined,
           "data-grouped": row.getIsGrouped() ? "true" : undefined,
           "data-part": "row",
           "data-scope": "data-grid",
+          "data-selected": row.getIsSelected() || undefined,
           "data-state": row.getIsSelected() ? "selected" : undefined,
           style: props.style,
         },
@@ -734,6 +749,7 @@ export const DataGridEmpty = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const emptyText = useProviderMessage("dataGrid.empty");
     return () => {
       const { slots: variantSlots, table } =
         useDataGridContextBase() as unknown as DataGridContextValue<RowData>;
@@ -751,9 +767,7 @@ export const DataGridEmpty = defineComponent({
           h(
             Table.Cell as ArkPart,
             { class: variantSlots.empty(), colSpan: span },
-            () =>
-              slots.default?.() ??
-              "No results. Try a different search or clear filters.",
+            () => slots.default?.() ?? emptyText,
           ),
       );
     };

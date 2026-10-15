@@ -1,4 +1,5 @@
 export { default as Autoplay } from "./autoplay.svelte";
+export { default as AutoplayControls } from "./autoplay-controls.svelte";
 export { default as Compound } from "./compound.svelte";
 export { default as Controlled } from "./controlled.svelte";
 export { default as CustomRecipe } from "./custom-recipe.svelte";

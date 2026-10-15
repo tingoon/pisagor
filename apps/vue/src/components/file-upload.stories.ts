@@ -75,3 +75,7 @@ export const CustomSpacing = meta.story({
 export const CustomRecipe = meta.story({
   render: exampleRender(Examples.CustomRecipe),
 });
+
+export const RejectedFiles = meta.story({
+  render: exampleRender(Examples.RejectedFiles),
+});

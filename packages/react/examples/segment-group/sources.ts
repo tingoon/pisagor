@@ -8,6 +8,7 @@ import disabled_itemRaw from "./disabled-item.tsx?raw";
 import indicator_on_hoverRaw from "./indicator-on-hover.tsx?raw";
 import orientation_horizontalRaw from "./orientation-horizontal.tsx?raw";
 import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
+import sizesRaw from "./sizes.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
 
 export const imports = `import { SegmentGroup } from "@pisagor/react";`;
@@ -23,5 +24,6 @@ export const sources = {
   IndicatorOnHover: indicator_on_hoverRaw,
   OrientationHorizontal: orientation_horizontalRaw,
   OrientationVertical: orientation_verticalRaw,
+  Sizes: sizesRaw,
   Variants: variantsRaw,
 } as const;

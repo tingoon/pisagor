@@ -71,3 +71,7 @@ export const MouseDrag = meta.story({
 export const CustomRecipe = meta.story({
   render: exampleRender(Examples.CustomRecipe),
 });
+
+export const AutoplayControls = meta.story({
+  render: exampleRender(Examples.AutoplayControls),
+});

@@ -4,6 +4,7 @@ import { tabsRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 
 // #region Slot recipe context
 const {
@@ -43,8 +44,9 @@ export const TabsList = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
+    showIndicator: { default: true, type: Boolean },
     variant: {
       default: "default",
       type: String as PropType<"default" | "underline">,
@@ -67,9 +69,11 @@ export const TabsList = defineComponent({
         },
         () => [
           slots.default?.(),
-          h(TabsPrimitive.Indicator as ArkPart, {
-            class: variantSlots.indicator({ variant: props.variant }),
-          }),
+          props.showIndicator
+            ? h(TabsPrimitive.Indicator as ArkPart, {
+                class: variantSlots.indicator({ variant: props.variant }),
+              })
+            : null,
         ],
       );
     };
@@ -92,10 +96,11 @@ export const TabsShorthand = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     items: { default: undefined, type: Array as PropType<TabsPresetItem[]> },
     lazyMount: { default: true, type: Boolean },
+    showIndicator: { default: true, type: Boolean },
     unmountOnExit: { default: true, type: Boolean },
     variant: {
       default: undefined,
@@ -113,14 +118,17 @@ export const TabsShorthand = defineComponent({
           unmountOnExit: props.unmountOnExit,
         },
         () => [
-          h(TabsList, { variant: props.variant }, () =>
-            props.items?.map((tab) =>
-              h(
-                TabsTrigger,
-                { disabled: tab.disabled, key: tab.value, value: tab.value },
-                () => tab.label,
+          h(
+            TabsList,
+            { showIndicator: props.showIndicator, variant: props.variant },
+            () =>
+              props.items?.map((tab) =>
+                h(
+                  TabsTrigger,
+                  { disabled: tab.disabled, key: tab.value, value: tab.value },
+                  () => tab.label,
+                ),
               ),
-            ),
           ),
           ...(props.items?.map((tab) =>
             h(

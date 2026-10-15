@@ -1,9 +1,23 @@
 import { ark } from "@ark-ui/solid/factory";
 import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
 import { navigationMenuRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
-import { splitProps } from "solid-js";
+import {
+  focusNavigationMenuContentLink,
+  handleNavigationMenuContentKeyDown,
+  handleNavigationMenuListKeyDown,
+} from "@pisagor/utils";
+import type { Accessor, Component, ComponentProps, JSX } from "solid-js";
+import {
+  createSignal,
+  createContext as createSolidContext,
+  createUniqueId,
+  splitProps,
+  useContext,
+} from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { CaretDownIcon } from "../internal/icons";
+import { callEventHandler } from "../utils";
+import { useProviderMessage } from "./provider/provider.context";
 
 // #region Context
 const {
@@ -14,29 +28,213 @@ const {
   name: "NavigationMenu",
   recipe: navigationMenuRecipe,
 });
+
+interface NavigationMenuState {
+  openId: Accessor<string | null>;
+  setOpenId: (id: string | null) => void;
+}
+
+const NavigationMenuStateContext = createSolidContext<NavigationMenuState>({
+  openId: () => null,
+  setOpenId: () => {},
+});
+
+interface NavigationMenuItemState {
+  contentId: string;
+  open: Accessor<boolean>;
+  setOpen: (open: boolean) => void;
+  focusTrigger: () => void;
+  setTrigger: (element: HTMLButtonElement) => void;
+}
+
+const NavigationMenuItemContext = createSolidContext<NavigationMenuItemState>();
+
+function useNavigationMenuItem(part: string) {
+  const item = useContext(NavigationMenuItemContext);
+  if (!item) {
+    throw new Error(
+      `NavigationMenu.${part} must be used in NavigationMenu.Item`,
+    );
+  }
+  return item;
+}
 // #endregion
 
+// #region Types
 export interface NavigationMenuProps
   extends ComponentProps<typeof ark.nav>,
     BaseNavigationMenuProps {}
 
 export type NavigationMenuPartProps = ComponentProps<typeof ark.ul>;
 export type NavigationMenuItemProps = ComponentProps<typeof ark.li>;
+export type NavigationMenuTriggerProps = ComponentProps<typeof ark.button>;
+export type NavigationMenuContentProps = ComponentProps<typeof ark.ul>;
 
 export interface NavigationMenuLinkProps extends ComponentProps<typeof ark.a> {
+  /** Whether the link represents the current page */
   active?: boolean;
 }
+// #endregion
 
-export const NavigationMenuRoot: Component<NavigationMenuProps> = withProvider(
+// #region Parts
+const NavigationMenuNav: Component<NavigationMenuProps> = withProvider(
   ark.nav,
   { name: "Root", slot: "base" },
 );
 
-export const NavigationMenuList: Component<NavigationMenuPartProps> =
-  withContext(ark.ul, { name: "List" });
+export function NavigationMenuRoot(props: NavigationMenuProps): JSX.Element {
+  const [openId, setOpenId] = createSignal<string | null>(null);
+  const label = useProviderMessage("navigationMenu.label");
 
-export const NavigationMenuItem: Component<NavigationMenuItemProps> =
-  withContext(ark.li, { name: "Item" });
+  return (
+    <NavigationMenuStateContext.Provider value={{ openId, setOpenId }}>
+      <NavigationMenuNav aria-label={label} {...props} />
+    </NavigationMenuStateContext.Provider>
+  );
+}
+
+const NavigationMenuListBase: Component<NavigationMenuPartProps> = withContext(
+  ark.ul,
+  { name: "List" },
+);
+
+export function NavigationMenuList(
+  props: NavigationMenuPartProps,
+): JSX.Element {
+  const [local, rest] = splitProps(props, ["onKeyDown"]);
+
+  return (
+    <NavigationMenuListBase
+      {...rest}
+      onKeyDown={(event) => {
+        callEventHandler(local.onKeyDown, event);
+        if (!event.defaultPrevented) {
+          handleNavigationMenuListKeyDown(event);
+        }
+      }}
+    />
+  );
+}
+
+const NavigationMenuItemBase: Component<NavigationMenuItemProps> = withContext(
+  ark.li,
+  { name: "Item" },
+);
+
+export function NavigationMenuItem(
+  props: NavigationMenuItemProps,
+): JSX.Element {
+  const [local, rest] = splitProps(props, ["onFocusOut", "onKeyDown"]);
+  const state = useContext(NavigationMenuStateContext);
+  const id = createUniqueId();
+  const contentId = `${id}-content`;
+  let trigger: HTMLButtonElement | undefined;
+  const open = () => state.openId() === id;
+  const setOpen = (value: boolean) => state.setOpenId(value ? id : null);
+
+  return (
+    <NavigationMenuItemContext.Provider
+      value={{
+        contentId,
+        focusTrigger: () => trigger?.focus(),
+        open,
+        setOpen,
+        setTrigger: (element) => {
+          trigger = element;
+        },
+      }}
+    >
+      <NavigationMenuItemBase
+        {...rest}
+        onFocusOut={(event) => {
+          callEventHandler(local.onFocusOut, event);
+          if (
+            open() &&
+            !event.currentTarget.contains(event.relatedTarget as Node | null)
+          ) {
+            setOpen(false);
+          }
+        }}
+        onKeyDown={(event) => {
+          callEventHandler(local.onKeyDown, event);
+          if (open() && event.key === "Escape") {
+            event.preventDefault();
+            setOpen(false);
+            trigger?.focus();
+          }
+        }}
+      />
+    </NavigationMenuItemContext.Provider>
+  );
+}
+
+export function NavigationMenuTrigger(
+  props: NavigationMenuTriggerProps,
+): JSX.Element {
+  const [local, rest] = splitProps(props, [
+    "children",
+    "class",
+    "onClick",
+    "onKeyDown",
+  ]);
+  const styles = useNavigationMenu();
+  const item = useNavigationMenuItem("Trigger");
+
+  return (
+    <ark.button
+      {...rest}
+      aria-controls={item.contentId}
+      aria-expanded={item.open()}
+      class={styles.slots.trigger({ class: local.class })}
+      data-part="trigger"
+      data-scope="navigation-menu"
+      onClick={(event) => {
+        callEventHandler(local.onClick, event);
+        item.setOpen(!item.open());
+      }}
+      onKeyDown={(event) => {
+        callEventHandler(local.onKeyDown, event);
+        if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+          event.preventDefault();
+          item.setOpen(true);
+          const position = event.key === "ArrowDown" ? "first" : "last";
+          requestAnimationFrame(() =>
+            focusNavigationMenuContentLink(item.contentId, position),
+          );
+        }
+      }}
+      ref={item.setTrigger}
+      type="button"
+    >
+      {local.children}
+      <CaretDownIcon aria-hidden class={styles.slots.indicator()} />
+    </ark.button>
+  );
+}
+
+export function NavigationMenuContent(
+  props: NavigationMenuContentProps,
+): JSX.Element {
+  const [local, rest] = splitProps(props, ["class", "onKeyDown"]);
+  const styles = useNavigationMenu();
+  const item = useNavigationMenuItem("Content");
+
+  return (
+    <ark.ul
+      {...rest}
+      class={styles.slots.content({ class: local.class })}
+      data-part="content"
+      data-scope="navigation-menu"
+      data-state={item.open() ? "open" : "closed"}
+      hidden={!item.open()}
+      id={item.contentId}
+      onKeyDown={(event) => {
+        callEventHandler(local.onKeyDown, event);
+        handleNavigationMenuContentKeyDown(event);
+      }}
+    />
+  );
+}
 
 export function NavigationMenuLink(
   props: NavigationMenuLinkProps,
@@ -56,9 +254,12 @@ export function NavigationMenuLink(
     />
   );
 }
+// #endregion
 
 export const NavigationMenu = Object.assign(NavigationMenuRoot, {
+  Content: NavigationMenuContent,
   Item: NavigationMenuItem,
   Link: NavigationMenuLink,
   List: NavigationMenuList,
+  Trigger: NavigationMenuTrigger,
 });

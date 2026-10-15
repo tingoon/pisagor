@@ -119,7 +119,7 @@ export function FileShorthand(props: FileProps): JSX.Element {
   );
 }
 
-export const File = Object.assign(FileShorthand, {
+const fileParts = {
   Actions: FileActions,
   Content: FileContent,
   Media: FileMedia,
@@ -127,4 +127,11 @@ export const File = Object.assign(FileShorthand, {
   Name: FileName,
   Root: FileRoot,
   Size: FileSize,
-});
+};
+
+export const FileItem = Object.assign(FileShorthand, fileParts);
+
+/**
+ * @deprecated Use `FileItem`. `File` shadows the global `File` constructor.
+ */
+export const File = Object.assign(FileShorthand, fileParts);

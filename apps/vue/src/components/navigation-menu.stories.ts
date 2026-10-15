@@ -31,3 +31,7 @@ export const Wrapping = meta.story({
 export const CustomRecipe = meta.story({
   render: exampleRender(Examples.CustomRecipe),
 });
+
+export const Submenu = meta.story({
+  render: exampleRender(Examples.Submenu),
+});

@@ -8,6 +8,7 @@ import type { QrCodeProps as BaseQrCodeRootProps } from "@pisagor/props";
 import { qrCodeRecipe } from "@pisagor/recipes";
 import type { FunctionComponent } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { SizeScaleProps } from "../internal/types";
 
 // #region Context
 const {
@@ -21,9 +22,10 @@ const {
 // #endregion
 
 // #region Types
-export interface LocalQrCodeRootProps
+export interface QrCodeRootProps
   extends QrCodePrimitiveRootProps,
-    BaseQrCodeRootProps {}
+    BaseQrCodeRootProps,
+    SizeScaleProps {}
 
 export type QrCodeDownloadProps = QrCodeDownloadTriggerProps;
 // #endregion
@@ -32,9 +34,9 @@ export type QrCodeDownloadProps = QrCodeDownloadTriggerProps;
 const QrCodeRootBase = withProvider(QrCodePrimitive.Root, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<LocalQrCodeRootProps>;
+}) as FunctionComponent<QrCodeRootProps>;
 
-export function QrCodeRoot({ children, ...rest }: LocalQrCodeRootProps) {
+export function QrCodeRoot({ children, ...rest }: QrCodeRootProps) {
   return (
     <QrCodeRootBase {...rest}>{children ?? <QrCodeFrame />}</QrCodeRootBase>
   );
@@ -70,7 +72,6 @@ export type {
   QrCodeDownloadTriggerProps,
   QrCodeFrameProps,
   QrCodeOverlayProps,
-  QrCodeRootProps,
 } from "@ark-ui/react/qr-code";
 
 export const QrCode = Object.assign(QrCodeRoot, {

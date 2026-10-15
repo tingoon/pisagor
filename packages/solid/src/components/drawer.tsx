@@ -99,10 +99,10 @@ export function DrawerPositioner(props: DrawerPositionerProps): JSX.Element {
 }
 
 const SWIPE_DIRECTION_TO_PLACEMENT = {
-  down: "down",
+  down: "bottom",
   end: "right",
   start: "left",
-  up: "up",
+  up: "top",
 } as const;
 
 export function DrawerContent(props: DrawerContentProps): JSX.Element {

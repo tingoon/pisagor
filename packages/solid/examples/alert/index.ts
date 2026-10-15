@@ -5,3 +5,4 @@ export { imports, sources } from "./sources";
 export * from "./variants";
 export * from "./with-action";
 export * from "./with-icon";
+export * from "./without-icon";

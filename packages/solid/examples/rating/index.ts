@@ -1,3 +1,4 @@
+export * from "./compound";
 export * from "./controlled";
 export * from "./count";
 export * from "./custom-color";
@@ -9,5 +10,6 @@ export * from "./disabled";
 export * from "./half-star";
 export * from "./invalid";
 export * from "./readonly";
+export * from "./sizes";
 export { imports, sources } from "./sources";
 export * from "./testimonial";

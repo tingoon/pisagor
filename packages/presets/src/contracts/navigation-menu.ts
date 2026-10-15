@@ -3,19 +3,40 @@ import { tv } from "tailwind-variants";
 export const navigationMenuRecipe = tv({
   slots: {
     base: ["group/navigation-menu", "w-full"],
-    item: ["shrink-0"],
+    content: [
+      "absolute top-full start-0 z-50 mt-1",
+      "flex min-w-48 flex-col gap-1",
+      "rounded-lg border bg-popover p-1 text-popover-foreground shadow-lg",
+    ],
+    indicator: [
+      "size-3.5 shrink-0",
+      "transition-transform duration-fast ease-out motion-reduce:transition-none!",
+      "group-aria-expanded/navigation-menu-trigger:rotate-180",
+    ],
+    item: ["relative shrink-0"],
     link: [
       "inline-flex items-center gap-2",
       "rounded-md px-3 py-2",
       "font-medium text-sm",
       "text-muted-foreground",
       "outline-hidden",
-      "transition-[color,background-color] duration-fast ease-out motion-reduce:transition-none!",
+      "transition-colors duration-fast ease-out motion-reduce:transition-none!",
       "hover:text-foreground",
       "focus-visible:ring-0.75 focus-visible:ring-ring/32",
       "data-[active=true]:bg-accent data-[active=true]:text-accent-foreground",
     ],
     list: ["flex flex-wrap items-center gap-1"],
+    trigger: [
+      "group/navigation-menu-trigger",
+      "inline-flex items-center gap-1",
+      "rounded-md px-3 py-2",
+      "font-medium text-sm",
+      "text-muted-foreground",
+      "outline-hidden",
+      "transition-colors duration-fast ease-out motion-reduce:transition-none!",
+      "hover:text-foreground aria-expanded:text-foreground",
+      "focus-visible:ring-0.75 focus-visible:ring-ring/32",
+    ],
   },
 });
 

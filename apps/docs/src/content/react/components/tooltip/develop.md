@@ -18,6 +18,18 @@ Include the shortcut in the tooltip when keys reinforce the action.
 
 :::example WithKeyboardShortcut
 
+### Without Arrow
+
+Hide the arrow for a lighter, label-like tooltip.
+
+:::example WithoutArrow
+
+### Compound
+
+Compose the tooltip from `Tooltip.Root`, `Trigger`, `Positioner`, `Content` and `Arrow` for full control.
+
+:::example Compound
+
 ### Disabled
 
 Show that the tooltip is unavailable.

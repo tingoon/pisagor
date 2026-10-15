@@ -20,9 +20,10 @@ import type {
 } from "@pisagor/props";
 import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
 
-import { useMemo } from "react";
+import { type ReactNode, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "./dropdown-menu";
+import { getMessage } from "./provider/provider.context";
 
 // #region Context
 const {
@@ -58,6 +59,8 @@ export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
 export interface ListboxProps
   extends Omit<ListboxRootProps, "children" | "collection"> {
   collection?: ListboxRootProps["collection"];
+  /** Content shown when there are no items. */
+  emptyText?: ReactNode;
   items?: ListboxPresetItem[];
 }
 
@@ -198,11 +201,17 @@ export function ListboxItemIndicator({
   );
 }
 
-export function ListboxEmpty({ className, ...rest }: ListboxEmptyProps) {
+export function ListboxEmpty({
+  children,
+  className,
+  ...rest
+}: ListboxEmptyProps) {
   const { slots } = useListbox();
 
   return (
-    <ListboxPrimitive.Empty {...rest} className={slots.empty({ className })} />
+    <ListboxPrimitive.Empty {...rest} className={slots.empty({ className })}>
+      {children || getMessage("listbox.empty")}
+    </ListboxPrimitive.Empty>
   );
 }
 
@@ -220,6 +229,7 @@ export function ListboxShortcut(props: DropdownMenuShortcutProps) {
 // #region Shorthand
 export function ListboxShorthand({
   collection: collectionProp,
+  emptyText,
   items = [],
   ...rest
 }: ListboxProps) {
@@ -227,21 +237,20 @@ export function ListboxShorthand({
     collectionProp ??
     createListCollection({
       items,
-      itemToString: (item) => item.value,
+      itemToString: (item) => item.label,
       itemToValue: (item) => item.value,
     });
 
   return (
     <ListboxRoot {...rest} collection={collection}>
-      {items.length > 0 && (
-        <ListboxContent>
-          {items.map((item) => (
-            <ListboxItem item={item} key={item.value}>
-              <ListboxItemText>{item.label}</ListboxItemText>
-            </ListboxItem>
-          ))}
-        </ListboxContent>
-      )}
+      <ListboxContent>
+        <ListboxEmpty>{emptyText}</ListboxEmpty>
+        {items.map((item) => (
+          <ListboxItem item={item} key={item.value}>
+            <ListboxItemText>{item.label}</ListboxItemText>
+          </ListboxItem>
+        ))}
+      </ListboxContent>
     </ListboxRoot>
   );
 }

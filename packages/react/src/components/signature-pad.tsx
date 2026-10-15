@@ -11,11 +11,11 @@ import {
   type SignaturePadRecipeSlot,
   signaturePadRecipe,
 } from "@pisagor/recipes";
-
 import { cn } from "@pisagor/utils";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type { FormControlVariant, VariantClassNames } from "../internal/types";
 import { Button } from "./button";
+import { getMessage } from "./provider/provider.context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -30,7 +30,6 @@ const {
 // #endregion
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 type SignaturePadClassNames = VariantClassNames<SignaturePadRecipeSlot>;
 
@@ -128,7 +127,11 @@ function SignaturePadClear({ className, ...rest }: SignaturePadClearProps) {
       asChild
       className={slots.clear({ className })}
     >
-      <Button aria-label="Clear signature" size="icon-md" variant="ghost">
+      <Button
+        aria-label={getMessage("signaturePad.clearSignature")}
+        size="icon-md"
+        variant="ghost"
+      >
         <ArrowCounterClockwiseIcon />
       </Button>
     </SignaturePadPrimitive.ClearTrigger>
@@ -141,7 +144,7 @@ const SignaturePadGuide = withContext(SignaturePadPrimitive.Guide, {
 // #endregion
 
 // #region Closed
-export function SignaturePad({
+function SignaturePadShorthand({
   variant,
   invalid = false,
   className,
@@ -173,5 +176,13 @@ export function SignaturePad({
 SignaturePadRoot.displayName = "SignaturePad.Root";
 SignaturePadControl.displayName = "SignaturePad.Control";
 SignaturePadClear.displayName = "SignaturePad.Clear";
-SignaturePad.displayName = "SignaturePad";
+SignaturePadShorthand.displayName = "SignaturePad";
 // #endregion
+
+export const SignaturePad = Object.assign(SignaturePadShorthand, {
+  Clear: SignaturePadClear,
+  Control: SignaturePadControl,
+  Guide: SignaturePadGuide,
+  Root: SignaturePadRoot,
+  Segment: SignaturePadSegment,
+});

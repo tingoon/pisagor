@@ -143,3 +143,7 @@ export const SwatchPickerCustomSize = meta.story({
 export const CustomRecipe = meta.story({
   render: exampleRender(Examples.CustomRecipe),
 });
+
+export const LabelFormatSelect = meta.story({
+  render: exampleRender(Examples.LabelFormatSelect),
+});

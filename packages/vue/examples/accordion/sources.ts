@@ -4,6 +4,7 @@ import defaultRaw from "./default.vue?raw";
 import disabledRaw from "./disabled.vue?raw";
 import multipleRaw from "./multiple.vue?raw";
 import non_collapsibleRaw from "./non-collapsible.vue?raw";
+import sizesRaw from "./sizes.vue?raw";
 import with_cardRaw from "./with-card.vue?raw";
 
 export const imports = `import { Accordion } from "@pisagor/vue";`;
@@ -15,5 +16,6 @@ export const sources = {
   Disabled: disabledRaw,
   Multiple: multipleRaw,
   NonCollapsible: non_collapsibleRaw,
+  Sizes: sizesRaw,
   WithCard: with_cardRaw,
 } as const;

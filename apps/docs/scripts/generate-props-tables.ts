@@ -14,7 +14,7 @@ type PropRow = {
 
 const ROOT = path.resolve(import.meta.dir, "../../..");
 const PROPS_DIR = path.join(ROOT, "packages/props/src");
-const RECIPES_DIR = path.join(ROOT, "packages/recipes/src");
+const RECIPES_DIR = path.join(ROOT, "packages/presets/src/contracts");
 const OUT_DIR = path.join(ROOT, "apps/docs/src/lib/props");
 
 function kebabToCamel(kebab: string): string {

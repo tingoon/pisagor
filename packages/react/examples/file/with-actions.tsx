@@ -1,8 +1,8 @@
 import { DownloadSimpleIcon, TrashIcon } from "@phosphor-icons/react";
-import { Button, File } from "@pisagor/react";
+import { Button, FileItem } from "@pisagor/react";
 export function WithActions() {
   return (
-    <File
+    <FileItem
       actions={
         <>
           <Button aria-label="Download" size="icon-xs" variant="ghost">

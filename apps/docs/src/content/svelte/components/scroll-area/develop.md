@@ -30,6 +30,12 @@ Nest another scroll area when hierarchy or layered structure is part of the cont
 
 :::example Nested
 
+### Compound
+
+Compose `ScrollArea.Root`, `Viewport`, `Scrollbar`, `Thumb` and `Corner` to choose which scrollbars render.
+
+:::example Compound
+
 ### Scroll Fade
 
 Fade edges to hint that more content exists beyond the viewport.

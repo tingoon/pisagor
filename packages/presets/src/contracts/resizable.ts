@@ -10,7 +10,7 @@ export const resizableRecipe = tv({
       "opacity-0 hover:bg-accent/60 hover:opacity-100 active:bg-accent active:opacity-100",
       "focus-visible:bg-accent/60 focus-visible:opacity-100 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1",
       "flex w-1 items-center justify-center motion-reduce:transition-none!",
-      "after:-translate-x-1/2 data-[orientation=vertical]:after:-translate-y-1/2",
+      "after:-translate-x-1/2 rtl:after:translate-x-1/2 data-[orientation=vertical]:after:-translate-y-1/2",
       "after:absolute after:inset-s-1/2 after:inset-y-0 after:w-2",
       "data-[orientation=vertical]:h-1 data-[orientation=vertical]:w-full",
       "data-[orientation=vertical]:after:inset-s-0 data-[orientation=vertical]:after:h-2 data-[orientation=vertical]:after:w-full",
@@ -25,7 +25,7 @@ export const resizableRecipe = tv({
     ],
     resizeTriggerIcon: "size-2.5",
     resizeTriggerIndicator: [
-      "bg-border opacity-0 transition-[opacity,background-color] group-hover/resizable-resize-trigger:bg-accent/60 group-hover/resizable-resize-trigger:opacity-100 group-focus-visible/resizable-resize-trigger:bg-accent/60 group-focus-visible/resizable-resize-trigger:opacity-100 group-active/resizable-resize-trigger:bg-accent group-active/resizable-resize-trigger:opacity-100 motion-reduce:transition-none!",
+      "bg-border opacity-0 transition group-hover/resizable-resize-trigger:bg-accent/60 group-hover/resizable-resize-trigger:opacity-100 group-focus-visible/resizable-resize-trigger:bg-accent/60 group-focus-visible/resizable-resize-trigger:opacity-100 group-active/resizable-resize-trigger:bg-accent group-active/resizable-resize-trigger:opacity-100 motion-reduce:transition-none!",
       "group-data-[orientation=horizontal]/resizable-resize-trigger:h-full group-data-[orientation=horizontal]/resizable-resize-trigger:w-1",
       "group-data-[orientation=vertical]/resizable-resize-trigger:h-1 group-data-[orientation=vertical]/resizable-resize-trigger:w-full",
     ],

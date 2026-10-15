@@ -13,14 +13,13 @@ import {
   inputGroupRootRecipe,
   inputGroupTextRecipe,
 } from "@pisagor/recipes";
-
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, MouseEvent } from "react";
+import type { FormControlVariant } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 export interface InputGroupProps
   extends ComponentProps<typeof ark.div>,
@@ -81,10 +80,16 @@ export function InputGroupAddon({
   ...rest
 }: InputGroupAddonProps) {
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
+    rest.onClick?.(event);
+    if (event.defaultPrevented) {
+      return;
+    }
     if ((event.target as HTMLElement).closest("button")) {
       return;
     }
-    event.currentTarget.parentElement?.querySelector("input")?.focus();
+    event.currentTarget.parentElement
+      ?.querySelector<HTMLElement>("input, textarea")
+      ?.focus();
   };
 
   return (
@@ -95,7 +100,6 @@ export function InputGroupAddon({
       data-part="addon"
       data-scope="input-group"
       onClick={handleClick}
-      role="group"
     />
   );
 }

@@ -9,6 +9,8 @@ import {
   computed,
   defineComponent,
   h,
+  onBeforeUnmount,
+  onMounted,
   type PropType,
   reactive,
   ref,
@@ -96,7 +98,15 @@ export const SidebarProvider = defineComponent({
       default: "offcanvas",
       type: String as PropType<SidebarCollapsible>,
     },
+    /**
+     * Initial open state. A stored value in `localStorage` (`sidebar_state`)
+     * wins after mount.
+     */
     defaultOpen: { default: true, type: Boolean },
+    /**
+     * Whether to disable the `mod+B` toggle hotkey.
+     */
+    disableHotkey: { default: false, type: Boolean },
     onOpenChange: {
       default: undefined,
       type: Function as PropType<(open: boolean) => void>,
@@ -158,6 +168,36 @@ export const SidebarProvider = defineComponent({
         setOpen((current) => !current);
       }
     };
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (
+        !props.disableHotkey &&
+        (event.metaKey || event.ctrlKey) &&
+        event.key.toLowerCase() === "b"
+      ) {
+        event.preventDefault();
+        toggleSidebar();
+      }
+    };
+
+    onMounted(() => {
+      window.addEventListener("keydown", onKeyDown);
+      if (props.open !== undefined) {
+        return;
+      }
+      try {
+        const stored = localStorage.getItem(SIDEBAR_STORAGE_KEY);
+        if (stored === "true" || stored === "false") {
+          internalOpen.value = stored === "true";
+        }
+      } catch {
+        // Ignore storage errors in restricted environments.
+      }
+    });
+
+    onBeforeUnmount(() => {
+      window.removeEventListener("keydown", onKeyDown);
+    });
 
     const contextValue = reactive<SidebarContextValue>({
       collapsible: props.collapsible,
@@ -746,7 +786,7 @@ export const SidebarMenuButton = defineComponent({
   props: {
     className: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     isActive: { default: false, type: Boolean },
     size: { default: undefined, type: String },
@@ -837,7 +877,7 @@ export const SidebarMenuSkeleton = defineComponent({
   props: {
     className: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {

@@ -3,6 +3,7 @@ import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
+import type { SizeScaleProps } from "../../internal/types";
 import { useItemGroup } from "./item-group.context";
 
 // #region Context
@@ -18,17 +19,19 @@ const {
 
 // #region Parts
 export function ItemRoot({
+  size: sizeProp,
   variant: variantProp,
   children,
   recipe = itemRecipe,
   className,
   ...rest
-}: ComponentProps<typeof ark.div> & BaseItemProps) {
+}: ComponentProps<typeof ark.div> & BaseItemProps & SizeScaleProps) {
   const group = useItemGroup();
   const variant = variantProp ?? group?.variant ?? "default";
   const resolved = {
     ...itemRecipe.defaultVariants,
     ...recipe.defaultVariants,
+    ...(sizeProp ? { size: sizeProp } : {}),
     variant,
   };
   const slots = recipe(resolved);

@@ -25,7 +25,7 @@ export const Highlight = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     exactMatch: { default: undefined, type: Boolean },
     ignoreCase: { default: undefined, type: Boolean },

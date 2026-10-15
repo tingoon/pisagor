@@ -24,7 +24,6 @@ export const fieldRecipe = tv({
       "leading-snug",
     ],
     description: [
-      "pointer-events-none",
       "font-normal text-muted-foreground text-sm leading-normal",
       "group-has-data-[orientation=horizontal]/field:text-balance",
       "@md/field-group:group-data-[orientation=responsive]/field:text-balance",
@@ -72,7 +71,7 @@ export const fieldRecipe = tv({
       "w-fit",
       "flex items-center gap-2",
       "font-medium text-sm leading-snug",
-      "group-data-[disabled=true]/field:opacity-64",
+      "group-data-disabled/field:opacity-64",
     ],
   },
   variants: {
@@ -81,7 +80,7 @@ export const fieldRecipe = tv({
         base: [
           "flex-row items-center",
           "*:data-[scope=field]:data-[part=label]:flex-auto",
-          "has-[>[data-scope=field][data-part=content]]:items-start has-[>[data-scope=field][data-part=content]]:[&>[role=checkbox],[role=radio]]:mt-px",
+          "has-[>[data-scope=field][data-part=content]]:items-start has-[>[data-scope=field][data-part=content]]:[&>[role=checkbox],&>[role=radio]]:mt-px",
         ],
       },
       responsive: {
@@ -90,7 +89,7 @@ export const fieldRecipe = tv({
           "@md/field-group:flex-row @md/field-group:items-center @md/field-group:*:w-auto",
           "@md/field-group:*:data-[scope=field]:data-[part=label]:flex-auto",
           "@md/field-group:has-[>[data-scope=field][data-part=content]]:items-start",
-          "@md/field-group:has-[>[data-scope=field][data-part=content]]:[&>[role=checkbox],[role=radio]]:mt-px",
+          "@md/field-group:has-[>[data-scope=field][data-part=content]]:[&>[role=checkbox],&>[role=radio]]:mt-px",
         ],
       },
       vertical: {

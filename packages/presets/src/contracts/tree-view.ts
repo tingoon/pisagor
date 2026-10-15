@@ -20,7 +20,7 @@ export const treeViewRecipe = tv({
       "select-none text-start font-inherit text-muted-foreground",
       "rounded-md border-none",
       "cursor-pointer",
-      "transition-[color,background-color] duration-fast ease-out",
+      "transition-colors duration-fast ease-out",
       "hover:bg-muted hover:text-foreground",
       "outline-hidden focus-visible:outline-2 focus-visible:outline-ring focus-visible:-outline-offset-2",
       "data-selected:bg-accent data-selected:text-accent-foreground",

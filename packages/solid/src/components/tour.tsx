@@ -24,10 +24,12 @@ import {
   createEffect,
   createMemo,
   createSignal,
+  createContext as createSolidContext,
   For,
   onCleanup,
   Show,
   splitProps,
+  useContext,
 } from "solid-js";
 import { Portal } from "solid-js/web";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
@@ -311,6 +313,9 @@ export function TourCloseTrigger(props: TourCloseTriggerProps): JSX.Element {
   return <TourPrimitive.CloseTrigger {...props} />;
 }
 
+/** True inside `Tour.Footer`, so `Tour.Actions` does not render a second control. */
+const TourInsideControlContext = createSolidContext(false);
+
 export function TourFooter(props: DialogFooterProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const dialogSlots = dialogRecipe();
@@ -326,7 +331,9 @@ export function TourFooter(props: DialogFooterProps): JSX.Element {
           data-part="control"
           data-scope="tour"
         >
-          {local.children}
+          <TourInsideControlContext.Provider value={true}>
+            {local.children}
+          </TourInsideControlContext.Provider>
         </ark.div>
       )}
     />
@@ -337,52 +344,61 @@ export function TourActions(props: DialogFooterProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const ctx = useTourContext();
   const dialogSlots = dialogRecipe();
+  const insideControl = useContext(TourInsideControlContext);
   const actions = () => ctx.tour().step?.actions ?? [];
+
+  const content = (extra?: object) => (
+    <ark.div
+      {...extra}
+      class={cn(
+        !insideControl && dialogSlots.footer(),
+        ctx.slots.actions({ class: local.class }),
+      )}
+      data-part="actions"
+      data-scope="tour"
+    >
+      <For each={actions()}>
+        {(action) => (
+          <TourActionTrigger
+            action={action}
+            asChild={(triggerProps) => (
+              <Button
+                {...triggerProps()}
+                size="sm"
+                variant={
+                  action.action === "dismiss" || action.action === "prev"
+                    ? "outline"
+                    : "default"
+                }
+              >
+                <Show when={action.action === "prev"}>
+                  <CaretLeftIcon />
+                </Show>
+                {action.label}
+                <Show when={action.action === "next"}>
+                  <CaretRightIcon />
+                </Show>
+              </Button>
+            )}
+          />
+        )}
+      </For>
+    </ark.div>
+  );
 
   return (
     <Show when={actions().length > 0}>
-      <TourPrimitive.Control
-        {...rest}
-        asChild={(controlProps) => (
-          <ark.div
-            {...controlProps({
-              class: cn(
-                dialogSlots.footer(),
-                ctx.slots.actions({ class: local.class }),
-              ),
-            })}
-            data-part="actions"
-            data-scope="tour"
-          >
-            <For each={actions()}>
-              {(action) => (
-                <TourActionTrigger
-                  action={action}
-                  asChild={(triggerProps) => (
-                    <Button
-                      {...triggerProps()}
-                      size="sm"
-                      variant={
-                        action.action === "dismiss" || action.action === "prev"
-                          ? "outline"
-                          : "default"
-                      }
-                    >
-                      <Show when={action.action === "prev"}>
-                        <CaretLeftIcon />
-                      </Show>
-                      {action.label}
-                      <Show when={action.action === "next"}>
-                        <CaretRightIcon />
-                      </Show>
-                    </Button>
-                  )}
-                />
-              )}
-            </For>
-          </ark.div>
-        )}
-      />
+      <Show
+        fallback={
+          <TourPrimitive.Control
+            {...rest}
+            asChild={(controlProps) => content(controlProps())}
+          />
+        }
+        when={insideControl}
+      >
+        {content(rest)}
+      </Show>
     </Show>
   );
 }

@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/rich-text-editor` (native HTML attributes omitted). */
 export const richTextEditorProps: PropRow[] = [
   {
-    defaultValue: "richTextEditorRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "RichTextEditorRecipeFn | undefined",
-  },
+    defaultValue: "richTextEditorRecipe",
+    description: "Style recipe override.",
+  }
 ];

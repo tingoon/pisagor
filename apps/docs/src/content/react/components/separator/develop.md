@@ -30,6 +30,12 @@ Separate inline nav items without looking like a heavy rule.
 
 :::example InlineNavigation
 
+### Decorative
+
+Hide purely visual separators from assistive technology.
+
+:::example Decorative
+
 ## Customization
 
 ### Custom recipe

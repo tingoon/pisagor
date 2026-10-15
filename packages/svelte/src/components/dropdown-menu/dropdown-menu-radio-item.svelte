@@ -11,15 +11,20 @@ import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 type Props = MenuRadioItemProps & BaseDropdownMenuItemProps;
 
 let {
+  variant = "default",
   recipe = dropdownMenuItemRecipe,
   class: className,
   children,
   ...rest
 }: Props = $props();
-const slots = $derived(recipe({ inset: true, variant: "default" }));
+const slots = $derived(recipe({ inset: true, variant }));
 </script>
 
-<MenuPrimitive.RadioItem {...rest} class={slots.base({ class: cn(className) })}>
+<MenuPrimitive.RadioItem
+  {...rest}
+  class={slots.base({ class: cn(className) })}
+  data-variant={variant}
+>
   <MenuPrimitive.ItemIndicator class={slots.indicator()}>
     <CheckIcon />
   </MenuPrimitive.ItemIndicator>

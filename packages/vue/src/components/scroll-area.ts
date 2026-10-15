@@ -3,7 +3,7 @@ import type { ScrollAreaProps as BaseScrollAreaRootProps } from "@pisagor/props"
 import { type ScrollAreaRecipeSlot, scrollAreaRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type { ClassValue, VariantClassNames } from "../internal/types";
 
 // #region Context
 const {
@@ -65,13 +65,13 @@ export interface ScrollAreaProps extends BaseScrollAreaRootProps {
 // #endregion
 
 // #region Closed
-export const ScrollArea = defineComponent({
+const ScrollAreaShorthand = defineComponent({
   inheritAttrs: false,
   name: "ScrollArea",
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     classNames: {
       default: undefined,
@@ -130,3 +130,11 @@ export const ScrollArea = defineComponent({
   },
 });
 // #endregion
+
+export const ScrollArea = Object.assign(ScrollAreaShorthand, {
+  Corner: ScrollAreaPrimitive.Corner,
+  Root: ScrollAreaRoot,
+  Scrollbar: ScrollAreaScrollbar,
+  Thumb: ScrollAreaThumb,
+  Viewport: ScrollAreaViewport,
+});

@@ -8,9 +8,12 @@ import type { SheetProps as BaseSheetProps } from "@pisagor/props";
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
+import { useMessageResolver } from "../provider/provider.context";
 import { useSheet } from "./sheet.context";
 import SheetBackdrop from "./sheet-backdrop.svelte";
 import SheetPositioner from "./sheet-positioner.svelte";
+
+const t = useMessageResolver();
 
 type Props = DialogContentProps & {
   showCloseButton?: boolean;
@@ -39,7 +42,7 @@ const slots = $derived(styles.slots);
       {@render children?.()}
       {#if showCloseButton}
         <DialogPrimitive.CloseTrigger
-          aria-label="Close"
+          aria-label={t("sheet.close")}
           class={cn(
             buttonRecipe({ size: "icon-sm", variant: "ghost" }).base(),
             slots.inline(),

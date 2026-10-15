@@ -11,6 +11,7 @@ import type { Component, JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { CaretDownIcon } from "../internal/icons";
+import type { SizeScaleProps } from "../internal/types";
 
 // #region Context
 const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
@@ -22,7 +23,8 @@ const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
 // #region Types
 export interface LocalAccordionItemProps
   extends AccordionPrimitiveItemProps,
-    BaseAccordionItemProps {}
+    BaseAccordionItemProps,
+    SizeScaleProps {}
 
 interface AccordionPresetItem {
   value: string;
@@ -33,6 +35,8 @@ interface AccordionPresetItem {
 
 export interface AccordionProps extends Omit<AccordionRootProps, "children"> {
   items?: AccordionPresetItem[];
+  /** Size scale applied to every item. */
+  size?: "sm" | "md" | "lg";
 }
 // #endregion
 
@@ -91,13 +95,17 @@ export function AccordionItemContent(
 
 // #region Shorthand
 export function AccordionShorthand(props: AccordionProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["items"]);
+  const [local, rest] = splitProps(props, ["items", "size"]);
 
   return (
     <AccordionRoot {...rest}>
       <For each={local.items}>
         {(item) => (
-          <AccordionItem disabled={item.disabled} value={item.value}>
+          <AccordionItem
+            disabled={item.disabled}
+            size={local.size}
+            value={item.value}
+          >
             <AccordionItemTrigger>{item.title}</AccordionItemTrigger>
             <AccordionItemContent>{item.content}</AccordionItemContent>
           </AccordionItem>

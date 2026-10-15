@@ -4,24 +4,24 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/drawer` (native HTML attributes omitted). */
 export const drawerProps: PropRow[] = [
   {
-    defaultValue: "`down`",
-    description: "Preferred placement.",
     name: "placement",
-    type: '"down" | "left" | "right" | "up" | undefined',
+    type: "\"bottom\" | \"left\" | \"right\" | \"top\" | undefined",
+    defaultValue: "`bottom`",
+    description: "Preferred placement.",
   },
   {
+    name: "variant",
+    type: "\"default\" | \"inset\" | undefined",
     defaultValue: "`default`",
     description: "Visual emphasis.",
-    name: "variant",
-    type: '"default" | "inset" | undefined',
   },
   {
-    defaultValue: "drawerRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "DrawerRecipeFn | undefined",
-  },
+    defaultValue: "drawerRecipe",
+    description: "Style recipe override.",
+  }
 ];

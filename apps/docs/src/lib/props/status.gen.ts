@@ -4,24 +4,24 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/status` (native HTML attributes omitted). */
 export const statusProps: PropRow[] = [
   {
+    name: "size",
+    type: "\"lg\" | \"_svg\" | \"md\" | \"_svg\" | \"sm\" | \"_svg\" | undefined",
     defaultValue: "`md`",
     description: "Control size.",
-    name: "size",
-    type: '"lg" | "_svg" | "md" | "_svg" | "sm" | "_svg" | undefined',
   },
   {
+    name: "variant",
+    type: "\"default\" | \"destructive\" | \"info\" | \"success\" | \"warning\" | undefined",
     defaultValue: "`default`",
     description: "Visual emphasis.",
-    name: "variant",
-    type: '"default" | "destructive" | "info" | "success" | "warning" | undefined',
   },
   {
-    defaultValue: "statusRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "StatusRecipeFn | undefined",
-  },
+    defaultValue: "statusRecipe",
+    description: "Style recipe override.",
+  }
 ];

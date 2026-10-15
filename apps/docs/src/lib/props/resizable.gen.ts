@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/resizable` (native HTML attributes omitted). */
 export const resizableProps: PropRow[] = [
   {
-    defaultValue: "resizableRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "ResizableRecipeFn | undefined",
-  },
+    defaultValue: "resizableRecipe",
+    description: "Style recipe override.",
+  }
 ];

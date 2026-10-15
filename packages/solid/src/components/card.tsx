@@ -23,13 +23,14 @@ export interface CardRootProps
 
 export type CardMediaProps = ComponentProps<typeof ark.div> & CardVariantProps;
 
-export interface CardHeaderProps extends ComponentProps<typeof ark.div> {
-  description?: string;
-  title?: string;
+export interface CardHeaderProps
+  extends Omit<ComponentProps<typeof ark.div>, "title"> {
+  description?: JSX.Element;
+  title?: JSX.Element;
 }
 
-export type CardTitleProps = ComponentProps<typeof ark.div>;
-export type CardDescriptionProps = ComponentProps<typeof ark.div>;
+export type CardTitleProps = ComponentProps<typeof ark.h3>;
+export type CardDescriptionProps = ComponentProps<typeof ark.p>;
 export type CardActionProps = ComponentProps<typeof ark.div>;
 export type CardContentProps = ComponentProps<typeof ark.div>;
 export type CardFooterProps = ComponentProps<typeof ark.div>;
@@ -58,9 +59,9 @@ export function CardMedia(props: CardMediaProps): JSX.Element {
   );
 }
 
-export const CardTitle = withContext(ark.div, { name: "Title" });
+export const CardTitle = withContext(ark.h3, { name: "Title" });
 
-export const CardDescription = withContext(ark.div, { name: "Description" });
+export const CardDescription = withContext(ark.p, { name: "Description" });
 
 export const CardAction = withContext(ark.div, { name: "Action" });
 
@@ -84,10 +85,10 @@ export function CardHeader(props: CardHeaderProps): JSX.Element {
       data-part="header"
       data-scope="card"
     >
-      <Show when={local.title}>
+      <Show when={local.title != null}>
         <CardTitle>{local.title}</CardTitle>
       </Show>
-      <Show when={local.description}>
+      <Show when={local.description != null}>
         <CardDescription>{local.description}</CardDescription>
       </Show>
       {local.children}

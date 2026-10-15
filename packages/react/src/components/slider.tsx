@@ -10,13 +10,16 @@ import type {
 } from "@ark-ui/react/slider";
 import { Slider as SliderPrimitive } from "@ark-ui/react/slider";
 import type { SliderProps as BaseSliderRootProps } from "@pisagor/props";
-import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes";
+import {
+  fieldRecipe,
+  type SliderRecipeSlot,
+  sliderRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { createContext, use, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
-import { Field } from "./field";
+import type { FormControlVariant, VariantClassNames } from "../internal/types";
 
 // #region Context
 const { Context: SliderStylesContext, useStyles: useSliderStyles } =
@@ -44,7 +47,6 @@ function useSlider() {
 // #endregion
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 type SliderValueProps = SliderValueTextProps;
 
@@ -258,7 +260,19 @@ function SliderMarkerLabel({
 // #endregion
 
 // #region Closed
-export function Slider({
+function SliderLabel({
+  className,
+  ...rest
+}: ComponentProps<typeof SliderPrimitive.Label>) {
+  return (
+    <SliderPrimitive.Label
+      {...rest}
+      className={fieldRecipe().label({ className })}
+    />
+  );
+}
+
+function SliderShorthand({
   variant,
   defaultValue,
   max = 100,
@@ -311,15 +325,13 @@ export function Slider({
       {(label !== undefined || showValue) && (
         <SliderHeader className={classNames?.header}>
           {label !== undefined && (
-            <Field.Label>
-              <SliderPrimitive.Label>{label}</SliderPrimitive.Label>
-            </Field.Label>
+            <SliderPrimitive.Label className={fieldRecipe().label()}>
+              {label}
+            </SliderPrimitive.Label>
           )}
 
           {showValue && (
-            <Field.Label asChild>
-              <SliderValue {...valueProps} className={classNames?.value} />
-            </Field.Label>
+            <SliderValue {...valueProps} className={classNames?.value} />
           )}
         </SliderHeader>
       )}
@@ -350,17 +362,17 @@ export function Slider({
 
       {showMarkers && (
         <SliderMarkerGroup className={classNames?.markerGroup}>
-          {Array.from({ length: max + 1 }, (_, index) => (
+          {Array.from({ length: max - min + 1 }, (_, index) => (
             <SliderMarker
               className={classNames?.marker}
               data-interval={index % markerInterval === 0 ? undefined : ""}
-              key={String(index)}
-              value={index}
+              key={String(min + index)}
+              value={min + index}
             >
               <SliderMarkerTick className={classNames?.markerTick} />
 
               <SliderMarkerLabel className={classNames?.markerLabel}>
-                {markerLabels?.[index] ?? index}
+                {markerLabels?.[index] ?? min + index}
               </SliderMarkerLabel>
             </SliderMarker>
           ))}
@@ -383,7 +395,7 @@ SliderMarkerGroup.displayName = "Slider.MarkerGroup";
 SliderMarker.displayName = "Slider.Marker";
 SliderMarkerTick.displayName = "Slider.MarkerTick";
 SliderMarkerLabel.displayName = "Slider.MarkerLabel";
-Slider.displayName = "Slider";
+SliderShorthand.displayName = "Slider";
 
 // #endregion
 
@@ -393,3 +405,18 @@ export type {
   SliderThumbProps,
   SliderTrackProps,
 } from "@ark-ui/react/slider";
+
+export const Slider = Object.assign(SliderShorthand, {
+  Control: SliderControl,
+  Header: SliderHeader,
+  Label: SliderLabel,
+  Marker: SliderMarker,
+  MarkerGroup: SliderMarkerGroup,
+  MarkerLabel: SliderMarkerLabel,
+  MarkerTick: SliderMarkerTick,
+  Range: SliderRange,
+  Root: SliderRoot,
+  Thumb: SliderThumb,
+  Track: SliderTrack,
+  Value: SliderValue,
+});

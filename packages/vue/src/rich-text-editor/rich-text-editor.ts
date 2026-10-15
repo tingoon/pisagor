@@ -23,6 +23,7 @@ import {
   watch,
   watchEffect,
 } from "vue";
+import { useProviderMessage } from "../components/provider/provider";
 import { useFormControlSurface } from "../components/surface/use-form-control-surface";
 import { Toggle } from "../components/toggle";
 import { VisuallyHidden } from "../components/visually-hidden";
@@ -199,7 +200,8 @@ export const RichTextEditorRoot = defineComponent({
       };
       const controlProps = { "data-variant": resolved.variant };
       const resolvedAriaLabel =
-        props["aria-label"] ?? (props.id ? undefined : "Rich text editor");
+        props["aria-label"] ??
+        (props.id ? undefined : useProviderMessage("richTextEditor.label"));
 
       return h(
         ark.div as ArkPart,
@@ -283,7 +285,7 @@ export const RichTextEditorToolbar = defineComponent({
               h(
                 Toggle as ArkPart,
                 {
-                  "aria-label": "Bold",
+                  "aria-label": useProviderMessage("richTextEditor.bold"),
                   onPressedChange: () =>
                     editor.chain().focus().toggleBold().run(),
                   pressed: activeMarks.bold,
@@ -292,13 +294,15 @@ export const RichTextEditorToolbar = defineComponent({
                 },
                 () => [
                   h(PhTextB),
-                  h(VisuallyHidden as ArkPart, {}, () => "Bold"),
+                  h(VisuallyHidden as ArkPart, {}, () =>
+                    useProviderMessage("richTextEditor.bold"),
+                  ),
                 ],
               ),
               h(
                 Toggle as ArkPart,
                 {
-                  "aria-label": "Italic",
+                  "aria-label": useProviderMessage("richTextEditor.italic"),
                   onPressedChange: () =>
                     editor.chain().focus().toggleItalic().run(),
                   pressed: activeMarks.italic,
@@ -307,13 +311,17 @@ export const RichTextEditorToolbar = defineComponent({
                 },
                 () => [
                   h(PhTextItalic),
-                  h(VisuallyHidden as ArkPart, {}, () => "Italic"),
+                  h(VisuallyHidden as ArkPart, {}, () =>
+                    useProviderMessage("richTextEditor.italic"),
+                  ),
                 ],
               ),
               h(
                 Toggle as ArkPart,
                 {
-                  "aria-label": "Strikethrough",
+                  "aria-label": useProviderMessage(
+                    "richTextEditor.strikethrough",
+                  ),
                   onPressedChange: () =>
                     editor.chain().focus().toggleStrike().run(),
                   pressed: activeMarks.strike,
@@ -322,13 +330,15 @@ export const RichTextEditorToolbar = defineComponent({
                 },
                 () => [
                   h(PhTextStrikethrough),
-                  h(VisuallyHidden as ArkPart, {}, () => "Strikethrough"),
+                  h(VisuallyHidden as ArkPart, {}, () =>
+                    useProviderMessage("richTextEditor.strikethrough"),
+                  ),
                 ],
               ),
               h(
                 Toggle as ArkPart,
                 {
-                  "aria-label": "Bullet list",
+                  "aria-label": useProviderMessage("richTextEditor.bulletList"),
                   onPressedChange: () =>
                     editor.chain().focus().toggleBulletList().run(),
                   pressed: activeMarks.bulletList,
@@ -337,13 +347,17 @@ export const RichTextEditorToolbar = defineComponent({
                 },
                 () => [
                   h(PhListBullets),
-                  h(VisuallyHidden as ArkPart, {}, () => "Bullet list"),
+                  h(VisuallyHidden as ArkPart, {}, () =>
+                    useProviderMessage("richTextEditor.bulletList"),
+                  ),
                 ],
               ),
               h(
                 Toggle as ArkPart,
                 {
-                  "aria-label": "Ordered list",
+                  "aria-label": useProviderMessage(
+                    "richTextEditor.orderedList",
+                  ),
                   onPressedChange: () =>
                     editor.chain().focus().toggleOrderedList().run(),
                   pressed: activeMarks.orderedList,
@@ -352,7 +366,9 @@ export const RichTextEditorToolbar = defineComponent({
                 },
                 () => [
                   h(PhListNumbers),
-                  h(VisuallyHidden as ArkPart, {}, () => "Ordered list"),
+                  h(VisuallyHidden as ArkPart, {}, () =>
+                    useProviderMessage("richTextEditor.orderedList"),
+                  ),
                 ],
               ),
             ]),

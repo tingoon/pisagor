@@ -12,17 +12,26 @@ import {
   signaturePadRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { defineComponent, h, type PropType } from "vue";
+import {
+  defineComponent,
+  h,
+  type InjectionKey,
+  inject,
+  type PropType,
+  provide,
+} from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type { ClassValue, VariantClassNames } from "../internal/types";
 import { Button } from "./button";
+import { useProviderMessage } from "./provider/provider";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: SignaturePadStylesContext } = createSlotRecipeContext({
-  name: "SignaturePad",
-  recipe: signaturePadRecipe,
-});
+const { Context: SignaturePadStylesContext, useStyles: useSignaturePadStyles } =
+  createSlotRecipeContext({
+    name: "SignaturePad",
+    recipe: signaturePadRecipe,
+  });
 // #endregion
 
 type FormControlVariant = "primary" | "secondary";
@@ -68,14 +77,153 @@ export interface SignaturePadProps extends BaseSignaturePadProps {
 }
 // #endregion
 
+// #region Parts
+const SignaturePadVariantKey: InjectionKey<() => FormControlVariant> = Symbol(
+  "SignaturePadVariant",
+);
+
+const classProp = {
+  default: undefined,
+  type: [String, Object, Array] as PropType<ClassValue>,
+};
+
+const SignaturePadRoot = defineComponent({
+  inheritAttrs: false,
+  name: "SignaturePad.Root",
+  props: {
+    class: classProp,
+    recipe: {
+      default: signaturePadRecipe,
+      type: Function as PropType<typeof signaturePadRecipe>,
+    },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
+  },
+  setup(props, { attrs, slots }) {
+    provide(SignaturePadVariantKey, () => props.variant ?? "primary");
+
+    return () => {
+      const styles = props.recipe();
+
+      return h(
+        SignaturePadStylesContext,
+        { value: { slots: styles, variants: {} } },
+        () =>
+          h(
+            SignaturePadPrimitive.Root as ArkPart,
+            { ...attrs, class: styles.base({ class: props.class }) },
+            slots,
+          ),
+      );
+    };
+  },
+});
+
+const SignaturePadControl = defineComponent({
+  inheritAttrs: false,
+  name: "SignaturePad.Control",
+  props: { class: classProp },
+  setup(props, { attrs, slots }) {
+    const styles = useSignaturePadStyles();
+    const surfaceVariant = useFormControlSurface();
+    const variant = inject(SignaturePadVariantKey, () => "primary" as const);
+
+    return () =>
+      h(
+        SignaturePadPrimitive.Control as ArkPart,
+        {
+          ...attrs,
+          class: cn(
+            formControlZoneRecipe({ surfaceVariant, variant: variant() }),
+            styles.slots.control({
+              class: props.class as string | undefined,
+              variant: variant(),
+            }),
+          ),
+          "data-variant": variant(),
+        },
+        slots,
+      );
+  },
+});
+
+const SignaturePadSegment = defineComponent({
+  inheritAttrs: false,
+  name: "SignaturePad.Segment",
+  props: { class: classProp },
+  setup(props, { attrs }) {
+    const styles = useSignaturePadStyles();
+
+    return () =>
+      h(SignaturePadPrimitive.Segment as ArkPart, {
+        ...attrs,
+        class: styles.slots.segment({
+          class: props.class as string | undefined,
+        }),
+      });
+  },
+});
+
+const SignaturePadGuide = defineComponent({
+  inheritAttrs: false,
+  name: "SignaturePad.Guide",
+  props: { class: classProp },
+  setup(props, { attrs, slots }) {
+    const styles = useSignaturePadStyles();
+
+    return () =>
+      h(
+        SignaturePadPrimitive.Guide as ArkPart,
+        {
+          ...attrs,
+          class: styles.slots.guide({
+            class: props.class as string | undefined,
+          }),
+        },
+        slots,
+      );
+  },
+});
+
+const SignaturePadClear = defineComponent({
+  inheritAttrs: false,
+  name: "SignaturePad.Clear",
+  props: { class: classProp },
+  setup(props, { attrs, slots }) {
+    const styles = useSignaturePadStyles();
+    const label = useProviderMessage("signaturePad.clearSignature");
+
+    return () =>
+      h(
+        SignaturePadPrimitive.ClearTrigger as ArkPart,
+        {
+          ...attrs,
+          asChild: true,
+          class: styles.slots.clear({
+            class: props.class as string | undefined,
+          }),
+        },
+        () =>
+          h(
+            Button as ArkPart,
+            { "aria-label": label, size: "icon-md", variant: "ghost" },
+            () => slots.default?.() ?? h(PhArrowCounterClockwise),
+          ),
+      );
+  },
+});
+// #endregion
+
 // #region Component
-export const SignaturePad = defineComponent({
+const SignaturePadShorthand = defineComponent({
   inheritAttrs: false,
   name: "SignaturePad",
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     classNames: {
       default: undefined,
@@ -179,7 +327,9 @@ export const SignaturePad = defineComponent({
                       h(
                         Button as ArkPart,
                         {
-                          "aria-label": "Clear signature",
+                          "aria-label": useProviderMessage(
+                            "signaturePad.clearSignature",
+                          ),
                           size: "icon-md",
                           variant: "ghost",
                         },
@@ -197,3 +347,11 @@ export const SignaturePad = defineComponent({
   },
 });
 // #endregion
+
+export const SignaturePad = Object.assign(SignaturePadShorthand, {
+  Clear: SignaturePadClear,
+  Control: SignaturePadControl,
+  Guide: SignaturePadGuide,
+  Root: SignaturePadRoot,
+  Segment: SignaturePadSegment,
+});

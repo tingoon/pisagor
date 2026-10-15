@@ -75,6 +75,10 @@ export const Controlled = meta.story({
   render: Examples.Controlled,
 });
 
+export const Empty = meta.story({
+  render: Examples.Empty,
+});
+
 export const Disabled = meta.story({
   render: Examples.Disabled,
 });

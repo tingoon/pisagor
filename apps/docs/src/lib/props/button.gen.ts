@@ -4,42 +4,42 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/button` (native HTML attributes omitted). */
 export const buttonProps: PropRow[] = [
   {
-    defaultValue: "`true`",
-    description: "Scale feedback on press.",
     name: "clickEffect",
     type: "boolean | undefined",
+    defaultValue: "`true`",
+    description: "Scale feedback on press.",
   },
   {
-    defaultValue: "`false`",
-    description: "Shows a spinner and disables interaction.",
     name: "loading",
     type: "boolean | undefined",
+    defaultValue: "`false`",
+    description: "Shows a spinner and disables interaction.",
   },
   {
-    defaultValue: "`false`",
-    description: "Fully rounded corners.",
     name: "pill",
     type: "boolean | undefined",
+    defaultValue: "`false`",
+    description: "Fully rounded corners.",
   },
   {
-    defaultValue: '`"md"`',
-    description: "Control height and padding, or square icon sizes.",
     name: "size",
-    type: '"md" | "icon-lg" | "icon-md" | "icon-sm" | "icon-xl" | "icon-xs" | "lg" | "sm" | "xl" | "xs" | undefined',
+    type: "\"md\" | \"icon-lg\" | \"icon-md\" | \"icon-sm\" | \"icon-xl\" | \"icon-xs\" | \"lg\" | \"sm\" | \"xl\" | \"xs\" | undefined",
+    defaultValue: "`\"md\"`",
+    description: "Control height and padding, or square icon sizes.",
   },
   {
-    defaultValue: '`"default"`',
-    description: "Visual emphasis of the button.",
     name: "variant",
-    type: '"default" | "destructive" | "ghost" | "link" | "outline" | "secondary" | undefined',
+    type: "\"default\" | \"destructive\" | \"ghost\" | \"link\" | \"outline\" | \"secondary\" | undefined",
+    defaultValue: "`\"default\"`",
+    description: "Visual emphasis of the button.",
   },
   {
-    defaultValue: "buttonRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "ButtonRecipeFn | undefined",
+    defaultValue: "buttonRecipe",
+    description: "Style recipe override.",
   },
 ];

@@ -2,6 +2,7 @@ import { ark } from "@ark-ui/vue/factory";
 import type { ButtonProps as BaseButtonProps } from "@pisagor/props";
 import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
+import type { ClassValue } from "../internal/types";
 import { Spinner } from "./spinner";
 
 // #region Types
@@ -21,7 +22,7 @@ export const Button = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     clickEffect: { default: true, type: Boolean },
     disabled: { default: undefined, type: Boolean },

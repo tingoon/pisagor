@@ -28,6 +28,10 @@ export const ImagePreview = meta.story({
   render: Examples.ImagePreview,
 });
 
+export const Compound = meta.story({
+  render: Examples.Compound,
+});
+
 export const Controlled = meta.story({
   render: Examples.Controlled,
 });

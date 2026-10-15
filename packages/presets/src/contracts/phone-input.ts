@@ -9,7 +9,7 @@ export const phoneInputRecipe = tv({
   },
   slots: {
     countryButton: [
-      "h-full gap-1.5 rounded-none rounded-s-[calc(var(--radius-lg)-1px)] px-2.5",
+      "h-full gap-1.5 rounded-none rounded-s-lg px-2.5",
       "font-normal text-sm tabular-nums",
     ],
     countryCaret: ["size-3.5 shrink-0 opacity-64"],

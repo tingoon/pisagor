@@ -5,9 +5,9 @@ import { Button, Item, Listbox } from "@pisagor/vue";
 import { computed, ref } from "vue";
 
 const available = ref(["React", "Solid", "Vue", "Svelte", "Angular", "Qwik"]);
-const selected = ref([]);
-const availableValue = ref([]);
-const selectedValue = ref([]);
+const selected = ref<string[]>([]);
+const availableValue = ref<string[]>([]);
+const selectedValue = ref<string[]>([]);
 
 const availableCollection = computed(() =>
   createListCollection({
@@ -20,11 +20,11 @@ const selectedCollection = computed(() =>
   }),
 );
 
-function onAvailableValueChange(details) {
-  availableValue.value = details.value;
+function onAvailableValueChange(value: string | string[]) {
+  availableValue.value = Array.isArray(value) ? value : [value];
 }
-function onSelectedValueChange(details) {
-  selectedValue.value = details.value;
+function onSelectedValueChange(value: string | string[]) {
+  selectedValue.value = Array.isArray(value) ? value : [value];
 }
 function moveToSelected() {
   const moving = new Set(availableValue.value);

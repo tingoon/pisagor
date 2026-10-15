@@ -200,17 +200,24 @@ export function DropdownMenuQuickItem(
 export function DropdownMenuCheckboxItem(
   props: DropdownMenuCheckboxItemProps,
 ): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "children",
+    "recipe",
+    "class",
+    "variant",
+  ]);
+  const variant = () => local.variant ?? "default";
   const slots = () =>
     (local.recipe ?? dropdownMenuItemRecipe)({
       inset: true,
-      variant: "default",
+      variant: variant(),
     });
 
   return (
     <MenuPrimitive.CheckboxItem
       {...rest}
       class={slots().base({ class: local.class })}
+      data-variant={variant()}
     >
       <MenuPrimitive.ItemIndicator class={slots().indicator()}>
         <CheckIcon />
@@ -219,6 +226,32 @@ export function DropdownMenuCheckboxItem(
         {local.children}
       </MenuPrimitive.ItemText>
     </MenuPrimitive.CheckboxItem>
+  );
+}
+
+export function DropdownMenuItemText(
+  props: ComponentProps<typeof MenuPrimitive.ItemText>,
+): JSX.Element {
+  const [local, rest] = splitProps(props, ["class"]);
+  return (
+    <MenuPrimitive.ItemText
+      {...rest}
+      class={dropdownMenuItemRecipe().text({ class: local.class })}
+    />
+  );
+}
+
+export function DropdownMenuItemIndicator(
+  props: ComponentProps<typeof MenuPrimitive.ItemIndicator>,
+): JSX.Element {
+  const [local, rest] = splitProps(props, ["children", "class"]);
+  return (
+    <MenuPrimitive.ItemIndicator
+      {...rest}
+      class={dropdownMenuItemRecipe().indicator({ class: local.class })}
+    >
+      {local.children ?? <CheckIcon />}
+    </MenuPrimitive.ItemIndicator>
   );
 }
 
@@ -252,17 +285,24 @@ export function DropdownMenuItemGroupLabel(
 export function DropdownMenuRadioItem(
   props: DropdownMenuRadioItemProps,
 ): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "children",
+    "recipe",
+    "class",
+    "variant",
+  ]);
+  const variant = () => local.variant ?? "default";
   const slots = () =>
     (local.recipe ?? dropdownMenuItemRecipe)({
       inset: true,
-      variant: "default",
+      variant: variant(),
     });
 
   return (
     <MenuPrimitive.RadioItem
       {...rest}
       class={slots().base({ class: local.class })}
+      data-variant={variant()}
     >
       <MenuPrimitive.ItemIndicator class={slots().indicator()}>
         <CheckIcon />
@@ -275,7 +315,13 @@ export function DropdownMenuRadioItem(
 }
 
 export function DropdownMenuSub(props: DropdownMenuRootProps): JSX.Element {
-  return <DropdownMenuRoot {...props} />;
+  const [local, rest] = splitProps(props, ["positioning"]);
+  return (
+    <MenuPrimitive.Root
+      {...rest}
+      positioning={local.positioning ?? { placement: "right-start" }}
+    />
+  );
 }
 
 export function DropdownMenuSubContent(
@@ -352,7 +398,6 @@ export function DropdownMenuArrow(props: DropdownMenuArrowProps): JSX.Element {
         ...(typeof local.style === "object" && local.style !== null
           ? local.style
           : {}),
-        left: "20px",
       }}
     >
       <MenuPrimitive.ArrowTip class={slots().arrowTip()} />
@@ -367,6 +412,8 @@ export const DropdownMenu = Object.assign(DropdownMenuRoot, {
   Item: DropdownMenuItem,
   ItemGroup: DropdownMenuItemGroup,
   ItemGroupLabel: DropdownMenuItemGroupLabel,
+  ItemIndicator: DropdownMenuItemIndicator,
+  ItemText: DropdownMenuItemText,
   Positioner: DropdownMenuPositioner,
   QuickItem: DropdownMenuQuickItem,
   RadioItem: DropdownMenuRadioItem,

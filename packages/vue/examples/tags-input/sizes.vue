@@ -3,7 +3,7 @@ import { Field, TagsInput } from "@pisagor/vue";
 
 const defaultValue = ["React", "Solid"];
 
-const sizes = ["xs", "sm", "md", "lg"] as const;
+const sizes = ["sm", "md", "lg"] as const;
 </script>
 
 <template>

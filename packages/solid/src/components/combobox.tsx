@@ -41,6 +41,7 @@ import { createSlotRecipeContext } from "../internal/create-slot-recipe-context"
 import { CaretUpDownIcon, CheckIcon, XIcon } from "../internal/icons";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
+import { useProviderMessage } from "./provider/provider.context";
 
 // #region Context
 const { Context: ComboboxStylesContext } = createSlotRecipeContext({
@@ -56,6 +57,8 @@ function useComboboxSlots() {
 
 /** Root-level control props (`variant`, `size`) read by `Combobox.Input`. */
 const ComboboxControlContext = createContext<InputRootVariantProps>({});
+/** True inside `Combobox.Control`, so `Combobox.Input` does not render a second control. */
+const ComboboxInsideControlContext = createContext(false);
 
 /** @deprecated Prefer composing within Combobox.Root; kept for public API. */
 export function useComboboxRoot() {
@@ -170,10 +173,12 @@ export function ComboboxControl(props: ComboboxControlProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useComboboxSlots();
   return (
-    <ComboboxPrimitive.Control
-      {...rest}
-      class={slots().control({ class: local.class })}
-    />
+    <ComboboxInsideControlContext.Provider value={true}>
+      <ComboboxPrimitive.Control
+        {...rest}
+        class={slots().control({ class: local.class })}
+      />
+    </ComboboxInsideControlContext.Provider>
   );
 }
 
@@ -193,48 +198,53 @@ export function ComboboxInput(props: ComboboxInputProps): JSX.Element {
   const variant = () => local.variant ?? control.variant;
   const clearable = () => local.clearable ?? false;
   const showTrigger = () => local.showTrigger ?? true;
+  const insideControl = useContext(ComboboxInsideControlContext);
 
-  return (
-    <ComboboxControl data-size={size()}>
-      <InputGroup class={local.class} size={size()} variant={variant()}>
-        {local.children}
-        <ComboboxPrimitive.Input
-          asChild={(inputProps) => (
-            <InputGroup.Input {...inputProps()} {...rest} />
-          )}
-        />
-        <InputGroup.Addon align="inline-end">
-          <Show when={showTrigger()}>
-            <ComboboxPrimitive.Trigger
-              asChild={(triggerProps) => (
-                <InputGroup.Button
-                  {...triggerProps({ class: slots().triggerHidden() })}
-                  size="icon-xs"
-                  variant="ghost"
-                >
-                  <CaretUpDownIcon aria-hidden />
-                </InputGroup.Button>
-              )}
-            />
-          </Show>
-          <Show when={clearable() && !!combobox().inputValue}>
-            <ComboboxClearTrigger
-              asChild={(triggerProps) => (
-                <InputGroup.Button
-                  {...triggerProps()}
-                  aria-label="Clear"
-                  size="icon-xs"
-                  variant="ghost"
-                >
-                  <XIcon aria-hidden />
-                </InputGroup.Button>
-              )}
-            />
-          </Show>
-        </InputGroup.Addon>
-      </InputGroup>
-    </ComboboxControl>
+  const group = () => (
+    <InputGroup class={local.class} size={size()} variant={variant()}>
+      {local.children}
+      <ComboboxPrimitive.Input
+        asChild={(inputProps) => (
+          <InputGroup.Input {...inputProps()} {...rest} />
+        )}
+      />
+      <InputGroup.Addon align="inline-end">
+        <Show when={showTrigger()}>
+          <ComboboxPrimitive.Trigger
+            asChild={(triggerProps) => (
+              <InputGroup.Button
+                {...triggerProps({ class: slots().triggerHidden() })}
+                size="icon-xs"
+                variant="ghost"
+              >
+                <CaretUpDownIcon aria-hidden />
+              </InputGroup.Button>
+            )}
+          />
+        </Show>
+        <Show when={clearable() && !!combobox().inputValue}>
+          <ComboboxClearTrigger
+            asChild={(triggerProps) => (
+              <InputGroup.Button
+                {...triggerProps()}
+                aria-label={useProviderMessage("combobox.clear")}
+                size="icon-xs"
+                variant="ghost"
+              >
+                <XIcon aria-hidden />
+              </InputGroup.Button>
+            )}
+          />
+        </Show>
+      </InputGroup.Addon>
+    </InputGroup>
   );
+
+  if (insideControl) {
+    return group();
+  }
+
+  return <ComboboxControl data-size={size()}>{group()}</ComboboxControl>;
 }
 
 export function ComboboxTrigger(props: ComboboxTriggerProps): JSX.Element {
@@ -257,7 +267,7 @@ export function ComboboxTrigger(props: ComboboxTriggerProps): JSX.Element {
       asChild={(triggerProps) => (
         <Button
           {...triggerProps({ class: cn(slots().trigger(), local.class) })}
-          aria-label="Toggle"
+          aria-label={useProviderMessage("combobox.toggle")}
           class={slots().triggerButton()}
           variant="ghost"
         >
@@ -275,7 +285,7 @@ export function ComboboxClearTrigger(
   return (
     <ComboboxPrimitive.ClearTrigger
       {...rest}
-      aria-label={local["aria-label"] ?? "Clear selected value(s)"}
+      aria-label={local["aria-label"] ?? useProviderMessage("select.clear")}
     />
   );
 }
@@ -378,7 +388,7 @@ export function ComboboxEmpty(props: ComboboxEmptyProps): JSX.Element {
       {...rest}
       class={slots().empty({ class: local.class })}
     >
-      {local.children || "No results found. Try a different search."}
+      {local.children || useProviderMessage("combobox.empty")}
     </ComboboxPrimitive.Empty>
   );
 }

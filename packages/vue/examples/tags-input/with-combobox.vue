@@ -11,11 +11,11 @@ const collection = computed(() =>
   }),
 );
 
-function onTagsChange(details: { value: string[] }) {
-  tags.value = details.value;
+function onTagsChange(value: string[]) {
+  tags.value = value;
 }
-function onComboboxChange(details: { value: string[] }) {
-  const next = details.value[0];
+function onComboboxChange(value: string[]) {
+  const next = value[0];
   if (!next || tags.value.includes(next)) return;
   tags.value = [...tags.value, next];
 }

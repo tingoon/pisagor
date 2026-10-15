@@ -24,6 +24,10 @@ export const Default = meta.story({
   render: Examples.Default,
 });
 
+export const Sizes = meta.story({
+  render: Examples.Sizes,
+});
+
 export const SeparatedPanels = meta.story({
   render: Examples.SeparatedPanels,
 });

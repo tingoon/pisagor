@@ -10,6 +10,7 @@ import dropzoneRaw from "./dropzone.vue?raw";
 import invalidRaw from "./invalid.vue?raw";
 import media_captureRaw from "./media-capture.vue?raw";
 import multiple_filesRaw from "./multiple-files.vue?raw";
+import rejected_filesRaw from "./rejected-files.vue?raw";
 import triggerRaw from "./trigger.vue?raw";
 import variantsRaw from "./variants.vue?raw";
 
@@ -28,6 +29,7 @@ export const sources = {
   Invalid: invalidRaw,
   MediaCapture: media_captureRaw,
   MultipleFiles: multiple_filesRaw,
+  RejectedFiles: rejected_filesRaw,
   Trigger: triggerRaw,
   Variants: variantsRaw,
 } as const;

@@ -4,7 +4,10 @@ import { cn } from "@pisagor/utils";
 import DotsSixVerticalIcon from "phosphor-svelte/lib/DotsSixVerticalIcon";
 import { onMount } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
+import { useMessageResolver } from "../provider/provider.context";
 import { useSortable, useSortableItem } from "./sortable.context";
+
+const t = useMessageResolver();
 
 let {
   children,
@@ -48,8 +51,11 @@ function handleKeyDown(event: KeyboardEvent) {
   as="button"
   {...rest}
   aria-disabled={sortable.disabled || undefined}
+  aria-keyshortcuts={sortable.orientation === "vertical"
+    ? "Alt+ArrowUp Alt+ArrowDown"
+    : "Alt+ArrowLeft Alt+ArrowRight"}
   aria-label={(rest as { "aria-label"?: string })["aria-label"] ??
-    "Drag to reorder"}
+    t("sortable.dragHandle")}
   class={item.slots.handle({
     class: cn(className),
     disabled: sortable.disabled,

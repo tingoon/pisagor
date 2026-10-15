@@ -1,3 +1,4 @@
+import compoundRaw from "./compound.svelte?raw";
 import custom_recipeRaw from "./custom-recipe.svelte?raw";
 import data_typesRaw from "./data-types.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -7,6 +8,7 @@ import map_setRaw from "./map-set.svelte?raw";
 export const imports = `import { JsonTreeView } from "@pisagor/svelte";`;
 
 export const sources = {
+  Compound: compoundRaw,
   CustomRecipe: custom_recipeRaw,
   DataTypes: data_typesRaw,
   Default: defaultRaw,

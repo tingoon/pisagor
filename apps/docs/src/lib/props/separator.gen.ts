@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/separator` (native HTML attributes omitted). */
 export const separatorProps: PropRow[] = [
   {
-    defaultValue: "separatorRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "SeparatorRecipeFn | undefined",
-  },
+    defaultValue: "separatorRecipe",
+    description: "Style recipe override.",
+  }
 ];

@@ -78,6 +78,12 @@ Call out irreversible actions with destructive emphasis.
 
 :::example Destructive
 
+### Item Indicator
+
+Compose `ItemText` and `ItemIndicator` inside checkbox or radio items. Checkbox and radio items also accept `variant="destructive"`.
+
+:::example ItemIndicator
+
 ### Nested
 
 Open submenus for deeper action hierarchies.

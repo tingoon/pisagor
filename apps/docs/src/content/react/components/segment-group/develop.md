@@ -18,6 +18,12 @@ Choose visual weight or emphasis so the segment group matches importance in the 
 
 :::example Variants
 
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+:::example Sizes
+
 ### Orientation Horizontal
 
 Lay out the segment group horizontally when items should read in a row.

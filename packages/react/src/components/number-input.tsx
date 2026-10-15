@@ -10,13 +10,14 @@ import {
   formControlGroupShellRecipe,
   numberInputRecipe,
 } from "@pisagor/recipes";
-
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { FormControlVariant } from "../internal/types";
 import { Button } from "./button";
 import { Field } from "./field";
 import { Input, type InputProps } from "./input";
+import { getMessage } from "./provider/provider.context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -28,7 +29,6 @@ const { Context: NumberInputStylesContext, useStyles: useNumberInput } =
 // #endregion
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 export type NumberInputRootProps = Omit<
   NumberInputPrimitiveRootProps,
@@ -82,14 +82,14 @@ export function NumberInputRoot({
   const slots = recipe();
 
   return (
-    <NumberInputStylesContext value={{ slots, variants: {} as never }}>
+    <NumberInputStylesContext value={{ slots, variants: { size } as never }}>
       <NumberInputPrimitive.Root
         {...rest}
         className={slots.base({ className })}
         data-size={size}
         onValueChange={
           onValueChange
-            ? (details) => onValueChange(Number(details.value))
+            ? (details) => onValueChange(details.valueAsNumber)
             : undefined
         }
       >
@@ -97,7 +97,7 @@ export function NumberInputRoot({
           <NumberInputControl clearable={clearable} variant={variant}>
             <NumberInputDecrementTrigger />
             <NumberInputInput placeholder={placeholder} variant={variant} />
-            <NumberInputClearTrigger />
+            {clearable && <NumberInputClearTrigger />}
             <NumberInputIncrementTrigger />
           </NumberInputControl>
         )}
@@ -112,7 +112,8 @@ export function NumberInputControl({
   className,
   ...rest
 }: NumberInputControlProps) {
-  const { slots } = useNumberInput();
+  const { slots, variants } = useNumberInput();
+  const size = (variants as { size?: "sm" | "md" | "lg" } | undefined)?.size;
   const resolved = {
     surfaceVariant: useFormControlSurface(),
     variant: variantProp ?? ("primary" as FormControlVariant),
@@ -129,7 +130,7 @@ export function NumberInputControl({
       {...controlProps}
       className={cn(
         slots.control(),
-        formControlGroupShellRecipe({ size: "md", ...shellArgs }),
+        formControlGroupShellRecipe({ size: size ?? "md", ...shellArgs }),
         className,
       )}
       data-clearable={clearable || undefined}
@@ -155,7 +156,7 @@ export function NumberInputClearTrigger() {
         return (
           <Input.ClearButton
             className={slots.clearTrigger()}
-            onClear={() => api.setValue(Number.NaN)}
+            onClear={() => api.clearValue()}
           />
         );
       }}
@@ -175,7 +176,7 @@ export function NumberInputDecrementTrigger({
       asChild
       className={slots.decrementTrigger({ className })}
     >
-      <Button aria-label="Decrement" variant="ghost">
+      <Button aria-label={getMessage("numberInput.decrement")} variant="ghost">
         <MinusIcon aria-hidden />
       </Button>
     </NumberInputPrimitive.DecrementTrigger>
@@ -194,7 +195,7 @@ export function NumberInputIncrementTrigger({
       asChild
       className={slots.incrementTrigger({ className })}
     >
-      <Button aria-label="Increment" variant="ghost">
+      <Button aria-label={getMessage("numberInput.increment")} variant="ghost">
         <PlusIcon aria-hidden />
       </Button>
     </NumberInputPrimitive.IncrementTrigger>

@@ -28,6 +28,10 @@ export const Wrapping = meta.story({
   render: Examples.Wrapping,
 });
 
+export const Submenu = meta.story({
+  render: Examples.Submenu,
+});
+
 export const CustomRecipe = meta.story({
   render: Examples.CustomRecipe,
 });

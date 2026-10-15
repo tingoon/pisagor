@@ -39,3 +39,7 @@ export const InlineNavigation = meta.story({
 export const CustomRecipe = meta.story({
   render: exampleRender(Examples.CustomRecipe),
 });
+
+export const Decorative = meta.story({
+  render: exampleRender(Examples.Decorative),
+});

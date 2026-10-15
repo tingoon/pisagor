@@ -11,6 +11,7 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
+import type { ClassValue } from "../internal/types";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
@@ -39,7 +40,7 @@ export const CheckboxGroup = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: checkboxGroupRecipe,
@@ -70,11 +71,15 @@ export const CheckboxRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: checkboxRecipe,
       type: Function as PropType<typeof checkboxRecipe>,
+    },
+    size: {
+      default: "md",
+      type: String as PropType<"sm" | "md" | "lg">,
     },
     tabIndex: { default: undefined, type: Number },
     variant: {
@@ -103,7 +108,7 @@ export const CheckboxRoot = defineComponent({
           ...attrs,
           ...controlProps,
           class: cn(
-            formControlToggleRecipe({ size: "md", ...shellArgs }),
+            formControlToggleRecipe({ size: props.size, ...shellArgs }),
             slots.base({ class: props.class }),
           ),
           onCheckedChange: (details: {
@@ -140,8 +145,134 @@ export const CheckboxRoot = defineComponent({
     };
   },
 });
+
+const classProp = {
+  default: undefined,
+  type: [String, Object, Array] as PropType<ClassValue>,
+};
+
+const CheckboxIndicator = defineComponent({
+  inheritAttrs: false,
+  name: "CheckboxIndicator",
+  props: {
+    class: classProp,
+    recipe: {
+      default: checkboxRecipe,
+      type: Function as PropType<typeof checkboxRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
+    return () =>
+      h(
+        CheckboxPrimitive.Indicator as ArkPart,
+        { ...attrs, class: props.recipe().indicator({ class: props.class }) },
+        slots,
+      );
+  },
+});
+
+/** Compound root: lays out `Checkbox.Control` and `Checkbox.Label`. */
+export const CheckboxCompoundRoot = defineComponent({
+  inheritAttrs: false,
+  name: "CheckboxCompoundRoot",
+  props: {
+    class: classProp,
+    recipe: {
+      default: checkboxRecipe,
+      type: Function as PropType<typeof checkboxRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
+    return () =>
+      h(
+        CheckboxPrimitive.Root as ArkPart,
+        { ...attrs, class: props.recipe().root({ class: props.class }) },
+        slots,
+      );
+  },
+});
+
+/** The styled box; renders check / minus indicators when empty. */
+export const CheckboxControl = defineComponent({
+  inheritAttrs: false,
+  name: "CheckboxControl",
+  props: {
+    class: classProp,
+    recipe: {
+      default: checkboxRecipe,
+      type: Function as PropType<typeof checkboxRecipe>,
+    },
+    size: {
+      default: "md",
+      type: String as PropType<"sm" | "md" | "lg">,
+    },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant>,
+    },
+  },
+  setup(props, { attrs, slots }) {
+    const surfaceVariant = useFormControlSurface();
+
+    return () => {
+      const variant = props.variant ?? "primary";
+      const styles = props.recipe();
+
+      return h(
+        CheckboxPrimitive.Control as ArkPart,
+        {
+          ...attrs,
+          class: cn(
+            formControlToggleRecipe({
+              size: props.size,
+              surfaceVariant,
+              variant,
+            }),
+            styles.base(),
+            styles.control({ class: props.class }),
+          ),
+          "data-variant": variant,
+        },
+        () =>
+          slots.default?.() ?? [
+            h(CheckboxIndicator, { recipe: props.recipe }, () => h(PhCheck)),
+            h(
+              CheckboxIndicator,
+              { indeterminate: true, recipe: props.recipe },
+              () => h(PhMinus),
+            ),
+          ],
+      );
+    };
+  },
+});
+
+export const CheckboxLabel = defineComponent({
+  inheritAttrs: false,
+  name: "CheckboxLabel",
+  props: {
+    class: classProp,
+    recipe: {
+      default: checkboxRecipe,
+      type: Function as PropType<typeof checkboxRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
+    return () =>
+      h(
+        CheckboxPrimitive.Label as ArkPart,
+        { ...attrs, class: props.recipe().label({ class: props.class }) },
+        slots,
+      );
+  },
+});
 // #endregion
 
 export const Checkbox = Object.assign(CheckboxRoot, {
+  Control: CheckboxControl,
   Group: CheckboxGroup,
+  HiddenInput: CheckboxPrimitive.HiddenInput,
+  Indicator: CheckboxIndicator,
+  Label: CheckboxLabel,
+  Root: CheckboxCompoundRoot,
 });

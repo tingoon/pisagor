@@ -3,13 +3,10 @@ import type {
   PhoneInputRecipeSlot,
   PhoneInputVariantProps,
 } from "@pisagor/recipes";
-
 import type { ComboboxContentProps } from "../components/combobox";
 import type { InputProps } from "../components/input";
-import type { VariantClassNames } from "../internal/types";
+import type { FormControlVariant, VariantClassNames } from "../internal/types";
 import { createContext } from "../utils";
-
-type FormControlVariant = "primary" | "secondary";
 
 type PhoneInputClassNames = VariantClassNames<PhoneInputRecipeSlot>;
 

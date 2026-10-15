@@ -12,13 +12,7 @@ const styles = useMenu();
 const slots = $derived(styles.slots);
 </script>
 
-<Ark
-  as="li"
-  class={slots.wrapper()}
-  data-part="item-wrapper"
-  data-scope="menu"
-  role="none"
->
+<Ark as="li" class={slots.wrapper()} data-part="item-wrapper" data-scope="menu">
   <Ark
     as="a"
     {...rest}

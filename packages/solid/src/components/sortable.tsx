@@ -4,6 +4,7 @@ import type {
   SortableProps as BaseSortableRootProps,
 } from "@pisagor/props";
 import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes";
+import { formatMessage } from "@pisagor/utils";
 import type { Accessor, ComponentProps, JSX } from "solid-js";
 import {
   createMemo,
@@ -15,6 +16,7 @@ import {
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { DotsSixVerticalIcon } from "../internal/icons";
 import { createContext } from "../utils";
+import { useProviderMessage } from "./provider/provider.context";
 
 type SortableOrientation = "vertical" | "horizontal";
 
@@ -153,6 +155,13 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
     local.onValueChange?.(reorder(current, from, to));
   };
 
+  const movedTemplate = useProviderMessage("sortable.moved");
+  const [moved, setMoved] = createSignal("");
+  const keyShortcuts = () =>
+    orientation() === "vertical"
+      ? "Alt+ArrowUp Alt+ArrowDown"
+      : "Alt+ArrowLeft Alt+ArrowRight";
+
   const moveItem = (id: string, delta: -1 | 1) => {
     if (disabled()) return;
     const current = itemsRef.current;
@@ -161,12 +170,19 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
     if (index === -1 || targetIndex < 0 || targetIndex >= current.length)
       return;
     local.onValueChange?.(reorder(current, index, targetIndex));
+    setMoved(
+      formatMessage(movedTemplate, {
+        position: targetIndex + 1,
+        total: current.length,
+      }),
+    );
   };
 
   const getItemProps = (id: string) => {
     const itemHasHandle = handleIds().has(id);
     return {
       "aria-disabled": disabled() || undefined,
+      "aria-keyshortcuts": itemHasHandle ? undefined : keyShortcuts(),
       "data-dragging": activeId() === id ? "true" : undefined,
       "data-drop-target":
         overId() === id && activeId() !== id ? "true" : undefined,
@@ -252,6 +268,9 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
         role="list"
       >
         {local.children}
+        <span aria-live="polite" class="sr-only">
+          {moved()}
+        </span>
       </ark.div>
     </SortableContext>
   );
@@ -324,7 +343,14 @@ export function SortableHandle(props: SortableHandleProps): JSX.Element {
     <ark.div
       {...rest}
       aria-disabled={disabled() || undefined}
-      aria-label={local["aria-label"] ?? "Drag to reorder"}
+      aria-keyshortcuts={
+        sortable.orientation === "vertical"
+          ? "Alt+ArrowUp Alt+ArrowDown"
+          : "Alt+ArrowLeft Alt+ArrowRight"
+      }
+      aria-label={
+        local["aria-label"] ?? useProviderMessage("sortable.dragHandle")
+      }
       class={styles.slots.handle({ class: local.class, disabled: disabled() })}
       data-part="handle"
       data-scope="sortable"

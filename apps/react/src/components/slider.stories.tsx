@@ -42,6 +42,10 @@ export const Range = meta.story({
   render: Examples.Range,
 });
 
+export const Compound = meta.story({
+  render: Examples.Compound,
+});
+
 export const Controlled = meta.story({
   render: Examples.Controlled,
 });

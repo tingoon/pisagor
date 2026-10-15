@@ -1,6 +1,12 @@
 <script lang="ts" setup>
-import { Badge, Table } from "@pisagor/vue";
+import { Badge, type BadgeVariant, Table } from "@pisagor/vue";
 import { workspaceUsers } from "./helpers";
+
+const statusVariants: Record<string, BadgeVariant> = {
+  active: "success",
+  inactive: "destructive",
+  invited: "info",
+};
 </script>
 
 <template>

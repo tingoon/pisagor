@@ -14,14 +14,15 @@ import { Portal } from "@ark-ui/react/portal";
 import { CalendarIcon, ClockIcon, XIcon } from "@phosphor-icons/react";
 import type { DatePickerProps as BaseDatePickerProps } from "@pisagor/props";
 import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
-
-import { createContext, use } from "react";
+import { type ComponentProps, createContext, type ReactNode, use } from "react";
 import { useClearableInput } from "../hooks";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { FormControlVariant } from "../internal/types";
 import { Button } from "./button";
 import { Calendar, CalendarSlotsContext } from "./calendar";
 import { Input, type InputProps } from "./input";
 import { InputGroup } from "./input-group";
+import { getMessage } from "./provider/provider.context";
 
 // #region Context
 const { Context: DatePickerSlotsContext, useStyles: useDatePickerStyles } =
@@ -43,7 +44,6 @@ function useDatePicker() {
 // #endregion
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 export interface DatePickerTriggerProps
   extends DatePickerPrimitiveTriggerProps {
@@ -66,7 +66,7 @@ export interface DatePickerInputProps
   clearable?: boolean;
 }
 
-export interface DatePickerTimerProps
+export interface DatePickerTimeInputProps
   extends Omit<InputProps, "recipe">,
     BaseDatePickerProps {
   /**
@@ -139,6 +139,47 @@ export function DatePickerRoot({
   );
 }
 
+/** True inside a date picker control, so nested parts do not render a second one. */
+const DatePickerInsideControlContext = createContext(false);
+
+export function DatePickerControl({
+  className,
+  ...rest
+}: ComponentProps<typeof DatePickerPrimitive.Control>) {
+  const { slots } = useDatePicker();
+
+  return (
+    <DatePickerInsideControlContext value={true}>
+      <DatePickerPrimitive.Control
+        {...rest}
+        className={slots.control({ className })}
+      />
+    </DatePickerInsideControlContext>
+  );
+}
+
+function MaybeDatePickerControl({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  const insideControl = use(DatePickerInsideControlContext);
+
+  if (insideControl) {
+    return children;
+  }
+
+  return (
+    <DatePickerInsideControlContext value={true}>
+      <DatePickerPrimitive.Control className={className}>
+        {children}
+      </DatePickerPrimitive.Control>
+    </DatePickerInsideControlContext>
+  );
+}
+
 export function DatePickerTrigger({
   clearable = false,
   children,
@@ -148,7 +189,7 @@ export function DatePickerTrigger({
   const { slots } = useDatePicker();
 
   return (
-    <DatePickerPrimitive.Control className={slots.control()}>
+    <MaybeDatePickerControl className={slots.control()}>
       <DatePickerPrimitive.Trigger
         {...rest}
         className={slots.trigger({ className })}
@@ -156,7 +197,7 @@ export function DatePickerTrigger({
         {children}
       </DatePickerPrimitive.Trigger>
       {clearable ? <DatePickerClearTrigger /> : null}
-    </DatePickerPrimitive.Control>
+    </MaybeDatePickerControl>
   );
 }
 
@@ -170,7 +211,7 @@ export function DatePickerInput({
   const { slots, variant: contextVariant } = useDatePicker();
 
   return (
-    <DatePickerPrimitive.Control>
+    <MaybeDatePickerControl>
       <InputGroup
         className={className}
         size={size}
@@ -190,14 +231,18 @@ export function DatePickerInput({
             variant="ghost"
           >
             <DatePickerPrimitive.Trigger asChild>
-              <Button aria-label="Open calendar" size="icon-md" variant="ghost">
+              <Button
+                aria-label={getMessage("datePicker.openCalendar")}
+                size="icon-md"
+                variant="ghost"
+              >
                 <CalendarIcon aria-hidden className={slots.icon()} />
               </Button>
             </DatePickerPrimitive.Trigger>
           </InputGroup.Button>
         </InputGroup.Addon>
       </InputGroup>
-    </DatePickerPrimitive.Control>
+    </MaybeDatePickerControl>
   );
 }
 
@@ -211,7 +256,7 @@ export function DatePickerClearTrigger() {
   return (
     <DatePickerPrimitive.ClearTrigger asChild>
       <InputGroup.Button
-        aria-label="Clear"
+        aria-label={getMessage("datePicker.clear")}
         size="icon-xs"
         type="button"
         variant="ghost"
@@ -222,7 +267,7 @@ export function DatePickerClearTrigger() {
   );
 }
 
-export function DatePickerTimer({
+export function DatePickerTimeInput({
   clearable = false,
   defaultValue,
   disabled,
@@ -236,7 +281,7 @@ export function DatePickerTimer({
   recipe = datePickerRecipe,
   variant,
   ...rest
-}: DatePickerTimerProps) {
+}: DatePickerTimeInputProps) {
   const styles = use(DatePickerSlotsContext);
   const contextVariant = use(DatePickerVariantContext);
   const slots = styles?.slots ?? recipe();
@@ -339,7 +384,7 @@ DatePickerRoot.displayName = "DatePicker";
 DatePickerTrigger.displayName = "DatePicker.Trigger";
 DatePickerInput.displayName = "DatePicker.Input";
 DatePickerClearTrigger.displayName = "DatePicker.ClearTrigger";
-DatePickerTimer.displayName = "DatePicker.Timer";
+DatePickerTimeInput.displayName = "DatePicker.TimeInput";
 DatePickerContent.displayName = "DatePicker.Content";
 DatePickerValueText.displayName = "DatePicker.ValueText";
 DatePickerPresetTrigger.displayName = "DatePicker.PresetTrigger";
@@ -356,9 +401,12 @@ export type { DatePickerRootProps as DatePickerProps };
 export const DatePicker = Object.assign(DatePickerRoot, {
   ClearTrigger: DatePickerClearTrigger,
   Content: DatePickerContent,
+  Control: DatePickerControl,
   Input: DatePickerInput,
   PresetTrigger: DatePickerPresetTrigger,
-  Timer: DatePickerTimer,
+  TimeInput: DatePickerTimeInput,
+  /** @deprecated Use `DatePicker.TimeInput`. */
+  Timer: DatePickerTimeInput,
   Trigger: DatePickerTrigger,
   ValueText: DatePickerValueText,
 });

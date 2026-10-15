@@ -15,9 +15,11 @@ import {
   watchEffect,
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
 import { Badge, type BadgeProps } from "./badge";
 import { Button } from "./button";
+import { useProviderMessage } from "./provider/provider";
 import { Separator, type SeparatorProps } from "./separator";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -72,6 +74,8 @@ function useActionBar() {
 // #region Types
 interface ActionBarActionItem {
   icon?: VNodeChild;
+  /** Stable key; defaults to `label`. */
+  id?: string;
   label: string;
   onClick: () => void;
   disabled?: boolean;
@@ -258,7 +262,7 @@ export const ActionBarRoot = defineComponent({
                             Button,
                             {
                               disabled: action.disabled,
-                              key: action.label,
+                              key: action.id ?? action.label,
                               onClick: action.onClick,
                               size: "sm",
                               variant: "ghost",
@@ -318,7 +322,7 @@ export const ActionBarContent = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -375,7 +379,7 @@ export const ActionBarSeparator = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs }) {
@@ -398,7 +402,7 @@ export const ActionBarClose = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     onClick: {
       default: undefined,
@@ -412,8 +416,8 @@ export const ActionBarClose = defineComponent({
       h(
         ark.button as ArkPart,
         {
+          "aria-label": useProviderMessage("actionBar.close"),
           ...attrs,
-          "aria-label": "Close",
           class: styleSlots.close({ class: props.class }),
           "data-part": "close",
           "data-scope": "action-bar",
@@ -435,7 +439,7 @@ export const ActionBarValue = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     count: { required: true, type: Number },
     label: { default: undefined, type: String },

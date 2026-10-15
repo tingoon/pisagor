@@ -13,3 +13,9 @@ export type ClassValue =
   | 0
   | false
   | readonly ClassValue[];
+
+/**
+ * Any non-`undefined` prop value. Vue infers `PropType<unknown>` from the
+ * `default`, so loose props (collection items, date values) use this instead.
+ */
+export type LoosePropValue = NonNullable<unknown> | null;

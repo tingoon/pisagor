@@ -1,3 +1,4 @@
+import compoundRaw from "./compound.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
 import countRaw from "./count.svelte?raw";
 import custom_colorRaw from "./custom-color.svelte?raw";
@@ -9,11 +10,13 @@ import disabledRaw from "./disabled.svelte?raw";
 import half_starRaw from "./half-star.svelte?raw";
 import invalidRaw from "./invalid.svelte?raw";
 import readonlyRaw from "./readonly.svelte?raw";
+import sizesRaw from "./sizes.svelte?raw";
 import testimonialRaw from "./testimonial.svelte?raw";
 
 export const imports = `import { Rating } from "@pisagor/svelte";`;
 
 export const sources = {
+  Compound: compoundRaw,
   Controlled: controlledRaw,
   Count: countRaw,
   CustomColor: custom_colorRaw,
@@ -25,5 +28,6 @@ export const sources = {
   HalfStar: half_starRaw,
   Invalid: invalidRaw,
   Readonly: readonlyRaw,
+  Sizes: sizesRaw,
   Testimonial: testimonialRaw,
 } as const;

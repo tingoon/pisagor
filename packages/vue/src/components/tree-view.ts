@@ -27,6 +27,7 @@ import {
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, Fragment, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -160,7 +161,7 @@ export const TreeViewRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     fileIcons: {
       default: undefined,
@@ -208,7 +209,7 @@ export const TreeViewLabel = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -235,7 +236,7 @@ export const TreeViewTree = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -332,7 +333,7 @@ export const TreeViewBranchContent = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots: children }) {
@@ -380,7 +381,7 @@ export const TreeViewBranchControl = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     expandedIcon: {
       default: undefined,
@@ -419,7 +420,7 @@ const TreeViewBranchTitle = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     expandedIcon: {
       default: undefined,
@@ -520,7 +521,7 @@ export const TreeViewItemTitle = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -572,7 +573,7 @@ export const TreeViewNodeInput = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs }) {
@@ -599,7 +600,7 @@ export const TreeViewItemText = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     icon: { default: PhFile, type: Object as PropType<ArkPart> },
   },
@@ -642,7 +643,7 @@ export const TreeViewNodeCheckbox = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs }) {

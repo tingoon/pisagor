@@ -3,9 +3,12 @@ import {
   type ComboboxClearTriggerProps,
   Combobox as ComboboxPrimitive,
 } from "@ark-ui/svelte/combobox";
+import { useMessageResolver } from "../provider/provider.context";
+
+const t = useMessageResolver();
 
 let {
-  "aria-label": ariaLabel = "Clear selected value(s)",
+  "aria-label": ariaLabel = t("select.clear"),
   children,
   ...rest
 }: ComboboxClearTriggerProps = $props();

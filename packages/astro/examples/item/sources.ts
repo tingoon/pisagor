@@ -6,6 +6,7 @@ import headerRaw from "./header.astro?raw";
 import iconRaw from "./icon.astro?raw";
 import imageRaw from "./image.astro?raw";
 import linkRaw from "./link.astro?raw";
+import sizesRaw from "./sizes.astro?raw";
 import variantsRaw from "./variants.astro?raw";
 import with_avatarRaw from "./with-avatar.astro?raw";
 import with_mediaRaw from "./with-media.astro?raw";
@@ -23,6 +24,7 @@ export const sources = {
   Icon: iconRaw,
   Image: imageRaw,
   Link: linkRaw,
+  Sizes: sizesRaw,
   Variants: variantsRaw,
   WithAvatar: with_avatarRaw,
   WithMedia: with_mediaRaw,

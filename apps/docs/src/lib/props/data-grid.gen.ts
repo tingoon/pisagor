@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/data-grid` (native HTML attributes omitted). */
 export const dataGridProps: PropRow[] = [
   {
-    defaultValue: "dataGridRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "DataGridRecipeFn | undefined",
-  },
+    defaultValue: "dataGridRecipe",
+    description: "Style recipe override.",
+  }
 ];

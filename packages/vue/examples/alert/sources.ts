@@ -4,6 +4,7 @@ import custom_recipeRaw from "./custom-recipe.ts?raw";
 import variantsRaw from "./variants.ts?raw";
 import with_actionRaw from "./with-action.ts?raw";
 import with_iconRaw from "./with-icon.ts?raw";
+import without_iconRaw from "./without-icon.vue?raw";
 
 export const imports = `import { Alert } from "@pisagor/vue";`;
 
@@ -14,4 +15,5 @@ export const sources = {
   Variants: variantsRaw,
   WithAction: with_actionRaw,
   WithIcon: with_iconRaw,
+  WithoutIcon: without_iconRaw,
 } as const;

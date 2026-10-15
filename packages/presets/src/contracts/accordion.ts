@@ -1,6 +1,12 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const accordionItemRecipe = tv({
+  defaultVariants: {
+    /**
+     * Size scale.
+     */
+    size: "md",
+  },
   slots: {
     base: "flex flex-col border-b last:border-b-0",
     body: "pt-0 pb-4",
@@ -22,18 +28,34 @@ export const accordionItemRecipe = tv({
     trigger: [
       "flex flex-1 items-center justify-between gap-3",
       "py-4",
-      "text-left font-medium text-sm",
+      "text-start font-medium text-sm",
       "rounded-md border border-transparent",
       "outline-hidden",
-      "transition-[color,background-color,border-color,box-shadow] duration-fast ease-out",
+      "transition duration-fast ease-out",
       "disabled:pointer-events-none disabled:opacity-64 disabled:grayscale",
       "focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/32",
       "[&_[data-state=open]>svg]:rotate-180",
       "motion-reduce:transition-none!",
     ],
   },
+  variants: {
+    size: {
+      lg: {
+        body: "pb-5",
+        content: "text-base",
+        trigger: "py-5 text-base",
+      },
+      md: {},
+      sm: {
+        body: "pb-3",
+        content: "text-xs",
+        trigger: "py-3 text-xs",
+      },
+    },
+  },
 });
 
 export type AccordionItemRecipeFn = typeof accordionItemRecipe;
 export type AccordionItemRecipe = ReturnType<AccordionItemRecipeFn>;
 export type AccordionItemRecipeSlot = keyof AccordionItemRecipe;
+export type AccordionItemVariantProps = VariantProps<AccordionItemRecipeFn>;

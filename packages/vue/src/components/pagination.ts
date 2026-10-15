@@ -9,6 +9,7 @@ import { buttonRecipe, paginationRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 import { Button, type ButtonProps } from "./button";
 
 // #region Context
@@ -42,7 +43,7 @@ export const PaginationRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -104,7 +105,7 @@ export const PaginationItem = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -179,7 +180,16 @@ export const PaginationItemLink = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
+    /**
+     * Builds the link href for a page.
+     *
+     * @defaultValue (page) => `?page=${page}`
+     */
+    getHref: {
+      default: (page: number) => `?page=${page}`,
+      type: Function as PropType<(page: number) => string>,
     },
     page: {
       default: undefined,
@@ -214,12 +224,14 @@ export const PaginationItemLink = defineComponent({
         ark.a as ArkPart,
         {
           ...attrs,
+          "aria-current":
+            props.page === pagination.value.page ? "page" : undefined,
           class: cn(
             buttonRecipe({ size: props.size, variant }).base(),
             props.class,
             attrs.class,
           ),
-          href: `?page=${pageValue()}`,
+          href: props.getHref(pageValue() ?? 1),
         },
         slots,
       );
@@ -233,7 +245,7 @@ export const PaginationEllipsis = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
   },
   setup(props, { attrs, slots }) {

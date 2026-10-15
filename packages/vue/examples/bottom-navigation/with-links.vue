@@ -14,33 +14,31 @@ import { BottomNavigation, ScrollArea } from "@pisagor/vue";
   >
     <ScrollArea>
       <div class="h-96" />
-      <BottomNavigation default-value="/docs">
+      <BottomNavigation value="search">
         <BottomNavigation.List class="absolute">
-          <BottomNavigation.Item as-child value="/">
-            <a href="https://example.com/">
-              <BottomNavigation.ItemIcon><PhHouse /></BottomNavigation.ItemIcon>
-              <BottomNavigation.ItemLabel>Home</BottomNavigation.ItemLabel>
-            </a>
+          <BottomNavigation.Item href="https://example.com/" value="home">
+            <BottomNavigation.ItemIcon><PhHouse /></BottomNavigation.ItemIcon>
+            <BottomNavigation.ItemLabel>Home</BottomNavigation.ItemLabel>
           </BottomNavigation.Item>
-          <BottomNavigation.Item as-child value="/docs">
-            <a href="https://example.com/search">
-              <BottomNavigation.ItemIcon>
-                <PhMagnifyingGlass />
-              </BottomNavigation.ItemIcon>
-              <BottomNavigation.ItemLabel>Search</BottomNavigation.ItemLabel>
-            </a>
+          <BottomNavigation.Item
+            href="https://example.com/search"
+            value="search"
+          >
+            <BottomNavigation.ItemIcon>
+              <PhMagnifyingGlass />
+            </BottomNavigation.ItemIcon>
+            <BottomNavigation.ItemLabel>Search</BottomNavigation.ItemLabel>
           </BottomNavigation.Item>
-          <BottomNavigation.Item as-child value="/docs/components">
-            <a href="https://example.com/news">
-              <BottomNavigation.ItemIcon><PhBell /></BottomNavigation.ItemIcon>
-              <BottomNavigation.ItemLabel>News</BottomNavigation.ItemLabel>
-            </a>
+          <BottomNavigation.Item href="https://example.com/news" value="news">
+            <BottomNavigation.ItemIcon><PhBell /></BottomNavigation.ItemIcon>
+            <BottomNavigation.ItemLabel>News</BottomNavigation.ItemLabel>
           </BottomNavigation.Item>
-          <BottomNavigation.Item as-child value="/docs/components">
-            <a href="https://example.com/profile">
-              <BottomNavigation.ItemIcon><PhUser /></BottomNavigation.ItemIcon>
-              <BottomNavigation.ItemLabel>Profile</BottomNavigation.ItemLabel>
-            </a>
+          <BottomNavigation.Item
+            href="https://example.com/profile"
+            value="profile"
+          >
+            <BottomNavigation.ItemIcon><PhUser /></BottomNavigation.ItemIcon>
+            <BottomNavigation.ItemLabel>Profile</BottomNavigation.ItemLabel>
           </BottomNavigation.Item>
         </BottomNavigation.List>
       </BottomNavigation>

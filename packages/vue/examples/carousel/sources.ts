@@ -1,4 +1,5 @@
 import autoplayRaw from "./autoplay.vue?raw";
+import autoplay_controlsRaw from "./autoplay-controls.vue?raw";
 import compoundRaw from "./compound.vue?raw";
 import controlledRaw from "./controlled.vue?raw";
 import custom_recipeRaw from "./custom-recipe.vue?raw";
@@ -16,6 +17,7 @@ export const imports = `import { Carousel } from "@pisagor/vue";`;
 
 export const sources = {
   Autoplay: autoplayRaw,
+  AutoplayControls: autoplay_controlsRaw,
   Compound: compoundRaw,
   Controlled: controlledRaw,
   CustomRecipe: custom_recipeRaw,

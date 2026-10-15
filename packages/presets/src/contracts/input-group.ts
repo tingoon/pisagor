@@ -11,8 +11,8 @@ export const inputGroupAddonRecipe = tv({
     "py-1.5",
     "select-none font-medium text-muted-foreground text-sm",
     "cursor-text",
-    "group-data-[disabled=true]/input-group:opacity-64",
-    "[&>kbd]:rounded-[calc(var(--radius)-5px)]",
+    "group-data-disabled/input-group:opacity-64",
+    "[&>kbd]:rounded-sm",
     "[&_svg:not([class*='size-'])]:size-4",
   ],
   defaultVariants: {
@@ -35,13 +35,13 @@ export const inputGroupAddonRecipe = tv({
       ],
       "inline-end": [
         "order-last pe-3",
-        "has-[>button]:me-[-0.45rem]",
-        "has-[>kbd]:me-[-0.35rem]",
+        "has-[>button]:-me-2",
+        "has-[>kbd]:-me-1.5",
       ],
       "inline-start": [
         "order-first ps-3",
-        "has-[>button]:ms-[-0.45rem]",
-        "has-[>kbd]:ms-[-0.35rem]",
+        "has-[>button]:-ms-2",
+        "has-[>kbd]:-ms-1.5",
       ],
     },
   },
@@ -64,18 +64,13 @@ export const inputGroupButtonRecipe = tv({
   variants: {
     size: {
       "icon-sm": ["size-8", "p-0", "has-[>svg]:p-0"],
-      "icon-xs": [
-        "size-6",
-        "rounded-[calc(var(--radius)-5px)]",
-        "p-0",
-        "has-[>svg]:p-0",
-      ],
+      "icon-xs": ["size-6", "rounded-sm", "p-0", "has-[>svg]:p-0"],
       sm: ["h-8", "gap-1.5", "px-2.5", "rounded-md", "has-[>svg]:px-2.5"],
       xs: [
         "h-6",
         "gap-1",
         "px-2",
-        "rounded-[calc(var(--radius)-5px)]",
+        "rounded-sm",
         "has-[>svg]:px-2",
         "[&_svg:not([class*='size-'])]:size-3.5",
       ],

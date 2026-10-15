@@ -4,18 +4,18 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/combobox` (native HTML attributes omitted). */
 export const comboboxProps: PropRow[] = [
   {
-    defaultValue: "`true`",
-    description: "Show indicator.",
     name: "showIndicator",
     type: "boolean | undefined",
+    defaultValue: "`true`",
+    description: "Show indicator.",
   },
   {
-    defaultValue: "comboboxRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "ComboboxRecipeFn | undefined",
-  },
+    defaultValue: "comboboxRecipe",
+    description: "Style recipe override.",
+  }
 ];

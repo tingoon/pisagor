@@ -1,3 +1,4 @@
+export { default as Compound } from "./compound.svelte";
 export { default as Controlled } from "./controlled.svelte";
 export { default as Count } from "./count.svelte";
 export { default as CustomColor } from "./custom-color.svelte";
@@ -9,5 +10,6 @@ export { default as Disabled } from "./disabled.svelte";
 export { default as HalfStar } from "./half-star.svelte";
 export { default as Invalid } from "./invalid.svelte";
 export { default as Readonly } from "./readonly.svelte";
+export { default as Sizes } from "./sizes.svelte";
 export { imports, sources } from "./sources";
 export { default as Testimonial } from "./testimonial.svelte";

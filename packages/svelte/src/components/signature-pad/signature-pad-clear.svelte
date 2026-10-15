@@ -6,7 +6,10 @@ import {
 import { cn } from "@pisagor/utils";
 import ArrowCounterClockwiseIcon from "phosphor-svelte/lib/ArrowCounterClockwiseIcon";
 import Button from "../button.svelte";
+import { useMessageResolver } from "../provider/provider.context";
 import { useSignaturePad } from "./signature-pad.context";
+
+const t = useMessageResolver();
 
 let {
   class: className,
@@ -21,7 +24,7 @@ const styles = useSignaturePad();
   )}
     <Button
       {...props({ class: styles.slots.clear({ class: cn(className) }) })}
-      aria-label="Clear signature"
+      aria-label={t("signaturePad.clearSignature")}
       size="icon-md"
       variant="ghost"
     >

@@ -225,27 +225,26 @@ const handleExpandedChange = (
 };
 const data = allUsers.slice(0, 8);
 const state = computed(() => ({ expanded: expanded.value }));
-const renderDetail = (row: DataGridRow<FullUser>) =>
-  h("div", { class: "grid gap-3 sm:grid-cols-2" }, [
+const renderDetail = (detailRow: DataGridRow<RowData>) => {
+  const user = detailRow.original as FullUser;
+
+  return h("div", { class: "grid gap-3 sm:grid-cols-2" }, [
     h("div", null, [
       h("p", { class: "font-medium text-sm" }, "Profile"),
-      h("p", { class: "text-muted-foreground text-sm" }, row.original.name),
-      h("p", { class: "text-muted-foreground text-sm" }, row.original.email),
+      h("p", { class: "text-muted-foreground text-sm" }, user.name),
+      h("p", { class: "text-muted-foreground text-sm" }, user.email),
     ]),
     h("div", null, [
       h("p", { class: "font-medium text-sm" }, "Organization"),
+      h("p", { class: "text-muted-foreground text-sm" }, user.department),
       h(
         "p",
         { class: "text-muted-foreground text-sm" },
-        row.original.department,
-      ),
-      h(
-        "p",
-        { class: "text-muted-foreground text-sm" },
-        `Joined ${formatDate(row.original.joinedAt)}`,
+        `Joined ${formatDate(user.joinedAt)}`,
       ),
     ]),
   ]);
+};
 </script>
 
 <template>

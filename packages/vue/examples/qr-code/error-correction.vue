@@ -2,6 +2,7 @@
 import { QrCode } from "@pisagor/vue";
 
 const eccLevels = ["L", "M", "Q", "H"] as const;
+const docsUrl = "https://example.com/docs";
 </script>
 
 <template>
@@ -13,8 +14,8 @@ const eccLevels = ["L", "M", "Q", "H"] as const;
     >
       <QrCode
         class="[--qr-code-size:6rem]"
-        value="https://example.com/docs"
         :encoding="{ ecc }"
+        :value="docsUrl"
       >
         <QrCode.Frame />
       </QrCode>

@@ -4,6 +4,7 @@ import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, unref } from "vue";
 import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
+import type { ClassValue } from "../../internal/types";
 import { useItemGroupContextRef } from "./item-group.context";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -40,11 +41,15 @@ export const ItemRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     recipe: {
       default: itemRecipe,
       type: Function as PropType<typeof itemRecipe>,
+    },
+    size: {
+      default: undefined,
+      type: String as PropType<"sm" | "md" | "lg">,
     },
     variant: {
       default: undefined,
@@ -60,6 +65,7 @@ export const ItemRoot = defineComponent({
         ...itemRecipe.defaultVariants,
         ...props.recipe.defaultVariants,
         variant: props.variant ?? group?.variant ?? "default",
+        ...(props.size ? { size: props.size } : {}),
       };
     });
     const itemSlots = computed(() => props.recipe(variants.value));
@@ -94,7 +100,7 @@ export const ItemMedia = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     variant: {
       default: "default",

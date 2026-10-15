@@ -75,6 +75,14 @@ export function ContextMenuShortcut(props: DropdownMenuShortcutProps) {
     />
   );
 }
+export const ContextMenuArrow = DropdownMenu.Arrow;
+export const ContextMenuCheckboxItem = DropdownMenu.CheckboxItem;
+export const ContextMenuItemGroupLabel = DropdownMenu.ItemGroupLabel;
+export const ContextMenuItemIndicator = DropdownMenu.ItemIndicator;
+export const ContextMenuItemText = DropdownMenu.ItemText;
+export const ContextMenuPositioner = DropdownMenu.Positioner;
+export const ContextMenuRadioItem = DropdownMenu.RadioItem;
+export const ContextMenuRadioItemGroup = DropdownMenu.RadioItemGroup;
 // #endregion
 
 // #region Display Names
@@ -91,10 +99,18 @@ ContextMenuShortcut.displayName = "ContextMenu.Shortcut";
 // #endregion
 
 export const ContextMenu = Object.assign(ContextMenuRoot, {
+  Arrow: ContextMenuArrow,
+  CheckboxItem: ContextMenuCheckboxItem,
   Content: ContextMenuContent,
   ContextTrigger: ContextMenuContextTrigger,
   Item: ContextMenuItem,
   ItemGroup: ContextMenuItemGroup,
+  ItemGroupLabel: ContextMenuItemGroupLabel,
+  ItemIndicator: ContextMenuItemIndicator,
+  ItemText: ContextMenuItemText,
+  Positioner: ContextMenuPositioner,
+  RadioItem: ContextMenuRadioItem,
+  RadioItemGroup: ContextMenuRadioItemGroup,
   Separator: ContextMenuSeparator,
   Shortcut: ContextMenuShortcut,
   Sub: ContextMenuSub,

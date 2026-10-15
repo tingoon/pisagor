@@ -5,7 +5,7 @@ export const drawerRecipe = tv({
     /**
      * Preferred placement.
      */
-    placement: "down",
+    placement: "bottom",
     /**
      * Visual emphasis.
      */
@@ -15,7 +15,7 @@ export const drawerRecipe = tv({
     backdrop: [
       "[--overlay-alpha:calc(32%*(1-var(--drawer-swipe-progress)))] [--blur:calc(8px*(1-var(--drawer-swipe-progress)))]",
       "fixed inset-0 z-modal",
-      "bg-black/(--overlay-alpha) backdrop-blur-(--blur)",
+      "bg-overlay/(--overlay-alpha) backdrop-blur-(--blur)",
       "data-[state=open]:fade-in-0 data-[state=open]:animate-in",
       "data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
       "transparency-reduce:[--blur:0px]",
@@ -91,7 +91,7 @@ export const drawerRecipe = tv({
   },
   variants: {
     placement: {
-      down: {
+      bottom: {
         content: [
           "data-[state=closed]:slide-out-to-bottom data-[state=closed]:animate-out",
           "data-[state=open]:slide-in-from-bottom data-[state=open]:animate-in",
@@ -116,7 +116,7 @@ export const drawerRecipe = tv({
           "rounded-s-3xl",
         ],
       },
-      up: {
+      top: {
         content: [
           "data-[state=open]:slide-in-from-top data-[state=open]:animate-in",
           "data-[state=closed]:slide-out-to-top data-[state=closed]:animate-out",
@@ -129,7 +129,7 @@ export const drawerRecipe = tv({
       inset: {
         content: [
           "sm:rounded-3xl sm:border sm:border-border/50",
-          "sm:**:data-[scope=drawer]:data-[part=footer]:rounded-b-[calc(var(--radius-3xl)-1px)]",
+          "sm:**:data-[scope=drawer]:data-[part=footer]:rounded-b-3xl",
         ],
         positioner: "sm:p-4",
       },

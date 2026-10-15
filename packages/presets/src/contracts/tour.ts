@@ -4,7 +4,7 @@ export const tourRecipe = tv({
   slots: {
     actions: ["flex flex-wrap gap-2"],
     backdrop: "duration-initial",
-    close: ["absolute top-4 right-4"],
+    close: ["absolute top-4 inset-e-4"],
     closeButton: ["size-8 border-none opacity-70 hover:opacity-100"],
     closeLabel: "sr-only",
     content: [
@@ -18,7 +18,7 @@ export const tourRecipe = tv({
       "focus:outline-hidden focus:ring-0",
       "data-[state=closed]:animate-out data-[state=open]:animate-in",
       "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
-      "data-[state=open]:zoom-in-[98%] data-[state=closed]:zoom-out-[98%]",
+      "data-[state=open]:zoom-in-98 data-[state=closed]:zoom-out-98",
       "motion-reduce:animate-none!",
     ],
     description: ["text-muted-foreground text-sm"],

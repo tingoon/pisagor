@@ -4,18 +4,18 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/swap` (native HTML attributes omitted). */
 export const swapProps: PropRow[] = [
   {
+    name: "variant",
+    type: "\"blur\" | \"fade\" | \"flip\" | \"rotate\" | \"scale\" | undefined",
     defaultValue: "`fade`",
     description: "Visual emphasis.",
-    name: "variant",
-    type: '"blur" | "fade" | "flip" | "rotate" | "scale" | undefined',
   },
   {
-    defaultValue: "swapRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "SwapRecipeFn | undefined",
-  },
+    defaultValue: "swapRecipe",
+    description: "Style recipe override.",
+  }
 ];

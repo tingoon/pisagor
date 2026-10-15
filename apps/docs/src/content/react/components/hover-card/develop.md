@@ -45,6 +45,12 @@ Choose placement so the hover card stays near its trigger without covering criti
 
 :::example Placements
 
+### Without Arrow
+
+Hide the arrow when the card should sit flush with the layout.
+
+:::example WithoutArrow
+
 ## Customization
 
 ### Custom recipe

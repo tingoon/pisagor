@@ -10,6 +10,7 @@ import type {
 } from "@pisagor/props";
 import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
+import { useProviderMessage } from "./provider/provider";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -124,7 +125,7 @@ export const TagsInputItemDeleteTrigger = defineComponent({
   inheritAttrs: false,
   name: "TagsInput.ItemDeleteTrigger",
   props: {
-    "aria-label": { default: "Remove tag", type: String },
+    "aria-label": { default: undefined, type: String },
     class: {
       default: undefined,
       type: [String, Object, Array] as PropType<ClassValue>,
@@ -140,14 +141,17 @@ export const TagsInputItemDeleteTrigger = defineComponent({
         TagsInputPrimitive.ItemDeleteTrigger as ArkPart,
         {
           ...(attrs as object),
-          "aria-label": props["aria-label"],
+          "aria-label":
+            props["aria-label"] ?? useProviderMessage("tagsInput.removeTag"),
           asChild: true,
         },
         () =>
           h(
             InputGroup.Button as ArkPart,
             {
-              "aria-label": props["aria-label"],
+              "aria-label":
+                props["aria-label"] ??
+                useProviderMessage("tagsInput.removeTag"),
               class: slots.delete({
                 class: cn(props.class, (attrs as { class?: ClassValue }).class),
               }),
@@ -305,7 +309,7 @@ export const TagsInputClearTrigger = defineComponent({
   inheritAttrs: false,
   name: "TagsInput.ClearTrigger",
   props: {
-    "aria-label": { default: "Clear all tags", type: String },
+    "aria-label": { default: undefined, type: String },
     class: {
       default: undefined,
       type: [String, Object, Array] as PropType<ClassValue>,
@@ -321,14 +325,17 @@ export const TagsInputClearTrigger = defineComponent({
         TagsInputPrimitive.ClearTrigger as ArkPart,
         {
           ...(attrs as object),
-          "aria-label": props["aria-label"],
+          "aria-label":
+            props["aria-label"] ?? useProviderMessage("tagsInput.clearAllTags"),
           asChild: true,
         },
         () =>
           h(
             InputGroup.Button as ArkPart,
             {
-              "aria-label": props["aria-label"],
+              "aria-label":
+                props["aria-label"] ??
+                useProviderMessage("tagsInput.clearAllTags"),
               class: slots.clearTrigger({
                 class: cn(props.class, (attrs as { class?: ClassValue }).class),
               }),

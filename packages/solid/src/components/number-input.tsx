@@ -16,6 +16,7 @@ import { createSlotRecipeContext } from "../internal/create-slot-recipe-context"
 import { MinusIcon, PlusIcon } from "../internal/icons";
 import { Button } from "./button";
 import { Input, type InputProps } from "./input";
+import { useProviderMessage } from "./provider/provider.context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -78,7 +79,9 @@ export function NumberInputRoot(props: NumberInputProps): JSX.Element {
         get slots() {
           return slots();
         },
-        variants: {},
+        get variants() {
+          return { size: size() } as never;
+        },
       }}
     >
       <NumberInputPrimitive.Root
@@ -119,6 +122,9 @@ export function NumberInputControl(
   const styles = useNumberInput();
   const surfaceVariant = useFormControlSurface();
   const variant = () => local.variant ?? ("primary" as FormControlVariant);
+  const size = () =>
+    (styles.variants as { size?: "sm" | "md" | "lg" } | undefined)?.size ??
+    "md";
 
   return (
     <NumberInputPrimitive.Control
@@ -126,7 +132,7 @@ export function NumberInputControl(
       class={cn(
         styles.slots.control(),
         formControlGroupShellRecipe({
-          size: "md",
+          size: size(),
           surfaceVariant,
           variant: variant(),
         }),
@@ -178,7 +184,7 @@ export function NumberInputDecrementTrigger(
           {...triggerProps({
             class: styles.slots.decrementTrigger({ class: local.class }),
           })}
-          aria-label="Decrement"
+          aria-label={useProviderMessage("numberInput.decrement")}
           variant="ghost"
         >
           <MinusIcon />
@@ -202,7 +208,7 @@ export function NumberInputIncrementTrigger(
           {...triggerProps({
             class: styles.slots.incrementTrigger({ class: local.class }),
           })}
-          aria-label="Increment"
+          aria-label={useProviderMessage("numberInput.increment")}
           variant="ghost"
         >
           <PlusIcon />

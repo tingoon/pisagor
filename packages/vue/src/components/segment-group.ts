@@ -4,6 +4,7 @@ import { segmentGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 
 // #region Context
 const {
@@ -76,7 +77,7 @@ export const SegmentGroupRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     defaultValue: {
       default: undefined,
@@ -130,7 +131,7 @@ export const SegmentGroupItem = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     disabled: { default: undefined, type: Boolean },
     text: {
@@ -178,7 +179,7 @@ export const SegmentGroupShorthand = defineComponent({
     ...({
       class: {
         default: undefined,
-        type: [String, Object, Array] as PropType<unknown>,
+        type: [String, Object, Array] as PropType<ClassValue>,
       },
       defaultValue: {
         default: undefined,

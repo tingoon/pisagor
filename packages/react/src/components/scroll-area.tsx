@@ -75,7 +75,7 @@ export interface ScrollAreaProps
 // #endregion
 
 // #region Closed
-export function ScrollArea({
+function ScrollAreaShorthand({
   scrollFade,
   children,
   scrollbarProps,
@@ -115,7 +115,7 @@ export function ScrollArea({
 
 // #region Display Names
 ScrollAreaViewport.displayName = "ScrollArea.Viewport";
-ScrollArea.displayName = "ScrollArea";
+ScrollAreaShorthand.displayName = "ScrollArea";
 
 // #endregion
 
@@ -124,3 +124,11 @@ export type {
   ScrollAreaThumbProps,
   ScrollAreaViewportProps,
 } from "@ark-ui/react/scroll-area";
+
+export const ScrollArea = Object.assign(ScrollAreaShorthand, {
+  Corner: ScrollAreaPrimitive.Corner,
+  Root: ScrollAreaRoot,
+  Scrollbar: ScrollAreaScrollbar,
+  Thumb: ScrollAreaThumb,
+  Viewport: ScrollAreaViewport,
+});

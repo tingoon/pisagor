@@ -86,6 +86,10 @@ export const Default = meta.story({
   render: Examples.Default,
 });
 
+export const Sizes = meta.story({
+  render: Examples.Sizes,
+});
+
 export const Multiple = meta.story({
   render: Examples.Multiple,
 });

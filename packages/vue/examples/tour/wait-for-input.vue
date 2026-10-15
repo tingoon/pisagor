@@ -1,7 +1,17 @@
 <script lang="ts" setup>
-import { Button, Checkbox, Field, Input, Tour } from "@pisagor/vue";
+import { waitForEvent } from "@ark-ui/vue/tour";
+import {
+  Button,
+  Checkbox,
+  Field,
+  Input,
+  Tour,
+  type TourStepType,
+} from "@pisagor/vue";
 
-const steps = [
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const steps: TourStepType[] = [
   {
     actions: [{ action: "next", label: "Start" }],
     description:

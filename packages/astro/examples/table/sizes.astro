@@ -1,0 +1,27 @@
+---
+import { Table } from "@pisagor/astro";
+import { workspaceUsers } from "./helpers";
+
+const sizes = ["sm", "md", "lg"] as const;
+---
+
+<div class="flex flex-col gap-4">
+  {sizes.map((size) => (
+    <Table size={size}>
+      <Table.Header>
+        <Table.Row>
+          <Table.Head size={size}>Name</Table.Head>
+          <Table.Head size={size}>Email</Table.Head>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+        {workspaceUsers.slice(0, 2).map((user) => (
+          <Table.Row>
+            <Table.Cell size={size}>{user.name}</Table.Cell>
+            <Table.Cell size={size}>{user.email}</Table.Cell>
+          </Table.Row>
+        ))}
+      </Table.Body>
+    </Table>
+  ))}
+</div>

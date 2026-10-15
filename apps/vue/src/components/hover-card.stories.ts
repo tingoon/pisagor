@@ -43,3 +43,7 @@ export const Placements = meta.story({
 export const CustomRecipe = meta.story({
   render: exampleRender(Examples.CustomRecipe),
 });
+
+export const WithoutArrow = meta.story({
+  render: exampleRender(Examples.WithoutArrow),
+});

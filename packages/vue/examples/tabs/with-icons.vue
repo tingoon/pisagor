@@ -6,29 +6,26 @@ import { h } from "vue";
 const items = [
   {
     content: "Profile content",
-    label: () =>
-      h("span", { class: "inline-flex items-center gap-1.5" }, [
-        h(PhUser),
-        " Profile",
-      ]),
+    label: h("span", { class: "inline-flex items-center gap-1.5" }, [
+      h(PhUser),
+      " Profile",
+    ]),
     value: "tab-1",
   },
   {
     content: "Security content",
-    label: () =>
-      h("span", { class: "inline-flex items-center gap-1.5" }, [
-        h(PhShield),
-        " Security",
-      ]),
+    label: h("span", { class: "inline-flex items-center gap-1.5" }, [
+      h(PhShield),
+      " Security",
+    ]),
     value: "tab-2",
   },
   {
     content: "Settings content",
-    label: () =>
-      h("span", { class: "inline-flex items-center gap-1.5" }, [
-        h(PhGear),
-        " Settings",
-      ]),
+    label: h("span", { class: "inline-flex items-center gap-1.5" }, [
+      h(PhGear),
+      " Settings",
+    ]),
     value: "tab-3",
   },
 ];

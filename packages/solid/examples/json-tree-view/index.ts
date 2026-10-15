@@ -1,3 +1,4 @@
+export * from "./compound";
 export * from "./custom-recipe";
 export * from "./data-types";
 export * from "./default";

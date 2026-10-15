@@ -10,6 +10,7 @@ import {
   type VNodeChild,
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
 import { Toggle } from "./toggle";
 
@@ -70,7 +71,7 @@ export const ToggleGroupRoot = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     defaultValue: {
       default: undefined,
@@ -159,7 +160,7 @@ export const ToggleGroupItem = defineComponent({
   props: {
     class: {
       default: undefined,
-      type: [String, Object, Array] as PropType<unknown>,
+      type: [String, Object, Array] as PropType<ClassValue>,
     },
     disabled: { default: undefined, type: Boolean },
     value: { required: true, type: String },

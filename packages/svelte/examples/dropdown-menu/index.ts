@@ -3,6 +3,7 @@ export { default as Default } from "./default.svelte";
 export { default as Destructive } from "./destructive.svelte";
 export { default as GroupLabel } from "./group-label.svelte";
 export { default as Icons } from "./icons.svelte";
+export { default as ItemIndicator } from "./item-indicator.svelte";
 export { default as Link } from "./link.svelte";
 export { default as Nested } from "./nested.svelte";
 export { default as Placements } from "./placements.svelte";

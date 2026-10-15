@@ -4,6 +4,7 @@ export { default as CustomRecipe } from "./custom-recipe.vue";
 export { default as Default } from "./default.vue";
 export { default as Disabled } from "./disabled.vue";
 export { default as DisabledItem } from "./disabled-item.vue";
+export { default as Empty } from "./empty.vue";
 export { default as Grid } from "./grid.vue";
 export { default as Grouping } from "./grouping.vue";
 export { default as Horizontal } from "./horizontal.vue";

@@ -51,7 +51,11 @@ const columns = useColumns();
 </script>
 
 <template>
-  <DataTable :columns="columns" :data="[]" :get-row-id="(row) => row.id">
+  <DataTable
+    :columns="columns"
+    :data="[]"
+    :get-row-id="(row: { id: string }) => row.id"
+  >
     <DataTable.Toolbar>
       <p class="text-muted-foreground text-sm">
         No members match the current filters.

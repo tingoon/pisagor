@@ -41,6 +41,10 @@ export const InputChannel = meta.story({
   render: Examples.InputChannel,
 });
 
+export const LabelFormatSelect = meta.story({
+  render: Examples.LabelFormatSelect,
+});
+
 export const InputCompact = meta.story({
   render: Examples.InputCompact,
 });

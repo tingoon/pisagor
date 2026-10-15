@@ -30,6 +30,8 @@ export function EdgeHandle() {
           <Resizable.EdgeHandle
             handlePosition="top"
             label="Resize panel"
+            maxWidth={400}
+            minWidth={120}
             onResizeChange={setWidth}
             onWidthChange={setWidth}
             placement="start"

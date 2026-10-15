@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Button, type ButtonProps } from "../button";
+import { getMessage, type MessageKey } from "../provider/provider.context";
 import { Swap } from "../swap";
 import type { AppShellPlacement } from "./app-shell.context";
 import { useAppShell } from "./app-shell.context";
@@ -36,7 +37,9 @@ export function AppShellSideTrigger({
   return (
     <Button
       {...rest}
-      aria-label={ariaLabel ?? `Toggle ${placement} region`}
+      aria-label={
+        ariaLabel ?? getMessage(`appShell.toggle.${placement}` as MessageKey)
+      }
       aria-pressed={open}
       className={slots.inline({ className })}
       data-placement={placement}

@@ -8,12 +8,15 @@ import {
   type TextareaRecipeSlot,
   textareaRecipe,
 } from "@pisagor/recipes";
-
 import { cn } from "@pisagor/utils";
 import type { ChangeEventHandler, ReactNode, RefAttributes } from "react";
 import { useClearableInput } from "../hooks";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type {
+  FormControlVariant,
+  SizeScaleProps,
+  VariantClassNames,
+} from "../internal/types";
 import { Input } from "./input";
 import {
   InputGroupAddon,
@@ -30,7 +33,6 @@ const { Context: TextareaStylesContext, useStyles: useTextarea } =
 // #endregion
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 type TextareaClassNames = VariantClassNames<TextareaRecipeSlot>;
 
@@ -42,7 +44,10 @@ type TextareaRootProps = FieldTextareaProps &
     variant?: FormControlVariant;
   };
 
-export interface TextareaProps extends TextareaRootProps, BaseTextareaProps {
+export interface TextareaProps
+  extends TextareaRootProps,
+    BaseTextareaProps,
+    SizeScaleProps {
   /**
    * Whether to show a clear button when the textarea has a value.
    *
@@ -59,8 +64,9 @@ export interface TextareaProps extends TextareaRootProps, BaseTextareaProps {
 // #region Parts
 function TextareaProvider({
   children,
+  size = "md",
   recipe = textareaRecipe,
-}: {
+}: SizeScaleProps & {
   children: ReactNode;
   /**
    * Style recipe. Defaults to `textareaRecipe` from `@pisagor/recipes/textarea`.
@@ -69,7 +75,7 @@ function TextareaProvider({
    */
   recipe?: typeof textareaRecipe;
 }) {
-  const slots = recipe();
+  const slots = recipe({ size });
 
   return (
     <TextareaStylesContext value={{ slots, variants: {} as never }}>
@@ -160,6 +166,7 @@ function TextareaClearAddon({ onClear }: { onClear: () => void }) {
 
 // #region Closed
 export function Textarea({
+  size = "md",
   variant: variantProp,
   clearable = false,
   defaultValue,
@@ -198,7 +205,7 @@ export function Textarea({
       : handleChange;
 
   return (
-    <TextareaProvider recipe={recipe}>
+    <TextareaProvider recipe={recipe} size={size}>
       {skipClearable ? (
         <TextareaField
           {...rest}

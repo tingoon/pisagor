@@ -4,18 +4,24 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/kbd` (native HTML attributes omitted). */
 export const kbdProps: PropRow[] = [
   {
-    defaultValue: "`default`",
-    description: "Visual emphasis.",
-    name: "variant",
-    type: '"default" | "outline" | undefined',
+    name: "size",
+    type: "\"lg\" | \"md\" | \"sm\" | undefined",
+    defaultValue: "`md`",
+    description: "Size scale.",
   },
   {
-    defaultValue: "kbdRecipe",
-    description: "Style recipe override.",
+    name: "variant",
+    type: "\"default\" | \"outline\" | undefined",
+    defaultValue: "`default`",
+    description: "Visual emphasis.",
+  },
+  {
     name: "recipe",
     type: "KbdRecipeFn | undefined",
-  },
+    defaultValue: "kbdRecipe",
+    description: "Style recipe override.",
+  }
 ];

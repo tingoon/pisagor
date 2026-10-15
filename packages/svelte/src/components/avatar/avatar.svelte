@@ -6,6 +6,7 @@ import type {
 } from "@ark-ui/svelte/avatar";
 import type { AvatarProps as BaseAvatarProps } from "@pisagor/props";
 import type { AvatarRecipeSlot } from "@pisagor/recipes";
+import { getInitials } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import type { VariantClassNames } from "../../internal/types";
 import AvatarFallback from "./avatar-fallback.svelte";
@@ -23,24 +24,36 @@ type Props = Omit<AvatarRootProps, "children"> & {
   fallbackProps?: Omit<AvatarFallbackProps, "children" | "class">;
   /** Extra props forwarded to the avatar image element */
   imageProps?: Omit<AvatarImageProps, "alt" | "class" | "src">;
+  /** Person name; used as default alt text and to derive initials when no fallback is given */
+  name?: string;
   /** Renders the avatar image with the provided src */
   src?: string;
 } & BaseAvatarProps;
 
 let {
   alt,
-  fallback,
+  name,
+  fallback: fallbackProp,
   fallbackProps,
   imageProps,
   src,
   classNames,
   ...rest
 }: Props = $props();
+
+const fallback = $derived(
+  fallbackProp === undefined && name ? getInitials(name) : fallbackProp,
+);
 </script>
 
 <AvatarRoot {...rest}>
   {#if src}
-    <AvatarImage {...imageProps} {alt} class={classNames?.image} {src} />
+    <AvatarImage
+      {...imageProps}
+      alt={alt ?? name}
+      class={classNames?.image}
+      {src}
+    />
   {/if}
   {#if fallback !== undefined}
     <AvatarFallback {...fallbackProps} class={classNames?.fallback}>

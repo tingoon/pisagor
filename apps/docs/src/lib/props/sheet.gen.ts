@@ -4,24 +4,24 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/sheet` (native HTML attributes omitted). */
 export const sheetProps: PropRow[] = [
   {
+    name: "placement",
+    type: "\"bottom\" | \"left\" | \"right\" | \"top\" | undefined",
     defaultValue: "`right`",
     description: "Preferred placement.",
-    name: "placement",
-    type: '"bottom" | "left" | "right" | "top" | undefined',
   },
   {
+    name: "variant",
+    type: "\"default\" | \"inset\" | undefined",
     defaultValue: "`default`",
     description: "Visual emphasis.",
-    name: "variant",
-    type: '"default" | "inset" | undefined',
   },
   {
-    defaultValue: "sheetRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "SheetRecipeFn | undefined",
-  },
+    defaultValue: "sheetRecipe",
+    description: "Style recipe override.",
+  }
 ];

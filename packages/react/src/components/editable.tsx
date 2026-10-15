@@ -9,9 +9,9 @@ import type {
 import { Editable as EditablePrimitive } from "@ark-ui/react/editable";
 import type { EditableProps as BaseEditableProps } from "@pisagor/props";
 import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
-
 import { cn } from "@pisagor/utils";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { FormControlVariant } from "../internal/types";
 import type { ButtonProps } from "./button";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -27,7 +27,6 @@ const {
 // #endregion
 
 // #region Types
-type FormControlVariant = "primary" | "secondary";
 
 export type EditableRootProps = Omit<
   EditablePrimitiveRootProps,

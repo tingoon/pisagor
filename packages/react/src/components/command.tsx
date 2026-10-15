@@ -1,4 +1,8 @@
-import type { CollectionItem } from "@ark-ui/react/collection";
+import {
+  type CollectionItem,
+  useListCollection,
+} from "@ark-ui/react/collection";
+import { useFilter } from "@ark-ui/react/locale";
 import { Portal } from "@ark-ui/react/portal";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import type {
@@ -6,7 +10,7 @@ import type {
   CommandProps as BaseCommandProps,
 } from "@pisagor/props";
 import { commandRecipe } from "@pisagor/recipes";
-import type { ComponentProps } from "react";
+import { type ComponentProps, Fragment, type ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type {
   ComboboxContentProps,
@@ -22,10 +26,12 @@ import { Combobox } from "./combobox";
 import {
   Dialog,
   type DialogContentProps,
+  type DialogRootProps,
   type DialogTriggerProps,
 } from "./dialog";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
+import { getMessage } from "./provider/provider.context";
 import { Separator } from "./separator";
 
 // #region Context
@@ -79,10 +85,35 @@ export type CommandSeparatorProps = ComponentProps<"div">;
 export type CommandShortcutProps = ComponentProps<"span">;
 
 export type CommandFooterProps = ComponentProps<"div">;
+
+export interface CommandShorthandItem {
+  /** Optional group heading. */
+  group?: string;
+  /** Leading icon. */
+  icon?: ReactNode;
+  /** Visible label, also used for filtering. */
+  label: string;
+  /** Keyboard shortcut hint. */
+  shortcut?: string;
+  /** Unique value. */
+  value: string;
+}
+
+export interface CommandShorthandProps
+  extends Omit<CommandProps<CommandShorthandItem>, "collection" | "children"> {
+  /** Text shown when nothing matches. */
+  emptyText?: ReactNode;
+  /** Items to render; filtering and grouping are handled for you. */
+  items: CommandShorthandItem[];
+  /** Input placeholder. */
+  placeholder?: string;
+}
 // #endregion
 
 // #region Parts
-export const CommandDialog = Dialog.Root;
+export function CommandDialog(props: DialogRootProps) {
+  return <Dialog.Root {...props} />;
+}
 
 export function CommandDialogTrigger(props: DialogTriggerProps) {
   return <Dialog.Trigger {...props} />;
@@ -91,8 +122,8 @@ export function CommandDialogTrigger(props: DialogTriggerProps) {
 export function CommandDialogContent({
   size = "lg",
   children,
-  description = "Search for a command to run...",
-  title = "Command Palette",
+  description = getMessage("command.description"),
+  title = getMessage("command.title"),
   recipe = commandRecipe,
   className,
   ...rest
@@ -164,12 +195,12 @@ export function CommandInput({ size, className, ...rest }: CommandInputProps) {
 
   return (
     <Combobox.Control className={slots.control()}>
-      <InputGroup {...rest} className={slots.input({ className })} size={size}>
+      <InputGroup className={slots.input({ className })} size={size}>
         <InputGroup.Addon>
           <MagnifyingGlassIcon aria-hidden className={slots.inputIcon()} />
         </InputGroup.Addon>
         <Combobox.FieldInput asChild>
-          <InputGroup.Input autoFocus />
+          <InputGroup.Input autoFocus {...rest} />
         </Combobox.FieldInput>
       </InputGroup>
     </Combobox.Control>
@@ -195,7 +226,7 @@ export function CommandEmpty({
 
   return (
     <Combobox.Empty {...rest} className={slots.empty({ className })}>
-      {children || "No results found. Try a different search."}
+      {children || getMessage("command.empty")}
     </Combobox.Empty>
   );
 }
@@ -274,6 +305,68 @@ CommandShortcut.displayName = "Command.Shortcut";
 CommandFooter.displayName = "Command.Footer";
 // #endregion
 
+// #region Shorthand
+export function CommandShorthand({
+  emptyText,
+  items,
+  placeholder,
+  onInputValueChange,
+  ...rest
+}: CommandShorthandProps) {
+  const { contains } = useFilter({ sensitivity: "base" });
+  const { collection, filter } = useListCollection({
+    filter: contains,
+    groupBy: (item) => item.group ?? "",
+    initialItems: items,
+    itemToString: (item) => item.label,
+    itemToValue: (item) => item.value,
+  });
+  const groups = collection.group();
+
+  return (
+    <CommandRoot
+      {...rest}
+      collection={collection}
+      onInputValueChange={(details) => {
+        filter(details.inputValue);
+        onInputValueChange?.(details);
+      }}
+    >
+      <CommandInput
+        placeholder={placeholder ?? getMessage("command.placeholder")}
+      />
+      <CommandContent>
+        <CommandEmpty>{emptyText}</CommandEmpty>
+        <CommandList>
+          {groups.map(([group, groupItems], index) => {
+            const content = groupItems.map((item) => (
+              <CommandItem item={item} key={item.value}>
+                {item.icon}
+                {item.label}
+                {item.shortcut && (
+                  <CommandShortcut>{item.shortcut}</CommandShortcut>
+                )}
+              </CommandItem>
+            ));
+
+            return group ? (
+              <CommandItemGroup heading={group} key={group}>
+                {content}
+                {index < groups.length - 1 && <CommandSeparator />}
+              </CommandItemGroup>
+            ) : (
+              <Fragment key="ungrouped">{content}</Fragment>
+            );
+          })}
+        </CommandList>
+      </CommandContent>
+    </CommandRoot>
+  );
+}
+
+CommandShorthand.displayName = "Command.Shorthand";
+// #endregion
+
 export const Command = Object.assign(CommandRoot, {
   Content: CommandContent,
   Dialog: CommandDialog,
@@ -288,4 +381,5 @@ export const Command = Object.assign(CommandRoot, {
   List: CommandList,
   Separator: CommandSeparator,
   Shortcut: CommandShortcut,
+  Shorthand: CommandShorthand,
 });

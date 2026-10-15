@@ -4,6 +4,7 @@ import defaultRaw from "./default.tsx?raw";
 import disabledRaw from "./disabled.tsx?raw";
 import placementsRaw from "./placements.tsx?raw";
 import triggers_delaysRaw from "./triggers-delays.tsx?raw";
+import without_arrowRaw from "./without-arrow.tsx?raw";
 
 export const imports = `import { HoverCard } from "@pisagor/solid";`;
 
@@ -14,4 +15,5 @@ export const sources = {
   Disabled: disabledRaw,
   Placements: placementsRaw,
   TriggersDelays: triggers_delaysRaw,
+  WithoutArrow: without_arrowRaw,
 } as const;

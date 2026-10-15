@@ -1,8 +1,13 @@
 <script lang="ts">
-import type { ComponentProps } from "svelte";
-import DropdownMenuRoot from "./dropdown-menu-root.svelte";
+import { Menu as MenuPrimitive, type MenuRootProps } from "@ark-ui/svelte/menu";
 
-let props: ComponentProps<typeof DropdownMenuRoot> = $props();
+let {
+  positioning = { placement: "right-start" },
+  children,
+  ...rest
+}: MenuRootProps = $props();
 </script>
 
-<DropdownMenuRoot {...props} />
+<MenuPrimitive.Root {...rest} {positioning}>
+  {@render children?.()}
+</MenuPrimitive.Root>
