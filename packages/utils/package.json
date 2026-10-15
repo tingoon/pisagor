@@ -14,6 +14,11 @@
   "files": [
     "skills",
     "src/cn.ts",
+    "src/initials.ts",
+    "src/roving-focus.ts",
+    "src/data-grid.ts",
+    "src/navigation-menu.ts",
+    "src/messages.ts",
     "src/index.ts"
   ],
   "homepage": "https://github.com/tingoon/pisagor#readme",
