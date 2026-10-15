@@ -18,6 +18,12 @@ Choose tab emphasis to match the surface.
 
 :::example Variants
 
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+:::example Sizes
+
 ### Orientation Horizontal
 
 Lay tabs in a row for the common panel switcher.
@@ -29,6 +35,12 @@ Lay tabs in a row for the common panel switcher.
 Stack tabs vertically when the layout favors a side rail.
 
 :::example OrientationVertical
+
+### Without Indicator
+
+Hide the moving indicator when triggers style the active state on their own.
+
+:::example WithoutIndicator
 
 ### With Icons
 

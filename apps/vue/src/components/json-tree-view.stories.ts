@@ -40,3 +40,7 @@ export const MapSet = meta.story({
 export const CustomRecipe = meta.story({
   render: exampleRender(Examples.CustomRecipe),
 });
+
+export const Compound = meta.story({
+  render: exampleRender(Examples.Compound),
+});

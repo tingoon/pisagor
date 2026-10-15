@@ -32,12 +32,20 @@ export const Variants = meta.story({
   render: Examples.Variants,
 });
 
+export const Sizes = meta.story({
+  render: Examples.Sizes,
+});
+
 export const OrientationHorizontal = meta.story({
   render: Examples.OrientationHorizontal,
 });
 
 export const OrientationVertical = meta.story({
   render: Examples.OrientationVertical,
+});
+
+export const WithoutIndicator = meta.story({
+  render: Examples.WithoutIndicator,
 });
 
 export const WithIcons = meta.story({

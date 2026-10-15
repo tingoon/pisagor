@@ -32,6 +32,10 @@ export const WithIcon = meta.story({
   render: Examples.WithIcon,
 });
 
+export const WithoutIcon = meta.story({
+  render: Examples.WithoutIcon,
+});
+
 export const WithAction = meta.story({
   render: Examples.WithAction,
 });

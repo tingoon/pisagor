@@ -4,24 +4,30 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/switch` (native HTML attributes omitted). */
 export const switchProps: PropRow[] = [
   {
-    defaultValue: "undefined",
-    description: "Surface variant.",
+    name: "size",
+    type: "\"lg\" | \"md\" | \"sm\" | undefined",
+    defaultValue: "`md`",
+    description: "Size scale.",
+  },
+  {
     name: "surfaceVariant",
     type: "unknown",
+    defaultValue: "undefined",
+    description: "Surface variant.",
   },
   {
+    name: "variant",
+    type: "\"primary\" | \"secondary\" | undefined",
     defaultValue: "`primary`",
     description: "Visual emphasis.",
-    name: "variant",
-    type: '"primary" | "secondary" | undefined',
   },
   {
-    defaultValue: "switchRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "SwitchRecipeFn | undefined",
-  },
+    defaultValue: "switchRecipe",
+    description: "Style recipe override.",
+  }
 ];

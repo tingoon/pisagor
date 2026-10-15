@@ -36,6 +36,12 @@ Fall back to initials or an icon when no photo is available.
 
 :::example Fallbacks
 
+### Initials
+
+Pass `name` to derive initials when no `fallback` is set. The name is also used as the image alt text.
+
+:::example Initials
+
 ### Group
 
 Overlap several avatars in a row for shared ownership or participants.

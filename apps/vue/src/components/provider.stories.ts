@@ -22,3 +22,7 @@ export const Playground = meta.story({
 export const Default = meta.story({
   render: exampleRender(Examples.Default),
 });
+
+export const Messages = meta.story({
+  render: exampleRender(Examples.Messages),
+});

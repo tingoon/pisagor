@@ -36,6 +36,10 @@ export const Nested = meta.story({
   render: Examples.Nested,
 });
 
+export const Compound = meta.story({
+  render: Examples.Compound,
+});
+
 export const ScrollFade = meta.story({
   render: Examples.ScrollFade,
 });

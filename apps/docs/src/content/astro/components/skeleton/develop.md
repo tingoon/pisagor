@@ -12,6 +12,12 @@ Pulse placeholders while content loads.
 
 :::example Default
 
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+:::example Sizes
+
 ### Skeleton Text
 
 Approximate lines of text so reading layout stays stable.

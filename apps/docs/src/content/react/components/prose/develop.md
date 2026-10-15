@@ -74,7 +74,7 @@ Style the deepest heading level supported in prose.
 
 ### Html
 
-Render rich HTML through the prose styles.
+Render rich HTML through the prose styles. Pass `sanitize` (for example DOMPurify's `sanitize`) when the HTML comes from users; it runs before the markup is injected.
 
 :::example Html
 

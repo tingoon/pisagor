@@ -4,18 +4,18 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/toggle-group` (native HTML attributes omitted). */
 export const toggleGroupProps: PropRow[] = [
   {
+    name: "orientation",
+    type: "\"horizontal\" | \"vertical\" | undefined",
     defaultValue: "`horizontal`",
     description: "Layout orientation.",
-    name: "orientation",
-    type: '"horizontal" | "vertical" | undefined',
   },
   {
-    defaultValue: "toggleGroupRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "ToggleGroupRecipeFn | undefined",
-  },
+    defaultValue: "toggleGroupRecipe",
+    description: "Style recipe override.",
+  }
 ];

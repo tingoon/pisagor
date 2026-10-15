@@ -25,6 +25,12 @@ Embed content inside consistent framed chrome.
 
 :::example Default
 
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+:::example Sizes
+
 ### Separated Panels
 
 Show multiple framed regions when the workspace splits embeds.

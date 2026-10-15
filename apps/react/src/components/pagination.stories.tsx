@@ -35,6 +35,10 @@ export const Links = meta.story({
   render: Examples.Links,
 });
 
+export const LinkUrls = meta.story({
+  render: Examples.LinkUrls,
+});
+
 export const CustomComposition = meta.story({
   render: Examples.CustomComposition,
 });

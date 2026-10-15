@@ -1,6 +1,8 @@
 ---
+import RedirectPage from "#/components/docs/redirect-page.astro";
 import { withDocsBase } from "#/lib/nav";
 
-return Astro.redirect(withDocsBase("/react/blocks/app-shell"), 301);
+const redirectTo = withDocsBase("/react/blocks/app-shell");
 ---
 
+<RedirectPage to={redirectTo} />

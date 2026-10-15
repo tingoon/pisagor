@@ -24,6 +24,10 @@ export const Default = meta.story({
   render: Examples.Default,
 });
 
+export const Sizes = meta.story({
+  render: Examples.Sizes,
+});
+
 export const Count = meta.story({
   render: Examples.Count,
 });
@@ -38,6 +42,10 @@ export const CustomIcon = meta.story({
 
 export const Testimonial = meta.story({
   render: Examples.Testimonial,
+});
+
+export const Compound = meta.story({
+  render: Examples.Compound,
 });
 
 export const Controlled = meta.story({

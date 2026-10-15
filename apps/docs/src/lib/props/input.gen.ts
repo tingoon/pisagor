@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/input` (native HTML attributes omitted). */
 export const inputProps: PropRow[] = [
   {
-    defaultValue: "inputRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "InputRecipeFn | undefined",
-  },
+    defaultValue: "inputRecipe",
+    description: "Style recipe override.",
+  }
 ];

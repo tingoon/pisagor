@@ -4,18 +4,18 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/stat` (native HTML attributes omitted). */
 export const statProps: PropRow[] = [
   {
+    name: "variant",
+    type: "\"default\" | \"muted\" | \"outline\" | undefined",
     defaultValue: "`outline`",
     description: "Visual emphasis.",
-    name: "variant",
-    type: '"default" | "muted" | "outline" | undefined',
   },
   {
-    defaultValue: "statRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "StatRecipeFn | undefined",
-  },
+    defaultValue: "statRecipe",
+    description: "Style recipe override.",
+  }
 ];

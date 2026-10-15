@@ -24,6 +24,12 @@ Set autocomplete attributes so browsers can fill credentials safely.
 
 :::example Autocomplete
 
+### Compound
+
+Compose `PasswordInput.Root`, `Control`, `Input` and `VisibilityTrigger` for custom layouts.
+
+:::example Compound
+
 ### Controlled Visibility
 
 Drive show-hide state from the parent when visibility is coordinated elsewhere.

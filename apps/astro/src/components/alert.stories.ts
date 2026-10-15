@@ -46,3 +46,7 @@ export const CustomColor = meta.story({
 export const CustomRecipe = meta.story({
   render: () => ({ component: Examples.CustomRecipe }),
 });
+
+export const WithoutIcon = meta.story({
+  render: () => ({ component: Examples.WithoutIcon }),
+});

@@ -18,6 +18,12 @@ Reinforce meaning with an icon that matches the alert status.
 
 :::example WithIcon
 
+### Without Icon
+
+Status variants (info, success, warning, destructive) render a default icon. Pass `icon={null}` to hide it.
+
+:::example WithoutIcon
+
 ### With Action
 
 Add a follow-up action when the message should lead somewhere, such as Undo or View details.

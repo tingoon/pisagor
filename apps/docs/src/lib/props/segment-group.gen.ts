@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/segment-group` (native HTML attributes omitted). */
 export const segmentGroupProps: PropRow[] = [
   {
-    defaultValue: "segmentGroupRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "SegmentGroupRecipeFn | undefined",
-  },
+    defaultValue: "segmentGroupRecipe",
+    description: "Style recipe override.",
+  }
 ];

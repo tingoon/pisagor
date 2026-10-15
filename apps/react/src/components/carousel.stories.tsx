@@ -60,6 +60,10 @@ export const Autoplay = meta.story({
   render: Examples.Autoplay,
 });
 
+export const AutoplayControls = meta.story({
+  render: Examples.AutoplayControls,
+});
+
 export const Loop = meta.story({
   render: Examples.Loop,
 });

@@ -4,30 +4,30 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/badge` (native HTML attributes omitted). */
 export const badgeProps: PropRow[] = [
   {
+    name: "pill",
+    type: "\"true\" | \"sm\" | undefined",
     defaultValue: "`false`",
     description: "Fully rounded corners.",
-    name: "pill",
-    type: '"true" | "sm" | undefined',
   },
   {
+    name: "size",
+    type: "\"lg\" | \"md\" | \"sm\" | undefined",
     defaultValue: "`md`",
     description: "Control size.",
-    name: "size",
-    type: '"lg" | "md" | "sm" | undefined',
   },
   {
+    name: "variant",
+    type: "\"default\" | \"focus-visible\" | \"focus-visible\" | \"dark\" | \"focus-visible\" | \"hover\" | \"destructive\" | \"dark\" | \"focus-visible\" | \"focus-visible\" | \"dark\" | \"focus-visible\" | \"hover\" | \"info\" | \"focus-visible\" | \"focus-visible\" | \"hover\" | \"outline\" | \"hover\" | \"hover\" | \"secondary\" | \"focus-visible\" | \"focus-visible\" | \"hover\" | \"success\" | \"focus-visible\" | \"focus-visible\" | \"hover\" | \"warning\" | \"focus-visible\" | \"focus-visible\" | \"dark\" | \"focus-visible\" | \"hover\" | undefined",
     defaultValue: "`default`",
     description: "Visual emphasis.",
-    name: "variant",
-    type: '"default" | "focus-visible" | "focus-visible" | "dark" | "focus-visible" | "hover" | "destructive" | "dark" | "focus-visible" | "focus-visible" | "dark" | "focus-visible" | "hover" | "info" | "focus-visible" | "focus-visible" | "hover" | "outline" | "hover" | "hover" | "secondary" | "focus-visible" | "focus-visible" | "hover" | "success" | "focus-visible" | "focus-visible" | "hover" | "warning" | "focus-visible" | "focus-visible" | "dark" | "focus-visible" | "hover" | undefined',
   },
   {
-    defaultValue: "badgeRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "BadgeRecipeFn | undefined",
-  },
+    defaultValue: "badgeRecipe",
+    description: "Style recipe override.",
+  }
 ];

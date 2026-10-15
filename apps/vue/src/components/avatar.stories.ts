@@ -40,6 +40,10 @@ export const Fallbacks = meta.story({
   render: exampleRender(Examples.Fallbacks),
 });
 
+export const Initials = meta.story({
+  render: exampleRender(Examples.Initials),
+});
+
 export const Group = meta.story({
   render: exampleRender(Examples.Group),
 });

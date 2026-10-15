@@ -66,6 +66,12 @@ Advance slides automatically when the carousel is ambient, not critical reading.
 
 :::example Autoplay
 
+### Autoplay Controls
+
+Use `Carousel.AutoplayTrigger` to pause or resume autoplay and `Carousel.ProgressText` to show the current page.
+
+:::example AutoplayControls
+
 ### Loop
 
 Wrap from last to first when continuous browsing should not stop at the end.

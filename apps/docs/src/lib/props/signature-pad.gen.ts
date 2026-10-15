@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/signature-pad` (native HTML attributes omitted). */
 export const signaturePadProps: PropRow[] = [
   {
-    defaultValue: "signaturePadRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "SignaturePadRecipeFn | undefined",
-  },
+    defaultValue: "signaturePadRecipe",
+    description: "Style recipe override.",
+  }
 ];

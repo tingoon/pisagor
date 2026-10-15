@@ -12,6 +12,12 @@ Choose emphasis to match surrounding inputs.
 
 :::example Variants
 
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+:::example Sizes
+
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this textarea.

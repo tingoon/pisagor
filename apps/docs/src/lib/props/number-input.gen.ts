@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/number-input` (native HTML attributes omitted). */
 export const numberInputProps: PropRow[] = [
   {
-    defaultValue: "numberInputRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "NumberInputRecipeFn | undefined",
-  },
+    defaultValue: "numberInputRecipe",
+    description: "Style recipe override.",
+  }
 ];

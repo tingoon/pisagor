@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/radio-group` (native HTML attributes omitted). */
 export const radioGroupProps: PropRow[] = [
   {
-    defaultValue: "radioGroupRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "RadioGroupRecipeFn | undefined",
-  },
+    defaultValue: "radioGroupRecipe",
+    description: "Style recipe override.",
+  }
 ];

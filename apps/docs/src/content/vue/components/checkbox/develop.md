@@ -12,6 +12,12 @@ A single option users can turn on or off.
 
 :::example Default
 
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+:::example Sizes
+
 ### Variants
 
 Choose visual weight to match surrounding form controls.
@@ -23,6 +29,12 @@ Choose visual weight to match surrounding form controls.
 Group related checkboxes so multi-select options stay together.
 
 :::example CheckboxGroup
+
+### Compound
+
+Compose `Checkbox.Root`, `Checkbox.Control`, `Checkbox.Label` and `Checkbox.HiddenInput` for full control over layout.
+
+:::example Compound
 
 ### Controlled
 

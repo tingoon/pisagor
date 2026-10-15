@@ -58,6 +58,12 @@ Type a single channel value when precision matters more than dragging.
 
 :::example InputChannel
 
+### Label Format Select
+
+Pair `ColorPicker.Label` with `ColorPicker.FormatSelect` and `ColorPicker.ChannelInput`.
+
+:::example LabelFormatSelect
+
 ### Input Compact
 
 Use a compact channel input when space is limited.
@@ -194,7 +200,7 @@ Surface an invalid color value that needs correction.
 
 ### Class names
 
-Pass `className` for a one-off change to a single element.
+Pass `class` for a one-off change to a single element.
 
 Adjust spacing when the picker sits in a denser layout.
 

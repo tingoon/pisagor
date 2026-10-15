@@ -26,6 +26,10 @@ export const Variants = meta.story({
   render: Examples.Variants,
 });
 
+export const Sizes = meta.story({
+  render: Examples.Sizes,
+});
+
 export const DifferentIcon = meta.story({
   render: Examples.DifferentIcon,
 });

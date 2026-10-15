@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/slider` (native HTML attributes omitted). */
 export const sliderProps: PropRow[] = [
   {
-    defaultValue: "sliderRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "SliderRecipeFn | undefined",
-  },
+    defaultValue: "sliderRecipe",
+    description: "Style recipe override.",
+  }
 ];

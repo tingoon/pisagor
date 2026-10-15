@@ -60,6 +60,10 @@ export const ClearTrigger = meta.story({
   render: Examples.ClearTrigger,
 });
 
+export const RejectedFiles = meta.story({
+  render: Examples.RejectedFiles,
+});
+
 export const Disabled = meta.story({
   render: Examples.Disabled,
 });

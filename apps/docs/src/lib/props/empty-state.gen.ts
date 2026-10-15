@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/empty-state` (native HTML attributes omitted). */
 export const emptyStateProps: PropRow[] = [
   {
-    defaultValue: "emptyStateRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "EmptyStateRecipeFn | undefined",
-  },
+    defaultValue: "emptyStateRecipe",
+    description: "Style recipe override.",
+  }
 ];

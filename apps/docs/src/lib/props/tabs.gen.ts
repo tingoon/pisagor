@@ -4,18 +4,24 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/tabs` (native HTML attributes omitted). */
 export const tabsProps: PropRow[] = [
   {
-    defaultValue: "`default`",
-    description: "Visual emphasis.",
-    name: "variant",
-    type: '"default" | "underline" | undefined',
+    name: "size",
+    type: "\"lg\" | \"md\" | \"sm\" | undefined",
+    defaultValue: "`md`",
+    description: "Size scale.",
   },
   {
-    defaultValue: "tabsRecipe",
-    description: "Style recipe override.",
+    name: "variant",
+    type: "\"default\" | \"underline\" | undefined",
+    defaultValue: "`default`",
+    description: "Visual emphasis.",
+  },
+  {
     name: "recipe",
     type: "TabsRecipeFn | undefined",
-  },
+    defaultValue: "tabsRecipe",
+    description: "Style recipe override.",
+  }
 ];

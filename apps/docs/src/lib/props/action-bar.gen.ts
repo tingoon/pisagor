@@ -4,18 +4,18 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/action-bar` (native HTML attributes omitted). */
 export const actionBarProps: PropRow[] = [
   {
+    name: "placement",
+    type: "\"bottom\" | \"bottom-end\" | \"bottom-start\" | undefined",
     defaultValue: "`bottom`",
     description: "Preferred placement.",
-    name: "placement",
-    type: '"bottom" | "bottom-end" | "bottom-start" | undefined',
   },
   {
-    defaultValue: "actionBarRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "ActionBarRecipeFn | undefined",
-  },
+    defaultValue: "actionBarRecipe",
+    description: "Style recipe override.",
+  }
 ];

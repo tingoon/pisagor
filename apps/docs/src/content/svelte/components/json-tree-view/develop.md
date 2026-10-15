@@ -18,6 +18,12 @@ Highlight value types so structure is easier to scan.
 
 :::example DataTypes
 
+### Compound
+
+Compose `JsonTreeView.Root` and `JsonTreeView.Tree` for custom arrows or value rendering.
+
+:::example Compound
+
 ### Expand Depth
 
 Open to a set depth so large payloads do not overwhelm the first view.

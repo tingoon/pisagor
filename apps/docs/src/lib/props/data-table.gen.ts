@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/data-table` (native HTML attributes omitted). */
 export const dataTableProps: PropRow[] = [
   {
-    defaultValue: "dataTableRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "DataTableRecipeFn | undefined",
-  },
+    defaultValue: "dataTableRecipe",
+    description: "Style recipe override.",
+  }
 ];

@@ -41,6 +41,10 @@ export const DataTypes = meta.story({
   render: Examples.DataTypes,
 });
 
+export const Compound = meta.story({
+  render: Examples.Compound,
+});
+
 export const ExpandDepth = meta.story({
   render: Examples.ExpandDepth,
 });

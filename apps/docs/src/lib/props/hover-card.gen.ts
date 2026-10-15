@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/hover-card` (native HTML attributes omitted). */
 export const hoverCardProps: PropRow[] = [
   {
-    defaultValue: "hoverCardRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "HoverCardRecipeFn | undefined",
-  },
+    defaultValue: "hoverCardRecipe",
+    description: "Style recipe override.",
+  }
 ];

@@ -4,30 +4,36 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/surface` (native HTML attributes omitted). */
 export const surfaceProps: PropRow[] = [
   {
-    defaultValue: "`false`",
-    description: "Show border.",
     name: "bordered",
     type: "boolean | undefined",
+    defaultValue: "`false`",
+    description: "Show border.",
   },
   {
-    defaultValue: "`true`",
-    description: "Rounded corners.",
+    name: "padding",
+    type: "\"lg\" | \"md\" | \"none\" | \"sm\" | undefined",
+    defaultValue: "`none`",
+    description: "Inner spacing.",
+  },
+  {
     name: "rounded",
     type: "boolean | undefined",
+    defaultValue: "`true`",
+    description: "Rounded corners.",
   },
   {
+    name: "variant",
+    type: "\"default\" | \"glass\" | \"transparency-reduce\" | \"transparency-reduce\" | \"transparency-reduce\" | \"contrast-more\" | \"contrast-more\" | \"secondary\" | \"tertiary\" | \"transparent\" | undefined",
     defaultValue: "`default`",
     description: "Visual emphasis.",
-    name: "variant",
-    type: '"default" | "glass" | "transparency-reduce" | "transparency-reduce" | "transparency-reduce" | "contrast-more" | "contrast-more" | "secondary" | "tertiary" | "transparent" | undefined',
   },
   {
-    defaultValue: "surfaceRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "SurfaceRecipeFn | undefined",
-  },
+    defaultValue: "surfaceRecipe",
+    description: "Style recipe override.",
+  }
 ];

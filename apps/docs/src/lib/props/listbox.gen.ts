@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/listbox` (native HTML attributes omitted). */
 export const listboxProps: PropRow[] = [
   {
-    defaultValue: "listboxRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "ListboxRecipeFn | undefined",
-  },
+    defaultValue: "listboxRecipe",
+    description: "Style recipe override.",
+  }
 ];

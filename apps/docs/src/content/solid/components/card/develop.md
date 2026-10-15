@@ -22,6 +22,12 @@ A contained surface for related content and actions.
 
 :::example Default
 
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+:::example Sizes
+
 ### Icon
 
 Lead with an icon when the card category should be recognizable at a glance.

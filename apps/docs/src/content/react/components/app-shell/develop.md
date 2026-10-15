@@ -79,3 +79,9 @@ Put the primary workspace content in the main region.
 Fill the content slot with the page body inside the shell.
 
 :::example Content
+
+### Disable Hotkey
+
+AppShell toggles the start panel with `mod+\`. Set `disableHotkey` to turn the shortcut off.
+
+:::example DisableHotkey

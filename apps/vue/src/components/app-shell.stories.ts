@@ -95,3 +95,7 @@ export const Content = meta.story({
   },
   render: exampleRender(Examples.Content),
 });
+
+export const DisableHotkey = meta.story({
+  render: exampleRender(Examples.DisableHotkey),
+});

@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/popover` (native HTML attributes omitted). */
 export const popoverProps: PropRow[] = [
   {
-    defaultValue: "popoverRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "PopoverRecipeFn | undefined",
-  },
+    defaultValue: "popoverRecipe",
+    description: "Style recipe override.",
+  }
 ];

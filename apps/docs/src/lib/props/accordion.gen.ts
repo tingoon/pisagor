@@ -4,39 +4,39 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/accordion` (native HTML attributes omitted). */
 export const accordionProps: PropRow[] = [
   {
-    description: "Shorthand items (Root + Item + Trigger + Content).",
     name: "items",
     type: "AccordionPresetItem[] | undefined",
+    description: "Shorthand items (Root + Item + Trigger + Content).",
   },
   {
-    description: "Uncontrolled open values.",
     name: "defaultValue",
     type: "string[] | undefined",
+    description: "Uncontrolled open values.",
   },
   {
-    description: "Controlled open values.",
     name: "value",
     type: "string[] | undefined",
+    description: "Controlled open values.",
   },
   {
-    defaultValue: "false",
-    description: "Allow more than one item open.",
     name: "multiple",
     type: "boolean | undefined",
+    defaultValue: "false",
+    description: "Allow more than one item open.",
   },
   {
-    defaultValue: "true",
-    description: "Allow closing the open item in single mode.",
     name: "collapsible",
     type: "boolean | undefined",
+    defaultValue: "true",
+    description: "Allow closing the open item in single mode.",
   },
   {
-    defaultValue: "false",
-    description: "Disable the accordion.",
     name: "disabled",
     type: "boolean | undefined",
+    defaultValue: "false",
+    description: "Disable the accordion.",
   },
 ];

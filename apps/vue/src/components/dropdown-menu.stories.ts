@@ -71,3 +71,7 @@ export const Link = meta.story({
 export const Placements = meta.story({
   render: exampleRender(Examples.Placements),
 });
+
+export const ItemIndicator = meta.story({
+  render: exampleRender(Examples.ItemIndicator),
+});

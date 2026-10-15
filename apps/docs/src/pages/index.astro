@@ -1,6 +1,8 @@
 ---
+import RedirectPage from "#/components/docs/redirect-page.astro";
 import { withDocsBase } from "#/lib/nav";
 
-return Astro.redirect(withDocsBase("/react"), 301);
+const redirectTo = withDocsBase("/react");
 ---
 
+<RedirectPage to={redirectTo} />

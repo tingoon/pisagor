@@ -38,7 +38,7 @@ Pin columns so key fields stay visible while scrolling horizontally.
 
 ### Column Resize
 
-Drag column edges when users need wider or narrower fields.
+Drag column edges when users need wider or narrower fields. Resizers are focusable: use the arrow keys to resize and Enter to reset.
 
 :::example ColumnResize
 
@@ -110,7 +110,7 @@ Select rows for bulk actions.
 
 ### Sorting
 
-Sort by column so users can reorder records.
+Sort by column so users can reorder records. Sortable headers expose `aria-sort`.
 
 :::example Sorting
 

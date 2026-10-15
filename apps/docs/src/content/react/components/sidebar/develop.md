@@ -38,3 +38,9 @@ import { Sidebar } from "@pisagor/react";
 Collapsible application navigation with desktop persistence and mobile sheet behavior.
 
 :::example Default
+
+### Disable Hotkey
+
+Sidebar.Provider restores the collapsed state saved in `localStorage` and toggles with `mod+B`. Set `disableHotkey` to turn the shortcut off.
+
+:::example DisableHotkey

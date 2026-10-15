@@ -42,7 +42,7 @@ Emphasize the resize handle when the divider should be easy to grab.
 
 ### Edge Handle
 
-Place handles on edges when that affordance matches the layout.
+Place handles on edges when that affordance matches the layout. The handle is a focusable `separator`: arrow keys resize by `step`, Home/End jump to `minWidth`/`maxWidth`, and Enter or double-click resets the width.
 
 :::example EdgeHandle
 

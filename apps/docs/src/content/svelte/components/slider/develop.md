@@ -36,6 +36,12 @@ Select a start and end value when the task needs a span rather than a single poi
 
 :::example Range
 
+### Compound
+
+Compose the slider from parts for custom headers or thumbs.
+
+:::example Compound
+
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this slider.

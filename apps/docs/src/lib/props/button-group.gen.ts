@@ -4,18 +4,24 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/button-group` (native HTML attributes omitted). */
 export const buttonGroupProps: PropRow[] = [
   {
+    name: "orientation",
+    type: "\"horizontal\" | \"vertical\" | undefined",
     defaultValue: "`horizontal`",
     description: "Layout orientation.",
-    name: "orientation",
-    type: '"horizontal" | "vertical" | undefined',
   },
   {
-    defaultValue: "buttonGroupRecipe",
-    description: "Style recipe override.",
+    name: "size",
+    type: "\"lg\" | \"md\" | \"sm\" | undefined",
+    defaultValue: "`md`",
+    description: "Size scale.",
+  },
+  {
     name: "recipe",
     type: "ButtonGroupRecipeFn | undefined",
-  },
+    defaultValue: "buttonGroupRecipe",
+    description: "Style recipe override.",
+  }
 ];

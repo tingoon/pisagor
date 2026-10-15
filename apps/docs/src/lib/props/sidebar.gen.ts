@@ -4,24 +4,24 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/sidebar` (native HTML attributes omitted). */
 export const sidebarProps: PropRow[] = [
   {
-    defaultValue: "`false`",
-    description: "Include inner padding.",
     name: "padded",
     type: "boolean | undefined",
+    defaultValue: "`false`",
+    description: "Include inner padding.",
   },
   {
+    name: "placement",
+    type: "\"left\" | \"right\" | undefined",
     defaultValue: "`left`",
     description: "Preferred placement.",
-    name: "placement",
-    type: '"left" | "right" | undefined',
   },
   {
-    defaultValue: "sidebarRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "SidebarRecipeFn | undefined",
-  },
+    defaultValue: "sidebarRecipe",
+    description: "Style recipe override.",
+  }
 ];

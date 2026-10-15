@@ -1,4 +1,5 @@
 ---
+import RedirectPage from "#/components/docs/redirect-page.astro";
 import { listComponentIds } from "#/lib/component-doc";
 import { withDocsBase } from "#/lib/nav";
 
@@ -9,6 +10,7 @@ export function getStaticPaths() {
 }
 
 const id = Astro.params.id as string;
-return Astro.redirect(withDocsBase(`/svelte/forms/${id}/develop`), 301);
+const redirectTo = withDocsBase(`/svelte/forms/${id}/develop`);
 ---
 
+<RedirectPage to={redirectTo} />

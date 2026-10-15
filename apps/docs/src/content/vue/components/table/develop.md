@@ -37,6 +37,12 @@ Choose visual weight or emphasis so the table matches importance in the surround
 
 :::example Variants
 
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+:::example Sizes
+
 ### Footer
 
 Add a footer for summaries beneath the rows.

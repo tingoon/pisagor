@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/color-picker` (native HTML attributes omitted). */
 export const colorPickerProps: PropRow[] = [
   {
-    defaultValue: "colorPickerRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "ColorPickerRecipeFn | undefined",
-  },
+    defaultValue: "colorPickerRecipe",
+    description: "Style recipe override.",
+  }
 ];

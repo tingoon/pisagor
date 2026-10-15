@@ -20,7 +20,7 @@ Choose emphasis so the stat matches dashboard hierarchy.
 
 ### With Trend
 
-Show direction of change when trend matters alongside the value.
+Show direction of change when trend matters alongside the value. The trend renders a matching arrow icon and screen-reader text, so direction is not conveyed by color alone. Override it with `icon`, or pass `icon={null}` to hide it.
 
 :::example WithTrend
 

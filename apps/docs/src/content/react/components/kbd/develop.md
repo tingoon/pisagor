@@ -12,6 +12,12 @@ Choose visual weight or emphasis so the keyboard badge matches importance in the
 
 :::example Variants
 
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+:::example Sizes
+
 ### Kbd Group
 
 Group several keys when the shortcut is a chord.

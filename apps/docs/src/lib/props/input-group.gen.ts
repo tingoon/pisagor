@@ -4,18 +4,18 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/input-group` (native HTML attributes omitted). */
 export const inputGroupProps: PropRow[] = [
   {
+    name: "align",
+    type: "\"block-end\" | \"input-group\" | \"block-start\" | \"input-group\" | \"inline-end\" | \"inline-start\" | undefined",
     defaultValue: "`inline-start`",
     description: "Alignment along the cross axis.",
-    name: "align",
-    type: '"block-end" | "input-group" | "block-start" | "input-group" | "inline-end" | "inline-start" | undefined',
   },
   {
-    defaultValue: "inputGroupAddonRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "InputGroupAddonRecipeFn | undefined",
-  },
+    defaultValue: "inputGroupAddonRecipe",
+    description: "Style recipe override.",
+  }
 ];

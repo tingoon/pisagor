@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/progress` (native HTML attributes omitted). */
 export const progressProps: PropRow[] = [
   {
-    defaultValue: "progressRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "ProgressRecipeFn | undefined",
-  },
+    defaultValue: "progressRecipe",
+    description: "Style recipe override.",
+  }
 ];

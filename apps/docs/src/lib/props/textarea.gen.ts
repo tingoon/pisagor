@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/textarea` (native HTML attributes omitted). */
 export const textareaProps: PropRow[] = [
   {
-    defaultValue: "textareaRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "TextareaRecipeFn | undefined",
-  },
+    defaultValue: "textareaRecipe",
+    description: "Style recipe override.",
+  }
 ];

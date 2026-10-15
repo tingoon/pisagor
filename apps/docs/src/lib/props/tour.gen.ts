@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/tour` (native HTML attributes omitted). */
 export const tourProps: PropRow[] = [
   {
-    defaultValue: "tourRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "TourRecipeFn | undefined",
-  },
+    defaultValue: "tourRecipe",
+    description: "Style recipe override.",
+  }
 ];

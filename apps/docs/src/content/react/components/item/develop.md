@@ -30,6 +30,12 @@ Choose emphasis to match list density.
 
 :::example Variants
 
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+:::example Sizes
+
 ### Icon
 
 Lead with an icon when a symbol is enough.

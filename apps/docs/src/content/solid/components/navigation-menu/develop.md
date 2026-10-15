@@ -32,6 +32,12 @@ Allow items to wrap when the viewport is too narrow for a single row.
 
 ## Customization
 
+### Submenu
+
+Group links under a `NavigationMenu.Trigger` (disclosure button) and `NavigationMenu.Content`. Only one submenu is open at a time.
+
+:::example Submenu
+
 ### Custom recipe
 
 Extend `navigationMenuRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.

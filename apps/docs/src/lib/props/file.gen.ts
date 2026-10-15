@@ -4,18 +4,18 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/file` (native HTML attributes omitted). */
 export const fileProps: PropRow[] = [
   {
+    name: "variant",
+    type: "\"icon\" | \"image\" | undefined",
     defaultValue: "`icon`",
     description: "Visual emphasis.",
-    name: "variant",
-    type: '"icon" | "image" | undefined',
   },
   {
-    defaultValue: "fileRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "FileRecipeFn | undefined",
-  },
+    defaultValue: "fileRecipe",
+    description: "Style recipe override.",
+  }
 ];

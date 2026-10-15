@@ -43,3 +43,7 @@ export const Controlled = meta.story({
 export const CustomRecipe = meta.story({
   render: exampleRender(Examples.CustomRecipe),
 });
+
+export const LinkUrls = meta.story({
+  render: exampleRender(Examples.LinkUrls),
+});

@@ -104,3 +104,7 @@ export const Controlled = meta.story({
 export const Disabled = meta.story({
   render: exampleRender(Examples.Disabled),
 });
+
+export const Sizes = meta.story({
+  render: exampleRender(Examples.Sizes),
+});

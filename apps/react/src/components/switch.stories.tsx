@@ -32,6 +32,10 @@ export const Sizes = meta.story({
   render: Examples.Sizes,
 });
 
+export const Compound = meta.story({
+  render: Examples.Compound,
+});
+
 export const Controlled = meta.story({
   render: Examples.Controlled,
 });

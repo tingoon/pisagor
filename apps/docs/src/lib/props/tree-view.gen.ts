@@ -4,12 +4,12 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/tree-view` (native HTML attributes omitted). */
 export const treeViewProps: PropRow[] = [
   {
-    defaultValue: "treeViewRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "TreeViewRecipeFn | undefined",
-  },
+    defaultValue: "treeViewRecipe",
+    description: "Style recipe override.",
+  }
 ];

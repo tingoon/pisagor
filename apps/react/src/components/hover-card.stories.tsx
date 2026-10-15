@@ -40,6 +40,10 @@ export const Placements = meta.story({
   render: Examples.Placements,
 });
 
+export const WithoutArrow = meta.story({
+  render: Examples.WithoutArrow,
+});
+
 export const CustomRecipe = meta.story({
   render: Examples.CustomRecipe,
 });

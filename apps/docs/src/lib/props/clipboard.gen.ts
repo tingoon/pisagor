@@ -4,18 +4,24 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/clipboard` (native HTML attributes omitted). */
 export const clipboardProps: PropRow[] = [
   {
+    name: "size",
+    type: "\"lg\" | \"md\" | \"sm\" | undefined",
     defaultValue: "`md`",
-    description: "Value size.",
-    name: "valueSize",
-    type: '"lg" | "md" | "sm" | "xl" | "xs" | undefined',
+    description: "Size scale.",
   },
   {
-    defaultValue: "clipboardRecipe",
-    description: "Style recipe override.",
+    name: "valueSize",
+    type: "\"lg\" | \"md\" | \"sm\" | \"xl\" | \"xs\" | undefined",
+    defaultValue: "`md`",
+    description: "Value size.",
+  },
+  {
     name: "recipe",
     type: "ClipboardRecipeFn | undefined",
-  },
+    defaultValue: "clipboardRecipe",
+    description: "Style recipe override.",
+  }
 ];

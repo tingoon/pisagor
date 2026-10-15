@@ -4,18 +4,24 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/dialog` (native HTML attributes omitted). */
 export const dialogProps: PropRow[] = [
   {
-    defaultValue: "`md`",
-    description: "Control size.",
-    name: "size",
-    type: '"2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "fullscreen" | "lg" | "md" | "sm" | "xl" | undefined',
+    name: "bottomStickOnMobile",
+    type: "boolean | undefined",
+    defaultValue: "`true`",
+    description: "Stick content to the bottom edge on small viewports.",
   },
   {
-    defaultValue: "dialogRecipe",
-    description: "Style recipe override.",
+    name: "size",
+    type: "\"2xl\" | \"3xl\" | \"4xl\" | \"5xl\" | \"6xl\" | \"fullscreen\" | \"lg\" | \"md\" | \"sm\" | \"xl\" | undefined",
+    defaultValue: "`md`",
+    description: "Control size.",
+  },
+  {
     name: "recipe",
     type: "DialogRecipeFn | undefined",
-  },
+    defaultValue: "dialogRecipe",
+    description: "Style recipe override.",
+  }
 ];

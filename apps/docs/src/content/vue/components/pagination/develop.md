@@ -24,6 +24,12 @@ Render items as links when navigation is the primary action.
 
 :::example Links
 
+### Link URLs
+
+Build each page URL with `getHref` when routes do not use the `?page=` query.
+
+:::example LinkUrls
+
 ### Compound
 
 Compose pagination parts when the shorthand layout is not enough.

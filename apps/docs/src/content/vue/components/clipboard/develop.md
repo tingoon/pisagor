@@ -12,6 +12,12 @@ Choose button emphasis to match surrounding actions.
 
 :::example Variants
 
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+:::example Sizes
+
 ### Different Icon
 
 Swap icons when a different metaphor fits the copied content.

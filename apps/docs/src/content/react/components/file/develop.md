@@ -1,7 +1,7 @@
 ## Import
 
 ```tsx
-import { File } from "@pisagor/react";
+import { FileItem } from "@pisagor/react";
 ```
 
 ## Examples

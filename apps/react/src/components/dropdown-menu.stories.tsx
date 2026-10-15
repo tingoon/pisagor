@@ -52,6 +52,10 @@ export const Destructive = meta.story({
   render: Examples.Destructive,
 });
 
+export const ItemIndicator = meta.story({
+  render: Examples.ItemIndicator,
+});
+
 export const Nested = meta.story({
   render: Examples.Nested,
 });

@@ -4,18 +4,18 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props/phone-input` (native HTML attributes omitted). */
 export const phoneInputProps: PropRow[] = [
   {
+    name: "size",
+    type: "\"lg\" | \"md\" | \"sm\" | undefined",
     defaultValue: "`md`",
     description: "Control size.",
-    name: "size",
-    type: '"lg" | "md" | "sm" | undefined',
   },
   {
-    defaultValue: "phoneInputRecipe",
-    description: "Style recipe override.",
     name: "recipe",
     type: "PhoneInputRecipeFn | undefined",
-  },
+    defaultValue: "phoneInputRecipe",
+    description: "Style recipe override.",
+  }
 ];

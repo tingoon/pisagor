@@ -23,3 +23,7 @@ export const Playground = meta.story({
 export const Default = meta.story({
   render: exampleRender(Examples.Default),
 });
+
+export const Checkboxes = meta.story({
+  render: exampleRender(Examples.Checkboxes),
+});
