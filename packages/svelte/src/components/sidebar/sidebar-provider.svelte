@@ -17,10 +17,16 @@ import { setSidebarContext } from "./sidebar.context";
 type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
   children?: import("svelte").Snippet;
   /**
-   * The default open state of the sidebar.
+   * The default open state of the sidebar. A stored value in `localStorage`
+   * (`sidebar_state`) wins after mount.
    * @defaultValue true
    */
   defaultOpen?: boolean;
+  /**
+   * Whether to disable the `mod+B` toggle hotkey.
+   * @defaultValue false
+   */
+  disableHotkey?: boolean;
   /**
    * The open state of the sidebar.
    */
@@ -34,7 +40,8 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
 
 let {
   defaultOpen = true,
-  open = $bindable(defaultOpen),
+  disableHotkey = false,
+  open = $bindable(),
   onOpenChange,
   recipe = sidebarRecipe,
   class: className,
@@ -43,10 +50,18 @@ let {
   ...rest
 }: Props = $props();
 
+const restoreFromStorage = open === undefined;
+
 let isMobile = $state(false);
 let openMobile = $state(false);
 
 onMount(() => {
+  if (restoreFromStorage && typeof localStorage !== "undefined") {
+    const stored = localStorage.getItem(SIDEBAR_STORAGE_KEY);
+    if (stored === "true" || stored === "false") {
+      open = stored === "true";
+    }
+  }
   const query = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
   const update = () => {
     isMobile = query.matches;
@@ -58,7 +73,7 @@ onMount(() => {
 
 const slots = $derived(recipe());
 const sidebarState = $derived(
-  open ? ("expanded" as const) : ("collapsed" as const),
+  (open ?? defaultOpen) ? ("expanded" as const) : ("collapsed" as const),
 );
 
 function setOpen(value: boolean) {
@@ -77,7 +92,7 @@ function toggleSidebar() {
   if (isMobile) {
     openMobile = !openMobile;
   } else {
-    setOpen(!open);
+    setOpen(!(open ?? defaultOpen));
   }
 }
 
@@ -85,6 +100,7 @@ useHotkey(() => ({
   action: () => {
     toggleSidebar();
   },
+  enabled: !disableHotkey,
   hotkey: "mod+B",
 }));
 
@@ -93,7 +109,7 @@ setSidebarContext({
     return isMobile;
   },
   get open() {
-    return open;
+    return open ?? defaultOpen;
   },
   get openMobile() {
     return openMobile;

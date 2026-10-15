@@ -11,6 +11,7 @@ export { default as InputControlled } from "./input-controlled.svelte";
 export { default as InputWithPopover } from "./input-with-popover.svelte";
 export { default as InputWithSwatchPreview } from "./input-with-swatch-preview.svelte";
 export { default as Invalid } from "./invalid.svelte";
+export { default as LabelFormatSelect } from "./label-format-select.svelte";
 export { default as PopoverDisabled } from "./popover-disabled.svelte";
 export { default as PopoverSlidersOnly } from "./popover-sliders-only.svelte";
 export { default as PopoverWithChannelEditing } from "./popover-with-channel-editing.svelte";

@@ -38,3 +38,4 @@ export function setSliderContext(
     },
   });
 }
+export const useSliderExtras = extrasCtx.getContext;

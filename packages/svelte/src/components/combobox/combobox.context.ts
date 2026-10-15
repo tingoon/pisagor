@@ -24,3 +24,6 @@ const controlCtx = createContext(
 });
 export const setComboboxControlContext = controlCtx.setContext;
 export const useComboboxControl = controlCtx.getContext;
+
+/** Context key: true inside `Combobox.Control`. */
+export const COMBOBOX_INSIDE_CONTROL = Symbol("ComboboxInsideControl");

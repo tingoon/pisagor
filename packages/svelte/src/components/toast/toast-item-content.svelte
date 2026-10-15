@@ -17,8 +17,11 @@ import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import type { VariantClassNames } from "../../internal/types";
 import Button from "../button.svelte";
+import { useMessageResolver } from "../provider/provider.context";
 import Spinner from "../spinner.svelte";
 import { useToastItem } from "./toast.context";
+
+const t = useMessageResolver();
 
 type Props = {
   actionsProps?: Omit<HTMLAttributes<HTMLDivElement>, "class">;
@@ -127,7 +130,7 @@ function isSnippet(value: unknown): value is Snippet {
       )}
         <Button
           {...props({ class: slots.close({ class: classNames?.close }) })}
-          aria-label="Close"
+          aria-label={t("toast.close")}
           size="icon-xs"
           variant="ghost"
         >

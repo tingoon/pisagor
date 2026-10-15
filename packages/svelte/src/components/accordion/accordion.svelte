@@ -14,14 +14,16 @@ type AccordionPresetItem = {
 
 type Props = Omit<AccordionRootProps, "children"> & {
   items?: AccordionPresetItem[];
+  /** Size scale applied to every item. */
+  size?: "sm" | "md" | "lg";
 };
 
-let { items, ...rest }: Props = $props();
+let { items, size, ...rest }: Props = $props();
 </script>
 
 <AccordionRoot {...rest}>
   {#each items ?? [] as item (item.value)}
-    <AccordionItem disabled={item.disabled} value={item.value}>
+    <AccordionItem disabled={item.disabled} {size} value={item.value}>
       <AccordionItemTrigger>{item.title}</AccordionItemTrigger>
       <AccordionItemContent>{item.content}</AccordionItemContent>
     </AccordionItem>

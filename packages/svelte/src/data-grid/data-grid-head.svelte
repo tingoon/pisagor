@@ -1,5 +1,5 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
+import { cn, getColumnAriaSort } from "@pisagor/utils";
 import { FlexRender } from "@tanstack/svelte-table";
 import type { ComponentProps } from "svelte";
 import { Table } from "../components/table";
@@ -44,6 +44,7 @@ function sizeStyle(column: {
   {#if header}
     <DataGridHeaderCellProvider {header}>
       <Table.Head
+        aria-sort={getColumnAriaSort(header.column)}
         {...rest}
         class={slots.head({
           class: cn(filter && slots.filterHead(), className),
@@ -68,6 +69,7 @@ function sizeStyle(column: {
   {#each headerGroup.headers as header (header.id)}
     <DataGridHeaderCellProvider {header}>
       <Table.Head
+        aria-sort={getColumnAriaSort(header.column)}
         {...rest}
         class={slots.head({
           class: cn(filter && slots.filterHead(), className),

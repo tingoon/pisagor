@@ -6,7 +6,8 @@ import {
 import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
 import { withProvider } from "./accordion.context";
 
-type Props = ArkAccordionItemProps & BaseAccordionItemProps;
+type Props = ArkAccordionItemProps &
+  BaseAccordionItemProps & { size?: "sm" | "md" | "lg" };
 
 let { children, ...rest }: Props = $props();
 

@@ -5,3 +5,4 @@ export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.svelte";
 export { default as WithAction } from "./with-action.svelte";
 export { default as WithIcon } from "./with-icon.svelte";
+export { default as WithoutIcon } from "./without-icon.svelte";

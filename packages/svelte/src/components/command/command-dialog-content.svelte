@@ -10,7 +10,10 @@ import DialogDescription from "../dialog/dialog-description.svelte";
 import DialogHeader from "../dialog/dialog-header.svelte";
 import DialogPositioner from "../dialog/dialog-positioner.svelte";
 import DialogTitle from "../dialog/dialog-title.svelte";
+import { useMessageResolver } from "../provider/provider.context";
 import { Context } from "./command.context";
+
+const t = useMessageResolver();
 
 type Props = Omit<
   ComponentProps<typeof DialogContent>,
@@ -24,7 +27,7 @@ let {
   size = "lg",
   children,
   description = "Search for a command to run...",
-  title = "Command Palette",
+  title = t("command.title"),
   recipe = commandRecipe,
   class: className,
   ...rest

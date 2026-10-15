@@ -14,13 +14,25 @@ type TabsPresetItem = {
 };
 type Props = Omit<TabsRootProps, "children"> & {
   items?: TabsPresetItem[];
+  /**
+   * Whether to render the animated active-tab indicator.
+   *
+   * @defaultValue true
+   */
+  showIndicator?: boolean;
 } & BaseTabsProps;
 
-let { variant, items, class: className, ...rest }: Props = $props();
+let {
+  variant,
+  items,
+  showIndicator,
+  class: className,
+  ...rest
+}: Props = $props();
 </script>
 
 <TabsRoot {...rest} class={className}>
-  <TabsList {variant}>
+  <TabsList {showIndicator} {variant}>
     {#each items ?? [] as tab (tab.value)}
       <TabsTrigger disabled={tab.disabled} value={tab.value}
         >{tab.label}</TabsTrigger

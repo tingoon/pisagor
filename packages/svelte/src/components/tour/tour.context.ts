@@ -57,3 +57,6 @@ export function setTourContext(value: TourStateValue & { slots: TourRecipe }) {
     },
   });
 }
+
+/** Context key: true inside `Tour.Footer`. */
+export const TOUR_INSIDE_CONTROL = Symbol("TourInsideControl");

@@ -3,12 +3,15 @@ import { Ark } from "@ark-ui/svelte/factory";
 import type { BreadcrumbProps as BaseBreadcrumbProps } from "@pisagor/props";
 import { breadcrumbRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "svelte/elements";
+import { useMessageResolver } from "../provider/provider.context";
 import { Context } from "./breadcrumb.context";
+
+const t = useMessageResolver();
 
 type Props = HTMLAttributes<HTMLElement> & BaseBreadcrumbProps;
 
 let {
-  "aria-label": ariaLabel = "Breadcrumb",
+  "aria-label": ariaLabel = t("breadcrumb.label"),
   children,
   recipe = breadcrumbRecipe,
   class: className,

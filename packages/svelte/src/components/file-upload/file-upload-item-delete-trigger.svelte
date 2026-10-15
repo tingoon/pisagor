@@ -6,7 +6,10 @@ import {
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
+import { useMessageResolver } from "../provider/provider.context";
 import { useFileUploadItem } from "./file-upload.context";
+
+const t = useMessageResolver();
 
 let {
   class: className,
@@ -18,8 +21,8 @@ const slots = $derived(styles.slots);
 </script>
 
 <FileUploadPrimitive.ItemDeleteTrigger
+  aria-label={t("fileUpload.removeFile")}
   {...rest}
-  aria-label="Remove file"
   class={cn(
     buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),
     slots.deleteTrigger({ class: cn(className) }),

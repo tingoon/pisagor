@@ -4,5 +4,5 @@ import { DatePicker, Field } from "@pisagor/svelte";
 
 <Field>
   <Field.Label>Time</Field.Label>
-  <DatePicker.Timer />
+  <DatePicker.TimeInput />
 </Field>

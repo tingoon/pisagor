@@ -7,10 +7,19 @@ import type { TabsProps as BaseTabsProps } from "@pisagor/props";
 import { cn } from "@pisagor/utils";
 import { useTabs } from "./tabs.context";
 
-type Props = ArkTabsListProps & BaseTabsProps;
+type Props = ArkTabsListProps &
+  BaseTabsProps & {
+    /**
+     * Whether to render the animated active-tab indicator.
+     *
+     * @defaultValue true
+     */
+    showIndicator?: boolean;
+  };
 
 let {
   variant = "default",
+  showIndicator = true,
   children,
   class: className,
   ...rest
@@ -24,5 +33,7 @@ const slots = $derived(styles.slots);
   class={slots.list({ class: cn(className), variant })}
 >
   {@render children?.()}
-  <TabsPrimitive.Indicator class={slots.indicator({ variant })} />
+  {#if showIndicator}
+    <TabsPrimitive.Indicator class={slots.indicator({ variant })} />
+  {/if}
 </TabsPrimitive.List>

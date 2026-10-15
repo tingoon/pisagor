@@ -2,8 +2,9 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { SortableProps as BaseSortableProps } from "@pisagor/props";
 import { sortableRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+import { cn, formatMessage } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
+import { useMessageResolver } from "../provider/provider.context";
 import { setSortableContext } from "./sortable.context";
 
 type Props = HTMLAttributes<HTMLUListElement> & {
@@ -77,18 +78,31 @@ function commitReorder(fromId: string, toId: string) {
   onValueChange?.(reorder(items, from, to));
 }
 
+const movedTemplate = useMessageResolver()("sortable.moved");
+let moved = $state("");
+const keyShortcuts = $derived(
+  orientation === "vertical"
+    ? "Alt+ArrowUp Alt+ArrowDown"
+    : "Alt+ArrowLeft Alt+ArrowRight",
+);
+
 function moveItem(id: string, delta: -1 | 1) {
   if (disabled) return;
   const index = items.indexOf(id);
   const targetIndex = index + delta;
   if (index === -1 || targetIndex < 0 || targetIndex >= items.length) return;
   onValueChange?.(reorder(items, index, targetIndex));
+  moved = formatMessage(movedTemplate, {
+    position: targetIndex + 1,
+    total: items.length,
+  });
 }
 
 function getItemProps(id: string) {
   const itemHasHandle = handleIds.has(id);
   return {
     "aria-disabled": disabled || undefined,
+    "aria-keyshortcuts": itemHasHandle ? undefined : keyShortcuts,
     "data-dragging": activeId === id ? "true" : undefined,
     "data-drop-target": overId === id && activeId !== id ? "true" : undefined,
     draggable: !disabled && !itemHasHandle,
@@ -169,3 +183,4 @@ setSortableContext({
 >
   {@render children?.()}
 </Ark>
+<span aria-live="polite" class="sr-only">{moved}</span>

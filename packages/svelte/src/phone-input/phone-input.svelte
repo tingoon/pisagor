@@ -22,8 +22,11 @@ import { Combobox } from "../components/combobox";
 import type ComboboxContent from "../components/combobox/combobox-content.svelte";
 import type Input from "../components/input/input.svelte";
 import { InputGroup } from "../components/input-group";
+import { useMessageResolver } from "../components/provider/provider.context";
 import { setPhoneInputContext } from "./phone-input.context";
 import { phoneInputFlags } from "./phone-input-flags";
+
+const t = useMessageResolver();
 
 type FormControlVariant = "primary" | "secondary";
 type PhoneInputClassNames = Partial<
@@ -205,7 +208,7 @@ function handleCountryChange(nextValue: string[]) {
     >
       <Combobox.Control class={slots.countryControl()}>
         <Combobox.Trigger
-          aria-label="Select country"
+          aria-label={t("phoneInput.selectCountry")}
           class={slots.countrySelect()}
           disabled={isDisabled}
           onblur={onBlur}
@@ -256,7 +259,7 @@ function handleCountryChange(nextValue: string[]) {
         <InputGroup {size}>
           <Combobox.Input
             class={slots.search({ class: classNames?.search })}
-            placeholder="Search country..."
+            placeholder={t("phoneInput.search")}
           />
         </InputGroup>
       </div>

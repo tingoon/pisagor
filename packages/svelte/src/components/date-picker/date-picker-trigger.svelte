@@ -4,7 +4,14 @@ import {
   DatePicker as DatePickerPrimitive,
 } from "@ark-ui/svelte/date-picker";
 import { cn } from "@pisagor/utils";
-import { useDatePicker } from "./date-picker.context";
+import {
+  isInsideControl,
+  setInsideControl,
+} from "../../internal/inside-control";
+import {
+  DATE_PICKER_INSIDE_CONTROL,
+  useDatePicker,
+} from "./date-picker.context";
 import DatePickerClearTrigger from "./date-picker-clear-trigger.svelte";
 
 type Props = ArkTriggerProps & { clearable?: boolean };
@@ -17,10 +24,12 @@ let {
 }: Props = $props();
 const ctx = useDatePicker();
 const slots = $derived(ctx?.slots);
+const insideControl = isInsideControl(DATE_PICKER_INSIDE_CONTROL);
+if (!insideControl) setInsideControl(DATE_PICKER_INSIDE_CONTROL);
 </script>
 
 {#if slots}
-  <DatePickerPrimitive.Control class={slots.control()}>
+  {#snippet body()}
     <DatePickerPrimitive.Trigger
       {...rest}
       class={slots.trigger({ class: cn(className) })}
@@ -30,5 +39,12 @@ const slots = $derived(ctx?.slots);
     {#if clearable}
       <DatePickerClearTrigger />
     {/if}
-  </DatePickerPrimitive.Control>
+  {/snippet}
+  {#if insideControl}
+    {@render body()}
+  {:else}
+    <DatePickerPrimitive.Control class={slots.control()}>
+      {@render body()}
+    </DatePickerPrimitive.Control>
+  {/if}
 {/if}

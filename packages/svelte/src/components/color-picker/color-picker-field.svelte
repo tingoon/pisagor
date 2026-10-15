@@ -13,14 +13,16 @@ import ColorPickerTrigger from "./color-picker-trigger.svelte";
 
 type Props = Omit<ComponentProps<typeof ColorPickerRoot>, "children"> & {
   clearable?: boolean;
+  /** Visual shell variant of the input group. */
+  variant?: "primary" | "secondary";
 };
 
-let { clearable = false, ...rest }: Props = $props();
+let { clearable = false, variant, ...rest }: Props = $props();
 </script>
 
 <ColorPickerRoot {...rest}>
   <ColorPickerControl>
-    <InputGroup>
+    <InputGroup {variant}>
       <ColorPickerTrigger>
         <InputGroup.Addon>
           <ColorPickerSwatchPreview />

@@ -2,6 +2,7 @@ import controlledRaw from "./controlled.svelte?raw";
 import custom_compositionRaw from "./custom-composition.svelte?raw";
 import custom_recipeRaw from "./custom-recipe.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
+import link_urlsRaw from "./link-urls.svelte?raw";
 import linksRaw from "./links.svelte?raw";
 import page_rangeRaw from "./page-range.svelte?raw";
 
@@ -13,5 +14,6 @@ export const sources = {
   CustomRecipe: custom_recipeRaw,
   Default: defaultRaw,
   Links: linksRaw,
+  LinkUrls: link_urlsRaw,
   PageRange: page_rangeRaw,
 } as const;

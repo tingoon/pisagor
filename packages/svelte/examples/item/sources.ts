@@ -6,6 +6,7 @@ import headerRaw from "./header.svelte?raw";
 import iconRaw from "./icon.svelte?raw";
 import imageRaw from "./image.svelte?raw";
 import linkRaw from "./link.svelte?raw";
+import sizesRaw from "./sizes.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_avatarRaw from "./with-avatar.svelte?raw";
 import with_mediaRaw from "./with-media.svelte?raw";
@@ -21,6 +22,7 @@ export const sources = {
   Icon: iconRaw,
   Image: imageRaw,
   Link: linkRaw,
+  Sizes: sizesRaw,
   Variants: variantsRaw,
   WithAvatar: with_avatarRaw,
   WithMedia: with_mediaRaw,

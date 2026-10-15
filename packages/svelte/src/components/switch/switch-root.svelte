@@ -6,6 +6,7 @@ import {
 import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
 import { switchRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
+import type { SizeScaleProps } from "../../internal/types";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { Context } from "./switch.context";
 
@@ -14,11 +15,13 @@ type FormControlVariant = "primary" | "secondary";
 type Props = SwitchRootProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-} & BaseSwitchProps;
+} & BaseSwitchProps &
+  SizeScaleProps;
 
 let {
   variant: variantProp,
   children,
+  size = "md",
   recipe = switchRecipe,
   class: className,
   ...rest
@@ -26,7 +29,7 @@ let {
 
 const surfaceVariant = useFormControlSurface();
 const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-const slots = $derived(recipe({ surfaceVariant, variant }));
+const slots = $derived(recipe({ size, surfaceVariant, variant }));
 
 Context.set({
   get slots() {

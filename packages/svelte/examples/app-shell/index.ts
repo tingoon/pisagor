@@ -1,6 +1,7 @@
 export { default as Banner } from "./banner.svelte";
 export { default as Content } from "./content.svelte";
 export { default as Default } from "./default.svelte";
+export { default as DisableHotkey } from "./disable-hotkey.svelte";
 export { default as Header } from "./header.svelte";
 export { default as Inspectors } from "./inspectors.svelte";
 export { default as Main } from "./main.svelte";

@@ -1,0 +1,34 @@
+<script lang="ts">
+import {
+  type CarouselAutoplayTriggerProps,
+  Carousel as CarouselPrimitive,
+  useCarouselContext,
+} from "@ark-ui/svelte/carousel";
+import { buttonRecipe } from "@pisagor/recipes";
+import { cn } from "@pisagor/utils";
+import PauseIcon from "phosphor-svelte/lib/PauseIcon";
+import PlayIcon from "phosphor-svelte/lib/PlayIcon";
+import { useMessageResolver } from "../provider/provider.context";
+
+const t = useMessageResolver();
+const carousel = useCarouselContext();
+
+let { class: className, ...rest }: CarouselAutoplayTriggerProps = $props();
+const isPlaying = $derived(carousel().isPlaying);
+</script>
+
+<CarouselPrimitive.AutoplayTrigger
+  aria-label={t(isPlaying ? "carousel.pause" : "carousel.play")}
+  {...rest}
+  class={cn(
+    buttonRecipe({ pill: true, size: "icon-md", variant: "outline" }).base(),
+    className,
+  )}
+  type="button"
+>
+  {#if isPlaying}
+    <PauseIcon aria-hidden="true" />
+  {:else}
+    <PlayIcon aria-hidden="true" />
+  {/if}
+</CarouselPrimitive.AutoplayTrigger>

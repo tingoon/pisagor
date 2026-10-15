@@ -27,6 +27,9 @@ const users = [
 
 <AvatarGroup.Root>
   {#each users as user (user.src)}
-    <Avatar alt={user.name} fallback={user.fallback} src={user.src} />
+    <Avatar.Root>
+      <Avatar.Image alt={user.name} src={user.src} />
+      <Avatar.Fallback>{user.fallback}</Avatar.Fallback>
+    </Avatar.Root>
   {/each}
 </AvatarGroup.Root>

@@ -9,7 +9,13 @@ type Props = HTMLAttributes<HTMLDivElement> & {
 };
 
 let { children, ...rest }: Props = $props();
-const part = withContext(() => rest, { name: "Body" });
+const part = withContext(
+  () => ({
+    ...rest,
+    class: ["overflow-visible", rest.class].filter(Boolean).join(" "),
+  }),
+  { name: "Body" },
+);
 </script>
 
 <ScrollArea>

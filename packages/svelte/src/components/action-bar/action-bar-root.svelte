@@ -14,6 +14,8 @@ import ActionBarValue from "./action-bar-value.svelte";
 type ActionItem = {
   disabled?: boolean;
   icon?: Snippet;
+  /** Stable key; defaults to `label`. */
+  id?: string;
   label: string;
   onClick: () => void;
 };
@@ -109,7 +111,7 @@ const hasPreset = $derived(
     {/if}
     {#if actions}
       <ActionBarBody>
-        {#each actions as action (action.label)}
+        {#each actions as action (action.id ?? action.label)}
           <button
             class={buttonRecipe({ size: "sm", variant: "ghost" }).base()}
             disabled={action.disabled}

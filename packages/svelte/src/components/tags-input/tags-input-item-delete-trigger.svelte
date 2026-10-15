@@ -6,7 +6,10 @@ import {
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
+import { useMessageResolver } from "../provider/provider.context";
 import { useTagsInputItem } from "./tags-input.context";
+
+const t = useMessageResolver();
 
 let {
   class: className,
@@ -18,8 +21,8 @@ const slots = $derived(styles.slots);
 </script>
 
 <TagsInputPrimitive.ItemDeleteTrigger
+  aria-label={t("tagsInput.removeTag")}
   {...rest}
-  aria-label="Remove tag"
   class={cn(
     buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),
     slots.delete({ class: cn(className) }),

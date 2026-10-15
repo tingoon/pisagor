@@ -4,6 +4,7 @@ import {
   SegmentGroup as SegmentGroupPrimitive,
 } from "@ark-ui/svelte/segment-group";
 import type { SegmentGroupProps as BaseSegmentGroupProps } from "@pisagor/props";
+import type { SizeScaleProps } from "../../internal/types";
 import { withProvider } from "./segment-group.context";
 import SegmentGroupIndicator from "./segment-group-indicator.svelte";
 
@@ -12,7 +13,8 @@ type SegmentGroupVariant = "default" | "underline";
 type Props = Omit<ArkRootProps, "onValueChange"> & {
   onValueChange?: (value: string | null) => void;
   variant?: SegmentGroupVariant;
-} & BaseSegmentGroupProps;
+} & BaseSegmentGroupProps &
+  SizeScaleProps;
 
 let {
   orientation = "horizontal",

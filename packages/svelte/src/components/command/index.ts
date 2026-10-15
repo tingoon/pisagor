@@ -12,6 +12,7 @@ import CommandList from "./command-list.svelte";
 import CommandRoot from "./command-root.svelte";
 import CommandSeparator from "./command-separator.svelte";
 import CommandShortcut from "./command-shortcut.svelte";
+import CommandShorthand from "./command-shorthand.svelte";
 
 export const Command = Object.assign(CommandRoot, {
   Content: CommandContent,
@@ -28,4 +29,5 @@ export const Command = Object.assign(CommandRoot, {
   Root: CommandRoot,
   Separator: CommandSeparator,
   Shortcut: CommandShortcut,
+  Shorthand: CommandShorthand,
 });

@@ -3,6 +3,7 @@ import defaultRaw from "./default.svelte?raw";
 import destructiveRaw from "./destructive.svelte?raw";
 import group_labelRaw from "./group-label.svelte?raw";
 import iconsRaw from "./icons.svelte?raw";
+import item_indicatorRaw from "./item-indicator.svelte?raw";
 import linkRaw from "./link.svelte?raw";
 import nestedRaw from "./nested.svelte?raw";
 import placementsRaw from "./placements.svelte?raw";
@@ -20,6 +21,7 @@ export const sources = {
   Destructive: destructiveRaw,
   GroupLabel: group_labelRaw,
   Icons: iconsRaw,
+  ItemIndicator: item_indicatorRaw,
   Link: linkRaw,
   Nested: nestedRaw,
   Placements: placementsRaw,

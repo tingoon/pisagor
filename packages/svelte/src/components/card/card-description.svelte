@@ -3,7 +3,7 @@ import { Ark } from "@ark-ui/svelte/factory";
 import type { HTMLAttributes } from "svelte/elements";
 import { withContext } from "./card.context";
 
-type Props = HTMLAttributes<HTMLDivElement> & {
+type Props = HTMLAttributes<HTMLParagraphElement> & {
   children?: import("svelte").Snippet;
 };
 
@@ -15,4 +15,4 @@ const part = withContext(() => rest, {
 });
 </script>
 
-<Ark as="div" {...part.props}> {@render children?.()} </Ark>
+<Ark as="p" {...part.props}> {@render children?.()} </Ark>

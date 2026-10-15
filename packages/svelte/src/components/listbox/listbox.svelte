@@ -2,6 +2,7 @@
 import { createListCollection } from "@ark-ui/svelte/collection";
 import type { ComponentProps } from "svelte";
 import ListboxContent from "./listbox-content.svelte";
+import ListboxEmpty from "./listbox-empty.svelte";
 import ListboxItem from "./listbox-item.svelte";
 import ListboxItemText from "./listbox-item-text.svelte";
 import ListboxRoot from "./listbox-root.svelte";
@@ -13,10 +14,17 @@ type Props = Omit<
   "children" | "collection"
 > & {
   collection?: ComponentProps<typeof ListboxRoot>["collection"];
+  /** Content shown when there are no items. */
+  emptyText?: string;
   items?: PresetItem[];
 };
 
-let { collection: collectionProp, items = [], ...rest }: Props = $props();
+let {
+  collection: collectionProp,
+  emptyText,
+  items = [],
+  ...rest
+}: Props = $props();
 
 const collection = $derived(
   collectionProp ??
@@ -29,13 +37,16 @@ const collection = $derived(
 </script>
 
 <ListboxRoot {...rest} {collection}>
-  {#if items.length > 0}
-    <ListboxContent>
-      {#each items as item (item.value)}
-        <ListboxItem {item}>
-          <ListboxItemText>{item.label}</ListboxItemText>
-        </ListboxItem>
-      {/each}
-    </ListboxContent>
-  {/if}
+  <ListboxContent>
+    {#if emptyText}
+      <ListboxEmpty>{emptyText}</ListboxEmpty>
+    {:else}
+      <ListboxEmpty />
+    {/if}
+    {#each items as item (item.value)}
+      <ListboxItem {item}>
+        <ListboxItemText>{item.label}</ListboxItemText>
+      </ListboxItem>
+    {/each}
+  </ListboxContent>
 </ListboxRoot>

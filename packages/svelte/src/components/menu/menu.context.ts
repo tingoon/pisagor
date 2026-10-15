@@ -10,3 +10,6 @@ export const {
   name: "Menu",
   recipe: menuRecipe,
 });
+
+/** Context key: true inside `Menu.List`, so separators render as `<li>`. */
+export const MENU_INSIDE_LIST = Symbol("MenuInsideList");

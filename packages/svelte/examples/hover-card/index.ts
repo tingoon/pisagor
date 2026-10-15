@@ -5,3 +5,4 @@ export { default as Disabled } from "./disabled.svelte";
 export { default as Placements } from "./placements.svelte";
 export { imports, sources } from "./sources";
 export { default as TriggersDelays } from "./triggers-delays.svelte";
+export { default as WithoutArrow } from "./without-arrow.svelte";

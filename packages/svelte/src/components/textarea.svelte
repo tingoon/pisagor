@@ -7,7 +7,7 @@ import {
   textareaRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { VariantClassNames } from "../internal/types";
+import type { SizeScaleProps, VariantClassNames } from "../internal/types";
 import InputClearButton from "./input/input-clear-button.svelte";
 import InputGroupAddon from "./input-group/input-group-addon.svelte";
 import InputGroupRoot from "./input-group/input-group-root.svelte";
@@ -26,7 +26,8 @@ type Props = FieldTextareaProps & {
   onValueChange?: (value: string) => void;
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-} & BaseTextareaProps;
+} & BaseTextareaProps &
+  SizeScaleProps;
 
 let {
   variant: variantProp,
@@ -36,6 +37,7 @@ let {
   value = $bindable<string | undefined>(undefined),
   oninput,
   onValueChange,
+  size = "md",
   recipe = textareaRecipe,
   class: className,
   classNames,
@@ -44,7 +46,7 @@ let {
 
 const surfaceVariant = useFormControlSurface();
 const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-const slots = $derived(recipe());
+const slots = $derived(recipe({ size }));
 const canClear = $derived(
   clearable && !disabled && !readonly && String(value ?? "").length > 0,
 );
@@ -66,7 +68,7 @@ function handleClear() {
   <Field.Textarea
     {...rest}
     class={cn(
-      formControlShellRecipe({ size: "md", surfaceVariant, variant }),
+      formControlShellRecipe({ size, surfaceVariant, variant }),
       slots.rootLayout({ class: cn(className, classNames?.rootLayout) }),
     )}
     data-variant={variant}

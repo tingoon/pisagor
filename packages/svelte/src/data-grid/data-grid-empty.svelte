@@ -1,5 +1,6 @@
 <script lang="ts">
 import type { ComponentProps } from "svelte";
+import { useMessageResolver } from "../components/provider/provider.context";
 import { Table } from "../components/table";
 import { useDataGridContext } from "./data-grid.context";
 
@@ -10,6 +11,7 @@ type Props = ComponentProps<typeof Table.Row> & {
 
 let { children, colSpan, class: className, ...rest }: Props = $props();
 const { slots, table } = useDataGridContext();
+const t = useMessageResolver();
 const span = $derived(colSpan ?? table.getAllColumns().length);
 </script>
 
@@ -18,7 +20,7 @@ const span = $derived(colSpan ?? table.getAllColumns().length);
     {#if children}
       {@render children()}
     {:else}
-      No results. Try a different search or clear filters.
+      {t("dataGrid.empty")}
     {/if}
   </Table.Cell>
 </Table.Row>

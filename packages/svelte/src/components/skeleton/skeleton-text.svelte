@@ -4,19 +4,22 @@ import type { SkeletonProps as BaseSkeletonProps } from "@pisagor/props";
 import { skeletonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
+import type { SizeScaleProps } from "../../internal/types";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   lines?: number;
-} & BaseSkeletonProps;
+} & BaseSkeletonProps &
+  SizeScaleProps;
 
 let {
   lines = 2,
+  size = "md",
   recipe = skeletonRecipe,
   class: className,
   ...rest
 }: Props = $props();
 
-const slots = $derived(recipe());
+const slots = $derived(recipe({ size }));
 </script>
 
 <Ark

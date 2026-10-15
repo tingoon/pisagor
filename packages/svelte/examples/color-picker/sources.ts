@@ -11,6 +11,7 @@ import input_controlledRaw from "./input-controlled.svelte?raw";
 import input_with_popoverRaw from "./input-with-popover.svelte?raw";
 import input_with_swatch_previewRaw from "./input-with-swatch-preview.svelte?raw";
 import invalidRaw from "./invalid.svelte?raw";
+import label_format_selectRaw from "./label-format-select.svelte?raw";
 import popover_disabledRaw from "./popover-disabled.svelte?raw";
 import popover_sliders_onlyRaw from "./popover-sliders-only.svelte?raw";
 import popover_with_channel_editingRaw from "./popover-with-channel-editing.svelte?raw";
@@ -46,6 +47,7 @@ export const sources = {
   InputWithPopover: input_with_popoverRaw,
   InputWithSwatchPreview: input_with_swatch_previewRaw,
   Invalid: invalidRaw,
+  LabelFormatSelect: label_format_selectRaw,
   PopoverDisabled: popover_disabledRaw,
   PopoverSlidersOnly: popover_sliders_onlyRaw,
   PopoverWithChannelEditing: popover_with_channel_editingRaw,

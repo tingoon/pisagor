@@ -9,8 +9,11 @@ import {
 import { cn } from "@pisagor/utils";
 import type { HTMLInputAttributes } from "svelte/elements";
 import { InputGroup } from "../input-group";
+import { useMessageResolver } from "../provider/provider.context";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { Context } from "./file-input.context";
+
+const t = useMessageResolver();
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -35,10 +38,10 @@ let {
   multiple,
   name,
   required,
-  browseLabel = "Choose file",
+  browseLabel = t("fileInput.browse"),
   capture,
   id,
-  placeholder = "No file chosen",
+  placeholder = t("fileInput.placeholder"),
   onchange,
   onFilesChange,
   onValueChange,

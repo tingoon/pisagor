@@ -8,7 +8,11 @@ import { withProvider } from "./carousel.context";
 
 type Props = ArkRootProps & BaseCarouselProps;
 
-let { children, spacing = "16px", ...rest }: Props = $props();
+let {
+  children,
+  spacing = "calc(var(--spacing) * 4)",
+  ...rest
+}: Props = $props();
 const root = withProvider(() => ({ ...rest, spacing }), {
   name: "Root",
   slot: "base",

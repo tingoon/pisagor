@@ -1,5 +1,6 @@
 export { default as CustomRecipe } from "./custom-recipe.svelte";
 export { default as KbdGroup } from "./kbd-group.svelte";
+export { default as Sizes } from "./sizes.svelte";
 export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.svelte";
 export { default as WithButton } from "./with-button.svelte";

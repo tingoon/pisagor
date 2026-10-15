@@ -2,6 +2,7 @@
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "svelte";
 import ComboboxEmpty from "../combobox/combobox-empty.svelte";
+import { useMessageResolver } from "../provider/provider.context";
 import { useCommand } from "./command.context";
 
 let {
@@ -9,6 +10,7 @@ let {
   class: className,
   ...rest
 }: ComponentProps<typeof ComboboxEmpty> = $props();
+const t = useMessageResolver();
 const styles = useCommand();
 const slots = $derived(styles.slots);
 </script>
@@ -17,6 +19,6 @@ const slots = $derived(styles.slots);
   {#if children}
     {@render children()}
   {:else}
-    No results found. Try a different search.
+    {t("command.empty")}
   {/if}
 </ComboboxEmpty>

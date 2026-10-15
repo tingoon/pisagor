@@ -4,6 +4,7 @@ import custom_recipeRaw from "./custom-recipe.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
 import disabledRaw from "./disabled.svelte?raw";
 import disabled_itemRaw from "./disabled-item.svelte?raw";
+import emptyRaw from "./empty.svelte?raw";
 import gridRaw from "./grid.svelte?raw";
 import groupingRaw from "./grouping.svelte?raw";
 import horizontalRaw from "./horizontal.svelte?raw";
@@ -26,6 +27,7 @@ export const sources = {
   Default: defaultRaw,
   Disabled: disabledRaw,
   DisabledItem: disabled_itemRaw,
+  Empty: emptyRaw,
   Grid: gridRaw,
   Grouping: groupingRaw,
   Horizontal: horizontalRaw,

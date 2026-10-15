@@ -7,6 +7,7 @@ export { default as FourDigits } from "./four-digits.svelte";
 export { default as Invalid } from "./invalid.svelte";
 export { default as Mask } from "./mask.svelte";
 export { default as Separator } from "./separator.svelte";
+export { default as Sizes } from "./sizes.svelte";
 export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.svelte";
 export { default as WithPlaceholder } from "./with-placeholder.svelte";

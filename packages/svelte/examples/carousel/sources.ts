@@ -1,4 +1,5 @@
 import autoplayRaw from "./autoplay.svelte?raw";
+import autoplay_controlsRaw from "./autoplay-controls.svelte?raw";
 import compoundRaw from "./compound.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
 import custom_recipeRaw from "./custom-recipe.svelte?raw";
@@ -16,6 +17,7 @@ export const imports = `import { Carousel } from "@pisagor/svelte";`;
 
 export const sources = {
   Autoplay: autoplayRaw,
+  AutoplayControls: autoplay_controlsRaw,
   Compound: compoundRaw,
   Controlled: controlledRaw,
   CustomRecipe: custom_recipeRaw,

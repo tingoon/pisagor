@@ -3,6 +3,9 @@ import { parseColor, useColorPickerContext } from "@ark-ui/svelte/color-picker";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import type { ClassValue } from "svelte/elements";
 import { InputGroup } from "../input-group";
+import { useMessageResolver } from "../provider/provider.context";
+
+const t = useMessageResolver();
 
 type Props = {
   class?: ClassValue;
@@ -29,7 +32,7 @@ function clear() {
 {#if visible}
   <InputGroup.Addon align="inline-end">
     <InputGroup.Button
-      aria-label="Clear color"
+      aria-label={t("colorPicker.clearColor")}
       class={className}
       data-part="clear-trigger"
       data-scope="color-picker"

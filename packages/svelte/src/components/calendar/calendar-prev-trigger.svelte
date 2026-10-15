@@ -6,7 +6,10 @@ import {
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
+import { useMessageResolver } from "../provider/provider.context";
 import { useCalendar } from "./calendar.context";
+
+const t = useMessageResolver();
 
 let {
   class: className,
@@ -18,8 +21,8 @@ const slots = $derived(styles.slots);
 </script>
 
 <CalendarPrimitive.PrevTrigger
+  aria-label={t("calendar.previousMonth")}
   {...rest}
-  aria-label="Previous month"
   class={cn(
     buttonRecipe({ size: "icon-md", variant: "ghost" }).base(),
     slots.prevTrigger(),

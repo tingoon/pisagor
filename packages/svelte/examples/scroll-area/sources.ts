@@ -1,4 +1,5 @@
 import both_directionsRaw from "./both-directions.svelte?raw";
+import compoundRaw from "./compound.svelte?raw";
 import custom_recipeRaw from "./custom-recipe.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
 import horizontalRaw from "./horizontal.svelte?raw";
@@ -9,6 +10,7 @@ export const imports = `import { ScrollArea } from "@pisagor/svelte";`;
 
 export const sources = {
   BothDirections: both_directionsRaw,
+  Compound: compoundRaw,
   CustomRecipe: custom_recipeRaw,
   Default: defaultRaw,
   Horizontal: horizontalRaw,

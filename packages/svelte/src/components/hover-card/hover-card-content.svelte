@@ -6,8 +6,17 @@ import {
 import { Portal } from "@ark-ui/svelte/portal";
 import { cn } from "@pisagor/utils";
 import { useHoverCard } from "./hover-card.context";
+import HoverCardArrow from "./hover-card-arrow.svelte";
 
-let { children, class: className, ...rest }: HoverCardContentProps = $props();
+type Props = HoverCardContentProps & {
+  /**
+   * Whether to render the arrow pointing at the trigger.
+   * @defaultValue true
+   */
+  showArrow?: boolean;
+};
+
+let { children, class: className, showArrow = true, ...rest }: Props = $props();
 const styles = useHoverCard();
 const slots = $derived(styles.slots);
 </script>
@@ -19,11 +28,9 @@ const slots = $derived(styles.slots);
       class={slots.content({ class: cn(className) })}
     >
       {@render children?.()}
-      <HoverCardPrimitive.Arrow
-        style="--arrow-background: var(--popover); --arrow-size: calc(1.5 * var(--spacing))"
-      >
-        <HoverCardPrimitive.ArrowTip class={slots.arrowTip()} />
-      </HoverCardPrimitive.Arrow>
+      {#if showArrow}
+        <HoverCardArrow />
+      {/if}
     </HoverCardPrimitive.Content>
   </HoverCardPrimitive.Positioner>
 </Portal>

@@ -11,9 +11,19 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
+import {
+  isInsideControl,
+  setInsideControl,
+} from "../../internal/inside-control";
+import { useMessageResolver } from "../provider/provider.context";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
-import { useDatePicker } from "./date-picker.context";
+import {
+  DATE_PICKER_INSIDE_CONTROL,
+  useDatePicker,
+} from "./date-picker.context";
 import DatePickerClearTrigger from "./date-picker-clear-trigger.svelte";
+
+const t = useMessageResolver();
 
 type Props = Omit<ArkInputProps, "size"> &
   FormControlGroupShellVariantProps & { clearable?: boolean };
@@ -29,11 +39,13 @@ let {
 const ctx = useDatePicker();
 const slots = $derived(ctx?.slots);
 const surfaceVariant = useFormControlSurface();
+const insideControl = isInsideControl(DATE_PICKER_INSIDE_CONTROL);
+if (!insideControl) setInsideControl(DATE_PICKER_INSIDE_CONTROL);
 const variant = $derived(variantProp ?? ctx?.variant ?? ("primary" as const));
 </script>
 
 {#if slots}
-  <DatePickerPrimitive.Control>
+  {#snippet body()}
     <div
       class={cn(
         formControlGroupShellRecipe({ size, surfaceVariant, variant }),
@@ -52,7 +64,7 @@ const variant = $derived(variantProp ?? ctx?.variant ?? ("primary" as const));
           <DatePickerClearTrigger />
         {/if}
         <DatePickerPrimitive.Trigger
-          aria-label="Open calendar"
+          aria-label={t("datePicker.openCalendar")}
           class={buttonRecipe({ size: "icon-xs", variant: "ghost" }).base()}
           type="button"
         >
@@ -60,5 +72,10 @@ const variant = $derived(variantProp ?? ctx?.variant ?? ("primary" as const));
         </DatePickerPrimitive.Trigger>
       </div>
     </div>
-  </DatePickerPrimitive.Control>
+  {/snippet}
+  {#if insideControl}
+    {@render body()}
+  {:else}
+    <DatePickerPrimitive.Control>{@render body()}</DatePickerPrimitive.Control>
+  {/if}
 {/if}

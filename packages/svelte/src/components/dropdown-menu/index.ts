@@ -4,6 +4,8 @@ import DropdownMenuContent from "./dropdown-menu-content.svelte";
 import DropdownMenuItem from "./dropdown-menu-item.svelte";
 import DropdownMenuItemGroup from "./dropdown-menu-item-group.svelte";
 import DropdownMenuItemGroupLabel from "./dropdown-menu-item-group-label.svelte";
+import DropdownMenuItemIndicator from "./dropdown-menu-item-indicator.svelte";
+import DropdownMenuItemText from "./dropdown-menu-item-text.svelte";
 import DropdownMenuPositioner from "./dropdown-menu-positioner.svelte";
 import DropdownMenuQuickItem from "./dropdown-menu-quick-item.svelte";
 import DropdownMenuRadioItem from "./dropdown-menu-radio-item.svelte";
@@ -23,6 +25,8 @@ export const DropdownMenu = Object.assign(DropdownMenuRoot, {
   Item: DropdownMenuItem,
   ItemGroup: DropdownMenuItemGroup,
   ItemGroupLabel: DropdownMenuItemGroupLabel,
+  ItemIndicator: DropdownMenuItemIndicator,
+  ItemText: DropdownMenuItemText,
   Positioner: DropdownMenuPositioner,
   QuickItem: DropdownMenuQuickItem,
   RadioItem: DropdownMenuRadioItem,

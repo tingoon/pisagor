@@ -1,10 +1,13 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
 import type { HTMLAttributes } from "svelte/elements";
+import { useMessageResolver } from "../provider/provider.context";
 import { withContext } from "./navbar.context";
 
+const t = useMessageResolver();
+
 let {
-  "aria-label": ariaLabel = "Main",
+  "aria-label": ariaLabel = t("navbar.label"),
   children,
   ...rest
 }: HTMLAttributes<HTMLElement> = $props();

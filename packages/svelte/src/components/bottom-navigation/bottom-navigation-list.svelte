@@ -1,11 +1,10 @@
 <script lang="ts">
-import { type TabListProps, Tabs as TabsPrimitive } from "@ark-ui/svelte/tabs";
+import { Ark } from "@ark-ui/svelte/factory";
+import type { HTMLAttributes } from "svelte/elements";
 import { withBottomNavigationContext } from "./bottom-navigation.context";
 
-let { children, ...rest }: TabListProps = $props();
+let { children, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
 const part = withBottomNavigationContext(() => rest, { name: "List" });
 </script>
 
-<TabsPrimitive.List {...part.props}>
-  {@render children?.()}
-</TabsPrimitive.List>
+<Ark as="div" {...part.props}> {@render children?.()} </Ark>

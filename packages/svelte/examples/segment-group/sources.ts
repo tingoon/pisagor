@@ -8,6 +8,7 @@ import disabled_itemRaw from "./disabled-item.svelte?raw";
 import indicator_on_hoverRaw from "./indicator-on-hover.svelte?raw";
 import orientation_horizontalRaw from "./orientation-horizontal.svelte?raw";
 import orientation_verticalRaw from "./orientation-vertical.svelte?raw";
+import sizesRaw from "./sizes.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 
 export const imports = `import { SegmentGroup } from "@pisagor/svelte";`;
@@ -23,5 +24,6 @@ export const sources = {
   IndicatorOnHover: indicator_on_hoverRaw,
   OrientationHorizontal: orientation_horizontalRaw,
   OrientationVertical: orientation_verticalRaw,
+  Sizes: sizesRaw,
   Variants: variantsRaw,
 } as const;

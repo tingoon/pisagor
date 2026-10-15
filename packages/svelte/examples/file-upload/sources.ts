@@ -10,6 +10,7 @@ import dropzoneRaw from "./dropzone.svelte?raw";
 import invalidRaw from "./invalid.svelte?raw";
 import media_captureRaw from "./media-capture.svelte?raw";
 import multiple_filesRaw from "./multiple-files.svelte?raw";
+import rejected_filesRaw from "./rejected-files.svelte?raw";
 import triggerRaw from "./trigger.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 
@@ -28,6 +29,7 @@ export const sources = {
   Invalid: invalidRaw,
   MediaCapture: media_captureRaw,
   MultipleFiles: multiple_filesRaw,
+  RejectedFiles: rejected_filesRaw,
   Trigger: triggerRaw,
   Variants: variantsRaw,
 } as const;

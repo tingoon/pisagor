@@ -4,6 +4,7 @@ import custom_recipeRaw from "./custom-recipe.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
 import with_actionRaw from "./with-action.svelte?raw";
 import with_iconRaw from "./with-icon.svelte?raw";
+import without_iconRaw from "./without-icon.svelte?raw";
 
 export const imports = `import { Alert } from "@pisagor/svelte";`;
 
@@ -14,4 +15,5 @@ export const sources = {
   Variants: variantsRaw,
   WithAction: with_actionRaw,
   WithIcon: with_iconRaw,
+  WithoutIcon: without_iconRaw,
 } as const;

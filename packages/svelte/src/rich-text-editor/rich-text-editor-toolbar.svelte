@@ -7,9 +7,12 @@ import TextBIcon from "phosphor-svelte/lib/TextBIcon";
 import TextItalicIcon from "phosphor-svelte/lib/TextItalicIcon";
 import TextStrikethroughIcon from "phosphor-svelte/lib/TextStrikethroughIcon";
 import type { HTMLAttributes } from "svelte/elements";
+import { useMessageResolver } from "../components/provider/provider.context";
 import Toggle from "../components/toggle.svelte";
 import VisuallyHidden from "../components/visually-hidden.svelte";
 import { useRichTextEditorState } from "./rich-text-editor.context";
+
+const t = useMessageResolver();
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
@@ -63,7 +66,7 @@ const orderedList = $derived(
     {:else}
       <div class={ctx.slots.inline()}>
         <Toggle
-          aria-label="Bold"
+          aria-label={t("richTextEditor.bold")}
           onPressedChange={() => ctx.editor?.chain().focus().toggleBold().run()}
           pressed={bold}
           size="sm"
@@ -73,7 +76,7 @@ const orderedList = $derived(
           <VisuallyHidden>Bold</VisuallyHidden>
         </Toggle>
         <Toggle
-          aria-label="Italic"
+          aria-label={t("richTextEditor.italic")}
           onPressedChange={() =>
             ctx.editor?.chain().focus().toggleItalic().run()}
           pressed={italic}
@@ -84,7 +87,7 @@ const orderedList = $derived(
           <VisuallyHidden>Italic</VisuallyHidden>
         </Toggle>
         <Toggle
-          aria-label="Strikethrough"
+          aria-label={t("richTextEditor.strikethrough")}
           onPressedChange={() =>
             ctx.editor?.chain().focus().toggleStrike().run()}
           pressed={strike}
@@ -95,7 +98,7 @@ const orderedList = $derived(
           <VisuallyHidden>Strikethrough</VisuallyHidden>
         </Toggle>
         <Toggle
-          aria-label="Bullet list"
+          aria-label={t("richTextEditor.bulletList")}
           onPressedChange={() =>
             ctx.editor?.chain().focus().toggleBulletList().run()}
           pressed={bulletList}
@@ -106,7 +109,7 @@ const orderedList = $derived(
           <VisuallyHidden>Bullet list</VisuallyHidden>
         </Toggle>
         <Toggle
-          aria-label="Ordered list"
+          aria-label={t("richTextEditor.orderedList")}
           onPressedChange={() =>
             ctx.editor?.chain().focus().toggleOrderedList().run()}
           pressed={orderedList}

@@ -4,6 +4,7 @@ export { default as CustomRecipe } from "./custom-recipe.svelte";
 export { default as Default } from "./default.svelte";
 export { default as Disabled } from "./disabled.svelte";
 export { default as DisabledItem } from "./disabled-item.svelte";
+export { default as Empty } from "./empty.svelte";
 export { default as Grid } from "./grid.svelte";
 export { default as Grouping } from "./grouping.svelte";
 export { default as Horizontal } from "./horizontal.svelte";

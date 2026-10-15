@@ -1,3 +1,4 @@
+import compoundRaw from "./compound.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
 import custom_recipeRaw from "./custom-recipe.svelte?raw";
 import disabledRaw from "./disabled.svelte?raw";
@@ -13,6 +14,7 @@ import with_labelRaw from "./with-label.svelte?raw";
 export const imports = `import { Slider } from "@pisagor/svelte";`;
 
 export const sources = {
+  Compound: compoundRaw,
   Controlled: controlledRaw,
   CustomRecipe: custom_recipeRaw,
   Disabled: disabledRaw,

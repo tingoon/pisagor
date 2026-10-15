@@ -9,7 +9,13 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "children"> & {
   /** Maximum number of avatars to show; excess shown as "+N". */
   max?: number;
   /** User list rendered as avatars. */
-  users: Array<{ fallback?: string; name?: string; src?: string }>;
+  users: Array<{
+    fallback?: string;
+    /** Stable key; recommended when names or images can repeat. */
+    id?: string;
+    name?: string;
+    src?: string;
+  }>;
 } & BaseAvatarGroupProps;
 
 let { max, users, ...rest }: Props = $props();
@@ -21,7 +27,10 @@ const remainingCount = $derived(
 </script>
 
 <AvatarGroupRoot {...rest}>
-  {#each visibleUsers as user (user.src ?? user.fallback ?? user.name)}
+  {#each visibleUsers as user (user.id ??
+    user.src ??
+    user.fallback ??
+    user.name)}
     <Avatar alt={user.name ?? ""} fallback={user.fallback} src={user.src} />
   {/each}
   {#if remainingCount > 0}

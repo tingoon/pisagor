@@ -4,16 +4,19 @@ import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { itemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
+import type { SizeScaleProps } from "../../internal/types";
 import { setItemContext } from "./item.context";
 import { useItemGroup } from "./item-group.context";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;
-} & BaseItemProps;
+} & BaseItemProps &
+  SizeScaleProps;
 
 let {
   variant: variantProp,
   children,
+  size,
   recipe = itemRecipe,
   class: className,
   ...rest
@@ -21,7 +24,7 @@ let {
 
 const group = useItemGroup();
 const variant = $derived(variantProp ?? group?.variant ?? "default");
-const slots = $derived(recipe());
+const slots = $derived(recipe({ size }));
 
 setItemContext({
   get slots() {
