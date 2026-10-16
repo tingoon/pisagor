@@ -1,29 +1,29 @@
 {
+  "name": "@pisagor/tokens",
+  "version": "0.3.0",
+  "description": "Design tokens and Tailwind v4 theme CSS for Pisagor.",
+  "homepage": "https://github.com/tingoon/pisagor#readme",
   "bugs": {
     "url": "https://github.com/tingoon/pisagor/issues"
   },
-  "description": "Design tokens and Tailwind v4 theme CSS for Pisagor.",
-  "exports": {
-    "./styles": "./src/styles.css"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git",
+    "directory": "packages/tokens"
   },
   "files": [
     "skills",
     "src/styles.css"
   ],
-  "homepage": "https://github.com/tingoon/pisagor#readme",
-  "license": "MIT",
-  "name": "@pisagor/tokens",
-  "peerDependencies": {
-    "tailwindcss": "^4"
-  },
-  "repository": {
-    "directory": "packages/tokens",
-    "type": "git",
-    "url": "git+https://github.com/tingoon/pisagor.git"
-  },
+  "type": "module",
   "sideEffects": [
     "**/*.css"
   ],
-  "type": "module",
-  "version": "0.3.0"
+  "exports": {
+    "./styles": "./src/styles.css"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^4"
+  }
 }

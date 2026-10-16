@@ -1,16 +1,16 @@
 {
+  "name": "solid-stories",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Solid stories for @pisagor/solid.",
+  "type": "module",
+  "scripts": {
+    "typecheck": "bun check"
+  },
   "dependencies": {
     "solid-js": "catalog:"
   },
-  "description": "Solid stories for @pisagor/solid.",
   "devDependencies": {
     "typescript": "catalog:"
-  },
-  "name": "solid-stories",
-  "private": true,
-  "scripts": {
-    "type-check": "tsc --noEmit"
-  },
-  "type": "module",
-  "version": "0.0.0"
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "globalDependencies": ["biome.json", "tsconfig.json"],
+  "globalDependencies": ["biome.json", "bunfig.toml", "tsconfig.json"],
   "globalPassThroughEnv": [
     "TANSTACK_CLI_TELEMETRY_DISABLED",
     "TURBO_TELEMETRY_DISABLED"
@@ -18,7 +18,7 @@
     "transit": {
       "dependsOn": ["^transit"]
     },
-    "type-check": {
+    "typecheck": {
       "dependsOn": ["transit"]
     }
   },

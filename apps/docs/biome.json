@@ -3,36 +3,8 @@
   "linter": {
     "domains": {
       "astro": "all",
-      "react": "recommended",
-      "solid": "none",
       "svelte": "none",
       "vue": "recommended"
     }
-  },
-  "overrides": [
-    {
-      "includes": ["scripts/**"],
-      "linter": {
-        "rules": {
-          "suspicious": {
-            "noConsole": "off"
-          }
-        }
-      }
-    },
-    {
-      "includes": [
-        "src/examples/vue/**",
-        "src/examples/svelte/**",
-        "src/examples/solid/**",
-        "**/*.svelte",
-        "**/*.vue"
-      ],
-      "linter": {
-        "domains": {
-          "react": "none"
-        }
-      }
-    }
-  ]
+  }
 }

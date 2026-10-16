@@ -1,15 +1,19 @@
 import { defineConfig } from "knip/config";
 
 export default defineConfig({
+  // Bun built-ins (`bun fmt`, `bun lint`, `bun check`), not package binaries.
+  ignoreBinaries: ["check", "fmt"],
   // Compound parts are `export const X` then composed via Object.assign in the same file.
   ignoreExportsUsedInFile: true,
   workspaces: {
     "apps/astro": {
       entry: [".storybook/**/*", "src/**/*"],
-      ignoreDependencies: ["chromatic"],
+      // `astro sync && bun check` replaces `astro check`.
+      ignoreDependencies: ["@astrojs/check", "chromatic"],
     },
     "apps/docs": {
       entry: ["scripts/**/*.ts", "src/**/*.{astro,ts,tsx,vue,svelte}"],
+      ignoreDependencies: ["@astrojs/check"],
     },
     "apps/react": {
       entry: [".storybook/**/*", "src/**/*"],

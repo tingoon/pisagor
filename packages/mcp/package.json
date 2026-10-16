@@ -1,32 +1,31 @@
 {
-  "bin": {
-    "pisagor-mcp": "./src/stdio.ts"
-  },
+  "name": "@pisagor/mcp",
+  "version": "0.2.0",
+  "description": "MCP server for Pisagor UI. Ships package catalogs and exposes tools for installed @pisagor/* packages.",
+  "homepage": "https://github.com/tingoon/pisagor#readme",
   "bugs": {
     "url": "https://github.com/tingoon/pisagor/issues"
   },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.30.0",
-    "zod": "^4.6.5"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git",
+    "directory": "packages/mcp"
   },
-  "description": "MCP server for Pisagor UI. Ships package catalogs and exposes tools for installed @pisagor/* packages.",
-
+  "bin": {
+    "pisagor-mcp": "./src/stdio.ts"
+  },
   "files": [
     "*.gen.json",
     "src"
   ],
-  "homepage": "https://github.com/tingoon/pisagor#readme",
-  "license": "MIT",
-  "name": "@pisagor/mcp",
-  "repository": {
-    "directory": "packages/mcp",
-    "type": "git",
-    "url": "git+https://github.com/tingoon/pisagor.git"
-  },
+  "type": "module",
   "scripts": {
     "start": "bun ./src/stdio.ts",
-    "type-check": "tsc"
+    "typecheck": "bun check"
   },
-  "type": "module",
-  "version": "0.2.0"
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^4.6.5"
+  }
 }

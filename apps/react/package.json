@@ -1,4 +1,15 @@
 {
+  "name": "react-stories",
+  "version": "0.0.0",
+  "private": true,
+  "description": "React Storybook for @pisagor/react package stories.",
+  "type": "module",
+  "scripts": {
+    "build": "storybook build",
+    "build-storybook": "bun run build",
+    "dev": "storybook dev -p 4001",
+    "typecheck": "bun check"
+  },
   "dependencies": {
     "@mantine/hooks": "^9.6.2",
     "@phosphor-icons/react": "^2.1.10",
@@ -8,7 +19,6 @@
     "react": "catalog:",
     "react-dom": "catalog:"
   },
-  "description": "React Storybook for @pisagor/react package stories.",
   "devDependencies": {
     "@storybook/addon-a11y": "^10.6.0",
     "@storybook/addon-docs": "^10.6.0",
@@ -21,15 +31,5 @@
     "storybook": "^10.6.0",
     "tailwindcss": "catalog:",
     "vite": "catalog:"
-  },
-  "name": "react-stories",
-  "private": true,
-  "scripts": {
-    "build": "storybook build",
-    "build-storybook": "bun run build",
-    "dev": "storybook dev -p 4001",
-    "type-check": "tsc"
-  },
-  "type": "module",
-  "version": "0.0.0"
+  }
 }

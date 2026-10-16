@@ -1,8 +1,29 @@
 {
+  "name": "@pisagor/react-form",
+  "version": "0.2.0",
+  "description": "Labeled form fields and TanStack Form bindings for @pisagor/react.",
+  "homepage": "https://github.com/tingoon/pisagor#readme",
   "bugs": {
     "url": "https://github.com/tingoon/pisagor/issues"
   },
-  "description": "Labeled form fields and TanStack Form bindings for @pisagor/react.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git",
+    "directory": "packages/react-form"
+  },
+  "files": [
+    "skills",
+    "src"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./src/fields/index.ts",
+    "./tanstack": "./src/tanstack/index.ts"
+  },
+  "scripts": {
+    "typecheck": "bun check"
+  },
   "devDependencies": {
     "@pisagor/react": "workspace:*",
     "@tanstack/react-form": "^1.33.5",
@@ -11,17 +32,6 @@
     "react": "catalog:",
     "react-dom": "catalog:"
   },
-  "exports": {
-    ".": "./src/fields/index.ts",
-    "./tanstack": "./src/tanstack/index.ts"
-  },
-  "files": [
-    "skills",
-    "src"
-  ],
-  "homepage": "https://github.com/tingoon/pisagor#readme",
-  "license": "MIT",
-  "name": "@pisagor/react-form",
   "peerDependencies": {
     "@pisagor/react": "workspace:^",
     "@tanstack/react-form": "^1.33.5",
@@ -32,15 +42,5 @@
     "@tanstack/react-form": {
       "optional": true
     }
-  },
-  "repository": {
-    "directory": "packages/react-form",
-    "type": "git",
-    "url": "git+https://github.com/tingoon/pisagor.git"
-  },
-  "scripts": {
-    "type-check": "tsc"
-  },
-  "type": "module",
-  "version": "0.2.0"
+  }
 }

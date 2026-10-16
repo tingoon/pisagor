@@ -1,0 +1,41 @@
+[fmt]
+sortPackageJson = true
+sortTailwindcss = true
+jsdoc = true
+# bun fmt reads only the root .gitignore, so generated output is listed here.
+ignorePatterns = [
+  "**/*.gen.*",
+  "**/*.astro",
+  "**/bun.lock",
+  "**/node_modules/",
+  "**/dist/",
+  "**/storybook-static/",
+  "**/.astro/",
+  "**/.turbo/",
+  "**/CHANGELOG.md",
+  # Copies written by apps/docs `docs:sync` from the React docs.
+  "apps/docs/src/content/astro/**/design.md",
+  "apps/docs/src/content/astro/**/metadata.md",
+  "apps/docs/src/content/solid/**/design.md",
+  "apps/docs/src/content/solid/**/metadata.md",
+  "apps/docs/src/content/svelte/**/design.md",
+  "apps/docs/src/content/svelte/**/metadata.md",
+  "apps/docs/src/content/vue/**/design.md",
+  "apps/docs/src/content/vue/**/metadata.md",
+]
+
+[lint]
+ignorePatterns = [
+  "**/*.gen.*",
+  "**/dist/",
+  "**/storybook-static/",
+  "**/.astro/",
+  "**/.turbo/",
+]
+
+[lint.rules]
+"import/no-cycle" = "error"
+
+[[lint.overrides]]
+files = ["**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}"]
+rules = { "@typescript-eslint/no-explicit-any" = "off" }
