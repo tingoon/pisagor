@@ -1,4 +1,17 @@
 {
+  "name": "docs",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Pisagor documentation site with per-framework routes and live component demos.",
+  "type": "module",
+  "scripts": {
+    "build": "astro build && pagefind --site dist",
+    "dev": "astro dev",
+    "docs:sync": "bun scripts/sync-shared-docs.ts",
+    "docs:sync:check": "bun scripts/sync-shared-docs.ts --check",
+    "preview": "astro preview",
+    "typecheck": "bun scripts/sync-shared-docs.ts --check && astro sync && bun check && bun check -p tsconfig.solid.json"
+  },
   "dependencies": {
     "@ark-ui/react": "^5.39.2",
     "@ark-ui/solid": "^5.39.2",
@@ -38,7 +51,6 @@
     "yaml": "^2.9.1",
     "zod": "^4.6.5"
   },
-  "description": "Pisagor documentation site with per-framework routes and live component demos.",
   "devDependencies": {
     "@tailwindcss/vite": "catalog:",
     "@types/react": "catalog:",
@@ -46,18 +58,5 @@
     "pagefind": "^1.5.2",
     "tailwindcss": "catalog:",
     "typescript": "catalog:"
-  },
-  "name": "docs",
-  "private": true,
-  "scripts": {
-    "build": "astro build && pagefind --site dist",
-    "dev": "astro dev",
-    "docs:sync": "bun scripts/sync-shared-docs.ts",
-    "docs:sync:check": "bun scripts/sync-shared-docs.ts --check",
-    "generate:props": "bun scripts/generate-props-tables.ts",
-    "preview": "astro preview",
-    "type-check": "bun scripts/sync-shared-docs.ts --check && tsc --noEmit && tsc --noEmit -p tsconfig.solid.json"
-  },
-  "type": "module",
-  "version": "0.0.0"
+  }
 }
