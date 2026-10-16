@@ -29,7 +29,7 @@ import type { ClassValue, LoosePropValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -352,8 +352,7 @@ export const ComboboxClearTrigger = defineComponent({
         ComboboxPrimitive.ClearTrigger as ArkPart,
         {
           ...attrs,
-          "aria-label":
-            props["aria-label"] ?? useProviderMessage("select.clear"),
+          "aria-label": props["aria-label"] ?? useTranslation("select.clear"),
         },
         () => slots.default?.(),
       );
@@ -542,7 +541,7 @@ export const ComboboxEmpty = defineComponent({
           ...attrs,
           class: cn(styleSlots.empty(), props.class, attrs.class),
         },
-        () => slots.default?.() ?? useProviderMessage("combobox.empty"),
+        () => slots.default?.() ?? useTranslation("combobox.empty"),
       );
     };
   },

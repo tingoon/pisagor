@@ -5,7 +5,7 @@ import {
 } from "@ark-ui/svelte/date-picker";
 import { buttonRecipe } from "@pisagor/recipes";
 import XIcon from "phosphor-svelte/lib/XIcon";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 
 const t = useMessageResolver();
 

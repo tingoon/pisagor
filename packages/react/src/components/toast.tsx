@@ -38,7 +38,7 @@ import type {
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { VariantClassNames } from "../internal/types";
 import { Button } from "./button";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 import { Spinner } from "./spinner";
 
 // #region Context

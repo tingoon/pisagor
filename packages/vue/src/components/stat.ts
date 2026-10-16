@@ -15,7 +15,7 @@ import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { ClassValue, VariantClassNames } from "../internal/types";
-import { type MessageKey, useProviderMessage } from "./provider/provider";
+import { type MessageKey, useTranslation } from "./provider/context";
 
 // #region Slot recipe context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -119,7 +119,7 @@ export const StatTrend = defineComponent({
           h(
             "span",
             { class: "sr-only" },
-            useProviderMessage(`stat.trend.${props.trend}` as MessageKey),
+            useTranslation(`stat.trend.${props.trend}` as MessageKey),
           ),
           slots.default?.(),
         ],

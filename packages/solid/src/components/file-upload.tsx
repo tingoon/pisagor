@@ -29,7 +29,7 @@ import { createMemo, For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { UploadIcon, XIcon } from "../internal/icons";
 import { Button } from "./button";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -240,7 +240,7 @@ export function FileUploadList(props: FileUploadListProps): JSX.Element {
           <For each={errors}>
             {(code) => (
               <div class={itemSlots().error()}>
-                {useProviderMessage(`fileUpload.error.${code}` as MessageKey) ??
+                {useTranslation(`fileUpload.error.${code}` as MessageKey) ??
                   code}
               </div>
             )}
@@ -250,7 +250,7 @@ export function FileUploadList(props: FileUploadListProps): JSX.Element {
           asChild={(triggerProps) => (
             <Button
               {...triggerProps({ class: itemSlots().deleteButton() })}
-              aria-label={useProviderMessage("fileUpload.removeFile")}
+              aria-label={useTranslation("fileUpload.removeFile")}
               size="icon-xs"
               variant="ghost"
             >

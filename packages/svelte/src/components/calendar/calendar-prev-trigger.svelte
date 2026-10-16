@@ -6,7 +6,7 @@ import {
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import { useCalendar } from "./calendar.context";
 
 const t = useMessageResolver();

@@ -8,7 +8,7 @@ import ArrowDownIcon from "phosphor-svelte/lib/ArrowDownIcon";
 import ArrowUpIcon from "phosphor-svelte/lib/ArrowUpIcon";
 import MinusIcon from "phosphor-svelte/lib/MinusIcon";
 import type { HTMLAttributes } from "svelte/elements";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 
 type Props = HTMLAttributes<HTMLDivElement> & {
   children?: import("svelte").Snippet;

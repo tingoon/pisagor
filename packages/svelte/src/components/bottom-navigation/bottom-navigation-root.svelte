@@ -2,7 +2,7 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import type { BottomNavigationProps as BaseBottomNavigationProps } from "@pisagor/props";
 import type { HTMLAttributes } from "svelte/elements";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import {
   setBottomNavigationValue,
   withBottomNavigationProvider,

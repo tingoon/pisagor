@@ -23,7 +23,7 @@ import {
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { ClassValue, VariantClassNames } from "../internal/types";
 import { Button } from "./button";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -193,7 +193,7 @@ const SignaturePadClear = defineComponent({
   props: { class: classProp },
   setup(props, { attrs, slots }) {
     const styles = useSignaturePadStyles();
-    const label = useProviderMessage("signaturePad.clearSignature");
+    const label = useTranslation("signaturePad.clearSignature");
 
     return () =>
       h(
@@ -327,7 +327,7 @@ const SignaturePadShorthand = defineComponent({
                       h(
                         Button as ArkPart,
                         {
-                          "aria-label": useProviderMessage(
+                          "aria-label": useTranslation(
                             "signaturePad.clearSignature",
                           ),
                           size: "icon-md",

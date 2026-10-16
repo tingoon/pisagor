@@ -6,7 +6,7 @@ import type {
 import { skipNavRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 
 const SKIP_NAV_ID = "skip-nav-content";
 
@@ -40,7 +40,7 @@ export function SkipNavLink(props: SkipNavLinkProps): JSX.Element {
       data-scope="skip-nav"
       href={`#${id()}`}
     >
-      {local.children ?? useProviderMessage("skipNav.label")}
+      {local.children ?? useTranslation("skipNav.label")}
     </ark.a>
   );
 }

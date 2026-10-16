@@ -16,7 +16,7 @@ import { createSlotRecipeContext } from "../internal/create-slot-recipe-context"
 import { MinusIcon, PlusIcon } from "../internal/icons";
 import { Button } from "./button";
 import { Input, type InputProps } from "./input";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -184,7 +184,7 @@ export function NumberInputDecrementTrigger(
           {...triggerProps({
             class: styles.slots.decrementTrigger({ class: local.class }),
           })}
-          aria-label={useProviderMessage("numberInput.decrement")}
+          aria-label={useTranslation("numberInput.decrement")}
           variant="ghost"
         >
           <MinusIcon />
@@ -208,7 +208,7 @@ export function NumberInputIncrementTrigger(
           {...triggerProps({
             class: styles.slots.incrementTrigger({ class: local.class }),
           })}
-          aria-label={useProviderMessage("numberInput.increment")}
+          aria-label={useTranslation("numberInput.increment")}
           variant="ghost"
         >
           <PlusIcon />

@@ -4,7 +4,7 @@ import { spinnerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CircleNotchIcon from "phosphor-svelte/lib/CircleNotchIcon";
 import type { ClassValue } from "svelte/elements";
-import { useMessageResolver } from "./provider/provider.context";
+import { useMessageResolver } from "./provider/context";
 
 const t = useMessageResolver();
 

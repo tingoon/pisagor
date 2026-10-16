@@ -16,7 +16,7 @@ import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps, useContext } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -169,7 +169,7 @@ export function TimerActionTrigger(
 export function TimerPause(props: TimerActionProps): JSX.Element {
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useProviderMessage("timer.pause")}
+      aria-label={useTranslation("timer.pause")}
       {...props}
       action="pause"
     />
@@ -179,7 +179,7 @@ export function TimerPause(props: TimerActionProps): JSX.Element {
 export function TimerResume(props: TimerActionProps): JSX.Element {
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useProviderMessage("timer.resume")}
+      aria-label={useTranslation("timer.resume")}
       {...props}
       action="resume"
     />
@@ -189,7 +189,7 @@ export function TimerResume(props: TimerActionProps): JSX.Element {
 export function TimerStart(props: TimerActionProps): JSX.Element {
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useProviderMessage("timer.start")}
+      aria-label={useTranslation("timer.start")}
       {...props}
       action="start"
     />
@@ -199,7 +199,7 @@ export function TimerStart(props: TimerActionProps): JSX.Element {
 export function TimerReset(props: TimerActionProps): JSX.Element {
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useProviderMessage("timer.reset")}
+      aria-label={useTranslation("timer.reset")}
       {...props}
       action="reset"
     />
@@ -209,7 +209,7 @@ export function TimerReset(props: TimerActionProps): JSX.Element {
 export function TimerRestart(props: TimerActionProps): JSX.Element {
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useProviderMessage("timer.restart")}
+      aria-label={useTranslation("timer.restart")}
       {...props}
       action="restart"
     />

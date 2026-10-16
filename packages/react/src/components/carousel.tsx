@@ -18,7 +18,7 @@ import { carouselRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button } from "./button";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 
 // #region Context
 const {

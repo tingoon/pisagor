@@ -31,7 +31,7 @@ import {
   type VNodeChild,
   watch,
 } from "vue";
-import { useProviderMessage } from "../components/provider/provider";
+import { useTranslation } from "../components/provider/context";
 import { Table } from "../components/table";
 import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
@@ -358,7 +358,7 @@ export const DataGridColumnResizer = defineComponent({
     class: { type: [String, Object, Array] as PropType<ClassValue> },
   },
   setup(props, { attrs }) {
-    const resizeLabel = useProviderMessage("dataGrid.resizeColumn");
+    const resizeLabel = useTranslation("dataGrid.resizeColumn");
     return () => {
       const headerCell = useDataGridHeaderCellContext<RowData>();
       const { slots: variantSlots, table } =
@@ -749,7 +749,7 @@ export const DataGridEmpty = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const emptyText = useProviderMessage("dataGrid.empty");
+    const emptyText = useTranslation("dataGrid.empty");
     return () => {
       const { slots: variantSlots, table } =
         useDataGridContextBase() as unknown as DataGridContextValue<RowData>;

@@ -17,7 +17,7 @@ import type { FormControlVariant } from "../internal/types";
 import { Button } from "./button";
 import { Field } from "./field";
 import { Input, type InputProps } from "./input";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context

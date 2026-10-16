@@ -10,7 +10,7 @@ import {
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createContext, splitProps, useContext } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -73,7 +73,7 @@ export function BottomNavigationRoot(
   props: BottomNavigationRootProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["value", "aria-label"]);
-  const label = useProviderMessage("bottomNavigation.label");
+  const label = useTranslation("bottomNavigation.label");
   return (
     <BottomNavigationValueContext.Provider value={() => local.value}>
       <BottomNavigationNav

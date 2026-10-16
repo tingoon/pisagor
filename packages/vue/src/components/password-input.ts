@@ -13,7 +13,7 @@ import type {
   InputGroupButtonProps,
   InputGroupProps,
 } from "./input-group/input-group-core";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -104,7 +104,7 @@ const PasswordInputVisibilityTrigger = defineComponent({
   inheritAttrs: false,
   name: "PasswordInput.VisibilityTrigger",
   setup(_, { attrs, slots }) {
-    const label = useProviderMessage("passwordInput.togglePasswordVisibility");
+    const label = useTranslation("passwordInput.togglePasswordVisibility");
 
     return () =>
       h(InputGroup.Addon as ArkPart, { align: "inline-end" }, () =>
@@ -251,9 +251,7 @@ const PasswordInputShorthand = defineComponent({
                         h(
                           InputGroup.Button as ArkPart,
                           {
-                            "aria-label": useProviderMessage(
-                              "passwordInput.clear",
-                            ),
+                            "aria-label": useTranslation("passwordInput.clear"),
                             ...restClearButtonProps,
                             "data-part": "clear-trigger",
                             "data-scope": "password-input",
@@ -280,7 +278,7 @@ const PasswordInputShorthand = defineComponent({
                       h(
                         InputGroup.Button as ArkPart,
                         {
-                          "aria-label": useProviderMessage(
+                          "aria-label": useTranslation(
                             "passwordInput.togglePasswordVisibility",
                           ),
                           size: "icon-xs",

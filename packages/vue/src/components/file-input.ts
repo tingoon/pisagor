@@ -9,7 +9,7 @@ import {
   InputGroupButton,
   InputGroupText,
 } from "./input-group/input-group-core";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -189,8 +189,7 @@ export const FileInput = defineComponent({
                     onClick: openPicker,
                     type: "button",
                   },
-                  () =>
-                    props.browseLabel ?? useProviderMessage("fileInput.browse"),
+                  () => props.browseLabel ?? useTranslation("fileInput.browse"),
                 ),
               ),
               h(
@@ -202,7 +201,7 @@ export const FileInput = defineComponent({
                 () =>
                   fileLabel.value ??
                   props.placeholder ??
-                  useProviderMessage("fileInput.placeholder"),
+                  useTranslation("fileInput.placeholder"),
               ),
             ],
           ),

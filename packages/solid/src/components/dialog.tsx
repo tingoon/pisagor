@@ -19,7 +19,7 @@ import { createSlotRecipeContext } from "../internal/create-slot-recipe-context"
 import { XIcon } from "../internal/icons";
 import { createContext } from "../utils";
 import { Button } from "./button";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -162,7 +162,7 @@ export function DialogContent(props: DialogContentProps): JSX.Element {
           asChild={(triggerProps) => (
             <Button
               {...triggerProps({ class: styles.slots.inline() })}
-              aria-label={useProviderMessage("dialog.close")}
+              aria-label={useTranslation("dialog.close")}
               size="icon-sm"
               variant="ghost"
             >

@@ -31,7 +31,7 @@ import {
 } from "./dialog";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 import { Separator } from "./separator";
 
 // #region Context
@@ -117,7 +117,7 @@ function CommandDialogFrame(
         >
           <Dialog.Header class={styles.slots.dialogHeader()}>
             <Dialog.Title>
-              {local.title ?? useProviderMessage("command.title")}
+              {local.title ?? useTranslation("command.title")}
             </Dialog.Title>
             <Dialog.Description>
               {local.description ?? "Search for a command to run..."}
@@ -248,7 +248,7 @@ export function CommandEmpty(props: ComboboxEmptyProps): JSX.Element {
       {...rest}
       class={styles.slots.empty({ class: local.class })}
     >
-      {local.children || useProviderMessage("command.empty")}
+      {local.children || useTranslation("command.empty")}
     </Combobox.Empty>
   );
 }
@@ -325,7 +325,7 @@ export function CommandShorthand(props: CommandShorthandProps): JSX.Element {
     itemToString: (item) => item.label,
     itemToValue: (item) => item.value,
   });
-  const placeholder = useProviderMessage("command.placeholder");
+  const placeholder = useTranslation("command.placeholder");
 
   return (
     <CommandRoot

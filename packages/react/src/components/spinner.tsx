@@ -2,7 +2,7 @@ import { CircleNotchIcon } from "@phosphor-icons/react";
 import type { SpinnerProps as BaseSpinnerProps } from "@pisagor/props";
 import { spinnerRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 
 // #region Types
 export interface SpinnerProps extends ComponentProps<"svg">, BaseSpinnerProps {}

@@ -4,7 +4,7 @@ import {
   InputGroupButton,
   type InputGroupButtonProps,
 } from "../input-group/input-group-core";
-import { getMessage } from "../provider/provider.context";
+import { getMessage } from "../provider/context";
 
 // #region Types
 interface InputClearButtonProps extends InputGroupButtonProps {

@@ -16,7 +16,7 @@ import type {
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import { type ComponentProps, useCallback, useRef } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 
 export type {
   SplitterExpandCollapseDetails as ExpandCollapseDetails,

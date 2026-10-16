@@ -5,7 +5,7 @@ import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { ClassValue, VariantClassNames } from "../internal/types";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 // #region Slot recipe context
 const {
@@ -66,7 +66,7 @@ export const NavbarNav = defineComponent({
         ark.nav as ArkPart,
         {
           ...attrs,
-          "aria-label": props.ariaLabel ?? useProviderMessage("navbar.label"),
+          "aria-label": props.ariaLabel ?? useTranslation("navbar.label"),
           class: slots$.nav({
             class: cn(props.class, attrs.class, props.classNames?.nav),
           }),

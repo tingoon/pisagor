@@ -2,7 +2,7 @@
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "svelte";
 import ComboboxEmpty from "../combobox/combobox-empty.svelte";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import { useCommand } from "./command.context";
 
 let {

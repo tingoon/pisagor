@@ -28,7 +28,7 @@ import { createSlotRecipeContext } from "../internal/create-slot-recipe-context"
 import { createContext } from "../internal/utils/create-context";
 import { Button } from "./button";
 import { DialogBody, DialogFooter, DialogHeader } from "./dialog";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 // #region Slot recipe context
 const { provideStyles: provideTourStyles } = createSlotRecipeContext({
@@ -313,7 +313,7 @@ export const TourContent = defineComponent({
                           h(
                             "span",
                             { class: recipeSlots.closeLabel() },
-                            useProviderMessage("tour.close"),
+                            useTranslation("tour.close"),
                           ),
                         ],
                       ),

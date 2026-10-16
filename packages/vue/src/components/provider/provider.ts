@@ -1,104 +1,200 @@
-import { LocaleProvider } from "@ark-ui/vue/locale";
+import { LocaleProvider as ArkLocaleProvider } from "@ark-ui/vue/locale";
 import {
-  type MessageKey,
-  type ProviderMessages,
-  resolveMessage,
+  defaultLocale,
+  defaultMotion,
+  type LocaleConfig,
+  type MotionConfig,
+  type TranslationsConfig,
 } from "@pisagor/utils";
+import { isNullish, merge, mergeDeep, omitBy } from "remeda";
+import { computed, defineComponent, h, type PropType, provide } from "vue";
+import { Toaster } from "../toast";
 import {
-  computed,
-  defineComponent,
-  h,
-  type InjectionKey,
-  inject,
-  provide,
-} from "vue";
-
-// #region Types
-export type { MessageKey, ProviderMessages } from "@pisagor/utils";
-
-export interface ProviderProps {
-  /**
-   * Document / layout direction. When omitted, inferred from `locale`
-   * (`ar`, `he`, `fa`, `ur` → `rtl`).
-   */
-  dir?: "ltr" | "rtl";
-  locale?: string;
-  /**
-   * Partial message overrides merged over the built-in English
-   * `defaultMessages` from `@pisagor/utils`.
-   */
-  messages?: ProviderMessages;
-}
-// #endregion
-
-// #region Context
-const ProviderMessagesKey: InjectionKey<ProviderMessages> =
-  Symbol("ProviderMessages");
-
-/**
- * Resolve a library message key. User `messages` from the nearest `Provider`
- * are merged over the built-in English `defaultMessages`.
- */
-export function useProviderMessage(key: MessageKey): string {
-  return resolveMessage(useProviderMessages(), key);
-}
-
-export function useProviderMessages() {
-  return inject(ProviderMessagesKey, {});
-}
-
-const RTL_LANGS = new Set(["ar", "fa", "he", "ur"]);
-
-function resolveDir(locale: string, dir?: "ltr" | "rtl"): "ltr" | "rtl" {
-  if (dir) {
-    return dir;
-  }
-  const language = locale.split("-")[0]?.toLowerCase() ?? "en";
-  return RTL_LANGS.has(language) ? "rtl" : "ltr";
-}
-// #endregion
+  LocaleKey,
+  MotionKey,
+  ProviderKey,
+  TranslationsKey,
+  useLocale,
+  useMotion,
+  useProvider,
+  useTranslations,
+} from "./context";
+import { ProviderDir } from "./dir";
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Component
-export const Provider = defineComponent({
-  inheritAttrs: false,
-  name: "PisagorProvider",
-  props: {
-    dir: {
-      default: undefined,
-      type: String as () => "ltr" | "rtl" | undefined,
-    },
-    locale: { default: "en-US", type: String },
-    messages: { default: () => ({}), type: Object as () => ProviderMessages },
-  },
-  setup(props, { attrs, slots }) {
-    const dir = computed(() => resolveDir(props.locale, props.dir));
+// #region Types
+export interface ProviderProps {
+  locale?: Partial<LocaleConfig>;
+  translations?: TranslationsConfig;
+  motion?: Partial<MotionConfig>;
+}
 
-    provide(
-      ProviderMessagesKey,
-      new Proxy({} as ProviderMessages, {
-        get: (_target, key) =>
-          typeof key === "string"
-            ? (props.messages as Record<string, string>)[key]
-            : undefined,
-      }),
+export type LocaleProviderProps = Partial<LocaleConfig>;
+export type TranslationsProviderProps = {
+  translations?: TranslationsConfig;
+};
+export type MotionProviderProps = Partial<MotionConfig>;
+// #endregion
+
+// #region Parts
+export const LocaleProvider = defineComponent({
+  name: "PisagorLocaleProvider",
+  props: {
+    locale: { default: undefined, type: String },
+  },
+  setup(props, { slots }) {
+    const parentLocale = useLocale();
+    const config = computed(
+      () =>
+        mergeDeep(
+          mergeDeep(defaultLocale, parentLocale),
+          omitBy({ locale: props.locale }, isNullish),
+        ) as LocaleConfig,
     );
+    provide(LocaleKey, config);
 
     return () =>
       h(
-        LocaleProvider as ArkPart,
-        { ...attrs, locale: props.locale },
+        ArkLocaleProvider as ArkPart,
+        { locale: config.value.locale },
         {
           default: () => [
             h(
-              "div",
-              { dir: dir.value, style: "display: contents" },
-              slots.default?.(),
+              ProviderDir,
+              { part: "locale" },
+              { default: () => slots.default?.() },
             ),
           ],
         },
       );
   },
+});
+
+export const TranslationsProvider = defineComponent({
+  name: "PisagorTranslationsProvider",
+  props: {
+    translations: {
+      default: undefined,
+      type: Object as PropType<TranslationsConfig>,
+    },
+  },
+  setup(props, { slots }) {
+    const parentTranslations = useTranslations();
+    const config = computed(() =>
+      merge(parentTranslations, props.translations ?? {}),
+    );
+    provide(TranslationsKey, config);
+
+    return () => slots.default?.();
+  },
+});
+
+export const MotionProvider = defineComponent({
+  name: "PisagorMotionProvider",
+  props: {
+    disabled: { default: undefined, type: Boolean },
+  },
+  setup(props, { slots }) {
+    const parentMotion = useMotion();
+    const config = computed(
+      () =>
+        mergeDeep(
+          mergeDeep(defaultMotion, parentMotion),
+          omitBy({ disabled: props.disabled }, isNullish),
+        ) as MotionConfig,
+    );
+    provide(MotionKey, config);
+
+    return () =>
+      h(
+        "div",
+        {
+          "data-motion": config.value.disabled ? "disabled" : "enabled",
+          "data-part": "motion",
+          "data-scope": "provider",
+          style: "display: contents",
+        },
+        slots.default?.(),
+      );
+  },
+});
+
+export const ToasterProvider = defineComponent({
+  name: "PisagorToasterProvider",
+  setup() {
+    return () => h(Toaster as ArkPart);
+  },
+});
+
+const ProviderRoot = defineComponent({
+  inheritAttrs: false,
+  name: "PisagorProvider",
+  props: {
+    locale: {
+      default: undefined,
+      type: Object as PropType<Partial<LocaleConfig>>,
+    },
+    motion: {
+      default: undefined,
+      type: Object as PropType<Partial<MotionConfig>>,
+    },
+    translations: {
+      default: undefined,
+      type: Object as PropType<TranslationsConfig>,
+    },
+  },
+  setup(props, { attrs, slots }) {
+    const parentConfig = useProvider();
+    const parentLocale = useLocale();
+    const parentMotion = useMotion();
+    const root = !parentConfig;
+
+    const config = computed(() => ({
+      locale: mergeDeep(
+        mergeDeep(defaultLocale, parentLocale),
+        omitBy(props.locale ?? {}, isNullish),
+      ) as LocaleConfig,
+      motion: mergeDeep(
+        mergeDeep(defaultMotion, parentMotion),
+        omitBy(props.motion ?? {}, isNullish),
+      ) as MotionConfig,
+    }));
+
+    provide(ProviderKey, config);
+
+    return () =>
+      h(
+        LocaleProvider,
+        { ...attrs, locale: props.locale?.locale },
+        {
+          default: () =>
+            h(
+              MotionProvider,
+              { disabled: props.motion?.disabled },
+              {
+                default: () =>
+                  h(
+                    TranslationsProvider,
+                    { translations: props.translations },
+                    {
+                      default: () => [
+                        root ? h(ToasterProvider) : null,
+                        slots.default?.(),
+                      ],
+                    },
+                  ),
+              },
+            ),
+        },
+      );
+  },
+});
+
+export const Provider = Object.assign(ProviderRoot, {
+  Locale: LocaleProvider,
+  Motion: MotionProvider,
+  Toaster: ToasterProvider,
+  Translations: TranslationsProvider,
 });
 // #endregion

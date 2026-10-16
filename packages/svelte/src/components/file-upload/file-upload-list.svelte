@@ -4,7 +4,7 @@ import type { FileUploadItemProps as BaseFileUploadItemProps } from "@pisagor/pr
 import { fileUploadItemRecipe } from "@pisagor/recipes";
 import { cn, type MessageKey } from "@pisagor/utils";
 import type { ClassValue } from "svelte/elements";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import { useFileUpload } from "./file-upload.context";
 import FileUploadItem from "./file-upload-item.svelte";
 import FileUploadItemDeleteTrigger from "./file-upload-item-delete-trigger.svelte";

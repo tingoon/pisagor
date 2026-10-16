@@ -23,7 +23,7 @@ import { createMemo, For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { XIcon } from "../internal/icons";
 import { InputGroup, type InputGroupProps } from "./input-group";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const { Context: TagsInputStylesContext, useStyles: useTagsInput } =
@@ -153,7 +153,7 @@ export function TagsInputControl(props: TagsInputControlProps): JSX.Element {
           {local.children}
           <Show when={clearable() && api().value.length > 0}>
             <TagsInputClearTrigger
-              aria-label={useProviderMessage("tagsInput.clearAllTags")}
+              aria-label={useTranslation("tagsInput.clearAllTags")}
             />
           </Show>
         </InputGroup>
@@ -238,7 +238,7 @@ export function TagsInputItemDeleteTrigger(
           {...triggerProps({
             class: styles.slots.delete({ class: local.class }),
           })}
-          aria-label={useProviderMessage("tagsInput.removeTag")}
+          aria-label={useTranslation("tagsInput.removeTag")}
           size="icon-xs"
           variant="ghost"
         >
@@ -289,7 +289,7 @@ export function TagsInputClearTrigger(
           {...triggerProps({
             class: styles.slots.clearTrigger({ class: local.class }),
           })}
-          aria-label={useProviderMessage("tagsInput.clear")}
+          aria-label={useTranslation("tagsInput.clear")}
           size="icon-xs"
           variant="ghost"
         >

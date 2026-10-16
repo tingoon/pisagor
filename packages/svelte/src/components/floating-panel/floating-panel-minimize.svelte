@@ -6,7 +6,7 @@ import {
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import MinusIcon from "phosphor-svelte/lib/MinusIcon";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 
 const t = useMessageResolver();
 

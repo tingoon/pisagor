@@ -12,7 +12,7 @@ import { cn } from "@pisagor/utils";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { type ComponentProps, type ReactNode, useEffect, useMemo } from "react";
-import { getMessage } from "../components/provider/provider.context";
+import { getMessage } from "../components/provider/context";
 import { useFormControlSurface } from "../components/surface/use-form-control-surface";
 import { Toggle } from "../components/toggle";
 import { VisuallyHidden } from "../components/visually-hidden";

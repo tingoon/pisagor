@@ -6,7 +6,7 @@ import {
 import { buttonRecipe, comboboxRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CaretUpDownIcon from "phosphor-svelte/lib/CaretUpDownIcon";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import { useComboboxRoot } from "./combobox.context";
 
 const t = useMessageResolver();

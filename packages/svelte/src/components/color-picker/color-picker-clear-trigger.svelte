@@ -3,7 +3,7 @@ import { parseColor, useColorPickerContext } from "@ark-ui/svelte/color-picker";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import type { ClassValue } from "svelte/elements";
 import { InputGroup } from "../input-group";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 
 const t = useMessageResolver();
 

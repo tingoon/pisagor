@@ -16,7 +16,7 @@ import RPNPhoneInput, {
 import { Combobox, type ComboboxContentProps } from "../components/combobox";
 import type { InputProps } from "../components/input";
 import { InputGroup } from "../components/input-group";
-import { getMessage } from "../components/provider/provider.context";
+import { getMessage } from "../components/provider/context";
 import type { FormControlVariant, VariantClassNames } from "../internal/types";
 import { PhoneInputContext, usePhoneInput } from "./phone-input.context";
 import { phoneInputFlags } from "./phone-input-flags";

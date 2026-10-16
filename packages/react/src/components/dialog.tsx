@@ -16,7 +16,7 @@ import type { ComponentProps, ReactNode } from "react";
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button } from "./button";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context

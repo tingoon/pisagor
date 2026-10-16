@@ -19,7 +19,7 @@ import ClipboardIcon from "phosphor-svelte/lib/ClipboardIcon";
 import type { Snippet } from "svelte";
 import type { VariantClassNames } from "../../internal/types";
 import Button from "../button.svelte";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { Context } from "./clipboard.context";
 import ClipboardControl from "./clipboard-control.svelte";

@@ -13,7 +13,7 @@ import { cn } from "@pisagor/utils";
 import MinusIcon from "phosphor-svelte/lib/MinusIcon";
 import PlusIcon from "phosphor-svelte/lib/PlusIcon";
 import InputClearButton from "../input/input-clear-button.svelte";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { Context } from "./number-input.context";
 

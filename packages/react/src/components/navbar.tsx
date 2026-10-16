@@ -3,7 +3,7 @@ import type { NavbarProps as BaseNavbarRootProps } from "@pisagor/props";
 import { navbarRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({

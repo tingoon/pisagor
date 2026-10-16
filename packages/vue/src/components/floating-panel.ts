@@ -19,7 +19,7 @@ import { createSlotRecipeContext } from "../internal/create-slot-recipe-context"
 import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
 import { Button, type ButtonProps } from "./button";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Slot recipe context
@@ -279,7 +279,7 @@ export const FloatingPanelMinimize = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useProviderMessage("floatingPanel.minimize"),
+              "aria-label": useTranslation("floatingPanel.minimize"),
               class: props.class,
               size: props.size,
               variant: props.variant,
@@ -316,7 +316,7 @@ export const FloatingPanelMaximize = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useProviderMessage("floatingPanel.maximize"),
+              "aria-label": useTranslation("floatingPanel.maximize"),
               class: props.class,
               size: props.size,
               variant: props.variant,
@@ -355,7 +355,7 @@ export const FloatingPanelRestore = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useProviderMessage("floatingPanel.restore"),
+              "aria-label": useTranslation("floatingPanel.restore"),
               class: props.class,
               size: props.size,
               variant: props.variant,

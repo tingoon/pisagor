@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { TimerActionTriggerProps } from "@ark-ui/svelte/timer";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import TimerActionTrigger from "./timer-action-trigger.svelte";
 
 const t = useMessageResolver();

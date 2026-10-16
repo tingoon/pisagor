@@ -17,7 +17,7 @@ import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { DotsSixVerticalIcon } from "../internal/icons";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -234,7 +234,7 @@ export function ResizableResizeTrigger(
 
   return (
     <SplitterPrimitive.ResizeTrigger
-      aria-label={useProviderMessage("resizable.resize")}
+      aria-label={useTranslation("resizable.resize")}
       {...rest}
       class={styles.slots.resizeTrigger({ class: local.class })}
     >

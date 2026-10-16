@@ -1,9 +1,22 @@
-import { Provider } from "./provider";
-
 export type {
+  LocaleConfig,
   MessageKey,
-  ProviderMessages,
+  MotionConfig,
+  ProviderContextValue,
+  TranslationsConfig,
+} from "./context";
+export {
+  useLocale,
+  useMotion,
+  useProvider,
+  useProviderValue,
+  useTranslation,
+  useTranslations,
+} from "./context";
+export type {
+  LocaleProviderProps,
+  MotionProviderProps,
   ProviderProps,
+  TranslationsProviderProps,
 } from "./provider";
-export { useProviderMessage, useProviderMessages } from "./provider";
-export { Provider };
+export { Provider } from "./provider";

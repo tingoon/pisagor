@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
 import type { HTMLAttributes } from "svelte/elements";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import { withContext } from "./navbar.context";
 
 const t = useMessageResolver();

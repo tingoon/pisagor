@@ -7,7 +7,7 @@ import type { DialogProps as BaseDialogProps } from "@pisagor/props";
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import { useDialog } from "./dialog.context";
 
 const t = useMessageResolver();

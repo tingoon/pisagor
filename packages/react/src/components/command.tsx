@@ -31,7 +31,7 @@ import {
 } from "./dialog";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 import { Separator } from "./separator";
 
 // #region Context

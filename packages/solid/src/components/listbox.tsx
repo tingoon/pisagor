@@ -24,7 +24,7 @@ import { createMemo, For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { CheckIcon } from "../internal/icons";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "./dropdown-menu";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -208,7 +208,7 @@ export function ListboxEmpty(props: ListboxEmptyProps): JSX.Element {
       {...rest}
       class={styles.slots.empty({ class: local.class })}
     >
-      {local.children || useProviderMessage("listbox.empty")}
+      {local.children || useTranslation("listbox.empty")}
     </ListboxPrimitive.Empty>
   );
 }

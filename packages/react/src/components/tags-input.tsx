@@ -23,7 +23,7 @@ import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { InputGroup, type InputGroupProps } from "./input-group";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 
 // #region Context
 const { Context: TagsInputStylesContext, useStyles: useTagsInput } =

@@ -4,10 +4,10 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "remeda": "^2.52.0",
     "tailwind-merge": "^3.7.0"
   },
   "description": "Tree-shakeable class-name helpers (`cn`) for Pisagor.",
-
   "exports": {
     ".": "./src/index.ts"
   },

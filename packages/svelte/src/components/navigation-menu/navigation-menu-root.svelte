@@ -3,7 +3,7 @@ import { Ark } from "@ark-ui/svelte/factory";
 import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import {
   setNavigationMenuOpenState,
   withProvider,

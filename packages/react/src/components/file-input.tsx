@@ -20,7 +20,7 @@ import {
   InputGroupText,
   type InputGroupTextProps,
 } from "./input-group/input-group-core";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context

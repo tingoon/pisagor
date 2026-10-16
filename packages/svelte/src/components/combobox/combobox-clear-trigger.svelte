@@ -3,7 +3,7 @@ import {
   type ComboboxClearTriggerProps,
   Combobox as ComboboxPrimitive,
 } from "@ark-ui/svelte/combobox";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 
 const t = useMessageResolver();
 

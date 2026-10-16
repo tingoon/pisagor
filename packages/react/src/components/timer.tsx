@@ -13,7 +13,7 @@ import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
 import { Fragment, use } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { getMessage, type MessageKey } from "./provider/provider.context";
+import { getMessage, type MessageKey } from "./provider/context";
 
 // #region Context
 const {

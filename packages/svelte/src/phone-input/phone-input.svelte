@@ -22,7 +22,7 @@ import { Combobox } from "../components/combobox";
 import type ComboboxContent from "../components/combobox/combobox-content.svelte";
 import type Input from "../components/input/input.svelte";
 import { InputGroup } from "../components/input-group";
-import { useMessageResolver } from "../components/provider/provider.context";
+import { useMessageResolver } from "../components/provider/context";
 import { setPhoneInputContext } from "./phone-input.context";
 import { phoneInputFlags } from "./phone-input-flags";
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte/color-picker";
 import type { ClassValue } from "svelte/elements";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 
 type Props = {
   class?: ClassValue;

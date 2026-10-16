@@ -34,7 +34,7 @@ import { createSlotRecipeContext } from "../internal/create-slot-recipe-context"
 import type { FormControlVariant } from "../internal/types";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 
 // #region Context
 const { Context: ComboboxStylesContext } = createSlotRecipeContext({

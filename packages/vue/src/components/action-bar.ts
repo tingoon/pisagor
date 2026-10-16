@@ -19,7 +19,7 @@ import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
 import { Badge, type BadgeProps } from "./badge";
 import { Button } from "./button";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 import { Separator, type SeparatorProps } from "./separator";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -416,7 +416,7 @@ export const ActionBarClose = defineComponent({
       h(
         ark.button as ArkPart,
         {
-          "aria-label": useProviderMessage("actionBar.close"),
+          "aria-label": useTranslation("actionBar.close"),
           ...attrs,
           class: styleSlots.close({ class: props.class }),
           "data-part": "close",

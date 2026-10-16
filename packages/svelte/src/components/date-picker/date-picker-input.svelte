@@ -15,7 +15,7 @@ import {
   isInsideControl,
   setInsideControl,
 } from "../../internal/inside-control";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import {
   DATE_PICKER_INSIDE_CONTROL,

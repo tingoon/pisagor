@@ -41,7 +41,7 @@ import { createSlotRecipeContext } from "../internal/create-slot-recipe-context"
 import { CaretUpDownIcon, CheckIcon, XIcon } from "../internal/icons";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const { Context: ComboboxStylesContext } = createSlotRecipeContext({
@@ -227,7 +227,7 @@ export function ComboboxInput(props: ComboboxInputProps): JSX.Element {
             asChild={(triggerProps) => (
               <InputGroup.Button
                 {...triggerProps()}
-                aria-label={useProviderMessage("combobox.clear")}
+                aria-label={useTranslation("combobox.clear")}
                 size="icon-xs"
                 variant="ghost"
               >
@@ -267,7 +267,7 @@ export function ComboboxTrigger(props: ComboboxTriggerProps): JSX.Element {
       asChild={(triggerProps) => (
         <Button
           {...triggerProps({ class: cn(slots().trigger(), local.class) })}
-          aria-label={useProviderMessage("combobox.toggle")}
+          aria-label={useTranslation("combobox.toggle")}
           class={slots().triggerButton()}
           variant="ghost"
         >
@@ -285,7 +285,7 @@ export function ComboboxClearTrigger(
   return (
     <ComboboxPrimitive.ClearTrigger
       {...rest}
-      aria-label={local["aria-label"] ?? useProviderMessage("select.clear")}
+      aria-label={local["aria-label"] ?? useTranslation("select.clear")}
     />
   );
 }
@@ -388,7 +388,7 @@ export function ComboboxEmpty(props: ComboboxEmptyProps): JSX.Element {
       {...rest}
       class={slots().empty({ class: local.class })}
     >
-      {local.children || useProviderMessage("combobox.empty")}
+      {local.children || useTranslation("combobox.empty")}
     </ComboboxPrimitive.Empty>
   );
 }

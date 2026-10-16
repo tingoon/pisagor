@@ -8,7 +8,7 @@ import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { Fragment } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 
 // #region Context
 const {

@@ -19,7 +19,7 @@ export interface CommandShorthandItem {
 import { useListCollection } from "@ark-ui/svelte/collection";
 import { useFilter } from "@ark-ui/svelte/locale";
 import type { ComponentProps } from "svelte";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import CommandContent from "./command-content.svelte";
 import CommandEmpty from "./command-empty.svelte";
 import CommandInput from "./command-input.svelte";

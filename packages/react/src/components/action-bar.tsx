@@ -15,7 +15,7 @@ import { createContext, use, useCallback, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Badge, type BadgeProps } from "./badge";
 import { Button } from "./button";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 import { Separator, type SeparatorProps } from "./separator";
 
 // #region Context

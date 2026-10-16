@@ -30,7 +30,7 @@ import type { ComponentProps, ReactNode } from "react";
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { FormControlVariant } from "../internal/types";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 import { Separator, type SeparatorProps } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 

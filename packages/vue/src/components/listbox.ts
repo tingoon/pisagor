@@ -17,7 +17,7 @@ import { computed, defineComponent, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { ClassValue, LoosePropValue } from "../internal/types";
 import { DropdownMenu } from "./dropdown-menu";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -386,7 +386,7 @@ export const ListboxEmpty = defineComponent({
           ...attrs,
           class: variantSlots.empty({ class: cn(props.class, attrs.class) }),
         },
-        slots.default?.() ?? useProviderMessage("listbox.empty"),
+        slots.default?.() ?? useTranslation("listbox.empty"),
       );
     };
   },

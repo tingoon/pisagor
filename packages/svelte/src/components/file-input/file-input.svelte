@@ -9,7 +9,7 @@ import {
 import { cn } from "@pisagor/utils";
 import type { HTMLInputAttributes } from "svelte/elements";
 import { InputGroup } from "../input-group";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { Context } from "./file-input.context";
 

@@ -5,7 +5,7 @@ import {
 } from "@ark-ui/svelte/splitter";
 import { cn } from "@pisagor/utils";
 import DotsSixVerticalIcon from "phosphor-svelte/lib/DotsSixVerticalIcon";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import { useResizable } from "./resizable.context";
 import ResizableResizeTriggerIndicator from "./resizable-resize-trigger-indicator.svelte";
 

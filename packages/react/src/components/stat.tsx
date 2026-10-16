@@ -12,7 +12,7 @@ import {
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { VariantClassNames } from "../internal/types";
-import { getMessage, type MessageKey } from "./provider/provider.context";
+import { getMessage, type MessageKey } from "./provider/context";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({

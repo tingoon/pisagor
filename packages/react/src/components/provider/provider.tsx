@@ -1,69 +1,204 @@
-import { LocaleProvider } from "@ark-ui/react";
-import { IconContext } from "@phosphor-icons/react";
-import type { ReactNode } from "react";
-import { Toaster } from "../toast";
 import {
-  type ProviderMessages,
-  ProviderMessagesContext,
-} from "./provider.context";
+  LocaleProvider as ArkLocaleProvider,
+  useLocaleContext,
+} from "@ark-ui/react/locale";
+import { IconContext } from "@phosphor-icons/react";
+import {
+  defaultLocale,
+  defaultMotion,
+  type LocaleConfig,
+  type MotionConfig,
+  type TranslationsConfig,
+} from "@pisagor/utils";
+import { type PropsWithChildren, type ReactNode, useMemo } from "react";
+import { isNullish, merge, mergeDeep, omitBy } from "remeda";
+import { Toaster, type ToasterProps } from "../toast";
+import {
+  LocaleContext,
+  MotionContext,
+  ProviderContext,
+  TranslationsContext,
+  useLocale,
+  useMotion,
+  useProvider,
+  useTranslations,
+} from "./context";
 
 // #region Types
-export type { ProviderMessages } from "./provider.context";
-
 export interface ProviderProps {
-  /**
-   * Document / layout direction. When omitted, inferred from `locale`
-   * (`ar`, `he`, `fa`, `ur` → `rtl`). Applied as `dir` on a
-   * `display: contents` wrapper so descendants inherit it.
-   */
-  dir?: "ltr" | "rtl";
-  locale?: string;
   children: ReactNode;
+  /** Locale settings merged over the parent `Provider`. */
+  locale?: Partial<LocaleConfig>;
   /**
-   * Optional message map for library default strings. Consumers own localization;
-   * components may look up keys via `useProviderMessages`.
+   * Partial translation overrides merged over the parent `Provider`
+   * translations and the built-in English defaults.
    */
-  messages?: ProviderMessages;
+  translations?: TranslationsConfig;
+  /** Animation settings merged over the parent `Provider`. */
+  motion?: Partial<MotionConfig>;
 }
+
+export type LocaleProviderProps = PropsWithChildren<Partial<LocaleConfig>>;
+
+export interface TranslationsProviderProps {
+  children: ReactNode;
+  /** Partial overrides merged over the parent translations for a subtree. */
+  translations?: TranslationsConfig;
+}
+
+export type MotionProviderProps = PropsWithChildren<Partial<MotionConfig>>;
+
+export interface ToasterProviderProps extends ToasterProps {}
 // #endregion
 
-const RTL_LANGS = new Set(["ar", "fa", "he", "ur"]);
-
-function resolveDir(locale: string, dir?: "ltr" | "rtl"): "ltr" | "rtl" {
-  if (dir) {
-    return dir;
-  }
-  const language = locale.split("-")[0]?.toLowerCase() ?? "en";
-  return RTL_LANGS.has(language) ? "rtl" : "ltr";
-}
-
-// #region Component
-export function Provider({
-  dir: dirProp,
-  locale = "en-US",
-  children,
-  messages = {},
-}: ProviderProps) {
-  const dir = resolveDir(locale, dirProp);
+// #region Parts
+/** Mirrors Phosphor icons for the nearest Ark `dir`. */
+function IconProvider({ children }: { children: ReactNode }) {
+  const { dir } = useLocaleContext();
 
   return (
-    <LocaleProvider locale={locale}>
-      <ProviderMessagesContext value={messages}>
-        <Toaster />
-        <IconContext
-          value={{
-            color: "currentColor",
-            mirrored: dir === "rtl",
-            size: "1em",
-            weight: "regular",
-          }}
-        >
-          <div className="contents" data-scope="provider" dir={dir}>
+    <IconContext
+      value={{
+        color: "currentColor",
+        mirrored: dir === "rtl",
+        size: "1em",
+        weight: "regular",
+      }}
+    >
+      {children}
+    </IconContext>
+  );
+}
+
+/** Override only the locale (and Ark-derived `dir`) for a subtree. */
+export function LocaleProvider({ children, locale }: LocaleProviderProps) {
+  const parentLocale = useLocale();
+
+  const config = useMemo(
+    () =>
+      mergeDeep(
+        mergeDeep(defaultLocale, parentLocale ?? {}),
+        omitBy({ locale }, isNullish),
+      ) as LocaleConfig,
+    [locale, parentLocale],
+  );
+
+  return (
+    <ArkLocaleProvider locale={config.locale}>
+      <LocaleContext value={config}>
+        <IconProvider>
+          <LocaleDir>{children}</LocaleDir>
+        </IconProvider>
+      </LocaleContext>
+    </ArkLocaleProvider>
+  );
+}
+
+function LocaleDir({ children }: { children: ReactNode }) {
+  const { dir } = useLocaleContext();
+
+  return (
+    <div
+      className="contents"
+      data-part="locale"
+      data-scope="provider"
+      dir={dir}
+    >
+      {children}
+    </div>
+  );
+}
+
+/** Override only translations for a subtree. */
+export function TranslationsProvider({
+  translations,
+  children,
+}: TranslationsProviderProps) {
+  const parentTranslations = useTranslations();
+
+  const config = useMemo(
+    () => merge(parentTranslations ?? {}, translations ?? {}),
+    [parentTranslations, translations],
+  );
+
+  return <TranslationsContext value={config}>{children}</TranslationsContext>;
+}
+
+/** Override only motion settings for a subtree. */
+export function MotionProvider({ children, disabled }: MotionProviderProps) {
+  const parentMotion = useMotion();
+
+  const config = useMemo(
+    () =>
+      mergeDeep(
+        mergeDeep(defaultMotion, parentMotion ?? {}),
+        omitBy({ disabled }, isNullish),
+      ) as MotionConfig,
+    [disabled, parentMotion],
+  );
+
+  return (
+    <MotionContext value={config}>
+      <div
+        className="contents"
+        data-motion={config.disabled ? "disabled" : "enabled"}
+        data-part="motion"
+        data-scope="provider"
+      >
+        {children}
+      </div>
+    </MotionContext>
+  );
+}
+
+/** Renders the library toaster portal (mounted once on the root `Provider`). */
+export function ToasterProvider(props: ToasterProviderProps) {
+  return <Toaster {...props} />;
+}
+
+function ProviderRoot({
+  locale,
+  children,
+  translations,
+  motion,
+}: ProviderProps) {
+  const parentConfig = useProvider();
+  const parentMotion = useMotion();
+  const parentLocale = useLocale();
+  const root = !parentConfig;
+
+  const config = useMemo(
+    () => ({
+      locale: mergeDeep(
+        mergeDeep(defaultLocale, parentLocale ?? {}),
+        omitBy(locale ?? {}, isNullish),
+      ) as LocaleConfig,
+      motion: mergeDeep(
+        mergeDeep(defaultMotion, parentMotion ?? {}),
+        omitBy(motion ?? {}, isNullish),
+      ) as MotionConfig,
+    }),
+    [locale, parentLocale, motion, parentMotion],
+  );
+
+  return (
+    <ProviderContext value={config}>
+      <LocaleProvider {...locale}>
+        <MotionProvider {...motion}>
+          <TranslationsProvider translations={translations}>
+            {root ? <ToasterProvider /> : null}
             {children}
-          </div>
-        </IconContext>
-      </ProviderMessagesContext>
-    </LocaleProvider>
+          </TranslationsProvider>
+        </MotionProvider>
+      </LocaleProvider>
+    </ProviderContext>
   );
 }
 // #endregion
+
+export const Provider = Object.assign(ProviderRoot, {
+  Locale: LocaleProvider,
+  Motion: MotionProvider,
+  Toaster: ToasterProvider,
+  Translations: TranslationsProvider,
+});

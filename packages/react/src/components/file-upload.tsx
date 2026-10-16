@@ -29,7 +29,7 @@ import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { FormControlVariant } from "../internal/types";
 import { Button } from "./button";
-import { getMessage, type MessageKey } from "./provider/provider.context";
+import { getMessage, type MessageKey } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context

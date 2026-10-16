@@ -21,7 +21,7 @@ import type {
   DialogTitleProps,
 } from "./dialog";
 import { Dialog } from "./dialog";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 
 // #region Context
 const { Context: SheetStylesContext, useStyles: useSheet } =

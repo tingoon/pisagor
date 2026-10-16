@@ -16,7 +16,7 @@ import {
   type InputGroupButtonProps,
   type InputGroupProps,
 } from "./input-group";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 
 // #region Types
 

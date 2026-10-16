@@ -4,7 +4,7 @@ import {
   Listbox as ListboxPrimitive,
 } from "@ark-ui/svelte/listbox";
 import { cn } from "@pisagor/utils";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import { useListbox } from "./listbox.context";
 
 let { class: className, children, ...rest }: ListboxEmptyProps = $props();

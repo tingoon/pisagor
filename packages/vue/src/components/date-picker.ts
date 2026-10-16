@@ -28,7 +28,7 @@ import { provideCalendarStyles } from "./calendar";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
 import { InputGroupRoot } from "./input-group/input-group-core";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 type FormControlVariant = "primary" | "secondary";
 type ClassValue = Parameters<typeof cn>[0];
@@ -254,7 +254,7 @@ export const DatePickerInput = defineComponent({
                 h(
                   Button as ArkPart,
                   {
-                    "aria-label": useProviderMessage("datePicker.openCalendar"),
+                    "aria-label": useTranslation("datePicker.openCalendar"),
                     size: "icon-md",
                     variant: "ghost",
                   },

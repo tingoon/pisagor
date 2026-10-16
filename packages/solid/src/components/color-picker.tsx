@@ -29,7 +29,7 @@ import { createSlotRecipeContext } from "../internal/create-slot-recipe-context"
 import { CheckIcon, EyedropperIcon, XIcon } from "../internal/icons";
 import { Button, type ButtonProps } from "./button";
 import { InputGroup, type InputGroupButtonProps } from "./input-group";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const { Context: ColorPickerSlotsContext, useStyles: useColorPicker } =
@@ -170,7 +170,7 @@ export function ColorPickerClearTrigger(
     <Show when={visible()}>
       <InputGroup.Addon align="inline-end">
         <InputGroup.Button
-          aria-label={useProviderMessage("colorPicker.clearColor")}
+          aria-label={useTranslation("colorPicker.clearColor")}
           {...rest}
           class={local.class}
           data-part="clear-trigger"
@@ -285,7 +285,7 @@ export function ColorPickerEyeDropperTrigger(
   props: ColorPickerEyeDropperTriggerProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["size", "variant", "children"]);
-  const label = useProviderMessage("colorPicker.eyeDropper");
+  const label = useTranslation("colorPicker.eyeDropper");
   return (
     <ColorPickerPrimitive.EyeDropperTrigger
       aria-label={label}

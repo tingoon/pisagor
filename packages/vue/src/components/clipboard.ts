@@ -11,7 +11,7 @@ import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { ClassValue, VariantClassNames } from "../internal/types";
 import { Button, type ButtonProps } from "./button";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
@@ -222,8 +222,7 @@ export const Clipboard = defineComponent({
                 Button,
                 {
                   "aria-label":
-                    props.buttonAriaLabel ??
-                    useProviderMessage("clipboard.copy"),
+                    props.buttonAriaLabel ?? useTranslation("clipboard.copy"),
                   size:
                     props.buttonSize ??
                     (`icon-${props.size}` as ButtonProps["size"]),

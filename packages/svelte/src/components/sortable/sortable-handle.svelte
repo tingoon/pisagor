@@ -4,7 +4,7 @@ import { cn } from "@pisagor/utils";
 import DotsSixVerticalIcon from "phosphor-svelte/lib/DotsSixVerticalIcon";
 import { onMount } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import { useSortable, useSortableItem } from "./sortable.context";
 
 const t = useMessageResolver();

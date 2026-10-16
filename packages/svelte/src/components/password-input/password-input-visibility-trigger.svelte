@@ -8,7 +8,7 @@ import { cn } from "@pisagor/utils";
 import EyeIcon from "phosphor-svelte/lib/EyeIcon";
 import EyeSlashIcon from "phosphor-svelte/lib/EyeSlashIcon";
 import InputGroupAddon from "../input-group/input-group-addon.svelte";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 
 const t = useMessageResolver();
 

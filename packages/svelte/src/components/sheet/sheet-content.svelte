@@ -8,7 +8,7 @@ import type { SheetProps as BaseSheetProps } from "@pisagor/props";
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import { useSheet } from "./sheet.context";
 import SheetBackdrop from "./sheet-backdrop.svelte";
 import SheetPositioner from "./sheet-positioner.svelte";

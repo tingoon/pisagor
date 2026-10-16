@@ -22,7 +22,7 @@ import {
 } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { createContext as createNamedContext } from "../utils";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 
 // #region Context
 type SortableOrientation = "vertical" | "horizontal";

@@ -7,7 +7,7 @@ import TextBIcon from "phosphor-svelte/lib/TextBIcon";
 import TextItalicIcon from "phosphor-svelte/lib/TextItalicIcon";
 import TextStrikethroughIcon from "phosphor-svelte/lib/TextStrikethroughIcon";
 import type { HTMLAttributes } from "svelte/elements";
-import { useMessageResolver } from "../components/provider/provider.context";
+import { useMessageResolver } from "../components/provider/context";
 import Toggle from "../components/toggle.svelte";
 import VisuallyHidden from "../components/visually-hidden.svelte";
 import { useRichTextEditorState } from "./rich-text-editor.context";

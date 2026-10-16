@@ -13,7 +13,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { getMessage } from "../components/provider/provider.context";
+import { getMessage } from "../components/provider/context";
 import {
   Table,
   type TableCellProps,

@@ -28,7 +28,7 @@ import type {
   DialogFooterProps,
   DialogHeaderProps,
 } from "./dialog";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context

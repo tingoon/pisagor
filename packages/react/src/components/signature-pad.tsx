@@ -15,7 +15,7 @@ import { cn } from "@pisagor/utils";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { FormControlVariant, VariantClassNames } from "../internal/types";
 import { Button } from "./button";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context

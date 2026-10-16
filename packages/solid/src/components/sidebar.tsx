@@ -23,7 +23,7 @@ import { SidebarSimpleIcon } from "../internal/icons";
 import { createContext } from "../utils";
 import { Button, type ButtonProps } from "./button";
 import { Input, type InputProps } from "./input";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 import { Separator, type SeparatorProps } from "./separator";
 import { Sheet, type SheetProps } from "./sheet";
@@ -391,7 +391,7 @@ export function SidebarRail(props: SidebarRailProps): JSX.Element {
 
   return (
     <ark.button
-      aria-label={useProviderMessage("sidebar.toggle")}
+      aria-label={useTranslation("sidebar.toggle")}
       {...rest}
       class={styles.slots.rail({ class: local.class })}
       data-part="rail"
@@ -399,7 +399,7 @@ export function SidebarRail(props: SidebarRailProps): JSX.Element {
       data-sidebar="rail"
       onClick={toggleSidebar}
       tabIndex={-1}
-      title={useProviderMessage("sidebar.toggle")}
+      title={useTranslation("sidebar.toggle")}
       type="button"
     />
   );

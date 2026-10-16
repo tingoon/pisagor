@@ -17,7 +17,7 @@ import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import type { VariantClassNames } from "../../internal/types";
 import Button from "../button.svelte";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import Spinner from "../spinner.svelte";
 import { useToastItem } from "./toast.context";
 

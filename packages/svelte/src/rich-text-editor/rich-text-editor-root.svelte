@@ -7,7 +7,7 @@ import { Editor } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
 import { untrack } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
-import { useMessageResolver } from "../components/provider/provider.context";
+import { useMessageResolver } from "../components/provider/context";
 import { useFormControlSurface } from "../components/surface/use-form-control-surface";
 import VisuallyHidden from "../components/visually-hidden.svelte";
 import { setRichTextEditorContext } from "./rich-text-editor.context";

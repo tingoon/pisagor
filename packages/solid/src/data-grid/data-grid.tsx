@@ -17,7 +17,7 @@ import {
   Show,
   splitProps,
 } from "solid-js";
-import { useProviderMessage } from "../components/provider/provider.context";
+import { useTranslation } from "../components/provider/context";
 import {
   Table,
   type TableCellProps,
@@ -147,7 +147,7 @@ function DataGridColumnResizer(props: DataGridColumnResizerProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const headerCell = useDataGridHeaderCellContext();
   const { slots, table } = useDataGridContext();
-  const resizeLabel = useProviderMessage("dataGrid.resizeColumn");
+  const resizeLabel = useTranslation("dataGrid.resizeColumn");
 
   return (
     <Show when={headerCell}>
@@ -540,7 +540,7 @@ function DataGridEmpty(props: DataGridEmptyProps): JSX.Element {
       data-scope="data-grid"
     >
       <Table.Cell class={slots.empty()} colSpan={span()}>
-        {local.children ?? useProviderMessage("dataGrid.empty")}
+        {local.children ?? useTranslation("dataGrid.empty")}
       </Table.Cell>
     </Table.Row>
   );

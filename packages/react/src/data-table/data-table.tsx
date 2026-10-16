@@ -3,7 +3,7 @@ import { dataTableRecipe } from "@pisagor/recipes";
 import type { RowData, TableOptions } from "@tanstack/react-table";
 import { flexRender, useTable } from "@tanstack/react-table";
 import { type ComponentProps, type ReactNode, useMemo } from "react";
-import { getMessage } from "../components/provider/provider.context";
+import { getMessage } from "../components/provider/context";
 import {
   Table,
   type TableCellProps,

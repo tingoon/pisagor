@@ -18,7 +18,7 @@ import { computed, defineComponent, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { ClassValue } from "../internal/types";
 import { Button } from "./button";
-import { useProviderMessages } from "./provider/provider";
+import { useTranslations } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -505,7 +505,7 @@ export const FileUploadList = defineComponent({
 
     const fileUpload = useFileUploadContext();
 
-    const messages = useProviderMessages();
+    const translations = useTranslations();
 
     return () => {
       const { acceptedFiles, rejectedFiles } = fileUpload.value;
@@ -552,7 +552,7 @@ export const FileUploadList = defineComponent({
                   "div",
                   { class: itemSlots.error(), key: code },
                   resolveMessage(
-                    messages,
+                    translations,
                     `fileUpload.error.${code}` as MessageKey,
                   ) ?? code,
                 ),
@@ -563,7 +563,7 @@ export const FileUploadList = defineComponent({
                 Button as ArkPart,
                 {
                   "aria-label": resolveMessage(
-                    messages,
+                    translations,
                     "fileUpload.removeFile",
                   ),
                   class: itemSlots.deleteButton(),

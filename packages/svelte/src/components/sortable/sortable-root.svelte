@@ -4,7 +4,7 @@ import type { SortableProps as BaseSortableProps } from "@pisagor/props";
 import { sortableRecipe } from "@pisagor/recipes";
 import { cn, formatMessage } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import { setSortableContext } from "./sortable.context";
 
 type Props = HTMLAttributes<HTMLUListElement> & {

@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { ComponentProps } from "svelte";
-import { useMessageResolver } from "../components/provider/provider.context";
+import { useMessageResolver } from "../components/provider/context";
 import { Table } from "../components/table";
 import { useDataGridContext } from "./data-grid.context";
 

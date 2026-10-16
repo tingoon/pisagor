@@ -6,7 +6,7 @@ import {
 import { cn } from "@pisagor/utils";
 import ArrowCounterClockwiseIcon from "phosphor-svelte/lib/ArrowCounterClockwiseIcon";
 import Button from "../button.svelte";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import { useSignaturePad } from "./signature-pad.context";
 
 const t = useMessageResolver();

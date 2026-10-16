@@ -71,8 +71,8 @@ Prefer public components in app code; only extend `combobox` when building packa
 
 ## i18n and direction
 
-- **Library defaults** (aria-labels, placeholders) ship in English. Consumers override via `Provider` `messages` (`useProviderMessage` / Vue equivalent) or by passing props.
-- **Direction:** pass `dir` to `Provider`, or omit and let locale infer RTL for `ar` / `he` / `fa` / `ur`. Icon mirroring follows resolved direction.
+- **Library defaults** (aria-labels, placeholders) ship in English. Consumers override via `Provider` `translations` (`useTranslation` / framework equivalent) or by passing props.
+- **Direction:** inferred from `Provider` `locale` (RTL for `ar` / `he` / `fa` / `ur`). Icon mirroring follows resolved direction.
 - Consumers own localization; packages do not ship locale catalogs.
 
 ## Structural attributes (`data-scope` / `data-part`)

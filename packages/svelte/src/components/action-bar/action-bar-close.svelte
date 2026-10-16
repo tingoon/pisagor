@@ -2,7 +2,7 @@
 import { Ark } from "@ark-ui/svelte/factory";
 import { cn } from "@pisagor/utils";
 import type { HTMLButtonAttributes } from "svelte/elements";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import { useActionBar } from "./action-bar.context";
 
 const t = useMessageResolver();

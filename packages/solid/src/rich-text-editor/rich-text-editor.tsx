@@ -14,7 +14,7 @@ import {
   untrack,
 } from "solid-js";
 import { createEditorTransaction } from "solid-tiptap";
-import { useProviderMessage } from "../components/provider/provider.context";
+import { useTranslation } from "../components/provider/context";
 import { useFormControlSurface } from "../components/surface/use-form-control-surface";
 import { Toggle } from "../components/toggle";
 import { VisuallyHidden } from "../components/visually-hidden";
@@ -77,7 +77,7 @@ export function RichTextEditorRoot(
   const slots = () => recipe()();
   const resolvedAriaLabel = () =>
     local["aria-label"] ??
-    (local.id ? undefined : useProviderMessage("richTextEditor.label"));
+    (local.id ? undefined : useTranslation("richTextEditor.label"));
 
   const [host, setHost] = createSignal<HTMLDivElement | undefined>();
   const [editor, setEditor] = createSignal<Editor | undefined>();
@@ -225,7 +225,7 @@ export function RichTextEditorToolbar(
             fallback={
               <div class={slots.inline()}>
                 <Toggle
-                  aria-label={useProviderMessage("richTextEditor.bold")}
+                  aria-label={useTranslation("richTextEditor.bold")}
                   onPressedChange={() =>
                     instance().chain().focus().toggleBold().run()
                   }
@@ -237,7 +237,7 @@ export function RichTextEditorToolbar(
                   <VisuallyHidden>Bold</VisuallyHidden>
                 </Toggle>
                 <Toggle
-                  aria-label={useProviderMessage("richTextEditor.italic")}
+                  aria-label={useTranslation("richTextEditor.italic")}
                   onPressedChange={() =>
                     instance().chain().focus().toggleItalic().run()
                   }
@@ -249,9 +249,7 @@ export function RichTextEditorToolbar(
                   <VisuallyHidden>Italic</VisuallyHidden>
                 </Toggle>
                 <Toggle
-                  aria-label={useProviderMessage(
-                    "richTextEditor.strikethrough",
-                  )}
+                  aria-label={useTranslation("richTextEditor.strikethrough")}
                   onPressedChange={() =>
                     instance().chain().focus().toggleStrike().run()
                   }
@@ -263,7 +261,7 @@ export function RichTextEditorToolbar(
                   <VisuallyHidden>Strikethrough</VisuallyHidden>
                 </Toggle>
                 <Toggle
-                  aria-label={useProviderMessage("richTextEditor.bulletList")}
+                  aria-label={useTranslation("richTextEditor.bulletList")}
                   onPressedChange={() =>
                     instance().chain().focus().toggleBulletList().run()
                   }
@@ -275,7 +273,7 @@ export function RichTextEditorToolbar(
                   <VisuallyHidden>Bullet list</VisuallyHidden>
                 </Toggle>
                 <Toggle
-                  aria-label={useProviderMessage("richTextEditor.orderedList")}
+                  aria-label={useTranslation("richTextEditor.orderedList")}
                   onPressedChange={() =>
                     instance().chain().focus().toggleOrderedList().run()
                   }

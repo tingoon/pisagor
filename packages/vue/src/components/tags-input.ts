@@ -10,7 +10,7 @@ import type {
 } from "@pisagor/props";
 import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -142,7 +142,7 @@ export const TagsInputItemDeleteTrigger = defineComponent({
         {
           ...(attrs as object),
           "aria-label":
-            props["aria-label"] ?? useProviderMessage("tagsInput.removeTag"),
+            props["aria-label"] ?? useTranslation("tagsInput.removeTag"),
           asChild: true,
         },
         () =>
@@ -150,8 +150,7 @@ export const TagsInputItemDeleteTrigger = defineComponent({
             InputGroup.Button as ArkPart,
             {
               "aria-label":
-                props["aria-label"] ??
-                useProviderMessage("tagsInput.removeTag"),
+                props["aria-label"] ?? useTranslation("tagsInput.removeTag"),
               class: slots.delete({
                 class: cn(props.class, (attrs as { class?: ClassValue }).class),
               }),
@@ -326,7 +325,7 @@ export const TagsInputClearTrigger = defineComponent({
         {
           ...(attrs as object),
           "aria-label":
-            props["aria-label"] ?? useProviderMessage("tagsInput.clearAllTags"),
+            props["aria-label"] ?? useTranslation("tagsInput.clearAllTags"),
           asChild: true,
         },
         () =>
@@ -334,8 +333,7 @@ export const TagsInputClearTrigger = defineComponent({
             InputGroup.Button as ArkPart,
             {
               "aria-label":
-                props["aria-label"] ??
-                useProviderMessage("tagsInput.clearAllTags"),
+                props["aria-label"] ?? useTranslation("tagsInput.clearAllTags"),
               class: slots.clearTrigger({
                 class: cn(props.class, (attrs as { class?: ClassValue }).class),
               }),

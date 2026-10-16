@@ -22,7 +22,7 @@ import { Button } from "./button";
 import { Calendar, CalendarSlotsContext } from "./calendar";
 import { Input, type InputProps } from "./input";
 import { InputGroup } from "./input-group";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 
 // #region Context
 const { Context: DatePickerSlotsContext, useStyles: useDatePickerStyles } =

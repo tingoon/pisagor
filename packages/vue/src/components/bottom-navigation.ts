@@ -17,7 +17,7 @@ import {
   type Ref,
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -76,7 +76,7 @@ export const BottomNavigationRoot = defineComponent({
     value: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
-    const label = useProviderMessage("bottomNavigation.label");
+    const label = useTranslation("bottomNavigation.label");
     provide(
       BottomNavigationValueKey,
       computed(() => props.value),

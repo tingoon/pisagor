@@ -7,7 +7,7 @@ import { buttonRecipe, floatingPanelRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import ArrowsOutIcon from "phosphor-svelte/lib/ArrowsOutIcon";
 import CornersInIcon from "phosphor-svelte/lib/CornersInIcon";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import { useFloatingPanel } from "./floating-panel.context";
 
 const t = useMessageResolver();

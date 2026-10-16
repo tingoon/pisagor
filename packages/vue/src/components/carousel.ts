@@ -15,7 +15,7 @@ import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { ClassValue } from "../internal/types";
 import { Button } from "./button";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -112,8 +112,8 @@ function createNavTrigger(
               Button as ArkPart,
               {
                 "aria-label": isPrev
-                  ? useProviderMessage("carousel.previous")
-                  : useProviderMessage("carousel.next"),
+                  ? useTranslation("carousel.previous")
+                  : useTranslation("carousel.next"),
                 clickEffect: false,
                 pill: true,
                 size: "icon-md",
@@ -143,8 +143,8 @@ export const CarouselAutoplayTrigger = defineComponent({
   name: "Carousel.AutoplayTrigger",
   setup(_, { attrs }) {
     const carousel = useCarouselContext();
-    const playLabel = useProviderMessage("carousel.play");
-    const pauseLabel = useProviderMessage("carousel.pause");
+    const playLabel = useTranslation("carousel.play");
+    const pauseLabel = useTranslation("carousel.pause");
 
     return () => {
       const isPlaying = carousel.value.isPlaying;

@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Button, type ButtonProps } from "../button";
-import { getMessage, type MessageKey } from "../provider/provider.context";
+import { getMessage, type MessageKey } from "../provider/context";
 import { Swap } from "../swap";
 import type { AppShellPlacement } from "./app-shell.context";
 import { useAppShell } from "./app-shell.context";

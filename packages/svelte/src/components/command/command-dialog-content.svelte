@@ -10,7 +10,7 @@ import DialogDescription from "../dialog/dialog-description.svelte";
 import DialogHeader from "../dialog/dialog-header.svelte";
 import DialogPositioner from "../dialog/dialog-positioner.svelte";
 import DialogTitle from "../dialog/dialog-title.svelte";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 import { Context } from "./command.context";
 
 const t = useMessageResolver();

@@ -5,7 +5,7 @@ import type {
 } from "@pisagor/props";
 import { skipNavRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 
 // #region Types
 export interface SkipNavLinkProps

@@ -9,7 +9,7 @@ import { PhCheck, PhEyedropper, PhX } from "@phosphor-icons/vue";
 import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -197,7 +197,7 @@ export const ColorPickerClearTrigger = defineComponent({
         h(
           InputGroup.Button as ArkPart,
           {
-            "aria-label": useProviderMessage("colorPicker.clearColor"),
+            "aria-label": useTranslation("colorPicker.clearColor"),
             ...attrs,
             class: cn(props.class, (attrs as { class?: ClassValue }).class),
             "data-part": "clear-trigger",
@@ -396,7 +396,7 @@ export const ColorPickerEyeDropperTrigger = defineComponent({
     variant: { default: "outline", type: String },
   },
   setup(props, { attrs, slots }) {
-    const label = useProviderMessage("colorPicker.eyeDropper");
+    const label = useTranslation("colorPicker.eyeDropper");
 
     return () =>
       h(

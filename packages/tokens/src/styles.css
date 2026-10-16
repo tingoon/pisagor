@@ -314,3 +314,19 @@
 @utility rounded-inherit {
   border-radius: inherit;
 }
+
+/* Provider `motion={{ disabled: true }}`: collapse animations (tests / e2e).
+   A nested `data-motion="enabled"` re-enables motion for its subtree. */
+:where([data-motion="disabled"])
+:where(*, *::before, *::after):not(
+  :where([data-motion="enabled"], [data-motion="enabled"] *)
+) {
+  /* biome-ignore lint/complexity/noImportantStyles: must beat Tailwind utilities */
+  animation-duration: 0s !important;
+  /* biome-ignore lint/complexity/noImportantStyles: must beat Tailwind utilities */
+  animation-delay: 0s !important;
+  /* biome-ignore lint/complexity/noImportantStyles: must beat Tailwind utilities */
+  transition-duration: 0s !important;
+  /* biome-ignore lint/complexity/noImportantStyles: must beat Tailwind utilities */
+  transition-delay: 0s !important;
+}

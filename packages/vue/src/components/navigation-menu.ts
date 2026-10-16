@@ -25,7 +25,7 @@ import {
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { ClassValue, VariantClassNames } from "../internal/types";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 // #region Slot recipe context
 const {
@@ -93,7 +93,7 @@ export const NavigationMenuRoot = defineComponent({
   setup(_, { attrs, slots }) {
     const openId = ref<string | null>(null);
     provide(NavigationMenuOpenKey, openId);
-    const label = useProviderMessage("navigationMenu.label");
+    const label = useTranslation("navigationMenu.label");
 
     return () =>
       h(NavigationMenuNav as ArkPart, { "aria-label": label, ...attrs }, slots);

@@ -1,7 +1,7 @@
 <script lang="ts">
 import { cn, handleColumnResizeKeyDown } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
-import { useMessageResolver } from "../components/provider/provider.context";
+import { useMessageResolver } from "../components/provider/context";
 import {
   useDataGridContext,
   useDataGridHeaderCellContext,

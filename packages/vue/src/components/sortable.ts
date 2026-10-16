@@ -20,7 +20,7 @@ import {
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -176,7 +176,7 @@ export const SortableRoot = defineComponent({
       props.onValueChange?.(reorder(current, from, to));
     };
 
-    const movedTemplate = useProviderMessage("sortable.moved");
+    const movedTemplate = useTranslation("sortable.moved");
     const moved = ref("");
     const keyShortcuts = () =>
       props.orientation === "vertical"
@@ -412,7 +412,7 @@ export const SortableHandle = defineComponent({
           "aria-label":
             (attrs["aria-label"] as string | undefined) ??
             props.ariaLabel ??
-            useProviderMessage("sortable.dragHandle"),
+            useTranslation("sortable.dragHandle"),
           class: getSlots().handle({
             class: cn(props.class, attrs.class),
             disabled: sortable.disabled,

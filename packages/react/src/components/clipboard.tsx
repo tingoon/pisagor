@@ -13,7 +13,7 @@ import type { ComponentProps, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { FormControlVariant, VariantClassNames } from "../internal/types";
 import { Button, type ButtonProps } from "./button";
-import { getMessage } from "./provider/provider.context";
+import { getMessage } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context

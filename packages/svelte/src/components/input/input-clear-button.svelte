@@ -2,7 +2,7 @@
 import XIcon from "phosphor-svelte/lib/XIcon";
 import type { ClassValue } from "svelte/elements";
 import InputGroupButton from "../input-group/input-group-button.svelte";
-import { useMessageResolver } from "../provider/provider.context";
+import { useMessageResolver } from "../provider/context";
 
 const t = useMessageResolver();
 

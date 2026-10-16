@@ -24,7 +24,7 @@ import {
   PlayIcon,
 } from "../internal/icons";
 import { Button } from "./button";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -84,7 +84,7 @@ export function CarouselPrevTrigger(
           {...triggerProps({
             class: styles.slots.prevTrigger({ class: local.class }),
           })}
-          aria-label={useProviderMessage("carousel.previous")}
+          aria-label={useTranslation("carousel.previous")}
           clickEffect={false}
           pill
           size="icon-md"
@@ -110,7 +110,7 @@ export function CarouselNextTrigger(
           {...triggerProps({
             class: styles.slots.nextTrigger({ class: local.class }),
           })}
-          aria-label={useProviderMessage("carousel.next")}
+          aria-label={useTranslation("carousel.next")}
           clickEffect={false}
           pill
           size="icon-md"
@@ -127,8 +127,8 @@ export function CarouselAutoplayTrigger(
   props: ComponentProps<typeof CarouselPrimitive.AutoplayTrigger>,
 ): JSX.Element {
   const carousel = useCarouselContext();
-  const playLabel = useProviderMessage("carousel.play");
-  const pauseLabel = useProviderMessage("carousel.pause");
+  const playLabel = useTranslation("carousel.play");
+  const pauseLabel = useTranslation("carousel.pause");
 
   return (
     <CarouselPrimitive.AutoplayTrigger

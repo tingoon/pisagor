@@ -8,7 +8,7 @@ import { cn } from "@pisagor/utils";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createContext, splitProps, useContext } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -51,7 +51,7 @@ export function MenuRoot(props: MenuRootProps): JSX.Element {
   return (
     <MenuRootBase
       {...rest}
-      aria-label={local["aria-label"] ?? useProviderMessage("menu.label")}
+      aria-label={local["aria-label"] ?? useTranslation("menu.label")}
     />
   );
 }
