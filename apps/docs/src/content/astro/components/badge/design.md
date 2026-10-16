@@ -25,9 +25,9 @@ Prefer Badge for secondary labels; prefer [Alert](/astro/components/alert/design
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Compact status or category | **Badge** |
-| Page-level message | [Alert](/astro/components/alert/design) |
-| Live presence dot | [Status](/astro/components/status/design) |
-| Numeric KPI emphasis | [Stat](/astro/components/stat/design) |
+| Need                       | Prefer                                    |
+| -------------------------- | ----------------------------------------- |
+| Compact status or category | **Badge**                                 |
+| Page-level message         | [Alert](/astro/components/alert/design)   |
+| Live presence dot          | [Status](/astro/components/status/design) |
+| Numeric KPI emphasis       | [Stat](/astro/components/stat/design)     |

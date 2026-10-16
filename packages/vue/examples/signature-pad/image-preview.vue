@@ -12,14 +12,20 @@ function handleDrawEnd(..._args: unknown[]) {
   <Field class="flex flex-col gap-2">
     <SignaturePad @draw-end="handleDrawEnd" />
     <Field.Description>Image preview</Field.Description>
-    <div class="relative h-40 w-full rounded-lg border bg-muted">
+    <div class="bg-muted relative h-40 w-full rounded-lg border">
       <img
         alt="Your signature as captured from the pad above"
         class="size-full dark:invert"
-        style="height: 100%; inset: 0; object-fit: cover; position: absolute; width: 100%"
+        style="
+          height: 100%;
+          inset: 0;
+          object-fit: cover;
+          position: absolute;
+          width: 100%;
+        "
         v-if="imageUrl"
         :src="imageUrl"
-      >
+      />
     </div>
   </Field>
 </template>

@@ -25,9 +25,9 @@ Prefer button group when actions share a purpose; prefer [Toolbar](/vue/componen
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Related actions side by side | **Button Group** |
-| Section title plus actions | [Toolbar](/vue/components/toolbar/design) |
+| Need                            | Prefer                                                  |
+| ------------------------------- | ------------------------------------------------------- |
+| Related actions side by side    | **Button Group**                                        |
+| Section title plus actions      | [Toolbar](/vue/components/toolbar/design)             |
 | Single choice among few options | [Segment Group](/vue/components/segment-group/design) |
-| Bulk actions on selection | [Action Bar](/vue/components/action-bar/design) |
+| Bulk actions on selection       | [Action Bar](/vue/components/action-bar/design)       |

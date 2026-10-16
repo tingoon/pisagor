@@ -4,17 +4,5 @@
     "domains": {
       "astro": "all"
     }
-  },
-  "overrides": [
-    {
-      "includes": ["**/*.stories.ts"],
-      "linter": {
-        "rules": {
-          "suspicious": {
-            "noArrayIndexKey": "off"
-          }
-        }
-      }
-    }
-  ]
+  }
 }

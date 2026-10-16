@@ -1,10 +1,10 @@
 <script lang="ts">
-import { Button, Popover } from "@pisagor/svelte";
+  import { Button, Popover } from "@pisagor/svelte";
 </script>
 
 <Popover>
   <Popover.Trigger>
-    <Button variant="outline"> Open </Button>
+    <Button variant="outline">Open</Button>
   </Popover.Trigger>
   <Popover.Content>
     <Popover.Header
@@ -14,7 +14,7 @@ import { Button, Popover } from "@pisagor/svelte";
     <Popover.Body>
       <Popover>
         <Popover.Trigger>
-          <Button size="sm" variant="outline"> Open nested </Button>
+          <Button size="sm" variant="outline">Open nested</Button>
         </Popover.Trigger>
         <Popover.Content class="w-56">
           <Popover.Header

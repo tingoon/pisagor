@@ -8,12 +8,10 @@ import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
 export interface KbdProps
-  extends ComponentProps<typeof ark.kbd>,
-    BaseKbdProps {}
+  extends ComponentProps<typeof ark.kbd>, BaseKbdProps {}
 
 export interface KbdGroupProps
-  extends ComponentProps<typeof ark.div>,
-    BaseKbdGroupProps {}
+  extends ComponentProps<typeof ark.div>, BaseKbdGroupProps {}
 
 export function KbdRoot(props: KbdProps): JSX.Element {
   const [local, rest] = splitProps(props, [

@@ -18,16 +18,19 @@ export interface AccordionProps {
   value?: string[];
   /**
    * Allow more than one item open.
+   *
    * @defaultValue false
    */
   multiple?: boolean;
   /**
    * Allow closing the open item in single mode.
+   *
    * @defaultValue true
    */
   collapsible?: boolean;
   /**
    * Disable the accordion.
+   *
    * @defaultValue false
    */
   disabled?: boolean;
@@ -36,6 +39,7 @@ export interface AccordionProps {
 export interface AccordionItemProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue accordionItemRecipe
    */
   recipe?: AccordionItemRecipeFn;

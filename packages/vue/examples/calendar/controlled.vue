@@ -27,7 +27,7 @@ function onValueChange(details: { value: typeof value.value }) {
         </Calendar>
       </Card.Content>
     </Card>
-    <p class="text-center text-muted-foreground text-sm">
+    <p class="text-muted-foreground text-center text-sm">
       {{ value.map((date) => date.toString()).join(", ") }}
     </p>
   </div>

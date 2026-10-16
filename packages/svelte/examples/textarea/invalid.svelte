@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Field, Textarea } from "@pisagor/svelte";
+  import { Field, Textarea } from "@pisagor/svelte";
 </script>
 
 <Field invalid>

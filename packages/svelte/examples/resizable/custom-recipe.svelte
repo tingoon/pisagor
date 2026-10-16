@@ -1,26 +1,28 @@
 <script lang="ts">
-import { resizableRecipe } from "@pisagor/recipes";
-import { Resizable } from "@pisagor/svelte";
-import { cn } from "@pisagor/utils";
-import { tv } from "tailwind-variants";
+  import { resizableRecipe } from "@pisagor/recipes";
+  import { Resizable } from "@pisagor/svelte";
+  import { cn } from "@pisagor/utils";
+  import { tv } from "tailwind-variants";
 
-const brandResizableRecipe = tv({
-  extend: resizableRecipe,
-  slots: {
-    resizeTrigger:
-      "hover:bg-emerald-500/40 focus-visible:bg-emerald-500/40 active:bg-emerald-500",
-  },
-  variants: {},
-});
+  const brandResizableRecipe = tv({
+    extend: resizableRecipe,
+    slots: {
+      resizeTrigger:
+        "hover:bg-emerald-500/40 focus-visible:bg-emerald-500/40 active:bg-emerald-500",
+    },
+    variants: {},
+  });
 
-function panelClassName(orientation: "horizontal" | "vertical" = "horizontal") {
-  return cn(
-    "flex items-center justify-center bg-muted/30 text-sm",
-    orientation === "vertical"
-      ? "min-h-0 h-full w-full"
-      : "min-w-0 h-full w-full",
-  );
-}
+  function panelClassName(
+    orientation: "horizontal" | "vertical" = "horizontal",
+  ) {
+    return cn(
+      "bg-muted/30 flex items-center justify-center text-sm",
+      orientation === "vertical"
+        ? "h-full min-h-0 w-full"
+        : "h-full w-full min-w-0",
+    );
+  }
 </script>
 
 <div class="h-96 w-full">

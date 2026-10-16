@@ -25,9 +25,9 @@ Prefer Badge for secondary labels; prefer [Alert](/svelte/components/alert/desig
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Compact status or category | **Badge** |
-| Page-level message | [Alert](/svelte/components/alert/design) |
-| Live presence dot | [Status](/svelte/components/status/design) |
-| Numeric KPI emphasis | [Stat](/svelte/components/stat/design) |
+| Need                       | Prefer                                    |
+| -------------------------- | ----------------------------------------- |
+| Compact status or category | **Badge**                                 |
+| Page-level message         | [Alert](/svelte/components/alert/design)   |
+| Live presence dot          | [Status](/svelte/components/status/design) |
+| Numeric KPI emphasis       | [Stat](/svelte/components/stat/design)     |

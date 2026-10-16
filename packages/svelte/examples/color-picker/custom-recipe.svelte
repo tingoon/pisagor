@@ -1,13 +1,13 @@
 <script lang="ts">
-import { colorPickerRecipe } from "@pisagor/recipes";
-import { ColorPicker, InputGroup } from "@pisagor/svelte";
-import { tv } from "tailwind-variants";
+  import { colorPickerRecipe } from "@pisagor/recipes";
+  import { ColorPicker, InputGroup } from "@pisagor/svelte";
+  import { tv } from "tailwind-variants";
 
-const brandColorPickerRecipe = tv({
-  extend: colorPickerRecipe,
-  slots: { content: "border-emerald-500/40" },
-  variants: {},
-});
+  const brandColorPickerRecipe = tv({
+    extend: colorPickerRecipe,
+    slots: { content: "border-emerald-500/40" },
+    variants: {},
+  });
 </script>
 
 <ColorPicker recipe={brandColorPickerRecipe}>
@@ -19,9 +19,7 @@ const brandColorPickerRecipe = tv({
         </InputGroup.Addon>
       </ColorPicker.Trigger>
       <ColorPicker.Input channel="hex">
-        {#snippet asChild(
-          props,
-        )}
+        {#snippet asChild(props)}
           <InputGroup.Input {...props()} clearable={false} />
         {/snippet}
       </ColorPicker.Input>

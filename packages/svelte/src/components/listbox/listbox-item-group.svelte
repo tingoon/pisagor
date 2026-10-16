@@ -1,17 +1,17 @@
 <script lang="ts">
-import {
-  type ListboxItemGroupProps as ArkProps,
-  Listbox as ListboxPrimitive,
-} from "@ark-ui/svelte/listbox";
-import { cn } from "@pisagor/utils";
-import { useListbox } from "./listbox.context";
-import ListboxItemGroupLabel from "./listbox-item-group-label.svelte";
+  import {
+    type ListboxItemGroupProps as ArkProps,
+    Listbox as ListboxPrimitive,
+  } from "@ark-ui/svelte/listbox";
+  import { cn } from "@pisagor/utils";
+  import { useListbox } from "./listbox.context";
+  import ListboxItemGroupLabel from "./listbox-item-group-label.svelte";
 
-type Props = ArkProps & { heading?: string };
+  type Props = ArkProps & { heading?: string };
 
-let { children, heading, class: className, ...rest }: Props = $props();
-const styles = useListbox();
-const slots = $derived(styles.slots);
+  let { children, heading, class: className, ...rest }: Props = $props();
+  const styles = useListbox();
+  const slots = $derived(styles.slots);
 </script>
 
 <ListboxPrimitive.ItemGroup

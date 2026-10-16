@@ -4,6 +4,7 @@ import type { EmptyStateRecipeFn } from "@pisagor/recipes";
 export interface EmptyStateProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue emptyStateRecipe
    */
   recipe?: EmptyStateRecipeFn;

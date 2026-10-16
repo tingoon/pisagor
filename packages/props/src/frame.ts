@@ -4,6 +4,7 @@ import type { FrameRecipeFn } from "@pisagor/recipes";
 export interface FrameProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue frameRecipe
    */
   recipe?: FrameRecipeFn;

@@ -1,19 +1,19 @@
 <script lang="ts">
-import {
-  type CarouselNextTriggerProps,
-  Carousel as CarouselPrimitive,
-} from "@ark-ui/svelte/carousel";
-import { buttonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
-import { useMessageResolver } from "../provider/provider.context";
-import { useCarousel } from "./carousel.context";
+  import {
+    type CarouselNextTriggerProps,
+    Carousel as CarouselPrimitive,
+  } from "@ark-ui/svelte/carousel";
+  import { buttonRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
+  import { useMessageResolver } from "../provider/context";
+  import { useCarousel } from "./carousel.context";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-let { class: className, ...rest }: CarouselNextTriggerProps = $props();
-const styles = useCarousel();
-const slots = $derived(styles.slots);
+  let { class: className, ...rest }: CarouselNextTriggerProps = $props();
+  const styles = useCarousel();
+  const slots = $derived(styles.slots);
 </script>
 
 <CarouselPrimitive.NextTrigger

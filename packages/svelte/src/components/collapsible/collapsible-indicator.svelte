@@ -1,19 +1,19 @@
 <script lang="ts">
-import {
-  type CollapsibleIndicatorProps,
-  Collapsible as CollapsiblePrimitive,
-} from "@ark-ui/svelte/collapsible";
-import { cn } from "@pisagor/utils";
-import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
-import { useCollapsible } from "./collapsible.context";
+  import {
+    type CollapsibleIndicatorProps,
+    Collapsible as CollapsiblePrimitive,
+  } from "@ark-ui/svelte/collapsible";
+  import { cn } from "@pisagor/utils";
+  import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
+  import { useCollapsible } from "./collapsible.context";
 
-let {
-  class: className,
-  children,
-  ...rest
-}: CollapsibleIndicatorProps = $props();
-const styles = useCollapsible();
-const slots = $derived(styles.slots);
+  let {
+    class: className,
+    children,
+    ...rest
+  }: CollapsibleIndicatorProps = $props();
+  const styles = useCollapsible();
+  const slots = $derived(styles.slots);
 </script>
 
 <CollapsiblePrimitive.Indicator

@@ -6,7 +6,7 @@ export function Compound() {
     <Timeline.Root>
       <Timeline.Item>
         <Timeline.Separator />
-        <Timeline.Indicator className="size-6 border-0 bg-success text-white">
+        <Timeline.Indicator className="bg-success size-6 border-0 text-white">
           <CheckCircleIcon weight="fill" />
         </Timeline.Indicator>
         <Timeline.Content>
@@ -16,7 +16,7 @@ export function Compound() {
       </Timeline.Item>
       <Timeline.Item>
         <Timeline.Separator />
-        <Timeline.Indicator className="size-6 border-0 bg-primary text-primary-foreground">
+        <Timeline.Indicator className="bg-primary text-primary-foreground size-6 border-0">
           <RocketIcon weight="fill" />
         </Timeline.Indicator>
         <Timeline.Content>
@@ -26,7 +26,7 @@ export function Compound() {
       </Timeline.Item>
       <Timeline.Item>
         <Timeline.Separator />
-        <Timeline.Indicator className="size-6 text-muted-foreground">
+        <Timeline.Indicator className="text-muted-foreground size-6">
           <CircleIcon />
         </Timeline.Indicator>
         <Timeline.Content>

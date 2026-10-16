@@ -40,27 +40,30 @@ export interface EditableProps extends EditableRootProps, BaseEditableProps {
    * Initial text value when uncontrolled.
    *
    * @remarks
-   * Ignored when `value` is set.
+   *   Ignored when `value` is set.
    */
   defaultValue?: string;
   /**
    * Controlled text value.
    *
    * @remarks
-   * When set, `defaultValue` is ignored. Pair with `onValueChange` to handle updates.
+   *   When set, `defaultValue` is ignored. Pair with `onValueChange` to handle
+   *   updates.
    */
   value?: string;
   /**
    * Called when the text value changes.
    *
    * @remarks
-   * Receives the string value directly, not Ark UI event details.
+   *   Receives the string value directly, not Ark UI event details.
    */
   onValueChange?: (value: string) => void;
 }
 
-export interface EditableInputProps
-  extends Omit<EditablePrimitiveInputProps, "size"> {}
+export interface EditableInputProps extends Omit<
+  EditablePrimitiveInputProps,
+  "size"
+> {}
 
 export interface EditablePreviewProps extends EditablePrimitivePreviewProps {
   /** Form shell variant. Defaults to `primary`. */
@@ -78,7 +81,8 @@ export interface EditablePreviewProps extends EditablePrimitivePreviewProps {
    */
   variant?: ButtonProps["variant"];
   /**
-   * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
+   * Button style recipe. Defaults to `buttonRecipe` from
+   * `@pisagor/recipes/button`.
    *
    * @defaultValue buttonRecipe
    */

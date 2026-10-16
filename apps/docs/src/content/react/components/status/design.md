@@ -29,9 +29,9 @@ Avoid pulsing dots except for truly active states (live, syncing). Respect reduc
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Compact state indicator | **Status** |
-| Named count or tag | [Badge](/react/components/badge/design) |
+| Need                      | Prefer                                  |
+| ------------------------- | --------------------------------------- |
+| Compact state indicator   | **Status**                              |
+| Named count or tag        | [Badge](/react/components/badge/design) |
 | Explained in-page message | [Alert](/react/components/alert/design) |
-| Metric with trend | [Stat](/react/components/stat/design) |
+| Metric with trend         | [Stat](/react/components/stat/design)   |

@@ -29,9 +29,9 @@ Increase hit targets on handles for touch. During drag, maintain pointer capture
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Manual list reorder | **Sortable** |
+| Need                     | Prefer                                            |
+| ------------------------ | ------------------------------------------------- |
+| Manual list reorder      | **Sortable**                                      |
 | Column sort in a dataset | [Data Table](/react/components/data-table/design) |
-| Nested hierarchy | [Tree View](/react/components/tree-view/design) |
-| Bulk reorder in a grid | [Data Grid](/react/components/data-grid/design) |
+| Nested hierarchy         | [Tree View](/react/components/tree-view/design)   |
+| Bulk reorder in a grid   | [Data Grid](/react/components/data-grid/design)   |

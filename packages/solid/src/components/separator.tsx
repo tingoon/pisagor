@@ -5,8 +5,7 @@ import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
 export interface SeparatorProps
-  extends ComponentProps<typeof ark.div>,
-    BaseSeparatorProps {
+  extends ComponentProps<typeof ark.div>, BaseSeparatorProps {
   orientation?: "horizontal" | "vertical";
   /**
    * Purely visual separator: hidden from assistive tech (`role="none"`).

@@ -1,13 +1,11 @@
 <script lang="ts">
-import { ColorPicker, Input } from "@pisagor/svelte";
+  import { ColorPicker, Input } from "@pisagor/svelte";
 </script>
 
 <ColorPicker defaultValue="#eb5e41" disabled>
   <ColorPicker.Control>
     <ColorPicker.Input channel="hex">
-      {#snippet asChild(
-        props,
-      )}
+      {#snippet asChild(props)}
         <Input {...props()} placeholder="#EB5E41" />
       {/snippet}
     </ColorPicker.Input>

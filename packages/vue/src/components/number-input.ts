@@ -14,7 +14,7 @@ import { Button } from "./button";
 import { FieldLabel } from "./field";
 import { Input, type InputProps } from "./input";
 import { InputClearButton } from "./input/input-clear-button";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Slot recipe context
@@ -31,8 +31,7 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface NumberInputProps
-  extends FormControlGroupShellVariantProps,
-    BaseNumberInputProps {
+  extends FormControlGroupShellVariantProps, BaseNumberInputProps {
   class?: unknown;
   clearable?: boolean;
   defaultValue?: string;
@@ -46,8 +45,10 @@ export interface NumberInputProps
   value?: string;
 }
 
-export interface NumberInputControlProps
-  extends Pick<FormControlGroupShellVariantProps, "variant"> {
+export interface NumberInputControlProps extends Pick<
+  FormControlGroupShellVariantProps,
+  "variant"
+> {
   class?: unknown;
   clearable?: boolean;
 }
@@ -243,7 +244,7 @@ export const NumberInputDecrementTrigger = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useProviderMessage("numberInput.decrement"),
+              "aria-label": useTranslation("numberInput.decrement"),
               variant: "ghost",
             },
             () => h(PhMinus, { "aria-hidden": true }),
@@ -276,7 +277,7 @@ export const NumberInputIncrementTrigger = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useProviderMessage("numberInput.increment"),
+              "aria-label": useTranslation("numberInput.increment"),
               variant: "ghost",
             },
             () => h(PhPlus, { "aria-hidden": true }),

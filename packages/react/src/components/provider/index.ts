@@ -1,11 +1,25 @@
-import { Provider } from "./provider";
-
-export type { ProviderMessages, ProviderProps } from "./provider";
-export type { MessageKey } from "./provider.context";
-
+export type {
+  LocaleConfig,
+  MessageKey,
+  MotionConfig,
+  ProviderContextValue,
+  TranslationsConfig,
+} from "./context";
 export {
-  getMessage,
-  useProviderMessage,
-  useProviderMessages,
-} from "./provider.context";
-export { Provider };
+  useMessage,
+  useMessageResolver,
+  useLocale,
+  useMotion,
+  useProvider,
+  useProviderValue,
+  useTranslation,
+  useTranslations,
+} from "./context";
+export {
+  type LocaleProviderProps,
+  type MotionProviderProps,
+  Provider,
+  type ProviderProps,
+  type ToasterProviderProps,
+  type TranslationsProviderProps,
+} from "./provider";

@@ -18,7 +18,7 @@ import { computed, defineComponent, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { ClassValue } from "../internal/types";
 import { Button } from "./button";
-import { useProviderMessages } from "./provider/provider";
+import { useTranslations } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -30,7 +30,10 @@ const {
   recipe: fileUploadItemRecipe,
 });
 
-/** Slots from the nearest FileUploadItem root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest FileUploadItem root, or the default recipe when used
+ * standalone.
+ */
 function useFileUploadItemSlots() {
   const styles = useOptionalFileUploadItemStyles();
 
@@ -47,7 +50,10 @@ const {
   recipe: fileUploadRecipe,
 });
 
-/** Slots from the nearest FileUpload root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest FileUpload root, or the default recipe when used
+ * standalone.
+ */
 function useFileUploadSlots() {
   const styles = useOptionalFileUploadStyles();
 
@@ -106,8 +112,7 @@ export const FileUploadRoot = defineComponent({
 
     return () => {
       const onFileChange = attrs.onFileChange as
-        | ((details: FileUploadFileChangeDetails) => void)
-        | undefined;
+        ((details: FileUploadFileChangeDetails) => void) | undefined;
       const variantSlots = recipeSlots.value;
 
       return h(
@@ -505,7 +510,7 @@ export const FileUploadList = defineComponent({
 
     const fileUpload = useFileUploadContext();
 
-    const messages = useProviderMessages();
+    const translations = useTranslations();
 
     return () => {
       const { acceptedFiles, rejectedFiles } = fileUpload.value;
@@ -552,7 +557,7 @@ export const FileUploadList = defineComponent({
                   "div",
                   { class: itemSlots.error(), key: code },
                   resolveMessage(
-                    messages,
+                    translations,
                     `fileUpload.error.${code}` as MessageKey,
                   ) ?? code,
                 ),
@@ -563,7 +568,7 @@ export const FileUploadList = defineComponent({
                 Button as ArkPart,
                 {
                   "aria-label": resolveMessage(
-                    messages,
+                    translations,
                     "fileUpload.removeFile",
                   ),
                   class: itemSlots.deleteButton(),

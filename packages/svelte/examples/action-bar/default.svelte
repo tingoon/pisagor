@@ -1,12 +1,12 @@
 <script lang="ts">
-import { ActionBar, Button } from "@pisagor/svelte";
-import {
-  ArchiveIcon,
-  DownloadIcon,
-  PencilSimpleIcon,
-  TrashIcon,
-  XIcon,
-} from "@pisagor/svelte/icons";
+  import { ActionBar, Button } from "@pisagor/svelte";
+  import {
+    ArchiveIcon,
+    DownloadIcon,
+    PencilSimpleIcon,
+    TrashIcon,
+    XIcon,
+  } from "@pisagor/svelte/icons";
 </script>
 
 <ActionBar>

@@ -43,7 +43,7 @@ function onValueChange(next: string) {
           @value-change="onValueChange"
         />
         <div class="flex flex-col items-center gap-2">
-          <p class="font-medium text-muted-foreground text-sm">Live preview</p>
+          <p class="text-muted-foreground text-sm font-medium">Live preview</p>
           <QrCode.Frame />
         </div>
         <div class="flex items-center gap-2">

@@ -1,14 +1,14 @@
 <script lang="ts">
-import { ScrollArea } from "@pisagor/svelte";
+  import { ScrollArea } from "@pisagor/svelte";
 </script>
 
 <ScrollArea class="h-auto rounded-lg border">
   <div class="flex w-max gap-2 p-4">
     {#each Array.from({ length: 20 }) as _, i}
       <div
-        class="flex h-20 w-32 shrink-0 items-center justify-center rounded-md bg-muted"
+        class="bg-muted flex h-20 w-32 shrink-0 items-center justify-center rounded-md"
       >
-        <span class="font-medium text-sm">Item {i + 1}</span>
+        <span class="text-sm font-medium">Item {i + 1}</span>
       </div>
     {/each}
   </div>

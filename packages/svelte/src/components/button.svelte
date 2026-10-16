@@ -1,33 +1,33 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { ButtonProps as BaseButtonProps } from "@pisagor/props";
-import { buttonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { HTMLButtonAttributes } from "svelte/elements";
-import Spinner from "./spinner.svelte";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import type { ButtonProps as BaseButtonProps } from "@pisagor/props";
+  import { buttonRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLButtonAttributes } from "svelte/elements";
+  import Spinner from "./spinner.svelte";
 
-type Props = Omit<HTMLButtonAttributes, "disabled" | "type"> &
-  BaseButtonProps & {
-    children?: import("svelte").Snippet;
-    disabled?: boolean | null;
-    type?: "button" | "reset" | "submit" | null;
-  };
+  type Props = Omit<HTMLButtonAttributes, "disabled" | "type"> &
+    BaseButtonProps & {
+      children?: import("svelte").Snippet;
+      disabled?: boolean | null;
+      type?: "button" | "reset" | "submit" | null;
+    };
 
-let {
-  clickEffect = true,
-  loading = false,
-  pill = false,
-  size = "md",
-  variant = "default",
-  disabled = false,
-  type = "button",
-  recipe = buttonRecipe,
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
+  let {
+    clickEffect = true,
+    loading = false,
+    pill = false,
+    size = "md",
+    variant = "default",
+    disabled = false,
+    type = "button",
+    recipe = buttonRecipe,
+    class: className,
+    children,
+    ...rest
+  }: Props = $props();
 
-const slots = $derived(recipe({ clickEffect, loading, pill, size, variant }));
+  const slots = $derived(recipe({ clickEffect, loading, pill, size, variant }));
 </script>
 
 <Ark

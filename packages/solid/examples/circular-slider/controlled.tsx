@@ -11,7 +11,7 @@ export function Controlled() {
         onValueChange={setValue}
         value={value()}
       />
-      <div class="text-center text-muted-foreground text-sm">
+      <div class="text-muted-foreground text-center text-sm">
         {value() > 180 ? "✅" : "❌"}
       </div>
     </div>

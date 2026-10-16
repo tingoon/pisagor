@@ -11,6 +11,6 @@ const onValueChange = (next: string) => {
 <template>
   <div class="flex w-full flex-col gap-3">
     <RichTextEditor :on-value-change="onValueChange" :value="value" />
-    <pre class="overflow-auto rounded-lg bg-muted p-3 text-xs">{{ value }}</pre>
+    <pre class="bg-muted overflow-auto rounded-lg p-3 text-xs">{{ value }}</pre>
   </div>
 </template>

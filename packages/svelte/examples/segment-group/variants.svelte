@@ -1,7 +1,7 @@
 <script lang="ts">
-import { SegmentGroup } from "@pisagor/svelte";
+  import { SegmentGroup } from "@pisagor/svelte";
 
-const items = ["Profile", "Account", "Security", "Notifications"];
+  const items = ["Profile", "Account", "Security", "Notifications"];
 </script>
 
 <div class="flex flex-col gap-2">

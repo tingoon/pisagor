@@ -76,7 +76,7 @@ export function CheckboxTree() {
           </TreeView.Tree>
         </TreeView>
       </div>
-      <p class="whitespace-pre-wrap text-muted-foreground text-sm">
+      <p class="text-muted-foreground text-sm whitespace-pre-wrap">
         {JSON.stringify(checkedNodes, null, 2)}
       </p>
     </div>

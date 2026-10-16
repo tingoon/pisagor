@@ -29,9 +29,9 @@ Re-render skip nav once per route change if focus management resets; ensure the 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Bypass repetitive nav | **Skip Nav** |
-| Hide decorative text | [Visually Hidden](/svelte/components/visually-hidden/design) |
-| App landmarks | [App Shell](/svelte/components/app-shell/design) |
-| In-page section jumps | [Scrollspy](/svelte/components/scrollspy/design) |
+| Need                  | Prefer                                                      |
+| --------------------- | ----------------------------------------------------------- |
+| Bypass repetitive nav | **Skip Nav**                                                |
+| Hide decorative text  | [Visually Hidden](/svelte/components/visually-hidden/design) |
+| App landmarks         | [App Shell](/svelte/components/app-shell/design)             |
+| In-page section jumps | [Scrollspy](/svelte/components/scrollspy/design)             |

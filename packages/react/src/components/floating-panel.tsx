@@ -21,7 +21,7 @@ import type { ComponentProps } from "react";
 import { use } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button, type ButtonProps } from "./button";
-import { getMessage } from "./provider/provider.context";
+import { useMessage } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -39,11 +39,9 @@ function useFloatingPanelSlots() {
 
 // #region Types
 export interface FloatingPanelRootProps
-  extends FloatingPanelPrimitiveRootProps,
-    BaseFloatingPanelRootProps {}
+  extends FloatingPanelPrimitiveRootProps, BaseFloatingPanelRootProps {}
 
-export interface FloatingPanelContentProps
-  extends FloatingPanelPrimitiveContentProps {
+export interface FloatingPanelContentProps extends FloatingPanelPrimitiveContentProps {
   /**
    * Whether to enable a resizable panel.
    *
@@ -62,8 +60,7 @@ export type FloatingPanelMaximizeProps = FloatingPanelMinimizeProps;
 
 export type FloatingPanelRestoreProps = FloatingPanelMinimizeProps;
 
-export interface FloatingPanelBodyProps
-  extends FloatingPanelPrimitiveBodyProps {
+export interface FloatingPanelBodyProps extends FloatingPanelPrimitiveBodyProps {
   /**
    * Whether to add a fade effect to the scroll area.
    *
@@ -179,7 +176,7 @@ export function FloatingPanelMinimize({
   return (
     <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="minimized">
       <Button
-        aria-label={getMessage("floatingPanel.minimize")}
+        aria-label={useMessage("floatingPanel.minimize")}
         size={size}
         variant={variant}
       >
@@ -197,7 +194,7 @@ export function FloatingPanelMaximize({
   return (
     <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="maximized">
       <Button
-        aria-label={getMessage("floatingPanel.maximize")}
+        aria-label={useMessage("floatingPanel.maximize")}
         size={size}
         variant={variant}
       >
@@ -217,7 +214,7 @@ export function FloatingPanelRestore({
   return (
     <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="default">
       <Button
-        aria-label={getMessage("floatingPanel.restore")}
+        aria-label={useMessage("floatingPanel.restore")}
         size={size}
         variant={variant}
       >

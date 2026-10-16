@@ -2,22 +2,20 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const statRecipe = tv({
   defaultVariants: {
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "outline",
   },
   slots: {
     base: [
       "group/stat",
       "flex w-full flex-col gap-1.5",
-      "rounded-2xl border border-border/50 p-4",
+      "border-border/50 rounded-2xl border p-4",
       "bg-card text-card-foreground",
       "shadow-xs/5",
     ],
     description: ["text-muted-foreground text-sm"],
     label: ["text-muted-foreground text-sm"],
-    value: ["font-semibold text-2xl leading-none tracking-tight"],
+    value: ["text-2xl leading-none font-semibold tracking-tight"],
   },
   variants: {
     variant: {
@@ -25,7 +23,7 @@ export const statRecipe = tv({
         base: "border-transparent bg-transparent p-0 shadow-none",
       },
       muted: {
-        base: "border-transparent bg-muted/48",
+        base: "bg-muted/48 border-transparent",
       },
       outline: {
         base: "border-border bg-card",
@@ -37,13 +35,11 @@ export const statRecipe = tv({
 export const statTrendRecipe = tv({
   base: [
     "inline-flex w-fit items-center gap-1 rounded-md px-2 py-0.5",
-    "font-medium text-xs",
-    "[&_svg:not([class*='size-'])]:size-3.5 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+    "text-xs font-medium",
+    "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5",
   ],
   defaultVariants: {
-    /**
-     * Trend.
-     */
+    /** Trend. */
     trend: "neutral",
   },
   variants: {

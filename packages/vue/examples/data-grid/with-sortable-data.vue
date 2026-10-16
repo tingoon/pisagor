@@ -270,8 +270,8 @@ const handleSortableChange = (nextIds: string[]) => {
             <Sortable.ItemContent>
               <Sortable.Handle />
               <div class="min-w-0 flex-1">
-                <p class="truncate font-medium text-sm">{{ user.name }}</p>
-                <p class="truncate text-muted-foreground text-xs">
+                <p class="truncate text-sm font-medium">{{ user.name }}</p>
+                <p class="text-muted-foreground truncate text-xs">
                   {{ user.email }}
                 </p>
               </div>

@@ -3,16 +3,14 @@ import { tv, type VariantProps } from "tailwind-variants";
 export const toggleRecipe = tv({
   base: [
     "relative",
-    "data-[state=on]:bg-card data-[state=on]:shadow-sm dark:data-[state=on]:bg-input/64",
-    "transition-transform duration-fast ease-out",
+    "data-[state=on]:bg-card dark:data-[state=on]:bg-input/64 data-[state=on]:shadow-sm",
+    "duration-fast transition-transform ease-out",
     "active:scale-97",
     "pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 pointer-coarse:after:min-w-11",
     "motion-reduce:transition-none! motion-reduce:active:scale-100",
   ],
   defaultVariants: {
-    /**
-     * Control size.
-     */
+    /** Control size. */
     size: "md",
   },
   variants: {

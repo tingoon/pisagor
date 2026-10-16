@@ -1,7 +1,7 @@
 <script lang="ts">
-import { ColorPicker, Field, InputGroup } from "@pisagor/svelte";
+  import { ColorPicker, Field, InputGroup } from "@pisagor/svelte";
 
-let value = $state("#eb5e41");
+  let value = $state("#eb5e41");
 </script>
 
 <div class="flex flex-col gap-2">
@@ -20,9 +20,7 @@ let value = $state("#eb5e41");
             </InputGroup.Addon>
           </ColorPicker.Trigger>
           <ColorPicker.Input channel="hex">
-            {#snippet asChild(
-              props,
-            )}
+            {#snippet asChild(props)}
               <InputGroup.Input {...props()} clearable={false} />
             {/snippet}
           </ColorPicker.Input>

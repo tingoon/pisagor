@@ -29,9 +29,9 @@ Use [Button Group](/svelte/components/button-group/design) for tightly related a
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Section title + local actions | **Toolbar** |
-| Bulk actions after selection | [Action Bar](/svelte/components/action-bar/design) |
-| App-wide navigation | [Navbar](/svelte/components/navbar/design) |
-| Related buttons only | [Button Group](/svelte/components/button-group/design) |
+| Need                          | Prefer                                                |
+| ----------------------------- | ----------------------------------------------------- |
+| Section title + local actions | **Toolbar**                                           |
+| Bulk actions after selection  | [Action Bar](/svelte/components/action-bar/design)     |
+| App-wide navigation           | [Navbar](/svelte/components/navbar/design)             |
+| Related buttons only          | [Button Group](/svelte/components/button-group/design) |

@@ -26,7 +26,8 @@ type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 // #region Types
 export interface InputProps extends BaseInputProps {
   /**
-   * Style recipe. Defaults to `inputRootRecipe` from `@pisagor/recipes/input-root`.
+   * Style recipe. Defaults to `inputRootRecipe` from
+   * `@pisagor/recipes/input-root`.
    *
    * @defaultValue inputRootRecipe
    */

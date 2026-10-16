@@ -7,6 +7,7 @@ import type {
 export interface TagsInputProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue tagsInputRecipe
    */
   recipe?: TagsInputRecipeFn;
@@ -16,6 +17,7 @@ export interface TagsInputProps {
 export interface TagsInputItemProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue tagsInputItemRecipe
    */
   recipe?: TagsInputItemRecipeFn;

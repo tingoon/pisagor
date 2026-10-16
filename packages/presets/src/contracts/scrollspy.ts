@@ -1,8 +1,8 @@
 import { tv } from "tailwind-variants";
 
 /**
- * Scrollspy root — behavior-first; no default visual styles.
- * Consumed so all className merging goes through `@pisagor/recipes`.
+ * Scrollspy root — behavior-first; no default visual styles. Consumed so all
+ * className merging goes through `@pisagor/recipes`.
  */
 export const scrollspyRecipe = tv({
   base: "",

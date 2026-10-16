@@ -7,7 +7,7 @@ import { TreeView } from "@pisagor/vue";
 ## Anatomy
 
 ```vue
-<TreeView collection={collection}>
+<TreeView collection="{collection}">
   <TreeView.Tree>
     <TreeView.NodeProvider>
       <TreeView.Branch>

@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Sidebar } from "@pisagor/svelte";
-import HouseIcon from "phosphor-svelte/lib/HouseIcon";
-import UserIcon from "phosphor-svelte/lib/UserIcon";
+  import { Sidebar } from "@pisagor/svelte";
+  import HouseIcon from "phosphor-svelte/lib/HouseIcon";
+  import UserIcon from "phosphor-svelte/lib/UserIcon";
 </script>
 
 <Sidebar.Provider disableHotkey>

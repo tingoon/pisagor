@@ -1,49 +1,52 @@
 <script lang="ts">
-import type {
-  AvatarFallbackProps,
-  AvatarImageProps,
-  AvatarRootProps,
-} from "@ark-ui/svelte/avatar";
-import type { AvatarProps as BaseAvatarProps } from "@pisagor/props";
-import type { AvatarRecipeSlot } from "@pisagor/recipes";
-import { getInitials } from "@pisagor/utils";
-import type { Snippet } from "svelte";
-import type { VariantClassNames } from "../../internal/types";
-import AvatarFallback from "./avatar-fallback.svelte";
-import AvatarImage from "./avatar-image.svelte";
-import AvatarRoot from "./avatar-root.svelte";
+  import type {
+    AvatarFallbackProps,
+    AvatarImageProps,
+    AvatarRootProps,
+  } from "@ark-ui/svelte/avatar";
+  import type { AvatarProps as BaseAvatarProps } from "@pisagor/props";
+  import type { AvatarRecipeSlot } from "@pisagor/recipes";
+  import { getInitials } from "@pisagor/utils";
+  import type { Snippet } from "svelte";
+  import type { VariantClassNames } from "../../internal/types";
+  import AvatarFallback from "./avatar-fallback.svelte";
+  import AvatarImage from "./avatar-image.svelte";
+  import AvatarRoot from "./avatar-root.svelte";
 
-type Props = Omit<AvatarRootProps, "children"> & {
-  /** Alt text for the avatar image */
-  alt?: string;
-  /** Slot class names */
-  classNames?: VariantClassNames<AvatarRecipeSlot>;
-  /** Renders the fallback content shown until the image loads */
-  fallback?: string | Snippet;
-  /** Extra props forwarded to the avatar fallback element */
-  fallbackProps?: Omit<AvatarFallbackProps, "children" | "class">;
-  /** Extra props forwarded to the avatar image element */
-  imageProps?: Omit<AvatarImageProps, "alt" | "class" | "src">;
-  /** Person name; used as default alt text and to derive initials when no fallback is given */
-  name?: string;
-  /** Renders the avatar image with the provided src */
-  src?: string;
-} & BaseAvatarProps;
+  type Props = Omit<AvatarRootProps, "children"> & {
+    /** Alt text for the avatar image */
+    alt?: string;
+    /** Slot class names */
+    classNames?: VariantClassNames<AvatarRecipeSlot>;
+    /** Renders the fallback content shown until the image loads */
+    fallback?: string | Snippet;
+    /** Extra props forwarded to the avatar fallback element */
+    fallbackProps?: Omit<AvatarFallbackProps, "children" | "class">;
+    /** Extra props forwarded to the avatar image element */
+    imageProps?: Omit<AvatarImageProps, "alt" | "class" | "src">;
+    /**
+     * Person name; used as default alt text and to derive initials when no
+     * fallback is given
+     */
+    name?: string;
+    /** Renders the avatar image with the provided src */
+    src?: string;
+  } & BaseAvatarProps;
 
-let {
-  alt,
-  name,
-  fallback: fallbackProp,
-  fallbackProps,
-  imageProps,
-  src,
-  classNames,
-  ...rest
-}: Props = $props();
+  let {
+    alt,
+    name,
+    fallback: fallbackProp,
+    fallbackProps,
+    imageProps,
+    src,
+    classNames,
+    ...rest
+  }: Props = $props();
 
-const fallback = $derived(
-  fallbackProp === undefined && name ? getInitials(name) : fallbackProp,
-);
+  const fallback = $derived(
+    fallbackProp === undefined && name ? getInitials(name) : fallbackProp,
+  );
 </script>
 
 <AvatarRoot {...rest}>

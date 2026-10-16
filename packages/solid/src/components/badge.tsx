@@ -7,8 +7,7 @@ import { splitProps } from "solid-js";
 export type BadgeVariant = NonNullable<BadgeVariantProps["variant"]>;
 
 export interface BadgeProps
-  extends ComponentProps<typeof ark.span>,
-    BaseBadgeProps {}
+  extends ComponentProps<typeof ark.span>, BaseBadgeProps {}
 
 export function Badge(props: BadgeProps): JSX.Element {
   const [local, rest] = splitProps(props, [

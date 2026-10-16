@@ -29,11 +29,11 @@ For search that drives a list, debounce network calls but keep the input itself 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Single-line text entry | **Input** |
-| Label + error layout | [Field](/react/components/field/design) |
-| Prefix, suffix, or inline action | [Input Group](/react/components/input-group/design) |
-| Secret credentials | [Password Input](/react/components/password-input/design) |
-| Multi-line copy | [Textarea](/react/components/textarea/design) |
-| Numeric quantities | [Number Input](/react/components/number-input/design) |
+| Need                             | Prefer                                                    |
+| -------------------------------- | --------------------------------------------------------- |
+| Single-line text entry           | **Input**                                                 |
+| Label + error layout             | [Field](/react/components/field/design)                   |
+| Prefix, suffix, or inline action | [Input Group](/react/components/input-group/design)       |
+| Secret credentials               | [Password Input](/react/components/password-input/design) |
+| Multi-line copy                  | [Textarea](/react/components/textarea/design)             |
+| Numeric quantities               | [Number Input](/react/components/number-input/design)     |

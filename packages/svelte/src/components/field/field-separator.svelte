@@ -1,20 +1,20 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import { formControlSeparatorRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { Snippet } from "svelte";
-import type { HTMLAttributes } from "svelte/elements";
-import Separator from "../separator.svelte";
-import { useFormControlSurface } from "../surface/use-form-control-surface";
-import { useFieldSlots } from "./field.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import { formControlSeparatorRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { Snippet } from "svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import Separator from "../separator.svelte";
+  import { useFormControlSurface } from "../surface/use-form-control-surface";
+  import { useFieldSlots } from "./field.context";
 
-type Props = HTMLAttributes<HTMLDivElement> & {
-  children?: Snippet;
-};
+  type Props = HTMLAttributes<HTMLDivElement> & {
+    children?: Snippet;
+  };
 
-let { children, class: className, ...rest }: Props = $props();
-const slots = useFieldSlots();
-const surfaceVariant = useFormControlSurface();
+  let { children, class: className, ...rest }: Props = $props();
+  const slots = useFieldSlots();
+  const surfaceVariant = useFormControlSurface();
 </script>
 
 <Ark

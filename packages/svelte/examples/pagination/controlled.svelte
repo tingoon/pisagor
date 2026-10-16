@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Pagination } from "@pisagor/svelte";
+  import { Pagination } from "@pisagor/svelte";
 
-let page = $state(1);
+  let page = $state(1);
 </script>
 
 <div class="flex flex-col gap-2">
@@ -11,5 +11,5 @@ let page = $state(1);
     {page}
     pageSize={10}
   />
-  <p class="text-center text-muted-foreground text-sm">Page {page} of 5</p>
+  <p class="text-muted-foreground text-center text-sm">Page {page} of 5</p>
 </div>

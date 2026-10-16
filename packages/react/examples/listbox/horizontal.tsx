@@ -22,12 +22,12 @@ export function Horizontal() {
               item={item}
               key={item.title}
             >
-              <div className="aspect-square size-20 w-full rounded-lg bg-foreground" />
+              <div className="bg-foreground aspect-square size-20 w-full rounded-lg" />
               <div>
                 <Listbox.ItemText>{item.title}</Listbox.ItemText>
                 <p className="text-muted-foreground text-xs">{item.artist}</p>
               </div>
-              <Listbox.ItemIndicator className="absolute top-4 right-4 shrink-0 rounded-xs bg-background [&_svg]:text-foreground!" />
+              <Listbox.ItemIndicator className="bg-background [&_svg]:text-foreground! absolute top-4 right-4 shrink-0 rounded-xs" />
             </Listbox.Item>
           ))}
         </Listbox.Content>

@@ -29,10 +29,10 @@ Stepper buttons should respond on press with immediate value updates. Disable in
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Numeric entry with steppers | **Number Input** |
-| Generic text | [Input](/svelte/components/input/design) |
-| Label and error stack | [Field](/svelte/components/field/design) |
-| Continuous range | [Slider](/svelte/components/slider/design) |
-| Locale display only | [Format](/svelte/components/format/design) |
+| Need                        | Prefer                                    |
+| --------------------------- | ----------------------------------------- |
+| Numeric entry with steppers | **Number Input**                          |
+| Generic text                | [Input](/svelte/components/input/design)   |
+| Label and error stack       | [Field](/svelte/components/field/design)   |
+| Continuous range            | [Slider](/svelte/components/slider/design) |
+| Locale display only         | [Format](/svelte/components/format/design) |

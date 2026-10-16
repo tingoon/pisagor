@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Field, Switch } from "@pisagor/svelte";
+  import { Field, Switch } from "@pisagor/svelte";
 
-let checked = $state(false);
+  let checked = $state(false);
 </script>
 
 <Field.Group class="flex flex-col items-center gap-2">

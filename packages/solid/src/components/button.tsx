@@ -6,8 +6,7 @@ import { Show, splitProps } from "solid-js";
 import { Spinner } from "./spinner";
 
 export interface ButtonProps
-  extends ComponentProps<typeof ark.button>,
-    BaseButtonProps {}
+  extends ComponentProps<typeof ark.button>, BaseButtonProps {}
 
 export function Button(props: ButtonProps): JSX.Element {
   const [local, rest] = splitProps(props, [

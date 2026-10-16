@@ -11,7 +11,7 @@ import { Item } from "@pisagor/vue";
         height="128"
         src="https://picsum.photos/seed/1/500/300"
         width="128"
-      >
+      />
     </Item.Header>
     <Item.Content>
       <Item.Title>Item title</Item.Title>

@@ -33,8 +33,7 @@ export function useFieldSlots(recipe: typeof fieldRecipe = fieldRecipe) {
 // #endregion
 
 export interface FieldRootProps
-  extends FieldPrimitiveRootProps,
-    BaseFieldProps {}
+  extends FieldPrimitiveRootProps, BaseFieldProps {}
 
 export type FieldProps = FieldRootProps;
 
@@ -48,8 +47,7 @@ export type FieldHelperProps = FieldHelperTextProps;
 export type FieldErrorProps = FieldErrorTextProps;
 
 export interface FieldGroupProps
-  extends ComponentProps<typeof ark.div>,
-    BaseFieldProps {}
+  extends ComponentProps<typeof ark.div>, BaseFieldProps {}
 
 export type FieldContentProps = ComponentProps<typeof ark.div>;
 export type FieldRequiredIndicatorProps = ComponentProps<typeof ark.span>;

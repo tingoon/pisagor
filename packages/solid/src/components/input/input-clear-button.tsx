@@ -5,7 +5,7 @@ import {
   InputGroupButton,
   type InputGroupButtonProps,
 } from "../input-group/input-group-core";
-import { useProviderMessage } from "../provider/provider.context";
+import { useTranslation } from "../provider/context";
 
 interface InputClearButtonProps extends InputGroupButtonProps {
   onClear: () => void;
@@ -33,7 +33,7 @@ export function InputClearButton(props: InputClearButtonProps): JSX.Element {
 
   return (
     <InputGroupButton
-      aria-label={useProviderMessage("inputClearButton.clear")}
+      aria-label={useTranslation("inputClearButton.clear")}
       {...rest}
       data-part="clear-button"
       data-scope="input"

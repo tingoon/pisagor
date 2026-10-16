@@ -1,9 +1,9 @@
 /**
  * Docs-only stand-in for `@faker-js/faker` inside live examples (wired by the
  * `pisagor:faker-lite` plugin in astro.config.ts). Examples only use
- * `faker.lorem`, but the real package ships its full English locale
- * (~400 KB minified) into the preview chunk. Same call signatures, tiny
- * word list, seeded so previews are stable between renders.
+ * `faker.lorem`, but the real package ships its full English locale (~400 KB
+ * minified) into the preview chunk. Same call signatures, tiny word list,
+ * seeded so previews are stable between renders.
  */
 
 const WORDS =

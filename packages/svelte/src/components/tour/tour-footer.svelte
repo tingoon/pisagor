@@ -1,16 +1,16 @@
 <script lang="ts">
-import {
-  type TourControlProps,
-  Tour as TourPrimitive,
-} from "@ark-ui/svelte/tour";
-import { dialogRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { setInsideControl } from "../../internal/inside-control";
-import { TOUR_INSIDE_CONTROL } from "./tour.context";
+  import {
+    type TourControlProps,
+    Tour as TourPrimitive,
+  } from "@ark-ui/svelte/tour";
+  import { dialogRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { setInsideControl } from "../../internal/inside-control";
+  import { TOUR_INSIDE_CONTROL } from "./tour.context";
 
-let { children, class: className, ...rest }: TourControlProps = $props();
-setInsideControl(TOUR_INSIDE_CONTROL);
-const dialogSlots = $derived(dialogRecipe());
+  let { children, class: className, ...rest }: TourControlProps = $props();
+  setInsideControl(TOUR_INSIDE_CONTROL);
+  const dialogSlots = $derived(dialogRecipe());
 </script>
 
 <TourPrimitive.Control

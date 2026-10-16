@@ -5,7 +5,7 @@ export function Fallback() {
     const now = new Date();
 
     return (
-      <div className="rounded-xl border bg-muted px-4 py-3 text-foreground text-sm">
+      <div className="bg-muted text-foreground rounded-xl border px-4 py-3 text-sm">
         Current time: {now.toLocaleTimeString()}
       </div>
     );
@@ -13,7 +13,7 @@ export function Fallback() {
   return (
     <ClientOnly
       fallback={
-        <div className="rounded-xl border border-dashed bg-muted/50 px-4 py-3 text-muted-foreground text-sm">
+        <div className="bg-muted/50 text-muted-foreground rounded-xl border border-dashed px-4 py-3 text-sm">
           Loading…
         </div>
       }

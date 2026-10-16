@@ -25,9 +25,9 @@ Prefer a linear [Slider](/svelte/components/slider/design) when precision, tick 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Rotational value choice | **Circular Slider** |
-| Linear range with marks | [Slider](/svelte/components/slider/design) |
-| Typed numeric entry | [Number Input](/svelte/components/number-input/design) |
-| Compact on/off | [Switch](/svelte/components/switch/design) |
+| Need                    | Prefer                                                |
+| ----------------------- | ----------------------------------------------------- |
+| Rotational value choice | **Circular Slider**                                   |
+| Linear range with marks | [Slider](/svelte/components/slider/design)             |
+| Typed numeric entry     | [Number Input](/svelte/components/number-input/design) |
+| Compact on/off          | [Switch](/svelte/components/switch/design)             |

@@ -5,12 +5,11 @@ import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 
 export interface ProseProps
-  extends Omit<ComponentProps<typeof ark.div>, "innerHTML">,
-    BaseProseProps {
+  extends Omit<ComponentProps<typeof ark.div>, "innerHTML">, BaseProseProps {
   html?: string;
   /**
-   * Sanitizer applied to `html` before injection, e.g.
-   * `(html) => DOMPurify.sanitize(html)`. Recommended for user-generated content.
+   * Sanitizer applied to `html` before injection, e.g. `(html) =>
+   * DOMPurify.sanitize(html)`. Recommended for user-generated content.
    */
   sanitize?: (html: string) => string;
 }

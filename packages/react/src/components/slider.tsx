@@ -57,8 +57,10 @@ type SliderRootProps = SliderPrimitiveRootProps & {
   variant?: FormControlVariant;
 } & BaseSliderRootProps;
 
-export interface SliderProps
-  extends Omit<SliderRootProps, "children" | "onValueChange"> {
+export interface SliderProps extends Omit<
+  SliderRootProps,
+  "children" | "onValueChange"
+> {
   /**
    * The interval between markers.
    *
@@ -68,7 +70,7 @@ export interface SliderProps
   /**
    * The labels to show on the markers.
    *
-   * @defaultValue []
+   * @defaultValue [ ]
    */
   markerLabels?: string[];
   /**
@@ -90,7 +92,7 @@ export interface SliderProps
    * Called when the slider value changes.
    *
    * @remarks
-   * Receives the numeric value array directly, not Ark UI event details.
+   *   Receives the numeric value array directly, not Ark UI event details.
    */
   onValueChange?: (value: number[]) => void;
   /** Slot class names */

@@ -16,7 +16,7 @@ import type {
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import { type ComponentProps, useCallback, useRef } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { getMessage } from "./provider/provider.context";
+import { useMessage } from "./provider/context";
 
 export type {
   SplitterExpandCollapseDetails as ExpandCollapseDetails,
@@ -49,8 +49,7 @@ export type ResizableHandlePosition = "bottom" | "center" | "top";
 export type ResizableEdgePlacement = "end" | "start";
 
 export interface ResizableEdgeHandleProps
-  extends ComponentProps<"button">,
-    BaseResizableEdgeHandleProps {
+  extends ComponentProps<"button">, BaseResizableEdgeHandleProps {
   /** Which edge of the resizable region the handle sits on. */
   placement: ResizableEdgePlacement;
   /** Vertical placement of the visible grip. @defaultValue `"center"` */
@@ -75,8 +74,7 @@ export interface ResizableEdgeHandleProps
   onWidthChange: (width: number) => void;
 }
 
-export interface ResizableResizeTriggerProps
-  extends SplitterResizeTriggerProps {
+export interface ResizableResizeTriggerProps extends SplitterResizeTriggerProps {
   /**
    * Whether to show the handle.
    *
@@ -86,8 +84,7 @@ export interface ResizableResizeTriggerProps
 }
 
 export interface ResizableRootProps
-  extends SplitterRootProps,
-    BaseResizableRootProps {}
+  extends SplitterRootProps, BaseResizableRootProps {}
 
 export type ResizablePanelProps = SplitterPanelProps;
 
@@ -97,8 +94,7 @@ export type ResizableResizeTriggerIndicatorProps =
 export type ResizableContextProps = SplitterContextProps;
 
 export interface ResizableRootProviderProps
-  extends SplitterRootProviderProps,
-    BaseResizableRootProviderProps {}
+  extends SplitterRootProviderProps, BaseResizableRootProviderProps {}
 // #endregion
 
 // #region Parts
@@ -248,7 +244,7 @@ export function ResizableResizeTrigger({
 
   return (
     <SplitterPrimitive.ResizeTrigger
-      aria-label={getMessage("resizable.resize")}
+      aria-label={useMessage("resizable.resize")}
       {...rest}
       className={slots.resizeTrigger({ className })}
     >

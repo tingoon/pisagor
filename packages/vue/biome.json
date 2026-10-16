@@ -9,17 +9,5 @@
         "useVueMultiWordComponentNames": "off"
       }
     }
-  },
-  "overrides": [
-    {
-      "includes": ["**/*.stories.ts"],
-      "linter": {
-        "rules": {
-          "suspicious": {
-            "noArrayIndexKey": "off"
-          }
-        }
-      }
-    }
-  ]
+  }
 }

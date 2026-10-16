@@ -37,8 +37,7 @@ type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
 export interface TextareaProps
-  extends FormControlShellVariantProps,
-    BaseTextareaProps {
+  extends FormControlShellVariantProps, BaseTextareaProps {
   class?: unknown;
   classNames?: TextareaClassNames;
   clearable?: boolean;

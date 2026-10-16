@@ -1,23 +1,23 @@
 <script lang="ts">
-import {
-  type DialogPositionerProps,
-  Dialog as DialogPrimitive,
-} from "@ark-ui/svelte/dialog";
-import type { SheetProps as BaseSheetProps } from "@pisagor/props";
-import { cn } from "@pisagor/utils";
-import { useSheet } from "./sheet.context";
+  import {
+    type DialogPositionerProps,
+    Dialog as DialogPrimitive,
+  } from "@ark-ui/svelte/dialog";
+  import type { SheetProps as BaseSheetProps } from "@pisagor/props";
+  import { cn } from "@pisagor/utils";
+  import { useSheet } from "./sheet.context";
 
-type Props = DialogPositionerProps & BaseSheetProps;
+  type Props = DialogPositionerProps & BaseSheetProps;
 
-let {
-  placement,
-  variant = "default",
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
-const styles = useSheet();
-const slots = $derived(styles.slots);
+  let {
+    placement,
+    variant = "default",
+    class: className,
+    children,
+    ...rest
+  }: Props = $props();
+  const styles = useSheet();
+  const slots = $derived(styles.slots);
 </script>
 
 <DialogPrimitive.Positioner

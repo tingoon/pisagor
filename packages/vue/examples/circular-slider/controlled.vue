@@ -16,7 +16,7 @@ function onValueChange(next: typeof value.value) {
       :on-value-change="onValueChange"
       :value="value"
     />
-    <div class="text-center text-muted-foreground text-sm">
+    <div class="text-muted-foreground text-center text-sm">
       {{ value > 180 ? "✅" : "❌" }}
     </div>
   </div>

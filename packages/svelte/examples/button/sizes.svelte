@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import PlusIcon from "phosphor-svelte/lib/PlusIcon";
+  import { Button } from "@pisagor/svelte";
+  import PlusIcon from "phosphor-svelte/lib/PlusIcon";
 
-const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
+  const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
 </script>
 
 <div class="flex flex-col gap-2">

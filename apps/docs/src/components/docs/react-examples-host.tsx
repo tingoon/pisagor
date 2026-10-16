@@ -18,9 +18,9 @@ const globs: ExampleGlobs = {
 };
 
 /**
- * Single client island for every live preview on a React docs page
- * (components, forms, blocks, standalone previews). Props are optional —
- * config is read from the page when omitted.
+ * Single client island for every live preview on a React docs page (components,
+ * forms, blocks, standalone previews). Props are optional — config is read from
+ * the page when omitted.
  */
 export function ReactExamplesHost({
   id,

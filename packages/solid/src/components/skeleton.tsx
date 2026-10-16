@@ -10,19 +10,22 @@ import { For, splitProps } from "solid-js";
 import type { SizeScaleProps } from "../internal/types";
 
 export interface SkeletonTextProps
-  extends ComponentProps<typeof ark.div>,
+  extends
+    ComponentProps<typeof ark.div>,
     BaseSkeletonTextProps,
     SizeScaleProps {
   lines?: number;
 }
 
 export interface SkeletonRootProps
-  extends ComponentProps<typeof ark.div>,
+  extends
+    ComponentProps<typeof ark.div>,
     BaseSkeletonRootProps,
     SizeScaleProps {}
 
 export interface SkeletonCircleProps
-  extends ComponentProps<typeof ark.div>,
+  extends
+    ComponentProps<typeof ark.div>,
     BaseSkeletonCircleProps,
     SizeScaleProps {}
 

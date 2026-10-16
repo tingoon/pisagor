@@ -23,7 +23,7 @@ import type {
   DialogTitleProps,
 } from "./dialog";
 import { Dialog } from "./dialog";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const { Context: SheetStylesContext, useStyles: useSheet } =
@@ -33,14 +33,12 @@ const { Context: SheetStylesContext, useStyles: useSheet } =
 export type SheetPositionerProps = DialogPositionerProps & SheetVariantProps;
 
 export interface SheetContentProps
-  extends DialogContentProps,
-    SheetVariantProps {
+  extends DialogContentProps, SheetVariantProps {
   showCloseButton?: boolean;
 }
 
 export interface SheetProps
-  extends Omit<DialogRootProps, "recipe">,
-    BaseSheetProps {}
+  extends Omit<DialogRootProps, "recipe">, BaseSheetProps {}
 
 export type SheetTriggerProps = DialogTriggerProps;
 export type SheetCloseTriggerProps = DialogCloseTriggerProps;
@@ -118,7 +116,7 @@ export function SheetContent(props: SheetContentProps): JSX.Element {
               asChild={(triggerProps) => (
                 <Button
                   {...triggerProps({ class: styles.slots.inline() })}
-                  aria-label={useProviderMessage("sheet.close")}
+                  aria-label={useTranslation("sheet.close")}
                   size="icon-sm"
                   variant="ghost"
                 >

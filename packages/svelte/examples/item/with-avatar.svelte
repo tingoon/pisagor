@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Avatar, Button, Item } from "@pisagor/svelte";
+  import { Avatar, Button, Item } from "@pisagor/svelte";
 </script>
 
 <Item variant="outline">
@@ -11,6 +11,6 @@ import { Avatar, Button, Item } from "@pisagor/svelte";
     <Item.Description>Last seen 5 months ago</Item.Description>
   </Item.Content>
   <Item.Actions>
-    <Button size="sm" variant="outline"> View </Button>
+    <Button size="sm" variant="outline">View</Button>
   </Item.Actions>
 </Item>

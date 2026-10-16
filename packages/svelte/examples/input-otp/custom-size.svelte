@@ -1,5 +1,5 @@
 <script lang="ts">
-import { InputOTP } from "@pisagor/svelte";
+  import { InputOTP } from "@pisagor/svelte";
 </script>
 
 <InputOTP>

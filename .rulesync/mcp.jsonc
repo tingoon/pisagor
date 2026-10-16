@@ -3,17 +3,17 @@
   "mcpServers": {
     "ark-ui": {
       "args": ["@ark-ui/mcp"],
-      "command": "bunx"
+      "command": "bunx",
     },
     "github": {
       "headers": {
-        "Authorization": "Bearer ${env:GITHUB_PAT}"
+        "Authorization": "Bearer ${env:GITHUB_PAT}",
       },
-      "url": "https://api.githubcopilot.com/mcp/"
+      "url": "https://api.githubcopilot.com/mcp/",
     },
     "pisagor": {
       "args": ["@pisagor/mcp"],
-      "command": "bunx"
-    }
-  }
+      "command": "bunx",
+    },
+  },
 }

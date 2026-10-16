@@ -17,7 +17,7 @@ import {
   type InputGroupButtonProps,
   type InputGroupProps,
 } from "./input-group";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -32,7 +32,8 @@ export type PasswordInputVisibilityTriggerProps = Omit<
 >;
 
 export interface PasswordInputProps
-  extends PasswordInputRootProps,
+  extends
+    PasswordInputRootProps,
     Omit<PasswordInputInputProps, "class" | "size">,
     BasePasswordInputProps {
   size?: InputGroupProps["size"];
@@ -92,7 +93,7 @@ function PasswordInputVisibilityTrigger(
   props: PasswordInputVisibilityTriggerProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children"]);
-  const label = useProviderMessage("passwordInput.togglePasswordVisibility");
+  const label = useTranslation("passwordInput.togglePasswordVisibility");
 
   return (
     <InputGroup.Addon align="inline-end">
@@ -222,7 +223,7 @@ function PasswordInputShorthand(props: PasswordInputProps): JSX.Element {
             <Show when={canClear()}>
               <InputGroup.Addon align="inline-end" class={slots().clearAddon()}>
                 <InputGroup.Button
-                  aria-label={useProviderMessage("passwordInput.clear")}
+                  aria-label={useTranslation("passwordInput.clear")}
                   {...restClearButtonProps}
                   data-part="clear-trigger"
                   data-scope="password-input"
@@ -244,7 +245,7 @@ function PasswordInputShorthand(props: PasswordInputProps): JSX.Element {
                 asChild={(triggerProps) => (
                   <InputGroup.Button
                     {...triggerProps()}
-                    aria-label={useProviderMessage(
+                    aria-label={useTranslation(
                       "passwordInput.togglePasswordVisibility",
                     )}
                     size="icon-xs"

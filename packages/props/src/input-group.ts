@@ -12,6 +12,7 @@ import type {
 export interface InputGroupAddonProps extends InputGroupAddonVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue inputGroupAddonRecipe
    */
   recipe?: InputGroupAddonRecipeFn;
@@ -21,6 +22,7 @@ export interface InputGroupAddonProps extends InputGroupAddonVariantProps {
 export interface InputGroupButtonProps extends InputGroupButtonVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue inputGroupButtonRecipe
    */
   recipe?: InputGroupButtonRecipeFn;
@@ -30,6 +32,7 @@ export interface InputGroupButtonProps extends InputGroupButtonVariantProps {
 export interface InputGroupTextProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue inputGroupTextRecipe
    */
   recipe?: InputGroupTextRecipeFn;
@@ -39,6 +42,7 @@ export interface InputGroupTextProps {
 export interface InputGroupControlProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue inputGroupControlRecipe
    */
   recipe?: InputGroupControlRecipeFn;
@@ -48,6 +52,7 @@ export interface InputGroupControlProps {
 export interface InputGroupTextareaControlProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue inputGroupTextareaControlRecipe
    */
   recipe?: InputGroupTextareaControlRecipeFn;

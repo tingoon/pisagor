@@ -1,63 +1,63 @@
 <script lang="ts">
-import {
-  type ToastActionTriggerProps,
-  type ToastCloseTriggerProps,
-  type ToastDescriptionProps,
-  type ToastOptions,
-  Toast as ToastPrimitive,
-  type ToastTitleProps,
-} from "@ark-ui/svelte/toast";
-import type { ToastItemRecipeSlot } from "@pisagor/recipes";
-import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
-import InfoIcon from "phosphor-svelte/lib/InfoIcon";
-import WarningCircleIcon from "phosphor-svelte/lib/WarningCircleIcon";
-import WarningIcon from "phosphor-svelte/lib/WarningIcon";
-import XIcon from "phosphor-svelte/lib/XIcon";
-import type { Snippet } from "svelte";
-import type { HTMLAttributes } from "svelte/elements";
-import type { VariantClassNames } from "../../internal/types";
-import Button from "../button.svelte";
-import { useMessageResolver } from "../provider/provider.context";
-import Spinner from "../spinner.svelte";
-import { useToastItem } from "./toast.context";
+  import {
+    type ToastActionTriggerProps,
+    type ToastCloseTriggerProps,
+    type ToastDescriptionProps,
+    type ToastOptions,
+    Toast as ToastPrimitive,
+    type ToastTitleProps,
+  } from "@ark-ui/svelte/toast";
+  import type { ToastItemRecipeSlot } from "@pisagor/recipes";
+  import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
+  import InfoIcon from "phosphor-svelte/lib/InfoIcon";
+  import WarningCircleIcon from "phosphor-svelte/lib/WarningCircleIcon";
+  import WarningIcon from "phosphor-svelte/lib/WarningIcon";
+  import XIcon from "phosphor-svelte/lib/XIcon";
+  import type { Snippet } from "svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import type { VariantClassNames } from "../../internal/types";
+  import Button from "../button.svelte";
+  import { useMessageResolver } from "../provider/context";
+  import Spinner from "../spinner.svelte";
+  import { useToastItem } from "./toast.context";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-type Props = {
-  actionsProps?: Omit<HTMLAttributes<HTMLDivElement>, "class">;
-  actionTriggerProps?: Omit<
-    ToastActionTriggerProps,
-    "asChild" | "children" | "class" | "onclick"
-  >;
-  classNames?: VariantClassNames<ToastItemRecipeSlot>;
-  closeTriggerProps?: Omit<
-    ToastCloseTriggerProps,
-    "asChild" | "children" | "class"
-  >;
-  descriptionProps?: Omit<ToastDescriptionProps, "children" | "class">;
-  iconProps?: Omit<HTMLAttributes<HTMLDivElement>, "class">;
-  titleProps?: Omit<ToastTitleProps, "children" | "class">;
-  toast: ToastOptions;
-};
+  type Props = {
+    actionsProps?: Omit<HTMLAttributes<HTMLDivElement>, "class">;
+    actionTriggerProps?: Omit<
+      ToastActionTriggerProps,
+      "asChild" | "children" | "class" | "onclick"
+    >;
+    classNames?: VariantClassNames<ToastItemRecipeSlot>;
+    closeTriggerProps?: Omit<
+      ToastCloseTriggerProps,
+      "asChild" | "children" | "class"
+    >;
+    descriptionProps?: Omit<ToastDescriptionProps, "children" | "class">;
+    iconProps?: Omit<HTMLAttributes<HTMLDivElement>, "class">;
+    titleProps?: Omit<ToastTitleProps, "children" | "class">;
+    toast: ToastOptions;
+  };
 
-let {
-  actionsProps,
-  actionTriggerProps,
-  closeTriggerProps,
-  descriptionProps,
-  iconProps,
-  titleProps,
-  toast: toastData,
-  classNames,
-}: Props = $props();
+  let {
+    actionsProps,
+    actionTriggerProps,
+    closeTriggerProps,
+    descriptionProps,
+    iconProps,
+    titleProps,
+    toast: toastData,
+    classNames,
+  }: Props = $props();
 
-const styles = useToastItem();
-const slots = $derived(styles.slots);
-const isExplicitClosable = $derived(toastData.closable === false);
+  const styles = useToastItem();
+  const slots = $derived(styles.slots);
+  const isExplicitClosable = $derived(toastData.closable === false);
 
-function isSnippet(value: unknown): value is Snippet {
-  return typeof value === "function";
-}
+  function isSnippet(value: unknown): value is Snippet {
+    return typeof value === "function";
+  }
 </script>
 
 <div class={slots.content({ class: classNames?.content })}>
@@ -113,9 +113,7 @@ function isSnippet(value: unknown): value is Snippet {
       {...actionTriggerProps}
       onclick={toastData.action.onClick}
     >
-      {#snippet asChild(
-        props,
-      )}
+      {#snippet asChild(props)}
         <Button {...props()} size="sm" variant="secondary">
           {toastData.action?.label}
         </Button>
@@ -125,9 +123,7 @@ function isSnippet(value: unknown): value is Snippet {
 
   {#if !isExplicitClosable}
     <ToastPrimitive.CloseTrigger {...closeTriggerProps}>
-      {#snippet asChild(
-        props,
-      )}
+      {#snippet asChild(props)}
         <Button
           {...props({ class: slots.close({ class: classNames?.close }) })}
           aria-label={t("toast.close")}

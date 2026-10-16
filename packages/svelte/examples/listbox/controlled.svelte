@@ -1,22 +1,22 @@
 <script lang="ts">
-import { createListCollection } from "@ark-ui/svelte/collection";
-import { Item, Listbox } from "@pisagor/svelte";
+  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { Item, Listbox } from "@pisagor/svelte";
 
-const collection = createListCollection({
-  items: [
-    { label: "Small", value: "sm" },
-    { label: "Medium", value: "md" },
-    { label: "Large", value: "lg" },
-    { label: "Extra Large", value: "xl" },
-  ],
-});
+  const collection = createListCollection({
+    items: [
+      { label: "Small", value: "sm" },
+      { label: "Medium", value: "md" },
+      { label: "Large", value: "lg" },
+      { label: "Extra Large", value: "xl" },
+    ],
+  });
 
-let value = $state(["md"]);
-const isLarge = $derived(value.includes("lg"));
+  let value = $state(["md"]);
+  const isLarge = $derived(value.includes("lg"));
 </script>
 
 <div class="flex flex-col gap-2">
-  <p class="text-center text-muted-foreground text-sm">
+  <p class="text-muted-foreground text-center text-sm">
     Selected the Large size
   </p>
   <Item.Group variant="outline">
@@ -37,7 +37,7 @@ const isLarge = $derived(value.includes("lg"));
       </Listbox.Root>
     </Item>
   </Item.Group>
-  <p class="text-center text-muted-foreground text-sm">
+  <p class="text-muted-foreground text-center text-sm">
     {isLarge ? "✅" : "❌"}
   </p>
 </div>

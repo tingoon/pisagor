@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Button, InputGroup, Tooltip } from "@pisagor/svelte";
-import InfoIcon from "phosphor-svelte/lib/InfoIcon";
+  import { Button, InputGroup, Tooltip } from "@pisagor/svelte";
+  import InfoIcon from "phosphor-svelte/lib/InfoIcon";
 </script>
 
 <InputGroup>

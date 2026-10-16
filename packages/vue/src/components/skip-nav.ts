@@ -4,7 +4,7 @@ import { skipNavRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal/types";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 // #region Types
 export interface SkipNavLinkProps extends BaseSkipNavLinkProps {
@@ -15,10 +15,9 @@ export interface SkipNavContentProps {
   /**
    * The id that SkipNavLink links to.
    *
-   * @defaultValue "skip-nav-content"
-   *
    * @remarks
-   * Must match the `id` passed to the paired `SkipNavLink`.
+   *   Must match the `id` passed to the paired `SkipNavLink`.
+   * @defaultValue "skip-nav-content"
    */
   id?: string;
   class?: unknown;
@@ -57,7 +56,7 @@ export const SkipNavLink = defineComponent({
           "data-scope": "skip-nav",
           href: `#${props.id}`,
         },
-        slots.default ?? (() => useProviderMessage("skipNav.label")),
+        slots.default ?? (() => useTranslation("skipNav.label")),
       );
   },
 });

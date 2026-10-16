@@ -1,8 +1,18 @@
 {
+  "name": "astro-stories",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Astro Storybook for @pisagor/astro package stories.",
+  "type": "module",
+  "scripts": {
+    "build": "storybook build",
+    "build-storybook": "bun run build",
+    "dev": "storybook dev -p 4003",
+    "typecheck": "astro sync && bun check"
+  },
   "dependencies": {
     "@pisagor/astro": "workspace:*"
   },
-  "description": "Astro Storybook for @pisagor/astro package stories.",
   "devDependencies": {
     "@storybook-astro/framework": "^1.12.0",
     "@storybook/addon-a11y": "^10.6.0",
@@ -13,15 +23,5 @@
     "storybook": "^10.6.0",
     "tailwindcss": "catalog:",
     "vite": "catalog:"
-  },
-  "name": "astro-stories",
-  "private": true,
-  "scripts": {
-    "build": "storybook build",
-    "build-storybook": "bun run build",
-    "dev": "storybook dev -p 4003",
-    "type-check": "tsc --noEmit"
-  },
-  "type": "module",
-  "version": "0.0.0"
+  }
 }

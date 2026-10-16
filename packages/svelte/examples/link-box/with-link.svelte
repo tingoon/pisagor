@@ -1,5 +1,5 @@
 <script lang="ts">
-import { LinkBox } from "@pisagor/svelte";
+  import { LinkBox } from "@pisagor/svelte";
 </script>
 
 <LinkBox class="flex flex-col gap-2 rounded-xl border p-4">

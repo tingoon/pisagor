@@ -1,23 +1,23 @@
 <script lang="ts">
-import {
-  type MenuCheckboxItemProps,
-  Menu as MenuPrimitive,
-} from "@ark-ui/svelte/menu";
-import type { DropdownMenuItemProps as BaseDropdownMenuItemProps } from "@pisagor/props";
-import { dropdownMenuItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import CheckIcon from "phosphor-svelte/lib/CheckIcon";
+  import {
+    type MenuCheckboxItemProps,
+    Menu as MenuPrimitive,
+  } from "@ark-ui/svelte/menu";
+  import type { DropdownMenuItemProps as BaseDropdownMenuItemProps } from "@pisagor/props";
+  import { dropdownMenuItemRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 
-type Props = MenuCheckboxItemProps & BaseDropdownMenuItemProps;
+  type Props = MenuCheckboxItemProps & BaseDropdownMenuItemProps;
 
-let {
-  variant = "default",
-  recipe = dropdownMenuItemRecipe,
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
-const slots = $derived(recipe({ inset: true, variant }));
+  let {
+    variant = "default",
+    recipe = dropdownMenuItemRecipe,
+    class: className,
+    children,
+    ...rest
+  }: Props = $props();
+  const slots = $derived(recipe({ inset: true, variant }));
 </script>
 
 <MenuPrimitive.CheckboxItem

@@ -29,9 +29,9 @@ When no substring matches, show the plain text without decorative emphasis. For 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Query match emphasis in text | **Highlight** |
-| Type-to-filter option lists | [Autocomplete](/react/components/autocomplete/design) |
-| Command palette search | [Command](/react/components/command/design) |
-| Scroll-spy section labels | [Scrollspy](/react/components/scrollspy/design) |
+| Need                         | Prefer                                                |
+| ---------------------------- | ----------------------------------------------------- |
+| Query match emphasis in text | **Highlight**                                         |
+| Type-to-filter option lists  | [Autocomplete](/react/components/autocomplete/design) |
+| Command palette search       | [Command](/react/components/command/design)           |
+| Scroll-spy section labels    | [Scrollspy](/react/components/scrollspy/design)       |

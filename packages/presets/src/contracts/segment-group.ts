@@ -2,16 +2,14 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const segmentGroupRecipe = tv({
   defaultVariants: {
-    /**
-     * Size scale.
-     */
+    /** Size scale. */
     size: "md",
   },
   slots: {
     base: [
       "group/segment-group relative",
-      "inline-flex isolate items-center gap-0.5",
-      "rounded-xl bg-muted p-1.5",
+      "isolate inline-flex items-center gap-0.5",
+      "bg-muted rounded-xl p-1.5",
       "data-[orientation=vertical]:flex-col",
       "data-disabled:opacity-64",
       // Underline: drop the track chrome.
@@ -23,10 +21,10 @@ export const segmentGroupRecipe = tv({
     indicator: [
       "absolute top-(--top) left-(--left) z-0",
       "h-(--height) w-(--width)",
-      "rounded-lg bg-card shadow-sm",
-      "transition-all duration-normal ease-emphasized",
+      "bg-card rounded-lg shadow-sm",
+      "duration-normal ease-emphasized transition-all",
       "[transition-property:var(--transition-property,width,height,left,top)]",
-      "group-data-[variant=underline]/segment-group:rounded-none group-data-[variant=underline]/segment-group:bg-primary group-data-[variant=underline]/segment-group:shadow-none",
+      "group-data-[variant=underline]/segment-group:bg-primary group-data-[variant=underline]/segment-group:rounded-none group-data-[variant=underline]/segment-group:shadow-none",
       "data-[orientation=horizontal]:group-data-[variant=underline]/segment-group:top-[calc(var(--top)+var(--height)-1px)]",
       "data-[orientation=vertical]:group-data-[variant=underline]/segment-group:left-[calc(var(--left)+var(--width)-1px)]",
       "data-[orientation=vertical]:group-data-[variant=underline]/segment-group:-translate-x-px",
@@ -39,16 +37,16 @@ export const segmentGroupRecipe = tv({
       "inline-flex shrink-0 items-center justify-center gap-1.5",
       "h-8",
       "px-3",
-      "whitespace-nowrap font-medium text-sm",
+      "text-sm font-medium whitespace-nowrap",
       "cursor-pointer",
       "data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start",
       "rounded-lg border border-transparent",
-      "text-muted-foreground transition-colors duration-fast ease-out",
+      "text-muted-foreground duration-fast transition-colors ease-out",
       "hover:text-foreground/72",
       "data-[state=checked]:text-foreground",
-      "outline-hidden data-focus-visible:border-primary data-focus-visible:ring-0.75 data-focus-visible:ring-ring/24",
+      "data-focus-visible:border-primary data-focus-visible:ring-0.75 data-focus-visible:ring-ring/24 outline-hidden",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
-      "[&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0",
+      "[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
       "motion-reduce:transition-none!",
     ],
     itemText: ["relative z-1"],

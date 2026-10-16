@@ -29,9 +29,9 @@ Ensure keyboard users can enter edit mode, move through the input, and exit with
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Single-value inline edit | **Editable** |
-| Label + control + errors | [Field](/svelte/components/field/design) |
-| Read-only fact list | [Data List](/svelte/components/data-list/design) |
-| Multi-field edit | [Dialog](/svelte/components/dialog/design) + form fields |
+| Need                     | Prefer                                                  |
+| ------------------------ | ------------------------------------------------------- |
+| Single-value inline edit | **Editable**                                            |
+| Label + control + errors | [Field](/svelte/components/field/design)                 |
+| Read-only fact list      | [Data List](/svelte/components/data-list/design)         |
+| Multi-field edit         | [Dialog](/svelte/components/dialog/design) + form fields |

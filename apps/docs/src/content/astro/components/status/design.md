@@ -29,9 +29,9 @@ Avoid pulsing dots except for truly active states (live, syncing). Respect reduc
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Compact state indicator | **Status** |
-| Named count or tag | [Badge](/astro/components/badge/design) |
+| Need                      | Prefer                                  |
+| ------------------------- | --------------------------------------- |
+| Compact state indicator   | **Status**                              |
+| Named count or tag        | [Badge](/astro/components/badge/design) |
 | Explained in-page message | [Alert](/astro/components/alert/design) |
-| Metric with trend | [Stat](/astro/components/stat/design) |
+| Metric with trend         | [Stat](/astro/components/stat/design)   |

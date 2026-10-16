@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Button, File } from "@pisagor/svelte";
-import DownloadSimpleIcon from "phosphor-svelte/lib/DownloadSimpleIcon";
+  import { Button, File } from "@pisagor/svelte";
+  import DownloadSimpleIcon from "phosphor-svelte/lib/DownloadSimpleIcon";
 </script>
 
 <File.Root>
@@ -10,7 +10,7 @@ import DownloadSimpleIcon from "phosphor-svelte/lib/DownloadSimpleIcon";
       height={40}
       src="https://picsum.photos/seed/file/80/80"
       width={40}
-    >
+    />
   </File.Media>
   <File.Content>
     <File.Name>cover.jpg</File.Name>

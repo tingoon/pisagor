@@ -1,75 +1,75 @@
 <script lang="ts">
-import type {
-  AngleSliderHiddenInputProps,
-  AngleSliderRootProps,
-} from "@ark-ui/svelte/angle-slider";
-import { AngleSlider as AngleSliderPrimitive } from "@ark-ui/svelte/angle-slider";
-import type { CircularSliderProps as BaseCircularSliderProps } from "@pisagor/props";
-import { circularSliderRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import {
-  type CircularSliderContextValue,
-  setCircularSliderContext,
-} from "./circular-slider.context";
-import CircularSliderControl from "./circular-slider-control.svelte";
+  import type {
+    AngleSliderHiddenInputProps,
+    AngleSliderRootProps,
+  } from "@ark-ui/svelte/angle-slider";
+  import { AngleSlider as AngleSliderPrimitive } from "@ark-ui/svelte/angle-slider";
+  import type { CircularSliderProps as BaseCircularSliderProps } from "@pisagor/props";
+  import { circularSliderRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import {
+    type CircularSliderContextValue,
+    setCircularSliderContext,
+  } from "./circular-slider.context";
+  import CircularSliderControl from "./circular-slider-control.svelte";
 
-type Props = Omit<AngleSliderRootProps, "onValueChange" | "children"> &
-  Partial<Pick<CircularSliderContextValue, "thickness" | "size">> & {
-    children?: import("svelte").Snippet;
-    hiddenInputProps?: AngleSliderHiddenInputProps;
-    markers?: boolean | number[];
-    markersAtSteps?: boolean;
-    onValueChange?: (value: number) => void;
-  } & BaseCircularSliderProps;
+  type Props = Omit<AngleSliderRootProps, "onValueChange" | "children"> &
+    Partial<Pick<CircularSliderContextValue, "thickness" | "size">> & {
+      children?: import("svelte").Snippet;
+      hiddenInputProps?: AngleSliderHiddenInputProps;
+      markers?: boolean | number[];
+      markersAtSteps?: boolean;
+      onValueChange?: (value: number) => void;
+    } & BaseCircularSliderProps;
 
-let {
-  size = 100,
-  step = 1,
-  children,
-  hiddenInputProps,
-  markers,
-  markersAtSteps = false,
-  thickness = 6,
-  onValueChange,
-  recipe = circularSliderRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    size = 100,
+    step = 1,
+    children,
+    hiddenInputProps,
+    markers,
+    markersAtSteps = false,
+    thickness = 6,
+    onValueChange,
+    recipe = circularSliderRecipe,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const slots = $derived(recipe());
-const values = $derived({
-  ringCircumference: 2 * Math.PI * (size / 2 - thickness / 2),
-  ringRadius: size / 2 - thickness / 2,
-  size,
-  slots,
-  thickness,
-  thumbSize: Math.max(thickness + 8, 16),
-});
+  const slots = $derived(recipe());
+  const values = $derived({
+    ringCircumference: 2 * Math.PI * (size / 2 - thickness / 2),
+    ringRadius: size / 2 - thickness / 2,
+    size,
+    slots,
+    thickness,
+    thumbSize: Math.max(thickness + 8, 16),
+  });
 
-setCircularSliderContext({
-  get ringCircumference() {
-    return values.ringCircumference;
-  },
-  get ringRadius() {
-    return values.ringRadius;
-  },
-  get size() {
-    return values.size;
-  },
-  get slots() {
-    return values.slots;
-  },
-  get thickness() {
-    return values.thickness;
-  },
-  get thumbSize() {
-    return values.thumbSize;
-  },
-});
+  setCircularSliderContext({
+    get ringCircumference() {
+      return values.ringCircumference;
+    },
+    get ringRadius() {
+      return values.ringRadius;
+    },
+    get size() {
+      return values.size;
+    },
+    get slots() {
+      return values.slots;
+    },
+    get thickness() {
+      return values.thickness;
+    },
+    get thumbSize() {
+      return values.thumbSize;
+    },
+  });
 
-function handleValueChange(details: { value: number }) {
-  onValueChange?.(details.value);
-}
+  function handleValueChange(details: { value: number }) {
+    onValueChange?.(details.value);
+  }
 </script>
 
 <AngleSliderPrimitive.Root

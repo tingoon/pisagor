@@ -1,34 +1,34 @@
 {
+  "name": "@pisagor/recipes",
+  "version": "0.3.0",
+  "description": "Default recipe entry for Pisagor components (re-exports @pisagor/presets/pisagor).",
+  "homepage": "https://github.com/tingoon/pisagor#readme",
   "bugs": {
     "url": "https://github.com/tingoon/pisagor/issues"
   },
-  "dependencies": {
-    "@pisagor/presets": "workspace:*"
-  },
-  "description": "Default recipe entry for Pisagor components (re-exports @pisagor/presets/pisagor).",
-  "exports": {
-    ".": "./src/index.ts",
-    "./styles": "./src/styles.css"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git",
+    "directory": "packages/recipes"
   },
   "files": [
     "skills",
     "src"
   ],
-  "homepage": "https://github.com/tingoon/pisagor#readme",
-  "license": "MIT",
-  "name": "@pisagor/recipes",
-  "repository": {
-    "directory": "packages/recipes",
-    "type": "git",
-    "url": "git+https://github.com/tingoon/pisagor.git"
-  },
-  "scripts": {
-    "type-check": "tsc"
-  },
+  "type": "module",
   "sideEffects": [
     "**/*.css"
   ],
-  "type": "module",
   "types": "./src/index.ts",
-  "version": "0.3.0"
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles": "./src/styles.css"
+  },
+  "scripts": {
+    "typecheck": "bun check"
+  },
+  "dependencies": {
+    "@pisagor/presets": "workspace:*"
+  }
 }

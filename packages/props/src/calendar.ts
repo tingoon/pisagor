@@ -7,6 +7,7 @@ import type {
 export interface CalendarProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue calendarRecipe
    */
   recipe?: CalendarRecipeFn;
@@ -16,6 +17,7 @@ export interface CalendarProps {
 export interface CalendarTableCellProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue calendarTableCellRecipe
    */
   recipe?: CalendarTableCellRecipeFn;

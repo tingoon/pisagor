@@ -1,27 +1,27 @@
 <script lang="ts">
-import { Pagination, Table } from "@pisagor/svelte";
-import type { PaginationState } from "@pisagor/svelte/data-grid";
-import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import { allUsers, userColumns } from "./helpers";
+  import { Pagination, Table } from "@pisagor/svelte";
+  import type { PaginationState } from "@pisagor/svelte/data-grid";
+  import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
+  import { allUsers, userColumns } from "./helpers";
 
-const columns = [...userColumns];
-let pagination = $state<PaginationState>({ pageIndex: 0, pageSize: 6 });
-const pageData = $derived(
-  allUsers.slice(
-    pagination.pageIndex * pagination.pageSize,
-    pagination.pageIndex * pagination.pageSize + pagination.pageSize,
-  ),
-);
+  const columns = [...userColumns];
+  let pagination = $state<PaginationState>({ pageIndex: 0, pageSize: 6 });
+  const pageData = $derived(
+    allUsers.slice(
+      pagination.pageIndex * pagination.pageSize,
+      pagination.pageIndex * pagination.pageSize + pagination.pageSize,
+    ),
+  );
 
-function onPaginationChange(
-  updater: PaginationState | ((prev: PaginationState) => PaginationState),
-) {
-  pagination = typeof updater === "function" ? updater(pagination) : updater;
-}
+  function onPaginationChange(
+    updater: PaginationState | ((prev: PaginationState) => PaginationState),
+  ) {
+    pagination = typeof updater === "function" ? updater(pagination) : updater;
+  }
 </script>
 
 <div class="flex w-full flex-col gap-3">
-  <div class="rounded-xl border bg-muted/20 p-3">
+  <div class="bg-muted/20 rounded-xl border p-3">
     <DataGrid
       {columns}
       data={pageData}
@@ -32,7 +32,7 @@ function onPaginationChange(
       state={{ pagination }}
     >
       <DataGrid.Toolbar>
-        <p class="font-medium text-sm">Manual (server-style) pagination</p>
+        <p class="text-sm font-medium">Manual (server-style) pagination</p>
       </DataGrid.Toolbar>
       <Table>
         <Table.Header>

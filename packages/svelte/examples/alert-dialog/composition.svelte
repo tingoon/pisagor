@@ -1,5 +1,5 @@
 <script lang="ts">
-import { AlertDialog, Button } from "@pisagor/svelte";
+  import { AlertDialog, Button } from "@pisagor/svelte";
 </script>
 
 <AlertDialog.Root>

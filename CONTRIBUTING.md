@@ -25,7 +25,7 @@ bun run dev
 
 ## CI
 
-**Checks** runs `lint`, `type-check`, `test`, and `build` (docs) as parallel jobs. On PRs and `main`, Turborepo tasks use `--affected`; `build` only runs `docs` when that package is affected (same `DOCS_*` env as **Docs Site** so remote cache can be shared). Storybook static builds are not part of Checks — they run in **Visual review** (Chromatic).
+**Checks** runs `lint`, `typecheck`, `test`, and `build` (docs) as parallel jobs. On PRs and `main`, Turborepo tasks use `--affected`; `build` only runs `docs` when that package is affected (same `DOCS_*` env as **Docs Site** so remote cache can be shared). Storybook static builds are not part of Checks — they run in **Visual review** (Chromatic).
 
 ## Chromatic
 

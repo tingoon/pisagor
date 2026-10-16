@@ -1,17 +1,17 @@
 <script lang="ts">
-import { ContextMenu, type TreeNodeType, TreeView } from "@pisagor/svelte";
-import FilePlusIcon from "phosphor-svelte/lib/FilePlusIcon";
-import FolderPlusIcon from "phosphor-svelte/lib/FolderPlusIcon";
-import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";
-import TrashIcon from "phosphor-svelte/lib/TrashIcon";
-import TreeNodeContext from "./tree-node-context.svelte";
+  import { ContextMenu, type TreeNodeType, TreeView } from "@pisagor/svelte";
+  import FilePlusIcon from "phosphor-svelte/lib/FilePlusIcon";
+  import FolderPlusIcon from "phosphor-svelte/lib/FolderPlusIcon";
+  import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";
+  import TrashIcon from "phosphor-svelte/lib/TrashIcon";
+  import TreeNodeContext from "./tree-node-context.svelte";
 
-type Props = {
-  indexPath: number[];
-  node: TreeNodeType;
-};
+  type Props = {
+    indexPath: number[];
+    node: TreeNodeType;
+  };
 
-let { indexPath, node }: Props = $props();
+  let { indexPath, node }: Props = $props();
 </script>
 
 <TreeView.NodeProvider {indexPath} {node}>
@@ -19,9 +19,7 @@ let { indexPath, node }: Props = $props();
     <TreeView.Branch>
       <ContextMenu>
         <ContextMenu.ContextTrigger>
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <TreeView.BranchControl {...props()}
               >{node.name}</TreeView.BranchControl
             >
@@ -57,9 +55,7 @@ let { indexPath, node }: Props = $props();
   {:else}
     <ContextMenu>
       <ContextMenu.ContextTrigger>
-        {#snippet asChild(
-          props,
-        )}
+        {#snippet asChild(props)}
           <TreeView.Item {...props()}>
             <TreeView.ItemText>{node.name}</TreeView.ItemText>
           </TreeView.Item>

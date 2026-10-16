@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Calendar, Card, parseDate } from "@pisagor/svelte";
+  import { Calendar, Card, parseDate } from "@pisagor/svelte";
 
-let value = $state([parseDate(new Date(Date.now()))]);
+  let value = $state([parseDate(new Date(Date.now()))]);
 </script>
 
 <div class="flex flex-col gap-2">
@@ -21,7 +21,7 @@ let value = $state([parseDate(new Date(Date.now()))]);
       </Calendar>
     </Card.Content>
   </Card>
-  <p class="text-center text-muted-foreground text-sm">
+  <p class="text-muted-foreground text-center text-sm">
     {value.map((date) => date.toString()).join(", ")}
   </p>
 </div>

@@ -19,7 +19,7 @@ import { createSlotRecipeContext } from "../internal/create-slot-recipe-context"
 import { ArrowCounterClockwiseIcon } from "../internal/icons";
 import type { VariantClassNames } from "../internal/types";
 import { Button } from "./button";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -41,8 +41,10 @@ type SignaturePadRootProps = SignaturePadPrimitiveRootProps & {
   invalid?: boolean;
 } & BaseSignaturePadRootProps;
 
-export interface SignaturePadProps
-  extends Omit<SignaturePadRootProps, "children"> {
+export interface SignaturePadProps extends Omit<
+  SignaturePadRootProps,
+  "children"
+> {
   classNames?: SignaturePadClassNames;
 }
 
@@ -122,7 +124,7 @@ function SignaturePadClear(props: SignaturePadClearProps): JSX.Element {
           {...triggerProps({
             class: styles.slots.clear({ class: local.class }),
           })}
-          aria-label={useProviderMessage("signaturePad.clearSignature")}
+          aria-label={useTranslation("signaturePad.clearSignature")}
           size="icon-md"
           variant="ghost"
         >

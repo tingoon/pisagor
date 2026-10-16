@@ -4,7 +4,7 @@ import { CircularProgress } from "@pisagor/vue";
 
 <template>
   <div class="flex flex-col items-center gap-2">
-    <span class="font-medium text-sm">Establishing connection...</span>
+    <span class="text-sm font-medium">Establishing connection...</span>
     <CircularProgress indeterminate />
   </div>
 </template>

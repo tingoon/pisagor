@@ -29,9 +29,9 @@ Show validation beside the textarea and move focus to the first invalid field on
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Multi-line plain text | **Textarea** |
-| Single-line text | [Input](/react/components/input/design) |
-| Many structured tokens | [Tags Input](/react/components/tags-input/design) |
-| Formatted content | [Rich Text Editor](/react/components/rich-text-editor/design) |
+| Need                   | Prefer                                                        |
+| ---------------------- | ------------------------------------------------------------- |
+| Multi-line plain text  | **Textarea**                                                  |
+| Single-line text       | [Input](/react/components/input/design)                       |
+| Many structured tokens | [Tags Input](/react/components/tags-input/design)             |
+| Formatted content      | [Rich Text Editor](/react/components/rich-text-editor/design) |

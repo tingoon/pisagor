@@ -25,9 +25,9 @@ Prefer a linear [Slider](/vue/components/slider/design) when precision, tick mar
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Rotational value choice | **Circular Slider** |
-| Linear range with marks | [Slider](/vue/components/slider/design) |
-| Typed numeric entry | [Number Input](/vue/components/number-input/design) |
-| Compact on/off | [Switch](/vue/components/switch/design) |
+| Need                    | Prefer                                                |
+| ----------------------- | ----------------------------------------------------- |
+| Rotational value choice | **Circular Slider**                                   |
+| Linear range with marks | [Slider](/vue/components/slider/design)             |
+| Typed numeric entry     | [Number Input](/vue/components/number-input/design) |
+| Compact on/off          | [Switch](/vue/components/switch/design)             |

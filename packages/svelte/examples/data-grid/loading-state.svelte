@@ -1,23 +1,23 @@
 <script lang="ts">
-import { Table } from "@pisagor/svelte";
-import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
+  import { Table } from "@pisagor/svelte";
+  import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
 
-const data = [
-  { id: "1", name: "Ada", role: "Admin" },
-  { id: "2", name: "Alan", role: "Editor" },
-];
+  const data = [
+    { id: "1", name: "Ada", role: "Admin" },
+    { id: "2", name: "Alan", role: "Editor" },
+  ];
 
-const columns = [
-  { accessorKey: "name", header: "Name" },
-  { accessorKey: "role", header: "Role" },
-];
+  const columns = [
+    { accessorKey: "name", header: "Name" },
+    { accessorKey: "role", header: "Role" },
+  ];
 
-let loading = $state(true);
+  let loading = $state(true);
 </script>
 
 <div class="flex flex-col gap-3">
   <label class="flex items-center gap-2 text-sm">
-    <input type="checkbox" bind:checked={loading}>
+    <input type="checkbox" bind:checked={loading} />
     Loading
   </label>
   {#if loading}

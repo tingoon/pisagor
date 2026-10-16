@@ -89,7 +89,7 @@ function SortIndicator({ direction }: { direction: false | "asc" | "desc" }) {
 function DataGridShell({ children }: { children: ReactNode }) {
   return (
     <div className="flex w-full flex-col gap-3">
-      <div className="rounded-xl border bg-muted/20 p-3">{children}</div>
+      <div className="bg-muted/20 rounded-xl border p-3">{children}</div>
     </div>
   );
 }
@@ -263,8 +263,8 @@ export function WithSortableData() {
                 <Sortable.ItemContent>
                   <Sortable.Handle />
                   <div className="min-w-0 flex-1">
-                    <p className="truncate font-medium text-sm">{user.name}</p>
-                    <p className="truncate text-muted-foreground text-xs">
+                    <p className="truncate text-sm font-medium">{user.name}</p>
+                    <p className="text-muted-foreground truncate text-xs">
                       {user.email}
                     </p>
                   </div>

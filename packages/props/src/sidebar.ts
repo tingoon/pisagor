@@ -4,6 +4,7 @@ import type { SidebarRecipeFn, SidebarVariantProps } from "@pisagor/recipes";
 export interface SidebarProps extends SidebarVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue sidebarRecipe
    */
   recipe?: SidebarRecipeFn;

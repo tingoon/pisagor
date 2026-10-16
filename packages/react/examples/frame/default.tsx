@@ -10,7 +10,7 @@ export function Default() {
         </Frame.Description>
       </Frame.Header>
       <Frame.Panel>
-        <h2 className="font-semibold text-sm">Section title</h2>
+        <h2 className="text-sm font-semibold">Section title</h2>
         <p className="text-muted-foreground text-sm">Section description</p>
       </Frame.Panel>
       <Frame.Footer>

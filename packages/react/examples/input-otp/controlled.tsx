@@ -8,7 +8,7 @@ export function Controlled() {
 
   return (
     <div className="flex flex-col gap-2">
-      <p className="text-center text-muted-foreground text-sm">
+      <p className="text-muted-foreground text-center text-sm">
         Enter the code 1234
       </p>
       <InputOTP onValueChange={setValue} value={value}>
@@ -17,7 +17,7 @@ export function Controlled() {
         <InputOTP.Slot index={2} />
         <InputOTP.Slot index={3} />
       </InputOTP>
-      <p className="text-center text-muted-foreground text-sm">
+      <p className="text-muted-foreground text-center text-sm">
         {isCorrect ? "✅" : "❌"}
       </p>
     </div>

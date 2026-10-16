@@ -14,7 +14,7 @@ import {
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { ClassValue } from "../internal/types";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -88,8 +88,7 @@ export const BreadcrumbRoot = defineComponent({
         ark.nav as ArkPart,
         {
           ...attrs,
-          "aria-label":
-            props.ariaLabel ?? useProviderMessage("breadcrumb.label"),
+          "aria-label": props.ariaLabel ?? useTranslation("breadcrumb.label"),
           "data-part": "root",
           "data-scope": "breadcrumb",
         },

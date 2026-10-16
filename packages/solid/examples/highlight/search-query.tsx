@@ -18,7 +18,7 @@ export function SearchQuery() {
         </p>
         <ul class="space-y-1">
           {searchResults.map((item) => (
-            <li class="text-base text-foreground">
+            <li class="text-foreground text-base">
               {query() ? (
                 <Highlight ignoreCase query={query()} text={item} />
               ) : (

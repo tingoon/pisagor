@@ -1,186 +1,189 @@
 <script lang="ts">
-import { createListCollection } from "@ark-ui/svelte/collection";
-import type { PhoneInputProps as BasePhoneInputProps } from "@pisagor/props";
-import {
-  type PhoneInputRecipeSlot,
-  type PhoneInputVariantProps,
-  phoneInputRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import {
-  AsYouType,
-  type CountryCode,
-  getCountries,
-  getCountryCallingCode,
-  parsePhoneNumberFromString,
-} from "libphonenumber-js";
-import CaretUpDownIcon from "phosphor-svelte/lib/CaretUpDownIcon";
-import GlobeIcon from "phosphor-svelte/lib/GlobeIcon";
-import { type ComponentProps, untrack } from "svelte";
-import type { ClassValue } from "svelte/elements";
-import { Combobox } from "../components/combobox";
-import type ComboboxContent from "../components/combobox/combobox-content.svelte";
-import type Input from "../components/input/input.svelte";
-import { InputGroup } from "../components/input-group";
-import { useMessageResolver } from "../components/provider/provider.context";
-import { setPhoneInputContext } from "./phone-input.context";
-import { phoneInputFlags } from "./phone-input-flags";
+  import { createListCollection } from "@ark-ui/svelte/collection";
+  import type { PhoneInputProps as BasePhoneInputProps } from "@pisagor/props";
+  import {
+    type PhoneInputRecipeSlot,
+    type PhoneInputVariantProps,
+    phoneInputRecipe,
+  } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import {
+    AsYouType,
+    type CountryCode,
+    getCountries,
+    getCountryCallingCode,
+    parsePhoneNumberFromString,
+  } from "libphonenumber-js";
+  import CaretUpDownIcon from "phosphor-svelte/lib/CaretUpDownIcon";
+  import GlobeIcon from "phosphor-svelte/lib/GlobeIcon";
+  import { type ComponentProps, untrack } from "svelte";
+  import type { ClassValue } from "svelte/elements";
+  import { Combobox } from "../components/combobox";
+  import type ComboboxContent from "../components/combobox/combobox-content.svelte";
+  import type Input from "../components/input/input.svelte";
+  import { InputGroup } from "../components/input-group";
+  import { useMessageResolver } from "../components/provider/context";
+  import { setPhoneInputContext } from "./phone-input.context";
+  import { phoneInputFlags } from "./phone-input-flags";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-type FormControlVariant = "primary" | "secondary";
-type PhoneInputClassNames = Partial<
-  Record<Exclude<PhoneInputRecipeSlot, "base">, string>
->;
-type Country = CountryCode;
-type Props = {
-  class?: ClassValue;
-  variant?: FormControlVariant;
-  defaultCountry?: Country;
-  invalid?: boolean;
-  value?: string;
-  onChange?: (value: string) => void;
-  onBlur?: () => void;
-  onFocus?: () => void;
-  disabled?: boolean;
-  readOnly?: boolean;
-  placeholder?: string;
-  name?: string;
-  id?: string;
-  classNames?: PhoneInputClassNames;
-  inputProps?: Omit<
-    ComponentProps<typeof Input>,
-    "class" | "onChange" | "onBlur" | "size" | "type" | "value"
+  type FormControlVariant = "primary" | "secondary";
+  type PhoneInputClassNames = Partial<
+    Record<Exclude<PhoneInputRecipeSlot, "base">, string>
   >;
-  popupProps?: Omit<
-    ComponentProps<typeof ComboboxContent>,
-    "class" | "children"
-  >;
-} & BasePhoneInputProps;
+  type Country = CountryCode;
+  type Props = {
+    class?: ClassValue;
+    variant?: FormControlVariant;
+    defaultCountry?: Country;
+    invalid?: boolean;
+    value?: string;
+    onChange?: (value: string) => void;
+    onBlur?: () => void;
+    onFocus?: () => void;
+    disabled?: boolean;
+    readOnly?: boolean;
+    placeholder?: string;
+    name?: string;
+    id?: string;
+    classNames?: PhoneInputClassNames;
+    inputProps?: Omit<
+      ComponentProps<typeof Input>,
+      "class" | "onChange" | "onBlur" | "size" | "type" | "value"
+    >;
+    popupProps?: Omit<
+      ComponentProps<typeof ComboboxContent>,
+      "class" | "children"
+    >;
+  } & BasePhoneInputProps;
 
-let {
-  size = "md",
-  variant,
-  defaultCountry = "US" as Country,
-  disabled,
-  invalid,
-  value = undefined,
-  inputProps,
-  popupProps,
-  onChange,
-  onBlur,
-  onFocus,
-  recipe = phoneInputRecipe,
-  class: className,
-  classNames,
-  readOnly,
-  placeholder,
-  name,
-  id,
-}: Props = $props();
+  let {
+    size = "md",
+    variant,
+    defaultCountry = "US" as Country,
+    disabled,
+    invalid,
+    value = undefined,
+    inputProps,
+    popupProps,
+    onChange,
+    onBlur,
+    onFocus,
+    recipe = phoneInputRecipe,
+    class: className,
+    classNames,
+    readOnly,
+    placeholder,
+    name,
+    id,
+  }: Props = $props();
 
-const slots = $derived(recipe({ size }));
+  const slots = $derived(recipe({ size }));
 
-let internalCountry = $state<Country>("US" as Country);
-let display = $state("");
+  let internalCountry = $state<Country>("US" as Country);
+  let display = $state("");
 
-// Initialize uncontrolled display/country once from props.
-internalCountry = untrack(() => resolveCountry(value, defaultCountry));
-display = untrack(() => formatNational(value, internalCountry));
+  // Initialize uncontrolled display/country once from props.
+  internalCountry = untrack(() => resolveCountry(value, defaultCountry));
+  display = untrack(() => formatNational(value, internalCountry));
 
-const country = $derived(
-  value !== undefined
-    ? resolveCountry(value, internalCountry)
-    : internalCountry,
-);
+  const country = $derived(
+    value !== undefined
+      ? resolveCountry(value, internalCountry)
+      : internalCountry,
+  );
 
-$effect(() => {
-  if (value !== undefined) {
-    const nextCountry = resolveCountry(value, defaultCountry);
-    internalCountry = nextCountry;
-    display = formatNational(value, nextCountry);
-  }
-});
+  $effect(() => {
+    if (value !== undefined) {
+      const nextCountry = resolveCountry(value, defaultCountry);
+      internalCountry = nextCountry;
+      display = formatNational(value, nextCountry);
+    }
+  });
 
-const options = $derived(
-  getCountries()
-    .map((code) => ({ label: countryLabel(code), value: code as Country }))
-    .sort((a, b) => a.label.localeCompare(b.label)),
-);
+  const options = $derived(
+    getCountries()
+      .map((code) => ({ label: countryLabel(code), value: code as Country }))
+      .sort((a, b) => a.label.localeCompare(b.label)),
+  );
 
-const collection = $derived(createListCollection({ items: options }));
-const callingCode = $derived(country ? getCountryCallingCode(country) : "");
-const isDisabled = $derived(Boolean(disabled || readOnly));
+  const collection = $derived(createListCollection({ items: options }));
+  const callingCode = $derived(country ? getCountryCallingCode(country) : "");
+  const isDisabled = $derived(Boolean(disabled || readOnly));
 
-setPhoneInputContext({
-  get classNames() {
-    return classNames;
-  },
-  get inputProps() {
-    return inputProps;
-  },
-  get invalid() {
-    return invalid;
-  },
-  get popupProps() {
-    return popupProps;
-  },
-  get size() {
-    return size as NonNullable<PhoneInputVariantProps["size"]>;
-  },
-  get slots() {
-    return slots;
-  },
-  get variant() {
-    return variant;
-  },
-});
+  setPhoneInputContext({
+    get classNames() {
+      return classNames;
+    },
+    get inputProps() {
+      return inputProps;
+    },
+    get invalid() {
+      return invalid;
+    },
+    get popupProps() {
+      return popupProps;
+    },
+    get size() {
+      return size as NonNullable<PhoneInputVariantProps["size"]>;
+    },
+    get slots() {
+      return slots;
+    },
+    get variant() {
+      return variant;
+    },
+  });
 
-function countryLabel(code: Country): string {
-  try {
-    return new Intl.DisplayNames(["en"], { type: "region" }).of(code) ?? code;
-  } catch {
-    return code;
-  }
-}
-
-function resolveCountry(val: string | undefined, fallback: Country): Country {
-  if (!val) return fallback;
-  const parsed = parsePhoneNumberFromString(val);
-  return (parsed?.country as Country | undefined) ?? fallback;
-}
-
-function formatNational(val: string | undefined, nextCountry: Country): string {
-  if (!val) return "";
-  const parsed = parsePhoneNumberFromString(val);
-  if (parsed) {
+  function countryLabel(code: Country): string {
     try {
-      return parsed.formatNational();
+      return new Intl.DisplayNames(["en"], { type: "region" }).of(code) ?? code;
     } catch {
-      return parsed.nationalNumber;
+      return code;
     }
   }
-  return new AsYouType(nextCountry).input(val);
-}
 
-function emitValue(nextDisplay: string, nextCountry: Country) {
-  const formatter = new AsYouType(nextCountry);
-  const formatted = formatter.input(nextDisplay);
-  display = formatted;
-  const number = formatter.getNumber();
-  const e164 =
-    number?.number ??
-    (formatted
-      ? `+${getCountryCallingCode(nextCountry)}${formatted.replace(/\D/g, "")}`
-      : "");
-  onChange?.(number?.format("E.164") ?? (e164.startsWith("+") ? e164 : ""));
-}
+  function resolveCountry(val: string | undefined, fallback: Country): Country {
+    if (!val) return fallback;
+    const parsed = parsePhoneNumberFromString(val);
+    return (parsed?.country as Country | undefined) ?? fallback;
+  }
 
-function handleCountryChange(nextValue: string[]) {
-  const code = (nextValue[0] as Country | undefined) ?? defaultCountry;
-  internalCountry = code;
-  emitValue(display, code);
-}
+  function formatNational(
+    val: string | undefined,
+    nextCountry: Country,
+  ): string {
+    if (!val) return "";
+    const parsed = parsePhoneNumberFromString(val);
+    if (parsed) {
+      try {
+        return parsed.formatNational();
+      } catch {
+        return parsed.nationalNumber;
+      }
+    }
+    return new AsYouType(nextCountry).input(val);
+  }
+
+  function emitValue(nextDisplay: string, nextCountry: Country) {
+    const formatter = new AsYouType(nextCountry);
+    const formatted = formatter.input(nextDisplay);
+    display = formatted;
+    const number = formatter.getNumber();
+    const e164 =
+      number?.number ??
+      (formatted
+        ? `+${getCountryCallingCode(nextCountry)}${formatted.replace(/\D/g, "")}`
+        : "");
+    onChange?.(number?.format("E.164") ?? (e164.startsWith("+") ? e164 : ""));
+  }
+
+  function handleCountryChange(nextValue: string[]) {
+    const code = (nextValue[0] as Country | undefined) ?? defaultCountry;
+    internalCountry = code;
+    emitValue(display, code);
+  }
 </script>
 
 <InputGroup

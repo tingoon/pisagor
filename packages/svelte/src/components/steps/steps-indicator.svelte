@@ -1,15 +1,15 @@
 <script lang="ts">
-import {
-  type StepsIndicatorProps,
-  Steps as StepsPrimitive,
-} from "@ark-ui/svelte/steps";
-import { cn } from "@pisagor/utils";
-import CheckIcon from "phosphor-svelte/lib/CheckIcon";
-import { useStepsItem } from "./steps.context";
+  import {
+    type StepsIndicatorProps,
+    Steps as StepsPrimitive,
+  } from "@ark-ui/svelte/steps";
+  import { cn } from "@pisagor/utils";
+  import CheckIcon from "phosphor-svelte/lib/CheckIcon";
+  import { useStepsItem } from "./steps.context";
 
-let { class: className, children, ...rest }: StepsIndicatorProps = $props();
-const styles = useStepsItem();
-const slots = $derived(styles.slots);
+  let { class: className, children, ...rest }: StepsIndicatorProps = $props();
+  const styles = useStepsItem();
+  const slots = $derived(styles.slots);
 </script>
 
 <StepsPrimitive.Indicator

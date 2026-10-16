@@ -5,7 +5,7 @@ export function Compound() {
     <Accordion.Root defaultValue={["item-1"]}>
       <Accordion.Item value="item-1">
         <Accordion.ItemTrigger>Product information</Accordion.ItemTrigger>
-        <Accordion.ItemContent className="flex flex-col gap-2 text-muted-foreground">
+        <Accordion.ItemContent className="text-muted-foreground flex flex-col gap-2">
           <p>
             Our flagship product combines cutting-edge technology with sleek
             design. Built with premium materials, it offers unparalleled
@@ -19,7 +19,7 @@ export function Compound() {
       </Accordion.Item>
       <Accordion.Item value="item-2">
         <Accordion.ItemTrigger>Shipping details</Accordion.ItemTrigger>
-        <Accordion.ItemContent className="flex flex-col gap-2 text-muted-foreground">
+        <Accordion.ItemContent className="text-muted-foreground flex flex-col gap-2">
           <p>
             We offer worldwide shipping through trusted courier partners.
             Standard delivery takes 3 to 5 business days, while express shipping
@@ -29,7 +29,7 @@ export function Compound() {
       </Accordion.Item>
       <Accordion.Item value="item-3">
         <Accordion.ItemTrigger>Return policy</Accordion.ItemTrigger>
-        <Accordion.ItemContent className="flex flex-col gap-2 text-muted-foreground">
+        <Accordion.ItemContent className="text-muted-foreground flex flex-col gap-2">
           <p>
             We stand behind our products with a comprehensive 30-day return
             policy. If you&apos;re not completely satisfied, return the item in

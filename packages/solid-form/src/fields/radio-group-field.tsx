@@ -11,7 +11,8 @@ interface RadioGroupOption {
 }
 
 export interface RadioGroupFieldProps
-  extends Omit<FieldPresentationProps, "orientation">,
+  extends
+    Omit<FieldPresentationProps, "orientation">,
     Omit<RadioGroupRootProps, "invalid" | "name" | "onValueChange" | "value"> {
   name?: string;
   value?: string;

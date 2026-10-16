@@ -1,64 +1,64 @@
 <script lang="ts">
-import { createToaster } from "@ark-ui/svelte/toast";
-import { Button, Toaster } from "@pisagor/svelte";
+  import { createToaster } from "@ark-ui/svelte/toast";
+  import { Button, Toaster } from "@pisagor/svelte";
 
-const topStartToaster = createToaster({
-  overlap: true,
-  placement: "top-start",
-});
-const topToaster = createToaster({ overlap: true, placement: "top" });
-const topEndToaster = createToaster({ overlap: true, placement: "top-end" });
-const bottomStartToaster = createToaster({
-  overlap: true,
-  placement: "bottom-start",
-});
-const bottomToaster = createToaster({ overlap: true, placement: "bottom" });
-const bottomEndToaster = createToaster({
-  overlap: true,
-  placement: "bottom-end",
-});
-
-function showTopStart() {
-  topStartToaster.create({
-    description: "placement: top-start",
-    title: "Top start",
+  const topStartToaster = createToaster({
+    overlap: true,
+    placement: "top-start",
   });
-}
-
-function showTop() {
-  topToaster.create({
-    description: "placement: top",
-    title: "Top center",
+  const topToaster = createToaster({ overlap: true, placement: "top" });
+  const topEndToaster = createToaster({ overlap: true, placement: "top-end" });
+  const bottomStartToaster = createToaster({
+    overlap: true,
+    placement: "bottom-start",
   });
-}
-
-function showTopEnd() {
-  topEndToaster.create({
-    description: "placement: top-end",
-    title: "Top end",
+  const bottomToaster = createToaster({ overlap: true, placement: "bottom" });
+  const bottomEndToaster = createToaster({
+    overlap: true,
+    placement: "bottom-end",
   });
-}
 
-function showBottomStart() {
-  bottomStartToaster.create({
-    description: "placement: bottom-start",
-    title: "Bottom start",
-  });
-}
+  function showTopStart() {
+    topStartToaster.create({
+      description: "placement: top-start",
+      title: "Top start",
+    });
+  }
 
-function showBottom() {
-  bottomToaster.create({
-    description: "placement: bottom-center",
-    title: "Bottom center",
-  });
-}
+  function showTop() {
+    topToaster.create({
+      description: "placement: top",
+      title: "Top center",
+    });
+  }
 
-function showBottomEnd() {
-  bottomEndToaster.create({
-    description: "placement: bottom-end",
-    title: "Bottom end",
-  });
-}
+  function showTopEnd() {
+    topEndToaster.create({
+      description: "placement: top-end",
+      title: "Top end",
+    });
+  }
+
+  function showBottomStart() {
+    bottomStartToaster.create({
+      description: "placement: bottom-start",
+      title: "Bottom start",
+    });
+  }
+
+  function showBottom() {
+    bottomToaster.create({
+      description: "placement: bottom-center",
+      title: "Bottom center",
+    });
+  }
+
+  function showBottomEnd() {
+    bottomEndToaster.create({
+      description: "placement: bottom-end",
+      title: "Bottom end",
+    });
+  }
 </script>
 
 <Toaster toaster={topStartToaster} />

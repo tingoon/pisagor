@@ -6,19 +6,17 @@ import type {
 import { skipNavRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 
 const SKIP_NAV_ID = "skip-nav-content";
 
 export interface SkipNavLinkProps
-  extends ComponentProps<typeof ark.a>,
-    BaseSkipNavLinkProps {
+  extends ComponentProps<typeof ark.a>, BaseSkipNavLinkProps {
   id?: string;
 }
 
 export interface SkipNavContentProps
-  extends ComponentProps<typeof ark.div>,
-    BaseSkipNavContentProps {
+  extends ComponentProps<typeof ark.div>, BaseSkipNavContentProps {
   id?: string;
 }
 
@@ -40,7 +38,7 @@ export function SkipNavLink(props: SkipNavLinkProps): JSX.Element {
       data-scope="skip-nav"
       href={`#${id()}`}
     >
-      {local.children ?? useProviderMessage("skipNav.label")}
+      {local.children ?? useTranslation("skipNav.label")}
     </ark.a>
   );
 }

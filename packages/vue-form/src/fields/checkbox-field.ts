@@ -6,7 +6,8 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface CheckboxFieldProps
-  extends FieldPresentationProps,
+  extends
+    FieldPresentationProps,
     Omit<
       CheckboxProps,
       "checked" | "invalid" | "name" | "onCheckedChange" | "onValueChange"

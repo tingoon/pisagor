@@ -23,15 +23,12 @@ export interface ScrollspyProps extends BaseScrollspyProps {
   /**
    * Whether to update the URL hash when the active section changes.
    *
-   * @defaultValue true
-   *
    * @remarks
-   * Updates `window.location.hash`, which affects browser history navigation.
+   *   Updates `window.location.hash`, which affects browser history navigation.
+   * @defaultValue true
    */
   history?: boolean;
-  /**
-   * Called when the active section changes.
-   */
+  /** Called when the active section changes. */
   onUpdate?: (id: string) => void;
   /**
    * Global pixel offset from the top when calculating active sections.
@@ -49,9 +46,10 @@ export interface ScrollspyProps extends BaseScrollspyProps {
    * The scrollable container to monitor. Omit to spy on the window.
    *
    * @remarks
-   * Pass a template ref (e.g. `const parentRef = ref<HTMLElement | null>(null)` bound via
-   * `ref="parentRef"`). Vue auto-unwraps the ref when read in a template, so this prop always
-   * receives the live element rather than the `Ref` wrapper.
+   *   Pass a template ref (e.g. `const parentRef = ref<HTMLElement |
+   *   null>(null)` bound via `ref="parentRef"`). Vue auto-unwraps the ref when
+   *   read in a template, so this prop always receives the live element rather
+   *   than the `Ref` wrapper.
    */
   targetRef?: ScrollTarget;
 }

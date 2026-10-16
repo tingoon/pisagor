@@ -5,7 +5,7 @@ export function Default() {
     <LinkBox
       asChild={(props) => (
         <article {...props({ class: "rounded-xl border p-4" })}>
-          <h2 class="font-medium text-lg">
+          <h2 class="text-lg font-medium">
             <LinkBox.Overlay href="https://example.com">
               Clickable card title
             </LinkBox.Overlay>

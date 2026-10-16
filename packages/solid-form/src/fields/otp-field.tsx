@@ -7,7 +7,8 @@ import {
 
 // #region Types
 export interface OtpFieldProps
-  extends FieldPresentationProps,
+  extends
+    FieldPresentationProps,
     Omit<
       InputOTPProps,
       "children" | "invalid" | "onValueChange" | "value" | "name" | "onBlur"

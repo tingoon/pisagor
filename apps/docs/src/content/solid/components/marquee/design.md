@@ -29,9 +29,9 @@ Link individual tiles when each logo or quote has a destination; otherwise keep 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Continuous horizontal loop | **Marquee** |
-| User-controlled slides | [Carousel](/solid/components/carousel/design) |
-| Static logo row | [Item](/solid/components/item/design) |
-| Promo callout | [Announcement](/solid/components/announcement/design) |
+| Need                       | Prefer                                                |
+| -------------------------- | ----------------------------------------------------- |
+| Continuous horizontal loop | **Marquee**                                           |
+| User-controlled slides     | [Carousel](/solid/components/carousel/design)         |
+| Static logo row            | [Item](/solid/components/item/design)                 |
+| Promo callout              | [Announcement](/solid/components/announcement/design) |

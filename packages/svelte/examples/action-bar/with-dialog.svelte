@@ -1,6 +1,6 @@
 <script lang="ts">
-import { ActionBar, AlertDialog, Button } from "@pisagor/svelte";
-import { TrashIcon, XIcon } from "@pisagor/svelte/icons";
+  import { ActionBar, AlertDialog, Button } from "@pisagor/svelte";
+  import { TrashIcon, XIcon } from "@pisagor/svelte/icons";
 </script>
 
 <ActionBar>
@@ -24,8 +24,7 @@ import { TrashIcon, XIcon } from "@pisagor/svelte/icons";
         {#snippet actions()}
           <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
           <AlertDialog.CloseTrigger>
-            <AlertDialog.Action variant="destructive"
-              >Delete</AlertDialog.Action
+            <AlertDialog.Action variant="destructive">Delete</AlertDialog.Action
             >
           </AlertDialog.CloseTrigger>
         {/snippet}

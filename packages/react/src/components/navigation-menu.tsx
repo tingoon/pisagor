@@ -13,7 +13,7 @@ import {
   useState,
 } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { getMessage } from "./provider/provider.context";
+import { useMessage } from "./provider/context";
 
 // #region Context
 const {
@@ -49,8 +49,7 @@ const NavigationMenuItemContext = createContext<NavigationMenuItemState | null>(
 
 // #region Types
 export interface NavigationMenuProps
-  extends ComponentProps<typeof ark.nav>,
-    BaseNavigationMenuProps {}
+  extends ComponentProps<typeof ark.nav>, BaseNavigationMenuProps {}
 
 export type NavigationMenuPartProps = ComponentProps<typeof ark.ul>;
 
@@ -130,7 +129,7 @@ export function NavigationMenuRoot({
     <NavigationMenuStateContext value={{ openId, setOpenId }}>
       <NavigationMenuNav
         {...rest}
-        aria-label={ariaLabel ?? getMessage("navigationMenu.label")}
+        aria-label={useMessage("navigationMenu.label", ariaLabel)}
       />
     </NavigationMenuStateContext>
   );

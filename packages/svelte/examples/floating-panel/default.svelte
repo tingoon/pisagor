@@ -1,5 +1,5 @@
 <script lang="ts">
-import { FloatingPanel } from "@pisagor/svelte";
+  import { FloatingPanel } from "@pisagor/svelte";
 </script>
 
 <FloatingPanel>

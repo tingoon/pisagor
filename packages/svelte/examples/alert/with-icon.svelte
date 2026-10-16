@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Alert } from "@pisagor/svelte";
-import SparkleIcon from "phosphor-svelte/lib/SparkleIcon";
+  import { Alert } from "@pisagor/svelte";
+  import SparkleIcon from "phosphor-svelte/lib/SparkleIcon";
 </script>
 
 <Alert

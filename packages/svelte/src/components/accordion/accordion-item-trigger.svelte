@@ -1,19 +1,19 @@
 <script lang="ts">
-import {
-  type AccordionItemTriggerProps,
-  Accordion as AccordionPrimitive,
-} from "@ark-ui/svelte/accordion";
-import { cn } from "@pisagor/utils";
-import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
-import { useAccordionItem } from "./accordion.context";
+  import {
+    type AccordionItemTriggerProps,
+    Accordion as AccordionPrimitive,
+  } from "@ark-ui/svelte/accordion";
+  import { cn } from "@pisagor/utils";
+  import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
+  import { useAccordionItem } from "./accordion.context";
 
-let {
-  children,
-  class: className,
-  ...rest
-}: AccordionItemTriggerProps = $props();
-const styles = useAccordionItem();
-const slots = $derived(styles.slots);
+  let {
+    children,
+    class: className,
+    ...rest
+  }: AccordionItemTriggerProps = $props();
+  const styles = useAccordionItem();
+  const slots = $derived(styles.slots);
 </script>
 
 <AccordionPrimitive.ItemTrigger

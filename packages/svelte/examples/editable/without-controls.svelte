@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Card, Editable, Field } from "@pisagor/svelte";
+  import { Card, Editable, Field } from "@pisagor/svelte";
 </script>
 
 <Card>

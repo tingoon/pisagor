@@ -1,14 +1,14 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
-import type { HTMLButtonAttributes } from "svelte/elements";
-import { useMessageResolver } from "../provider/provider.context";
-import { useSidebar } from "./sidebar.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLButtonAttributes } from "svelte/elements";
+  import { useMessageResolver } from "../provider/context";
+  import { useSidebar } from "./sidebar.context";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-let { class: className, ...rest }: HTMLButtonAttributes = $props();
-const ctx = useSidebar();
+  let { class: className, ...rest }: HTMLButtonAttributes = $props();
+  const ctx = useSidebar();
 </script>
 
 <Ark

@@ -8,7 +8,7 @@ export function WithIcons() {
       items={[
         {
           content: (
-            <p className="p-4 text-center text-muted-foreground text-xs">
+            <p className="text-muted-foreground p-4 text-center text-xs">
               Profile content
             </p>
           ),
@@ -22,7 +22,7 @@ export function WithIcons() {
         },
         {
           content: (
-            <p className="p-4 text-center text-muted-foreground text-xs">
+            <p className="text-muted-foreground p-4 text-center text-xs">
               Settings content
             </p>
           ),
@@ -36,7 +36,7 @@ export function WithIcons() {
         },
         {
           content: (
-            <p className="p-4 text-center text-muted-foreground text-xs">
+            <p className="text-muted-foreground p-4 text-center text-xs">
               Security content
             </p>
           ),

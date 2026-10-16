@@ -29,9 +29,9 @@ Offer comfortable and compact density when teams live in the grid daily. Defer e
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Large interactive editable grid | **Data Grid** |
+| Need                                          | Prefer                                            |
+| --------------------------------------------- | ------------------------------------------------- |
+| Large interactive editable grid               | **Data Grid**                                     |
 | Structured table without advanced grid chrome | [Data Table](/react/components/data-table/design) |
-| Simple read-only table | [Table](/react/components/table/design) |
-| Bulk actions on selected rows | [Action Bar](/react/components/action-bar/design) |
+| Simple read-only table                        | [Table](/react/components/table/design)           |
+| Bulk actions on selected rows                 | [Action Bar](/react/components/action-bar/design) |

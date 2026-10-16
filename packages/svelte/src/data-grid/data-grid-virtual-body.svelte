@@ -1,63 +1,64 @@
 <script lang="ts">
-import { createVirtualizer } from "@tanstack/svelte-virtual";
-import { onMount } from "svelte";
-import { useDataGridContext } from "./data-grid.context";
-import DataGridRowProvider from "./data-grid-row-provider.svelte";
+  import { createVirtualizer } from "@tanstack/svelte-virtual";
+  import { onMount } from "svelte";
+  import { useDataGridContext } from "./data-grid.context";
+  import DataGridRowProvider from "./data-grid-row-provider.svelte";
 
-type Props = {
-  children?: import("svelte").Snippet;
-  empty?: import("svelte").Snippet;
-  estimateSize?: number;
-  overscan?: number;
-  viewportHeight?: string;
-};
-
-let {
-  children,
-  empty,
-  estimateSize = 40,
-  overscan = 8,
-  viewportHeight = "calc(var(--spacing) * 96)",
-}: Props = $props();
-
-const { slots, table } = useDataGridContext();
-const rows = $derived(table.getRowModel().rows);
-
-let scrollElement = $state<HTMLElement | null>(null);
-let anchorEl = $state<HTMLTableRowElement | null>(null);
-
-onMount(() => {
-  const wrapper = anchorEl?.closest(
-    '[data-scope="table"][data-part="wrapper"]',
-  ) as HTMLElement | null;
-  scrollElement = wrapper;
-  if (wrapper) {
-    wrapper.style.height = viewportHeight;
-  }
-  return () => {
-    if (wrapper) wrapper.style.height = "";
+  type Props = {
+    children?: import("svelte").Snippet;
+    empty?: import("svelte").Snippet;
+    estimateSize?: number;
+    overscan?: number;
+    viewportHeight?: string;
   };
-});
 
-const rowVirtualizerStore = createVirtualizer({
-  get count() {
-    return rows.length;
-  },
-  estimateSize: () => estimateSize,
-  getScrollElement: () => scrollElement,
-  get overscan() {
-    return overscan;
-  },
-});
+  let {
+    children,
+    empty,
+    estimateSize = 40,
+    overscan = 8,
+    viewportHeight = "calc(var(--spacing) * 96)",
+  }: Props = $props();
 
-// Readable store from tanstack svelte-virtual — subscribe via $ prefix carefully:
-// name the binding without colliding with runes.
-const virtualizer = $derived($rowVirtualizerStore);
-const virtualRows = $derived(virtualizer.getVirtualItems());
-const paddingTop = $derived(virtualRows[0]?.start ?? 0);
-const paddingBottom = $derived(
-  virtualizer.getTotalSize() - (virtualRows[virtualRows.length - 1]?.end ?? 0),
-);
+  const { slots, table } = useDataGridContext();
+  const rows = $derived(table.getRowModel().rows);
+
+  let scrollElement = $state<HTMLElement | null>(null);
+  let anchorEl = $state<HTMLTableRowElement | null>(null);
+
+  onMount(() => {
+    const wrapper = anchorEl?.closest(
+      '[data-scope="table"][data-part="wrapper"]',
+    ) as HTMLElement | null;
+    scrollElement = wrapper;
+    if (wrapper) {
+      wrapper.style.height = viewportHeight;
+    }
+    return () => {
+      if (wrapper) wrapper.style.height = "";
+    };
+  });
+
+  const rowVirtualizerStore = createVirtualizer({
+    get count() {
+      return rows.length;
+    },
+    estimateSize: () => estimateSize,
+    getScrollElement: () => scrollElement,
+    get overscan() {
+      return overscan;
+    },
+  });
+
+  // Readable store from tanstack svelte-virtual — subscribe via $ prefix carefully:
+  // name the binding without colliding with runes.
+  const virtualizer = $derived($rowVirtualizerStore);
+  const virtualRows = $derived(virtualizer.getVirtualItems());
+  const paddingTop = $derived(virtualRows[0]?.start ?? 0);
+  const paddingBottom = $derived(
+    virtualizer.getTotalSize() -
+      (virtualRows[virtualRows.length - 1]?.end ?? 0),
+  );
 </script>
 
 {#if rows.length > 0}
@@ -75,7 +76,7 @@ const paddingBottom = $derived(
   {#each virtualRows as virtualRow (virtualRow.key)}
     {const row = rows[virtualRow.index]}
     {#if row}
-      <DataGridRowProvider {row}> {@render children?.()} </DataGridRowProvider>
+      <DataGridRowProvider {row}>{@render children?.()}</DataGridRowProvider>
     {/if}
   {/each}
 

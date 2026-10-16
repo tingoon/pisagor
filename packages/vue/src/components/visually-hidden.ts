@@ -14,9 +14,7 @@ export interface VisuallyHiddenProps extends BaseVisuallyHiddenProps {
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Component
-/**
- * Hides content visually while keeping it available to assistive technology.
- */
+/** Hides content visually while keeping it available to assistive technology. */
 export const VisuallyHidden = defineComponent({
   inheritAttrs: false,
   name: "VisuallyHidden",

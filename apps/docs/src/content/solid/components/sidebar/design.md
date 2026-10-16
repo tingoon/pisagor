@@ -29,9 +29,9 @@ Hide the rail behind a menu control; open navigation in a sheet with the same li
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Persistent app navigation rail | **Sidebar** |
-| Top horizontal nav | [Navbar](/solid/components/navbar/design) |
-| Temporary mobile nav | [Sheet](/solid/components/sheet/design) |
-| Page layout regions | [App Shell](/solid/components/app-shell/design) |
+| Need                           | Prefer                                          |
+| ------------------------------ | ----------------------------------------------- |
+| Persistent app navigation rail | **Sidebar**                                     |
+| Top horizontal nav             | [Navbar](/solid/components/navbar/design)       |
+| Temporary mobile nav           | [Sheet](/solid/components/sheet/design)         |
+| Page layout regions            | [App Shell](/solid/components/app-shell/design) |

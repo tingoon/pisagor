@@ -7,7 +7,7 @@ import {
 } from "@pisagor/solid/icons";
 export function IconOnly() {
   return (
-    <div class="flex h-72 flex-col overflow-y-auto rounded-lg border bg-muted shadow-lg/5">
+    <div class="bg-muted flex h-72 flex-col overflow-y-auto rounded-lg border shadow-lg/5">
       <ScrollArea>
         <div class="h-96" />
         <BottomNavigation value="home">

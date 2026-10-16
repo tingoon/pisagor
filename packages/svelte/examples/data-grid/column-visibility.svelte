@@ -1,26 +1,29 @@
 <script lang="ts">
-import { Checkbox, Table } from "@pisagor/svelte";
-import type { VisibilityState } from "@pisagor/svelte/data-grid";
-import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import { allUsers, userColumns } from "./helpers";
+  import { Checkbox, Table } from "@pisagor/svelte";
+  import type { VisibilityState } from "@pisagor/svelte/data-grid";
+  import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
+  import { allUsers, userColumns } from "./helpers";
 
-const columns = [...userColumns];
-let columnVisibility = $state<VisibilityState>({ email: false });
+  const columns = [...userColumns];
+  let columnVisibility = $state<VisibilityState>({ email: false });
 
-function onColumnVisibilityChange(
-  updater: VisibilityState | ((prev: VisibilityState) => VisibilityState),
-) {
-  columnVisibility =
-    typeof updater === "function" ? updater(columnVisibility) : updater;
-}
+  function onColumnVisibilityChange(
+    updater: VisibilityState | ((prev: VisibilityState) => VisibilityState),
+  ) {
+    columnVisibility =
+      typeof updater === "function" ? updater(columnVisibility) : updater;
+  }
 
-function onColumnCheckedChange(id: string, checked: boolean | "indeterminate") {
-  columnVisibility = { ...columnVisibility, [id]: checked === true };
-}
+  function onColumnCheckedChange(
+    id: string,
+    checked: boolean | "indeterminate",
+  ) {
+    columnVisibility = { ...columnVisibility, [id]: checked === true };
+  }
 </script>
 
 <div class="flex w-full flex-col gap-3">
-  <div class="rounded-xl border bg-muted/20 p-3">
+  <div class="bg-muted/20 rounded-xl border p-3">
     <DataGrid
       {columns}
       data={allUsers.slice(0, 8)}
@@ -29,7 +32,7 @@ function onColumnCheckedChange(id: string, checked: boolean | "indeterminate") {
       state={{ columnVisibility }}
     >
       <DataGrid.Toolbar class="flex flex-wrap gap-3">
-        <p class="font-medium text-sm">Toggle columns</p>
+        <p class="text-sm font-medium">Toggle columns</p>
         {#each columns as column}
           {@const id = String(column.accessorKey)}
           <div class="flex items-center gap-2 text-sm">

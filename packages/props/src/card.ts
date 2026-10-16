@@ -4,6 +4,7 @@ import type { CardRecipeFn, CardVariantProps } from "@pisagor/recipes";
 export interface CardProps extends CardVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue cardRecipe
    */
   recipe?: CardRecipeFn;

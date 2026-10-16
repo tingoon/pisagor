@@ -29,9 +29,9 @@ On narrow screens, collapse the stepper to the current step plus a progress indi
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Linear multi-step process | **Steps** |
-| Peer panels, any order | [Tabs](/react/components/tabs/design) |
-| Compact view switcher | [Segment Group](/react/components/segment-group/design) |
-| First-run highlights | [Tour](/react/components/tour/design) |
+| Need                      | Prefer                                                  |
+| ------------------------- | ------------------------------------------------------- |
+| Linear multi-step process | **Steps**                                               |
+| Peer panels, any order    | [Tabs](/react/components/tabs/design)                   |
+| Compact view switcher     | [Segment Group](/react/components/segment-group/design) |
+| First-run highlights      | [Tour](/react/components/tour/design)                   |

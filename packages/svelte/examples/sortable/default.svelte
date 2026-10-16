@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Sortable } from "@pisagor/svelte";
+  import { Sortable } from "@pisagor/svelte";
 
-let items = $state(["one", "two", "three"]);
+  let items = $state(["one", "two", "three"]);
 </script>
 
 <Sortable {items} onValueChange={(next) => (items = next)}>

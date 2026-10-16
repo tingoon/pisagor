@@ -4,9 +4,9 @@ export function Progress() {
   const TourProgressBar = () => {
     const { tour } = useTourContext();
     return (
-      <div className="absolute right-0 bottom-0 left-0 h-1 overflow-hidden rounded-b-2xl bg-muted">
+      <div className="bg-muted absolute right-0 bottom-0 left-0 h-1 overflow-hidden rounded-b-2xl">
         <div
-          className="h-full bg-primary transition-[width]"
+          className="bg-primary h-full transition-[width]"
           style={{ width: `${tour.getProgressPercent()}%` }}
         />
       </div>
@@ -64,25 +64,25 @@ export function Progress() {
         </Tour.Trigger>
         <div className="flex flex-wrap gap-2">
           <div
-            className="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+            className="bg-popover flex items-center justify-center rounded-md border px-6 py-4 font-medium"
             id="progress-1"
           >
             Step 1
           </div>
           <div
-            className="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+            className="bg-popover flex items-center justify-center rounded-md border px-6 py-4 font-medium"
             id="progress-2"
           >
             Step 2
           </div>
           <div
-            className="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+            className="bg-popover flex items-center justify-center rounded-md border px-6 py-4 font-medium"
             id="progress-3"
           >
             Step 3
           </div>
           <div
-            className="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+            className="bg-popover flex items-center justify-center rounded-md border px-6 py-4 font-medium"
             id="progress-4"
           >
             Step 4

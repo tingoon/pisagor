@@ -29,9 +29,9 @@ Ensure shortcut text appears in the accessible name when the badge is visual-onl
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Shortcut badge typography | **Kbd** |
-| Command discovery | [Command](/solid/components/command/design) |
-| Popup action lists | [Dropdown Menu](/solid/components/dropdown-menu/design) |
-| One-line hints | [Tooltip](/solid/components/tooltip/design) |
+| Need                      | Prefer                                                  |
+| ------------------------- | ------------------------------------------------------- |
+| Shortcut badge typography | **Kbd**                                                 |
+| Command discovery         | [Command](/solid/components/command/design)             |
+| Popup action lists        | [Dropdown Menu](/solid/components/dropdown-menu/design) |
+| One-line hints            | [Tooltip](/solid/components/tooltip/design)             |

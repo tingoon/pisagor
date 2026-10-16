@@ -1,14 +1,14 @@
 <script lang="ts">
-import { type TreeNodeType, TreeView } from "@pisagor/svelte";
-import StarIcon from "phosphor-svelte/lib/StarIcon";
-import TreeNodeItem from "./tree-node-item.svelte";
+  import { type TreeNodeType, TreeView } from "@pisagor/svelte";
+  import StarIcon from "phosphor-svelte/lib/StarIcon";
+  import TreeNodeItem from "./tree-node-item.svelte";
 
-type Props = {
-  indexPath: number[];
-  node: TreeNodeType;
-};
+  type Props = {
+    indexPath: number[];
+    node: TreeNodeType;
+  };
 
-let { indexPath, node }: Props = $props();
+  let { indexPath, node }: Props = $props();
 </script>
 
 <TreeView.NodeProvider {indexPath} {node}>

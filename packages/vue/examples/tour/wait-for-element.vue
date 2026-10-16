@@ -74,7 +74,7 @@ const steps: TourStepType[] = [
         </Button>
         <div class="flex flex-col gap-2">
           <div
-            class="rounded-lg border border-border bg-muted/50 px-4 py-3 text-sm"
+            class="border-border bg-muted/50 rounded-lg border px-4 py-3 text-sm"
             v-for="(item, index) in items"
             :key="item"
             :data-item="isNewItem(index) ? 'new' : undefined"

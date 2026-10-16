@@ -1,10 +1,10 @@
 <script lang="ts">
-import { ToggleGroup } from "@pisagor/svelte";
-import TextBIcon from "phosphor-svelte/lib/TextBIcon";
-import TextItalicIcon from "phosphor-svelte/lib/TextItalicIcon";
-import TextUnderlineIcon from "phosphor-svelte/lib/TextUnderlineIcon";
+  import { ToggleGroup } from "@pisagor/svelte";
+  import TextBIcon from "phosphor-svelte/lib/TextBIcon";
+  import TextItalicIcon from "phosphor-svelte/lib/TextItalicIcon";
+  import TextUnderlineIcon from "phosphor-svelte/lib/TextUnderlineIcon";
 
-let value = $state(["bold"]);
+  let value = $state(["bold"]);
 </script>
 
 <div class="flex flex-col items-center gap-2">
@@ -22,7 +22,7 @@ let value = $state(["bold"]);
       <TextUnderlineIcon />
     </ToggleGroup.Item>
   </ToggleGroup.Root>
-  <p class="text-center text-muted-foreground text-sm">
+  <p class="text-muted-foreground text-center text-sm">
     {value.length > 0 ? value.join(", ") : "None"}
   </p>
 </div>

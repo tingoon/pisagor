@@ -1,11 +1,21 @@
 {
+  "name": "vue-stories",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Vue Storybook for @pisagor/vue package stories.",
+  "type": "module",
+  "scripts": {
+    "build": "storybook build",
+    "build-storybook": "bun run build",
+    "dev": "storybook dev -p 4002",
+    "typecheck": "bun check"
+  },
   "dependencies": {
     "@pisagor/vue": "workspace:*",
     "@pisagor/vue-form": "workspace:*",
     "@tanstack/vue-form": "^1.33.5",
     "vue": "catalog:"
   },
-  "description": "Vue Storybook for @pisagor/vue package stories.",
   "devDependencies": {
     "@storybook/addon-a11y": "^10.6.0",
     "@storybook/addon-docs": "^10.6.0",
@@ -16,15 +26,5 @@
     "storybook": "^10.6.0",
     "tailwindcss": "catalog:",
     "vite": "catalog:"
-  },
-  "name": "vue-stories",
-  "private": true,
-  "scripts": {
-    "build": "storybook build",
-    "build-storybook": "bun run build",
-    "dev": "storybook dev -p 4002",
-    "type-check": "tsc"
-  },
-  "type": "module",
-  "version": "0.0.0"
+  }
 }

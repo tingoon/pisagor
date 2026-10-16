@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ColorPicker, InputGroup } from "@pisagor/svelte";
+  import { ColorPicker, InputGroup } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-col gap-2">
@@ -12,9 +12,7 @@ import { ColorPicker, InputGroup } from "@pisagor/svelte";
           </InputGroup.Addon>
         </ColorPicker.Trigger>
         <ColorPicker.Input channel="hex">
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <InputGroup.Input {...props()} placeholder="Primary" />
           {/snippet}
         </ColorPicker.Input>
@@ -30,9 +28,7 @@ import { ColorPicker, InputGroup } from "@pisagor/svelte";
           </InputGroup.Addon>
         </ColorPicker.Trigger>
         <ColorPicker.Input channel="hex">
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <InputGroup.Input {...props()} placeholder="Secondary" />
           {/snippet}
         </ColorPicker.Input>

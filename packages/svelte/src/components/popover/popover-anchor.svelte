@@ -1,10 +1,10 @@
 <script lang="ts">
-import {
-  type PopoverAnchorProps,
-  Popover as PopoverPrimitive,
-} from "@ark-ui/svelte/popover";
+  import {
+    type PopoverAnchorProps,
+    Popover as PopoverPrimitive,
+  } from "@ark-ui/svelte/popover";
 
-let { children, ...rest }: PopoverAnchorProps = $props();
+  let { children, ...rest }: PopoverAnchorProps = $props();
 </script>
 
 <PopoverPrimitive.Anchor {...rest}>

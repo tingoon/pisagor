@@ -1,42 +1,42 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import { useProgressContext } from "@ark-ui/svelte/progress";
-import type { SVGAttributes } from "svelte/elements";
-import { useCircularProgress } from "./circular-progress.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import { useProgressContext } from "@ark-ui/svelte/progress";
+  import type { SVGAttributes } from "svelte/elements";
+  import { useCircularProgress } from "./circular-progress.context";
 
-type Props = {
-  class?: string;
-  rangeClassName?: string;
-  size?: number;
-  thickness?: number;
-  trackProps?: Omit<
-    SVGAttributes<SVGSVGElement>,
-    "class" | "height" | "viewBox" | "width"
-  >;
-};
+  type Props = {
+    class?: string;
+    rangeClassName?: string;
+    size?: number;
+    thickness?: number;
+    trackProps?: Omit<
+      SVGAttributes<SVGSVGElement>,
+      "class" | "height" | "viewBox" | "width"
+    >;
+  };
 
-let {
-  size = 32,
-  thickness = 4,
-  rangeClassName,
-  trackProps,
-  class: className,
-}: Props = $props();
+  let {
+    size = 32,
+    thickness = 4,
+    rangeClassName,
+    trackProps,
+    class: className,
+  }: Props = $props();
 
-const styles = useCircularProgress();
-const progress = useProgressContext();
+  const styles = useCircularProgress();
+  const progress = useProgressContext();
 
-const metrics = $derived.by(() => {
-  const { max, min, value } = progress();
-  const radius = size / 2 - thickness / 2;
-  const circumference = 2 * Math.PI * radius;
-  const range = Math.max(max - min, 1);
-  const normalizedValue =
-    value == null ? min : Math.min(Math.max(value, min), max);
-  const percent = (normalizedValue - min) / range;
-  const dashOffset = circumference * (1 - percent);
-  return { circumference, dashOffset, radius, value };
-});
+  const metrics = $derived.by(() => {
+    const { max, min, value } = progress();
+    const radius = size / 2 - thickness / 2;
+    const circumference = 2 * Math.PI * radius;
+    const range = Math.max(max - min, 1);
+    const normalizedValue =
+      value == null ? min : Math.min(Math.max(value, min), max);
+    const percent = (normalizedValue - min) / range;
+    const dashOffset = circumference * (1 - percent);
+    return { circumference, dashOffset, radius, value };
+  });
 </script>
 
 <Ark

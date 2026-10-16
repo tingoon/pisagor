@@ -25,9 +25,9 @@ Prefer Breadcrumb when parent pages are real destinations; prefer a flat Navbar 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Hierarchical back navigation | **Breadcrumb** |
-| Sibling section switching | Tabs |
-| Deep tree browsing | Tree View |
-| Global top links | Navbar |
+| Need                         | Prefer                                          |
+| ---------------------------- | ----------------------------------------------- |
+| Hierarchical back navigation | **Breadcrumb**                                  |
+| Sibling section switching    | Tabs           |
+| Deep tree browsing           | Tree View |
+| Global top links             | Navbar       |

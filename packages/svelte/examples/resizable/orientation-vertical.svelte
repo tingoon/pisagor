@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Resizable } from "@pisagor/svelte";
-import { panelClassName } from "./helpers";
+  import { Resizable } from "@pisagor/svelte";
+  import { panelClassName } from "./helpers";
 </script>
 
 <div class="h-112 w-full">

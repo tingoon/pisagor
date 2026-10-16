@@ -20,7 +20,10 @@ function BaseIcon(props: IconProps & { path: string }): JSX.Element {
   );
 }
 
-/** Phosphor Star (regular) path stand-in until a Solid phosphor package is adopted. */
+/**
+ * Phosphor Star (regular) path stand-in until a Solid phosphor package is
+ * adopted.
+ */
 export function StarIcon(props: IconProps): JSX.Element {
   return (
     <BaseIcon

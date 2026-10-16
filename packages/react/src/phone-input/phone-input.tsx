@@ -16,7 +16,7 @@ import RPNPhoneInput, {
 import { Combobox, type ComboboxContentProps } from "../components/combobox";
 import type { InputProps } from "../components/input";
 import { InputGroup } from "../components/input-group";
-import { getMessage } from "../components/provider/provider.context";
+import { useMessage } from "../components/provider/context";
 import type { FormControlVariant, VariantClassNames } from "../internal/types";
 import { PhoneInputContext, usePhoneInput } from "./phone-input.context";
 import { phoneInputFlags } from "./phone-input-flags";
@@ -44,7 +44,8 @@ interface PhoneInputCountrySelectProps {
 }
 
 export interface PhoneInputProps
-  extends Omit<
+  extends
+    Omit<
       ComponentProps<typeof RPNPhoneInput>,
       | "onChange"
       | "value"
@@ -70,7 +71,10 @@ export interface PhoneInputProps
     InputProps,
     "className" | "onChange" | "onBlur" | "size" | "type" | "value"
   >;
-  /** Country dropdown props (Combobox.Content, except `className` and `children`). */
+  /**
+   * Country dropdown props (Combobox.Content, except `className` and
+   * `children`).
+   */
   popupProps?: Omit<ComboboxContentProps, "className" | "children">;
 }
 
@@ -199,7 +203,7 @@ function PhoneInputCountrySelect({
       >
         <Combobox.Control className={slots.countryControl()}>
           <Combobox.Trigger
-            aria-label={getMessage("phoneInput.selectCountry")}
+            aria-label={useMessage("phoneInput.selectCountry")}
             asChild
             className={slots.countrySelect()}
             disabled={isDisabled}
@@ -236,7 +240,7 @@ function PhoneInputCountrySelect({
             <Combobox.FieldInput asChild>
               <InputGroup.Input
                 className={slots.search({ className: classNames?.search })}
-                placeholder={getMessage("phoneInput.search")}
+                placeholder={useMessage("phoneInput.search")}
               />
             </Combobox.FieldInput>
           </InputGroup>
@@ -252,7 +256,7 @@ function PhoneInputCountrySelect({
             </Combobox.Item>
           ))}
         </Combobox.List>
-        <Combobox.Empty>{getMessage("phoneInput.empty")}</Combobox.Empty>
+        <Combobox.Empty>{useMessage("phoneInput.empty")}</Combobox.Empty>
       </Combobox.Content>
     </Combobox.Root>
   );

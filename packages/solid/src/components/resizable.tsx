@@ -17,7 +17,7 @@ import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { DotsSixVerticalIcon } from "../internal/icons";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -47,8 +47,7 @@ export type ResizableHandlePosition = "bottom" | "center" | "top";
 export type ResizableEdgePlacement = "end" | "start";
 
 export interface ResizableEdgeHandleProps
-  extends ComponentProps<"button">,
-    BaseResizableEdgeHandleProps {
+  extends ComponentProps<"button">, BaseResizableEdgeHandleProps {
   placement: ResizableEdgePlacement;
   handlePosition?: ResizableHandlePosition;
   minWidth?: number;
@@ -64,14 +63,12 @@ export interface ResizableEdgeHandleProps
   onWidthChange: (width: number) => void;
 }
 
-export interface ResizableResizeTriggerProps
-  extends SplitterResizeTriggerProps {
+export interface ResizableResizeTriggerProps extends SplitterResizeTriggerProps {
   withHandle?: boolean;
 }
 
 export interface ResizableRootProps
-  extends SplitterRootProps,
-    BaseResizableRootProps {}
+  extends SplitterRootProps, BaseResizableRootProps {}
 
 export type ResizablePanelProps = SplitterPanelProps;
 export type ResizableResizeTriggerIndicatorProps =
@@ -79,8 +76,7 @@ export type ResizableResizeTriggerIndicatorProps =
 export type ResizableContextProps = SplitterContextProps;
 
 export interface ResizableRootProviderProps
-  extends SplitterRootProviderProps,
-    BaseResizableProps {}
+  extends SplitterRootProviderProps, BaseResizableProps {}
 
 export function ResizableEdgeHandle(
   props: ResizableEdgeHandleProps,
@@ -234,7 +230,7 @@ export function ResizableResizeTrigger(
 
   return (
     <SplitterPrimitive.ResizeTrigger
-      aria-label={useProviderMessage("resizable.resize")}
+      aria-label={useTranslation("resizable.resize")}
       {...rest}
       class={styles.slots.resizeTrigger({ class: local.class })}
     >

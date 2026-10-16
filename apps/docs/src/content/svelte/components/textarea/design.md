@@ -29,9 +29,9 @@ Show validation beside the textarea and move focus to the first invalid field on
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Multi-line plain text | **Textarea** |
-| Single-line text | [Input](/svelte/components/input/design) |
-| Many structured tokens | [Tags Input](/svelte/components/tags-input/design) |
-| Formatted content | [Rich Text Editor](/svelte/components/rich-text-editor/design) |
+| Need                   | Prefer                                                        |
+| ---------------------- | ------------------------------------------------------------- |
+| Multi-line plain text  | **Textarea**                                                  |
+| Single-line text       | [Input](/svelte/components/input/design)                       |
+| Many structured tokens | [Tags Input](/svelte/components/tags-input/design)             |
+| Formatted content      | [Rich Text Editor](/svelte/components/rich-text-editor/design) |

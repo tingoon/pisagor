@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Tabs } from "@pisagor/svelte";
-import { profileTabs } from "./helpers";
+  import { Tabs } from "@pisagor/svelte";
+  import { profileTabs } from "./helpers";
 
-const sizes = ["sm", "md", "lg"] as const;
+  const sizes = ["sm", "md", "lg"] as const;
 </script>
 
 <div class="flex flex-col gap-4">

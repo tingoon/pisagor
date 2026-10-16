@@ -1,16 +1,16 @@
 <script lang="ts">
-import { Button, DropdownMenu } from "@pisagor/svelte";
-import {
-  CopyIcon,
-  GearIcon,
-  SignOutIcon,
-  UserIcon,
-} from "@pisagor/svelte/icons";
+  import { Button, DropdownMenu } from "@pisagor/svelte";
+  import {
+    CopyIcon,
+    GearIcon,
+    SignOutIcon,
+    UserIcon,
+  } from "@pisagor/svelte/icons";
 </script>
 
 <DropdownMenu>
   <DropdownMenu.Trigger>
-    <Button variant="outline"> Open </Button>
+    <Button variant="outline">Open</Button>
   </DropdownMenu.Trigger>
   <DropdownMenu.Content class="w-40">
     <DropdownMenu.Item value="profile">

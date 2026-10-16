@@ -1,11 +1,11 @@
 <script lang="ts">
-import { Combobox } from "@pisagor/svelte";
+  import { Combobox } from "@pisagor/svelte";
 
-const items = [
-  { label: "Apple", value: "apple" },
-  { label: "Banana", value: "banana" },
-  { label: "Cherry", value: "cherry" },
-];
+  const items = [
+    { label: "Apple", value: "apple" },
+    { label: "Banana", value: "banana" },
+    { label: "Cherry", value: "cherry" },
+  ];
 </script>
 
 <div class="flex flex-col gap-2">

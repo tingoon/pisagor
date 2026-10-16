@@ -29,9 +29,9 @@ Redact or mask known sensitive fields by default in shared screens. Make read-on
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Inspect nested JSON | **JSON Tree View** |
-| Hierarchical settings | [Tree View](/solid/components/tree-view/design) |
-| Tabular API results | [Data Table](/solid/components/data-table/design) |
-| Match emphasis in strings | [Highlight](/solid/components/highlight/design) |
+| Need                      | Prefer                                            |
+| ------------------------- | ------------------------------------------------- |
+| Inspect nested JSON       | **JSON Tree View**                                |
+| Hierarchical settings     | [Tree View](/solid/components/tree-view/design)   |
+| Tabular API results       | [Data Table](/solid/components/data-table/design) |
+| Match emphasis in strings | [Highlight](/solid/components/highlight/design)   |

@@ -49,11 +49,9 @@ export interface DropdownMenuItemGroupProps extends MenuItemGroupProps {
 }
 
 export interface DropdownMenuItemProps
-  extends MenuItemProps,
-    BaseDropdownMenuItemProps {}
+  extends MenuItemProps, BaseDropdownMenuItemProps {}
 
-export interface DropdownMenuRadioItemGroupProps
-  extends MenuRadioItemGroupProps {
+export interface DropdownMenuRadioItemGroupProps extends MenuRadioItemGroupProps {
   /** The heading of the menu radio item group. */
   heading?: string;
 }
@@ -65,30 +63,25 @@ export type DropdownMenuTriggerProps = MenuTriggerProps;
 export type DropdownMenuPositionerProps = MenuPositionerProps;
 
 export interface DropdownMenuCheckboxItemProps
-  extends MenuCheckboxItemProps,
-    BaseDropdownMenuCheckboxItemProps {}
+  extends MenuCheckboxItemProps, BaseDropdownMenuCheckboxItemProps {}
 
 export type DropdownMenuItemGroupLabelProps = MenuItemGroupLabelProps;
 
 export interface DropdownMenuRadioItemProps
-  extends MenuRadioItemProps,
-    BaseDropdownMenuRadioItemProps {}
+  extends MenuRadioItemProps, BaseDropdownMenuRadioItemProps {}
 
 export interface DropdownMenuSubContentProps
-  extends MenuContentProps,
-    BaseDropdownMenuSubContentProps {}
+  extends MenuContentProps, BaseDropdownMenuSubContentProps {}
 
 export type DropdownMenuArrowProps = MenuArrowProps;
 
 export type DropdownMenuSeparatorProps = MenuSeparatorProps;
 
 export interface DropdownMenuTriggerItemProps
-  extends MenuTriggerItemProps,
-    BaseDropdownMenuTriggerItemProps {}
+  extends MenuTriggerItemProps, BaseDropdownMenuTriggerItemProps {}
 
 export interface DropdownMenuContentProps
-  extends MenuContentProps,
-    BaseDropdownMenuContentProps {}
+  extends MenuContentProps, BaseDropdownMenuContentProps {}
 
 export type DropdownMenuShortcutProps = ComponentProps<typeof ark.span>;
 // #endregion

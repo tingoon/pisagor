@@ -16,7 +16,7 @@ import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps, useContext } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -39,17 +39,17 @@ const {
 type TimerUnit = "hours" | "minutes" | "seconds";
 
 export interface TimerItemGroupProps
-  extends ComponentProps<typeof ark.div>,
-    BaseTimerItemGroupProps {
+  extends ComponentProps<typeof ark.div>, BaseTimerItemGroupProps {
   orientation?: "horizontal" | "vertical";
 }
 
-export interface TimerActionProps
-  extends Omit<TimerActionTriggerProps, "action"> {}
+export interface TimerActionProps extends Omit<
+  TimerActionTriggerProps,
+  "action"
+> {}
 
 export interface TimerRootProps
-  extends TimerPrimitiveRootProps,
-    BaseTimerRootProps {
+  extends TimerPrimitiveRootProps, BaseTimerRootProps {
   units?: TimerUnit[];
   isControlsVisible?: boolean;
 }
@@ -120,7 +120,10 @@ export function TimerItemGroup(props: TimerItemGroupProps): JSX.Element {
   );
 }
 
-/** Usable inside or outside `Timer.ItemGroup` (falls back to the default item-group recipe). */
+/**
+ * Usable inside or outside `Timer.ItemGroup` (falls back to the default
+ * item-group recipe).
+ */
 export function TimerItem(props: TimerItemProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useContext(TimerItemGroupStylesContext);
@@ -169,7 +172,7 @@ export function TimerActionTrigger(
 export function TimerPause(props: TimerActionProps): JSX.Element {
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useProviderMessage("timer.pause")}
+      aria-label={useTranslation("timer.pause")}
       {...props}
       action="pause"
     />
@@ -179,7 +182,7 @@ export function TimerPause(props: TimerActionProps): JSX.Element {
 export function TimerResume(props: TimerActionProps): JSX.Element {
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useProviderMessage("timer.resume")}
+      aria-label={useTranslation("timer.resume")}
       {...props}
       action="resume"
     />
@@ -189,7 +192,7 @@ export function TimerResume(props: TimerActionProps): JSX.Element {
 export function TimerStart(props: TimerActionProps): JSX.Element {
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useProviderMessage("timer.start")}
+      aria-label={useTranslation("timer.start")}
       {...props}
       action="start"
     />
@@ -199,7 +202,7 @@ export function TimerStart(props: TimerActionProps): JSX.Element {
 export function TimerReset(props: TimerActionProps): JSX.Element {
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useProviderMessage("timer.reset")}
+      aria-label={useTranslation("timer.reset")}
       {...props}
       action="reset"
     />
@@ -209,7 +212,7 @@ export function TimerReset(props: TimerActionProps): JSX.Element {
 export function TimerRestart(props: TimerActionProps): JSX.Element {
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useProviderMessage("timer.restart")}
+      aria-label={useTranslation("timer.restart")}
       {...props}
       action="restart"
     />

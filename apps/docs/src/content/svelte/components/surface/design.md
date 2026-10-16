@@ -29,9 +29,9 @@ Pair Surface with [Separator](/svelte/components/separator/design) or spacing ut
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Background layer for a group | **Surface** |
-| Titled content block | [Card](/svelte/components/card/design) |
-| Media or document frame | [Frame](/svelte/components/frame/design) |
-| Page shell layout | [App Shell](/svelte/components/app-shell/design) |
+| Need                         | Prefer                                          |
+| ---------------------------- | ----------------------------------------------- |
+| Background layer for a group | **Surface**                                     |
+| Titled content block         | [Card](/svelte/components/card/design)           |
+| Media or document frame      | [Frame](/svelte/components/frame/design)         |
+| Page shell layout            | [App Shell](/svelte/components/app-shell/design) |

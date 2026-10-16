@@ -8,7 +8,7 @@ import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, ref } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { ClassValue } from "../internal/types";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 // #region Slot recipe context
 const {
@@ -258,7 +258,7 @@ export const ResizableResizeTrigger = defineComponent({
       h(
         SplitterPrimitive.ResizeTrigger as ArkPart,
         {
-          "aria-label": useProviderMessage("resizable.resize"),
+          "aria-label": useTranslation("resizable.resize"),
           ...attrs,
           class: styles.slots.resizeTrigger({ class: props.class }),
         },

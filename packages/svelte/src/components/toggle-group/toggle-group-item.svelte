@@ -1,20 +1,20 @@
 <script lang="ts">
-import {
-  type ToggleGroupItemProps as ArkToggleGroupItemProps,
-  ToggleGroup as ToggleGroupPrimitive,
-} from "@ark-ui/svelte/toggle-group";
-import { buttonRecipe, toggleRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { useToggleGroup } from "./toggle-group.context";
+  import {
+    type ToggleGroupItemProps as ArkToggleGroupItemProps,
+    ToggleGroup as ToggleGroupPrimitive,
+  } from "@ark-ui/svelte/toggle-group";
+  import { buttonRecipe, toggleRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { useToggleGroup } from "./toggle-group.context";
 
-let {
-  value,
-  class: className,
-  children,
-  ...rest
-}: ArkToggleGroupItemProps = $props();
+  let {
+    value,
+    class: className,
+    children,
+    ...rest
+  }: ArkToggleGroupItemProps = $props();
 
-const ctx = useToggleGroup();
+  const ctx = useToggleGroup();
 </script>
 
 <ToggleGroupPrimitive.Item

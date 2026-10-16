@@ -84,7 +84,7 @@ export function WaitForInput() {
         <Tour.Trigger asChild>
           <Button variant="outline">Start form tutorial</Button>
         </Tour.Trigger>
-        <div className="flex flex-col gap-2 rounded-lg border border-border bg-muted/50 p-4">
+        <div className="border-border bg-muted/50 flex flex-col gap-2 rounded-lg border p-4">
           <Field>
             <Field.Label htmlFor="input-name">Name</Field.Label>
             <Input id="input-name" placeholder="Enter your name" type="text" />

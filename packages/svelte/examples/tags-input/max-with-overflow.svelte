@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Field, TagsInput } from "@pisagor/svelte";
+  import { Field, TagsInput } from "@pisagor/svelte";
 
-let value = $state(["React", "Solid", "Vue"]);
+  let value = $state(["React", "Solid", "Vue"]);
 </script>
 
 <Field>

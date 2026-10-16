@@ -1,39 +1,39 @@
 <script lang="ts">
-import {
-  type PopoverContentProps as ArkPopoverContentProps,
-  Popover as PopoverPrimitive,
-} from "@ark-ui/svelte/popover";
-import { Portal } from "@ark-ui/svelte/portal";
-import type { PopoverProps as BasePopoverProps } from "@pisagor/props";
-import { buttonRecipe, popoverRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import XIcon from "phosphor-svelte/lib/XIcon";
-import { useMessageResolver } from "../provider/provider.context";
-import { Context } from "./popover.context";
-import PopoverPositioner from "./popover-positioner.svelte";
+  import {
+    type PopoverContentProps as ArkPopoverContentProps,
+    Popover as PopoverPrimitive,
+  } from "@ark-ui/svelte/popover";
+  import { Portal } from "@ark-ui/svelte/portal";
+  import type { PopoverProps as BasePopoverProps } from "@pisagor/props";
+  import { buttonRecipe, popoverRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { useMessageResolver } from "../provider/context";
+  import { Context } from "./popover.context";
+  import PopoverPositioner from "./popover-positioner.svelte";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-type Props = ArkPopoverContentProps & {
-  showCloseButton?: boolean;
-} & BasePopoverProps;
+  type Props = ArkPopoverContentProps & {
+    showCloseButton?: boolean;
+  } & BasePopoverProps;
 
-let {
-  showCloseButton = false,
-  children,
-  recipe = popoverRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    showCloseButton = false,
+    children,
+    recipe = popoverRecipe,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const slots = $derived(recipe());
+  const slots = $derived(recipe());
 
-Context.set({
-  get slots() {
-    return slots;
-  },
-  variants: {},
-});
+  Context.set({
+    get slots() {
+      return slots;
+    },
+    variants: {},
+  });
 </script>
 
 <Portal>

@@ -34,7 +34,7 @@ import { createSlotRecipeContext } from "../internal/create-slot-recipe-context"
 import type { FormControlVariant } from "../internal/types";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
-import { getMessage } from "./provider/provider.context";
+import { useMessage } from "./provider/context";
 
 // #region Context
 const { Context: ComboboxStylesContext } = createSlotRecipeContext({
@@ -50,7 +50,10 @@ function useComboboxSlots() {
 /** Root-level control props (`variant`, `size`) read by `Combobox.Input`. */
 const ComboboxControlContext = createContext<InputRootVariantProps>({});
 ComboboxControlContext.displayName = "ComboboxControlContext";
-/** True inside `Combobox.Control`, so `Combobox.Input` does not render a second control. */
+/**
+ * True inside `Combobox.Control`, so `Combobox.Input` does not render a second
+ * control.
+ */
 const ComboboxInsideControlContext = createContext(false);
 
 /** @deprecated Prefer composing within Combobox.Root; kept for public API. */
@@ -78,8 +81,10 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   onValueChange?: (value: string[]) => void;
 } & BaseComboboxRootProps;
 
-export interface ComboboxProps
-  extends Omit<ComboboxRootProps, "children" | "collection"> {
+export interface ComboboxProps extends Omit<
+  ComboboxRootProps,
+  "children" | "collection"
+> {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -90,8 +95,7 @@ export interface ComboboxProps
 }
 
 export interface ComboboxInputProps
-  extends Omit<ComboboxPrimitiveInputProps, "size">,
-    InputRootVariantProps {
+  extends Omit<ComboboxPrimitiveInputProps, "size">, InputRootVariantProps {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -112,15 +116,13 @@ export interface ComboboxInputProps
   showTrigger?: boolean;
 }
 
-export interface ComboboxItemGroupProps
-  extends ComboboxPrimitiveItemGroupProps {
+export interface ComboboxItemGroupProps extends ComboboxPrimitiveItemGroupProps {
   /** The heading of the group */
   heading?: string | ReactNode;
 }
 
 export interface ComboboxItemProps
-  extends ComboboxPrimitiveItemProps,
-    ComboboxVariantProps {}
+  extends ComboboxPrimitiveItemProps, ComboboxVariantProps {}
 
 export type ComboboxFieldInputProps = ComboboxPrimitiveInputProps;
 
@@ -190,6 +192,7 @@ export function ComboboxInput({
   className,
   ...rest
 }: ComboboxInputProps) {
+  const comboboxClearMessage = useMessage("combobox.clear");
   const { inputValue } = useComboboxContext();
   const slots = useComboboxSlots();
   const control = use(ComboboxControlContext);
@@ -217,7 +220,7 @@ export function ComboboxInput({
         {clearable && inputValue && (
           <ComboboxClearTrigger asChild>
             <InputGroup.Button
-              aria-label={getMessage("combobox.clear")}
+              aria-label={comboboxClearMessage}
               size="icon-xs"
               variant="ghost"
             >
@@ -241,6 +244,7 @@ export function ComboboxTrigger({
   className,
   ...rest
 }: ComboboxTriggerProps) {
+  const comboboxToggleMessage = useMessage("combobox.toggle");
   const slots = useComboboxSlots();
 
   return (
@@ -251,7 +255,7 @@ export function ComboboxTrigger({
     >
       {children ?? (
         <Button
-          aria-label={getMessage("combobox.toggle")}
+          aria-label={comboboxToggleMessage}
           className={slots.triggerButton()}
           variant="ghost"
         >
@@ -263,9 +267,10 @@ export function ComboboxTrigger({
 }
 
 export function ComboboxClearTrigger({
-  "aria-label": ariaLabel = getMessage("combobox.clear"),
+  "aria-label": ariaLabelProp,
   ...rest
 }: ComboboxClearTriggerProps) {
+  const ariaLabel = useMessage("combobox.clear", ariaLabelProp);
   return <ComboboxPrimitive.ClearTrigger {...rest} aria-label={ariaLabel} />;
 }
 
@@ -366,11 +371,12 @@ export function ComboboxEmpty({
   className,
   ...rest
 }: ComboboxEmptyProps) {
+  const comboboxEmptyMessage = useMessage("combobox.empty");
   const slots = useComboboxSlots();
 
   return (
     <ComboboxPrimitive.Empty {...rest} className={slots.empty({ className })}>
-      {children || getMessage("combobox.empty")}
+      {children || comboboxEmptyMessage}
     </ComboboxPrimitive.Empty>
   );
 }

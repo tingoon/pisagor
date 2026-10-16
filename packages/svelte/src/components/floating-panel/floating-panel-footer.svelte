@@ -1,17 +1,17 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import { floatingPanelRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { HTMLAttributes } from "svelte/elements";
-import { useFloatingPanel } from "./floating-panel.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import { floatingPanelRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { useFloatingPanel } from "./floating-panel.context";
 
-let {
-  children,
-  class: className,
-  ...rest
-}: HTMLAttributes<HTMLDivElement> = $props();
-const ctx = useFloatingPanel();
-const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
+  let {
+    children,
+    class: className,
+    ...rest
+  }: HTMLAttributes<HTMLDivElement> = $props();
+  const ctx = useFloatingPanel();
+  const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
 </script>
 
 <Ark

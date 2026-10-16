@@ -6,7 +6,7 @@
       "#/vue-form/examples/*": ["../../packages/vue-form/examples/*"],
       "#/vue/examples/*": ["../../packages/vue/examples/*"]
     },
-    "types": ["vite/client", "node"]
+    "types": ["vite/client", "bun"]
   },
   "extends": "../../tsconfig.json",
   "include": ["src", ".storybook", "vite.config.ts", "env.d.ts", "global.d.ts"]

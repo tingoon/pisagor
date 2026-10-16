@@ -93,7 +93,7 @@ function SortIndicator({ direction }: { direction: false | "asc" | "desc" }) {
 function DataGridShell({ children }: { children: ReactNode }) {
   return (
     <div className="flex w-full flex-col gap-3">
-      <div className="rounded-xl border bg-muted/20 p-3">{children}</div>
+      <div className="bg-muted/20 rounded-xl border p-3">{children}</div>
     </div>
   );
 }
@@ -317,7 +317,7 @@ export function ManualPagination() {
     <DataGridShell>
       <div className="relative">
         {isFetching ? (
-          <div className="absolute inset-0 z-10 flex items-center justify-center rounded-lg bg-background/70">
+          <div className="bg-background/70 absolute inset-0 z-10 flex items-center justify-center rounded-lg">
             <Spinner />
           </div>
         ) : null}

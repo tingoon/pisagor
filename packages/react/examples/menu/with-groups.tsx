@@ -7,7 +7,7 @@ import { Menu } from "@pisagor/react";
 
 export function WithGroups() {
   return (
-    <div className="w-56 rounded-xl border bg-background p-1 shadow-xs/5">
+    <div className="bg-background w-56 rounded-xl border p-1 shadow-xs/5">
       <Menu aria-label="Application">
         <Menu.Group>
           <Menu.GroupLabel>Navigation</Menu.GroupLabel>

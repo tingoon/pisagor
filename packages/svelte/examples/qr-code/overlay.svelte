@@ -1,6 +1,6 @@
 <script lang="ts">
-import { QrCode } from "@pisagor/svelte";
-import FishIcon from "phosphor-svelte/lib/FishIcon";
+  import { QrCode } from "@pisagor/svelte";
+  import FishIcon from "phosphor-svelte/lib/FishIcon";
 </script>
 
 <QrCode>

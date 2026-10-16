@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Button, FileUpload, Separator } from "@pisagor/svelte";
+  import { Button, FileUpload, Separator } from "@pisagor/svelte";
 </script>
 
 <FileUpload maxFiles={5}>
@@ -12,9 +12,7 @@ import { Button, FileUpload, Separator } from "@pisagor/svelte";
       <Separator />
     </div>
     <FileUpload.Trigger>
-      {#snippet asChild(
-        props,
-      )}
+      {#snippet asChild(props)}
         <Button {...props()}>Browse files</Button>
       {/snippet}
     </FileUpload.Trigger>

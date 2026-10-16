@@ -22,7 +22,6 @@ logs
 *.log
 
 # caches & tooling
-*.tsbuildinfo
 .turbo/
 .astro/
 

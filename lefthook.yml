@@ -1,8 +1,13 @@
 pre-commit:
   parallel: true
   commands:
+    fmt:
+      run: bun fmt --staged
+    lint:
+      run: bun lint --staged
     biome:
-      run: bun run format {staged_files}
+      glob: "*.{astro,css,json,jsonc,svelte,vue}"
+      run: bunx biome check --write --no-errors-on-unmatched {staged_files}
       stage_fixed: true
 
 commit-msg:
@@ -12,8 +17,8 @@ commit-msg:
 
 pre-push:
   commands:
-    type-check:
-      run: bun run type-check
+    typecheck:
+      run: bun run typecheck
 
 post-merge:
   commands:

@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Field, Input } from "@pisagor/svelte";
-import { formGridBlock } from "#/recipes/blocks/field";
+  import { Field, Input } from "@pisagor/svelte";
+  import { formGridBlock } from "#/recipes/blocks/field";
 
-const styles = formGridBlock();
+  const styles = formGridBlock();
 </script>
 
 <Field.Group class={styles.group()}>

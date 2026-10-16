@@ -1,18 +1,18 @@
 <script lang="ts">
-import type { ComponentProps } from "svelte";
-import RadioGroupItem from "./radio-group-item.svelte";
-import RadioGroupRoot from "./radio-group-root.svelte";
+  import type { ComponentProps } from "svelte";
+  import RadioGroupItem from "./radio-group-item.svelte";
+  import RadioGroupRoot from "./radio-group-root.svelte";
 
-type RadioGroupPresetItem = {
-  disabled?: boolean;
-  label: string;
-  value: string;
-};
-type Props = ComponentProps<typeof RadioGroupRoot> & {
-  items?: RadioGroupPresetItem[];
-};
+  type RadioGroupPresetItem = {
+    disabled?: boolean;
+    label: string;
+    value: string;
+  };
+  type Props = ComponentProps<typeof RadioGroupRoot> & {
+    items?: RadioGroupPresetItem[];
+  };
 
-let { items = [], children, ...rest }: Props = $props();
+  let { items = [], children, ...rest }: Props = $props();
 </script>
 
 <RadioGroupRoot {...rest}>

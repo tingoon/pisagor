@@ -29,9 +29,9 @@ Keep the track wide enough to read at a glance in forms and toolbars. In dense r
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Linear measurable completion | **Progress** |
-| Compact circular indicator | [Circular Progress](/svelte/components/circular-progress/design) |
-| Indeterminate short wait | [Spinner](/svelte/components/spinner/design) |
-| Loading placeholder layout | [Skeleton](/svelte/components/skeleton/design) |
+| Need                         | Prefer                                                          |
+| ---------------------------- | --------------------------------------------------------------- |
+| Linear measurable completion | **Progress**                                                    |
+| Compact circular indicator   | [Circular Progress](/svelte/components/circular-progress/design) |
+| Indeterminate short wait     | [Spinner](/svelte/components/spinner/design)                     |
+| Loading placeholder layout   | [Skeleton](/svelte/components/skeleton/design)                   |

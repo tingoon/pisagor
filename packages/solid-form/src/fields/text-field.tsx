@@ -12,8 +12,7 @@ type InputControlProps = Omit<
 >;
 
 export interface TextFieldProps
-  extends FieldPresentationProps,
-    InputControlProps {
+  extends FieldPresentationProps, InputControlProps {
   name?: string;
   value?: string;
   onBlur?: () => void;

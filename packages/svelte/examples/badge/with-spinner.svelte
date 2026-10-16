@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Badge, Spinner } from "@pisagor/svelte";
+  import { Badge, Spinner } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap items-center gap-2">
@@ -7,5 +7,5 @@ import { Badge, Spinner } from "@pisagor/svelte";
     <Spinner />
     Deleting
   </Badge>
-  <Badge variant="outline"> Generating <Spinner /> </Badge>
+  <Badge variant="outline">Generating <Spinner /></Badge>
 </div>

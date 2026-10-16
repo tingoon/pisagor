@@ -2,13 +2,9 @@ import { tv } from "tailwind-variants";
 
 export const passwordStrengthBlock = tv({
   defaultVariants: {
-    /**
-     * Whether the password requirement is satisfied.
-     */
+    /** Whether the password requirement is satisfied. */
     met: false,
-    /**
-     * Strength meter segment color.
-     */
+    /** Strength meter segment color. */
     tone: "idle",
   },
   slots: {
@@ -16,11 +12,11 @@ export const passwordStrengthBlock = tv({
     count: "text-muted-foreground text-xs",
     field: "flex flex-col gap-1.5",
     input: [
-      "h-8 w-full rounded-lg border border-input bg-transparent px-3 pe-9 text-sm shadow-xs/5",
-      "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/32",
+      "border-input h-8 w-full rounded-lg border bg-transparent px-3 pe-9 text-sm shadow-xs/5",
+      "focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/32 outline-hidden",
     ],
     item: "flex items-center gap-1.5",
-    label: "font-medium text-sm",
+    label: "text-sm font-medium",
     list: "space-y-1.5",
     meter: "mt-3 mb-4 flex gap-1",
     metIcon: "size-3.5 text-emerald-500",
@@ -30,13 +26,13 @@ export const passwordStrengthBlock = tv({
     segment: "h-1 flex-1 rounded-full transition-colors duration-500",
     srOnly: "sr-only",
     summary: "mb-3 flex items-center justify-between",
-    summaryLabel: "font-medium text-foreground text-sm",
+    summaryLabel: "text-foreground text-sm font-medium",
     toggle: [
-      "absolute inset-y-0 inset-e-0 flex items-center px-2.5 text-muted-foreground",
+      "text-muted-foreground absolute inset-y-0 inset-e-0 flex items-center px-2.5",
       "hover:text-foreground",
     ],
     toggleIcon: "size-4",
-    unmetIcon: "size-3.5 text-muted-foreground/60",
+    unmetIcon: "text-muted-foreground/60 size-3.5",
   },
   variants: {
     met: {
@@ -58,7 +54,10 @@ export const passwordStrengthBlock = tv({
   },
 });
 
-/** Active meter color for a met-requirement count. Idle segments stay `tone: "idle"`. */
+/**
+ * Active meter color for a met-requirement count. Idle segments stay `tone:
+ * "idle"`.
+ */
 export function passwordStrengthTone(score: number) {
   if (score <= 1) return "red" as const;
   if (score <= 2) return "orange" as const;

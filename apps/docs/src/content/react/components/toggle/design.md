@@ -29,9 +29,9 @@ For related toggles, use [Toggle Group](/react/components/toggle-group/design) o
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Pressed tool control | **Toggle** |
-| Immediate setting | [Switch](/react/components/switch/design) |
-| Form boolean | [Checkbox](/react/components/checkbox/design) |
-| Icon state swap | [Swap](/react/components/swap/design) |
+| Need                 | Prefer                                        |
+| -------------------- | --------------------------------------------- |
+| Pressed tool control | **Toggle**                                    |
+| Immediate setting    | [Switch](/react/components/switch/design)     |
+| Form boolean         | [Checkbox](/react/components/checkbox/design) |
+| Icon state swap      | [Swap](/react/components/swap/design)         |

@@ -25,9 +25,9 @@ Prefer a linear [Slider](/react/components/slider/design) when precision, tick m
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Rotational value choice | **Circular Slider** |
-| Linear range with marks | [Slider](/react/components/slider/design) |
-| Typed numeric entry | [Number Input](/react/components/number-input/design) |
-| Compact on/off | [Switch](/react/components/switch/design) |
+| Need                    | Prefer                                                |
+| ----------------------- | ----------------------------------------------------- |
+| Rotational value choice | **Circular Slider**                                   |
+| Linear range with marks | [Slider](/react/components/slider/design)             |
+| Typed numeric entry     | [Number Input](/react/components/number-input/design) |
+| Compact on/off          | [Switch](/react/components/switch/design)             |

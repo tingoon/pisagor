@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Timeline } from "@pisagor/svelte";
+  import { Timeline } from "@pisagor/svelte";
 </script>
 
 <Timeline

@@ -1,14 +1,14 @@
 <script lang="ts">
-import {
-  type ComboboxItemGroupProps as ArkProps,
-  Combobox as ComboboxPrimitive,
-} from "@ark-ui/svelte/combobox";
-import type { Snippet } from "svelte";
-import ComboboxItemGroupLabel from "./combobox-item-group-label.svelte";
+  import {
+    type ComboboxItemGroupProps as ArkProps,
+    Combobox as ComboboxPrimitive,
+  } from "@ark-ui/svelte/combobox";
+  import type { Snippet } from "svelte";
+  import ComboboxItemGroupLabel from "./combobox-item-group-label.svelte";
 
-type Props = ArkProps & { heading?: string | Snippet };
+  type Props = ArkProps & { heading?: string | Snippet };
 
-let { children, heading, ...rest }: Props = $props();
+  let { children, heading, ...rest }: Props = $props();
 </script>
 
 <ComboboxPrimitive.ItemGroup {...rest}>

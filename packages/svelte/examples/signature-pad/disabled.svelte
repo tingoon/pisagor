@@ -1,5 +1,5 @@
 <script lang="ts">
-import { SignaturePad } from "@pisagor/svelte";
+  import { SignaturePad } from "@pisagor/svelte";
 </script>
 
 <SignaturePad disabled />

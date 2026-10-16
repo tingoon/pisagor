@@ -6,7 +6,7 @@
       "#/react/examples/*": ["../../packages/react/examples/*"],
       "#/storybook/*": ["./.storybook/*"]
     },
-    "types": ["vite/client", "node"]
+    "types": ["vite/client", "bun"]
   },
   "extends": "../../tsconfig.json",
   "include": ["src", ".storybook", "vite.config.ts", "global.d.ts"]

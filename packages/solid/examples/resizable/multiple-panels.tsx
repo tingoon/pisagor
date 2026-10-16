@@ -16,10 +16,10 @@ function ResizableFrame({
 
 function panelClassName(orientation: "horizontal" | "vertical" = "horizontal") {
   return cn(
-    "flex items-center justify-center bg-muted/30 text-sm",
+    "bg-muted/30 flex items-center justify-center text-sm",
     orientation === "vertical"
-      ? "min-h-0 h-full w-full"
-      : "min-w-0 h-full w-full",
+      ? "h-full min-h-0 w-full"
+      : "h-full w-full min-w-0",
   );
 }
 

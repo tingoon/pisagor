@@ -1,11 +1,9 @@
 <script lang="ts">
-import { Checkbox, Field } from "@pisagor/svelte";
+  import { Checkbox, Field } from "@pisagor/svelte";
 </script>
 
 <Field.Set>
-  <Field.Legend variant="label">
-    Show these items on the desktop:
-  </Field.Legend>
+  <Field.Legend variant="label">Show these items on the desktop:</Field.Legend>
   <Field.Description>
     Select the items you want to show on the desktop.
   </Field.Description>
@@ -24,7 +22,7 @@ import { Checkbox, Field } from "@pisagor/svelte";
       </Field>
       <Field orientation="horizontal">
         <Checkbox value="cds-dvds-ipods" />
-        <Field.Label class="font-normal"> CDs, DVDs, and iPods </Field.Label>
+        <Field.Label class="font-normal">CDs, DVDs, and iPods</Field.Label>
       </Field>
       <Field orientation="horizontal">
         <Checkbox value="connected-servers" />

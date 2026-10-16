@@ -2,9 +2,9 @@ import { Highlight } from "@pisagor/solid";
 
 export function CustomStyle() {
   return (
-    <p class="text-base text-foreground leading-relaxed">
+    <p class="text-foreground text-base leading-relaxed">
       <Highlight
-        class="rounded-sm bg-warning/30 px-0.5 text-warning-foreground"
+        class="bg-warning/30 text-warning-foreground rounded-sm px-0.5"
         query="design"
         text="Great design systems feel invisible."
       />

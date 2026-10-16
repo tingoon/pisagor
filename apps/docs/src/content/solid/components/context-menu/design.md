@@ -29,9 +29,9 @@ Position the menu within the viewport, offset from the pointer. Dismiss on outsi
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Actions at pointer on an item | **Context Menu** |
-| Actions from a menu button | [Dropdown Menu](/solid/components/dropdown-menu/design) |
-| Bulk actions on selection | [Action Bar](/solid/components/action-bar/design) |
-| Global shortcuts | [Command](/solid/components/command/design) |
+| Need                          | Prefer                                                  |
+| ----------------------------- | ------------------------------------------------------- |
+| Actions at pointer on an item | **Context Menu**                                        |
+| Actions from a menu button    | [Dropdown Menu](/solid/components/dropdown-menu/design) |
+| Bulk actions on selection     | [Action Bar](/solid/components/action-bar/design)       |
+| Global shortcuts              | [Command](/solid/components/command/design)             |

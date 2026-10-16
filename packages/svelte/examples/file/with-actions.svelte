@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Button, File } from "@pisagor/svelte";
-import DownloadSimpleIcon from "phosphor-svelte/lib/DownloadSimpleIcon";
-import TrashIcon from "phosphor-svelte/lib/TrashIcon";
+  import { Button, File } from "@pisagor/svelte";
+  import DownloadSimpleIcon from "phosphor-svelte/lib/DownloadSimpleIcon";
+  import TrashIcon from "phosphor-svelte/lib/TrashIcon";
 </script>
 
 <File meta="PNG image" name="hero-banner.png" size={1_048_576}>

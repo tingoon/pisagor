@@ -36,8 +36,7 @@ function wrapDropdownMenuPart(
 }
 
 // #region Types
-export interface ContextMenuContextTriggerProps
-  extends BaseContextMenuContextTriggerProps {
+export interface ContextMenuContextTriggerProps extends BaseContextMenuContextTriggerProps {
   class?: unknown;
 }
 // #endregion

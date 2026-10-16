@@ -5,7 +5,7 @@ import { LinkBox } from "@pisagor/vue";
 <template>
   <LinkBox as-child>
     <article class="rounded-xl border p-4">
-      <h2 class="font-medium text-lg">
+      <h2 class="text-lg font-medium">
         <LinkBox.Overlay href="https://example.com">
           Clickable card title
         </LinkBox.Overlay>

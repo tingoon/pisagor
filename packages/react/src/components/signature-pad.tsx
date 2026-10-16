@@ -15,7 +15,7 @@ import { cn } from "@pisagor/utils";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { FormControlVariant, VariantClassNames } from "../internal/types";
 import { Button } from "./button";
-import { getMessage } from "./provider/provider.context";
+import { useMessage } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -40,8 +40,10 @@ type SignaturePadRootProps = SignaturePadPrimitiveRootProps & {
   invalid?: boolean;
 } & BaseSignaturePadRootProps;
 
-export interface SignaturePadProps
-  extends Omit<SignaturePadRootProps, "children"> {
+export interface SignaturePadProps extends Omit<
+  SignaturePadRootProps,
+  "children"
+> {
   /** Slot class names */
   classNames?: SignaturePadClassNames;
 }
@@ -128,7 +130,7 @@ function SignaturePadClear({ className, ...rest }: SignaturePadClearProps) {
       className={slots.clear({ className })}
     >
       <Button
-        aria-label={getMessage("signaturePad.clearSignature")}
+        aria-label={useMessage("signaturePad.clearSignature")}
         size="icon-md"
         variant="ghost"
       >

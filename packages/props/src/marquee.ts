@@ -4,6 +4,7 @@ import type { MarqueeRecipeFn } from "@pisagor/recipes";
 export interface MarqueeProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue marqueeRecipe
    */
   recipe?: MarqueeRecipeFn;

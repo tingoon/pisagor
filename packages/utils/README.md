@@ -7,4 +7,3 @@ import { cn, type ClassValue } from "@pisagor/utils";
 ```
 
 Tree-shakeable — `"sideEffects": false`.
-

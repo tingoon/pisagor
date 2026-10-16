@@ -1,23 +1,23 @@
 <script lang="ts">
-import { Tour as TourPrimitive } from "@ark-ui/svelte/tour";
-import { buttonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
-import type { Snippet } from "svelte";
-import type { ClassValue } from "svelte/elements";
-import { useTourContext } from "./tour.context";
+  import { Tour as TourPrimitive } from "@ark-ui/svelte/tour";
+  import { buttonRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
+  import type { Snippet } from "svelte";
+  import type { ClassValue } from "svelte/elements";
+  import { useTourContext } from "./tour.context";
 
-type Props = {
-  class?: ClassValue;
-  children?: Snippet;
-};
-let { children, class: className }: Props = $props();
-const { tour } = useTourContext();
-const action = $derived(
-  tour().step?.actions?.find(
-    (a) => a.action === "next" || a.action === "dismiss",
-  ),
-);
+  type Props = {
+    class?: ClassValue;
+    children?: Snippet;
+  };
+  let { children, class: className }: Props = $props();
+  const { tour } = useTourContext();
+  const action = $derived(
+    tour().step?.actions?.find(
+      (a) => a.action === "next" || a.action === "dismiss",
+    ),
+  );
 </script>
 
 {#if action}

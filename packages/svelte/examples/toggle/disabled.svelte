@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Toggle } from "@pisagor/svelte";
+  import { Toggle } from "@pisagor/svelte";
 </script>
 
-<Toggle disabled variant="outline"> Unavailable </Toggle>
+<Toggle disabled variant="outline">Unavailable</Toggle>

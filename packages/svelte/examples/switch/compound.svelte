@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Field, Switch } from "@pisagor/svelte";
+  import { Field, Switch } from "@pisagor/svelte";
 </script>
 
 <Field class="flex-row items-center gap-2">

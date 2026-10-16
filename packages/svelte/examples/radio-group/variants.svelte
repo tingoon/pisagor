@@ -1,12 +1,10 @@
 <script lang="ts">
-import { RadioGroup } from "@pisagor/svelte";
+  import { RadioGroup } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-col gap-2">
   <RadioGroup.Root>
-    <RadioGroup.Item value="primary" variant="primary">
-      Primary
-    </RadioGroup.Item>
+    <RadioGroup.Item value="primary" variant="primary">Primary</RadioGroup.Item>
   </RadioGroup.Root>
   <RadioGroup.Root>
     <RadioGroup.Item value="secondary" variant="secondary">

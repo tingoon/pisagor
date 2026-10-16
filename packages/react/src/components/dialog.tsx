@@ -16,7 +16,7 @@ import type { ComponentProps, ReactNode } from "react";
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button } from "./button";
-import { getMessage } from "./provider/provider.context";
+import { useMessage } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -37,12 +37,10 @@ export { useDialog };
 
 // #region Types
 export interface DialogRootProps
-  extends DialogPrimitiveRootProps,
-    BaseDialogRootProps {}
+  extends DialogPrimitiveRootProps, BaseDialogRootProps {}
 
 export interface DialogContentProps
-  extends DialogPrimitiveContentProps,
-    DialogVariantProps {
+  extends DialogPrimitiveContentProps, DialogVariantProps {
   /**
    * Whether to stick the dialog to the bottom of the screen on mobile.
    *
@@ -146,6 +144,7 @@ export function DialogContent({
   className,
   ...rest
 }: DialogContentProps) {
+  const dialogCloseMessage = useMessage("dialog.close");
   const { slots } = useDialog();
 
   return (
@@ -158,7 +157,7 @@ export function DialogContent({
       {!!showCloseButton && (
         <DialogCloseTrigger asChild>
           <Button
-            aria-label={getMessage("dialog.close")}
+            aria-label={dialogCloseMessage}
             className={slots.inline()}
             size="icon-sm"
             variant="ghost"

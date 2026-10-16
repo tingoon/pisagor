@@ -1,28 +1,28 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { ProseProps as BaseProseProps } from "@pisagor/props";
-import { proseRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { HTMLAttributes } from "svelte/elements";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import type { ProseProps as BaseProseProps } from "@pisagor/props";
+  import { proseRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
 
-type Props = HTMLAttributes<HTMLElement> & {
-  children?: import("svelte").Snippet;
-  html?: string;
-  /**
-   * Sanitizer applied to `html` before injection, e.g.
-   * `(html) => DOMPurify.sanitize(html)`. Recommended for user-generated content.
-   */
-  sanitize?: (html: string) => string;
-} & BaseProseProps;
+  type Props = HTMLAttributes<HTMLElement> & {
+    children?: import("svelte").Snippet;
+    html?: string;
+    /**
+     * Sanitizer applied to `html` before injection, e.g. `(html) =>
+     * DOMPurify.sanitize(html)`. Recommended for user-generated content.
+     */
+    sanitize?: (html: string) => string;
+  } & BaseProseProps;
 
-let {
-  html,
-  sanitize,
-  recipe = proseRecipe,
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
+  let {
+    html,
+    sanitize,
+    recipe = proseRecipe,
+    class: className,
+    children,
+    ...rest
+  }: Props = $props();
 </script>
 
 {#if html}

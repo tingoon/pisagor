@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Button, Card, Clipboard, Collapsible } from "@pisagor/svelte";
+  import { Button, Card, Clipboard, Collapsible } from "@pisagor/svelte";
 </script>
 
 <Card class="w-80">
@@ -10,9 +10,7 @@ import { Button, Card, Clipboard, Collapsible } from "@pisagor/svelte";
   <Card.Content>
     <Collapsible>
       <Collapsible.Trigger>
-        {#snippet asChild(
-          props,
-        )}
+        {#snippet asChild(props)}
           <Button {...props()} class="w-full" variant="outline">
             View details
             <Collapsible.Indicator />
@@ -26,9 +24,7 @@ import { Button, Card, Clipboard, Collapsible } from "@pisagor/svelte";
         </p>
         <Collapsible>
           <Collapsible.Trigger>
-            {#snippet asChild(
-              props,
-            )}
+            {#snippet asChild(props)}
               <Button {...props()} class="w-full" size="sm" variant="outline">
                 Install dependencies
                 <Collapsible.Indicator />
@@ -40,8 +36,9 @@ import { Button, Card, Clipboard, Collapsible } from "@pisagor/svelte";
               Copy the following code:
             </p>
             <pre
-              class="relative rounded-md bg-muted p-2 text-muted-foreground text-xs"
-            ><code>bun add ui</code>
+              class="bg-muted text-muted-foreground relative rounded-md p-2 text-xs"><code
+                >bun add ui</code
+              >
               <Clipboard
                 buttonSize="icon-sm"
                 buttonVariant="ghost"

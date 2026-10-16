@@ -20,8 +20,7 @@ const {
 // #endregion
 
 export interface MarqueeRootProps
-  extends Omit<MarqueePrimitiveRootProps, "side">,
-    BaseMarqueeRootProps {
+  extends Omit<MarqueePrimitiveRootProps, "side">, BaseMarqueeRootProps {
   orientation?: "horizontal" | "vertical";
   showEdges?: boolean;
 }

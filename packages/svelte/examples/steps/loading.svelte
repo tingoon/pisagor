@@ -1,12 +1,12 @@
 <script lang="ts">
-import { Steps } from "@pisagor/svelte";
-import CircleNotchIcon from "phosphor-svelte/lib/CircleNotchIcon";
+  import { Steps } from "@pisagor/svelte";
+  import CircleNotchIcon from "phosphor-svelte/lib/CircleNotchIcon";
 
-const items = [
-  { id: "step-1", loading: true },
-  { id: "step-2", loading: false },
-  { id: "step-3", loading: false },
-];
+  const items = [
+    { id: "step-1", loading: true },
+    { id: "step-2", loading: false },
+    { id: "step-3", loading: false },
+  ];
 </script>
 
 <Steps count={items.length}>

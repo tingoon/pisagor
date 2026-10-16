@@ -4,6 +4,7 @@ import type { SeparatorRecipeFn } from "@pisagor/recipes";
 export interface SeparatorProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue separatorRecipe
    */
   recipe?: SeparatorRecipeFn;

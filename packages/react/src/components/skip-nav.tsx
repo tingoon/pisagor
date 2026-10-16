@@ -5,33 +5,29 @@ import type {
 } from "@pisagor/props";
 import { skipNavRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
-import { getMessage } from "./provider/provider.context";
+import { useMessage } from "./provider/context";
 
 // #region Types
 export interface SkipNavLinkProps
-  extends ComponentProps<typeof ark.a>,
-    BaseSkipNavLinkProps {
+  extends ComponentProps<typeof ark.a>, BaseSkipNavLinkProps {
   /**
    * The id of the element to skip to.
    *
-   * @defaultValue "skip-nav-content"
-   *
    * @remarks
-   * Must match the `id` on the paired `SkipNavContent`.
+   *   Must match the `id` on the paired `SkipNavContent`.
+   * @defaultValue "skip-nav-content"
    */
   id?: string;
 }
 
 export interface SkipNavContentProps
-  extends ComponentProps<typeof ark.div>,
-    BaseSkipNavContentProps {
+  extends ComponentProps<typeof ark.div>, BaseSkipNavContentProps {
   /**
    * The id that SkipNavLink links to.
    *
-   * @defaultValue "skip-nav-content"
-   *
    * @remarks
-   * Must match the `id` passed to the paired `SkipNavLink`.
+   *   Must match the `id` passed to the paired `SkipNavLink`.
+   * @defaultValue "skip-nav-content"
    */
   id?: string;
 }
@@ -57,7 +53,7 @@ export function SkipNavLink({
       data-scope="skip-nav"
       href={`#${id}`}
     >
-      {children ?? getMessage("skipNav.label")}
+      {useMessage("skipNav.label", children)}
     </ark.a>
   );
 }

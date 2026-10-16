@@ -5,14 +5,11 @@ import type { ComponentProps } from "react";
 
 // #region Types
 export interface VisuallyHiddenProps
-  extends ComponentProps<typeof ark.span>,
-    BaseVisuallyHiddenProps {}
+  extends ComponentProps<typeof ark.span>, BaseVisuallyHiddenProps {}
 // #endregion
 
 // #region Component
-/**
- * Hides content visually while keeping it available to assistive technology.
- */
+/** Hides content visually while keeping it available to assistive technology. */
 export function VisuallyHidden({
   recipe = visuallyHiddenRecipe,
   className,

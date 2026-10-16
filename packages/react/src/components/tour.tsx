@@ -28,7 +28,7 @@ import type {
   DialogFooterProps,
   DialogHeaderProps,
 } from "./dialog";
-import { getMessage } from "./provider/provider.context";
+import { useMessage } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -68,7 +68,7 @@ export interface TourProps extends TourRootProps, BaseTourProps {
   /**
    * The steps to display in the tour
    *
-   * @defaultValue []
+   * @defaultValue [ ]
    */
   steps: TourStepDetails[];
   /** Called when the tour status changes */
@@ -81,7 +81,8 @@ export type TourTriggerProps = ComponentProps<typeof ark.button>;
 
 export interface TourBackdropProps extends DialogBackdropProps {
   /**
-   * Dialog style recipe. Defaults to `dialogRecipe` from `@pisagor/recipes/dialog`.
+   * Dialog style recipe. Defaults to `dialogRecipe` from
+   * `@pisagor/recipes/dialog`.
    *
    * @defaultValue dialogRecipe
    */
@@ -194,6 +195,7 @@ export function TourContent({
   className,
   ...rest
 }: TourContentProps) {
+  const tourCloseMessage = useMessage("tour.close");
   const { slots } = useTourContext();
 
   return (
@@ -229,9 +231,7 @@ export function TourContent({
               >
                 <XIcon />
 
-                <span className={slots.closeLabel()}>
-                  {getMessage("tour.close")}
-                </span>
+                <span className={slots.closeLabel()}>{tourCloseMessage}</span>
               </Button>
             </TourCloseTrigger>
           )}
@@ -330,7 +330,10 @@ export function TourCloseTrigger(props: TourCloseTriggerProps) {
   return <TourPrimitive.CloseTrigger {...props} />;
 }
 
-/** True inside `Tour.Footer`, so `Tour.Actions` does not render a second control. */
+/**
+ * True inside `Tour.Footer`, so `Tour.Actions` does not render a second
+ * control.
+ */
 const TourInsideControlContext = createContext(false);
 
 export function TourFooter({

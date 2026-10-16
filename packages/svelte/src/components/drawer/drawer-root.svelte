@@ -1,22 +1,22 @@
 <script lang="ts">
-import {
-  Drawer as DrawerPrimitive,
-  type DrawerRootProps,
-} from "@ark-ui/svelte/drawer";
-import type { DrawerProps as BaseDrawerProps } from "@pisagor/props";
-import { drawerRecipe } from "@pisagor/recipes";
-import { Context } from "./drawer.context";
+  import {
+    Drawer as DrawerPrimitive,
+    type DrawerRootProps,
+  } from "@ark-ui/svelte/drawer";
+  import type { DrawerProps as BaseDrawerProps } from "@pisagor/props";
+  import { drawerRecipe } from "@pisagor/recipes";
+  import { Context } from "./drawer.context";
 
-type Props = DrawerRootProps & BaseDrawerProps;
+  type Props = DrawerRootProps & BaseDrawerProps;
 
-let { recipe = drawerRecipe, children, ...rest }: Props = $props();
-const slots = $derived(recipe());
+  let { recipe = drawerRecipe, children, ...rest }: Props = $props();
+  const slots = $derived(recipe());
 
-Context.set({
-  get slots() {
-    return slots;
-  },
-});
+  Context.set({
+    get slots() {
+      return slots;
+    },
+  });
 </script>
 
-<DrawerPrimitive.Root {...rest}> {@render children?.()} </DrawerPrimitive.Root>
+<DrawerPrimitive.Root {...rest}>{@render children?.()}</DrawerPrimitive.Root>

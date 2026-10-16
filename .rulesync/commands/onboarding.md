@@ -1,7 +1,8 @@
 ---
 targets:
-  - '*'
+  - "*"
 ---
+
 # Onboarding
 
 Set up the UI library monorepo.

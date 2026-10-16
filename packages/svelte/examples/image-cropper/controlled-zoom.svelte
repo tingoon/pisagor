@@ -1,9 +1,9 @@
 <script lang="ts">
-import { Button, ImageCropper } from "@pisagor/svelte";
-import MagnifyingGlassMinusIcon from "phosphor-svelte/lib/MagnifyingGlassMinusIcon";
-import MagnifyingGlassPlusIcon from "phosphor-svelte/lib/MagnifyingGlassPlusIcon";
+  import { Button, ImageCropper } from "@pisagor/svelte";
+  import MagnifyingGlassMinusIcon from "phosphor-svelte/lib/MagnifyingGlassMinusIcon";
+  import MagnifyingGlassPlusIcon from "phosphor-svelte/lib/MagnifyingGlassPlusIcon";
 
-let zoom = $state(1);
+  let zoom = $state(1);
 </script>
 
 <div class="flex flex-col items-end gap-2">

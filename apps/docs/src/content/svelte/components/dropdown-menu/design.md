@@ -29,9 +29,9 @@ Use menu items for navigation sparingly — prefer direct links in the UI when t
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Menu from a button trigger | **Dropdown Menu** |
-| Menu at pointer on an item | [Context Menu](/svelte/components/context-menu/design) |
-| Global searchable commands | [Command](/svelte/components/command/design) |
-| Single choice without actions | [Select](/svelte/components/select/design) |
+| Need                          | Prefer                                                |
+| ----------------------------- | ----------------------------------------------------- |
+| Menu from a button trigger    | **Dropdown Menu**                                     |
+| Menu at pointer on an item    | [Context Menu](/svelte/components/context-menu/design) |
+| Global searchable commands    | [Command](/svelte/components/command/design)           |
+| Single choice without actions | [Select](/svelte/components/select/design)             |

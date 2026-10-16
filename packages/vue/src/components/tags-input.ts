@@ -10,7 +10,7 @@ import type {
 } from "@pisagor/props";
 import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -30,7 +30,10 @@ const {
   recipe: tagsInputItemRecipe,
 });
 
-/** Slots from the nearest TagsInputItem root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest TagsInputItem root, or the default recipe when used
+ * standalone.
+ */
 function useTagsInputItemSlots() {
   const styles = useOptionalTagsInputItemStyles();
 
@@ -47,7 +50,10 @@ const {
   recipe: tagsInputRecipe,
 });
 
-/** Slots from the nearest TagsInput root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest TagsInput root, or the default recipe when used
+ * standalone.
+ */
 function useTagsInputSlots() {
   const styles = useOptionalTagsInputStyles();
 
@@ -83,8 +89,7 @@ export interface TagsInputItemProps extends BaseTagsInputItemProps {
 // #endregion
 
 // #region Types
-export interface TagsInputItemDeleteTriggerProps
-  extends BaseTagsInputItemProps {
+export interface TagsInputItemDeleteTriggerProps extends BaseTagsInputItemProps {
   class?: unknown;
 }
 
@@ -142,7 +147,7 @@ export const TagsInputItemDeleteTrigger = defineComponent({
         {
           ...(attrs as object),
           "aria-label":
-            props["aria-label"] ?? useProviderMessage("tagsInput.removeTag"),
+            props["aria-label"] ?? useTranslation("tagsInput.removeTag"),
           asChild: true,
         },
         () =>
@@ -150,8 +155,7 @@ export const TagsInputItemDeleteTrigger = defineComponent({
             InputGroup.Button as ArkPart,
             {
               "aria-label":
-                props["aria-label"] ??
-                useProviderMessage("tagsInput.removeTag"),
+                props["aria-label"] ?? useTranslation("tagsInput.removeTag"),
               class: slots.delete({
                 class: cn(props.class, (attrs as { class?: ClassValue }).class),
               }),
@@ -326,7 +330,7 @@ export const TagsInputClearTrigger = defineComponent({
         {
           ...(attrs as object),
           "aria-label":
-            props["aria-label"] ?? useProviderMessage("tagsInput.clearAllTags"),
+            props["aria-label"] ?? useTranslation("tagsInput.clearAllTags"),
           asChild: true,
         },
         () =>
@@ -334,8 +338,7 @@ export const TagsInputClearTrigger = defineComponent({
             InputGroup.Button as ArkPart,
             {
               "aria-label":
-                props["aria-label"] ??
-                useProviderMessage("tagsInput.clearAllTags"),
+                props["aria-label"] ?? useTranslation("tagsInput.clearAllTags"),
               class: slots.clearTrigger({
                 class: cn(props.class, (attrs as { class?: ClassValue }).class),
               }),
@@ -381,8 +384,7 @@ export const TagsInputControl = defineComponent({
             {
               class: slots.control({
                 class: (attrs as { class?: ClassValue }).class as
-                  | string
-                  | undefined,
+                  string | undefined,
               }),
               size: props.size,
               variant: props.variant,
@@ -504,7 +506,10 @@ export const TagsInputRootProvider = defineComponent({
     },
     clearable: { default: false, type: Boolean },
     size: { default: "md", type: String as PropType<TagsInputSize> },
-    /** Machine API from `useTagsInput` — must be a declared prop so Vue unwraps refs. */
+    /**
+     * Machine API from `useTagsInput` — must be a declared prop so Vue unwraps
+     * refs.
+     */
     value: { required: true, type: Object as PropType<object> },
   },
   setup(props, { attrs, slots: vueSlots }) {

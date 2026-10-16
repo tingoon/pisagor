@@ -15,8 +15,7 @@ type PasswordInputControlProps = SetRequired<
 >;
 
 export interface PasswordFieldProps
-  extends FieldPresentationProps,
-    PasswordInputControlProps {
+  extends FieldPresentationProps, PasswordInputControlProps {
   name?: string;
   onBlur?: () => void;
   value?: string;

@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Provider } from "@pisagor/svelte";
+  import { Provider } from "@pisagor/svelte";
 </script>
 
-<Provider locale="en-US">
+<Provider>
   <p>App content</p>
 </Provider>

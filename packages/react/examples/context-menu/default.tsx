@@ -16,10 +16,10 @@ export function Default() {
   return (
     <ContextMenu>
       <ContextMenu.ContextTrigger className="flex aspect-video items-center justify-center rounded-2xl border border-dashed p-20 text-sm">
-        <span className="pointer-fine:inline-block hidden">
+        <span className="hidden pointer-fine:inline-block">
           Open the menu with a right-click
         </span>
-        <span className="pointer-coarse:inline-block hidden">
+        <span className="hidden pointer-coarse:inline-block">
           Long press here
         </span>
       </ContextMenu.ContextTrigger>

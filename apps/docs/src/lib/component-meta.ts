@@ -2,11 +2,7 @@ import { parseSkillDoc } from "#/lib/skill-doc";
 
 type ComponentApi = "closed" | "open" | "compound-shorthand" | "compound";
 type ComponentTaxonomy =
-  | "primitive"
-  | "standard"
-  | "composite"
-  | "layout"
-  | "pattern";
+  "primitive" | "standard" | "composite" | "layout" | "pattern";
 
 interface ComponentMeta {
   /** Public API shape. */
@@ -18,8 +14,9 @@ interface ComponentMeta {
 }
 
 /**
- * Catalog metadata is framework-agnostic (api/taxonomy/aliases), but each framework
- * owns its `metadata.md`. React is the superset, so it wins on id collisions.
+ * Catalog metadata is framework-agnostic (api/taxonomy/aliases), but each
+ * framework owns its `metadata.md`. React is the superset, so it wins on id
+ * collisions.
  */
 const metadataRawModules = import.meta.glob(
   "../content/{react,solid,svelte,vue,astro}/{components,forms}/*/metadata.md",
@@ -70,9 +67,9 @@ function metaFromContentDocs(): Record<string, ComponentMeta> {
 }
 
 /**
- * Framework-agnostic component catalog metadata.
- * Migrated primitives load api/taxonomy/aliases from shared content frontmatter.
- * Entries below fill gaps (no docs page / alternate ids).
+ * Framework-agnostic component catalog metadata. Migrated primitives load
+ * api/taxonomy/aliases from shared content frontmatter. Entries below fill gaps
+ * (no docs page / alternate ids).
  */
 const contentMeta = metaFromContentDocs();
 
@@ -93,7 +90,10 @@ const fallbackMeta: Record<string, ComponentMeta> = {
   },
 };
 
-/** Framework-agnostic component catalog metadata (formerly Storybook parameters.metadata). */
+/**
+ * Framework-agnostic component catalog metadata (formerly Storybook
+ * parameters.metadata).
+ */
 export const componentMeta: Record<string, ComponentMeta> = {
   ...fallbackMeta,
   ...contentMeta,

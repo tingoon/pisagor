@@ -8,11 +8,11 @@ const items = Array.from({ length: 10 }, (_, i) => `Item ${i + 1}`);
   <ScrollArea class="h-auto rounded-lg border">
     <div class="flex w-max gap-2 p-4">
       <div
-        class="flex h-20 w-32 shrink-0 items-center justify-center rounded-md bg-muted"
+        class="bg-muted flex h-20 w-32 shrink-0 items-center justify-center rounded-md"
         v-for="item in items"
         :key="item"
       >
-        <span class="font-medium text-sm">Item {{ item }}</span>
+        <span class="text-sm font-medium">Item {{ item }}</span>
       </div>
     </div>
   </ScrollArea>

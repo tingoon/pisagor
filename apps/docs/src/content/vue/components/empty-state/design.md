@@ -29,9 +29,9 @@ When filters cause emptiness, say so explicitly and offer Clear filters or broad
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Zero data with guided action | **Empty State** |
-| Loading placeholder | [Skeleton](/vue/components/skeleton/design) |
-| Table with no rows | Empty State inside [Data Table](/vue/components/data-table/design) |
-| Error fetching data | [Alert](/vue/components/alert/design) |
+| Need                         | Prefer                                                               |
+| ---------------------------- | -------------------------------------------------------------------- |
+| Zero data with guided action | **Empty State**                                                      |
+| Loading placeholder          | [Skeleton](/vue/components/skeleton/design)                        |
+| Table with no rows           | Empty State inside [Data Table](/vue/components/data-table/design) |
+| Error fetching data          | [Alert](/vue/components/alert/design)                              |

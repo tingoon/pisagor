@@ -1,23 +1,23 @@
 <script lang="ts">
-import {
-  type FileUploadItemDeleteTriggerProps,
-  FileUpload as FileUploadPrimitive,
-} from "@ark-ui/svelte/file-upload";
-import { buttonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import XIcon from "phosphor-svelte/lib/XIcon";
-import { useMessageResolver } from "../provider/provider.context";
-import { useFileUploadItem } from "./file-upload.context";
+  import {
+    type FileUploadItemDeleteTriggerProps,
+    FileUpload as FileUploadPrimitive,
+  } from "@ark-ui/svelte/file-upload";
+  import { buttonRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { useMessageResolver } from "../provider/context";
+  import { useFileUploadItem } from "./file-upload.context";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-let {
-  class: className,
-  children,
-  ...rest
-}: FileUploadItemDeleteTriggerProps = $props();
-const styles = useFileUploadItem();
-const slots = $derived(styles.slots);
+  let {
+    class: className,
+    children,
+    ...rest
+  }: FileUploadItemDeleteTriggerProps = $props();
+  const styles = useFileUploadItem();
+  const slots = $derived(styles.slots);
 </script>
 
 <FileUploadPrimitive.ItemDeleteTrigger

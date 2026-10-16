@@ -29,9 +29,9 @@ Match corner radius and border weight to neighboring [Card](/astro/components/ca
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Embedded viewport with chrome | **Frame** |
-| Proportional media box | [Aspect Ratio](/astro/components/aspect-ratio/design) |
-| Grouped static content | [Card](/astro/components/card/design) |
-| Full app layout regions | App Shell |
+| Need                          | Prefer                                                |
+| ----------------------------- | ----------------------------------------------------- |
+| Embedded viewport with chrome | **Frame**                                             |
+| Proportional media box        | [Aspect Ratio](/astro/components/aspect-ratio/design) |
+| Grouped static content        | [Card](/astro/components/card/design)                 |
+| Full app layout regions       | App Shell       |

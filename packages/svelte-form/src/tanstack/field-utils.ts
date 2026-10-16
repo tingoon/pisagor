@@ -3,7 +3,4 @@ export function preventDefaultFormSubmit(event: Event) {
   event.stopPropagation();
 }
 
-export {
-  getFieldErrorMessage,
-  isFieldInvalid,
-} from "./hooks";
+export { getFieldErrorMessage, isFieldInvalid } from "./hooks";

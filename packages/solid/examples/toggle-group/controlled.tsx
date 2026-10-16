@@ -26,7 +26,7 @@ export function Controlled() {
           <TextUnderlineIcon />
         </ToggleGroup.Item>
       </ToggleGroup.Root>
-      <p class="text-center text-muted-foreground text-sm">
+      <p class="text-muted-foreground text-center text-sm">
         {value().length > 0 ? value().join(", ") : "None"}
       </p>
     </div>

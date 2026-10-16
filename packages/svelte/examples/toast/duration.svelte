@@ -1,30 +1,30 @@
 <script lang="ts">
-import { Button, toast } from "@pisagor/svelte";
+  import { Button, toast } from "@pisagor/svelte";
 
-function showShort() {
-  toast.create({
-    description: "This toast disappears after 2 seconds.",
-    duration: 2000,
-    title: "Short duration",
-  });
-}
+  function showShort() {
+    toast.create({
+      description: "This toast disappears after 2 seconds.",
+      duration: 2000,
+      title: "Short duration",
+    });
+  }
 
-function showLong() {
-  toast.create({
-    description: "This toast stays for 10 seconds.",
-    duration: 10_000,
-    title: "Long duration",
-  });
-}
+  function showLong() {
+    toast.create({
+      description: "This toast stays for 10 seconds.",
+      duration: 10_000,
+      title: "Long duration",
+    });
+  }
 
-function showPersistent() {
-  toast.create({
-    closable: true,
-    description: "This toast stays until you close it.",
-    duration: Number.POSITIVE_INFINITY,
-    title: "Persistent",
-  });
-}
+  function showPersistent() {
+    toast.create({
+      closable: true,
+      description: "This toast stays until you close it.",
+      duration: Number.POSITIVE_INFINITY,
+      title: "Persistent",
+    });
+  }
 </script>
 
 <div class="flex flex-wrap gap-2">

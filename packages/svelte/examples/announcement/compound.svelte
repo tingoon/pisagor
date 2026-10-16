@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Announcement, Badge } from "@pisagor/svelte";
+  import { Announcement, Badge } from "@pisagor/svelte";
 </script>
 
 <Announcement.Root>

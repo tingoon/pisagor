@@ -1,5 +1,5 @@
 <script lang="ts">
-import { SkipNav } from "@pisagor/svelte";
+  import { SkipNav } from "@pisagor/svelte";
 </script>
 
 <SkipNav.Link />

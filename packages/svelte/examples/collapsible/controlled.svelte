@@ -1,15 +1,13 @@
 <script lang="ts">
-import { Button, Collapsible } from "@pisagor/svelte";
+  import { Button, Collapsible } from "@pisagor/svelte";
 
-let open = $state(false);
+  let open = $state(false);
 </script>
 
 <div class="w-64 space-y-2">
   <Collapsible onOpenChange={({ open: next }) => (open = next)} {open}>
     <Collapsible.Trigger>
-      {#snippet asChild(
-        props,
-      )}
+      {#snippet asChild(props)}
         <Button {...props()} class="w-full" variant="outline">
           {open ? "Collapse" : "Expand"}
           <Collapsible.Indicator />
@@ -22,7 +20,7 @@ let open = $state(false);
       </p>
     </Collapsible.Content>
   </Collapsible>
-  <p class="text-center text-muted-foreground text-sm">
+  <p class="text-muted-foreground text-center text-sm">
     {open ? "✅" : "❌"}
   </p>
 </div>

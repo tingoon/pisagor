@@ -1,13 +1,17 @@
 <script lang="ts">
-import {
-  type MenuItemIndicatorProps,
-  Menu as MenuPrimitive,
-} from "@ark-ui/svelte/menu";
-import { dropdownMenuItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import CheckIcon from "phosphor-svelte/lib/CheckIcon";
+  import {
+    type MenuItemIndicatorProps,
+    Menu as MenuPrimitive,
+  } from "@ark-ui/svelte/menu";
+  import { dropdownMenuItemRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 
-let { class: className, children, ...rest }: MenuItemIndicatorProps = $props();
+  let {
+    class: className,
+    children,
+    ...rest
+  }: MenuItemIndicatorProps = $props();
 </script>
 
 <MenuPrimitive.ItemIndicator

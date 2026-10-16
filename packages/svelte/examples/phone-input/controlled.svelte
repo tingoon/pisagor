@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Field } from "@pisagor/svelte";
-import { PhoneInput } from "@pisagor/svelte/phone-input";
+  import { Field } from "@pisagor/svelte";
+  import { PhoneInput } from "@pisagor/svelte/phone-input";
 
-let phone = $state("+31612345678");
+  let phone = $state("+31612345678");
 </script>
 
 <Field>

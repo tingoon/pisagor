@@ -19,8 +19,7 @@ const {
 
 // #region Types
 export interface ButtonGroupProps
-  extends ComponentProps<typeof ark.fieldset>,
-    BaseButtonGroupProps {}
+  extends ComponentProps<typeof ark.fieldset>, BaseButtonGroupProps {}
 
 export type ButtonGroupTextProps = ComponentProps<typeof ark.div>;
 // #endregion

@@ -29,9 +29,9 @@ For related toggles, use [Toggle Group](/svelte/components/toggle-group/design) 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Pressed tool control | **Toggle** |
-| Immediate setting | [Switch](/svelte/components/switch/design) |
-| Form boolean | [Checkbox](/svelte/components/checkbox/design) |
-| Icon state swap | [Swap](/svelte/components/swap/design) |
+| Need                 | Prefer                                        |
+| -------------------- | --------------------------------------------- |
+| Pressed tool control | **Toggle**                                    |
+| Immediate setting    | [Switch](/svelte/components/switch/design)     |
+| Form boolean         | [Checkbox](/svelte/components/checkbox/design) |
+| Icon state swap      | [Swap](/svelte/components/swap/design)         |

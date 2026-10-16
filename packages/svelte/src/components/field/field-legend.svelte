@@ -1,20 +1,20 @@
 <script lang="ts">
-import {
-  type FieldsetLegendProps,
-  Fieldset as FieldsetPrimitive,
-} from "@ark-ui/svelte/fieldset";
-import { cn } from "@pisagor/utils";
-import { useFieldSlots } from "./field.context";
+  import {
+    type FieldsetLegendProps,
+    Fieldset as FieldsetPrimitive,
+  } from "@ark-ui/svelte/fieldset";
+  import { cn } from "@pisagor/utils";
+  import { useFieldSlots } from "./field.context";
 
-type Props = FieldsetLegendProps & { variant?: "legend" | "label" };
+  type Props = FieldsetLegendProps & { variant?: "legend" | "label" };
 
-let {
-  variant = "legend",
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
-const slots = useFieldSlots();
+  let {
+    variant = "legend",
+    class: className,
+    children,
+    ...rest
+  }: Props = $props();
+  const slots = useFieldSlots();
 </script>
 
 <FieldsetPrimitive.Legend

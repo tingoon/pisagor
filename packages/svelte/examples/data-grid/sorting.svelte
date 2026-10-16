@@ -1,26 +1,26 @@
 <script lang="ts">
-import { Table } from "@pisagor/svelte";
-import type { SortingState } from "@pisagor/svelte/data-grid";
-import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
+  import { Table } from "@pisagor/svelte";
+  import type { SortingState } from "@pisagor/svelte/data-grid";
+  import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
 
-const data = [
-  { id: "1", name: "Ada", role: "Admin" },
-  { id: "2", name: "Alan", role: "Editor" },
-  { id: "3", name: "Grace", role: "Viewer" },
-];
+  const data = [
+    { id: "1", name: "Ada", role: "Admin" },
+    { id: "2", name: "Alan", role: "Editor" },
+    { id: "3", name: "Grace", role: "Viewer" },
+  ];
 
-const columns = [
-  { accessorKey: "name", enableSorting: true, header: "Name" },
-  { accessorKey: "role", enableSorting: true, header: "Role" },
-];
+  const columns = [
+    { accessorKey: "name", enableSorting: true, header: "Name" },
+    { accessorKey: "role", enableSorting: true, header: "Role" },
+  ];
 
-let sorting = $state<SortingState>([{ desc: false, id: "name" }]);
+  let sorting = $state<SortingState>([{ desc: false, id: "name" }]);
 
-function onSortingChange(
-  updater: SortingState | ((prev: SortingState) => SortingState),
-) {
-  sorting = typeof updater === "function" ? updater(sorting) : updater;
-}
+  function onSortingChange(
+    updater: SortingState | ((prev: SortingState) => SortingState),
+  ) {
+    sorting = typeof updater === "function" ? updater(sorting) : updater;
+  }
 </script>
 
 <DataGrid

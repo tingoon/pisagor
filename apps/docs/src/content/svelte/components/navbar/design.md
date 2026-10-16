@@ -29,10 +29,10 @@ When the navbar competes with thumb reach, pair a slim top bar (title + back) wi
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Top app bar | **Navbar** |
-| Vertical persistent links | [Menu](/svelte/components/menu/design) |
-| Marketing mega-nav | [Navigation Menu](/svelte/components/navigation-menu/design) |
-| Mobile primary tabs | [Bottom Navigation](/svelte/components/bottom-navigation/design) |
-| Popup overflow | [Dropdown Menu](/svelte/components/dropdown-menu/design) |
+| Need                      | Prefer                                                          |
+| ------------------------- | --------------------------------------------------------------- |
+| Top app bar               | **Navbar**                                                      |
+| Vertical persistent links | [Menu](/svelte/components/menu/design)                           |
+| Marketing mega-nav        | [Navigation Menu](/svelte/components/navigation-menu/design)     |
+| Mobile primary tabs       | [Bottom Navigation](/svelte/components/bottom-navigation/design) |
+| Popup overflow            | [Dropdown Menu](/svelte/components/dropdown-menu/design)         |

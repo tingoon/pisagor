@@ -24,7 +24,7 @@ function onValueChange(value: string) {
       </p>
       <ul class="space-y-1">
         <li
-          class="text-base text-foreground"
+          class="text-foreground text-base"
           v-for="item in searchResults"
           :key="item"
         >

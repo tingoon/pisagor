@@ -29,9 +29,9 @@ Use [Button Group](/react/components/button-group/design) for tightly related ac
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Section title + local actions | **Toolbar** |
-| Bulk actions after selection | [Action Bar](/react/components/action-bar/design) |
-| App-wide navigation | [Navbar](/react/components/navbar/design) |
-| Related buttons only | [Button Group](/react/components/button-group/design) |
+| Need                          | Prefer                                                |
+| ----------------------------- | ----------------------------------------------------- |
+| Section title + local actions | **Toolbar**                                           |
+| Bulk actions after selection  | [Action Bar](/react/components/action-bar/design)     |
+| App-wide navigation           | [Navbar](/react/components/navbar/design)             |
+| Related buttons only          | [Button Group](/react/components/button-group/design) |

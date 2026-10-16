@@ -1,14 +1,14 @@
 <script lang="ts">
-import { Avatar, Button, DropdownMenu, Item } from "@pisagor/svelte";
-import { itemPickerBlock } from "#/recipes/blocks/overlay";
+  import { Avatar, Button, DropdownMenu, Item } from "@pisagor/svelte";
+  import { itemPickerBlock } from "#/recipes/blocks/overlay";
 
-const styles = itemPickerBlock();
+  const styles = itemPickerBlock();
 
-const people = [
-  { email: "jane.doe@example.com", id: "jane", username: "jane.doe" },
-  { email: "john.doe@example.com", id: "john", username: "john.doe" },
-  { email: "alex.morgan@example.com", id: "alex", username: "alex.morgan" },
-];
+  const people = [
+    { email: "jane.doe@example.com", id: "jane", username: "jane.doe" },
+    { email: "john.doe@example.com", id: "john", username: "john.doe" },
+    { email: "alex.morgan@example.com", id: "alex", username: "alex.morgan" },
+  ];
 </script>
 
 <DropdownMenu>

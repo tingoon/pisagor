@@ -21,6 +21,6 @@ function onValueChange(next: typeof color.value) {
         <ColorPicker.ChannelSlider channel="hue" />
       </ColorPicker.View>
     </ColorPicker>
-    <p class="text-center text-muted-foreground text-sm">{{ color }}</p>
+    <p class="text-muted-foreground text-center text-sm">{{ color }}</p>
   </div>
 </template>

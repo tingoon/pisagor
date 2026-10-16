@@ -1,9 +1,9 @@
 <script lang="ts">
-import { AspectRatio } from "@pisagor/svelte";
+  import { AspectRatio } from "@pisagor/svelte";
 </script>
 
-<AspectRatio class="rounded-xl border bg-muted [--ratio:9/16]">
+<AspectRatio class="bg-muted rounded-xl border [--ratio:9/16]">
   <div class="flex size-full items-center justify-center">
-    <span class="select-none text-muted-foreground text-xs">9:16</span>
+    <span class="text-muted-foreground text-xs select-none">9:16</span>
   </div>
 </AspectRatio>

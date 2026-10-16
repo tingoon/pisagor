@@ -1,9 +1,9 @@
 <script lang="ts">
-import { ColorPicker, parseColor } from "@pisagor/svelte";
+  import { ColorPicker, parseColor } from "@pisagor/svelte";
 
-let value = $state("#0485F7");
+  let value = $state("#0485F7");
 
-const swatches = ["#0485F7", "#EF4444", "#F59E0B", "#10B981"];
+  const swatches = ["#0485F7", "#EF4444", "#F59E0B", "#10B981"];
 </script>
 
 <div class="flex flex-col items-center gap-2">
@@ -18,7 +18,7 @@ const swatches = ["#0485F7", "#EF4444", "#F59E0B", "#10B981"];
       {/each}
     </ColorPicker.SwatchGroup>
   </ColorPicker>
-  <p class="text-center text-muted-foreground text-sm">
+  <p class="text-muted-foreground text-center text-sm">
     {parseColor(value).toString("hex")}
   </p>
 </div>

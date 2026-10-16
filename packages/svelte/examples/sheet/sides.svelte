@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Button, Sheet } from "@pisagor/svelte";
+  import { Button, Sheet } from "@pisagor/svelte";
 
-const sides = ["top", "right", "bottom", "left"] as const;
+  const sides = ["top", "right", "bottom", "left"] as const;
 </script>
 
 <div class="flex flex-wrap justify-center gap-2">

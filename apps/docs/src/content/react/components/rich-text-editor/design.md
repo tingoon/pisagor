@@ -29,9 +29,9 @@ Sanitize pasted HTML and uploaded media. Prefer allowlists for tags and attribut
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Formatted authoring | **Rich Text Editor** |
-| Read-only article body | [Prose](/react/components/prose/design) |
-| Plain multi-line text | [Textarea](/react/components/textarea/design) |
+| Need                      | Prefer                                                                                      |
+| ------------------------- | ------------------------------------------------------------------------------------------- |
+| Formatted authoring       | **Rich Text Editor**                                                                        |
+| Read-only article body    | [Prose](/react/components/prose/design)                                                     |
+| Plain multi-line text     | [Textarea](/react/components/textarea/design)                                               |
 | Single-line with mentions | [Input](/react/components/input/design) / [Tags Input](/react/components/tags-input/design) |

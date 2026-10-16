@@ -1,19 +1,25 @@
 <script lang="ts">
-import type { DataListProps as BaseDataListProps } from "@pisagor/props";
-import type { HTMLAttributes } from "svelte/elements";
-import DataListItem from "./data-list-item.svelte";
-import DataListRoot from "./data-list-root.svelte";
+  import type { DataListProps as BaseDataListProps } from "@pisagor/props";
+  import type { HTMLAttributes } from "svelte/elements";
+  import DataListItem from "./data-list-item.svelte";
+  import DataListRoot from "./data-list-root.svelte";
 
-type DataListPresetItem = {
-  label: string;
-  value: string;
-};
-type Props = Omit<HTMLAttributes<HTMLDListElement>, "children"> & {
-  items?: DataListPresetItem[];
-  orientation?: "horizontal" | "vertical";
-} & BaseDataListProps;
+  type DataListPresetItem = {
+    label: string;
+    value: string;
+  };
+  type Props = Omit<HTMLAttributes<HTMLDListElement>, "children"> & {
+    items?: DataListPresetItem[];
+    orientation?: "horizontal" | "vertical";
+  } & BaseDataListProps;
 
-let { items, class: className, orientation, recipe, ...rest }: Props = $props();
+  let {
+    items,
+    class: className,
+    orientation,
+    recipe,
+    ...rest
+  }: Props = $props();
 </script>
 
 <DataListRoot {...rest} class={className} {orientation} {recipe}>

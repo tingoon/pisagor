@@ -1,14 +1,14 @@
 <script lang="ts">
-import {
-  AngleSlider as AngleSliderPrimitive,
-  type AngleSliderThumbProps,
-} from "@ark-ui/svelte/angle-slider";
-import { cn } from "@pisagor/utils";
-import { useCircularSlider } from "./circular-slider.context";
+  import {
+    AngleSlider as AngleSliderPrimitive,
+    type AngleSliderThumbProps,
+  } from "@ark-ui/svelte/angle-slider";
+  import { cn } from "@pisagor/utils";
+  import { useCircularSlider } from "./circular-slider.context";
 
-let { class: className, ...rest }: AngleSliderThumbProps = $props();
-const { thumbSize, ringRadius, slots } = useCircularSlider();
-const halfThumb = $derived(thumbSize / 2);
+  let { class: className, ...rest }: AngleSliderThumbProps = $props();
+  const { thumbSize, ringRadius, slots } = useCircularSlider();
+  const halfThumb = $derived(thumbSize / 2);
 </script>
 
 <AngleSliderPrimitive.Thumb

@@ -19,7 +19,8 @@ import {
 } from "@tanstack/react-table";
 
 /**
- * Explicit feature set for DataTable (sorting, selection, filtering, pagination).
+ * Explicit feature set for DataTable (sorting, selection, filtering,
+ * pagination).
  */
 export const dataTableFeatures = tableFeatures({
   columnFilteringFeature,

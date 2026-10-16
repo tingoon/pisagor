@@ -1,18 +1,18 @@
 <script lang="ts">
-import { Button, Card, Field, Input } from "@pisagor/svelte";
-import { cn } from "@pisagor/utils";
-import GlobeIcon from "phosphor-svelte/lib/GlobeIcon";
-import { loginCardBlock } from "#/recipes/blocks/card";
+  import { Button, Card, Field, Input } from "@pisagor/svelte";
+  import { cn } from "@pisagor/utils";
+  import GlobeIcon from "phosphor-svelte/lib/GlobeIcon";
+  import { loginCardBlock } from "#/recipes/blocks/card";
 
-const styles = loginCardBlock();
+  const styles = loginCardBlock();
 
-interface Props {
-  class?: string;
-  primaryActionLabel?: string;
-}
+  interface Props {
+    class?: string;
+    primaryActionLabel?: string;
+  }
 
-let { class: className, primaryActionLabel = "Send one-time code" }: Props =
-  $props();
+  let { class: className, primaryActionLabel = "Send one-time code" }: Props =
+    $props();
 </script>
 
 <Card class={cn(styles.root(), className)}>

@@ -2,9 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const actionBarRecipe = tv({
   defaultVariants: {
-    /**
-     * Preferred placement.
-     */
+    /** Preferred placement. */
     placement: "bottom",
   },
   slots: {
@@ -20,7 +18,7 @@ export const actionBarRecipe = tv({
     content: [
       "[--space:--spacing(2)]",
       "flex w-fit items-center gap-1",
-      "rounded-2xl border border-border/50 shadow-md",
+      "border-border/50 rounded-2xl border shadow-md",
       "px-[calc(var(--space)+2px)] py-(--space)",
       "bg-popover/80 backdrop-blur-xl backdrop-saturate-150",
       "text-popover-foreground",
@@ -29,17 +27,17 @@ export const actionBarRecipe = tv({
       "contrast-more:border-border contrast-more:bg-popover contrast-more:backdrop-blur-none",
     ],
     positioner: [
-      "fixed inset-x-0 bottom-0 z-modal",
+      "z-modal fixed inset-x-0 bottom-0",
       "flex",
       "px-4 pb-[calc(var(--gutter,--spacing(4))+env(safe-area-inset-bottom,0px))]",
       "pointer-events-none",
       "data-[state=closed]:animate-out data-[state=open]:animate-in",
       "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       "data-[state=open]:slide-in-from-bottom-2 data-[state=closed]:slide-out-to-bottom-2",
-      "motion-reduce:animate-none! motion-reduce:data-[state=open]:fade-in-0 motion-reduce:data-[state=closed]:fade-out-0",
+      "motion-reduce:data-[state=open]:fade-in-0 motion-reduce:data-[state=closed]:fade-out-0 motion-reduce:animate-none!",
     ],
     separator: ["mx-1 h-1/2"],
-    value: ["shrink-0 font-medium text-sm tabular-nums"],
+    value: ["shrink-0 text-sm font-medium tabular-nums"],
   },
   variants: {
     placement: {

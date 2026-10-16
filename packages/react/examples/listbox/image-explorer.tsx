@@ -55,9 +55,9 @@ export function ImageExplorer() {
           ))}
         </Listbox.Content>
       </Listbox.Root>
-      <div className="flex w-full items-end rounded-xl border bg-muted p-4">
+      <div className="bg-muted flex w-full items-end rounded-xl border p-4">
         <div className="mt-auto">
-          <h3 className="font-medium text-sm">{selectedImage?.label}</h3>
+          <h3 className="text-sm font-medium">{selectedImage?.label}</h3>
           <p className="text-muted-foreground text-xs">{selectedImage?.alt}</p>
         </div>
       </div>

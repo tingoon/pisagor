@@ -22,12 +22,8 @@ const {
 
 // #region Types
 export interface MarqueeRootProps
-  extends Omit<MarqueePrimitiveRootProps, "side">,
-    BaseMarqueeRootProps {
-  /**
-   *
-   * @defaultValue "horizontal"
-   */
+  extends Omit<MarqueePrimitiveRootProps, "side">, BaseMarqueeRootProps {
+  /** @defaultValue "horizontal" */
   orientation?: "horizontal" | "vertical";
   /**
    * Whether to show the edges of the marquee
@@ -38,7 +34,10 @@ export interface MarqueeRootProps
 }
 
 export interface MarqueeProps extends Omit<MarqueeRootProps, "children"> {
-  /** Items to auto-render inside a MarqueeContent; each item is wrapped in MarqueeItem */
+  /**
+   * Items to auto-render inside a MarqueeContent; each item is wrapped in
+   * MarqueeItem
+   */
   items?: ReactNode[];
 }
 // #endregion

@@ -31,9 +31,9 @@ When only one section may be open, closing the active section before opening ano
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Independent expandable sections | **Accordion** |
-| Frequent switching between peer views | [Tabs](/vue/components/tabs/design) |
-| Long hierarchical settings | [Tree View](/vue/components/tree-view/design) |
-| Static grouped content | [Card](/vue/components/card/design) |
+| Need                                  | Prefer                                          |
+| ------------------------------------- | ----------------------------------------------- |
+| Independent expandable sections       | **Accordion**                                   |
+| Frequent switching between peer views | [Tabs](/vue/components/tabs/design)           |
+| Long hierarchical settings            | [Tree View](/vue/components/tree-view/design) |
+| Static grouped content                | [Card](/vue/components/card/design)           |

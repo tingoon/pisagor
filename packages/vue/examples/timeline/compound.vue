@@ -7,7 +7,7 @@ import { Timeline } from "@pisagor/vue";
   <Timeline.Root>
     <Timeline.Item>
       <Timeline.Separator />
-      <Timeline.Indicator class="size-6 border-0 bg-success text-white">
+      <Timeline.Indicator class="bg-success size-6 border-0 text-white">
         <PhCheckCircle weight="fill" />
       </Timeline.Indicator>
       <Timeline.Content>
@@ -18,7 +18,7 @@ import { Timeline } from "@pisagor/vue";
     <Timeline.Item>
       <Timeline.Separator />
       <Timeline.Indicator
-        class="size-6 border-0 bg-primary text-primary-foreground"
+        class="bg-primary text-primary-foreground size-6 border-0"
       >
         <PhRocket weight="fill" />
       </Timeline.Indicator>
@@ -29,7 +29,7 @@ import { Timeline } from "@pisagor/vue";
     </Timeline.Item>
     <Timeline.Item>
       <Timeline.Separator />
-      <Timeline.Indicator class="size-6 text-muted-foreground">
+      <Timeline.Indicator class="text-muted-foreground size-6">
         <PhCircle />
       </Timeline.Indicator>
       <Timeline.Content>

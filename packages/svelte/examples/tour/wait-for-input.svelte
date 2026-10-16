@@ -1,90 +1,90 @@
 <script lang="ts">
-import { waitForEvent } from "@ark-ui/svelte/tour";
-import { buttonRecipe } from "@pisagor/recipes";
-import {
-  Checkbox,
-  Field,
-  Input,
-  Tour,
-  type TourStepDetails,
-} from "@pisagor/svelte";
+  import { waitForEvent } from "@ark-ui/svelte/tour";
+  import { buttonRecipe } from "@pisagor/recipes";
+  import {
+    Checkbox,
+    Field,
+    Input,
+    Tour,
+    type TourStepDetails,
+  } from "@pisagor/svelte";
 
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-const steps: TourStepDetails[] = [
-  {
-    actions: [{ action: "next", label: "Start" }],
-    description:
-      "Learn how to fill out the form by following the guided steps.",
-    id: "intro",
-    title: "Form tutorial",
-    type: "dialog",
-  },
-  {
-    description: "Type your name in the input field to continue.",
-    effect({ next, target, show }) {
-      show();
-      const [promise, cancel] = waitForEvent<HTMLInputElement>(
-        target,
-        "input",
-        {
-          predicate: (el) => el.value.trim().length >= 2,
-        },
-      );
-      promise.then(() => next());
-      return cancel;
+  const steps: TourStepDetails[] = [
+    {
+      actions: [{ action: "next", label: "Start" }],
+      description:
+        "Learn how to fill out the form by following the guided steps.",
+      id: "intro",
+      title: "Form tutorial",
+      type: "dialog",
     },
-    id: "enter-name",
-    target: () => document.querySelector<HTMLInputElement>("#input-name"),
-    title: "Enter your name",
-    type: "tooltip",
-  },
-  {
-    description: "Now enter a valid email address.",
-    effect({ next, target, show }) {
-      show();
-      const [promise, cancel] = waitForEvent<HTMLInputElement>(
-        target,
-        "input",
-        {
-          predicate: (el) => emailRegex.test(el.value),
-        },
-      );
-      promise.then(() => next());
-      return cancel;
+    {
+      description: "Type your name in the input field to continue.",
+      effect({ next, target, show }) {
+        show();
+        const [promise, cancel] = waitForEvent<HTMLInputElement>(
+          target,
+          "input",
+          {
+            predicate: (el) => el.value.trim().length >= 2,
+          },
+        );
+        promise.then(() => next());
+        return cancel;
+      },
+      id: "enter-name",
+      target: () => document.querySelector<HTMLInputElement>("#input-name"),
+      title: "Enter your name",
+      type: "tooltip",
     },
-    id: "enter-email",
-    target: () => document.querySelector<HTMLInputElement>("#input-email"),
-    title: "Enter your email",
-    type: "tooltip",
-  },
-  {
-    description: "Check the checkbox to accept the terms.",
-    effect({ next, target, show }) {
-      show();
-      const [promise, cancel] = waitForEvent<HTMLInputElement>(
-        target,
-        "change",
-        {
-          predicate: (el) => el.checked,
-        },
-      );
-      promise.then(() => next());
-      return cancel;
+    {
+      description: "Now enter a valid email address.",
+      effect({ next, target, show }) {
+        show();
+        const [promise, cancel] = waitForEvent<HTMLInputElement>(
+          target,
+          "input",
+          {
+            predicate: (el) => emailRegex.test(el.value),
+          },
+        );
+        promise.then(() => next());
+        return cancel;
+      },
+      id: "enter-email",
+      target: () => document.querySelector<HTMLInputElement>("#input-email"),
+      title: "Enter your email",
+      type: "tooltip",
     },
-    id: "check-terms",
-    target: () => document.querySelector<HTMLInputElement>("#checkbox-terms"),
-    title: "Accept terms",
-    type: "tooltip",
-  },
-  {
-    actions: [{ action: "dismiss", label: "Done" }],
-    description: "You have successfully filled out the form.",
-    id: "complete",
-    title: "Form complete",
-    type: "dialog",
-  },
-];
+    {
+      description: "Check the checkbox to accept the terms.",
+      effect({ next, target, show }) {
+        show();
+        const [promise, cancel] = waitForEvent<HTMLInputElement>(
+          target,
+          "change",
+          {
+            predicate: (el) => el.checked,
+          },
+        );
+        promise.then(() => next());
+        return cancel;
+      },
+      id: "check-terms",
+      target: () => document.querySelector<HTMLInputElement>("#checkbox-terms"),
+      title: "Accept terms",
+      type: "tooltip",
+    },
+    {
+      actions: [{ action: "dismiss", label: "Done" }],
+      description: "You have successfully filled out the form.",
+      id: "complete",
+      title: "Form complete",
+      type: "dialog",
+    },
+  ];
 </script>
 
 <div class="flex flex-col gap-2">
@@ -93,7 +93,7 @@ const steps: TourStepDetails[] = [
       >Start form tutorial</Tour.Trigger
     >
     <div
-      class="flex flex-col gap-2 rounded-lg border border-border bg-muted/50 p-4"
+      class="border-border bg-muted/50 flex flex-col gap-2 rounded-lg border p-4"
     >
       <Field>
         <Field.Label for="input-name">Name</Field.Label>

@@ -41,9 +41,7 @@ interface DataTableRowContextValue<TData extends RowData> {
   row: Row<DataTableFeatures, TData>;
 }
 
-/**
- * @typeParam TData - Row shape passed to `columns` and `data`.
- */
+/** @typeParam TData - Row shape passed to `columns` and `data`. */
 export type DataTableProps<TData extends RowData = RowData> = {
   class?: unknown;
   /**

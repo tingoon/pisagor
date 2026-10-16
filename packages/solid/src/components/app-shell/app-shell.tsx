@@ -42,8 +42,7 @@ const APP_SHELL_BANNER_ROW =
   '"banner banner banner banner banner banner banner"';
 
 export interface AppShellRootProps
-  extends ComponentProps<"div">,
-    BaseAppShellRootProps {
+  extends ComponentProps<"div">, BaseAppShellRootProps {
   /**
    * Whether to disable the `mod+\\` hotkey that toggles the start panel.
    *

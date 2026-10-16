@@ -1,75 +1,62 @@
 <script lang="ts">
-import { LocaleProvider } from "@ark-ui/svelte/locale";
-import type { Snippet } from "svelte";
-import { Toaster } from "../toast";
-import {
-  type ProviderMessages,
-  setProviderMessagesContext,
-} from "./provider.context";
+  import type {
+    LocaleConfig,
+    MotionConfig,
+    TranslationsConfig,
+  } from "@pisagor/utils";
+  import { defaultLocale, defaultMotion } from "@pisagor/utils";
+  import { isNullish, mergeDeep, omitBy } from "remeda";
+  import type { Snippet } from "svelte";
+  import { Toaster } from "../toast";
+  import {
+    setProviderConfig,
+    useLocale,
+    useMotion,
+    useProvider,
+  } from "./context";
+  import LocaleProvider from "./locale.svelte";
+  import MotionProvider from "./motion.svelte";
+  import TranslationsProvider from "./translations.svelte";
 
-type Props = {
-  children?: Snippet;
-  /**
-   * Document / layout direction. When omitted, inferred from `locale`
-   * (`ar`, `he`, `fa`, `ur` → `rtl`).
-   *
-   * Note: phosphor-svelte has no IconContext equivalent.
-   */
-  dir?: "ltr" | "rtl";
-  locale?: string;
-  /**
-   * Partial message overrides merged over the built-in English
-   * `defaultMessages` from `@pisagor/utils`.
-   */
-  messages?: ProviderMessages;
-};
+  type Props = {
+    children?: Snippet;
+    /** Locale settings merged over the parent `Provider`. */
+    locale?: Partial<LocaleConfig>;
+    /**
+     * Partial translation overrides merged over the parent `Provider`
+     * translations and the built-in English defaults.
+     */
+    translations?: TranslationsConfig;
+    /** Animation settings merged over the parent `Provider`. */
+    motion?: Partial<MotionConfig>;
+  };
 
-const RTL_LANGS = new Set(["ar", "fa", "he", "ur"]);
+  let { locale, children, translations, motion }: Props = $props();
 
-function resolveDir(localeValue: string, dir?: "ltr" | "rtl"): "ltr" | "rtl" {
-  if (dir) return dir;
-  const language = localeValue.split("-")[0]?.toLowerCase() ?? "en";
-  return RTL_LANGS.has(language) ? "rtl" : "ltr";
-}
+  const parentConfig = useProvider();
+  const parentLocale = useLocale();
+  const parentMotion = useMotion();
+  const root = !parentConfig;
 
-let {
-  dir: dirProp,
-  locale = "en-US",
-  children,
-  messages = {},
-}: Props = $props();
-
-const dir = $derived(resolveDir(locale, dirProp));
-
-setProviderMessagesContext(
-  new Proxy({} as ProviderMessages, {
-    get(_target, prop) {
-      if (typeof prop !== "string") return undefined;
-      return (messages as Record<string, string>)[prop];
-    },
-    getOwnPropertyDescriptor(_target, prop) {
-      if (typeof prop === "string" && Object.hasOwn(messages, prop)) {
-        return {
-          configurable: true,
-          enumerable: true,
-          value: (messages as Record<string, string>)[prop],
-        };
-      }
-      return undefined;
-    },
-    has(_target, prop) {
-      return typeof prop === "string" && Object.hasOwn(messages, prop);
-    },
-    ownKeys() {
-      return Reflect.ownKeys(messages);
-    },
-  }),
-);
+  setProviderConfig({
+    locale: mergeDeep(
+      mergeDeep(defaultLocale, parentLocale),
+      omitBy(locale ?? {}, isNullish),
+    ) as LocaleConfig,
+    motion: mergeDeep(
+      mergeDeep(defaultMotion, parentMotion),
+      omitBy(motion ?? {}, isNullish),
+    ) as MotionConfig,
+  });
 </script>
 
-<LocaleProvider {locale}>
-  <div data-part="root" data-scope="provider" {dir} style="display: contents">
-    <Toaster />
-    {@render children?.()}
-  </div>
+<LocaleProvider locale={locale?.locale}>
+  <MotionProvider disabled={motion?.disabled}>
+    <TranslationsProvider {translations}>
+      {#if root}
+        <Toaster />
+      {/if}
+      {@render children?.()}
+    </TranslationsProvider>
+  </MotionProvider>
 </LocaleProvider>

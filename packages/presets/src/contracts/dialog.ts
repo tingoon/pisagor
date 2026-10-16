@@ -2,20 +2,16 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const dialogRecipe = tv({
   defaultVariants: {
-    /**
-     * Stick content to the bottom edge on small viewports.
-     */
+    /** Stick content to the bottom edge on small viewports. */
     bottomStickOnMobile: true,
-    /**
-     * Control size.
-     */
+    /** Control size. */
     size: "md",
   },
   slots: {
     alertBody:
       "in-[[data-scope=dialog][data-part=content]:has([data-scope=alert-dialog][data-part=header])]:pt-0",
     backdrop: [
-      "fixed inset-0 z-modal",
+      "z-modal fixed inset-0",
       "bg-overlay/32 backdrop-blur-sm",
       "duration-slow ease-out",
       "peer peer-[[data-scope=dialog][data-part=backdrop]]:hidden",
@@ -40,10 +36,10 @@ export const dialogRecipe = tv({
       "flex flex-col",
       "bg-popover",
       "text-popover-foreground",
-      "rounded-3xl border border-border/50 shadow-lg",
+      "border-border/50 rounded-3xl border shadow-lg",
       "outline-hidden",
       "translate-y-[calc(-1.25rem*var(--nested-layer-count))]",
-      "transition duration-slow ease-emphasized will-change-transform",
+      "duration-slow ease-emphasized transition will-change-transform",
       "data-[nested=dialog]:data-[state=closed]:slide-in-from-bottom-10 data-[nested=dialog]:data-[state=open]:slide-in-from-bottom-10 data-[has-nested=dialog]:origin-top",
       "scale-[calc(1-0.1*var(--nested-layer-count))] opacity-[calc(1-0.1*var(--nested-layer-count))]",
       "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-98 data-[state=closed]:animate-out",
@@ -55,7 +51,7 @@ export const dialogRecipe = tv({
       "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
       "sm:rounded-b-3xl",
       "px-(--space) py-4",
-      "border-t border-border/40",
+      "border-border/40 border-t",
     ],
     header: [
       "p-(--space)",
@@ -64,12 +60,12 @@ export const dialogRecipe = tv({
     ],
     inline: ["absolute inset-e-2 top-2 opacity-64 hover:opacity-100"],
     positioner: [
-      "fixed inset-0 z-modal",
+      "z-modal fixed inset-0",
       "h-svh w-screen",
       "grid grid-rows-[1fr_auto_3fr] justify-items-center",
       "p-4",
     ],
-    title: ["font-heading font-semibold text-xl leading-tight tracking-tight"],
+    title: ["font-heading text-xl leading-tight font-semibold tracking-tight"],
   },
   variants: {
     bottomStickOnMobile: {

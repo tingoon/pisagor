@@ -1,24 +1,24 @@
 <script lang="ts">
-import {
-  type DatePickerContentProps as ArkContentProps,
-  DatePicker as DatePickerPrimitive,
-} from "@ark-ui/svelte/date-picker";
-import { Portal } from "@ark-ui/svelte/portal";
-import { cn } from "@pisagor/utils";
-import { Calendar } from "../calendar";
-import CalendarDefaultView from "../calendar/calendar-default-view.svelte";
-import { useDatePicker } from "./date-picker.context";
+  import {
+    type DatePickerContentProps as ArkContentProps,
+    DatePicker as DatePickerPrimitive,
+  } from "@ark-ui/svelte/date-picker";
+  import { Portal } from "@ark-ui/svelte/portal";
+  import { cn } from "@pisagor/utils";
+  import { Calendar } from "../calendar";
+  import CalendarDefaultView from "../calendar/calendar-default-view.svelte";
+  import { useDatePicker } from "./date-picker.context";
 
-type Props = ArkContentProps & { showCalendar?: boolean };
+  type Props = ArkContentProps & { showCalendar?: boolean };
 
-let {
-  showCalendar = true,
-  children,
-  class: className,
-  ...rest
-}: Props = $props();
-const ctx = useDatePicker();
-const slots = $derived(ctx?.slots);
+  let {
+    showCalendar = true,
+    children,
+    class: className,
+    ...rest
+  }: Props = $props();
+  const ctx = useDatePicker();
+  const slots = $derived(ctx?.slots);
 </script>
 
 {#if slots}

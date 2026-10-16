@@ -29,9 +29,9 @@ When breaking time into laps or rounds, label each segment and preserve history 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Elapsed or remaining clock | **Timer** |
-| Indeterminate wait | [Spinner](/vue/components/spinner/design) |
-| Fraction complete | [Progress](/vue/components/progress/design) |
-| Scheduled date display | [Format](/vue/components/format/design) |
+| Need                       | Prefer                                        |
+| -------------------------- | --------------------------------------------- |
+| Elapsed or remaining clock | **Timer**                                     |
+| Indeterminate wait         | [Spinner](/vue/components/spinner/design)   |
+| Fraction complete          | [Progress](/vue/components/progress/design) |
+| Scheduled date display     | [Format](/vue/components/format/design)     |

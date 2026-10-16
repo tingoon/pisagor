@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Avatar, Button, Item } from "@pisagor/svelte";
-import PlusIcon from "phosphor-svelte/lib/PlusIcon";
-import { people } from "./helpers";
+  import { Avatar, Button, Item } from "@pisagor/svelte";
+  import PlusIcon from "phosphor-svelte/lib/PlusIcon";
+  import { people } from "./helpers";
 </script>
 
 <Item.Group variant="outline">

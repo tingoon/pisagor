@@ -15,7 +15,7 @@ export const commandRecipe = tv({
       "max-h-(--available-height) min-h-0",
       "-me-2",
       "outline-hidden",
-      "scrollbar-thin scrollbar-track-transparent scrollbar-thumb-foreground/20 overflow-auto overscroll-contain",
+      "scrollbar-thumb-foreground/20 scrollbar-thin scrollbar-track-transparent overflow-auto overscroll-contain",
       "[&:not(:has(+[data-scope=command][data-part=footer]))]:rounded-b-2xl [&:not(:has(+[data-scope=command][data-part=footer]))]:border-b",
     ],
     control: [
@@ -33,7 +33,7 @@ export const commandRecipe = tv({
       "text-muted-foreground text-xs",
       "rounded-b-2xl border-t",
     ],
-    input: ["rounded-lg bg-input/32"],
+    input: ["bg-input/32 rounded-lg"],
     inputIcon: "opacity-64",
     list: ["flex-1 pe-2.5"],
     listWrapper: ["max-h-72 min-h-0 flex-1"],

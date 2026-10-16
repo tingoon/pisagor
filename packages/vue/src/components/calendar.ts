@@ -20,7 +20,7 @@ import {
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button, type ButtonProps } from "./button";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Slot recipe context
@@ -30,7 +30,10 @@ const { provideStyles: provideCalendarStyles, useStyles: useCalendar } =
     recipe: calendarRecipe,
   });
 
-/** Lets `DatePicker` provide calendar slots so `Calendar.*` parts work inside `DatePicker.Content` (React parity). */
+/**
+ * Lets `DatePicker` provide calendar slots so `Calendar.*` parts work inside
+ * `DatePicker.Content` (React parity).
+ */
 export { provideCalendarStyles };
 
 // #endregion
@@ -47,7 +50,7 @@ interface CalendarWeekDaysProps {
   /**
    * The format of the week days
    *
-   * @defaultValue 'narrow'
+   * @defaultValue "narrow"
    */
   format?: "narrow" | "short" | "long";
 }
@@ -415,7 +418,7 @@ export const CalendarPrevTrigger = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useProviderMessage("calendar.previousMonth"),
+              "aria-label": useTranslation("calendar.previousMonth"),
               class: styles.slots.prevTrigger(),
               size: "icon-md",
               variant: "ghost",
@@ -444,7 +447,7 @@ export const CalendarNextTrigger = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useProviderMessage("calendar.nextMonth"),
+              "aria-label": useTranslation("calendar.nextMonth"),
               class: styles.slots.nextTrigger(),
               size: "icon-md",
               variant: "ghost",

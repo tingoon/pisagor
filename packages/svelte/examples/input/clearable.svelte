@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Input } from "@pisagor/svelte";
+  import { Input } from "@pisagor/svelte";
 
-let value = $state("Hello world");
+  let value = $state("Hello world");
 </script>
 
 <Input

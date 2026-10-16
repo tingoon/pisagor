@@ -29,9 +29,9 @@ Collapse the section nav into a [Select](/react/components/select/design) or dra
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Highlight current scroll section | **Scrollspy** |
-| Switch mounted panels | [Tabs](/react/components/tabs/design) |
-| Nested nav scroll | [Scroll Area](/react/components/scroll-area/design) |
-| Site-wide wayfinding | [Navigation Menu](/react/components/navigation-menu/design) |
+| Need                             | Prefer                                                      |
+| -------------------------------- | ----------------------------------------------------------- |
+| Highlight current scroll section | **Scrollspy**                                               |
+| Switch mounted panels            | [Tabs](/react/components/tabs/design)                       |
+| Nested nav scroll                | [Scroll Area](/react/components/scroll-area/design)         |
+| Site-wide wayfinding             | [Navigation Menu](/react/components/navigation-menu/design) |

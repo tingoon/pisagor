@@ -1,5 +1,5 @@
 /**
- * Built-in English defaults for every library string. `Provider` `messages`
+ * Built-in English defaults for every library string. `Provider` `translations`
  * are merged over these, so any subset can be overridden.
  */
 export const defaultMessages = {
@@ -97,15 +97,30 @@ export const defaultMessages = {
 /** Every message key the library looks up. */
 export type MessageKey = keyof typeof defaultMessages;
 
-/** Partial overrides passed to `Provider` `messages`. */
-export type ProviderMessages = Partial<Record<MessageKey, string>>;
+/** Locale settings shared through `Provider` `locale`. */
+export interface LocaleConfig {
+  /** BCP 47 locale for Ark components (date / number formatting, `dir`). */
+  locale: string;
+}
 
-/** Resolve `key` from `messages`, falling back to the English default. */
+/** Default `Provider` locale settings. */
+export const defaultLocale: LocaleConfig = { locale: "en-US" };
+
+/** Partial overrides passed to `Provider` `translations`. */
+export type TranslationsConfig = Partial<Record<MessageKey, string>>;
+
+/** @deprecated Use {@link TranslationsConfig}. */
+export type ProviderMessages = TranslationsConfig;
+
+/** Default (empty) translation overrides. */
+export const defaultTranslations: TranslationsConfig = {};
+
+/** Resolve `key` from translations, falling back to the English default. */
 export function resolveMessage(
-  messages: ProviderMessages | undefined,
+  translations: TranslationsConfig | undefined,
   key: MessageKey,
 ): string {
-  return messages?.[key] ?? defaultMessages[key];
+  return translations?.[key] ?? defaultMessages[key];
 }
 
 /** Replace `{name}` placeholders in a message. */
@@ -116,4 +131,46 @@ export function formatMessage(
   return message.replace(/\{(\w+)\}/g, (match, name: string) =>
     name in values ? String(values[name]) : match,
   );
+}
+
+/** Animation settings shared through `Provider` `motion`. */
+export interface MotionConfig {
+  /**
+   * When true, collapses animation and transition durations (e.g. e2e and unit
+   * tests). Defaults to `false`.
+   */
+  disabled: boolean;
+}
+
+/** Default `Provider` motion settings. */
+export const defaultMotion: MotionConfig = { disabled: false };
+
+/** Resolved value returned by `useProviderValue()`. */
+export interface ProviderContextValue {
+  locale: LocaleConfig;
+  translations: Record<MessageKey, string>;
+  motion: MotionConfig;
+}
+
+/** Presence + resolved defaults shared with nested Providers. */
+export interface ProviderConfig {
+  locale: LocaleConfig;
+  motion: MotionConfig;
+}
+
+export const defaultProviderConfig: ProviderConfig = {
+  locale: defaultLocale,
+  motion: defaultMotion,
+};
+
+/** Build the `useProviderValue()` value from config and (partial) translations. */
+export function resolveProviderValue(
+  config: ProviderConfig,
+  translations: TranslationsConfig | undefined,
+): ProviderContextValue {
+  return {
+    locale: config.locale,
+    motion: config.motion,
+    translations: { ...defaultMessages, ...translations },
+  };
 }

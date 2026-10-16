@@ -29,10 +29,10 @@ While data loads, use [Skeleton](/vue/components/skeleton/design) or a subdued p
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Scannable metric with label | **Stat** |
-| Compact state dot | [Status](/vue/components/status/design) |
-| Count on an object | [Badge](/vue/components/badge/design) |
-| Tabular comparison | [Table](/vue/components/table/design) |
-| Event sequence | [Timeline](/vue/components/timeline/design) |
+| Need                        | Prefer                                        |
+| --------------------------- | --------------------------------------------- |
+| Scannable metric with label | **Stat**                                      |
+| Compact state dot           | [Status](/vue/components/status/design)     |
+| Count on an object          | [Badge](/vue/components/badge/design)       |
+| Tabular comparison          | [Table](/vue/components/table/design)       |
+| Event sequence              | [Timeline](/vue/components/timeline/design) |

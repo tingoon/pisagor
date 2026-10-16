@@ -8,6 +8,7 @@ import type {
 export interface TreeViewProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue treeViewRecipe
    */
   recipe?: TreeViewRecipeFn;
@@ -17,6 +18,7 @@ export interface TreeViewProps {
 export interface TreeViewBranchProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue treeViewBranchRecipe
    */
   recipe?: TreeViewBranchRecipeFn;
@@ -26,6 +28,7 @@ export interface TreeViewBranchProps {
 export interface TreeViewItemProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue treeViewItemRecipe
    */
   recipe?: TreeViewItemRecipeFn;

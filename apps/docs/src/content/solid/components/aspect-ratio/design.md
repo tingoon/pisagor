@@ -25,9 +25,9 @@ Prefer aspect ratio for video, maps, and product imagery; avoid it when height s
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Stable media proportions | **Aspect Ratio** |
-| Grouped media and actions | [Card](/solid/components/card/design) |
-| Full-bleed framed content | [Frame](/solid/components/frame/design) |
-| Stepped image browsing | [Carousel](/solid/components/carousel/design) |
+| Need                      | Prefer                                        |
+| ------------------------- | --------------------------------------------- |
+| Stable media proportions  | **Aspect Ratio**                              |
+| Grouped media and actions | [Card](/solid/components/card/design)         |
+| Full-bleed framed content | [Frame](/solid/components/frame/design)       |
+| Stepped image browsing    | [Carousel](/solid/components/carousel/design) |

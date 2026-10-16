@@ -1,22 +1,22 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { ItemProps as BaseItemProps } from "@pisagor/props";
-import { cn } from "@pisagor/utils";
-import type { HTMLAttributes } from "svelte/elements";
-import { useItem } from "./item.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import type { ItemProps as BaseItemProps } from "@pisagor/props";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { useItem } from "./item.context";
 
-type Props = HTMLAttributes<HTMLDivElement> & {
-  children?: import("svelte").Snippet;
-} & BaseItemProps;
+  type Props = HTMLAttributes<HTMLDivElement> & {
+    children?: import("svelte").Snippet;
+  } & BaseItemProps;
 
-let {
-  variant = "default",
-  children,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    variant = "default",
+    children,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const { slots } = useItem();
+  const { slots } = useItem();
 </script>
 
 <Ark

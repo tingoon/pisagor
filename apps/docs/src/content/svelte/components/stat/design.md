@@ -29,10 +29,10 @@ While data loads, use [Skeleton](/svelte/components/skeleton/design) or a subdue
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Scannable metric with label | **Stat** |
-| Compact state dot | [Status](/svelte/components/status/design) |
-| Count on an object | [Badge](/svelte/components/badge/design) |
-| Tabular comparison | [Table](/svelte/components/table/design) |
-| Event sequence | [Timeline](/svelte/components/timeline/design) |
+| Need                        | Prefer                                        |
+| --------------------------- | --------------------------------------------- |
+| Scannable metric with label | **Stat**                                      |
+| Compact state dot           | [Status](/svelte/components/status/design)     |
+| Count on an object          | [Badge](/svelte/components/badge/design)       |
+| Tabular comparison          | [Table](/svelte/components/table/design)       |
+| Event sequence              | [Timeline](/svelte/components/timeline/design) |

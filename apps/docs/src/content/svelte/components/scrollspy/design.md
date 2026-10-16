@@ -29,9 +29,9 @@ Collapse the section nav into a [Select](/svelte/components/select/design) or dr
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Highlight current scroll section | **Scrollspy** |
-| Switch mounted panels | [Tabs](/svelte/components/tabs/design) |
-| Nested nav scroll | [Scroll Area](/svelte/components/scroll-area/design) |
-| Site-wide wayfinding | [Navigation Menu](/svelte/components/navigation-menu/design) |
+| Need                             | Prefer                                                      |
+| -------------------------------- | ----------------------------------------------------------- |
+| Highlight current scroll section | **Scrollspy**                                               |
+| Switch mounted panels            | [Tabs](/svelte/components/tabs/design)                       |
+| Nested nav scroll                | [Scroll Area](/svelte/components/scroll-area/design)         |
+| Site-wide wayfinding             | [Navigation Menu](/svelte/components/navigation-menu/design) |

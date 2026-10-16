@@ -150,8 +150,7 @@ const pinnedClass = (pinned: "start" | "end" | undefined) =>
       : undefined;
 const handleColumnPinningChange = (
   updater:
-    | ColumnPinningState
-    | ((old: ColumnPinningState) => ColumnPinningState),
+    ColumnPinningState | ((old: ColumnPinningState) => ColumnPinningState),
 ) => {
   columnPinning.value = applyUpdater(columnPinning.value, updater);
 };

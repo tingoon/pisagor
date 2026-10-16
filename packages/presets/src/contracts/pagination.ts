@@ -12,7 +12,7 @@ export const paginationRecipe = tv({
     ],
     item: [
       "tabular-nums",
-      "data-selected:not-[hover]:bg-transparent dark:data-selected:not-[hover]:bg-input/30",
+      "dark:data-selected:not-[hover]:bg-input/30 data-selected:not-[hover]:bg-transparent",
       "data-selected:not-[hover]:text-foreground",
       "data-selected:not-[hover]:border-input",
     ],

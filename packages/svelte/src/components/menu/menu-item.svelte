@@ -1,28 +1,28 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { MenuItemProps as BaseMenuItemProps } from "@pisagor/props";
-import { menuItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { Snippet } from "svelte";
-import type { HTMLButtonAttributes } from "svelte/elements";
-import { useMenu } from "./menu.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import type { MenuItemProps as BaseMenuItemProps } from "@pisagor/props";
+  import { menuItemRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { Snippet } from "svelte";
+  import type { HTMLButtonAttributes } from "svelte/elements";
+  import { useMenu } from "./menu.context";
 
-type Props = Omit<HTMLButtonAttributes, "type"> & {
-  children?: Snippet;
-  type?: "button" | "reset" | "submit";
-} & BaseMenuItemProps;
+  type Props = Omit<HTMLButtonAttributes, "type"> & {
+    children?: Snippet;
+    type?: "button" | "reset" | "submit";
+  } & BaseMenuItemProps;
 
-let {
-  variant = "default",
-  type = "button",
-  recipe = menuItemRecipe,
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
+  let {
+    variant = "default",
+    type = "button",
+    recipe = menuItemRecipe,
+    class: className,
+    children,
+    ...rest
+  }: Props = $props();
 
-const styles = useMenu();
-const slots = $derived(styles.slots);
+  const styles = useMenu();
+  const slots = $derived(styles.slots);
 </script>
 
 <Ark as="li" class={slots.wrapper()} data-part="item-wrapper" data-scope="menu">

@@ -1,26 +1,26 @@
 <script lang="ts">
-import {
-  Splitter as SplitterPrimitive,
-  type SplitterResizeTriggerProps,
-} from "@ark-ui/svelte/splitter";
-import { cn } from "@pisagor/utils";
-import DotsSixVerticalIcon from "phosphor-svelte/lib/DotsSixVerticalIcon";
-import { useMessageResolver } from "../provider/provider.context";
-import { useResizable } from "./resizable.context";
-import ResizableResizeTriggerIndicator from "./resizable-resize-trigger-indicator.svelte";
+  import {
+    Splitter as SplitterPrimitive,
+    type SplitterResizeTriggerProps,
+  } from "@ark-ui/svelte/splitter";
+  import { cn } from "@pisagor/utils";
+  import DotsSixVerticalIcon from "phosphor-svelte/lib/DotsSixVerticalIcon";
+  import { useMessageResolver } from "../provider/context";
+  import { useResizable } from "./resizable.context";
+  import ResizableResizeTriggerIndicator from "./resizable-resize-trigger-indicator.svelte";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-type Props = SplitterResizeTriggerProps & { withHandle?: boolean };
+  type Props = SplitterResizeTriggerProps & { withHandle?: boolean };
 
-let {
-  children,
-  withHandle = false,
-  class: className,
-  ...rest
-}: Props = $props();
-const styles = useResizable();
-const slots = $derived(styles.slots);
+  let {
+    children,
+    withHandle = false,
+    class: className,
+    ...rest
+  }: Props = $props();
+  const styles = useResizable();
+  const slots = $derived(styles.slots);
 </script>
 
 <SplitterPrimitive.ResizeTrigger

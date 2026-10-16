@@ -22,7 +22,7 @@ import { useIsMobile } from "../hooks";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button, type ButtonProps } from "./button";
 import { Input, type InputProps } from "./input";
-import { getMessage } from "./provider/provider.context";
+import { useMessage } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 import { Separator, type SeparatorProps } from "./separator";
 import { Sheet, type SheetProps } from "./sheet";
@@ -54,9 +54,7 @@ export type SidebarContextProps = SidebarState & {
   slots: ReturnType<typeof sidebarRecipe>;
 };
 
-/**
- * Returns the nearest sidebar styles + state.
- */
+/** Returns the nearest sidebar styles + state. */
 export function useSidebar(): SidebarContextProps {
   const styles = useSidebarStyles();
   const state = use(SidebarStateContext);
@@ -69,16 +67,14 @@ export function useSidebar(): SidebarContextProps {
 
 // #region Types
 export interface SidebarProviderProps
-  extends ComponentProps<"div">,
-    BaseSidebarProviderProps {
+  extends ComponentProps<"div">, BaseSidebarProviderProps {
   /**
    * The default open state of the sidebar.
    *
-   * @defaultValue true
-   *
    * @remarks
-   * Ignored when `open` is set. When uncontrolled, the state persisted in
-   * `localStorage` (`sidebar_state`) wins after mount.
+   *   Ignored when `open` is set. When uncontrolled, the state persisted in
+   *   `localStorage` (`sidebar_state`) wins after mount.
+   * @defaultValue true
    */
   defaultOpen?: boolean;
   /**
@@ -91,20 +87,24 @@ export interface SidebarProviderProps
    * The open state of the sidebar.
    *
    * @remarks
-   * When set, `defaultOpen` is ignored. Pair with `onOpenChange` to handle updates.
+   *   When set, `defaultOpen` is ignored. Pair with `onOpenChange` to handle
+   *   updates.
    */
   open?: boolean;
   /**
    * Called when the open state of the sidebar changes.
    *
    * @remarks
-   * Each update also persists the expanded/collapsed state in `localStorage` under the `sidebar_state` key.
+   *   Each update also persists the expanded/collapsed state in `localStorage`
+   *   under the `sidebar_state` key.
    */
   onOpenChange?: (open: boolean) => void;
 }
 
-export interface SidebarProps
-  extends Omit<SheetProps, "placement" | "recipe" | "variant"> {
+export interface SidebarProps extends Omit<
+  SheetProps,
+  "placement" | "recipe" | "variant"
+> {
   placement?: "left" | "right";
   variant?: "sidebar" | "floating" | "inset";
   collapsible?: "offcanvas" | "icon" | "none";
@@ -127,35 +127,35 @@ export interface SidebarMenuButtonProps extends ButtonProps {
    * @defaultValue false
    */
   isActive?: boolean;
-  /**
-   * The tooltip to display when hovering over the button.
-   *
-   */
+  /** The tooltip to display when hovering over the button. */
   tooltip?: string | Omit<TooltipProps, "children">;
 }
 
-export interface SidebarMenuActionProps
-  extends ComponentProps<typeof ark.button> {
+export interface SidebarMenuActionProps extends ComponentProps<
+  typeof ark.button
+> {
   showOnHover?: boolean;
   /**
-   * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
+   * Button style recipe. Defaults to `buttonRecipe` from
+   * `@pisagor/recipes/button`.
    *
    * @defaultValue buttonRecipe
    */
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export interface SidebarMenuSkeletonProps
-  extends ComponentProps<typeof ark.div> {
+export interface SidebarMenuSkeletonProps extends ComponentProps<
+  typeof ark.div
+> {
   showIcon?: boolean;
 }
 
 export interface SidebarMenuSubButtonProps
-  extends ComponentProps<typeof ark.a>,
-    ButtonVariantProps {
+  extends ComponentProps<typeof ark.a>, ButtonVariantProps {
   isActive?: boolean;
   /**
-   * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
+   * Button style recipe. Defaults to `buttonRecipe` from
+   * `@pisagor/recipes/button`.
    *
    * @defaultValue buttonRecipe
    */
@@ -174,10 +174,12 @@ export type SidebarGroupProps = ComponentProps<typeof ark.div>;
 
 export type SidebarGroupLabelProps = ComponentProps<typeof ark.div>;
 
-export interface SidebarGroupActionProps
-  extends ComponentProps<typeof ark.button> {
+export interface SidebarGroupActionProps extends ComponentProps<
+  typeof ark.button
+> {
   /**
-   * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
+   * Button style recipe. Defaults to `buttonRecipe` from
+   * `@pisagor/recipes/button`.
    *
    * @defaultValue buttonRecipe
    */
@@ -301,6 +303,8 @@ export function SidebarProvider({
 }
 
 export function SidebarRoot(props: SidebarProps) {
+  const sidebarDescriptionMessage = useMessage("sidebar.description");
+  const sidebarTitleMessage = useMessage("sidebar.title");
   const {
     collapsible = "offcanvas",
     placement = "left",
@@ -341,10 +345,8 @@ export function SidebarRoot(props: SidebarProps) {
           }
         >
           <Sheet.Header className={slots.mobileHeader()}>
-            <Sheet.Title>{getMessage("sidebar.title")}</Sheet.Title>
-            <Sheet.Description>
-              {getMessage("sidebar.description")}
-            </Sheet.Description>
+            <Sheet.Title>{sidebarTitleMessage}</Sheet.Title>
+            <Sheet.Description>{sidebarDescriptionMessage}</Sheet.Description>
           </Sheet.Header>
           <ark.div className={slots.mobileBody()}>{children}</ark.div>
         </Sheet.Content>
@@ -405,7 +407,7 @@ export function SidebarTrigger({ onClick, className, ...rest }: ButtonProps) {
     >
       <SidebarSimpleIcon className={slots.triggerIcon()} />
       <ark.span className={slots.triggerLabel()}>
-        {getMessage("sidebar.toggle")}
+        {useMessage("sidebar.toggle")}
       </ark.span>
     </Button>
   );
@@ -416,7 +418,7 @@ export function SidebarRail({ className, ...rest }: SidebarRailProps) {
 
   return (
     <ark.button
-      aria-label={getMessage("sidebar.toggle")}
+      aria-label={useMessage("sidebar.toggle")}
       {...rest}
       className={slots.rail({ className })}
       data-part="rail"
@@ -687,7 +689,7 @@ export function SidebarMenuAction({
         }).base(),
         slots.menuAction(),
         showOnHover &&
-          "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-accent-foreground md:opacity-0",
+          "peer-data-[active=true]/menu-button:text-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0",
         className,
       )}
       data-part="menu-action"

@@ -1,10 +1,10 @@
 <script lang="ts">
-import {
-  FileUpload as FileUploadPrimitive,
-  type FileUploadTriggerProps,
-} from "@ark-ui/svelte/file-upload";
+  import {
+    FileUpload as FileUploadPrimitive,
+    type FileUploadTriggerProps,
+  } from "@ark-ui/svelte/file-upload";
 
-let { children, ...rest }: FileUploadTriggerProps = $props();
+  let { children, ...rest }: FileUploadTriggerProps = $props();
 </script>
 
 <FileUploadPrimitive.Trigger {...rest}>

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Field, Frame, Input, Switch } from "@pisagor/svelte";
+  import { Field, Frame, Input, Switch } from "@pisagor/svelte";
 </script>
 
 <Frame>
@@ -18,7 +18,7 @@ import { Field, Frame, Input, Switch } from "@pisagor/svelte";
       <Field orientation="horizontal">
         <Switch id="frame-notify" />
         <Field.Content>
-          <Field.Label for="frame-notify"> Email notifications </Field.Label>
+          <Field.Label for="frame-notify">Email notifications</Field.Label>
         </Field.Content>
       </Field>
     </Field.Group>

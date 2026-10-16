@@ -29,9 +29,9 @@ Use a dimmed scrim when the task requires full attention. Choose non-modal [Dial
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Focused task or decision | **Dialog** |
-| Destructive or irreversible confirm | [Alert Dialog](/svelte/components/alert-dialog/design) |
-| Edge panel on mobile | [Sheet](/svelte/components/sheet/design) / [Drawer](/svelte/components/drawer/design) |
-| Lightweight contextual panel | [Popover](/svelte/components/popover/design) |
+| Need                                | Prefer                                                                              |
+| ----------------------------------- | ----------------------------------------------------------------------------------- |
+| Focused task or decision            | **Dialog**                                                                          |
+| Destructive or irreversible confirm | [Alert Dialog](/svelte/components/alert-dialog/design)                               |
+| Edge panel on mobile                | [Sheet](/svelte/components/sheet/design) / [Drawer](/svelte/components/drawer/design) |
+| Lightweight contextual panel        | [Popover](/svelte/components/popover/design)                                         |

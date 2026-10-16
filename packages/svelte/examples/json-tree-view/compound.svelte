@@ -1,6 +1,6 @@
 <script lang="ts">
-import { JsonTreeView } from "@pisagor/svelte";
-import { defaultData } from "./helpers";
+  import { JsonTreeView } from "@pisagor/svelte";
+  import { defaultData } from "./helpers";
 </script>
 
 <JsonTreeView.Root data={defaultData()} defaultExpandedDepth={1}>

@@ -1,9 +1,9 @@
 <script lang="ts">
-import { Button, ButtonGroup, Tooltip } from "@pisagor/svelte";
-import TextBIcon from "phosphor-svelte/lib/TextBIcon";
-import TextItalicIcon from "phosphor-svelte/lib/TextItalicIcon";
-import TextStrikethroughIcon from "phosphor-svelte/lib/TextStrikethroughIcon";
-import TextUnderlineIcon from "phosphor-svelte/lib/TextUnderlineIcon";
+  import { Button, ButtonGroup, Tooltip } from "@pisagor/svelte";
+  import TextBIcon from "phosphor-svelte/lib/TextBIcon";
+  import TextItalicIcon from "phosphor-svelte/lib/TextItalicIcon";
+  import TextStrikethroughIcon from "phosphor-svelte/lib/TextStrikethroughIcon";
+  import TextUnderlineIcon from "phosphor-svelte/lib/TextUnderlineIcon";
 </script>
 
 <ButtonGroup>

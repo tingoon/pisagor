@@ -1,29 +1,29 @@
 <script lang="ts">
-import {
-  type MenuContentProps,
-  Menu as MenuPrimitive,
-} from "@ark-ui/svelte/menu";
-import { Portal } from "@ark-ui/svelte/portal";
-import type { DropdownMenuProps as BaseDropdownMenuProps } from "@pisagor/props";
-import { dropdownMenuRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { Context } from "./dropdown-menu.context";
-import DropdownMenuPositioner from "./dropdown-menu-positioner.svelte";
+  import {
+    type MenuContentProps,
+    Menu as MenuPrimitive,
+  } from "@ark-ui/svelte/menu";
+  import { Portal } from "@ark-ui/svelte/portal";
+  import type { DropdownMenuProps as BaseDropdownMenuProps } from "@pisagor/props";
+  import { dropdownMenuRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { Context } from "./dropdown-menu.context";
+  import DropdownMenuPositioner from "./dropdown-menu-positioner.svelte";
 
-type Props = MenuContentProps & BaseDropdownMenuProps;
+  type Props = MenuContentProps & BaseDropdownMenuProps;
 
-let {
-  recipe = dropdownMenuRecipe,
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
-const slots = $derived(recipe());
-Context.set({
-  get slots() {
-    return slots;
-  },
-});
+  let {
+    recipe = dropdownMenuRecipe,
+    class: className,
+    children,
+    ...rest
+  }: Props = $props();
+  const slots = $derived(recipe());
+  Context.set({
+    get slots() {
+      return slots;
+    },
+  });
 </script>
 
 <Portal>

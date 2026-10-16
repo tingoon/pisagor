@@ -1,18 +1,18 @@
 <script lang="ts">
-import { createListCollection } from "@ark-ui/svelte/collection";
-import { Item, Kbd, Listbox } from "@pisagor/svelte";
+  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { Item, Kbd, Listbox } from "@pisagor/svelte";
 
-const collection = createListCollection({
-  items: [
-    { label: "Brazil", value: "br" },
-    { label: "Mexico", value: "mx" },
-    { label: "Ireland", value: "ie" },
-  ],
-});
+  const collection = createListCollection({
+    items: [
+      { label: "Brazil", value: "br" },
+      { label: "Mexico", value: "mx" },
+      { label: "Ireland", value: "ie" },
+    ],
+  });
 </script>
 
 <div class="flex flex-col gap-2">
-  <p class="text-center text-muted-foreground text-sm">
+  <p class="text-muted-foreground text-center text-sm">
     Hold <Kbd>⌘</Kbd> or <Kbd>Ctrl</Kbd> to select multiple
   </p>
   <Item.Group variant="outline">

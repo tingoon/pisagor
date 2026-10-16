@@ -1,35 +1,32 @@
 <script lang="ts">
-import { useFileUploadContext } from "@ark-ui/svelte/file-upload";
-import type { FileUploadItemProps as BaseFileUploadItemProps } from "@pisagor/props";
-import { fileUploadItemRecipe } from "@pisagor/recipes";
-import { cn, type MessageKey } from "@pisagor/utils";
-import type { ClassValue } from "svelte/elements";
-import { useMessageResolver } from "../provider/provider.context";
-import { useFileUpload } from "./file-upload.context";
-import FileUploadItem from "./file-upload-item.svelte";
-import FileUploadItemDeleteTrigger from "./file-upload-item-delete-trigger.svelte";
-import FileUploadItemGroup from "./file-upload-item-group.svelte";
-import FileUploadItemName from "./file-upload-item-name.svelte";
-import FileUploadItemPreview from "./file-upload-item-preview.svelte";
-import FileUploadItemPreviewImage from "./file-upload-item-preview-image.svelte";
-import FileUploadItemSize from "./file-upload-item-size.svelte";
+  import { useFileUploadContext } from "@ark-ui/svelte/file-upload";
+  import type { FileUploadItemProps as BaseFileUploadItemProps } from "@pisagor/props";
+  import { fileUploadItemRecipe } from "@pisagor/recipes";
+  import { cn, type MessageKey } from "@pisagor/utils";
+  import type { ClassValue } from "svelte/elements";
+  import { useMessageResolver } from "../provider/context";
+  import { useFileUpload } from "./file-upload.context";
+  import FileUploadItem from "./file-upload-item.svelte";
+  import FileUploadItemDeleteTrigger from "./file-upload-item-delete-trigger.svelte";
+  import FileUploadItemGroup from "./file-upload-item-group.svelte";
+  import FileUploadItemName from "./file-upload-item-name.svelte";
+  import FileUploadItemPreview from "./file-upload-item-preview.svelte";
+  import FileUploadItemPreviewImage from "./file-upload-item-preview-image.svelte";
+  import FileUploadItemSize from "./file-upload-item-size.svelte";
 
-type Props = { class?: ClassValue } & BaseFileUploadItemProps;
+  type Props = { class?: ClassValue } & BaseFileUploadItemProps;
 
-let { class: className, recipe = fileUploadItemRecipe }: Props = $props();
-const api = useFileUploadContext();
-const styles = useFileUpload();
-const slots = $derived(styles.slots);
-const itemSlots = $derived(recipe());
-const t = useMessageResolver();
-const accepted = $derived(api().acceptedFiles);
-const rejected = $derived(api().rejectedFiles);
+  let { class: className, recipe = fileUploadItemRecipe }: Props = $props();
+  const api = useFileUploadContext();
+  const styles = useFileUpload();
+  const slots = $derived(styles.slots);
+  const itemSlots = $derived(recipe());
+  const t = useMessageResolver();
+  const accepted = $derived(api().acceptedFiles);
+  const rejected = $derived(api().rejectedFiles);
 </script>
 
-{#snippet item(
-  file: File,
-  errors?: readonly string[],
-)}
+{#snippet item(file: File, errors?: readonly string[])}
   {const isImage = file.type.startsWith("image/")}
   {const extension = file.name.split(".").pop()}
   <FileUploadItem

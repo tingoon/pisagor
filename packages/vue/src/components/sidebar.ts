@@ -32,7 +32,10 @@ const {
   recipe: sidebarRecipe,
 });
 
-/** Slots from the nearest Sidebar root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest Sidebar root, or the default recipe when used
+ * standalone.
+ */
 function useSidebarSlots() {
   const styles = useOptionalSidebarStyles();
 
@@ -55,8 +58,7 @@ export interface SidebarProps {
 }
 
 export interface SidebarProviderProps
-  extends Omit<SidebarProps, "className">,
-    BaseSidebarProviderProps {}
+  extends Omit<SidebarProps, "className">, BaseSidebarProviderProps {}
 
 interface SidebarContextValue {
   isMobile: boolean;
@@ -103,9 +105,7 @@ export const SidebarProvider = defineComponent({
      * wins after mount.
      */
     defaultOpen: { default: true, type: Boolean },
-    /**
-     * Whether to disable the `mod+B` toggle hotkey.
-     */
+    /** Whether to disable the `mod+B` toggle hotkey. */
     disableHotkey: { default: false, type: Boolean },
     onOpenChange: {
       default: undefined,
@@ -238,8 +238,7 @@ export const SidebarProvider = defineComponent({
             "--sidebar-width": "16rem",
             "--sidebar-width-icon": "3rem",
             ...(((attrs as { style?: unknown }).style as
-              | Record<string, unknown>
-              | undefined) ?? {}),
+              Record<string, unknown> | undefined) ?? {}),
           },
         },
         slots.default?.(),

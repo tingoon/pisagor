@@ -29,9 +29,9 @@ When loading fails, replace skeleton with an error state and retry — do not pu
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Layout-stable loading placeholders | **Skeleton** |
-| Inline indeterminate wait | [Spinner](/svelte/components/spinner/design) |
-| Measurable long task | [Progress](/svelte/components/progress/design) |
-| Empty loaded state | [Empty State](/svelte/components/empty-state/design) |
+| Need                               | Prefer                                              |
+| ---------------------------------- | --------------------------------------------------- |
+| Layout-stable loading placeholders | **Skeleton**                                        |
+| Inline indeterminate wait          | [Spinner](/svelte/components/spinner/design)         |
+| Measurable long task               | [Progress](/svelte/components/progress/design)       |
+| Empty loaded state                 | [Empty State](/svelte/components/empty-state/design) |

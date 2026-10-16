@@ -11,8 +11,7 @@ const SCROLLSPY_OFFSET = "data-scrollspy-offset";
 const SCROLLSPY_ANCHOR_SELECTOR = `[${SCROLLSPY_ANCHOR}]`;
 
 export interface ScrollspyProps
-  extends ComponentProps<typeof ark.div>,
-    BaseScrollspyProps {
+  extends ComponentProps<typeof ark.div>, BaseScrollspyProps {
   history?: boolean;
   offset?: number;
   smooth?: boolean;

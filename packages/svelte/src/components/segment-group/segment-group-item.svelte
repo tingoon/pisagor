@@ -1,17 +1,17 @@
 <script lang="ts">
-import {
-  type SegmentGroupItemProps as ArkItemProps,
-  SegmentGroup as SegmentGroupPrimitive,
-} from "@ark-ui/svelte/segment-group";
-import { cn } from "@pisagor/utils";
-import type { Snippet } from "svelte";
-import { useSegmentGroup } from "./segment-group.context";
+  import {
+    type SegmentGroupItemProps as ArkItemProps,
+    SegmentGroup as SegmentGroupPrimitive,
+  } from "@ark-ui/svelte/segment-group";
+  import { cn } from "@pisagor/utils";
+  import type { Snippet } from "svelte";
+  import { useSegmentGroup } from "./segment-group.context";
 
-type Props = ArkItemProps & { text?: Snippet | string };
+  type Props = ArkItemProps & { text?: Snippet | string };
 
-let { children, text, class: className, ...rest }: Props = $props();
-const styles = useSegmentGroup();
-const slots = $derived(styles.slots);
+  let { children, text, class: className, ...rest }: Props = $props();
+  const styles = useSegmentGroup();
+  const slots = $derived(styles.slots);
 </script>
 
 <SegmentGroupPrimitive.Item

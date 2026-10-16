@@ -40,7 +40,10 @@ const {
   recipe: treeViewItemRecipe,
 });
 
-/** Slots from the nearest TreeViewItem root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest TreeViewItem root, or the default recipe when used
+ * standalone.
+ */
 function useTreeViewItemSlots() {
   const styles = useOptionalTreeViewItemStyles();
 
@@ -57,7 +60,10 @@ const {
   recipe: treeViewBranchRecipe,
 });
 
-/** Slots from the nearest TreeViewBranch root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest TreeViewBranch root, or the default recipe when used
+ * standalone.
+ */
 function useTreeViewBranchSlots() {
   const styles = useOptionalTreeViewBranchStyles();
 
@@ -74,7 +80,10 @@ const {
   recipe: treeViewRecipe,
 });
 
-/** Slots from the nearest TreeView root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest TreeView root, or the default recipe when used
+ * standalone.
+ */
 function useTreeViewSlots() {
   const styles = useOptionalTreeViewStyles();
 

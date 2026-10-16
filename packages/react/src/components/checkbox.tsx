@@ -23,15 +23,14 @@ import { useFormControlSurface } from "./surface/use-form-control-surface";
 // #region Types
 
 export interface CheckboxGroupProps
-  extends Omit<CheckboxPrimitiveGroupProps, "onValueChange">,
+  extends
+    Omit<CheckboxPrimitiveGroupProps, "onValueChange">,
     BaseCheckboxGroupProps {
   onValueChange?: (value: string[]) => void;
 }
 
 export interface CheckboxProps
-  extends CheckboxRootProps,
-    BaseCheckboxProps,
-    SizeScaleProps {
+  extends CheckboxRootProps, BaseCheckboxProps, SizeScaleProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
 }

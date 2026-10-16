@@ -29,10 +29,10 @@ When a password field shares a row with a visibility toggle or strength meter, c
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Masked credential entry | **Password Input** |
-| Generic single-line text | [Input](/solid/components/input/design) |
-| One-time verification digits | [Input OTP](/solid/components/input-otp/design) |
-| Label, hint, error layout | [Field](/solid/components/field/design) |
-| Attached toggle chrome | [Input Group](/solid/components/input-group/design) |
+| Need                         | Prefer                                              |
+| ---------------------------- | --------------------------------------------------- |
+| Masked credential entry      | **Password Input**                                  |
+| Generic single-line text     | [Input](/solid/components/input/design)             |
+| One-time verification digits | [Input OTP](/solid/components/input-otp/design)     |
+| Label, hint, error layout    | [Field](/solid/components/field/design)             |
+| Attached toggle chrome       | [Input Group](/solid/components/input-group/design) |

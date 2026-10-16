@@ -30,8 +30,7 @@ const { useStyles: usePagination, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface PaginationRootProps
-  extends PaginationPrimitiveRootProps,
-    BasePaginationRootProps {}
+  extends PaginationPrimitiveRootProps, BasePaginationRootProps {}
 
 export type PaginationItemsProps = Omit<PaginationContextProps, "children">;
 

@@ -17,7 +17,7 @@ import {
   type Ref,
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -42,17 +42,18 @@ const BottomNavigationValueKey: InjectionKey<Ref<string | undefined>> = Symbol(
 // #endregion
 
 // #region Types
-export interface BottomNavigationRootProps
-  extends BaseBottomNavigationRootProps {
+export interface BottomNavigationRootProps extends BaseBottomNavigationRootProps {
   class?: unknown;
-  /** Value of the item for the current page; that item gets `aria-current="page"`. */
+  /**
+   * Value of the item for the current page; that item gets
+   * `aria-current="page"`.
+   */
   value?: string;
 }
 
 export type BottomNavigationProps = BottomNavigationRootProps;
 
-export interface BottomNavigationItemProps
-  extends BaseBottomNavigationItemProps {
+export interface BottomNavigationItemProps extends BaseBottomNavigationItemProps {
   class?: unknown;
   /** Marks the item as the current page. Defaults to `value === root value`. */
   current?: boolean;
@@ -76,7 +77,7 @@ export const BottomNavigationRoot = defineComponent({
     value: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
-    const label = useProviderMessage("bottomNavigation.label");
+    const label = useTranslation("bottomNavigation.label");
     provide(
       BottomNavigationValueKey,
       computed(() => props.value),

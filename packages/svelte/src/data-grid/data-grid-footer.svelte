@@ -1,14 +1,14 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
-import type { HTMLAttributes } from "svelte/elements";
-import { useDataGridContext } from "./data-grid.context";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { useDataGridContext } from "./data-grid.context";
 
-type Props = HTMLAttributes<HTMLDivElement> & {
-  children?: import("svelte").Snippet;
-};
+  type Props = HTMLAttributes<HTMLDivElement> & {
+    children?: import("svelte").Snippet;
+  };
 
-let { class: className, children, ...rest }: Props = $props();
-const { slots } = useDataGridContext();
+  let { class: className, children, ...rest }: Props = $props();
+  const { slots } = useDataGridContext();
 </script>
 
 <div

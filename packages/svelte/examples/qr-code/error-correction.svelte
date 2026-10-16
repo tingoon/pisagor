@@ -1,7 +1,7 @@
 <script lang="ts">
-import { QrCode } from "@pisagor/svelte";
+  import { QrCode } from "@pisagor/svelte";
 
-const eccLevels = ["L", "M", "Q", "H"] as const;
+  const eccLevels = ["L", "M", "Q", "H"] as const;
 </script>
 
 <div class="flex flex-wrap items-center gap-2">

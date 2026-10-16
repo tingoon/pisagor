@@ -1,5 +1,5 @@
 <script lang="ts">
-import { DataList } from "@pisagor/svelte";
+  import { DataList } from "@pisagor/svelte";
 </script>
 
 <DataList.Root>

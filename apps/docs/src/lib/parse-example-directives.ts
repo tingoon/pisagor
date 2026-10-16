@@ -21,7 +21,7 @@ export type TocHeading = {
   text: string;
 };
 
-/** h2/h3 headings from skill markdown body — source of truth for docs TOC. */
+/** H2/h3 headings from skill markdown body — source of truth for docs TOC. */
 export function extractTocHeadings(body: string): TocHeading[] {
   const headings: TocHeading[] = [];
   let inFence = false;
@@ -62,7 +62,10 @@ export type DevelopSegment =
 
 type RawSection = { lines: string[]; title: string };
 
-/** Split body into preface + `##` sections, ignoring headings inside code fences. */
+/**
+ * Split body into preface + `##` sections, ignoring headings inside code
+ * fences.
+ */
 function splitH2Sections(body: string): {
   preface: string[];
   sections: RawSection[];
@@ -92,9 +95,9 @@ function pushMarkdown(items: DevelopSectionItem[], lines: string[]): void {
 }
 
 /**
- * Items of a `##` section that contains `:::example`, in document order.
- * Each `###` block with a directive becomes an example (heading + prose +
- * live preview); any other content stays markdown so nothing is dropped.
+ * Items of a `##` section that contains `:::example`, in document order. Each
+ * `###` block with a directive becomes an example (heading + prose + live
+ * preview); any other content stays markdown so nothing is dropped.
  */
 function exampleSectionItems(
   lines: string[],
@@ -153,8 +156,8 @@ function exampleSectionItems(
 
 /**
  * Split develop markdown into document-order segments: plain markdown `##`
- * sections vs sections that contain `:::example` (rendered by the page shell
- * in place, so TOC and page follow the markdown heading order 1:1).
+ * sections vs sections that contain `:::example` (rendered by the page shell in
+ * place, so TOC and page follow the markdown heading order 1:1).
  */
 export function splitDevelopSegments(body: string): DevelopSegment[] {
   const segments: DevelopSegment[] = [];
@@ -190,10 +193,9 @@ export function splitDevelopSegments(body: string): DevelopSegment[] {
 
 /**
  * Parse every single-line `:::example ExportName` in the skill body (anywhere).
- * No closing `:::` — the opening line alone is the directive.
- * Nearest preceding heading (depth ≥ 3) supplies title + depth; nearest `##`
- * supplies `section`. Prose between that heading and the directive is
- * `description`.
+ * No closing `:::` — the opening line alone is the directive. Nearest preceding
+ * heading (depth ≥ 3) supplies title + depth; nearest `##` supplies `section`.
+ * Prose between that heading and the directive is `description`.
  */
 export function parseExampleDirectives(body: string): ComponentExampleDoc[] {
   const lines = body.split(/\r?\n/);

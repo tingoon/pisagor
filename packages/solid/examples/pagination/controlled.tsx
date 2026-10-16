@@ -11,7 +11,7 @@ export function Controlled() {
         page={page()}
         pageSize={10}
       />
-      <p class="text-center text-muted-foreground text-sm">
+      <p class="text-muted-foreground text-center text-sm">
         Page {page()} of 5
       </p>
     </div>

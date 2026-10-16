@@ -1,7 +1,7 @@
 <script lang="ts">
-import { ScrollArea } from "@pisagor/svelte";
+  import { ScrollArea } from "@pisagor/svelte";
 
-const items = Array.from({ length: 30 }, (_, index) => `Item ${index + 1}`);
+  const items = Array.from({ length: 30 }, (_, index) => `Item ${index + 1}`);
 </script>
 
 <ScrollArea.Root class="h-48 w-64 rounded-md border">

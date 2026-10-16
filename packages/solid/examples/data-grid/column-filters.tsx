@@ -105,7 +105,7 @@ function SortIndicator({ direction }: { direction: false | "asc" | "desc" }) {
 function DataGridShell({ children }: { children: JSX.Element }) {
   return (
     <div class="flex w-full flex-col gap-3">
-      <div class="rounded-xl border bg-muted/20 p-3">{children}</div>
+      <div class="bg-muted/20 rounded-xl border p-3">{children}</div>
     </div>
   );
 }
@@ -131,7 +131,7 @@ function ColumnFilterSelect(props: {
   value: string[];
 }) {
   return (
-    <div class="w-full min-w-0 **:data-[slot=select-trigger]:h-7 **:data-[slot=select-control]:w-full **:data-[slot=select-trigger]:w-full">
+    <div class="w-full min-w-0 **:data-[slot=select-control]:w-full **:data-[slot=select-trigger]:h-7 **:data-[slot=select-trigger]:w-full">
       <Select {...props} />
     </div>
   );

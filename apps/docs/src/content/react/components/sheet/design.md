@@ -29,9 +29,9 @@ Popovers anchor to a trigger; sheets own an edge of the viewport. Use popovers f
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Edge panel for secondary task | **Sheet** |
-| Bottom swipe panel | [Drawer](/react/components/drawer/design) |
-| Centered blocking flow | [Dialog](/react/components/dialog/design) |
-| Persistent app navigation | [Sidebar](/react/components/sidebar/design) |
+| Need                          | Prefer                                      |
+| ----------------------------- | ------------------------------------------- |
+| Edge panel for secondary task | **Sheet**                                   |
+| Bottom swipe panel            | [Drawer](/react/components/drawer/design)   |
+| Centered blocking flow        | [Dialog](/react/components/dialog/design)   |
+| Persistent app navigation     | [Sidebar](/react/components/sidebar/design) |

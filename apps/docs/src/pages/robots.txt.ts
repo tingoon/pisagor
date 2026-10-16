@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 
-/** robots.txt with an absolute sitemap URL built from `site` + `base`. */
+/** Robots.txt with an absolute sitemap URL built from `site` + `base`. */
 export const GET: APIRoute = ({ site }) => {
   const base = import.meta.env.BASE_URL.replace(/\/?$/, "/");
   const sitemap = site

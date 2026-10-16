@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Card } from "@pisagor/svelte";
+  import { Card } from "@pisagor/svelte";
 
-const sizes = ["sm", "md", "lg"] as const;
+  const sizes = ["sm", "md", "lg"] as const;
 </script>
 
 <div class="flex flex-col gap-4">

@@ -25,9 +25,9 @@ Prefer circular progress when a ring matches the layout and percentage matters; 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Circular measured progress | **Circular Progress** |
-| Brief unknown wait | [Spinner](/react/components/spinner/design) |
-| Horizontal progress bar | [Progress](/react/components/progress/design) |
-| Button in-flight state | [Button](/react/components/button/design) loading |
+| Need                       | Prefer                                            |
+| -------------------------- | ------------------------------------------------- |
+| Circular measured progress | **Circular Progress**                             |
+| Brief unknown wait         | [Spinner](/react/components/spinner/design)       |
+| Horizontal progress bar    | [Progress](/react/components/progress/design)     |
+| Button in-flight state     | [Button](/react/components/button/design) loading |

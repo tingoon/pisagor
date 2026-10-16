@@ -29,9 +29,9 @@ Announce page changes to assistive tech when content swaps without a full naviga
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Indexed page controls | **Pagination** |
+| Need                   | Prefer                                            |
+| ---------------------- | ------------------------------------------------- |
+| Indexed page controls  | **Pagination**                                    |
 | Tabular data + filters | [Data Table](/svelte/components/data-table/design) |
-| Compact page metadata | [Stat](/svelte/components/stat/design) |
-| Long option lists | [Select](/svelte/components/select/design) |
+| Compact page metadata  | [Stat](/svelte/components/stat/design)             |
+| Long option lists      | [Select](/svelte/components/select/design)         |

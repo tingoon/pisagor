@@ -36,8 +36,10 @@ type RatingRootProps = RatingGroupRootProps &
     variant?: FormControlVariant;
   };
 
-export interface RatingProps
-  extends Omit<RatingRootProps, "children" | "onValueChange"> {
+export interface RatingProps extends Omit<
+  RatingRootProps,
+  "children" | "onValueChange"
+> {
   defaultValue?: number;
   value?: number;
   icon?: JSX.Element;

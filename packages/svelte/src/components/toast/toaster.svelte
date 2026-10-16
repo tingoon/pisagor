@@ -1,34 +1,34 @@
 <script lang="ts">
-import { Portal } from "@ark-ui/svelte/portal";
-import {
-  type CreateToasterReturn,
-  Toaster as ToasterPrimitive,
-} from "@ark-ui/svelte/toast";
-import type { ToastProps as BaseToastProps } from "@pisagor/props";
-import { toastRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { toast as defaultToast } from "./toast";
-import ToastItem from "./toast-item.svelte";
+  import { Portal } from "@ark-ui/svelte/portal";
+  import {
+    type CreateToasterReturn,
+    Toaster as ToasterPrimitive,
+  } from "@ark-ui/svelte/toast";
+  import type { ToastProps as BaseToastProps } from "@pisagor/props";
+  import { toastRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { toast as defaultToast } from "./toast";
+  import ToastItem from "./toast-item.svelte";
 
-type Props = Omit<
-  import("@ark-ui/svelte/toast").ToasterProps,
-  "toaster" | "children" | "style"
-> & {
-  style?: string | undefined;
-  toaster?: CreateToasterReturn;
-} & BaseToastProps;
+  type Props = Omit<
+    import("@ark-ui/svelte/toast").ToasterProps,
+    "toaster" | "children" | "style"
+  > & {
+    style?: string | undefined;
+    toaster?: CreateToasterReturn;
+  } & BaseToastProps;
 
-let {
-  toaster: toasterInstance = defaultToast,
-  recipe = toastRecipe,
-  class: className,
-  style,
-  ...rest
-}: Props = $props();
+  let {
+    toaster: toasterInstance = defaultToast,
+    recipe = toastRecipe,
+    class: className,
+    style,
+    ...rest
+  }: Props = $props();
 
-const toasterStyle = $derived(
-  ["--width: 356px", style].filter(Boolean).join("; "),
-);
+  const toasterStyle = $derived(
+    ["--width: 356px", style].filter(Boolean).join("; "),
+  );
 </script>
 
 <Portal>
@@ -38,9 +38,7 @@ const toasterStyle = $derived(
     style={toasterStyle}
     toaster={toasterInstance}
   >
-    {#snippet children(
-      toastItem,
-    )}
+    {#snippet children(toastItem)}
       <ToastItem toast={toastItem} />
     {/snippet}
   </ToasterPrimitive>

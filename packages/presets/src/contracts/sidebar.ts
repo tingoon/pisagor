@@ -2,13 +2,9 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const sidebarRecipe = tv({
   defaultVariants: {
-    /**
-     * Include inner padding.
-     */
+    /** Include inner padding. */
     padded: false,
-    /**
-     * Preferred placement.
-     */
+    /** Preferred placement. */
     placement: "left",
   },
   slots: {
@@ -23,7 +19,7 @@ export const sidebarRecipe = tv({
       "w-(--sidebar-width)",
       "hidden md:flex",
       "h-svh",
-      "transition-all duration-normal ease-linear",
+      "duration-normal transition-all ease-linear",
       "motion-reduce:transition-none!",
     ],
     content: [
@@ -37,7 +33,7 @@ export const sidebarRecipe = tv({
       "relative",
       "w-(--sidebar-width)",
       "bg-transparent",
-      "transition-all duration-normal ease-linear",
+      "duration-normal transition-all ease-linear",
       "group-data-[collapsible=offcanvas]:w-0",
       "group-data-[placement=right]:rotate-180",
       "motion-reduce:transition-none!",
@@ -58,10 +54,10 @@ export const sidebarRecipe = tv({
       "h-8",
       "px-2",
       "flex shrink-0 items-center",
-      "font-medium text-muted-foreground/70 text-xs",
+      "text-muted-foreground/70 text-xs font-medium",
       "rounded-md",
-      "transition-all duration-normal ease-linear",
-      "outline-hidden ring-ring focus-visible:ring-2",
+      "duration-normal transition-all ease-linear",
+      "ring-ring outline-hidden focus-visible:ring-2",
       "[&_svg]:size-4 [&_svg]:shrink-0",
       "group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0",
       "motion-reduce:transition-none!",
@@ -71,11 +67,11 @@ export const sidebarRecipe = tv({
       "size-full",
       "flex flex-col",
       "bg-muted",
-      "group-data-[variant=floating]:rounded-2xl group-data-[variant=floating]:border group-data-[variant=floating]:border-border/50 group-data-[variant=floating]:shadow-sm",
+      "group-data-[variant=floating]:border-border/50 group-data-[variant=floating]:rounded-2xl group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm",
     ],
-    input: ["h-8 w-full bg-background/80 shadow-none"],
+    input: ["bg-background/80 h-8 w-full shadow-none"],
     inset: [
-      "relative flex w-full flex-1 flex-col bg-background",
+      "bg-background relative flex w-full flex-1 flex-col",
       "md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ms-2",
       "md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ms-0",
       "md:peer-data-[variant=inset]:rounded-2xl md:peer-data-[variant=inset]:shadow-sm",
@@ -99,7 +95,7 @@ export const sidebarRecipe = tv({
       "px-1",
       "h-5 min-w-5",
       "rounded-lg",
-      "select-none font-medium text-muted-foreground text-xs tabular-nums",
+      "text-muted-foreground text-xs font-medium tabular-nums select-none",
       "pointer-events-none",
       "peer-hover/menu-button:text-accent-foreground",
       "peer-data-[active=true]/menu-button:text-accent-foreground",
@@ -115,15 +111,15 @@ export const sidebarRecipe = tv({
       "p-2",
       "overflow-hidden",
       "rounded-lg",
-      "transition-all duration-fast ease-out",
+      "duration-fast transition-all ease-out",
       "data-[size=sm]:text-xs",
       "data-[size=lg]:h-12",
       "group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2!",
       "data-[size=lg]:group-data-[collapsible=icon]:p-0!",
       "hover:bg-accent/80 hover:text-accent-foreground",
-      "focus-visible:ring-0.75 outline-hidden focus-visible:ring-ring/24",
+      "focus-visible:ring-0.75 focus-visible:ring-ring/24 outline-hidden",
       "active:bg-accent active:text-accent-foreground",
-      "data-[active=true]:bg-card data-[active=true]:font-medium data-[active=true]:text-foreground data-[active=true]:shadow-xs",
+      "data-[active=true]:bg-card data-[active=true]:text-foreground data-[active=true]:font-medium data-[active=true]:shadow-xs",
       "group-has-data-[sidebar=menu-action]/menu-item:pe-8",
       "[&>span:last-child]:truncate",
       "motion-reduce:transition-none!",
@@ -145,11 +141,11 @@ export const sidebarRecipe = tv({
       "overflow-hidden",
       "rounded-lg",
       "ltr:-translate-x-px rtl:translate-x-px",
-      "transition-colors duration-fast ease-out",
+      "duration-fast transition-colors ease-out",
       "hover:bg-accent hover:text-accent-foreground",
       "active:bg-accent active:text-accent-foreground",
       "data-[active=true]:bg-accent data-[active=true]:text-accent-foreground",
-      "focus-visible:ring-0.75 outline-hidden focus-visible:ring-ring/32",
+      "focus-visible:ring-0.75 focus-visible:ring-ring/32 outline-hidden",
       "[&>span:last-child]:truncate",
       "[&_svg]:text-accent-foreground",
       "motion-reduce:transition-none!",
@@ -170,12 +166,12 @@ export const sidebarRecipe = tv({
       "w-4",
       "hidden sm:flex",
       "transition-all ease-linear",
-      "after:absolute after:inset-s-1/2 after:inset-y-0 after:w-0.5",
+      "after:absolute after:inset-y-0 after:inset-s-1/2 after:w-0.5",
       "hover:after:bg-border",
       "group-data-[placement=left]:-inset-e-4 group-data-[placement=right]:inset-s-0",
       "in-data-[placement=left]:cursor-w-resize in-data-[placement=right]:cursor-e-resize",
       "[[data-placement=left][data-state=collapsed]_&]:cursor-e-resize [[data-placement=right][data-state=collapsed]_&]:cursor-w-resize",
-      "group-data-[collapsible=offcanvas]:translate-x-0 hover:group-data-[collapsible=offcanvas]:bg-muted group-data-[collapsible=offcanvas]:after:inset-s-full",
+      "hover:group-data-[collapsible=offcanvas]:bg-muted group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:inset-s-full",
       "[[data-placement=left][data-collapsible=offcanvas]_&]:-inset-e-2",
       "[[data-placement=right][data-collapsible=offcanvas]_&]:-inset-s-2",
       "motion-reduce:transition-none!",
@@ -183,7 +179,7 @@ export const sidebarRecipe = tv({
     scrollArea: [
       "[--fade-size:3rem] **:data-[scope=scroll-area]:data-[part=scrollbar]:hidden",
     ],
-    separator: ["mx-2 w-auto bg-border"],
+    separator: ["bg-border mx-2 w-auto"],
     trigger: "size-7",
     triggerIcon: "rtl:rotate-180",
     triggerLabel: "sr-only",
@@ -198,7 +194,7 @@ export const sidebarRecipe = tv({
     padded: {
       false: {
         container:
-          "group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[placement=right]:border-s group-data-[placement=left]:border-e",
+          "group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[placement=left]:border-e group-data-[placement=right]:border-s",
         gap: "group-data-[collapsible=icon]:w-(--sidebar-width-icon)",
       },
       true: {

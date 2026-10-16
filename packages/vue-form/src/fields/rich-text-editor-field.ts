@@ -18,8 +18,7 @@ type RichTextEditorControlProps = SetRequired<
 >;
 
 export interface RichTextEditorFieldProps
-  extends FieldPresentationProps,
-    RichTextEditorControlProps {
+  extends FieldPresentationProps, RichTextEditorControlProps {
   name?: string;
   onBlur?: () => void;
   value?: string;

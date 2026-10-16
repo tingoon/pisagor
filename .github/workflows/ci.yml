@@ -19,10 +19,12 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-bun
+      - run: bun fmt --check
+      - run: bun lint
       - run: bunx biome ci
       - run: bunx knip
 
-  type-check:
+  typecheck:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -34,7 +36,7 @@ jobs:
       - uses: ./.github/actions/setup-bun
         with:
           turbo-cache: "true"
-      - run: bunx turbo run type-check --affected
+      - run: bunx turbo run typecheck --affected
 
   test:
     runs-on: ubuntu-latest
@@ -68,13 +70,13 @@ jobs:
           DOCS_SITE: https://tingoon.github.io
 
   check:
-    needs: [lint, type-check, test, build]
+    needs: [lint, typecheck, test, build]
     if: always()
     runs-on: ubuntu-latest
     steps:
       - name: Require all jobs
         run: |
           test "${{ needs.lint.result }}" = "success"
-          test "${{ needs.type-check.result }}" = "success"
+          test "${{ needs.typecheck.result }}" = "success"
           test "${{ needs.test.result }}" = "success"
           test "${{ needs.build.result }}" = "success"

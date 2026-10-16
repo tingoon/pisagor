@@ -2,7 +2,7 @@ import { tv } from "tailwind-variants";
 
 export const passwordInputRecipe = tv({
   slots: {
-    base: ["group/password-input w-full flex flex-col items-start gap-2"],
+    base: ["group/password-input flex w-full flex-col items-start gap-2"],
     clearAddon: [
       "hidden [[data-scope=password-input][data-part=control]:has(input:not(:placeholder-shown))_&]:flex",
     ],

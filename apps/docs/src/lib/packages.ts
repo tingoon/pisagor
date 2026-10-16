@@ -26,7 +26,10 @@ export const packages: Record<Framework, PackageLinks> = {
   vue: pkg("vue", "@pisagor/vue", "http://localhost:4002"),
 };
 
-/** Extra publishable packages (forms) keyed by npm name for PackageLinks overrides. */
+/**
+ * Extra publishable packages (forms) keyed by npm name for PackageLinks
+ * overrides.
+ */
 export const packageLinksByName: Record<string, PackageLinks> = {
   "@pisagor/astro": packages.astro,
   "@pisagor/react": packages.react,

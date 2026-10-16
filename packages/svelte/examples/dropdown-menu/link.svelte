@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Button, DropdownMenu } from "@pisagor/svelte";
-import { ArrowSquareOutIcon } from "@pisagor/svelte/icons";
+  import { Button, DropdownMenu } from "@pisagor/svelte";
+  import { ArrowSquareOutIcon } from "@pisagor/svelte/icons";
 </script>
 
 <DropdownMenu>
@@ -9,9 +9,7 @@ import { ArrowSquareOutIcon } from "@pisagor/svelte/icons";
   </DropdownMenu.Trigger>
   <DropdownMenu.Content class="w-40">
     <DropdownMenu.Item value="docs">
-      {#snippet asChild(
-        props,
-      )}
+      {#snippet asChild(props)}
         <a
           {...props()}
           href="https://example.com/docs"
@@ -26,9 +24,7 @@ import { ArrowSquareOutIcon } from "@pisagor/svelte/icons";
       {/snippet}
     </DropdownMenu.Item>
     <DropdownMenu.Item value="components">
-      {#snippet asChild(
-        props,
-      )}
+      {#snippet asChild(props)}
         <a {...props()} href="/docs/components">View docs</a>
       {/snippet}
     </DropdownMenu.Item>

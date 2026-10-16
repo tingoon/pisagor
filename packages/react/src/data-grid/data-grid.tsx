@@ -13,7 +13,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { getMessage } from "../components/provider/provider.context";
+import { useMessage } from "../components/provider/context";
 import {
   Table,
   type TableCellProps,
@@ -43,9 +43,7 @@ import {
 import { type DataGridFeatures, dataGridFeatures } from "./data-grid.features";
 
 // #region Types
-/**
- * @typeParam TData - Row shape passed to `columns` and `data`.
- */
+/** @typeParam TData - Row shape passed to `columns` and `data`. */
 export type DataGridProps<TData extends RowData> = {
   children: ReactNode;
   className?: string;
@@ -69,7 +67,7 @@ interface DataGridHeadProps extends TableHeadProps {
    * Renders a single column header.
    *
    * @remarks
-   * When omitted, renders every visible header in the group.
+   *   When omitted, renders every visible header in the group.
    */
   columnId?: string;
   /**
@@ -114,7 +112,7 @@ interface DataGridCellProps extends TableCellProps {
    * Renders a single column cell.
    *
    * @remarks
-   * When omitted, renders every visible cell in the row.
+   *   When omitted, renders every visible cell in the row.
    */
   columnId?: string;
 }
@@ -225,6 +223,7 @@ function DataGridColumnResizer({
   className,
   ...rest
 }: DataGridColumnResizerProps) {
+  const dataGridResizeColumnMessage = useMessage("dataGrid.resizeColumn");
   const headerCell = useDataGridHeaderCellContext();
   const { slots, table } = useDataGridContext();
 
@@ -242,7 +241,7 @@ function DataGridColumnResizer({
     // biome-ignore lint/a11y/useSemanticElements: focusable window-splitter handle; <hr> cannot take focus
     <div
       {...rest}
-      aria-label={getMessage("dataGrid.resizeColumn")}
+      aria-label={dataGridResizeColumnMessage}
       aria-orientation="vertical"
       aria-valuenow={header.column.getSize()}
       className={slots.columnResizer({
@@ -600,11 +599,12 @@ function DataGridCell<TData extends RowData>({
 }
 
 function DataGridEmpty({
-  children = getMessage("dataGrid.empty"),
+  children: childrenProp,
   colSpan,
   className,
   ...rest
 }: DataGridEmptyProps) {
+  const children = useMessage("dataGrid.empty", childrenProp);
   const { slots, table } = useDataGridContext();
   const span = colSpan ?? table.getAllColumns().length;
 

@@ -1,13 +1,13 @@
 <script lang="ts">
-import { Button, Dialog, DropdownMenu } from "@pisagor/svelte";
-import GearIcon from "phosphor-svelte/lib/GearIcon";
-import InfoIcon from "phosphor-svelte/lib/InfoIcon";
-import UserIcon from "phosphor-svelte/lib/UserIcon";
-import { menuDialogBlock } from "#/recipes/blocks/overlay";
+  import { Button, Dialog, DropdownMenu } from "@pisagor/svelte";
+  import GearIcon from "phosphor-svelte/lib/GearIcon";
+  import InfoIcon from "phosphor-svelte/lib/InfoIcon";
+  import UserIcon from "phosphor-svelte/lib/UserIcon";
+  import { menuDialogBlock } from "#/recipes/blocks/overlay";
 
-const styles = menuDialogBlock();
+  const styles = menuDialogBlock();
 
-let isOpen = $state(false);
+  let isOpen = $state(false);
 </script>
 
 <div>

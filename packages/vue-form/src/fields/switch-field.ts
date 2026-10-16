@@ -15,8 +15,7 @@ interface SwitchControlProps {
 }
 
 export interface SwitchFieldProps
-  extends FieldPresentationProps,
-    SwitchControlProps {
+  extends FieldPresentationProps, SwitchControlProps {
   checked?: boolean;
   name?: string;
   onBlur?: () => void;

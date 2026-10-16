@@ -4,6 +4,7 @@ import type { EditableRecipeFn } from "@pisagor/recipes";
 export interface EditableProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue editableRecipe
    */
   recipe?: EditableRecipeFn;

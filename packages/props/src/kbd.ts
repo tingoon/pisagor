@@ -8,6 +8,7 @@ import type {
 export interface KbdProps extends KbdVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue kbdRecipe
    */
   recipe?: KbdRecipeFn;
@@ -17,6 +18,7 @@ export interface KbdProps extends KbdVariantProps {
 export interface KbdGroupProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue kbdGroupRecipe
    */
   recipe?: KbdGroupRecipeFn;

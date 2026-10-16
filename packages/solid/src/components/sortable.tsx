@@ -16,7 +16,7 @@ import {
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { DotsSixVerticalIcon } from "../internal/icons";
 import { createContext } from "../utils";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 
 type SortableOrientation = "vertical" | "horizontal";
 
@@ -64,7 +64,8 @@ const { SortableItemStateContext, useSortableItemState } =
 // #endregion
 
 export interface SortableRootProps
-  extends Omit<ComponentProps<typeof ark.div>, "onDragStart">,
+  extends
+    Omit<ComponentProps<typeof ark.div>, "onDragStart">,
     BaseSortableRootProps {
   orientation?: SortableOrientation;
   disabled?: boolean;
@@ -73,8 +74,7 @@ export interface SortableRootProps
 }
 
 export interface SortableItemProps
-  extends ComponentProps<typeof ark.div>,
-    BaseSortableItemProps {
+  extends ComponentProps<typeof ark.div>, BaseSortableItemProps {
   value: string;
 }
 
@@ -155,7 +155,7 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
     local.onValueChange?.(reorder(current, from, to));
   };
 
-  const movedTemplate = useProviderMessage("sortable.moved");
+  const movedTemplate = useTranslation("sortable.moved");
   const [moved, setMoved] = createSignal("");
   const keyShortcuts = () =>
     orientation() === "vertical"
@@ -348,9 +348,7 @@ export function SortableHandle(props: SortableHandleProps): JSX.Element {
           ? "Alt+ArrowUp Alt+ArrowDown"
           : "Alt+ArrowLeft Alt+ArrowRight"
       }
-      aria-label={
-        local["aria-label"] ?? useProviderMessage("sortable.dragHandle")
-      }
+      aria-label={local["aria-label"] ?? useTranslation("sortable.dragHandle")}
       class={styles.slots.handle({ class: local.class, disabled: disabled() })}
       data-part="handle"
       data-scope="sortable"

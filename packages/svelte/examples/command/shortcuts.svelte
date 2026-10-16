@@ -1,24 +1,24 @@
 <script lang="ts">
-import { useListCollection } from "@ark-ui/svelte/collection";
-import { useFilter } from "@ark-ui/svelte/locale";
-import { Command } from "@pisagor/svelte";
+  import { useListCollection } from "@ark-ui/svelte/collection";
+  import { useFilter } from "@ark-ui/svelte/locale";
+  import { Command } from "@pisagor/svelte";
 
-const initialItems = [
-  { label: "New file", shortcut: "⌘N", value: "new" },
-  { label: "Save", shortcut: "⌘S", value: "save" },
-  { label: "Copy", shortcut: "⌘C", value: "copy" },
-  { label: "Paste", shortcut: "⌘V", value: "paste" },
-  { label: "Undo", shortcut: "⌘Z", value: "undo" },
-  { label: "Find", shortcut: "⌘F", value: "find" },
-];
-const filters = useFilter({ sensitivity: "base" });
+  const initialItems = [
+    { label: "New file", shortcut: "⌘N", value: "new" },
+    { label: "Save", shortcut: "⌘S", value: "save" },
+    { label: "Copy", shortcut: "⌘C", value: "copy" },
+    { label: "Paste", shortcut: "⌘V", value: "paste" },
+    { label: "Undo", shortcut: "⌘Z", value: "undo" },
+    { label: "Find", shortcut: "⌘F", value: "find" },
+  ];
+  const filters = useFilter({ sensitivity: "base" });
 
-const { collection, filter } = useListCollection({
-  filter(itemString, filterText) {
-    return filters().contains(itemString, filterText);
-  },
-  initialItems,
-});
+  const { collection, filter } = useListCollection({
+    filter(itemString, filterText) {
+      return filters().contains(itemString, filterText);
+    },
+    initialItems,
+  });
 </script>
 
 <Command

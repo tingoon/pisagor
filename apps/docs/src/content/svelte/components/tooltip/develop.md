@@ -54,9 +54,9 @@ Extend `tooltipRecipe` with `tv({ extend })` and pass it to `recipe` when the lo
 
 Complies with the [Tooltip WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/) (via Ark UI).
 
-| Key | Description |
-| --- | ----------- |
-| Tab | Opens or closes the tooltip without delay when focus moves to or from the trigger. |
-| Escape | If open, closes the tooltip without delay. |
+| Key    | Description                                                                        |
+| ------ | ---------------------------------------------------------------------------------- |
+| Tab    | Opens or closes the tooltip without delay when focus moves to or from the trigger. |
+| Escape | If open, closes the tooltip without delay.                                         |
 
 Icon-only triggers need an accessible name (`aria-label` or visible text).

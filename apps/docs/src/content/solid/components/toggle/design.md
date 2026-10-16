@@ -29,9 +29,9 @@ For related toggles, use [Toggle Group](/solid/components/toggle-group/design) o
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Pressed tool control | **Toggle** |
-| Immediate setting | [Switch](/solid/components/switch/design) |
-| Form boolean | [Checkbox](/solid/components/checkbox/design) |
-| Icon state swap | [Swap](/solid/components/swap/design) |
+| Need                 | Prefer                                        |
+| -------------------- | --------------------------------------------- |
+| Pressed tool control | **Toggle**                                    |
+| Immediate setting    | [Switch](/solid/components/switch/design)     |
+| Form boolean         | [Checkbox](/solid/components/checkbox/design) |
+| Icon state swap      | [Swap](/solid/components/swap/design)         |

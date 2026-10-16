@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Button, Card, Editable, Field } from "@pisagor/svelte";
-import { CheckIcon, PencilSimpleIcon, XIcon } from "@pisagor/svelte/icons";
+  import { Button, Card, Editable, Field } from "@pisagor/svelte";
+  import { CheckIcon, PencilSimpleIcon, XIcon } from "@pisagor/svelte/icons";
 </script>
 
 <Card>

@@ -29,10 +29,10 @@ Stepper buttons should respond on press with immediate value updates. Disable in
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Numeric entry with steppers | **Number Input** |
-| Generic text | [Input](/solid/components/input/design) |
-| Label and error stack | [Field](/solid/components/field/design) |
-| Continuous range | [Slider](/solid/components/slider/design) |
-| Locale display only | [Format](/solid/components/format/design) |
+| Need                        | Prefer                                    |
+| --------------------------- | ----------------------------------------- |
+| Numeric entry with steppers | **Number Input**                          |
+| Generic text                | [Input](/solid/components/input/design)   |
+| Label and error stack       | [Field](/solid/components/field/design)   |
+| Continuous range            | [Slider](/solid/components/slider/design) |
+| Locale display only         | [Format](/solid/components/format/design) |

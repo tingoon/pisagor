@@ -29,9 +29,9 @@ When a button triggers async work, replace or augment its label with a spinner a
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Indeterminate short wait | **Spinner** |
-| Known percentage complete | [Progress](/solid/components/progress/design) |
+| Need                       | Prefer                                        |
+| -------------------------- | --------------------------------------------- |
+| Indeterminate short wait   | **Spinner**                                   |
+| Known percentage complete  | [Progress](/solid/components/progress/design) |
 | Content-shaped placeholder | [Skeleton](/solid/components/skeleton/design) |
-| Elapsed time display | [Timer](/solid/components/timer/design) |
+| Elapsed time display       | [Timer](/solid/components/timer/design)       |

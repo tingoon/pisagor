@@ -29,9 +29,9 @@ Match padding and radius to neighboring [Card](/vue/components/card/design) comp
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Clickable tile with nested actions | **Link Box** |
-| Row layout without overlay link | [Item](/vue/components/item/design) |
-| Static grouped content | [Card](/vue/components/card/design) |
-| Breadcrumb trail | [Breadcrumb](/vue/components/breadcrumb/design) |
+| Need                               | Prefer                                            |
+| ---------------------------------- | ------------------------------------------------- |
+| Clickable tile with nested actions | **Link Box**                                      |
+| Row layout without overlay link    | [Item](/vue/components/item/design)             |
+| Static grouped content             | [Card](/vue/components/card/design)             |
+| Breadcrumb trail                   | [Breadcrumb](/vue/components/breadcrumb/design) |

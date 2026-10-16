@@ -29,9 +29,9 @@ When rows are selectable, show a selection column, update counts in toolbar or [
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Structured interactive table | **Data Table** |
-| Advanced grid editing and virtualization | [Data Grid](/react/components/data-grid/design) |
-| Compact static markup table | [Table](/react/components/table/design) |
-| No rows yet | [Empty State](/react/components/empty-state/design) |
+| Need                                     | Prefer                                              |
+| ---------------------------------------- | --------------------------------------------------- |
+| Structured interactive table             | **Data Table**                                      |
+| Advanced grid editing and virtualization | [Data Grid](/react/components/data-grid/design)     |
+| Compact static markup table              | [Table](/react/components/table/design)             |
+| No rows yet                              | [Empty State](/react/components/empty-state/design) |

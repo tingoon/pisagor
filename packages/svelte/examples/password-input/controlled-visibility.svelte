@@ -1,7 +1,7 @@
 <script lang="ts">
-import { PasswordInput } from "@pisagor/svelte";
+  import { PasswordInput } from "@pisagor/svelte";
 
-let visible = $state(false);
+  let visible = $state(false);
 </script>
 
 <PasswordInput

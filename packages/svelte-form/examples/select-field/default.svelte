@@ -1,6 +1,6 @@
 <script lang="ts">
-import { SelectField } from "@pisagor/svelte-form";
-import { countryOptions } from "../options";
+  import { SelectField } from "@pisagor/svelte-form";
+  import { countryOptions } from "../options";
 </script>
 
 <SelectField

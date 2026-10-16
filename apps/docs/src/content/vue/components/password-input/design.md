@@ -29,10 +29,10 @@ When a password field shares a row with a visibility toggle or strength meter, c
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Masked credential entry | **Password Input** |
-| Generic single-line text | [Input](/vue/components/input/design) |
-| One-time verification digits | [Input OTP](/vue/components/input-otp/design) |
-| Label, hint, error layout | [Field](/vue/components/field/design) |
-| Attached toggle chrome | [Input Group](/vue/components/input-group/design) |
+| Need                         | Prefer                                              |
+| ---------------------------- | --------------------------------------------------- |
+| Masked credential entry      | **Password Input**                                  |
+| Generic single-line text     | [Input](/vue/components/input/design)             |
+| One-time verification digits | [Input OTP](/vue/components/input-otp/design)     |
+| Label, hint, error layout    | [Field](/vue/components/field/design)             |
+| Attached toggle chrome       | [Input Group](/vue/components/input-group/design) |

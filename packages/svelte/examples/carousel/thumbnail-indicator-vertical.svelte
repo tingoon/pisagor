@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Carousel } from "@pisagor/svelte";
-import { imageSources } from "./helpers";
+  import { Carousel } from "@pisagor/svelte";
+  import { imageSources } from "./helpers";
 
-const slides = imageSources();
+  const slides = imageSources();
 </script>
 
 <Carousel.Root
@@ -18,7 +18,7 @@ const slides = imageSources();
     <Carousel.ItemGroup>
       {#each slides as slide, index}
         <Carousel.Item {index}>
-          <img alt={slide.alt} height={300} src={slide.src} width={500}>
+          <img alt={slide.alt} height={300} src={slide.src} width={500} />
         </Carousel.Item>
       {/each}
     </Carousel.ItemGroup>
@@ -26,7 +26,7 @@ const slides = imageSources();
   <Carousel.IndicatorGroup class="ml-4">
     {#each slides as slide, index}
       <Carousel.Indicator class="size-10 rounded-md" {index}>
-        <img alt={slide.alt} height={40} src={slide.src} width={40}>
+        <img alt={slide.alt} height={40} src={slide.src} width={40} />
       </Carousel.Indicator>
     {/each}
   </Carousel.IndicatorGroup>

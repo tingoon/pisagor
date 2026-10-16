@@ -1,5 +1,5 @@
 <script lang="ts">
-import { QrCode } from "@pisagor/svelte";
+  import { QrCode } from "@pisagor/svelte";
 </script>
 
 <QrCode value="https://example.com">

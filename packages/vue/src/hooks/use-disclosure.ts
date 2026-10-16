@@ -8,9 +8,7 @@ export interface UseDisclosureReturn {
   toggle: (value?: boolean) => void;
 }
 
-/**
- * Returns open/close/toggle helpers for boolean disclosure state.
- */
+/** Returns open/close/toggle helpers for boolean disclosure state. */
 export function useDisclosure(initialValue = false): UseDisclosureReturn {
   const [opened, toggle] = useToggle(initialValue);
 

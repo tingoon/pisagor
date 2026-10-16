@@ -29,9 +29,9 @@ When offering autocomplete, align suggestions with [Combobox](/vue/components/co
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Multiple freeform or validated tokens | **Tags Input** |
-| Fixed multi-select | [Select](/vue/components/select/design) |
-| Long prose | [Textarea](/vue/components/textarea/design) |
-| Display-only labels | [Badge](/vue/components/badge/design) |
+| Need                                  | Prefer                                        |
+| ------------------------------------- | --------------------------------------------- |
+| Multiple freeform or validated tokens | **Tags Input**                                |
+| Fixed multi-select                    | [Select](/vue/components/select/design)     |
+| Long prose                            | [Textarea](/vue/components/textarea/design) |
+| Display-only labels                   | [Badge](/vue/components/badge/design)       |

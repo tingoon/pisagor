@@ -2,20 +2,18 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const comboboxRecipe = tv({
   defaultVariants: {
-    /**
-     * Show indicator.
-     */
+    /** Show indicator. */
     showIndicator: true,
   },
   slots: {
     content: [
-      "relative z-popover",
+      "z-popover relative",
       "max-h-96 min-w-48",
       "origin-(--transform-origin)",
       "p-1",
       "bg-popover",
       "text-popover-foreground",
-      "rounded-2xl border border-border/50 shadow-md",
+      "border-border/50 rounded-2xl border shadow-md",
       "overflow-y-auto",
       "outline-hidden",
       "duration-fast",
@@ -32,7 +30,7 @@ export const comboboxRecipe = tv({
       "group/combobox-control",
       "relative flex flex-wrap items-center gap-1",
     ],
-    empty: ["px-2 py-1.5", "text-center text-muted-foreground text-sm"],
+    empty: ["px-2 py-1.5", "text-muted-foreground text-center text-sm"],
     item: [
       "relative",
       "py-1.5 ps-2",
@@ -45,14 +43,14 @@ export const comboboxRecipe = tv({
       "data-[state=checked]:bg-accent data-[state=checked]:text-accent-foreground",
       "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
-      "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+      "[&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
     ],
-    itemGroupLabel: ["px-2 py-1.5 font-semibold text-muted-foreground text-xs"],
+    itemGroupLabel: ["text-muted-foreground px-2 py-1.5 text-xs font-semibold"],
     itemIndicator: [
       "absolute inset-e-2 flex size-3.5 items-center justify-center",
     ],
     list: ["flex flex-col"],
-    trigger: ["absolute inset-e-1 inset-y-0"],
+    trigger: ["absolute inset-y-0 inset-e-1"],
     triggerButton: "size-4",
     triggerHidden:
       "group-has-[[data-scope=combobox][data-part=clear-trigger]]/input-group:hidden",

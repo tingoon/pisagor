@@ -1,39 +1,39 @@
 <script lang="ts">
-import {
-  type FileUploadRootProps as ArkRootProps,
-  FileUpload as FileUploadPrimitive,
-} from "@ark-ui/svelte/file-upload";
-import type { FileUploadProps as BaseFileUploadProps } from "@pisagor/props";
-import { fileUploadRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { Context } from "./file-upload.context";
+  import {
+    type FileUploadRootProps as ArkRootProps,
+    FileUpload as FileUploadPrimitive,
+  } from "@ark-ui/svelte/file-upload";
+  import type { FileUploadProps as BaseFileUploadProps } from "@pisagor/props";
+  import { fileUploadRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { Context } from "./file-upload.context";
 
-type Props = ArkRootProps & {
-  onValueChange?: (value: globalThis.File[]) => void;
-} & BaseFileUploadProps;
+  type Props = ArkRootProps & {
+    onValueChange?: (value: globalThis.File[]) => void;
+  } & BaseFileUploadProps;
 
-let {
-  children,
-  onFileChange,
-  onValueChange,
-  recipe = fileUploadRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    children,
+    onFileChange,
+    onValueChange,
+    recipe = fileUploadRecipe,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const slots = $derived(recipe());
-Context.set({
-  get slots() {
-    return slots;
-  },
-});
+  const slots = $derived(recipe());
+  Context.set({
+    get slots() {
+      return slots;
+    },
+  });
 
-function handleFileChange(
-  details: Parameters<NonNullable<Props["onFileChange"]>>[0],
-) {
-  onFileChange?.(details);
-  onValueChange?.(details.acceptedFiles);
-}
+  function handleFileChange(
+    details: Parameters<NonNullable<Props["onFileChange"]>>[0],
+  ) {
+    onFileChange?.(details);
+    onValueChange?.(details.acceptedFiles);
+  }
 </script>
 
 <FileUploadPrimitive.Root

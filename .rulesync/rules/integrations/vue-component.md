@@ -1,7 +1,7 @@
 ---
 root: false
 targets:
-  - '*'
+  - "*"
 description: Shared Vue component patterns — package layout, compound API, h()/defineComponent, styling, a11y
 globs:
   - packages/vue/src/**/*.ts
@@ -124,11 +124,11 @@ Framework-agnostic visual props live in [`@pisagor/props`](../../../packages/pro
 
 Choose **closed**, **compound**, or **compound + shorthand** per component. Same product surface as React — different runtime wiring.
 
-| Model | Use when | Public API | Barrel (`index.ts`) |
-| ----- | -------- | ---------- | ------------------- |
-| **Closed** | Single props surface; no subpart composition | `Foo` | Flat file export / root barrel `export * from "./foo"` |
-| **Compound** | Consumer composes subparts | `Foo.Root`, `Foo.Title`, … | `Object.assign(FooRoot, { … })` at bottom of `<name>.ts` |
-| **Shorthand** | Repetitive composition wrapper | `FooShorthand` or root preset (`items`, `title`) | Attached via `Object.assign` on compound barrel |
+| Model         | Use when                                     | Public API                                       | Barrel (`index.ts`)                                      |
+| ------------- | -------------------------------------------- | ------------------------------------------------ | -------------------------------------------------------- |
+| **Closed**    | Single props surface; no subpart composition | `Foo`                                            | Flat file export / root barrel `export * from "./foo"`   |
+| **Compound**  | Consumer composes subparts                   | `Foo.Root`, `Foo.Title`, …                       | `Object.assign(FooRoot, { … })` at bottom of `<name>.ts` |
+| **Shorthand** | Repetitive composition wrapper               | `FooShorthand` or root preset (`items`, `title`) | Attached via `Object.assign` on compound barrel          |
 
 **Shorthand when:**
 
@@ -185,15 +185,15 @@ Choose **closed**, **compound**, or **compound + shorthand** per component. Same
 
 **Pattern guide:**
 
-| Pattern | Use |
-| ------- | --- |
-| **Compound + headless** | `{Name}Root` + subparts; Ark Vue primitive; `Object.assign` barrel |
-| **Compound + shorthand** | Compound = source of truth; `FooShorthand` or root preset for common cases |
-| **Compound barrel** | `Object.assign(FooRoot, { Item, Trigger, … })` at bottom of flat `<name>.ts` (or folder `index.ts`) |
+| Pattern                        | Use                                                                                                    |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| **Compound + headless**        | `{Name}Root` + subparts; Ark Vue primitive; `Object.assign` barrel                                     |
+| **Compound + shorthand**       | Compound = source of truth; `FooShorthand` or root preset for common cases                             |
+| **Compound barrel**            | `Object.assign(FooRoot, { Item, Trigger, … })` at bottom of flat `<name>.ts` (or folder `index.ts`)    |
 | **Closed + multi-slot recipe** | Single export; import multi-slot `{name}Recipe` from `@pisagor/recipes`; sub-element `classNames` bags |
-| **Closed + behavior** | Single export; convenience props; single-element or thin recipe |
-| **Closed + primitive wrapper** | Thin styled layer over one headless part |
-| **Composition layer** | Composes other package exports; no new primitive |
+| **Closed + behavior**          | Single export; convenience props; single-element or thin recipe                                        |
+| **Closed + primitive wrapper** | Thin styled layer over one headless part                                                               |
+| **Composition layer**          | Composes other package exports; no new primitive                                                       |
 
 **Example:**
 
@@ -225,13 +225,13 @@ In `FooShorthand` render trees, leave a **blank line between each top-level slot
 
 Every `<name>.ts` file uses `#region` blocks in this order. Skip regions that do not apply; never reorder.
 
-| Order | Region | When |
-| ----- | ------ | ---- |
-| 1 | `Context` | `createSlotRecipeContext` + thin non-style `createContext` (or import from folder `.context.ts`) |
-| 2 | `Types` | Props, variant prop types (imported from recipes), item interfaces |
-| 3 | `Hooks` | File-local composables not exported from the public surface |
-| 4 | `Component` / `Parts` | Single export (`Component`) or two+ parts (`Parts`) — not shorthand/closed compose |
-| 5 | `Shorthand` / `Closed` | Preset compose — after all parts (`FooShorthand` or closed `Foo`) |
+| Order | Region                 | When                                                                                             |
+| ----- | ---------------------- | ------------------------------------------------------------------------------------------------ |
+| 1     | `Context`              | `createSlotRecipeContext` + thin non-style `createContext` (or import from folder `.context.ts`) |
+| 2     | `Types`                | Props, variant prop types (imported from recipes), item interfaces                               |
+| 3     | `Hooks`                | File-local composables not exported from the public surface                                      |
+| 4     | `Component` / `Parts`  | Single export (`Component`) or two+ parts (`Parts`) — not shorthand/closed compose               |
+| 5     | `Shorthand` / `Closed` | Preset compose — after all parts (`FooShorthand` or closed `Foo`)                                |
 
 For **foldered** multi-file components, thin non-style context may live in [`<name>.context.ts`](#context-file-namecontextts). Do **not** add a `#region Variants` — `tv()` recipes live in `@pisagor/recipes`.
 
@@ -276,11 +276,11 @@ Public props are a **dual surface**: a TypeScript `interface` (consumer types / 
 - Multi-slot overrides: `classNames?: VariantClassNames<{Name}RecipeSlot>` from `../internal/types` (or `../../internal/types` from a folder).
 - Sub-element bags on shorthand: behavior escape-hatches only — omit ownership of render/styling (`Omit<…, "class">` / no default-slot takeover).
 
-| `Omit` usage | Valid | Invalid |
-| --- | --- | --- |
-| Convenience prop conflicts with primitive prop | `type SelectRootProps = Omit<ArkSelectRootProps<Item>, "collection" \| "onValueChange">;` | Re-declare `onValueChange` with a different signature beside the Ark type |
-| Sub-element prop bags keep ownership of render/styling | `titleProps?: Omit<TitleProps, "class">` | Passing `class` through `titleProps` to fight `classNames` |
-| Preserve primitive contracts by default | Extend Ark part props when no conflict | Strip `role` / ARIA without an explicit replacement |
+| `Omit` usage                                           | Valid                                                                                     | Invalid                                                                   |
+| ------------------------------------------------------ | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Convenience prop conflicts with primitive prop         | `type SelectRootProps = Omit<ArkSelectRootProps<Item>, "collection" \| "onValueChange">;` | Re-declare `onValueChange` with a different signature beside the Ark type |
+| Sub-element prop bags keep ownership of render/styling | `titleProps?: Omit<TitleProps, "class">`                                                  | Passing `class` through `titleProps` to fight `classNames`                |
+| Preserve primitive contracts by default                | Extend Ark part props when no conflict                                                    | Strip `role` / ARIA without an explicit replacement                       |
 
 ### Do not
 
@@ -296,7 +296,7 @@ Form-control shells default to **`variant: "primary"`**. Resolve as:
 ```ts
 const resolved = {
   surfaceVariant: useFormControlSurface(),
-  variant: (variantProp) ?? ("primary" as FormControlVariant),
+  variant: variantProp ?? ("primary" as FormControlVariant),
 };
 const shellArgs = {
   surfaceVariant: resolved.surfaceVariant,
@@ -380,5 +380,5 @@ When a part has no recipe slot by design:
 
 - Author `*.stories.ts` in `apps/vue` (not in `packages/vue`). Follow [Storybook](stories.mdc) for story order, escape-hatch props, and sample data.
 - Declare `subcomponents` on meta for compound components (`Root`, `Item`, …).
-- Prefer `render: () => ({ components: { … }, template: \`…\` })` or `h()` render factories — match sibling stories in the folder.
+- Prefer `render: () => ({ components: { … }, template: \`…\` })`or`h()` render factories — match sibling stories in the folder.
 - Mirror the React sibling story (title, `parameters.metadata`, docs copy) when porting.

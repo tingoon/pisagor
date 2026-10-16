@@ -1,9 +1,9 @@
 <script lang="ts">
-import { TreeView } from "@pisagor/svelte";
-import { createDemoCollection } from "./helpers";
-import TreeNodeItem from "./tree-node-item.svelte";
+  import { TreeView } from "@pisagor/svelte";
+  import { createDemoCollection } from "./helpers";
+  import TreeNodeItem from "./tree-node-item.svelte";
 
-const collection = createDemoCollection();
+  const collection = createDemoCollection();
 </script>
 
 <div>

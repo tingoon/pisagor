@@ -1,5 +1,5 @@
 <script lang="ts">
-import { SliderField } from "@pisagor/svelte-form";
+  import { SliderField } from "@pisagor/svelte-form";
 </script>
 
 <SliderField

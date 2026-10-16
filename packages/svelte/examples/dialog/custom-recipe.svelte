@@ -1,18 +1,18 @@
 <script lang="ts">
-import { Portal } from "@ark-ui/svelte/portal";
-import { dialogRecipe } from "@pisagor/recipes";
-import { Button, Dialog, Field, Input, Select } from "@pisagor/svelte";
-import { tv } from "tailwind-variants";
+  import { Portal } from "@ark-ui/svelte/portal";
+  import { dialogRecipe } from "@pisagor/recipes";
+  import { Button, Dialog, Field, Input, Select } from "@pisagor/svelte";
+  import { tv } from "tailwind-variants";
 
-const brandDialogRecipe = tv({
-  extend: dialogRecipe,
-  slots: {
-    backdrop: "bg-emerald-950/30",
-    content: "border-emerald-500/40",
-    title: "text-emerald-900 dark:text-emerald-100",
-  },
-  variants: {},
-});
+  const brandDialogRecipe = tv({
+    extend: dialogRecipe,
+    slots: {
+      backdrop: "bg-emerald-950/30",
+      content: "border-emerald-500/40",
+      title: "text-emerald-900 dark:text-emerald-100",
+    },
+    variants: {},
+  });
 </script>
 
 <Dialog.Root recipe={brandDialogRecipe}>

@@ -4,6 +4,7 @@ import type { DataTableRecipeFn } from "@pisagor/recipes";
 export interface DataTableProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue dataTableRecipe
    */
   recipe?: DataTableRecipeFn;

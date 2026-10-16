@@ -36,7 +36,7 @@ import {
 import { Portal } from "solid-js/web";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "../internal/icons";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 import { Separator, type SeparatorProps } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -74,15 +74,18 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
   onValueChange?: (value: string | string[]) => void;
 } & BaseSelectRootProps;
 
-export interface SelectProps
-  extends Omit<SelectRootProps, "children" | "collection"> {
+export interface SelectProps extends Omit<
+  SelectRootProps,
+  "children" | "collection"
+> {
   clearable?: boolean;
   items?: Array<SelectPresetItem | string>;
   placeholder?: string;
 }
 
 export interface SelectTriggerProps
-  extends Omit<SelectPrimitiveTriggerProps, "size">,
+  extends
+    Omit<SelectPrimitiveTriggerProps, "size">,
     FormControlShellVariantProps {
   clearable?: boolean;
 }
@@ -285,7 +288,7 @@ export function SelectClearTrigger(
 
   return (
     <SelectPrimitive.ClearTrigger
-      aria-label={useProviderMessage("select.clear")}
+      aria-label={useTranslation("select.clear")}
       {...rest}
       class={slots().clearTrigger({ class: local.class })}
     />

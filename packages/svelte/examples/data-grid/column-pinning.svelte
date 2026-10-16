@@ -1,27 +1,26 @@
 <script lang="ts">
-import { Table } from "@pisagor/svelte";
-import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import type { ColumnPinningState } from "@tanstack/svelte-table";
-import { allUsers, userColumns } from "./helpers";
+  import { Table } from "@pisagor/svelte";
+  import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
+  import type { ColumnPinningState } from "@tanstack/svelte-table";
+  import { allUsers, userColumns } from "./helpers";
 
-const columns = [...userColumns];
-let columnPinning = $state<ColumnPinningState>({
-  end: ["status"],
-  start: ["name"],
-});
+  const columns = [...userColumns];
+  let columnPinning = $state<ColumnPinningState>({
+    end: ["status"],
+    start: ["name"],
+  });
 
-function onColumnPinningChange(
-  updater:
-    | ColumnPinningState
-    | ((prev: ColumnPinningState) => ColumnPinningState),
-) {
-  columnPinning =
-    typeof updater === "function" ? updater(columnPinning) : updater;
-}
+  function onColumnPinningChange(
+    updater:
+      ColumnPinningState | ((prev: ColumnPinningState) => ColumnPinningState),
+  ) {
+    columnPinning =
+      typeof updater === "function" ? updater(columnPinning) : updater;
+  }
 </script>
 
 <div class="flex w-full flex-col gap-3">
-  <div class="overflow-x-auto rounded-xl border bg-muted/20 p-3">
+  <div class="bg-muted/20 overflow-x-auto rounded-xl border p-3">
     <DataGrid
       {columns}
       data={allUsers.slice(0, 8)}
@@ -30,7 +29,7 @@ function onColumnPinningChange(
       state={{ columnPinning }}
     >
       <DataGrid.Toolbar>
-        <p class="font-medium text-sm">Name pinned left, status pinned right</p>
+        <p class="text-sm font-medium">Name pinned left, status pinned right</p>
       </DataGrid.Toolbar>
       <Table>
         <Table.Header>

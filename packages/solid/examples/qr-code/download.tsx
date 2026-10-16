@@ -35,7 +35,7 @@ export function Download() {
             value={value()}
           />
           <div class="flex flex-col items-center gap-2">
-            <p class="font-medium text-muted-foreground text-sm">
+            <p class="text-muted-foreground text-sm font-medium">
               Live preview
             </p>
             <QrCode.Frame />

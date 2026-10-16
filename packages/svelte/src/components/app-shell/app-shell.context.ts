@@ -9,11 +9,13 @@ export type AppShellResizeHandlePosition = "bottom" | "center" | "top";
 export interface AppShellResizableProps {
   /**
    * Whether the region shows a resize handle when open.
+   *
    * @defaultValue true
    */
   enabled?: boolean;
   /**
    * Vertical placement of the visible resize-handle grip.
+   *
    * @defaultValue `"top"` via `useAppShell()`, `"center"` on the handle component
    */
   handlePosition?: AppShellResizeHandlePosition;
@@ -34,8 +36,7 @@ export const APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS = {
 >;
 
 export type AppShellFixedStackVar =
-  | "--app-shell-banner-height"
-  | "--app-shell-navigation-height";
+  "--app-shell-banner-height" | "--app-shell-navigation-height";
 
 export type AppShellRegionVar =
   | "--app-shell-end-inspector-width"

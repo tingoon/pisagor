@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ColorPicker, Input, parseColor } from "@pisagor/svelte";
+  import { ColorPicker, Input, parseColor } from "@pisagor/svelte";
 </script>
 
 <ColorPicker
@@ -10,9 +10,7 @@ import { ColorPicker, Input, parseColor } from "@pisagor/svelte";
   <ColorPicker.Control class="min-w-0 flex-1">
     <ColorPicker.FormatSelect />
     <ColorPicker.ChannelInput channel="hex">
-      {#snippet asChild(
-        props,
-      )}
+      {#snippet asChild(props)}
         <Input {...props()} />
       {/snippet}
     </ColorPicker.ChannelInput>

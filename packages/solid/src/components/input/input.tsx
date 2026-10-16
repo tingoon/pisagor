@@ -21,9 +21,11 @@ import { InputClearAddon } from "./input-clear-button";
 type FormControlVariant = "primary" | "secondary";
 type InputClassNames = VariantClassNames<InputRecipeSlot>;
 export interface InputProps
-  extends Omit<FieldInputProps, "size">,
-    BaseInputProps {
-  /** Initial value when uncontrolled. Solid has no native defaultValue on inputs. */
+  extends Omit<FieldInputProps, "size">, BaseInputProps {
+  /**
+   * Initial value when uncontrolled. Solid has no native defaultValue on
+   * inputs.
+   */
   defaultValue?: string | number | readonly string[];
   clearable?: boolean;
   onValueChange?: (value: string) => void;

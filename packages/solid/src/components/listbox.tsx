@@ -24,7 +24,7 @@ import { createMemo, For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { CheckIcon } from "../internal/icons";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "./dropdown-menu";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -50,8 +50,10 @@ export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   onValueChange?: (value: string | string[]) => void;
 } & BaseListboxRootProps;
 
-export interface ListboxProps
-  extends Omit<ListboxRootProps, "children" | "collection"> {
+export interface ListboxProps extends Omit<
+  ListboxRootProps,
+  "children" | "collection"
+> {
   collection?: ListboxRootProps["collection"];
   /** Content shown when there are no items. */
   emptyText?: JSX.Element;
@@ -59,8 +61,7 @@ export interface ListboxProps
 }
 
 export interface ListboxItemProps
-  extends ListboxPrimitiveItemProps,
-    BaseListboxItemProps {}
+  extends ListboxPrimitiveItemProps, BaseListboxItemProps {}
 
 export interface ListboxItemGroupProps extends ListboxPrimitiveItemGroupProps {
   heading?: string;
@@ -208,7 +209,7 @@ export function ListboxEmpty(props: ListboxEmptyProps): JSX.Element {
       {...rest}
       class={styles.slots.empty({ class: local.class })}
     >
-      {local.children || useProviderMessage("listbox.empty")}
+      {local.children || useTranslation("listbox.empty")}
     </ListboxPrimitive.Empty>
   );
 }

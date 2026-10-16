@@ -1,5 +1,5 @@
 <script lang="ts">
-import { InputGroup, NumberInput } from "@pisagor/svelte";
+  import { InputGroup, NumberInput } from "@pisagor/svelte";
 </script>
 
 <InputGroup>

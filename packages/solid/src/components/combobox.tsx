@@ -41,7 +41,7 @@ import { createSlotRecipeContext } from "../internal/create-slot-recipe-context"
 import { CaretUpDownIcon, CheckIcon, XIcon } from "../internal/icons";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const { Context: ComboboxStylesContext } = createSlotRecipeContext({
@@ -57,7 +57,10 @@ function useComboboxSlots() {
 
 /** Root-level control props (`variant`, `size`) read by `Combobox.Input`. */
 const ComboboxControlContext = createContext<InputRootVariantProps>({});
-/** True inside `Combobox.Control`, so `Combobox.Input` does not render a second control. */
+/**
+ * True inside `Combobox.Control`, so `Combobox.Input` does not render a second
+ * control.
+ */
 const ComboboxInsideControlContext = createContext(false);
 
 /** @deprecated Prefer composing within Combobox.Root; kept for public API. */
@@ -90,28 +93,27 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   onValueChange?: (value: string[]) => void;
 } & BaseComboboxRootProps;
 
-export interface ComboboxProps
-  extends Omit<ComboboxRootProps, "children" | "collection"> {
+export interface ComboboxProps extends Omit<
+  ComboboxRootProps,
+  "children" | "collection"
+> {
   clearable?: boolean;
   items?: Array<ComboboxPresetItem | string>;
 }
 
 export interface ComboboxInputProps
-  extends Omit<ComboboxPrimitiveInputProps, "size">,
-    InputRootVariantProps {
+  extends Omit<ComboboxPrimitiveInputProps, "size">, InputRootVariantProps {
   clearable?: boolean;
   disabled?: boolean;
   showTrigger?: boolean;
 }
 
-export interface ComboboxItemGroupProps
-  extends ComboboxPrimitiveItemGroupProps {
+export interface ComboboxItemGroupProps extends ComboboxPrimitiveItemGroupProps {
   heading?: string | JSX.Element;
 }
 
 export interface ComboboxItemProps
-  extends ComboboxPrimitiveItemProps,
-    ComboboxVariantProps {}
+  extends ComboboxPrimitiveItemProps, ComboboxVariantProps {}
 
 export type ComboboxFieldInputProps = ComboboxPrimitiveInputProps;
 
@@ -227,7 +229,7 @@ export function ComboboxInput(props: ComboboxInputProps): JSX.Element {
             asChild={(triggerProps) => (
               <InputGroup.Button
                 {...triggerProps()}
-                aria-label={useProviderMessage("combobox.clear")}
+                aria-label={useTranslation("combobox.clear")}
                 size="icon-xs"
                 variant="ghost"
               >
@@ -267,7 +269,7 @@ export function ComboboxTrigger(props: ComboboxTriggerProps): JSX.Element {
       asChild={(triggerProps) => (
         <Button
           {...triggerProps({ class: cn(slots().trigger(), local.class) })}
-          aria-label={useProviderMessage("combobox.toggle")}
+          aria-label={useTranslation("combobox.toggle")}
           class={slots().triggerButton()}
           variant="ghost"
         >
@@ -285,7 +287,7 @@ export function ComboboxClearTrigger(
   return (
     <ComboboxPrimitive.ClearTrigger
       {...rest}
-      aria-label={local["aria-label"] ?? useProviderMessage("select.clear")}
+      aria-label={local["aria-label"] ?? useTranslation("select.clear")}
     />
   );
 }
@@ -388,7 +390,7 @@ export function ComboboxEmpty(props: ComboboxEmptyProps): JSX.Element {
       {...rest}
       class={slots().empty({ class: local.class })}
     >
-      {local.children || useProviderMessage("combobox.empty")}
+      {local.children || useTranslation("combobox.empty")}
     </ComboboxPrimitive.Empty>
   );
 }

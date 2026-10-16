@@ -1,28 +1,28 @@
 <script lang="ts">
-import { useListCollection } from "@ark-ui/svelte/collection";
-import { useFilter } from "@ark-ui/svelte/locale";
-import { Autocomplete, Combobox, Field } from "@pisagor/svelte";
+  import { useListCollection } from "@ark-ui/svelte/collection";
+  import { useFilter } from "@ark-ui/svelte/locale";
+  import { Autocomplete, Combobox, Field } from "@pisagor/svelte";
 
-const initialItems = [
-  { label: "Apple", value: "apple" },
-  { label: "Banana", value: "banana" },
-  { label: "Orange", value: "orange" },
-  { label: "Grape", value: "grape" },
-  { label: "Strawberry", value: "strawberry" },
-  { label: "Mango", value: "mango" },
-  { label: "Pineapple", value: "pineapple" },
-  { label: "Kiwi", value: "kiwi" },
-  { label: "Peach", value: "peach" },
-  { label: "Pear", value: "pear" },
-];
-const filters = useFilter({ sensitivity: "base" });
+  const initialItems = [
+    { label: "Apple", value: "apple" },
+    { label: "Banana", value: "banana" },
+    { label: "Orange", value: "orange" },
+    { label: "Grape", value: "grape" },
+    { label: "Strawberry", value: "strawberry" },
+    { label: "Mango", value: "mango" },
+    { label: "Pineapple", value: "pineapple" },
+    { label: "Kiwi", value: "kiwi" },
+    { label: "Peach", value: "peach" },
+    { label: "Pear", value: "pear" },
+  ];
+  const filters = useFilter({ sensitivity: "base" });
 
-const { collection, filter } = useListCollection({
-  filter(itemString, filterText) {
-    return filters().contains(itemString, filterText);
-  },
-  initialItems,
-});
+  const { collection, filter } = useListCollection({
+    filter(itemString, filterText) {
+      return filters().contains(itemString, filterText);
+    },
+    initialItems,
+  });
 </script>
 
 <Field>

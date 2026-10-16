@@ -1,8 +1,8 @@
 <script lang="ts">
-import { ToggleGroup } from "@pisagor/svelte";
-import TextBIcon from "phosphor-svelte/lib/TextBIcon";
-import TextItalicIcon from "phosphor-svelte/lib/TextItalicIcon";
-import TextUnderlineIcon from "phosphor-svelte/lib/TextUnderlineIcon";
+  import { ToggleGroup } from "@pisagor/svelte";
+  import TextBIcon from "phosphor-svelte/lib/TextBIcon";
+  import TextItalicIcon from "phosphor-svelte/lib/TextItalicIcon";
+  import TextUnderlineIcon from "phosphor-svelte/lib/TextUnderlineIcon";
 </script>
 
 <ToggleGroup.Root

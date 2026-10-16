@@ -1,30 +1,32 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import { buttonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { HTMLButtonAttributes } from "svelte/elements";
-import { useSidebar } from "./sidebar.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import { buttonRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLButtonAttributes } from "svelte/elements";
+  import { useSidebar } from "./sidebar.context";
 
-type Props = Omit<HTMLButtonAttributes, "type"> & {
-  children?: import("svelte").Snippet;
-  showOnHover?: boolean;
-  /**
-   * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
-   * @defaultValue buttonRecipe
-   */
-  buttonRecipe?: typeof buttonRecipe;
-  type?: HTMLButtonAttributes["type"];
-};
+  type Props = Omit<HTMLButtonAttributes, "type"> & {
+    children?: import("svelte").Snippet;
+    showOnHover?: boolean;
+    /**
+     * Button style recipe. Defaults to `buttonRecipe` from
+     * `@pisagor/recipes/button`.
+     *
+     * @defaultValue buttonRecipe
+     */
+    buttonRecipe?: typeof buttonRecipe;
+    type?: HTMLButtonAttributes["type"];
+  };
 
-let {
-  showOnHover = false,
-  buttonRecipe: buttonRecipeProp = buttonRecipe,
-  class: className,
-  children,
-  type = "button",
-  ...rest
-}: Props = $props();
-const ctx = useSidebar();
+  let {
+    showOnHover = false,
+    buttonRecipe: buttonRecipeProp = buttonRecipe,
+    class: className,
+    children,
+    type = "button",
+    ...rest
+  }: Props = $props();
+  const ctx = useSidebar();
 </script>
 
 <Ark
@@ -38,7 +40,7 @@ const ctx = useSidebar();
     }).base(),
     ctx.slots.menuAction(),
     !showOnHover &&
-      "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-accent-foreground md:opacity-0",
+      "peer-data-[active=true]/menu-button:text-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0",
     className,
   )}
   data-part="menu-action"

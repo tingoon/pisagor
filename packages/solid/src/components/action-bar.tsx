@@ -24,7 +24,7 @@ import { XIcon } from "../internal/icons";
 import { createContext } from "../utils";
 import { Badge, type BadgeProps } from "./badge";
 import { Button } from "./button";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 import { Separator, type SeparatorProps } from "./separator";
 
 // #region Context
@@ -63,7 +63,8 @@ interface ActionBarActionItem {
 }
 
 export interface ActionBarProps
-  extends Pick<ActionBarState, "lazyMount" | "unmountOnExit">,
+  extends
+    Pick<ActionBarState, "lazyMount" | "unmountOnExit">,
     BaseActionBarProps {
   closeOnEscape?: boolean;
   defaultOpen?: boolean;
@@ -289,7 +290,7 @@ export function ActionBarClose(props: ActionBarCloseProps): JSX.Element {
 
   return (
     <ark.button
-      aria-label={useProviderMessage("actionBar.close")}
+      aria-label={useTranslation("actionBar.close")}
       {...rest}
       class={styles.slots.close({ class: local.class })}
       data-part="close"

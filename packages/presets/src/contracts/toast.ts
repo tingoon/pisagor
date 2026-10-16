@@ -18,10 +18,10 @@ export const toastItemRecipe = tv({
       "px-3.5 py-3",
       "flex items-start justify-between gap-1.5",
       "bg-popover/88 backdrop-blur-xl backdrop-saturate-150",
-      "select-none text-card-foreground text-sm",
-      "rounded-2xl border border-border/50 shadow-md",
+      "text-card-foreground text-sm select-none",
+      "border-border/50 rounded-2xl border shadow-md",
       "scale-(--scale) opacity-(--opacity)",
-      "transition-all duration-normal will-change-[translate,opacity,scale]",
+      "duration-normal transition-all will-change-[translate,opacity,scale]",
       "ease-emphasized",
       "data-[state=closed]:transition",
       "data-[state=closed]:duration-[300ms,300ms,150ms]",
@@ -41,7 +41,7 @@ export const toastItemRecipe = tv({
       "in-data-[type=info]:text-info",
       "[&_svg]:pointer-events-none [&_svg]:h-lh [&_svg]:w-4 [&_svg]:shrink-0",
     ],
-    title: ["font-medium text-sm"],
+    title: ["text-sm font-medium"],
   },
 });
 

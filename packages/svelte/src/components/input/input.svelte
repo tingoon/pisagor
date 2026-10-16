@@ -1,72 +1,73 @@
 <script lang="ts">
-import { Field, type FieldInputProps } from "@ark-ui/svelte/field";
-import type { InputProps as BaseInputProps } from "@pisagor/props";
-import {
-  type InputRecipeSlot,
-  type InputRootVariantProps,
-  inputRecipe,
-  inputRootRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { VariantClassNames } from "../../internal/types";
-import InputGroupRoot from "../input-group/input-group-root.svelte";
-import { useFormControlSurface } from "../surface/use-form-control-surface";
-import InputClearAddon from "./input-clear-addon.svelte";
+  import { Field, type FieldInputProps } from "@ark-ui/svelte/field";
+  import type { InputProps as BaseInputProps } from "@pisagor/props";
+  import {
+    type InputRecipeSlot,
+    type InputRootVariantProps,
+    inputRecipe,
+    inputRootRecipe,
+  } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { VariantClassNames } from "../../internal/types";
+  import InputGroupRoot from "../input-group/input-group-root.svelte";
+  import { useFormControlSurface } from "../surface/use-form-control-surface";
+  import InputClearAddon from "./input-clear-addon.svelte";
 
-type FormControlVariant = "primary" | "secondary";
+  type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<FieldInputProps, "size"> &
-  InputRootVariantProps & {
-    /**
-     * Whether to show a clear button when the input has a value.
-     * @defaultValue false
-     */
-    clearable?: boolean;
-    classNames?: VariantClassNames<InputRecipeSlot>;
-    /** Called with the string value when the input changes. */
-    onValueChange?: (value: string) => void;
-    rootRecipe?: typeof inputRootRecipe;
-  } & BaseInputProps;
+  type Props = Omit<FieldInputProps, "size"> &
+    InputRootVariantProps & {
+      /**
+       * Whether to show a clear button when the input has a value.
+       *
+       * @defaultValue false
+       */
+      clearable?: boolean;
+      classNames?: VariantClassNames<InputRecipeSlot>;
+      /** Called with the string value when the input changes. */
+      onValueChange?: (value: string) => void;
+      rootRecipe?: typeof inputRootRecipe;
+    } & BaseInputProps;
 
-let {
-  size = "md",
-  variant: variantProp,
-  clearable = false,
-  disabled,
-  readonly,
-  type = "text",
-  value = $bindable<string | number | undefined>(undefined),
-  oninput,
-  onValueChange,
-  recipe = inputRecipe,
-  rootRecipe = inputRootRecipe,
-  class: className,
-  classNames,
-  ...rest
-}: Props = $props();
+  let {
+    size = "md",
+    variant: variantProp,
+    clearable = false,
+    disabled,
+    readonly,
+    type = "text",
+    value = $bindable<string | number | undefined>(undefined),
+    oninput,
+    onValueChange,
+    recipe = inputRecipe,
+    rootRecipe = inputRootRecipe,
+    class: className,
+    classNames,
+    ...rest
+  }: Props = $props();
 
-const surfaceVariant = useFormControlSurface();
-const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-const slots = $derived(recipe());
+  const surfaceVariant = useFormControlSurface();
+  const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
+  const slots = $derived(recipe());
 
-const skipClearable = $derived(
-  !clearable || type === "file" || type === "password",
-);
-const canClear = $derived(
-  !skipClearable && !disabled && !readonly && String(value ?? "").length > 0,
-);
+  const skipClearable = $derived(
+    !clearable || type === "file" || type === "password",
+  );
+  const canClear = $derived(
+    !skipClearable && !disabled && !readonly && String(value ?? "").length > 0,
+  );
 
-function handleInput(event: Event & { currentTarget: HTMLInputElement }) {
-  const next = event.currentTarget.value;
-  value = next;
-  onValueChange?.(next);
-  oninput?.(event as never);
-}
+  function handleInput(event: Event & { currentTarget: HTMLInputElement }) {
+    const next = event.currentTarget.value;
+    value = next;
+    onValueChange?.(next);
+    oninput?.(event as never);
+  }
 
-function handleClear() {
-  value = "";
-  onValueChange?.("");
-}
+  function handleClear() {
+    value = "";
+    onValueChange?.("");
+  }
 </script>
 
 {#if skipClearable}

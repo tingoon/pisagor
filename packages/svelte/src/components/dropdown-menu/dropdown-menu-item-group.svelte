@@ -1,13 +1,13 @@
 <script lang="ts">
-import {
-  type MenuItemGroupProps,
-  Menu as MenuPrimitive,
-} from "@ark-ui/svelte/menu";
-import DropdownMenuItemGroupLabel from "./dropdown-menu-item-group-label.svelte";
+  import {
+    type MenuItemGroupProps,
+    Menu as MenuPrimitive,
+  } from "@ark-ui/svelte/menu";
+  import DropdownMenuItemGroupLabel from "./dropdown-menu-item-group-label.svelte";
 
-type Props = MenuItemGroupProps & { heading?: string };
+  type Props = MenuItemGroupProps & { heading?: string };
 
-let { children, heading, ...rest }: Props = $props();
+  let { children, heading, ...rest }: Props = $props();
 </script>
 
 <MenuPrimitive.ItemGroup {...rest}>

@@ -3,7 +3,7 @@ import { dataTableRecipe } from "@pisagor/recipes";
 import type { RowData, TableOptions } from "@tanstack/react-table";
 import { flexRender, useTable } from "@tanstack/react-table";
 import { type ComponentProps, type ReactNode, useMemo } from "react";
-import { getMessage } from "../components/provider/provider.context";
+import { useMessage } from "../components/provider/context";
 import {
   Table,
   type TableCellProps,
@@ -30,9 +30,7 @@ import {
 } from "./data-table.features";
 
 // #region Types
-/**
- * @typeParam TData - Row shape passed to `columns` and `data`.
- */
+/** @typeParam TData - Row shape passed to `columns` and `data`. */
 export type DataTableProps<TData extends RowData> = {
   children: ReactNode;
   className?: string;
@@ -56,7 +54,7 @@ interface DataTableHeadProps extends TableHeadProps {
    * Renders a single column header.
    *
    * @remarks
-   * When omitted, renders every visible header in the group.
+   *   When omitted, renders every visible header in the group.
    */
   columnId?: string;
 }
@@ -74,7 +72,7 @@ interface DataTableCellProps extends TableCellProps {
    * Renders a single column cell.
    *
    * @remarks
-   * When omitted, renders every visible cell in the row.
+   *   When omitted, renders every visible cell in the row.
    */
   columnId?: string;
 }
@@ -310,11 +308,12 @@ function DataTableCell<TData extends RowData>({
 }
 
 function DataTableEmpty({
-  children = getMessage("dataTable.empty"),
+  children: childrenProp,
   colSpan,
   className,
   ...rest
 }: DataTableEmptyProps) {
+  const children = useMessage("dataTable.empty", childrenProp);
   const { slots, table } = useDataTableContext();
   const span = colSpan ?? table.getAllColumns().length;
 

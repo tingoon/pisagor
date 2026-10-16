@@ -1,17 +1,17 @@
 <script lang="ts">
-import { surfaceRecipe } from "@pisagor/recipes";
-import { Surface } from "@pisagor/svelte";
-import { tv } from "tailwind-variants";
+  import { surfaceRecipe } from "@pisagor/recipes";
+  import { Surface } from "@pisagor/svelte";
+  import { tv } from "tailwind-variants";
 
-const brandSurfaceRecipe = tv({
-  base: surfaceRecipe.base,
-  extend: surfaceRecipe,
-  variants: {
-    variant: {
-      default: ["border-emerald-500/40 bg-emerald-500/5"],
+  const brandSurfaceRecipe = tv({
+    base: surfaceRecipe.base,
+    extend: surfaceRecipe,
+    variants: {
+      variant: {
+        default: ["border-emerald-500/40 bg-emerald-500/5"],
+      },
     },
-  },
-});
+  });
 </script>
 
 <Surface bordered class="p-4 text-sm" recipe={brandSurfaceRecipe}>

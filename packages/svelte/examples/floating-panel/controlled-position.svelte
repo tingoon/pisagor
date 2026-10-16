@@ -1,13 +1,13 @@
 <script lang="ts">
-import { Button, FloatingPanel } from "@pisagor/svelte";
-import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
-import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
-import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
-import CaretUpIcon from "phosphor-svelte/lib/CaretUpIcon";
-import GearSixIcon from "phosphor-svelte/lib/GearSixIcon";
-import XIcon from "phosphor-svelte/lib/XIcon";
+  import { Button, FloatingPanel } from "@pisagor/svelte";
+  import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
+  import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
+  import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
+  import CaretUpIcon from "phosphor-svelte/lib/CaretUpIcon";
+  import GearSixIcon from "phosphor-svelte/lib/GearSixIcon";
+  import XIcon from "phosphor-svelte/lib/XIcon";
 
-let position = $state({ x: 120, y: 80 });
+  let position = $state({ x: 120, y: 80 });
 </script>
 
 <div class="relative h-80 w-full">
@@ -16,9 +16,7 @@ let position = $state({ x: 120, y: 80 });
     {position}
   >
     <FloatingPanel.Trigger>
-      {#snippet asChild(
-        props,
-      )}
+      {#snippet asChild(props)}
         <Button {...props()} variant="outline">Open</Button>
       {/snippet}
     </FloatingPanel.Trigger>
@@ -31,9 +29,7 @@ let position = $state({ x: 120, y: 80 });
           <FloatingPanel.Maximize />
           <FloatingPanel.Restore />
           <FloatingPanel.CloseTrigger>
-            {#snippet asChild(
-              props,
-            )}
+            {#snippet asChild(props)}
               <Button {...props()} aria-label="Close" size="icon-sm">
                 <XIcon aria-hidden />
               </Button>
@@ -41,7 +37,7 @@ let position = $state({ x: 120, y: 80 });
           </FloatingPanel.CloseTrigger>
         </FloatingPanel.Control>
       </FloatingPanel.Header>
-      <FloatingPanel.Body class="text-center text-muted-foreground text-sm">
+      <FloatingPanel.Body class="text-muted-foreground text-center text-sm">
         <p>Position: ({position.x}, {position.y}).</p>
         <p>Use the buttons to move the panel.</p>
         <div class="flex flex-col items-center gap-1">

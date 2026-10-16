@@ -36,8 +36,10 @@ export interface AppShellInspectorProps extends ComponentProps<"aside"> {
   resizableProps?: AppShellResizableProps;
 }
 
-export interface AppShellInspectorTriggerProps
-  extends Omit<ButtonProps, "children"> {
+export interface AppShellInspectorTriggerProps extends Omit<
+  ButtonProps,
+  "children"
+> {
   placement?: AppShellPlacement;
   children?: JSX.Element;
   off?: JSX.Element;

@@ -1,35 +1,35 @@
 <script lang="ts">
-import {
-  type DialogContentProps,
-  Dialog as DialogPrimitive,
-} from "@ark-ui/svelte/dialog";
-import { Portal } from "@ark-ui/svelte/portal";
-import type { SheetProps as BaseSheetProps } from "@pisagor/props";
-import { buttonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import XIcon from "phosphor-svelte/lib/XIcon";
-import { useMessageResolver } from "../provider/provider.context";
-import { useSheet } from "./sheet.context";
-import SheetBackdrop from "./sheet-backdrop.svelte";
-import SheetPositioner from "./sheet-positioner.svelte";
+  import {
+    type DialogContentProps,
+    Dialog as DialogPrimitive,
+  } from "@ark-ui/svelte/dialog";
+  import { Portal } from "@ark-ui/svelte/portal";
+  import type { SheetProps as BaseSheetProps } from "@pisagor/props";
+  import { buttonRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { useMessageResolver } from "../provider/context";
+  import { useSheet } from "./sheet.context";
+  import SheetBackdrop from "./sheet-backdrop.svelte";
+  import SheetPositioner from "./sheet-positioner.svelte";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-type Props = DialogContentProps & {
-  showCloseButton?: boolean;
-} & BaseSheetProps;
+  type Props = DialogContentProps & {
+    showCloseButton?: boolean;
+  } & BaseSheetProps;
 
-let {
-  placement = "right",
-  variant = "default",
-  showCloseButton = true,
-  children,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    placement = "right",
+    variant = "default",
+    showCloseButton = true,
+    children,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const styles = useSheet();
-const slots = $derived(styles.slots);
+  const styles = useSheet();
+  const slots = $derived(styles.slots);
 </script>
 
 <Portal>

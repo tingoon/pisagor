@@ -29,9 +29,9 @@ On narrow screens, prefer stacking panels or [Sheet](/svelte/components/sheet/de
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Adjustable split panels | **Resizable** |
-| Edge panel overlay | [Sheet](/svelte/components/sheet/design) / [Drawer](/svelte/components/drawer/design) |
-| App regions with nav | [Sidebar](/svelte/components/sidebar/design) |
-| Tabbed alternate views | [Tabs](/svelte/components/tabs/design) |
+| Need                    | Prefer                                                                              |
+| ----------------------- | ----------------------------------------------------------------------------------- |
+| Adjustable split panels | **Resizable**                                                                       |
+| Edge panel overlay      | [Sheet](/svelte/components/sheet/design) / [Drawer](/svelte/components/drawer/design) |
+| App regions with nav    | [Sidebar](/svelte/components/sidebar/design)                                         |
+| Tabbed alternate views  | [Tabs](/svelte/components/tabs/design)                                               |

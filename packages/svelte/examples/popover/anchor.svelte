@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Button, Input, Popover } from "@pisagor/svelte";
+  import { Button, Input, Popover } from "@pisagor/svelte";
 </script>
 
 <div>

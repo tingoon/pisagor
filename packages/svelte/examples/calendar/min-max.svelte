@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Calendar, Card, parseDate } from "@pisagor/svelte";
+  import { Calendar, Card, parseDate } from "@pisagor/svelte";
 </script>
 
 <Card class="[--space:--spacing(2)]">

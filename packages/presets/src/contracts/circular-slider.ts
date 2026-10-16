@@ -10,8 +10,8 @@ export const circularSliderRecipe = tv({
     control: ["group/circular-slider-control absolute inset-0"],
     marker: [
       "absolute inset-s-[calc(50%-1px)] top-0 bottom-0 w-0.5",
-      "before:absolute before:left-1/2 before:top-(--marker-offset) before:-translate-x-1/2",
-      "before:h-(--marker-height) before:w-(--marker-width) before:rounded-md before:bg-border",
+      "before:absolute before:top-(--marker-offset) before:left-1/2 before:-translate-x-1/2",
+      "before:bg-border before:h-(--marker-height) before:w-(--marker-width) before:rounded-md",
       "data-[state=at-value]:before:bg-primary",
       "data-[state=under-value]:before:bg-primary",
     ],
@@ -26,17 +26,17 @@ export const circularSliderRecipe = tv({
     thumb: [
       "absolute inset-0 z-10 flex items-center justify-center",
       "outline-hidden",
-      "focus-visible:[&_span]:outline-hidden focus-visible:[&_span]:ring-2 focus-visible:[&_span]:ring-ring/32",
-      "active:[&_span]:scale-110 active:[&_span]:ring-0.75 active:[&_span]:ring-ring/32",
+      "focus-visible:[&_span]:ring-ring/32 focus-visible:[&_span]:ring-2 focus-visible:[&_span]:outline-hidden",
+      "active:[&_span]:ring-0.75 active:[&_span]:ring-ring/32 active:[&_span]:scale-110",
     ],
     thumbHandle: [
       "absolute",
       "shrink-0",
       "bg-background",
       "size-(--size)",
-      "rounded-full shadow-xs/5 ring-2 ring-border",
-      "transition duration-fast ease-out",
-      "hover:cursor-grab hover:ring-0.75",
+      "ring-border rounded-full shadow-xs/5 ring-2",
+      "duration-fast transition ease-out",
+      "hover:ring-0.75 hover:cursor-grab",
       "motion-reduce:transition-none!",
     ],
     value: [

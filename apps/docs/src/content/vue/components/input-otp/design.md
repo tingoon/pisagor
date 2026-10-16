@@ -29,9 +29,9 @@ Avoid describing codes in email and UI with different lengths. Timer text for ex
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| One-time verification code | **Input OTP** |
-| Long-lived secret | [Password Input](/vue/components/password-input/design) |
-| Generic short text | [Input](/vue/components/input/design) |
-| Full sign-in layout | [Field](/vue/components/field/design) |
+| Need                       | Prefer                                                    |
+| -------------------------- | --------------------------------------------------------- |
+| One-time verification code | **Input OTP**                                             |
+| Long-lived secret          | [Password Input](/vue/components/password-input/design) |
+| Generic short text         | [Input](/vue/components/input/design)                   |
+| Full sign-in layout        | [Field](/vue/components/field/design)                   |

@@ -1,28 +1,28 @@
 <script lang="ts">
-import {
-  type TreeViewBranchProps,
-  TreeView as TreeViewPrimitive,
-} from "@ark-ui/svelte/tree-view";
-import type { TreeViewBranchProps as BaseTreeViewBranchProps } from "@pisagor/props";
-import { treeViewBranchRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { setTreeViewBranchContext } from "./tree-view.context";
+  import {
+    type TreeViewBranchProps,
+    TreeView as TreeViewPrimitive,
+  } from "@ark-ui/svelte/tree-view";
+  import type { TreeViewBranchProps as BaseTreeViewBranchProps } from "@pisagor/props";
+  import { treeViewBranchRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { setTreeViewBranchContext } from "./tree-view.context";
 
-type Props = TreeViewBranchProps & BaseTreeViewBranchProps;
+  type Props = TreeViewBranchProps & BaseTreeViewBranchProps;
 
-let {
-  children,
-  recipe = treeViewBranchRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    children,
+    recipe = treeViewBranchRecipe,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const slots = $derived(recipe());
-setTreeViewBranchContext({
-  get slots() {
-    return slots;
-  },
-});
+  const slots = $derived(recipe());
+  setTreeViewBranchContext({
+    get slots() {
+      return slots;
+    },
+  });
 </script>
 
 <TreeViewPrimitive.Branch

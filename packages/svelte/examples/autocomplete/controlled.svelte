@@ -1,24 +1,24 @@
 <script lang="ts">
-import { useListCollection } from "@ark-ui/svelte/collection";
-import { useFilter } from "@ark-ui/svelte/locale";
-import { Autocomplete } from "@pisagor/svelte";
+  import { useListCollection } from "@ark-ui/svelte/collection";
+  import { useFilter } from "@ark-ui/svelte/locale";
+  import { Autocomplete } from "@pisagor/svelte";
 
-const initialItems = [
-  { label: "Apple", value: "apple" },
-  { label: "Banana", value: "banana" },
-  { label: "Cherry", value: "cherry" },
-  { label: "Date", value: "date" },
-];
+  const initialItems = [
+    { label: "Apple", value: "apple" },
+    { label: "Banana", value: "banana" },
+    { label: "Cherry", value: "cherry" },
+    { label: "Date", value: "date" },
+  ];
 
-let value = $state<string | undefined>("banana");
+  let value = $state<string | undefined>("banana");
 
-const filters = useFilter({ sensitivity: "base" });
-const { collection, filter } = useListCollection({
-  filter(itemString, filterText) {
-    return filters().contains(itemString, filterText);
-  },
-  initialItems,
-});
+  const filters = useFilter({ sensitivity: "base" });
+  const { collection, filter } = useListCollection({
+    filter(itemString, filterText) {
+      return filters().contains(itemString, filterText);
+    },
+    initialItems,
+  });
 </script>
 
 <div class="flex flex-col gap-2">
@@ -40,7 +40,7 @@ const { collection, filter } = useListCollection({
       </Autocomplete.List>
     </Autocomplete.Content>
   </Autocomplete.Root>
-  <p class="text-center text-muted-foreground text-sm">
+  <p class="text-muted-foreground text-center text-sm">
     Selected: {value ?? "(none)"}
   </p>
 </div>

@@ -12,7 +12,7 @@ export function InputControlled() {
           </ColorPicker.Input>
         </ColorPicker.Control>
       </ColorPicker>
-      <p className="text-center text-muted-foreground text-sm">
+      <p className="text-muted-foreground text-center text-sm">
         {parseColor(value).toString("hex")}
       </p>
     </div>

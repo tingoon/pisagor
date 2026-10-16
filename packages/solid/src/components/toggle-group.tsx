@@ -18,8 +18,10 @@ const { Context: ToggleGroupStylesContext, useStyles: useToggleGroupStyles } =
     recipe: toggleGroupRecipe,
   });
 
-export interface ToggleGroupItemOptions
-  extends Pick<ToggleProps, "variant" | "size"> {
+export interface ToggleGroupItemOptions extends Pick<
+  ToggleProps,
+  "variant" | "size"
+> {
   /**
    * Gap between items.
    *
@@ -58,14 +60,17 @@ interface ToggleGroupPresetItem {
 }
 
 export interface ToggleGroupRootProps
-  extends Omit<ToggleGroupPrimitiveRootProps, "onValueChange">,
+  extends
+    Omit<ToggleGroupPrimitiveRootProps, "onValueChange">,
     ToggleGroupItemOptions,
     BaseToggleGroupRootProps {
   onValueChange?: (value: string[]) => void;
 }
 
-export interface ToggleGroupProps
-  extends Omit<ToggleGroupRootProps, "children"> {
+export interface ToggleGroupProps extends Omit<
+  ToggleGroupRootProps,
+  "children"
+> {
   items?: ToggleGroupPresetItem[];
 }
 

@@ -10,7 +10,7 @@ import { BottomNavigation, ScrollArea } from "@pisagor/vue";
 
 <template>
   <div
-    class="flex h-72 flex-col overflow-y-auto rounded-lg border bg-muted shadow-lg/5"
+    class="bg-muted flex h-72 flex-col overflow-y-auto rounded-lg border shadow-lg/5"
   >
     <ScrollArea>
       <div class="h-96" />

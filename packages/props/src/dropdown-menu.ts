@@ -8,6 +8,7 @@ import type {
 export interface DropdownMenuProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue dropdownMenuRecipe
    */
   recipe?: DropdownMenuRecipeFn;
@@ -17,6 +18,7 @@ export interface DropdownMenuProps {
 export interface DropdownMenuItemProps extends DropdownMenuItemVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue dropdownMenuItemRecipe
    */
   recipe?: DropdownMenuItemRecipeFn;

@@ -29,9 +29,9 @@ Link individual tiles when each logo or quote has a destination; otherwise keep 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Continuous horizontal loop | **Marquee** |
-| User-controlled slides | [Carousel](/vue/components/carousel/design) |
-| Static logo row | [Item](/vue/components/item/design) |
-| Promo callout | [Announcement](/vue/components/announcement/design) |
+| Need                       | Prefer                                                |
+| -------------------------- | ----------------------------------------------------- |
+| Continuous horizontal loop | **Marquee**                                           |
+| User-controlled slides     | [Carousel](/vue/components/carousel/design)         |
+| Static logo row            | [Item](/vue/components/item/design)                 |
+| Promo callout              | [Announcement](/vue/components/announcement/design) |

@@ -22,7 +22,7 @@ const collection = createListCollection({
           {{ item.label }}
         </Select.Item>
       </Select.ItemGroup>
-      <div class="px-2 py-6 text-center text-muted-foreground text-sm">
+      <div class="text-muted-foreground px-2 py-6 text-center text-sm">
         No frameworks found
       </div>
     </Select.Content>

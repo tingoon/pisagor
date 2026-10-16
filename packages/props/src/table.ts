@@ -4,6 +4,7 @@ import type { TableRecipeFn } from "@pisagor/recipes";
 export interface TableProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue tableRecipe
    */
   recipe?: TableRecipeFn;

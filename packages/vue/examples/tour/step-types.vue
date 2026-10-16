@@ -50,7 +50,7 @@ const steps: TourStepType[] = [
         <Button variant="outline">Start tour</Button>
       </Tour.Trigger>
       <div
-        class="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+        class="border-border bg-muted flex items-center justify-center rounded-lg border px-8 py-4 text-sm font-medium"
         id="tour-target-element"
       >
         Target element

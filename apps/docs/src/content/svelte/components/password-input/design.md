@@ -29,10 +29,10 @@ When a password field shares a row with a visibility toggle or strength meter, c
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Masked credential entry | **Password Input** |
-| Generic single-line text | [Input](/svelte/components/input/design) |
-| One-time verification digits | [Input OTP](/svelte/components/input-otp/design) |
-| Label, hint, error layout | [Field](/svelte/components/field/design) |
-| Attached toggle chrome | [Input Group](/svelte/components/input-group/design) |
+| Need                         | Prefer                                              |
+| ---------------------------- | --------------------------------------------------- |
+| Masked credential entry      | **Password Input**                                  |
+| Generic single-line text     | [Input](/svelte/components/input/design)             |
+| One-time verification digits | [Input OTP](/svelte/components/input-otp/design)     |
+| Label, hint, error layout    | [Field](/svelte/components/field/design)             |
+| Attached toggle chrome       | [Input Group](/svelte/components/input-group/design) |

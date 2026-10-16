@@ -1,17 +1,17 @@
 <script lang="ts">
-import {
-  type ComboboxClearTriggerProps,
-  Combobox as ComboboxPrimitive,
-} from "@ark-ui/svelte/combobox";
-import { useMessageResolver } from "../provider/provider.context";
+  import {
+    type ComboboxClearTriggerProps,
+    Combobox as ComboboxPrimitive,
+  } from "@ark-ui/svelte/combobox";
+  import { useMessageResolver } from "../provider/context";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-let {
-  "aria-label": ariaLabel = t("select.clear"),
-  children,
-  ...rest
-}: ComboboxClearTriggerProps = $props();
+  let {
+    "aria-label": ariaLabel = t("select.clear"),
+    children,
+    ...rest
+  }: ComboboxClearTriggerProps = $props();
 </script>
 
 <ComboboxPrimitive.ClearTrigger {...rest} aria-label={ariaLabel}>

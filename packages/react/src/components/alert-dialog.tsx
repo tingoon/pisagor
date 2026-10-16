@@ -18,8 +18,7 @@ import { Dialog, useDialog } from "./dialog";
 export type AlertDialogRootProps = DialogRootProps;
 
 export interface AlertDialogActionProps
-  extends DialogCloseTriggerProps,
-    Omit<ButtonProps, "variant"> {
+  extends DialogCloseTriggerProps, Omit<ButtonProps, "variant"> {
   /**
    * The variant of the action button
    *
@@ -29,11 +28,12 @@ export interface AlertDialogActionProps
 }
 
 export interface AlertDialogCancelProps
-  extends DialogCloseTriggerProps,
-    Omit<ButtonProps, "variant"> {}
+  extends DialogCloseTriggerProps, Omit<ButtonProps, "variant"> {}
 
-export interface AlertDialogProps
-  extends Omit<AlertDialogRootProps, "children" | "title"> {
+export interface AlertDialogProps extends Omit<
+  AlertDialogRootProps,
+  "children" | "title"
+> {
   /** Footer actions (typically Cancel / Action). */
   actions?: ReactNode;
   /** Header description content. */

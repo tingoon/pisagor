@@ -1,49 +1,49 @@
 <script lang="ts">
-import {
-  type EditablePreviewProps as ArkEditablePreviewProps,
-  Editable as EditablePrimitive,
-} from "@ark-ui/svelte/editable";
-import type { ButtonProps } from "@pisagor/props";
-import { buttonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { useFormControlSurface } from "../surface/use-form-control-surface";
-import { useEditable } from "./editable.context";
+  import {
+    type EditablePreviewProps as ArkEditablePreviewProps,
+    Editable as EditablePrimitive,
+  } from "@ark-ui/svelte/editable";
+  import type { ButtonProps } from "@pisagor/props";
+  import { buttonRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { useFormControlSurface } from "../surface/use-form-control-surface";
+  import { useEditable } from "./editable.context";
 
-type FormControlVariant = "primary" | "secondary";
+  type FormControlVariant = "primary" | "secondary";
 
-type Props = ArkEditablePreviewProps & {
-  buttonRecipe?: typeof buttonRecipe;
-  controlVariant?: FormControlVariant;
-  size?: ButtonProps["size"];
-  variant?: ButtonProps["variant"];
-};
+  type Props = ArkEditablePreviewProps & {
+    buttonRecipe?: typeof buttonRecipe;
+    controlVariant?: FormControlVariant;
+    size?: ButtonProps["size"];
+    variant?: ButtonProps["variant"];
+  };
 
-let {
-  controlVariant,
-  size = "md",
-  variant = "outline",
-  buttonRecipe: buttonRecipeProp = buttonRecipe,
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
+  let {
+    controlVariant,
+    size = "md",
+    variant = "outline",
+    buttonRecipe: buttonRecipeProp = buttonRecipe,
+    class: className,
+    children,
+    ...rest
+  }: Props = $props();
 
-const styles = useEditable();
-const slots = $derived(styles.slots);
-const surfaceVariant = useFormControlSurface();
-const resolvedVariant = $derived(
-  controlVariant ?? ("primary" as FormControlVariant),
-);
+  const styles = useEditable();
+  const slots = $derived(styles.slots);
+  const surfaceVariant = useFormControlSurface();
+  const resolvedVariant = $derived(
+    controlVariant ?? ("primary" as FormControlVariant),
+  );
 
-const previewShellClass = $derived(
-  resolvedVariant === "secondary" && surfaceVariant === "default"
-    ? "bg-muted/40 shadow-none hover:bg-muted/40 dark:hover:bg-muted/40"
-    : resolvedVariant === "secondary" && surfaceVariant
-      ? "bg-background shadow-none hover:bg-background dark:hover:bg-background/90"
-      : resolvedVariant === "secondary"
-        ? "bg-muted/40 shadow-none hover:bg-muted/40 dark:hover:bg-muted/40"
-        : undefined,
-);
+  const previewShellClass = $derived(
+    resolvedVariant === "secondary" && surfaceVariant === "default"
+      ? "bg-muted/40 shadow-none hover:bg-muted/40 dark:hover:bg-muted/40"
+      : resolvedVariant === "secondary" && surfaceVariant
+        ? "bg-background shadow-none hover:bg-background dark:hover:bg-background/90"
+        : resolvedVariant === "secondary"
+          ? "bg-muted/40 shadow-none hover:bg-muted/40 dark:hover:bg-muted/40"
+          : undefined,
+  );
 </script>
 
 <EditablePrimitive.Preview

@@ -1,52 +1,52 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
-import type { ComponentProps, Snippet } from "svelte";
-import Button from "../button.svelte";
-import Swap from "../swap.svelte";
-import { type AppShellPlacement, useAppShell } from "./app-shell.context";
+  import { cn } from "@pisagor/utils";
+  import type { ComponentProps, Snippet } from "svelte";
+  import Button from "../button.svelte";
+  import Swap from "../swap.svelte";
+  import { type AppShellPlacement, useAppShell } from "./app-shell.context";
 
-type Props = Omit<
-  ComponentProps<typeof Button>,
-  "children" | "size" | "variant"
-> & {
-  "aria-label"?: string | undefined | null;
-  children?: Snippet;
-  defaultOff: Snippet;
-  defaultOn: Snippet;
-  off?: Snippet;
-  on?: Snippet;
-  open: boolean;
-  placement: AppShellPlacement;
-  toggle: () => void;
-  size?: ComponentProps<typeof Button>["size"];
-  variant?: ComponentProps<typeof Button>["variant"];
-};
+  type Props = Omit<
+    ComponentProps<typeof Button>,
+    "children" | "size" | "variant"
+  > & {
+    "aria-label"?: string | undefined | null;
+    children?: Snippet;
+    defaultOff: Snippet;
+    defaultOn: Snippet;
+    off?: Snippet;
+    on?: Snippet;
+    open: boolean;
+    placement: AppShellPlacement;
+    toggle: () => void;
+    size?: ComponentProps<typeof Button>["size"];
+    variant?: ComponentProps<typeof Button>["variant"];
+  };
 
-let {
-  placement,
-  open,
-  toggle,
-  defaultOff,
-  defaultOn,
-  off: offContent,
-  on: onContent,
-  children,
-  class: className,
-  onclick,
-  "aria-label": ariaLabel,
-  size = "icon-md",
-  variant = "ghost",
-  ...rest
-}: Props = $props();
+  let {
+    placement,
+    open,
+    toggle,
+    defaultOff,
+    defaultOn,
+    off: offContent,
+    on: onContent,
+    children,
+    class: className,
+    onclick,
+    "aria-label": ariaLabel,
+    size = "icon-md",
+    variant = "ghost",
+    ...rest
+  }: Props = $props();
 
-const ctx = useAppShell();
+  const ctx = useAppShell();
 
-function handleClick(
-  event: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement },
-) {
-  onclick?.(event);
-  toggle();
-}
+  function handleClick(
+    event: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement },
+  ) {
+    onclick?.(event);
+    toggle();
+  }
 </script>
 
 <Button

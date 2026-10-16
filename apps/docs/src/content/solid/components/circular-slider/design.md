@@ -25,9 +25,9 @@ Prefer a linear [Slider](/solid/components/slider/design) when precision, tick m
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Rotational value choice | **Circular Slider** |
-| Linear range with marks | [Slider](/solid/components/slider/design) |
-| Typed numeric entry | [Number Input](/solid/components/number-input/design) |
-| Compact on/off | [Switch](/solid/components/switch/design) |
+| Need                    | Prefer                                                |
+| ----------------------- | ----------------------------------------------------- |
+| Rotational value choice | **Circular Slider**                                   |
+| Linear range with marks | [Slider](/solid/components/slider/design)             |
+| Typed numeric entry     | [Number Input](/solid/components/number-input/design) |
+| Compact on/off          | [Switch](/solid/components/switch/design)             |

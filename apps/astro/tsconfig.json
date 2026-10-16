@@ -5,7 +5,7 @@
       "#/astro/examples/*": ["../../packages/astro/examples/*"],
       "#/storybook/*": ["./.storybook/*"]
     },
-    "types": ["astro/client", "vite/client", "node"]
+    "types": ["astro/client", "vite/client", "bun"]
   },
   "extends": "../../tsconfig.json",
   "include": [

@@ -16,9 +16,7 @@ const {
 // #endregion
 
 export interface ItemProps
-  extends ComponentProps<typeof ark.div>,
-    BaseItemProps,
-    SizeScaleProps {}
+  extends ComponentProps<typeof ark.div>, BaseItemProps, SizeScaleProps {}
 
 export type ItemMediaProps = ComponentProps<typeof ark.div> & ItemVariantProps;
 export type ItemHeaderProps = ComponentProps<typeof ark.div>;

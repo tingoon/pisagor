@@ -15,7 +15,7 @@ import {
 } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { ClassValue } from "../internal/types";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -61,7 +61,7 @@ export const MenuRoot = defineComponent({
         MenuRootBase,
         {
           ...attrs,
-          "aria-label": attrs["aria-label"] ?? useProviderMessage("menu.label"),
+          "aria-label": attrs["aria-label"] ?? useTranslation("menu.label"),
         },
         slots,
       );

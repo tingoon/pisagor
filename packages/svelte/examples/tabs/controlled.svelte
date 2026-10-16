@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Button, Tabs } from "@pisagor/svelte";
+  import { Button, Tabs } from "@pisagor/svelte";
 
-let value = $state("profile");
+  let value = $state("profile");
 </script>
 
 <div class="flex flex-col gap-2">

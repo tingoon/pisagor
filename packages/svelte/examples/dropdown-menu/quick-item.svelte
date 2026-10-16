@@ -1,18 +1,18 @@
 <script lang="ts">
-import { Button, DropdownMenu } from "@pisagor/svelte";
-import {
-  ArrowClockwiseIcon,
-  ChatCircleIcon,
-  CopyIcon,
-  HandIcon,
-  PencilIcon,
-  ShareIcon,
-} from "@pisagor/svelte/icons";
+  import { Button, DropdownMenu } from "@pisagor/svelte";
+  import {
+    ArrowClockwiseIcon,
+    ChatCircleIcon,
+    CopyIcon,
+    HandIcon,
+    PencilIcon,
+    ShareIcon,
+  } from "@pisagor/svelte/icons";
 </script>
 
 <DropdownMenu>
   <DropdownMenu.Trigger>
-    <Button variant="outline"> Open </Button>
+    <Button variant="outline">Open</Button>
   </DropdownMenu.Trigger>
   <DropdownMenu.Content class="w-44">
     <DropdownMenu.ItemGroup heading="Actions">

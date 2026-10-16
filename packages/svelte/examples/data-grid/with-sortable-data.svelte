@@ -1,21 +1,21 @@
 <script lang="ts">
-import { Table } from "@pisagor/svelte";
-import type { SortingState } from "@pisagor/svelte/data-grid";
-import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import { allUsers, userColumns } from "./helpers";
+  import { Table } from "@pisagor/svelte";
+  import type { SortingState } from "@pisagor/svelte/data-grid";
+  import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
+  import { allUsers, userColumns } from "./helpers";
 
-const columns = [...userColumns];
-let sorting = $state<SortingState>([{ desc: false, id: "name" }]);
+  const columns = [...userColumns];
+  let sorting = $state<SortingState>([{ desc: false, id: "name" }]);
 
-function onSortingChange(
-  updater: SortingState | ((prev: SortingState) => SortingState),
-) {
-  sorting = typeof updater === "function" ? updater(sorting) : updater;
-}
+  function onSortingChange(
+    updater: SortingState | ((prev: SortingState) => SortingState),
+  ) {
+    sorting = typeof updater === "function" ? updater(sorting) : updater;
+  }
 </script>
 
 <div class="flex w-full flex-col gap-3">
-  <div class="rounded-xl border bg-muted/20 p-3">
+  <div class="bg-muted/20 rounded-xl border p-3">
     <DataGrid
       {columns}
       data={allUsers}
@@ -24,7 +24,7 @@ function onSortingChange(
       state={{ sorting }}
     >
       <DataGrid.Toolbar>
-        <p class="font-medium text-sm">
+        <p class="text-sm font-medium">
           Sorted by {sorting[0]?.id ?? "none"}
           {sorting[0]?.desc ? " (desc)" : " (asc)"}
         </p>

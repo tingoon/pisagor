@@ -29,10 +29,10 @@ Panels should emerge from their trigger with matched enter and exit paths. Honor
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Section nav with flyouts | **Navigation Menu** |
-| App top bar | [Navbar](/vue/components/navbar/design) |
-| Sidebar link list | [Menu](/vue/components/menu/design) |
-| Action overflow on a control | [Dropdown Menu](/vue/components/dropdown-menu/design) |
-| Mobile thumb tabs | [Bottom Navigation](/vue/components/bottom-navigation/design) |
+| Need                         | Prefer                                                          |
+| ---------------------------- | --------------------------------------------------------------- |
+| Section nav with flyouts     | **Navigation Menu**                                             |
+| App top bar                  | [Navbar](/vue/components/navbar/design)                       |
+| Sidebar link list            | [Menu](/vue/components/menu/design)                           |
+| Action overflow on a control | [Dropdown Menu](/vue/components/dropdown-menu/design)         |
+| Mobile thumb tabs            | [Bottom Navigation](/vue/components/bottom-navigation/design) |

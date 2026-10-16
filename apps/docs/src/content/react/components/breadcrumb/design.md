@@ -25,9 +25,9 @@ Prefer Breadcrumb when parent pages are real destinations; prefer a flat [Navbar
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Hierarchical back navigation | **Breadcrumb** |
-| Sibling section switching | [Tabs](/react/components/tabs/design) |
-| Deep tree browsing | [Tree View](/react/components/tree-view/design) |
-| Global top links | [Navbar](/react/components/navbar/design) |
+| Need                         | Prefer                                          |
+| ---------------------------- | ----------------------------------------------- |
+| Hierarchical back navigation | **Breadcrumb**                                  |
+| Sibling section switching    | [Tabs](/react/components/tabs/design)           |
+| Deep tree browsing           | [Tree View](/react/components/tree-view/design) |
+| Global top links             | [Navbar](/react/components/navbar/design)       |

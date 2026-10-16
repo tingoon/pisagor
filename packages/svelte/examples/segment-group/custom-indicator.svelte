@@ -1,11 +1,11 @@
 <script lang="ts">
-import { SegmentGroup } from "@pisagor/svelte";
+  import { SegmentGroup } from "@pisagor/svelte";
 
-const items = ["Profile", "Account", "Security", "Notifications"];
+  const items = ["Profile", "Account", "Security", "Notifications"];
 </script>
 
 <SegmentGroup.Root
-  class="rounded-lg *:data-[slot=segment-group-indicator]:bg-primary/40"
+  class="*:data-[slot=segment-group-indicator]:bg-primary/40 rounded-lg"
   defaultValue="Profile"
 >
   {#each items as item}

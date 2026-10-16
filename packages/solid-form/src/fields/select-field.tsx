@@ -16,7 +16,8 @@ interface SelectOption {
 }
 
 export interface SelectFieldProps
-  extends FieldPresentationProps,
+  extends
+    FieldPresentationProps,
     Omit<
       SelectRootProps,
       "children" | "collection" | "invalid" | "name" | "onValueChange" | "value"

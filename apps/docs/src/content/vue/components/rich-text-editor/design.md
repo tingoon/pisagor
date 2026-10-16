@@ -29,9 +29,9 @@ Sanitize pasted HTML and uploaded media. Prefer allowlists for tags and attribut
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Formatted authoring | **Rich Text Editor** |
-| Read-only article body | [Prose](/vue/components/prose/design) |
-| Plain multi-line text | [Textarea](/vue/components/textarea/design) |
+| Need                      | Prefer                                                                                      |
+| ------------------------- | ------------------------------------------------------------------------------------------- |
+| Formatted authoring       | **Rich Text Editor**                                                                        |
+| Read-only article body    | [Prose](/vue/components/prose/design)                                                     |
+| Plain multi-line text     | [Textarea](/vue/components/textarea/design)                                               |
 | Single-line with mentions | [Input](/vue/components/input/design) / [Tags Input](/vue/components/tags-input/design) |

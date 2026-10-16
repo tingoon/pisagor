@@ -24,7 +24,7 @@ export function EdgeHandle() {
     <ResizableFrame>
       <div className="flex size-full overflow-hidden rounded-md border">
         <aside
-          className="relative flex shrink-0 flex-col overflow-visible border-e bg-muted text-muted-foreground"
+          className="bg-muted text-muted-foreground relative flex shrink-0 flex-col overflow-visible border-e"
           style={{ width }}
         >
           <Resizable.EdgeHandle
@@ -41,7 +41,7 @@ export function EdgeHandle() {
             Panel
           </div>
         </aside>
-        <div className="flex min-w-0 flex-1 items-center justify-center bg-muted/30 text-sm">
+        <div className="bg-muted/30 flex min-w-0 flex-1 items-center justify-center text-sm">
           Main
         </div>
       </div>

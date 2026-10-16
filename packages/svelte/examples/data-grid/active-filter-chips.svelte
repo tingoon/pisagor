@@ -1,30 +1,29 @@
 <script lang="ts">
-import { Button, Table } from "@pisagor/svelte";
-import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import type { ColumnFiltersState } from "@tanstack/svelte-table";
-import { allUsers, userColumns } from "./helpers";
+  import { Button, Table } from "@pisagor/svelte";
+  import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
+  import type { ColumnFiltersState } from "@tanstack/svelte-table";
+  import { allUsers, userColumns } from "./helpers";
 
-const columns = userColumns.map((column) => ({
-  ...column,
-  enableColumnFilter: true,
-}));
-let columnFilters = $state<ColumnFiltersState>([
-  { id: "role", value: "Admin" },
-  { id: "status", value: "active" },
-]);
+  const columns = userColumns.map((column) => ({
+    ...column,
+    enableColumnFilter: true,
+  }));
+  let columnFilters = $state<ColumnFiltersState>([
+    { id: "role", value: "Admin" },
+    { id: "status", value: "active" },
+  ]);
 
-function onColumnFiltersChange(
-  updater:
-    | ColumnFiltersState
-    | ((prev: ColumnFiltersState) => ColumnFiltersState),
-) {
-  columnFilters =
-    typeof updater === "function" ? updater(columnFilters) : updater;
-}
+  function onColumnFiltersChange(
+    updater:
+      ColumnFiltersState | ((prev: ColumnFiltersState) => ColumnFiltersState),
+  ) {
+    columnFilters =
+      typeof updater === "function" ? updater(columnFilters) : updater;
+  }
 </script>
 
 <div class="flex w-full flex-col gap-3">
-  <div class="rounded-xl border bg-muted/20 p-3">
+  <div class="bg-muted/20 rounded-xl border p-3">
     <DataGrid
       {columns}
       data={allUsers}

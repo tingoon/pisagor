@@ -1,20 +1,20 @@
 <script lang="ts">
-import { ToggleGroup } from "@pisagor/svelte";
-import { cn } from "@pisagor/utils";
+  import { ToggleGroup } from "@pisagor/svelte";
+  import { cn } from "@pisagor/utils";
 
-const FONT_WEIGHTS = [
-  { className: "font-light", label: "Light", value: "light" },
-  { className: "font-normal", label: "Normal", value: "normal" },
-  { className: "font-medium", label: "Medium", value: "medium" },
-  { className: "font-bold", label: "Bold", value: "bold" },
-] as const;
+  const FONT_WEIGHTS = [
+    { className: "font-light", label: "Light", value: "light" },
+    { className: "font-normal", label: "Normal", value: "normal" },
+    { className: "font-medium", label: "Medium", value: "medium" },
+    { className: "font-bold", label: "Bold", value: "bold" },
+  ] as const;
 
-let value = $state<string[]>(["normal"]);
+  let value = $state<string[]>(["normal"]);
 </script>
 
 <div class="flex flex-col gap-2">
   <div class="flex flex-col gap-2">
-    <span class="font-medium text-sm">Font weight</span>
+    <span class="text-sm font-medium">Font weight</span>
     <ToggleGroup.Root
       class="flex-wrap"
       multiple={false}

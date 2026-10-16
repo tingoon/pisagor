@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Field, NumberInput } from "@pisagor/svelte";
+  import { Field, NumberInput } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-col gap-2">

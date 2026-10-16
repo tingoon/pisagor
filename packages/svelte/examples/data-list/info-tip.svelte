@@ -1,20 +1,20 @@
 <script lang="ts">
-import { Button, DataList, Popover } from "@pisagor/svelte";
-import InfoIcon from "phosphor-svelte/lib/InfoIcon";
+  import { Button, DataList, Popover } from "@pisagor/svelte";
+  import InfoIcon from "phosphor-svelte/lib/InfoIcon";
 
-const data = [
-  {
-    info: "Total new user signups this month",
-    label: "New users",
-    value: "234",
-  },
-  { info: "Revenue from product sales", label: "Sales", value: "£12,340" },
-  {
-    info: "Total revenue in the last quarter",
-    label: "Revenue",
-    value: "3,450",
-  },
-];
+  const data = [
+    {
+      info: "Total new user signups this month",
+      label: "New users",
+      value: "234",
+    },
+    { info: "Revenue from product sales", label: "Sales", value: "£12,340" },
+    {
+      info: "Total revenue in the last quarter",
+      label: "Revenue",
+      value: "3,450",
+    },
+  ];
 </script>
 
 <DataList.Root>
@@ -26,9 +26,7 @@ const data = [
       {item.label}
       <Popover modal={false} positioning={{ placement: "top" }}>
         <Popover.Trigger>
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Button
               {...props()}
               aria-label={`Info about ${item.label}`}

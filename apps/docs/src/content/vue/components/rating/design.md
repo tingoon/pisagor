@@ -29,9 +29,9 @@ Read-only ratings belong in cards and list rows; interactive ratings belong in f
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Star score input or display | **Rating** |
-| Single on/off preference | [Switch](/vue/components/switch/design) |
-| Pick one category | [Radio Group](/vue/components/radio-group/design) |
-| Compact sentiment | [Badge](/vue/components/badge/design) |
+| Need                        | Prefer                                              |
+| --------------------------- | --------------------------------------------------- |
+| Star score input or display | **Rating**                                          |
+| Single on/off preference    | [Switch](/vue/components/switch/design)           |
+| Pick one category           | [Radio Group](/vue/components/radio-group/design) |
+| Compact sentiment           | [Badge](/vue/components/badge/design)             |

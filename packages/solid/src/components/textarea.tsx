@@ -33,7 +33,10 @@ type TextareaClassNames = VariantClassNames<TextareaRecipeSlot>;
 type TextareaRootProps = FieldTextareaProps &
   SizeScaleProps & {
     variant?: FormControlVariant;
-    /** Initial value when uncontrolled. Solid has no native defaultValue on textareas. */
+    /**
+     * Initial value when uncontrolled. Solid has no native defaultValue on
+     * textareas.
+     */
     defaultValue?: string | number | readonly string[];
   };
 
@@ -46,7 +49,8 @@ export interface TextareaProps extends TextareaRootProps, BaseTextareaProps {
 function TextareaProvider(
   props: ParentProps<{
     /**
-     * Style recipe. Defaults to `textareaRecipe` from `@pisagor/recipes/textarea`.
+     * Style recipe. Defaults to `textareaRecipe` from
+     * `@pisagor/recipes/textarea`.
      *
      * @defaultValue textareaRecipe
      */

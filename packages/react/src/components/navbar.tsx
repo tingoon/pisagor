@@ -3,7 +3,7 @@ import type { NavbarProps as BaseNavbarRootProps } from "@pisagor/props";
 import { navbarRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { getMessage } from "./provider/provider.context";
+import { useMessage } from "./provider/context";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -33,9 +33,10 @@ const NavbarNavBase = withContext(ark.nav, {
 });
 
 export function NavbarNav({
-  "aria-label": ariaLabel = getMessage("navbar.label"),
+  "aria-label": ariaLabelProp,
   ...rest
 }: ComponentProps<typeof ark.nav>) {
+  const ariaLabel = useMessage("navbar.label", ariaLabelProp);
   return <NavbarNavBase {...rest} aria-label={ariaLabel} />;
 }
 

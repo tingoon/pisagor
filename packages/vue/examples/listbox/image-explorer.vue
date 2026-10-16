@@ -60,9 +60,9 @@ function onValueChange(next: string | string[]) {
         </Listbox.Item>
       </Listbox.Content>
     </Listbox.Root>
-    <div class="flex w-full items-end rounded-xl border bg-muted p-4">
+    <div class="bg-muted flex w-full items-end rounded-xl border p-4">
       <div class="mt-auto">
-        <h3 class="font-medium text-sm">{{ selectedImage?.label }}</h3>
+        <h3 class="text-sm font-medium">{{ selectedImage?.label }}</h3>
         <p class="text-muted-foreground text-xs">{{ selectedImage?.alt }}</p>
       </div>
     </div>

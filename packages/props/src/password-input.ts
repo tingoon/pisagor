@@ -4,6 +4,7 @@ import type { PasswordInputRecipeFn } from "@pisagor/recipes";
 export interface PasswordInputProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue passwordInputRecipe
    */
   recipe?: PasswordInputRecipeFn;

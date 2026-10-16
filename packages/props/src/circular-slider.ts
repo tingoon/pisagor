@@ -4,6 +4,7 @@ import type { CircularSliderRecipeFn } from "@pisagor/recipes";
 export interface CircularSliderProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue circularSliderRecipe
    */
   recipe?: CircularSliderRecipeFn;

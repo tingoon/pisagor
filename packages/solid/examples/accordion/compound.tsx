@@ -56,7 +56,7 @@ export function Compound() {
         {(item) => (
           <Accordion.Item value={item.value}>
             <Accordion.ItemTrigger>{item.title}</Accordion.ItemTrigger>
-            <Accordion.ItemContent class="flex flex-col gap-2 text-muted-foreground">
+            <Accordion.ItemContent class="text-muted-foreground flex flex-col gap-2">
               {item.content}
             </Accordion.ItemContent>
           </Accordion.Item>

@@ -15,7 +15,7 @@ import {
   InputGroupText,
   type InputGroupTextProps,
 } from "./input-group/input-group-core";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -38,9 +38,7 @@ type FileInputRootProps = ComponentProps<typeof ark.div> &
   };
 
 export interface FileInputProps
-  extends NativeFileInputProps,
-    FileInputVariantProps,
-    BaseFileInputProps {
+  extends NativeFileInputProps, FileInputVariantProps, BaseFileInputProps {
   invalid?: boolean;
   browseLabel?: string;
   placeholder?: string;
@@ -207,13 +205,13 @@ export function FileInput(props: FileInputProps): JSX.Element {
           onClick={openPicker}
           type="button"
         >
-          {local.browseLabel ?? useProviderMessage("fileInput.browse")}
+          {local.browseLabel ?? useTranslation("fileInput.browse")}
         </InputGroupButton>
       </InputGroupAddon>
       <FileInputLabel onClick={local.disabled ? undefined : openPicker}>
         {fileLabel() ??
           local.placeholder ??
-          useProviderMessage("fileInput.placeholder")}
+          useTranslation("fileInput.placeholder")}
       </FileInputLabel>
     </FileInputRoot>
   );

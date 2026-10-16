@@ -41,8 +41,8 @@ export interface ImageCropperProps extends BaseImageCropperProps {
   /** Whether the crop area is fixed in size and position. */
   fixedCropArea?: boolean;
   /**
-   * The initial rectangle of the crop area.
-   * If not provided, a smart default will be computed based on viewport size and aspect ratio.
+   * The initial rectangle of the crop area. If not provided, a smart default
+   * will be computed based on viewport size and aspect ratio.
    */
   initialCrop?: CropRect;
   /** The maximum height of the crop area. */
@@ -71,8 +71,8 @@ export interface ImageCropperProps extends BaseImageCropperProps {
    * Image URL for the auto-rendered cropper layout.
    *
    * @remarks
-   * When provided, renders `ImageCropperImage` and `ImageCropperSelection` automatically and the
-   * default slot is ignored.
+   *   When provided, renders `ImageCropperImage` and `ImageCropperSelection`
+   *   automatically and the default slot is ignored.
    */
   src?: string;
   /** The controlled zoom level of the image. */

@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Badge } from "@pisagor/svelte";
-import ArrowUpRightIcon from "phosphor-svelte/lib/ArrowUpRightIcon";
-import PlusCircleIcon from "phosphor-svelte/lib/PlusCircleIcon";
+  import { Badge } from "@pisagor/svelte";
+  import ArrowUpRightIcon from "phosphor-svelte/lib/ArrowUpRightIcon";
+  import PlusCircleIcon from "phosphor-svelte/lib/PlusCircleIcon";
 </script>
 
 <Badge>

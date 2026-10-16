@@ -2,9 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const alertRecipe = tv({
   defaultVariants: {
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "default",
   },
   slots: {
@@ -23,8 +21,8 @@ export const alertRecipe = tv({
       "px-3.5 py-3",
       "grid w-full items-start gap-x-2 gap-y-0.5",
       "text-card-foreground text-sm",
-      "rounded-2xl border border-border/50",
-      "has-[>svg]:has-[[data-scope=alert][data-part=action]]:grid-cols-[--spacing(4)_1fr_auto] has-[>svg]:grid-cols-[--spacing(4)_1fr]",
+      "border-border/50 rounded-2xl border",
+      "has-[>svg]:grid-cols-[--spacing(4)_1fr] has-[>svg]:has-[[data-scope=alert][data-part=action]]:grid-cols-[--spacing(4)_1fr_auto]",
       "has-[>svg]:gap-x-2 [&_svg]:h-lh [&_svg]:w-4",
       "has-[[data-scope=alert][data-part=action]]:grid-cols-[1fr_auto]",
     ],

@@ -1,14 +1,14 @@
 <script lang="ts">
-import { createListCollection } from "@ark-ui/svelte/collection";
-import { Item, Listbox } from "@pisagor/svelte";
+  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { Item, Listbox } from "@pisagor/svelte";
 
-const collection = createListCollection({
-  items: [
-    { icon: "🇧🇷", label: "Brazil", value: "brazil" },
-    { icon: "🇲🇽", label: "Mexico", value: "mexico" },
-    { icon: "🇮🇪", label: "Ireland", value: "ireland" },
-  ],
-});
+  const collection = createListCollection({
+    items: [
+      { icon: "🇧🇷", label: "Brazil", value: "brazil" },
+      { icon: "🇲🇽", label: "Mexico", value: "mexico" },
+      { icon: "🇮🇪", label: "Ireland", value: "ireland" },
+    ],
+  });
 </script>
 
 <Item.Group variant="outline">

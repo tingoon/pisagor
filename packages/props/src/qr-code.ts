@@ -4,6 +4,7 @@ import type { QrCodeRecipeFn } from "@pisagor/recipes";
 export interface QrCodeProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue qrCodeRecipe
    */
   recipe?: QrCodeRecipeFn;

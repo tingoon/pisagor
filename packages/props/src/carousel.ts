@@ -4,6 +4,7 @@ import type { CarouselRecipeFn } from "@pisagor/recipes";
 export interface CarouselProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue carouselRecipe
    */
   recipe?: CarouselRecipeFn;

@@ -13,7 +13,11 @@ import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
 import { Fragment, use } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { getMessage, type MessageKey } from "./provider/provider.context";
+import {
+  type MessageKey,
+  useMessage,
+  useMessageResolver,
+} from "./provider/context";
 
 // #region Context
 const {
@@ -40,8 +44,7 @@ const {
 type TimerUnit = "hours" | "minutes" | "seconds";
 
 export interface TimerItemGroupProps
-  extends ComponentProps<typeof ark.div>,
-    BaseTimerItemGroupProps {
+  extends ComponentProps<typeof ark.div>, BaseTimerItemGroupProps {
   /**
    * The orientation of the timer item group.
    *
@@ -50,12 +53,13 @@ export interface TimerItemGroupProps
   orientation?: "horizontal" | "vertical";
 }
 
-export interface TimerActionProps
-  extends Omit<TimerActionTriggerProps, "action"> {}
+export interface TimerActionProps extends Omit<
+  TimerActionTriggerProps,
+  "action"
+> {}
 
 export interface TimerRootProps
-  extends TimerPrimitiveRootProps,
-    BaseTimerRootProps {
+  extends TimerPrimitiveRootProps, BaseTimerRootProps {
   units?: TimerUnit[];
   /** Auto-render Timer.Control with play and reset buttons */
   isControlsVisible?: boolean;
@@ -76,6 +80,7 @@ export function TimerRoot({
   units,
   ...rest
 }: TimerRootProps) {
+  const resolveMessage = useMessageResolver();
   return (
     <TimerRootBase {...rest}>
       {units && (
@@ -86,7 +91,7 @@ export function TimerRoot({
               <TimerItemGroup>
                 <TimerItem type={unit} />
                 <TimerItemLabel>
-                  {getMessage(`timer.${unit}` as MessageKey)}
+                  {resolveMessage(`timer.${unit}` as MessageKey)}
                 </TimerItemLabel>
               </TimerItemGroup>
             </Fragment>
@@ -128,7 +133,10 @@ export function TimerItemGroup({
   );
 }
 
-/** Usable inside or outside `Timer.ItemGroup` (falls back to the default item-group recipe). */
+/**
+ * Usable inside or outside `Timer.ItemGroup` (falls back to the default
+ * item-group recipe).
+ */
 export function TimerItem({
   className,
   ...rest
@@ -184,7 +192,7 @@ export function TimerPause(props: TimerActionProps) {
     <TimerPrimitive.ActionTrigger
       {...props}
       action="pause"
-      aria-label={getMessage("timer.pause")}
+      aria-label={useMessage("timer.pause")}
     />
   );
 }
@@ -194,7 +202,7 @@ export function TimerResume(props: TimerActionProps) {
     <TimerPrimitive.ActionTrigger
       {...props}
       action="resume"
-      aria-label={getMessage("timer.resume")}
+      aria-label={useMessage("timer.resume")}
     />
   );
 }
@@ -204,7 +212,7 @@ export function TimerStart(props: TimerActionProps) {
     <TimerPrimitive.ActionTrigger
       {...props}
       action="start"
-      aria-label={getMessage("timer.start")}
+      aria-label={useMessage("timer.start")}
     />
   );
 }
@@ -214,7 +222,7 @@ export function TimerReset(props: TimerActionProps) {
     <TimerPrimitive.ActionTrigger
       {...props}
       action="reset"
-      aria-label={getMessage("timer.reset")}
+      aria-label={useMessage("timer.reset")}
     />
   );
 }
@@ -224,7 +232,7 @@ export function TimerRestart(props: TimerActionProps) {
     <TimerPrimitive.ActionTrigger
       {...props}
       action="restart"
-      aria-label={getMessage("timer.restart")}
+      aria-label={useMessage("timer.restart")}
     />
   );
 }

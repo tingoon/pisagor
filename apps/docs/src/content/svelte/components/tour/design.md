@@ -29,9 +29,9 @@ Manage focus in the step container, return focus to the trigger on exit, and ens
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Guided first-run highlights | **Tour** |
-| Linear task completion | [Steps](/svelte/components/steps/design) |
-| Empty starting view | [Empty State](/svelte/components/empty-state/design) |
-| Contextual short hint | [Tooltip](/svelte/components/tooltip/design) |
+| Need                        | Prefer                                              |
+| --------------------------- | --------------------------------------------------- |
+| Guided first-run highlights | **Tour**                                            |
+| Linear task completion      | [Steps](/svelte/components/steps/design)             |
+| Empty starting view         | [Empty State](/svelte/components/empty-state/design) |
+| Contextual short hint       | [Tooltip](/svelte/components/tooltip/design)         |

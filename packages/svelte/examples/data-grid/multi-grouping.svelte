@@ -1,24 +1,24 @@
 <script lang="ts">
-import { Table } from "@pisagor/svelte";
-import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import type { GroupingState } from "@tanstack/svelte-table";
-import { allUsers, userColumns } from "./helpers";
+  import { Table } from "@pisagor/svelte";
+  import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
+  import type { GroupingState } from "@tanstack/svelte-table";
+  import { allUsers, userColumns } from "./helpers";
 
-const columns = userColumns.map((column) => ({
-  ...column,
-  enableGrouping: true,
-}));
-let grouping = $state<GroupingState>(["department", "role"]);
+  const columns = userColumns.map((column) => ({
+    ...column,
+    enableGrouping: true,
+  }));
+  let grouping = $state<GroupingState>(["department", "role"]);
 
-function onGroupingChange(
-  updater: GroupingState | ((prev: GroupingState) => GroupingState),
-) {
-  grouping = typeof updater === "function" ? updater(grouping) : updater;
-}
+  function onGroupingChange(
+    updater: GroupingState | ((prev: GroupingState) => GroupingState),
+  ) {
+    grouping = typeof updater === "function" ? updater(grouping) : updater;
+  }
 </script>
 
 <div class="flex w-full flex-col gap-3">
-  <div class="rounded-xl border bg-muted/20 p-3">
+  <div class="bg-muted/20 rounded-xl border p-3">
     <DataGrid
       {columns}
       data={allUsers.slice(0, 24)}
@@ -27,7 +27,7 @@ function onGroupingChange(
       state={{ grouping }}
     >
       <DataGrid.Toolbar>
-        <p class="font-medium text-sm">Grouped by department → role</p>
+        <p class="text-sm font-medium">Grouped by department → role</p>
       </DataGrid.Toolbar>
       <Table>
         <Table.Header>

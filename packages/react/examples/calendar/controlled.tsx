@@ -24,7 +24,7 @@ export function Controlled() {
           </Calendar>
         </Card.Content>
       </Card>
-      <p className="text-center text-muted-foreground text-sm">
+      <p className="text-muted-foreground text-center text-sm">
         {value.map((date) => date.toString())}
       </p>
     </div>

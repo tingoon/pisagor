@@ -60,8 +60,10 @@ export interface AppShellPanelProps extends ComponentProps<"aside"> {
   resizableProps?: AppShellResizableProps;
 }
 
-export interface AppShellPanelTriggerProps
-  extends Omit<ButtonProps, "children"> {
+export interface AppShellPanelTriggerProps extends Omit<
+  ButtonProps,
+  "children"
+> {
   /**
    * Panel side to toggle.
    *

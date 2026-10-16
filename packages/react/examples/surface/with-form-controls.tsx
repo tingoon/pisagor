@@ -65,7 +65,7 @@ export function WithFormControls() {
   return (
     <Surface bordered padding="md" variant="default">
       <div className="mb-4">
-        <h3 className="font-semibold text-sm">Settings</h3>
+        <h3 className="text-sm font-semibold">Settings</h3>
         <p className="text-muted-foreground text-sm">
           Grouped controls on a surface background.
         </p>

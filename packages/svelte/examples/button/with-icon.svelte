@@ -1,10 +1,10 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
-import ArrowSquareOutIcon from "phosphor-svelte/lib/ArrowSquareOutIcon";
-import DownloadIcon from "phosphor-svelte/lib/DownloadIcon";
-import GearIcon from "phosphor-svelte/lib/GearIcon";
-import HeartIcon from "phosphor-svelte/lib/HeartIcon";
-import PlusIcon from "phosphor-svelte/lib/PlusIcon";
+  import { Button } from "@pisagor/svelte";
+  import ArrowSquareOutIcon from "phosphor-svelte/lib/ArrowSquareOutIcon";
+  import DownloadIcon from "phosphor-svelte/lib/DownloadIcon";
+  import GearIcon from "phosphor-svelte/lib/GearIcon";
+  import HeartIcon from "phosphor-svelte/lib/HeartIcon";
+  import PlusIcon from "phosphor-svelte/lib/PlusIcon";
 </script>
 
 <div class="flex flex-wrap gap-2">

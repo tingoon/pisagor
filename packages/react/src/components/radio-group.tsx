@@ -29,7 +29,8 @@ interface RadioGroupPresetItem {
 }
 
 export interface RadioGroupRootProps
-  extends Omit<RadioGroupPrimitiveRootProps, "onValueChange">,
+  extends
+    Omit<RadioGroupPrimitiveRootProps, "onValueChange">,
     BaseRadioGroupRootProps {
   onValueChange?: (value: string | null) => void;
 }
@@ -39,8 +40,7 @@ export interface RadioGroupProps extends Omit<RadioGroupRootProps, "children"> {
 }
 
 export interface RadioGroupItemProps
-  extends RadioGroupPrimitiveItemProps,
-    BaseRadioGroupItemProps {
+  extends RadioGroupPrimitiveItemProps, BaseRadioGroupItemProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
 }

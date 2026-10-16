@@ -29,9 +29,9 @@ Prefer opacity or transform transitions over layout-thrashing properties so swap
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Two-state icon transition | **Swap** |
-| Setting with immediate effect | [Switch](/react/components/switch/design) |
-| Pressed toolbar control | [Toggle](/react/components/toggle/design) |
-| Show/hide arbitrary content | [Collapsible](/react/components/collapsible/design) |
+| Need                          | Prefer                                              |
+| ----------------------------- | --------------------------------------------------- |
+| Two-state icon transition     | **Swap**                                            |
+| Setting with immediate effect | [Switch](/react/components/switch/design)           |
+| Pressed toolbar control       | [Toggle](/react/components/toggle/design)           |
+| Show/hide arbitrary content   | [Collapsible](/react/components/collapsible/design) |

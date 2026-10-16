@@ -7,7 +7,7 @@ export function Default() {
   return (
     <ScrollArea class="h-64 w-48 rounded-md border">
       <div class="p-4">
-        <h4 class="mb-4 font-medium text-sm leading-none">Tags</h4>
+        <h4 class="mb-4 text-sm leading-none font-medium">Tags</h4>
         <For each={tags}>
           {(tag) => (
             <>

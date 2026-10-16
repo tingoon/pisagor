@@ -5,8 +5,7 @@ import type { ComponentProps } from "react";
 
 // #region Types
 export interface StatusProps
-  extends ComponentProps<typeof ark.span>,
-    BaseStatusProps {}
+  extends ComponentProps<typeof ark.span>, BaseStatusProps {}
 // #endregion
 
 // #region Component

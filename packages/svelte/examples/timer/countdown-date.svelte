@@ -1,16 +1,16 @@
 <script lang="ts">
-import { Card, Timer } from "@pisagor/svelte";
+  import { Card, Timer } from "@pisagor/svelte";
 
-const formatDate = (date: Date) =>
-  date.toLocaleDateString(undefined, { dateStyle: "medium" });
+  const formatDate = (date: Date) =>
+    date.toLocaleDateString(undefined, { dateStyle: "medium" });
 
-const targetDate = new Date();
-targetDate.setDate(targetDate.getDate() + 7);
+  const targetDate = new Date();
+  targetDate.setDate(targetDate.getDate() + 7);
 </script>
 
 <Card class="rounded-3xl [--space:--spacing(6)]">
   <Card.Content class="flex flex-col items-center gap-3">
-    <p class="text-center text-muted-foreground text-xs">
+    <p class="text-muted-foreground text-center text-xs">
       Until {formatDate(targetDate)}
     </p>
     <Timer

@@ -1,12 +1,11 @@
 <script lang="ts">
-import { NavigationMenu } from "@pisagor/svelte";
+  import { NavigationMenu } from "@pisagor/svelte";
 </script>
 
 <NavigationMenu aria-label="Main">
   <NavigationMenu.List>
     <NavigationMenu.Item>
-      <NavigationMenu.Link active href="#overview"
-        >Overview</NavigationMenu.Link
+      <NavigationMenu.Link active href="#overview">Overview</NavigationMenu.Link
       >
     </NavigationMenu.Item>
     <NavigationMenu.Item>

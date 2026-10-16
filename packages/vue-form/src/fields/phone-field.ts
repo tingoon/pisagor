@@ -9,7 +9,8 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface PhoneFieldProps
-  extends FieldPresentationProps,
+  extends
+    FieldPresentationProps,
     Omit<PhoneInputProps, "class" | "name" | "onBlur" | "onChange" | "value"> {
   name?: string;
   onBlur?: () => void;
@@ -92,8 +93,7 @@ export const PhoneField = defineComponent({
           h(PhoneInput as ArkPart, {
             ...attrs,
             defaultCountry: props.defaultCountry as
-              | PhoneInputProps["defaultCountry"]
-              | undefined,
+              PhoneInputProps["defaultCountry"] | undefined,
             disabled: props.disabled,
             id: props.id,
             invalid: props.invalid,

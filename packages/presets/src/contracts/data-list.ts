@@ -13,7 +13,7 @@ export const dataListItemRecipe = tv({
     ],
     label: [
       "min-w-24 shrink-0",
-      "font-medium text-muted-foreground",
+      "text-muted-foreground font-medium",
       "group-data-[orientation=vertical]/data-list:min-w-0",
     ],
     value: ["flex-1", "text-foreground"],

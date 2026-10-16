@@ -2,15 +2,15 @@ import { PhX } from "@phosphor-icons/vue";
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { h, type VNode } from "vue";
-import { useProviderMessage } from "../components/provider/provider";
+import { useTranslation } from "../components/provider/context";
 
 /**
  * Renders an icon-only close button.
  *
- * @param inlineClass - Extra classes for the button.
- * @param recipe - Style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
- *
  * @defaultValue buttonRecipe — for the `recipe` parameter
+ * @param inlineClass - Extra classes for the button.
+ * @param recipe - Style recipe. Defaults to `buttonRecipe` from
+ *   `@pisagor/recipes/button`.
  */
 export function renderIconCloseButton(
   inlineClass: string,
@@ -19,7 +19,7 @@ export function renderIconCloseButton(
   return h(
     "button",
     {
-      "aria-label": useProviderMessage("dialog.close"),
+      "aria-label": useTranslation("dialog.close"),
       class: cn(
         recipe({ size: "icon-sm", variant: "ghost" }).base(),
         inlineClass,

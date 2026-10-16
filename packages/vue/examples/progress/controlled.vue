@@ -8,7 +8,7 @@ const value = ref(50);
 
 <template>
   <div class="flex w-full flex-col gap-2">
-    <div class="flex items-center gap-2 font-medium text-sm">
+    <div class="flex items-center gap-2 text-sm font-medium">
       Controlled progress
       <div class="ml-auto flex gap-2">
         <Button

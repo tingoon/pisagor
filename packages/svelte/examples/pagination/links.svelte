@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Pagination } from "@pisagor/svelte";
-import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
-import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
+  import { Pagination } from "@pisagor/svelte";
+  import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
+  import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 </script>
 
 <Pagination count={50} pageSize={10}>

@@ -19,7 +19,7 @@ import { Portal } from "solid-js/web";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { XIcon } from "../internal/icons";
 import { Button } from "./button";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -34,8 +34,7 @@ const {
 // #endregion
 
 export interface PopoverContentProps
-  extends PopoverPrimitiveContentProps,
-    BasePopoverContentProps {
+  extends PopoverPrimitiveContentProps, BasePopoverContentProps {
   showCloseButton?: boolean;
 }
 
@@ -94,7 +93,7 @@ export function PopoverContent(props: PopoverContentProps): JSX.Element {
                 asChild={(triggerProps) => (
                   <Button
                     {...triggerProps({ class: slots().close() })}
-                    aria-label={useProviderMessage("popover.close")}
+                    aria-label={useTranslation("popover.close")}
                     size="icon-sm"
                     variant="ghost"
                   >

@@ -29,9 +29,9 @@ Prefer plain language in labels beside formatted values (“Updated”, “Size�
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Locale-aware value display | **Format** |
-| Long-form readable articles | [Prose](/react/components/prose/design) |
-| Compact metric tiles | [Stat](/react/components/stat/design) |
-| Search hit emphasis | [Highlight](/react/components/highlight/design) |
+| Need                        | Prefer                                          |
+| --------------------------- | ----------------------------------------------- |
+| Locale-aware value display  | **Format**                                      |
+| Long-form readable articles | [Prose](/react/components/prose/design)         |
+| Compact metric tiles        | [Stat](/react/components/stat/design)           |
+| Search hit emphasis         | [Highlight](/react/components/highlight/design) |

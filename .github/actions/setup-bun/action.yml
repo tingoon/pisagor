@@ -11,6 +11,8 @@ runs:
   using: composite
   steps:
     - uses: oven-sh/setup-bun@v2
+      with:
+        bun-version: canary
 
     - uses: actions/cache@v6
       with:

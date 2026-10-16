@@ -1,10 +1,10 @@
 <script lang="ts">
-import { Button, Popover } from "@pisagor/svelte";
+  import { Button, Popover } from "@pisagor/svelte";
 </script>
 
 <Popover modal>
   <Popover.Trigger>
-    <Button variant="outline"> Open </Button>
+    <Button variant="outline">Open</Button>
   </Popover.Trigger>
   <Popover.Content>
     <Popover.Header

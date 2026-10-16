@@ -173,8 +173,7 @@ function loadCatalog(
   }
   try {
     return JSON.parse(readFileSync(file, "utf8")) as
-      | ComponentsCatalog
-      | RecipesCatalog;
+      ComponentsCatalog | RecipesCatalog;
   } catch {
     return null;
   }

@@ -1,16 +1,16 @@
 <script lang="ts">
-import { skeletonRecipe } from "@pisagor/recipes";
-import { Skeleton } from "@pisagor/svelte";
-import { tv } from "tailwind-variants";
+  import { skeletonRecipe } from "@pisagor/recipes";
+  import { Skeleton } from "@pisagor/svelte";
+  import { tv } from "tailwind-variants";
 
-const brandSkeletonRecipe = tv({
-  extend: skeletonRecipe,
-  slots: {
-    circle: "bg-emerald-500/15",
-    line: "bg-emerald-500/15",
-  },
-  variants: {},
-});
+  const brandSkeletonRecipe = tv({
+    extend: skeletonRecipe,
+    slots: {
+      circle: "bg-emerald-500/15",
+      line: "bg-emerald-500/15",
+    },
+    variants: {},
+  });
 </script>
 
 <div class="flex items-center gap-2">

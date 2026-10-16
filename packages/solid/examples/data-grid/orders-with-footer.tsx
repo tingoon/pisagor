@@ -82,7 +82,7 @@ function formatDate(value: string) {
 function DataGridShell({ children }: { children: JSX.Element }) {
   return (
     <div class="flex w-full flex-col gap-3">
-      <div class="rounded-xl border bg-muted/20 p-3">{children}</div>
+      <div class="bg-muted/20 rounded-xl border p-3">{children}</div>
     </div>
   );
 }
@@ -154,7 +154,7 @@ export function OrdersWithFooter() {
         state={{ sorting: sorting() }}
       >
         <DataGrid.Toolbar>
-          <p class="font-medium text-sm">Sales orders with footer totals</p>
+          <p class="text-sm font-medium">Sales orders with footer totals</p>
         </DataGrid.Toolbar>
         <Table>
           <Table.Header>

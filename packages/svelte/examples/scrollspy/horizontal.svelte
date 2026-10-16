@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Button, ScrollArea, Scrollspy } from "@pisagor/svelte";
-import { horizontalSections } from "./helpers";
+  import { Button, ScrollArea, Scrollspy } from "@pisagor/svelte";
+  import { horizontalSections } from "./helpers";
 
-let parentEl = $state<HTMLDivElement | null>(null);
+  let parentEl = $state<HTMLDivElement | null>(null);
 </script>
 
 <div class="w-full space-y-5">
@@ -25,8 +25,8 @@ let parentEl = $state<HTMLDivElement | null>(null);
       <div class="space-y-8">
         {#each horizontalSections as item}
           <div class="space-y-2.5" id={item.id}>
-            <h3 class="text-base text-foreground">{item.label}</h3>
-            <div class="h-87.5 rounded-2xl bg-muted"></div>
+            <h3 class="text-foreground text-base">{item.label}</h3>
+            <div class="bg-muted h-87.5 rounded-2xl"></div>
           </div>
         {/each}
       </div>

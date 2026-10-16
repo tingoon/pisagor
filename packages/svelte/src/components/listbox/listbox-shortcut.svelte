@@ -1,16 +1,16 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import { dropdownMenuRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { Snippet } from "svelte";
-import type { HTMLAttributes } from "svelte/elements";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import { dropdownMenuRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { Snippet } from "svelte";
+  import type { HTMLAttributes } from "svelte/elements";
 
-type Props = HTMLAttributes<HTMLSpanElement> & {
-  children?: Snippet;
-};
+  type Props = HTMLAttributes<HTMLSpanElement> & {
+    children?: Snippet;
+  };
 
-let { class: className, children, ...rest }: Props = $props();
-const slots = dropdownMenuRecipe();
+  let { class: className, children, ...rest }: Props = $props();
+  const slots = dropdownMenuRecipe();
 </script>
 
 <Ark

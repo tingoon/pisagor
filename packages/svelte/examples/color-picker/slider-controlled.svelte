@@ -1,7 +1,7 @@
 <script lang="ts">
-import { ColorPicker } from "@pisagor/svelte";
+  import { ColorPicker } from "@pisagor/svelte";
 
-let color = $state("rgba(82, 65, 235, 1)");
+  let color = $state("rgba(82, 65, 235, 1)");
 </script>
 
 <div class="flex flex-col gap-2">
@@ -16,5 +16,5 @@ let color = $state("rgba(82, 65, 235, 1)");
       <ColorPicker.ChannelSlider channel="hue" />
     </ColorPicker.View>
   </ColorPicker>
-  <p class="text-center text-muted-foreground text-sm">{color}</p>
+  <p class="text-muted-foreground text-center text-sm">{color}</p>
 </div>

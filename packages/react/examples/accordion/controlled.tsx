@@ -12,7 +12,7 @@ export function Controlled() {
         onValueChange={({ value }) => setValue(value)}
         value={value}
       />
-      <div className="text-center text-muted-foreground text-sm">{value}</div>
+      <div className="text-muted-foreground text-center text-sm">{value}</div>
     </div>
   );
 }

@@ -29,9 +29,9 @@ Prefer plain language in labels beside formatted values (“Updated”, “Size�
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Locale-aware value display | **Format** |
-| Long-form readable articles | [Prose](/vue/components/prose/design) |
-| Compact metric tiles | [Stat](/vue/components/stat/design) |
-| Search hit emphasis | [Highlight](/vue/components/highlight/design) |
+| Need                        | Prefer                                          |
+| --------------------------- | ----------------------------------------------- |
+| Locale-aware value display  | **Format**                                      |
+| Long-form readable articles | [Prose](/vue/components/prose/design)         |
+| Compact metric tiles        | [Stat](/vue/components/stat/design)           |
+| Search hit emphasis         | [Highlight](/vue/components/highlight/design) |

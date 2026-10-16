@@ -30,7 +30,7 @@ import type { ComponentProps, ReactNode } from "react";
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { FormControlVariant } from "../internal/types";
-import { getMessage } from "./provider/provider.context";
+import { useMessage } from "./provider/context";
 import { Separator, type SeparatorProps } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -61,19 +61,17 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
   SelectPrimitiveRootProps<T>,
   "onValueChange"
 > & {
-  /**
-   * Visual shell variant applied to the trigger. Defaults to `primary`.
-   */
+  /** Visual shell variant applied to the trigger. Defaults to `primary`. */
   variant?: FormControlVariant;
-  /**
-   * Trigger size. Defaults to `md`.
-   */
+  /** Trigger size. Defaults to `md`. */
   size?: FormControlShellVariantProps["size"];
   onValueChange?: (value: string | string[]) => void;
 } & BaseSelectRootProps;
 
-export interface SelectProps
-  extends Omit<SelectRootProps, "children" | "collection"> {
+export interface SelectProps extends Omit<
+  SelectRootProps,
+  "children" | "collection"
+> {
   /**
    * Whether to show a clear button when a value is selected.
    *
@@ -85,7 +83,8 @@ export interface SelectProps
 }
 
 export interface SelectTriggerProps
-  extends Omit<SelectPrimitiveTriggerProps, "size">,
+  extends
+    Omit<SelectPrimitiveTriggerProps, "size">,
     FormControlShellVariantProps {
   /**
    * Whether to show a clear button when a value is selected.
@@ -280,7 +279,7 @@ export function SelectClearTrigger({
 
   return (
     <SelectPrimitive.ClearTrigger
-      aria-label={getMessage("select.clear")}
+      aria-label={useMessage("select.clear")}
       {...rest}
       className={slots.clearTrigger({ className })}
     />

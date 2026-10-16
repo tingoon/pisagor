@@ -4,7 +4,7 @@ import { Progress } from "@pisagor/vue";
 
 <template>
   <div class="flex w-full flex-col gap-2">
-    <span class="font-medium text-sm">Establishing connection...</span>
+    <span class="text-sm font-medium">Establishing connection...</span>
     <Progress indeterminate />
   </div>
 </template>

@@ -7,10 +7,10 @@ import { TextField } from "@pisagor/svelte-form";
 import { createAppForm } from "@pisagor/svelte-form/tanstack";
 ```
 
-| Entry | Path | Role |
-| ----- | ---- | ---- |
-| Fields | `@pisagor/svelte-form` | Standalone field components (`TextField`, `SelectField`, …) |
-| TanStack | `@pisagor/svelte-form/tanstack` | `createAppForm`, connected field components, form helpers |
+| Entry    | Path                            | Role                                                        |
+| -------- | ------------------------------- | ----------------------------------------------------------- |
+| Fields   | `@pisagor/svelte-form`          | Standalone field components (`TextField`, `SelectField`, …) |
+| TanStack | `@pisagor/svelte-form/tanstack` | `createAppForm`, connected field components, form helpers   |
 
 Peers: `@pisagor/svelte`, `svelte` ^5. Optional peer: `@tanstack/svelte-form` (for `./tanstack` only).
 

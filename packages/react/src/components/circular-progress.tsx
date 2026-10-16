@@ -131,8 +131,7 @@ function CircularProgressTrack({
 type CircularProgressClassNames = VariantClassNames<CircularProgressRecipeSlot>;
 
 export interface CircularProgressProps
-  extends Omit<ProgressRootProps, "children">,
-    BaseCircularProgressRootProps {
+  extends Omit<ProgressRootProps, "children">, BaseCircularProgressRootProps {
   /**
    * Visual size preset for the progress circle.
    *

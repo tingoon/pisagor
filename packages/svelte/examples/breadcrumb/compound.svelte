@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Breadcrumb } from "@pisagor/svelte";
+  import { Breadcrumb } from "@pisagor/svelte";
 </script>
 
 <Breadcrumb.Root>
@@ -9,9 +9,7 @@ import { Breadcrumb } from "@pisagor/svelte";
     </Breadcrumb.Item>
     <Breadcrumb.Separator />
     <Breadcrumb.Item>
-      <Breadcrumb.Link href="https://example.com/">
-        Components
-      </Breadcrumb.Link>
+      <Breadcrumb.Link href="https://example.com/">Components</Breadcrumb.Link>
     </Breadcrumb.Item>
     <Breadcrumb.Separator />
     <Breadcrumb.Item>

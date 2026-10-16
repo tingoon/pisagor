@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Field, Progress } from "@pisagor/svelte";
+  import { Field, Progress } from "@pisagor/svelte";
 </script>
 
 <Field>

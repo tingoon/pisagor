@@ -1,8 +1,11 @@
 <script lang="ts">
-import { Breadcrumb, Provider } from "@pisagor/svelte";
+  import { Breadcrumb, Provider } from "@pisagor/svelte";
 </script>
 
-<Provider locale="tr-TR" messages={{ "breadcrumb.label": "Gezinti yolu" }}>
+<Provider
+  locale={{ locale: "tr-TR" }}
+  translations={{ "breadcrumb.label": "Gezinti yolu" }}
+>
   <Breadcrumb
     items={[{ href: "#", label: "Ana sayfa" }, { label: "Ayarlar" }]}
   />

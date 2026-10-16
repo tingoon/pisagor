@@ -1,38 +1,38 @@
 <script lang="ts">
-import type { AlertProps as BaseAlertProps } from "@pisagor/props";
-import type { AlertRecipeSlot } from "@pisagor/recipes";
-import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
-import InfoIcon from "phosphor-svelte/lib/InfoIcon";
-import WarningCircleIcon from "phosphor-svelte/lib/WarningCircleIcon";
-import WarningIcon from "phosphor-svelte/lib/WarningIcon";
-import type { Snippet } from "svelte";
-import type { HTMLAttributes } from "svelte/elements";
-import type { VariantClassNames } from "../../internal/types";
-import AlertAction from "./alert-action.svelte";
-import AlertDescription from "./alert-description.svelte";
-import AlertRoot from "./alert-root.svelte";
-import AlertTitle from "./alert-title.svelte";
+  import type { AlertProps as BaseAlertProps } from "@pisagor/props";
+  import type { AlertRecipeSlot } from "@pisagor/recipes";
+  import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
+  import InfoIcon from "phosphor-svelte/lib/InfoIcon";
+  import WarningCircleIcon from "phosphor-svelte/lib/WarningCircleIcon";
+  import WarningIcon from "phosphor-svelte/lib/WarningIcon";
+  import type { Snippet } from "svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import type { VariantClassNames } from "../../internal/types";
+  import AlertAction from "./alert-action.svelte";
+  import AlertDescription from "./alert-description.svelte";
+  import AlertRoot from "./alert-root.svelte";
+  import AlertTitle from "./alert-title.svelte";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "title" | "children"> & {
-  action?: string | Snippet;
-  classNames?: VariantClassNames<AlertRecipeSlot>;
-  description?: string | Snippet;
-  /** Leading icon. Status variants get a default icon; pass `null` to hide it. */
-  icon?: Snippet | null;
-  title?: string | Snippet;
-} & BaseAlertProps;
+  type Props = Omit<HTMLAttributes<HTMLDivElement>, "title" | "children"> & {
+    action?: string | Snippet;
+    classNames?: VariantClassNames<AlertRecipeSlot>;
+    description?: string | Snippet;
+    /** Leading icon. Status variants get a default icon; pass `null` to hide it. */
+    icon?: Snippet | null;
+    title?: string | Snippet;
+  } & BaseAlertProps;
 
-let {
-  variant,
-  action,
-  description,
-  icon,
-  title,
-  class: className,
-  classNames,
-  recipe,
-  ...rest
-}: Props = $props();
+  let {
+    variant,
+    action,
+    description,
+    icon,
+    title,
+    class: className,
+    classNames,
+    recipe,
+    ...rest
+  }: Props = $props();
 </script>
 
 <AlertRoot {...rest} class={className} {recipe} {variant}>

@@ -4,6 +4,7 @@ import type { SegmentGroupRecipeFn } from "@pisagor/recipes";
 export interface SegmentGroupProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue segmentGroupRecipe
    */
   recipe?: SegmentGroupRecipeFn;

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Slider } from "@pisagor/svelte";
+  import { Slider } from "@pisagor/svelte";
 </script>
 
 <Slider.Root class="w-64" defaultValue={[40]}>

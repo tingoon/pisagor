@@ -13,10 +13,7 @@ import { Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { ArrowDownIcon, ArrowUpIcon, MinusIcon } from "../internal/icons";
 import type { VariantClassNames } from "../internal/types";
-import {
-  type MessageKey,
-  useProviderMessage,
-} from "./provider/provider.context";
+import { type MessageKey, useTranslation } from "./provider/context";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -98,7 +95,7 @@ export function StatTrend(props: StatTrendProps): JSX.Element {
         <MinusIcon aria-hidden />
       )}
       <span class="sr-only">
-        {useProviderMessage(`stat.trend.${trend()}` as MessageKey)}
+        {useTranslation(`stat.trend.${trend()}` as MessageKey)}
       </span>
       {local.children}
     </ark.div>

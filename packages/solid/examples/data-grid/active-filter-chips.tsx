@@ -96,7 +96,7 @@ function SortIndicator({ direction }: { direction: false | "asc" | "desc" }) {
 function DataGridShell({ children }: { children: JSX.Element }) {
   return (
     <div class="flex w-full flex-col gap-3">
-      <div class="rounded-xl border bg-muted/20 p-3">{children}</div>
+      <div class="bg-muted/20 rounded-xl border p-3">{children}</div>
     </div>
   );
 }
@@ -143,7 +143,7 @@ function FilterChipsToolbar<TData extends RowData>() {
             Search: {globalFilter()}
             <button
               aria-label="Clear search"
-              class="rounded-sm hover:bg-background/60"
+              class="hover:bg-background/60 rounded-sm"
               onClick={() => table.setGlobalFilter("")}
               type="button"
             >
@@ -157,7 +157,7 @@ function FilterChipsToolbar<TData extends RowData>() {
               {filter.id}: {String(filter.value)}
               <button
                 aria-label={`Remove ${filter.id} filter`}
-                class="rounded-sm hover:bg-background/60"
+                class="hover:bg-background/60 rounded-sm"
                 onClick={() =>
                   table.getColumn(filter.id)?.setFilterValue(undefined)
                 }

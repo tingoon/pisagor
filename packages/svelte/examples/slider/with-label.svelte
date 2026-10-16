@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Field, Slider } from "@pisagor/svelte";
+  import { Field, Slider } from "@pisagor/svelte";
 </script>
 
 <Field>

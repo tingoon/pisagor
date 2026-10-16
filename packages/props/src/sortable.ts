@@ -8,6 +8,7 @@ import type {
 export interface SortableProps extends SortableVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue sortableRecipe
    */
   recipe?: SortableRecipeFn;
@@ -17,6 +18,7 @@ export interface SortableProps extends SortableVariantProps {
 export interface SortableItemProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue sortableItemRecipe
    */
   recipe?: SortableItemRecipeFn;

@@ -29,9 +29,9 @@ When no substring matches, show the plain text without decorative emphasis. For 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Query match emphasis in text | **Highlight** |
-| Type-to-filter option lists | [Autocomplete](/solid/components/autocomplete/design) |
-| Command palette search | [Command](/solid/components/command/design) |
-| Scroll-spy section labels | [Scrollspy](/solid/components/scrollspy/design) |
+| Need                         | Prefer                                                |
+| ---------------------------- | ----------------------------------------------------- |
+| Query match emphasis in text | **Highlight**                                         |
+| Type-to-filter option lists  | [Autocomplete](/solid/components/autocomplete/design) |
+| Command palette search       | [Command](/solid/components/command/design)           |
+| Scroll-spy section labels    | [Scrollspy](/solid/components/scrollspy/design)       |

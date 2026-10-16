@@ -5,12 +5,12 @@ export const announcementRecipe = tv({
     base: [
       "group/announcement",
       "relative",
-      "inline-flex min-w-0 max-w-full items-center gap-2",
+      "inline-flex max-w-full min-w-0 items-center gap-2",
       "py-0.5 ps-3 pe-3",
       "bg-input/4",
-      "rounded-2xl border border-input",
-      "transition duration-fast ease-out",
-      "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/32",
+      "border-input rounded-2xl border",
+      "duration-fast transition ease-out",
+      "focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/32 outline-hidden",
       "[&_svg]:size-3.5 [&_svg]:shrink-0",
       "has-[[data-scope=badge][data-part=root]]:ps-0.5",
       "[button&,a&]:cursor-pointer [button&,a&]:active:scale-98",
@@ -23,7 +23,7 @@ export const announcementRecipe = tv({
     title: [
       "min-w-0",
       "inline-flex flex-1 items-center gap-1",
-      "select-none truncate font-medium text-sm",
+      "truncate text-sm font-medium select-none",
     ],
   },
 });

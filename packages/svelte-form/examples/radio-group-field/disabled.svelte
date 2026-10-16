@@ -1,6 +1,6 @@
 <script lang="ts">
-import { RadioGroupField } from "@pisagor/svelte-form";
-import { planOptions } from "../options";
+  import { RadioGroupField } from "@pisagor/svelte-form";
+  import { planOptions } from "../options";
 </script>
 
 <RadioGroupField

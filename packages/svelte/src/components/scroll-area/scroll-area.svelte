@@ -1,38 +1,38 @@
 <script lang="ts">
-import type {
-  ScrollAreaRootProps,
-  ScrollAreaScrollbarProps,
-  ScrollAreaThumbProps,
-  ScrollAreaViewportProps,
-} from "@ark-ui/svelte/scroll-area";
-import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/svelte/scroll-area";
-import type { ScrollAreaProps as BaseScrollAreaProps } from "@pisagor/props";
-import type { ScrollAreaRecipeSlot } from "@pisagor/recipes";
-import type { Snippet } from "svelte";
-import type { VariantClassNames } from "../../internal/types";
-import ScrollAreaRoot from "./scroll-area-root.svelte";
-import ScrollAreaScrollbar from "./scroll-area-scrollbar.svelte";
-import ScrollAreaThumb from "./scroll-area-thumb.svelte";
-import ScrollAreaViewport from "./scroll-area-viewport.svelte";
+  import type {
+    ScrollAreaRootProps,
+    ScrollAreaScrollbarProps,
+    ScrollAreaThumbProps,
+    ScrollAreaViewportProps,
+  } from "@ark-ui/svelte/scroll-area";
+  import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/svelte/scroll-area";
+  import type { ScrollAreaProps as BaseScrollAreaProps } from "@pisagor/props";
+  import type { ScrollAreaRecipeSlot } from "@pisagor/recipes";
+  import type { Snippet } from "svelte";
+  import type { VariantClassNames } from "../../internal/types";
+  import ScrollAreaRoot from "./scroll-area-root.svelte";
+  import ScrollAreaScrollbar from "./scroll-area-scrollbar.svelte";
+  import ScrollAreaThumb from "./scroll-area-thumb.svelte";
+  import ScrollAreaViewport from "./scroll-area-viewport.svelte";
 
-type Props = Omit<ScrollAreaRootProps, "children"> & {
-  children?: Snippet;
-  classNames?: VariantClassNames<ScrollAreaRecipeSlot>;
-  scrollbarProps?: Omit<ScrollAreaScrollbarProps, "children" | "orientation">;
-  thumbProps?: Omit<ScrollAreaThumbProps, "children">;
-  viewportProps?: Omit<ScrollAreaViewportProps, "children">;
-} & BaseScrollAreaProps;
+  type Props = Omit<ScrollAreaRootProps, "children"> & {
+    children?: Snippet;
+    classNames?: VariantClassNames<ScrollAreaRecipeSlot>;
+    scrollbarProps?: Omit<ScrollAreaScrollbarProps, "children" | "orientation">;
+    thumbProps?: Omit<ScrollAreaThumbProps, "children">;
+    viewportProps?: Omit<ScrollAreaViewportProps, "children">;
+  } & BaseScrollAreaProps;
 
-let {
-  scrollFade,
-  children,
-  class: className,
-  classNames,
-  scrollbarProps,
-  thumbProps,
-  viewportProps,
-  ...rest
-}: Props = $props();
+  let {
+    scrollFade,
+    children,
+    class: className,
+    classNames,
+    scrollbarProps,
+    thumbProps,
+    viewportProps,
+    ...rest
+  }: Props = $props();
 </script>
 
 <ScrollAreaRoot {...rest} class={className} {scrollFade}>

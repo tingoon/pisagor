@@ -1,13 +1,11 @@
 <script lang="ts">
-import { Portal } from "@ark-ui/svelte/portal";
-import { Button, Tooltip } from "@pisagor/svelte";
+  import { Portal } from "@ark-ui/svelte/portal";
+  import { Button, Tooltip } from "@pisagor/svelte";
 </script>
 
 <Tooltip.Root>
   <Tooltip.Trigger>
-    {#snippet asChild(
-      props,
-    )}
+    {#snippet asChild(props)}
       <Button {...props()} variant="outline">Hover me</Button>
     {/snippet}
   </Tooltip.Trigger>

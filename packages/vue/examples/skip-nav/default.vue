@@ -5,7 +5,7 @@ import { SkipNav } from "@pisagor/vue";
 <template>
   <SkipNav.Link class="focus:absolute" id="demo-content" />
   <SkipNav.Content
-    class="rounded-lg border bg-card p-4 focus:ring-2"
+    class="bg-card rounded-lg border p-4 focus:ring-2"
     id="demo-content"
     :tab-index="undefined"
   >

@@ -25,7 +25,7 @@ import {
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { ClassValue, LoosePropValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 import { Separator } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -38,7 +38,10 @@ const {
   recipe: selectRecipe,
 });
 
-/** Slots from the nearest Select root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest Select root, or the default recipe when used
+ * standalone.
+ */
 function useSelectSlots() {
   const styles = useOptionalSelectStyles();
 
@@ -63,9 +66,7 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
   ArkSelectRootProps<T>,
   "collection" | "onValueChange"
 > & {
-  /**
-   * Visual shell variant applied to the trigger. Defaults to `primary`.
-   */
+  /** Visual shell variant applied to the trigger. Defaults to `primary`. */
   variant?: FormControlVariant;
   /** Trigger size. Defaults to `md`. */
   size?: FormControlShellVariantProps["size"];
@@ -443,8 +444,7 @@ export const SelectClearTrigger = defineComponent({
         SelectPrimitive.ClearTrigger as ArkPart,
         {
           ...attrs,
-          "aria-label":
-            props["aria-label"] ?? useProviderMessage("select.clear"),
+          "aria-label": props["aria-label"] ?? useTranslation("select.clear"),
           class: cn(styleSlots.clearTrigger(), props.class, attrs.class),
         },
         () => slots.default?.(),

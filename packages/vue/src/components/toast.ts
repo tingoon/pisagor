@@ -24,7 +24,7 @@ import { defineComponent, h, type PropType, Teleport } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { LoosePropValue, VariantClassNames } from "../internal/types";
 import { Button } from "./button";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 import { Spinner } from "./spinner";
 
 type ClassValue = Parameters<typeof cn>[0];
@@ -231,8 +231,7 @@ const ToastItemContent = defineComponent({
                             props.classNames?.description,
                             (
                               props.descriptionProps as
-                                | { class?: ClassValue }
-                                | undefined
+                                { class?: ClassValue } | undefined
                             )?.class,
                           ),
                         }),
@@ -280,7 +279,7 @@ const ToastItemContent = defineComponent({
                     h(
                       Button as ArkPart,
                       {
-                        "aria-label": useProviderMessage("toast.close"),
+                        "aria-label": useTranslation("toast.close"),
                         class: slots.close({
                           class: props.classNames?.close,
                         }),

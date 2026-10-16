@@ -1,25 +1,25 @@
 <script lang="ts">
-import type { SpinnerProps as BaseSpinnerProps } from "@pisagor/props";
-import { spinnerRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import CircleNotchIcon from "phosphor-svelte/lib/CircleNotchIcon";
-import type { ClassValue } from "svelte/elements";
-import { useMessageResolver } from "./provider/provider.context";
+  import type { SpinnerProps as BaseSpinnerProps } from "@pisagor/props";
+  import { spinnerRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import CircleNotchIcon from "phosphor-svelte/lib/CircleNotchIcon";
+  import type { ClassValue } from "svelte/elements";
+  import { useMessageResolver } from "./provider/context";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-type Props = {
-  class?: ClassValue;
-  "aria-hidden"?: boolean | "true" | "false" | undefined;
-  "aria-label"?: string | undefined;
-} & BaseSpinnerProps;
+  type Props = {
+    class?: ClassValue;
+    "aria-hidden"?: boolean | "true" | "false" | undefined;
+    "aria-label"?: string | undefined;
+  } & BaseSpinnerProps;
 
-let {
-  "aria-hidden": ariaHidden,
-  "aria-label": ariaLabel,
-  recipe = spinnerRecipe,
-  class: className,
-}: Props = $props();
+  let {
+    "aria-hidden": ariaHidden,
+    "aria-label": ariaLabel,
+    recipe = spinnerRecipe,
+    class: className,
+  }: Props = $props();
 </script>
 
 <CircleNotchIcon

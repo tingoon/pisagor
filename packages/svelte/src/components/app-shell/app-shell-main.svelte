@@ -1,15 +1,15 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
-import type { HTMLAttributes } from "svelte/elements";
-import { useAppShell } from "./app-shell.context";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { useAppShell } from "./app-shell.context";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "style"> & {
-  children?: import("svelte").Snippet;
-  style?: string | undefined;
-};
+  type Props = Omit<HTMLAttributes<HTMLElement>, "style"> & {
+    children?: import("svelte").Snippet;
+    style?: string | undefined;
+  };
 
-let { class: className, style, children, ...rest }: Props = $props();
-const ctx = useAppShell();
+  let { class: className, style, children, ...rest }: Props = $props();
+  const ctx = useAppShell();
 </script>
 
 <main

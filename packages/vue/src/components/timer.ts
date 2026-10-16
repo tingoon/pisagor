@@ -12,7 +12,7 @@ import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { ClassValue } from "../internal/types";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -74,7 +74,10 @@ const TimerItemGroupBase = withTimerItemGroupProvider(ark.div, {
   slot: "base",
 });
 
-/** Usable inside or outside `Timer.ItemGroup` (falls back to the default item-group recipe). */
+/**
+ * Usable inside or outside `Timer.ItemGroup` (falls back to the default
+ * item-group recipe).
+ */
 export const TimerItem = defineComponent({
   inheritAttrs: false,
   name: "Timer.Item",
@@ -216,7 +219,7 @@ export const TimerPause = defineComponent({
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
         {
-          "aria-label": useProviderMessage("timer.pause"),
+          "aria-label": useTranslation("timer.pause"),
           ...attrs,
           action: "pause",
         },
@@ -233,7 +236,7 @@ export const TimerResume = defineComponent({
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
         {
-          "aria-label": useProviderMessage("timer.resume"),
+          "aria-label": useTranslation("timer.resume"),
           ...attrs,
           action: "resume",
         },
@@ -250,7 +253,7 @@ export const TimerStart = defineComponent({
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
         {
-          "aria-label": useProviderMessage("timer.start"),
+          "aria-label": useTranslation("timer.start"),
           ...attrs,
           action: "start",
         },
@@ -267,7 +270,7 @@ export const TimerReset = defineComponent({
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
         {
-          "aria-label": useProviderMessage("timer.reset"),
+          "aria-label": useTranslation("timer.reset"),
           ...attrs,
           action: "reset",
         },
@@ -284,7 +287,7 @@ export const TimerRestart = defineComponent({
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
         {
-          "aria-label": useProviderMessage("timer.restart"),
+          "aria-label": useTranslation("timer.restart"),
           ...attrs,
           action: "restart",
         },

@@ -31,7 +31,7 @@ import {
   type VNodeChild,
   watch,
 } from "vue";
-import { useProviderMessage } from "../components/provider/provider";
+import { useTranslation } from "../components/provider/context";
 import { Table } from "../components/table";
 import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
@@ -57,9 +57,7 @@ interface DataGridRowContextValue<TData extends RowData> {
   row: Row<DataGridFeatures, TData>;
 }
 
-/**
- * @typeParam TData - Row shape passed to `columns` and `data`.
- */
+/** @typeParam TData - Row shape passed to `columns` and `data`. */
 export type DataGridProps<TData extends RowData = RowData> = {
   class?: unknown;
   /**
@@ -77,7 +75,7 @@ interface DataGridHeadProps {
    * Renders a single column header.
    *
    * @remarks
-   * When omitted, renders every visible header in the group.
+   *   When omitted, renders every visible header in the group.
    */
   columnId?: string;
   /**
@@ -143,8 +141,7 @@ export function useDataGridRow<TData extends RowData>() {
 
 function useDataGridHeaderCellContext<TData extends RowData>() {
   return useDataGridHeaderCellContextBase() as
-    | DataGridHeaderCellContextValue<TData>
-    | undefined;
+    DataGridHeaderCellContextValue<TData> | undefined;
 }
 
 function columnSizeStyle(
@@ -358,7 +355,7 @@ export const DataGridColumnResizer = defineComponent({
     class: { type: [String, Object, Array] as PropType<ClassValue> },
   },
   setup(props, { attrs }) {
-    const resizeLabel = useProviderMessage("dataGrid.resizeColumn");
+    const resizeLabel = useTranslation("dataGrid.resizeColumn");
     return () => {
       const headerCell = useDataGridHeaderCellContext<RowData>();
       const { slots: variantSlots, table } =
@@ -749,7 +746,7 @@ export const DataGridEmpty = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const emptyText = useProviderMessage("dataGrid.empty");
+    const emptyText = useTranslation("dataGrid.empty");
     return () => {
       const { slots: variantSlots, table } =
         useDataGridContextBase() as unknown as DataGridContextValue<RowData>;

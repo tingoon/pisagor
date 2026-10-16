@@ -29,9 +29,9 @@ Offer compact variants for inspector panels and comfortable spacing for primary 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Standard list row layout | **Item** |
-| Scrollable option selection | Listbox |
-| Always-visible link list | Menu |
-| Entire row navigates | [Link Box](/astro/components/link-box/design) |
+| Need                        | Prefer                                        |
+| --------------------------- | --------------------------------------------- |
+| Standard list row layout    | **Item**                                      |
+| Scrollable option selection | Listbox   |
+| Always-visible link list    | Menu         |
+| Entire row navigates        | [Link Box](/astro/components/link-box/design) |

@@ -20,7 +20,7 @@ import { createSlotRecipeContext } from "../internal/create-slot-recipe-context"
 import { CheckIcon, ClipboardIcon } from "../internal/icons";
 import type { VariantClassNames } from "../internal/types";
 import { Button, type ButtonProps } from "./button";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -35,8 +35,7 @@ type FormControlVariant = "primary" | "secondary";
 type ClipboardClassNames = VariantClassNames<ClipboardRecipeSlot>;
 
 export interface ClipboardProps
-  extends Omit<ClipboardRootProps, "children">,
-    BaseClipboardProps {
+  extends Omit<ClipboardRootProps, "children">, BaseClipboardProps {
   /** Size scale for the shell, button and value. @defaultValue "md" */
   size?: "sm" | "md" | "lg";
   buttonSize?: ButtonProps["size"];
@@ -60,7 +59,8 @@ function ClipboardProvider(props: {
   size?: "sm" | "md" | "lg";
   valueSize?: ClipboardVariantProps["valueSize"];
   /**
-   * Style recipe. Defaults to `clipboardRecipe` from `@pisagor/recipes/clipboard`.
+   * Style recipe. Defaults to `clipboardRecipe` from
+   * `@pisagor/recipes/clipboard`.
    *
    * @defaultValue clipboardRecipe
    */
@@ -144,7 +144,7 @@ export function Clipboard(props: ClipboardProps): JSX.Element {
   const buttonSize = () =>
     local.buttonSize ?? (`icon-${local.size ?? "md"}` as ButtonProps["size"]);
   const buttonAriaLabel = () =>
-    local.buttonAriaLabel ?? useProviderMessage("clipboard.copy");
+    local.buttonAriaLabel ?? useTranslation("clipboard.copy");
   const copyIcon = () => local.copyIcon ?? <ClipboardIcon />;
   const copiedIcon = () => local.copiedIcon ?? <CheckIcon />;
   const shellClassName = () =>

@@ -14,11 +14,12 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export interface AvatarGroupRootProps
-  extends ComponentProps<typeof ark.div>,
-    BaseAvatarGroupRootProps {}
+  extends ComponentProps<typeof ark.div>, BaseAvatarGroupRootProps {}
 
-export interface AvatarGroupProps
-  extends Omit<AvatarGroupRootProps, "children"> {
+export interface AvatarGroupProps extends Omit<
+  AvatarGroupRootProps,
+  "children"
+> {
   max?: number;
   users: Array<{
     /** Stable key; recommended when names or images can repeat. */

@@ -38,7 +38,7 @@ import type {
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { VariantClassNames } from "../internal/types";
 import { Button } from "./button";
-import { getMessage } from "./provider/provider.context";
+import { useMessage } from "./provider/context";
 import { Spinner } from "./spinner";
 
 // #region Context
@@ -52,7 +52,8 @@ const { useStyles: useToastItem, withProvider } = createSlotRecipeContext({
 type ToastItemClassNames = VariantClassNames<ToastItemRecipeSlot>;
 
 export interface ToasterRootProps
-  extends Omit<ToasterPrimitiveProps, "toaster" | "children">,
+  extends
+    Omit<ToasterPrimitiveProps, "toaster" | "children">,
     BaseToasterRootProps {}
 
 export interface ToasterProps extends ToasterRootProps {
@@ -61,8 +62,7 @@ export interface ToasterProps extends ToasterRootProps {
 }
 
 export interface ToastItemRootProps
-  extends ToastRootProps,
-    BaseToastItemProps {}
+  extends ToastRootProps, BaseToastItemProps {}
 
 export interface ToastItemProps extends ToastItemRootProps {
   /** Slot class names */
@@ -144,6 +144,7 @@ function ToastItemContent({
   classNames,
 }: Omit<ToastItemProps, keyof ToastItemRootProps> &
   Pick<ToastItemProps, "toast">) {
+  const toastCloseMessage = useMessage("toast.close");
   const { slots } = useToastItem();
   const ToastIcon = toastData.type
     ? TOAST_ICONS[toastData.type as keyof typeof TOAST_ICONS]
@@ -202,7 +203,7 @@ function ToastItemContent({
         {!isNotClosable && (
           <ToastPrimitive.CloseTrigger {...closeTriggerProps} asChild>
             <Button
-              aria-label={getMessage("toast.close")}
+              aria-label={toastCloseMessage}
               className={slots.close({ className: classNames?.close })}
               size="icon-xs"
               variant="ghost"

@@ -7,7 +7,7 @@ export function Controlled() {
   return (
     <div className="flex w-full flex-col gap-3">
       <RichTextEditor onValueChange={setValue} value={value} />
-      <pre className="overflow-auto rounded-lg bg-muted p-3 text-xs">
+      <pre className="bg-muted overflow-auto rounded-lg p-3 text-xs">
         {value}
       </pre>
     </div>

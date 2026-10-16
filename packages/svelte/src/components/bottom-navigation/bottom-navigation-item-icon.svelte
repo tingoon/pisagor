@@ -1,14 +1,14 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { HTMLAttributes } from "svelte/elements";
-import { withBottomNavigationItemContext } from "./bottom-navigation.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { withBottomNavigationItemContext } from "./bottom-navigation.context";
 
-let { children, ...rest }: HTMLAttributes<HTMLSpanElement> = $props();
-const part = withBottomNavigationItemContext(() => rest, {
-  defaultProps: { "aria-hidden": true, "data-part": "item-icon" },
-  name: "ItemIcon",
-  slot: "icon",
-});
+  let { children, ...rest }: HTMLAttributes<HTMLSpanElement> = $props();
+  const part = withBottomNavigationItemContext(() => rest, {
+    defaultProps: { "aria-hidden": true, "data-part": "item-icon" },
+    name: "ItemIcon",
+    slot: "icon",
+  });
 </script>
 
-<Ark as="span" {...part.props}> {@render children?.()} </Ark>
+<Ark as="span" {...part.props}>{@render children?.()}</Ark>

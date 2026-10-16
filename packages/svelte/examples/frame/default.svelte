@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Frame } from "@pisagor/svelte";
+  import { Frame } from "@pisagor/svelte";
 </script>
 
 <Frame>

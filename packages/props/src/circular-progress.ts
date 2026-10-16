@@ -4,6 +4,7 @@ import type { CircularProgressRecipeFn } from "@pisagor/recipes";
 export interface CircularProgressProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue circularProgressRecipe
    */
   recipe?: CircularProgressRecipeFn;

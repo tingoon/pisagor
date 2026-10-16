@@ -1,22 +1,22 @@
 <script lang="ts">
-import type { ComponentProps, Snippet } from "svelte";
-import FileActions from "./file-actions.svelte";
-import FileContent from "./file-content.svelte";
-import FileMedia from "./file-media.svelte";
-import FileMeta from "./file-meta.svelte";
-import FileName from "./file-name.svelte";
-import FileRoot from "./file-root.svelte";
-import FileSize from "./file-size.svelte";
+  import type { ComponentProps, Snippet } from "svelte";
+  import FileActions from "./file-actions.svelte";
+  import FileContent from "./file-content.svelte";
+  import FileMedia from "./file-media.svelte";
+  import FileMeta from "./file-meta.svelte";
+  import FileName from "./file-name.svelte";
+  import FileRoot from "./file-root.svelte";
+  import FileSize from "./file-size.svelte";
 
-type Props = Omit<ComponentProps<typeof FileRoot>, "children" | "title"> & {
-  actions?: Snippet;
-  media?: Snippet;
-  meta?: Snippet | string;
-  name: Snippet | string;
-  size?: number;
-};
+  type Props = Omit<ComponentProps<typeof FileRoot>, "children" | "title"> & {
+    actions?: Snippet;
+    media?: Snippet;
+    meta?: Snippet | string;
+    name: Snippet | string;
+    size?: number;
+  };
 
-let { size, name, actions, media, meta, ...rest }: Props = $props();
+  let { size, name, actions, media, meta, ...rest }: Props = $props();
 </script>
 
 <FileRoot {...rest}>

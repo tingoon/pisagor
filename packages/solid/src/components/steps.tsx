@@ -34,12 +34,10 @@ const {
 // #endregion
 
 export interface LocalStepsRootProps
-  extends StepsPrimitiveRootProps,
-    BaseStepsRootProps {}
+  extends StepsPrimitiveRootProps, BaseStepsRootProps {}
 
 export interface LocalStepsItemProps
-  extends StepsPrimitiveItemProps,
-    BaseStepsItemProps {}
+  extends StepsPrimitiveItemProps, BaseStepsItemProps {}
 
 export type StepsTitleProps = ComponentProps<typeof ark.span>;
 export type StepsDescriptionProps = ComponentProps<typeof ark.span>;

@@ -1,19 +1,19 @@
 <script lang="ts">
-import { createListCollection } from "@ark-ui/svelte/collection";
-import { Item, Listbox } from "@pisagor/svelte";
+  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { Item, Listbox } from "@pisagor/svelte";
 
-const collection = createListCollection({
-  items: [
-    { label: "Free", value: "free" },
-    { label: "Pro", value: "pro" },
-    {
-      disabled: true,
-      label: "Enterprise",
-      value: "enterprise",
-    },
-    { label: "Custom", value: "custom" },
-  ],
-});
+  const collection = createListCollection({
+    items: [
+      { label: "Free", value: "free" },
+      { label: "Pro", value: "pro" },
+      {
+        disabled: true,
+        label: "Enterprise",
+        value: "enterprise",
+      },
+      { label: "Custom", value: "custom" },
+    ],
+  });
 </script>
 
 <Item.Group variant="outline">

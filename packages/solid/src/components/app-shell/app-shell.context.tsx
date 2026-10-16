@@ -28,8 +28,7 @@ export const APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS = {
 >;
 
 export type AppShellFixedStackVar =
-  | "--app-shell-banner-height"
-  | "--app-shell-navigation-height";
+  "--app-shell-banner-height" | "--app-shell-navigation-height";
 
 export type AppShellRegionVar =
   | "--app-shell-end-inspector-width"

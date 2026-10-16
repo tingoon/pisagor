@@ -1,16 +1,16 @@
 <script lang="ts">
-import { checkboxRecipe } from "@pisagor/recipes";
-import { Checkbox, Field } from "@pisagor/svelte";
-import { tv } from "tailwind-variants";
+  import { checkboxRecipe } from "@pisagor/recipes";
+  import { Checkbox, Field } from "@pisagor/svelte";
+  import { tv } from "tailwind-variants";
 
-const brandCheckboxRecipe = tv({
-  extend: checkboxRecipe,
-  slots: {
-    indicator:
-      "data-[state=checked]:border-emerald-600 data-[state=checked]:bg-emerald-600 text-white",
-  },
-  variants: {},
-});
+  const brandCheckboxRecipe = tv({
+    extend: checkboxRecipe,
+    slots: {
+      indicator:
+        "text-white data-[state=checked]:border-emerald-600 data-[state=checked]:bg-emerald-600",
+    },
+    variants: {},
+  });
 </script>
 
 <Field orientation="horizontal">

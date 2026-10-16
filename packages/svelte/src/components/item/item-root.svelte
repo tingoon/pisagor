@@ -1,39 +1,39 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { ItemProps as BaseItemProps } from "@pisagor/props";
-import { itemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { HTMLAttributes } from "svelte/elements";
-import type { SizeScaleProps } from "../../internal/types";
-import { setItemContext } from "./item.context";
-import { useItemGroup } from "./item-group.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import type { ItemProps as BaseItemProps } from "@pisagor/props";
+  import { itemRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
+  import type { SizeScaleProps } from "../../internal/types";
+  import { setItemContext } from "./item.context";
+  import { useItemGroup } from "./item-group.context";
 
-type Props = HTMLAttributes<HTMLDivElement> & {
-  children?: import("svelte").Snippet;
-} & BaseItemProps &
-  SizeScaleProps;
+  type Props = HTMLAttributes<HTMLDivElement> & {
+    children?: import("svelte").Snippet;
+  } & BaseItemProps &
+    SizeScaleProps;
 
-let {
-  variant: variantProp,
-  children,
-  size,
-  recipe = itemRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    variant: variantProp,
+    children,
+    size,
+    recipe = itemRecipe,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const group = useItemGroup();
-const variant = $derived(variantProp ?? group?.variant ?? "default");
-const slots = $derived(recipe({ size }));
+  const group = useItemGroup();
+  const variant = $derived(variantProp ?? group?.variant ?? "default");
+  const slots = $derived(recipe({ size }));
 
-setItemContext({
-  get slots() {
-    return slots;
-  },
-  get variant() {
-    return variant;
-  },
-});
+  setItemContext({
+    get slots() {
+      return slots;
+    },
+    get variant() {
+      return variant;
+    },
+  });
 </script>
 
 <Ark

@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Button, ButtonGroup } from "@pisagor/svelte";
+  import { Button, ButtonGroup } from "@pisagor/svelte";
 
-const sizes = ["sm", "md", "lg"] as const;
+  const sizes = ["sm", "md", "lg"] as const;
 </script>
 
 <div class="flex flex-col items-start gap-2">

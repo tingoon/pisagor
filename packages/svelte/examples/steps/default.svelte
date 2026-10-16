@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Steps } from "@pisagor/svelte";
+  import { Steps } from "@pisagor/svelte";
 </script>
 
 <Steps count={3}>

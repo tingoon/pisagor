@@ -1,28 +1,28 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { FieldProps as BaseFieldProps } from "@pisagor/props";
-import { fieldRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { Snippet } from "svelte";
-import type { HTMLAttributes } from "svelte/elements";
-import { Context } from "./field.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import type { FieldProps as BaseFieldProps } from "@pisagor/props";
+  import { fieldRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { Snippet } from "svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { Context } from "./field.context";
 
-type Props = HTMLAttributes<HTMLDivElement> & {
-  children?: Snippet;
-} & BaseFieldProps;
+  type Props = HTMLAttributes<HTMLDivElement> & {
+    children?: Snippet;
+  } & BaseFieldProps;
 
-let {
-  recipe = fieldRecipe,
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
-const slots = $derived(recipe());
-Context.set({
-  get slots() {
-    return slots;
-  },
-});
+  let {
+    recipe = fieldRecipe,
+    class: className,
+    children,
+    ...rest
+  }: Props = $props();
+  const slots = $derived(recipe());
+  Context.set({
+    get slots() {
+      return slots;
+    },
+  });
 </script>
 
 <Ark

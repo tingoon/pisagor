@@ -1,37 +1,37 @@
 <script lang="ts">
-import { Field } from "@pisagor/svelte";
-import type { ComponentProps, Snippet } from "svelte";
+  import { Field } from "@pisagor/svelte";
+  import type { ComponentProps, Snippet } from "svelte";
 
-type FieldProps = ComponentProps<typeof Field>;
-type FieldLabelProps = ComponentProps<typeof Field.Label>;
+  type FieldProps = ComponentProps<typeof Field>;
+  type FieldLabelProps = ComponentProps<typeof Field.Label>;
 
-interface Props {
-  class?: string | undefined;
-  description?: string | undefined;
-  error?: string | undefined;
-  id?: string | undefined;
-  invalid?: boolean | undefined;
-  label?: string | undefined;
-  labelAccessory?: Snippet | undefined;
-  labelProps?: Omit<FieldLabelProps, "children" | "for"> | undefined;
-  orientation?: FieldProps["orientation"];
-  children?: Snippet;
-}
+  interface Props {
+    class?: string | undefined;
+    description?: string | undefined;
+    error?: string | undefined;
+    id?: string | undefined;
+    invalid?: boolean | undefined;
+    label?: string | undefined;
+    labelAccessory?: Snippet | undefined;
+    labelProps?: Omit<FieldLabelProps, "children" | "for"> | undefined;
+    orientation?: FieldProps["orientation"];
+    children?: Snippet;
+  }
 
-let {
-  class: className,
-  description,
-  error,
-  id,
-  invalid,
-  label,
-  labelAccessory,
-  labelProps,
-  orientation,
-  children,
-}: Props = $props();
+  let {
+    class: className,
+    description,
+    error,
+    id,
+    invalid,
+    label,
+    labelAccessory,
+    labelProps,
+    orientation,
+    children,
+  }: Props = $props();
 
-const hasLabel = $derived(Boolean(label || labelAccessory));
+  const hasLabel = $derived(Boolean(label || labelAccessory));
 </script>
 
 <Field class={className} {invalid} {orientation}>

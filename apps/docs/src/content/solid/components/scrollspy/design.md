@@ -29,9 +29,9 @@ Collapse the section nav into a [Select](/solid/components/select/design) or dra
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Highlight current scroll section | **Scrollspy** |
-| Switch mounted panels | [Tabs](/solid/components/tabs/design) |
-| Nested nav scroll | [Scroll Area](/solid/components/scroll-area/design) |
-| Site-wide wayfinding | [Navigation Menu](/solid/components/navigation-menu/design) |
+| Need                             | Prefer                                                      |
+| -------------------------------- | ----------------------------------------------------------- |
+| Highlight current scroll section | **Scrollspy**                                               |
+| Switch mounted panels            | [Tabs](/solid/components/tabs/design)                       |
+| Nested nav scroll                | [Scroll Area](/solid/components/scroll-area/design)         |
+| Site-wide wayfinding             | [Navigation Menu](/solid/components/navigation-menu/design) |

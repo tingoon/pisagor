@@ -29,9 +29,9 @@ Cards work in grids, stacks, and carousels. Fixed media heights pair well with [
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Bounded content module | **Card** |
-| Background layer only | [Surface](/react/components/surface/design) |
-| Expandable sections | [Accordion](/react/components/accordion/design) |
-| Horizontal set of modules | [Carousel](/react/components/carousel/design) |
+| Need                      | Prefer                                          |
+| ------------------------- | ----------------------------------------------- |
+| Bounded content module    | **Card**                                        |
+| Background layer only     | [Surface](/react/components/surface/design)     |
+| Expandable sections       | [Accordion](/react/components/accordion/design) |
+| Horizontal set of modules | [Carousel](/react/components/carousel/design)   |

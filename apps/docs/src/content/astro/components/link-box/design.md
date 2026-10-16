@@ -29,9 +29,9 @@ Match padding and radius to neighboring [Card](/astro/components/card/design) co
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Clickable tile with nested actions | **Link Box** |
-| Row layout without overlay link | [Item](/astro/components/item/design) |
-| Static grouped content | [Card](/astro/components/card/design) |
-| Breadcrumb trail | [Breadcrumb](/astro/components/breadcrumb/design) |
+| Need                               | Prefer                                            |
+| ---------------------------------- | ------------------------------------------------- |
+| Clickable tile with nested actions | **Link Box**                                      |
+| Row layout without overlay link    | [Item](/astro/components/item/design)             |
+| Static grouped content             | [Card](/astro/components/card/design)             |
+| Breadcrumb trail                   | [Breadcrumb](/astro/components/breadcrumb/design) |

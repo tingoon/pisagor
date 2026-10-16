@@ -1,23 +1,23 @@
 <script lang="ts">
-import {
-  type TagsInputItemDeleteTriggerProps,
-  TagsInput as TagsInputPrimitive,
-} from "@ark-ui/svelte/tags-input";
-import { buttonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import XIcon from "phosphor-svelte/lib/XIcon";
-import { useMessageResolver } from "../provider/provider.context";
-import { useTagsInputItem } from "./tags-input.context";
+  import {
+    type TagsInputItemDeleteTriggerProps,
+    TagsInput as TagsInputPrimitive,
+  } from "@ark-ui/svelte/tags-input";
+  import { buttonRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { useMessageResolver } from "../provider/context";
+  import { useTagsInputItem } from "./tags-input.context";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-let {
-  class: className,
-  children,
-  ...rest
-}: TagsInputItemDeleteTriggerProps = $props();
-const styles = useTagsInputItem();
-const slots = $derived(styles.slots);
+  let {
+    class: className,
+    children,
+    ...rest
+  }: TagsInputItemDeleteTriggerProps = $props();
+  const styles = useTagsInputItem();
+  const slots = $derived(styles.slots);
 </script>
 
 <TagsInputPrimitive.ItemDeleteTrigger

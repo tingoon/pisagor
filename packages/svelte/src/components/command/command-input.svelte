@@ -1,31 +1,31 @@
 <script lang="ts">
-import type { ComboboxInputProps } from "@ark-ui/svelte/combobox";
-import {
-  type FormControlGroupShellVariantProps,
-  formControlGroupShellRecipe,
-  inputGroupControlRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
-import { onMount } from "svelte";
-import ComboboxControl from "../combobox/combobox-control.svelte";
-import ComboboxFieldInput from "../combobox/combobox-field-input.svelte";
-import { useFormControlSurface } from "../surface/use-form-control-surface";
-import { useCommand } from "./command.context";
+  import type { ComboboxInputProps } from "@ark-ui/svelte/combobox";
+  import {
+    type FormControlGroupShellVariantProps,
+    formControlGroupShellRecipe,
+    inputGroupControlRecipe,
+  } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
+  import { onMount } from "svelte";
+  import ComboboxControl from "../combobox/combobox-control.svelte";
+  import ComboboxFieldInput from "../combobox/combobox-field-input.svelte";
+  import { useFormControlSurface } from "../surface/use-form-control-surface";
+  import { useCommand } from "./command.context";
 
-type Props = Omit<ComboboxInputProps, "size"> &
-  Pick<FormControlGroupShellVariantProps, "size">;
+  type Props = Omit<ComboboxInputProps, "size"> &
+    Pick<FormControlGroupShellVariantProps, "size">;
 
-let { size = "md", class: className, ...rest }: Props = $props();
-const styles = useCommand();
-const slots = $derived(styles.slots);
-const surfaceVariant = useFormControlSurface();
+  let { size = "md", class: className, ...rest }: Props = $props();
+  const styles = useCommand();
+  const slots = $derived(styles.slots);
+  const surfaceVariant = useFormControlSurface();
 
-let shellEl = $state<HTMLDivElement | null>(null);
+  let shellEl = $state<HTMLDivElement | null>(null);
 
-onMount(() => {
-  shellEl?.querySelector("input")?.focus();
-});
+  onMount(() => {
+    shellEl?.querySelector("input")?.focus();
+  });
 </script>
 
 <ComboboxControl class={slots.control()}>

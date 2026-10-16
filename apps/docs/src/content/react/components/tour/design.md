@@ -29,9 +29,9 @@ Manage focus in the step container, return focus to the trigger on exit, and ens
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Guided first-run highlights | **Tour** |
-| Linear task completion | [Steps](/react/components/steps/design) |
-| Empty starting view | [Empty State](/react/components/empty-state/design) |
-| Contextual short hint | [Tooltip](/react/components/tooltip/design) |
+| Need                        | Prefer                                              |
+| --------------------------- | --------------------------------------------------- |
+| Guided first-run highlights | **Tour**                                            |
+| Linear task completion      | [Steps](/react/components/steps/design)             |
+| Empty starting view         | [Empty State](/react/components/empty-state/design) |
+| Contextual short hint       | [Tooltip](/react/components/tooltip/design)         |

@@ -1,13 +1,13 @@
 <script lang="ts">
-import { navigationMenuRecipe } from "@pisagor/recipes";
-import { NavigationMenu } from "@pisagor/svelte";
-import { tv } from "tailwind-variants";
+  import { navigationMenuRecipe } from "@pisagor/recipes";
+  import { NavigationMenu } from "@pisagor/svelte";
+  import { tv } from "tailwind-variants";
 
-const brandNavigationMenuRecipe = tv({
-  extend: navigationMenuRecipe,
-  slots: { link: "hover:text-emerald-700 dark:hover:text-emerald-300" },
-  variants: {},
-});
+  const brandNavigationMenuRecipe = tv({
+    extend: navigationMenuRecipe,
+    slots: { link: "hover:text-emerald-700 dark:hover:text-emerald-300" },
+    variants: {},
+  });
 </script>
 
 <NavigationMenu aria-label="Main" recipe={brandNavigationMenuRecipe}>

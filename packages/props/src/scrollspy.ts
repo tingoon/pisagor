@@ -4,6 +4,7 @@ import type { ScrollspyRecipeFn } from "@pisagor/recipes";
 export interface ScrollspyProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue scrollspyRecipe
    */
   recipe?: ScrollspyRecipeFn;

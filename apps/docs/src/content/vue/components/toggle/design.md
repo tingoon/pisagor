@@ -29,9 +29,9 @@ For related toggles, use [Toggle Group](/vue/components/toggle-group/design) or 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Pressed tool control | **Toggle** |
-| Immediate setting | [Switch](/vue/components/switch/design) |
-| Form boolean | [Checkbox](/vue/components/checkbox/design) |
-| Icon state swap | [Swap](/vue/components/swap/design) |
+| Need                 | Prefer                                        |
+| -------------------- | --------------------------------------------- |
+| Pressed tool control | **Toggle**                                    |
+| Immediate setting    | [Switch](/vue/components/switch/design)     |
+| Form boolean         | [Checkbox](/vue/components/checkbox/design) |
+| Icon state swap      | [Swap](/vue/components/swap/design)         |

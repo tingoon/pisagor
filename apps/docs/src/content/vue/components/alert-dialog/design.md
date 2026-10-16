@@ -29,9 +29,9 @@ Label the primary button with the verb that will run — Delete, Remove, Discard
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Confirm destructive or irreversible work | **Alert Dialog** |
-| Rich form or multi-step task in a modal | [Dialog](/vue/components/dialog/design) |
-| Non-blocking warning | [Alert](/vue/components/alert/design) |
-| Bottom-sheet confirmation on mobile | [Sheet](/vue/components/sheet/design) |
+| Need                                     | Prefer                                    |
+| ---------------------------------------- | ----------------------------------------- |
+| Confirm destructive or irreversible work | **Alert Dialog**                          |
+| Rich form or multi-step task in a modal  | [Dialog](/vue/components/dialog/design) |
+| Non-blocking warning                     | [Alert](/vue/components/alert/design)   |
+| Bottom-sheet confirmation on mobile      | [Sheet](/vue/components/sheet/design)   |

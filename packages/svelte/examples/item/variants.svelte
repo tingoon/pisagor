@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Item } from "@pisagor/svelte";
+  import { Item } from "@pisagor/svelte";
 </script>
 
 <Item.Group class="gap-2">
@@ -22,9 +22,7 @@ import { Item } from "@pisagor/svelte";
   <Item variant="outline">
     <Item.Content>
       <Item.Title>Outline variant</Item.Title>
-      <Item.Description>
-        Outlined style with a visible border.
-      </Item.Description>
+      <Item.Description>Outlined style with a visible border.</Item.Description>
     </Item.Content>
   </Item>
 </Item.Group>

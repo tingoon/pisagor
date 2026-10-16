@@ -29,9 +29,9 @@ Vertical stacks read best for longer labels; horizontal rows suit two or three s
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| One of few visible options | **Radio Group** |
-| Long or space-constrained list | [Select](/svelte/components/select/design) |
-| Switch views or modes | [Segment Group](/svelte/components/segment-group/design) |
-| Multiple independent toggles | [Toggle Group](/svelte/components/toggle-group/design) |
+| Need                           | Prefer                                                  |
+| ------------------------------ | ------------------------------------------------------- |
+| One of few visible options     | **Radio Group**                                         |
+| Long or space-constrained list | [Select](/svelte/components/select/design)               |
+| Switch views or modes          | [Segment Group](/svelte/components/segment-group/design) |
+| Multiple independent toggles   | [Toggle Group](/svelte/components/toggle-group/design)   |

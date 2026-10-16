@@ -16,7 +16,7 @@ const brandBottomNavigationRecipe = tv({
 
 export function CustomRecipe() {
   return (
-    <div className="flex h-72 flex-col overflow-y-auto rounded-lg border bg-muted shadow-lg/5">
+    <div className="bg-muted flex h-72 flex-col overflow-y-auto rounded-lg border shadow-lg/5">
       <ScrollArea>
         <div className="h-96" />
         <BottomNavigation recipe={brandBottomNavigationRecipe} value="home">

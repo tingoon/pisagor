@@ -17,13 +17,11 @@
     "includes": ["**", "!**/*.gen.*", "!**/*.lock"]
   },
   "formatter": {
+    "enabled": false,
     "indentStyle": "space"
   },
   "html": {
-    "experimentalFullSupportEnabled": true,
-    "formatter": {
-      "enabled": true
-    }
+    "experimentalFullSupportEnabled": true
   },
   "linter": {
     "domains": {
@@ -65,14 +63,45 @@
   },
   "overrides": [
     {
-      "includes": ["**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}"],
+      "assist": {
+        "enabled": false
+      },
+      "includes": [
+        "**/*.js",
+        "**/*.jsx",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.mjs",
+        "**/*.cjs",
+        "**/*.mts",
+        "**/*.cts"
+      ],
       "linter": {
-        "rules": {
-          "suspicious": {
-            "noExplicitAny": "off"
-          }
-        }
+        "enabled": false
       }
+    },
+    {
+      "assist": {
+        "enabled": false
+      },
+      "includes": ["**/*.vue", "**/*.svelte", "**/*.astro"]
+    },
+    {
+      "assist": {
+        "enabled": false
+      },
+      "includes": ["**/package.json"]
+    },
+    {
+      "formatter": {
+        "enabled": true
+      },
+      "html": {
+        "formatter": {
+          "enabled": true
+        }
+      },
+      "includes": ["**/*.astro"]
     }
   ],
   "vcs": {

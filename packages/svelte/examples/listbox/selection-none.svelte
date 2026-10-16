@@ -1,21 +1,21 @@
 <script lang="ts">
-import { createListCollection } from "@ark-ui/svelte/collection";
-import { Item, Listbox, Separator } from "@pisagor/svelte";
-import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";
-import PlusSquareIcon from "phosphor-svelte/lib/PlusSquareIcon";
-import TrashIcon from "phosphor-svelte/lib/TrashIcon";
+  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { Item, Listbox, Separator } from "@pisagor/svelte";
+  import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";
+  import PlusSquareIcon from "phosphor-svelte/lib/PlusSquareIcon";
+  import TrashIcon from "phosphor-svelte/lib/TrashIcon";
 
-const collection = createListCollection({
-  items: [
-    { label: "New file", section: "actions", value: "new-file" },
-    { label: "Edit file", section: "actions", value: "edit-file" },
-    {
-      label: "Delete file",
-      section: "danger",
-      value: "delete-file",
-    },
-  ],
-});
+  const collection = createListCollection({
+    items: [
+      { label: "New file", section: "actions", value: "new-file" },
+      { label: "Edit file", section: "actions", value: "edit-file" },
+      {
+        label: "Delete file",
+        section: "danger",
+        value: "delete-file",
+      },
+    ],
+  });
 </script>
 
 <Item.Group variant="outline">

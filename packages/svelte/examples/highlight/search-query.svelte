@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Highlight, Input } from "@pisagor/svelte";
+  import { Highlight, Input } from "@pisagor/svelte";
 
-const searchResults = ["Spotlight bulb", "Spot cleaner", "Spot ceiling"];
-let query = $state("spot");
+  const searchResults = ["Spotlight bulb", "Spot cleaner", "Spot ceiling"];
+  let query = $state("spot");
 </script>
 
 <div class="flex flex-col gap-2">
@@ -18,7 +18,7 @@ let query = $state("spot");
     </p>
     <ul class="space-y-1">
       {#each searchResults as item}
-        <li class="text-base text-foreground">
+        <li class="text-foreground text-base">
           {#if query}
             <Highlight ignoreCase {query} text={item} />
           {:else}

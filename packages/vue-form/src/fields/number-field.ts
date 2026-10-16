@@ -15,8 +15,7 @@ type NumberInputControlProps = SetRequired<
 >;
 
 export interface NumberFieldProps
-  extends FieldPresentationProps,
-    NumberInputControlProps {
+  extends FieldPresentationProps, NumberInputControlProps {
   name?: string;
   onBlur?: () => void;
   placeholder?: string;

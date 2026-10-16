@@ -1,31 +1,31 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import {
-  type FormControlGroupShellVariantProps,
-  formControlGroupShellRecipe,
-  inputGroupRootRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { HTMLAttributes } from "svelte/elements";
-import { useFormControlSurface } from "../surface/use-form-control-surface";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import {
+    type FormControlGroupShellVariantProps,
+    formControlGroupShellRecipe,
+    inputGroupRootRecipe,
+  } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { useFormControlSurface } from "../surface/use-form-control-surface";
 
-type FormControlVariant = "primary" | "secondary";
+  type FormControlVariant = "primary" | "secondary";
 
-type Props = HTMLAttributes<HTMLFieldSetElement> &
-  FormControlGroupShellVariantProps & {
-    children?: import("svelte").Snippet;
-  };
+  type Props = HTMLAttributes<HTMLFieldSetElement> &
+    FormControlGroupShellVariantProps & {
+      children?: import("svelte").Snippet;
+    };
 
-let {
-  size = "md",
-  variant: variantProp,
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
+  let {
+    size = "md",
+    variant: variantProp,
+    class: className,
+    children,
+    ...rest
+  }: Props = $props();
 
-const surfaceVariant = useFormControlSurface();
-const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
+  const surfaceVariant = useFormControlSurface();
+  const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 </script>
 
 <Ark

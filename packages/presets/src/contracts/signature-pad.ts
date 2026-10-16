@@ -2,9 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const signaturePadRecipe = tv({
   defaultVariants: {
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "primary",
   },
   slots: {
@@ -17,7 +15,7 @@ export const signaturePadRecipe = tv({
       "absolute inset-e-2 top-2",
       "bg-muted",
       "text-muted-foreground",
-      "transition-transform duration-fast ease-out",
+      "duration-fast transition-transform ease-out",
       "active:scale-97",
       "motion-reduce:transition-none! motion-reduce:active:scale-100",
     ],
@@ -25,7 +23,7 @@ export const signaturePadRecipe = tv({
       "relative",
       "size-full min-h-0 min-w-0",
       "flex flex-col",
-      "rounded-xl border border-border/50",
+      "border-border/50 rounded-xl border",
       "data-disabled:cursor-not-allowed",
       "data-invalid:border-destructive data-invalid:ring-0.75 data-invalid:ring-destructive/24",
     ],

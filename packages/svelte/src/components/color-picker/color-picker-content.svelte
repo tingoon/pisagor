@@ -1,15 +1,19 @@
 <script lang="ts">
-import {
-  type ColorPickerContentProps,
-  ColorPicker as ColorPickerPrimitive,
-} from "@ark-ui/svelte/color-picker";
-import { Portal } from "@ark-ui/svelte/portal";
-import { cn } from "@pisagor/utils";
-import { useColorPicker } from "./color-picker.context";
+  import {
+    type ColorPickerContentProps,
+    ColorPicker as ColorPickerPrimitive,
+  } from "@ark-ui/svelte/color-picker";
+  import { Portal } from "@ark-ui/svelte/portal";
+  import { cn } from "@pisagor/utils";
+  import { useColorPicker } from "./color-picker.context";
 
-let { children, class: className, ...rest }: ColorPickerContentProps = $props();
-const styles = useColorPicker();
-const slots = $derived(styles.slots);
+  let {
+    children,
+    class: className,
+    ...rest
+  }: ColorPickerContentProps = $props();
+  const styles = useColorPicker();
+  const slots = $derived(styles.slots);
 </script>
 
 <Portal>

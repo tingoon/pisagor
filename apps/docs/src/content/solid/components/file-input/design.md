@@ -29,9 +29,9 @@ Native pickers differ by platform; avoid custom tricks that block camera or phot
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Simple styled file picker in a form | **File Input** |
-| Drag-and-drop and upload progress | [File Upload](/solid/components/file-upload/design) |
-| Show selected files in a list | [File](/solid/components/file/design) |
-| Label and validation | [Field](/solid/components/field/design) |
+| Need                                | Prefer                                              |
+| ----------------------------------- | --------------------------------------------------- |
+| Simple styled file picker in a form | **File Input**                                      |
+| Drag-and-drop and upload progress   | [File Upload](/solid/components/file-upload/design) |
+| Show selected files in a list       | [File](/solid/components/file/design)               |
+| Label and validation                | [Field](/solid/components/field/design)             |

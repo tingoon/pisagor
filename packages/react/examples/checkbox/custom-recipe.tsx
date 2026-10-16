@@ -6,7 +6,7 @@ const brandCheckboxRecipe = tv({
   extend: checkboxRecipe,
   slots: {
     indicator:
-      "data-[state=checked]:border-emerald-600 data-[state=checked]:bg-emerald-600 text-white",
+      "text-white data-[state=checked]:border-emerald-600 data-[state=checked]:bg-emerald-600",
   },
   variants: {},
 });

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Checkbox } from "@pisagor/svelte";
+  import { Checkbox } from "@pisagor/svelte";
 </script>
 
 <Checkbox invalid />

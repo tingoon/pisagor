@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Button, Field, Input, Surface } from "@pisagor/svelte";
-import { formSectionBlock } from "#/recipes/blocks/field";
+  import { Button, Field, Input, Surface } from "@pisagor/svelte";
+  import { formSectionBlock } from "#/recipes/blocks/field";
 
-const styles = formSectionBlock();
+  const styles = formSectionBlock();
 </script>
 
 <Surface bordered class={styles.root()} padding="lg" rounded>

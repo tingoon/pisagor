@@ -15,7 +15,7 @@ export interface SwapProps extends BaseSwapProps {
    * Whether the swap shows the `on` or `off` indicator.
    *
    * @remarks
-   * Mirrored from Ark UI’s `swap` prop.
+   *   Mirrored from Ark UI’s `swap` prop.
    */
   swap?: boolean;
   unmountOnExit?: boolean;

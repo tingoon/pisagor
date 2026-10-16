@@ -4,6 +4,7 @@ import type { FieldRecipeFn, FieldVariantProps } from "@pisagor/recipes";
 export interface FieldProps extends FieldVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue fieldRecipe
    */
   recipe?: FieldRecipeFn;

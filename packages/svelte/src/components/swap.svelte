@@ -1,30 +1,30 @@
 <script lang="ts">
-import type { SwapIndicatorProps, SwapRootProps } from "@ark-ui/svelte/swap";
-import { Swap as SwapPrimitive } from "@ark-ui/svelte/swap";
-import type { SwapProps as BaseSwapProps } from "@pisagor/props";
-import { swapRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { Snippet } from "svelte";
+  import type { SwapIndicatorProps, SwapRootProps } from "@ark-ui/svelte/swap";
+  import { Swap as SwapPrimitive } from "@ark-ui/svelte/swap";
+  import type { SwapProps as BaseSwapProps } from "@pisagor/props";
+  import { swapRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { Snippet } from "svelte";
 
-type Props = Omit<SwapRootProps, "children"> & {
-  children?: Snippet;
-  off?: Snippet;
-  on?: Snippet;
-  offIndicatorProps?: Omit<SwapIndicatorProps, "children" | "type">;
-  onIndicatorProps?: Omit<SwapIndicatorProps, "children" | "type">;
-} & BaseSwapProps;
+  type Props = Omit<SwapRootProps, "children"> & {
+    children?: Snippet;
+    off?: Snippet;
+    on?: Snippet;
+    offIndicatorProps?: Omit<SwapIndicatorProps, "children" | "type">;
+    onIndicatorProps?: Omit<SwapIndicatorProps, "children" | "type">;
+  } & BaseSwapProps;
 
-let {
-  variant = "fade",
-  children,
-  off,
-  on,
-  offIndicatorProps,
-  onIndicatorProps,
-  recipe = swapRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    variant = "fade",
+    children,
+    off,
+    on,
+    offIndicatorProps,
+    onIndicatorProps,
+    recipe = swapRecipe,
+    class: className,
+    ...rest
+  }: Props = $props();
 </script>
 
 <SwapPrimitive.Root {...rest} class={recipe({ class: cn(className), variant })}>

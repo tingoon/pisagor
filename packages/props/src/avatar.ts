@@ -8,6 +8,7 @@ import type {
 export interface AvatarProps extends AvatarVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue avatarRecipe
    */
   recipe?: AvatarRecipeFn;
@@ -17,6 +18,7 @@ export interface AvatarProps extends AvatarVariantProps {
 export interface AvatarGroupProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue avatarGroupRecipe
    */
   recipe?: AvatarGroupRecipeFn;

@@ -2,13 +2,9 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const tabsRecipe = tv({
   defaultVariants: {
-    /**
-     * Size scale.
-     */
+    /** Size scale. */
     size: "md",
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "default",
   },
   slots: {
@@ -17,7 +13,7 @@ export const tabsRecipe = tv({
     indicator: [
       "absolute inset-s-0 bottom-0",
       "h-(--height) w-(--width)",
-      "transition-all duration-normal ease-emphasized",
+      "duration-normal ease-emphasized transition-all",
       "motion-reduce:transition-none!",
     ],
     list: [
@@ -31,14 +27,14 @@ export const tabsRecipe = tv({
       "relative",
       "flex shrink-0 grow items-center justify-center gap-1.5",
       "px-2.5",
-      "whitespace-nowrap font-medium text-sm",
+      "text-sm font-medium whitespace-nowrap",
       "rounded-lg border border-transparent",
       "cursor-pointer",
-      "transition duration-fast ease-out",
+      "duration-fast transition ease-out",
       "data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start",
       "hover:text-foreground/72",
       "aria-selected:text-foreground",
-      "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/24",
+      "focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/24 outline-hidden",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
       "[&_svg]:pointer-events-none [&_svg]:-mx-0.5 [&_svg]:shrink-0",
       "motion-reduce:transition-none!",
@@ -58,7 +54,7 @@ export const tabsRecipe = tv({
     },
     variant: {
       default: {
-        indicator: ["-z-1 rounded-lg bg-card shadow-sm"],
+        indicator: ["bg-card -z-1 rounded-lg shadow-sm"],
         list: ["rounded-lg"],
       },
       underline: {

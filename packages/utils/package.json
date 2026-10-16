@@ -1,15 +1,16 @@
 {
+  "name": "@pisagor/utils",
+  "version": "0.2.0",
+  "description": "Tree-shakeable class-name helpers (`cn`) for Pisagor.",
+  "homepage": "https://github.com/tingoon/pisagor#readme",
   "bugs": {
     "url": "https://github.com/tingoon/pisagor/issues"
   },
-  "dependencies": {
-    "clsx": "^2.1.1",
-    "tailwind-merge": "^3.7.0"
-  },
-  "description": "Tree-shakeable class-name helpers (`cn`) for Pisagor.",
-
-  "exports": {
-    ".": "./src/index.ts"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git",
+    "directory": "packages/utils"
   },
   "files": [
     "skills",
@@ -21,19 +22,17 @@
     "src/messages.ts",
     "src/index.ts"
   ],
-  "homepage": "https://github.com/tingoon/pisagor#readme",
-  "license": "MIT",
-  "name": "@pisagor/utils",
-  "repository": {
-    "directory": "packages/utils",
-    "type": "git",
-    "url": "git+https://github.com/tingoon/pisagor.git"
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts"
   },
   "scripts": {
     "test": "bun test",
-    "type-check": "tsc"
+    "typecheck": "bun check"
   },
-  "sideEffects": false,
-  "type": "module",
-  "version": "0.2.0"
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.7.0"
+  }
 }

@@ -7,6 +7,7 @@ import type {
 export interface ActionBarProps extends ActionBarVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue actionBarRecipe
    */
   recipe?: ActionBarRecipeFn;

@@ -23,7 +23,7 @@ import {
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { ClassValue, VariantClassNames } from "../internal/types";
 import { Button } from "./button";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -52,7 +52,7 @@ export interface SignaturePadProps extends BaseSignaturePadProps {
   /**
    * The drawing options.
    *
-   * @default '{ size: 2, simulatePressure: true }'
+   * @default "{ size: 2, simulatePressure: true }"
    */
   drawing?: SignaturePadDrawingOptions;
   /** Marks the control as invalid for styling and assistive tech. */
@@ -61,7 +61,8 @@ export interface SignaturePadProps extends BaseSignaturePadProps {
   name?: string;
   /**
    * Callback when the signature pad is drawing or the committed paths change.
-   * `paths` contains only committed strokes; use `currentPath` for the in-progress stroke.
+   * `paths` contains only committed strokes; use `currentPath` for the
+   * in-progress stroke.
    */
   onDraw?: (details: SignaturePadDrawDetails) => void;
   /** Callback when the signature pad is done drawing. */
@@ -193,7 +194,7 @@ const SignaturePadClear = defineComponent({
   props: { class: classProp },
   setup(props, { attrs, slots }) {
     const styles = useSignaturePadStyles();
-    const label = useProviderMessage("signaturePad.clearSignature");
+    const label = useTranslation("signaturePad.clearSignature");
 
     return () =>
       h(
@@ -327,7 +328,7 @@ const SignaturePadShorthand = defineComponent({
                       h(
                         Button as ArkPart,
                         {
-                          "aria-label": useProviderMessage(
+                          "aria-label": useTranslation(
                             "signaturePad.clearSignature",
                           ),
                           size: "icon-md",

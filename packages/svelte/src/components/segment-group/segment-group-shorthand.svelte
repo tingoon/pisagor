@@ -1,19 +1,19 @@
 <script lang="ts">
-import type { ComponentProps } from "svelte";
-import SegmentGroupItem from "./segment-group-item.svelte";
-import SegmentGroupRoot from "./segment-group-root.svelte";
+  import type { ComponentProps } from "svelte";
+  import SegmentGroupItem from "./segment-group-item.svelte";
+  import SegmentGroupRoot from "./segment-group-root.svelte";
 
-type PresetItem = {
-  disabled?: boolean;
-  label: string;
-  value: string;
-};
+  type PresetItem = {
+    disabled?: boolean;
+    label: string;
+    value: string;
+  };
 
-type Props = Omit<ComponentProps<typeof SegmentGroupRoot>, "children"> & {
-  items?: PresetItem[];
-};
+  type Props = Omit<ComponentProps<typeof SegmentGroupRoot>, "children"> & {
+    items?: PresetItem[];
+  };
 
-let { items, ...rest }: Props = $props();
+  let { items, ...rest }: Props = $props();
 </script>
 
 <SegmentGroupRoot {...rest}>

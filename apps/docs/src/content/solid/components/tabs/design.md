@@ -29,9 +29,9 @@ Arrow keys move between tabs; activation shows the associated panel and moves fo
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Peer content panels | **Tabs** |
+| Need                        | Prefer                                                  |
+| --------------------------- | ------------------------------------------------------- |
+| Peer content panels         | **Tabs**                                                |
 | Compact view or filter mode | [Segment Group](/solid/components/segment-group/design) |
-| Linear staged flow | [Steps](/solid/components/steps/design) |
-| Expandable sections | [Accordion](/solid/components/accordion/design) |
+| Linear staged flow          | [Steps](/solid/components/steps/design)                 |
+| Expandable sections         | [Accordion](/solid/components/accordion/design)         |

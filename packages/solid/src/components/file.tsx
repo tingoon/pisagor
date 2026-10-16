@@ -16,17 +16,17 @@ const {
 // #endregion
 
 export interface FileRootProps
-  extends ComponentProps<typeof ark.div>,
-    BaseFileRootProps {}
+  extends ComponentProps<typeof ark.div>, BaseFileRootProps {}
 
 export interface FileMediaProps
-  extends ComponentProps<typeof ark.div>,
-    FileVariantProps {}
+  extends ComponentProps<typeof ark.div>, FileVariantProps {}
 export type FileNameProps = ComponentProps<typeof ark.div>;
 export type FileMetaProps = ComponentProps<typeof ark.div>;
 
-export interface FileSizeProps
-  extends Omit<ComponentProps<typeof ark.div>, "children"> {
+export interface FileSizeProps extends Omit<
+  ComponentProps<typeof ark.div>,
+  "children"
+> {
   value: number;
 }
 
@@ -131,7 +131,5 @@ const fileParts = {
 
 export const FileItem = Object.assign(FileShorthand, fileParts);
 
-/**
- * @deprecated Use `FileItem`. `File` shadows the global `File` constructor.
- */
+/** @deprecated Use `FileItem`. `File` shadows the global `File` constructor. */
 export const File = Object.assign(FileShorthand, fileParts);

@@ -60,17 +60,11 @@ export const switchRecipe = tv({
     },
   ],
   defaultVariants: {
-    /**
-     * Size scale.
-     */
+    /** Size scale. */
     size: "md",
-    /**
-     * Surface variant.
-     */
+    /** Surface variant. */
     surfaceVariant: undefined,
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "primary",
   },
   slots: {
@@ -80,8 +74,8 @@ export const switchRecipe = tv({
       "p-px",
       "inline-flex shrink-0 items-center",
       "rounded-full border border-transparent",
-      "transition-all duration-slow ease-emphasized",
-      "outline-hidden [[data-focus-visible],[data-invalid]]:ring-0.75",
+      "duration-slow ease-emphasized transition-all",
+      "[[data-focus-visible],[data-invalid]]:ring-0.75 outline-hidden",
       "data-focus-visible:border-primary data-focus-visible:ring-ring/32",
       "data-invalid:border-destructive data-invalid:ring-destructive/24",
       "data-[state=checked]:bg-primary",
@@ -95,7 +89,7 @@ export const switchRecipe = tv({
       "bg-background",
       "rounded-full ring-0",
       "pointer-events-none",
-      "transition-transform duration-slow ease-emphasized",
+      "duration-slow ease-emphasized transition-transform",
       "data-[state=checked]:translate-x-[calc(var(--thumb-size)-4px)]",
       "rtl:data-[state=checked]:-translate-x-[calc(var(--thumb-size)-4px)]",
       "dark:data-[state=checked]:bg-primary-foreground",

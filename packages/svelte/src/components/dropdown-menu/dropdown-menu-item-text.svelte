@@ -1,12 +1,12 @@
 <script lang="ts">
-import {
-  type MenuItemTextProps,
-  Menu as MenuPrimitive,
-} from "@ark-ui/svelte/menu";
-import { dropdownMenuItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+  import {
+    type MenuItemTextProps,
+    Menu as MenuPrimitive,
+  } from "@ark-ui/svelte/menu";
+  import { dropdownMenuItemRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
 
-let { class: className, children, ...rest }: MenuItemTextProps = $props();
+  let { class: className, children, ...rest }: MenuItemTextProps = $props();
 </script>
 
 <MenuPrimitive.ItemText

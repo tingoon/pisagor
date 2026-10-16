@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Button, Kbd, Tooltip } from "@pisagor/svelte";
+  import { Button, Kbd, Tooltip } from "@pisagor/svelte";
 </script>
 
 <Tooltip classNames={{ content: "flex items-center gap-2" }}>

@@ -29,9 +29,9 @@ Keep the track wide enough to read at a glance in forms and toolbars. In dense r
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Linear measurable completion | **Progress** |
-| Compact circular indicator | [Circular Progress](/astro/components/circular-progress/design) |
-| Indeterminate short wait | [Spinner](/astro/components/spinner/design) |
-| Loading placeholder layout | [Skeleton](/astro/components/skeleton/design) |
+| Need                         | Prefer                                                          |
+| ---------------------------- | --------------------------------------------------------------- |
+| Linear measurable completion | **Progress**                                                    |
+| Compact circular indicator   | [Circular Progress](/astro/components/circular-progress/design) |
+| Indeterminate short wait     | [Spinner](/astro/components/spinner/design)                     |
+| Loading placeholder layout   | [Skeleton](/astro/components/skeleton/design)                   |

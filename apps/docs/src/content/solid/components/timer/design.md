@@ -29,9 +29,9 @@ When breaking time into laps or rounds, label each segment and preserve history 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Elapsed or remaining clock | **Timer** |
-| Indeterminate wait | [Spinner](/solid/components/spinner/design) |
-| Fraction complete | [Progress](/solid/components/progress/design) |
-| Scheduled date display | [Format](/solid/components/format/design) |
+| Need                       | Prefer                                        |
+| -------------------------- | --------------------------------------------- |
+| Elapsed or remaining clock | **Timer**                                     |
+| Indeterminate wait         | [Spinner](/solid/components/spinner/design)   |
+| Fraction complete          | [Progress](/solid/components/progress/design) |
+| Scheduled date display     | [Format](/solid/components/format/design)     |

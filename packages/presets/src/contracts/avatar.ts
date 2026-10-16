@@ -2,13 +2,9 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const avatarRecipe = tv({
   defaultVariants: {
-    /**
-     * Shape of the control.
-     */
+    /** Shape of the control. */
     shape: "circle",
-    /**
-     * Control size.
-     */
+    /** Control size. */
     size: "md",
   },
   slots: {
@@ -18,8 +14,8 @@ export const avatarRecipe = tv({
       "size-8",
       "inline-flex shrink-0 items-center justify-center",
       "bg-background",
-      "select-none font-medium text-xs",
-      "after:absolute after:inset-0 after:rounded-inherit after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten",
+      "text-xs font-medium select-none",
+      "after:rounded-inherit after:border-border after:absolute after:inset-0 after:border after:mix-blend-darken dark:after:mix-blend-lighten",
     ],
     fallback: [
       "size-full",
@@ -48,16 +44,16 @@ export const avatarGroupRecipe = tv({
   slots: {
     base: [
       "flex -space-x-2",
-      "**:data-[scope=avatar]:data-[part=root]:ring-2 **:data-[scope=avatar]:data-[part=root]:ring-background",
+      "**:data-[scope=avatar]:data-[part=root]:ring-background **:data-[scope=avatar]:data-[part=root]:ring-2",
     ],
     count: [
       "relative",
       "size-8",
       "flex shrink-0 items-center justify-center",
       "bg-muted",
-      "select-none text-muted-foreground text-sm",
+      "text-muted-foreground text-sm select-none",
       "rounded-full",
-      "ring-2 ring-background",
+      "ring-background ring-2",
       "[&_svg]:size-4",
     ],
   },

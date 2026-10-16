@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Button, Clipboard } from "@pisagor/svelte";
+  import { Button, Clipboard } from "@pisagor/svelte";
 
-let value = $state("https://example.com/docs");
+  let value = $state("https://example.com/docs");
 </script>
 
 <div class="flex flex-col gap-2">

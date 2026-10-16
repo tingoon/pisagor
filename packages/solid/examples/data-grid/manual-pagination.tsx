@@ -94,7 +94,7 @@ function SortIndicator({ direction }: { direction: false | "asc" | "desc" }) {
 function DataGridShell({ children }: { children: JSX.Element }) {
   return (
     <div class="flex w-full flex-col gap-3">
-      <div class="rounded-xl border bg-muted/20 p-3">{children}</div>
+      <div class="bg-muted/20 rounded-xl border p-3">{children}</div>
     </div>
   );
 }
@@ -322,7 +322,7 @@ export function ManualPagination() {
     <DataGridShell>
       <div class="relative">
         {isFetching() ? (
-          <div class="absolute inset-0 z-10 flex items-center justify-center rounded-lg bg-background/70">
+          <div class="bg-background/70 absolute inset-0 z-10 flex items-center justify-center rounded-lg">
             <Spinner />
           </div>
         ) : null}

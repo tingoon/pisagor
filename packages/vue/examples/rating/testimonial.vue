@@ -17,7 +17,7 @@ import { Avatar, Card, Rating } from "@pisagor/vue";
       <div class="flex gap-2">
         <Avatar alt="jane.doe@example.com" fallback="JD" size="lg" />
         <div>
-          <Card.Title class="font-medium text-sm">Jane Doe</Card.Title>
+          <Card.Title class="text-sm font-medium">Jane Doe</Card.Title>
           <Card.Description>Frontend Developer</Card.Description>
         </div>
       </div>

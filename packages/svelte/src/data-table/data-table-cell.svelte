@@ -1,16 +1,16 @@
 <script lang="ts">
-import { FlexRender } from "@tanstack/svelte-table";
-import type { ComponentProps } from "svelte";
-import { Table } from "../components/table";
-import { useDataTableRowContext } from "./data-table.context";
+  import { FlexRender } from "@tanstack/svelte-table";
+  import type { ComponentProps } from "svelte";
+  import { Table } from "../components/table";
+  import { useDataTableRowContext } from "./data-table.context";
 
-type Props = ComponentProps<typeof Table.Cell> & {
-  columnId?: string;
-  children?: import("svelte").Snippet;
-};
+  type Props = ComponentProps<typeof Table.Cell> & {
+    columnId?: string;
+    children?: import("svelte").Snippet;
+  };
 
-let { columnId, children, class: className, ...rest }: Props = $props();
-const { row } = useDataTableRowContext();
+  let { columnId, children, class: className, ...rest }: Props = $props();
+  const { row } = useDataTableRowContext();
 </script>
 
 {#if columnId}

@@ -89,7 +89,7 @@ function formatDate(value: string) {
 function DataGridShell({ children }: { children: JSX.Element }) {
   return (
     <div class="flex w-full flex-col gap-3">
-      <div class="rounded-xl border bg-muted/20 p-3">{children}</div>
+      <div class="bg-muted/20 rounded-xl border p-3">{children}</div>
     </div>
   );
 }
@@ -147,7 +147,7 @@ export function RowDetails() {
           aria-label={
             row.getIsExpanded() ? "Collapse details" : "Expand details"
           }
-          class="inline-flex size-6 items-center justify-center rounded-md hover:bg-muted"
+          class="hover:bg-muted inline-flex size-6 items-center justify-center rounded-md"
           onClick={row.getToggleExpandedHandler()}
           type="button"
         >
@@ -207,7 +207,7 @@ export function RowDetails() {
               renderDetail={(row) => (
                 <div class="grid gap-3 sm:grid-cols-2">
                   <div>
-                    <p class="font-medium text-sm">Profile</p>
+                    <p class="text-sm font-medium">Profile</p>
                     <p class="text-muted-foreground text-sm">
                       {row.original.name}
                     </p>
@@ -216,7 +216,7 @@ export function RowDetails() {
                     </p>
                   </div>
                   <div>
-                    <p class="font-medium text-sm">Organization</p>
+                    <p class="text-sm font-medium">Organization</p>
                     <p class="text-muted-foreground text-sm">
                       {row.original.department}
                     </p>

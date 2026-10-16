@@ -1,11 +1,11 @@
 <script lang="ts">
-import { Button, Popover } from "@pisagor/svelte";
+  import { Button, Popover } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap justify-center gap-2">
   <Popover closeOnInteractOutside={false}>
     <Popover.Trigger>
-      <Button variant="outline"> Open outside click </Button>
+      <Button variant="outline">Open outside click</Button>
     </Popover.Trigger>
     <Popover.Content showCloseButton>
       <Popover.Header
@@ -16,7 +16,7 @@ import { Button, Popover } from "@pisagor/svelte";
   </Popover>
   <Popover closeOnEscape={false}>
     <Popover.Trigger>
-      <Button variant="outline"> Open escape </Button>
+      <Button variant="outline">Open escape</Button>
     </Popover.Trigger>
     <Popover.Content showCloseButton>
       <Popover.Header

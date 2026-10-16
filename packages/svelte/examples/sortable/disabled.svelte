@@ -1,14 +1,14 @@
 <script lang="ts">
-import { Sortable } from "@pisagor/svelte";
+  import { Sortable } from "@pisagor/svelte";
 
-const labels: Record<string, string> = {
-  a: "Design system tokens",
-  b: "Component APIs",
-  c: "Storybook coverage",
-  d: "Accessibility checks",
-};
+  const labels: Record<string, string> = {
+    a: "Design system tokens",
+    b: "Component APIs",
+    c: "Storybook coverage",
+    d: "Accessibility checks",
+  };
 
-let items = $state(["a", "b", "c"]);
+  let items = $state(["a", "b", "c"]);
 </script>
 
 <Sortable disabled {items} onValueChange={(next) => (items = next)}>
@@ -16,7 +16,7 @@ let items = $state(["a", "b", "c"]);
     <Sortable.Item value={id}>
       <Sortable.ItemContent>
         <Sortable.Handle />
-        <span class="font-medium text-sm">{labels[id]}</span>
+        <span class="text-sm font-medium">{labels[id]}</span>
       </Sortable.ItemContent>
     </Sortable.Item>
   {/each}

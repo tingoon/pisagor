@@ -1,82 +1,82 @@
 <script lang="ts">
-import {
-  Slider as SliderPrimitive,
-  type SliderRootProps,
-} from "@ark-ui/svelte/slider";
-import type { SliderProps as BaseSliderProps } from "@pisagor/props";
-import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { Snippet } from "svelte";
-import type { VariantClassNames } from "../../internal/types";
-import { setSliderContext } from "./slider.context";
+  import {
+    Slider as SliderPrimitive,
+    type SliderRootProps,
+  } from "@ark-ui/svelte/slider";
+  import type { SliderProps as BaseSliderProps } from "@pisagor/props";
+  import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { Snippet } from "svelte";
+  import type { VariantClassNames } from "../../internal/types";
+  import { setSliderContext } from "./slider.context";
 
-type FormControlVariant = "primary" | "secondary";
+  type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<SliderRootProps, "children" | "onValueChange"> & {
-  children?: Snippet;
-  classNames?: VariantClassNames<SliderRecipeSlot>;
-  label?: string;
-  markerInterval?: number;
-  markerLabels?: string[];
-  onValueChange?: (value: number[]) => void;
-  showMarkers?: boolean;
-  showValue?: boolean;
-  tabindex?: number | null;
-  variant?: FormControlVariant;
-} & BaseSliderProps;
+  type Props = Omit<SliderRootProps, "children" | "onValueChange"> & {
+    children?: Snippet;
+    classNames?: VariantClassNames<SliderRecipeSlot>;
+    label?: string;
+    markerInterval?: number;
+    markerLabels?: string[];
+    onValueChange?: (value: number[]) => void;
+    showMarkers?: boolean;
+    showValue?: boolean;
+    tabindex?: number | null;
+    variant?: FormControlVariant;
+  } & BaseSliderProps;
 
-let {
-  variant: variantProp,
-  defaultValue,
-  max = 100,
-  min = 0,
-  showMarkers = false,
-  showValue = false,
-  tabindex,
-  value = $bindable<number[] | undefined>(undefined),
-  children,
-  label,
-  markerInterval = 1,
-  markerLabels = [],
-  onValueChange,
-  class: className,
-  classNames,
-  recipe = sliderRecipe,
-  ...rest
-}: Props = $props();
+  let {
+    variant: variantProp,
+    defaultValue,
+    max = 100,
+    min = 0,
+    showMarkers = false,
+    showValue = false,
+    tabindex,
+    value = $bindable<number[] | undefined>(undefined),
+    children,
+    label,
+    markerInterval = 1,
+    markerLabels = [],
+    onValueChange,
+    class: className,
+    classNames,
+    recipe = sliderRecipe,
+    ...rest
+  }: Props = $props();
 
-const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-const slots = $derived(recipe());
-const thumbShadowClass = $derived(
-  variant === "secondary" ? "shadow-none" : undefined,
-);
-const trackVariantClass = $derived(
-  variant === "secondary" ? "bg-muted/40" : "bg-input/64",
-);
+  const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
+  const slots = $derived(recipe());
+  const thumbShadowClass = $derived(
+    variant === "secondary" ? "shadow-none" : undefined,
+  );
+  const trackVariantClass = $derived(
+    variant === "secondary" ? "bg-muted/40" : "bg-input/64",
+  );
 
-const thumbCount = $derived.by(() => {
-  if (Array.isArray(value)) return value.length;
-  if (Array.isArray(defaultValue)) return defaultValue.length;
-  return 1;
-});
+  const thumbCount = $derived.by(() => {
+    if (Array.isArray(value)) return value.length;
+    if (Array.isArray(defaultValue)) return defaultValue.length;
+    return 1;
+  });
 
-setSliderContext({
-  get slots() {
-    return slots;
-  },
-  get thumbShadowClass() {
-    return thumbShadowClass;
-  },
-  get trackVariantClass() {
-    return trackVariantClass;
-  },
-});
+  setSliderContext({
+    get slots() {
+      return slots;
+    },
+    get thumbShadowClass() {
+      return thumbShadowClass;
+    },
+    get trackVariantClass() {
+      return trackVariantClass;
+    },
+  });
 
-function handleValueChange(
-  details: Parameters<NonNullable<SliderRootProps["onValueChange"]>>[0],
-) {
-  onValueChange?.(details.value);
-}
+  function handleValueChange(
+    details: Parameters<NonNullable<SliderRootProps["onValueChange"]>>[0],
+  ) {
+    onValueChange?.(details.value);
+  }
 </script>
 
 <SliderPrimitive.Root
@@ -136,8 +136,7 @@ function handleValueChange(
           data-interval={index % markerInterval === 0 ? undefined : ""}
           value={index}
         >
-          <span
-            class={slots.markerTick({ class: classNames?.markerTick })}
+          <span class={slots.markerTick({ class: classNames?.markerTick })}
           ></span>
           <span class={slots.markerLabel({ class: classNames?.markerLabel })}>
             {markerLabels[index] ?? index}

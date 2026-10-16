@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Listbox } from "@pisagor/svelte";
+  import { Listbox } from "@pisagor/svelte";
 </script>
 
 <Listbox

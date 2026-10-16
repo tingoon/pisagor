@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Button, Field, Input, Sheet } from "@pisagor/svelte";
+  import { Button, Field, Input, Sheet } from "@pisagor/svelte";
 </script>
 
 <Sheet>
@@ -10,8 +10,7 @@ import { Button, Field, Input, Sheet } from "@pisagor/svelte";
     <Sheet.Header>
       <Sheet.Title>Edit user</Sheet.Title>
       <Sheet.Description
-        >Make changes to your account here. Click save when you're
-        done.</Sheet.Description
+        >Make changes to your account here. Click save when you're done.</Sheet.Description
       >
     </Sheet.Header>
     <Sheet.Body>

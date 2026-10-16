@@ -26,7 +26,10 @@ const {
   recipe: dropdownMenuRecipe,
 });
 
-/** React `useDropdownMenuSlots` parity: default recipe outside a menu (e.g. `Listbox.Shortcut`). */
+/**
+ * React `useDropdownMenuSlots` parity: default recipe outside a menu (e.g.
+ * `Listbox.Shortcut`).
+ */
 function useDropdownMenuStyles(): {
   readonly slots: ReturnType<typeof dropdownMenuRecipe>;
 } {
@@ -58,8 +61,7 @@ export interface DropdownMenuRootProps {
   unmountOnExit?: boolean;
 }
 
-export interface DropdownMenuPositionerProps
-  extends BaseDropdownMenuPositionerProps {
+export interface DropdownMenuPositionerProps extends BaseDropdownMenuPositionerProps {
   class?: unknown;
 }
 // #endregion

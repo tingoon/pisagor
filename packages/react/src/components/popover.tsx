@@ -16,7 +16,7 @@ import { popoverRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button } from "./button";
-import { getMessage } from "./provider/provider.context";
+import { useMessage } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -32,8 +32,7 @@ const {
 
 // #region Types
 export interface PopoverContentProps
-  extends PopoverPrimitiveContentProps,
-    BasePopoverContentProps {
+  extends PopoverPrimitiveContentProps, BasePopoverContentProps {
   /**
    * Whether to show a close button at the top right corner.
    *
@@ -78,6 +77,7 @@ export function PopoverContent({
   className,
   ...rest
 }: PopoverContentProps) {
+  const popoverCloseMessage = useMessage("popover.close");
   const slots = recipe();
 
   return (
@@ -93,7 +93,7 @@ export function PopoverContent({
             {!!showCloseButton && (
               <PopoverCloseTrigger asChild>
                 <Button
-                  aria-label={getMessage("popover.close")}
+                  aria-label={popoverCloseMessage}
                   className={slots.close()}
                   size="icon-sm"
                   variant="ghost"

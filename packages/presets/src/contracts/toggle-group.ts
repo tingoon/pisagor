@@ -2,9 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const toggleGroupRecipe = tv({
   defaultVariants: {
-    /**
-     * Layout orientation.
-     */
+    /** Layout orientation. */
     orientation: "horizontal",
   },
   slots: {

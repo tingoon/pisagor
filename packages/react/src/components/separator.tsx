@@ -5,8 +5,7 @@ import type { ComponentProps } from "react";
 
 // #region Types
 export interface SeparatorProps
-  extends ComponentProps<typeof ark.div>,
-    BaseSeparatorProps {
+  extends ComponentProps<typeof ark.div>, BaseSeparatorProps {
   /**
    * The orientation of the separator.
    *

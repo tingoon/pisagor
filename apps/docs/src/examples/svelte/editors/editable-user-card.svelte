@@ -1,16 +1,16 @@
 <script lang="ts">
-import { Button, Card, Editable, Field } from "@pisagor/svelte";
-import { cn } from "@pisagor/utils";
-import CheckIcon from "phosphor-svelte/lib/CheckIcon";
-import XIcon from "phosphor-svelte/lib/XIcon";
-import { editableUserCardBlock } from "#/recipes/blocks/editors";
+  import { Button, Card, Editable, Field } from "@pisagor/svelte";
+  import { cn } from "@pisagor/utils";
+  import CheckIcon from "phosphor-svelte/lib/CheckIcon";
+  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { editableUserCardBlock } from "#/recipes/blocks/editors";
 
-const styles = editableUserCardBlock();
+  const styles = editableUserCardBlock();
 
-interface Props {
-  class?: string;
-}
-let { class: className }: Props = $props();
+  interface Props {
+    class?: string;
+  }
+  let { class: className }: Props = $props();
 </script>
 
 <Card class={cn(styles.root(), className)}>

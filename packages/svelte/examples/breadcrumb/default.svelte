@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Breadcrumb } from "@pisagor/svelte";
+  import { Breadcrumb } from "@pisagor/svelte";
 </script>
 
 <Breadcrumb

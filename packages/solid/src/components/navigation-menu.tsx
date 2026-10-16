@@ -17,7 +17,7 @@ import {
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { CaretDownIcon } from "../internal/icons";
 import { callEventHandler } from "../utils";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -62,8 +62,7 @@ function useNavigationMenuItem(part: string) {
 
 // #region Types
 export interface NavigationMenuProps
-  extends ComponentProps<typeof ark.nav>,
-    BaseNavigationMenuProps {}
+  extends ComponentProps<typeof ark.nav>, BaseNavigationMenuProps {}
 
 export type NavigationMenuPartProps = ComponentProps<typeof ark.ul>;
 export type NavigationMenuItemProps = ComponentProps<typeof ark.li>;
@@ -84,7 +83,7 @@ const NavigationMenuNav: Component<NavigationMenuProps> = withProvider(
 
 export function NavigationMenuRoot(props: NavigationMenuProps): JSX.Element {
   const [openId, setOpenId] = createSignal<string | null>(null);
-  const label = useProviderMessage("navigationMenu.label");
+  const label = useTranslation("navigationMenu.label");
 
   return (
     <NavigationMenuStateContext.Provider value={{ openId, setOpenId }}>

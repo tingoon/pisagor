@@ -29,9 +29,9 @@ Place announcements in predictable chrome — top of [App Shell](/solid/componen
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Promo or product news | **Announcement** |
-| System or form status | [Alert](/solid/components/alert/design) |
-| Timed transient notice | [Toast](/solid/components/toast/design) |
-| App-wide top chrome | [App Shell](/solid/components/app-shell/design) |
+| Need                   | Prefer                                          |
+| ---------------------- | ----------------------------------------------- |
+| Promo or product news  | **Announcement**                                |
+| System or form status  | [Alert](/solid/components/alert/design)         |
+| Timed transient notice | [Toast](/solid/components/toast/design)         |
+| App-wide top chrome    | [App Shell](/solid/components/app-shell/design) |

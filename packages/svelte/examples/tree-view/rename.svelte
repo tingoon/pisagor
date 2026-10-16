@@ -1,18 +1,18 @@
 <script lang="ts">
-import { TreeView } from "@pisagor/svelte";
-import { createDemoCollection } from "./helpers";
-import TreeNode from "./tree-node.svelte";
+  import { TreeView } from "@pisagor/svelte";
+  import { createDemoCollection } from "./helpers";
+  import TreeNode from "./tree-node.svelte";
 
-let collection = $state(createDemoCollection());
+  let collection = $state(createDemoCollection());
 
-function onRenameComplete(details: { indexPath: number[]; label: string }) {
-  const node = collection.at(details.indexPath);
-  if (!node) return;
-  collection = collection.replace(details.indexPath, {
-    ...node,
-    name: details.label,
-  });
-}
+  function onRenameComplete(details: { indexPath: number[]; label: string }) {
+    const node = collection.at(details.indexPath);
+    if (!node) return;
+    collection = collection.replace(details.indexPath, {
+      ...node,
+      name: details.label,
+    });
+  }
 </script>
 
 <div>

@@ -43,7 +43,7 @@ import {
   CaretRightIcon,
 } from "../internal/icons";
 import { Button, type ButtonProps } from "./button";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -78,8 +78,7 @@ export type CalendarTableRowProps = DatePickerTableRowProps;
 export type CalendarTableHeaderProps = DatePickerTableHeaderProps;
 
 export interface CalendarTableCellProps
-  extends DatePickerTableCellProps,
-    BaseCalendarTableCellProps {}
+  extends DatePickerTableCellProps, BaseCalendarTableCellProps {}
 
 export interface CalendarWeekDaysProps extends CalendarTableHeadProps {
   format?: "narrow" | "short" | "long";
@@ -308,7 +307,7 @@ export function CalendarPrevTrigger(
       asChild={(triggerProps) => (
         <Button
           {...triggerProps({ class: styles.slots.prevTrigger() })}
-          aria-label={useProviderMessage("calendar.previousMonth")}
+          aria-label={useTranslation("calendar.previousMonth")}
           size="icon-md"
           variant="ghost"
         >
@@ -329,7 +328,7 @@ export function CalendarNextTrigger(
       asChild={(triggerProps) => (
         <Button
           {...triggerProps({ class: styles.slots.nextTrigger() })}
-          aria-label={useProviderMessage("calendar.nextMonth")}
+          aria-label={useTranslation("calendar.nextMonth")}
           size="icon-md"
           variant="ghost"
         >

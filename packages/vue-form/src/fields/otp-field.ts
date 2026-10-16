@@ -9,7 +9,8 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface OtpFieldProps
-  extends FieldPresentationProps,
+  extends
+    FieldPresentationProps,
     Omit<
       InputOTPProps,
       "class" | "invalid" | "onValueChange" | "value" | "name" | "onBlur"

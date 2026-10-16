@@ -13,9 +13,7 @@ export const {
   useRichTextEditor: useRichTextEditorState,
 } = createContext("RichTextEditor")<RichTextEditorContextValue>();
 
-/**
- * Access the TipTap editor instance from the nearest RichTextEditor root.
- */
+/** Access the TipTap editor instance from the nearest RichTextEditor root. */
 export function useRichTextEditor() {
   return useRichTextEditorState().editor;
 }

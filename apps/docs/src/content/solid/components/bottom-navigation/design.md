@@ -25,9 +25,9 @@ Prefer bottom navigation on phones for three to five top-level sections; prefer 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Mobile primary sections | **Bottom Navigation** |
-| Desktop vertical hierarchy | [Sidebar](/solid/components/sidebar/design) |
-| Top global chrome | [Navbar](/solid/components/navbar/design) |
-| Full layout frame | [App Shell](/solid/components/app-shell/design) |
+| Need                       | Prefer                                          |
+| -------------------------- | ----------------------------------------------- |
+| Mobile primary sections    | **Bottom Navigation**                           |
+| Desktop vertical hierarchy | [Sidebar](/solid/components/sidebar/design)     |
+| Top global chrome          | [Navbar](/solid/components/navbar/design)       |
+| Full layout frame          | [App Shell](/solid/components/app-shell/design) |

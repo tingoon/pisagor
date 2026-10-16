@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Accordion } from "@pisagor/svelte";
-import { shortFaqItems } from "./helpers";
+  import { Accordion } from "@pisagor/svelte";
+  import { shortFaqItems } from "./helpers";
 
-let value = $state(["item-1"]);
+  let value = $state(["item-1"]);
 </script>
 
 <div>
@@ -11,5 +11,5 @@ let value = $state(["item-1"]);
     onValueChange={(d) => (value = d.value)}
     {value}
   />
-  <div class="text-center text-muted-foreground text-sm">{value}</div>
+  <div class="text-muted-foreground text-center text-sm">{value}</div>
 </div>

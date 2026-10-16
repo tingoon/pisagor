@@ -19,7 +19,7 @@ export function Controlled() {
         }
         value={value}
       />
-      <p className="text-center text-muted-foreground text-sm">
+      <p className="text-muted-foreground text-center text-sm">
         {value.length > 0 ? value.join(", ") : "None"}
       </p>
     </div>

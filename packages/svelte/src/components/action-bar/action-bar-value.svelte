@@ -1,16 +1,22 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
-import type { ComponentProps } from "svelte";
-import Badge from "../badge.svelte";
-import { useActionBar } from "./action-bar.context";
+  import { cn } from "@pisagor/utils";
+  import type { ComponentProps } from "svelte";
+  import Badge from "../badge.svelte";
+  import { useActionBar } from "./action-bar.context";
 
-type Props = Omit<ComponentProps<typeof Badge>, "variant"> & {
-  count?: number;
-  label?: string;
-};
+  type Props = Omit<ComponentProps<typeof Badge>, "variant"> & {
+    count?: number;
+    label?: string;
+  };
 
-let { count = 0, children, label, class: className, ...rest }: Props = $props();
-const ctx = useActionBar();
+  let {
+    count = 0,
+    children,
+    label,
+    class: className,
+    ...rest
+  }: Props = $props();
+  const ctx = useActionBar();
 </script>
 
 <Badge

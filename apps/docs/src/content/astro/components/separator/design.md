@@ -29,9 +29,9 @@ In menus, separators group related commands without implying order. Avoid separa
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Visual divide without a title | **Separator** |
-| Named section break | Headings / [Prose](/astro/components/prose/design) |
-| Menu command groups | Menu |
-| Page regions | App Shell |
+| Need                          | Prefer                                             |
+| ----------------------------- | -------------------------------------------------- |
+| Visual divide without a title | **Separator**                                      |
+| Named section break           | Headings / [Prose](/astro/components/prose/design) |
+| Menu command groups           | Menu              |
+| Page regions                  | App Shell    |

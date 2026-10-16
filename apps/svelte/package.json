@@ -1,17 +1,17 @@
 {
+  "name": "svelte-stories",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Svelte stories for @pisagor/svelte.",
+  "type": "module",
+  "scripts": {
+    "typecheck": "svelte-check-native --tsconfig ./tsconfig.json"
+  },
   "dependencies": {
     "svelte": "catalog:"
   },
-  "description": "Svelte stories for @pisagor/svelte.",
   "devDependencies": {
     "svelte-check-native": "^1.8.0",
     "typescript": "catalog:"
-  },
-  "name": "svelte-stories",
-  "private": true,
-  "scripts": {
-    "type-check": "svelte-check-native --tsconfig ./tsconfig.json"
-  },
-  "type": "module",
-  "version": "0.0.0"
+  }
 }

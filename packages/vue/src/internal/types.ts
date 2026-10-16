@@ -3,16 +3,11 @@ export type VariantClassNames<S extends string> = Partial<
 >;
 
 /**
- * Accepted values for component `class` props.
- * Matches recipe/`tailwind-merge` `ClassNameValue` (not clsx’s wider `ClassValue`).
+ * Accepted values for component `class` props. Matches recipe/`tailwind-merge`
+ * `ClassNameValue` (not clsx’s wider `ClassValue`).
  */
 export type ClassValue =
-  | string
-  | null
-  | undefined
-  | 0
-  | false
-  | readonly ClassValue[];
+  string | null | undefined | 0 | false | readonly ClassValue[];
 
 /**
  * Any non-`undefined` prop value. Vue infers `PropType<unknown>` from the

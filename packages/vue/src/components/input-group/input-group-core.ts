@@ -33,8 +33,7 @@ export interface InputGroupAddonProps extends BaseInputGroupAddonProps {
 }
 
 export interface InputGroupButtonProps
-  extends Omit<ButtonProps, "size" | "recipe">,
-    BaseInputGroupButtonProps {
+  extends Omit<ButtonProps, "size" | "recipe">, BaseInputGroupButtonProps {
   onClick?: (event: MouseEvent) => void;
   size?: InputGroupButtonSize;
 }

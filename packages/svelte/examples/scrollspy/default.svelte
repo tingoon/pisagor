@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Scrollspy } from "@pisagor/svelte";
+  import { Scrollspy } from "@pisagor/svelte";
 </script>
 
 <Scrollspy>

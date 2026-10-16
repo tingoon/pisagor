@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Button, Card, Editable, Field } from "@pisagor/svelte";
-import { CheckIcon, PencilSimpleIcon } from "@pisagor/svelte/icons";
+  import { Button, Card, Editable, Field } from "@pisagor/svelte";
+  import { CheckIcon, PencilSimpleIcon } from "@pisagor/svelte/icons";
 
-let isEditing = $state(false);
+  let isEditing = $state(false);
 </script>
 
 <Card>

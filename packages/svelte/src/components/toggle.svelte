@@ -1,43 +1,44 @@
 <script lang="ts">
-import {
-  Toggle as TogglePrimitive,
-  type ToggleRootProps,
-} from "@ark-ui/svelte/toggle";
-import type { ToggleProps as BaseToggleProps } from "@pisagor/props";
-import {
-  type ButtonVariantProps,
-  buttonRecipe,
-  toggleRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+  import {
+    Toggle as TogglePrimitive,
+    type ToggleRootProps,
+  } from "@ark-ui/svelte/toggle";
+  import type { ToggleProps as BaseToggleProps } from "@pisagor/props";
+  import {
+    type ButtonVariantProps,
+    buttonRecipe,
+    toggleRecipe,
+  } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
 
-type Props = ToggleRootProps & {
-  /**
-   * The variant of the toggle
-   * @defaultValue "ghost"
-   */
-  variant?: Extract<ButtonVariantProps["variant"], "outline" | "ghost">;
-  /** Called with the pressed state when the toggle changes. */
-  onValueChange?: (value: boolean) => void;
-  buttonRecipe?: typeof buttonRecipe;
-} & BaseToggleProps;
+  type Props = ToggleRootProps & {
+    /**
+     * The variant of the toggle
+     *
+     * @defaultValue "ghost"
+     */
+    variant?: Extract<ButtonVariantProps["variant"], "outline" | "ghost">;
+    /** Called with the pressed state when the toggle changes. */
+    onValueChange?: (value: boolean) => void;
+    buttonRecipe?: typeof buttonRecipe;
+  } & BaseToggleProps;
 
-let {
-  size = "md",
-  variant = "ghost",
-  onPressedChange,
-  onValueChange,
-  recipe = toggleRecipe,
-  buttonRecipe: buttonRecipeProp = buttonRecipe,
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
+  let {
+    size = "md",
+    variant = "ghost",
+    onPressedChange,
+    onValueChange,
+    recipe = toggleRecipe,
+    buttonRecipe: buttonRecipeProp = buttonRecipe,
+    class: className,
+    children,
+    ...rest
+  }: Props = $props();
 
-function handlePressedChange(pressed: boolean) {
-  onPressedChange?.(pressed);
-  onValueChange?.(pressed);
-}
+  function handlePressedChange(pressed: boolean) {
+    onPressedChange?.(pressed);
+    onValueChange?.(pressed);
+  }
 </script>
 
 <TogglePrimitive.Root

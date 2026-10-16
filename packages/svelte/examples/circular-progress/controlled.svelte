@@ -1,9 +1,9 @@
 <script lang="ts">
-import { Button, ButtonGroup, CircularProgress } from "@pisagor/svelte";
-import MinusIcon from "phosphor-svelte/lib/MinusIcon";
-import PlusIcon from "phosphor-svelte/lib/PlusIcon";
+  import { Button, ButtonGroup, CircularProgress } from "@pisagor/svelte";
+  import MinusIcon from "phosphor-svelte/lib/MinusIcon";
+  import PlusIcon from "phosphor-svelte/lib/PlusIcon";
 
-let value = $state(55);
+  let value = $state(55);
 </script>
 
 <div class="flex flex-col items-center gap-2">

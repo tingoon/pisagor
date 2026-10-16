@@ -1,15 +1,15 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import { dialogRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { HTMLAttributes } from "svelte/elements";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import { dialogRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
 
-let {
-  children,
-  class: className,
-  ...rest
-}: HTMLAttributes<HTMLDivElement> = $props();
-const dialogSlots = $derived(dialogRecipe());
+  let {
+    children,
+    class: className,
+    ...rest
+  }: HTMLAttributes<HTMLDivElement> = $props();
+  const dialogSlots = $derived(dialogRecipe());
 </script>
 
 <Ark

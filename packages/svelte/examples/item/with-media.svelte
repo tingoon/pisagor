@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Item } from "@pisagor/svelte";
-import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
-import SealCheckIcon from "phosphor-svelte/lib/SealCheckIcon";
+  import { Item } from "@pisagor/svelte";
+  import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
+  import SealCheckIcon from "phosphor-svelte/lib/SealCheckIcon";
 </script>
 
 <Item variant="outline">

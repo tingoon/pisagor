@@ -22,8 +22,7 @@ const {
 
 // #region Types
 export interface CollapsibleRootProps
-  extends CollapsiblePrimitiveRootProps,
-    BaseCollapsibleRootProps {}
+  extends CollapsiblePrimitiveRootProps, BaseCollapsibleRootProps {}
 // #endregion
 
 // #region Parts

@@ -4,6 +4,7 @@ import type { AppShellRecipeFn } from "@pisagor/recipes";
 export interface AppShellProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue appShellRecipe
    */
   recipe?: AppShellRecipeFn;

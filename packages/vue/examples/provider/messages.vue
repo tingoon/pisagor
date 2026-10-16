@@ -2,11 +2,11 @@
 import { Breadcrumb, Provider } from "@pisagor/vue";
 
 const items = [{ href: "#", label: "Ana sayfa" }, { label: "Ayarlar" }];
-const messages = { "breadcrumb.label": "Gezinti yolu" };
+const translations = { "breadcrumb.label": "Gezinti yolu" };
 </script>
 
 <template>
-  <Provider locale="tr-TR" :messages="messages">
+  <Provider :locale="{ locale: 'tr-TR' }" :translations="translations">
     <Breadcrumb :items="items" />
   </Provider>
 </template>

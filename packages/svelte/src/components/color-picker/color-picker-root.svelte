@@ -1,44 +1,47 @@
 <script lang="ts">
-import {
-  type ColorPickerRootProps as ArkRootProps,
-  ColorPicker as ColorPickerPrimitive,
-  parseColor,
-} from "@ark-ui/svelte/color-picker";
-import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
-import { colorPickerRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { Context } from "./color-picker.context";
+  import {
+    type ColorPickerRootProps as ArkRootProps,
+    ColorPicker as ColorPickerPrimitive,
+    parseColor,
+  } from "@ark-ui/svelte/color-picker";
+  import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
+  import { colorPickerRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { Context } from "./color-picker.context";
 
-type Props = Omit<ArkRootProps, "defaultValue" | "value" | "onValueChange"> & {
-  defaultValue?: string;
-  onValueChange?: (value: string) => void;
-  value?: string;
-} & BaseColorPickerProps;
+  type Props = Omit<
+    ArkRootProps,
+    "defaultValue" | "value" | "onValueChange"
+  > & {
+    defaultValue?: string;
+    onValueChange?: (value: string) => void;
+    value?: string;
+  } & BaseColorPickerProps;
 
-let {
-  positioning = { placement: "top-start" },
-  defaultValue,
-  value = $bindable(defaultValue),
-  children,
-  onValueChange,
-  recipe = colorPickerRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    positioning = { placement: "top-start" },
+    defaultValue,
+    value = $bindable(defaultValue),
+    children,
+    onValueChange,
+    recipe = colorPickerRecipe,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const slots = $derived(recipe());
-Context.set({
-  get slots() {
-    return slots;
-  },
-});
+  const slots = $derived(recipe());
+  Context.set({
+    get slots() {
+      return slots;
+    },
+  });
 
-const parsed = $derived(value ? parseColor(value) : undefined);
+  const parsed = $derived(value ? parseColor(value) : undefined);
 
-function handleValueChange(details: { valueAsString: string }) {
-  value = details.valueAsString;
-  onValueChange?.(details.valueAsString);
-}
+  function handleValueChange(details: { valueAsString: string }) {
+    value = details.valueAsString;
+    onValueChange?.(details.valueAsString);
+  }
 </script>
 
 <ColorPickerPrimitive.Root

@@ -25,9 +25,9 @@ Prefer Badge for secondary labels; prefer [Alert](/vue/components/alert/design) 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Compact status or category | **Badge** |
-| Page-level message | [Alert](/vue/components/alert/design) |
-| Live presence dot | [Status](/vue/components/status/design) |
-| Numeric KPI emphasis | [Stat](/vue/components/stat/design) |
+| Need                       | Prefer                                    |
+| -------------------------- | ----------------------------------------- |
+| Compact status or category | **Badge**                                 |
+| Page-level message         | [Alert](/vue/components/alert/design)   |
+| Live presence dot          | [Status](/vue/components/status/design) |
+| Numeric KPI emphasis       | [Stat](/vue/components/stat/design)     |

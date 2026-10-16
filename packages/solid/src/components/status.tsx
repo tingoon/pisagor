@@ -5,8 +5,7 @@ import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
 export interface StatusProps
-  extends ComponentProps<typeof ark.span>,
-    BaseStatusProps {
+  extends ComponentProps<typeof ark.span>, BaseStatusProps {
   size?: StatusVariantProps["size"];
   variant?: StatusVariantProps["variant"];
 }

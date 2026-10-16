@@ -29,9 +29,9 @@ Match corner radius and border weight to neighboring [Card](/solid/components/ca
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Embedded viewport with chrome | **Frame** |
-| Proportional media box | [Aspect Ratio](/solid/components/aspect-ratio/design) |
-| Grouped static content | [Card](/solid/components/card/design) |
-| Full app layout regions | [App Shell](/solid/components/app-shell/design) |
+| Need                          | Prefer                                                |
+| ----------------------------- | ----------------------------------------------------- |
+| Embedded viewport with chrome | **Frame**                                             |
+| Proportional media box        | [Aspect Ratio](/solid/components/aspect-ratio/design) |
+| Grouped static content        | [Card](/solid/components/card/design)                 |
+| Full app layout regions       | [App Shell](/solid/components/app-shell/design)       |

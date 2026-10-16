@@ -1,46 +1,46 @@
 <script lang="ts">
-import { Field, PasswordInput } from "@pisagor/svelte";
-import { cn } from "@pisagor/utils";
-import CheckIcon from "phosphor-svelte/lib/CheckIcon";
-import XIcon from "phosphor-svelte/lib/XIcon";
-import {
-  passwordStrengthBlock,
-  passwordStrengthTone,
-} from "#/recipes/blocks/password";
+  import { Field, PasswordInput } from "@pisagor/svelte";
+  import { cn } from "@pisagor/utils";
+  import CheckIcon from "phosphor-svelte/lib/CheckIcon";
+  import XIcon from "phosphor-svelte/lib/XIcon";
+  import {
+    passwordStrengthBlock,
+    passwordStrengthTone,
+  } from "#/recipes/blocks/password";
 
-const styles = passwordStrengthBlock();
+  const styles = passwordStrengthBlock();
 
-const PASSWORD_REQUIREMENTS = [
-  { regex: /.{8,}/, text: "At least 8 characters" },
-  { regex: /[0-9]/, text: "At least 1 number" },
-  { regex: /[a-z]/, text: "At least 1 lowercase letter" },
-  { regex: /[A-Z]/, text: "At least 1 uppercase letter" },
-  { regex: /[!@#$%^&*(),.?":{}|<>]/, text: "At least 1 special character" },
-] as const;
+  const PASSWORD_REQUIREMENTS = [
+    { regex: /.{8,}/, text: "At least 8 characters" },
+    { regex: /[0-9]/, text: "At least 1 number" },
+    { regex: /[a-z]/, text: "At least 1 lowercase letter" },
+    { regex: /[A-Z]/, text: "At least 1 uppercase letter" },
+    { regex: /[!@#$%^&*(),.?":{}|<>]/, text: "At least 1 special character" },
+  ] as const;
 
-function checkPasswordRequirements(password: string) {
-  return PASSWORD_REQUIREMENTS.map((requirement) => ({
-    met: requirement.regex.test(password),
-    text: requirement.text,
-  }));
-}
+  function checkPasswordRequirements(password: string) {
+    return PASSWORD_REQUIREMENTS.map((requirement) => ({
+      met: requirement.regex.test(password),
+      text: requirement.text,
+    }));
+  }
 
-function getStrengthText(score: number) {
-  if (score === 0) return "Enter a password";
-  if (score <= 2) return "Weak security";
-  if (score <= 4) return "Medium security";
-  return "Strong security";
-}
+  function getStrengthText(score: number) {
+    if (score === 0) return "Enter a password";
+    if (score <= 2) return "Weak security";
+    if (score <= 4) return "Medium security";
+    return "Strong security";
+  }
 
-interface Props {
-  class?: string;
-}
-let { class: className }: Props = $props();
+  interface Props {
+    class?: string;
+  }
+  let { class: className }: Props = $props();
 
-let password = $state("");
-const requirements = $derived(checkPasswordRequirements(password));
-const strengthScore = $derived(requirements.filter((r) => r.met).length);
-const id = "password-strength";
+  let password = $state("");
+  const requirements = $derived(checkPasswordRequirements(password));
+  const strengthScore = $derived(requirements.filter((r) => r.met).length);
+  const id = "password-strength";
 </script>
 
 <div class={cn(styles.root(), className)}>

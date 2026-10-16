@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Button, Sheet } from "@pisagor/svelte";
+  import { Button, Sheet } from "@pisagor/svelte";
 </script>
 
 <Sheet>
@@ -12,7 +12,7 @@ import { Button, Sheet } from "@pisagor/svelte";
     </Sheet.Header>
     <Sheet.Body scrollFade>
       <div
-        class="space-y-2 **:[h3]:font-semibold **:[p]:text-muted-foreground **:[p]:text-sm"
+        class="**:[p]:text-muted-foreground space-y-2 **:[h3]:font-semibold **:[p]:text-sm"
       >
         <h3>What is Lorem Ipsum?</h3>
         <p>

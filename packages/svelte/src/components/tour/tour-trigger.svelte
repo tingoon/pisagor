@@ -1,22 +1,22 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { HTMLButtonAttributes } from "svelte/elements";
-import { useTourContext } from "./tour.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import type { HTMLButtonAttributes } from "svelte/elements";
+  import { useTourContext } from "./tour.context";
 
-let {
-  onclick,
-  children,
-  class: className,
-  ...rest
-}: HTMLButtonAttributes = $props();
-const { handleStart } = useTourContext();
+  let {
+    onclick,
+    children,
+    class: className,
+    ...rest
+  }: HTMLButtonAttributes = $props();
+  const { handleStart } = useTourContext();
 
-function handleClick(
-  e: Parameters<NonNullable<HTMLButtonAttributes["onclick"]>>[0],
-) {
-  handleStart();
-  onclick?.(e);
-}
+  function handleClick(
+    e: Parameters<NonNullable<HTMLButtonAttributes["onclick"]>>[0],
+  ) {
+    handleStart();
+    onclick?.(e);
+  }
 </script>
 
 <Ark

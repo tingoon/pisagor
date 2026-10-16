@@ -2,14 +2,12 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const skeletonRecipe = tv({
   defaultVariants: {
-    /**
-     * Size scale.
-     */
+    /** Size scale. */
     size: "md",
   },
   slots: {
     base: [
-      "rounded-md bg-muted",
+      "bg-muted rounded-md",
       "animate-pulse",
       "motion-reduce:animate-none!",
     ],
@@ -21,7 +19,7 @@ export const skeletonRecipe = tv({
       "animate-pulse",
       "motion-reduce:animate-none!",
     ],
-    line: ["w-full rounded-md bg-muted last:w-3/4"],
+    line: ["bg-muted w-full rounded-md last:w-3/4"],
     text: [
       "w-full",
       "flex flex-col gap-2",

@@ -29,9 +29,9 @@ Enter and exit along the same path from the trigger, with short critically dampe
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Rich glanceable preview | **Hover Card** |
+| Need                          | Prefer                                      |
+| ----------------------------- | ------------------------------------------- |
+| Rich glanceable preview       | **Hover Card**                              |
 | Single-line non-blocking hint | [Tooltip](/react/components/tooltip/design) |
-| Click-open anchored surface | [Popover](/react/components/popover/design) |
-| Blocking task | [Dialog](/react/components/dialog/design) |
+| Click-open anchored surface   | [Popover](/react/components/popover/design) |
+| Blocking task                 | [Dialog](/react/components/dialog/design)   |

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { PasswordField } from "@pisagor/svelte-form";
+  import { PasswordField } from "@pisagor/svelte-form";
 </script>
 
 <PasswordField

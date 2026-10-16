@@ -1,15 +1,15 @@
 <script lang="ts">
-import { highlightRecipe } from "@pisagor/recipes";
-import { Highlight } from "@pisagor/svelte";
-import { tv } from "tailwind-variants";
+  import { highlightRecipe } from "@pisagor/recipes";
+  import { Highlight } from "@pisagor/svelte";
+  import { tv } from "tailwind-variants";
 
-const brandHighlightRecipe = tv({
-  base: ["bg-emerald-500/20 text-emerald-800 dark:text-emerald-200"],
-  extend: highlightRecipe,
-});
+  const brandHighlightRecipe = tv({
+    base: ["bg-emerald-500/20 text-emerald-800 dark:text-emerald-200"],
+    extend: highlightRecipe,
+  });
 </script>
 
-<p class="text-base text-foreground leading-relaxed">
+<p class="text-foreground text-base leading-relaxed">
   <Highlight
     query="Pisagor"
     recipe={brandHighlightRecipe}

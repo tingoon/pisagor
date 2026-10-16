@@ -15,8 +15,7 @@ type InputControlProps = SetRequired<
 >;
 
 export interface TextFieldProps
-  extends FieldPresentationProps,
-    InputControlProps {
+  extends FieldPresentationProps, InputControlProps {
   name?: string;
   onBlur?: () => void;
   value?: string;

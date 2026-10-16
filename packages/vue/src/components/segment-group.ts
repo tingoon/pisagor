@@ -36,8 +36,10 @@ export interface SegmentGroupRootProps extends BaseSegmentGroupRootProps {
   variant?: SegmentGroupVariant;
 }
 
-export interface SegmentGroupProps
-  extends Omit<SegmentGroupRootProps, "children"> {
+export interface SegmentGroupProps extends Omit<
+  SegmentGroupRootProps,
+  "children"
+> {
   items?: SegmentGroupPresetItem[];
 }
 

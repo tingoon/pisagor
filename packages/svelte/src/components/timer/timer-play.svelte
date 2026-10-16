@@ -1,16 +1,16 @@
 <script lang="ts">
-import {
-  type TimerActionTriggerProps,
-  useTimerContext,
-} from "@ark-ui/svelte/timer";
-import TimerResume from "./timer-resume.svelte";
-import TimerStart from "./timer-start.svelte";
+  import {
+    type TimerActionTriggerProps,
+    useTimerContext,
+  } from "@ark-ui/svelte/timer";
+  import TimerResume from "./timer-resume.svelte";
+  import TimerStart from "./timer-start.svelte";
 
-type Props = Omit<TimerActionTriggerProps, "action">;
-let props: Props = $props();
+  type Props = Omit<TimerActionTriggerProps, "action">;
+  let props: Props = $props();
 
-const api = useTimerContext();
-const paused = $derived(api().paused);
+  const api = useTimerContext();
+  const paused = $derived(api().paused);
 </script>
 
 {#if paused}

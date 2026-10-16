@@ -11,11 +11,11 @@ export const itemPickerBlock = tv({
   slots: {
     avatar: "grayscale",
     content: "w-72 p-1.5",
-    email: "text-muted-foreground text-sm truncate",
+    email: "text-muted-foreground truncate text-sm",
     item: "[--space:--spacing(2)]",
     meta: "min-w-0",
-    name: "font-medium truncate",
-    row: "[--space:--spacing(2)] flex items-center gap-2",
+    name: "truncate font-medium",
+    row: "flex items-center gap-2 [--space:--spacing(2)]",
   },
 });
 

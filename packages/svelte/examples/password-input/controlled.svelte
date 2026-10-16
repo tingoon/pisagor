@@ -1,7 +1,7 @@
 <script lang="ts">
-import { PasswordInput } from "@pisagor/svelte";
+  import { PasswordInput } from "@pisagor/svelte";
 
-let password = $state("");
+  let password = $state("");
 </script>
 
 <PasswordInput

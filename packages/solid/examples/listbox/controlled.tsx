@@ -16,7 +16,7 @@ export function Controlled() {
 
   return (
     <div class="flex flex-col gap-2">
-      <p class="text-center text-muted-foreground text-sm">
+      <p class="text-muted-foreground text-center text-sm">
         Selected the Large size
       </p>
       <Item.Group variant="outline">
@@ -39,7 +39,7 @@ export function Controlled() {
           </Listbox.Root>
         </Item>
       </Item.Group>
-      <p class="text-center text-muted-foreground text-sm">
+      <p class="text-muted-foreground text-center text-sm">
         {isLarge ? "✅" : "❌"}
       </p>
     </div>

@@ -29,10 +29,10 @@ While data loads, use [Skeleton](/astro/components/skeleton/design) or a subdued
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Scannable metric with label | **Stat** |
-| Compact state dot | [Status](/astro/components/status/design) |
-| Count on an object | [Badge](/astro/components/badge/design) |
-| Tabular comparison | [Table](/astro/components/table/design) |
-| Event sequence | [Timeline](/astro/components/timeline/design) |
+| Need                        | Prefer                                        |
+| --------------------------- | --------------------------------------------- |
+| Scannable metric with label | **Stat**                                      |
+| Compact state dot           | [Status](/astro/components/status/design)     |
+| Count on an object          | [Badge](/astro/components/badge/design)       |
+| Tabular comparison          | [Table](/astro/components/table/design)       |
+| Event sequence              | [Timeline](/astro/components/timeline/design) |

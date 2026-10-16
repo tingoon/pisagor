@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Button, Dialog } from "@pisagor/svelte";
+  import { Button, Dialog } from "@pisagor/svelte";
 </script>
 
 <Dialog description="This is a dialog description." title="Dialog title">

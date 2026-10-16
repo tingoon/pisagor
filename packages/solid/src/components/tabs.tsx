@@ -20,8 +20,7 @@ const {
 // #endregion
 
 export interface LocalTabsRootProps
-  extends TabsPrimitiveRootProps,
-    BaseTabsRootProps {}
+  extends TabsPrimitiveRootProps, BaseTabsRootProps {}
 
 interface TabsPresetItem {
   value: string;
@@ -43,7 +42,8 @@ export type TabsTriggerProps = TabTriggerProps;
 export type TabsContentProps = TabContentProps;
 
 export interface TabsProps
-  extends Omit<LocalTabsRootProps, "children">,
+  extends
+    Omit<LocalTabsRootProps, "children">,
     Pick<TabsVariantProps, "variant"> {
   items?: TabsPresetItem[];
   /**

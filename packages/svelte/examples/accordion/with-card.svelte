@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Accordion, Card } from "@pisagor/svelte";
-import { faqItems } from "./helpers";
+  import { Accordion, Card } from "@pisagor/svelte";
+  import { faqItems } from "./helpers";
 </script>
 
 <Card>

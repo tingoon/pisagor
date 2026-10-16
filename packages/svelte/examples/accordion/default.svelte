@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Accordion } from "@pisagor/svelte";
+  import { Accordion } from "@pisagor/svelte";
 </script>
 
 <Accordion

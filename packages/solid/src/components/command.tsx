@@ -31,7 +31,7 @@ import {
 } from "./dialog";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 import { Separator } from "./separator";
 
 // #region Context
@@ -40,14 +40,15 @@ const { Context: CommandStylesContext, useStyles: useCommand } =
 // #endregion
 
 export interface CommandDialogContentProps
-  extends DialogContentProps,
-    BaseCommandDialogContentProps {
+  extends DialogContentProps, BaseCommandDialogContentProps {
   description?: string;
   title?: string;
 }
 
-export interface CommandInputProps
-  extends Omit<ComboboxFieldInputProps, "size"> {
+export interface CommandInputProps extends Omit<
+  ComboboxFieldInputProps,
+  "size"
+> {
   size?: InputProps["size"];
 }
 
@@ -55,8 +56,7 @@ export type CommandListProps = ComboboxListProps;
 export type CommandContentProps = ComboboxContentProps;
 
 export interface CommandProps<T extends CollectionItem = CollectionItem>
-  extends Omit<ComboboxRootProps<T>, "recipe">,
-    BaseCommandProps {
+  extends Omit<ComboboxRootProps<T>, "recipe">, BaseCommandProps {
   class?: string;
 }
 
@@ -73,8 +73,10 @@ export interface CommandShorthandItem {
   value: string;
 }
 
-export interface CommandShorthandProps
-  extends Omit<CommandProps<CommandShorthandItem>, "collection" | "children"> {
+export interface CommandShorthandProps extends Omit<
+  CommandProps<CommandShorthandItem>,
+  "collection" | "children"
+> {
   /** Text shown when nothing matches. */
   emptyText?: JSX.Element;
   /** Items to render; filtering and grouping are handled for you. */
@@ -117,7 +119,7 @@ function CommandDialogFrame(
         >
           <Dialog.Header class={styles.slots.dialogHeader()}>
             <Dialog.Title>
-              {local.title ?? useProviderMessage("command.title")}
+              {local.title ?? useTranslation("command.title")}
             </Dialog.Title>
             <Dialog.Description>
               {local.description ?? "Search for a command to run..."}
@@ -248,7 +250,7 @@ export function CommandEmpty(props: ComboboxEmptyProps): JSX.Element {
       {...rest}
       class={styles.slots.empty({ class: local.class })}
     >
-      {local.children || useProviderMessage("command.empty")}
+      {local.children || useTranslation("command.empty")}
     </Combobox.Empty>
   );
 }
@@ -325,7 +327,7 @@ export function CommandShorthand(props: CommandShorthandProps): JSX.Element {
     itemToString: (item) => item.label,
     itemToValue: (item) => item.value,
   });
-  const placeholder = useProviderMessage("command.placeholder");
+  const placeholder = useTranslation("command.placeholder");
 
   return (
     <CommandRoot

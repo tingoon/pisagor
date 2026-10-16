@@ -29,10 +29,10 @@ When selecting an interval, use two thumbs with a clear filled range between the
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Continuous or stepped value on a track | **Slider** |
-| Exact numeric entry | [Number Input](/vue/components/number-input/design) |
-| Circular or radial control | [Circular Slider](/vue/components/circular-slider/design) |
-| Read-only completion | [Progress](/vue/components/progress/design) |
-| On/off setting | [Switch](/vue/components/switch/design) |
+| Need                                   | Prefer                                                      |
+| -------------------------------------- | ----------------------------------------------------------- |
+| Continuous or stepped value on a track | **Slider**                                                  |
+| Exact numeric entry                    | [Number Input](/vue/components/number-input/design)       |
+| Circular or radial control             | [Circular Slider](/vue/components/circular-slider/design) |
+| Read-only completion                   | [Progress](/vue/components/progress/design)               |
+| On/off setting                         | [Switch](/vue/components/switch/design)                   |

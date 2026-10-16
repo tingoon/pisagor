@@ -40,25 +40,25 @@ export function KeyboardNavigation() {
         <Tour.Trigger asChild>
           <Button variant="outline">Start tour</Button>
         </Tour.Trigger>
-        <p className="flex items-center gap-2 text-muted-foreground text-sm">
+        <p className="text-muted-foreground flex items-center gap-2 text-sm">
           <KeyboardIcon className="size-4" />
           Use arrow keys to navigate, Escape to close
         </p>
         <div className="flex flex-wrap gap-2">
           <div
-            className="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+            className="border-border bg-muted flex items-center justify-center rounded-lg border px-8 py-4 text-sm font-medium"
             id="tour-key-1"
           >
             Step 1
           </div>
           <div
-            className="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+            className="border-border bg-muted flex items-center justify-center rounded-lg border px-8 py-4 text-sm font-medium"
             id="tour-key-2"
           >
             Step 2
           </div>
           <div
-            className="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+            className="border-border bg-muted flex items-center justify-center rounded-lg border px-8 py-4 text-sm font-medium"
             id="tour-key-3"
           >
             Step 3

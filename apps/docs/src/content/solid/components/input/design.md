@@ -29,11 +29,11 @@ For search that drives a list, debounce network calls but keep the input itself 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Single-line text entry | **Input** |
-| Label + error layout | [Field](/solid/components/field/design) |
-| Prefix, suffix, or inline action | [Input Group](/solid/components/input-group/design) |
-| Secret credentials | [Password Input](/solid/components/password-input/design) |
-| Multi-line copy | [Textarea](/solid/components/textarea/design) |
-| Numeric quantities | [Number Input](/solid/components/number-input/design) |
+| Need                             | Prefer                                                    |
+| -------------------------------- | --------------------------------------------------------- |
+| Single-line text entry           | **Input**                                                 |
+| Label + error layout             | [Field](/solid/components/field/design)                   |
+| Prefix, suffix, or inline action | [Input Group](/solid/components/input-group/design)       |
+| Secret credentials               | [Password Input](/solid/components/password-input/design) |
+| Multi-line copy                  | [Textarea](/solid/components/textarea/design)             |
+| Numeric quantities               | [Number Input](/solid/components/number-input/design)     |

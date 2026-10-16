@@ -4,6 +4,7 @@ import type { InputOtpRecipeFn } from "@pisagor/recipes";
 export interface InputOtpProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue inputOtpRecipe
    */
   recipe?: InputOtpRecipeFn;

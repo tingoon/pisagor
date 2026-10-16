@@ -1,9 +1,9 @@
 <script lang="ts">
-import { Table } from "@pisagor/svelte";
-import { workspaceUsers } from "./helpers";
+  import { Table } from "@pisagor/svelte";
+  import { workspaceUsers } from "./helpers";
 
-const sizes = ["sm", "md", "lg"] as const;
-const users = workspaceUsers.slice(0, 2);
+  const sizes = ["sm", "md", "lg"] as const;
+  const users = workspaceUsers.slice(0, 2);
 </script>
 
 <div class="flex flex-col gap-4">

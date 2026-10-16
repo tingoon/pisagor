@@ -2,9 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const fileRecipe = tv({
   defaultVariants: {
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "icon",
   },
   slots: {
@@ -12,17 +10,17 @@ export const fileRecipe = tv({
     base: [
       "group/file",
       "inline-flex w-full min-w-0 items-center gap-3",
-      "rounded-2xl border border-border/50 bg-card p-2",
+      "border-border/50 bg-card rounded-2xl border p-2",
       "text-sm",
     ],
     content: ["min-w-0 flex-1 overflow-hidden"],
     media: [
       "flex shrink-0 items-center justify-center overflow-hidden",
-      "rounded-lg bg-muted text-muted-foreground",
+      "bg-muted text-muted-foreground rounded-lg",
     ],
-    meta: ["truncate text-muted-foreground text-xs"],
-    name: ["truncate font-medium text-foreground"],
-    size: ["truncate text-muted-foreground text-xs"],
+    meta: ["text-muted-foreground truncate text-xs"],
+    name: ["text-foreground truncate font-medium"],
+    size: ["text-muted-foreground truncate text-xs"],
   },
   variants: {
     variant: {

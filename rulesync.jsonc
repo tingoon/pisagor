@@ -5,16 +5,16 @@
   "inputRoots": [".rulesync", ".rulesync.local"],
   "sources": [
     {
-      "source": "tingoon/agent-skills"
+      "source": "tingoon/agent-skills",
     },
     {
       "skills": ["apple-design"],
-      "source": "emilkowalski/skills"
+      "source": "emilkowalski/skills",
     },
     {
       "skills": ["turborepo"],
-      "source": "vercel/turborepo"
-    }
+      "source": "vercel/turborepo",
+    },
   ],
-  "targets": ["cursor", "claudecode"]
+  "targets": ["cursor", "claudecode"],
 }

@@ -29,9 +29,9 @@ Show errors next to the field, not only in a summary. Accept pasted numbers when
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| International phone with country | **Phone Input** |
-| Fixed-format local number | [Input](/svelte/components/input/design) |
-| Label, error, and helper layout | [Field](/svelte/components/field/design) |
-| One-time codes | [Input OTP](/svelte/components/input-otp/design) |
+| Need                             | Prefer                                          |
+| -------------------------------- | ----------------------------------------------- |
+| International phone with country | **Phone Input**                                 |
+| Fixed-format local number        | [Input](/svelte/components/input/design)         |
+| Label, error, and helper layout  | [Field](/svelte/components/field/design)         |
+| One-time codes                   | [Input OTP](/svelte/components/input-otp/design) |

@@ -23,7 +23,7 @@ import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
 import { type ReactNode, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "./dropdown-menu";
-import { getMessage } from "./provider/provider.context";
+import { useMessage } from "./provider/context";
 
 // #region Context
 const {
@@ -56,8 +56,10 @@ export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   onValueChange?: (value: string | string[]) => void;
 } & BaseListboxRootProps;
 
-export interface ListboxProps
-  extends Omit<ListboxRootProps, "children" | "collection"> {
+export interface ListboxProps extends Omit<
+  ListboxRootProps,
+  "children" | "collection"
+> {
   collection?: ListboxRootProps["collection"];
   /** Content shown when there are no items. */
   emptyText?: ReactNode;
@@ -65,8 +67,7 @@ export interface ListboxProps
 }
 
 export interface ListboxItemProps
-  extends ListboxPrimitiveItemProps,
-    BaseListboxItemProps {}
+  extends ListboxPrimitiveItemProps, BaseListboxItemProps {}
 
 export interface ListboxItemGroupProps extends ListboxPrimitiveItemGroupProps {
   /** The heading of the listbox item group. */
@@ -206,11 +207,12 @@ export function ListboxEmpty({
   className,
   ...rest
 }: ListboxEmptyProps) {
+  const listboxEmptyMessage = useMessage("listbox.empty");
   const { slots } = useListbox();
 
   return (
     <ListboxPrimitive.Empty {...rest} className={slots.empty({ className })}>
-      {children || getMessage("listbox.empty")}
+      {children || listboxEmptyMessage}
     </ListboxPrimitive.Empty>
   );
 }

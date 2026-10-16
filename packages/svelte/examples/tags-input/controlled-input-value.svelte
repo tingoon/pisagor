@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Button, Field, TagsInput } from "@pisagor/svelte";
+  import { Button, Field, TagsInput } from "@pisagor/svelte";
 
-let inputValue = $state("");
+  let inputValue = $state("");
 </script>
 
 <div class="flex flex-col gap-3">

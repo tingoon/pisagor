@@ -55,7 +55,10 @@ function resolveHighlightLang(lang: string): string {
   return LANG_ALIASES[key] ?? key;
 }
 
-/** Languages to register for a resolved highlight lang (excludes unused frameworks). */
+/**
+ * Languages to register for a resolved highlight lang (excludes unused
+ * frameworks).
+ */
 function langsFor(resolved: string): LangId[] {
   const extra: LangId[] = [];
   switch (resolved) {

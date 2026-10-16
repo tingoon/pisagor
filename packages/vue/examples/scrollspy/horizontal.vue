@@ -37,8 +37,8 @@ const horizontalSections = [
             :key="item.id"
             :id="item.id"
           >
-            <h3 class="text-base text-foreground">{{ item.label }}</h3>
-            <div class="h-87.5 rounded-2xl bg-muted" />
+            <h3 class="text-foreground text-base">{{ item.label }}</h3>
+            <div class="bg-muted h-87.5 rounded-2xl" />
           </div>
         </div>
       </ScrollArea>

@@ -18,7 +18,7 @@ export function Disabled() {
           <Sortable.Item value={id}>
             <Sortable.ItemContent>
               <Sortable.Handle />
-              <span class="font-medium text-sm">{labels[id]}</span>
+              <span class="text-sm font-medium">{labels[id]}</span>
             </Sortable.ItemContent>
           </Sortable.Item>
         )}

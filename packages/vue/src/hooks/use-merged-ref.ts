@@ -1,16 +1,11 @@
 import type { Ref } from "vue";
 
 export type PossibleRef<T> =
-  | Ref<T | null | undefined>
-  | ((instance: T | null) => void)
-  | null
-  | undefined;
+  Ref<T | null | undefined> | ((instance: T | null) => void) | null | undefined;
 
 type RefCleanup = undefined | (() => void);
 
-/**
- * Assigns an element instance to a Vue template ref or callback ref.
- */
+/** Assigns an element instance to a Vue template ref or callback ref. */
 export function assignRef<T>(ref: PossibleRef<T>, value: T | null): RefCleanup {
   if (typeof ref === "function") {
     ref(value);
@@ -22,9 +17,7 @@ export function assignRef<T>(ref: PossibleRef<T>, value: T | null): RefCleanup {
   }
 }
 
-/**
- * Merges multiple template refs into a single callback ref.
- */
+/** Merges multiple template refs into a single callback ref. */
 export function mergeRefs<T>(
   ...refs: PossibleRef<T>[]
 ): (instance: T | null) => RefCleanup {
@@ -56,9 +49,7 @@ export function mergeRefs<T>(
   };
 }
 
-/**
- * Returns a callback ref that assigns the element to every provided ref.
- */
+/** Returns a callback ref that assigns the element to every provided ref. */
 export function useMergedRef<T>(
   ...refs: PossibleRef<T>[]
 ): (instance: T | null) => RefCleanup {

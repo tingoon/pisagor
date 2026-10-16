@@ -23,7 +23,7 @@ import { SidebarSimpleIcon } from "../internal/icons";
 import { createContext } from "../utils";
 import { Button, type ButtonProps } from "./button";
 import { Input, type InputProps } from "./input";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 import { Separator, type SeparatorProps } from "./separator";
 import { Sheet, type SheetProps } from "./sheet";
@@ -68,11 +68,10 @@ export function useSidebar(): SidebarContextProps {
 // #endregion
 
 export interface SidebarProviderProps
-  extends ComponentProps<"div">,
-    Pick<BaseSidebarProps, "recipe"> {
+  extends ComponentProps<"div">, Pick<BaseSidebarProps, "recipe"> {
   /**
-   * Initial open state. A stored value in `localStorage` (`sidebar_state`)
-   * wins after mount.
+   * Initial open state. A stored value in `localStorage` (`sidebar_state`) wins
+   * after mount.
    */
   defaultOpen?: boolean;
   /**
@@ -85,8 +84,10 @@ export interface SidebarProviderProps
   onOpenChange?: (open: boolean) => void;
 }
 
-export interface SidebarProps
-  extends Omit<SheetProps, "class" | "children" | "variant" | "recipe"> {
+export interface SidebarProps extends Omit<
+  SheetProps,
+  "class" | "children" | "variant" | "recipe"
+> {
   placement?: "left" | "right";
   variant?: "sidebar" | "floating" | "inset";
   collapsible?: "offcanvas" | "icon" | "none";
@@ -103,20 +104,21 @@ export interface SidebarMenuButtonProps extends ButtonProps {
   tooltip?: string | Omit<TooltipProps, "children">;
 }
 
-export interface SidebarMenuActionProps
-  extends ComponentProps<typeof ark.button> {
+export interface SidebarMenuActionProps extends ComponentProps<
+  typeof ark.button
+> {
   showOnHover?: boolean;
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export interface SidebarMenuSkeletonProps
-  extends ComponentProps<typeof ark.div> {
+export interface SidebarMenuSkeletonProps extends ComponentProps<
+  typeof ark.div
+> {
   showIcon?: boolean;
 }
 
 export interface SidebarMenuSubButtonProps
-  extends ComponentProps<typeof ark.a>,
-    ButtonVariantProps {
+  extends ComponentProps<typeof ark.a>, ButtonVariantProps {
   isActive?: boolean;
   buttonRecipe?: typeof buttonRecipe;
 }
@@ -128,8 +130,9 @@ export type SidebarFooterProps = ComponentProps<typeof ark.div>;
 export type SidebarGroupProps = ComponentProps<typeof ark.div>;
 export type SidebarGroupLabelProps = ComponentProps<typeof ark.div>;
 
-export interface SidebarGroupActionProps
-  extends ComponentProps<typeof ark.button> {
+export interface SidebarGroupActionProps extends ComponentProps<
+  typeof ark.button
+> {
   buttonRecipe?: typeof buttonRecipe;
 }
 
@@ -391,7 +394,7 @@ export function SidebarRail(props: SidebarRailProps): JSX.Element {
 
   return (
     <ark.button
-      aria-label={useProviderMessage("sidebar.toggle")}
+      aria-label={useTranslation("sidebar.toggle")}
       {...rest}
       class={styles.slots.rail({ class: local.class })}
       data-part="rail"
@@ -399,7 +402,7 @@ export function SidebarRail(props: SidebarRailProps): JSX.Element {
       data-sidebar="rail"
       onClick={toggleSidebar}
       tabIndex={-1}
-      title={useProviderMessage("sidebar.toggle")}
+      title={useTranslation("sidebar.toggle")}
       type="button"
     />
   );
@@ -676,7 +679,7 @@ export function SidebarMenuAction(props: SidebarMenuActionProps): JSX.Element {
         }).base(),
         styles.slots.menuAction(),
         !showOnHover() &&
-          "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-accent-foreground md:opacity-0",
+          "peer-data-[active=true]/menu-button:text-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0",
         local.class,
       )}
       data-part="menu-action"

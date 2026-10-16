@@ -8,11 +8,11 @@ export function Squiggle() {
   });
 
   return (
-    <p className="font-medium text-foreground text-lg leading-relaxed">
+    <p className="text-foreground text-lg leading-relaxed font-medium">
       {chunks.map((chunk) =>
         chunk.match ? (
           <mark
-            className="relative bg-transparent px-0 font-semibold text-primary"
+            className="text-primary relative bg-transparent px-0 font-semibold"
             key={`match-${chunk.text}`}
           >
             {chunk.text}

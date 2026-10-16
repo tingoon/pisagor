@@ -29,9 +29,9 @@ Optional banner suits global messages; navigation rails suit deep hierarchies; i
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Full application layout frame | **App Shell** |
-| Desktop sidebar navigation | [Sidebar](/vue/components/sidebar/design) |
-| Mobile primary destinations | [Bottom Navigation](/vue/components/bottom-navigation/design) |
-| Top app bar | [Navbar](/vue/components/navbar/design) |
+| Need                          | Prefer                                                          |
+| ----------------------------- | --------------------------------------------------------------- |
+| Full application layout frame | **App Shell**                                                   |
+| Desktop sidebar navigation    | [Sidebar](/vue/components/sidebar/design)                     |
+| Mobile primary destinations   | [Bottom Navigation](/vue/components/bottom-navigation/design) |
+| Top app bar                   | [Navbar](/vue/components/navbar/design)                       |

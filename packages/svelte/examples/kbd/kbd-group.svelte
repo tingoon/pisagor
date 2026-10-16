@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Kbd } from "@pisagor/svelte";
+  import { Kbd } from "@pisagor/svelte";
 </script>
 
 <div class="text-muted-foreground text-sm">

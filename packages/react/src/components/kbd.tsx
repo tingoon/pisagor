@@ -9,13 +9,10 @@ import type { SizeScaleProps } from "../internal/types";
 
 // #region Types
 export interface KbdProps
-  extends ComponentProps<typeof ark.kbd>,
-    BaseKbdProps,
-    SizeScaleProps {}
+  extends ComponentProps<typeof ark.kbd>, BaseKbdProps, SizeScaleProps {}
 
 export interface KbdGroupProps
-  extends ComponentProps<typeof ark.div>,
-    BaseKbdGroupProps {}
+  extends ComponentProps<typeof ark.div>, BaseKbdGroupProps {}
 // #endregion
 
 // #region Parts

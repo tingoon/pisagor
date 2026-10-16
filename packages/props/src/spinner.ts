@@ -4,6 +4,7 @@ import type { SpinnerRecipeFn } from "@pisagor/recipes";
 export interface SpinnerProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue spinnerRecipe
    */
   recipe?: SpinnerRecipeFn;

@@ -29,9 +29,9 @@ On narrow screens, collapse the stepper to the current step plus a progress indi
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Linear multi-step process | **Steps** |
-| Peer panels, any order | [Tabs](/svelte/components/tabs/design) |
-| Compact view switcher | [Segment Group](/svelte/components/segment-group/design) |
-| First-run highlights | [Tour](/svelte/components/tour/design) |
+| Need                      | Prefer                                                  |
+| ------------------------- | ------------------------------------------------------- |
+| Linear multi-step process | **Steps**                                               |
+| Peer panels, any order    | [Tabs](/svelte/components/tabs/design)                   |
+| Compact view switcher     | [Segment Group](/svelte/components/segment-group/design) |
+| First-run highlights      | [Tour](/svelte/components/tour/design)                   |

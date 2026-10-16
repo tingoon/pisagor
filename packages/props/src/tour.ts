@@ -4,6 +4,7 @@ import type { TourRecipeFn } from "@pisagor/recipes";
 export interface TourProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue tourRecipe
    */
   recipe?: TourRecipeFn;

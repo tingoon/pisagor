@@ -4,6 +4,7 @@ import type { NavbarRecipeFn } from "@pisagor/recipes";
 export interface NavbarProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue navbarRecipe
    */
   recipe?: NavbarRecipeFn;

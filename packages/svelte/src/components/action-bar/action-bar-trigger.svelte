@@ -1,22 +1,22 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { HTMLButtonAttributes } from "svelte/elements";
-import { useActionBar } from "./action-bar.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import type { HTMLButtonAttributes } from "svelte/elements";
+  import { useActionBar } from "./action-bar.context";
 
-let {
-  onclick,
-  class: className,
-  children,
-  ...rest
-}: HTMLButtonAttributes = $props();
-const ctx = useActionBar();
+  let {
+    onclick,
+    class: className,
+    children,
+    ...rest
+  }: HTMLButtonAttributes = $props();
+  const ctx = useActionBar();
 
-function handleClick(
-  e: Parameters<NonNullable<HTMLButtonAttributes["onclick"]>>[0],
-) {
-  ctx.onOpen?.();
-  onclick?.(e);
-}
+  function handleClick(
+    e: Parameters<NonNullable<HTMLButtonAttributes["onclick"]>>[0],
+  ) {
+    ctx.onOpen?.();
+    onclick?.(e);
+  }
 </script>
 
 <Ark

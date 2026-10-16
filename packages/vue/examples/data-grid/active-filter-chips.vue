@@ -355,8 +355,7 @@ const columns = userColumns();
 const initialState = { pagination: { pageIndex: 0, pageSize: 8 } };
 const handleColumnFiltersChange = (
   updater:
-    | ColumnFiltersState
-    | ((old: ColumnFiltersState) => ColumnFiltersState),
+    ColumnFiltersState | ((old: ColumnFiltersState) => ColumnFiltersState),
 ) => {
   columnFilters.value = applyUpdater(columnFilters.value, updater);
 };

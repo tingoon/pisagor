@@ -15,7 +15,7 @@ import { EmptyState } from "@pisagor/vue";
     </EmptyState.Description>
     <EmptyState.Actions>
       <button
-        class="inline-flex h-9 items-center rounded-lg bg-primary px-4 text-primary-foreground text-sm"
+        class="bg-primary text-primary-foreground inline-flex h-9 items-center rounded-lg px-4 text-sm"
         type="button"
       >
         Create project

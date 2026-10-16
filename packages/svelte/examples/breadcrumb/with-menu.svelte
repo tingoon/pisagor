@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Breadcrumb, Button, DropdownMenu } from "@pisagor/svelte";
+  import { Breadcrumb, Button, DropdownMenu } from "@pisagor/svelte";
 </script>
 
 <Breadcrumb.Root>
@@ -11,9 +11,7 @@ import { Breadcrumb, Button, DropdownMenu } from "@pisagor/svelte";
     <Breadcrumb.Item>
       <DropdownMenu positioning={{ placement: "bottom-start" }}>
         <DropdownMenu.Trigger>
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Button
               {...props()}
               aria-label="Open menu to view more breadcrumb items"
@@ -26,27 +24,21 @@ import { Breadcrumb, Button, DropdownMenu } from "@pisagor/svelte";
         </DropdownMenu.Trigger>
         <DropdownMenu.Content class="w-40">
           <DropdownMenu.Item value="docs">
-            {#snippet asChild(
-              props,
-            )}
+            {#snippet asChild(props)}
               <a {...props()} href="https://example.com/documentation"
                 >Documentation</a
               >
             {/snippet}
           </DropdownMenu.Item>
           <DropdownMenu.Item value="components">
-            {#snippet asChild(
-              props,
-            )}
+            {#snippet asChild(props)}
               <a {...props()} href="https://example.com/components"
                 >Components</a
               >
             {/snippet}
           </DropdownMenu.Item>
           <DropdownMenu.Item value="hooks">
-            {#snippet asChild(
-              props,
-            )}
+            {#snippet asChild(props)}
               <a {...props()} href="https://example.com/hooks">Hooks</a>
             {/snippet}
           </DropdownMenu.Item>

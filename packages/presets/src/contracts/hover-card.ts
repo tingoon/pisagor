@@ -10,7 +10,7 @@ export const hoverCardRecipe = tv({
       "bg-popover",
       "text-popover-foreground",
       "origin-(--transform-origin)",
-      "rounded-2xl border border-border/50 shadow-md",
+      "border-border/50 rounded-2xl border shadow-md",
       "outline-hidden",
       "data-[state=closed]:zoom-out-98 data-[state=open]:zoom-in-98",
       "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",

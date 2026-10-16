@@ -29,9 +29,9 @@ On narrow screens, prefer stacking panels or [Sheet](/vue/components/sheet/desig
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Adjustable split panels | **Resizable** |
-| Edge panel overlay | [Sheet](/vue/components/sheet/design) / [Drawer](/vue/components/drawer/design) |
-| App regions with nav | [Sidebar](/vue/components/sidebar/design) |
-| Tabbed alternate views | [Tabs](/vue/components/tabs/design) |
+| Need                    | Prefer                                                                              |
+| ----------------------- | ----------------------------------------------------------------------------------- |
+| Adjustable split panels | **Resizable**                                                                       |
+| Edge panel overlay      | [Sheet](/vue/components/sheet/design) / [Drawer](/vue/components/drawer/design) |
+| App regions with nav    | [Sidebar](/vue/components/sidebar/design)                                         |
+| Tabbed alternate views  | [Tabs](/vue/components/tabs/design)                                               |

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { DownloadTrigger } from "@pisagor/svelte";
+  import { DownloadTrigger } from "@pisagor/svelte";
 </script>
 
 <DownloadTrigger

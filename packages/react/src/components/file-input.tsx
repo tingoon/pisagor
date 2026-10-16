@@ -20,7 +20,7 @@ import {
   InputGroupText,
   type InputGroupTextProps,
 } from "./input-group/input-group-core";
-import { getMessage } from "./provider/provider.context";
+import { useMessage } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -48,9 +48,7 @@ type FileInputRootProps = ComponentProps<typeof ark.div> &
   };
 
 export interface FileInputProps
-  extends NativeFileInputProps,
-    FileInputVariantProps,
-    BaseFileInputProps {
+  extends NativeFileInputProps, FileInputVariantProps, BaseFileInputProps {
   /** Marks the control invalid for styling and assistive tech. */
   invalid?: boolean;
   /** Label for the browse button. */
@@ -163,10 +161,10 @@ export function FileInput({
   multiple,
   name,
   required,
-  browseLabel = getMessage("fileInput.browse"),
+  browseLabel: browseLabelProp,
   capture,
   id,
-  placeholder = getMessage("fileInput.placeholder"),
+  placeholder: placeholderProp,
   ref,
   onChange,
   onFilesChange,
@@ -174,6 +172,8 @@ export function FileInput({
   className,
   ...rest
 }: FileInputProps) {
+  const placeholder = useMessage("fileInput.placeholder", placeholderProp);
+  const browseLabel = useMessage("fileInput.browse", browseLabelProp);
   const inputRef = useRef<HTMLInputElement>(null);
   const [fileLabel, setFileLabel] = useState<string>();
 

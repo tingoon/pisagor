@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Frame } from "@pisagor/svelte";
+  import { Frame } from "@pisagor/svelte";
 
-const sizes = ["sm", "md", "lg"] as const;
+  const sizes = ["sm", "md", "lg"] as const;
 </script>
 
 <div class="flex flex-col gap-4">

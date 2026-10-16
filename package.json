@@ -1,7 +1,48 @@
 {
+  "name": "pisagor",
+  "private": true,
+  "description": "Pisagor UI — accessible components for React, Vue, Solid, Svelte, and Astro.",
+  "homepage": "https://github.com/tingoon/pisagor#readme",
   "bugs": {
     "url": "https://github.com/tingoon/pisagor/issues"
   },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "scripts"
+  ],
+  "type": "module",
+  "scripts": {
+    "build": "turbo run build",
+    "check": "bun fmt --check && bun run lint && biome check --linter-enabled=false . && turbo run typecheck --output-logs=errors-only && knip",
+    "dev": "turbo run dev",
+    "format": "bun fmt && biome check --write .",
+    "lint": "bun lint && biome lint --no-errors-on-unmatched .",
+    "prepare": "lefthook install && rulesync install",
+    "rulesync": "rulesync generate",
+    "setup": "bun run rulesync",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.15",
+    "@changesets/cli": "^3.0.3",
+    "@changesets/config": "^4.0.1",
+    "@commitlint/cli": "^21.2.3",
+    "@commitlint/config-conventional": "^21.2.3",
+    "@commitlint/types": "^21.2.3",
+    "@types/bun": "1.4.3",
+    "knip": "^6.39.0",
+    "lefthook": "^2.1.16",
+    "rulesync": "^26.0.0",
+    "turbo": "^2.11.7"
+  },
+  "packageManager": "bun@1.4.2",
   "catalog": {
     "@tailwindcss/vite": "^4.3.3",
     "@types/react": "^19.2.18",
@@ -17,48 +58,5 @@
     "typescript": "^7.0.2",
     "vite": "^8.2.2",
     "vue": "^3.5.42"
-  },
-  "description": "Pisagor UI — accessible components for React, Vue, Solid, Svelte, and Astro.",
-  "devDependencies": {
-    "@biomejs/biome": "^2.5.15",
-    "@changesets/cli": "^3.0.3",
-    "@changesets/config": "^4.0.1",
-    "@commitlint/cli": "^21.2.3",
-    "@commitlint/config-conventional": "^21.2.3",
-    "@commitlint/types": "^21.2.3",
-    "@types/bun": "^1.4.2",
-    "@types/node": "^26.6.4",
-    "knip": "^6.39.0",
-    "lefthook": "^2.1.16",
-    "rulesync": "^26.0.0",
-    "turbo": "^2.11.7",
-    "typescript": "catalog:"
-  },
-  "homepage": "https://github.com/tingoon/pisagor#readme",
-  "license": "MIT",
-  "name": "pisagor",
-  "packageManager": "bun@1.4.2",
-  "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tingoon/pisagor.git"
-  },
-  "scripts": {
-    "build": "turbo run build",
-    "check": "biome check . && turbo run type-check --output-logs=errors-only && knip",
-    "dev": "turbo run dev",
-    "format": "biome check --write .",
-    "lint": "biome lint .",
-    "prepare": "lefthook install && rulesync install",
-    "rulesync": "rulesync generate",
-    "setup": "bun run rulesync",
-    "test": "turbo run test",
-    "type-check": "turbo run type-check"
-  },
-  "type": "module",
-  "workspaces": [
-    "apps/*",
-    "packages/*",
-    "scripts"
-  ]
+  }
 }

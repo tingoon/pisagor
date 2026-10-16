@@ -4,7 +4,8 @@ import type { FieldPresentationProps } from "../internal/field-shell";
 
 // #region Types
 export interface CheckboxFieldProps
-  extends FieldPresentationProps,
+  extends
+    FieldPresentationProps,
     Omit<
       CheckboxProps,
       "checked" | "invalid" | "name" | "onCheckedChange" | "onValueChange"

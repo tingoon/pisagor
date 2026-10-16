@@ -1,24 +1,24 @@
 <script lang="ts">
-import {
-  type ComboboxItemProps as ArkItemProps,
-  Combobox as ComboboxPrimitive,
-} from "@ark-ui/svelte/combobox";
-import type { ComboboxProps as BaseComboboxProps } from "@pisagor/props";
-import { comboboxRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import CheckIcon from "phosphor-svelte/lib/CheckIcon";
-import { useComboboxRoot } from "./combobox.context";
+  import {
+    type ComboboxItemProps as ArkItemProps,
+    Combobox as ComboboxPrimitive,
+  } from "@ark-ui/svelte/combobox";
+  import type { ComboboxProps as BaseComboboxProps } from "@pisagor/props";
+  import { comboboxRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import CheckIcon from "phosphor-svelte/lib/CheckIcon";
+  import { useComboboxRoot } from "./combobox.context";
 
-type Props = ArkItemProps & BaseComboboxProps;
+  type Props = ArkItemProps & BaseComboboxProps;
 
-let {
-  showIndicator = true,
-  children,
-  class: className,
-  ...rest
-}: Props = $props();
-const ctx = useComboboxRoot();
-const slots = $derived(ctx?.slots ?? comboboxRecipe());
+  let {
+    showIndicator = true,
+    children,
+    class: className,
+    ...rest
+  }: Props = $props();
+  const ctx = useComboboxRoot();
+  const slots = $derived(ctx?.slots ?? comboboxRecipe());
 </script>
 
 <ComboboxPrimitive.Item

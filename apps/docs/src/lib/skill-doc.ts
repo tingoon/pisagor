@@ -2,7 +2,10 @@ import { parse as parseYaml } from "yaml";
 import type { ComponentDocs } from "./component-docs-types";
 import type { Framework } from "./nav";
 
-/** Per-framework design + develop docs (`content/<fw>/{components,forms}/<id>/<pane>.md`). */
+/**
+ * Per-framework design + develop docs
+ * (`content/<fw>/{components,forms}/<id>/<pane>.md`).
+ */
 const docRawModules = import.meta.glob(
   "../content/{astro,react,solid,svelte,vue}/{components,forms}/*/{design,develop}.md",
   {
@@ -108,9 +111,7 @@ export function findSkillPaneRaw(
   return rankFrameworkCandidates(candidates, opts)?.[1];
 }
 
-/**
- * Markdown body for the pane currently shown on a component docs page.
- */
+/** Markdown body for the pane currently shown on a component docs page. */
 export function findDisplayedSkillBody(
   id: string,
   pane: "design" | "develop",

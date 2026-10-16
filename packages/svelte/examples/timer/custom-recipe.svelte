@@ -1,16 +1,16 @@
 <script lang="ts">
-import { timerRecipe } from "@pisagor/recipes";
-import { Timer } from "@pisagor/svelte";
-import { tv } from "tailwind-variants";
+  import { timerRecipe } from "@pisagor/recipes";
+  import { Timer } from "@pisagor/svelte";
+  import { tv } from "tailwind-variants";
 
-const brandTimerRecipe = tv({
-  extend: timerRecipe,
-  slots: {
-    area: "text-emerald-900 dark:text-emerald-100",
-    separator: "text-emerald-500",
-  },
-  variants: {},
-});
+  const brandTimerRecipe = tv({
+    extend: timerRecipe,
+    slots: {
+      area: "text-emerald-900 dark:text-emerald-100",
+      separator: "text-emerald-500",
+    },
+    variants: {},
+  });
 </script>
 
 <Timer autoStart recipe={brandTimerRecipe}>

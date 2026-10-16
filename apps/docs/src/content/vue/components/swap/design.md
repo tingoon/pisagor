@@ -29,9 +29,9 @@ Prefer opacity or transform transitions over layout-thrashing properties so swap
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Two-state icon transition | **Swap** |
-| Setting with immediate effect | [Switch](/vue/components/switch/design) |
-| Pressed toolbar control | [Toggle](/vue/components/toggle/design) |
-| Show/hide arbitrary content | [Collapsible](/vue/components/collapsible/design) |
+| Need                          | Prefer                                              |
+| ----------------------------- | --------------------------------------------------- |
+| Two-state icon transition     | **Swap**                                            |
+| Setting with immediate effect | [Switch](/vue/components/switch/design)           |
+| Pressed toolbar control       | [Toggle](/vue/components/toggle/design)           |
+| Show/hide arbitrary content   | [Collapsible](/vue/components/collapsible/design) |

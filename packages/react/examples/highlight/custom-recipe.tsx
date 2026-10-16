@@ -9,7 +9,7 @@ const brandHighlightRecipe = tv({
 
 export function CustomRecipe() {
   return (
-    <p className="text-base text-foreground leading-relaxed">
+    <p className="text-foreground text-base leading-relaxed">
       <Highlight
         query="Pisagor"
         recipe={brandHighlightRecipe}

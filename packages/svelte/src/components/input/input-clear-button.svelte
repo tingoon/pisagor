@@ -1,22 +1,22 @@
 <script lang="ts">
-import XIcon from "phosphor-svelte/lib/XIcon";
-import type { ClassValue } from "svelte/elements";
-import InputGroupButton from "../input-group/input-group-button.svelte";
-import { useMessageResolver } from "../provider/provider.context";
+  import XIcon from "phosphor-svelte/lib/XIcon";
+  import type { ClassValue } from "svelte/elements";
+  import InputGroupButton from "../input-group/input-group-button.svelte";
+  import { useMessageResolver } from "../provider/context";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-type Props = {
-  class?: ClassValue;
-  onClear: () => void;
-};
+  type Props = {
+    class?: ClassValue;
+    onClear: () => void;
+  };
 
-let {
-  onClear,
-  class: className,
-  children,
-  ...rest
-}: Props & { children?: import("svelte").Snippet } = $props();
+  let {
+    onClear,
+    class: className,
+    children,
+    ...rest
+  }: Props & { children?: import("svelte").Snippet } = $props();
 </script>
 
 <InputGroupButton

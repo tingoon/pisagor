@@ -1,8 +1,8 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
 /**
- * Page chrome is a muted gray; control wells are `--card` (white) with a readable
- * edge so fields stay visible on page, Surface, and Frame.
+ * Page chrome is a muted gray; control wells are `--card` (white) with a
+ * readable edge so fields stay visible on page, Surface, and Frame.
  */
 const softFill = "bg-card shadow-sm dark:bg-input/30";
 /** Same elevated well on secondary / tertiary / glass chrome. */
@@ -31,12 +31,12 @@ export const formControlShellRecipe = tv({
     "w-full min-w-0",
     "px-3",
     "text-base md:text-sm",
-    "rounded-lg border border-foreground/20 dark:border-input",
+    "border-foreground/20 dark:border-input rounded-lg border",
     "placeholder:text-muted-foreground/64",
     "file:inline-flex file:h-7 file:items-center file:border-0",
-    "file:font-medium file:text-foreground file:text-sm",
-    "transition duration-fast ease-out",
-    "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/24",
+    "file:text-foreground file:text-sm file:font-medium",
+    "duration-fast transition ease-out",
+    "focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/24 outline-hidden",
     "aria-invalid:border-destructive aria-invalid:text-destructive aria-invalid:ring-0.75 aria-invalid:ring-destructive/24",
     "data-invalid:border-destructive data-invalid:text-destructive data-invalid:ring-0.75 data-invalid:ring-destructive/24",
     "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-64",
@@ -75,17 +75,11 @@ export const formControlShellRecipe = tv({
     },
   ],
   defaultVariants: {
-    /**
-     * Control size.
-     */
+    /** Control size. */
     size: "md",
-    /**
-     * Surface variant.
-     */
+    /** Surface variant. */
     surfaceVariant: undefined,
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "primary",
   },
   variants: {
@@ -108,14 +102,14 @@ export const formControlGroupShellRecipe = tv({
     "relative",
     "w-full min-w-0",
     "flex items-center",
-    "rounded-lg border border-foreground/20 dark:border-input",
-    "transition duration-fast ease-out",
+    "border-foreground/20 dark:border-input rounded-lg border",
+    "duration-fast transition ease-out",
     "has-[>textarea]:h-auto",
     "has-[>[data-align=inline-start]]:[&>input]:ps-2",
     "has-[>[data-align=inline-end]]:[&>input]:pe-2",
     "has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-3",
     "has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3",
-    "outline-hidden focus-within:border-primary focus-within:ring-0.75 focus-within:ring-ring/24",
+    "focus-within:border-primary focus-within:ring-0.75 focus-within:ring-ring/24 outline-hidden",
     "has-[[data-part][aria-invalid=true]]:border-destructive has-[[data-part][aria-invalid=true]]:ring-0.75 has-[[data-part][aria-invalid=true]]:ring-destructive/24",
     "motion-reduce:transition-none!",
   ],
@@ -152,17 +146,11 @@ export const formControlGroupShellRecipe = tv({
     },
   ],
   defaultVariants: {
-    /**
-     * Control size.
-     */
+    /** Control size. */
     size: "md",
-    /**
-     * Surface variant.
-     */
+    /** Surface variant. */
     surfaceVariant: undefined,
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "primary",
   },
   variants: {
@@ -183,9 +171,9 @@ export const formControlToggleRecipe = tv({
   base: [
     "relative",
     "inline-flex shrink-0 items-center justify-center",
-    "border border-foreground/20 dark:border-input",
-    "transition-shadow duration-fast ease-out",
-    "data-focus-visible:border-primary data-focus-visible:ring-0.75 data-focus-visible:ring-ring/24 data-focus-visible:ring-offset-1 data-focus-visible:ring-offset-background",
+    "border-foreground/20 dark:border-input border",
+    "duration-fast transition-shadow ease-out",
+    "data-focus-visible:border-primary data-focus-visible:ring-0.75 data-focus-visible:ring-ring/24 data-focus-visible:ring-offset-background data-focus-visible:ring-offset-1",
     "data-disabled:opacity-64",
     "motion-reduce:transition-none!",
   ],
@@ -222,13 +210,9 @@ export const formControlToggleRecipe = tv({
     },
   ],
   defaultVariants: {
-    /**
-     * Surface variant.
-     */
+    /** Surface variant. */
     surfaceVariant: undefined,
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "primary",
   },
   variants: {
@@ -250,12 +234,12 @@ export const formControlRadioToggleRecipe = tv({
     "relative",
     "inline-flex shrink-0 items-center justify-center",
     "size-4",
-    "rounded-full border border-input",
+    "border-input rounded-full border",
     "before:size-1.5 before:rounded-full",
-    "data-focus-visible:border-primary data-focus-visible:ring-0.75 data-focus-visible:ring-ring/32 data-focus-visible:ring-offset-1 data-focus-visible:ring-offset-background",
+    "data-focus-visible:border-primary data-focus-visible:ring-0.75 data-focus-visible:ring-ring/32 data-focus-visible:ring-offset-background data-focus-visible:ring-offset-1",
     "data-invalid:border-destructive data-invalid:text-destructive data-invalid:ring-0.75 data-invalid:ring-destructive/24",
     "data-[state=checked]:bg-primary data-[state=checked]:before:bg-primary-foreground",
-    "data-invalid:data-[state=checked]:bg-transparent data-invalid:data-[state=checked]:before:bg-destructive",
+    "data-invalid:data-[state=checked]:before:bg-destructive data-invalid:data-[state=checked]:bg-transparent",
     "motion-reduce:transition-none!",
   ],
   compoundVariants: [
@@ -291,13 +275,9 @@ export const formControlRadioToggleRecipe = tv({
     },
   ],
   defaultVariants: {
-    /**
-     * Surface variant.
-     */
+    /** Surface variant. */
     surfaceVariant: undefined,
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "primary",
   },
   variants: {
@@ -310,7 +290,7 @@ export const formControlRadioToggleRecipe = tv({
 });
 
 export const formControlSeparatorRecipe = tv({
-  base: "relative block w-fit mx-auto px-2 text-muted-foreground text-sm",
+  base: "text-muted-foreground relative mx-auto block w-fit px-2 text-sm",
   compoundVariants: [
     {
       class: "bg-card",
@@ -344,13 +324,9 @@ export const formControlSeparatorRecipe = tv({
     },
   ],
   defaultVariants: {
-    /**
-     * Surface variant.
-     */
+    /** Surface variant. */
     surfaceVariant: undefined,
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "primary",
   },
   variants: {
@@ -363,7 +339,7 @@ export const formControlSeparatorRecipe = tv({
 });
 
 export const formControlZoneRecipe = tv({
-  base: ["rounded-2xl border-2 border-input border-dashed"],
+  base: ["border-input rounded-2xl border-2 border-dashed"],
   compoundVariants: [
     {
       class: "bg-transparent",
@@ -397,13 +373,9 @@ export const formControlZoneRecipe = tv({
     },
   ],
   defaultVariants: {
-    /**
-     * Surface variant.
-     */
+    /** Surface variant. */
     surfaceVariant: undefined,
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "primary",
   },
   variants: {

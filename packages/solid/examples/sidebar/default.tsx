@@ -37,7 +37,7 @@ export function Default() {
       <Sidebar.Inset>
         <header class="flex h-12 items-center gap-2 border-b px-4">
           <Sidebar.Trigger />
-          <span class="font-medium text-sm">Dashboard</span>
+          <span class="text-sm font-medium">Dashboard</span>
         </header>
         <div class="flex flex-1 flex-col gap-2 p-4">
           <p class="text-muted-foreground text-sm">Main content area</p>

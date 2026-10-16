@@ -29,10 +29,10 @@ Build rows with [Item](/svelte/components/item/design) for consistent icon, labe
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Persistent link or action list | **Menu** |
-| Popup from a trigger | [Dropdown Menu](/svelte/components/dropdown-menu/design) |
-| Top bar with brand + nav | [Navbar](/svelte/components/navbar/design) |
-| Site-wide sections with flyouts | [Navigation Menu](/svelte/components/navigation-menu/design) |
-| Mobile primary destinations | [Bottom Navigation](/svelte/components/bottom-navigation/design) |
+| Need                            | Prefer                                                          |
+| ------------------------------- | --------------------------------------------------------------- |
+| Persistent link or action list  | **Menu**                                                        |
+| Popup from a trigger            | [Dropdown Menu](/svelte/components/dropdown-menu/design)         |
+| Top bar with brand + nav        | [Navbar](/svelte/components/navbar/design)                       |
+| Site-wide sections with flyouts | [Navigation Menu](/svelte/components/navigation-menu/design)     |
+| Mobile primary destinations     | [Bottom Navigation](/svelte/components/bottom-navigation/design) |

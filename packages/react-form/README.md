@@ -7,10 +7,10 @@ import { TextField } from "@pisagor/react-form";
 import { useAppForm } from "@pisagor/react-form/tanstack";
 ```
 
-| Entry | Path | Role |
-| ----- | ---- | ---- |
-| Fields | `@pisagor/react-form` | Standalone field components (`TextField`, `SelectField`, …) |
-| TanStack | `@pisagor/react-form/tanstack` | `useAppForm`, connected field components, form helpers |
+| Entry    | Path                           | Role                                                        |
+| -------- | ------------------------------ | ----------------------------------------------------------- |
+| Fields   | `@pisagor/react-form`          | Standalone field components (`TextField`, `SelectField`, …) |
+| TanStack | `@pisagor/react-form/tanstack` | `useAppForm`, connected field components, form helpers      |
 
 Peers: `@pisagor/react`, `react` ^19, `react-dom` ^19. Optional peer: `@tanstack/react-form` (for `./tanstack` only).
 

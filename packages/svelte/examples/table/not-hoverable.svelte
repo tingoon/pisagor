@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Table } from "@pisagor/svelte";
-import { workspaceUsers } from "./helpers";
+  import { Table } from "@pisagor/svelte";
+  import { workspaceUsers } from "./helpers";
 </script>
 
 <Table isHoverable={false}>

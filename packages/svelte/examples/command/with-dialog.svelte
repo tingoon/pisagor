@@ -1,34 +1,32 @@
 <script lang="ts">
-import { useListCollection } from "@ark-ui/svelte/collection";
-import { useFilter } from "@ark-ui/svelte/locale";
-import { Button, Command, Kbd } from "@pisagor/svelte";
-import ArrowBendDownLeftIcon from "phosphor-svelte/lib/ArrowBendDownLeftIcon";
+  import { useListCollection } from "@ark-ui/svelte/collection";
+  import { useFilter } from "@ark-ui/svelte/locale";
+  import { Button, Command, Kbd } from "@pisagor/svelte";
+  import ArrowBendDownLeftIcon from "phosphor-svelte/lib/ArrowBendDownLeftIcon";
 
-const initialItems = [
-  { group: "File", label: "New file", shortcut: "⌘N", value: "new" },
-  { group: "File", label: "Save", shortcut: "⌘S", value: "save" },
-  { group: "File", label: "Open", shortcut: "⌘O", value: "open" },
-  { group: "Edit", label: "Undo", shortcut: "⌘Z", value: "undo" },
-  { group: "Edit", label: "Redo", shortcut: "⌘Z", value: "redo" },
-  { group: "Edit", label: "Cut", shortcut: "⌘X", value: "cut" },
-  { group: "Edit", label: "Copy", shortcut: "⌘C", value: "copy" },
-];
-let open = $state(false);
-const filters = useFilter({ sensitivity: "base" });
-const { collection, filter } = useListCollection({
-  filter(itemString, filterText) {
-    return filters().contains(itemString, filterText);
-  },
-  groupBy: (item) => item.group,
-  initialItems,
-});
+  const initialItems = [
+    { group: "File", label: "New file", shortcut: "⌘N", value: "new" },
+    { group: "File", label: "Save", shortcut: "⌘S", value: "save" },
+    { group: "File", label: "Open", shortcut: "⌘O", value: "open" },
+    { group: "Edit", label: "Undo", shortcut: "⌘Z", value: "undo" },
+    { group: "Edit", label: "Redo", shortcut: "⌘Z", value: "redo" },
+    { group: "Edit", label: "Cut", shortcut: "⌘X", value: "cut" },
+    { group: "Edit", label: "Copy", shortcut: "⌘C", value: "copy" },
+  ];
+  let open = $state(false);
+  const filters = useFilter({ sensitivity: "base" });
+  const { collection, filter } = useListCollection({
+    filter(itemString, filterText) {
+      return filters().contains(itemString, filterText);
+    },
+    groupBy: (item) => item.group,
+    initialItems,
+  });
 </script>
 
 <Command.Dialog onOpenChange={({ open: next }) => (open = next)} {open}>
   <Command.DialogTrigger>
-    {#snippet asChild(
-      props,
-    )}
+    {#snippet asChild(props)}
       <Button {...props()} variant="outline">Open Command Palette</Button>
     {/snippet}
   </Command.DialogTrigger>

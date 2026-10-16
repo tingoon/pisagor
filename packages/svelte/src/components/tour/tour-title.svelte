@@ -1,13 +1,13 @@
 <script lang="ts">
-import {
-  Tour as TourPrimitive,
-  type TourTitleProps,
-} from "@ark-ui/svelte/tour";
-import { cn } from "@pisagor/utils";
-import { useTourContext } from "./tour.context";
+  import {
+    Tour as TourPrimitive,
+    type TourTitleProps,
+  } from "@ark-ui/svelte/tour";
+  import { cn } from "@pisagor/utils";
+  import { useTourContext } from "./tour.context";
 
-let { class: className, children, ...rest }: TourTitleProps = $props();
-const ctx = useTourContext();
+  let { class: className, children, ...rest }: TourTitleProps = $props();
+  const ctx = useTourContext();
 </script>
 
 <TourPrimitive.Title

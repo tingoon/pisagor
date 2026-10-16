@@ -1,28 +1,30 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import { buttonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { HTMLButtonAttributes } from "svelte/elements";
-import { useSidebar } from "./sidebar.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import { buttonRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLButtonAttributes } from "svelte/elements";
+  import { useSidebar } from "./sidebar.context";
 
-type Props = Omit<HTMLButtonAttributes, "type"> & {
-  children?: import("svelte").Snippet;
-  /**
-   * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
-   * @defaultValue buttonRecipe
-   */
-  buttonRecipe?: typeof buttonRecipe;
-  type?: HTMLButtonAttributes["type"];
-};
+  type Props = Omit<HTMLButtonAttributes, "type"> & {
+    children?: import("svelte").Snippet;
+    /**
+     * Button style recipe. Defaults to `buttonRecipe` from
+     * `@pisagor/recipes/button`.
+     *
+     * @defaultValue buttonRecipe
+     */
+    buttonRecipe?: typeof buttonRecipe;
+    type?: HTMLButtonAttributes["type"];
+  };
 
-let {
-  buttonRecipe: buttonRecipeProp = buttonRecipe,
-  class: className,
-  children,
-  type = "button",
-  ...rest
-}: Props = $props();
-const ctx = useSidebar();
+  let {
+    buttonRecipe: buttonRecipeProp = buttonRecipe,
+    class: className,
+    children,
+    type = "button",
+    ...rest
+  }: Props = $props();
+  const ctx = useSidebar();
 </script>
 
 <Ark

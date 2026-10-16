@@ -1,18 +1,18 @@
 <script lang="ts">
-import { createListCollection } from "@ark-ui/svelte/collection";
-import { Select } from "@pisagor/svelte";
+  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { Select } from "@pisagor/svelte";
 
-const collection = createListCollection({
-  groupBy: (item) => (item as { category: string }).category,
-  items: [
-    { category: "Frontend", label: "Next.js", value: "next" },
-    { category: "Frontend", label: "Vite", value: "vite" },
-    { category: "Frontend", label: "Astro", value: "astro" },
-    { category: "Backend", label: "Express", value: "express" },
-    { category: "Backend", label: "Fastify", value: "fastify" },
-    { category: "Backend", label: "NestJS", value: "nestjs" },
-  ],
-});
+  const collection = createListCollection({
+    groupBy: (item) => (item as { category: string }).category,
+    items: [
+      { category: "Frontend", label: "Next.js", value: "next" },
+      { category: "Frontend", label: "Vite", value: "vite" },
+      { category: "Frontend", label: "Astro", value: "astro" },
+      { category: "Backend", label: "Express", value: "express" },
+      { category: "Backend", label: "Fastify", value: "fastify" },
+      { category: "Backend", label: "NestJS", value: "nestjs" },
+    ],
+  });
 </script>
 
 <Select.Root {collection}>

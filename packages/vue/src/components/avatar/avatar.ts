@@ -43,7 +43,10 @@ export type AvatarSize = NonNullable<AvatarVariantProps["size"]>;
 export type AvatarClassNames = VariantClassNames<AvatarRecipeSlot>;
 
 export interface AvatarProps extends BaseAvatarProps {
-  /** Person name; used as default alt text and to derive initials when no fallback is given */
+  /**
+   * Person name; used as default alt text and to derive initials when no
+   * fallback is given
+   */
   name?: string;
   classNames?: AvatarClassNames;
   /** Renders the avatar image with the provided src */

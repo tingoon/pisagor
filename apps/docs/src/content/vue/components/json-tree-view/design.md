@@ -29,9 +29,9 @@ Redact or mask known sensitive fields by default in shared screens. Make read-on
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Inspect nested JSON | **JSON Tree View** |
-| Hierarchical settings | [Tree View](/vue/components/tree-view/design) |
-| Tabular API results | [Data Table](/vue/components/data-table/design) |
-| Match emphasis in strings | [Highlight](/vue/components/highlight/design) |
+| Need                      | Prefer                                            |
+| ------------------------- | ------------------------------------------------- |
+| Inspect nested JSON       | **JSON Tree View**                                |
+| Hierarchical settings     | [Tree View](/vue/components/tree-view/design)   |
+| Tabular API results       | [Data Table](/vue/components/data-table/design) |
+| Match emphasis in strings | [Highlight](/vue/components/highlight/design)   |

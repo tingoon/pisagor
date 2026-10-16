@@ -1,38 +1,38 @@
 <script lang="ts">
-import { createListCollection } from "@ark-ui/svelte/collection";
-import { Button, Item, Listbox } from "@pisagor/svelte";
-import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
-import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
+  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { Button, Item, Listbox } from "@pisagor/svelte";
+  import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
+  import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 
-let available = $state(["Brazil", "Ireland"]);
-let selected = $state<string[]>(["Mexico"]);
-let availableValue = $state<string[]>([]);
-let selectedValue = $state<string[]>([]);
+  let available = $state(["Brazil", "Ireland"]);
+  let selected = $state<string[]>(["Mexico"]);
+  let availableValue = $state<string[]>([]);
+  let selectedValue = $state<string[]>([]);
 
-const availableCollection = $derived(
-  createListCollection({
-    items: available.map((label) => ({ label, value: label })),
-  }),
-);
-const selectedCollection = $derived(
-  createListCollection({
-    items: selected.map((label) => ({ label, value: label })),
-  }),
-);
+  const availableCollection = $derived(
+    createListCollection({
+      items: available.map((label) => ({ label, value: label })),
+    }),
+  );
+  const selectedCollection = $derived(
+    createListCollection({
+      items: selected.map((label) => ({ label, value: label })),
+    }),
+  );
 
-const moveToSelected = () => {
-  const moving = availableValue;
-  available = available.filter((item) => !moving.includes(item));
-  selected = [...selected, ...moving];
-  availableValue = [];
-};
+  const moveToSelected = () => {
+    const moving = availableValue;
+    available = available.filter((item) => !moving.includes(item));
+    selected = [...selected, ...moving];
+    availableValue = [];
+  };
 
-const moveToAvailable = () => {
-  const moving = selectedValue;
-  selected = selected.filter((item) => !moving.includes(item));
-  available = [...available, ...moving];
-  selectedValue = [];
-};
+  const moveToAvailable = () => {
+    const moving = selectedValue;
+    selected = selected.filter((item) => !moving.includes(item));
+    available = [...available, ...moving];
+    selectedValue = [];
+  };
 </script>
 
 <div class="flex gap-2 max-sm:flex-col">

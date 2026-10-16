@@ -29,9 +29,9 @@ Pair with sticky row headers or column labels inside the scroll viewport when da
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Styled nested scrolling | **Scroll Area** |
+| Need                       | Prefer                                          |
+| -------------------------- | ----------------------------------------------- |
+| Styled nested scrolling    | **Scroll Area**                                 |
 | Long in-page nav highlight | [Scrollspy](/react/components/scrollspy/design) |
-| Full data grid scroll | [Data Grid](/react/components/data-grid/design) |
-| Horizontal media strip | [Carousel](/react/components/carousel/design) |
+| Full data grid scroll      | [Data Grid](/react/components/data-grid/design) |
+| Horizontal media strip     | [Carousel](/react/components/carousel/design)   |

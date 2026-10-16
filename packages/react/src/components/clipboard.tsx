@@ -13,7 +13,7 @@ import type { ComponentProps, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { FormControlVariant, VariantClassNames } from "../internal/types";
 import { Button, type ButtonProps } from "./button";
-import { getMessage } from "./provider/provider.context";
+import { useMessage } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -29,8 +29,7 @@ const { Context: ClipboardStylesContext, withContext } =
 type ClipboardClassNames = VariantClassNames<ClipboardRecipeSlot>;
 
 export interface ClipboardProps
-  extends Omit<ClipboardRootProps, "children">,
-    BaseClipboardProps {
+  extends Omit<ClipboardRootProps, "children">, BaseClipboardProps {
   /**
    * Size of the copy button.
    *
@@ -45,10 +44,7 @@ export interface ClipboardProps
   size?: "sm" | "md" | "lg";
   /** Variant of the copy button */
   buttonVariant?: ButtonProps["variant"];
-  /**
-   * Visual shell variant for input/value display modes.
-   * Defaults to `primary`.
-   */
+  /** Visual shell variant for input/value display modes. Defaults to `primary`. */
   controlVariant?: FormControlVariant;
   /**
    * Display mode for the copy control.
@@ -85,7 +81,8 @@ function ClipboardProvider({
   size?: ClipboardVariantProps["size"];
   valueSize?: ClipboardVariantProps["valueSize"];
   /**
-   * Style recipe. Defaults to `clipboardRecipe` from `@pisagor/recipes/clipboard`.
+   * Style recipe. Defaults to `clipboardRecipe` from
+   * `@pisagor/recipes/clipboard`.
    *
    * @defaultValue clipboardRecipe
    */
@@ -143,7 +140,7 @@ export function Clipboard({
   controlVariant: controlVariantProp,
   valueSize = size ?? "md",
   variant = "input",
-  buttonAriaLabel = getMessage("clipboard.copy"),
+  buttonAriaLabel: buttonAriaLabelProp,
   copiedIcon = <CheckIcon />,
   copyIcon = <ClipboardIcon />,
   label,
@@ -153,6 +150,7 @@ export function Clipboard({
   classNames,
   ...rest
 }: ClipboardProps) {
+  const buttonAriaLabel = useMessage("clipboard.copy", buttonAriaLabelProp);
   const resolved = {
     surfaceVariant: useFormControlSurface(),
     variant: controlVariantProp ?? ("primary" as FormControlVariant),

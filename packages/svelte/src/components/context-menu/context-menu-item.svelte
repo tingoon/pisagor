@@ -1,8 +1,8 @@
 <script lang="ts">
-import type { ComponentProps } from "svelte";
-import DropdownPart from "../dropdown-menu/dropdown-menu-item.svelte";
+  import type { ComponentProps } from "svelte";
+  import DropdownPart from "../dropdown-menu/dropdown-menu-item.svelte";
 
-let props: ComponentProps<typeof DropdownPart> = $props();
+  let props: ComponentProps<typeof DropdownPart> = $props();
 </script>
 
 <DropdownPart {...props} />

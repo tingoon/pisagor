@@ -29,9 +29,9 @@ Label the primary button with the verb that will run — Delete, Remove, Discard
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Confirm destructive or irreversible work | **Alert Dialog** |
-| Rich form or multi-step task in a modal | [Dialog](/svelte/components/dialog/design) |
-| Non-blocking warning | [Alert](/svelte/components/alert/design) |
-| Bottom-sheet confirmation on mobile | [Sheet](/svelte/components/sheet/design) |
+| Need                                     | Prefer                                    |
+| ---------------------------------------- | ----------------------------------------- |
+| Confirm destructive or irreversible work | **Alert Dialog**                          |
+| Rich form or multi-step task in a modal  | [Dialog](/svelte/components/dialog/design) |
+| Non-blocking warning                     | [Alert](/svelte/components/alert/design)   |
+| Bottom-sheet confirmation on mobile      | [Sheet](/svelte/components/sheet/design)   |

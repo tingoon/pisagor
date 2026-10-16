@@ -4,6 +4,7 @@ import type { ImageCropperRecipeFn } from "@pisagor/recipes";
 export interface ImageCropperProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue imageCropperRecipe
    */
   recipe?: ImageCropperRecipeFn;

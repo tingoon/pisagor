@@ -19,7 +19,7 @@ const collection = createListCollection({
       <Listbox.Root :collection="collection">
         <Listbox.Content>
           <Listbox.ItemGroup
-            v-for="[ region, items ] in collection.group()"
+            v-for="[region, items] in collection.group()"
             :key="region"
             :heading="region"
           >

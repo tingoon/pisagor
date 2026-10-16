@@ -29,9 +29,9 @@ Use Combobox when you must own the listbox, input, and filtering pipeline — fo
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
+| Need                                   | Prefer                                                |
+| -------------------------------------- | ----------------------------------------------------- |
 | Searchable single select in product UI | [Autocomplete](/solid/components/autocomplete/design) |
-| Low-level selection engine | **Combobox** |
-| Fixed list without typing | [Select](/solid/components/select/design) |
-| Listbox-only presentation | [Listbox](/solid/components/listbox/design) |
+| Low-level selection engine             | **Combobox**                                          |
+| Fixed list without typing              | [Select](/solid/components/select/design)             |
+| Listbox-only presentation              | [Listbox](/solid/components/listbox/design)           |

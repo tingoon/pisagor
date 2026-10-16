@@ -1,22 +1,22 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import {
-  type TourControlProps,
-  Tour as TourPrimitive,
-} from "@ark-ui/svelte/tour";
-import { buttonRecipe, dialogRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
-import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
-import { isInsideControl } from "../../internal/inside-control";
-import { TOUR_INSIDE_CONTROL, useTourContext } from "./tour.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import {
+    type TourControlProps,
+    Tour as TourPrimitive,
+  } from "@ark-ui/svelte/tour";
+  import { buttonRecipe, dialogRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
+  import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
+  import { isInsideControl } from "../../internal/inside-control";
+  import { TOUR_INSIDE_CONTROL, useTourContext } from "./tour.context";
 
-let { class: className, ...rest }: Omit<TourControlProps, "children"> =
-  $props();
-const ctx = useTourContext();
-const dialogSlots = $derived(dialogRecipe());
-const insideControl = isInsideControl(TOUR_INSIDE_CONTROL);
-const actions = $derived(ctx.tour().step?.actions ?? []);
+  let { class: className, ...rest }: Omit<TourControlProps, "children"> =
+    $props();
+  const ctx = useTourContext();
+  const dialogSlots = $derived(dialogRecipe());
+  const insideControl = isInsideControl(TOUR_INSIDE_CONTROL);
+  const actions = $derived(ctx.tour().step?.actions ?? []);
 </script>
 
 {#snippet items()}

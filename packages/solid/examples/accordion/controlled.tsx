@@ -12,7 +12,7 @@ export function Controlled() {
         onValueChange={({ value: next }) => setValue(next)}
         value={value()}
       />
-      <div class="text-center text-muted-foreground text-sm">
+      <div class="text-muted-foreground text-center text-sm">
         {value().join(", ")}
       </div>
     </div>

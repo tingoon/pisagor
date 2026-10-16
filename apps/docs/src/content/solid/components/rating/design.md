@@ -29,9 +29,9 @@ Read-only ratings belong in cards and list rows; interactive ratings belong in f
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Star score input or display | **Rating** |
-| Single on/off preference | [Switch](/solid/components/switch/design) |
-| Pick one category | [Radio Group](/solid/components/radio-group/design) |
-| Compact sentiment | [Badge](/solid/components/badge/design) |
+| Need                        | Prefer                                              |
+| --------------------------- | --------------------------------------------------- |
+| Star score input or display | **Rating**                                          |
+| Single on/off preference    | [Switch](/solid/components/switch/design)           |
+| Pick one category           | [Radio Group](/solid/components/radio-group/design) |
+| Compact sentiment           | [Badge](/solid/components/badge/design)             |

@@ -29,7 +29,7 @@ import type { ClassValue, LoosePropValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 
 // #region Context
 const {
@@ -40,7 +40,10 @@ const {
   recipe: comboboxRecipe,
 });
 
-/** Slots from the nearest Combobox root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest Combobox root, or the default recipe when used
+ * standalone.
+ */
 function useComboboxSlots() {
   const styles = useOptionalComboboxStyles();
 
@@ -70,9 +73,7 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   ArkComboboxRootProps<T>,
   "collection" | "onValueChange"
 > & {
-  /**
-   * Visual shell variant applied to the input. Defaults to `primary`.
-   */
+  /** Visual shell variant applied to the input. Defaults to `primary`. */
   variant?: FormControlVariant;
   /** Input size. Defaults to `md`. */
   size?: ComboboxInputProps["size"];
@@ -189,7 +190,10 @@ export const ComboboxRoot = defineComponent({
   },
 });
 
-/** True inside `Combobox.Control`, so `Combobox.Input` does not render a second control. */
+/**
+ * True inside `Combobox.Control`, so `Combobox.Input` does not render a second
+ * control.
+ */
 const ComboboxInsideControlKey: InjectionKey<boolean> = Symbol(
   "ComboboxInsideControl",
 );
@@ -352,8 +356,7 @@ export const ComboboxClearTrigger = defineComponent({
         ComboboxPrimitive.ClearTrigger as ArkPart,
         {
           ...attrs,
-          "aria-label":
-            props["aria-label"] ?? useProviderMessage("select.clear"),
+          "aria-label": props["aria-label"] ?? useTranslation("select.clear"),
         },
         () => slots.default?.(),
       );
@@ -542,7 +545,7 @@ export const ComboboxEmpty = defineComponent({
           ...attrs,
           class: cn(styleSlots.empty(), props.class, attrs.class),
         },
-        () => slots.default?.() ?? useProviderMessage("combobox.empty"),
+        () => slots.default?.() ?? useTranslation("combobox.empty"),
       );
     };
   },

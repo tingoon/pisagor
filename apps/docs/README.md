@@ -21,12 +21,12 @@ bun --filter docs dev
 
 ## Scripts
 
-| Script | Description |
-| --- | --- |
-| `dev` | Dev server on port 4000 |
-| `build` | Static production build |
-| `preview` | Preview the production build |
-| `type-check` | TypeScript check |
+| Script      | Description                             |
+| ----------- | --------------------------------------- |
+| `dev`       | Dev server on port 4000                 |
+| `build`     | Static production build                 |
+| `preview`   | Preview the production build            |
+| `typecheck` | Type check (`astro sync` + `bun check`) |
 
 ## Structure
 

@@ -1,14 +1,14 @@
 <script lang="ts">
-import type { ComponentProps, Snippet } from "svelte";
-import MarqueeContent from "./marquee-content.svelte";
-import MarqueeItem from "./marquee-item.svelte";
-import MarqueeRoot from "./marquee-root.svelte";
+  import type { ComponentProps, Snippet } from "svelte";
+  import MarqueeContent from "./marquee-content.svelte";
+  import MarqueeItem from "./marquee-item.svelte";
+  import MarqueeRoot from "./marquee-root.svelte";
 
-type Props = Omit<ComponentProps<typeof MarqueeRoot>, "children"> & {
-  items?: Array<string | Snippet>;
-};
+  type Props = Omit<ComponentProps<typeof MarqueeRoot>, "children"> & {
+    items?: Array<string | Snippet>;
+  };
 
-let { items, ...rest }: Props = $props();
+  let { items, ...rest }: Props = $props();
 </script>
 
 <MarqueeRoot {...rest}>

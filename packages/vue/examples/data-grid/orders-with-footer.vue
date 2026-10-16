@@ -182,7 +182,7 @@ const state = computed(() => ({ sorting: sorting.value }));
       :state="state"
     >
       <DataGrid.Toolbar>
-        <p class="font-medium text-sm">Sales orders with footer totals</p>
+        <p class="text-sm font-medium">Sales orders with footer totals</p>
       </DataGrid.Toolbar>
       <Table>
         <Table.Header>

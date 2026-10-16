@@ -29,9 +29,9 @@ When rows become selectable, pair the table with [Action Bar](/react/components/
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Simple structured data grid | **Table** |
+| Need                             | Prefer                                            |
+| -------------------------------- | ------------------------------------------------- |
+| Simple structured data grid      | **Table**                                         |
 | Sort, filter, selection at scale | [Data Table](/react/components/data-table/design) |
-| Spreadsheet-style interaction | [Data Grid](/react/components/data-grid/design) |
-| Key-value pairs | [Data List](/react/components/data-list/design) |
+| Spreadsheet-style interaction    | [Data Grid](/react/components/data-grid/design)   |
+| Key-value pairs                  | [Data List](/react/components/data-list/design)   |

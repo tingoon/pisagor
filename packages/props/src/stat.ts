@@ -9,6 +9,7 @@ import type {
 export interface StatProps extends StatVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue statRecipe
    */
   recipe?: StatRecipeFn;
@@ -18,6 +19,7 @@ export interface StatProps extends StatVariantProps {
 export interface StatTrendProps extends StatTrendVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue statTrendRecipe
    */
   recipe?: StatTrendRecipeFn;

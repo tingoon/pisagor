@@ -22,7 +22,7 @@ export function Controlled() {
           </div>
         </HoverCard.Content>
       </HoverCard>
-      <p className="text-center text-muted-foreground text-sm">
+      <p className="text-muted-foreground text-center text-sm">
         {open ? "✅" : "❌"}
       </p>
     </div>

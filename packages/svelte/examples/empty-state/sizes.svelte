@@ -1,7 +1,7 @@
 <script lang="ts">
-import { EmptyState } from "@pisagor/svelte";
+  import { EmptyState } from "@pisagor/svelte";
 
-const sizes = ["sm", "md", "lg"] as const;
+  const sizes = ["sm", "md", "lg"] as const;
 </script>
 
 <div class="flex flex-col gap-4">

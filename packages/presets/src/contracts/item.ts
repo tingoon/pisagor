@@ -2,13 +2,9 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const itemRecipe = tv({
   defaultVariants: {
-    /**
-     * Size scale.
-     */
+    /** Size scale. */
     size: "md",
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "default",
   },
   slots: {
@@ -20,11 +16,11 @@ export const itemRecipe = tv({
       "gap-(--space) p-(--space)",
       "in-[[data-scope=menu][data-part=list]]:p-0",
       "text-sm",
-      "rounded-2xl border border-border/50",
-      "transition-colors duration-fast ease-out",
-      "[a]:transition-colors [a]:duration-fast [a]:ease-out [a]:hover:bg-muted",
-      "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/24",
-      "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+      "border-border/50 rounded-2xl border",
+      "duration-fast transition-colors ease-out",
+      "[a]:duration-fast [a]:hover:bg-muted [a]:transition-colors [a]:ease-out",
+      "focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/24 outline-hidden",
+      "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
       "motion-reduce:transition-none!",
     ],
     content: [
@@ -32,7 +28,7 @@ export const itemRecipe = tv({
       "[&+[data-scope=item][data-part=content]]:flex-none",
     ],
     description: [
-      "line-clamp-2 text-start font-normal text-muted-foreground text-sm leading-relaxed",
+      "text-muted-foreground line-clamp-2 text-start text-sm leading-relaxed font-normal",
       "[&>a:hover]:text-primary",
       "[&>a]:underline [&>a]:underline-offset-4",
     ],
@@ -51,7 +47,7 @@ export const itemRecipe = tv({
     title: [
       "w-fit",
       "flex items-center gap-2",
-      "line-clamp-1 font-medium text-sm leading-snug tracking-tight",
+      "line-clamp-1 text-sm leading-snug font-medium tracking-tight",
       "underline-offset-4",
     ],
   },
@@ -86,7 +82,7 @@ export const itemRecipe = tv({
         ],
       },
       muted: {
-        base: "border-transparent bg-muted/48 shadow-xs",
+        base: "bg-muted/48 border-transparent shadow-xs",
       },
       outline: {
         base: "border-border/50 shadow-xs",

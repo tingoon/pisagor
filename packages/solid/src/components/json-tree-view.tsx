@@ -22,13 +22,14 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export interface JsonTreeViewRootProps
-  extends JsonTreeViewPrimitiveRootProps,
-    BaseJsonTreeViewRootProps {}
+  extends JsonTreeViewPrimitiveRootProps, BaseJsonTreeViewRootProps {}
 
 type JsonTreeViewClassNames = VariantClassNames<JsonTreeViewRecipeSlot>;
 
-export interface JsonTreeViewProps
-  extends Omit<JsonTreeViewRootProps, "children"> {
+export interface JsonTreeViewProps extends Omit<
+  JsonTreeViewRootProps,
+  "children"
+> {
   renderValue?: JsonTreeViewTreeProps["renderValue"];
   classNames?: JsonTreeViewClassNames;
   treeProps?: Omit<JsonTreeViewTreeProps, "arrow" | "class" | "renderValue">;

@@ -1,33 +1,33 @@
 <script lang="ts">
-import { Field, Surface } from "@pisagor/svelte";
-import { createAppForm, Root } from "@pisagor/svelte-form/tanstack";
-import { z } from "zod";
-import { signInFormBlock } from "#/recipes/blocks/sign-in-form";
+  import { Field, Surface } from "@pisagor/svelte";
+  import { createAppForm, Root } from "@pisagor/svelte-form/tanstack";
+  import { z } from "zod";
+  import { signInFormBlock } from "#/recipes/blocks/sign-in-form";
 
-const styles = signInFormBlock();
+  const styles = signInFormBlock();
 
-const signInFormSchema = z.object({
-  email: z
-    .string()
-    .trim()
-    .min(1, "Email is required.")
-    .pipe(z.email("Please enter a valid email address.")),
-  password: z.string().min(8, "Password must be at least 8 characters."),
-  rememberMe: z.boolean(),
-});
+  const signInFormSchema = z.object({
+    email: z
+      .string()
+      .trim()
+      .min(1, "Email is required.")
+      .pipe(z.email("Please enter a valid email address.")),
+    password: z.string().min(8, "Password must be at least 8 characters."),
+    rememberMe: z.boolean(),
+  });
 
-const form = createAppForm(() => ({
-  defaultValues: {
-    email: "",
-    password: "",
-    rememberMe: false,
-  },
-  onSubmit: () => {},
-  validators: {
-    onChange: signInFormSchema,
-    onSubmit: signInFormSchema,
-  },
-}));
+  const form = createAppForm(() => ({
+    defaultValues: {
+      email: "",
+      password: "",
+      rememberMe: false,
+    },
+    onSubmit: () => {},
+    validators: {
+      onChange: signInFormSchema,
+      onSubmit: signInFormSchema,
+    },
+  }));
 </script>
 
 {#snippet forgotPassword()}
@@ -45,9 +45,7 @@ const form = createAppForm(() => ({
       </p>
     </div>
     <form.AppField name="email">
-      {#snippet children(
-        field,
-      )}
+      {#snippet children(field)}
         <field.TextField
           autocomplete="email"
           id="form-email"
@@ -58,9 +56,7 @@ const form = createAppForm(() => ({
       {/snippet}
     </form.AppField>
     <form.AppField name="password">
-      {#snippet children(
-        field,
-      )}
+      {#snippet children(field)}
         <field.PasswordField
           autocomplete="current-password"
           id="form-password"
@@ -76,9 +72,7 @@ const form = createAppForm(() => ({
     >
     <Field.Separator>Or continue with</Field.Separator>
     <form.AppField name="rememberMe">
-      {#snippet children(
-        field,
-      )}
+      {#snippet children(field)}
         <field.CheckboxField
           id="form-remember"
           label="Remember me on this device"

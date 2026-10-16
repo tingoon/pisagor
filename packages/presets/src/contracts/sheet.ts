@@ -2,13 +2,9 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const sheetRecipe = tv({
   defaultVariants: {
-    /**
-     * Preferred placement.
-     */
+    /** Preferred placement. */
     placement: "right",
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "default",
   },
   slots: {
@@ -21,7 +17,7 @@ export const sheetRecipe = tv({
       "bg-popover/92 backdrop-blur-2xl backdrop-saturate-150",
       "text-popover-foreground",
       "shadow-lg",
-      "transition duration-slow ease-emphasized will-change-transform",
+      "duration-slow ease-emphasized transition will-change-transform",
       "data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
       "data-[state=open]:fade-in-0 data-[state=open]:animate-in",
       "transparency-reduce:bg-popover transparency-reduce:backdrop-blur-none transparency-reduce:backdrop-saturate-100",
@@ -30,13 +26,13 @@ export const sheetRecipe = tv({
     ],
     footer: "sm:rounded-none",
     inline: ["absolute inset-e-2 top-2 opacity-64 hover:opacity-100"],
-    positioner: ["fixed inset-0 z-modal grid h-svh w-screen"],
+    positioner: ["z-modal fixed inset-0 grid h-svh w-screen"],
   },
   variants: {
     placement: {
       bottom: {
         content: [
-          "row-start-2 border-t border-border/40",
+          "border-border/40 row-start-2 border-t",
           "rounded-t-3xl",
           "data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
         ],
@@ -46,7 +42,7 @@ export const sheetRecipe = tv({
         content: [
           "w-[calc(100%-(--spacing(12)))] max-w-md",
           "col-start-2",
-          "border-e border-border/40",
+          "border-border/40 border-e",
           "rounded-e-3xl",
           "data-[state=closed]:slide-out-to-start data-[state=open]:slide-in-from-start",
         ],
@@ -56,7 +52,7 @@ export const sheetRecipe = tv({
         content: [
           "w-[calc(100%-(--spacing(12)))] max-w-md",
           "col-start-2",
-          "border-s border-border/40",
+          "border-border/40 border-s",
           "rounded-s-3xl",
           "data-[state=closed]:slide-out-to-end data-[state=open]:slide-in-from-end",
         ],
@@ -64,7 +60,7 @@ export const sheetRecipe = tv({
       },
       top: {
         content: [
-          "border-b border-border/40",
+          "border-border/40 border-b",
           "rounded-b-3xl",
           "data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
         ],
@@ -75,7 +71,7 @@ export const sheetRecipe = tv({
       default: {},
       inset: {
         content: [
-          "sm:rounded-3xl sm:border sm:border-border/50",
+          "sm:border-border/50 sm:rounded-3xl sm:border",
           "sm:**:data-[scope=sheet]:data-[part=footer]:rounded-b-3xl",
         ],
         positioner: "sm:p-4",

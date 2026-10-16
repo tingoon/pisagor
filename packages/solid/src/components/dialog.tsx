@@ -19,7 +19,7 @@ import { createSlotRecipeContext } from "../internal/create-slot-recipe-context"
 import { XIcon } from "../internal/icons";
 import { createContext } from "../utils";
 import { Button } from "./button";
-import { useProviderMessage } from "./provider/provider.context";
+import { useTranslation } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -41,12 +41,10 @@ export { useDialog };
 // #endregion
 
 export interface LocalDialogRootProps
-  extends DialogPrimitiveRootProps,
-    BaseDialogRootProps {}
+  extends DialogPrimitiveRootProps, BaseDialogRootProps {}
 
 export interface DialogContentProps
-  extends DialogPrimitiveContentProps,
-    DialogVariantProps {
+  extends DialogPrimitiveContentProps, DialogVariantProps {
   bottomStickOnMobile?: boolean;
   showCloseButton?: boolean;
 }
@@ -67,7 +65,10 @@ export interface DialogProps extends Omit<LocalDialogRootProps, "title"> {
   actions?: JSX.Element;
   description?: JSX.Element;
   title?: JSX.Element;
-  /** Prefer a render fn for Solid asChild; JSX elements are wrapped with display:contents. */
+  /**
+   * Prefer a render fn for Solid asChild; JSX elements are wrapped with
+   * display:contents.
+   */
   trigger?:
     | JSX.Element
     | ((props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element);
@@ -162,7 +163,7 @@ export function DialogContent(props: DialogContentProps): JSX.Element {
           asChild={(triggerProps) => (
             <Button
               {...triggerProps({ class: styles.slots.inline() })}
-              aria-label={useProviderMessage("dialog.close")}
+              aria-label={useTranslation("dialog.close")}
               size="icon-sm"
               variant="ghost"
             >

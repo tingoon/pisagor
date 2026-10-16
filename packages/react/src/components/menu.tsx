@@ -12,7 +12,7 @@ import {
   use,
 } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { getMessage } from "./provider/provider.context";
+import { useMessage } from "./provider/context";
 
 // #region Context
 const {
@@ -27,16 +27,14 @@ const {
 
 // #region Types
 export interface MenuRootProps
-  extends ComponentProps<typeof ark.nav>,
-    BaseMenuRootProps {}
+  extends ComponentProps<typeof ark.nav>, BaseMenuRootProps {}
 
 export type MenuPartProps = ComponentProps<typeof ark.div>;
 
 export type MenuListProps = ComponentProps<typeof ark.ul>;
 
 export interface MenuItemProps
-  extends ComponentProps<typeof ark.button>,
-    BaseMenuItemProps {}
+  extends ComponentProps<typeof ark.button>, BaseMenuItemProps {}
 
 export interface MenuLinkProps extends ComponentProps<typeof ark.a> {
   /** Whether the link represents the current page */
@@ -57,9 +55,10 @@ const MenuRootBase = withProvider(ark.nav, {
 }) as FunctionComponent<MenuRootProps>;
 
 export function MenuRoot({
-  "aria-label": ariaLabel = getMessage("menu.label"),
+  "aria-label": ariaLabelProp,
   ...rest
 }: MenuRootProps) {
+  const ariaLabel = useMessage("menu.label", ariaLabelProp);
   return <MenuRootBase {...rest} aria-label={ariaLabel} />;
 }
 

@@ -29,9 +29,9 @@ In menus, separators group related commands without implying order. Avoid separa
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Visual divide without a title | **Separator** |
-| Named section break | Headings / [Prose](/react/components/prose/design) |
-| Menu command groups | [Menu](/react/components/menu/design) |
-| Page regions | [App Shell](/react/components/app-shell/design) |
+| Need                          | Prefer                                             |
+| ----------------------------- | -------------------------------------------------- |
+| Visual divide without a title | **Separator**                                      |
+| Named section break           | Headings / [Prose](/react/components/prose/design) |
+| Menu command groups           | [Menu](/react/components/menu/design)              |
+| Page regions                  | [App Shell](/react/components/app-shell/design)    |

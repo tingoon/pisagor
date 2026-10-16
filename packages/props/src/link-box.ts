@@ -4,6 +4,7 @@ import type { LinkBoxRecipeFn } from "@pisagor/recipes";
 export interface LinkBoxProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue linkBoxRecipe
    */
   recipe?: LinkBoxRecipeFn;

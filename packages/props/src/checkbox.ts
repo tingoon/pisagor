@@ -4,6 +4,7 @@ import type { CheckboxGroupRecipeFn, CheckboxRecipeFn } from "@pisagor/recipes";
 export interface CheckboxGroupProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue checkboxGroupRecipe
    */
   recipe?: CheckboxGroupRecipeFn;
@@ -13,6 +14,7 @@ export interface CheckboxGroupProps {
 export interface CheckboxProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue checkboxRecipe
    */
   recipe?: CheckboxRecipeFn;

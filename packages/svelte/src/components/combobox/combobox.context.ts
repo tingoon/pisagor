@@ -15,7 +15,10 @@ export function useComboboxRoot() {
   return Context.get();
 }
 
-/** Root-level control props (`variant`, `size`) read by the Combobox control part. */
+/**
+ * Root-level control props (`variant`, `size`) read by the Combobox control
+ * part.
+ */
 const controlCtx = createContext(
   "ComboboxControl",
 )<FormControlGroupShellVariantProps>({

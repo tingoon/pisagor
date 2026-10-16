@@ -1,17 +1,17 @@
 <script lang="ts">
-import { drawerRecipe } from "@pisagor/recipes";
-import { Button, Drawer, Field, Input } from "@pisagor/svelte";
-import { tv } from "tailwind-variants";
+  import { drawerRecipe } from "@pisagor/recipes";
+  import { Button, Drawer, Field, Input } from "@pisagor/svelte";
+  import { tv } from "tailwind-variants";
 
-const brandDrawerRecipe = tv({
-  extend: drawerRecipe,
-  slots: {
-    backdrop: "bg-emerald-950/30",
-    grabberIcon: "bg-emerald-500/50",
-    title: "text-emerald-900 dark:text-emerald-100",
-  },
-  variants: {},
-});
+  const brandDrawerRecipe = tv({
+    extend: drawerRecipe,
+    slots: {
+      backdrop: "bg-emerald-950/30",
+      grabberIcon: "bg-emerald-500/50",
+      title: "text-emerald-900 dark:text-emerald-100",
+    },
+    variants: {},
+  });
 </script>
 
 <Drawer recipe={brandDrawerRecipe}>

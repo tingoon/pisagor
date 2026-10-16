@@ -6,7 +6,7 @@ const items = ["Profile", "Account", "Security", "Notifications"];
 
 <template>
   <SegmentGroup.Root
-    class="rounded-lg *:data-[slot=segment-group-indicator]:bg-primary/40"
+    class="*:data-[slot=segment-group-indicator]:bg-primary/40 rounded-lg"
     default-value="Profile"
   >
     <SegmentGroup.Item

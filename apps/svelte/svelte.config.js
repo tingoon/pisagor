@@ -1,4 +1,4 @@
-/** @type {import('svelte').Config} */
+/** @type {import("svelte").Config} */
 const config = {
   compilerOptions: {
     runes: true,

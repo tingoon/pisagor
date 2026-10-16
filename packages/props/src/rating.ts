@@ -4,6 +4,7 @@ import type { RatingRecipeFn } from "@pisagor/recipes";
 export interface RatingProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue ratingRecipe
    */
   recipe?: RatingRecipeFn;

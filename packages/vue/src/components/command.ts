@@ -24,7 +24,7 @@ import { Combobox, type ComboboxRootProps } from "./combobox";
 import { Dialog, type DialogContentProps } from "./dialog";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
-import { useProviderMessage } from "./provider/provider";
+import { useTranslation } from "./provider/context";
 import { Separator } from "./separator";
 
 // #region Slot recipe context
@@ -39,12 +39,10 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface CommandProps<T extends CollectionItem = CollectionItem>
-  extends Omit<ComboboxRootProps<T>, "recipe">,
-    BaseCommandProps {}
+  extends Omit<ComboboxRootProps<T>, "recipe">, BaseCommandProps {}
 
 interface CommandDialogContentProps
-  extends DialogContentProps,
-    BaseCommandProps {
+  extends DialogContentProps, BaseCommandProps {
   /**
    * The description of the dialog
    *
@@ -164,7 +162,7 @@ export const CommandDialogContent = defineComponent({
               h(Dialog.Header as ArkPart, {
                 class: variantSlots.dialogHeader(),
                 description: props.description,
-                title: props.title ?? useProviderMessage("command.title"),
+                title: props.title ?? useTranslation("command.title"),
               }),
               slots.default?.(),
             ],
@@ -368,7 +366,7 @@ export const CommandEmpty = defineComponent({
           ...attrs,
           class: cn(variantSlots.empty(), props.class, attrs.class),
         },
-        slots.default?.() ?? useProviderMessage("command.empty"),
+        slots.default?.() ?? useTranslation("command.empty"),
       );
     };
   },
@@ -556,13 +554,12 @@ export const CommandShorthand = defineComponent({
       itemToString: (item) => item.label,
       itemToValue: (item) => item.value,
     });
-    const placeholder = useProviderMessage("command.placeholder");
+    const placeholder = useTranslation("command.placeholder");
 
     return () => {
       const groups = collection.value.group();
       const onInputValueChange = attrs.onInputValueChange as
-        | ((details: { inputValue: string }) => void)
-        | undefined;
+        ((details: { inputValue: string }) => void) | undefined;
 
       return h(
         CommandRoot as ArkPart,

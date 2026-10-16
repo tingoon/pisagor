@@ -55,15 +55,15 @@ export function Button({ recipe = buttonRecipe, className, ...rest }) {
 
 These have **no className/style surface** of their own (re-exports, context, or thin wrappers over another styled component). Do not add empty recipes unless a class surface appears later:
 
-| Component | Reason |
-| --- | --- |
-| `autocomplete` | Thin Combobox preset; styles via `combobox` recipe |
-| `alert-dialog` | Dialog preset; styles via `dialog` recipe (`alertBody` slot + re-export module) |
-| `client-only` | Ark re-export; no DOM styles |
-| `download-trigger` | Ark re-export; no DOM styles |
-| `format` | Text formatting primitives; no class surface |
-| `presence` | Ark re-export; no DOM styles |
-| `provider` | Context + toaster mount; no root styles |
+| Component          | Reason                                                                          |
+| ------------------ | ------------------------------------------------------------------------------- |
+| `autocomplete`     | Thin Combobox preset; styles via `combobox` recipe                              |
+| `alert-dialog`     | Dialog preset; styles via `dialog` recipe (`alertBody` slot + re-export module) |
+| `client-only`      | Ark re-export; no DOM styles                                                    |
+| `download-trigger` | Ark re-export; no DOM styles                                                    |
+| `format`           | Text formatting primitives; no class surface                                    |
+| `presence`         | Ark re-export; no DOM styles                                                    |
+| `provider`         | Context + toaster mount; no root styles                                         |
 
 ## Source
 

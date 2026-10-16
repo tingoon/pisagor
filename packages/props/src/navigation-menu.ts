@@ -4,6 +4,7 @@ import type { NavigationMenuRecipeFn } from "@pisagor/recipes";
 export interface NavigationMenuProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue navigationMenuRecipe
    */
   recipe?: NavigationMenuRecipeFn;

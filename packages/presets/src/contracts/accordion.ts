@@ -2,9 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const accordionItemRecipe = tv({
   defaultVariants: {
-    /**
-     * Size scale.
-     */
+    /** Size scale. */
     size: "md",
   },
   slots: {
@@ -22,16 +20,16 @@ export const accordionItemRecipe = tv({
       "shrink-0",
       "text-muted-foreground",
       "pointer-events-none",
-      "transition-transform duration-slow ease-out",
+      "duration-slow transition-transform ease-out",
       "motion-reduce:transition-none!",
     ],
     trigger: [
       "flex flex-1 items-center justify-between gap-3",
       "py-4",
-      "text-start font-medium text-sm",
+      "text-start text-sm font-medium",
       "rounded-md border border-transparent",
       "outline-hidden",
-      "transition duration-fast ease-out",
+      "duration-fast transition ease-out",
       "disabled:pointer-events-none disabled:opacity-64 disabled:grayscale",
       "focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/32",
       "[&_[data-state=open]>svg]:rotate-180",

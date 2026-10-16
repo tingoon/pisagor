@@ -29,9 +29,9 @@ Offer compact variants for inspector panels and comfortable spacing for primary 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Standard list row layout | **Item** |
-| Scrollable option selection | [Listbox](/vue/components/listbox/design) |
-| Always-visible link list | [Menu](/vue/components/menu/design) |
-| Entire row navigates | [Link Box](/vue/components/link-box/design) |
+| Need                        | Prefer                                        |
+| --------------------------- | --------------------------------------------- |
+| Standard list row layout    | **Item**                                      |
+| Scrollable option selection | [Listbox](/vue/components/listbox/design)   |
+| Always-visible link list    | [Menu](/vue/components/menu/design)         |
+| Entire row navigates        | [Link Box](/vue/components/link-box/design) |

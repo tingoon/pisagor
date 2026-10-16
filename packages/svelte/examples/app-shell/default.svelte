@@ -1,5 +1,5 @@
 <script lang="ts">
-import { AppShell } from "@pisagor/svelte";
+  import { AppShell } from "@pisagor/svelte";
 </script>
 
 <AppShell>
@@ -34,7 +34,7 @@ import { AppShell } from "@pisagor/svelte";
       </div>
     </AppShell.Header>
     <AppShell.Content>
-      <div class="p-4 text-sm text-muted-foreground">Content</div>
+      <div class="text-muted-foreground p-4 text-sm">Content</div>
     </AppShell.Content>
   </AppShell.Main>
 

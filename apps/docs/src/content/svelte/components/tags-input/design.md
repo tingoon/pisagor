@@ -29,9 +29,9 @@ When offering autocomplete, align suggestions with [Combobox](/svelte/components
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Multiple freeform or validated tokens | **Tags Input** |
-| Fixed multi-select | [Select](/svelte/components/select/design) |
-| Long prose | [Textarea](/svelte/components/textarea/design) |
-| Display-only labels | [Badge](/svelte/components/badge/design) |
+| Need                                  | Prefer                                        |
+| ------------------------------------- | --------------------------------------------- |
+| Multiple freeform or validated tokens | **Tags Input**                                |
+| Fixed multi-select                    | [Select](/svelte/components/select/design)     |
+| Long prose                            | [Textarea](/svelte/components/textarea/design) |
+| Display-only labels                   | [Badge](/svelte/components/badge/design)       |
