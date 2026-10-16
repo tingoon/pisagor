@@ -374,7 +374,6 @@
       "version": "0.2.0",
       "dependencies": {
         "clsx": "^2.1.1",
-        "remeda": "^2.52.0",
         "tailwind-merge": "^3.7.0",
       },
     },
