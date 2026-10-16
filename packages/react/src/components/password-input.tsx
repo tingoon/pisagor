@@ -16,7 +16,7 @@ import {
   type InputGroupButtonProps,
   type InputGroupProps,
 } from "./input-group";
-import { getMessage } from "./provider/context";
+import { useMessage } from "./provider/context";
 
 // #region Types
 
@@ -31,7 +31,8 @@ export type PasswordInputVisibilityTriggerProps = Omit<
 >;
 
 export interface PasswordInputProps
-  extends PasswordInputRootProps,
+  extends
+    PasswordInputRootProps,
     Omit<PasswordInputInputProps, "className" | "size">,
     RefAttributes<HTMLInputElement>,
     BasePasswordInputProps {
@@ -41,10 +42,10 @@ export interface PasswordInputProps
   /**
    * Whether to show a clear button when the input has a value.
    *
-   * @defaultValue false
-   *
    * @remarks
-   * In controlled mode, pass `value` and update it via `onChange` or `onValueChange` when clearing.
+   *   In controlled mode, pass `value` and update it via `onChange` or
+   *   `onValueChange` when clearing.
+   * @defaultValue false
    */
   clearable?: boolean;
   /** Called with the string value when the input changes. */
@@ -78,6 +79,7 @@ function PasswordInputShorthand({
   className,
   ...inputProps
 }: PasswordInputProps) {
+  const passwordInputClearMessage = useMessage("passwordInput.clear");
   const { fallback, children, ...restIndicatorProps } = indicatorProps ?? {};
   const {
     onClick: onClearClick,
@@ -130,7 +132,7 @@ function PasswordInputShorthand({
             <InputGroup.Addon align="inline-end" className={slots.clearAddon()}>
               <InputGroup.Button
                 {...restClearButtonProps}
-                aria-label={getMessage("passwordInput.clear")}
+                aria-label={passwordInputClearMessage}
                 data-part="clear-trigger"
                 data-scope="password-input"
                 onClick={(event) => {
@@ -151,7 +153,7 @@ function PasswordInputShorthand({
               asChild
             >
               <InputGroup.Button
-                aria-label={getMessage(
+                aria-label={useMessage(
                   "passwordInput.togglePasswordVisibility",
                 )}
                 size="icon-xs"
@@ -213,7 +215,7 @@ function PasswordInputVisibilityTrigger({
     <InputGroup.Addon align="inline-end">
       <PasswordInputPrimitive.VisibilityTrigger {...rest} asChild>
         <InputGroup.Button
-          aria-label={getMessage("passwordInput.togglePasswordVisibility")}
+          aria-label={useMessage("passwordInput.togglePasswordVisibility")}
           size="icon-xs"
           variant="ghost"
         >

@@ -2,7 +2,7 @@ import { CircleNotchIcon } from "@phosphor-icons/react";
 import type { SpinnerProps as BaseSpinnerProps } from "@pisagor/props";
 import { spinnerRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
-import { getMessage } from "./provider/context";
+import { useMessage } from "./provider/context";
 
 // #region Types
 export interface SpinnerProps extends ComponentProps<"svg">, BaseSpinnerProps {}
@@ -18,7 +18,7 @@ export function Spinner({
   return (
     <CircleNotchIcon
       {...rest}
-      aria-label={ariaLabel ?? getMessage("spinner.loading")}
+      aria-label={useMessage("spinner.loading", ariaLabel)}
       className={recipe({ className })}
       data-part="root"
       data-scope="spinner"

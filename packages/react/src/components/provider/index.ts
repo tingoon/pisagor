@@ -6,7 +6,8 @@ export type {
   TranslationsConfig,
 } from "./context";
 export {
-  getMessage,
+  useMessage,
+  useMessageResolver,
   useLocale,
   useMotion,
   useProvider,

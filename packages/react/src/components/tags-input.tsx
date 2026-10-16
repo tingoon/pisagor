@@ -23,7 +23,7 @@ import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { InputGroup, type InputGroupProps } from "./input-group";
-import { getMessage } from "./provider/context";
+import { useMessage } from "./provider/context";
 
 // #region Context
 const { Context: TagsInputStylesContext, useStyles: useTagsInput } =
@@ -59,7 +59,8 @@ export interface TagsInputProps extends TagsInputRootProps, BaseTagsInputProps {
 }
 
 export interface TagsInputControlProps
-  extends TagsInputPrimitiveControlProps,
+  extends
+    TagsInputPrimitiveControlProps,
     Pick<InputGroupProps, "size" | "variant"> {
   /**
    * Whether to show the clear button.
@@ -70,7 +71,8 @@ export interface TagsInputControlProps
 }
 
 export interface TagsInputItemProps
-  extends TagsInputPrimitiveItemProps,
+  extends
+    TagsInputPrimitiveItemProps,
     Pick<InputGroupProps, "size">,
     BaseTagsInputItemProps {
   /**
@@ -82,7 +84,8 @@ export interface TagsInputItemProps
 }
 
 export interface TagsInputRootProviderProps
-  extends TagsInputPrimitiveRootProviderProps,
+  extends
+    TagsInputPrimitiveRootProviderProps,
     Pick<InputGroupProps, "size">,
     BaseTagsInputRootProviderProps {
   /**
@@ -154,6 +157,7 @@ export function TagsInputControl({
   className,
   ...rest
 }: TagsInputControlProps) {
+  const tagsInputClearAllTagsMessage = useMessage("tagsInput.clearAllTags");
   const api = useTagsInputContext();
   const { slots } = useTagsInput();
 
@@ -167,9 +171,7 @@ export function TagsInputControl({
       >
         {children}
         {clearable && api.value.length > 0 && (
-          <TagsInputClearTrigger
-            aria-label={getMessage("tagsInput.clearAllTags")}
-          />
+          <TagsInputClearTrigger aria-label={tagsInputClearAllTagsMessage} />
         )}
       </InputGroup>
     </TagsInputPrimitive.Control>
@@ -236,7 +238,7 @@ export function TagsInputItemDeleteTrigger({
   return (
     <TagsInputPrimitive.ItemDeleteTrigger {...rest} asChild>
       <InputGroup.Button
-        aria-label={getMessage("tagsInput.removeTag")}
+        aria-label={useMessage("tagsInput.removeTag")}
         className={slots.delete({ className })}
         size="icon-xs"
         variant="ghost"
@@ -277,7 +279,7 @@ export function TagsInputClearTrigger({
   return (
     <TagsInputPrimitive.ClearTrigger {...rest} asChild>
       <InputGroup.Button
-        aria-label={getMessage("tagsInput.clear")}
+        aria-label={useMessage("tagsInput.clear")}
         className={slots.clearTrigger({ className })}
         size="icon-xs"
         variant="ghost"

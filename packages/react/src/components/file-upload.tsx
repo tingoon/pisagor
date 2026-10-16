@@ -29,7 +29,11 @@ import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { FormControlVariant } from "../internal/types";
 import { Button } from "./button";
-import { getMessage, type MessageKey } from "./provider/context";
+import {
+  type MessageKey,
+  useMessage,
+  useMessageResolver,
+} from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -49,19 +53,16 @@ const { Context: FileUploadItemStylesContext, useStyles: useFileUploadItem } =
 // #region Types
 
 export interface FileUploadItemRootProps
-  extends FileUploadItemProps,
-    BaseFileUploadItemProps {}
+  extends FileUploadItemProps, BaseFileUploadItemProps {}
 
 export type FileUploadListProps = Omit<FileUploadItemRootProps, "file">;
 
 export interface FileUploadRootProps
-  extends FileUploadPrimitiveRootProps,
-    BaseFileUploadRootProps {
+  extends FileUploadPrimitiveRootProps, BaseFileUploadRootProps {
   onValueChange?: (value: File[]) => void;
 }
 
-export interface FileUploadDropzoneProps
-  extends FileUploadPrimitiveDropzoneProps {
+export interface FileUploadDropzoneProps extends FileUploadPrimitiveDropzoneProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
 }
@@ -220,6 +221,8 @@ export function FileUploadList({
   recipe = fileUploadItemRecipe,
   ...rest
 }: FileUploadListProps) {
+  const fileUploadRemoveFileMessage = useMessage("fileUpload.removeFile");
+  const resolveMessage = useMessageResolver();
   const fileUpload = useFileUploadContext();
   const { slots } = useFileUpload();
   const itemSlots = recipe();
@@ -259,14 +262,14 @@ export function FileUploadList({
           <FileUploadItemSize />
           {errors?.map((code) => (
             <div className={itemSlots.error()} key={code}>
-              {getMessage(`fileUpload.error.${code}` as MessageKey) ?? code}
+              {resolveMessage(`fileUpload.error.${code}` as MessageKey) ?? code}
             </div>
           ))}
         </div>
 
         <FileUploadItemDeleteTrigger asChild>
           <Button
-            aria-label={getMessage("fileUpload.removeFile")}
+            aria-label={fileUploadRemoveFileMessage}
             className={itemSlots.deleteButton()}
             size="icon-xs"
             variant="ghost"

@@ -4,7 +4,7 @@ import {
   InputGroupButton,
   type InputGroupButtonProps,
 } from "../input-group/input-group-core";
-import { getMessage } from "../provider/context";
+import { useMessage } from "../provider/context";
 
 // #region Types
 interface InputClearButtonProps extends InputGroupButtonProps {
@@ -16,7 +16,7 @@ interface InputClearButtonProps extends InputGroupButtonProps {
 export function InputClearButton({ onClear, ...rest }: InputClearButtonProps) {
   return (
     <InputGroupButton
-      aria-label={getMessage("inputClearButton.clear")}
+      aria-label={useMessage("inputClearButton.clear")}
       {...rest}
       data-part="clear-button"
       data-scope="input"

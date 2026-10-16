@@ -12,7 +12,7 @@ import {
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { VariantClassNames } from "../internal/types";
-import { getMessage, type MessageKey } from "./provider/context";
+import { useMessage, type MessageKey } from "./provider/context";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -50,8 +50,8 @@ const TREND_ICONS = {
 
 export interface StatTrendOwnProps {
   /**
-   * Icon shown before the content. Defaults to an arrow matching `trend`;
-   * pass `null` to hide it.
+   * Icon shown before the content. Defaults to an arrow matching `trend`; pass
+   * `null` to hide it.
    */
   icon?: ReactNode;
 }
@@ -74,7 +74,7 @@ export function StatTrend({
     >
       {icon === undefined ? TREND_ICONS[trend] : icon}
       <span className="sr-only">
-        {getMessage(`stat.trend.${trend}` as MessageKey)}
+        {useMessage(`stat.trend.${trend}` as MessageKey)}
       </span>
       {children}
     </ark.div>

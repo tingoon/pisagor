@@ -42,7 +42,7 @@ import { cn } from "@pisagor/utils";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import type { FormControlVariant } from "../internal/types";
 import { Button, type ButtonProps } from "./button";
-import { getMessage } from "./provider/context";
+import { useMessage } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -93,14 +93,13 @@ export type CalendarTableRowProps = DatePickerTableRowProps;
 export type CalendarTableHeaderProps = DatePickerTableHeaderProps;
 
 export interface CalendarTableCellProps
-  extends DatePickerTableCellProps,
-    BaseCalendarTableCellProps {}
+  extends DatePickerTableCellProps, BaseCalendarTableCellProps {}
 
 export interface CalendarWeekDaysProps extends CalendarTableHeadProps {
   /**
    * The format of the week days
    *
-   * @defaultValue 'narrow'
+   * @defaultValue "narrow"
    */
   format?: "narrow" | "short" | "long";
 }
@@ -229,6 +228,7 @@ export function CalendarTodayTrigger({
   variant = "outline",
   ...rest
 }: ButtonProps) {
+  const calendarTodayMessage = useMessage("calendar.today");
   return (
     <CalendarContext>
       {(calendar) => (
@@ -240,7 +240,7 @@ export function CalendarTodayTrigger({
           size={size}
           variant={variant}
         >
-          {getMessage("calendar.today")}
+          {calendarTodayMessage}
         </Button>
       )}
     </CalendarContext>
@@ -339,7 +339,7 @@ export function CalendarPrevTrigger(props: CalendarPrevTriggerProps) {
   return (
     <CalendarPrimitive.PrevTrigger {...props} asChild>
       <Button
-        aria-label={getMessage("calendar.previousMonth")}
+        aria-label={useMessage("calendar.previousMonth")}
         className={slots.prevTrigger()}
         size="icon-md"
         variant="ghost"
@@ -356,7 +356,7 @@ export function CalendarNextTrigger(props: CalendarNextTriggerProps) {
   return (
     <CalendarPrimitive.NextTrigger {...props} asChild>
       <Button
-        aria-label={getMessage("calendar.nextMonth")}
+        aria-label={useMessage("calendar.nextMonth")}
         className={slots.nextTrigger()}
         size="icon-md"
         variant="ghost"

@@ -17,7 +17,7 @@ import type { FormControlVariant } from "../internal/types";
 import { Button } from "./button";
 import { Field } from "./field";
 import { Input, type InputProps } from "./input";
-import { getMessage } from "./provider/context";
+import { useMessage } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -37,8 +37,7 @@ export type NumberInputRootProps = Omit<
   Pick<InputProps, "size" | "variant">;
 
 export interface NumberInputProps
-  extends NumberInputRootProps,
-    BaseNumberInputProps {
+  extends NumberInputRootProps, BaseNumberInputProps {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -51,8 +50,7 @@ export interface NumberInputProps
   onValueChange?: (value: number) => void;
 }
 
-export interface NumberInputControlProps
-  extends NumberInputPrimitiveControlProps {
+export interface NumberInputControlProps extends NumberInputPrimitiveControlProps {
   variant?: FormControlVariant;
   clearable?: boolean;
 }
@@ -176,7 +174,7 @@ export function NumberInputDecrementTrigger({
       asChild
       className={slots.decrementTrigger({ className })}
     >
-      <Button aria-label={getMessage("numberInput.decrement")} variant="ghost">
+      <Button aria-label={useMessage("numberInput.decrement")} variant="ghost">
         <MinusIcon aria-hidden />
       </Button>
     </NumberInputPrimitive.DecrementTrigger>
@@ -195,7 +193,7 @@ export function NumberInputIncrementTrigger({
       asChild
       className={slots.incrementTrigger({ className })}
     >
-      <Button aria-label={getMessage("numberInput.increment")} variant="ghost">
+      <Button aria-label={useMessage("numberInput.increment")} variant="ghost">
         <PlusIcon aria-hidden />
       </Button>
     </NumberInputPrimitive.IncrementTrigger>

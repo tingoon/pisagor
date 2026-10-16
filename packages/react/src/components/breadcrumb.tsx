@@ -8,7 +8,7 @@ import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { Fragment } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { getMessage } from "./provider/context";
+import { useMessage } from "./provider/context";
 
 // #region Context
 const {
@@ -43,8 +43,7 @@ export type BreadcrumbSeparatorProps = ComponentProps<typeof ark.li>;
 export type BreadcrumbEllipsisProps = ComponentProps<typeof ark.span>;
 
 export interface BreadcrumbRootProps
-  extends ComponentProps<typeof ark.nav>,
-    BaseBreadcrumbRootProps {
+  extends ComponentProps<typeof ark.nav>, BaseBreadcrumbRootProps {
   /**
    * Accessible label for the breadcrumb navigation landmark.
    *
@@ -60,11 +59,12 @@ export interface BreadcrumbProps extends Omit<BreadcrumbRootProps, "children"> {
 
 // #region Parts
 export function BreadcrumbRoot({
-  "aria-label": ariaLabel = getMessage("breadcrumb.label"),
+  "aria-label": ariaLabelProp,
   children,
   recipe = breadcrumbRecipe,
   ...rest
 }: BreadcrumbRootProps) {
+  const ariaLabel = useMessage("breadcrumb.label", ariaLabelProp);
   const slots = recipe();
 
   return (
@@ -139,7 +139,7 @@ export function BreadcrumbEllipsis({
       data-scope="breadcrumb"
     >
       <DotsThreeIcon aria-hidden />
-      <span className="sr-only">{getMessage("breadcrumb.more")}</span>
+      <span className="sr-only">{useMessage("breadcrumb.more")}</span>
     </ark.span>
   );
 }

@@ -21,7 +21,7 @@ import type {
   DialogTitleProps,
 } from "./dialog";
 import { Dialog } from "./dialog";
-import { getMessage } from "./provider/context";
+import { useMessage } from "./provider/context";
 
 // #region Context
 const { Context: SheetStylesContext, useStyles: useSheet } =
@@ -35,8 +35,7 @@ const { Context: SheetStylesContext, useStyles: useSheet } =
 export type SheetPositionerProps = DialogPositionerProps & SheetVariantProps;
 
 export interface SheetContentProps
-  extends DialogContentProps,
-    SheetVariantProps {
+  extends DialogContentProps, SheetVariantProps {
   /**
    * Whether to show a close button at the top right corner.
    *
@@ -95,6 +94,7 @@ export function SheetContent({
   className,
   ...rest
 }: SheetContentProps) {
+  const sheetCloseMessage = useMessage("sheet.close");
   const { slots } = useSheet();
 
   return (
@@ -111,7 +111,7 @@ export function SheetContent({
           {!!showCloseButton && (
             <SheetCloseTrigger asChild>
               <Button
-                aria-label={getMessage("sheet.close")}
+                aria-label={sheetCloseMessage}
                 className={slots.inline()}
                 size="icon-sm"
                 variant="ghost"

@@ -22,7 +22,7 @@ import {
 } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { createContext as createNamedContext } from "../utils";
-import { getMessage } from "./provider/context";
+import { useMessage } from "./provider/context";
 
 // #region Context
 type SortableOrientation = "vertical" | "horizontal";
@@ -87,7 +87,8 @@ function useSortableItem() {
 
 // #region Types
 export interface SortableRootProps
-  extends Omit<ComponentProps<typeof ark.div>, "onDragStart">,
+  extends
+    Omit<ComponentProps<typeof ark.div>, "onDragStart">,
     BaseSortableRootProps {
   /**
    * Layout axis for drop indicators and keyboard moves.
@@ -102,19 +103,14 @@ export interface SortableRootProps
    */
   disabled?: boolean;
   children?: ReactNode;
-  /**
-   * Ordered item ids. Reorder callbacks receive a new array of the same ids.
-   */
+  /** Ordered item ids. Reorder callbacks receive a new array of the same ids. */
   items: string[];
-  /**
-   * Called with the reordered ids after a successful drop or keyboard move.
-   */
+  /** Called with the reordered ids after a successful drop or keyboard move. */
   onValueChange?: (items: string[]) => void;
 }
 
 export interface SortableItemProps
-  extends ComponentProps<typeof ark.div>,
-    BaseSortableItemProps {
+  extends ComponentProps<typeof ark.div>, BaseSortableItemProps {
   /** Stable id matching an entry in `Sortable.Root` `items`. */
   value: string;
 }
@@ -162,7 +158,7 @@ export function SortableRoot({
     orientation === "vertical"
       ? "Alt+ArrowUp Alt+ArrowDown"
       : "Alt+ArrowLeft Alt+ArrowRight";
-  const movedTemplate = getMessage("sortable.moved");
+  const movedTemplate = useMessage("sortable.moved");
   const activeIdRef = useRef<string | null>(null);
   const itemsRef = useRef(items);
   itemsRef.current = items;
@@ -430,6 +426,7 @@ export function SortableHandle({
   className,
   ...rest
 }: SortableHandleProps) {
+  const sortableDragHandleMessage = useMessage("sortable.dragHandle");
   const { id, slots } = useSortableItem();
   const {
     disabled,
@@ -458,7 +455,7 @@ export function SortableHandle({
           ? "Alt+ArrowUp Alt+ArrowDown"
           : "Alt+ArrowLeft Alt+ArrowRight"
       }
-      aria-label={rest["aria-label"] ?? getMessage("sortable.dragHandle")}
+      aria-label={rest["aria-label"] ?? sortableDragHandleMessage}
       className={slots.handle({ className, disabled })}
       data-part="handle"
       data-scope="sortable"

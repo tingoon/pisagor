@@ -15,7 +15,7 @@ import { createContext, use, useCallback, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Badge, type BadgeProps } from "./badge";
 import { Button } from "./button";
-import { getMessage } from "./provider/context";
+import { useMessage } from "./provider/context";
 import { Separator, type SeparatorProps } from "./separator";
 
 // #region Context
@@ -32,7 +32,7 @@ interface ActionBarPositioning {
   /**
    * The gutter from the edge in pixels.
    *
-   * @defaultValue '16px'
+   * @defaultValue "16px"
    */
   gutter?: string;
   /**
@@ -90,7 +90,8 @@ interface ActionBarActionItem {
 }
 
 export interface ActionBarProps
-  extends Pick<ActionBarStateValue, "lazyMount" | "unmountOnExit">,
+  extends
+    Pick<ActionBarStateValue, "lazyMount" | "unmountOnExit">,
     BaseActionBarProps {
   /**
    * Whether to close the action bar when the Escape key is pressed.
@@ -102,14 +103,15 @@ export interface ActionBarProps
    * The default open state of the action bar.
    *
    * @remarks
-   * Ignored when `open` is set.
+   *   Ignored when `open` is set.
    */
   defaultOpen?: boolean;
   /**
    * The open state of the action bar.
    *
    * @remarks
-   * When set, `defaultOpen` is ignored. Pair with `onOpenChange` to handle updates.
+   *   When set, `defaultOpen` is ignored. Pair with `onOpenChange` to handle
+   *   updates.
    */
   open?: boolean;
   /** Placement and gutter of the action bar. */
@@ -347,7 +349,7 @@ export function ActionBarClose({
 
   return (
     <ark.button
-      aria-label={getMessage("actionBar.close")}
+      aria-label={useMessage("actionBar.close")}
       {...rest}
       className={slots.close({ className })}
       data-part="close"

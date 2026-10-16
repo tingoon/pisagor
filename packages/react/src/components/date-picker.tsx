@@ -22,7 +22,7 @@ import { Button } from "./button";
 import { Calendar, CalendarSlotsContext } from "./calendar";
 import { Input, type InputProps } from "./input";
 import { InputGroup } from "./input-group";
-import { getMessage } from "./provider/context";
+import { useMessage } from "./provider/context";
 
 // #region Context
 const { Context: DatePickerSlotsContext, useStyles: useDatePickerStyles } =
@@ -45,8 +45,7 @@ function useDatePicker() {
 
 // #region Types
 
-export interface DatePickerTriggerProps
-  extends DatePickerPrimitiveTriggerProps {
+export interface DatePickerTriggerProps extends DatePickerPrimitiveTriggerProps {
   /**
    * Whether to show a clear button when a date is selected.
    *
@@ -56,8 +55,7 @@ export interface DatePickerTriggerProps
 }
 
 export interface DatePickerInputProps
-  extends Omit<DatePickerPrimitiveInputProps, "size">,
-    InputProps {
+  extends Omit<DatePickerPrimitiveInputProps, "size">, InputProps {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -67,8 +65,7 @@ export interface DatePickerInputProps
 }
 
 export interface DatePickerTimeInputProps
-  extends Omit<InputProps, "recipe">,
-    BaseDatePickerProps {
+  extends Omit<InputProps, "recipe">, BaseDatePickerProps {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -77,23 +74,25 @@ export interface DatePickerTimeInputProps
   clearable?: boolean;
 }
 
-export interface DatePickerContentProps
-  extends DatePickerPrimitiveContentProps {
+export interface DatePickerContentProps extends DatePickerPrimitiveContentProps {
   /**
    * When `true` (default), auto-renders the standard month/year navigation and
-   * day grid inside the content — no need to add calendar sub-components manually.
+   * day grid inside the content — no need to add calendar sub-components
+   * manually.
    */
   showCalendar?: boolean;
 }
 
 export interface DatePickerRootProps
-  extends Omit<DatePickerPrimitiveRootProps, "onValueChange">,
+  extends
+    Omit<DatePickerPrimitiveRootProps, "onValueChange">,
     BaseDatePickerProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   onValueChange?: (value: DatePickerRootProps["value"]) => void;
   /**
-   * Calendar style recipe. Defaults to `calendarRecipe` from `@pisagor/recipes/calendar`.
+   * Calendar style recipe. Defaults to `calendarRecipe` from
+   * `@pisagor/recipes/calendar`.
    *
    * @defaultValue calendarRecipe
    */
@@ -139,7 +138,10 @@ export function DatePickerRoot({
   );
 }
 
-/** True inside a date picker control, so nested parts do not render a second one. */
+/**
+ * True inside a date picker control, so nested parts do not render a second
+ * one.
+ */
 const DatePickerInsideControlContext = createContext(false);
 
 export function DatePickerControl({
@@ -232,7 +234,7 @@ export function DatePickerInput({
           >
             <DatePickerPrimitive.Trigger asChild>
               <Button
-                aria-label={getMessage("datePicker.openCalendar")}
+                aria-label={useMessage("datePicker.openCalendar")}
                 size="icon-md"
                 variant="ghost"
               >
@@ -247,6 +249,7 @@ export function DatePickerInput({
 }
 
 export function DatePickerClearTrigger() {
+  const datePickerClearMessage = useMessage("datePicker.clear");
   const api = useDatePickerContext();
 
   if (api.disabled || api.readOnly || api.value.length === 0) {
@@ -256,7 +259,7 @@ export function DatePickerClearTrigger() {
   return (
     <DatePickerPrimitive.ClearTrigger asChild>
       <InputGroup.Button
-        aria-label={getMessage("datePicker.clear")}
+        aria-label={datePickerClearMessage}
         size="icon-xs"
         type="button"
         variant="ghost"

@@ -30,7 +30,7 @@ import { createSlotRecipeContext } from "../internal/create-slot-recipe-context"
 import type { FormControlVariant } from "../internal/types";
 import { Button, type ButtonProps } from "./button";
 import { InputGroup, type InputGroupButtonProps } from "./input-group";
-import { getMessage } from "./provider/context";
+import { useMessage } from "./provider/context";
 
 // #region Context
 const { Context: ColorPickerSlotsContext, useStyles: useColorPicker } =
@@ -48,9 +48,11 @@ export type ColorPickerRootProps = Omit<
 >;
 
 export interface ColorPickerProps
-  extends ColorPickerRootProps,
-    BaseColorPickerProps {
-  /** Visual shell variant for preset field input. When omitted, resolves from `Surface`. */
+  extends ColorPickerRootProps, BaseColorPickerProps {
+  /**
+   * Visual shell variant for preset field input. When omitted, resolves from
+   * `Surface`.
+   */
   variant?: FormControlVariant;
   /**
    * Whether to show a clear button when a color is selected.
@@ -62,14 +64,15 @@ export interface ColorPickerProps
    * The default value of the color picker when uncontrolled.
    *
    * @remarks
-   * Ignored when `value` is set.
+   *   Ignored when `value` is set.
    */
   defaultValue?: string;
   /**
    * The controlled color value.
    *
    * @remarks
-   * When set, `defaultValue` is ignored. Pair with `onValueChange` to handle updates.
+   *   When set, `defaultValue` is ignored. Pair with `onValueChange` to handle
+   *   updates.
    */
   value?: string;
   /** Called with the hex color string when the value changes. */
@@ -85,8 +88,7 @@ export interface ColorPickerClearTriggerProps extends InputGroupButtonProps {
   clearable?: boolean;
 }
 
-export interface ColorPickerControlProps
-  extends ColorPickerPrimitiveControlProps {
+export interface ColorPickerControlProps extends ColorPickerPrimitiveControlProps {
   /**
    * Whether to show a clear button when a color is selected.
    *
@@ -101,9 +103,6 @@ export type ColorPickerEyeDropperTriggerProps = ComponentProps<
   ButtonProps;
 
 export interface ColorPickerAreaProps extends ColorPickerPrimitiveAreaProps {
-  /**
-   *
-   */
   showDots?: boolean;
 }
 
@@ -189,6 +188,7 @@ export function ColorPickerClearTrigger({
   className,
   ...rest
 }: ColorPickerClearTriggerProps) {
+  const colorPickerClearColorMessage = useMessage("colorPicker.clearColor");
   const api = useColorPickerContext();
 
   if (!clearable) {
@@ -211,7 +211,7 @@ export function ColorPickerClearTrigger({
   return (
     <InputGroup.Addon align="inline-end">
       <InputGroup.Button
-        aria-label={getMessage("colorPicker.clearColor")}
+        aria-label={colorPickerClearColorMessage}
         {...rest}
         className={className}
         data-part="clear-trigger"
@@ -328,7 +328,7 @@ export function ColorPickerEyeDropperTrigger({
 }: ColorPickerEyeDropperTriggerProps) {
   return (
     <ColorPickerPrimitive.EyeDropperTrigger
-      aria-label={getMessage("colorPicker.eyeDropper")}
+      aria-label={useMessage("colorPicker.eyeDropper")}
       {...rest}
       asChild
     >
@@ -440,7 +440,7 @@ export function ColorPickerArea({
       className={slots.area({
         className: cn(
           {
-            "after:pointer-events-none after:absolute after:inset-0 after:rounded-inherit after:bg-[radial-gradient(circle,color-mix(in_oklab,var(--color-on-media)_20%,transparent)_1px,transparent_1px)] after:bg-size-(--spacing(2))":
+            "after:rounded-inherit after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle,color-mix(in_oklab,var(--color-on-media)_20%,transparent)_1px,transparent_1px)] after:bg-size-(--spacing(2))":
               showDots,
           },
           className,
@@ -525,8 +525,8 @@ export function ColorPickerSwatchPreview({
 }
 
 /**
- * Compact preset that renders a swatch trigger, hex input, and standard
- * color picker popover in one component.
+ * Compact preset that renders a swatch trigger, hex input, and standard color
+ * picker popover in one component.
  */
 export function ColorPickerField({
   clearable = false,

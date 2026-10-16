@@ -18,7 +18,7 @@ import { carouselRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { Button } from "./button";
-import { getMessage } from "./provider/context";
+import { useMessage } from "./provider/context";
 
 // #region Context
 const {
@@ -33,16 +33,17 @@ const {
 
 // #region Types
 export interface CarouselRootProps
-  extends CarouselPrimitiveRootProps,
-    BaseCarouselRootProps {}
+  extends CarouselPrimitiveRootProps, BaseCarouselRootProps {}
 
 interface CarouselPresetItem {
   content: ReactNode;
   key?: string;
 }
 
-export interface CarouselProps
-  extends Omit<CarouselRootProps, "children" | "slideCount"> {
+export interface CarouselProps extends Omit<
+  CarouselRootProps,
+  "children" | "slideCount"
+> {
   slides?: CarouselPresetItem[];
 }
 // #endregion
@@ -82,7 +83,7 @@ export function CarouselPrevTrigger({
       className={slots.prevTrigger({ className })}
     >
       <Button
-        aria-label={getMessage("carousel.previous")}
+        aria-label={useMessage("carousel.previous")}
         clickEffect={false}
         pill
         size="icon-md"
@@ -107,7 +108,7 @@ export function CarouselNextTrigger({
       className={slots.nextTrigger({ className })}
     >
       <Button
-        aria-label={getMessage("carousel.next")}
+        aria-label={useMessage("carousel.next")}
         clickEffect={false}
         pill
         size="icon-md"
@@ -128,7 +129,7 @@ export function CarouselAutoplayTrigger({
   return (
     <CarouselPrimitive.AutoplayTrigger {...rest} asChild className={className}>
       <Button
-        aria-label={getMessage(
+        aria-label={useMessage(
           carousel.isPlaying ? "carousel.pause" : "carousel.play",
         )}
         clickEffect={false}

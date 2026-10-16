@@ -12,7 +12,7 @@ import { cn } from "@pisagor/utils";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { type ComponentProps, type ReactNode, useEffect, useMemo } from "react";
-import { getMessage } from "../components/provider/context";
+import { useMessage } from "../components/provider/context";
 import { useFormControlSurface } from "../components/surface/use-form-control-surface";
 import { Toggle } from "../components/toggle";
 import { VisuallyHidden } from "../components/visually-hidden";
@@ -25,11 +25,10 @@ import {
 // #region Types
 
 export interface RichTextEditorRootProps
-  extends Omit<ComponentProps<typeof ark.div>, "defaultValue" | "onChange">,
+  extends
+    Omit<ComponentProps<typeof ark.div>, "defaultValue" | "onChange">,
     BaseRichTextEditorRootProps {
-  /**
-   * Visual shell variant. Defaults to `primary`.
-   */
+  /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   /** Initial HTML content for uncontrolled usage. */
   defaultValue?: string;
@@ -91,6 +90,7 @@ export function RichTextEditorRoot({
   className,
   ...rest
 }: RichTextEditorRootProps) {
+  const richTextEditorLabelMessage = useMessage("richTextEditor.label");
   const resolved = {
     surfaceVariant: useFormControlSurface(),
     variant: variantProp ?? ("primary" as FormControlVariant),
@@ -101,7 +101,7 @@ export function RichTextEditorRoot({
   };
   const controlProps = { "data-variant": resolved.variant };
   const resolvedAriaLabel =
-    ariaLabel ?? (id ? undefined : getMessage("richTextEditor.label"));
+    ariaLabel ?? (id ? undefined : richTextEditorLabelMessage);
   const slots = recipe();
 
   const editor = useEditor({
@@ -199,6 +199,17 @@ export function RichTextEditorToolbar({
   className,
   ...rest
 }: RichTextEditorToolbarProps) {
+  const richTextEditorOrderedListMessage = useMessage(
+    "richTextEditor.orderedList",
+  );
+  const richTextEditorBulletListMessage = useMessage(
+    "richTextEditor.bulletList",
+  );
+  const richTextEditorStrikethroughMessage = useMessage(
+    "richTextEditor.strikethrough",
+  );
+  const richTextEditorItalicMessage = useMessage("richTextEditor.italic");
+  const richTextEditorBoldMessage = useMessage("richTextEditor.bold");
   const { editor, slots } = useRichTextEditorState();
   const activeMarks = useEditorState({
     editor,
@@ -237,7 +248,7 @@ export function RichTextEditorToolbar({
       {children ?? (
         <div className={slots.inline()}>
           <Toggle
-            aria-label={getMessage("richTextEditor.bold")}
+            aria-label={richTextEditorBoldMessage}
             onPressedChange={() => editor.chain().focus().toggleBold().run()}
             pressed={activeMarks.bold}
             size="sm"
@@ -246,7 +257,7 @@ export function RichTextEditorToolbar({
             <TextBIcon />
           </Toggle>
           <Toggle
-            aria-label={getMessage("richTextEditor.italic")}
+            aria-label={richTextEditorItalicMessage}
             onPressedChange={() => editor.chain().focus().toggleItalic().run()}
             pressed={activeMarks.italic}
             size="sm"
@@ -255,7 +266,7 @@ export function RichTextEditorToolbar({
             <TextItalicIcon />
           </Toggle>
           <Toggle
-            aria-label={getMessage("richTextEditor.strikethrough")}
+            aria-label={richTextEditorStrikethroughMessage}
             onPressedChange={() => editor.chain().focus().toggleStrike().run()}
             pressed={activeMarks.strike}
             size="sm"
@@ -264,7 +275,7 @@ export function RichTextEditorToolbar({
             <TextStrikethroughIcon />
           </Toggle>
           <Toggle
-            aria-label={getMessage("richTextEditor.bulletList")}
+            aria-label={richTextEditorBulletListMessage}
             onPressedChange={() =>
               editor.chain().focus().toggleBulletList().run()
             }
@@ -275,7 +286,7 @@ export function RichTextEditorToolbar({
             <ListBulletsIcon />
           </Toggle>
           <Toggle
-            aria-label={getMessage("richTextEditor.orderedList")}
+            aria-label={richTextEditorOrderedListMessage}
             onPressedChange={() =>
               editor.chain().focus().toggleOrderedList().run()
             }

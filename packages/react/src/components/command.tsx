@@ -31,7 +31,7 @@ import {
 } from "./dialog";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
-import { getMessage } from "./provider/context";
+import { useMessage } from "./provider/context";
 import { Separator } from "./separator";
 
 // #region Context
@@ -44,8 +44,7 @@ const { Context: CommandStylesContext, useStyles: useCommand } =
 
 // #region Types
 export interface CommandDialogContentProps
-  extends DialogContentProps,
-    BaseCommandDialogContentProps {
+  extends DialogContentProps, BaseCommandDialogContentProps {
   /**
    * The description of the dialog
    *
@@ -60,8 +59,10 @@ export interface CommandDialogContentProps
   title?: string;
 }
 
-export interface CommandInputProps
-  extends Omit<ComboboxFieldInputProps, "size"> {
+export interface CommandInputProps extends Omit<
+  ComboboxFieldInputProps,
+  "size"
+> {
   /**
    * The size of the input
    *
@@ -75,8 +76,7 @@ export type CommandListProps = ComboboxListProps;
 export type CommandContentProps = ComboboxContentProps;
 
 export interface CommandProps<T extends CollectionItem = CollectionItem>
-  extends Omit<ComboboxRootProps<T>, "recipe">,
-    BaseCommandProps {
+  extends Omit<ComboboxRootProps<T>, "recipe">, BaseCommandProps {
   className?: string;
 }
 
@@ -99,8 +99,10 @@ export interface CommandShorthandItem {
   value: string;
 }
 
-export interface CommandShorthandProps
-  extends Omit<CommandProps<CommandShorthandItem>, "collection" | "children"> {
+export interface CommandShorthandProps extends Omit<
+  CommandProps<CommandShorthandItem>,
+  "collection" | "children"
+> {
   /** Text shown when nothing matches. */
   emptyText?: ReactNode;
   /** Items to render; filtering and grouping are handled for you. */
@@ -122,12 +124,14 @@ export function CommandDialogTrigger(props: DialogTriggerProps) {
 export function CommandDialogContent({
   size = "lg",
   children,
-  description = getMessage("command.description"),
-  title = getMessage("command.title"),
+  description: descriptionProp,
+  title: titleProp,
   recipe = commandRecipe,
   className,
   ...rest
 }: CommandDialogContentProps) {
+  const title = useMessage("command.title", titleProp);
+  const description = useMessage("command.description", descriptionProp);
   const slots = recipe();
 
   return (
@@ -222,11 +226,12 @@ export function CommandEmpty({
   className,
   ...rest
 }: ComboboxEmptyProps) {
+  const commandEmptyMessage = useMessage("command.empty");
   const { slots } = useCommand();
 
   return (
     <Combobox.Empty {...rest} className={slots.empty({ className })}>
-      {children || getMessage("command.empty")}
+      {children || commandEmptyMessage}
     </Combobox.Empty>
   );
 }
@@ -333,7 +338,7 @@ export function CommandShorthand({
       }}
     >
       <CommandInput
-        placeholder={placeholder ?? getMessage("command.placeholder")}
+        placeholder={useMessage("command.placeholder", placeholder)}
       />
       <CommandContent>
         <CommandEmpty>{emptyText}</CommandEmpty>
