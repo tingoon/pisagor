@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Tabs } from "@pisagor/svelte";
-import { variantTabs } from "./helpers";
+  import { Tabs } from "@pisagor/svelte";
+  import { variantTabs } from "./helpers";
 </script>
 
 <div class="flex flex-col gap-2">

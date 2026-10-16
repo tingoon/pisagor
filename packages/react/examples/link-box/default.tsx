@@ -4,7 +4,7 @@ export function Default() {
   return (
     <LinkBox asChild>
       <article className="rounded-xl border p-4">
-        <h2 className="font-medium text-lg">
+        <h2 className="text-lg font-medium">
           <LinkBox.Overlay href="https://example.com">
             Clickable card title
           </LinkBox.Overlay>

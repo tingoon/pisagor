@@ -3,7 +3,7 @@ import { tv } from "tailwind-variants";
 export const dataTableRecipe = tv({
   slots: {
     base: ["flex w-full flex-col gap-3"],
-    empty: ["py-6 text-center text-muted-foreground"],
+    empty: ["text-muted-foreground py-6 text-center"],
     footer: ["flex flex-col gap-3"],
     toolbar: ["flex flex-col gap-3"],
   },

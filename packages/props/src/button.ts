@@ -1,11 +1,10 @@
 import type { ButtonRecipeFn, ButtonVariantProps } from "@pisagor/recipes";
 
-/**
- * Button props (`variant`, `size`, `pill`, `loading`, `clickEffect`).
- */
+/** Button props (`variant`, `size`, `pill`, `loading`, `clickEffect`). */
 export interface ButtonProps extends ButtonVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue buttonRecipe
    */
   recipe?: ButtonRecipeFn;

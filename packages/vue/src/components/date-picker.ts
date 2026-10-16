@@ -150,7 +150,10 @@ export const DatePickerRoot = defineComponent({
   },
 });
 
-/** True inside a date picker control, so nested parts do not render a second one. */
+/**
+ * True inside a date picker control, so nested parts do not render a second
+ * one.
+ */
 const DatePickerInsideControlKey: InjectionKey<boolean> = Symbol(
   "DatePickerInsideControl",
 );

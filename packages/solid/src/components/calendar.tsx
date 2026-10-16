@@ -78,8 +78,7 @@ export type CalendarTableRowProps = DatePickerTableRowProps;
 export type CalendarTableHeaderProps = DatePickerTableHeaderProps;
 
 export interface CalendarTableCellProps
-  extends DatePickerTableCellProps,
-    BaseCalendarTableCellProps {}
+  extends DatePickerTableCellProps, BaseCalendarTableCellProps {}
 
 export interface CalendarWeekDaysProps extends CalendarTableHeadProps {
   format?: "narrow" | "short" | "long";

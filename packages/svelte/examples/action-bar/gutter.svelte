@@ -1,22 +1,22 @@
 <script lang="ts">
-import { ActionBar, Button } from "@pisagor/svelte";
-import {
-  ArchiveIcon,
-  DownloadIcon,
-  PencilSimpleIcon,
-  TrashIcon,
-  XIcon,
-} from "@pisagor/svelte/icons";
+  import { ActionBar, Button } from "@pisagor/svelte";
+  import {
+    ArchiveIcon,
+    DownloadIcon,
+    PencilSimpleIcon,
+    TrashIcon,
+    XIcon,
+  } from "@pisagor/svelte/icons";
 
-let isOpen = $state(false);
-let gutter: (typeof gutters)[number] = $state("24px");
+  let isOpen = $state(false);
+  let gutter: (typeof gutters)[number] = $state("24px");
 
-const gutters = ["24px", "32px"] as const;
+  const gutters = ["24px", "32px"] as const;
 
-function openWithGutter(value: (typeof gutters)[number]) {
-  isOpen = true;
-  gutter = value;
-}
+  function openWithGutter(value: (typeof gutters)[number]) {
+    isOpen = true;
+    gutter = value;
+  }
 </script>
 
 <div class="flex flex-wrap gap-2">

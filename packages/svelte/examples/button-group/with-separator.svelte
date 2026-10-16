@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Button, ButtonGroup } from "@pisagor/svelte";
-import MinusIcon from "phosphor-svelte/lib/MinusIcon";
-import PlusIcon from "phosphor-svelte/lib/PlusIcon";
+  import { Button, ButtonGroup } from "@pisagor/svelte";
+  import MinusIcon from "phosphor-svelte/lib/MinusIcon";
+  import PlusIcon from "phosphor-svelte/lib/PlusIcon";
 </script>
 
 <ButtonGroup>

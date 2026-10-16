@@ -29,9 +29,9 @@ Re-render skip nav once per route change if focus management resets; ensure the 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Bypass repetitive nav | **Skip Nav** |
-| Hide decorative text | [Visually Hidden](/vue/components/visually-hidden/design) |
-| App landmarks | [App Shell](/vue/components/app-shell/design) |
-| In-page section jumps | [Scrollspy](/vue/components/scrollspy/design) |
+| Need                  | Prefer                                                      |
+| --------------------- | ----------------------------------------------------------- |
+| Bypass repetitive nav | **Skip Nav**                                                |
+| Hide decorative text  | [Visually Hidden](/vue/components/visually-hidden/design) |
+| App landmarks         | [App Shell](/vue/components/app-shell/design)             |
+| In-page section jumps | [Scrollspy](/vue/components/scrollspy/design)             |

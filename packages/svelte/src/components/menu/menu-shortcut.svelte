@@ -1,15 +1,15 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { Snippet } from "svelte";
-import type { HTMLAttributes } from "svelte/elements";
-import { withContext } from "./menu.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import type { Snippet } from "svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { withContext } from "./menu.context";
 
-type Props = HTMLAttributes<HTMLSpanElement> & {
-  children?: Snippet;
-};
+  type Props = HTMLAttributes<HTMLSpanElement> & {
+    children?: Snippet;
+  };
 
-let { children, ...rest }: Props = $props();
-const part = withContext(() => rest, { name: "Shortcut" });
+  let { children, ...rest }: Props = $props();
+  const part = withContext(() => rest, { name: "Shortcut" });
 </script>
 
-<Ark as="span" {...part.props}> {@render children?.()} </Ark>
+<Ark as="span" {...part.props}>{@render children?.()}</Ark>

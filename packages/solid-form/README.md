@@ -7,10 +7,10 @@ import { TextField } from "@pisagor/solid-form";
 import { useAppForm } from "@pisagor/solid-form/tanstack";
 ```
 
-| Entry | Path | Role |
-| ----- | ---- | ---- |
-| Fields | `@pisagor/solid-form` | Standalone field components (`TextField`, `SelectField`, …) |
-| TanStack | `@pisagor/solid-form/tanstack` | `useAppForm`, connected field components, form helpers |
+| Entry    | Path                           | Role                                                        |
+| -------- | ------------------------------ | ----------------------------------------------------------- |
+| Fields   | `@pisagor/solid-form`          | Standalone field components (`TextField`, `SelectField`, …) |
+| TanStack | `@pisagor/solid-form/tanstack` | `useAppForm`, connected field components, form helpers      |
 
 Peers: `@pisagor/solid`, `solid-js` ^1. Optional peer: `@tanstack/solid-form` (for `./tanstack` only).
 

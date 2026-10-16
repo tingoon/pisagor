@@ -1,5 +1,5 @@
 <script lang="ts">
-import { TagsInputField } from "@pisagor/svelte-form";
+  import { TagsInputField } from "@pisagor/svelte-form";
 </script>
 
 <TagsInputField

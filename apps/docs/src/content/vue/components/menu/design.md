@@ -29,10 +29,10 @@ Build rows with [Item](/vue/components/item/design) for consistent icon, label, 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Persistent link or action list | **Menu** |
-| Popup from a trigger | [Dropdown Menu](/vue/components/dropdown-menu/design) |
-| Top bar with brand + nav | [Navbar](/vue/components/navbar/design) |
-| Site-wide sections with flyouts | [Navigation Menu](/vue/components/navigation-menu/design) |
-| Mobile primary destinations | [Bottom Navigation](/vue/components/bottom-navigation/design) |
+| Need                            | Prefer                                                          |
+| ------------------------------- | --------------------------------------------------------------- |
+| Persistent link or action list  | **Menu**                                                        |
+| Popup from a trigger            | [Dropdown Menu](/vue/components/dropdown-menu/design)         |
+| Top bar with brand + nav        | [Navbar](/vue/components/navbar/design)                       |
+| Site-wide sections with flyouts | [Navigation Menu](/vue/components/navigation-menu/design)     |
+| Mobile primary destinations     | [Bottom Navigation](/vue/components/bottom-navigation/design) |

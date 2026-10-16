@@ -37,7 +37,7 @@ export interface EditableProps extends BaseEditableProps {
    * Initial text value when uncontrolled.
    *
    * @remarks
-   * Ignored when `value` is set.
+   *   Ignored when `value` is set.
    */
   defaultValue?: string;
   /** Whether the editable is disabled. */
@@ -52,7 +52,7 @@ export interface EditableProps extends BaseEditableProps {
    * Called when the text value changes.
    *
    * @remarks
-   * Receives the string value directly, not Ark UI event details.
+   *   Receives the string value directly, not Ark UI event details.
    */
   onValueChange?: (value: string) => void;
   /** The orientation of the editable */
@@ -71,7 +71,8 @@ export interface EditableProps extends BaseEditableProps {
    * Controlled text value.
    *
    * @remarks
-   * When set, `defaultValue` is ignored. Pair with `onValueChange` to handle updates.
+   *   When set, `defaultValue` is ignored. Pair with `onValueChange` to handle
+   *   updates.
    */
   value?: string;
 }

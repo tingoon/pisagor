@@ -1,14 +1,14 @@
 <script lang="ts">
-import {
-  type MarqueeContentProps,
-  Marquee as MarqueePrimitive,
-} from "@ark-ui/svelte/marquee";
-import { cn } from "@pisagor/utils";
-import { useMarquee } from "./marquee.context";
+  import {
+    type MarqueeContentProps,
+    Marquee as MarqueePrimitive,
+  } from "@ark-ui/svelte/marquee";
+  import { cn } from "@pisagor/utils";
+  import { useMarquee } from "./marquee.context";
 
-let { class: className, children, ...rest }: MarqueeContentProps = $props();
-const styles = useMarquee();
-const slots = $derived(styles.slots);
+  let { class: className, children, ...rest }: MarqueeContentProps = $props();
+  const styles = useMarquee();
+  const slots = $derived(styles.slots);
 </script>
 
 <MarqueePrimitive.Viewport class={slots.viewport()}>

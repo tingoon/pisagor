@@ -1,6 +1,6 @@
 /**
- * Client-side example source loader for ComponentPreview Code tabs.
- * Loads only the matching `sources.ts` barrel on demand (Vite code-split).
+ * Client-side example source loader for ComponentPreview Code tabs. Loads only
+ * the matching `sources.ts` barrel on demand (Vite code-split).
  */
 
 export type PreviewSourceKind = "component" | "form" | "block";

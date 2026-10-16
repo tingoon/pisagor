@@ -29,9 +29,9 @@ When loading fails, replace skeleton with an error state and retry — do not pu
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Layout-stable loading placeholders | **Skeleton** |
-| Inline indeterminate wait | [Spinner](/astro/components/spinner/design) |
-| Measurable long task | [Progress](/astro/components/progress/design) |
-| Empty loaded state | [Empty State](/astro/components/empty-state/design) |
+| Need                               | Prefer                                              |
+| ---------------------------------- | --------------------------------------------------- |
+| Layout-stable loading placeholders | **Skeleton**                                        |
+| Inline indeterminate wait          | [Spinner](/astro/components/spinner/design)         |
+| Measurable long task               | [Progress](/astro/components/progress/design)       |
+| Empty loaded state                 | [Empty State](/astro/components/empty-state/design) |

@@ -35,12 +35,10 @@ const {
 
 // #region Types
 export interface StepsRootProps
-  extends StepsPrimitiveRootProps,
-    BaseStepsRootProps {}
+  extends StepsPrimitiveRootProps, BaseStepsRootProps {}
 
 export interface StepsItemProps
-  extends StepsPrimitiveItemProps,
-    BaseStepsItemProps {}
+  extends StepsPrimitiveItemProps, BaseStepsItemProps {}
 
 export type StepsTitleProps = ComponentProps<typeof ark.span>;
 

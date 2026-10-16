@@ -2,19 +2,15 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const drawerRecipe = tv({
   defaultVariants: {
-    /**
-     * Preferred placement.
-     */
+    /** Preferred placement. */
     placement: "bottom",
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "default",
   },
   slots: {
     backdrop: [
-      "[--overlay-alpha:calc(32%*(1-var(--drawer-swipe-progress)))] [--blur:calc(8px*(1-var(--drawer-swipe-progress)))]",
-      "fixed inset-0 z-modal",
+      "[--blur:calc(8px*(1-var(--drawer-swipe-progress)))] [--overlay-alpha:calc(32%*(1-var(--drawer-swipe-progress)))]",
+      "z-modal fixed inset-0",
       "bg-overlay/(--overlay-alpha) backdrop-blur-(--blur)",
       "data-[state=open]:fade-in-0 data-[state=open]:animate-in",
       "data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
@@ -51,7 +47,7 @@ export const drawerRecipe = tv({
       "flex flex-1 flex-col",
       "mx-auto w-full max-w-sm",
       "text-center",
-      "transition-opacity duration-slow",
+      "duration-slow transition-opacity",
       "group-data-[nested=drawer]/drawer:opacity-0 group-data-[nested=drawer]/drawer:data-[state=open]:opacity-100",
       "motion-reduce:transition-none!",
     ],
@@ -61,7 +57,7 @@ export const drawerRecipe = tv({
       "flex flex-col-reverse gap-2",
       "sm:rounded-none",
       "px-(--space) py-4",
-      "border-t border-border/40",
+      "border-border/40 border-t",
     ],
     grabber: [
       "h-1.5 w-12",
@@ -80,14 +76,14 @@ export const drawerRecipe = tv({
       "in-[[data-scope=drawer][data-part=content]:has([data-scope=drawer][data-part=body])]:pb-3",
     ],
     positioner: [
-      "fixed inset-0 z-modal",
+      "z-modal fixed inset-0",
       "flex items-end justify-center",
       "w-screen",
       "has-data-[swipe-direction=up]:items-start",
       "has-data-[swipe-direction=left]:items-stretch has-data-[swipe-direction=left]:justify-start",
       "has-data-[swipe-direction=right]:items-stretch has-data-[swipe-direction=right]:justify-end",
     ],
-    title: ["font-semibold text-xl leading-tight tracking-tight"],
+    title: ["text-xl leading-tight font-semibold tracking-tight"],
   },
   variants: {
     placement: {
@@ -128,7 +124,7 @@ export const drawerRecipe = tv({
       default: {},
       inset: {
         content: [
-          "sm:rounded-3xl sm:border sm:border-border/50",
+          "sm:border-border/50 sm:rounded-3xl sm:border",
           "sm:**:data-[scope=drawer]:data-[part=footer]:rounded-b-3xl",
         ],
         positioner: "sm:p-4",

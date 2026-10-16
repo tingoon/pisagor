@@ -18,11 +18,11 @@ const brandNavbarRecipe = tv({
   <Navbar :recipe="brandNavbarRecipe">
     <Navbar.Brand>
       <div
-        class="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground"
+        class="bg-primary text-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
       >
         <PhDatabase class="size-4" />
       </div>
-      <span class="font-semibold text-sm">Pisagor</span>
+      <span class="text-sm font-semibold">Pisagor</span>
     </Navbar.Brand>
 
     <Navbar.Nav>

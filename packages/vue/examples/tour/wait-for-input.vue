@@ -94,7 +94,7 @@ const steps: TourStepType[] = [
         <Button variant="outline">Start form tutorial</Button>
       </Tour.Trigger>
       <div
-        class="flex flex-col gap-2 rounded-lg border border-border bg-muted/50 p-4"
+        class="border-border bg-muted/50 flex flex-col gap-2 rounded-lg border p-4"
       >
         <Field>
           <Field.Label for="input-name">Name</Field.Label>

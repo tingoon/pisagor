@@ -1,103 +1,103 @@
 <script lang="ts">
-import { useHotkey } from "@ark-ui/svelte/hotkeys";
-import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
-import { actionBarRecipe, buttonRecipe } from "@pisagor/recipes";
-import XIcon from "phosphor-svelte/lib/XIcon";
-import type { Snippet } from "svelte";
-import { setActionBarContext } from "./action-bar.context";
-import ActionBarBody from "./action-bar-body.svelte";
-import ActionBarClose from "./action-bar-close.svelte";
-import ActionBarContent from "./action-bar-content.svelte";
-import ActionBarSeparator from "./action-bar-separator.svelte";
-import ActionBarValue from "./action-bar-value.svelte";
+  import { useHotkey } from "@ark-ui/svelte/hotkeys";
+  import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
+  import { actionBarRecipe, buttonRecipe } from "@pisagor/recipes";
+  import XIcon from "phosphor-svelte/lib/XIcon";
+  import type { Snippet } from "svelte";
+  import { setActionBarContext } from "./action-bar.context";
+  import ActionBarBody from "./action-bar-body.svelte";
+  import ActionBarClose from "./action-bar-close.svelte";
+  import ActionBarContent from "./action-bar-content.svelte";
+  import ActionBarSeparator from "./action-bar-separator.svelte";
+  import ActionBarValue from "./action-bar-value.svelte";
 
-type ActionItem = {
-  disabled?: boolean;
-  icon?: Snippet;
-  /** Stable key; defaults to `label`. */
-  id?: string;
-  label: string;
-  onClick: () => void;
-};
-type Props = {
-  actions?: ActionItem[];
-  children?: Snippet;
-  closeOnEscape?: boolean;
-  count?: number;
-  defaultOpen?: boolean;
-  lazyMount?: boolean;
-  onOpenChange?: (open: boolean) => void;
-  open?: boolean;
-  positioning?: {
-    gutter?: string;
-    placement?: "bottom" | "bottom-start" | "bottom-end";
+  type ActionItem = {
+    disabled?: boolean;
+    icon?: Snippet;
+    /** Stable key; defaults to `label`. */
+    id?: string;
+    label: string;
+    onClick: () => void;
   };
-  unmountOnExit?: boolean;
-} & BaseActionBarProps;
+  type Props = {
+    actions?: ActionItem[];
+    children?: Snippet;
+    closeOnEscape?: boolean;
+    count?: number;
+    defaultOpen?: boolean;
+    lazyMount?: boolean;
+    onOpenChange?: (open: boolean) => void;
+    open?: boolean;
+    positioning?: {
+      gutter?: string;
+      placement?: "bottom" | "bottom-start" | "bottom-end";
+    };
+    unmountOnExit?: boolean;
+  } & BaseActionBarProps;
 
-let {
-  closeOnEscape = true,
-  count,
-  defaultOpen = false,
-  lazyMount,
-  open = $bindable(defaultOpen),
-  positioning: positioningProp,
-  unmountOnExit,
-  actions,
-  children,
-  onOpenChange,
-  recipe = actionBarRecipe,
-}: Props = $props();
+  let {
+    closeOnEscape = true,
+    count,
+    defaultOpen = false,
+    lazyMount,
+    open = $bindable(defaultOpen),
+    positioning: positioningProp,
+    unmountOnExit,
+    actions,
+    children,
+    onOpenChange,
+    recipe = actionBarRecipe,
+  }: Props = $props();
 
-const defaultPositioning = { gutter: "16px", placement: "bottom" as const };
-const positioning = $derived({ ...defaultPositioning, ...positioningProp });
-const slots = $derived(recipe({ placement: positioning.placement }));
+  const defaultPositioning = { gutter: "16px", placement: "bottom" as const };
+  const positioning = $derived({ ...defaultPositioning, ...positioningProp });
+  const slots = $derived(recipe({ placement: positioning.placement }));
 
-function handleClose() {
-  open = false;
-  onOpenChange?.(false);
-}
-function handleOpen() {
-  open = true;
-  onOpenChange?.(true);
-}
+  function handleClose() {
+    open = false;
+    onOpenChange?.(false);
+  }
+  function handleOpen() {
+    open = true;
+    onOpenChange?.(true);
+  }
 
-useHotkey(() => ({
-  action: (event: KeyboardEvent) => {
-    if (event.defaultPrevented) return;
-    handleClose();
-  },
-  enabled: Boolean(open && closeOnEscape),
-  hotkey: "Escape",
-}));
+  useHotkey(() => ({
+    action: (event: KeyboardEvent) => {
+      if (event.defaultPrevented) return;
+      handleClose();
+    },
+    enabled: Boolean(open && closeOnEscape),
+    hotkey: "Escape",
+  }));
 
-setActionBarContext({
-  get isOpen() {
-    return open;
-  },
-  get lazyMount() {
-    return lazyMount;
-  },
-  get onClose() {
-    return handleClose;
-  },
-  get onOpen() {
-    return handleOpen;
-  },
-  get positioning() {
-    return positioning;
-  },
-  get slots() {
-    return slots;
-  },
-  get unmountOnExit() {
-    return unmountOnExit;
-  },
-});
+  setActionBarContext({
+    get isOpen() {
+      return open;
+    },
+    get lazyMount() {
+      return lazyMount;
+    },
+    get onClose() {
+      return handleClose;
+    },
+    get onOpen() {
+      return handleOpen;
+    },
+    get positioning() {
+      return positioning;
+    },
+    get slots() {
+      return slots;
+    },
+    get unmountOnExit() {
+      return unmountOnExit;
+    },
+  });
 
-const hasPreset = $derived(
-  count !== undefined || (actions && actions.length > 0),
-);
+  const hasPreset = $derived(
+    count !== undefined || (actions && actions.length > 0),
+  );
 </script>
 
 {@render children?.()}

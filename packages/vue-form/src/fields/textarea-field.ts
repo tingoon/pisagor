@@ -15,8 +15,7 @@ type TextareaControlProps = SetRequired<
 >;
 
 export interface TextareaFieldProps
-  extends FieldPresentationProps,
-    TextareaControlProps {
+  extends FieldPresentationProps, TextareaControlProps {
   name?: string;
   onBlur?: () => void;
   value?: string;

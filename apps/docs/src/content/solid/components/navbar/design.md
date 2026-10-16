@@ -29,10 +29,10 @@ When the navbar competes with thumb reach, pair a slim top bar (title + back) wi
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Top app bar | **Navbar** |
-| Vertical persistent links | [Menu](/solid/components/menu/design) |
-| Marketing mega-nav | [Navigation Menu](/solid/components/navigation-menu/design) |
-| Mobile primary tabs | [Bottom Navigation](/solid/components/bottom-navigation/design) |
-| Popup overflow | [Dropdown Menu](/solid/components/dropdown-menu/design) |
+| Need                      | Prefer                                                          |
+| ------------------------- | --------------------------------------------------------------- |
+| Top app bar               | **Navbar**                                                      |
+| Vertical persistent links | [Menu](/solid/components/menu/design)                           |
+| Marketing mega-nav        | [Navigation Menu](/solid/components/navigation-menu/design)     |
+| Mobile primary tabs       | [Bottom Navigation](/solid/components/bottom-navigation/design) |
+| Popup overflow            | [Dropdown Menu](/solid/components/dropdown-menu/design)         |

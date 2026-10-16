@@ -29,9 +29,9 @@ Arrow keys move focus; Space toggles selection in multi-select; Enter commits in
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Visible scrollable options | **Listbox** |
-| Compact closed picker | [Select](/solid/components/select/design) |
-| Filter-as-you-type | [Autocomplete](/solid/components/autocomplete/design) |
-| Row anatomy | [Item](/solid/components/item/design) |
+| Need                       | Prefer                                                |
+| -------------------------- | ----------------------------------------------------- |
+| Visible scrollable options | **Listbox**                                           |
+| Compact closed picker      | [Select](/solid/components/select/design)             |
+| Filter-as-you-type         | [Autocomplete](/solid/components/autocomplete/design) |
+| Row anatomy                | [Item](/solid/components/item/design)                 |

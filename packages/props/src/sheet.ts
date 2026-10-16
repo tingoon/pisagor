@@ -4,6 +4,7 @@ import type { SheetRecipeFn, SheetVariantProps } from "@pisagor/recipes";
 export interface SheetProps extends SheetVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue sheetRecipe
    */
   recipe?: SheetRecipeFn;

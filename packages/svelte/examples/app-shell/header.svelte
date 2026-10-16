@@ -1,8 +1,8 @@
 <script lang="ts">
-import { AppShell } from "@pisagor/svelte";
-import { loremParagraphs } from "./helpers";
+  import { AppShell } from "@pisagor/svelte";
+  import { loremParagraphs } from "./helpers";
 
-const paragraphs = loremParagraphs(8);
+  const paragraphs = loremParagraphs(8);
 </script>
 
 <AppShell>

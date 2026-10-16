@@ -29,9 +29,9 @@ Place announcements in predictable chrome — top of [App Shell](/vue/components
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Promo or product news | **Announcement** |
-| System or form status | [Alert](/vue/components/alert/design) |
-| Timed transient notice | [Toast](/vue/components/toast/design) |
-| App-wide top chrome | [App Shell](/vue/components/app-shell/design) |
+| Need                   | Prefer                                          |
+| ---------------------- | ----------------------------------------------- |
+| Promo or product news  | **Announcement**                                |
+| System or form status  | [Alert](/vue/components/alert/design)         |
+| Timed transient notice | [Toast](/vue/components/toast/design)         |
+| App-wide top chrome    | [App Shell](/vue/components/app-shell/design) |

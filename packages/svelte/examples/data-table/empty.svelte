@@ -1,12 +1,12 @@
 <script lang="ts">
-import { Table } from "@pisagor/svelte";
-import { DataTable } from "@pisagor/svelte/data-table";
+  import { Table } from "@pisagor/svelte";
+  import { DataTable } from "@pisagor/svelte/data-table";
 
-const data: Array<{ id: string; name: string; role: string }> = [];
-const columns = [
-  { accessorKey: "name", header: "Name" },
-  { accessorKey: "role", header: "Role" },
-];
+  const data: Array<{ id: string; name: string; role: string }> = [];
+  const columns = [
+    { accessorKey: "name", header: "Name" },
+    { accessorKey: "role", header: "Role" },
+  ];
 </script>
 
 <DataTable {columns} {data}>

@@ -7,7 +7,8 @@ import {
 
 // #region Types
 export interface PhoneFieldProps
-  extends FieldPresentationProps,
+  extends
+    FieldPresentationProps,
     Omit<PhoneInputProps, "name" | "onBlur" | "onChange" | "value"> {
   name?: string;
   value?: string;

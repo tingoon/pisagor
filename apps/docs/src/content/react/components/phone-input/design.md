@@ -29,9 +29,9 @@ Show errors next to the field, not only in a summary. Accept pasted numbers when
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| International phone with country | **Phone Input** |
-| Fixed-format local number | [Input](/react/components/input/design) |
-| Label, error, and helper layout | [Field](/react/components/field/design) |
-| One-time codes | [Input OTP](/react/components/input-otp/design) |
+| Need                             | Prefer                                          |
+| -------------------------------- | ----------------------------------------------- |
+| International phone with country | **Phone Input**                                 |
+| Fixed-format local number        | [Input](/react/components/input/design)         |
+| Label, error, and helper layout  | [Field](/react/components/field/design)         |
+| One-time codes                   | [Input OTP](/react/components/input-otp/design) |

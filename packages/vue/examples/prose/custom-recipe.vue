@@ -5,7 +5,7 @@ import { tv } from "tailwind-variants";
 
 const brandProseRecipe = tv({
   base: [
-    "[&_a]:text-emerald-700 [&_a]:decoration-emerald-500/40 [&_blockquote]:border-emerald-500/60 dark:[&_a]:text-emerald-300",
+    "[&_a]:text-emerald-700 [&_a]:decoration-emerald-500/40 dark:[&_a]:text-emerald-300 [&_blockquote]:border-emerald-500/60",
   ],
   extend: proseRecipe,
 });

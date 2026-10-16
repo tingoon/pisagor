@@ -13,7 +13,7 @@ import { Button, Card } from "@pisagor/vue";
       title="Get 15% off"
     />
     <Card.Content>
-      <pre class="rounded-md bg-muted p-2 text-center font-medium text-sm">
+      <pre class="bg-muted rounded-md p-2 text-center text-sm font-medium">
               <code>15OFF</code>
             </pre>
     </Card.Content>

@@ -30,7 +30,10 @@ const {
   recipe: fileUploadItemRecipe,
 });
 
-/** Slots from the nearest FileUploadItem root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest FileUploadItem root, or the default recipe when used
+ * standalone.
+ */
 function useFileUploadItemSlots() {
   const styles = useOptionalFileUploadItemStyles();
 
@@ -47,7 +50,10 @@ const {
   recipe: fileUploadRecipe,
 });
 
-/** Slots from the nearest FileUpload root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest FileUpload root, or the default recipe when used
+ * standalone.
+ */
 function useFileUploadSlots() {
   const styles = useOptionalFileUploadStyles();
 
@@ -106,8 +112,7 @@ export const FileUploadRoot = defineComponent({
 
     return () => {
       const onFileChange = attrs.onFileChange as
-        | ((details: FileUploadFileChangeDetails) => void)
-        | undefined;
+        ((details: FileUploadFileChangeDetails) => void) | undefined;
       const variantSlots = recipeSlots.value;
 
       return h(

@@ -41,8 +41,10 @@ type SignaturePadRootProps = SignaturePadPrimitiveRootProps & {
   invalid?: boolean;
 } & BaseSignaturePadRootProps;
 
-export interface SignaturePadProps
-  extends Omit<SignaturePadRootProps, "children"> {
+export interface SignaturePadProps extends Omit<
+  SignaturePadRootProps,
+  "children"
+> {
   classNames?: SignaturePadClassNames;
 }
 

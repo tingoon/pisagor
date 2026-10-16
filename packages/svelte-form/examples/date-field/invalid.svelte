@@ -1,5 +1,5 @@
 <script lang="ts">
-import { DateField } from "@pisagor/svelte-form";
+  import { DateField } from "@pisagor/svelte-form";
 </script>
 
 <DateField

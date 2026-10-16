@@ -52,7 +52,7 @@ export interface SignaturePadProps extends BaseSignaturePadProps {
   /**
    * The drawing options.
    *
-   * @default '{ size: 2, simulatePressure: true }'
+   * @default "{ size: 2, simulatePressure: true }"
    */
   drawing?: SignaturePadDrawingOptions;
   /** Marks the control as invalid for styling and assistive tech. */
@@ -61,7 +61,8 @@ export interface SignaturePadProps extends BaseSignaturePadProps {
   name?: string;
   /**
    * Callback when the signature pad is drawing or the committed paths change.
-   * `paths` contains only committed strokes; use `currentPath` for the in-progress stroke.
+   * `paths` contains only committed strokes; use `currentPath` for the
+   * in-progress stroke.
    */
   onDraw?: (details: SignaturePadDrawDetails) => void;
   /** Callback when the signature pad is done drawing. */

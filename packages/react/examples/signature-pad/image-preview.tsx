@@ -11,7 +11,7 @@ export function ImagePreview() {
         }
       />
       <Field.Description>Image preview</Field.Description>
-      <div className="relative h-40 w-full rounded-lg border bg-muted">
+      <div className="bg-muted relative h-40 w-full rounded-lg border">
         {imageUrl && (
           <img
             alt="Your signature as captured from the pad above"

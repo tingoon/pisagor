@@ -44,20 +44,23 @@ type RatingRootProps = RatingGroupRootProps & {
 } & BaseRatingRootProps &
   SizeScaleProps;
 
-export interface RatingProps
-  extends Omit<RatingRootProps, "children" | "onValueChange"> {
+export interface RatingProps extends Omit<
+  RatingRootProps,
+  "children" | "onValueChange"
+> {
   /**
    * Initial rating value when uncontrolled.
    *
    * @remarks
-   * Ignored when `value` is set.
+   *   Ignored when `value` is set.
    */
   defaultValue?: number;
   /**
    * Controlled rating value.
    *
    * @remarks
-   * When set, `defaultValue` is ignored. Pair with `onValueChange` to handle updates.
+   *   When set, `defaultValue` is ignored. Pair with `onValueChange` to handle
+   *   updates.
    */
   value?: number;
   /**
@@ -70,7 +73,7 @@ export interface RatingProps
    * Called when the rating value changes.
    *
    * @remarks
-   * Receives the numeric value directly, not Ark UI event details.
+   *   Receives the numeric value directly, not Ark UI event details.
    */
   onValueChange?: (value: number) => void;
   /** Slot class names */

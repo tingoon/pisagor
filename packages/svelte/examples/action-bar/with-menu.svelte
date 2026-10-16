@@ -1,17 +1,17 @@
 <script lang="ts">
-import { ActionBar, Button, DropdownMenu } from "@pisagor/svelte";
-import {
-  ArchiveIcon,
-  CopyIcon,
-  DotsThreeIcon,
-  TrashIcon,
-  XIcon,
-} from "@pisagor/svelte/icons";
+  import { ActionBar, Button, DropdownMenu } from "@pisagor/svelte";
+  import {
+    ArchiveIcon,
+    CopyIcon,
+    DotsThreeIcon,
+    TrashIcon,
+    XIcon,
+  } from "@pisagor/svelte/icons";
 </script>
 
 <ActionBar>
   <ActionBar.Trigger>
-    <Button variant="outline"> Open </Button>
+    <Button variant="outline">Open</Button>
   </ActionBar.Trigger>
   <ActionBar.Content aria-label="Bulk actions">
     <ActionBar.Value count={3} />

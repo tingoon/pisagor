@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Select } from "@pisagor/svelte";
+  import { Select } from "@pisagor/svelte";
 
-const items = ["Apple", "Banana", "Orange"];
+  const items = ["Apple", "Banana", "Orange"];
 </script>
 
 <div class="flex flex-col gap-2">

@@ -1,16 +1,16 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
-import type { ComponentProps } from "svelte";
-import ComboboxList from "../combobox/combobox-list.svelte";
-import { useCommand } from "./command.context";
+  import { cn } from "@pisagor/utils";
+  import type { ComponentProps } from "svelte";
+  import ComboboxList from "../combobox/combobox-list.svelte";
+  import { useCommand } from "./command.context";
 
-let {
-  class: className,
-  children,
-  ...rest
-}: ComponentProps<typeof ComboboxList> = $props();
-const styles = useCommand();
-const slots = $derived(styles.slots);
+  let {
+    class: className,
+    children,
+    ...rest
+  }: ComponentProps<typeof ComboboxList> = $props();
+  const styles = useCommand();
+  const slots = $derived(styles.slots);
 </script>
 
 <div class={slots.listWrapper()}>

@@ -29,9 +29,9 @@ Show loading in the list when options fetch remotely. Empty states should explai
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Single choice from dropdown | **Select** |
-| Type-to-filter long list | [Autocomplete](/solid/components/autocomplete/design) |
-| Low-level list selection | [Listbox](/solid/components/listbox/design) |
-| Few visible mutually exclusive options | [Radio Group](/solid/components/radio-group/design) |
+| Need                                   | Prefer                                                |
+| -------------------------------------- | ----------------------------------------------------- |
+| Single choice from dropdown            | **Select**                                            |
+| Type-to-filter long list               | [Autocomplete](/solid/components/autocomplete/design) |
+| Low-level list selection               | [Listbox](/solid/components/listbox/design)           |
+| Few visible mutually exclusive options | [Radio Group](/solid/components/radio-group/design)   |

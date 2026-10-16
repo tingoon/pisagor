@@ -30,7 +30,10 @@ const {
   recipe: tagsInputItemRecipe,
 });
 
-/** Slots from the nearest TagsInputItem root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest TagsInputItem root, or the default recipe when used
+ * standalone.
+ */
 function useTagsInputItemSlots() {
   const styles = useOptionalTagsInputItemStyles();
 
@@ -47,7 +50,10 @@ const {
   recipe: tagsInputRecipe,
 });
 
-/** Slots from the nearest TagsInput root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest TagsInput root, or the default recipe when used
+ * standalone.
+ */
 function useTagsInputSlots() {
   const styles = useOptionalTagsInputStyles();
 
@@ -83,8 +89,7 @@ export interface TagsInputItemProps extends BaseTagsInputItemProps {
 // #endregion
 
 // #region Types
-export interface TagsInputItemDeleteTriggerProps
-  extends BaseTagsInputItemProps {
+export interface TagsInputItemDeleteTriggerProps extends BaseTagsInputItemProps {
   class?: unknown;
 }
 
@@ -379,8 +384,7 @@ export const TagsInputControl = defineComponent({
             {
               class: slots.control({
                 class: (attrs as { class?: ClassValue }).class as
-                  | string
-                  | undefined,
+                  string | undefined,
               }),
               size: props.size,
               variant: props.variant,
@@ -502,7 +506,10 @@ export const TagsInputRootProvider = defineComponent({
     },
     clearable: { default: false, type: Boolean },
     size: { default: "md", type: String as PropType<TagsInputSize> },
-    /** Machine API from `useTagsInput` — must be a declared prop so Vue unwraps refs. */
+    /**
+     * Machine API from `useTagsInput` — must be a declared prop so Vue unwraps
+     * refs.
+     */
     value: { required: true, type: Object as PropType<object> },
   },
   setup(props, { attrs, slots: vueSlots }) {

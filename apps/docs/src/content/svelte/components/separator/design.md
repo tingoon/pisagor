@@ -29,9 +29,9 @@ In menus, separators group related commands without implying order. Avoid separa
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Visual divide without a title | **Separator** |
-| Named section break | Headings / [Prose](/svelte/components/prose/design) |
-| Menu command groups | [Menu](/svelte/components/menu/design) |
-| Page regions | [App Shell](/svelte/components/app-shell/design) |
+| Need                          | Prefer                                             |
+| ----------------------------- | -------------------------------------------------- |
+| Visual divide without a title | **Separator**                                      |
+| Named section break           | Headings / [Prose](/svelte/components/prose/design) |
+| Menu command groups           | [Menu](/svelte/components/menu/design)              |
+| Page regions                  | [App Shell](/svelte/components/app-shell/design)    |

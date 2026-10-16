@@ -4,6 +4,7 @@ import type { PaginationRecipeFn } from "@pisagor/recipes";
 export interface PaginationProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue paginationRecipe
    */
   recipe?: PaginationRecipeFn;

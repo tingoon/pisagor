@@ -2,13 +2,9 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const clipboardRecipe = tv({
   defaultVariants: {
-    /**
-     * Size scale.
-     */
+    /** Size scale. */
     size: "md",
-    /**
-     * Value size.
-     */
+    /** Value size. */
     valueSize: "md",
   },
   slots: {
@@ -16,7 +12,7 @@ export const clipboardRecipe = tv({
     field: ["flex flex-col gap-1.5"],
     indicator: ["pointer-events-none"],
     input: ["peer", "w-full min-w-0", "px-3", "text-base md:text-sm", "h-8"],
-    label: ["font-medium text-sm"],
+    label: ["text-sm font-medium"],
     value: ["inline-flex items-center", "px-3", "text-base md:text-sm"],
   },
   variants: {

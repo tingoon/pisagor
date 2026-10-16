@@ -80,7 +80,7 @@ export function WaitForElement() {
           <div class="flex flex-col gap-2">
             {items().map((item, index) => (
               <div
-                class="rounded-lg border border-border bg-muted/50 px-4 py-3 text-sm"
+                class="border-border bg-muted/50 rounded-lg border px-4 py-3 text-sm"
                 data-item={
                   index === items().length - 1 && items().length > 2
                     ? "new"

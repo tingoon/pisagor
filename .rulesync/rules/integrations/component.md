@@ -1,7 +1,7 @@
 ---
 root: false
 targets:
-  - '*'
+  - "*"
 description: Shared product naming — overlay/modal, toolbar, nav, select, feedback, i18n, data-scope
 globs:
   - packages/react/src/**
@@ -44,14 +44,14 @@ Import paths below use `@pisagor/{pkg}` for light components — substitute `rea
 
 ## Navigation decision tree
 
-| Need | Component | Import |
-| ---- | --------- | ------ |
-| Top app bar with brand, nav, actions | `navbar` | `@pisagor/{pkg}` |
-| Collapsible app sidebar | `sidebar` | `@pisagor/{pkg}` |
-| Site-wide horizontal nav with dropdowns | `navigation-menu` | `@pisagor/{pkg}` |
-| Always-visible nav link list | `menu` | `@pisagor/{pkg}` |
-| Popup actions from a trigger | `dropdown-menu` | `@pisagor/{pkg}` |
-| Mobile bottom tab bar | `bottom-navigation` | `@pisagor/{pkg}` |
+| Need                                    | Component           | Import           |
+| --------------------------------------- | ------------------- | ---------------- |
+| Top app bar with brand, nav, actions    | `navbar`            | `@pisagor/{pkg}` |
+| Collapsible app sidebar                 | `sidebar`           | `@pisagor/{pkg}` |
+| Site-wide horizontal nav with dropdowns | `navigation-menu`   | `@pisagor/{pkg}` |
+| Always-visible nav link list            | `menu`              | `@pisagor/{pkg}` |
+| Popup actions from a trigger            | `dropdown-menu`     | `@pisagor/{pkg}` |
+| Mobile bottom tab bar                   | `bottom-navigation` | `@pisagor/{pkg}` |
 
 ### New component checklist
 
@@ -77,8 +77,8 @@ Prefer public components in app code; only extend `combobox` when building packa
 
 ## Structural attributes (`data-scope` / `data-part`)
 
-| Layer | Attribute | Owner | Purpose |
-| ----- | --------- | ----- | ------- |
+| Layer      | Attribute                  | Owner           | Purpose                                |
+| ---------- | -------------------------- | --------------- | -------------------------------------- |
 | Structural | `data-scope` + `data-part` | Library (fixed) | Compound part targeting, CSS overrides |
 
 - `data-scope` / `data-part` are not public API; they are an internal contract. Machine-backed parts inherit them from Zag; plain parts set them inline (`data-scope="{name}"`, root `data-part="root"`). How to emit them on nodes: [React](react-component.mdc#styling) / [Vue](vue-component.mdc#styling) / [Solid](solid-component.mdc#styling) / [Svelte](svelte-component.mdc#styling).

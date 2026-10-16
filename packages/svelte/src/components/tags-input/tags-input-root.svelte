@@ -1,49 +1,49 @@
 <script lang="ts">
-import {
-  type TagsInputRootProps as ArkRootProps,
-  TagsInput as TagsInputPrimitive,
-} from "@ark-ui/svelte/tags-input";
-import type { TagsInputProps as BaseTagsInputProps } from "@pisagor/props";
-import {
-  type FormControlGroupShellVariantProps,
-  tagsInputRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { Context } from "./tags-input.context";
-import TagsInputControl from "./tags-input-control.svelte";
-import TagsInputInput from "./tags-input-input.svelte";
-import TagsInputItem from "./tags-input-item.svelte";
+  import {
+    type TagsInputRootProps as ArkRootProps,
+    TagsInput as TagsInputPrimitive,
+  } from "@ark-ui/svelte/tags-input";
+  import type { TagsInputProps as BaseTagsInputProps } from "@pisagor/props";
+  import {
+    type FormControlGroupShellVariantProps,
+    tagsInputRecipe,
+  } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { Context } from "./tags-input.context";
+  import TagsInputControl from "./tags-input-control.svelte";
+  import TagsInputInput from "./tags-input-input.svelte";
+  import TagsInputItem from "./tags-input-item.svelte";
 
-type Props = Omit<ArkRootProps, "onValueChange"> &
-  Pick<FormControlGroupShellVariantProps, "size" | "variant"> & {
-    clearable?: boolean;
-    onValueChange?: (value: string[]) => void;
-    placeholder?: string;
-  } & BaseTagsInputProps;
+  type Props = Omit<ArkRootProps, "onValueChange"> &
+    Pick<FormControlGroupShellVariantProps, "size" | "variant"> & {
+      clearable?: boolean;
+      onValueChange?: (value: string[]) => void;
+      placeholder?: string;
+    } & BaseTagsInputProps;
 
-let {
-  size = "md",
-  variant,
-  clearable,
-  children,
-  editable = false,
-  placeholder,
-  onValueChange,
-  recipe = tagsInputRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    size = "md",
+    variant,
+    clearable,
+    children,
+    editable = false,
+    placeholder,
+    onValueChange,
+    recipe = tagsInputRecipe,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const slots = $derived(recipe());
-Context.set({
-  get slots() {
-    return slots;
-  },
-});
+  const slots = $derived(recipe());
+  Context.set({
+    get slots() {
+      return slots;
+    },
+  });
 
-function handleValueChange(details: { value: string[] }) {
-  onValueChange?.(details.value);
-}
+  function handleValueChange(details: { value: string[] }) {
+    onValueChange?.(details.value);
+  }
 </script>
 
 <TagsInputPrimitive.Root
@@ -55,9 +55,7 @@ function handleValueChange(details: { value: string[] }) {
 >
   <TagsInputControl {clearable} {size} {variant}>
     <TagsInputPrimitive.Context>
-      {#snippet render(
-        api,
-      )}
+      {#snippet render(api)}
         {#each api().value as value, index (value)}
           <TagsInputItem {index} {value} />
         {/each}

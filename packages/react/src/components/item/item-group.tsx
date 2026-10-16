@@ -10,12 +10,10 @@ import { ItemGroupContext } from "./item-group.context";
 
 // #region Types
 export interface ItemGroupProps
-  extends ComponentProps<typeof ark.div>,
-    BaseItemGroupProps {}
+  extends ComponentProps<typeof ark.div>, BaseItemGroupProps {}
 
 export interface ItemSeparatorProps
-  extends Omit<SeparatorProps, "recipe">,
-    BaseItemSeparatorProps {}
+  extends Omit<SeparatorProps, "recipe">, BaseItemSeparatorProps {}
 // #endregion
 
 // #region Parts

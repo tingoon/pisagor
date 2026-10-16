@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Button, Sidebar } from "@pisagor/svelte";
-import HouseIcon from "phosphor-svelte/lib/HouseIcon";
-import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
-import UserIcon from "phosphor-svelte/lib/UserIcon";
+  import { Button, Sidebar } from "@pisagor/svelte";
+  import HouseIcon from "phosphor-svelte/lib/HouseIcon";
+  import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
+  import UserIcon from "phosphor-svelte/lib/UserIcon";
 </script>
 
 <Sidebar.Provider>
@@ -12,7 +12,7 @@ import UserIcon from "phosphor-svelte/lib/UserIcon";
         <Sidebar.MenuItem>
           <Sidebar.MenuButton size="lg">
             <div
-              class="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground"
+              class="bg-primary text-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
             >
               <HouseIcon class="size-4" />
             </div>
@@ -57,7 +57,7 @@ import UserIcon from "phosphor-svelte/lib/UserIcon";
   <Sidebar.Inset>
     <header class="flex h-12 items-center gap-2 border-b px-4">
       <Sidebar.Trigger />
-      <span class="font-medium text-sm">Dashboard</span>
+      <span class="text-sm font-medium">Dashboard</span>
     </header>
     <div class="flex flex-1 flex-col gap-2 p-4">
       <p class="text-muted-foreground text-sm">Main content area</p>

@@ -55,8 +55,8 @@ export interface AlertProps extends BaseAlertRootProps {
   /** Description content. */
   description?: VNodeChild;
   /**
-   * Leading icon, rendered as a direct child so the grid layout aligns.
-   * Status variants get a default icon; pass `null` to hide it.
+   * Leading icon, rendered as a direct child so the grid layout aligns. Status
+   * variants get a default icon; pass `null` to hide it.
    */
   icon?: VNodeChild;
   /** Bold title line. */

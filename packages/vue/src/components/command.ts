@@ -39,12 +39,10 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface CommandProps<T extends CollectionItem = CollectionItem>
-  extends Omit<ComboboxRootProps<T>, "recipe">,
-    BaseCommandProps {}
+  extends Omit<ComboboxRootProps<T>, "recipe">, BaseCommandProps {}
 
 interface CommandDialogContentProps
-  extends DialogContentProps,
-    BaseCommandProps {
+  extends DialogContentProps, BaseCommandProps {
   /**
    * The description of the dialog
    *
@@ -561,8 +559,7 @@ export const CommandShorthand = defineComponent({
     return () => {
       const groups = collection.value.group();
       const onInputValueChange = attrs.onInputValueChange as
-        | ((details: { inputValue: string }) => void)
-        | undefined;
+        ((details: { inputValue: string }) => void) | undefined;
 
       return h(
         CommandRoot as ArkPart,

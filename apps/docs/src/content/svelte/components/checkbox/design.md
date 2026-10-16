@@ -25,9 +25,9 @@ Prefer Checkbox when selection submits with a form; prefer [Switch](/svelte/comp
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Multi-select or boolean in forms | **Checkbox** |
-| Immediate on/off setting | [Switch](/svelte/components/switch/design) |
-| Exactly one of several options | [Radio Group](/svelte/components/radio-group/design) |
-| Select all rows in a table | [Action Bar](/svelte/components/action-bar/design) with row selection |
+| Need                             | Prefer                                                               |
+| -------------------------------- | -------------------------------------------------------------------- |
+| Multi-select or boolean in forms | **Checkbox**                                                         |
+| Immediate on/off setting         | [Switch](/svelte/components/switch/design)                            |
+| Exactly one of several options   | [Radio Group](/svelte/components/radio-group/design)                  |
+| Select all rows in a table       | [Action Bar](/svelte/components/action-bar/design) with row selection |

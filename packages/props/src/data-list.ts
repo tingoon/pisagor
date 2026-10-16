@@ -4,6 +4,7 @@ import type { DataListItemRecipeFn, DataListRecipeFn } from "@pisagor/recipes";
 export interface DataListProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue dataListRecipe
    */
   recipe?: DataListRecipeFn;
@@ -13,6 +14,7 @@ export interface DataListProps {
 export interface DataListItemProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue dataListItemRecipe
    */
   recipe?: DataListItemRecipeFn;

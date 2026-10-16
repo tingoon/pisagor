@@ -11,9 +11,8 @@ export type SkillMdModule = {
 };
 
 /**
- * Example module for docs SSR.
- * Non-Astro pages load `sources.ts` (raw code only). Astro loads `index.ts`
- * (sources + live components for SSR previews).
+ * Example module for docs SSR. Non-Astro pages load `sources.ts` (raw code
+ * only). Astro loads `index.ts` (sources + live components for SSR previews).
  */
 export type ExampleModule = {
   sources: Record<string, string>;
@@ -77,8 +76,9 @@ const PROPS_FILE_ALIASES: Record<string, string> = {
 type PaneModules = Record<string, () => Promise<SkillMdModule>>;
 
 /**
- * Per-framework docs — `content/<fw>/{components,forms}/<id>/{metadata,design,develop}.md`.
- * Every framework owns its copy so each URL tree only shows that library's content.
+ * Per-framework docs —
+ * `content/<fw>/{components,forms}/<id>/{metadata,design,develop}.md`. Every
+ * framework owns its copy so each URL tree only shows that library's content.
  */
 type FrameworkPaneGlobs = {
   design: PaneModules;

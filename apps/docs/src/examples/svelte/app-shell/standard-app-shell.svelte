@@ -1,39 +1,39 @@
 <script lang="ts">
-import { AppShell, Button } from "@pisagor/svelte";
-import { cn } from "@pisagor/utils";
-import GearIcon from "phosphor-svelte/lib/GearIcon";
-import HouseIcon from "phosphor-svelte/lib/HouseIcon";
-import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
-import SquaresFourIcon from "phosphor-svelte/lib/SquaresFourIcon";
-import UsersIcon from "phosphor-svelte/lib/UsersIcon";
-import type { Snippet } from "svelte";
-import { standardAppShellBlock } from "#/recipes/blocks/app-shell";
-import ActiveRailTitle from "./active-rail-title.svelte";
+  import { AppShell, Button } from "@pisagor/svelte";
+  import { cn } from "@pisagor/utils";
+  import GearIcon from "phosphor-svelte/lib/GearIcon";
+  import HouseIcon from "phosphor-svelte/lib/HouseIcon";
+  import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
+  import SquaresFourIcon from "phosphor-svelte/lib/SquaresFourIcon";
+  import UsersIcon from "phosphor-svelte/lib/UsersIcon";
+  import type { Snippet } from "svelte";
+  import { standardAppShellBlock } from "#/recipes/blocks/app-shell";
+  import ActiveRailTitle from "./active-rail-title.svelte";
 
-const styles = standardAppShellBlock();
+  const styles = standardAppShellBlock();
 
-const RAIL_ITEMS = [
-  { icon: HouseIcon, id: "home", label: "Home" },
-  { icon: SquaresFourIcon, id: "projects", label: "Projects" },
-  { icon: UsersIcon, id: "team", label: "Team" },
-  { icon: MagnifyingGlassIcon, id: "search", label: "Search" },
-  { icon: GearIcon, id: "settings", label: "Settings" },
-] as const;
+  const RAIL_ITEMS = [
+    { icon: HouseIcon, id: "home", label: "Home" },
+    { icon: SquaresFourIcon, id: "projects", label: "Projects" },
+    { icon: UsersIcon, id: "team", label: "Team" },
+    { icon: MagnifyingGlassIcon, id: "search", label: "Search" },
+    { icon: GearIcon, id: "settings", label: "Settings" },
+  ] as const;
 
-const PANEL_NAV_ITEMS = [
-  { id: "overview", label: "Overview" },
-  { id: "activity", label: "Activity" },
-  { id: "members", label: "Members" },
-  { id: "settings", label: "Settings" },
-] as const;
+  const PANEL_NAV_ITEMS = [
+    { id: "overview", label: "Overview" },
+    { id: "activity", label: "Activity" },
+    { id: "members", label: "Members" },
+    { id: "settings", label: "Settings" },
+  ] as const;
 
-interface Props {
-  children?: Snippet;
-  class?: string;
-  title?: string;
-}
+  interface Props {
+    children?: Snippet;
+    class?: string;
+    title?: string;
+  }
 
-let { children, class: className, title = "Dashboard" }: Props = $props();
+  let { children, class: className, title = "Dashboard" }: Props = $props();
 </script>
 
 <AppShell class={cn(styles.root(), className)}>

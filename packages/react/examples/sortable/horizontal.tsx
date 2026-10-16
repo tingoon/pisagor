@@ -17,7 +17,7 @@ export function Horizontal() {
         <Sortable.Item className="min-w-36" key={id} value={id}>
           <Sortable.ItemContent>
             <Sortable.Handle />
-            <span className="font-medium text-sm">{labels[id]}</span>
+            <span className="text-sm font-medium">{labels[id]}</span>
           </Sortable.ItemContent>
         </Sortable.Item>
       ))}

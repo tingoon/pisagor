@@ -41,12 +41,10 @@ export { useDialog };
 // #endregion
 
 export interface LocalDialogRootProps
-  extends DialogPrimitiveRootProps,
-    BaseDialogRootProps {}
+  extends DialogPrimitiveRootProps, BaseDialogRootProps {}
 
 export interface DialogContentProps
-  extends DialogPrimitiveContentProps,
-    DialogVariantProps {
+  extends DialogPrimitiveContentProps, DialogVariantProps {
   bottomStickOnMobile?: boolean;
   showCloseButton?: boolean;
 }
@@ -67,7 +65,10 @@ export interface DialogProps extends Omit<LocalDialogRootProps, "title"> {
   actions?: JSX.Element;
   description?: JSX.Element;
   title?: JSX.Element;
-  /** Prefer a render fn for Solid asChild; JSX elements are wrapped with display:contents. */
+  /**
+   * Prefer a render fn for Solid asChild; JSX elements are wrapped with
+   * display:contents.
+   */
   trigger?:
     | JSX.Element
     | ((props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element);

@@ -77,7 +77,7 @@ function formatDate(value: string) {
 function DataGridShell({ children }: { children: JSX.Element }) {
   return (
     <div class="flex w-full flex-col gap-3">
-      <div class="rounded-xl border bg-muted/20 p-3">{children}</div>
+      <div class="bg-muted/20 rounded-xl border p-3">{children}</div>
     </div>
   );
 }
@@ -124,7 +124,7 @@ export function RichCells() {
           />
           <div class="min-w-0">
             <p class="truncate font-medium">{row.original.name}</p>
-            <p class="truncate text-muted-foreground text-xs">
+            <p class="text-muted-foreground truncate text-xs">
               {row.original.email}
             </p>
           </div>

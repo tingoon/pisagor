@@ -2,9 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const tableRecipe = tv({
   defaultVariants: {
-    /**
-     * Size scale.
-     */
+    /** Size scale. */
     size: "md",
   },
   slots: {
@@ -17,7 +15,7 @@ export const tableRecipe = tv({
     body: "[&_tr:last-child]:border-0",
     caption: ["mt-4", "text-muted-foreground text-sm"],
     cell: [
-      "whitespace-nowrap p-2 align-middle",
+      "p-2 align-middle whitespace-nowrap",
       "has-[[role=checkbox]]:ps-2 has-[[role=checkbox]]:pe-0",
     ],
     footer: [
@@ -29,13 +27,13 @@ export const tableRecipe = tv({
     head: [
       "h-10 px-2",
       "text-start align-middle",
-      "font-medium text-muted-foreground",
+      "text-muted-foreground font-medium",
       "",
       "has-[[role=checkbox]]:ps-2 has-[[role=checkbox]]:pe-0",
     ],
     header: "[&_tr]:border-b",
     row: [
-      "border-b transition-colors duration-fast ease-out",
+      "duration-fast border-b transition-colors ease-out",
       "group-data-[variant=striped]/table:even:bg-muted/30",
       "data-[state=selected]:bg-muted",
       "data-[active=true]:bg-primary/10 data-[active=true]:shadow-[inset_3px_0_0_0_var(--primary)]",

@@ -1,10 +1,10 @@
 <script lang="ts">
-import { Button, Field, Input, Popover } from "@pisagor/svelte";
+  import { Button, Field, Input, Popover } from "@pisagor/svelte";
 </script>
 
 <Popover>
   <Popover.Trigger>
-    <Button variant="outline"> Open </Button>
+    <Button variant="outline">Open</Button>
   </Popover.Trigger>
   <Popover.Content
     class="w-80 [--space:--spacing(2)] sm:[--space:--spacing(5)]"

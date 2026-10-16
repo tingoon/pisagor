@@ -34,16 +34,14 @@ interface BreadcrumbPresetItem {
 
 export type BreadcrumbListProps = ComponentProps<typeof ark.ol>;
 export interface BreadcrumbItemProps
-  extends ComponentProps<typeof ark.li>,
-    BaseBreadcrumbItemProps {}
+  extends ComponentProps<typeof ark.li>, BaseBreadcrumbItemProps {}
 export type BreadcrumbLinkProps = ComponentProps<typeof ark.a>;
 export type BreadcrumbPageProps = ComponentProps<typeof ark.span>;
 export type BreadcrumbSeparatorProps = ComponentProps<typeof ark.li>;
 export type BreadcrumbEllipsisProps = ComponentProps<typeof ark.span>;
 
 export interface BreadcrumbRootProps
-  extends ComponentProps<typeof ark.nav>,
-    BaseBreadcrumbProps {
+  extends ComponentProps<typeof ark.nav>, BaseBreadcrumbProps {
   "aria-label"?: string;
 }
 

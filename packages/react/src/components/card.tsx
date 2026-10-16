@@ -48,7 +48,10 @@ export function CardHeader({
 }: ComponentProps<typeof ark.div> & {
   /** Supporting text rendered in `Card.Description`. */
   description?: ReactNode;
-  /** Heading rendered in `Card.Title` (an `h3`; use `asChild` on `Card.Title` for another level). */
+  /**
+   * Heading rendered in `Card.Title` (an `h3`; use `asChild` on `Card.Title`
+   * for another level).
+   */
   title?: ReactNode;
 }) {
   const { slots } = useCard();

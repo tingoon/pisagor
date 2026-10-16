@@ -1,5 +1,5 @@
 <script lang="ts">
-import { RichTextEditorField } from "@pisagor/svelte-form";
+  import { RichTextEditorField } from "@pisagor/svelte-form";
 </script>
 
 <RichTextEditorField

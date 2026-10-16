@@ -1,11 +1,11 @@
 <script lang="ts">
-import { Table } from "@pisagor/svelte";
-import { workspaceUsers } from "./helpers";
+  import { Table } from "@pisagor/svelte";
+  import { workspaceUsers } from "./helpers";
 </script>
 
 <div class="flex flex-col gap-2">
   <Table variant="plain">
-    <Table.Caption class="sr-only"> Default table variant. </Table.Caption>
+    <Table.Caption class="sr-only">Default table variant.</Table.Caption>
     <Table.Header>
       <Table.Row>
         <Table.Head>Name</Table.Head>
@@ -22,7 +22,7 @@ import { workspaceUsers } from "./helpers";
     </Table.Body>
   </Table>
   <Table variant="striped">
-    <Table.Caption class="sr-only"> Striped table variant. </Table.Caption>
+    <Table.Caption class="sr-only">Striped table variant.</Table.Caption>
     <Table.Header>
       <Table.Row>
         <Table.Head>Name</Table.Head>

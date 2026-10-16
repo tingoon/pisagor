@@ -1,17 +1,17 @@
 <script lang="ts">
-import {
-  type PaginationNextTriggerProps,
-  Pagination as PaginationPrimitive,
-} from "@ark-ui/svelte/pagination";
-import { buttonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
+  import {
+    type PaginationNextTriggerProps,
+    Pagination as PaginationPrimitive,
+  } from "@ark-ui/svelte/pagination";
+  import { buttonRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 
-let {
-  children,
-  class: className,
-  ...rest
-}: PaginationNextTriggerProps = $props();
+  let {
+    children,
+    class: className,
+    ...rest
+  }: PaginationNextTriggerProps = $props();
 </script>
 
 <PaginationPrimitive.NextTrigger

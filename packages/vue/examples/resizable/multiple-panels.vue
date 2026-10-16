@@ -8,10 +8,10 @@ function frameClass(heightClass = "h-96") {
 
 function panelClassName(orientation: "horizontal" | "vertical" = "horizontal") {
   return cn(
-    "flex items-center justify-center bg-muted/30 text-sm",
+    "bg-muted/30 flex items-center justify-center text-sm",
     orientation === "vertical"
-      ? "min-h-0 h-full w-full"
-      : "min-w-0 h-full w-full",
+      ? "h-full min-h-0 w-full"
+      : "h-full w-full min-w-0",
   );
 }
 </script>
@@ -20,7 +20,11 @@ function panelClassName(orientation: "horizontal" | "vertical" = "horizontal") {
     <Resizable
       class="size-full rounded-md border"
       :default-size="[20, 60, 20]"
-      :panels="[{ id: '1', minSize: 20 }, { id: '2', minSize: 40 }, { id: '3', minSize: 20 }]"
+      :panels="[
+        { id: '1', minSize: 20 },
+        { id: '2', minSize: 40 },
+        { id: '3', minSize: 20 },
+      ]"
     >
       <Resizable.Panel id="1" :class="panelClassName()">Left</Resizable.Panel>
       <Resizable.ResizeTrigger id="1:2" with-handle />

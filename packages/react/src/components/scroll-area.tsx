@@ -57,8 +57,10 @@ const ScrollAreaThumb = withContext(ScrollAreaPrimitive.Thumb, {
 // #region Types
 type ScrollAreaClassNames = VariantClassNames<ScrollAreaRecipeSlot>;
 
-export interface ScrollAreaProps
-  extends Omit<ComponentProps<typeof ScrollAreaRoot>, "children"> {
+export interface ScrollAreaProps extends Omit<
+  ComponentProps<typeof ScrollAreaRoot>,
+  "children"
+> {
   children?: React.ReactNode;
   /** Slot class names */
   classNames?: ScrollAreaClassNames;

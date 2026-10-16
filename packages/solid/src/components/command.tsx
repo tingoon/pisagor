@@ -40,14 +40,15 @@ const { Context: CommandStylesContext, useStyles: useCommand } =
 // #endregion
 
 export interface CommandDialogContentProps
-  extends DialogContentProps,
-    BaseCommandDialogContentProps {
+  extends DialogContentProps, BaseCommandDialogContentProps {
   description?: string;
   title?: string;
 }
 
-export interface CommandInputProps
-  extends Omit<ComboboxFieldInputProps, "size"> {
+export interface CommandInputProps extends Omit<
+  ComboboxFieldInputProps,
+  "size"
+> {
   size?: InputProps["size"];
 }
 
@@ -55,8 +56,7 @@ export type CommandListProps = ComboboxListProps;
 export type CommandContentProps = ComboboxContentProps;
 
 export interface CommandProps<T extends CollectionItem = CollectionItem>
-  extends Omit<ComboboxRootProps<T>, "recipe">,
-    BaseCommandProps {
+  extends Omit<ComboboxRootProps<T>, "recipe">, BaseCommandProps {
   class?: string;
 }
 
@@ -73,8 +73,10 @@ export interface CommandShorthandItem {
   value: string;
 }
 
-export interface CommandShorthandProps
-  extends Omit<CommandProps<CommandShorthandItem>, "collection" | "children"> {
+export interface CommandShorthandProps extends Omit<
+  CommandProps<CommandShorthandItem>,
+  "collection" | "children"
+> {
   /** Text shown when nothing matches. */
   emptyText?: JSX.Element;
   /** Items to render; filtering and grouping are handled for you. */

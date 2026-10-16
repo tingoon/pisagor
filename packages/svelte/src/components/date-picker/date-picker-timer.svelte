@@ -1,53 +1,53 @@
 <script lang="ts">
-import type { DatePickerProps as BaseDatePickerProps } from "@pisagor/props";
-import {
-  datePickerRecipe,
-  type FormControlGroupShellVariantProps,
-  formControlGroupShellRecipe,
-  inputGroupControlRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import ClockIcon from "phosphor-svelte/lib/ClockIcon";
-import type { Snippet } from "svelte";
-import type { HTMLInputAttributes } from "svelte/elements";
-import InputClearButton from "../input/input-clear-button.svelte";
-import { useFormControlSurface } from "../surface/use-form-control-surface";
-import { useDatePicker } from "./date-picker.context";
+  import type { DatePickerProps as BaseDatePickerProps } from "@pisagor/props";
+  import {
+    datePickerRecipe,
+    type FormControlGroupShellVariantProps,
+    formControlGroupShellRecipe,
+    inputGroupControlRecipe,
+  } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import ClockIcon from "phosphor-svelte/lib/ClockIcon";
+  import type { Snippet } from "svelte";
+  import type { HTMLInputAttributes } from "svelte/elements";
+  import InputClearButton from "../input/input-clear-button.svelte";
+  import { useFormControlSurface } from "../surface/use-form-control-surface";
+  import { useDatePicker } from "./date-picker.context";
 
-type Props = Omit<HTMLInputAttributes, "size" | "type" | "value"> &
-  FormControlGroupShellVariantProps & {
-    children?: Snippet;
-    clearable?: boolean;
-    value?: string | undefined;
-  } & BaseDatePickerProps;
+  type Props = Omit<HTMLInputAttributes, "size" | "type" | "value"> &
+    FormControlGroupShellVariantProps & {
+      children?: Snippet;
+      clearable?: boolean;
+      value?: string | undefined;
+    } & BaseDatePickerProps;
 
-let {
-  clearable = false,
-  size = "md",
-  variant: variantProp,
-  class: className,
-  disabled,
-  readonly,
-  value = $bindable(""),
-  recipe = datePickerRecipe,
-  oninput,
-  ...rest
-}: Props = $props();
+  let {
+    clearable = false,
+    size = "md",
+    variant: variantProp,
+    class: className,
+    disabled,
+    readonly,
+    value = $bindable(""),
+    recipe = datePickerRecipe,
+    oninput,
+    ...rest
+  }: Props = $props();
 
-const ctx = useDatePicker();
-const slots = $derived(ctx?.slots ?? recipe());
-const surfaceVariant = useFormControlSurface();
-const variant = $derived(variantProp ?? ctx?.variant ?? ("primary" as const));
-const canClear = $derived(
-  clearable &&
-    !disabled &&
-    !readonly &&
-    Boolean(value && String(value).length > 0),
-);
+  const ctx = useDatePicker();
+  const slots = $derived(ctx?.slots ?? recipe());
+  const surfaceVariant = useFormControlSurface();
+  const variant = $derived(variantProp ?? ctx?.variant ?? ("primary" as const));
+  const canClear = $derived(
+    clearable &&
+      !disabled &&
+      !readonly &&
+      Boolean(value && String(value).length > 0),
+  );
 
-function handleClear() {
-  value = "";
-}
+  function handleClear() {
+    value = "";
+  }
 </script>
 
 <div
@@ -70,7 +70,7 @@ function handleClear() {
     step="1"
     type="time"
     bind:value
-  >
+  />
   {#if canClear}
     <div class="pe-1" data-align="inline-end">
       <InputClearButton onClear={handleClear} />

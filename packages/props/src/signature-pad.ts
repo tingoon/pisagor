@@ -4,6 +4,7 @@ import type { SignaturePadRecipeFn } from "@pisagor/recipes";
 export interface SignaturePadProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue signaturePadRecipe
    */
   recipe?: SignaturePadRecipeFn;

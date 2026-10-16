@@ -1,16 +1,16 @@
 <script lang="ts">
-import { segmentGroupRecipe } from "@pisagor/recipes";
-import { SegmentGroup } from "@pisagor/svelte";
-import { tv } from "tailwind-variants";
+  import { segmentGroupRecipe } from "@pisagor/recipes";
+  import { SegmentGroup } from "@pisagor/svelte";
+  import { tv } from "tailwind-variants";
 
-const brandSegmentGroupRecipe = tv({
-  extend: segmentGroupRecipe,
-  slots: {
-    indicator: "bg-emerald-600",
-    item: "data-[state=checked]:text-white",
-  },
-  variants: {},
-});
+  const brandSegmentGroupRecipe = tv({
+    extend: segmentGroupRecipe,
+    slots: {
+      indicator: "bg-emerald-600",
+      item: "data-[state=checked]:text-white",
+    },
+    variants: {},
+  });
 </script>
 
 <SegmentGroup

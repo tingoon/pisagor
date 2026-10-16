@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Button, Field, Input, Sheet } from "@pisagor/svelte";
+  import { Button, Field, Input, Sheet } from "@pisagor/svelte";
 </script>
 
 <Sheet>
@@ -10,8 +10,7 @@ import { Button, Field, Input, Sheet } from "@pisagor/svelte";
     <Sheet.Header>
       <Sheet.Title>Inset sheet</Sheet.Title>
       <Sheet.Description
-        >This sheet uses the inset variant with rounded corners and
-        padding.</Sheet.Description
+        >This sheet uses the inset variant with rounded corners and padding.</Sheet.Description
       >
     </Sheet.Header>
     <Sheet.Body>

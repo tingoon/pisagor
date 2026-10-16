@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Checkbox, Field } from "@pisagor/svelte";
+  import { Checkbox, Field } from "@pisagor/svelte";
 </script>
 
 <Field orientation="horizontal">

@@ -29,9 +29,9 @@ On narrow viewports, stack label above value when horizontal space is tight. Mai
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Detail metadata and summaries | **Data List** |
-| Comparable rows across columns | [Data Table](/react/components/data-table/design) |
-| Inline edit of a displayed value | [Editable](/react/components/editable/design) |
-| Form-style label + control | [Field](/react/components/field/design) |
+| Need                             | Prefer                                            |
+| -------------------------------- | ------------------------------------------------- |
+| Detail metadata and summaries    | **Data List**                                     |
+| Comparable rows across columns   | [Data Table](/react/components/data-table/design) |
+| Inline edit of a displayed value | [Editable](/react/components/editable/design)     |
+| Form-style label + control       | [Field](/react/components/field/design)           |

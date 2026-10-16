@@ -29,10 +29,10 @@ When selecting an interval, use two thumbs with a clear filled range between the
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Continuous or stepped value on a track | **Slider** |
-| Exact numeric entry | [Number Input](/solid/components/number-input/design) |
-| Circular or radial control | [Circular Slider](/solid/components/circular-slider/design) |
-| Read-only completion | [Progress](/solid/components/progress/design) |
-| On/off setting | [Switch](/solid/components/switch/design) |
+| Need                                   | Prefer                                                      |
+| -------------------------------------- | ----------------------------------------------------------- |
+| Continuous or stepped value on a track | **Slider**                                                  |
+| Exact numeric entry                    | [Number Input](/solid/components/number-input/design)       |
+| Circular or radial control             | [Circular Slider](/solid/components/circular-slider/design) |
+| Read-only completion                   | [Progress](/solid/components/progress/design)               |
+| On/off setting                         | [Switch](/solid/components/switch/design)                   |

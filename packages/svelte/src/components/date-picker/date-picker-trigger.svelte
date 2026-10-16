@@ -1,31 +1,31 @@
 <script lang="ts">
-import {
-  type DatePickerTriggerProps as ArkTriggerProps,
-  DatePicker as DatePickerPrimitive,
-} from "@ark-ui/svelte/date-picker";
-import { cn } from "@pisagor/utils";
-import {
-  isInsideControl,
-  setInsideControl,
-} from "../../internal/inside-control";
-import {
-  DATE_PICKER_INSIDE_CONTROL,
-  useDatePicker,
-} from "./date-picker.context";
-import DatePickerClearTrigger from "./date-picker-clear-trigger.svelte";
+  import {
+    type DatePickerTriggerProps as ArkTriggerProps,
+    DatePicker as DatePickerPrimitive,
+  } from "@ark-ui/svelte/date-picker";
+  import { cn } from "@pisagor/utils";
+  import {
+    isInsideControl,
+    setInsideControl,
+  } from "../../internal/inside-control";
+  import {
+    DATE_PICKER_INSIDE_CONTROL,
+    useDatePicker,
+  } from "./date-picker.context";
+  import DatePickerClearTrigger from "./date-picker-clear-trigger.svelte";
 
-type Props = ArkTriggerProps & { clearable?: boolean };
+  type Props = ArkTriggerProps & { clearable?: boolean };
 
-let {
-  clearable = false,
-  children,
-  class: className,
-  ...rest
-}: Props = $props();
-const ctx = useDatePicker();
-const slots = $derived(ctx?.slots);
-const insideControl = isInsideControl(DATE_PICKER_INSIDE_CONTROL);
-if (!insideControl) setInsideControl(DATE_PICKER_INSIDE_CONTROL);
+  let {
+    clearable = false,
+    children,
+    class: className,
+    ...rest
+  }: Props = $props();
+  const ctx = useDatePicker();
+  const slots = $derived(ctx?.slots);
+  const insideControl = isInsideControl(DATE_PICKER_INSIDE_CONTROL);
+  if (!insideControl) setInsideControl(DATE_PICKER_INSIDE_CONTROL);
 </script>
 
 {#if slots}

@@ -29,9 +29,9 @@ Wrap the group in [Field](/svelte/components/field/design) when the label applie
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Input with attached chrome | **Input Group** |
-| Plain single-line entry | [Input](/svelte/components/input/design) |
-| Accessible label stack | [Field](/svelte/components/field/design) |
+| Need                       | Prefer                                              |
+| -------------------------- | --------------------------------------------------- |
+| Input with attached chrome | **Input Group**                                     |
+| Plain single-line entry    | [Input](/svelte/components/input/design)             |
+| Accessible label stack     | [Field](/svelte/components/field/design)             |
 | Phone numbers with country | [Phone Input](/svelte/components/phone-input/design) |

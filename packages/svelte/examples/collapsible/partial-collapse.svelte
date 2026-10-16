@@ -1,12 +1,10 @@
 <script lang="ts">
-import { Button, Collapsible } from "@pisagor/svelte";
+  import { Button, Collapsible } from "@pisagor/svelte";
 </script>
 
 <Collapsible class="w-96" collapsedHeight="50px">
   <Collapsible.Trigger>
-    {#snippet asChild(
-      props,
-    )}
+    {#snippet asChild(props)}
       <Button {...props()} class="w-full" variant="outline">
         Read more
         <Collapsible.Indicator />
@@ -31,9 +29,7 @@ import { Button, Collapsible } from "@pisagor/svelte";
       content is visible when collapsed.
     </p>
     <Collapsible.Trigger>
-      {#snippet asChild(
-        props,
-      )}
+      {#snippet asChild(props)}
         <Button {...props()} class="w-full" variant="outline">
           Collapse (cannot be focused when collapsed)
           <Collapsible.Indicator />

@@ -1,11 +1,11 @@
 <script lang="ts">
-import { Table } from "@pisagor/svelte";
+  import { Table } from "@pisagor/svelte";
 
-const items = [
-  { id: "1", item: "Wireless mouse", qty: 2, unitPrice: 29.99 },
-  { id: "2", item: "Mechanical keyboard", qty: 1, unitPrice: 149.99 },
-  { id: "3", item: "USB-C hub", qty: 3, unitPrice: 45.0 },
-];
+  const items = [
+    { id: "1", item: "Wireless mouse", qty: 2, unitPrice: 29.99 },
+    { id: "2", item: "Mechanical keyboard", qty: 1, unitPrice: 149.99 },
+    { id: "3", item: "USB-C hub", qty: 3, unitPrice: 45.0 },
+  ];
 </script>
 
 <Table>

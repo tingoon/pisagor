@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Calendar, Card, parseDate } from "@pisagor/svelte";
+  import { Calendar, Card, parseDate } from "@pisagor/svelte";
 
-let value = $state([parseDate(new Date(Date.now()))]);
+  let value = $state([parseDate(new Date(Date.now()))]);
 </script>
 
 <Card class="[--space:--spacing(2)]">

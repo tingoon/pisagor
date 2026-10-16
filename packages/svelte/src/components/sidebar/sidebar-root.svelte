@@ -1,31 +1,31 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
-import type { HTMLAttributes } from "svelte/elements";
-import { Sheet } from "../sheet";
-import { SIDEBAR_WIDTH_MOBILE } from "./constants";
-import { useSidebar } from "./sidebar.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { Sheet } from "../sheet";
+  import { SIDEBAR_WIDTH_MOBILE } from "./constants";
+  import { useSidebar } from "./sidebar.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
-  children?: import("svelte").Snippet;
-  style?: string | undefined;
-  placement?: "left" | "right";
-  variant?: "sidebar" | "floating" | "inset";
-  collapsible?: "offcanvas" | "icon" | "none";
-};
+  type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
+    children?: import("svelte").Snippet;
+    style?: string | undefined;
+    placement?: "left" | "right";
+    variant?: "sidebar" | "floating" | "inset";
+    collapsible?: "offcanvas" | "icon" | "none";
+  };
 
-let {
-  collapsible = "offcanvas",
-  placement = "left",
-  variant = "sidebar",
-  class: className,
-  children,
-  style,
-  ...rest
-}: Props = $props();
+  let {
+    collapsible = "offcanvas",
+    placement = "left",
+    variant = "sidebar",
+    class: className,
+    children,
+    style,
+    ...rest
+  }: Props = $props();
 
-const ctx = useSidebar();
-const padded = $derived(variant === "floating" || variant === "inset");
+  const ctx = useSidebar();
+  const padded = $derived(variant === "floating" || variant === "inset");
 </script>
 
 {#if collapsible === "none"}

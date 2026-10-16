@@ -29,9 +29,9 @@ Sanitize pasted HTML and uploaded media. Prefer allowlists for tags and attribut
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Formatted authoring | **Rich Text Editor** |
-| Read-only article body | [Prose](/svelte/components/prose/design) |
-| Plain multi-line text | [Textarea](/svelte/components/textarea/design) |
+| Need                      | Prefer                                                                                      |
+| ------------------------- | ------------------------------------------------------------------------------------------- |
+| Formatted authoring       | **Rich Text Editor**                                                                        |
+| Read-only article body    | [Prose](/svelte/components/prose/design)                                                     |
+| Plain multi-line text     | [Textarea](/svelte/components/textarea/design)                                               |
 | Single-line with mentions | [Input](/svelte/components/input/design) / [Tags Input](/svelte/components/tags-input/design) |

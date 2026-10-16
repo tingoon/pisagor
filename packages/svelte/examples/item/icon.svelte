@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Button, Item } from "@pisagor/svelte";
-import ShieldWarningIcon from "phosphor-svelte/lib/ShieldWarningIcon";
+  import { Button, Item } from "@pisagor/svelte";
+  import ShieldWarningIcon from "phosphor-svelte/lib/ShieldWarningIcon";
 </script>
 
 <Item variant="outline">
@@ -9,11 +9,9 @@ import ShieldWarningIcon from "phosphor-svelte/lib/ShieldWarningIcon";
   </Item.Media>
   <Item.Content>
     <Item.Title>Security alert</Item.Title>
-    <Item.Description>
-      New login detected from unknown device.
-    </Item.Description>
+    <Item.Description>New login detected from unknown device.</Item.Description>
   </Item.Content>
   <Item.Actions>
-    <Button size="sm" variant="outline"> Review </Button>
+    <Button size="sm" variant="outline">Review</Button>
   </Item.Actions>
 </Item>

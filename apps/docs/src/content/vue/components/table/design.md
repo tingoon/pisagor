@@ -29,9 +29,9 @@ When rows become selectable, pair the table with [Action Bar](/vue/components/ac
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Simple structured data grid | **Table** |
+| Need                             | Prefer                                            |
+| -------------------------------- | ------------------------------------------------- |
+| Simple structured data grid      | **Table**                                         |
 | Sort, filter, selection at scale | [Data Table](/vue/components/data-table/design) |
-| Spreadsheet-style interaction | [Data Grid](/vue/components/data-grid/design) |
-| Key-value pairs | [Data List](/vue/components/data-list/design) |
+| Spreadsheet-style interaction    | [Data Grid](/vue/components/data-grid/design)   |
+| Key-value pairs                  | [Data List](/vue/components/data-list/design)   |

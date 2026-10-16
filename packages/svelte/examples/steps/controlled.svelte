@@ -1,19 +1,19 @@
 <script lang="ts">
-import { Button, Steps } from "@pisagor/svelte";
+  import { Button, Steps } from "@pisagor/svelte";
 
-const items = [
-  {
-    content: "Please provide your name and email address.",
-    title: "Your details",
-  },
-  { content: "A few details about your company.", title: "Company details" },
-  {
-    content: "Start collaborating with your team.",
-    title: "Invite your team",
-  },
-];
+  const items = [
+    {
+      content: "Please provide your name and email address.",
+      title: "Your details",
+    },
+    { content: "A few details about your company.", title: "Company details" },
+    {
+      content: "Start collaborating with your team.",
+      title: "Invite your team",
+    },
+  ];
 
-let step = $state(0);
+  let step = $state(0);
 </script>
 
 <div class="flex flex-col gap-2">

@@ -18,13 +18,14 @@ const {
 
 // #region Types
 export interface CardRootProps
-  extends ComponentProps<typeof ark.div>,
-    BaseCardRootProps {}
+  extends ComponentProps<typeof ark.div>, BaseCardRootProps {}
 
 export type CardMediaProps = ComponentProps<typeof ark.div> & CardVariantProps;
 
-export interface CardHeaderProps
-  extends Omit<ComponentProps<typeof ark.div>, "title"> {
+export interface CardHeaderProps extends Omit<
+  ComponentProps<typeof ark.div>,
+  "title"
+> {
   description?: JSX.Element;
   title?: JSX.Element;
 }

@@ -27,7 +27,7 @@ export const Playground = meta.story({
     items: [
       {
         content: (
-          <div className="flex flex-col gap-2 text-muted-foreground">
+          <div className="text-muted-foreground flex flex-col gap-2">
             <p>
               Our flagship product combines cutting-edge technology with sleek
               design. Built with premium materials, it offers unparalleled
@@ -44,7 +44,7 @@ export const Playground = meta.story({
       },
       {
         content: (
-          <div className="flex flex-col gap-2 text-muted-foreground">
+          <div className="text-muted-foreground flex flex-col gap-2">
             <p>
               We offer worldwide shipping through trusted courier partners.
               Standard delivery takes 3 to 5 business days, while express
@@ -61,7 +61,7 @@ export const Playground = meta.story({
       },
       {
         content: (
-          <div className="flex flex-col gap-2 text-muted-foreground">
+          <div className="text-muted-foreground flex flex-col gap-2">
             <p>
               We stand behind our products with a comprehensive 30-day return
               policy. If you&apos;re not completely satisfied, return the item

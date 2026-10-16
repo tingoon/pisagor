@@ -4,24 +4,20 @@ export const statusRecipe = tv({
   base: [
     "shrink-0 rounded-full",
     "flex items-center justify-center",
-    "font-medium text-xs",
-    "ring-2 ring-background",
+    "text-xs font-medium",
+    "ring-background ring-2",
   ],
   defaultVariants: {
-    /**
-     * Control size.
-     */
+    /** Control size. */
     size: "md",
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "default",
   },
   variants: {
     size: {
-      lg: "size-3 [&_svg:not([class*='size-'])]:size-2.5 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-      md: "size-2.5 [&_svg:not([class*='size-'])]:size-2 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-      sm: "size-2 [&_svg:not([class*='size-'])]:size-1.5 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+      lg: "size-3 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-2.5",
+      md: "size-2.5 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-2",
+      sm: "size-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-1.5",
     },
     variant: {
       default: "bg-foreground text-background",

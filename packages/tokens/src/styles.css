@@ -303,7 +303,7 @@
     @apply bg-background text-foreground flex min-h-svh flex-col font-sans leading-relaxed tracking-normal;
   }
   main {
-    @apply flex-1 flex flex-col;
+    @apply flex flex-1 flex-col;
   }
   button:not(:disabled),
   [role="button"]:not(:disabled) {
@@ -318,9 +318,9 @@
 /* Provider `motion={{ disabled: true }}`: collapse animations (tests / e2e).
    A nested `data-motion="enabled"` re-enables motion for its subtree. */
 :where([data-motion="disabled"])
-:where(*, *::before, *::after):not(
-  :where([data-motion="enabled"], [data-motion="enabled"] *)
-) {
+  :where(*, *::before, *::after):not(
+    :where([data-motion="enabled"], [data-motion="enabled"] *)
+  ) {
   /* biome-ignore lint/complexity/noImportantStyles: must beat Tailwind utilities */
   animation-duration: 0s !important;
   /* biome-ignore lint/complexity/noImportantStyles: must beat Tailwind utilities */

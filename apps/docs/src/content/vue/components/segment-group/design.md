@@ -29,9 +29,9 @@ Tabs often imply separate panels with their own URLs or lazy content; segments u
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Compact single-choice modes | **Segment Group** |
-| Visible list of options | [Radio Group](/vue/components/radio-group/design) |
+| Need                         | Prefer                                                |
+| ---------------------------- | ----------------------------------------------------- |
+| Compact single-choice modes  | **Segment Group**                                     |
+| Visible list of options      | [Radio Group](/vue/components/radio-group/design)   |
 | Multiple independent filters | [Toggle Group](/vue/components/toggle-group/design) |
-| Major section navigation | [Tabs](/vue/components/tabs/design) |
+| Major section navigation     | [Tabs](/vue/components/tabs/design)                 |

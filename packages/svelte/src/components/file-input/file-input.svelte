@@ -1,87 +1,87 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
-import {
-  type FormControlGroupShellVariantProps,
-  fileInputRecipe,
-  formControlGroupShellRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { HTMLInputAttributes } from "svelte/elements";
-import { InputGroup } from "../input-group";
-import { useMessageResolver } from "../provider/context";
-import { useFormControlSurface } from "../surface/use-form-control-surface";
-import { Context } from "./file-input.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
+  import {
+    type FormControlGroupShellVariantProps,
+    fileInputRecipe,
+    formControlGroupShellRecipe,
+  } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLInputAttributes } from "svelte/elements";
+  import { InputGroup } from "../input-group";
+  import { useMessageResolver } from "../provider/context";
+  import { useFormControlSurface } from "../surface/use-form-control-surface";
+  import { Context } from "./file-input.context";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-type FormControlVariant = "primary" | "secondary";
+  type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<
-  HTMLInputAttributes,
-  "defaultValue" | "onChange" | "size" | "type" | "value"
-> &
-  FormControlGroupShellVariantProps & {
-    browseLabel?: string;
-    invalid?: boolean;
-    onFilesChange?: (files: globalThis.File[]) => void;
-    onValueChange?: (files: globalThis.File[]) => void;
-    placeholder?: string;
-  } & BaseFileInputProps;
+  type Props = Omit<
+    HTMLInputAttributes,
+    "defaultValue" | "onChange" | "size" | "type" | "value"
+  > &
+    FormControlGroupShellVariantProps & {
+      browseLabel?: string;
+      invalid?: boolean;
+      onFilesChange?: (files: globalThis.File[]) => void;
+      onValueChange?: (files: globalThis.File[]) => void;
+      placeholder?: string;
+    } & BaseFileInputProps;
 
-let {
-  size = "md",
-  variant: variantProp,
-  accept,
-  disabled,
-  invalid,
-  multiple,
-  name,
-  required,
-  browseLabel = t("fileInput.browse"),
-  capture,
-  id,
-  placeholder = t("fileInput.placeholder"),
-  onchange,
-  onFilesChange,
-  onValueChange,
-  recipe = fileInputRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    size = "md",
+    variant: variantProp,
+    accept,
+    disabled,
+    invalid,
+    multiple,
+    name,
+    required,
+    browseLabel = t("fileInput.browse"),
+    capture,
+    id,
+    placeholder = t("fileInput.placeholder"),
+    onchange,
+    onFilesChange,
+    onValueChange,
+    recipe = fileInputRecipe,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-let inputEl = $state<HTMLInputElement | null>(null);
-let fileLabel = $state<string | undefined>(undefined);
+  let inputEl = $state<HTMLInputElement | null>(null);
+  let fileLabel = $state<string | undefined>(undefined);
 
-const slots = $derived(recipe());
-const surfaceVariant = useFormControlSurface();
-const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
+  const slots = $derived(recipe());
+  const surfaceVariant = useFormControlSurface();
+  const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 
-Context.set({
-  get slots() {
-    return slots;
-  },
-});
+  Context.set({
+    get slots() {
+      return slots;
+    },
+  });
 
-function formatFileLabel(files: globalThis.File[]): string | undefined {
-  if (files.length === 0) return undefined;
-  if (files.length === 1) return files[0]?.name;
-  return `${files.length} files selected`;
-}
+  function formatFileLabel(files: globalThis.File[]): string | undefined {
+    if (files.length === 0) return undefined;
+    if (files.length === 1) return files[0]?.name;
+    return `${files.length} files selected`;
+  }
 
-function openPicker() {
-  inputEl?.click();
-}
+  function openPicker() {
+    inputEl?.click();
+  }
 
-function handleChange(event: Event & { currentTarget: HTMLInputElement }) {
-  onchange?.(event as never);
-  const files = event.currentTarget.files
-    ? Array.from(event.currentTarget.files)
-    : [];
-  onFilesChange?.(files);
-  onValueChange?.(files);
-  fileLabel = formatFileLabel(files);
-}
+  function handleChange(event: Event & { currentTarget: HTMLInputElement }) {
+    onchange?.(event as never);
+    const files = event.currentTarget.files
+      ? Array.from(event.currentTarget.files)
+      : [];
+    onFilesChange?.(files);
+    onValueChange?.(files);
+    fileLabel = formatFileLabel(files);
+  }
 </script>
 
 <Ark
@@ -115,7 +115,7 @@ function handleChange(event: Event & { currentTarget: HTMLInputElement }) {
     {required}
     type="file"
     bind:this={inputEl}
-  >
+  />
   <InputGroup.Addon align="inline-start">
     <InputGroup.Button {disabled} onclick={openPicker} type="button">
       {browseLabel}

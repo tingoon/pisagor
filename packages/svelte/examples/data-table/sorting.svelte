@@ -1,25 +1,25 @@
 <script lang="ts">
-import { Table } from "@pisagor/svelte";
-import { DataTable, type SortingState } from "@pisagor/svelte/data-table";
+  import { Table } from "@pisagor/svelte";
+  import { DataTable, type SortingState } from "@pisagor/svelte/data-table";
 
-const data = [
-  { id: "1", name: "Ada", role: "Admin" },
-  { id: "2", name: "Alan", role: "Editor" },
-  { id: "3", name: "Grace", role: "Viewer" },
-];
+  const data = [
+    { id: "1", name: "Ada", role: "Admin" },
+    { id: "2", name: "Alan", role: "Editor" },
+    { id: "3", name: "Grace", role: "Viewer" },
+  ];
 
-const columns = [
-  { accessorKey: "name", enableSorting: true, header: "Name" },
-  { accessorKey: "role", enableSorting: true, header: "Role" },
-];
+  const columns = [
+    { accessorKey: "name", enableSorting: true, header: "Name" },
+    { accessorKey: "role", enableSorting: true, header: "Role" },
+  ];
 
-let sorting = $state<SortingState>([{ desc: false, id: "name" }]);
+  let sorting = $state<SortingState>([{ desc: false, id: "name" }]);
 
-function onSortingChange(
-  updater: SortingState | ((prev: SortingState) => SortingState),
-) {
-  sorting = typeof updater === "function" ? updater(sorting) : updater;
-}
+  function onSortingChange(
+    updater: SortingState | ((prev: SortingState) => SortingState),
+  ) {
+    sorting = typeof updater === "function" ? updater(sorting) : updater;
+  }
 </script>
 
 <DataTable {columns} {data} {onSortingChange} state={{ sorting }}>

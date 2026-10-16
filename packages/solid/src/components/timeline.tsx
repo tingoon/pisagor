@@ -17,12 +17,10 @@ const { withContext, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface TimelineRootProps
-  extends ComponentProps<typeof ark.ol>,
-    BaseTimelineRootProps {}
+  extends ComponentProps<typeof ark.ol>, BaseTimelineRootProps {}
 
 export interface TimelineItemProps
-  extends ComponentProps<typeof ark.li>,
-    BaseTimelineItemProps {}
+  extends ComponentProps<typeof ark.li>, BaseTimelineItemProps {}
 
 export type TimelineIndicatorProps = ComponentProps<typeof ark.div>;
 export type TimelineContentProps = ComponentProps<typeof ark.div>;

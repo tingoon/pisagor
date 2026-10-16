@@ -11,14 +11,12 @@ import { useTranslation } from "./provider/context";
 const SKIP_NAV_ID = "skip-nav-content";
 
 export interface SkipNavLinkProps
-  extends ComponentProps<typeof ark.a>,
-    BaseSkipNavLinkProps {
+  extends ComponentProps<typeof ark.a>, BaseSkipNavLinkProps {
   id?: string;
 }
 
 export interface SkipNavContentProps
-  extends ComponentProps<typeof ark.div>,
-    BaseSkipNavContentProps {
+  extends ComponentProps<typeof ark.div>, BaseSkipNavContentProps {
   id?: string;
 }
 

@@ -1,7 +1,7 @@
 ---
 root: false
 targets:
-  - '*'
+  - "*"
 description: Shared Solid component patterns — package layout, compound API, context, styling, demos
 globs:
   - packages/solid/src/**
@@ -84,10 +84,10 @@ Same contract as React — extend `BaseFooProps` from `@pisagor/props`. Template
 
 Choose **closed**, **compound**, or **compound + shorthand** per component. Same product surface as React/Vue — [Component](component.mdc) for naming; [React Component Patterns → Public API](react-component.mdc#public-api) for the decision table.
 
-| Model | Public API | Barrel (`index.ts`) |
-| ----- | ---------- | ------------------- |
-| **Closed** | `Foo` | `export * from "./foo"` / named `Foo` |
-| **Compound** | `Foo.Root`, `Foo.Title`, … | `Object.assign(FooRoot, { … })` |
+| Model         | Public API                    | Barrel (`index.ts`)                        |
+| ------------- | ----------------------------- | ------------------------------------------ |
+| **Closed**    | `Foo`                         | `export * from "./foo"` / named `Foo`      |
+| **Compound**  | `Foo.Root`, `Foo.Title`, …    | `Object.assign(FooRoot, { … })`            |
 | **Shorthand** | `FooShorthand` or root preset | `Object.assign(FooShorthand, { Root, … })` |
 
 ### Do

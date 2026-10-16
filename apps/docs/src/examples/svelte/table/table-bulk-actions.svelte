@@ -1,76 +1,76 @@
 <script lang="ts">
-import {
-  ActionBar,
-  AlertDialog,
-  Badge,
-  Button,
-  Checkbox,
-  DropdownMenu,
-  Table,
-} from "@pisagor/svelte";
-import { cn } from "@pisagor/utils";
-import ArchiveIcon from "phosphor-svelte/lib/ArchiveIcon";
-import CopyIcon from "phosphor-svelte/lib/CopyIcon";
-import DotsThreeIcon from "phosphor-svelte/lib/DotsThreeIcon";
-import PaperPlaneTiltIcon from "phosphor-svelte/lib/PaperPlaneTiltIcon";
-import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";
-import TrashIcon from "phosphor-svelte/lib/TrashIcon";
-import { tableBulkActionsBlock } from "#/recipes/blocks/table";
+  import {
+    ActionBar,
+    AlertDialog,
+    Badge,
+    Button,
+    Checkbox,
+    DropdownMenu,
+    Table,
+  } from "@pisagor/svelte";
+  import { cn } from "@pisagor/utils";
+  import ArchiveIcon from "phosphor-svelte/lib/ArchiveIcon";
+  import CopyIcon from "phosphor-svelte/lib/CopyIcon";
+  import DotsThreeIcon from "phosphor-svelte/lib/DotsThreeIcon";
+  import PaperPlaneTiltIcon from "phosphor-svelte/lib/PaperPlaneTiltIcon";
+  import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";
+  import TrashIcon from "phosphor-svelte/lib/TrashIcon";
+  import { tableBulkActionsBlock } from "#/recipes/blocks/table";
 
-const styles = tableBulkActionsBlock();
+  const styles = tableBulkActionsBlock();
 
-type BadgeVariant = "warning" | "info" | "success";
+  type BadgeVariant = "warning" | "info" | "success";
 
-interface Props {
-  class?: string;
-}
-let { class: className }: Props = $props();
+  interface Props {
+    class?: string;
+  }
+  let { class: className }: Props = $props();
 
-let selectedIds = $state<string[]>([]);
+  let selectedIds = $state<string[]>([]);
 
-const orders = [
-  {
-    amount: "245,12 $",
-    id: "SO-01",
-    name: "Macbook Pro 16",
-    status: "progress",
-  },
-  {
-    amount: "122,18 $",
-    id: "SO-02",
-    name: "Apple Watch Series 9",
-    status: "transit",
-  },
-  { amount: "89,50 $", id: "SO-03", name: "AirPods Max", status: "pending" },
-  { amount: "310,00 $", id: "SO-04", name: "iPad Pro 13", status: "pending" },
-  {
-    amount: "156,75 $",
-    id: "SO-05",
-    name: "iPhone 15 Pro Max",
-    status: "transit",
-  },
-];
+  const orders = [
+    {
+      amount: "245,12 $",
+      id: "SO-01",
+      name: "Macbook Pro 16",
+      status: "progress",
+    },
+    {
+      amount: "122,18 $",
+      id: "SO-02",
+      name: "Apple Watch Series 9",
+      status: "transit",
+    },
+    { amount: "89,50 $", id: "SO-03", name: "AirPods Max", status: "pending" },
+    { amount: "310,00 $", id: "SO-04", name: "iPad Pro 13", status: "pending" },
+    {
+      amount: "156,75 $",
+      id: "SO-05",
+      name: "iPhone 15 Pro Max",
+      status: "transit",
+    },
+  ];
 
-const statusVariants: Record<string, BadgeVariant> = {
-  pending: "warning",
-  progress: "info",
-  transit: "success",
-};
+  const statusVariants: Record<string, BadgeVariant> = {
+    pending: "warning",
+    progress: "info",
+    transit: "success",
+  };
 
-const isOpen = $derived(selectedIds.length > 0);
-const allSelected = $derived(
-  selectedIds.length > 0 && selectedIds.length === orders.length,
-);
+  const isOpen = $derived(selectedIds.length > 0);
+  const allSelected = $derived(
+    selectedIds.length > 0 && selectedIds.length === orders.length,
+  );
 
-function handleSelectAll(checked: boolean | "indeterminate") {
-  selectedIds = checked ? orders.map((o) => o.id) : [];
-}
+  function handleSelectAll(checked: boolean | "indeterminate") {
+    selectedIds = checked ? orders.map((o) => o.id) : [];
+  }
 
-function handleSelectRow(id: string, checked: boolean | "indeterminate") {
-  selectedIds = checked
-    ? [...selectedIds, id]
-    : selectedIds.filter((item) => item !== id);
-}
+  function handleSelectRow(id: string, checked: boolean | "indeterminate") {
+    selectedIds = checked
+      ? [...selectedIds, id]
+      : selectedIds.filter((item) => item !== id);
+  }
 </script>
 
 <div class={cn(styles.root(), className)}>

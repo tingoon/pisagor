@@ -14,8 +14,7 @@ const { Context: TableStylesContext, withContext } = createSlotRecipeContext({
 
 // #region Types
 export interface TableProps
-  extends ComponentProps<typeof ark.table>,
-    BaseTableProps {
+  extends ComponentProps<typeof ark.table>, BaseTableProps {
   /**
    * The variant of the table.
    *

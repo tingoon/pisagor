@@ -5,8 +5,7 @@ import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
 export interface VisuallyHiddenProps
-  extends ComponentProps<typeof ark.span>,
-    BaseVisuallyHiddenProps {}
+  extends ComponentProps<typeof ark.span>, BaseVisuallyHiddenProps {}
 
 export function VisuallyHidden(props: VisuallyHiddenProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "recipe"]);

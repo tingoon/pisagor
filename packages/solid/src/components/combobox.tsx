@@ -57,7 +57,10 @@ function useComboboxSlots() {
 
 /** Root-level control props (`variant`, `size`) read by `Combobox.Input`. */
 const ComboboxControlContext = createContext<InputRootVariantProps>({});
-/** True inside `Combobox.Control`, so `Combobox.Input` does not render a second control. */
+/**
+ * True inside `Combobox.Control`, so `Combobox.Input` does not render a second
+ * control.
+ */
 const ComboboxInsideControlContext = createContext(false);
 
 /** @deprecated Prefer composing within Combobox.Root; kept for public API. */
@@ -90,28 +93,27 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   onValueChange?: (value: string[]) => void;
 } & BaseComboboxRootProps;
 
-export interface ComboboxProps
-  extends Omit<ComboboxRootProps, "children" | "collection"> {
+export interface ComboboxProps extends Omit<
+  ComboboxRootProps,
+  "children" | "collection"
+> {
   clearable?: boolean;
   items?: Array<ComboboxPresetItem | string>;
 }
 
 export interface ComboboxInputProps
-  extends Omit<ComboboxPrimitiveInputProps, "size">,
-    InputRootVariantProps {
+  extends Omit<ComboboxPrimitiveInputProps, "size">, InputRootVariantProps {
   clearable?: boolean;
   disabled?: boolean;
   showTrigger?: boolean;
 }
 
-export interface ComboboxItemGroupProps
-  extends ComboboxPrimitiveItemGroupProps {
+export interface ComboboxItemGroupProps extends ComboboxPrimitiveItemGroupProps {
   heading?: string | JSX.Element;
 }
 
 export interface ComboboxItemProps
-  extends ComboboxPrimitiveItemProps,
-    ComboboxVariantProps {}
+  extends ComboboxPrimitiveItemProps, ComboboxVariantProps {}
 
 export type ComboboxFieldInputProps = ComboboxPrimitiveInputProps;
 

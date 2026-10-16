@@ -29,10 +29,10 @@ Prefer placement that keeps the trigger and popover on screen together. Flip or 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Anchored compact task or menu | **Popover** |
-| Blocking task or decision | [Dialog](/vue/components/dialog/design) |
-| Rich hover preview | [Hover Card](/vue/components/hover-card/design) |
-| Single-line hint | [Tooltip](/vue/components/tooltip/design) |
-| Edge panel on small screens | [Sheet](/vue/components/sheet/design) |
+| Need                          | Prefer                                            |
+| ----------------------------- | ------------------------------------------------- |
+| Anchored compact task or menu | **Popover**                                       |
+| Blocking task or decision     | [Dialog](/vue/components/dialog/design)         |
+| Rich hover preview            | [Hover Card](/vue/components/hover-card/design) |
+| Single-line hint              | [Tooltip](/vue/components/tooltip/design)       |
+| Edge panel on small screens   | [Sheet](/vue/components/sheet/design)           |

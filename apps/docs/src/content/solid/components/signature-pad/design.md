@@ -29,9 +29,9 @@ Persist signatures in the format your backend expects (PNG, SVG, or points) and 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Handwritten capture | **Signature Pad** |
-| Checkbox agreement | [Checkbox](/solid/components/checkbox/design) |
+| Need                      | Prefer                                              |
+| ------------------------- | --------------------------------------------------- |
+| Handwritten capture       | **Signature Pad**                                   |
+| Checkbox agreement        | [Checkbox](/solid/components/checkbox/design)       |
 | File upload of signed PDF | [File Upload](/solid/components/file-upload/design) |
-| Form layout and errors | [Field](/solid/components/field/design) |
+| Form layout and errors    | [Field](/solid/components/field/design)             |

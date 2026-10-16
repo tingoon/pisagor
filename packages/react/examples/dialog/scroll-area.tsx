@@ -15,7 +15,7 @@ export function ScrollArea() {
               <Dialog.Title>Terms and conditions</Dialog.Title>
             </Dialog.Header>
             <Dialog.Body scrollFade>
-              <div className="space-y-2 **:[h3]:font-semibold **:[p]:text-muted-foreground **:[p]:text-sm">
+              <div className="**:[p]:text-muted-foreground space-y-2 **:[h3]:font-semibold **:[p]:text-sm">
                 <h3>What is Lorem Ipsum?</h3>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi

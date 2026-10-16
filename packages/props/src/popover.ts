@@ -4,6 +4,7 @@ import type { PopoverRecipeFn } from "@pisagor/recipes";
 export interface PopoverProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue popoverRecipe
    */
   recipe?: PopoverRecipeFn;

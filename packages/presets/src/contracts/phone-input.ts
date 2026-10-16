@@ -2,15 +2,13 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const phoneInputRecipe = tv({
   defaultVariants: {
-    /**
-     * Control size.
-     */
+    /** Control size. */
     size: "md",
   },
   slots: {
     countryButton: [
       "h-full gap-1.5 rounded-none rounded-s-lg px-2.5",
-      "font-normal text-sm tabular-nums",
+      "text-sm font-normal tabular-nums",
     ],
     countryCaret: ["size-3.5 shrink-0 opacity-64"],
     countryControl: ["flex h-full items-stretch"],
@@ -37,7 +35,7 @@ export const phoneInputRecipe = tv({
       "disabled:bg-transparent aria-invalid:ring-0 data-invalid:ring-0",
       "dark:bg-transparent dark:disabled:bg-transparent",
     ],
-    itemCode: ["ms-auto text-muted-foreground tabular-nums"],
+    itemCode: ["text-muted-foreground ms-auto tabular-nums"],
     itemLabel: "truncate",
     popup: ["min-w-72"],
     search: ["h-8"],

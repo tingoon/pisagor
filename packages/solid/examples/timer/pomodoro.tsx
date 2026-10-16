@@ -20,7 +20,7 @@ export function Pomodoro() {
             <Timer.Separator />
             <Timer.Item class="text-5xl" type="seconds" />
           </Timer.Area>
-          <span class="mt-0.5 font-medium text-2.5 text-muted-foreground uppercase tracking-[0.22em]">
+          <span class="text-2.5 text-muted-foreground mt-0.5 font-medium tracking-[0.22em] uppercase">
             Focus
           </span>
           <Timer.Control class="w-full justify-center">

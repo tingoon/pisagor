@@ -1,17 +1,17 @@
 <script lang="ts">
-import { datePickerRecipe } from "@pisagor/recipes";
-import { Button, Calendar, DatePicker } from "@pisagor/svelte";
-import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
-import { tv } from "tailwind-variants";
+  import { datePickerRecipe } from "@pisagor/recipes";
+  import { Button, Calendar, DatePicker } from "@pisagor/svelte";
+  import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
+  import { tv } from "tailwind-variants";
 
-const brandDatePickerRecipe = tv({
-  extend: datePickerRecipe,
-  slots: {
-    content: "border-emerald-500/40",
-    trigger: "text-emerald-600",
-  },
-  variants: {},
-});
+  const brandDatePickerRecipe = tv({
+    extend: datePickerRecipe,
+    slots: {
+      content: "border-emerald-500/40",
+      trigger: "text-emerald-600",
+    },
+    variants: {},
+  });
 </script>
 
 <DatePicker recipe={brandDatePickerRecipe}>

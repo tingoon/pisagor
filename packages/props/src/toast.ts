@@ -4,6 +4,7 @@ import type { ToastItemRecipeFn, ToastRecipeFn } from "@pisagor/recipes";
 export interface ToastProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue toastRecipe
    */
   recipe?: ToastRecipeFn;
@@ -13,6 +14,7 @@ export interface ToastProps {
 export interface ToastItemProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue toastItemRecipe
    */
   recipe?: ToastItemRecipeFn;

@@ -12,8 +12,7 @@ type DatePickerControlProps = Omit<
 >;
 
 export interface DateFieldProps
-  extends FieldPresentationProps,
-    DatePickerControlProps {
+  extends FieldPresentationProps, DatePickerControlProps {
   name?: string;
   value?: DatePickerProps["value"];
   placeholder?: string;

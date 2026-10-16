@@ -1,12 +1,12 @@
 <script lang="ts">
-import { DropdownMenu, InputGroup } from "@pisagor/svelte";
-import CopyIcon from "phosphor-svelte/lib/CopyIcon";
-import DotsThreeIcon from "phosphor-svelte/lib/DotsThreeIcon";
-import FileIcon from "phosphor-svelte/lib/FileIcon";
-import FolderIcon from "phosphor-svelte/lib/FolderIcon";
-import { inputGroupWithMenuBlock } from "#/recipes/blocks/input-group";
+  import { DropdownMenu, InputGroup } from "@pisagor/svelte";
+  import CopyIcon from "phosphor-svelte/lib/CopyIcon";
+  import DotsThreeIcon from "phosphor-svelte/lib/DotsThreeIcon";
+  import FileIcon from "phosphor-svelte/lib/FileIcon";
+  import FolderIcon from "phosphor-svelte/lib/FolderIcon";
+  import { inputGroupWithMenuBlock } from "#/recipes/blocks/input-group";
 
-const styles = inputGroupWithMenuBlock();
+  const styles = inputGroupWithMenuBlock();
 </script>
 
 <InputGroup>

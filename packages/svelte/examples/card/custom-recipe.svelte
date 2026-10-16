@@ -1,16 +1,16 @@
 <script lang="ts">
-import { cardRecipe } from "@pisagor/recipes";
-import { Card } from "@pisagor/svelte";
-import { tv } from "tailwind-variants";
+  import { cardRecipe } from "@pisagor/recipes";
+  import { Card } from "@pisagor/svelte";
+  import { tv } from "tailwind-variants";
 
-const brandCardRecipe = tv({
-  extend: cardRecipe,
-  slots: {
-    base: "border-emerald-500/40 bg-emerald-500/5",
-    title: "text-emerald-900 dark:text-emerald-100",
-  },
-  variants: {},
-});
+  const brandCardRecipe = tv({
+    extend: cardRecipe,
+    slots: {
+      base: "border-emerald-500/40 bg-emerald-500/5",
+      title: "text-emerald-900 dark:text-emerald-100",
+    },
+    variants: {},
+  });
 </script>
 
 <Card recipe={brandCardRecipe}>

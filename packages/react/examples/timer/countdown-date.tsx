@@ -8,7 +8,7 @@ export function CountdownDate() {
   return (
     <Card className="rounded-3xl [--space:--spacing(6)]">
       <Card.Content className="flex flex-col items-center gap-3">
-        <p className="text-center text-muted-foreground text-xs">
+        <p className="text-muted-foreground text-center text-xs">
           Until {formatDate(targetDate)}
         </p>
         <Timer

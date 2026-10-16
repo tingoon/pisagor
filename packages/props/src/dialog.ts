@@ -4,6 +4,7 @@ import type { DialogRecipeFn, DialogVariantProps } from "@pisagor/recipes";
 export interface DialogProps extends DialogVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue dialogRecipe
    */
   recipe?: DialogRecipeFn;

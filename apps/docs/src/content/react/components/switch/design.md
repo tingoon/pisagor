@@ -29,9 +29,9 @@ When a switch sits in a form that still has Save, either auto-save on toggle or 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Immediate on/off setting | **Switch** |
+| Need                          | Prefer                                        |
+| ----------------------------- | --------------------------------------------- |
+| Immediate on/off setting      | **Switch**                                    |
 | Choice saved with form submit | [Checkbox](/react/components/checkbox/design) |
-| Toolbar pressed state | [Toggle](/react/components/toggle/design) |
-| Continuous value | [Slider](/react/components/slider/design) |
+| Toolbar pressed state         | [Toggle](/react/components/toggle/design)     |
+| Continuous value              | [Slider](/react/components/slider/design)     |

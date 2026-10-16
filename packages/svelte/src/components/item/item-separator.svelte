@@ -1,15 +1,15 @@
 <script lang="ts">
-import type { ItemProps as BaseItemProps } from "@pisagor/props";
-import { itemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { ClassValue } from "svelte/elements";
-import Separator from "../separator.svelte";
+  import type { ItemProps as BaseItemProps } from "@pisagor/props";
+  import { itemRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { ClassValue } from "svelte/elements";
+  import Separator from "../separator.svelte";
 
-type Props = { class?: ClassValue } & BaseItemProps;
+  type Props = { class?: ClassValue } & BaseItemProps;
 
-let { recipe = itemRecipe, class: className, ...rest }: Props = $props();
+  let { recipe = itemRecipe, class: className, ...rest }: Props = $props();
 
-const slots = $derived(recipe());
+  const slots = $derived(recipe());
 </script>
 
 <Separator

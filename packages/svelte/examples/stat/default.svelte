@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Stat } from "@pisagor/svelte";
+  import { Stat } from "@pisagor/svelte";
 </script>
 
 <Stat

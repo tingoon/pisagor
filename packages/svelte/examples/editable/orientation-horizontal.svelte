@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Button, Editable } from "@pisagor/svelte";
-import { CheckIcon, XIcon } from "@pisagor/svelte/icons";
+  import { Button, Editable } from "@pisagor/svelte";
+  import { CheckIcon, XIcon } from "@pisagor/svelte/icons";
 </script>
 
 <Editable>

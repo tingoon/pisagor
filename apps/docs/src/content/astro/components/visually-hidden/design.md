@@ -29,9 +29,9 @@ When a control has no inner text, `aria-label` or visually hidden content both w
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Screen-reader-only supplement | **Visually Hidden** |
-| Visible control name | Label or Field |
-| Short hover hint | Tooltip |
-| Skip repetitive nav | [Skip Nav](/astro/components/skip-nav/design) |
+| Need                          | Prefer                                           |
+| ----------------------------- | ------------------------------------------------ |
+| Screen-reader-only supplement | **Visually Hidden**                              |
+| Visible control name          | Label or Field |
+| Short hover hint              | Tooltip      |
+| Skip repetitive nav           | [Skip Nav](/astro/components/skip-nav/design)    |

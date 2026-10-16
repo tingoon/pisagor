@@ -17,7 +17,7 @@ export function WithoutHandle() {
         {(id) => (
           <Sortable.Item value={id}>
             <Sortable.ItemContent>
-              <span class="font-medium text-sm">{labels[id]}</span>
+              <span class="text-sm font-medium">{labels[id]}</span>
             </Sortable.ItemContent>
           </Sortable.Item>
         )}

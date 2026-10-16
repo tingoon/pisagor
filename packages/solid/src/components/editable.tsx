@@ -43,8 +43,10 @@ export interface EditableProps extends EditableRootProps, BaseEditableProps {
   onValueChange?: (value: string) => void;
 }
 
-export interface EditableInputProps
-  extends Omit<EditablePrimitiveInputProps, "size"> {}
+export interface EditableInputProps extends Omit<
+  EditablePrimitiveInputProps,
+  "size"
+> {}
 
 export interface EditablePreviewProps extends EditablePrimitivePreviewProps {
   controlVariant?: FormControlVariant;

@@ -29,10 +29,10 @@ Prefer placement that keeps the trigger and popover on screen together. Flip or 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Anchored compact task or menu | **Popover** |
-| Blocking task or decision | [Dialog](/svelte/components/dialog/design) |
-| Rich hover preview | [Hover Card](/svelte/components/hover-card/design) |
-| Single-line hint | [Tooltip](/svelte/components/tooltip/design) |
-| Edge panel on small screens | [Sheet](/svelte/components/sheet/design) |
+| Need                          | Prefer                                            |
+| ----------------------------- | ------------------------------------------------- |
+| Anchored compact task or menu | **Popover**                                       |
+| Blocking task or decision     | [Dialog](/svelte/components/dialog/design)         |
+| Rich hover preview            | [Hover Card](/svelte/components/hover-card/design) |
+| Single-line hint              | [Tooltip](/svelte/components/tooltip/design)       |
+| Edge panel on small screens   | [Sheet](/svelte/components/sheet/design)           |

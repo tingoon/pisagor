@@ -29,9 +29,9 @@ Start with high-value commands — go to…, create…, toggle theme — before 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Global searchable actions | **Command** |
+| Need                      | Prefer                                                  |
+| ------------------------- | ------------------------------------------------------- |
+| Global searchable actions | **Command**                                             |
 | Trigger-bound action list | [Dropdown Menu](/react/components/dropdown-menu/design) |
-| Pointer-position actions | [Context Menu](/react/components/context-menu/design) |
-| Modal task focus | [Dialog](/react/components/dialog/design) |
+| Pointer-position actions  | [Context Menu](/react/components/context-menu/design)   |
+| Modal task focus          | [Dialog](/react/components/dialog/design)               |

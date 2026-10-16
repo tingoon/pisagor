@@ -11,7 +11,7 @@ import { Button, File } from "@pisagor/vue";
         height="40"
         src="https://picsum.photos/seed/file/80/80"
         width="40"
-      >
+      />
     </File.Media>
     <File.Content>
       <File.Name>cover.jpg</File.Name>

@@ -1,21 +1,21 @@
 <script lang="ts">
-import { Pagination, Table } from "@pisagor/svelte";
-import type { PaginationState } from "@pisagor/svelte/data-grid";
-import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import { allUsers, userColumns } from "./helpers";
+  import { Pagination, Table } from "@pisagor/svelte";
+  import type { PaginationState } from "@pisagor/svelte/data-grid";
+  import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
+  import { allUsers, userColumns } from "./helpers";
 
-const columns = [...userColumns];
-let pagination = $state<PaginationState>({ pageIndex: 0, pageSize: 8 });
+  const columns = [...userColumns];
+  let pagination = $state<PaginationState>({ pageIndex: 0, pageSize: 8 });
 
-function onPaginationChange(
-  updater: PaginationState | ((prev: PaginationState) => PaginationState),
-) {
-  pagination = typeof updater === "function" ? updater(pagination) : updater;
-}
+  function onPaginationChange(
+    updater: PaginationState | ((prev: PaginationState) => PaginationState),
+  ) {
+    pagination = typeof updater === "function" ? updater(pagination) : updater;
+  }
 </script>
 
 <div class="flex w-full flex-col gap-3">
-  <div class="rounded-xl border bg-muted/20 p-3">
+  <div class="bg-muted/20 rounded-xl border p-3">
     <DataGrid
       {columns}
       data={allUsers}
@@ -24,7 +24,7 @@ function onPaginationChange(
       state={{ pagination }}
     >
       <DataGrid.Toolbar>
-        <p class="font-medium text-sm">Paginated directory</p>
+        <p class="text-sm font-medium">Paginated directory</p>
       </DataGrid.Toolbar>
       <Table>
         <Table.Header>

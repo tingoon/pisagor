@@ -29,8 +29,7 @@ interface DataListPresetItem {
 }
 
 export interface DataListRootProps
-  extends ComponentProps<typeof ark.dl>,
-    BaseDataListRootProps {
+  extends ComponentProps<typeof ark.dl>, BaseDataListRootProps {
   orientation?: "horizontal" | "vertical";
 }
 
@@ -41,8 +40,10 @@ export interface DataListProps extends Omit<DataListRootProps, "children"> {
 type DataListItemRootProps = ComponentProps<typeof ark.div> &
   BaseDataListItemProps;
 
-export interface DataListItemProps
-  extends Omit<DataListItemRootProps, "value"> {
+export interface DataListItemProps extends Omit<
+  DataListItemRootProps,
+  "value"
+> {
   value?: JSX.Element;
   classNames?: DataListClassNames;
 }

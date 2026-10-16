@@ -12,7 +12,7 @@ export function Default() {
           <Sidebar.Menu>
             <Sidebar.MenuItem>
               <Sidebar.MenuButton size="lg">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                <div className="bg-primary text-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                   <HouseIcon className="size-4" />
                 </div>
                 <span className="truncate font-semibold">Pisagor</span>
@@ -56,7 +56,7 @@ export function Default() {
       <Sidebar.Inset>
         <header className="flex h-12 items-center gap-2 border-b px-4">
           <Sidebar.Trigger />
-          <span className="font-medium text-sm">Dashboard</span>
+          <span className="text-sm font-medium">Dashboard</span>
         </header>
         <div className="flex flex-1 flex-col gap-2 p-4">
           <p className="text-muted-foreground text-sm">Main content area</p>

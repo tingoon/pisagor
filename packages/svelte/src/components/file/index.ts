@@ -19,7 +19,5 @@ const fileParts = {
 
 export const FileItem = Object.assign(FileShorthand, fileParts);
 
-/**
- * @deprecated Use `FileItem`. `File` shadows the global `File` constructor.
- */
+/** @deprecated Use `FileItem`. `File` shadows the global `File` constructor. */
 export const File = Object.assign(FileShorthand, fileParts);

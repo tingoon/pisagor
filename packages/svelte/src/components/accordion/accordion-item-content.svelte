@@ -1,18 +1,18 @@
 <script lang="ts">
-import {
-  type AccordionItemContentProps,
-  Accordion as AccordionPrimitive,
-} from "@ark-ui/svelte/accordion";
-import { cn } from "@pisagor/utils";
-import { useAccordionItem } from "./accordion.context";
+  import {
+    type AccordionItemContentProps,
+    Accordion as AccordionPrimitive,
+  } from "@ark-ui/svelte/accordion";
+  import { cn } from "@pisagor/utils";
+  import { useAccordionItem } from "./accordion.context";
 
-let {
-  children,
-  class: className,
-  ...rest
-}: AccordionItemContentProps = $props();
-const styles = useAccordionItem();
-const slots = $derived(styles.slots);
+  let {
+    children,
+    class: className,
+    ...rest
+  }: AccordionItemContentProps = $props();
+  const styles = useAccordionItem();
+  const slots = $derived(styles.slots);
 </script>
 
 <AccordionPrimitive.ItemContent

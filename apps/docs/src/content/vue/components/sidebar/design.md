@@ -29,9 +29,9 @@ Hide the rail behind a menu control; open navigation in a sheet with the same li
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Persistent app navigation rail | **Sidebar** |
-| Top horizontal nav | [Navbar](/vue/components/navbar/design) |
-| Temporary mobile nav | [Sheet](/vue/components/sheet/design) |
-| Page layout regions | [App Shell](/vue/components/app-shell/design) |
+| Need                           | Prefer                                          |
+| ------------------------------ | ----------------------------------------------- |
+| Persistent app navigation rail | **Sidebar**                                     |
+| Top horizontal nav             | [Navbar](/vue/components/navbar/design)       |
+| Temporary mobile nav           | [Sheet](/vue/components/sheet/design)         |
+| Page layout regions            | [App Shell](/vue/components/app-shell/design) |

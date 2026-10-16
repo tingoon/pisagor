@@ -1,15 +1,15 @@
 <script lang="ts">
-import { useLocaleContext } from "@ark-ui/svelte/locale";
-import type { Snippet } from "svelte";
+  import { useLocaleContext } from "@ark-ui/svelte/locale";
+  import type { Snippet } from "svelte";
 
-let {
-  children,
-  motion,
-  part,
-}: { children?: Snippet; motion?: "disabled" | "enabled"; part: string } =
-  $props();
+  let {
+    children,
+    motion,
+    part,
+  }: { children?: Snippet; motion?: "disabled" | "enabled"; part: string } =
+    $props();
 
-const locale = useLocaleContext();
+  const locale = useLocaleContext();
 </script>
 
 <div

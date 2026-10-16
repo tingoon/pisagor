@@ -38,9 +38,7 @@ type FileInputRootProps = ComponentProps<typeof ark.div> &
   };
 
 export interface FileInputProps
-  extends NativeFileInputProps,
-    FileInputVariantProps,
-    BaseFileInputProps {
+  extends NativeFileInputProps, FileInputVariantProps, BaseFileInputProps {
   invalid?: boolean;
   browseLabel?: string;
   placeholder?: string;

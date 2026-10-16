@@ -1,45 +1,45 @@
 <script lang="ts">
-import { buttonRecipe } from "@pisagor/recipes";
-import { Tour, type TourStepDetails } from "@pisagor/svelte";
+  import { buttonRecipe } from "@pisagor/recipes";
+  import { Tour, type TourStepDetails } from "@pisagor/svelte";
 
-const steps: TourStepDetails[] = [
-  {
-    actions: [{ action: "next", label: "Next" }],
-    description: "This tour demonstrates loading data before showing a step.",
-    id: "intro",
-    title: "Async data loading",
-    type: "dialog",
-  },
-  {
-    actions: [
-      { action: "prev", label: "Back" },
-      { action: "next", label: "Next" },
-    ],
-    description: "Fetching user data...",
-    effect({ show, update }) {
-      const timer = window.setTimeout(() => {
-        update({
-          description: "You have 12 projects and 48 team members.",
-          title: "Welcome, Jane Doe",
-        });
-        show();
-      }, 800);
-      return () => window.clearTimeout(timer);
+  const steps: TourStepDetails[] = [
+    {
+      actions: [{ action: "next", label: "Next" }],
+      description: "This tour demonstrates loading data before showing a step.",
+      id: "intro",
+      title: "Async data loading",
+      type: "dialog",
     },
-    id: "user-info",
-    target: () => document.querySelector<HTMLElement>("#user-card"),
-    title: "Loading...",
-    type: "tooltip",
-  },
-  {
-    actions: [{ action: "dismiss", label: "Done" }],
-    description:
-      "The async step loaded data from the GitHub API before displaying.",
-    id: "complete",
-    title: "Tour complete",
-    type: "dialog",
-  },
-];
+    {
+      actions: [
+        { action: "prev", label: "Back" },
+        { action: "next", label: "Next" },
+      ],
+      description: "Fetching user data...",
+      effect({ show, update }) {
+        const timer = window.setTimeout(() => {
+          update({
+            description: "You have 12 projects and 48 team members.",
+            title: "Welcome, Jane Doe",
+          });
+          show();
+        }, 800);
+        return () => window.clearTimeout(timer);
+      },
+      id: "user-info",
+      target: () => document.querySelector<HTMLElement>("#user-card"),
+      title: "Loading...",
+      type: "tooltip",
+    },
+    {
+      actions: [{ action: "dismiss", label: "Done" }],
+      description:
+        "The async step loaded data from the GitHub API before displaying.",
+      id: "complete",
+      title: "Tour complete",
+      type: "dialog",
+    },
+  ];
 </script>
 
 <div class="flex flex-col gap-2">
@@ -48,7 +48,7 @@ const steps: TourStepDetails[] = [
       >Start tour</Tour.Trigger
     >
     <div
-      class="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+      class="border-border bg-muted flex items-center justify-center rounded-lg border px-8 py-4 text-sm font-medium"
       id="user-card"
     >
       User profile card

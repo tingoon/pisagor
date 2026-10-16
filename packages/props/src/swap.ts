@@ -4,6 +4,7 @@ import type { SwapRecipeFn, SwapVariantProps } from "@pisagor/recipes";
 export interface SwapProps extends SwapVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue swapRecipe
    */
   recipe?: SwapRecipeFn;

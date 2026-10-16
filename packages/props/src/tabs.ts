@@ -4,6 +4,7 @@ import type { TabsRecipeFn, TabsVariantProps } from "@pisagor/recipes";
 export interface TabsProps extends TabsVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue tabsRecipe
    */
   recipe?: TabsRecipeFn;

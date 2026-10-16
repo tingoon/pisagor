@@ -1,16 +1,16 @@
 <script lang="ts">
-import { cn, handleColumnResizeKeyDown } from "@pisagor/utils";
-import type { HTMLAttributes } from "svelte/elements";
-import { useMessageResolver } from "../components/provider/context";
-import {
-  useDataGridContext,
-  useDataGridHeaderCellContext,
-} from "./data-grid.context";
+  import { cn, handleColumnResizeKeyDown } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { useMessageResolver } from "../components/provider/context";
+  import {
+    useDataGridContext,
+    useDataGridHeaderCellContext,
+  } from "./data-grid.context";
 
-let { class: className, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
-const headerCell = useDataGridHeaderCellContext();
-const { slots, table } = useDataGridContext();
-const t = useMessageResolver();
+  let { class: className, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
+  const headerCell = useDataGridHeaderCellContext();
+  const { slots, table } = useDataGridContext();
+  const t = useMessageResolver();
 </script>
 
 {#if headerCell?.header.column.getCanResize()}

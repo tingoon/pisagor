@@ -29,9 +29,9 @@ QR codes are inherently visual. Always provide an equivalent action — copy lin
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Camera handoff to mobile | **QR Code** |
-| Open URL on this device | [Link Box](/svelte/components/link-box/design) / [Button](/svelte/components/button/design) |
-| Share sheet actions | [Dropdown Menu](/svelte/components/dropdown-menu/design) |
-| Copy payload | [Clipboard](/svelte/components/clipboard/design) |
+| Need                     | Prefer                                                                                    |
+| ------------------------ | ----------------------------------------------------------------------------------------- |
+| Camera handoff to mobile | **QR Code**                                                                               |
+| Open URL on this device  | [Link Box](/svelte/components/link-box/design) / [Button](/svelte/components/button/design) |
+| Share sheet actions      | [Dropdown Menu](/svelte/components/dropdown-menu/design)                                   |
+| Copy payload             | [Clipboard](/svelte/components/clipboard/design)                                           |

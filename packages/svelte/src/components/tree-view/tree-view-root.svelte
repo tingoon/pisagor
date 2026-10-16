@@ -2,37 +2,37 @@
   generics="T extends Record<string, unknown> = Record<string, unknown>"
   lang="ts"
 >
-import {
-  TreeView as TreeViewPrimitive,
-  type TreeViewRootProps,
-} from "@ark-ui/svelte/tree-view";
-import type { TreeViewProps as BaseTreeViewProps } from "@pisagor/props";
-import { treeViewRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { Component } from "svelte";
-import { setTreeViewContext } from "./tree-view.context";
+  import {
+    TreeView as TreeViewPrimitive,
+    type TreeViewRootProps,
+  } from "@ark-ui/svelte/tree-view";
+  import type { TreeViewProps as BaseTreeViewProps } from "@pisagor/props";
+  import { treeViewRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { Component } from "svelte";
+  import { setTreeViewContext } from "./tree-view.context";
 
-type Props = TreeViewRootProps<T> & {
-  fileIcons?: Record<string, Component | null>;
-} & BaseTreeViewProps;
+  type Props = TreeViewRootProps<T> & {
+    fileIcons?: Record<string, Component | null>;
+  } & BaseTreeViewProps;
 
-let {
-  children,
-  fileIcons,
-  recipe = treeViewRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    children,
+    fileIcons,
+    recipe = treeViewRecipe,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const slots = $derived(recipe());
-setTreeViewContext({
-  get fileIcons() {
-    return fileIcons;
-  },
-  get slots() {
-    return slots;
-  },
-});
+  const slots = $derived(recipe());
+  setTreeViewContext({
+    get fileIcons() {
+      return fileIcons;
+    },
+    get slots() {
+      return slots;
+    },
+  });
 </script>
 
 <TreeViewPrimitive.Root {...rest} class={slots.base({ class: cn(className) })}>

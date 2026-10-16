@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Clipboard } from "@pisagor/svelte";
-import SparkleIcon from "phosphor-svelte/lib/SparkleIcon";
+  import { Clipboard } from "@pisagor/svelte";
+  import SparkleIcon from "phosphor-svelte/lib/SparkleIcon";
 </script>
 
 <Clipboard value="https://example.com/docs" variant="button">

@@ -28,7 +28,10 @@ const {
   recipe: listboxItemRecipe,
 });
 
-/** Slots from the nearest ListboxItem root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest ListboxItem root, or the default recipe when used
+ * standalone.
+ */
 function useListboxItemSlots() {
   const styles = useOptionalListboxItemStyles();
 
@@ -45,7 +48,10 @@ const {
   recipe: listboxRecipe,
 });
 
-/** Slots from the nearest Listbox root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest Listbox root, or the default recipe when used
+ * standalone.
+ */
 function useListboxSlots() {
   const styles = useOptionalListboxStyles();
 

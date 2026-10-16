@@ -30,7 +30,10 @@ const { provideStyles: provideCalendarStyles, useStyles: useCalendar } =
     recipe: calendarRecipe,
   });
 
-/** Lets `DatePicker` provide calendar slots so `Calendar.*` parts work inside `DatePicker.Content` (React parity). */
+/**
+ * Lets `DatePicker` provide calendar slots so `Calendar.*` parts work inside
+ * `DatePicker.Content` (React parity).
+ */
 export { provideCalendarStyles };
 
 // #endregion
@@ -47,7 +50,7 @@ interface CalendarWeekDaysProps {
   /**
    * The format of the week days
    *
-   * @defaultValue 'narrow'
+   * @defaultValue "narrow"
    */
   format?: "narrow" | "short" | "long";
 }

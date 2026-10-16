@@ -3,9 +3,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 export const timelineRecipe = tv({
   base: ["group/timeline", "relative flex"],
   defaultVariants: {
-    /**
-     * Layout orientation.
-     */
+    /** Layout orientation. */
     orientation: "vertical",
   },
   variants: {
@@ -29,16 +27,16 @@ export const timelineItemRecipe = tv({
     indicator: [
       "relative z-10 flex size-3 shrink-0 items-center justify-center",
       "mt-1.5",
-      "rounded-full border-2 border-primary bg-background",
+      "border-primary bg-background rounded-full border-2",
       "[&_svg:not([class*='size-'])]:size-3",
     ],
     separator: [
-      "pointer-events-none absolute bg-border",
+      "bg-border pointer-events-none absolute",
       "group-data-[orientation=vertical]/timeline:inset-s-1.25 group-data-[orientation=vertical]/timeline:top-4 group-data-[orientation=vertical]/timeline:bottom-0 group-data-[orientation=vertical]/timeline:w-px",
-      "group-data-[orientation=horizontal]/timeline:inset-s-3 group-data-[orientation=horizontal]/timeline:top-1.75 group-data-[orientation=horizontal]/timeline:inset-e-0 group-data-[orientation=horizontal]/timeline:h-px",
+      "group-data-[orientation=horizontal]/timeline:inset-s-3 group-data-[orientation=horizontal]/timeline:inset-e-0 group-data-[orientation=horizontal]/timeline:top-1.75 group-data-[orientation=horizontal]/timeline:h-px",
       "group-last/timeline-item:hidden",
     ],
-    title: ["font-medium text-foreground text-sm"],
+    title: ["text-foreground text-sm font-medium"],
   },
 });
 

@@ -1,17 +1,17 @@
 <script lang="ts">
-import { Button, Card, Field, Textarea } from "@pisagor/svelte";
+  import { Button, Card, Field, Textarea } from "@pisagor/svelte";
 
-let message = $state("");
-let error = $state<string | null>(null);
+  let message = $state("");
+  let error = $state<string | null>(null);
 
-function onSubmit(e: Event) {
-  e.preventDefault();
-  if (message.trim().length < 10) {
-    error = "Message must be at least 10 characters.";
-    return;
+  function onSubmit(e: Event) {
+    e.preventDefault();
+    if (message.trim().length < 10) {
+      error = "Message must be at least 10 characters.";
+      return;
+    }
+    error = null;
   }
-  error = null;
-}
 </script>
 
 <Card>

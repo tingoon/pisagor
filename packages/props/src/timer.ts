@@ -4,6 +4,7 @@ import type { TimerItemGroupRecipeFn, TimerRecipeFn } from "@pisagor/recipes";
 export interface TimerProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue timerRecipe
    */
   recipe?: TimerRecipeFn;
@@ -13,6 +14,7 @@ export interface TimerProps {
 export interface TimerItemGroupProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue timerItemGroupRecipe
    */
   recipe?: TimerItemGroupRecipeFn;

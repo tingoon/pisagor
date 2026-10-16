@@ -99,7 +99,10 @@ function listDirs(dir: string): string[] {
     .sort();
 }
 
-/** Flat single-file components (`src/components/<name>.tsx`) next to foldered ones. */
+/**
+ * Flat single-file components (`src/components/<name>.tsx`) next to foldered
+ * ones.
+ */
 function listFlatFiles(dir: string): Map<string, string> {
   const files = new Map<string, string>();
   if (!existsSync(dir)) {

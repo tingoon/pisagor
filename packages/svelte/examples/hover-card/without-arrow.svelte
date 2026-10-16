@@ -1,5 +1,5 @@
 <script lang="ts">
-import { HoverCard } from "@pisagor/svelte";
+  import { HoverCard } from "@pisagor/svelte";
 </script>
 
 <HoverCard>

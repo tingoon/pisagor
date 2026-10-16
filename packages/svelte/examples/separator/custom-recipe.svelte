@@ -1,17 +1,17 @@
 <script lang="ts">
-import { separatorRecipe } from "@pisagor/recipes";
-import { Separator } from "@pisagor/svelte";
-import { tv } from "tailwind-variants";
+  import { separatorRecipe } from "@pisagor/recipes";
+  import { Separator } from "@pisagor/svelte";
+  import { tv } from "tailwind-variants";
 
-const brandSeparatorRecipe = tv({
-  base: ["bg-emerald-500/40"],
-  extend: separatorRecipe,
-});
+  const brandSeparatorRecipe = tv({
+    base: ["bg-emerald-500/40"],
+    extend: separatorRecipe,
+  });
 </script>
 
 <div class="flex flex-col gap-2 text-sm">
   <div class="flex flex-col gap-1">
-    <h4 class="font-medium leading-none">Acme UI</h4>
+    <h4 class="leading-none font-medium">Acme UI</h4>
     <p class="text-muted-foreground">
       A set of primitive components for building UI.
     </p>

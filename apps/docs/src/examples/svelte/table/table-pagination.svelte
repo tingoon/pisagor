@@ -1,38 +1,38 @@
 <script lang="ts">
-import { Pagination, Select, Table } from "@pisagor/svelte";
-import { cn } from "@pisagor/utils";
-import { tablePaginationBlock } from "#/recipes/blocks/table";
+  import { Pagination, Select, Table } from "@pisagor/svelte";
+  import { cn } from "@pisagor/utils";
+  import { tablePaginationBlock } from "#/recipes/blocks/table";
 
-const styles = tablePaginationBlock();
+  const styles = tablePaginationBlock();
 
-interface Props {
-  class?: string;
-}
-let { class: className }: Props = $props();
+  interface Props {
+    class?: string;
+  }
+  let { class: className }: Props = $props();
 
-let page = $state(1);
-let pageSize = $state(2);
+  let page = $state(1);
+  let pageSize = $state(2);
 
-const samplePeople = [
-  "Jane Doe",
-  "John Doe",
-  "Alex Morgan",
-  "Sam Taylor",
-  "Riley Chen",
-  "Jordan Lee",
-  "Casey Brown",
-  "Morgan Davis",
-];
+  const samplePeople = [
+    "Jane Doe",
+    "John Doe",
+    "Alex Morgan",
+    "Sam Taylor",
+    "Riley Chen",
+    "Jordan Lee",
+    "Casey Brown",
+    "Morgan Davis",
+  ];
 
-const users = Array.from({ length: 48 }, (_, i) => ({
-  email: `user${i + 1}@example.com`,
-  id: `user-${i + 1}`,
-  name: samplePeople[i % samplePeople.length],
-}));
+  const users = Array.from({ length: 48 }, (_, i) => ({
+    email: `user${i + 1}@example.com`,
+    id: `user-${i + 1}`,
+    name: samplePeople[i % samplePeople.length],
+  }));
 
-const paginatedUsers = $derived(
-  users.slice((page - 1) * pageSize, page * pageSize),
-);
+  const paginatedUsers = $derived(
+    users.slice((page - 1) * pageSize, page * pageSize),
+  );
 </script>
 
 <div class={cn(styles.root(), className)}>

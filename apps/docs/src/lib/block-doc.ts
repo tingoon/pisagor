@@ -120,7 +120,10 @@ export async function loadBlockExamples(
   return mod;
 }
 
-/** Static paths for one framework's standalone block previews (`/preview/<fw>/<id>/<example>`). */
+/**
+ * Static paths for one framework's standalone block previews
+ * (`/preview/<fw>/<id>/<example>`).
+ */
 export async function listExamplePreviewStaticPathsFor(
   framework: Framework,
 ): Promise<{ params: { id: string; example: string } }[]> {

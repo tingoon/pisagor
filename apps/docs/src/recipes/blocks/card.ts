@@ -18,7 +18,7 @@ export const productCardBlock = tv({
   slots: {
     action: "flex-1",
     footer: "gap-2",
-    media: "aspect-4/3 bg-muted",
+    media: "bg-muted aspect-4/3",
     root: "max-w-sm overflow-hidden",
   },
 });

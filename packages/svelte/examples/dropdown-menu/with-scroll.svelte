@@ -1,12 +1,12 @@
 <script lang="ts">
-import { Button, DropdownMenu } from "@pisagor/svelte";
+  import { Button, DropdownMenu } from "@pisagor/svelte";
 
-const items = Array.from({ length: 15 }, (_, i) => `Item ${i + 1}`);
+  const items = Array.from({ length: 15 }, (_, i) => `Item ${i + 1}`);
 </script>
 
 <DropdownMenu>
   <DropdownMenu.Trigger>
-    <Button variant="outline"> Open </Button>
+    <Button variant="outline">Open</Button>
   </DropdownMenu.Trigger>
   <DropdownMenu.Content class="max-h-60 min-w-40">
     {#each items as label, index}

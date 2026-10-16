@@ -29,9 +29,9 @@ When a field is disabled, explain why in description text if the reason is not o
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Label + control + help + error | **Field** |
-| Text entry | [Input](/react/components/input/design) / [Textarea](/react/components/textarea/design) |
-| Date in a form | [Date Picker](/react/components/date-picker/design) in Field |
-| Pick one of many options | [Select](/react/components/select/design) in Field |
+| Need                           | Prefer                                                                                  |
+| ------------------------------ | --------------------------------------------------------------------------------------- |
+| Label + control + help + error | **Field**                                                                               |
+| Text entry                     | [Input](/react/components/input/design) / [Textarea](/react/components/textarea/design) |
+| Date in a form                 | [Date Picker](/react/components/date-picker/design) in Field                            |
+| Pick one of many options       | [Select](/react/components/select/design) in Field                                      |

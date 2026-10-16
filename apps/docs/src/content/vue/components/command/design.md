@@ -29,9 +29,9 @@ Start with high-value commands — go to…, create…, toggle theme — before 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Global searchable actions | **Command** |
+| Need                      | Prefer                                                  |
+| ------------------------- | ------------------------------------------------------- |
+| Global searchable actions | **Command**                                             |
 | Trigger-bound action list | [Dropdown Menu](/vue/components/dropdown-menu/design) |
-| Pointer-position actions | [Context Menu](/vue/components/context-menu/design) |
-| Modal task focus | [Dialog](/vue/components/dialog/design) |
+| Pointer-position actions  | [Context Menu](/vue/components/context-menu/design)   |
+| Modal task focus          | [Dialog](/vue/components/dialog/design)               |

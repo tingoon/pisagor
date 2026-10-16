@@ -14,8 +14,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export interface NavbarRootProps
-  extends ComponentProps<typeof ark.header>,
-    BaseNavbarRootProps {}
+  extends ComponentProps<typeof ark.header>, BaseNavbarRootProps {}
 
 export type NavbarPartProps = ComponentProps<typeof ark.div>;
 export type NavbarNavProps = ComponentProps<typeof ark.nav>;

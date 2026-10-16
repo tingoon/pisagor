@@ -1,34 +1,34 @@
 <script lang="ts">
-import type { TabsRootProps } from "@ark-ui/svelte/tabs";
-import type { TabsProps as BaseTabsProps } from "@pisagor/props";
-import TabsContent from "./tabs-content.svelte";
-import TabsList from "./tabs-list.svelte";
-import TabsRoot from "./tabs-root.svelte";
-import TabsTrigger from "./tabs-trigger.svelte";
+  import type { TabsRootProps } from "@ark-ui/svelte/tabs";
+  import type { TabsProps as BaseTabsProps } from "@pisagor/props";
+  import TabsContent from "./tabs-content.svelte";
+  import TabsList from "./tabs-list.svelte";
+  import TabsRoot from "./tabs-root.svelte";
+  import TabsTrigger from "./tabs-trigger.svelte";
 
-type TabsPresetItem = {
-  content: string;
-  disabled?: boolean;
-  label: string;
-  value: string;
-};
-type Props = Omit<TabsRootProps, "children"> & {
-  items?: TabsPresetItem[];
-  /**
-   * Whether to render the animated active-tab indicator.
-   *
-   * @defaultValue true
-   */
-  showIndicator?: boolean;
-} & BaseTabsProps;
+  type TabsPresetItem = {
+    content: string;
+    disabled?: boolean;
+    label: string;
+    value: string;
+  };
+  type Props = Omit<TabsRootProps, "children"> & {
+    items?: TabsPresetItem[];
+    /**
+     * Whether to render the animated active-tab indicator.
+     *
+     * @defaultValue true
+     */
+    showIndicator?: boolean;
+  } & BaseTabsProps;
 
-let {
-  variant,
-  items,
-  showIndicator,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    variant,
+    items,
+    showIndicator,
+    class: className,
+    ...rest
+  }: Props = $props();
 </script>
 
 <TabsRoot {...rest} class={className}>

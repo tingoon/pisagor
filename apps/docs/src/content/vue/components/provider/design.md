@@ -29,9 +29,9 @@ In tests and Storybook, wrap stories with the same Provider configuration produc
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| App-wide Pisagor context | **Provider** |
-| Transient global messages | [Toast](/vue/components/toast/design) |
-| Application layout shell | [App Shell](/vue/components/app-shell/design) |
-| Localized numbers and dates | [Format](/vue/components/format/design) |
+| Need                        | Prefer                                          |
+| --------------------------- | ----------------------------------------------- |
+| App-wide Pisagor context    | **Provider**                                    |
+| Transient global messages   | [Toast](/vue/components/toast/design)         |
+| Application layout shell    | [App Shell](/vue/components/app-shell/design) |
+| Localized numbers and dates | [Format](/vue/components/format/design)       |

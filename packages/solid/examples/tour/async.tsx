@@ -51,7 +51,7 @@ export function Async() {
           )}
         />
         <div
-          class="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+          class="border-border bg-muted flex items-center justify-center rounded-lg border px-8 py-4 text-sm font-medium"
           id="user-card"
         >
           User profile card

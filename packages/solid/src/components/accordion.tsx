@@ -22,9 +22,7 @@ const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface LocalAccordionItemProps
-  extends AccordionPrimitiveItemProps,
-    BaseAccordionItemProps,
-    SizeScaleProps {}
+  extends AccordionPrimitiveItemProps, BaseAccordionItemProps, SizeScaleProps {}
 
 interface AccordionPresetItem {
   value: string;

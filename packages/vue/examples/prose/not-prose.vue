@@ -12,7 +12,7 @@ import { Prose } from "@pisagor/vue";
         resting place of drowned sailors and travellers
       </p>
     </div>
-    <hr>
+    <hr />
 
     <div class="not-prose">
       <h1>Davy Jones' locker</h1>

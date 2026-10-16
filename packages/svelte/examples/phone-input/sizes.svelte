@@ -1,5 +1,5 @@
 <script lang="ts">
-import { PhoneInput } from "@pisagor/svelte/phone-input";
+  import { PhoneInput } from "@pisagor/svelte/phone-input";
 </script>
 
 <div class="flex flex-col gap-2">

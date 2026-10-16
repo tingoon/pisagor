@@ -29,9 +29,9 @@ Wrap the group in Field when the label applies to the whole control, including p
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Input with attached chrome | **Input Group** |
-| Plain single-line entry | Input |
-| Accessible label stack | Field |
+| Need                       | Prefer                                              |
+| -------------------------- | --------------------------------------------------- |
+| Input with attached chrome | **Input Group**                                     |
+| Plain single-line entry    | Input             |
+| Accessible label stack     | Field             |
 | Phone numbers with country | Phone Input |

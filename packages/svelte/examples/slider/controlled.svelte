@@ -1,9 +1,9 @@
 <script lang="ts">
-import { Field, Slider } from "@pisagor/svelte";
+  import { Field, Slider } from "@pisagor/svelte";
 
-let value: number[] = $state([40]);
+  let value: number[] = $state([40]);
 
-const isGreaterThan80 = $derived((value[0] ?? 0) > 80);
+  const isGreaterThan80 = $derived((value[0] ?? 0) > 80);
 </script>
 
 <div class="flex flex-col gap-2">

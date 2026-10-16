@@ -35,7 +35,7 @@ function filter(_inputValue: string) {}
       <Autocomplete.Empty />
       <Autocomplete.List>
         <Autocomplete.ItemGroup
-          v-for="[ continent, group ] in groups"
+          v-for="[continent, group] in groups"
           :key="continent"
           :heading="continent"
         >

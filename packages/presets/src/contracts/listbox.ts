@@ -10,11 +10,11 @@ export const listboxRecipe = tv({
       "overflow-hidden",
       "data-[orientation=horizontal]:max-h-none data-[orientation=horizontal]:flex-row",
     ],
-    empty: ["px-2 py-1.5", "text-center text-muted-foreground text-sm"],
+    empty: ["px-2 py-1.5", "text-muted-foreground text-center text-sm"],
     itemGroup: ["flex flex-col gap-1"],
     itemGroupLabel: [
       "px-2.5 py-2",
-      "font-medium text-muted-foreground",
+      "text-muted-foreground font-medium",
       "pointer-events-none",
     ],
     valueText: "font-normal",
@@ -23,9 +23,7 @@ export const listboxRecipe = tv({
 
 export const listboxItemRecipe = tv({
   defaultVariants: {
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "default",
   },
   slots: {
@@ -35,11 +33,11 @@ export const listboxItemRecipe = tv({
       "flex items-center gap-2",
       "px-2.5 py-2",
       "rounded-lg",
-      "select-none text-sm",
+      "text-sm select-none",
       "cursor-pointer",
       "outline-hidden",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
-      "[&_svg:not([class*='size-'])]:size-3.5 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+      "[&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5",
     ],
     indicator: [
       "flex shrink-0 items-center justify-center",

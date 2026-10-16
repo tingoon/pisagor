@@ -16,7 +16,7 @@ function onPageChange(details: { page: number }) {
       :page-size="10"
       @page-change="onPageChange"
     />
-    <p class="text-center text-muted-foreground text-sm">
+    <p class="text-muted-foreground text-center text-sm">
       Page {{ page }} of 5
     </p>
   </div>

@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Button, DownloadTrigger } from "@pisagor/svelte";
-import DownloadIcon from "phosphor-svelte/lib/DownloadIcon";
-import { sampleSvg } from "./helpers";
+  import { Button, DownloadTrigger } from "@pisagor/svelte";
+  import DownloadIcon from "phosphor-svelte/lib/DownloadIcon";
+  import { sampleSvg } from "./helpers";
 </script>
 
 <DownloadTrigger

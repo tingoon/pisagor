@@ -25,9 +25,9 @@ Prefer a single avatar for one actor; use avatar grouping patterns when several 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Single person identity | **Avatar** |
-| Compact status on identity | [Badge](/react/components/badge/design) |
-| List row with person and metadata | [Item](/react/components/item/design) |
-| Account menu trigger | [Menu](/react/components/menu/design) |
+| Need                              | Prefer                                  |
+| --------------------------------- | --------------------------------------- |
+| Single person identity            | **Avatar**                              |
+| Compact status on identity        | [Badge](/react/components/badge/design) |
+| List row with person and metadata | [Item](/react/components/item/design)   |
+| Account menu trigger              | [Menu](/react/components/menu/design)   |

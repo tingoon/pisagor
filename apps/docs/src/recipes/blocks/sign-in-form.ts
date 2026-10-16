@@ -8,6 +8,6 @@ export const signInFormBlock = tv({
     full: "w-full",
     intro: "flex flex-col gap-1.5",
     root: "mx-auto w-full max-w-md",
-    title: "font-semibold text-xl leading-tight tracking-tight",
+    title: "text-xl leading-tight font-semibold tracking-tight",
   },
 });

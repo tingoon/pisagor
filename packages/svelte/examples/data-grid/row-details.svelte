@@ -1,21 +1,21 @@
 <script lang="ts">
-import { Table } from "@pisagor/svelte";
-import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import type { ExpandedState } from "@tanstack/svelte-table";
-import { allUsers, type User, userColumns } from "./helpers";
+  import { Table } from "@pisagor/svelte";
+  import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
+  import type { ExpandedState } from "@tanstack/svelte-table";
+  import { allUsers, type User, userColumns } from "./helpers";
 
-const columns = [...userColumns];
-let expanded = $state<ExpandedState>({});
+  const columns = [...userColumns];
+  let expanded = $state<ExpandedState>({});
 
-function onExpandedChange(
-  updater: ExpandedState | ((prev: ExpandedState) => ExpandedState),
-) {
-  expanded = typeof updater === "function" ? updater(expanded) : updater;
-}
+  function onExpandedChange(
+    updater: ExpandedState | ((prev: ExpandedState) => ExpandedState),
+  ) {
+    expanded = typeof updater === "function" ? updater(expanded) : updater;
+  }
 </script>
 
 <div class="flex w-full flex-col gap-3">
-  <div class="rounded-xl border bg-muted/20 p-3">
+  <div class="bg-muted/20 rounded-xl border p-3">
     <DataGrid
       {columns}
       data={allUsers.slice(0, 8)}
@@ -26,7 +26,7 @@ function onExpandedChange(
       state={{ expanded }}
     >
       <DataGrid.Toolbar>
-        <p class="font-medium text-sm">
+        <p class="text-sm font-medium">
           Click a row chevron pattern via expand state
         </p>
       </DataGrid.Toolbar>

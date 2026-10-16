@@ -55,8 +55,7 @@ export function useDataGridHeaderGroupContext<TData extends RowData>() {
 
 export function useDataGridHeaderCellContext<TData extends RowData>() {
   return useDataGridHeaderCell() as
-    | DataGridHeaderCellContextValue<TData>
-    | undefined;
+    DataGridHeaderCellContextValue<TData> | undefined;
 }
 
 export function useDataGridRowContext<TData extends RowData>() {

@@ -72,13 +72,13 @@ function preventOxcRefreshLeakToVue() {
 }
 
 /**
- * vite-plugin-solid sets `optimizeDeps.rolldownOptions.transform.jsx = "preserve"` on
- * Vite 8 so the scanner does not inject `react/jsx-dev-runtime`. That leaves JSX
- * intact when Vite's `import.meta.glob` dep-scan path rewrites the module as
- * `moduleType: "js"`, which then fails with "JSX syntax is disabled".
- * Serve/build still use babel-preset-solid; only the Rolldown dep scanner needs
- * a transform that emits plain JS. Docs already depends on React, so automatic
- * runtime for the scanner is safe.
+ * Vite-plugin-solid sets `optimizeDeps.rolldownOptions.transform.jsx =
+ * "preserve"` on Vite 8 so the scanner does not inject `react/jsx-dev-runtime`.
+ * That leaves JSX intact when Vite's `import.meta.glob` dep-scan path rewrites
+ * the module as `moduleType: "js"`, which then fails with "JSX syntax is
+ * disabled". Serve/build still use babel-preset-solid; only the Rolldown dep
+ * scanner needs a transform that emits plain JS. Docs already depends on React,
+ * so automatic runtime for the scanner is safe.
  */
 function fixSolidPreserveJsxForDepScan() {
   return {
@@ -93,9 +93,9 @@ function fixSolidPreserveJsxForDepScan() {
 }
 
 /**
- * Vite/Rolldown dep prebundling can evaluate React's `jsx-dev-runtime` entry with
- * `NODE_ENV=production`, which stubs `jsxDEV` to `undefined` and leaves every
- * React island blank (ExamplesHost included). Force development for the
+ * Vite/Rolldown dep prebundling can evaluate React's `jsx-dev-runtime` entry
+ * with `NODE_ENV=production`, which stubs `jsxDEV` to `undefined` and leaves
+ * every React island blank (ExamplesHost included). Force development for the
  * optimizer while `astro dev` is running.
  */
 function fixReactJsxDevRuntimeForDepOptimize() {
@@ -147,12 +147,12 @@ function fakerLiteForExamples() {
 }
 
 /**
- * Solid examples import icons from the `@pisagor/solid/icons` barrel
- * (`export *` of `@squidlab/phosphor-solid/icons`). Solid's compiled
- * templates are top-level calls, so every icon any example touches lands in
- * one shared ~280 KB chunk that every Solid page downloads. Rewrite named
- * icon imports to the per-icon source files so Rolldown can split them per
- * example. Types and non-icon exports keep using the barrel.
+ * Solid examples import icons from the `@pisagor/solid/icons` barrel (`export
+ * *` of `@squidlab/phosphor-solid/icons`). Solid's compiled templates are
+ * top-level calls, so every icon any example touches lands in one shared ~280
+ * KB chunk that every Solid page downloads. Rewrite named icon imports to the
+ * per-icon source files so Rolldown can split them per example. Types and
+ * non-icon exports keep using the barrel.
  */
 function solidPerIconImports() {
   const requireFromSolid = createRequire(
@@ -217,9 +217,9 @@ function solidPerIconImports() {
 
 /**
  * Which sources each framework integration owns — the single table both the
- * React and Solid JSX plugins derive their include/exclude globs from.
- * `dirs` are repo-relative folders, `files` individual docs files, `deps`
- * npm packages that ship raw framework JSX.
+ * React and Solid JSX plugins derive their include/exclude globs from. `dirs`
+ * are repo-relative folders, `files` individual docs files, `deps` npm packages
+ * that ship raw framework JSX.
  */
 const frameworkSources = {
   astro: { dirs: ["packages/astro"] },

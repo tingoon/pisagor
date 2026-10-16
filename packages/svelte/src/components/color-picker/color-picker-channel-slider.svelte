@@ -1,18 +1,18 @@
 <script lang="ts">
-import {
-  type ColorPickerChannelSliderProps,
-  ColorPicker as ColorPickerPrimitive,
-} from "@ark-ui/svelte/color-picker";
-import { cn } from "@pisagor/utils";
-import { useColorPicker } from "./color-picker.context";
+  import {
+    type ColorPickerChannelSliderProps,
+    ColorPicker as ColorPickerPrimitive,
+  } from "@ark-ui/svelte/color-picker";
+  import { cn } from "@pisagor/utils";
+  import { useColorPicker } from "./color-picker.context";
 
-let {
-  children,
-  class: className,
-  ...rest
-}: ColorPickerChannelSliderProps = $props();
-const styles = useColorPicker();
-const slots = $derived(styles.slots);
+  let {
+    children,
+    class: className,
+    ...rest
+  }: ColorPickerChannelSliderProps = $props();
+  const styles = useColorPicker();
+  const slots = $derived(styles.slots);
 </script>
 
 <ColorPickerPrimitive.ChannelSlider

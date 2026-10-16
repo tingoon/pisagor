@@ -42,17 +42,18 @@ const BottomNavigationValueKey: InjectionKey<Ref<string | undefined>> = Symbol(
 // #endregion
 
 // #region Types
-export interface BottomNavigationRootProps
-  extends BaseBottomNavigationRootProps {
+export interface BottomNavigationRootProps extends BaseBottomNavigationRootProps {
   class?: unknown;
-  /** Value of the item for the current page; that item gets `aria-current="page"`. */
+  /**
+   * Value of the item for the current page; that item gets
+   * `aria-current="page"`.
+   */
   value?: string;
 }
 
 export type BottomNavigationProps = BottomNavigationRootProps;
 
-export interface BottomNavigationItemProps
-  extends BaseBottomNavigationItemProps {
+export interface BottomNavigationItemProps extends BaseBottomNavigationItemProps {
   class?: unknown;
   /** Marks the item as the current page. Defaults to `value === root value`. */
   current?: boolean;

@@ -29,9 +29,9 @@ Pair Surface with [Separator](/solid/components/separator/design) or spacing uti
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Background layer for a group | **Surface** |
-| Titled content block | [Card](/solid/components/card/design) |
-| Media or document frame | [Frame](/solid/components/frame/design) |
-| Page shell layout | [App Shell](/solid/components/app-shell/design) |
+| Need                         | Prefer                                          |
+| ---------------------------- | ----------------------------------------------- |
+| Background layer for a group | **Surface**                                     |
+| Titled content block         | [Card](/solid/components/card/design)           |
+| Media or document frame      | [Frame](/solid/components/frame/design)         |
+| Page shell layout            | [App Shell](/solid/components/app-shell/design) |

@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Field, Textarea } from "@pisagor/svelte";
+  import { Field, Textarea } from "@pisagor/svelte";
 
-let message = $state("");
+  let message = $state("");
 </script>
 
 <Field class="flex flex-col gap-3">

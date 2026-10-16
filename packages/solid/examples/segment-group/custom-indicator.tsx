@@ -4,7 +4,7 @@ export function CustomIndicator() {
   const items = ["Profile", "Account", "Security", "Notifications"];
   return (
     <SegmentGroup.Root
-      class="rounded-lg *:data-[slot=segment-group-indicator]:bg-primary/40"
+      class="*:data-[slot=segment-group-indicator]:bg-primary/40 rounded-lg"
       defaultValue="Profile"
     >
       {items.map((item) => (

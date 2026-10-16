@@ -68,7 +68,7 @@ export interface TourRootProps extends BaseTourRootProps {
   /**
    * The steps to display in the tour
    *
-   * @defaultValue []
+   * @defaultValue [ ]
    */
   steps?: TourStepDetails[];
   /**
@@ -185,8 +185,7 @@ export const TourTrigger = defineComponent({
       if (!ctx) return null;
       const { handleStart } = ctx;
       const onClick = attrs.onClick as
-        | ((event: MouseEvent) => void)
-        | undefined;
+        ((event: MouseEvent) => void) | undefined;
 
       const handleClick = (event: MouseEvent) => {
         onClick?.(event);
@@ -456,7 +455,10 @@ export const TourCloseTrigger = defineComponent({
   },
 });
 
-/** True inside `Tour.Footer`, so `Tour.Actions` does not render a second control. */
+/**
+ * True inside `Tour.Footer`, so `Tour.Actions` does not render a second
+ * control.
+ */
 const TourInsideControlKey: InjectionKey<boolean> = Symbol("TourInsideControl");
 
 export const TourFooter = defineComponent({

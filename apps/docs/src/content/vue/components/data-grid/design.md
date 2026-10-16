@@ -29,9 +29,9 @@ Offer comfortable and compact density when teams live in the grid daily. Defer e
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Large interactive editable grid | **Data Grid** |
+| Need                                          | Prefer                                            |
+| --------------------------------------------- | ------------------------------------------------- |
+| Large interactive editable grid               | **Data Grid**                                     |
 | Structured table without advanced grid chrome | [Data Table](/vue/components/data-table/design) |
-| Simple read-only table | [Table](/vue/components/table/design) |
-| Bulk actions on selected rows | [Action Bar](/vue/components/action-bar/design) |
+| Simple read-only table                        | [Table](/vue/components/table/design)           |
+| Bulk actions on selected rows                 | [Action Bar](/vue/components/action-bar/design) |

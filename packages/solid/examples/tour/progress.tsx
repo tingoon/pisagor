@@ -4,9 +4,9 @@ export function Progress() {
   const TourProgressBar = () => {
     const { tour } = useTourContext();
     return (
-      <div class="absolute right-0 bottom-0 left-0 h-1 overflow-hidden rounded-b-2xl bg-muted">
+      <div class="bg-muted absolute right-0 bottom-0 left-0 h-1 overflow-hidden rounded-b-2xl">
         <div
-          class="h-full bg-primary transition-[width]"
+          class="bg-primary h-full transition-[width]"
           style={{ width: `${tour().getProgressPercent()}%` }}
         />
       </div>
@@ -68,25 +68,25 @@ export function Progress() {
         />
         <div class="flex flex-wrap gap-2">
           <div
-            class="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+            class="bg-popover flex items-center justify-center rounded-md border px-6 py-4 font-medium"
             id="progress-1"
           >
             Step 1
           </div>
           <div
-            class="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+            class="bg-popover flex items-center justify-center rounded-md border px-6 py-4 font-medium"
             id="progress-2"
           >
             Step 2
           </div>
           <div
-            class="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+            class="bg-popover flex items-center justify-center rounded-md border px-6 py-4 font-medium"
             id="progress-3"
           >
             Step 3
           </div>
           <div
-            class="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+            class="bg-popover flex items-center justify-center rounded-md border px-6 py-4 font-medium"
             id="progress-4"
           >
             Step 4

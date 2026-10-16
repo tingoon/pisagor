@@ -29,9 +29,9 @@ When rows become selectable, pair the table with Action Bar for bulk commands ra
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Simple structured data grid | **Table** |
+| Need                             | Prefer                                            |
+| -------------------------------- | ------------------------------------------------- |
+| Simple structured data grid      | **Table**                                         |
 | Sort, filter, selection at scale | Data Table |
-| Spreadsheet-style interaction | Data Grid |
-| Key-value pairs | [Data List](/astro/components/data-list/design) |
+| Spreadsheet-style interaction    | Data Grid   |
+| Key-value pairs                  | [Data List](/astro/components/data-list/design)   |

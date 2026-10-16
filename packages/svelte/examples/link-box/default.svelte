@@ -1,5 +1,5 @@
 <script lang="ts">
-import { LinkBox } from "@pisagor/svelte";
+  import { LinkBox } from "@pisagor/svelte";
 </script>
 
 <LinkBox>

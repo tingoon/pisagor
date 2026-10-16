@@ -29,9 +29,9 @@ Use a dimmed scrim when the task requires full attention. Choose non-modal [Dial
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Focused task or decision | **Dialog** |
-| Destructive or irreversible confirm | [Alert Dialog](/vue/components/alert-dialog/design) |
-| Edge panel on mobile | [Sheet](/vue/components/sheet/design) / [Drawer](/vue/components/drawer/design) |
-| Lightweight contextual panel | [Popover](/vue/components/popover/design) |
+| Need                                | Prefer                                                                              |
+| ----------------------------------- | ----------------------------------------------------------------------------------- |
+| Focused task or decision            | **Dialog**                                                                          |
+| Destructive or irreversible confirm | [Alert Dialog](/vue/components/alert-dialog/design)                               |
+| Edge panel on mobile                | [Sheet](/vue/components/sheet/design) / [Drawer](/vue/components/drawer/design) |
+| Lightweight contextual panel        | [Popover](/vue/components/popover/design)                                         |

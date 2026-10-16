@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Field, TagsInput } from "@pisagor/svelte";
+  import { Field, TagsInput } from "@pisagor/svelte";
 
-let value = $state<string[]>([]);
+  let value = $state<string[]>([]);
 </script>
 
 <Field>

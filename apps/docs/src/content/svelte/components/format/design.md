@@ -29,9 +29,9 @@ Prefer plain language in labels beside formatted values (“Updated”, “Size�
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Locale-aware value display | **Format** |
-| Long-form readable articles | [Prose](/svelte/components/prose/design) |
-| Compact metric tiles | [Stat](/svelte/components/stat/design) |
-| Search hit emphasis | [Highlight](/svelte/components/highlight/design) |
+| Need                        | Prefer                                          |
+| --------------------------- | ----------------------------------------------- |
+| Locale-aware value display  | **Format**                                      |
+| Long-form readable articles | [Prose](/svelte/components/prose/design)         |
+| Compact metric tiles        | [Stat](/svelte/components/stat/design)           |
+| Search hit emphasis         | [Highlight](/svelte/components/highlight/design) |

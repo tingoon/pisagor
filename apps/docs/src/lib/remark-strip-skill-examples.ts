@@ -1,18 +1,18 @@
 /**
- * Strip skill-doc example sections from Astro `<Content />`.
- * Live previews are rendered by `component-doc-page` from parsed directives
- * in the raw skill markdown (directives may appear anywhere in the body).
+ * Strip skill-doc example sections from Astro `<Content />`. Live previews are
+ * rendered by `component-doc-page` from parsed directives in the raw skill
+ * markdown (directives may appear anywhere in the body).
  *
  * Drops every `##` section that contains at least one `:::example` line so
- * headings are not duplicated next to the page-shell previews. Sections
- * without examples (Import, Usage, …) stay in Content.
+ * headings are not duplicated next to the page-shell previews. Sections without
+ * examples (Import, Usage, …) stay in Content.
  *
- * Section detection uses the raw markdown source (not mdast node shapes), so
- * it stays correct whether `:::example` is a paragraph, directive, or other
- * node type after parse.
+ * Section detection uses the raw markdown source (not mdast node shapes), so it
+ * stays correct whether `:::example` is a paragraph, directive, or other node
+ * type after parse.
  *
- * Plain remark plugin — no container-directive / Sätteri dependency.
- * Opening line only: `:::example ExportName` (no closing `:::`).
+ * Plain remark plugin — no container-directive / Sätteri dependency. Opening
+ * line only: `:::example ExportName` (no closing `:::`).
  */
 
 type MdastNode = {

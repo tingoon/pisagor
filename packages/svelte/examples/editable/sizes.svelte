@@ -1,15 +1,13 @@
 <script lang="ts">
-import { Button, Editable, Input } from "@pisagor/svelte";
-import { CheckIcon, XIcon } from "@pisagor/svelte/icons";
+  import { Button, Editable, Input } from "@pisagor/svelte";
+  import { CheckIcon, XIcon } from "@pisagor/svelte/icons";
 </script>
 
 <div class="flex flex-col gap-2">
   <Editable value="Editable content">
     <Editable.Area>
       <Editable.Input>
-        {#snippet asChild(
-          props,
-        )}
+        {#snippet asChild(props)}
           <Input {...props()} size="sm" />
         {/snippet}
       </Editable.Input>
@@ -31,9 +29,7 @@ import { CheckIcon, XIcon } from "@pisagor/svelte/icons";
   <Editable value="Editable content">
     <Editable.Area>
       <Editable.Input>
-        {#snippet asChild(
-          props,
-        )}
+        {#snippet asChild(props)}
           <Input {...props()} size="md" />
         {/snippet}
       </Editable.Input>
@@ -55,9 +51,7 @@ import { CheckIcon, XIcon } from "@pisagor/svelte/icons";
   <Editable value="Editable content">
     <Editable.Area>
       <Editable.Input>
-        {#snippet asChild(
-          props,
-        )}
+        {#snippet asChild(props)}
           <Input {...props()} size="lg" />
         {/snippet}
       </Editable.Input>

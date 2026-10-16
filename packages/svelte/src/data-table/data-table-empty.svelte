@@ -1,16 +1,16 @@
 <script lang="ts">
-import type { ComponentProps } from "svelte";
-import { Table } from "../components/table";
-import { useDataTableContext } from "./data-table.context";
+  import type { ComponentProps } from "svelte";
+  import { Table } from "../components/table";
+  import { useDataTableContext } from "./data-table.context";
 
-type Props = ComponentProps<typeof Table.Row> & {
-  colSpan?: number;
-  children?: import("svelte").Snippet;
-};
+  type Props = ComponentProps<typeof Table.Row> & {
+    colSpan?: number;
+    children?: import("svelte").Snippet;
+  };
 
-let { children, colSpan, class: className, ...rest }: Props = $props();
-const { slots, table } = useDataTableContext();
-const span = $derived(colSpan ?? table.getAllColumns().length);
+  let { children, colSpan, class: className, ...rest }: Props = $props();
+  const { slots, table } = useDataTableContext();
+  const span = $derived(colSpan ?? table.getAllColumns().length);
 </script>
 
 <Table.Row

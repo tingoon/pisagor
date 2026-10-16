@@ -18,7 +18,7 @@ const brandScrollAreaRecipe = tv({
     :recipe="brandScrollAreaRecipe"
   >
     <div class="p-4">
-      <h4 class="mb-4 font-medium text-sm leading-none">Tags</h4>
+      <h4 class="mb-4 text-sm leading-none font-medium">Tags</h4>
       <template v-for="tag in tags" :key="tag">
         <div class="text-sm">{{ tag }}</div>
         <Separator class="my-2" />

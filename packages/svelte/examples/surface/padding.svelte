@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Surface } from "@pisagor/svelte";
+  import { Surface } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-col gap-2">

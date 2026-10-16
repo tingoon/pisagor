@@ -29,9 +29,9 @@ When a field is disabled, explain why in description text if the reason is not o
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Label + control + help + error | **Field** |
-| Text entry | [Input](/vue/components/input/design) / [Textarea](/vue/components/textarea/design) |
-| Date in a form | [Date Picker](/vue/components/date-picker/design) in Field |
-| Pick one of many options | [Select](/vue/components/select/design) in Field |
+| Need                           | Prefer                                                                                  |
+| ------------------------------ | --------------------------------------------------------------------------------------- |
+| Label + control + help + error | **Field**                                                                               |
+| Text entry                     | [Input](/vue/components/input/design) / [Textarea](/vue/components/textarea/design) |
+| Date in a form                 | [Date Picker](/vue/components/date-picker/design) in Field                            |
+| Pick one of many options       | [Select](/vue/components/select/design) in Field                                      |

@@ -1,25 +1,23 @@
 <script lang="ts">
-import { createListCollection } from "@ark-ui/svelte/collection";
-import {
-  Button,
-  Field,
-  FloatingPanel,
-  NumberInput,
-  Select,
-} from "@pisagor/svelte";
-import GearSixIcon from "phosphor-svelte/lib/GearSixIcon";
-import XIcon from "phosphor-svelte/lib/XIcon";
+  import { createListCollection } from "@ark-ui/svelte/collection";
+  import {
+    Button,
+    Field,
+    FloatingPanel,
+    NumberInput,
+    Select,
+  } from "@pisagor/svelte";
+  import GearSixIcon from "phosphor-svelte/lib/GearSixIcon";
+  import XIcon from "phosphor-svelte/lib/XIcon";
 
-const collection = createListCollection({
-  items: ["Inter", "Roboto", "Helvetica", "Geist"],
-});
+  const collection = createListCollection({
+    items: ["Inter", "Roboto", "Helvetica", "Geist"],
+  });
 </script>
 
 <FloatingPanel defaultSize={{ height: 300, width: 360 }}>
   <FloatingPanel.Trigger>
-    {#snippet asChild(
-      props,
-    )}
+    {#snippet asChild(props)}
       <Button {...props()} variant="outline">Open</Button>
     {/snippet}
   </FloatingPanel.Trigger>
@@ -34,9 +32,7 @@ const collection = createListCollection({
         <FloatingPanel.Maximize />
         <FloatingPanel.Restore />
         <FloatingPanel.CloseTrigger>
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Button {...props()} aria-label="Close" size="icon-xs">
               <XIcon aria-hidden />
             </Button>

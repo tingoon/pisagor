@@ -29,9 +29,9 @@ Lead sections with descriptive headings. Keep paragraphs short on web; use lists
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Long-form readable content | **Prose** |
+| Need                        | Prefer                                                        |
+| --------------------------- | ------------------------------------------------------------- |
+| Long-form readable content  | **Prose**                                                     |
 | Rich authoring with toolbar | [Rich Text Editor](/svelte/components/rich-text-editor/design) |
-| Page frame and regions | [App Shell](/svelte/components/app-shell/design) |
-| Inline code in UI | [Kbd](/svelte/components/kbd/design) / default text styles |
+| Page frame and regions      | [App Shell](/svelte/components/app-shell/design)               |
+| Inline code in UI           | [Kbd](/svelte/components/kbd/design) / default text styles     |

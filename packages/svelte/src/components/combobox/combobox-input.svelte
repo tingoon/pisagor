@@ -1,60 +1,60 @@
 <script lang="ts">
-import type { ComboboxInputProps as ArkInputProps } from "@ark-ui/svelte/combobox";
-import {
-  Combobox as ComboboxPrimitive,
-  useComboboxContext,
-} from "@ark-ui/svelte/combobox";
-import {
-  buttonRecipe,
-  comboboxRecipe,
-  type FormControlGroupShellVariantProps,
-  formControlGroupShellRecipe,
-  inputGroupControlRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import XIcon from "phosphor-svelte/lib/XIcon";
-import { isInsideControl } from "../../internal/inside-control";
-import { useMessageResolver } from "../provider/context";
-import { useFormControlSurface } from "../surface/use-form-control-surface";
-import {
-  COMBOBOX_INSIDE_CONTROL,
-  useComboboxControl,
-  useComboboxRoot,
-} from "./combobox.context";
-import ComboboxClearTrigger from "./combobox-clear-trigger.svelte";
-import ComboboxControl from "./combobox-control.svelte";
-import ComboboxTrigger from "./combobox-trigger.svelte";
+  import type { ComboboxInputProps as ArkInputProps } from "@ark-ui/svelte/combobox";
+  import {
+    Combobox as ComboboxPrimitive,
+    useComboboxContext,
+  } from "@ark-ui/svelte/combobox";
+  import {
+    buttonRecipe,
+    comboboxRecipe,
+    type FormControlGroupShellVariantProps,
+    formControlGroupShellRecipe,
+    inputGroupControlRecipe,
+  } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { isInsideControl } from "../../internal/inside-control";
+  import { useMessageResolver } from "../provider/context";
+  import { useFormControlSurface } from "../surface/use-form-control-surface";
+  import {
+    COMBOBOX_INSIDE_CONTROL,
+    useComboboxControl,
+    useComboboxRoot,
+  } from "./combobox.context";
+  import ComboboxClearTrigger from "./combobox-clear-trigger.svelte";
+  import ComboboxControl from "./combobox-control.svelte";
+  import ComboboxTrigger from "./combobox-trigger.svelte";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-type FormControlVariant = "primary" | "secondary";
+  type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<ArkInputProps, "size"> &
-  FormControlGroupShellVariantProps & {
-    clearable?: boolean;
-    showTrigger?: boolean;
-  };
+  type Props = Omit<ArkInputProps, "size"> &
+    FormControlGroupShellVariantProps & {
+      clearable?: boolean;
+      showTrigger?: boolean;
+    };
 
-let {
-  size: sizeProp,
-  variant: variantProp,
-  clearable = false,
-  showTrigger = true,
-  children,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    size: sizeProp,
+    variant: variantProp,
+    clearable = false,
+    showTrigger = true,
+    children,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const ctx = useComboboxRoot();
-const control = useComboboxControl();
-const insideControl = isInsideControl(COMBOBOX_INSIDE_CONTROL);
-const size = $derived(sizeProp ?? control.size ?? "md");
-const slots = $derived(ctx?.slots ?? comboboxRecipe());
-const api = useComboboxContext();
-const surfaceVariant = useFormControlSurface();
-const variant = $derived(
-  variantProp ?? control.variant ?? ("primary" as FormControlVariant),
-);
+  const ctx = useComboboxRoot();
+  const control = useComboboxControl();
+  const insideControl = isInsideControl(COMBOBOX_INSIDE_CONTROL);
+  const size = $derived(sizeProp ?? control.size ?? "md");
+  const slots = $derived(ctx?.slots ?? comboboxRecipe());
+  const api = useComboboxContext();
+  const surfaceVariant = useFormControlSurface();
+  const variant = $derived(
+    variantProp ?? control.variant ?? ("primary" as FormControlVariant),
+  );
 </script>
 
 {#snippet group()}

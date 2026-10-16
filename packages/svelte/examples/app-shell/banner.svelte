@@ -1,10 +1,10 @@
 <script lang="ts">
-import { Announcement, AppShell, Badge, Button } from "@pisagor/svelte";
-import WarningIcon from "phosphor-svelte/lib/WarningIcon";
-import { loremParagraphs } from "./helpers";
+  import { Announcement, AppShell, Badge, Button } from "@pisagor/svelte";
+  import WarningIcon from "phosphor-svelte/lib/WarningIcon";
+  import { loremParagraphs } from "./helpers";
 
-let opened = $state(true);
-const paragraphs = loremParagraphs(8);
+  let opened = $state(true);
+  const paragraphs = loremParagraphs(8);
 </script>
 
 <AppShell>

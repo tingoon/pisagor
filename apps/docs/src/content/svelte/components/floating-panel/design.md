@@ -31,10 +31,10 @@ Respect reduced motion: prefer opacity and subtle scale over long travel animati
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Draggable tool or inspector | **Floating Panel** |
-| Edge-attached task surface | [Drawer](/svelte/components/drawer/design) |
-| Modal decision or form | [Dialog](/svelte/components/dialog/design) |
-| Anchored compact content | [Popover](/svelte/components/popover/design) |
-| Persistent app regions | [App Shell](/svelte/components/app-shell/design) |
+| Need                        | Prefer                                          |
+| --------------------------- | ----------------------------------------------- |
+| Draggable tool or inspector | **Floating Panel**                              |
+| Edge-attached task surface  | [Drawer](/svelte/components/drawer/design)       |
+| Modal decision or form      | [Dialog](/svelte/components/dialog/design)       |
+| Anchored compact content    | [Popover](/svelte/components/popover/design)     |
+| Persistent app regions      | [App Shell](/svelte/components/app-shell/design) |

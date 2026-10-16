@@ -82,8 +82,9 @@ export interface TourProps extends TourRootProps, BaseTourProps {
 
 export type TourTriggerProps = ComponentProps<typeof ark.button>;
 
-export interface TourBackdropProps
-  extends ComponentProps<typeof TourPrimitive.Backdrop> {
+export interface TourBackdropProps extends ComponentProps<
+  typeof TourPrimitive.Backdrop
+> {
   dialogRecipe?: typeof dialogRecipe;
 }
 
@@ -313,7 +314,10 @@ export function TourCloseTrigger(props: TourCloseTriggerProps): JSX.Element {
   return <TourPrimitive.CloseTrigger {...props} />;
 }
 
-/** True inside `Tour.Footer`, so `Tour.Actions` does not render a second control. */
+/**
+ * True inside `Tour.Footer`, so `Tour.Actions` does not render a second
+ * control.
+ */
 const TourInsideControlContext = createSolidContext(false);
 
 export function TourFooter(props: DialogFooterProps): JSX.Element {

@@ -4,11 +4,7 @@ export {
   useFieldContext,
   useFormContext,
 } from "./contexts";
-export {
-  useAppForm,
-  withFieldGroup,
-  withForm,
-} from "./create-form-hook";
+export { useAppForm, withFieldGroup, withForm } from "./create-form-hook";
 export {
   FormFieldError,
   isFieldInvalid,

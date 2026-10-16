@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Rating } from "@pisagor/svelte";
+  import { Rating } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap items-center gap-2">

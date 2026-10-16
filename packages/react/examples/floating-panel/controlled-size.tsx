@@ -27,7 +27,7 @@ export function ControlledSize() {
             </FloatingPanel.CloseTrigger>
           </FloatingPanel.Control>
         </FloatingPanel.Header>
-        <FloatingPanel.Body className="text-center text-muted-foreground text-sm">
+        <FloatingPanel.Body className="text-muted-foreground text-center text-sm">
           <p>
             Size: {size.width} × {size.height}.
           </p>

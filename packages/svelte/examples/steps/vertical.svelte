@@ -1,13 +1,13 @@
 <script lang="ts">
-import { Button, Steps } from "@pisagor/svelte";
-import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
-import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
+  import { Button, Steps } from "@pisagor/svelte";
+  import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
+  import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 
-const items = [
-  { description: "Personal", title: "Info" },
-  { description: "Company", title: "Docs" },
-  { description: "Create", title: "Team" },
-];
+  const items = [
+    { description: "Personal", title: "Info" },
+    { description: "Company", title: "Docs" },
+    { description: "Create", title: "Team" },
+  ];
 </script>
 
 <Steps class="h-64" count={items.length} orientation="vertical">
@@ -41,9 +41,7 @@ const items = [
     </Steps.CompletedContent>
     <div class="flex flex-row-reverse gap-2">
       <Steps.NextTrigger>
-        {#snippet asChild(
-          props,
-        )}
+        {#snippet asChild(props)}
           <Button {...props()} variant="outline">
             Next
             <CaretRightIcon />
@@ -51,9 +49,7 @@ const items = [
         {/snippet}
       </Steps.NextTrigger>
       <Steps.PrevTrigger>
-        {#snippet asChild(
-          props,
-        )}
+        {#snippet asChild(props)}
           <Button {...props()} variant="outline">
             <CaretLeftIcon />
             Back

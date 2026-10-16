@@ -1,5 +1,5 @@
 <script lang="ts">
-import { SwitchField } from "@pisagor/svelte-form";
+  import { SwitchField } from "@pisagor/svelte-form";
 </script>
 
 <SwitchField

@@ -17,8 +17,7 @@ const AUTO_VARIANTS = [
 ] as const satisfies readonly SurfaceVariant[];
 
 export interface SurfaceProps
-  extends ComponentProps<typeof ark.div>,
-    BaseSurfaceProps {}
+  extends ComponentProps<typeof ark.div>, BaseSurfaceProps {}
 
 export function Surface(props: SurfaceProps): JSX.Element {
   const [local, rest] = splitProps(props, [

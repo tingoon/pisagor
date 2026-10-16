@@ -1,9 +1,9 @@
 <script lang="ts">
-import { Button, Card, Timer } from "@pisagor/svelte";
-import ArrowCounterClockwiseIcon from "phosphor-svelte/lib/ArrowCounterClockwiseIcon";
-import GearIcon from "phosphor-svelte/lib/GearIcon";
-import PauseIcon from "phosphor-svelte/lib/PauseIcon";
-import PlayIcon from "phosphor-svelte/lib/PlayIcon";
+  import { Button, Card, Timer } from "@pisagor/svelte";
+  import ArrowCounterClockwiseIcon from "phosphor-svelte/lib/ArrowCounterClockwiseIcon";
+  import GearIcon from "phosphor-svelte/lib/GearIcon";
+  import PauseIcon from "phosphor-svelte/lib/PauseIcon";
+  import PlayIcon from "phosphor-svelte/lib/PlayIcon";
 </script>
 
 <Card class="rounded-3xl [--space:--spacing(6)]">
@@ -20,15 +20,13 @@ import PlayIcon from "phosphor-svelte/lib/PlayIcon";
         <Timer.Item class="text-5xl" type="seconds" />
       </Timer.Area>
       <span
-        class="mt-0.5 font-medium text-2.5 text-muted-foreground uppercase tracking-[0.22em]"
+        class="text-2.5 text-muted-foreground mt-0.5 font-medium tracking-[0.22em] uppercase"
       >
         Focus
       </span>
       <Timer.Control class="w-full justify-center">
         <Timer.Reset hidden={false}>
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Button
               {...props()}
               aria-label="Reset"
@@ -40,9 +38,7 @@ import PlayIcon from "phosphor-svelte/lib/PlayIcon";
           {/snippet}
         </Timer.Reset>
         <Timer.Pause>
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Button
               {...props()}
               aria-label="Pause"
@@ -54,9 +50,7 @@ import PlayIcon from "phosphor-svelte/lib/PlayIcon";
           {/snippet}
         </Timer.Pause>
         <Timer.Play>
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Button
               {...props()}
               aria-label="Play"

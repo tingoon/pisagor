@@ -1,7 +1,7 @@
 <script lang="ts">
-import { InputOTP } from "@pisagor/svelte";
+  import { InputOTP } from "@pisagor/svelte";
 
-const sizes = ["sm", "md", "lg"] as const;
+  const sizes = ["sm", "md", "lg"] as const;
 </script>
 
 <div class="flex flex-col gap-2">

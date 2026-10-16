@@ -1,22 +1,22 @@
 <script lang="ts">
-import { ActionBar, Button } from "@pisagor/svelte";
-import {
-  ArchiveIcon,
-  DownloadIcon,
-  PencilSimpleIcon,
-  TrashIcon,
-  XIcon,
-} from "@pisagor/svelte/icons";
+  import { ActionBar, Button } from "@pisagor/svelte";
+  import {
+    ArchiveIcon,
+    DownloadIcon,
+    PencilSimpleIcon,
+    TrashIcon,
+    XIcon,
+  } from "@pisagor/svelte/icons";
 
-let isOpen = $state(false);
-let placement: Placement = $state("bottom");
+  let isOpen = $state(false);
+  let placement: Placement = $state("bottom");
 
-type Placement = "bottom" | "bottom-start" | "bottom-end";
+  type Placement = "bottom" | "bottom-start" | "bottom-end";
 
-const handleOpenChange = (nextPlacement: Placement) => {
-  isOpen = true;
-  placement = nextPlacement;
-};
+  const handleOpenChange = (nextPlacement: Placement) => {
+    isOpen = true;
+    placement = nextPlacement;
+  };
 </script>
 
 <div class="flex flex-wrap gap-2">

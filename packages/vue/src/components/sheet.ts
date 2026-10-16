@@ -40,8 +40,7 @@ interface SheetContextValue {
 }
 
 export interface SheetProps
-  extends Omit<DialogProps, "recipe">,
-    BaseSheetProps {}
+  extends Omit<DialogProps, "recipe">, BaseSheetProps {}
 // #endregion
 
 // #region Context

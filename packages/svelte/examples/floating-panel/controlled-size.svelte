@@ -1,30 +1,28 @@
 <script lang="ts">
-import { Button, FloatingPanel } from "@pisagor/svelte";
-import GearSixIcon from "phosphor-svelte/lib/GearSixIcon";
-import XIcon from "phosphor-svelte/lib/XIcon";
+  import { Button, FloatingPanel } from "@pisagor/svelte";
+  import GearSixIcon from "phosphor-svelte/lib/GearSixIcon";
+  import XIcon from "phosphor-svelte/lib/XIcon";
 
-let size = $state({ height: 200, width: 360 });
+  let size = $state({ height: 200, width: 360 });
 
-function shrink() {
-  size = {
-    height: size.height - 40,
-    width: size.width - 50,
-  };
-}
+  function shrink() {
+    size = {
+      height: size.height - 40,
+      width: size.width - 50,
+    };
+  }
 
-function grow() {
-  size = {
-    height: size.height + 40,
-    width: size.width + 50,
-  };
-}
+  function grow() {
+    size = {
+      height: size.height + 40,
+      width: size.width + 50,
+    };
+  }
 </script>
 
 <FloatingPanel onSizeChange={(details) => (size = details.size)} {size}>
   <FloatingPanel.Trigger>
-    {#snippet asChild(
-      props,
-    )}
+    {#snippet asChild(props)}
       <Button {...props()} variant="outline">Open</Button>
     {/snippet}
   </FloatingPanel.Trigger>
@@ -37,9 +35,7 @@ function grow() {
         <FloatingPanel.Maximize />
         <FloatingPanel.Restore />
         <FloatingPanel.CloseTrigger>
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Button {...props()} aria-label="Close" size="icon-sm">
               <XIcon aria-hidden />
             </Button>
@@ -47,12 +43,11 @@ function grow() {
         </FloatingPanel.CloseTrigger>
       </FloatingPanel.Control>
     </FloatingPanel.Header>
-    <FloatingPanel.Body class="text-center text-muted-foreground text-sm">
+    <FloatingPanel.Body class="text-muted-foreground text-center text-sm">
       <p>Size: {size.width} × {size.height}.</p>
       <p>Use the buttons above or drag the edges to resize.</p>
       <div class="flex gap-2">
-        <Button class="flex-1" onclick={shrink} variant="outline"
-          >Shrink</Button
+        <Button class="flex-1" onclick={shrink} variant="outline">Shrink</Button
         >
         <Button class="flex-1" onclick={grow} variant="outline">Grow</Button>
       </div>

@@ -4,6 +4,7 @@ import type { ComboboxRecipeFn, ComboboxVariantProps } from "@pisagor/recipes";
 export interface ComboboxProps extends ComboboxVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue comboboxRecipe
    */
   recipe?: ComboboxRecipeFn;

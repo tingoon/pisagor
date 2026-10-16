@@ -60,8 +60,10 @@ export interface AppShellInspectorProps extends ComponentProps<"aside"> {
   resizableProps?: AppShellResizableProps;
 }
 
-export interface AppShellInspectorTriggerProps
-  extends Omit<ButtonProps, "children"> {
+export interface AppShellInspectorTriggerProps extends Omit<
+  ButtonProps,
+  "children"
+> {
   /**
    * Inspector side to toggle.
    *

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Status } from "@pisagor/svelte";
+  import { Status } from "@pisagor/svelte";
 </script>
 
 <div class="flex gap-2">

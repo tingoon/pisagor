@@ -1,9 +1,9 @@
 <script lang="ts">
-import { Button, ButtonGroup, Field, Progress } from "@pisagor/svelte";
-import MinusIcon from "phosphor-svelte/lib/MinusIcon";
-import PlusIcon from "phosphor-svelte/lib/PlusIcon";
+  import { Button, ButtonGroup, Field, Progress } from "@pisagor/svelte";
+  import MinusIcon from "phosphor-svelte/lib/MinusIcon";
+  import PlusIcon from "phosphor-svelte/lib/PlusIcon";
 
-let value = $state(50);
+  let value = $state(50);
 </script>
 
 <Field>

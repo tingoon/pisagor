@@ -25,9 +25,9 @@ Prefer Badge for secondary labels; prefer [Alert](/react/components/alert/design
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Compact status or category | **Badge** |
-| Page-level message | [Alert](/react/components/alert/design) |
-| Live presence dot | [Status](/react/components/status/design) |
-| Numeric KPI emphasis | [Stat](/react/components/stat/design) |
+| Need                       | Prefer                                    |
+| -------------------------- | ----------------------------------------- |
+| Compact status or category | **Badge**                                 |
+| Page-level message         | [Alert](/react/components/alert/design)   |
+| Live presence dot          | [Status](/react/components/status/design) |
+| Numeric KPI emphasis       | [Stat](/react/components/stat/design)     |

@@ -1,15 +1,15 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
-import type { HTMLAttributes } from "svelte/elements";
-import { useSidebar } from "./sidebar.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { useSidebar } from "./sidebar.context";
 
-type Props = HTMLAttributes<HTMLDivElement> & {
-  children?: import("svelte").Snippet;
-};
+  type Props = HTMLAttributes<HTMLDivElement> & {
+    children?: import("svelte").Snippet;
+  };
 
-let { class: className, children, ...rest }: Props = $props();
-const ctx = useSidebar();
+  let { class: className, children, ...rest }: Props = $props();
+  const ctx = useSidebar();
 </script>
 
 <Ark

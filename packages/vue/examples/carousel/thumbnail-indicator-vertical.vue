@@ -22,7 +22,7 @@ const slides = imageSources();
           :key="slide.src"
           :index="index"
         >
-          <img :alt="slide.alt" :height="300" :src="slide.src" :width="500">
+          <img :alt="slide.alt" :height="300" :src="slide.src" :width="500" />
         </Carousel.Item>
       </Carousel.ItemGroup>
     </Carousel.Control>
@@ -33,7 +33,7 @@ const slides = imageSources();
         :key="slide.src"
         :index="index"
       >
-        <img :alt="slide.alt" :height="40" :src="slide.src" :width="40">
+        <img :alt="slide.alt" :height="40" :src="slide.src" :width="40" />
       </Carousel.Indicator>
     </Carousel.IndicatorGroup>
   </Carousel.Root>

@@ -32,7 +32,10 @@ type AvatarRootProps = AvatarPrimitiveRootProps &
 export interface AvatarProps extends Omit<AvatarRootProps, "children"> {
   alt?: string;
   fallback?: JSX.Element;
-  /** Person name; used as default alt text and to derive initials when no fallback is given */
+  /**
+   * Person name; used as default alt text and to derive initials when no
+   * fallback is given
+   */
   name?: string;
   src?: string;
   classNames?: AvatarClassNames;

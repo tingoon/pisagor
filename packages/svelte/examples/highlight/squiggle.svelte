@@ -1,16 +1,16 @@
 <script lang="ts">
-import { useHighlight } from "@ark-ui/svelte/highlight";
+  import { useHighlight } from "@ark-ui/svelte/highlight";
 
-const chunks = useHighlight({
-  query: "real humans",
-  text: "Endless scale, powered by real humans.",
-});
+  const chunks = useHighlight({
+    query: "real humans",
+    text: "Endless scale, powered by real humans.",
+  });
 </script>
 
-<p class="font-medium text-foreground text-lg leading-relaxed">
+<p class="text-foreground text-lg leading-relaxed font-medium">
   {#each chunks() as chunk}
     {#if chunk.match}
-      <mark class="relative bg-transparent px-0 font-semibold text-primary">
+      <mark class="text-primary relative bg-transparent px-0 font-semibold">
         {chunk.text}
         <svg
           aria-hidden="true"

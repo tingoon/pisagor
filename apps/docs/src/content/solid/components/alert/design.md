@@ -29,10 +29,10 @@ Use titles for scanning and body text for nuance. Success messages can be shorte
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Persistent in-context message | **Alert** |
-| Brief auto-dismissing feedback | [Toast](/solid/components/toast/design) |
-| Blocking confirmation | [Alert Dialog](/solid/components/alert-dialog/design) |
-| Compact metadata label | [Badge](/solid/components/badge/design) |
-| Product or promo callout | [Announcement](/solid/components/announcement/design) |
+| Need                           | Prefer                                                |
+| ------------------------------ | ----------------------------------------------------- |
+| Persistent in-context message  | **Alert**                                             |
+| Brief auto-dismissing feedback | [Toast](/solid/components/toast/design)               |
+| Blocking confirmation          | [Alert Dialog](/solid/components/alert-dialog/design) |
+| Compact metadata label         | [Badge](/solid/components/badge/design)               |
+| Product or promo callout       | [Announcement](/solid/components/announcement/design) |

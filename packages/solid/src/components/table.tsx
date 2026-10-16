@@ -14,9 +14,7 @@ const { Context: TableStylesContext, withContext } = createSlotRecipeContext({
 // #endregion
 
 export interface TableProps
-  extends ComponentProps<typeof ark.table>,
-    BaseTableProps,
-    SizeScaleProps {
+  extends ComponentProps<typeof ark.table>, BaseTableProps, SizeScaleProps {
   variant?: "plain" | "striped";
   isHoverable?: boolean;
 }

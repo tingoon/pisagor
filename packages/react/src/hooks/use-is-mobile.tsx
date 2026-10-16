@@ -1,8 +1,8 @@
 import { useMediaQuery } from "@mantine/hooks";
 
 /**
- * Mobile layout breakpoint in CSS pixels.
- * Keep in sync with `--breakpoint-md` in `styles.css` (48rem / 768px).
+ * Mobile layout breakpoint in CSS pixels. Keep in sync with `--breakpoint-md`
+ * in `styles.css` (48rem / 768px).
  */
 export const MOBILE_BREAKPOINT = 768;
 

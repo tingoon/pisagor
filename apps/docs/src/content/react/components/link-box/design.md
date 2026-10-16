@@ -29,9 +29,9 @@ Match padding and radius to neighboring [Card](/react/components/card/design) co
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Clickable tile with nested actions | **Link Box** |
-| Row layout without overlay link | [Item](/react/components/item/design) |
-| Static grouped content | [Card](/react/components/card/design) |
-| Breadcrumb trail | [Breadcrumb](/react/components/breadcrumb/design) |
+| Need                               | Prefer                                            |
+| ---------------------------------- | ------------------------------------------------- |
+| Clickable tile with nested actions | **Link Box**                                      |
+| Row layout without overlay link    | [Item](/react/components/item/design)             |
+| Static grouped content             | [Card](/react/components/card/design)             |
+| Breadcrumb trail                   | [Breadcrumb](/react/components/breadcrumb/design) |

@@ -4,6 +4,7 @@ import type { DatePickerRecipeFn } from "@pisagor/recipes";
 export interface DatePickerProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue datePickerRecipe
    */
   recipe?: DatePickerRecipeFn;

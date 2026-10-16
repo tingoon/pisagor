@@ -1,9 +1,9 @@
 <script lang="ts">
-import { Alert } from "@pisagor/svelte";
-import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
-import ChecksIcon from "phosphor-svelte/lib/ChecksIcon";
-import ClockCounterClockwiseIcon from "phosphor-svelte/lib/ClockCounterClockwiseIcon";
-import WarningIcon from "phosphor-svelte/lib/WarningIcon";
+  import { Alert } from "@pisagor/svelte";
+  import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
+  import ChecksIcon from "phosphor-svelte/lib/ChecksIcon";
+  import ClockCounterClockwiseIcon from "phosphor-svelte/lib/ClockCounterClockwiseIcon";
+  import WarningIcon from "phosphor-svelte/lib/WarningIcon";
 </script>
 
 <div class="flex flex-col gap-2">

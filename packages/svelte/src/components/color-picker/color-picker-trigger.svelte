@@ -1,10 +1,10 @@
 <script lang="ts">
-import {
-  ColorPicker as ColorPickerPrimitive,
-  type ColorPickerTriggerProps,
-} from "@ark-ui/svelte/color-picker";
+  import {
+    ColorPicker as ColorPickerPrimitive,
+    type ColorPickerTriggerProps,
+  } from "@ark-ui/svelte/color-picker";
 
-let { children, ...rest }: ColorPickerTriggerProps = $props();
+  let { children, ...rest }: ColorPickerTriggerProps = $props();
 </script>
 
 <ColorPickerPrimitive.Trigger {...rest}>

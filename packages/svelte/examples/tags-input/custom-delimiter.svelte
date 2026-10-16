@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Field, TagsInput } from "@pisagor/svelte";
+  import { Field, TagsInput } from "@pisagor/svelte";
 
-const tagDelimiter = /[,\s]+/;
-let value = $state(["React"]);
+  const tagDelimiter = /[,\s]+/;
+  let value = $state(["React"]);
 </script>
 
 <Field>

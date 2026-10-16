@@ -1,5 +1,5 @@
 <script lang="ts">
-import { AppShell } from "@pisagor/svelte";
+  import { AppShell } from "@pisagor/svelte";
 </script>
 
 <AppShell disableHotkey>

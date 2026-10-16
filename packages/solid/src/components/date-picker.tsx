@@ -58,30 +58,27 @@ function useDatePicker() {
 }
 // #endregion
 
-export interface DatePickerTriggerProps
-  extends DatePickerPrimitiveTriggerProps {
+export interface DatePickerTriggerProps extends DatePickerPrimitiveTriggerProps {
   clearable?: boolean;
 }
 
 export interface DatePickerInputProps
-  extends Omit<DatePickerPrimitiveInputProps, "size">,
-    InputProps {
+  extends Omit<DatePickerPrimitiveInputProps, "size">, InputProps {
   clearable?: boolean;
 }
 
 export interface DatePickerTimerProps
-  extends Omit<InputProps, "recipe">,
-    BaseDatePickerProps {
+  extends Omit<InputProps, "recipe">, BaseDatePickerProps {
   clearable?: boolean;
 }
 
-export interface DatePickerContentProps
-  extends DatePickerPrimitiveContentProps {
+export interface DatePickerContentProps extends DatePickerPrimitiveContentProps {
   showCalendar?: boolean;
 }
 
 export interface DatePickerRootProps
-  extends Omit<DatePickerPrimitiveRootProps, "onValueChange">,
+  extends
+    Omit<DatePickerPrimitiveRootProps, "onValueChange">,
     BaseDatePickerProps {
   variant?: FormControlVariant;
   onValueChange?: (value: DatePickerRootProps["value"]) => void;
@@ -144,7 +141,10 @@ export function DatePickerRoot(props: DatePickerRootProps): JSX.Element {
   );
 }
 
-/** True inside a date picker control, so nested parts do not render a second one. */
+/**
+ * True inside a date picker control, so nested parts do not render a second
+ * one.
+ */
 const DatePickerInsideControlContext = createSolidContext(false);
 
 export function DatePickerControl(

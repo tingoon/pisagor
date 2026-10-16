@@ -1,9 +1,9 @@
 <script lang="ts">
-import { RadioGroup } from "@pisagor/svelte";
+  import { RadioGroup } from "@pisagor/svelte";
 
-let value: string | null = $state(null);
+  let value: string | null = $state(null);
 
-const isCorrectOption = $derived(value === "comfortable");
+  const isCorrectOption = $derived(value === "comfortable");
 </script>
 
 <div class="flex flex-col items-center gap-2 text-center text-sm">

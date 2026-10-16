@@ -1,25 +1,26 @@
 <script lang="ts">
-import { Table } from "@pisagor/svelte";
-import type { RowSelectionState } from "@pisagor/svelte/data-grid";
-import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import { allUsers, type User, userColumns } from "./helpers";
+  import { Table } from "@pisagor/svelte";
+  import type { RowSelectionState } from "@pisagor/svelte/data-grid";
+  import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
+  import { allUsers, type User, userColumns } from "./helpers";
 
-const columns = [{ header: "", id: "select", size: 40 }, ...userColumns];
-let rowSelection = $state<RowSelectionState>({});
-const selectedCount = $derived(
-  Object.keys(rowSelection).filter((k) => rowSelection[k]).length,
-);
+  const columns = [{ header: "", id: "select", size: 40 }, ...userColumns];
+  let rowSelection = $state<RowSelectionState>({});
+  const selectedCount = $derived(
+    Object.keys(rowSelection).filter((k) => rowSelection[k]).length,
+  );
 
-function onRowSelectionChange(
-  updater: RowSelectionState | ((prev: RowSelectionState) => RowSelectionState),
-) {
-  rowSelection =
-    typeof updater === "function" ? updater(rowSelection) : updater;
-}
+  function onRowSelectionChange(
+    updater:
+      RowSelectionState | ((prev: RowSelectionState) => RowSelectionState),
+  ) {
+    rowSelection =
+      typeof updater === "function" ? updater(rowSelection) : updater;
+  }
 </script>
 
 <div class="flex w-full flex-col gap-3">
-  <div class="rounded-xl border bg-muted/20 p-3">
+  <div class="bg-muted/20 rounded-xl border p-3">
     <DataGrid
       {columns}
       data={allUsers.slice(0, 12)}
@@ -30,7 +31,7 @@ function onRowSelectionChange(
       state={{ rowSelection }}
     >
       <DataGrid.Toolbar>
-        <p class="font-medium text-sm">Selected: {selectedCount}</p>
+        <p class="text-sm font-medium">Selected: {selectedCount}</p>
       </DataGrid.Toolbar>
       <Table>
         <Table.Header>

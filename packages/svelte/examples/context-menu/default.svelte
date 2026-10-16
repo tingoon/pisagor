@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ContextMenu } from "@pisagor/svelte";
+  import { ContextMenu } from "@pisagor/svelte";
 </script>
 
 <ContextMenu>

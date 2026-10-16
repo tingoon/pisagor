@@ -1,16 +1,16 @@
 <script lang="ts">
-import { createListCollection } from "@ark-ui/svelte/collection";
-import { Select } from "@pisagor/svelte";
+  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { Select } from "@pisagor/svelte";
 
-const collection = createListCollection({
-  items: [
-    { label: "React", value: "react" },
-    { label: "Vue", value: "vue" },
-    { label: "Svelte", value: "svelte" },
-  ],
-});
+  const collection = createListCollection({
+    items: [
+      { label: "React", value: "react" },
+      { label: "Vue", value: "vue" },
+      { label: "Svelte", value: "svelte" },
+    ],
+  });
 
-let value = $state<string[]>(["react"]);
+  let value = $state<string[]>(["react"]);
 </script>
 
 <Select.Root

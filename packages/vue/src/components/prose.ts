@@ -14,12 +14,12 @@ export interface ProseProps extends BaseProseProps {
    * Trusted HTML content rendered as-is.
    *
    * @remarks
-   * When set, the default slot content is ignored.
+   *   When set, the default slot content is ignored.
    */
   html?: string;
   /**
-   * Sanitizer applied to `html` before injection, e.g.
-   * `(html) => DOMPurify.sanitize(html)`. Recommended for user-generated content.
+   * Sanitizer applied to `html` before injection, e.g. `(html) =>
+   * DOMPurify.sanitize(html)`. Recommended for user-generated content.
    */
   sanitize?: (html: string) => string;
 }

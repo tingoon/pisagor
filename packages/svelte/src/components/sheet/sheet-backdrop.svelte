@@ -1,8 +1,8 @@
 <script lang="ts">
-import type { ComponentProps } from "svelte";
-import DialogBackdrop from "../dialog/dialog-backdrop.svelte";
+  import type { ComponentProps } from "svelte";
+  import DialogBackdrop from "../dialog/dialog-backdrop.svelte";
 
-let props: ComponentProps<typeof DialogBackdrop> = $props();
+  let props: ComponentProps<typeof DialogBackdrop> = $props();
 </script>
 
 <DialogBackdrop {...props} />

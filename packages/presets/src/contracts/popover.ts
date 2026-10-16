@@ -11,7 +11,7 @@ export const popoverRecipe = tv({
       "flex flex-col",
       "bg-popover",
       "text-popover-foreground",
-      "rounded-2xl border border-border/50 shadow-md",
+      "border-border/50 rounded-2xl border shadow-md",
       "outline-hidden",
       "origin-(--transform-origin)",
       "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
@@ -36,13 +36,13 @@ export const popoverRecipe = tv({
       "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
       "sm:rounded-b-2xl",
       "px-(--space) py-4",
-      "border-t border-border/40",
+      "border-border/40 border-t",
     ],
     header: [
       "flex flex-col gap-2 p-(--space)",
       "in-[[data-scope=popover][data-part=content]:has([data-scope=popover][data-part=body])]:pb-3",
     ],
-    title: ["font-semibold text-base leading-tight tracking-tight"],
+    title: ["text-base leading-tight font-semibold tracking-tight"],
   },
 });
 

@@ -29,9 +29,9 @@ Selecting an option should fill the field with the chosen label and close the li
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Type-to-filter long lists | **Autocomplete** |
-| Short fixed option set | [Select](/vue/components/select/design) |
-| Composable listbox behavior | [Combobox](/vue/components/combobox/design) |
-| Multiple tags from search | [Tags Input](/vue/components/tags-input/design) |
+| Need                        | Prefer                                            |
+| --------------------------- | ------------------------------------------------- |
+| Type-to-filter long lists   | **Autocomplete**                                  |
+| Short fixed option set      | [Select](/vue/components/select/design)         |
+| Composable listbox behavior | [Combobox](/vue/components/combobox/design)     |
+| Multiple tags from search   | [Tags Input](/vue/components/tags-input/design) |

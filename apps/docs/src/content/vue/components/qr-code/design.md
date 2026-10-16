@@ -29,9 +29,9 @@ QR codes are inherently visual. Always provide an equivalent action — copy lin
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Camera handoff to mobile | **QR Code** |
-| Open URL on this device | [Link Box](/vue/components/link-box/design) / [Button](/vue/components/button/design) |
-| Share sheet actions | [Dropdown Menu](/vue/components/dropdown-menu/design) |
-| Copy payload | [Clipboard](/vue/components/clipboard/design) |
+| Need                     | Prefer                                                                                    |
+| ------------------------ | ----------------------------------------------------------------------------------------- |
+| Camera handoff to mobile | **QR Code**                                                                               |
+| Open URL on this device  | [Link Box](/vue/components/link-box/design) / [Button](/vue/components/button/design) |
+| Share sheet actions      | [Dropdown Menu](/vue/components/dropdown-menu/design)                                   |
+| Copy payload             | [Clipboard](/vue/components/clipboard/design)                                           |

@@ -11,7 +11,7 @@ export function Testimonial() {
         <div className="flex gap-2">
           <Avatar alt="jane.doe@example.com" fallback="JD" size="lg" />
           <div>
-            <Card.Title className="font-medium text-sm">Jane Doe</Card.Title>
+            <Card.Title className="text-sm font-medium">Jane Doe</Card.Title>
             <Card.Description>Frontend Developer</Card.Description>
           </div>
         </div>

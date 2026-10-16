@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Carousel } from "@pisagor/svelte";
-import { numberedSlides } from "./helpers";
+  import { Carousel } from "@pisagor/svelte";
+  import { numberedSlides } from "./helpers";
 
-const slides = numberedSlides(8);
+  const slides = numberedSlides(8);
 </script>
 
 <Carousel.Root autoplay loop slideCount={slides.length}>

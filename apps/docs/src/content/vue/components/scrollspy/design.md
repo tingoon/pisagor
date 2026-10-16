@@ -29,9 +29,9 @@ Collapse the section nav into a [Select](/vue/components/select/design) or drawe
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Highlight current scroll section | **Scrollspy** |
-| Switch mounted panels | [Tabs](/vue/components/tabs/design) |
-| Nested nav scroll | [Scroll Area](/vue/components/scroll-area/design) |
-| Site-wide wayfinding | [Navigation Menu](/vue/components/navigation-menu/design) |
+| Need                             | Prefer                                                      |
+| -------------------------------- | ----------------------------------------------------------- |
+| Highlight current scroll section | **Scrollspy**                                               |
+| Switch mounted panels            | [Tabs](/vue/components/tabs/design)                       |
+| Nested nav scroll                | [Scroll Area](/vue/components/scroll-area/design)         |
+| Site-wide wayfinding             | [Navigation Menu](/vue/components/navigation-menu/design) |

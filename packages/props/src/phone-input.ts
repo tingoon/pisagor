@@ -7,6 +7,7 @@ import type {
 export interface PhoneInputProps extends PhoneInputVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue phoneInputRecipe
    */
   recipe?: PhoneInputRecipeFn;

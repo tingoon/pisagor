@@ -21,8 +21,7 @@ type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
 export interface PasswordInputProps
-  extends Pick<InputGroupProps, "size" | "variant">,
-    BasePasswordInputProps {
+  extends Pick<InputGroupProps, "size" | "variant">, BasePasswordInputProps {
   class?: unknown;
   clearButtonProps?: InputGroupButtonProps;
   clearable?: boolean;

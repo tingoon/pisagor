@@ -1,139 +1,137 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import { useHotkey } from "@ark-ui/svelte/hotkeys";
-import type { SidebarProps as BaseSidebarProps } from "@pisagor/props";
-import { sidebarRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { onMount } from "svelte";
-import type { HTMLAttributes } from "svelte/elements";
-import {
-  MOBILE_BREAKPOINT,
-  SIDEBAR_STORAGE_KEY,
-  SIDEBAR_WIDTH,
-  SIDEBAR_WIDTH_ICON,
-} from "./constants";
-import { setSidebarContext } from "./sidebar.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import { useHotkey } from "@ark-ui/svelte/hotkeys";
+  import type { SidebarProps as BaseSidebarProps } from "@pisagor/props";
+  import { sidebarRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { onMount } from "svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import {
+    MOBILE_BREAKPOINT,
+    SIDEBAR_STORAGE_KEY,
+    SIDEBAR_WIDTH,
+    SIDEBAR_WIDTH_ICON,
+  } from "./constants";
+  import { setSidebarContext } from "./sidebar.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
-  children?: import("svelte").Snippet;
-  /**
-   * The default open state of the sidebar. A stored value in `localStorage`
-   * (`sidebar_state`) wins after mount.
-   * @defaultValue true
-   */
-  defaultOpen?: boolean;
-  /**
-   * Whether to disable the `mod+B` toggle hotkey.
-   * @defaultValue false
-   */
-  disableHotkey?: boolean;
-  /**
-   * The open state of the sidebar.
-   */
-  open?: boolean;
-  /**
-   * Called when the open state of the sidebar changes.
-   */
-  onOpenChange?: (open: boolean) => void;
-  style?: string | undefined;
-} & BaseSidebarProps;
+  type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
+    children?: import("svelte").Snippet;
+    /**
+     * The default open state of the sidebar. A stored value in `localStorage`
+     * (`sidebar_state`) wins after mount.
+     *
+     * @defaultValue true
+     */
+    defaultOpen?: boolean;
+    /**
+     * Whether to disable the `mod+B` toggle hotkey.
+     *
+     * @defaultValue false
+     */
+    disableHotkey?: boolean;
+    /** The open state of the sidebar. */
+    open?: boolean;
+    /** Called when the open state of the sidebar changes. */
+    onOpenChange?: (open: boolean) => void;
+    style?: string | undefined;
+  } & BaseSidebarProps;
 
-let {
-  defaultOpen = true,
-  disableHotkey = false,
-  open = $bindable(),
-  onOpenChange,
-  recipe = sidebarRecipe,
-  class: className,
-  style,
-  children,
-  ...rest
-}: Props = $props();
+  let {
+    defaultOpen = true,
+    disableHotkey = false,
+    open = $bindable(),
+    onOpenChange,
+    recipe = sidebarRecipe,
+    class: className,
+    style,
+    children,
+    ...rest
+  }: Props = $props();
 
-const restoreFromStorage = open === undefined;
+  const restoreFromStorage = open === undefined;
 
-let isMobile = $state(false);
-let openMobile = $state(false);
+  let isMobile = $state(false);
+  let openMobile = $state(false);
 
-onMount(() => {
-  if (restoreFromStorage && typeof localStorage !== "undefined") {
-    const stored = localStorage.getItem(SIDEBAR_STORAGE_KEY);
-    if (stored === "true" || stored === "false") {
-      open = stored === "true";
+  onMount(() => {
+    if (restoreFromStorage && typeof localStorage !== "undefined") {
+      const stored = localStorage.getItem(SIDEBAR_STORAGE_KEY);
+      if (stored === "true" || stored === "false") {
+        open = stored === "true";
+      }
+    }
+    const query = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
+    const update = () => {
+      isMobile = query.matches;
+    };
+    update();
+    query.addEventListener("change", update);
+    return () => query.removeEventListener("change", update);
+  });
+
+  const slots = $derived(recipe());
+  const sidebarState = $derived(
+    (open ?? defaultOpen) ? ("expanded" as const) : ("collapsed" as const),
+  );
+
+  function setOpen(value: boolean) {
+    open = value;
+    onOpenChange?.(value);
+    if (typeof localStorage !== "undefined") {
+      localStorage.setItem(SIDEBAR_STORAGE_KEY, String(value));
     }
   }
-  const query = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
-  const update = () => {
-    isMobile = query.matches;
-  };
-  update();
-  query.addEventListener("change", update);
-  return () => query.removeEventListener("change", update);
-});
 
-const slots = $derived(recipe());
-const sidebarState = $derived(
-  (open ?? defaultOpen) ? ("expanded" as const) : ("collapsed" as const),
-);
-
-function setOpen(value: boolean) {
-  open = value;
-  onOpenChange?.(value);
-  if (typeof localStorage !== "undefined") {
-    localStorage.setItem(SIDEBAR_STORAGE_KEY, String(value));
+  function setOpenMobile(value: boolean) {
+    openMobile = value;
   }
-}
 
-function setOpenMobile(value: boolean) {
-  openMobile = value;
-}
-
-function toggleSidebar() {
-  if (isMobile) {
-    openMobile = !openMobile;
-  } else {
-    setOpen(!(open ?? defaultOpen));
+  function toggleSidebar() {
+    if (isMobile) {
+      openMobile = !openMobile;
+    } else {
+      setOpen(!(open ?? defaultOpen));
+    }
   }
-}
 
-useHotkey(() => ({
-  action: () => {
-    toggleSidebar();
-  },
-  enabled: !disableHotkey,
-  hotkey: "mod+B",
-}));
+  useHotkey(() => ({
+    action: () => {
+      toggleSidebar();
+    },
+    enabled: !disableHotkey,
+    hotkey: "mod+B",
+  }));
 
-setSidebarContext({
-  get isMobile() {
-    return isMobile;
-  },
-  get open() {
-    return open ?? defaultOpen;
-  },
-  get openMobile() {
-    return openMobile;
-  },
-  setOpen,
-  setOpenMobile,
-  get slots() {
-    return slots;
-  },
-  get state() {
-    return sidebarState;
-  },
-  toggleSidebar,
-});
+  setSidebarContext({
+    get isMobile() {
+      return isMobile;
+    },
+    get open() {
+      return open ?? defaultOpen;
+    },
+    get openMobile() {
+      return openMobile;
+    },
+    setOpen,
+    setOpenMobile,
+    get slots() {
+      return slots;
+    },
+    get state() {
+      return sidebarState;
+    },
+    toggleSidebar,
+  });
 
-const wrapperStyle = $derived(
-  [
-    `--sidebar-width: ${SIDEBAR_WIDTH}`,
-    `--sidebar-width-icon: ${SIDEBAR_WIDTH_ICON}`,
-    style ?? "",
-  ]
-    .filter(Boolean)
-    .join("; "),
-);
+  const wrapperStyle = $derived(
+    [
+      `--sidebar-width: ${SIDEBAR_WIDTH}`,
+      `--sidebar-width-icon: ${SIDEBAR_WIDTH_ICON}`,
+      style ?? "",
+    ]
+      .filter(Boolean)
+      .join("; "),
+  );
 </script>
 
 <Ark

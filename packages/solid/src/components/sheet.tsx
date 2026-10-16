@@ -33,14 +33,12 @@ const { Context: SheetStylesContext, useStyles: useSheet } =
 export type SheetPositionerProps = DialogPositionerProps & SheetVariantProps;
 
 export interface SheetContentProps
-  extends DialogContentProps,
-    SheetVariantProps {
+  extends DialogContentProps, SheetVariantProps {
   showCloseButton?: boolean;
 }
 
 export interface SheetProps
-  extends Omit<DialogRootProps, "recipe">,
-    BaseSheetProps {}
+  extends Omit<DialogRootProps, "recipe">, BaseSheetProps {}
 
 export type SheetTriggerProps = DialogTriggerProps;
 export type SheetCloseTriggerProps = DialogCloseTriggerProps;

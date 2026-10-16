@@ -19,7 +19,7 @@ const slides = numberedSlides(8);
       >
         <Card>
           <Card.Content class="flex aspect-square items-center justify-center">
-            <span class="font-semibold text-4xl">{{ index + 1 }}</span>
+            <span class="text-4xl font-semibold">{{ index + 1 }}</span>
           </Card.Content>
         </Card>
       </Carousel.Item>

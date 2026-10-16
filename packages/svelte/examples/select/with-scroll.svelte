@@ -1,13 +1,13 @@
 <script lang="ts">
-import { createListCollection } from "@ark-ui/svelte/collection";
-import { Select } from "@pisagor/svelte";
+  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { Select } from "@pisagor/svelte";
 
-const collection = createListCollection({
-  items: Array.from({ length: 20 }, (_, i) => ({
-    label: `Framework ${i + 1}`,
-    value: `framework-${i + 1}`,
-  })),
-});
+  const collection = createListCollection({
+    items: Array.from({ length: 20 }, (_, i) => ({
+      label: `Framework ${i + 1}`,
+      value: `framework-${i + 1}`,
+    })),
+  });
 </script>
 
 <Select.Root {collection} positioning={{ fitViewport: true }}>

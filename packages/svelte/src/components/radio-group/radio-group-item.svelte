@@ -1,35 +1,35 @@
 <script lang="ts">
-import {
-  type RadioGroupItemProps as ArkRadioGroupItemProps,
-  RadioGroup as RadioGroupPrimitive,
-} from "@ark-ui/svelte/radio-group";
-import type { RadioGroupItemProps as BaseRadioGroupItemProps } from "@pisagor/props";
-import {
-  formControlRadioToggleRecipe,
-  radioGroupItemRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { useFormControlSurface } from "../surface/use-form-control-surface";
+  import {
+    type RadioGroupItemProps as ArkRadioGroupItemProps,
+    RadioGroup as RadioGroupPrimitive,
+  } from "@ark-ui/svelte/radio-group";
+  import type { RadioGroupItemProps as BaseRadioGroupItemProps } from "@pisagor/props";
+  import {
+    formControlRadioToggleRecipe,
+    radioGroupItemRecipe,
+  } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { useFormControlSurface } from "../surface/use-form-control-surface";
 
-type FormControlVariant = "primary" | "secondary";
+  type FormControlVariant = "primary" | "secondary";
 
-type Props = ArkRadioGroupItemProps & {
-  variant?: FormControlVariant;
-  tabindex?: number | null;
-} & BaseRadioGroupItemProps;
+  type Props = ArkRadioGroupItemProps & {
+    variant?: FormControlVariant;
+    tabindex?: number | null;
+  } & BaseRadioGroupItemProps;
 
-let {
-  variant: variantProp,
-  tabindex,
-  children,
-  recipe = radioGroupItemRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    variant: variantProp,
+    tabindex,
+    children,
+    recipe = radioGroupItemRecipe,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const surfaceVariant = useFormControlSurface();
-const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-const slots = $derived(recipe());
+  const surfaceVariant = useFormControlSurface();
+  const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
+  const slots = $derived(recipe());
 </script>
 
 <RadioGroupPrimitive.Item

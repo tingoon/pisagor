@@ -29,9 +29,9 @@ When offering autocomplete, align suggestions with [Combobox](/react/components/
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Multiple freeform or validated tokens | **Tags Input** |
-| Fixed multi-select | [Select](/react/components/select/design) |
-| Long prose | [Textarea](/react/components/textarea/design) |
-| Display-only labels | [Badge](/react/components/badge/design) |
+| Need                                  | Prefer                                        |
+| ------------------------------------- | --------------------------------------------- |
+| Multiple freeform or validated tokens | **Tags Input**                                |
+| Fixed multi-select                    | [Select](/react/components/select/design)     |
+| Long prose                            | [Textarea](/react/components/textarea/design) |
+| Display-only labels                   | [Badge](/react/components/badge/design)       |

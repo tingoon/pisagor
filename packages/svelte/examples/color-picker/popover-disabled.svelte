@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Button, ColorPicker } from "@pisagor/svelte";
+  import { Button, ColorPicker } from "@pisagor/svelte";
 </script>
 
 <ColorPicker disabled value="#eb5e41">

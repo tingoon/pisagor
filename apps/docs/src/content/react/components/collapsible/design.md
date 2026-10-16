@@ -29,9 +29,9 @@ Treat collapsible content as supplementary unless labeled otherwise. Lead with t
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| One show/hide section | **Collapsible** |
+| Need                         | Prefer                                          |
+| ---------------------------- | ----------------------------------------------- |
+| One show/hide section        | **Collapsible**                                 |
 | Multiple expandable sections | [Accordion](/react/components/accordion/design) |
-| Peer views switched often | [Tabs](/react/components/tabs/design) |
-| Lightweight hint on hover | [Tooltip](/react/components/tooltip/design) |
+| Peer views switched often    | [Tabs](/react/components/tabs/design)           |
+| Lightweight hint on hover    | [Tooltip](/react/components/tooltip/design)     |

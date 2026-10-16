@@ -131,4 +131,3 @@ Enable sortable columns when users need to reorder records by field.
 Show loading while rows are fetching so the grid does not look empty by mistake.
 
 :::example LoadingState
-

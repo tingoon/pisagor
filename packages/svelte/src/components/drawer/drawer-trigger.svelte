@@ -1,10 +1,10 @@
 <script lang="ts">
-import {
-  Drawer as DrawerPrimitive,
-  type DrawerTriggerProps,
-} from "@ark-ui/svelte/drawer";
+  import {
+    Drawer as DrawerPrimitive,
+    type DrawerTriggerProps,
+  } from "@ark-ui/svelte/drawer";
 
-let { children, ...rest }: DrawerTriggerProps = $props();
+  let { children, ...rest }: DrawerTriggerProps = $props();
 </script>
 
 <DrawerPrimitive.Trigger {...rest}>

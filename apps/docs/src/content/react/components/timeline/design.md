@@ -29,9 +29,9 @@ On small screens, collapse secondary metadata behind expansion or show a compact
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Chronological event stream | **Timeline** |
-| Active multi-step flow | [Steps](/react/components/steps/design) |
-| KPI snapshot | [Stat](/react/components/stat/design) |
+| Need                        | Prefer                                          |
+| --------------------------- | ----------------------------------------------- |
+| Chronological event stream  | **Timeline**                                    |
+| Active multi-step flow      | [Steps](/react/components/steps/design)         |
+| KPI snapshot                | [Stat](/react/components/stat/design)           |
 | Nested history in tree form | [Tree View](/react/components/tree-view/design) |

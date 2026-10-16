@@ -7,6 +7,7 @@ import type {
 export interface RadioGroupProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue radioGroupRecipe
    */
   recipe?: RadioGroupRecipeFn;
@@ -16,6 +17,7 @@ export interface RadioGroupProps {
 export interface RadioGroupItemProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue radioGroupItemRecipe
    */
   recipe?: RadioGroupItemRecipeFn;

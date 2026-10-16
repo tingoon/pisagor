@@ -29,9 +29,9 @@ Hero marketing and product galleries suit carousels; dense data tables do not. P
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Sequential focused browsing | **Carousel** |
-| All items visible at once | [Card](/solid/components/card/design) grid |
-| Tabbed peer panels | [Tabs](/solid/components/tabs/design) |
-| Cropped media frame | [Frame](/solid/components/frame/design) |
+| Need                        | Prefer                                     |
+| --------------------------- | ------------------------------------------ |
+| Sequential focused browsing | **Carousel**                               |
+| All items visible at once   | [Card](/solid/components/card/design) grid |
+| Tabbed peer panels          | [Tabs](/solid/components/tabs/design)      |
+| Cropped media frame         | [Frame](/solid/components/frame/design)    |

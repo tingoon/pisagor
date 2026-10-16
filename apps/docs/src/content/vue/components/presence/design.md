@@ -29,9 +29,9 @@ Presence is a building block, not a visual pattern people choose from a menu. Do
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Smooth mount/unmount motion | **Presence** |
+| Need                            | Prefer                                              |
+| ------------------------------- | --------------------------------------------------- |
+| Smooth mount/unmount motion     | **Presence**                                        |
 | Show/hide with height animation | [Collapsible](/vue/components/collapsible/design) |
-| Transient notification | [Toast](/vue/components/toast/design) |
-| Modal enter/exit | [Dialog](/vue/components/dialog/design) |
+| Transient notification          | [Toast](/vue/components/toast/design)             |
+| Modal enter/exit                | [Dialog](/vue/components/dialog/design)           |

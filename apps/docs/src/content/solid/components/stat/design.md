@@ -29,10 +29,10 @@ While data loads, use [Skeleton](/solid/components/skeleton/design) or a subdued
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Scannable metric with label | **Stat** |
-| Compact state dot | [Status](/solid/components/status/design) |
-| Count on an object | [Badge](/solid/components/badge/design) |
-| Tabular comparison | [Table](/solid/components/table/design) |
-| Event sequence | [Timeline](/solid/components/timeline/design) |
+| Need                        | Prefer                                        |
+| --------------------------- | --------------------------------------------- |
+| Scannable metric with label | **Stat**                                      |
+| Compact state dot           | [Status](/solid/components/status/design)     |
+| Count on an object          | [Badge](/solid/components/badge/design)       |
+| Tabular comparison          | [Table](/solid/components/table/design)       |
+| Event sequence              | [Timeline](/solid/components/timeline/design) |

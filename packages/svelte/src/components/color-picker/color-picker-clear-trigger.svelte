@@ -1,32 +1,35 @@
 <script lang="ts">
-import { parseColor, useColorPickerContext } from "@ark-ui/svelte/color-picker";
-import XIcon from "phosphor-svelte/lib/XIcon";
-import type { ClassValue } from "svelte/elements";
-import { InputGroup } from "../input-group";
-import { useMessageResolver } from "../provider/context";
+  import {
+    parseColor,
+    useColorPickerContext,
+  } from "@ark-ui/svelte/color-picker";
+  import XIcon from "phosphor-svelte/lib/XIcon";
+  import type { ClassValue } from "svelte/elements";
+  import { InputGroup } from "../input-group";
+  import { useMessageResolver } from "../provider/context";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-type Props = {
-  class?: ClassValue;
-  clearable?: boolean;
-};
-let { clearable = false, class: className }: Props = $props();
-const api = useColorPickerContext();
-
-const visible = $derived.by(() => {
-  if (!clearable) return false;
-  const controlProps = api().getControlProps() as {
-    disabled?: boolean;
-    readOnly?: boolean;
+  type Props = {
+    class?: ClassValue;
+    clearable?: boolean;
   };
-  if (controlProps.disabled || controlProps.readOnly) return false;
-  return api().value.getChannelValue("alpha") !== 0;
-});
+  let { clearable = false, class: className }: Props = $props();
+  const api = useColorPickerContext();
 
-function clear() {
-  api().setValue(parseColor("rgba(0, 0, 0, 0)"));
-}
+  const visible = $derived.by(() => {
+    if (!clearable) return false;
+    const controlProps = api().getControlProps() as {
+      disabled?: boolean;
+      readOnly?: boolean;
+    };
+    if (controlProps.disabled || controlProps.readOnly) return false;
+    return api().value.getChannelValue("alpha") !== 0;
+  });
+
+  function clear() {
+    api().setValue(parseColor("rgba(0, 0, 0, 0)"));
+  }
 </script>
 
 {#if visible}

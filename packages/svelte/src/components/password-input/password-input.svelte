@@ -1,80 +1,80 @@
 <script lang="ts">
-import type {
-  PasswordInputInputProps,
-  PasswordInputRootProps as PasswordInputPrimitiveRootProps,
-} from "@ark-ui/svelte/password-input";
-import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/svelte/password-input";
-import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
-import {
-  inputGroupButtonRecipe,
-  inputGroupControlRecipe,
-  passwordInputRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import EyeIcon from "phosphor-svelte/lib/EyeIcon";
-import EyeSlashIcon from "phosphor-svelte/lib/EyeSlashIcon";
-import XIcon from "phosphor-svelte/lib/XIcon";
-import InputGroupAddon from "../input-group/input-group-addon.svelte";
-import InputGroupButton from "../input-group/input-group-button.svelte";
-import InputGroupRoot from "../input-group/input-group-root.svelte";
-import { useMessageResolver } from "../provider/context";
+  import type {
+    PasswordInputInputProps,
+    PasswordInputRootProps as PasswordInputPrimitiveRootProps,
+  } from "@ark-ui/svelte/password-input";
+  import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/svelte/password-input";
+  import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
+  import {
+    inputGroupButtonRecipe,
+    inputGroupControlRecipe,
+    passwordInputRecipe,
+  } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import EyeIcon from "phosphor-svelte/lib/EyeIcon";
+  import EyeSlashIcon from "phosphor-svelte/lib/EyeSlashIcon";
+  import XIcon from "phosphor-svelte/lib/XIcon";
+  import InputGroupAddon from "../input-group/input-group-addon.svelte";
+  import InputGroupButton from "../input-group/input-group-button.svelte";
+  import InputGroupRoot from "../input-group/input-group-root.svelte";
+  import { useMessageResolver } from "../provider/context";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-type FormControlVariant = "primary" | "secondary";
+  type FormControlVariant = "primary" | "secondary";
 
-type PasswordInputRootProps = Pick<
-  PasswordInputPrimitiveRootProps,
-  "defaultVisible" | "invalid" | "onVisibilityChange" | "visible"
->;
+  type PasswordInputRootProps = Pick<
+    PasswordInputPrimitiveRootProps,
+    "defaultVisible" | "invalid" | "onVisibilityChange" | "visible"
+  >;
 
-type Props = PasswordInputRootProps &
-  Omit<PasswordInputInputProps, "size" | "children"> & {
-    clearable?: boolean;
-    disabled?: boolean | null;
-    onValueChange?: (value: string) => void;
-    placeholder?: string | null | undefined;
-    readonly?: boolean | null;
-    size?: "sm" | "md" | "lg";
-    value?: string | undefined;
-    variant?: FormControlVariant;
-  } & BasePasswordInputProps;
+  type Props = PasswordInputRootProps &
+    Omit<PasswordInputInputProps, "size" | "children"> & {
+      clearable?: boolean;
+      disabled?: boolean | null;
+      onValueChange?: (value: string) => void;
+      placeholder?: string | null | undefined;
+      readonly?: boolean | null;
+      size?: "sm" | "md" | "lg";
+      value?: string | undefined;
+      variant?: FormControlVariant;
+    } & BasePasswordInputProps;
 
-let {
-  size = "md",
-  variant,
-  clearable = false,
-  defaultVisible,
-  disabled,
-  invalid,
-  readonly,
-  value = $bindable<string | undefined>(undefined),
-  visible = $bindable<boolean | undefined>(undefined),
-  placeholder,
-  oninput,
-  onValueChange,
-  onVisibilityChange,
-  recipe = passwordInputRecipe,
-  class: className,
-  ...inputProps
-}: Props = $props();
+  let {
+    size = "md",
+    variant,
+    clearable = false,
+    defaultVisible,
+    disabled,
+    invalid,
+    readonly,
+    value = $bindable<string | undefined>(undefined),
+    visible = $bindable<boolean | undefined>(undefined),
+    placeholder,
+    oninput,
+    onValueChange,
+    onVisibilityChange,
+    recipe = passwordInputRecipe,
+    class: className,
+    ...inputProps
+  }: Props = $props();
 
-const slots = $derived(recipe());
-const canClear = $derived(
-  clearable && !disabled && !readonly && String(value ?? "").length > 0,
-);
+  const slots = $derived(recipe());
+  const canClear = $derived(
+    clearable && !disabled && !readonly && String(value ?? "").length > 0,
+  );
 
-function handleInput(event: Event & { currentTarget: HTMLInputElement }) {
-  const next = event.currentTarget.value;
-  value = next;
-  onValueChange?.(next);
-  oninput?.(event as never);
-}
+  function handleInput(event: Event & { currentTarget: HTMLInputElement }) {
+    const next = event.currentTarget.value;
+    value = next;
+    onValueChange?.(next);
+    oninput?.(event as never);
+  }
 
-function handleClear() {
-  value = "";
-  onValueChange?.("");
-}
+  function handleClear() {
+    value = "";
+    onValueChange?.("");
+  }
 </script>
 
 <PasswordInputPrimitive.Root

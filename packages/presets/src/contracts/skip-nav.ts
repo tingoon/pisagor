@@ -10,7 +10,7 @@ export const skipNavRecipe = tv({
       "focus:text-primary-foreground focus:text-sm",
       "sr-only focus:not-sr-only",
       "focus:rounded-lg",
-      "focus:outline-hidden focus:ring-2 focus:ring-ring",
+      "focus:ring-ring focus:ring-2 focus:outline-hidden",
     ],
   },
 });

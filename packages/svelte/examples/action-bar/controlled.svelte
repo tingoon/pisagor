@@ -1,14 +1,14 @@
 <script lang="ts">
-import { ActionBar, Button } from "@pisagor/svelte";
-import {
-  ArchiveIcon,
-  DownloadIcon,
-  PencilSimpleIcon,
-  TrashIcon,
-  XIcon,
-} from "@pisagor/svelte/icons";
+  import { ActionBar, Button } from "@pisagor/svelte";
+  import {
+    ArchiveIcon,
+    DownloadIcon,
+    PencilSimpleIcon,
+    TrashIcon,
+    XIcon,
+  } from "@pisagor/svelte/icons";
 
-let isOpen = $state(false);
+  let isOpen = $state(false);
 </script>
 
 <ActionBar onOpenChange={(open) => (isOpen = open)} open={isOpen}>

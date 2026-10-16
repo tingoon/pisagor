@@ -1,19 +1,19 @@
 <script lang="ts">
-import { Table } from "@pisagor/svelte";
-import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import { allUsers } from "./helpers";
+  import { Table } from "@pisagor/svelte";
+  import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
+  import { allUsers } from "./helpers";
 
-const columns = [
-  { accessorKey: "name", header: "Name", size: 180 },
-  { accessorKey: "email", header: "Email", size: 240 },
-  { accessorKey: "role", header: "Role", size: 100 },
-  { accessorKey: "department", header: "Department", size: 140 },
-  { accessorKey: "status", header: "Status", size: 100 },
-];
+  const columns = [
+    { accessorKey: "name", header: "Name", size: 180 },
+    { accessorKey: "email", header: "Email", size: 240 },
+    { accessorKey: "role", header: "Role", size: 100 },
+    { accessorKey: "department", header: "Department", size: 140 },
+    { accessorKey: "status", header: "Status", size: 100 },
+  ];
 </script>
 
 <div class="flex w-full flex-col gap-3">
-  <div class="rounded-xl border bg-muted/20 p-3">
+  <div class="bg-muted/20 rounded-xl border p-3">
     <DataGrid
       {columns}
       data={allUsers.slice(0, 8)}
@@ -21,7 +21,7 @@ const columns = [
       features={dataGridFeatures}
     >
       <DataGrid.Toolbar>
-        <p class="font-medium text-sm">Explicit column widths</p>
+        <p class="text-sm font-medium">Explicit column widths</p>
       </DataGrid.Toolbar>
       <Table>
         <Table.Header>

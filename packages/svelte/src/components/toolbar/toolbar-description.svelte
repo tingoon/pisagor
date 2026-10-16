@@ -1,10 +1,10 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { HTMLAttributes } from "svelte/elements";
-import { withContext } from "./toolbar.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { withContext } from "./toolbar.context";
 
-let { children, ...rest }: HTMLAttributes<HTMLElement> = $props();
-const part = withContext(() => rest, { name: "Description" });
+  let { children, ...rest }: HTMLAttributes<HTMLElement> = $props();
+  const part = withContext(() => rest, { name: "Description" });
 </script>
 
-<Ark as="p" {...part.props}> {@render children?.()} </Ark>
+<Ark as="p" {...part.props}>{@render children?.()}</Ark>

@@ -1,31 +1,31 @@
 <script lang="ts">
-import {
-  type TabListProps as ArkTabsListProps,
-  Tabs as TabsPrimitive,
-} from "@ark-ui/svelte/tabs";
-import type { TabsProps as BaseTabsProps } from "@pisagor/props";
-import { cn } from "@pisagor/utils";
-import { useTabs } from "./tabs.context";
+  import {
+    type TabListProps as ArkTabsListProps,
+    Tabs as TabsPrimitive,
+  } from "@ark-ui/svelte/tabs";
+  import type { TabsProps as BaseTabsProps } from "@pisagor/props";
+  import { cn } from "@pisagor/utils";
+  import { useTabs } from "./tabs.context";
 
-type Props = ArkTabsListProps &
-  BaseTabsProps & {
-    /**
-     * Whether to render the animated active-tab indicator.
-     *
-     * @defaultValue true
-     */
-    showIndicator?: boolean;
-  };
+  type Props = ArkTabsListProps &
+    BaseTabsProps & {
+      /**
+       * Whether to render the animated active-tab indicator.
+       *
+       * @defaultValue true
+       */
+      showIndicator?: boolean;
+    };
 
-let {
-  variant = "default",
-  showIndicator = true,
-  children,
-  class: className,
-  ...rest
-}: Props = $props();
-const styles = useTabs();
-const slots = $derived(styles.slots);
+  let {
+    variant = "default",
+    showIndicator = true,
+    children,
+    class: className,
+    ...rest
+  }: Props = $props();
+  const styles = useTabs();
+  const slots = $derived(styles.slots);
 </script>
 
 <TabsPrimitive.List

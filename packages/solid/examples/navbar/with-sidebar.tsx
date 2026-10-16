@@ -14,7 +14,7 @@ export function WithSidebar() {
           <Sidebar.Menu>
             <Sidebar.MenuItem>
               <Sidebar.MenuButton size="lg">
-                <div class="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                <div class="bg-primary text-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                   <DatabaseIcon class="size-4" />
                 </div>
                 <span class="truncate font-semibold">Pisagor</span>
@@ -60,7 +60,7 @@ export function WithSidebar() {
         <Navbar>
           <Navbar.Brand class="gap-3">
             <Sidebar.Trigger />
-            <span class="font-medium text-sm">Dashboard</span>
+            <span class="text-sm font-medium">Dashboard</span>
           </Navbar.Brand>
 
           <Navbar.Content class="justify-end">

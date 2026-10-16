@@ -22,8 +22,7 @@ const { Context: HoverCardStylesContext, useStyles: useHoverCard } =
 
 // #region Types
 export interface LocalHoverCardRootProps
-  extends HoverCardPrimitiveRootProps,
-    BaseHoverCardRootProps {}
+  extends HoverCardPrimitiveRootProps, BaseHoverCardRootProps {}
 
 export type HoverCardProps = LocalHoverCardRootProps;
 

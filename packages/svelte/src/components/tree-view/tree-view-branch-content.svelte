@@ -1,17 +1,17 @@
 <script lang="ts">
-import {
-  type TreeViewBranchContentProps,
-  TreeView as TreeViewPrimitive,
-} from "@ark-ui/svelte/tree-view";
-import { cn } from "@pisagor/utils";
-import { useTreeViewBranch } from "./tree-view.context";
+  import {
+    type TreeViewBranchContentProps,
+    TreeView as TreeViewPrimitive,
+  } from "@ark-ui/svelte/tree-view";
+  import { cn } from "@pisagor/utils";
+  import { useTreeViewBranch } from "./tree-view.context";
 
-let {
-  children,
-  class: className,
-  ...rest
-}: TreeViewBranchContentProps = $props();
-const { slots } = useTreeViewBranch();
+  let {
+    children,
+    class: className,
+    ...rest
+  }: TreeViewBranchContentProps = $props();
+  const { slots } = useTreeViewBranch();
 </script>
 
 <TreeViewPrimitive.BranchContent

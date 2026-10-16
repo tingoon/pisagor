@@ -1,37 +1,37 @@
 <script lang="ts">
-import {
-  type ImageCropperRootProps as ArkRootProps,
-  ImageCropper as ImageCropperPrimitive,
-} from "@ark-ui/svelte/image-cropper";
-import type { ImageCropperProps as BaseImageCropperProps } from "@pisagor/props";
-import { imageCropperRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { Context } from "./image-cropper.context";
-import ImageCropperImage from "./image-cropper-image.svelte";
-import ImageCropperSelection from "./image-cropper-selection.svelte";
+  import {
+    type ImageCropperRootProps as ArkRootProps,
+    ImageCropper as ImageCropperPrimitive,
+  } from "@ark-ui/svelte/image-cropper";
+  import type { ImageCropperProps as BaseImageCropperProps } from "@pisagor/props";
+  import { imageCropperRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { Context } from "./image-cropper.context";
+  import ImageCropperImage from "./image-cropper-image.svelte";
+  import ImageCropperSelection from "./image-cropper-selection.svelte";
 
-type Props = Omit<ArkRootProps, "src" | "cropShape"> & {
-  alt?: string;
-  cropShape?: "rectangle" | "circle";
-  src?: string;
-} & BaseImageCropperProps;
+  type Props = Omit<ArkRootProps, "src" | "cropShape"> & {
+    alt?: string;
+    cropShape?: "rectangle" | "circle";
+    src?: string;
+  } & BaseImageCropperProps;
 
-let {
-  alt,
-  children,
-  cropShape,
-  src,
-  recipe = imageCropperRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    alt,
+    children,
+    cropShape,
+    src,
+    recipe = imageCropperRecipe,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const slots = $derived(recipe());
-Context.set({
-  get slots() {
-    return slots;
-  },
-});
+  const slots = $derived(recipe());
+  Context.set({
+    get slots() {
+      return slots;
+    },
+  });
 </script>
 
 <ImageCropperPrimitive.Root

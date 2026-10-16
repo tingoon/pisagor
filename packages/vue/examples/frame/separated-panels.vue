@@ -9,11 +9,11 @@ import { Frame } from "@pisagor/vue";
       <Frame.Description>Brief description about the section</Frame.Description>
     </Frame.Header>
     <Frame.Panel>
-      <h2 class="font-semibold text-sm">Separated panel</h2>
+      <h2 class="text-sm font-semibold">Separated panel</h2>
       <p class="text-muted-foreground text-sm">Section description</p>
     </Frame.Panel>
     <Frame.Panel>
-      <h2 class="font-semibold text-sm">Separated panel</h2>
+      <h2 class="text-sm font-semibold">Separated panel</h2>
       <p class="text-muted-foreground text-sm">Section description</p>
     </Frame.Panel>
   </Frame>

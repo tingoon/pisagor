@@ -1,12 +1,12 @@
 <script lang="ts">
-import { Button, Calendar, Card } from "@pisagor/svelte";
+  import { Button, Calendar, Card } from "@pisagor/svelte";
 
-const presets = [
-  { label: "Last 7 days", value: "last7Days" as const },
-  { label: "Last 14 days", value: "last14Days" as const },
-  { label: "Last 30 days", value: "last30Days" as const },
-  { label: "This month", value: "thisMonth" as const },
-];
+  const presets = [
+    { label: "Last 7 days", value: "last7Days" as const },
+    { label: "Last 14 days", value: "last14Days" as const },
+    { label: "Last 30 days", value: "last30Days" as const },
+    { label: "This month", value: "thisMonth" as const },
+  ];
 </script>
 
 <Calendar class="[--cell-size:--spacing(8)]" selectionMode="range">
@@ -26,9 +26,7 @@ const presets = [
     <Card.Footer class="flex flex-wrap">
       {#each presets as preset}
         <Calendar.PresetTrigger value={preset.value}>
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Button {...props()} class="flex-1" size="sm" variant="outline">
               {preset.label}
             </Button>

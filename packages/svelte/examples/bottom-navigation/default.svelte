@@ -1,6 +1,6 @@
 <script lang="ts">
-import { BottomNavigation } from "@pisagor/svelte";
-import HouseIcon from "phosphor-svelte/lib/HouseIcon";
+  import { BottomNavigation } from "@pisagor/svelte";
+  import HouseIcon from "phosphor-svelte/lib/HouseIcon";
 </script>
 
 <BottomNavigation value="home">

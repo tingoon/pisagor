@@ -90,7 +90,7 @@ function SortIndicator({ direction }: { direction: false | "asc" | "desc" }) {
 function DataGridShell({ children }: { children: JSX.Element }) {
   return (
     <div class="flex w-full flex-col gap-3">
-      <div class="rounded-xl border bg-muted/20 p-3">{children}</div>
+      <div class="bg-muted/20 rounded-xl border p-3">{children}</div>
     </div>
   );
 }
@@ -249,7 +249,7 @@ export function LoadingState() {
       {isLoading() ? (
         <>
           <div class="mb-3 flex items-center justify-between gap-3">
-            <p class="font-medium text-sm">Initial data load</p>
+            <p class="text-sm font-medium">Initial data load</p>
             <Button
               onClick={() => {
                 setIsLoading(true);
@@ -315,7 +315,7 @@ export function LoadingState() {
         <DataGrid<User> columns={columns()} data={allUsers.slice(0, 8)}>
           <DataGrid.Toolbar>
             <div class="flex items-center justify-between gap-3">
-              <p class="font-medium text-sm">Initial data load</p>
+              <p class="text-sm font-medium">Initial data load</p>
               <Button
                 onClick={() => {
                   setIsLoading(true);

@@ -4,6 +4,7 @@ import type { ColorPickerRecipeFn } from "@pisagor/recipes";
 export interface ColorPickerProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue colorPickerRecipe
    */
   recipe?: ColorPickerRecipeFn;

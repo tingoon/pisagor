@@ -30,7 +30,7 @@ const images = [
           width="80"
           :alt="image.alt"
           :src="image.src"
-        >
+        />
       </Item.Media>
       <Item.Content>
         <Item.Title>{{ image.alt }}</Item.Title>

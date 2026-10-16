@@ -29,9 +29,9 @@ When trees are large, provide filter-as-you-type that expands matching paths and
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Nested expandable hierarchy | **Tree View** |
-| Shallow expandable sections | [Accordion](/svelte/components/accordion/design) |
-| Flat sorted rows | [Data Table](/svelte/components/data-table/design) |
-| Reorder flat list | [Sortable](/svelte/components/sortable/design) |
+| Need                        | Prefer                                            |
+| --------------------------- | ------------------------------------------------- |
+| Nested expandable hierarchy | **Tree View**                                     |
+| Shallow expandable sections | [Accordion](/svelte/components/accordion/design)   |
+| Flat sorted rows            | [Data Table](/svelte/components/data-table/design) |
+| Reorder flat list           | [Sortable](/svelte/components/sortable/design)     |

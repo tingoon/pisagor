@@ -4,8 +4,8 @@ Framework-agnostic design tokens and Tailwind theme (`@theme`, `:root` / `.dark`
 
 ## Export
 
-| Path | Description |
-| ---- | ----------- |
+| Path                     | Description                                               |
+| ------------------------ | --------------------------------------------------------- |
 | `@pisagor/tokens/styles` | CSS theme entry — import in app or framework `styles.css` |
 
 ## Usage

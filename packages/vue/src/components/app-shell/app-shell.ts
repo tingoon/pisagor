@@ -64,8 +64,7 @@ export interface AppShellRailState {
 }
 
 export type AppShellFixedStackVar =
-  | "--app-shell-banner-height"
-  | "--app-shell-navigation-height";
+  "--app-shell-banner-height" | "--app-shell-navigation-height";
 
 export type AppShellRegionVar =
   | "--app-shell-end-inspector-width"
@@ -499,9 +498,7 @@ export const AppShellRoot = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<ClassValue>,
     },
-    /**
-     * Whether to disable the `mod+\\` hotkey that toggles the start panel.
-     */
+    /** Whether to disable the `mod+\\` hotkey that toggles the start panel. */
     disableHotkey: { default: false, type: Boolean },
     recipe: {
       default: appShellRecipe,
@@ -863,8 +860,8 @@ export const AppShellPanel = defineComponent({
           class: cn(
             getSlots().panel(),
             props.placement === "start"
-              ? "border-e border-border"
-              : "border-s border-border",
+              ? "border-border border-e"
+              : "border-border border-s",
             regionPositionClasses(getSlots(), props.position, "column"),
             side.open ? "opacity-100" : "pointer-events-none opacity-0",
             props.class,

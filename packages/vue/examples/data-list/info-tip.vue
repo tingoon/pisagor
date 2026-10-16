@@ -18,7 +18,7 @@ const data = [
 </script>
 
 <template>
-  <div class="w-96 rounded-xl border bg-card p-4">
+  <div class="bg-card w-96 rounded-xl border p-4">
     <DataList.Root>
       <DataList.Item
         v-for="item in data"

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Provider } from "@pisagor/svelte";
+  import { Provider } from "@pisagor/svelte";
 </script>
 
 <Provider>

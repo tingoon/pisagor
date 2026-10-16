@@ -4,6 +4,7 @@ import type { AlertRecipeFn, AlertVariantProps } from "@pisagor/recipes";
 export interface AlertProps extends AlertVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue alertRecipe
    */
   recipe?: AlertRecipeFn;

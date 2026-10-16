@@ -32,15 +32,18 @@ interface SegmentGroupPresetItem {
 }
 
 export interface SegmentGroupRootProps
-  extends Omit<SegmentGroupPrimitiveRootProps, "onValueChange">,
+  extends
+    Omit<SegmentGroupPrimitiveRootProps, "onValueChange">,
     BaseSegmentGroupRootProps,
     SizeScaleProps {
   variant?: SegmentGroupVariant;
   onValueChange?: (value: string | null) => void;
 }
 
-export interface SegmentGroupProps
-  extends Omit<SegmentGroupRootProps, "children"> {
+export interface SegmentGroupProps extends Omit<
+  SegmentGroupRootProps,
+  "children"
+> {
   items?: SegmentGroupPresetItem[];
 }
 

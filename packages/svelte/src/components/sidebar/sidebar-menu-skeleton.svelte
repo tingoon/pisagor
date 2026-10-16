@@ -1,17 +1,17 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
-import type { HTMLAttributes } from "svelte/elements";
-import { Skeleton } from "../skeleton";
-import { useSidebar } from "./sidebar.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { Skeleton } from "../skeleton";
+  import { useSidebar } from "./sidebar.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
-  showIcon?: boolean;
-  style?: string | undefined;
-};
+  type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
+    showIcon?: boolean;
+    style?: string | undefined;
+  };
 
-let { showIcon = false, class: className, style, ...rest }: Props = $props();
-const ctx = useSidebar();
+  let { showIcon = false, class: className, style, ...rest }: Props = $props();
+  const ctx = useSidebar();
 </script>
 
 <Ark

@@ -4,6 +4,7 @@ import type { SwitchRecipeFn, SwitchVariantProps } from "@pisagor/recipes";
 export interface SwitchProps extends SwitchVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue switchRecipe
    */
   recipe?: SwitchRecipeFn;

@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Checkbox, Field, Surface } from "@pisagor/svelte";
-import { settingsRowBlock } from "#/recipes/blocks/field";
+  import { Checkbox, Field, Surface } from "@pisagor/svelte";
+  import { settingsRowBlock } from "#/recipes/blocks/field";
 
-const styles = settingsRowBlock();
+  const styles = settingsRowBlock();
 </script>
 
 <Surface

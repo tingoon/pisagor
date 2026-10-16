@@ -24,22 +24,24 @@ import { InputClearAddon } from "./input-clear-button";
 type InputClassNames = VariantClassNames<InputRecipeSlot>;
 
 export interface InputProps
-  extends Omit<FieldInputProps, "size">,
+  extends
+    Omit<FieldInputProps, "size">,
     RefAttributes<HTMLInputElement>,
     BaseInputProps {
   /**
    * Whether to show a clear button when the input has a value.
    *
-   * @defaultValue false
-   *
    * @remarks
-   * In controlled mode, pass `value` and update it via `onChange` or `onValueChange` when clearing.
+   *   In controlled mode, pass `value` and update it via `onChange` or
+   *   `onValueChange` when clearing.
+   * @defaultValue false
    */
   clearable?: boolean;
   /** Called with the string value when the input changes. */
   onValueChange?: (value: string) => void;
   /**
-   * Root style recipe. Defaults to `inputRootRecipe` from `@pisagor/recipes/input`.
+   * Root style recipe. Defaults to `inputRootRecipe` from
+   * `@pisagor/recipes/input`.
    *
    * @defaultValue inputRootRecipe
    */

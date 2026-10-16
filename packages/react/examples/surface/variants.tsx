@@ -9,7 +9,7 @@ export function Variants() {
         padding="md"
         variant="default"
       >
-        <h3 className="font-semibold text-sm">Default</h3>
+        <h3 className="text-sm font-semibold">Default</h3>
         <p className="text-muted-foreground text-sm">
           Uses the page background token.
         </p>
@@ -20,7 +20,7 @@ export function Variants() {
         padding="md"
         variant="secondary"
       >
-        <h3 className="font-semibold text-sm">Secondary</h3>
+        <h3 className="text-sm font-semibold">Secondary</h3>
         <p className="text-muted-foreground text-sm">
           First nested emphasis level.
         </p>
@@ -31,7 +31,7 @@ export function Variants() {
         padding="md"
         variant="tertiary"
       >
-        <h3 className="font-semibold text-sm">Tertiary</h3>
+        <h3 className="text-sm font-semibold">Tertiary</h3>
         <p className="text-muted-foreground text-sm">
           Second nested emphasis level.
         </p>
@@ -42,7 +42,7 @@ export function Variants() {
         padding="md"
         variant="transparent"
       >
-        <h3 className="font-semibold text-sm">Transparent</h3>
+        <h3 className="text-sm font-semibold">Transparent</h3>
         <p className="text-muted-foreground text-sm">
           No fill — useful for custom backgrounds.
         </p>

@@ -6,17 +6,17 @@ export function Default() {
       slides={[
         {
           content: (
-            <div class="flex h-40 items-center justify-center bg-muted">1</div>
+            <div class="bg-muted flex h-40 items-center justify-center">1</div>
           ),
         },
         {
           content: (
-            <div class="flex h-40 items-center justify-center bg-muted">2</div>
+            <div class="bg-muted flex h-40 items-center justify-center">2</div>
           ),
         },
         {
           content: (
-            <div class="flex h-40 items-center justify-center bg-muted">3</div>
+            <div class="bg-muted flex h-40 items-center justify-center">3</div>
           ),
         },
       ]}

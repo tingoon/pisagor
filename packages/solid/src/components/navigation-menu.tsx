@@ -62,8 +62,7 @@ function useNavigationMenuItem(part: string) {
 
 // #region Types
 export interface NavigationMenuProps
-  extends ComponentProps<typeof ark.nav>,
-    BaseNavigationMenuProps {}
+  extends ComponentProps<typeof ark.nav>, BaseNavigationMenuProps {}
 
 export type NavigationMenuPartProps = ComponentProps<typeof ark.ul>;
 export type NavigationMenuItemProps = ComponentProps<typeof ark.li>;

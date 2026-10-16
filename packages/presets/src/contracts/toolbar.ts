@@ -9,7 +9,7 @@ export const toolbarRecipe = tv({
     ],
     description: ["text-muted-foreground text-sm"],
     heading: ["flex min-w-0 flex-1 flex-col gap-0.5"],
-    title: ["font-medium text-foreground text-lg/6 tracking-tight"],
+    title: ["text-foreground text-lg/6 font-medium tracking-tight"],
   },
 });
 

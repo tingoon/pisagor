@@ -10,7 +10,7 @@ export function InputControlled() {
           <ColorPicker.Input asChild={(props) => <Input {...props()} />} />
         </ColorPicker.Control>
       </ColorPicker>
-      <p class="text-center text-muted-foreground text-sm">
+      <p class="text-muted-foreground text-center text-sm">
         {parseColor(value()).toString("hex")}
       </p>
     </div>

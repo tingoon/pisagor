@@ -1,5 +1,5 @@
 <script lang="ts">
-import { NumberField } from "@pisagor/svelte-form";
+  import { NumberField } from "@pisagor/svelte-form";
 </script>
 
 <NumberField

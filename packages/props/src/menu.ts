@@ -8,6 +8,7 @@ import type {
 export interface MenuProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue menuRecipe
    */
   recipe?: MenuRecipeFn;
@@ -17,6 +18,7 @@ export interface MenuProps {
 export interface MenuItemProps extends MenuItemVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue menuItemRecipe
    */
   recipe?: MenuItemRecipeFn;

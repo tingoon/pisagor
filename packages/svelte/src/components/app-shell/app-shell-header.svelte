@@ -1,25 +1,29 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
-import type { HTMLAttributes } from "svelte/elements";
-import { type AppShellRegionPosition, useAppShell } from "./app-shell.context";
-import { regionPositionClasses } from "./region";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
+  import {
+    type AppShellRegionPosition,
+    useAppShell,
+  } from "./app-shell.context";
+  import { regionPositionClasses } from "./region";
 
-type Props = HTMLAttributes<HTMLElement> & {
-  children?: import("svelte").Snippet;
-  /**
-   * Scroll behavior for the page header row inside `AppShell.Main`.
-   * @defaultValue "fixed"
-   */
-  position?: AppShellRegionPosition;
-};
+  type Props = HTMLAttributes<HTMLElement> & {
+    children?: import("svelte").Snippet;
+    /**
+     * Scroll behavior for the page header row inside `AppShell.Main`.
+     *
+     * @defaultValue "fixed"
+     */
+    position?: AppShellRegionPosition;
+  };
 
-let {
-  position = "fixed",
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
-const ctx = useAppShell();
+  let {
+    position = "fixed",
+    class: className,
+    children,
+    ...rest
+  }: Props = $props();
+  const ctx = useAppShell();
 </script>
 
 <header

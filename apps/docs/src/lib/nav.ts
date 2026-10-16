@@ -152,10 +152,10 @@ function sidebarHasSlug(
 }
 
 /**
- * Map the current docs URL to the same page on another framework.
- * Falls back to the area intro (or framework home) when that page is not shipped.
- * Component doc tabs (`…/develop`, `…/design`) map to the component root; the
- * target framework redirects to its default tab.
+ * Map the current docs URL to the same page on another framework. Falls back to
+ * the area intro (or framework home) when that page is not shipped. Component
+ * doc tabs (`…/develop`, `…/design`) map to the component root; the target
+ * framework redirects to its default tab.
  */
 export function swapFrameworkPath(pathname: string, next: Framework) {
   const parts = stripDocsBase(pathname).split("/").filter(Boolean);

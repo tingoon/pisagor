@@ -29,9 +29,9 @@ When uploads must finish before submit, disable the primary button until require
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Drop zone + progress + previews | **File Upload** |
-| Minimal form picker | [File Input](/svelte/components/file-input/design) |
-| Attachment row UI | [File](/svelte/components/file/design) |
-| Form labels and errors | [Field](/svelte/components/field/design) |
+| Need                            | Prefer                                            |
+| ------------------------------- | ------------------------------------------------- |
+| Drop zone + progress + previews | **File Upload**                                   |
+| Minimal form picker             | [File Input](/svelte/components/file-input/design) |
+| Attachment row UI               | [File](/svelte/components/file/design)             |
+| Form labels and errors          | [Field](/svelte/components/field/design)           |

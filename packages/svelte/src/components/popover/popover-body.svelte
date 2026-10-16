@@ -1,23 +1,23 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { HTMLAttributes } from "svelte/elements";
-import { ScrollArea } from "../scroll-area";
-import { withContext } from "./popover.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { ScrollArea } from "../scroll-area";
+  import { withContext } from "./popover.context";
 
-type Props = HTMLAttributes<HTMLDivElement> & {
-  children?: import("svelte").Snippet;
-};
+  type Props = HTMLAttributes<HTMLDivElement> & {
+    children?: import("svelte").Snippet;
+  };
 
-let { children, ...rest }: Props = $props();
-const part = withContext(
-  () => ({
-    ...rest,
-    class: ["overflow-visible", rest.class].filter(Boolean).join(" "),
-  }),
-  { name: "Body" },
-);
+  let { children, ...rest }: Props = $props();
+  const part = withContext(
+    () => ({
+      ...rest,
+      class: ["overflow-visible", rest.class].filter(Boolean).join(" "),
+    }),
+    { name: "Body" },
+  );
 </script>
 
 <ScrollArea>
-  <Ark as="div" {...part.props}> {@render children?.()} </Ark>
+  <Ark as="div" {...part.props}>{@render children?.()}</Ark>
 </ScrollArea>

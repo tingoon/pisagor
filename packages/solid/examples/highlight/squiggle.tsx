@@ -8,11 +8,11 @@ export function Squiggle() {
   });
 
   return (
-    <p class="font-medium text-foreground text-lg leading-relaxed">
+    <p class="text-foreground text-lg leading-relaxed font-medium">
       <For each={chunks()}>
         {(chunk) => (
           <Show fallback={chunk.text} when={chunk.match}>
-            <mark class="relative bg-transparent px-0 font-semibold text-primary">
+            <mark class="text-primary relative bg-transparent px-0 font-semibold">
               {chunk.text}
               <svg
                 aria-hidden="true"

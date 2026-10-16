@@ -9,16 +9,14 @@ export const inputGroupAddonRecipe = tv({
     "h-auto",
     "flex items-center justify-center gap-2",
     "py-1.5",
-    "select-none font-medium text-muted-foreground text-sm",
+    "text-muted-foreground text-sm font-medium select-none",
     "cursor-text",
     "group-data-disabled/input-group:opacity-64",
     "[&>kbd]:rounded-sm",
     "[&_svg:not([class*='size-'])]:size-4",
   ],
   defaultVariants: {
-    /**
-     * Alignment along the cross axis.
-     */
+    /** Alignment along the cross axis. */
     align: "inline-start",
   },
   variants: {
@@ -56,9 +54,7 @@ export const inputGroupButtonRecipe = tv({
     "pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 pointer-coarse:after:min-w-11",
   ],
   defaultVariants: {
-    /**
-     * Control size.
-     */
+    /** Control size. */
     size: "xs",
   },
   variants: {
@@ -82,7 +78,7 @@ export const inputGroupTextRecipe = tv({
   base: [
     "flex items-center gap-2",
     "text-muted-foreground text-sm",
-    "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
+    "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
   ],
 });
 

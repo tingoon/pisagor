@@ -1,32 +1,32 @@
 <script lang="ts">
-import {
-  type SignaturePadControlProps,
-  SignaturePad as SignaturePadPrimitive,
-} from "@ark-ui/svelte/signature-pad";
-import { formControlZoneRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { useFormControlSurface } from "../surface/use-form-control-surface";
-import { useSignaturePad } from "./signature-pad.context";
+  import {
+    type SignaturePadControlProps,
+    SignaturePad as SignaturePadPrimitive,
+  } from "@ark-ui/svelte/signature-pad";
+  import { formControlZoneRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { useFormControlSurface } from "../surface/use-form-control-surface";
+  import { useSignaturePad } from "./signature-pad.context";
 
-type FormControlVariant = "primary" | "secondary";
+  type FormControlVariant = "primary" | "secondary";
 
-type Props = SignaturePadControlProps & {
-  invalid?: boolean;
-  /** Visual shell variant. Defaults to `primary`. */
-  variant?: FormControlVariant;
-};
+  type Props = SignaturePadControlProps & {
+    invalid?: boolean;
+    /** Visual shell variant. Defaults to `primary`. */
+    variant?: FormControlVariant;
+  };
 
-let {
-  invalid,
-  variant: variantProp,
-  children,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    invalid,
+    variant: variantProp,
+    children,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const styles = useSignaturePad();
-const surfaceVariant = useFormControlSurface();
-const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
+  const styles = useSignaturePad();
+  const surfaceVariant = useFormControlSurface();
+  const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 </script>
 
 <SignaturePadPrimitive.Control

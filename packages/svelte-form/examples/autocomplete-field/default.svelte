@@ -1,6 +1,6 @@
 <script lang="ts">
-import { AutocompleteField } from "@pisagor/svelte-form";
-import { cityOptions } from "../options";
+  import { AutocompleteField } from "@pisagor/svelte-form";
+  import { cityOptions } from "../options";
 </script>
 
 <AutocompleteField

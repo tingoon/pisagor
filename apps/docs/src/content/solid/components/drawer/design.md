@@ -29,9 +29,9 @@ Use Drawer when your interaction model emphasizes gesture-driven dismissal and p
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Sliding panel for secondary work | **Drawer** |
-| Standardized edge panel | [Sheet](/solid/components/sheet/design) |
-| Short modal decision | [Dialog](/solid/components/dialog/design) |
-| Non-blocking contextual content | [Popover](/solid/components/popover/design) |
+| Need                             | Prefer                                      |
+| -------------------------------- | ------------------------------------------- |
+| Sliding panel for secondary work | **Drawer**                                  |
+| Standardized edge panel          | [Sheet](/solid/components/sheet/design)     |
+| Short modal decision             | [Dialog](/solid/components/dialog/design)   |
+| Non-blocking contextual content  | [Popover](/solid/components/popover/design) |

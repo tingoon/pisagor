@@ -1,14 +1,12 @@
 <script lang="ts">
-import { Button, Editable, Textarea } from "@pisagor/svelte";
-import { CheckIcon, XIcon } from "@pisagor/svelte/icons";
+  import { Button, Editable, Textarea } from "@pisagor/svelte";
+  import { CheckIcon, XIcon } from "@pisagor/svelte/icons";
 </script>
 
 <Editable>
   <Editable.Area>
     <Editable.Input>
-      {#snippet asChild(
-        props,
-      )}
+      {#snippet asChild(props)}
         <Textarea {...props()} class="min-h-24" />
       {/snippet}
     </Editable.Input>

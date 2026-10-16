@@ -1,47 +1,47 @@
 <script lang="ts">
-import {
-  type DatePickerInputProps as ArkInputProps,
-  DatePicker as DatePickerPrimitive,
-} from "@ark-ui/svelte/date-picker";
-import {
-  buttonRecipe,
-  type FormControlGroupShellVariantProps,
-  formControlGroupShellRecipe,
-  inputGroupControlRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
-import {
-  isInsideControl,
-  setInsideControl,
-} from "../../internal/inside-control";
-import { useMessageResolver } from "../provider/context";
-import { useFormControlSurface } from "../surface/use-form-control-surface";
-import {
-  DATE_PICKER_INSIDE_CONTROL,
-  useDatePicker,
-} from "./date-picker.context";
-import DatePickerClearTrigger from "./date-picker-clear-trigger.svelte";
+  import {
+    type DatePickerInputProps as ArkInputProps,
+    DatePicker as DatePickerPrimitive,
+  } from "@ark-ui/svelte/date-picker";
+  import {
+    buttonRecipe,
+    type FormControlGroupShellVariantProps,
+    formControlGroupShellRecipe,
+    inputGroupControlRecipe,
+  } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
+  import {
+    isInsideControl,
+    setInsideControl,
+  } from "../../internal/inside-control";
+  import { useMessageResolver } from "../provider/context";
+  import { useFormControlSurface } from "../surface/use-form-control-surface";
+  import {
+    DATE_PICKER_INSIDE_CONTROL,
+    useDatePicker,
+  } from "./date-picker.context";
+  import DatePickerClearTrigger from "./date-picker-clear-trigger.svelte";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-type Props = Omit<ArkInputProps, "size"> &
-  FormControlGroupShellVariantProps & { clearable?: boolean };
+  type Props = Omit<ArkInputProps, "size"> &
+    FormControlGroupShellVariantProps & { clearable?: boolean };
 
-let {
-  size = "md",
-  variant: variantProp,
-  clearable = false,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    size = "md",
+    variant: variantProp,
+    clearable = false,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const ctx = useDatePicker();
-const slots = $derived(ctx?.slots);
-const surfaceVariant = useFormControlSurface();
-const insideControl = isInsideControl(DATE_PICKER_INSIDE_CONTROL);
-if (!insideControl) setInsideControl(DATE_PICKER_INSIDE_CONTROL);
-const variant = $derived(variantProp ?? ctx?.variant ?? ("primary" as const));
+  const ctx = useDatePicker();
+  const slots = $derived(ctx?.slots);
+  const surfaceVariant = useFormControlSurface();
+  const insideControl = isInsideControl(DATE_PICKER_INSIDE_CONTROL);
+  if (!insideControl) setInsideControl(DATE_PICKER_INSIDE_CONTROL);
+  const variant = $derived(variantProp ?? ctx?.variant ?? ("primary" as const));
 </script>
 
 {#if slots}

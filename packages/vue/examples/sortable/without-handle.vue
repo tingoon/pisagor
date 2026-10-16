@@ -19,7 +19,7 @@ function onValueChange(next: string[]) {
   <Sortable :items="items" @value-change="onValueChange">
     <Sortable.Item v-for="id in items" :key="id" :value="id">
       <Sortable.ItemContent>
-        <span class="font-medium text-sm">{{ labels[id] }}</span>
+        <span class="text-sm font-medium">{{ labels[id] }}</span>
       </Sortable.ItemContent>
     </Sortable.Item>
   </Sortable>

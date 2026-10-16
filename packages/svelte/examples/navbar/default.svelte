@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Navbar } from "@pisagor/svelte";
+  import { Navbar } from "@pisagor/svelte";
 </script>
 
 <Navbar>

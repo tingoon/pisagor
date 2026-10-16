@@ -25,9 +25,9 @@ Prefer button group when actions share a purpose; prefer Toolbar when a heading 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Related actions side by side | **Button Group** |
-| Section title plus actions | Toolbar |
+| Need                            | Prefer                                                  |
+| ------------------------------- | ------------------------------------------------------- |
+| Related actions side by side    | **Button Group**                                        |
+| Section title plus actions      | Toolbar             |
 | Single choice among few options | Segment Group |
-| Bulk actions on selection | Action Bar |
+| Bulk actions on selection       | Action Bar       |

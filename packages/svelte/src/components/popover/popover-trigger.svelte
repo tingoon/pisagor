@@ -1,10 +1,10 @@
 <script lang="ts">
-import {
-  Popover as PopoverPrimitive,
-  type PopoverTriggerProps,
-} from "@ark-ui/svelte/popover";
+  import {
+    Popover as PopoverPrimitive,
+    type PopoverTriggerProps,
+  } from "@ark-ui/svelte/popover";
 
-let { children, ...rest }: PopoverTriggerProps = $props();
+  let { children, ...rest }: PopoverTriggerProps = $props();
 </script>
 
 <PopoverPrimitive.Trigger {...rest}>

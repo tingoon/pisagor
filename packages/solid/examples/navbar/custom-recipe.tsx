@@ -16,10 +16,10 @@ export function CustomRecipe() {
   return (
     <Navbar recipe={brandNavbarRecipe}>
       <Navbar.Brand>
-        <div class="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+        <div class="bg-primary text-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
           <DatabaseIcon class="size-4" />
         </div>
-        <span class="font-semibold text-sm">Pisagor</span>
+        <span class="text-sm font-semibold">Pisagor</span>
       </Navbar.Brand>
 
       <Navbar.Nav>

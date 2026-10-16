@@ -29,9 +29,9 @@ Use Combobox when you must own the listbox, input, and filtering pipeline — fo
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
+| Need                                   | Prefer                                                |
+| -------------------------------------- | ----------------------------------------------------- |
 | Searchable single select in product UI | [Autocomplete](/vue/components/autocomplete/design) |
-| Low-level selection engine | **Combobox** |
-| Fixed list without typing | [Select](/vue/components/select/design) |
-| Listbox-only presentation | [Listbox](/vue/components/listbox/design) |
+| Low-level selection engine             | **Combobox**                                          |
+| Fixed list without typing              | [Select](/vue/components/select/design)             |
+| Listbox-only presentation              | [Listbox](/vue/components/listbox/design)           |

@@ -1,28 +1,28 @@
 <script lang="ts">
-import { navbarRecipe } from "@pisagor/recipes";
-import { Avatar, Button, Navbar, NavigationMenu } from "@pisagor/svelte";
-import BellIcon from "phosphor-svelte/lib/BellIcon";
-import DatabaseIcon from "phosphor-svelte/lib/DatabaseIcon";
-import { tv } from "tailwind-variants";
+  import { navbarRecipe } from "@pisagor/recipes";
+  import { Avatar, Button, Navbar, NavigationMenu } from "@pisagor/svelte";
+  import BellIcon from "phosphor-svelte/lib/BellIcon";
+  import DatabaseIcon from "phosphor-svelte/lib/DatabaseIcon";
+  import { tv } from "tailwind-variants";
 
-const brandNavbarRecipe = tv({
-  extend: navbarRecipe,
-  slots: {
-    base: "border-emerald-500/30 bg-emerald-500/5",
-    brand: "text-emerald-700 dark:text-emerald-300",
-  },
-  variants: {},
-});
+  const brandNavbarRecipe = tv({
+    extend: navbarRecipe,
+    slots: {
+      base: "border-emerald-500/30 bg-emerald-500/5",
+      brand: "text-emerald-700 dark:text-emerald-300",
+    },
+    variants: {},
+  });
 </script>
 
 <Navbar recipe={brandNavbarRecipe}>
   <Navbar.Brand>
     <div
-      class="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground"
+      class="bg-primary text-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
     >
       <DatabaseIcon class="size-4" />
     </div>
-    <span class="font-semibold text-sm">Pisagor</span>
+    <span class="text-sm font-semibold">Pisagor</span>
   </Navbar.Brand>
 
   <Navbar.Nav>
@@ -34,12 +34,10 @@ const brandNavbarRecipe = tv({
           </NavigationMenu.Link>
         </NavigationMenu.Item>
         <NavigationMenu.Item>
-          <NavigationMenu.Link href="#projects"> Projects </NavigationMenu.Link>
+          <NavigationMenu.Link href="#projects">Projects</NavigationMenu.Link>
         </NavigationMenu.Item>
         <NavigationMenu.Item>
-          <NavigationMenu.Link href="#analytics">
-            Analytics
-          </NavigationMenu.Link>
+          <NavigationMenu.Link href="#analytics">Analytics</NavigationMenu.Link>
         </NavigationMenu.Item>
       </NavigationMenu.List>
     </NavigationMenu>

@@ -7,12 +7,12 @@ export function Article() {
         <span className="text-muted-foreground text-sm">
           <time dateTime="2026-03-03T15:30:00Z">3 days ago</time>
         </span>
-        <h2 className="my-2 font-medium text-lg">
+        <h2 className="my-2 text-lg font-medium">
           <LinkBox.Overlay href="https://example.com/articles/a11y-link-overlay">
             A11y Link Overlay
           </LinkBox.Overlay>
         </h2>
-        <p className="mb-3 text-muted-foreground text-sm">
+        <p className="text-muted-foreground mb-3 text-sm">
           Learn how to construct a screen reader friendly link overlay for
           accessibility and usability.
         </p>

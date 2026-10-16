@@ -1,18 +1,20 @@
 <script lang="ts">
-import { actionBarRecipe } from "@pisagor/recipes";
-import { ActionBar, Button } from "@pisagor/svelte";
-import ArchiveIcon from "phosphor-svelte/lib/ArchiveIcon";
-import DownloadIcon from "phosphor-svelte/lib/DownloadIcon";
-import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";
-import TrashIcon from "phosphor-svelte/lib/TrashIcon";
-import XIcon from "phosphor-svelte/lib/XIcon";
-import { tv } from "tailwind-variants";
+  import { actionBarRecipe } from "@pisagor/recipes";
+  import { ActionBar, Button } from "@pisagor/svelte";
+  import ArchiveIcon from "phosphor-svelte/lib/ArchiveIcon";
+  import DownloadIcon from "phosphor-svelte/lib/DownloadIcon";
+  import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";
+  import TrashIcon from "phosphor-svelte/lib/TrashIcon";
+  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { tv } from "tailwind-variants";
 
-const brandActionBarRecipe = tv({
-  extend: actionBarRecipe,
-  slots: { content: "border-emerald-500/40 bg-emerald-50 dark:bg-emerald-950" },
-  variants: {},
-});
+  const brandActionBarRecipe = tv({
+    extend: actionBarRecipe,
+    slots: {
+      content: "border-emerald-500/40 bg-emerald-50 dark:bg-emerald-950",
+    },
+    variants: {},
+  });
 </script>
 
 <ActionBar recipe={brandActionBarRecipe}>

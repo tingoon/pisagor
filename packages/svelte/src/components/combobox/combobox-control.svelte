@@ -1,17 +1,17 @@
 <script lang="ts">
-import {
-  type ComboboxControlProps,
-  Combobox as ComboboxPrimitive,
-} from "@ark-ui/svelte/combobox";
-import { comboboxRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { setInsideControl } from "../../internal/inside-control";
-import { COMBOBOX_INSIDE_CONTROL, useComboboxRoot } from "./combobox.context";
+  import {
+    type ComboboxControlProps,
+    Combobox as ComboboxPrimitive,
+  } from "@ark-ui/svelte/combobox";
+  import { comboboxRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { setInsideControl } from "../../internal/inside-control";
+  import { COMBOBOX_INSIDE_CONTROL, useComboboxRoot } from "./combobox.context";
 
-let { class: className, children, ...rest }: ComboboxControlProps = $props();
-const ctx = useComboboxRoot();
-setInsideControl(COMBOBOX_INSIDE_CONTROL);
-const slots = $derived(ctx?.slots ?? comboboxRecipe());
+  let { class: className, children, ...rest }: ComboboxControlProps = $props();
+  const ctx = useComboboxRoot();
+  setInsideControl(COMBOBOX_INSIDE_CONTROL);
+  const slots = $derived(ctx?.slots ?? comboboxRecipe());
 </script>
 
 <ComboboxPrimitive.Control

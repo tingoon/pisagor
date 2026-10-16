@@ -1,6 +1,6 @@
 <script lang="ts">
-import { InputGroup } from "@pisagor/svelte";
-import FunnelIcon from "phosphor-svelte/lib/FunnelIcon";
+  import { InputGroup } from "@pisagor/svelte";
+  import FunnelIcon from "phosphor-svelte/lib/FunnelIcon";
 </script>
 
 <div class="flex flex-col gap-2">

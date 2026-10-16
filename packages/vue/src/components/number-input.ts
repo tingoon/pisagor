@@ -31,8 +31,7 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface NumberInputProps
-  extends FormControlGroupShellVariantProps,
-    BaseNumberInputProps {
+  extends FormControlGroupShellVariantProps, BaseNumberInputProps {
   class?: unknown;
   clearable?: boolean;
   defaultValue?: string;
@@ -46,8 +45,10 @@ export interface NumberInputProps
   value?: string;
 }
 
-export interface NumberInputControlProps
-  extends Pick<FormControlGroupShellVariantProps, "variant"> {
+export interface NumberInputControlProps extends Pick<
+  FormControlGroupShellVariantProps,
+  "variant"
+> {
   class?: unknown;
   clearable?: boolean;
 }

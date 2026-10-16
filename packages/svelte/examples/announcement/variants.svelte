@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Announcement, Badge } from "@pisagor/svelte";
-import ArrowUpRightIcon from "phosphor-svelte/lib/ArrowUpRightIcon";
-import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
-import WarningIcon from "phosphor-svelte/lib/WarningIcon";
+  import { Announcement, Badge } from "@pisagor/svelte";
+  import ArrowUpRightIcon from "phosphor-svelte/lib/ArrowUpRightIcon";
+  import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
+  import WarningIcon from "phosphor-svelte/lib/WarningIcon";
 </script>
 
 <div class="flex flex-col gap-2">
@@ -17,7 +17,7 @@ import WarningIcon from "phosphor-svelte/lib/WarningIcon";
     title="Your last invoice couldn't be processed. Update your billing info."
   >
     {#snippet badge()}
-      <Badge variant="destructive"> <WarningIcon /> Payment failed </Badge>
+      <Badge variant="destructive"><WarningIcon /> Payment failed</Badge>
     {/snippet}
   </Announcement>
   <Announcement
@@ -29,7 +29,7 @@ import WarningIcon from "phosphor-svelte/lib/WarningIcon";
   </Announcement>
   <a class="block" href="https://example.com/announcement">
     <Announcement.Root>
-      <Badge variant="success"> <CheckCircleIcon /> Deployed </Badge>
+      <Badge variant="success"><CheckCircleIcon /> Deployed</Badge>
       <Announcement.Title>
         Production build completed in 2m 34s <ArrowUpRightIcon />
       </Announcement.Title>
@@ -39,7 +39,7 @@ import WarningIcon from "phosphor-svelte/lib/WarningIcon";
     title="Your free trial expires in 3 days. Upgrade to keep access."
   >
     {#snippet badge()}
-      <Badge variant="warning"> <WarningIcon /> Trial ending </Badge>
+      <Badge variant="warning"><WarningIcon /> Trial ending</Badge>
     {/snippet}
   </Announcement>
 </div>

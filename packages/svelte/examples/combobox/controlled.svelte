@@ -1,29 +1,29 @@
 <script lang="ts">
-import { useListCollection } from "@ark-ui/svelte/collection";
-import { useFilter } from "@ark-ui/svelte/locale";
-import { Combobox } from "@pisagor/svelte";
+  import { useListCollection } from "@ark-ui/svelte/collection";
+  import { useFilter } from "@ark-ui/svelte/locale";
+  import { Combobox } from "@pisagor/svelte";
 
-const initialItems = [
-  { label: "Apple", value: "apple" },
-  { label: "Banana", value: "banana" },
-  { label: "Cherry", value: "cherry" },
-  { label: "Date", value: "date" },
-];
+  const initialItems = [
+    { label: "Apple", value: "apple" },
+    { label: "Banana", value: "banana" },
+    { label: "Cherry", value: "cherry" },
+    { label: "Date", value: "date" },
+  ];
 
-let value = $state<string | undefined>("banana");
+  let value = $state<string | undefined>("banana");
 
-const filters = useFilter({ sensitivity: "base" });
-const { collection, filter } = useListCollection({
-  filter(itemString, filterText) {
-    return filters().contains(itemString, filterText);
-  },
-  initialItems,
-});
+  const filters = useFilter({ sensitivity: "base" });
+  const { collection, filter } = useListCollection({
+    filter(itemString, filterText) {
+      return filters().contains(itemString, filterText);
+    },
+    initialItems,
+  });
 
-function onValueChange(next: string | string[]) {
-  const arr = Array.isArray(next) ? next : [next];
-  value = arr[0];
-}
+  function onValueChange(next: string | string[]) {
+    const arr = Array.isArray(next) ? next : [next];
+    value = arr[0];
+  }
 </script>
 
 <div class="flex flex-col gap-2">
@@ -42,7 +42,7 @@ function onValueChange(next: string | string[]) {
       </Combobox.List>
     </Combobox.Content>
   </Combobox.Root>
-  <p class="text-center text-muted-foreground text-sm">
+  <p class="text-muted-foreground text-center text-sm">
     Selected: {value ?? "(none)"}
   </p>
 </div>

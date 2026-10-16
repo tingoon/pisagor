@@ -3,9 +3,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 export const swapRecipe = tv({
   base: ["[&>span]:motion-reduce:animate-none!"],
   defaultVariants: {
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "fade",
   },
   variants: {

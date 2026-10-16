@@ -35,16 +35,17 @@ const {
 // #endregion
 
 export interface CarouselRootProps
-  extends CarouselPrimitiveRootProps,
-    BaseCarouselRootProps {}
+  extends CarouselPrimitiveRootProps, BaseCarouselRootProps {}
 
 interface CarouselPresetItem {
   content: JSX.Element;
   key?: string;
 }
 
-export interface CarouselProps
-  extends Omit<CarouselRootProps, "children" | "slideCount"> {
+export interface CarouselProps extends Omit<
+  CarouselRootProps,
+  "children" | "slideCount"
+> {
   slides?: CarouselPresetItem[];
 }
 

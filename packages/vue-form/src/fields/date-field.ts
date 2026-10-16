@@ -15,8 +15,7 @@ type DatePickerControlProps = SetRequired<
 >;
 
 export interface DateFieldProps
-  extends FieldPresentationProps,
-    DatePickerControlProps {
+  extends FieldPresentationProps, DatePickerControlProps {
   name?: string;
   onBlur?: () => void;
   placeholder?: string;

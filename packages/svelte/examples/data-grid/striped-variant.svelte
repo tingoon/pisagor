@@ -1,18 +1,18 @@
 <script lang="ts">
-import { Table } from "@pisagor/svelte";
-import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
+  import { Table } from "@pisagor/svelte";
+  import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
 
-const data = [
-  { id: "1", name: "Ada", role: "Admin" },
-  { id: "2", name: "Alan", role: "Editor" },
-  { id: "3", name: "Grace", role: "Viewer" },
-  { id: "4", name: "Linus", role: "Admin" },
-];
+  const data = [
+    { id: "1", name: "Ada", role: "Admin" },
+    { id: "2", name: "Alan", role: "Editor" },
+    { id: "3", name: "Grace", role: "Viewer" },
+    { id: "4", name: "Linus", role: "Admin" },
+  ];
 
-const columns = [
-  { accessorKey: "name", header: "Name" },
-  { accessorKey: "role", header: "Role" },
-];
+  const columns = [
+    { accessorKey: "name", header: "Name" },
+    { accessorKey: "role", header: "Role" },
+  ];
 </script>
 
 <DataGrid {columns} {data} features={dataGridFeatures}>

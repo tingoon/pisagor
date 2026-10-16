@@ -1,40 +1,40 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { DataListItemProps as BaseDataListItemProps } from "@pisagor/props";
-import {
-  type DataListItemRecipeSlot,
-  dataListItemRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { Snippet } from "svelte";
-import type { HTMLAttributes } from "svelte/elements";
-import type { VariantClassNames } from "../../internal/types";
-import { Context } from "./data-list.context";
-import DataListItemLabel from "./data-list-item-label.svelte";
-import DataListItemValue from "./data-list-item-value.svelte";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import type { DataListItemProps as BaseDataListItemProps } from "@pisagor/props";
+  import {
+    type DataListItemRecipeSlot,
+    dataListItemRecipe,
+  } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { Snippet } from "svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import type { VariantClassNames } from "../../internal/types";
+  import { Context } from "./data-list.context";
+  import DataListItemLabel from "./data-list-item-label.svelte";
+  import DataListItemValue from "./data-list-item-value.svelte";
 
-type Props = HTMLAttributes<HTMLDivElement> & {
-  children?: Snippet;
-  classNames?: VariantClassNames<DataListItemRecipeSlot>;
-  value?: string | Snippet;
-} & BaseDataListItemProps;
+  type Props = HTMLAttributes<HTMLDivElement> & {
+    children?: Snippet;
+    classNames?: VariantClassNames<DataListItemRecipeSlot>;
+    value?: string | Snippet;
+  } & BaseDataListItemProps;
 
-let {
-  value,
-  children,
-  recipe = dataListItemRecipe,
-  class: className,
-  classNames,
-  ...rest
-}: Props = $props();
+  let {
+    value,
+    children,
+    recipe = dataListItemRecipe,
+    class: className,
+    classNames,
+    ...rest
+  }: Props = $props();
 
-const slots = $derived(recipe());
+  const slots = $derived(recipe());
 
-Context.set({
-  get slots() {
-    return slots;
-  },
-});
+  Context.set({
+    get slots() {
+      return slots;
+    },
+  });
 </script>
 
 <Ark

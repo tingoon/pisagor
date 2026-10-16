@@ -6,7 +6,7 @@ const html =
 </script>
 
 <template>
-  <div class="w-112 overflow-hidden rounded-xl border bg-card p-6">
+  <div class="bg-card w-112 overflow-hidden rounded-xl border p-6">
     <Prose :html="html" />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { OtpField } from "@pisagor/svelte-form";
+  import { OtpField } from "@pisagor/svelte-form";
 </script>
 
 <OtpField

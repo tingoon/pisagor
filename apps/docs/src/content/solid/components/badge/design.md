@@ -25,9 +25,9 @@ Prefer Badge for secondary labels; prefer [Alert](/solid/components/alert/design
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Compact status or category | **Badge** |
-| Page-level message | [Alert](/solid/components/alert/design) |
-| Live presence dot | [Status](/solid/components/status/design) |
-| Numeric KPI emphasis | [Stat](/solid/components/stat/design) |
+| Need                       | Prefer                                    |
+| -------------------------- | ----------------------------------------- |
+| Compact status or category | **Badge**                                 |
+| Page-level message         | [Alert](/solid/components/alert/design)   |
+| Live presence dot          | [Status](/solid/components/status/design) |
+| Numeric KPI emphasis       | [Stat](/solid/components/stat/design)     |

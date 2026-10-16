@@ -1,8 +1,8 @@
 ---
 root: false
 targets:
-  - '*'
-description: 'Shared component patterns — package layout, compound API, styling, a11y'
+  - "*"
+description: "Shared component patterns — package layout, compound API, styling, a11y"
 globs:
   - packages/react/src/**/*.tsx
   - apps/react/src/**/*.tsx
@@ -104,11 +104,11 @@ Framework-agnostic visual props live in [`@pisagor/props`](../../../packages/pro
 
 Choose **closed**, **compound**, or **compound + shorthand** per component.
 
-| Model | Use when | Public API | Barrel (`index.ts`) |
-| ----- | -------- | ---------- | ------------------- |
-| **Closed** | Single props surface; no subpart composition | `Foo` | `export * from "./foo"` |
-| **Compound** | Consumer composes subparts | `Foo.Root`, `Foo.Title`, … | `Object.assign(FooRoot, { … })` |
-| **Shorthand** | Repetitive composition wrapper | `FooShorthand` or root preset (`items`, `title`) | Attached via `Object.assign` on compound barrel |
+| Model         | Use when                                     | Public API                                       | Barrel (`index.ts`)                             |
+| ------------- | -------------------------------------------- | ------------------------------------------------ | ----------------------------------------------- |
+| **Closed**    | Single props surface; no subpart composition | `Foo`                                            | `export * from "./foo"`                         |
+| **Compound**  | Consumer composes subparts                   | `Foo.Root`, `Foo.Title`, …                       | `Object.assign(FooRoot, { … })`                 |
+| **Shorthand** | Repetitive composition wrapper               | `FooShorthand` or root preset (`items`, `title`) | Attached via `Object.assign` on compound barrel |
 
 **Shorthand when:**
 
@@ -171,16 +171,16 @@ Choose **closed**, **compound**, or **compound + shorthand** per component.
 
 **Pattern guide:**
 
-| Pattern | Use |
-| ------- | --- |
-| **Compound + headless** | `{Name}Root` + subparts; headless primitive; `Object.assign` barrel |
-| **Compound + shorthand** | Compound = source of truth; `FooShorthand` or root preset for common cases |
-| **Compound barrel** | `Object.assign(FooRoot, { Item, Trigger, … })` in `index.ts` |
+| Pattern                        | Use                                                                                                    |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| **Compound + headless**        | `{Name}Root` + subparts; headless primitive; `Object.assign` barrel                                    |
+| **Compound + shorthand**       | Compound = source of truth; `FooShorthand` or root preset for common cases                             |
+| **Compound barrel**            | `Object.assign(FooRoot, { Item, Trigger, … })` in `index.ts`                                           |
 | **Closed + multi-slot recipe** | Single export; import multi-slot `{name}Recipe` from `@pisagor/recipes`; sub-element `classNames` bags |
-| **Closed + behavior** | Single export; convenience props; single-element or thin recipe from `@pisagor/recipes` |
-| **Closed + primitive wrapper** | Thin styled layer over one headless part |
-| **Closed + Ark passthrough** | No styling/behavior — `export { Foo, type FooProps } from "@ark-ui/react/foo"` (no wrapper component) |
-| **Composition layer** | Composes other package exports (e.g. `@pisagor/react`); no new primitive |
+| **Closed + behavior**          | Single export; convenience props; single-element or thin recipe from `@pisagor/recipes`                |
+| **Closed + primitive wrapper** | Thin styled layer over one headless part                                                               |
+| **Closed + Ark passthrough**   | No styling/behavior — `export { Foo, type FooProps } from "@ark-ui/react/foo"` (no wrapper component)  |
+| **Composition layer**          | Composes other package exports (e.g. `@pisagor/react`); no new primitive                               |
 
 **Example:**
 
@@ -212,14 +212,14 @@ In `FooShorthand` (and similar layout compose returns), leave a **blank line bet
 
 Every `<name>.tsx` file uses `#region` blocks in this order. Skip regions that do not apply; never reorder.
 
-| Order | Region | When |
-| ----- | ------ | ---- |
-| 1 | `Context` | `createSlotRecipeContext` + thin in-file state (single-file components) |
-| 2 | `Types` | Props, variant prop types (imported from recipes), item interfaces (not context value types) |
-| 3 | `Hooks` | File-local hooks not exported from the root barrel |
-| 4 | `Component` / `Parts` | Single export (`Component`) or two+ parts (`Parts`) — not shorthand/closed compose |
-| 5 | `Shorthand` / `Closed` | Preset compose — after all parts (`FooShorthand` or closed `Foo`) |
-| 6 | `Display Names` | All `displayName` assignments — last when needed (compounds / shorthand / labeled parts). Skip for a single closed `Foo`. |
+| Order | Region                 | When                                                                                                                      |
+| ----- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| 1     | `Context`              | `createSlotRecipeContext` + thin in-file state (single-file components)                                                   |
+| 2     | `Types`                | Props, variant prop types (imported from recipes), item interfaces (not context value types)                              |
+| 3     | `Hooks`                | File-local hooks not exported from the root barrel                                                                        |
+| 4     | `Component` / `Parts`  | Single export (`Component`) or two+ parts (`Parts`) — not shorthand/closed compose                                        |
+| 5     | `Shorthand` / `Closed` | Preset compose — after all parts (`FooShorthand` or closed `Foo`)                                                         |
+| 6     | `Display Names`        | All `displayName` assignments — last when needed (compounds / shorthand / labeled parts). Skip for a single closed `Foo`. |
 
 Slot-recipe setup lives in `#region Context` in `<name>.tsx` (or `<name>.context.tsx` for foldered thin state — see [Context file](#context-file-namecontexttsx)). Do **not** add a `#region Variants` — `tv()` recipes live in `@pisagor/recipes`.
 
@@ -269,11 +269,11 @@ Follow [React Style Guide](../react.mdc) for naming and [props field order](../r
 - Prefer extending `@pisagor/props` shared props for `recipe` / variant fields over declaring them locally. When a shared module does not exist yet, extend recipe `{Name}VariantProps` from `@pisagor/recipes` (or `VariantProps<typeof fooRecipe>` when composing locally). Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — see [TypeScript Style Guide](../typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
 - Type sub-element bags as `titleProps?: Omit<TitleProps, "children" | "className">`.
 
-| `Omit` usage | Valid | Invalid |
-| --- | --- | --- |
-| Convenience prop conflicts with primitive prop | `type SelectRootProps = Omit<SelectPrimitiveRootProps<Item>, "collection" \| "onValueChange">;` | `type SelectRootProps = SelectPrimitiveRootProps<Item>;` + re-declare `onValueChange` with a different signature |
-| Sub-element prop bags keep ownership of render/styling | `contentProps?: Omit<TooltipContentProps, "children" \| "className">` | `contentProps?: TooltipContentProps` (allows overriding `children`/`className`) |
-| Preserve primitive contracts by default | `interface DialogBodyProps extends ComponentProps<typeof ark.div> {}` (no `Omit` needed) | `type DialogBodyProps = Omit<ComponentProps<typeof ark.div>, "role">` without an explicit conflict |
+| `Omit` usage                                           | Valid                                                                                           | Invalid                                                                                                          |
+| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Convenience prop conflicts with primitive prop         | `type SelectRootProps = Omit<SelectPrimitiveRootProps<Item>, "collection" \| "onValueChange">;` | `type SelectRootProps = SelectPrimitiveRootProps<Item>;` + re-declare `onValueChange` with a different signature |
+| Sub-element prop bags keep ownership of render/styling | `contentProps?: Omit<TooltipContentProps, "children" \| "className">`                           | `contentProps?: TooltipContentProps` (allows overriding `children`/`className`)                                  |
+| Preserve primitive contracts by default                | `interface DialogBodyProps extends ComponentProps<typeof ark.div> {}` (no `Omit` needed)        | `type DialogBodyProps = Omit<ComponentProps<typeof ark.div>, "role">` without an explicit conflict               |
 
 ### Do not
 

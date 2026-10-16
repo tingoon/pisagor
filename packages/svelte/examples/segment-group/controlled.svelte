@@ -1,8 +1,8 @@
 <script lang="ts">
-import { SegmentGroup } from "@pisagor/svelte";
+  import { SegmentGroup } from "@pisagor/svelte";
 
-const items = ["Profile", "Account", "Security", "Notifications"];
-let value = $state<string | null>("Profile");
+  const items = ["Profile", "Account", "Security", "Notifications"];
+  let value = $state<string | null>("Profile");
 </script>
 
 <SegmentGroup.Root

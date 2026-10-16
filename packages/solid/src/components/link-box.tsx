@@ -13,8 +13,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface LinkBoxRootProps
-  extends ComponentProps<typeof ark.div>,
-    BaseLinkBoxRootProps {}
+  extends ComponentProps<typeof ark.div>, BaseLinkBoxRootProps {}
 
 export type LinkOverlayLinkProps = ComponentProps<typeof ark.a>;
 // #endregion

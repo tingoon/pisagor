@@ -25,9 +25,9 @@ Prefer a single avatar for one actor; use avatar grouping patterns when several 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Single person identity | **Avatar** |
-| Compact status on identity | [Badge](/vue/components/badge/design) |
-| List row with person and metadata | [Item](/vue/components/item/design) |
-| Account menu trigger | [Menu](/vue/components/menu/design) |
+| Need                              | Prefer                                  |
+| --------------------------------- | --------------------------------------- |
+| Single person identity            | **Avatar**                              |
+| Compact status on identity        | [Badge](/vue/components/badge/design) |
+| List row with person and metadata | [Item](/vue/components/item/design)   |
+| Account menu trigger              | [Menu](/vue/components/menu/design)   |

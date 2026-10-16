@@ -1,17 +1,17 @@
 <script lang="ts">
-import { type TreeNodeType, TreeView } from "@pisagor/svelte";
-import type { Component } from "svelte";
-import TreeNodeFolder from "./tree-node-folder.svelte";
+  import { type TreeNodeType, TreeView } from "@pisagor/svelte";
+  import type { Component } from "svelte";
+  import TreeNodeFolder from "./tree-node-folder.svelte";
 
-type Props = {
-  indexPath: number[];
-  node: TreeNodeType & {
-    expandedIcon?: Component | null;
-    icon?: Component | null;
+  type Props = {
+    indexPath: number[];
+    node: TreeNodeType & {
+      expandedIcon?: Component | null;
+      icon?: Component | null;
+    };
   };
-};
 
-let { indexPath, node }: Props = $props();
+  let { indexPath, node }: Props = $props();
 </script>
 
 <TreeView.NodeProvider {indexPath} {node}>

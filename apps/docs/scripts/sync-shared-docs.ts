@@ -1,16 +1,20 @@
 /**
- * Sync framework-agnostic docs (`design.md`, `metadata.md`) from React (canonical)
- * into every other framework folder under `src/content/<fw>/{components,forms}/<id>/`.
+ * Sync framework-agnostic docs (`design.md`, `metadata.md`) from React
+ * (canonical) into every other framework folder under
+ * `src/content/<fw>/{components,forms}/<id>/`.
  *
- * Links like `[Toast](/react/components/toast/design)` are rewritten to the target
- * framework; when the target framework has no page for that id, the link is
- * flattened to plain text (`Toast`).
+ * Links like `[Toast](/react/components/toast/design)` are rewritten to the
+ * target framework; when the target framework has no page for that id, the link
+ * is flattened to plain text (`Toast`).
  *
  * Only folders that already exist in the target framework are synced.
  *
  * Usage:
- *   bun scripts/sync-shared-docs.ts          # write copies
- *   bun scripts/sync-shared-docs.ts --check  # exit 1 if any copy drifted
+ *
+ * ```sh
+ * bun scripts/sync-shared-docs.ts         # write copies
+ * bun scripts/sync-shared-docs.ts --check # exit 1 if any copy drifted
+ * ```
  */
 import fs from "node:fs";
 import path from "node:path";

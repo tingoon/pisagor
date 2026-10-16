@@ -1,29 +1,29 @@
 <script lang="ts">
-import {
-  type TreeViewItemProps,
-  TreeView as TreeViewPrimitive,
-} from "@ark-ui/svelte/tree-view";
-import type { TreeViewItemProps as BaseTreeViewItemProps } from "@pisagor/props";
-import { treeViewItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { setTreeViewItemContext, useTreeView } from "./tree-view.context";
+  import {
+    type TreeViewItemProps,
+    TreeView as TreeViewPrimitive,
+  } from "@ark-ui/svelte/tree-view";
+  import type { TreeViewItemProps as BaseTreeViewItemProps } from "@pisagor/props";
+  import { treeViewItemRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { setTreeViewItemContext, useTreeView } from "./tree-view.context";
 
-type Props = TreeViewItemProps & BaseTreeViewItemProps;
+  type Props = TreeViewItemProps & BaseTreeViewItemProps;
 
-let {
-  children,
-  recipe = treeViewItemRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    children,
+    recipe = treeViewItemRecipe,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const { slots } = useTreeView();
-const itemSlots = $derived(recipe());
-setTreeViewItemContext({
-  get slots() {
-    return itemSlots;
-  },
-});
+  const { slots } = useTreeView();
+  const itemSlots = $derived(recipe());
+  setTreeViewItemContext({
+    get slots() {
+      return itemSlots;
+    },
+  });
 </script>
 
 <TreeViewPrimitive.Item

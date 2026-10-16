@@ -1,34 +1,34 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { TableProps as BaseTableProps } from "@pisagor/props";
-import { tableRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { HTMLAttributes } from "svelte/elements";
-import type { SizeScaleProps } from "../../internal/types";
-import { Context } from "./table.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import type { TableProps as BaseTableProps } from "@pisagor/props";
+  import { tableRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
+  import type { SizeScaleProps } from "../../internal/types";
+  import { Context } from "./table.context";
 
-type Props = HTMLAttributes<HTMLTableElement> & {
-  isHoverable?: boolean;
-  variant?: "plain" | "striped";
-} & BaseTableProps &
-  SizeScaleProps;
+  type Props = HTMLAttributes<HTMLTableElement> & {
+    isHoverable?: boolean;
+    variant?: "plain" | "striped";
+  } & BaseTableProps &
+    SizeScaleProps;
 
-let {
-  variant = "plain",
-  isHoverable = true,
-  size = "md",
-  recipe = tableRecipe,
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
+  let {
+    variant = "plain",
+    isHoverable = true,
+    size = "md",
+    recipe = tableRecipe,
+    class: className,
+    children,
+    ...rest
+  }: Props = $props();
 
-const slots = $derived(recipe({ size }));
-Context.set({
-  get slots() {
-    return slots;
-  },
-});
+  const slots = $derived(recipe({ size }));
+  Context.set({
+    get slots() {
+      return slots;
+    },
+  });
 </script>
 
 <div class={slots.wrapper()} data-part="wrapper" data-scope="table">

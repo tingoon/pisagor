@@ -9,7 +9,7 @@ export const editableUserCardBlock = tv({
 
 export const ideLayoutBlock = tv({
   slots: {
-    content: "p-2 text-muted-foreground text-sm",
+    content: "text-muted-foreground p-2 text-sm",
     frame: "h-64",
     pane: "flex flex-1 flex-col rounded-lg border p-0.5",
     root: "flex size-full gap-2",

@@ -29,9 +29,9 @@ On narrow screens, prefer stacking panels or [Sheet](/react/components/sheet/des
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Adjustable split panels | **Resizable** |
-| Edge panel overlay | [Sheet](/react/components/sheet/design) / [Drawer](/react/components/drawer/design) |
-| App regions with nav | [Sidebar](/react/components/sidebar/design) |
-| Tabbed alternate views | [Tabs](/react/components/tabs/design) |
+| Need                    | Prefer                                                                              |
+| ----------------------- | ----------------------------------------------------------------------------------- |
+| Adjustable split panels | **Resizable**                                                                       |
+| Edge panel overlay      | [Sheet](/react/components/sheet/design) / [Drawer](/react/components/drawer/design) |
+| App regions with nav    | [Sidebar](/react/components/sidebar/design)                                         |
+| Tabbed alternate views  | [Tabs](/react/components/tabs/design)                                               |

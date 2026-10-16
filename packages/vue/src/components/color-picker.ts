@@ -30,7 +30,10 @@ const {
   recipe: colorPickerRecipe,
 });
 
-/** Slots from the nearest ColorPicker root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest ColorPicker root, or the default recipe when used
+ * standalone.
+ */
 function useColorPickerSlots() {
   const styles = useOptionalColorPickerStyles();
 
@@ -172,8 +175,7 @@ export const ColorPickerClearTrigger = defineComponent({
 
       const apiTyped = api as {
         getControlProps?: () =>
-          | { disabled?: boolean; readOnly?: boolean }
-          | undefined;
+          { disabled?: boolean; readOnly?: boolean } | undefined;
         value?: {
           getChannelValue?: (channel: string) => number | string | undefined;
         };
@@ -181,8 +183,7 @@ export const ColorPickerClearTrigger = defineComponent({
       };
 
       const controlProps = apiTyped.getControlProps?.() as
-        | { disabled?: boolean; readOnly?: boolean }
-        | undefined;
+        { disabled?: boolean; readOnly?: boolean } | undefined;
       if (controlProps?.disabled || controlProps?.readOnly) {
         return null;
       }
@@ -611,7 +612,7 @@ export const ColorPickerArea = defineComponent({
           class: slots.area({
             class: cn(
               {
-                "after:pointer-events-none after:absolute after:inset-0 after:rounded-inherit after:bg-[radial-gradient(circle,color-mix(in_oklab,var(--color-on-media)_20%,transparent)_1px,transparent_1px)] after:bg-size-(--spacing(2))":
+                "after:rounded-inherit after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle,color-mix(in_oklab,var(--color-on-media)_20%,transparent)_1px,transparent_1px)] after:bg-size-(--spacing(2))":
                   props.showDots,
               },
               props.class,

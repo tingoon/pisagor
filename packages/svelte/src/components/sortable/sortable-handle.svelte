@@ -1,50 +1,50 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
-import DotsSixVerticalIcon from "phosphor-svelte/lib/DotsSixVerticalIcon";
-import { onMount } from "svelte";
-import type { HTMLAttributes } from "svelte/elements";
-import { useMessageResolver } from "../provider/context";
-import { useSortable, useSortableItem } from "./sortable.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import { cn } from "@pisagor/utils";
+  import DotsSixVerticalIcon from "phosphor-svelte/lib/DotsSixVerticalIcon";
+  import { onMount } from "svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { useMessageResolver } from "../provider/context";
+  import { useSortable, useSortableItem } from "./sortable.context";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-let {
-  children,
-  class: className,
-  ...rest
-}: HTMLAttributes<HTMLButtonElement> = $props();
-const item = useSortableItem();
-const sortable = useSortable();
+  let {
+    children,
+    class: className,
+    ...rest
+  }: HTMLAttributes<HTMLButtonElement> = $props();
+  const item = useSortableItem();
+  const sortable = useSortable();
 
-onMount(() => {
-  sortable.registerHandle(item.id);
-  return () => sortable.unregisterHandle(item.id);
-});
+  onMount(() => {
+    sortable.registerHandle(item.id);
+    return () => sortable.unregisterHandle(item.id);
+  });
 
-function handleDragStart(event: DragEvent) {
-  if (sortable.disabled) {
-    event.preventDefault();
-    return;
+  function handleDragStart(event: DragEvent) {
+    if (sortable.disabled) {
+      event.preventDefault();
+      return;
+    }
+    event.stopPropagation();
+    sortable.startDrag(item.id, event);
   }
-  event.stopPropagation();
-  sortable.startDrag(item.id, event);
-}
 
-function handleKeyDown(event: KeyboardEvent) {
-  if (sortable.disabled) return;
-  const movePrev =
-    sortable.orientation === "vertical"
-      ? event.key === "ArrowUp"
-      : event.key === "ArrowLeft";
-  const moveNext =
-    sortable.orientation === "vertical"
-      ? event.key === "ArrowDown"
-      : event.key === "ArrowRight";
-  if (!(event.altKey && (movePrev || moveNext))) return;
-  event.preventDefault();
-  sortable.moveItem(item.id, movePrev ? -1 : 1);
-}
+  function handleKeyDown(event: KeyboardEvent) {
+    if (sortable.disabled) return;
+    const movePrev =
+      sortable.orientation === "vertical"
+        ? event.key === "ArrowUp"
+        : event.key === "ArrowLeft";
+    const moveNext =
+      sortable.orientation === "vertical"
+        ? event.key === "ArrowDown"
+        : event.key === "ArrowRight";
+    if (!(event.altKey && (movePrev || moveNext))) return;
+    event.preventDefault();
+    sortable.moveItem(item.id, movePrev ? -1 : 1);
+  }
 </script>
 
 <Ark

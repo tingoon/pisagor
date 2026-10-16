@@ -1,13 +1,13 @@
 <script lang="ts">
-import { Table } from "@pisagor/svelte";
-import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import { allUsers, userColumns } from "./helpers";
+  import { Table } from "@pisagor/svelte";
+  import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
+  import { allUsers, userColumns } from "./helpers";
 
-const columns = [...userColumns];
+  const columns = [...userColumns];
 </script>
 
 <div class="flex w-full flex-col gap-3">
-  <div class="rounded-xl border bg-muted/20 p-3">
+  <div class="bg-muted/20 rounded-xl border p-3">
     <DataGrid
       {columns}
       data={allUsers.slice(0, 8)}
@@ -16,7 +16,7 @@ const columns = [...userColumns];
       features={dataGridFeatures}
     >
       <DataGrid.Toolbar>
-        <p class="font-medium text-sm">Drag column edges to resize</p>
+        <p class="text-sm font-medium">Drag column edges to resize</p>
       </DataGrid.Toolbar>
       <Table>
         <Table.Header>

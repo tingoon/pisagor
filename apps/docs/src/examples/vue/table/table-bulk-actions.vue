@@ -114,13 +114,17 @@ function onOpenChange(details: boolean | { open: boolean }) {
           <Table.Row
             v-for="order in orders"
             :key="order.id"
-            :data-state="selectedIds.includes(order.id) ? 'selected' : undefined"
+            :data-state="
+              selectedIds.includes(order.id) ? 'selected' : undefined
+            "
           >
             <Table.Cell :class="styles.check()">
               <Checkbox
                 :aria-label="`Select order ${order.id}`"
                 :checked="selectedIds.includes(order.id)"
-                @checked-change="(details: CheckedState) => handleSelectRow(order.id, details)"
+                @checked-change="
+                  (details: CheckedState) => handleSelectRow(order.id, details)
+                "
               />
             </Table.Cell>
             <Table.Cell>{{ order.id }}</Table.Cell>

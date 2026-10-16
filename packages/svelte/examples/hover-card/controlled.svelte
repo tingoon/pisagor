@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Button, HoverCard } from "@pisagor/svelte";
+  import { Button, HoverCard } from "@pisagor/svelte";
 
-let open = $state(false);
+  let open = $state(false);
 </script>
 
 <div class="flex flex-col gap-2">
@@ -19,7 +19,7 @@ let open = $state(false);
       </div>
     </HoverCard.Content>
   </HoverCard>
-  <p class="text-center text-muted-foreground text-sm">
+  <p class="text-muted-foreground text-center text-sm">
     {open ? "✅" : "❌"}
   </p>
 </div>

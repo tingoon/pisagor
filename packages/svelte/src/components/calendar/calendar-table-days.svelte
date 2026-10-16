@@ -1,27 +1,25 @@
 <script lang="ts">
-import {
-  DatePicker as CalendarPrimitive,
-  type DatePickerTableBodyProps,
-} from "@ark-ui/svelte/date-picker";
-import CalendarTableBody from "./calendar-table-body.svelte";
-import CalendarTableCell from "./calendar-table-cell.svelte";
-import CalendarTableRow from "./calendar-table-row.svelte";
+  import {
+    DatePicker as CalendarPrimitive,
+    type DatePickerTableBodyProps,
+  } from "@ark-ui/svelte/date-picker";
+  import CalendarTableBody from "./calendar-table-body.svelte";
+  import CalendarTableCell from "./calendar-table-cell.svelte";
+  import CalendarTableRow from "./calendar-table-row.svelte";
 
-type Props = DatePickerTableBodyProps & { tabIndex?: number | null };
+  type Props = DatePickerTableBodyProps & { tabIndex?: number | null };
 
-function getWeekRowKey(
-  week: Array<{ day: number; month: number; year: number }>,
-) {
-  return week.map((day) => `${day.year}-${day.month}-${day.day}`).join("/");
-}
+  function getWeekRowKey(
+    week: Array<{ day: number; month: number; year: number }>,
+  ) {
+    return week.map((day) => `${day.year}-${day.month}-${day.day}`).join("/");
+  }
 
-let { tabIndex, ...rest }: Props = $props();
+  let { tabIndex, ...rest }: Props = $props();
 </script>
 
 <CalendarPrimitive.Context>
-  {#snippet render(
-    calendar,
-  )}
+  {#snippet render(calendar)}
     <CalendarTableBody {...rest}>
       {#each calendar().weeks as week (getWeekRowKey(week))}
         <CalendarTableRow>

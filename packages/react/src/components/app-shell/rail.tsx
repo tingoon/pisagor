@@ -39,7 +39,10 @@ export interface AppShellRailProps extends ComponentProps<"aside"> {
 }
 
 export interface AppShellRailItemProps extends ButtonProps {
-  /** When `railId` is set, marks this item active when it matches the rail's active id. */
+  /**
+   * When `railId` is set, marks this item active when it matches the rail's
+   * active id.
+   */
   isActive?: boolean;
   /**
    * Opens the panel on the same side as the parent rail when clicked.

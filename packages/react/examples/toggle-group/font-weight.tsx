@@ -14,7 +14,7 @@ export function FontWeight() {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex flex-col gap-2">
-        <span className="font-medium text-sm">Font weight</span>
+        <span className="text-sm font-medium">Font weight</span>
         <ToggleGroup.Root
           className="flex-wrap"
           multiple={false}

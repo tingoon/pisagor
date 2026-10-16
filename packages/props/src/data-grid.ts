@@ -4,6 +4,7 @@ import type { DataGridRecipeFn } from "@pisagor/recipes";
 export interface DataGridProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue dataGridRecipe
    */
   recipe?: DataGridRecipeFn;

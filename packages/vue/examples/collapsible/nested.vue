@@ -36,7 +36,7 @@ import { Button, Card, Clipboard, Collapsible } from "@pisagor/vue";
 
               <div class="relative">
                 <pre
-                  class="rounded-md bg-muted p-2 text-muted-foreground text-xs"
+                  class="bg-muted text-muted-foreground rounded-md p-2 text-xs"
                 >
                         <code>bun add ui</code>
                       </pre>

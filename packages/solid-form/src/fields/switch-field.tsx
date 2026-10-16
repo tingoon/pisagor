@@ -9,8 +9,7 @@ type SwitchControlProps = Omit<
 >;
 
 export interface SwitchFieldProps
-  extends FieldPresentationProps,
-    SwitchControlProps {
+  extends FieldPresentationProps, SwitchControlProps {
   orientation?: "horizontal" | "vertical" | "responsive";
   checked?: boolean;
   name?: string;

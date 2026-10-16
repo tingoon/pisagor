@@ -7,8 +7,7 @@ import { highlightRecipe } from "@pisagor/recipes";
 
 // #region Types
 export interface HighlightProps
-  extends HighlightPrimitiveProps,
-    BaseHighlightProps {}
+  extends HighlightPrimitiveProps, BaseHighlightProps {}
 // #endregion
 
 // #region Component

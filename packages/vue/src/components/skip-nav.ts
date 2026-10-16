@@ -15,10 +15,9 @@ export interface SkipNavContentProps {
   /**
    * The id that SkipNavLink links to.
    *
-   * @defaultValue "skip-nav-content"
-   *
    * @remarks
-   * Must match the `id` passed to the paired `SkipNavLink`.
+   *   Must match the `id` passed to the paired `SkipNavLink`.
+   * @defaultValue "skip-nav-content"
    */
   id?: string;
   class?: unknown;

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Calendar, DatePicker } from "@pisagor/svelte";
+  import { Calendar, DatePicker } from "@pisagor/svelte";
 </script>
 
 <DatePicker invalid>

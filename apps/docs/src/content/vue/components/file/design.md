@@ -29,9 +29,9 @@ Do not display paths from the user’s machine that leak personal directory stru
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Display a known file row | **File** |
-| Choose and upload with progress | [File Upload](/vue/components/file-upload/design) |
-| Minimal native file picker | [File Input](/vue/components/file-input/design) |
-| Save to disk | [Download Trigger](/vue/components/download-trigger/design) |
+| Need                            | Prefer                                                        |
+| ------------------------------- | ------------------------------------------------------------- |
+| Display a known file row        | **File**                                                      |
+| Choose and upload with progress | [File Upload](/vue/components/file-upload/design)           |
+| Minimal native file picker      | [File Input](/vue/components/file-input/design)             |
+| Save to disk                    | [Download Trigger](/vue/components/download-trigger/design) |

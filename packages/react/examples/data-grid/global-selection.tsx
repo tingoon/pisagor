@@ -94,7 +94,7 @@ function SortIndicator({ direction }: { direction: false | "asc" | "desc" }) {
 function DataGridShell({ children }: { children: ReactNode }) {
   return (
     <div className="flex w-full flex-col gap-3">
-      <div className="rounded-xl border bg-muted/20 p-3">{children}</div>
+      <div className="bg-muted/20 rounded-xl border p-3">{children}</div>
     </div>
   );
 }

@@ -29,9 +29,9 @@ When no substring matches, show the plain text without decorative emphasis. For 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Query match emphasis in text | **Highlight** |
-| Type-to-filter option lists | [Autocomplete](/vue/components/autocomplete/design) |
-| Command palette search | [Command](/vue/components/command/design) |
-| Scroll-spy section labels | [Scrollspy](/vue/components/scrollspy/design) |
+| Need                         | Prefer                                                |
+| ---------------------------- | ----------------------------------------------------- |
+| Query match emphasis in text | **Highlight**                                         |
+| Type-to-filter option lists  | [Autocomplete](/vue/components/autocomplete/design) |
+| Command palette search       | [Command](/vue/components/command/design)           |
+| Scroll-spy section labels    | [Scrollspy](/vue/components/scrollspy/design)       |

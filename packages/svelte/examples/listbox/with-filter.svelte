@@ -1,28 +1,28 @@
 <script lang="ts">
-import { useListCollection } from "@ark-ui/svelte/collection";
-import { useFilter } from "@ark-ui/svelte/locale";
-import { Input, Item, Listbox } from "@pisagor/svelte";
+  import { useListCollection } from "@ark-ui/svelte/collection";
+  import { useFilter } from "@ark-ui/svelte/locale";
+  import { Input, Item, Listbox } from "@pisagor/svelte";
 
-let search = $state("");
-const filters = useFilter({ sensitivity: "base" });
-const { collection, filter } = useListCollection({
-  filter(itemString, filterText) {
-    return filters().contains(itemString, filterText);
-  },
-  initialItems: [
-    { label: "Brazil", value: "br" },
-    { label: "Mexico", value: "mx" },
-    { label: "Ireland", value: "ie" },
-  ],
-});
+  let search = $state("");
+  const filters = useFilter({ sensitivity: "base" });
+  const { collection, filter } = useListCollection({
+    filter(itemString, filterText) {
+      return filters().contains(itemString, filterText);
+    },
+    initialItems: [
+      { label: "Brazil", value: "br" },
+      { label: "Mexico", value: "mx" },
+      { label: "Ireland", value: "ie" },
+    ],
+  });
 
-const isEmpty = $derived(collection().items.length === 0 && search);
+  const isEmpty = $derived(collection().items.length === 0 && search);
 
-function onSearchInput(e: Event & { currentTarget: HTMLInputElement }) {
-  const next = e.currentTarget.value;
-  search = next;
-  filter(next);
-}
+  function onSearchInput(e: Event & { currentTarget: HTMLInputElement }) {
+    const next = e.currentTarget.value;
+    search = next;
+    filter(next);
+  }
 </script>
 
 <Item.Group variant="outline">

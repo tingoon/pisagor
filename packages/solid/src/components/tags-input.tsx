@@ -46,20 +46,23 @@ export interface TagsInputProps extends TagsInputRootProps, BaseTagsInputProps {
 }
 
 export interface TagsInputControlProps
-  extends TagsInputPrimitiveControlProps,
+  extends
+    TagsInputPrimitiveControlProps,
     Pick<InputGroupProps, "size" | "variant"> {
   clearable?: boolean;
 }
 
 export interface TagsInputItemProps
-  extends TagsInputPrimitiveItemProps,
+  extends
+    TagsInputPrimitiveItemProps,
     Pick<InputGroupProps, "size">,
     BaseTagsInputItemProps {
   showDelete?: boolean;
 }
 
 export interface TagsInputRootProviderProps
-  extends TagsInputPrimitiveRootProviderProps,
+  extends
+    TagsInputPrimitiveRootProviderProps,
     Pick<InputGroupProps, "size">,
     BaseTagsInputProps {
   clearable?: boolean;

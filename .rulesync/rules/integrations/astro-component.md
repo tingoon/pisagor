@@ -1,7 +1,7 @@
 ---
 root: false
 targets:
-  - '*'
+  - "*"
 description: Shared Astro component patterns — package layout, static slot-recipe helper, styling, React parity
 globs:
   - packages/astro/src/**

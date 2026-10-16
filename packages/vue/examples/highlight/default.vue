@@ -3,7 +3,7 @@ import { Highlight } from "@pisagor/vue";
 </script>
 
 <template>
-  <div class="w-96 rounded-xl border bg-card p-4 text-sm">
+  <div class="bg-card w-96 rounded-xl border p-4 text-sm">
     <Highlight
       query="accessible"
       text="Build accessible interfaces with reusable UI components."

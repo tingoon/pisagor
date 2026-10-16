@@ -29,9 +29,9 @@ Pair Surface with [Separator](/react/components/separator/design) or spacing uti
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Background layer for a group | **Surface** |
-| Titled content block | [Card](/react/components/card/design) |
-| Media or document frame | [Frame](/react/components/frame/design) |
-| Page shell layout | [App Shell](/react/components/app-shell/design) |
+| Need                         | Prefer                                          |
+| ---------------------------- | ----------------------------------------------- |
+| Background layer for a group | **Surface**                                     |
+| Titled content block         | [Card](/react/components/card/design)           |
+| Media or document frame      | [Frame](/react/components/frame/design)         |
+| Page shell layout            | [App Shell](/react/components/app-shell/design) |

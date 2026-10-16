@@ -25,9 +25,9 @@ Prefer button group when actions share a purpose; prefer [Toolbar](/react/compon
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Related actions side by side | **Button Group** |
-| Section title plus actions | [Toolbar](/react/components/toolbar/design) |
+| Need                            | Prefer                                                  |
+| ------------------------------- | ------------------------------------------------------- |
+| Related actions side by side    | **Button Group**                                        |
+| Section title plus actions      | [Toolbar](/react/components/toolbar/design)             |
 | Single choice among few options | [Segment Group](/react/components/segment-group/design) |
-| Bulk actions on selection | [Action Bar](/react/components/action-bar/design) |
+| Bulk actions on selection       | [Action Bar](/react/components/action-bar/design)       |

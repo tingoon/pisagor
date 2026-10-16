@@ -4,6 +4,7 @@ import type { HoverCardRecipeFn } from "@pisagor/recipes";
 export interface HoverCardProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue hoverCardRecipe
    */
   recipe?: HoverCardRecipeFn;

@@ -64,8 +64,10 @@ type SliderRootProps = SliderPrimitiveRootProps &
     variant?: FormControlVariant;
   };
 
-export interface SliderProps
-  extends Omit<SliderRootProps, "children" | "onValueChange"> {
+export interface SliderProps extends Omit<
+  SliderRootProps,
+  "children" | "onValueChange"
+> {
   markerInterval?: number;
   markerLabels?: string[];
   showMarkers?: boolean;

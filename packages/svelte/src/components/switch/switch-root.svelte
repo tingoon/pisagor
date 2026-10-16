@@ -1,44 +1,44 @@
 <script lang="ts">
-import {
-  Switch as SwitchPrimitive,
-  type SwitchRootProps,
-} from "@ark-ui/svelte/switch";
-import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
-import { switchRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { SizeScaleProps } from "../../internal/types";
-import { useFormControlSurface } from "../surface/use-form-control-surface";
-import { Context } from "./switch.context";
+  import {
+    Switch as SwitchPrimitive,
+    type SwitchRootProps,
+  } from "@ark-ui/svelte/switch";
+  import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
+  import { switchRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { SizeScaleProps } from "../../internal/types";
+  import { useFormControlSurface } from "../surface/use-form-control-surface";
+  import { Context } from "./switch.context";
 
-type FormControlVariant = "primary" | "secondary";
+  type FormControlVariant = "primary" | "secondary";
 
-type Props = SwitchRootProps & {
-  /** Visual shell variant. Defaults to `primary`. */
-  variant?: FormControlVariant;
-} & BaseSwitchProps &
-  SizeScaleProps;
+  type Props = SwitchRootProps & {
+    /** Visual shell variant. Defaults to `primary`. */
+    variant?: FormControlVariant;
+  } & BaseSwitchProps &
+    SizeScaleProps;
 
-let {
-  variant: variantProp,
-  children,
-  size = "md",
-  recipe = switchRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    variant: variantProp,
+    children,
+    size = "md",
+    recipe = switchRecipe,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const surfaceVariant = useFormControlSurface();
-const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-const slots = $derived(recipe({ size, surfaceVariant, variant }));
+  const surfaceVariant = useFormControlSurface();
+  const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
+  const slots = $derived(recipe({ size, surfaceVariant, variant }));
 
-Context.set({
-  get slots() {
-    return slots;
-  },
-  get variants() {
-    return { surfaceVariant, variant };
-  },
-});
+  Context.set({
+    get slots() {
+      return slots;
+    },
+    get variants() {
+      return { surfaceVariant, variant };
+    },
+  });
 </script>
 
 <SwitchPrimitive.Root

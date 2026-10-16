@@ -1,13 +1,13 @@
 <script lang="ts">
-import { type TreeNodeType, TreeView } from "@pisagor/svelte";
-import TreeNodeCheckbox from "./tree-node-checkbox.svelte";
+  import { type TreeNodeType, TreeView } from "@pisagor/svelte";
+  import TreeNodeCheckbox from "./tree-node-checkbox.svelte";
 
-type Props = {
-  indexPath: number[];
-  node: TreeNodeType;
-};
+  type Props = {
+    indexPath: number[];
+    node: TreeNodeType;
+  };
 
-let { indexPath, node }: Props = $props();
+  let { indexPath, node }: Props = $props();
 </script>
 
 <TreeView.NodeProvider {indexPath} {node}>

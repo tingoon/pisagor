@@ -78,7 +78,8 @@ export type CircularSliderRootProps = Omit<
 >;
 
 export interface CircularSliderProps
-  extends CircularSliderRootProps,
+  extends
+    CircularSliderRootProps,
     Partial<Pick<CircularSliderContextValue, "thickness" | "size">>,
     BaseCircularSliderProps {
   markers?: boolean | number[];
@@ -93,8 +94,10 @@ export interface CircularSliderControlProps extends AngleSliderControlProps {
   step?: number;
 }
 
-export interface CircularSliderValueTextProps
-  extends Omit<AngleSliderValueTextProps, "prefix"> {
+export interface CircularSliderValueTextProps extends Omit<
+  AngleSliderValueTextProps,
+  "prefix"
+> {
   prefix?: JSX.Element | string;
   suffix?: JSX.Element | string;
 }

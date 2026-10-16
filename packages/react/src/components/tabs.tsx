@@ -23,8 +23,7 @@ const {
 
 // #region Types
 export interface TabsRootProps
-  extends TabsPrimitiveRootProps,
-    BaseTabsRootProps {}
+  extends TabsPrimitiveRootProps, BaseTabsRootProps {}
 
 interface TabsPresetItem {
   value: string;
@@ -34,8 +33,7 @@ interface TabsPresetItem {
 }
 
 export interface TabsListProps
-  extends TabListProps,
-    Pick<TabsVariantProps, "variant"> {
+  extends TabListProps, Pick<TabsVariantProps, "variant"> {
   /**
    * Whether to render the animated active-tab indicator.
    *
@@ -49,8 +47,7 @@ export type TabsTriggerProps = TabTriggerProps;
 export type TabsContentProps = TabContentProps;
 
 export interface TabsProps
-  extends Omit<TabsRootProps, "children">,
-    Pick<TabsVariantProps, "variant"> {
+  extends Omit<TabsRootProps, "children">, Pick<TabsVariantProps, "variant"> {
   items?: TabsPresetItem[];
   /** Whether to render the animated active-tab indicator. */
   showIndicator?: boolean;

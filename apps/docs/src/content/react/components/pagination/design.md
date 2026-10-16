@@ -29,9 +29,9 @@ Announce page changes to assistive tech when content swaps without a full naviga
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Indexed page controls | **Pagination** |
+| Need                   | Prefer                                            |
+| ---------------------- | ------------------------------------------------- |
+| Indexed page controls  | **Pagination**                                    |
 | Tabular data + filters | [Data Table](/react/components/data-table/design) |
-| Compact page metadata | [Stat](/react/components/stat/design) |
-| Long option lists | [Select](/react/components/select/design) |
+| Compact page metadata  | [Stat](/react/components/stat/design)             |
+| Long option lists      | [Select](/react/components/select/design)         |

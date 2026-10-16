@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Textarea } from "@pisagor/svelte";
+  import { Textarea } from "@pisagor/svelte";
 
-let value = $state("");
+  let value = $state("");
 </script>
 
 <Textarea

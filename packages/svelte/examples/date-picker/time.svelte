@@ -1,5 +1,5 @@
 <script lang="ts">
-import { DatePicker, Field } from "@pisagor/svelte";
+  import { DatePicker, Field } from "@pisagor/svelte";
 </script>
 
 <Field>

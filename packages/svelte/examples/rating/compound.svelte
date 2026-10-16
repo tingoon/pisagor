@@ -1,20 +1,16 @@
 <script lang="ts">
-import { Rating } from "@pisagor/svelte";
-import StarIcon from "phosphor-svelte/lib/StarIcon";
+  import { Rating } from "@pisagor/svelte";
+  import StarIcon from "phosphor-svelte/lib/StarIcon";
 </script>
 
 <Rating.Root count={5} defaultValue={3}>
   <Rating.Control>
     <Rating.Context>
-      {#snippet render(
-        rating,
-      )}
+      {#snippet render(rating)}
         {#each rating().items as item (item)}
           <Rating.Item index={item}>
             <Rating.ItemContext>
-              {#snippet render(
-                itemState,
-              )}
+              {#snippet render(itemState)}
                 <Rating.Indicator
                   data-highlighted={itemState().highlighted ? "" : undefined}
                 >

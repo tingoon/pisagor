@@ -43,7 +43,7 @@ function filter(_inputValue: string) {}
         </Autocomplete.List>
       </Autocomplete.Content>
     </Autocomplete.Root>
-    <p class="text-center text-muted-foreground text-sm">
+    <p class="text-muted-foreground text-center text-sm">
       Selected: {{ value ?? "(none)" }}
     </p>
   </div>

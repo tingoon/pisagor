@@ -4,6 +4,7 @@ import type { VisuallyHiddenRecipeFn } from "@pisagor/recipes";
 export interface VisuallyHiddenProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue visuallyHiddenRecipe
    */
   recipe?: VisuallyHiddenRecipeFn;

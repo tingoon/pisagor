@@ -37,8 +37,7 @@ type CircularProgressRootProps = ProgressRootProviderProps &
   BaseCircularProgressProps;
 
 export interface CircularProgressProps
-  extends Omit<ProgressRootProps, "children">,
-    BaseCircularProgressProps {
+  extends Omit<ProgressRootProps, "children">, BaseCircularProgressProps {
   size?: number;
   thickness?: number;
   indeterminate?: boolean;

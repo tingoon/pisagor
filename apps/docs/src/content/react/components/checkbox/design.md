@@ -25,9 +25,9 @@ Prefer Checkbox when selection submits with a form; prefer [Switch](/react/compo
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Multi-select or boolean in forms | **Checkbox** |
-| Immediate on/off setting | [Switch](/react/components/switch/design) |
-| Exactly one of several options | [Radio Group](/react/components/radio-group/design) |
-| Select all rows in a table | [Action Bar](/react/components/action-bar/design) with row selection |
+| Need                             | Prefer                                                               |
+| -------------------------------- | -------------------------------------------------------------------- |
+| Multi-select or boolean in forms | **Checkbox**                                                         |
+| Immediate on/off setting         | [Switch](/react/components/switch/design)                            |
+| Exactly one of several options   | [Radio Group](/react/components/radio-group/design)                  |
+| Select all rows in a table       | [Action Bar](/react/components/action-bar/design) with row selection |

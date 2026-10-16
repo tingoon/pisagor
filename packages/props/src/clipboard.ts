@@ -7,6 +7,7 @@ import type {
 export interface ClipboardProps extends ClipboardVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue clipboardRecipe
    */
   recipe?: ClipboardRecipeFn;

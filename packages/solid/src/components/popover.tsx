@@ -34,8 +34,7 @@ const {
 // #endregion
 
 export interface PopoverContentProps
-  extends PopoverPrimitiveContentProps,
-    BasePopoverContentProps {
+  extends PopoverPrimitiveContentProps, BasePopoverContentProps {
   showCloseButton?: boolean;
 }
 

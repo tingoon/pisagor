@@ -1,14 +1,14 @@
 <script lang="ts">
-import { Button, Card, Timer } from "@pisagor/svelte";
-import ArrowCounterClockwiseIcon from "phosphor-svelte/lib/ArrowCounterClockwiseIcon";
-import PlayIcon from "phosphor-svelte/lib/PlayIcon";
+  import { Button, Card, Timer } from "@pisagor/svelte";
+  import ArrowCounterClockwiseIcon from "phosphor-svelte/lib/ArrowCounterClockwiseIcon";
+  import PlayIcon from "phosphor-svelte/lib/PlayIcon";
 
-let ticks = $state(0);
-let completed = $state(false);
+  let ticks = $state(0);
+  let completed = $state(false);
 </script>
 
 <div class="flex flex-col gap-2">
-  <output class="text-center text-muted-foreground text-sm tabular-nums">
+  <output class="text-muted-foreground text-center text-sm tabular-nums">
     Ticks: {ticks}{completed ? " — Completed" : ""}
   </output>
   <Card class="rounded-3xl [--space:--spacing(6)]">
@@ -32,9 +32,7 @@ let completed = $state(false);
         </Timer.Area>
         <Timer.Control>
           <Timer.Start>
-            {#snippet asChild(
-              props,
-            )}
+            {#snippet asChild(props)}
               <Button
                 {...props()}
                 aria-label="Start"
@@ -46,9 +44,7 @@ let completed = $state(false);
             {/snippet}
           </Timer.Start>
           <Timer.Reset>
-            {#snippet asChild(
-              props,
-            )}
+            {#snippet asChild(props)}
               <Button
                 {...props()}
                 aria-label="Reset"

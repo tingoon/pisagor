@@ -155,8 +155,7 @@ export function createSlotRecipeContext<
         className?: ClassValue;
       };
       const defaultClassName = options.defaultProps?.className as
-        | ClassValue
-        | undefined;
+        ClassValue | undefined;
 
       const dataAttrs: Record<string, unknown> = {};
       for (const [key, value] of Object.entries(
@@ -201,8 +200,7 @@ export function createSlotRecipeContext<
         className?: ClassValue;
       };
       const defaultClassName = options.defaultProps?.className as
-        | ClassValue
-        | undefined;
+        ClassValue | undefined;
 
       return createElement(Component, {
         ...options.defaultProps,

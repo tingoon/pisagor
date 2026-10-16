@@ -7,7 +7,7 @@ export function Controlled() {
 
   return (
     <div class="flex flex-col gap-2">
-      <output class="text-center text-muted-foreground text-sm tabular-nums">
+      <output class="text-muted-foreground text-center text-sm tabular-nums">
         Ticks: {ticks()} {completed() ? " — Completed" : ""}
       </output>
       <Card class="rounded-3xl [--space:--spacing(6)]">

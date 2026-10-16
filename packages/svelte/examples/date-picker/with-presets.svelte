@@ -1,20 +1,18 @@
 <script lang="ts">
-import { Button, Calendar, DatePicker, parseDate } from "@pisagor/svelte";
-import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
+  import { Button, Calendar, DatePicker, parseDate } from "@pisagor/svelte";
+  import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
 
-const presets = [
-  { days: 0, label: "Today" },
-  { days: 1, label: "Tomorrow" },
-  { days: 3, label: "In 3 days" },
-  { days: 7, label: "In a week" },
-] as const;
+  const presets = [
+    { days: 0, label: "Today" },
+    { days: 1, label: "Tomorrow" },
+    { days: 3, label: "In 3 days" },
+    { days: 7, label: "In a week" },
+  ] as const;
 </script>
 
 <DatePicker defaultValue={[parseDate(new Date())]}>
   <DatePicker.Trigger>
-    {#snippet asChild(
-      props,
-    )}
+    {#snippet asChild(props)}
       <Button {...props()} variant="outline">
         <CalendarIcon />
         <DatePicker.ValueText />
@@ -35,9 +33,7 @@ const presets = [
                 ),
               ]}
             >
-              {#snippet asChild(
-                props,
-              )}
+              {#snippet asChild(props)}
                 <Button
                   {...props()}
                   class="w-full justify-start"

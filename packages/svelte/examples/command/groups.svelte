@@ -1,24 +1,24 @@
 <script lang="ts">
-import { useListCollection } from "@ark-ui/svelte/collection";
-import { useFilter } from "@ark-ui/svelte/locale";
-import { Command } from "@pisagor/svelte";
+  import { useListCollection } from "@ark-ui/svelte/collection";
+  import { useFilter } from "@ark-ui/svelte/locale";
+  import { Command } from "@pisagor/svelte";
 
-const initialItems = [
-  { group: "Fruit", label: "Apple", value: "apple" },
-  { group: "Fruit", label: "Banana", value: "banana" },
-  { group: "Fruit", label: "Cherry", value: "cherry" },
-  { group: "Countries", label: "United States", value: "us" },
-  { group: "Countries", label: "United Kingdom", value: "uk" },
-  { group: "Countries", label: "Germany", value: "de" },
-];
-const filters = useFilter({ sensitivity: "base" });
-const { collection, filter } = useListCollection({
-  filter(itemString, filterText) {
-    return filters().contains(itemString, filterText);
-  },
-  groupBy: (item) => item.group,
-  initialItems,
-});
+  const initialItems = [
+    { group: "Fruit", label: "Apple", value: "apple" },
+    { group: "Fruit", label: "Banana", value: "banana" },
+    { group: "Fruit", label: "Cherry", value: "cherry" },
+    { group: "Countries", label: "United States", value: "us" },
+    { group: "Countries", label: "United Kingdom", value: "uk" },
+    { group: "Countries", label: "Germany", value: "de" },
+  ];
+  const filters = useFilter({ sensitivity: "base" });
+  const { collection, filter } = useListCollection({
+    filter(itemString, filterText) {
+      return filters().contains(itemString, filterText);
+    },
+    groupBy: (item) => item.group,
+    initialItems,
+  });
 </script>
 
 <Command

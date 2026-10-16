@@ -4,6 +4,7 @@ import type { ProgressRecipeFn } from "@pisagor/recipes";
 export interface ProgressProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue progressRecipe
    */
   recipe?: ProgressRecipeFn;

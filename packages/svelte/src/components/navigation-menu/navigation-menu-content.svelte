@@ -1,24 +1,24 @@
 <script lang="ts">
-import { handleNavigationMenuContentKeyDown } from "@pisagor/utils";
-import type { Snippet } from "svelte";
-import type { HTMLAttributes } from "svelte/elements";
-import {
-  useNavigationMenu,
-  useNavigationMenuItemState,
-} from "./navigation-menu.context";
+  import { handleNavigationMenuContentKeyDown } from "@pisagor/utils";
+  import type { Snippet } from "svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import {
+    useNavigationMenu,
+    useNavigationMenuItemState,
+  } from "./navigation-menu.context";
 
-type Props = HTMLAttributes<HTMLUListElement> & { children?: Snippet };
+  type Props = HTMLAttributes<HTMLUListElement> & { children?: Snippet };
 
-let { children, class: className, onkeydown, ...rest }: Props = $props();
-const styles = useNavigationMenu();
-const item = useNavigationMenuItemState("Content");
+  let { children, class: className, onkeydown, ...rest }: Props = $props();
+  const styles = useNavigationMenu();
+  const item = useNavigationMenuItemState("Content");
 
-function handleKeyDown(
-  event: KeyboardEvent & { currentTarget: EventTarget & HTMLUListElement },
-) {
-  onkeydown?.(event);
-  handleNavigationMenuContentKeyDown(event);
-}
+  function handleKeyDown(
+    event: KeyboardEvent & { currentTarget: EventTarget & HTMLUListElement },
+  ) {
+    onkeydown?.(event);
+    handleNavigationMenuContentKeyDown(event);
+  }
 </script>
 
 <ul

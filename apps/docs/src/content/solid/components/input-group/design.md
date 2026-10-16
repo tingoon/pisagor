@@ -29,9 +29,9 @@ Wrap the group in [Field](/solid/components/field/design) when the label applies
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Input with attached chrome | **Input Group** |
-| Plain single-line entry | [Input](/solid/components/input/design) |
-| Accessible label stack | [Field](/solid/components/field/design) |
+| Need                       | Prefer                                              |
+| -------------------------- | --------------------------------------------------- |
+| Input with attached chrome | **Input Group**                                     |
+| Plain single-line entry    | [Input](/solid/components/input/design)             |
+| Accessible label stack     | [Field](/solid/components/field/design)             |
 | Phone numbers with country | [Phone Input](/solid/components/phone-input/design) |

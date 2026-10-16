@@ -38,16 +38,12 @@ type TextareaClassNames = VariantClassNames<TextareaRecipeSlot>;
 
 type TextareaRootProps = FieldTextareaProps &
   RefAttributes<HTMLTextAreaElement> & {
-    /**
-     * Visual shell variant. Defaults to `primary`.
-     */
+    /** Visual shell variant. Defaults to `primary`. */
     variant?: FormControlVariant;
   };
 
 export interface TextareaProps
-  extends TextareaRootProps,
-    BaseTextareaProps,
-    SizeScaleProps {
+  extends TextareaRootProps, BaseTextareaProps, SizeScaleProps {
   /**
    * Whether to show a clear button when the textarea has a value.
    *
@@ -69,7 +65,8 @@ function TextareaProvider({
 }: SizeScaleProps & {
   children: ReactNode;
   /**
-   * Style recipe. Defaults to `textareaRecipe` from `@pisagor/recipes/textarea`.
+   * Style recipe. Defaults to `textareaRecipe` from
+   * `@pisagor/recipes/textarea`.
    *
    * @defaultValue textareaRecipe
    */

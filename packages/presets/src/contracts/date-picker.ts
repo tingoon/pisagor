@@ -9,7 +9,7 @@ export const datePickerRecipe = tv({
       "p-3",
       "bg-popover",
       "text-popover-foreground",
-      "rounded-2xl border border-border/50 shadow-md",
+      "border-border/50 rounded-2xl border shadow-md",
       "outline-hidden",
       "origin-(--transform-origin)",
       "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
@@ -24,10 +24,10 @@ export const datePickerRecipe = tv({
     ],
     trigger: [
       "justify-start",
-      "text-start data-placeholder-shown:[&>span]:text-muted-foreground",
+      "data-placeholder-shown:[&>span]:text-muted-foreground text-start",
       "[&_svg:not([class*='text-'])]:opacity-64",
     ],
-    valueText: ["font-medium text-sm"],
+    valueText: ["text-sm font-medium"],
   },
 });
 

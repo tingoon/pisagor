@@ -1,15 +1,15 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
-import type { Snippet } from "svelte";
-import type { HTMLAnchorAttributes } from "svelte/elements";
-import { useMenu } from "./menu.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import { cn } from "@pisagor/utils";
+  import type { Snippet } from "svelte";
+  import type { HTMLAnchorAttributes } from "svelte/elements";
+  import { useMenu } from "./menu.context";
 
-type Props = HTMLAnchorAttributes & { active?: boolean; children?: Snippet };
+  type Props = HTMLAnchorAttributes & { active?: boolean; children?: Snippet };
 
-let { active = false, class: className, children, ...rest }: Props = $props();
-const styles = useMenu();
-const slots = $derived(styles.slots);
+  let { active = false, class: className, children, ...rest }: Props = $props();
+  const styles = useMenu();
+  const slots = $derived(styles.slots);
 </script>
 
 <Ark as="li" class={slots.wrapper()} data-part="item-wrapper" data-scope="menu">

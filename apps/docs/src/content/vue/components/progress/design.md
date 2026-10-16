@@ -29,9 +29,9 @@ Keep the track wide enough to read at a glance in forms and toolbars. In dense r
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Linear measurable completion | **Progress** |
-| Compact circular indicator | [Circular Progress](/vue/components/circular-progress/design) |
-| Indeterminate short wait | [Spinner](/vue/components/spinner/design) |
-| Loading placeholder layout | [Skeleton](/vue/components/skeleton/design) |
+| Need                         | Prefer                                                          |
+| ---------------------------- | --------------------------------------------------------------- |
+| Linear measurable completion | **Progress**                                                    |
+| Compact circular indicator   | [Circular Progress](/vue/components/circular-progress/design) |
+| Indeterminate short wait     | [Spinner](/vue/components/spinner/design)                     |
+| Loading placeholder layout   | [Skeleton](/vue/components/skeleton/design)                   |

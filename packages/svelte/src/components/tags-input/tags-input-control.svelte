@@ -1,42 +1,42 @@
 <script lang="ts">
-import type { TagsInputControlProps as ArkControlProps } from "@ark-ui/svelte/tags-input";
-import {
-  TagsInput as TagsInputPrimitive,
-  useTagsInputContext,
-} from "@ark-ui/svelte/tags-input";
-import {
-  type FormControlGroupShellVariantProps,
-  formControlGroupShellRecipe,
-} from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { useMessageResolver } from "../provider/context";
-import { useFormControlSurface } from "../surface/use-form-control-surface";
-import { useTagsInput } from "./tags-input.context";
-import TagsInputClearTrigger from "./tags-input-clear-trigger.svelte";
+  import type { TagsInputControlProps as ArkControlProps } from "@ark-ui/svelte/tags-input";
+  import {
+    TagsInput as TagsInputPrimitive,
+    useTagsInputContext,
+  } from "@ark-ui/svelte/tags-input";
+  import {
+    type FormControlGroupShellVariantProps,
+    formControlGroupShellRecipe,
+  } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { useMessageResolver } from "../provider/context";
+  import { useFormControlSurface } from "../surface/use-form-control-surface";
+  import { useTagsInput } from "./tags-input.context";
+  import TagsInputClearTrigger from "./tags-input-clear-trigger.svelte";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-type FormControlVariant = "primary" | "secondary";
+  type FormControlVariant = "primary" | "secondary";
 
-type Props = ArkControlProps &
-  Pick<FormControlGroupShellVariantProps, "size" | "variant"> & {
-    clearable?: boolean;
-  };
+  type Props = ArkControlProps &
+    Pick<FormControlGroupShellVariantProps, "size" | "variant"> & {
+      clearable?: boolean;
+    };
 
-let {
-  size = "md",
-  variant: variantProp,
-  clearable = false,
-  children,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    size = "md",
+    variant: variantProp,
+    clearable = false,
+    children,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const styles = useTagsInput();
-const slots = $derived(styles.slots);
-const api = useTagsInputContext();
-const surfaceVariant = useFormControlSurface();
-const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
+  const styles = useTagsInput();
+  const slots = $derived(styles.slots);
+  const api = useTagsInputContext();
+  const surfaceVariant = useFormControlSurface();
+  const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 </script>
 
 <TagsInputPrimitive.Control

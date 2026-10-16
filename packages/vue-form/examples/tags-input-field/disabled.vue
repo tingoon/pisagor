@@ -7,6 +7,6 @@ import { TagsInputField } from "@pisagor/vue-form";
     disabled
     id="tags-input-field-skills-disabled"
     label="Skills"
-    :value='["TypeScript"]'
+    :value="['TypeScript']"
   />
 </template>

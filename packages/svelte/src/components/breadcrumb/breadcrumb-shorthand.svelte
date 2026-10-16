@@ -1,23 +1,23 @@
 <script lang="ts">
-import type { ComponentProps } from "svelte";
-import BreadcrumbItem from "./breadcrumb-item.svelte";
-import BreadcrumbLink from "./breadcrumb-link.svelte";
-import BreadcrumbList from "./breadcrumb-list.svelte";
-import BreadcrumbPage from "./breadcrumb-page.svelte";
-import BreadcrumbRoot from "./breadcrumb-root.svelte";
-import BreadcrumbSeparator from "./breadcrumb-separator.svelte";
+  import type { ComponentProps } from "svelte";
+  import BreadcrumbItem from "./breadcrumb-item.svelte";
+  import BreadcrumbLink from "./breadcrumb-link.svelte";
+  import BreadcrumbList from "./breadcrumb-list.svelte";
+  import BreadcrumbPage from "./breadcrumb-page.svelte";
+  import BreadcrumbRoot from "./breadcrumb-root.svelte";
+  import BreadcrumbSeparator from "./breadcrumb-separator.svelte";
 
-type PresetItem = {
-  href?: string;
-  isCurrentPage?: boolean;
-  label: string;
-};
+  type PresetItem = {
+    href?: string;
+    isCurrentPage?: boolean;
+    label: string;
+  };
 
-type Props = Omit<ComponentProps<typeof BreadcrumbRoot>, "children"> & {
-  items?: PresetItem[];
-};
+  type Props = Omit<ComponentProps<typeof BreadcrumbRoot>, "children"> & {
+    items?: PresetItem[];
+  };
 
-let { items, ...rest }: Props = $props();
+  let { items, ...rest }: Props = $props();
 </script>
 
 <BreadcrumbRoot {...rest}>

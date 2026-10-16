@@ -77,9 +77,7 @@ export interface RichTextEditorContentProps {
 const [provideRichTextEditorContext, useRichTextEditorContext] =
   createContext("RichTextEditor")<RichTextEditorContextValue>();
 
-/**
- * Access the TipTap editor instance from the nearest RichTextEditor root.
- */
+/** Access the TipTap editor instance from the nearest RichTextEditor root. */
 export function useRichTextEditor() {
   return useRichTextEditorContext()?.editor ?? null;
 }

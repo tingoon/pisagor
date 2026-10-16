@@ -3,7 +3,7 @@ import { DataList } from "@pisagor/vue";
 </script>
 
 <template>
-  <div class="w-96 rounded-xl border bg-card p-4">
+  <div class="bg-card w-96 rounded-xl border p-4">
     <DataList.Root orientation="vertical">
       <DataList.Item value="Jane">First name</DataList.Item>
       <DataList.Item value="Doe">Last name</DataList.Item>

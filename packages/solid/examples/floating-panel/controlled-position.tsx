@@ -41,7 +41,7 @@ export function ControlledPosition() {
               />
             </FloatingPanel.Control>
           </FloatingPanel.Header>
-          <FloatingPanel.Body class="text-center text-muted-foreground text-sm">
+          <FloatingPanel.Body class="text-muted-foreground text-center text-sm">
             <p>
               Position: ({position().x}, {position().y}).
             </p>

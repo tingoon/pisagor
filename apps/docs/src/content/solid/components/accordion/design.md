@@ -31,9 +31,9 @@ When only one section may be open, closing the active section before opening ano
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Independent expandable sections | **Accordion** |
-| Frequent switching between peer views | [Tabs](/solid/components/tabs/design) |
-| Long hierarchical settings | [Tree View](/solid/components/tree-view/design) |
-| Static grouped content | [Card](/solid/components/card/design) |
+| Need                                  | Prefer                                          |
+| ------------------------------------- | ----------------------------------------------- |
+| Independent expandable sections       | **Accordion**                                   |
+| Frequent switching between peer views | [Tabs](/solid/components/tabs/design)           |
+| Long hierarchical settings            | [Tree View](/solid/components/tree-view/design) |
+| Static grouped content                | [Card](/solid/components/card/design)           |

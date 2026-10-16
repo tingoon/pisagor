@@ -7,6 +7,7 @@ import type {
 export interface ToggleGroupProps extends ToggleGroupVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue toggleGroupRecipe
    */
   recipe?: ToggleGroupRecipeFn;

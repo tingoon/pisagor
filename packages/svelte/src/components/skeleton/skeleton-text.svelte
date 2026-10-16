@@ -1,25 +1,25 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { SkeletonProps as BaseSkeletonProps } from "@pisagor/props";
-import { skeletonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { HTMLAttributes } from "svelte/elements";
-import type { SizeScaleProps } from "../../internal/types";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import type { SkeletonProps as BaseSkeletonProps } from "@pisagor/props";
+  import { skeletonRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
+  import type { SizeScaleProps } from "../../internal/types";
 
-type Props = HTMLAttributes<HTMLDivElement> & {
-  lines?: number;
-} & BaseSkeletonProps &
-  SizeScaleProps;
+  type Props = HTMLAttributes<HTMLDivElement> & {
+    lines?: number;
+  } & BaseSkeletonProps &
+    SizeScaleProps;
 
-let {
-  lines = 2,
-  size = "md",
-  recipe = skeletonRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    lines = 2,
+    size = "md",
+    recipe = skeletonRecipe,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const slots = $derived(recipe({ size }));
+  const slots = $derived(recipe({ size }));
 </script>
 
 <Ark

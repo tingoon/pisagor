@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Button, Card } from "@pisagor/svelte";
-import { productCardBlock } from "#/recipes/blocks/card";
+  import { Button, Card } from "@pisagor/svelte";
+  import { productCardBlock } from "#/recipes/blocks/card";
 
-const styles = productCardBlock();
+  const styles = productCardBlock();
 </script>
 
 <Card class={styles.root()}>

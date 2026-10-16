@@ -36,13 +36,18 @@ const AvatarFallback = withContext(AvatarPrimitive.Fallback, {
 // #region Types
 type AvatarClassNames = VariantClassNames<AvatarRecipeSlot>;
 
-export interface AvatarProps
-  extends Omit<ComponentProps<typeof AvatarRoot>, "children"> {
+export interface AvatarProps extends Omit<
+  ComponentProps<typeof AvatarRoot>,
+  "children"
+> {
   /** Alt text for the avatar image */
   alt?: string;
   /** Renders the fallback content shown until the image loads */
   fallback?: ReactNode;
-  /** Person name; used as default alt text and to derive initials when no fallback is given */
+  /**
+   * Person name; used as default alt text and to derive initials when no
+   * fallback is given
+   */
   name?: string;
   /** Renders the avatar image with the provided src */
   src?: string;

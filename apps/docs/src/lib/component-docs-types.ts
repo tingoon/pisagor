@@ -24,12 +24,7 @@ export interface ComponentDocs {
     | "shorthand"
     | "primitive";
   taxonomy:
-    | "standard"
-    | "pattern"
-    | "layout"
-    | "utility"
-    | "primitive"
-    | "composite";
+    "standard" | "pattern" | "layout" | "utility" | "primitive" | "composite";
   aliases?: string[];
   packageName?: string;
 }

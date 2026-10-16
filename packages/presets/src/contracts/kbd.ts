@@ -5,20 +5,16 @@ export const kbdRecipe = tv({
     "h-5 min-w-5",
     "px-1",
     "inline-flex items-center justify-center gap-1",
-    "select-none font-medium font-sans text-foreground text-xs",
+    "text-foreground font-sans text-xs font-medium select-none",
     "rounded-xs border border-transparent",
     "pointer-events-none",
     "in-[[data-scope=tooltip][data-part=content]]:bg-background/20 in-[[data-scope=tooltip][data-part=content]]:text-background",
     "[&_svg:not([class*='size-'])]:size-3",
   ],
   defaultVariants: {
-    /**
-     * Size scale.
-     */
+    /** Size scale. */
     size: "md",
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "default",
   },
   variants: {
@@ -29,7 +25,7 @@ export const kbdRecipe = tv({
     },
     variant: {
       default: "bg-muted",
-      outline: "border border-border",
+      outline: "border-border border",
     },
   },
 });

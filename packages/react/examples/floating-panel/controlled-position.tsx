@@ -35,7 +35,7 @@ export function ControlledPosition() {
               </FloatingPanel.CloseTrigger>
             </FloatingPanel.Control>
           </FloatingPanel.Header>
-          <FloatingPanel.Body className="text-center text-muted-foreground text-sm">
+          <FloatingPanel.Body className="text-muted-foreground text-center text-sm">
             <p>
               Position: ({position.x}, {position.y}).
             </p>

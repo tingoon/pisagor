@@ -5,8 +5,7 @@ import { splitProps } from "solid-js";
 import { useTranslation } from "./provider/context";
 
 export interface SpinnerProps
-  extends JSX.SvgSVGAttributes<SVGSVGElement>,
-    BaseSpinnerProps {}
+  extends JSX.SvgSVGAttributes<SVGSVGElement>, BaseSpinnerProps {}
 
 export function Spinner(props: SpinnerProps): JSX.Element {
   const [local, rest] = splitProps(props, [

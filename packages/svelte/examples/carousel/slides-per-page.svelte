@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Card, Carousel } from "@pisagor/svelte";
+  import { Card, Carousel } from "@pisagor/svelte";
 
-const count = 16;
+  const count = 16;
 </script>
 
 <Carousel.Root slideCount={count} slidesPerPage={3}>
@@ -14,7 +14,7 @@ const count = 16;
       <Carousel.Item index={slideIndex}>
         <Card>
           <Card.Content class="flex h-40 items-center justify-center">
-            <span class="font-semibold text-2xl">{slideIndex + 1}</span>
+            <span class="text-2xl font-semibold">{slideIndex + 1}</span>
           </Card.Content>
         </Card>
       </Carousel.Item>

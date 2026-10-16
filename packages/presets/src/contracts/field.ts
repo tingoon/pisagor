@@ -2,13 +2,9 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const fieldRecipe = tv({
   defaultVariants: {
-    /**
-     * Layout orientation.
-     */
+    /** Layout orientation. */
     orientation: "vertical",
-    /**
-     * Reverse.
-     */
+    /** Reverse. */
     reverse: false,
   },
   slots: {
@@ -24,14 +20,14 @@ export const fieldRecipe = tv({
       "leading-snug",
     ],
     description: [
-      "font-normal text-muted-foreground text-sm leading-normal",
+      "text-muted-foreground text-sm leading-normal font-normal",
       "group-has-data-[orientation=horizontal]/field:text-balance",
       "@md/field-group:group-data-[orientation=responsive]/field:text-balance",
-      "nth-last-2:-mt-1 last:mt-0 [[data-variant=legend]+&]:-mt-1.5",
+      "last:mt-0 nth-last-2:-mt-1 [[data-variant=legend]+&]:-mt-1.5",
       "in-[[data-scope=field][data-part=root]:has([data-scope=radio-group][data-part=item])]:ms-6 in-[[data-scope=field][data-part=root]:has([data-scope=radio-group][data-part=item])]:-mt-1.5!",
       "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
     ],
-    error: ["font-normal text-destructive text-sm"],
+    error: ["text-destructive text-sm font-normal"],
     group: [
       "group/field-group @container/field-group",
       "flex w-full flex-col gap-4",
@@ -42,9 +38,9 @@ export const fieldRecipe = tv({
     inline: ["absolute inset-0 top-1/2"],
     label: [
       "group/field-label peer/field-label",
-      "select-none font-medium text-sm leading-snug",
+      "text-sm leading-snug font-medium select-none",
       "flex w-fit gap-1",
-      "has-[>[data-scope=field][data-part=root]]:w-full has-[>[data-scope=field][data-part=root]]:flex-col has-[>[data-scope=field][data-part=root]]:rounded-lg has-[>[data-scope=field][data-part=root]]:border has-[>[data-scope=field][data-part=root]]:bg-card *:data-[scope=field]:data-[part=root]:p-2.5",
+      "has-[>[data-scope=field][data-part=root]]:bg-card has-[>[data-scope=field][data-part=root]]:w-full has-[>[data-scope=field][data-part=root]]:flex-col has-[>[data-scope=field][data-part=root]]:rounded-lg has-[>[data-scope=field][data-part=root]]:border *:data-[scope=field]:data-[part=root]:p-2.5",
       "in-[[data-scope=surface][data-part=root][data-variant=default]]:has-[>[data-scope=field][data-part=root]]:bg-muted in-[[data-scope=surface][data-part=root][data-variant=default]]:has-[>[data-scope=field][data-part=root]]:shadow-none",
       "in-[[data-scope=surface][data-part=root][data-variant=secondary]]:has-[>[data-scope=field][data-part=root]]:bg-card in-[[data-scope=surface][data-part=root][data-variant=tertiary]]:has-[>[data-scope=field][data-part=root]]:bg-card",
       "has-data-[state=checked]:border-primary has-data-[state=checked]:bg-primary/5",
@@ -56,7 +52,7 @@ export const fieldRecipe = tv({
       "data-[variant=legend]:text-base data-[variant=legend]:tracking-tight",
       "data-[variant=label]:text-sm",
     ],
-    requiredIndicator: ["select-none text-destructive text-sm"],
+    requiredIndicator: ["text-destructive text-sm select-none"],
     separator: [
       "relative",
       "h-5",
@@ -70,7 +66,7 @@ export const fieldRecipe = tv({
     title: [
       "w-fit",
       "flex items-center gap-2",
-      "font-medium text-sm leading-snug",
+      "text-sm leading-snug font-medium",
       "group-data-disabled/field:opacity-64",
     ],
   },

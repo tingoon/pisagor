@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Field, TagsInput } from "@pisagor/svelte";
+  import { Field, TagsInput } from "@pisagor/svelte";
 
-const sizes = ["sm", "md", "lg"] as const;
+  const sizes = ["sm", "md", "lg"] as const;
 </script>
 
 <div class="flex w-full flex-col gap-4">

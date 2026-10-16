@@ -15,7 +15,7 @@ const brandResizableRecipe = tv({
 
 const panelClass = (orientation: "horizontal" | "vertical" = "horizontal") =>
   cn(
-    "flex h-full w-full items-center justify-center bg-muted/30 text-sm",
+    "bg-muted/30 flex h-full w-full items-center justify-center text-sm",
     orientation === "vertical" ? "min-h-0" : "min-w-0",
   );
 </script>

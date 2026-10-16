@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Field, Input } from "@pisagor/svelte";
+  import { Field, Input } from "@pisagor/svelte";
 </script>
 
 <Field orientation="vertical">

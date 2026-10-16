@@ -29,9 +29,9 @@ Offer compact variants for inspector panels and comfortable spacing for primary 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Standard list row layout | **Item** |
-| Scrollable option selection | [Listbox](/react/components/listbox/design) |
-| Always-visible link list | [Menu](/react/components/menu/design) |
-| Entire row navigates | [Link Box](/react/components/link-box/design) |
+| Need                        | Prefer                                        |
+| --------------------------- | --------------------------------------------- |
+| Standard list row layout    | **Item**                                      |
+| Scrollable option selection | [Listbox](/react/components/listbox/design)   |
+| Always-visible link list    | [Menu](/react/components/menu/design)         |
+| Entire row navigates        | [Link Box](/react/components/link-box/design) |

@@ -1,10 +1,10 @@
 <script lang="ts">
-import { Avatar, Button, Navbar, Sidebar } from "@pisagor/svelte";
-import BellIcon from "phosphor-svelte/lib/BellIcon";
-import DatabaseIcon from "phosphor-svelte/lib/DatabaseIcon";
-import HouseIcon from "phosphor-svelte/lib/HouseIcon";
-import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
-import UserIcon from "phosphor-svelte/lib/UserIcon";
+  import { Avatar, Button, Navbar, Sidebar } from "@pisagor/svelte";
+  import BellIcon from "phosphor-svelte/lib/BellIcon";
+  import DatabaseIcon from "phosphor-svelte/lib/DatabaseIcon";
+  import HouseIcon from "phosphor-svelte/lib/HouseIcon";
+  import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
+  import UserIcon from "phosphor-svelte/lib/UserIcon";
 </script>
 
 <Sidebar.Provider>
@@ -14,7 +14,7 @@ import UserIcon from "phosphor-svelte/lib/UserIcon";
         <Sidebar.MenuItem>
           <Sidebar.MenuButton size="lg">
             <div
-              class="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground"
+              class="bg-primary text-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg"
             >
               <DatabaseIcon class="size-4" />
             </div>
@@ -61,7 +61,7 @@ import UserIcon from "phosphor-svelte/lib/UserIcon";
     <Navbar>
       <Navbar.Brand class="gap-3">
         <Sidebar.Trigger />
-        <span class="font-medium text-sm">Dashboard</span>
+        <span class="text-sm font-medium">Dashboard</span>
       </Navbar.Brand>
 
       <Navbar.Content class="justify-end">

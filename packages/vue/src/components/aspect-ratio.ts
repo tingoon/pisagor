@@ -11,7 +11,8 @@ type ArkPart = Parameters<typeof h>[0];
 export interface AspectRatioProps extends BaseAspectRatioProps {
   class?: unknown;
   /**
-   * Width divided by height, e.g. `16 / 9`. Overrides the `--ratio` CSS variable.
+   * Width divided by height, e.g. `16 / 9`. Overrides the `--ratio` CSS
+   * variable.
    *
    * @defaultValue 1
    */

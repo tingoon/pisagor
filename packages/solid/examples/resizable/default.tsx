@@ -12,7 +12,7 @@ export function Default() {
         <Resizable.Panel id="a">
           <div
             class={cn(
-              "flex size-full items-center justify-center bg-muted/30 text-sm",
+              "bg-muted/30 flex size-full items-center justify-center text-sm",
             )}
           >
             A
@@ -22,7 +22,7 @@ export function Default() {
         <Resizable.Panel id="b">
           <div
             class={cn(
-              "flex size-full items-center justify-center bg-muted/30 text-sm",
+              "bg-muted/30 flex size-full items-center justify-center text-sm",
             )}
           >
             B

@@ -1,30 +1,30 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { ItemProps as BaseItemProps } from "@pisagor/props";
-import { itemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { HTMLAttributes } from "svelte/elements";
-import { setItemGroupContext } from "./item-group.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import type { ItemProps as BaseItemProps } from "@pisagor/props";
+  import { itemRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { setItemGroupContext } from "./item-group.context";
 
-type Props = HTMLAttributes<HTMLDivElement> & {
-  children?: import("svelte").Snippet;
-} & BaseItemProps;
+  type Props = HTMLAttributes<HTMLDivElement> & {
+    children?: import("svelte").Snippet;
+  } & BaseItemProps;
 
-let {
-  variant = "default",
-  children,
-  recipe = itemRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    variant = "default",
+    children,
+    recipe = itemRecipe,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const slots = $derived(recipe());
+  const slots = $derived(recipe());
 
-setItemGroupContext({
-  get variant() {
-    return variant;
-  },
-});
+  setItemGroupContext({
+    get variant() {
+      return variant;
+    },
+  });
 </script>
 
 <Ark

@@ -1,29 +1,29 @@
 <script lang="ts">
-import { useListCollection } from "@ark-ui/svelte/collection";
-import { useFilter } from "@ark-ui/svelte/locale";
-import { Command, Kbd } from "@pisagor/svelte";
-import ArrowBendDownLeftIcon from "phosphor-svelte/lib/ArrowBendDownLeftIcon";
-import ArrowDownIcon from "phosphor-svelte/lib/ArrowDownIcon";
-import ArrowUpIcon from "phosphor-svelte/lib/ArrowUpIcon";
+  import { useListCollection } from "@ark-ui/svelte/collection";
+  import { useFilter } from "@ark-ui/svelte/locale";
+  import { Command, Kbd } from "@pisagor/svelte";
+  import ArrowBendDownLeftIcon from "phosphor-svelte/lib/ArrowBendDownLeftIcon";
+  import ArrowDownIcon from "phosphor-svelte/lib/ArrowDownIcon";
+  import ArrowUpIcon from "phosphor-svelte/lib/ArrowUpIcon";
 
-const initialItems = [
-  { group: "App", label: "Settings", shortcut: "⌘,", value: "settings" },
-  {
-    group: "App",
-    label: "Keyboard Shortcuts",
-    shortcut: "⌘K",
-    value: "shortcuts",
-  },
-  { group: "App", label: "Help", shortcut: "⌘?", value: "help" },
-];
-const filters = useFilter({ sensitivity: "base" });
-const { collection, filter } = useListCollection({
-  filter(itemString, filterText) {
-    return filters().contains(itemString, filterText);
-  },
-  groupBy: (item) => item.group,
-  initialItems,
-});
+  const initialItems = [
+    { group: "App", label: "Settings", shortcut: "⌘,", value: "settings" },
+    {
+      group: "App",
+      label: "Keyboard Shortcuts",
+      shortcut: "⌘K",
+      value: "shortcuts",
+    },
+    { group: "App", label: "Help", shortcut: "⌘?", value: "help" },
+  ];
+  const filters = useFilter({ sensitivity: "base" });
+  const { collection, filter } = useListCollection({
+    filter(itemString, filterText) {
+      return filters().contains(itemString, filterText);
+    },
+    groupBy: (item) => item.group,
+    initialItems,
+  });
 </script>
 
 <Command

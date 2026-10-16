@@ -29,9 +29,9 @@ Multi-month views help desktop booking flows; single-month views suit mobile. Ke
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Grid date browsing | **Calendar** |
+| Need                        | Prefer                                              |
+| --------------------------- | --------------------------------------------------- |
+| Grid date browsing          | **Calendar**                                        |
 | Field with popover calendar | [Date Picker](/react/components/date-picker/design) |
-| Typed date entry | [Input](/react/components/input/design) |
-| Time-of-day selection | [Timer](/react/components/timer/design) |
+| Typed date entry            | [Input](/react/components/input/design)             |
+| Time-of-day selection       | [Timer](/react/components/timer/design)             |

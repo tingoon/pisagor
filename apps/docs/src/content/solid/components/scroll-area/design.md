@@ -29,9 +29,9 @@ Pair with sticky row headers or column labels inside the scroll viewport when da
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Styled nested scrolling | **Scroll Area** |
+| Need                       | Prefer                                          |
+| -------------------------- | ----------------------------------------------- |
+| Styled nested scrolling    | **Scroll Area**                                 |
 | Long in-page nav highlight | [Scrollspy](/solid/components/scrollspy/design) |
-| Full data grid scroll | [Data Grid](/solid/components/data-grid/design) |
-| Horizontal media strip | [Carousel](/solid/components/carousel/design) |
+| Full data grid scroll      | [Data Grid](/solid/components/data-grid/design) |
+| Horizontal media strip     | [Carousel](/solid/components/carousel/design)   |

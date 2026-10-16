@@ -29,9 +29,9 @@ Cards work in grids, stacks, and carousels. Fixed media heights pair well with [
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Bounded content module | **Card** |
-| Background layer only | [Surface](/svelte/components/surface/design) |
-| Expandable sections | [Accordion](/svelte/components/accordion/design) |
-| Horizontal set of modules | [Carousel](/svelte/components/carousel/design) |
+| Need                      | Prefer                                          |
+| ------------------------- | ----------------------------------------------- |
+| Bounded content module    | **Card**                                        |
+| Background layer only     | [Surface](/svelte/components/surface/design)     |
+| Expandable sections       | [Accordion](/svelte/components/accordion/design) |
+| Horizontal set of modules | [Carousel](/svelte/components/carousel/design)   |

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Prose } from "@pisagor/svelte";
+  import { Prose } from "@pisagor/svelte";
 </script>
 
 <Prose class="space-y-10">
@@ -11,7 +11,7 @@ import { Prose } from "@pisagor/svelte";
       place of drowned sailors and travellers
     </p>
   </div>
-  <hr>
+  <hr />
 
   <div class="not-prose">
     <h1>Davy Jones' locker</h1>

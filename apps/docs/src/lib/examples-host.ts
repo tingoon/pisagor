@@ -4,9 +4,9 @@
  * Each docs page renders empty `[data-example-slot="<Export>"]` placeholders
  * plus one config element (`[data-docs-examples-host]` for component/form
  * pages, `[data-docs-block-examples-host]` for blocks). A host island calls
- * `armExamplesHost` with its framework's `import.meta.glob` maps and a
- * `mount` callback; this module handles config lookup, lazy barrel loading
- * (once per page, on first visible slot) and per-slot visibility.
+ * `armExamplesHost` with its framework's `import.meta.glob` maps and a `mount`
+ * callback; this module handles config lookup, lazy barrel loading (once per
+ * page, on first visible slot) and per-slot visibility.
  */
 import { whenVisible } from "#/lib/when-visible";
 

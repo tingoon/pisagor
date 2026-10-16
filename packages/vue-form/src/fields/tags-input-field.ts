@@ -15,8 +15,7 @@ type TagsInputControlProps = SetRequired<
 >;
 
 export interface TagsInputFieldProps
-  extends FieldPresentationProps,
-    TagsInputControlProps {
+  extends FieldPresentationProps, TagsInputControlProps {
   name?: string;
   onBlur?: () => void;
 }

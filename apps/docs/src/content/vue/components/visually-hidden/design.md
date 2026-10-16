@@ -29,9 +29,9 @@ When a control has no inner text, `aria-label` or visually hidden content both w
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Screen-reader-only supplement | **Visually Hidden** |
-| Visible control name | Label or [Field](/vue/components/field/design) |
-| Short hover hint | [Tooltip](/vue/components/tooltip/design) |
-| Skip repetitive nav | [Skip Nav](/vue/components/skip-nav/design) |
+| Need                          | Prefer                                           |
+| ----------------------------- | ------------------------------------------------ |
+| Screen-reader-only supplement | **Visually Hidden**                              |
+| Visible control name          | Label or [Field](/vue/components/field/design) |
+| Short hover hint              | [Tooltip](/vue/components/tooltip/design)      |
+| Skip repetitive nav           | [Skip Nav](/vue/components/skip-nav/design)    |

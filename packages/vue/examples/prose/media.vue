@@ -10,7 +10,7 @@ import { Prose } from "@pisagor/vue";
         height="250"
         src="https://picsum.photos/seed/pisagor-prose/400/250"
         width="400"
-      >
+      />
       <figcaption>A description of the image.</figcaption>
     </figure>
   </Prose>

@@ -1,14 +1,14 @@
 <script lang="ts">
-import { useTourContext } from "@pisagor/svelte";
+  import { useTourContext } from "@pisagor/svelte";
 
-const { tour } = useTourContext();
+  const { tour } = useTourContext();
 </script>
 
 <div
-  class="absolute right-0 bottom-0 left-0 h-1 overflow-hidden rounded-b-2xl bg-muted"
+  class="bg-muted absolute right-0 bottom-0 left-0 h-1 overflow-hidden rounded-b-2xl"
 >
   <div
-    class="h-full bg-primary transition-[width]"
+    class="bg-primary h-full transition-[width]"
     style={`width: ${tour().getProgressPercent()}%`}
   ></div>
 </div>

@@ -17,15 +17,13 @@ const SCROLLSPY_OFFSET = "data-scrollspy-offset";
 const SCROLLSPY_ANCHOR_SELECTOR = `[${SCROLLSPY_ANCHOR}]`;
 
 export interface ScrollspyProps
-  extends ComponentProps<typeof ark.div>,
-    BaseScrollspyProps {
+  extends ComponentProps<typeof ark.div>, BaseScrollspyProps {
   /**
    * Whether to update the URL hash when the active section changes.
    *
-   * @defaultValue true
-   *
    * @remarks
-   * Updates `window.location.hash`, which affects browser history navigation.
+   *   Updates `window.location.hash`, which affects browser history navigation.
+   * @defaultValue true
    */
   history?: boolean;
   /**
@@ -40,13 +38,9 @@ export interface ScrollspyProps
    * @defaultValue true
    */
   smooth?: boolean;
-  /**
-   * The scrollable container to monitor. Omit to spy on the window.
-   */
+  /** The scrollable container to monitor. Omit to spy on the window. */
   targetRef?: RefObject<ScrollTarget>;
-  /**
-   * Called when the active section changes.
-   */
+  /** Called when the active section changes. */
   onUpdate?: (id: string) => void;
 }
 // #endregion

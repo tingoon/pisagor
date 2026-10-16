@@ -36,9 +36,11 @@ const BottomNavigationValueContext = createContext<() => string | undefined>(
 
 // #region Types
 export interface BottomNavigationRootProps
-  extends ComponentProps<typeof ark.nav>,
-    BaseBottomNavigationRootProps {
-  /** Value of the item for the current page; that item gets `aria-current="page"`. */
+  extends ComponentProps<typeof ark.nav>, BaseBottomNavigationRootProps {
+  /**
+   * Value of the item for the current page; that item gets
+   * `aria-current="page"`.
+   */
   value?: string;
 }
 
@@ -47,8 +49,7 @@ export type BottomNavigationProps = BottomNavigationRootProps;
 export type BottomNavigationListProps = ComponentProps<typeof ark.div>;
 
 export interface BottomNavigationItemProps
-  extends ComponentProps<typeof ark.a>,
-    BaseBottomNavigationItemProps {
+  extends ComponentProps<typeof ark.a>, BaseBottomNavigationItemProps {
   /** Marks the item as the current page. Defaults to `value === root value`. */
   current?: boolean;
   /** Whether the item is disabled. */

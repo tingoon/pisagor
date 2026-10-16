@@ -83,17 +83,13 @@ export interface TreeNodeType<T = unknown> {
 export type TreeCollection = arkTreeCollection;
 
 export interface TreeViewProps
-  extends TreeViewRootComponentProps,
-    TreeViewContextProps,
-    BaseTreeViewProps {}
+  extends TreeViewRootComponentProps, TreeViewContextProps, BaseTreeViewProps {}
 
 export interface TreeViewBranchProps
-  extends TreeViewPrimitiveBranchProps,
-    BaseTreeViewBranchProps {}
+  extends TreeViewPrimitiveBranchProps, BaseTreeViewBranchProps {}
 
 export interface TreeViewItemProps
-  extends TreeViewPrimitiveItemProps,
-    BaseTreeViewItemProps {}
+  extends TreeViewPrimitiveItemProps, BaseTreeViewItemProps {}
 
 export type NodeProviderProps<T extends TreeNodeType = TreeNodeType> =
   TreeViewNodeProviderProps<T>;

@@ -17,7 +17,7 @@ function onWidthChange(next: number) {
   <div :class="frameClass()">
     <div class="flex size-full overflow-hidden rounded-md border">
       <aside
-        class="relative flex shrink-0 flex-col overflow-visible border-e bg-muted text-muted-foreground"
+        class="bg-muted text-muted-foreground relative flex shrink-0 flex-col overflow-visible border-e"
         :style="{ width: `${width}px` }"
       >
         <Resizable.EdgeHandle
@@ -33,7 +33,7 @@ function onWidthChange(next: number) {
         </div>
       </aside>
       <div
-        class="flex min-w-0 flex-1 items-center justify-center bg-muted/30 text-sm"
+        class="bg-muted/30 flex min-w-0 flex-1 items-center justify-center text-sm"
       >
         Main
       </div>

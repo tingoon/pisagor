@@ -29,10 +29,10 @@ While data loads, use [Skeleton](/react/components/skeleton/design) or a subdued
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Scannable metric with label | **Stat** |
-| Compact state dot | [Status](/react/components/status/design) |
-| Count on an object | [Badge](/react/components/badge/design) |
-| Tabular comparison | [Table](/react/components/table/design) |
-| Event sequence | [Timeline](/react/components/timeline/design) |
+| Need                        | Prefer                                        |
+| --------------------------- | --------------------------------------------- |
+| Scannable metric with label | **Stat**                                      |
+| Compact state dot           | [Status](/react/components/status/design)     |
+| Count on an object          | [Badge](/react/components/badge/design)       |
+| Tabular comparison          | [Table](/react/components/table/design)       |
+| Event sequence              | [Timeline](/react/components/timeline/design) |

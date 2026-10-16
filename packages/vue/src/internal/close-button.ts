@@ -7,10 +7,10 @@ import { useTranslation } from "../components/provider/context";
 /**
  * Renders an icon-only close button.
  *
- * @param inlineClass - Extra classes for the button.
- * @param recipe - Style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
- *
  * @defaultValue buttonRecipe — for the `recipe` parameter
+ * @param inlineClass - Extra classes for the button.
+ * @param recipe - Style recipe. Defaults to `buttonRecipe` from
+ *   `@pisagor/recipes/button`.
  */
 export function renderIconCloseButton(
   inlineClass: string,

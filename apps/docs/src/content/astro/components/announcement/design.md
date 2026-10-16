@@ -29,9 +29,9 @@ Place announcements in predictable chrome — top of App Shell or below global n
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Promo or product news | **Announcement** |
-| System or form status | [Alert](/astro/components/alert/design) |
-| Timed transient notice | Toast |
-| App-wide top chrome | App Shell |
+| Need                   | Prefer                                          |
+| ---------------------- | ----------------------------------------------- |
+| Promo or product news  | **Announcement**                                |
+| System or form status  | [Alert](/astro/components/alert/design)         |
+| Timed transient notice | Toast         |
+| App-wide top chrome    | App Shell |

@@ -58,9 +58,9 @@ When a bulk action opens a dialog or sheet, keep the selection (and bar) until t
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Bulk actions for a selection | **Action Bar** |
-| Persistent section-level controls | [Toolbar](/svelte/components/toolbar/design) |
+| Need                                      | Prefer                                                |
+| ----------------------------------------- | ----------------------------------------------------- |
+| Bulk actions for a selection              | **Action Bar**                                        |
+| Persistent section-level controls         | [Toolbar](/svelte/components/toolbar/design)           |
 | Tight group of related toggles or buttons | [Button Group](/svelte/components/button-group/design) |
-| Grid-scoped table chrome | Data Grid / Data Table toolbar |
+| Grid-scoped table chrome                  | Data Grid / Data Table toolbar                        |

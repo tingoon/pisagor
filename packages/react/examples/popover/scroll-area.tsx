@@ -15,7 +15,7 @@ export function ScrollArea() {
           <ul className="flex flex-col gap-1">
             {items.map((item) => (
               <li
-                className="rounded-md px-2 py-1.5 text-sm hover:bg-muted"
+                className="hover:bg-muted rounded-md px-2 py-1.5 text-sm"
                 key={item.id}
               >
                 {item.label}

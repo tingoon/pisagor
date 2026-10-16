@@ -7,6 +7,7 @@ import type {
 export interface BreadcrumbProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue breadcrumbRecipe
    */
   recipe?: BreadcrumbRecipeFn;
@@ -16,6 +17,7 @@ export interface BreadcrumbProps {
 export interface BreadcrumbItemProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue breadcrumbItemRecipe
    */
   recipe?: BreadcrumbItemRecipeFn;

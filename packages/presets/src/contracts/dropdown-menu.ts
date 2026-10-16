@@ -9,7 +9,7 @@ export const dropdownMenuRecipe = tv({
       "p-1",
       "bg-popover",
       "text-popover-foreground",
-      "rounded-2xl border border-border/50 shadow-md",
+      "border-border/50 rounded-2xl border shadow-md",
       "origin-(--transform-origin)",
       "outline-hidden",
       "overflow-y-auto",
@@ -25,12 +25,12 @@ export const dropdownMenuRecipe = tv({
     ],
     itemGroupLabel: [
       "px-2 py-1.5",
-      "font-medium text-muted-foreground text-sm",
+      "text-muted-foreground text-sm font-medium",
       "pointer-events-none",
     ],
     positioner: "outline-hidden",
     quickItem: ["flex-col gap-1", "[&_svg:not([class*='size-'])]:size-4.5"],
-    separator: ["my-1 h-px bg-border"],
+    separator: ["bg-border my-1 h-px"],
     shortcut: [
       "ms-auto rtl:me-auto",
       "text-muted-foreground text-xs tracking-widest",
@@ -41,13 +41,9 @@ export const dropdownMenuRecipe = tv({
 
 export const dropdownMenuItemRecipe = tv({
   defaultVariants: {
-    /**
-     * Inset layout.
-     */
+    /** Inset layout. */
     inset: false,
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "default",
   },
   slots: {
@@ -57,12 +53,12 @@ export const dropdownMenuItemRecipe = tv({
       "w-full",
       "px-2.5 py-1.5",
       "flex items-center gap-2",
-      "select-none text-sm",
+      "text-sm select-none",
       "rounded-xl",
       "outline-hidden",
       "data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
-      "[&_svg:not([class*='size-'])]:size-3.5 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+      "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5",
     ],
     indicator: [
       "pointer-events-none absolute inset-s-2 flex size-3.5 items-center justify-center",

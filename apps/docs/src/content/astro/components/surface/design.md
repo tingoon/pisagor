@@ -29,9 +29,9 @@ Pair Surface with [Separator](/astro/components/separator/design) or spacing uti
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Background layer for a group | **Surface** |
-| Titled content block | [Card](/astro/components/card/design) |
-| Media or document frame | [Frame](/astro/components/frame/design) |
-| Page shell layout | App Shell |
+| Need                         | Prefer                                          |
+| ---------------------------- | ----------------------------------------------- |
+| Background layer for a group | **Surface**                                     |
+| Titled content block         | [Card](/astro/components/card/design)           |
+| Media or document frame      | [Frame](/astro/components/frame/design)         |
+| Page shell layout            | App Shell |

@@ -38,11 +38,9 @@ function useFloatingPanelSlots() {
 // #endregion
 
 export interface LocalFloatingPanelRootProps
-  extends FloatingPanelPrimitiveRootProps,
-    BaseFloatingPanelRootProps {}
+  extends FloatingPanelPrimitiveRootProps, BaseFloatingPanelRootProps {}
 
-export interface FloatingPanelContentProps
-  extends FloatingPanelPrimitiveContentProps {
+export interface FloatingPanelContentProps extends FloatingPanelPrimitiveContentProps {
   resizable?: boolean;
 }
 
@@ -54,8 +52,7 @@ export type FloatingPanelMinimizeProps = Omit<
 export type FloatingPanelMaximizeProps = FloatingPanelMinimizeProps;
 export type FloatingPanelRestoreProps = FloatingPanelMinimizeProps;
 
-export interface FloatingPanelBodyProps
-  extends FloatingPanelPrimitiveBodyProps {
+export interface FloatingPanelBodyProps extends FloatingPanelPrimitiveBodyProps {
   scrollFade?: boolean;
 }
 

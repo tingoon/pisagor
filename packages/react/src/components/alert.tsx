@@ -60,8 +60,8 @@ export interface AlertProps extends Omit<AlertRootProps, "children"> {
   /** Description content. */
   description?: ReactNode;
   /**
-   * Leading icon, rendered as a direct child so the grid layout aligns.
-   * Status variants get a default icon; pass `null` to hide it.
+   * Leading icon, rendered as a direct child so the grid layout aligns. Status
+   * variants get a default icon; pass `null` to hide it.
    */
   icon?: ReactNode;
   /** Bold title line. */

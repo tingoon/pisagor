@@ -4,6 +4,7 @@ import type { AnnouncementRecipeFn } from "@pisagor/recipes";
 export interface AnnouncementProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue announcementRecipe
    */
   recipe?: AnnouncementRecipeFn;

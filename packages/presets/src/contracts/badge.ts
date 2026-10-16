@@ -4,28 +4,22 @@ export const badgeRecipe = tv({
   base: [
     "relative",
     "inline-flex items-center justify-center gap-1",
-    "select-none whitespace-nowrap font-medium text-xs",
+    "text-xs font-medium whitespace-nowrap select-none",
     "rounded-lg border border-transparent",
     "overflow-hidden",
-    "transition duration-fast ease-out",
-    "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/32",
+    "duration-fast transition ease-out",
+    "focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/32 outline-hidden",
     "[&_svg]:pointer-events-none [&_svg]:size-3 [&_svg]:shrink-0",
     "[button&,a&]:cursor-pointer [button&,a&]:active:scale-98",
     "[button&,a&]:pointer-coarse:after:absolute [button&,a&]:pointer-coarse:after:size-full [button&,a&]:pointer-coarse:after:min-h-11 [button&,a&]:pointer-coarse:after:min-w-11",
     "motion-reduce:transition-none! motion-reduce:[button&,a&]:active:scale-100",
   ],
   defaultVariants: {
-    /**
-     * Fully rounded corners.
-     */
+    /** Fully rounded corners. */
     pill: false,
-    /**
-     * Control size.
-     */
+    /** Control size. */
     size: "md",
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "default",
   },
   variants: {

@@ -14,7 +14,7 @@ export function ScrollArea() {
           <Sheet.Title>Terms and conditions</Sheet.Title>
         </Sheet.Header>
         <Sheet.Body scrollFade>
-          <div class="space-y-2 **:[h3]:font-semibold **:[p]:text-muted-foreground **:[p]:text-sm">
+          <div class="**:[p]:text-muted-foreground space-y-2 **:[h3]:font-semibold **:[p]:text-sm">
             <h3>What is Lorem Ipsum?</h3>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi

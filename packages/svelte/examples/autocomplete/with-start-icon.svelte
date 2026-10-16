@@ -1,22 +1,22 @@
 <script lang="ts">
-import { useListCollection } from "@ark-ui/svelte/collection";
-import { useFilter } from "@ark-ui/svelte/locale";
-import { Autocomplete, InputGroup } from "@pisagor/svelte";
-import AppleLogoIcon from "phosphor-svelte/lib/AppleLogoIcon";
+  import { useListCollection } from "@ark-ui/svelte/collection";
+  import { useFilter } from "@ark-ui/svelte/locale";
+  import { Autocomplete, InputGroup } from "@pisagor/svelte";
+  import AppleLogoIcon from "phosphor-svelte/lib/AppleLogoIcon";
 
-const initialItems = [
-  { label: "Apple", value: "apple" },
-  { label: "Banana", value: "banana" },
-  { label: "Cherry", value: "cherry" },
-];
-const filters = useFilter({ sensitivity: "base" });
+  const initialItems = [
+    { label: "Apple", value: "apple" },
+    { label: "Banana", value: "banana" },
+    { label: "Cherry", value: "cherry" },
+  ];
+  const filters = useFilter({ sensitivity: "base" });
 
-const { collection, filter } = useListCollection({
-  filter(itemString, filterText) {
-    return filters().contains(itemString, filterText);
-  },
-  initialItems,
-});
+  const { collection, filter } = useListCollection({
+    filter(itemString, filterText) {
+      return filters().contains(itemString, filterText);
+    },
+    initialItems,
+  });
 </script>
 
 <Autocomplete.Root

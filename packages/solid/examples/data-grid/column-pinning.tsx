@@ -71,7 +71,7 @@ const allUsers: User[] = Array.from({ length: 48 }, (_, index) => ({
 function DataGridShell({ children }: { children: JSX.Element }) {
   return (
     <div class="flex w-full flex-col gap-3">
-      <div class="rounded-xl border bg-muted/20 p-3">{children}</div>
+      <div class="bg-muted/20 rounded-xl border p-3">{children}</div>
     </div>
   );
 }
@@ -146,9 +146,9 @@ export function ColumnPinning() {
                     <DataGrid.Head
                       class={
                         pinned === "start"
-                          ? "sticky inset-s-0 z-10 bg-background shadow-[inset_-1px_0_0_var(--border)]"
+                          ? "bg-background sticky inset-s-0 z-10 shadow-[inset_-1px_0_0_var(--border)]"
                           : pinned === "end"
-                            ? "sticky inset-e-0 z-10 bg-background shadow-[inset_1px_0_0_var(--border)]"
+                            ? "bg-background sticky inset-e-0 z-10 shadow-[inset_1px_0_0_var(--border)]"
                             : undefined
                       }
                       columnId={id}
@@ -174,9 +174,9 @@ export function ColumnPinning() {
                     <DataGrid.Cell
                       class={
                         pinned === "start"
-                          ? "sticky inset-s-0 z-10 bg-background shadow-[inset_-1px_0_0_var(--border)]"
+                          ? "bg-background sticky inset-s-0 z-10 shadow-[inset_-1px_0_0_var(--border)]"
                           : pinned === "end"
-                            ? "sticky inset-e-0 z-10 bg-background shadow-[inset_1px_0_0_var(--border)]"
+                            ? "bg-background sticky inset-e-0 z-10 shadow-[inset_1px_0_0_var(--border)]"
                             : undefined
                       }
                       columnId={id}

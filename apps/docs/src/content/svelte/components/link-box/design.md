@@ -29,9 +29,9 @@ Match padding and radius to neighboring [Card](/svelte/components/card/design) c
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Clickable tile with nested actions | **Link Box** |
-| Row layout without overlay link | [Item](/svelte/components/item/design) |
-| Static grouped content | [Card](/svelte/components/card/design) |
-| Breadcrumb trail | [Breadcrumb](/svelte/components/breadcrumb/design) |
+| Need                               | Prefer                                            |
+| ---------------------------------- | ------------------------------------------------- |
+| Clickable tile with nested actions | **Link Box**                                      |
+| Row layout without overlay link    | [Item](/svelte/components/item/design)             |
+| Static grouped content             | [Card](/svelte/components/card/design)             |
+| Breadcrumb trail                   | [Breadcrumb](/svelte/components/breadcrumb/design) |

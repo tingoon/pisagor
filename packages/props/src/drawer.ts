@@ -4,6 +4,7 @@ import type { DrawerRecipeFn, DrawerVariantProps } from "@pisagor/recipes";
 export interface DrawerProps extends DrawerVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue drawerRecipe
    */
   recipe?: DrawerRecipeFn;

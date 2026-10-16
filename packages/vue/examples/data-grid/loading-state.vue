@@ -280,7 +280,7 @@ const data = allUsers.slice(0, 8);
   <DataGridShell>
     <template v-if="isLoading">
       <div class="mb-3 flex items-center justify-between gap-3">
-        <p class="font-medium text-sm">Initial data load</p>
+        <p class="text-sm font-medium">Initial data load</p>
         <Button size="sm" variant="outline" @click="reload">Reload</Button>
       </div>
       <Table>
@@ -314,7 +314,7 @@ const data = allUsers.slice(0, 8);
     <DataGrid v-else :columns="columns" :data="data">
       <DataGrid.Toolbar>
         <div class="flex items-center justify-between gap-3">
-          <p class="font-medium text-sm">Initial data load</p>
+          <p class="text-sm font-medium">Initial data load</p>
           <Button size="sm" variant="outline" @click="reload">Reload</Button>
         </div>
       </DataGrid.Toolbar>

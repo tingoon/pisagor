@@ -29,9 +29,9 @@ Match corner radius and border weight to neighboring [Card](/svelte/components/c
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Embedded viewport with chrome | **Frame** |
-| Proportional media box | [Aspect Ratio](/svelte/components/aspect-ratio/design) |
-| Grouped static content | [Card](/svelte/components/card/design) |
-| Full app layout regions | [App Shell](/svelte/components/app-shell/design) |
+| Need                          | Prefer                                                |
+| ----------------------------- | ----------------------------------------------------- |
+| Embedded viewport with chrome | **Frame**                                             |
+| Proportional media box        | [Aspect Ratio](/svelte/components/aspect-ratio/design) |
+| Grouped static content        | [Card](/svelte/components/card/design)                 |
+| Full app layout regions       | [App Shell](/svelte/components/app-shell/design)       |

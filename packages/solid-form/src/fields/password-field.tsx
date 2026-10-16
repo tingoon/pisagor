@@ -12,8 +12,7 @@ type PasswordInputControlProps = Omit<
 >;
 
 export interface PasswordFieldProps
-  extends FieldPresentationProps,
-    PasswordInputControlProps {
+  extends FieldPresentationProps, PasswordInputControlProps {
   name?: string;
   value?: string;
   onBlur?: () => void;

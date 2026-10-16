@@ -29,9 +29,9 @@ On narrow viewports, stack label above value when horizontal space is tight. Mai
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Detail metadata and summaries | **Data List** |
-| Comparable rows across columns | Data Table |
-| Inline edit of a displayed value | Editable |
-| Form-style label + control | Field |
+| Need                             | Prefer                                            |
+| -------------------------------- | ------------------------------------------------- |
+| Detail metadata and summaries    | **Data List**                                     |
+| Comparable rows across columns   | Data Table |
+| Inline edit of a displayed value | Editable     |
+| Form-style label + control       | Field           |

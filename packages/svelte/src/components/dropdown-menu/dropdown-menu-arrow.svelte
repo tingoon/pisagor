@@ -1,28 +1,28 @@
 <script lang="ts">
-import {
-  type MenuArrowProps,
-  Menu as MenuPrimitive,
-} from "@ark-ui/svelte/menu";
-import { dropdownMenuRecipe } from "@pisagor/recipes";
-import { useDropdownMenu } from "./dropdown-menu.context";
+  import {
+    type MenuArrowProps,
+    Menu as MenuPrimitive,
+  } from "@ark-ui/svelte/menu";
+  import { dropdownMenuRecipe } from "@pisagor/recipes";
+  import { useDropdownMenu } from "./dropdown-menu.context";
 
-type Props = Omit<MenuArrowProps, "style"> & {
-  style?: string | undefined;
-};
+  type Props = Omit<MenuArrowProps, "style"> & {
+    style?: string | undefined;
+  };
 
-let { style, ...rest }: Props = $props();
-const context = useDropdownMenu();
-const slots = $derived(context?.slots ?? dropdownMenuRecipe());
+  let { style, ...rest }: Props = $props();
+  const context = useDropdownMenu();
+  const slots = $derived(context?.slots ?? dropdownMenuRecipe());
 
-const arrowStyle = $derived(
-  [
-    "--arrow-background: var(--popover)",
-    "--arrow-size: calc(1.5 * var(--spacing))",
-    style,
-  ]
-    .filter(Boolean)
-    .join("; "),
-);
+  const arrowStyle = $derived(
+    [
+      "--arrow-background: var(--popover)",
+      "--arrow-size: calc(1.5 * var(--spacing))",
+      style,
+    ]
+      .filter(Boolean)
+      .join("; "),
+  );
 </script>
 
 <MenuPrimitive.Arrow {...rest} style={arrowStyle}>

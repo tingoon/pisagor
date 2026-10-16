@@ -25,9 +25,9 @@ Prefer Checkbox when selection submits with a form; prefer [Switch](/solid/compo
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Multi-select or boolean in forms | **Checkbox** |
-| Immediate on/off setting | [Switch](/solid/components/switch/design) |
-| Exactly one of several options | [Radio Group](/solid/components/radio-group/design) |
-| Select all rows in a table | [Action Bar](/solid/components/action-bar/design) with row selection |
+| Need                             | Prefer                                                               |
+| -------------------------------- | -------------------------------------------------------------------- |
+| Multi-select or boolean in forms | **Checkbox**                                                         |
+| Immediate on/off setting         | [Switch](/solid/components/switch/design)                            |
+| Exactly one of several options   | [Radio Group](/solid/components/radio-group/design)                  |
+| Select all rows in a table       | [Action Bar](/solid/components/action-bar/design) with row selection |

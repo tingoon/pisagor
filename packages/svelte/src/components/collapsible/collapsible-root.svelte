@@ -1,32 +1,32 @@
 <script lang="ts">
-import {
-  Collapsible as CollapsiblePrimitive,
-  type CollapsibleRootProps,
-} from "@ark-ui/svelte/collapsible";
-import type { CollapsibleProps as BaseCollapsibleProps } from "@pisagor/props";
-import { collapsibleRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { Context } from "./collapsible.context";
+  import {
+    Collapsible as CollapsiblePrimitive,
+    type CollapsibleRootProps,
+  } from "@ark-ui/svelte/collapsible";
+  import type { CollapsibleProps as BaseCollapsibleProps } from "@pisagor/props";
+  import { collapsibleRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { Context } from "./collapsible.context";
 
-type Props = CollapsibleRootProps & BaseCollapsibleProps;
+  type Props = CollapsibleRootProps & BaseCollapsibleProps;
 
-let {
-  lazyMount,
-  unmountOnExit,
-  children,
-  collapsedHeight,
-  recipe = collapsibleRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    lazyMount,
+    unmountOnExit,
+    children,
+    collapsedHeight,
+    recipe = collapsibleRecipe,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const slots = $derived(recipe());
+  const slots = $derived(recipe());
 
-Context.set({
-  get slots() {
-    return slots;
-  },
-});
+  Context.set({
+    get slots() {
+      return slots;
+    },
+  });
 </script>
 
 <CollapsiblePrimitive.Root

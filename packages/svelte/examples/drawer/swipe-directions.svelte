@@ -1,11 +1,11 @@
 <script lang="ts">
-import { Button, Drawer } from "@pisagor/svelte";
+  import { Button, Drawer } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap justify-center gap-2">
   <Drawer swipeDirection="down">
     <Drawer.Trigger>
-      <Button variant="outline"> Bottom </Button>
+      <Button variant="outline">Bottom</Button>
     </Drawer.Trigger>
     <Drawer.Content>
       <Drawer.Header title="Bottom drawer" />
@@ -18,7 +18,7 @@ import { Button, Drawer } from "@pisagor/svelte";
   </Drawer>
   <Drawer swipeDirection="up">
     <Drawer.Trigger>
-      <Button variant="outline"> Top </Button>
+      <Button variant="outline">Top</Button>
     </Drawer.Trigger>
     <Drawer.Content>
       <Drawer.Header title="Top drawer" />
@@ -31,7 +31,7 @@ import { Button, Drawer } from "@pisagor/svelte";
   </Drawer>
   <Drawer swipeDirection="start">
     <Drawer.Trigger>
-      <Button variant="outline"> Left </Button>
+      <Button variant="outline">Left</Button>
     </Drawer.Trigger>
     <Drawer.Content>
       <Drawer.Header title="Start drawer" />
@@ -44,7 +44,7 @@ import { Button, Drawer } from "@pisagor/svelte";
   </Drawer>
   <Drawer swipeDirection="end">
     <Drawer.Trigger>
-      <Button variant="outline"> Right </Button>
+      <Button variant="outline">Right</Button>
     </Drawer.Trigger>
     <Drawer.Content>
       <Drawer.Header title="End drawer" />

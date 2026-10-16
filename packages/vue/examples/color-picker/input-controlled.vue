@@ -18,6 +18,6 @@ const hexValue = computed(() => parseColor(value.value).toString("hex"));
         </ColorPicker.Input>
       </ColorPicker.Control>
     </ColorPicker>
-    <p class="text-center text-muted-foreground text-sm">{{ hexValue }}</p>
+    <p class="text-muted-foreground text-center text-sm">{{ hexValue }}</p>
   </div>
 </template>

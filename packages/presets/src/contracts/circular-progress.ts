@@ -8,7 +8,7 @@ export const circularProgressRecipe = tv({
       "inline-flex items-center justify-center",
     ],
     range: [
-      "fill-none stroke-primary transition-all duration-slow ease-out motion-reduce:transition-none!",
+      "stroke-primary duration-slow fill-none transition-all ease-out motion-reduce:transition-none!",
     ],
     track: [
       "block",
@@ -19,7 +19,7 @@ export const circularProgressRecipe = tv({
       "**:data-[scope=circular-progress]:data-[part=track-bg]:fill-none",
       "**:data-[scope=circular-progress]:data-[part=track-bg]:stroke-input",
     ],
-    value: ["font-medium text-xs tabular-nums", "pointer-events-none"],
+    value: ["text-xs font-medium tabular-nums", "pointer-events-none"],
     valueWrapper: [
       "pointer-events-none absolute inset-0 flex items-center justify-center",
     ],

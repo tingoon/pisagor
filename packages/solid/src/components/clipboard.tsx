@@ -35,8 +35,7 @@ type FormControlVariant = "primary" | "secondary";
 type ClipboardClassNames = VariantClassNames<ClipboardRecipeSlot>;
 
 export interface ClipboardProps
-  extends Omit<ClipboardRootProps, "children">,
-    BaseClipboardProps {
+  extends Omit<ClipboardRootProps, "children">, BaseClipboardProps {
   /** Size scale for the shell, button and value. @defaultValue "md" */
   size?: "sm" | "md" | "lg";
   buttonSize?: ButtonProps["size"];
@@ -60,7 +59,8 @@ function ClipboardProvider(props: {
   size?: "sm" | "md" | "lg";
   valueSize?: ClipboardVariantProps["valueSize"];
   /**
-   * Style recipe. Defaults to `clipboardRecipe` from `@pisagor/recipes/clipboard`.
+   * Style recipe. Defaults to `clipboardRecipe` from
+   * `@pisagor/recipes/clipboard`.
    *
    * @defaultValue clipboardRecipe
    */

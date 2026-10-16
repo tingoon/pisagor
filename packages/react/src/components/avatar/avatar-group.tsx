@@ -29,8 +29,10 @@ export const AvatarGroupCount = withContext(ark.div, {
 export type AvatarGroupRootProps = ComponentProps<typeof AvatarGroupRoot>;
 export type AvatarGroupCountProps = ComponentProps<typeof AvatarGroupCount>;
 
-export interface AvatarGroupProps
-  extends Omit<ComponentProps<typeof AvatarGroupRoot>, "children"> {
+export interface AvatarGroupProps extends Omit<
+  ComponentProps<typeof AvatarGroupRoot>,
+  "children"
+> {
   /** Maximum number of avatars to show; excess shown as "+N". */
   max?: number;
   /** User list rendered as avatars. */

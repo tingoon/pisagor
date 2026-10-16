@@ -1,32 +1,32 @@
 <script lang="ts">
-import { createListCollection } from "@ark-ui/svelte/collection";
-import { Combobox, Field, TagsInput } from "@pisagor/svelte";
+  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { Combobox, Field, TagsInput } from "@pisagor/svelte";
 
-const frameworks = [
-  "React",
-  "Solid",
-  "Vue",
-  "Svelte",
-  "Angular",
-  "Preact",
-  "Next.js",
-  "Astro",
-];
+  const frameworks = [
+    "React",
+    "Solid",
+    "Vue",
+    "Svelte",
+    "Angular",
+    "Preact",
+    "Next.js",
+    "Astro",
+  ];
 
-let tags = $state<string[]>(["React", "Solid"]);
+  let tags = $state<string[]>(["React", "Solid"]);
 
-const collection = $derived(
-  createListCollection({
-    items: frameworks.filter((item) => !tags.includes(item)),
-  }),
-);
+  const collection = $derived(
+    createListCollection({
+      items: frameworks.filter((item) => !tags.includes(item)),
+    }),
+  );
 
-function onComboboxValueChange(value: string[]) {
-  const next = value[0];
-  if (next && !tags.includes(next)) {
-    tags = [...tags, next];
+  function onComboboxValueChange(value: string[]) {
+    const next = value[0];
+    if (next && !tags.includes(next)) {
+      tags = [...tags, next];
+    }
   }
-}
 </script>
 
 <Field>

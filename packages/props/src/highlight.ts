@@ -4,6 +4,7 @@ import type { HighlightRecipeFn } from "@pisagor/recipes";
 export interface HighlightProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue highlightRecipe
    */
   recipe?: HighlightRecipeFn;

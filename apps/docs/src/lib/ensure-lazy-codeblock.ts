@@ -1,7 +1,7 @@
 /**
- * Highlight a deferred CodeBlock on first reveal (Code tab).
- * When source locator attrs are present, fetch plaintext first, then highlight.
- * Reuses DOM after the first run. Loads only grammars needed for `data-lang`.
+ * Highlight a deferred CodeBlock on first reveal (Code tab). When source
+ * locator attrs are present, fetch plaintext first, then highlight. Reuses DOM
+ * after the first run. Loads only grammars needed for `data-lang`.
  */
 
 import type { PreviewSourceKind } from "./load-preview-source";
@@ -30,9 +30,8 @@ export async function ensureLazyCodeBlock(root: ParentNode): Promise<void> {
 
     block.dataset.sourceLoading = "";
     try {
-      const { loadPreviewSource, resolvePreviewLang } = await import(
-        "./load-preview-source"
-      );
+      const { loadPreviewSource, resolvePreviewLang } =
+        await import("./load-preview-source");
       const code = await loadPreviewSource(ref);
       const lang = resolvePreviewLang(block.dataset.lang ?? "tsx", code);
       block.dataset.lang = lang;

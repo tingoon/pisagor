@@ -50,8 +50,10 @@ export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   onValueChange?: (value: string | string[]) => void;
 } & BaseListboxRootProps;
 
-export interface ListboxProps
-  extends Omit<ListboxRootProps, "children" | "collection"> {
+export interface ListboxProps extends Omit<
+  ListboxRootProps,
+  "children" | "collection"
+> {
   collection?: ListboxRootProps["collection"];
   /** Content shown when there are no items. */
   emptyText?: JSX.Element;
@@ -59,8 +61,7 @@ export interface ListboxProps
 }
 
 export interface ListboxItemProps
-  extends ListboxPrimitiveItemProps,
-    BaseListboxItemProps {}
+  extends ListboxPrimitiveItemProps, BaseListboxItemProps {}
 
 export interface ListboxItemGroupProps extends ListboxPrimitiveItemGroupProps {
   heading?: string;

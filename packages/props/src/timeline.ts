@@ -8,6 +8,7 @@ import type {
 export interface TimelineProps extends TimelineVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue timelineRecipe
    */
   recipe?: TimelineRecipeFn;
@@ -17,6 +18,7 @@ export interface TimelineProps extends TimelineVariantProps {
 export interface TimelineItemProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue timelineItemRecipe
    */
   recipe?: TimelineItemRecipeFn;

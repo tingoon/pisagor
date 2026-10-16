@@ -13,6 +13,6 @@ function onValueChange(details: { value: string[] }) {
 <template>
   <div>
     <Accordion :items="items" :value="value" @value-change="onValueChange" />
-    <div class="text-center text-muted-foreground text-sm">{{ value }}</div>
+    <div class="text-muted-foreground text-center text-sm">{{ value }}</div>
   </div>
 </template>

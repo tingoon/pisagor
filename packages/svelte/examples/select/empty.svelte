@@ -1,10 +1,10 @@
 <script lang="ts">
-import { createListCollection } from "@ark-ui/svelte/collection";
-import { Select } from "@pisagor/svelte";
+  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { Select } from "@pisagor/svelte";
 
-const collection = createListCollection({
-  items: [] as Array<{ label: string; value: string }>,
-});
+  const collection = createListCollection({
+    items: [] as Array<{ label: string; value: string }>,
+  });
 </script>
 
 <Select.Root {collection}>

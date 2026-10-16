@@ -13,8 +13,7 @@ type FileInputControlProps = Omit<
 };
 
 export interface FileFieldProps
-  extends FieldPresentationProps,
-    FileInputControlProps {
+  extends FieldPresentationProps, FileInputControlProps {
   name?: string;
   onBlur?: () => void;
 }

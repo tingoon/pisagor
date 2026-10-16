@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Checkbox, Field, Surface } from "@pisagor/svelte";
-import { settingsPanelBlock } from "#/recipes/blocks/field";
+  import { Checkbox, Field, Surface } from "@pisagor/svelte";
+  import { settingsPanelBlock } from "#/recipes/blocks/field";
 
-const styles = settingsPanelBlock();
+  const styles = settingsPanelBlock();
 </script>
 
 <Surface

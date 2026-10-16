@@ -6,7 +6,7 @@ export function SlidesPerPage() {
         content: (
           <Card>
             <Card.Content class="flex h-40 items-center justify-center">
-              <span class="font-semibold text-2xl">{slideIndex + 1}</span>
+              <span class="text-2xl font-semibold">{slideIndex + 1}</span>
             </Card.Content>
           </Card>
         ),

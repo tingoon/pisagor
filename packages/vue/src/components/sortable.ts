@@ -31,7 +31,10 @@ const {
   recipe: sortableItemRecipe,
 });
 
-/** Slots from the nearest SortableItem root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest SortableItem root, or the default recipe when used
+ * standalone.
+ */
 function useSortableItemSlots() {
   const styles = useOptionalSortableItemStyles();
 

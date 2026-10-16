@@ -4,7 +4,7 @@ export const tourRecipe = tv({
   slots: {
     actions: ["flex flex-wrap gap-2"],
     backdrop: "duration-initial",
-    close: ["absolute top-4 inset-e-4"],
+    close: ["absolute inset-e-4 top-4"],
     closeButton: ["size-8 border-none opacity-70 hover:opacity-100"],
     closeLabel: "sr-only",
     content: [
@@ -15,7 +15,7 @@ export const tourRecipe = tv({
       "flex flex-col gap-4",
       "bg-background",
       "rounded-lg border shadow-lg",
-      "focus:outline-hidden focus:ring-0",
+      "focus:ring-0 focus:outline-hidden",
       "data-[state=closed]:animate-out data-[state=open]:animate-in",
       "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
       "data-[state=open]:zoom-in-98 data-[state=closed]:zoom-out-98",
@@ -29,8 +29,8 @@ export const tourRecipe = tv({
       "data-[type=tooltip]:absolute",
     ],
     progressText: ["text-muted-foreground text-sm"],
-    spotlight: ["z-modal border-2 border-primary"],
-    title: ["font-semibold text-base leading-none tracking-tight"],
+    spotlight: ["z-modal border-primary border-2"],
+    title: ["text-base leading-none font-semibold tracking-tight"],
   },
 });
 

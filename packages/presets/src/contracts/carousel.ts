@@ -19,7 +19,7 @@ export const carouselRecipe = tv({
       "overflow-hidden",
       "[&_img]:size-full [&_img]:rounded-lg [&_img]:object-cover",
       "rounded-full",
-      "transition-opacity duration-fast ease-out",
+      "duration-fast transition-opacity ease-out",
       "motion-reduce:transition-none!",
     ],
     indicatorGroup: [

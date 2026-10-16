@@ -1,14 +1,14 @@
 <script lang="ts">
-import { Timeline } from "@pisagor/svelte";
-import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
-import CircleIcon from "phosphor-svelte/lib/CircleIcon";
-import RocketIcon from "phosphor-svelte/lib/RocketIcon";
+  import { Timeline } from "@pisagor/svelte";
+  import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
+  import CircleIcon from "phosphor-svelte/lib/CircleIcon";
+  import RocketIcon from "phosphor-svelte/lib/RocketIcon";
 </script>
 
 <Timeline.Root>
   <Timeline.Item>
     <Timeline.Separator />
-    <Timeline.Indicator class="size-6 border-0 bg-success text-white">
+    <Timeline.Indicator class="bg-success size-6 border-0 text-white">
       <CheckCircleIcon weight="fill" />
     </Timeline.Indicator>
     <Timeline.Content>
@@ -19,7 +19,7 @@ import RocketIcon from "phosphor-svelte/lib/RocketIcon";
   <Timeline.Item>
     <Timeline.Separator />
     <Timeline.Indicator
-      class="size-6 border-0 bg-primary text-primary-foreground"
+      class="bg-primary text-primary-foreground size-6 border-0"
     >
       <RocketIcon weight="fill" />
     </Timeline.Indicator>
@@ -30,7 +30,7 @@ import RocketIcon from "phosphor-svelte/lib/RocketIcon";
   </Timeline.Item>
   <Timeline.Item>
     <Timeline.Separator />
-    <Timeline.Indicator class="size-6 text-muted-foreground">
+    <Timeline.Indicator class="text-muted-foreground size-6">
       <CircleIcon />
     </Timeline.Indicator>
     <Timeline.Content>

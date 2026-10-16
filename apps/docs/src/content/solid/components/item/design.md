@@ -29,9 +29,9 @@ Offer compact variants for inspector panels and comfortable spacing for primary 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Standard list row layout | **Item** |
-| Scrollable option selection | [Listbox](/solid/components/listbox/design) |
-| Always-visible link list | [Menu](/solid/components/menu/design) |
-| Entire row navigates | [Link Box](/solid/components/link-box/design) |
+| Need                        | Prefer                                        |
+| --------------------------- | --------------------------------------------- |
+| Standard list row layout    | **Item**                                      |
+| Scrollable option selection | [Listbox](/solid/components/listbox/design)   |
+| Always-visible link list    | [Menu](/solid/components/menu/design)         |
+| Entire row navigates        | [Link Box](/solid/components/link-box/design) |

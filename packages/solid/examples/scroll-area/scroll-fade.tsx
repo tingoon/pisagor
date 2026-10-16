@@ -4,7 +4,7 @@ export function ScrollFade() {
   return (
     <ScrollArea class="h-64 w-48 rounded-md border" scrollFade>
       <div class="p-4">
-        <h4 class="mb-4 font-medium text-sm leading-none">Tags</h4>
+        <h4 class="mb-4 text-sm leading-none font-medium">Tags</h4>
         {tags.map((tag) => (
           <>
             <div class="text-sm">{tag}</div>

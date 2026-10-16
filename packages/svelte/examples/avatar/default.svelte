@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Avatar } from "@pisagor/svelte";
+  import { Avatar } from "@pisagor/svelte";
 </script>
 
 <Avatar

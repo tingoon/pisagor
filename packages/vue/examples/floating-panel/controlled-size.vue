@@ -38,7 +38,7 @@ function shrink() {
           </FloatingPanel.CloseTrigger>
         </FloatingPanel.Control>
       </FloatingPanel.Header>
-      <FloatingPanel.Body class="text-center text-muted-foreground text-sm">
+      <FloatingPanel.Body class="text-muted-foreground text-center text-sm">
         <p>Size: {{ size.width }} × {{ size.height }}.</p>
         <p>Use the buttons above or drag the edges to resize.</p>
         <div class="flex gap-2">

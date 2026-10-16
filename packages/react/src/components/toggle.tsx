@@ -20,7 +20,8 @@ export interface ToggleProps extends ToggleRootProps, BaseToggleProps {
    */
   variant?: Extract<ButtonVariantProps["variant"], "outline" | "ghost">;
   /**
-   * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
+   * Button style recipe. Defaults to `buttonRecipe` from
+   * `@pisagor/recipes/button`.
    *
    * @defaultValue buttonRecipe
    */

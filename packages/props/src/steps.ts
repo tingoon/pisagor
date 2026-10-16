@@ -4,6 +4,7 @@ import type { StepsItemRecipeFn, StepsRecipeFn } from "@pisagor/recipes";
 export interface StepsProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue stepsRecipe
    */
   recipe?: StepsRecipeFn;
@@ -13,6 +14,7 @@ export interface StepsProps {
 export interface StepsItemProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue stepsItemRecipe
    */
   recipe?: StepsItemRecipeFn;

@@ -11,7 +11,8 @@ interface AutocompleteOption {
 }
 
 export interface AutocompleteFieldProps
-  extends FieldPresentationProps,
+  extends
+    FieldPresentationProps,
     Omit<AutocompleteProps, "invalid" | "name" | "onValueChange" | "value"> {
   name?: string;
   value?: string;

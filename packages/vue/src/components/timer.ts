@@ -74,7 +74,10 @@ const TimerItemGroupBase = withTimerItemGroupProvider(ark.div, {
   slot: "base",
 });
 
-/** Usable inside or outside `Timer.ItemGroup` (falls back to the default item-group recipe). */
+/**
+ * Usable inside or outside `Timer.ItemGroup` (falls back to the default
+ * item-group recipe).
+ */
 export const TimerItem = defineComponent({
   inheritAttrs: false,
   name: "Timer.Item",

@@ -14,7 +14,8 @@ interface AutocompleteOption {
 }
 
 export interface AutocompleteFieldProps
-  extends FieldPresentationProps,
+  extends
+    FieldPresentationProps,
     Omit<
       AutocompleteProps,
       "class" | "invalid" | "name" | "onValueChange" | "value" | "items"

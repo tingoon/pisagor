@@ -29,9 +29,9 @@ Use Combobox when you must own the listbox, input, and filtering pipeline — fo
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
+| Need                                   | Prefer                                                |
+| -------------------------------------- | ----------------------------------------------------- |
 | Searchable single select in product UI | [Autocomplete](/svelte/components/autocomplete/design) |
-| Low-level selection engine | **Combobox** |
-| Fixed list without typing | [Select](/svelte/components/select/design) |
-| Listbox-only presentation | [Listbox](/svelte/components/listbox/design) |
+| Low-level selection engine             | **Combobox**                                          |
+| Fixed list without typing              | [Select](/svelte/components/select/design)             |
+| Listbox-only presentation              | [Listbox](/svelte/components/listbox/design)           |

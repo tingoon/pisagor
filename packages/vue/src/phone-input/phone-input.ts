@@ -31,9 +31,7 @@ interface CountrySelectOption {
 }
 
 export interface PhoneInputProps extends BasePhoneInputProps {
-  /**
-   * Visual shell variant. Defaults to `primary`.
-   */
+  /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   /**
    * Default country when no value is provided.

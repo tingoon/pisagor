@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Button, ButtonGroup, Input } from "@pisagor/svelte";
-import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
+  import { Button, ButtonGroup, Input } from "@pisagor/svelte";
+  import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
 </script>
 
 <ButtonGroup>

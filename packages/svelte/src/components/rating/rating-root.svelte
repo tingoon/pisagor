@@ -1,44 +1,44 @@
 <script lang="ts">
-import {
-  RatingGroup as RatingGroupPrimitive,
-  type RatingGroupRootProps,
-} from "@ark-ui/svelte/rating-group";
-import type { RatingProps as BaseRatingProps } from "@pisagor/props";
-import { ratingRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { SizeScaleProps } from "../../internal/types";
-import { Context } from "./rating.context";
+  import {
+    RatingGroup as RatingGroupPrimitive,
+    type RatingGroupRootProps,
+  } from "@ark-ui/svelte/rating-group";
+  import type { RatingProps as BaseRatingProps } from "@pisagor/props";
+  import { ratingRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { SizeScaleProps } from "../../internal/types";
+  import { Context } from "./rating.context";
 
-type FormControlVariant = "primary" | "secondary";
+  type FormControlVariant = "primary" | "secondary";
 
-type Props = RatingGroupRootProps & {
-  /** Visual shell variant. Defaults to `primary`. */
-  variant?: FormControlVariant;
-} & BaseRatingProps &
-  SizeScaleProps;
+  type Props = RatingGroupRootProps & {
+    /** Visual shell variant. Defaults to `primary`. */
+    variant?: FormControlVariant;
+  } & BaseRatingProps &
+    SizeScaleProps;
 
-let {
-  variant: variantProp,
-  allowHalf = false,
-  count = 5,
-  children,
-  size = "md",
-  recipe = ratingRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    variant: variantProp,
+    allowHalf = false,
+    count = 5,
+    children,
+    size = "md",
+    recipe = ratingRecipe,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-const slots = $derived(recipe({ size }));
-const surfaceTone = $derived(
-  variant === "secondary" ? "opacity-90" : undefined,
-);
+  const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
+  const slots = $derived(recipe({ size }));
+  const surfaceTone = $derived(
+    variant === "secondary" ? "opacity-90" : undefined,
+  );
 
-Context.set({
-  get slots() {
-    return slots;
-  },
-});
+  Context.set({
+    get slots() {
+      return slots;
+    },
+  });
 </script>
 
 <RatingGroupPrimitive.Root

@@ -31,6 +31,7 @@ import { ContextMenu } from "@pisagor/svelte";
 Open actions at the pointer for the item under the cursor or focus.
 
 :::example Default
+
 ### Checkboxes
 
 Use `CheckboxItem` and `RadioItemGroup` for toggles and exclusive options.

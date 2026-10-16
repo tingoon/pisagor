@@ -23,9 +23,7 @@ const {
 
 // #region Types
 export interface QrCodeRootProps
-  extends QrCodePrimitiveRootProps,
-    BaseQrCodeRootProps,
-    SizeScaleProps {}
+  extends QrCodePrimitiveRootProps, BaseQrCodeRootProps, SizeScaleProps {}
 
 export type QrCodeDownloadProps = QrCodeDownloadTriggerProps;
 // #endregion

@@ -8,6 +8,7 @@ import type {
 export interface ListboxProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue listboxRecipe
    */
   recipe?: ListboxRecipeFn;
@@ -17,6 +18,7 @@ export interface ListboxProps {
 export interface ListboxItemProps extends ListboxItemVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue listboxItemRecipe
    */
   recipe?: ListboxItemRecipeFn;

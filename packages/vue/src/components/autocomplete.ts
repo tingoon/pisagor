@@ -22,8 +22,10 @@ export type AutocompleteRootProps<T extends CollectionItem = CollectionItem> =
     variant?: FormControlVariant;
   };
 
-export interface AutocompleteProps
-  extends Omit<AutocompleteRootProps, "children"> {
+export interface AutocompleteProps extends Omit<
+  AutocompleteRootProps,
+  "children"
+> {
   items?: Array<AutocompletePresetItem | string>;
   /**
    * Whether to show a clear button when the input has a value.

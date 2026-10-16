@@ -31,9 +31,9 @@ When only one section may be open, closing the active section before opening ano
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Independent expandable sections | **Accordion** |
-| Frequent switching between peer views | [Tabs](/react/components/tabs/design) |
-| Long hierarchical settings | [Tree View](/react/components/tree-view/design) |
-| Static grouped content | [Card](/react/components/card/design) |
+| Need                                  | Prefer                                          |
+| ------------------------------------- | ----------------------------------------------- |
+| Independent expandable sections       | **Accordion**                                   |
+| Frequent switching between peer views | [Tabs](/react/components/tabs/design)           |
+| Long hierarchical settings            | [Tree View](/react/components/tree-view/design) |
+| Static grouped content                | [Card](/react/components/card/design)           |

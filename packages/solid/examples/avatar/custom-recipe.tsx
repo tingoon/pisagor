@@ -5,7 +5,7 @@ import { tv } from "tailwind-variants";
 const brandAvatarRecipe = tv({
   extend: avatarRecipe,
   slots: {
-    base: "ring-2 ring-emerald-500 ring-offset-2 ring-offset-background",
+    base: "ring-offset-background ring-2 ring-emerald-500 ring-offset-2",
     fallback:
       "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-100",
   },

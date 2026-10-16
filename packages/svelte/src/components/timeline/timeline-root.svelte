@@ -1,19 +1,19 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { TimelineProps as BaseTimelineProps } from "@pisagor/props";
-import { timelineRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { HTMLAttributes } from "svelte/elements";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import type { TimelineProps as BaseTimelineProps } from "@pisagor/props";
+  import { timelineRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
 
-type Props = HTMLAttributes<HTMLOListElement> & BaseTimelineProps;
+  type Props = HTMLAttributes<HTMLOListElement> & BaseTimelineProps;
 
-let {
-  orientation = "vertical",
-  recipe = timelineRecipe,
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
+  let {
+    orientation = "vertical",
+    recipe = timelineRecipe,
+    class: className,
+    children,
+    ...rest
+  }: Props = $props();
 </script>
 
 <Ark

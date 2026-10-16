@@ -1,12 +1,12 @@
 <script lang="ts">
-import { Button, Swap } from "@pisagor/svelte";
-import MoonIcon from "phosphor-svelte/lib/MoonIcon";
-import SunIcon from "phosphor-svelte/lib/SunIcon";
+  import { Button, Swap } from "@pisagor/svelte";
+  import MoonIcon from "phosphor-svelte/lib/MoonIcon";
+  import SunIcon from "phosphor-svelte/lib/SunIcon";
 
-let fade = $state(false);
-let flip = $state(false);
-let rotate = $state(false);
-let scale = $state(false);
+  let fade = $state(false);
+  let flip = $state(false);
+  let rotate = $state(false);
+  let scale = $state(false);
 </script>
 
 <div class="flex flex-wrap gap-2">

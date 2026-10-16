@@ -1,12 +1,12 @@
 <script lang="ts">
-import {
-  type SliderLabelProps,
-  Slider as SliderPrimitive,
-} from "@ark-ui/svelte/slider";
-import { fieldRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
+  import {
+    type SliderLabelProps,
+    Slider as SliderPrimitive,
+  } from "@ark-ui/svelte/slider";
+  import { fieldRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
 
-let { children, class: className, ...rest }: SliderLabelProps = $props();
+  let { children, class: className, ...rest }: SliderLabelProps = $props();
 </script>
 
 <SliderPrimitive.Label

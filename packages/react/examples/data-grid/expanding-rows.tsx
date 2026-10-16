@@ -60,7 +60,7 @@ function formatCurrency(value: number) {
 function DataGridShell({ children }: { children: ReactNode }) {
   return (
     <div className="flex w-full flex-col gap-3">
-      <div className="rounded-xl border bg-muted/20 p-3">{children}</div>
+      <div className="bg-muted/20 rounded-xl border p-3">{children}</div>
     </div>
   );
 }
@@ -120,7 +120,7 @@ export function ExpandingRows() {
             {row.getCanExpand() ? (
               <button
                 aria-label={row.getIsExpanded() ? "Collapse" : "Expand"}
-                className="inline-flex size-6 items-center justify-center rounded-md hover:bg-muted"
+                className="hover:bg-muted inline-flex size-6 items-center justify-center rounded-md"
                 onClick={row.getToggleExpandedHandler()}
                 type="button"
               >

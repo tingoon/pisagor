@@ -2,9 +2,9 @@ import { Highlight } from "@pisagor/react";
 
 export function CustomStyle() {
   return (
-    <p className="text-base text-foreground leading-relaxed">
+    <p className="text-foreground text-base leading-relaxed">
       <Highlight
-        className="rounded-sm bg-warning/30 px-0.5 text-warning-foreground"
+        className="bg-warning/30 text-warning-foreground rounded-sm px-0.5"
         query="design"
         text="Great design systems feel invisible."
       />

@@ -1,10 +1,10 @@
 ---
 root: true
 targets:
-  - '*'
+  - "*"
 description: Core agent boundaries for the repository
 globs:
-  - '**/*'
+  - "**/*"
 cursor:
   alwaysApply: true
   globs: []
@@ -24,15 +24,15 @@ cursor:
 
 Each topic has **one owner**. Other files link — they do not restate. If updating would require editing two files, one of them is wrong.
 
-| Topic | Owner |
-| ----- | ----- |
-| Setup, scripts, verify | [`CONTRIBUTING.md`](../../CONTRIBUTING.md) |
-| Workspace map | root [`AGENTS.md`](../../AGENTS.md) |
-| Agent behavior (this file) | `.rulesync/rules/core.md` |
-| React / Vue / Solid / Svelte / TS / Storybook / env / gitignore | `.rulesync/rules/.curated/` |
-| Package component patterns (react / vue / solid / svelte) | `.rulesync/rules/integrations/` |
-| Commits, UX copy, Turborepo | matching skill under `.rulesync/skills/` |
-| Security | [`SECURITY.md`](../../SECURITY.md) |
+| Topic                                                           | Owner                                      |
+| --------------------------------------------------------------- | ------------------------------------------ |
+| Setup, scripts, verify                                          | [`CONTRIBUTING.md`](../../CONTRIBUTING.md) |
+| Workspace map                                                   | root [`AGENTS.md`](../../AGENTS.md)        |
+| Agent behavior (this file)                                      | `.rulesync/rules/core.md`                  |
+| React / Vue / Solid / Svelte / TS / Storybook / env / gitignore | `.rulesync/rules/.curated/`                |
+| Package component patterns (react / vue / solid / svelte)       | `.rulesync/rules/integrations/`            |
+| Commits, UX copy, Turborepo                                     | matching skill under `.rulesync/skills/`   |
+| Security                                                        | [`SECURITY.md`](../../SECURITY.md)         |
 
 Edit sources under [`.rulesync/`](../), then `bun run rulesync`. Do not hand-edit generated `.cursor/` / `.claude/` trees.
 
@@ -40,12 +40,12 @@ Edit sources under [`.rulesync/`](../), then `bun run rulesync`. Do not hand-edi
 
 Prefer a matching skill over inventing a parallel workflow. Do not paste skill bodies into rules or `AGENTS.md`.
 
-| Task | Skill |
-| ---- | ----- |
-| Library / stack implementation | Yes — when a matching skill exists |
-| New feature or behavior change | When a matching skill exists |
-| Config, typo, one-line fix | No |
-| Invoked command (`/onboarding`, …) | Command wins |
+| Task                               | Skill                              |
+| ---------------------------------- | ---------------------------------- |
+| Library / stack implementation     | Yes — when a matching skill exists |
+| New feature or behavior change     | When a matching skill exists       |
+| Config, typo, one-line fix         | No                                 |
+| Invoked command (`/onboarding`, …) | Command wins                       |
 
 ## Boundaries
 

@@ -25,9 +25,9 @@ Prefer Breadcrumb when parent pages are real destinations; prefer a flat [Navbar
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Hierarchical back navigation | **Breadcrumb** |
-| Sibling section switching | [Tabs](/svelte/components/tabs/design) |
-| Deep tree browsing | [Tree View](/svelte/components/tree-view/design) |
-| Global top links | [Navbar](/svelte/components/navbar/design) |
+| Need                         | Prefer                                          |
+| ---------------------------- | ----------------------------------------------- |
+| Hierarchical back navigation | **Breadcrumb**                                  |
+| Sibling section switching    | [Tabs](/svelte/components/tabs/design)           |
+| Deep tree browsing           | [Tree View](/svelte/components/tree-view/design) |
+| Global top links             | [Navbar](/svelte/components/navbar/design)       |

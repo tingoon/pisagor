@@ -24,8 +24,10 @@ interface AutocompletePresetItem {
 export type AutocompleteRootProps<T extends CollectionItem = CollectionItem> =
   ComboboxRootProps<T>;
 
-export interface AutocompleteProps
-  extends Omit<AutocompleteRootProps, "children" | "collection"> {
+export interface AutocompleteProps extends Omit<
+  AutocompleteRootProps,
+  "children" | "collection"
+> {
   /**
    * Whether to show a clear button when the input has a value.
    *

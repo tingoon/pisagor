@@ -24,15 +24,15 @@ const {
 // #endregion
 
 export interface ImageCropperRootProps
-  extends Omit<ImageCropperPrimitiveRootProps, "src" | "cropShape">,
+  extends
+    Omit<ImageCropperPrimitiveRootProps, "src" | "cropShape">,
     BaseImageCropperRootProps {
   src?: string;
   alt?: string;
   cropShape?: "rectangle" | "circle";
 }
 
-export interface ImageCropperSelectionProps
-  extends ImageCropperPrimitiveSelectionProps {
+export interface ImageCropperSelectionProps extends ImageCropperPrimitiveSelectionProps {
   axis?: "horizontal" | "vertical" | "both";
 }
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Button, Toolbar } from "@pisagor/svelte";
+  import { Button, Toolbar } from "@pisagor/svelte";
 </script>
 
 <Toolbar class="items-center" title="Team members">

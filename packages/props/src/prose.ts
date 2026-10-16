@@ -4,6 +4,7 @@ import type { ProseRecipeFn } from "@pisagor/recipes";
 export interface ProseProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue proseRecipe
    */
   recipe?: ProseRecipeFn;

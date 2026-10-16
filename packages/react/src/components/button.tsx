@@ -6,8 +6,7 @@ import { Spinner } from "./spinner";
 
 // #region Types
 export interface ButtonProps
-  extends ComponentProps<typeof ark.button>,
-    BaseButtonProps {}
+  extends ComponentProps<typeof ark.button>, BaseButtonProps {}
 // #endregion
 
 // #region Component

@@ -1,10 +1,10 @@
 <script lang="ts">
-import {
-  Accordion as AccordionPrimitive,
-  type AccordionRootProps,
-} from "@ark-ui/svelte/accordion";
+  import {
+    Accordion as AccordionPrimitive,
+    type AccordionRootProps,
+  } from "@ark-ui/svelte/accordion";
 
-let { collapsible = true, children, ...rest }: AccordionRootProps = $props();
+  let { collapsible = true, children, ...rest }: AccordionRootProps = $props();
 </script>
 
 <AccordionPrimitive.Root {...rest} {collapsible}>

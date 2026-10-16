@@ -2,17 +2,13 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const textareaRecipe = tv({
   defaultVariants: {
-    /**
-     * Reserve end padding for the clear control.
-     */
+    /** Reserve end padding for the clear control. */
     clearable: false,
-    /**
-     * Size scale.
-     */
+    /** Size scale. */
     size: "md",
   },
   slots: {
-    clearAddon: ["absolute top-1.5 inset-e-1.5 self-start p-0"],
+    clearAddon: ["absolute inset-e-1.5 top-1.5 self-start p-0"],
     clearableRoot: [
       "field-sizing-content min-h-16 w-full flex-1",
       "px-3 py-2",
@@ -20,7 +16,7 @@ export const textareaRecipe = tv({
       "text-base md:text-sm",
       "resize-none rounded-none border-0 shadow-none",
       "placeholder:text-muted-foreground/64",
-      "transition duration-fast ease-out",
+      "duration-fast transition ease-out",
       "outline-hidden focus-visible:ring-0",
       "disabled:bg-transparent aria-invalid:ring-0 data-invalid:ring-0",
       "dark:bg-transparent dark:disabled:bg-transparent",

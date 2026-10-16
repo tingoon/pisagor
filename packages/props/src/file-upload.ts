@@ -7,6 +7,7 @@ import type {
 export interface FileUploadProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue fileUploadRecipe
    */
   recipe?: FileUploadRecipeFn;
@@ -16,6 +17,7 @@ export interface FileUploadProps {
 export interface FileUploadItemProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue fileUploadItemRecipe
    */
   recipe?: FileUploadItemRecipeFn;

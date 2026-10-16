@@ -11,8 +11,7 @@ type TextareaControlProps = Omit<
 >;
 
 export interface TextareaFieldProps
-  extends FieldPresentationProps,
-    TextareaControlProps {
+  extends FieldPresentationProps, TextareaControlProps {
   name?: string;
   value?: string;
   onBlur?: () => void;

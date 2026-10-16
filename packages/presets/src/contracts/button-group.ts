@@ -2,13 +2,9 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const buttonGroupRecipe = tv({
   defaultVariants: {
-    /**
-     * Layout orientation.
-     */
+    /** Layout orientation. */
     orientation: "horizontal",
-    /**
-     * Size scale.
-     */
+    /** Size scale. */
     size: "md",
   },
   slots: {
@@ -30,9 +26,9 @@ export const buttonGroupRecipe = tv({
     ],
     text: [
       "flex items-center gap-2 px-4",
-      "font-medium text-sm",
-      "rounded-md border bg-muted shadow-xs",
-      "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none",
+      "text-sm font-medium",
+      "bg-muted rounded-md border shadow-xs",
+      "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
     ],
   },
   variants: {

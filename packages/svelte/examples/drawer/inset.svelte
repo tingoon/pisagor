@@ -1,10 +1,10 @@
 <script lang="ts">
-import { Button, Drawer, Field, Input } from "@pisagor/svelte";
+  import { Button, Drawer, Field, Input } from "@pisagor/svelte";
 </script>
 
 <Drawer>
   <Drawer.Trigger>
-    <Button variant="outline"> Open </Button>
+    <Button variant="outline">Open</Button>
   </Drawer.Trigger>
   <Drawer.Content variant="inset">
     <Drawer.ContentInner>
@@ -28,12 +28,10 @@ import { Button, Drawer, Field, Input } from "@pisagor/svelte";
     <Drawer.Footer>
       <Drawer.ContentInner>
         <Drawer.CloseTrigger>
-          <Button variant="outline"> Cancel </Button>
+          <Button variant="outline">Cancel</Button>
         </Drawer.CloseTrigger>
         <Drawer.CloseTrigger>
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Button {...props()}>Save</Button>
           {/snippet}
         </Drawer.CloseTrigger>

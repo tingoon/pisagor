@@ -63,7 +63,8 @@ interface ActionBarActionItem {
 }
 
 export interface ActionBarProps
-  extends Pick<ActionBarState, "lazyMount" | "unmountOnExit">,
+  extends
+    Pick<ActionBarState, "lazyMount" | "unmountOnExit">,
     BaseActionBarProps {
   closeOnEscape?: boolean;
   defaultOpen?: boolean;

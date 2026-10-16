@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Button, FileUpload } from "@pisagor/svelte";
-import XIcon from "phosphor-svelte/lib/XIcon";
+  import { Button, FileUpload } from "@pisagor/svelte";
+  import XIcon from "phosphor-svelte/lib/XIcon";
 
-let files = $state<File[]>([]);
+  let files = $state<File[]>([]);
 </script>
 
 <FileUpload accept="image/*" onValueChange={(next) => (files = next)}>
@@ -21,9 +21,7 @@ let files = $state<File[]>([]);
             <FileUpload.ItemPreviewImage />
           </FileUpload.ItemPreview>
           <FileUpload.ItemDeleteTrigger>
-            {#snippet asChild(
-              props,
-            )}
+            {#snippet asChild(props)}
               <Button
                 {...props()}
                 aria-label="Remove file"

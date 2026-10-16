@@ -133,7 +133,8 @@ const CircularProgressTrack = defineComponent({
 type CircularProgressClassNames = VariantClassNames<CircularProgressRecipeSlot>;
 
 export interface CircularProgressProps
-  extends BaseCircularProgressProps,
+  extends
+    BaseCircularProgressProps,
     Pick<
       ProgressRootProps,
       | "defaultValue"

@@ -1,32 +1,30 @@
 <script lang="ts">
-import type { ComponentProps, Snippet } from "svelte";
-import AlertDialogContent from "./alert-dialog-content.svelte";
-import AlertDialogDescription from "./alert-dialog-description.svelte";
-import AlertDialogFooter from "./alert-dialog-footer.svelte";
-import AlertDialogHeader from "./alert-dialog-header.svelte";
-import AlertDialogRoot from "./alert-dialog-root.svelte";
-import AlertDialogTitle from "./alert-dialog-title.svelte";
-import AlertDialogTrigger from "./alert-dialog-trigger.svelte";
+  import type { ComponentProps, Snippet } from "svelte";
+  import AlertDialogContent from "./alert-dialog-content.svelte";
+  import AlertDialogDescription from "./alert-dialog-description.svelte";
+  import AlertDialogFooter from "./alert-dialog-footer.svelte";
+  import AlertDialogHeader from "./alert-dialog-header.svelte";
+  import AlertDialogRoot from "./alert-dialog-root.svelte";
+  import AlertDialogTitle from "./alert-dialog-title.svelte";
+  import AlertDialogTrigger from "./alert-dialog-trigger.svelte";
 
-type Props = Omit<
-  ComponentProps<typeof AlertDialogRoot>,
-  "children" | "title"
-> & {
-  actions?: Snippet;
-  description?: string | Snippet;
-  title?: string | Snippet;
-  trigger?: Snippet;
-};
+  type Props = Omit<
+    ComponentProps<typeof AlertDialogRoot>,
+    "children" | "title"
+  > & {
+    actions?: Snippet;
+    description?: string | Snippet;
+    title?: string | Snippet;
+    trigger?: Snippet;
+  };
 
-let { actions, description, title, trigger, ...rest }: Props = $props();
+  let { actions, description, title, trigger, ...rest }: Props = $props();
 </script>
 
 <AlertDialogRoot {...rest}>
   {#if trigger}
     <AlertDialogTrigger>
-      {#snippet asChild(
-        props,
-      )}
+      {#snippet asChild(props)}
         {const merged = props({})}
         <span {...merged} style="display: contents"> {@render trigger()} </span>
       {/snippet}
@@ -57,7 +55,7 @@ let { actions, description, title, trigger, ...rest }: Props = $props();
       </AlertDialogHeader>
     {/if}
     {#if actions}
-      <AlertDialogFooter> {@render actions()} </AlertDialogFooter>
+      <AlertDialogFooter>{@render actions()}</AlertDialogFooter>
     {/if}
   </AlertDialogContent>
 </AlertDialogRoot>

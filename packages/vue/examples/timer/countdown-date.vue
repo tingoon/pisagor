@@ -13,7 +13,7 @@ const startMs = Math.max(0, targetDate.getTime() - Date.now());
 <template>
   <Card class="rounded-3xl [--space:--spacing(6)]">
     <Card.Content class="flex flex-col items-center gap-3">
-      <p class="text-center text-muted-foreground text-xs">
+      <p class="text-muted-foreground text-center text-xs">
         Until {{ targetLabel }}
       </p>
       <Timer

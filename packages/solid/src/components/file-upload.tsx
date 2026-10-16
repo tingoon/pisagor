@@ -46,19 +46,16 @@ const { Context: FileUploadItemStylesContext, useStyles: useFileUploadItem } =
 type FormControlVariant = "primary" | "secondary";
 
 export interface FileUploadItemRootProps
-  extends FileUploadItemProps,
-    BaseFileUploadItemRootProps {}
+  extends FileUploadItemProps, BaseFileUploadItemRootProps {}
 
 export type FileUploadListProps = Omit<FileUploadItemRootProps, "file">;
 
 export interface FileUploadRootProps
-  extends FileUploadPrimitiveRootProps,
-    BaseFileUploadProps {
+  extends FileUploadPrimitiveRootProps, BaseFileUploadProps {
   onValueChange?: (value: File[]) => void;
 }
 
-export interface FileUploadDropzoneProps
-  extends FileUploadPrimitiveDropzoneProps {
+export interface FileUploadDropzoneProps extends FileUploadPrimitiveDropzoneProps {
   variant?: FormControlVariant;
 }
 

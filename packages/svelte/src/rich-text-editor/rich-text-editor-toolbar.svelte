@@ -1,56 +1,56 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
-import ListBulletsIcon from "phosphor-svelte/lib/ListBulletsIcon";
-import ListNumbersIcon from "phosphor-svelte/lib/ListNumbersIcon";
-import TextBIcon from "phosphor-svelte/lib/TextBIcon";
-import TextItalicIcon from "phosphor-svelte/lib/TextItalicIcon";
-import TextStrikethroughIcon from "phosphor-svelte/lib/TextStrikethroughIcon";
-import type { HTMLAttributes } from "svelte/elements";
-import { useMessageResolver } from "../components/provider/context";
-import Toggle from "../components/toggle.svelte";
-import VisuallyHidden from "../components/visually-hidden.svelte";
-import { useRichTextEditorState } from "./rich-text-editor.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import { cn } from "@pisagor/utils";
+  import ListBulletsIcon from "phosphor-svelte/lib/ListBulletsIcon";
+  import ListNumbersIcon from "phosphor-svelte/lib/ListNumbersIcon";
+  import TextBIcon from "phosphor-svelte/lib/TextBIcon";
+  import TextItalicIcon from "phosphor-svelte/lib/TextItalicIcon";
+  import TextStrikethroughIcon from "phosphor-svelte/lib/TextStrikethroughIcon";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { useMessageResolver } from "../components/provider/context";
+  import Toggle from "../components/toggle.svelte";
+  import VisuallyHidden from "../components/visually-hidden.svelte";
+  import { useRichTextEditorState } from "./rich-text-editor.context";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-type Props = HTMLAttributes<HTMLDivElement> & {
-  children?: import("svelte").Snippet;
-};
+  type Props = HTMLAttributes<HTMLDivElement> & {
+    children?: import("svelte").Snippet;
+  };
 
-let { children, class: className, ...rest }: Props = $props();
-const ctx = useRichTextEditorState();
+  let { children, class: className, ...rest }: Props = $props();
+  const ctx = useRichTextEditorState();
 
-const bold = $derived(
-  (() => {
-    void ctx.revision;
-    return ctx.editor?.isActive("bold") ?? false;
-  })(),
-);
-const italic = $derived(
-  (() => {
-    void ctx.revision;
-    return ctx.editor?.isActive("italic") ?? false;
-  })(),
-);
-const strike = $derived(
-  (() => {
-    void ctx.revision;
-    return ctx.editor?.isActive("strike") ?? false;
-  })(),
-);
-const bulletList = $derived(
-  (() => {
-    void ctx.revision;
-    return ctx.editor?.isActive("bulletList") ?? false;
-  })(),
-);
-const orderedList = $derived(
-  (() => {
-    void ctx.revision;
-    return ctx.editor?.isActive("orderedList") ?? false;
-  })(),
-);
+  const bold = $derived(
+    (() => {
+      void ctx.revision;
+      return ctx.editor?.isActive("bold") ?? false;
+    })(),
+  );
+  const italic = $derived(
+    (() => {
+      void ctx.revision;
+      return ctx.editor?.isActive("italic") ?? false;
+    })(),
+  );
+  const strike = $derived(
+    (() => {
+      void ctx.revision;
+      return ctx.editor?.isActive("strike") ?? false;
+    })(),
+  );
+  const bulletList = $derived(
+    (() => {
+      void ctx.revision;
+      return ctx.editor?.isActive("bulletList") ?? false;
+    })(),
+  );
+  const orderedList = $derived(
+    (() => {
+      void ctx.revision;
+      return ctx.editor?.isActive("orderedList") ?? false;
+    })(),
+  );
 </script>
 
 {#if ctx.editor}

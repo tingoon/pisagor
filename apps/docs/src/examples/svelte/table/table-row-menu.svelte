@@ -1,23 +1,23 @@
 <script lang="ts">
-import { ContextMenu, Table } from "@pisagor/svelte";
-import EyeIcon from "phosphor-svelte/lib/EyeIcon";
-import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";
-import TrashIcon from "phosphor-svelte/lib/TrashIcon";
-import { tableRowMenuBlock } from "#/recipes/blocks/table";
+  import { ContextMenu, Table } from "@pisagor/svelte";
+  import EyeIcon from "phosphor-svelte/lib/EyeIcon";
+  import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";
+  import TrashIcon from "phosphor-svelte/lib/TrashIcon";
+  import { tableRowMenuBlock } from "#/recipes/blocks/table";
 
-const styles = tableRowMenuBlock();
+  const styles = tableRowMenuBlock();
 
-interface Props {
-  class?: string;
-}
-let { class: className }: Props = $props();
+  interface Props {
+    class?: string;
+  }
+  let { class: className }: Props = $props();
 
-const workspaceUsers = [
-  { email: "jane.doe@example.com", id: "1", name: "Jane Doe" },
-  { email: "john.doe@example.com", id: "2", name: "John Doe" },
-  { email: "alex.morgan@example.com", id: "3", name: "Alex Morgan" },
-  { email: "sam.taylor@example.com", id: "4", name: "Sam Taylor" },
-];
+  const workspaceUsers = [
+    { email: "jane.doe@example.com", id: "1", name: "Jane Doe" },
+    { email: "john.doe@example.com", id: "2", name: "John Doe" },
+    { email: "alex.morgan@example.com", id: "3", name: "Alex Morgan" },
+    { email: "sam.taylor@example.com", id: "4", name: "Sam Taylor" },
+  ];
 </script>
 
 <Table class={className}>

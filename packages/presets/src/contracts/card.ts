@@ -2,13 +2,9 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const cardRecipe = tv({
   defaultVariants: {
-    /**
-     * Size scale.
-     */
+    /** Size scale. */
     size: "md",
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "default",
   },
   slots: {
@@ -21,7 +17,7 @@ export const cardRecipe = tv({
       "bg-card",
       "text-foreground",
       "has-data-[variant=image]:pt-0 has-[[data-scope=card][data-part=footer]]:pb-0",
-      "rounded-2xl border border-border/50 shadow-sm",
+      "border-border/50 rounded-2xl border shadow-sm",
     ],
     content: "px-(--space)",
     description: [
@@ -32,7 +28,7 @@ export const cardRecipe = tv({
       "flex items-center gap-2",
       "px-(--space)",
       "rounded-b-2xl",
-      "border-t border-border/40",
+      "border-border/40 border-t",
       "py-(--space)",
     ],
     header: [
@@ -47,7 +43,7 @@ export const cardRecipe = tv({
       "px-(--space)",
     ],
     title: [
-      "font-heading font-semibold text-foreground text-xl leading-tight tracking-tight",
+      "font-heading text-foreground text-xl leading-tight font-semibold tracking-tight",
     ],
   },
   variants: {

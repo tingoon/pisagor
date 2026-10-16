@@ -29,9 +29,9 @@ Cards work in grids, stacks, and carousels. Fixed media heights pair well with [
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Bounded content module | **Card** |
-| Background layer only | [Surface](/solid/components/surface/design) |
-| Expandable sections | [Accordion](/solid/components/accordion/design) |
-| Horizontal set of modules | [Carousel](/solid/components/carousel/design) |
+| Need                      | Prefer                                          |
+| ------------------------- | ----------------------------------------------- |
+| Bounded content module    | **Card**                                        |
+| Background layer only     | [Surface](/solid/components/surface/design)     |
+| Expandable sections       | [Accordion](/solid/components/accordion/design) |
+| Horizontal set of modules | [Carousel](/solid/components/carousel/design)   |

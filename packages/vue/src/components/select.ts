@@ -38,7 +38,10 @@ const {
   recipe: selectRecipe,
 });
 
-/** Slots from the nearest Select root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest Select root, or the default recipe when used
+ * standalone.
+ */
 function useSelectSlots() {
   const styles = useOptionalSelectStyles();
 
@@ -63,9 +66,7 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
   ArkSelectRootProps<T>,
   "collection" | "onValueChange"
 > & {
-  /**
-   * Visual shell variant applied to the trigger. Defaults to `primary`.
-   */
+  /** Visual shell variant applied to the trigger. Defaults to `primary`. */
   variant?: FormControlVariant;
   /** Trigger size. Defaults to `md`. */
   size?: FormControlShellVariantProps["size"];

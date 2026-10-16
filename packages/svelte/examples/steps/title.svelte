@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Steps } from "@pisagor/svelte";
+  import { Steps } from "@pisagor/svelte";
 
-const items = ["Info", "Docs", "Team"];
+  const items = ["Info", "Docs", "Team"];
 </script>
 
 <Steps count={items.length}>

@@ -6,7 +6,7 @@ export const menuRecipe = tv({
     group: ["flex flex-col gap-1"],
     groupLabel: [
       "px-2 py-1.5",
-      "font-medium text-muted-foreground text-sm",
+      "text-muted-foreground text-sm font-medium",
       "pointer-events-none",
     ],
     item: [
@@ -15,14 +15,14 @@ export const menuRecipe = tv({
       "w-full",
       "px-2.5 py-1.5",
       "flex items-center gap-2",
-      "select-none text-sm",
+      "text-sm select-none",
       "rounded-lg",
       "outline-hidden",
-      "transition-colors duration-fast ease-out motion-reduce:transition-none!",
+      "duration-fast transition-colors ease-out motion-reduce:transition-none!",
       "hover:bg-accent hover:text-accent-foreground",
       "focus-visible:bg-accent focus-visible:text-accent-foreground",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
-      "[&_svg:not([class*='size-'])]:size-3.5 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+      "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5",
     ],
     link: [
       "group/menu-item",
@@ -30,19 +30,19 @@ export const menuRecipe = tv({
       "w-full",
       "px-2.5 py-1.5",
       "inline-flex items-center gap-2",
-      "select-none text-sm",
+      "text-sm select-none",
       "rounded-lg",
       "text-foreground",
       "outline-hidden",
-      "transition-colors duration-fast ease-out motion-reduce:transition-none!",
+      "duration-fast transition-colors ease-out motion-reduce:transition-none!",
       "hover:bg-accent hover:text-accent-foreground",
       "focus-visible:bg-accent focus-visible:text-accent-foreground",
       "data-[active=true]:bg-accent data-[active=true]:text-accent-foreground",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
-      "[&_svg:not([class*='size-'])]:size-3.5 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+      "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5",
     ],
     list: ["flex flex-col gap-1 p-1"],
-    separator: ["my-1 h-px bg-border"],
+    separator: ["bg-border my-1 h-px"],
     shortcut: [
       "ms-auto rtl:me-auto",
       "text-muted-foreground text-xs tracking-widest",
@@ -55,9 +55,7 @@ export const menuRecipe = tv({
 export const menuItemRecipe = tv({
   base: menuRecipe().item(),
   defaultVariants: {
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "default",
   },
   variants: {

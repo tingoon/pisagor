@@ -57,9 +57,7 @@ interface DataGridRowContextValue<TData extends RowData> {
   row: Row<DataGridFeatures, TData>;
 }
 
-/**
- * @typeParam TData - Row shape passed to `columns` and `data`.
- */
+/** @typeParam TData - Row shape passed to `columns` and `data`. */
 export type DataGridProps<TData extends RowData = RowData> = {
   class?: unknown;
   /**
@@ -77,7 +75,7 @@ interface DataGridHeadProps {
    * Renders a single column header.
    *
    * @remarks
-   * When omitted, renders every visible header in the group.
+   *   When omitted, renders every visible header in the group.
    */
   columnId?: string;
   /**
@@ -143,8 +141,7 @@ export function useDataGridRow<TData extends RowData>() {
 
 function useDataGridHeaderCellContext<TData extends RowData>() {
   return useDataGridHeaderCellContextBase() as
-    | DataGridHeaderCellContextValue<TData>
-    | undefined;
+    DataGridHeaderCellContextValue<TData> | undefined;
 }
 
 function columnSizeStyle(

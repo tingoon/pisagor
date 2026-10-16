@@ -29,9 +29,9 @@ When offering autocomplete, align suggestions with [Combobox](/solid/components/
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Multiple freeform or validated tokens | **Tags Input** |
-| Fixed multi-select | [Select](/solid/components/select/design) |
-| Long prose | [Textarea](/solid/components/textarea/design) |
-| Display-only labels | [Badge](/solid/components/badge/design) |
+| Need                                  | Prefer                                        |
+| ------------------------------------- | --------------------------------------------- |
+| Multiple freeform or validated tokens | **Tags Input**                                |
+| Fixed multi-select                    | [Select](/solid/components/select/design)     |
+| Long prose                            | [Textarea](/solid/components/textarea/design) |
+| Display-only labels                   | [Badge](/solid/components/badge/design)       |

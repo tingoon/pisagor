@@ -1,11 +1,11 @@
 <script lang="ts">
-import { TreeView } from "@pisagor/svelte";
-import { createDemoCollection } from "./helpers";
-import TreeNode from "./tree-node.svelte";
+  import { TreeView } from "@pisagor/svelte";
+  import { createDemoCollection } from "./helpers";
+  import TreeNode from "./tree-node.svelte";
 
-const collection = createDemoCollection();
-let selected = $state<string[]>([]);
-const isCorrectSelection = $derived(selected[0] === "components/input.tsx");
+  const collection = createDemoCollection();
+  let selected = $state<string[]>([]);
+  const isCorrectSelection = $derived(selected[0] === "components/input.tsx");
 </script>
 
 <div class="flex flex-col items-center gap-2">

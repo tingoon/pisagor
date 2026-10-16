@@ -1,20 +1,20 @@
 <script lang="ts">
-import {
-  type CarouselAutoplayTriggerProps,
-  Carousel as CarouselPrimitive,
-  useCarouselContext,
-} from "@ark-ui/svelte/carousel";
-import { buttonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import PauseIcon from "phosphor-svelte/lib/PauseIcon";
-import PlayIcon from "phosphor-svelte/lib/PlayIcon";
-import { useMessageResolver } from "../provider/context";
+  import {
+    type CarouselAutoplayTriggerProps,
+    Carousel as CarouselPrimitive,
+    useCarouselContext,
+  } from "@ark-ui/svelte/carousel";
+  import { buttonRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import PauseIcon from "phosphor-svelte/lib/PauseIcon";
+  import PlayIcon from "phosphor-svelte/lib/PlayIcon";
+  import { useMessageResolver } from "../provider/context";
 
-const t = useMessageResolver();
-const carousel = useCarouselContext();
+  const t = useMessageResolver();
+  const carousel = useCarouselContext();
 
-let { class: className, ...rest }: CarouselAutoplayTriggerProps = $props();
-const isPlaying = $derived(carousel().isPlaying);
+  let { class: className, ...rest }: CarouselAutoplayTriggerProps = $props();
+  const isPlaying = $derived(carousel().isPlaying);
 </script>
 
 <CarouselPrimitive.AutoplayTrigger

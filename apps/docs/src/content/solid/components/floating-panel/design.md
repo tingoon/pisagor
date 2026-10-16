@@ -31,10 +31,10 @@ Respect reduced motion: prefer opacity and subtle scale over long travel animati
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Draggable tool or inspector | **Floating Panel** |
-| Edge-attached task surface | [Drawer](/solid/components/drawer/design) |
-| Modal decision or form | [Dialog](/solid/components/dialog/design) |
-| Anchored compact content | [Popover](/solid/components/popover/design) |
-| Persistent app regions | [App Shell](/solid/components/app-shell/design) |
+| Need                        | Prefer                                          |
+| --------------------------- | ----------------------------------------------- |
+| Draggable tool or inspector | **Floating Panel**                              |
+| Edge-attached task surface  | [Drawer](/solid/components/drawer/design)       |
+| Modal decision or form      | [Dialog](/solid/components/dialog/design)       |
+| Anchored compact content    | [Popover](/solid/components/popover/design)     |
+| Persistent app regions      | [App Shell](/solid/components/app-shell/design) |

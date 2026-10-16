@@ -231,8 +231,7 @@ const ToastItemContent = defineComponent({
                             props.classNames?.description,
                             (
                               props.descriptionProps as
-                                | { class?: ClassValue }
-                                | undefined
+                                { class?: ClassValue } | undefined
                             )?.class,
                           ),
                         }),

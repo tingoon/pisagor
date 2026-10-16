@@ -8,7 +8,7 @@ function SurfacePanel({
 }: PropsWithChildren<{ title: string }>) {
   return (
     <div className="relative flex size-full items-center justify-center">
-      <p className="absolute top-0 left-0 w-full p-4 text-center font-medium text-muted-foreground text-sm">
+      <p className="text-muted-foreground absolute top-0 left-0 w-full p-4 text-center text-sm font-medium">
         {title}
       </p>
       {children}

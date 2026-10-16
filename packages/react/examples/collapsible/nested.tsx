@@ -32,7 +32,7 @@ export function Nested() {
                   Copy the following code:
                 </p>
 
-                <pre className="relative rounded-md bg-muted p-2 text-muted-foreground text-xs">
+                <pre className="bg-muted text-muted-foreground relative rounded-md p-2 text-xs">
                   <code>bun add ui</code>
 
                   <Clipboard

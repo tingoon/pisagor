@@ -1,26 +1,26 @@
 <script lang="ts">
-import { createListCollection } from "@ark-ui/svelte/collection";
-import { Item, Listbox } from "@pisagor/svelte";
+  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { Item, Listbox } from "@pisagor/svelte";
 
-const collection = createListCollection({
-  items: [
-    {
-      description: "South America's country, Portuguese speaking.",
-      label: "Brazil",
-      value: "br",
-    },
-    {
-      description: "North America's country, Spanish speaking.",
-      label: "Mexico",
-      value: "mx",
-    },
-    {
-      description: "Europe's country, Irish/English speaking.",
-      label: "Ireland",
-      value: "ie",
-    },
-  ],
-});
+  const collection = createListCollection({
+    items: [
+      {
+        description: "South America's country, Portuguese speaking.",
+        label: "Brazil",
+        value: "br",
+      },
+      {
+        description: "North America's country, Spanish speaking.",
+        label: "Mexico",
+        value: "mx",
+      },
+      {
+        description: "Europe's country, Irish/English speaking.",
+        label: "Ireland",
+        value: "ie",
+      },
+    ],
+  });
 </script>
 
 <Item.Group variant="outline">

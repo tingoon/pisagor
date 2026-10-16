@@ -1,14 +1,14 @@
 <script lang="ts">
-import {
-  type DrawerBackdropProps,
-  Drawer as DrawerPrimitive,
-} from "@ark-ui/svelte/drawer";
-import { cn } from "@pisagor/utils";
-import { useDrawer } from "./drawer.context";
+  import {
+    type DrawerBackdropProps,
+    Drawer as DrawerPrimitive,
+  } from "@ark-ui/svelte/drawer";
+  import { cn } from "@pisagor/utils";
+  import { useDrawer } from "./drawer.context";
 
-let { class: className, ...rest }: DrawerBackdropProps = $props();
-const styles = useDrawer();
-const slots = $derived(styles.slots);
+  let { class: className, ...rest }: DrawerBackdropProps = $props();
+  const styles = useDrawer();
+  const slots = $derived(styles.slots);
 </script>
 
 <DrawerPrimitive.Backdrop

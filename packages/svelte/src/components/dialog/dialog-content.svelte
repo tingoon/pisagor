@@ -1,32 +1,32 @@
 <script lang="ts">
-import {
-  type DialogContentProps as ArkDialogContentProps,
-  Dialog as DialogPrimitive,
-} from "@ark-ui/svelte/dialog";
-import type { DialogProps as BaseDialogProps } from "@pisagor/props";
-import { buttonRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import XIcon from "phosphor-svelte/lib/XIcon";
-import { useMessageResolver } from "../provider/context";
-import { useDialog } from "./dialog.context";
+  import {
+    type DialogContentProps as ArkDialogContentProps,
+    Dialog as DialogPrimitive,
+  } from "@ark-ui/svelte/dialog";
+  import type { DialogProps as BaseDialogProps } from "@pisagor/props";
+  import { buttonRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { useMessageResolver } from "../provider/context";
+  import { useDialog } from "./dialog.context";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-type Props = ArkDialogContentProps & {
-  bottomStickOnMobile?: boolean;
-  showCloseButton?: boolean;
-} & BaseDialogProps;
+  type Props = ArkDialogContentProps & {
+    bottomStickOnMobile?: boolean;
+    showCloseButton?: boolean;
+  } & BaseDialogProps;
 
-let {
-  size = "md",
-  bottomStickOnMobile = true,
-  showCloseButton = true,
-  children,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    size = "md",
+    bottomStickOnMobile = true,
+    showCloseButton = true,
+    children,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const { slots } = useDialog();
+  const { slots } = useDialog();
 </script>
 
 <DialogPrimitive.Content

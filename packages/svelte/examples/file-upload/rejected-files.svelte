@@ -1,5 +1,5 @@
 <script lang="ts">
-import { FileUpload } from "@pisagor/svelte";
+  import { FileUpload } from "@pisagor/svelte";
 </script>
 
 <FileUpload accept="image/*" maxFileSize={1024 * 1024} maxFiles={3}>

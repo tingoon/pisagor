@@ -6,7 +6,7 @@ import { Format } from "@pisagor/vue";
   <div class="flex flex-col gap-1">
     <span class="text-muted-foreground text-sm">File size</span>
     <span
-      class="font-semibold text-2xl text-foreground tabular-nums tracking-tight"
+      class="text-foreground text-2xl font-semibold tracking-tight tabular-nums"
     >
       <Format.Byte :value="120000" />
     </span>

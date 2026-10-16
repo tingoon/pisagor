@@ -88,7 +88,7 @@ function formatDate(value: string) {
 function DataGridShell({ children }: { children: ReactNode }) {
   return (
     <div className="flex w-full flex-col gap-3">
-      <div className="rounded-xl border bg-muted/20 p-3">{children}</div>
+      <div className="bg-muted/20 rounded-xl border p-3">{children}</div>
     </div>
   );
 }
@@ -147,7 +147,7 @@ export function RowDetails() {
             aria-label={
               row.getIsExpanded() ? "Collapse details" : "Expand details"
             }
-            className="inline-flex size-6 items-center justify-center rounded-md hover:bg-muted"
+            className="hover:bg-muted inline-flex size-6 items-center justify-center rounded-md"
             onClick={row.getToggleExpandedHandler()}
             type="button"
           >
@@ -212,7 +212,7 @@ export function RowDetails() {
               renderDetail={(row) => (
                 <div className="grid gap-3 sm:grid-cols-2">
                   <div>
-                    <p className="font-medium text-sm">Profile</p>
+                    <p className="text-sm font-medium">Profile</p>
                     <p className="text-muted-foreground text-sm">
                       {row.original.name}
                     </p>
@@ -221,7 +221,7 @@ export function RowDetails() {
                     </p>
                   </div>
                   <div>
-                    <p className="font-medium text-sm">Organization</p>
+                    <p className="text-sm font-medium">Organization</p>
                     <p className="text-muted-foreground text-sm">
                       {row.original.department}
                     </p>

@@ -25,13 +25,13 @@ const collection = createListCollection({
           :key="item.title"
           :item="item"
         >
-          <div class="aspect-square size-20 w-full rounded-lg bg-foreground" />
+          <div class="bg-foreground aspect-square size-20 w-full rounded-lg" />
           <div>
             <Listbox.ItemText>{{ item.title }}</Listbox.ItemText>
             <p class="text-muted-foreground text-xs">{{ item.artist }}</p>
           </div>
           <Listbox.ItemIndicator
-            class="absolute top-4 right-4 shrink-0 rounded-xs bg-background [&_svg]:text-foreground!"
+            class="bg-background [&_svg]:text-foreground! absolute top-4 right-4 shrink-0 rounded-xs"
           />
         </Listbox.Item>
       </Listbox.Content>

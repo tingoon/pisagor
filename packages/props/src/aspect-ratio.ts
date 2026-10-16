@@ -4,6 +4,7 @@ import type { AspectRatioRecipeFn } from "@pisagor/recipes";
 export interface AspectRatioProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue aspectRatioRecipe
    */
   recipe?: AspectRatioRecipeFn;

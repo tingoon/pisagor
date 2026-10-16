@@ -22,15 +22,13 @@ const {
 // #endregion
 
 export interface MenuRootProps
-  extends ComponentProps<typeof ark.nav>,
-    BaseMenuRootProps {}
+  extends ComponentProps<typeof ark.nav>, BaseMenuRootProps {}
 
 export type MenuPartProps = ComponentProps<typeof ark.div>;
 export type MenuListProps = ComponentProps<typeof ark.ul>;
 
 export interface MenuItemProps
-  extends ComponentProps<typeof ark.button>,
-    BaseMenuItemProps {}
+  extends ComponentProps<typeof ark.button>, BaseMenuItemProps {}
 
 export interface MenuLinkProps extends ComponentProps<typeof ark.a> {
   active?: boolean;

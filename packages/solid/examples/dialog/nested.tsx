@@ -24,11 +24,11 @@ export function Nested() {
             <Dialog.Body class="grid gap-2">
               <div class="grid gap-1">
                 <p class="text-muted-foreground text-sm">Name</p>
-                <p class="font-medium text-sm">Jane Doe</p>
+                <p class="text-sm font-medium">Jane Doe</p>
               </div>
               <div class="grid gap-1">
                 <p class="text-muted-foreground text-sm">Email</p>
-                <p class="font-medium text-sm">you@example.com</p>
+                <p class="text-sm font-medium">you@example.com</p>
               </div>
             </Dialog.Body>
             <Dialog.Footer>

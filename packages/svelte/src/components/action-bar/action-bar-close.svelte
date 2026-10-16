@@ -1,26 +1,26 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
-import type { HTMLButtonAttributes } from "svelte/elements";
-import { useMessageResolver } from "../provider/context";
-import { useActionBar } from "./action-bar.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLButtonAttributes } from "svelte/elements";
+  import { useMessageResolver } from "../provider/context";
+  import { useActionBar } from "./action-bar.context";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-let {
-  onclick,
-  class: className,
-  children,
-  ...rest
-}: HTMLButtonAttributes = $props();
-const ctx = useActionBar();
+  let {
+    onclick,
+    class: className,
+    children,
+    ...rest
+  }: HTMLButtonAttributes = $props();
+  const ctx = useActionBar();
 
-function handleClick(
-  e: Parameters<NonNullable<HTMLButtonAttributes["onclick"]>>[0],
-) {
-  ctx.onClose?.();
-  onclick?.(e);
-}
+  function handleClick(
+    e: Parameters<NonNullable<HTMLButtonAttributes["onclick"]>>[0],
+  ) {
+    ctx.onClose?.();
+    onclick?.(e);
+  }
 </script>
 
 <Ark

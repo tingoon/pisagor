@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Portal } from "@ark-ui/svelte/portal";
-import { Button, Dialog, Field, Input, Select } from "@pisagor/svelte";
+  import { Portal } from "@ark-ui/svelte/portal";
+  import { Button, Dialog, Field, Input, Select } from "@pisagor/svelte";
 </script>
 
 <Dialog.Root>

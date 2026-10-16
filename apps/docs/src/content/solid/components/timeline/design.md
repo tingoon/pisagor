@@ -29,9 +29,9 @@ On small screens, collapse secondary metadata behind expansion or show a compact
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Chronological event stream | **Timeline** |
-| Active multi-step flow | [Steps](/solid/components/steps/design) |
-| KPI snapshot | [Stat](/solid/components/stat/design) |
+| Need                        | Prefer                                          |
+| --------------------------- | ----------------------------------------------- |
+| Chronological event stream  | **Timeline**                                    |
+| Active multi-step flow      | [Steps](/solid/components/steps/design)         |
+| KPI snapshot                | [Stat](/solid/components/stat/design)           |
 | Nested history in tree form | [Tree View](/solid/components/tree-view/design) |

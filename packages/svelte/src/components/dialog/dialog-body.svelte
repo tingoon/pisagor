@@ -1,22 +1,22 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
-import type { HTMLAttributes } from "svelte/elements";
-import { ScrollArea } from "../scroll-area";
-import { useDialog } from "./dialog.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { ScrollArea } from "../scroll-area";
+  import { useDialog } from "./dialog.context";
 
-type Props = HTMLAttributes<HTMLDivElement> & {
-  children?: import("svelte").Snippet;
-  scrollFade?: boolean;
-};
+  type Props = HTMLAttributes<HTMLDivElement> & {
+    children?: import("svelte").Snippet;
+    scrollFade?: boolean;
+  };
 
-let {
-  children,
-  class: className,
-  scrollFade = false,
-  ...rest
-}: Props = $props();
-const { slots } = useDialog();
+  let {
+    children,
+    class: className,
+    scrollFade = false,
+    ...rest
+  }: Props = $props();
+  const { slots } = useDialog();
 </script>
 
 <ScrollArea {scrollFade}>

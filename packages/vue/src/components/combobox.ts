@@ -40,7 +40,10 @@ const {
   recipe: comboboxRecipe,
 });
 
-/** Slots from the nearest Combobox root, or the default recipe when used standalone. */
+/**
+ * Slots from the nearest Combobox root, or the default recipe when used
+ * standalone.
+ */
 function useComboboxSlots() {
   const styles = useOptionalComboboxStyles();
 
@@ -70,9 +73,7 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   ArkComboboxRootProps<T>,
   "collection" | "onValueChange"
 > & {
-  /**
-   * Visual shell variant applied to the input. Defaults to `primary`.
-   */
+  /** Visual shell variant applied to the input. Defaults to `primary`. */
   variant?: FormControlVariant;
   /** Input size. Defaults to `md`. */
   size?: ComboboxInputProps["size"];
@@ -189,7 +190,10 @@ export const ComboboxRoot = defineComponent({
   },
 });
 
-/** True inside `Combobox.Control`, so `Combobox.Input` does not render a second control. */
+/**
+ * True inside `Combobox.Control`, so `Combobox.Input` does not render a second
+ * control.
+ */
 const ComboboxInsideControlKey: InjectionKey<boolean> = Symbol(
   "ComboboxInsideControl",
 );

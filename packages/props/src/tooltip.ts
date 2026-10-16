@@ -4,6 +4,7 @@ import type { TooltipRecipeFn } from "@pisagor/recipes";
 export interface TooltipProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue tooltipRecipe
    */
   recipe?: TooltipRecipeFn;

@@ -1,11 +1,11 @@
 <script lang="ts">
-import { inputGroupTextareaControlRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import Textarea from "../textarea.svelte";
+  import { inputGroupTextareaControlRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import Textarea from "../textarea.svelte";
 
-type Props = import("svelte").ComponentProps<typeof Textarea>;
+  type Props = import("svelte").ComponentProps<typeof Textarea>;
 
-let { classNames, ...rest }: Props = $props();
+  let { classNames, ...rest }: Props = $props();
 </script>
 
 <Textarea

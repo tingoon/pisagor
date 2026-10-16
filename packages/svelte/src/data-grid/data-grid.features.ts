@@ -32,7 +32,8 @@ import {
 } from "@tanstack/svelte-table";
 
 /**
- * Explicit feature set for DataGrid (resize, pin, expand, group, filter, facet, …).
+ * Explicit feature set for DataGrid (resize, pin, expand, group, filter, facet,
+ * …).
  */
 export const dataGridFeatures = tableFeatures({
   aggregationFns: {

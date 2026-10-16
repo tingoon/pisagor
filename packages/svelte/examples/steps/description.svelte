@@ -1,11 +1,11 @@
 <script lang="ts">
-import { Steps } from "@pisagor/svelte";
+  import { Steps } from "@pisagor/svelte";
 
-const items = [
-  { description: "Personal", title: "Info" },
-  { description: "Company", title: "Docs" },
-  { description: "Create", title: "Team" },
-];
+  const items = [
+    { description: "Personal", title: "Info" },
+    { description: "Company", title: "Docs" },
+    { description: "Create", title: "Team" },
+  ];
 </script>
 
 <Steps count={items.length}>

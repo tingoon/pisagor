@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Editable } from "@pisagor/svelte";
+  import { Editable } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-col gap-2">

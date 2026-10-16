@@ -8,8 +8,7 @@ import {
 type TagsInputControlProps = Omit<TagsInputProps, "invalid" | "name">;
 
 export interface TagsInputFieldProps
-  extends FieldPresentationProps,
-    TagsInputControlProps {
+  extends FieldPresentationProps, TagsInputControlProps {
   name?: string;
   onBlur?: () => void;
 }

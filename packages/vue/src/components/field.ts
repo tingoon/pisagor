@@ -22,7 +22,8 @@ const {
 
 /**
  * Parts fall back to the default recipe outside `<Field>` (React
- * `useFieldSlots` parity), e.g. `CircularSlider.ValueText` wraps `Field.Label`.
+ * `useFieldSlots` parity), e.g. `CircularSlider.ValueText` wraps
+ * `Field.Label`.
  */
 function useFieldStyles(): { readonly slots: ReturnType<typeof fieldRecipe> } {
   const styles = useOptionalFieldStyles();

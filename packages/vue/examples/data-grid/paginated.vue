@@ -332,7 +332,7 @@ const state = computed(() => ({ pagination: pagination.value }));
     >
       <DataGrid.Toolbar>
         <div class="flex flex-wrap items-center justify-between gap-3">
-          <p class="font-medium text-sm">Paginated directory</p>
+          <p class="text-sm font-medium">Paginated directory</p>
           <PageSizeSelect
             :on-change="handlePageSizeChange"
             :value="state.pagination.pageSize"

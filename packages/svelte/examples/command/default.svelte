@@ -1,13 +1,13 @@
 <script lang="ts">
-import { createListCollection } from "@ark-ui/svelte/collection";
-import { Command } from "@pisagor/svelte";
+  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { Command } from "@pisagor/svelte";
 
-const items = [
-  { label: "Calendar", value: "calendar" },
-  { label: "Search Emoji", value: "emoji" },
-  { label: "Calculator", value: "calculator" },
-];
-const collection = createListCollection({ items });
+  const items = [
+    { label: "Calendar", value: "calendar" },
+    { label: "Search Emoji", value: "emoji" },
+    { label: "Calculator", value: "calculator" },
+  ];
+  const collection = createListCollection({ items });
 </script>
 
 <Command {collection}>

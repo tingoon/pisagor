@@ -29,9 +29,9 @@ On narrow screens, prefer stacking panels or [Sheet](/solid/components/sheet/des
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Adjustable split panels | **Resizable** |
-| Edge panel overlay | [Sheet](/solid/components/sheet/design) / [Drawer](/solid/components/drawer/design) |
-| App regions with nav | [Sidebar](/solid/components/sidebar/design) |
-| Tabbed alternate views | [Tabs](/solid/components/tabs/design) |
+| Need                    | Prefer                                                                              |
+| ----------------------- | ----------------------------------------------------------------------------------- |
+| Adjustable split panels | **Resizable**                                                                       |
+| Edge panel overlay      | [Sheet](/solid/components/sheet/design) / [Drawer](/solid/components/drawer/design) |
+| App regions with nav    | [Sidebar](/solid/components/sidebar/design)                                         |
+| Tabbed alternate views  | [Tabs](/solid/components/tabs/design)                                               |

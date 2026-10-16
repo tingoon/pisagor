@@ -9,8 +9,7 @@ import {
 type SliderControlProps = Omit<SliderProps, "invalid" | "label" | "name">;
 
 export interface SliderFieldProps
-  extends Omit<FieldPresentationProps, "orientation">,
-    SliderControlProps {
+  extends Omit<FieldPresentationProps, "orientation">, SliderControlProps {
   name?: string;
   onBlur?: () => void;
 }

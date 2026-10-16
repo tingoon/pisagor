@@ -29,9 +29,9 @@ Match fallback dimensions and layout to the mounted control so the page does not
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Browser-only subtree without SSR mismatch | **Client Only** |
-| Hide until mounted with no SSR output | Client Only + Fallback |
-| Full-page client app shell | App routing and layout patterns |
+| Need                                         | Prefer                                                    |
+| -------------------------------------------- | --------------------------------------------------------- |
+| Browser-only subtree without SSR mismatch    | **Client Only**                                           |
+| Hide until mounted with no SSR output        | Client Only + Fallback                                    |
+| Full-page client app shell                   | App routing and layout patterns                           |
 | Form controls that work on server and client | [Field](/solid/components/field/design) + standard inputs |

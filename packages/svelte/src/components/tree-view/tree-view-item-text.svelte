@@ -1,41 +1,39 @@
 <script lang="ts">
-import {
-  type TreeViewItemTextProps as ArkProps,
-  TreeView as TreeViewPrimitive,
-} from "@ark-ui/svelte/tree-view";
-import { treeViewItemRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import FileIcon from "phosphor-svelte/lib/FileIcon";
-import type { Component } from "svelte";
-import { useTreeView, useTreeViewItem } from "./tree-view.context";
-import TreeViewNodeInput from "./tree-view-node-input.svelte";
+  import {
+    type TreeViewItemTextProps as ArkProps,
+    TreeView as TreeViewPrimitive,
+  } from "@ark-ui/svelte/tree-view";
+  import { treeViewItemRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import FileIcon from "phosphor-svelte/lib/FileIcon";
+  import type { Component } from "svelte";
+  import { useTreeView, useTreeViewItem } from "./tree-view.context";
+  import TreeViewNodeInput from "./tree-view-node-input.svelte";
 
-type Props = ArkProps & { icon?: Component };
+  type Props = ArkProps & { icon?: Component };
 
-let {
-  children,
-  icon: Icon = FileIcon,
-  class: className,
-  ...rest
-}: Props = $props();
-const { fileIcons } = useTreeView();
-const item = useTreeViewItem();
-const slots = $derived(item?.slots ?? treeViewItemRecipe());
+  let {
+    children,
+    icon: Icon = FileIcon,
+    class: className,
+    ...rest
+  }: Props = $props();
+  const { fileIcons } = useTreeView();
+  const item = useTreeViewItem();
+  const slots = $derived(item?.slots ?? treeViewItemRecipe());
 
-function getFileIcon(value: string): Component {
-  const name = value.includes(".")
-    ? value.split(".").at(-1)?.toLowerCase()
-    : null;
-  const extension = name ? `.${name}` : null;
-  const resolved = extension ? fileIcons?.[extension] : undefined;
-  return (resolved ?? Icon) as Component;
-}
+  function getFileIcon(value: string): Component {
+    const name = value.includes(".")
+      ? value.split(".").at(-1)?.toLowerCase()
+      : null;
+    const extension = name ? `.${name}` : null;
+    const resolved = extension ? fileIcons?.[extension] : undefined;
+    return (resolved ?? Icon) as Component;
+  }
 </script>
 
 <TreeViewPrimitive.NodeContext>
-  {#snippet render(
-    nodeState,
-  )}
+  {#snippet render(nodeState)}
     {const state = nodeState()}
     {const ResolvedIcon = getFileIcon(state.value)}
     <span class={slots.icon()} data-part="item-icon" data-scope="tree-view">

@@ -33,7 +33,7 @@ export function ControlledSize() {
             />
           </FloatingPanel.Control>
         </FloatingPanel.Header>
-        <FloatingPanel.Body class="text-center text-muted-foreground text-sm">
+        <FloatingPanel.Body class="text-muted-foreground text-center text-sm">
           <p>
             Size: {size().width} × {size().height}.
           </p>

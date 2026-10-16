@@ -8,10 +8,10 @@ const chunks = useHighlight({
 </script>
 
 <template>
-  <p class="font-medium text-foreground text-lg leading-relaxed">
+  <p class="text-foreground text-lg leading-relaxed font-medium">
     <template v-for="(chunk, index) in chunks" :key="index">
       <mark
-        class="relative bg-transparent px-0 font-semibold text-primary"
+        class="text-primary relative bg-transparent px-0 font-semibold"
         v-if="chunk.match"
       >
         {{ chunk.text }}

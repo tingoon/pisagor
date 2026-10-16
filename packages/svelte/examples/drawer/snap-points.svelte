@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Button, Drawer } from "@pisagor/svelte";
+  import { Button, Drawer } from "@pisagor/svelte";
 </script>
 
 <Drawer
@@ -8,7 +8,7 @@ import { Button, Drawer } from "@pisagor/svelte";
   snapToSequentialPoints
 >
   <Drawer.Trigger>
-    <Button variant="outline"> Open </Button>
+    <Button variant="outline">Open</Button>
   </Drawer.Trigger>
   <Drawer.Content>
     <Drawer.ContentInner>

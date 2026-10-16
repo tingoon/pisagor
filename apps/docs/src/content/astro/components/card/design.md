@@ -29,9 +29,9 @@ Cards work in grids, stacks, and carousels. Fixed media heights pair well with [
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Bounded content module | **Card** |
-| Background layer only | [Surface](/astro/components/surface/design) |
-| Expandable sections | Accordion |
-| Horizontal set of modules | Carousel |
+| Need                      | Prefer                                          |
+| ------------------------- | ----------------------------------------------- |
+| Bounded content module    | **Card**                                        |
+| Background layer only     | [Surface](/astro/components/surface/design)     |
+| Expandable sections       | Accordion |
+| Horizontal set of modules | Carousel   |

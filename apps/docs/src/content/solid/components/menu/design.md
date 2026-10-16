@@ -29,10 +29,10 @@ Build rows with [Item](/solid/components/item/design) for consistent icon, label
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Persistent link or action list | **Menu** |
-| Popup from a trigger | [Dropdown Menu](/solid/components/dropdown-menu/design) |
-| Top bar with brand + nav | [Navbar](/solid/components/navbar/design) |
-| Site-wide sections with flyouts | [Navigation Menu](/solid/components/navigation-menu/design) |
-| Mobile primary destinations | [Bottom Navigation](/solid/components/bottom-navigation/design) |
+| Need                            | Prefer                                                          |
+| ------------------------------- | --------------------------------------------------------------- |
+| Persistent link or action list  | **Menu**                                                        |
+| Popup from a trigger            | [Dropdown Menu](/solid/components/dropdown-menu/design)         |
+| Top bar with brand + nav        | [Navbar](/solid/components/navbar/design)                       |
+| Site-wide sections with flyouts | [Navigation Menu](/solid/components/navigation-menu/design)     |
+| Mobile primary destinations     | [Bottom Navigation](/solid/components/bottom-navigation/design) |

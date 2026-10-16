@@ -1,19 +1,19 @@
 <script lang="ts">
-import { PasswordInput } from "@pisagor/svelte";
+  import { PasswordInput } from "@pisagor/svelte";
 
-let visible = $state(false);
+  let visible = $state(false);
 
-const HIDE_DELAY_MS = 3000;
+  const HIDE_DELAY_MS = 3000;
 
-const handleVisibilityChange = (nextVisible: boolean) => {
-  visible = nextVisible;
+  const handleVisibilityChange = (nextVisible: boolean) => {
+    visible = nextVisible;
 
-  if (nextVisible) {
-    setTimeout(() => {
-      visible = false;
-    }, HIDE_DELAY_MS);
-  }
-};
+    if (nextVisible) {
+      setTimeout(() => {
+        visible = false;
+      }, HIDE_DELAY_MS);
+    }
+  };
 </script>
 
 <PasswordInput

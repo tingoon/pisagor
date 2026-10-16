@@ -82,7 +82,8 @@ interface ActionBarActionItem {
 }
 
 export interface ActionBarProps
-  extends Pick<ActionBarStateValue, "lazyMount" | "unmountOnExit">,
+  extends
+    Pick<ActionBarStateValue, "lazyMount" | "unmountOnExit">,
     BaseActionBarProps {
   closeOnEscape?: boolean;
   defaultOpen?: boolean;
@@ -109,8 +110,10 @@ export interface ActionBarCloseProps {
   class?: unknown;
 }
 
-export interface ActionBarValueProps
-  extends Pick<BadgeProps, "class" | "pill" | "size" | "variant"> {
+export interface ActionBarValueProps extends Pick<
+  BadgeProps,
+  "class" | "pill" | "size" | "variant"
+> {
   count: number;
   label?: string;
   children?: VNodeChild;

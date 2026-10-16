@@ -1,34 +1,34 @@
 <script lang="ts">
-import {
-  DatePicker as CalendarPrimitive,
-  type DatePickerRootProps,
-} from "@ark-ui/svelte/date-picker";
-import type { CalendarProps as BaseCalendarProps } from "@pisagor/props";
-import { calendarRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { Context } from "./calendar.context";
-import CalendarDefaultView from "./calendar-default-view.svelte";
+  import {
+    DatePicker as CalendarPrimitive,
+    type DatePickerRootProps,
+  } from "@ark-ui/svelte/date-picker";
+  import type { CalendarProps as BaseCalendarProps } from "@pisagor/props";
+  import { calendarRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { Context } from "./calendar.context";
+  import CalendarDefaultView from "./calendar-default-view.svelte";
 
-type FormControlVariant = "primary" | "secondary";
+  type FormControlVariant = "primary" | "secondary";
 
-type Props = DatePickerRootProps & {
-  variant?: FormControlVariant;
-} & BaseCalendarProps;
+  type Props = DatePickerRootProps & {
+    variant?: FormControlVariant;
+  } & BaseCalendarProps;
 
-let {
-  variant: _variant,
-  recipe = calendarRecipe,
-  class: className,
-  children,
-  ...rest
-}: Props = $props();
+  let {
+    variant: _variant,
+    recipe = calendarRecipe,
+    class: className,
+    children,
+    ...rest
+  }: Props = $props();
 
-const slots = $derived(recipe());
-Context.set({
-  get slots() {
-    return slots;
-  },
-});
+  const slots = $derived(recipe());
+  Context.set({
+    get slots() {
+      return slots;
+    },
+  });
 </script>
 
 <CalendarPrimitive.Root

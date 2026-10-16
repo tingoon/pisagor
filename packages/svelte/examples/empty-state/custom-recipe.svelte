@@ -1,17 +1,17 @@
 <script lang="ts">
-import { emptyStateRecipe } from "@pisagor/recipes";
-import { Button, EmptyState } from "@pisagor/svelte";
-import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
-import { tv } from "tailwind-variants";
+  import { emptyStateRecipe } from "@pisagor/recipes";
+  import { Button, EmptyState } from "@pisagor/svelte";
+  import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
+  import { tv } from "tailwind-variants";
 
-const brandEmptyStateRecipe = tv({
-  extend: emptyStateRecipe,
-  slots: {
-    media: "bg-emerald-500/10 text-emerald-600",
-    title: "text-emerald-900 dark:text-emerald-100",
-  },
-  variants: {},
-});
+  const brandEmptyStateRecipe = tv({
+    extend: emptyStateRecipe,
+    slots: {
+      media: "bg-emerald-500/10 text-emerald-600",
+      title: "text-emerald-900 dark:text-emerald-100",
+    },
+    variants: {},
+  });
 </script>
 
 <EmptyState

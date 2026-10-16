@@ -29,9 +29,9 @@ Anchor toasts away from primary navigation and safe areas on mobile. Consistent 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Brief auto-dismissing feedback | **Toast** |
-| Persistent in-context message | [Alert](/vue/components/alert/design) |
-| Blocking decision | [Alert Dialog](/vue/components/alert-dialog/design) |
-| In-product callout | [Announcement](/vue/components/announcement/design) |
+| Need                           | Prefer                                                |
+| ------------------------------ | ----------------------------------------------------- |
+| Brief auto-dismissing feedback | **Toast**                                             |
+| Persistent in-context message  | [Alert](/vue/components/alert/design)               |
+| Blocking decision              | [Alert Dialog](/vue/components/alert-dialog/design) |
+| In-product callout             | [Announcement](/vue/components/announcement/design) |

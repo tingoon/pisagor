@@ -29,10 +29,10 @@ Panels should emerge from their trigger with matched enter and exit paths. Honor
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Section nav with flyouts | **Navigation Menu** |
-| App top bar | [Navbar](/react/components/navbar/design) |
-| Sidebar link list | [Menu](/react/components/menu/design) |
-| Action overflow on a control | [Dropdown Menu](/react/components/dropdown-menu/design) |
-| Mobile thumb tabs | [Bottom Navigation](/react/components/bottom-navigation/design) |
+| Need                         | Prefer                                                          |
+| ---------------------------- | --------------------------------------------------------------- |
+| Section nav with flyouts     | **Navigation Menu**                                             |
+| App top bar                  | [Navbar](/react/components/navbar/design)                       |
+| Sidebar link list            | [Menu](/react/components/menu/design)                           |
+| Action overflow on a control | [Dropdown Menu](/react/components/dropdown-menu/design)         |
+| Mobile thumb tabs            | [Bottom Navigation](/react/components/bottom-navigation/design) |

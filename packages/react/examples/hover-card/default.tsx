@@ -11,7 +11,7 @@ export function Default() {
           <Avatar fallback="JD" />
           <div className="flex flex-col gap-2">
             <a
-              className="font-medium text-sm underline underline-offset-4"
+              className="text-sm font-medium underline underline-offset-4"
               href="https://example.com/profile/jane.doe"
               rel="noopener"
               target="_blank"
@@ -20,7 +20,7 @@ export function Default() {
             </a>
             <p className="text-muted-foreground text-sm">Frontend Developer</p>
 
-            <p className="flex items-center gap-1 text-muted-foreground text-xs">
+            <p className="text-muted-foreground flex items-center gap-1 text-xs">
               <MapPinIcon className="size-4" />
               Joined in 2016
             </p>

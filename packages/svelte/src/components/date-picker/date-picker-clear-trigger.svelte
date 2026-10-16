@@ -1,18 +1,18 @@
 <script lang="ts">
-import {
-  DatePicker as DatePickerPrimitive,
-  useDatePickerContext,
-} from "@ark-ui/svelte/date-picker";
-import { buttonRecipe } from "@pisagor/recipes";
-import XIcon from "phosphor-svelte/lib/XIcon";
-import { useMessageResolver } from "../provider/context";
+  import {
+    DatePicker as DatePickerPrimitive,
+    useDatePickerContext,
+  } from "@ark-ui/svelte/date-picker";
+  import { buttonRecipe } from "@pisagor/recipes";
+  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { useMessageResolver } from "../provider/context";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-const api = useDatePickerContext();
-const visible = $derived(
-  !(api().disabled || api().readOnly || api().value.length === 0),
-);
+  const api = useDatePickerContext();
+  const visible = $derived(
+    !(api().disabled || api().readOnly || api().value.length === 0),
+  );
 </script>
 
 {#if visible}

@@ -24,7 +24,7 @@ function onOpenChange(details: { open: boolean }) {
         </div>
       </HoverCard.Content>
     </HoverCard>
-    <p class="text-center text-muted-foreground text-sm">
+    <p class="text-muted-foreground text-center text-sm">
       {{ open ? "✅" : "❌" }}
     </p>
   </div>

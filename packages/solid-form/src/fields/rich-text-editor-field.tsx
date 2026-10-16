@@ -15,8 +15,7 @@ type RichTextEditorControlProps = Omit<
 >;
 
 export interface RichTextEditorFieldProps
-  extends FieldPresentationProps,
-    RichTextEditorControlProps {
+  extends FieldPresentationProps, RichTextEditorControlProps {
   name?: string;
   value?: string;
   onBlur?: () => void;

@@ -64,7 +64,8 @@ const { SortableItemStateContext, useSortableItemState } =
 // #endregion
 
 export interface SortableRootProps
-  extends Omit<ComponentProps<typeof ark.div>, "onDragStart">,
+  extends
+    Omit<ComponentProps<typeof ark.div>, "onDragStart">,
     BaseSortableRootProps {
   orientation?: SortableOrientation;
   disabled?: boolean;
@@ -73,8 +74,7 @@ export interface SortableRootProps
 }
 
 export interface SortableItemProps
-  extends ComponentProps<typeof ark.div>,
-    BaseSortableItemProps {
+  extends ComponentProps<typeof ark.div>, BaseSortableItemProps {
   value: string;
 }
 

@@ -1,41 +1,39 @@
 <script lang="ts">
-import {
-  type DrawerContentProps,
-  Drawer as DrawerPrimitive,
-} from "@ark-ui/svelte/drawer";
-import { Portal } from "@ark-ui/svelte/portal";
-import type { DrawerProps as BaseDrawerProps } from "@pisagor/props";
-import { cn } from "@pisagor/utils";
-import { useDrawer } from "./drawer.context";
-import DrawerBackdrop from "./drawer-backdrop.svelte";
-import DrawerGrabber from "./drawer-grabber.svelte";
-import DrawerPositioner from "./drawer-positioner.svelte";
+  import {
+    type DrawerContentProps,
+    Drawer as DrawerPrimitive,
+  } from "@ark-ui/svelte/drawer";
+  import { Portal } from "@ark-ui/svelte/portal";
+  import type { DrawerProps as BaseDrawerProps } from "@pisagor/props";
+  import { cn } from "@pisagor/utils";
+  import { useDrawer } from "./drawer.context";
+  import DrawerBackdrop from "./drawer-backdrop.svelte";
+  import DrawerGrabber from "./drawer-grabber.svelte";
+  import DrawerPositioner from "./drawer-positioner.svelte";
 
-type Props = DrawerContentProps & BaseDrawerProps;
+  type Props = DrawerContentProps & BaseDrawerProps;
 
-const SWIPE_DIRECTION_TO_PLACEMENT = {
-  down: "bottom",
-  end: "right",
-  start: "left",
-  up: "top",
-} as const;
+  const SWIPE_DIRECTION_TO_PLACEMENT = {
+    down: "bottom",
+    end: "right",
+    start: "left",
+    up: "top",
+  } as const;
 
-let {
-  variant = "default",
-  children: contentChildren,
-  class: className,
-  ...rest
-}: Props = $props();
-const styles = useDrawer();
-const slots = $derived(styles.slots);
+  let {
+    variant = "default",
+    children: contentChildren,
+    class: className,
+    ...rest
+  }: Props = $props();
+  const styles = useDrawer();
+  const slots = $derived(styles.slots);
 </script>
 
 <Portal>
   <DrawerBackdrop />
   <DrawerPrimitive.Context>
-    {#snippet children(
-      api,
-    )}
+    {#snippet children(api)}
       {const swipeDirection = api().swipeDirection}
       <DrawerPositioner {variant}>
         <DrawerPrimitive.Content

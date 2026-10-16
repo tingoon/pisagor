@@ -12,8 +12,7 @@ type NumberInputControlProps = Omit<
 >;
 
 export interface NumberFieldProps
-  extends FieldPresentationProps,
-    NumberInputControlProps {
+  extends FieldPresentationProps, NumberInputControlProps {
   name?: string;
   value?: number;
   placeholder?: string;

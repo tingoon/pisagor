@@ -1,10 +1,10 @@
 <script lang="ts">
-import { Button, ButtonGroup } from "@pisagor/svelte";
-import BracketsCurlyIcon from "phosphor-svelte/lib/BracketsCurlyIcon";
-import ImageSquareIcon from "phosphor-svelte/lib/ImageSquareIcon";
-import TextBIcon from "phosphor-svelte/lib/TextBIcon";
-import TextItalicIcon from "phosphor-svelte/lib/TextItalicIcon";
-import TextUnderlineIcon from "phosphor-svelte/lib/TextUnderlineIcon";
+  import { Button, ButtonGroup } from "@pisagor/svelte";
+  import BracketsCurlyIcon from "phosphor-svelte/lib/BracketsCurlyIcon";
+  import ImageSquareIcon from "phosphor-svelte/lib/ImageSquareIcon";
+  import TextBIcon from "phosphor-svelte/lib/TextBIcon";
+  import TextItalicIcon from "phosphor-svelte/lib/TextItalicIcon";
+  import TextUnderlineIcon from "phosphor-svelte/lib/TextUnderlineIcon";
 </script>
 
 <ButtonGroup>

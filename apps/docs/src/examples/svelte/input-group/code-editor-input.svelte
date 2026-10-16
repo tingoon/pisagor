@@ -1,10 +1,10 @@
 <script lang="ts">
-import { InputGroup } from "@pisagor/svelte";
-import CopyIcon from "phosphor-svelte/lib/CopyIcon";
-import FileCodeIcon from "phosphor-svelte/lib/FileCodeIcon";
-import { codeEditorInputBlock } from "#/recipes/blocks/input-group";
+  import { InputGroup } from "@pisagor/svelte";
+  import CopyIcon from "phosphor-svelte/lib/CopyIcon";
+  import FileCodeIcon from "phosphor-svelte/lib/FileCodeIcon";
+  import { codeEditorInputBlock } from "#/recipes/blocks/input-group";
 
-const styles = codeEditorInputBlock();
+  const styles = codeEditorInputBlock();
 </script>
 
 <InputGroup>

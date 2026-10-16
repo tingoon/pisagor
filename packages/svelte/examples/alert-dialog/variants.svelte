@@ -1,5 +1,5 @@
 <script lang="ts">
-import { AlertDialog, Button } from "@pisagor/svelte";
+  import { AlertDialog, Button } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap gap-2">

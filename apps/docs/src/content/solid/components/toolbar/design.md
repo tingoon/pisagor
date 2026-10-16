@@ -29,9 +29,9 @@ Use [Button Group](/solid/components/button-group/design) for tightly related ac
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Section title + local actions | **Toolbar** |
-| Bulk actions after selection | [Action Bar](/solid/components/action-bar/design) |
-| App-wide navigation | [Navbar](/solid/components/navbar/design) |
-| Related buttons only | [Button Group](/solid/components/button-group/design) |
+| Need                          | Prefer                                                |
+| ----------------------------- | ----------------------------------------------------- |
+| Section title + local actions | **Toolbar**                                           |
+| Bulk actions after selection  | [Action Bar](/solid/components/action-bar/design)     |
+| App-wide navigation           | [Navbar](/solid/components/navbar/design)             |
+| Related buttons only          | [Button Group](/solid/components/button-group/design) |

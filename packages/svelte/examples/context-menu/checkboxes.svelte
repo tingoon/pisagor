@@ -1,8 +1,8 @@
 <script lang="ts">
-import { ContextMenu } from "@pisagor/svelte";
+  import { ContextMenu } from "@pisagor/svelte";
 
-let showGrid = $state(true);
-let zoom = $state("100");
+  let showGrid = $state(true);
+  let zoom = $state("100");
 </script>
 
 <ContextMenu>

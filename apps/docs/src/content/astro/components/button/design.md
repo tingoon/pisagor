@@ -29,9 +29,9 @@ Pressed feedback should appear on pointer down, not only after release. Loading 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Single committing action | **Button** |
+| Need                           | Prefer                                                |
+| ------------------------------ | ----------------------------------------------------- |
+| Single committing action       | **Button**                                            |
 | Related choices in one cluster | [Button Group](/astro/components/button-group/design) |
-| Row of section actions | Toolbar |
-| On/off immediate setting | Switch |
+| Row of section actions         | Toolbar           |
+| On/off immediate setting       | Switch             |

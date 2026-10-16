@@ -1,13 +1,13 @@
 <script lang="ts">
-import { sheetRecipe } from "@pisagor/recipes";
-import { Button, Field, Input, Sheet } from "@pisagor/svelte";
-import { tv } from "tailwind-variants";
+  import { sheetRecipe } from "@pisagor/recipes";
+  import { Button, Field, Input, Sheet } from "@pisagor/svelte";
+  import { tv } from "tailwind-variants";
 
-const brandSheetRecipe = tv({
-  extend: sheetRecipe,
-  slots: { content: "border-emerald-500/40" },
-  variants: {},
-});
+  const brandSheetRecipe = tv({
+    extend: sheetRecipe,
+    slots: { content: "border-emerald-500/40" },
+    variants: {},
+  });
 </script>
 
 <Sheet recipe={brandSheetRecipe}>

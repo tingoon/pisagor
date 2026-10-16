@@ -1,10 +1,10 @@
 <script lang="ts">
-import { Button, DropdownMenu, Table } from "@pisagor/svelte";
-import DotsThreeVerticalIcon from "phosphor-svelte/lib/DotsThreeVerticalIcon";
-import EyeIcon from "phosphor-svelte/lib/EyeIcon";
-import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";
-import TrashIcon from "phosphor-svelte/lib/TrashIcon";
-import { workspaceUsers } from "./helpers";
+  import { Button, DropdownMenu, Table } from "@pisagor/svelte";
+  import DotsThreeVerticalIcon from "phosphor-svelte/lib/DotsThreeVerticalIcon";
+  import EyeIcon from "phosphor-svelte/lib/EyeIcon";
+  import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";
+  import TrashIcon from "phosphor-svelte/lib/TrashIcon";
+  import { workspaceUsers } from "./helpers";
 </script>
 
 <Table>
@@ -26,9 +26,7 @@ import { workspaceUsers } from "./helpers";
         <Table.Cell class="text-right">
           <DropdownMenu positioning={{ placement: "left-end" }}>
             <DropdownMenu.Trigger>
-              {#snippet asChild(
-                props,
-              )}
+              {#snippet asChild(props)}
                 <Button
                   {...props()}
                   aria-label="More options"

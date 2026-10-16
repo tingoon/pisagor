@@ -7,8 +7,7 @@ import type { ComponentProps } from "react";
 export type BadgeVariant = BadgeVariantProps["variant"];
 
 export interface BadgeProps
-  extends ComponentProps<typeof ark.span>,
-    BaseBadgeProps {}
+  extends ComponentProps<typeof ark.span>, BaseBadgeProps {}
 // #endregion
 
 // #region Component

@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Button, DatePicker, Field, parseDate } from "@pisagor/svelte";
-import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
+  import { Button, DatePicker, Field, parseDate } from "@pisagor/svelte";
+  import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
 
-let value = $state([parseDate("2025-06-15")]);
+  let value = $state([parseDate("2025-06-15")]);
 </script>
 
 <div class="flex flex-col gap-2">
@@ -17,9 +17,7 @@ let value = $state([parseDate("2025-06-15")]);
     <Field.Label>Trigger variant</Field.Label>
     <DatePicker onValueChange={(next) => (value = next ?? [])} {value}>
       <DatePicker.Trigger>
-        {#snippet asChild(
-          props,
-        )}
+        {#snippet asChild(props)}
           <Button {...props()} variant="outline">
             <CalendarIcon />
             <DatePicker.ValueText placeholder="Pick a date" />

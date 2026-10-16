@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Button, ButtonGroup } from "@pisagor/svelte";
+  import { Button, ButtonGroup } from "@pisagor/svelte";
 </script>
 
 <ButtonGroup>

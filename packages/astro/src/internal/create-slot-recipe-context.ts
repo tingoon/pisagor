@@ -71,18 +71,18 @@ function dataPartOf(slot: string) {
 }
 
 /**
- * Slot-recipe helper for compound Astro components — same `{ name, recipe }`
- * / `withProvider` / `withContext` / `useStyles` surface as React / Solid /
- * Vue / Svelte `createSlotRecipeContext`, so every part emits the same
- * `data-scope` / `data-part` / variant `data-*` and recipe classes.
+ * Slot-recipe helper for compound Astro components — same `{ name, recipe }` /
+ * `withProvider` / `withContext` / `useStyles` surface as React / Solid / Vue /
+ * Svelte `createSlotRecipeContext`, so every part emits the same `data-scope` /
+ * `data-part` / variant `data-*` and recipe classes.
  *
  * Astro has no component context (parents cannot pass values to slotted
  * children), so there is no runtime provider: `withProvider` resolves the
  * root's variants and `recipe` override for the root element only, and
- * `withContext` / `useStyles` read the recipe's default-variant slots.
- * Shared recipes keep variant styling on the root slot (descendant slots are
- * variant-independent, or take their own variant prop such as `Card.Media`),
- * so the emitted classes match the context-backed frameworks.
+ * `withContext` / `useStyles` read the recipe's default-variant slots. Shared
+ * recipes keep variant styling on the root slot (descendant slots are
+ * variant-independent, or take their own variant prop such as `Card.Media`), so
+ * the emitted classes match the context-backed frameworks.
  *
  * Call once in the part frontmatter with `Astro.props` and spread the result:
  *

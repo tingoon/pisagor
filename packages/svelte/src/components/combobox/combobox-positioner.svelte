@@ -1,10 +1,10 @@
 <script lang="ts">
-import {
-  type ComboboxPositionerProps,
-  Combobox as ComboboxPrimitive,
-} from "@ark-ui/svelte/combobox";
+  import {
+    type ComboboxPositionerProps,
+    Combobox as ComboboxPrimitive,
+  } from "@ark-ui/svelte/combobox";
 
-let { children, ...rest }: ComboboxPositionerProps = $props();
+  let { children, ...rest }: ComboboxPositionerProps = $props();
 </script>
 
 <ComboboxPrimitive.Positioner {...rest}>

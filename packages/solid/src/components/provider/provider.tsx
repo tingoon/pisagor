@@ -38,8 +38,7 @@ export interface ProviderProps extends ParentProps {
 }
 
 export interface LocaleProviderProps
-  extends ParentProps,
-    Partial<LocaleConfig> {}
+  extends ParentProps, Partial<LocaleConfig> {}
 
 export interface TranslationsProviderProps extends ParentProps {
   translations?: TranslationsConfig;

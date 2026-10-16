@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Item } from "@pisagor/svelte";
+  import { Item } from "@pisagor/svelte";
 </script>
 
 <Item variant="outline">
@@ -10,7 +10,7 @@ import { Item } from "@pisagor/svelte";
       height={128}
       src="https://picsum.photos/seed/1/500/300"
       width={128}
-    >
+    />
   </Item.Header>
   <Item.Content>
     <Item.Title>Item title</Item.Title>

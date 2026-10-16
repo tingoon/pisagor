@@ -4,6 +4,7 @@ import type { CollapsibleRecipeFn } from "@pisagor/recipes";
 export interface CollapsibleProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue collapsibleRecipe
    */
   recipe?: CollapsibleRecipeFn;

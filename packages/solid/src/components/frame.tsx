@@ -20,9 +20,7 @@ const {
 
 // #region Types
 export interface FrameRootProps
-  extends ComponentProps<typeof ark.div>,
-    BaseFrameRootProps,
-    SizeScaleProps {}
+  extends ComponentProps<typeof ark.div>, BaseFrameRootProps, SizeScaleProps {}
 
 export type FramePanelProps = ComponentProps<typeof ark.div>;
 export type FrameHeaderProps = ComponentProps<typeof ark.header>;

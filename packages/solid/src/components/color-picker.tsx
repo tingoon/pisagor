@@ -47,8 +47,7 @@ export type ColorPickerRootProps = Omit<
 >;
 
 export interface ColorPickerProps
-  extends ColorPickerRootProps,
-    BaseColorPickerProps {
+  extends ColorPickerRootProps, BaseColorPickerProps {
   variant?: FormControlVariant;
   clearable?: boolean;
   defaultValue?: string;
@@ -60,8 +59,7 @@ export interface ColorPickerClearTriggerProps extends InputGroupButtonProps {
   clearable?: boolean;
 }
 
-export interface ColorPickerControlProps
-  extends ColorPickerPrimitiveControlProps {
+export interface ColorPickerControlProps extends ColorPickerPrimitiveControlProps {
   clearable?: boolean;
 }
 
@@ -397,7 +395,7 @@ export function ColorPickerArea(props: ColorPickerAreaProps): JSX.Element {
       class={styles.slots.area({
         class: cn(
           local.showDots &&
-            "after:pointer-events-none after:absolute after:inset-0 after:rounded-inherit after:bg-[radial-gradient(circle,color-mix(in_oklab,var(--color-on-media)_20%,transparent)_1px,transparent_1px)] after:bg-size-(--spacing(2))",
+            "after:rounded-inherit after:pointer-events-none after:absolute after:inset-0 after:bg-[radial-gradient(circle,color-mix(in_oklab,var(--color-on-media)_20%,transparent)_1px,transparent_1px)] after:bg-size-(--spacing(2))",
           local.class,
         ),
       })}

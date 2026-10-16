@@ -1,7 +1,7 @@
 ---
 root: false
 targets:
-  - '*'
+  - "*"
 description: Shared Svelte component patterns — package layout, compound API, context, styling, demos
 globs:
   - packages/svelte/src/**
@@ -60,10 +60,10 @@ Svelte cannot use HOCs that return components; call the helpers **once in the pa
 
 ```svelte
 <script lang="ts">
-import { withProvider } from "./alert.context";
+  import { withProvider } from "./alert.context";
 
-let { children, ...rest }: Props = $props();
-const root = withProvider(() => rest, { name: "Root", slot: "base" });
+  let { children, ...rest }: Props = $props();
+  const root = withProvider(() => rest, { name: "Root", slot: "base" });
 </script>
 
 <div {...root.props}>
@@ -73,10 +73,10 @@ const root = withProvider(() => rest, { name: "Root", slot: "base" });
 
 ```svelte
 <script lang="ts">
-import { withContext } from "./alert.context";
+  import { withContext } from "./alert.context";
 
-let { children, ...rest }: Props = $props();
-const title = withContext(() => rest, { name: "Title" });
+  let { children, ...rest }: Props = $props();
+  const title = withContext(() => rest, { name: "Title" });
 </script>
 
 <div {...title.props}>
@@ -121,11 +121,11 @@ Same contract as React — extend `BaseFooProps` from `@pisagor/props`. Template
 
 Choose **closed**, **compound**, or **compound + shorthand** per component. Same product surface as React/Vue — [Component](component.mdc) for naming; [React Component Patterns → Public API](react-component.mdc#public-api) for the decision table.
 
-| Model | Public API | Barrel (`index.ts`) |
-| ----- | ---------- | ------------------- |
-| **Closed** | `Foo` | `export { default as Foo } from "./foo.svelte"` |
-| **Compound** | `Foo.Root`, `Foo.Title`, … | `Object.assign(FooRoot, { … })` |
-| **Shorthand** | default SFC + attached parts | `Object.assign(FooShorthand, { Root, … })` |
+| Model         | Public API                   | Barrel (`index.ts`)                             |
+| ------------- | ---------------------------- | ----------------------------------------------- |
+| **Closed**    | `Foo`                        | `export { default as Foo } from "./foo.svelte"` |
+| **Compound**  | `Foo.Root`, `Foo.Title`, …   | `Object.assign(FooRoot, { … })`                 |
+| **Shorthand** | default SFC + attached parts | `Object.assign(FooShorthand, { Root, … })`      |
 
 ### Do
 

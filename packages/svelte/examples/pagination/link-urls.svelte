@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Pagination } from "@pisagor/svelte";
+  import { Pagination } from "@pisagor/svelte";
 
-const getHref = (page: number) => `/blog/page/${page}`;
+  const getHref = (page: number) => `/blog/page/${page}`;
 </script>
 
 <Pagination count={50} pageSize={10}>

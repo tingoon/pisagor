@@ -3,27 +3,19 @@ import { tv, type VariantProps } from "tailwind-variants";
 export const surfaceRecipe = tv({
   base: "text-foreground",
   defaultVariants: {
-    /**
-     * Show border.
-     */
+    /** Show border. */
     bordered: false,
-    /**
-     * Inner spacing.
-     */
+    /** Inner spacing. */
     padding: "none",
-    /**
-     * Rounded corners.
-     */
+    /** Rounded corners. */
     rounded: true,
-    /**
-     * Visual emphasis.
-     */
+    /** Visual emphasis. */
     variant: "default",
   },
   variants: {
     bordered: {
       false: "",
-      true: "border border-border/50 shadow-xs",
+      true: "border-border/50 border shadow-xs",
     },
     padding: {
       lg: "p-6",
@@ -39,7 +31,7 @@ export const surfaceRecipe = tv({
       default: "bg-background",
       glass: [
         "bg-background/72 backdrop-blur-xl backdrop-saturate-150",
-        "border border-border/40",
+        "border-border/40 border",
         "transparency-reduce:bg-background transparency-reduce:backdrop-blur-none transparency-reduce:backdrop-saturate-100",
         "contrast-more:bg-background contrast-more:backdrop-blur-none",
       ],

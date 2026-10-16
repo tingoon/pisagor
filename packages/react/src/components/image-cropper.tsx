@@ -23,13 +23,15 @@ const {
 
 // #region Types
 export interface ImageCropperRootProps
-  extends Omit<ImageCropperPrimitiveRootProps, "src" | "cropShape">,
+  extends
+    Omit<ImageCropperPrimitiveRootProps, "src" | "cropShape">,
     BaseImageCropperRootProps {
   /**
    * Image URL for the auto-rendered cropper layout.
    *
    * @remarks
-   * When provided, renders `ImageCropperImage` and `ImageCropperSelection` automatically and `children` is ignored.
+   *   When provided, renders `ImageCropperImage` and `ImageCropperSelection`
+   *   automatically and `children` is ignored.
    */
   src?: string;
   /** Alt text for the auto-rendered image. */
@@ -38,8 +40,7 @@ export interface ImageCropperRootProps
   cropShape?: "rectangle" | "circle";
 }
 
-export interface ImageCropperSelectionProps
-  extends ImageCropperPrimitiveSelectionProps {
+export interface ImageCropperSelectionProps extends ImageCropperPrimitiveSelectionProps {
   /**
    * The axis of the grid to show.
    *

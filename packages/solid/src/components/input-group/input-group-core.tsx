@@ -22,21 +22,19 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 type FormControlVariant = "primary" | "secondary";
 
 export interface InputGroupProps
-  extends ComponentProps<typeof ark.div>,
-    FormControlGroupShellVariantProps {}
+  extends ComponentProps<typeof ark.div>, FormControlGroupShellVariantProps {}
 
 export interface InputGroupAddonProps
-  extends ComponentProps<typeof ark.div>,
-    BaseInputGroupAddonProps {}
+  extends ComponentProps<typeof ark.div>, BaseInputGroupAddonProps {}
 
 export interface InputGroupButtonProps
-  extends Omit<ButtonProps, "size" | "recipe">,
+  extends
+    Omit<ButtonProps, "size" | "recipe">,
     InputGroupButtonVariantProps,
     BaseInputGroupButtonProps {}
 
 export interface InputGroupTextProps
-  extends ComponentProps<typeof ark.span>,
-    BaseInputGroupTextProps {}
+  extends ComponentProps<typeof ark.span>, BaseInputGroupTextProps {}
 
 export function InputGroupRoot(props: InputGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["size", "variant", "class"]);

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Calendar, Card } from "@pisagor/svelte";
+  import { Calendar, Card } from "@pisagor/svelte";
 </script>
 
 <Calendar>

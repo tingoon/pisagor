@@ -29,9 +29,9 @@ Do not display paths from the user’s machine that leak personal directory stru
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Display a known file row | **File** |
-| Choose and upload with progress | [File Upload](/solid/components/file-upload/design) |
-| Minimal native file picker | [File Input](/solid/components/file-input/design) |
-| Save to disk | [Download Trigger](/solid/components/download-trigger/design) |
+| Need                            | Prefer                                                        |
+| ------------------------------- | ------------------------------------------------------------- |
+| Display a known file row        | **File**                                                      |
+| Choose and upload with progress | [File Upload](/solid/components/file-upload/design)           |
+| Minimal native file picker      | [File Input](/solid/components/file-input/design)             |
+| Save to disk                    | [Download Trigger](/solid/components/download-trigger/design) |

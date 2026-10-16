@@ -26,8 +26,8 @@ export function Horizontal() {
           <div className="space-y-8">
             {horizontalSections.map((item) => (
               <div className="space-y-2.5" id={item.id} key={item.id}>
-                <h3 className="text-base text-foreground">{item.label}</h3>
-                <div className="h-87.5 rounded-2xl bg-muted" />
+                <h3 className="text-foreground text-base">{item.label}</h3>
+                <div className="bg-muted h-87.5 rounded-2xl" />
               </div>
             ))}
           </div>

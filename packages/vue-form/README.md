@@ -7,10 +7,10 @@ import { TextField } from "@pisagor/vue-form";
 import { useAppForm } from "@pisagor/vue-form/tanstack";
 ```
 
-| Entry | Path | Role |
-| ----- | ---- | ---- |
-| Fields | `@pisagor/vue-form` | Standalone field components (`TextField`, `SelectField`, …) |
-| TanStack | `@pisagor/vue-form/tanstack` | `useAppForm`, connected field components, form helpers |
+| Entry    | Path                         | Role                                                        |
+| -------- | ---------------------------- | ----------------------------------------------------------- |
+| Fields   | `@pisagor/vue-form`          | Standalone field components (`TextField`, `SelectField`, …) |
+| TanStack | `@pisagor/vue-form/tanstack` | `useAppForm`, connected field components, form helpers      |
 
 Peers: `@pisagor/vue`, `vue` ^3.5. Optional peer: `@tanstack/vue-form` (for `./tanstack` only).
 

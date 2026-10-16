@@ -8,6 +8,7 @@ import type {
 export interface InputRootProps extends InputRootVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue inputRootRecipe
    */
   recipe?: InputRootRecipeFn;
@@ -17,6 +18,7 @@ export interface InputRootProps extends InputRootVariantProps {
 export interface InputProps extends InputRootVariantProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue inputRecipe
    */
   recipe?: InputRecipeFn;

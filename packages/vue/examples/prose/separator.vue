@@ -5,7 +5,7 @@ import { Prose } from "@pisagor/vue";
 <template>
   <Prose>
     <p>First section of content.</p>
-    <hr>
+    <hr />
     <p>Second section after the divider.</p>
   </Prose>
 </template>

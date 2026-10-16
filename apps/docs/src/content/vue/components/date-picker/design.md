@@ -29,9 +29,9 @@ On small screens, ensure touch targets for days meet minimum size and that the p
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Pick a date or range with calendar | **Date Picker** |
-| Calendar surface alone | [Calendar](/vue/components/calendar/design) |
-| Field label and errors | [Field](/vue/components/field/design) |
-| Date inside a filter popover | Date Picker in [Popover](/vue/components/popover/design) |
+| Need                               | Prefer                                                     |
+| ---------------------------------- | ---------------------------------------------------------- |
+| Pick a date or range with calendar | **Date Picker**                                            |
+| Calendar surface alone             | [Calendar](/vue/components/calendar/design)              |
+| Field label and errors             | [Field](/vue/components/field/design)                    |
+| Date inside a filter popover       | Date Picker in [Popover](/vue/components/popover/design) |

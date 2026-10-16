@@ -29,9 +29,9 @@ Match corner radius and border weight to neighboring [Card](/vue/components/card
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Embedded viewport with chrome | **Frame** |
-| Proportional media box | [Aspect Ratio](/vue/components/aspect-ratio/design) |
-| Grouped static content | [Card](/vue/components/card/design) |
-| Full app layout regions | [App Shell](/vue/components/app-shell/design) |
+| Need                          | Prefer                                                |
+| ----------------------------- | ----------------------------------------------------- |
+| Embedded viewport with chrome | **Frame**                                             |
+| Proportional media box        | [Aspect Ratio](/vue/components/aspect-ratio/design) |
+| Grouped static content        | [Card](/vue/components/card/design)                 |
+| Full app layout regions       | [App Shell](/vue/components/app-shell/design)       |

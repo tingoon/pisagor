@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Button, DropdownMenu } from "@pisagor/svelte";
+  import { Button, DropdownMenu } from "@pisagor/svelte";
 
-const placements = ["left", "top", "bottom", "right"] as const;
+  const placements = ["left", "top", "bottom", "right"] as const;
 </script>
 
 <div class="flex flex-wrap justify-center gap-2">

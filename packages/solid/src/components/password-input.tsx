@@ -32,7 +32,8 @@ export type PasswordInputVisibilityTriggerProps = Omit<
 >;
 
 export interface PasswordInputProps
-  extends PasswordInputRootProps,
+  extends
+    PasswordInputRootProps,
     Omit<PasswordInputInputProps, "class" | "size">,
     BasePasswordInputProps {
   size?: InputGroupProps["size"];

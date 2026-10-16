@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Timer } from "@pisagor/svelte";
+  import { Timer } from "@pisagor/svelte";
 </script>
 
 <Timer

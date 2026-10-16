@@ -47,8 +47,10 @@ const ProgressRange = withContext(ProgressPrimitive.Range, {
 // #region Types
 type ProgressClassNames = VariantClassNames<ProgressRecipeSlot>;
 
-export interface ProgressProps
-  extends Omit<ComponentProps<typeof ProgressRoot>, "children" | "value"> {
+export interface ProgressProps extends Omit<
+  ComponentProps<typeof ProgressRoot>,
+  "children" | "value"
+> {
   /**
    * Whether to show indeterminate progress.
    *

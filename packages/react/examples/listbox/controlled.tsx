@@ -8,7 +8,7 @@ export function Controlled() {
 
   return (
     <div className="flex flex-col gap-2">
-      <p className="text-center text-muted-foreground text-sm">
+      <p className="text-muted-foreground text-center text-sm">
         Selected the Large size
       </p>
       <Item.Group variant="outline">
@@ -27,7 +27,7 @@ export function Controlled() {
           />
         </Item>
       </Item.Group>
-      <p className="text-center text-muted-foreground text-sm">
+      <p className="text-muted-foreground text-center text-sm">
         {isLarge ? "✅" : "❌"}
       </p>
     </div>

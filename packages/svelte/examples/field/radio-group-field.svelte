@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Field, RadioGroup } from "@pisagor/svelte";
+  import { Field, RadioGroup } from "@pisagor/svelte";
 </script>
 
 <Field.Set>
@@ -15,5 +15,5 @@ import { Field, RadioGroup } from "@pisagor/svelte";
       <RadioGroup.Item value="enterprise">Enterprise</RadioGroup.Item>
     </Field>
   </RadioGroup.Root>
-  <Field.Description> Select the plan that fits your needs. </Field.Description>
+  <Field.Description>Select the plan that fits your needs.</Field.Description>
 </Field.Set>

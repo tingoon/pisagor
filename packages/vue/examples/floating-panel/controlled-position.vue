@@ -49,7 +49,7 @@ function moveRight() {
             </FloatingPanel.CloseTrigger>
           </FloatingPanel.Control>
         </FloatingPanel.Header>
-        <FloatingPanel.Body class="text-center text-muted-foreground text-sm">
+        <FloatingPanel.Body class="text-muted-foreground text-center text-sm">
           <p>Position: ({{ position.x }}, {{ position.y }}).</p>
           <p>Use the buttons to move the panel.</p>
           <div class="flex flex-col items-center gap-1">

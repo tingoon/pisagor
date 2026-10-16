@@ -31,8 +31,10 @@ export const AnnouncementTitle = withContext(ark.span, {
 export type AnnouncementRootProps = ComponentProps<typeof AnnouncementRoot>;
 export type AnnouncementTitleProps = ComponentProps<typeof AnnouncementTitle>;
 
-export interface AnnouncementProps
-  extends Omit<AnnouncementRootProps, "children"> {
+export interface AnnouncementProps extends Omit<
+  AnnouncementRootProps,
+  "children"
+> {
   /** Optional badge or label rendered before the title. */
   badge?: ReactNode;
   /** Title content rendered inside `Announcement.Title`. */

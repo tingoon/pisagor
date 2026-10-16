@@ -1,8 +1,8 @@
 ---
 root: false
 targets:
-  - '*'
-description: 'Authoring rules for develop.md docs pages, their examples, and matching Storybook stories'
+  - "*"
+description: "Authoring rules for develop.md docs pages, their examples, and matching Storybook stories"
 globs:
   - apps/docs/src/content/**/develop.md
   - packages/*/examples/**/*.tsx

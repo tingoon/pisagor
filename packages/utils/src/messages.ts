@@ -136,8 +136,8 @@ export function formatMessage(
 /** Animation settings shared through `Provider` `motion`. */
 export interface MotionConfig {
   /**
-   * When true, collapses animation and transition durations (e.g. e2e and
-   * unit tests). Defaults to `false`.
+   * When true, collapses animation and transition durations (e.g. e2e and unit
+   * tests). Defaults to `false`.
    */
   disabled: boolean;
 }

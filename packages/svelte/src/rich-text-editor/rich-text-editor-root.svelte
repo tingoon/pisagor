@@ -1,142 +1,145 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import type { RichTextEditorProps as BaseRichTextEditorProps } from "@pisagor/props";
-import { formControlShellRecipe, richTextEditorRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { Editor } from "@tiptap/core";
-import StarterKit from "@tiptap/starter-kit";
-import { untrack } from "svelte";
-import type { HTMLAttributes } from "svelte/elements";
-import { useMessageResolver } from "../components/provider/context";
-import { useFormControlSurface } from "../components/surface/use-form-control-surface";
-import VisuallyHidden from "../components/visually-hidden.svelte";
-import { setRichTextEditorContext } from "./rich-text-editor.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import type { RichTextEditorProps as BaseRichTextEditorProps } from "@pisagor/props";
+  import {
+    formControlShellRecipe,
+    richTextEditorRecipe,
+  } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { Editor } from "@tiptap/core";
+  import StarterKit from "@tiptap/starter-kit";
+  import { untrack } from "svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { useMessageResolver } from "../components/provider/context";
+  import { useFormControlSurface } from "../components/surface/use-form-control-surface";
+  import VisuallyHidden from "../components/visually-hidden.svelte";
+  import { setRichTextEditorContext } from "./rich-text-editor.context";
 
-const t = useMessageResolver();
+  const t = useMessageResolver();
 
-type FormControlVariant = "primary" | "secondary";
+  type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<HTMLAttributes<HTMLFieldSetElement>, "onblur"> & {
-  variant?: FormControlVariant;
-  defaultValue?: string;
-  value?: string;
-  onValueChange?: (value: string) => void;
-  onBlur?: () => void;
-  name?: string;
-  readOnly?: boolean;
-  disabled?: boolean;
-  invalid?: boolean;
-  "aria-label"?: string | undefined | null;
-  children?: import("svelte").Snippet;
-  id?: string | undefined | null;
-} & BaseRichTextEditorProps;
+  type Props = Omit<HTMLAttributes<HTMLFieldSetElement>, "onblur"> & {
+    variant?: FormControlVariant;
+    defaultValue?: string;
+    value?: string;
+    onValueChange?: (value: string) => void;
+    onBlur?: () => void;
+    name?: string;
+    readOnly?: boolean;
+    disabled?: boolean;
+    invalid?: boolean;
+    "aria-label"?: string | undefined | null;
+    children?: import("svelte").Snippet;
+    id?: string | undefined | null;
+  } & BaseRichTextEditorProps;
 
-let {
-  variant: variantProp,
-  defaultValue,
-  disabled,
-  invalid,
-  name,
-  readOnly,
-  value,
-  "aria-label": ariaLabel,
-  children,
-  id,
-  onBlur,
-  onValueChange,
-  recipe = richTextEditorRecipe,
-  class: className,
-  ...rest
-}: Props = $props();
+  let {
+    variant: variantProp,
+    defaultValue,
+    disabled,
+    invalid,
+    name,
+    readOnly,
+    value,
+    "aria-label": ariaLabel,
+    children,
+    id,
+    onBlur,
+    onValueChange,
+    recipe = richTextEditorRecipe,
+    class: className,
+    ...rest
+  }: Props = $props();
 
-const surfaceVariant = useFormControlSurface();
-const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
-const slots = $derived(recipe());
-const resolvedAriaLabel = $derived(
-  ariaLabel ?? (id ? undefined : t("richTextEditor.label")),
-);
+  const surfaceVariant = useFormControlSurface();
+  const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
+  const slots = $derived(recipe());
+  const resolvedAriaLabel = $derived(
+    ariaLabel ?? (id ? undefined : t("richTextEditor.label")),
+  );
 
-let hostEl = $state<HTMLDivElement | null>(null);
-let editor = $state<Editor | undefined>(undefined);
-let revision = $state(0);
+  let hostEl = $state<HTMLDivElement | null>(null);
+  let editor = $state<Editor | undefined>(undefined);
+  let revision = $state(0);
 
-function registerHost(el: HTMLDivElement | null) {
-  hostEl = el;
-}
-
-$effect(() => {
-  const el = hostEl;
-  if (!el) return;
-
-  const instance = new Editor({
-    content: untrack(() => value ?? defaultValue ?? "<p></p>"),
-    editable: untrack(() => !(readOnly || disabled)),
-    editorProps: {
-      attributes: untrack(() => ({
-        ...(id ? { id } : {}),
-        "aria-invalid": invalid ? "true" : "false",
-      })),
-    },
-    element: el,
-    extensions: [StarterKit],
-    onBlur: () => {
-      onBlur?.();
-    },
-    onTransaction: () => {
-      revision += 1;
-    },
-    onUpdate: ({ editor: current }) => {
-      onValueChange?.(current.getHTML());
-    },
-  });
-  editor = instance;
-
-  return () => {
-    instance.destroy();
-    editor = undefined;
-  };
-});
-
-$effect(() => {
-  const current = editor;
-  if (!current || value === undefined) return;
-  const nextValue = value === "" ? "<p></p>" : value;
-  if (nextValue !== current.getHTML()) {
-    current.commands.setContent(nextValue, { emitUpdate: false });
+  function registerHost(el: HTMLDivElement | null) {
+    hostEl = el;
   }
-});
 
-$effect(() => {
-  editor?.setEditable(!(readOnly || disabled));
-});
+  $effect(() => {
+    const el = hostEl;
+    if (!el) return;
 
-$effect(() => {
-  const current = editor;
-  if (!current) return;
-  current.setOptions({
-    editorProps: {
-      attributes: {
-        ...(id ? { id } : {}),
-        "aria-invalid": invalid ? "true" : "false",
+    const instance = new Editor({
+      content: untrack(() => value ?? defaultValue ?? "<p></p>"),
+      editable: untrack(() => !(readOnly || disabled)),
+      editorProps: {
+        attributes: untrack(() => ({
+          ...(id ? { id } : {}),
+          "aria-invalid": invalid ? "true" : "false",
+        })),
       },
+      element: el,
+      extensions: [StarterKit],
+      onBlur: () => {
+        onBlur?.();
+      },
+      onTransaction: () => {
+        revision += 1;
+      },
+      onUpdate: ({ editor: current }) => {
+        onValueChange?.(current.getHTML());
+      },
+    });
+    editor = instance;
+
+    return () => {
+      instance.destroy();
+      editor = undefined;
+    };
+  });
+
+  $effect(() => {
+    const current = editor;
+    if (!current || value === undefined) return;
+    const nextValue = value === "" ? "<p></p>" : value;
+    if (nextValue !== current.getHTML()) {
+      current.commands.setContent(nextValue, { emitUpdate: false });
+    }
+  });
+
+  $effect(() => {
+    editor?.setEditable(!(readOnly || disabled));
+  });
+
+  $effect(() => {
+    const current = editor;
+    if (!current) return;
+    current.setOptions({
+      editorProps: {
+        attributes: {
+          ...(id ? { id } : {}),
+          "aria-invalid": invalid ? "true" : "false",
+        },
+      },
+    });
+  });
+
+  const htmlValue = $derived(value ?? editor?.getHTML() ?? defaultValue ?? "");
+
+  setRichTextEditorContext({
+    get editor() {
+      return editor;
+    },
+    registerHost,
+    get revision() {
+      return revision;
+    },
+    get slots() {
+      return slots;
     },
   });
-});
-
-const htmlValue = $derived(value ?? editor?.getHTML() ?? defaultValue ?? "");
-
-setRichTextEditorContext({
-  get editor() {
-    return editor;
-  },
-  registerHost,
-  get revision() {
-    return revision;
-  },
-  get slots() {
-    return slots;
-  },
-});
 </script>
 
 <Ark
@@ -159,7 +162,7 @@ setRichTextEditorContext({
 >
   {#if name}
     <VisuallyHidden>
-      <input {name} readonly tabindex={-1} type="hidden" value={htmlValue}>
+      <input {name} readonly tabindex={-1} type="hidden" value={htmlValue} />
     </VisuallyHidden>
   {/if}
   {@render children?.()}

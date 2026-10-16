@@ -5,7 +5,7 @@ export const breadcrumbRecipe = tv({
     ellipsis: "flex size-4 items-center justify-center [&_svg]:size-full",
     list: [
       "flex flex-wrap items-center gap-1.5 sm:gap-2.5",
-      "wrap-break-word text-muted-foreground text-sm",
+      "text-muted-foreground text-sm wrap-break-word",
     ],
     separator: ["inline-flex items-center opacity-64 [&_svg]:size-4"],
   },
@@ -17,12 +17,12 @@ export const breadcrumbItemRecipe = tv({
     link: [
       "text-nowrap",
       "rounded-md border border-transparent",
-      "transition-colors duration-fast ease-out",
+      "duration-fast transition-colors ease-out",
       "hover:text-foreground",
-      "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+      "focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/32 focus-visible:ring-offset-background outline-hidden focus-visible:ring-offset-2",
       "motion-reduce:transition-none!",
     ],
-    page: ["font-normal text-foreground"],
+    page: ["text-foreground font-normal"],
   },
 });
 

@@ -2,9 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const frameRecipe = tv({
   defaultVariants: {
-    /**
-     * Size scale.
-     */
+    /** Size scale. */
     size: "md",
   },
   slots: {
@@ -20,12 +18,12 @@ export const frameRecipe = tv({
       "relative",
       "p-5",
       "bg-card",
-      "rounded-xl border border-border/50 shadow-xs",
+      "border-border/50 rounded-xl border shadow-xs",
     ],
     panelDescription: ["text-muted-foreground text-sm leading-relaxed"],
     panelFooter: ["px-5 py-4"],
     panelHeader: ["flex flex-col", "px-5 py-4"],
-    panelTitle: ["font-semibold text-sm tracking-tight"],
+    panelTitle: ["text-sm font-semibold tracking-tight"],
   },
   variants: {
     size: {

@@ -17,7 +17,7 @@ export function SliderControlled() {
           <ColorPicker.ChannelSlider channel="hue" />
         </ColorPicker.View>
       </ColorPicker>
-      <p className="text-center text-muted-foreground text-sm">{color}</p>
+      <p className="text-muted-foreground text-center text-sm">{color}</p>
     </div>
   );
 }

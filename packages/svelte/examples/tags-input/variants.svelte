@@ -1,7 +1,7 @@
 <script lang="ts">
-import { TagsInput } from "@pisagor/svelte";
+  import { TagsInput } from "@pisagor/svelte";
 
-const defaultValue = ["React", "Solid"];
+  const defaultValue = ["React", "Solid"];
 </script>
 
 <div class="flex flex-col gap-2">

@@ -29,9 +29,9 @@ Place announcements in predictable chrome — top of [App Shell](/svelte/compone
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Promo or product news | **Announcement** |
-| System or form status | [Alert](/svelte/components/alert/design) |
-| Timed transient notice | [Toast](/svelte/components/toast/design) |
-| App-wide top chrome | [App Shell](/svelte/components/app-shell/design) |
+| Need                   | Prefer                                          |
+| ---------------------- | ----------------------------------------------- |
+| Promo or product news  | **Announcement**                                |
+| System or form status  | [Alert](/svelte/components/alert/design)         |
+| Timed transient notice | [Toast](/svelte/components/toast/design)         |
+| App-wide top chrome    | [App Shell](/svelte/components/app-shell/design) |

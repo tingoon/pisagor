@@ -18,7 +18,10 @@ type SlotClassProps = {
   class?: ClassValue;
 };
 
-/** Component-facing `class` prop: Vue accepts any class binding (string, array, object). */
+/**
+ * Component-facing `class` prop: Vue accepts any class binding (string, array,
+ * object).
+ */
 type PartClassProps = {
   class?: unknown;
 };
@@ -35,8 +38,8 @@ export type SlotRecipeFn = ((
 
 /**
  * Styles exposed through provide/inject. Fields are computed-backed getters:
- * read them inside render functions / computed (do not destructure in
- * `setup`) to stay reactive.
+ * read them inside render functions / computed (do not destructure in `setup`)
+ * to stay reactive.
  */
 export interface SlotRecipeStyles<
   Slots extends Record<string, SlotFn>,
@@ -98,7 +101,10 @@ function toKebabCase(value: string) {
     .toLowerCase();
 }
 
-/** `true` / `false`-only variants are declared `Boolean` so `<X inset />` works in templates. */
+/**
+ * `true` / `false`-only variants are declared `Boolean` so `<X inset />` works
+ * in templates.
+ */
 function isBooleanVariant(options: unknown) {
   if (typeof options !== "object" || options === null) return false;
 
@@ -130,7 +136,8 @@ function runtimePropsOf(recipe: SlotRecipeFn, withVariants: boolean) {
 
 /**
  * Slot-recipe parts expose `name` on the component object (DevTools, Storybook
- * `subcomponents`, which expects component options rather than a bare constructor).
+ * `subcomponents`, which expects component options rather than a bare
+ * constructor).
  */
 export type SlotRecipePart<Props extends object> =
   DefineSetupFnComponent<Props> & {
@@ -186,14 +193,17 @@ export function createSlotRecipeContext<
   }
 
   /**
-   * Provide styles from `setup` for hand-written roots. Pass getters
-   * (`{ get slots() { return slots.value; }, … }`) to stay reactive.
+   * Provide styles from `setup` for hand-written roots. Pass getters (`{ get
+   * slots() { return slots.value; }, … }`) to stay reactive.
    */
   function provideStyles(styles: Styles) {
     provide(key, styles);
   }
 
-  /** Renderless provider (`h(Context, { value }, slots)`), React `<Context value>` parity. */
+  /**
+   * Renderless provider (`h(Context, { value }, slots)`), React `<Context
+   * value>` parity.
+   */
   const Context = defineComponent<{ value: Styles }>(
     (props, { slots }) => {
       provideStyles({

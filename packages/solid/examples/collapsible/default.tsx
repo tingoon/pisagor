@@ -25,7 +25,7 @@ export function Default() {
         <Collapsible.Content class="text-sm">
           <div class="mt-(--space) grid gap-3 px-(--space)">
             <div class="grid grid-cols-3 items-center gap-2">
-              <div class="col-span-2 text-muted-foreground">Google</div>
+              <div class="text-muted-foreground col-span-2">Google</div>
               <div class="place-self-end">
                 <Badge variant="success">22.3%</Badge>
               </div>

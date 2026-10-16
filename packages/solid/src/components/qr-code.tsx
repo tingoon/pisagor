@@ -20,8 +20,7 @@ const {
 // #endregion
 
 export interface LocalQrCodeRootProps
-  extends QrCodePrimitiveRootProps,
-    BaseQrCodeRootProps {}
+  extends QrCodePrimitiveRootProps, BaseQrCodeRootProps {}
 
 export type QrCodeDownloadProps = QrCodeDownloadTriggerProps;
 

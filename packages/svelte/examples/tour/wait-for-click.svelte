@@ -1,64 +1,64 @@
 <script lang="ts">
-import { waitForEvent } from "@ark-ui/svelte/tour";
-import { buttonRecipe } from "@pisagor/recipes";
-import { Button, Tour, type TourStepDetails } from "@pisagor/svelte";
+  import { waitForEvent } from "@ark-ui/svelte/tour";
+  import { buttonRecipe } from "@pisagor/recipes";
+  import { Button, Tour, type TourStepDetails } from "@pisagor/svelte";
 
-const steps: TourStepDetails[] = [
-  {
-    actions: [{ action: "next", label: "Begin" }],
-    description:
-      "This tour will guide you through actions. You must complete each step to proceed.",
-    id: "intro",
-    title: "Interactive tutorial",
-    type: "dialog",
-  },
-  {
-    description: "Select the add button to continue.",
-    effect({ next, target, show }) {
-      show();
-      const [promise, cancel] = waitForEvent(target, "click");
-      promise.then(() => next());
-      return cancel;
+  const steps: TourStepDetails[] = [
+    {
+      actions: [{ action: "next", label: "Begin" }],
+      description:
+        "This tour will guide you through actions. You must complete each step to proceed.",
+      id: "intro",
+      title: "Interactive tutorial",
+      type: "dialog",
     },
-    id: "click-add",
-    target: () => document.querySelector<HTMLElement>("#btn-add"),
-    title: "Select the add button",
-    type: "tooltip",
-  },
-  {
-    description: "Select the edit button to continue.",
-    effect({ next, target, show }) {
-      show();
-      const [promise, cancel] = waitForEvent(target, "click");
-      promise.then(() => next());
-      return cancel;
+    {
+      description: "Select the add button to continue.",
+      effect({ next, target, show }) {
+        show();
+        const [promise, cancel] = waitForEvent(target, "click");
+        promise.then(() => next());
+        return cancel;
+      },
+      id: "click-add",
+      target: () => document.querySelector<HTMLElement>("#btn-add"),
+      title: "Select the add button",
+      type: "tooltip",
     },
-    id: "click-edit",
-    target: () => document.querySelector<HTMLElement>("#btn-edit"),
-    title: "Select the edit button",
-    type: "tooltip",
-  },
-  {
-    description: "Select the delete button to continue.",
-    effect({ next, target, show }) {
-      show();
-      const [promise, cancel] = waitForEvent(target, "click");
-      promise.then(() => next());
-      return cancel;
+    {
+      description: "Select the edit button to continue.",
+      effect({ next, target, show }) {
+        show();
+        const [promise, cancel] = waitForEvent(target, "click");
+        promise.then(() => next());
+        return cancel;
+      },
+      id: "click-edit",
+      target: () => document.querySelector<HTMLElement>("#btn-edit"),
+      title: "Select the edit button",
+      type: "tooltip",
     },
-    id: "click-delete",
-    target: () => document.querySelector<HTMLElement>("#btn-delete"),
-    title: "Select the delete button",
-    type: "tooltip",
-  },
-  {
-    actions: [{ action: "dismiss", label: "Finish" }],
-    description: "You completed all the interactive steps.",
-    id: "complete",
-    title: "You're ready to continue",
-    type: "dialog",
-  },
-];
+    {
+      description: "Select the delete button to continue.",
+      effect({ next, target, show }) {
+        show();
+        const [promise, cancel] = waitForEvent(target, "click");
+        promise.then(() => next());
+        return cancel;
+      },
+      id: "click-delete",
+      target: () => document.querySelector<HTMLElement>("#btn-delete"),
+      title: "Select the delete button",
+      type: "tooltip",
+    },
+    {
+      actions: [{ action: "dismiss", label: "Finish" }],
+      description: "You completed all the interactive steps.",
+      id: "complete",
+      title: "You're ready to continue",
+      type: "dialog",
+    },
+  ];
 </script>
 
 <div class="flex flex-col gap-2">

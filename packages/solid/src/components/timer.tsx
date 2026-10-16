@@ -39,17 +39,17 @@ const {
 type TimerUnit = "hours" | "minutes" | "seconds";
 
 export interface TimerItemGroupProps
-  extends ComponentProps<typeof ark.div>,
-    BaseTimerItemGroupProps {
+  extends ComponentProps<typeof ark.div>, BaseTimerItemGroupProps {
   orientation?: "horizontal" | "vertical";
 }
 
-export interface TimerActionProps
-  extends Omit<TimerActionTriggerProps, "action"> {}
+export interface TimerActionProps extends Omit<
+  TimerActionTriggerProps,
+  "action"
+> {}
 
 export interface TimerRootProps
-  extends TimerPrimitiveRootProps,
-    BaseTimerRootProps {
+  extends TimerPrimitiveRootProps, BaseTimerRootProps {
   units?: TimerUnit[];
   isControlsVisible?: boolean;
 }
@@ -120,7 +120,10 @@ export function TimerItemGroup(props: TimerItemGroupProps): JSX.Element {
   );
 }
 
-/** Usable inside or outside `Timer.ItemGroup` (falls back to the default item-group recipe). */
+/**
+ * Usable inside or outside `Timer.ItemGroup` (falls back to the default
+ * item-group recipe).
+ */
 export function TimerItem(props: TimerItemProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useContext(TimerItemGroupStylesContext);

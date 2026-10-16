@@ -1,7 +1,7 @@
 <script lang="ts">
-import { Toggle } from "@pisagor/svelte";
+  import { Toggle } from "@pisagor/svelte";
 
-let pressed = $state(false);
+  let pressed = $state(false);
 </script>
 
 <div class="flex flex-col items-center gap-2">

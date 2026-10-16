@@ -29,9 +29,9 @@ Treat collapsible content as supplementary unless labeled otherwise. Lead with t
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| One show/hide section | **Collapsible** |
+| Need                         | Prefer                                          |
+| ---------------------------- | ----------------------------------------------- |
+| One show/hide section        | **Collapsible**                                 |
 | Multiple expandable sections | [Accordion](/solid/components/accordion/design) |
-| Peer views switched often | [Tabs](/solid/components/tabs/design) |
-| Lightweight hint on hover | [Tooltip](/solid/components/tooltip/design) |
+| Peer views switched often    | [Tabs](/solid/components/tabs/design)           |
+| Lightweight hint on hover    | [Tooltip](/solid/components/tooltip/design)     |

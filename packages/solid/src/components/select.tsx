@@ -74,15 +74,18 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
   onValueChange?: (value: string | string[]) => void;
 } & BaseSelectRootProps;
 
-export interface SelectProps
-  extends Omit<SelectRootProps, "children" | "collection"> {
+export interface SelectProps extends Omit<
+  SelectRootProps,
+  "children" | "collection"
+> {
   clearable?: boolean;
   items?: Array<SelectPresetItem | string>;
   placeholder?: string;
 }
 
 export interface SelectTriggerProps
-  extends Omit<SelectPrimitiveTriggerProps, "size">,
+  extends
+    Omit<SelectPrimitiveTriggerProps, "size">,
     FormControlShellVariantProps {
   clearable?: boolean;
 }

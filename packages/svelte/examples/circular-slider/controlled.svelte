@@ -1,7 +1,7 @@
 <script lang="ts">
-import { CircularSlider } from "@pisagor/svelte";
+  import { CircularSlider } from "@pisagor/svelte";
 
-let value = $state(45);
+  let value = $state(45);
 </script>
 
 <div class="flex flex-col gap-2">
@@ -11,7 +11,7 @@ let value = $state(45);
     onValueChange={(v) => (value = v)}
     {value}
   />
-  <div class="text-center text-muted-foreground text-sm">
+  <div class="text-muted-foreground text-center text-sm">
     {value > 180 ? "✅" : "❌"}
   </div>
 </div>

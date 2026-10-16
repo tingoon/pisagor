@@ -1,10 +1,10 @@
 <script lang="ts">
-import {
-  DatePicker as CalendarPrimitive,
-  type DatePickerClearTriggerProps,
-} from "@ark-ui/svelte/date-picker";
+  import {
+    DatePicker as CalendarPrimitive,
+    type DatePickerClearTriggerProps,
+  } from "@ark-ui/svelte/date-picker";
 
-let { children, ...rest }: DatePickerClearTriggerProps = $props();
+  let { children, ...rest }: DatePickerClearTriggerProps = $props();
 </script>
 
 <CalendarPrimitive.ClearTrigger {...rest}

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Autocomplete } from "@pisagor/svelte";
+  import { Autocomplete } from "@pisagor/svelte";
 </script>
 
 <Autocomplete

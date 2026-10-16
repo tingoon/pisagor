@@ -29,9 +29,9 @@ Arrow keys move between items; Space or Enter toggles the focused item according
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Visible toggled option set | **Toggle Group** |
-| Compact single choice | [Segment Group](/vue/components/segment-group/design) |
-| Action cluster | [Button Group](/vue/components/button-group/design) |
-| Single toolbar toggle | [Toggle](/vue/components/toggle/design) |
+| Need                       | Prefer                                                  |
+| -------------------------- | ------------------------------------------------------- |
+| Visible toggled option set | **Toggle Group**                                        |
+| Compact single choice      | [Segment Group](/vue/components/segment-group/design) |
+| Action cluster             | [Button Group](/vue/components/button-group/design)   |
+| Single toolbar toggle      | [Toggle](/vue/components/toggle/design)               |

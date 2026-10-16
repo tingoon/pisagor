@@ -25,9 +25,9 @@ Prefer Breadcrumb when parent pages are real destinations; prefer a flat [Navbar
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Hierarchical back navigation | **Breadcrumb** |
-| Sibling section switching | [Tabs](/vue/components/tabs/design) |
-| Deep tree browsing | [Tree View](/vue/components/tree-view/design) |
-| Global top links | [Navbar](/vue/components/navbar/design) |
+| Need                         | Prefer                                          |
+| ---------------------------- | ----------------------------------------------- |
+| Hierarchical back navigation | **Breadcrumb**                                  |
+| Sibling section switching    | [Tabs](/vue/components/tabs/design)           |
+| Deep tree browsing           | [Tree View](/vue/components/tree-view/design) |
+| Global top links             | [Navbar](/vue/components/navbar/design)       |

@@ -1,23 +1,24 @@
 <script lang="ts">
-import { Table } from "@pisagor/svelte";
-import type { RowSelectionState } from "@pisagor/svelte/data-grid";
-import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
-import { allUsers, type User, userColumns } from "./helpers";
+  import { Table } from "@pisagor/svelte";
+  import type { RowSelectionState } from "@pisagor/svelte/data-grid";
+  import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
+  import { allUsers, type User, userColumns } from "./helpers";
 
-const columns = [...userColumns];
-let rowSelection = $state<RowSelectionState>({ "1": true, "2": true });
-let globalFilter = $state("");
+  const columns = [...userColumns];
+  let rowSelection = $state<RowSelectionState>({ "1": true, "2": true });
+  let globalFilter = $state("");
 
-function onRowSelectionChange(
-  updater: RowSelectionState | ((prev: RowSelectionState) => RowSelectionState),
-) {
-  rowSelection =
-    typeof updater === "function" ? updater(rowSelection) : updater;
-}
+  function onRowSelectionChange(
+    updater:
+      RowSelectionState | ((prev: RowSelectionState) => RowSelectionState),
+  ) {
+    rowSelection =
+      typeof updater === "function" ? updater(rowSelection) : updater;
+  }
 </script>
 
 <div class="flex w-full flex-col gap-3">
-  <div class="rounded-xl border bg-muted/20 p-3">
+  <div class="bg-muted/20 rounded-xl border p-3">
     <DataGrid
       {columns}
       data={allUsers}
@@ -30,11 +31,11 @@ function onRowSelectionChange(
     >
       <DataGrid.Toolbar class="flex flex-wrap items-center gap-3">
         <input
-          class="h-8 rounded-md border bg-background px-2 text-sm"
+          class="bg-background h-8 rounded-md border px-2 text-sm"
           oninput={(e) => (globalFilter = e.currentTarget.value)}
           placeholder="Filter all columns…"
           value={globalFilter}
-        >
+        />
         <p class="text-muted-foreground text-sm">
           Selected {Object.values(rowSelection).filter(Boolean).length}
         </p>

@@ -29,9 +29,9 @@ When rows are selectable, show a selection column, update counts in toolbar or [
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Structured interactive table | **Data Table** |
-| Advanced grid editing and virtualization | [Data Grid](/vue/components/data-grid/design) |
-| Compact static markup table | [Table](/vue/components/table/design) |
-| No rows yet | [Empty State](/vue/components/empty-state/design) |
+| Need                                     | Prefer                                              |
+| ---------------------------------------- | --------------------------------------------------- |
+| Structured interactive table             | **Data Table**                                      |
+| Advanced grid editing and virtualization | [Data Grid](/vue/components/data-grid/design)     |
+| Compact static markup table              | [Table](/vue/components/table/design)             |
+| No rows yet                              | [Empty State](/vue/components/empty-state/design) |

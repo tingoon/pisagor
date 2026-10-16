@@ -45,19 +45,19 @@ export function Skip() {
         </Tour.Trigger>
         <div className="flex flex-wrap gap-2">
           <div
-            className="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+            className="border-border bg-muted flex items-center justify-center rounded-lg border px-8 py-4 text-sm font-medium"
             id="tour-item-1"
           >
             Item 1
           </div>
           <div
-            className="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+            className="border-border bg-muted flex items-center justify-center rounded-lg border px-8 py-4 text-sm font-medium"
             id="tour-item-2"
           >
             Item 2
           </div>
           <div
-            className="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+            className="border-border bg-muted flex items-center justify-center rounded-lg border px-8 py-4 text-sm font-medium"
             id="tour-item-3"
           >
             Item 3

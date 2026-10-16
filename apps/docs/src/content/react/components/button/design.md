@@ -29,9 +29,9 @@ Pressed feedback should appear on pointer down, not only after release. Loading 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Single committing action | **Button** |
+| Need                           | Prefer                                                |
+| ------------------------------ | ----------------------------------------------------- |
+| Single committing action       | **Button**                                            |
 | Related choices in one cluster | [Button Group](/react/components/button-group/design) |
-| Row of section actions | [Toolbar](/react/components/toolbar/design) |
-| On/off immediate setting | [Switch](/react/components/switch/design) |
+| Row of section actions         | [Toolbar](/react/components/toolbar/design)           |
+| On/off immediate setting       | [Switch](/react/components/switch/design)             |

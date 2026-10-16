@@ -1,14 +1,14 @@
 <script lang="ts">
-import { createListCollection } from "@ark-ui/svelte/collection";
-import { Select } from "@pisagor/svelte";
+  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { Select } from "@pisagor/svelte";
 
-const collection = createListCollection({
-  items: [
-    { label: "Next.js", value: "next" },
-    { label: "Vite", value: "vite" },
-    { label: "Astro", value: "astro" },
-  ],
-});
+  const collection = createListCollection({
+    items: [
+      { label: "Next.js", value: "next" },
+      { label: "Vite", value: "vite" },
+      { label: "Astro", value: "astro" },
+    ],
+  });
 </script>
 
 <Select.Root {collection} disabled>

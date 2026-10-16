@@ -29,10 +29,10 @@ Use titles for scanning and body text for nuance. Success messages can be shorte
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Persistent in-context message | **Alert** |
-| Brief auto-dismissing feedback | Toast |
-| Blocking confirmation | Alert Dialog |
-| Compact metadata label | [Badge](/astro/components/badge/design) |
-| Product or promo callout | [Announcement](/astro/components/announcement/design) |
+| Need                           | Prefer                                                |
+| ------------------------------ | ----------------------------------------------------- |
+| Persistent in-context message  | **Alert**                                             |
+| Brief auto-dismissing feedback | Toast               |
+| Blocking confirmation          | Alert Dialog |
+| Compact metadata label         | [Badge](/astro/components/badge/design)               |
+| Product or promo callout       | [Announcement](/astro/components/announcement/design) |

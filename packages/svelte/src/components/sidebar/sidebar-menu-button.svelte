@@ -1,46 +1,45 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
-import type { ComponentProps } from "svelte";
-import Button from "../button.svelte";
-import Tooltip from "../tooltip/tooltip.svelte";
-import { useSidebar } from "./sidebar.context";
+  import { cn } from "@pisagor/utils";
+  import type { ComponentProps } from "svelte";
+  import Button from "../button.svelte";
+  import Tooltip from "../tooltip/tooltip.svelte";
+  import { useSidebar } from "./sidebar.context";
 
-type TooltipConfig = Omit<ComponentProps<typeof Tooltip>, "children">;
+  type TooltipConfig = Omit<ComponentProps<typeof Tooltip>, "children">;
 
-type Props = ComponentProps<typeof Button> & {
-  /**
-   * Whether the button is active.
-   * @defaultValue false
-   */
-  isActive?: boolean;
-  /**
-   * The tooltip to display when hovering over the button.
-   */
-  tooltip?: string | TooltipConfig;
-};
+  type Props = ComponentProps<typeof Button> & {
+    /**
+     * Whether the button is active.
+     *
+     * @defaultValue false
+     */
+    isActive?: boolean;
+    /** The tooltip to display when hovering over the button. */
+    tooltip?: string | TooltipConfig;
+  };
 
-let {
-  size = "md",
-  variant = "ghost",
-  isActive = false,
-  tooltip,
-  class: className,
-  children,
-  clickEffect = false,
-  ...rest
-}: Props = $props();
+  let {
+    size = "md",
+    variant = "ghost",
+    isActive = false,
+    tooltip,
+    class: className,
+    children,
+    clickEffect = false,
+    ...rest
+  }: Props = $props();
 
-const ctx = useSidebar();
+  const ctx = useSidebar();
 
-const tooltipProps = $derived.by((): TooltipConfig | undefined => {
-  if (!tooltip) return undefined;
-  if (typeof tooltip === "string") return { content: tooltip };
-  return tooltip;
-});
+  const tooltipProps = $derived.by((): TooltipConfig | undefined => {
+    if (!tooltip) return undefined;
+    if (typeof tooltip === "string") return { content: tooltip };
+    return tooltip;
+  });
 
-const showTooltip = $derived(
-  Boolean(tooltipProps) && ctx.state === "collapsed" && !ctx.isMobile,
-);
+  const showTooltip = $derived(
+    Boolean(tooltipProps) && ctx.state === "collapsed" && !ctx.isMobile,
+  );
 </script>
 
 {#if showTooltip && tooltipProps}

@@ -29,9 +29,9 @@ Pair Surface with [Separator](/vue/components/separator/design) or spacing utili
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Background layer for a group | **Surface** |
-| Titled content block | [Card](/vue/components/card/design) |
-| Media or document frame | [Frame](/vue/components/frame/design) |
-| Page shell layout | [App Shell](/vue/components/app-shell/design) |
+| Need                         | Prefer                                          |
+| ---------------------------- | ----------------------------------------------- |
+| Background layer for a group | **Surface**                                     |
+| Titled content block         | [Card](/vue/components/card/design)           |
+| Media or document frame      | [Frame](/vue/components/frame/design)         |
+| Page shell layout            | [App Shell](/vue/components/app-shell/design) |

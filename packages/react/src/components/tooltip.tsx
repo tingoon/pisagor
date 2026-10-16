@@ -24,8 +24,7 @@ const { Context: TooltipStylesContext, withContext } = createSlotRecipeContext({
 
 // #region Types
 export interface TooltipRootProps
-  extends TooltipPrimitiveRootProps,
-    BaseTooltipRootProps {}
+  extends TooltipPrimitiveRootProps, BaseTooltipRootProps {}
 
 type TooltipContextApi = Parameters<TooltipContextProps["children"]>[0];
 
@@ -40,7 +39,10 @@ export type TooltipTriggerHandle = (
 type TooltipClassNames = VariantClassNames<TooltipRecipeSlot>;
 
 export interface TooltipProps extends Omit<TooltipRootProps, "children"> {
-  /** Trigger element or render function that receives trigger props from the handle API */
+  /**
+   * Trigger element or render function that receives trigger props from the
+   * handle API
+   */
   children: ReactElement | TooltipTriggerHandle;
   /** Tooltip text or content */
   content: ReactNode;

@@ -5,10 +5,10 @@ import type { ComponentProps, CSSProperties } from "react";
 
 // #region Types
 export interface AspectRatioProps
-  extends ComponentProps<typeof ark.div>,
-    BaseAspectRatioProps {
+  extends ComponentProps<typeof ark.div>, BaseAspectRatioProps {
   /**
-   * Width divided by height, e.g. `16 / 9`. Overrides the `--ratio` CSS variable.
+   * Width divided by height, e.g. `16 / 9`. Overrides the `--ratio` CSS
+   * variable.
    *
    * @defaultValue 1
    */

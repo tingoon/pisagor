@@ -25,9 +25,9 @@ Prefer Checkbox when selection submits with a form; prefer [Switch](/vue/compone
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Multi-select or boolean in forms | **Checkbox** |
-| Immediate on/off setting | [Switch](/vue/components/switch/design) |
-| Exactly one of several options | [Radio Group](/vue/components/radio-group/design) |
-| Select all rows in a table | [Action Bar](/vue/components/action-bar/design) with row selection |
+| Need                             | Prefer                                                               |
+| -------------------------------- | -------------------------------------------------------------------- |
+| Multi-select or boolean in forms | **Checkbox**                                                         |
+| Immediate on/off setting         | [Switch](/vue/components/switch/design)                            |
+| Exactly one of several options   | [Radio Group](/vue/components/radio-group/design)                  |
+| Select all rows in a table       | [Action Bar](/vue/components/action-bar/design) with row selection |

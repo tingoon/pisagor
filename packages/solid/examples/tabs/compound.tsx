@@ -9,19 +9,19 @@ export function Compound() {
         <Tabs.Trigger value="tab-3">Security</Tabs.Trigger>
       </Tabs.List>
       <Tabs.Content
-        class="p-4 text-center text-muted-foreground text-xs"
+        class="text-muted-foreground p-4 text-center text-xs"
         value="tab-1"
       >
         Profile content
       </Tabs.Content>
       <Tabs.Content
-        class="p-4 text-center text-muted-foreground text-xs"
+        class="text-muted-foreground p-4 text-center text-xs"
         value="tab-2"
       >
         Settings content
       </Tabs.Content>
       <Tabs.Content
-        class="p-4 text-center text-muted-foreground text-xs"
+        class="text-muted-foreground p-4 text-center text-xs"
         value="tab-3"
       >
         Security content

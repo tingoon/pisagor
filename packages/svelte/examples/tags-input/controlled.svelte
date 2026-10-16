@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Field, TagsInput } from "@pisagor/svelte";
+  import { Field, TagsInput } from "@pisagor/svelte";
 
-const initialValue = ["React", "Solid"];
-let value = $state(initialValue);
+  const initialValue = ["React", "Solid"];
+  let value = $state(initialValue);
 </script>
 
 <Field>

@@ -29,9 +29,9 @@ Hide the rail behind a menu control; open navigation in a sheet with the same li
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Persistent app navigation rail | **Sidebar** |
-| Top horizontal nav | [Navbar](/react/components/navbar/design) |
-| Temporary mobile nav | [Sheet](/react/components/sheet/design) |
-| Page layout regions | [App Shell](/react/components/app-shell/design) |
+| Need                           | Prefer                                          |
+| ------------------------------ | ----------------------------------------------- |
+| Persistent app navigation rail | **Sidebar**                                     |
+| Top horizontal nav             | [Navbar](/react/components/navbar/design)       |
+| Temporary mobile nav           | [Sheet](/react/components/sheet/design)         |
+| Page layout regions            | [App Shell](/react/components/app-shell/design) |

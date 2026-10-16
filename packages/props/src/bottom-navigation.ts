@@ -7,6 +7,7 @@ import type {
 export interface BottomNavigationProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue bottomNavigationRecipe
    */
   recipe?: BottomNavigationRecipeFn;
@@ -16,6 +17,7 @@ export interface BottomNavigationProps {
 export interface BottomNavigationItemProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue bottomNavigationItemRecipe
    */
   recipe?: BottomNavigationItemRecipeFn;

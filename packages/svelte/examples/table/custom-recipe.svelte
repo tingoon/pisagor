@@ -1,25 +1,25 @@
 <script lang="ts">
-import { tableRecipe } from "@pisagor/recipes";
+  import { tableRecipe } from "@pisagor/recipes";
 
-import { Badge, Table } from "@pisagor/svelte";
-import { tv } from "tailwind-variants";
-import { workspaceUsers } from "./helpers";
+  import { Badge, Table } from "@pisagor/svelte";
+  import { tv } from "tailwind-variants";
+  import { workspaceUsers } from "./helpers";
 
-const brandTableRecipe = tv({
-  extend: tableRecipe,
-  slots: {
-    head: "text-emerald-900 dark:text-emerald-100",
-    header: "bg-emerald-500/5",
-    row: "hover:bg-emerald-500/5",
-  },
-  variants: {},
-});
+  const brandTableRecipe = tv({
+    extend: tableRecipe,
+    slots: {
+      head: "text-emerald-900 dark:text-emerald-100",
+      header: "bg-emerald-500/5",
+      row: "hover:bg-emerald-500/5",
+    },
+    variants: {},
+  });
 
-const statusVariants: Record<string, "success" | "destructive" | "info"> = {
-  active: "success",
-  inactive: "destructive",
-  invited: "info",
-};
+  const statusVariants: Record<string, "success" | "destructive" | "info"> = {
+    active: "success",
+    inactive: "destructive",
+    invited: "info",
+  };
 </script>
 
 <Table recipe={brandTableRecipe}>

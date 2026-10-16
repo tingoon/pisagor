@@ -1,23 +1,19 @@
 <script lang="ts">
-import { ColorPicker, InputGroup } from "@pisagor/svelte";
+  import { ColorPicker, InputGroup } from "@pisagor/svelte";
 </script>
 
 <ColorPicker defaultValue="#eb5e41" format="hsla">
   <ColorPicker.Control>
     <InputGroup>
       <ColorPicker.Trigger>
-        {#snippet asChild(
-          props,
-        )}
+        {#snippet asChild(props)}
           <InputGroup.Addon {...props()}>
             <ColorPicker.SwatchPreview />
           </InputGroup.Addon>
         {/snippet}
       </ColorPicker.Trigger>
       <ColorPicker.Input channel="hex">
-        {#snippet asChild(
-          props,
-        )}
+        {#snippet asChild(props)}
           <InputGroup.Input {...props()} />
         {/snippet}
       </ColorPicker.Input>

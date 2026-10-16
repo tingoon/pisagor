@@ -4,6 +4,7 @@ import type { JsonTreeViewRecipeFn } from "@pisagor/recipes";
 export interface JsonTreeViewProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue jsonTreeViewRecipe
    */
   recipe?: JsonTreeViewRecipeFn;

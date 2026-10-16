@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Button, Card } from "@pisagor/svelte";
-import CurrencyDollarIcon from "phosphor-svelte/lib/CurrencyDollarIcon";
+  import { Button, Card } from "@pisagor/svelte";
+  import CurrencyDollarIcon from "phosphor-svelte/lib/CurrencyDollarIcon";
 </script>
 
 <Card>
@@ -12,9 +12,9 @@ import CurrencyDollarIcon from "phosphor-svelte/lib/CurrencyDollarIcon";
     title="Get 15% off"
   />
   <Card.Content>
-    <pre
-      class="rounded-md bg-muted p-2 text-center font-medium text-sm"
-    ><code>15OFF</code></pre>
+    <pre class="bg-muted rounded-md p-2 text-center text-sm font-medium"><code
+        >15OFF</code
+      ></pre>
   </Card.Content>
   <Card.Footer class="flex-row-reverse">
     <Button size="sm">Copy code</Button>

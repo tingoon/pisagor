@@ -29,9 +29,9 @@ Wrap the group in [Field](/vue/components/field/design) when the label applies t
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Input with attached chrome | **Input Group** |
-| Plain single-line entry | [Input](/vue/components/input/design) |
-| Accessible label stack | [Field](/vue/components/field/design) |
+| Need                       | Prefer                                              |
+| -------------------------- | --------------------------------------------------- |
+| Input with attached chrome | **Input Group**                                     |
+| Plain single-line entry    | [Input](/vue/components/input/design)             |
+| Accessible label stack     | [Field](/vue/components/field/design)             |
 | Phone numbers with country | [Phone Input](/vue/components/phone-input/design) |

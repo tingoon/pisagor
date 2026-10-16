@@ -1,25 +1,23 @@
 <script lang="ts">
-import { Ark } from "@ark-ui/svelte/factory";
-import { Select as SelectPrimitive } from "@ark-ui/svelte/select";
-import { selectRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import type { Snippet } from "svelte";
-import type { HTMLAttributes } from "svelte/elements";
-import { useSelectRoot } from "./select.context";
+  import { Ark } from "@ark-ui/svelte/factory";
+  import { Select as SelectPrimitive } from "@ark-ui/svelte/select";
+  import { selectRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import type { Snippet } from "svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { useSelectRoot } from "./select.context";
 
-type Props = HTMLAttributes<HTMLDivElement> & {
-  children?: Snippet;
-};
+  type Props = HTMLAttributes<HTMLDivElement> & {
+    children?: Snippet;
+  };
 
-let { class: className, children, ...rest }: Props = $props();
-const ctx = useSelectRoot();
-const slots = $derived(ctx?.slots ?? selectRecipe());
+  let { class: className, children, ...rest }: Props = $props();
+  const ctx = useSelectRoot();
+  const slots = $derived(ctx?.slots ?? selectRecipe());
 </script>
 
 <SelectPrimitive.Context>
-  {#snippet render(
-    select,
-  )}
+  {#snippet render(select)}
     {#if select().empty}
       <Ark
         as="div"

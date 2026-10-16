@@ -16,7 +16,7 @@ export function WithoutHandle() {
       {items.map((id) => (
         <Sortable.Item key={id} value={id}>
           <Sortable.ItemContent>
-            <span className="font-medium text-sm">{labels[id]}</span>
+            <span className="text-sm font-medium">{labels[id]}</span>
           </Sortable.ItemContent>
         </Sortable.Item>
       ))}

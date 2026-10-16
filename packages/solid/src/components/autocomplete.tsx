@@ -25,8 +25,10 @@ interface AutocompletePresetItem {
 export type AutocompleteRootProps<T extends CollectionItem = CollectionItem> =
   ComboboxRootProps<T>;
 
-export interface AutocompleteProps
-  extends Omit<AutocompleteRootProps, "children" | "collection"> {
+export interface AutocompleteProps extends Omit<
+  AutocompleteRootProps,
+  "children" | "collection"
+> {
   clearable?: boolean;
   items?: Array<AutocompletePresetItem | string>;
 }

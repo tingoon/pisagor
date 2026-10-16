@@ -24,8 +24,7 @@ const { Context: TooltipStylesContext, withContext } = createSlotRecipeContext({
 
 // #region Types
 export interface TooltipRootProps
-  extends TooltipPrimitiveRootProps,
-    BaseTooltipRootProps {}
+  extends TooltipPrimitiveRootProps, BaseTooltipRootProps {}
 
 export type TooltipTriggerHandleProps =
   JSX.ButtonHTMLAttributes<HTMLButtonElement>;

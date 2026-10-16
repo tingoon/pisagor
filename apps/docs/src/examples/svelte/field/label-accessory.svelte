@@ -1,8 +1,8 @@
 <script lang="ts">
-import { Badge, Field, Input } from "@pisagor/svelte";
-import { labelAccessoryBlock } from "#/recipes/blocks/field";
+  import { Badge, Field, Input } from "@pisagor/svelte";
+  import { labelAccessoryBlock } from "#/recipes/blocks/field";
 
-const styles = labelAccessoryBlock();
+  const styles = labelAccessoryBlock();
 </script>
 
 <Field>

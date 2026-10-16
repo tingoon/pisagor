@@ -29,9 +29,9 @@ Keep copied strings free of decorative characters unless formatting is part of t
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| One-click copy with feedback | **Clipboard** |
-| Read-only value beside copy | [Input](/solid/components/input/design) + Clipboard |
-| Shareable link in a dense list | Clipboard + [Button](/solid/components/button/design) |
-| Long-form copyable content | [Prose](/solid/components/prose/design) + explicit Copy |
+| Need                           | Prefer                                                  |
+| ------------------------------ | ------------------------------------------------------- |
+| One-click copy with feedback   | **Clipboard**                                           |
+| Read-only value beside copy    | [Input](/solid/components/input/design) + Clipboard     |
+| Shareable link in a dense list | Clipboard + [Button](/solid/components/button/design)   |
+| Long-form copyable content     | [Prose](/solid/components/prose/design) + explicit Copy |

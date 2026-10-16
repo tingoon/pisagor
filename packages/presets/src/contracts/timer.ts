@@ -8,7 +8,7 @@ export const timerRecipe = tv({
     ],
     base: ["min-w-0", "flex flex-col items-start gap-4", "text-foreground"],
     control: ["flex items-center gap-2"],
-    separator: ["font-semibold text-2xl text-muted-foreground tracking-tight"],
+    separator: ["text-muted-foreground text-2xl font-semibold tracking-tight"],
   },
 });
 
@@ -21,7 +21,7 @@ export const timerItemGroupRecipe = tv({
     ],
     item: [
       "w-fit min-w-[2.5ch]",
-      "text-center font-semibold text-3xl text-foreground tabular-nums tracking-tight",
+      "text-foreground text-center text-3xl font-semibold tracking-tight tabular-nums",
     ],
     label: ["text-muted-foreground text-xs"],
   },

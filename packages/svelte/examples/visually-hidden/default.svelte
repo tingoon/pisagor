@@ -1,5 +1,5 @@
 <script lang="ts">
-import { VisuallyHidden } from "@pisagor/svelte";
+  import { VisuallyHidden } from "@pisagor/svelte";
 </script>
 
 <VisuallyHidden />

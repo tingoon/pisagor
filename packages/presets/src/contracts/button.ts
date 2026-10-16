@@ -2,40 +2,30 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const buttonRecipe = tv({
   defaultVariants: {
-    /**
-     * Scale feedback on press.
-     */
+    /** Scale feedback on press. */
     clickEffect: true,
-    /**
-     * Shows a spinner and disables interaction.
-     */
+    /** Shows a spinner and disables interaction. */
     loading: false,
-    /**
-     * Fully rounded corners.
-     */
+    /** Fully rounded corners. */
     pill: false,
-    /**
-     * Control height and padding, or square icon sizes.
-     */
+    /** Control height and padding, or square icon sizes. */
     size: "md",
-    /**
-     * Visual emphasis of the button.
-     */
+    /** Visual emphasis of the button. */
     variant: "default",
   },
   slots: {
     base: [
       "relative",
       "inline-flex shrink-0 items-center justify-center gap-2",
-      "whitespace-nowrap font-medium text-sm",
+      "text-sm font-medium whitespace-nowrap",
       "rounded-lg",
-      "transition duration-fast ease-out",
-      "outline-hidden focus-visible:ring-0.75 focus-visible:ring-ring/32",
+      "duration-fast transition ease-out",
+      "focus-visible:ring-0.75 focus-visible:ring-ring/32 outline-hidden",
       "disabled:pointer-events-none disabled:opacity-64",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
       "aria-disabled:pointer-events-none aria-disabled:opacity-64",
       "aria-invalid:border-destructive aria-invalid:ring-destructive/24",
-      "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+      "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
       "motion-reduce:transition-none!",
     ],
     hidden: "invisible",
@@ -132,7 +122,7 @@ export const buttonRecipe = tv({
         base: [
           "bg-transparent",
           "text-foreground",
-          "border border-border/60 shadow-none",
+          "border-border/60 border shadow-none",
           "hover:bg-accent hover:text-accent-foreground",
           "dark:bg-input/24 dark:hover:bg-input/48",
           "focus-visible:border-primary",

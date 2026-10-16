@@ -3,7 +3,7 @@ import { SegmentGroup } from "@pisagor/react";
 export function CustomIndicator() {
   return (
     <SegmentGroup
-      className="rounded-lg *:data-[slot=segment-group-indicator]:bg-primary/40"
+      className="*:data-[slot=segment-group-indicator]:bg-primary/40 rounded-lg"
       defaultValue="Profile"
       items={[
         { label: "Profile", value: "Profile" },

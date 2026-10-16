@@ -70,8 +70,7 @@ function buildGridRows(hasBanner: boolean, hasNavigation: boolean) {
 }
 
 export interface AppShellRootProps
-  extends ComponentProps<"div">,
-    BaseAppShellRootProps {
+  extends ComponentProps<"div">, BaseAppShellRootProps {
   /**
    * Whether to disable the `mod+\` hotkey that toggles the start panel.
    *

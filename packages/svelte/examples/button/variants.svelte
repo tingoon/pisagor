@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Button } from "@pisagor/svelte";
+  import { Button } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-wrap gap-2">

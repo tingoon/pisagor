@@ -1,5 +1,5 @@
 <script lang="ts">
-import { EmptyState } from "@pisagor/svelte";
+  import { EmptyState } from "@pisagor/svelte";
 </script>
 
 <EmptyState

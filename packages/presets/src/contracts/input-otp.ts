@@ -2,9 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const inputOtpRecipe = tv({
   defaultVariants: {
-    /**
-     * Size scale.
-     */
+    /** Size scale. */
     size: "md",
   },
   slots: {
@@ -14,7 +12,7 @@ export const inputOtpRecipe = tv({
       "*:data-[scope=pin-input]:data-[part=input]:size-9",
     ],
     input: ["relative p-0 text-center text-base tabular-nums"],
-    separator: ["h-0.5 w-2 rounded-full bg-foreground"],
+    separator: ["bg-foreground h-0.5 w-2 rounded-full"],
   },
   variants: {
     size: {

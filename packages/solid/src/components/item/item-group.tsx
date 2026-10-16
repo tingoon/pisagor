@@ -10,12 +10,10 @@ import { Separator, type SeparatorProps } from "../separator";
 import { ItemGroupContext } from "./item-group.context";
 
 export interface ItemGroupProps
-  extends ComponentProps<typeof ark.div>,
-    BaseItemGroupProps {}
+  extends ComponentProps<typeof ark.div>, BaseItemGroupProps {}
 
 export interface ItemSeparatorProps
-  extends Omit<SeparatorProps, "recipe">,
-    BaseItemSeparatorProps {}
+  extends Omit<SeparatorProps, "recipe">, BaseItemSeparatorProps {}
 
 export function ItemGroup(props: ItemGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, [

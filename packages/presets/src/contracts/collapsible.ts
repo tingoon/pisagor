@@ -6,14 +6,14 @@ export const collapsibleRecipe = tv({
     content: [
       "h-(--collapsed-height)",
       "group-data-partial-collapse/collapsible:h-full",
-      "transition-all duration-normal ease-out",
+      "duration-normal transition-all ease-out",
       "overflow-hidden",
       "data-[state=open]:animate-expand",
       "data-[state=closed]:animate-collapse",
       "motion-reduce:animate-none! motion-reduce:transition-none!",
     ],
     icon: [
-      "transition-transform duration-normal ease-out motion-reduce:transition-none!",
+      "duration-normal transition-transform ease-out motion-reduce:transition-none!",
     ],
     indicator: "data-[state=open]:[&_svg]:rotate-180",
     trigger: [

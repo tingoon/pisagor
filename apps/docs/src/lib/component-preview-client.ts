@@ -1,8 +1,8 @@
 /**
  * Client behavior for `component-preview.astro`: Preview/Code tabs, lazy code
  * blocks, per-preview light/dark toggle, surface + viewport menus (surface
- * choice is shared across previews and persisted), dependency popover and
- * "open in new tab".
+ * choice is shared across previews and persisted), dependency popover and "open
+ * in new tab".
  */
 import { ensureLazyCodeBlock } from "#/lib/ensure-lazy-codeblock";
 

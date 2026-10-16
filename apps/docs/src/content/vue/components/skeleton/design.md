@@ -29,9 +29,9 @@ When loading fails, replace skeleton with an error state and retry — do not pu
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Layout-stable loading placeholders | **Skeleton** |
-| Inline indeterminate wait | [Spinner](/vue/components/spinner/design) |
-| Measurable long task | [Progress](/vue/components/progress/design) |
-| Empty loaded state | [Empty State](/vue/components/empty-state/design) |
+| Need                               | Prefer                                              |
+| ---------------------------------- | --------------------------------------------------- |
+| Layout-stable loading placeholders | **Skeleton**                                        |
+| Inline indeterminate wait          | [Spinner](/vue/components/spinner/design)         |
+| Measurable long task               | [Progress](/vue/components/progress/design)       |
+| Empty loaded state                 | [Empty State](/vue/components/empty-state/design) |

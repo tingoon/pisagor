@@ -1,6 +1,7 @@
 /**
  * Phosphor (regular) icon paths for the Astro button examples. Astro has no
- * icon component in `@pisagor/astro`; inline SVG keeps the examples dependency-free.
+ * icon component in `@pisagor/astro`; inline SVG keeps the examples
+ * dependency-free.
  */
 export const icons = {
   arrowSquareOut:

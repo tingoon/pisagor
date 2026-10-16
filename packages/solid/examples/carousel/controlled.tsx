@@ -13,7 +13,7 @@ export function Controlled() {
         page={page()}
         slides={slides}
       />
-      <p class="text-center text-muted-foreground text-sm">
+      <p class="text-muted-foreground text-center text-sm">
         Current page: {page() + 1} of 5
       </p>
     </div>

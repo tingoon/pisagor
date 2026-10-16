@@ -25,18 +25,15 @@ export interface ClipboardProps extends BaseClipboardProps {
   class?: unknown;
   /** Slot class names */
   classNames?: ClipboardClassNames;
-  /**
-   * Visual shell variant for input/value display modes.
-   * Defaults to `primary`.
-   */
+  /** Visual shell variant for input/value display modes. Defaults to `primary`. */
   controlVariant?: FormControlVariant;
   /** Icon shown after a successful copy */
   copiedIcon?: VNodeChild;
   /** Icon shown before copying */
   copyIcon?: VNodeChild;
   /**
-   * The initial value to be copied to the clipboard when rendered.
-   * Use when you don't need to control the value of the clipboard.
+   * The initial value to be copied to the clipboard when rendered. Use when you
+   * don't need to control the value of the clipboard.
    */
   defaultValue?: string;
   /** The ids of the elements in the clipboard. Useful for composition. */
@@ -55,11 +52,12 @@ export interface ClipboardProps extends BaseClipboardProps {
    * @defaultValue 3000
    */
   timeout?: number;
-  /** Specifies the localized strings that identifies the accessibility elements and their states */
-  translations?: { triggerLabel?: (copied: boolean) => string };
   /**
-   * The controlled value of the clipboard.
+   * Specifies the localized strings that identifies the accessibility elements
+   * and their states
    */
+  translations?: { triggerLabel?: (copied: boolean) => string };
+  /** The controlled value of the clipboard. */
   value?: string;
   /**
    * Display mode for the copy control.

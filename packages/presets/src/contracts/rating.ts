@@ -2,9 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const ratingRecipe = tv({
   defaultVariants: {
-    /**
-     * Size scale.
-     */
+    /** Size scale. */
     size: "md",
   },
   slots: {
@@ -24,11 +22,11 @@ export const ratingRecipe = tv({
     item: [
       "inline-flex items-center justify-center",
       "rounded-md",
-      "transition-transform duration-fast ease-out",
+      "duration-fast transition-transform ease-out",
       "active:scale-97",
       "not-[[data-disabled],[data-readonly]]:cursor-pointer",
       "data-disabled:opacity-64 data-disabled:grayscale",
-      "outline-hidden focus-visible:ring-current not-data-readonly:focus-visible:ring-0.75 focus-visible:ring-offset-1 focus-visible:ring-offset-background",
+      "not-data-readonly:focus-visible:ring-0.75 focus-visible:ring-offset-background outline-hidden focus-visible:ring-current focus-visible:ring-offset-1",
       "motion-reduce:transition-none! motion-reduce:active:scale-100",
     ],
   },

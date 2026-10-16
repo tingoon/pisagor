@@ -29,9 +29,9 @@ On narrow screens, collapse the stepper to the current step plus a progress indi
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Linear multi-step process | **Steps** |
-| Peer panels, any order | [Tabs](/solid/components/tabs/design) |
-| Compact view switcher | [Segment Group](/solid/components/segment-group/design) |
-| First-run highlights | [Tour](/solid/components/tour/design) |
+| Need                      | Prefer                                                  |
+| ------------------------- | ------------------------------------------------------- |
+| Linear multi-step process | **Steps**                                               |
+| Peer panels, any order    | [Tabs](/solid/components/tabs/design)                   |
+| Compact view switcher     | [Segment Group](/solid/components/segment-group/design) |
+| First-run highlights      | [Tour](/solid/components/tour/design)                   |

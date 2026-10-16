@@ -4,6 +4,7 @@ import type { SkeletonRecipeFn } from "@pisagor/recipes";
 export interface SkeletonProps {
   /**
    * Style recipe override.
+   *
    * @defaultValue skeletonRecipe
    */
   recipe?: SkeletonRecipeFn;

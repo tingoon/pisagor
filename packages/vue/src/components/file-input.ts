@@ -45,9 +45,7 @@ export interface FileInputProps extends BaseFileInputProps {
   placeholder?: string;
   required?: boolean;
   size?: "lg" | "md" | "sm";
-  /**
-   * Visual shell variant. Defaults to `primary`.
-   */
+  /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
 }
 // #endregion

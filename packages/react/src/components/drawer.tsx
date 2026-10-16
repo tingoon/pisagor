@@ -29,8 +29,7 @@ const {
 
 // #region Types
 export interface DrawerRootProps
-  extends DrawerPrimitiveRootProps,
-    BaseDrawerRootProps {}
+  extends DrawerPrimitiveRootProps, BaseDrawerRootProps {}
 
 export type DrawerPositionerProps = DrawerPrimitivePositionerProps &
   Pick<DrawerVariantProps, "variant">;

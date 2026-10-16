@@ -29,9 +29,9 @@ Use [Button Group](/vue/components/button-group/design) for tightly related acti
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Section title + local actions | **Toolbar** |
-| Bulk actions after selection | [Action Bar](/vue/components/action-bar/design) |
-| App-wide navigation | [Navbar](/vue/components/navbar/design) |
-| Related buttons only | [Button Group](/vue/components/button-group/design) |
+| Need                          | Prefer                                                |
+| ----------------------------- | ----------------------------------------------------- |
+| Section title + local actions | **Toolbar**                                           |
+| Bulk actions after selection  | [Action Bar](/vue/components/action-bar/design)     |
+| App-wide navigation           | [Navbar](/vue/components/navbar/design)             |
+| Related buttons only          | [Button Group](/vue/components/button-group/design) |

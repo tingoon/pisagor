@@ -29,9 +29,9 @@ Delay show slightly to avoid flicker during casual pointer movement; hide when f
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Short non-blocking hint | **Tooltip** |
-| Rich preview on hover | [Hover Card](/solid/components/hover-card/design) |
-| Click-open supplementary panel | [Popover](/solid/components/popover/design) |
-| Persistent explanation | Visible label or [Alert](/solid/components/alert/design) |
+| Need                           | Prefer                                                   |
+| ------------------------------ | -------------------------------------------------------- |
+| Short non-blocking hint        | **Tooltip**                                              |
+| Rich preview on hover          | [Hover Card](/solid/components/hover-card/design)        |
+| Click-open supplementary panel | [Popover](/solid/components/popover/design)              |
+| Persistent explanation         | Visible label or [Alert](/solid/components/alert/design) |

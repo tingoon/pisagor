@@ -34,7 +34,7 @@ function filter(_inputValue: string) {}
     <Combobox.Content class="w-60">
       <Combobox.List>
         <Combobox.ItemGroup
-          v-for="[ continent, group ] in groups"
+          v-for="[continent, group] in groups"
           :key="continent"
           :heading="continent"
         >

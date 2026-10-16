@@ -68,11 +68,10 @@ export function useSidebar(): SidebarContextProps {
 // #endregion
 
 export interface SidebarProviderProps
-  extends ComponentProps<"div">,
-    Pick<BaseSidebarProps, "recipe"> {
+  extends ComponentProps<"div">, Pick<BaseSidebarProps, "recipe"> {
   /**
-   * Initial open state. A stored value in `localStorage` (`sidebar_state`)
-   * wins after mount.
+   * Initial open state. A stored value in `localStorage` (`sidebar_state`) wins
+   * after mount.
    */
   defaultOpen?: boolean;
   /**
@@ -85,8 +84,10 @@ export interface SidebarProviderProps
   onOpenChange?: (open: boolean) => void;
 }
 
-export interface SidebarProps
-  extends Omit<SheetProps, "class" | "children" | "variant" | "recipe"> {
+export interface SidebarProps extends Omit<
+  SheetProps,
+  "class" | "children" | "variant" | "recipe"
+> {
   placement?: "left" | "right";
   variant?: "sidebar" | "floating" | "inset";
   collapsible?: "offcanvas" | "icon" | "none";
@@ -103,20 +104,21 @@ export interface SidebarMenuButtonProps extends ButtonProps {
   tooltip?: string | Omit<TooltipProps, "children">;
 }
 
-export interface SidebarMenuActionProps
-  extends ComponentProps<typeof ark.button> {
+export interface SidebarMenuActionProps extends ComponentProps<
+  typeof ark.button
+> {
   showOnHover?: boolean;
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export interface SidebarMenuSkeletonProps
-  extends ComponentProps<typeof ark.div> {
+export interface SidebarMenuSkeletonProps extends ComponentProps<
+  typeof ark.div
+> {
   showIcon?: boolean;
 }
 
 export interface SidebarMenuSubButtonProps
-  extends ComponentProps<typeof ark.a>,
-    ButtonVariantProps {
+  extends ComponentProps<typeof ark.a>, ButtonVariantProps {
   isActive?: boolean;
   buttonRecipe?: typeof buttonRecipe;
 }
@@ -128,8 +130,9 @@ export type SidebarFooterProps = ComponentProps<typeof ark.div>;
 export type SidebarGroupProps = ComponentProps<typeof ark.div>;
 export type SidebarGroupLabelProps = ComponentProps<typeof ark.div>;
 
-export interface SidebarGroupActionProps
-  extends ComponentProps<typeof ark.button> {
+export interface SidebarGroupActionProps extends ComponentProps<
+  typeof ark.button
+> {
   buttonRecipe?: typeof buttonRecipe;
 }
 
@@ -676,7 +679,7 @@ export function SidebarMenuAction(props: SidebarMenuActionProps): JSX.Element {
         }).base(),
         styles.slots.menuAction(),
         !showOnHover() &&
-          "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-accent-foreground md:opacity-0",
+          "peer-data-[active=true]/menu-button:text-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0",
         local.class,
       )}
       data-part="menu-action"

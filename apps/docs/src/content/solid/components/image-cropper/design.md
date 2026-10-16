@@ -29,9 +29,9 @@ Provide keyboard alternatives for nudging the crop region and zoom where possibl
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Crop before upload | **Image Cropper** |
-| Pick any file from disk | [File Input](/solid/components/file-input/design) |
-| Drag-and-drop upload area | [File Upload](/solid/components/file-upload/design) |
-| Display-only media box | [Aspect Ratio](/solid/components/aspect-ratio/design) |
+| Need                      | Prefer                                                |
+| ------------------------- | ----------------------------------------------------- |
+| Crop before upload        | **Image Cropper**                                     |
+| Pick any file from disk   | [File Input](/solid/components/file-input/design)     |
+| Drag-and-drop upload area | [File Upload](/solid/components/file-upload/design)   |
+| Display-only media box    | [Aspect Ratio](/solid/components/aspect-ratio/design) |

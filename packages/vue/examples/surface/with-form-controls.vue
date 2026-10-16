@@ -15,7 +15,7 @@ const teams = ["Design", "Engineering", "Marketing"];
 <template>
   <Surface bordered padding="md" variant="default">
     <div class="mb-4">
-      <h3 class="font-semibold text-sm">Settings</h3>
+      <h3 class="text-sm font-semibold">Settings</h3>
       <p class="text-muted-foreground text-sm">
         Grouped controls on a surface background.
       </p>

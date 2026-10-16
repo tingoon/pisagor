@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Button, Dialog, Popover } from "@pisagor/svelte";
+  import { Button, Dialog, Popover } from "@pisagor/svelte";
 </script>
 
 <Dialog.Root>

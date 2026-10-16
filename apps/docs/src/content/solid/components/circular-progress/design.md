@@ -25,9 +25,9 @@ Prefer circular progress when a ring matches the layout and percentage matters; 
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Circular measured progress | **Circular Progress** |
-| Brief unknown wait | [Spinner](/solid/components/spinner/design) |
-| Horizontal progress bar | [Progress](/solid/components/progress/design) |
-| Button in-flight state | [Button](/solid/components/button/design) loading |
+| Need                       | Prefer                                            |
+| -------------------------- | ------------------------------------------------- |
+| Circular measured progress | **Circular Progress**                             |
+| Brief unknown wait         | [Spinner](/solid/components/spinner/design)       |
+| Horizontal progress bar    | [Progress](/solid/components/progress/design)     |
+| Button in-flight state     | [Button](/solid/components/button/design) loading |

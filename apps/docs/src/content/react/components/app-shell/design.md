@@ -29,9 +29,9 @@ Optional banner suits global messages; navigation rails suit deep hierarchies; i
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Full application layout frame | **App Shell** |
-| Desktop sidebar navigation | [Sidebar](/react/components/sidebar/design) |
-| Mobile primary destinations | [Bottom Navigation](/react/components/bottom-navigation/design) |
-| Top app bar | [Navbar](/react/components/navbar/design) |
+| Need                          | Prefer                                                          |
+| ----------------------------- | --------------------------------------------------------------- |
+| Full application layout frame | **App Shell**                                                   |
+| Desktop sidebar navigation    | [Sidebar](/react/components/sidebar/design)                     |
+| Mobile primary destinations   | [Bottom Navigation](/react/components/bottom-navigation/design) |
+| Top app bar                   | [Navbar](/react/components/navbar/design)                       |

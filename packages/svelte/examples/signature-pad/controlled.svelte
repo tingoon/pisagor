@@ -1,7 +1,7 @@
 <script lang="ts">
-import { SignaturePad } from "@pisagor/svelte";
+  import { SignaturePad } from "@pisagor/svelte";
 
-let paths: string[] = $state([]);
+  let paths: string[] = $state([]);
 </script>
 
 <SignaturePad

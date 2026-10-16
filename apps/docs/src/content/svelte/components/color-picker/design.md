@@ -29,9 +29,9 @@ Anchor the picker near the control it affects — inline in a form field or in a
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Visual color selection + fine tuning | **Color Picker** |
-| Hex string in a form | [Field](/svelte/components/field/design) + Input |
-| Popover-hosted picker | Color Picker in [Popover](/svelte/components/popover/design) |
-| Theme token selection | Design tokens + constrained presets |
+| Need                                 | Prefer                                                      |
+| ------------------------------------ | ----------------------------------------------------------- |
+| Visual color selection + fine tuning | **Color Picker**                                            |
+| Hex string in a form                 | [Field](/svelte/components/field/design) + Input             |
+| Popover-hosted picker                | Color Picker in [Popover](/svelte/components/popover/design) |
+| Theme token selection                | Design tokens + constrained presets                         |

@@ -29,9 +29,9 @@ Multi-month views help desktop booking flows; single-month views suit mobile. Ke
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Grid date browsing | **Calendar** |
+| Need                        | Prefer                                              |
+| --------------------------- | --------------------------------------------------- |
+| Grid date browsing          | **Calendar**                                        |
 | Field with popover calendar | [Date Picker](/svelte/components/date-picker/design) |
-| Typed date entry | [Input](/svelte/components/input/design) |
-| Time-of-day selection | [Timer](/svelte/components/timer/design) |
+| Typed date entry            | [Input](/svelte/components/input/design)             |
+| Time-of-day selection       | [Timer](/svelte/components/timer/design)             |

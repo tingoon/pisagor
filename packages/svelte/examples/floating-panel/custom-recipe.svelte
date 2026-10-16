@@ -1,30 +1,30 @@
 <script lang="ts">
-import { createListCollection } from "@ark-ui/svelte/collection";
-import { floatingPanelRecipe } from "@pisagor/recipes";
-import {
-  Button,
-  Field,
-  FloatingPanel,
-  NumberInput,
-  Select,
-} from "@pisagor/svelte";
-import GearSixIcon from "phosphor-svelte/lib/GearSixIcon";
-import XIcon from "phosphor-svelte/lib/XIcon";
-import { tv } from "tailwind-variants";
+  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { floatingPanelRecipe } from "@pisagor/recipes";
+  import {
+    Button,
+    Field,
+    FloatingPanel,
+    NumberInput,
+    Select,
+  } from "@pisagor/svelte";
+  import GearSixIcon from "phosphor-svelte/lib/GearSixIcon";
+  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { tv } from "tailwind-variants";
 
-const brandFloatingPanelRecipe = tv({
-  extend: floatingPanelRecipe,
-  slots: {
-    content: "border-emerald-500/40",
-    header: "bg-emerald-500/5",
-    title: "text-emerald-900 dark:text-emerald-100",
-  },
-  variants: {},
-});
+  const brandFloatingPanelRecipe = tv({
+    extend: floatingPanelRecipe,
+    slots: {
+      content: "border-emerald-500/40",
+      header: "bg-emerald-500/5",
+      title: "text-emerald-900 dark:text-emerald-100",
+    },
+    variants: {},
+  });
 
-const collection = createListCollection({
-  items: ["Inter", "Roboto", "Helvetica", "Geist"],
-});
+  const collection = createListCollection({
+    items: ["Inter", "Roboto", "Helvetica", "Geist"],
+  });
 </script>
 
 <FloatingPanel

@@ -47,8 +47,7 @@ export type ResizableHandlePosition = "bottom" | "center" | "top";
 export type ResizableEdgePlacement = "end" | "start";
 
 export interface ResizableEdgeHandleProps
-  extends ComponentProps<"button">,
-    BaseResizableEdgeHandleProps {
+  extends ComponentProps<"button">, BaseResizableEdgeHandleProps {
   placement: ResizableEdgePlacement;
   handlePosition?: ResizableHandlePosition;
   minWidth?: number;
@@ -64,14 +63,12 @@ export interface ResizableEdgeHandleProps
   onWidthChange: (width: number) => void;
 }
 
-export interface ResizableResizeTriggerProps
-  extends SplitterResizeTriggerProps {
+export interface ResizableResizeTriggerProps extends SplitterResizeTriggerProps {
   withHandle?: boolean;
 }
 
 export interface ResizableRootProps
-  extends SplitterRootProps,
-    BaseResizableRootProps {}
+  extends SplitterRootProps, BaseResizableRootProps {}
 
 export type ResizablePanelProps = SplitterPanelProps;
 export type ResizableResizeTriggerIndicatorProps =
@@ -79,8 +76,7 @@ export type ResizableResizeTriggerIndicatorProps =
 export type ResizableContextProps = SplitterContextProps;
 
 export interface ResizableRootProviderProps
-  extends SplitterRootProviderProps,
-    BaseResizableProps {}
+  extends SplitterRootProviderProps, BaseResizableProps {}
 
 export function ResizableEdgeHandle(
   props: ResizableEdgeHandleProps,

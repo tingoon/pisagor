@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Button, Collapsible } from "@pisagor/svelte";
+  import { Button, Collapsible } from "@pisagor/svelte";
 </script>
 
 <Collapsible>
@@ -10,6 +10,6 @@ import { Button, Collapsible } from "@pisagor/svelte";
     </Button>
   </Collapsible.Trigger>
   <Collapsible.Content class="text-sm">
-    <p class="mt-2 text-muted-foreground">Collapsed details go here.</p>
+    <p class="text-muted-foreground mt-2">Collapsed details go here.</p>
   </Collapsible.Content>
 </Collapsible>

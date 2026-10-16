@@ -33,7 +33,8 @@ import {
 type FormControlVariant = "primary" | "secondary";
 
 export interface RichTextEditorRootProps
-  extends Omit<ComponentProps<typeof ark.div>, "defaultValue" | "onChange">,
+  extends
+    Omit<ComponentProps<typeof ark.div>, "defaultValue" | "onChange">,
     BaseRichTextEditorRootProps {
   variant?: FormControlVariant;
   defaultValue?: string;

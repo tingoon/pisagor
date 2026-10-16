@@ -1,36 +1,36 @@
 <script lang="ts">
-import type { CollectionItem } from "@ark-ui/svelte/collection";
-import {
-  type ListboxRootProps as ArkListboxRootProps,
-  Listbox as ListboxPrimitive,
-} from "@ark-ui/svelte/listbox";
-import type { ListboxProps as BaseListboxProps } from "@pisagor/props";
-import { listboxRecipe } from "@pisagor/recipes";
-import { cn } from "@pisagor/utils";
-import { Context } from "./listbox.context";
+  import type { CollectionItem } from "@ark-ui/svelte/collection";
+  import {
+    type ListboxRootProps as ArkListboxRootProps,
+    Listbox as ListboxPrimitive,
+  } from "@ark-ui/svelte/listbox";
+  import type { ListboxProps as BaseListboxProps } from "@pisagor/props";
+  import { listboxRecipe } from "@pisagor/recipes";
+  import { cn } from "@pisagor/utils";
+  import { Context } from "./listbox.context";
 
-type Props = Omit<ArkListboxRootProps<CollectionItem>, "onValueChange"> & {
-  onValueChange?: (value: string[]) => void;
-} & BaseListboxProps;
+  type Props = Omit<ArkListboxRootProps<CollectionItem>, "onValueChange"> & {
+    onValueChange?: (value: string[]) => void;
+  } & BaseListboxProps;
 
-let {
-  recipe = listboxRecipe,
-  class: className,
-  children,
-  onValueChange,
-  ...rest
-}: Props = $props();
+  let {
+    recipe = listboxRecipe,
+    class: className,
+    children,
+    onValueChange,
+    ...rest
+  }: Props = $props();
 
-const slots = $derived(recipe());
-Context.set({
-  get slots() {
-    return slots;
-  },
-});
+  const slots = $derived(recipe());
+  Context.set({
+    get slots() {
+      return slots;
+    },
+  });
 
-function handleValueChange(details: { value: string[] }) {
-  onValueChange?.(details.value);
-}
+  function handleValueChange(details: { value: string[] }) {
+    onValueChange?.(details.value);
+  }
 </script>
 
 <ListboxPrimitive.Root

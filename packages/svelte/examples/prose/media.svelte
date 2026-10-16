@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Prose } from "@pisagor/svelte";
+  import { Prose } from "@pisagor/svelte";
 </script>
 
 <Prose>
@@ -9,7 +9,7 @@ import { Prose } from "@pisagor/svelte";
       height={250}
       src="https://picsum.photos/seed/pisagor-prose/400/250"
       width={400}
-    >
+    />
     <figcaption>A description of the image.</figcaption>
   </figure>
 </Prose>

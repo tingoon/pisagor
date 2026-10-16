@@ -18,17 +18,17 @@ import { Dialog, useDialog } from "./dialog";
 export type AlertDialogRootProps = DialogRootProps;
 
 export interface AlertDialogActionProps
-  extends DialogCloseTriggerProps,
-    Omit<ButtonProps, "variant"> {
+  extends DialogCloseTriggerProps, Omit<ButtonProps, "variant"> {
   variant?: "default" | "destructive";
 }
 
 export interface AlertDialogCancelProps
-  extends DialogCloseTriggerProps,
-    Omit<ButtonProps, "variant"> {}
+  extends DialogCloseTriggerProps, Omit<ButtonProps, "variant"> {}
 
-export interface AlertDialogProps
-  extends Omit<AlertDialogRootProps, "children" | "title"> {
+export interface AlertDialogProps extends Omit<
+  AlertDialogRootProps,
+  "children" | "title"
+> {
   actions?: JSX.Element;
   description?: JSX.Element;
   title?: JSX.Element;

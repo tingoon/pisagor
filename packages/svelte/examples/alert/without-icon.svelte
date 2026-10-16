@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Alert } from "@pisagor/svelte";
+  import { Alert } from "@pisagor/svelte";
 </script>
 
 <Alert

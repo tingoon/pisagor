@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ColorPicker } from "@pisagor/svelte";
+  import { ColorPicker } from "@pisagor/svelte";
 </script>
 
 <ColorPicker inline>

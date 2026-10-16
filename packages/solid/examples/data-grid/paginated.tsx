@@ -91,7 +91,7 @@ function SortIndicator({ direction }: { direction: false | "asc" | "desc" }) {
 function DataGridShell({ children }: { children: JSX.Element }) {
   return (
     <div class="flex w-full flex-col gap-3">
-      <div class="rounded-xl border bg-muted/20 p-3">{children}</div>
+      <div class="bg-muted/20 rounded-xl border p-3">{children}</div>
     </div>
   );
 }
@@ -270,7 +270,7 @@ function PageSizeSelect({
     <label class="flex items-center gap-2 text-sm">
       <span class="text-muted-foreground">Rows</span>
       <select
-        class="h-8 rounded-md border bg-background px-2"
+        class="bg-background h-8 rounded-md border px-2"
         onChange={(event) => onChange(Number(event.target.value))}
         value={value}
       >
@@ -299,7 +299,7 @@ export function Paginated() {
       >
         <DataGrid.Toolbar>
           <div class="flex flex-wrap items-center justify-between gap-3">
-            <p class="font-medium text-sm">Paginated directory</p>
+            <p class="text-sm font-medium">Paginated directory</p>
             <PageSizeSelect
               onChange={(pageSize) =>
                 setPagination((current) => ({

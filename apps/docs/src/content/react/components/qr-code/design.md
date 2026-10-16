@@ -29,9 +29,9 @@ QR codes are inherently visual. Always provide an equivalent action — copy lin
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Camera handoff to mobile | **QR Code** |
-| Open URL on this device | [Link Box](/react/components/link-box/design) / [Button](/react/components/button/design) |
-| Share sheet actions | [Dropdown Menu](/react/components/dropdown-menu/design) |
-| Copy payload | [Clipboard](/react/components/clipboard/design) |
+| Need                     | Prefer                                                                                    |
+| ------------------------ | ----------------------------------------------------------------------------------------- |
+| Camera handoff to mobile | **QR Code**                                                                               |
+| Open URL on this device  | [Link Box](/react/components/link-box/design) / [Button](/react/components/button/design) |
+| Share sheet actions      | [Dropdown Menu](/react/components/dropdown-menu/design)                                   |
+| Copy payload             | [Clipboard](/react/components/clipboard/design)                                           |

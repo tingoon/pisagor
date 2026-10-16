@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Textarea } from "@pisagor/svelte";
+  import { Textarea } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-col gap-2">

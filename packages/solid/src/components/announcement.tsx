@@ -23,8 +23,10 @@ export type AnnouncementRootProps = Omit<
 
 export type AnnouncementTitleProps = ComponentProps<typeof ark.span>;
 
-export interface AnnouncementProps
-  extends Omit<AnnouncementRootProps, "children"> {
+export interface AnnouncementProps extends Omit<
+  AnnouncementRootProps,
+  "children"
+> {
   /** Optional badge or label rendered before the title. */
   badge?: JSX.Element;
   /** Title content rendered inside `Announcement.Title`. */

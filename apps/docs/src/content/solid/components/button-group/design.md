@@ -25,9 +25,9 @@ Prefer button group when actions share a purpose; prefer [Toolbar](/solid/compon
 
 ## Related patterns
 
-| Need | Prefer |
-| --- | --- |
-| Related actions side by side | **Button Group** |
-| Section title plus actions | [Toolbar](/solid/components/toolbar/design) |
+| Need                            | Prefer                                                  |
+| ------------------------------- | ------------------------------------------------------- |
+| Related actions side by side    | **Button Group**                                        |
+| Section title plus actions      | [Toolbar](/solid/components/toolbar/design)             |
 | Single choice among few options | [Segment Group](/solid/components/segment-group/design) |
-| Bulk actions on selection | [Action Bar](/solid/components/action-bar/design) |
+| Bulk actions on selection       | [Action Bar](/solid/components/action-bar/design)       |

@@ -1,11 +1,11 @@
 /**
  * Storybook's test preview replaces `HTMLElement.prototype.focus` with a getter
  * that reads `this.ownerDocument`. Zag's `@zag-js/focus-visible` reads
- * `HTMLElement.prototype.focus` (this === the prototype), which throws:
- * "The Node.ownerDocument getter can only be used on instances of Node".
+ * `HTMLElement.prototype.focus` (this === the prototype), which throws: "The
+ * Node.ownerDocument getter can only be used on instances of Node".
  *
- * Keep focus settable (Storybook / Zag both assign via defineProperty or setter)
- * while making prototype reads safe.
+ * Keep focus settable (Storybook / Zag both assign via defineProperty or
+ * setter) while making prototype reads safe.
  */
 export function reconcileFocusPrototype(): void {
   if (typeof HTMLElement === "undefined" || typeof document === "undefined") {

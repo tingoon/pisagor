@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ColorPicker, Field, Input, parseColor } from "@pisagor/svelte";
+  import { ColorPicker, Field, Input, parseColor } from "@pisagor/svelte";
 </script>
 
 <div class="flex flex-col gap-2">
@@ -12,23 +12,17 @@ import { ColorPicker, Field, Input, parseColor } from "@pisagor/svelte";
       <Field orientation="horizontal">
         <Field.Label>RGB</Field.Label>
         <ColorPicker.Input channel="red" class="w-full">
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Input {...props()} />
           {/snippet}
         </ColorPicker.Input>
         <ColorPicker.Input channel="green" class="w-full">
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Input {...props()} />
           {/snippet}
         </ColorPicker.Input>
         <ColorPicker.Input channel="blue" class="w-full">
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Input {...props()} />
           {/snippet}
         </ColorPicker.Input>
@@ -45,23 +39,17 @@ import { ColorPicker, Field, Input, parseColor } from "@pisagor/svelte";
       <Field orientation="horizontal">
         <Field.Label>HSB</Field.Label>
         <ColorPicker.Input channel="hue" class="w-full">
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Input {...props()} />
           {/snippet}
         </ColorPicker.Input>
         <ColorPicker.Input channel="saturation" class="w-full">
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Input {...props()} />
           {/snippet}
         </ColorPicker.Input>
         <ColorPicker.Input channel="brightness" class="w-full">
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Input {...props()} />
           {/snippet}
         </ColorPicker.Input>
@@ -78,23 +66,17 @@ import { ColorPicker, Field, Input, parseColor } from "@pisagor/svelte";
       <Field orientation="horizontal">
         <Field.Label>HSL</Field.Label>
         <ColorPicker.Input channel="hue" class="w-full">
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Input {...props()} />
           {/snippet}
         </ColorPicker.Input>
         <ColorPicker.Input channel="saturation" class="w-full">
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Input {...props()} />
           {/snippet}
         </ColorPicker.Input>
         <ColorPicker.Input channel="lightness" class="w-full">
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Input {...props()} />
           {/snippet}
         </ColorPicker.Input>
@@ -110,16 +92,12 @@ import { ColorPicker, Field, Input, parseColor } from "@pisagor/svelte";
     <Field orientation="horizontal">
       <ColorPicker.Control class="min-w-0 flex-1">
         <ColorPicker.Input channel="hex">
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Input {...props()} />
           {/snippet}
         </ColorPicker.Input>
         <ColorPicker.Input channel="alpha">
-          {#snippet asChild(
-            props,
-          )}
+          {#snippet asChild(props)}
             <Input {...props()} />
           {/snippet}
         </ColorPicker.Input>

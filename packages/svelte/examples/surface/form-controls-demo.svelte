@@ -1,17 +1,17 @@
 <script lang="ts">
-import { createListCollection } from "@ark-ui/svelte/collection";
-import {
-  Checkbox,
-  Field,
-  Input,
-  Select,
-  Switch,
-  Textarea,
-} from "@pisagor/svelte";
+  import { createListCollection } from "@ark-ui/svelte/collection";
+  import {
+    Checkbox,
+    Field,
+    Input,
+    Select,
+    Switch,
+    Textarea,
+  } from "@pisagor/svelte";
 
-const selectCollection = createListCollection({
-  items: ["Design", "Engineering", "Marketing"],
-});
+  const selectCollection = createListCollection({
+    items: ["Design", "Engineering", "Marketing"],
+  });
 </script>
 
 <Field.Group>

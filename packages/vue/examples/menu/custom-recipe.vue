@@ -15,7 +15,7 @@ const brandMenuRecipe = tv({
 </script>
 
 <template>
-  <div class="w-56 rounded-xl border bg-background p-1 shadow-xs/5">
+  <div class="bg-background w-56 rounded-xl border p-1 shadow-xs/5">
     <Menu aria-label="Account" :recipe="brandMenuRecipe">
       <Menu.List>
         <Menu.Link active href="#profile">
