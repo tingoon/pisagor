@@ -22,8 +22,7 @@ export const fileRecipe = tv({
     name: ["text-foreground truncate font-medium"],
     size: [
       "text-muted-foreground inline text-xs tabular-nums",
-      "[:where([data-part=meta])+&]:ms-1.5",
-      "[:where([data-part=meta])+&]:before:me-1.5",
+      "[:where([data-part=meta])+&]:before:mx-1.5",
       "[:where([data-part=meta])+&]:before:inline-block",
       "[:where([data-part=meta])+&]:before:size-0.75",
       "[:where([data-part=meta])+&]:before:rounded-full",
