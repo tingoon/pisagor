@@ -14,20 +14,14 @@ Prefer Switch when turning something on or off takes effect right away; prefer [
 
 **Group related switches.** Stack settings that belong to one feature with consistent spacing and section headings.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Use a switch for a single binary preference that
-      updates as soon as it is flipped.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Use a switch for “I agree to terms” on submit —
-      that is a [Checkbox](/vue/components/checkbox/design) in a form.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Use a switch for a single binary preference that updates as soon as it is flipped."
+  }
+  dont={
+    "Use a switch for “I agree to terms” on submit — that is a [Checkbox](/vue/components/checkbox/design) in a form."
+  }
+/>
 
 ## Forms and defaults
 

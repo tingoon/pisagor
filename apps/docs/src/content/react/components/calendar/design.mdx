@@ -14,20 +14,14 @@ Prefer Calendar inside [Date Picker](/react/components/date-picker/design) when 
 
 **Localize start of week and labels.** Weekday order and format follow locale so the grid feels native.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Disable dates that cannot be booked and show the
-      selected range as one connected highlight.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Force people to guess valid dates by showing errors
-      only after they pick a blocked day.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Disable dates that cannot be booked and show the selected range as one connected highlight."
+  }
+  dont={
+    "Force people to guess valid dates by showing errors only after they pick a blocked day."
+  }
+/>
 
 ## Density
 

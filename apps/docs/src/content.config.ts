@@ -33,14 +33,20 @@ function metaCollection(
   framework: string,
   area: "components" | "forms" | "blocks",
 ) {
+  // Components: folder page (`accordion/meta.md` + design/develop).
+  // Forms / blocks: single page file (`text-field.mdx`, `app-shell.mdx`).
+  const singleMdx = area === "blocks" || area === "forms";
   return defineCollection({
     loader: glob({
       // Relative to the docs project root (not import.meta.url — that breaks when
       // the config is bundled and leaves collections empty).
       base: `./src/content/${framework}/${area}`,
-      generateId: ({ entry }) => entry.replace(/\\/g, "/").replace(/\.md$/, ""),
-      // Only top-level meta files (`accordion.md`), not nested panes.
-      pattern: "*.md",
+      generateId: ({ entry }) => {
+        const normalized = entry.replace(/\\/g, "/");
+        if (singleMdx) return normalized.replace(/\.mdx$/, "");
+        return normalized.replace(/\/meta\.md$/, "");
+      },
+      pattern: singleMdx ? "*.mdx" : "*/meta.md",
     }),
     schema: area === "blocks" ? blockDocsSchema : componentDocsSchema,
   });

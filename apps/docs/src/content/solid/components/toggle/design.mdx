@@ -14,21 +14,14 @@ Prefer Toggle for tool-style activation in a bar of peers; prefer [Switch](/soli
 
 **Avoid toggles for one-shot actions.** Commands that run once belong on [Button](/solid/components/button/design), not a latched toggle.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Use toggles in editor or media toolbars where pressed
-      state mirrors active formatting.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Replace a [Switch](/solid/components/switch/design)
-      in Settings with a toggle button — switches match the mental model for
-      persistent preferences.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Use toggles in editor or media toolbars where pressed state mirrors active formatting."
+  }
+  dont={
+    "Replace a [Switch](/solid/components/switch/design) in Settings with a toggle button — switches match the mental model for persistent preferences."
+  }
+/>
 
 ## Groups
 

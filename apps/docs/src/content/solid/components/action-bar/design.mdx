@@ -14,32 +14,22 @@ Use an action bar for selection-driven workflows (tables, grids, file lists). Pr
 
 **Place the bar near the content it acts on.** Prefer a placement that stays close to the selection surface without covering critical content or competing with app chrome.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <img
-      alt="Selected rows with a floating action bar that shows a count and a short set of actions"
-      src="/images/guidelines/action-bar/selection-do.svg"
-      width="360"
-      height="220"
-    />
-    <figcaption>
-      <strong>Do</strong> Show the bar only when selection is active, and
-      include a clear selection count.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <img
-      alt="A crowded permanent toolbar above an unselected list"
-      src="/images/guidelines/action-bar/selection-dont.svg"
-      width="360"
-      height="220"
-    />
-    <figcaption>
-      <strong>Don’t</strong> Keep bulk actions permanently visible when nothing
-      is selected.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Show the bar only when selection is active, and include a clear selection count."
+  }
+  dont={"Keep bulk actions permanently visible when nothing is selected."}
+  doSrc={"/images/guidelines/action-bar/selection-do.svg"}
+  doAlt={
+    "Selected rows with a floating action bar that shows a count and a short set of actions"
+  }
+  doWidth={360}
+  doHeight={220}
+  dontSrc={"/images/guidelines/action-bar/selection-dont.svg"}
+  dontAlt={"A crowded permanent toolbar above an unselected list"}
+  dontWidth={360}
+  dontHeight={220}
+/>
 
 ## Actions
 
@@ -49,31 +39,20 @@ Choose items deliberately to avoid overcrowding. People need to distinguish and 
 
 Make the meaning of each control clear. Don’t make people guess what a bulk action does — pair icons with labels whenever space allows, and use a dialog when the next step needs confirmation or extra input.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <img
-      alt="Compact action bar with a selection count, two primary actions, and a More menu"
-      src="/images/guidelines/action-bar/priority-do.svg"
-      width="360"
-      height="220"
-    />
-    <figcaption>
-      <strong>Do</strong> Prioritize a short set of common actions and move the
-      rest into a menu.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <img
-      alt="Overloaded action bar packed with many similar action chips"
-      src="/images/guidelines/action-bar/priority-dont.svg"
-      width="360"
-      height="220"
-    />
-    <figcaption>
-      <strong>Don’t</strong> Pack every possible bulk command into the bar.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={"Prioritize a short set of common actions and move the rest into a menu."}
+  dont={"Pack every possible bulk command into the bar."}
+  doSrc={"/images/guidelines/action-bar/priority-do.svg"}
+  doAlt={
+    "Compact action bar with a selection count, two primary actions, and a More menu"
+  }
+  doWidth={360}
+  doHeight={220}
+  dontSrc={"/images/guidelines/action-bar/priority-dont.svg"}
+  dontAlt={"Overloaded action bar packed with many similar action chips"}
+  dontWidth={360}
+  dontHeight={220}
+/>
 
 ## Placement
 

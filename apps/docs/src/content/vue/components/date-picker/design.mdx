@@ -14,20 +14,14 @@ Prefer Date Picker for known calendar dates. Prefer plain [Input](/vue/component
 
 **Anchor the calendar near the field.** Open the popover aligned to the input, keep month navigation obvious, and close on selection when a single date completes the task.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Disable invalid days in the calendar and mirror the
-      chosen date in the field.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Force free-text dates without validation when a
-      calendar would prevent mistakes.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Disable invalid days in the calendar and mirror the chosen date in the field."
+  }
+  dont={
+    "Force free-text dates without validation when a calendar would prevent mistakes."
+  }
+/>
 
 ## Mobile
 

@@ -14,20 +14,14 @@ Prefer Spinner for indeterminate waits under a few seconds; prefer [Progress](/a
 
 **Remove spinners promptly.** Hide the indicator as soon as content or the action finishes so the UI returns to a calm state.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Place a single spinner on the control or region that
-      is actually waiting.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Leave a spinner running indefinitely without error
-      handling or a way to cancel a stuck request.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Place a single spinner on the control or region that is actually waiting."
+  }
+  dont={
+    "Leave a spinner running indefinitely without error handling or a way to cancel a stuck request."
+  }
+/>
 
 ## Buttons and forms
 

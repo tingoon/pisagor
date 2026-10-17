@@ -1,7 +1,9 @@
 /**
- * Sync framework-agnostic docs (`<id>.md` meta + `<id>/design.mdx`) from React
- * (canonical) into every other framework folder under
- * `src/content/<fw>/{components,forms,blocks}/`.
+ * Sync framework-agnostic docs from React (canonical) into every other
+ * framework folder under `src/content/<fw>/{components,forms,blocks}/`.
+ *
+ * - Components: `<id>/meta.md` + `<id>/design.mdx`
+ * - Forms / blocks: single `<id>.mdx` (frontmatter + body)
  *
  * Links like `[Toast](/react/components/toast/design)` are rewritten to the
  * target framework; when the target framework has no page for that id, the link
@@ -10,8 +12,7 @@
  * After link rewrite, content is formatted with `bun fmt` so table alignment
  * matches shorter `/vue/`… paths (avoids format ↔ sync thrash).
  *
- * Only ids that already exist in the target framework are synced. Block
- * `develop.mdx` is not synced (framework-specific example imports).
+ * Only ids that already exist in the target framework are synced.
  *
  * Usage:
  *
@@ -41,23 +42,51 @@ function listDirs(dir: string): string[] {
     .sort();
 }
 
-function listMetaIds(sectionDir: string): string[] {
+function listIds(sectionDir: string, ext: ".mdx"): string[] {
   if (!fs.existsSync(sectionDir)) return [];
   return fs
     .readdirSync(sectionDir, { withFileTypes: true })
-    .filter((entry) => entry.isFile() && entry.name.endsWith(".md"))
-    .map((entry) => entry.name.replace(/\.md$/, ""))
+    .filter((entry) => entry.isFile() && entry.name.endsWith(ext))
+    .map((entry) => entry.name.slice(0, -ext.length))
     .sort();
+}
+
+/** Component ids that have a `<id>/meta.md` page folder. */
+function listComponentIds(sectionDir: string): string[] {
+  if (!fs.existsSync(sectionDir)) return [];
+  return fs
+    .readdirSync(sectionDir, { withFileTypes: true })
+    .filter(
+      (entry) =>
+        entry.isDirectory() &&
+        fs.existsSync(path.join(sectionDir, entry.name, "meta.md")),
+    )
+    .map((entry) => entry.name)
+    .sort();
+}
+
+function pageExists(framework: string, section: string, id: string): boolean {
+  const base = path.join(CONTENT_DIR, framework, section, id);
+  return (
+    fs.existsSync(`${base}.mdx`) ||
+    fs.existsSync(path.join(base, "meta.md")) ||
+    fs.existsSync(base)
+  );
 }
 
 function rewriteLinks(markdown: string, framework: string): string {
   return markdown.replace(
     LINK_RE,
     (_match, text: string, section: string, id: string, rest = "") => {
-      const meta = path.join(CONTENT_DIR, framework, section, `${id}.md`);
-      const folder = path.join(CONTENT_DIR, framework, section, id);
-      if (!fs.existsSync(meta) && !fs.existsSync(folder)) return text;
-      return `[${text}](/${framework}/${section}/${id}${rest})`;
+      if (!pageExists(framework, section, id)) return text;
+      // Forms/blocks are single-page routes (no /design|/develop suffix).
+      const suffix =
+        section === "forms" || section === "blocks"
+          ? rest === "/design" || rest === "/develop"
+            ? ""
+            : rest
+          : rest;
+      return `[${text}](/${framework}/${section}/${id}${suffix})`;
     },
   );
 }
@@ -88,6 +117,24 @@ function expectedDoc(
   return formatDoc(rewritten, targetPath);
 }
 
+function syncFile(sourcePath: string, targetPath: string, framework: string) {
+  if (!fs.existsSync(sourcePath)) return;
+  const expected = expectedDoc(sourcePath, framework, targetPath);
+  const current = fs.existsSync(targetPath)
+    ? fs.readFileSync(targetPath, "utf8")
+    : null;
+  if (current === expected) return;
+  const relative = path.relative(CONTENT_DIR, targetPath);
+  if (check) {
+    drifted.push(relative);
+    return;
+  }
+  fs.mkdirSync(path.dirname(targetPath), { recursive: true });
+  fs.writeFileSync(targetPath, expected);
+  written++;
+  console.log(`synced ${relative}`);
+}
+
 const frameworks = listDirs(CONTENT_DIR).filter(
   (fw) => fw !== SOURCE_FRAMEWORK,
 );
@@ -98,45 +145,29 @@ for (const framework of frameworks) {
   for (const section of SECTIONS) {
     const sourceSection = path.join(CONTENT_DIR, SOURCE_FRAMEWORK, section);
     const targetSection = path.join(CONTENT_DIR, framework, section);
-    for (const id of listMetaIds(targetSection)) {
-      // Meta: <id>.md
-      const sourceMeta = path.join(sourceSection, `${id}.md`);
-      if (fs.existsSync(sourceMeta)) {
-        const targetMeta = path.join(targetSection, `${id}.md`);
-        const expected = expectedDoc(sourceMeta, framework, targetMeta);
-        const current = fs.existsSync(targetMeta)
-          ? fs.readFileSync(targetMeta, "utf8")
-          : null;
-        if (current !== expected) {
-          const relative = path.relative(CONTENT_DIR, targetMeta);
-          if (check) drifted.push(relative);
-          else {
-            fs.writeFileSync(targetMeta, expected);
-            written++;
-            console.log(`synced ${relative}`);
-          }
-        }
-      }
 
-      // Design: <id>/design.mdx
-      const sourceDesign = path.join(sourceSection, id, "design.mdx");
-      if (fs.existsSync(sourceDesign)) {
-        const targetDesign = path.join(targetSection, id, "design.mdx");
-        const expected = expectedDoc(sourceDesign, framework, targetDesign);
-        const current = fs.existsSync(targetDesign)
-          ? fs.readFileSync(targetDesign, "utf8")
-          : null;
-        if (current !== expected) {
-          const relative = path.relative(CONTENT_DIR, targetDesign);
-          if (check) drifted.push(relative);
-          else {
-            fs.mkdirSync(path.dirname(targetDesign), { recursive: true });
-            fs.writeFileSync(targetDesign, expected);
-            written++;
-            console.log(`synced ${relative}`);
-          }
-        }
+    if (section === "blocks" || section === "forms") {
+      for (const id of listIds(targetSection, ".mdx")) {
+        syncFile(
+          path.join(sourceSection, `${id}.mdx`),
+          path.join(targetSection, `${id}.mdx`),
+          framework,
+        );
       }
+      continue;
+    }
+
+    for (const id of listComponentIds(targetSection)) {
+      syncFile(
+        path.join(sourceSection, id, "meta.md"),
+        path.join(targetSection, id, "meta.md"),
+        framework,
+      );
+      syncFile(
+        path.join(sourceSection, id, "design.mdx"),
+        path.join(targetSection, id, "design.mdx"),
+        framework,
+      );
     }
   }
 }

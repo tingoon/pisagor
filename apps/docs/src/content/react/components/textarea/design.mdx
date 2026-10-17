@@ -14,20 +14,14 @@ Prefer Textarea when line breaks matter or content routinely exceeds one line; p
 
 **Support paste and spellcheck.** Do not disable platform behaviors unless security truly requires it.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Use helper text to explain tone, format, or privacy
-      expectations for open-ended input.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Use a textarea for a single token, date, or number
-      — use the focused control for that type.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Use helper text to explain tone, format, or privacy expectations for open-ended input."
+  }
+  dont={
+    "Use a textarea for a single token, date, or number — use the focused control for that type."
+  }
+/>
 
 ## Errors
 

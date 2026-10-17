@@ -3,18 +3,17 @@
   import {
     armExamplesHost,
     type ExampleGlobs,
-    type ExampleModule,
     type ExamplesHostProps,
     renderMissingExample,
   } from "#/lib/examples-host";
 
   const globs: ExampleGlobs = {
-    block: import.meta.glob<ExampleModule>("../../examples/svelte/*/index.ts"),
-    component: import.meta.glob<ExampleModule>(
-      "../../../../../packages/svelte/examples/*/index.ts",
+    block: import.meta.glob("../../examples/svelte/*/*.svelte"),
+    component: import.meta.glob(
+      "../../../../../packages/svelte/examples/*/*.svelte",
     ),
-    form: import.meta.glob<ExampleModule>(
-      "../../../../../packages/svelte-form/examples/*/index.ts",
+    form: import.meta.glob(
+      "../../../../../packages/svelte-form/examples/*/*.svelte",
     ),
   };
 

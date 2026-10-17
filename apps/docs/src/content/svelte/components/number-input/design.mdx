@@ -14,20 +14,14 @@ Prefer Number Input over plain [Input](/svelte/components/input/design) when inc
 
 **Pair with clear units.** “kg”, “%”, or “minutes” in the label or suffix prevent costly misreads.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Label “Quantity (items)” with steppers of 1 and a
-      minimum of 1 for cart lines.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Use a number input for credit card or phone strings
-      that are not arithmetic quantities.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Label “Quantity (items)” with steppers of 1 and a minimum of 1 for cart lines."
+  }
+  dont={
+    "Use a number input for credit card or phone strings that are not arithmetic quantities."
+  }
+/>
 
 ## Steppers
 

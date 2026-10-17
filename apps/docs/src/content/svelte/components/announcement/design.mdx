@@ -14,20 +14,14 @@ Prefer Announcement for promos and updates; prefer [Alert](/svelte/components/al
 
 **Link with purpose.** Use a short call to action — Learn more, See what’s new — instead of making the entire bar a vague click target.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> State the benefit or news in one sentence and offer a
-      single optional action.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Use an announcement for errors, security warnings,
-      or required acknowledgments.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "State the benefit or news in one sentence and offer a single optional action."
+  }
+  dont={
+    "Use an announcement for errors, security warnings, or required acknowledgments."
+  }
+/>
 
 ## Placement
 

@@ -14,20 +14,12 @@ Prefer Input for the raw control alone; wrap it in [Field](/svelte/components/fi
 
 **Indicate required and disabled states clearly.** Do not rely on color alone; use text and cursor behavior people can predict.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Use a labeled Input with helper text for format and an
-      inline error when validation fails.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Stack five unlabeled inputs and reveal every error
-      only after Submit.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Use a labeled Input with helper text for format and an inline error when validation fails."
+  }
+  dont={"Stack five unlabeled inputs and reveal every error only after Submit."}
+/>
 
 ## Search and filters
 

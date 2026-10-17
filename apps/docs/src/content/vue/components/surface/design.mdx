@@ -14,20 +14,14 @@ Prefer Surface as the shared backdrop primitive; compose [Card](/vue/components/
 
 **Keep interactive targets on components.** Surface is not a button; put clicks on [Button](/vue/components/button/design) or [Link Box](/vue/components/link-box/design) inside the surface.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Use one clear surface per logical group with
-      consistent padding inside the boundary.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Stack multiple full-bleed surfaces with identical
-      styling — flatten the hierarchy or differentiate purpose.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Use one clear surface per logical group with consistent padding inside the boundary."
+  }
+  dont={
+    "Stack multiple full-bleed surfaces with identical styling — flatten the hierarchy or differentiate purpose."
+  }
+/>
 
 ## Composition
 

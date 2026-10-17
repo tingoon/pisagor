@@ -14,20 +14,14 @@ Prefer Frame when the embedded region needs a visible boundary and loading state
 
 **Keep actions adjacent to the frame.** Place Open in new tab, Refresh, or Copy link on the frame header so controls map to the viewport they affect.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Wrap a live component demo in a titled frame with a
-      clear loading state.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Drop a full-width iframe without context, title, or
-      an escape when the embed breaks.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Wrap a live component demo in a titled frame with a clear loading state."
+  }
+  dont={
+    "Drop a full-width iframe without context, title, or an escape when the embed breaks."
+  }
+/>
 
 ## Layout
 

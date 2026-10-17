@@ -14,20 +14,14 @@ Prefer Sortable when reordering is the primary task on a modest list; prefer [Da
 
 **Persist order when it matters.** Save sequence after drop when order is user-specific or affects behavior downstream.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Use a dedicated handle and clear drop feedback so
-      reordering feels intentional.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Make entire clickable rows draggable when the row
-      also navigates or opens detail — separate drag from primary action.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Use a dedicated handle and clear drop feedback so reordering feels intentional."
+  }
+  dont={
+    "Make entire clickable rows draggable when the row also navigates or opens detail — separate drag from primary action."
+  }
+/>
 
 ## Touch and accessibility
 

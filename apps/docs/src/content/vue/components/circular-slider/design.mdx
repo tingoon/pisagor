@@ -14,20 +14,12 @@ Prefer a linear [Slider](/vue/components/slider/design) when precision, tick mar
 
 **Give immediate feedback.** The fill or thumb should track the pointer one-to-one during the drag, not only after release.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Pair the ring with a live value readout and sensible
-      min/max labels.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Use a tiny circular slider as the only way to enter
-      a precise four-digit quantity.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={"Pair the ring with a live value readout and sensible min/max labels."}
+  dont={
+    "Use a tiny circular slider as the only way to enter a precise four-digit quantity."
+  }
+/>
 
 ## Related patterns
 

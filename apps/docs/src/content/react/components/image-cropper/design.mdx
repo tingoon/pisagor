@@ -14,20 +14,14 @@ Use it in avatars, cover images, and asset pipelines where aspect ratio and fram
 
 **Confirm before destructive replace.** When cropping replaces an existing image, summarize the action and preserve the previous asset until commit succeeds.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Show live preview inside the crop frame with clear
-      Save and Cancel actions.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Upload and crop silently without showing which
-      pixels will be discarded.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Show live preview inside the crop frame with clear Save and Cancel actions."
+  }
+  dont={
+    "Upload and crop silently without showing which pixels will be discarded."
+  }
+/>
 
 ## Accessibility
 

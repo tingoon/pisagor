@@ -4,9 +4,8 @@ import { SolidExamplesHost } from "#/components/docs/solid-examples-host";
 import {
   listExamplePreviewStaticPathsFor,
   loadBlockDocs,
-  loadBlockExamples,
+  assertBlockExample,
 } from "#/lib/block-doc";
-import { assertExampleSource } from "#/lib/component-doc";
 import { frameworkStylesheetUrls } from "#/styles/load-framework-css";
 
 export async function getStaticPaths() {
@@ -18,8 +17,7 @@ const framework = "solid" as const;
 const id = Astro.params.id as string;
 const example = Astro.params.example as string;
 
-const examples = await loadBlockExamples(framework, id);
-assertExampleSource(examples, example);
+await assertBlockExample(framework, id, example);
 const { title: blockTitle } = await loadBlockDocs(framework, id);
 const title = `${blockTitle} · ${example}`;
 const exportNames = [example];

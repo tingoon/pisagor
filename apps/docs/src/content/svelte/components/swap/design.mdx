@@ -14,20 +14,14 @@ Prefer Swap for icon-sized or compact toggled visuals tied to one control; prefe
 
 **Trigger from the owning control.** Swap should reflect the parent button or toggle’s state, not drive it in isolation.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Swap icons inside a button that already has a clear
-      pressed or active state.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Hide critical text labels solely inside a swap with
-      no stable readable label for assistive tech.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Swap icons inside a button that already has a clear pressed or active state."
+  }
+  dont={
+    "Hide critical text labels solely inside a swap with no stable readable label for assistive tech."
+  }
+/>
 
 ## Performance
 

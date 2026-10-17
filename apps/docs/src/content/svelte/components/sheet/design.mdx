@@ -14,20 +14,14 @@ Prefer Sheet for edge-attached panels and mobile-first flows; prefer [Drawer](/s
 
 **Respect safe areas.** Pad bottom sheets for home indicators and notches on phones.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Open filters or item details in a sheet on mobile
-      while keeping the list visible underneath on tablet and up when non-modal.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Force critical confirmations only in a sheet
-      without focus management — use Alert Dialog when the decision must block.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Open filters or item details in a sheet on mobile while keeping the list visible underneath on tablet and up when non-modal."
+  }
+  dont={
+    "Force critical confirmations only in a sheet without focus management — use Alert Dialog when the decision must block."
+  }
+/>
 
 ## vs popover
 

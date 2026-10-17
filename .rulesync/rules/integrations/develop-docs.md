@@ -5,6 +5,8 @@ targets:
 description: "Authoring rules for develop.mdx docs pages, their examples, and matching Storybook stories"
 globs:
   - apps/docs/src/content/**/develop.mdx
+  - apps/docs/src/content/**/forms/*.mdx
+  - apps/docs/src/content/**/blocks/*.mdx
   - packages/*/examples/**/*
   - apps/*/src/**/*.stories.tsx
 cursor:
@@ -13,9 +15,11 @@ cursor:
 
 # Develop docs (`develop.mdx`)
 
-Applies to `apps/docs/src/content/<framework>/{components,forms,blocks}/<id>/develop.mdx`, the examples in `packages/<framework>(-form)/examples/<id>/` (or `apps/docs/src/examples/<framework>/` for blocks), and `<id>.stories.tsx`. Judge each component on its own; never apply these rules mechanically.
+Applies to `apps/docs/src/content/<framework>/components/<id>/develop.mdx`, form pages at `…/forms/<id>.mdx`, block pages at `…/blocks/<id>.mdx`, the examples in `packages/<framework>(-form)/examples/<id>/` (or `apps/docs/src/examples/<framework>/` for blocks), and `<id>.stories.tsx`. Judge each component on its own; never apply these rules mechanically.
 
-Meta for the page lives in the sibling `../<id>.md` (title, description, api, taxonomy — blocks only need title + description). Design copy is `<id>/design.mdx` (components/forms).
+Components: one folder `<id>/` with `meta.md` (title, description, api, taxonomy), `design.mdx`, and `develop.mdx`. Forms: one file `forms/<id>.mdx` with frontmatter + **When to use** (no design/develop tabs — field usage lives on the underlying Input/Label components). Blocks: one file `blocks/<id>.mdx` with frontmatter (`title`, `description`) and the page body.
+
+In component `design.mdx`, use injected `<DoDont do="…" dont="…" />` for guideline pairs (optional `doSrc` / `dontSrc` + alt/size props). Do not hand-write Do/Don’t HTML or global CSS — the component is Tailwind-only and injected like `Example`.
 
 ## Page structure
 
@@ -39,11 +43,9 @@ export function Default() {
 }
 ```
 
-In `develop.mdx`, only pass `name` — `framework` / `exampleId` / `kind` come from the doc page URL:
+In `develop.mdx`, only pass `name` — `Example` is injected by the doc page; `framework` / `exampleId` / `kind` come from the route:
 
 ```mdx
-import Example from "#/components/docs/example.astro";
-
 ### Default
 
 Short description.
@@ -93,4 +95,4 @@ Short, task-focused, existing tone. No design best practices ("Prefer…", "Keep
 
 ## Storybook
 
-Story order matches `develop.mdx` order, with `Playground` first. Every `<Example name>` has a story; remove stories for deleted examples. Keep the example barrel (`index.ts`) in sync with the example files.
+Story order matches `develop.mdx` order, with `Playground` first. Every `<Example name>` has a story; remove stories for deleted examples. Storybook uses the example barrel (`examples/<id>/index.ts`); docs live preview loads each example file on demand (not via that barrel).

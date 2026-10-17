@@ -1,0 +1,79 @@
+---
+/**
+ * Design guideline Do / Don’t pair. Tailwind-only — no global CSS.
+ */
+interface Props {
+  do: string;
+  dont: string;
+  doSrc?: string;
+  doAlt?: string;
+  dontSrc?: string;
+  dontAlt?: string;
+  doWidth?: number;
+  doHeight?: number;
+  dontWidth?: number;
+  dontHeight?: number;
+}
+
+const {
+  do: doText,
+  dont: dontText,
+  doSrc,
+  doAlt = "",
+  dontSrc,
+  dontAlt = "",
+  doWidth = 360,
+  doHeight = 220,
+  dontWidth = 360,
+  dontHeight = 220,
+} = Astro.props;
+
+const cardClass =
+  "m-0 overflow-hidden rounded-2xl border bg-muted/45 border-border/80";
+const captionClass =
+  "m-0 text-[0.8125rem] leading-normal text-muted-foreground/95";
+const captionPad = (hasImage: boolean) =>
+  hasImage ? "px-4 pt-3.5 pb-4" : "px-[1.125rem] py-4";
+const labelClass =
+  "mb-1 block text-[0.8125rem] font-semibold tracking-tight text-foreground";
+---
+
+<div class="my-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+  <figure class:list={[cardClass, "border-green-600/28"]}>
+    {doSrc ? (
+      <img
+        alt={doAlt}
+        class="block h-auto w-full bg-muted"
+        height={doHeight}
+        src={doSrc}
+        width={doWidth}
+      />
+    ) : null}
+    <figcaption class:list={[captionClass, captionPad(Boolean(doSrc))]}>
+      <strong class={labelClass}>
+        <span class="text-green-600 dark:text-green-400">✓</span>{" "}
+        Do
+      </strong>
+      {doText}
+    </figcaption>
+  </figure>
+
+  <figure class:list={[cardClass, "border-red-600/28"]}>
+    {dontSrc ? (
+      <img
+        alt={dontAlt}
+        class="block h-auto w-full bg-muted"
+        height={dontHeight}
+        src={dontSrc}
+        width={dontWidth}
+      />
+    ) : null}
+    <figcaption class:list={[captionClass, captionPad(Boolean(dontSrc))]}>
+      <strong class={labelClass}>
+        <span class="text-red-600 dark:text-red-400">✕</span>{" "}
+        Don’t
+      </strong>
+      {dontText}
+    </figcaption>
+  </figure>
+</div>

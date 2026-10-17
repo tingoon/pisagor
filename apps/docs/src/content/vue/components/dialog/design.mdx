@@ -14,20 +14,14 @@ Prefer Dialog for short, self-contained tasks and confirmations that are not inh
 
 **Avoid stacking dialogs.** Replace or step within one layer rather than opening a second modal on top of the first.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Use Dialog for a short form or confirmation with a
-      named primary action and Cancel.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Open Dialog for long multi-step wizards better
-      suited to a full page or drawer.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Use Dialog for a short form or confirmation with a named primary action and Cancel."
+  }
+  dont={
+    "Open Dialog for long multi-step wizards better suited to a full page or drawer."
+  }
+/>
 
 ## Modal weight
 

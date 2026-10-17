@@ -14,20 +14,12 @@ It builds on the same single-line model as [Input](/svelte/components/input/desi
 
 **Never echo passwords in errors or logs.** Failure messages should be generic (“Couldn’t sign in”) while inline validation stays specific to format rules.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Provide a labeled password field with show-hide and
-      inline rule hints.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Use a plain visible Input for passwords because
-      masking feels inconvenient.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={"Provide a labeled password field with show-hide and inline rule hints."}
+  dont={
+    "Use a plain visible Input for passwords because masking feels inconvenient."
+  }
+/>
 
 ## With Input Group
 

@@ -14,20 +14,12 @@ Prefer Tour for optional onboarding people can dismiss; prefer [Dialog](/vue/com
 
 **Test on small viewports.** Popovers must not cover the element they describe; reposition or switch to centered cards when space is tight.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Offer a tour from Help or first visit with clear
-      progress (“2 of 5”).
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Block login or payment behind a mandatory
-      multi-step tour with no skip.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={"Offer a tour from Help or first visit with clear progress (“2 of 5”)."}
+  dont={
+    "Block login or payment behind a mandatory multi-step tour with no skip."
+  }
+/>
 
 ## Accessibility
 

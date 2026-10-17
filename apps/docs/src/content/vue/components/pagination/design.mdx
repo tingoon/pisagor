@@ -14,20 +14,14 @@ Prefer Pagination when items are naturally paged on the server; prefer infinite 
 
 **Size pages for the task.** Tables may use 25–50 rows; image galleries may use fewer to keep load light.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Show Previous, numbered pages with ellipsis, and Next
-      for a 200-row admin table.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Render fifty numbered buttons when most people only
-      need next, previous, and first/last.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Show Previous, numbered pages with ellipsis, and Next for a 200-row admin table."
+  }
+  dont={
+    "Render fifty numbered buttons when most people only need next, previous, and first/last."
+  }
+/>
 
 ## Accessibility
 

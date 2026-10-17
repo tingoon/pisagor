@@ -14,23 +14,33 @@ interface ComponentMeta {
 }
 
 /**
- * Catalog metadata is framework-agnostic (api/taxonomy/aliases). Each framework
- * owns `content/<fw>/{components,forms}/<id>.md`. React is the superset, so it
- * wins on id collisions.
+ * Catalog metadata is framework-agnostic (api/taxonomy/aliases). Components use
+ * `content/<fw>/components/<id>/meta.md`; forms use `…/forms/<id>.mdx`. React
+ * is the superset, so it wins on id collisions.
  */
-const metadataRawModules = import.meta.glob(
-  "../content/{react,solid,svelte,vue,astro}/{components,forms}/*.md",
-  {
+const metadataRawModules = {
+  ...import.meta.glob(
+    "../content/{react,solid,svelte,vue,astro}/components/*/meta.md",
+    {
+      eager: true,
+      import: "default",
+      query: "?raw",
+    },
+  ),
+  ...import.meta.glob("../content/{react,solid,svelte,vue}/forms/*.mdx", {
     eager: true,
     import: "default",
     query: "?raw",
-  },
-) as Record<string, string>;
+  }),
+} as Record<string, string>;
 
 const FRAMEWORK_PRIORITY = ["react", "solid", "svelte", "vue", "astro"];
 
 function idFromMetaPath(path: string): string | undefined {
-  return /\/content\/[^/]+\/(?:components|forms)\/([^/]+)\.md$/.exec(path)?.[1];
+  return (
+    /\/content\/[^/]+\/components\/([^/]+)\/meta\.md$/.exec(path)?.[1] ??
+    /\/content\/[^/]+\/forms\/([^/]+)\.mdx$/.exec(path)?.[1]
+  );
 }
 
 function metaRank(path: string): number {

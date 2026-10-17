@@ -14,20 +14,14 @@ Compose Items inside [Listbox](/svelte/components/listbox/design), [Menu](/svelt
 
 **Keep rows a comfortable height.** Touch targets should meet platform minimums; wrap description instead of shrinking type below readable sizes.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Show icon, title, subtitle, and a single chevron or
-      menu for a settings row.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Pack five equal-weight buttons on every row when
-      one primary action suffices.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Show icon, title, subtitle, and a single chevron or menu for a settings row."
+  }
+  dont={
+    "Pack five equal-weight buttons on every row when one primary action suffices."
+  }
+/>
 
 ## Density
 

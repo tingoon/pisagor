@@ -14,20 +14,14 @@ Prefer Input Group when adornments are decorative or tightly coupled to the fiel
 
 **Do not nest complex widgets inside the group.** Date pickers and selects usually deserve their own field layout rather than crowding the text slot.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Attach a currency prefix and a single Copy button to
-      an account number field.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Hide the only Submit action inside a suffix button
-      on the last field of a long form.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Attach a currency prefix and a single Copy button to an account number field."
+  }
+  dont={
+    "Hide the only Submit action inside a suffix button on the last field of a long form."
+  }
+/>
 
 ## With Field
 

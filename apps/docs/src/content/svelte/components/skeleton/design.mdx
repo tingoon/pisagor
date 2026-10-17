@@ -14,20 +14,14 @@ Prefer Skeleton when structure is known ahead of time — cards, avatars, table 
 
 **Do not block entire apps.** Skeleton localized to the card or list that is loading keeps the shell usable.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Place skeleton rows in a table or card list that match
-      the eventual content shape.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Show a full-page skeleton for a quick refetch when
-      inline data already exists and can stay visible.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Place skeleton rows in a table or card list that match the eventual content shape."
+  }
+  dont={
+    "Show a full-page skeleton for a quick refetch when inline data already exists and can stay visible."
+  }
+/>
 
 ## Errors
 

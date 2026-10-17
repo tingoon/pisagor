@@ -14,20 +14,14 @@ Prefer Segment Group for two to five mutually exclusive modes that people switch
 
 **Sync with content state.** Changing segment should update the view immediately or show loading inline — avoid silent failure.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Use segments for frequent view toggles like Day / Week
-      / Month with instant feedback in the content area.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Replace a long policy radio list with cramped
-      segments that truncate critical option text.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Use segments for frequent view toggles like Day / Week / Month with instant feedback in the content area."
+  }
+  dont={
+    "Replace a long policy radio list with cramped segments that truncate critical option text."
+  }
+/>
 
 ## vs tabs
 

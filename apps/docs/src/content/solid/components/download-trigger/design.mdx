@@ -14,20 +14,12 @@ Prefer Download Trigger when the browser should save a file from a known URL or 
 
 **Respect permissions and errors.** Disable or explain when the user lacks access; surface failures with a retry path instead of silent no-ops.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Offer “Download CSV” on a report with a clear filename
-      and error message if export fails.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Auto-download files on page load without an
-      explicit user gesture.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Offer “Download CSV” on a report with a clear filename and error message if export fails."
+  }
+  dont={"Auto-download files on page load without an explicit user gesture."}
+/>
 
 ## Security
 

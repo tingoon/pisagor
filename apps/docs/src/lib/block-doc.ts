@@ -1,8 +1,8 @@
-import { getCollection, getEntry } from "astro:content";
-import { type ExampleModule, extractExampleNames } from "./component-doc";
+import { getCollection, getEntry, render } from "astro:content";
+import { extractExampleNames } from "./component-doc";
 import type { Framework } from "./nav";
 
-/** Block page frontmatter (`content/<fw>/blocks/<id>.md`). */
+/** Block page frontmatter (`content/<fw>/blocks/<id>.mdx`). */
 export type BlockDocs = {
   title: string;
   description: string;
@@ -11,13 +11,6 @@ export type BlockDocs = {
 type BlockCollectionName =
   "reactBlocks" | "solidBlocks" | "svelteBlocks" | "vueBlocks";
 
-type PaneMdxModule = {
-  default: (props?: Record<string, unknown>) => unknown;
-  getHeadings?: () => { depth: number; slug: string; text: string }[];
-};
-
-type PaneModules = Record<string, () => Promise<PaneMdxModule>>;
-
 const blockCollectionName: Partial<Record<Framework, BlockCollectionName>> = {
   react: "reactBlocks",
   solid: "solidBlocks",
@@ -25,62 +18,7 @@ const blockCollectionName: Partial<Record<Framework, BlockCollectionName>> = {
   vue: "vueBlocks",
 };
 
-const developPanesByFramework: Partial<Record<Framework, PaneModules>> = {
-  react: import.meta.glob<PaneMdxModule>(
-    "../content/react/blocks/*/develop.mdx",
-  ),
-  solid: import.meta.glob<PaneMdxModule>(
-    "../content/solid/blocks/*/develop.mdx",
-  ),
-  svelte: import.meta.glob<PaneMdxModule>(
-    "../content/svelte/blocks/*/develop.mdx",
-  ),
-  vue: import.meta.glob<PaneMdxModule>("../content/vue/blocks/*/develop.mdx"),
-};
-
-const developRawByFramework: Partial<
-  Record<Framework, Record<string, string>>
-> = {
-  react: import.meta.glob("../content/react/blocks/*/develop.mdx", {
-    eager: true,
-    import: "default",
-    query: "?raw",
-  }) as Record<string, string>,
-  solid: import.meta.glob("../content/solid/blocks/*/develop.mdx", {
-    eager: true,
-    import: "default",
-    query: "?raw",
-  }) as Record<string, string>,
-  svelte: import.meta.glob("../content/svelte/blocks/*/develop.mdx", {
-    eager: true,
-    import: "default",
-    query: "?raw",
-  }) as Record<string, string>,
-  vue: import.meta.glob("../content/vue/blocks/*/develop.mdx", {
-    eager: true,
-    import: "default",
-    query: "?raw",
-  }) as Record<string, string>,
-};
-
-type ExampleLoaderMap = Record<string, () => Promise<ExampleModule>>;
-
-/** Live example barrels — block pages use client islands for previews. */
-const blockExamplesByFramework: Partial<Record<Framework, ExampleLoaderMap>> = {
-  react: import.meta.glob<ExampleModule>("../examples/react/*/index.ts"),
-  solid: import.meta.glob<ExampleModule>("../examples/solid/*/index.ts"),
-  svelte: import.meta.glob<ExampleModule>("../examples/svelte/*/index.ts"),
-  vue: import.meta.glob<ExampleModule>("../examples/vue/*/index.ts"),
-};
-
-function findGlobKey(
-  modules: Record<string, unknown>,
-  suffix: string,
-): string | undefined {
-  return Object.keys(modules).find((path) => path.endsWith(suffix));
-}
-
-/** Block ids from content collection meta files. */
+/** Block ids from content collection MDX files. */
 export async function listBlockIds(framework: Framework): Promise<string[]> {
   const name = blockCollectionName[framework];
   if (!name) return [];
@@ -95,7 +33,7 @@ export async function listBlockStaticPaths(
   return ids.map((id) => ({ params: { id } }));
 }
 
-/** Title + description from block collection frontmatter. */
+/** Title + description from block MDX frontmatter. */
 export async function loadBlockDocs(
   framework: Framework,
   id: string,
@@ -114,72 +52,69 @@ export async function loadBlockDocs(
   };
 }
 
-/** Develop MDX module for a block page. */
-export async function loadBlockDevelop(
+/** Block MDX module (frontmatter + body in one file). */
+export async function loadBlockPage(
   framework: Framework,
   id: string,
 ): Promise<{
   Content: (...args: never[]) => unknown;
+  docs: BlockDocs;
   getHeadings: () => { depth: number; slug: string; text: string }[];
 }> {
-  const modules = developPanesByFramework[framework];
-  if (!modules) {
-    throw new Error(`No block develop glob for ${framework}`);
+  const name = blockCollectionName[framework];
+  if (!name) {
+    throw new Error(`No block collection for ${framework}`);
   }
-  const key = findGlobKey(
-    modules,
-    `/content/${framework}/blocks/${id}/develop.mdx`,
-  );
-  const loader = key ? modules[key] : undefined;
-  if (!loader) {
-    throw new Error(`Missing ${framework} block develop for "${id}"`);
+  const entry = await getEntry(name, id);
+  if (!entry) {
+    throw new Error(`Missing ${framework} block docs for "${id}"`);
   }
-  const mod = await loader();
+  const { Content, headings } = await render(entry);
   return {
-    Content: mod.default,
-    getHeadings: mod.getHeadings ?? (() => []),
+    Content,
+    docs: {
+      description: entry.data.description,
+      title: entry.data.title,
+    },
+    getHeadings: () => headings,
   };
 }
 
-/** Raw develop MDX body for TOC / example name extraction. */
-export function loadBlockDevelopBody(framework: Framework, id: string): string {
-  const modules = developRawByFramework[framework];
-  if (!modules) {
-    throw new Error(`No block develop raw glob for ${framework}`);
-  }
-  const key = findGlobKey(
-    modules,
-    `/content/${framework}/blocks/${id}/develop.mdx`,
-  );
-  const raw = key ? modules[key] : undefined;
-  if (!raw) {
-    throw new Error(`Missing ${framework} block develop for "${id}"`);
-  }
-  return raw;
-}
-
-export function listBlockExampleNames(
+/** Raw MDX body for example-name extraction. */
+export async function loadBlockBody(
   framework: Framework,
   id: string,
-): string[] {
-  return extractExampleNames(loadBlockDevelopBody(framework, id));
+): Promise<string> {
+  const name = blockCollectionName[framework];
+  if (!name) {
+    throw new Error(`No block collection for ${framework}`);
+  }
+  const entry = await getEntry(name, id);
+  if (!entry) {
+    throw new Error(`Missing ${framework} block docs for "${id}"`);
+  }
+  return entry.body ?? "";
 }
 
-export async function loadBlockExamples(
+export async function listBlockExampleNames(
   framework: Framework,
   id: string,
-): Promise<ExampleModule> {
-  const modules = blockExamplesByFramework[framework];
-  if (!modules) {
-    throw new Error(`No block examples glob for ${framework}`);
+): Promise<string[]> {
+  return extractExampleNames(await loadBlockBody(framework, id));
+}
+
+/** Ensure block MDX references this example name. */
+export async function assertBlockExample(
+  framework: Framework,
+  id: string,
+  exportName: string,
+): Promise<void> {
+  const names = await listBlockExampleNames(framework, id);
+  if (!names.includes(exportName)) {
+    throw new Error(
+      `Missing block example "${exportName}" for ${framework}/${id}`,
+    );
   }
-  const key = findGlobKey(modules, `/examples/${framework}/${id}/index.ts`);
-  const loader = key ? modules[key] : undefined;
-  const mod = loader ? await loader() : undefined;
-  if (!mod) {
-    throw new Error(`Missing ${framework} block examples for "${id}"`);
-  }
-  return mod;
 }
 
 /**
@@ -192,18 +127,8 @@ export async function listExamplePreviewStaticPathsFor(
   const paths: { params: { id: string; example: string } }[] = [];
 
   for (const id of await listBlockIds(framework)) {
-    let examples: ExampleModule;
-    try {
-      examples = await loadBlockExamples(framework, id);
-    } catch {
-      continue;
-    }
-    for (const [key, value] of Object.entries(examples)) {
-      if (key === "imports" || key === "sources" || key.endsWith("Source")) {
-        continue;
-      }
-      if (value == null || typeof value === "string") continue;
-      paths.push({ params: { example: key, id } });
+    for (const example of await listBlockExampleNames(framework, id)) {
+      paths.push({ params: { example, id } });
     }
   }
 

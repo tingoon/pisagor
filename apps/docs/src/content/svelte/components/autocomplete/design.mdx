@@ -14,20 +14,14 @@ Prefer Autocomplete when filtering by text is faster than scrolling; prefer [Sel
 
 **Handle empty and loading states.** “No results” with guidance to refine the query beats a blank panel; show progress when options load remotely.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Limit the dropdown to relevant matches and keep the
-      field label tied to what is being chosen.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Use autocomplete for a handful of fixed choices
-      that fit comfortably in a select menu.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Limit the dropdown to relevant matches and keep the field label tied to what is being chosen."
+  }
+  dont={
+    "Use autocomplete for a handful of fixed choices that fit comfortably in a select menu."
+  }
+/>
 
 ## Selection
 

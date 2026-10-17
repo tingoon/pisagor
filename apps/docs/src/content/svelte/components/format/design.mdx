@@ -14,20 +14,14 @@ Use Format anywhere a raw number or ISO timestamp would force people to translat
 
 **Stay consistent within a view.** Use one date style and one number style per screen so columns and cards feel like the same product.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Show “1.2 GB” and “Mar 4, 2026” using locale-aware
-      formatting in tables and detail rows.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Hard-code US date order or comma separators when
-      the app serves multiple locales.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Show “1.2 GB” and “Mar 4, 2026” using locale-aware formatting in tables and detail rows."
+  }
+  dont={
+    "Hard-code US date order or comma separators when the app serves multiple locales."
+  }
+/>
 
 ## Content
 

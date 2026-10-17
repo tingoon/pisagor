@@ -1,0 +1,12 @@
+---
+import FormDocPage from "#/components/docs/form-doc-page.astro";
+import { listFormStaticPaths } from "#/lib/form-doc";
+
+export async function getStaticPaths() {
+  return listFormStaticPaths("react");
+}
+
+const id = Astro.params.id as string;
+---
+
+<FormDocPage framework="react" id={id} />

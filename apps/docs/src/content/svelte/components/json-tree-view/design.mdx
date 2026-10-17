@@ -14,20 +14,14 @@ Use it in debug panels, API explorers, and admin tools—not for end-user conten
 
 **Pair with search when documents are deep.** Jump to matching keys or values and highlight hits with [Highlight](/svelte/components/highlight/design) where appropriate.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Collapse a 200-key object and let people expand only
-      the branch they need.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Dump pretty-printed JSON into a paragraph for
-      non-technical customers.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Collapse a 200-key object and let people expand only the branch they need."
+  }
+  dont={
+    "Dump pretty-printed JSON into a paragraph for non-technical customers."
+  }
+/>
 
 ## Safety
 

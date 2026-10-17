@@ -14,20 +14,14 @@ Prefer Scroll Area when a region has its own scroll affordance; prefer the docum
 
 **Avoid deep nesting.** Multiple nested scroll areas confuse scroll chaining; restructure before adding a third level.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Constrain side panels and dialog bodies with Scroll
-      Area so headers and footers stay fixed.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Wrap an entire marketing page in Scroll Area when
-      native document scroll is simpler and more accessible.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Constrain side panels and dialog bodies with Scroll Area so headers and footers stay fixed."
+  }
+  dont={
+    "Wrap an entire marketing page in Scroll Area when native document scroll is simpler and more accessible."
+  }
+/>
 
 ## Tables and lists
 

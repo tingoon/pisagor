@@ -14,20 +14,14 @@ Prefer Alert Dialog when the cost of error is high; prefer [Alert](/svelte/compo
 
 **Restore focus on close.** Return focus to the control that opened the dialog so keyboard users stay oriented.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Use a specific title (“Delete project?”) and describe
-      what cannot be undone.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Use an alert dialog for routine information that
-      does not need a hard stop.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Use a specific title (“Delete project?”) and describe what cannot be undone."
+  }
+  dont={
+    "Use an alert dialog for routine information that does not need a hard stop."
+  }
+/>
 
 ## Actions
 

@@ -14,20 +14,14 @@ Prefer Listbox when the option set stays visible on the page; prefer [Select](/s
 
 **Show empty and loading states.** A listbox with zero matches should explain why and how to recover.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Show eight roles in a visible listbox when users
-      compare options before picking one.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Render a 400-item listbox when search-first
-      Autocomplete would be faster.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Show eight roles in a visible listbox when users compare options before picking one."
+  }
+  dont={
+    "Render a 400-item listbox when search-first Autocomplete would be faster."
+  }
+/>
 
 ## Keyboard
 

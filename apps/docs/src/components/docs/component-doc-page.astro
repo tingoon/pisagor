@@ -1,64 +1,62 @@
 ---
 import ComponentHeader from "#/components/docs/component-header.astro";
+import DoDont from "#/components/docs/do-dont.astro";
+import Example from "#/components/docs/example.astro";
 import PropsTable from "#/components/docs/props-table.astro";
 import DocsLayout from "#/layouts/docs-layout.astro";
 import { resolveAnatomySrc } from "#/lib/anatomy";
 import {
-  type ComponentDocKind,
   defaultPackageName,
   extractExampleNames,
-  findDisplayedSkillBody,
   listComponentDocTabs,
   loadProps,
+  loadSkillBody,
   loadSkillMd,
-  loadSkillPanes,
+  loadSkillPane,
   type SkillPaneId,
 } from "#/lib/component-doc";
 import type { ComponentDocs } from "#/lib/component-docs-types";
 import { setDocsExampleContext } from "#/lib/docs-example-context";
 import type { Framework } from "#/lib/nav";
 import { frameworks, withDocsBase } from "#/lib/nav";
-import { extractTocHeadings } from "#/lib/toc";
 
 interface Props {
   id: string;
   framework: Framework;
   tab: SkillPaneId;
-  kind?: ComponentDocKind;
 }
 
 const id = Astro.props.id;
 const framework = Astro.props.framework;
-const kind = Astro.props.kind ?? "component";
 const activeTab = Astro.props.tab;
 const anatomySrc = resolveAnatomySrc(id);
 
 setDocsExampleContext(Astro.locals, {
   exampleId: id,
   framework,
-  kind,
+  kind: "component",
 });
 
-const { frontmatter } = await loadSkillMd(framework, id, kind);
-const panes = await loadSkillPanes(framework, id, kind);
+const { frontmatter } = await loadSkillMd(framework, id);
+const pane = await loadSkillPane(framework, id, activeTab);
 const docs = frontmatter as ComponentDocs;
 const propsRows = loadProps(id);
-const pkg = docs.packageName ?? defaultPackageName(framework, kind);
-const areaSlug = kind === "form" ? "forms" : "components";
+const pkg = docs.packageName ?? defaultPackageName(framework);
 
-const tabs = await listComponentDocTabs(framework, id, kind);
+const tabs = listComponentDocTabs(framework, id);
 
 if (!tabs.some((t) => t.id === activeTab)) {
-  throw new Error(`Unknown tab "${activeTab}" for ${framework}/${kind}/${id}`);
+  throw new Error(`Unknown tab "${activeTab}" for ${framework}/${id}`);
 }
 
-const DesignContent = panes.design?.Content;
-const DevelopContent = panes.develop?.Content;
+const PaneContent = pane.Content as (props?: {
+  components?: Record<string, unknown>;
+}) => unknown;
+const mdxComponents = { DoDont, Example };
 
-const paneForToc = activeTab === "design" ? "design" : "develop";
-const paneBody = findDisplayedSkillBody(framework, id, paneForToc, kind);
-const developBody = findDisplayedSkillBody(framework, id, "develop", kind);
-const paneHeadings = extractTocHeadings(paneBody);
+const paneHeadings = pane
+  .getHeadings()
+  .filter((h) => h.depth === 2 || h.depth === 3);
 const headings = [
   ...paneHeadings,
   ...(activeTab === "develop"
@@ -67,18 +65,18 @@ const headings = [
 ];
 
 const exampleExportNames =
-  activeTab === "develop" ? extractExampleNames(developBody) : [];
+  activeTab === "develop"
+    ? extractExampleNames(await loadSkillBody(framework, id, "develop"))
+    : [];
 
 function tabHref(tabId: SkillPaneId): string {
-  return withDocsBase(`/${framework}/${areaSlug}/${id}/${tabId}`);
+  return withDocsBase(`/${framework}/components/${id}/${tabId}`);
 }
 
 const frameworkLabel =
   frameworks.find((item) => item.id === framework)?.label ?? framework;
 const tabLabel = tabs.find((t) => t.id === activeTab)?.label ?? activeTab;
-const metaTitle = `${docs.title} ${tabLabel} – ${frameworkLabel}${
-  kind === "form" ? " Forms" : ""
-}`;
+const metaTitle = `${docs.title} ${tabLabel} – ${frameworkLabel}`;
 
 const proseClass =
   "docs-skill-md space-y-4 text-sm leading-7 text-foreground/90 [&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-2 [&_code]:rounded-md [&_code]:bg-muted/60 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-3.25 [&_pre_code]:rounded-none [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:text-foreground [&>h2:first-child]:!mt-0 [&_li]:my-1 [&_ol]:my-3 [&_ol]:list-decimal [&_ol]:ps-5 [&_p]:my-3 [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-border/60 [&_pre]:bg-muted/30 [&_pre]:p-4 [&_pre]:text-3.25 [&_strong]:font-semibold [&_table]:my-4 [&_table]:w-full [&_table]:text-left [&_td]:border-b [&_td]:border-border/50 [&_td]:py-2 [&_td]:pe-4 [&_th]:border-b [&_th]:border-border/70 [&_th]:py-2 [&_th]:pe-4 [&_th]:font-semibold [&_ul]:my-3 [&_ul]:list-disc [&_ul]:ps-5";
@@ -160,14 +158,14 @@ const tocTabLinkClass =
   )}
 
   <div>
-    {activeTab === "develop" && DevelopContent ? (
+    {activeTab === "develop" ? (
       <div
         aria-labelledby="doc-tab-develop"
         id="doc-panel-develop"
         role="tabpanel"
       >
         <div class={proseClass}>
-          <DevelopContent />
+          <PaneContent components={mdxComponents} />
         </div>
 
         {framework !== "astro" && exampleExportNames.length > 0 ? (
@@ -175,7 +173,7 @@ const tocTabLinkClass =
             data-component-id={id}
             data-docs-examples-host
             data-export-names={JSON.stringify(exampleExportNames)}
-            data-kind={kind}
+            data-kind="component"
             hidden
           />
         ) : null}
@@ -194,17 +192,15 @@ const tocTabLinkClass =
           )}
         </div>
       </div>
-    ) : null}
-
-    {activeTab === "design" && DesignContent ? (
+    ) : (
       <div
         aria-labelledby="doc-tab-design"
         class:list={[proseClass, "[&>h2:first-child]:!mt-0"]}
         id="doc-panel-design"
         role="tabpanel"
       >
-        <DesignContent />
+        <PaneContent components={mdxComponents} />
       </div>
-    ) : null}
+    )}
   </div>
 </DocsLayout>

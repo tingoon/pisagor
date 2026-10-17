@@ -14,22 +14,14 @@ Prefer Table for straightforward markup-first grids; prefer [Data Table](/svelte
 
 **Empty and loading states belong in the table body.** Show a single clear message or skeleton rows instead of collapsing the table chrome.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Use semantic table structure with headers scoped to
-      columns for screen readers.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Build a thousand-row interactive product grid with
-      Table alone — graduate to [Data
-      Table](/svelte/components/data-table/design) or [Data
-      Grid](/svelte/components/data-grid/design).
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Use semantic table structure with headers scoped to columns for screen readers."
+  }
+  dont={
+    "Build a thousand-row interactive product grid with Table alone — graduate to [Data Table](/svelte/components/data-table/design) or [Data Grid](/svelte/components/data-grid/design)."
+  }
+/>
 
 ## Selection and bulk actions
 

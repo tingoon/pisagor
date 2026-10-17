@@ -14,20 +14,14 @@ Prefer Empty State when a list, table, or dashboard legitimately has nothing to 
 
 **Match the container.** Size padding and typography to the parent panel so empty states feel native in cards, full pages, and sidebars.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Show “No messages” with a Start conversation button
-      when the inbox is empty.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Show an empty state while data is still loading —
-      use skeletons first.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Show “No messages” with a Start conversation button when the inbox is empty."
+  }
+  dont={
+    "Show an empty state while data is still loading — use skeletons first."
+  }
+/>
 
 ## Filters and search
 

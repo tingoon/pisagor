@@ -14,21 +14,12 @@ Use it sparingly to supplement — not replace — good visible labels. Prefer v
 
 **Keep hidden strings maintainable.** Reuse the same copy source as visible UI when both exist to avoid drift.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Add “Close” as visually hidden text on an icon-only
-      dismiss control.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Hide long instructions only in visually hidden
-      blocks sighted users never see — show helper text in the
-      [Field](/vue/components/field/design).
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={"Add “Close” as visually hidden text on an icon-only dismiss control."}
+  dont={
+    "Hide long instructions only in visually hidden blocks sighted users never see — show helper text in the [Field](/vue/components/field/design)."
+  }
+/>
 
 ## Relationship to aria-label
 

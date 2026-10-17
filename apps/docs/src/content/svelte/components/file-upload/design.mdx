@@ -14,20 +14,14 @@ Prefer File Upload for dashboards, attachments, and media intake. Prefer [File I
 
 **Preview when it helps.** Thumbnails for images and icons for documents aid verification; skip previews for sensitive content unless required.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Provide a drop zone, file rows with progress, and
-      Retry on failed uploads.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Hide upload failures behind a generic “Something
-      went wrong” with no per-file detail.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Provide a drop zone, file rows with progress, and Retry on failed uploads."
+  }
+  dont={
+    "Hide upload failures behind a generic “Something went wrong” with no per-file detail."
+  }
+/>
 
 ## Completion
 

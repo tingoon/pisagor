@@ -14,20 +14,14 @@ Place Provider once near the root of your React tree. Nested providers are rare;
 
 **Document app-level choices.** Theme, density, and default toast duration are product decisions — set them once and treat Provider as the contract for the design system.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Wrap the entire app (or each isolated demo root) with
-      Provider before rendering Pisagor components.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Omit Provider and patch individual components with
-      one-off props that duplicate global locale or toast behavior.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Wrap the entire app (or each isolated demo root) with Provider before rendering Pisagor components."
+  }
+  dont={
+    "Omit Provider and patch individual components with one-off props that duplicate global locale or toast behavior."
+  }
+/>
 
 ## Testing
 

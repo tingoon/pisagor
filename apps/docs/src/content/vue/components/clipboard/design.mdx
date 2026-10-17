@@ -14,20 +14,14 @@ Prefer Clipboard for shareable strings such as codes, links, and IDs. Avoid sile
 
 **Protect sensitive data.** Do not copy secrets into shared clipboards without context; pair high-risk values with short-lived display and clear warnings when appropriate.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Place Copy beside the value it affects and confirm
-      success in place or with a short toast.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Copy on every click of a row or card without an
-      explicit copy control.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Place Copy beside the value it affects and confirm success in place or with a short toast."
+  }
+  dont={
+    "Copy on every click of a row or card without an explicit copy control."
+  }
+/>
 
 ## Content
 

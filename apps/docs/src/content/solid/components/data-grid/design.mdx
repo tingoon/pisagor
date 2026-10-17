@@ -14,20 +14,14 @@ Prefer Data Grid when people sort, filter, edit, or virtualize thousands of rows
 
 **Edit with guardrails.** Inline edits should validate before commit, offer undo where possible, and distinguish read-only columns from editable ones.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Use Data Grid for large editable datasets with sort,
-      filter, and column pinning.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Adopt Data Grid for a five-row settings table that
-      only needs to be read.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Use Data Grid for large editable datasets with sort, filter, and column pinning."
+  }
+  dont={
+    "Adopt Data Grid for a five-row settings table that only needs to be read."
+  }
+/>
 
 ## Density and performance
 

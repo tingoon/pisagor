@@ -14,20 +14,14 @@ Use Presence around conditionally rendered UI — overlays, expandable regions, 
 
 **Avoid nesting competing presences.** One clear enter/exit owner per surface prevents double animations or stuck opacity.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Wrap dialog panels, tooltips, or collapsible bodies so
-      exit animations finish before unmount.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Animate large page regions on every data refresh
-      where a skeleton or inline update is enough.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Wrap dialog panels, tooltips, or collapsible bodies so exit animations finish before unmount."
+  }
+  dont={
+    "Animate large page regions on every data refresh where a skeleton or inline update is enough."
+  }
+/>
 
 ## Implementation notes
 

@@ -14,20 +14,14 @@ Prefer Editable for one-off text updates in place. Prefer a [Dialog](/vue/compon
 
 **Use sparingly on critical identifiers.** For slugs, billing names, or legal text, prefer a form with review step over instant inline replace.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Let people rename a project title inline with
-      Save/Cancel and inline error text.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Make every cell in a table inline-editable when
-      bulk edit or a side panel is safer.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Let people rename a project title inline with Save/Cancel and inline error text."
+  }
+  dont={
+    "Make every cell in a table inline-editable when bulk edit or a side panel is safer."
+  }
+/>
 
 ## Accessibility
 

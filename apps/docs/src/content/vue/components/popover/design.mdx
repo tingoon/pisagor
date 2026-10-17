@@ -14,20 +14,14 @@ Prefer Popover for lightweight, trigger-scoped work; prefer [Dialog](/vue/compon
 
 **Dismiss predictably.** Support Escape, an explicit close control, and clicking outside when non-modal — match platform expectations.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Use a popover for a small form or menu tied to the
-      control that opened it.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Put multi-step workflows or legal confirmations in
-      a popover when a dialog or sheet fits better.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Use a popover for a small form or menu tied to the control that opened it."
+  }
+  dont={
+    "Put multi-step workflows or legal confirmations in a popover when a dialog or sheet fits better."
+  }
+/>
 
 ## Placement
 

@@ -14,20 +14,14 @@ Use it for two-factor login, email verification, and recovery codes—not for lo
 
 **Offer resend and help outside the cells.** Place “Resend code” and support links below the control, not inside individual boxes.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Provide six cells for a six-digit code with paste
-      support and a clear error message.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Use OTP-style boxes for a 32-character API key
-      people need to copy in one piece.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Provide six cells for a six-digit code with paste support and a clear error message."
+  }
+  dont={
+    "Use OTP-style boxes for a 32-character API key people need to copy in one piece."
+  }
+/>
 
 ## Security copy
 

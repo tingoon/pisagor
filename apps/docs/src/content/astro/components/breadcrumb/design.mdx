@@ -14,20 +14,14 @@ Prefer Breadcrumb when parent pages are real destinations; prefer a flat Navbar 
 
 **Keep separators subtle.** Chevrons or slashes should not overpower the segment text.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Truncate the middle of a deep path and keep the
-      current page label readable.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Show a breadcrumb on a flat app where every screen
-      is a peer with no parent.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Truncate the middle of a deep path and keep the current page label readable."
+  }
+  dont={
+    "Show a breadcrumb on a flat app where every screen is a peer with no parent."
+  }
+/>
 
 ## Related patterns
 

@@ -3,6 +3,12 @@
  * single example file as `?raw` (not a sources barrel).
  */
 
+import {
+  EXAMPLE_SKIP_STEMS,
+  exportNameToFileStem,
+  findExampleFileLoader,
+} from "#/lib/example-file";
+
 export type PreviewSourceKind = "component" | "form" | "block";
 
 export type PreviewSourceRef = {
@@ -75,36 +81,13 @@ const blockRaws: Record<string, RawLoaderMap> = {
   }),
 };
 
-const SKIP_STEMS = new Set(["helpers", "index", "sources", "data"]);
-
 const moduleCache = new Map<string, Promise<string>>();
 
-/** `Default` → `default`, `WithCard` → `with-card`. */
-export function exportNameToFileStem(exportName: string): string {
-  return exportName
-    .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
-    .replace(/_/g, "-")
-    .toLowerCase();
-}
-
-function findLoader(
-  modules: RawLoaderMap,
-  id: string,
-  stem: string,
-): (() => Promise<string>) | undefined {
-  const needle = `/${id}/${stem}.`;
-  const key = Object.keys(modules).find((path) => {
-    if (!path.includes(needle)) return false;
-    const base = path.split("/").pop() ?? "";
-    const fileStem = base.replace(/\.[^.]+$/, "");
-    return fileStem === stem && !SKIP_STEMS.has(fileStem);
-  });
-  return key ? modules[key] : undefined;
-}
+export { exportNameToFileStem };
 
 function loaderFor(ref: PreviewSourceRef): (() => Promise<string>) | undefined {
   const stem = exportNameToFileStem(ref.exportName);
-  if (SKIP_STEMS.has(stem)) return undefined;
+  if (EXAMPLE_SKIP_STEMS.has(stem)) return undefined;
 
   let modules: RawLoaderMap | undefined;
   if (ref.kind === "block") modules = blockRaws[ref.framework];
@@ -112,7 +95,8 @@ function loaderFor(ref: PreviewSourceRef): (() => Promise<string>) | undefined {
   else modules = componentRaws[ref.framework];
 
   if (!modules) return undefined;
-  return findLoader(modules, ref.id, stem);
+  return findExampleFileLoader(modules, ref.id, stem) as
+    (() => Promise<string>) | undefined;
 }
 
 /** Resolve one example source string (cached per example file). */

@@ -14,20 +14,14 @@ Prefer Select for moderate lists with stable labels. Prefer [Autocomplete](/reac
 
 **Avoid duplicate triggers.** One select per field; do not nest another select’s options inside without a clear hierarchy.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Use select for country, role, or status fields with
-      tens of options and a clear current value on the trigger.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Hide two or three fixed choices in a select when
-      radios or segments would be faster to scan.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Use select for country, role, or status fields with tens of options and a clear current value on the trigger."
+  }
+  dont={
+    "Hide two or three fixed choices in a select when radios or segments would be faster to scan."
+  }
+/>
 
 ## Empty and async
 

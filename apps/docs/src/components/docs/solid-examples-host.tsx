@@ -11,18 +11,17 @@ import { render } from "solid-js/web";
 import {
   armExamplesHost,
   type ExampleGlobs,
-  type ExampleModule,
   type ExamplesHostProps,
   renderMissingExample,
 } from "#/lib/examples-host";
 
 const globs: ExampleGlobs = {
-  block: import.meta.glob<ExampleModule>("../../examples/solid/*/index.ts"),
-  component: import.meta.glob<ExampleModule>(
-    "../../../../../packages/solid/examples/*/index.ts",
+  block: import.meta.glob("../../examples/solid/*/*.{ts,tsx}"),
+  component: import.meta.glob(
+    "../../../../../packages/solid/examples/*/*.{ts,tsx}",
   ),
-  form: import.meta.glob<ExampleModule>(
-    "../../../../../packages/solid-form/examples/*/index.ts",
+  form: import.meta.glob(
+    "../../../../../packages/solid-form/examples/*/*.{ts,tsx}",
   ),
 };
 

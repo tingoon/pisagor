@@ -12,20 +12,14 @@ Use app shell when the product is a multi-screen tool with persistent chrome; pr
 
 **Layer announcements and alerts deliberately.** Stack banner, [Announcement](/svelte/components/announcement/design), and page content so nothing essential hides under fixed chrome.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Keep navigation and main content stable while routes
-      change inside the shell.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Wrap a marketing landing page in full app chrome
-      with empty side rails.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Keep navigation and main content stable while routes change inside the shell."
+  }
+  dont={
+    "Wrap a marketing landing page in full app chrome with empty side rails."
+  }
+/>
 
 ## Regions
 

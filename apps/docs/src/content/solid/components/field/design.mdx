@@ -14,20 +14,14 @@ Use Field for every interactive control in a form unless a higher-level pattern 
 
 **Indicate required fields consistently.** Mark required once in the label or form legend; do not scatter asterisks without a legend explaining meaning.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Wrap Email with label, optional helper, and inline
-      error when validation fails.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Show only “Invalid input” at the top of a long form
-      without per-field messages.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Wrap Email with label, optional helper, and inline error when validation fails."
+  }
+  dont={
+    "Show only “Invalid input” at the top of a long form without per-field messages."
+  }
+/>
 
 ## Disabled and read-only
 

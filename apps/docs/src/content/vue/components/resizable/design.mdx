@@ -14,20 +14,14 @@ Use Resizable when persistent layout control adds value; avoid it when a fixed l
 
 **Respect reduced motion.** Size changes can be instant; avoid gratuitous animation on every drag frame.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Use resizable splits for editor + preview or list +
-      detail where people work in both panes daily.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Add draggable dividers on simple marketing pages
-      where a single column reads better on every device.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Use resizable splits for editor + preview or list + detail where people work in both panes daily."
+  }
+  dont={
+    "Add draggable dividers on simple marketing pages where a single column reads better on every device."
+  }
+/>
 
 ## Responsive behavior
 

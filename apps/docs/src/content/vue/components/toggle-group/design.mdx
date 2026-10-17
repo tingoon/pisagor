@@ -14,21 +14,14 @@ Prefer Toggle Group when options are visible at once and toggled state matters; 
 
 **Mirror selection in the URL or model when it drives content.** Changing the pressed toggle should update the view predictably.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Use toggle group for visible filter chips that stay on
-      until turned off.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Use toggle group for a single exclusive choice that
-      looks like navigation — [Tabs](/vue/components/tabs/design) or [Segment
-      Group](/vue/components/segment-group/design) may fit better.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Use toggle group for visible filter chips that stay on until turned off."
+  }
+  dont={
+    "Use toggle group for a single exclusive choice that looks like navigation — [Tabs](/vue/components/tabs/design) or [Segment Group](/vue/components/segment-group/design) may fit better."
+  }
+/>
 
 ## Keyboard
 

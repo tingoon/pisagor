@@ -14,20 +14,12 @@ Prefer circular progress when a ring matches the layout and percentage matters; 
 
 **Size for legibility.** Tiny rings in dense tables may need a tooltip or adjacent text for the same information.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Show 68% or step 3 of 5 next to the ring for long
-      operations.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Use a percentage ring for a two-second action where
-      a spinner is enough.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={"Show 68% or step 3 of 5 next to the ring for long operations."}
+  dont={
+    "Use a percentage ring for a two-second action where a spinner is enough."
+  }
+/>
 
 ## Related patterns
 

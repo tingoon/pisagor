@@ -4,16 +4,15 @@ import {
   armExamplesHost,
   type ExampleGlobs,
   type ExampleKind,
-  type ExampleModule,
 } from "#/lib/examples-host";
 
 const globs: ExampleGlobs = {
-  block: import.meta.glob<ExampleModule>("../../examples/vue/*/index.ts"),
-  component: import.meta.glob<ExampleModule>(
-    "../../../../../packages/vue/examples/*/index.ts",
+  block: import.meta.glob("../../examples/vue/*/*.{ts,tsx,vue}"),
+  component: import.meta.glob(
+    "../../../../../packages/vue/examples/*/*.{ts,tsx,vue}",
   ),
-  form: import.meta.glob<ExampleModule>(
-    "../../../../../packages/vue-form/examples/*/index.ts",
+  form: import.meta.glob(
+    "../../../../../packages/vue-form/examples/*/*.{ts,tsx,vue}",
   ),
 };
 

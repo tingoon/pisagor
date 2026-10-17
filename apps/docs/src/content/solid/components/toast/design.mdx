@@ -14,21 +14,14 @@ Prefer Toast for non-blocking confirmation; prefer [Alert](/solid/components/ale
 
 **Time dismissal sensibly.** Longer copy or error toasts stay longer; success can be briefer. Pause dismissal on hover or focus when people need to read.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Confirm “Changes saved” with a toast while the user
-      stays on the same screen.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Report validation errors for a form only via toast
-      — place errors on the [Field](/solid/components/field/design) and use
-      [Alert](/solid/components/alert/design) when persistence matters.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Confirm “Changes saved” with a toast while the user stays on the same screen."
+  }
+  dont={
+    "Report validation errors for a form only via toast — place errors on the [Field](/solid/components/field/design) and use [Alert](/solid/components/alert/design) when persistence matters."
+  }
+/>
 
 ## Placement
 

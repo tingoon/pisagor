@@ -14,21 +14,12 @@ Prefer Tooltip for supplementary text under about ten words; prefer [Hover Card]
 
 **Do not nest interactive content.** Tooltips are non-modal hints, not mini dialogs — no buttons inside unless upgrading to hover card or popover.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Tooltip an icon-only “Share” button with the word
-      Share.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Hide field requirements in a tooltip people may
-      never open — put requirements in the
-      [Field](/svelte/components/field/design) description.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={"Tooltip an icon-only “Share” button with the word Share."}
+  dont={
+    "Hide field requirements in a tooltip people may never open — put requirements in the [Field](/svelte/components/field/design) description."
+  }
+/>
 
 ## Timing and dismissal
 

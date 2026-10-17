@@ -14,20 +14,14 @@ Prefer Autocomplete for searchable single-select fields in forms and filters. Us
 
 **Limit list height.** Scroll long result sets inside a bounded popover and keep the input visible so context is never lost.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Ship Autocomplete for standard “search and pick one”
-      flows in product UI.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Expose Combobox to end users when Autocomplete
-      already matches the interaction.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Ship Autocomplete for standard “search and pick one” flows in product UI."
+  }
+  dont={
+    "Expose Combobox to end users when Autocomplete already matches the interaction."
+  }
+/>
 
 ## Composition
 

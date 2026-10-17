@@ -14,20 +14,14 @@ Prefer Collapsible for one optional block. Prefer [Accordion](/vue/components/ac
 
 **Do not hide required fields.** Never tuck mandatory form inputs inside a collapsed section unless the trigger clearly states that required information lives there.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Use a clear section title as the trigger and show
-      optional detail on demand.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Nest many collapsibles inside each other when a
-      flatter layout or tabs would scan faster.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Use a clear section title as the trigger and show optional detail on demand."
+  }
+  dont={
+    "Nest many collapsibles inside each other when a flatter layout or tabs would scan faster."
+  }
+/>
 
 ## Disclosure pattern
 

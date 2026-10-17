@@ -14,20 +14,14 @@ Prefer File to show already-known files in a queue or history. Prefer [File Uplo
 
 **Keep lists scannable.** Align actions on the trailing edge and use consistent row height across mixed file types.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> List each attachment with name, size, and Remove for
-      items pending submit.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Show only a generic “Document” label without name
-      or failure reason after a failed upload.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "List each attachment with name, size, and Remove for items pending submit."
+  }
+  dont={
+    "Show only a generic “Document” label without name or failure reason after a failed upload."
+  }
+/>
 
 ## Security and privacy
 

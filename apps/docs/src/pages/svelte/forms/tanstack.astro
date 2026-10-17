@@ -1,0 +1,26 @@
+---
+import SvelteExamplesHost from "#/components/docs/svelte-examples-host.svelte";
+import TanStackFormGuide from "#/components/docs/tanstack-form-guide.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+
+const headings = [
+  { depth: 2, slug: "overview", text: "Overview" },
+  { depth: 2, slug: "install", text: "Install" },
+  { depth: 2, slug: "import", text: "Import" },
+  { depth: 2, slug: "quick-start", text: "Quick start" },
+  { depth: 2, slug: "how-it-works", text: "How it works" },
+  { depth: 2, slug: "fields", text: "Connected fields" },
+  { depth: 2, slug: "example", text: "Example" },
+];
+---
+
+<DocsLayout
+  description="Wire Pisagor form fields to TanStack Form with createAppForm, AppField, and Root."
+  framework="svelte"
+  headings={headings}
+  kicker="Get started"
+  title="TanStack Form"
+>
+  <TanStackFormGuide framework="svelte" />
+</DocsLayout>
+<SvelteExamplesHost client:only="svelte" />

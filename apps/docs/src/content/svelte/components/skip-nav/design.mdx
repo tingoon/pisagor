@@ -14,20 +14,14 @@ Place Skip Nav at the top of the document, visually hidden until focused, linkin
 
 **Test with screen readers.** Activating the link should announce and move to content without trapping focus in hidden chrome.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Provide one skip link to the primary main landmark on
-      every document-style page with global nav.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Omit skip nav on data-heavy apps with long sidebars
-      — keyboard users still traverse the same chrome repeatedly.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Provide one skip link to the primary main landmark on every document-style page with global nav."
+  }
+  dont={
+    "Omit skip nav on data-heavy apps with long sidebars — keyboard users still traverse the same chrome repeatedly."
+  }
+/>
 
 ## Single-page apps
 

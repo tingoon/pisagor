@@ -14,20 +14,12 @@ Prefer File Input for simple forms that need a browser file picker inside [Field
 
 **Style the label, not the opaque input.** Hide the raw input visually if needed but keep a keyboard-activatable Choose file control with an accessible name.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Use File Input in a Field with “PDF only, max 10 MB”
-      helper text.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Use File Input alone for a marketing upload page
-      that promises drag-and-drop and upload progress.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={"Use File Input in a Field with “PDF only, max 10 MB” helper text."}
+  dont={
+    "Use File Input alone for a marketing upload page that promises drag-and-drop and upload progress."
+  }
+/>
 
 ## Mobile
 

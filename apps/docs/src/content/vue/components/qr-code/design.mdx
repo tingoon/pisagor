@@ -14,20 +14,14 @@ Prefer QR Code when the payload is stable and scanning is the primary handoff; p
 
 **Explain what happens after scan.** A line of copy (“Scan to pay” or “Opens signup on your phone”) sets expectation before the camera opens.
 
-<div class="docs-do-dont">
-  <figure class="docs-do-dont-card docs-do-dont-do">
-    <figcaption>
-      <strong>Do</strong> Show the code at a comfortable size with quiet zone,
-      contrast, and a short label describing the action.
-    </figcaption>
-  </figure>
-  <figure class="docs-do-dont-card docs-do-dont-dont">
-    <figcaption>
-      <strong>Don’t</strong> Shrink a QR code into a dense toolbar where cameras
-      struggle and no text alternative exists.
-    </figcaption>
-  </figure>
-</div>
+<DoDont
+  do={
+    "Show the code at a comfortable size with quiet zone, contrast, and a short label describing the action."
+  }
+  dont={
+    "Shrink a QR code into a dense toolbar where cameras struggle and no text alternative exists."
+  }
+/>
 
 ## Accessibility
 
