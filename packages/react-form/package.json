@@ -1,6 +1,6 @@
 {
   "name": "@pisagor/react-form",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Labeled form fields and TanStack Form bindings for @pisagor/react.",
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "bugs": {

@@ -1,5 +1,12 @@
 # @pisagor/svelte-form
 
+## 0.1.3
+
+### Patch Changes
+
+- Updated dependencies [2fc35e7]
+  - @pisagor/svelte@0.3.0
+
 ## 0.1.2
 
 ### Patch Changes
