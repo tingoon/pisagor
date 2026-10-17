@@ -6,7 +6,6 @@ export * from "./events";
 export * from "./keyboard-navigation";
 export * from "./progress";
 export * from "./skip";
-export { imports, sources } from "./sources";
 export * from "./step-types";
 export * from "./wait-for-click";
 export * from "./wait-for-element";

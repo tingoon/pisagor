@@ -8,4 +8,3 @@ export * from "./number-percent";
 export * from "./number-story";
 export * from "./relative-time";
 export * from "./relative-time-short";
-export { imports, sources } from "./sources";

@@ -9,7 +9,7 @@ const meta = preview.meta({
     docs: {
       description: {
         component:
-          "Multi-region application shell with draggable side panels and an optional inspector for dashboard layouts.",
+          "Multi-region application shell with banner, navigation, rails, panels, and an optional inspector.",
       },
     },
   },
@@ -94,8 +94,4 @@ export const Content = meta.story({
     },
   },
   render: exampleRender(Examples.Content),
-});
-
-export const DisableHotkey = meta.story({
-  render: exampleRender(Examples.DisableHotkey),
 });

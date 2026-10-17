@@ -1,0 +1,68 @@
+## Import
+
+```tsx
+import { Steps } from "@pisagor/react";
+```
+
+## Anatomy
+
+```tsx
+<Steps>
+  <Steps.List>
+    <Steps.Item>
+      <Steps.Trigger>
+        <Steps.Indicator />
+      </Steps.Trigger>
+      <Steps.Separator />
+    </Steps.Item>
+  </Steps.List>
+  <Steps.Content />
+  <Steps.CompletedContent />
+  <Steps.PrevTrigger />
+  <Steps.NextTrigger />
+</Steps>
+```
+
+## Examples
+
+### Default
+
+Show progress through a linear multi-step flow.
+
+<Example name="Default" />
+
+### Vertical
+
+Use a vertical layout when the steps should read top to bottom.
+
+<Example name="Vertical" />
+
+### Title
+
+Emphasize step titles for scannable wizard chrome.
+
+<Example name="Title" />
+
+### Description
+
+Add step descriptions when titles alone are not enough.
+
+<Example name="Description" />
+
+### Icon
+
+Lead steps with icons when symbols speed recognition.
+
+<Example name="Icon" />
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this steps.
+
+<Example name="Controlled" />
+
+### Loading
+
+Show a loading step while async work finishes before continuing.
+
+<Example name="Loading" />

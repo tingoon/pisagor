@@ -1,0 +1,85 @@
+## Import
+
+```ts
+import { TreeView } from "@pisagor/svelte";
+```
+
+## Anatomy
+
+```tsx
+<TreeView collection={collection}>
+  <TreeView.Tree>
+    <TreeView.NodeProvider>
+      <TreeView.Branch>
+        <TreeView.BranchControl />
+        <TreeView.BranchContent />
+      </TreeView.Branch>
+      <TreeView.Item>
+        <TreeView.ItemText />
+      </TreeView.Item>
+    </TreeView.NodeProvider>
+  </TreeView.Tree>
+</TreeView>
+```
+
+## Examples
+
+### Default
+
+Browse nested folders or categories in an expandable tree.
+
+<Example name="Default" />
+
+### Custom Icons
+
+Customize tree icons across folders and items.
+
+<Example name="CustomIcons" />
+
+### Custom Icons Folder
+
+Customize folder icons to match the content type.
+
+<Example name="CustomIconsFolder" />
+
+### Custom Icons Item
+
+Customize item icons to match the content type.
+
+<Example name="CustomIconsItem" />
+
+### Checkbox Tree
+
+Select nodes with checkboxes when membership spans a hierarchy.
+
+<Example name="CheckboxTree" />
+
+### With Context Menu
+
+Offer pointer actions on nodes for rename, delete, or other commands.
+
+<Example name="WithContextMenu" />
+
+### As child
+
+Render items as links when navigation is the primary action.
+
+<Example name="Links" />
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this tree view.
+
+<Example name="Controlled" />
+
+### Multiple Selection
+
+Allow selecting more than one node.
+
+<Example name="MultipleSelection" />
+
+### Rename
+
+Rename a node inline when labels are user-editable.
+
+<Example name="Rename" />

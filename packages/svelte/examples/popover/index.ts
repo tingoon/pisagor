@@ -7,4 +7,3 @@ export { default as Modal } from "./modal.svelte";
 export { default as Nested } from "./nested.svelte";
 export { default as Placements } from "./placements.svelte";
 export { default as ScrollArea } from "./scroll-area.svelte";
-export { imports, sources } from "./sources";

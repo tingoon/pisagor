@@ -1,7 +1,6 @@
 import { TreeView } from "@pisagor/react";
-import * as Examples from "#/react/examples/tree-view";
-
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/tree-view";
 
 const meta = preview.meta({
   component: TreeView,

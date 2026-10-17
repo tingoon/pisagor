@@ -1,0 +1,64 @@
+import Default from "#examples/astro/progress/default.astro";
+import OrientationHorizontal from "#examples/astro/progress/orientation-horizontal.astro";
+import OrientationVertical from "#examples/astro/progress/orientation-vertical.astro";
+import WithLabel from "#examples/astro/progress/with-label.astro";
+import Indeterminate from "#examples/astro/progress/indeterminate.astro";
+import CustomRecipe from "#examples/astro/progress/custom-recipe.astro";
+
+## Import
+
+```ts
+import { Progress } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Show completion along a linear track.
+
+<Example name="Default">
+  <Default />
+</Example>
+
+### Orientation Horizontal
+
+Lay out the progress bar horizontally when items should read in a row.
+
+<Example name="OrientationHorizontal">
+  <OrientationHorizontal />
+</Example>
+
+### Orientation Vertical
+
+Stack the progress bar vertically when items should read in a column.
+
+<Example name="OrientationVertical">
+  <OrientationVertical />
+</Example>
+
+### With Label
+
+Label the progress so the percentage or status is readable.
+
+<Example name="WithLabel">
+  <WithLabel />
+</Example>
+
+### Indeterminate
+
+Show an indeterminate state when progress or selection is partial or unknown.
+
+<Example name="Indeterminate">
+  <Indeterminate />
+</Example>
+
+## Customization
+
+### Custom recipe
+
+Extend `progressRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe">
+  <CustomRecipe />
+</Example>

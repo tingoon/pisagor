@@ -1,6 +1,6 @@
 import { Breadcrumb } from "@pisagor/astro";
-import * as Examples from "#/astro/examples/breadcrumb";
 import preview from "#/storybook/preview";
+import * as Examples from "#/astro/examples/breadcrumb";
 
 const meta = preview.meta({
   component: Breadcrumb,

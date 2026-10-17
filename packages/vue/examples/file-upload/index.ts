@@ -11,6 +11,5 @@ export { default as Invalid } from "./invalid.vue";
 export { default as MediaCapture } from "./media-capture.vue";
 export { default as MultipleFiles } from "./multiple-files.vue";
 export { default as RejectedFiles } from "./rejected-files.vue";
-export { imports, sources } from "./sources";
 export { default as Trigger } from "./trigger.vue";
 export { default as Variants } from "./variants.vue";

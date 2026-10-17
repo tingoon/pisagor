@@ -7,7 +7,6 @@ export { default as Icon } from "./icon.astro";
 export { default as Image } from "./image.astro";
 export { default as Link } from "./link.astro";
 export { default as Sizes } from "./sizes.astro";
-export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.astro";
 export { default as WithAvatar } from "./with-avatar.astro";
 export { default as WithMedia } from "./with-media.astro";

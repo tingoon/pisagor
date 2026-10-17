@@ -1,0 +1,51 @@
+## Import
+
+```ts
+import { Progress } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Default
+
+Show completion along a linear track.
+
+<Example name="Default" />
+
+### Orientation Horizontal
+
+Lay out the progress bar horizontally when items should read in a row.
+
+<Example name="OrientationHorizontal" />
+
+### Orientation Vertical
+
+Stack the progress bar vertically when items should read in a column.
+
+<Example name="OrientationVertical" />
+
+### With Label
+
+Label the progress so the percentage or status is readable.
+
+<Example name="WithLabel" />
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this progress bar.
+
+<Example name="Controlled" />
+
+### Indeterminate
+
+Show an indeterminate state when progress or selection is partial or unknown.
+
+<Example name="Indeterminate" />
+
+## Customization
+
+### Custom recipe
+
+Extend `progressRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

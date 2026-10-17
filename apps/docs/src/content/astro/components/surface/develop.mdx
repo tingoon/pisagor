@@ -1,0 +1,46 @@
+import Variants from "#examples/astro/surface/variants.astro";
+import Padding from "#examples/astro/surface/padding.astro";
+import Nested from "#examples/astro/surface/nested.astro";
+import CustomRecipe from "#examples/astro/surface/custom-recipe.astro";
+
+## Import
+
+```ts
+import { Surface } from "@pisagor/astro";
+```
+
+## Examples
+
+### Variants
+
+Choose surface elevation or tone to match hierarchy.
+
+<Example name="Variants">
+  <Variants />
+</Example>
+
+### Padding
+
+Adjust padding to match the density of the surrounding layout.
+
+<Example name="Padding">
+  <Padding />
+</Example>
+
+### Nested
+
+Nest another surface when hierarchy or layered structure is part of the content.
+
+<Example name="Nested">
+  <Nested />
+</Example>
+
+## Customization
+
+### Custom recipe
+
+Extend `surfaceRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe">
+  <CustomRecipe />
+</Example>

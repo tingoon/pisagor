@@ -1,0 +1,83 @@
+import Default from "#examples/astro/table/default.astro";
+import Variants from "#examples/astro/table/variants.astro";
+import Sizes from "#examples/astro/table/sizes.astro";
+import Footer from "#examples/astro/table/footer.astro";
+import NotHoverable from "#examples/astro/table/not-hoverable.astro";
+import CustomRecipe from "#examples/astro/table/custom-recipe.astro";
+
+## Import
+
+```ts
+import { Table } from "@pisagor/astro";
+```
+
+## Anatomy
+
+```tsx
+<Table>
+  <Table.Caption />
+  <Table.Header>
+    <Table.Row>
+      <Table.Head />
+    </Table.Row>
+  </Table.Header>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell />
+    </Table.Row>
+  </Table.Body>
+  <Table.Footer />
+</Table>
+```
+
+## Examples
+
+### Default
+
+Present comparable rows and columns for scanning.
+
+<Example name="Default">
+  <Default />
+</Example>
+
+### Variants
+
+Choose visual weight or emphasis so the table matches importance in the surrounding layout.
+
+<Example name="Variants">
+  <Variants />
+</Example>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default. Astro parts cannot read the root size, so pass the same `size` to `Table.Head` and `Table.Cell`.
+
+<Example name="Sizes">
+  <Sizes />
+</Example>
+
+### Footer
+
+Add a footer for summaries beneath the rows.
+
+<Example name="Footer">
+  <Footer />
+</Example>
+
+### Not Hoverable
+
+Turn off row hover when hover affordance would distract.
+
+<Example name="NotHoverable">
+  <NotHoverable />
+</Example>
+
+## Customization
+
+### Custom recipe
+
+Extend `tableRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe">
+  <CustomRecipe />
+</Example>

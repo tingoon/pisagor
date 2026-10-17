@@ -5,7 +5,6 @@ export { default as AlignInlineStart } from "./align-inline-start.astro";
 export { default as Disabled } from "./disabled.astro";
 export { default as Invalid } from "./invalid.astro";
 export { default as Sizes } from "./sizes.astro";
-export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.astro";
 export { default as WithBadge } from "./with-badge.astro";
 export { default as WithKeyboardShortcut } from "./with-keyboard-shortcut.astro";

@@ -1,6 +1,6 @@
 import { Timeline } from "@pisagor/react";
-import * as Examples from "#/react/examples/timeline";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/timeline";
 
 const meta = preview.meta({
   component: Timeline,

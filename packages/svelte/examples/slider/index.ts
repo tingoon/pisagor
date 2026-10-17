@@ -6,7 +6,6 @@ export { default as Invalid } from "./invalid.svelte";
 export { default as Marks } from "./marks.svelte";
 export { default as MinMax } from "./min-max.svelte";
 export { default as Range } from "./range.svelte";
-export { imports, sources } from "./sources";
 export { default as Step } from "./step.svelte";
 export { default as Variants } from "./variants.svelte";
 export { default as Vertical } from "./vertical.svelte";

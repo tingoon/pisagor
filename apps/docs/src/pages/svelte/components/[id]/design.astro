@@ -1,0 +1,12 @@
+---
+import ComponentDocPage from "#/components/docs/component-doc-page.astro";
+import { listComponentPaneStaticPaths } from "#/lib/component-doc";
+
+export async function getStaticPaths() {
+  return listComponentPaneStaticPaths("svelte", "design");
+}
+
+const id = Astro.params.id as string;
+---
+
+<ComponentDocPage framework="svelte" id={id} tab="design" />

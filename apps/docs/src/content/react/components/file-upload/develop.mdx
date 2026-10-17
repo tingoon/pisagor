@@ -1,0 +1,116 @@
+## Import
+
+```tsx
+import { FileUpload } from "@pisagor/react";
+```
+
+## Anatomy
+
+```tsx
+<FileUpload>
+  <FileUpload.Dropzone>
+    <FileUpload.DropzoneIcon />
+    <FileUpload.Title />
+    <FileUpload.Description />
+    <FileUpload.Trigger />
+    <FileUpload.Helper />
+  </FileUpload.Dropzone>
+  <FileUpload.List />
+</FileUpload>
+```
+
+## Examples
+
+### Default
+
+Choose files with a dropzone and file picker.
+
+<Example name="Default" />
+
+### Variants
+
+Choose upload surface emphasis to match the form.
+
+<Example name="Variants" />
+
+### Dropzone
+
+Emphasize drag-and-drop as the primary way to add files.
+
+<Example name="Dropzone" />
+
+### Trigger
+
+Open the file picker from an explicit trigger control.
+
+<Example name="Trigger" />
+
+### Multiple Files
+
+Allow more than one file in a single upload.
+
+<Example name="MultipleFiles" />
+
+### Accepted File Types
+
+Limit selectable types so users only pick suitable files.
+
+<Example name="AcceptedFileTypes" />
+
+### Directory Upload
+
+Accept a folder when bulk directory import is required.
+
+<Example name="DirectoryUpload" />
+
+### Media Capture
+
+Capture from camera or microphone when device media is the source.
+
+<Example name="MediaCapture" />
+
+### Custom Preview
+
+Customize previews when default thumbnails are not enough.
+
+<Example name="CustomPreview" />
+
+### Clear Trigger
+
+Clear selected files in one action.
+
+<Example name="ClearTrigger" />
+
+### Rejected Files
+
+`FileUpload.List` also lists rejected files with their validation errors, so users can see why a file was not accepted.
+
+<Example name="RejectedFiles" />
+
+### Disabled
+
+Show that upload is unavailable.
+
+<Example name="Disabled" />
+
+### Invalid
+
+Surface rejected files or validation errors.
+
+<Example name="Invalid" />
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Adjust spacing for denser or roomier upload regions.
+
+<Example name="CustomSpacing" />
+
+### Custom recipe
+
+Extend `fileUploadRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

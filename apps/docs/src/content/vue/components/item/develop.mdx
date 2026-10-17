@@ -1,0 +1,95 @@
+## Import
+
+```ts
+import { Item } from "@pisagor/vue";
+```
+
+## Anatomy
+
+```vue
+<Item>
+  <Item.Content>
+    <Item.Title />
+    <Item.Description />
+  </Item.Content>
+  <Item.Actions />
+</Item>
+```
+
+## Examples
+
+### Default
+
+Lay out media, title, description, and actions as one row.
+
+<Example name="Default" />
+
+### Variants
+
+Choose emphasis to match list density.
+
+<Example name="Variants" />
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example name="Sizes" />
+
+### Icon
+
+Lead with an icon when a symbol is enough.
+
+<Example name="Icon" />
+
+### Image
+
+Use a larger image treatment for media-forward rows.
+
+<Example name="Image" />
+
+### With Media
+
+Lead with media when imagery helps recognition.
+
+<Example name="WithMedia" />
+
+### Header
+
+Use item header layout for section introductions in a list.
+
+<Example name="Header" />
+
+### Group
+
+Group related items so related choices stay visually and semantically together.
+
+<Example name="Group" />
+
+### With Avatar
+
+Lead with an avatar when the row represents a person.
+
+<Example name="WithAvatar" />
+
+### As child
+
+Navigate when the whole row is a destination.
+
+<Example name="Link" />
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Override spacing when the default density does not match the surrounding layout.
+
+<Example name="CustomSpacing" />
+
+### Custom recipe
+
+Extend `itemRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

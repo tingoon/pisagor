@@ -1,0 +1,73 @@
+import Default from "#examples/astro/button-group/default.astro";
+import Sizes from "#examples/astro/button-group/sizes.astro";
+import OrientationHorizontal from "#examples/astro/button-group/orientation-horizontal.astro";
+import OrientationVertical from "#examples/astro/button-group/orientation-vertical.astro";
+import Nested from "#examples/astro/button-group/nested.astro";
+import WithSeparator from "#examples/astro/button-group/with-separator.astro";
+import CustomRecipe from "#examples/astro/button-group/custom-recipe.astro";
+
+## Import
+
+```ts
+import { ButtonGroup } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Related actions clustered as one visual group.
+
+<Example name="Default">
+  <Default />
+</Example>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example name="Sizes">
+  <Sizes />
+</Example>
+
+### Orientation Horizontal
+
+Lay actions in a row for toolbars and footers.
+
+<Example name="OrientationHorizontal">
+  <OrientationHorizontal />
+</Example>
+
+### Orientation Vertical
+
+Stack actions when the group sits in a narrow column.
+
+<Example name="OrientationVertical">
+  <OrientationVertical />
+</Example>
+
+### Nested
+
+Nest groups when primary and secondary clusters share one control strip.
+
+<Example name="Nested">
+  <Nested />
+</Example>
+
+### With Separator
+
+Separate subgroups so distinct action sets stay scannable.
+
+<Example name="WithSeparator">
+  <WithSeparator />
+</Example>
+
+## Customization
+
+### Custom recipe
+
+Extend `buttonGroupRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe">
+  <CustomRecipe />
+</Example>

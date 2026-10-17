@@ -1,0 +1,64 @@
+import Default from "#examples/astro/breadcrumb/default.astro";
+import Collapsed from "#examples/astro/breadcrumb/collapsed.astro";
+import CustomSeparator from "#examples/astro/breadcrumb/custom-separator.astro";
+import Compound from "#examples/astro/breadcrumb/compound.astro";
+import WithLink from "#examples/astro/breadcrumb/with-link.astro";
+import CustomRecipe from "#examples/astro/breadcrumb/custom-recipe.astro";
+
+## Import
+
+```ts
+import { Breadcrumb } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+The full path from root to the current page.
+
+<Example name="Default">
+  <Default />
+</Example>
+
+### Collapsed
+
+Collapse middle segments when the path is long so the current page stays visible.
+
+<Example name="Collapsed">
+  <Collapsed />
+</Example>
+
+### Custom Separator
+
+Replace the default separator when brand or locale needs a different divider.
+
+<Example name="CustomSeparator">
+  <CustomSeparator />
+</Example>
+
+### Compound
+
+Compose items and separators from parts for a custom breadcrumb layout.
+
+<Example name="Compound">
+  <Compound />
+</Example>
+
+### As child
+
+Link ancestors so users can jump back through the hierarchy.
+
+<Example name="WithLink">
+  <WithLink />
+</Example>
+
+## Customization
+
+### Custom recipe
+
+Extend `breadcrumbRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe">
+  <CustomRecipe />
+</Example>

@@ -1,0 +1,83 @@
+## Import
+
+```tsx
+import { Timer } from "@pisagor/react";
+```
+
+## Anatomy
+
+```tsx
+<Timer>
+  <Timer.Area>
+    <Timer.ItemGroup>
+      <Timer.Item />
+      <Timer.ItemLabel />
+    </Timer.ItemGroup>
+    <Timer.Separator />
+  </Timer.Area>
+</Timer>
+```
+
+## Examples
+
+### Default
+
+Count elapsed time with start and reset controls.
+
+<Example name="Default" />
+
+### Orientation Horizontal
+
+Lay out the timer horizontally when items should read in a row.
+
+<Example name="OrientationHorizontal" />
+
+### Orientation Vertical
+
+Stack the timer vertically when items should read in a column.
+
+<Example name="OrientationVertical" />
+
+### Custom Separator
+
+Override time separators when locale or brand needs different punctuation.
+
+<Example name="CustomSeparator" />
+
+### Countdown
+
+Count down toward zero when remaining time is the focus.
+
+<Example name="Countdown" />
+
+### Countdown Date
+
+Count down to a specific date or time.
+
+<Example name="CountdownDate" />
+
+### Pomodoro
+
+Run work-and-break cycles when the timer follows a pomodoro rhythm.
+
+<Example name="Pomodoro" />
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this timer.
+
+<Example name="Controlled" />
+
+### Interval
+
+Fire on an interval when recurring ticks drive the UI.
+
+<Example name="Interval" />
+
+## Customization
+
+### Custom recipe
+
+Extend `timerRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

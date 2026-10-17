@@ -1,6 +1,6 @@
 import { Textarea } from "@pisagor/react";
-import * as Examples from "#/react/examples/textarea";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/textarea";
 
 const meta = preview.meta({
   component: Textarea,

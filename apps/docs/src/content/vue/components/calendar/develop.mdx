@@ -1,0 +1,111 @@
+## Import
+
+```ts
+import { Calendar } from "@pisagor/vue";
+```
+
+## Anatomy
+
+```vue
+<Calendar>
+  <Calendar.ViewControl>
+    <Calendar.PrevTrigger />
+    <Calendar.ViewDate />
+    <Calendar.NextTrigger />
+  </Calendar.ViewControl>
+  <Calendar.Table>
+    <Calendar.WeekDays />
+    <Calendar.TableDays />
+  </Calendar.Table>
+</Calendar>
+```
+
+## Examples
+
+### Default
+
+Browse and pick a single date on the calendar grid.
+
+<Example name="Default" />
+
+### Range
+
+Pick a start and end date for spans such as trips or reports.
+
+<Example name="Range" />
+
+### Multiple Months
+
+Show more than one month when comparing ranges across months.
+
+<Example name="MultipleMonths" />
+
+### Month Year Selector
+
+Jump by month or year when paging day-by-day would be slow.
+
+<Example name="MonthYearSelector" />
+
+### Presets
+
+Offer common ranges so users can pick without hunting on the grid.
+
+<Example name="Presets" />
+
+### Controlled
+
+Drive the selected date from the parent when other UI depends on it.
+
+<Example name="Controlled" />
+
+### Disabled
+
+Show that the calendar cannot be used.
+
+<Example name="Disabled" />
+
+### Invalid
+
+Show that the selected date is not allowed.
+
+<Example name="Invalid" />
+
+### Min Max
+
+Limit selection to a valid window of dates.
+
+<Example name="MinMax" />
+
+### Booked Dates
+
+Mark unavailable days when bookings or blackout dates matter.
+
+<Example name="BookedDates" />
+
+### Fixed Weeks
+
+Keep six rows every month so the calendar height stays stable.
+
+<Example name="FixedWeeks" />
+
+### Select Today
+
+Jump to today when returning to the current date is a frequent action.
+
+<Example name="SelectToday" />
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Resize day cells when the calendar must match a denser or larger layout.
+
+<Example name="CustomCellSize" />
+
+### Custom recipe
+
+Extend `calendarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

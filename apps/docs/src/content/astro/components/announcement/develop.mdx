@@ -1,0 +1,64 @@
+import Variants from "#examples/astro/announcement/variants.astro";
+import WithIcon from "#examples/astro/announcement/with-icon.astro";
+import WithoutBadge from "#examples/astro/announcement/without-badge.astro";
+import Compound from "#examples/astro/announcement/compound.astro";
+import WithLink from "#examples/astro/announcement/with-link.astro";
+import CustomRecipe from "#examples/astro/announcement/custom-recipe.astro";
+
+## Import
+
+```ts
+import { Announcement } from "@pisagor/astro";
+```
+
+## Examples
+
+### Variants
+
+Choose emphasis so the announcement matches how urgent or promotional the message is.
+
+<Example name="Variants">
+  <Variants />
+</Example>
+
+### With Icon
+
+Add an icon when a symbol helps users recognize the announcement type quickly.
+
+<Example name="WithIcon">
+  <WithIcon />
+</Example>
+
+### Without Badge
+
+Drop the badge treatment when a plain text callout is enough.
+
+<Example name="WithoutBadge">
+  <WithoutBadge />
+</Example>
+
+### Compound
+
+Assemble parts when you need a custom announcement layout.
+
+<Example name="Compound">
+  <Compound />
+</Example>
+
+### As child
+
+Link through to details when the bar should stay short and the full story lives elsewhere.
+
+<Example name="WithLink">
+  <WithLink />
+</Example>
+
+## Customization
+
+### Custom recipe
+
+Extend `announcementRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe">
+  <CustomRecipe />
+</Example>

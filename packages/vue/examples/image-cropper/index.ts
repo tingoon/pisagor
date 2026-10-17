@@ -6,5 +6,4 @@ export { default as Default } from "./default.vue";
 export { default as FixedCropArea } from "./fixed-crop-area.vue";
 export { default as InitialCrop } from "./initial-crop.vue";
 export { default as MinMaxSize } from "./min-max-size.vue";
-export { imports, sources } from "./sources";
 export { default as ZoomLimits } from "./zoom-limits.vue";

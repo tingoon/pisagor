@@ -1,6 +1,6 @@
 import { Button, Card } from "@pisagor/astro";
-import * as Examples from "#/astro/examples/card";
 import preview from "#/storybook/preview";
+import * as Examples from "#/astro/examples/card";
 
 const meta = preview.meta({
   component: Card,

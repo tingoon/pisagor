@@ -1,0 +1,69 @@
+## Import
+
+```ts
+import { CircularSlider } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Default
+
+Choose a value by dragging around a circular track.
+
+<Example name="Default" />
+
+### Sizes
+
+Match control size to the surrounding layout.
+
+<Example name="Sizes" />
+
+### Thickness
+
+Adjust track thickness for visibility and touch comfort.
+
+<Example name="Thickness" />
+
+### With Value
+
+Show the current value so the gesture stays understandable.
+
+<Example name="WithValue" />
+
+### With Markers
+
+Show markers for key values along the circular track.
+
+<Example name="WithMarkers" />
+
+### Custom Markers
+
+Place custom markers when meaningful points sit on the ring.
+
+<Example name="CustomMarkers" />
+
+### Controlled
+
+Drive the value from the parent when other UI depends on it.
+
+<Example name="Controlled" />
+
+### Disabled
+
+Show that the control is unavailable.
+
+<Example name="Disabled" />
+
+### Step
+
+Snap to increments when values should move in fixed steps.
+
+<Example name="Step" />
+
+## Customization
+
+### Custom recipe
+
+Extend `circularSliderRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

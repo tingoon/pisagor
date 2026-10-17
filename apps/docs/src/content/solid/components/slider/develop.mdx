@@ -1,0 +1,81 @@
+## Import
+
+```tsx
+import { Slider } from "@pisagor/solid";
+```
+
+## Examples
+
+### Variants
+
+Choose visual weight or emphasis so the slider matches importance in the surrounding layout.
+
+<Example name="Variants" />
+
+### Vertical
+
+Use a vertical layout when the slider should read top to bottom.
+
+<Example name="Vertical" />
+
+### With Label
+
+Label the slider so the current value is readable.
+
+<Example name="WithLabel" />
+
+### Marks
+
+Show marks for key values along the track.
+
+<Example name="Marks" />
+
+### Range
+
+Select a start and end value when the task needs a span rather than a single point.
+
+<Example name="Range" />
+
+### Compound
+
+Compose the slider from parts for custom headers or thumbs.
+
+<Example name="Compound" />
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this slider.
+
+<Example name="Controlled" />
+
+### Disabled
+
+Show that the slider is unavailable.
+
+<Example name="Disabled" />
+
+### Invalid
+
+Surface a validation or error state so users know the slider needs attention before continuing.
+
+<Example name="Invalid" />
+
+### Min Max
+
+Clamp values to a minimum and maximum so users cannot pick out-of-range input.
+
+<Example name="MinMax" />
+
+### Step
+
+Snap changes to a step interval when values should move in fixed increments.
+
+<Example name="Step" />
+
+## Customization
+
+### Custom recipe
+
+Extend `sliderRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

@@ -4,5 +4,4 @@ export { default as Nested } from "./nested.svelte";
 export { default as OrientationHorizontal } from "./orientation-horizontal.svelte";
 export { default as OrientationVertical } from "./orientation-vertical.svelte";
 export { default as Sizes } from "./sizes.svelte";
-export { imports, sources } from "./sources";
 export { default as WithSeparator } from "./with-separator.svelte";

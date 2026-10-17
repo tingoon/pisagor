@@ -8,4 +8,3 @@ export { default as NumberPercent } from "./number-percent.svelte";
 export { default as NumberStory } from "./number-story.svelte";
 export { default as RelativeTime } from "./relative-time.svelte";
 export { default as RelativeTimeShort } from "./relative-time-short.svelte";
-export { imports, sources } from "./sources";

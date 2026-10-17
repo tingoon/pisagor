@@ -12,7 +12,6 @@ export { default as ImageExplorer } from "./image-explorer.vue";
 export { default as SelectionExtended } from "./selection-extended.vue";
 export { default as SelectionMultiple } from "./selection-multiple.vue";
 export { default as SelectionNone } from "./selection-none.vue";
-export { imports, sources } from "./sources";
 export { default as TransferList } from "./transfer-list.vue";
 export { default as WithDescription } from "./with-description.vue";
 export { default as WithFilter } from "./with-filter.vue";

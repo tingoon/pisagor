@@ -1,0 +1,45 @@
+## Import
+
+```tsx
+import { Status } from "@pisagor/solid";
+```
+
+## Examples
+
+### Variants
+
+Choose color tone for availability or severity. Pair with text for accessibility.
+
+<Example name="Variants" />
+
+### Sizes
+
+Match size to the surrounding chrome.
+
+<Example name="Sizes" />
+
+### With Icon
+
+Pair an icon with the label to reinforce meaning.
+
+<Example name="WithIcon" />
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Override the fill or accent when a brand or contextual color matters more than the theme default.
+
+<Example name="CustomColor" />
+
+Resize the indicator to match nearby text and density.
+
+<Example name="CustomSize" />
+
+### Custom recipe
+
+Extend `statusRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

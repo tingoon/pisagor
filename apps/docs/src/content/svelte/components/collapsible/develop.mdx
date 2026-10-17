@@ -1,0 +1,56 @@
+## Import
+
+```ts
+import { Collapsible } from "@pisagor/svelte";
+```
+
+## Anatomy
+
+```tsx
+<Collapsible>
+  <Collapsible.Trigger>
+    <Collapsible.Indicator />
+  </Collapsible.Trigger>
+  <Collapsible.Content />
+</Collapsible>
+```
+
+## Examples
+
+### Default
+
+Reveal and hide a section behind a trigger.
+
+<Example name="Default" />
+
+### Partial Collapse
+
+Leave a preview visible when users should sense content below the fold.
+
+<Example name="PartialCollapse" />
+
+### Nested
+
+Nest collapsibles when content has deeper hierarchy.
+
+<Example name="Nested" />
+
+### Controlled
+
+Drive open state from the parent when other UI depends on it.
+
+<Example name="Controlled" />
+
+### Disabled
+
+Show that the section cannot expand.
+
+<Example name="Disabled" />
+
+## Customization
+
+### Custom recipe
+
+Extend `collapsibleRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

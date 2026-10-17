@@ -1,0 +1,51 @@
+## Import
+
+```ts
+import { Clipboard } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Variants
+
+Choose button emphasis to match surrounding actions.
+
+<Example name="Variants" />
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example name="Sizes" />
+
+### Different Icon
+
+Swap icons when a different metaphor fits the copied content.
+
+<Example name="DifferentIcon" />
+
+### With Label
+
+Show a text label when an icon alone is not clear enough.
+
+<Example name="WithLabel" />
+
+### Controlled
+
+Drive copied state from the parent when feedback is coordinated elsewhere.
+
+<Example name="Controlled" />
+
+### Custom Timeout
+
+Change how long the success state shows before resetting.
+
+<Example name="CustomTimeout" />
+
+## Customization
+
+### Custom recipe
+
+Extend `clipboardRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

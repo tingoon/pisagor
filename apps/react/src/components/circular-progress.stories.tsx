@@ -1,6 +1,6 @@
 import { CircularProgress } from "@pisagor/react";
-import * as Examples from "#/react/examples/circular-progress";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/circular-progress";
 
 const meta = preview.meta({
   component: CircularProgress,

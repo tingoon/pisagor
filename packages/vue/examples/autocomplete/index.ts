@@ -6,7 +6,6 @@ export { default as Disabled } from "./disabled.vue";
 export { default as Group } from "./group.vue";
 export { default as Invalid } from "./invalid.vue";
 export { default as Sizes } from "./sizes.vue";
-export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.vue";
 export { default as WithClearButton } from "./with-clear-button.vue";
 export { default as WithStartIcon } from "./with-start-icon.vue";

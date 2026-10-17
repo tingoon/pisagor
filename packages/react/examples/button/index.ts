@@ -7,6 +7,5 @@ export * from "./loading";
 export * from "./no-click-effect";
 export * from "./pill";
 export * from "./sizes";
-export { imports, sources } from "./sources";
 export * from "./variants";
 export * from "./with-icon";

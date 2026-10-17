@@ -12,4 +12,3 @@ export { default as MultipleMonths } from "./multiple-months.svelte";
 export { default as Presets } from "./presets.svelte";
 export { default as Range } from "./range.svelte";
 export { default as SelectToday } from "./select-today.svelte";
-export { imports, sources } from "./sources";

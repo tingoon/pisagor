@@ -5,4 +5,3 @@ export * from "./default";
 export * from "./link-urls";
 export * from "./links";
 export * from "./page-range";
-export { imports, sources } from "./sources";

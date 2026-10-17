@@ -5,4 +5,3 @@ export { default as Default } from "./default.vue";
 export { default as LinkUrls } from "./link-urls.vue";
 export { default as Links } from "./links.vue";
 export { default as PageRange } from "./page-range.vue";
-export { imports, sources } from "./sources";

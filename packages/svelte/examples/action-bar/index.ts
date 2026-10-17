@@ -5,6 +5,5 @@ export { default as CustomSpacing } from "./custom-spacing.svelte";
 export { default as Default } from "./default.svelte";
 export { default as Gutter } from "./gutter.svelte";
 export { default as Placements } from "./placements.svelte";
-export { imports, sources } from "./sources";
 export { default as WithDialog } from "./with-dialog.svelte";
 export { default as WithMenu } from "./with-menu.svelte";

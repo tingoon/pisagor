@@ -1,0 +1,57 @@
+## Import
+
+```tsx
+import { Textarea } from "@pisagor/react";
+```
+
+## Examples
+
+### Variants
+
+Choose emphasis to match surrounding inputs.
+
+<Example name="Variants" />
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example name="Sizes" />
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this textarea.
+
+<Example name="Controlled" />
+
+### Disabled
+
+Show that editing is unavailable.
+
+<Example name="Disabled" />
+
+### Invalid
+
+Surface a validation error when the text is missing or not allowed.
+
+<Example name="Invalid" />
+
+### Autoresize
+
+Grow with content instead of showing an inner scrollbar early.
+
+<Example name="Autoresize" />
+
+### Clearable
+
+Allow clearing the value when an empty state is a valid reset.
+
+<Example name="Clearable" />
+
+## Customization
+
+### Custom recipe
+
+Extend `textareaRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

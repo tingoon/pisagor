@@ -1,0 +1,93 @@
+## Import
+
+```tsx
+import { Rating } from "@pisagor/solid";
+```
+
+## Examples
+
+### Default
+
+Let users pick a score from one to five stars.
+
+<Example name="Default" />
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example name="Sizes" />
+
+### Count
+
+Set `count` to change how many stars are shown.
+
+<Example name="Count" />
+
+### Half Star
+
+Allow half values when finer granularity matters.
+
+<Example name="HalfStar" />
+
+### Custom Icon
+
+Replace stars with another symbol when the metaphor fits better.
+
+<Example name="CustomIcon" />
+
+### Testimonial
+
+Present a readonly score in a testimonial-style layout.
+
+<Example name="Testimonial" />
+
+### Compound
+
+Compose the rating from parts for custom item rendering.
+
+<Example name="Compound" />
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this rating.
+
+<Example name="Controlled" />
+
+### Disabled
+
+Show that the rating is unavailable.
+
+<Example name="Disabled" />
+
+### Invalid
+
+Surface a validation or error state so users know the rating needs attention before continuing.
+
+<Example name="Invalid" />
+
+### Readonly
+
+Display the value without allowing edits when the score or data is informational only.
+
+<Example name="Readonly" />
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Override the fill or accent when a brand or contextual color matters more than the theme default.
+
+<Example name="CustomColor" />
+
+Override dimensions when the default size does not fit the layout.
+
+<Example name="CustomSize" />
+
+### Custom recipe
+
+Extend `ratingRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

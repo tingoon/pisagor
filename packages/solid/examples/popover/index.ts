@@ -7,4 +7,3 @@ export * from "./modal";
 export * from "./nested";
 export * from "./placements";
 export * from "./scroll-area";
-export { imports, sources } from "./sources";

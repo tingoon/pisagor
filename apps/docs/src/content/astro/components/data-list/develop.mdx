@@ -1,0 +1,53 @@
+import Default from "#examples/astro/data-list/default.astro";
+import OrientationHorizontal from "#examples/astro/data-list/orientation-horizontal.astro";
+import OrientationVertical from "#examples/astro/data-list/orientation-vertical.astro";
+import Separator from "#examples/astro/data-list/separator.astro";
+import Compound from "#examples/astro/data-list/compound.astro";
+
+## Import
+
+```ts
+import { DataList } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Present label-value pairs for summaries and metadata.
+
+<Example name="Default">
+  <Default />
+</Example>
+
+### Orientation Horizontal
+
+Lay out the data list horizontally when items should read in a row.
+
+<Example name="OrientationHorizontal">
+  <OrientationHorizontal />
+</Example>
+
+### Orientation Vertical
+
+Stack the data list vertically when items should read in a column.
+
+<Example name="OrientationVertical">
+  <OrientationVertical />
+</Example>
+
+### Separator
+
+Separate groups of pairs so sections stay scannable.
+
+<Example name="Separator">
+  <Separator />
+</Example>
+
+### Compound
+
+Compose term and value parts for a custom list layout.
+
+<Example name="Compound">
+  <Compound />
+</Example>

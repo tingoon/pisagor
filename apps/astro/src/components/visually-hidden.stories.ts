@@ -1,6 +1,6 @@
 import { VisuallyHidden } from "@pisagor/astro";
-import * as Examples from "#/astro/examples/visually-hidden";
 import preview from "#/storybook/preview";
+import * as Examples from "#/astro/examples/visually-hidden";
 
 const meta = preview.meta({
   component: VisuallyHidden,

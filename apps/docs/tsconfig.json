@@ -4,7 +4,20 @@
     "jsxImportSource": "react",
     "paths": {
       "#/*": ["./src/*"],
-      "#/changelog/*": ["../../packages/*/CHANGELOG.md"]
+      "#/changelog/*": ["../../packages/*/CHANGELOG.md"],
+      "#examples/astro/*": ["../../packages/astro/examples/*"],
+      "#examples/react-blocks/*": ["./src/examples/react/*"],
+      "#examples/react-form/*": ["../../packages/react-form/examples/*"],
+      "#examples/react/*": ["../../packages/react/examples/*"],
+      "#examples/solid-blocks/*": ["./src/examples/solid/*"],
+      "#examples/solid-form/*": ["../../packages/solid-form/examples/*"],
+      "#examples/solid/*": ["../../packages/solid/examples/*"],
+      "#examples/svelte-blocks/*": ["./src/examples/svelte/*"],
+      "#examples/svelte-form/*": ["../../packages/svelte-form/examples/*"],
+      "#examples/svelte/*": ["../../packages/svelte/examples/*"],
+      "#examples/vue-blocks/*": ["./src/examples/vue/*"],
+      "#examples/vue-form/*": ["../../packages/vue-form/examples/*"],
+      "#examples/vue/*": ["../../packages/vue/examples/*"]
     },
     "types": ["astro/client"]
   },

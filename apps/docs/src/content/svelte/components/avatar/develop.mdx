@@ -1,0 +1,63 @@
+## Import
+
+```ts
+import { Avatar } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Default
+
+The standard avatar for a single person.
+
+<Example name="Default" />
+
+### Sizes
+
+Match avatar size to list density — smaller in dense rows, larger in profiles.
+
+<Example name="Sizes" />
+
+### Shapes
+
+Choose round or squared geometry to match the surrounding visual language.
+
+<Example name="Shapes" />
+
+### Count
+
+Show how many people are represented when listing everyone would take too much space.
+
+<Example name="Count" />
+
+### Fallbacks
+
+Fall back to initials or an icon when no photo is available.
+
+<Example name="Fallbacks" />
+
+### Initials
+
+Pass `name` to derive initials when no `fallback` is set. The name is also used as the image alt text.
+
+<Example name="Initials" />
+
+### Group
+
+Overlap several avatars in a row for shared ownership or participants.
+
+<Example name="Group" />
+
+### Compound
+
+Compose `AvatarGroup.Root` with `Avatar` children when each avatar needs its own props.
+
+<Example name="Compound" />
+
+## Customization
+
+### Custom recipe
+
+Extend `avatarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

@@ -1,6 +1,6 @@
 import { ToggleGroup } from "@pisagor/react";
-import * as Examples from "#/react/examples/toggle-group";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/toggle-group";
 
 const meta = preview.meta({
   component: ToggleGroup,

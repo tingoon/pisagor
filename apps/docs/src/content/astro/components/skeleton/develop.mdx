@@ -1,0 +1,55 @@
+import Default from "#examples/astro/skeleton/default.astro";
+import Sizes from "#examples/astro/skeleton/sizes.astro";
+import SkeletonText from "#examples/astro/skeleton/skeleton-text.astro";
+import InCard from "#examples/astro/skeleton/in-card.astro";
+import CustomRecipe from "#examples/astro/skeleton/custom-recipe.astro";
+
+## Import
+
+```ts
+import { Skeleton } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Pulse placeholders while content loads.
+
+<Example name="Default">
+  <Default />
+</Example>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example name="Sizes">
+  <Sizes />
+</Example>
+
+### Skeleton Text
+
+Approximate lines of text so reading layout stays stable.
+
+<Example name="SkeletonText">
+  <SkeletonText />
+</Example>
+
+### In Card
+
+Place skeletons inside a card when that surface is loading.
+
+<Example name="InCard">
+  <InCard />
+</Example>
+
+## Customization
+
+### Custom recipe
+
+Extend `skeletonRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe">
+  <CustomRecipe />
+</Example>

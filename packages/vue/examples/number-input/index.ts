@@ -9,6 +9,5 @@ export { default as MouseWheel } from "./mouse-wheel.vue";
 export { default as Range } from "./range.vue";
 export { default as Scrub } from "./scrub.vue";
 export { default as Sizes } from "./sizes.vue";
-export { imports, sources } from "./sources";
 export { default as Step } from "./step.vue";
 export { default as Variants } from "./variants.vue";

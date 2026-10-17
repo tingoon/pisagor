@@ -1,0 +1,93 @@
+## Import
+
+```ts
+import { Carousel } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Default
+
+Step through slides with previous and next controls.
+
+<Example name="Default" />
+
+### Orientation Horizontal
+
+Scroll slides left to right for the common carousel pattern.
+
+<Example name="OrientationHorizontal" />
+
+### Orientation Vertical
+
+Scroll slides top to bottom when vertical paging fits the layout.
+
+<Example name="OrientationVertical" />
+
+### Spacing
+
+Adjust gaps between slides to match density.
+
+<Example name="Spacing" />
+
+### Slides Per Page
+
+Show more than one slide at a time when comparison matters.
+
+<Example name="SlidesPerPage" />
+
+### Thumbnail Indicator
+
+Use thumbnails so users can jump to a specific slide.
+
+<Example name="ThumbnailIndicator" />
+
+### Thumbnail Indicator Vertical
+
+Stack thumbnails vertically beside the main slide.
+
+<Example name="ThumbnailIndicatorVertical" />
+
+### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
+
+<Example name="Compound" />
+
+### Controlled
+
+Drive the active slide from the parent when other UI depends on it.
+
+<Example name="Controlled" />
+
+### Autoplay
+
+Advance slides automatically when the carousel is ambient, not critical reading.
+
+<Example name="Autoplay" />
+
+### Autoplay Controls
+
+Use `Carousel.AutoplayTrigger` to pause or resume autoplay and `Carousel.ProgressText` to show the current page.
+
+<Example name="AutoplayControls" />
+
+### Loop
+
+Wrap from last to first when continuous browsing should not stop at the end.
+
+<Example name="Loop" />
+
+### Mouse Drag
+
+Let users drag slides when pointer gestures feel more direct than buttons alone.
+
+<Example name="MouseDrag" />
+
+## Customization
+
+### Custom recipe
+
+Extend `carouselRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

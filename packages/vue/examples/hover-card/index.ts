@@ -3,6 +3,5 @@ export { default as CustomRecipe } from "./custom-recipe.vue";
 export { default as Default } from "./default";
 export { default as Disabled } from "./disabled.vue";
 export { default as Placements } from "./placements.vue";
-export { imports, sources } from "./sources";
 export { default as TriggersDelays } from "./triggers-delays.vue";
 export { default as WithoutArrow } from "./without-arrow.vue";

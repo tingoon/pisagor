@@ -22,4 +22,3 @@ export { default as Ol } from "./ol.astro";
 export { default as P } from "./p.astro";
 export { default as Separator } from "./separator.astro";
 export { default as Small } from "./small.astro";
-export { imports, sources } from "./sources";

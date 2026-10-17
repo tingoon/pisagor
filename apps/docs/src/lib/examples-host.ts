@@ -2,22 +2,23 @@
  * Framework-agnostic core shared by the four `*-examples-host` islands.
  *
  * Each docs page renders empty `[data-example-slot="<Export>"]` placeholders
- * plus one config element (`[data-docs-examples-host]` for component/form
- * pages, `[data-docs-block-examples-host]` for blocks). A host island calls
- * `armExamplesHost` with its framework's `import.meta.glob` maps and a `mount`
- * callback; this module handles config lookup, lazy barrel loading (once per
- * page, on first visible slot) and per-slot visibility.
+ * plus one config element. A host island calls `armExamplesHost` with its
+ * framework's per-file `import.meta.glob` maps; each visible slot lazy-loads
+ * only that example file (no `index.ts` barrel).
  */
+import {
+  exportNameToFileStem,
+  findExampleFileLoader,
+  resolveExampleExport,
+} from "#/lib/example-file";
 import { whenVisible } from "#/lib/when-visible";
 
 export type ExampleKind = "component" | "form" | "block";
 
-export type ExampleModule = Record<string, unknown>;
-
-type BarrelLoader = () => Promise<ExampleModule>;
+type FileLoaderMap = Record<string, () => Promise<unknown>>;
 
 /** `import.meta.glob` results per kind (globs must stay literal per host). */
-export type ExampleGlobs = Record<ExampleKind, Record<string, BarrelLoader>>;
+export type ExampleGlobs = Record<ExampleKind, FileLoaderMap>;
 
 export type ExamplesHostTarget = {
   id: string;
@@ -77,26 +78,17 @@ function resolveTarget(explicit: ExamplesHostProps): ExamplesHostTarget | null {
   return { exportNames, id, kind };
 }
 
-function loadBarrel(
+async function loadExampleComponent(
   globs: ExampleGlobs,
   target: ExamplesHostTarget,
-): Promise<ExampleModule | null> {
+  exportName: string,
+): Promise<unknown> {
   const modules = globs[target.kind];
-  const key = Object.keys(modules).find((path) =>
-    path.endsWith(`/${target.id}/index.ts`),
-  );
-  const loader = key ? modules[key] : undefined;
-  return loader ? loader() : Promise.resolve(null);
-}
-
-/** Example component for `exportName`, or null (non-component exports too). */
-function resolveExport(mod: ExampleModule | null, exportName: string): unknown {
-  if (!mod || exportName === "sources" || exportName === "imports") {
-    return null;
-  }
-  const value = mod[exportName];
-  if (value == null || typeof value === "string") return null;
-  return value;
+  const stem = exportNameToFileStem(exportName);
+  const loader = findExampleFileLoader(modules, target.id, stem);
+  if (!loader) return null;
+  const mod = (await loader()) as Record<string, unknown>;
+  return resolveExampleExport(mod, exportName);
 }
 
 function slotSelector(exportName: string): string {
@@ -113,7 +105,6 @@ export function armExamplesHost(
   if (!target) return () => {};
 
   let cancelled = false;
-  let barrel: Promise<ExampleModule | null> | undefined;
   const disposers: Array<() => void> = [];
   const stops: Array<() => void> = [];
   const label = target.kind === "block" ? "block " : "";
@@ -123,16 +114,17 @@ export function armExamplesHost(
     if (!slot) continue;
     stops.push(
       whenVisible(slot, () => {
-        barrel ??= loadBarrel(globs, target);
-        void barrel.then((mod) => {
-          if (cancelled) return;
-          const dispose = mount(
-            slot,
-            resolveExport(mod, exportName),
-            `Missing example “${exportName}” for ${label}“${target.id}”.`,
-          );
-          if (dispose) disposers.push(dispose);
-        });
+        void loadExampleComponent(globs, target, exportName).then(
+          (component) => {
+            if (cancelled) return;
+            const dispose = mount(
+              slot,
+              component,
+              `Missing example “${exportName}” for ${label}“${target.id}”.`,
+            );
+            if (dispose) disposers.push(dispose);
+          },
+        );
       }),
     );
   }

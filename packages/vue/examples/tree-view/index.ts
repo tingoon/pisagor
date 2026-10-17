@@ -7,5 +7,4 @@ export { default as Default } from "./default";
 export { default as Links } from "./links";
 export { default as MultipleSelection } from "./multiple-selection";
 export { default as Rename } from "./rename";
-export { imports, sources } from "./sources";
 export { default as WithContextMenu } from "./with-context-menu";

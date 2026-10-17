@@ -13,7 +13,6 @@ export { default as RadioGroupField } from "./radio-group-field.svelte";
 export { default as RequiredField } from "./required-field.svelte";
 export { default as SelectField } from "./select-field.svelte";
 export { default as SliderField } from "./slider-field.svelte";
-export { imports, sources } from "./sources";
 export { default as SwitchField } from "./switch-field.svelte";
 export { default as TextareaField } from "./textarea-field.svelte";
 export { default as WithError } from "./with-error.svelte";

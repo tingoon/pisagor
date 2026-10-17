@@ -14,25 +14,33 @@ interface ComponentMeta {
 }
 
 /**
- * Catalog metadata is framework-agnostic (api/taxonomy/aliases), but each
- * framework owns its `metadata.md`. React is the superset, so it wins on id
- * collisions.
+ * Catalog metadata is framework-agnostic (api/taxonomy/aliases). Components use
+ * `content/<fw>/components/<id>/meta.md`; forms use `…/forms/<id>.mdx`. React
+ * is the superset, so it wins on id collisions.
  */
-const metadataRawModules = import.meta.glob(
-  "../content/{react,solid,svelte,vue,astro}/{components,forms}/*/metadata.md",
-  {
+const metadataRawModules = {
+  ...import.meta.glob(
+    "../content/{react,solid,svelte,vue,astro}/components/*/meta.md",
+    {
+      eager: true,
+      import: "default",
+      query: "?raw",
+    },
+  ),
+  ...import.meta.glob("../content/{react,solid,svelte,vue}/forms/*.mdx", {
     eager: true,
     import: "default",
     query: "?raw",
-  },
-) as Record<string, string>;
+  }),
+} as Record<string, string>;
 
 const FRAMEWORK_PRIORITY = ["react", "solid", "svelte", "vue", "astro"];
 
 function idFromMetaPath(path: string): string | undefined {
-  return /\/content\/[^/]+\/(?:components|forms)\/([^/]+)\/metadata\.md$/.exec(
-    path,
-  )?.[1];
+  return (
+    /\/content\/[^/]+\/components\/([^/]+)\/meta\.md$/.exec(path)?.[1] ??
+    /\/content\/[^/]+\/forms\/([^/]+)\.mdx$/.exec(path)?.[1]
+  );
 }
 
 function metaRank(path: string): number {
@@ -44,7 +52,6 @@ function metaRank(path: string): number {
 
 function metaFromContentDocs(): Record<string, ComponentMeta> {
   const out: Record<string, ComponentMeta> = {};
-  // Prefer components over forms, then React over other frameworks.
   const ranked = Object.entries(metadataRawModules).sort(
     ([a], [b]) => metaRank(a) - metaRank(b),
   );
@@ -66,11 +73,6 @@ function metaFromContentDocs(): Record<string, ComponentMeta> {
   return out;
 }
 
-/**
- * Framework-agnostic component catalog metadata. Migrated primitives load
- * api/taxonomy/aliases from shared content frontmatter. Entries below fill gaps
- * (no docs page / alternate ids).
- */
 const contentMeta = metaFromContentDocs();
 
 const fallbackMeta: Record<string, ComponentMeta> = {

@@ -7,5 +7,4 @@ export * from "./default";
 export * from "./links";
 export * from "./multiple-selection";
 export * from "./rename";
-export { imports, sources } from "./sources";
 export * from "./with-context-menu";

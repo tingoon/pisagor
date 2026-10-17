@@ -16,7 +16,6 @@ export { default as RichCells } from "./rich-cells.vue";
 export { default as RowDetails } from "./row-details.vue";
 export { default as RowSelection } from "./row-selection.vue";
 export { default as Sorting } from "./sorting.vue";
-export { imports, sources } from "./sources";
 export { default as StripedVariant } from "./striped-variant.vue";
 export { default as Virtualized } from "./virtualized.vue";
 export { default as WithSortableData } from "./with-sortable-data.vue";

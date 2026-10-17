@@ -22,4 +22,3 @@ export { default as Ol } from "./ol.vue";
 export { default as P } from "./p.vue";
 export { default as Separator } from "./separator.vue";
 export { default as Small } from "./small.vue";
-export { imports, sources } from "./sources";

@@ -1,0 +1,65 @@
+---
+/**
+ * Live docs example: preview chrome + host slot (or Astro SSR child).
+ * `framework` / `exampleId` / `kind` default from the doc page (URL route).
+ * Code tab lazy-loads the example file as `?raw` via `name` + `exampleId`.
+ */
+import type { Framework } from "#/lib/nav";
+import { withDocsBase } from "#/lib/nav";
+import { getDocsExampleContext } from "#/lib/docs-example-context";
+import { isOpenInNewTabPreview } from "#/lib/preview-config";
+import ComponentPreview from "./component-preview.astro";
+
+interface Props {
+  /** Live / raw example export name (`Default`, `WithCard`, …). */
+  name: string;
+  /** Override page context (normally from the route). */
+  framework?: Framework;
+  exampleId?: string;
+  kind?: "component" | "form" | "block";
+  language?: string;
+  title?: string;
+}
+
+const ctx = getDocsExampleContext(Astro.locals);
+const name = Astro.props.name;
+const framework = Astro.props.framework ?? ctx?.framework;
+const exampleId = Astro.props.exampleId ?? ctx?.exampleId;
+const kind = Astro.props.kind ?? ctx?.kind ?? "component";
+
+if (!framework || !exampleId) {
+  throw new Error(
+    `<Example name="${name}" /> needs page context (framework + exampleId). ` +
+      "Render develop MDX from component-doc-page / block-doc-page, or pass props explicitly.",
+  );
+}
+
+const language =
+  Astro.props.language ??
+  ({
+    astro: "astro",
+    react: "tsx",
+    solid: "tsx",
+    svelte: "svelte",
+    vue: "vue",
+  }[framework] as string);
+const title = Astro.props.title ?? name;
+---
+
+<ComponentPreview
+  exampleId={exampleId}
+  exportName={name}
+  framework={framework}
+  kind={kind}
+  language={language}
+  previewHref={isOpenInNewTabPreview(exampleId)
+    ? withDocsBase(`/preview/${framework}/${exampleId}/${name}`)
+    : undefined}
+  title={title}
+>
+  {framework === "astro" ? (
+    <slot />
+  ) : (
+    <div class="min-h-12 w-full" data-example-slot={name} />
+  )}
+</ComponentPreview>

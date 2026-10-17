@@ -6,7 +6,6 @@ export { default as Disabled } from "./disabled.vue";
 export { default as Input } from "./input.vue";
 export { default as Invalid } from "./invalid.vue";
 export { default as Range } from "./range.vue";
-export { imports, sources } from "./sources";
 export { default as Time } from "./time.vue";
 export { default as Variants } from "./variants.vue";
 export { default as WithPresets } from "./with-presets.vue";

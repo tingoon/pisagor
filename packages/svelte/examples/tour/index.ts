@@ -6,7 +6,6 @@ export { default as Events } from "./events.svelte";
 export { default as KeyboardNavigation } from "./keyboard-navigation.svelte";
 export { default as Progress } from "./progress.svelte";
 export { default as Skip } from "./skip.svelte";
-export { imports, sources } from "./sources";
 export { default as StepTypes } from "./step-types.svelte";
 export { default as TourProgressBar } from "./tour-progress-bar.svelte";
 export { default as WaitForClick } from "./wait-for-click.svelte";

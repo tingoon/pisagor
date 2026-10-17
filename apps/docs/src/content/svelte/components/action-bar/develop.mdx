@@ -1,0 +1,79 @@
+## Import
+
+```ts
+import { ActionBar } from "@pisagor/svelte";
+```
+
+## Anatomy
+
+```tsx
+<ActionBar>
+  <ActionBar.Trigger />
+  <ActionBar.Content>
+    <ActionBar.Value />
+    <ActionBar.Separator />
+    <ActionBar.Body />
+    <ActionBar.Close />
+  </ActionBar.Content>
+</ActionBar>
+```
+
+## Examples
+
+### Default
+
+The standard bar that appears when selection enables bulk actions.
+
+<Example name="Default" />
+
+### Gutter
+
+Add side gutter spacing so actions align with the content column.
+
+<Example name="Gutter" />
+
+### Close Trigger
+
+Let users dismiss the bar explicitly when clearing selection is not the only exit.
+
+<Example name="CloseTrigger" />
+
+### With Dialog
+
+Open a dialog from a bulk action when the next step needs confirmation or extra input.
+
+<Example name="WithDialog" />
+
+### With Menu
+
+Park secondary bulk actions in a menu so the bar stays focused on common work.
+
+<Example name="WithMenu" />
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this action bar.
+
+<Example name="Controlled" />
+
+### Placements
+
+Choose placement so the action bar stays near its trigger without covering critical content.
+
+<Example name="Placements" />
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Tighten or loosen padding when the bar sits in a denser or roomier toolbar.
+
+<Example name="CustomSpacing" />
+
+### Custom recipe
+
+Extend `actionBarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

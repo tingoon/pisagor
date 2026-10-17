@@ -1,0 +1,226 @@
+import Default from "#examples/astro/prose/default.astro";
+import A from "#examples/astro/prose/a.astro";
+import Blockquote from "#examples/astro/prose/blockquote.astro";
+import Details from "#examples/astro/prose/details.astro";
+import Dl from "#examples/astro/prose/dl.astro";
+import H1 from "#examples/astro/prose/h1.astro";
+import H2 from "#examples/astro/prose/h2.astro";
+import H3 from "#examples/astro/prose/h3.astro";
+import H4 from "#examples/astro/prose/h4.astro";
+import H5 from "#examples/astro/prose/h5.astro";
+import H6 from "#examples/astro/prose/h6.astro";
+import Html from "#examples/astro/prose/html.astro";
+import HtmlTable from "#examples/astro/prose/html-table.astro";
+import InlineCode from "#examples/astro/prose/inline-code.astro";
+import Kbd from "#examples/astro/prose/kbd.astro";
+import List from "#examples/astro/prose/list.astro";
+import Mark from "#examples/astro/prose/mark.astro";
+import Media from "#examples/astro/prose/media.astro";
+import NotProse from "#examples/astro/prose/not-prose.astro";
+import Ol from "#examples/astro/prose/ol.astro";
+import P from "#examples/astro/prose/p.astro";
+import Separator from "#examples/astro/prose/separator.astro";
+import Small from "#examples/astro/prose/small.astro";
+import CustomRecipe from "#examples/astro/prose/custom-recipe.astro";
+
+## Import
+
+```ts
+import { Prose } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Readable long-form text styled for articles and documentation.
+
+<Example name="Default">
+  <Default />
+</Example>
+
+### A
+
+Style inline links inside prose content.
+
+<Example name="A">
+  <A />
+</Example>
+
+### Blockquote
+
+Style quotations set apart from surrounding paragraphs.
+
+<Example name="Blockquote">
+  <Blockquote />
+</Example>
+
+### Details
+
+Style expandable disclosure blocks inside prose.
+
+<Example name="Details">
+  <Details />
+</Example>
+
+### Dl
+
+Style description lists for terms and definitions.
+
+<Example name="Dl">
+  <Dl />
+</Example>
+
+### H1
+
+Style the top-level heading in a prose document.
+
+<Example name="H1">
+  <H1 />
+</Example>
+
+### H2
+
+Style a section heading under the document title.
+
+<Example name="H2">
+  <H2 />
+</Example>
+
+### H3
+
+Style a subsection heading within a section.
+
+<Example name="H3">
+  <H3 />
+</Example>
+
+### H4
+
+Style a fourth-level heading for finer structure.
+
+<Example name="H4">
+  <H4 />
+</Example>
+
+### H5
+
+Style a fifth-level heading when deep outline levels are needed.
+
+<Example name="H5">
+  <H5 />
+</Example>
+
+### H6
+
+Style the deepest heading level supported in prose.
+
+<Example name="H6">
+  <H6 />
+</Example>
+
+### Html
+
+Render rich HTML through the prose styles.
+
+<Example name="Html">
+  <Html />
+</Example>
+
+### Html Table
+
+Style tables that appear inside HTML prose content.
+
+<Example name="HtmlTable">
+  <HtmlTable />
+</Example>
+
+### Inline Code
+
+Style Inline Code elements inside long-form prose content.
+
+<Example name="InlineCode">
+  <InlineCode />
+</Example>
+
+### Kbd
+
+Style Kbd elements inside long-form prose content.
+
+<Example name="Kbd">
+  <Kbd />
+</Example>
+
+### List
+
+Style List elements inside long-form prose content.
+
+<Example name="List">
+  <List />
+</Example>
+
+### Mark
+
+Style Mark elements inside long-form prose content.
+
+<Example name="Mark">
+  <Mark />
+</Example>
+
+### Media
+
+Style Media elements inside long-form prose content.
+
+<Example name="Media">
+  <Media />
+</Example>
+
+### Not Prose
+
+Style Not Prose elements inside long-form prose content.
+
+<Example name="NotProse">
+  <NotProse />
+</Example>
+
+### Ol
+
+Style Ol elements inside long-form prose content.
+
+<Example name="Ol">
+  <Ol />
+</Example>
+
+### P
+
+Style P elements inside long-form prose content.
+
+<Example name="P">
+  <P />
+</Example>
+
+### Separator
+
+Style Separator elements inside long-form prose content.
+
+<Example name="Separator">
+  <Separator />
+</Example>
+
+### Small
+
+Style Small elements inside long-form prose content.
+
+<Example name="Small">
+  <Small />
+</Example>
+
+## Customization
+
+### Custom recipe
+
+Extend `proseRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe">
+  <CustomRecipe />
+</Example>

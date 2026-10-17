@@ -1,0 +1,69 @@
+## Import
+
+```ts
+import { Checkbox } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+A single option users can turn on or off.
+
+<Example name="Default" />
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example name="Sizes" />
+
+### Variants
+
+Choose visual weight to match surrounding form controls.
+
+<Example name="Variants" />
+
+### Checkbox Group
+
+Group related checkboxes so multi-select options stay together.
+
+<Example name="CheckboxGroup" />
+
+### Compound
+
+Compose `Checkbox.Root`, `Checkbox.Control`, `Checkbox.Label` and `Checkbox.HiddenInput` for full control over layout.
+
+<Example name="Compound" />
+
+### Controlled
+
+Drive checked state from the parent when other UI depends on it.
+
+<Example name="Controlled" />
+
+### Disabled
+
+Show that the option cannot change.
+
+<Example name="Disabled" />
+
+### Invalid
+
+Surface a validation error when the choice is required or not allowed.
+
+<Example name="Invalid" />
+
+### Indeterminate
+
+Mark a parent checkbox when only some child options are selected.
+
+<Example name="Indeterminate" />
+
+## Customization
+
+### Custom recipe
+
+Extend `checkboxRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

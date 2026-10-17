@@ -1,0 +1,113 @@
+## Import
+
+```ts
+import { TagsInput } from "@pisagor/vue";
+```
+
+## Anatomy
+
+```vue
+<TagsInput>
+  <TagsInput.Context>
+    {({ value }) => value.map((tag, index) => <TagsInput.Item />)}
+  </TagsInput.Context>
+</TagsInput>
+```
+
+## Examples
+
+### Variants
+
+Choose field emphasis to match surrounding inputs.
+
+<Example name="Variants" />
+
+### Sizes
+
+Match size to form density.
+
+<Example name="Sizes" />
+
+### With Combobox
+
+Suggest tags from a list while still allowing custom entry.
+
+<Example name="WithCombobox" />
+
+### Controlled
+
+Drive the tag list from the parent when form state lives above.
+
+<Example name="Controlled" />
+
+### Controlled Input Value
+
+Drive the text being typed from the parent.
+
+<Example name="ControlledInputValue" />
+
+### Disabled
+
+Show that tags cannot change.
+
+<Example name="Disabled" />
+
+### Invalid
+
+Surface a validation error for the tags field.
+
+<Example name="Invalid" />
+
+### Max Tags
+
+Cap how many tags can be added.
+
+<Example name="MaxTags" />
+
+### Max With Overflow
+
+Handle overflow when users hit the tag limit.
+
+<Example name="MaxWithOverflow" />
+
+### Max Length
+
+Limit characters per tag so values stay short.
+
+<Example name="MaxLength" />
+
+### Validation
+
+Reject invalid tags and explain why.
+
+<Example name="Validation" />
+
+### Custom Delimiter
+
+Split on custom characters when users paste or type delimited lists.
+
+<Example name="CustomDelimiter" />
+
+### Blur Behavior
+
+Control what happens to typed text when the field loses focus.
+
+<Example name="BlurBehavior" />
+
+### Paste Behavior
+
+Define how pasted text becomes one or many tags.
+
+<Example name="PasteBehavior" />
+
+### Disable Editing
+
+Prevent editing existing tags when only add and remove should be allowed.
+
+<Example name="DisableEditing" />
+
+### Sanitize Value
+
+Clean tag text before it is committed.
+
+<Example name="SanitizeValue" />

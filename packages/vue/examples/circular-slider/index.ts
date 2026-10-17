@@ -4,7 +4,6 @@ export { default as CustomRecipe } from "./custom-recipe.vue";
 export { default as Default } from "./default.vue";
 export { default as Disabled } from "./disabled.vue";
 export { default as Sizes } from "./sizes.vue";
-export { imports, sources } from "./sources";
 export { default as Step } from "./step.vue";
 export { default as Thickness } from "./thickness.vue";
 export { default as WithMarkers } from "./with-markers.vue";

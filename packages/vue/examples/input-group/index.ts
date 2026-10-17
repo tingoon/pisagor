@@ -5,7 +5,6 @@ export { default as AlignInlineStart } from "./align-inline-start.vue";
 export { default as Disabled } from "./disabled.vue";
 export { default as Invalid } from "./invalid.vue";
 export { default as Sizes } from "./sizes.vue";
-export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.vue";
 export { default as WithBadge } from "./with-badge.vue";
 export { default as WithKeyboardShortcut } from "./with-keyboard-shortcut.vue";

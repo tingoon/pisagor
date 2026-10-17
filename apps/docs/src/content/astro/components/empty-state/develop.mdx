@@ -1,0 +1,55 @@
+import Default from "#examples/astro/empty-state/default.astro";
+import Sizes from "#examples/astro/empty-state/sizes.astro";
+import Compact from "#examples/astro/empty-state/compact.astro";
+import Compound from "#examples/astro/empty-state/compound.astro";
+import CustomRecipe from "#examples/astro/empty-state/custom-recipe.astro";
+
+## Import
+
+```ts
+import { EmptyState } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Explain that a view has no data and point to the next action.
+
+<Example name="Default">
+  <Default />
+</Example>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example name="Sizes">
+  <Sizes />
+</Example>
+
+### Compact
+
+Use a denser empty state when the region is small.
+
+<Example name="Compact">
+  <Compact />
+</Example>
+
+### Compound
+
+Compose icon, title, and actions from parts for a custom empty layout.
+
+<Example name="Compound">
+  <Compound />
+</Example>
+
+## Customization
+
+### Custom recipe
+
+Extend `emptyStateRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe">
+  <CustomRecipe />
+</Example>

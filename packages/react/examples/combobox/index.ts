@@ -8,7 +8,6 @@ export * from "./group";
 export * from "./invalid";
 export * from "./multiple";
 export * from "./sizes";
-export { imports, sources } from "./sources";
 export * from "./variants";
 export * from "./with-clear-button";
 export * from "./with-scroll";

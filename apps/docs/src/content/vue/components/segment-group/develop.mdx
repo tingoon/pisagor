@@ -1,0 +1,83 @@
+## Import
+
+```ts
+import { SegmentGroup } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Switch between a few related modes in one compact control.
+
+<Example name="Default" />
+
+### Variants
+
+Choose visual weight or emphasis so the segment group matches importance in the surrounding layout.
+
+<Example name="Variants" />
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example name="Sizes" />
+
+### Orientation Horizontal
+
+Lay out the segment group horizontally when items should read in a row.
+
+<Example name="OrientationHorizontal" />
+
+### Orientation Vertical
+
+Stack the segment group vertically when items should read in a column.
+
+<Example name="OrientationVertical" />
+
+### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
+
+<Example name="Compound" />
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this segment group.
+
+<Example name="Controlled" />
+
+### Disabled
+
+Show that the segment group is unavailable.
+
+<Example name="Disabled" />
+
+### Disabled Item
+
+Show that a specific segment is unavailable.
+
+<Example name="DisabledItem" />
+
+### Indicator On Hover
+
+Preview the indicator on hover when discovering segments should feel responsive.
+
+<Example name="IndicatorOnHover" />
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Customize the active indicator when brand motion or shape differs from the default.
+
+<Example name="CustomIndicator" />
+
+### Custom recipe
+
+Extend `segmentGroupRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

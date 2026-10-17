@@ -1,6 +1,6 @@
 import { Swap } from "@pisagor/react";
-import * as Examples from "#/react/examples/swap";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/swap";
 
 const meta = preview.meta({
   component: Swap,

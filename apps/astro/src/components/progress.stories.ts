@@ -1,6 +1,6 @@
 import { Progress } from "@pisagor/astro";
-import * as Examples from "#/astro/examples/progress";
 import preview from "#/storybook/preview";
+import * as Examples from "#/astro/examples/progress";
 
 const meta = preview.meta({
   component: Progress,

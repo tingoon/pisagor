@@ -1,7 +1,7 @@
 import { Tabs } from "@pisagor/react";
-import * as Examples from "#/react/examples/tabs";
 import { profileTabs } from "#/storybook/fixtures";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/tabs";
 
 const meta = preview.meta({
   component: Tabs,

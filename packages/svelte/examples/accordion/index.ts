@@ -5,5 +5,4 @@ export { default as Disabled } from "./disabled.svelte";
 export { default as Multiple } from "./multiple.svelte";
 export { default as NonCollapsible } from "./non-collapsible.svelte";
 export { default as Sizes } from "./sizes.svelte";
-export { imports, sources } from "./sources";
 export { default as WithCard } from "./with-card.svelte";

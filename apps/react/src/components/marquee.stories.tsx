@@ -1,7 +1,7 @@
 import { Marquee } from "@pisagor/react";
-import * as Examples from "#/react/examples/marquee";
 import { marqueeItems } from "#/storybook/fixtures";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/marquee";
 
 const meta = preview.meta({
   component: Marquee,

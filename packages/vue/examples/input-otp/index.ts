@@ -8,6 +8,5 @@ export { default as Invalid } from "./invalid.vue";
 export { default as Mask } from "./mask.vue";
 export { default as Separator } from "./separator.vue";
 export { default as Sizes } from "./sizes.vue";
-export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.vue";
 export { default as WithPlaceholder } from "./with-placeholder.vue";

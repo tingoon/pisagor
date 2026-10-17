@@ -1,6 +1,6 @@
 import { Alert } from "@pisagor/react";
-import * as Examples from "#/react/examples/alert";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/alert";
 
 const meta = preview.meta({
   component: Alert,

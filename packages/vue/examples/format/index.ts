@@ -8,4 +8,3 @@ export { default as NumberPercent } from "./number-percent.vue";
 export { default as NumberStory } from "./number-story.vue";
 export { default as RelativeTime } from "./relative-time.vue";
 export { default as RelativeTimeShort } from "./relative-time-short.vue";
-export { imports, sources } from "./sources";

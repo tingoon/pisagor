@@ -14,6 +14,10 @@ export default defineConfig({
     "apps/docs": {
       entry: ["scripts/**/*.ts", "src/**/*.{astro,ts,tsx,vue,svelte}"],
       ignoreDependencies: ["@astrojs/check"],
+      // Knip parses Astro `{pkg.tanstack}` expressions as import specifiers.
+      ignoreIssues: {
+        "src/components/docs/tanstack-form-guide.astro": ["unresolved"],
+      },
     },
     "apps/react": {
       entry: [".storybook/**/*", "src/**/*"],

@@ -5,6 +5,5 @@ export * from "./custom-spacing";
 export * from "./default";
 export * from "./gutter";
 export * from "./placements";
-export { imports, sources } from "./sources";
 export * from "./with-dialog";
 export * from "./with-menu";

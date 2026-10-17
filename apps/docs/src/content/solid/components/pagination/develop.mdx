@@ -1,0 +1,51 @@
+## Import
+
+```tsx
+import { Pagination } from "@pisagor/solid";
+```
+
+## Examples
+
+### Default
+
+Move through pages with previous, next, and page controls.
+
+<Example name="Default" />
+
+### Page Range
+
+Show a window of page numbers when jumping more than one step matters.
+
+<Example name="PageRange" />
+
+### Links
+
+Render items as links when navigation is the primary action.
+
+<Example name="Links" />
+
+### Link URLs
+
+Build each page URL with `getHref` when routes do not use the `?page=` query.
+
+<Example name="LinkUrls" />
+
+### Compound
+
+Compose pagination parts when the shorthand layout is not enough.
+
+<Example name="CustomComposition" />
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this pagination.
+
+<Example name="Controlled" />
+
+## Customization
+
+### Custom recipe
+
+Extend `paginationRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

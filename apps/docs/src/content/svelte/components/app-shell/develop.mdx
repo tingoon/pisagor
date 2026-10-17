@@ -1,0 +1,81 @@
+## Import
+
+```ts
+import { AppShell } from "@pisagor/svelte";
+```
+
+## Anatomy
+
+```tsx
+<AppShell>
+  <AppShell.Banner />
+  <AppShell.Navigation />
+  <AppShell.Rail>
+    <AppShell.RailItem />
+  </AppShell.Rail>
+  <AppShell.Panel>
+    <AppShell.PanelContent />
+  </AppShell.Panel>
+  <AppShell.Main>
+    <AppShell.Header>
+      <AppShell.PanelTrigger />
+    </AppShell.Header>
+  </AppShell.Main>
+</AppShell>
+```
+
+## Examples
+
+### Default
+
+The full multi-region shell with the common layout slots wired together.
+
+<Example name="Default" />
+
+### Banner
+
+Reserve a top banner region for system-wide notices.
+
+<Example name="Banner" />
+
+### Navigation
+
+Place primary navigation in the shell's nav region.
+
+<Example name="Navigation" />
+
+### Inspectors
+
+Add inspector panels for tools that sit beside the main workspace.
+
+<Example name="Inspectors" />
+
+### Panels
+
+Use side panels for secondary tools beside the main workspace.
+
+<Example name="Panels" />
+
+### Rails
+
+Provide side rails for persistent secondary chrome.
+
+<Example name="Rails" />
+
+### Header
+
+Host brand and top-level actions in the header region.
+
+<Example name="Header" />
+
+### Main
+
+Put the primary workspace content in the main region.
+
+<Example name="Main" />
+
+### Content
+
+Fill the content slot with the page body inside the shell.
+
+<Example name="Content" />

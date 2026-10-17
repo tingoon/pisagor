@@ -7,7 +7,6 @@ export { default as FontWeight } from "./font-weight.svelte";
 export { default as Horizontal } from "./horizontal.svelte";
 export { default as Single } from "./single.svelte";
 export { default as Sizes } from "./sizes.svelte";
-export { imports, sources } from "./sources";
 export { default as Spacing } from "./spacing.svelte";
 export { default as Variants } from "./variants.svelte";
 export { default as Vertical } from "./vertical.svelte";

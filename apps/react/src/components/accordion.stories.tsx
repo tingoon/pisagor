@@ -1,6 +1,6 @@
 import { Accordion } from "@pisagor/react";
-import * as Examples from "#/react/examples/accordion";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/accordion";
 
 const meta = preview.meta({
   component: Accordion,

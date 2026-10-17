@@ -12,4 +12,3 @@ export { default as MultipleMonths } from "./multiple-months.vue";
 export { default as Presets } from "./presets.vue";
 export { default as Range } from "./range.vue";
 export { default as SelectToday } from "./select-today.vue";
-export { imports, sources } from "./sources";

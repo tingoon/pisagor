@@ -8,7 +8,6 @@ export { default as Group } from "./group.svelte";
 export { default as Invalid } from "./invalid.svelte";
 export { default as Multiple } from "./multiple.svelte";
 export { default as Sizes } from "./sizes.svelte";
-export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.svelte";
 export { default as WithClearButton } from "./with-clear-button.svelte";
 export { default as WithScroll } from "./with-scroll.svelte";

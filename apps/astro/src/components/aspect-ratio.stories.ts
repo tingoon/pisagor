@@ -1,6 +1,6 @@
 import { AspectRatio } from "@pisagor/astro";
-import * as Examples from "#/astro/examples/aspect-ratio";
 import preview from "#/storybook/preview";
+import * as Examples from "#/astro/examples/aspect-ratio";
 
 const meta = preview.meta({
   component: AspectRatio,

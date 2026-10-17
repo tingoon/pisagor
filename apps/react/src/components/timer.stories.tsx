@@ -1,6 +1,6 @@
 import { Timer } from "@pisagor/react";
-import * as Examples from "#/react/examples/timer";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/timer";
 
 const meta = preview.meta({
   component: Timer,

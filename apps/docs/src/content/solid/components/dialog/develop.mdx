@@ -1,0 +1,71 @@
+## Import
+
+```tsx
+import { Dialog } from "@pisagor/solid";
+```
+
+## Examples
+
+### Default
+
+The centered modal for a short task or decision above the page.
+
+<Example name="Default" />
+
+### Scroll Area
+
+Constrain tall content in a scroll region so the dialog chrome stays on screen.
+
+<Example name="ScrollArea" />
+
+### No Close Button
+
+Hide the close button when dismiss should go through an explicit action instead.
+
+<Example name="NoCloseButton" />
+
+### Nested
+
+Nest another dialog when hierarchy or layered structure is part of the content.
+
+<Example name="Nested" />
+
+### Compound
+
+Build the dialog from parts when the shorthand props are not enough.
+
+<Example name="Compound" />
+
+### Non Modal
+
+Keep the page behind interactive when the dialog should not trap the entire experience.
+
+<Example name="NonModal" />
+
+### Initial Focus
+
+Move focus to a specific control when the dialog opens so keyboard users land in the right place.
+
+<Example name="InitialFocus" />
+
+### Close Behavior
+
+Control how dismiss works — outside click, escape, or explicit close — to match the flow.
+
+<Example name="CloseBehavior" />
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Override spacing when the default density does not match the surrounding layout.
+
+<Example name="CustomSpacing" />
+
+### Custom recipe
+
+Extend `dialogRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

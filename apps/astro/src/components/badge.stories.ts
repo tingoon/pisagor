@@ -1,6 +1,6 @@
 import { Badge } from "@pisagor/astro";
-import * as Examples from "#/astro/examples/badge";
 import preview from "#/storybook/preview";
+import * as Examples from "#/astro/examples/badge";
 
 const meta = preview.meta({
   component: Badge,

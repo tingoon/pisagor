@@ -1,0 +1,76 @@
+import Default from "#examples/astro/card/default.astro";
+import Sizes from "#examples/astro/card/sizes.astro";
+import Icon from "#examples/astro/card/icon.astro";
+import Product from "#examples/astro/card/product.astro";
+import CustomSpacing from "#examples/astro/card/custom-spacing.astro";
+import CustomRecipe from "#examples/astro/card/custom-recipe.astro";
+
+## Import
+
+```ts
+import { Card } from "@pisagor/astro";
+```
+
+## Anatomy
+
+```tsx
+<Card>
+  <Card.Header />
+  <Card.Content />
+  <Card.Footer />
+</Card>
+```
+
+## Examples
+
+### Default
+
+A contained surface for related content and actions.
+
+<Example name="Default">
+  <Default />
+</Example>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example name="Sizes">
+  <Sizes />
+</Example>
+
+### Icon
+
+Lead with an icon when the card category should be recognizable at a glance.
+
+<Example name="Icon">
+  <Icon />
+</Example>
+
+### Product
+
+Compose media, title, and actions for a product-style card.
+
+<Example name="Product">
+  <Product />
+</Example>
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Adjust padding when the card sits in a denser or roomier layout.
+
+<Example name="CustomSpacing">
+  <CustomSpacing />
+</Example>
+
+### Custom recipe
+
+Extend `cardRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe">
+  <CustomRecipe />
+</Example>

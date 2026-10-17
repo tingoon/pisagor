@@ -5,7 +5,6 @@ export { default as AlignInlineStart } from "./align-inline-start.svelte";
 export { default as Disabled } from "./disabled.svelte";
 export { default as Invalid } from "./invalid.svelte";
 export { default as Sizes } from "./sizes.svelte";
-export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.svelte";
 export { default as WithBadge } from "./with-badge.svelte";
 export { default as WithKeyboardShortcut } from "./with-keyboard-shortcut.svelte";

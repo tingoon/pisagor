@@ -1,0 +1,43 @@
+import Default from "#examples/astro/link-box/default.astro";
+import Article from "#examples/astro/link-box/article.astro";
+import WithLink from "#examples/astro/link-box/with-link.astro";
+
+## Import
+
+```ts
+import { LinkBox } from "@pisagor/astro";
+```
+
+## Anatomy
+
+```tsx
+<LinkBox>
+  <LinkBox.Overlay />
+</LinkBox>
+```
+
+## Examples
+
+### Default
+
+Make the whole surface clickable while nested controls stay usable.
+
+<Example name="Default">
+  <Default />
+</Example>
+
+### Article
+
+Wrap article-style content so the card navigates as one destination.
+
+<Example name="Article">
+  <Article />
+</Example>
+
+### With Link
+
+Render the link box as or with a link when the control should navigate.
+
+<Example name="WithLink">
+  <WithLink />
+</Example>

@@ -1,6 +1,6 @@
 import { Separator } from "@pisagor/astro";
-import * as Examples from "#/astro/examples/separator";
 import preview from "#/storybook/preview";
+import * as Examples from "#/astro/examples/separator";
 
 const meta = preview.meta({
   component: Separator,

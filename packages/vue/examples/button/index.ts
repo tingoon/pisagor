@@ -7,6 +7,5 @@ export { default as Loading } from "./loading.vue";
 export { default as NoClickEffect } from "./no-click-effect.vue";
 export { default as Pill } from "./pill.vue";
 export { default as Sizes } from "./sizes.vue";
-export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.vue";
 export { default as WithIcon } from "./with-icon.vue";

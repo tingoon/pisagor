@@ -1,0 +1,51 @@
+## Import
+
+```ts
+import { ButtonGroup } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Related actions clustered as one visual group.
+
+<Example name="Default" />
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example name="Sizes" />
+
+### Orientation Horizontal
+
+Lay actions in a row for toolbars and footers.
+
+<Example name="OrientationHorizontal" />
+
+### Orientation Vertical
+
+Stack actions when the group sits in a narrow column.
+
+<Example name="OrientationVertical" />
+
+### Nested
+
+Nest groups when primary and secondary clusters share one control strip.
+
+<Example name="Nested" />
+
+### With Separator
+
+Separate subgroups so distinct action sets stay scannable.
+
+<Example name="WithSeparator" />
+
+## Customization
+
+### Custom recipe
+
+Extend `buttonGroupRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

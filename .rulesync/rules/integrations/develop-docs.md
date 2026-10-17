@@ -2,29 +2,58 @@
 root: false
 targets:
   - "*"
-description: "Authoring rules for develop.md docs pages, their examples, and matching Storybook stories"
+description: "Authoring rules for develop.mdx docs pages, their examples, and matching Storybook stories"
 globs:
-  - apps/docs/src/content/**/develop.md
-  - packages/*/examples/**/*.tsx
+  - apps/docs/src/content/**/develop.mdx
+  - apps/docs/src/content/**/forms/*.mdx
+  - apps/docs/src/content/**/blocks/*.mdx
+  - packages/*/examples/**/*
   - apps/*/src/**/*.stories.tsx
 cursor:
   alwaysApply: false
 ---
 
-# Develop docs (`develop.md`)
+# Develop docs (`develop.mdx`)
 
-Applies to `apps/docs/src/content/<framework>/{components,forms}/<id>/develop.md`, the examples in `packages/<framework>(-form)/examples/<id>/`, and `<id>.stories.tsx`. Judge each component on its own; never apply these rules mechanically.
+Applies to `apps/docs/src/content/<framework>/components/<id>/develop.mdx`, form pages at `…/forms/<id>.mdx`, block pages at `…/blocks/<id>.mdx`, the examples in `packages/<framework>(-form)/examples/<id>/` (or `apps/docs/src/examples/<framework>/` for blocks), and `<id>.stories.tsx`. Judge each component on its own; never apply these rules mechanically.
+
+Components: one folder `<id>/` with `meta.md` (title, description, api, taxonomy), `design.mdx`, and `develop.mdx`. Forms: one file `forms/<id>.mdx` with frontmatter + **When to use** (no design/develop tabs — field usage lives on the underlying Input/Label components). Blocks: one file `blocks/<id>.mdx` with frontmatter (`title`, `description`) and the page body.
+
+In component `design.mdx`, use injected `<DoDont do="…" dont="…" />` for guideline pairs (optional `doSrc` / `dontSrc` + alt/size props). Do not hand-write Do/Don’t HTML or global CSS — the component is Tailwind-only and injected like `Example`.
 
 ## Page structure
 
 1. `## Import`
 2. `## Anatomy` — only for compound-only components (no shorthand). One short `tsx` block with the part tree, no props or content.
-3. `## Examples` — `###` per example, each followed by one short description and `:::example Name`.
+3. `## Examples` — `###` per example, each followed by one short description and an `<Example />`.
 4. `## Customization` — styling escape hatches (see below).
 5. `## Accessibility` — only when it adds real value (keyboard table, ARIA notes). Drop `## Usage` sections; their content belongs in examples.
 6. Props are appended by the page — never write them by hand.
 
 The docs engine renders every `##` section in place; TOC and page order follow the markdown exactly (`##` → h2, `###` → h3).
+
+## Examples
+
+Example files export only the live component. The Code tab lazy-loads that file as `?raw` from `name` + `exampleId` (no `sources.ts`, no `code` prop).
+
+```ts
+// default.tsx — live example only
+export function Default() {
+  /* … */
+}
+```
+
+In `develop.mdx`, only pass `name` — `Example` is injected by the doc page; `framework` / `exampleId` / `kind` come from the route:
+
+```mdx
+### Default
+
+Short description.
+
+<Example name="Default" />
+```
+
+`name` must match the example file stem in kebab-case (`Default` → `default.tsx`, `WithCard` → `with-card.tsx`). Astro previews pass the component as `<Example>` children.
 
 ## Example order
 
@@ -66,4 +95,4 @@ Short, task-focused, existing tone. No design best practices ("Prefer…", "Keep
 
 ## Storybook
 
-Story order matches `develop.md` order, with `Playground` first. Every `:::example` has a story; remove stories for deleted examples. Keep example barrels (`index.ts` + `sources.ts`) in sync.
+Story order matches `develop.mdx` order, with `Playground` first. Every `<Example name>` has a story; remove stories for deleted examples. Storybook uses the example barrel (`examples/<id>/index.ts`); docs live preview loads each example file on demand (not via that barrel).

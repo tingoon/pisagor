@@ -7,4 +7,3 @@ export { default as NoCloseButton } from "./no-close-button";
 export { default as NonModal } from "./non-modal";
 export { default as ScrollArea } from "./scroll-area";
 export { default as Sides } from "./sides";
-export { imports, sources } from "./sources";

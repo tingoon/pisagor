@@ -3,17 +3,16 @@ import { createRoot } from "react-dom/client";
 import {
   armExamplesHost,
   type ExampleGlobs,
-  type ExampleModule,
   type ExamplesHostProps,
 } from "#/lib/examples-host";
 
 const globs: ExampleGlobs = {
-  block: import.meta.glob<ExampleModule>("../../examples/react/*/index.ts"),
-  component: import.meta.glob<ExampleModule>(
-    "../../../../../packages/react/examples/*/index.ts",
+  block: import.meta.glob("../../examples/react/*/*.{ts,tsx}"),
+  component: import.meta.glob(
+    "../../../../../packages/react/examples/*/*.{ts,tsx}",
   ),
-  form: import.meta.glob<ExampleModule>(
-    "../../../../../packages/react-form/examples/*/index.ts",
+  form: import.meta.glob(
+    "../../../../../packages/react-form/examples/*/*.{ts,tsx}",
   ),
 };
 

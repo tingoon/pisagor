@@ -1,0 +1,59 @@
+import Default from "#examples/astro/frame/default.astro";
+import Sizes from "#examples/astro/frame/sizes.astro";
+import SeparatedPanels from "#examples/astro/frame/separated-panels.astro";
+import CustomRecipe from "#examples/astro/frame/custom-recipe.astro";
+
+## Import
+
+```ts
+import { Frame } from "@pisagor/astro";
+```
+
+## Anatomy
+
+```tsx
+<Frame>
+  <Frame.Header>
+    <Frame.Title />
+    <Frame.Description />
+  </Frame.Header>
+  <Frame.Panel />
+  <Frame.Footer />
+</Frame>
+```
+
+## Examples
+
+### Default
+
+Embed content inside consistent framed chrome.
+
+<Example name="Default">
+  <Default />
+</Example>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example name="Sizes">
+  <Sizes />
+</Example>
+
+### Separated Panels
+
+Show multiple framed regions when the workspace splits embeds.
+
+<Example name="SeparatedPanels">
+  <SeparatedPanels />
+</Example>
+
+## Customization
+
+### Custom recipe
+
+Extend `frameRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe">
+  <CustomRecipe />
+</Example>

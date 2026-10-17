@@ -1,0 +1,39 @@
+## Import
+
+```ts
+import { Skeleton } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Default
+
+Pulse placeholders while content loads.
+
+<Example name="Default" />
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example name="Sizes" />
+
+### Skeleton Text
+
+Approximate lines of text so reading layout stays stable.
+
+<Example name="SkeletonText" />
+
+### In Card
+
+Place skeletons inside a card when that surface is loading.
+
+<Example name="InCard" />
+
+## Customization
+
+### Custom recipe
+
+Extend `skeletonRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

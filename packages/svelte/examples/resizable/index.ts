@@ -7,4 +7,3 @@ export { default as MinMax } from "./min-max.svelte";
 export { default as MultiplePanels } from "./multiple-panels.svelte";
 export { default as OrientationHorizontal } from "./orientation-horizontal.svelte";
 export { default as OrientationVertical } from "./orientation-vertical.svelte";
-export { imports, sources } from "./sources";

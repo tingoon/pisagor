@@ -12,7 +12,6 @@ export * from "./image-explorer";
 export * from "./selection-extended";
 export * from "./selection-multiple";
 export * from "./selection-none";
-export { imports, sources } from "./sources";
 export * from "./transfer-list";
 export * from "./with-description";
 export * from "./with-filter";

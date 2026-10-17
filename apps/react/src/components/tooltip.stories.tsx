@@ -1,7 +1,7 @@
 import { TextBIcon } from "@phosphor-icons/react";
 import { Button, Tooltip } from "@pisagor/react";
-import * as Examples from "#/react/examples/tooltip";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/tooltip";
 
 const meta = preview.meta({
   component: Tooltip,

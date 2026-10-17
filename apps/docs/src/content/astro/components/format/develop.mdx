@@ -1,0 +1,98 @@
+import Default from "#examples/astro/format/default.astro";
+import NumberStory from "#examples/astro/format/number-story.astro";
+import NumberCurrency from "#examples/astro/format/number-currency.astro";
+import NumberPercent from "#examples/astro/format/number-percent.astro";
+import NumberCompact from "#examples/astro/format/number-compact.astro";
+import Byte from "#examples/astro/format/byte.astro";
+import ByteUnitSystem from "#examples/astro/format/byte-unit-system.astro";
+import ByteUnitDisplay from "#examples/astro/format/byte-unit-display.astro";
+import RelativeTime from "#examples/astro/format/relative-time.astro";
+import RelativeTimeShort from "#examples/astro/format/relative-time-short.astro";
+
+## Import
+
+```ts
+import { Format } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Format a value for readable display.
+
+<Example name="Default">
+  <Default />
+</Example>
+
+### Number Story
+
+Format a general number for display.
+
+<Example name="NumberStory">
+  <NumberStory />
+</Example>
+
+### Number Currency
+
+Format money with the correct currency style.
+
+<Example name="NumberCurrency">
+  <NumberCurrency />
+</Example>
+
+### Number Percent
+
+Format a ratio as a percentage.
+
+<Example name="NumberPercent">
+  <NumberPercent />
+</Example>
+
+### Number Compact
+
+Shorten large numbers when space is tight.
+
+<Example name="NumberCompact">
+  <NumberCompact />
+</Example>
+
+### Byte
+
+Format a byte size for storage and download labels.
+
+<Example name="Byte">
+  <Byte />
+</Example>
+
+### Byte Unit System
+
+Switch between binary and decimal byte systems.
+
+<Example name="ByteUnitSystem">
+  <ByteUnitSystem />
+</Example>
+
+### Byte Unit Display
+
+Choose how byte units are labeled in the output.
+
+<Example name="ByteUnitDisplay">
+  <ByteUnitDisplay />
+</Example>
+
+### Relative Time
+
+Show a fuller relative time such as 2 hours ago.
+
+<Example name="RelativeTime">
+  <RelativeTime />
+</Example>
+
+### Relative Time Short
+
+Show a short relative time such as 2h.
+
+<Example name="RelativeTimeShort">
+  <RelativeTimeShort />
+</Example>

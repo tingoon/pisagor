@@ -1,0 +1,28 @@
+import Sizes from "#examples/astro/spinner/sizes.astro";
+import CustomRecipe from "#examples/astro/spinner/custom-recipe.astro";
+
+## Import
+
+```ts
+import { Spinner } from "@pisagor/astro";
+```
+
+## Examples
+
+### Sizes
+
+Match size to the surrounding layout — smaller in compact chrome, larger where the spinner needs emphasis.
+
+<Example name="Sizes">
+  <Sizes />
+</Example>
+
+## Customization
+
+### Custom recipe
+
+Extend `spinnerRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe">
+  <CustomRecipe />
+</Example>

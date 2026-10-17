@@ -6,5 +6,4 @@ export { default as Default } from "./default.svelte";
 export { default as FixedCropArea } from "./fixed-crop-area.svelte";
 export { default as InitialCrop } from "./initial-crop.svelte";
 export { default as MinMaxSize } from "./min-max-size.svelte";
-export { imports, sources } from "./sources";
 export { default as ZoomLimits } from "./zoom-limits.svelte";

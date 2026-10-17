@@ -1,0 +1,39 @@
+## Import
+
+```ts
+import { Stat } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Highlight a key metric with supporting context.
+
+<Example name="Default" />
+
+### Variants
+
+Choose emphasis so the stat matches dashboard hierarchy.
+
+<Example name="Variants" />
+
+### With Trend
+
+Show direction of change when trend matters alongside the value.
+
+<Example name="WithTrend" />
+
+### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
+
+<Example name="Compound" />
+
+## Customization
+
+### Custom recipe
+
+Extend `statRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

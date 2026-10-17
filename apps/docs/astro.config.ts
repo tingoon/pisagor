@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import { dirname, join, resolve as resolvePath } from "node:path";
 import { fileURLToPath } from "node:url";
-import { unified } from "@astrojs/markdown-remark";
+import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import solid from "@astrojs/solid-js";
@@ -10,7 +10,9 @@ import svelte from "@astrojs/svelte";
 import vue from "@astrojs/vue";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
-import { stripSkillExamplesPlugin } from "./src/lib/remark-strip-skill-examples";
+
+const docsSrc = fileURLToPath(new URL("./src", import.meta.url));
+const packagesRoot = fileURLToPath(new URL("../../packages", import.meta.url));
 
 const base = process.env.DOCS_BASE_PATH || "/";
 
@@ -318,6 +320,7 @@ function isSitemapPage(page: string): boolean {
 export default defineConfig({
   base,
   integrations: [
+    mdx(),
     react({
       // Keep React Fast Refresh / oxc jsx refresh off non-React sources.
       exclude: reactExclude,
@@ -335,12 +338,6 @@ export default defineConfig({
     vue(),
     sitemap({ filter: isSitemapPage }),
   ],
-  markdown: {
-    // Classic remark (not Sätteri): strip one-liner `:::example ExportName` from Content.
-    processor: unified({
-      remarkPlugins: [stripSkillExamplesPlugin],
-    }),
-  },
   server: { host: true, port: 4000 },
   // Origin only; the `/pisagor/` path comes from `base` (DOCS_BASE_PATH in CI).
   site: process.env.DOCS_SITE || "https://tingoon.github.io",
@@ -357,6 +354,67 @@ export default defineConfig({
       preventOxcRefreshLeakToVue(),
       fixSolidPreserveJsxForDepScan(),
     ],
+    resolve: {
+      alias: [
+        {
+          find: "#examples/astro",
+          replacement: join(packagesRoot, "astro/examples"),
+        },
+        {
+          find: "#examples/react-blocks",
+          replacement: join(docsSrc, "examples/react"),
+        },
+        {
+          find: "#examples/react-form",
+          replacement: join(packagesRoot, "react-form/examples"),
+        },
+        {
+          find: "#examples/react",
+          replacement: join(packagesRoot, "react/examples"),
+        },
+        {
+          find: "#examples/solid-blocks",
+          replacement: join(docsSrc, "examples/solid"),
+        },
+        {
+          find: "#examples/solid-form",
+          replacement: join(packagesRoot, "solid-form/examples"),
+        },
+        {
+          find: "#examples/solid",
+          replacement: join(packagesRoot, "solid/examples"),
+        },
+        {
+          find: "#examples/svelte-blocks",
+          replacement: join(docsSrc, "examples/svelte"),
+        },
+        {
+          find: "#examples/svelte-form",
+          replacement: join(packagesRoot, "svelte-form/examples"),
+        },
+        {
+          find: "#examples/svelte",
+          replacement: join(packagesRoot, "svelte/examples"),
+        },
+        {
+          find: "#examples/vue-blocks",
+          replacement: join(docsSrc, "examples/vue"),
+        },
+        {
+          find: "#examples/vue-form",
+          replacement: join(packagesRoot, "vue-form/examples"),
+        },
+        {
+          find: "#examples/vue",
+          replacement: join(packagesRoot, "vue/examples"),
+        },
+        {
+          find: /^#\/changelog\/([^/]+)$/,
+          replacement: `${packagesRoot}/$1/CHANGELOG.md`,
+        },
+        { find: /^#\//, replacement: `${docsSrc}/` },
+      ],
+    },
     ssr: {
       noExternal: [
         "@pisagor/react",

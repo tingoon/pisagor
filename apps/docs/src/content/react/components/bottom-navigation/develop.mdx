@@ -1,0 +1,46 @@
+## Import
+
+```tsx
+import { BottomNavigation } from "@pisagor/react";
+```
+
+## Anatomy
+
+```tsx
+<BottomNavigation>
+  <BottomNavigation.List>
+    <BottomNavigation.Item>
+      <BottomNavigation.ItemIcon />
+      <BottomNavigation.ItemLabel />
+    </BottomNavigation.Item>
+  </BottomNavigation.List>
+</BottomNavigation>
+```
+
+## Examples
+
+### Default
+
+Fixed bottom destinations for primary mobile sections.
+
+<Example name="Default" />
+
+### Icon Only
+
+Use icons alone when labels would crowd a narrow bar. Provide accessible names.
+
+<Example name="IconOnly" />
+
+### As child
+
+Items render as links. Set the root `value` to the current route so the matching item gets `aria-current="page"`, or pass `current` to an item.
+
+<Example name="WithLinks" />
+
+## Customization
+
+### Custom recipe
+
+Extend `bottomNavigationRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

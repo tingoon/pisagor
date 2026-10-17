@@ -1,0 +1,221 @@
+## Import
+
+```ts
+import { ColorPicker } from "@pisagor/svelte";
+```
+
+## Anatomy
+
+```tsx
+<ColorPicker>
+  <ColorPicker.Control>
+    <ColorPicker.Trigger>
+      <ColorPicker.SwatchPreview />
+    </ColorPicker.Trigger>
+    <ColorPicker.Input />
+  </ColorPicker.Control>
+  <ColorPicker.Content>
+    <ColorPicker.Area>
+      <ColorPicker.AreaThumb />
+    </ColorPicker.Area>
+    <ColorPicker.View>
+      <ColorPicker.EyeDropperTrigger />
+      <ColorPicker.ChannelSlider />
+    </ColorPicker.View>
+  </ColorPicker.Content>
+</ColorPicker>
+```
+
+## Examples
+
+### Default
+
+Pick a color with the full visual picker surface.
+
+<Example name="Default" />
+
+### Variants
+
+Choose picker chrome to match compact forms or larger editing panels.
+
+<Example name="Variants" />
+
+### Area Channels
+
+Edit the 2D color area using specific channels for finer control.
+
+<Example name="AreaChannels" />
+
+### Area Dots
+
+Show discrete dots on the area when quantized picks help.
+
+<Example name="AreaDots" />
+
+### Input Channel
+
+Type a single channel value when precision matters more than dragging.
+
+<Example name="InputChannel" />
+
+### Label Format Select
+
+Pair `ColorPicker.Label` with `ColorPicker.FormatSelect` and `ColorPicker.ChannelInput`.
+
+<Example name="LabelFormatSelect" />
+
+### Input Compact
+
+Use a compact channel input when space is limited.
+
+<Example name="InputCompact" />
+
+### Input With Popover
+
+Open channel editing in a popover attached to a trigger.
+
+<Example name="InputWithPopover" />
+
+### Input With Swatch Preview
+
+Pair inputs with a swatch so typed values stay visually grounded.
+
+<Example name="InputWithSwatchPreview" />
+
+### Popover Sliders Only
+
+Offer sliders without the full area when a simpler editor is enough.
+
+<Example name="PopoverSlidersOnly" />
+
+### Popover With Channel Editing
+
+Combine popover chrome with numeric channel fields.
+
+<Example name="PopoverWithChannelEditing" />
+
+### Popover With Swatch Picker
+
+Pick from swatches inside a popover for predefined palettes.
+
+<Example name="PopoverWithSwatchPicker" />
+
+### Slider Alpha Channel
+
+Adjust transparency with an alpha slider when opacity matters.
+
+<Example name="SliderAlphaChannel" />
+
+### Slider Hsba Channels
+
+Edit HSBA channels with sliders when that color model fits the task.
+
+<Example name="SliderHsbaChannels" />
+
+### Slider Hsl Channels
+
+Edit HSL channels with sliders when that color model fits the task.
+
+<Example name="SliderHslChannels" />
+
+### Slider Rgb Channels
+
+Edit RGB channels with sliders when that color model fits the task.
+
+<Example name="SliderRgbChannels" />
+
+### Slider Vertical
+
+Orient channel sliders vertically when the layout favors a tall editor.
+
+<Example name="SliderVertical" />
+
+### Swatch Picker
+
+Pick from predefined swatches when freeform color picking is unnecessary.
+
+<Example name="SwatchPicker" />
+
+### Swatch Picker Custom Indicator
+
+Customize the selected-swatch indicator to match brand chrome.
+
+<Example name="SwatchPickerCustomIndicator" />
+
+### Clearable
+
+Offer a clear control when users often need to remove the selected color.
+
+<Example name="Clearable" />
+
+### Input Controlled
+
+Control channel inputs from the parent for synced color editors.
+
+<Example name="InputControlled" />
+
+### Slider Controlled
+
+Drive slider channels from the parent when color state lives above the picker.
+
+<Example name="SliderControlled" />
+
+### Swatch Picker Controlled
+
+Drive the selected swatch from the parent when palette state lives above.
+
+<Example name="SwatchPickerControlled" />
+
+### Disabled
+
+Show that color cannot be changed.
+
+<Example name="Disabled" />
+
+### Popover Disabled
+
+Show an unavailable popover trigger when color editing is blocked.
+
+<Example name="PopoverDisabled" />
+
+### Slider Disabled
+
+Show that slider channels are unavailable.
+
+<Example name="SliderDisabled" />
+
+### Swatch Picker Disabled
+
+Show that swatch picking is unavailable.
+
+<Example name="SwatchPickerDisabled" />
+
+### Invalid
+
+Surface an invalid color value that needs correction.
+
+<Example name="Invalid" />
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Adjust spacing when the picker sits in a denser layout.
+
+<Example name="CustomSpacing" />
+
+Override swatch corner radius when geometry should match nearby controls.
+
+<Example name="SwatchPickerCustomRadius" />
+
+Resize swatches when the palette needs denser or larger targets.
+
+<Example name="SwatchPickerCustomSize" />
+
+### Custom recipe
+
+Extend `colorPickerRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

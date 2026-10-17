@@ -1,0 +1,55 @@
+import Default from "#examples/astro/stat/default.astro";
+import Variants from "#examples/astro/stat/variants.astro";
+import WithTrend from "#examples/astro/stat/with-trend.astro";
+import Compound from "#examples/astro/stat/compound.astro";
+import CustomRecipe from "#examples/astro/stat/custom-recipe.astro";
+
+## Import
+
+```ts
+import { Stat } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Highlight a key metric with supporting context.
+
+<Example name="Default">
+  <Default />
+</Example>
+
+### Variants
+
+Choose emphasis so the stat matches dashboard hierarchy.
+
+<Example name="Variants">
+  <Variants />
+</Example>
+
+### With Trend
+
+Show direction of change when trend matters alongside the value.
+
+<Example name="WithTrend">
+  <WithTrend />
+</Example>
+
+### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
+
+<Example name="Compound">
+  <Compound />
+</Example>
+
+## Customization
+
+### Custom recipe
+
+Extend `statRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe">
+  <CustomRecipe />
+</Example>

@@ -1,6 +1,6 @@
 import { Highlight } from "@pisagor/react";
-import * as Examples from "#/react/examples/highlight";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/highlight";
 
 const meta = preview.meta({
   component: Highlight,

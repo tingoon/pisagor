@@ -11,7 +11,6 @@ export { default as MaxWithOverflow } from "./max-with-overflow.svelte";
 export { default as PasteBehavior } from "./paste-behavior.svelte";
 export { default as SanitizeValue } from "./sanitize-value.svelte";
 export { default as Sizes } from "./sizes.svelte";
-export { imports, sources } from "./sources";
 export { default as Validation } from "./validation.svelte";
 export { default as Variants } from "./variants.svelte";
 export { default as WithCombobox } from "./with-combobox.svelte";

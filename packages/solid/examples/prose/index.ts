@@ -22,4 +22,3 @@ export * from "./ol";
 export * from "./p";
 export * from "./separator";
 export * from "./small";
-export { imports, sources } from "./sources";

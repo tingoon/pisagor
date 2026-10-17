@@ -8,4 +8,3 @@ export { default as NumberPercent } from "./number-percent.astro";
 export { default as NumberStory } from "./number-story.astro";
 export { default as RelativeTime } from "./relative-time.astro";
 export { default as RelativeTimeShort } from "./relative-time-short.astro";
-export { imports, sources } from "./sources";

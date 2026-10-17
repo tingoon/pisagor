@@ -1,7 +1,13 @@
 /**
- * Client-side example source loader for ComponentPreview Code tabs. Loads only
- * the matching `sources.ts` barrel on demand (Vite code-split).
+ * Client-side example source loader for ComponentPreview Code tabs. Loads a
+ * single example file as `?raw` (not a sources barrel).
  */
+
+import {
+  EXAMPLE_SKIP_STEMS,
+  exportNameToFileStem,
+  findExampleFileLoader,
+} from "#/lib/example-file";
 
 export type PreviewSourceKind = "component" | "form" | "block";
 
@@ -12,109 +18,104 @@ export type PreviewSourceRef = {
   kind: PreviewSourceKind;
 };
 
-type SourcesModule = {
-  sources: Record<string, string>;
-};
+type RawLoaderMap = Record<string, () => Promise<string>>;
 
-type LoaderMap = Record<string, () => Promise<SourcesModule>>;
-
-const componentSources: Record<string, LoaderMap> = {
-  astro: import.meta.glob<SourcesModule>(
-    "../../../../packages/astro/examples/*/sources.ts",
+const componentRaws: Record<string, RawLoaderMap> = {
+  astro: import.meta.glob<string>(
+    "../../../../packages/astro/examples/*/*.{astro,ts,tsx}",
+    { import: "default", query: "?raw" },
   ),
-  react: import.meta.glob<SourcesModule>(
-    "../../../../packages/react/examples/*/sources.ts",
+  react: import.meta.glob<string>(
+    "../../../../packages/react/examples/*/*.{ts,tsx}",
+    { import: "default", query: "?raw" },
   ),
-  solid: import.meta.glob<SourcesModule>(
-    "../../../../packages/solid/examples/*/sources.ts",
+  solid: import.meta.glob<string>(
+    "../../../../packages/solid/examples/*/*.{ts,tsx}",
+    { import: "default", query: "?raw" },
   ),
-  svelte: import.meta.glob<SourcesModule>(
-    "../../../../packages/svelte/examples/*/sources.ts",
+  svelte: import.meta.glob<string>(
+    "../../../../packages/svelte/examples/*/*.svelte",
+    { import: "default", query: "?raw" },
   ),
-  vue: import.meta.glob<SourcesModule>(
-    "../../../../packages/vue/examples/*/sources.ts",
-  ),
-};
-
-const formSources: Record<string, LoaderMap> = {
-  react: import.meta.glob<SourcesModule>(
-    "../../../../packages/react-form/examples/*/sources.ts",
-  ),
-  solid: import.meta.glob<SourcesModule>(
-    "../../../../packages/solid-form/examples/*/sources.ts",
-  ),
-  svelte: import.meta.glob<SourcesModule>(
-    "../../../../packages/svelte-form/examples/*/sources.ts",
-  ),
-  vue: import.meta.glob<SourcesModule>(
-    "../../../../packages/vue-form/examples/*/sources.ts",
+  vue: import.meta.glob<string>(
+    "../../../../packages/vue/examples/*/*.{ts,tsx,vue}",
+    { import: "default", query: "?raw" },
   ),
 };
 
-const blockSources: Record<string, LoaderMap> = {
-  react: import.meta.glob<SourcesModule>("../examples/react/*/sources.ts"),
-  solid: import.meta.glob<SourcesModule>("../examples/solid/*/sources.ts"),
-  svelte: import.meta.glob<SourcesModule>("../examples/svelte/*/sources.ts"),
-  vue: import.meta.glob<SourcesModule>("../examples/vue/*/sources.ts"),
+const formRaws: Record<string, RawLoaderMap> = {
+  react: import.meta.glob<string>(
+    "../../../../packages/react-form/examples/*/*.{ts,tsx}",
+    { import: "default", query: "?raw" },
+  ),
+  solid: import.meta.glob<string>(
+    "../../../../packages/solid-form/examples/*/*.{ts,tsx}",
+    { import: "default", query: "?raw" },
+  ),
+  svelte: import.meta.glob<string>(
+    "../../../../packages/svelte-form/examples/*/*.svelte",
+    { import: "default", query: "?raw" },
+  ),
+  vue: import.meta.glob<string>(
+    "../../../../packages/vue-form/examples/*/*.{ts,tsx,vue}",
+    { import: "default", query: "?raw" },
+  ),
 };
 
-const moduleCache = new Map<string, Promise<SourcesModule>>();
+const blockRaws: Record<string, RawLoaderMap> = {
+  react: import.meta.glob<string>("../examples/react/*/*.{ts,tsx}", {
+    import: "default",
+    query: "?raw",
+  }),
+  solid: import.meta.glob<string>("../examples/solid/*/*.{ts,tsx}", {
+    import: "default",
+    query: "?raw",
+  }),
+  svelte: import.meta.glob<string>("../examples/svelte/*/*.svelte", {
+    import: "default",
+    query: "?raw",
+  }),
+  vue: import.meta.glob<string>("../examples/vue/*/*.{ts,tsx,vue}", {
+    import: "default",
+    query: "?raw",
+  }),
+};
 
-function findGlobKey(
-  modules: Record<string, unknown>,
-  suffix: string,
-): string | undefined {
-  return Object.keys(modules).find((path) => path.endsWith(suffix));
-}
+const moduleCache = new Map<string, Promise<string>>();
 
-function loaderFor(
-  ref: PreviewSourceRef,
-): (() => Promise<SourcesModule>) | undefined {
-  const { framework, id, kind } = ref;
-  let modules: LoaderMap | undefined;
-  let suffix: string;
+export { exportNameToFileStem };
 
-  if (kind === "block") {
-    modules = blockSources[framework];
-    suffix = `/examples/${framework}/${id}/sources.ts`;
-  } else if (kind === "form") {
-    modules = formSources[framework];
-    suffix = `/examples/${id}/sources.ts`;
-  } else {
-    modules = componentSources[framework];
-    suffix = `/examples/${id}/sources.ts`;
-  }
+function loaderFor(ref: PreviewSourceRef): (() => Promise<string>) | undefined {
+  const stem = exportNameToFileStem(ref.exportName);
+  if (EXAMPLE_SKIP_STEMS.has(stem)) return undefined;
+
+  let modules: RawLoaderMap | undefined;
+  if (ref.kind === "block") modules = blockRaws[ref.framework];
+  else if (ref.kind === "form") modules = formRaws[ref.framework];
+  else modules = componentRaws[ref.framework];
 
   if (!modules) return undefined;
-  const key = findGlobKey(modules, suffix);
-  return key ? modules[key] : undefined;
+  return findExampleFileLoader(modules, ref.id, stem) as
+    (() => Promise<string>) | undefined;
 }
 
-/** Resolve one example source string (cached per sources barrel). */
+/** Resolve one example source string (cached per example file). */
 export async function loadPreviewSource(
   ref: PreviewSourceRef,
 ): Promise<string> {
-  const cacheKey = `${ref.kind}:${ref.framework}:${ref.id}`;
+  const cacheKey = `${ref.kind}:${ref.framework}:${ref.id}:${ref.exportName}`;
   let pending = moduleCache.get(cacheKey);
   if (!pending) {
     const loader = loaderFor(ref);
     if (!loader) {
       throw new Error(
-        `No sources loader for ${ref.kind}/${ref.framework}/${ref.id}`,
+        `No raw example for ${ref.kind}/${ref.framework}/${ref.id}/${ref.exportName}`,
       );
     }
     pending = loader();
     moduleCache.set(cacheKey, pending);
   }
-
-  const mod = await pending;
-  const code = mod.sources[ref.exportName];
-  if (typeof code !== "string") {
-    throw new Error(
-      `Missing source "${ref.exportName}" in ${ref.kind}/${ref.framework}/${ref.id}`,
-    );
-  }
-  return code;
+  return pending;
 }
 
 /** Resolve highlighter lang after source is known (Vue SFC vs script-only). */

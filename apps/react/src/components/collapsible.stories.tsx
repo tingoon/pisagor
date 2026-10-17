@@ -1,6 +1,6 @@
 import { Collapsible } from "@pisagor/react";
-import * as Examples from "#/react/examples/collapsible";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/collapsible";
 
 const meta = preview.meta({
   component: Collapsible,

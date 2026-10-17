@@ -1,0 +1,45 @@
+## Import
+
+```ts
+import { RichTextEditor } from "@pisagor/vue/rich-text-editor";
+```
+
+## Examples
+
+### Default
+
+Render the editor with a toolbar and starting content.
+
+<Example name="Default" />
+
+### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
+
+<Example name="Compound" />
+
+### Controlled
+
+Drive editor value from the parent when form state lives above.
+
+<Example name="Controlled" />
+
+### Disabled
+
+Show that editing is unavailable.
+
+<Example name="Disabled" />
+
+### Invalid
+
+Surface a validation error when content is missing or not allowed.
+
+<Example name="Invalid" />
+
+## Customization
+
+### Custom recipe
+
+Extend `richTextEditorRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

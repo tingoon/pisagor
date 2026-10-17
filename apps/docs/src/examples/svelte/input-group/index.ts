@@ -4,4 +4,3 @@ export { default as InputGroupWithInnerLabel } from "./input-group-with-inner-la
 export { default as InputGroupWithMenu } from "./input-group-with-menu.svelte";
 export { default as InputGroupWithNumberInput } from "./input-group-with-number-input.svelte";
 export { default as InputGroupWithTooltip } from "./input-group-with-tooltip.svelte";
-export { sources } from "./sources";

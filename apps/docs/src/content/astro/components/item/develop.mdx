@@ -1,0 +1,132 @@
+import Default from "#examples/astro/item/default.astro";
+import Variants from "#examples/astro/item/variants.astro";
+import Sizes from "#examples/astro/item/sizes.astro";
+import Icon from "#examples/astro/item/icon.astro";
+import Image from "#examples/astro/item/image.astro";
+import WithMedia from "#examples/astro/item/with-media.astro";
+import Header from "#examples/astro/item/header.astro";
+import Group from "#examples/astro/item/group.astro";
+import WithAvatar from "#examples/astro/item/with-avatar.astro";
+import Link from "#examples/astro/item/link.astro";
+import CustomSpacing from "#examples/astro/item/custom-spacing.astro";
+import CustomRecipe from "#examples/astro/item/custom-recipe.astro";
+
+## Import
+
+```ts
+import { Item } from "@pisagor/astro";
+```
+
+## Anatomy
+
+```tsx
+<Item>
+  <Item.Content>
+    <Item.Title />
+    <Item.Description />
+  </Item.Content>
+  <Item.Actions />
+</Item>
+```
+
+## Examples
+
+### Default
+
+Lay out media, title, description, and actions as one row.
+
+<Example name="Default">
+  <Default />
+</Example>
+
+### Variants
+
+Choose emphasis to match list density.
+
+<Example name="Variants">
+  <Variants />
+</Example>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example name="Sizes">
+  <Sizes />
+</Example>
+
+### Icon
+
+Lead with an icon when a symbol is enough.
+
+<Example name="Icon">
+  <Icon />
+</Example>
+
+### Image
+
+Use a larger image treatment for media-forward rows.
+
+<Example name="Image">
+  <Image />
+</Example>
+
+### With Media
+
+Lead with media when imagery helps recognition.
+
+<Example name="WithMedia">
+  <WithMedia />
+</Example>
+
+### Header
+
+Use item header layout for section introductions in a list.
+
+<Example name="Header">
+  <Header />
+</Example>
+
+### Group
+
+Group related items so related choices stay visually and semantically together.
+
+<Example name="Group">
+  <Group />
+</Example>
+
+### With Avatar
+
+Lead with an avatar when the row represents a person.
+
+<Example name="WithAvatar">
+  <WithAvatar />
+</Example>
+
+### As child
+
+Navigate when the whole row is a destination.
+
+<Example name="Link">
+  <Link />
+</Example>
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Override spacing when the default density does not match the surrounding layout.
+
+<Example name="CustomSpacing">
+  <CustomSpacing />
+</Example>
+
+### Custom recipe
+
+Extend `itemRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe">
+  <CustomRecipe />
+</Example>

@@ -1,7 +1,6 @@
 import { ActionBar } from "@pisagor/react";
-import * as Examples from "#/react/examples/action-bar";
-
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/action-bar";
 
 const meta = preview.meta({
   component: ActionBar,

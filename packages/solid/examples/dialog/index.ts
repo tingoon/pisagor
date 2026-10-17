@@ -8,4 +8,3 @@ export * from "./nested";
 export * from "./no-close-button";
 export * from "./non-modal";
 export * from "./scroll-area";
-export { imports, sources } from "./sources";

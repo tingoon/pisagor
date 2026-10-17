@@ -6,7 +6,6 @@ export { default as Events } from "./events.vue";
 export { default as KeyboardNavigation } from "./keyboard-navigation.vue";
 export { default as Progress } from "./progress.vue";
 export { default as Skip } from "./skip.vue";
-export { imports, sources } from "./sources";
 export { default as StepTypes } from "./step-types.vue";
 export { default as WaitForClick } from "./wait-for-click.vue";
 export { default as WaitForElement } from "./wait-for-element.vue";

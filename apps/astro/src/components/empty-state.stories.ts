@@ -1,6 +1,6 @@
 import { Button, EmptyState } from "@pisagor/astro";
-import * as Examples from "#/astro/examples/empty-state";
 import preview from "#/storybook/preview";
+import * as Examples from "#/astro/examples/empty-state";
 
 const meta = preview.meta({
   component: EmptyState,

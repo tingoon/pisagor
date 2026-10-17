@@ -1,6 +1,6 @@
 import { InputGroup } from "@pisagor/react";
-import * as Examples from "#/react/examples/input-group";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/input-group";
 
 const meta = preview.meta({
   component: InputGroup,

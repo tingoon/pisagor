@@ -1,6 +1,6 @@
 import { Clipboard } from "@pisagor/react";
-import * as Examples from "#/react/examples/clipboard";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/clipboard";
 
 const meta = preview.meta({
   component: Clipboard,

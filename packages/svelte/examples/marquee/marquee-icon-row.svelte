@@ -1,4 +1,4 @@
-<script lang="ts" module>
+<script module lang="ts">
   import ArrowRightIcon from "phosphor-svelte/lib/ArrowRightIcon";
   import AtomIcon from "phosphor-svelte/lib/AtomIcon";
   import DeviceMobileIcon from "phosphor-svelte/lib/DeviceMobileIcon";

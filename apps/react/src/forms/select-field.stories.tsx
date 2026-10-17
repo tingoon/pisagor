@@ -1,8 +1,8 @@
 import { SelectField } from "@pisagor/react-form";
 import { fn } from "storybook/test";
-import * as Examples from "#/react-form/examples/select-field";
 import { countryOptions } from "#/storybook/fixtures";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react-form/examples/select-field";
 
 const meta = preview.meta({
   component: SelectField,

@@ -4,4 +4,3 @@ export * from "./default";
 export * from "./icon";
 export * from "./product";
 export * from "./sizes";
-export { imports, sources } from "./sources";

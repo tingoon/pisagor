@@ -1,0 +1,53 @@
+import Default from "#examples/astro/aspect-ratio/default.astro";
+import Portrait from "#examples/astro/aspect-ratio/portrait.astro";
+import Responsive from "#examples/astro/aspect-ratio/responsive.astro";
+import Square from "#examples/astro/aspect-ratio/square.astro";
+import Video from "#examples/astro/aspect-ratio/video.astro";
+
+## Import
+
+```ts
+import { AspectRatio } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Lock content to a ratio so media does not jump as it loads.
+
+<Example name="Default">
+  <Default />
+</Example>
+
+### Portrait
+
+Use a portrait ratio for tall media such as mobile screenshots.
+
+<Example name="Portrait">
+  <Portrait />
+</Example>
+
+### Responsive
+
+Keep the ratio while the box grows and shrinks with the layout.
+
+<Example name="Responsive">
+  <Responsive />
+</Example>
+
+### Square
+
+Use a 1:1 box for avatars, thumbnails, and tile media.
+
+<Example name="Square">
+  <Square />
+</Example>
+
+### Video
+
+Use a widescreen ratio for video and cinematic embeds.
+
+<Example name="Video">
+  <Video />
+</Example>

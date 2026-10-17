@@ -1,0 +1,76 @@
+## Import
+
+```ts
+import { Command } from "@pisagor/vue";
+```
+
+## Anatomy
+
+```vue
+<Command>
+  <Command.Input />
+  <Command.Content>
+    <Command.Empty />
+    <Command.List>
+      <Command.ItemGroup>
+        <Command.Item>
+          <Command.Shortcut />
+        </Command.Item>
+        <Command.Separator />
+      </Command.ItemGroup>
+    </Command.List>
+  </Command.Content>
+</Command>
+```
+
+## Examples
+
+### Default
+
+Open a searchable palette for actions, pages, or settings.
+
+<Example name="Default" />
+
+### Groups
+
+Group commands under labels so long palettes stay scannable.
+
+<Example name="Groups" />
+
+### Shortcuts
+
+Show keyboard shortcuts beside commands for faster recall.
+
+<Example name="Shortcuts" />
+
+### With Footer
+
+Add a footer for hints or secondary actions under the command list.
+
+<Example name="WithFooter" />
+
+### Scrollable
+
+Allow the command list to scroll when items exceed the panel height.
+
+<Example name="Scrollable" />
+
+### Shorthand
+
+Pass `items` to `Command.Shorthand` for a filtered, grouped list without composing parts.
+
+<Example name="Shorthand" />
+
+### With Dialog
+
+Host the palette in a dialog when it should take focus as a modal layer.
+
+<Example name="WithDialog" />
+
+## Customization
+
+### Custom recipe
+
+Extend `commandRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

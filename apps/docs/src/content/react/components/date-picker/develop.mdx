@@ -1,0 +1,86 @@
+## Import
+
+```tsx
+import { DatePicker } from "@pisagor/react";
+```
+
+## Anatomy
+
+```tsx
+<DatePicker>
+  <DatePicker.Trigger>
+    <DatePicker.ValueText />
+  </DatePicker.Trigger>
+  <DatePicker.Content />
+</DatePicker>
+```
+
+## Examples
+
+### Default
+
+Pick a date from a calendar attached to a field or popover.
+
+<Example name="Default" />
+
+### Variants
+
+Choose field emphasis to match surrounding inputs.
+
+<Example name="Variants" />
+
+### Range
+
+Pick a start and end date for spans.
+
+<Example name="Range" />
+
+### Time
+
+Include time when the value is a datetime rather than a day alone.
+
+<Example name="Time" />
+
+### Input
+
+Type the date in an input when keyboard entry is faster than picking.
+
+<Example name="Input" />
+
+### With Presets
+
+Offer common ranges so users can pick without hunting on the calendar.
+
+<Example name="WithPresets" />
+
+### Custom Format
+
+Override display format when locale or product needs a specific pattern.
+
+<Example name="CustomFormat" />
+
+### Clearable
+
+Offer a clear control when the date is optional.
+
+<Example name="Clearable" />
+
+### Disabled
+
+Show that the date cannot change.
+
+<Example name="Disabled" />
+
+### Invalid
+
+Surface a validation or error state so users know the date picker needs attention before continuing.
+
+<Example name="Invalid" />
+
+## Customization
+
+### Custom recipe
+
+Extend `datePickerRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

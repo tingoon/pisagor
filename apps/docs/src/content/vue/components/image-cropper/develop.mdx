@@ -1,0 +1,72 @@
+## Import
+
+```ts
+import { ImageCropper } from "@pisagor/vue";
+```
+
+## Anatomy
+
+```vue
+<ImageCropper>
+  <ImageCropper.Image />
+  <ImageCropper.Selection />
+</ImageCropper>
+```
+
+## Examples
+
+### Default
+
+Crop and adjust an image before save or upload.
+
+<Example name="Default" />
+
+### Aspect Ratio
+
+Lock the crop to a ratio when the output shape is fixed.
+
+<Example name="AspectRatio" />
+
+### Circle Crop
+
+Use a circular crop when the result is an avatar-style image.
+
+<Example name="CircleCrop" />
+
+### Fixed Crop Area
+
+Keep the crop area fixed when users should pan the image underneath.
+
+<Example name="FixedCropArea" />
+
+### Initial Crop
+
+Start from a predefined crop when a sensible default exists.
+
+<Example name="InitialCrop" />
+
+### Min Max Size
+
+Clamp crop size so results stay within usable bounds.
+
+<Example name="MinMaxSize" />
+
+### Zoom Limits
+
+Limit zoom so users cannot overscale the image.
+
+<Example name="ZoomLimits" />
+
+### Controlled Zoom
+
+Drive zoom from the parent when external controls adjust scale.
+
+<Example name="ControlledZoom" />
+
+## Customization
+
+### Custom recipe
+
+Extend `imageCropperRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

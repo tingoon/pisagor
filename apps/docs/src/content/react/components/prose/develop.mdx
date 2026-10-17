@@ -1,0 +1,153 @@
+## Import
+
+```tsx
+import { Prose } from "@pisagor/react";
+```
+
+## Examples
+
+### Default
+
+Readable long-form text styled for articles and documentation.
+
+<Example name="Default" />
+
+### A
+
+Style inline links inside prose content.
+
+<Example name="A" />
+
+### Blockquote
+
+Style quotations set apart from surrounding paragraphs.
+
+<Example name="Blockquote" />
+
+### Details
+
+Style expandable disclosure blocks inside prose.
+
+<Example name="Details" />
+
+### Dl
+
+Style description lists for terms and definitions.
+
+<Example name="Dl" />
+
+### H1
+
+Style the top-level heading in a prose document.
+
+<Example name="H1" />
+
+### H2
+
+Style a section heading under the document title.
+
+<Example name="H2" />
+
+### H3
+
+Style a subsection heading within a section.
+
+<Example name="H3" />
+
+### H4
+
+Style a fourth-level heading for finer structure.
+
+<Example name="H4" />
+
+### H5
+
+Style a fifth-level heading when deep outline levels are needed.
+
+<Example name="H5" />
+
+### H6
+
+Style the deepest heading level supported in prose.
+
+<Example name="H6" />
+
+### Html
+
+Render rich HTML through the prose styles. Pass `sanitize` (for example DOMPurify's `sanitize`) when the HTML comes from users; it runs before the markup is injected.
+
+<Example name="Html" />
+
+### Html Table
+
+Style tables that appear inside HTML prose content.
+
+<Example name="HtmlTable" />
+
+### Inline Code
+
+Style Inline Code elements inside long-form prose content.
+
+<Example name="InlineCode" />
+
+### Kbd
+
+Style Kbd elements inside long-form prose content.
+
+<Example name="Kbd" />
+
+### List
+
+Style List elements inside long-form prose content.
+
+<Example name="List" />
+
+### Mark
+
+Style Mark elements inside long-form prose content.
+
+<Example name="Mark" />
+
+### Media
+
+Style Media elements inside long-form prose content.
+
+<Example name="Media" />
+
+### Not Prose
+
+Style Not Prose elements inside long-form prose content.
+
+<Example name="NotProse" />
+
+### Ol
+
+Style Ol elements inside long-form prose content.
+
+<Example name="Ol" />
+
+### P
+
+Style P elements inside long-form prose content.
+
+<Example name="P" />
+
+### Separator
+
+Style Separator elements inside long-form prose content.
+
+<Example name="Separator" />
+
+### Small
+
+Style Small elements inside long-form prose content.
+
+<Example name="Small" />
+
+## Customization
+
+### Custom recipe
+
+Extend `proseRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

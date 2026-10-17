@@ -10,6 +10,5 @@ export { default as Placements } from "./placements.svelte";
 export { default as QuickItem } from "./quick-item.svelte";
 export { default as RadioGroup } from "./radio-group.svelte";
 export { default as Shortcuts } from "./shortcuts.svelte";
-export { imports, sources } from "./sources";
 export { default as WithScroll } from "./with-scroll.svelte";
 export { default as WithSeparator } from "./with-separator.svelte";

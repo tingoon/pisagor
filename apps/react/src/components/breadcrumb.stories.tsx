@@ -1,6 +1,6 @@
 import { Breadcrumb } from "@pisagor/react";
-import * as Examples from "#/react/examples/breadcrumb";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/breadcrumb";
 
 const meta = preview.meta({
   component: Breadcrumb,

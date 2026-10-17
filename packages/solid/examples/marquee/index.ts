@@ -7,5 +7,4 @@ export * from "./orientation-horizontal";
 export * from "./orientation-vertical";
 export * from "./pause-on-hover";
 export * from "./reverse";
-export { imports, sources } from "./sources";
 export * from "./spacing";

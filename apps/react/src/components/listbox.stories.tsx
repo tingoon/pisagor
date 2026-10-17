@@ -1,6 +1,6 @@
 import { Listbox } from "@pisagor/react";
-import * as Examples from "#/react/examples/listbox";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/listbox";
 
 const meta = preview.meta({
   component: Listbox,

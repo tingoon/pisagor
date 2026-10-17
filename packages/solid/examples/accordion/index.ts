@@ -5,5 +5,4 @@ export * from "./disabled";
 export * from "./multiple";
 export * from "./non-collapsible";
 export * from "./sizes";
-export { imports, sources } from "./sources";
 export * from "./with-card";

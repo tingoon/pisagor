@@ -1,6 +1,6 @@
 import { Field } from "@pisagor/react";
-import * as Examples from "#/react/examples/field";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/field";
 
 const meta = preview.meta({
   component: Field,

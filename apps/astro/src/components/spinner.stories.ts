@@ -1,6 +1,6 @@
 import { Spinner } from "@pisagor/astro";
-import * as Examples from "#/astro/examples/spinner";
 import preview from "#/storybook/preview";
+import * as Examples from "#/astro/examples/spinner";
 
 const meta = preview.meta({
   component: Spinner,

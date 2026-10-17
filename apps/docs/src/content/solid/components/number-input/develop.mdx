@@ -1,0 +1,87 @@
+## Import
+
+```tsx
+import { NumberInput } from "@pisagor/solid";
+```
+
+## Examples
+
+### Variants
+
+Choose visual weight or emphasis so the number input matches importance in the surrounding layout.
+
+<Example name="Variants" />
+
+### Sizes
+
+Match size to the surrounding layout — smaller in compact chrome, larger where the number input needs emphasis.
+
+<Example name="Sizes" />
+
+### Formatted
+
+Display a formatted value when units or grouping aid reading.
+
+<Example name="Formatted" />
+
+### Field Only
+
+Render the field without extra chrome when the surrounding layout provides labels.
+
+<Example name="FieldOnly" />
+
+### Compound
+
+Compose the input and stepper triggers from parts when you need a custom layout.
+
+<Example name="Compound" />
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this number input.
+
+<Example name="Controlled" />
+
+### Disabled
+
+Show that the number input is unavailable.
+
+<Example name="Disabled" />
+
+### Invalid
+
+Surface a validation or error state so users know the number input needs attention before continuing.
+
+<Example name="Invalid" />
+
+### Range
+
+Select a start and end value when the task needs a span rather than a single point.
+
+<Example name="Range" />
+
+### Step
+
+Snap changes to a step interval when values should move in fixed increments.
+
+<Example name="Step" />
+
+### Mouse Wheel
+
+Adjust the value with the mouse wheel when rapid changes fit the task.
+
+<Example name="MouseWheel" />
+
+### Scrub
+
+Scrub horizontally to change the value when precise dragging helps.
+
+<Example name="Scrub" />
+
+## Customization
+
+### Custom recipe
+
+Extend `numberInputRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example name="CustomRecipe" />

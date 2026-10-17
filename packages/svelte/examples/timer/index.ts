@@ -8,4 +8,3 @@ export { default as Interval } from "./interval.svelte";
 export { default as OrientationHorizontal } from "./orientation-horizontal.svelte";
 export { default as OrientationVertical } from "./orientation-vertical.svelte";
 export { default as Pomodoro } from "./pomodoro.svelte";
-export { imports, sources } from "./sources";

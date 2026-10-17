@@ -12,7 +12,6 @@ export { default as ImageExplorer } from "./image-explorer.svelte";
 export { default as SelectionExtended } from "./selection-extended.svelte";
 export { default as SelectionMultiple } from "./selection-multiple.svelte";
 export { default as SelectionNone } from "./selection-none.svelte";
-export { imports, sources } from "./sources";
 export { default as TransferList } from "./transfer-list.svelte";
 export { default as WithDescription } from "./with-description.svelte";
 export { default as WithFilter } from "./with-filter.svelte";

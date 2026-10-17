@@ -10,6 +10,5 @@ export * from "./placements";
 export * from "./quick-item";
 export * from "./radio-group";
 export * from "./shortcuts";
-export { imports, sources } from "./sources";
 export * from "./with-scroll";
 export * from "./with-separator";
