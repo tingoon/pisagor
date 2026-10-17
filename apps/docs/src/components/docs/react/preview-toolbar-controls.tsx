@@ -35,9 +35,7 @@ export function PreviewToolbarControls({
   }
 
   function surfaceClasses(root: HTMLElement) {
-    const classes = new Map<string, string>([
-      ["page", "flex w-full items-center justify-center"],
-    ]);
+    const classes = new Map<string, string>([["page", "w-full"]]);
     for (const tpl of root.querySelectorAll<HTMLTemplateElement>(
       "template[data-surface-template]",
     )) {

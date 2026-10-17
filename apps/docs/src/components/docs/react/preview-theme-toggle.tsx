@@ -8,11 +8,11 @@ function docsTheme(): "light" | "dark" {
 
 /** Per-preview light/dark control — uses `Swap` for the sun/moon transition. */
 export function PreviewThemeToggle() {
-  const rootRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   function previewPanel() {
-    return rootRef.current
+    return buttonRef.current
       ?.closest("[data-component-preview]")
       ?.querySelector<HTMLElement>('[data-panel="preview"]');
   }
@@ -34,24 +34,23 @@ export function PreviewThemeToggle() {
   const dark = theme === "dark";
 
   return (
-    <div className="inline-flex" data-theme-toggle ref={rootRef}>
-      <Button
-        aria-label={
-          dark ? "Switch preview to light mode" : "Switch preview to dark mode"
-        }
-        data-tooltip="Toggle mode"
-        onClick={() => apply(dark ? "light" : "dark")}
-        size="icon-sm"
-        type="button"
-        variant="ghost"
-      >
-        <Swap
-          off={<SunIcon aria-hidden size={14} />}
-          on={<MoonIcon aria-hidden size={14} />}
-          swap={!dark}
-          variant="fade"
-        />
-      </Button>
-    </div>
+    <Button
+      ref={buttonRef}
+      aria-label={
+        dark ? "Switch preview to light mode" : "Switch preview to dark mode"
+      }
+      data-tooltip="Toggle mode"
+      onClick={() => apply(dark ? "light" : "dark")}
+      size="icon-sm"
+      type="button"
+      variant="ghost"
+    >
+      <Swap
+        off={<SunIcon aria-hidden size={14} />}
+        on={<MoonIcon aria-hidden size={14} />}
+        swap={!dark}
+        variant="fade"
+      />
+    </Button>
   );
 }
