@@ -1,6 +1,6 @@
 import { FileItem } from "@pisagor/react";
-import * as Examples from "#/react/examples/file";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/file";
 
 const meta = preview.meta({
   component: FileItem,

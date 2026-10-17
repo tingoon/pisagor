@@ -1,6 +1,6 @@
 import { Surface } from "@pisagor/astro";
-import * as Examples from "#/astro/examples/surface";
 import preview from "#/storybook/preview";
+import * as Examples from "#/astro/examples/surface";
 
 const meta = preview.meta({
   component: Surface,

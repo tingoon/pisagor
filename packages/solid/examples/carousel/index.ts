@@ -4,7 +4,6 @@ export * from "./compound";
 export * from "./controlled";
 export * from "./custom-recipe";
 export * from "./default";
-export * from "./helpers";
 export * from "./loop";
 export * from "./mouse-drag";
 export * from "./orientation-horizontal";

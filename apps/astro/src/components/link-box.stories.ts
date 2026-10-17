@@ -1,6 +1,6 @@
 import { LinkBox } from "@pisagor/astro";
-import * as Examples from "#/astro/examples/link-box";
 import preview from "#/storybook/preview";
+import * as Examples from "#/astro/examples/link-box";
 
 const meta = preview.meta({
   component: LinkBox,

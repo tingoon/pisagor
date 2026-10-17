@@ -1,5 +1,5 @@
-import * as Examples from "#/react/examples/toast";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/toast";
 
 const meta = preview.meta({
   parameters: {

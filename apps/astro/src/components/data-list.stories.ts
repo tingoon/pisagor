@@ -1,6 +1,6 @@
 import { DataList } from "@pisagor/astro";
-import * as Examples from "#/astro/examples/data-list";
 import preview from "#/storybook/preview";
+import * as Examples from "#/astro/examples/data-list";
 
 const meta = preview.meta({
   component: DataList,

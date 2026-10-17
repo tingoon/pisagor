@@ -1,7 +1,7 @@
 import { SliderField } from "@pisagor/react-form";
 import { fn } from "storybook/test";
-import * as Examples from "#/react-form/examples/slider-field";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react-form/examples/slider-field";
 
 const meta = preview.meta({
   component: SliderField,

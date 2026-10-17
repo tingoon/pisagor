@@ -1,6 +1,6 @@
 import { Input } from "@pisagor/react";
-import * as Examples from "#/react/examples/input";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/input";
 
 const meta = preview.meta({
   component: Input,

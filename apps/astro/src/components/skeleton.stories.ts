@@ -1,6 +1,6 @@
 import { Skeleton } from "@pisagor/astro";
-import * as Examples from "#/astro/examples/skeleton";
 import preview from "#/storybook/preview";
+import * as Examples from "#/astro/examples/skeleton";
 
 const meta = preview.meta({
   component: Skeleton,

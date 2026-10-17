@@ -1,6 +1,6 @@
 import { Highlight } from "@pisagor/astro";
-import * as Examples from "#/astro/examples/highlight";
 import preview from "#/storybook/preview";
+import * as Examples from "#/astro/examples/highlight";
 
 const meta = preview.meta({
   component: Highlight,

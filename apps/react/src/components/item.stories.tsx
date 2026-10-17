@@ -1,6 +1,6 @@
 import { Item } from "@pisagor/react";
-import * as Examples from "#/react/examples/item";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/item";
 
 const meta = preview.meta({
   component: Item,

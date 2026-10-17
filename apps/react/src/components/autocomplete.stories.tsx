@@ -1,6 +1,6 @@
 import { Autocomplete } from "@pisagor/react";
-import * as Examples from "#/react/examples/autocomplete";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/autocomplete";
 
 const meta = preview.meta({
   component: Autocomplete,

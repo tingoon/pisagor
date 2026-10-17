@@ -1,6 +1,6 @@
 import { SignaturePad } from "@pisagor/react";
-import * as Examples from "#/react/examples/signature-pad";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/signature-pad";
 
 const meta = preview.meta({
   component: SignaturePad,

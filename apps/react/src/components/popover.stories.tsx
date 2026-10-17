@@ -1,6 +1,6 @@
 import { Popover } from "@pisagor/react";
-import * as Examples from "#/react/examples/popover";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/popover";
 
 const meta = preview.meta({
   component: Popover,

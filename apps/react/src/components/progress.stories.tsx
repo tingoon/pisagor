@@ -1,6 +1,6 @@
 import { Progress } from "@pisagor/react";
-import * as Examples from "#/react/examples/progress";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/progress";
 
 const meta = preview.meta({
   component: Progress,

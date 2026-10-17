@@ -1,6 +1,6 @@
 import { Format } from "@pisagor/react";
-import * as Examples from "#/react/examples/format";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/format";
 
 const meta = preview.meta({
   component: Format.Number,

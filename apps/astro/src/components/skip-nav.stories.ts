@@ -1,7 +1,7 @@
 import { SkipNavContent, SkipNavLink } from "@pisagor/astro";
-import * as Examples from "#/astro/examples/skip-nav";
 import preview from "#/storybook/preview";
 import StoryFrame from "../../.storybook/story-frame.astro";
+import * as Examples from "#/astro/examples/skip-nav";
 
 const meta = preview.meta({
   component: SkipNavContent,

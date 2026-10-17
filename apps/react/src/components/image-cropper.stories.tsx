@@ -1,6 +1,6 @@
 import { ImageCropper } from "@pisagor/react";
-import * as Examples from "#/react/examples/image-cropper";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/image-cropper";
 
 const meta = preview.meta({
   component: ImageCropper,

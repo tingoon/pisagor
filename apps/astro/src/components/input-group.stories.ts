@@ -1,6 +1,6 @@
 import { InputGroup } from "@pisagor/astro";
-import * as Examples from "#/astro/examples/input-group";
 import preview from "#/storybook/preview";
+import * as Examples from "#/astro/examples/input-group";
 
 const meta = preview.meta({
   component: InputGroup,

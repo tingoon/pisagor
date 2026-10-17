@@ -1,6 +1,6 @@
 import { Button, Toolbar } from "@pisagor/react";
-import * as Examples from "#/react/examples/toolbar";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/toolbar";
 
 const meta = preview.meta({
   component: Toolbar,

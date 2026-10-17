@@ -1,6 +1,6 @@
 import { FileUpload } from "@pisagor/react";
-import * as Examples from "#/react/examples/file-upload";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/file-upload";
 
 const meta = preview.meta({
   component: FileUpload,

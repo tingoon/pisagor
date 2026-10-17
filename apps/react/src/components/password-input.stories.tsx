@@ -1,6 +1,6 @@
 import { PasswordInput } from "@pisagor/react";
-import * as Examples from "#/react/examples/password-input";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/password-input";
 
 const meta = preview.meta({
   component: PasswordInput,

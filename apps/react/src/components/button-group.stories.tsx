@@ -1,6 +1,6 @@
 import { ButtonGroup } from "@pisagor/react";
-import * as Examples from "#/react/examples/button-group";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/button-group";
 
 const meta = preview.meta({
   component: ButtonGroup,

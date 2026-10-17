@@ -1,6 +1,6 @@
 import { Calendar } from "@pisagor/react";
-import * as Examples from "#/react/examples/calendar";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/calendar";
 
 const meta = preview.meta({
   component: Calendar,

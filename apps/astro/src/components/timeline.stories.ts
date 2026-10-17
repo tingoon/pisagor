@@ -1,6 +1,6 @@
 import { Timeline } from "@pisagor/astro";
-import * as Examples from "#/astro/examples/timeline";
 import preview from "#/storybook/preview";
+import * as Examples from "#/astro/examples/timeline";
 
 const meta = preview.meta({
   component: Timeline,

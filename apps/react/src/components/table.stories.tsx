@@ -1,6 +1,6 @@
 import { Table } from "@pisagor/react";
-import * as Examples from "#/react/examples/table";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/table";
 
 const meta = preview.meta({
   component: Table,

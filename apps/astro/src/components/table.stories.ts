@@ -1,6 +1,6 @@
 import { Table } from "@pisagor/astro";
-import * as Examples from "#/astro/examples/table";
 import preview from "#/storybook/preview";
+import * as Examples from "#/astro/examples/table";
 
 const meta = preview.meta({
   component: Table,

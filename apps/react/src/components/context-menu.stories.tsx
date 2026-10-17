@@ -1,6 +1,6 @@
 import { ContextMenu } from "@pisagor/react";
-import * as Examples from "#/react/examples/context-menu";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/context-menu";
 
 const meta = preview.meta({
   component: ContextMenu,

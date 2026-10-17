@@ -1,6 +1,6 @@
 import { Sidebar } from "@pisagor/react";
-import * as Examples from "#/react/examples/sidebar";
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/sidebar";
 
 const meta = preview.meta({
   component: Sidebar,

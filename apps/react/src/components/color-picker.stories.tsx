@@ -1,7 +1,6 @@
 import { ColorPicker } from "@pisagor/react";
-import * as Examples from "#/react/examples/color-picker";
-
 import preview from "#/storybook/preview";
+import * as Examples from "#/react/examples/color-picker";
 
 const meta = preview.meta({
   component: ColorPicker,
