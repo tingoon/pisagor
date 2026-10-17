@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./menu-dialog.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhGear, PhInfo, PhUser } from "@phosphor-icons/vue";
 import { Button, Dialog, DropdownMenu } from "@pisagor/vue";

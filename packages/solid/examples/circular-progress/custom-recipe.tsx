@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { circularProgressRecipe } from "@pisagor/recipes";
 import { CircularProgress } from "@pisagor/solid";
 import { createSignal, onCleanup, onMount } from "solid-js";
@@ -22,5 +21,3 @@ export function CustomRecipe() {
     <CircularProgress recipe={brandCircularProgressRecipe} value={progress()} />
   );
 }
-
-export { source as CustomRecipeSource };

@@ -1,4 +1,3 @@
-import source from "./min-max.tsx?raw";
 import { Resizable } from "@pisagor/solid";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
@@ -44,5 +43,3 @@ export function MinMax() {
     </ResizableFrame>
   );
 }
-
-export { source as MinMaxSource };

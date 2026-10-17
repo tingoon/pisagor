@@ -1,4 +1,3 @@
-import source from "./orientation-vertical.tsx?raw";
 import { Field, Input } from "@pisagor/solid";
 export function OrientationVertical() {
   return (
@@ -11,5 +10,3 @@ export function OrientationVertical() {
     </Field>
   );
 }
-
-export { source as OrientationVerticalSource };

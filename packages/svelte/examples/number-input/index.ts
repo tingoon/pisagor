@@ -9,6 +9,5 @@ export { default as MouseWheel } from "./mouse-wheel.svelte";
 export { default as Range } from "./range.svelte";
 export { default as Scrub } from "./scrub.svelte";
 export { default as Sizes } from "./sizes.svelte";
-export { imports, sources } from "./sources";
 export { default as Step } from "./step.svelte";
 export { default as Variants } from "./variants.svelte";

@@ -1,4 +1,3 @@
-import source from "./swatch-picker-custom-indicator.tsx?raw";
 import { SparkleIcon } from "@phosphor-icons/react";
 import { ColorPicker } from "@pisagor/react";
 
@@ -20,5 +19,3 @@ export function SwatchPickerCustomIndicator() {
     </ColorPicker>
   );
 }
-
-export { source as SwatchPickerCustomIndicatorSource };

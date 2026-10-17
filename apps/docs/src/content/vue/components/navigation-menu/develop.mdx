@@ -1,8 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/navigation-menu/default.ts?raw";
-import WrappingSource from "#examples/vue/navigation-menu/wrapping.ts?raw";
-import SubmenuSource from "#examples/vue/navigation-menu/submenu.vue?raw";
-import CustomRecipeSource from "#examples/vue/navigation-menu/custom-recipe.vue?raw";
 
 ## Import
 
@@ -28,25 +24,13 @@ import { NavigationMenu } from "@pisagor/vue";
 
 Horizontal navigation across top-level sections.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="navigation-menu"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Wrapping
 
 Allow items to wrap when the viewport is too narrow for a single row.
 
-<Example
-  name="Wrapping"
-  code={WrappingSource}
-  exampleId="navigation-menu"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Wrapping" />
 
 ## Customization
 
@@ -54,22 +38,10 @@ Allow items to wrap when the viewport is too narrow for a single row.
 
 Group links under a `NavigationMenu.Trigger` (disclosure button) and `NavigationMenu.Content`. Only one submenu is open at a time.
 
-<Example
-  name="Submenu"
-  code={SubmenuSource}
-  exampleId="navigation-menu"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Submenu" />
 
 ### Custom recipe
 
 Extend `navigationMenuRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="navigation-menu"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

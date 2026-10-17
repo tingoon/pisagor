@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { TextField } from "@pisagor/solid-form";
 
 export function Default() {
@@ -12,5 +11,3 @@ export function Default() {
     />
   );
 }
-
-export { source as DefaultSource };

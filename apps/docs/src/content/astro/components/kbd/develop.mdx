@@ -4,11 +4,6 @@ import Sizes from "#examples/astro/kbd/sizes.astro";
 import KbdGroup from "#examples/astro/kbd/kbd-group.astro";
 import WithButton from "#examples/astro/kbd/with-button.astro";
 import CustomRecipe from "#examples/astro/kbd/custom-recipe.astro";
-import VariantsSource from "#examples/astro/kbd/variants.astro?raw";
-import SizesSource from "#examples/astro/kbd/sizes.astro?raw";
-import KbdGroupSource from "#examples/astro/kbd/kbd-group.astro?raw";
-import WithButtonSource from "#examples/astro/kbd/with-button.astro?raw";
-import CustomRecipeSource from "#examples/astro/kbd/custom-recipe.astro?raw";
 
 ## Import
 
@@ -22,13 +17,7 @@ import { Kbd } from "@pisagor/astro";
 
 Choose visual weight or emphasis so the keyboard badge matches importance in the surrounding layout.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="kbd"
-  framework="astro"
-  kind="component"
->
+<Example name="Variants">
   <Variants />
 </Example>
 
@@ -36,13 +25,7 @@ Choose visual weight or emphasis so the keyboard badge matches importance in the
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="kbd"
-  framework="astro"
-  kind="component"
->
+<Example name="Sizes">
   <Sizes />
 </Example>
 
@@ -50,13 +33,7 @@ Use `size` to pick the sm, md or lg scale. `md` is the default.
 
 Group several keys when the shortcut is a chord.
 
-<Example
-  name="KbdGroup"
-  code={KbdGroupSource}
-  exampleId="kbd"
-  framework="astro"
-  kind="component"
->
+<Example name="KbdGroup">
   <KbdGroup />
 </Example>
 
@@ -64,13 +41,7 @@ Group several keys when the shortcut is a chord.
 
 Place the badge next to a button that performs the same action.
 
-<Example
-  name="WithButton"
-  code={WithButtonSource}
-  exampleId="kbd"
-  framework="astro"
-  kind="component"
->
+<Example name="WithButton">
   <WithButton />
 </Example>
 
@@ -80,12 +51,6 @@ Place the badge next to a button that performs the same action.
 
 Extend `kbdRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="kbd"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomRecipe">
   <CustomRecipe />
 </Example>

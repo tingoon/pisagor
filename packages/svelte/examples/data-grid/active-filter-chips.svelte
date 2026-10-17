@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./active-filter-chips.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, Table } from "@pisagor/svelte";
   import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";

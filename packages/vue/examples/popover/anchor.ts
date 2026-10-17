@@ -1,4 +1,3 @@
-import source from "./anchor.ts?raw";
 import { Button, Input, Popover } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
@@ -31,5 +30,3 @@ export default defineComponent({
       ]);
   },
 });
-
-export { source };

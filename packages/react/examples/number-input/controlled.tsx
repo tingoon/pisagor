@@ -1,4 +1,3 @@
-import source from "./controlled.tsx?raw";
 import { NumberInput } from "@pisagor/react";
 import { useState } from "react";
 
@@ -18,5 +17,3 @@ export function Controlled() {
     </div>
   );
 }
-
-export { source as ControlledSource };

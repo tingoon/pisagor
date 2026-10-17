@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { NumberInput } from "@pisagor/react";
 import { numberInputRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -17,5 +16,3 @@ const brandNumberInputRecipe = tv({
 export function CustomRecipe() {
   return <NumberInput defaultValue="1" recipe={brandNumberInputRecipe} />;
 }
-
-export { source as CustomRecipeSource };

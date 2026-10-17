@@ -1,16 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/react/autocomplete/default.tsx";
-import { VariantsSource } from "#examples/react/autocomplete/variants.tsx";
-import { SizesSource } from "#examples/react/autocomplete/sizes.tsx";
-import { WithStartIconSource } from "#examples/react/autocomplete/with-start-icon.tsx";
-import { WithClearButtonSource } from "#examples/react/autocomplete/with-clear-button.tsx";
-import { WithTriggerSource } from "#examples/react/autocomplete/with-trigger.tsx";
-import { GroupSource } from "#examples/react/autocomplete/group.tsx";
-import { CompoundSource } from "#examples/react/autocomplete/compound.tsx";
-import { ControlledSource } from "#examples/react/autocomplete/controlled.tsx";
-import { DisabledSource } from "#examples/react/autocomplete/disabled.tsx";
-import { InvalidSource } from "#examples/react/autocomplete/invalid.tsx";
-import { CustomRecipeSource } from "#examples/react/autocomplete/custom-recipe.tsx";
 
 ## Import
 
@@ -24,133 +12,67 @@ import { Autocomplete } from "@pisagor/react";
 
 Type to filter and pick one suggestion from a long list.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="autocomplete"
-  framework="react"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Variants
 
 Choose field emphasis to match other inputs in the form.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="autocomplete"
-  framework="react"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Match field size to surrounding form density.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="autocomplete"
-  framework="react"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### With Start Icon
 
 Add a leading icon to signal search or category.
 
-<Example
-  name="WithStartIcon"
-  code={WithStartIconSource}
-  exampleId="autocomplete"
-  framework="react"
-  kind="component"
-/>
+<Example name="WithStartIcon" />
 
 ### With Clear Button
 
 Let users clear the query and selection in one press.
 
-<Example
-  name="WithClearButton"
-  code={WithClearButtonSource}
-  exampleId="autocomplete"
-  framework="react"
-  kind="component"
-/>
+<Example name="WithClearButton" />
 
 ### With Trigger
 
 Open the list from an explicit trigger when typing alone is not the only entry point.
 
-<Example
-  name="WithTrigger"
-  code={WithTriggerSource}
-  exampleId="autocomplete"
-  framework="react"
-  kind="component"
-/>
+<Example name="WithTrigger" />
 
 ### Grouped
 
 Group suggestions so related options are easier to scan.
 
-<Example
-  name="Group"
-  code={GroupSource}
-  exampleId="autocomplete"
-  framework="react"
-  kind="component"
-/>
+<Example name="Group" />
 
 ### Compound
 
 Assemble from parts when you need a custom layout beyond the shorthand API.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="autocomplete"
-  framework="react"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Controlled
 
 Drive value and open state from the parent when other UI depends on the selection.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="autocomplete"
-  framework="react"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that suggestions cannot be opened.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="autocomplete"
-  framework="react"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation error when the value is missing or not allowed.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="autocomplete"
-  framework="react"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ## Customization
 
@@ -158,10 +80,4 @@ Surface a validation error when the value is missing or not allowed.
 
 Extend `comboboxRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="autocomplete"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

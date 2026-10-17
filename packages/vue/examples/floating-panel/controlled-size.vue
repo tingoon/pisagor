@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./controlled-size.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhGearSix, PhX } from "@phosphor-icons/vue";
 import { Button, FloatingPanel } from "@pisagor/vue";

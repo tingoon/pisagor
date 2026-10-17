@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { Separator } from "@pisagor/react";
 import { separatorRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -24,5 +23,3 @@ export function CustomRecipe() {
     </div>
   );
 }
-
-export { source as CustomRecipeSource };

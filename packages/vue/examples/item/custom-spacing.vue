@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./custom-spacing.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhUser } from "@phosphor-icons/vue";
 import { Item } from "@pisagor/vue";

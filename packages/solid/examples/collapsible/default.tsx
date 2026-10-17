@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Badge, Button, Card, Collapsible } from "@pisagor/solid";
 
 export function Default() {
@@ -37,5 +36,3 @@ export function Default() {
     </Card>
   );
 }
-
-export { source as DefaultSource };

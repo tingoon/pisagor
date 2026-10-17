@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./fallbacks.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhUser } from "@phosphor-icons/vue";
 import { Avatar } from "@pisagor/vue";

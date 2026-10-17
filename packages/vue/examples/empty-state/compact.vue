@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./compact.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { EmptyState } from "@pisagor/vue";
 </script>

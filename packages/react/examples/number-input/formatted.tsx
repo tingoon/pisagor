@@ -1,4 +1,3 @@
-import source from "./formatted.tsx?raw";
 import { NumberInput } from "@pisagor/react";
 
 export function Formatted() {
@@ -9,5 +8,3 @@ export function Formatted() {
     />
   );
 }
-
-export { source as FormattedSource };

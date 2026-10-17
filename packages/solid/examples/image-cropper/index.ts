@@ -6,5 +6,4 @@ export * from "./default";
 export * from "./fixed-crop-area";
 export * from "./initial-crop";
 export * from "./min-max-size";
-export { imports, sources } from "./sources";
 export * from "./zoom-limits";

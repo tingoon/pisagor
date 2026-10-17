@@ -1,4 +1,3 @@
-import source from "./controlled.tsx?raw";
 import { Field } from "@pisagor/react";
 import { PhoneInput } from "@pisagor/react/phone-input";
 import { useState } from "react";
@@ -21,5 +20,3 @@ export function Controlled() {
     </Field>
   );
 }
-
-export { source as ControlledSource };

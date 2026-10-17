@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { Button, Tooltip } from "@pisagor/solid";
 import { Portal } from "solid-js/web";
 
@@ -25,5 +24,3 @@ export function Compound() {
     </Tooltip.Root>
   );
 }
-
-export { source as CompoundSource };

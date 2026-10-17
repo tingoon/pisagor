@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./wait-for-element.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { waitForElement, waitForEvent } from "@ark-ui/vue/tour";
 import { PhPlus } from "@phosphor-icons/vue";

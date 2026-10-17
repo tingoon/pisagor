@@ -1,4 +1,3 @@
-import source from "./checkbox-field.tsx?raw";
 import { Checkbox, Field } from "@pisagor/react";
 export function CheckboxField() {
   return (
@@ -13,5 +12,3 @@ export function CheckboxField() {
     </Field>
   );
 }
-
-export { source as CheckboxFieldSource };

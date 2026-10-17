@@ -1,4 +1,3 @@
-import source from "./with-footer.ts?raw";
 import { useListCollection } from "@ark-ui/vue/collection";
 import { useFilter } from "@ark-ui/vue/locale";
 import {
@@ -83,5 +82,3 @@ export default defineComponent({
       );
   },
 });
-
-export { source };

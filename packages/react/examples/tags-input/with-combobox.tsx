@@ -1,4 +1,3 @@
-import source from "./with-combobox.tsx?raw";
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { useTagsInput } from "@ark-ui/react/tags-input";
 import { Combobox, Field, TagsInput } from "@pisagor/react";
@@ -79,5 +78,3 @@ export function WithCombobox() {
     </Field>
   );
 }
-
-export { source as WithComboboxSource };

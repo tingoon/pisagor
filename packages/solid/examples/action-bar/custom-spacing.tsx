@@ -1,4 +1,3 @@
-import source from "./custom-spacing.tsx?raw";
 import { ActionBar, Button } from "@pisagor/solid";
 import { PencilSimpleIcon, TrashIcon, XIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";
@@ -48,5 +47,3 @@ export function CustomSpacing() {
     </ActionBar>
   );
 }
-
-export { source as CustomSpacingSource };

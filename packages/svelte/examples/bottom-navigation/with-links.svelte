@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./with-links.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { BottomNavigation, ScrollArea } from "@pisagor/svelte";
   import BellIcon from "phosphor-svelte/lib/BellIcon";

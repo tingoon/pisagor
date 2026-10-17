@@ -1,4 +1,3 @@
-import source from "./orientation-vertical.tsx?raw";
 import { Resizable } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
@@ -47,5 +46,3 @@ export function OrientationVertical() {
     </ResizableFrame>
   );
 }
-
-export { source as OrientationVerticalSource };

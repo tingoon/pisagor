@@ -1,4 +1,3 @@
-import source from "./action.tsx?raw";
 import { Button, toast } from "@pisagor/solid";
 export function Action() {
   const handleAction = () => {
@@ -27,5 +26,3 @@ export function Action() {
     </Button>
   );
 }
-
-export { source as ActionSource };

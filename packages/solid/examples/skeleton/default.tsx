@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Skeleton } from "@pisagor/solid";
 
 export function Default() {
@@ -9,5 +8,3 @@ export function Default() {
     </div>
   );
 }
-
-export { source as DefaultSource };

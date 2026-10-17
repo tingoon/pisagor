@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { floatingPanelRecipe } from "@pisagor/recipes";
 import { Button, FloatingPanel } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -47,5 +46,3 @@ export function CustomRecipe() {
     </FloatingPanel>
   );
 }
-
-export { source as CustomRecipeSource };

@@ -9,7 +9,6 @@ export { default as MouseDrag } from "./mouse-drag.svelte";
 export { default as OrientationHorizontal } from "./orientation-horizontal.svelte";
 export { default as OrientationVertical } from "./orientation-vertical.svelte";
 export { default as SlidesPerPage } from "./slides-per-page.svelte";
-export { imports, sources } from "./sources";
 export { default as Spacing } from "./spacing.svelte";
 export { default as ThumbnailIndicator } from "./thumbnail-indicator.svelte";
 export { default as ThumbnailIndicatorVertical } from "./thumbnail-indicator-vertical.svelte";

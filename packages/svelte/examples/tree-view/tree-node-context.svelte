@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./tree-node-context.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { ContextMenu, type TreeNodeType, TreeView } from "@pisagor/svelte";
   import FilePlusIcon from "phosphor-svelte/lib/FilePlusIcon";

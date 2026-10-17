@@ -1,4 +1,3 @@
-import source from "./field-group.tsx?raw";
 import { Checkbox, Field } from "@pisagor/react";
 export function FieldGroup() {
   return (
@@ -35,5 +34,3 @@ export function FieldGroup() {
     </Field.Group>
   );
 }
-
-export { source as FieldGroupSource };

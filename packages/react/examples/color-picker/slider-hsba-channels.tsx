@@ -1,4 +1,3 @@
-import source from "./slider-hsba-channels.tsx?raw";
 import { ColorPicker } from "@pisagor/react";
 
 export function SliderHsbaChannels() {
@@ -14,5 +13,3 @@ export function SliderHsbaChannels() {
     </ColorPicker>
   );
 }
-
-export { source as SliderHsbaChannelsSource };

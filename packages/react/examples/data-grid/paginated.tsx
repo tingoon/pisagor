@@ -1,4 +1,3 @@
-import source from "./paginated.tsx?raw";
 import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
 import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Checkbox, Pagination, Table } from "@pisagor/react";
@@ -317,5 +316,3 @@ export function Paginated() {
     </DataGridShell>
   );
 }
-
-export { source as PaginatedSource };

@@ -1,4 +1,3 @@
-import source from "./item-picker.tsx?raw";
 /** @jsxImportSource solid-js */
 
 import { Avatar, Button, DropdownMenu, Item } from "@pisagor/solid";
@@ -48,5 +47,3 @@ const people = [
   { email: "john.doe@example.com", id: "john", username: "john.doe" },
   { email: "alex.morgan@example.com", id: "alex", username: "alex.morgan" },
 ];
-
-export { source as ItemPickerSource };

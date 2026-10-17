@@ -1,4 +1,3 @@
-import source from "./dblclick.tsx?raw";
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Button, Card, Editable, Field, Input } from "@pisagor/react";
 export function Dblclick() {
@@ -61,5 +60,3 @@ export function Dblclick() {
     </Card>
   );
 }
-
-export { source as DblclickSource };

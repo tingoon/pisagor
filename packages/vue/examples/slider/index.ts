@@ -6,7 +6,6 @@ export { default as Invalid } from "./invalid.vue";
 export { default as Marks } from "./marks.vue";
 export { default as MinMax } from "./min-max.vue";
 export { default as Range } from "./range.vue";
-export { imports, sources } from "./sources";
 export { default as Step } from "./step.vue";
 export { default as Variants } from "./variants.vue";
 export { default as Vertical } from "./vertical.vue";

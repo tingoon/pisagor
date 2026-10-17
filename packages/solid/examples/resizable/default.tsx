@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Resizable } from "@pisagor/solid";
 import { cn } from "@pisagor/utils";
 
@@ -33,5 +32,3 @@ export function Default() {
     </div>
   );
 }
-
-export { source as DefaultSource };

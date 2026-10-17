@@ -4,4 +4,3 @@ export * from "./input-group-with-inner-label";
 export * from "./input-group-with-menu";
 export * from "./input-group-with-number-input";
 export * from "./input-group-with-tooltip";
-export { sources } from "./sources";

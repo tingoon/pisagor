@@ -10,7 +10,6 @@ export { default as Invalid } from "./invalid.vue";
 export { default as OrientationHorizontal } from "./orientation-horizontal.vue";
 export { default as OrientationVertical } from "./orientation-vertical.vue";
 export { default as Sizes } from "./sizes.vue";
-export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.vue";
 export { default as WithTextarea } from "./with-textarea.vue";
 export { default as WithoutControls } from "./without-controls.vue";

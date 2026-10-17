@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./count.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Avatar, AvatarGroup } from "@pisagor/vue";
 

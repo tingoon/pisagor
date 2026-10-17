@@ -1,4 +1,3 @@
-import source from "./expanding-rows.tsx?raw";
 import { Table } from "@pisagor/solid";
 import type { ColumnDef } from "@pisagor/solid/data-grid";
 import { DataGrid } from "@pisagor/solid/data-grid";
@@ -184,5 +183,3 @@ export function ExpandingRows() {
     </DataGridShell>
   );
 }
-
-export { source as ExpandingRowsSource };

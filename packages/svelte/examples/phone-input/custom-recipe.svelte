@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./custom-recipe.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { phoneInputRecipe } from "@pisagor/recipes";
   import { PhoneInput } from "@pisagor/svelte/phone-input";

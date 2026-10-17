@@ -1,4 +1,3 @@
-import source from "./auto-hide.tsx?raw";
 import { PasswordInput } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function AutoHide() {
@@ -23,5 +22,3 @@ export function AutoHide() {
     />
   );
 }
-
-export { source as AutoHideSource };

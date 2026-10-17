@@ -1,4 +1,3 @@
-import source from "./area-channels.tsx?raw";
 import { ColorPicker } from "@pisagor/solid";
 
 export function AreaChannels() {
@@ -10,5 +9,3 @@ export function AreaChannels() {
     </ColorPicker>
   );
 }
-
-export { source as AreaChannelsSource };

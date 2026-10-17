@@ -1,4 +1,3 @@
-import source from "./custom-color.tsx?raw";
 import { Status } from "@pisagor/solid";
 
 export function CustomColor() {
@@ -10,5 +9,3 @@ export function CustomColor() {
     </div>
   );
 }
-
-export { source as CustomColorSource };

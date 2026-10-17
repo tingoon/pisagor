@@ -1,4 +1,3 @@
-import source from "./indeterminate.tsx?raw";
 import { Field, Progress } from "@pisagor/solid";
 export function Indeterminate() {
   return (
@@ -8,5 +7,3 @@ export function Indeterminate() {
     </Field>
   );
 }
-
-export { source as IndeterminateSource };

@@ -1,4 +1,3 @@
-import source from "./closable.tsx?raw";
 import { Button, toast } from "@pisagor/react";
 export function Closable() {
   return (
@@ -18,5 +17,3 @@ export function Closable() {
     </div>
   );
 }
-
-export { source as ClosableSource };

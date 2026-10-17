@@ -1,10 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import VariantsSource from "#examples/vue/status/variants.vue?raw";
-import SizesSource from "#examples/vue/status/sizes.vue?raw";
-import WithIconSource from "#examples/vue/status/with-icon.vue?raw";
-import CustomColorSource from "#examples/vue/status/custom-color.vue?raw";
-import CustomSizeSource from "#examples/vue/status/custom-size.vue?raw";
-import CustomRecipeSource from "#examples/vue/status/custom-recipe.vue?raw";
 
 ## Import
 
@@ -18,37 +12,19 @@ import { Status } from "@pisagor/vue";
 
 Choose color tone for availability or severity. Pair with text for accessibility.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="status"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Match size to the surrounding chrome.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="status"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### With Icon
 
 Pair an icon with the label to reinforce meaning.
 
-<Example
-  name="WithIcon"
-  code={WithIconSource}
-  exampleId="status"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithIcon" />
 
 ## Customization
 
@@ -58,32 +34,14 @@ Pass `class` for a one-off change to a single element.
 
 Override the fill or accent when a brand or contextual color matters more than the theme default.
 
-<Example
-  name="CustomColor"
-  code={CustomColorSource}
-  exampleId="status"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomColor" />
 
 Resize the indicator to match nearby text and density.
 
-<Example
-  name="CustomSize"
-  code={CustomSizeSource}
-  exampleId="status"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomSize" />
 
 ### Custom recipe
 
 Extend `statusRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="status"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

@@ -1,4 +1,3 @@
-import source from "./with-input-group.tsx?raw";
 import { ArrowRightIcon } from "@phosphor-icons/react";
 import { Field, InputGroup } from "@pisagor/react";
 export function WithInputGroup() {
@@ -21,5 +20,3 @@ export function WithInputGroup() {
     </Field>
   );
 }
-
-export { source as WithInputGroupSource };

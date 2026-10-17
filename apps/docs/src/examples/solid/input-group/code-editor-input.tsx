@@ -1,4 +1,3 @@
-import source from "./code-editor-input.tsx?raw";
 /** @jsxImportSource solid-js */
 
 import { InputGroup } from "@pisagor/solid";
@@ -28,5 +27,3 @@ export function CodeEditorInput() {
     </InputGroup>
   );
 }
-
-export { source as CodeEditorInputSource };

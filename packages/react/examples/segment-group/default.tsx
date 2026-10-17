@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { SegmentGroup } from "@pisagor/react";
 
 export function Default() {
@@ -15,5 +14,3 @@ export function Default() {
     />
   );
 }
-
-export { source as DefaultSource };

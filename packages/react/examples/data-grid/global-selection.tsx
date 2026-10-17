@@ -1,4 +1,3 @@
-import source from "./global-selection.tsx?raw";
 import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
 import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Button, Checkbox, Pagination, Table } from "@pisagor/react";
@@ -321,5 +320,3 @@ export function GlobalSelection() {
     </DataGridShell>
   );
 }
-
-export { source as GlobalSelectionSource };

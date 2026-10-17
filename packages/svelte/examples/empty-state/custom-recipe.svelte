@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./custom-recipe.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { emptyStateRecipe } from "@pisagor/recipes";
   import { Button, EmptyState } from "@pisagor/svelte";

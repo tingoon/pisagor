@@ -1,4 +1,3 @@
-import source from "./gutter.tsx?raw";
 import {
   ArchiveIcon,
   DownloadIcon,
@@ -67,5 +66,3 @@ export function Gutter() {
     </>
   );
 }
-
-export { source as GutterSource };

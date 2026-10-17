@@ -11,18 +11,6 @@ import WithAvatar from "#examples/astro/item/with-avatar.astro";
 import Link from "#examples/astro/item/link.astro";
 import CustomSpacing from "#examples/astro/item/custom-spacing.astro";
 import CustomRecipe from "#examples/astro/item/custom-recipe.astro";
-import DefaultSource from "#examples/astro/item/default.astro?raw";
-import VariantsSource from "#examples/astro/item/variants.astro?raw";
-import SizesSource from "#examples/astro/item/sizes.astro?raw";
-import IconSource from "#examples/astro/item/icon.astro?raw";
-import ImageSource from "#examples/astro/item/image.astro?raw";
-import WithMediaSource from "#examples/astro/item/with-media.astro?raw";
-import HeaderSource from "#examples/astro/item/header.astro?raw";
-import GroupSource from "#examples/astro/item/group.astro?raw";
-import WithAvatarSource from "#examples/astro/item/with-avatar.astro?raw";
-import LinkSource from "#examples/astro/item/link.astro?raw";
-import CustomSpacingSource from "#examples/astro/item/custom-spacing.astro?raw";
-import CustomRecipeSource from "#examples/astro/item/custom-recipe.astro?raw";
 
 ## Import
 
@@ -48,13 +36,7 @@ import { Item } from "@pisagor/astro";
 
 Lay out media, title, description, and actions as one row.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="item"
-  framework="astro"
-  kind="component"
->
+<Example name="Default">
   <Default />
 </Example>
 
@@ -62,13 +44,7 @@ Lay out media, title, description, and actions as one row.
 
 Choose emphasis to match list density.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="item"
-  framework="astro"
-  kind="component"
->
+<Example name="Variants">
   <Variants />
 </Example>
 
@@ -76,13 +52,7 @@ Choose emphasis to match list density.
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="item"
-  framework="astro"
-  kind="component"
->
+<Example name="Sizes">
   <Sizes />
 </Example>
 
@@ -90,13 +60,7 @@ Use `size` to pick the sm, md or lg scale. `md` is the default.
 
 Lead with an icon when a symbol is enough.
 
-<Example
-  name="Icon"
-  code={IconSource}
-  exampleId="item"
-  framework="astro"
-  kind="component"
->
+<Example name="Icon">
   <Icon />
 </Example>
 
@@ -104,13 +68,7 @@ Lead with an icon when a symbol is enough.
 
 Use a larger image treatment for media-forward rows.
 
-<Example
-  name="Image"
-  code={ImageSource}
-  exampleId="item"
-  framework="astro"
-  kind="component"
->
+<Example name="Image">
   <Image />
 </Example>
 
@@ -118,13 +76,7 @@ Use a larger image treatment for media-forward rows.
 
 Lead with media when imagery helps recognition.
 
-<Example
-  name="WithMedia"
-  code={WithMediaSource}
-  exampleId="item"
-  framework="astro"
-  kind="component"
->
+<Example name="WithMedia">
   <WithMedia />
 </Example>
 
@@ -132,13 +84,7 @@ Lead with media when imagery helps recognition.
 
 Use item header layout for section introductions in a list.
 
-<Example
-  name="Header"
-  code={HeaderSource}
-  exampleId="item"
-  framework="astro"
-  kind="component"
->
+<Example name="Header">
   <Header />
 </Example>
 
@@ -146,13 +92,7 @@ Use item header layout for section introductions in a list.
 
 Group related items so related choices stay visually and semantically together.
 
-<Example
-  name="Group"
-  code={GroupSource}
-  exampleId="item"
-  framework="astro"
-  kind="component"
->
+<Example name="Group">
   <Group />
 </Example>
 
@@ -160,13 +100,7 @@ Group related items so related choices stay visually and semantically together.
 
 Lead with an avatar when the row represents a person.
 
-<Example
-  name="WithAvatar"
-  code={WithAvatarSource}
-  exampleId="item"
-  framework="astro"
-  kind="component"
->
+<Example name="WithAvatar">
   <WithAvatar />
 </Example>
 
@@ -174,13 +108,7 @@ Lead with an avatar when the row represents a person.
 
 Navigate when the whole row is a destination.
 
-<Example
-  name="Link"
-  code={LinkSource}
-  exampleId="item"
-  framework="astro"
-  kind="component"
->
+<Example name="Link">
   <Link />
 </Example>
 
@@ -192,13 +120,7 @@ Pass `class` for a one-off change to a single element.
 
 Override spacing when the default density does not match the surrounding layout.
 
-<Example
-  name="CustomSpacing"
-  code={CustomSpacingSource}
-  exampleId="item"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomSpacing">
   <CustomSpacing />
 </Example>
 
@@ -206,12 +128,6 @@ Override spacing when the default density does not match the surrounding layout.
 
 Extend `itemRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="item"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomRecipe">
   <CustomRecipe />
 </Example>

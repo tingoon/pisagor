@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./group.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Avatar, Button, Item } from "@pisagor/svelte";
   import PlusIcon from "phosphor-svelte/lib/PlusIcon";

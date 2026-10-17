@@ -1,12 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { VariantsSource } from "#examples/solid/input/variants.tsx";
-import { SizesSource } from "#examples/solid/input/sizes.tsx";
-import { ClearableSource } from "#examples/solid/input/clearable.tsx";
-import { FileSource } from "#examples/solid/input/file.tsx";
-import { ControlledSource } from "#examples/solid/input/controlled.tsx";
-import { DisabledSource } from "#examples/solid/input/disabled.tsx";
-import { InvalidSource } from "#examples/solid/input/invalid.tsx";
-import { CustomRecipeSource } from "#examples/solid/input/custom-recipe.tsx";
 
 ## Import
 
@@ -20,85 +12,43 @@ import { Input } from "@pisagor/solid";
 
 Choose visual weight or emphasis so the input matches importance in the surrounding layout.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="input"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Match size to the surrounding layout — smaller in compact chrome, larger where the input needs emphasis.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="input"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Clearable
 
 Offer a clear control for search-like fields where resetting quickly matters.
 
-<Example
-  name="Clearable"
-  code={ClearableSource}
-  exampleId="input"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Clearable" />
 
 ### File
 
 Use a file-styled input when the control picks a file path or upload target.
 
-<Example
-  name="File"
-  code={FileSource}
-  exampleId="input"
-  framework="solid"
-  kind="component"
-/>
+<Example name="File" />
 
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this input.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="input"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the input is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="input"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation or error state so users know the input needs attention before continuing.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="input"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ## Customization
 
@@ -106,10 +56,4 @@ Surface a validation or error state so users know the input needs attention befo
 
 Extend `inputRecipe` with `tv({ extend })` and pass it to `recipe` to restyle the clearable input's inner control across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="input"
-  framework="solid"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

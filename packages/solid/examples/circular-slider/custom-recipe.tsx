@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { circularSliderRecipe } from "@pisagor/recipes";
 import { CircularSlider } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -20,5 +19,3 @@ export function CustomRecipe() {
     </CircularSlider>
   );
 }
-
-export { source as CustomRecipeSource };

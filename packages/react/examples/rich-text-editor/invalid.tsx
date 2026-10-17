@@ -1,4 +1,3 @@
-import source from "./invalid.tsx?raw";
 import { RichTextEditor } from "@pisagor/react/rich-text-editor";
 
 export function Invalid() {
@@ -6,5 +5,3 @@ export function Invalid() {
     <RichTextEditor defaultValue="<p>Add at least 20 characters.</p>" invalid />
   );
 }
-
-export { source as InvalidSource };

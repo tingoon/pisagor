@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./custom-separator.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Card, Timer } from "@pisagor/vue";
 </script>

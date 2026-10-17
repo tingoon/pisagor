@@ -1,4 +1,3 @@
-import source from "./on-files-change.tsx?raw";
 import { FileInput } from "@pisagor/react";
 
 export function OnFilesChange() {
@@ -6,5 +5,3 @@ export function OnFilesChange() {
     <FileInput accept="image/*" multiple onFilesChange={() => undefined} />
   );
 }
-
-export { source as OnFilesChangeSource };

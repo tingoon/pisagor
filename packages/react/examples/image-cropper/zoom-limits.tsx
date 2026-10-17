@@ -1,4 +1,3 @@
-import source from "./zoom-limits.tsx?raw";
 import { ImageCropper } from "@pisagor/react";
 
 export function ZoomLimits() {
@@ -12,5 +11,3 @@ export function ZoomLimits() {
     </ImageCropper>
   );
 }
-
-export { source as ZoomLimitsSource };

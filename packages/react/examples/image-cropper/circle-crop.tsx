@@ -1,4 +1,3 @@
-import source from "./circle-crop.tsx?raw";
 import { ImageCropper } from "@pisagor/react";
 
 export function CircleCrop() {
@@ -12,5 +11,3 @@ export function CircleCrop() {
     </ImageCropper>
   );
 }
-
-export { source as CircleCropSource };

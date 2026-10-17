@@ -1,4 +1,3 @@
-import source from "./placements.tsx?raw";
 import { ActionBar, Button } from "@pisagor/solid";
 import {
   ArchiveIcon,
@@ -82,5 +81,3 @@ export function Placements() {
     </>
   );
 }
-
-export { source as PlacementsSource };

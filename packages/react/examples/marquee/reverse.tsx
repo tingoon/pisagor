@@ -1,4 +1,3 @@
-import source from "./reverse.tsx?raw";
 import {
   ArrowRightIcon,
   AtomIcon,
@@ -37,5 +36,3 @@ const items = marqueeIcons.map((IconComponent) => (
 export function Reverse() {
   return <Marquee items={items} reverse />;
 }
-
-export { source as ReverseSource };

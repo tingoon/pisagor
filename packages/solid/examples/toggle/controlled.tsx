@@ -1,4 +1,3 @@
-import source from "./controlled.tsx?raw";
 import { Toggle } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
@@ -17,5 +16,3 @@ export function Controlled() {
     </div>
   );
 }
-
-export { source as ControlledSource };

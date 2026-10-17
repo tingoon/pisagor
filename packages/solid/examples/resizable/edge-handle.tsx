@@ -1,4 +1,3 @@
-import source from "./edge-handle.tsx?raw";
 import { Resizable } from "@pisagor/solid";
 import { cn } from "@pisagor/utils";
 import { createSignal, type JSX } from "solid-js";
@@ -44,5 +43,3 @@ export function EdgeHandle() {
     </ResizableFrame>
   );
 }
-
-export { source as EdgeHandleSource };

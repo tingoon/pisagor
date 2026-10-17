@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./scroll-area.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Portal } from "@ark-ui/svelte/portal";
   import { Button, Dialog } from "@pisagor/svelte";

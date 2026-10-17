@@ -1,4 +1,3 @@
-import source from "./h4.tsx?raw";
 import { Prose } from "@pisagor/react";
 
 export function H4() {
@@ -8,5 +7,3 @@ export function H4() {
     </Prose>
   );
 }
-
-export { source as H4Source };

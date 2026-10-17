@@ -1,4 +1,3 @@
-import source from "./with-clear-button.tsx?raw";
 import { Combobox } from "@pisagor/react";
 
 export function WithClearButton() {
@@ -14,5 +13,3 @@ export function WithClearButton() {
     />
   );
 }
-
-export { source as WithClearButtonSource };

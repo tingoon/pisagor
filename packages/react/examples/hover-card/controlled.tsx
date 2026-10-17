@@ -1,4 +1,3 @@
-import source from "./controlled.tsx?raw";
 import { Button, HoverCard } from "@pisagor/react";
 import { useState } from "react";
 export function Controlled() {
@@ -29,5 +28,3 @@ export function Controlled() {
     </div>
   );
 }
-
-export { source as ControlledSource };

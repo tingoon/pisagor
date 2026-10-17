@@ -4,7 +4,6 @@ export { default as CustomRecipe } from "./custom-recipe.svelte";
 export { default as Default } from "./default.svelte";
 export { default as Disabled } from "./disabled.svelte";
 export { default as Sizes } from "./sizes.svelte";
-export { imports, sources } from "./sources";
 export { default as Step } from "./step.svelte";
 export { default as Thickness } from "./thickness.svelte";
 export { default as WithMarkers } from "./with-markers.svelte";

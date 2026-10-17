@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./without-arrow.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { HoverCard } from "@pisagor/svelte";
 </script>

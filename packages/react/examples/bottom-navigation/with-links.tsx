@@ -1,4 +1,3 @@
-import source from "./with-links.tsx?raw";
 import {
   BellIcon,
   HouseIcon,
@@ -49,5 +48,3 @@ export function WithLinks() {
     </div>
   );
 }
-
-export { source as WithLinksSource };

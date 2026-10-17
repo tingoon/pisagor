@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./icon-only.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import {
   PhBell,

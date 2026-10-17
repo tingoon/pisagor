@@ -1,4 +1,3 @@
-import source from "./invalid.tsx?raw";
 import { Autocomplete } from "@pisagor/react";
 
 export function Invalid() {
@@ -13,5 +12,3 @@ export function Invalid() {
     />
   );
 }
-
-export { source as InvalidSource };

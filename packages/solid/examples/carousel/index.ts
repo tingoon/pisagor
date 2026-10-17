@@ -10,7 +10,6 @@ export * from "./mouse-drag";
 export * from "./orientation-horizontal";
 export * from "./orientation-vertical";
 export * from "./slides-per-page";
-export { imports, sources } from "./sources";
 export * from "./spacing";
 export * from "./thumbnail-indicator";
 export * from "./thumbnail-indicator-vertical";

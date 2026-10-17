@@ -65,12 +65,12 @@ const developRawByFramework: Partial<
 
 type ExampleLoaderMap = Record<string, () => Promise<ExampleModule>>;
 
-/** Sources-only barrels — block pages use client islands for live components. */
+/** Live example barrels — block pages use client islands for previews. */
 const blockExamplesByFramework: Partial<Record<Framework, ExampleLoaderMap>> = {
-  react: import.meta.glob<ExampleModule>("../examples/react/*/sources.ts"),
-  solid: import.meta.glob<ExampleModule>("../examples/solid/*/sources.ts"),
-  svelte: import.meta.glob<ExampleModule>("../examples/svelte/*/sources.ts"),
-  vue: import.meta.glob<ExampleModule>("../examples/vue/*/sources.ts"),
+  react: import.meta.glob<ExampleModule>("../examples/react/*/index.ts"),
+  solid: import.meta.glob<ExampleModule>("../examples/solid/*/index.ts"),
+  svelte: import.meta.glob<ExampleModule>("../examples/svelte/*/index.ts"),
+  vue: import.meta.glob<ExampleModule>("../examples/vue/*/index.ts"),
 };
 
 function findGlobKey(
@@ -173,10 +173,10 @@ export async function loadBlockExamples(
   if (!modules) {
     throw new Error(`No block examples glob for ${framework}`);
   }
-  const key = findGlobKey(modules, `/examples/${framework}/${id}/sources.ts`);
+  const key = findGlobKey(modules, `/examples/${framework}/${id}/index.ts`);
   const loader = key ? modules[key] : undefined;
   const mod = loader ? await loader() : undefined;
-  if (!mod?.sources) {
+  if (!mod) {
     throw new Error(`Missing ${framework} block examples for "${id}"`);
   }
   return mod;
@@ -198,8 +198,12 @@ export async function listExamplePreviewStaticPathsFor(
     } catch {
       continue;
     }
-    for (const example of Object.keys(examples.sources)) {
-      paths.push({ params: { example, id } });
+    for (const [key, value] of Object.entries(examples)) {
+      if (key === "imports" || key === "sources" || key.endsWith("Source")) {
+        continue;
+      }
+      if (value == null || typeof value === "string") continue;
+      paths.push({ params: { example: key, id } });
     }
   }
 

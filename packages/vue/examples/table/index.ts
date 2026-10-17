@@ -4,5 +4,4 @@ export { default as Default } from "./default.vue";
 export { default as Footer } from "./footer.vue";
 export { default as NotHoverable } from "./not-hoverable.vue";
 export { default as Sizes } from "./sizes.vue";
-export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.vue";

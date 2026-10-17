@@ -1,18 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/combobox/default.svelte?raw";
-import VariantsSource from "#examples/svelte/combobox/variants.svelte?raw";
-import SizesSource from "#examples/svelte/combobox/sizes.svelte?raw";
-import WithStartIconSource from "#examples/svelte/combobox/with-start-icon.svelte?raw";
-import WithClearButtonSource from "#examples/svelte/combobox/with-clear-button.svelte?raw";
-import MultipleSource from "#examples/svelte/combobox/multiple.svelte?raw";
-import GroupSource from "#examples/svelte/combobox/group.svelte?raw";
-import WithScrollSource from "#examples/svelte/combobox/with-scroll.svelte?raw";
-import CompoundSource from "#examples/svelte/combobox/compound.svelte?raw";
-import ControlledSource from "#examples/svelte/combobox/controlled.svelte?raw";
-import DisabledSource from "#examples/svelte/combobox/disabled.svelte?raw";
-import InvalidSource from "#examples/svelte/combobox/invalid.svelte?raw";
-import AutohighlightSource from "#examples/svelte/combobox/autohighlight.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/combobox/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -26,157 +12,79 @@ import { Combobox } from "@pisagor/svelte";
 
 Search and pick from a filterable list with low-level composition control.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="combobox"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Variants
 
 Choose visual weight or emphasis so the combobox matches importance in the surrounding layout.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="combobox"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Match size to the surrounding layout — smaller in compact chrome, larger where the combobox needs emphasis.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="combobox"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### With Start Icon
 
 Add a leading icon to signal search or category.
 
-<Example
-  name="WithStartIcon"
-  code={WithStartIconSource}
-  exampleId="combobox"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithStartIcon" />
 
 ### With Clear Button
 
 Let users clear the query and selection in one press.
 
-<Example
-  name="WithClearButton"
-  code={WithClearButtonSource}
-  exampleId="combobox"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithClearButton" />
 
 ### Multiple
 
 Allow more than one open or selected item when users need several at once.
 
-<Example
-  name="Multiple"
-  code={MultipleSource}
-  exampleId="combobox"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Multiple" />
 
 ### Grouped
 
 Group related items so related choices stay visually and semantically together.
 
-<Example
-  name="Group"
-  code={GroupSource}
-  exampleId="combobox"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Group" />
 
 ### With Scroll
 
 Add scrolling when the list of items can grow beyond the available height.
 
-<Example
-  name="WithScroll"
-  code={WithScrollSource}
-  exampleId="combobox"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithScroll" />
 
 ### Compound
 
 Assemble from parts when you need a custom layout beyond the shorthand API.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="combobox"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this combobox.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="combobox"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the combobox is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="combobox"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation or error state so users know the combobox needs attention before continuing.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="combobox"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ### Autohighlight
 
 Highlight the first match automatically as the user types.
 
-<Example
-  name="Autohighlight"
-  code={AutohighlightSource}
-  exampleId="combobox"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Autohighlight" />
 
 ## Customization
 
@@ -184,10 +92,4 @@ Highlight the first match automatically as the user types.
 
 Extend `comboboxRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="combobox"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

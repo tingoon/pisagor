@@ -1,10 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/react/separator/default.tsx";
-import { VerticalSource } from "#examples/react/separator/vertical.tsx";
-import { ListSource } from "#examples/react/separator/list.tsx";
-import { InlineNavigationSource } from "#examples/react/separator/inline-navigation.tsx";
-import { DecorativeSource } from "#examples/react/separator/decorative.tsx";
-import { CustomRecipeSource } from "#examples/react/separator/custom-recipe.tsx";
 
 ## Import
 
@@ -18,61 +12,31 @@ import { Separator } from "@pisagor/react";
 
 Divide related groups of content.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="separator"
-  framework="react"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Vertical
 
 Use a vertical layout when the separator should read top to bottom.
 
-<Example
-  name="Vertical"
-  code={VerticalSource}
-  exampleId="separator"
-  framework="react"
-  kind="component"
-/>
+<Example name="Vertical" />
 
 ### List
 
 Separate list sections so groups stay scannable.
 
-<Example
-  name="List"
-  code={ListSource}
-  exampleId="separator"
-  framework="react"
-  kind="component"
-/>
+<Example name="List" />
 
 ### Inline Navigation
 
 Separate inline nav items without looking like a heavy rule.
 
-<Example
-  name="InlineNavigation"
-  code={InlineNavigationSource}
-  exampleId="separator"
-  framework="react"
-  kind="component"
-/>
+<Example name="InlineNavigation" />
 
 ### Decorative
 
 Hide purely visual separators from assistive technology.
 
-<Example
-  name="Decorative"
-  code={DecorativeSource}
-  exampleId="separator"
-  framework="react"
-  kind="component"
-/>
+<Example name="Decorative" />
 
 ## Customization
 
@@ -80,10 +44,4 @@ Hide purely visual separators from assistive technology.
 
 Extend `separatorRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="separator"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

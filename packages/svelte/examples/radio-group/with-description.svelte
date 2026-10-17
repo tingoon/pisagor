@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./with-description.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Field, RadioGroup } from "@pisagor/svelte";
 </script>

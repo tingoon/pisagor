@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./page-range.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Pagination } from "@pisagor/vue";
 </script>

@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { Breadcrumb } from "@pisagor/react";
 import { breadcrumbRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -24,5 +23,3 @@ export function CustomRecipe() {
     />
   );
 }
-
-export { source as CustomRecipeSource };

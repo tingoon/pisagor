@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./swipe-directions.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, Drawer } from "@pisagor/svelte";
 </script>

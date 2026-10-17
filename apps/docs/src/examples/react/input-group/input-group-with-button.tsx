@@ -1,4 +1,3 @@
-import source from "./input-group-with-button.tsx?raw";
 import { InputGroup } from "@pisagor/react";
 
 export function InputGroupWithButton() {
@@ -13,5 +12,3 @@ export function InputGroupWithButton() {
     </InputGroup>
   );
 }
-
-export { source as InputGroupWithButtonSource };

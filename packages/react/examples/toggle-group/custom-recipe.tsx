@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { ToggleGroup } from "@pisagor/react";
 import { toggleGroupRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -23,5 +22,3 @@ export function CustomRecipe() {
     />
   );
 }
-
-export { source as CustomRecipeSource };

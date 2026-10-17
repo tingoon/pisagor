@@ -1,4 +1,3 @@
-import source from "./decorative.tsx?raw";
 import { Separator } from "@pisagor/react";
 
 export function Decorative() {
@@ -10,5 +9,3 @@ export function Decorative() {
     </div>
   );
 }
-
-export { source as DecorativeSource };

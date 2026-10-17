@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./custom-color.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Badge } from "@pisagor/svelte";
 </script>

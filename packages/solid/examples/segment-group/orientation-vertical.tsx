@@ -1,4 +1,3 @@
-import source from "./orientation-vertical.tsx?raw";
 import { SegmentGroup } from "@pisagor/solid";
 
 export function OrientationVertical() {
@@ -17,5 +16,3 @@ export function OrientationVertical() {
     </SegmentGroup.Root>
   );
 }
-
-export { source as OrientationVerticalSource };

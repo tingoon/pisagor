@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { CalendarIcon } from "@phosphor-icons/react";
 import { Button, Calendar, DatePicker } from "@pisagor/react";
 import { datePickerRecipe } from "@pisagor/recipes";
@@ -37,5 +36,3 @@ export function CustomRecipe() {
     </DatePicker>
   );
 }
-
-export { source as CustomRecipeSource };

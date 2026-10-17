@@ -1,4 +1,3 @@
-import source from "./input-compact.tsx?raw";
 import { ColorPicker, InputGroup, parseColor, Separator } from "@pisagor/solid";
 import { PercentIcon } from "@pisagor/solid/icons";
 export function InputCompact() {
@@ -53,5 +52,3 @@ export function InputCompact() {
     </ColorPicker>
   );
 }
-
-export { source as InputCompactSource };

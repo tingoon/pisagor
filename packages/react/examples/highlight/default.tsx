@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Highlight } from "@pisagor/react";
 
 export function Default() {
@@ -8,5 +7,3 @@ export function Default() {
     </p>
   );
 }
-
-export { source as DefaultSource };

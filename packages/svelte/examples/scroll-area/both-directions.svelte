@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./both-directions.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { ScrollArea } from "@pisagor/svelte";
 </script>

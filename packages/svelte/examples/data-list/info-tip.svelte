@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./info-tip.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, DataList, Popover } from "@pisagor/svelte";
   import InfoIcon from "phosphor-svelte/lib/InfoIcon";

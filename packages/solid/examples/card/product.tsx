@@ -1,4 +1,3 @@
-import source from "./product.tsx?raw";
 import { Card } from "@pisagor/solid";
 
 export function Product() {
@@ -12,5 +11,3 @@ export function Product() {
     </Card>
   );
 }
-
-export { source as ProductSource };

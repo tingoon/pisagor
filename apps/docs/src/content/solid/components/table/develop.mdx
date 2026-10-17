@@ -1,11 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/solid/table/default.tsx";
-import { VariantsSource } from "#examples/solid/table/variants.tsx";
-import { SizesSource } from "#examples/solid/table/sizes.tsx";
-import { FooterSource } from "#examples/solid/table/footer.tsx";
-import { ActionsSource } from "#examples/solid/table/actions.tsx";
-import { NotHoverableSource } from "#examples/solid/table/not-hoverable.tsx";
-import { CustomRecipeSource } from "#examples/solid/table/custom-recipe.tsx";
 
 ## Import
 
@@ -38,73 +31,37 @@ import { Table } from "@pisagor/solid";
 
 Present comparable rows and columns for scanning.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="table"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Variants
 
 Choose visual weight or emphasis so the table matches importance in the surrounding layout.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="table"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="table"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Footer
 
 Add a footer for summaries beneath the rows.
 
-<Example
-  name="Footer"
-  code={FooterSource}
-  exampleId="table"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Footer" />
 
 ### Actions
 
 Add row actions when operations belong with each record.
 
-<Example
-  name="Actions"
-  code={ActionsSource}
-  exampleId="table"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Actions" />
 
 ### Not Hoverable
 
 Turn off row hover when hover affordance would distract.
 
-<Example
-  name="NotHoverable"
-  code={NotHoverableSource}
-  exampleId="table"
-  framework="solid"
-  kind="component"
-/>
+<Example name="NotHoverable" />
 
 ## Customization
 
@@ -112,10 +69,4 @@ Turn off row hover when hover affordance would distract.
 
 Extend `tableRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="table"
-  framework="solid"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

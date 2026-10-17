@@ -1,4 +1,3 @@
-import source from "./interval.tsx?raw";
 import { PauseIcon, PlayIcon } from "@phosphor-icons/react";
 import { Button, Card, Timer } from "@pisagor/react";
 export function Interval() {
@@ -34,5 +33,3 @@ export function Interval() {
     </Card>
   );
 }
-
-export { source as IntervalSource };

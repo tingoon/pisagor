@@ -1,4 +1,3 @@
-import source from "./rich-text-toolbar.tsx?raw";
 /** @jsxImportSource solid-js */
 import { Button, ButtonGroup, Tooltip } from "@pisagor/solid";
 import {
@@ -34,5 +33,3 @@ export function RichTextToolbar() {
     </ButtonGroup>
   );
 }
-
-export { source as RichTextToolbarSource };

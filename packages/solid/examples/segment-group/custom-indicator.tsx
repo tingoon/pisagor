@@ -1,4 +1,3 @@
-import source from "./custom-indicator.tsx?raw";
 import { SegmentGroup } from "@pisagor/solid";
 
 export function CustomIndicator() {
@@ -20,5 +19,3 @@ export function CustomIndicator() {
     </SegmentGroup.Root>
   );
 }
-
-export { source as CustomIndicatorSource };

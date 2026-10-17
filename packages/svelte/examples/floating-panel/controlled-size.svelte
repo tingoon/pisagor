@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./controlled-size.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, FloatingPanel } from "@pisagor/svelte";
   import GearSixIcon from "phosphor-svelte/lib/GearSixIcon";

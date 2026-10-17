@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { Button, File } from "@pisagor/solid";
 import { DownloadSimpleIcon } from "@pisagor/solid/icons";
 export function Compound() {
@@ -25,5 +24,3 @@ export function Compound() {
     </File.Root>
   );
 }
-
-export { source as CompoundSource };

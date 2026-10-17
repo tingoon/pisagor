@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./aspect-ratio.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { ImageCropper } from "@pisagor/vue";
 </script>

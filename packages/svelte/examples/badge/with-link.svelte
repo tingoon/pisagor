@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./with-link.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Badge } from "@pisagor/svelte";
   import ArrowUpRightIcon from "phosphor-svelte/lib/ArrowUpRightIcon";

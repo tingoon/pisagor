@@ -1,4 +1,3 @@
-import source from "./controlled.tsx?raw";
 import { SignaturePad } from "@pisagor/react";
 import { useState } from "react";
 
@@ -13,5 +12,3 @@ export function Controlled() {
     />
   );
 }
-
-export { source as ControlledSource };

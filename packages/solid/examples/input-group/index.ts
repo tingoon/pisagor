@@ -5,7 +5,6 @@ export * from "./align-inline-start";
 export * from "./disabled";
 export * from "./invalid";
 export * from "./sizes";
-export { imports, sources } from "./sources";
 export * from "./variants";
 export * from "./with-badge";
 export * from "./with-keyboard-shortcut";

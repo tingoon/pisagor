@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./wrapped-actions.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, Toolbar } from "@pisagor/svelte";
 </script>

@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./multiple-files.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, FileUpload, Separator } from "@pisagor/svelte";
 </script>

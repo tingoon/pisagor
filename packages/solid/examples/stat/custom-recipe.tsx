@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { statRecipe } from "@pisagor/recipes";
 import { Stat } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -26,5 +25,3 @@ export function CustomRecipe() {
     />
   );
 }
-
-export { source as CustomRecipeSource };

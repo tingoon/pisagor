@@ -1,4 +1,3 @@
-import source from "./link-urls.tsx?raw";
 import { Pagination } from "@pisagor/solid";
 
 export function LinkUrls() {
@@ -16,5 +15,3 @@ export function LinkUrls() {
     </Pagination>
   );
 }
-
-export { source as LinkUrlsSource };

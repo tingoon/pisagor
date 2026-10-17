@@ -6,7 +6,6 @@ export { default as Disabled } from "./disabled.svelte";
 export { default as Input } from "./input.svelte";
 export { default as Invalid } from "./invalid.svelte";
 export { default as Range } from "./range.svelte";
-export { imports, sources } from "./sources";
 export { default as Time } from "./time.svelte";
 export { default as Variants } from "./variants.svelte";
 export { default as WithPresets } from "./with-presets.svelte";

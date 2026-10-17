@@ -1,4 +1,3 @@
-import source from "./with-icons.tsx?raw";
 import { GearIcon, ShieldIcon, UserIcon } from "@phosphor-icons/react";
 import { Tabs } from "@pisagor/react";
 
@@ -53,5 +52,3 @@ export function WithIcons() {
     />
   );
 }
-
-export { source as WithIconsSource };

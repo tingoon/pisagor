@@ -1,11 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/solid/qr-code/default.tsx";
-import { SizesSource } from "#examples/solid/qr-code/sizes.tsx";
-import { ErrorCorrectionSource } from "#examples/solid/qr-code/error-correction.tsx";
-import { OverlaySource } from "#examples/solid/qr-code/overlay.tsx";
-import { CompoundSource } from "#examples/solid/qr-code/compound.tsx";
-import { DownloadSource } from "#examples/solid/qr-code/download.tsx";
-import { CustomRecipeSource } from "#examples/solid/qr-code/custom-recipe.tsx";
 
 ## Import
 
@@ -19,73 +12,37 @@ import { QrCode } from "@pisagor/solid";
 
 Display a scannable QR code for a link or payload.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="qr-code"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Sizes
 
 Match size to the surrounding layout — smaller in compact chrome, larger where the QR code needs emphasis.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="qr-code"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Error Correction
 
 Raise error correction when the code may be partially covered or printed small.
 
-<Example
-  name="ErrorCorrection"
-  code={ErrorCorrectionSource}
-  exampleId="qr-code"
-  framework="solid"
-  kind="component"
-/>
+<Example name="ErrorCorrection" />
 
 ### Overlay
 
 Overlay a mark on the code when branding sits in the center.
 
-<Example
-  name="Overlay"
-  code={OverlaySource}
-  exampleId="qr-code"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Overlay" />
 
 ### Compound
 
 Compose the frame and pattern parts when you need to place extra content around the code.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="qr-code"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Download
 
 Offer download when users need to save or print the code.
 
-<Example
-  name="Download"
-  code={DownloadSource}
-  exampleId="qr-code"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Download" />
 
 ## Customization
 
@@ -93,10 +50,4 @@ Offer download when users need to save or print the code.
 
 Extend `qrCodeRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="qr-code"
-  framework="solid"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

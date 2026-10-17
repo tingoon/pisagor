@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./disable-hotkey.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Sidebar } from "@pisagor/svelte";
   import HouseIcon from "phosphor-svelte/lib/HouseIcon";

@@ -1,13 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/action-bar/default.svelte?raw";
-import GutterSource from "#examples/svelte/action-bar/gutter.svelte?raw";
-import CloseTriggerSource from "#examples/svelte/action-bar/close-trigger.svelte?raw";
-import WithDialogSource from "#examples/svelte/action-bar/with-dialog.svelte?raw";
-import WithMenuSource from "#examples/svelte/action-bar/with-menu.svelte?raw";
-import ControlledSource from "#examples/svelte/action-bar/controlled.svelte?raw";
-import PlacementsSource from "#examples/svelte/action-bar/placements.svelte?raw";
-import CustomSpacingSource from "#examples/svelte/action-bar/custom-spacing.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/action-bar/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -35,85 +26,43 @@ import { ActionBar } from "@pisagor/svelte";
 
 The standard bar that appears when selection enables bulk actions.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="action-bar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Gutter
 
 Add side gutter spacing so actions align with the content column.
 
-<Example
-  name="Gutter"
-  code={GutterSource}
-  exampleId="action-bar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Gutter" />
 
 ### Close Trigger
 
 Let users dismiss the bar explicitly when clearing selection is not the only exit.
 
-<Example
-  name="CloseTrigger"
-  code={CloseTriggerSource}
-  exampleId="action-bar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CloseTrigger" />
 
 ### With Dialog
 
 Open a dialog from a bulk action when the next step needs confirmation or extra input.
 
-<Example
-  name="WithDialog"
-  code={WithDialogSource}
-  exampleId="action-bar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithDialog" />
 
 ### With Menu
 
 Park secondary bulk actions in a menu so the bar stays focused on common work.
 
-<Example
-  name="WithMenu"
-  code={WithMenuSource}
-  exampleId="action-bar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithMenu" />
 
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this action bar.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="action-bar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Placements
 
 Choose placement so the action bar stays near its trigger without covering critical content.
 
-<Example
-  name="Placements"
-  code={PlacementsSource}
-  exampleId="action-bar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Placements" />
 
 ## Customization
 
@@ -123,22 +72,10 @@ Pass `class` for a one-off change to a single element.
 
 Tighten or loosen padding when the bar sits in a denser or roomier toolbar.
 
-<Example
-  name="CustomSpacing"
-  code={CustomSpacingSource}
-  exampleId="action-bar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomSpacing" />
 
 ### Custom recipe
 
 Extend `actionBarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="action-bar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

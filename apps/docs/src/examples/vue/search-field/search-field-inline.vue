@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./search-field-inline.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhMagnifyingGlass } from "@phosphor-icons/vue";
 import { Button, Field, Input } from "@pisagor/vue";

@@ -16,7 +16,6 @@ export { default as RichCells } from "./rich-cells.svelte";
 export { default as RowDetails } from "./row-details.svelte";
 export { default as RowSelection } from "./row-selection.svelte";
 export { default as Sorting } from "./sorting.svelte";
-export { imports, sources } from "./sources";
 export { default as StripedVariant } from "./striped-variant.svelte";
 export { default as Virtualized } from "./virtualized.svelte";
 export { default as WithSortableData } from "./with-sortable-data.svelte";

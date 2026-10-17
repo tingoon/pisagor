@@ -1,4 +1,3 @@
-import source from "./with-context-menu.ts?raw";
 import {
   PhFilePlus,
   PhFolderPlus,
@@ -108,5 +107,3 @@ export default defineComponent({
       ]);
   },
 });
-
-export { source };

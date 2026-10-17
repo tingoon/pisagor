@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { GearIcon, SignOutIcon, UserIcon } from "@phosphor-icons/react";
 import { Menu } from "@pisagor/react";
 import { menuRecipe } from "@pisagor/recipes";
@@ -37,5 +36,3 @@ export function CustomRecipe() {
     </div>
   );
 }
-
-export { source as CustomRecipeSource };

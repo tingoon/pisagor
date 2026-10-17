@@ -1,4 +1,3 @@
-import source from "./with-context-menu.tsx?raw";
 import type { NodeProviderProps } from "@pisagor/solid";
 import { ContextMenu, createTreeCollection, TreeView } from "@pisagor/solid";
 import {
@@ -112,5 +111,3 @@ export function WithContextMenu() {
     </div>
   );
 }
-
-export { source as WithContextMenuSource };

@@ -1,4 +1,3 @@
-import source from "./custom-preview.tsx?raw";
 import { useFileUploadContext } from "@ark-ui/solid/file-upload";
 import { Button, FileUpload } from "@pisagor/solid";
 import { XIcon } from "@pisagor/solid/icons";
@@ -51,5 +50,3 @@ export function CustomPreview() {
     </FileUpload>
   );
 }
-
-export { source as CustomPreviewSource };

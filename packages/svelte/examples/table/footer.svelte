@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./footer.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Table } from "@pisagor/svelte";
 

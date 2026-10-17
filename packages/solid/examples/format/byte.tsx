@@ -1,4 +1,3 @@
-import source from "./byte.tsx?raw";
 import { Format } from "@pisagor/solid";
 
 export function Byte() {
@@ -11,5 +10,3 @@ export function Byte() {
     </div>
   );
 }
-
-export { source as ByteSource };

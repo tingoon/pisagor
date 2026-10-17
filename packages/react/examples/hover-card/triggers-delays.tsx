@@ -1,4 +1,3 @@
-import source from "./triggers-delays.tsx?raw";
 import { MapPinIcon } from "@phosphor-icons/react";
 import { Avatar, Button, HoverCard } from "@pisagor/react";
 export function TriggersDelays() {
@@ -31,5 +30,3 @@ export function TriggersDelays() {
     </HoverCard>
   );
 }
-
-export { source as TriggersDelaysSource };

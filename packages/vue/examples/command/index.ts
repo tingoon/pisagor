@@ -4,6 +4,5 @@ export { default as Groups } from "./groups";
 export { default as Scrollable } from "./scrollable";
 export { default as Shortcuts } from "./shortcuts";
 export { default as Shorthand } from "./shorthand.vue";
-export { imports, sources } from "./sources";
 export { default as WithDialog } from "./with-dialog";
 export { default as WithFooter } from "./with-footer";

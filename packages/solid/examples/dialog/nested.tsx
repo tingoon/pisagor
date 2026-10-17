@@ -1,4 +1,3 @@
-import source from "./nested.tsx?raw";
 import { Button, Dialog, Field, Input } from "@pisagor/solid";
 import { Portal } from "solid-js/web";
 export function Nested() {
@@ -85,5 +84,3 @@ export function Nested() {
     </Dialog.Root>
   );
 }
-
-export { source as NestedSource };

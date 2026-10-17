@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Button, Field, Input, Sheet } from "@pisagor/react";
 export function Default() {
   return (
@@ -37,5 +36,3 @@ export function Default() {
     </Sheet>
   );
 }
-
-export { source as DefaultSource };

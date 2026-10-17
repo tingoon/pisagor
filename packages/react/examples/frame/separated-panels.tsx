@@ -1,4 +1,3 @@
-import source from "./separated-panels.tsx?raw";
 import { Frame } from "@pisagor/react";
 
 export function SeparatedPanels() {
@@ -21,5 +20,3 @@ export function SeparatedPanels() {
     </Frame>
   );
 }
-
-export { source as SeparatedPanelsSource };

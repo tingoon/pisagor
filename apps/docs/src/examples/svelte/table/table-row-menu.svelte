@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./table-row-menu.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { ContextMenu, Table } from "@pisagor/svelte";
   import EyeIcon from "phosphor-svelte/lib/EyeIcon";

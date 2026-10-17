@@ -1,4 +1,3 @@
-import source from "./custom-spacing.tsx?raw";
 import { UserIcon } from "@phosphor-icons/react";
 import { Item } from "@pisagor/react";
 
@@ -30,5 +29,3 @@ export function CustomSpacing() {
     </Item.Group>
   );
 }
-
-export { source as CustomSpacingSource };

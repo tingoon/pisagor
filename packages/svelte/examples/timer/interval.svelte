@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./interval.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, Card, Timer } from "@pisagor/svelte";
   import PauseIcon from "phosphor-svelte/lib/PauseIcon";

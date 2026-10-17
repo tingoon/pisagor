@@ -1,18 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/solid/calendar/default.tsx";
-import { RangeSource } from "#examples/solid/calendar/range.tsx";
-import { MultipleMonthsSource } from "#examples/solid/calendar/multiple-months.tsx";
-import { MonthYearSelectorSource } from "#examples/solid/calendar/month-year-selector.tsx";
-import { PresetsSource } from "#examples/solid/calendar/presets.tsx";
-import { ControlledSource } from "#examples/solid/calendar/controlled.tsx";
-import { DisabledSource } from "#examples/solid/calendar/disabled.tsx";
-import { InvalidSource } from "#examples/solid/calendar/invalid.tsx";
-import { MinMaxSource } from "#examples/solid/calendar/min-max.tsx";
-import { BookedDatesSource } from "#examples/solid/calendar/booked-dates.tsx";
-import { FixedWeeksSource } from "#examples/solid/calendar/fixed-weeks.tsx";
-import { SelectTodaySource } from "#examples/solid/calendar/select-today.tsx";
-import { CustomCellSizeSource } from "#examples/solid/calendar/custom-cell-size.tsx";
-import { CustomRecipeSource } from "#examples/solid/calendar/custom-recipe.tsx";
 
 ## Import
 
@@ -42,145 +28,73 @@ import { Calendar } from "@pisagor/solid";
 
 Browse and pick a single date on the calendar grid.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="calendar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Range
 
 Pick a start and end date for spans such as trips or reports.
 
-<Example
-  name="Range"
-  code={RangeSource}
-  exampleId="calendar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Range" />
 
 ### Multiple Months
 
 Show more than one month when comparing ranges across months.
 
-<Example
-  name="MultipleMonths"
-  code={MultipleMonthsSource}
-  exampleId="calendar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="MultipleMonths" />
 
 ### Month Year Selector
 
 Jump by month or year when paging day-by-day would be slow.
 
-<Example
-  name="MonthYearSelector"
-  code={MonthYearSelectorSource}
-  exampleId="calendar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="MonthYearSelector" />
 
 ### Presets
 
 Offer common ranges so users can pick without hunting on the grid.
 
-<Example
-  name="Presets"
-  code={PresetsSource}
-  exampleId="calendar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Presets" />
 
 ### Controlled
 
 Drive the selected date from the parent when other UI depends on it.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="calendar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the calendar cannot be used.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="calendar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Show that the selected date is not allowed.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="calendar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ### Min Max
 
 Limit selection to a valid window of dates.
 
-<Example
-  name="MinMax"
-  code={MinMaxSource}
-  exampleId="calendar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="MinMax" />
 
 ### Booked Dates
 
 Mark unavailable days when bookings or blackout dates matter.
 
-<Example
-  name="BookedDates"
-  code={BookedDatesSource}
-  exampleId="calendar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="BookedDates" />
 
 ### Fixed Weeks
 
 Keep six rows every month so the calendar height stays stable.
 
-<Example
-  name="FixedWeeks"
-  code={FixedWeeksSource}
-  exampleId="calendar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="FixedWeeks" />
 
 ### Select Today
 
 Jump to today when returning to the current date is a frequent action.
 
-<Example
-  name="SelectToday"
-  code={SelectTodaySource}
-  exampleId="calendar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="SelectToday" />
 
 ## Customization
 
@@ -190,22 +104,10 @@ Pass `className` for a one-off change to a single element.
 
 Resize day cells when the calendar must match a denser or larger layout.
 
-<Example
-  name="CustomCellSize"
-  code={CustomCellSizeSource}
-  exampleId="calendar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="CustomCellSize" />
 
 ### Custom recipe
 
 Extend `calendarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="calendar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

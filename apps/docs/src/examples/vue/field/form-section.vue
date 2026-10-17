@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./form-section.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Button, Field, Input, Surface } from "@pisagor/vue";
 import { formSectionBlock } from "#/recipes/blocks/field";

@@ -7,4 +7,3 @@ export * from "./min-max";
 export * from "./multiple-panels";
 export * from "./orientation-horizontal";
 export * from "./orientation-vertical";
-export { imports, sources } from "./sources";

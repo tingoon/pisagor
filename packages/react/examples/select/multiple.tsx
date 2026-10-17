@@ -1,4 +1,3 @@
-import source from "./multiple.tsx?raw";
 import { Select } from "@pisagor/react";
 
 export function Multiple() {
@@ -16,5 +15,3 @@ export function Multiple() {
     />
   );
 }
-
-export { source as MultipleSource };

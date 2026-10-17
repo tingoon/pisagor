@@ -1,4 +1,3 @@
-import source from "./navigation.ts?raw";
 import { AppShell } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 import { mainContent, regionTitle } from "./helpers";
@@ -13,5 +12,3 @@ export default defineComponent({
       ]);
   },
 });
-
-export { source };

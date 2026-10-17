@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./fallbacks.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Avatar } from "@pisagor/svelte";
   import UserIcon from "phosphor-svelte/lib/UserIcon";

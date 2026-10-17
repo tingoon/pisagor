@@ -1,4 +1,3 @@
-import source from "./shorthand.tsx?raw";
 import { Command } from "@pisagor/solid";
 import { CalendarIcon, GearIcon, UserIcon } from "@pisagor/solid/icons";
 
@@ -28,5 +27,3 @@ const items = [
 export function Shorthand() {
   return <Command.Shorthand items={items} placeholder="Search…" />;
 }
-
-export { source as ShorthandSource };

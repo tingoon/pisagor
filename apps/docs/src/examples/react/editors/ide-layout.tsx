@@ -1,4 +1,3 @@
-import source from "./ide-layout.tsx?raw";
 import { XIcon } from "@phosphor-icons/react";
 import type { NodeProviderProps, TreeNodeType } from "@pisagor/react";
 import { Button, createTreeCollection, Tabs, TreeView } from "@pisagor/react";
@@ -124,5 +123,3 @@ const collection = createTreeCollection({
     name: "",
   },
 });
-
-export { source as IdeLayoutSource };

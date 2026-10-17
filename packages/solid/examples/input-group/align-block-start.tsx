@@ -1,4 +1,3 @@
-import source from "./align-block-start.tsx?raw";
 import { InputGroup } from "@pisagor/solid";
 import { CopyIcon, FileCodeIcon } from "@pisagor/solid/icons";
 export function AlignBlockStart() {
@@ -24,5 +23,3 @@ export function AlignBlockStart() {
     </div>
   );
 }
-
-export { source as AlignBlockStartSource };

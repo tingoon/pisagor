@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { parseDate } from "@pisagor/react";
 import { useAppForm } from "@pisagor/react-form/tanstack";
 import { cityOptions, countryOptions, planOptions } from "../options";
@@ -199,5 +198,3 @@ export function Default() {
     </form.Root>
   );
 }
-
-export { source as DefaultSource };

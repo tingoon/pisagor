@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { Portal } from "@ark-ui/react/portal";
 import { Button, Tooltip } from "@pisagor/react";
 
@@ -21,5 +20,3 @@ export function Compound() {
     </Tooltip.Root>
   );
 }
-
-export { source as CompoundSource };

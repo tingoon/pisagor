@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { DownloadSimpleIcon } from "@phosphor-icons/react";
 import { Button, FileItem } from "@pisagor/react";
 export function Compound() {
@@ -25,5 +24,3 @@ export function Compound() {
     </FileItem.Root>
   );
 }
-
-export { source as CompoundSource };

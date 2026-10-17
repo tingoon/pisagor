@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { ContextMenu } from "@pisagor/solid";
 
 export function Default() {
@@ -16,5 +15,3 @@ export function Default() {
     </ContextMenu>
   );
 }
-
-export { source as DefaultSource };

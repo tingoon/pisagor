@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./swatch-picker-custom-indicator.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhSparkle } from "@phosphor-icons/vue";
 import { ColorPicker } from "@pisagor/vue";

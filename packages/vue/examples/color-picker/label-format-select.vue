@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./label-format-select.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { ColorPicker, Input, parseColor } from "@pisagor/vue";
 

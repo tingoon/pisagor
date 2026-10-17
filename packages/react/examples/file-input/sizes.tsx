@@ -1,4 +1,3 @@
-import source from "./sizes.tsx?raw";
 import { FileInput } from "@pisagor/react";
 
 export function Sizes() {
@@ -10,5 +9,3 @@ export function Sizes() {
     </div>
   );
 }
-
-export { source as SizesSource };

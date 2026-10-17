@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { StarIcon } from "@phosphor-icons/react";
 import { Rating } from "@pisagor/react";
 
@@ -29,5 +28,3 @@ export function Compound() {
     </Rating.Root>
   );
 }
-
-export { source as CompoundSource };

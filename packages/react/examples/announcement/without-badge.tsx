@@ -1,4 +1,3 @@
-import source from "./without-badge.tsx?raw";
 import { ArrowUpRightIcon } from "@phosphor-icons/react";
 import { Announcement } from "@pisagor/react";
 
@@ -14,5 +13,3 @@ export function WithoutBadge() {
     />
   );
 }
-
-export { source as WithoutBadgeSource };

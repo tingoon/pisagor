@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./align-inline-end.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhEye } from "@phosphor-icons/vue";
 import { InputGroup } from "@pisagor/vue";

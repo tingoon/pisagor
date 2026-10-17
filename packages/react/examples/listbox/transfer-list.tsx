@@ -1,4 +1,3 @@
-import source from "./transfer-list.tsx?raw";
 import { createListCollection } from "@ark-ui/react";
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
 import { Button, Item, Listbox } from "@pisagor/react";
@@ -104,5 +103,3 @@ export function TransferList() {
     </div>
   );
 }
-
-export { source as TransferListSource };

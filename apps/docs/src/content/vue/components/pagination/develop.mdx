@@ -1,11 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/pagination/default.vue?raw";
-import PageRangeSource from "#examples/vue/pagination/page-range.vue?raw";
-import LinksSource from "#examples/vue/pagination/links.vue?raw";
-import LinkUrlsSource from "#examples/vue/pagination/link-urls.vue?raw";
-import CustomCompositionSource from "#examples/vue/pagination/custom-composition.vue?raw";
-import ControlledSource from "#examples/vue/pagination/controlled.vue?raw";
-import CustomRecipeSource from "#examples/vue/pagination/custom-recipe.vue?raw";
 
 ## Import
 
@@ -19,73 +12,37 @@ import { Pagination } from "@pisagor/vue";
 
 Move through pages with previous, next, and page controls.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="pagination"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Page Range
 
 Show a window of page numbers when jumping more than one step matters.
 
-<Example
-  name="PageRange"
-  code={PageRangeSource}
-  exampleId="pagination"
-  framework="vue"
-  kind="component"
-/>
+<Example name="PageRange" />
 
 ### Links
 
 Render items as links when navigation is the primary action.
 
-<Example
-  name="Links"
-  code={LinksSource}
-  exampleId="pagination"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Links" />
 
 ### Link URLs
 
 Build each page URL with `getHref` when routes do not use the `?page=` query.
 
-<Example
-  name="LinkUrls"
-  code={LinkUrlsSource}
-  exampleId="pagination"
-  framework="vue"
-  kind="component"
-/>
+<Example name="LinkUrls" />
 
 ### Compound
 
 Compose pagination parts when the shorthand layout is not enough.
 
-<Example
-  name="CustomComposition"
-  code={CustomCompositionSource}
-  exampleId="pagination"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomComposition" />
 
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this pagination.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="pagination"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ## Customization
 
@@ -93,10 +50,4 @@ Manage state from the parent when other UI must stay in sync with this paginatio
 
 Extend `paginationRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="pagination"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./skeleton-text.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Skeleton } from "@pisagor/svelte";
 </script>

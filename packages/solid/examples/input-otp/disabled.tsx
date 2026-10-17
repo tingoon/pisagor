@@ -1,4 +1,3 @@
-import source from "./disabled.tsx?raw";
 import { InputOTP } from "@pisagor/solid";
 
 export function Disabled() {
@@ -11,5 +10,3 @@ export function Disabled() {
     </InputOTP>
   );
 }
-
-export { source as DisabledSource };

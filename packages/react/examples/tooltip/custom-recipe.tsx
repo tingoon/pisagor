@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { TextBIcon } from "@phosphor-icons/react";
 import { Button, Tooltip } from "@pisagor/react";
 import { tooltipRecipe } from "@pisagor/recipes";
@@ -21,5 +20,3 @@ export function CustomRecipe() {
     </Tooltip>
   );
 }
-
-export { source as CustomRecipeSource };

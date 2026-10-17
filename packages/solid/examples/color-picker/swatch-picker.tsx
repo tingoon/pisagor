@@ -1,4 +1,3 @@
-import source from "./swatch-picker.tsx?raw";
 import { ColorPicker } from "@pisagor/solid";
 
 export function SwatchPicker() {
@@ -17,5 +16,3 @@ export function SwatchPicker() {
     </ColorPicker>
   );
 }
-
-export { source as SwatchPickerSource };

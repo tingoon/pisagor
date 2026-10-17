@@ -1,18 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/rating/default.svelte?raw";
-import SizesSource from "#examples/svelte/rating/sizes.svelte?raw";
-import CountSource from "#examples/svelte/rating/count.svelte?raw";
-import HalfStarSource from "#examples/svelte/rating/half-star.svelte?raw";
-import CustomIconSource from "#examples/svelte/rating/custom-icon.svelte?raw";
-import TestimonialSource from "#examples/svelte/rating/testimonial.svelte?raw";
-import CompoundSource from "#examples/svelte/rating/compound.svelte?raw";
-import ControlledSource from "#examples/svelte/rating/controlled.svelte?raw";
-import DisabledSource from "#examples/svelte/rating/disabled.svelte?raw";
-import InvalidSource from "#examples/svelte/rating/invalid.svelte?raw";
-import ReadonlySource from "#examples/svelte/rating/readonly.svelte?raw";
-import CustomColorSource from "#examples/svelte/rating/custom-color.svelte?raw";
-import CustomSizeSource from "#examples/svelte/rating/custom-size.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/rating/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -26,133 +12,67 @@ import { Rating } from "@pisagor/svelte";
 
 Let users pick a score from one to five stars.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="rating"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Sizes
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="rating"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Count
 
 Set `count` to change how many stars are shown.
 
-<Example
-  name="Count"
-  code={CountSource}
-  exampleId="rating"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Count" />
 
 ### Half Star
 
 Allow half values when finer granularity matters.
 
-<Example
-  name="HalfStar"
-  code={HalfStarSource}
-  exampleId="rating"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="HalfStar" />
 
 ### Custom Icon
 
 Replace stars with another symbol when the metaphor fits better.
 
-<Example
-  name="CustomIcon"
-  code={CustomIconSource}
-  exampleId="rating"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomIcon" />
 
 ### Testimonial
 
 Present a readonly score in a testimonial-style layout.
 
-<Example
-  name="Testimonial"
-  code={TestimonialSource}
-  exampleId="rating"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Testimonial" />
 
 ### Compound
 
 Compose the rating from parts for custom item rendering.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="rating"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this rating.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="rating"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the rating is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="rating"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation or error state so users know the rating needs attention before continuing.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="rating"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ### Readonly
 
 Display the value without allowing edits when the score or data is informational only.
 
-<Example
-  name="Readonly"
-  code={ReadonlySource}
-  exampleId="rating"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Readonly" />
 
 ## Customization
 
@@ -162,32 +82,14 @@ Pass `class` for a one-off change to a single element.
 
 Override the fill or accent when a brand or contextual color matters more than the theme default.
 
-<Example
-  name="CustomColor"
-  code={CustomColorSource}
-  exampleId="rating"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomColor" />
 
 Override dimensions when the default size does not fit the layout.
 
-<Example
-  name="CustomSize"
-  code={CustomSizeSource}
-  exampleId="rating"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomSize" />
 
 ### Custom recipe
 
 Extend `ratingRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="rating"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

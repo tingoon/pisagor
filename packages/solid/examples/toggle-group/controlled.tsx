@@ -1,4 +1,3 @@
-import source from "./controlled.tsx?raw";
 import { ToggleGroup } from "@pisagor/solid";
 import {
   TextBIcon,
@@ -33,5 +32,3 @@ export function Controlled() {
     </div>
   );
 }
-
-export { source as ControlledSource };

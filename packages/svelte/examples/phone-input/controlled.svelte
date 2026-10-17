@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./controlled.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Field } from "@pisagor/svelte";
   import { PhoneInput } from "@pisagor/svelte/phone-input";

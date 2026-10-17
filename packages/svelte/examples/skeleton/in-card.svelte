@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./in-card.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Card, Skeleton } from "@pisagor/svelte";
 </script>

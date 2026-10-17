@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./anchor.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, Input, Popover } from "@pisagor/svelte";
 </script>

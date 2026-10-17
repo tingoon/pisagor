@@ -1,4 +1,3 @@
-import source from "./with-filter.tsx?raw";
 import { useListCollection } from "@ark-ui/react/collection";
 import { useFilter } from "@ark-ui/react/locale";
 import { Input, Item, Listbox } from "@pisagor/react";
@@ -51,5 +50,3 @@ export function WithFilter() {
     </Item.Group>
   );
 }
-
-export { source as WithFilterSource };

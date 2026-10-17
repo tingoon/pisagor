@@ -1,4 +1,3 @@
-import source from "./group-label.tsx?raw";
 import { Button, DropdownMenu } from "@pisagor/react";
 export function GroupLabel() {
   return (
@@ -21,5 +20,3 @@ export function GroupLabel() {
     </DropdownMenu>
   );
 }
-
-export { source as GroupLabelSource };

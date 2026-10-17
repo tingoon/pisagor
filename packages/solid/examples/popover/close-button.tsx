@@ -1,4 +1,3 @@
-import source from "./close-button.tsx?raw";
 import { Button, Popover } from "@pisagor/solid";
 export function CloseButton() {
   return (
@@ -19,5 +18,3 @@ export function CloseButton() {
     </Popover>
   );
 }
-
-export { source as CloseButtonSource };

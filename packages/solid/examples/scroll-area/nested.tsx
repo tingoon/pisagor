@@ -1,4 +1,3 @@
-import source from "./nested.tsx?raw";
 import { ScrollArea } from "@pisagor/solid";
 
 export function Nested() {
@@ -26,5 +25,3 @@ export function Nested() {
     </ScrollArea>
   );
 }
-
-export { source as NestedSource };

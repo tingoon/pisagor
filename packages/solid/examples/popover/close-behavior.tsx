@@ -1,4 +1,3 @@
-import source from "./close-behavior.tsx?raw";
 import { Button, Popover } from "@pisagor/solid";
 export function CloseBehavior() {
   return (
@@ -36,5 +35,3 @@ export function CloseBehavior() {
     </div>
   );
 }
-
-export { source as CloseBehaviorSource };

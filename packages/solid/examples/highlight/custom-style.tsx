@@ -1,4 +1,3 @@
-import source from "./custom-style.tsx?raw";
 import { Highlight } from "@pisagor/solid";
 
 export function CustomStyle() {
@@ -12,5 +11,3 @@ export function CustomStyle() {
     </p>
   );
 }
-
-export { source as CustomStyleSource };

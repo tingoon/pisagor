@@ -1,14 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/circular-slider/default.svelte?raw";
-import SizesSource from "#examples/svelte/circular-slider/sizes.svelte?raw";
-import ThicknessSource from "#examples/svelte/circular-slider/thickness.svelte?raw";
-import WithValueSource from "#examples/svelte/circular-slider/with-value.svelte?raw";
-import WithMarkersSource from "#examples/svelte/circular-slider/with-markers.svelte?raw";
-import CustomMarkersSource from "#examples/svelte/circular-slider/custom-markers.svelte?raw";
-import ControlledSource from "#examples/svelte/circular-slider/controlled.svelte?raw";
-import DisabledSource from "#examples/svelte/circular-slider/disabled.svelte?raw";
-import StepSource from "#examples/svelte/circular-slider/step.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/circular-slider/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -22,109 +12,55 @@ import { CircularSlider } from "@pisagor/svelte";
 
 Choose a value by dragging around a circular track.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="circular-slider"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Sizes
 
 Match control size to the surrounding layout.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="circular-slider"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Thickness
 
 Adjust track thickness for visibility and touch comfort.
 
-<Example
-  name="Thickness"
-  code={ThicknessSource}
-  exampleId="circular-slider"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Thickness" />
 
 ### With Value
 
 Show the current value so the gesture stays understandable.
 
-<Example
-  name="WithValue"
-  code={WithValueSource}
-  exampleId="circular-slider"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithValue" />
 
 ### With Markers
 
 Show markers for key values along the circular track.
 
-<Example
-  name="WithMarkers"
-  code={WithMarkersSource}
-  exampleId="circular-slider"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithMarkers" />
 
 ### Custom Markers
 
 Place custom markers when meaningful points sit on the ring.
 
-<Example
-  name="CustomMarkers"
-  code={CustomMarkersSource}
-  exampleId="circular-slider"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomMarkers" />
 
 ### Controlled
 
 Drive the value from the parent when other UI depends on it.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="circular-slider"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the control is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="circular-slider"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Step
 
 Snap to increments when values should move in fixed steps.
 
-<Example
-  name="Step"
-  code={StepSource}
-  exampleId="circular-slider"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Step" />
 
 ## Customization
 
@@ -132,10 +68,4 @@ Snap to increments when values should move in fixed steps.
 
 Extend `circularSliderRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="circular-slider"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

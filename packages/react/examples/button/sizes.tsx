@@ -1,4 +1,3 @@
-import source from "./sizes.tsx?raw";
 import { PlusIcon } from "@phosphor-icons/react";
 import { Button } from "@pisagor/react";
 
@@ -16,5 +15,3 @@ export function Sizes() {
     </div>
   );
 }
-
-export { source as SizesSource };

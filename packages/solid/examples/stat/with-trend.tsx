@@ -1,4 +1,3 @@
-import source from "./with-trend.tsx?raw";
 import { Stat } from "@pisagor/solid";
 import { ArrowDownIcon, ArrowUpIcon } from "@pisagor/solid/icons";
 
@@ -32,5 +31,3 @@ export function WithTrend() {
     </div>
   );
 }
-
-export { source as WithTrendSource };

@@ -1,4 +1,3 @@
-import source from "./as-child.tsx?raw";
 import { Button } from "@pisagor/solid";
 
 export function AsChild() {
@@ -12,5 +11,3 @@ export function AsChild() {
     />
   );
 }
-
-export { source as AsChildSource };

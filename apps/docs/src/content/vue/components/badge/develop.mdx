@@ -1,11 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import VariantsSource from "#examples/vue/badge/variants.vue?raw";
-import SizesSource from "#examples/vue/badge/sizes.vue?raw";
-import PillSource from "#examples/vue/badge/pill.vue?raw";
-import WithLinkSource from "#examples/vue/badge/with-link.vue?raw";
-import WithSpinnerSource from "#examples/vue/badge/with-spinner.vue?raw";
-import CustomColorSource from "#examples/vue/badge/custom-color.vue?raw";
-import CustomRecipeSource from "#examples/vue/badge/custom-recipe.vue?raw";
 
 ## Import
 
@@ -19,61 +12,31 @@ import { Badge } from "@pisagor/vue";
 
 Choose tone so the badge reflects status severity or category.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="badge"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Match badge size to nearby text and controls.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="badge"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Pill
 
 Use a fully rounded shape when softer, chip-like geometry fits the layout.
 
-<Example
-  name="Pill"
-  code={PillSource}
-  exampleId="badge"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Pill" />
 
 ### With Link
 
 Make the badge navigate when the label itself is a destination.
 
-<Example
-  name="WithLink"
-  code={WithLinkSource}
-  exampleId="badge"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithLink" />
 
 ### With Spinner
 
 Show a spinner inside the badge when the status is still loading.
 
-<Example
-  name="WithSpinner"
-  code={WithSpinnerSource}
-  exampleId="badge"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithSpinner" />
 
 ## Customization
 
@@ -83,22 +46,10 @@ Pass `class` for a one-off change to a single element.
 
 Override the fill when a brand or contextual color matters more than the theme default.
 
-<Example
-  name="CustomColor"
-  code={CustomColorSource}
-  exampleId="badge"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomColor" />
 
 ### Custom recipe
 
 Extend `badgeRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="badge"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

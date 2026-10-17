@@ -1,4 +1,3 @@
-import source from "./events.tsx?raw";
 import type { TourStepType } from "@pisagor/react";
 import { Button, Tour } from "@pisagor/react";
 import { useRef, useState } from "react";
@@ -97,5 +96,3 @@ export function Events() {
     </div>
   );
 }
-
-export { source as EventsSource };

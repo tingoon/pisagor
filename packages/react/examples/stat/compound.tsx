@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { Stat } from "@pisagor/react";
 
 export function Compound() {
@@ -11,5 +10,3 @@ export function Compound() {
     </Stat.Root>
   );
 }
-
-export { source as CompoundSource };

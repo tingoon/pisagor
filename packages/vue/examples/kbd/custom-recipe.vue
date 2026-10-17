@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./custom-recipe.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { kbdRecipe } from "@pisagor/recipes";
 import { Kbd } from "@pisagor/vue";

@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import {
   ArchiveIcon,
   ArrowBendDoubleUpLeftIcon,
@@ -84,5 +83,3 @@ export function Default() {
     </ContextMenu>
   );
 }
-
-export { source as DefaultSource };

@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import {
   HouseIcon,
   MagnifyingGlassIcon,
@@ -69,5 +68,3 @@ export function Default() {
     </Sidebar.Provider>
   );
 }
-
-export { source as DefaultSource };

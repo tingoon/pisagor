@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { Button, Dialog, Field, Input, Select } from "@pisagor/solid";
 import { Portal } from "solid-js/web";
 
@@ -62,5 +61,3 @@ export function Compound() {
     </Dialog.Root>
   );
 }
-
-export { source as CompoundSource };

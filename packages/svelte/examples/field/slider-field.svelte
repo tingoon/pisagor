@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./slider-field.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Field, Slider } from "@pisagor/svelte";
 </script>

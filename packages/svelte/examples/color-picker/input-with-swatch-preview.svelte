@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./input-with-swatch-preview.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { ColorPicker, InputGroup } from "@pisagor/svelte";
 </script>

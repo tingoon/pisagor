@@ -1,4 +1,3 @@
-import source from "./initial-focus.tsx?raw";
 import { Button, Dialog, Field, Input } from "@pisagor/react";
 import { useRef } from "react";
 
@@ -35,5 +34,3 @@ export function InitialFocus() {
     </Dialog>
   );
 }
-
-export { source as InitialFocusSource };

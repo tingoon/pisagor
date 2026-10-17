@@ -1,4 +1,3 @@
-import source from "./icon.tsx?raw";
 import { CreditCardIcon, HardDriveIcon, UserIcon } from "@phosphor-icons/react";
 import { Steps } from "@pisagor/react";
 
@@ -25,5 +24,3 @@ export function Icon() {
     </Steps>
   );
 }
-
-export { source as IconSource };

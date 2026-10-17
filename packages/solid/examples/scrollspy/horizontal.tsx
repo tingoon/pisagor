@@ -1,4 +1,3 @@
-import source from "./horizontal.tsx?raw";
 import { Button, ScrollArea, Scrollspy } from "@pisagor/solid";
 import { horizontalSections } from "./helpers";
 
@@ -45,5 +44,3 @@ export function Horizontal() {
     </div>
   );
 }
-
-export { source as HorizontalSource };

@@ -1,4 +1,3 @@
-import source from "./orientation-vertical.tsx?raw";
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Button, Editable, Textarea } from "@pisagor/react";
 export function OrientationVertical() {
@@ -25,5 +24,3 @@ export function OrientationVertical() {
     </Editable>
   );
 }
-
-export { source as OrientationVerticalSource };

@@ -1,4 +1,3 @@
-import source from "./custom-color.tsx?raw";
 import { Rating } from "@pisagor/solid";
 
 export function CustomColor() {
@@ -9,5 +8,3 @@ export function CustomColor() {
     </div>
   );
 }
-
-export { source as CustomColorSource };

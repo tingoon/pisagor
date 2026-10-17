@@ -7,7 +7,6 @@ export * from "./icon";
 export * from "./image";
 export * from "./link";
 export * from "./sizes";
-export { imports, sources } from "./sources";
 export * from "./variants";
 export * from "./with-avatar";
 export * from "./with-media";

@@ -1,11 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/circular-progress/default.vue?raw";
-import SizesSource from "#examples/vue/circular-progress/sizes.vue?raw";
-import ThicknessSource from "#examples/vue/circular-progress/thickness.vue?raw";
-import WithValueSource from "#examples/vue/circular-progress/with-value.vue?raw";
-import ControlledSource from "#examples/vue/circular-progress/controlled.vue?raw";
-import IndeterminateSource from "#examples/vue/circular-progress/indeterminate.vue?raw";
-import CustomRecipeSource from "#examples/vue/circular-progress/custom-recipe.vue?raw";
 
 ## Import
 
@@ -19,73 +12,37 @@ import { CircularProgress } from "@pisagor/vue";
 
 Show completion on a circular track.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="circular-progress"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Sizes
 
 Match ring size to available space and importance.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="circular-progress"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Thickness
 
 Adjust stroke thickness for visibility at the chosen size.
 
-<Example
-  name="Thickness"
-  code={ThicknessSource}
-  exampleId="circular-progress"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Thickness" />
 
 ### With Value
 
 Display the numeric percentage next to or inside the ring.
 
-<Example
-  name="WithValue"
-  code={WithValueSource}
-  exampleId="circular-progress"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithValue" />
 
 ### Controlled
 
 Drive the value from the parent while async work runs.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="circular-progress"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Indeterminate
 
 Animate without a value when progress cannot be measured yet.
 
-<Example
-  name="Indeterminate"
-  code={IndeterminateSource}
-  exampleId="circular-progress"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Indeterminate" />
 
 ## Customization
 
@@ -93,10 +50,4 @@ Animate without a value when progress cannot be measured yet.
 
 Extend `circularProgressRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="circular-progress"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

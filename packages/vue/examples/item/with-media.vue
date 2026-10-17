@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./with-media.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhCaretRight, PhSealCheck } from "@phosphor-icons/vue";
 import { Item } from "@pisagor/vue";

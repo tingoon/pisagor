@@ -1,4 +1,3 @@
-import source from "./column-filters.tsx?raw";
 import type { BadgeVariant } from "@pisagor/solid";
 import {
   Badge,
@@ -420,5 +419,3 @@ export function ColumnFilters() {
     </DataGridShell>
   );
 }
-
-export { source as ColumnFiltersSource };

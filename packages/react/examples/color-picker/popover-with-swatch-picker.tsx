@@ -1,4 +1,3 @@
-import source from "./popover-with-swatch-picker.tsx?raw";
 import { Button, ColorPicker } from "@pisagor/react";
 export function PopoverWithSwatchPicker() {
   const swatches = [
@@ -44,5 +43,3 @@ export function PopoverWithSwatchPicker() {
     </ColorPicker>
   );
 }
-
-export { source as PopoverWithSwatchPickerSource };

@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./with-context-menu.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { TreeView } from "@pisagor/svelte";
   import { createDemoCollection } from "./helpers";

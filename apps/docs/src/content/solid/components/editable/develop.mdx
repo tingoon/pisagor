@@ -1,19 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/solid/editable/default.tsx";
-import { VariantsSource } from "#examples/solid/editable/variants.tsx";
-import { SizesSource } from "#examples/solid/editable/sizes.tsx";
-import { OrientationHorizontalSource } from "#examples/solid/editable/orientation-horizontal.tsx";
-import { OrientationVerticalSource } from "#examples/solid/editable/orientation-vertical.tsx";
-import { WithoutControlsSource } from "#examples/solid/editable/without-controls.tsx";
-import { WithTextareaSource } from "#examples/solid/editable/with-textarea.tsx";
-import { ControlledSource } from "#examples/solid/editable/controlled.tsx";
-import { DisabledSource } from "#examples/solid/editable/disabled.tsx";
-import { InvalidSource } from "#examples/solid/editable/invalid.tsx";
-import { DblclickSource } from "#examples/solid/editable/dblclick.tsx";
-import { ActivationClickSource } from "#examples/solid/editable/activation-click.tsx";
-import { ActivationFocusSource } from "#examples/solid/editable/activation-focus.tsx";
-import { ActivationNoneSource } from "#examples/solid/editable/activation-none.tsx";
-import { CustomRecipeSource } from "#examples/solid/editable/custom-recipe.tsx";
 
 ## Import
 
@@ -42,169 +27,85 @@ import { Editable } from "@pisagor/solid";
 
 Click to edit a value inline where it already appears.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="editable"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Variants
 
 Choose field emphasis for the inline editor.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="editable"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Match control size to surrounding text density.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="editable"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Orientation Horizontal
 
 Lay out the editable horizontally when items should read in a row.
 
-<Example
-  name="OrientationHorizontal"
-  code={OrientationHorizontalSource}
-  exampleId="editable"
-  framework="solid"
-  kind="component"
-/>
+<Example name="OrientationHorizontal" />
 
 ### Orientation Vertical
 
 Stack the editable vertically when items should read in a column.
 
-<Example
-  name="OrientationVertical"
-  code={OrientationVerticalSource}
-  exampleId="editable"
-  framework="solid"
-  kind="component"
-/>
+<Example name="OrientationVertical" />
 
 ### Without Controls
 
 Hide explicit save/cancel when commit-on-blur is enough.
 
-<Example
-  name="WithoutControls"
-  code={WithoutControlsSource}
-  exampleId="editable"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithoutControls" />
 
 ### With Textarea
 
 Edit multi-line values inline.
 
-<Example
-  name="WithTextarea"
-  code={WithTextareaSource}
-  exampleId="editable"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithTextarea" />
 
 ### Controlled
 
 Drive value and edit state from the parent.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="editable"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that editing is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="editable"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface validation when the edited value is not allowed.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="editable"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ### Dblclick
 
 Require double-click to edit when accidental single clicks are common.
 
-<Example
-  name="Dblclick"
-  code={DblclickSource}
-  exampleId="editable"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Dblclick" />
 
 ### Activation Click
 
 Begin editing on single click.
 
-<Example
-  name="ActivationClick"
-  code={ActivationClickSource}
-  exampleId="editable"
-  framework="solid"
-  kind="component"
-/>
+<Example name="ActivationClick" />
 
 ### Activation Focus
 
 Begin editing when the value receives focus.
 
-<Example
-  name="ActivationFocus"
-  code={ActivationFocusSource}
-  exampleId="editable"
-  framework="solid"
-  kind="component"
-/>
+<Example name="ActivationFocus" />
 
 ### Activation None
 
 Start editing only from an explicit programmatic trigger.
 
-<Example
-  name="ActivationNone"
-  code={ActivationNoneSource}
-  exampleId="editable"
-  framework="solid"
-  kind="component"
-/>
+<Example name="ActivationNone" />
 
 ## Customization
 
@@ -212,10 +113,4 @@ Start editing only from an explicit programmatic trigger.
 
 Extend `editableRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="editable"
-  framework="solid"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

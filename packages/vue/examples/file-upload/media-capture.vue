@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./media-capture.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhCamera } from "@phosphor-icons/vue";
 import { Button, FileUpload } from "@pisagor/vue";

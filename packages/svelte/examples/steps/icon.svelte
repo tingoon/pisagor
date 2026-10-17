@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./icon.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Steps } from "@pisagor/svelte";
   import CreditCardIcon from "phosphor-svelte/lib/CreditCardIcon";

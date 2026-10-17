@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./number-currency.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Format } from "@pisagor/svelte";
 </script>

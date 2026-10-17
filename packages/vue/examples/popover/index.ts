@@ -7,4 +7,3 @@ export { default as Modal } from "./modal";
 export { default as Nested } from "./nested";
 export { default as Placements } from "./placements";
 export { default as ScrollArea } from "./scroll-area";
-export { imports, sources } from "./sources";

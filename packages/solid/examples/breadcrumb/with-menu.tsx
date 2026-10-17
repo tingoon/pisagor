@@ -1,4 +1,3 @@
-import source from "./with-menu.tsx?raw";
 import { Breadcrumb, Button, DropdownMenu } from "@pisagor/solid";
 export function WithMenu() {
   return (
@@ -64,5 +63,3 @@ export function WithMenu() {
     </Breadcrumb.Root>
   );
 }
-
-export { source as WithMenuSource };

@@ -1,25 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { StripedVariantSource } from "#examples/react/data-grid/striped-variant.tsx";
-import { ActiveFilterChipsSource } from "#examples/react/data-grid/active-filter-chips.tsx";
-import { ColumnFiltersSource } from "#examples/react/data-grid/column-filters.tsx";
-import { ColumnLayoutSource } from "#examples/react/data-grid/column-layout.tsx";
-import { ColumnPinningSource } from "#examples/react/data-grid/column-pinning.tsx";
-import { ColumnResizeSource } from "#examples/react/data-grid/column-resize.tsx";
-import { ColumnVisibilitySource } from "#examples/react/data-grid/column-visibility.tsx";
-import { ExpandingRowsSource } from "#examples/react/data-grid/expanding-rows.tsx";
-import { GlobalSelectionSource } from "#examples/react/data-grid/global-selection.tsx";
-import { GroupedRowsSource } from "#examples/react/data-grid/grouped-rows.tsx";
-import { ManualPaginationSource } from "#examples/react/data-grid/manual-pagination.tsx";
-import { MultiGroupingSource } from "#examples/react/data-grid/multi-grouping.tsx";
-import { OrdersWithFooterSource } from "#examples/react/data-grid/orders-with-footer.tsx";
-import { PaginatedSource } from "#examples/react/data-grid/paginated.tsx";
-import { RichCellsSource } from "#examples/react/data-grid/rich-cells.tsx";
-import { RowDetailsSource } from "#examples/react/data-grid/row-details.tsx";
-import { RowSelectionSource } from "#examples/react/data-grid/row-selection.tsx";
-import { SortingSource } from "#examples/react/data-grid/sorting.tsx";
-import { VirtualizedSource } from "#examples/react/data-grid/virtualized.tsx";
-import { WithSortableDataSource } from "#examples/react/data-grid/with-sortable-data.tsx";
-import { LoadingStateSource } from "#examples/react/data-grid/loading-state.tsx";
 
 ## Import
 
@@ -33,250 +12,124 @@ import { type ColumnDef } from "@pisagor/react/data-grid";
 
 Alternate row backgrounds to improve scanning in dense grids.
 
-<Example
-  name="StripedVariant"
-  code={StripedVariantSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="StripedVariant" />
 
 ### Active Filter Chips
 
 Show active filters as chips so users can remove them quickly.
 
-<Example
-  name="ActiveFilterChips"
-  code={ActiveFilterChipsSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="ActiveFilterChips" />
 
 ### Column Filters
 
 Filter per column when users narrow by field.
 
-<Example
-  name="ColumnFilters"
-  code={ColumnFiltersSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="ColumnFilters" />
 
 ### Column Layout
 
 Arrange column structure for the dataset's shape.
 
-<Example
-  name="ColumnLayout"
-  code={ColumnLayoutSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="ColumnLayout" />
 
 ### Column Pinning
 
 Pin columns so key fields stay visible while scrolling horizontally.
 
-<Example
-  name="ColumnPinning"
-  code={ColumnPinningSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="ColumnPinning" />
 
 ### Column Resize
 
 Drag column edges when users need wider or narrower fields. Resizers are focusable: use the arrow keys to resize and Enter to reset.
 
-<Example
-  name="ColumnResize"
-  code={ColumnResizeSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="ColumnResize" />
 
 ### Column Visibility
 
 Let users show or hide columns to focus the grid.
 
-<Example
-  name="ColumnVisibility"
-  code={ColumnVisibilitySource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="ColumnVisibility" />
 
 ### Expanding Rows
 
 Expand a row to reveal nested detail without leaving the grid.
 
-<Example
-  name="ExpandingRows"
-  code={ExpandingRowsSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="ExpandingRows" />
 
 ### Global Selection
 
 Select across the dataset when bulk actions apply beyond one page.
 
-<Example
-  name="GlobalSelection"
-  code={GlobalSelectionSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="GlobalSelection" />
 
 ### Grouped Rows
 
 Group rows by a field when hierarchy helps scanning.
 
-<Example
-  name="GroupedRows"
-  code={GroupedRowsSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="GroupedRows" />
 
 ### Manual Pagination
 
 Page on the server when the full dataset cannot load at once.
 
-<Example
-  name="ManualPagination"
-  code={ManualPaginationSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="ManualPagination" />
 
 ### Multi Grouping
 
 Group by more than one field for deeper summaries.
 
-<Example
-  name="MultiGrouping"
-  code={MultiGroupingSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="MultiGrouping" />
 
 ### Orders With Footer
 
 Show order rows with a footer summary when totals belong with the grid.
 
-<Example
-  name="OrdersWithFooter"
-  code={OrdersWithFooterSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="OrdersWithFooter" />
 
 ### Paginated
 
 Page through rows when the dataset should load in chunks.
 
-<Example
-  name="Paginated"
-  code={PaginatedSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="Paginated" />
 
 ### Rich Cells
 
 Render richer cell content when plain text is not enough.
 
-<Example
-  name="RichCells"
-  code={RichCellsSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="RichCells" />
 
 ### Row Details
 
 Expand a row to reveal detail without leaving the grid.
 
-<Example
-  name="RowDetails"
-  code={RowDetailsSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="RowDetails" />
 
 ### Row Selection
 
 Select rows for bulk actions.
 
-<Example
-  name="RowSelection"
-  code={RowSelectionSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="RowSelection" />
 
 ### Sorting
 
 Sort by column so users can reorder records. Sortable headers expose `aria-sort`.
 
-<Example
-  name="Sorting"
-  code={SortingSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="Sorting" />
 
 ### Virtualized
 
 Virtualize rows for very large datasets.
 
-<Example
-  name="Virtualized"
-  code={VirtualizedSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="Virtualized" />
 
 ### With Sortable Data
 
 Enable sortable columns when users need to reorder records by field.
 
-<Example
-  name="WithSortableData"
-  code={WithSortableDataSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="WithSortableData" />
 
 ### Loading State
 
 Show loading while rows are fetching so the grid does not look empty by mistake.
 
-<Example
-  name="LoadingState"
-  code={LoadingStateSource}
-  exampleId="data-grid"
-  framework="react"
-  kind="component"
-/>
+<Example name="LoadingState" />

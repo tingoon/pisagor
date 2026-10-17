@@ -1,4 +1,3 @@
-import source from "./initials.tsx?raw";
 import { Avatar } from "@pisagor/solid";
 
 export function Initials() {
@@ -10,5 +9,3 @@ export function Initials() {
     </div>
   );
 }
-
-export { source as InitialsSource };

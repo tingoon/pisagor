@@ -1,9 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/solid/stat/default.tsx";
-import { VariantsSource } from "#examples/solid/stat/variants.tsx";
-import { WithTrendSource } from "#examples/solid/stat/with-trend.tsx";
-import { CompoundSource } from "#examples/solid/stat/compound.tsx";
-import { CustomRecipeSource } from "#examples/solid/stat/custom-recipe.tsx";
 
 ## Import
 
@@ -17,49 +12,25 @@ import { Stat } from "@pisagor/solid";
 
 Highlight a key metric with supporting context.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="stat"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Variants
 
 Choose emphasis so the stat matches dashboard hierarchy.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="stat"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### With Trend
 
 Show direction of change when trend matters alongside the value.
 
-<Example
-  name="WithTrend"
-  code={WithTrendSource}
-  exampleId="stat"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithTrend" />
 
 ### Compound
 
 Assemble from parts when you need a custom layout beyond the shorthand API.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="stat"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ## Customization
 
@@ -67,10 +38,4 @@ Assemble from parts when you need a custom layout beyond the shorthand API.
 
 Extend `statRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="stat"
-  framework="solid"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

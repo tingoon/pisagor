@@ -1,4 +1,3 @@
-import source from "./sizes.tsx?raw";
 import { EmptyState } from "@pisagor/solid";
 import { For } from "solid-js";
 
@@ -19,5 +18,3 @@ export function Sizes() {
     </div>
   );
 }
-
-export { source as SizesSource };

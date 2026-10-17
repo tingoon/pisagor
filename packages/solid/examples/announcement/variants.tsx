@@ -1,4 +1,3 @@
-import source from "./variants.tsx?raw";
 import { Announcement, Badge } from "@pisagor/solid";
 import {
   ArrowUpRightIcon,
@@ -47,5 +46,3 @@ export function Variants() {
     </div>
   );
 }
-
-export { source as VariantsSource };

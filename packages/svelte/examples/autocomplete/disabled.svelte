@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./disabled.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { useListCollection } from "@ark-ui/svelte/collection";
   import { useFilter } from "@ark-ui/svelte/locale";

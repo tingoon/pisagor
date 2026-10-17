@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Button, Field, Input, Popover } from "@pisagor/react";
 export function Default() {
   return (
@@ -35,5 +34,3 @@ export function Default() {
     </Popover>
   );
 }
-
-export { source as DefaultSource };

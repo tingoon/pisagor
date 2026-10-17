@@ -1,4 +1,3 @@
-import source from "./radio-group.tsx?raw";
 import { Button, DropdownMenu } from "@pisagor/react";
 export function RadioGroup() {
   return (
@@ -16,5 +15,3 @@ export function RadioGroup() {
     </DropdownMenu>
   );
 }
-
-export { source as RadioGroupSource };

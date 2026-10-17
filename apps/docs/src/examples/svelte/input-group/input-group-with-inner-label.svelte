@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./input-group-with-inner-label.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, Field, InputGroup, Tooltip } from "@pisagor/svelte";
   import InfoIcon from "phosphor-svelte/lib/InfoIcon";

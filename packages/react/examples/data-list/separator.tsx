@@ -1,4 +1,3 @@
-import source from "./separator.tsx?raw";
 import { DataList } from "@pisagor/react";
 
 export function Separator() {
@@ -15,5 +14,3 @@ export function Separator() {
     />
   );
 }
-
-export { source as SeparatorSource };

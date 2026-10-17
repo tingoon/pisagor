@@ -1,4 +1,3 @@
-import source from "./with-trigger.tsx?raw";
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Autocomplete } from "@pisagor/solid";
@@ -36,5 +35,3 @@ export function WithTrigger() {
     </Autocomplete.Root>
   );
 }
-
-export { source as WithTriggerSource };

@@ -1,4 +1,3 @@
-import source from "./default.ts?raw";
 import { PhHouse, PhMagnifyingGlass, PhUser } from "@phosphor-icons/vue";
 import { Button, Sidebar } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
@@ -80,5 +79,3 @@ export default defineComponent({
       ]);
   },
 });
-
-export { source };

@@ -7,7 +7,6 @@ export * from "./font-weight";
 export * from "./horizontal";
 export * from "./single";
 export * from "./sizes";
-export { imports, sources } from "./sources";
 export * from "./spacing";
 export * from "./variants";
 export * from "./vertical";

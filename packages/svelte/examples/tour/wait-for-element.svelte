@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./wait-for-element.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { waitForElement, waitForEvent } from "@ark-ui/svelte/tour";
   import { buttonRecipe } from "@pisagor/recipes";

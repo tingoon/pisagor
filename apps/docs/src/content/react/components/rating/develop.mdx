@@ -1,18 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/react/rating/default.tsx";
-import { SizesSource } from "#examples/react/rating/sizes.tsx";
-import { CountSource } from "#examples/react/rating/count.tsx";
-import { HalfStarSource } from "#examples/react/rating/half-star.tsx";
-import { CustomIconSource } from "#examples/react/rating/custom-icon.tsx";
-import { TestimonialSource } from "#examples/react/rating/testimonial.tsx";
-import { CompoundSource } from "#examples/react/rating/compound.tsx";
-import { ControlledSource } from "#examples/react/rating/controlled.tsx";
-import { DisabledSource } from "#examples/react/rating/disabled.tsx";
-import { InvalidSource } from "#examples/react/rating/invalid.tsx";
-import { ReadonlySource } from "#examples/react/rating/readonly.tsx";
-import { CustomColorSource } from "#examples/react/rating/custom-color.tsx";
-import { CustomSizeSource } from "#examples/react/rating/custom-size.tsx";
-import { CustomRecipeSource } from "#examples/react/rating/custom-recipe.tsx";
 
 ## Import
 
@@ -26,133 +12,67 @@ import { Rating } from "@pisagor/react";
 
 Let users pick a score from one to five stars.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="rating"
-  framework="react"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Sizes
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="rating"
-  framework="react"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Count
 
 Set `count` to change how many stars are shown.
 
-<Example
-  name="Count"
-  code={CountSource}
-  exampleId="rating"
-  framework="react"
-  kind="component"
-/>
+<Example name="Count" />
 
 ### Half Star
 
 Allow half values when finer granularity matters.
 
-<Example
-  name="HalfStar"
-  code={HalfStarSource}
-  exampleId="rating"
-  framework="react"
-  kind="component"
-/>
+<Example name="HalfStar" />
 
 ### Custom Icon
 
 Replace stars with another symbol when the metaphor fits better.
 
-<Example
-  name="CustomIcon"
-  code={CustomIconSource}
-  exampleId="rating"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomIcon" />
 
 ### Testimonial
 
 Present a readonly score in a testimonial-style layout.
 
-<Example
-  name="Testimonial"
-  code={TestimonialSource}
-  exampleId="rating"
-  framework="react"
-  kind="component"
-/>
+<Example name="Testimonial" />
 
 ### Compound
 
 Compose the rating from parts for custom item rendering.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="rating"
-  framework="react"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this rating.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="rating"
-  framework="react"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the rating is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="rating"
-  framework="react"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation or error state so users know the rating needs attention before continuing.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="rating"
-  framework="react"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ### Readonly
 
 Display the value without allowing edits when the score or data is informational only.
 
-<Example
-  name="Readonly"
-  code={ReadonlySource}
-  exampleId="rating"
-  framework="react"
-  kind="component"
-/>
+<Example name="Readonly" />
 
 ## Customization
 
@@ -162,32 +82,14 @@ Pass `className` for a one-off change to a single element.
 
 Override the fill or accent when a brand or contextual color matters more than the theme default.
 
-<Example
-  name="CustomColor"
-  code={CustomColorSource}
-  exampleId="rating"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomColor" />
 
 Override dimensions when the default size does not fit the layout.
 
-<Example
-  name="CustomSize"
-  code={CustomSizeSource}
-  exampleId="rating"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomSize" />
 
 ### Custom recipe
 
 Extend `ratingRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="rating"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

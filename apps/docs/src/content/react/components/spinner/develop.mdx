@@ -1,6 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { SizesSource } from "#examples/react/spinner/sizes.tsx";
-import { CustomRecipeSource } from "#examples/react/spinner/custom-recipe.tsx";
 
 ## Import
 
@@ -14,13 +12,7 @@ import { Spinner } from "@pisagor/react";
 
 Match size to the surrounding layout — smaller in compact chrome, larger where the spinner needs emphasis.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="spinner"
-  framework="react"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ## Customization
 
@@ -28,10 +20,4 @@ Match size to the surrounding layout — smaller in compact chrome, larger where
 
 Extend `spinnerRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="spinner"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

@@ -1,4 +1,3 @@
-import source from "./with-icon.tsx?raw";
 import { Button } from "@pisagor/solid";
 import {
   ArrowSquareOutIcon,
@@ -34,5 +33,3 @@ export function WithIcon() {
     </div>
   );
 }
-
-export { source as WithIconSource };

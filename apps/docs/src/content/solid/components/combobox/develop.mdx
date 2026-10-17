@@ -1,18 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/solid/combobox/default.tsx";
-import { VariantsSource } from "#examples/solid/combobox/variants.tsx";
-import { SizesSource } from "#examples/solid/combobox/sizes.tsx";
-import { WithStartIconSource } from "#examples/solid/combobox/with-start-icon.tsx";
-import { WithClearButtonSource } from "#examples/solid/combobox/with-clear-button.tsx";
-import { MultipleSource } from "#examples/solid/combobox/multiple.tsx";
-import { GroupSource } from "#examples/solid/combobox/group.tsx";
-import { WithScrollSource } from "#examples/solid/combobox/with-scroll.tsx";
-import { CompoundSource } from "#examples/solid/combobox/compound.tsx";
-import { ControlledSource } from "#examples/solid/combobox/controlled.tsx";
-import { DisabledSource } from "#examples/solid/combobox/disabled.tsx";
-import { InvalidSource } from "#examples/solid/combobox/invalid.tsx";
-import { AutohighlightSource } from "#examples/solid/combobox/autohighlight.tsx";
-import { CustomRecipeSource } from "#examples/solid/combobox/custom-recipe.tsx";
 
 ## Import
 
@@ -26,157 +12,79 @@ import { Combobox } from "@pisagor/solid";
 
 Search and pick from a filterable list with low-level composition control.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="combobox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Variants
 
 Choose visual weight or emphasis so the combobox matches importance in the surrounding layout.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="combobox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Match size to the surrounding layout — smaller in compact chrome, larger where the combobox needs emphasis.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="combobox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### With Start Icon
 
 Add a leading icon to signal search or category.
 
-<Example
-  name="WithStartIcon"
-  code={WithStartIconSource}
-  exampleId="combobox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithStartIcon" />
 
 ### With Clear Button
 
 Let users clear the query and selection in one press.
 
-<Example
-  name="WithClearButton"
-  code={WithClearButtonSource}
-  exampleId="combobox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithClearButton" />
 
 ### Multiple
 
 Allow more than one open or selected item when users need several at once.
 
-<Example
-  name="Multiple"
-  code={MultipleSource}
-  exampleId="combobox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Multiple" />
 
 ### Grouped
 
 Group related items so related choices stay visually and semantically together.
 
-<Example
-  name="Group"
-  code={GroupSource}
-  exampleId="combobox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Group" />
 
 ### With Scroll
 
 Add scrolling when the list of items can grow beyond the available height.
 
-<Example
-  name="WithScroll"
-  code={WithScrollSource}
-  exampleId="combobox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithScroll" />
 
 ### Compound
 
 Assemble from parts when you need a custom layout beyond the shorthand API.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="combobox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this combobox.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="combobox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the combobox is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="combobox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation or error state so users know the combobox needs attention before continuing.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="combobox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ### Autohighlight
 
 Highlight the first match automatically as the user types.
 
-<Example
-  name="Autohighlight"
-  code={AutohighlightSource}
-  exampleId="combobox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Autohighlight" />
 
 ## Customization
 
@@ -184,10 +92,4 @@ Highlight the first match automatically as the user types.
 
 Extend `comboboxRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="combobox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

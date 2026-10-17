@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./fallback.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { ClientOnly } from "@pisagor/vue";
 

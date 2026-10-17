@@ -1,6 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/solid/sidebar/default.tsx";
-import { DisableHotkeySource } from "#examples/solid/sidebar/disable-hotkey.tsx";
 
 ## Import
 
@@ -41,22 +39,10 @@ import { Sidebar } from "@pisagor/solid";
 
 Collapsible application navigation with desktop persistence and mobile sheet behavior.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="sidebar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Disable Hotkey
 
 Sidebar.Provider restores the collapsed state saved in `localStorage` and toggles with `mod+B`. Set `disableHotkey` to turn the shortcut off.
 
-<Example
-  name="DisableHotkey"
-  code={DisableHotkeySource}
-  exampleId="sidebar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="DisableHotkey" />

@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./form-section.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, Field, Input, Surface } from "@pisagor/svelte";
   import { formSectionBlock } from "#/recipes/blocks/field";

@@ -1,4 +1,3 @@
-import source from "./align-inline-end.tsx?raw";
 import { InputGroup } from "@pisagor/solid";
 import { EyeIcon } from "@pisagor/solid/icons";
 
@@ -15,5 +14,3 @@ export function AlignInlineEnd() {
     </div>
   );
 }
-
-export { source as AlignInlineEndSource };

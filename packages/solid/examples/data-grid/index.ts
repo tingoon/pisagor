@@ -16,7 +16,6 @@ export * from "./rich-cells";
 export * from "./row-details";
 export * from "./row-selection";
 export * from "./sorting";
-export { imports, sources } from "./sources";
 export * from "./striped-variant";
 export * from "./virtualized";
 export * from "./with-sortable-data";

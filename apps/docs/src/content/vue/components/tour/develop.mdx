@@ -1,16 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/tour/default.vue?raw";
-import ProgressSource from "#examples/vue/tour/progress.vue?raw";
-import StepTypesSource from "#examples/vue/tour/step-types.vue?raw";
-import AsyncSource from "#examples/vue/tour/async.vue?raw";
-import EventsSource from "#examples/vue/tour/events.vue?raw";
-import KeyboardNavigationSource from "#examples/vue/tour/keyboard-navigation.vue?raw";
-import SkipSource from "#examples/vue/tour/skip.vue?raw";
-import WaitForClickSource from "#examples/vue/tour/wait-for-click.vue?raw";
-import WaitForElementSource from "#examples/vue/tour/wait-for-element.vue?raw";
-import WaitForInputSource from "#examples/vue/tour/wait-for-input.vue?raw";
-import CustomSpacingSource from "#examples/vue/tour/custom-spacing.vue?raw";
-import CustomRecipeSource from "#examples/vue/tour/custom-recipe.vue?raw";
 
 ## Import
 
@@ -43,121 +31,61 @@ import { Tour } from "@pisagor/vue";
 
 Walk through key UI with guided highlight steps.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="tour"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Progress
 
 Show how far through the tour the user has gone.
 
-<Example
-  name="Progress"
-  code={ProgressSource}
-  exampleId="tour"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Progress" />
 
 ### Step Types
 
 Use different step presentations for varied teaching moments.
 
-<Example
-  name="StepTypes"
-  code={StepTypesSource}
-  exampleId="tour"
-  framework="vue"
-  kind="component"
-/>
+<Example name="StepTypes" />
 
 ### Async
 
 Load or advance steps asynchronously when targets appear later.
 
-<Example
-  name="Async"
-  code={AsyncSource}
-  exampleId="tour"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Async" />
 
 ### Events
 
 Hook step lifecycle events to analytics or custom logic.
 
-<Example
-  name="Events"
-  code={EventsSource}
-  exampleId="tour"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Events" />
 
 ### Keyboard Navigation
 
 Move between steps with the keyboard.
 
-<Example
-  name="KeyboardNavigation"
-  code={KeyboardNavigationSource}
-  exampleId="tour"
-  framework="vue"
-  kind="component"
-/>
+<Example name="KeyboardNavigation" />
 
 ### Skip
 
 Let users exit the tour without finishing every step.
 
-<Example
-  name="Skip"
-  code={SkipSource}
-  exampleId="tour"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Skip" />
 
 ### Wait For Click
 
 Pause until the user clicks a target before continuing.
 
-<Example
-  name="WaitForClick"
-  code={WaitForClickSource}
-  exampleId="tour"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WaitForClick" />
 
 ### Wait For Element
 
 Wait until a target exists in the DOM before highlighting it.
 
-<Example
-  name="WaitForElement"
-  code={WaitForElementSource}
-  exampleId="tour"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WaitForElement" />
 
 ### Wait For Input
 
 Wait for input in a field before advancing.
 
-<Example
-  name="WaitForInput"
-  code={WaitForInputSource}
-  exampleId="tour"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WaitForInput" />
 
 ## Customization
 
@@ -167,22 +95,10 @@ Pass `class` for a one-off change to a single element.
 
 Override spacing when the default does not fit the surrounding layout.
 
-<Example
-  name="CustomSpacing"
-  code={CustomSpacingSource}
-  exampleId="tour"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomSpacing" />
 
 ### Custom recipe
 
 Extend `tourRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="tour"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

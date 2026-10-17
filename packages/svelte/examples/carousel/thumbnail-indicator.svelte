@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./thumbnail-indicator.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Carousel } from "@pisagor/svelte";
   import { imageSources } from "./helpers";

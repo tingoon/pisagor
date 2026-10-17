@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./article.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { LinkBox } from "@pisagor/vue";
 </script>

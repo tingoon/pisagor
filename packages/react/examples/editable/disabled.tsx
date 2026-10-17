@@ -1,4 +1,3 @@
-import source from "./disabled.tsx?raw";
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Button, Editable, Input } from "@pisagor/react";
 export function Disabled() {
@@ -25,5 +24,3 @@ export function Disabled() {
     </Editable>
   );
 }
-
-export { source as DisabledSource };

@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Button, Navbar } from "@pisagor/solid";
 
 export function Default() {
@@ -14,5 +13,3 @@ export function Default() {
     </Navbar>
   );
 }
-
-export { source as DefaultSource };

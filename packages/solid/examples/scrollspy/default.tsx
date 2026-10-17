@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Scrollspy } from "@pisagor/solid";
 
 export function Default() {
@@ -10,5 +9,3 @@ export function Default() {
     </Scrollspy>
   );
 }
-
-export { source as DefaultSource };

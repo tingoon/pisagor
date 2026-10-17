@@ -1,4 +1,3 @@
-import source from "./data.ts?raw";
 import type { TreeNodeType } from "@pisagor/vue";
 
 export const sampleFileTree: TreeNodeType = {
@@ -73,5 +72,3 @@ export const docsLinkTree: TreeNodeWithLink = {
   id: "ROOT",
   name: "",
 };
-
-export { source };

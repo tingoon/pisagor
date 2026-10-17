@@ -7,5 +7,4 @@ export { default as OrientationHorizontal } from "./orientation-horizontal";
 export { default as OrientationVertical } from "./orientation-vertical";
 export { default as PauseOnHover } from "./pause-on-hover";
 export { default as Reverse } from "./reverse";
-export { imports, sources } from "./sources";
 export { default as Spacing } from "./spacing";

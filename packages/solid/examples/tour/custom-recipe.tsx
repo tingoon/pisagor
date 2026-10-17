@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { tourRecipe } from "@pisagor/recipes";
 import { Button, Tour } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -41,5 +40,3 @@ export function CustomRecipe() {
     </Tour>
   );
 }
-
-export { source as CustomRecipeSource };

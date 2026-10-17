@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./input-group-with-inner-label.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhInfo } from "@phosphor-icons/vue";
 import { Button, Field, InputGroup, Tooltip } from "@pisagor/vue";

@@ -8,5 +8,4 @@ export { default as OrientationHorizontal } from "./orientation-horizontal.svelt
 export { default as OrientationVertical } from "./orientation-vertical.svelte";
 export { default as PauseOnHover } from "./pause-on-hover.svelte";
 export { default as Reverse } from "./reverse.svelte";
-export { imports, sources } from "./sources";
 export { default as Spacing } from "./spacing.svelte";

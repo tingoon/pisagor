@@ -1,4 +1,3 @@
-import source from "./icon.tsx?raw";
 import { Button, Card } from "@pisagor/solid";
 import { CurrencyDollarIcon } from "@pisagor/solid/icons";
 export function Icon() {
@@ -22,5 +21,3 @@ export function Icon() {
     </Card>
   );
 }
-
-export { source as IconSource };

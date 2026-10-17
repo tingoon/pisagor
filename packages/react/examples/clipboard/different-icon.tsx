@@ -1,4 +1,3 @@
-import source from "./different-icon.tsx?raw";
 import { SparkleIcon } from "@phosphor-icons/react";
 import { Clipboard } from "@pisagor/react";
 
@@ -12,5 +11,3 @@ export function DifferentIcon() {
     />
   );
 }
-
-export { source as DifferentIconSource };

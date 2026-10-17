@@ -1,4 +1,3 @@
-import source from "./range.tsx?raw";
 import { Button, Calendar, DatePicker, parseDate } from "@pisagor/solid";
 import { CalendarIcon } from "@pisagor/solid/icons";
 export function Range() {
@@ -27,5 +26,3 @@ export function Range() {
     </DatePicker>
   );
 }
-
-export { source as RangeSource };

@@ -1,4 +1,3 @@
-import source from "./rich-cells.tsx?raw";
 import type { BadgeVariant } from "@pisagor/react";
 import { Avatar, Badge, Table } from "@pisagor/react";
 import type { ColumnDef } from "@pisagor/react/data-grid";
@@ -178,5 +177,3 @@ export function RichCells() {
     </DataGridShell>
   );
 }
-
-export { source as RichCellsSource };

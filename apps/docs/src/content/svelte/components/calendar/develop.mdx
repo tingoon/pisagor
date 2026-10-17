@@ -1,18 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/calendar/default.svelte?raw";
-import RangeSource from "#examples/svelte/calendar/range.svelte?raw";
-import MultipleMonthsSource from "#examples/svelte/calendar/multiple-months.svelte?raw";
-import MonthYearSelectorSource from "#examples/svelte/calendar/month-year-selector.svelte?raw";
-import PresetsSource from "#examples/svelte/calendar/presets.svelte?raw";
-import ControlledSource from "#examples/svelte/calendar/controlled.svelte?raw";
-import DisabledSource from "#examples/svelte/calendar/disabled.svelte?raw";
-import InvalidSource from "#examples/svelte/calendar/invalid.svelte?raw";
-import MinMaxSource from "#examples/svelte/calendar/min-max.svelte?raw";
-import BookedDatesSource from "#examples/svelte/calendar/booked-dates.svelte?raw";
-import FixedWeeksSource from "#examples/svelte/calendar/fixed-weeks.svelte?raw";
-import SelectTodaySource from "#examples/svelte/calendar/select-today.svelte?raw";
-import CustomCellSizeSource from "#examples/svelte/calendar/custom-cell-size.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/calendar/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -42,145 +28,73 @@ import { Calendar } from "@pisagor/svelte";
 
 Browse and pick a single date on the calendar grid.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="calendar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Range
 
 Pick a start and end date for spans such as trips or reports.
 
-<Example
-  name="Range"
-  code={RangeSource}
-  exampleId="calendar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Range" />
 
 ### Multiple Months
 
 Show more than one month when comparing ranges across months.
 
-<Example
-  name="MultipleMonths"
-  code={MultipleMonthsSource}
-  exampleId="calendar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="MultipleMonths" />
 
 ### Month Year Selector
 
 Jump by month or year when paging day-by-day would be slow.
 
-<Example
-  name="MonthYearSelector"
-  code={MonthYearSelectorSource}
-  exampleId="calendar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="MonthYearSelector" />
 
 ### Presets
 
 Offer common ranges so users can pick without hunting on the grid.
 
-<Example
-  name="Presets"
-  code={PresetsSource}
-  exampleId="calendar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Presets" />
 
 ### Controlled
 
 Drive the selected date from the parent when other UI depends on it.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="calendar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the calendar cannot be used.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="calendar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Show that the selected date is not allowed.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="calendar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ### Min Max
 
 Limit selection to a valid window of dates.
 
-<Example
-  name="MinMax"
-  code={MinMaxSource}
-  exampleId="calendar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="MinMax" />
 
 ### Booked Dates
 
 Mark unavailable days when bookings or blackout dates matter.
 
-<Example
-  name="BookedDates"
-  code={BookedDatesSource}
-  exampleId="calendar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="BookedDates" />
 
 ### Fixed Weeks
 
 Keep six rows every month so the calendar height stays stable.
 
-<Example
-  name="FixedWeeks"
-  code={FixedWeeksSource}
-  exampleId="calendar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="FixedWeeks" />
 
 ### Select Today
 
 Jump to today when returning to the current date is a frequent action.
 
-<Example
-  name="SelectToday"
-  code={SelectTodaySource}
-  exampleId="calendar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="SelectToday" />
 
 ## Customization
 
@@ -190,22 +104,10 @@ Pass `class` for a one-off change to a single element.
 
 Resize day cells when the calendar must match a denser or larger layout.
 
-<Example
-  name="CustomCellSize"
-  code={CustomCellSizeSource}
-  exampleId="calendar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomCellSize" />
 
 ### Custom recipe
 
 Extend `calendarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="calendar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

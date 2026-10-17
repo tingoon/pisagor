@@ -1,4 +1,3 @@
-import source from "./align-inline-start.tsx?raw";
 import { FunnelIcon } from "@phosphor-icons/react";
 import { InputGroup } from "@pisagor/react";
 
@@ -17,5 +16,3 @@ export function AlignInlineStart() {
     </div>
   );
 }
-
-export { source as AlignInlineStartSource };

@@ -1,4 +1,3 @@
-import source from "./controlled-position.tsx?raw";
 import {
   CaretDownIcon,
   CaretLeftIcon,
@@ -94,5 +93,3 @@ export function ControlledPosition() {
     </div>
   );
 }
-
-export { source as ControlledPositionSource };

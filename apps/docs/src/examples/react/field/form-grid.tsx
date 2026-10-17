@@ -1,4 +1,3 @@
-import source from "./form-grid.tsx?raw";
 import { Field, Input } from "@pisagor/react";
 import { formGridBlock } from "#/recipes/blocks/field";
 
@@ -22,5 +21,3 @@ export function FormGrid() {
     </Field.Group>
   );
 }
-
-export { source as FormGridSource };

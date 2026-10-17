@@ -1,4 +1,3 @@
-import source from "./controlled.tsx?raw";
 import type { NodeProviderProps } from "@pisagor/react";
 import { createTreeCollection, TreeView } from "@pisagor/react";
 import { useState } from "react";
@@ -72,5 +71,3 @@ export function Controlled() {
     </div>
   );
 }
-
-export { source as ControlledSource };

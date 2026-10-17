@@ -1,4 +1,3 @@
-import source from "./close-behavior.tsx?raw";
 import { Button, Dialog } from "@pisagor/solid";
 import { Portal } from "solid-js/web";
 export function CloseBehavior() {
@@ -55,5 +54,3 @@ export function CloseBehavior() {
     </div>
   );
 }
-
-export { source as CloseBehaviorSource };

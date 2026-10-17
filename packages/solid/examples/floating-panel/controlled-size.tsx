@@ -1,4 +1,3 @@
-import source from "./controlled-size.tsx?raw";
 import { Button, FloatingPanel } from "@pisagor/solid";
 import { GearSixIcon, XIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";
@@ -73,5 +72,3 @@ export function ControlledSize() {
     </FloatingPanel>
   );
 }
-
-export { source as ControlledSizeSource };

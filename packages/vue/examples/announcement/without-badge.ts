@@ -1,4 +1,3 @@
-import source from "./without-badge.ts?raw";
 import { PhArrowUpRight } from "@phosphor-icons/vue";
 import { Announcement } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
@@ -15,5 +14,3 @@ export default defineComponent({
       });
   },
 });
-
-export { source };

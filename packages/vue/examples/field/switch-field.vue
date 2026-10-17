@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./switch-field.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Field, Switch } from "@pisagor/vue";
 </script>

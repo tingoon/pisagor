@@ -1,4 +1,3 @@
-import source from "./controlled.tsx?raw";
 import { RichTextEditor } from "@pisagor/solid/rich-text-editor";
 import { createSignal } from "solid-js";
 export function Controlled() {
@@ -11,5 +10,3 @@ export function Controlled() {
     </div>
   );
 }
-
-export { source as ControlledSource };

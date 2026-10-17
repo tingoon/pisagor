@@ -1,36 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/color-picker/default.vue?raw";
-import VariantsSource from "#examples/vue/color-picker/variants.vue?raw";
-import AreaChannelsSource from "#examples/vue/color-picker/area-channels.vue?raw";
-import AreaDotsSource from "#examples/vue/color-picker/area-dots.vue?raw";
-import InputChannelSource from "#examples/vue/color-picker/input-channel.vue?raw";
-import LabelFormatSelectSource from "#examples/vue/color-picker/label-format-select.vue?raw";
-import InputCompactSource from "#examples/vue/color-picker/input-compact.vue?raw";
-import InputWithPopoverSource from "#examples/vue/color-picker/input-with-popover.vue?raw";
-import InputWithSwatchPreviewSource from "#examples/vue/color-picker/input-with-swatch-preview.vue?raw";
-import PopoverSlidersOnlySource from "#examples/vue/color-picker/popover-sliders-only.vue?raw";
-import PopoverWithChannelEditingSource from "#examples/vue/color-picker/popover-with-channel-editing.vue?raw";
-import PopoverWithSwatchPickerSource from "#examples/vue/color-picker/popover-with-swatch-picker.vue?raw";
-import SliderAlphaChannelSource from "#examples/vue/color-picker/slider-alpha-channel.vue?raw";
-import SliderHsbaChannelsSource from "#examples/vue/color-picker/slider-hsba-channels.vue?raw";
-import SliderHslChannelsSource from "#examples/vue/color-picker/slider-hsl-channels.vue?raw";
-import SliderRgbChannelsSource from "#examples/vue/color-picker/slider-rgb-channels.vue?raw";
-import SliderVerticalSource from "#examples/vue/color-picker/slider-vertical.vue?raw";
-import SwatchPickerSource from "#examples/vue/color-picker/swatch-picker.vue?raw";
-import SwatchPickerCustomIndicatorSource from "#examples/vue/color-picker/swatch-picker-custom-indicator.vue?raw";
-import ClearableSource from "#examples/vue/color-picker/clearable.vue?raw";
-import InputControlledSource from "#examples/vue/color-picker/input-controlled.vue?raw";
-import SliderControlledSource from "#examples/vue/color-picker/slider-controlled.vue?raw";
-import SwatchPickerControlledSource from "#examples/vue/color-picker/swatch-picker-controlled.vue?raw";
-import DisabledSource from "#examples/vue/color-picker/disabled.vue?raw";
-import PopoverDisabledSource from "#examples/vue/color-picker/popover-disabled.vue?raw";
-import SliderDisabledSource from "#examples/vue/color-picker/slider-disabled.vue?raw";
-import SwatchPickerDisabledSource from "#examples/vue/color-picker/swatch-picker-disabled.vue?raw";
-import InvalidSource from "#examples/vue/color-picker/invalid.vue?raw";
-import CustomSpacingSource from "#examples/vue/color-picker/custom-spacing.vue?raw";
-import SwatchPickerCustomRadiusSource from "#examples/vue/color-picker/swatch-picker-custom-radius.vue?raw";
-import SwatchPickerCustomSizeSource from "#examples/vue/color-picker/swatch-picker-custom-size.vue?raw";
-import CustomRecipeSource from "#examples/vue/color-picker/custom-recipe.vue?raw";
 
 ## Import
 
@@ -66,337 +34,169 @@ import { ColorPicker } from "@pisagor/vue";
 
 Pick a color with the full visual picker surface.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Variants
 
 Choose picker chrome to match compact forms or larger editing panels.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Area Channels
 
 Edit the 2D color area using specific channels for finer control.
 
-<Example
-  name="AreaChannels"
-  code={AreaChannelsSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="AreaChannels" />
 
 ### Area Dots
 
 Show discrete dots on the area when quantized picks help.
 
-<Example
-  name="AreaDots"
-  code={AreaDotsSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="AreaDots" />
 
 ### Input Channel
 
 Type a single channel value when precision matters more than dragging.
 
-<Example
-  name="InputChannel"
-  code={InputChannelSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="InputChannel" />
 
 ### Label Format Select
 
 Pair `ColorPicker.Label` with `ColorPicker.FormatSelect` and `ColorPicker.ChannelInput`.
 
-<Example
-  name="LabelFormatSelect"
-  code={LabelFormatSelectSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="LabelFormatSelect" />
 
 ### Input Compact
 
 Use a compact channel input when space is limited.
 
-<Example
-  name="InputCompact"
-  code={InputCompactSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="InputCompact" />
 
 ### Input With Popover
 
 Open channel editing in a popover attached to a trigger.
 
-<Example
-  name="InputWithPopover"
-  code={InputWithPopoverSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="InputWithPopover" />
 
 ### Input With Swatch Preview
 
 Pair inputs with a swatch so typed values stay visually grounded.
 
-<Example
-  name="InputWithSwatchPreview"
-  code={InputWithSwatchPreviewSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="InputWithSwatchPreview" />
 
 ### Popover Sliders Only
 
 Offer sliders without the full area when a simpler editor is enough.
 
-<Example
-  name="PopoverSlidersOnly"
-  code={PopoverSlidersOnlySource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="PopoverSlidersOnly" />
 
 ### Popover With Channel Editing
 
 Combine popover chrome with numeric channel fields.
 
-<Example
-  name="PopoverWithChannelEditing"
-  code={PopoverWithChannelEditingSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="PopoverWithChannelEditing" />
 
 ### Popover With Swatch Picker
 
 Pick from swatches inside a popover for predefined palettes.
 
-<Example
-  name="PopoverWithSwatchPicker"
-  code={PopoverWithSwatchPickerSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="PopoverWithSwatchPicker" />
 
 ### Slider Alpha Channel
 
 Adjust transparency with an alpha slider when opacity matters.
 
-<Example
-  name="SliderAlphaChannel"
-  code={SliderAlphaChannelSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="SliderAlphaChannel" />
 
 ### Slider Hsba Channels
 
 Edit HSBA channels with sliders when that color model fits the task.
 
-<Example
-  name="SliderHsbaChannels"
-  code={SliderHsbaChannelsSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="SliderHsbaChannels" />
 
 ### Slider Hsl Channels
 
 Edit HSL channels with sliders when that color model fits the task.
 
-<Example
-  name="SliderHslChannels"
-  code={SliderHslChannelsSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="SliderHslChannels" />
 
 ### Slider Rgb Channels
 
 Edit RGB channels with sliders when that color model fits the task.
 
-<Example
-  name="SliderRgbChannels"
-  code={SliderRgbChannelsSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="SliderRgbChannels" />
 
 ### Slider Vertical
 
 Orient channel sliders vertically when the layout favors a tall editor.
 
-<Example
-  name="SliderVertical"
-  code={SliderVerticalSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="SliderVertical" />
 
 ### Swatch Picker
 
 Pick from predefined swatches when freeform color picking is unnecessary.
 
-<Example
-  name="SwatchPicker"
-  code={SwatchPickerSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="SwatchPicker" />
 
 ### Swatch Picker Custom Indicator
 
 Customize the selected-swatch indicator to match brand chrome.
 
-<Example
-  name="SwatchPickerCustomIndicator"
-  code={SwatchPickerCustomIndicatorSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="SwatchPickerCustomIndicator" />
 
 ### Clearable
 
 Offer a clear control when users often need to remove the selected color.
 
-<Example
-  name="Clearable"
-  code={ClearableSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Clearable" />
 
 ### Input Controlled
 
 Control channel inputs from the parent for synced color editors.
 
-<Example
-  name="InputControlled"
-  code={InputControlledSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="InputControlled" />
 
 ### Slider Controlled
 
 Drive slider channels from the parent when color state lives above the picker.
 
-<Example
-  name="SliderControlled"
-  code={SliderControlledSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="SliderControlled" />
 
 ### Swatch Picker Controlled
 
 Drive the selected swatch from the parent when palette state lives above.
 
-<Example
-  name="SwatchPickerControlled"
-  code={SwatchPickerControlledSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="SwatchPickerControlled" />
 
 ### Disabled
 
 Show that color cannot be changed.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Popover Disabled
 
 Show an unavailable popover trigger when color editing is blocked.
 
-<Example
-  name="PopoverDisabled"
-  code={PopoverDisabledSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="PopoverDisabled" />
 
 ### Slider Disabled
 
 Show that slider channels are unavailable.
 
-<Example
-  name="SliderDisabled"
-  code={SliderDisabledSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="SliderDisabled" />
 
 ### Swatch Picker Disabled
 
 Show that swatch picking is unavailable.
 
-<Example
-  name="SwatchPickerDisabled"
-  code={SwatchPickerDisabledSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="SwatchPickerDisabled" />
 
 ### Invalid
 
 Surface an invalid color value that needs correction.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ## Customization
 
@@ -406,42 +206,18 @@ Pass `class` for a one-off change to a single element.
 
 Adjust spacing when the picker sits in a denser layout.
 
-<Example
-  name="CustomSpacing"
-  code={CustomSpacingSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomSpacing" />
 
 Override swatch corner radius when geometry should match nearby controls.
 
-<Example
-  name="SwatchPickerCustomRadius"
-  code={SwatchPickerCustomRadiusSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="SwatchPickerCustomRadius" />
 
 Resize swatches when the palette needs denser or larger targets.
 
-<Example
-  name="SwatchPickerCustomSize"
-  code={SwatchPickerCustomSizeSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="SwatchPickerCustomSize" />
 
 ### Custom recipe
 
 Extend `colorPickerRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="color-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

@@ -1,4 +1,3 @@
-import source from "./vertical.tsx?raw";
 import { Slider } from "@pisagor/solid";
 
 export function Vertical() {
@@ -21,5 +20,3 @@ export function Vertical() {
     </div>
   );
 }
-
-export { source as VerticalSource };

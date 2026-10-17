@@ -5,12 +5,6 @@ import Sizes from "#examples/astro/table/sizes.astro";
 import Footer from "#examples/astro/table/footer.astro";
 import NotHoverable from "#examples/astro/table/not-hoverable.astro";
 import CustomRecipe from "#examples/astro/table/custom-recipe.astro";
-import DefaultSource from "#examples/astro/table/default.astro?raw";
-import VariantsSource from "#examples/astro/table/variants.astro?raw";
-import SizesSource from "#examples/astro/table/sizes.astro?raw";
-import FooterSource from "#examples/astro/table/footer.astro?raw";
-import NotHoverableSource from "#examples/astro/table/not-hoverable.astro?raw";
-import CustomRecipeSource from "#examples/astro/table/custom-recipe.astro?raw";
 
 ## Import
 
@@ -43,13 +37,7 @@ import { Table } from "@pisagor/astro";
 
 Present comparable rows and columns for scanning.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="table"
-  framework="astro"
-  kind="component"
->
+<Example name="Default">
   <Default />
 </Example>
 
@@ -57,13 +45,7 @@ Present comparable rows and columns for scanning.
 
 Choose visual weight or emphasis so the table matches importance in the surrounding layout.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="table"
-  framework="astro"
-  kind="component"
->
+<Example name="Variants">
   <Variants />
 </Example>
 
@@ -71,13 +53,7 @@ Choose visual weight or emphasis so the table matches importance in the surround
 
 Use `size` to pick the sm, md or lg scale. `md` is the default. Astro parts cannot read the root size, so pass the same `size` to `Table.Head` and `Table.Cell`.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="table"
-  framework="astro"
-  kind="component"
->
+<Example name="Sizes">
   <Sizes />
 </Example>
 
@@ -85,13 +61,7 @@ Use `size` to pick the sm, md or lg scale. `md` is the default. Astro parts cann
 
 Add a footer for summaries beneath the rows.
 
-<Example
-  name="Footer"
-  code={FooterSource}
-  exampleId="table"
-  framework="astro"
-  kind="component"
->
+<Example name="Footer">
   <Footer />
 </Example>
 
@@ -99,13 +69,7 @@ Add a footer for summaries beneath the rows.
 
 Turn off row hover when hover affordance would distract.
 
-<Example
-  name="NotHoverable"
-  code={NotHoverableSource}
-  exampleId="table"
-  framework="astro"
-  kind="component"
->
+<Example name="NotHoverable">
   <NotHoverable />
 </Example>
 
@@ -115,12 +79,6 @@ Turn off row hover when hover affordance would distract.
 
 Extend `tableRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="table"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomRecipe">
   <CustomRecipe />
 </Example>

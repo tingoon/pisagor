@@ -1,4 +1,3 @@
-import source from "./horizontal.tsx?raw";
 import { ScrollArea } from "@pisagor/react";
 
 export function Horizontal() {
@@ -17,5 +16,3 @@ export function Horizontal() {
     </ScrollArea>
   );
 }
-
-export { source as HorizontalSource };

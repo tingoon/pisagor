@@ -91,7 +91,12 @@ function loadBarrel(
 
 /** Example component for `exportName`, or null (non-component exports too). */
 function resolveExport(mod: ExampleModule | null, exportName: string): unknown {
-  if (!mod || exportName === "sources" || exportName === "imports") {
+  if (
+    !mod ||
+    exportName === "sources" ||
+    exportName === "imports" ||
+    exportName.endsWith("Source")
+  ) {
     return null;
   }
   const value = mod[exportName];

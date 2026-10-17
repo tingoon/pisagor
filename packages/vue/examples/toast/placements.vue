@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./placements.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { createToaster } from "@ark-ui/vue/toast";
 import { Button, Toaster, toast } from "@pisagor/vue";

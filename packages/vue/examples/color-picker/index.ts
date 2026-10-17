@@ -23,7 +23,6 @@ export { default as SliderHsbaChannels } from "./slider-hsba-channels.vue";
 export { default as SliderHslChannels } from "./slider-hsl-channels.vue";
 export { default as SliderRgbChannels } from "./slider-rgb-channels.vue";
 export { default as SliderVertical } from "./slider-vertical.vue";
-export { imports, sources } from "./sources";
 export { default as SwatchPicker } from "./swatch-picker.vue";
 export { default as SwatchPickerControlled } from "./swatch-picker-controlled.vue";
 export { default as SwatchPickerCustomIndicator } from "./swatch-picker-custom-indicator.vue";

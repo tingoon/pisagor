@@ -1,4 +1,3 @@
-import source from "./activation-focus.tsx?raw";
 import { Button, Card, Editable, Field, Input } from "@pisagor/solid";
 import { CheckIcon, XIcon } from "@pisagor/solid/icons";
 export function ActivationFocus() {
@@ -85,5 +84,3 @@ export function ActivationFocus() {
     </Card>
   );
 }
-
-export { source as ActivationFocusSource };

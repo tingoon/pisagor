@@ -1,4 +1,3 @@
-import source from "./custom-recipe.ts?raw";
 import { sheetRecipe } from "@pisagor/recipes";
 import { Button, Sheet } from "@pisagor/vue";
 import { tv } from "tailwind-variants";
@@ -40,5 +39,3 @@ export default defineComponent({
       ]);
   },
 });
-
-export { source };

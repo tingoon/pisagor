@@ -1,4 +1,3 @@
-import source from "./number-story.tsx?raw";
 import { Format } from "@pisagor/react";
 
 export function NumberStory() {
@@ -12,5 +11,3 @@ export function NumberStory() {
     </div>
   );
 }
-
-export { source as NumberStorySource };

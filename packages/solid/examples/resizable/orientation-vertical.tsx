@@ -1,4 +1,3 @@
-import source from "./orientation-vertical.tsx?raw";
 import { Resizable } from "@pisagor/solid";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
@@ -45,5 +44,3 @@ export function OrientationVertical() {
     </ResizableFrame>
   );
 }
-
-export { source as OrientationVerticalSource };

@@ -1,4 +1,3 @@
-import source from "./indicator-on-hover.tsx?raw";
 import { SegmentGroup } from "@pisagor/react";
 import { useState } from "react";
 
@@ -28,5 +27,3 @@ export function IndicatorOnHover() {
     </SegmentGroup.Root>
   );
 }
-
-export { source as IndicatorOnHoverSource };

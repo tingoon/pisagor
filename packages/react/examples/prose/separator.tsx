@@ -1,4 +1,3 @@
-import source from "./separator.tsx?raw";
 import { Prose } from "@pisagor/react";
 
 export function Separator() {
@@ -10,5 +9,3 @@ export function Separator() {
     </Prose>
   );
 }
-
-export { source as SeparatorSource };

@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./triggers-delays.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhMapPin } from "@phosphor-icons/vue";
 import { Avatar, Button, HoverCard } from "@pisagor/vue";

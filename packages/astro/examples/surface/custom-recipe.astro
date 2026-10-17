@@ -12,8 +12,7 @@ const brandSurfaceRecipe = tv({
     },
   },
 });
-import source from "./custom-recipe.astro?raw";
-export { source };
+export type { source };
 ---
 
 <Surface bordered class="p-4 text-sm" recipe={brandSurfaceRecipe}>

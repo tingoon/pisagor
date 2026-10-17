@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { announcementRecipe } from "@pisagor/recipes";
 import { Announcement, Badge } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -21,5 +20,3 @@ export function CustomRecipe() {
     />
   );
 }
-
-export { source as CustomRecipeSource };

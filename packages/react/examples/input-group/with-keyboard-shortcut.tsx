@@ -1,4 +1,3 @@
-import source from "./with-keyboard-shortcut.tsx?raw";
 import { InputGroup, Kbd } from "@pisagor/react";
 export function WithKeyboardShortcut() {
   return (
@@ -10,5 +9,3 @@ export function WithKeyboardShortcut() {
     </InputGroup>
   );
 }
-
-export { source as WithKeyboardShortcutSource };

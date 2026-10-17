@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Button, Command } from "@pisagor/solid";
 
@@ -37,5 +36,3 @@ export function Default() {
     </Command.Dialog>
   );
 }
-
-export { source as DefaultSource };

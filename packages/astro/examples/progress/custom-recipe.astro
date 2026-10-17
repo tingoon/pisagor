@@ -11,8 +11,7 @@ const brandProgressRecipe = tv({
   },
   variants: {},
 });
-import source from "./custom-recipe.astro?raw";
-export { source };
+export type { source };
 ---
 
 <Progress recipe={brandProgressRecipe} value={66} />

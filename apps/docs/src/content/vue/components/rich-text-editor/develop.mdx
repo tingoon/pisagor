@@ -1,10 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/rich-text-editor/default.vue?raw";
-import CompoundSource from "#examples/vue/rich-text-editor/compound.vue?raw";
-import ControlledSource from "#examples/vue/rich-text-editor/controlled.vue?raw";
-import DisabledSource from "#examples/vue/rich-text-editor/disabled.vue?raw";
-import InvalidSource from "#examples/vue/rich-text-editor/invalid.vue?raw";
-import CustomRecipeSource from "#examples/vue/rich-text-editor/custom-recipe.vue?raw";
 
 ## Import
 
@@ -18,61 +12,31 @@ import { RichTextEditor } from "@pisagor/vue/rich-text-editor";
 
 Render the editor with a toolbar and starting content.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="rich-text-editor"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Compound
 
 Assemble from parts when you need a custom layout beyond the shorthand API.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="rich-text-editor"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Controlled
 
 Drive editor value from the parent when form state lives above.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="rich-text-editor"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that editing is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="rich-text-editor"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation error when content is missing or not allowed.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="rich-text-editor"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ## Customization
 
@@ -80,10 +44,4 @@ Surface a validation error when content is missing or not allowed.
 
 Extend `richTextEditorRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="rich-text-editor"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

@@ -1,8 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/bottom-navigation/default.vue?raw";
-import IconOnlySource from "#examples/vue/bottom-navigation/icon-only.vue?raw";
-import WithLinksSource from "#examples/vue/bottom-navigation/with-links.vue?raw";
-import CustomRecipeSource from "#examples/vue/bottom-navigation/custom-recipe.vue?raw";
 
 ## Import
 
@@ -29,37 +25,19 @@ import { BottomNavigation } from "@pisagor/vue";
 
 Fixed bottom destinations for primary mobile sections.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="bottom-navigation"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Icon Only
 
 Use icons alone when labels would crowd a narrow bar. Provide accessible names.
 
-<Example
-  name="IconOnly"
-  code={IconOnlySource}
-  exampleId="bottom-navigation"
-  framework="vue"
-  kind="component"
-/>
+<Example name="IconOnly" />
 
 ### As child
 
 Render destinations as links when each item navigates to a route.
 
-<Example
-  name="WithLinks"
-  code={WithLinksSource}
-  exampleId="bottom-navigation"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithLinks" />
 
 ## Customization
 
@@ -67,10 +45,4 @@ Render destinations as links when each item navigates to a route.
 
 Extend `bottomNavigationRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="bottom-navigation"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

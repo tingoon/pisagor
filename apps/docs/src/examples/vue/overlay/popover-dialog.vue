@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./popover-dialog.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Button, Dialog, Popover } from "@pisagor/vue";
 </script>

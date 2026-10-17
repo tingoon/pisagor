@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { kbdRecipe } from "@pisagor/recipes";
 import { Kbd } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -23,5 +22,3 @@ export function CustomRecipe() {
     </div>
   );
 }
-
-export { source as CustomRecipeSource };

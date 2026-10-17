@@ -1,4 +1,3 @@
-import source from "./menu-dialog.tsx?raw";
 /** @jsxImportSource solid-js */
 
 import { Button, Dialog, DropdownMenu } from "@pisagor/solid";
@@ -74,5 +73,3 @@ export function MenuDialog() {
     </>
   );
 }
-
-export { source as MenuDialogSource };

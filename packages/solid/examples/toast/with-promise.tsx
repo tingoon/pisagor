@@ -1,4 +1,3 @@
-import source from "./with-promise.tsx?raw";
 import { Button, toast } from "@pisagor/solid";
 export function WithPromise() {
   return (
@@ -32,5 +31,3 @@ export function WithPromise() {
     </Button>
   );
 }
-
-export { source as WithPromiseSource };

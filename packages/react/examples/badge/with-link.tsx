@@ -1,4 +1,3 @@
-import source from "./with-link.tsx?raw";
 import { ArrowUpRightIcon, PlusCircleIcon } from "@phosphor-icons/react";
 import { Badge } from "@pisagor/react";
 
@@ -12,5 +11,3 @@ export function WithLink() {
     </Badge>
   );
 }
-
-export { source as WithLinkSource };

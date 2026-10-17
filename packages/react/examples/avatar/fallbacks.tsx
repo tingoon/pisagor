@@ -1,4 +1,3 @@
-import source from "./fallbacks.tsx?raw";
 import { UserIcon } from "@phosphor-icons/react";
 import { Avatar } from "@pisagor/react";
 
@@ -11,5 +10,3 @@ export function Fallbacks() {
     </div>
   );
 }
-
-export { source as FallbacksSource };

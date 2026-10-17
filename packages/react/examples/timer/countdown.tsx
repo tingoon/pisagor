@@ -1,4 +1,3 @@
-import source from "./countdown.tsx?raw";
 import { Card, Timer } from "@pisagor/react";
 export function Countdown() {
   return (
@@ -21,5 +20,3 @@ export function Countdown() {
     </Card>
   );
 }
-
-export { source as CountdownSource };

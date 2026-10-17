@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Timer } from "@pisagor/solid";
 
 export function Default() {
@@ -11,5 +10,3 @@ export function Default() {
     />
   );
 }
-
-export { source as DefaultSource };

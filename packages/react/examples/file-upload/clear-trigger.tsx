@@ -1,4 +1,3 @@
-import source from "./clear-trigger.tsx?raw";
 import { TrashIcon } from "@phosphor-icons/react";
 import { Button, FileUpload } from "@pisagor/react";
 export function ClearTrigger() {
@@ -17,5 +16,3 @@ export function ClearTrigger() {
     </FileUpload>
   );
 }
-
-export { source as ClearTriggerSource };

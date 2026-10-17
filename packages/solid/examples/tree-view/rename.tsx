@@ -1,4 +1,3 @@
-import source from "./rename.tsx?raw";
 import type { NodeProviderProps } from "@pisagor/solid";
 import { createTreeCollection, TreeView } from "@pisagor/solid";
 import { createSignal } from "solid-js";
@@ -80,5 +79,3 @@ export function Rename() {
     </div>
   );
 }
-
-export { source as RenameSource };

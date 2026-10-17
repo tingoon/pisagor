@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./range.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, Calendar, DatePicker, parseDate } from "@pisagor/svelte";
   import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";

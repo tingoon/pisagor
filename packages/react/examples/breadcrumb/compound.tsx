@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { Breadcrumb } from "@pisagor/react";
 
 export function Compound() {
@@ -22,5 +21,3 @@ export function Compound() {
     </Breadcrumb.Root>
   );
 }
-
-export { source as CompoundSource };

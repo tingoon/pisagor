@@ -1,4 +1,3 @@
-import source from "./with-action.ts?raw";
 import { PhClockCounterClockwise } from "@phosphor-icons/vue";
 import { Alert, Button } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
@@ -18,5 +17,3 @@ export default defineComponent({
       });
   },
 });
-
-export { source };

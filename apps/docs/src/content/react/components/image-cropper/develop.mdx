@@ -1,13 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/react/image-cropper/default.tsx";
-import { AspectRatioSource } from "#examples/react/image-cropper/aspect-ratio.tsx";
-import { CircleCropSource } from "#examples/react/image-cropper/circle-crop.tsx";
-import { FixedCropAreaSource } from "#examples/react/image-cropper/fixed-crop-area.tsx";
-import { InitialCropSource } from "#examples/react/image-cropper/initial-crop.tsx";
-import { MinMaxSizeSource } from "#examples/react/image-cropper/min-max-size.tsx";
-import { ZoomLimitsSource } from "#examples/react/image-cropper/zoom-limits.tsx";
-import { ControlledZoomSource } from "#examples/react/image-cropper/controlled-zoom.tsx";
-import { CustomRecipeSource } from "#examples/react/image-cropper/custom-recipe.tsx";
 
 ## Import
 
@@ -30,97 +21,49 @@ import { ImageCropper } from "@pisagor/react";
 
 Crop and adjust an image before save or upload.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="image-cropper"
-  framework="react"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Aspect Ratio
 
 Lock the crop to a ratio when the output shape is fixed.
 
-<Example
-  name="AspectRatio"
-  code={AspectRatioSource}
-  exampleId="image-cropper"
-  framework="react"
-  kind="component"
-/>
+<Example name="AspectRatio" />
 
 ### Circle Crop
 
 Use a circular crop when the result is an avatar-style image.
 
-<Example
-  name="CircleCrop"
-  code={CircleCropSource}
-  exampleId="image-cropper"
-  framework="react"
-  kind="component"
-/>
+<Example name="CircleCrop" />
 
 ### Fixed Crop Area
 
 Keep the crop area fixed when users should pan the image underneath.
 
-<Example
-  name="FixedCropArea"
-  code={FixedCropAreaSource}
-  exampleId="image-cropper"
-  framework="react"
-  kind="component"
-/>
+<Example name="FixedCropArea" />
 
 ### Initial Crop
 
 Start from a predefined crop when a sensible default exists.
 
-<Example
-  name="InitialCrop"
-  code={InitialCropSource}
-  exampleId="image-cropper"
-  framework="react"
-  kind="component"
-/>
+<Example name="InitialCrop" />
 
 ### Min Max Size
 
 Clamp crop size so results stay within usable bounds.
 
-<Example
-  name="MinMaxSize"
-  code={MinMaxSizeSource}
-  exampleId="image-cropper"
-  framework="react"
-  kind="component"
-/>
+<Example name="MinMaxSize" />
 
 ### Zoom Limits
 
 Limit zoom so users cannot overscale the image.
 
-<Example
-  name="ZoomLimits"
-  code={ZoomLimitsSource}
-  exampleId="image-cropper"
-  framework="react"
-  kind="component"
-/>
+<Example name="ZoomLimits" />
 
 ### Controlled Zoom
 
 Drive zoom from the parent when external controls adjust scale.
 
-<Example
-  name="ControlledZoom"
-  code={ControlledZoomSource}
-  exampleId="image-cropper"
-  framework="react"
-  kind="component"
-/>
+<Example name="ControlledZoom" />
 
 ## Customization
 
@@ -128,10 +71,4 @@ Drive zoom from the parent when external controls adjust scale.
 
 Extend `imageCropperRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="image-cropper"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

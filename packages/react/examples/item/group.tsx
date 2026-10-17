@@ -1,4 +1,3 @@
-import source from "./group.tsx?raw";
 import { PlusIcon } from "@phosphor-icons/react";
 import { Avatar, Button, Item } from "@pisagor/react";
 import { people } from "./helpers";
@@ -32,5 +31,3 @@ export function Group() {
     </Item.Group>
   );
 }
-
-export { source as GroupSource };

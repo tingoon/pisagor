@@ -1,4 +1,3 @@
-import source from "./skeleton-text.tsx?raw";
 import { Skeleton } from "@pisagor/react";
 
 export function SkeletonText() {
@@ -11,5 +10,3 @@ export function SkeletonText() {
     </div>
   );
 }
-
-export { source as SkeletonTextSource };

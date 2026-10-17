@@ -1,4 +1,3 @@
-import source from "./manual-pagination.tsx?raw";
 import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
 import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Button, Checkbox, Spinner, Table } from "@pisagor/react";
@@ -347,5 +346,3 @@ export function ManualPagination() {
     </DataGridShell>
   );
 }
-
-export { source as ManualPaginationSource };

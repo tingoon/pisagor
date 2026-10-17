@@ -1,15 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/tabs/default.vue?raw";
-import VariantsSource from "#examples/vue/tabs/variants.vue?raw";
-import SizesSource from "#examples/vue/tabs/sizes.vue?raw";
-import OrientationHorizontalSource from "#examples/vue/tabs/orientation-horizontal.vue?raw";
-import OrientationVerticalSource from "#examples/vue/tabs/orientation-vertical.vue?raw";
-import WithoutIndicatorSource from "#examples/vue/tabs/without-indicator.vue?raw";
-import WithIconsSource from "#examples/vue/tabs/with-icons.vue?raw";
-import CompoundSource from "#examples/vue/tabs/compound.vue?raw";
-import ControlledSource from "#examples/vue/tabs/controlled.vue?raw";
-import DisabledSource from "#examples/vue/tabs/disabled.vue?raw";
-import CustomRecipeSource from "#examples/vue/tabs/custom-recipe.vue?raw";
 
 ## Import
 
@@ -23,121 +12,61 @@ import { Tabs } from "@pisagor/vue";
 
 Switch between related panels without leaving the page.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="tabs"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Variants
 
 Choose tab emphasis to match the surface.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="tabs"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="tabs"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Orientation Horizontal
 
 Lay tabs in a row for the common panel switcher.
 
-<Example
-  name="OrientationHorizontal"
-  code={OrientationHorizontalSource}
-  exampleId="tabs"
-  framework="vue"
-  kind="component"
-/>
+<Example name="OrientationHorizontal" />
 
 ### Orientation Vertical
 
 Stack tabs vertically when the layout favors a side rail.
 
-<Example
-  name="OrientationVertical"
-  code={OrientationVerticalSource}
-  exampleId="tabs"
-  framework="vue"
-  kind="component"
-/>
+<Example name="OrientationVertical" />
 
 ### Without Indicator
 
 Hide the moving indicator when triggers style the active state on their own.
 
-<Example
-  name="WithoutIndicator"
-  code={WithoutIndicatorSource}
-  exampleId="tabs"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithoutIndicator" />
 
 ### With Icons
 
 Lead tabs with icons when symbols speed recognition.
 
-<Example
-  name="WithIcons"
-  code={WithIconsSource}
-  exampleId="tabs"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithIcons" />
 
 ### Compound
 
 Compose tab list and panels from parts for a custom layout.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="tabs"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Controlled
 
 Drive the active tab from the parent when other UI depends on it.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="tabs"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the tabs is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="tabs"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ## Customization
 
@@ -145,10 +74,4 @@ Show that the tabs is unavailable.
 
 Extend `tabsRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="tabs"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

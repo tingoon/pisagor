@@ -1,4 +1,3 @@
-import source from "./number-input-story.tsx?raw";
 import { Field, NumberInput } from "@pisagor/react";
 export function NumberInputStory() {
   return (
@@ -14,5 +13,3 @@ export function NumberInputStory() {
     </Field>
   );
 }
-
-export { source as NumberInputStorySource };

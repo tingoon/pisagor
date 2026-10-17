@@ -1,4 +1,3 @@
-import source from "./variants.tsx?raw";
 import { SegmentGroup } from "@pisagor/react";
 
 const items = [
@@ -27,5 +26,3 @@ export function Variants() {
     </div>
   );
 }
-
-export { source as VariantsSource };

@@ -1,4 +1,3 @@
-import source from "./relative-time-short.tsx?raw";
 import { Format } from "@pisagor/react";
 
 export function RelativeTimeShort() {
@@ -19,5 +18,3 @@ export function RelativeTimeShort() {
     </div>
   );
 }
-
-export { source as RelativeTimeShortSource };

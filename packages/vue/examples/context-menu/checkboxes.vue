@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./checkboxes.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { ContextMenu } from "@pisagor/vue";
 import { ref } from "vue";

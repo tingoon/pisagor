@@ -1,4 +1,3 @@
-import source from "./disabled.tsx?raw";
 import { Calendar, DatePicker } from "@pisagor/react";
 export function Disabled() {
   return (
@@ -19,5 +18,3 @@ export function Disabled() {
     </DatePicker>
   );
 }
-
-export { source as DisabledSource };

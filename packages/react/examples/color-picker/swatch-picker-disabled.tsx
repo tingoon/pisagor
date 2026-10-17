@@ -1,4 +1,3 @@
-import source from "./swatch-picker-disabled.tsx?raw";
 import { ColorPicker } from "@pisagor/react";
 
 export function SwatchPickerDisabled() {
@@ -17,5 +16,3 @@ export function SwatchPickerDisabled() {
     </ColorPicker>
   );
 }
-
-export { source as SwatchPickerDisabledSource };

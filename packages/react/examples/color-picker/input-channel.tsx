@@ -1,4 +1,3 @@
-import source from "./input-channel.tsx?raw";
 import { ColorPicker, Field, Input, parseColor } from "@pisagor/react";
 export function InputChannel() {
   return (
@@ -86,5 +85,3 @@ export function InputChannel() {
     </div>
   );
 }
-
-export { source as InputChannelSource };

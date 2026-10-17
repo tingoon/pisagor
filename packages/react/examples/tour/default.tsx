@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import type { TourStepType } from "@pisagor/react";
 import { Button, Tour } from "@pisagor/react";
 export function Default() {
@@ -61,5 +60,3 @@ export function Default() {
     </Tour>
   );
 }
-
-export { source as DefaultSource };

@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { Badge, Button, Card, Collapsible } from "@pisagor/react";
 import { collapsibleRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -66,5 +65,3 @@ export function CustomRecipe() {
     </Card>
   );
 }
-
-export { source as CustomRecipeSource };

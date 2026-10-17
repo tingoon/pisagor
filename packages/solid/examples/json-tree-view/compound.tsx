@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { JsonTreeView } from "@pisagor/solid";
 import { CaretRightIcon } from "@pisagor/solid/icons";
 import { defaultData } from "./helpers";
@@ -10,5 +9,3 @@ export function Compound() {
     </JsonTreeView.Root>
   );
 }
-
-export { source as CompoundSource };

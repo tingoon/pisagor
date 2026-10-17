@@ -1,4 +1,3 @@
-import source from "./default.ts?raw";
 import { PhGear, PhSignOut, PhUser } from "@phosphor-icons/vue";
 import { Menu } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
@@ -33,5 +32,3 @@ export default defineComponent({
       );
   },
 });
-
-export { source };

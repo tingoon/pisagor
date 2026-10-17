@@ -1,4 +1,3 @@
-import source from "./pause-on-hover.tsx?raw";
 import {
   ArrowRightIcon,
   AtomIcon,
@@ -37,5 +36,3 @@ const items = marqueeIcons.map((IconComponent) => (
 export function PauseOnHover() {
   return <Marquee items={items} pauseOnInteraction />;
 }
-
-export { source as PauseOnHoverSource };

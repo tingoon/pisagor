@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./kbd-group.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Kbd } from "@pisagor/vue";
 </script>

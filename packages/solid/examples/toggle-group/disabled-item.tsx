@@ -1,4 +1,3 @@
-import source from "./disabled-item.tsx?raw";
 import { ToggleGroup } from "@pisagor/solid";
 import {
   TextBIcon,
@@ -21,5 +20,3 @@ export function DisabledItem() {
     </ToggleGroup.Root>
   );
 }
-
-export { source as DisabledItemSource };

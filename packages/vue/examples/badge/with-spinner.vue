@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./with-spinner.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Badge, Spinner } from "@pisagor/vue";
 </script>

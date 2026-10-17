@@ -1,4 +1,3 @@
-import source from "./horizontal.tsx?raw";
 import { createListCollection } from "@ark-ui/react";
 import { Field, Listbox } from "@pisagor/react";
 export function Horizontal() {
@@ -36,5 +35,3 @@ export function Horizontal() {
     </Field>
   );
 }
-
-export { source as HorizontalSource };

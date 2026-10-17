@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./with-card.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Accordion, Card } from "@pisagor/svelte";
   import { faqItems } from "./helpers";

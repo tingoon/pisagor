@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./fixed-weeks.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Calendar, Card } from "@pisagor/svelte";
 </script>

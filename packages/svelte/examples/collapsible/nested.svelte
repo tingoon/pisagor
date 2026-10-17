@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./nested.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, Card, Clipboard, Collapsible } from "@pisagor/svelte";
 </script>

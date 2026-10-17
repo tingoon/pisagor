@@ -1,4 +1,3 @@
-import source from "./custom-separator.tsx?raw";
 import { Card, Timer } from "@pisagor/solid";
 export function CustomSeparator() {
   return (
@@ -20,5 +19,3 @@ export function CustomSeparator() {
     </Card>
   );
 }
-
-export { source as CustomSeparatorSource };

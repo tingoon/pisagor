@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./messages.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Breadcrumb, Provider } from "@pisagor/vue";
 

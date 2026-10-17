@@ -1,16 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/item/default.svelte?raw";
-import VariantsSource from "#examples/svelte/item/variants.svelte?raw";
-import SizesSource from "#examples/svelte/item/sizes.svelte?raw";
-import IconSource from "#examples/svelte/item/icon.svelte?raw";
-import ImageSource from "#examples/svelte/item/image.svelte?raw";
-import WithMediaSource from "#examples/svelte/item/with-media.svelte?raw";
-import HeaderSource from "#examples/svelte/item/header.svelte?raw";
-import GroupSource from "#examples/svelte/item/group.svelte?raw";
-import WithAvatarSource from "#examples/svelte/item/with-avatar.svelte?raw";
-import LinkSource from "#examples/svelte/item/link.svelte?raw";
-import CustomSpacingSource from "#examples/svelte/item/custom-spacing.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/item/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -36,121 +24,61 @@ import { Item } from "@pisagor/svelte";
 
 Lay out media, title, description, and actions as one row.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="item"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Variants
 
 Choose emphasis to match list density.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="item"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="item"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Icon
 
 Lead with an icon when a symbol is enough.
 
-<Example
-  name="Icon"
-  code={IconSource}
-  exampleId="item"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Icon" />
 
 ### Image
 
 Use a larger image treatment for media-forward rows.
 
-<Example
-  name="Image"
-  code={ImageSource}
-  exampleId="item"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Image" />
 
 ### With Media
 
 Lead with media when imagery helps recognition.
 
-<Example
-  name="WithMedia"
-  code={WithMediaSource}
-  exampleId="item"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithMedia" />
 
 ### Header
 
 Use item header layout for section introductions in a list.
 
-<Example
-  name="Header"
-  code={HeaderSource}
-  exampleId="item"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Header" />
 
 ### Group
 
 Group related items so related choices stay visually and semantically together.
 
-<Example
-  name="Group"
-  code={GroupSource}
-  exampleId="item"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Group" />
 
 ### With Avatar
 
 Lead with an avatar when the row represents a person.
 
-<Example
-  name="WithAvatar"
-  code={WithAvatarSource}
-  exampleId="item"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithAvatar" />
 
 ### As child
 
 Navigate when the whole row is a destination.
 
-<Example
-  name="Link"
-  code={LinkSource}
-  exampleId="item"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Link" />
 
 ## Customization
 
@@ -160,22 +88,10 @@ Pass `class` for a one-off change to a single element.
 
 Override spacing when the default density does not match the surrounding layout.
 
-<Example
-  name="CustomSpacing"
-  code={CustomSpacingSource}
-  exampleId="item"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomSpacing" />
 
 ### Custom recipe
 
 Extend `itemRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="item"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./custom-spacing.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { ActionBar, Button } from "@pisagor/svelte";
   import { PencilSimpleIcon, TrashIcon, XIcon } from "@pisagor/svelte/icons";

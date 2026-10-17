@@ -23,7 +23,6 @@ export * from "./slider-hsba-channels";
 export * from "./slider-hsl-channels";
 export * from "./slider-rgb-channels";
 export * from "./slider-vertical";
-export { imports, sources } from "./sources";
 export * from "./swatch-picker";
 export * from "./swatch-picker-controlled";
 export * from "./swatch-picker-custom-indicator";

@@ -5,12 +5,6 @@ import WithIcon from "#examples/astro/status/with-icon.astro";
 import CustomColor from "#examples/astro/status/custom-color.astro";
 import CustomSize from "#examples/astro/status/custom-size.astro";
 import CustomRecipe from "#examples/astro/status/custom-recipe.astro";
-import VariantsSource from "#examples/astro/status/variants.astro?raw";
-import SizesSource from "#examples/astro/status/sizes.astro?raw";
-import WithIconSource from "#examples/astro/status/with-icon.astro?raw";
-import CustomColorSource from "#examples/astro/status/custom-color.astro?raw";
-import CustomSizeSource from "#examples/astro/status/custom-size.astro?raw";
-import CustomRecipeSource from "#examples/astro/status/custom-recipe.astro?raw";
 
 ## Import
 
@@ -24,13 +18,7 @@ import { Status } from "@pisagor/astro";
 
 Choose color tone for availability or severity. Pair with text for accessibility.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="status"
-  framework="astro"
-  kind="component"
->
+<Example name="Variants">
   <Variants />
 </Example>
 
@@ -38,13 +26,7 @@ Choose color tone for availability or severity. Pair with text for accessibility
 
 Match size to the surrounding chrome.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="status"
-  framework="astro"
-  kind="component"
->
+<Example name="Sizes">
   <Sizes />
 </Example>
 
@@ -52,13 +34,7 @@ Match size to the surrounding chrome.
 
 Pair an icon with the label to reinforce meaning.
 
-<Example
-  name="WithIcon"
-  code={WithIconSource}
-  exampleId="status"
-  framework="astro"
-  kind="component"
->
+<Example name="WithIcon">
   <WithIcon />
 </Example>
 
@@ -70,25 +46,13 @@ Pass `class` for a one-off change to a single element.
 
 Override the fill or accent when a brand or contextual color matters more than the theme default.
 
-<Example
-  name="CustomColor"
-  code={CustomColorSource}
-  exampleId="status"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomColor">
   <CustomColor />
 </Example>
 
 Resize the indicator to match nearby text and density.
 
-<Example
-  name="CustomSize"
-  code={CustomSizeSource}
-  exampleId="status"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomSize">
   <CustomSize />
 </Example>
 
@@ -96,12 +60,6 @@ Resize the indicator to match nearby text and density.
 
 Extend `statusRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="status"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomRecipe">
   <CustomRecipe />
 </Example>

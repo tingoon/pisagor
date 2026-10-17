@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { Carousel } from "@pisagor/react";
 import { numberedSlides } from "./helpers";
 
@@ -21,5 +20,3 @@ export function Compound() {
     </Carousel.Root>
   );
 }
-
-export { source as CompoundSource };

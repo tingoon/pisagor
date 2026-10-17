@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./controlled.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, Card, Editable, Field } from "@pisagor/svelte";
   import { CheckIcon, PencilSimpleIcon } from "@pisagor/svelte/icons";

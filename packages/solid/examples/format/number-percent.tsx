@@ -1,4 +1,3 @@
-import source from "./number-percent.tsx?raw";
 import { Format } from "@pisagor/solid";
 
 export function NumberPercent() {
@@ -19,5 +18,3 @@ export function NumberPercent() {
     </div>
   );
 }
-
-export { source as NumberPercentSource };

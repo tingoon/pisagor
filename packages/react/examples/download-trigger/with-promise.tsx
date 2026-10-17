@@ -1,4 +1,3 @@
-import source from "./with-promise.tsx?raw";
 import { DownloadIcon } from "@phosphor-icons/react";
 import { Button, DownloadTrigger } from "@pisagor/react";
 export function WithPromise() {
@@ -28,5 +27,3 @@ export function WithPromise() {
     </DownloadTrigger>
   );
 }
-
-export { source as WithPromiseSource };

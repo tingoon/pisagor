@@ -1,4 +1,3 @@
-import source from "./orientation-horizontal.tsx?raw";
 import { DataList } from "@pisagor/solid";
 
 export function OrientationHorizontal() {
@@ -10,5 +9,3 @@ export function OrientationHorizontal() {
     </DataList.Root>
   );
 }
-
-export { source as OrientationHorizontalSource };

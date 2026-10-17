@@ -1,4 +1,3 @@
-import source from "./small.tsx?raw";
 import { Prose } from "@pisagor/solid";
 
 export function Small() {
@@ -11,5 +10,3 @@ export function Small() {
     </Prose>
   );
 }
-
-export { source as SmallSource };

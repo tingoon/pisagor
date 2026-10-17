@@ -1,10 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/solid/separator/default.tsx";
-import { VerticalSource } from "#examples/solid/separator/vertical.tsx";
-import { ListSource } from "#examples/solid/separator/list.tsx";
-import { InlineNavigationSource } from "#examples/solid/separator/inline-navigation.tsx";
-import { DecorativeSource } from "#examples/solid/separator/decorative.tsx";
-import { CustomRecipeSource } from "#examples/solid/separator/custom-recipe.tsx";
 
 ## Import
 
@@ -18,49 +12,25 @@ import { Separator } from "@pisagor/solid";
 
 Divide related groups of content.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="separator"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Vertical
 
 Use a vertical layout when the separator should read top to bottom.
 
-<Example
-  name="Vertical"
-  code={VerticalSource}
-  exampleId="separator"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Vertical" />
 
 ### List
 
 Separate list sections so groups stay scannable.
 
-<Example
-  name="List"
-  code={ListSource}
-  exampleId="separator"
-  framework="solid"
-  kind="component"
-/>
+<Example name="List" />
 
 ### Inline Navigation
 
 Separate inline nav items without looking like a heavy rule.
 
-<Example
-  name="InlineNavigation"
-  code={InlineNavigationSource}
-  exampleId="separator"
-  framework="solid"
-  kind="component"
-/>
+<Example name="InlineNavigation" />
 
 ## Customization
 
@@ -68,22 +38,10 @@ Separate inline nav items without looking like a heavy rule.
 
 Hide purely visual separators from assistive technology.
 
-<Example
-  name="Decorative"
-  code={DecorativeSource}
-  exampleId="separator"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Decorative" />
 
 ### Custom recipe
 
 Extend `separatorRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="separator"
-  framework="solid"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

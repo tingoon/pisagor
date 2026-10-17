@@ -6,6 +6,7 @@ import {
   loadBlockDevelopBody,
   loadBlockDocs,
 } from "#/lib/block-doc";
+import { setDocsExampleContext } from "#/lib/docs-example-context";
 import type { Framework } from "#/lib/nav";
 import { extractTocHeadings } from "#/lib/toc";
 
@@ -16,6 +17,13 @@ interface Props {
 
 const id = Astro.props.id;
 const framework = Astro.props.framework;
+
+setDocsExampleContext(Astro.locals, {
+  exampleId: id,
+  framework,
+  kind: "block",
+});
+
 const docs = await loadBlockDocs(framework, id);
 const { Content } = await loadBlockDevelop(framework, id);
 const developBody = loadBlockDevelopBody(framework, id);

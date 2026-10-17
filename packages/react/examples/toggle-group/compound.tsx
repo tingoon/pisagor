@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import {
   TextBIcon,
   TextItalicIcon,
@@ -21,5 +20,3 @@ export function Compound() {
     </ToggleGroup.Root>
   );
 }
-
-export { source as CompoundSource };

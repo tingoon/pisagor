@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./wait-for-click.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { waitForEvent } from "@ark-ui/vue/tour";
 import { Button, Tour, type TourStepType } from "@pisagor/vue";

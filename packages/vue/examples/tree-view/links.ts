@@ -1,4 +1,3 @@
-import source from "./links.ts?raw";
 import { PhArrowSquareOut, PhLink } from "@phosphor-icons/vue";
 import { createTreeCollection, TreeView } from "@pisagor/vue";
 import type { VNode } from "vue";
@@ -64,5 +63,3 @@ export default defineComponent({
       ]);
   },
 });
-
-export { source };

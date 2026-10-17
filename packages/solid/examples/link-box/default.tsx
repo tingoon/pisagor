@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { LinkBox } from "@pisagor/solid";
 
 export function Default() {
@@ -20,5 +19,3 @@ export function Default() {
     />
   );
 }
-
-export { source as DefaultSource };

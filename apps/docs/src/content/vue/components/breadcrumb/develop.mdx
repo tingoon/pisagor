@@ -1,11 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/breadcrumb/default.vue?raw";
-import CollapsedSource from "#examples/vue/breadcrumb/collapsed.vue?raw";
-import CustomSeparatorSource from "#examples/vue/breadcrumb/custom-separator.vue?raw";
-import CompoundSource from "#examples/vue/breadcrumb/compound.vue?raw";
-import WithMenuSource from "#examples/vue/breadcrumb/with-menu.vue?raw";
-import WithLinkSource from "#examples/vue/breadcrumb/with-link.vue?raw";
-import CustomRecipeSource from "#examples/vue/breadcrumb/custom-recipe.vue?raw";
 
 ## Import
 
@@ -19,73 +12,37 @@ import { Breadcrumb } from "@pisagor/vue";
 
 The full path from root to the current page.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="breadcrumb"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Collapsed
 
 Collapse middle segments when the path is long so the current page stays visible.
 
-<Example
-  name="Collapsed"
-  code={CollapsedSource}
-  exampleId="breadcrumb"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Collapsed" />
 
 ### Custom Separator
 
 Replace the default separator when brand or locale needs a different divider.
 
-<Example
-  name="CustomSeparator"
-  code={CustomSeparatorSource}
-  exampleId="breadcrumb"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomSeparator" />
 
 ### Compound
 
 Compose items and separators from parts for a custom breadcrumb layout.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="breadcrumb"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### With Menu
 
 Park overflow ancestors in a menu when the path cannot show every level.
 
-<Example
-  name="WithMenu"
-  code={WithMenuSource}
-  exampleId="breadcrumb"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithMenu" />
 
 ### As child
 
 Link ancestors so users can jump back through the hierarchy.
 
-<Example
-  name="WithLink"
-  code={WithLinkSource}
-  exampleId="breadcrumb"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithLink" />
 
 ## Customization
 
@@ -93,10 +50,4 @@ Link ancestors so users can jump back through the hierarchy.
 
 Extend `breadcrumbRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="breadcrumb"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

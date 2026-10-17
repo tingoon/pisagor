@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./controlled-zoom.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, ImageCropper } from "@pisagor/svelte";
   import MagnifyingGlassMinusIcon from "phosphor-svelte/lib/MagnifyingGlassMinusIcon";

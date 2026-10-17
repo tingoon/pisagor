@@ -1,4 +1,3 @@
-import source from "./inline-navigation.tsx?raw";
 import { Separator } from "@pisagor/react";
 
 export function InlineNavigation() {
@@ -21,5 +20,3 @@ export function InlineNavigation() {
     </div>
   );
 }
-
-export { source as InlineNavigationSource };

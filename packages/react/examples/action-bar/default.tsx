@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import {
   ArchiveIcon,
   DownloadIcon,
@@ -45,5 +44,3 @@ export function Default() {
     </ActionBar>
   );
 }
-
-export { source as DefaultSource };

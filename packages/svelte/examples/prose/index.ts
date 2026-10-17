@@ -22,4 +22,3 @@ export { default as Ol } from "./ol.svelte";
 export { default as P } from "./p.svelte";
 export { default as Separator } from "./separator.svelte";
 export { default as Small } from "./small.svelte";
-export { imports, sources } from "./sources";

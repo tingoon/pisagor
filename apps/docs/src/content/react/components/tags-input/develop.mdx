@@ -1,20 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { VariantsSource } from "#examples/react/tags-input/variants.tsx";
-import { SizesSource } from "#examples/react/tags-input/sizes.tsx";
-import { WithComboboxSource } from "#examples/react/tags-input/with-combobox.tsx";
-import { ControlledSource } from "#examples/react/tags-input/controlled.tsx";
-import { ControlledInputValueSource } from "#examples/react/tags-input/controlled-input-value.tsx";
-import { DisabledSource } from "#examples/react/tags-input/disabled.tsx";
-import { InvalidSource } from "#examples/react/tags-input/invalid.tsx";
-import { MaxTagsSource } from "#examples/react/tags-input/max-tags.tsx";
-import { MaxWithOverflowSource } from "#examples/react/tags-input/max-with-overflow.tsx";
-import { MaxLengthSource } from "#examples/react/tags-input/max-length.tsx";
-import { ValidationSource } from "#examples/react/tags-input/validation.tsx";
-import { CustomDelimiterSource } from "#examples/react/tags-input/custom-delimiter.tsx";
-import { BlurBehaviorSource } from "#examples/react/tags-input/blur-behavior.tsx";
-import { PasteBehaviorSource } from "#examples/react/tags-input/paste-behavior.tsx";
-import { DisableEditingSource } from "#examples/react/tags-input/disable-editing.tsx";
-import { SanitizeValueSource } from "#examples/react/tags-input/sanitize-value.tsx";
 
 ## Import
 
@@ -38,190 +22,94 @@ import { TagsInput } from "@pisagor/react";
 
 Choose field emphasis to match surrounding inputs.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="tags-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Match size to form density.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="tags-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### With Combobox
 
 Suggest tags from a list while still allowing custom entry.
 
-<Example
-  name="WithCombobox"
-  code={WithComboboxSource}
-  exampleId="tags-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="WithCombobox" />
 
 ### Controlled
 
 Drive the tag list from the parent when form state lives above.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="tags-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Controlled Input Value
 
 Drive the text being typed from the parent.
 
-<Example
-  name="ControlledInputValue"
-  code={ControlledInputValueSource}
-  exampleId="tags-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="ControlledInputValue" />
 
 ### Disabled
 
 Show that tags cannot change.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="tags-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation error for the tags field.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="tags-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ### Max Tags
 
 Cap how many tags can be added.
 
-<Example
-  name="MaxTags"
-  code={MaxTagsSource}
-  exampleId="tags-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="MaxTags" />
 
 ### Max With Overflow
 
 Handle overflow when users hit the tag limit.
 
-<Example
-  name="MaxWithOverflow"
-  code={MaxWithOverflowSource}
-  exampleId="tags-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="MaxWithOverflow" />
 
 ### Max Length
 
 Limit characters per tag so values stay short.
 
-<Example
-  name="MaxLength"
-  code={MaxLengthSource}
-  exampleId="tags-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="MaxLength" />
 
 ### Validation
 
 Reject invalid tags and explain why.
 
-<Example
-  name="Validation"
-  code={ValidationSource}
-  exampleId="tags-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="Validation" />
 
 ### Custom Delimiter
 
 Split on custom characters when users paste or type delimited lists.
 
-<Example
-  name="CustomDelimiter"
-  code={CustomDelimiterSource}
-  exampleId="tags-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomDelimiter" />
 
 ### Blur Behavior
 
 Control what happens to typed text when the field loses focus.
 
-<Example
-  name="BlurBehavior"
-  code={BlurBehaviorSource}
-  exampleId="tags-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="BlurBehavior" />
 
 ### Paste Behavior
 
 Define how pasted text becomes one or many tags.
 
-<Example
-  name="PasteBehavior"
-  code={PasteBehaviorSource}
-  exampleId="tags-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="PasteBehavior" />
 
 ### Disable Editing
 
 Prevent editing existing tags when only add and remove should be allowed.
 
-<Example
-  name="DisableEditing"
-  code={DisableEditingSource}
-  exampleId="tags-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="DisableEditing" />
 
 ### Sanitize Value
 
 Clean tag text before it is committed.
 
-<Example
-  name="SanitizeValue"
-  code={SanitizeValueSource}
-  exampleId="tags-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="SanitizeValue" />

@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./orders-with-footer.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import type { BadgeVariant } from "@pisagor/vue";
 import { Badge, Table } from "@pisagor/vue";

@@ -1,4 +1,3 @@
-import source from "./pomodoro.tsx?raw";
 import { Button, Card, Timer } from "@pisagor/solid";
 import {
   ArrowCounterClockwiseIcon,
@@ -71,5 +70,3 @@ export function Pomodoro() {
     </Card>
   );
 }
-
-export { source as PomodoroSource };

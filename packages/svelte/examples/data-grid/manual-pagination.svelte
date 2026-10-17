@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./manual-pagination.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Pagination, Table } from "@pisagor/svelte";
   import type { PaginationState } from "@pisagor/svelte/data-grid";

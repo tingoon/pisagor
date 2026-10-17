@@ -9,7 +9,6 @@ export { default as MouseDrag } from "./mouse-drag.vue";
 export { default as OrientationHorizontal } from "./orientation-horizontal.vue";
 export { default as OrientationVertical } from "./orientation-vertical.vue";
 export { default as SlidesPerPage } from "./slides-per-page.vue";
-export { imports, sources } from "./sources";
 export { default as Spacing } from "./spacing.vue";
 export { default as ThumbnailIndicator } from "./thumbnail-indicator.vue";
 export { default as ThumbnailIndicatorVertical } from "./thumbnail-indicator-vertical.vue";

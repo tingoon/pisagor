@@ -12,4 +12,3 @@ export * from "./multiple-months";
 export * from "./presets";
 export * from "./range";
 export * from "./select-today";
-export { imports, sources } from "./sources";

@@ -1,4 +1,3 @@
-import source from "./activation-none.tsx?raw";
 import { CheckIcon, PencilSimpleIcon, XIcon } from "@phosphor-icons/react";
 import { Button, Card, Editable, Field, Input } from "@pisagor/react";
 export function ActivationNone() {
@@ -71,5 +70,3 @@ export function ActivationNone() {
     </Card>
   );
 }
-
-export { source as ActivationNoneSource };

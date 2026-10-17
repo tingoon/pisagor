@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./tree-node-checkbox.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { type TreeNodeType, TreeView } from "@pisagor/svelte";
   import TreeNodeCheckbox from "./tree-node-checkbox.svelte";

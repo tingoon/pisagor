@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./destructive.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, DropdownMenu } from "@pisagor/svelte";
   import { CopyIcon, PencilIcon, TrashIcon } from "@pisagor/svelte/icons";

@@ -1,4 +1,3 @@
-import source from "./editable-user-card.tsx?raw";
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Button, Card, Editable, Field, Input } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
@@ -70,5 +69,3 @@ export function EditableUserCard({ className }: EditableUserCardProps) {
     </Card>
   );
 }
-
-export { source as EditableUserCardSource };

@@ -1,4 +1,3 @@
-import source from "./sizes.tsx?raw";
 import { Field, TagsInput } from "@pisagor/react";
 export function Sizes() {
   const defaultValue = ["React", "Solid"];
@@ -24,5 +23,3 @@ export function Sizes() {
     </div>
   );
 }
-
-export { source as SizesSource };

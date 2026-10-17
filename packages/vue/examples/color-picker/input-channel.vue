@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./input-channel.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { ColorPicker, Field, Input, parseColor } from "@pisagor/vue";
 

@@ -1,4 +1,3 @@
-import source from "./slider-rgb-channels.tsx?raw";
 import { ColorPicker } from "@pisagor/react";
 
 export function SliderRgbChannels() {
@@ -14,5 +13,3 @@ export function SliderRgbChannels() {
     </ColorPicker>
   );
 }
-
-export { source as SliderRgbChannelsSource };

@@ -1,10 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/collapsible/default.vue?raw";
-import PartialCollapseSource from "#examples/vue/collapsible/partial-collapse.vue?raw";
-import NestedSource from "#examples/vue/collapsible/nested.vue?raw";
-import ControlledSource from "#examples/vue/collapsible/controlled.vue?raw";
-import DisabledSource from "#examples/vue/collapsible/disabled.vue?raw";
-import CustomRecipeSource from "#examples/vue/collapsible/custom-recipe.vue?raw";
 
 ## Import
 
@@ -29,61 +23,31 @@ import { Collapsible } from "@pisagor/vue";
 
 Reveal and hide a section behind a trigger.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="collapsible"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Partial Collapse
 
 Leave a preview visible when users should sense content below the fold.
 
-<Example
-  name="PartialCollapse"
-  code={PartialCollapseSource}
-  exampleId="collapsible"
-  framework="vue"
-  kind="component"
-/>
+<Example name="PartialCollapse" />
 
 ### Nested
 
 Nest collapsibles when content has deeper hierarchy.
 
-<Example
-  name="Nested"
-  code={NestedSource}
-  exampleId="collapsible"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Nested" />
 
 ### Controlled
 
 Drive open state from the parent when other UI depends on it.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="collapsible"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the section cannot expand.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="collapsible"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ## Customization
 
@@ -91,10 +55,4 @@ Show that the section cannot expand.
 
 Extend `collapsibleRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="collapsible"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

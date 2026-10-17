@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./with-separator.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, ButtonGroup } from "@pisagor/svelte";
   import MinusIcon from "phosphor-svelte/lib/MinusIcon";

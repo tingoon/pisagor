@@ -1,4 +1,3 @@
-import source from "./icon-only.tsx?raw";
 import { BottomNavigation, ScrollArea } from "@pisagor/solid";
 import {
   BellIcon,
@@ -39,5 +38,3 @@ export function IconOnly() {
     </div>
   );
 }
-
-export { source as IconOnlySource };

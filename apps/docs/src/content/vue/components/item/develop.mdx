@@ -1,16 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/item/default.vue?raw";
-import VariantsSource from "#examples/vue/item/variants.vue?raw";
-import SizesSource from "#examples/vue/item/sizes.vue?raw";
-import IconSource from "#examples/vue/item/icon.vue?raw";
-import ImageSource from "#examples/vue/item/image.vue?raw";
-import WithMediaSource from "#examples/vue/item/with-media.vue?raw";
-import HeaderSource from "#examples/vue/item/header.vue?raw";
-import GroupSource from "#examples/vue/item/group.vue?raw";
-import WithAvatarSource from "#examples/vue/item/with-avatar.vue?raw";
-import LinkSource from "#examples/vue/item/link.vue?raw";
-import CustomSpacingSource from "#examples/vue/item/custom-spacing.vue?raw";
-import CustomRecipeSource from "#examples/vue/item/custom-recipe.vue?raw";
 
 ## Import
 
@@ -36,121 +24,61 @@ import { Item } from "@pisagor/vue";
 
 Lay out media, title, description, and actions as one row.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="item"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Variants
 
 Choose emphasis to match list density.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="item"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="item"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Icon
 
 Lead with an icon when a symbol is enough.
 
-<Example
-  name="Icon"
-  code={IconSource}
-  exampleId="item"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Icon" />
 
 ### Image
 
 Use a larger image treatment for media-forward rows.
 
-<Example
-  name="Image"
-  code={ImageSource}
-  exampleId="item"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Image" />
 
 ### With Media
 
 Lead with media when imagery helps recognition.
 
-<Example
-  name="WithMedia"
-  code={WithMediaSource}
-  exampleId="item"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithMedia" />
 
 ### Header
 
 Use item header layout for section introductions in a list.
 
-<Example
-  name="Header"
-  code={HeaderSource}
-  exampleId="item"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Header" />
 
 ### Group
 
 Group related items so related choices stay visually and semantically together.
 
-<Example
-  name="Group"
-  code={GroupSource}
-  exampleId="item"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Group" />
 
 ### With Avatar
 
 Lead with an avatar when the row represents a person.
 
-<Example
-  name="WithAvatar"
-  code={WithAvatarSource}
-  exampleId="item"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithAvatar" />
 
 ### As child
 
 Navigate when the whole row is a destination.
 
-<Example
-  name="Link"
-  code={LinkSource}
-  exampleId="item"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Link" />
 
 ## Customization
 
@@ -160,22 +88,10 @@ Pass `class` for a one-off change to a single element.
 
 Override spacing when the default density does not match the surrounding layout.
 
-<Example
-  name="CustomSpacing"
-  code={CustomSpacingSource}
-  exampleId="item"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomSpacing" />
 
 ### Custom recipe
 
 Extend `itemRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="item"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

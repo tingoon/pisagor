@@ -1,16 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/react/item/default.tsx";
-import { VariantsSource } from "#examples/react/item/variants.tsx";
-import { SizesSource } from "#examples/react/item/sizes.tsx";
-import { IconSource } from "#examples/react/item/icon.tsx";
-import { ImageSource } from "#examples/react/item/image.tsx";
-import { WithMediaSource } from "#examples/react/item/with-media.tsx";
-import { HeaderSource } from "#examples/react/item/header.tsx";
-import { GroupSource } from "#examples/react/item/group.tsx";
-import { WithAvatarSource } from "#examples/react/item/with-avatar.tsx";
-import { LinkSource } from "#examples/react/item/link.tsx";
-import { CustomSpacingSource } from "#examples/react/item/custom-spacing.tsx";
-import { CustomRecipeSource } from "#examples/react/item/custom-recipe.tsx";
 
 ## Import
 
@@ -36,121 +24,61 @@ import { Item } from "@pisagor/react";
 
 Lay out media, title, description, and actions as one row.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="item"
-  framework="react"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Variants
 
 Choose emphasis to match list density.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="item"
-  framework="react"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="item"
-  framework="react"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Icon
 
 Lead with an icon when a symbol is enough.
 
-<Example
-  name="Icon"
-  code={IconSource}
-  exampleId="item"
-  framework="react"
-  kind="component"
-/>
+<Example name="Icon" />
 
 ### Image
 
 Use a larger image treatment for media-forward rows.
 
-<Example
-  name="Image"
-  code={ImageSource}
-  exampleId="item"
-  framework="react"
-  kind="component"
-/>
+<Example name="Image" />
 
 ### With Media
 
 Lead with media when imagery helps recognition.
 
-<Example
-  name="WithMedia"
-  code={WithMediaSource}
-  exampleId="item"
-  framework="react"
-  kind="component"
-/>
+<Example name="WithMedia" />
 
 ### Header
 
 Use item header layout for section introductions in a list.
 
-<Example
-  name="Header"
-  code={HeaderSource}
-  exampleId="item"
-  framework="react"
-  kind="component"
-/>
+<Example name="Header" />
 
 ### Group
 
 Group related items so related choices stay visually and semantically together.
 
-<Example
-  name="Group"
-  code={GroupSource}
-  exampleId="item"
-  framework="react"
-  kind="component"
-/>
+<Example name="Group" />
 
 ### With Avatar
 
 Lead with an avatar when the row represents a person.
 
-<Example
-  name="WithAvatar"
-  code={WithAvatarSource}
-  exampleId="item"
-  framework="react"
-  kind="component"
-/>
+<Example name="WithAvatar" />
 
 ### As child
 
 Navigate when the whole row is a destination.
 
-<Example
-  name="Link"
-  code={LinkSource}
-  exampleId="item"
-  framework="react"
-  kind="component"
-/>
+<Example name="Link" />
 
 ## Customization
 
@@ -160,22 +88,10 @@ Pass `className` for a one-off change to a single element.
 
 Override spacing when the default density does not match the surrounding layout.
 
-<Example
-  name="CustomSpacing"
-  code={CustomSpacingSource}
-  exampleId="item"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomSpacing" />
 
 ### Custom recipe
 
 Extend `itemRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="item"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

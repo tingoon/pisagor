@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { MapPinIcon } from "@phosphor-icons/react";
 import { Avatar, Button, HoverCard } from "@pisagor/react";
 import { hoverCardRecipe } from "@pisagor/recipes";
@@ -40,5 +39,3 @@ export function CustomRecipe() {
     </HoverCard>
   );
 }
-
-export { source as CustomRecipeSource };

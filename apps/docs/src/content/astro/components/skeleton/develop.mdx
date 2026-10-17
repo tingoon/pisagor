@@ -4,11 +4,6 @@ import Sizes from "#examples/astro/skeleton/sizes.astro";
 import SkeletonText from "#examples/astro/skeleton/skeleton-text.astro";
 import InCard from "#examples/astro/skeleton/in-card.astro";
 import CustomRecipe from "#examples/astro/skeleton/custom-recipe.astro";
-import DefaultSource from "#examples/astro/skeleton/default.astro?raw";
-import SizesSource from "#examples/astro/skeleton/sizes.astro?raw";
-import SkeletonTextSource from "#examples/astro/skeleton/skeleton-text.astro?raw";
-import InCardSource from "#examples/astro/skeleton/in-card.astro?raw";
-import CustomRecipeSource from "#examples/astro/skeleton/custom-recipe.astro?raw";
 
 ## Import
 
@@ -22,13 +17,7 @@ import { Skeleton } from "@pisagor/astro";
 
 Pulse placeholders while content loads.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="skeleton"
-  framework="astro"
-  kind="component"
->
+<Example name="Default">
   <Default />
 </Example>
 
@@ -36,13 +25,7 @@ Pulse placeholders while content loads.
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="skeleton"
-  framework="astro"
-  kind="component"
->
+<Example name="Sizes">
   <Sizes />
 </Example>
 
@@ -50,13 +33,7 @@ Use `size` to pick the sm, md or lg scale. `md` is the default.
 
 Approximate lines of text so reading layout stays stable.
 
-<Example
-  name="SkeletonText"
-  code={SkeletonTextSource}
-  exampleId="skeleton"
-  framework="astro"
-  kind="component"
->
+<Example name="SkeletonText">
   <SkeletonText />
 </Example>
 
@@ -64,13 +41,7 @@ Approximate lines of text so reading layout stays stable.
 
 Place skeletons inside a card when that surface is loading.
 
-<Example
-  name="InCard"
-  code={InCardSource}
-  exampleId="skeleton"
-  framework="astro"
-  kind="component"
->
+<Example name="InCard">
   <InCard />
 </Example>
 
@@ -80,12 +51,6 @@ Place skeletons inside a card when that surface is loading.
 
 Extend `skeletonRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="skeleton"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomRecipe">
   <CustomRecipe />
 </Example>

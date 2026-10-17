@@ -1,4 +1,3 @@
-import source from "./with-sortable-data.tsx?raw";
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Checkbox, Sortable, Table } from "@pisagor/solid";
 import type { ColumnDef } from "@pisagor/solid/data-grid";
@@ -285,5 +284,3 @@ export function WithSortableData() {
     </DataGridShell>
   );
 }
-
-export { source as WithSortableDataSource };

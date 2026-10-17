@@ -1,4 +1,3 @@
-import source from "./invalid.tsx?raw";
 import { RadioGroup } from "@pisagor/solid";
 
 export function Invalid() {
@@ -13,5 +12,3 @@ export function Invalid() {
     />
   );
 }
-
-export { source as InvalidSource };

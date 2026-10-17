@@ -1,4 +1,3 @@
-import source from "./required-field.tsx?raw";
 import { Field, Input } from "@pisagor/react";
 export function RequiredField() {
   return (
@@ -11,5 +10,3 @@ export function RequiredField() {
     </Field>
   );
 }
-
-export { source as RequiredFieldSource };

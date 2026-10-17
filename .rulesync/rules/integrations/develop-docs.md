@@ -30,38 +30,28 @@ The docs engine renders every `##` section in place; TOC and page order follow t
 
 ## Examples
 
-Each example file dual-exports the live component and its source:
+Example files export only the live component. The Code tab lazy-loads that file as `?raw` from `name` + `exampleId` (no `sources.ts`, no `code` prop).
 
 ```ts
-import source from "./default.tsx?raw";
+// default.tsx — live example only
 export function Default() {
   /* … */
 }
-export { source as DefaultSource }; // React/Solid: unique name avoids `export *` clashes
 ```
 
-Vue/Svelte keep `export { source }` (index uses `default as`, not `export *`). Astro `sources.ts` imports `?raw` directly (`.astro` cannot named-export `source` for Vite).
-
-In `develop.mdx`:
+In `develop.mdx`, only pass `name` — `framework` / `exampleId` / `kind` come from the doc page URL:
 
 ```mdx
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/react/accordion/default.tsx";
 
 ### Default
 
 Short description.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="accordion"
-  framework="react"
-  kind="component"
-/>
+<Example name="Default" />
 ```
 
-Use `#examples/<framework>`, `#examples/<framework>-form`, or `#examples/<framework>-blocks` aliases. Keep `sources.ts` as a map of those source exports. Astro previews pass the component as `<Example>` children. Block examples set `kind="block"`.
+`name` must match the example file stem in kebab-case (`Default` → `default.tsx`, `WithCard` → `with-card.tsx`). Astro previews pass the component as `<Example>` children.
 
 ## Example order
 
@@ -103,4 +93,4 @@ Short, task-focused, existing tone. No design best practices ("Prefer…", "Keep
 
 ## Storybook
 
-Story order matches `develop.mdx` order, with `Playground` first. Every `<Example name>` has a story; remove stories for deleted examples. Keep example barrels (`index.ts` + `sources.ts`) in sync.
+Story order matches `develop.mdx` order, with `Playground` first. Every `<Example name>` has a story; remove stories for deleted examples. Keep the example barrel (`index.ts`) in sync with the example files.

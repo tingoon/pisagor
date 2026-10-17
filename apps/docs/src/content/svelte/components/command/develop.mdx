@@ -1,12 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/command/default.svelte?raw";
-import GroupsSource from "#examples/svelte/command/groups.svelte?raw";
-import ShortcutsSource from "#examples/svelte/command/shortcuts.svelte?raw";
-import WithFooterSource from "#examples/svelte/command/with-footer.svelte?raw";
-import ScrollableSource from "#examples/svelte/command/scrollable.svelte?raw";
-import ShorthandSource from "#examples/svelte/command/shorthand.svelte?raw";
-import WithDialogSource from "#examples/svelte/command/with-dialog.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/command/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -39,85 +31,43 @@ import { Command } from "@pisagor/svelte";
 
 Open a searchable palette for actions, pages, or settings.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="command"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Groups
 
 Group commands under labels so long palettes stay scannable.
 
-<Example
-  name="Groups"
-  code={GroupsSource}
-  exampleId="command"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Groups" />
 
 ### Shortcuts
 
 Show keyboard shortcuts beside commands for faster recall.
 
-<Example
-  name="Shortcuts"
-  code={ShortcutsSource}
-  exampleId="command"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Shortcuts" />
 
 ### With Footer
 
 Add a footer for hints or secondary actions under the command list.
 
-<Example
-  name="WithFooter"
-  code={WithFooterSource}
-  exampleId="command"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithFooter" />
 
 ### Scrollable
 
 Allow the command list to scroll when items exceed the panel height.
 
-<Example
-  name="Scrollable"
-  code={ScrollableSource}
-  exampleId="command"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Scrollable" />
 
 ### Shorthand
 
 Pass `items` to `Command.Shorthand` for a filtered, grouped list without composing parts.
 
-<Example
-  name="Shorthand"
-  code={ShorthandSource}
-  exampleId="command"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Shorthand" />
 
 ### With Dialog
 
 Host the palette in a dialog when it should take focus as a modal layer.
 
-<Example
-  name="WithDialog"
-  code={WithDialogSource}
-  exampleId="command"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithDialog" />
 
 ## Customization
 
@@ -125,10 +75,4 @@ Host the palette in a dialog when it should take focus as a modal layer.
 
 Extend `commandRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="command"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

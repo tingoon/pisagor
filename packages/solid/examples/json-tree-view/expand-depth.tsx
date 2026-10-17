@@ -1,4 +1,3 @@
-import source from "./expand-depth.tsx?raw";
 import { JsonTreeView } from "@pisagor/solid";
 import { expandDepthData } from "./helpers";
 
@@ -20,5 +19,3 @@ export function ExpandDepth() {
     </div>
   );
 }
-
-export { source as ExpandDepthSource };

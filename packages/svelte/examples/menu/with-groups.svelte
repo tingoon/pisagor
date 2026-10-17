@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./with-groups.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Menu } from "@pisagor/svelte";
   import ArchiveIcon from "phosphor-svelte/lib/ArchiveIcon";

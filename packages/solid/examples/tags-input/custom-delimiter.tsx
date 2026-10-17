@@ -1,4 +1,3 @@
-import source from "./custom-delimiter.tsx?raw";
 import { Field, TagsInput } from "@pisagor/solid";
 import { For } from "solid-js";
 
@@ -27,5 +26,3 @@ export function CustomDelimiter() {
     </Field>
   );
 }
-
-export { source as CustomDelimiterSource };

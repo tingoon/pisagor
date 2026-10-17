@@ -1,4 +1,3 @@
-import source from "./with-separator.tsx?raw";
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
 import { Button, ButtonGroup } from "@pisagor/react";
 export function WithSeparator() {
@@ -14,5 +13,3 @@ export function WithSeparator() {
     </ButtonGroup>
   );
 }
-
-export { source as WithSeparatorSource };

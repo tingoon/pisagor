@@ -1,13 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/react/popover/default.tsx";
-import { CloseButtonSource } from "#examples/react/popover/close-button.tsx";
-import { AnchorSource } from "#examples/react/popover/anchor.tsx";
-import { NestedSource } from "#examples/react/popover/nested.tsx";
-import { ScrollAreaSource } from "#examples/react/popover/scroll-area.tsx";
-import { ModalSource } from "#examples/react/popover/modal.tsx";
-import { CloseBehaviorSource } from "#examples/react/popover/close-behavior.tsx";
-import { PlacementsSource } from "#examples/react/popover/placements.tsx";
-import { CustomSpacingSource } from "#examples/react/popover/custom-spacing.tsx";
 
 ## Import
 
@@ -38,97 +29,49 @@ import { Popover } from "@pisagor/react";
 
 Anchor lightweight content to a trigger without a full dialog.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="popover"
-  framework="react"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Close Button
 
 Add an explicit close control when dismiss should be obvious.
 
-<Example
-  name="CloseButton"
-  code={CloseButtonSource}
-  exampleId="popover"
-  framework="react"
-  kind="component"
-/>
+<Example name="CloseButton" />
 
 ### Anchor
 
 Position against a custom anchor when the trigger element is not the visual anchor.
 
-<Example
-  name="Anchor"
-  code={AnchorSource}
-  exampleId="popover"
-  framework="react"
-  kind="component"
-/>
+<Example name="Anchor" />
 
 ### Nested
 
 Nest another popover when hierarchy or layered structure is part of the content.
 
-<Example
-  name="Nested"
-  code={NestedSource}
-  exampleId="popover"
-  framework="react"
-  kind="component"
-/>
+<Example name="Nested" />
 
 ### Scroll Area
 
 Constrain tall content in a scroll region so the popover chrome stays on screen.
 
-<Example
-  name="ScrollArea"
-  code={ScrollAreaSource}
-  exampleId="popover"
-  framework="react"
-  kind="component"
-/>
+<Example name="ScrollArea" />
 
 ### Modal
 
 Block interaction outside when the popover content needs focus.
 
-<Example
-  name="Modal"
-  code={ModalSource}
-  exampleId="popover"
-  framework="react"
-  kind="component"
-/>
+<Example name="Modal" />
 
 ### Close Behavior
 
 Control how dismiss works — outside click, escape, or explicit close — to match the flow.
 
-<Example
-  name="CloseBehavior"
-  code={CloseBehaviorSource}
-  exampleId="popover"
-  framework="react"
-  kind="component"
-/>
+<Example name="CloseBehavior" />
 
 ### Placements
 
 Choose placement so the popover stays near its trigger without covering critical content.
 
-<Example
-  name="Placements"
-  code={PlacementsSource}
-  exampleId="popover"
-  framework="react"
-  kind="component"
-/>
+<Example name="Placements" />
 
 ## Customization
 
@@ -138,13 +81,7 @@ Pass `className` for a one-off change to a single element.
 
 Override spacing when the default density does not match the surrounding layout.
 
-<Example
-  name="CustomSpacing"
-  code={CustomSpacingSource}
-  exampleId="popover"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomSpacing" />
 
 ## Accessibility
 

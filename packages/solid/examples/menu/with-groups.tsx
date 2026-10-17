@@ -1,4 +1,3 @@
-import source from "./with-groups.tsx?raw";
 import { Menu } from "@pisagor/solid";
 import {
   ArchiveIcon,
@@ -37,5 +36,3 @@ export function WithGroups() {
     </div>
   );
 }
-
-export { source as WithGroupsSource };

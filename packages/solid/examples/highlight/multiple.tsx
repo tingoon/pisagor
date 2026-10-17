@@ -1,4 +1,3 @@
-import source from "./multiple.tsx?raw";
 import { Highlight } from "@pisagor/solid";
 
 export function Multiple() {
@@ -11,5 +10,3 @@ export function Multiple() {
     </p>
   );
 }
-
-export { source as MultipleSource };

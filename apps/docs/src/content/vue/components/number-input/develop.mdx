@@ -1,17 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import VariantsSource from "#examples/vue/number-input/variants.vue?raw";
-import SizesSource from "#examples/vue/number-input/sizes.vue?raw";
-import FormattedSource from "#examples/vue/number-input/formatted.vue?raw";
-import FieldOnlySource from "#examples/vue/number-input/field-only.vue?raw";
-import CompoundSource from "#examples/vue/number-input/compound.vue?raw";
-import ControlledSource from "#examples/vue/number-input/controlled.vue?raw";
-import DisabledSource from "#examples/vue/number-input/disabled.vue?raw";
-import InvalidSource from "#examples/vue/number-input/invalid.vue?raw";
-import RangeSource from "#examples/vue/number-input/range.vue?raw";
-import StepSource from "#examples/vue/number-input/step.vue?raw";
-import MouseWheelSource from "#examples/vue/number-input/mouse-wheel.vue?raw";
-import ScrubSource from "#examples/vue/number-input/scrub.vue?raw";
-import CustomRecipeSource from "#examples/vue/number-input/custom-recipe.vue?raw";
 
 ## Import
 
@@ -25,145 +12,73 @@ import { NumberInput } from "@pisagor/vue";
 
 Choose visual weight or emphasis so the number input matches importance in the surrounding layout.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="number-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Match size to the surrounding layout — smaller in compact chrome, larger where the number input needs emphasis.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="number-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Formatted
 
 Display a formatted value when units or grouping aid reading.
 
-<Example
-  name="Formatted"
-  code={FormattedSource}
-  exampleId="number-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Formatted" />
 
 ### Field Only
 
 Render the field without extra chrome when the surrounding layout provides labels.
 
-<Example
-  name="FieldOnly"
-  code={FieldOnlySource}
-  exampleId="number-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="FieldOnly" />
 
 ### Compound
 
 Compose the input and stepper triggers from parts when you need a custom layout.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="number-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this number input.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="number-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the number input is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="number-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation or error state so users know the number input needs attention before continuing.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="number-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ### Range
 
 Select a start and end value when the task needs a span rather than a single point.
 
-<Example
-  name="Range"
-  code={RangeSource}
-  exampleId="number-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Range" />
 
 ### Step
 
 Snap changes to a step interval when values should move in fixed increments.
 
-<Example
-  name="Step"
-  code={StepSource}
-  exampleId="number-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Step" />
 
 ### Mouse Wheel
 
 Adjust the value with the mouse wheel when rapid changes fit the task.
 
-<Example
-  name="MouseWheel"
-  code={MouseWheelSource}
-  exampleId="number-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="MouseWheel" />
 
 ### Scrub
 
 Scrub horizontally to change the value when precise dragging helps.
 
-<Example
-  name="Scrub"
-  code={ScrubSource}
-  exampleId="number-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Scrub" />
 
 ## Customization
 
@@ -171,10 +86,4 @@ Scrub horizontally to change the value when precise dragging helps.
 
 Extend `numberInputRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="number-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

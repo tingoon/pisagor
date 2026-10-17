@@ -1,4 +1,3 @@
-import source from "./custom-size.tsx?raw";
 import { InputOTP } from "@pisagor/react";
 
 export function CustomSize() {
@@ -11,5 +10,3 @@ export function CustomSize() {
     </InputOTP>
   );
 }
-
-export { source as CustomSizeSource };

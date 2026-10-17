@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Field, Input } from "@pisagor/react";
 export function Default() {
   return (
@@ -11,5 +10,3 @@ export function Default() {
     </Field>
   );
 }
-
-export { source as DefaultSource };

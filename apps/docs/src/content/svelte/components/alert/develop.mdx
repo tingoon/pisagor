@@ -1,11 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import VariantsSource from "#examples/svelte/alert/variants.svelte?raw";
-import WithIconSource from "#examples/svelte/alert/with-icon.svelte?raw";
-import WithoutIconSource from "#examples/svelte/alert/without-icon.svelte?raw";
-import WithActionSource from "#examples/svelte/alert/with-action.svelte?raw";
-import CompoundSource from "#examples/svelte/alert/compound.svelte?raw";
-import CustomColorSource from "#examples/svelte/alert/custom-color.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/alert/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -19,61 +12,31 @@ import { Alert } from "@pisagor/svelte";
 
 Choose info, success, warning, or error to match the severity of the message.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="alert"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### With Icon
 
 Reinforce meaning with an icon that matches the alert status.
 
-<Example
-  name="WithIcon"
-  code={WithIconSource}
-  exampleId="alert"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithIcon" />
 
 ### Without Icon
 
 Status variants (info, success, warning, destructive) render a default icon. Pass `icon={null}` to hide it.
 
-<Example
-  name="WithoutIcon"
-  code={WithoutIconSource}
-  exampleId="alert"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithoutIcon" />
 
 ### With Action
 
 Add a follow-up action when the message should lead somewhere, such as Undo or View details.
 
-<Example
-  name="WithAction"
-  code={WithActionSource}
-  exampleId="alert"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithAction" />
 
 ### Compound
 
 Compose title, description, and actions from parts for a custom alert layout.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="alert"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ## Customization
 
@@ -83,25 +46,13 @@ Pass `class` for a one-off change to a single element.
 
 Override accent when a brand or contextual color matters more than the status token.
 
-<Example
-  name="CustomColor"
-  code={CustomColorSource}
-  exampleId="alert"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomColor" />
 
 ### Custom recipe
 
 Extend `alertRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="alert"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />
 
 ## Accessibility
 

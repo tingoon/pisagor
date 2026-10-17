@@ -1,15 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/date-picker/default.vue?raw";
-import VariantsSource from "#examples/vue/date-picker/variants.vue?raw";
-import RangeSource from "#examples/vue/date-picker/range.vue?raw";
-import TimeSource from "#examples/vue/date-picker/time.vue?raw";
-import InputSource from "#examples/vue/date-picker/input.vue?raw";
-import WithPresetsSource from "#examples/vue/date-picker/with-presets.vue?raw";
-import CustomFormatSource from "#examples/vue/date-picker/custom-format.vue?raw";
-import ClearableSource from "#examples/vue/date-picker/clearable.vue?raw";
-import DisabledSource from "#examples/vue/date-picker/disabled.vue?raw";
-import InvalidSource from "#examples/vue/date-picker/invalid.vue?raw";
-import CustomRecipeSource from "#examples/vue/date-picker/custom-recipe.vue?raw";
 
 ## Import
 
@@ -34,121 +23,61 @@ import { DatePicker } from "@pisagor/vue";
 
 Pick a date from a calendar attached to a field or popover.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="date-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Variants
 
 Choose field emphasis to match surrounding inputs.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="date-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Range
 
 Pick a start and end date for spans.
 
-<Example
-  name="Range"
-  code={RangeSource}
-  exampleId="date-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Range" />
 
 ### Time
 
 Include time when the value is a datetime rather than a day alone.
 
-<Example
-  name="Time"
-  code={TimeSource}
-  exampleId="date-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Time" />
 
 ### Input
 
 Type the date in an input when keyboard entry is faster than picking.
 
-<Example
-  name="Input"
-  code={InputSource}
-  exampleId="date-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Input" />
 
 ### With Presets
 
 Offer common ranges so users can pick without hunting on the calendar.
 
-<Example
-  name="WithPresets"
-  code={WithPresetsSource}
-  exampleId="date-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithPresets" />
 
 ### Custom Format
 
 Override display format when locale or product needs a specific pattern.
 
-<Example
-  name="CustomFormat"
-  code={CustomFormatSource}
-  exampleId="date-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomFormat" />
 
 ### Clearable
 
 Offer a clear control when the date is optional.
 
-<Example
-  name="Clearable"
-  code={ClearableSource}
-  exampleId="date-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Clearable" />
 
 ### Disabled
 
 Show that the date cannot change.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="date-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation or error state so users know the date picker needs attention before continuing.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="date-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ## Customization
 
@@ -156,10 +85,4 @@ Surface a validation or error state so users know the date picker needs attentio
 
 Extend `datePickerRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="date-picker"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

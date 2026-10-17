@@ -1,36 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/react/color-picker/default.tsx";
-import { VariantsSource } from "#examples/react/color-picker/variants.tsx";
-import { AreaChannelsSource } from "#examples/react/color-picker/area-channels.tsx";
-import { AreaDotsSource } from "#examples/react/color-picker/area-dots.tsx";
-import { InputChannelSource } from "#examples/react/color-picker/input-channel.tsx";
-import { LabelFormatSelectSource } from "#examples/react/color-picker/label-format-select.tsx";
-import { InputCompactSource } from "#examples/react/color-picker/input-compact.tsx";
-import { InputWithPopoverSource } from "#examples/react/color-picker/input-with-popover.tsx";
-import { InputWithSwatchPreviewSource } from "#examples/react/color-picker/input-with-swatch-preview.tsx";
-import { PopoverSlidersOnlySource } from "#examples/react/color-picker/popover-sliders-only.tsx";
-import { PopoverWithChannelEditingSource } from "#examples/react/color-picker/popover-with-channel-editing.tsx";
-import { PopoverWithSwatchPickerSource } from "#examples/react/color-picker/popover-with-swatch-picker.tsx";
-import { SliderAlphaChannelSource } from "#examples/react/color-picker/slider-alpha-channel.tsx";
-import { SliderHsbaChannelsSource } from "#examples/react/color-picker/slider-hsba-channels.tsx";
-import { SliderHslChannelsSource } from "#examples/react/color-picker/slider-hsl-channels.tsx";
-import { SliderRgbChannelsSource } from "#examples/react/color-picker/slider-rgb-channels.tsx";
-import { SliderVerticalSource } from "#examples/react/color-picker/slider-vertical.tsx";
-import { SwatchPickerSource } from "#examples/react/color-picker/swatch-picker.tsx";
-import { SwatchPickerCustomIndicatorSource } from "#examples/react/color-picker/swatch-picker-custom-indicator.tsx";
-import { ClearableSource } from "#examples/react/color-picker/clearable.tsx";
-import { InputControlledSource } from "#examples/react/color-picker/input-controlled.tsx";
-import { SliderControlledSource } from "#examples/react/color-picker/slider-controlled.tsx";
-import { SwatchPickerControlledSource } from "#examples/react/color-picker/swatch-picker-controlled.tsx";
-import { DisabledSource } from "#examples/react/color-picker/disabled.tsx";
-import { PopoverDisabledSource } from "#examples/react/color-picker/popover-disabled.tsx";
-import { SliderDisabledSource } from "#examples/react/color-picker/slider-disabled.tsx";
-import { SwatchPickerDisabledSource } from "#examples/react/color-picker/swatch-picker-disabled.tsx";
-import { InvalidSource } from "#examples/react/color-picker/invalid.tsx";
-import { CustomSpacingSource } from "#examples/react/color-picker/custom-spacing.tsx";
-import { SwatchPickerCustomRadiusSource } from "#examples/react/color-picker/swatch-picker-custom-radius.tsx";
-import { SwatchPickerCustomSizeSource } from "#examples/react/color-picker/swatch-picker-custom-size.tsx";
-import { CustomRecipeSource } from "#examples/react/color-picker/custom-recipe.tsx";
 
 ## Import
 
@@ -66,337 +34,169 @@ import { ColorPicker } from "@pisagor/react";
 
 Pick a color with the full visual picker surface.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Variants
 
 Choose picker chrome to match compact forms or larger editing panels.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Area Channels
 
 Edit the 2D color area using specific channels for finer control.
 
-<Example
-  name="AreaChannels"
-  code={AreaChannelsSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="AreaChannels" />
 
 ### Area Dots
 
 Show discrete dots on the area when quantized picks help.
 
-<Example
-  name="AreaDots"
-  code={AreaDotsSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="AreaDots" />
 
 ### Input Channel
 
 Type a single channel value when precision matters more than dragging.
 
-<Example
-  name="InputChannel"
-  code={InputChannelSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="InputChannel" />
 
 ### Label Format Select
 
 Pair `ColorPicker.Label` with `ColorPicker.FormatSelect` and `ColorPicker.ChannelInput`.
 
-<Example
-  name="LabelFormatSelect"
-  code={LabelFormatSelectSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="LabelFormatSelect" />
 
 ### Input Compact
 
 Use a compact channel input when space is limited.
 
-<Example
-  name="InputCompact"
-  code={InputCompactSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="InputCompact" />
 
 ### Input With Popover
 
 Open channel editing in a popover attached to a trigger.
 
-<Example
-  name="InputWithPopover"
-  code={InputWithPopoverSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="InputWithPopover" />
 
 ### Input With Swatch Preview
 
 Pair inputs with a swatch so typed values stay visually grounded.
 
-<Example
-  name="InputWithSwatchPreview"
-  code={InputWithSwatchPreviewSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="InputWithSwatchPreview" />
 
 ### Popover Sliders Only
 
 Offer sliders without the full area when a simpler editor is enough.
 
-<Example
-  name="PopoverSlidersOnly"
-  code={PopoverSlidersOnlySource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="PopoverSlidersOnly" />
 
 ### Popover With Channel Editing
 
 Combine popover chrome with numeric channel fields.
 
-<Example
-  name="PopoverWithChannelEditing"
-  code={PopoverWithChannelEditingSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="PopoverWithChannelEditing" />
 
 ### Popover With Swatch Picker
 
 Pick from swatches inside a popover for predefined palettes.
 
-<Example
-  name="PopoverWithSwatchPicker"
-  code={PopoverWithSwatchPickerSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="PopoverWithSwatchPicker" />
 
 ### Slider Alpha Channel
 
 Adjust transparency with an alpha slider when opacity matters.
 
-<Example
-  name="SliderAlphaChannel"
-  code={SliderAlphaChannelSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="SliderAlphaChannel" />
 
 ### Slider Hsba Channels
 
 Edit HSBA channels with sliders when that color model fits the task.
 
-<Example
-  name="SliderHsbaChannels"
-  code={SliderHsbaChannelsSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="SliderHsbaChannels" />
 
 ### Slider Hsl Channels
 
 Edit HSL channels with sliders when that color model fits the task.
 
-<Example
-  name="SliderHslChannels"
-  code={SliderHslChannelsSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="SliderHslChannels" />
 
 ### Slider Rgb Channels
 
 Edit RGB channels with sliders when that color model fits the task.
 
-<Example
-  name="SliderRgbChannels"
-  code={SliderRgbChannelsSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="SliderRgbChannels" />
 
 ### Slider Vertical
 
 Orient channel sliders vertically when the layout favors a tall editor.
 
-<Example
-  name="SliderVertical"
-  code={SliderVerticalSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="SliderVertical" />
 
 ### Swatch Picker
 
 Pick from predefined swatches when freeform color picking is unnecessary.
 
-<Example
-  name="SwatchPicker"
-  code={SwatchPickerSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="SwatchPicker" />
 
 ### Swatch Picker Custom Indicator
 
 Customize the selected-swatch indicator to match brand chrome.
 
-<Example
-  name="SwatchPickerCustomIndicator"
-  code={SwatchPickerCustomIndicatorSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="SwatchPickerCustomIndicator" />
 
 ### Clearable
 
 Offer a clear control when users often need to remove the selected color.
 
-<Example
-  name="Clearable"
-  code={ClearableSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="Clearable" />
 
 ### Input Controlled
 
 Control channel inputs from the parent for synced color editors.
 
-<Example
-  name="InputControlled"
-  code={InputControlledSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="InputControlled" />
 
 ### Slider Controlled
 
 Drive slider channels from the parent when color state lives above the picker.
 
-<Example
-  name="SliderControlled"
-  code={SliderControlledSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="SliderControlled" />
 
 ### Swatch Picker Controlled
 
 Drive the selected swatch from the parent when palette state lives above.
 
-<Example
-  name="SwatchPickerControlled"
-  code={SwatchPickerControlledSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="SwatchPickerControlled" />
 
 ### Disabled
 
 Show that color cannot be changed.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Popover Disabled
 
 Show an unavailable popover trigger when color editing is blocked.
 
-<Example
-  name="PopoverDisabled"
-  code={PopoverDisabledSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="PopoverDisabled" />
 
 ### Slider Disabled
 
 Show that slider channels are unavailable.
 
-<Example
-  name="SliderDisabled"
-  code={SliderDisabledSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="SliderDisabled" />
 
 ### Swatch Picker Disabled
 
 Show that swatch picking is unavailable.
 
-<Example
-  name="SwatchPickerDisabled"
-  code={SwatchPickerDisabledSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="SwatchPickerDisabled" />
 
 ### Invalid
 
 Surface an invalid color value that needs correction.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ## Customization
 
@@ -406,42 +206,18 @@ Pass `className` for a one-off change to a single element.
 
 Adjust spacing when the picker sits in a denser layout.
 
-<Example
-  name="CustomSpacing"
-  code={CustomSpacingSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomSpacing" />
 
 Override swatch corner radius when geometry should match nearby controls.
 
-<Example
-  name="SwatchPickerCustomRadius"
-  code={SwatchPickerCustomRadiusSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="SwatchPickerCustomRadius" />
 
 Resize swatches when the palette needs denser or larger targets.
 
-<Example
-  name="SwatchPickerCustomSize"
-  code={SwatchPickerCustomSizeSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="SwatchPickerCustomSize" />
 
 ### Custom recipe
 
 Extend `colorPickerRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="color-picker"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

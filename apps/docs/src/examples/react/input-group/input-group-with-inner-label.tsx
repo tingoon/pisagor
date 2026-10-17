@@ -1,4 +1,3 @@
-import source from "./input-group-with-inner-label.tsx?raw";
 import { InfoIcon } from "@phosphor-icons/react";
 import { Button, Field, InputGroup, Tooltip } from "@pisagor/react";
 import { inputGroupWithInnerLabelBlock } from "#/recipes/blocks/input-group";
@@ -26,5 +25,3 @@ export function InputGroupWithInnerLabel() {
     </InputGroup>
   );
 }
-
-export { source as InputGroupWithInnerLabelSource };

@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Listbox } from "@pisagor/solid";
 export function Compound() {
@@ -22,5 +21,3 @@ export function Compound() {
     </Listbox.Root>
   );
 }
-
-export { source as CompoundSource };

@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { timerRecipe } from "@pisagor/recipes";
 import { Timer } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -39,5 +38,3 @@ export function CustomRecipe() {
     </Timer>
   );
 }
-
-export { source as CustomRecipeSource };

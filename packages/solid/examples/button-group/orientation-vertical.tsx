@@ -1,4 +1,3 @@
-import source from "./orientation-vertical.tsx?raw";
 import { Button, ButtonGroup } from "@pisagor/solid";
 import { MinusIcon, PlusIcon } from "@pisagor/solid/icons";
 export function OrientationVertical() {
@@ -13,5 +12,3 @@ export function OrientationVertical() {
     </ButtonGroup>
   );
 }
-
-export { source as OrientationVerticalSource };

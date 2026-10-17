@@ -1,4 +1,3 @@
-import source from "./custom-indicator.tsx?raw";
 import { SegmentGroup } from "@pisagor/react";
 
 export function CustomIndicator() {
@@ -15,5 +14,3 @@ export function CustomIndicator() {
     />
   );
 }
-
-export { source as CustomIndicatorSource };

@@ -1,4 +1,3 @@
-import source from "./as-child.tsx?raw";
 import { Button } from "@pisagor/react";
 
 export function AsChild() {
@@ -8,5 +7,3 @@ export function AsChild() {
     </Button>
   );
 }
-
-export { source as AsChildSource };

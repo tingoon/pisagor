@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { Progress } from "@pisagor/react";
 import { progressRecipe } from "@pisagor/recipes";
 import { useEffect, useState } from "react";
@@ -23,5 +22,3 @@ export function CustomRecipe() {
 
   return <Progress recipe={brandProgressRecipe} value={progress} />;
 }
-
-export { source as CustomRecipeSource };

@@ -23,7 +23,6 @@ export { default as SliderHsbaChannels } from "./slider-hsba-channels.svelte";
 export { default as SliderHslChannels } from "./slider-hsl-channels.svelte";
 export { default as SliderRgbChannels } from "./slider-rgb-channels.svelte";
 export { default as SliderVertical } from "./slider-vertical.svelte";
-export { imports, sources } from "./sources";
 export { default as SwatchPicker } from "./swatch-picker.svelte";
 export { default as SwatchPickerControlled } from "./swatch-picker-controlled.svelte";
 export { default as SwatchPickerCustomIndicator } from "./swatch-picker-custom-indicator.svelte";

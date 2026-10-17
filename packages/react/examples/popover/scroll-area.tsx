@@ -1,4 +1,3 @@
-import source from "./scroll-area.tsx?raw";
 import { Button, Popover } from "@pisagor/react";
 export function ScrollArea() {
   const items = Array.from({ length: 12 }, (_, i) => ({
@@ -33,5 +32,3 @@ export function ScrollArea() {
     </Popover>
   );
 }
-
-export { source as ScrollAreaSource };

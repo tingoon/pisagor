@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { SignaturePad } from "@pisagor/react";
 import { signaturePadRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -16,5 +15,3 @@ const brandSignaturePadRecipe = tv({
 export function CustomRecipe() {
   return <SignaturePad recipe={brandSignaturePadRecipe} />;
 }
-
-export { source as CustomRecipeSource };

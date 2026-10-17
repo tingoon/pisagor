@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./clearable.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { ColorPicker, Field, InputGroup } from "@pisagor/svelte";
 

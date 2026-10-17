@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./pomodoro.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import {
   PhArrowCounterClockwise,

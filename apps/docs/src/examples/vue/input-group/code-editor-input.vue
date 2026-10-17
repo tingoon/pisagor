@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./code-editor-input.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhCopy, PhFile } from "@phosphor-icons/vue";
 import { InputGroup } from "@pisagor/vue";

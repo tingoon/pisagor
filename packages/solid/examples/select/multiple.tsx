@@ -1,4 +1,3 @@
-import source from "./multiple.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Select } from "@pisagor/solid";
 import { For } from "solid-js";
@@ -43,5 +42,3 @@ export function Multiple() {
     </Select.Root>
   );
 }
-
-export { source as MultipleSource };

@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./settings-row.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Checkbox, Field, Surface } from "@pisagor/svelte";
   import { settingsRowBlock } from "#/recipes/blocks/field";

@@ -1,4 +1,3 @@
-import source from "./padding.tsx?raw";
 import { Surface } from "@pisagor/solid";
 
 export function Padding() {
@@ -16,5 +15,3 @@ export function Padding() {
     </div>
   );
 }
-
-export { source as PaddingSource };

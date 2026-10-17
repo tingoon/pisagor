@@ -1,11 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/tooltip/default.svelte?raw";
-import WithKeyboardShortcutSource from "#examples/svelte/tooltip/with-keyboard-shortcut.svelte?raw";
-import WithoutArrowSource from "#examples/svelte/tooltip/without-arrow.svelte?raw";
-import CompoundSource from "#examples/svelte/tooltip/compound.svelte?raw";
-import DisabledSource from "#examples/svelte/tooltip/disabled.svelte?raw";
-import PlacementsSource from "#examples/svelte/tooltip/placements.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/tooltip/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -19,73 +12,37 @@ import { Tooltip } from "@pisagor/svelte";
 
 Explain a control briefly on hover or focus.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="tooltip"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### With Keyboard Shortcut
 
 Include the shortcut in the tooltip when keys reinforce the action.
 
-<Example
-  name="WithKeyboardShortcut"
-  code={WithKeyboardShortcutSource}
-  exampleId="tooltip"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithKeyboardShortcut" />
 
 ### Without Arrow
 
 Hide the arrow for a lighter, label-like tooltip.
 
-<Example
-  name="WithoutArrow"
-  code={WithoutArrowSource}
-  exampleId="tooltip"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithoutArrow" />
 
 ### Compound
 
 Compose `Tooltip.Root`, `Trigger`, `Positioner`, `Content` and `Arrow` for full control. The shorthand stays available.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="tooltip"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Disabled
 
 Show that the tooltip is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="tooltip"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Placements
 
 Place the tooltip so it stays near the trigger without covering critical UI.
 
-<Example
-  name="Placements"
-  code={PlacementsSource}
-  exampleId="tooltip"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Placements" />
 
 ## Customization
 
@@ -93,13 +50,7 @@ Place the tooltip so it stays near the trigger without covering critical UI.
 
 Extend `tooltipRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="tooltip"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />
 
 ## Accessibility
 

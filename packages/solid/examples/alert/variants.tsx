@@ -1,4 +1,3 @@
-import source from "./variants.tsx?raw";
 import { Alert } from "@pisagor/solid";
 import {
   CheckCircleIcon,
@@ -43,5 +42,3 @@ export function Variants() {
     </div>
   );
 }
-
-export { source as VariantsSource };

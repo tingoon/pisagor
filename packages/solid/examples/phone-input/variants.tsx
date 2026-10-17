@@ -1,4 +1,3 @@
-import source from "./variants.tsx?raw";
 import { PhoneInput } from "@pisagor/solid/phone-input";
 
 export function Variants() {
@@ -13,5 +12,3 @@ export function Variants() {
     </div>
   );
 }
-
-export { source as VariantsSource };

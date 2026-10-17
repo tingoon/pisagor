@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { DataList } from "@pisagor/solid";
 
 export function Compound() {
@@ -10,5 +9,3 @@ export function Compound() {
     </DataList.Root>
   );
 }
-
-export { source as CompoundSource };

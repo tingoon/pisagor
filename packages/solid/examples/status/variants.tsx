@@ -1,4 +1,3 @@
-import source from "./variants.tsx?raw";
 import { Status } from "@pisagor/solid";
 
 export function Variants() {
@@ -12,5 +11,3 @@ export function Variants() {
     </div>
   );
 }
-
-export { source as VariantsSource };

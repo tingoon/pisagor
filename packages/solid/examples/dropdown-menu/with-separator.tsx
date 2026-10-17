@@ -1,4 +1,3 @@
-import source from "./with-separator.tsx?raw";
 import { Button, DropdownMenu } from "@pisagor/solid";
 export function WithSeparator() {
   return (
@@ -23,5 +22,3 @@ export function WithSeparator() {
     </DropdownMenu>
   );
 }
-
-export { source as WithSeparatorSource };

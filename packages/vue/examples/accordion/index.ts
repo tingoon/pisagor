@@ -5,5 +5,4 @@ export { default as Disabled } from "./disabled.vue";
 export { default as Multiple } from "./multiple.vue";
 export { default as NonCollapsible } from "./non-collapsible.vue";
 export { default as Sizes } from "./sizes.vue";
-export { imports, sources } from "./sources";
 export { default as WithCard } from "./with-card.vue";

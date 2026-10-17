@@ -1,4 +1,3 @@
-import source from "./submenu.tsx?raw";
 import { NavigationMenu } from "@pisagor/solid";
 
 export function Submenu() {
@@ -35,5 +34,3 @@ export function Submenu() {
     </NavigationMenu>
   );
 }
-
-export { source as SubmenuSource };

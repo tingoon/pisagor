@@ -1,4 +1,3 @@
-import source from "./actions.tsx?raw";
 import {
   DotsThreeVerticalIcon,
   EyeIcon,
@@ -61,5 +60,3 @@ export function Actions() {
     </Table>
   );
 }
-
-export { source as ActionsSource };

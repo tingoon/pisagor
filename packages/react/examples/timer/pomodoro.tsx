@@ -1,4 +1,3 @@
-import source from "./pomodoro.tsx?raw";
 import {
   ArrowCounterClockwiseIcon,
   GearIcon,
@@ -49,5 +48,3 @@ export function Pomodoro() {
     </Card>
   );
 }
-
-export { source as PomodoroSource };

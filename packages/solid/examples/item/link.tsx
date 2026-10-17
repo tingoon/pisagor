@@ -1,4 +1,3 @@
-import source from "./link.tsx?raw";
 import { Item } from "@pisagor/solid";
 import { ArrowSquareOutIcon } from "@pisagor/solid/icons";
 
@@ -40,5 +39,3 @@ export function Link() {
     </Item.Group>
   );
 }
-
-export { source as LinkSource };

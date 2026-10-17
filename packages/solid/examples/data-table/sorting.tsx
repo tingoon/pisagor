@@ -1,4 +1,3 @@
-import source from "./sorting.tsx?raw";
 import { Badge, Table } from "@pisagor/solid";
 import {
   type ColumnDef,
@@ -113,5 +112,3 @@ export function Sorting() {
     </DataTable>
   );
 }
-
-export { source as SortingSource };

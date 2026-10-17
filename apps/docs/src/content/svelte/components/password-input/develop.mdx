@@ -1,13 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/password-input/default.svelte?raw";
-import SizesSource from "#examples/svelte/password-input/sizes.svelte?raw";
-import AutocompleteSource from "#examples/svelte/password-input/autocomplete.svelte?raw";
-import CompoundSource from "#examples/svelte/password-input/compound.svelte?raw";
-import ControlledVisibilitySource from "#examples/svelte/password-input/controlled-visibility.svelte?raw";
-import ControlledSource from "#examples/svelte/password-input/controlled.svelte?raw";
-import DisabledSource from "#examples/svelte/password-input/disabled.svelte?raw";
-import InvalidSource from "#examples/svelte/password-input/invalid.svelte?raw";
-import AutoHideSource from "#examples/svelte/password-input/auto-hide.svelte?raw";
 
 ## Import
 
@@ -21,106 +12,52 @@ import { PasswordInput } from "@pisagor/svelte";
 
 Collect a password with a show-hide control.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="password-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Sizes
 
 Match size to the surrounding layout — smaller in compact chrome, larger where the password input needs emphasis.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="password-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Autocomplete
 
 Set autocomplete attributes so browsers can fill credentials safely.
 
-<Example
-  name="Autocomplete"
-  code={AutocompleteSource}
-  exampleId="password-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Autocomplete" />
 
 ### Compound
 
 Compose `PasswordInput.Root`, `Control`, `Input` and `VisibilityTrigger` for custom layouts.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="password-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Controlled Visibility
 
 Drive show-hide state from the parent when visibility is coordinated elsewhere.
 
-<Example
-  name="ControlledVisibility"
-  code={ControlledVisibilitySource}
-  exampleId="password-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="ControlledVisibility" />
 
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this password input.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="password-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the password input is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="password-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation or error state so users know the password input needs attention before continuing.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="password-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ### Auto Hide
 
 Hide the password again after a delay when brief visibility is enough.
 
-<Example
-  name="AutoHide"
-  code={AutoHideSource}
-  exampleId="password-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="AutoHide" />

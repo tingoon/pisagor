@@ -1,4 +1,3 @@
-import source from "./column-visibility.tsx?raw";
 import { CaretDownIcon, CaretUpIcon, EyeIcon } from "@phosphor-icons/react";
 import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Button, Checkbox, DropdownMenu, Table } from "@pisagor/react";
@@ -291,5 +290,3 @@ export function ColumnVisibility() {
     </DataGridShell>
   );
 }
-
-export { source as ColumnVisibilitySource };

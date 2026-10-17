@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./relative-time.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Format } from "@pisagor/vue";
 

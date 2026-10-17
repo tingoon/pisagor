@@ -1,4 +1,3 @@
-import source from "./with-dialog.tsx?raw";
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Button, Command, Kbd } from "@pisagor/solid";
@@ -74,5 +73,3 @@ export function WithDialog() {
     </Command.Dialog>
   );
 }
-
-export { source as WithDialogSource };

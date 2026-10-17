@@ -1,10 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/json-tree-view/default.vue?raw";
-import DataTypesSource from "#examples/vue/json-tree-view/data-types.vue?raw";
-import CompoundSource from "#examples/vue/json-tree-view/compound.vue?raw";
-import ExpandDepthSource from "#examples/vue/json-tree-view/expand-depth.vue?raw";
-import MapSetSource from "#examples/vue/json-tree-view/map-set.vue?raw";
-import CustomRecipeSource from "#examples/vue/json-tree-view/custom-recipe.vue?raw";
 
 ## Import
 
@@ -18,61 +12,31 @@ import { JsonTreeView } from "@pisagor/vue";
 
 Inspect nested JSON as an expandable tree.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="json-tree-view"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Data Types
 
 Highlight value types so structure is easier to scan.
 
-<Example
-  name="DataTypes"
-  code={DataTypesSource}
-  exampleId="json-tree-view"
-  framework="vue"
-  kind="component"
-/>
+<Example name="DataTypes" />
 
 ### Compound
 
 Compose `JsonTreeView.Root` and `JsonTreeView.Tree` for custom arrows or value rendering.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="json-tree-view"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Expand Depth
 
 Open to a set depth so large payloads do not overwhelm the first view.
 
-<Example
-  name="ExpandDepth"
-  code={ExpandDepthSource}
-  exampleId="json-tree-view"
-  framework="vue"
-  kind="component"
-/>
+<Example name="ExpandDepth" />
 
 ### Map Set
 
 Render Map and Set values when those structures appear in the data.
 
-<Example
-  name="MapSet"
-  code={MapSetSource}
-  exampleId="json-tree-view"
-  framework="vue"
-  kind="component"
-/>
+<Example name="MapSet" />
 
 ## Customization
 
@@ -80,10 +44,4 @@ Render Map and Set values when those structures appear in the data.
 
 Extend `jsonTreeViewRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="json-tree-view"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

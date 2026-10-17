@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { buttonGroupRecipe } from "@pisagor/recipes";
 import { Button, ButtonGroup } from "@pisagor/solid";
 import { MinusIcon, PlusIcon } from "@pisagor/solid/icons";
@@ -23,5 +22,3 @@ export function CustomRecipe() {
     </ButtonGroup>
   );
 }
-
-export { source as CustomRecipeSource };

@@ -1,4 +1,3 @@
-import source from "./clearable.tsx?raw";
 import { Input } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Clearable() {
@@ -13,5 +12,3 @@ export function Clearable() {
     />
   );
 }
-
-export { source as ClearableSource };

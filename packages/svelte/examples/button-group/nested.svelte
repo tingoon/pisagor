@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./nested.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, ButtonGroup } from "@pisagor/svelte";
   import BracketsCurlyIcon from "phosphor-svelte/lib/BracketsCurlyIcon";

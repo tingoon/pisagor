@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./with-icons.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhGear, PhShield, PhUser } from "@phosphor-icons/vue";
 import { Tabs } from "@pisagor/vue";

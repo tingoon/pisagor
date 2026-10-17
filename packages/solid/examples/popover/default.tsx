@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Button, Field, Input, Popover } from "@pisagor/solid";
 
 export function Default() {
@@ -32,5 +31,3 @@ export function Default() {
     </Popover>
   );
 }
-
-export { source as DefaultSource };

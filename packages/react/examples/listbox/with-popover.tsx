@@ -1,4 +1,3 @@
-import source from "./with-popover.tsx?raw";
 import { useListCollection } from "@ark-ui/react/collection";
 import { useFilter } from "@ark-ui/react/locale";
 import { CaretUpDownIcon } from "@phosphor-icons/react";
@@ -65,5 +64,3 @@ export function WithPopover() {
     </Listbox.Root>
   );
 }
-
-export { source as WithPopoverSource };

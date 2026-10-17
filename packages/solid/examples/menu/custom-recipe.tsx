@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { menuRecipe } from "@pisagor/recipes";
 import { Menu } from "@pisagor/solid";
 import { GearIcon, SignOutIcon, UserIcon } from "@pisagor/solid/icons";
@@ -37,5 +36,3 @@ export function CustomRecipe() {
     </div>
   );
 }
-
-export { source as CustomRecipeSource };

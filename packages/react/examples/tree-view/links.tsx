@@ -1,4 +1,3 @@
-import source from "./links.tsx?raw";
 import { ArrowSquareOutIcon, LinkIcon } from "@phosphor-icons/react";
 import type { NodeProviderProps, TreeNodeType } from "@pisagor/react";
 import { createTreeCollection, TreeView } from "@pisagor/react";
@@ -98,5 +97,3 @@ export function Links() {
     </div>
   );
 }
-
-export { source as LinksSource };

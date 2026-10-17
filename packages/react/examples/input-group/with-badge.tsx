@@ -1,4 +1,3 @@
-import source from "./with-badge.tsx?raw";
 import { AtIcon } from "@phosphor-icons/react";
 import { Badge, InputGroup } from "@pisagor/react";
 export function WithBadge() {
@@ -16,5 +15,3 @@ export function WithBadge() {
     </InputGroup>
   );
 }
-
-export { source as WithBadgeSource };

@@ -1,11 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/solid/signature-pad/default.tsx";
-import { ImagePreviewSource } from "#examples/solid/signature-pad/image-preview.tsx";
-import { CompoundSource } from "#examples/solid/signature-pad/compound.tsx";
-import { ControlledSource } from "#examples/solid/signature-pad/controlled.tsx";
-import { DisabledSource } from "#examples/solid/signature-pad/disabled.tsx";
-import { InvalidSource } from "#examples/solid/signature-pad/invalid.tsx";
-import { CustomRecipeSource } from "#examples/solid/signature-pad/custom-recipe.tsx";
 
 ## Import
 
@@ -19,73 +12,37 @@ import { SignaturePad } from "@pisagor/solid";
 
 Capture a handwritten signature with pointer or touch input.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="signature-pad"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Image Preview
 
 Preview the signature image before submit.
 
-<Example
-  name="ImagePreview"
-  code={ImagePreviewSource}
-  exampleId="signature-pad"
-  framework="solid"
-  kind="component"
-/>
+<Example name="ImagePreview" />
 
 ### Compound
 
 Compose the pad from `Root`, `Control`, `Segment`, `Clear` and `Guide`.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="signature-pad"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Controlled
 
 Drive stroke data from the parent when signature state lives above.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="signature-pad"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that signing is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="signature-pad"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation or error state so users know the signature pad needs attention before continuing.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="signature-pad"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ## Customization
 
@@ -93,10 +50,4 @@ Surface a validation or error state so users know the signature pad needs attent
 
 Extend `signaturePadRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="signature-pad"
-  framework="solid"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

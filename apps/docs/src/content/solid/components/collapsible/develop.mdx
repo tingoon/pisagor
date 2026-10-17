@@ -1,10 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/solid/collapsible/default.tsx";
-import { PartialCollapseSource } from "#examples/solid/collapsible/partial-collapse.tsx";
-import { NestedSource } from "#examples/solid/collapsible/nested.tsx";
-import { ControlledSource } from "#examples/solid/collapsible/controlled.tsx";
-import { DisabledSource } from "#examples/solid/collapsible/disabled.tsx";
-import { CustomRecipeSource } from "#examples/solid/collapsible/custom-recipe.tsx";
 
 ## Import
 
@@ -29,61 +23,31 @@ import { Collapsible } from "@pisagor/solid";
 
 Reveal and hide a section behind a trigger.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="collapsible"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Partial Collapse
 
 Leave a preview visible when users should sense content below the fold.
 
-<Example
-  name="PartialCollapse"
-  code={PartialCollapseSource}
-  exampleId="collapsible"
-  framework="solid"
-  kind="component"
-/>
+<Example name="PartialCollapse" />
 
 ### Nested
 
 Nest collapsibles when content has deeper hierarchy.
 
-<Example
-  name="Nested"
-  code={NestedSource}
-  exampleId="collapsible"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Nested" />
 
 ### Controlled
 
 Drive open state from the parent when other UI depends on it.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="collapsible"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the section cannot expand.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="collapsible"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ## Customization
 
@@ -91,10 +55,4 @@ Show that the section cannot expand.
 
 Extend `collapsibleRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="collapsible"
-  framework="solid"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

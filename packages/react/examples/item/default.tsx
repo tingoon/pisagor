@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { DotsThreeIcon } from "@phosphor-icons/react";
 import { Button, Item } from "@pisagor/react";
 export function Default() {
@@ -16,5 +15,3 @@ export function Default() {
     </Item>
   );
 }
-
-export { source as DefaultSource };

@@ -7,7 +7,6 @@ export { default as FontWeight } from "./font-weight.vue";
 export { default as Horizontal } from "./horizontal.vue";
 export { default as Single } from "./single.vue";
 export { default as Sizes } from "./sizes.vue";
-export { imports, sources } from "./sources";
 export { default as Spacing } from "./spacing.vue";
 export { default as Variants } from "./variants.vue";
 export { default as Vertical } from "./vertical.vue";

@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { QrCode } from "@pisagor/solid";
 
 export function Compound() {
@@ -8,5 +7,3 @@ export function Compound() {
     </QrCode>
   );
 }
-
-export { source as CompoundSource };

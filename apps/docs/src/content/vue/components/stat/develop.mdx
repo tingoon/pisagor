@@ -1,9 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/stat/default.vue?raw";
-import VariantsSource from "#examples/vue/stat/variants.vue?raw";
-import WithTrendSource from "#examples/vue/stat/with-trend.vue?raw";
-import CompoundSource from "#examples/vue/stat/compound.vue?raw";
-import CustomRecipeSource from "#examples/vue/stat/custom-recipe.vue?raw";
 
 ## Import
 
@@ -17,49 +12,25 @@ import { Stat } from "@pisagor/vue";
 
 Highlight a key metric with supporting context.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="stat"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Variants
 
 Choose emphasis so the stat matches dashboard hierarchy.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="stat"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### With Trend
 
 Show direction of change when trend matters alongside the value.
 
-<Example
-  name="WithTrend"
-  code={WithTrendSource}
-  exampleId="stat"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithTrend" />
 
 ### Compound
 
 Assemble from parts when you need a custom layout beyond the shorthand API.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="stat"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ## Customization
 
@@ -67,10 +38,4 @@ Assemble from parts when you need a custom layout beyond the shorthand API.
 
 Extend `statRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="stat"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

@@ -7,7 +7,6 @@ export { default as Default } from "./default.svelte";
 export { default as Links } from "./links.svelte";
 export { default as MultipleSelection } from "./multiple-selection.svelte";
 export { default as Rename } from "./rename.svelte";
-export { imports, sources } from "./sources";
 export { default as TreeNode } from "./tree-node.svelte";
 export { default as TreeNodeCheckbox } from "./tree-node-checkbox.svelte";
 export { default as TreeNodeContext } from "./tree-node-context.svelte";

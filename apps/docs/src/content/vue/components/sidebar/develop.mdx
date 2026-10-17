@@ -1,6 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/sidebar/default.ts?raw";
-import DisableHotkeySource from "#examples/vue/sidebar/disable-hotkey.vue?raw";
 
 ## Import
 
@@ -41,22 +39,10 @@ import { Sidebar } from "@pisagor/vue";
 
 Collapsible application navigation with desktop persistence and mobile sheet behavior.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="sidebar"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Disable Hotkey
 
 Sidebar.Provider restores the collapsed state saved in `localStorage` and toggles with `mod+B`. Set `disableHotkey` to turn the shortcut off.
 
-<Example
-  name="DisableHotkey"
-  code={DisableHotkeySource}
-  exampleId="sidebar"
-  framework="vue"
-  kind="component"
-/>
+<Example name="DisableHotkey" />

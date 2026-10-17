@@ -1,4 +1,3 @@
-import source from "./autoplay-controls.tsx?raw";
 import { Carousel } from "@pisagor/solid";
 import { For } from "solid-js";
 import { numberedSlides } from "./helpers";
@@ -24,5 +23,3 @@ export function AutoplayControls() {
     </Carousel.Root>
   );
 }
-
-export { source as AutoplayControlsSource };

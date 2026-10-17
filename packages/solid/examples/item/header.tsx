@@ -1,4 +1,3 @@
-import source from "./header.tsx?raw";
 import { Item } from "@pisagor/solid";
 
 export function Header() {
@@ -20,5 +19,3 @@ export function Header() {
     </Item>
   );
 }
-
-export { source as HeaderSource };

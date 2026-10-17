@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./with-sidebar.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Avatar, Button, Navbar, Sidebar } from "@pisagor/svelte";
   import BellIcon from "phosphor-svelte/lib/BellIcon";

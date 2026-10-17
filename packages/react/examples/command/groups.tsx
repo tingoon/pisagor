@@ -1,4 +1,3 @@
-import source from "./groups.tsx?raw";
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { Command } from "@pisagor/react";
 
@@ -45,5 +44,3 @@ export function Groups() {
     </Command>
   );
 }
-
-export { source as GroupsSource };

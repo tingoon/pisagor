@@ -1,4 +1,3 @@
-import source from "./custom-markers.tsx?raw";
 import { CircularSlider } from "@pisagor/react";
 
 export function CustomMarkers() {
@@ -10,5 +9,3 @@ export function CustomMarkers() {
     />
   );
 }
-
-export { source as CustomMarkersSource };

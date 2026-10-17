@@ -1,4 +1,3 @@
-import source from "./media-capture.tsx?raw";
 import { CameraIcon } from "@phosphor-icons/react";
 import { Button, FileUpload } from "@pisagor/react";
 export function MediaCapture() {
@@ -16,5 +15,3 @@ export function MediaCapture() {
     </FileUpload>
   );
 }
-
-export { source as MediaCaptureSource };

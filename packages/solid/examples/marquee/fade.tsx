@@ -1,4 +1,3 @@
-import source from "./fade.tsx?raw";
 import { Card, Marquee } from "@pisagor/solid";
 import {
   ArrowRightIcon,
@@ -52,5 +51,3 @@ export function Fade() {
     </div>
   );
 }
-
-export { source as FadeSource };

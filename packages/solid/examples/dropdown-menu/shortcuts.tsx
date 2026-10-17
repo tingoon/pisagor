@@ -1,4 +1,3 @@
-import source from "./shortcuts.tsx?raw";
 import { Button, DropdownMenu } from "@pisagor/solid";
 import {
   CopyIcon,
@@ -42,5 +41,3 @@ export function Shortcuts() {
     </DropdownMenu>
   );
 }
-
-export { source as ShortcutsSource };

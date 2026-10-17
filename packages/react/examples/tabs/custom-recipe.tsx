@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { Tabs } from "@pisagor/react";
 import { tabsRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -18,5 +17,3 @@ export function CustomRecipe() {
     <Tabs defaultValue="tab-1" items={profileTabs()} recipe={brandTabsRecipe} />
   );
 }
-
-export { source as CustomRecipeSource };

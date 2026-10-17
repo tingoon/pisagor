@@ -1,4 +1,3 @@
-import source from "./scroll-fade.tsx?raw";
 import { ScrollArea, Separator } from "@pisagor/react";
 import { Fragment } from "react";
 export function ScrollFade() {
@@ -17,5 +16,3 @@ export function ScrollFade() {
     </ScrollArea>
   );
 }
-
-export { source as ScrollFadeSource };

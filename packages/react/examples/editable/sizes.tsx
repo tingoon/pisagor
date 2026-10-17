@@ -1,4 +1,3 @@
-import source from "./sizes.tsx?raw";
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Button, Editable, Input } from "@pisagor/react";
 export function Sizes() {
@@ -67,5 +66,3 @@ export function Sizes() {
     </div>
   );
 }
-
-export { source as SizesSource };

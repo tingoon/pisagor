@@ -1,4 +1,3 @@
-import source from "./keyboard-navigation.tsx?raw";
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour } from "@pisagor/solid";
 import { KeyboardIcon } from "@pisagor/solid/icons";
@@ -81,5 +80,3 @@ export function KeyboardNavigation() {
     </div>
   );
 }
-
-export { source as KeyboardNavigationSource };

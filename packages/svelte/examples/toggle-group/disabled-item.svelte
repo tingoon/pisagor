@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./disabled-item.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { ToggleGroup } from "@pisagor/svelte";
   import TextBIcon from "phosphor-svelte/lib/TextBIcon";

@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Prose, ScrollArea } from "@pisagor/react";
 export function Default() {
   return (
@@ -92,5 +91,3 @@ export function Default() {
     </div>
   );
 }
-
-export { source as DefaultSource };

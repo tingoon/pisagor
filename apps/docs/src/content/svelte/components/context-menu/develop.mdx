@@ -1,6 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/context-menu/default.svelte?raw";
-import CheckboxesSource from "#examples/svelte/context-menu/checkboxes.svelte?raw";
 
 ## Import
 
@@ -34,22 +32,10 @@ import { ContextMenu } from "@pisagor/svelte";
 
 Open actions at the pointer for the item under the cursor or focus.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="context-menu"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Checkboxes
 
 Use `CheckboxItem` and `RadioItemGroup` for toggles and exclusive options.
 
-<Example
-  name="Checkboxes"
-  code={CheckboxesSource}
-  exampleId="context-menu"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Checkboxes" />

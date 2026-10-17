@@ -1,6 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/sidebar/default.svelte?raw";
-import DisableHotkeySource from "#examples/svelte/sidebar/disable-hotkey.svelte?raw";
 
 ## Import
 
@@ -41,22 +39,10 @@ import { Sidebar } from "@pisagor/svelte";
 
 Collapsible application navigation with desktop persistence and mobile sheet behavior.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="sidebar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Disable Hotkey
 
 Sidebar.Provider restores the collapsed state saved in `localStorage` and toggles with `mod+B`. Set `disableHotkey` to turn the shortcut off.
 
-<Example
-  name="DisableHotkey"
-  code={DisableHotkeySource}
-  exampleId="sidebar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="DisableHotkey" />

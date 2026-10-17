@@ -1,4 +1,3 @@
-import source from "./custom-preview.tsx?raw";
 import { useFileUpload } from "@ark-ui/react/file-upload";
 import { XIcon } from "@phosphor-icons/react";
 import { Button, FileUpload } from "@pisagor/react";
@@ -47,5 +46,3 @@ export function CustomPreview() {
     </FileUpload>
   );
 }
-
-export { source as CustomPreviewSource };

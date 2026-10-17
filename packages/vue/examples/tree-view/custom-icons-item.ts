@@ -1,4 +1,3 @@
-import source from "./custom-icons-item.ts?raw";
 import { PhStar } from "@phosphor-icons/vue";
 import type { TreeNodeType } from "@pisagor/vue";
 import { createTreeCollection, TreeView } from "@pisagor/vue";
@@ -48,5 +47,3 @@ export default defineComponent({
       ]);
   },
 });
-
-export { source };

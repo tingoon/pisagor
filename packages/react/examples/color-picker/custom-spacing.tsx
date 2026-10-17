@@ -1,4 +1,3 @@
-import source from "./custom-spacing.tsx?raw";
 import { ColorPicker, InputGroup } from "@pisagor/react";
 export function CustomSpacing() {
   return (
@@ -34,5 +33,3 @@ export function CustomSpacing() {
     </ColorPicker>
   );
 }
-
-export { source as CustomSpacingSource };

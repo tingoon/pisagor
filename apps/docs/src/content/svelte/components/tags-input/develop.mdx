@@ -1,20 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import VariantsSource from "#examples/svelte/tags-input/variants.svelte?raw";
-import SizesSource from "#examples/svelte/tags-input/sizes.svelte?raw";
-import WithComboboxSource from "#examples/svelte/tags-input/with-combobox.svelte?raw";
-import ControlledSource from "#examples/svelte/tags-input/controlled.svelte?raw";
-import ControlledInputValueSource from "#examples/svelte/tags-input/controlled-input-value.svelte?raw";
-import DisabledSource from "#examples/svelte/tags-input/disabled.svelte?raw";
-import InvalidSource from "#examples/svelte/tags-input/invalid.svelte?raw";
-import MaxTagsSource from "#examples/svelte/tags-input/max-tags.svelte?raw";
-import MaxWithOverflowSource from "#examples/svelte/tags-input/max-with-overflow.svelte?raw";
-import MaxLengthSource from "#examples/svelte/tags-input/max-length.svelte?raw";
-import ValidationSource from "#examples/svelte/tags-input/validation.svelte?raw";
-import CustomDelimiterSource from "#examples/svelte/tags-input/custom-delimiter.svelte?raw";
-import BlurBehaviorSource from "#examples/svelte/tags-input/blur-behavior.svelte?raw";
-import PasteBehaviorSource from "#examples/svelte/tags-input/paste-behavior.svelte?raw";
-import DisableEditingSource from "#examples/svelte/tags-input/disable-editing.svelte?raw";
-import SanitizeValueSource from "#examples/svelte/tags-input/sanitize-value.svelte?raw";
 
 ## Import
 
@@ -38,190 +22,94 @@ import { TagsInput } from "@pisagor/svelte";
 
 Choose field emphasis to match surrounding inputs.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="tags-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Match size to form density.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="tags-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### With Combobox
 
 Suggest tags from a list while still allowing custom entry.
 
-<Example
-  name="WithCombobox"
-  code={WithComboboxSource}
-  exampleId="tags-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithCombobox" />
 
 ### Controlled
 
 Drive the tag list from the parent when form state lives above.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="tags-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Controlled Input Value
 
 Drive the text being typed from the parent.
 
-<Example
-  name="ControlledInputValue"
-  code={ControlledInputValueSource}
-  exampleId="tags-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="ControlledInputValue" />
 
 ### Disabled
 
 Show that tags cannot change.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="tags-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation error for the tags field.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="tags-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ### Max Tags
 
 Cap how many tags can be added.
 
-<Example
-  name="MaxTags"
-  code={MaxTagsSource}
-  exampleId="tags-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="MaxTags" />
 
 ### Max With Overflow
 
 Handle overflow when users hit the tag limit.
 
-<Example
-  name="MaxWithOverflow"
-  code={MaxWithOverflowSource}
-  exampleId="tags-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="MaxWithOverflow" />
 
 ### Max Length
 
 Limit characters per tag so values stay short.
 
-<Example
-  name="MaxLength"
-  code={MaxLengthSource}
-  exampleId="tags-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="MaxLength" />
 
 ### Validation
 
 Reject invalid tags and explain why.
 
-<Example
-  name="Validation"
-  code={ValidationSource}
-  exampleId="tags-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Validation" />
 
 ### Custom Delimiter
 
 Split on custom characters when users paste or type delimited lists.
 
-<Example
-  name="CustomDelimiter"
-  code={CustomDelimiterSource}
-  exampleId="tags-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomDelimiter" />
 
 ### Blur Behavior
 
 Control what happens to typed text when the field loses focus.
 
-<Example
-  name="BlurBehavior"
-  code={BlurBehaviorSource}
-  exampleId="tags-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="BlurBehavior" />
 
 ### Paste Behavior
 
 Define how pasted text becomes one or many tags.
 
-<Example
-  name="PasteBehavior"
-  code={PasteBehaviorSource}
-  exampleId="tags-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="PasteBehavior" />
 
 ### Disable Editing
 
 Prevent editing existing tags when only add and remove should be allowed.
 
-<Example
-  name="DisableEditing"
-  code={DisableEditingSource}
-  exampleId="tags-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="DisableEditing" />
 
 ### Sanitize Value
 
 Clean tag text before it is committed.
 
-<Example
-  name="SanitizeValue"
-  code={SanitizeValueSource}
-  exampleId="tags-input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="SanitizeValue" />

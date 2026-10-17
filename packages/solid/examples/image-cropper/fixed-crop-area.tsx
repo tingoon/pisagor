@@ -1,4 +1,3 @@
-import source from "./fixed-crop-area.tsx?raw";
 import { ImageCropper } from "@pisagor/solid";
 
 export function FixedCropArea() {
@@ -12,5 +11,3 @@ export function FixedCropArea() {
     </ImageCropper>
   );
 }
-
-export { source as FixedCropAreaSource };

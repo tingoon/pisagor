@@ -4,11 +4,6 @@ import OrientationHorizontal from "#examples/astro/data-list/orientation-horizon
 import OrientationVertical from "#examples/astro/data-list/orientation-vertical.astro";
 import Separator from "#examples/astro/data-list/separator.astro";
 import Compound from "#examples/astro/data-list/compound.astro";
-import DefaultSource from "#examples/astro/data-list/default.astro?raw";
-import OrientationHorizontalSource from "#examples/astro/data-list/orientation-horizontal.astro?raw";
-import OrientationVerticalSource from "#examples/astro/data-list/orientation-vertical.astro?raw";
-import SeparatorSource from "#examples/astro/data-list/separator.astro?raw";
-import CompoundSource from "#examples/astro/data-list/compound.astro?raw";
 
 ## Import
 
@@ -22,13 +17,7 @@ import { DataList } from "@pisagor/astro";
 
 Present label-value pairs for summaries and metadata.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="data-list"
-  framework="astro"
-  kind="component"
->
+<Example name="Default">
   <Default />
 </Example>
 
@@ -36,13 +25,7 @@ Present label-value pairs for summaries and metadata.
 
 Lay out the data list horizontally when items should read in a row.
 
-<Example
-  name="OrientationHorizontal"
-  code={OrientationHorizontalSource}
-  exampleId="data-list"
-  framework="astro"
-  kind="component"
->
+<Example name="OrientationHorizontal">
   <OrientationHorizontal />
 </Example>
 
@@ -50,13 +33,7 @@ Lay out the data list horizontally when items should read in a row.
 
 Stack the data list vertically when items should read in a column.
 
-<Example
-  name="OrientationVertical"
-  code={OrientationVerticalSource}
-  exampleId="data-list"
-  framework="astro"
-  kind="component"
->
+<Example name="OrientationVertical">
   <OrientationVertical />
 </Example>
 
@@ -64,13 +41,7 @@ Stack the data list vertically when items should read in a column.
 
 Separate groups of pairs so sections stay scannable.
 
-<Example
-  name="Separator"
-  code={SeparatorSource}
-  exampleId="data-list"
-  framework="astro"
-  kind="component"
->
+<Example name="Separator">
   <Separator />
 </Example>
 
@@ -78,12 +49,6 @@ Separate groups of pairs so sections stay scannable.
 
 Compose term and value parts for a custom list layout.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="data-list"
-  framework="astro"
-  kind="component"
->
+<Example name="Compound">
   <Compound />
 </Example>

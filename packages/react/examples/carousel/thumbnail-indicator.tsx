@@ -1,4 +1,3 @@
-import source from "./thumbnail-indicator.tsx?raw";
 import { Carousel } from "@pisagor/react";
 import { imageSources } from "./helpers";
 
@@ -33,5 +32,3 @@ export function ThumbnailIndicator() {
     </Carousel.Root>
   );
 }
-
-export { source as ThumbnailIndicatorSource };

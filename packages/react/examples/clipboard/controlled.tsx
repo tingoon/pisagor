@@ -1,4 +1,3 @@
-import source from "./controlled.tsx?raw";
 import { Button, Clipboard } from "@pisagor/react";
 import { useState } from "react";
 export function Controlled() {
@@ -16,5 +15,3 @@ export function Controlled() {
     </div>
   );
 }
-
-export { source as ControlledSource };

@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { Stat } from "@pisagor/solid";
 import { ArrowUpIcon } from "@pisagor/solid/icons";
 
@@ -15,5 +14,3 @@ export function Compound() {
     </Stat.Root>
   );
 }
-
-export { source as CompoundSource };

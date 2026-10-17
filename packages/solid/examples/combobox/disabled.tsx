@@ -1,4 +1,3 @@
-import source from "./disabled.tsx?raw";
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Combobox } from "@pisagor/solid";
@@ -34,5 +33,3 @@ export function Disabled() {
     </Combobox.Root>
   );
 }
-
-export { source as DisabledSource };

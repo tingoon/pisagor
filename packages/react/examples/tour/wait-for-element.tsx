@@ -1,4 +1,3 @@
-import source from "./wait-for-element.tsx?raw";
 import { waitForElement, waitForEvent } from "@ark-ui/react/tour";
 import { PlusIcon } from "@phosphor-icons/react";
 import type { TourStepType } from "@pisagor/react";
@@ -102,5 +101,3 @@ export function WaitForElement() {
     </div>
   );
 }
-
-export { source as WaitForElementSource };

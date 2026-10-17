@@ -1,8 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte-form/password-field/default.svelte?raw";
-import WithLabelAccessorySource from "#examples/svelte-form/password-field/with-label-accessory.svelte?raw";
-import DisabledSource from "#examples/svelte-form/password-field/disabled.svelte?raw";
-import InvalidSource from "#examples/svelte-form/password-field/invalid.svelte?raw";
 
 ## Import
 
@@ -18,46 +14,22 @@ Part of `@pisagor/svelte-form`. Style with recipes where available — no app-le
 
 A password input with a visibility toggle and requirements as helper text.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="password-field"
-  framework="svelte"
-  kind="form"
-/>
+<Example name="Default" />
 
 ### With Label Accessory
 
 Place a secondary action next to the label, such as a Forgot password? link, via `labelAccessory`.
 
-<Example
-  name="WithLabelAccessory"
-  code={WithLabelAccessorySource}
-  exampleId="password-field"
-  framework="svelte"
-  kind="form"
-/>
+<Example name="WithLabelAccessory" />
 
 ### Disabled
 
 Show that the password field is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="password-field"
-  framework="svelte"
-  kind="form"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation error under the field so the user knows what to fix before submitting.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="password-field"
-  framework="svelte"
-  kind="form"
-/>
+<Example name="Invalid" />

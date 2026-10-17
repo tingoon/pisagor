@@ -1,4 +1,3 @@
-import source from "./align-block-start.tsx?raw";
 import { CopyIcon, FileCodeIcon } from "@phosphor-icons/react";
 import { InputGroup } from "@pisagor/react";
 export function AlignBlockStart() {
@@ -28,5 +27,3 @@ export function AlignBlockStart() {
     </div>
   );
 }
-
-export { source as AlignBlockStartSource };

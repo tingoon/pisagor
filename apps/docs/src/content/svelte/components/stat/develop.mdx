@@ -1,9 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/stat/default.svelte?raw";
-import VariantsSource from "#examples/svelte/stat/variants.svelte?raw";
-import WithTrendSource from "#examples/svelte/stat/with-trend.svelte?raw";
-import CompoundSource from "#examples/svelte/stat/compound.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/stat/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -17,49 +12,25 @@ import { Stat } from "@pisagor/svelte";
 
 Highlight a key metric with supporting context.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="stat"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Variants
 
 Choose emphasis so the stat matches dashboard hierarchy.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="stat"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### With Trend
 
 Show direction of change when trend matters alongside the value.
 
-<Example
-  name="WithTrend"
-  code={WithTrendSource}
-  exampleId="stat"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithTrend" />
 
 ### Compound
 
 Assemble from parts when you need a custom layout beyond the shorthand API.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="stat"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ## Customization
 
@@ -67,10 +38,4 @@ Assemble from parts when you need a custom layout beyond the shorthand API.
 
 Extend `statRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="stat"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

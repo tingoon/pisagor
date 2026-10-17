@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./countdown-date.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Card, Timer } from "@pisagor/svelte";
 

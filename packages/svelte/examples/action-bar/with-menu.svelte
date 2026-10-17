@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./with-menu.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { ActionBar, Button, DropdownMenu } from "@pisagor/svelte";
   import {

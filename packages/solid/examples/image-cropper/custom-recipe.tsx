@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { imageCropperRecipe } from "@pisagor/recipes";
 import { ImageCropper } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -23,5 +22,3 @@ export function CustomRecipe() {
     </ImageCropper>
   );
 }
-
-export { source as CustomRecipeSource };

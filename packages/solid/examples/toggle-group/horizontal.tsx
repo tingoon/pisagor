@@ -1,4 +1,3 @@
-import source from "./horizontal.tsx?raw";
 import { ToggleGroup } from "@pisagor/solid";
 import {
   TextBIcon,
@@ -25,5 +24,3 @@ export function Horizontal() {
     </ToggleGroup.Root>
   );
 }
-
-export { source as HorizontalSource };

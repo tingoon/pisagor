@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { proseRecipe } from "@pisagor/recipes";
 import { Prose } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -21,5 +20,3 @@ export function CustomRecipe() {
     </Prose>
   );
 }
-
-export { source as CustomRecipeSource };

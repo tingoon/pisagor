@@ -1,4 +1,3 @@
-import source from "./disabled.tsx?raw";
 import { SegmentGroup } from "@pisagor/solid";
 
 export function Disabled() {
@@ -13,5 +12,3 @@ export function Disabled() {
     </SegmentGroup.Root>
   );
 }
-
-export { source as DisabledSource };

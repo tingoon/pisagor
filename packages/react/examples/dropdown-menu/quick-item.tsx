@@ -1,4 +1,3 @@
-import source from "./quick-item.tsx?raw";
 import {
   ArrowClockwiseIcon,
   ChatCircleIcon,
@@ -48,5 +47,3 @@ export function QuickItem() {
     </DropdownMenu>
   );
 }
-
-export { source as QuickItemSource };

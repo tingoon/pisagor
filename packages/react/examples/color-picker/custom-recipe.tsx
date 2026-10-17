@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { ColorPicker, InputGroup } from "@pisagor/react";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -43,5 +42,3 @@ export function CustomRecipe() {
     </ColorPicker>
   );
 }
-
-export { source as CustomRecipeSource };

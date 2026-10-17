@@ -1,4 +1,3 @@
-import source from "./slider-controlled.tsx?raw";
 import { ColorPicker } from "@pisagor/react";
 import { useState } from "react";
 
@@ -22,5 +21,3 @@ export function SliderControlled() {
     </div>
   );
 }
-
-export { source as SliderControlledSource };

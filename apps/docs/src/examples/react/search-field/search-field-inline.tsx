@@ -1,4 +1,3 @@
-import source from "./search-field-inline.tsx?raw";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { Button, Field, Input } from "@pisagor/react";
 
@@ -12,5 +11,3 @@ export function SearchFieldInline() {
     </Field>
   );
 }
-
-export { source as SearchFieldInlineSource };

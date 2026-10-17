@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { ScrollArea } from "@pisagor/react";
 
 export function Compound() {
@@ -20,5 +19,3 @@ export function Compound() {
     </ScrollArea.Root>
   );
 }
-
-export { source as CompoundSource };

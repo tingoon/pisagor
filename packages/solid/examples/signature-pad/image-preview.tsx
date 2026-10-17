@@ -1,4 +1,3 @@
-import source from "./image-preview.tsx?raw";
 import { Field, SignaturePad } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function ImagePreview() {
@@ -31,5 +30,3 @@ export function ImagePreview() {
     </Field>
   );
 }
-
-export { source as ImagePreviewSource };

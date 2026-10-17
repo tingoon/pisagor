@@ -8,4 +8,3 @@ export { default as Interval } from "./interval.vue";
 export { default as OrientationHorizontal } from "./orientation-horizontal.vue";
 export { default as OrientationVertical } from "./orientation-vertical.vue";
 export { default as Pomodoro } from "./pomodoro.vue";
-export { imports, sources } from "./sources";

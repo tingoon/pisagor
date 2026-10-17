@@ -1,11 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/solid/tooltip/default.tsx";
-import { WithKeyboardShortcutSource } from "#examples/solid/tooltip/with-keyboard-shortcut.tsx";
-import { WithoutArrowSource } from "#examples/solid/tooltip/without-arrow.tsx";
-import { CompoundSource } from "#examples/solid/tooltip/compound.tsx";
-import { DisabledSource } from "#examples/solid/tooltip/disabled.tsx";
-import { PlacementsSource } from "#examples/solid/tooltip/placements.tsx";
-import { CustomRecipeSource } from "#examples/solid/tooltip/custom-recipe.tsx";
 
 ## Import
 
@@ -19,73 +12,37 @@ import { Tooltip } from "@pisagor/solid";
 
 Explain a control briefly on hover or focus.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="tooltip"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### With Keyboard Shortcut
 
 Include the shortcut in the tooltip when keys reinforce the action.
 
-<Example
-  name="WithKeyboardShortcut"
-  code={WithKeyboardShortcutSource}
-  exampleId="tooltip"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithKeyboardShortcut" />
 
 ### Without Arrow
 
 Hide the arrow for a lighter, label-like tooltip.
 
-<Example
-  name="WithoutArrow"
-  code={WithoutArrowSource}
-  exampleId="tooltip"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithoutArrow" />
 
 ### Compound
 
 Compose `Tooltip.Root`, `Trigger`, `Positioner`, `Content` and `Arrow` for full control. The shorthand stays available.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="tooltip"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Disabled
 
 Show that the tooltip is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="tooltip"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Placements
 
 Place the tooltip so it stays near the trigger without covering critical UI.
 
-<Example
-  name="Placements"
-  code={PlacementsSource}
-  exampleId="tooltip"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Placements" />
 
 ## Customization
 
@@ -93,13 +50,7 @@ Place the tooltip so it stays near the trigger without covering critical UI.
 
 Extend `tooltipRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="tooltip"
-  framework="solid"
-  kind="component"
-/>
+<Example name="CustomRecipe" />
 
 ## Accessibility
 

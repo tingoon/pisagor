@@ -5,6 +5,5 @@ export { default as CustomSpacing } from "./custom-spacing.vue";
 export { default as Default } from "./default.vue";
 export { default as Gutter } from "./gutter.vue";
 export { default as Placements } from "./placements.vue";
-export { imports, sources } from "./sources";
 export { default as WithDialog } from "./with-dialog.vue";
 export { default as WithMenu } from "./with-menu.vue";

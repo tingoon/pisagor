@@ -1,4 +1,3 @@
-import source from "./horizontal.tsx?raw";
 import { Sortable } from "@pisagor/react";
 import { useState } from "react";
 
@@ -25,5 +24,3 @@ export function Horizontal() {
     </Sortable>
   );
 }
-
-export { source as HorizontalSource };

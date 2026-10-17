@@ -1,4 +1,3 @@
-import source from "./popover-dialog.tsx?raw";
 import { Portal } from "@ark-ui/react/portal";
 import { Button, Dialog, Popover } from "@pisagor/react";
 
@@ -44,5 +43,3 @@ export function PopoverDialog() {
     </Dialog.Root>
   );
 }
-
-export { source as PopoverDialogSource };

@@ -5,4 +5,3 @@ export { default as Download } from "./download.svelte";
 export { default as ErrorCorrection } from "./error-correction.svelte";
 export { default as Overlay } from "./overlay.svelte";
 export { default as Sizes } from "./sizes.svelte";
-export { imports, sources } from "./sources";

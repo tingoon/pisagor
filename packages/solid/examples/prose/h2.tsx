@@ -1,4 +1,3 @@
-import source from "./h2.tsx?raw";
 import { Prose } from "@pisagor/solid";
 
 export function H2() {
@@ -8,5 +7,3 @@ export function H2() {
     </Prose>
   );
 }
-
-export { source as H2Source };

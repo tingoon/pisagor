@@ -1,4 +1,3 @@
-import source from "./sizes.tsx?raw";
 import { Button, ButtonGroup } from "@pisagor/solid";
 import { For } from "solid-js";
 
@@ -22,5 +21,3 @@ export function Sizes() {
     </div>
   );
 }
-
-export { source as SizesSource };

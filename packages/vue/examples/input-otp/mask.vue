@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./mask.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { InputOTP } from "@pisagor/vue";
 </script>

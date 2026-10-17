@@ -1,4 +1,3 @@
-import source from "./non-modal.tsx?raw";
 import { Button, Dialog } from "@pisagor/solid";
 import { Portal } from "solid-js/web";
 export function NonModal() {
@@ -44,5 +43,3 @@ export function NonModal() {
     </Dialog.Root>
   );
 }
-
-export { source as NonModalSource };

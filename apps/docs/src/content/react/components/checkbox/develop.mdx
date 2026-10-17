@@ -1,14 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/react/checkbox/default.tsx";
-import { SizesSource } from "#examples/react/checkbox/sizes.tsx";
-import { VariantsSource } from "#examples/react/checkbox/variants.tsx";
-import { CheckboxGroupSource } from "#examples/react/checkbox/checkbox-group.tsx";
-import { CompoundSource } from "#examples/react/checkbox/compound.tsx";
-import { ControlledSource } from "#examples/react/checkbox/controlled.tsx";
-import { DisabledSource } from "#examples/react/checkbox/disabled.tsx";
-import { InvalidSource } from "#examples/react/checkbox/invalid.tsx";
-import { IndeterminateSource } from "#examples/react/checkbox/indeterminate.tsx";
-import { CustomRecipeSource } from "#examples/react/checkbox/custom-recipe.tsx";
 
 ## Import
 
@@ -22,109 +12,55 @@ import { Checkbox } from "@pisagor/react";
 
 A single option users can turn on or off.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="checkbox"
-  framework="react"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Sizes
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="checkbox"
-  framework="react"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Variants
 
 Choose visual weight to match surrounding form controls.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="checkbox"
-  framework="react"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Checkbox Group
 
 Group related checkboxes so multi-select options stay together.
 
-<Example
-  name="CheckboxGroup"
-  code={CheckboxGroupSource}
-  exampleId="checkbox"
-  framework="react"
-  kind="component"
-/>
+<Example name="CheckboxGroup" />
 
 ### Compound
 
 Compose `Checkbox.Root`, `Checkbox.Control`, `Checkbox.Label` and `Checkbox.HiddenInput` for full control over layout.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="checkbox"
-  framework="react"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Controlled
 
 Drive checked state from the parent when other UI depends on it.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="checkbox"
-  framework="react"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the option cannot change.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="checkbox"
-  framework="react"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation error when the choice is required or not allowed.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="checkbox"
-  framework="react"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ### Indeterminate
 
 Mark a parent checkbox when only some child options are selected.
 
-<Example
-  name="Indeterminate"
-  code={IndeterminateSource}
-  exampleId="checkbox"
-  framework="react"
-  kind="component"
-/>
+<Example name="Indeterminate" />
 
 ## Customization
 
@@ -132,10 +68,4 @@ Mark a parent checkbox when only some child options are selected.
 
 Extend `checkboxRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="checkbox"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

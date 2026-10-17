@@ -1,4 +1,3 @@
-import source from "./label-accessory.tsx?raw";
 import { Badge, Field, Input } from "@pisagor/react";
 import { labelAccessoryBlock } from "#/recipes/blocks/field";
 
@@ -17,5 +16,3 @@ export function LabelAccessory() {
     </Field>
   );
 }
-
-export { source as LabelAccessorySource };

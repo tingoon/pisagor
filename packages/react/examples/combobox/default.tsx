@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Combobox } from "@pisagor/react";
 
 export function Default() {
@@ -13,5 +12,3 @@ export function Default() {
     />
   );
 }
-
-export { source as DefaultSource };

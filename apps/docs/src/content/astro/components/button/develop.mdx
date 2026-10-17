@@ -9,16 +9,6 @@ import Loading from "#examples/astro/button/loading.astro";
 import NoClickEffect from "#examples/astro/button/no-click-effect.astro";
 import CustomColor from "#examples/astro/button/custom-color.astro";
 import CustomRecipe from "#examples/astro/button/custom-recipe.astro";
-import VariantsSource from "#examples/astro/button/variants.astro?raw";
-import SizesSource from "#examples/astro/button/sizes.astro?raw";
-import PillSource from "#examples/astro/button/pill.astro?raw";
-import WithIconSource from "#examples/astro/button/with-icon.astro?raw";
-import IconSource from "#examples/astro/button/icon.astro?raw";
-import DisabledSource from "#examples/astro/button/disabled.astro?raw";
-import LoadingSource from "#examples/astro/button/loading.astro?raw";
-import NoClickEffectSource from "#examples/astro/button/no-click-effect.astro?raw";
-import CustomColorSource from "#examples/astro/button/custom-color.astro?raw";
-import CustomRecipeSource from "#examples/astro/button/custom-recipe.astro?raw";
 
 ## Import
 
@@ -32,13 +22,7 @@ import { Button } from "@pisagor/astro";
 
 Choose weight by importance: default for the primary action, secondary or outline for alternatives, destructive for irreversible work, ghost for low-emphasis chrome, and link when the control should read like inline text.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="button"
-  framework="astro"
-  kind="component"
->
+<Example name="Variants">
   <Variants />
 </Example>
 
@@ -46,13 +30,7 @@ Choose weight by importance: default for the primary action, secondary or outlin
 
 Match size to the surrounding layout — smaller in compact toolbars, larger for prominent calls to action. Icon sizes keep square hit targets aligned with text buttons.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="button"
-  framework="astro"
-  kind="component"
->
+<Example name="Sizes">
   <Sizes />
 </Example>
 
@@ -60,13 +38,7 @@ Match size to the surrounding layout — smaller in compact toolbars, larger for
 
 Use a fully rounded shape for chip-like or toolbar actions where softer geometry fits the layout.
 
-<Example
-  name="Pill"
-  code={PillSource}
-  exampleId="button"
-  framework="astro"
-  kind="component"
->
+<Example name="Pill">
   <Pill />
 </Example>
 
@@ -74,13 +46,7 @@ Use a fully rounded shape for chip-like or toolbar actions where softer geometry
 
 Pair an icon with a label to reinforce meaning.
 
-<Example
-  name="WithIcon"
-  code={WithIconSource}
-  exampleId="button"
-  framework="astro"
-  kind="component"
->
+<Example name="WithIcon">
   <WithIcon />
 </Example>
 
@@ -88,13 +54,7 @@ Pair an icon with a label to reinforce meaning.
 
 An icon-only button for a single, well-known action. Always provide an accessible name.
 
-<Example
-  name="Icon"
-  code={IconSource}
-  exampleId="button"
-  framework="astro"
-  kind="component"
->
+<Example name="Icon">
   <Icon />
 </Example>
 
@@ -102,13 +62,7 @@ An icon-only button for a single, well-known action. Always provide an accessibl
 
 Show that an action is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="button"
-  framework="astro"
-  kind="component"
->
+<Example name="Disabled">
   <Disabled />
 </Example>
 
@@ -116,13 +70,7 @@ Show that an action is unavailable.
 
 Keep the control visible while work is in progress and block another press until it finishes.
 
-<Example
-  name="Loading"
-  code={LoadingSource}
-  exampleId="button"
-  framework="astro"
-  kind="component"
->
+<Example name="Loading">
   <Loading />
 </Example>
 
@@ -130,13 +78,7 @@ Keep the control visible while work is in progress and block another press until
 
 Turn off the press scale when motion would distract or conflict with surrounding interaction feedback.
 
-<Example
-  name="NoClickEffect"
-  code={NoClickEffectSource}
-  exampleId="button"
-  framework="astro"
-  kind="component"
->
+<Example name="NoClickEffect">
   <NoClickEffect />
 </Example>
 
@@ -148,13 +90,7 @@ Pass `class` for a one-off change to a single element.
 
 Override the fill when a brand or contextual color matters more than the theme primary.
 
-<Example
-  name="CustomColor"
-  code={CustomColorSource}
-  exampleId="button"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomColor">
   <CustomColor />
 </Example>
 
@@ -162,12 +98,6 @@ Override the fill when a brand or contextual color matters more than the theme p
 
 Extend `buttonRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="button"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomRecipe">
   <CustomRecipe />
 </Example>

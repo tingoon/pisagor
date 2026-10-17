@@ -1,4 +1,3 @@
-import source from "./tags-with-combobox.tsx?raw";
 /** @jsxImportSource solid-js */
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
@@ -91,5 +90,3 @@ export function TagsWithCombobox() {
     </Field>
   );
 }
-
-export { source as TagsWithComboboxSource };

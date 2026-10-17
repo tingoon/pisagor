@@ -1,4 +1,3 @@
-import source from "./grouped-rows.tsx?raw";
 import { CaretDownIcon, CaretRightIcon } from "@phosphor-icons/react";
 import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Select, Table } from "@pisagor/react";
@@ -196,5 +195,3 @@ export function GroupedRows() {
     </DataGridShell>
   );
 }
-
-export { source as GroupedRowsSource };

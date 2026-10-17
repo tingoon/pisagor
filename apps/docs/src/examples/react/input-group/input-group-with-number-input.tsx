@@ -1,4 +1,3 @@
-import source from "./input-group-with-number-input.tsx?raw";
 import { InputGroup, NumberInput } from "@pisagor/react";
 
 export function InputGroupWithNumberInput() {
@@ -16,5 +15,3 @@ export function InputGroupWithNumberInput() {
     </InputGroup>
   );
 }
-
-export { source as InputGroupWithNumberInputSource };

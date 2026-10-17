@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./compound.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Button, Dialog, Field, Input, Select } from "@pisagor/vue";
 

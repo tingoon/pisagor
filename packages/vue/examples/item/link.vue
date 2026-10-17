@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./link.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhArrowSquareOut } from "@phosphor-icons/vue";
 import { Item } from "@pisagor/vue";

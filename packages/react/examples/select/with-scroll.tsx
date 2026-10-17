@@ -1,4 +1,3 @@
-import source from "./with-scroll.tsx?raw";
 import { createListCollection } from "@ark-ui/react";
 import { Select } from "@pisagor/react";
 
@@ -24,5 +23,3 @@ export function WithScroll() {
     </Select.Root>
   );
 }
-
-export { source as WithScrollSource };

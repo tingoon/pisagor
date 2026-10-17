@@ -1,4 +1,3 @@
-import source from "./sizes.tsx?raw";
 import { Avatar } from "@pisagor/react";
 
 export function Sizes() {
@@ -31,5 +30,3 @@ export function Sizes() {
     </div>
   );
 }
-
-export { source as SizesSource };

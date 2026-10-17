@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./directory-upload.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhFolder } from "@phosphor-icons/vue";
 import { Button, FileUpload } from "@pisagor/vue";

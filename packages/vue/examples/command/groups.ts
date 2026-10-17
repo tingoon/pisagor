@@ -1,4 +1,3 @@
-import source from "./groups.ts?raw";
 import { useListCollection } from "@ark-ui/vue/collection";
 import { useFilter } from "@ark-ui/vue/locale";
 import { Command } from "@pisagor/vue";
@@ -59,5 +58,3 @@ export default defineComponent({
       );
   },
 });
-
-export { source };

@@ -1,4 +1,3 @@
-import source from "./controlled.tsx?raw";
 import { Button, ButtonGroup, Field, Progress } from "@pisagor/solid";
 import { MinusIcon, PlusIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";
@@ -32,5 +31,3 @@ export function Controlled() {
     </Field>
   );
 }
-
-export { source as ControlledSource };

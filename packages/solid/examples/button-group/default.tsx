@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Button, ButtonGroup } from "@pisagor/solid";
 
 export function Default() {
@@ -17,5 +16,3 @@ export function Default() {
     </ButtonGroup>
   );
 }
-
-export { source as DefaultSource };

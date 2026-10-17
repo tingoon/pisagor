@@ -1,4 +1,3 @@
-import source from "./variants.ts?raw";
 import { AlertDialog, Button } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
@@ -50,5 +49,3 @@ export default defineComponent({
       ]);
   },
 });
-
-export { source };

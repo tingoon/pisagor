@@ -1,4 +1,3 @@
-import source from "./custom-spacing.tsx?raw";
 import { PencilSimpleIcon, TrashIcon, XIcon } from "@phosphor-icons/react";
 import { ActionBar, Button } from "@pisagor/react";
 import { useState } from "react";
@@ -37,5 +36,3 @@ export function CustomSpacing() {
     </ActionBar>
   );
 }
-
-export { source as CustomSpacingSource };

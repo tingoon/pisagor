@@ -1,4 +1,3 @@
-import source from "./disabled-item.tsx?raw";
 import { SegmentGroup } from "@pisagor/react";
 
 export function DisabledItem() {
@@ -15,5 +14,3 @@ export function DisabledItem() {
     />
   );
 }
-
-export { source as DisabledItemSource };

@@ -1,4 +1,3 @@
-import source from "./main.tsx?raw";
 import { faker } from "@faker-js/faker";
 import { AppShell } from "@pisagor/react";
 import { regionTitle } from "./helpers";
@@ -24,5 +23,3 @@ export function Main() {
     </AppShell>
   );
 }
-
-export { source as MainSource };

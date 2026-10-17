@@ -1,4 +1,3 @@
-import source from "./composition.tsx?raw";
 import { AlertDialog, Button } from "@pisagor/react";
 export function Composition() {
   return (
@@ -23,5 +22,3 @@ export function Composition() {
     </AlertDialog.Root>
   );
 }
-
-export { source as CompositionSource };

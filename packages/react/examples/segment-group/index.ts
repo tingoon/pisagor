@@ -9,5 +9,4 @@ export * from "./indicator-on-hover";
 export * from "./orientation-horizontal";
 export * from "./orientation-vertical";
 export * from "./sizes";
-export { imports, sources } from "./sources";
 export * from "./variants";

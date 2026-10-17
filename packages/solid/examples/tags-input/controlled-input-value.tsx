@@ -1,4 +1,3 @@
-import source from "./controlled-input-value.tsx?raw";
 import { Button, Field, TagsInput } from "@pisagor/solid";
 import { createSignal, For } from "solid-js";
 
@@ -43,5 +42,3 @@ export function ControlledInputValue() {
     </div>
   );
 }
-
-export { source as ControlledInputValueSource };

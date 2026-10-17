@@ -1,4 +1,3 @@
-import source from "./controlled.tsx?raw";
 import { SegmentGroup } from "@pisagor/react";
 import { useState } from "react";
 
@@ -19,5 +18,3 @@ export function Controlled() {
     />
   );
 }
-
-export { source as ControlledSource };

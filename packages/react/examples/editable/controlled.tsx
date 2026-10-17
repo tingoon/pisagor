@@ -1,4 +1,3 @@
-import source from "./controlled.tsx?raw";
 import { CheckIcon, PencilSimpleIcon } from "@phosphor-icons/react";
 import { Button, Card, Editable, Field, Input } from "@pisagor/react";
 import { useState } from "react";
@@ -65,5 +64,3 @@ export function Controlled() {
     </Card>
   );
 }
-
-export { source as ControlledSource };

@@ -1,4 +1,3 @@
-import source from "./rails.tsx?raw";
 import { AppShell, useAppShell } from "@pisagor/solid";
 import { mainContent, regionTitle } from "./helpers";
 
@@ -48,5 +47,3 @@ export function Rails() {
     </AppShell>
   );
 }
-
-export { source as RailsSource };

@@ -1,4 +1,3 @@
-import source from "./slider-hsl-channels.tsx?raw";
 import { ColorPicker } from "@pisagor/solid";
 
 export function SliderHslChannels() {
@@ -14,5 +13,3 @@ export function SliderHslChannels() {
     </ColorPicker>
   );
 }
-
-export { source as SliderHslChannelsSource };

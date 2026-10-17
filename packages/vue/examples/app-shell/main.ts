@@ -1,4 +1,3 @@
-import source from "./main.ts?raw";
 import { AppShell } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 import { loremParagraphs, regionTitle } from "./helpers";
@@ -21,5 +20,3 @@ export default defineComponent({
       ]);
   },
 });
-
-export { source };

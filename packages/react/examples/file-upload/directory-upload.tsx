@@ -1,4 +1,3 @@
-import source from "./directory-upload.tsx?raw";
 import { FolderIcon } from "@phosphor-icons/react";
 import { Button, FileUpload } from "@pisagor/react";
 export function DirectoryUpload() {
@@ -16,5 +15,3 @@ export function DirectoryUpload() {
     </FileUpload>
   );
 }
-
-export { source as DirectoryUploadSource };

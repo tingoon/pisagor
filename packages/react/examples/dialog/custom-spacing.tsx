@@ -1,4 +1,3 @@
-import source from "./custom-spacing.tsx?raw";
 import { Portal } from "@ark-ui/react/portal";
 import { Button, Dialog, Field, Input, Select } from "@pisagor/react";
 export function CustomSpacing() {
@@ -52,5 +51,3 @@ export function CustomSpacing() {
     </Dialog.Root>
   );
 }
-
-export { source as CustomSpacingSource };

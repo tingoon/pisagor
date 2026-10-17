@@ -1,4 +1,3 @@
-import source from "./gutter.tsx?raw";
 import { ActionBar, Button } from "@pisagor/solid";
 import {
   ArchiveIcon,
@@ -73,5 +72,3 @@ export function Gutter() {
     </>
   );
 }
-
-export { source as GutterSource };

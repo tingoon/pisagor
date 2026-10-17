@@ -1,4 +1,3 @@
-import source from "./handle.tsx?raw";
 import { Resizable } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
@@ -46,5 +45,3 @@ export function Handle() {
     </ResizableFrame>
   );
 }
-
-export { source as HandleSource };

@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./with-card.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Accordion, Card } from "@pisagor/vue";
 import { faqItems } from "./helpers";

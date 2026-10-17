@@ -1,4 +1,3 @@
-import source from "./autofill.ts?raw";
 import {
   PhArrowRight,
   PhAtom,
@@ -44,5 +43,3 @@ export default defineComponent({
       });
   },
 });
-
-export { source };

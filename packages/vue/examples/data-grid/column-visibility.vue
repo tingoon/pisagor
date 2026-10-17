@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./column-visibility.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhCaretDown, PhCaretUp, PhEye } from "@phosphor-icons/vue";
 import type { BadgeVariant } from "@pisagor/vue";

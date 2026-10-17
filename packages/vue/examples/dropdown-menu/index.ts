@@ -10,6 +10,5 @@ export { default as Placements } from "./placements.vue";
 export { default as QuickItem } from "./quick-item.vue";
 export { default as RadioGroup } from "./radio-group.vue";
 export { default as Shortcuts } from "./shortcuts.vue";
-export { imports, sources } from "./sources";
 export { default as WithScroll } from "./with-scroll.vue";
 export { default as WithSeparator } from "./with-separator.vue";

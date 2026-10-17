@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./orientation-vertical.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, Editable, Textarea } from "@pisagor/svelte";
   import { CheckIcon, XIcon } from "@pisagor/svelte/icons";

@@ -1,4 +1,3 @@
-import source from "./html.tsx?raw";
 import { Prose } from "@pisagor/solid";
 
 export function Html() {
@@ -11,5 +10,3 @@ export function Html() {
     />
   );
 }
-
-export { source as HtmlSource };

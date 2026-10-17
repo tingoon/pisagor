@@ -1,4 +1,3 @@
-import source from "./scrub.tsx?raw";
 import { NumberInput } from "@pisagor/solid";
 
 export function Scrub() {
@@ -13,5 +12,3 @@ export function Scrub() {
     </NumberInput>
   );
 }
-
-export { source as ScrubSource };

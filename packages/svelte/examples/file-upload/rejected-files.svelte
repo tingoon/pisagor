@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./rejected-files.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { FileUpload } from "@pisagor/svelte";
 </script>

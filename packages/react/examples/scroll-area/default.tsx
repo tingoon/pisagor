@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { ScrollArea, Separator } from "@pisagor/react";
 import { Fragment } from "react";
 export function Default() {
@@ -17,5 +16,3 @@ export function Default() {
     </ScrollArea>
   );
 }
-
-export { source as DefaultSource };

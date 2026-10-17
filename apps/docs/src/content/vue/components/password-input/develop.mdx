@@ -1,14 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/password-input/default.vue?raw";
-import SizesSource from "#examples/vue/password-input/sizes.vue?raw";
-import AutocompleteSource from "#examples/vue/password-input/autocomplete.vue?raw";
-import CompoundSource from "#examples/vue/password-input/compound.vue?raw";
-import ControlledVisibilitySource from "#examples/vue/password-input/controlled-visibility.vue?raw";
-import ControlledSource from "#examples/vue/password-input/controlled.vue?raw";
-import DisabledSource from "#examples/vue/password-input/disabled.vue?raw";
-import InvalidSource from "#examples/vue/password-input/invalid.vue?raw";
-import AutoHideSource from "#examples/vue/password-input/auto-hide.vue?raw";
-import ClearableSource from "#examples/vue/password-input/clearable.vue?raw";
 
 ## Import
 
@@ -22,118 +12,58 @@ import { PasswordInput } from "@pisagor/vue";
 
 Collect a password with a show-hide control.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="password-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Sizes
 
 Match size to the surrounding layout — smaller in compact chrome, larger where the password input needs emphasis.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="password-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Autocomplete
 
 Set autocomplete attributes so browsers can fill credentials safely.
 
-<Example
-  name="Autocomplete"
-  code={AutocompleteSource}
-  exampleId="password-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Autocomplete" />
 
 ### Compound
 
 Compose `PasswordInput.Root`, `Control`, `Input` and `VisibilityTrigger` for custom layouts.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="password-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Controlled Visibility
 
 Drive show-hide state from the parent when visibility is coordinated elsewhere.
 
-<Example
-  name="ControlledVisibility"
-  code={ControlledVisibilitySource}
-  exampleId="password-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="ControlledVisibility" />
 
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this password input.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="password-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the password input is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="password-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation or error state so users know the password input needs attention before continuing.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="password-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ### Auto Hide
 
 Hide the password again after a delay when brief visibility is enough.
 
-<Example
-  name="AutoHide"
-  code={AutoHideSource}
-  exampleId="password-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="AutoHide" />
 
 ### Clearable
 
 Offer a clear control when the value is optional and users may want to start over.
 
-<Example
-  name="Clearable"
-  code={ClearableSource}
-  exampleId="password-input"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Clearable" />

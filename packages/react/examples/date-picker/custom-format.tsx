@@ -1,4 +1,3 @@
-import source from "./custom-format.tsx?raw";
 import { CalendarIcon } from "@phosphor-icons/react";
 import { Button, Calendar, DatePicker, parseDate } from "@pisagor/react";
 import { useState } from "react";
@@ -32,5 +31,3 @@ export function CustomFormat() {
     </DatePicker>
   );
 }
-
-export { source as CustomFormatSource };

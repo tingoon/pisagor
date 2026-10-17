@@ -1,4 +1,3 @@
-import source from "./code-editor-input.tsx?raw";
 import { CopyIcon, FileCodeIcon } from "@phosphor-icons/react";
 import { InputGroup } from "@pisagor/react";
 import { codeEditorInputBlock } from "#/recipes/blocks/input-group";
@@ -28,5 +27,3 @@ export function CodeEditorInput() {
     </InputGroup>
   );
 }
-
-export { source as CodeEditorInputSource };

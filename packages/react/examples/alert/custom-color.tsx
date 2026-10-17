@@ -1,4 +1,3 @@
-import source from "./custom-color.tsx?raw";
 import { MagicWandIcon } from "@phosphor-icons/react";
 import { Alert } from "@pisagor/react";
 
@@ -12,5 +11,3 @@ export function CustomColor() {
     />
   );
 }
-
-export { source as CustomColorSource };

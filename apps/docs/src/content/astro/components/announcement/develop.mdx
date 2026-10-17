@@ -5,12 +5,6 @@ import WithoutBadge from "#examples/astro/announcement/without-badge.astro";
 import Compound from "#examples/astro/announcement/compound.astro";
 import WithLink from "#examples/astro/announcement/with-link.astro";
 import CustomRecipe from "#examples/astro/announcement/custom-recipe.astro";
-import VariantsSource from "#examples/astro/announcement/variants.astro?raw";
-import WithIconSource from "#examples/astro/announcement/with-icon.astro?raw";
-import WithoutBadgeSource from "#examples/astro/announcement/without-badge.astro?raw";
-import CompoundSource from "#examples/astro/announcement/compound.astro?raw";
-import WithLinkSource from "#examples/astro/announcement/with-link.astro?raw";
-import CustomRecipeSource from "#examples/astro/announcement/custom-recipe.astro?raw";
 
 ## Import
 
@@ -24,13 +18,7 @@ import { Announcement } from "@pisagor/astro";
 
 Choose emphasis so the announcement matches how urgent or promotional the message is.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="announcement"
-  framework="astro"
-  kind="component"
->
+<Example name="Variants">
   <Variants />
 </Example>
 
@@ -38,13 +26,7 @@ Choose emphasis so the announcement matches how urgent or promotional the messag
 
 Add an icon when a symbol helps users recognize the announcement type quickly.
 
-<Example
-  name="WithIcon"
-  code={WithIconSource}
-  exampleId="announcement"
-  framework="astro"
-  kind="component"
->
+<Example name="WithIcon">
   <WithIcon />
 </Example>
 
@@ -52,13 +34,7 @@ Add an icon when a symbol helps users recognize the announcement type quickly.
 
 Drop the badge treatment when a plain text callout is enough.
 
-<Example
-  name="WithoutBadge"
-  code={WithoutBadgeSource}
-  exampleId="announcement"
-  framework="astro"
-  kind="component"
->
+<Example name="WithoutBadge">
   <WithoutBadge />
 </Example>
 
@@ -66,13 +42,7 @@ Drop the badge treatment when a plain text callout is enough.
 
 Assemble parts when you need a custom announcement layout.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="announcement"
-  framework="astro"
-  kind="component"
->
+<Example name="Compound">
   <Compound />
 </Example>
 
@@ -80,13 +50,7 @@ Assemble parts when you need a custom announcement layout.
 
 Link through to details when the bar should stay short and the full story lives elsewhere.
 
-<Example
-  name="WithLink"
-  code={WithLinkSource}
-  exampleId="announcement"
-  framework="astro"
-  kind="component"
->
+<Example name="WithLink">
   <WithLink />
 </Example>
 
@@ -96,12 +60,6 @@ Link through to details when the bar should stay short and the full story lives 
 
 Extend `announcementRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="announcement"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomRecipe">
   <CustomRecipe />
 </Example>

@@ -1,4 +1,3 @@
-import source from "./custom-color.tsx?raw";
 import { Badge } from "@pisagor/solid";
 
 export function CustomColor() {
@@ -17,5 +16,3 @@ export function CustomColor() {
     </div>
   );
 }
-
-export { source as CustomColorSource };

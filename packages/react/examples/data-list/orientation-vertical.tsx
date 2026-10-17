@@ -1,4 +1,3 @@
-import source from "./orientation-vertical.tsx?raw";
 import { DataList } from "@pisagor/react";
 
 export function OrientationVertical() {
@@ -13,5 +12,3 @@ export function OrientationVertical() {
     />
   );
 }
-
-export { source as OrientationVerticalSource };

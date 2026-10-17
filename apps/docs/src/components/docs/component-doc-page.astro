@@ -15,6 +15,7 @@ import {
   type SkillPaneId,
 } from "#/lib/component-doc";
 import type { ComponentDocs } from "#/lib/component-docs-types";
+import { setDocsExampleContext } from "#/lib/docs-example-context";
 import type { Framework } from "#/lib/nav";
 import { frameworks, withDocsBase } from "#/lib/nav";
 import { extractTocHeadings } from "#/lib/toc";
@@ -31,6 +32,12 @@ const framework = Astro.props.framework;
 const kind = Astro.props.kind ?? "component";
 const activeTab = Astro.props.tab;
 const anatomySrc = resolveAnatomySrc(id);
+
+setDocsExampleContext(Astro.locals, {
+  exampleId: id,
+  framework,
+  kind,
+});
 
 const { frontmatter } = await loadSkillMd(framework, id, kind);
 const panes = await loadSkillPanes(framework, id, kind);

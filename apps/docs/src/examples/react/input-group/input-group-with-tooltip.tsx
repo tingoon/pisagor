@@ -1,4 +1,3 @@
-import source from "./input-group-with-tooltip.tsx?raw";
 import { InfoIcon } from "@phosphor-icons/react";
 import { Button, InputGroup, Tooltip } from "@pisagor/react";
 
@@ -16,5 +15,3 @@ export function InputGroupWithTooltip() {
     </InputGroup>
   );
 }
-
-export { source as InputGroupWithTooltipSource };

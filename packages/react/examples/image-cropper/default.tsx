@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { ImageCropper } from "@pisagor/react";
 
 export function Default() {
@@ -12,5 +11,3 @@ export function Default() {
     </ImageCropper>
   );
 }
-
-export { source as DefaultSource };

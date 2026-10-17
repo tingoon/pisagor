@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { NumberInput } from "@pisagor/react";
 
 export function Compound() {
@@ -12,5 +11,3 @@ export function Compound() {
     </NumberInput>
   );
 }
-
-export { source as CompoundSource };

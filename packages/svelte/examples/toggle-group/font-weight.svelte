@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./font-weight.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { ToggleGroup } from "@pisagor/svelte";
   import { cn } from "@pisagor/utils";

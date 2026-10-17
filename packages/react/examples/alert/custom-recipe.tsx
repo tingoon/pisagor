@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { CheckCircleIcon } from "@phosphor-icons/react";
 import { Alert } from "@pisagor/react";
 import { alertRecipe } from "@pisagor/recipes";
@@ -32,5 +31,3 @@ export function CustomRecipe() {
     />
   );
 }
-
-export { source as CustomRecipeSource };

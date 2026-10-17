@@ -1,4 +1,3 @@
-import source from "./skip.tsx?raw";
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour } from "@pisagor/solid";
 export function Skip() {
@@ -80,5 +79,3 @@ export function Skip() {
     </div>
   );
 }
-
-export { source as SkipSource };

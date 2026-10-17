@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { richTextEditorRecipe } from "@pisagor/recipes";
 import { RichTextEditor } from "@pisagor/solid/rich-text-editor";
 import { tv } from "tailwind-variants";
@@ -20,5 +19,3 @@ export function CustomRecipe() {
     />
   );
 }
-
-export { source as CustomRecipeSource };

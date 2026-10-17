@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./blur-on-complete.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { InputOTP } from "@pisagor/svelte";
 </script>

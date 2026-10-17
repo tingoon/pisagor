@@ -1,4 +1,3 @@
-import source from "./slider-alpha-channel.tsx?raw";
 import { ColorPicker } from "@pisagor/solid";
 
 export function SliderAlphaChannel() {
@@ -12,5 +11,3 @@ export function SliderAlphaChannel() {
     </ColorPicker>
   );
 }
-
-export { source as SliderAlphaChannelSource };

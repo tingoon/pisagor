@@ -1,8 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/solid/toolbar/default.tsx";
-import { WrappedActionsSource } from "#examples/solid/toolbar/wrapped-actions.tsx";
-import { CompoundSource } from "#examples/solid/toolbar/compound.tsx";
-import { CustomRecipeSource } from "#examples/solid/toolbar/custom-recipe.tsx";
 
 ## Import
 
@@ -16,37 +12,19 @@ import { Toolbar } from "@pisagor/solid";
 
 Place a local heading with related actions in one row.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="toolbar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Wrapped Actions
 
 Wrap actions when horizontal space is tight.
 
-<Example
-  name="WrappedActions"
-  code={WrappedActionsSource}
-  exampleId="toolbar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WrappedActions" />
 
 ### Compound
 
 Compose toolbar parts for a custom chrome layout.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="toolbar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ## Customization
 
@@ -54,10 +32,4 @@ Compose toolbar parts for a custom chrome layout.
 
 Extend `toolbarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="toolbar"
-  framework="solid"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

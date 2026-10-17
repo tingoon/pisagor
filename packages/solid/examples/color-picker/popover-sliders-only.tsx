@@ -1,4 +1,3 @@
-import source from "./popover-sliders-only.tsx?raw";
 import { Button, ColorPicker, Field } from "@pisagor/solid";
 export function PopoverSlidersOnly() {
   return (
@@ -40,5 +39,3 @@ export function PopoverSlidersOnly() {
     </ColorPicker>
   );
 }
-
-export { source as PopoverSlidersOnlySource };

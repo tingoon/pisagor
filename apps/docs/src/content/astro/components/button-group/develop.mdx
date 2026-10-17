@@ -6,13 +6,6 @@ import OrientationVertical from "#examples/astro/button-group/orientation-vertic
 import Nested from "#examples/astro/button-group/nested.astro";
 import WithSeparator from "#examples/astro/button-group/with-separator.astro";
 import CustomRecipe from "#examples/astro/button-group/custom-recipe.astro";
-import DefaultSource from "#examples/astro/button-group/default.astro?raw";
-import SizesSource from "#examples/astro/button-group/sizes.astro?raw";
-import OrientationHorizontalSource from "#examples/astro/button-group/orientation-horizontal.astro?raw";
-import OrientationVerticalSource from "#examples/astro/button-group/orientation-vertical.astro?raw";
-import NestedSource from "#examples/astro/button-group/nested.astro?raw";
-import WithSeparatorSource from "#examples/astro/button-group/with-separator.astro?raw";
-import CustomRecipeSource from "#examples/astro/button-group/custom-recipe.astro?raw";
 
 ## Import
 
@@ -26,13 +19,7 @@ import { ButtonGroup } from "@pisagor/astro";
 
 Related actions clustered as one visual group.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="button-group"
-  framework="astro"
-  kind="component"
->
+<Example name="Default">
   <Default />
 </Example>
 
@@ -40,13 +27,7 @@ Related actions clustered as one visual group.
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="button-group"
-  framework="astro"
-  kind="component"
->
+<Example name="Sizes">
   <Sizes />
 </Example>
 
@@ -54,13 +35,7 @@ Use `size` to pick the sm, md or lg scale. `md` is the default.
 
 Lay actions in a row for toolbars and footers.
 
-<Example
-  name="OrientationHorizontal"
-  code={OrientationHorizontalSource}
-  exampleId="button-group"
-  framework="astro"
-  kind="component"
->
+<Example name="OrientationHorizontal">
   <OrientationHorizontal />
 </Example>
 
@@ -68,13 +43,7 @@ Lay actions in a row for toolbars and footers.
 
 Stack actions when the group sits in a narrow column.
 
-<Example
-  name="OrientationVertical"
-  code={OrientationVerticalSource}
-  exampleId="button-group"
-  framework="astro"
-  kind="component"
->
+<Example name="OrientationVertical">
   <OrientationVertical />
 </Example>
 
@@ -82,13 +51,7 @@ Stack actions when the group sits in a narrow column.
 
 Nest groups when primary and secondary clusters share one control strip.
 
-<Example
-  name="Nested"
-  code={NestedSource}
-  exampleId="button-group"
-  framework="astro"
-  kind="component"
->
+<Example name="Nested">
   <Nested />
 </Example>
 
@@ -96,13 +59,7 @@ Nest groups when primary and secondary clusters share one control strip.
 
 Separate subgroups so distinct action sets stay scannable.
 
-<Example
-  name="WithSeparator"
-  code={WithSeparatorSource}
-  exampleId="button-group"
-  framework="astro"
-  kind="component"
->
+<Example name="WithSeparator">
   <WithSeparator />
 </Example>
 
@@ -112,12 +69,6 @@ Separate subgroups so distinct action sets stay scannable.
 
 Extend `buttonGroupRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="button-group"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomRecipe">
   <CustomRecipe />
 </Example>

@@ -1,14 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/checkbox/default.vue?raw";
-import SizesSource from "#examples/vue/checkbox/sizes.vue?raw";
-import VariantsSource from "#examples/vue/checkbox/variants.vue?raw";
-import CheckboxGroupSource from "#examples/vue/checkbox/checkbox-group.vue?raw";
-import CompoundSource from "#examples/vue/checkbox/compound.vue?raw";
-import ControlledSource from "#examples/vue/checkbox/controlled.vue?raw";
-import DisabledSource from "#examples/vue/checkbox/disabled.vue?raw";
-import InvalidSource from "#examples/vue/checkbox/invalid.vue?raw";
-import IndeterminateSource from "#examples/vue/checkbox/indeterminate.vue?raw";
-import CustomRecipeSource from "#examples/vue/checkbox/custom-recipe.vue?raw";
 
 ## Import
 
@@ -22,109 +12,55 @@ import { Checkbox } from "@pisagor/vue";
 
 A single option users can turn on or off.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="checkbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Sizes
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="checkbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Variants
 
 Choose visual weight to match surrounding form controls.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="checkbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Checkbox Group
 
 Group related checkboxes so multi-select options stay together.
 
-<Example
-  name="CheckboxGroup"
-  code={CheckboxGroupSource}
-  exampleId="checkbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CheckboxGroup" />
 
 ### Compound
 
 Compose `Checkbox.Root`, `Checkbox.Control`, `Checkbox.Label` and `Checkbox.HiddenInput` for full control over layout.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="checkbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Controlled
 
 Drive checked state from the parent when other UI depends on it.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="checkbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the option cannot change.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="checkbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation error when the choice is required or not allowed.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="checkbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ### Indeterminate
 
 Mark a parent checkbox when only some child options are selected.
 
-<Example
-  name="Indeterminate"
-  code={IndeterminateSource}
-  exampleId="checkbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Indeterminate" />
 
 ## Customization
 
@@ -132,10 +68,4 @@ Mark a parent checkbox when only some child options are selected.
 
 Extend `checkboxRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="checkbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

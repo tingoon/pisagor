@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./custom-recipe.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { clipboardRecipe } from "@pisagor/recipes";
 import { Clipboard } from "@pisagor/vue";

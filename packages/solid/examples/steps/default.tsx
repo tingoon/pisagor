@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Button, Steps } from "@pisagor/solid";
 import { CaretLeftIcon, CaretRightIcon } from "@pisagor/solid/icons";
 import { For } from "solid-js";
@@ -54,5 +53,3 @@ export function Default() {
     </Steps>
   );
 }
-
-export { source as DefaultSource };

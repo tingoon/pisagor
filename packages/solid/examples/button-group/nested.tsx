@@ -1,4 +1,3 @@
-import source from "./nested.tsx?raw";
 import { Button, ButtonGroup } from "@pisagor/solid";
 import {
   BracketsCurlyIcon,
@@ -32,5 +31,3 @@ export function Nested() {
     </ButtonGroup>
   );
 }
-
-export { source as NestedSource };

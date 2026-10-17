@@ -1,4 +1,3 @@
-import source from "./label-accessory.tsx?raw";
 /** @jsxImportSource solid-js */
 
 import { Badge, Field, Input } from "@pisagor/solid";
@@ -19,5 +18,3 @@ export function LabelAccessory() {
     </Field>
   );
 }
-
-export { source as LabelAccessorySource };

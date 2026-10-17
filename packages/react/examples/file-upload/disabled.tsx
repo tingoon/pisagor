@@ -1,4 +1,3 @@
-import source from "./disabled.tsx?raw";
 import { Button, FileUpload } from "@pisagor/react";
 export function Disabled() {
   return (
@@ -14,5 +13,3 @@ export function Disabled() {
     </FileUpload>
   );
 }
-
-export { source as DisabledSource };

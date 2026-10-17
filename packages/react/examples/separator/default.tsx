@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Separator } from "@pisagor/react";
 
 export function Default() {
@@ -17,5 +16,3 @@ export function Default() {
     </div>
   );
 }
-
-export { source as DefaultSource };

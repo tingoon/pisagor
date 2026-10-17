@@ -1,23 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/listbox/default.vue?raw";
-import HorizontalSource from "#examples/vue/listbox/horizontal.vue?raw";
-import GridSource from "#examples/vue/listbox/grid.vue?raw";
-import WithIconSource from "#examples/vue/listbox/with-icon.vue?raw";
-import WithDescriptionSource from "#examples/vue/listbox/with-description.vue?raw";
-import GroupingSource from "#examples/vue/listbox/grouping.vue?raw";
-import WithFilterSource from "#examples/vue/listbox/with-filter.vue?raw";
-import CompoundSource from "#examples/vue/listbox/compound.vue?raw";
-import WithPopoverSource from "#examples/vue/listbox/with-popover.ts?raw";
-import TransferListSource from "#examples/vue/listbox/transfer-list.vue?raw";
-import ImageExplorerSource from "#examples/vue/listbox/image-explorer.vue?raw";
-import ControlledSource from "#examples/vue/listbox/controlled.vue?raw";
-import EmptySource from "#examples/vue/listbox/empty.vue?raw";
-import DisabledSource from "#examples/vue/listbox/disabled.vue?raw";
-import DisabledItemSource from "#examples/vue/listbox/disabled-item.vue?raw";
-import SelectionMultipleSource from "#examples/vue/listbox/selection-multiple.vue?raw";
-import SelectionExtendedSource from "#examples/vue/listbox/selection-extended.vue?raw";
-import SelectionNoneSource from "#examples/vue/listbox/selection-none.vue?raw";
-import CustomRecipeSource from "#examples/vue/listbox/custom-recipe.vue?raw";
 
 ## Import
 
@@ -31,217 +12,109 @@ import { Listbox } from "@pisagor/vue";
 
 Choose from a scrollable list with clear selection.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="listbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Horizontal
 
 Use a horizontal layout when the listbox should read left to right.
 
-<Example
-  name="Horizontal"
-  code={HorizontalSource}
-  exampleId="listbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Horizontal" />
 
 ### Grid
 
 Lay options in a grid when tiles scan better than a single column.
 
-<Example
-  name="Grid"
-  code={GridSource}
-  exampleId="listbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Grid" />
 
 ### With Icon
 
 Lead options with icons when symbols speed recognition.
 
-<Example
-  name="WithIcon"
-  code={WithIconSource}
-  exampleId="listbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithIcon" />
 
 ### With Description
 
 Add secondary text under each option for clarity.
 
-<Example
-  name="WithDescription"
-  code={WithDescriptionSource}
-  exampleId="listbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithDescription" />
 
 ### Grouped
 
 Group options under labels for long lists.
 
-<Example
-  name="Grouping"
-  code={GroupingSource}
-  exampleId="listbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Grouping" />
 
 ### With Filter
 
 Filter the list by typing when options are numerous.
 
-<Example
-  name="WithFilter"
-  code={WithFilterSource}
-  exampleId="listbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithFilter" />
 
 ### Compound
 
 Assemble from parts when you need a custom layout beyond the shorthand API.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="listbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### With Popover
 
 Host the listbox inside a popover trigger.
 
-<Example
-  name="WithPopover"
-  code={WithPopoverSource}
-  exampleId="listbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithPopover" />
 
 ### Transfer List
 
 Move items between dual lists when assigning membership.
 
-<Example
-  name="TransferList"
-  code={TransferListSource}
-  exampleId="listbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="TransferList" />
 
 ### Image Explorer
 
 Browse image options when thumbnails carry meaning.
 
-<Example
-  name="ImageExplorer"
-  code={ImageExplorerSource}
-  exampleId="listbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="ImageExplorer" />
 
 ### Controlled
 
 Drive selection from the parent when other UI depends on it.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="listbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Empty
 
 Shown when the collection has no items. Customize it with `emptyText` or render `Listbox.Empty` in compound usage.
 
-<Example
-  name="Empty"
-  code={EmptySource}
-  exampleId="listbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Empty" />
 
 ### Disabled
 
 Show that the list is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="listbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Disabled Item
 
 Show that a specific option cannot be selected.
 
-<Example
-  name="DisabledItem"
-  code={DisabledItemSource}
-  exampleId="listbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="DisabledItem" />
 
 ### Selection Multiple
 
 Allow more than one selected option.
 
-<Example
-  name="SelectionMultiple"
-  code={SelectionMultipleSource}
-  exampleId="listbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="SelectionMultiple" />
 
 ### Selection Extended
 
 Extend selection with modifier keys for power users.
 
-<Example
-  name="SelectionExtended"
-  code={SelectionExtendedSource}
-  exampleId="listbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="SelectionExtended" />
 
 ### Selection None
 
 Support a list without a required selection.
 
-<Example
-  name="SelectionNone"
-  code={SelectionNoneSource}
-  exampleId="listbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="SelectionNone" />
 
 ## Customization
 
@@ -249,10 +122,4 @@ Support a list without a required selection.
 
 Extend `listboxRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="listbox"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

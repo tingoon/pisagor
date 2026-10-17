@@ -1,4 +1,3 @@
-import source from "./with-placeholder.tsx?raw";
 import { InputOTP } from "@pisagor/react";
 
 export function WithPlaceholder() {
@@ -11,5 +10,3 @@ export function WithPlaceholder() {
     </InputOTP>
   );
 }
-
-export { source as WithPlaceholderSource };

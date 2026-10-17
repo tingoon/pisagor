@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./form-section-textarea.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, Card, Field, Textarea } from "@pisagor/svelte";
 

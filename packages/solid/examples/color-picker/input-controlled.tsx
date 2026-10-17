@@ -1,4 +1,3 @@
-import source from "./input-controlled.tsx?raw";
 import { ColorPicker, Input, parseColor } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function InputControlled() {
@@ -17,5 +16,3 @@ export function InputControlled() {
     </div>
   );
 }
-
-export { source as InputControlledSource };

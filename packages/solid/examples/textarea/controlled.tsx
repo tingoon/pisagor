@@ -1,4 +1,3 @@
-import source from "./controlled.tsx?raw";
 import { Field, Textarea } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
@@ -17,5 +16,3 @@ export function Controlled() {
     </Field>
   );
 }
-
-export { source as ControlledSource };

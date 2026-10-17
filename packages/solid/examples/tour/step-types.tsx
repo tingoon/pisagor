@@ -1,4 +1,3 @@
-import source from "./step-types.tsx?raw";
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour } from "@pisagor/solid";
 export function StepTypes() {
@@ -71,5 +70,3 @@ export function StepTypes() {
     </div>
   );
 }
-
-export { source as StepTypesSource };

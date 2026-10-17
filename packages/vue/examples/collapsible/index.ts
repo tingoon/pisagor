@@ -4,4 +4,3 @@ export { default as Default } from "./default.vue";
 export { default as Disabled } from "./disabled.vue";
 export { default as Nested } from "./nested.vue";
 export { default as PartialCollapse } from "./partial-collapse.vue";
-export { imports, sources } from "./sources";

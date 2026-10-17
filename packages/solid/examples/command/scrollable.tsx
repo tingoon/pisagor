@@ -1,4 +1,3 @@
-import source from "./scrollable.tsx?raw";
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Command } from "@pisagor/solid";
@@ -66,5 +65,3 @@ export function Scrollable() {
     </Command>
   );
 }
-
-export { source as ScrollableSource };

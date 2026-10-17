@@ -1,11 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/solid/button-group/default.tsx";
-import { SizesSource } from "#examples/solid/button-group/sizes.tsx";
-import { OrientationHorizontalSource } from "#examples/solid/button-group/orientation-horizontal.tsx";
-import { OrientationVerticalSource } from "#examples/solid/button-group/orientation-vertical.tsx";
-import { NestedSource } from "#examples/solid/button-group/nested.tsx";
-import { WithSeparatorSource } from "#examples/solid/button-group/with-separator.tsx";
-import { CustomRecipeSource } from "#examples/solid/button-group/custom-recipe.tsx";
 
 ## Import
 
@@ -19,73 +12,37 @@ import { ButtonGroup } from "@pisagor/solid";
 
 Related actions clustered as one visual group.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="button-group"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Sizes
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="button-group"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Orientation Horizontal
 
 Lay actions in a row for toolbars and footers.
 
-<Example
-  name="OrientationHorizontal"
-  code={OrientationHorizontalSource}
-  exampleId="button-group"
-  framework="solid"
-  kind="component"
-/>
+<Example name="OrientationHorizontal" />
 
 ### Orientation Vertical
 
 Stack actions when the group sits in a narrow column.
 
-<Example
-  name="OrientationVertical"
-  code={OrientationVerticalSource}
-  exampleId="button-group"
-  framework="solid"
-  kind="component"
-/>
+<Example name="OrientationVertical" />
 
 ### Nested
 
 Nest groups when primary and secondary clusters share one control strip.
 
-<Example
-  name="Nested"
-  code={NestedSource}
-  exampleId="button-group"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Nested" />
 
 ### With Separator
 
 Separate subgroups so distinct action sets stay scannable.
 
-<Example
-  name="WithSeparator"
-  code={WithSeparatorSource}
-  exampleId="button-group"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithSeparator" />
 
 ## Customization
 
@@ -93,10 +50,4 @@ Separate subgroups so distinct action sets stay scannable.
 
 Extend `buttonGroupRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="button-group"
-  framework="solid"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

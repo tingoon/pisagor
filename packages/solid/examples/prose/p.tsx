@@ -1,4 +1,3 @@
-import source from "./p.tsx?raw";
 import { Prose } from "@pisagor/solid";
 
 export function P() {
@@ -11,5 +10,3 @@ export function P() {
     </Prose>
   );
 }
-
-export { source as PSource };

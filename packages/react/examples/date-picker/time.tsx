@@ -1,4 +1,3 @@
-import source from "./time.tsx?raw";
 import { DatePicker, Field } from "@pisagor/react";
 export function Time() {
   return (
@@ -8,5 +7,3 @@ export function Time() {
     </Field>
   );
 }
-
-export { source as TimeSource };

@@ -1,4 +1,3 @@
-import source from "./step.tsx?raw";
 import { Field, NumberInput } from "@pisagor/react";
 
 export function Step() {
@@ -15,5 +14,3 @@ export function Step() {
     </div>
   );
 }
-
-export { source as StepSource };

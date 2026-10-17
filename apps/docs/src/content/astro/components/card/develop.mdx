@@ -5,12 +5,6 @@ import Icon from "#examples/astro/card/icon.astro";
 import Product from "#examples/astro/card/product.astro";
 import CustomSpacing from "#examples/astro/card/custom-spacing.astro";
 import CustomRecipe from "#examples/astro/card/custom-recipe.astro";
-import DefaultSource from "#examples/astro/card/default.astro?raw";
-import SizesSource from "#examples/astro/card/sizes.astro?raw";
-import IconSource from "#examples/astro/card/icon.astro?raw";
-import ProductSource from "#examples/astro/card/product.astro?raw";
-import CustomSpacingSource from "#examples/astro/card/custom-spacing.astro?raw";
-import CustomRecipeSource from "#examples/astro/card/custom-recipe.astro?raw";
 
 ## Import
 
@@ -34,13 +28,7 @@ import { Card } from "@pisagor/astro";
 
 A contained surface for related content and actions.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="card"
-  framework="astro"
-  kind="component"
->
+<Example name="Default">
   <Default />
 </Example>
 
@@ -48,13 +36,7 @@ A contained surface for related content and actions.
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="card"
-  framework="astro"
-  kind="component"
->
+<Example name="Sizes">
   <Sizes />
 </Example>
 
@@ -62,13 +44,7 @@ Use `size` to pick the sm, md or lg scale. `md` is the default.
 
 Lead with an icon when the card category should be recognizable at a glance.
 
-<Example
-  name="Icon"
-  code={IconSource}
-  exampleId="card"
-  framework="astro"
-  kind="component"
->
+<Example name="Icon">
   <Icon />
 </Example>
 
@@ -76,13 +52,7 @@ Lead with an icon when the card category should be recognizable at a glance.
 
 Compose media, title, and actions for a product-style card.
 
-<Example
-  name="Product"
-  code={ProductSource}
-  exampleId="card"
-  framework="astro"
-  kind="component"
->
+<Example name="Product">
   <Product />
 </Example>
 
@@ -94,13 +64,7 @@ Pass `class` for a one-off change to a single element.
 
 Adjust padding when the card sits in a denser or roomier layout.
 
-<Example
-  name="CustomSpacing"
-  code={CustomSpacingSource}
-  exampleId="card"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomSpacing">
   <CustomSpacing />
 </Example>
 
@@ -108,12 +72,6 @@ Adjust padding when the card sits in a denser or roomier layout.
 
 Extend `cardRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="card"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomRecipe">
   <CustomRecipe />
 </Example>

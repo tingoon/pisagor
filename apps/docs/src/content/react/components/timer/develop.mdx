@@ -1,14 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/react/timer/default.tsx";
-import { OrientationHorizontalSource } from "#examples/react/timer/orientation-horizontal.tsx";
-import { OrientationVerticalSource } from "#examples/react/timer/orientation-vertical.tsx";
-import { CustomSeparatorSource } from "#examples/react/timer/custom-separator.tsx";
-import { CountdownSource } from "#examples/react/timer/countdown.tsx";
-import { CountdownDateSource } from "#examples/react/timer/countdown-date.tsx";
-import { PomodoroSource } from "#examples/react/timer/pomodoro.tsx";
-import { ControlledSource } from "#examples/react/timer/controlled.tsx";
-import { IntervalSource } from "#examples/react/timer/interval.tsx";
-import { CustomRecipeSource } from "#examples/react/timer/custom-recipe.tsx";
 
 ## Import
 
@@ -36,109 +26,55 @@ import { Timer } from "@pisagor/react";
 
 Count elapsed time with start and reset controls.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="timer"
-  framework="react"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Orientation Horizontal
 
 Lay out the timer horizontally when items should read in a row.
 
-<Example
-  name="OrientationHorizontal"
-  code={OrientationHorizontalSource}
-  exampleId="timer"
-  framework="react"
-  kind="component"
-/>
+<Example name="OrientationHorizontal" />
 
 ### Orientation Vertical
 
 Stack the timer vertically when items should read in a column.
 
-<Example
-  name="OrientationVertical"
-  code={OrientationVerticalSource}
-  exampleId="timer"
-  framework="react"
-  kind="component"
-/>
+<Example name="OrientationVertical" />
 
 ### Custom Separator
 
 Override time separators when locale or brand needs different punctuation.
 
-<Example
-  name="CustomSeparator"
-  code={CustomSeparatorSource}
-  exampleId="timer"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomSeparator" />
 
 ### Countdown
 
 Count down toward zero when remaining time is the focus.
 
-<Example
-  name="Countdown"
-  code={CountdownSource}
-  exampleId="timer"
-  framework="react"
-  kind="component"
-/>
+<Example name="Countdown" />
 
 ### Countdown Date
 
 Count down to a specific date or time.
 
-<Example
-  name="CountdownDate"
-  code={CountdownDateSource}
-  exampleId="timer"
-  framework="react"
-  kind="component"
-/>
+<Example name="CountdownDate" />
 
 ### Pomodoro
 
 Run work-and-break cycles when the timer follows a pomodoro rhythm.
 
-<Example
-  name="Pomodoro"
-  code={PomodoroSource}
-  exampleId="timer"
-  framework="react"
-  kind="component"
-/>
+<Example name="Pomodoro" />
 
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this timer.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="timer"
-  framework="react"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Interval
 
 Fire on an interval when recurring ticks drive the UI.
 
-<Example
-  name="Interval"
-  code={IntervalSource}
-  exampleId="timer"
-  framework="react"
-  kind="component"
-/>
+<Example name="Interval" />
 
 ## Customization
 
@@ -146,10 +82,4 @@ Fire on an interval when recurring ticks drive the UI.
 
 Extend `timerRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="timer"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

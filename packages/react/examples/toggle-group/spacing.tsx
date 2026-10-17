@@ -1,4 +1,3 @@
-import source from "./spacing.tsx?raw";
 import { ToggleGroup } from "@pisagor/react";
 
 const items = [
@@ -18,5 +17,3 @@ export function Spacing() {
     />
   );
 }
-
-export { source as SpacingSource };

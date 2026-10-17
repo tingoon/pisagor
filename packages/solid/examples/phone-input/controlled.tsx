@@ -1,4 +1,3 @@
-import source from "./controlled.tsx?raw";
 import { Field } from "@pisagor/solid";
 import { PhoneInput } from "@pisagor/solid/phone-input";
 import { createSignal } from "solid-js";
@@ -20,5 +19,3 @@ export function Controlled() {
     </Field>
   );
 }
-
-export { source as ControlledSource };

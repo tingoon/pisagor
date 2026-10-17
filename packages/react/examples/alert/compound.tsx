@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { ChecksIcon } from "@phosphor-icons/react";
 import { Alert, Button } from "@pisagor/react";
 export function Compound() {
@@ -15,5 +14,3 @@ export function Compound() {
     </Alert.Root>
   );
 }
-
-export { source as CompoundSource };

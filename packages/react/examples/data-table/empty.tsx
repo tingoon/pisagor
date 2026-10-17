@@ -1,4 +1,3 @@
-import source from "./empty.tsx?raw";
 import { Badge, Table } from "@pisagor/react";
 import { type ColumnDef, DataTable } from "@pisagor/react/data-table";
 import { useMemo } from "react";
@@ -62,5 +61,3 @@ export function Empty() {
     </DataTable>
   );
 }
-
-export { source as EmptySource };

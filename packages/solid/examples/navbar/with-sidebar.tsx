@@ -1,4 +1,3 @@
-import source from "./with-sidebar.tsx?raw";
 import { Avatar, Button, Navbar, Sidebar } from "@pisagor/solid";
 import {
   BellIcon,
@@ -81,5 +80,3 @@ export function WithSidebar() {
     </Sidebar.Provider>
   );
 }
-
-export { source as WithSidebarSource };

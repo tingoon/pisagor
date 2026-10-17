@@ -1,4 +1,3 @@
-import source from "./autocomplete-field.tsx?raw";
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Autocomplete, Combobox, Field } from "@pisagor/solid";
@@ -49,5 +48,3 @@ export function AutocompleteField() {
     </Field>
   );
 }
-
-export { source as AutocompleteFieldSource };

@@ -1,10 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { VariantsSource } from "#examples/solid/kbd/variants.tsx";
-import { SizesSource } from "#examples/solid/kbd/sizes.tsx";
-import { KbdGroupSource } from "#examples/solid/kbd/kbd-group.tsx";
-import { WithButtonSource } from "#examples/solid/kbd/with-button.tsx";
-import { WithTooltipSource } from "#examples/solid/kbd/with-tooltip.tsx";
-import { CustomRecipeSource } from "#examples/solid/kbd/custom-recipe.tsx";
 
 ## Import
 
@@ -18,61 +12,31 @@ import { Kbd } from "@pisagor/solid";
 
 Choose visual weight or emphasis so the keyboard badge matches importance in the surrounding layout.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="kbd"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="kbd"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Kbd Group
 
 Group several keys when the shortcut is a chord.
 
-<Example
-  name="KbdGroup"
-  code={KbdGroupSource}
-  exampleId="kbd"
-  framework="solid"
-  kind="component"
-/>
+<Example name="KbdGroup" />
 
 ### With Button
 
 Place the badge next to a button that performs the same action.
 
-<Example
-  name="WithButton"
-  code={WithButtonSource}
-  exampleId="kbd"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithButton" />
 
 ### With Tooltip
 
 Explain the shortcut with a short tooltip when the keys alone are unclear.
 
-<Example
-  name="WithTooltip"
-  code={WithTooltipSource}
-  exampleId="kbd"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithTooltip" />
 
 ## Customization
 
@@ -80,10 +44,4 @@ Explain the shortcut with a short tooltip when the keys alone are unclear.
 
 Extend `kbdRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="kbd"
-  framework="solid"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

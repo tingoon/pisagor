@@ -1,4 +1,3 @@
-import source from "./sorting.tsx?raw";
 import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
 import { Badge, Table } from "@pisagor/react";
 import {
@@ -118,5 +117,3 @@ export function Sorting() {
     </DataTable>
   );
 }
-
-export { source as SortingSource };

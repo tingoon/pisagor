@@ -1,4 +1,3 @@
-import source from "./with-label.tsx?raw";
 import { Field, Slider } from "@pisagor/solid";
 export function WithLabel() {
   return (
@@ -7,5 +6,3 @@ export function WithLabel() {
     </Field>
   );
 }
-
-export { source as WithLabelSource };

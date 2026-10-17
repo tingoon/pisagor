@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./custom-recipe.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { tableRecipe } from "@pisagor/recipes";
 import { Badge, type BadgeVariant, Table } from "@pisagor/vue";

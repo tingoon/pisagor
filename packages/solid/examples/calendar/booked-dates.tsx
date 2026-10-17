@@ -1,4 +1,3 @@
-import source from "./booked-dates.tsx?raw";
 import { Calendar, Card } from "@pisagor/solid";
 export function BookedDates() {
   const isWeekend = (date: { year: number; month: number; day: number }) => {
@@ -24,5 +23,3 @@ export function BookedDates() {
     </Card>
   );
 }
-
-export { source as BookedDatesSource };

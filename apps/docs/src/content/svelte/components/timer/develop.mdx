@@ -1,14 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/timer/default.svelte?raw";
-import OrientationHorizontalSource from "#examples/svelte/timer/orientation-horizontal.svelte?raw";
-import OrientationVerticalSource from "#examples/svelte/timer/orientation-vertical.svelte?raw";
-import CustomSeparatorSource from "#examples/svelte/timer/custom-separator.svelte?raw";
-import CountdownSource from "#examples/svelte/timer/countdown.svelte?raw";
-import CountdownDateSource from "#examples/svelte/timer/countdown-date.svelte?raw";
-import PomodoroSource from "#examples/svelte/timer/pomodoro.svelte?raw";
-import ControlledSource from "#examples/svelte/timer/controlled.svelte?raw";
-import IntervalSource from "#examples/svelte/timer/interval.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/timer/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -36,109 +26,55 @@ import { Timer } from "@pisagor/svelte";
 
 Count elapsed time with start and reset controls.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="timer"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Orientation Horizontal
 
 Lay out the timer horizontally when items should read in a row.
 
-<Example
-  name="OrientationHorizontal"
-  code={OrientationHorizontalSource}
-  exampleId="timer"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="OrientationHorizontal" />
 
 ### Orientation Vertical
 
 Stack the timer vertically when items should read in a column.
 
-<Example
-  name="OrientationVertical"
-  code={OrientationVerticalSource}
-  exampleId="timer"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="OrientationVertical" />
 
 ### Custom Separator
 
 Override time separators when locale or brand needs different punctuation.
 
-<Example
-  name="CustomSeparator"
-  code={CustomSeparatorSource}
-  exampleId="timer"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomSeparator" />
 
 ### Countdown
 
 Count down toward zero when remaining time is the focus.
 
-<Example
-  name="Countdown"
-  code={CountdownSource}
-  exampleId="timer"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Countdown" />
 
 ### Countdown Date
 
 Count down to a specific date or time.
 
-<Example
-  name="CountdownDate"
-  code={CountdownDateSource}
-  exampleId="timer"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CountdownDate" />
 
 ### Pomodoro
 
 Run work-and-break cycles when the timer follows a pomodoro rhythm.
 
-<Example
-  name="Pomodoro"
-  code={PomodoroSource}
-  exampleId="timer"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Pomodoro" />
 
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this timer.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="timer"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Interval
 
 Fire on an interval when recurring ticks drive the UI.
 
-<Example
-  name="Interval"
-  code={IntervalSource}
-  exampleId="timer"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Interval" />
 
 ## Customization
 
@@ -146,10 +82,4 @@ Fire on an interval when recurring ticks drive the UI.
 
 Extend `timerRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="timer"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

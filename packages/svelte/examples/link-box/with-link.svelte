@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./with-link.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { LinkBox } from "@pisagor/svelte";
 </script>

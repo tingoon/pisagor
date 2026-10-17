@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./icon.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, Item } from "@pisagor/svelte";
   import ShieldWarningIcon from "phosphor-svelte/lib/ShieldWarningIcon";

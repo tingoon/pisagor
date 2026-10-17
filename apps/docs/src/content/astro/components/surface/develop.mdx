@@ -3,10 +3,6 @@ import Variants from "#examples/astro/surface/variants.astro";
 import Padding from "#examples/astro/surface/padding.astro";
 import Nested from "#examples/astro/surface/nested.astro";
 import CustomRecipe from "#examples/astro/surface/custom-recipe.astro";
-import VariantsSource from "#examples/astro/surface/variants.astro?raw";
-import PaddingSource from "#examples/astro/surface/padding.astro?raw";
-import NestedSource from "#examples/astro/surface/nested.astro?raw";
-import CustomRecipeSource from "#examples/astro/surface/custom-recipe.astro?raw";
 
 ## Import
 
@@ -20,13 +16,7 @@ import { Surface } from "@pisagor/astro";
 
 Choose surface elevation or tone to match hierarchy.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="surface"
-  framework="astro"
-  kind="component"
->
+<Example name="Variants">
   <Variants />
 </Example>
 
@@ -34,13 +24,7 @@ Choose surface elevation or tone to match hierarchy.
 
 Adjust padding to match the density of the surrounding layout.
 
-<Example
-  name="Padding"
-  code={PaddingSource}
-  exampleId="surface"
-  framework="astro"
-  kind="component"
->
+<Example name="Padding">
   <Padding />
 </Example>
 
@@ -48,13 +32,7 @@ Adjust padding to match the density of the surrounding layout.
 
 Nest another surface when hierarchy or layered structure is part of the content.
 
-<Example
-  name="Nested"
-  code={NestedSource}
-  exampleId="surface"
-  framework="astro"
-  kind="component"
->
+<Example name="Nested">
   <Nested />
 </Example>
 
@@ -64,12 +42,6 @@ Nest another surface when hierarchy or layered structure is part of the content.
 
 Extend `surfaceRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="surface"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomRecipe">
   <CustomRecipe />
 </Example>

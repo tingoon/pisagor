@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Button, Tour } from "@pisagor/solid";
 
 export function Default() {
@@ -28,5 +27,3 @@ export function Default() {
     </Tour>
   );
 }
-
-export { source as DefaultSource };

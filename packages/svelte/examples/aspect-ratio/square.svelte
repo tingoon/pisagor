@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./square.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { AspectRatio } from "@pisagor/svelte";
 </script>

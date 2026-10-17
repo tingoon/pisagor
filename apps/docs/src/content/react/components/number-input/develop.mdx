@@ -1,17 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { VariantsSource } from "#examples/react/number-input/variants.tsx";
-import { SizesSource } from "#examples/react/number-input/sizes.tsx";
-import { FormattedSource } from "#examples/react/number-input/formatted.tsx";
-import { FieldOnlySource } from "#examples/react/number-input/field-only.tsx";
-import { CompoundSource } from "#examples/react/number-input/compound.tsx";
-import { ControlledSource } from "#examples/react/number-input/controlled.tsx";
-import { DisabledSource } from "#examples/react/number-input/disabled.tsx";
-import { InvalidSource } from "#examples/react/number-input/invalid.tsx";
-import { RangeSource } from "#examples/react/number-input/range.tsx";
-import { StepSource } from "#examples/react/number-input/step.tsx";
-import { MouseWheelSource } from "#examples/react/number-input/mouse-wheel.tsx";
-import { ScrubSource } from "#examples/react/number-input/scrub.tsx";
-import { CustomRecipeSource } from "#examples/react/number-input/custom-recipe.tsx";
 
 ## Import
 
@@ -25,145 +12,73 @@ import { NumberInput } from "@pisagor/react";
 
 Choose visual weight or emphasis so the number input matches importance in the surrounding layout.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="number-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Match size to the surrounding layout — smaller in compact chrome, larger where the number input needs emphasis.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="number-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Formatted
 
 Display a formatted value when units or grouping aid reading.
 
-<Example
-  name="Formatted"
-  code={FormattedSource}
-  exampleId="number-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="Formatted" />
 
 ### Field Only
 
 Render the field without extra chrome when the surrounding layout provides labels.
 
-<Example
-  name="FieldOnly"
-  code={FieldOnlySource}
-  exampleId="number-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="FieldOnly" />
 
 ### Compound
 
 Compose the input and stepper triggers from parts when you need a custom layout.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="number-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this number input.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="number-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the number input is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="number-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation or error state so users know the number input needs attention before continuing.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="number-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ### Range
 
 Select a start and end value when the task needs a span rather than a single point.
 
-<Example
-  name="Range"
-  code={RangeSource}
-  exampleId="number-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="Range" />
 
 ### Step
 
 Snap changes to a step interval when values should move in fixed increments.
 
-<Example
-  name="Step"
-  code={StepSource}
-  exampleId="number-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="Step" />
 
 ### Mouse Wheel
 
 Adjust the value with the mouse wheel when rapid changes fit the task.
 
-<Example
-  name="MouseWheel"
-  code={MouseWheelSource}
-  exampleId="number-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="MouseWheel" />
 
 ### Scrub
 
 Scrub horizontally to change the value when precise dragging helps.
 
-<Example
-  name="Scrub"
-  code={ScrubSource}
-  exampleId="number-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="Scrub" />
 
 ## Customization
 
@@ -171,10 +86,4 @@ Scrub horizontally to change the value when precise dragging helps.
 
 Extend `numberInputRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="number-input"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

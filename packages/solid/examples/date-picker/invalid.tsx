@@ -1,4 +1,3 @@
-import source from "./invalid.tsx?raw";
 import { Calendar, DatePicker } from "@pisagor/solid";
 export function Invalid() {
   return (
@@ -19,5 +18,3 @@ export function Invalid() {
     </DatePicker>
   );
 }
-
-export { source as InvalidSource };

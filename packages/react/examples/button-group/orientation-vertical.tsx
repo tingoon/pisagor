@@ -1,4 +1,3 @@
-import source from "./orientation-vertical.tsx?raw";
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
 import { Button, ButtonGroup } from "@pisagor/react";
 export function OrientationVertical() {
@@ -13,5 +12,3 @@ export function OrientationVertical() {
     </ButtonGroup>
   );
 }
-
-export { source as OrientationVerticalSource };

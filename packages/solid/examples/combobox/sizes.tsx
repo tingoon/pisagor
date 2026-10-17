@@ -1,4 +1,3 @@
-import source from "./sizes.tsx?raw";
 import { Combobox } from "@pisagor/solid";
 
 const items = [
@@ -16,5 +15,3 @@ export function Sizes() {
     </div>
   );
 }
-
-export { source as SizesSource };

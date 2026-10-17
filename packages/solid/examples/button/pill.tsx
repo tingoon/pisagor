@@ -1,4 +1,3 @@
-import source from "./pill.tsx?raw";
 import { Button } from "@pisagor/solid";
 import { PlusIcon } from "@pisagor/solid/icons";
 
@@ -10,5 +9,3 @@ export function Pill() {
     </Button>
   );
 }
-
-export { source as PillSource };

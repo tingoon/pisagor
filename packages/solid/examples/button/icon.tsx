@@ -1,4 +1,3 @@
-import source from "./icon.tsx?raw";
 import { Button } from "@pisagor/solid";
 import { StarIcon } from "@pisagor/solid/icons";
 
@@ -9,5 +8,3 @@ export function Icon() {
     </Button>
   );
 }
-
-export { source as IconSource };

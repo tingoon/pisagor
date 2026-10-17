@@ -1,4 +1,3 @@
-import source from "./thickness.tsx?raw";
 import { CircularProgress } from "@pisagor/solid";
 
 export function Thickness() {
@@ -10,5 +9,3 @@ export function Thickness() {
     </div>
   );
 }
-
-export { source as ThicknessSource };

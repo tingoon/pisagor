@@ -1,4 +1,3 @@
-import source from "./multiple.tsx?raw";
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { Combobox } from "@pisagor/react";
 
@@ -35,5 +34,3 @@ export function Multiple() {
     </Combobox.Root>
   );
 }
-
-export { source as MultipleSource };

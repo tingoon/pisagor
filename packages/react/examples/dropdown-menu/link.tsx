@@ -1,4 +1,3 @@
-import source from "./link.tsx?raw";
 import { ArrowSquareOutIcon } from "@phosphor-icons/react";
 import { Button, DropdownMenu } from "@pisagor/react";
 export function Link() {
@@ -27,5 +26,3 @@ export function Link() {
     </DropdownMenu>
   );
 }
-
-export { source as LinkSource };

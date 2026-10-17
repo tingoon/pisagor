@@ -1,4 +1,3 @@
-import source from "./nested.tsx?raw";
 import { Button, Popover } from "@pisagor/solid";
 export function Nested() {
   return (
@@ -36,5 +35,3 @@ export function Nested() {
     </Popover>
   );
 }
-
-export { source as NestedSource };

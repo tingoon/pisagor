@@ -1,4 +1,3 @@
-import source from "./login-card.tsx?raw";
 import { GlobeIcon } from "@phosphor-icons/react";
 import { Button, Card, Field, Input } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
@@ -45,5 +44,3 @@ export function LoginCard({
     </Card>
   );
 }
-
-export { source as LoginCardSource };

@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./with-dialog.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhTrash, PhX } from "@phosphor-icons/vue";
 import { ActionBar, AlertDialog, Button } from "@pisagor/vue";

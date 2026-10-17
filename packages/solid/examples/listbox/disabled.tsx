@@ -1,4 +1,3 @@
-import source from "./disabled.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Item, Listbox } from "@pisagor/solid";
 export function Disabled() {
@@ -26,5 +25,3 @@ export function Disabled() {
     </Item.Group>
   );
 }
-
-export { source as DisabledSource };

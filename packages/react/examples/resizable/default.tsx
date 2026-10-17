@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Resizable } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
@@ -66,5 +65,3 @@ export function Default() {
     </ResizableFrame>
   );
 }
-
-export { source as DefaultSource };

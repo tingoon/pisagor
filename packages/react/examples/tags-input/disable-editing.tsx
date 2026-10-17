@@ -1,4 +1,3 @@
-import source from "./disable-editing.tsx?raw";
 import { Field, TagsInput } from "@pisagor/react";
 export function DisableEditing() {
   return (
@@ -22,5 +21,3 @@ export function DisableEditing() {
     </Field>
   );
 }
-
-export { source as DisableEditingSource };

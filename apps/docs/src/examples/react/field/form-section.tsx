@@ -1,4 +1,3 @@
-import source from "./form-section.tsx?raw";
 import { Button, Field, Input, Surface } from "@pisagor/react";
 import { formSectionBlock } from "#/recipes/blocks/field";
 
@@ -27,5 +26,3 @@ export function FormSection() {
     </Surface>
   );
 }
-
-export { source as FormSectionSource };

@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./swatch-picker-controlled.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { ColorPicker, parseColor } from "@pisagor/vue";
 import { computed, ref } from "vue";

@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./with-input-group.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhArrowRight } from "@phosphor-icons/vue";
 import { Field, InputGroup } from "@pisagor/vue";

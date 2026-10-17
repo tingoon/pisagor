@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./interval.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhPause, PhPlay } from "@phosphor-icons/vue";
 import { Button, Card, Timer } from "@pisagor/vue";

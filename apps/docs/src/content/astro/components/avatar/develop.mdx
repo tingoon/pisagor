@@ -4,11 +4,6 @@ import Sizes from "#examples/astro/avatar/sizes.astro";
 import Shapes from "#examples/astro/avatar/shapes.astro";
 import Fallbacks from "#examples/astro/avatar/fallbacks.astro";
 import CustomRecipe from "#examples/astro/avatar/custom-recipe.astro";
-import DefaultSource from "#examples/astro/avatar/default.astro?raw";
-import SizesSource from "#examples/astro/avatar/sizes.astro?raw";
-import ShapesSource from "#examples/astro/avatar/shapes.astro?raw";
-import FallbacksSource from "#examples/astro/avatar/fallbacks.astro?raw";
-import CustomRecipeSource from "#examples/astro/avatar/custom-recipe.astro?raw";
 
 ## Import
 
@@ -22,13 +17,7 @@ import { Avatar } from "@pisagor/astro";
 
 The standard avatar for a single person.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="avatar"
-  framework="astro"
-  kind="component"
->
+<Example name="Default">
   <Default />
 </Example>
 
@@ -36,13 +25,7 @@ The standard avatar for a single person.
 
 Match avatar size to list density — smaller in dense rows, larger in profiles.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="avatar"
-  framework="astro"
-  kind="component"
->
+<Example name="Sizes">
   <Sizes />
 </Example>
 
@@ -50,13 +33,7 @@ Match avatar size to list density — smaller in dense rows, larger in profiles.
 
 Choose round or squared geometry to match the surrounding visual language.
 
-<Example
-  name="Shapes"
-  code={ShapesSource}
-  exampleId="avatar"
-  framework="astro"
-  kind="component"
->
+<Example name="Shapes">
   <Shapes />
 </Example>
 
@@ -64,13 +41,7 @@ Choose round or squared geometry to match the surrounding visual language.
 
 Fall back to initials or an icon when no photo is available.
 
-<Example
-  name="Fallbacks"
-  code={FallbacksSource}
-  exampleId="avatar"
-  framework="astro"
-  kind="component"
->
+<Example name="Fallbacks">
   <Fallbacks />
 </Example>
 
@@ -80,12 +51,6 @@ Fall back to initials or an icon when no photo is available.
 
 Extend `avatarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="avatar"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomRecipe">
   <CustomRecipe />
 </Example>

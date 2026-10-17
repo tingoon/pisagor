@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./with-trend.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Stat } from "@pisagor/svelte";
   import ArrowDownIcon from "phosphor-svelte/lib/ArrowDownIcon";

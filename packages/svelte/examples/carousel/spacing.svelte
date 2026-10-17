@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./spacing.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Carousel } from "@pisagor/svelte";
   import { numberedSlides } from "./helpers";

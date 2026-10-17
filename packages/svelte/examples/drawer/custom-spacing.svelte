@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./custom-spacing.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, Drawer, Field, Input } from "@pisagor/svelte";
 </script>

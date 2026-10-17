@@ -1,4 +1,3 @@
-import source from "./collapsible.tsx?raw";
 import { Resizable } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
@@ -49,5 +48,3 @@ export function Collapsible() {
     </ResizableFrame>
   );
 }
-
-export { source as CollapsibleSource };

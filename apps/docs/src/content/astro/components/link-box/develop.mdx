@@ -2,9 +2,6 @@ import Example from "#/components/docs/example.astro";
 import Default from "#examples/astro/link-box/default.astro";
 import Article from "#examples/astro/link-box/article.astro";
 import WithLink from "#examples/astro/link-box/with-link.astro";
-import DefaultSource from "#examples/astro/link-box/default.astro?raw";
-import ArticleSource from "#examples/astro/link-box/article.astro?raw";
-import WithLinkSource from "#examples/astro/link-box/with-link.astro?raw";
 
 ## Import
 
@@ -26,13 +23,7 @@ import { LinkBox } from "@pisagor/astro";
 
 Make the whole surface clickable while nested controls stay usable.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="link-box"
-  framework="astro"
-  kind="component"
->
+<Example name="Default">
   <Default />
 </Example>
 
@@ -40,13 +31,7 @@ Make the whole surface clickable while nested controls stay usable.
 
 Wrap article-style content so the card navigates as one destination.
 
-<Example
-  name="Article"
-  code={ArticleSource}
-  exampleId="link-box"
-  framework="astro"
-  kind="component"
->
+<Example name="Article">
   <Article />
 </Example>
 
@@ -54,12 +39,6 @@ Wrap article-style content so the card navigates as one destination.
 
 Render the link box as or with a link when the control should navigate.
 
-<Example
-  name="WithLink"
-  code={WithLinkSource}
-  exampleId="link-box"
-  framework="astro"
-  kind="component"
->
+<Example name="WithLink">
   <WithLink />
 </Example>

@@ -1,4 +1,3 @@
-import source from "./single.tsx?raw";
 import { ToggleGroup } from "@pisagor/react";
 
 const items = [
@@ -10,5 +9,3 @@ const items = [
 export function Single() {
   return <ToggleGroup defaultValue={["bold"]} items={items} multiple={false} />;
 }
-
-export { source as SingleSource };

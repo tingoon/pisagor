@@ -1,4 +1,3 @@
-import source from "./search-field-button-group.tsx?raw";
 /** @jsxImportSource solid-js */
 import { Button, ButtonGroup, Input } from "@pisagor/solid";
 import { MagnifyingGlassIcon } from "@pisagor/solid/icons";
@@ -13,5 +12,3 @@ export function SearchFieldButtonGroup() {
     </ButtonGroup>
   );
 }
-
-export { source as SearchFieldButtonGroupSource };

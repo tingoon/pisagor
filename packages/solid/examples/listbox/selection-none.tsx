@@ -1,4 +1,3 @@
-import source from "./selection-none.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Item, Listbox, Separator } from "@pisagor/solid";
 import {
@@ -75,5 +74,3 @@ export function SelectionNone() {
     </Item.Group>
   );
 }
-
-export { source as SelectionNoneSource };

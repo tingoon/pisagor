@@ -1,4 +1,3 @@
-import source from "./vertical.tsx?raw";
 import { Separator } from "@pisagor/solid";
 
 export function Vertical() {
@@ -12,5 +11,3 @@ export function Vertical() {
     </div>
   );
 }
-
-export { source as VerticalSource };

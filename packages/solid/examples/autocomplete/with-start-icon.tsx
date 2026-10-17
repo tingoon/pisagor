@@ -1,4 +1,3 @@
-import source from "./with-start-icon.tsx?raw";
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Autocomplete, InputGroup } from "@pisagor/solid";
@@ -40,5 +39,3 @@ export function WithStartIcon() {
     </Autocomplete.Root>
   );
 }
-
-export { source as WithStartIconSource };

@@ -1,4 +1,3 @@
-import source from "./icon.tsx?raw";
 import { Steps } from "@pisagor/solid";
 import { CreditCardIcon, HardDriveIcon, UserIcon } from "@pisagor/solid/icons";
 
@@ -25,5 +24,3 @@ export function Icon() {
     </Steps>
   );
 }
-
-export { source as IconSource };

@@ -1,6 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/solid/provider/default.tsx";
-import { MessagesSource } from "#examples/solid/provider/messages.tsx";
 
 ## Import
 
@@ -14,22 +12,10 @@ import { Provider } from "@pisagor/solid";
 
 Wrap the app once so locale, icons, and toasts are shared by child components.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="provider"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Translations
 
 Override built-in labels (aria labels, empty states, button text) by key. Every key has an English default in `defaultMessages` from `@pisagor/utils`; the `translations` you pass are merged over it, so a partial object is enough. Keys are typed as `MessageKey`, so they autocomplete.
 
-<Example
-  name="Messages"
-  code={MessagesSource}
-  exampleId="provider"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Messages" />

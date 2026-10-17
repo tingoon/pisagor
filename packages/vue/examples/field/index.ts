@@ -13,7 +13,6 @@ export { default as RadioGroupField } from "./radio-group-field.vue";
 export { default as RequiredField } from "./required-field.vue";
 export { default as SelectField } from "./select-field.vue";
 export { default as SliderField } from "./slider-field.vue";
-export { imports, sources } from "./sources";
 export { default as SwitchField } from "./switch-field.vue";
 export { default as TextareaField } from "./textarea-field.vue";
 export { default as WithError } from "./with-error.vue";

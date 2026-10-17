@@ -1,4 +1,3 @@
-import source from "./checkbox-tree.tsx?raw";
 import type { TreeNodeType } from "@pisagor/solid";
 import { createTreeCollection, TreeView } from "@pisagor/solid";
 import { createSignal } from "solid-js";
@@ -83,5 +82,3 @@ export function CheckboxTree() {
     </div>
   );
 }
-
-export { source as CheckboxTreeSource };

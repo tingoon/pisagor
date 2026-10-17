@@ -1,4 +1,3 @@
-import source from "./grid.tsx?raw";
 import { createGridCollection } from "@ark-ui/solid/collection";
 import { Item, Listbox } from "@pisagor/solid";
 import { For, type JSX } from "solid-js";
@@ -56,5 +55,3 @@ export function Grid() {
     </Item.Group>
   );
 }
-
-export { source as GridSource };

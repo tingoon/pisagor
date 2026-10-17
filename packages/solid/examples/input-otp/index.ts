@@ -8,6 +8,5 @@ export * from "./invalid";
 export * from "./mask";
 export * from "./separator";
 export * from "./sizes";
-export { imports, sources } from "./sources";
 export * from "./variants";
 export * from "./with-placeholder";

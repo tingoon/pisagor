@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./link.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Item } from "@pisagor/svelte";
   import ArrowSquareOutIcon from "phosphor-svelte/lib/ArrowSquareOutIcon";

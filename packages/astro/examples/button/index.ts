@@ -6,6 +6,5 @@ export { default as Loading } from "./loading.astro";
 export { default as NoClickEffect } from "./no-click-effect.astro";
 export { default as Pill } from "./pill.astro";
 export { default as Sizes } from "./sizes.astro";
-export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.astro";
 export { default as WithIcon } from "./with-icon.astro";

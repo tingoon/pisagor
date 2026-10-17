@@ -1,4 +1,3 @@
-import source from "./search-query.tsx?raw";
 import { Highlight, Input } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function SearchQuery() {
@@ -32,5 +31,3 @@ export function SearchQuery() {
     </div>
   );
 }
-
-export { source as SearchQuerySource };

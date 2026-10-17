@@ -1,4 +1,3 @@
-import source from "./with-form-controls.tsx?raw";
 import { Field, Frame, Input, Switch } from "@pisagor/react";
 
 export function WithFormControls() {
@@ -29,5 +28,3 @@ export function WithFormControls() {
     </Frame>
   );
 }
-
-export { source as WithFormControlsSource };

@@ -1,4 +1,3 @@
-import source from "./fallback.tsx?raw";
 import { ClientOnly } from "@pisagor/react";
 
 export function Fallback() {
@@ -23,5 +22,3 @@ export function Fallback() {
     </ClientOnly>
   );
 }
-
-export { source as FallbackSource };

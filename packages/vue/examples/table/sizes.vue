@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./sizes.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Table } from "@pisagor/vue";
 import { workspaceUsers } from "./helpers";

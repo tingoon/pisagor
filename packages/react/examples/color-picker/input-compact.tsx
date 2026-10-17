@@ -1,4 +1,3 @@
-import source from "./input-compact.tsx?raw";
 import { PercentIcon } from "@phosphor-icons/react";
 import { ColorPicker, InputGroup, parseColor, Separator } from "@pisagor/react";
 export function InputCompact() {
@@ -45,5 +44,3 @@ export function InputCompact() {
     </ColorPicker>
   );
 }
-
-export { source as InputCompactSource };

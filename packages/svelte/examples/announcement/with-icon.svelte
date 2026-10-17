@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./with-icon.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Announcement, Badge } from "@pisagor/svelte";
   import SparkleIcon from "phosphor-svelte/lib/SparkleIcon";

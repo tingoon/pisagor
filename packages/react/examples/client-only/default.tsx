@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { ClientOnly } from "@pisagor/react";
 
 export function Default() {
@@ -10,5 +9,3 @@ export function Default() {
     </ClientOnly>
   );
 }
-
-export { source as DefaultSource };

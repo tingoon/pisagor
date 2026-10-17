@@ -9,16 +9,6 @@ import ByteUnitSystem from "#examples/astro/format/byte-unit-system.astro";
 import ByteUnitDisplay from "#examples/astro/format/byte-unit-display.astro";
 import RelativeTime from "#examples/astro/format/relative-time.astro";
 import RelativeTimeShort from "#examples/astro/format/relative-time-short.astro";
-import DefaultSource from "#examples/astro/format/default.astro?raw";
-import NumberStorySource from "#examples/astro/format/number-story.astro?raw";
-import NumberCurrencySource from "#examples/astro/format/number-currency.astro?raw";
-import NumberPercentSource from "#examples/astro/format/number-percent.astro?raw";
-import NumberCompactSource from "#examples/astro/format/number-compact.astro?raw";
-import ByteSource from "#examples/astro/format/byte.astro?raw";
-import ByteUnitSystemSource from "#examples/astro/format/byte-unit-system.astro?raw";
-import ByteUnitDisplaySource from "#examples/astro/format/byte-unit-display.astro?raw";
-import RelativeTimeSource from "#examples/astro/format/relative-time.astro?raw";
-import RelativeTimeShortSource from "#examples/astro/format/relative-time-short.astro?raw";
 
 ## Import
 
@@ -32,13 +22,7 @@ import { Format } from "@pisagor/astro";
 
 Format a value for readable display.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="format"
-  framework="astro"
-  kind="component"
->
+<Example name="Default">
   <Default />
 </Example>
 
@@ -46,13 +30,7 @@ Format a value for readable display.
 
 Format a general number for display.
 
-<Example
-  name="NumberStory"
-  code={NumberStorySource}
-  exampleId="format"
-  framework="astro"
-  kind="component"
->
+<Example name="NumberStory">
   <NumberStory />
 </Example>
 
@@ -60,13 +38,7 @@ Format a general number for display.
 
 Format money with the correct currency style.
 
-<Example
-  name="NumberCurrency"
-  code={NumberCurrencySource}
-  exampleId="format"
-  framework="astro"
-  kind="component"
->
+<Example name="NumberCurrency">
   <NumberCurrency />
 </Example>
 
@@ -74,13 +46,7 @@ Format money with the correct currency style.
 
 Format a ratio as a percentage.
 
-<Example
-  name="NumberPercent"
-  code={NumberPercentSource}
-  exampleId="format"
-  framework="astro"
-  kind="component"
->
+<Example name="NumberPercent">
   <NumberPercent />
 </Example>
 
@@ -88,13 +54,7 @@ Format a ratio as a percentage.
 
 Shorten large numbers when space is tight.
 
-<Example
-  name="NumberCompact"
-  code={NumberCompactSource}
-  exampleId="format"
-  framework="astro"
-  kind="component"
->
+<Example name="NumberCompact">
   <NumberCompact />
 </Example>
 
@@ -102,13 +62,7 @@ Shorten large numbers when space is tight.
 
 Format a byte size for storage and download labels.
 
-<Example
-  name="Byte"
-  code={ByteSource}
-  exampleId="format"
-  framework="astro"
-  kind="component"
->
+<Example name="Byte">
   <Byte />
 </Example>
 
@@ -116,13 +70,7 @@ Format a byte size for storage and download labels.
 
 Switch between binary and decimal byte systems.
 
-<Example
-  name="ByteUnitSystem"
-  code={ByteUnitSystemSource}
-  exampleId="format"
-  framework="astro"
-  kind="component"
->
+<Example name="ByteUnitSystem">
   <ByteUnitSystem />
 </Example>
 
@@ -130,13 +78,7 @@ Switch between binary and decimal byte systems.
 
 Choose how byte units are labeled in the output.
 
-<Example
-  name="ByteUnitDisplay"
-  code={ByteUnitDisplaySource}
-  exampleId="format"
-  framework="astro"
-  kind="component"
->
+<Example name="ByteUnitDisplay">
   <ByteUnitDisplay />
 </Example>
 
@@ -144,13 +86,7 @@ Choose how byte units are labeled in the output.
 
 Show a fuller relative time such as 2 hours ago.
 
-<Example
-  name="RelativeTime"
-  code={RelativeTimeSource}
-  exampleId="format"
-  framework="astro"
-  kind="component"
->
+<Example name="RelativeTime">
   <RelativeTime />
 </Example>
 
@@ -158,12 +94,6 @@ Show a fuller relative time such as 2 hours ago.
 
 Show a short relative time such as 2h.
 
-<Example
-  name="RelativeTimeShort"
-  code={RelativeTimeShortSource}
-  exampleId="format"
-  framework="astro"
-  kind="component"
->
+<Example name="RelativeTimeShort">
   <RelativeTimeShort />
 </Example>

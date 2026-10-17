@@ -1,4 +1,3 @@
-import source from "./clearable.tsx?raw";
 import { ColorPicker, Field, InputGroup } from "@pisagor/react";
 import { useState } from "react";
 export function Clearable() {
@@ -36,5 +35,3 @@ export function Clearable() {
     </div>
   );
 }
-
-export { source as ClearableSource };

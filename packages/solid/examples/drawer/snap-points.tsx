@@ -1,4 +1,3 @@
-import source from "./snap-points.tsx?raw";
 import { Button, Drawer } from "@pisagor/solid";
 export function SnapPoints() {
   return (
@@ -31,5 +30,3 @@ export function SnapPoints() {
     </Drawer>
   );
 }
-
-export { source as SnapPointsSource };

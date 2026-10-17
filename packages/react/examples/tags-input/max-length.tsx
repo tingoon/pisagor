@@ -1,4 +1,3 @@
-import source from "./max-length.tsx?raw";
 import { Field, TagsInput } from "@pisagor/react";
 export function MaxLength() {
   return (
@@ -18,5 +17,3 @@ export function MaxLength() {
     </Field>
   );
 }
-
-export { source as MaxLengthSource };

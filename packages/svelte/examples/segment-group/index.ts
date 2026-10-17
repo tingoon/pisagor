@@ -9,5 +9,4 @@ export { default as IndicatorOnHover } from "./indicator-on-hover.svelte";
 export { default as OrientationHorizontal } from "./orientation-horizontal.svelte";
 export { default as OrientationVertical } from "./orientation-vertical.svelte";
 export { default as Sizes } from "./sizes.svelte";
-export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.svelte";

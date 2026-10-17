@@ -1,12 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/solid/command/default.tsx";
-import { GroupsSource } from "#examples/solid/command/groups.tsx";
-import { ShortcutsSource } from "#examples/solid/command/shortcuts.tsx";
-import { WithFooterSource } from "#examples/solid/command/with-footer.tsx";
-import { ScrollableSource } from "#examples/solid/command/scrollable.tsx";
-import { ShorthandSource } from "#examples/solid/command/shorthand.tsx";
-import { WithDialogSource } from "#examples/solid/command/with-dialog.tsx";
-import { CustomRecipeSource } from "#examples/solid/command/custom-recipe.tsx";
 
 ## Import
 
@@ -39,85 +31,43 @@ import { Command } from "@pisagor/solid";
 
 Open a searchable palette for actions, pages, or settings.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="command"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Groups
 
 Group commands under labels so long palettes stay scannable.
 
-<Example
-  name="Groups"
-  code={GroupsSource}
-  exampleId="command"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Groups" />
 
 ### Shortcuts
 
 Show keyboard shortcuts beside commands for faster recall.
 
-<Example
-  name="Shortcuts"
-  code={ShortcutsSource}
-  exampleId="command"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Shortcuts" />
 
 ### With Footer
 
 Add a footer for hints or secondary actions under the command list.
 
-<Example
-  name="WithFooter"
-  code={WithFooterSource}
-  exampleId="command"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithFooter" />
 
 ### Scrollable
 
 Allow the command list to scroll when items exceed the panel height.
 
-<Example
-  name="Scrollable"
-  code={ScrollableSource}
-  exampleId="command"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Scrollable" />
 
 ### Shorthand
 
 Pass `items` to `Command.Shorthand` for a filtered, grouped list without composing parts.
 
-<Example
-  name="Shorthand"
-  code={ShorthandSource}
-  exampleId="command"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Shorthand" />
 
 ### With Dialog
 
 Host the palette in a dialog when it should take focus as a modal layer.
 
-<Example
-  name="WithDialog"
-  code={WithDialogSource}
-  exampleId="command"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithDialog" />
 
 ## Customization
 
@@ -125,10 +75,4 @@ Host the palette in a dialog when it should take focus as a modal layer.
 
 Extend `commandRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="command"
-  framework="solid"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

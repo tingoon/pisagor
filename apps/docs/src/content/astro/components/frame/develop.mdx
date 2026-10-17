@@ -3,10 +3,6 @@ import Default from "#examples/astro/frame/default.astro";
 import Sizes from "#examples/astro/frame/sizes.astro";
 import SeparatedPanels from "#examples/astro/frame/separated-panels.astro";
 import CustomRecipe from "#examples/astro/frame/custom-recipe.astro";
-import DefaultSource from "#examples/astro/frame/default.astro?raw";
-import SizesSource from "#examples/astro/frame/sizes.astro?raw";
-import SeparatedPanelsSource from "#examples/astro/frame/separated-panels.astro?raw";
-import CustomRecipeSource from "#examples/astro/frame/custom-recipe.astro?raw";
 
 ## Import
 
@@ -33,13 +29,7 @@ import { Frame } from "@pisagor/astro";
 
 Embed content inside consistent framed chrome.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="frame"
-  framework="astro"
-  kind="component"
->
+<Example name="Default">
   <Default />
 </Example>
 
@@ -47,13 +37,7 @@ Embed content inside consistent framed chrome.
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="frame"
-  framework="astro"
-  kind="component"
->
+<Example name="Sizes">
   <Sizes />
 </Example>
 
@@ -61,13 +45,7 @@ Use `size` to pick the sm, md or lg scale. `md` is the default.
 
 Show multiple framed regions when the workspace splits embeds.
 
-<Example
-  name="SeparatedPanels"
-  code={SeparatedPanelsSource}
-  exampleId="frame"
-  framework="astro"
-  kind="component"
->
+<Example name="SeparatedPanels">
   <SeparatedPanels />
 </Example>
 
@@ -77,12 +55,6 @@ Show multiple framed regions when the workspace splits embeds.
 
 Extend `frameRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="frame"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomRecipe">
   <CustomRecipe />
 </Example>

@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { bottomNavigationRecipe } from "@pisagor/recipes";
 import { BottomNavigation, ScrollArea } from "@pisagor/solid";
 import {
@@ -52,5 +51,3 @@ export function CustomRecipe() {
     </div>
   );
 }
-
-export { source as CustomRecipeSource };

@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { Tabs } from "@pisagor/solid";
 
 export function Compound() {
@@ -30,5 +29,3 @@ export function Compound() {
     </Tabs.Root>
   );
 }
-
-export { source as CompoundSource };

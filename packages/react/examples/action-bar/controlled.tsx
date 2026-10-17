@@ -1,4 +1,3 @@
-import source from "./controlled.tsx?raw";
 import {
   ArchiveIcon,
   DownloadIcon,
@@ -48,5 +47,3 @@ export function Controlled() {
     </ActionBar>
   );
 }
-
-export { source as ControlledSource };

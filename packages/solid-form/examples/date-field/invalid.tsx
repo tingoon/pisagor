@@ -1,4 +1,3 @@
-import source from "./invalid.tsx?raw";
 import { DateField } from "@pisagor/solid-form";
 
 export function Invalid() {
@@ -11,5 +10,3 @@ export function Invalid() {
     />
   );
 }
-
-export { source as InvalidSource };

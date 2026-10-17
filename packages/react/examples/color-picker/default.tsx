@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { ColorPicker, InputGroup } from "@pisagor/react";
 export function Default() {
   return (
@@ -34,5 +33,3 @@ export function Default() {
     </ColorPicker>
   );
 }
-
-export { source as DefaultSource };

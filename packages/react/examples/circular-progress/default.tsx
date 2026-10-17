@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { CircularProgress } from "@pisagor/react";
 import { useEffect, useState } from "react";
 
@@ -12,5 +11,3 @@ export function Default() {
 
   return <CircularProgress value={progress} />;
 }
-
-export { source as DefaultSource };

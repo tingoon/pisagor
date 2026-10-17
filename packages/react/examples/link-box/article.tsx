@@ -1,4 +1,3 @@
-import source from "./article.tsx?raw";
 import { LinkBox } from "@pisagor/react";
 
 export function Article() {
@@ -24,5 +23,3 @@ export function Article() {
     </LinkBox>
   );
 }
-
-export { source as ArticleSource };

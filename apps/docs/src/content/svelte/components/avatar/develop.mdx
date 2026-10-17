@@ -1,13 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/avatar/default.svelte?raw";
-import SizesSource from "#examples/svelte/avatar/sizes.svelte?raw";
-import ShapesSource from "#examples/svelte/avatar/shapes.svelte?raw";
-import CountSource from "#examples/svelte/avatar/count.svelte?raw";
-import FallbacksSource from "#examples/svelte/avatar/fallbacks.svelte?raw";
-import InitialsSource from "#examples/svelte/avatar/initials.svelte?raw";
-import GroupSource from "#examples/svelte/avatar/avatar-group.svelte?raw";
-import CompoundSource from "#examples/svelte/avatar/compound.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/avatar/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -21,97 +12,49 @@ import { Avatar } from "@pisagor/svelte";
 
 The standard avatar for a single person.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="avatar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Sizes
 
 Match avatar size to list density — smaller in dense rows, larger in profiles.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="avatar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Shapes
 
 Choose round or squared geometry to match the surrounding visual language.
 
-<Example
-  name="Shapes"
-  code={ShapesSource}
-  exampleId="avatar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Shapes" />
 
 ### Count
 
 Show how many people are represented when listing everyone would take too much space.
 
-<Example
-  name="Count"
-  code={CountSource}
-  exampleId="avatar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Count" />
 
 ### Fallbacks
 
 Fall back to initials or an icon when no photo is available.
 
-<Example
-  name="Fallbacks"
-  code={FallbacksSource}
-  exampleId="avatar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Fallbacks" />
 
 ### Initials
 
 Pass `name` to derive initials when no `fallback` is set. The name is also used as the image alt text.
 
-<Example
-  name="Initials"
-  code={InitialsSource}
-  exampleId="avatar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Initials" />
 
 ### Group
 
 Overlap several avatars in a row for shared ownership or participants.
 
-<Example
-  name="Group"
-  code={GroupSource}
-  exampleId="avatar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Group" />
 
 ### Compound
 
 Compose `AvatarGroup.Root` with `Avatar` children when each avatar needs its own props.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="avatar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ## Customization
 
@@ -119,10 +62,4 @@ Compose `AvatarGroup.Root` with `Avatar` children when each avatar needs its own
 
 Extend `avatarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="avatar"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

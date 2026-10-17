@@ -4,11 +4,6 @@ import Sizes from "#examples/astro/empty-state/sizes.astro";
 import Compact from "#examples/astro/empty-state/compact.astro";
 import Compound from "#examples/astro/empty-state/compound.astro";
 import CustomRecipe from "#examples/astro/empty-state/custom-recipe.astro";
-import DefaultSource from "#examples/astro/empty-state/default.astro?raw";
-import SizesSource from "#examples/astro/empty-state/sizes.astro?raw";
-import CompactSource from "#examples/astro/empty-state/compact.astro?raw";
-import CompoundSource from "#examples/astro/empty-state/compound.astro?raw";
-import CustomRecipeSource from "#examples/astro/empty-state/custom-recipe.astro?raw";
 
 ## Import
 
@@ -22,13 +17,7 @@ import { EmptyState } from "@pisagor/astro";
 
 Explain that a view has no data and point to the next action.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="empty-state"
-  framework="astro"
-  kind="component"
->
+<Example name="Default">
   <Default />
 </Example>
 
@@ -36,13 +25,7 @@ Explain that a view has no data and point to the next action.
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="empty-state"
-  framework="astro"
-  kind="component"
->
+<Example name="Sizes">
   <Sizes />
 </Example>
 
@@ -50,13 +33,7 @@ Use `size` to pick the sm, md or lg scale. `md` is the default.
 
 Use a denser empty state when the region is small.
 
-<Example
-  name="Compact"
-  code={CompactSource}
-  exampleId="empty-state"
-  framework="astro"
-  kind="component"
->
+<Example name="Compact">
   <Compact />
 </Example>
 
@@ -64,13 +41,7 @@ Use a denser empty state when the region is small.
 
 Compose icon, title, and actions from parts for a custom empty layout.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="empty-state"
-  framework="astro"
-  kind="component"
->
+<Example name="Compound">
   <Compound />
 </Example>
 
@@ -80,12 +51,6 @@ Compose icon, title, and actions from parts for a custom empty layout.
 
 Extend `emptyStateRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="empty-state"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomRecipe">
   <CustomRecipe />
 </Example>

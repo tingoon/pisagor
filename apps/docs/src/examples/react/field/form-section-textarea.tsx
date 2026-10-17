@@ -1,4 +1,3 @@
-import source from "./form-section-textarea.tsx?raw";
 import { Button, Card, Field, Textarea } from "@pisagor/react";
 import type { SubmitEvent } from "react";
 import { useState } from "react";
@@ -53,5 +52,3 @@ export function FormSectionTextarea() {
     </Card>
   );
 }
-
-export { source as FormSectionTextareaSource };

@@ -1,4 +1,3 @@
-import source from "./sorting.tsx?raw";
 import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
 import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Checkbox, Table } from "@pisagor/react";
@@ -258,5 +257,3 @@ export function Sorting() {
     </DataGridShell>
   );
 }
-
-export { source as SortingSource };

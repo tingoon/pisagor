@@ -1,12 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/react/accordion/default.tsx";
-import { SizesSource } from "#examples/react/accordion/sizes.tsx";
-import { MultipleSource } from "#examples/react/accordion/multiple.tsx";
-import { NonCollapsibleSource } from "#examples/react/accordion/non-collapsible.tsx";
-import { CompoundSource } from "#examples/react/accordion/compound.tsx";
-import { WithCardSource } from "#examples/react/accordion/with-card.tsx";
-import { ControlledSource } from "#examples/react/accordion/controlled.tsx";
-import { DisabledSource } from "#examples/react/accordion/disabled.tsx";
 
 ## Import
 
@@ -20,94 +12,46 @@ import { Accordion } from "@pisagor/react";
 
 A single expandable section for grouping related content under a heading.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="accordion"
-  framework="react"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Sizes
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="accordion"
-  framework="react"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Multiple
 
 Allow several sections open at once when users compare content across panels.
 
-<Example
-  name="Multiple"
-  code={MultipleSource}
-  exampleId="accordion"
-  framework="react"
-  kind="component"
-/>
+<Example name="Multiple" />
 
 ### Non-collapsible
 
 Keep at least one section open when collapsing everything would hide required content.
 
-<Example
-  name="NonCollapsible"
-  code={NonCollapsibleSource}
-  exampleId="accordion"
-  framework="react"
-  kind="component"
-/>
+<Example name="NonCollapsible" />
 
 ### Compound
 
 Compose trigger and content parts when you need a custom section layout.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="accordion"
-  framework="react"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### With Card
 
 Place accordion sections inside a card surface when the group should read as one unit.
 
-<Example
-  name="WithCard"
-  code={WithCardSource}
-  exampleId="accordion"
-  framework="react"
-  kind="component"
-/>
+<Example name="WithCard" />
 
 ### Controlled
 
 Drive open state from the parent when other UI depends on which section is expanded.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="accordion"
-  framework="react"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that a section cannot be opened.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="accordion"
-  framework="react"
-  kind="component"
-/>
+<Example name="Disabled" />

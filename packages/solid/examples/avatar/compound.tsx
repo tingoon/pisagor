@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { Avatar, AvatarGroup } from "@pisagor/solid";
 
 const users = [
@@ -36,5 +35,3 @@ export function Compound() {
     </AvatarGroup.Root>
   );
 }
-
-export { source as CompoundSource };

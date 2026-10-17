@@ -1,4 +1,3 @@
-import source from "./disabled.tsx?raw";
 import { TagsInput } from "@pisagor/solid";
 import { For } from "solid-js";
 
@@ -19,5 +18,3 @@ export function Disabled() {
     </TagsInput>
   );
 }
-
-export { source as DisabledSource };

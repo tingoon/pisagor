@@ -1,6 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/react/client-only/default.tsx";
-import { FallbackSource } from "#examples/react/client-only/fallback.tsx";
 
 ## Import
 
@@ -14,22 +12,10 @@ import { ClientOnly } from "@pisagor/react";
 
 Render children only after the component mounts in the browser.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="client-only"
-  framework="react"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Fallback
 
 Show fallback content during server render and hydration so the layout does not collapse.
 
-<Example
-  name="Fallback"
-  code={FallbackSource}
-  exampleId="client-only"
-  framework="react"
-  kind="component"
-/>
+<Example name="Fallback" />

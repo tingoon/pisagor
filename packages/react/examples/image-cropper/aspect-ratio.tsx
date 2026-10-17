@@ -1,4 +1,3 @@
-import source from "./aspect-ratio.tsx?raw";
 import { ImageCropper } from "@pisagor/react";
 
 export function AspectRatio() {
@@ -12,5 +11,3 @@ export function AspectRatio() {
     </ImageCropper>
   );
 }
-
-export { source as AspectRatioSource };

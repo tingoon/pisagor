@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./label-accessory.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Badge, Field, Input } from "@pisagor/vue";
 import { labelAccessoryBlock } from "#/recipes/blocks/field";

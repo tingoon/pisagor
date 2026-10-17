@@ -1,4 +1,3 @@
-import source from "./clearable.tsx?raw";
 import { CalendarIcon } from "@phosphor-icons/react";
 import { Button, DatePicker, Field, parseDate } from "@pisagor/react";
 import { useState } from "react";
@@ -35,5 +34,3 @@ export function Clearable() {
     </div>
   );
 }
-
-export { source as ClearableSource };

@@ -1,4 +1,3 @@
-import source from "./with-icon.tsx?raw";
 import { Toggle } from "@pisagor/solid";
 import { TextBIcon } from "@pisagor/solid/icons";
 
@@ -9,5 +8,3 @@ export function WithIcon() {
     </Toggle>
   );
 }
-
-export { source as WithIconSource };

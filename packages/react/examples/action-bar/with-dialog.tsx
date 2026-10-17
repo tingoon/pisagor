@@ -1,4 +1,3 @@
-import source from "./with-dialog.tsx?raw";
 import { TrashIcon, XIcon } from "@phosphor-icons/react";
 import { ActionBar, AlertDialog, Button } from "@pisagor/react";
 export function WithDialog() {
@@ -42,5 +41,3 @@ export function WithDialog() {
     </ActionBar>
   );
 }
-
-export { source as WithDialogSource };

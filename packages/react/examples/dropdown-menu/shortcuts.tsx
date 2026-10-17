@@ -1,4 +1,3 @@
-import source from "./shortcuts.tsx?raw";
 import {
   CopyIcon,
   GearIcon,
@@ -38,5 +37,3 @@ export function Shortcuts() {
     </DropdownMenu>
   );
 }
-
-export { source as ShortcutsSource };

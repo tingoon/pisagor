@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./custom-color.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Alert } from "@pisagor/svelte";
   import MagicWandIcon from "phosphor-svelte/lib/MagicWandIcon";

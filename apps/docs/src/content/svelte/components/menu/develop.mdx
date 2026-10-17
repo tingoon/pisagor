@@ -1,7 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/menu/default.svelte?raw";
-import WithGroupsSource from "#examples/svelte/menu/with-groups.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/menu/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -29,25 +26,13 @@ import { Menu } from "@pisagor/svelte";
 
 An always-visible list of navigation links or actions.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="menu"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### With Groups
 
 Group related items so long menus stay scannable.
 
-<Example
-  name="WithGroups"
-  code={WithGroupsSource}
-  exampleId="menu"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithGroups" />
 
 ## Customization
 
@@ -55,10 +40,4 @@ Group related items so long menus stay scannable.
 
 Extend `menuRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="menu"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

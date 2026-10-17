@@ -1,4 +1,3 @@
-import source from "./controlled-size.tsx?raw";
 import { GearSixIcon, XIcon } from "@phosphor-icons/react";
 import { Button, FloatingPanel } from "@pisagor/react";
 import { useState } from "react";
@@ -67,5 +66,3 @@ export function ControlledSize() {
     </FloatingPanel>
   );
 }
-
-export { source as ControlledSizeSource };

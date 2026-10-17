@@ -1,4 +1,3 @@
-import source from "./inspectors.tsx?raw";
 import { AppShell } from "@pisagor/react";
 import { mainContent, regionTitle } from "./helpers";
 
@@ -47,5 +46,3 @@ export function Inspectors() {
     </AppShell>
   );
 }
-
-export { source as InspectorsSource };

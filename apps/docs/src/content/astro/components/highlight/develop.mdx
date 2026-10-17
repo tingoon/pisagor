@@ -3,10 +3,6 @@ import Default from "#examples/astro/highlight/default.astro";
 import Multiple from "#examples/astro/highlight/multiple.astro";
 import CustomStyle from "#examples/astro/highlight/custom-style.astro";
 import CustomRecipe from "#examples/astro/highlight/custom-recipe.astro";
-import DefaultSource from "#examples/astro/highlight/default.astro?raw";
-import MultipleSource from "#examples/astro/highlight/multiple.astro?raw";
-import CustomStyleSource from "#examples/astro/highlight/custom-style.astro?raw";
-import CustomRecipeSource from "#examples/astro/highlight/custom-recipe.astro?raw";
 
 ## Import
 
@@ -20,13 +16,7 @@ import { Highlight } from "@pisagor/astro";
 
 Emphasize matching substrings in text.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="highlight"
-  framework="astro"
-  kind="component"
->
+<Example name="Default">
   <Default />
 </Example>
 
@@ -34,13 +24,7 @@ Emphasize matching substrings in text.
 
 Allow more than one open or selected item when users need several at once.
 
-<Example
-  name="Multiple"
-  code={MultipleSource}
-  exampleId="highlight"
-  framework="astro"
-  kind="component"
->
+<Example name="Multiple">
   <Multiple />
 </Example>
 
@@ -52,13 +36,7 @@ Pass `class` for a one-off change to a single element.
 
 Override highlight style when brand treatment differs from the default.
 
-<Example
-  name="CustomStyle"
-  code={CustomStyleSource}
-  exampleId="highlight"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomStyle">
   <CustomStyle />
 </Example>
 
@@ -66,12 +44,6 @@ Override highlight style when brand treatment differs from the default.
 
 Extend `highlightRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="highlight"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomRecipe">
   <CustomRecipe />
 </Example>

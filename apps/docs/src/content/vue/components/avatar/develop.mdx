@@ -1,13 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/avatar/default.vue?raw";
-import SizesSource from "#examples/vue/avatar/sizes.vue?raw";
-import ShapesSource from "#examples/vue/avatar/shapes.vue?raw";
-import CountSource from "#examples/vue/avatar/count.vue?raw";
-import FallbacksSource from "#examples/vue/avatar/fallbacks.vue?raw";
-import InitialsSource from "#examples/vue/avatar/initials.vue?raw";
-import GroupSource from "#examples/vue/avatar/avatar-group.vue?raw";
-import CompoundSource from "#examples/vue/avatar/compound.vue?raw";
-import CustomRecipeSource from "#examples/vue/avatar/custom-recipe.vue?raw";
 
 ## Import
 
@@ -21,97 +12,49 @@ import { Avatar } from "@pisagor/vue";
 
 The standard avatar for a single person.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="avatar"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Sizes
 
 Match avatar size to list density — smaller in dense rows, larger in profiles.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="avatar"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Shapes
 
 Choose round or squared geometry to match the surrounding visual language.
 
-<Example
-  name="Shapes"
-  code={ShapesSource}
-  exampleId="avatar"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Shapes" />
 
 ### Count
 
 Show how many people are represented when listing everyone would take too much space.
 
-<Example
-  name="Count"
-  code={CountSource}
-  exampleId="avatar"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Count" />
 
 ### Fallbacks
 
 Fall back to initials or an icon when no photo is available.
 
-<Example
-  name="Fallbacks"
-  code={FallbacksSource}
-  exampleId="avatar"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Fallbacks" />
 
 ### Initials
 
 Pass `name` to derive initials when no `fallback` is set. The name is also used as the image alt text.
 
-<Example
-  name="Initials"
-  code={InitialsSource}
-  exampleId="avatar"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Initials" />
 
 ### Group
 
 Overlap several avatars in a row for shared ownership or participants.
 
-<Example
-  name="Group"
-  code={GroupSource}
-  exampleId="avatar"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Group" />
 
 ### Compound
 
 Compose `AvatarGroup.Root` with `Avatar` children when each avatar needs its own props.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="avatar"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ## Customization
 
@@ -119,10 +62,4 @@ Compose `AvatarGroup.Root` with `Avatar` children when each avatar needs its own
 
 Extend `avatarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="avatar"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

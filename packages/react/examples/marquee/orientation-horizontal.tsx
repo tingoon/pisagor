@@ -1,4 +1,3 @@
-import source from "./orientation-horizontal.tsx?raw";
 import {
   ArrowRightIcon,
   AtomIcon,
@@ -37,5 +36,3 @@ const items = marqueeIcons.map((IconComponent) => (
 export function OrientationHorizontal() {
   return <Marquee items={items} orientation="horizontal" />;
 }
-
-export { source as OrientationHorizontalSource };

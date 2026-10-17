@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Button, Editable } from "@pisagor/solid";
 
 export function Default() {
@@ -34,5 +33,3 @@ export function Default() {
     </Editable>
   );
 }
-
-export { source as DefaultSource };

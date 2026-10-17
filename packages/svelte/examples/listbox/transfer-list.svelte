@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./transfer-list.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { createListCollection } from "@ark-ui/svelte/collection";
   import { Button, Item, Listbox } from "@pisagor/svelte";

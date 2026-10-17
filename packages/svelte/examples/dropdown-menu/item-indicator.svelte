@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./item-indicator.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { DropdownMenu } from "@pisagor/svelte";
 </script>

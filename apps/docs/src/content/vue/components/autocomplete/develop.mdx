@@ -1,16 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/autocomplete/default.vue?raw";
-import VariantsSource from "#examples/vue/autocomplete/variants.vue?raw";
-import SizesSource from "#examples/vue/autocomplete/sizes.vue?raw";
-import WithStartIconSource from "#examples/vue/autocomplete/with-start-icon.vue?raw";
-import WithClearButtonSource from "#examples/vue/autocomplete/with-clear-button.vue?raw";
-import WithTriggerSource from "#examples/vue/autocomplete/with-trigger.vue?raw";
-import GroupSource from "#examples/vue/autocomplete/group.vue?raw";
-import CompoundSource from "#examples/vue/autocomplete/compound.vue?raw";
-import ControlledSource from "#examples/vue/autocomplete/controlled.vue?raw";
-import DisabledSource from "#examples/vue/autocomplete/disabled.vue?raw";
-import InvalidSource from "#examples/vue/autocomplete/invalid.vue?raw";
-import CustomRecipeSource from "#examples/vue/autocomplete/custom-recipe.vue?raw";
 
 ## Import
 
@@ -24,133 +12,67 @@ import { Autocomplete } from "@pisagor/vue";
 
 Type to filter and pick one suggestion from a long list.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="autocomplete"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Variants
 
 Choose field emphasis to match other inputs in the form.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="autocomplete"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Match field size to surrounding form density.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="autocomplete"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### With Start Icon
 
 Add a leading icon to signal search or category.
 
-<Example
-  name="WithStartIcon"
-  code={WithStartIconSource}
-  exampleId="autocomplete"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithStartIcon" />
 
 ### With Clear Button
 
 Let users clear the query and selection in one press.
 
-<Example
-  name="WithClearButton"
-  code={WithClearButtonSource}
-  exampleId="autocomplete"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithClearButton" />
 
 ### With Trigger
 
 Open the list from an explicit trigger when typing alone is not the only entry point.
 
-<Example
-  name="WithTrigger"
-  code={WithTriggerSource}
-  exampleId="autocomplete"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithTrigger" />
 
 ### Grouped
 
 Group suggestions so related options are easier to scan.
 
-<Example
-  name="Group"
-  code={GroupSource}
-  exampleId="autocomplete"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Group" />
 
 ### Compound
 
 Assemble from parts when you need a custom layout beyond the shorthand API.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="autocomplete"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Controlled
 
 Drive value and open state from the parent when other UI depends on the selection.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="autocomplete"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that suggestions cannot be opened.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="autocomplete"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation error when the value is missing or not allowed.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="autocomplete"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ## Customization
 
@@ -158,10 +80,4 @@ Surface a validation error when the value is missing or not allowed.
 
 Extend `comboboxRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="autocomplete"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

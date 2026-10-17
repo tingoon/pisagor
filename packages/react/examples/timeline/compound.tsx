@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { CheckCircleIcon, CircleIcon, RocketIcon } from "@phosphor-icons/react";
 import { Timeline } from "@pisagor/react";
 
@@ -38,5 +37,3 @@ export function Compound() {
     </Timeline.Root>
   );
 }
-
-export { source as CompoundSource };

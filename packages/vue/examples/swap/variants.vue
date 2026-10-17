@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./variants.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhMoon, PhSun } from "@phosphor-icons/vue";
 import { Button, Swap } from "@pisagor/vue";

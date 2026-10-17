@@ -1,4 +1,3 @@
-import source from "./main.tsx?raw";
 import { AppShell } from "@pisagor/solid";
 import { For } from "solid-js";
 import { loremParagraphs, regionTitle } from "./helpers";
@@ -19,5 +18,3 @@ export function Main() {
     </AppShell>
   );
 }
-
-export { source as MainSource };

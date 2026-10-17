@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { NavigationMenu } from "@pisagor/react";
 
 export function Default() {
@@ -23,5 +22,3 @@ export function Default() {
     </NavigationMenu>
   );
 }
-
-export { source as DefaultSource };

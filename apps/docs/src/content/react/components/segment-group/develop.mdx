@@ -1,16 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/react/segment-group/default.tsx";
-import { VariantsSource } from "#examples/react/segment-group/variants.tsx";
-import { SizesSource } from "#examples/react/segment-group/sizes.tsx";
-import { OrientationHorizontalSource } from "#examples/react/segment-group/orientation-horizontal.tsx";
-import { OrientationVerticalSource } from "#examples/react/segment-group/orientation-vertical.tsx";
-import { CompoundSource } from "#examples/react/segment-group/compound.tsx";
-import { ControlledSource } from "#examples/react/segment-group/controlled.tsx";
-import { DisabledSource } from "#examples/react/segment-group/disabled.tsx";
-import { DisabledItemSource } from "#examples/react/segment-group/disabled-item.tsx";
-import { IndicatorOnHoverSource } from "#examples/react/segment-group/indicator-on-hover.tsx";
-import { CustomIndicatorSource } from "#examples/react/segment-group/custom-indicator.tsx";
-import { CustomRecipeSource } from "#examples/react/segment-group/custom-recipe.tsx";
 
 ## Import
 
@@ -24,121 +12,61 @@ import { SegmentGroup } from "@pisagor/react";
 
 Switch between a few related modes in one compact control.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="segment-group"
-  framework="react"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Variants
 
 Choose visual weight or emphasis so the segment group matches importance in the surrounding layout.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="segment-group"
-  framework="react"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="segment-group"
-  framework="react"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Orientation Horizontal
 
 Lay out the segment group horizontally when items should read in a row.
 
-<Example
-  name="OrientationHorizontal"
-  code={OrientationHorizontalSource}
-  exampleId="segment-group"
-  framework="react"
-  kind="component"
-/>
+<Example name="OrientationHorizontal" />
 
 ### Orientation Vertical
 
 Stack the segment group vertically when items should read in a column.
 
-<Example
-  name="OrientationVertical"
-  code={OrientationVerticalSource}
-  exampleId="segment-group"
-  framework="react"
-  kind="component"
-/>
+<Example name="OrientationVertical" />
 
 ### Compound
 
 Assemble from parts when you need a custom layout beyond the shorthand API.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="segment-group"
-  framework="react"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this segment group.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="segment-group"
-  framework="react"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the segment group is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="segment-group"
-  framework="react"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Disabled Item
 
 Show that a specific segment is unavailable.
 
-<Example
-  name="DisabledItem"
-  code={DisabledItemSource}
-  exampleId="segment-group"
-  framework="react"
-  kind="component"
-/>
+<Example name="DisabledItem" />
 
 ### Indicator On Hover
 
 Preview the indicator on hover when discovering segments should feel responsive.
 
-<Example
-  name="IndicatorOnHover"
-  code={IndicatorOnHoverSource}
-  exampleId="segment-group"
-  framework="react"
-  kind="component"
-/>
+<Example name="IndicatorOnHover" />
 
 ## Customization
 
@@ -148,22 +76,10 @@ Pass `className` for a one-off change to a single element.
 
 Customize the active indicator when brand motion or shape differs from the default.
 
-<Example
-  name="CustomIndicator"
-  code={CustomIndicatorSource}
-  exampleId="segment-group"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomIndicator" />
 
 ### Custom recipe
 
 Extend `segmentGroupRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="segment-group"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

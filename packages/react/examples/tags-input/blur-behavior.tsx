@@ -1,4 +1,3 @@
-import source from "./blur-behavior.tsx?raw";
 import { Field, TagsInput } from "@pisagor/react";
 export function BlurBehavior() {
   return (
@@ -18,5 +17,3 @@ export function BlurBehavior() {
     </Field>
   );
 }
-
-export { source as BlurBehaviorSource };

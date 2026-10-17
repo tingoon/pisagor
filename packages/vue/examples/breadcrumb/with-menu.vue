@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./with-menu.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Breadcrumb, Button, DropdownMenu } from "@pisagor/vue";
 </script>

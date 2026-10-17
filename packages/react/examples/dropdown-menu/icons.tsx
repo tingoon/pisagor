@@ -1,4 +1,3 @@
-import source from "./icons.tsx?raw";
 import { CopyIcon, PencilIcon, ShareIcon } from "@phosphor-icons/react";
 import { Button, DropdownMenu } from "@pisagor/react";
 export function Icons() {
@@ -24,5 +23,3 @@ export function Icons() {
     </DropdownMenu>
   );
 }
-
-export { source as IconsSource };

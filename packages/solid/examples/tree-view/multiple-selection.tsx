@@ -1,4 +1,3 @@
-import source from "./multiple-selection.tsx?raw";
 import type { NodeProviderProps } from "@pisagor/solid";
 import { createTreeCollection, TreeView } from "@pisagor/solid";
 export function MultipleSelection() {
@@ -62,5 +61,3 @@ export function MultipleSelection() {
     </div>
   );
 }
-
-export { source as MultipleSelectionSource };

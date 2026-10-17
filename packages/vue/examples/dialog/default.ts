@@ -1,4 +1,3 @@
-import source from "./default.ts?raw";
 import { Button, Dialog } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
@@ -34,5 +33,3 @@ export default defineComponent({
       ]);
   },
 });
-
-export { source };

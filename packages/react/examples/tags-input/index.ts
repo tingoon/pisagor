@@ -11,7 +11,6 @@ export * from "./max-with-overflow";
 export * from "./paste-behavior";
 export * from "./sanitize-value";
 export * from "./sizes";
-export { imports, sources } from "./sources";
 export * from "./validation";
 export * from "./variants";
 export * from "./with-combobox";

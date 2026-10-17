@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./custom-recipe.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { comboboxRecipe } from "@pisagor/recipes";
   import { Combobox } from "@pisagor/svelte";

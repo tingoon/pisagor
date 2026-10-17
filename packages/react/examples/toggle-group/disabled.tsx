@@ -1,4 +1,3 @@
-import source from "./disabled.tsx?raw";
 import { ToggleGroup } from "@pisagor/react";
 
 const items = [
@@ -12,5 +11,3 @@ export function Disabled() {
     <ToggleGroup defaultValue={["bold"]} disabled items={items} multiple />
   );
 }
-
-export { source as DisabledSource };

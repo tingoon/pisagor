@@ -1,4 +1,3 @@
-import source from "./grouping.tsx?raw";
 import { createListCollection } from "@ark-ui/react";
 import { Select } from "@pisagor/react";
 
@@ -33,5 +32,3 @@ export function Grouping() {
     </Select.Root>
   );
 }
-
-export { source as GroupingSource };

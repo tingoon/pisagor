@@ -9,6 +9,5 @@ export * from "./mouse-wheel";
 export * from "./range";
 export * from "./scrub";
 export * from "./sizes";
-export { imports, sources } from "./sources";
 export * from "./step";
 export * from "./variants";

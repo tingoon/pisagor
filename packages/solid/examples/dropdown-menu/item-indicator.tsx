@@ -1,4 +1,3 @@
-import source from "./item-indicator.tsx?raw";
 import { Button, DropdownMenu } from "@pisagor/solid";
 
 export function ItemIndicator() {
@@ -28,5 +27,3 @@ export function ItemIndicator() {
     </DropdownMenu>
   );
 }
-
-export { source as ItemIndicatorSource };

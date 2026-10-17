@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./popover-disabled.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, ColorPicker } from "@pisagor/svelte";
 </script>

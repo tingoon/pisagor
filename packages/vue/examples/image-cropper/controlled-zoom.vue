@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./controlled-zoom.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import {
   PhMagnifyingGlassMinus,

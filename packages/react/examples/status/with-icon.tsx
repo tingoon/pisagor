@@ -1,9 +1,6 @@
-import source from "./with-icon.tsx?raw";
 import { PlusIcon } from "@phosphor-icons/react";
 import { Status } from "@pisagor/react";
 
 export function WithIcon() {
   return <Status size="lg">{<PlusIcon />}</Status>;
 }
-
-export { source as WithIconSource };

@@ -1,4 +1,3 @@
-import source from "./image-explorer.tsx?raw";
 import { createListCollection } from "@ark-ui/react";
 import { Listbox } from "@pisagor/react";
 import { useState } from "react";
@@ -65,5 +64,3 @@ export function ImageExplorer() {
     </div>
   );
 }
-
-export { source as ImageExplorerSource };

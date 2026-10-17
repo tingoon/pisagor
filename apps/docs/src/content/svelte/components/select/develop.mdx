@@ -1,17 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/select/default.svelte?raw";
-import VariantsSource from "#examples/svelte/select/variants.svelte?raw";
-import SizesSource from "#examples/svelte/select/sizes.svelte?raw";
-import MultipleSource from "#examples/svelte/select/multiple.svelte?raw";
-import GroupingSource from "#examples/svelte/select/grouping.svelte?raw";
-import WithScrollSource from "#examples/svelte/select/with-scroll.svelte?raw";
-import EmptySource from "#examples/svelte/select/empty.svelte?raw";
-import CompoundSource from "#examples/svelte/select/compound.svelte?raw";
-import ControlledSource from "#examples/svelte/select/controlled.svelte?raw";
-import DisabledSource from "#examples/svelte/select/disabled.svelte?raw";
-import InvalidSource from "#examples/svelte/select/invalid.svelte?raw";
-import MaxSelectionSource from "#examples/svelte/select/max-selection.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/select/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -25,145 +12,73 @@ import { Select } from "@pisagor/svelte";
 
 Choose one option from a dropdown list.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="select"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Variants
 
 Choose visual weight or emphasis so the select matches importance in the surrounding layout.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="select"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Match size to the surrounding layout — smaller in compact chrome, larger where the select needs emphasis.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="select"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Multiple
 
 Allow more than one open or selected item when users need several at once.
 
-<Example
-  name="Multiple"
-  code={MultipleSource}
-  exampleId="select"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Multiple" />
 
 ### Grouped
 
 Group options under labels for long lists.
 
-<Example
-  name="Grouping"
-  code={GroupingSource}
-  exampleId="select"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Grouping" />
 
 ### With Scroll
 
 Add scrolling when the list of items can grow beyond the available height.
 
-<Example
-  name="WithScroll"
-  code={WithScrollSource}
-  exampleId="select"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithScroll" />
 
 ### Empty
 
 Show an empty list presentation when there are no options yet.
 
-<Example
-  name="Empty"
-  code={EmptySource}
-  exampleId="select"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Empty" />
 
 ### Compound
 
 Assemble from parts when you need a custom layout beyond the shorthand API.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="select"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this select.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="select"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the select is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="select"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation or error state so users know the select needs attention before continuing.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="select"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ### Max Selection
 
 Cap how many options can be selected in multi-select mode.
 
-<Example
-  name="MaxSelection"
-  code={MaxSelectionSource}
-  exampleId="select"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="MaxSelection" />
 
 ## Customization
 
@@ -171,10 +86,4 @@ Cap how many options can be selected in multi-select mode.
 
 Extend `selectRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="select"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

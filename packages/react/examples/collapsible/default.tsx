@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Badge, Button, Card, Collapsible } from "@pisagor/react";
 export function Default() {
   return (
@@ -54,5 +53,3 @@ export function Default() {
     </Card>
   );
 }
-
-export { source as DefaultSource };

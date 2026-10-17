@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./separator.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { DataList } from "@pisagor/vue";
 

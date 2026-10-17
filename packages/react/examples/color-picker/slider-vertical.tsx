@@ -1,4 +1,3 @@
-import source from "./slider-vertical.tsx?raw";
 import { ColorPicker } from "@pisagor/react";
 
 export function SliderVertical() {
@@ -12,5 +11,3 @@ export function SliderVertical() {
     </ColorPicker>
   );
 }
-
-export { source as SliderVerticalSource };

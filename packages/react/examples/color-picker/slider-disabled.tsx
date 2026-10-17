@@ -1,4 +1,3 @@
-import source from "./slider-disabled.tsx?raw";
 import { ColorPicker } from "@pisagor/react";
 
 export function SliderDisabled() {
@@ -10,5 +9,3 @@ export function SliderDisabled() {
     </ColorPicker>
   );
 }
-
-export { source as SliderDisabledSource };

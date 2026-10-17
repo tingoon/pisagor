@@ -1,4 +1,3 @@
-import source from "./download.tsx?raw";
 import { Button, Card, Input, QrCode } from "@pisagor/solid";
 import { DownloadIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";
@@ -79,5 +78,3 @@ export function Download() {
     </QrCode>
   );
 }
-
-export { source as DownloadSource };

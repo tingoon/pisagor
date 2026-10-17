@@ -1,4 +1,3 @@
-import source from "./with-groups.ts?raw";
 import { PhArchive, PhHouse, PhMagnifyingGlass } from "@phosphor-icons/vue";
 import { Menu } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
@@ -30,5 +29,3 @@ export default defineComponent({
       ]);
   },
 });
-
-export { source };

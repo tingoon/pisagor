@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import {
   ArrowRightIcon,
   AtomIcon,
@@ -40,5 +39,3 @@ export function Compound() {
     </Marquee.Root>
   );
 }
-
-export { source as CompoundSource };

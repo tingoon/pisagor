@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { emptyStateRecipe } from "@pisagor/recipes";
 import { Button, EmptyState } from "@pisagor/solid";
 import { MagnifyingGlassIcon } from "@pisagor/solid/icons";
@@ -29,5 +28,3 @@ export function CustomRecipe() {
     />
   );
 }
-
-export { source as CustomRecipeSource };

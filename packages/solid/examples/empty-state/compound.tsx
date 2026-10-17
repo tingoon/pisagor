@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { Button, EmptyState } from "@pisagor/solid";
 import { MagnifyingGlassIcon } from "@pisagor/solid/icons";
 export function Compound() {
@@ -19,5 +18,3 @@ export function Compound() {
     </EmptyState.Root>
   );
 }
-
-export { source as CompoundSource };

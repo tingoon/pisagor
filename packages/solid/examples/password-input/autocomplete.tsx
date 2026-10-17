@@ -1,4 +1,3 @@
-import source from "./autocomplete.tsx?raw";
 import { PasswordInput } from "@pisagor/solid";
 
 export function Autocomplete() {
@@ -9,5 +8,3 @@ export function Autocomplete() {
     </div>
   );
 }
-
-export { source as AutocompleteSource };

@@ -1,4 +1,3 @@
-import source from "./custom-recipe.ts?raw";
 import { dialogRecipe } from "@pisagor/recipes";
 import { Button, Dialog } from "@pisagor/vue";
 import { tv } from "tailwind-variants";
@@ -46,5 +45,3 @@ export default defineComponent({
       ]);
   },
 });
-
-export { source };

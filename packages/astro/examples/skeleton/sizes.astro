@@ -2,8 +2,7 @@
 import { Skeleton } from "@pisagor/astro";
 
 const sizes = ["sm", "md", "lg"] as const;
-import source from "./sizes.astro?raw";
-export { source };
+export type { source };
 ---
 
 <div class="flex flex-col gap-4">

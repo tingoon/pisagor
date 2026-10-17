@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./messages.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Breadcrumb, Provider } from "@pisagor/svelte";
 </script>

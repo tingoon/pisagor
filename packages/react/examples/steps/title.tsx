@@ -1,4 +1,3 @@
-import source from "./title.tsx?raw";
 import { Steps } from "@pisagor/react";
 
 export function Title() {
@@ -19,5 +18,3 @@ export function Title() {
     </Steps>
   );
 }
-
-export { source as TitleSource };

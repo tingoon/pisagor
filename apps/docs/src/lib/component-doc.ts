@@ -11,14 +11,8 @@ export type SkillMdModule = {
   getHeadings: () => { depth: number; slug: string; text: string }[];
 };
 
-/**
- * Example module for docs SSR. Non-Astro pages load `sources.ts` (raw code
- * only). Astro loads `index.ts` (sources + live components for SSR previews).
- */
-export type ExampleModule = {
-  sources: Record<string, string>;
-  imports?: string;
-} & Record<string, unknown>;
+/** Example barrel (`index.ts`) — live components for previews / Astro SSR. */
+export type ExampleModule = Record<string, unknown>;
 
 export type ComponentDocKind = "component" | "form";
 
@@ -183,31 +177,31 @@ const examplesByFramework: Record<Framework, ExampleLoaderMap> = {
     "../../../../packages/astro/examples/*/index.ts",
   ),
   react: import.meta.glob<ExampleModule>(
-    "../../../../packages/react/examples/*/sources.ts",
+    "../../../../packages/react/examples/*/index.ts",
   ),
   solid: import.meta.glob<ExampleModule>(
-    "../../../../packages/solid/examples/*/sources.ts",
+    "../../../../packages/solid/examples/*/index.ts",
   ),
   svelte: import.meta.glob<ExampleModule>(
-    "../../../../packages/svelte/examples/*/sources.ts",
+    "../../../../packages/svelte/examples/*/index.ts",
   ),
   vue: import.meta.glob<ExampleModule>(
-    "../../../../packages/vue/examples/*/sources.ts",
+    "../../../../packages/vue/examples/*/index.ts",
   ),
 };
 
 const formExamplesByFramework: Partial<Record<Framework, ExampleLoaderMap>> = {
   react: import.meta.glob<ExampleModule>(
-    "../../../../packages/react-form/examples/*/sources.ts",
+    "../../../../packages/react-form/examples/*/index.ts",
   ),
   solid: import.meta.glob<ExampleModule>(
-    "../../../../packages/solid-form/examples/*/sources.ts",
+    "../../../../packages/solid-form/examples/*/index.ts",
   ),
   svelte: import.meta.glob<ExampleModule>(
-    "../../../../packages/svelte-form/examples/*/sources.ts",
+    "../../../../packages/svelte-form/examples/*/index.ts",
   ),
   vue: import.meta.glob<ExampleModule>(
-    "../../../../packages/vue-form/examples/*/sources.ts",
+    "../../../../packages/vue-form/examples/*/index.ts",
   ),
 };
 
@@ -485,11 +479,10 @@ export async function loadExamples(
   if (!modules) {
     throw new Error(`No examples glob for ${framework}/${kind}`);
   }
-  const file = framework === "astro" ? "index.ts" : "sources.ts";
-  const key = findGlobKey(modules, `/examples/${id}/${file}`);
+  const key = findGlobKey(modules, `/examples/${id}/index.ts`);
   const loader = key ? modules[key] : undefined;
   const mod = loader ? await loader() : undefined;
-  if (!mod?.sources) {
+  if (!mod) {
     throw new Error(`Missing ${framework} examples for "${id}"`);
   }
   return mod;
@@ -507,17 +500,21 @@ export function loadProps(id: string): PropRow[] | null {
   return rows as PropRow[];
 }
 
-/** Ensure develop markdown `exportName` has a matching `sources` key. */
+/** Ensure develop markdown `exportName` has a matching live example export. */
 export function assertExampleSource(
   examples: ExampleModule,
   exportName: string,
 ): void {
-  if (exportName === "sources" || exportName === "imports") {
+  if (
+    exportName === "sources" ||
+    exportName === "imports" ||
+    exportName.endsWith("Source")
+  ) {
     throw new Error(`Invalid example exportName "${exportName}"`);
   }
-  if (typeof examples.sources[exportName] !== "string") {
-    throw new Error(`Missing example source "${exportName}"`);
-  }
+  const live = examples[exportName];
+  if (live != null && typeof live !== "string") return;
+  throw new Error(`Missing example export "${exportName}"`);
 }
 
 /** Resolve a named example export for live Astro SSR preview. */

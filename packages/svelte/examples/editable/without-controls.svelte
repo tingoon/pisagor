@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./without-controls.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Card, Editable, Field } from "@pisagor/svelte";
 </script>

@@ -1,15 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/react/tabs/default.tsx";
-import { VariantsSource } from "#examples/react/tabs/variants.tsx";
-import { SizesSource } from "#examples/react/tabs/sizes.tsx";
-import { OrientationHorizontalSource } from "#examples/react/tabs/orientation-horizontal.tsx";
-import { OrientationVerticalSource } from "#examples/react/tabs/orientation-vertical.tsx";
-import { WithoutIndicatorSource } from "#examples/react/tabs/without-indicator.tsx";
-import { WithIconsSource } from "#examples/react/tabs/with-icons.tsx";
-import { CompoundSource } from "#examples/react/tabs/compound.tsx";
-import { ControlledSource } from "#examples/react/tabs/controlled.tsx";
-import { DisabledSource } from "#examples/react/tabs/disabled.tsx";
-import { CustomRecipeSource } from "#examples/react/tabs/custom-recipe.tsx";
 
 ## Import
 
@@ -23,121 +12,61 @@ import { Tabs } from "@pisagor/react";
 
 Switch between related panels without leaving the page.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="tabs"
-  framework="react"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Variants
 
 Choose tab emphasis to match the surface.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="tabs"
-  framework="react"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="tabs"
-  framework="react"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Orientation Horizontal
 
 Lay tabs in a row for the common panel switcher.
 
-<Example
-  name="OrientationHorizontal"
-  code={OrientationHorizontalSource}
-  exampleId="tabs"
-  framework="react"
-  kind="component"
-/>
+<Example name="OrientationHorizontal" />
 
 ### Orientation Vertical
 
 Stack tabs vertically when the layout favors a side rail.
 
-<Example
-  name="OrientationVertical"
-  code={OrientationVerticalSource}
-  exampleId="tabs"
-  framework="react"
-  kind="component"
-/>
+<Example name="OrientationVertical" />
 
 ### Without Indicator
 
 Hide the moving indicator when triggers style the active state on their own.
 
-<Example
-  name="WithoutIndicator"
-  code={WithoutIndicatorSource}
-  exampleId="tabs"
-  framework="react"
-  kind="component"
-/>
+<Example name="WithoutIndicator" />
 
 ### With Icons
 
 Lead tabs with icons when symbols speed recognition.
 
-<Example
-  name="WithIcons"
-  code={WithIconsSource}
-  exampleId="tabs"
-  framework="react"
-  kind="component"
-/>
+<Example name="WithIcons" />
 
 ### Compound
 
 Compose tab list and panels from parts for a custom layout.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="tabs"
-  framework="react"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Controlled
 
 Drive the active tab from the parent when other UI depends on it.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="tabs"
-  framework="react"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the tabs is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="tabs"
-  framework="react"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ## Customization
 
@@ -145,10 +74,4 @@ Show that the tabs is unavailable.
 
 Extend `tabsRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="tabs"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

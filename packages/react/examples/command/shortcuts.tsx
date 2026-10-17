@@ -1,4 +1,3 @@
-import source from "./shortcuts.tsx?raw";
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { Command } from "@pisagor/react";
 
@@ -38,5 +37,3 @@ export function Shortcuts() {
     </Command>
   );
 }
-
-export { source as ShortcutsSource };

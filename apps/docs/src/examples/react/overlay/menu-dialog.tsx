@@ -1,4 +1,3 @@
-import source from "./menu-dialog.tsx?raw";
 import { Portal } from "@ark-ui/react/portal";
 import { GearIcon, InfoIcon, UserIcon } from "@phosphor-icons/react";
 import { Button, Dialog, DropdownMenu } from "@pisagor/react";
@@ -65,5 +64,3 @@ export function MenuDialog() {
     </>
   );
 }
-
-export { source as MenuDialogSource };

@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./auto-hide.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { PasswordInput } from "@pisagor/svelte";
 

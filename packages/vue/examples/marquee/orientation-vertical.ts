@@ -1,4 +1,3 @@
-import source from "./orientation-vertical.ts?raw";
 import {
   PhArrowRight,
   PhAtom,
@@ -45,5 +44,3 @@ export default defineComponent({
       });
   },
 });
-
-export { source };

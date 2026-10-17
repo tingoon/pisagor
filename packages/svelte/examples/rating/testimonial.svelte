@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./testimonial.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Avatar, Card, Rating } from "@pisagor/svelte";
 </script>

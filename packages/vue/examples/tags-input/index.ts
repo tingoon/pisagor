@@ -11,7 +11,6 @@ export { default as MaxWithOverflow } from "./max-with-overflow.vue";
 export { default as PasteBehavior } from "./paste-behavior.vue";
 export { default as SanitizeValue } from "./sanitize-value.vue";
 export { default as Sizes } from "./sizes.vue";
-export { imports, sources } from "./sources";
 export { default as Validation } from "./validation.vue";
 export { default as Variants } from "./variants.vue";
 export { default as WithCombobox } from "./with-combobox.vue";

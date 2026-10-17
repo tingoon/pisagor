@@ -1,4 +1,3 @@
-import source from "./with-context-menu.tsx?raw";
 import {
   FilePlusIcon,
   FolderPlusIcon,
@@ -110,5 +109,3 @@ export function WithContextMenu() {
     </div>
   );
 }
-
-export { source as WithContextMenuSource };

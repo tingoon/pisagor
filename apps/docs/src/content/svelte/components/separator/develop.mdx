@@ -1,10 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/separator/default.svelte?raw";
-import VerticalSource from "#examples/svelte/separator/vertical.svelte?raw";
-import ListSource from "#examples/svelte/separator/list.svelte?raw";
-import InlineNavigationSource from "#examples/svelte/separator/inline-navigation.svelte?raw";
-import DecorativeSource from "#examples/svelte/separator/decorative.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/separator/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -18,49 +12,25 @@ import { Separator } from "@pisagor/svelte";
 
 Divide related groups of content.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="separator"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Vertical
 
 Use a vertical layout when the separator should read top to bottom.
 
-<Example
-  name="Vertical"
-  code={VerticalSource}
-  exampleId="separator"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Vertical" />
 
 ### List
 
 Separate list sections so groups stay scannable.
 
-<Example
-  name="List"
-  code={ListSource}
-  exampleId="separator"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="List" />
 
 ### Inline Navigation
 
 Separate inline nav items without looking like a heavy rule.
 
-<Example
-  name="InlineNavigation"
-  code={InlineNavigationSource}
-  exampleId="separator"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="InlineNavigation" />
 
 ## Customization
 
@@ -68,22 +38,10 @@ Separate inline nav items without looking like a heavy rule.
 
 Hide purely visual separators from assistive technology.
 
-<Example
-  name="Decorative"
-  code={DecorativeSource}
-  exampleId="separator"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Decorative" />
 
 ### Custom recipe
 
 Extend `separatorRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="separator"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

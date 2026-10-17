@@ -1,4 +1,3 @@
-import source from "./with-icon.tsx?raw";
 import { TextBIcon } from "@phosphor-icons/react";
 import { Toggle } from "@pisagor/react";
 
@@ -9,5 +8,3 @@ export function WithIcon() {
     </Toggle>
   );
 }
-
-export { source as WithIconSource };

@@ -1,11 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/progress/default.vue?raw";
-import OrientationHorizontalSource from "#examples/vue/progress/orientation-horizontal.vue?raw";
-import OrientationVerticalSource from "#examples/vue/progress/orientation-vertical.vue?raw";
-import WithLabelSource from "#examples/vue/progress/with-label.vue?raw";
-import ControlledSource from "#examples/vue/progress/controlled.vue?raw";
-import IndeterminateSource from "#examples/vue/progress/indeterminate.vue?raw";
-import CustomRecipeSource from "#examples/vue/progress/custom-recipe.vue?raw";
 
 ## Import
 
@@ -19,73 +12,37 @@ import { Progress } from "@pisagor/vue";
 
 Show completion along a linear track.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="progress"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Orientation Horizontal
 
 Lay out the progress bar horizontally when items should read in a row.
 
-<Example
-  name="OrientationHorizontal"
-  code={OrientationHorizontalSource}
-  exampleId="progress"
-  framework="vue"
-  kind="component"
-/>
+<Example name="OrientationHorizontal" />
 
 ### Orientation Vertical
 
 Stack the progress bar vertically when items should read in a column.
 
-<Example
-  name="OrientationVertical"
-  code={OrientationVerticalSource}
-  exampleId="progress"
-  framework="vue"
-  kind="component"
-/>
+<Example name="OrientationVertical" />
 
 ### With Label
 
 Label the progress so the percentage or status is readable.
 
-<Example
-  name="WithLabel"
-  code={WithLabelSource}
-  exampleId="progress"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithLabel" />
 
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this progress bar.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="progress"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Indeterminate
 
 Show an indeterminate state when progress or selection is partial or unknown.
 
-<Example
-  name="Indeterminate"
-  code={IndeterminateSource}
-  exampleId="progress"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Indeterminate" />
 
 ## Customization
 
@@ -93,10 +50,4 @@ Show an indeterminate state when progress or selection is partial or unknown.
 
 Extend `progressRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="progress"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

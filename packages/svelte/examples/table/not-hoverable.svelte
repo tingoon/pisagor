@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./not-hoverable.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Table } from "@pisagor/svelte";
   import { workspaceUsers } from "./helpers";

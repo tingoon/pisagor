@@ -1,4 +1,3 @@
-import source from "./thumbnail-indicator-vertical.tsx?raw";
 import { Carousel } from "@pisagor/solid";
 import { imageSources } from "./helpers";
 
@@ -34,5 +33,3 @@ export function ThumbnailIndicatorVertical() {
     </Carousel.Root>
   );
 }
-
-export { source as ThumbnailIndicatorVerticalSource };

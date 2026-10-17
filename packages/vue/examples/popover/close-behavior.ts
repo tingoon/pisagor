@@ -1,4 +1,3 @@
-import source from "./close-behavior.ts?raw";
 import { Button, Popover } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
@@ -38,5 +37,3 @@ export default defineComponent({
       ]);
   },
 });
-
-export { source };

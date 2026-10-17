@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { toggleRecipe } from "@pisagor/recipes";
 import { Toggle } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -15,5 +14,3 @@ export function CustomRecipe() {
     </Toggle>
   );
 }
-
-export { source as CustomRecipeSource };

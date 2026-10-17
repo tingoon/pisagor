@@ -1,4 +1,3 @@
-import source from "./separator.tsx?raw";
 import { InputOTP } from "@pisagor/solid";
 
 export function Separator() {
@@ -15,5 +14,3 @@ export function Separator() {
     </InputOTP>
   );
 }
-
-export { source as SeparatorSource };

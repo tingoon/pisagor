@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./max-tags.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Field, TagsInput } from "@pisagor/svelte";
 

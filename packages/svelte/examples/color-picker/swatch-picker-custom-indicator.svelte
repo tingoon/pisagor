@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./swatch-picker-custom-indicator.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { ColorPicker } from "@pisagor/svelte";
   import SparkleIcon from "phosphor-svelte/lib/SparkleIcon";

@@ -1,4 +1,3 @@
-import source from "./orientation-horizontal.tsx?raw";
 import { Card, Marquee } from "@pisagor/solid";
 import {
   ArrowRightIcon,
@@ -47,5 +46,3 @@ export function OrientationHorizontal() {
     </Marquee.Root>
   );
 }
-
-export { source as OrientationHorizontalSource };

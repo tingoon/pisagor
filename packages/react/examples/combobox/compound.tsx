@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { Combobox } from "@pisagor/react";
 
@@ -34,5 +33,3 @@ export function Compound() {
     </Combobox.Root>
   );
 }
-
-export { source as CompoundSource };

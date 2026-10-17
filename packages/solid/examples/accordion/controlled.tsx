@@ -1,4 +1,3 @@
-import source from "./controlled.tsx?raw";
 import { Accordion } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 import { shortFaqItems } from "./helpers";
@@ -19,5 +18,3 @@ export function Controlled() {
     </div>
   );
 }
-
-export { source as ControlledSource };

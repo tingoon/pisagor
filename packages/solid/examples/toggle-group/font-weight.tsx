@@ -1,4 +1,3 @@
-import source from "./font-weight.tsx?raw";
 import { ToggleGroup } from "@pisagor/solid";
 import { cn } from "@pisagor/utils";
 import { createSignal } from "solid-js";
@@ -41,5 +40,3 @@ export function FontWeight() {
     </div>
   );
 }
-
-export { source as FontWeightSource };

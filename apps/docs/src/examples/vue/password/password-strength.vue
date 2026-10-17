@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./password-strength.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhCheck, PhEye, PhEyeSlash, PhX } from "@phosphor-icons/vue";
 import { cn } from "@pisagor/utils";

@@ -1,4 +1,3 @@
-import source from "./invalid.tsx?raw";
 import { Field, Input } from "@pisagor/solid";
 
 export function Invalid() {
@@ -8,5 +7,3 @@ export function Invalid() {
     </Field>
   );
 }
-
-export { source as InvalidSource };

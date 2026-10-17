@@ -1,9 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/frame/default.vue?raw";
-import SizesSource from "#examples/vue/frame/sizes.vue?raw";
-import SeparatedPanelsSource from "#examples/vue/frame/separated-panels.vue?raw";
-import WithFormControlsSource from "#examples/vue/frame/with-form-controls.vue?raw";
-import CustomRecipeSource from "#examples/vue/frame/custom-recipe.vue?raw";
 
 ## Import
 
@@ -30,49 +25,25 @@ import { Frame } from "@pisagor/vue";
 
 Embed content inside consistent framed chrome.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="frame"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Sizes
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="frame"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Separated Panels
 
 Show multiple framed regions when the workspace splits embeds.
 
-<Example
-  name="SeparatedPanels"
-  code={SeparatedPanelsSource}
-  exampleId="frame"
-  framework="vue"
-  kind="component"
-/>
+<Example name="SeparatedPanels" />
 
 ### With Form Controls
 
 Host form controls inside the frame when the embed includes settings.
 
-<Example
-  name="WithFormControls"
-  code={WithFormControlsSource}
-  exampleId="frame"
-  framework="vue"
-  kind="component"
-/>
+<Example name="WithFormControls" />
 
 ## Customization
 
@@ -80,10 +51,4 @@ Host form controls inside the frame when the embed includes settings.
 
 Extend `frameRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="frame"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

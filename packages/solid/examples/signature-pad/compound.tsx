@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { SignaturePad } from "@pisagor/solid";
 
 export function Compound() {
@@ -12,5 +11,3 @@ export function Compound() {
     </SignaturePad.Root>
   );
 }
-
-export { source as CompoundSource };

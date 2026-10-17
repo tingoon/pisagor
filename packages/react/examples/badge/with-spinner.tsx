@@ -1,4 +1,3 @@
-import source from "./with-spinner.tsx?raw";
 import { Badge, Spinner } from "@pisagor/react";
 export function WithSpinner() {
   return (
@@ -13,5 +12,3 @@ export function WithSpinner() {
     </div>
   );
 }
-
-export { source as WithSpinnerSource };

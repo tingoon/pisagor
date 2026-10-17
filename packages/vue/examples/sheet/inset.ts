@@ -1,4 +1,3 @@
-import source from "./inset.ts?raw";
 import { Button, Field, Input, Sheet } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
@@ -40,5 +39,3 @@ export default defineComponent({
       ]);
   },
 });
-
-export { source };

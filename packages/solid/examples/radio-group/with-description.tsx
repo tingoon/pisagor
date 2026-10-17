@@ -1,4 +1,3 @@
-import source from "./with-description.tsx?raw";
 import { Field, RadioGroup } from "@pisagor/solid";
 export function WithDescription() {
   return (
@@ -22,5 +21,3 @@ export function WithDescription() {
     </RadioGroup.Root>
   );
 }
-
-export { source as WithDescriptionSource };

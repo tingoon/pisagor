@@ -1,4 +1,3 @@
-import source from "./empty.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Select } from "@pisagor/solid";
 
@@ -19,5 +18,3 @@ export function Empty() {
     </Select.Root>
   );
 }
-
-export { source as EmptySource };

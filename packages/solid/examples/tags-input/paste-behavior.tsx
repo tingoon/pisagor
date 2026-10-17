@@ -1,4 +1,3 @@
-import source from "./paste-behavior.tsx?raw";
 import { Field, TagsInput } from "@pisagor/solid";
 import { For } from "solid-js";
 
@@ -22,5 +21,3 @@ export function PasteBehavior() {
     </Field>
   );
 }
-
-export { source as PasteBehaviorSource };

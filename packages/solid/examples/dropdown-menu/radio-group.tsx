@@ -1,4 +1,3 @@
-import source from "./radio-group.tsx?raw";
 import { Button, DropdownMenu } from "@pisagor/solid";
 export function RadioGroup() {
   return (
@@ -20,5 +19,3 @@ export function RadioGroup() {
     </DropdownMenu>
   );
 }
-
-export { source as RadioGroupSource };

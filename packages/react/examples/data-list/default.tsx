@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { DataList } from "@pisagor/react";
 
 export function Default() {
@@ -12,5 +11,3 @@ export function Default() {
     />
   );
 }
-
-export { source as DefaultSource };

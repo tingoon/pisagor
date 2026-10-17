@@ -1,4 +1,3 @@
-import source from "./wait-for-input.tsx?raw";
 import { waitForEvent } from "@ark-ui/react/tour";
 import type { TourStepType } from "@pisagor/react";
 import { Button, Checkbox, Field, Input, Tour } from "@pisagor/react";
@@ -117,5 +116,3 @@ export function WaitForInput() {
     </div>
   );
 }
-
-export { source as WaitForInputSource };

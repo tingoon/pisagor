@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { CircularSlider } from "@pisagor/react";
 
 export function Default() {
@@ -8,5 +7,3 @@ export function Default() {
     </CircularSlider>
   );
 }
-
-export { source as DefaultSource };

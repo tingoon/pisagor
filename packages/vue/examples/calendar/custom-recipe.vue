@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./custom-recipe.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { calendarRecipe } from "@pisagor/recipes";
 import { Calendar, Card } from "@pisagor/vue";

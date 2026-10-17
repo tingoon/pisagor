@@ -1,4 +1,3 @@
-import source from "./autoplay-controls.tsx?raw";
 import { Carousel } from "@pisagor/react";
 import { numberedSlides } from "./helpers";
 
@@ -23,5 +22,3 @@ export function AutoplayControls() {
     </Carousel.Root>
   );
 }
-
-export { source as AutoplayControlsSource };

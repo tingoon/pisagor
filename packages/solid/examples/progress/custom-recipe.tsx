@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { progressRecipe } from "@pisagor/recipes";
 import { Progress } from "@pisagor/solid";
 import { createSignal, onCleanup, onMount } from "solid-js";
@@ -23,5 +22,3 @@ export function CustomRecipe() {
 
   return <Progress recipe={brandProgressRecipe} value={progress()} />;
 }
-
-export { source as CustomRecipeSource };

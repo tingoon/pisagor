@@ -1,4 +1,3 @@
-import source from "./disabled.tsx?raw";
 import { Button, Tooltip } from "@pisagor/solid";
 import type { JSX } from "solid-js";
 
@@ -17,5 +16,3 @@ export function Disabled() {
     </Tooltip>
   );
 }
-
-export { source as DisabledSource };

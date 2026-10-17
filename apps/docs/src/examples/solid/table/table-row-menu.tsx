@@ -1,4 +1,3 @@
-import source from "./table-row-menu.tsx?raw";
 /** @jsxImportSource solid-js */
 
 import { ContextMenu, Table } from "@pisagor/solid";
@@ -91,5 +90,3 @@ const workspaceUsers = [
     status: "active",
   },
 ];
-
-export { source as TableRowMenuSource };

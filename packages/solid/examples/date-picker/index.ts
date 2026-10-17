@@ -6,7 +6,6 @@ export * from "./disabled";
 export * from "./input";
 export * from "./invalid";
 export * from "./range";
-export { imports, sources } from "./sources";
 export * from "./time";
 export * from "./variants";
 export * from "./with-presets";

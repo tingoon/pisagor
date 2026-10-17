@@ -7,4 +7,3 @@ export { default as Main } from "./main";
 export { default as Navigation } from "./navigation";
 export { default as Panels } from "./panels";
 export { default as Rails } from "./rails";
-export { imports, sources } from "./sources";

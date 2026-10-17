@@ -1,4 +1,3 @@
-import source from "./disabled.tsx?raw";
 import { Item, Listbox } from "@pisagor/react";
 
 export function Disabled() {
@@ -17,5 +16,3 @@ export function Disabled() {
     </Item.Group>
   );
 }
-
-export { source as DisabledSource };

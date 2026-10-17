@@ -1,11 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import VariantsSource from "#examples/svelte/clipboard/variants.svelte?raw";
-import SizesSource from "#examples/svelte/clipboard/sizes.svelte?raw";
-import DifferentIconSource from "#examples/svelte/clipboard/different-icon.svelte?raw";
-import WithLabelSource from "#examples/svelte/clipboard/with-label.svelte?raw";
-import ControlledSource from "#examples/svelte/clipboard/controlled.svelte?raw";
-import CustomTimeoutSource from "#examples/svelte/clipboard/custom-timeout.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/clipboard/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -19,73 +12,37 @@ import { Clipboard } from "@pisagor/svelte";
 
 Choose button emphasis to match surrounding actions.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="clipboard"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="clipboard"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Different Icon
 
 Swap icons when a different metaphor fits the copied content.
 
-<Example
-  name="DifferentIcon"
-  code={DifferentIconSource}
-  exampleId="clipboard"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="DifferentIcon" />
 
 ### With Label
 
 Show a text label when an icon alone is not clear enough.
 
-<Example
-  name="WithLabel"
-  code={WithLabelSource}
-  exampleId="clipboard"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="WithLabel" />
 
 ### Controlled
 
 Drive copied state from the parent when feedback is coordinated elsewhere.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="clipboard"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Custom Timeout
 
 Change how long the success state shows before resetting.
 
-<Example
-  name="CustomTimeout"
-  code={CustomTimeoutSource}
-  exampleId="clipboard"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomTimeout" />
 
 ## Customization
 
@@ -93,10 +50,4 @@ Change how long the success state shows before resetting.
 
 Extend `clipboardRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="clipboard"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

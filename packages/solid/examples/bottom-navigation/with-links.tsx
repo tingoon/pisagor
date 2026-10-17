@@ -1,4 +1,3 @@
-import source from "./with-links.tsx?raw";
 import { BottomNavigation, ScrollArea } from "@pisagor/solid";
 import {
   BellIcon,
@@ -49,5 +48,3 @@ export function WithLinks() {
     </div>
   );
 }
-
-export { source as WithLinksSource };

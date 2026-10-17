@@ -1,4 +1,3 @@
-import source from "./area-dots.tsx?raw";
 import { ColorPicker } from "@pisagor/solid";
 
 export function AreaDots() {
@@ -10,5 +9,3 @@ export function AreaDots() {
     </ColorPicker>
   );
 }
-
-export { source as AreaDotsSource };

@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./ide-layout.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import {
     Button,

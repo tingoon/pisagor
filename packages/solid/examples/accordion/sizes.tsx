@@ -1,4 +1,3 @@
-import source from "./sizes.tsx?raw";
 import { Accordion } from "@pisagor/solid";
 import { For } from "solid-js";
 import { faqItems } from "./helpers";
@@ -14,5 +13,3 @@ export function Sizes() {
     </div>
   );
 }
-
-export { source as SizesSource };

@@ -6,7 +6,6 @@ export * from "./disabled";
 export * from "./group";
 export * from "./invalid";
 export * from "./sizes";
-export { imports, sources } from "./sources";
 export * from "./variants";
 export * from "./with-clear-button";
 export * from "./with-start-icon";

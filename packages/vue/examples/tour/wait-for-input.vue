@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./wait-for-input.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { waitForEvent } from "@ark-ui/vue/tour";
 import {

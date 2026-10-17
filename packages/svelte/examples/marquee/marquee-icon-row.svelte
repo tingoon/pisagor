@@ -1,7 +1,4 @@
 <script module lang="ts">
-  import source from "./marquee-icon-row.svelte?raw";
-  export { source };
-
   import ArrowRightIcon from "phosphor-svelte/lib/ArrowRightIcon";
   import AtomIcon from "phosphor-svelte/lib/AtomIcon";
   import DeviceMobileIcon from "phosphor-svelte/lib/DeviceMobileIcon";

@@ -1,4 +1,3 @@
-import source from "./active-filter-chips.tsx?raw";
 import {
   CaretDownIcon,
   CaretUpIcon,
@@ -346,5 +345,3 @@ export function ActiveFilterChips() {
     </DataGridShell>
   );
 }
-
-export { source as ActiveFilterChipsSource };

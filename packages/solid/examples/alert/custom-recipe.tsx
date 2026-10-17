@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { alertRecipe } from "@pisagor/recipes";
 import { Alert } from "@pisagor/solid";
 import { CheckCircleIcon } from "@pisagor/solid/icons";
@@ -32,5 +31,3 @@ export function CustomRecipe() {
     />
   );
 }
-
-export { source as CustomRecipeSource };

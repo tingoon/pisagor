@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./placements.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { createToaster } from "@ark-ui/svelte/toast";
   import { Button, Toaster } from "@pisagor/svelte";

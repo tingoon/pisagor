@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./align-inline-start.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhFunnel } from "@phosphor-icons/vue";
 import { InputGroup } from "@pisagor/vue";

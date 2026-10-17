@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./image.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Item } from "@pisagor/vue";
 

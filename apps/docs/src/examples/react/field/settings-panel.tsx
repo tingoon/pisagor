@@ -1,4 +1,3 @@
-import source from "./settings-panel.tsx?raw";
 import { Checkbox, Field, Surface } from "@pisagor/react";
 import { settingsPanelBlock } from "#/recipes/blocks/field";
 
@@ -37,5 +36,3 @@ export function SettingsPanel() {
     </Surface>
   );
 }
-
-export { source as SettingsPanelSource };

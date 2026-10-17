@@ -1,4 +1,3 @@
-import source from "./without-arrow.tsx?raw";
 import { Button, Tooltip } from "@pisagor/react";
 
 export function WithoutArrow() {
@@ -8,5 +7,3 @@ export function WithoutArrow() {
     </Tooltip>
   );
 }
-
-export { source as WithoutArrowSource };

@@ -1,4 +1,3 @@
-import source from "./custom-spacing.tsx?raw";
 import { Item } from "@pisagor/solid";
 import { UserIcon } from "@pisagor/solid/icons";
 
@@ -30,5 +29,3 @@ export function CustomSpacing() {
     </Item.Group>
   );
 }
-
-export { source as CustomSpacingSource };

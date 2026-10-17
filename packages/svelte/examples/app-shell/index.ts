@@ -7,4 +7,3 @@ export { default as Main } from "./main.svelte";
 export { default as Navigation } from "./navigation.svelte";
 export { default as Panels } from "./panels.svelte";
 export { default as Rails } from "./rails.svelte";
-export { imports, sources } from "./sources";

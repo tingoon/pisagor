@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./controlled.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 import { Select } from "@pisagor/vue";

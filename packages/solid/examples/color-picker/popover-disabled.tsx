@@ -1,4 +1,3 @@
-import source from "./popover-disabled.tsx?raw";
 import { Button, ColorPicker } from "@pisagor/solid";
 export function PopoverDisabled() {
   return (
@@ -19,5 +18,3 @@ export function PopoverDisabled() {
     </ColorPicker>
   );
 }
-
-export { source as PopoverDisabledSource };

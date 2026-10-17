@@ -1,13 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/react/resizable/default.tsx";
-import { OrientationHorizontalSource } from "#examples/react/resizable/orientation-horizontal.tsx";
-import { OrientationVerticalSource } from "#examples/react/resizable/orientation-vertical.tsx";
-import { HandleSource } from "#examples/react/resizable/handle.tsx";
-import { EdgeHandleSource } from "#examples/react/resizable/edge-handle.tsx";
-import { MultiplePanelsSource } from "#examples/react/resizable/multiple-panels.tsx";
-import { MinMaxSource } from "#examples/react/resizable/min-max.tsx";
-import { CollapsibleSource } from "#examples/react/resizable/collapsible.tsx";
-import { CustomRecipeSource } from "#examples/react/resizable/custom-recipe.tsx";
 
 ## Import
 
@@ -31,97 +22,49 @@ import { Resizable } from "@pisagor/react";
 
 Drag handles to resize adjacent panels.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="resizable"
-  framework="react"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Orientation Horizontal
 
 Lay out the resizable layout horizontally when items should read in a row.
 
-<Example
-  name="OrientationHorizontal"
-  code={OrientationHorizontalSource}
-  exampleId="resizable"
-  framework="react"
-  kind="component"
-/>
+<Example name="OrientationHorizontal" />
 
 ### Orientation Vertical
 
 Stack the resizable layout vertically when items should read in a column.
 
-<Example
-  name="OrientationVertical"
-  code={OrientationVerticalSource}
-  exampleId="resizable"
-  framework="react"
-  kind="component"
-/>
+<Example name="OrientationVertical" />
 
 ### Handle
 
 Emphasize the resize handle when the divider should be easy to grab.
 
-<Example
-  name="Handle"
-  code={HandleSource}
-  exampleId="resizable"
-  framework="react"
-  kind="component"
-/>
+<Example name="Handle" />
 
 ### Edge Handle
 
 Place handles on edges when that affordance matches the layout. The handle is a focusable `separator`: arrow keys resize by `step`, Home/End jump to `minWidth`/`maxWidth`, and Enter or double-click resets the width.
 
-<Example
-  name="EdgeHandle"
-  code={EdgeHandleSource}
-  exampleId="resizable"
-  framework="react"
-  kind="component"
-/>
+<Example name="EdgeHandle" />
 
 ### Multiple Panels
 
 Split more than two panels when the workspace has several regions.
 
-<Example
-  name="MultiplePanels"
-  code={MultiplePanelsSource}
-  exampleId="resizable"
-  framework="react"
-  kind="component"
-/>
+<Example name="MultiplePanels" />
 
 ### Min Max
 
 Clamp values to a minimum and maximum so users cannot pick out-of-range input.
 
-<Example
-  name="MinMax"
-  code={MinMaxSource}
-  exampleId="resizable"
-  framework="react"
-  kind="component"
-/>
+<Example name="MinMax" />
 
 ### Collapsible
 
 Allow a panel to collapse when users need maximum space for another region.
 
-<Example
-  name="Collapsible"
-  code={CollapsibleSource}
-  exampleId="resizable"
-  framework="react"
-  kind="component"
-/>
+<Example name="Collapsible" />
 
 ## Customization
 
@@ -129,10 +72,4 @@ Allow a panel to collapse when users need maximum space for another region.
 
 Extend `resizableRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="resizable"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

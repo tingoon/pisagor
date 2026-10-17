@@ -1,4 +1,3 @@
-import source from "./selection-extended.tsx?raw";
 import { Item, Kbd, Listbox } from "@pisagor/react";
 
 export function SelectionExtended() {
@@ -22,5 +21,3 @@ export function SelectionExtended() {
     </div>
   );
 }
-
-export { source as SelectionExtendedSource };

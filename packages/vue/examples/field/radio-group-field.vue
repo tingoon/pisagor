@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./radio-group-field.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Field, RadioGroup } from "@pisagor/vue";
 </script>

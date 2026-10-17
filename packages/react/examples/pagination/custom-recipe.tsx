@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { Pagination } from "@pisagor/react";
 import { paginationRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -14,5 +13,3 @@ const brandPaginationRecipe = tv({
 export function CustomRecipe() {
   return <Pagination count={50} pageSize={10} recipe={brandPaginationRecipe} />;
 }
-
-export { source as CustomRecipeSource };

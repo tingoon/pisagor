@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./with-badge.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Badge, InputGroup } from "@pisagor/svelte";
   import AtIcon from "phosphor-svelte/lib/AtIcon";

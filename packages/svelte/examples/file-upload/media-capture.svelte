@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./media-capture.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, FileUpload } from "@pisagor/svelte";
   import CameraIcon from "phosphor-svelte/lib/CameraIcon";

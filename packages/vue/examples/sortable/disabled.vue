@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./disabled.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Sortable } from "@pisagor/vue";
 import { ref } from "vue";

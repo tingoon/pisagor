@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { Slider } from "@pisagor/solid";
 
 export function Compound() {
@@ -17,5 +16,3 @@ export function Compound() {
     </Slider.Root>
   );
 }
-
-export { source as CompoundSource };

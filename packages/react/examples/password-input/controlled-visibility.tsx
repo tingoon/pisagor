@@ -1,4 +1,3 @@
-import source from "./controlled-visibility.tsx?raw";
 import { PasswordInput } from "@pisagor/react";
 import { useState } from "react";
 
@@ -13,5 +12,3 @@ export function ControlledVisibility() {
     />
   );
 }
-
-export { source as ControlledVisibilitySource };

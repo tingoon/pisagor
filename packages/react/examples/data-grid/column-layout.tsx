@@ -1,4 +1,3 @@
-import source from "./column-layout.tsx?raw";
 import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
 import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Checkbox, Table } from "@pisagor/react";
@@ -272,5 +271,3 @@ export function ColumnLayout() {
     </DataGridShell>
   );
 }
-
-export { source as ColumnLayoutSource };

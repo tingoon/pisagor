@@ -1,4 +1,3 @@
-import source from "./row-details.tsx?raw";
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Table } from "@pisagor/solid";
 import type {
@@ -234,5 +233,3 @@ export function RowDetails() {
     </DataGridShell>
   );
 }
-
-export { source as RowDetailsSource };

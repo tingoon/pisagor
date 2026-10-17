@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Autocomplete } from "@pisagor/solid";
@@ -37,5 +36,3 @@ export function Compound() {
     </Autocomplete.Root>
   );
 }
-
-export { source as CompoundSource };

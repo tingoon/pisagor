@@ -1,4 +1,3 @@
-import source from "./wrapping.ts?raw";
 import { NavigationMenu } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
@@ -43,5 +42,3 @@ export default defineComponent({
       );
   },
 });
-
-export { source };

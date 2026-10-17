@@ -1,4 +1,3 @@
-import source from "./striped-variant.tsx?raw";
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Checkbox, Table } from "@pisagor/solid";
 import type { ColumnDef } from "@pisagor/solid/data-grid";
@@ -236,5 +235,3 @@ export function StripedVariant() {
     </DataGridShell>
   );
 }
-
-export { source as StripedVariantSource };

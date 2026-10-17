@@ -1,4 +1,3 @@
-import source from "./slider-field.tsx?raw";
 import { Field, Slider } from "@pisagor/solid";
 export function SliderField() {
   return (
@@ -10,5 +9,3 @@ export function SliderField() {
     </Field>
   );
 }
-
-export { source as SliderFieldSource };

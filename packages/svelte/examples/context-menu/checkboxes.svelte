@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./checkboxes.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { ContextMenu } from "@pisagor/svelte";
 

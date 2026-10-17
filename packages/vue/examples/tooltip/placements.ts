@@ -1,4 +1,3 @@
-import source from "./placements.ts?raw";
 import { Button, Tooltip } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
@@ -32,5 +31,3 @@ export default defineComponent({
       );
   },
 });
-
-export { source };

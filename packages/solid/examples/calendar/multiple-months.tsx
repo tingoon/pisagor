@@ -1,4 +1,3 @@
-import source from "./multiple-months.tsx?raw";
 import { Calendar, Card, parseDate } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function MultipleMonths() {
@@ -33,5 +32,3 @@ export function MultipleMonths() {
     </Card>
   );
 }
-
-export { source as MultipleMonthsSource };

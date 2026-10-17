@@ -1,4 +1,3 @@
-import source from "./auto-hide.tsx?raw";
 import { PasswordInput } from "@pisagor/react";
 import { useState } from "react";
 
@@ -24,5 +23,3 @@ export function AutoHide() {
     />
   );
 }
-
-export { source as AutoHideSource };

@@ -1,4 +1,3 @@
-import source from "./custom-color.tsx?raw";
 import { Alert } from "@pisagor/solid";
 import { MagicWandIcon } from "@pisagor/solid/icons";
 
@@ -12,5 +11,3 @@ export function CustomColor() {
     />
   );
 }
-
-export { source as CustomColorSource };

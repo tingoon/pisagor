@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./sizes.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Textarea } from "@pisagor/svelte";
 </script>

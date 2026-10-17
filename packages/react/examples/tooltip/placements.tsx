@@ -1,4 +1,3 @@
-import source from "./placements.tsx?raw";
 import { Button, Tooltip } from "@pisagor/react";
 export function Placements() {
   const placements = ["left", "top", "bottom", "right"] as const;
@@ -19,5 +18,3 @@ export function Placements() {
     </div>
   );
 }
-
-export { source as PlacementsSource };

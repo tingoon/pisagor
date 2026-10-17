@@ -1,4 +1,3 @@
-import source from "./disabled.tsx?raw";
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Autocomplete } from "@pisagor/solid";
@@ -37,5 +36,3 @@ export function Disabled() {
     </Autocomplete.Root>
   );
 }
-
-export { source as DisabledSource };

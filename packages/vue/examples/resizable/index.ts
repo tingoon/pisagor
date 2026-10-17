@@ -7,4 +7,3 @@ export { default as MinMax } from "./min-max.vue";
 export { default as MultiplePanels } from "./multiple-panels.vue";
 export { default as OrientationHorizontal } from "./orientation-horizontal.vue";
 export { default as OrientationVertical } from "./orientation-vertical.vue";
-export { imports, sources } from "./sources";

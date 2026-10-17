@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./disabled.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Tabs } from "@pisagor/svelte";
   import { profileTabs } from "./helpers";

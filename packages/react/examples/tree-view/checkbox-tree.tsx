@@ -1,4 +1,3 @@
-import source from "./checkbox-tree.tsx?raw";
 import type { TreeNodeType } from "@pisagor/react";
 import { createTreeCollection, TreeView } from "@pisagor/react";
 import { useState } from "react";
@@ -87,5 +86,3 @@ export function CheckboxTree() {
     </div>
   );
 }
-
-export { source as CheckboxTreeSource };

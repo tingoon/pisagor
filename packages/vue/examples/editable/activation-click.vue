@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./activation-click.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhCheck, PhX } from "@phosphor-icons/vue";
 import { Button, Card, Editable, Field, Input } from "@pisagor/vue";

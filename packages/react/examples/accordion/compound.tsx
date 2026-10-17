@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { Accordion } from "@pisagor/react";
 
 export function Compound() {
@@ -41,5 +40,3 @@ export function Compound() {
     </Accordion.Root>
   );
 }
-
-export { source as CompoundSource };

@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./orientation-horizontal.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhPlay, PhSkipBack, PhSkipForward } from "@phosphor-icons/vue";
 import { Button, ButtonGroup } from "@pisagor/vue";

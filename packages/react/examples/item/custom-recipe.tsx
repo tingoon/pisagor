@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { DotsThreeIcon } from "@phosphor-icons/react";
 import { Button, Item } from "@pisagor/react";
 import { itemRecipe } from "@pisagor/recipes";
@@ -32,5 +31,3 @@ export function CustomRecipe() {
     </Item>
   );
 }
-
-export { source as CustomRecipeSource };

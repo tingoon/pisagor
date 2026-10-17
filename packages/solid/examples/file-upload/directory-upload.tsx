@@ -1,4 +1,3 @@
-import source from "./directory-upload.tsx?raw";
 import { Button, FileUpload } from "@pisagor/solid";
 import { FolderIcon } from "@pisagor/solid/icons";
 export function DirectoryUpload() {
@@ -18,5 +17,3 @@ export function DirectoryUpload() {
     </FileUpload>
   );
 }
-
-export { source as DirectoryUploadSource };

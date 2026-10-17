@@ -1,4 +1,3 @@
-import source from "./h6.tsx?raw";
 import { Prose } from "@pisagor/solid";
 
 export function H6() {
@@ -8,5 +7,3 @@ export function H6() {
     </Prose>
   );
 }
-
-export { source as H6Source };

@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { hoverCardRecipe } from "@pisagor/recipes";
 import { Avatar, Button, HoverCard } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -38,5 +37,3 @@ export function CustomRecipe() {
     </HoverCard>
   );
 }
-
-export { source as CustomRecipeSource };

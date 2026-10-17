@@ -1,4 +1,3 @@
-import source from "./blur-on-complete.tsx?raw";
 import { InputOTP } from "@pisagor/react";
 
 export function BlurOnComplete() {
@@ -11,5 +10,3 @@ export function BlurOnComplete() {
     </InputOTP>
   );
 }
-
-export { source as BlurOnCompleteSource };

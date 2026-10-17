@@ -1,18 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/carousel/default.svelte?raw";
-import OrientationHorizontalSource from "#examples/svelte/carousel/orientation-horizontal.svelte?raw";
-import OrientationVerticalSource from "#examples/svelte/carousel/orientation-vertical.svelte?raw";
-import SpacingSource from "#examples/svelte/carousel/spacing.svelte?raw";
-import SlidesPerPageSource from "#examples/svelte/carousel/slides-per-page.svelte?raw";
-import ThumbnailIndicatorSource from "#examples/svelte/carousel/thumbnail-indicator.svelte?raw";
-import ThumbnailIndicatorVerticalSource from "#examples/svelte/carousel/thumbnail-indicator-vertical.svelte?raw";
-import CompoundSource from "#examples/svelte/carousel/compound.svelte?raw";
-import ControlledSource from "#examples/svelte/carousel/controlled.svelte?raw";
-import AutoplaySource from "#examples/svelte/carousel/autoplay.svelte?raw";
-import AutoplayControlsSource from "#examples/svelte/carousel/autoplay-controls.svelte?raw";
-import LoopSource from "#examples/svelte/carousel/loop.svelte?raw";
-import MouseDragSource from "#examples/svelte/carousel/mouse-drag.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/carousel/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -26,157 +12,79 @@ import { Carousel } from "@pisagor/svelte";
 
 Step through slides with previous and next controls.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="carousel"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Orientation Horizontal
 
 Scroll slides left to right for the common carousel pattern.
 
-<Example
-  name="OrientationHorizontal"
-  code={OrientationHorizontalSource}
-  exampleId="carousel"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="OrientationHorizontal" />
 
 ### Orientation Vertical
 
 Scroll slides top to bottom when vertical paging fits the layout.
 
-<Example
-  name="OrientationVertical"
-  code={OrientationVerticalSource}
-  exampleId="carousel"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="OrientationVertical" />
 
 ### Spacing
 
 Adjust gaps between slides to match density.
 
-<Example
-  name="Spacing"
-  code={SpacingSource}
-  exampleId="carousel"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Spacing" />
 
 ### Slides Per Page
 
 Show more than one slide at a time when comparison matters.
 
-<Example
-  name="SlidesPerPage"
-  code={SlidesPerPageSource}
-  exampleId="carousel"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="SlidesPerPage" />
 
 ### Thumbnail Indicator
 
 Use thumbnails so users can jump to a specific slide.
 
-<Example
-  name="ThumbnailIndicator"
-  code={ThumbnailIndicatorSource}
-  exampleId="carousel"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="ThumbnailIndicator" />
 
 ### Thumbnail Indicator Vertical
 
 Stack thumbnails vertically beside the main slide.
 
-<Example
-  name="ThumbnailIndicatorVertical"
-  code={ThumbnailIndicatorVerticalSource}
-  exampleId="carousel"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="ThumbnailIndicatorVertical" />
 
 ### Compound
 
 Assemble from parts when you need a custom layout beyond the shorthand API.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="carousel"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Controlled
 
 Drive the active slide from the parent when other UI depends on it.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="carousel"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Autoplay
 
 Advance slides automatically when the carousel is ambient, not critical reading.
 
-<Example
-  name="Autoplay"
-  code={AutoplaySource}
-  exampleId="carousel"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Autoplay" />
 
 ### Autoplay Controls
 
 Use `Carousel.AutoplayTrigger` to pause or resume autoplay and `Carousel.ProgressText` to show the current page.
 
-<Example
-  name="AutoplayControls"
-  code={AutoplayControlsSource}
-  exampleId="carousel"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="AutoplayControls" />
 
 ### Loop
 
 Wrap from last to first when continuous browsing should not stop at the end.
 
-<Example
-  name="Loop"
-  code={LoopSource}
-  exampleId="carousel"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Loop" />
 
 ### Mouse Drag
 
 Let users drag slides when pointer gestures feel more direct than buttons alone.
 
-<Example
-  name="MouseDrag"
-  code={MouseDragSource}
-  exampleId="carousel"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="MouseDrag" />
 
 ## Customization
 
@@ -184,10 +92,4 @@ Let users drag slides when pointer gestures feel more direct than buttons alone.
 
 Extend `carouselRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="carousel"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

@@ -1,4 +1,3 @@
-import source from "./custom-recipe.ts?raw";
 import { PhCheckCircle } from "@phosphor-icons/vue";
 import { alertRecipe } from "@pisagor/recipes";
 import { Alert } from "@pisagor/vue";
@@ -35,5 +34,3 @@ export default defineComponent({
       });
   },
 });
-
-export { source };

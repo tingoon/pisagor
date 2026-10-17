@@ -1,4 +1,3 @@
-import source from "./no-close-button.ts?raw";
 import { Button, Sheet } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
@@ -35,5 +34,3 @@ export default defineComponent({
       ]);
   },
 });
-
-export { source };

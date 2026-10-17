@@ -1,4 +1,3 @@
-import source from "./activation-none.tsx?raw";
 import { Button, Card, Editable, Field, Input } from "@pisagor/solid";
 import { CheckIcon, PencilSimpleIcon, XIcon } from "@pisagor/solid/icons";
 export function ActivationNone() {
@@ -109,5 +108,3 @@ export function ActivationNone() {
     </Card>
   );
 }
-
-export { source as ActivationNoneSource };

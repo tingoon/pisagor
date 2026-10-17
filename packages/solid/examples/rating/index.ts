@@ -11,5 +11,4 @@ export * from "./half-star";
 export * from "./invalid";
 export * from "./readonly";
 export * from "./sizes";
-export { imports, sources } from "./sources";
 export * from "./testimonial";

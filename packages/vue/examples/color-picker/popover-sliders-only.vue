@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./popover-sliders-only.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Button, ColorPicker, Field } from "@pisagor/vue";
 </script>

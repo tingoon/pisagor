@@ -1,4 +1,3 @@
-import source from "./multiple-files.tsx?raw";
 import { Button, FileUpload, Separator } from "@pisagor/solid";
 export function MultipleFiles() {
   return (
@@ -22,5 +21,3 @@ export function MultipleFiles() {
     </FileUpload>
   );
 }
-
-export { source as MultipleFilesSource };

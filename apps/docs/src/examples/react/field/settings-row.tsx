@@ -1,4 +1,3 @@
-import source from "./settings-row.tsx?raw";
 import { Checkbox, Field, Surface } from "@pisagor/react";
 import { settingsRowBlock } from "#/recipes/blocks/field";
 
@@ -27,5 +26,3 @@ export function SettingsRow() {
     </Surface>
   );
 }
-
-export { source as SettingsRowSource };

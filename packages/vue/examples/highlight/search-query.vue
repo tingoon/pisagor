@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./search-query.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Highlight, Input } from "@pisagor/vue";
 import { ref } from "vue";

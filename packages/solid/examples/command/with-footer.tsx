@@ -1,4 +1,3 @@
-import source from "./with-footer.tsx?raw";
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Command, Kbd } from "@pisagor/solid";
@@ -73,5 +72,3 @@ export function WithFooter() {
     </Command>
   );
 }
-
-export { source as WithFooterSource };

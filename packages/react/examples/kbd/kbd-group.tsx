@@ -1,4 +1,3 @@
-import source from "./kbd-group.tsx?raw";
 import { Kbd } from "@pisagor/react";
 
 export function KbdGroup() {
@@ -14,5 +13,3 @@ export function KbdGroup() {
     </div>
   );
 }
-
-export { source as KbdGroupSource };

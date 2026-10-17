@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./nested.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Surface } from "@pisagor/vue";
 </script>

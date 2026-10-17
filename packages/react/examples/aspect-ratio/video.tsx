@@ -1,4 +1,3 @@
-import source from "./video.tsx?raw";
 import { AspectRatio } from "@pisagor/react";
 
 export function Video() {
@@ -10,5 +9,3 @@ export function Video() {
     </AspectRatio>
   );
 }
-
-export { source as VideoSource };

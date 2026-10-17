@@ -1,4 +1,3 @@
-import source from "./range.tsx?raw";
 import { Calendar, Card } from "@pisagor/react";
 export function Range() {
   return (
@@ -20,5 +19,3 @@ export function Range() {
     </Card>
   );
 }
-
-export { source as RangeSource };

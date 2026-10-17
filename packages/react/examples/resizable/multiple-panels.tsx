@@ -1,4 +1,3 @@
-import source from "./multiple-panels.tsx?raw";
 import { Resizable } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
@@ -55,5 +54,3 @@ export function MultiplePanels() {
     </ResizableFrame>
   );
 }
-
-export { source as MultiplePanelsSource };

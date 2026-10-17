@@ -1,4 +1,3 @@
-import source from "./controlled.tsx?raw";
 import type { CheckboxCheckedState } from "@pisagor/solid";
 import { Checkbox, Field } from "@pisagor/solid";
 import { createSignal } from "solid-js";
@@ -18,5 +17,3 @@ export function Controlled() {
     </Field.Group>
   );
 }
-
-export { source as ControlledSource };

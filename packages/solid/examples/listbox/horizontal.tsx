@@ -1,4 +1,3 @@
-import source from "./horizontal.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Field, Listbox } from "@pisagor/solid";
 export function Horizontal() {
@@ -32,5 +31,3 @@ export function Horizontal() {
     </Field>
   );
 }
-
-export { source as HorizontalSource };

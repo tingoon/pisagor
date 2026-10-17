@@ -1,4 +1,3 @@
-import source from "./custom-spacing.tsx?raw";
 import { FileUpload } from "@pisagor/solid";
 
 export function CustomSpacing() {
@@ -12,5 +11,3 @@ export function CustomSpacing() {
     </FileUpload>
   );
 }
-
-export { source as CustomSpacingSource };

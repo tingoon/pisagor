@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./icon.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhCurrencyDollar } from "@phosphor-icons/vue";
 import { Button, Card } from "@pisagor/vue";

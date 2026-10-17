@@ -7,4 +7,3 @@ export { default as NoCloseButton } from "./no-close-button.svelte";
 export { default as NonModal } from "./non-modal.svelte";
 export { default as ScrollArea } from "./scroll-area.svelte";
 export { default as Sides } from "./sides.svelte";
-export { imports, sources } from "./sources";

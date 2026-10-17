@@ -1,4 +1,3 @@
-import source from "./input-group-with-tooltip.tsx?raw";
 /** @jsxImportSource solid-js */
 import { Button, InputGroup, Tooltip } from "@pisagor/solid";
 import { InfoIcon } from "@pisagor/solid/icons";
@@ -17,5 +16,3 @@ export function InputGroupWithTooltip() {
     </InputGroup>
   );
 }
-
-export { source as InputGroupWithTooltipSource };

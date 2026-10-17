@@ -1,4 +1,3 @@
-import source from "./range.tsx?raw";
 import { CalendarIcon } from "@phosphor-icons/react";
 import { Button, Calendar, DatePicker, parseDate } from "@pisagor/react";
 export function Range() {
@@ -25,5 +24,3 @@ export function Range() {
     </DatePicker>
   );
 }
-
-export { source as RangeSource };

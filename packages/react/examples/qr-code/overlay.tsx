@@ -1,4 +1,3 @@
-import source from "./overlay.tsx?raw";
 import { FishIcon } from "@phosphor-icons/react";
 import { QrCode } from "@pisagor/react";
 
@@ -12,5 +11,3 @@ export function Overlay() {
     </QrCode>
   );
 }
-
-export { source as OverlaySource };

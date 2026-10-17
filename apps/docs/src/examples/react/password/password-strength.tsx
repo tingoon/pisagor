@@ -1,4 +1,3 @@
-import source from "./password-strength.tsx?raw";
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Field, PasswordInput } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
@@ -114,5 +113,3 @@ export function PasswordStrength({ className }: PasswordStrengthProps) {
     </div>
   );
 }
-
-export { source as PasswordStrengthSource };

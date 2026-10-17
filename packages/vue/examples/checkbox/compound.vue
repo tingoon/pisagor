@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./compound.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Checkbox } from "@pisagor/vue";
 </script>

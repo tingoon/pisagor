@@ -1,4 +1,3 @@
-import source from "./with-spinner.tsx?raw";
 import { InputGroup, Spinner } from "@pisagor/react";
 export function WithSpinner() {
   return (
@@ -10,5 +9,3 @@ export function WithSpinner() {
     </InputGroup>
   );
 }
-
-export { source as WithSpinnerSource };

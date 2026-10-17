@@ -5,12 +5,6 @@ import Thickness from "#examples/astro/circular-progress/thickness.astro";
 import WithValue from "#examples/astro/circular-progress/with-value.astro";
 import Indeterminate from "#examples/astro/circular-progress/indeterminate.astro";
 import CustomRecipe from "#examples/astro/circular-progress/custom-recipe.astro";
-import DefaultSource from "#examples/astro/circular-progress/default.astro?raw";
-import SizesSource from "#examples/astro/circular-progress/sizes.astro?raw";
-import ThicknessSource from "#examples/astro/circular-progress/thickness.astro?raw";
-import WithValueSource from "#examples/astro/circular-progress/with-value.astro?raw";
-import IndeterminateSource from "#examples/astro/circular-progress/indeterminate.astro?raw";
-import CustomRecipeSource from "#examples/astro/circular-progress/custom-recipe.astro?raw";
 
 ## Import
 
@@ -24,13 +18,7 @@ import { CircularProgress } from "@pisagor/astro";
 
 Show completion on a circular track.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="circular-progress"
-  framework="astro"
-  kind="component"
->
+<Example name="Default">
   <Default />
 </Example>
 
@@ -38,13 +26,7 @@ Show completion on a circular track.
 
 Match ring size to available space and importance.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="circular-progress"
-  framework="astro"
-  kind="component"
->
+<Example name="Sizes">
   <Sizes />
 </Example>
 
@@ -52,13 +34,7 @@ Match ring size to available space and importance.
 
 Adjust stroke thickness for visibility at the chosen size.
 
-<Example
-  name="Thickness"
-  code={ThicknessSource}
-  exampleId="circular-progress"
-  framework="astro"
-  kind="component"
->
+<Example name="Thickness">
   <Thickness />
 </Example>
 
@@ -66,13 +42,7 @@ Adjust stroke thickness for visibility at the chosen size.
 
 Display the numeric percentage next to or inside the ring.
 
-<Example
-  name="WithValue"
-  code={WithValueSource}
-  exampleId="circular-progress"
-  framework="astro"
-  kind="component"
->
+<Example name="WithValue">
   <WithValue />
 </Example>
 
@@ -80,13 +50,7 @@ Display the numeric percentage next to or inside the ring.
 
 Animate without a value when progress cannot be measured yet.
 
-<Example
-  name="Indeterminate"
-  code={IndeterminateSource}
-  exampleId="circular-progress"
-  framework="astro"
-  kind="component"
->
+<Example name="Indeterminate">
   <Indeterminate />
 </Example>
 
@@ -96,12 +60,6 @@ Animate without a value when progress cannot be measured yet.
 
 Extend `circularProgressRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="circular-progress"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomRecipe">
   <CustomRecipe />
 </Example>

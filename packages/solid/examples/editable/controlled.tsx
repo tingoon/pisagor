@@ -1,4 +1,3 @@
-import source from "./controlled.tsx?raw";
 import { Button, Card, Editable, Field, Input } from "@pisagor/solid";
 import { CheckIcon, PencilSimpleIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";
@@ -61,5 +60,3 @@ export function Controlled() {
     </Card>
   );
 }
-
-export { source as ControlledSource };

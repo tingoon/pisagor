@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./with-action.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Alert, Button } from "@pisagor/svelte";
   import ClockCounterClockwiseIcon from "phosphor-svelte/lib/ClockCounterClockwiseIcon";

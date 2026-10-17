@@ -1,4 +1,3 @@
-import source from "./inline-code.tsx?raw";
 import { Prose } from "@pisagor/solid";
 
 export function InlineCode() {
@@ -8,5 +7,3 @@ export function InlineCode() {
     </Prose>
   );
 }
-
-export { source as InlineCodeSource };

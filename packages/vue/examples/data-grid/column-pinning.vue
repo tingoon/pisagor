@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./column-pinning.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhDotsThreeVertical } from "@phosphor-icons/vue";
 import type { BadgeVariant } from "@pisagor/vue";

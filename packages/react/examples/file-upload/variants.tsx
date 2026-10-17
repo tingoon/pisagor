@@ -1,4 +1,3 @@
-import source from "./variants.tsx?raw";
 import { Button, FileUpload } from "@pisagor/react";
 export function Variants() {
   return (
@@ -24,5 +23,3 @@ export function Variants() {
     </div>
   );
 }
-
-export { source as VariantsSource };

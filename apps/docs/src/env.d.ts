@@ -1,5 +1,18 @@
 export {};
 
+declare global {
+  namespace App {
+    interface Locals {
+      /** Set by component/block doc pages for `<Example />` defaults. */
+      docsExample?: {
+        framework: import("#/lib/nav").Framework;
+        exampleId: string;
+        kind: "component" | "form" | "block";
+      };
+    }
+  }
+}
+
 declare module "#/changelog/*" {
   export const Content: import("astro/runtime/server/index.js").AstroComponentFactory;
   export function getHeadings(): {

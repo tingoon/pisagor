@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { InputOTP } from "@pisagor/react";
 import { inputOtpRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -25,5 +24,3 @@ export function CustomRecipe() {
     </InputOTP>
   );
 }
-
-export { source as CustomRecipeSource };

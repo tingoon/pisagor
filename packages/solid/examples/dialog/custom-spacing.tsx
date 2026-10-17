@@ -1,4 +1,3 @@
-import source from "./custom-spacing.tsx?raw";
 import { Button, Dialog, Field, Input, Select } from "@pisagor/solid";
 import { Portal } from "solid-js/web";
 export function CustomSpacing() {
@@ -60,5 +59,3 @@ export function CustomSpacing() {
     </Dialog.Root>
   );
 }
-
-export { source as CustomSpacingSource };

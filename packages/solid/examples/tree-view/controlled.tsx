@@ -1,4 +1,3 @@
-import source from "./controlled.tsx?raw";
 import type { NodeProviderProps } from "@pisagor/solid";
 import { createTreeCollection, TreeView } from "@pisagor/solid";
 import { createSignal } from "solid-js";
@@ -68,5 +67,3 @@ export function Controlled() {
     </div>
   );
 }
-
-export { source as ControlledSource };

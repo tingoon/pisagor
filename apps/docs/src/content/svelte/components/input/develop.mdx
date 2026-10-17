@@ -1,12 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import VariantsSource from "#examples/svelte/input/variants.svelte?raw";
-import SizesSource from "#examples/svelte/input/sizes.svelte?raw";
-import ClearableSource from "#examples/svelte/input/clearable.svelte?raw";
-import FileSource from "#examples/svelte/input/file.svelte?raw";
-import ControlledSource from "#examples/svelte/input/controlled.svelte?raw";
-import DisabledSource from "#examples/svelte/input/disabled.svelte?raw";
-import InvalidSource from "#examples/svelte/input/invalid.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/input/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -20,85 +12,43 @@ import { Input } from "@pisagor/svelte";
 
 Choose visual weight or emphasis so the input matches importance in the surrounding layout.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### Sizes
 
 Match size to the surrounding layout — smaller in compact chrome, larger where the input needs emphasis.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Clearable
 
 Offer a clear control for search-like fields where resetting quickly matters.
 
-<Example
-  name="Clearable"
-  code={ClearableSource}
-  exampleId="input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Clearable" />
 
 ### File
 
 Use a file-styled input when the control picks a file path or upload target.
 
-<Example
-  name="File"
-  code={FileSource}
-  exampleId="input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="File" />
 
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this input.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the input is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Invalid
 
 Surface a validation or error state so users know the input needs attention before continuing.
 
-<Example
-  name="Invalid"
-  code={InvalidSource}
-  exampleId="input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Invalid" />
 
 ## Customization
 
@@ -106,10 +56,4 @@ Surface a validation or error state so users know the input needs attention befo
 
 Extend `inputRecipe` with `tv({ extend })` and pass it to `recipe` to restyle the clearable input's inner control across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="input"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

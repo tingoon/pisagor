@@ -1,4 +1,3 @@
-import source from "./variants.tsx?raw";
 import {
   CheckCircleIcon,
   ChecksIcon,
@@ -43,5 +42,3 @@ export function Variants() {
     </div>
   );
 }
-
-export { source as VariantsSource };

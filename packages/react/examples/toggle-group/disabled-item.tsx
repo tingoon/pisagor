@@ -1,4 +1,3 @@
-import source from "./disabled-item.tsx?raw";
 import { ToggleGroup } from "@pisagor/react";
 
 export function DisabledItem() {
@@ -14,5 +13,3 @@ export function DisabledItem() {
     />
   );
 }
-
-export { source as DisabledItemSource };

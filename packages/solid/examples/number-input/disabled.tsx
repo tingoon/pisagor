@@ -1,4 +1,3 @@
-import source from "./disabled.tsx?raw";
 import { NumberInput } from "@pisagor/solid";
 
 export function Disabled() {
@@ -12,5 +11,3 @@ export function Disabled() {
     </NumberInput>
   );
 }
-
-export { source as DisabledSource };

@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./expand-depth.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { JsonTreeView } from "@pisagor/vue";
 import { expandDepthData } from "./helpers";

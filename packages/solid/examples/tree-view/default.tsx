@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import {
   createTreeCollection,
   type NodeProviderProps,
@@ -69,5 +68,3 @@ export function Default() {
     </div>
   );
 }
-
-export { source as DefaultSource };

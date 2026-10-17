@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { Button, Dialog, Field, Input, Select } from "@pisagor/react";
 import { dialogRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -54,5 +53,3 @@ export function CustomRecipe() {
     </Dialog>
   );
 }
-
-export { source as CustomRecipeSource };

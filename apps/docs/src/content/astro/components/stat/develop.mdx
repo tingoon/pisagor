@@ -4,11 +4,6 @@ import Variants from "#examples/astro/stat/variants.astro";
 import WithTrend from "#examples/astro/stat/with-trend.astro";
 import Compound from "#examples/astro/stat/compound.astro";
 import CustomRecipe from "#examples/astro/stat/custom-recipe.astro";
-import DefaultSource from "#examples/astro/stat/default.astro?raw";
-import VariantsSource from "#examples/astro/stat/variants.astro?raw";
-import WithTrendSource from "#examples/astro/stat/with-trend.astro?raw";
-import CompoundSource from "#examples/astro/stat/compound.astro?raw";
-import CustomRecipeSource from "#examples/astro/stat/custom-recipe.astro?raw";
 
 ## Import
 
@@ -22,13 +17,7 @@ import { Stat } from "@pisagor/astro";
 
 Highlight a key metric with supporting context.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="stat"
-  framework="astro"
-  kind="component"
->
+<Example name="Default">
   <Default />
 </Example>
 
@@ -36,13 +25,7 @@ Highlight a key metric with supporting context.
 
 Choose emphasis so the stat matches dashboard hierarchy.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="stat"
-  framework="astro"
-  kind="component"
->
+<Example name="Variants">
   <Variants />
 </Example>
 
@@ -50,13 +33,7 @@ Choose emphasis so the stat matches dashboard hierarchy.
 
 Show direction of change when trend matters alongside the value.
 
-<Example
-  name="WithTrend"
-  code={WithTrendSource}
-  exampleId="stat"
-  framework="astro"
-  kind="component"
->
+<Example name="WithTrend">
   <WithTrend />
 </Example>
 
@@ -64,13 +41,7 @@ Show direction of change when trend matters alongside the value.
 
 Assemble from parts when you need a custom layout beyond the shorthand API.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="stat"
-  framework="astro"
-  kind="component"
->
+<Example name="Compound">
   <Compound />
 </Example>
 
@@ -80,12 +51,6 @@ Assemble from parts when you need a custom layout beyond the shorthand API.
 
 Extend `statRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="stat"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomRecipe">
   <CustomRecipe />
 </Example>

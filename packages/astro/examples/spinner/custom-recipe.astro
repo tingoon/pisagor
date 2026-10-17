@@ -7,8 +7,7 @@ const brandSpinnerRecipe = tv({
   base: ["text-emerald-600"],
   extend: spinnerRecipe,
 });
-import source from "./custom-recipe.astro?raw";
-export { source };
+export type { source };
 ---
 
 <Spinner recipe={brandSpinnerRecipe} />

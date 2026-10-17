@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./popover-sliders-only.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, ColorPicker, Field } from "@pisagor/svelte";
 </script>

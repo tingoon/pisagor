@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./item-picker.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Avatar, Button, DropdownMenu, Item } from "@pisagor/svelte";
   import { itemPickerBlock } from "#/recipes/blocks/overlay";

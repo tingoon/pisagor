@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { AutocompleteField } from "@pisagor/solid-form";
 import { cityOptions } from "../options";
 
@@ -13,5 +12,3 @@ export function Default() {
     />
   );
 }
-
-export { source as DefaultSource };

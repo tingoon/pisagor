@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./custom-icons.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import {
     createFileIcons,

@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./with-promise.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Button, DownloadTrigger } from "@pisagor/svelte";
   import DownloadIcon from "phosphor-svelte/lib/DownloadIcon";

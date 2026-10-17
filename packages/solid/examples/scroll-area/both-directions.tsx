@@ -1,4 +1,3 @@
-import source from "./both-directions.tsx?raw";
 import { ScrollArea } from "@pisagor/solid";
 
 export function BothDirections() {
@@ -40,5 +39,3 @@ export function BothDirections() {
     </ScrollArea>
   );
 }
-
-export { source as BothDirectionsSource };

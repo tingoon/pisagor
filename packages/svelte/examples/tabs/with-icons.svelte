@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./with-icons.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Tabs } from "@pisagor/svelte";
   import GearIcon from "phosphor-svelte/lib/GearIcon";

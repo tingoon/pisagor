@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./custom-recipe.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { carouselRecipe } from "@pisagor/recipes";
   import { Carousel } from "@pisagor/svelte";

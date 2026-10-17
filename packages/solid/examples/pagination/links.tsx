@@ -1,4 +1,3 @@
-import source from "./links.tsx?raw";
 import { Pagination } from "@pisagor/solid";
 import { CaretLeftIcon, CaretRightIcon } from "@pisagor/solid/icons";
 
@@ -17,5 +16,3 @@ export function Links() {
     </Pagination>
   );
 }
-
-export { source as LinksSource };

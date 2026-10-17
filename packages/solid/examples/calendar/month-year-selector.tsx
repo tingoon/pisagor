@@ -1,4 +1,3 @@
-import source from "./month-year-selector.tsx?raw";
 import { Calendar, Card } from "@pisagor/solid";
 export function MonthYearSelector() {
   return (
@@ -20,5 +19,3 @@ export function MonthYearSelector() {
     </Card>
   );
 }
-
-export { source as MonthYearSelectorSource };

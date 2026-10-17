@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Calendar } from "@pisagor/solid";
 
 export function Default() {
@@ -17,5 +16,3 @@ export function Default() {
     </Calendar>
   );
 }
-
-export { source as DefaultSource };

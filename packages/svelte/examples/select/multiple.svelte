@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./multiple.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { createListCollection } from "@ark-ui/svelte/collection";
   import { Select } from "@pisagor/svelte";

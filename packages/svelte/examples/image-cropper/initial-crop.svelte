@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./initial-crop.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { ImageCropper } from "@pisagor/svelte";
 </script>

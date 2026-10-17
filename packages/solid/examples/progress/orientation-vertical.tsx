@@ -1,4 +1,3 @@
-import source from "./orientation-vertical.tsx?raw";
 import { Progress } from "@pisagor/solid";
 
 export function OrientationVertical() {
@@ -8,5 +7,3 @@ export function OrientationVertical() {
     </div>
   );
 }
-
-export { source as OrientationVerticalSource };

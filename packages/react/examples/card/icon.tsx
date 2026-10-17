@@ -1,4 +1,3 @@
-import source from "./icon.tsx?raw";
 import { CurrencyDollarIcon } from "@phosphor-icons/react";
 import { Button, Card } from "@pisagor/react";
 export function Icon() {
@@ -22,5 +21,3 @@ export function Icon() {
     </Card>
   );
 }
-
-export { source as IconSource };

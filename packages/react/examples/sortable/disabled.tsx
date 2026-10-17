@@ -1,4 +1,3 @@
-import source from "./disabled.tsx?raw";
 import { Sortable } from "@pisagor/react";
 import { useState } from "react";
 
@@ -25,5 +24,3 @@ export function Disabled() {
     </Sortable>
   );
 }
-
-export { source as DisabledSource };

@@ -1,4 +1,3 @@
-import source from "./group.tsx?raw";
 import { AvatarGroup } from "@pisagor/solid";
 
 const users = [
@@ -31,5 +30,3 @@ const users = [
 export function Group() {
   return <AvatarGroup max={4} users={users} />;
 }
-
-export { source as GroupSource };

@@ -1,10 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { VariantsSource } from "#examples/solid/announcement/variants.tsx";
-import { WithIconSource } from "#examples/solid/announcement/with-icon.tsx";
-import { WithoutBadgeSource } from "#examples/solid/announcement/without-badge.tsx";
-import { CompoundSource } from "#examples/solid/announcement/compound.tsx";
-import { WithLinkSource } from "#examples/solid/announcement/with-link.tsx";
-import { CustomRecipeSource } from "#examples/solid/announcement/custom-recipe.tsx";
 
 ## Import
 
@@ -18,61 +12,31 @@ import { Announcement } from "@pisagor/solid";
 
 Choose emphasis so the announcement matches how urgent or promotional the message is.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="announcement"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Variants" />
 
 ### With Icon
 
 Add an icon when a symbol helps users recognize the announcement type quickly.
 
-<Example
-  name="WithIcon"
-  code={WithIconSource}
-  exampleId="announcement"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithIcon" />
 
 ### Without Badge
 
 Drop the badge treatment when a plain text callout is enough.
 
-<Example
-  name="WithoutBadge"
-  code={WithoutBadgeSource}
-  exampleId="announcement"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithoutBadge" />
 
 ### Compound
 
 Assemble parts when you need a custom announcement layout.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="announcement"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### As child
 
 Link through to details when the bar should stay short and the full story lives elsewhere.
 
-<Example
-  name="WithLink"
-  code={WithLinkSource}
-  exampleId="announcement"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithLink" />
 
 ## Customization
 
@@ -80,10 +44,4 @@ Link through to details when the bar should stay short and the full story lives 
 
 Extend `announcementRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="announcement"
-  framework="solid"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

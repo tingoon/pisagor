@@ -1,4 +1,3 @@
-import source from "./article.tsx?raw";
 import { LinkBox } from "@pisagor/solid";
 
 export function Article() {
@@ -26,5 +25,3 @@ export function Article() {
     />
   );
 }
-
-export { source as ArticleSource };

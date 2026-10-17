@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./editable-user-card.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { cn } from "@pisagor/utils";
 import { Button, Card, Field, Input } from "@pisagor/vue";

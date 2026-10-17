@@ -10,7 +10,6 @@ export { default as Invalid } from "./invalid.svelte";
 export { default as OrientationHorizontal } from "./orientation-horizontal.svelte";
 export { default as OrientationVertical } from "./orientation-vertical.svelte";
 export { default as Sizes } from "./sizes.svelte";
-export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.svelte";
 export { default as WithTextarea } from "./with-textarea.svelte";
 export { default as WithoutControls } from "./without-controls.svelte";

@@ -1,9 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/floating-panel/default.svelte?raw";
-import ControlledPositionSource from "#examples/svelte/floating-panel/controlled-position.svelte?raw";
-import ControlledSizeSource from "#examples/svelte/floating-panel/controlled-size.svelte?raw";
-import CustomSpacingSource from "#examples/svelte/floating-panel/custom-spacing.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/floating-panel/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -38,37 +33,19 @@ import { FloatingPanel } from "@pisagor/svelte";
 
 Float a draggable, resizable tool above the workspace.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="floating-panel"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Controlled Position
 
 Drive position from the parent when layout must restore a saved place.
 
-<Example
-  name="ControlledPosition"
-  code={ControlledPositionSource}
-  exampleId="floating-panel"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="ControlledPosition" />
 
 ### Controlled Size
 
 Drive size from the parent when dimensions must restore a saved layout.
 
-<Example
-  name="ControlledSize"
-  code={ControlledSizeSource}
-  exampleId="floating-panel"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="ControlledSize" />
 
 ## Customization
 
@@ -78,22 +55,10 @@ Pass `class` for a one-off change to a single element.
 
 Override spacing when the default density does not match the surrounding layout.
 
-<Example
-  name="CustomSpacing"
-  code={CustomSpacingSource}
-  exampleId="floating-panel"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomSpacing" />
 
 ### Custom recipe
 
 Extend `floatingPanelRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="floating-panel"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

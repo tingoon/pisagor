@@ -1,4 +1,3 @@
-import source from "./popover-dialog.tsx?raw";
 /** @jsxImportSource solid-js */
 import { Button, Dialog, Popover } from "@pisagor/solid";
 import { Portal } from "solid-js/web";
@@ -56,5 +55,3 @@ export function PopoverDialog() {
     </Dialog.Root>
   );
 }
-
-export { source as PopoverDialogSource };

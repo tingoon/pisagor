@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./select-today.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Calendar, Card } from "@pisagor/svelte";
 </script>

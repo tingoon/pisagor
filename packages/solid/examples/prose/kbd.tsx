@@ -1,4 +1,3 @@
-import source from "./kbd.tsx?raw";
 import { Prose } from "@pisagor/solid";
 
 export function Kbd() {
@@ -10,5 +9,3 @@ export function Kbd() {
     </Prose>
   );
 }
-
-export { source as KbdSource };

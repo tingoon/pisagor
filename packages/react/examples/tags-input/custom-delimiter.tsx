@@ -1,4 +1,3 @@
-import source from "./custom-delimiter.tsx?raw";
 import { Field, TagsInput } from "@pisagor/react";
 export function CustomDelimiter() {
   const tagDelimiter = /[,\s]+/;
@@ -23,5 +22,3 @@ export function CustomDelimiter() {
     </Field>
   );
 }
-
-export { source as CustomDelimiterSource };

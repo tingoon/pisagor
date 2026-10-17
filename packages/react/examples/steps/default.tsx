@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
 import { Button, Steps } from "@pisagor/react";
 export function Default() {
@@ -45,5 +44,3 @@ export function Default() {
     </Steps>
   );
 }
-
-export { source as DefaultSource };

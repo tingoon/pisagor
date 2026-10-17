@@ -1,10 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/card/default.svelte?raw";
-import SizesSource from "#examples/svelte/card/sizes.svelte?raw";
-import IconSource from "#examples/svelte/card/icon.svelte?raw";
-import ProductSource from "#examples/svelte/card/product.svelte?raw";
-import CustomSpacingSource from "#examples/svelte/card/custom-spacing.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/card/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -28,49 +22,25 @@ import { Card } from "@pisagor/svelte";
 
 A contained surface for related content and actions.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="card"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Sizes
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="card"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Icon
 
 Lead with an icon when the card category should be recognizable at a glance.
 
-<Example
-  name="Icon"
-  code={IconSource}
-  exampleId="card"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Icon" />
 
 ### Product
 
 Compose media, title, and actions for a product-style card.
 
-<Example
-  name="Product"
-  code={ProductSource}
-  exampleId="card"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Product" />
 
 ## Customization
 
@@ -80,22 +50,10 @@ Pass `class` for a one-off change to a single element.
 
 Adjust padding when the card sits in a denser or roomier layout.
 
-<Example
-  name="CustomSpacing"
-  code={CustomSpacingSource}
-  exampleId="card"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomSpacing" />
 
 ### Custom recipe
 
 Extend `cardRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="card"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

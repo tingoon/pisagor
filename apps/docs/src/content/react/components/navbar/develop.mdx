@@ -1,7 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/react/navbar/default.tsx";
-import { WithSidebarSource } from "#examples/react/navbar/with-sidebar.tsx";
-import { CustomRecipeSource } from "#examples/react/navbar/custom-recipe.tsx";
 
 ## Import
 
@@ -25,25 +22,13 @@ import { Navbar } from "@pisagor/react";
 
 Top bar with brand, navigation, and action slots.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="navbar"
-  framework="react"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### With Sidebar
 
 Pair the navbar with a sidebar when primary nav lives on the side.
 
-<Example
-  name="WithSidebar"
-  code={WithSidebarSource}
-  exampleId="navbar"
-  framework="react"
-  kind="component"
-/>
+<Example name="WithSidebar" />
 
 ## Customization
 
@@ -51,10 +36,4 @@ Pair the navbar with a sidebar when primary nav lives on the side.
 
 Extend `navbarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="navbar"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

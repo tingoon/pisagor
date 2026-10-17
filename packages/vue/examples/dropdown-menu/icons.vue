@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./icons.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhCopy, PhPencil, PhShare } from "@phosphor-icons/vue";
 import { Button, DropdownMenu } from "@pisagor/vue";

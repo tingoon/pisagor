@@ -1,4 +1,3 @@
-import source from "./invalid.tsx?raw";
 import { TextareaField } from "@pisagor/react-form";
 
 export function Invalid() {
@@ -12,5 +11,3 @@ export function Invalid() {
     />
   );
 }
-
-export { source as InvalidSource };

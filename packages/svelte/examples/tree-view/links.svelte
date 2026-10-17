@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./links.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { createTreeCollection, TreeView } from "@pisagor/svelte";
   import TreeNodeLink from "./tree-node-link.svelte";

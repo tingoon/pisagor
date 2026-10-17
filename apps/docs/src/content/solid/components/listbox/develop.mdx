@@ -1,23 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/solid/listbox/default.tsx";
-import { HorizontalSource } from "#examples/solid/listbox/horizontal.tsx";
-import { GridSource } from "#examples/solid/listbox/grid.tsx";
-import { WithIconSource } from "#examples/solid/listbox/with-icon.tsx";
-import { WithDescriptionSource } from "#examples/solid/listbox/with-description.tsx";
-import { GroupingSource } from "#examples/solid/listbox/grouping.tsx";
-import { WithFilterSource } from "#examples/solid/listbox/with-filter.tsx";
-import { CompoundSource } from "#examples/solid/listbox/compound.tsx";
-import { WithPopoverSource } from "#examples/solid/listbox/with-popover.tsx";
-import { TransferListSource } from "#examples/solid/listbox/transfer-list.tsx";
-import { ImageExplorerSource } from "#examples/solid/listbox/image-explorer.tsx";
-import { ControlledSource } from "#examples/solid/listbox/controlled.tsx";
-import { EmptySource } from "#examples/solid/listbox/empty.tsx";
-import { DisabledSource } from "#examples/solid/listbox/disabled.tsx";
-import { DisabledItemSource } from "#examples/solid/listbox/disabled-item.tsx";
-import { SelectionMultipleSource } from "#examples/solid/listbox/selection-multiple.tsx";
-import { SelectionExtendedSource } from "#examples/solid/listbox/selection-extended.tsx";
-import { SelectionNoneSource } from "#examples/solid/listbox/selection-none.tsx";
-import { CustomRecipeSource } from "#examples/solid/listbox/custom-recipe.tsx";
 
 ## Import
 
@@ -31,217 +12,109 @@ import { Listbox } from "@pisagor/solid";
 
 Choose from a scrollable list with clear selection.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="listbox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Horizontal
 
 Use a horizontal layout when the listbox should read left to right.
 
-<Example
-  name="Horizontal"
-  code={HorizontalSource}
-  exampleId="listbox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Horizontal" />
 
 ### Grid
 
 Lay options in a grid when tiles scan better than a single column.
 
-<Example
-  name="Grid"
-  code={GridSource}
-  exampleId="listbox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Grid" />
 
 ### With Icon
 
 Lead options with icons when symbols speed recognition.
 
-<Example
-  name="WithIcon"
-  code={WithIconSource}
-  exampleId="listbox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithIcon" />
 
 ### With Description
 
 Add secondary text under each option for clarity.
 
-<Example
-  name="WithDescription"
-  code={WithDescriptionSource}
-  exampleId="listbox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithDescription" />
 
 ### Grouped
 
 Group options under labels for long lists.
 
-<Example
-  name="Grouping"
-  code={GroupingSource}
-  exampleId="listbox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Grouping" />
 
 ### With Filter
 
 Filter the list by typing when options are numerous.
 
-<Example
-  name="WithFilter"
-  code={WithFilterSource}
-  exampleId="listbox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithFilter" />
 
 ### Compound
 
 Assemble from parts when you need a custom layout beyond the shorthand API.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="listbox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### With Popover
 
 Host the listbox inside a popover trigger.
 
-<Example
-  name="WithPopover"
-  code={WithPopoverSource}
-  exampleId="listbox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithPopover" />
 
 ### Transfer List
 
 Move items between dual lists when assigning membership.
 
-<Example
-  name="TransferList"
-  code={TransferListSource}
-  exampleId="listbox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="TransferList" />
 
 ### Image Explorer
 
 Browse image options when thumbnails carry meaning.
 
-<Example
-  name="ImageExplorer"
-  code={ImageExplorerSource}
-  exampleId="listbox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="ImageExplorer" />
 
 ### Controlled
 
 Drive selection from the parent when other UI depends on it.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="listbox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Empty
 
 Shown when the collection has no items. Customize it with `emptyText` or render `Listbox.Empty` in compound usage.
 
-<Example
-  name="Empty"
-  code={EmptySource}
-  exampleId="listbox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Empty" />
 
 ### Disabled
 
 Show that the list is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="listbox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Disabled Item
 
 Show that a specific option cannot be selected.
 
-<Example
-  name="DisabledItem"
-  code={DisabledItemSource}
-  exampleId="listbox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="DisabledItem" />
 
 ### Selection Multiple
 
 Allow more than one selected option.
 
-<Example
-  name="SelectionMultiple"
-  code={SelectionMultipleSource}
-  exampleId="listbox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="SelectionMultiple" />
 
 ### Selection Extended
 
 Extend selection with modifier keys for power users.
 
-<Example
-  name="SelectionExtended"
-  code={SelectionExtendedSource}
-  exampleId="listbox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="SelectionExtended" />
 
 ### Selection None
 
 Support a list without a required selection.
 
-<Example
-  name="SelectionNone"
-  code={SelectionNoneSource}
-  exampleId="listbox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="SelectionNone" />
 
 ## Customization
 
@@ -249,10 +122,4 @@ Support a list without a required selection.
 
 Extend `listboxRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="listbox"
-  framework="solid"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

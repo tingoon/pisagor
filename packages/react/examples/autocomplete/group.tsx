@@ -1,4 +1,3 @@
-import source from "./group.tsx?raw";
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { Autocomplete } from "@pisagor/react";
 
@@ -45,5 +44,3 @@ export function Group() {
     </Autocomplete.Root>
   );
 }
-
-export { source as GroupSource };

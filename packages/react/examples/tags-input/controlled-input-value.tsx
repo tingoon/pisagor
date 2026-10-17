@@ -1,4 +1,3 @@
-import source from "./controlled-input-value.tsx?raw";
 import { Button, Field, TagsInput } from "@pisagor/react";
 import { useState } from "react";
 export function ControlledInputValue() {
@@ -40,5 +39,3 @@ export function ControlledInputValue() {
     </div>
   );
 }
-
-export { source as ControlledInputValueSource };

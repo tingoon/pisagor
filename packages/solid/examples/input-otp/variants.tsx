@@ -1,4 +1,3 @@
-import source from "./variants.tsx?raw";
 import { InputOTP } from "@pisagor/solid";
 
 export function Variants() {
@@ -25,5 +24,3 @@ export function Variants() {
     </div>
   );
 }
-
-export { source as VariantsSource };

@@ -1,4 +1,3 @@
-import source from "./loading-state.tsx?raw";
 import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
 import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Button, Checkbox, Skeleton, Table } from "@pisagor/react";
@@ -330,5 +329,3 @@ export function LoadingState() {
     </DataGridShell>
   );
 }
-
-export { source as LoadingStateSource };

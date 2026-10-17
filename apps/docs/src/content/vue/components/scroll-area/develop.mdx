@@ -1,11 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/scroll-area/default.vue?raw";
-import HorizontalSource from "#examples/vue/scroll-area/horizontal.vue?raw";
-import BothDirectionsSource from "#examples/vue/scroll-area/both-directions.vue?raw";
-import NestedSource from "#examples/vue/scroll-area/nested.vue?raw";
-import CompoundSource from "#examples/vue/scroll-area/compound.vue?raw";
-import ScrollFadeSource from "#examples/vue/scroll-area/scroll-fade.vue?raw";
-import CustomRecipeSource from "#examples/vue/scroll-area/custom-recipe.vue?raw";
 
 ## Import
 
@@ -19,73 +12,37 @@ import { ScrollArea } from "@pisagor/vue";
 
 Scroll overflow content with styled scrollbars.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="scroll-area"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Horizontal
 
 Use a horizontal layout when the scroll area should read left to right.
 
-<Example
-  name="Horizontal"
-  code={HorizontalSource}
-  exampleId="scroll-area"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Horizontal" />
 
 ### Both Directions
 
 Allow scrolling both horizontally and vertically when content overflows in two axes.
 
-<Example
-  name="BothDirections"
-  code={BothDirectionsSource}
-  exampleId="scroll-area"
-  framework="vue"
-  kind="component"
-/>
+<Example name="BothDirections" />
 
 ### Nested
 
 Nest another scroll area when hierarchy or layered structure is part of the content.
 
-<Example
-  name="Nested"
-  code={NestedSource}
-  exampleId="scroll-area"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Nested" />
 
 ### Compound
 
 Compose `ScrollArea.Root`, `Viewport`, `Scrollbar`, `Thumb` and `Corner` to choose which scrollbars render.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="scroll-area"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ### Scroll Fade
 
 Fade edges to hint that more content exists beyond the viewport.
 
-<Example
-  name="ScrollFade"
-  code={ScrollFadeSource}
-  exampleId="scroll-area"
-  framework="vue"
-  kind="component"
-/>
+<Example name="ScrollFade" />
 
 ## Customization
 
@@ -93,10 +50,4 @@ Fade edges to hint that more content exists beyond the viewport.
 
 Extend `scrollAreaRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="scroll-area"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./table-pagination.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { cn } from "@pisagor/utils";
 import { Pagination, Select, Table } from "@pisagor/vue";

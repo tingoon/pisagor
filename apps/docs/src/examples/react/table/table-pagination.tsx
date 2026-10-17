@@ -1,4 +1,3 @@
-import source from "./table-pagination.tsx?raw";
 import { Pagination, Select, Table } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import { useState } from "react";
@@ -77,5 +76,3 @@ const users = Array.from({ length: 48 }, (_, i) => ({
   id: `user-${i + 1}`,
   name: samplePeople[i % samplePeople.length],
 }));
-
-export { source as TablePaginationSource };

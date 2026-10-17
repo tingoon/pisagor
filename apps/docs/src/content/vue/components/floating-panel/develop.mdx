@@ -1,9 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/vue/floating-panel/default.vue?raw";
-import ControlledPositionSource from "#examples/vue/floating-panel/controlled-position.vue?raw";
-import ControlledSizeSource from "#examples/vue/floating-panel/controlled-size.vue?raw";
-import CustomSpacingSource from "#examples/vue/floating-panel/custom-spacing.vue?raw";
-import CustomRecipeSource from "#examples/vue/floating-panel/custom-recipe.vue?raw";
 
 ## Import
 
@@ -38,37 +33,19 @@ import { FloatingPanel } from "@pisagor/vue";
 
 Float a draggable, resizable tool above the workspace.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="floating-panel"
-  framework="vue"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Controlled Position
 
 Drive position from the parent when layout must restore a saved place.
 
-<Example
-  name="ControlledPosition"
-  code={ControlledPositionSource}
-  exampleId="floating-panel"
-  framework="vue"
-  kind="component"
-/>
+<Example name="ControlledPosition" />
 
 ### Controlled Size
 
 Drive size from the parent when dimensions must restore a saved layout.
 
-<Example
-  name="ControlledSize"
-  code={ControlledSizeSource}
-  exampleId="floating-panel"
-  framework="vue"
-  kind="component"
-/>
+<Example name="ControlledSize" />
 
 ## Customization
 
@@ -78,22 +55,10 @@ Pass `class` for a one-off change to a single element.
 
 Override spacing when the default density does not match the surrounding layout.
 
-<Example
-  name="CustomSpacing"
-  code={CustomSpacingSource}
-  exampleId="floating-panel"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomSpacing" />
 
 ### Custom recipe
 
 Extend `floatingPanelRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="floating-panel"
-  framework="vue"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

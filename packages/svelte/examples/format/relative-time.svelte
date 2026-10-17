@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./relative-time.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Format } from "@pisagor/svelte";
 </script>

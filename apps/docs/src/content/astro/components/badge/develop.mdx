@@ -6,13 +6,6 @@ import WithLink from "#examples/astro/badge/with-link.astro";
 import WithSpinner from "#examples/astro/badge/with-spinner.astro";
 import CustomColor from "#examples/astro/badge/custom-color.astro";
 import CustomRecipe from "#examples/astro/badge/custom-recipe.astro";
-import VariantsSource from "#examples/astro/badge/variants.astro?raw";
-import SizesSource from "#examples/astro/badge/sizes.astro?raw";
-import PillSource from "#examples/astro/badge/pill.astro?raw";
-import WithLinkSource from "#examples/astro/badge/with-link.astro?raw";
-import WithSpinnerSource from "#examples/astro/badge/with-spinner.astro?raw";
-import CustomColorSource from "#examples/astro/badge/custom-color.astro?raw";
-import CustomRecipeSource from "#examples/astro/badge/custom-recipe.astro?raw";
 
 ## Import
 
@@ -26,13 +19,7 @@ import { Badge } from "@pisagor/astro";
 
 Choose tone so the badge reflects status severity or category.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="badge"
-  framework="astro"
-  kind="component"
->
+<Example name="Variants">
   <Variants />
 </Example>
 
@@ -40,13 +27,7 @@ Choose tone so the badge reflects status severity or category.
 
 Match badge size to nearby text and controls.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="badge"
-  framework="astro"
-  kind="component"
->
+<Example name="Sizes">
   <Sizes />
 </Example>
 
@@ -54,13 +35,7 @@ Match badge size to nearby text and controls.
 
 Use a fully rounded shape when softer, chip-like geometry fits the layout.
 
-<Example
-  name="Pill"
-  code={PillSource}
-  exampleId="badge"
-  framework="astro"
-  kind="component"
->
+<Example name="Pill">
   <Pill />
 </Example>
 
@@ -68,13 +43,7 @@ Use a fully rounded shape when softer, chip-like geometry fits the layout.
 
 Make the badge navigate when the label itself is a destination.
 
-<Example
-  name="WithLink"
-  code={WithLinkSource}
-  exampleId="badge"
-  framework="astro"
-  kind="component"
->
+<Example name="WithLink">
   <WithLink />
 </Example>
 
@@ -82,13 +51,7 @@ Make the badge navigate when the label itself is a destination.
 
 Show a spinner inside the badge when the status is still loading.
 
-<Example
-  name="WithSpinner"
-  code={WithSpinnerSource}
-  exampleId="badge"
-  framework="astro"
-  kind="component"
->
+<Example name="WithSpinner">
   <WithSpinner />
 </Example>
 
@@ -100,13 +63,7 @@ Pass `class` for a one-off change to a single element.
 
 Override the fill when a brand or contextual color matters more than the theme default.
 
-<Example
-  name="CustomColor"
-  code={CustomColorSource}
-  exampleId="badge"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomColor">
   <CustomColor />
 </Example>
 
@@ -114,12 +71,6 @@ Override the fill when a brand or contextual color matters more than the theme d
 
 Extend `badgeRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="badge"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomRecipe">
   <CustomRecipe />
 </Example>

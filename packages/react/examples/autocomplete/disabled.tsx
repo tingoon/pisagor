@@ -1,4 +1,3 @@
-import source from "./disabled.tsx?raw";
 import { Autocomplete } from "@pisagor/react";
 
 export function Disabled() {
@@ -13,5 +12,3 @@ export function Disabled() {
     />
   );
 }
-
-export { source as DisabledSource };

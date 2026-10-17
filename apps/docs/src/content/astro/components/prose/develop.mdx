@@ -23,30 +23,6 @@ import P from "#examples/astro/prose/p.astro";
 import Separator from "#examples/astro/prose/separator.astro";
 import Small from "#examples/astro/prose/small.astro";
 import CustomRecipe from "#examples/astro/prose/custom-recipe.astro";
-import DefaultSource from "#examples/astro/prose/default.astro?raw";
-import ASource from "#examples/astro/prose/a.astro?raw";
-import BlockquoteSource from "#examples/astro/prose/blockquote.astro?raw";
-import DetailsSource from "#examples/astro/prose/details.astro?raw";
-import DlSource from "#examples/astro/prose/dl.astro?raw";
-import H1Source from "#examples/astro/prose/h1.astro?raw";
-import H2Source from "#examples/astro/prose/h2.astro?raw";
-import H3Source from "#examples/astro/prose/h3.astro?raw";
-import H4Source from "#examples/astro/prose/h4.astro?raw";
-import H5Source from "#examples/astro/prose/h5.astro?raw";
-import H6Source from "#examples/astro/prose/h6.astro?raw";
-import HtmlSource from "#examples/astro/prose/html.astro?raw";
-import HtmlTableSource from "#examples/astro/prose/html-table.astro?raw";
-import InlineCodeSource from "#examples/astro/prose/inline-code.astro?raw";
-import KbdSource from "#examples/astro/prose/kbd.astro?raw";
-import ListSource from "#examples/astro/prose/list.astro?raw";
-import MarkSource from "#examples/astro/prose/mark.astro?raw";
-import MediaSource from "#examples/astro/prose/media.astro?raw";
-import NotProseSource from "#examples/astro/prose/not-prose.astro?raw";
-import OlSource from "#examples/astro/prose/ol.astro?raw";
-import PSource from "#examples/astro/prose/p.astro?raw";
-import SeparatorSource from "#examples/astro/prose/separator.astro?raw";
-import SmallSource from "#examples/astro/prose/small.astro?raw";
-import CustomRecipeSource from "#examples/astro/prose/custom-recipe.astro?raw";
 
 ## Import
 
@@ -60,13 +36,7 @@ import { Prose } from "@pisagor/astro";
 
 Readable long-form text styled for articles and documentation.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="Default">
   <Default />
 </Example>
 
@@ -74,13 +44,7 @@ Readable long-form text styled for articles and documentation.
 
 Style inline links inside prose content.
 
-<Example
-  name="A"
-  code={ASource}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="A">
   <A />
 </Example>
 
@@ -88,13 +52,7 @@ Style inline links inside prose content.
 
 Style quotations set apart from surrounding paragraphs.
 
-<Example
-  name="Blockquote"
-  code={BlockquoteSource}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="Blockquote">
   <Blockquote />
 </Example>
 
@@ -102,13 +60,7 @@ Style quotations set apart from surrounding paragraphs.
 
 Style expandable disclosure blocks inside prose.
 
-<Example
-  name="Details"
-  code={DetailsSource}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="Details">
   <Details />
 </Example>
 
@@ -116,13 +68,7 @@ Style expandable disclosure blocks inside prose.
 
 Style description lists for terms and definitions.
 
-<Example
-  name="Dl"
-  code={DlSource}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="Dl">
   <Dl />
 </Example>
 
@@ -130,13 +76,7 @@ Style description lists for terms and definitions.
 
 Style the top-level heading in a prose document.
 
-<Example
-  name="H1"
-  code={H1Source}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="H1">
   <H1 />
 </Example>
 
@@ -144,13 +84,7 @@ Style the top-level heading in a prose document.
 
 Style a section heading under the document title.
 
-<Example
-  name="H2"
-  code={H2Source}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="H2">
   <H2 />
 </Example>
 
@@ -158,13 +92,7 @@ Style a section heading under the document title.
 
 Style a subsection heading within a section.
 
-<Example
-  name="H3"
-  code={H3Source}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="H3">
   <H3 />
 </Example>
 
@@ -172,13 +100,7 @@ Style a subsection heading within a section.
 
 Style a fourth-level heading for finer structure.
 
-<Example
-  name="H4"
-  code={H4Source}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="H4">
   <H4 />
 </Example>
 
@@ -186,13 +108,7 @@ Style a fourth-level heading for finer structure.
 
 Style a fifth-level heading when deep outline levels are needed.
 
-<Example
-  name="H5"
-  code={H5Source}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="H5">
   <H5 />
 </Example>
 
@@ -200,13 +116,7 @@ Style a fifth-level heading when deep outline levels are needed.
 
 Style the deepest heading level supported in prose.
 
-<Example
-  name="H6"
-  code={H6Source}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="H6">
   <H6 />
 </Example>
 
@@ -214,13 +124,7 @@ Style the deepest heading level supported in prose.
 
 Render rich HTML through the prose styles.
 
-<Example
-  name="Html"
-  code={HtmlSource}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="Html">
   <Html />
 </Example>
 
@@ -228,13 +132,7 @@ Render rich HTML through the prose styles.
 
 Style tables that appear inside HTML prose content.
 
-<Example
-  name="HtmlTable"
-  code={HtmlTableSource}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="HtmlTable">
   <HtmlTable />
 </Example>
 
@@ -242,13 +140,7 @@ Style tables that appear inside HTML prose content.
 
 Style Inline Code elements inside long-form prose content.
 
-<Example
-  name="InlineCode"
-  code={InlineCodeSource}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="InlineCode">
   <InlineCode />
 </Example>
 
@@ -256,13 +148,7 @@ Style Inline Code elements inside long-form prose content.
 
 Style Kbd elements inside long-form prose content.
 
-<Example
-  name="Kbd"
-  code={KbdSource}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="Kbd">
   <Kbd />
 </Example>
 
@@ -270,13 +156,7 @@ Style Kbd elements inside long-form prose content.
 
 Style List elements inside long-form prose content.
 
-<Example
-  name="List"
-  code={ListSource}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="List">
   <List />
 </Example>
 
@@ -284,13 +164,7 @@ Style List elements inside long-form prose content.
 
 Style Mark elements inside long-form prose content.
 
-<Example
-  name="Mark"
-  code={MarkSource}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="Mark">
   <Mark />
 </Example>
 
@@ -298,13 +172,7 @@ Style Mark elements inside long-form prose content.
 
 Style Media elements inside long-form prose content.
 
-<Example
-  name="Media"
-  code={MediaSource}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="Media">
   <Media />
 </Example>
 
@@ -312,13 +180,7 @@ Style Media elements inside long-form prose content.
 
 Style Not Prose elements inside long-form prose content.
 
-<Example
-  name="NotProse"
-  code={NotProseSource}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="NotProse">
   <NotProse />
 </Example>
 
@@ -326,13 +188,7 @@ Style Not Prose elements inside long-form prose content.
 
 Style Ol elements inside long-form prose content.
 
-<Example
-  name="Ol"
-  code={OlSource}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="Ol">
   <Ol />
 </Example>
 
@@ -340,13 +196,7 @@ Style Ol elements inside long-form prose content.
 
 Style P elements inside long-form prose content.
 
-<Example
-  name="P"
-  code={PSource}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="P">
   <P />
 </Example>
 
@@ -354,13 +204,7 @@ Style P elements inside long-form prose content.
 
 Style Separator elements inside long-form prose content.
 
-<Example
-  name="Separator"
-  code={SeparatorSource}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="Separator">
   <Separator />
 </Example>
 
@@ -368,13 +212,7 @@ Style Separator elements inside long-form prose content.
 
 Style Small elements inside long-form prose content.
 
-<Example
-  name="Small"
-  code={SmallSource}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="Small">
   <Small />
 </Example>
 
@@ -384,12 +222,6 @@ Style Small elements inside long-form prose content.
 
 Extend `proseRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="prose"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomRecipe">
   <CustomRecipe />
 </Example>

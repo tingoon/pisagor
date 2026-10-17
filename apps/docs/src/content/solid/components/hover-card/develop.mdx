@@ -1,11 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/solid/hover-card/default.tsx";
-import { ControlledSource } from "#examples/solid/hover-card/controlled.tsx";
-import { DisabledSource } from "#examples/solid/hover-card/disabled.tsx";
-import { TriggersDelaysSource } from "#examples/solid/hover-card/triggers-delays.tsx";
-import { PlacementsSource } from "#examples/solid/hover-card/placements.tsx";
-import { WithoutArrowSource } from "#examples/solid/hover-card/without-arrow.tsx";
-import { CustomRecipeSource } from "#examples/solid/hover-card/custom-recipe.tsx";
 
 ## Import
 
@@ -28,61 +21,31 @@ import { HoverCard } from "@pisagor/solid";
 
 Preview richer content on hover or focus without a dialog.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="hover-card"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Controlled
 
 Manage state from the parent when other UI must stay in sync with this hover card.
 
-<Example
-  name="Controlled"
-  code={ControlledSource}
-  exampleId="hover-card"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Controlled" />
 
 ### Disabled
 
 Show that the hover card is unavailable.
 
-<Example
-  name="Disabled"
-  code={DisabledSource}
-  exampleId="hover-card"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Disabled" />
 
 ### Triggers Delays
 
 Tune open and close delays so accidental passes do not flash content.
 
-<Example
-  name="TriggersDelays"
-  code={TriggersDelaysSource}
-  exampleId="hover-card"
-  framework="solid"
-  kind="component"
-/>
+<Example name="TriggersDelays" />
 
 ### Placements
 
 Choose placement so the hover card stays near its trigger without covering critical content.
 
-<Example
-  name="Placements"
-  code={PlacementsSource}
-  exampleId="hover-card"
-  framework="solid"
-  kind="component"
-/>
+<Example name="Placements" />
 
 ## Customization
 
@@ -90,22 +53,10 @@ Choose placement so the hover card stays near its trigger without covering criti
 
 Hide the arrow when the card should sit flush with the layout.
 
-<Example
-  name="WithoutArrow"
-  code={WithoutArrowSource}
-  exampleId="hover-card"
-  framework="solid"
-  kind="component"
-/>
+<Example name="WithoutArrow" />
 
 ### Custom recipe
 
 Extend `hoverCardRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="hover-card"
-  framework="solid"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

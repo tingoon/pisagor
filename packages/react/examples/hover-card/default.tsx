@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { MapPinIcon } from "@phosphor-icons/react";
 import { Avatar, Button, HoverCard } from "@pisagor/react";
 export function Default() {
@@ -31,5 +30,3 @@ export function Default() {
     </HoverCard>
   );
 }
-
-export { source as DefaultSource };

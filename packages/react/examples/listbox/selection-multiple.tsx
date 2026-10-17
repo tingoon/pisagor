@@ -1,4 +1,3 @@
-import source from "./selection-multiple.tsx?raw";
 import { Item, Listbox } from "@pisagor/react";
 
 export function SelectionMultiple() {
@@ -17,5 +16,3 @@ export function SelectionMultiple() {
     </Item.Group>
   );
 }
-
-export { source as SelectionMultipleSource };

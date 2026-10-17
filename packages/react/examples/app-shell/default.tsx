@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { AppShell } from "@pisagor/react";
 import { mainContent, regionTitle } from "./helpers";
 
@@ -45,5 +44,3 @@ export function Default() {
     </AppShell>
   );
 }
-
-export { source as DefaultSource };

@@ -1,4 +1,3 @@
-import source from "./disabled.tsx?raw";
 import { PaperPlaneTiltIcon } from "@phosphor-icons/react";
 import { Button } from "@pisagor/react";
 
@@ -13,5 +12,3 @@ export function Disabled() {
     </Button>
   );
 }
-
-export { source as DisabledSource };

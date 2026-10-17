@@ -1,4 +1,3 @@
-import source from "./quick-item.tsx?raw";
 import { Button, DropdownMenu } from "@pisagor/solid";
 import {
   ArrowClockwiseIcon,
@@ -52,5 +51,3 @@ export function QuickItem() {
     </DropdownMenu>
   );
 }
-
-export { source as QuickItemSource };

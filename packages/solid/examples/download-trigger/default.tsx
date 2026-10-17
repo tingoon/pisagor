@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Button, DownloadTrigger } from "@pisagor/solid";
 
 export function Default() {
@@ -12,5 +11,3 @@ export function Default() {
     </DownloadTrigger>
   );
 }
-
-export { source as DefaultSource };

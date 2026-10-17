@@ -1,9 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import DefaultSource from "#examples/svelte/empty-state/default.svelte?raw";
-import SizesSource from "#examples/svelte/empty-state/sizes.svelte?raw";
-import CompactSource from "#examples/svelte/empty-state/compact.svelte?raw";
-import CompoundSource from "#examples/svelte/empty-state/compound.svelte?raw";
-import CustomRecipeSource from "#examples/svelte/empty-state/custom-recipe.svelte?raw";
 
 ## Import
 
@@ -17,49 +12,25 @@ import { EmptyState } from "@pisagor/svelte";
 
 Explain that a view has no data and point to the next action.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="empty-state"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Sizes
 
 Use `size` to pick the sm, md or lg scale. `md` is the default.
 
-<Example
-  name="Sizes"
-  code={SizesSource}
-  exampleId="empty-state"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Sizes" />
 
 ### Compact
 
 Use a denser empty state when the region is small.
 
-<Example
-  name="Compact"
-  code={CompactSource}
-  exampleId="empty-state"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Compact" />
 
 ### Compound
 
 Compose icon, title, and actions from parts for a custom empty layout.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="empty-state"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="Compound" />
 
 ## Customization
 
@@ -67,10 +38,4 @@ Compose icon, title, and actions from parts for a custom empty layout.
 
 Extend `emptyStateRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="empty-state"
-  framework="svelte"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

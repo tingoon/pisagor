@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./with-combobox.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 import { Combobox, Field, TagsInput } from "@pisagor/vue";

@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./download-svg.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhDownload } from "@phosphor-icons/vue";
 import { Button, DownloadTrigger } from "@pisagor/vue";

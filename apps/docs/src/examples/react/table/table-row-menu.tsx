@@ -1,4 +1,3 @@
-import source from "./table-row-menu.tsx?raw";
 import { EyeIcon, PencilSimpleIcon, TrashIcon } from "@phosphor-icons/react";
 import { ContextMenu, Table } from "@pisagor/react";
 import { tableRowMenuBlock } from "#/recipes/blocks/table";
@@ -84,5 +83,3 @@ const workspaceUsers = [
     status: "active",
   },
 ];
-
-export { source as TableRowMenuSource };

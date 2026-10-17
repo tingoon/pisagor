@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./default.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { SelectField } from "@pisagor/svelte-form";
   import { countryOptions } from "../options";

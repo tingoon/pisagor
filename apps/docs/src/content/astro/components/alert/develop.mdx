@@ -6,13 +6,6 @@ import WithAction from "#examples/astro/alert/with-action.astro";
 import Compound from "#examples/astro/alert/compound.astro";
 import CustomColor from "#examples/astro/alert/custom-color.astro";
 import CustomRecipe from "#examples/astro/alert/custom-recipe.astro";
-import VariantsSource from "#examples/astro/alert/variants.astro?raw";
-import WithIconSource from "#examples/astro/alert/with-icon.astro?raw";
-import WithoutIconSource from "#examples/astro/alert/without-icon.astro?raw";
-import WithActionSource from "#examples/astro/alert/with-action.astro?raw";
-import CompoundSource from "#examples/astro/alert/compound.astro?raw";
-import CustomColorSource from "#examples/astro/alert/custom-color.astro?raw";
-import CustomRecipeSource from "#examples/astro/alert/custom-recipe.astro?raw";
 
 ## Import
 
@@ -26,13 +19,7 @@ import { Alert } from "@pisagor/astro";
 
 Choose info, success, warning, or error to match the severity of the message.
 
-<Example
-  name="Variants"
-  code={VariantsSource}
-  exampleId="alert"
-  framework="astro"
-  kind="component"
->
+<Example name="Variants">
   <Variants />
 </Example>
 
@@ -40,13 +27,7 @@ Choose info, success, warning, or error to match the severity of the message.
 
 Reinforce meaning with an icon that matches the alert status.
 
-<Example
-  name="WithIcon"
-  code={WithIconSource}
-  exampleId="alert"
-  framework="astro"
-  kind="component"
->
+<Example name="WithIcon">
   <WithIcon />
 </Example>
 
@@ -54,13 +35,7 @@ Reinforce meaning with an icon that matches the alert status.
 
 Status variants (info, success, warning, destructive) render a default icon. Pass `icon={null}` to hide it.
 
-<Example
-  name="WithoutIcon"
-  code={WithoutIconSource}
-  exampleId="alert"
-  framework="astro"
-  kind="component"
->
+<Example name="WithoutIcon">
   <WithoutIcon />
 </Example>
 
@@ -68,13 +43,7 @@ Status variants (info, success, warning, destructive) render a default icon. Pas
 
 Add a follow-up action when the message should lead somewhere, such as Undo or View details.
 
-<Example
-  name="WithAction"
-  code={WithActionSource}
-  exampleId="alert"
-  framework="astro"
-  kind="component"
->
+<Example name="WithAction">
   <WithAction />
 </Example>
 
@@ -82,13 +51,7 @@ Add a follow-up action when the message should lead somewhere, such as Undo or V
 
 Compose title, description, and actions from parts for a custom alert layout.
 
-<Example
-  name="Compound"
-  code={CompoundSource}
-  exampleId="alert"
-  framework="astro"
-  kind="component"
->
+<Example name="Compound">
   <Compound />
 </Example>
 
@@ -100,13 +63,7 @@ Pass `class` for a one-off change to a single element.
 
 Override accent when a brand or contextual color matters more than the status token.
 
-<Example
-  name="CustomColor"
-  code={CustomColorSource}
-  exampleId="alert"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomColor">
   <CustomColor />
 </Example>
 
@@ -114,13 +71,7 @@ Override accent when a brand or contextual color matters more than the status to
 
 Extend `alertRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="alert"
-  framework="astro"
-  kind="component"
->
+<Example name="CustomRecipe">
   <CustomRecipe />
 </Example>
 

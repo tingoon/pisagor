@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Select } from "@pisagor/react";
 
 export function Default() {
@@ -9,5 +8,3 @@ export function Default() {
     />
   );
 }
-
-export { source as DefaultSource };

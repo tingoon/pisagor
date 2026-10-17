@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Button, Toaster, toast } from "@pisagor/solid";
 
 export function Default() {
@@ -19,5 +18,3 @@ export function Default() {
     </>
   );
 }
-
-export { source as DefaultSource };

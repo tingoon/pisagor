@@ -1,4 +1,3 @@
-import source from "./pill.tsx?raw";
 import { PlusIcon } from "@phosphor-icons/react";
 import { Button } from "@pisagor/react";
 
@@ -14,5 +13,3 @@ export function Pill() {
     </Button>
   );
 }
-
-export { source as PillSource };

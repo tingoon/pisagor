@@ -1,4 +1,3 @@
-import source from "./custom-spacing.ts?raw";
 import { Button, Drawer, Field, Input } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
@@ -51,5 +50,3 @@ export default defineComponent({
       ]);
   },
 });
-
-export { source };

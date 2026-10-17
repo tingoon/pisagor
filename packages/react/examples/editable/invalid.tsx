@@ -1,4 +1,3 @@
-import source from "./invalid.tsx?raw";
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Button, Editable, Input } from "@pisagor/react";
 export function Invalid() {
@@ -25,5 +24,3 @@ export function Invalid() {
     </Editable>
   );
 }
-
-export { source as InvalidSource };

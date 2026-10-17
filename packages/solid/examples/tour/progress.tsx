@@ -1,4 +1,3 @@
-import source from "./progress.tsx?raw";
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour, useTourContext } from "@pisagor/solid";
 export function Progress() {
@@ -107,5 +106,3 @@ export function Progress() {
     </div>
   );
 }
-
-export { source as ProgressSource };

@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { Button, EmptyState } from "@pisagor/react";
 export function Default() {
@@ -16,5 +15,3 @@ export function Default() {
     />
   );
 }
-
-export { source as DefaultSource };

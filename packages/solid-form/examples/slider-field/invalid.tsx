@@ -1,4 +1,3 @@
-import source from "./invalid.tsx?raw";
 import { SliderField } from "@pisagor/solid-form";
 
 export function Invalid() {
@@ -13,5 +12,3 @@ export function Invalid() {
     />
   );
 }
-
-export { source as InvalidSource };

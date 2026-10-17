@@ -1,4 +1,3 @@
-import source from "./input-group-with-number-input.tsx?raw";
 /** @jsxImportSource solid-js */
 import { InputGroup, NumberInput } from "@pisagor/solid";
 
@@ -17,5 +16,3 @@ export function InputGroupWithNumberInput() {
     </InputGroup>
   );
 }
-
-export { source as InputGroupWithNumberInputSource };

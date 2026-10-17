@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./close-trigger.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { ActionBar, Button } from "@pisagor/svelte";
   import {

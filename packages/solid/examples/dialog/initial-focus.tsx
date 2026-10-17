@@ -1,4 +1,3 @@
-import source from "./initial-focus.tsx?raw";
 import { Button, Dialog, Field, Input } from "@pisagor/solid";
 import { Portal } from "solid-js/web";
 
@@ -60,5 +59,3 @@ export function InitialFocus() {
     </Dialog.Root>
   );
 }
-
-export { source as InitialFocusSource };

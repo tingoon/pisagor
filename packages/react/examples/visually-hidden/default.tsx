@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Button, VisuallyHidden } from "@pisagor/react";
 export function Default() {
   return (
@@ -8,5 +7,3 @@ export function Default() {
     </Button>
   );
 }
-
-export { source as DefaultSource };

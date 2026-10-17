@@ -1,4 +1,3 @@
-import source from "./without-controls.tsx?raw";
 import { Card, Editable, Field, Input } from "@pisagor/react";
 export function WithoutControls() {
   return (
@@ -36,5 +35,3 @@ export function WithoutControls() {
     </Card>
   );
 }
-
-export { source as WithoutControlsSource };

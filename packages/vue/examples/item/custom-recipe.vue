@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./custom-recipe.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { PhDotsThree } from "@phosphor-icons/vue";
 import { itemRecipe } from "@pisagor/recipes";

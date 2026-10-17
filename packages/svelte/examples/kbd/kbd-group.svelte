@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./kbd-group.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { Kbd } from "@pisagor/svelte";
 </script>

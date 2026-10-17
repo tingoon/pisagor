@@ -1,4 +1,3 @@
-import source from "./fade.tsx?raw";
 import {
   ArrowRightIcon,
   AtomIcon,
@@ -42,5 +41,3 @@ export function Fade() {
     </div>
   );
 }
-
-export { source as FadeSource };

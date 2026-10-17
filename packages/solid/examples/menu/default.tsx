@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Menu } from "@pisagor/solid";
 
 export function Default() {
@@ -13,5 +12,3 @@ export function Default() {
     </Menu>
   );
 }
-
-export { source as DefaultSource };

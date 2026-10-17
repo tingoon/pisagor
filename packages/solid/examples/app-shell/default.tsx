@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { AppShell } from "@pisagor/solid";
 
 export function Default() {
@@ -29,5 +28,3 @@ export function Default() {
     </AppShell>
   );
 }
-
-export { source as DefaultSource };

@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { LinkBox } from "@pisagor/react";
 
 export function Default() {
@@ -18,5 +17,3 @@ export function Default() {
     </LinkBox>
   );
 }
-
-export { source as DefaultSource };

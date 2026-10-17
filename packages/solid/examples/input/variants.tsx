@@ -1,4 +1,3 @@
-import source from "./variants.tsx?raw";
 import { Input } from "@pisagor/solid";
 
 export function Variants() {
@@ -9,5 +8,3 @@ export function Variants() {
     </div>
   );
 }
-
-export { source as VariantsSource };

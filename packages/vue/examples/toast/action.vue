@@ -1,8 +1,3 @@
-<script lang="ts">
-import source from "./action.vue?raw";
-export { source };
-</script>
-
 <script lang="ts" setup>
 import { Button, toast } from "@pisagor/vue";
 

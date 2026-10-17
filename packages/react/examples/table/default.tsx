@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Table } from "@pisagor/react";
 import { workspaceUsers } from "./helpers";
@@ -40,5 +39,3 @@ export function Default() {
     </Table>
   );
 }
-
-export { source as DefaultSource };

@@ -1,4 +1,3 @@
-import source from "./header.tsx?raw";
 import { AppShell } from "@pisagor/react";
 import { mainContent, regionTitle } from "./helpers";
 
@@ -42,5 +41,3 @@ export function Header() {
     </AppShell>
   );
 }
-
-export { source as HeaderSource };

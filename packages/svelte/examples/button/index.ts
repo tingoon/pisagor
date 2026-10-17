@@ -7,6 +7,5 @@ export { default as Loading } from "./loading.svelte";
 export { default as NoClickEffect } from "./no-click-effect.svelte";
 export { default as Pill } from "./pill.svelte";
 export { default as Sizes } from "./sizes.svelte";
-export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.svelte";
 export { default as WithIcon } from "./with-icon.svelte";

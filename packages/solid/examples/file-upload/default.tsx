@@ -1,4 +1,3 @@
-import source from "./default.tsx?raw";
 import { Button, FileUpload, Separator } from "@pisagor/solid";
 
 export function Default() {
@@ -23,5 +22,3 @@ export function Default() {
     </FileUpload>
   );
 }
-
-export { source as DefaultSource };

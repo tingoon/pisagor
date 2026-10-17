@@ -1,4 +1,3 @@
-import source from "./description.tsx?raw";
 import { Steps } from "@pisagor/react";
 
 export function Description() {
@@ -26,5 +25,3 @@ export function Description() {
     </Steps>
   );
 }
-
-export { source as DescriptionSource };

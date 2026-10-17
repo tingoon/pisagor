@@ -1,4 +1,3 @@
-import source from "./active-filter-chips.tsx?raw";
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Checkbox, InputGroup, Pagination, Table } from "@pisagor/solid";
 import type { ColumnDef } from "@pisagor/solid/data-grid";
@@ -349,5 +348,3 @@ export function ActiveFilterChips() {
     </DataGridShell>
   );
 }
-
-export { source as ActiveFilterChipsSource };

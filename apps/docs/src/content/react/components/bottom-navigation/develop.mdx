@@ -1,8 +1,4 @@
 import Example from "#/components/docs/example.astro";
-import { DefaultSource } from "#examples/react/bottom-navigation/default.tsx";
-import { IconOnlySource } from "#examples/react/bottom-navigation/icon-only.tsx";
-import { WithLinksSource } from "#examples/react/bottom-navigation/with-links.tsx";
-import { CustomRecipeSource } from "#examples/react/bottom-navigation/custom-recipe.tsx";
 
 ## Import
 
@@ -29,37 +25,19 @@ import { BottomNavigation } from "@pisagor/react";
 
 Fixed bottom destinations for primary mobile sections.
 
-<Example
-  name="Default"
-  code={DefaultSource}
-  exampleId="bottom-navigation"
-  framework="react"
-  kind="component"
-/>
+<Example name="Default" />
 
 ### Icon Only
 
 Use icons alone when labels would crowd a narrow bar. Provide accessible names.
 
-<Example
-  name="IconOnly"
-  code={IconOnlySource}
-  exampleId="bottom-navigation"
-  framework="react"
-  kind="component"
-/>
+<Example name="IconOnly" />
 
 ### As child
 
 Items render as links. Set the root `value` to the current route so the matching item gets `aria-current="page"`, or pass `current` to an item.
 
-<Example
-  name="WithLinks"
-  code={WithLinksSource}
-  exampleId="bottom-navigation"
-  framework="react"
-  kind="component"
-/>
+<Example name="WithLinks" />
 
 ## Customization
 
@@ -67,10 +45,4 @@ Items render as links. Set the root `value` to the current route so the matching
 
 Extend `bottomNavigationRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
 
-<Example
-  name="CustomRecipe"
-  code={CustomRecipeSource}
-  exampleId="bottom-navigation"
-  framework="react"
-  kind="component"
-/>
+<Example name="CustomRecipe" />

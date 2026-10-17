@@ -1,4 +1,3 @@
-import source from "./not-prose.tsx?raw";
 import { Prose } from "@pisagor/react";
 
 export function NotProse() {
@@ -25,5 +24,3 @@ export function NotProse() {
     </Prose>
   );
 }
-
-export { source as NotProseSource };

@@ -1,4 +1,3 @@
-import source from "./invalid.tsx?raw";
 import { Calendar, Card } from "@pisagor/react";
 export function Invalid() {
   return (
@@ -19,5 +18,3 @@ export function Invalid() {
     </Card>
   );
 }
-
-export { source as InvalidSource };

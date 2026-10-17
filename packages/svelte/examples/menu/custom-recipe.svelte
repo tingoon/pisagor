@@ -1,8 +1,3 @@
-<script module lang="ts">
-  import source from "./custom-recipe.svelte?raw";
-  export { source };
-</script>
-
 <script lang="ts">
   import { menuRecipe } from "@pisagor/recipes";
   import { Menu } from "@pisagor/svelte";

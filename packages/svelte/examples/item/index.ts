@@ -7,7 +7,6 @@ export { default as Icon } from "./icon.svelte";
 export { default as Image } from "./image.svelte";
 export { default as Link } from "./link.svelte";
 export { default as Sizes } from "./sizes.svelte";
-export { imports, sources } from "./sources";
 export { default as Variants } from "./variants.svelte";
 export { default as WithAvatar } from "./with-avatar.svelte";
 export { default as WithMedia } from "./with-media.svelte";

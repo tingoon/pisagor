@@ -9,6 +9,5 @@ export * from "./invalid";
 export * from "./max-selection";
 export * from "./multiple";
 export * from "./sizes";
-export { imports, sources } from "./sources";
 export * from "./variants";
 export * from "./with-scroll";

@@ -1,4 +1,3 @@
-import source from "./compound.tsx?raw";
 import { createListCollection } from "@ark-ui/react";
 import { Select } from "@pisagor/react";
 
@@ -22,5 +21,3 @@ export function Compound() {
     </Select.Root>
   );
 }
-
-export { source as CompoundSource };

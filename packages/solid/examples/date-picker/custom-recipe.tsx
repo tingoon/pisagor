@@ -1,4 +1,3 @@
-import source from "./custom-recipe.tsx?raw";
 import { datePickerRecipe } from "@pisagor/recipes";
 import { DatePicker } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -20,5 +19,3 @@ export function CustomRecipe() {
     </DatePicker>
   );
 }
-
-export { source as CustomRecipeSource };

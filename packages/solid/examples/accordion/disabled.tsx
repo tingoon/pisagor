@@ -1,4 +1,3 @@
-import source from "./disabled.tsx?raw";
 import { Accordion } from "@pisagor/solid";
 import { shortFaqItems } from "./helpers";
 
@@ -12,5 +11,3 @@ export function Disabled() {
     />
   );
 }
-
-export { source as DisabledSource };

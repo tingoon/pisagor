@@ -1,4 +1,3 @@
-import source from "./sizes.tsx?raw";
 import { Table } from "@pisagor/react";
 import { workspaceUsers } from "./helpers";
 
@@ -28,5 +27,3 @@ export function Sizes() {
     </div>
   );
 }
-
-export { source as SizesSource };

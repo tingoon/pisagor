@@ -1,4 +1,3 @@
-import source from "./orientation-horizontal.tsx?raw";
 import { Field, Switch } from "@pisagor/solid";
 export function OrientationHorizontal() {
   return (
@@ -8,5 +7,3 @@ export function OrientationHorizontal() {
     </Field>
   );
 }
-
-export { source as OrientationHorizontalSource };

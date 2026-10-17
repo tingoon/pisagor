@@ -13,15 +13,3 @@ export function parseSkillDoc(raw: string): {
   const docs = parseYaml(match[1]) as ComponentDocs;
   return { body: (match[2] ?? "").trim(), docs };
 }
-
-/** Body text for pane files that may omit YAML frontmatter. */
-export function skillDocBody(raw: string): string {
-  if (raw.startsWith("---")) {
-    try {
-      return parseSkillDoc(raw).body;
-    } catch {
-      return raw.trim();
-    }
-  }
-  return raw.trim();
-}

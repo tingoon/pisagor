@@ -1,4 +1,3 @@
-import source from "./scroll-area.tsx?raw";
 import { Portal } from "@ark-ui/react/portal";
 import { Button, Dialog } from "@pisagor/react";
 export function ScrollArea() {
@@ -55,5 +54,3 @@ export function ScrollArea() {
     </Dialog.Root>
   );
 }
-
-export { source as ScrollAreaSource };

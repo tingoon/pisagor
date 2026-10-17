@@ -1,4 +1,3 @@
-import source from "./invalid.tsx?raw";
 import { AutocompleteField } from "@pisagor/react-form";
 import { cityOptions } from "../options";
 
@@ -13,5 +12,3 @@ export function Invalid() {
     />
   );
 }
-
-export { source as InvalidSource };
