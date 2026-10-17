@@ -8,5 +8,9 @@
     "types": ["astro/client"]
   },
   "extends": "../../tsconfig.json",
-  "include": ["src/examples/solid/**/*.tsx", "src/env.d.ts"]
+  "include": [
+    "src/blocks/solid/**/*.tsx",
+    "src/components/docs/solid/**/*.tsx",
+    "src/env.d.ts"
+  ]
 }

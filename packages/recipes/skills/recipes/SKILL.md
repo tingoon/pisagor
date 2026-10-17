@@ -8,4 +8,4 @@ compatibility: Requires @pisagor/recipes (re-exports @pisagor/presets/pisagor).
 
 # @pisagor/recipes
 
-Re-exports `@pisagor/presets/pisagor`. Edit recipes under `packages/presets/src/contracts/`. Block recipes: `apps/docs/src/recipes/blocks/`.
+Re-exports `@pisagor/presets/pisagor`. Edit recipes under `packages/presets/src/contracts/`. Block recipes: `apps/docs/src/styles/recipes/`.

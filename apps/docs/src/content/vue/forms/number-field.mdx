@@ -3,7 +3,7 @@ title: Number Field
 description: "Adjusts a numeric value with steppers, label, and optional validation message."
 api: closed
 taxonomy: standard
-packageName: "@pisagor/react-form"
+packageName: "@pisagor/vue-form"
 ---
 
 ## When to use
@@ -11,3 +11,31 @@ packageName: "@pisagor/react-form"
 - Collect a number with steppers when min, max, or step bounds matter.
 - Prefer over a bare NumberInput when you need a label, description, or error text with the control.
 - Surface out-of-range errors in validation; show unavailable when the quantity cannot change.
+
+## Import
+
+```ts
+import { NumberField } from "@pisagor/vue-form";
+```
+
+Part of `@pisagor/vue-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+A numeric input with stepper buttons, bounded by `min` and `max`.
+
+<Example name="Default" />
+
+### Disabled
+
+Show that the number field is unavailable.
+
+<Example name="Disabled" />
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example name="Invalid" />

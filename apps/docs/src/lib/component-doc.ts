@@ -22,14 +22,6 @@ const DEFAULT_PACKAGE: Record<Framework, string> = {
   vue: "@pisagor/vue",
 };
 
-export const PREVIEW_LANGUAGE: Record<Framework, string> = {
-  astro: "astro",
-  react: "tsx",
-  solid: "tsx",
-  svelte: "svelte",
-  vue: "vue",
-};
-
 /**
  * When the docs page id does not match `props/<id>.gen.ts` export name
  * (autocomplete → combobox, form fields → underlying control).
@@ -233,11 +225,6 @@ export async function loadSkillMd(
     frontmatter: entry.data as ComponentDocs,
     getHeadings: () => headings,
   };
-}
-
-/** True when develop MDX exists for the id. */
-export function hasDevelopDoc(framework: Framework, id: string): boolean {
-  return Boolean(paneLoader(framework, id, "develop"));
 }
 
 /** True when design MDX exists for the id. */

@@ -3,6 +3,7 @@ import Example from "#/components/docs/example.astro";
 import Installation from "#/components/docs/installation.astro";
 import CodeBlock from "#/components/docs/code-block.astro";
 import { setDocsExampleContext } from "#/lib/docs-example-context";
+import { docsInlineCodeClass } from "#/lib/docs-prose";
 import type { Framework } from "#/lib/nav";
 
 interface Props {
@@ -226,9 +227,7 @@ const hookName = framework === "svelte" ? "createAppForm" : "useAppForm";
   </h2>
   <p class="mb-4 text-muted-foreground">
     The
-    <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-      >{pkg.tanstack}</code
-    >
+    <code class={docsInlineCodeClass}>{pkg.tanstack}</code>
     entry wires Pisagor field components to
     <a
       class="text-foreground underline underline-offset-2"
@@ -237,26 +236,17 @@ const hookName = framework === "svelte" ? "createAppForm" : "useAppForm";
       target="_blank"
       >TanStack Form</a
     >. You get typed
-    <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-      >{hookName}</code
-    >, connected field components on
-    <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-      >AppField</code
-    >, a
-    <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-      >Root</code
-    >
+    <code class={docsInlineCodeClass}>{hookName}</code>, connected field
+    components on
+    <code class={docsInlineCodeClass}>AppField</code>, a
+    <code class={docsInlineCodeClass}>Root</code>
     form element that handles submit, and a
-    <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-      >SubmitButton</code
-    >
+    <code class={docsInlineCodeClass}>SubmitButton</code>
     that tracks form state.
   </p>
   <p class="text-muted-foreground">
     Standalone fields from
-    <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-      >{pkg.form}</code
-    >
+    <code class={docsInlineCodeClass}>{pkg.form}</code>
     stay available without TanStack. Use the adapter when you want shared
     validation, submission, and field state from TanStack Form.
   </p>
@@ -269,9 +259,7 @@ const hookName = framework === "svelte" ? "createAppForm" : "useAppForm";
   <p class="mb-4 text-muted-foreground">
     Add the form package and the TanStack Form peer for {framework}. Fields
     depend on
-    <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-      >{pkg.ui}</code
-    >
+    <code class={docsInlineCodeClass}>{pkg.ui}</code>
     as well.
   </p>
   <Installation class="mb-2" packages={[pkg.form, pkg.peer]} />
@@ -288,12 +276,8 @@ const hookName = framework === "svelte" ? "createAppForm" : "useAppForm";
   </h2>
   <p class="mb-4 text-muted-foreground">
     Create a form with default values, render fields through
-    <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-      >AppField</code
-    >, and wrap everything in
-    <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-      >Root</code
-    >.
+    <code class={docsInlineCodeClass}>AppField</code>, and wrap everything in
+    <code class={docsInlineCodeClass}>Root</code>.
   </p>
   <CodeBlock code={quickStart} lang={quickStartLang} />
 </section>
@@ -304,62 +288,40 @@ const hookName = framework === "svelte" ? "createAppForm" : "useAppForm";
   </h2>
   <ul class="mb-4 list-disc space-y-2 ps-5 text-muted-foreground">
     <li>
-      <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-        >{hookName}</code
-      >
+      <code class={docsInlineCodeClass}>{hookName}</code>
       returns a typed TanStack form with every Pisagor field registered for
-      <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-        >AppField</code
-      >.
+      <code class={docsInlineCodeClass}>AppField</code>.
     </li>
     <li>
       Inside
-      <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-        >AppField</code
-      >, call
-      <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-        >field.TextField</code
-      >
+      <code class={docsInlineCodeClass}>AppField</code>, call
+      <code class={docsInlineCodeClass}>field.TextField</code>
       (or another field). Value, blur, name, and invalid/error state bind
       automatically.
     </li>
     <li>
-      <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-        >form.Root</code
-      >
+      <code class={docsInlineCodeClass}>form.Root</code>
       renders a native
-      <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-        >&lt;form&gt;</code
-      >, prevents the default submit, and calls
-      <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-        >handleSubmit</code
-      >.
+      <code class={docsInlineCodeClass}>&lt;form&gt;</code>, prevents the
+      default submit, and calls
+      <code class={docsInlineCodeClass}>handleSubmit</code>.
     </li>
     <li>
-      <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-        >SubmitButton</code
-      >
+      <code class={docsInlineCodeClass}>SubmitButton</code>
       shows a loading state while
-      <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-        >isSubmitting</code
-      >
+      <code class={docsInlineCodeClass}>isSubmitting</code>
       is true.
     </li>
   </ul>
   <p class="text-muted-foreground">
     Pass field-level or form-level validators through the usual TanStack Form
     options (
-    <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-      >validators</code
-    >
+    <code class={docsInlineCodeClass}>validators</code>
     on
-    <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-      >AppField</code
-    >
+    <code class={docsInlineCodeClass}>AppField</code>
     or on
-    <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-      >{hookName}</code
-    >). Errors surface on the field after touch or a submit attempt.
+    <code class={docsInlineCodeClass}>{hookName}</code>). Errors surface on the
+    field after touch or a submit attempt.
   </p>
 </section>
 
@@ -369,9 +331,7 @@ const hookName = framework === "svelte" ? "createAppForm" : "useAppForm";
   </h2>
   <p class="mb-4 text-muted-foreground">
     These components are available on the
-    <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-      >field</code
-    >
+    <code class={docsInlineCodeClass}>field</code>
     render argument:
   </p>
   <ul
@@ -397,9 +357,7 @@ const hookName = framework === "svelte" ? "createAppForm" : "useAppForm";
   <p class="text-muted-foreground">
     Label, description, and control props match the standalone field APIs.
     Prefer the field docs under Forms for when to use each control; use
-    <code class="rounded bg-muted px-1.5 py-0.5 text-sm text-foreground"
-      >{pkg.ui}</code
-    >
+    <code class={docsInlineCodeClass}>{pkg.ui}</code>
     docs for the underlying Input, Label, and related primitives.
   </p>
 </section>

@@ -39,7 +39,7 @@ function isNavActive(href: string): boolean {
 const filterId = `${idPrefix}-filter`;
 ---
 
-<div class="flex h-full min-h-0 flex-col" data-sidebar-nav>
+<div class="flex h-full min-h-0 flex-1 flex-col" data-sidebar-nav>
   <div class="shrink-0 px-1 pb-3">
     <label class="sr-only" for={filterId}>Filter</label>
     <div class="relative">
@@ -62,7 +62,7 @@ const filterId = `${idPrefix}-filter`;
 
   <nav
     aria-label="Sidebar"
-    class="scrollbar-thin flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto [scrollbar-color:color-mix(in_oklab,var(--border)_80%,transparent)_transparent]"
+    class="scrollbar-thin flex min-h-0 flex-1 flex-col gap-6 overflow-y-auto overscroll-contain [scrollbar-color:color-mix(in_oklab,var(--border)_80%,transparent)_transparent]"
   >
     <p class="hidden px-2.5 text-muted-foreground text-sm" data-sidebar-empty>
       No matches

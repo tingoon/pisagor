@@ -49,12 +49,12 @@ const panelId = "docs-mobile-nav-panel";
     <div
       aria-label="Navigation"
       aria-modal="true"
-      class="docs-sheet-panel fixed inset-x-3 top-14 z-50 max-h-[70dvh] overflow-hidden rounded-2xl border border-border/70 bg-background p-4 shadow-lg"
+      class="docs-sheet-panel fixed inset-x-3 top-14 z-50 flex max-h-[70dvh] flex-col overflow-hidden rounded-2xl border border-border/70 bg-background p-4 shadow-lg"
       data-mobile-nav-panel
       id={panelId}
       role="dialog"
     >
-      <div class="h-full max-h-[calc(70dvh-2rem)]">
+      <div class="flex min-h-0 flex-1 flex-col overflow-hidden">
         <SidebarNav
           currentPath={Astro.props.currentPath}
           framework={Astro.props.framework}
@@ -92,6 +92,11 @@ function bindMobileNav(root: HTMLElement) {
     return toggle ? [toggle, ...inPanel] : inPanel;
   }
 
+  function setBodyScrollLocked(locked: boolean) {
+    document.documentElement.classList.toggle("overflow-hidden", locked);
+    document.body.classList.toggle("overflow-hidden", locked);
+  }
+
   function setOpen(next: boolean, restoreFocus = true) {
     if (!toggle || !layer) return;
     layer.hidden = !next;
@@ -102,13 +107,25 @@ function bindMobileNav(root: HTMLElement) {
     );
     openIcon?.classList.toggle("hidden", next);
     closeIcon?.classList.toggle("hidden", !next);
+    setBodyScrollLocked(next);
     if (next) {
       document.addEventListener("keydown", onKeyDown);
       // Focus the current page link (not the filter) so phones don't pop the keyboard.
       const current =
         panel?.querySelector<HTMLElement>('a[aria-current="page"]') ??
         panel?.querySelector<HTMLElement>("a[href]");
-      current?.scrollIntoView({ block: "center" });
+      const scrollRoot = panel?.querySelector<HTMLElement>(
+        "[data-sidebar-nav] nav",
+      );
+      if (current && scrollRoot) {
+        const rootRect = scrollRoot.getBoundingClientRect();
+        const itemRect = current.getBoundingClientRect();
+        scrollRoot.scrollTop +=
+          itemRect.top -
+          rootRect.top -
+          rootRect.height / 2 +
+          itemRect.height / 2;
+      }
       current?.focus({ preventScroll: true });
     } else {
       document.removeEventListener("keydown", onKeyDown);
