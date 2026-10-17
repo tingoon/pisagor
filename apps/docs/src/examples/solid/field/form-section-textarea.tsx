@@ -1,3 +1,4 @@
+import source from "./form-section-textarea.tsx?raw";
 /** @jsxImportSource solid-js */
 import { Button, Card, Field, Textarea } from "@pisagor/solid";
 import { createSignal, Show } from "solid-js";
@@ -56,3 +57,5 @@ export function FormSectionTextarea() {
     />
   );
 }
+
+export { source as FormSectionTextareaSource };

@@ -1,5 +1,7 @@
-import tags_with_comboboxRaw from "./tags-with-combobox.vue?raw";
+import TagsWithCombobox from "./tags-with-combobox.vue?raw";
+
+export const imports = `import { … } from "@pisagor/vue";`;
 
 export const sources = {
-  TagsWithCombobox: tags_with_comboboxRaw,
+  TagsWithCombobox,
 } as const;

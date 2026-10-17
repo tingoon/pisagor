@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./search-field-button-group.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhMagnifyingGlass } from "@phosphor-icons/vue";
 import { Button, InputGroup } from "@pisagor/vue";

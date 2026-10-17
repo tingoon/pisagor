@@ -1,3 +1,4 @@
+import source from "./product-card.tsx?raw";
 /** @jsxImportSource solid-js */
 
 import { Button, Card } from "@pisagor/solid";
@@ -25,3 +26,5 @@ export function ProductCard() {
     </Card>
   );
 }
+
+export { source as ProductCardSource };

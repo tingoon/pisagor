@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./item-picker.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Avatar, Button, DropdownMenu } from "@pisagor/vue";
 import { itemPickerBlock } from "#/recipes/blocks/overlay";

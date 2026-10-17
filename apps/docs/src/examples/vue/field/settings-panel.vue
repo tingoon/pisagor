@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./settings-panel.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Checkbox, Field, Surface } from "@pisagor/vue";
 import { settingsPanelBlock } from "#/recipes/blocks/field";

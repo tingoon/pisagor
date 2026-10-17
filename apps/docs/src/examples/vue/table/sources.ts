@@ -1,9 +1,11 @@
-import table_bulk_actionsRaw from "./table-bulk-actions.vue?raw";
-import table_paginationRaw from "./table-pagination.vue?raw";
-import table_row_menuRaw from "./table-row-menu.vue?raw";
+import TableBulkActions from "./table-bulk-actions.vue?raw";
+import TablePagination from "./table-pagination.vue?raw";
+import TableRowMenu from "./table-row-menu.vue?raw";
+
+export const imports = `import { … } from "@pisagor/vue";`;
 
 export const sources = {
-  TableBulkActions: table_bulk_actionsRaw,
-  TablePagination: table_paginationRaw,
-  TableRowMenu: table_row_menuRaw,
+  TableBulkActions,
+  TablePagination,
+  TableRowMenu,
 } as const;

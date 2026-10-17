@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./login-card.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, Card, Field, Input } from "@pisagor/svelte";
   import { cn } from "@pisagor/utils";

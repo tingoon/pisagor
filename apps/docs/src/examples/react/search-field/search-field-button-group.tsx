@@ -1,3 +1,4 @@
+import source from "./search-field-button-group.tsx?raw";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { Button, ButtonGroup, Input } from "@pisagor/react";
 
@@ -11,3 +12,5 @@ export function SearchFieldButtonGroup() {
     </ButtonGroup>
   );
 }
+
+export { source as SearchFieldButtonGroupSource };

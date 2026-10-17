@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./form-section-textarea.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Button, Card, Field, Textarea } from "@pisagor/vue";
 import { ref } from "vue";

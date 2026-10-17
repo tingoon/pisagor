@@ -1,3 +1,4 @@
+import source from "./input-group-with-menu.tsx?raw";
 import {
   CopyIcon,
   DotsThreeIcon,
@@ -43,3 +44,5 @@ export function InputGroupWithMenu() {
     </InputGroup>
   );
 }
+
+export { source as InputGroupWithMenuSource };

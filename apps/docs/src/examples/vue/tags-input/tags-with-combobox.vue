@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./tags-with-combobox.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { useFilter, useListCollection } from "@ark-ui/vue";
 import { useTagsInput } from "@ark-ui/vue/tags-input";

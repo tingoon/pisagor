@@ -1,3 +1,4 @@
+import source from "./search-field-inline.tsx?raw";
 /** @jsxImportSource solid-js */
 import { Button, Field, Input } from "@pisagor/solid";
 import { MagnifyingGlassIcon } from "@pisagor/solid/icons";
@@ -12,3 +13,5 @@ export function SearchFieldInline() {
     </Field>
   );
 }
+
+export { source as SearchFieldInlineSource };

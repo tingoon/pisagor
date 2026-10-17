@@ -1,7 +1,9 @@
-import search_field_button_groupRaw from "./search-field-button-group.tsx?raw";
-import search_field_inlineRaw from "./search-field-inline.tsx?raw";
+import { SearchFieldButtonGroupSource as SearchFieldButtonGroup } from "./search-field-button-group";
+import { SearchFieldInlineSource as SearchFieldInline } from "./search-field-inline";
+
+export const imports = `import { … } from "@pisagor/solid";`;
 
 export const sources = {
-  SearchFieldButtonGroup: search_field_button_groupRaw,
-  SearchFieldInline: search_field_inlineRaw,
+  SearchFieldButtonGroup,
+  SearchFieldInline,
 } as const;

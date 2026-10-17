@@ -1,3 +1,4 @@
+import source from "./standard-app-shell.tsx?raw";
 import {
   GearIcon,
   HouseIcon,
@@ -159,3 +160,5 @@ function StandardAppShellPlaceholder() {
     </div>
   );
 }
+
+export { source as StandardAppShellSource };

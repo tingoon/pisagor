@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./standard-app-shell.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import {
   PhGear,

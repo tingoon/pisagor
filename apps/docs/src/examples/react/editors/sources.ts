@@ -1,9 +1,11 @@
-import editable_user_cardRaw from "./editable-user-card.tsx?raw";
-import ide_layoutRaw from "./ide-layout.tsx?raw";
-import rich_text_toolbarRaw from "./rich-text-toolbar.tsx?raw";
+import { EditableUserCardSource as EditableUserCard } from "./editable-user-card";
+import { IdeLayoutSource as IdeLayout } from "./ide-layout";
+import { RichTextToolbarSource as RichTextToolbar } from "./rich-text-toolbar";
+
+export const imports = `import { … } from "@pisagor/react";`;
 
 export const sources = {
-  EditableUserCard: editable_user_cardRaw,
-  IdeLayout: ide_layoutRaw,
-  RichTextToolbar: rich_text_toolbarRaw,
+  EditableUserCard,
+  IdeLayout,
+  RichTextToolbar,
 } as const;

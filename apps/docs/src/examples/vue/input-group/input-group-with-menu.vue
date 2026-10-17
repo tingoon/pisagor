@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./input-group-with-menu.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhCopy, PhDotsThree, PhFile, PhFolder } from "@phosphor-icons/vue";
 import { DropdownMenu, InputGroup } from "@pisagor/vue";

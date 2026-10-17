@@ -1,5 +1,7 @@
-import tags_with_comboboxRaw from "./tags-with-combobox.tsx?raw";
+import { TagsWithComboboxSource as TagsWithCombobox } from "./tags-with-combobox";
+
+export const imports = `import { … } from "@pisagor/react";`;
 
 export const sources = {
-  TagsWithCombobox: tags_with_comboboxRaw,
+  TagsWithCombobox,
 } as const;

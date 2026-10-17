@@ -1,3 +1,4 @@
+import source from "./avatar-group-overflow.tsx?raw";
 /** @jsxImportSource solid-js */
 import { Avatar, AvatarGroup, Button, Popover } from "@pisagor/solid";
 import { For } from "solid-js";
@@ -70,3 +71,5 @@ const users = [
     src: "https://randomuser.me/api/portraits/men/32.jpg",
   },
 ];
+
+export { source as AvatarGroupOverflowSource };

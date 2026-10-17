@@ -1,3 +1,4 @@
+import source from "./password-strength.tsx?raw";
 /** @jsxImportSource solid-js */
 
 import { Field, PasswordInput } from "@pisagor/solid";
@@ -118,3 +119,5 @@ export function PasswordStrength(props: PasswordStrengthProps) {
     </div>
   );
 }
+
+export { source as PasswordStrengthSource };

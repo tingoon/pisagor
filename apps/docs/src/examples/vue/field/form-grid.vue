@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./form-grid.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Field, Input } from "@pisagor/vue";
 import { formGridBlock } from "#/recipes/blocks/field";

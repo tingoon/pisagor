@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./rich-text-toolbar.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, ButtonGroup, Tooltip } from "@pisagor/svelte";
   import TextBIcon from "phosphor-svelte/lib/TextBIcon";

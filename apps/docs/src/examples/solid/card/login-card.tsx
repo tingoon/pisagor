@@ -1,3 +1,4 @@
+import source from "./login-card.tsx?raw";
 /** @jsxImportSource solid-js */
 
 import { Button, Card, Field, Input } from "@pisagor/solid";
@@ -43,3 +44,5 @@ export function LoginCard(props: LoginCardProps) {
     </Card>
   );
 }
+
+export { source as LoginCardSource };

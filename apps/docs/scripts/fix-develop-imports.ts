@@ -10,21 +10,28 @@ import path from "node:path";
 
 const ROOT = path.resolve(import.meta.dir, "../../..");
 
-const FW: Record<string, Partial<Record<"components" | "forms", string>>> = {
+const FW: Record<
+  string,
+  Partial<Record<"components" | "forms" | "blocks", string>>
+> = {
   astro: { components: "packages/astro/examples" },
   react: {
+    blocks: "apps/docs/src/examples/react",
     components: "packages/react/examples",
     forms: "packages/react-form/examples",
   },
   solid: {
+    blocks: "apps/docs/src/examples/solid",
     components: "packages/solid/examples",
     forms: "packages/solid-form/examples",
   },
   svelte: {
+    blocks: "apps/docs/src/examples/svelte",
     components: "packages/svelte/examples",
     forms: "packages/svelte-form/examples",
   },
   vue: {
+    blocks: "apps/docs/src/examples/vue",
     components: "packages/vue/examples",
     forms: "packages/vue-form/examples",
   },
@@ -69,7 +76,11 @@ for (const [fw, areas] of Object.entries(FW)) {
       if (map.size === 0) continue;
       const text = readFileSync(file, "utf8");
       const alias =
-        area === "forms" ? `#examples/${fw}-form` : `#examples/${fw}`;
+        area === "forms"
+          ? `#examples/${fw}-form`
+          : area === "blocks"
+            ? `#examples/${fw}-blocks`
+            : `#examples/${fw}`;
 
       const used = [
         ...text.matchAll(/<Example\b[^>]*\bname=["']([^"']+)["']/g),
@@ -83,15 +94,23 @@ for (const [fw, areas] of Object.entries(FW)) {
           missing.push(`${fw}/${area}/${id}:${name}`);
           continue;
         }
+        // Prefer explicit extensions so Vite resolves consistently.
+        let spec = fileName;
+        if (!spec.includes(".")) {
+          if (fw === "react" || fw === "solid") spec = `${spec}.tsx`;
+          else if (fw === "vue") spec = `${spec}.vue`;
+          else if (fw === "svelte") spec = `${spec}.svelte`;
+          else if (fw === "astro") spec = `${spec}.astro`;
+        }
         // React/Solid: named `<Name>Source` dual-export.
         // Vue/Svelte/Astro: `?raw` (SFC/module shims don't expose `source`).
         if (fw === "react" || fw === "solid") {
           sourceImports.push(
-            `import { ${name}Source } from "${alias}/${id}/${fileName}";`,
+            `import { ${name}Source } from "${alias}/${id}/${spec}";`,
           );
         } else {
           sourceImports.push(
-            `import ${name}Source from "${alias}/${id}/${fileName}?raw";`,
+            `import ${name}Source from "${alias}/${id}/${spec}?raw";`,
           );
         }
         if (fw === "astro") {

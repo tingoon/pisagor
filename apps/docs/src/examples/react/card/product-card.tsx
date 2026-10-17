@@ -1,3 +1,4 @@
+import source from "./product-card.tsx?raw";
 import { Button, Card, LinkBox } from "@pisagor/react";
 import { productCardBlock } from "#/recipes/blocks/card";
 
@@ -29,3 +30,5 @@ export function ProductCard() {
     </LinkBox>
   );
 }
+
+export { source as ProductCardSource };

@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./table-pagination.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Pagination, Select, Table } from "@pisagor/svelte";
   import { cn } from "@pisagor/utils";

@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./sign-in-form.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Field, Surface } from "@pisagor/svelte";
   import { createAppForm, Root } from "@pisagor/svelte-form/tanstack";

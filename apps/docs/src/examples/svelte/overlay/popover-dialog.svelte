@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./popover-dialog.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, Dialog, Popover } from "@pisagor/svelte";
 </script>

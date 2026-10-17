@@ -1,5 +1,7 @@
-import sign_in_formRaw from "./sign-in-form.tsx?raw";
+import { SignInFormSource as SignInForm } from "./sign-in-form";
+
+export const imports = `import { … } from "@pisagor/solid";`;
 
 export const sources = {
-  SignInForm: sign_in_formRaw,
+  SignInForm,
 } as const;

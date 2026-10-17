@@ -1,7 +1,9 @@
-import search_field_button_groupRaw from "./search-field-button-group.vue?raw";
-import search_field_inlineRaw from "./search-field-inline.vue?raw";
+import SearchFieldButtonGroup from "./search-field-button-group.vue?raw";
+import SearchFieldInline from "./search-field-inline.vue?raw";
+
+export const imports = `import { … } from "@pisagor/vue";`;
 
 export const sources = {
-  SearchFieldButtonGroup: search_field_button_groupRaw,
-  SearchFieldInline: search_field_inlineRaw,
+  SearchFieldButtonGroup,
+  SearchFieldInline,
 } as const;

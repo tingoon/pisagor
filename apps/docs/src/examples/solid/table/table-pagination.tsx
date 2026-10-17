@@ -1,3 +1,4 @@
+import source from "./table-pagination.tsx?raw";
 /** @jsxImportSource solid-js */
 
 import { Pagination, Select, Table } from "@pisagor/solid";
@@ -82,3 +83,5 @@ const users = Array.from({ length: 48 }, (_, i) => ({
   id: `user-${i + 1}`,
   name: samplePeople[i % samplePeople.length],
 }));
+
+export { source as TablePaginationSource };

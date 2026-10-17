@@ -1,3 +1,4 @@
+import source from "./form-grid.tsx?raw";
 /** @jsxImportSource solid-js */
 
 import { Field, Input } from "@pisagor/solid";
@@ -23,3 +24,5 @@ export function FormGrid() {
     </Field.Group>
   );
 }
+
+export { source as FormGridSource };

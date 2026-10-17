@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./input-group-with-number-input.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { InputGroup, NumberInput } from "@pisagor/vue";
 </script>

@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./product-card.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, Card } from "@pisagor/svelte";
   import { productCardBlock } from "#/recipes/blocks/card";

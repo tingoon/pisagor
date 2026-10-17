@@ -1,3 +1,4 @@
+import source from "./item-picker.tsx?raw";
 import { Avatar, Button, DropdownMenu, Item } from "@pisagor/react";
 import { itemPickerBlock } from "#/recipes/blocks/overlay";
 
@@ -38,3 +39,5 @@ const people = [
   { email: "john.doe@example.com", id: "john", username: "john.doe" },
   { email: "alex.morgan@example.com", id: "alex", username: "alex.morgan" },
 ];
+
+export { source as ItemPickerSource };

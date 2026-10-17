@@ -1,11 +1,13 @@
-import avatar_group_overflowRaw from "./avatar-group-overflow.vue?raw";
-import item_pickerRaw from "./item-picker.vue?raw";
-import menu_dialogRaw from "./menu-dialog.vue?raw";
-import popover_dialogRaw from "./popover-dialog.vue?raw";
+import AvatarGroupOverflow from "./avatar-group-overflow.vue?raw";
+import ItemPicker from "./item-picker.vue?raw";
+import MenuDialog from "./menu-dialog.vue?raw";
+import PopoverDialog from "./popover-dialog.vue?raw";
+
+export const imports = `import { … } from "@pisagor/vue";`;
 
 export const sources = {
-  AvatarGroupOverflow: avatar_group_overflowRaw,
-  ItemPicker: item_pickerRaw,
-  MenuDialog: menu_dialogRaw,
-  PopoverDialog: popover_dialogRaw,
+  AvatarGroupOverflow,
+  ItemPicker,
+  MenuDialog,
+  PopoverDialog,
 } as const;

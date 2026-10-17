@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./product-card.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Button, Card } from "@pisagor/vue";
 import { productCardBlock } from "#/recipes/blocks/card";

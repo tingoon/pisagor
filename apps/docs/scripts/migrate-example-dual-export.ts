@@ -85,6 +85,31 @@ const PACKAGES: {
     framework: "astro",
     importsPkg: "@pisagor/astro",
   },
+  // Docs-local block recipes (`apps/docs/src/examples/<fw>/`).
+  {
+    dir: "apps/docs/src/examples/react",
+    ext: [".tsx", ".ts"],
+    framework: "react",
+    importsPkg: "@pisagor/react",
+  },
+  {
+    dir: "apps/docs/src/examples/solid",
+    ext: [".tsx", ".ts"],
+    framework: "solid",
+    importsPkg: "@pisagor/solid",
+  },
+  {
+    dir: "apps/docs/src/examples/svelte",
+    ext: [".svelte"],
+    framework: "svelte",
+    importsPkg: "@pisagor/svelte",
+  },
+  {
+    dir: "apps/docs/src/examples/vue",
+    ext: [".vue", ".ts", ".tsx"],
+    framework: "vue",
+    importsPkg: "@pisagor/vue",
+  },
 ];
 
 const fwFilter = (() => {
@@ -224,7 +249,8 @@ function rebuildSourcesTs(
     if (file.endsWith(".tsx") || file.endsWith(".ts")) {
       return `import { ${exportName}Source as ${exportName} } from "./${file.replace(/\.(tsx|ts)$/, "")}";`;
     }
-    return `import { source as ${exportName} } from "./${file}";`;
+    // Vue/Svelte/Astro: `?raw` — module shims do not type named `source` exports.
+    return `import ${exportName} from "./${file}?raw";`;
   });
   const mapLines = sorted.map(({ exportName }) => `  ${exportName},`);
 

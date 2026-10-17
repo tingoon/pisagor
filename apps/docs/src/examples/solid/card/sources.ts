@@ -1,9 +1,11 @@
-import login_cardRaw from "./login-card.tsx?raw";
-import login_card_custom_spacingRaw from "./login-card-custom-spacing.tsx?raw";
-import product_cardRaw from "./product-card.tsx?raw";
+import { LoginCardSource as LoginCard } from "./login-card";
+import { LoginCardCustomSpacingSource as LoginCardCustomSpacing } from "./login-card-custom-spacing";
+import { ProductCardSource as ProductCard } from "./product-card";
+
+export const imports = `import { … } from "@pisagor/solid";`;
 
 export const sources = {
-  LoginCard: login_cardRaw,
-  LoginCardCustomSpacing: login_card_custom_spacingRaw,
-  ProductCard: product_cardRaw,
+  LoginCard,
+  LoginCardCustomSpacing,
+  ProductCard,
 } as const;

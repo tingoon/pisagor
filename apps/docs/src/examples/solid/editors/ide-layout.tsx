@@ -1,3 +1,4 @@
+import source from "./ide-layout.tsx?raw";
 /** @jsxImportSource solid-js */
 
 import type { NodeProviderProps, TreeNodeType } from "@pisagor/solid";
@@ -128,3 +129,5 @@ const collection = createTreeCollection({
     name: "",
   },
 });
+
+export { source as IdeLayoutSource };

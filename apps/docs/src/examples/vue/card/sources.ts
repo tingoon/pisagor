@@ -1,9 +1,11 @@
-import login_cardRaw from "./login-card.vue?raw";
-import login_card_custom_spacingRaw from "./login-card-custom-spacing.vue?raw";
-import product_cardRaw from "./product-card.vue?raw";
+import LoginCard from "./login-card.vue?raw";
+import LoginCardCustomSpacing from "./login-card-custom-spacing.vue?raw";
+import ProductCard from "./product-card.vue?raw";
+
+export const imports = `import { … } from "@pisagor/vue";`;
 
 export const sources = {
-  LoginCard: login_cardRaw,
-  LoginCardCustomSpacing: login_card_custom_spacingRaw,
-  ProductCard: product_cardRaw,
+  LoginCard,
+  LoginCardCustomSpacing,
+  ProductCard,
 } as const;

@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./table-bulk-actions.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import {
     ActionBar,

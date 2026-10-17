@@ -1,5 +1,7 @@
-import password_strengthRaw from "./password-strength.vue?raw";
+import PasswordStrength from "./password-strength.vue?raw";
+
+export const imports = `import { … } from "@pisagor/vue";`;
 
 export const sources = {
-  PasswordStrength: password_strengthRaw,
+  PasswordStrength,
 } as const;

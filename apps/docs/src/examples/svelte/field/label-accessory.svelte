@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./label-accessory.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Badge, Field, Input } from "@pisagor/svelte";
   import { labelAccessoryBlock } from "#/recipes/blocks/field";

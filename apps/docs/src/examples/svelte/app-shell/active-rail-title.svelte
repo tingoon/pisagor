@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./active-rail-title.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { useAppShell } from "@pisagor/svelte";
   import GearIcon from "phosphor-svelte/lib/GearIcon";

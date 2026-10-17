@@ -1,5 +1,7 @@
-import standard_app_shellRaw from "./standard-app-shell.tsx?raw";
+import { StandardAppShellSource as StandardAppShell } from "./standard-app-shell";
+
+export const imports = `import { … } from "@pisagor/solid";`;
 
 export const sources = {
-  StandardAppShell: standard_app_shellRaw,
+  StandardAppShell,
 } as const;

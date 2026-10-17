@@ -1,3 +1,4 @@
+import source from "./avatar-group-overflow.tsx?raw";
 import { Avatar, AvatarGroup, Button, Popover } from "@pisagor/react";
 
 export function AvatarGroupOverflow() {
@@ -69,3 +70,5 @@ const users = [
     src: "https://randomuser.me/api/portraits/men/32.jpg",
   },
 ];
+
+export { source as AvatarGroupOverflowSource };

@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./input-group-with-menu.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { DropdownMenu, InputGroup } from "@pisagor/svelte";
   import CopyIcon from "phosphor-svelte/lib/CopyIcon";

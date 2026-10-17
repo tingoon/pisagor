@@ -3,7 +3,7 @@ import BlockDocPage from "#/components/docs/block-doc-page.astro";
 import { ReactExamplesHost } from "#/components/docs/react-examples-host";
 import { listBlockStaticPaths } from "#/lib/block-doc";
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
   return listBlockStaticPaths("react");
 }
 

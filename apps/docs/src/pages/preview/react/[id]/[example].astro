@@ -20,7 +20,7 @@ const example = Astro.params.example as string;
 
 const examples = await loadBlockExamples(framework, id);
 assertExampleSource(examples, example);
-const { title: blockTitle } = loadBlockDocs(framework, id);
+const { title: blockTitle } = await loadBlockDocs(framework, id);
 const title = `${blockTitle} · ${example}`;
 const exportNames = [example];
 const stylesheets = await frameworkStylesheetUrls(framework);

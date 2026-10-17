@@ -1,3 +1,4 @@
+import source from "./sign-in-form.tsx?raw";
 import { Field, Surface } from "@pisagor/react";
 import { useAppForm } from "@pisagor/react-form/tanstack";
 import { z } from "zod";
@@ -86,3 +87,5 @@ export function SignInForm() {
     </Surface>
   );
 }
+
+export { source as SignInFormSource };

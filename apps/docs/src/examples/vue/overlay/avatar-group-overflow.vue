@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./avatar-group-overflow.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Avatar, Button, Popover } from "@pisagor/vue";
 import { avatarGroupOverflowBlock } from "#/recipes/blocks/overlay";

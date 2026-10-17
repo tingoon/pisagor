@@ -1,5 +1,7 @@
-import sign_in_formRaw from "./sign-in-form.vue?raw";
+import SignInForm from "./sign-in-form.vue?raw";
+
+export const imports = `import { … } from "@pisagor/vue";`;
 
 export const sources = {
-  SignInForm: sign_in_formRaw,
+  SignInForm,
 } as const;

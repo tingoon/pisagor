@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./ide-layout.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhX } from "@phosphor-icons/vue";
 import { cn } from "@pisagor/utils";

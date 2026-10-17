@@ -1,3 +1,4 @@
+import source from "./table-bulk-actions.tsx?raw";
 /** @jsxImportSource solid-js */
 
 import {
@@ -238,3 +239,5 @@ const orders = [
     status: "transit",
   },
 ];
+
+export { source as TableBulkActionsSource };

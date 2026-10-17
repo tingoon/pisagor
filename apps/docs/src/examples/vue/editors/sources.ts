@@ -1,9 +1,11 @@
-import editable_user_cardRaw from "./editable-user-card.vue?raw";
-import ide_layoutRaw from "./ide-layout.vue?raw";
-import rich_text_toolbarRaw from "./rich-text-toolbar.vue?raw";
+import EditableUserCard from "./editable-user-card.vue?raw";
+import IdeLayout from "./ide-layout.vue?raw";
+import RichTextToolbar from "./rich-text-toolbar.vue?raw";
+
+export const imports = `import { … } from "@pisagor/vue";`;
 
 export const sources = {
-  EditableUserCard: editable_user_cardRaw,
-  IdeLayout: ide_layoutRaw,
-  RichTextToolbar: rich_text_toolbarRaw,
+  EditableUserCard,
+  IdeLayout,
+  RichTextToolbar,
 } as const;

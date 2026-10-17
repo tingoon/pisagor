@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./input-group-with-number-input.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { InputGroup, NumberInput } from "@pisagor/svelte";
 </script>

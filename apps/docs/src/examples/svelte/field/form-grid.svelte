@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./form-grid.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Field, Input } from "@pisagor/svelte";
   import { formGridBlock } from "#/recipes/blocks/field";

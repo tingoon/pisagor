@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./table-row-menu.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhEye, PhPencil, PhTrash } from "@phosphor-icons/vue";
 import { ContextMenu, Table } from "@pisagor/vue";

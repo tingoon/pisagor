@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./input-group-with-button.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { InputGroup } from "@pisagor/vue";
 </script>

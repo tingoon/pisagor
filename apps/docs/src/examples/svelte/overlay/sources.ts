@@ -1,11 +1,13 @@
-import avatar_group_overflowRaw from "./avatar-group-overflow.svelte?raw";
-import item_pickerRaw from "./item-picker.svelte?raw";
-import menu_dialogRaw from "./menu-dialog.svelte?raw";
-import popover_dialogRaw from "./popover-dialog.svelte?raw";
+import AvatarGroupOverflow from "./avatar-group-overflow.svelte?raw";
+import ItemPicker from "./item-picker.svelte?raw";
+import MenuDialog from "./menu-dialog.svelte?raw";
+import PopoverDialog from "./popover-dialog.svelte?raw";
+
+export const imports = `import { … } from "@pisagor/svelte";`;
 
 export const sources = {
-  AvatarGroupOverflow: avatar_group_overflowRaw,
-  ItemPicker: item_pickerRaw,
-  MenuDialog: menu_dialogRaw,
-  PopoverDialog: popover_dialogRaw,
+  AvatarGroupOverflow,
+  ItemPicker,
+  MenuDialog,
+  PopoverDialog,
 } as const;

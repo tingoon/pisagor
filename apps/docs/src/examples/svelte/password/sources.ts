@@ -1,5 +1,7 @@
-import password_strengthRaw from "./password-strength.svelte?raw";
+import PasswordStrength from "./password-strength.svelte?raw";
+
+export const imports = `import { … } from "@pisagor/svelte";`;
 
 export const sources = {
-  PasswordStrength: password_strengthRaw,
+  PasswordStrength,
 } as const;

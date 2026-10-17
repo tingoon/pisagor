@@ -1,15 +1,17 @@
-import form_gridRaw from "./form-grid.vue?raw";
-import form_sectionRaw from "./form-section.vue?raw";
-import form_section_textareaRaw from "./form-section-textarea.vue?raw";
-import label_accessoryRaw from "./label-accessory.vue?raw";
-import settings_panelRaw from "./settings-panel.vue?raw";
-import settings_rowRaw from "./settings-row.vue?raw";
+import FormGrid from "./form-grid.vue?raw";
+import FormSection from "./form-section.vue?raw";
+import FormSectionTextarea from "./form-section-textarea.vue?raw";
+import LabelAccessory from "./label-accessory.vue?raw";
+import SettingsPanel from "./settings-panel.vue?raw";
+import SettingsRow from "./settings-row.vue?raw";
+
+export const imports = `import { … } from "@pisagor/vue";`;
 
 export const sources = {
-  FormGrid: form_gridRaw,
-  FormSection: form_sectionRaw,
-  FormSectionTextarea: form_section_textareaRaw,
-  LabelAccessory: label_accessoryRaw,
-  SettingsPanel: settings_panelRaw,
-  SettingsRow: settings_rowRaw,
+  FormGrid,
+  FormSection,
+  FormSectionTextarea,
+  LabelAccessory,
+  SettingsPanel,
+  SettingsRow,
 } as const;

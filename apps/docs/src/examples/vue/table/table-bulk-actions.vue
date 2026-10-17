@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./table-bulk-actions.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import {
   PhArchive,

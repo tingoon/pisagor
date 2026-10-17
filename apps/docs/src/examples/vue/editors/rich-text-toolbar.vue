@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./rich-text-toolbar.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import {
   PhTextB,

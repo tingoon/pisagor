@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./input-group-with-tooltip.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhInfo } from "@phosphor-icons/vue";
 import { Button, InputGroup, Tooltip } from "@pisagor/vue";

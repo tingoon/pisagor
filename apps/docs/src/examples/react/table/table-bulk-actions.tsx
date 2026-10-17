@@ -1,3 +1,4 @@
+import source from "./table-bulk-actions.tsx?raw";
 import {
   ArchiveIcon,
   CopyIcon,
@@ -223,3 +224,5 @@ const orders = [
     status: "transit",
   },
 ];
+
+export { source as TableBulkActionsSource };

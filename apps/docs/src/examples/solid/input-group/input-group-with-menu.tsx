@@ -1,3 +1,4 @@
+import source from "./input-group-with-menu.tsx?raw";
 /** @jsxImportSource solid-js */
 
 import { DropdownMenu, InputGroup } from "@pisagor/solid";
@@ -48,3 +49,5 @@ export function InputGroupWithMenu() {
     </InputGroup>
   );
 }
+
+export { source as InputGroupWithMenuSource };

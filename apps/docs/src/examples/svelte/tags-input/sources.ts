@@ -1,5 +1,7 @@
-import tags_with_comboboxRaw from "./tags-with-combobox.svelte?raw";
+import TagsWithCombobox from "./tags-with-combobox.svelte?raw";
+
+export const imports = `import { … } from "@pisagor/svelte";`;
 
 export const sources = {
-  TagsWithCombobox: tags_with_comboboxRaw,
+  TagsWithCombobox,
 } as const;

@@ -1,9 +1,11 @@
-import editable_user_cardRaw from "./editable-user-card.svelte?raw";
-import ide_layoutRaw from "./ide-layout.svelte?raw";
-import rich_text_toolbarRaw from "./rich-text-toolbar.svelte?raw";
+import EditableUserCard from "./editable-user-card.svelte?raw";
+import IdeLayout from "./ide-layout.svelte?raw";
+import RichTextToolbar from "./rich-text-toolbar.svelte?raw";
+
+export const imports = `import { … } from "@pisagor/svelte";`;
 
 export const sources = {
-  EditableUserCard: editable_user_cardRaw,
-  IdeLayout: ide_layoutRaw,
-  RichTextToolbar: rich_text_toolbarRaw,
+  EditableUserCard,
+  IdeLayout,
+  RichTextToolbar,
 } as const;

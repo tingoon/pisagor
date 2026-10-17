@@ -1,3 +1,4 @@
+import source from "./input-group-with-inner-label.tsx?raw";
 /** @jsxImportSource solid-js */
 
 import { Button, Field, InputGroup, Tooltip } from "@pisagor/solid";
@@ -26,3 +27,5 @@ export function InputGroupWithInnerLabel() {
     </InputGroup>
   );
 }
+
+export { source as InputGroupWithInnerLabelSource };

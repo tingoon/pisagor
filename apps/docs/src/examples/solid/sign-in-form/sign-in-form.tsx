@@ -1,3 +1,4 @@
+import source from "./sign-in-form.tsx?raw";
 /** @jsxImportSource solid-js */
 
 import { Field, Surface } from "@pisagor/solid";
@@ -88,3 +89,5 @@ export function SignInForm() {
     </Surface>
   );
 }
+
+export { source as SignInFormSource };

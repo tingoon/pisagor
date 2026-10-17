@@ -1,15 +1,17 @@
-import code_editor_inputRaw from "./code-editor-input.tsx?raw";
-import input_group_with_buttonRaw from "./input-group-with-button.tsx?raw";
-import input_group_with_inner_labelRaw from "./input-group-with-inner-label.tsx?raw";
-import input_group_with_menuRaw from "./input-group-with-menu.tsx?raw";
-import input_group_with_number_inputRaw from "./input-group-with-number-input.tsx?raw";
-import input_group_with_tooltipRaw from "./input-group-with-tooltip.tsx?raw";
+import { CodeEditorInputSource as CodeEditorInput } from "./code-editor-input";
+import { InputGroupWithButtonSource as InputGroupWithButton } from "./input-group-with-button";
+import { InputGroupWithInnerLabelSource as InputGroupWithInnerLabel } from "./input-group-with-inner-label";
+import { InputGroupWithMenuSource as InputGroupWithMenu } from "./input-group-with-menu";
+import { InputGroupWithNumberInputSource as InputGroupWithNumberInput } from "./input-group-with-number-input";
+import { InputGroupWithTooltipSource as InputGroupWithTooltip } from "./input-group-with-tooltip";
+
+export const imports = `import { … } from "@pisagor/solid";`;
 
 export const sources = {
-  CodeEditorInput: code_editor_inputRaw,
-  InputGroupWithButton: input_group_with_buttonRaw,
-  InputGroupWithInnerLabel: input_group_with_inner_labelRaw,
-  InputGroupWithMenu: input_group_with_menuRaw,
-  InputGroupWithNumberInput: input_group_with_number_inputRaw,
-  InputGroupWithTooltip: input_group_with_tooltipRaw,
+  CodeEditorInput,
+  InputGroupWithButton,
+  InputGroupWithInnerLabel,
+  InputGroupWithMenu,
+  InputGroupWithNumberInput,
+  InputGroupWithTooltip,
 } as const;

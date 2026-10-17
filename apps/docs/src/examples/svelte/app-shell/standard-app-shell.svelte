@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./standard-app-shell.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { AppShell, Button } from "@pisagor/svelte";
   import { cn } from "@pisagor/utils";

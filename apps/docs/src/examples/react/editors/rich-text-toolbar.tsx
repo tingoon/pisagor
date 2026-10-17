@@ -1,3 +1,4 @@
+import source from "./rich-text-toolbar.tsx?raw";
 import {
   TextBIcon,
   TextItalicIcon,
@@ -32,3 +33,5 @@ export function RichTextToolbar() {
     </ButtonGroup>
   );
 }
+
+export { source as RichTextToolbarSource };

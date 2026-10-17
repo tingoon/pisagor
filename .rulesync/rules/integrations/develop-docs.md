@@ -13,9 +13,9 @@ cursor:
 
 # Develop docs (`develop.mdx`)
 
-Applies to `apps/docs/src/content/<framework>/{components,forms}/<id>/develop.mdx`, the examples in `packages/<framework>(-form)/examples/<id>/`, and `<id>.stories.tsx`. Judge each component on its own; never apply these rules mechanically.
+Applies to `apps/docs/src/content/<framework>/{components,forms,blocks}/<id>/develop.mdx`, the examples in `packages/<framework>(-form)/examples/<id>/` (or `apps/docs/src/examples/<framework>/` for blocks), and `<id>.stories.tsx`. Judge each component on its own; never apply these rules mechanically.
 
-Meta for the page lives in the sibling `../<id>.md` (title, description, api, taxonomy). Design copy is `<id>/design.mdx`.
+Meta for the page lives in the sibling `../<id>.md` (title, description, api, taxonomy — blocks only need title + description). Design copy is `<id>/design.mdx` (components/forms).
 
 ## Page structure
 
@@ -61,7 +61,7 @@ Short description.
 />
 ```
 
-Use `#examples/<framework>` or `#examples/<framework>-form` aliases. Keep `sources.ts` as a map of those source exports. Astro previews pass the component as `<Example>` children.
+Use `#examples/<framework>`, `#examples/<framework>-form`, or `#examples/<framework>-blocks` aliases. Keep `sources.ts` as a map of those source exports. Astro previews pass the component as `<Example>` children. Block examples set `kind="block"`.
 
 ## Example order
 

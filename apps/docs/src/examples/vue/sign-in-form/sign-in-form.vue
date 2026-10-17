@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./sign-in-form.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Field, Surface } from "@pisagor/vue";
 import { useAppForm } from "@pisagor/vue-form/tanstack";

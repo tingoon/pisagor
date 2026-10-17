@@ -1,7 +1,7 @@
 /**
  * Sync framework-agnostic docs (`<id>.md` meta + `<id>/design.mdx`) from React
  * (canonical) into every other framework folder under
- * `src/content/<fw>/{components,forms}/`.
+ * `src/content/<fw>/{components,forms,blocks}/`.
  *
  * Links like `[Toast](/react/components/toast/design)` are rewritten to the
  * target framework; when the target framework has no page for that id, the link
@@ -10,7 +10,8 @@
  * After link rewrite, content is formatted with `bun fmt` so table alignment
  * matches shorter `/vue/`… paths (avoids format ↔ sync thrash).
  *
- * Only ids that already exist in the target framework are synced.
+ * Only ids that already exist in the target framework are synced. Block
+ * `develop.mdx` is not synced (framework-specific example imports).
  *
  * Usage:
  *
@@ -25,9 +26,9 @@ import path from "node:path";
 
 const CONTENT_DIR = path.resolve(import.meta.dir, "../src/content");
 const SOURCE_FRAMEWORK = "react";
-const SECTIONS = ["components", "forms"] as const;
+const SECTIONS = ["components", "forms", "blocks"] as const;
 const LINK_RE =
-  /\[([^\]]+)\]\(\/react\/(components|forms)\/([a-z0-9-]+)(\/[^)\s]*)?\)/g;
+  /\[([^\]]+)\]\(\/react\/(components|forms|blocks)\/([a-z0-9-]+)(\/[^)\s]*)?\)/g;
 
 const check = process.argv.includes("--check");
 

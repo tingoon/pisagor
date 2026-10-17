@@ -1,3 +1,4 @@
+import source from "./settings-row.tsx?raw";
 /** @jsxImportSource solid-js */
 
 import { Checkbox, Field, Surface } from "@pisagor/solid";
@@ -28,3 +29,5 @@ export function SettingsRow() {
     </Surface>
   );
 }
+
+export { source as SettingsRowSource };

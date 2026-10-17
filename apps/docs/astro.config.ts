@@ -361,12 +361,20 @@ export default defineConfig({
           replacement: join(packagesRoot, "astro/examples"),
         },
         {
+          find: "#examples/react-blocks",
+          replacement: join(docsSrc, "examples/react"),
+        },
+        {
           find: "#examples/react-form",
           replacement: join(packagesRoot, "react-form/examples"),
         },
         {
           find: "#examples/react",
           replacement: join(packagesRoot, "react/examples"),
+        },
+        {
+          find: "#examples/solid-blocks",
+          replacement: join(docsSrc, "examples/solid"),
         },
         {
           find: "#examples/solid-form",
@@ -377,12 +385,20 @@ export default defineConfig({
           replacement: join(packagesRoot, "solid/examples"),
         },
         {
+          find: "#examples/svelte-blocks",
+          replacement: join(docsSrc, "examples/svelte"),
+        },
+        {
           find: "#examples/svelte-form",
           replacement: join(packagesRoot, "svelte-form/examples"),
         },
         {
           find: "#examples/svelte",
           replacement: join(packagesRoot, "svelte/examples"),
+        },
+        {
+          find: "#examples/vue-blocks",
+          replacement: join(docsSrc, "examples/vue"),
         },
         {
           find: "#examples/vue-form",

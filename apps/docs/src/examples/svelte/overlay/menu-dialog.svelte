@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./menu-dialog.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, Dialog, DropdownMenu } from "@pisagor/svelte";
   import GearIcon from "phosphor-svelte/lib/GearIcon";

@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./settings-row.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Checkbox, Field, Surface } from "@pisagor/vue";
 import { settingsRowBlock } from "#/recipes/blocks/field";

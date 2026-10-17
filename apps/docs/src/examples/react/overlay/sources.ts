@@ -1,11 +1,13 @@
-import avatar_group_overflowRaw from "./avatar-group-overflow.tsx?raw";
-import item_pickerRaw from "./item-picker.tsx?raw";
-import menu_dialogRaw from "./menu-dialog.tsx?raw";
-import popover_dialogRaw from "./popover-dialog.tsx?raw";
+import { AvatarGroupOverflowSource as AvatarGroupOverflow } from "./avatar-group-overflow";
+import { ItemPickerSource as ItemPicker } from "./item-picker";
+import { MenuDialogSource as MenuDialog } from "./menu-dialog";
+import { PopoverDialogSource as PopoverDialog } from "./popover-dialog";
+
+export const imports = `import { … } from "@pisagor/react";`;
 
 export const sources = {
-  AvatarGroupOverflow: avatar_group_overflowRaw,
-  ItemPicker: item_pickerRaw,
-  MenuDialog: menu_dialogRaw,
-  PopoverDialog: popover_dialogRaw,
+  AvatarGroupOverflow,
+  ItemPicker,
+  MenuDialog,
+  PopoverDialog,
 } as const;

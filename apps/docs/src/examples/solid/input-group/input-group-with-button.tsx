@@ -1,3 +1,4 @@
+import source from "./input-group-with-button.tsx?raw";
 /** @jsxImportSource solid-js */
 import { InputGroup } from "@pisagor/solid";
 
@@ -13,3 +14,5 @@ export function InputGroupWithButton() {
     </InputGroup>
   );
 }
+
+export { source as InputGroupWithButtonSource };

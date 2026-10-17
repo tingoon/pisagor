@@ -1,3 +1,4 @@
+import source from "./editable-user-card.tsx?raw";
 /** @jsxImportSource solid-js */
 
 import { Button, Card, Editable, Field, Input } from "@pisagor/solid";
@@ -97,3 +98,5 @@ export function EditableUserCard(props: EditableUserCardProps) {
     </Card>
   );
 }
+
+export { source as EditableUserCardSource };

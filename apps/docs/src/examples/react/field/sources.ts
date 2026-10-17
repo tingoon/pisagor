@@ -1,15 +1,17 @@
-import form_gridRaw from "./form-grid.tsx?raw";
-import form_sectionRaw from "./form-section.tsx?raw";
-import form_section_textareaRaw from "./form-section-textarea.tsx?raw";
-import label_accessoryRaw from "./label-accessory.tsx?raw";
-import settings_panelRaw from "./settings-panel.tsx?raw";
-import settings_rowRaw from "./settings-row.tsx?raw";
+import { FormGridSource as FormGrid } from "./form-grid";
+import { FormSectionSource as FormSection } from "./form-section";
+import { FormSectionTextareaSource as FormSectionTextarea } from "./form-section-textarea";
+import { LabelAccessorySource as LabelAccessory } from "./label-accessory";
+import { SettingsPanelSource as SettingsPanel } from "./settings-panel";
+import { SettingsRowSource as SettingsRow } from "./settings-row";
+
+export const imports = `import { … } from "@pisagor/react";`;
 
 export const sources = {
-  FormGrid: form_gridRaw,
-  FormSection: form_sectionRaw,
-  FormSectionTextarea: form_section_textareaRaw,
-  LabelAccessory: label_accessoryRaw,
-  SettingsPanel: settings_panelRaw,
-  SettingsRow: settings_rowRaw,
+  FormGrid,
+  FormSection,
+  FormSectionTextarea,
+  LabelAccessory,
+  SettingsPanel,
+  SettingsRow,
 } as const;

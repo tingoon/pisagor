@@ -1,9 +1,11 @@
-import table_bulk_actionsRaw from "./table-bulk-actions.tsx?raw";
-import table_paginationRaw from "./table-pagination.tsx?raw";
-import table_row_menuRaw from "./table-row-menu.tsx?raw";
+import { TableBulkActionsSource as TableBulkActions } from "./table-bulk-actions";
+import { TablePaginationSource as TablePagination } from "./table-pagination";
+import { TableRowMenuSource as TableRowMenu } from "./table-row-menu";
+
+export const imports = `import { … } from "@pisagor/solid";`;
 
 export const sources = {
-  TableBulkActions: table_bulk_actionsRaw,
-  TablePagination: table_paginationRaw,
-  TableRowMenu: table_row_menuRaw,
+  TableBulkActions,
+  TablePagination,
+  TableRowMenu,
 } as const;

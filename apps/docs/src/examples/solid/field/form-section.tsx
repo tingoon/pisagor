@@ -1,3 +1,4 @@
+import source from "./form-section.tsx?raw";
 /** @jsxImportSource solid-js */
 
 import { Button, Field, Input, Surface } from "@pisagor/solid";
@@ -28,3 +29,5 @@ export function FormSection() {
     </Surface>
   );
 }
+
+export { source as FormSectionSource };

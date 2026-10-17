@@ -1,3 +1,4 @@
+import source from "./standard-app-shell.tsx?raw";
 /** @jsxImportSource solid-js */
 
 import { AppShell, Button, useAppShell } from "@pisagor/solid";
@@ -154,3 +155,5 @@ function StandardAppShellPlaceholder() {
     </div>
   );
 }
+
+export { source as StandardAppShellSource };
