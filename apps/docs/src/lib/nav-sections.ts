@@ -369,10 +369,15 @@ export const formSections: NavSection[] = [
   {
     items: [
       { slug: "forms", status: "ready", title: "Introduction" },
-      { slug: "forms/tanstack", status: "ready", title: "TanStack Form" },
       { slug: "forms/changelog", status: "ready", title: "Changelog" },
     ],
     title: "Getting started",
+  },
+  {
+    items: [
+      { slug: "forms/tanstack", status: "ready", title: "TanStack Form" },
+    ],
+    title: "Integrations",
   },
   {
     items: [

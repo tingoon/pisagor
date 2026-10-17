@@ -11,3 +11,31 @@ packageName: "@pisagor/react-form"
 - Pick exactly one option from a short, related set that fits on screen at once.
 - Prefer over SelectField when comparing choices side by side matters more than saving space.
 - Prefer over a bare RadioGroup when you need a label, description, or error text with the group.
+
+## Import
+
+```tsx
+import { RadioGroupField } from "@pisagor/react-form";
+```
+
+Part of `@pisagor/react-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+A labeled group of options where exactly one can be chosen.
+
+<Example name="Default" />
+
+### Disabled
+
+Show that the radio group is unavailable.
+
+<Example name="Disabled" />
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example name="Invalid" />

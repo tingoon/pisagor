@@ -15,9 +15,9 @@ cursor:
 
 # Develop docs (`develop.mdx`)
 
-Applies to `apps/docs/src/content/<framework>/components/<id>/develop.mdx`, form pages at `…/forms/<id>.mdx`, block pages at `…/blocks/<id>.mdx`, the examples in `packages/<framework>(-form)/examples/<id>/` (or `apps/docs/src/examples/<framework>/` for blocks), and `<id>.stories.tsx`. Judge each component on its own; never apply these rules mechanically.
+Applies to `apps/docs/src/content/<framework>/components/<id>/develop.mdx`, form pages at `…/forms/<id>.mdx`, block pages at `…/blocks/<id>.mdx`, the examples in `packages/<framework>(-form)/examples/<id>/` (or `apps/docs/src/blocks/<framework>/` for blocks), and `<id>.stories.tsx`. Judge each component on its own; never apply these rules mechanically.
 
-Components: one folder `<id>/` with `meta.md` (title, description, api, taxonomy), `design.mdx`, and `develop.mdx`. Forms: one file `forms/<id>.mdx` with frontmatter + **When to use** (no design/develop tabs — field usage lives on the underlying Input/Label components). Blocks: one file `blocks/<id>.mdx` with frontmatter (`title`, `description`) and the page body.
+Components: one folder `<id>/` with `meta.md` (title, description, api, taxonomy), `design.mdx`, and `develop.mdx`. Forms: one file `forms/<id>.mdx` with frontmatter + **When to use** + develop body (`## Import`, `## Examples`, …) — no design/develop tabs. Blocks: one file `blocks/<id>.mdx` with frontmatter (`title`, `description`) and the page body.
 
 In component `design.mdx`, use injected `<DoDont do="…" dont="…" />` for guideline pairs (optional `doSrc` / `dontSrc` + alt/size props). Do not hand-write Do/Don’t HTML or global CSS — the component is Tailwind-only and injected like `Example`.
 

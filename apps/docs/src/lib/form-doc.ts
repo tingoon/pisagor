@@ -1,4 +1,5 @@
 import { getCollection, getEntry, render } from "astro:content";
+import { extractExampleNames } from "./component-doc";
 import type { ComponentDocs } from "./component-docs-types";
 import type { Framework } from "./nav";
 
@@ -27,7 +28,7 @@ export async function listFormStaticPaths(
   return ids.map((id) => ({ params: { id } }));
 }
 
-/** Form MDX page (frontmatter + When to use body). */
+/** Form MDX page (frontmatter + When to use + develop body). */
 export async function loadFormPage(
   framework: Framework,
   id: string,
@@ -50,4 +51,27 @@ export async function loadFormPage(
     docs: entry.data as ComponentDocs,
     getHeadings: () => headings,
   };
+}
+
+/** Raw MDX body for example-name extraction. */
+export async function loadFormBody(
+  framework: Framework,
+  id: string,
+): Promise<string> {
+  const name = formCollectionName[framework];
+  if (!name) {
+    throw new Error(`No form collection for ${framework}`);
+  }
+  const entry = await getEntry(name, id);
+  if (!entry) {
+    throw new Error(`Missing ${framework} form docs for "${id}"`);
+  }
+  return entry.body ?? "";
+}
+
+export async function listFormExampleNames(
+  framework: Framework,
+  id: string,
+): Promise<string[]> {
+  return extractExampleNames(await loadFormBody(framework, id));
 }

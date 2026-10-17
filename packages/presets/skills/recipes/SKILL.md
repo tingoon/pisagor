@@ -30,7 +30,7 @@ bun add @pisagor/recipes
 import { buttonRecipe } from "@pisagor/recipes";
 ```
 
-Block demo recipes live in the docs app (`apps/docs/src/recipes/blocks/`), not in these packages. Import them as `#/recipes/blocks/<name>` from story/docs apps.
+Block demo recipes live in the docs app (`apps/docs/src/styles/recipes/`), not in these packages. Import them as `#/styles/recipes/<name>` from story/docs apps.
 
 ## Rules
 
@@ -69,6 +69,6 @@ These have **no className/style surface** of their own (re-exports, context, or 
 
 `@pisagor/recipes` → `@pisagor/presets/pisagor` → `packages/presets/src/contracts/<name>.ts`  
 `@pisagor/recipes/styles` → `@pisagor/presets/styles` (`@source` over contracts)  
-Block recipes → `apps/docs/src/recipes/blocks/<name>.ts`
+Block recipes → `apps/docs/src/styles/recipes/<name>.ts`
 
 Swap skins by updating both `packages/recipes/src/index.ts` and `packages/recipes/src/styles.css`. Do not alias `@pisagor/recipes` to a JS-only path.

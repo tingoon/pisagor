@@ -140,6 +140,27 @@ function stripComponentDocTab(slug: string): string {
   return slug;
 }
 
+/**
+ * Sidebar section label for the current page (shown as the docs kicker).
+ * “Getting started” is shortened to “Get started” to match existing copy.
+ */
+export function getDocsKicker(
+  framework: Framework,
+  area: DocsArea,
+  pathname: string,
+): string | undefined {
+  const parts = stripDocsBase(pathname).split("/").filter(Boolean);
+  const slug = stripComponentDocTab(parts.slice(1).join("/"));
+  for (const section of getSidebarNav(framework, area)) {
+    if (section.items.some((item) => item.slug === slug)) {
+      return section.title === "Getting started"
+        ? "Get started"
+        : section.title;
+    }
+  }
+  return undefined;
+}
+
 /** Whether the sidebar lists a ready page for this framework/area/slug. */
 function sidebarHasSlug(
   framework: Framework,

@@ -7,9 +7,9 @@ import type { Framework } from "#/lib/nav";
 import {
   frameworks,
   getDocsArea,
+  getDocsKicker,
   getSidebarNav,
   mainNav,
-  stripDocsBase,
 } from "#/lib/nav";
 import { frameworkStylesheetUrls } from "#/styles/load-framework-css";
 
@@ -17,7 +17,7 @@ interface Props {
   framework: Framework;
   title: string;
   description?: string;
-  /** Optional small label above the title (intro defaults to “Get started”). */
+  /** Override the auto sidebar-section kicker above the title. */
   kicker?: string;
   headings?: { depth: number; slug: string; text: string }[];
   /** `<title>` text when it should differ from the visible h1. */
@@ -30,9 +30,8 @@ const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 const area = getDocsArea(currentPath);
 const framework = Astro.props.framework;
 const sidebarSections = getSidebarNav(framework, area);
-const pathParts = stripDocsBase(currentPath).split("/").filter(Boolean);
-const isIntro = pathParts.length === 1;
-const kicker = Astro.props.kicker ?? (isIntro ? "Get started" : undefined);
+const kicker =
+  Astro.props.kicker ?? getDocsKicker(framework, area, currentPath);
 const description = Astro.props.description;
 const title = Astro.props.title;
 const headings = Astro.props.headings ?? [];
@@ -77,13 +76,13 @@ const stylesheets = await frameworkStylesheetUrls(framework);
         >
           <header class="mb-6">
             {kicker ? <p class="docs-kicker">{kicker}</p> : null}
-            <div
-              class="flex flex-wrap items-center justify-between gap-x-4 gap-y-2"
-            >
-              <h1 class="docs-title">{title}</h1>
-              <slot name="title-actions" />
-            </div>
+            <h1 class="docs-title">{title}</h1>
             {description ? <p class="docs-lead mt-3">{description}</p> : null}
+            {Astro.slots.has("title-actions") ? (
+              <div class="mt-4">
+                <slot name="title-actions" />
+              </div>
+            ) : null}
           </header>
           <slot name="hero" />
           <slot name="nav" />

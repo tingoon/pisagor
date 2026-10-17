@@ -3,7 +3,9 @@
  * framework folder under `src/content/<fw>/{components,forms,blocks}/`.
  *
  * - Components: `<id>/meta.md` + `<id>/design.mdx`
- * - Forms / blocks: single `<id>.mdx` (frontmatter + body)
+ * - Blocks: single `<id>.mdx` (frontmatter + body)
+ * - Forms: frontmatter fields + `## When to use` from React; `## Import` and
+ *   below stay framework-owned (package imports / examples), like develop.mdx
  *
  * Links like `[Toast](/react/components/toast/design)` are rewritten to the
  * target framework; when the target framework has no page for that id, the link
@@ -135,6 +137,78 @@ function syncFile(sourcePath: string, targetPath: string, framework: string) {
   console.log(`synced ${relative}`);
 }
 
+const FORM_PACKAGE: Record<string, string> = {
+  solid: "@pisagor/solid-form",
+  svelte: "@pisagor/svelte-form",
+  vue: "@pisagor/vue-form",
+};
+
+/** Split form MDX into shared prefix (fm + When to use) and FW develop tail. */
+function splitFormDoc(content: string): { shared: string; develop: string } {
+  const fmMatch = content.match(/^---\n[\s\S]*?\n---\n/);
+  if (!fmMatch) return { develop: content, shared: "" };
+  const fm = fmMatch[0];
+  const body = content.slice(fm.length);
+  const importIdx = body.search(/^## Import\s*$/m);
+  if (importIdx === -1) {
+    return { develop: "", shared: content };
+  }
+  return {
+    develop: body.slice(importIdx).replace(/^\n+/, ""),
+    shared: fm + body.slice(0, importIdx).replace(/\s+$/, "") + "\n\n",
+  };
+}
+
+function rewriteFormFrontmatter(
+  shared: string,
+  framework: string,
+  targetPackageName: string | undefined,
+): string {
+  let out = rewriteLinks(shared, framework);
+  const pkg = targetPackageName ?? FORM_PACKAGE[framework];
+  if (pkg) {
+    out = out.replace(/packageName:\s*"[^"]*"/, `packageName: "${pkg}"`);
+  }
+  return out;
+}
+
+function expectedFormDoc(
+  sourcePath: string,
+  targetPath: string,
+  framework: string,
+): string {
+  const source = fs.readFileSync(sourcePath, "utf8");
+  const target = fs.existsSync(targetPath)
+    ? fs.readFileSync(targetPath, "utf8")
+    : "";
+  const { shared } = splitFormDoc(source);
+  const { develop } = splitFormDoc(target);
+  const targetPkg = target.match(/packageName:\s*"([^"]*)"/)?.[1];
+  const merged =
+    rewriteFormFrontmatter(shared, framework, targetPkg) +
+    (develop || splitFormDoc(source).develop);
+  return formatDoc(merged, targetPath);
+}
+
+function syncFormFile(
+  sourcePath: string,
+  targetPath: string,
+  framework: string,
+) {
+  if (!fs.existsSync(sourcePath) || !fs.existsSync(targetPath)) return;
+  const expected = expectedFormDoc(sourcePath, targetPath, framework);
+  const current = fs.readFileSync(targetPath, "utf8");
+  if (current === expected) return;
+  const relative = path.relative(CONTENT_DIR, targetPath);
+  if (check) {
+    drifted.push(relative);
+    return;
+  }
+  fs.writeFileSync(targetPath, expected);
+  written++;
+  console.log(`synced ${relative}`);
+}
+
 const frameworks = listDirs(CONTENT_DIR).filter(
   (fw) => fw !== SOURCE_FRAMEWORK,
 );
@@ -146,9 +220,20 @@ for (const framework of frameworks) {
     const sourceSection = path.join(CONTENT_DIR, SOURCE_FRAMEWORK, section);
     const targetSection = path.join(CONTENT_DIR, framework, section);
 
-    if (section === "blocks" || section === "forms") {
+    if (section === "blocks") {
       for (const id of listIds(targetSection, ".mdx")) {
         syncFile(
+          path.join(sourceSection, `${id}.mdx`),
+          path.join(targetSection, `${id}.mdx`),
+          framework,
+        );
+      }
+      continue;
+    }
+
+    if (section === "forms") {
+      for (const id of listIds(targetSection, ".mdx")) {
+        syncFormFile(
           path.join(sourceSection, `${id}.mdx`),
           path.join(targetSection, `${id}.mdx`),
           framework,

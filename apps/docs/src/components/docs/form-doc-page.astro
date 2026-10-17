@@ -1,7 +1,13 @@
 ---
+import ComponentHeader from "#/components/docs/component-header.astro";
 import DoDont from "#/components/docs/do-dont.astro";
+import Example from "#/components/docs/example.astro";
+import PropsTable from "#/components/docs/props-table.astro";
 import DocsLayout from "#/layouts/docs-layout.astro";
-import { loadFormPage } from "#/lib/form-doc";
+import { loadProps } from "#/lib/component-doc";
+import { setDocsExampleContext } from "#/lib/docs-example-context";
+import { docsProseClass } from "#/lib/docs-prose";
+import { listFormExampleNames, loadFormPage } from "#/lib/form-doc";
 import type { Framework } from "#/lib/nav";
 import { frameworks } from "#/lib/nav";
 
@@ -13,6 +19,12 @@ interface Props {
 const id = Astro.props.id;
 const framework = Astro.props.framework;
 
+setDocsExampleContext(Astro.locals, {
+  exampleId: id,
+  framework,
+  kind: "form",
+});
+
 const {
   Content: FormContent,
   docs,
@@ -21,13 +33,16 @@ const {
 const Content = FormContent as (props?: {
   components?: Record<string, unknown>;
 }) => unknown;
-const headings = getHeadings().filter((h) => h.depth === 2 || h.depth === 3);
-const mdxComponents = { DoDont };
+const exampleExportNames = await listFormExampleNames(framework, id);
+const propsRows = loadProps(id);
+const paneHeadings = getHeadings().filter(
+  (h) => h.depth === 2 || h.depth === 3,
+);
+const headings = [...paneHeadings, { depth: 2, slug: "props", text: "Props" }];
+const mdxComponents = { DoDont, Example };
 const frameworkLabel =
   frameworks.find((item) => item.id === framework)?.label ?? framework;
-
-const proseClass =
-  "docs-skill-md space-y-4 text-sm leading-7 text-foreground/90 [&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-2 [&_code]:rounded-md [&_code]:bg-muted/60 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-3.25 [&_pre_code]:rounded-none [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:text-foreground [&>h2:first-child]:!mt-0 [&_li]:my-1 [&_ol]:my-3 [&_ol]:list-decimal [&_ol]:ps-5 [&_p]:my-3 [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-border/60 [&_pre]:bg-muted/30 [&_pre]:p-4 [&_pre]:text-3.25 [&_strong]:font-semibold [&_table]:my-4 [&_table]:w-full [&_table]:text-left [&_td]:border-b [&_td]:border-border/50 [&_td]:py-2 [&_td]:pe-4 [&_th]:border-b [&_th]:border-border/70 [&_th]:py-2 [&_th]:pe-4 [&_th]:font-semibold [&_ul]:my-3 [&_ul]:list-disc [&_ul]:ps-5";
+const pkg = docs.packageName;
 ---
 
 <DocsLayout
@@ -37,7 +52,38 @@ const proseClass =
   metaTitle={`${docs.title} – ${frameworkLabel} Forms`}
   title={docs.title}
 >
-  <div class={proseClass}>
+  <ComponentHeader
+    aliases={docs.aliases}
+    api={docs.api}
+    framework={framework}
+    packageName={pkg}
+    slot="title-actions"
+    taxonomy={docs.taxonomy}
+  />
+
+  <div class={docsProseClass}>
     <Content components={mdxComponents} />
+  </div>
+
+  {exampleExportNames.length > 0 ? (
+    <div
+      data-component-id={id}
+      data-docs-examples-host
+      data-export-names={JSON.stringify(exampleExportNames)}
+      data-kind="form"
+      hidden
+    />
+  ) : null}
+
+  <div class="mt-10">
+    <h2 class="mb-3 font-semibold text-2xl tracking-tight" id="props">Props</h2>
+    {propsRows ? (
+      <PropsTable rows={propsRows} />
+    ) : (
+      <p class="text-muted-foreground text-sm">
+        This utility has no dedicated entries in <code>@pisagor/props</code>{" "}
+        yet.
+      </p>
+    )}
   </div>
 </DocsLayout>

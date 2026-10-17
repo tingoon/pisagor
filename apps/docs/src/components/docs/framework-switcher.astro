@@ -1,4 +1,5 @@
 ---
+import { CaretDownIcon } from "@phosphor-icons/react";
 import type { Framework } from "#/lib/nav";
 import { frameworks, swapFrameworkPath } from "#/lib/nav";
 import {
@@ -22,36 +23,82 @@ const frameworkIcons = {
   svelte: SvelteBrandIcon,
   vue: VueBrandIcon,
 } as const;
+
+const { framework, pathname } = Astro.props;
+const ActiveIcon = frameworkIcons[framework];
 ---
 
-<nav
-  aria-label="Framework"
-  class="m-0 inline-flex items-center rounded-full border border-border/70 bg-muted/40 p-0.5"
->
-  {frameworks.map((item) => {
-    const active = item.id === Astro.props.framework;
-    const Icon = frameworkIcons[item.id];
-    return (
-      <a
-        aria-current={active ? "page" : undefined}
-        aria-label={item.label}
-        class:list={[
-          "docs-press inline-flex items-center gap-1.5 rounded-full border px-2 py-1 text-xs sm:px-2.5",
-          active
-            ? "border-border/60 bg-background font-semibold text-foreground shadow-sm"
-            : "border-transparent font-medium text-muted-foreground hover:text-foreground",
-        ]}
-        href={swapFrameworkPath(Astro.props.pathname, item.id)}
-      >
-        <Icon className={active ? "opacity-100" : "opacity-70"} size={13} />
-        <span
-          class:list={[
-            active ? "hidden min-[420px]:inline" : "hidden sm:inline",
-          ]}
+<div class="inline-flex shrink-0 items-center">
+  <label class="relative inline-flex max-w-[9.5rem] items-center lg:hidden">
+    <span class="sr-only">Framework</span>
+    <span
+      aria-hidden="true"
+      class="pointer-events-none absolute start-2.5 inline-flex items-center"
+    >
+      <ActiveIcon className="opacity-90" size={13} />
+    </span>
+    <select
+      aria-label="Framework"
+      class="docs-press h-8 w-full appearance-none truncate rounded-full border border-border/70 bg-muted/40 py-1 ps-8 pe-7 text-xs font-semibold text-foreground"
+      data-framework-select
+    >
+      {frameworks.map((item) => (
+        <option
+          selected={item.id === framework}
+          value={swapFrameworkPath(pathname, item.id)}
         >
           {item.label}
-        </span>
-      </a>
-    );
-  })}
-</nav>
+        </option>
+      ))}
+    </select>
+    <CaretDownIcon
+      aria-hidden
+      className="pointer-events-none absolute end-2 size-3 text-muted-foreground"
+      weight="bold"
+    />
+  </label>
+
+  <nav
+    aria-label="Framework"
+    class="m-0 hidden items-center rounded-full border border-border/70 bg-muted/40 p-0.5 lg:inline-flex"
+  >
+    {frameworks.map((item) => {
+      const active = item.id === framework;
+      const Icon = frameworkIcons[item.id];
+      return (
+        <a
+          aria-current={active ? "page" : undefined}
+          aria-label={item.label}
+          class:list={[
+            "docs-press inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs",
+            active
+              ? "border-border/60 bg-background font-semibold text-foreground shadow-sm"
+              : "border-transparent font-medium text-muted-foreground hover:text-foreground",
+          ]}
+          href={swapFrameworkPath(pathname, item.id)}
+        >
+          <Icon className={active ? "opacity-100" : "opacity-70"} size={13} />
+          <span>{item.label}</span>
+        </a>
+      );
+    })}
+  </nav>
+</div>
+
+<script>
+function bindFrameworkSelects() {
+  document
+    .querySelectorAll<HTMLSelectElement>("[data-framework-select]")
+    .forEach((el) => {
+      if (el.dataset.bound) return;
+      el.dataset.bound = "";
+      el.addEventListener("change", () => {
+        if (!el.value) return;
+        window.location.assign(el.value);
+      });
+    });
+}
+
+bindFrameworkSelects();
+document.addEventListener("astro:page-load", bindFrameworkSelects);
+</script>

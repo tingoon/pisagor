@@ -11,3 +11,31 @@ packageName: "@pisagor/react-form"
 - Set a value along a continuous range when approximate precision is enough.
 - Prefer over a bare Slider when you need a label, description, or error text with the control.
 - Prefer NumberField when the exact number must be typed rather than dragged.
+
+## Import
+
+```tsx
+import { SliderField } from "@pisagor/react-form";
+```
+
+Part of `@pisagor/react-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+A slider with a label and live value for picking a number in a range.
+
+<Example name="Default" />
+
+### Disabled
+
+Show that the slider is unavailable.
+
+<Example name="Disabled" />
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example name="Invalid" />

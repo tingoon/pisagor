@@ -1,11 +1,5 @@
 ---
-import {
-  ArrowSquareOutIcon,
-  BugIcon,
-  CaretUpDownIcon,
-  MoonIcon,
-  SunIcon,
-} from "@phosphor-icons/react";
+import { ArrowSquareOutIcon, BugIcon } from "@phosphor-icons/react";
 import { Button, Separator, Surface, VisuallyHidden } from "@pisagor/astro";
 import type { Framework } from "#/lib/nav";
 import {
@@ -14,6 +8,8 @@ import {
   isViewportControlsPreview,
 } from "#/lib/preview-config";
 import CodeBlock from "./code-block.astro";
+import { PreviewThemeToggle } from "./react/preview-theme-toggle";
+import { PreviewToolbarControls } from "./react/preview-toolbar-controls";
 
 interface Props {
   title?: string;
@@ -85,30 +81,6 @@ const viewports = [
   { label: "Tablet", value: "tablet" },
   { label: "Mobile", value: "mobile" },
 ] as const;
-
-const previewMenus = [
-  {
-    key: "surface",
-    label: "Surface",
-    options: surfaces,
-    /** Stable trigger width for longest label (“Secondary”). */
-    triggerClass: "min-w-[6.5rem]",
-  },
-  ...(viewportControls
-    ? ([
-        {
-          key: "viewport",
-          label: "Viewport",
-          options: viewports,
-          /** Stable trigger width for longest label (“Desktop”). */
-          triggerClass: "min-w-[5.75rem]",
-        },
-      ] as const)
-    : []),
-];
-
-const menuOptionClass =
-  "flex w-full items-center rounded-md px-2 py-1.5 text-start text-xs text-muted-foreground transition-colors hover:bg-muted/70 hover:text-foreground data-active:bg-background data-active:font-medium data-active:text-foreground data-active:shadow-sm";
 ---
 
 <section
@@ -130,7 +102,7 @@ const menuOptionClass =
     >
       <Button
         aria-selected="true"
-        class="docs-press text-muted-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm"
+        class="docs-press rounded-md text-muted-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm"
         data-active
         data-view="preview"
         data-view-tab
@@ -143,7 +115,7 @@ const menuOptionClass =
       </Button>
       <Button
         aria-selected="false"
-        class="docs-press text-muted-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm"
+        class="docs-press rounded-md text-muted-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm"
         data-view="code"
         data-view-tab
         role="tab"
@@ -156,17 +128,7 @@ const menuOptionClass =
     </div>
 
     <div class="ms-auto flex flex-wrap items-center gap-1">
-      <Button
-        aria-label="Toggle light and dark mode"
-        data-theme-toggle
-        data-tooltip="Toggle mode"
-        size="icon-sm"
-        type="button"
-        variant="ghost"
-      >
-        <SunIcon aria-hidden data-icon-sun size={14} />
-        <MoonIcon aria-hidden data-icon-moon hidden size={14} />
-      </Button>
+      <PreviewThemeToggle client:load />
 
       {openInNewTab ? (
         <Button
@@ -195,47 +157,11 @@ const menuOptionClass =
 
       <Separator class="mx-0.5 hidden h-4 sm:block" orientation="vertical" />
 
-      {previewMenus.map((control) => (
-        <div class="relative" data-preview-menu={control.key}>
-          <Button
-            aria-expanded="false"
-            aria-haspopup="listbox"
-            aria-label={control.label}
-            class:list={[
-              "justify-between gap-1 px-2 font-medium text-muted-foreground hover:text-foreground",
-              control.triggerClass,
-            ]}
-            data-preview-menu-toggle
-            size="xs"
-            type="button"
-            variant="ghost"
-          >
-            <span data-preview-menu-value>{control.options[0].label}</span>
-            <CaretUpDownIcon aria-hidden class="opacity-60" size={11} />
-          </Button>
-          <div
-            aria-label={control.label}
-            class="absolute inset-e-0 z-20 mt-1 hidden min-w-36 rounded-lg border border-border/70 bg-popover p-1 text-popover-foreground shadow-lg"
-            data-preview-menu-panel
-            role="listbox"
-          >
-            {control.options.map((option, index) => (
-              <button
-                aria-selected={index === 0 ? "true" : "false"}
-                class={menuOptionClass}
-                data-active={index === 0 ? "" : undefined}
-                data-label={option.label}
-                data-preview-menu-option
-                data-value={option.value}
-                role="option"
-                type="button"
-              >
-                {option.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      ))}
+      <PreviewToolbarControls
+        client:load
+        surfaces={[...surfaces]}
+        viewports={viewportControls ? [...viewports] : undefined}
+      />
     </div>
   </div>
 
@@ -250,11 +176,14 @@ const menuOptionClass =
     ]}
   >
     <div
-      class="w-full max-w-full transition-[max-width] duration-200 ease-out data-[viewport=tablet]:max-w-3xl data-[viewport=mobile]:max-w-93.75"
+      class="mx-auto flex w-full max-w-full items-center justify-center transition-[max-width] duration-200 ease-out data-[viewport=tablet]:max-w-3xl data-[viewport=mobile]:max-w-93.75"
       data-preview-stage
       data-viewport="desktop"
     >
-      <div class="w-full" data-preview-surface="page">
+      <div
+        class="flex w-full items-center justify-center"
+        data-preview-surface="page"
+      >
         <slot />
       </div>
     </div>
@@ -263,7 +192,7 @@ const menuOptionClass =
         <template data-surface-template={surface.value}>
           <Surface
             bordered
-            class="w-full"
+            class="flex w-full items-center justify-center"
             padding="lg"
             variant={surface.value}
           />

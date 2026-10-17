@@ -60,6 +60,9 @@ const title = Astro.props.title ?? name;
   {framework === "astro" ? (
     <slot />
   ) : (
-    <div class="min-h-12 w-full" data-example-slot={name} />
+    <div
+      class="flex min-h-12 w-full items-center justify-center"
+      data-example-slot={name}
+    />
   )}
 </ComponentPreview>

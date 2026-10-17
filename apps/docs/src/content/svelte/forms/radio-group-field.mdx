@@ -3,7 +3,7 @@ title: Radio Group Field
 description: "Lets the user pick one option from a short list with an optional validation message."
 api: closed
 taxonomy: standard
-packageName: "@pisagor/react-form"
+packageName: "@pisagor/svelte-form"
 ---
 
 ## When to use
@@ -11,3 +11,31 @@ packageName: "@pisagor/react-form"
 - Pick exactly one option from a short, related set that fits on screen at once.
 - Prefer over SelectField when comparing choices side by side matters more than saving space.
 - Prefer over a bare RadioGroup when you need a label, description, or error text with the group.
+
+## Import
+
+```ts
+import { RadioGroupField } from "@pisagor/svelte-form";
+```
+
+Part of `@pisagor/svelte-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+A labeled group of options where exactly one can be chosen.
+
+<Example name="Default" />
+
+### Disabled
+
+Show that the radio group is unavailable.
+
+<Example name="Disabled" />
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example name="Invalid" />

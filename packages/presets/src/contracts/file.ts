@@ -18,9 +18,20 @@ export const fileRecipe = tv({
       "flex shrink-0 items-center justify-center overflow-hidden",
       "bg-muted text-muted-foreground rounded-lg",
     ],
-    meta: ["text-muted-foreground truncate text-xs"],
+    meta: ["text-muted-foreground inline text-xs"],
     name: ["text-foreground truncate font-medium"],
-    size: ["text-muted-foreground truncate text-xs"],
+    size: [
+      "text-muted-foreground inline text-xs tabular-nums",
+      "[:where([data-part=meta])+&]:ms-1.5",
+      "[:where([data-part=meta])+&]:before:me-1.5",
+      "[:where([data-part=meta])+&]:before:inline-block",
+      "[:where([data-part=meta])+&]:before:size-0.75",
+      "[:where([data-part=meta])+&]:before:rounded-full",
+      "[:where([data-part=meta])+&]:before:bg-current",
+      "[:where([data-part=meta])+&]:before:align-middle",
+      "[:where([data-part=meta])+&]:before:opacity-50",
+      "[:where([data-part=meta])+&]:before:content-['']",
+    ],
   },
   variants: {
     variant: {

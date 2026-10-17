@@ -44,9 +44,12 @@ function metaCollection(
       generateId: ({ entry }) => {
         const normalized = entry.replace(/\\/g, "/");
         if (singleMdx) return normalized.replace(/\.mdx$/, "");
-        return normalized.replace(/\/meta\.md$/, "");
+        // `accordion/meta.md` → `accordion`
+        return normalized.replace(/\/meta\.md$/, "").replace(/\.md$/, "");
       },
-      pattern: singleMdx ? "*.mdx" : "*/meta.md",
+      // Nested meta lives one level down; `*/meta.md` is not matched by the
+      // content glob loader in this Astro version — use `**/meta.md`.
+      pattern: singleMdx ? "*.mdx" : "**/meta.md",
     }),
     schema: area === "blocks" ? blockDocsSchema : componentDocsSchema,
   });

@@ -1,25 +1,29 @@
 ---
-import { componentMeta } from "#/lib/component-meta";
+import type { ComponentDocs } from "#/lib/component-docs-types";
 import type { Framework } from "#/lib/nav";
 import ComponentMeta from "./component-meta.astro";
 import PackageLinks from "./package-links.astro";
 
 interface Props {
-  id: string;
   framework: Framework;
   /** Override npm package shown in PackageLinks (forms). */
   packageName?: string;
+  api?: ComponentDocs["api"];
+  taxonomy?: ComponentDocs["taxonomy"];
+  aliases?: string[];
 }
 
-const hasMeta = Boolean(
-  componentMeta[Astro.props.id as keyof typeof componentMeta],
-);
+const { api, taxonomy, aliases } = Astro.props;
 ---
 
-<div class="mb-6 rounded-xl border border-border/60 bg-muted/15 px-4 py-3.5">
-  {hasMeta ? <ComponentMeta id={Astro.props.id} /> : null}
+<div
+  class="flex max-w-full flex-wrap items-center justify-between gap-x-4 gap-y-2"
+>
+  {api && taxonomy ? (
+    <ComponentMeta api={api} taxonomy={taxonomy} aliases={aliases} />
+  ) : null}
   <PackageLinks
-    embedded={hasMeta}
+    class="ms-auto"
     framework={Astro.props.framework}
     packageName={Astro.props.packageName}
   />
