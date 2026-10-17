@@ -1,3 +1,4 @@
+import source from "./four-digits.tsx?raw";
 import { InputOTP } from "@pisagor/solid";
 
 export function FourDigits() {
@@ -10,3 +11,5 @@ export function FourDigits() {
     </InputOTP>
   );
 }
+
+export { source as FourDigitsSource };

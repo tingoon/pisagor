@@ -1,3 +1,4 @@
+import source from "./custom-format.tsx?raw";
 import { Button, Calendar, DatePicker, parseDate } from "@pisagor/solid";
 import { CalendarIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";
@@ -36,3 +37,5 @@ export function CustomFormat() {
     </DatePicker>
   );
 }
+
+export { source as CustomFormatSource };

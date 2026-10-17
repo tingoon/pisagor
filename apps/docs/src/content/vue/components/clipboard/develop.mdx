@@ -1,0 +1,102 @@
+import Example from "#/components/docs/example.astro";
+import VariantsSource from "#examples/vue/clipboard/variants.vue?raw";
+import SizesSource from "#examples/vue/clipboard/sizes.vue?raw";
+import DifferentIconSource from "#examples/vue/clipboard/different-icon.ts?raw";
+import WithLabelSource from "#examples/vue/clipboard/with-label.vue?raw";
+import ControlledSource from "#examples/vue/clipboard/controlled.vue?raw";
+import CustomTimeoutSource from "#examples/vue/clipboard/custom-timeout.vue?raw";
+import CustomRecipeSource from "#examples/vue/clipboard/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { Clipboard } from "@pisagor/vue";
+```
+
+## Examples
+
+### Variants
+
+Choose button emphasis to match surrounding actions.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="clipboard"
+  framework="vue"
+  kind="component"
+/>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="clipboard"
+  framework="vue"
+  kind="component"
+/>
+
+### Different Icon
+
+Swap icons when a different metaphor fits the copied content.
+
+<Example
+  name="DifferentIcon"
+  code={DifferentIconSource}
+  exampleId="clipboard"
+  framework="vue"
+  kind="component"
+/>
+
+### With Label
+
+Show a text label when an icon alone is not clear enough.
+
+<Example
+  name="WithLabel"
+  code={WithLabelSource}
+  exampleId="clipboard"
+  framework="vue"
+  kind="component"
+/>
+
+### Controlled
+
+Drive copied state from the parent when feedback is coordinated elsewhere.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="clipboard"
+  framework="vue"
+  kind="component"
+/>
+
+### Custom Timeout
+
+Change how long the success state shows before resetting.
+
+<Example
+  name="CustomTimeout"
+  code={CustomTimeoutSource}
+  exampleId="clipboard"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `clipboardRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="clipboard"
+  framework="vue"
+  kind="component"
+/>

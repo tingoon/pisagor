@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { ArrowLeftIcon, DotsThreeIcon } from "@phosphor-icons/react";
 import { Button, ButtonGroup } from "@pisagor/react";
 export function Default() {
@@ -21,3 +22,5 @@ export function Default() {
     </ButtonGroup>
   );
 }
+
+export { source as DefaultSource };

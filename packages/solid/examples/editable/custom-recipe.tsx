@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { editableRecipe } from "@pisagor/recipes";
 import { Button, Editable } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -41,3 +42,5 @@ export function CustomRecipe() {
     </Editable>
   );
 }
+
+export { source as CustomRecipeSource };

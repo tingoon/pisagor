@@ -1,3 +1,4 @@
+import source from "./activation-focus.tsx?raw";
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Button, Card, Editable, Field, Input } from "@pisagor/react";
 export function ActivationFocus() {
@@ -60,3 +61,5 @@ export function ActivationFocus() {
     </Card>
   );
 }
+
+export { source as ActivationFocusSource };

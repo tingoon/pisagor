@@ -1,0 +1,50 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte-form/switch-field/default.svelte?raw";
+import DisabledSource from "#examples/svelte-form/switch-field/disabled.svelte?raw";
+import InvalidSource from "#examples/svelte-form/switch-field/invalid.svelte?raw";
+
+## Import
+
+```ts
+import { SwitchField } from "@pisagor/svelte-form";
+```
+
+Part of `@pisagor/svelte-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+An on/off toggle for settings that apply immediately.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="switch-field"
+  framework="svelte"
+  kind="form"
+/>
+
+### Disabled
+
+Show that the switch is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="switch-field"
+  framework="svelte"
+  kind="form"
+/>
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="switch-field"
+  framework="svelte"
+  kind="form"
+/>

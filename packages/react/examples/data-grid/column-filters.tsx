@@ -1,3 +1,4 @@
+import source from "./column-filters.tsx?raw";
 import {
   CaretDownIcon,
   CaretUpIcon,
@@ -419,3 +420,5 @@ export function ColumnFilters() {
     </DataGridShell>
   );
 }
+
+export { source as ColumnFiltersSource };

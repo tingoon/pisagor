@@ -1,3 +1,4 @@
+import source from "./variants.tsx?raw";
 import { Table } from "@pisagor/solid";
 import { workspaceUsers } from "./helpers";
 
@@ -41,3 +42,5 @@ export function Variants() {
     </div>
   );
 }
+
+export { source as VariantsSource };

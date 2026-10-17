@@ -1,23 +1,23 @@
-import anchorRaw from "./anchor.tsx?raw";
-import close_behaviorRaw from "./close-behavior.tsx?raw";
-import close_buttonRaw from "./close-button.tsx?raw";
-import custom_spacingRaw from "./custom-spacing.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import modalRaw from "./modal.tsx?raw";
-import nestedRaw from "./nested.tsx?raw";
-import placementsRaw from "./placements.tsx?raw";
-import scroll_areaRaw from "./scroll-area.tsx?raw";
+import { AnchorSource as Anchor } from "./anchor";
+import { CloseBehaviorSource as CloseBehavior } from "./close-behavior";
+import { CloseButtonSource as CloseButton } from "./close-button";
+import { CustomSpacingSource as CustomSpacing } from "./custom-spacing";
+import { DefaultSource as Default } from "./default";
+import { ModalSource as Modal } from "./modal";
+import { NestedSource as Nested } from "./nested";
+import { PlacementsSource as Placements } from "./placements";
+import { ScrollAreaSource as ScrollArea } from "./scroll-area";
 
 export const imports = `import { Popover } from "@pisagor/solid";`;
 
 export const sources = {
-  Anchor: anchorRaw,
-  CloseBehavior: close_behaviorRaw,
-  CloseButton: close_buttonRaw,
-  CustomSpacing: custom_spacingRaw,
-  Default: defaultRaw,
-  Modal: modalRaw,
-  Nested: nestedRaw,
-  Placements: placementsRaw,
-  ScrollArea: scroll_areaRaw,
+  Anchor,
+  CloseBehavior,
+  CloseButton,
+  CustomSpacing,
+  Default,
+  Modal,
+  Nested,
+  Placements,
+  ScrollArea,
 } as const;

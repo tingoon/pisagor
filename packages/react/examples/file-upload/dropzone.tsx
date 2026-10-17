@@ -1,3 +1,4 @@
+import source from "./dropzone.tsx?raw";
 import { FileUpload } from "@pisagor/react";
 
 export function Dropzone() {
@@ -11,3 +12,5 @@ export function Dropzone() {
     </FileUpload>
   );
 }
+
+export { source as DropzoneSource };

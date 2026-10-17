@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./both-directions.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { ScrollArea } from "@pisagor/vue";
 </script>

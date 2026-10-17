@@ -1,3 +1,4 @@
+import source from "./clearable.tsx?raw";
 import { Textarea } from "@pisagor/react";
 import { useState } from "react";
 
@@ -13,3 +14,5 @@ export function Clearable() {
     />
   );
 }
+
+export { source as ClearableSource };

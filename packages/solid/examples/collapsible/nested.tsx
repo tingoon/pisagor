@@ -1,3 +1,4 @@
+import source from "./nested.tsx?raw";
 import { Button, Card, Clipboard, Collapsible } from "@pisagor/solid";
 export function Nested() {
   return (
@@ -60,3 +61,5 @@ export function Nested() {
     </Card>
   );
 }
+
+export { source as NestedSource };

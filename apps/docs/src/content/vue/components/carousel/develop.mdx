@@ -1,0 +1,193 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/carousel/default.vue?raw";
+import OrientationHorizontalSource from "#examples/vue/carousel/orientation-horizontal.vue?raw";
+import OrientationVerticalSource from "#examples/vue/carousel/orientation-vertical.vue?raw";
+import SpacingSource from "#examples/vue/carousel/spacing.vue?raw";
+import SlidesPerPageSource from "#examples/vue/carousel/slides-per-page.vue?raw";
+import ThumbnailIndicatorSource from "#examples/vue/carousel/thumbnail-indicator.vue?raw";
+import ThumbnailIndicatorVerticalSource from "#examples/vue/carousel/thumbnail-indicator-vertical.vue?raw";
+import CompoundSource from "#examples/vue/carousel/compound.vue?raw";
+import ControlledSource from "#examples/vue/carousel/controlled.vue?raw";
+import AutoplaySource from "#examples/vue/carousel/autoplay.vue?raw";
+import AutoplayControlsSource from "#examples/vue/carousel/autoplay-controls.vue?raw";
+import LoopSource from "#examples/vue/carousel/loop.vue?raw";
+import MouseDragSource from "#examples/vue/carousel/mouse-drag.vue?raw";
+import CustomRecipeSource from "#examples/vue/carousel/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { Carousel } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Step through slides with previous and next controls.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="carousel"
+  framework="vue"
+  kind="component"
+/>
+
+### Orientation Horizontal
+
+Scroll slides left to right for the common carousel pattern.
+
+<Example
+  name="OrientationHorizontal"
+  code={OrientationHorizontalSource}
+  exampleId="carousel"
+  framework="vue"
+  kind="component"
+/>
+
+### Orientation Vertical
+
+Scroll slides top to bottom when vertical paging fits the layout.
+
+<Example
+  name="OrientationVertical"
+  code={OrientationVerticalSource}
+  exampleId="carousel"
+  framework="vue"
+  kind="component"
+/>
+
+### Spacing
+
+Adjust gaps between slides to match density.
+
+<Example
+  name="Spacing"
+  code={SpacingSource}
+  exampleId="carousel"
+  framework="vue"
+  kind="component"
+/>
+
+### Slides Per Page
+
+Show more than one slide at a time when comparison matters.
+
+<Example
+  name="SlidesPerPage"
+  code={SlidesPerPageSource}
+  exampleId="carousel"
+  framework="vue"
+  kind="component"
+/>
+
+### Thumbnail Indicator
+
+Use thumbnails so users can jump to a specific slide.
+
+<Example
+  name="ThumbnailIndicator"
+  code={ThumbnailIndicatorSource}
+  exampleId="carousel"
+  framework="vue"
+  kind="component"
+/>
+
+### Thumbnail Indicator Vertical
+
+Stack thumbnails vertically beside the main slide.
+
+<Example
+  name="ThumbnailIndicatorVertical"
+  code={ThumbnailIndicatorVerticalSource}
+  exampleId="carousel"
+  framework="vue"
+  kind="component"
+/>
+
+### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="carousel"
+  framework="vue"
+  kind="component"
+/>
+
+### Controlled
+
+Drive the active slide from the parent when other UI depends on it.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="carousel"
+  framework="vue"
+  kind="component"
+/>
+
+### Autoplay
+
+Advance slides automatically when the carousel is ambient, not critical reading.
+
+<Example
+  name="Autoplay"
+  code={AutoplaySource}
+  exampleId="carousel"
+  framework="vue"
+  kind="component"
+/>
+
+### Autoplay Controls
+
+Use `Carousel.AutoplayTrigger` to pause or resume autoplay and `Carousel.ProgressText` to show the current page.
+
+<Example
+  name="AutoplayControls"
+  code={AutoplayControlsSource}
+  exampleId="carousel"
+  framework="vue"
+  kind="component"
+/>
+
+### Loop
+
+Wrap from last to first when continuous browsing should not stop at the end.
+
+<Example
+  name="Loop"
+  code={LoopSource}
+  exampleId="carousel"
+  framework="vue"
+  kind="component"
+/>
+
+### Mouse Drag
+
+Let users drag slides when pointer gestures feel more direct than buttons alone.
+
+<Example
+  name="MouseDrag"
+  code={MouseDragSource}
+  exampleId="carousel"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `carouselRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="carousel"
+  framework="vue"
+  kind="component"
+/>

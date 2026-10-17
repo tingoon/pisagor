@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./scroll-fade.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { ScrollArea, Separator } from "@pisagor/svelte";
 

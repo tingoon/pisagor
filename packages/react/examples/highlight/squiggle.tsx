@@ -1,3 +1,4 @@
+import source from "./squiggle.tsx?raw";
 import { useHighlight } from "@ark-ui/react/highlight";
 import { Fragment } from "react";
 
@@ -35,3 +36,5 @@ export function Squiggle() {
     </p>
   );
 }
+
+export { source as SquiggleSource };

@@ -1,35 +1,33 @@
-import autoplayRaw from "./autoplay.tsx?raw";
-import autoplay_controlsRaw from "./autoplay-controls.tsx?raw";
-import compoundRaw from "./compound.tsx?raw";
-import controlledRaw from "./controlled.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import helpersRaw from "./helpers.tsx?raw";
-import loopRaw from "./loop.tsx?raw";
-import mouse_dragRaw from "./mouse-drag.tsx?raw";
-import orientation_horizontalRaw from "./orientation-horizontal.tsx?raw";
-import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
-import slides_per_pageRaw from "./slides-per-page.tsx?raw";
-import spacingRaw from "./spacing.tsx?raw";
-import thumbnail_indicatorRaw from "./thumbnail-indicator.tsx?raw";
-import thumbnail_indicator_verticalRaw from "./thumbnail-indicator-vertical.tsx?raw";
+import { AutoplaySource as Autoplay } from "./autoplay";
+import { AutoplayControlsSource as AutoplayControls } from "./autoplay-controls";
+import { CompoundSource as Compound } from "./compound";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { LoopSource as Loop } from "./loop";
+import { MouseDragSource as MouseDrag } from "./mouse-drag";
+import { OrientationHorizontalSource as OrientationHorizontal } from "./orientation-horizontal";
+import { OrientationVerticalSource as OrientationVertical } from "./orientation-vertical";
+import { SlidesPerPageSource as SlidesPerPage } from "./slides-per-page";
+import { SpacingSource as Spacing } from "./spacing";
+import { ThumbnailIndicatorSource as ThumbnailIndicator } from "./thumbnail-indicator";
+import { ThumbnailIndicatorVerticalSource as ThumbnailIndicatorVertical } from "./thumbnail-indicator-vertical";
 
 export const imports = `import { Carousel } from "@pisagor/solid";`;
 
 export const sources = {
-  Autoplay: autoplayRaw,
-  AutoplayControls: autoplay_controlsRaw,
-  Compound: compoundRaw,
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Helpers: helpersRaw,
-  Loop: loopRaw,
-  MouseDrag: mouse_dragRaw,
-  OrientationHorizontal: orientation_horizontalRaw,
-  OrientationVertical: orientation_verticalRaw,
-  SlidesPerPage: slides_per_pageRaw,
-  Spacing: spacingRaw,
-  ThumbnailIndicator: thumbnail_indicatorRaw,
-  ThumbnailIndicatorVertical: thumbnail_indicator_verticalRaw,
+  Autoplay,
+  AutoplayControls,
+  Compound,
+  Controlled,
+  CustomRecipe,
+  Default,
+  Loop,
+  MouseDrag,
+  OrientationHorizontal,
+  OrientationVertical,
+  SlidesPerPage,
+  Spacing,
+  ThumbnailIndicator,
+  ThumbnailIndicatorVertical,
 } as const;

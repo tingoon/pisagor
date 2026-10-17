@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./with-sortable-data.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Table } from "@pisagor/svelte";
   import type { SortingState } from "@pisagor/svelte/data-grid";

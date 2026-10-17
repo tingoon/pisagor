@@ -1,3 +1,4 @@
+import source from "./input-with-swatch-preview.tsx?raw";
 import { ColorPicker, InputGroup } from "@pisagor/react";
 export function InputWithSwatchPreview() {
   return (
@@ -15,3 +16,5 @@ export function InputWithSwatchPreview() {
     </ColorPicker>
   );
 }
+
+export { source as InputWithSwatchPreviewSource };

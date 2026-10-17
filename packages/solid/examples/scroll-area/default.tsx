@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { ScrollArea, Separator } from "@pisagor/solid";
 import { For } from "solid-js";
 
@@ -20,3 +21,5 @@ export function Default() {
     </ScrollArea>
   );
 }
+
+export { source as DefaultSource };

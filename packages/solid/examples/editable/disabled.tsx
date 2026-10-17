@@ -1,3 +1,4 @@
+import source from "./disabled.tsx?raw";
 import { Button, Editable, Input } from "@pisagor/solid";
 import { CheckIcon, XIcon } from "@pisagor/solid/icons";
 export function Disabled() {
@@ -36,3 +37,5 @@ export function Disabled() {
     </Editable>
   );
 }
+
+export { source as DisabledSource };

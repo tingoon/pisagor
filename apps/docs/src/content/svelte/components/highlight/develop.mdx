@@ -1,0 +1,91 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/highlight/default.svelte?raw";
+import SquiggleSource from "#examples/svelte/highlight/squiggle.svelte?raw";
+import MultipleSource from "#examples/svelte/highlight/multiple.svelte?raw";
+import SearchQuerySource from "#examples/svelte/highlight/search-query.svelte?raw";
+import CustomStyleSource from "#examples/svelte/highlight/custom-style.svelte?raw";
+import CustomRecipeSource from "#examples/svelte/highlight/custom-recipe.svelte?raw";
+
+## Import
+
+```ts
+import { Highlight } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Default
+
+Emphasize matching substrings in text.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="highlight"
+  framework="svelte"
+  kind="component"
+/>
+
+### Squiggle
+
+Use a squiggle emphasis when the match needs a distinct treatment.
+
+<Example
+  name="Squiggle"
+  code={SquiggleSource}
+  exampleId="highlight"
+  framework="svelte"
+  kind="component"
+/>
+
+### Multiple
+
+Allow more than one open or selected item when users need several at once.
+
+<Example
+  name="Multiple"
+  code={MultipleSource}
+  exampleId="highlight"
+  framework="svelte"
+  kind="component"
+/>
+
+### Search Query
+
+Highlight query matches in search results.
+
+<Example
+  name="SearchQuery"
+  code={SearchQuerySource}
+  exampleId="highlight"
+  framework="svelte"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Override highlight style when brand treatment differs from the default.
+
+<Example
+  name="CustomStyle"
+  code={CustomStyleSource}
+  exampleId="highlight"
+  framework="svelte"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `highlightRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="highlight"
+  framework="svelte"
+  kind="component"
+/>

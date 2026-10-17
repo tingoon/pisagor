@@ -1,17 +1,17 @@
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import decorativeRaw from "./decorative.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import inline_navigationRaw from "./inline-navigation.tsx?raw";
-import listRaw from "./list.tsx?raw";
-import verticalRaw from "./vertical.tsx?raw";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DecorativeSource as Decorative } from "./decorative";
+import { DefaultSource as Default } from "./default";
+import { InlineNavigationSource as InlineNavigation } from "./inline-navigation";
+import { ListSource as List } from "./list";
+import { VerticalSource as Vertical } from "./vertical";
 
 export const imports = `import { Separator } from "@pisagor/react";`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  Decorative: decorativeRaw,
-  Default: defaultRaw,
-  InlineNavigation: inline_navigationRaw,
-  List: listRaw,
-  Vertical: verticalRaw,
+  CustomRecipe,
+  Decorative,
+  Default,
+  InlineNavigation,
+  List,
+  Vertical,
 } as const;

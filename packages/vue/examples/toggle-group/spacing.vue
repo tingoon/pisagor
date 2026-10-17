@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./spacing.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhTextB, PhTextItalic, PhTextUnderline } from "@phosphor-icons/vue";
 import { ToggleGroup } from "@pisagor/vue";

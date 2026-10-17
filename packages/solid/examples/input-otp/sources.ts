@@ -1,29 +1,29 @@
-import blur_on_completeRaw from "./blur-on-complete.tsx?raw";
-import controlledRaw from "./controlled.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import custom_sizeRaw from "./custom-size.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import four_digitsRaw from "./four-digits.tsx?raw";
-import invalidRaw from "./invalid.tsx?raw";
-import maskRaw from "./mask.tsx?raw";
-import separatorRaw from "./separator.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
-import with_placeholderRaw from "./with-placeholder.tsx?raw";
+import { BlurOnCompleteSource as BlurOnComplete } from "./blur-on-complete";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { CustomSizeSource as CustomSize } from "./custom-size";
+import { DisabledSource as Disabled } from "./disabled";
+import { FourDigitsSource as FourDigits } from "./four-digits";
+import { InvalidSource as Invalid } from "./invalid";
+import { MaskSource as Mask } from "./mask";
+import { SeparatorSource as Separator } from "./separator";
+import { SizesSource as Sizes } from "./sizes";
+import { VariantsSource as Variants } from "./variants";
+import { WithPlaceholderSource as WithPlaceholder } from "./with-placeholder";
 
 export const imports = `import { InputOTP } from "@pisagor/solid";`;
 
 export const sources = {
-  BlurOnComplete: blur_on_completeRaw,
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  CustomSize: custom_sizeRaw,
-  Disabled: disabledRaw,
-  FourDigits: four_digitsRaw,
-  Invalid: invalidRaw,
-  Mask: maskRaw,
-  Separator: separatorRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
-  WithPlaceholder: with_placeholderRaw,
+  BlurOnComplete,
+  Controlled,
+  CustomRecipe,
+  CustomSize,
+  Disabled,
+  FourDigits,
+  Invalid,
+  Mask,
+  Separator,
+  Sizes,
+  Variants,
+  WithPlaceholder,
 } as const;

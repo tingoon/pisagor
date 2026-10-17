@@ -1,3 +1,4 @@
+import source from "./with-scroll.tsx?raw";
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { Combobox } from "@pisagor/react";
 
@@ -31,3 +32,5 @@ export function WithScroll() {
     </Combobox.Root>
   );
 }
+
+export { source as WithScrollSource };

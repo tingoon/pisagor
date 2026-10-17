@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./swatch-picker-custom-size.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { ColorPicker } from "@pisagor/svelte";
 </script>

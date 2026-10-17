@@ -1,3 +1,4 @@
+import source from "./with-link.tsx?raw";
 import { Announcement, Badge } from "@pisagor/solid";
 import { ArrowUpRightIcon } from "@pisagor/solid/icons";
 export function WithLink() {
@@ -15,3 +16,5 @@ export function WithLink() {
     />
   );
 }
+
+export { source as WithLinkSource };

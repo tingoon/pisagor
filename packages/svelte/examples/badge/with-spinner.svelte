@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./with-spinner.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Badge, Spinner } from "@pisagor/svelte";
 </script>

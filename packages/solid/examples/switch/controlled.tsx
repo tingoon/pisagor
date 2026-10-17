@@ -1,3 +1,4 @@
+import source from "./controlled.tsx?raw";
 import { Field, Switch } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
@@ -18,3 +19,5 @@ export function Controlled() {
     </Field.Group>
   );
 }
+
+export { source as ControlledSource };

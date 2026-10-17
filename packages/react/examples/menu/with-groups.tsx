@@ -1,3 +1,4 @@
+import source from "./with-groups.tsx?raw";
 import {
   ArchiveIcon,
   HouseIcon,
@@ -36,3 +37,5 @@ export function WithGroups() {
     </div>
   );
 }
+
+export { source as WithGroupsSource };

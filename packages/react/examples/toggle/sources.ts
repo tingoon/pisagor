@@ -1,19 +1,19 @@
-import controlledRaw from "./controlled.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import icon_groupRaw from "./icon-group.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
-import with_iconRaw from "./with-icon.tsx?raw";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DisabledSource as Disabled } from "./disabled";
+import { IconGroupSource as IconGroup } from "./icon-group";
+import { SizesSource as Sizes } from "./sizes";
+import { VariantsSource as Variants } from "./variants";
+import { WithIconSource as WithIcon } from "./with-icon";
 
 export const imports = `import { Toggle } from "@pisagor/react";`;
 
 export const sources = {
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Disabled: disabledRaw,
-  IconGroup: icon_groupRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
-  WithIcon: with_iconRaw,
+  Controlled,
+  CustomRecipe,
+  Disabled,
+  IconGroup,
+  Sizes,
+  Variants,
+  WithIcon,
 } as const;

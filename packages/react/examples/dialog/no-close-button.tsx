@@ -1,3 +1,4 @@
+import source from "./no-close-button.tsx?raw";
 import { Portal } from "@ark-ui/react/portal";
 import { Button, Dialog } from "@pisagor/react";
 export function NoCloseButton() {
@@ -24,3 +25,5 @@ export function NoCloseButton() {
     </Dialog.Root>
   );
 }
+
+export { source as NoCloseButtonSource };

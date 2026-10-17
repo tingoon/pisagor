@@ -1,13 +1,13 @@
-import defaultRaw from "./default.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import invalidRaw from "./invalid.tsx?raw";
-import with_label_accessoryRaw from "./with-label-accessory.tsx?raw";
+import { DefaultSource as Default } from "./default";
+import { DisabledSource as Disabled } from "./disabled";
+import { InvalidSource as Invalid } from "./invalid";
+import { WithLabelAccessorySource as WithLabelAccessory } from "./with-label-accessory";
 
 export const imports = `import { PasswordField } from "@pisagor/solid-form";`;
 
 export const sources = {
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  Invalid: invalidRaw,
-  WithLabelAccessory: with_label_accessoryRaw,
+  Default,
+  Disabled,
+  Invalid,
+  WithLabelAccessory,
 } as const;

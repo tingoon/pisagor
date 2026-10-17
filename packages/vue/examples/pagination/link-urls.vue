@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./link-urls.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Pagination } from "@pisagor/vue";
 

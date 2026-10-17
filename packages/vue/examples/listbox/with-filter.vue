@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./with-filter.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { useListCollection } from "@ark-ui/vue/collection";
 import { useFilter } from "@ark-ui/vue/locale";

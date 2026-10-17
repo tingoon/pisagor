@@ -1,3 +1,4 @@
+import source from "./icons.tsx?raw";
 import { Button, DropdownMenu } from "@pisagor/solid";
 import { CopyIcon, PencilIcon, ShareIcon } from "@pisagor/solid/icons";
 export function Icons() {
@@ -27,3 +28,5 @@ export function Icons() {
     </DropdownMenu>
   );
 }
+
+export { source as IconsSource };

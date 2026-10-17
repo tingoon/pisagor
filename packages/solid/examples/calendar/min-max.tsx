@@ -1,3 +1,4 @@
+import source from "./min-max.tsx?raw";
 import { Calendar, Card, parseDate } from "@pisagor/solid";
 export function MinMax() {
   return (
@@ -19,3 +20,5 @@ export function MinMax() {
     </Card>
   );
 }
+
+export { source as MinMaxSource };

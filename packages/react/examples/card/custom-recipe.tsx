@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { Card } from "@pisagor/react";
 import { cardRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -27,3 +28,5 @@ export function CustomRecipe() {
     </Card>
   );
 }
+
+export { source as CustomRecipeSource };

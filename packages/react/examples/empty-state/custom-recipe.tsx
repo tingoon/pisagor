@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { Button, EmptyState } from "@pisagor/react";
 import { emptyStateRecipe } from "@pisagor/recipes";
@@ -28,3 +29,5 @@ export function CustomRecipe() {
     />
   );
 }
+
+export { source as CustomRecipeSource };

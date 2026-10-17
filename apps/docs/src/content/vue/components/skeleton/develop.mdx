@@ -1,0 +1,76 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/skeleton/default.vue?raw";
+import SizesSource from "#examples/vue/skeleton/sizes.vue?raw";
+import SkeletonTextSource from "#examples/vue/skeleton/skeleton-text.vue?raw";
+import InCardSource from "#examples/vue/skeleton/in-card.vue?raw";
+import CustomRecipeSource from "#examples/vue/skeleton/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { Skeleton } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Pulse placeholders while content loads.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="skeleton"
+  framework="vue"
+  kind="component"
+/>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="skeleton"
+  framework="vue"
+  kind="component"
+/>
+
+### Skeleton Text
+
+Approximate lines of text so reading layout stays stable.
+
+<Example
+  name="SkeletonText"
+  code={SkeletonTextSource}
+  exampleId="skeleton"
+  framework="vue"
+  kind="component"
+/>
+
+### In Card
+
+Place skeletons inside a card when that surface is loading.
+
+<Example
+  name="InCard"
+  code={InCardSource}
+  exampleId="skeleton"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `skeletonRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="skeleton"
+  framework="vue"
+  kind="component"
+/>

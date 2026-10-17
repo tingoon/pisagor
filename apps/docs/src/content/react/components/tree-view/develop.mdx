@@ -1,0 +1,157 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/tree-view/default.tsx";
+import { CustomIconsSource } from "#examples/react/tree-view/custom-icons.tsx";
+import { CustomIconsFolderSource } from "#examples/react/tree-view/custom-icons-folder.tsx";
+import { CustomIconsItemSource } from "#examples/react/tree-view/custom-icons-item.tsx";
+import { CheckboxTreeSource } from "#examples/react/tree-view/checkbox-tree.tsx";
+import { WithContextMenuSource } from "#examples/react/tree-view/with-context-menu.tsx";
+import { LinksSource } from "#examples/react/tree-view/links.tsx";
+import { ControlledSource } from "#examples/react/tree-view/controlled.tsx";
+import { MultipleSelectionSource } from "#examples/react/tree-view/multiple-selection.tsx";
+import { RenameSource } from "#examples/react/tree-view/rename.tsx";
+
+## Import
+
+```tsx
+import { TreeView } from "@pisagor/react";
+```
+
+## Anatomy
+
+```tsx
+<TreeView collection={collection}>
+  <TreeView.Tree>
+    <TreeView.NodeProvider>
+      <TreeView.Branch>
+        <TreeView.BranchControl />
+        <TreeView.BranchContent />
+      </TreeView.Branch>
+      <TreeView.Item>
+        <TreeView.ItemText />
+      </TreeView.Item>
+    </TreeView.NodeProvider>
+  </TreeView.Tree>
+</TreeView>
+```
+
+## Examples
+
+### Default
+
+Browse nested folders or categories in an expandable tree.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="tree-view"
+  framework="react"
+  kind="component"
+/>
+
+### Custom Icons
+
+Customize tree icons across folders and items.
+
+<Example
+  name="CustomIcons"
+  code={CustomIconsSource}
+  exampleId="tree-view"
+  framework="react"
+  kind="component"
+/>
+
+### Custom Icons Folder
+
+Customize folder icons to match the content type.
+
+<Example
+  name="CustomIconsFolder"
+  code={CustomIconsFolderSource}
+  exampleId="tree-view"
+  framework="react"
+  kind="component"
+/>
+
+### Custom Icons Item
+
+Customize item icons to match the content type.
+
+<Example
+  name="CustomIconsItem"
+  code={CustomIconsItemSource}
+  exampleId="tree-view"
+  framework="react"
+  kind="component"
+/>
+
+### Checkbox Tree
+
+Select nodes with checkboxes when membership spans a hierarchy.
+
+<Example
+  name="CheckboxTree"
+  code={CheckboxTreeSource}
+  exampleId="tree-view"
+  framework="react"
+  kind="component"
+/>
+
+### With Context Menu
+
+Offer pointer actions on nodes for rename, delete, or other commands.
+
+<Example
+  name="WithContextMenu"
+  code={WithContextMenuSource}
+  exampleId="tree-view"
+  framework="react"
+  kind="component"
+/>
+
+### As child
+
+Render items as links when navigation is the primary action.
+
+<Example
+  name="Links"
+  code={LinksSource}
+  exampleId="tree-view"
+  framework="react"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this tree view.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="tree-view"
+  framework="react"
+  kind="component"
+/>
+
+### Multiple Selection
+
+Allow selecting more than one node.
+
+<Example
+  name="MultipleSelection"
+  code={MultipleSelectionSource}
+  exampleId="tree-view"
+  framework="react"
+  kind="component"
+/>
+
+### Rename
+
+Rename a node inline when labels are user-editable.
+
+<Example
+  name="Rename"
+  code={RenameSource}
+  exampleId="tree-view"
+  framework="react"
+  kind="component"
+/>

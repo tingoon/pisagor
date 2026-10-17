@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./clearable.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, DatePicker, Field, parseDate } from "@pisagor/svelte";
   import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";

@@ -1,0 +1,57 @@
+---
+/**
+ * Live docs example: preview chrome + host slot (or Astro SSR child).
+ * Source comes from the example module's `source` export (dual-export).
+ */
+import type { Framework } from "#/lib/nav";
+import { withDocsBase } from "#/lib/nav";
+import { isOpenInNewTabPreview } from "#/lib/preview-config";
+import ComponentPreview from "./component-preview.astro";
+
+interface Props {
+  /** `sources` / barrel export name (`Default`, `WithCard`, …). */
+  name: string;
+  /** Raw example source from `import { source } from "…/default"`. */
+  code: string;
+  framework: Framework;
+  exampleId: string;
+  kind?: "component" | "form";
+  language?: string;
+  title?: string;
+}
+
+const name = Astro.props.name;
+const code = Astro.props.code;
+const framework = Astro.props.framework;
+const exampleId = Astro.props.exampleId;
+const kind = Astro.props.kind ?? "component";
+const language =
+  Astro.props.language ??
+  ({
+    astro: "astro",
+    react: "tsx",
+    solid: "tsx",
+    svelte: "svelte",
+    vue: "vue",
+  }[framework] as string);
+const title = Astro.props.title ?? name;
+---
+
+<ComponentPreview
+  code={code}
+  exampleId={exampleId}
+  exportName={name}
+  framework={framework}
+  kind={kind}
+  language={language}
+  previewHref={isOpenInNewTabPreview(exampleId)
+    ? withDocsBase(`/preview/${framework}/${exampleId}/${name}`)
+    : undefined}
+  title={title}
+>
+  {framework === "astro" ? (
+    <slot />
+  ) : (
+    <div class="min-h-12 w-full" data-example-slot={name} />
+  )}
+</ComponentPreview>

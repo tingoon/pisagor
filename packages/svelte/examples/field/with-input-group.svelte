@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./with-input-group.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Field, InputGroup } from "@pisagor/svelte";
   import ArrowRightIcon from "phosphor-svelte/lib/ArrowRightIcon";

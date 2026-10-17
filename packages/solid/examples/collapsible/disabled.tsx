@@ -1,3 +1,4 @@
+import source from "./disabled.tsx?raw";
 import { Button, Collapsible } from "@pisagor/solid";
 export function Disabled() {
   return (
@@ -21,3 +22,5 @@ export function Disabled() {
     </div>
   );
 }
+
+export { source as DisabledSource };

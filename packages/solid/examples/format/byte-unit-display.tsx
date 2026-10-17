@@ -1,3 +1,4 @@
+import source from "./byte-unit-display.tsx?raw";
 import { Format } from "@pisagor/solid";
 
 export function ByteUnitDisplay() {
@@ -18,3 +19,5 @@ export function ByteUnitDisplay() {
     </div>
   );
 }
+
+export { source as ByteUnitDisplaySource };

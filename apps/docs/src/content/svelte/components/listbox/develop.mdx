@@ -1,0 +1,258 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/listbox/default.svelte?raw";
+import HorizontalSource from "#examples/svelte/listbox/horizontal.svelte?raw";
+import GridSource from "#examples/svelte/listbox/grid.svelte?raw";
+import WithIconSource from "#examples/svelte/listbox/with-icon.svelte?raw";
+import WithDescriptionSource from "#examples/svelte/listbox/with-description.svelte?raw";
+import GroupingSource from "#examples/svelte/listbox/grouping.svelte?raw";
+import WithFilterSource from "#examples/svelte/listbox/with-filter.svelte?raw";
+import CompoundSource from "#examples/svelte/listbox/compound.svelte?raw";
+import WithPopoverSource from "#examples/svelte/listbox/with-popover.svelte?raw";
+import TransferListSource from "#examples/svelte/listbox/transfer-list.svelte?raw";
+import ImageExplorerSource from "#examples/svelte/listbox/image-explorer.svelte?raw";
+import ControlledSource from "#examples/svelte/listbox/controlled.svelte?raw";
+import EmptySource from "#examples/svelte/listbox/empty.svelte?raw";
+import DisabledSource from "#examples/svelte/listbox/disabled.svelte?raw";
+import DisabledItemSource from "#examples/svelte/listbox/disabled-item.svelte?raw";
+import SelectionMultipleSource from "#examples/svelte/listbox/selection-multiple.svelte?raw";
+import SelectionExtendedSource from "#examples/svelte/listbox/selection-extended.svelte?raw";
+import SelectionNoneSource from "#examples/svelte/listbox/selection-none.svelte?raw";
+import CustomRecipeSource from "#examples/svelte/listbox/custom-recipe.svelte?raw";
+
+## Import
+
+```ts
+import { Listbox } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Default
+
+Choose from a scrollable list with clear selection.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="listbox"
+  framework="svelte"
+  kind="component"
+/>
+
+### Horizontal
+
+Use a horizontal layout when the listbox should read left to right.
+
+<Example
+  name="Horizontal"
+  code={HorizontalSource}
+  exampleId="listbox"
+  framework="svelte"
+  kind="component"
+/>
+
+### Grid
+
+Lay options in a grid when tiles scan better than a single column.
+
+<Example
+  name="Grid"
+  code={GridSource}
+  exampleId="listbox"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Icon
+
+Lead options with icons when symbols speed recognition.
+
+<Example
+  name="WithIcon"
+  code={WithIconSource}
+  exampleId="listbox"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Description
+
+Add secondary text under each option for clarity.
+
+<Example
+  name="WithDescription"
+  code={WithDescriptionSource}
+  exampleId="listbox"
+  framework="svelte"
+  kind="component"
+/>
+
+### Grouped
+
+Group options under labels for long lists.
+
+<Example
+  name="Grouping"
+  code={GroupingSource}
+  exampleId="listbox"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Filter
+
+Filter the list by typing when options are numerous.
+
+<Example
+  name="WithFilter"
+  code={WithFilterSource}
+  exampleId="listbox"
+  framework="svelte"
+  kind="component"
+/>
+
+### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="listbox"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Popover
+
+Host the listbox inside a popover trigger.
+
+<Example
+  name="WithPopover"
+  code={WithPopoverSource}
+  exampleId="listbox"
+  framework="svelte"
+  kind="component"
+/>
+
+### Transfer List
+
+Move items between dual lists when assigning membership.
+
+<Example
+  name="TransferList"
+  code={TransferListSource}
+  exampleId="listbox"
+  framework="svelte"
+  kind="component"
+/>
+
+### Image Explorer
+
+Browse image options when thumbnails carry meaning.
+
+<Example
+  name="ImageExplorer"
+  code={ImageExplorerSource}
+  exampleId="listbox"
+  framework="svelte"
+  kind="component"
+/>
+
+### Controlled
+
+Drive selection from the parent when other UI depends on it.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="listbox"
+  framework="svelte"
+  kind="component"
+/>
+
+### Empty
+
+Shown when the collection has no items. Customize it with `emptyText` or render `Listbox.Empty` in compound usage.
+
+<Example
+  name="Empty"
+  code={EmptySource}
+  exampleId="listbox"
+  framework="svelte"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the list is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="listbox"
+  framework="svelte"
+  kind="component"
+/>
+
+### Disabled Item
+
+Show that a specific option cannot be selected.
+
+<Example
+  name="DisabledItem"
+  code={DisabledItemSource}
+  exampleId="listbox"
+  framework="svelte"
+  kind="component"
+/>
+
+### Selection Multiple
+
+Allow more than one selected option.
+
+<Example
+  name="SelectionMultiple"
+  code={SelectionMultipleSource}
+  exampleId="listbox"
+  framework="svelte"
+  kind="component"
+/>
+
+### Selection Extended
+
+Extend selection with modifier keys for power users.
+
+<Example
+  name="SelectionExtended"
+  code={SelectionExtendedSource}
+  exampleId="listbox"
+  framework="svelte"
+  kind="component"
+/>
+
+### Selection None
+
+Support a list without a required selection.
+
+<Example
+  name="SelectionNone"
+  code={SelectionNoneSource}
+  exampleId="listbox"
+  framework="svelte"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `listboxRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="listbox"
+  framework="svelte"
+  kind="component"
+/>

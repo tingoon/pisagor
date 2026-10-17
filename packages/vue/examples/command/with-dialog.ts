@@ -1,3 +1,4 @@
+import source from "./with-dialog.ts?raw";
 import { useListCollection } from "@ark-ui/vue/collection";
 import { useFilter } from "@ark-ui/vue/locale";
 import { PhArrowBendDownLeft } from "@phosphor-icons/vue";
@@ -99,3 +100,5 @@ export default defineComponent({
       );
   },
 });
+
+export { source };

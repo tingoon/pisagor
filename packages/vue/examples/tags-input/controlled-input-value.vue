@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./controlled-input-value.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Button, Field, TagsInput } from "@pisagor/vue";
 import { ref } from "vue";

@@ -1,3 +1,4 @@
+import source from "./with-button.tsx?raw";
 import { FloppyDiskIcon } from "@phosphor-icons/react";
 import { Button, Kbd } from "@pisagor/react";
 export function WithButton() {
@@ -11,3 +12,5 @@ export function WithButton() {
     </Button>
   );
 }
+
+export { source as WithButtonSource };

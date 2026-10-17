@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import type { TourStepType } from "@pisagor/react";
 import { Button, Tour } from "@pisagor/react";
 import { tourRecipe } from "@pisagor/recipes";
@@ -73,3 +74,5 @@ export function CustomRecipe() {
     </Tour>
   );
 }
+
+export { source as CustomRecipeSource };

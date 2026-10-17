@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./with-combobox.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { createListCollection } from "@ark-ui/svelte/collection";
   import { Combobox, Field, TagsInput } from "@pisagor/svelte";

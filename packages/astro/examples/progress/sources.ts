@@ -1,19 +1,19 @@
-import custom_recipeRaw from "./custom-recipe.astro?raw";
-import defaultRaw from "./default.astro?raw";
-import indeterminateRaw from "./indeterminate.astro?raw";
-import orientation_horizontalRaw from "./orientation-horizontal.astro?raw";
-import orientation_verticalRaw from "./orientation-vertical.astro?raw";
-import with_labelRaw from "./with-label.astro?raw";
+import CustomRecipe from "./custom-recipe.astro?raw";
+import Default from "./default.astro?raw";
+import Indeterminate from "./indeterminate.astro?raw";
+import OrientationHorizontal from "./orientation-horizontal.astro?raw";
+import OrientationVertical from "./orientation-vertical.astro?raw";
+import WithLabel from "./with-label.astro?raw";
 
 export const imports = `---
 import { Progress } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Indeterminate: indeterminateRaw,
-  OrientationHorizontal: orientation_horizontalRaw,
-  OrientationVertical: orientation_verticalRaw,
-  WithLabel: with_labelRaw,
+  CustomRecipe,
+  Default,
+  Indeterminate,
+  OrientationHorizontal,
+  OrientationVertical,
+  WithLabel,
 } as const;

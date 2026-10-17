@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./orientation-vertical.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Card, Marquee } from "@pisagor/svelte";
   import { marqueeIcons } from "./marquee-icon-row.svelte";

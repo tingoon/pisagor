@@ -1,0 +1,50 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue-form/otp-field/default.vue?raw";
+import DisabledSource from "#examples/vue-form/otp-field/disabled.vue?raw";
+import InvalidSource from "#examples/vue-form/otp-field/invalid.vue?raw";
+
+## Import
+
+```ts
+import { OtpField } from "@pisagor/vue-form";
+```
+
+Part of `@pisagor/vue-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+A one-time code input with one slot per digit.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="otp-field"
+  framework="vue"
+  kind="form"
+/>
+
+### Disabled
+
+Show that the OTP field is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="otp-field"
+  framework="vue"
+  kind="form"
+/>
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="otp-field"
+  framework="vue"
+  kind="form"
+/>

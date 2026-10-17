@@ -1,3 +1,4 @@
+import source from "./custom-spacing.tsx?raw";
 import { Button, Field, Input, Popover } from "@pisagor/solid";
 export function CustomSpacing() {
   return (
@@ -30,3 +31,5 @@ export function CustomSpacing() {
     </Popover>
   );
 }
+
+export { source as CustomSpacingSource };

@@ -1,3 +1,4 @@
+import source from "./custom-separator.tsx?raw";
 import { Breadcrumb } from "@pisagor/solid";
 
 export function CustomSeparator() {
@@ -21,3 +22,5 @@ export function CustomSeparator() {
     </Breadcrumb.Root>
   );
 }
+
+export { source as CustomSeparatorSource };

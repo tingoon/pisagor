@@ -1,3 +1,4 @@
+import source from "./horizontal.tsx?raw";
 import { Timeline } from "@pisagor/react";
 
 export function Horizontal() {
@@ -12,3 +13,5 @@ export function Horizontal() {
     />
   );
 }
+
+export { source as HorizontalSource };

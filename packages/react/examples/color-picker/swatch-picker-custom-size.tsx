@@ -1,3 +1,4 @@
+import source from "./swatch-picker-custom-size.tsx?raw";
 import { ColorPicker } from "@pisagor/react";
 
 export function SwatchPickerCustomSize() {
@@ -26,3 +27,5 @@ export function SwatchPickerCustomSize() {
     </ColorPicker>
   );
 }
+
+export { source as SwatchPickerCustomSizeSource };

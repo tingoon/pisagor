@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./directory-upload.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, FileUpload } from "@pisagor/svelte";
   import FolderIcon from "phosphor-svelte/lib/FolderIcon";

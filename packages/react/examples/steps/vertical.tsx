@@ -1,3 +1,4 @@
+import source from "./vertical.tsx?raw";
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
 import { Button, Steps } from "@pisagor/react";
 export function Vertical() {
@@ -53,3 +54,5 @@ export function Vertical() {
     </Steps>
   );
 }
+
+export { source as VerticalSource };

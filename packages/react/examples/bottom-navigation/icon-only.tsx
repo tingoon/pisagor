@@ -1,3 +1,4 @@
+import source from "./icon-only.tsx?raw";
 import {
   BellIcon,
   HouseIcon,
@@ -46,3 +47,5 @@ export function IconOnly() {
     </div>
   );
 }
+
+export { source as IconOnlySource };

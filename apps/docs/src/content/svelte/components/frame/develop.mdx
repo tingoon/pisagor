@@ -1,0 +1,89 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/frame/default.svelte?raw";
+import SizesSource from "#examples/svelte/frame/sizes.svelte?raw";
+import SeparatedPanelsSource from "#examples/svelte/frame/separated-panels.svelte?raw";
+import WithFormControlsSource from "#examples/svelte/frame/with-form-controls.svelte?raw";
+import CustomRecipeSource from "#examples/svelte/frame/custom-recipe.svelte?raw";
+
+## Import
+
+```ts
+import { Frame } from "@pisagor/svelte";
+```
+
+## Anatomy
+
+```tsx
+<Frame>
+  <Frame.Header>
+    <Frame.Title />
+    <Frame.Description />
+  </Frame.Header>
+  <Frame.Panel />
+  <Frame.Footer />
+</Frame>
+```
+
+## Examples
+
+### Default
+
+Embed content inside consistent framed chrome.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="frame"
+  framework="svelte"
+  kind="component"
+/>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="frame"
+  framework="svelte"
+  kind="component"
+/>
+
+### Separated Panels
+
+Show multiple framed regions when the workspace splits embeds.
+
+<Example
+  name="SeparatedPanels"
+  code={SeparatedPanelsSource}
+  exampleId="frame"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Form Controls
+
+Host form controls inside the frame when the embed includes settings.
+
+<Example
+  name="WithFormControls"
+  code={WithFormControlsSource}
+  exampleId="frame"
+  framework="svelte"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `frameRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="frame"
+  framework="svelte"
+  kind="component"
+/>

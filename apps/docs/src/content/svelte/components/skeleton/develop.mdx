@@ -1,0 +1,76 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/skeleton/default.svelte?raw";
+import SizesSource from "#examples/svelte/skeleton/sizes.svelte?raw";
+import SkeletonTextSource from "#examples/svelte/skeleton/skeleton-text.svelte?raw";
+import InCardSource from "#examples/svelte/skeleton/in-card.svelte?raw";
+import CustomRecipeSource from "#examples/svelte/skeleton/custom-recipe.svelte?raw";
+
+## Import
+
+```ts
+import { Skeleton } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Default
+
+Pulse placeholders while content loads.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="skeleton"
+  framework="svelte"
+  kind="component"
+/>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="skeleton"
+  framework="svelte"
+  kind="component"
+/>
+
+### Skeleton Text
+
+Approximate lines of text so reading layout stays stable.
+
+<Example
+  name="SkeletonText"
+  code={SkeletonTextSource}
+  exampleId="skeleton"
+  framework="svelte"
+  kind="component"
+/>
+
+### In Card
+
+Place skeletons inside a card when that surface is loading.
+
+<Example
+  name="InCard"
+  code={InCardSource}
+  exampleId="skeleton"
+  framework="svelte"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `skeletonRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="skeleton"
+  framework="svelte"
+  kind="component"
+/>

@@ -1,3 +1,4 @@
+import source from "./list.tsx?raw";
 import { Prose } from "@pisagor/solid";
 
 export function List() {
@@ -11,3 +12,5 @@ export function List() {
     </Prose>
   );
 }
+
+export { source as ListSource };

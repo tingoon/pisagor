@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { scrollAreaRecipe } from "@pisagor/recipes";
 import { ScrollArea, Separator } from "@pisagor/solid";
 import { For } from "solid-js";
@@ -31,3 +32,5 @@ export function CustomRecipe() {
     </ScrollArea>
   );
 }
+
+export { source as CustomRecipeSource };

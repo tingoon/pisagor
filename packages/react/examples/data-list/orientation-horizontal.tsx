@@ -1,3 +1,4 @@
+import source from "./orientation-horizontal.tsx?raw";
 import { DataList } from "@pisagor/react";
 
 export function OrientationHorizontal() {
@@ -12,3 +13,5 @@ export function OrientationHorizontal() {
     />
   );
 }
+
+export { source as OrientationHorizontalSource };

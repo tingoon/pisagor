@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./booked-dates.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Calendar, Card } from "@pisagor/svelte";
 

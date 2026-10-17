@@ -1,3 +1,4 @@
+import source from "./horizontal.tsx?raw";
 import { ToggleGroup } from "@pisagor/react";
 
 const items = [
@@ -16,3 +17,5 @@ export function Horizontal() {
     />
   );
 }
+
+export { source as HorizontalSource };

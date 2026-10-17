@@ -1,3 +1,4 @@
+import source from "./spacing.tsx?raw";
 import {
   ArrowRightIcon,
   AtomIcon,
@@ -36,3 +37,5 @@ const items = marqueeIcons.map((IconComponent) => (
 export function Spacing() {
   return <Marquee items={items} spacing="2rem" />;
 }
+
+export { source as SpacingSource };

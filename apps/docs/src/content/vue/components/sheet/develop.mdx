@@ -1,0 +1,148 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/sheet/default.ts?raw";
+import InsetSource from "#examples/vue/sheet/inset.ts?raw";
+import SidesSource from "#examples/vue/sheet/sides.ts?raw";
+import ScrollAreaSource from "#examples/vue/sheet/scroll-area.ts?raw";
+import NoCloseButtonSource from "#examples/vue/sheet/no-close-button.ts?raw";
+import NonModalSource from "#examples/vue/sheet/non-modal.ts?raw";
+import CloseBehaviorSource from "#examples/vue/sheet/close-behavior.ts?raw";
+import CustomSpacingSource from "#examples/vue/sheet/custom-spacing.ts?raw";
+import CustomRecipeSource from "#examples/vue/sheet/custom-recipe.ts?raw";
+
+## Import
+
+```ts
+import { Sheet } from "@pisagor/vue";
+```
+
+## Anatomy
+
+```vue
+<Sheet>
+  <Sheet.Trigger />
+  <Sheet.Content>
+    <Sheet.Header>
+      <Sheet.Title />
+      <Sheet.Description />
+    </Sheet.Header>
+    <Sheet.Body />
+    <Sheet.Footer>
+      <Sheet.CloseTrigger />
+    </Sheet.Footer>
+  </Sheet.Content>
+</Sheet>
+```
+
+## Examples
+
+### Default
+
+Slide a panel in from the edge for a secondary task.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="sheet"
+  framework="vue"
+  kind="component"
+/>
+
+### Inset
+
+Inset the sheet from the viewport edge when a floating panel look fits better.
+
+<Example
+  name="Inset"
+  code={InsetSource}
+  exampleId="sheet"
+  framework="vue"
+  kind="component"
+/>
+
+### Sides
+
+Choose which edge the sheet enters from to match the task and layout.
+
+<Example
+  name="Sides"
+  code={SidesSource}
+  exampleId="sheet"
+  framework="vue"
+  kind="component"
+/>
+
+### Scroll Area
+
+Constrain tall content in a scroll region so the sheet chrome stays on screen.
+
+<Example
+  name="ScrollArea"
+  code={ScrollAreaSource}
+  exampleId="sheet"
+  framework="vue"
+  kind="component"
+/>
+
+### No Close Button
+
+Hide the close button when dismiss should go through an explicit action instead.
+
+<Example
+  name="NoCloseButton"
+  code={NoCloseButtonSource}
+  exampleId="sheet"
+  framework="vue"
+  kind="component"
+/>
+
+### Non Modal
+
+Keep the page behind interactive when the sheet should not trap focus entirely.
+
+<Example
+  name="NonModal"
+  code={NonModalSource}
+  exampleId="sheet"
+  framework="vue"
+  kind="component"
+/>
+
+### Close Behavior
+
+Control how dismiss works — outside click, escape, or explicit close — to match the flow.
+
+<Example
+  name="CloseBehavior"
+  code={CloseBehaviorSource}
+  exampleId="sheet"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Override spacing when the default density does not match the surrounding layout.
+
+<Example
+  name="CustomSpacing"
+  code={CustomSpacingSource}
+  exampleId="sheet"
+  framework="vue"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `sheetRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="sheet"
+  framework="vue"
+  kind="component"
+/>

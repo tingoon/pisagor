@@ -1,3 +1,4 @@
+import source from "./fallbacks.tsx?raw";
 import { Avatar } from "@pisagor/solid";
 import { UserIcon } from "@pisagor/solid/icons";
 
@@ -10,3 +11,5 @@ export function Fallbacks() {
     </div>
   );
 }
+
+export { source as FallbacksSource };

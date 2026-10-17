@@ -1,3 +1,4 @@
+import source from "./variants.tsx?raw";
 import { Button, Swap } from "@pisagor/solid";
 import { MoonIcon, SunIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";
@@ -78,3 +79,5 @@ export function Variants() {
     </div>
   );
 }
+
+export { source as VariantsSource };

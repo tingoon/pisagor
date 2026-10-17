@@ -1,3 +1,4 @@
+import source from "./sizes.tsx?raw";
 import { PhoneInput } from "@pisagor/solid/phone-input";
 
 export function Sizes() {
@@ -9,3 +10,5 @@ export function Sizes() {
     </div>
   );
 }
+
+export { source as SizesSource };

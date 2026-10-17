@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Button, Presence } from "@pisagor/solid";
 import { cn } from "@pisagor/utils";
 import { createSignal } from "solid-js";
@@ -34,3 +35,5 @@ export function Default() {
     </div>
   );
 }
+
+export { source as DefaultSource };

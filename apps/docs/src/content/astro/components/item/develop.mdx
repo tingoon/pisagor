@@ -1,0 +1,217 @@
+import Example from "#/components/docs/example.astro";
+import Default from "#examples/astro/item/default.astro";
+import Variants from "#examples/astro/item/variants.astro";
+import Sizes from "#examples/astro/item/sizes.astro";
+import Icon from "#examples/astro/item/icon.astro";
+import Image from "#examples/astro/item/image.astro";
+import WithMedia from "#examples/astro/item/with-media.astro";
+import Header from "#examples/astro/item/header.astro";
+import Group from "#examples/astro/item/group.astro";
+import WithAvatar from "#examples/astro/item/with-avatar.astro";
+import Link from "#examples/astro/item/link.astro";
+import CustomSpacing from "#examples/astro/item/custom-spacing.astro";
+import CustomRecipe from "#examples/astro/item/custom-recipe.astro";
+import DefaultSource from "#examples/astro/item/default.astro?raw";
+import VariantsSource from "#examples/astro/item/variants.astro?raw";
+import SizesSource from "#examples/astro/item/sizes.astro?raw";
+import IconSource from "#examples/astro/item/icon.astro?raw";
+import ImageSource from "#examples/astro/item/image.astro?raw";
+import WithMediaSource from "#examples/astro/item/with-media.astro?raw";
+import HeaderSource from "#examples/astro/item/header.astro?raw";
+import GroupSource from "#examples/astro/item/group.astro?raw";
+import WithAvatarSource from "#examples/astro/item/with-avatar.astro?raw";
+import LinkSource from "#examples/astro/item/link.astro?raw";
+import CustomSpacingSource from "#examples/astro/item/custom-spacing.astro?raw";
+import CustomRecipeSource from "#examples/astro/item/custom-recipe.astro?raw";
+
+## Import
+
+```ts
+import { Item } from "@pisagor/astro";
+```
+
+## Anatomy
+
+```tsx
+<Item>
+  <Item.Content>
+    <Item.Title />
+    <Item.Description />
+  </Item.Content>
+  <Item.Actions />
+</Item>
+```
+
+## Examples
+
+### Default
+
+Lay out media, title, description, and actions as one row.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="item"
+  framework="astro"
+  kind="component"
+>
+  <Default />
+</Example>
+
+### Variants
+
+Choose emphasis to match list density.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="item"
+  framework="astro"
+  kind="component"
+>
+  <Variants />
+</Example>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="item"
+  framework="astro"
+  kind="component"
+>
+  <Sizes />
+</Example>
+
+### Icon
+
+Lead with an icon when a symbol is enough.
+
+<Example
+  name="Icon"
+  code={IconSource}
+  exampleId="item"
+  framework="astro"
+  kind="component"
+>
+  <Icon />
+</Example>
+
+### Image
+
+Use a larger image treatment for media-forward rows.
+
+<Example
+  name="Image"
+  code={ImageSource}
+  exampleId="item"
+  framework="astro"
+  kind="component"
+>
+  <Image />
+</Example>
+
+### With Media
+
+Lead with media when imagery helps recognition.
+
+<Example
+  name="WithMedia"
+  code={WithMediaSource}
+  exampleId="item"
+  framework="astro"
+  kind="component"
+>
+  <WithMedia />
+</Example>
+
+### Header
+
+Use item header layout for section introductions in a list.
+
+<Example
+  name="Header"
+  code={HeaderSource}
+  exampleId="item"
+  framework="astro"
+  kind="component"
+>
+  <Header />
+</Example>
+
+### Group
+
+Group related items so related choices stay visually and semantically together.
+
+<Example
+  name="Group"
+  code={GroupSource}
+  exampleId="item"
+  framework="astro"
+  kind="component"
+>
+  <Group />
+</Example>
+
+### With Avatar
+
+Lead with an avatar when the row represents a person.
+
+<Example
+  name="WithAvatar"
+  code={WithAvatarSource}
+  exampleId="item"
+  framework="astro"
+  kind="component"
+>
+  <WithAvatar />
+</Example>
+
+### As child
+
+Navigate when the whole row is a destination.
+
+<Example
+  name="Link"
+  code={LinkSource}
+  exampleId="item"
+  framework="astro"
+  kind="component"
+>
+  <Link />
+</Example>
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Override spacing when the default density does not match the surrounding layout.
+
+<Example
+  name="CustomSpacing"
+  code={CustomSpacingSource}
+  exampleId="item"
+  framework="astro"
+  kind="component"
+>
+  <CustomSpacing />
+</Example>
+
+### Custom recipe
+
+Extend `itemRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="item"
+  framework="astro"
+  kind="component"
+>
+  <CustomRecipe />
+</Example>

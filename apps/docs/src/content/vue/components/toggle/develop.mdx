@@ -1,0 +1,102 @@
+import Example from "#/components/docs/example.astro";
+import VariantsSource from "#examples/vue/toggle/variants.vue?raw";
+import SizesSource from "#examples/vue/toggle/sizes.vue?raw";
+import WithIconSource from "#examples/vue/toggle/with-icon.vue?raw";
+import IconGroupSource from "#examples/vue/toggle/icon-group.vue?raw";
+import ControlledSource from "#examples/vue/toggle/controlled.vue?raw";
+import DisabledSource from "#examples/vue/toggle/disabled.vue?raw";
+import CustomRecipeSource from "#examples/vue/toggle/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { Toggle } from "@pisagor/vue";
+```
+
+## Examples
+
+### Variants
+
+Choose emphasis to match surrounding controls.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="toggle"
+  framework="vue"
+  kind="component"
+/>
+
+### Sizes
+
+Match size to toolbar density.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="toggle"
+  framework="vue"
+  kind="component"
+/>
+
+### With Icon
+
+Pair an icon with the label to reinforce meaning.
+
+<Example
+  name="WithIcon"
+  code={WithIconSource}
+  exampleId="toggle"
+  framework="vue"
+  kind="component"
+/>
+
+### Icon Group
+
+Group icon toggles when several binary options sit together.
+
+<Example
+  name="IconGroup"
+  code={IconGroupSource}
+  exampleId="toggle"
+  framework="vue"
+  kind="component"
+/>
+
+### Controlled
+
+Drive pressed state from the parent.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="toggle"
+  framework="vue"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the toggle is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="toggle"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `toggleRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="toggle"
+  framework="vue"
+  kind="component"
+/>

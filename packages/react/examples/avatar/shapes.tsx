@@ -1,3 +1,4 @@
+import source from "./shapes.tsx?raw";
 import { Avatar } from "@pisagor/react";
 
 export function Shapes() {
@@ -24,3 +25,5 @@ export function Shapes() {
     </div>
   );
 }
+
+export { source as ShapesSource };

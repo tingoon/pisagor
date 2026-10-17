@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./actions.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, DropdownMenu, Table } from "@pisagor/svelte";
   import DotsThreeVerticalIcon from "phosphor-svelte/lib/DotsThreeVerticalIcon";

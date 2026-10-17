@@ -1,3 +1,4 @@
+import source from "./keyboard-navigation.tsx?raw";
 import { KeyboardIcon } from "@phosphor-icons/react";
 import type { TourStepType } from "@pisagor/react";
 import { Button, Tour } from "@pisagor/react";
@@ -76,3 +77,5 @@ export function KeyboardNavigation() {
     </div>
   );
 }
+
+export { source as KeyboardNavigationSource };

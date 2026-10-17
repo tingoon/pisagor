@@ -1,3 +1,4 @@
+import source from "./mask.tsx?raw";
 import { InputOTP } from "@pisagor/react";
 
 export function Mask() {
@@ -10,3 +11,5 @@ export function Mask() {
     </InputOTP>
   );
 }
+
+export { source as MaskSource };

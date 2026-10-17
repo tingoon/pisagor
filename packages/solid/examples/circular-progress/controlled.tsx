@@ -1,3 +1,4 @@
+import source from "./controlled.tsx?raw";
 import { Button, ButtonGroup, CircularProgress } from "@pisagor/solid";
 import { MinusIcon, PlusIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";
@@ -28,3 +29,5 @@ export function Controlled() {
     </div>
   );
 }
+
+export { source as ControlledSource };

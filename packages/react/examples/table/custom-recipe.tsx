@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Table } from "@pisagor/react";
 import { tableRecipe } from "@pisagor/recipes";
@@ -52,3 +53,5 @@ export function CustomRecipe() {
     </Table>
   );
 }
+
+export { source as CustomRecipeSource };

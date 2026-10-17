@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./triggers-delays.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Avatar, Button, HoverCard } from "@pisagor/svelte";
   import { MapPinIcon } from "@pisagor/svelte/icons";

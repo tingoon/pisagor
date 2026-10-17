@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./shorthand.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Command } from "@pisagor/svelte";
   import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";

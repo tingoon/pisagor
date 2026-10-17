@@ -1,3 +1,4 @@
+import source from "./with-icon.ts?raw";
 import { PhSparkle } from "@phosphor-icons/vue";
 import { Announcement, Badge } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
@@ -15,3 +16,5 @@ export default defineComponent({
       });
   },
 });
+
+export { source };

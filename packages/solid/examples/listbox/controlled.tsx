@@ -1,3 +1,4 @@
+import source from "./controlled.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Item, Listbox } from "@pisagor/solid";
 import { createSignal } from "solid-js";
@@ -45,3 +46,5 @@ export function Controlled() {
     </div>
   );
 }
+
+export { source as ControlledSource };

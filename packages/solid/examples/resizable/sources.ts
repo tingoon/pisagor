@@ -1,23 +1,23 @@
-import collapsibleRaw from "./collapsible.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import edge_handleRaw from "./edge-handle.tsx?raw";
-import handleRaw from "./handle.tsx?raw";
-import min_maxRaw from "./min-max.tsx?raw";
-import multiple_panelsRaw from "./multiple-panels.tsx?raw";
-import orientation_horizontalRaw from "./orientation-horizontal.tsx?raw";
-import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
+import { CollapsibleSource as Collapsible } from "./collapsible";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { EdgeHandleSource as EdgeHandle } from "./edge-handle";
+import { HandleSource as Handle } from "./handle";
+import { MinMaxSource as MinMax } from "./min-max";
+import { MultiplePanelsSource as MultiplePanels } from "./multiple-panels";
+import { OrientationHorizontalSource as OrientationHorizontal } from "./orientation-horizontal";
+import { OrientationVerticalSource as OrientationVertical } from "./orientation-vertical";
 
 export const imports = `import { Resizable } from "@pisagor/solid";`;
 
 export const sources = {
-  Collapsible: collapsibleRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  EdgeHandle: edge_handleRaw,
-  Handle: handleRaw,
-  MinMax: min_maxRaw,
-  MultiplePanels: multiple_panelsRaw,
-  OrientationHorizontal: orientation_horizontalRaw,
-  OrientationVertical: orientation_verticalRaw,
+  Collapsible,
+  CustomRecipe,
+  Default,
+  EdgeHandle,
+  Handle,
+  MinMax,
+  MultiplePanels,
+  OrientationHorizontal,
+  OrientationVertical,
 } as const;

@@ -1,3 +1,4 @@
+import source from "./compound.tsx?raw";
 import { Announcement, Badge } from "@pisagor/solid";
 export function Compound() {
   return (
@@ -10,3 +11,5 @@ export function Compound() {
     </Announcement.Root>
   );
 }
+
+export { source as CompoundSource };

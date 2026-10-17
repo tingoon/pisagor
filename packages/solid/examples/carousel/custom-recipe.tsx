@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { carouselRecipe } from "@pisagor/recipes";
 import { Carousel } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -12,3 +13,5 @@ const brandCarouselRecipe = tv({
 export function CustomRecipe() {
   return <Carousel recipe={brandCarouselRecipe} slides={numberedSlides(8)} />;
 }
+
+export { source as CustomRecipeSource };

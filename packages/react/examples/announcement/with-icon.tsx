@@ -1,3 +1,4 @@
+import source from "./with-icon.tsx?raw";
 import { SparkleIcon } from "@phosphor-icons/react";
 import { Announcement, Badge } from "@pisagor/react";
 export function WithIcon() {
@@ -13,3 +14,5 @@ export function WithIcon() {
     />
   );
 }
+
+export { source as WithIconSource };

@@ -1,3 +1,4 @@
+import source from "./sizes.tsx?raw";
 import { Tabs } from "@pisagor/react";
 import { profileTabs } from "./helpers";
 
@@ -17,3 +18,5 @@ export function Sizes() {
     </div>
   );
 }
+
+export { source as SizesSource };

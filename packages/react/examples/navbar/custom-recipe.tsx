@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { BellIcon, DatabaseIcon } from "@phosphor-icons/react";
 import { Avatar, Button, Navbar, NavigationMenu } from "@pisagor/react";
 import { navbarRecipe } from "@pisagor/recipes";
@@ -53,3 +54,5 @@ export function CustomRecipe() {
     </Navbar>
   );
 }
+
+export { source as CustomRecipeSource };

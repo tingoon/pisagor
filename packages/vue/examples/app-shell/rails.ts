@@ -1,3 +1,4 @@
+import source from "./rails.ts?raw";
 import { AppShell } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 import { ActiveRailPanelContent, mainContent, regionTitle } from "./helpers";
@@ -57,3 +58,5 @@ export default defineComponent({
       ]);
   },
 });
+
+export { source };

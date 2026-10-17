@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./align-block-start.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhCopy, PhFileCode } from "@phosphor-icons/vue";
 import { InputGroup } from "@pisagor/vue";

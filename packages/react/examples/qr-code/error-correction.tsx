@@ -1,3 +1,4 @@
+import source from "./error-correction.tsx?raw";
 import { QrCode } from "@pisagor/react";
 
 export function ErrorCorrection() {
@@ -17,3 +18,5 @@ export function ErrorCorrection() {
     </div>
   );
 }
+
+export { source as ErrorCorrectionSource };

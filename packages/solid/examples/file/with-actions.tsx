@@ -1,3 +1,4 @@
+import source from "./with-actions.tsx?raw";
 import { Button, File } from "@pisagor/solid";
 import { DownloadSimpleIcon, TrashIcon } from "@pisagor/solid/icons";
 export function WithActions() {
@@ -19,3 +20,5 @@ export function WithActions() {
     />
   );
 }
+
+export { source as WithActionsSource };

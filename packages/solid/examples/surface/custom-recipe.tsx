@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { surfaceRecipe } from "@pisagor/recipes";
 import { Surface } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -19,3 +20,5 @@ export function CustomRecipe() {
     </Surface>
   );
 }
+
+export { source as CustomRecipeSource };

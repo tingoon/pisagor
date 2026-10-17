@@ -1,3 +1,4 @@
+import source from "./indeterminate.tsx?raw";
 import { Field, Progress } from "@pisagor/react";
 export function Indeterminate() {
   return (
@@ -7,3 +8,5 @@ export function Indeterminate() {
     </Field>
   );
 }
+
+export { source as IndeterminateSource };

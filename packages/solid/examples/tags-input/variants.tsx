@@ -1,3 +1,4 @@
+import source from "./variants.tsx?raw";
 import { TagsInput } from "@pisagor/solid";
 import { For } from "solid-js";
 
@@ -35,3 +36,5 @@ export function Variants() {
     </div>
   );
 }
+
+export { source as VariantsSource };

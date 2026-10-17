@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Button, Tooltip } from "@pisagor/solid";
 
 export function Default() {
@@ -9,3 +10,5 @@ export function Default() {
     </Tooltip>
   );
 }
+
+export { source as DefaultSource };

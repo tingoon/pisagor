@@ -1,23 +1,23 @@
-import close_behaviorRaw from "./close-behavior.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import custom_spacingRaw from "./custom-spacing.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import insetRaw from "./inset.tsx?raw";
-import no_close_buttonRaw from "./no-close-button.tsx?raw";
-import non_modalRaw from "./non-modal.tsx?raw";
-import scroll_areaRaw from "./scroll-area.tsx?raw";
-import sidesRaw from "./sides.tsx?raw";
+import { CloseBehaviorSource as CloseBehavior } from "./close-behavior";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { CustomSpacingSource as CustomSpacing } from "./custom-spacing";
+import { DefaultSource as Default } from "./default";
+import { InsetSource as Inset } from "./inset";
+import { NoCloseButtonSource as NoCloseButton } from "./no-close-button";
+import { NonModalSource as NonModal } from "./non-modal";
+import { ScrollAreaSource as ScrollArea } from "./scroll-area";
+import { SidesSource as Sides } from "./sides";
 
 export const imports = `import { Sheet } from "@pisagor/solid";`;
 
 export const sources = {
-  CloseBehavior: close_behaviorRaw,
-  CustomRecipe: custom_recipeRaw,
-  CustomSpacing: custom_spacingRaw,
-  Default: defaultRaw,
-  Inset: insetRaw,
-  NoCloseButton: no_close_buttonRaw,
-  NonModal: non_modalRaw,
-  ScrollArea: scroll_areaRaw,
-  Sides: sidesRaw,
+  CloseBehavior,
+  CustomRecipe,
+  CustomSpacing,
+  Default,
+  Inset,
+  NoCloseButton,
+  NonModal,
+  ScrollArea,
+  Sides,
 } as const;

@@ -1,3 +1,4 @@
+import source from "./info-tip.tsx?raw";
 import { Button, DataList, Popover } from "@pisagor/solid";
 import { InfoIcon } from "@pisagor/solid/icons";
 export function InfoTip() {
@@ -42,3 +43,5 @@ export function InfoTip() {
     </DataList.Root>
   );
 }
+
+export { source as InfoTipSource };

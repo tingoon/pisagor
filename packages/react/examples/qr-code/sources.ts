@@ -1,19 +1,19 @@
-import compoundRaw from "./compound.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import downloadRaw from "./download.tsx?raw";
-import error_correctionRaw from "./error-correction.tsx?raw";
-import overlayRaw from "./overlay.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
+import { CompoundSource as Compound } from "./compound";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { DownloadSource as Download } from "./download";
+import { ErrorCorrectionSource as ErrorCorrection } from "./error-correction";
+import { OverlaySource as Overlay } from "./overlay";
+import { SizesSource as Sizes } from "./sizes";
 
 export const imports = `import { QrCode } from "@pisagor/react";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Download: downloadRaw,
-  ErrorCorrection: error_correctionRaw,
-  Overlay: overlayRaw,
-  Sizes: sizesRaw,
+  Compound,
+  CustomRecipe,
+  Default,
+  Download,
+  ErrorCorrection,
+  Overlay,
+  Sizes,
 } as const;

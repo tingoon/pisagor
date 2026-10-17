@@ -1,3 +1,4 @@
+import source from "./compound.tsx?raw";
 import { Field, Switch } from "@pisagor/solid";
 
 export function Compound() {
@@ -13,3 +14,5 @@ export function Compound() {
     </Field>
   );
 }
+
+export { source as CompoundSource };

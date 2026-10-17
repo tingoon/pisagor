@@ -1,3 +1,4 @@
+import source from "./with-actions.ts?raw";
 import { PhDownloadSimple, PhTrash } from "@phosphor-icons/vue";
 import { Button, File } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
@@ -25,3 +26,5 @@ export default defineComponent({
       });
   },
 });
+
+export { source };

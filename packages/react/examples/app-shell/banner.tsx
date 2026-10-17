@@ -1,3 +1,4 @@
+import source from "./banner.tsx?raw";
 import { useDisclosure } from "@mantine/hooks";
 import { WarningIcon } from "@phosphor-icons/react";
 import { Announcement, AppShell, Badge, Button } from "@pisagor/react";
@@ -28,3 +29,5 @@ export function Banner() {
     </AppShell>
   );
 }
+
+export { source as BannerSource };

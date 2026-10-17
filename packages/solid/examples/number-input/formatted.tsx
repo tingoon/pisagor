@@ -1,3 +1,4 @@
+import source from "./formatted.tsx?raw";
 import { NumberInput } from "@pisagor/solid";
 
 export function Formatted() {
@@ -11,3 +12,5 @@ export function Formatted() {
     </NumberInput>
   );
 }
+
+export { source as FormattedSource };

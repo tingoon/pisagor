@@ -1,19 +1,19 @@
-import controlledRaw from "./controlled.svelte?raw";
-import custom_recipeRaw from "./custom-recipe.svelte?raw";
-import custom_timeoutRaw from "./custom-timeout.svelte?raw";
-import different_iconRaw from "./different-icon.svelte?raw";
-import sizesRaw from "./sizes.svelte?raw";
-import variantsRaw from "./variants.svelte?raw";
-import with_labelRaw from "./with-label.svelte?raw";
+import Controlled from "./controlled.svelte?raw";
+import CustomRecipe from "./custom-recipe.svelte?raw";
+import CustomTimeout from "./custom-timeout.svelte?raw";
+import DifferentIcon from "./different-icon.svelte?raw";
+import Sizes from "./sizes.svelte?raw";
+import Variants from "./variants.svelte?raw";
+import WithLabel from "./with-label.svelte?raw";
 
 export const imports = `import { Clipboard } from "@pisagor/svelte";`;
 
 export const sources = {
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  CustomTimeout: custom_timeoutRaw,
-  DifferentIcon: different_iconRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
-  WithLabel: with_labelRaw,
+  Controlled,
+  CustomRecipe,
+  CustomTimeout,
+  DifferentIcon,
+  Sizes,
+  Variants,
+  WithLabel,
 } as const;

@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./info-tip.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhInfo } from "@phosphor-icons/vue";
 import { Button, DataList, Popover } from "@pisagor/vue";

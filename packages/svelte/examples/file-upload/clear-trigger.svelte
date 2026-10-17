@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./clear-trigger.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, FileUpload } from "@pisagor/svelte";
   import TrashIcon from "phosphor-svelte/lib/TrashIcon";

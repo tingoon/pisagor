@@ -1,11 +1,11 @@
-import defaultRaw from "./default.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import invalidRaw from "./invalid.tsx?raw";
+import { DefaultSource as Default } from "./default";
+import { DisabledSource as Disabled } from "./disabled";
+import { InvalidSource as Invalid } from "./invalid";
 
 export const imports = `import { SwitchField } from "@pisagor/solid-form";`;
 
 export const sources = {
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  Invalid: invalidRaw,
+  Default,
+  Disabled,
+  Invalid,
 } as const;

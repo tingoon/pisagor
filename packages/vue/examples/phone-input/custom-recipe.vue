@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./custom-recipe.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { phoneInputRecipe } from "@pisagor/recipes";
 import { PhoneInput } from "@pisagor/vue/phone-input";

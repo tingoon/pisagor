@@ -1,3 +1,4 @@
+import source from "./multi-grouping.tsx?raw";
 import { CaretDownIcon, CaretRightIcon } from "@phosphor-icons/react";
 import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Table } from "@pisagor/react";
@@ -188,3 +189,5 @@ export function MultiGrouping() {
     </DataGridShell>
   );
 }
+
+export { source as MultiGroupingSource };

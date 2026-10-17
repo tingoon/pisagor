@@ -1,3 +1,4 @@
+import source from "./spacing.tsx?raw";
 import { Card, Marquee } from "@pisagor/solid";
 import {
   ArrowRightIcon,
@@ -46,3 +47,5 @@ export function Spacing() {
     </Marquee.Root>
   );
 }
+
+export { source as SpacingSource };

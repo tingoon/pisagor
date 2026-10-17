@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { highlightRecipe } from "@pisagor/recipes";
 import { Highlight } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -18,3 +19,5 @@ export function CustomRecipe() {
     </p>
   );
 }
+
+export { source as CustomRecipeSource };

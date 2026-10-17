@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./icon.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, Card } from "@pisagor/svelte";
   import CurrencyDollarIcon from "phosphor-svelte/lib/CurrencyDollarIcon";

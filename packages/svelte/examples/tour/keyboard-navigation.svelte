@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./keyboard-navigation.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { buttonRecipe } from "@pisagor/recipes";
   import { Tour, type TourStepDetails } from "@pisagor/svelte";

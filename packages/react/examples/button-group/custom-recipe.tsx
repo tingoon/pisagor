@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
 import { Button, ButtonGroup } from "@pisagor/react";
 import { buttonGroupRecipe } from "@pisagor/recipes";
@@ -22,3 +23,5 @@ export function CustomRecipe() {
     </ButtonGroup>
   );
 }
+
+export { source as CustomRecipeSource };

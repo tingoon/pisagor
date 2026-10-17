@@ -1,3 +1,4 @@
+import source from "./custom-recipe.ts?raw";
 import { announcementRecipe } from "@pisagor/recipes";
 import { Announcement, Badge } from "@pisagor/vue";
 import { tv } from "tailwind-variants";
@@ -23,3 +24,5 @@ export default defineComponent({
       });
   },
 });
+
+export { source };

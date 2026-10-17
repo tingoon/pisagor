@@ -1,6 +1,9 @@
+import source from "./custom-icon.tsx?raw";
 import { HeartIcon } from "@phosphor-icons/react";
 import { Rating } from "@pisagor/react";
 
 export function CustomIcon() {
   return <Rating allowHalf className="text-destructive" icon={<HeartIcon />} />;
 }
+
+export { source as CustomIconSource };

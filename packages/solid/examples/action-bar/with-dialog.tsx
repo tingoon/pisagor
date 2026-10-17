@@ -1,3 +1,4 @@
+import source from "./with-dialog.tsx?raw";
 import { ActionBar, AlertDialog, Button } from "@pisagor/solid";
 import { TrashIcon, XIcon } from "@pisagor/solid/icons";
 export function WithDialog() {
@@ -54,3 +55,5 @@ export function WithDialog() {
     </ActionBar>
   );
 }
+
+export { source as WithDialogSource };

@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./wait-for-input.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { waitForEvent } from "@ark-ui/svelte/tour";
   import { buttonRecipe } from "@pisagor/recipes";

@@ -1,3 +1,4 @@
+import source from "./custom-icons-folder.tsx?raw";
 import { PackageIcon } from "@phosphor-icons/react";
 import type { NodeProviderProps } from "@pisagor/react";
 import { createTreeCollection, TreeView } from "@pisagor/react";
@@ -74,3 +75,5 @@ export function CustomIconsFolder() {
     </div>
   );
 }
+
+export { source as CustomIconsFolderSource };

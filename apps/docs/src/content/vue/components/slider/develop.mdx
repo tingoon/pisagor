@@ -1,0 +1,167 @@
+import Example from "#/components/docs/example.astro";
+import VariantsSource from "#examples/vue/slider/variants.vue?raw";
+import VerticalSource from "#examples/vue/slider/vertical.vue?raw";
+import WithLabelSource from "#examples/vue/slider/with-label.vue?raw";
+import MarksSource from "#examples/vue/slider/marks.vue?raw";
+import RangeSource from "#examples/vue/slider/range.vue?raw";
+import CompoundSource from "#examples/vue/slider/compound.vue?raw";
+import ControlledSource from "#examples/vue/slider/controlled.vue?raw";
+import DisabledSource from "#examples/vue/slider/disabled.vue?raw";
+import InvalidSource from "#examples/vue/slider/invalid.vue?raw";
+import MinMaxSource from "#examples/vue/slider/min-max.vue?raw";
+import StepSource from "#examples/vue/slider/step.vue?raw";
+import CustomRecipeSource from "#examples/vue/slider/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { Slider } from "@pisagor/vue";
+```
+
+## Examples
+
+### Variants
+
+Choose visual weight or emphasis so the slider matches importance in the surrounding layout.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="slider"
+  framework="vue"
+  kind="component"
+/>
+
+### Vertical
+
+Use a vertical layout when the slider should read top to bottom.
+
+<Example
+  name="Vertical"
+  code={VerticalSource}
+  exampleId="slider"
+  framework="vue"
+  kind="component"
+/>
+
+### With Label
+
+Label the slider so the current value is readable.
+
+<Example
+  name="WithLabel"
+  code={WithLabelSource}
+  exampleId="slider"
+  framework="vue"
+  kind="component"
+/>
+
+### Marks
+
+Show marks for key values along the track.
+
+<Example
+  name="Marks"
+  code={MarksSource}
+  exampleId="slider"
+  framework="vue"
+  kind="component"
+/>
+
+### Range
+
+Select a start and end value when the task needs a span rather than a single point.
+
+<Example
+  name="Range"
+  code={RangeSource}
+  exampleId="slider"
+  framework="vue"
+  kind="component"
+/>
+
+### Compound
+
+Compose the slider from parts for custom headers or thumbs.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="slider"
+  framework="vue"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this slider.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="slider"
+  framework="vue"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the slider is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="slider"
+  framework="vue"
+  kind="component"
+/>
+
+### Invalid
+
+Surface a validation or error state so users know the slider needs attention before continuing.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="slider"
+  framework="vue"
+  kind="component"
+/>
+
+### Min Max
+
+Clamp values to a minimum and maximum so users cannot pick out-of-range input.
+
+<Example
+  name="MinMax"
+  code={MinMaxSource}
+  exampleId="slider"
+  framework="vue"
+  kind="component"
+/>
+
+### Step
+
+Snap changes to a step interval when values should move in fixed increments.
+
+<Example
+  name="Step"
+  code={StepSource}
+  exampleId="slider"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `sliderRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="slider"
+  framework="vue"
+  kind="component"
+/>

@@ -1,3 +1,4 @@
+import source from "./with-promise.tsx?raw";
 import { Button, DownloadTrigger } from "@pisagor/solid";
 import { DownloadIcon } from "@pisagor/solid/icons";
 
@@ -26,3 +27,5 @@ export function WithPromise() {
     />
   );
 }
+
+export { source as WithPromiseSource };

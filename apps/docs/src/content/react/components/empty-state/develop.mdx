@@ -1,0 +1,76 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/empty-state/default.tsx";
+import { SizesSource } from "#examples/react/empty-state/sizes.tsx";
+import { CompactSource } from "#examples/react/empty-state/compact.tsx";
+import { CompoundSource } from "#examples/react/empty-state/compound.tsx";
+import { CustomRecipeSource } from "#examples/react/empty-state/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { EmptyState } from "@pisagor/react";
+```
+
+## Examples
+
+### Default
+
+Explain that a view has no data and point to the next action.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="empty-state"
+  framework="react"
+  kind="component"
+/>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="empty-state"
+  framework="react"
+  kind="component"
+/>
+
+### Compact
+
+Use a denser empty state when the region is small.
+
+<Example
+  name="Compact"
+  code={CompactSource}
+  exampleId="empty-state"
+  framework="react"
+  kind="component"
+/>
+
+### Compound
+
+Compose icon, title, and actions from parts for a custom empty layout.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="empty-state"
+  framework="react"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `emptyStateRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="empty-state"
+  framework="react"
+  kind="component"
+/>

@@ -1,0 +1,48 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/timeline/default.tsx";
+import { HorizontalSource } from "#examples/react/timeline/horizontal.tsx";
+import { CompoundSource } from "#examples/react/timeline/compound.tsx";
+
+## Import
+
+```tsx
+import { Timeline } from "@pisagor/react";
+```
+
+## Examples
+
+### Default
+
+Show events or milestones in chronological order.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="timeline"
+  framework="react"
+  kind="component"
+/>
+
+### Horizontal
+
+Use a horizontal layout when the timeline should read left to right.
+
+<Example
+  name="Horizontal"
+  code={HorizontalSource}
+  exampleId="timeline"
+  framework="react"
+  kind="component"
+/>
+
+### Compound
+
+Compose timeline parts for a custom history layout.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="timeline"
+  framework="react"
+  kind="component"
+/>

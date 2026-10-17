@@ -1,3 +1,4 @@
+import source from "./custom-color.ts?raw";
 import { PhMagicWand } from "@phosphor-icons/vue";
 import { Alert } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
@@ -17,3 +18,5 @@ export default defineComponent({
       });
   },
 });
+
+export { source };

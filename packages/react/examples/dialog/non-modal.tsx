@@ -1,3 +1,4 @@
+import source from "./non-modal.tsx?raw";
 import { Button, Dialog } from "@pisagor/react";
 
 export function NonModal() {
@@ -20,3 +21,5 @@ export function NonModal() {
     </Dialog>
   );
 }
+
+export { source as NonModalSource };

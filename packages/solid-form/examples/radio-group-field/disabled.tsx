@@ -1,3 +1,4 @@
+import source from "./disabled.tsx?raw";
 import { RadioGroupField } from "@pisagor/solid-form";
 import { planOptions } from "../options";
 
@@ -12,3 +13,5 @@ export function Disabled() {
     />
   );
 }
+
+export { source as DisabledSource };

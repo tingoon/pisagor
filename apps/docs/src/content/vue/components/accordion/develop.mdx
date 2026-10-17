@@ -1,0 +1,113 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/accordion/default.vue?raw";
+import SizesSource from "#examples/vue/accordion/sizes.vue?raw";
+import MultipleSource from "#examples/vue/accordion/multiple.vue?raw";
+import NonCollapsibleSource from "#examples/vue/accordion/non-collapsible.vue?raw";
+import CompoundSource from "#examples/vue/accordion/compound.vue?raw";
+import WithCardSource from "#examples/vue/accordion/with-card.vue?raw";
+import ControlledSource from "#examples/vue/accordion/controlled.vue?raw";
+import DisabledSource from "#examples/vue/accordion/disabled.vue?raw";
+
+## Import
+
+```ts
+import { Accordion } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+A single expandable section for grouping related content under a heading.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="accordion"
+  framework="vue"
+  kind="component"
+/>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="accordion"
+  framework="vue"
+  kind="component"
+/>
+
+### Multiple
+
+Allow several sections open at once when users compare content across panels.
+
+<Example
+  name="Multiple"
+  code={MultipleSource}
+  exampleId="accordion"
+  framework="vue"
+  kind="component"
+/>
+
+### Non-collapsible
+
+Keep at least one section open when collapsing everything would hide required content.
+
+<Example
+  name="NonCollapsible"
+  code={NonCollapsibleSource}
+  exampleId="accordion"
+  framework="vue"
+  kind="component"
+/>
+
+### Compound
+
+Compose trigger and content parts when you need a custom section layout.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="accordion"
+  framework="vue"
+  kind="component"
+/>
+
+### With Card
+
+Place accordion sections inside a card surface when the group should read as one unit.
+
+<Example
+  name="WithCard"
+  code={WithCardSource}
+  exampleId="accordion"
+  framework="vue"
+  kind="component"
+/>
+
+### Controlled
+
+Drive open state from the parent when other UI depends on which section is expanded.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="accordion"
+  framework="vue"
+  kind="component"
+/>
+
+### Disabled
+
+Show that a section cannot be opened.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="accordion"
+  framework="vue"
+  kind="component"
+/>

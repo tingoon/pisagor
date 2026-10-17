@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./custom-spacing.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 import { PhGearSix, PhX } from "@phosphor-icons/vue";

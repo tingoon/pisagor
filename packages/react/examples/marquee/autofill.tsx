@@ -1,3 +1,4 @@
+import source from "./autofill.tsx?raw";
 import {
   ArrowRightIcon,
   AtomIcon,
@@ -36,3 +37,5 @@ const items = marqueeIcons.map((IconComponent) => (
 export function Autofill() {
   return <Marquee autoFill items={items} />;
 }
+
+export { source as AutofillSource };

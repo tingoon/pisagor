@@ -1,33 +1,33 @@
-import checkboxesRaw from "./checkboxes.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import destructiveRaw from "./destructive.tsx?raw";
-import group_labelRaw from "./group-label.tsx?raw";
-import iconsRaw from "./icons.tsx?raw";
-import item_indicatorRaw from "./item-indicator.tsx?raw";
-import linkRaw from "./link.tsx?raw";
-import nestedRaw from "./nested.tsx?raw";
-import placementsRaw from "./placements.tsx?raw";
-import quick_itemRaw from "./quick-item.tsx?raw";
-import radio_groupRaw from "./radio-group.tsx?raw";
-import shortcutsRaw from "./shortcuts.tsx?raw";
-import with_scrollRaw from "./with-scroll.tsx?raw";
-import with_separatorRaw from "./with-separator.tsx?raw";
+import { CheckboxesSource as Checkboxes } from "./checkboxes";
+import { DefaultSource as Default } from "./default";
+import { DestructiveSource as Destructive } from "./destructive";
+import { GroupLabelSource as GroupLabel } from "./group-label";
+import { IconsSource as Icons } from "./icons";
+import { ItemIndicatorSource as ItemIndicator } from "./item-indicator";
+import { LinkSource as Link } from "./link";
+import { NestedSource as Nested } from "./nested";
+import { PlacementsSource as Placements } from "./placements";
+import { QuickItemSource as QuickItem } from "./quick-item";
+import { RadioGroupSource as RadioGroup } from "./radio-group";
+import { ShortcutsSource as Shortcuts } from "./shortcuts";
+import { WithScrollSource as WithScroll } from "./with-scroll";
+import { WithSeparatorSource as WithSeparator } from "./with-separator";
 
 export const imports = `import { DropdownMenu } from "@pisagor/solid";`;
 
 export const sources = {
-  Checkboxes: checkboxesRaw,
-  Default: defaultRaw,
-  Destructive: destructiveRaw,
-  GroupLabel: group_labelRaw,
-  Icons: iconsRaw,
-  ItemIndicator: item_indicatorRaw,
-  Link: linkRaw,
-  Nested: nestedRaw,
-  Placements: placementsRaw,
-  QuickItem: quick_itemRaw,
-  RadioGroup: radio_groupRaw,
-  Shortcuts: shortcutsRaw,
-  WithScroll: with_scrollRaw,
-  WithSeparator: with_separatorRaw,
+  Checkboxes,
+  Default,
+  Destructive,
+  GroupLabel,
+  Icons,
+  ItemIndicator,
+  Link,
+  Nested,
+  Placements,
+  QuickItem,
+  RadioGroup,
+  Shortcuts,
+  WithScroll,
+  WithSeparator,
 } as const;

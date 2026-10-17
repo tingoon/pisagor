@@ -1,0 +1,447 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/color-picker/default.svelte?raw";
+import VariantsSource from "#examples/svelte/color-picker/variants.svelte?raw";
+import AreaChannelsSource from "#examples/svelte/color-picker/area-channels.svelte?raw";
+import AreaDotsSource from "#examples/svelte/color-picker/area-dots.svelte?raw";
+import InputChannelSource from "#examples/svelte/color-picker/input-channel.svelte?raw";
+import LabelFormatSelectSource from "#examples/svelte/color-picker/label-format-select.svelte?raw";
+import InputCompactSource from "#examples/svelte/color-picker/input-compact.svelte?raw";
+import InputWithPopoverSource from "#examples/svelte/color-picker/input-with-popover.svelte?raw";
+import InputWithSwatchPreviewSource from "#examples/svelte/color-picker/input-with-swatch-preview.svelte?raw";
+import PopoverSlidersOnlySource from "#examples/svelte/color-picker/popover-sliders-only.svelte?raw";
+import PopoverWithChannelEditingSource from "#examples/svelte/color-picker/popover-with-channel-editing.svelte?raw";
+import PopoverWithSwatchPickerSource from "#examples/svelte/color-picker/popover-with-swatch-picker.svelte?raw";
+import SliderAlphaChannelSource from "#examples/svelte/color-picker/slider-alpha-channel.svelte?raw";
+import SliderHsbaChannelsSource from "#examples/svelte/color-picker/slider-hsba-channels.svelte?raw";
+import SliderHslChannelsSource from "#examples/svelte/color-picker/slider-hsl-channels.svelte?raw";
+import SliderRgbChannelsSource from "#examples/svelte/color-picker/slider-rgb-channels.svelte?raw";
+import SliderVerticalSource from "#examples/svelte/color-picker/slider-vertical.svelte?raw";
+import SwatchPickerSource from "#examples/svelte/color-picker/swatch-picker.svelte?raw";
+import SwatchPickerCustomIndicatorSource from "#examples/svelte/color-picker/swatch-picker-custom-indicator.svelte?raw";
+import ClearableSource from "#examples/svelte/color-picker/clearable.svelte?raw";
+import InputControlledSource from "#examples/svelte/color-picker/input-controlled.svelte?raw";
+import SliderControlledSource from "#examples/svelte/color-picker/slider-controlled.svelte?raw";
+import SwatchPickerControlledSource from "#examples/svelte/color-picker/swatch-picker-controlled.svelte?raw";
+import DisabledSource from "#examples/svelte/color-picker/disabled.svelte?raw";
+import PopoverDisabledSource from "#examples/svelte/color-picker/popover-disabled.svelte?raw";
+import SliderDisabledSource from "#examples/svelte/color-picker/slider-disabled.svelte?raw";
+import SwatchPickerDisabledSource from "#examples/svelte/color-picker/swatch-picker-disabled.svelte?raw";
+import InvalidSource from "#examples/svelte/color-picker/invalid.svelte?raw";
+import CustomSpacingSource from "#examples/svelte/color-picker/custom-spacing.svelte?raw";
+import SwatchPickerCustomRadiusSource from "#examples/svelte/color-picker/swatch-picker-custom-radius.svelte?raw";
+import SwatchPickerCustomSizeSource from "#examples/svelte/color-picker/swatch-picker-custom-size.svelte?raw";
+import CustomRecipeSource from "#examples/svelte/color-picker/custom-recipe.svelte?raw";
+
+## Import
+
+```ts
+import { ColorPicker } from "@pisagor/svelte";
+```
+
+## Anatomy
+
+```tsx
+<ColorPicker>
+  <ColorPicker.Control>
+    <ColorPicker.Trigger>
+      <ColorPicker.SwatchPreview />
+    </ColorPicker.Trigger>
+    <ColorPicker.Input />
+  </ColorPicker.Control>
+  <ColorPicker.Content>
+    <ColorPicker.Area>
+      <ColorPicker.AreaThumb />
+    </ColorPicker.Area>
+    <ColorPicker.View>
+      <ColorPicker.EyeDropperTrigger />
+      <ColorPicker.ChannelSlider />
+    </ColorPicker.View>
+  </ColorPicker.Content>
+</ColorPicker>
+```
+
+## Examples
+
+### Default
+
+Pick a color with the full visual picker surface.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Variants
+
+Choose picker chrome to match compact forms or larger editing panels.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Area Channels
+
+Edit the 2D color area using specific channels for finer control.
+
+<Example
+  name="AreaChannels"
+  code={AreaChannelsSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Area Dots
+
+Show discrete dots on the area when quantized picks help.
+
+<Example
+  name="AreaDots"
+  code={AreaDotsSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Input Channel
+
+Type a single channel value when precision matters more than dragging.
+
+<Example
+  name="InputChannel"
+  code={InputChannelSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Label Format Select
+
+Pair `ColorPicker.Label` with `ColorPicker.FormatSelect` and `ColorPicker.ChannelInput`.
+
+<Example
+  name="LabelFormatSelect"
+  code={LabelFormatSelectSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Input Compact
+
+Use a compact channel input when space is limited.
+
+<Example
+  name="InputCompact"
+  code={InputCompactSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Input With Popover
+
+Open channel editing in a popover attached to a trigger.
+
+<Example
+  name="InputWithPopover"
+  code={InputWithPopoverSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Input With Swatch Preview
+
+Pair inputs with a swatch so typed values stay visually grounded.
+
+<Example
+  name="InputWithSwatchPreview"
+  code={InputWithSwatchPreviewSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Popover Sliders Only
+
+Offer sliders without the full area when a simpler editor is enough.
+
+<Example
+  name="PopoverSlidersOnly"
+  code={PopoverSlidersOnlySource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Popover With Channel Editing
+
+Combine popover chrome with numeric channel fields.
+
+<Example
+  name="PopoverWithChannelEditing"
+  code={PopoverWithChannelEditingSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Popover With Swatch Picker
+
+Pick from swatches inside a popover for predefined palettes.
+
+<Example
+  name="PopoverWithSwatchPicker"
+  code={PopoverWithSwatchPickerSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Slider Alpha Channel
+
+Adjust transparency with an alpha slider when opacity matters.
+
+<Example
+  name="SliderAlphaChannel"
+  code={SliderAlphaChannelSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Slider Hsba Channels
+
+Edit HSBA channels with sliders when that color model fits the task.
+
+<Example
+  name="SliderHsbaChannels"
+  code={SliderHsbaChannelsSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Slider Hsl Channels
+
+Edit HSL channels with sliders when that color model fits the task.
+
+<Example
+  name="SliderHslChannels"
+  code={SliderHslChannelsSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Slider Rgb Channels
+
+Edit RGB channels with sliders when that color model fits the task.
+
+<Example
+  name="SliderRgbChannels"
+  code={SliderRgbChannelsSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Slider Vertical
+
+Orient channel sliders vertically when the layout favors a tall editor.
+
+<Example
+  name="SliderVertical"
+  code={SliderVerticalSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Swatch Picker
+
+Pick from predefined swatches when freeform color picking is unnecessary.
+
+<Example
+  name="SwatchPicker"
+  code={SwatchPickerSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Swatch Picker Custom Indicator
+
+Customize the selected-swatch indicator to match brand chrome.
+
+<Example
+  name="SwatchPickerCustomIndicator"
+  code={SwatchPickerCustomIndicatorSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Clearable
+
+Offer a clear control when users often need to remove the selected color.
+
+<Example
+  name="Clearable"
+  code={ClearableSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Input Controlled
+
+Control channel inputs from the parent for synced color editors.
+
+<Example
+  name="InputControlled"
+  code={InputControlledSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Slider Controlled
+
+Drive slider channels from the parent when color state lives above the picker.
+
+<Example
+  name="SliderControlled"
+  code={SliderControlledSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Swatch Picker Controlled
+
+Drive the selected swatch from the parent when palette state lives above.
+
+<Example
+  name="SwatchPickerControlled"
+  code={SwatchPickerControlledSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Disabled
+
+Show that color cannot be changed.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Popover Disabled
+
+Show an unavailable popover trigger when color editing is blocked.
+
+<Example
+  name="PopoverDisabled"
+  code={PopoverDisabledSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Slider Disabled
+
+Show that slider channels are unavailable.
+
+<Example
+  name="SliderDisabled"
+  code={SliderDisabledSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Swatch Picker Disabled
+
+Show that swatch picking is unavailable.
+
+<Example
+  name="SwatchPickerDisabled"
+  code={SwatchPickerDisabledSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Invalid
+
+Surface an invalid color value that needs correction.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Adjust spacing when the picker sits in a denser layout.
+
+<Example
+  name="CustomSpacing"
+  code={CustomSpacingSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+Override swatch corner radius when geometry should match nearby controls.
+
+<Example
+  name="SwatchPickerCustomRadius"
+  code={SwatchPickerCustomRadiusSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+Resize swatches when the palette needs denser or larger targets.
+
+<Example
+  name="SwatchPickerCustomSize"
+  code={SwatchPickerCustomSizeSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `colorPickerRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="color-picker"
+  framework="svelte"
+  kind="component"
+/>

@@ -1,9 +1,9 @@
-import compositionRaw from "./composition.svelte?raw";
-import variantsRaw from "./variants.svelte?raw";
+import Composition from "./composition.svelte?raw";
+import Variants from "./variants.svelte?raw";
 
 export const imports = `import { AlertDialog } from "@pisagor/svelte";`;
 
 export const sources = {
-  Composition: compositionRaw,
-  Variants: variantsRaw,
+  Composition,
+  Variants,
 } as const;

@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./dblclick.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, Card, Editable, Field } from "@pisagor/svelte";
   import { CheckIcon, XIcon } from "@pisagor/svelte/icons";

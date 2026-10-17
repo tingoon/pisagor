@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./footer.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Table } from "@pisagor/vue";
 

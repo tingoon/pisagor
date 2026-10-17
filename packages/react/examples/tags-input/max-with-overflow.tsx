@@ -1,3 +1,4 @@
+import source from "./max-with-overflow.tsx?raw";
 import { Field, TagsInput } from "@pisagor/react";
 export function MaxWithOverflow() {
   return (
@@ -22,3 +23,5 @@ export function MaxWithOverflow() {
     </Field>
   );
 }
+
+export { source as MaxWithOverflowSource };

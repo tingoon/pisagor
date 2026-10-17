@@ -1,3 +1,4 @@
+import source from "./align-inline-end.tsx?raw";
 import { EyeIcon } from "@phosphor-icons/react";
 import { InputGroup } from "@pisagor/react";
 
@@ -16,3 +17,5 @@ export function AlignInlineEnd() {
     </div>
   );
 }
+
+export { source as AlignInlineEndSource };

@@ -1,3 +1,4 @@
+import source from "./orientation-horizontal.tsx?raw";
 import { Button, Editable, Input } from "@pisagor/solid";
 import { CheckIcon, XIcon } from "@pisagor/solid/icons";
 export function OrientationHorizontal() {
@@ -36,3 +37,5 @@ export function OrientationHorizontal() {
     </Editable>
   );
 }
+
+export { source as OrientationHorizontalSource };

@@ -1,3 +1,4 @@
+import source from "./anchor.tsx?raw";
 import { Button, Input, Popover } from "@pisagor/solid";
 export function Anchor() {
   return (
@@ -31,3 +32,5 @@ export function Anchor() {
     </div>
   );
 }
+
+export { source as AnchorSource };

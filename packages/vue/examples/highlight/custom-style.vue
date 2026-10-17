@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./custom-style.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Highlight } from "@pisagor/vue";
 </script>

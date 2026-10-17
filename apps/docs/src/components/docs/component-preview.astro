@@ -5,11 +5,14 @@ import {
   CaretUpDownIcon,
   MoonIcon,
   SunIcon,
-  TreeStructureIcon,
 } from "@phosphor-icons/react";
 import { Button, Separator, Surface, VisuallyHidden } from "@pisagor/astro";
 import type { Framework } from "#/lib/nav";
-import { isFramedPreview } from "#/lib/preview-config";
+import {
+  isFramedPreview,
+  isOpenInNewTabPreview,
+  isViewportControlsPreview,
+} from "#/lib/preview-config";
 import CodeBlock from "./code-block.astro";
 
 interface Props {
@@ -29,10 +32,6 @@ interface Props {
   exportName?: string;
   /** Which examples tree to load (`component` default) */
   kind?: "component" | "form" | "block";
-  /** npm / package id shown in the dependencies popover */
-  packageName?: string;
-  /** Extra dependency names for the popover */
-  dependencies?: string[];
   /** Override “Report an issue” URL */
   reportUrl?: string;
   /** Standalone live-preview URL for “Open in new tab” */
@@ -42,11 +41,20 @@ interface Props {
    * app layouts). Defaults to `isFramedPreview(exampleId)`.
    */
   framed?: boolean;
+  /**
+   * Show “Open in new tab” for fullscreen standalone preview.
+   * Defaults to `isOpenInNewTabPreview(exampleId)` (false for most demos).
+   */
+  openInNewTab?: boolean;
+  /**
+   * Show Desktop / Tablet / Mobile width controls.
+   * Defaults to `isViewportControlsPreview(exampleId)` (false for most demos).
+   */
+  viewportControls?: boolean;
 }
 
 const title = Astro.props.title;
 const language = Astro.props.language ?? "tsx";
-const packageName = Astro.props.packageName ?? "@pisagor/react";
 const previewHref = Astro.props.previewHref;
 const framework = Astro.props.framework;
 const exampleId = Astro.props.exampleId;
@@ -54,10 +62,10 @@ const exportName = Astro.props.exportName;
 const kind = Astro.props.kind ?? "component";
 const deferSource = Boolean(framework && exampleId && exportName);
 const framed = Astro.props.framed ?? isFramedPreview(exampleId);
-const dependencies = Astro.props.dependencies ?? [
-  "@pisagor/recipes",
-  "@pisagor/tokens",
-];
+const openInNewTab =
+  Astro.props.openInNewTab ?? isOpenInNewTabPreview(exampleId);
+const viewportControls =
+  Astro.props.viewportControls ?? isViewportControlsPreview(exampleId);
 const reportUrl =
   Astro.props.reportUrl ??
   "https://github.com/tingoon/pisagor/issues/new?labels=docs&title=" +
@@ -86,14 +94,18 @@ const previewMenus = [
     /** Stable trigger width for longest label (“Secondary”). */
     triggerClass: "min-w-[6.5rem]",
   },
-  {
-    key: "viewport",
-    label: "Viewport",
-    options: viewports,
-    /** Stable trigger width for longest label (“Desktop”). */
-    triggerClass: "min-w-[5.75rem]",
-  },
-] as const;
+  ...(viewportControls
+    ? ([
+        {
+          key: "viewport",
+          label: "Viewport",
+          options: viewports,
+          /** Stable trigger width for longest label (“Desktop”). */
+          triggerClass: "min-w-[5.75rem]",
+        },
+      ] as const)
+    : []),
+];
 
 const menuOptionClass =
   "flex w-full items-center rounded-md px-2 py-1.5 text-start text-xs text-muted-foreground transition-colors hover:bg-muted/70 hover:text-foreground data-active:bg-background data-active:font-medium data-active:text-foreground data-active:shadow-sm";
@@ -101,7 +113,6 @@ const menuOptionClass =
 
 <section
   data-component-preview
-  data-package={packageName}
   data-pagefind-ignore="all"
   data-preview-href={previewHref}
   class:list={[
@@ -157,7 +168,7 @@ const menuOptionClass =
         <MoonIcon aria-hidden data-icon-moon hidden size={14} />
       </Button>
 
-      {kind === "block" ? (
+      {openInNewTab ? (
         <Button
           aria-label="Open preview in a new tab"
           data-open-tab
@@ -169,39 +180,6 @@ const menuOptionClass =
           <ArrowSquareOutIcon aria-hidden size={14} />
         </Button>
       ) : null}
-
-      <div class="relative" data-deps>
-        <Button
-          aria-expanded="false"
-          aria-haspopup="dialog"
-          aria-label="Show dependencies"
-          data-deps-toggle
-          data-tooltip="Dependencies"
-          size="icon-sm"
-          type="button"
-          variant="ghost"
-        >
-          <TreeStructureIcon aria-hidden size={14} />
-        </Button>
-        <div
-          aria-label="Dependencies"
-          class="absolute inset-e-0 z-20 mt-1 hidden min-w-56 rounded-lg border border-border/70 bg-popover p-2 text-popover-foreground shadow-lg"
-          data-deps-panel
-          role="dialog"
-        >
-          <p class="mb-1.5 px-1 docs-label">Dependencies</p>
-          <ul class="space-y-0.5 font-mono text-xs">
-            <li class="rounded-md px-1.5 py-1 text-foreground">
-              {packageName}
-            </li>
-            {dependencies.map((dep) => (
-              <li class="rounded-md px-1.5 py-1 text-muted-foreground">
-                {dep}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
 
       <a
         aria-label="Report an issue"
@@ -294,7 +272,7 @@ const menuOptionClass =
     )}
   </div>
 
-  <div class="hidden" data-panel="code">
+  <div data-panel="code" hidden>
     <CodeBlock
       class="rounded-none border-0 border-t border-border/60"
       code={deferSource ? undefined : Astro.props.code}

@@ -1,19 +1,19 @@
-import compoundRaw from "./compound.tsx?raw";
-import custom_colorRaw from "./custom-color.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
-import with_actionRaw from "./with-action.tsx?raw";
-import with_iconRaw from "./with-icon.tsx?raw";
-import without_iconRaw from "./without-icon.tsx?raw";
+import { CompoundSource as Compound } from "./compound";
+import { CustomColorSource as CustomColor } from "./custom-color";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { VariantsSource as Variants } from "./variants";
+import { WithActionSource as WithAction } from "./with-action";
+import { WithIconSource as WithIcon } from "./with-icon";
+import { WithoutIconSource as WithoutIcon } from "./without-icon";
 
 export const imports = `import { Alert } from "@pisagor/solid";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  CustomColor: custom_colorRaw,
-  CustomRecipe: custom_recipeRaw,
-  Variants: variantsRaw,
-  WithAction: with_actionRaw,
-  WithIcon: with_iconRaw,
-  WithoutIcon: without_iconRaw,
+  Compound,
+  CustomColor,
+  CustomRecipe,
+  Variants,
+  WithAction,
+  WithIcon,
+  WithoutIcon,
 } as const;

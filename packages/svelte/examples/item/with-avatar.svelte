@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./with-avatar.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Avatar, Button, Item } from "@pisagor/svelte";
 </script>

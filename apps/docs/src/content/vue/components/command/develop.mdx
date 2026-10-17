@@ -1,0 +1,134 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/command/default.ts?raw";
+import GroupsSource from "#examples/vue/command/groups.ts?raw";
+import ShortcutsSource from "#examples/vue/command/shortcuts.ts?raw";
+import WithFooterSource from "#examples/vue/command/with-footer.ts?raw";
+import ScrollableSource from "#examples/vue/command/scrollable.ts?raw";
+import ShorthandSource from "#examples/vue/command/shorthand.vue?raw";
+import WithDialogSource from "#examples/vue/command/with-dialog.ts?raw";
+import CustomRecipeSource from "#examples/vue/command/custom-recipe.ts?raw";
+
+## Import
+
+```ts
+import { Command } from "@pisagor/vue";
+```
+
+## Anatomy
+
+```vue
+<Command>
+  <Command.Input />
+  <Command.Content>
+    <Command.Empty />
+    <Command.List>
+      <Command.ItemGroup>
+        <Command.Item>
+          <Command.Shortcut />
+        </Command.Item>
+        <Command.Separator />
+      </Command.ItemGroup>
+    </Command.List>
+  </Command.Content>
+</Command>
+```
+
+## Examples
+
+### Default
+
+Open a searchable palette for actions, pages, or settings.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="command"
+  framework="vue"
+  kind="component"
+/>
+
+### Groups
+
+Group commands under labels so long palettes stay scannable.
+
+<Example
+  name="Groups"
+  code={GroupsSource}
+  exampleId="command"
+  framework="vue"
+  kind="component"
+/>
+
+### Shortcuts
+
+Show keyboard shortcuts beside commands for faster recall.
+
+<Example
+  name="Shortcuts"
+  code={ShortcutsSource}
+  exampleId="command"
+  framework="vue"
+  kind="component"
+/>
+
+### With Footer
+
+Add a footer for hints or secondary actions under the command list.
+
+<Example
+  name="WithFooter"
+  code={WithFooterSource}
+  exampleId="command"
+  framework="vue"
+  kind="component"
+/>
+
+### Scrollable
+
+Allow the command list to scroll when items exceed the panel height.
+
+<Example
+  name="Scrollable"
+  code={ScrollableSource}
+  exampleId="command"
+  framework="vue"
+  kind="component"
+/>
+
+### Shorthand
+
+Pass `items` to `Command.Shorthand` for a filtered, grouped list without composing parts.
+
+<Example
+  name="Shorthand"
+  code={ShorthandSource}
+  exampleId="command"
+  framework="vue"
+  kind="component"
+/>
+
+### With Dialog
+
+Host the palette in a dialog when it should take focus as a modal layer.
+
+<Example
+  name="WithDialog"
+  code={WithDialogSource}
+  exampleId="command"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `commandRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="command"
+  framework="vue"
+  kind="component"
+/>

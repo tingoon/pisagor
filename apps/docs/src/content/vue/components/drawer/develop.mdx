@@ -1,0 +1,121 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/drawer/default.ts?raw";
+import InsetSource from "#examples/vue/drawer/inset.ts?raw";
+import DrawerContentInnerSource from "#examples/vue/drawer/drawer-content-inner.ts?raw";
+import SnapPointsSource from "#examples/vue/drawer/snap-points.ts?raw";
+import SwipeDirectionsSource from "#examples/vue/drawer/swipe-directions.ts?raw";
+import CustomSpacingSource from "#examples/vue/drawer/custom-spacing.ts?raw";
+import CustomRecipeSource from "#examples/vue/drawer/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { Drawer } from "@pisagor/vue";
+```
+
+## Anatomy
+
+```vue
+<Drawer>
+  <Drawer.Trigger />
+  <Drawer.Content>
+    <Drawer.ContentInner>
+      <Drawer.Header />
+      <Drawer.Body />
+    </Drawer.ContentInner>
+    <Drawer.Footer>
+      <Drawer.CloseTrigger />
+    </Drawer.Footer>
+  </Drawer.Content>
+</Drawer>
+```
+
+## Examples
+
+### Default
+
+Slide a panel over the page for secondary detail or a short task.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="drawer"
+  framework="vue"
+  kind="component"
+/>
+
+### Inset
+
+Inset the drawer from the viewport edge when a floating panel look fits better.
+
+<Example
+  name="Inset"
+  code={InsetSource}
+  exampleId="drawer"
+  framework="vue"
+  kind="component"
+/>
+
+### Drawer Content Inner
+
+Structure inner content regions when the drawer needs a composed body.
+
+<Example
+  name="DrawerContentInner"
+  code={DrawerContentInnerSource}
+  exampleId="drawer"
+  framework="vue"
+  kind="component"
+/>
+
+### Snap Points
+
+Snap to partial heights when users may peek or expand the panel.
+
+<Example
+  name="SnapPoints"
+  code={SnapPointsSource}
+  exampleId="drawer"
+  framework="vue"
+  kind="component"
+/>
+
+### Swipe Directions
+
+Limit swipe dismiss directions to match the drawer placement.
+
+<Example
+  name="SwipeDirections"
+  code={SwipeDirectionsSource}
+  exampleId="drawer"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Override spacing when the default density does not match the surrounding layout.
+
+<Example
+  name="CustomSpacing"
+  code={CustomSpacingSource}
+  exampleId="drawer"
+  framework="vue"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `drawerRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="drawer"
+  framework="vue"
+  kind="component"
+/>

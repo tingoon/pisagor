@@ -1,3 +1,4 @@
+import source from "./square.tsx?raw";
 import { AspectRatio } from "@pisagor/solid";
 
 export function Square() {
@@ -9,3 +10,5 @@ export function Square() {
     </AspectRatio>
   );
 }
+
+export { source as SquareSource };

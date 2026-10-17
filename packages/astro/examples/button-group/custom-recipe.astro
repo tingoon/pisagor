@@ -8,6 +8,8 @@ const brandButtonGroupRecipe = tv({
   slots: { separator: "bg-emerald-500/60" },
   variants: {},
 });
+import source from "./custom-recipe.astro?raw";
+export { source };
 ---
 
 <ButtonGroup recipe={brandButtonGroupRecipe}>

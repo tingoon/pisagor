@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./input-channel.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { ColorPicker, Field, Input, parseColor } from "@pisagor/svelte";
 </script>

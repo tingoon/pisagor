@@ -1,3 +1,4 @@
+import source from "./download-svg.tsx?raw";
 import { DownloadIcon } from "@phosphor-icons/react";
 import { Button, DownloadTrigger } from "@pisagor/react";
 import { sampleSvg } from "./helpers";
@@ -16,3 +17,5 @@ export function DownloadSvg() {
     </DownloadTrigger>
   );
 }
+
+export { source as DownloadSvgSource };

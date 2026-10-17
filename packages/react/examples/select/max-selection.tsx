@@ -1,3 +1,4 @@
+import source from "./max-selection.tsx?raw";
 import { Select } from "@pisagor/react";
 import { useState } from "react";
 
@@ -24,3 +25,5 @@ export function MaxSelection() {
     />
   );
 }
+
+export { source as MaxSelectionSource };

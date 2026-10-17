@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./squiggle.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { useHighlight } from "@ark-ui/svelte/highlight";
 

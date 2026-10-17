@@ -1,3 +1,4 @@
+import source from "./max-with-overflow.tsx?raw";
 import { Field, TagsInput } from "@pisagor/solid";
 import { For } from "solid-js";
 
@@ -26,3 +27,5 @@ export function MaxWithOverflow() {
     </Field>
   );
 }
+
+export { source as MaxWithOverflowSource };

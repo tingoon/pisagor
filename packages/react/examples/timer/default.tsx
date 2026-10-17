@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Timer } from "@pisagor/react";
 
 export function Default() {
@@ -27,3 +28,5 @@ export function Default() {
     </Timer>
   );
 }
+
+export { source as DefaultSource };

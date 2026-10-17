@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./in-card.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Card, Skeleton } from "@pisagor/vue";
 </script>

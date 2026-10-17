@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { Calendar, Card } from "@pisagor/react";
 import { calendarRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -31,3 +32,5 @@ export function CustomRecipe() {
     </Card>
   );
 }
+
+export { source as CustomRecipeSource };

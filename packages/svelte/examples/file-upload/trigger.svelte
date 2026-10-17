@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./trigger.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, FileUpload } from "@pisagor/svelte";
   import PaperclipIcon from "phosphor-svelte/lib/PaperclipIcon";

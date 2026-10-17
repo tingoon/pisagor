@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./custom-recipe.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhGear, PhSignOut, PhUser } from "@phosphor-icons/vue";
 import { menuRecipe } from "@pisagor/recipes";

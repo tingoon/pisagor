@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./popover-with-channel-editing.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, ColorPicker, Input } from "@pisagor/svelte";
 </script>

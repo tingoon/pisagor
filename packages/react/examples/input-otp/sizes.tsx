@@ -1,3 +1,4 @@
+import source from "./sizes.tsx?raw";
 import { InputOTP } from "@pisagor/react";
 
 const sizes = ["sm", "md", "lg"] as const;
@@ -16,3 +17,5 @@ export function Sizes() {
     </div>
   );
 }
+
+export { source as SizesSource };

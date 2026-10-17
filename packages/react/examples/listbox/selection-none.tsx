@@ -1,3 +1,4 @@
+import source from "./selection-none.tsx?raw";
 import { createListCollection } from "@ark-ui/react";
 import {
   PencilSimpleIcon,
@@ -74,3 +75,5 @@ export function SelectionNone() {
     </Item.Group>
   );
 }
+
+export { source as SelectionNoneSource };

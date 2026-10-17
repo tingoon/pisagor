@@ -1,3 +1,4 @@
+import source from "./custom-size.tsx?raw";
 import { Status } from "@pisagor/react";
 
 export function CustomSize() {
@@ -9,3 +10,5 @@ export function CustomSize() {
     </div>
   );
 }
+
+export { source as CustomSizeSource };

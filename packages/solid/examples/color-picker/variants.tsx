@@ -1,3 +1,4 @@
+import source from "./variants.tsx?raw";
 import { ColorPicker, InputGroup } from "@pisagor/solid";
 export function Variants() {
   return (
@@ -41,3 +42,5 @@ export function Variants() {
     </div>
   );
 }
+
+export { source as VariantsSource };

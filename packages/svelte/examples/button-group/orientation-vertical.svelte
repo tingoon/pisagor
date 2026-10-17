@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./orientation-vertical.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, ButtonGroup } from "@pisagor/svelte";
   import MinusIcon from "phosphor-svelte/lib/MinusIcon";

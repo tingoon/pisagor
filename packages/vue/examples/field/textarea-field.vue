@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./textarea-field.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Field, Textarea } from "@pisagor/vue";
 </script>

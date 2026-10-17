@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./circle-crop.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { ImageCropper } from "@pisagor/vue";
 </script>

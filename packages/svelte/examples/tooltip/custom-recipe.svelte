@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./custom-recipe.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { tooltipRecipe } from "@pisagor/recipes";
   import { Button, Tooltip } from "@pisagor/svelte";

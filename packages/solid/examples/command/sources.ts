@@ -1,21 +1,21 @@
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import groupsRaw from "./groups.tsx?raw";
-import scrollableRaw from "./scrollable.tsx?raw";
-import shortcutsRaw from "./shortcuts.tsx?raw";
-import shorthandRaw from "./shorthand.tsx?raw";
-import with_dialogRaw from "./with-dialog.tsx?raw";
-import with_footerRaw from "./with-footer.tsx?raw";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { GroupsSource as Groups } from "./groups";
+import { ScrollableSource as Scrollable } from "./scrollable";
+import { ShortcutsSource as Shortcuts } from "./shortcuts";
+import { ShorthandSource as Shorthand } from "./shorthand";
+import { WithDialogSource as WithDialog } from "./with-dialog";
+import { WithFooterSource as WithFooter } from "./with-footer";
 
 export const imports = `import { Command } from "@pisagor/solid";`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Groups: groupsRaw,
-  Scrollable: scrollableRaw,
-  Shortcuts: shortcutsRaw,
-  Shorthand: shorthandRaw,
-  WithDialog: with_dialogRaw,
-  WithFooter: with_footerRaw,
+  CustomRecipe,
+  Default,
+  Groups,
+  Scrollable,
+  Shortcuts,
+  Shorthand,
+  WithDialog,
+  WithFooter,
 } as const;

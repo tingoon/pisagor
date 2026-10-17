@@ -1,0 +1,37 @@
+import Example from "#/components/docs/example.astro";
+import { SizesSource } from "#examples/solid/spinner/sizes.tsx";
+import { CustomRecipeSource } from "#examples/solid/spinner/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Spinner } from "@pisagor/solid";
+```
+
+## Examples
+
+### Sizes
+
+Match size to the surrounding layout — smaller in compact chrome, larger where the spinner needs emphasis.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="spinner"
+  framework="solid"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `spinnerRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="spinner"
+  framework="solid"
+  kind="component"
+/>

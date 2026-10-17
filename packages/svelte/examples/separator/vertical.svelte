@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./vertical.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Separator } from "@pisagor/svelte";
 </script>

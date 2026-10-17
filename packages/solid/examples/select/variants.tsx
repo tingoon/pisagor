@@ -1,3 +1,4 @@
+import source from "./variants.tsx?raw";
 import { Select } from "@pisagor/solid";
 
 const items = ["Apple", "Banana", "Orange"];
@@ -10,3 +11,5 @@ export function Variants() {
     </div>
   );
 }
+
+export { source as VariantsSource };

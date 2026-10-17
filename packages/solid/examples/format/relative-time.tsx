@@ -1,3 +1,4 @@
+import source from "./relative-time.tsx?raw";
 import { Format } from "@pisagor/solid";
 
 export function RelativeTime() {
@@ -10,3 +11,5 @@ export function RelativeTime() {
     </div>
   );
 }
+
+export { source as RelativeTimeSource };

@@ -1,3 +1,4 @@
+import source from "./autofill.tsx?raw";
 import { Card, Marquee } from "@pisagor/solid";
 import {
   ArrowRightIcon,
@@ -46,3 +47,5 @@ export function Autofill() {
     </Marquee.Root>
   );
 }
+
+export { source as AutofillSource };

@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Button, Dialog, Field, Input, Select } from "@pisagor/solid";
 
 export function Default() {
@@ -48,3 +49,5 @@ export function Default() {
     </Dialog>
   );
 }
+
+export { source as DefaultSource };

@@ -1,3 +1,4 @@
+import source from "./controlled.tsx?raw";
 import { Accordion } from "@pisagor/react";
 import { useState } from "react";
 import { shortFaqItems } from "./helpers";
@@ -16,3 +17,5 @@ export function Controlled() {
     </div>
   );
 }
+
+export { source as ControlledSource };

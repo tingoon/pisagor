@@ -1,3 +1,4 @@
+import source from "./reverse.tsx?raw";
 import { Card, Marquee } from "@pisagor/solid";
 import {
   ArrowRightIcon,
@@ -46,3 +47,5 @@ export function Reverse() {
     </Marquee.Root>
   );
 }
+
+export { source as ReverseSource };

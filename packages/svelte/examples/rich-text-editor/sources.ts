@@ -1,17 +1,17 @@
-import compoundRaw from "./compound.svelte?raw";
-import controlledRaw from "./controlled.svelte?raw";
-import custom_recipeRaw from "./custom-recipe.svelte?raw";
-import defaultRaw from "./default.svelte?raw";
-import disabledRaw from "./disabled.svelte?raw";
-import invalidRaw from "./invalid.svelte?raw";
+import Compound from "./compound.svelte?raw";
+import Controlled from "./controlled.svelte?raw";
+import CustomRecipe from "./custom-recipe.svelte?raw";
+import Default from "./default.svelte?raw";
+import Disabled from "./disabled.svelte?raw";
+import Invalid from "./invalid.svelte?raw";
 
 export const imports = `import { RichTextEditor } from "@pisagor/svelte/rich-text-editor";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  Invalid: invalidRaw,
+  Compound,
+  Controlled,
+  CustomRecipe,
+  Default,
+  Disabled,
+  Invalid,
 } as const;

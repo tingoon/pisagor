@@ -1,3 +1,4 @@
+import source from "./wrapping.tsx?raw";
 import { NavigationMenu } from "@pisagor/react";
 
 export function Wrapping() {
@@ -31,3 +32,5 @@ export function Wrapping() {
     </div>
   );
 }
+
+export { source as WrappingSource };

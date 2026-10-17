@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Button, Editable, Input } from "@pisagor/react";
 import { editableRecipe } from "@pisagor/recipes";
@@ -33,3 +34,5 @@ export function CustomRecipe() {
     </Editable>
   );
 }
+
+export { source as CustomRecipeSource };

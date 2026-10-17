@@ -1,11 +1,11 @@
-import articleRaw from "./article.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import with_linkRaw from "./with-link.tsx?raw";
+import { ArticleSource as Article } from "./article";
+import { DefaultSource as Default } from "./default";
+import { WithLinkSource as WithLink } from "./with-link";
 
 export const imports = `import { LinkBox } from "@pisagor/react";`;
 
 export const sources = {
-  Article: articleRaw,
-  Default: defaultRaw,
-  WithLink: with_linkRaw,
+  Article,
+  Default,
+  WithLink,
 } as const;

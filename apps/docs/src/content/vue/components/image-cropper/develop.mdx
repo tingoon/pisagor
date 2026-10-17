@@ -1,0 +1,137 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/image-cropper/default.vue?raw";
+import AspectRatioSource from "#examples/vue/image-cropper/aspect-ratio.vue?raw";
+import CircleCropSource from "#examples/vue/image-cropper/circle-crop.vue?raw";
+import FixedCropAreaSource from "#examples/vue/image-cropper/fixed-crop-area.vue?raw";
+import InitialCropSource from "#examples/vue/image-cropper/initial-crop.vue?raw";
+import MinMaxSizeSource from "#examples/vue/image-cropper/min-max-size.vue?raw";
+import ZoomLimitsSource from "#examples/vue/image-cropper/zoom-limits.vue?raw";
+import ControlledZoomSource from "#examples/vue/image-cropper/controlled-zoom.vue?raw";
+import CustomRecipeSource from "#examples/vue/image-cropper/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { ImageCropper } from "@pisagor/vue";
+```
+
+## Anatomy
+
+```vue
+<ImageCropper>
+  <ImageCropper.Image />
+  <ImageCropper.Selection />
+</ImageCropper>
+```
+
+## Examples
+
+### Default
+
+Crop and adjust an image before save or upload.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="image-cropper"
+  framework="vue"
+  kind="component"
+/>
+
+### Aspect Ratio
+
+Lock the crop to a ratio when the output shape is fixed.
+
+<Example
+  name="AspectRatio"
+  code={AspectRatioSource}
+  exampleId="image-cropper"
+  framework="vue"
+  kind="component"
+/>
+
+### Circle Crop
+
+Use a circular crop when the result is an avatar-style image.
+
+<Example
+  name="CircleCrop"
+  code={CircleCropSource}
+  exampleId="image-cropper"
+  framework="vue"
+  kind="component"
+/>
+
+### Fixed Crop Area
+
+Keep the crop area fixed when users should pan the image underneath.
+
+<Example
+  name="FixedCropArea"
+  code={FixedCropAreaSource}
+  exampleId="image-cropper"
+  framework="vue"
+  kind="component"
+/>
+
+### Initial Crop
+
+Start from a predefined crop when a sensible default exists.
+
+<Example
+  name="InitialCrop"
+  code={InitialCropSource}
+  exampleId="image-cropper"
+  framework="vue"
+  kind="component"
+/>
+
+### Min Max Size
+
+Clamp crop size so results stay within usable bounds.
+
+<Example
+  name="MinMaxSize"
+  code={MinMaxSizeSource}
+  exampleId="image-cropper"
+  framework="vue"
+  kind="component"
+/>
+
+### Zoom Limits
+
+Limit zoom so users cannot overscale the image.
+
+<Example
+  name="ZoomLimits"
+  code={ZoomLimitsSource}
+  exampleId="image-cropper"
+  framework="vue"
+  kind="component"
+/>
+
+### Controlled Zoom
+
+Drive zoom from the parent when external controls adjust scale.
+
+<Example
+  name="ControlledZoom"
+  code={ControlledZoomSource}
+  exampleId="image-cropper"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `imageCropperRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="image-cropper"
+  framework="vue"
+  kind="component"
+/>

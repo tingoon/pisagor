@@ -1,3 +1,4 @@
+import source from "./controlled-position.tsx?raw";
 import { Button, FloatingPanel } from "@pisagor/solid";
 import {
   CaretDownIcon,
@@ -99,3 +100,5 @@ export function ControlledPosition() {
     </div>
   );
 }
+
+export { source as ControlledPositionSource };

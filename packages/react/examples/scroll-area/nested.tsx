@@ -1,3 +1,4 @@
+import source from "./nested.tsx?raw";
 import { ScrollArea } from "@pisagor/react";
 
 export function Nested() {
@@ -25,3 +26,5 @@ export function Nested() {
     </ScrollArea>
   );
 }
+
+export { source as NestedSource };

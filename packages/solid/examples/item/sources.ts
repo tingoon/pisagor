@@ -1,29 +1,29 @@
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import custom_spacingRaw from "./custom-spacing.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import groupRaw from "./group.tsx?raw";
-import headerRaw from "./header.tsx?raw";
-import iconRaw from "./icon.tsx?raw";
-import imageRaw from "./image.tsx?raw";
-import linkRaw from "./link.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
-import with_avatarRaw from "./with-avatar.tsx?raw";
-import with_mediaRaw from "./with-media.tsx?raw";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { CustomSpacingSource as CustomSpacing } from "./custom-spacing";
+import { DefaultSource as Default } from "./default";
+import { GroupSource as Group } from "./group";
+import { HeaderSource as Header } from "./header";
+import { IconSource as Icon } from "./icon";
+import { ImageSource as Image } from "./image";
+import { LinkSource as Link } from "./link";
+import { SizesSource as Sizes } from "./sizes";
+import { VariantsSource as Variants } from "./variants";
+import { WithAvatarSource as WithAvatar } from "./with-avatar";
+import { WithMediaSource as WithMedia } from "./with-media";
 
 export const imports = `import { Item } from "@pisagor/solid";`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  CustomSpacing: custom_spacingRaw,
-  Default: defaultRaw,
-  Group: groupRaw,
-  Header: headerRaw,
-  Icon: iconRaw,
-  Image: imageRaw,
-  Link: linkRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
-  WithAvatar: with_avatarRaw,
-  WithMedia: with_mediaRaw,
+  CustomRecipe,
+  CustomSpacing,
+  Default,
+  Group,
+  Header,
+  Icon,
+  Image,
+  Link,
+  Sizes,
+  Variants,
+  WithAvatar,
+  WithMedia,
 } as const;

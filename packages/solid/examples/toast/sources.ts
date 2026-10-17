@@ -1,21 +1,21 @@
-import actionRaw from "./action.tsx?raw";
-import closableRaw from "./closable.tsx?raw";
-import dedupeRaw from "./dedupe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import durationRaw from "./duration.tsx?raw";
-import placementsRaw from "./placements.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
-import with_promiseRaw from "./with-promise.tsx?raw";
+import { ActionSource as Action } from "./action";
+import { ClosableSource as Closable } from "./closable";
+import { DedupeSource as Dedupe } from "./dedupe";
+import { DefaultSource as Default } from "./default";
+import { DurationSource as Duration } from "./duration";
+import { PlacementsSource as Placements } from "./placements";
+import { VariantsSource as Variants } from "./variants";
+import { WithPromiseSource as WithPromise } from "./with-promise";
 
 export const imports = `import { toast } from "@pisagor/solid";`;
 
 export const sources = {
-  Action: actionRaw,
-  Closable: closableRaw,
-  Dedupe: dedupeRaw,
-  Default: defaultRaw,
-  Duration: durationRaw,
-  Placements: placementsRaw,
-  Variants: variantsRaw,
-  WithPromise: with_promiseRaw,
+  Action,
+  Closable,
+  Dedupe,
+  Default,
+  Duration,
+  Placements,
+  Variants,
+  WithPromise,
 } as const;

@@ -20,6 +20,8 @@ const statusVariants: Record<string, BadgeVariant> = {
   inactive: "destructive",
   invited: "info",
 };
+import source from "./custom-recipe.astro?raw";
+export { source };
 ---
 
 <Table recipe={brandTableRecipe}>

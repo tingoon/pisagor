@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { selectRecipe } from "@pisagor/recipes";
 import { Select } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -22,3 +23,5 @@ export function CustomRecipe() {
     />
   );
 }
+
+export { source as CustomRecipeSource };

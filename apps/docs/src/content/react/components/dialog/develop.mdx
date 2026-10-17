@@ -1,0 +1,143 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/dialog/default.tsx";
+import { ScrollAreaSource } from "#examples/react/dialog/scroll-area.tsx";
+import { NoCloseButtonSource } from "#examples/react/dialog/no-close-button.tsx";
+import { NestedSource } from "#examples/react/dialog/nested.tsx";
+import { CompoundSource } from "#examples/react/dialog/compound.tsx";
+import { NonModalSource } from "#examples/react/dialog/non-modal.tsx";
+import { InitialFocusSource } from "#examples/react/dialog/initial-focus.tsx";
+import { CloseBehaviorSource } from "#examples/react/dialog/close-behavior.tsx";
+import { CustomSpacingSource } from "#examples/react/dialog/custom-spacing.tsx";
+import { CustomRecipeSource } from "#examples/react/dialog/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Dialog } from "@pisagor/react";
+```
+
+## Examples
+
+### Default
+
+The centered modal for a short task or decision above the page.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="dialog"
+  framework="react"
+  kind="component"
+/>
+
+### Scroll Area
+
+Constrain tall content in a scroll region so the dialog chrome stays on screen.
+
+<Example
+  name="ScrollArea"
+  code={ScrollAreaSource}
+  exampleId="dialog"
+  framework="react"
+  kind="component"
+/>
+
+### No Close Button
+
+Hide the close button when dismiss should go through an explicit action instead.
+
+<Example
+  name="NoCloseButton"
+  code={NoCloseButtonSource}
+  exampleId="dialog"
+  framework="react"
+  kind="component"
+/>
+
+### Nested
+
+Nest another dialog when hierarchy or layered structure is part of the content.
+
+<Example
+  name="Nested"
+  code={NestedSource}
+  exampleId="dialog"
+  framework="react"
+  kind="component"
+/>
+
+### Compound
+
+Build the dialog from parts when the shorthand props are not enough.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="dialog"
+  framework="react"
+  kind="component"
+/>
+
+### Non Modal
+
+Keep the page behind interactive when the dialog should not trap the entire experience.
+
+<Example
+  name="NonModal"
+  code={NonModalSource}
+  exampleId="dialog"
+  framework="react"
+  kind="component"
+/>
+
+### Initial Focus
+
+Move focus to a specific control when the dialog opens so keyboard users land in the right place.
+
+<Example
+  name="InitialFocus"
+  code={InitialFocusSource}
+  exampleId="dialog"
+  framework="react"
+  kind="component"
+/>
+
+### Close Behavior
+
+Control how dismiss works — outside click, escape, or explicit close — to match the flow.
+
+<Example
+  name="CloseBehavior"
+  code={CloseBehaviorSource}
+  exampleId="dialog"
+  framework="react"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Override spacing when the default density does not match the surrounding layout.
+
+<Example
+  name="CustomSpacing"
+  code={CustomSpacingSource}
+  exampleId="dialog"
+  framework="react"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `dialogRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="dialog"
+  framework="react"
+  kind="component"
+/>

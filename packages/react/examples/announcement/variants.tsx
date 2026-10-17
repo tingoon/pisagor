@@ -1,3 +1,4 @@
+import source from "./variants.tsx?raw";
 import { CheckCircleIcon, WarningIcon } from "@phosphor-icons/react";
 import { Announcement, Badge } from "@pisagor/react";
 export function Variants() {
@@ -38,3 +39,5 @@ export function Variants() {
     </div>
   );
 }
+
+export { source as VariantsSource };

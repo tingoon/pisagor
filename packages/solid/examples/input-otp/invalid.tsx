@@ -1,3 +1,4 @@
+import source from "./invalid.tsx?raw";
 import { InputOTP } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Invalid() {
@@ -14,3 +15,5 @@ export function Invalid() {
     </InputOTP>
   );
 }
+
+export { source as InvalidSource };

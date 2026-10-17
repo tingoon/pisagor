@@ -1,3 +1,4 @@
+import source from "./swipe-directions.tsx?raw";
 import { Button, Drawer } from "@pisagor/react";
 export function SwipeDirections() {
   return (
@@ -57,3 +58,5 @@ export function SwipeDirections() {
     </div>
   );
 }
+
+export { source as SwipeDirectionsSource };

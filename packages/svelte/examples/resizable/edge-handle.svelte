@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./edge-handle.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Resizable } from "@pisagor/svelte";
 

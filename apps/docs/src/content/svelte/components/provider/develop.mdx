@@ -1,0 +1,35 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/provider/default.svelte?raw";
+import MessagesSource from "#examples/svelte/provider/messages.svelte?raw";
+
+## Import
+
+```ts
+import { Provider } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Default
+
+Wrap the app once so locale, icons, and toasts are shared by child components.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="provider"
+  framework="svelte"
+  kind="component"
+/>
+
+### Translations
+
+Override built-in labels (aria labels, empty states, button text) by key. Every key has an English default in `defaultMessages` from `@pisagor/utils`; the `translations` you pass are merged over it, so a partial object is enough. Keys are typed as `MessageKey`, so they autocomplete.
+
+<Example
+  name="Messages"
+  code={MessagesSource}
+  exampleId="provider"
+  framework="svelte"
+  kind="component"
+/>

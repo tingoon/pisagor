@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./with-keyboard-shortcut.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { InputGroup, Kbd } from "@pisagor/svelte";
 </script>

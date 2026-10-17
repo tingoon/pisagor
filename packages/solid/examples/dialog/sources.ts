@@ -1,25 +1,25 @@
-import close_behaviorRaw from "./close-behavior.tsx?raw";
-import compoundRaw from "./compound.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import custom_spacingRaw from "./custom-spacing.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import initial_focusRaw from "./initial-focus.tsx?raw";
-import nestedRaw from "./nested.tsx?raw";
-import no_close_buttonRaw from "./no-close-button.tsx?raw";
-import non_modalRaw from "./non-modal.tsx?raw";
-import scroll_areaRaw from "./scroll-area.tsx?raw";
+import { CloseBehaviorSource as CloseBehavior } from "./close-behavior";
+import { CompoundSource as Compound } from "./compound";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { CustomSpacingSource as CustomSpacing } from "./custom-spacing";
+import { DefaultSource as Default } from "./default";
+import { InitialFocusSource as InitialFocus } from "./initial-focus";
+import { NestedSource as Nested } from "./nested";
+import { NoCloseButtonSource as NoCloseButton } from "./no-close-button";
+import { NonModalSource as NonModal } from "./non-modal";
+import { ScrollAreaSource as ScrollArea } from "./scroll-area";
 
 export const imports = `import { Dialog } from "@pisagor/solid";`;
 
 export const sources = {
-  CloseBehavior: close_behaviorRaw,
-  Compound: compoundRaw,
-  CustomRecipe: custom_recipeRaw,
-  CustomSpacing: custom_spacingRaw,
-  Default: defaultRaw,
-  InitialFocus: initial_focusRaw,
-  Nested: nestedRaw,
-  NoCloseButton: no_close_buttonRaw,
-  NonModal: non_modalRaw,
-  ScrollArea: scroll_areaRaw,
+  CloseBehavior,
+  Compound,
+  CustomRecipe,
+  CustomSpacing,
+  Default,
+  InitialFocus,
+  Nested,
+  NoCloseButton,
+  NonModal,
+  ScrollArea,
 } as const;

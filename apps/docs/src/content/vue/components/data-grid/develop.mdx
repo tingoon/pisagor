@@ -1,0 +1,282 @@
+import Example from "#/components/docs/example.astro";
+import StripedVariantSource from "#examples/vue/data-grid/striped-variant.vue?raw";
+import ActiveFilterChipsSource from "#examples/vue/data-grid/active-filter-chips.vue?raw";
+import ColumnFiltersSource from "#examples/vue/data-grid/column-filters.vue?raw";
+import ColumnLayoutSource from "#examples/vue/data-grid/column-layout.vue?raw";
+import ColumnPinningSource from "#examples/vue/data-grid/column-pinning.vue?raw";
+import ColumnResizeSource from "#examples/vue/data-grid/column-resize.vue?raw";
+import ColumnVisibilitySource from "#examples/vue/data-grid/column-visibility.vue?raw";
+import ExpandingRowsSource from "#examples/vue/data-grid/expanding-rows.vue?raw";
+import GlobalSelectionSource from "#examples/vue/data-grid/global-selection.vue?raw";
+import GroupedRowsSource from "#examples/vue/data-grid/grouped-rows.vue?raw";
+import ManualPaginationSource from "#examples/vue/data-grid/manual-pagination.vue?raw";
+import MultiGroupingSource from "#examples/vue/data-grid/multi-grouping.vue?raw";
+import OrdersWithFooterSource from "#examples/vue/data-grid/orders-with-footer.vue?raw";
+import PaginatedSource from "#examples/vue/data-grid/paginated.vue?raw";
+import RichCellsSource from "#examples/vue/data-grid/rich-cells.vue?raw";
+import RowDetailsSource from "#examples/vue/data-grid/row-details.vue?raw";
+import RowSelectionSource from "#examples/vue/data-grid/row-selection.vue?raw";
+import SortingSource from "#examples/vue/data-grid/sorting.vue?raw";
+import VirtualizedSource from "#examples/vue/data-grid/virtualized.vue?raw";
+import WithSortableDataSource from "#examples/vue/data-grid/with-sortable-data.vue?raw";
+import LoadingStateSource from "#examples/vue/data-grid/loading-state.vue?raw";
+
+## Import
+
+```ts
+import { DataGrid } from "@pisagor/vue/data-grid";
+```
+
+## Examples
+
+### Striped Variant
+
+Alternate row backgrounds to improve scanning in dense grids.
+
+<Example
+  name="StripedVariant"
+  code={StripedVariantSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### Active Filter Chips
+
+Show active filters as chips so users can remove them quickly.
+
+<Example
+  name="ActiveFilterChips"
+  code={ActiveFilterChipsSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### Column Filters
+
+Filter per column when users narrow by field.
+
+<Example
+  name="ColumnFilters"
+  code={ColumnFiltersSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### Column Layout
+
+Arrange column structure for the dataset's shape.
+
+<Example
+  name="ColumnLayout"
+  code={ColumnLayoutSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### Column Pinning
+
+Pin columns so key fields stay visible while scrolling horizontally.
+
+<Example
+  name="ColumnPinning"
+  code={ColumnPinningSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### Column Resize
+
+Drag column edges when users need wider or narrower fields.
+
+<Example
+  name="ColumnResize"
+  code={ColumnResizeSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### Column Visibility
+
+Let users show or hide columns to focus the grid.
+
+<Example
+  name="ColumnVisibility"
+  code={ColumnVisibilitySource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### Expanding Rows
+
+Expand a row to reveal nested detail without leaving the grid.
+
+<Example
+  name="ExpandingRows"
+  code={ExpandingRowsSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### Global Selection
+
+Select across the dataset when bulk actions apply beyond one page.
+
+<Example
+  name="GlobalSelection"
+  code={GlobalSelectionSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### Grouped Rows
+
+Group rows by a field when hierarchy helps scanning.
+
+<Example
+  name="GroupedRows"
+  code={GroupedRowsSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### Manual Pagination
+
+Page on the server when the full dataset cannot load at once.
+
+<Example
+  name="ManualPagination"
+  code={ManualPaginationSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### Multi Grouping
+
+Group by more than one field for deeper summaries.
+
+<Example
+  name="MultiGrouping"
+  code={MultiGroupingSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### Orders With Footer
+
+Show order rows with a footer summary when totals belong with the grid.
+
+<Example
+  name="OrdersWithFooter"
+  code={OrdersWithFooterSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### Paginated
+
+Page through rows when the dataset should load in chunks.
+
+<Example
+  name="Paginated"
+  code={PaginatedSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### Rich Cells
+
+Render richer cell content when plain text is not enough.
+
+<Example
+  name="RichCells"
+  code={RichCellsSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### Row Details
+
+Expand a row to reveal detail without leaving the grid.
+
+<Example
+  name="RowDetails"
+  code={RowDetailsSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### Row Selection
+
+Select rows for bulk actions.
+
+<Example
+  name="RowSelection"
+  code={RowSelectionSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### Sorting
+
+Sort by column so users can reorder records.
+
+<Example
+  name="Sorting"
+  code={SortingSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### Virtualized
+
+Virtualize rows for very large datasets.
+
+<Example
+  name="Virtualized"
+  code={VirtualizedSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### With Sortable Data
+
+Enable sortable columns when users need to reorder records by field.
+
+<Example
+  name="WithSortableData"
+  code={WithSortableDataSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>
+
+### Loading State
+
+Show loading while rows are fetching so the grid does not look empty by mistake.
+
+<Example
+  name="LoadingState"
+  code={LoadingStateSource}
+  exampleId="data-grid"
+  framework="vue"
+  kind="component"
+/>

@@ -1,3 +1,4 @@
+import source from "./swatch-picker-disabled.tsx?raw";
 import { ColorPicker } from "@pisagor/solid";
 
 export function SwatchPickerDisabled() {
@@ -16,3 +17,5 @@ export function SwatchPickerDisabled() {
     </ColorPicker>
   );
 }
+
+export { source as SwatchPickerDisabledSource };

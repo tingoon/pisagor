@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { ActionBar, Button } from "@pisagor/solid";
 
 export function Default() {
@@ -23,3 +24,5 @@ export function Default() {
     </ActionBar>
   );
 }
+
+export { source as DefaultSource };

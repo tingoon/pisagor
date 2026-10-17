@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { ColorPicker } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -13,3 +14,5 @@ export function CustomRecipe() {
     <ColorPicker.Field defaultValue="#3b82f6" recipe={brandColorPickerRecipe} />
   );
 }
+
+export { source as CustomRecipeSource };

@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import {
   BellIcon,
   HouseIcon,
@@ -42,3 +43,5 @@ export function Default() {
     </div>
   );
 }
+
+export { source as DefaultSource };

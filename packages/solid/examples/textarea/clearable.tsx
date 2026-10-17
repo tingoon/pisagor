@@ -1,3 +1,4 @@
+import source from "./clearable.tsx?raw";
 import { Textarea } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 
@@ -13,3 +14,5 @@ export function Clearable() {
     />
   );
 }
+
+export { source as ClearableSource };

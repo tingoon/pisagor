@@ -1,3 +1,4 @@
+import source from "./combobox-field.tsx?raw";
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Combobox, Field } from "@pisagor/solid";
@@ -47,3 +48,5 @@ export function ComboboxField() {
     </Field>
   );
 }
+
+export { source as ComboboxFieldSource };

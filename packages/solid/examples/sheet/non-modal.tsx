@@ -1,3 +1,4 @@
+import source from "./non-modal.tsx?raw";
 import { Button, Sheet } from "@pisagor/solid";
 export function NonModal() {
   return (
@@ -36,3 +37,5 @@ export function NonModal() {
     </Sheet>
   );
 }
+
+export { source as NonModalSource };

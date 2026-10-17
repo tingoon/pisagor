@@ -1,19 +1,19 @@
-import controlledRaw from "./controlled.svelte?raw";
-import custom_recipeRaw from "./custom-recipe.svelte?raw";
-import defaultRaw from "./default.svelte?raw";
-import disabledRaw from "./disabled.svelte?raw";
-import placementsRaw from "./placements.svelte?raw";
-import triggers_delaysRaw from "./triggers-delays.svelte?raw";
-import without_arrowRaw from "./without-arrow.svelte?raw";
+import Controlled from "./controlled.svelte?raw";
+import CustomRecipe from "./custom-recipe.svelte?raw";
+import Default from "./default.svelte?raw";
+import Disabled from "./disabled.svelte?raw";
+import Placements from "./placements.svelte?raw";
+import TriggersDelays from "./triggers-delays.svelte?raw";
+import WithoutArrow from "./without-arrow.svelte?raw";
 
 export const imports = `import { HoverCard } from "@pisagor/svelte";`;
 
 export const sources = {
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  Placements: placementsRaw,
-  TriggersDelays: triggers_delaysRaw,
-  WithoutArrow: without_arrowRaw,
+  Controlled,
+  CustomRecipe,
+  Default,
+  Disabled,
+  Placements,
+  TriggersDelays,
+  WithoutArrow,
 } as const;

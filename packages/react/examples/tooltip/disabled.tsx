@@ -1,3 +1,4 @@
+import source from "./disabled.tsx?raw";
 import { Button, Tooltip } from "@pisagor/react";
 export function Disabled() {
   return (
@@ -14,3 +15,5 @@ export function Disabled() {
     </Tooltip>
   );
 }
+
+export { source as DisabledSource };

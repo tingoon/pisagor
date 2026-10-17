@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./custom-recipe.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { listboxRecipe } from "@pisagor/recipes";
   import { Listbox } from "@pisagor/svelte";

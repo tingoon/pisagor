@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./readonly.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Rating } from "@pisagor/vue";
 </script>

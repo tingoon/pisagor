@@ -1,0 +1,76 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid/bottom-navigation/default.tsx";
+import { IconOnlySource } from "#examples/solid/bottom-navigation/icon-only.tsx";
+import { WithLinksSource } from "#examples/solid/bottom-navigation/with-links.tsx";
+import { CustomRecipeSource } from "#examples/solid/bottom-navigation/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { BottomNavigation } from "@pisagor/solid";
+```
+
+## Anatomy
+
+```tsx
+<BottomNavigation>
+  <BottomNavigation.List>
+    <BottomNavigation.Item>
+      <BottomNavigation.ItemIcon />
+      <BottomNavigation.ItemLabel />
+    </BottomNavigation.Item>
+  </BottomNavigation.List>
+</BottomNavigation>
+```
+
+## Examples
+
+### Default
+
+Fixed bottom destinations for primary mobile sections.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="bottom-navigation"
+  framework="solid"
+  kind="component"
+/>
+
+### Icon Only
+
+Use icons alone when labels would crowd a narrow bar. Provide accessible names.
+
+<Example
+  name="IconOnly"
+  code={IconOnlySource}
+  exampleId="bottom-navigation"
+  framework="solid"
+  kind="component"
+/>
+
+### As child
+
+Render destinations as links when each item navigates to a route.
+
+<Example
+  name="WithLinks"
+  code={WithLinksSource}
+  exampleId="bottom-navigation"
+  framework="solid"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `bottomNavigationRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="bottom-navigation"
+  framework="solid"
+  kind="component"
+/>

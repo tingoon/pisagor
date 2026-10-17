@@ -1,3 +1,4 @@
+import source from "./input-with-popover.tsx?raw";
 import { ColorPicker, InputGroup } from "@pisagor/solid";
 export function InputWithPopover() {
   return (
@@ -27,3 +28,5 @@ export function InputWithPopover() {
     </ColorPicker>
   );
 }
+
+export { source as InputWithPopoverSource };

@@ -1,0 +1,102 @@
+import Example from "#/components/docs/example.astro";
+import { VariantsSource } from "#examples/solid/toggle/variants.tsx";
+import { SizesSource } from "#examples/solid/toggle/sizes.tsx";
+import { WithIconSource } from "#examples/solid/toggle/with-icon.tsx";
+import { IconGroupSource } from "#examples/solid/toggle/icon-group.tsx";
+import { ControlledSource } from "#examples/solid/toggle/controlled.tsx";
+import { DisabledSource } from "#examples/solid/toggle/disabled.tsx";
+import { CustomRecipeSource } from "#examples/solid/toggle/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Toggle } from "@pisagor/solid";
+```
+
+## Examples
+
+### Variants
+
+Choose emphasis to match surrounding controls.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="toggle"
+  framework="solid"
+  kind="component"
+/>
+
+### Sizes
+
+Match size to toolbar density.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="toggle"
+  framework="solid"
+  kind="component"
+/>
+
+### With Icon
+
+Pair an icon with the label to reinforce meaning.
+
+<Example
+  name="WithIcon"
+  code={WithIconSource}
+  exampleId="toggle"
+  framework="solid"
+  kind="component"
+/>
+
+### Icon Group
+
+Group icon toggles when several binary options sit together.
+
+<Example
+  name="IconGroup"
+  code={IconGroupSource}
+  exampleId="toggle"
+  framework="solid"
+  kind="component"
+/>
+
+### Controlled
+
+Drive pressed state from the parent.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="toggle"
+  framework="solid"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the toggle is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="toggle"
+  framework="solid"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `toggleRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="toggle"
+  framework="solid"
+  kind="component"
+/>

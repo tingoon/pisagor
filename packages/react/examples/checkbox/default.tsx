@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Checkbox, Field } from "@pisagor/react";
 export function Default() {
   return (
@@ -7,3 +8,5 @@ export function Default() {
     </Field>
   );
 }
+
+export { source as DefaultSource };

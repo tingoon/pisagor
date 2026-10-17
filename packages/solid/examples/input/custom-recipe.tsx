@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { inputRecipe } from "@pisagor/recipes";
 import { Input } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -13,3 +14,5 @@ const brandInputRecipe = tv({
 export function CustomRecipe() {
   return <Input clearable defaultValue="Pisagor" recipe={brandInputRecipe} />;
 }
+
+export { source as CustomRecipeSource };

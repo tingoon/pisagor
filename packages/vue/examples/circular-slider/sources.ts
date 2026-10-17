@@ -1,25 +1,25 @@
-import controlledRaw from "./controlled.vue?raw";
-import custom_markersRaw from "./custom-markers.vue?raw";
-import custom_recipeRaw from "./custom-recipe.vue?raw";
-import defaultRaw from "./default.vue?raw";
-import disabledRaw from "./disabled.vue?raw";
-import sizesRaw from "./sizes.vue?raw";
-import stepRaw from "./step.vue?raw";
-import thicknessRaw from "./thickness.vue?raw";
-import with_markersRaw from "./with-markers.vue?raw";
-import with_valueRaw from "./with-value.vue?raw";
+import Controlled from "./controlled.vue?raw";
+import CustomMarkers from "./custom-markers.vue?raw";
+import CustomRecipe from "./custom-recipe.vue?raw";
+import Default from "./default.vue?raw";
+import Disabled from "./disabled.vue?raw";
+import Sizes from "./sizes.vue?raw";
+import Step from "./step.vue?raw";
+import Thickness from "./thickness.vue?raw";
+import WithMarkers from "./with-markers.vue?raw";
+import WithValue from "./with-value.vue?raw";
 
 export const imports = `import { CircularSlider } from "@pisagor/vue";`;
 
 export const sources = {
-  Controlled: controlledRaw,
-  CustomMarkers: custom_markersRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  Sizes: sizesRaw,
-  Step: stepRaw,
-  Thickness: thicknessRaw,
-  WithMarkers: with_markersRaw,
-  WithValue: with_valueRaw,
+  Controlled,
+  CustomMarkers,
+  CustomRecipe,
+  Default,
+  Disabled,
+  Sizes,
+  Step,
+  Thickness,
+  WithMarkers,
+  WithValue,
 } as const;

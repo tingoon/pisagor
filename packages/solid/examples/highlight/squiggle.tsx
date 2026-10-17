@@ -1,3 +1,4 @@
+import source from "./squiggle.tsx?raw";
 import { useHighlight } from "@ark-ui/solid/highlight";
 import { For, Show } from "solid-js";
 
@@ -32,3 +33,5 @@ export function Squiggle() {
     </p>
   );
 }
+
+export { source as SquiggleSource };

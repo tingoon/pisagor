@@ -1,3 +1,4 @@
+import source from "./with-popover.ts?raw";
 import { useListCollection } from "@ark-ui/vue/collection";
 import { useFilter } from "@ark-ui/vue/locale";
 import { PhCaretUpDown } from "@phosphor-icons/vue";
@@ -101,3 +102,5 @@ export default defineComponent({
       );
   },
 });
+
+export { source };

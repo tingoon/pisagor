@@ -1,11 +1,11 @@
-import articleRaw from "./article.vue?raw";
-import defaultRaw from "./default.vue?raw";
-import with_linkRaw from "./with-link.vue?raw";
+import Article from "./article.vue?raw";
+import Default from "./default.vue?raw";
+import WithLink from "./with-link.vue?raw";
 
 export const imports = `import { LinkBox } from "@pisagor/vue";`;
 
 export const sources = {
-  Article: articleRaw,
-  Default: defaultRaw,
-  WithLink: with_linkRaw,
+  Article,
+  Default,
+  WithLink,
 } as const;

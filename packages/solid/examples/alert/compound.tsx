@@ -1,3 +1,4 @@
+import source from "./compound.tsx?raw";
 import { Alert, Button } from "@pisagor/solid";
 import { ChecksIcon } from "@pisagor/solid/icons";
 export function Compound() {
@@ -14,3 +15,5 @@ export function Compound() {
     </Alert.Root>
   );
 }
+
+export { source as CompoundSource };

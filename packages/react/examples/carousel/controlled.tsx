@@ -1,3 +1,4 @@
+import source from "./controlled.tsx?raw";
 import { Carousel } from "@pisagor/react";
 import { useState } from "react";
 import { numberedSlides } from "./helpers";
@@ -19,3 +20,5 @@ export function Controlled() {
     </div>
   );
 }
+
+export { source as ControlledSource };

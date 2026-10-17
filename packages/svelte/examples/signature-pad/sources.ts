@@ -1,19 +1,19 @@
-import compoundRaw from "./compound.svelte?raw";
-import controlledRaw from "./controlled.svelte?raw";
-import custom_recipeRaw from "./custom-recipe.svelte?raw";
-import defaultRaw from "./default.svelte?raw";
-import disabledRaw from "./disabled.svelte?raw";
-import image_previewRaw from "./image-preview.svelte?raw";
-import invalidRaw from "./invalid.svelte?raw";
+import Compound from "./compound.svelte?raw";
+import Controlled from "./controlled.svelte?raw";
+import CustomRecipe from "./custom-recipe.svelte?raw";
+import Default from "./default.svelte?raw";
+import Disabled from "./disabled.svelte?raw";
+import ImagePreview from "./image-preview.svelte?raw";
+import Invalid from "./invalid.svelte?raw";
 
 export const imports = `import { SignaturePad } from "@pisagor/svelte";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  ImagePreview: image_previewRaw,
-  Invalid: invalidRaw,
+  Compound,
+  Controlled,
+  CustomRecipe,
+  Default,
+  Disabled,
+  ImagePreview,
+  Invalid,
 } as const;

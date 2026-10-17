@@ -1,3 +1,4 @@
+import source from "./list.tsx?raw";
 import { Separator } from "@pisagor/react";
 
 export function List() {
@@ -20,3 +21,5 @@ export function List() {
     </div>
   );
 }
+
+export { source as ListSource };

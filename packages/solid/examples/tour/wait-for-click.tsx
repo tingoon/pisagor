@@ -1,3 +1,4 @@
+import source from "./wait-for-click.tsx?raw";
 import { waitForEvent } from "@ark-ui/solid/tour";
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour } from "@pisagor/solid";
@@ -91,3 +92,5 @@ export function WaitForClick() {
     </div>
   );
 }
+
+export { source as WaitForClickSource };

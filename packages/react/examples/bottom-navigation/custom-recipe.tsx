@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import {
   BellIcon,
   HouseIcon,
@@ -51,3 +52,5 @@ export function CustomRecipe() {
     </div>
   );
 }
+
+export { source as CustomRecipeSource };

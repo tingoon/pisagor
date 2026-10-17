@@ -1,3 +1,4 @@
+import source from "./radio-group-field.tsx?raw";
 import { Field, RadioGroup } from "@pisagor/react";
 export function RadioGroupField() {
   return (
@@ -20,3 +21,5 @@ export function RadioGroupField() {
     </Field.Set>
   );
 }
+
+export { source as RadioGroupFieldSource };

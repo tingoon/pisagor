@@ -1,3 +1,4 @@
+import source from "./input.tsx?raw";
 import { Calendar, DatePicker } from "@pisagor/react";
 export function Input() {
   return (
@@ -18,3 +19,5 @@ export function Input() {
     </DatePicker>
   );
 }
+
+export { source as InputSource };

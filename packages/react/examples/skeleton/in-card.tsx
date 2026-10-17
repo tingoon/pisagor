@@ -1,3 +1,4 @@
+import source from "./in-card.tsx?raw";
 import { Card, Skeleton } from "@pisagor/react";
 export function InCard() {
   return (
@@ -16,3 +17,5 @@ export function InCard() {
     </Card>
   );
 }
+
+export { source as InCardSource };

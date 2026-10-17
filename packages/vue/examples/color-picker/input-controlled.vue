@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./input-controlled.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { ColorPicker, Input, parseColor } from "@pisagor/vue";
 import { computed, ref } from "vue";

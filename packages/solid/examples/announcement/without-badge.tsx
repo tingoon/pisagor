@@ -1,3 +1,4 @@
+import source from "./without-badge.tsx?raw";
 import { Announcement } from "@pisagor/solid";
 import { ArrowUpRightIcon } from "@pisagor/solid/icons";
 
@@ -13,3 +14,5 @@ export function WithoutBadge() {
     />
   );
 }
+
+export { source as WithoutBadgeSource };

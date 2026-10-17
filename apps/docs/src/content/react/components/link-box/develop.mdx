@@ -1,0 +1,56 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/link-box/default.tsx";
+import { ArticleSource } from "#examples/react/link-box/article.tsx";
+import { WithLinkSource } from "#examples/react/link-box/with-link.tsx";
+
+## Import
+
+```tsx
+import { LinkBox } from "@pisagor/react";
+```
+
+## Anatomy
+
+```tsx
+<LinkBox>
+  <LinkBox.Overlay />
+</LinkBox>
+```
+
+## Examples
+
+### Default
+
+Make the whole surface clickable while nested controls stay usable.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="link-box"
+  framework="react"
+  kind="component"
+/>
+
+### Article
+
+Wrap article-style content so the card navigates as one destination.
+
+<Example
+  name="Article"
+  code={ArticleSource}
+  exampleId="link-box"
+  framework="react"
+  kind="component"
+/>
+
+### With Link
+
+Render the link box as or with a link when the control should navigate.
+
+<Example
+  name="WithLink"
+  code={WithLinkSource}
+  exampleId="link-box"
+  framework="react"
+  kind="component"
+/>

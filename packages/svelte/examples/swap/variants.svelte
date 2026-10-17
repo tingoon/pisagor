@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./variants.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, Swap } from "@pisagor/svelte";
   import MoonIcon from "phosphor-svelte/lib/MoonIcon";

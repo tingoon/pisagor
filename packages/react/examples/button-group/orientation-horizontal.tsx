@@ -1,3 +1,4 @@
+import source from "./orientation-horizontal.tsx?raw";
 import { PlayIcon, SkipBackIcon, SkipForwardIcon } from "@phosphor-icons/react";
 import { Button, ButtonGroup } from "@pisagor/react";
 export function OrientationHorizontal() {
@@ -15,3 +16,5 @@ export function OrientationHorizontal() {
     </ButtonGroup>
   );
 }
+
+export { source as OrientationHorizontalSource };

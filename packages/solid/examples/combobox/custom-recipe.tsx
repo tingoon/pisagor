@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { comboboxRecipe } from "@pisagor/recipes";
 import { Combobox } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -24,3 +25,5 @@ export function CustomRecipe() {
     />
   );
 }
+
+export { source as CustomRecipeSource };

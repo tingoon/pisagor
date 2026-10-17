@@ -1,3 +1,4 @@
+import source from "./invalid.tsx?raw";
 import { Field, Input } from "@pisagor/react";
 
 export function Invalid() {
@@ -7,3 +8,5 @@ export function Invalid() {
     </Field>
   );
 }
+
+export { source as InvalidSource };

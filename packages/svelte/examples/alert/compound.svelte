@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./compound.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Alert, Button } from "@pisagor/svelte";
   import ChecksIcon from "phosphor-svelte/lib/ChecksIcon";

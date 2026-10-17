@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./custom-popup.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhoneInput } from "@pisagor/vue/phone-input";
 

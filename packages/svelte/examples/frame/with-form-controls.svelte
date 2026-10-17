@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./with-form-controls.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Field, Frame, Input, Switch } from "@pisagor/svelte";
 </script>

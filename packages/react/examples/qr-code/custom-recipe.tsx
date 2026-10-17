@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { QrCode } from "@pisagor/react";
 import { qrCodeRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -14,3 +15,5 @@ const brandQrCodeRecipe = tv({
 export function CustomRecipe() {
   return <QrCode recipe={brandQrCodeRecipe} value="https://example.com" />;
 }
+
+export { source as CustomRecipeSource };

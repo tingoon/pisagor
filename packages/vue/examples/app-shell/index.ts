@@ -1,7 +1,6 @@
 export { default as Banner } from "./banner";
 export { default as Content } from "./content";
 export { default as Default } from "./default";
-export { default as DisableHotkey } from "./disable-hotkey.vue";
 export { default as Header } from "./header";
 export { default as Inspectors } from "./inspectors";
 export { default as Main } from "./main";

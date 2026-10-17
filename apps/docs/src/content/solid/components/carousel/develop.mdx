@@ -1,0 +1,193 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid/carousel/default.tsx";
+import { OrientationHorizontalSource } from "#examples/solid/carousel/orientation-horizontal.tsx";
+import { OrientationVerticalSource } from "#examples/solid/carousel/orientation-vertical.tsx";
+import { SpacingSource } from "#examples/solid/carousel/spacing.tsx";
+import { SlidesPerPageSource } from "#examples/solid/carousel/slides-per-page.tsx";
+import { ThumbnailIndicatorSource } from "#examples/solid/carousel/thumbnail-indicator.tsx";
+import { ThumbnailIndicatorVerticalSource } from "#examples/solid/carousel/thumbnail-indicator-vertical.tsx";
+import { CompoundSource } from "#examples/solid/carousel/compound.tsx";
+import { ControlledSource } from "#examples/solid/carousel/controlled.tsx";
+import { AutoplaySource } from "#examples/solid/carousel/autoplay.tsx";
+import { AutoplayControlsSource } from "#examples/solid/carousel/autoplay-controls.tsx";
+import { LoopSource } from "#examples/solid/carousel/loop.tsx";
+import { MouseDragSource } from "#examples/solid/carousel/mouse-drag.tsx";
+import { CustomRecipeSource } from "#examples/solid/carousel/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Carousel } from "@pisagor/solid";
+```
+
+## Examples
+
+### Default
+
+Step through slides with previous and next controls.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="carousel"
+  framework="solid"
+  kind="component"
+/>
+
+### Orientation Horizontal
+
+Scroll slides left to right for the common carousel pattern.
+
+<Example
+  name="OrientationHorizontal"
+  code={OrientationHorizontalSource}
+  exampleId="carousel"
+  framework="solid"
+  kind="component"
+/>
+
+### Orientation Vertical
+
+Scroll slides top to bottom when vertical paging fits the layout.
+
+<Example
+  name="OrientationVertical"
+  code={OrientationVerticalSource}
+  exampleId="carousel"
+  framework="solid"
+  kind="component"
+/>
+
+### Spacing
+
+Adjust gaps between slides to match density.
+
+<Example
+  name="Spacing"
+  code={SpacingSource}
+  exampleId="carousel"
+  framework="solid"
+  kind="component"
+/>
+
+### Slides Per Page
+
+Show more than one slide at a time when comparison matters.
+
+<Example
+  name="SlidesPerPage"
+  code={SlidesPerPageSource}
+  exampleId="carousel"
+  framework="solid"
+  kind="component"
+/>
+
+### Thumbnail Indicator
+
+Use thumbnails so users can jump to a specific slide.
+
+<Example
+  name="ThumbnailIndicator"
+  code={ThumbnailIndicatorSource}
+  exampleId="carousel"
+  framework="solid"
+  kind="component"
+/>
+
+### Thumbnail Indicator Vertical
+
+Stack thumbnails vertically beside the main slide.
+
+<Example
+  name="ThumbnailIndicatorVertical"
+  code={ThumbnailIndicatorVerticalSource}
+  exampleId="carousel"
+  framework="solid"
+  kind="component"
+/>
+
+### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="carousel"
+  framework="solid"
+  kind="component"
+/>
+
+### Controlled
+
+Drive the active slide from the parent when other UI depends on it.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="carousel"
+  framework="solid"
+  kind="component"
+/>
+
+### Autoplay
+
+Advance slides automatically when the carousel is ambient, not critical reading.
+
+<Example
+  name="Autoplay"
+  code={AutoplaySource}
+  exampleId="carousel"
+  framework="solid"
+  kind="component"
+/>
+
+### Autoplay Controls
+
+Use `Carousel.AutoplayTrigger` to pause or resume autoplay and `Carousel.ProgressText` to show the current page.
+
+<Example
+  name="AutoplayControls"
+  code={AutoplayControlsSource}
+  exampleId="carousel"
+  framework="solid"
+  kind="component"
+/>
+
+### Loop
+
+Wrap from last to first when continuous browsing should not stop at the end.
+
+<Example
+  name="Loop"
+  code={LoopSource}
+  exampleId="carousel"
+  framework="solid"
+  kind="component"
+/>
+
+### Mouse Drag
+
+Let users drag slides when pointer gestures feel more direct than buttons alone.
+
+<Example
+  name="MouseDrag"
+  code={MouseDragSource}
+  exampleId="carousel"
+  framework="solid"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `carouselRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="carousel"
+  framework="solid"
+  kind="component"
+/>

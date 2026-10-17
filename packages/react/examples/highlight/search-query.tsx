@@ -1,3 +1,4 @@
+import source from "./search-query.tsx?raw";
 import { Highlight, Input } from "@pisagor/react";
 import { useState } from "react";
 export function SearchQuery() {
@@ -31,3 +32,5 @@ export function SearchQuery() {
     </div>
   );
 }
+
+export { source as SearchQuerySource };

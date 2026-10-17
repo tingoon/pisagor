@@ -1,3 +1,4 @@
+import source from "./align-block-end.tsx?raw";
 import { InputGroup } from "@pisagor/solid";
 export function AlignBlockEnd() {
   return (
@@ -17,3 +18,5 @@ export function AlignBlockEnd() {
     </div>
   );
 }
+
+export { source as AlignBlockEndSource };

@@ -1,3 +1,4 @@
+import source from "./custom-color.tsx?raw";
 import { Button } from "@pisagor/react";
 
 export function CustomColor() {
@@ -18,3 +19,5 @@ export function CustomColor() {
     </div>
   );
 }
+
+export { source as CustomColorSource };

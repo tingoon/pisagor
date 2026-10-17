@@ -1,3 +1,4 @@
+import source from "./variants.tsx?raw";
 import { Item } from "@pisagor/react";
 
 export function Variants() {
@@ -30,3 +31,5 @@ export function Variants() {
     </Item.Group>
   );
 }
+
+export { source as VariantsSource };

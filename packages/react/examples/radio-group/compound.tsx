@@ -1,3 +1,4 @@
+import source from "./compound.tsx?raw";
 import { RadioGroup } from "@pisagor/react";
 
 export function Compound() {
@@ -9,3 +10,5 @@ export function Compound() {
     </RadioGroup.Root>
   );
 }
+
+export { source as CompoundSource };

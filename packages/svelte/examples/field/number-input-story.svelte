@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./number-input-story.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Field, NumberInput } from "@pisagor/svelte";
 </script>

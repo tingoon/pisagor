@@ -1,3 +1,4 @@
+import source from "./controlled.tsx?raw";
 import { PasswordInput } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
@@ -11,3 +12,5 @@ export function Controlled() {
     />
   );
 }
+
+export { source as ControlledSource };

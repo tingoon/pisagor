@@ -1,3 +1,4 @@
+import source from "./orientation-vertical.tsx?raw";
 import { Card, Marquee } from "@pisagor/solid";
 import {
   ArrowRightIcon,
@@ -40,3 +41,5 @@ export function OrientationVertical() {
     </Marquee.Root>
   );
 }
+
+export { source as OrientationVerticalSource };

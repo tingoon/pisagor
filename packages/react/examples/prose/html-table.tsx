@@ -1,3 +1,4 @@
+import source from "./html-table.tsx?raw";
 import { Prose } from "@pisagor/react";
 
 export function HtmlTable() {
@@ -28,3 +29,5 @@ export function HtmlTable() {
     </Prose>
   );
 }
+
+export { source as HtmlTableSource };

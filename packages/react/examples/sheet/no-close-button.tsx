@@ -1,3 +1,4 @@
+import source from "./no-close-button.tsx?raw";
 import { Button, Sheet } from "@pisagor/react";
 export function NoCloseButton() {
   return (
@@ -31,3 +32,5 @@ export function NoCloseButton() {
     </Sheet>
   );
 }
+
+export { source as NoCloseButtonSource };

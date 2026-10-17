@@ -1,3 +1,4 @@
+import source from "./testimonial.tsx?raw";
 import { Avatar, Card, Rating } from "@pisagor/react";
 export function Testimonial() {
   return (
@@ -19,3 +20,5 @@ export function Testimonial() {
     </Card>
   );
 }
+
+export { source as TestimonialSource };

@@ -15,6 +15,8 @@ const brandItemRecipe = tv({
     },
   },
 });
+import source from "./custom-recipe.astro?raw";
+export { source };
 ---
 
 <Item recipe={brandItemRecipe} variant="outline">

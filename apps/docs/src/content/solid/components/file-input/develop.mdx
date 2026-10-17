@@ -1,0 +1,100 @@
+import Example from "#/components/docs/example.astro";
+import { VariantsSource } from "#examples/solid/file-input/variants.tsx";
+import { SizesSource } from "#examples/solid/file-input/sizes.tsx";
+import { MultipleSource } from "#examples/solid/file-input/multiple.tsx";
+import { AcceptSource } from "#examples/solid/file-input/accept.tsx";
+import { OnFilesChangeSource } from "#examples/solid/file-input/on-files-change.tsx";
+import { DisabledSource } from "#examples/solid/file-input/disabled.tsx";
+import { InvalidSource } from "#examples/solid/file-input/invalid.tsx";
+
+## Import
+
+```tsx
+import { FileInput } from "@pisagor/solid";
+```
+
+## Examples
+
+### Variants
+
+Choose emphasis to match surrounding inputs.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="file-input"
+  framework="solid"
+  kind="component"
+/>
+
+### Sizes
+
+Match size to the surrounding layout — smaller in compact chrome, larger where the file input needs emphasis.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="file-input"
+  framework="solid"
+  kind="component"
+/>
+
+### Multiple
+
+Allow more than one file in a single pick.
+
+<Example
+  name="Multiple"
+  code={MultipleSource}
+  exampleId="file-input"
+  framework="solid"
+  kind="component"
+/>
+
+### Accept
+
+Limit selectable types so users only see suitable files.
+
+<Example
+  name="Accept"
+  code={AcceptSource}
+  exampleId="file-input"
+  framework="solid"
+  kind="component"
+/>
+
+### On Files Change
+
+Handle file changes when parent logic must react to each selection.
+
+<Example
+  name="OnFilesChange"
+  code={OnFilesChangeSource}
+  exampleId="file-input"
+  framework="solid"
+  kind="component"
+/>
+
+### Disabled
+
+Show that file picking is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="file-input"
+  framework="solid"
+  kind="component"
+/>
+
+### Invalid
+
+Surface a validation error when the file is missing or not allowed.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="file-input"
+  framework="solid"
+  kind="component"
+/>

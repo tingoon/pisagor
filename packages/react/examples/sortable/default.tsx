@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Sortable } from "@pisagor/react";
 import { useState } from "react";
 
@@ -29,3 +30,5 @@ export function Default() {
     </div>
   );
 }
+
+export { source as DefaultSource };

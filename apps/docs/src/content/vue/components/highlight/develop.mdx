@@ -1,0 +1,91 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/highlight/default.vue?raw";
+import SquiggleSource from "#examples/vue/highlight/squiggle.vue?raw";
+import MultipleSource from "#examples/vue/highlight/multiple.vue?raw";
+import SearchQuerySource from "#examples/vue/highlight/search-query.vue?raw";
+import CustomStyleSource from "#examples/vue/highlight/custom-style.vue?raw";
+import CustomRecipeSource from "#examples/vue/highlight/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { Highlight } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Emphasize matching substrings in text.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="highlight"
+  framework="vue"
+  kind="component"
+/>
+
+### Squiggle
+
+Use a squiggle emphasis when the match needs a distinct treatment.
+
+<Example
+  name="Squiggle"
+  code={SquiggleSource}
+  exampleId="highlight"
+  framework="vue"
+  kind="component"
+/>
+
+### Multiple
+
+Allow more than one open or selected item when users need several at once.
+
+<Example
+  name="Multiple"
+  code={MultipleSource}
+  exampleId="highlight"
+  framework="vue"
+  kind="component"
+/>
+
+### Search Query
+
+Highlight query matches in search results.
+
+<Example
+  name="SearchQuery"
+  code={SearchQuerySource}
+  exampleId="highlight"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Override highlight style when brand treatment differs from the default.
+
+<Example
+  name="CustomStyle"
+  code={CustomStyleSource}
+  exampleId="highlight"
+  framework="vue"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `highlightRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="highlight"
+  framework="vue"
+  kind="component"
+/>

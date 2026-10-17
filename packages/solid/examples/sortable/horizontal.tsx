@@ -1,3 +1,4 @@
+import source from "./horizontal.tsx?raw";
 import { Sortable } from "@pisagor/solid";
 import { createSignal, For } from "solid-js";
 
@@ -26,3 +27,5 @@ export function Horizontal() {
     </Sortable>
   );
 }
+
+export { source as HorizontalSource };

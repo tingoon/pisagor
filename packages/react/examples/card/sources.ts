@@ -1,17 +1,17 @@
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import custom_spacingRaw from "./custom-spacing.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import iconRaw from "./icon.tsx?raw";
-import productRaw from "./product.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { CustomSpacingSource as CustomSpacing } from "./custom-spacing";
+import { DefaultSource as Default } from "./default";
+import { IconSource as Icon } from "./icon";
+import { ProductSource as Product } from "./product";
+import { SizesSource as Sizes } from "./sizes";
 
 export const imports = `import { Card } from "@pisagor/react";`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  CustomSpacing: custom_spacingRaw,
-  Default: defaultRaw,
-  Icon: iconRaw,
-  Product: productRaw,
-  Sizes: sizesRaw,
+  CustomRecipe,
+  CustomSpacing,
+  Default,
+  Icon,
+  Product,
+  Sizes,
 } as const;

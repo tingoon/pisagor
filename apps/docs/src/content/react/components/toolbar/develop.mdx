@@ -1,0 +1,67 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/toolbar/default.tsx";
+import { WrappedActionsSource } from "#examples/react/toolbar/wrapped-actions.tsx";
+import { CompoundSource } from "#examples/react/toolbar/compound.tsx";
+import { CustomRecipeSource } from "#examples/react/toolbar/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Toolbar } from "@pisagor/react";
+```
+
+## Examples
+
+### Default
+
+Place a local heading with related actions in one row.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="toolbar"
+  framework="react"
+  kind="component"
+/>
+
+### Wrapped Actions
+
+Wrap actions when horizontal space is tight.
+
+<Example
+  name="WrappedActions"
+  code={WrappedActionsSource}
+  exampleId="toolbar"
+  framework="react"
+  kind="component"
+/>
+
+### Compound
+
+Compose toolbar parts for a custom chrome layout.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="toolbar"
+  framework="react"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `toolbarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="toolbar"
+  framework="react"
+  kind="component"
+/>
+
+## Accessibility
+
+`Toolbar.Actions` renders `role="toolbar"`. Arrow keys move focus between its buttons and links, and Home/End jump to the first or last one. Give it an `aria-label` (via `actionsProps` in the shorthand) when the page has more than one toolbar.

@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./custom-recipe.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { comboboxRecipe } from "@pisagor/recipes";
 import { Autocomplete } from "@pisagor/vue";

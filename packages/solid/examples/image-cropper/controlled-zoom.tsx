@@ -1,3 +1,4 @@
+import source from "./controlled-zoom.tsx?raw";
 import { Button, ImageCropper } from "@pisagor/solid";
 import {
   MagnifyingGlassMinusIcon,
@@ -37,3 +38,5 @@ export function ControlledZoom() {
     </div>
   );
 }
+
+export { source as ControlledZoomSource };

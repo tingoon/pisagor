@@ -1,3 +1,4 @@
+import source from "./vertical.tsx?raw";
 import { ToggleGroup } from "@pisagor/react";
 
 const items = [
@@ -16,3 +17,5 @@ export function Vertical() {
     />
   );
 }
+
+export { source as VerticalSource };

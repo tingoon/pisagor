@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { DownloadIcon, FileTextIcon } from "@phosphor-icons/react";
 import { Button, DownloadTrigger, Item } from "@pisagor/react";
 import { sampleText } from "./helpers";
@@ -24,3 +25,5 @@ export function Default() {
     </div>
   );
 }
+
+export { source as DefaultSource };

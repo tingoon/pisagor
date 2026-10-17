@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./indicator-on-hover.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { SegmentGroup } from "@pisagor/svelte";
 

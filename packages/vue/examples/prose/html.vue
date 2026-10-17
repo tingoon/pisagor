@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./html.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Prose } from "@pisagor/vue";
 

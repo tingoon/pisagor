@@ -1,29 +1,29 @@
-import blur_on_completeRaw from "./blur-on-complete.vue?raw";
-import controlledRaw from "./controlled.vue?raw";
-import custom_recipeRaw from "./custom-recipe.vue?raw";
-import custom_sizeRaw from "./custom-size.vue?raw";
-import disabledRaw from "./disabled.vue?raw";
-import four_digitsRaw from "./four-digits.vue?raw";
-import invalidRaw from "./invalid.vue?raw";
-import maskRaw from "./mask.vue?raw";
-import separatorRaw from "./separator.vue?raw";
-import sizesRaw from "./sizes.vue?raw";
-import variantsRaw from "./variants.vue?raw";
-import with_placeholderRaw from "./with-placeholder.vue?raw";
+import BlurOnComplete from "./blur-on-complete.vue?raw";
+import Controlled from "./controlled.vue?raw";
+import CustomRecipe from "./custom-recipe.vue?raw";
+import CustomSize from "./custom-size.vue?raw";
+import Disabled from "./disabled.vue?raw";
+import FourDigits from "./four-digits.vue?raw";
+import Invalid from "./invalid.vue?raw";
+import Mask from "./mask.vue?raw";
+import Separator from "./separator.vue?raw";
+import Sizes from "./sizes.vue?raw";
+import Variants from "./variants.vue?raw";
+import WithPlaceholder from "./with-placeholder.vue?raw";
 
 export const imports = `import { InputOTP } from "@pisagor/vue";`;
 
 export const sources = {
-  BlurOnComplete: blur_on_completeRaw,
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  CustomSize: custom_sizeRaw,
-  Disabled: disabledRaw,
-  FourDigits: four_digitsRaw,
-  Invalid: invalidRaw,
-  Mask: maskRaw,
-  Separator: separatorRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
-  WithPlaceholder: with_placeholderRaw,
+  BlurOnComplete,
+  Controlled,
+  CustomRecipe,
+  CustomSize,
+  Disabled,
+  FourDigits,
+  Invalid,
+  Mask,
+  Separator,
+  Sizes,
+  Variants,
+  WithPlaceholder,
 } as const;

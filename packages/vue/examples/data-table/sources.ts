@@ -1,9 +1,9 @@
-import emptyRaw from "./empty.vue?raw";
-import sortingRaw from "./sorting.vue?raw";
+import Empty from "./empty.vue?raw";
+import Sorting from "./sorting.vue?raw";
 
 export const imports = `import { DataTable } from "@pisagor/vue/data-table";`;
 
 export const sources = {
-  Empty: emptyRaw,
-  Sorting: sortingRaw,
+  Empty,
+  Sorting,
 } as const;

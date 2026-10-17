@@ -1,3 +1,4 @@
+import source from "./with-link.tsx?raw";
 import { Breadcrumb } from "@pisagor/react";
 
 export function WithLink() {
@@ -23,3 +24,5 @@ export function WithLink() {
     </Breadcrumb.Root>
   );
 }
+
+export { source as WithLinkSource };

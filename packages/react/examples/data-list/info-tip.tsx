@@ -1,3 +1,4 @@
+import source from "./info-tip.tsx?raw";
 import { InfoIcon } from "@phosphor-icons/react";
 import { Button, DataList, Popover } from "@pisagor/react";
 export function InfoTip() {
@@ -42,3 +43,5 @@ export function InfoTip() {
     </DataList.Root>
   );
 }
+
+export { source as InfoTipSource };

@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./input-compact.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhPercent } from "@phosphor-icons/vue";
 import { ColorPicker, InputGroup, parseColor, Separator } from "@pisagor/vue";

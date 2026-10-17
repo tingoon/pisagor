@@ -1,3 +1,4 @@
+import source from "./transfer-list.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Button, Item, Listbox } from "@pisagor/solid";
 import { CaretLeftIcon, CaretRightIcon } from "@pisagor/solid/icons";
@@ -112,3 +113,5 @@ export function TransferList() {
     </div>
   );
 }
+
+export { source as TransferListSource };

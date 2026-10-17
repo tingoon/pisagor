@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./compound.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhCheckCircle, PhCircle, PhRocket } from "@phosphor-icons/vue";
 import { Timeline } from "@pisagor/vue";

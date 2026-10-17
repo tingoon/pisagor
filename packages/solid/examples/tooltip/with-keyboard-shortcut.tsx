@@ -1,3 +1,4 @@
+import source from "./with-keyboard-shortcut.tsx?raw";
 import { Button, Kbd, Tooltip } from "@pisagor/solid";
 
 export function WithKeyboardShortcut() {
@@ -18,3 +19,5 @@ export function WithKeyboardShortcut() {
     </Tooltip>
   );
 }
+
+export { source as WithKeyboardShortcutSource };

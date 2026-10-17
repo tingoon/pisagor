@@ -1,0 +1,63 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/file/default.vue?raw";
+import WithActionsSource from "#examples/vue/file/with-actions.ts?raw";
+import CompoundSource from "#examples/vue/file/compound.vue?raw";
+import CustomRecipeSource from "#examples/vue/file/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { File } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Represent a file with name and metadata.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="file"
+  framework="vue"
+  kind="component"
+/>
+
+### With Actions
+
+Add download, remove, or preview actions beside the file.
+
+<Example
+  name="WithActions"
+  code={WithActionsSource}
+  exampleId="file"
+  framework="vue"
+  kind="component"
+/>
+
+### Compound
+
+Compose file parts for a custom attachment row.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="file"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `fileRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="file"
+  framework="vue"
+  kind="component"
+/>

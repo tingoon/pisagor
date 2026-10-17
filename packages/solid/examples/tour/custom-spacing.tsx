@@ -1,3 +1,4 @@
+import source from "./custom-spacing.tsx?raw";
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour } from "@pisagor/solid";
 export function CustomSpacing() {
@@ -42,3 +43,5 @@ export function CustomSpacing() {
     </Tour>
   );
 }
+
+export { source as CustomSpacingSource };

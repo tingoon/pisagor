@@ -1,3 +1,4 @@
+import source from "./disabled.tsx?raw";
 import { OtpField } from "@pisagor/react-form";
 
 export function Disabled() {
@@ -5,3 +6,5 @@ export function Disabled() {
     <OtpField className="items-center" disabled label="Verification code" />
   );
 }
+
+export { source as DisabledSource };

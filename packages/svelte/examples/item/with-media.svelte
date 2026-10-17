@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./with-media.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Item } from "@pisagor/svelte";
   import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";

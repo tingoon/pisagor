@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./wrapping.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { NavigationMenu } from "@pisagor/svelte";
 </script>

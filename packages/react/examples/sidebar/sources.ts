@@ -1,9 +1,9 @@
-import defaultRaw from "./default.tsx?raw";
-import disable_hotkeyRaw from "./disable-hotkey.tsx?raw";
+import { DefaultSource as Default } from "./default";
+import { DisableHotkeySource as DisableHotkey } from "./disable-hotkey";
 
 export const imports = `import { Sidebar } from "@pisagor/react";`;
 
 export const sources = {
-  Default: defaultRaw,
-  DisableHotkey: disable_hotkeyRaw,
+  Default,
+  DisableHotkey,
 } as const;

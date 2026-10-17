@@ -1,11 +1,11 @@
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import with_groupsRaw from "./with-groups.tsx?raw";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { WithGroupsSource as WithGroups } from "./with-groups";
 
 export const imports = `import { Menu } from "@pisagor/react";`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  WithGroups: with_groupsRaw,
+  CustomRecipe,
+  Default,
+  WithGroups,
 } as const;

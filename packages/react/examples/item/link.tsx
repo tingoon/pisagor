@@ -1,3 +1,4 @@
+import source from "./link.tsx?raw";
 import { ArrowSquareOutIcon } from "@phosphor-icons/react";
 import { Item } from "@pisagor/react";
 
@@ -32,3 +33,5 @@ export function Link() {
     </Item.Group>
   );
 }
+
+export { source as LinkSource };

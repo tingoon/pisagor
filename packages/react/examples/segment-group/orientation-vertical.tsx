@@ -1,3 +1,4 @@
+import source from "./orientation-vertical.tsx?raw";
 import { SegmentGroup } from "@pisagor/react";
 
 export function OrientationVertical() {
@@ -15,3 +16,5 @@ export function OrientationVertical() {
     />
   );
 }
+
+export { source as OrientationVerticalSource };

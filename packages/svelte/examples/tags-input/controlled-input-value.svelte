@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./controlled-input-value.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, Field, TagsInput } from "@pisagor/svelte";
 

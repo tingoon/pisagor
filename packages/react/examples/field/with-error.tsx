@@ -1,3 +1,4 @@
+import source from "./with-error.tsx?raw";
 import { Field, Input } from "@pisagor/react";
 export function WithError() {
   return (
@@ -8,3 +9,5 @@ export function WithError() {
     </Field>
   );
 }
+
+export { source as WithErrorSource };

@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./image-preview.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Field, SignaturePad } from "@pisagor/vue";
 import { ref } from "vue";

@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./initial-focus.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Portal } from "@ark-ui/svelte/portal";
   import { Button, Dialog, Field, Input } from "@pisagor/svelte";

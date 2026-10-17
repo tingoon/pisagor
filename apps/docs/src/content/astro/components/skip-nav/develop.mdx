@@ -1,0 +1,25 @@
+import Example from "#/components/docs/example.astro";
+import Default from "#examples/astro/skip-nav/default.astro";
+import DefaultSource from "#examples/astro/skip-nav/default.astro?raw";
+
+## Import
+
+```ts
+import { SkipNav } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Skip repeated navigation and move keyboard focus to main content.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="skip-nav"
+  framework="astro"
+  kind="component"
+>
+  <Default />
+</Example>

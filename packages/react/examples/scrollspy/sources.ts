@@ -1,9 +1,9 @@
-import defaultRaw from "./default.tsx?raw";
-import horizontalRaw from "./horizontal.tsx?raw";
+import { DefaultSource as Default } from "./default";
+import { HorizontalSource as Horizontal } from "./horizontal";
 
 export const imports = `import { Scrollspy } from "@pisagor/react";`;
 
 export const sources = {
-  Default: defaultRaw,
-  Horizontal: horizontalRaw,
+  Default,
+  Horizontal,
 } as const;

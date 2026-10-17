@@ -1,23 +1,23 @@
-import aspect_ratioRaw from "./aspect-ratio.tsx?raw";
-import circle_cropRaw from "./circle-crop.tsx?raw";
-import controlled_zoomRaw from "./controlled-zoom.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import fixed_crop_areaRaw from "./fixed-crop-area.tsx?raw";
-import initial_cropRaw from "./initial-crop.tsx?raw";
-import min_max_sizeRaw from "./min-max-size.tsx?raw";
-import zoom_limitsRaw from "./zoom-limits.tsx?raw";
+import { AspectRatioSource as AspectRatio } from "./aspect-ratio";
+import { CircleCropSource as CircleCrop } from "./circle-crop";
+import { ControlledZoomSource as ControlledZoom } from "./controlled-zoom";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { FixedCropAreaSource as FixedCropArea } from "./fixed-crop-area";
+import { InitialCropSource as InitialCrop } from "./initial-crop";
+import { MinMaxSizeSource as MinMaxSize } from "./min-max-size";
+import { ZoomLimitsSource as ZoomLimits } from "./zoom-limits";
 
 export const imports = `import { ImageCropper } from "@pisagor/solid";`;
 
 export const sources = {
-  AspectRatio: aspect_ratioRaw,
-  CircleCrop: circle_cropRaw,
-  ControlledZoom: controlled_zoomRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  FixedCropArea: fixed_crop_areaRaw,
-  InitialCrop: initial_cropRaw,
-  MinMaxSize: min_max_sizeRaw,
-  ZoomLimits: zoom_limitsRaw,
+  AspectRatio,
+  CircleCrop,
+  ControlledZoom,
+  CustomRecipe,
+  Default,
+  FixedCropArea,
+  InitialCrop,
+  MinMaxSize,
+  ZoomLimits,
 } as const;

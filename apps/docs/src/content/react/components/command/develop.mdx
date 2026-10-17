@@ -1,0 +1,134 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/command/default.tsx";
+import { GroupsSource } from "#examples/react/command/groups.tsx";
+import { ShortcutsSource } from "#examples/react/command/shortcuts.tsx";
+import { WithFooterSource } from "#examples/react/command/with-footer.tsx";
+import { ScrollableSource } from "#examples/react/command/scrollable.tsx";
+import { ShorthandSource } from "#examples/react/command/shorthand.tsx";
+import { WithDialogSource } from "#examples/react/command/with-dialog.tsx";
+import { CustomRecipeSource } from "#examples/react/command/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Command } from "@pisagor/react";
+```
+
+## Anatomy
+
+```tsx
+<Command>
+  <Command.Input />
+  <Command.Content>
+    <Command.Empty />
+    <Command.List>
+      <Command.ItemGroup>
+        <Command.Item>
+          <Command.Shortcut />
+        </Command.Item>
+        <Command.Separator />
+      </Command.ItemGroup>
+    </Command.List>
+  </Command.Content>
+</Command>
+```
+
+## Examples
+
+### Default
+
+Open a searchable palette for actions, pages, or settings.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="command"
+  framework="react"
+  kind="component"
+/>
+
+### Groups
+
+Group commands under labels so long palettes stay scannable.
+
+<Example
+  name="Groups"
+  code={GroupsSource}
+  exampleId="command"
+  framework="react"
+  kind="component"
+/>
+
+### Shortcuts
+
+Show keyboard shortcuts beside commands for faster recall.
+
+<Example
+  name="Shortcuts"
+  code={ShortcutsSource}
+  exampleId="command"
+  framework="react"
+  kind="component"
+/>
+
+### With Footer
+
+Add a footer for hints or secondary actions under the command list.
+
+<Example
+  name="WithFooter"
+  code={WithFooterSource}
+  exampleId="command"
+  framework="react"
+  kind="component"
+/>
+
+### Scrollable
+
+Allow the command list to scroll when items exceed the panel height.
+
+<Example
+  name="Scrollable"
+  code={ScrollableSource}
+  exampleId="command"
+  framework="react"
+  kind="component"
+/>
+
+### Shorthand
+
+Pass `items` to `Command.Shorthand` for a filtered, grouped list without composing parts.
+
+<Example
+  name="Shorthand"
+  code={ShorthandSource}
+  exampleId="command"
+  framework="react"
+  kind="component"
+/>
+
+### With Dialog
+
+Host the palette in a dialog when it should take focus as a modal layer.
+
+<Example
+  name="WithDialog"
+  code={WithDialogSource}
+  exampleId="command"
+  framework="react"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `commandRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="command"
+  framework="react"
+  kind="component"
+/>

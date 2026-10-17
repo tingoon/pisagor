@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { JsonTreeView } from "@pisagor/solid";
 
 export function Default() {
@@ -5,3 +6,5 @@ export function Default() {
     <JsonTreeView data={{ count: 3, hello: "world", nested: { ok: true } }} />
   );
 }
+
+export { source as DefaultSource };

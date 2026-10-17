@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Button, ScrollArea, Scrollspy } from "@pisagor/react";
 import { useRef } from "react";
 import { verticalSections } from "./helpers";
@@ -40,3 +41,5 @@ export function Default() {
     </div>
   );
 }
+
+export { source as DefaultSource };

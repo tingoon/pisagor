@@ -1,0 +1,56 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/link-box/default.svelte?raw";
+import ArticleSource from "#examples/svelte/link-box/article.svelte?raw";
+import WithLinkSource from "#examples/svelte/link-box/with-link.svelte?raw";
+
+## Import
+
+```ts
+import { LinkBox } from "@pisagor/svelte";
+```
+
+## Anatomy
+
+```tsx
+<LinkBox>
+  <LinkBox.Overlay />
+</LinkBox>
+```
+
+## Examples
+
+### Default
+
+Make the whole surface clickable while nested controls stay usable.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="link-box"
+  framework="svelte"
+  kind="component"
+/>
+
+### Article
+
+Wrap article-style content so the card navigates as one destination.
+
+<Example
+  name="Article"
+  code={ArticleSource}
+  exampleId="link-box"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Link
+
+Render the link box as or with a link when the control should navigate.
+
+<Example
+  name="WithLink"
+  code={WithLinkSource}
+  exampleId="link-box"
+  framework="svelte"
+  kind="component"
+/>

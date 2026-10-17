@@ -1,3 +1,4 @@
+import source from "./range.tsx?raw";
 import { NumberInput } from "@pisagor/solid";
 
 export function Range() {
@@ -11,3 +12,5 @@ export function Range() {
     </NumberInput>
   );
 }
+
+export { source as RangeSource };

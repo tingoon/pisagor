@@ -1,0 +1,148 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/sheet/default.tsx";
+import { InsetSource } from "#examples/react/sheet/inset.tsx";
+import { SidesSource } from "#examples/react/sheet/sides.tsx";
+import { ScrollAreaSource } from "#examples/react/sheet/scroll-area.tsx";
+import { NoCloseButtonSource } from "#examples/react/sheet/no-close-button.tsx";
+import { NonModalSource } from "#examples/react/sheet/non-modal.tsx";
+import { CloseBehaviorSource } from "#examples/react/sheet/close-behavior.tsx";
+import { CustomSpacingSource } from "#examples/react/sheet/custom-spacing.tsx";
+import { CustomRecipeSource } from "#examples/react/sheet/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Sheet } from "@pisagor/react";
+```
+
+## Anatomy
+
+```tsx
+<Sheet>
+  <Sheet.Trigger />
+  <Sheet.Content>
+    <Sheet.Header>
+      <Sheet.Title />
+      <Sheet.Description />
+    </Sheet.Header>
+    <Sheet.Body />
+    <Sheet.Footer>
+      <Sheet.CloseTrigger />
+    </Sheet.Footer>
+  </Sheet.Content>
+</Sheet>
+```
+
+## Examples
+
+### Default
+
+Slide a panel in from the edge for a secondary task.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="sheet"
+  framework="react"
+  kind="component"
+/>
+
+### Inset
+
+Inset the sheet from the viewport edge when a floating panel look fits better.
+
+<Example
+  name="Inset"
+  code={InsetSource}
+  exampleId="sheet"
+  framework="react"
+  kind="component"
+/>
+
+### Sides
+
+Choose which edge the sheet enters from to match the task and layout.
+
+<Example
+  name="Sides"
+  code={SidesSource}
+  exampleId="sheet"
+  framework="react"
+  kind="component"
+/>
+
+### Scroll Area
+
+Constrain tall content in a scroll region so the sheet chrome stays on screen.
+
+<Example
+  name="ScrollArea"
+  code={ScrollAreaSource}
+  exampleId="sheet"
+  framework="react"
+  kind="component"
+/>
+
+### No Close Button
+
+Hide the close button when dismiss should go through an explicit action instead.
+
+<Example
+  name="NoCloseButton"
+  code={NoCloseButtonSource}
+  exampleId="sheet"
+  framework="react"
+  kind="component"
+/>
+
+### Non Modal
+
+Keep the page behind interactive when the sheet should not trap focus entirely.
+
+<Example
+  name="NonModal"
+  code={NonModalSource}
+  exampleId="sheet"
+  framework="react"
+  kind="component"
+/>
+
+### Close Behavior
+
+Control how dismiss works — outside click, escape, or explicit close — to match the flow.
+
+<Example
+  name="CloseBehavior"
+  code={CloseBehaviorSource}
+  exampleId="sheet"
+  framework="react"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Override spacing when the default density does not match the surrounding layout.
+
+<Example
+  name="CustomSpacing"
+  code={CustomSpacingSource}
+  exampleId="sheet"
+  framework="react"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `sheetRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="sheet"
+  framework="react"
+  kind="component"
+/>

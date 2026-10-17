@@ -1,3 +1,4 @@
+import source from "./invalid.tsx?raw";
 import { Button, Editable, Input } from "@pisagor/solid";
 import { CheckIcon, XIcon } from "@pisagor/solid/icons";
 export function Invalid() {
@@ -36,3 +37,5 @@ export function Invalid() {
     </Editable>
   );
 }
+
+export { source as InvalidSource };

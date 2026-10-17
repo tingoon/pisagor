@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./grid.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { createGridCollection } from "@ark-ui/svelte/collection";
   import { Item, Listbox } from "@pisagor/svelte";

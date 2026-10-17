@@ -1,53 +1,53 @@
-import aRaw from "./a.svelte?raw";
-import blockquoteRaw from "./blockquote.svelte?raw";
-import custom_recipeRaw from "./custom-recipe.svelte?raw";
-import defaultRaw from "./default.svelte?raw";
-import detailsRaw from "./details.svelte?raw";
-import dlRaw from "./dl.svelte?raw";
-import h1Raw from "./h1.svelte?raw";
-import h2Raw from "./h2.svelte?raw";
-import h3Raw from "./h3.svelte?raw";
-import h4Raw from "./h4.svelte?raw";
-import h5Raw from "./h5.svelte?raw";
-import h6Raw from "./h6.svelte?raw";
-import htmlRaw from "./html.svelte?raw";
-import html_tableRaw from "./html-table.svelte?raw";
-import inline_codeRaw from "./inline-code.svelte?raw";
-import kbdRaw from "./kbd.svelte?raw";
-import listRaw from "./list.svelte?raw";
-import markRaw from "./mark.svelte?raw";
-import mediaRaw from "./media.svelte?raw";
-import not_proseRaw from "./not-prose.svelte?raw";
-import olRaw from "./ol.svelte?raw";
-import pRaw from "./p.svelte?raw";
-import separatorRaw from "./separator.svelte?raw";
-import smallRaw from "./small.svelte?raw";
+import A from "./a.svelte?raw";
+import Blockquote from "./blockquote.svelte?raw";
+import CustomRecipe from "./custom-recipe.svelte?raw";
+import Default from "./default.svelte?raw";
+import Details from "./details.svelte?raw";
+import Dl from "./dl.svelte?raw";
+import H1 from "./h1.svelte?raw";
+import H2 from "./h2.svelte?raw";
+import H3 from "./h3.svelte?raw";
+import H4 from "./h4.svelte?raw";
+import H5 from "./h5.svelte?raw";
+import H6 from "./h6.svelte?raw";
+import Html from "./html.svelte?raw";
+import HtmlTable from "./html-table.svelte?raw";
+import InlineCode from "./inline-code.svelte?raw";
+import Kbd from "./kbd.svelte?raw";
+import List from "./list.svelte?raw";
+import Mark from "./mark.svelte?raw";
+import Media from "./media.svelte?raw";
+import NotProse from "./not-prose.svelte?raw";
+import Ol from "./ol.svelte?raw";
+import P from "./p.svelte?raw";
+import Separator from "./separator.svelte?raw";
+import Small from "./small.svelte?raw";
 
 export const imports = `import { Prose } from "@pisagor/svelte";`;
 
 export const sources = {
-  A: aRaw,
-  Blockquote: blockquoteRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Details: detailsRaw,
-  Dl: dlRaw,
-  H1: h1Raw,
-  H2: h2Raw,
-  H3: h3Raw,
-  H4: h4Raw,
-  H5: h5Raw,
-  H6: h6Raw,
-  Html: htmlRaw,
-  HtmlTable: html_tableRaw,
-  InlineCode: inline_codeRaw,
-  Kbd: kbdRaw,
-  List: listRaw,
-  Mark: markRaw,
-  Media: mediaRaw,
-  NotProse: not_proseRaw,
-  Ol: olRaw,
-  P: pRaw,
-  Separator: separatorRaw,
-  Small: smallRaw,
+  A,
+  Blockquote,
+  CustomRecipe,
+  Default,
+  Details,
+  Dl,
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  Html,
+  HtmlTable,
+  InlineCode,
+  Kbd,
+  List,
+  Mark,
+  Media,
+  NotProse,
+  Ol,
+  P,
+  Separator,
+  Small,
 } as const;

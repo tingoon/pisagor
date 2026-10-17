@@ -1,3 +1,4 @@
+import source from "./disabled.tsx?raw";
 import { RichTextEditor } from "@pisagor/react/rich-text-editor";
 
 export function Disabled() {
@@ -8,3 +9,5 @@ export function Disabled() {
     />
   );
 }
+
+export { source as DisabledSource };

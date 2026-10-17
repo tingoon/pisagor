@@ -1,3 +1,4 @@
+import source from "./multiple-months.tsx?raw";
 import { Calendar, Card, parseDate } from "@pisagor/react";
 import { useState } from "react";
 export function MultipleMonths() {
@@ -32,3 +33,5 @@ export function MultipleMonths() {
     </Card>
   );
 }
+
+export { source as MultipleMonthsSource };

@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { CircularProgress } from "@pisagor/react";
 import { circularProgressRecipe } from "@pisagor/recipes";
 import { useEffect, useState } from "react";
@@ -21,3 +22,5 @@ export function CustomRecipe() {
     <CircularProgress recipe={brandCircularProgressRecipe} value={progress} />
   );
 }
+
+export { source as CustomRecipeSource };

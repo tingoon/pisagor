@@ -1,3 +1,4 @@
+import source from "./controlled.tsx?raw";
 import { Field, TagsInput } from "@pisagor/react";
 import { useState } from "react";
 export function Controlled() {
@@ -21,3 +22,5 @@ export function Controlled() {
     </Field>
   );
 }
+
+export { source as ControlledSource };

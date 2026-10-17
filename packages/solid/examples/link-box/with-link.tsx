@@ -1,3 +1,4 @@
+import source from "./with-link.tsx?raw";
 import { LinkBox } from "@pisagor/solid";
 
 export function WithLink() {
@@ -27,3 +28,5 @@ export function WithLink() {
     />
   );
 }
+
+export { source as WithLinkSource };

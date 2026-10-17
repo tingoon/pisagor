@@ -1,3 +1,4 @@
+import source from "./controlled.tsx?raw";
 import { Field, Switch } from "@pisagor/react";
 import { useState } from "react";
 export function Controlled() {
@@ -18,3 +19,5 @@ export function Controlled() {
     </Field.Group>
   );
 }
+
+export { source as ControlledSource };

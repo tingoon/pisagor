@@ -1,0 +1,193 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/combobox/default.vue?raw";
+import VariantsSource from "#examples/vue/combobox/variants.vue?raw";
+import SizesSource from "#examples/vue/combobox/sizes.vue?raw";
+import WithStartIconSource from "#examples/vue/combobox/with-start-icon.vue?raw";
+import WithClearButtonSource from "#examples/vue/combobox/with-clear-button.vue?raw";
+import MultipleSource from "#examples/vue/combobox/multiple.vue?raw";
+import GroupSource from "#examples/vue/combobox/group.vue?raw";
+import WithScrollSource from "#examples/vue/combobox/with-scroll.vue?raw";
+import CompoundSource from "#examples/vue/combobox/compound.vue?raw";
+import ControlledSource from "#examples/vue/combobox/controlled.vue?raw";
+import DisabledSource from "#examples/vue/combobox/disabled.vue?raw";
+import InvalidSource from "#examples/vue/combobox/invalid.vue?raw";
+import AutohighlightSource from "#examples/vue/combobox/autohighlight.vue?raw";
+import CustomRecipeSource from "#examples/vue/combobox/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { Combobox } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Search and pick from a filterable list with low-level composition control.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="combobox"
+  framework="vue"
+  kind="component"
+/>
+
+### Variants
+
+Choose visual weight or emphasis so the combobox matches importance in the surrounding layout.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="combobox"
+  framework="vue"
+  kind="component"
+/>
+
+### Sizes
+
+Match size to the surrounding layout — smaller in compact chrome, larger where the combobox needs emphasis.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="combobox"
+  framework="vue"
+  kind="component"
+/>
+
+### With Start Icon
+
+Add a leading icon to signal search or category.
+
+<Example
+  name="WithStartIcon"
+  code={WithStartIconSource}
+  exampleId="combobox"
+  framework="vue"
+  kind="component"
+/>
+
+### With Clear Button
+
+Let users clear the query and selection in one press.
+
+<Example
+  name="WithClearButton"
+  code={WithClearButtonSource}
+  exampleId="combobox"
+  framework="vue"
+  kind="component"
+/>
+
+### Multiple
+
+Allow more than one open or selected item when users need several at once.
+
+<Example
+  name="Multiple"
+  code={MultipleSource}
+  exampleId="combobox"
+  framework="vue"
+  kind="component"
+/>
+
+### Grouped
+
+Group related items so related choices stay visually and semantically together.
+
+<Example
+  name="Group"
+  code={GroupSource}
+  exampleId="combobox"
+  framework="vue"
+  kind="component"
+/>
+
+### With Scroll
+
+Add scrolling when the list of items can grow beyond the available height.
+
+<Example
+  name="WithScroll"
+  code={WithScrollSource}
+  exampleId="combobox"
+  framework="vue"
+  kind="component"
+/>
+
+### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="combobox"
+  framework="vue"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this combobox.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="combobox"
+  framework="vue"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the combobox is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="combobox"
+  framework="vue"
+  kind="component"
+/>
+
+### Invalid
+
+Surface a validation or error state so users know the combobox needs attention before continuing.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="combobox"
+  framework="vue"
+  kind="component"
+/>
+
+### Autohighlight
+
+Highlight the first match automatically as the user types.
+
+<Example
+  name="Autohighlight"
+  code={AutohighlightSource}
+  exampleId="combobox"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `comboboxRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="combobox"
+  framework="vue"
+  kind="component"
+/>

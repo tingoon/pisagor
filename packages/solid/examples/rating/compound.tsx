@@ -1,3 +1,4 @@
+import source from "./compound.tsx?raw";
 import { Rating } from "@pisagor/solid";
 import { StarIcon } from "@pisagor/solid/icons";
 import { For } from "solid-js";
@@ -33,3 +34,5 @@ export function Compound() {
     </Rating.Root>
   );
 }
+
+export { source as CompoundSource };

@@ -1,3 +1,4 @@
+import source from "./skip.tsx?raw";
 import type { TourStepType } from "@pisagor/react";
 import { Button, Tour } from "@pisagor/react";
 export function Skip() {
@@ -75,3 +76,5 @@ export function Skip() {
     </div>
   );
 }
+
+export { source as SkipSource };

@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./description.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Steps } from "@pisagor/svelte";
 

@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./dedupe.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, toast } from "@pisagor/svelte";
 

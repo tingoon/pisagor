@@ -1,3 +1,4 @@
+import source from "./manual-pagination.tsx?raw";
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Button, Checkbox, Spinner, Table } from "@pisagor/solid";
 import type {
@@ -350,3 +351,5 @@ export function ManualPagination() {
     </DataGridShell>
   );
 }
+
+export { source as ManualPaginationSource };

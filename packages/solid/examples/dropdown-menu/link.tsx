@@ -1,3 +1,4 @@
+import source from "./link.tsx?raw";
 import { Button, DropdownMenu } from "@pisagor/solid";
 import { ArrowSquareOutIcon } from "@pisagor/solid/icons";
 export function Link() {
@@ -39,3 +40,5 @@ export function Link() {
     </DropdownMenu>
   );
 }
+
+export { source as LinkSource };

@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./snap-points.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, Drawer } from "@pisagor/svelte";
 </script>

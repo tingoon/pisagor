@@ -1,3 +1,4 @@
+import source from "./controlled.tsx?raw";
 import type { CheckboxCheckedState } from "@pisagor/react";
 import { Checkbox, Field } from "@pisagor/react";
 import { useState } from "react";
@@ -17,3 +18,5 @@ export function Controlled() {
     </Field.Group>
   );
 }
+
+export { source as ControlledSource };

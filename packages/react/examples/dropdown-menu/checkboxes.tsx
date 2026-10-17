@@ -1,3 +1,4 @@
+import source from "./checkboxes.tsx?raw";
 import { Button, DropdownMenu } from "@pisagor/react";
 export function Checkboxes() {
   return (
@@ -21,3 +22,5 @@ export function Checkboxes() {
     </DropdownMenu>
   );
 }
+
+export { source as CheckboxesSource };

@@ -1,3 +1,4 @@
+import source from "./with-tooltip.tsx?raw";
 import { Button, Kbd, Tooltip } from "@pisagor/react";
 export function WithTooltip() {
   return (
@@ -18,3 +19,5 @@ export function WithTooltip() {
     </Tooltip>
   );
 }
+
+export { source as WithTooltipSource };

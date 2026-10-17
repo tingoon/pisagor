@@ -1,0 +1,35 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid/client-only/default.tsx";
+import { FallbackSource } from "#examples/solid/client-only/fallback.tsx";
+
+## Import
+
+```tsx
+import { ClientOnly } from "@pisagor/solid";
+```
+
+## Examples
+
+### Default
+
+Render children only after the component mounts in the browser.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="client-only"
+  framework="solid"
+  kind="component"
+/>
+
+### Fallback
+
+Show fallback content during server render and hydration so the layout does not collapse.
+
+<Example
+  name="Fallback"
+  code={FallbackSource}
+  exampleId="client-only"
+  framework="solid"
+  kind="component"
+/>

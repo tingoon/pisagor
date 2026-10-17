@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./progress.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Button, Tour, type TourStepType, useTourContext } from "@pisagor/vue";
 import { defineComponent, h, toValue } from "vue";

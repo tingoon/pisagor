@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./custom-recipe.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { collapsibleRecipe } from "@pisagor/recipes";
   import { Badge, Button, Card, Collapsible } from "@pisagor/svelte";

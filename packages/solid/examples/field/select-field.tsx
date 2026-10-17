@@ -1,3 +1,4 @@
+import source from "./select-field.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Field, Select } from "@pisagor/solid";
 export function SelectField() {
@@ -21,3 +22,5 @@ export function SelectField() {
     </Field>
   );
 }
+
+export { source as SelectFieldSource };

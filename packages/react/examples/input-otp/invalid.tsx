@@ -1,3 +1,4 @@
+import source from "./invalid.tsx?raw";
 import { InputOTP } from "@pisagor/react";
 import { useState } from "react";
 
@@ -15,3 +16,5 @@ export function Invalid() {
     </InputOTP>
   );
 }
+
+export { source as InvalidSource };

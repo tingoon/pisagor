@@ -1,3 +1,4 @@
+import source from "./paginated.tsx?raw";
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Checkbox, Pagination, Table } from "@pisagor/solid";
 import type { ColumnDef, PaginationState } from "@pisagor/solid/data-grid";
@@ -318,3 +319,5 @@ export function Paginated() {
     </DataGridShell>
   );
 }
+
+export { source as PaginatedSource };

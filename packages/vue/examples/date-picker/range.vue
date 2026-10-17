@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./range.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhCalendar } from "@phosphor-icons/vue";
 import { Button, Calendar, DatePicker, parseDate } from "@pisagor/vue";

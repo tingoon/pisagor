@@ -1,3 +1,4 @@
+import source from "./row-selection.tsx?raw";
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Button, Checkbox, Pagination, Table } from "@pisagor/solid";
 import type { ColumnDef, PaginationState } from "@pisagor/solid/data-grid";
@@ -306,3 +307,5 @@ export function RowSelection() {
     </DataGridShell>
   );
 }
+
+export { source as RowSelectionSource };

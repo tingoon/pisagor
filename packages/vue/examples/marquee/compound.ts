@@ -1,3 +1,4 @@
+import source from "./compound.ts?raw";
 import {
   PhArrowRight,
   PhAtom,
@@ -45,3 +46,5 @@ export default defineComponent({
       );
   },
 });
+
+export { source };

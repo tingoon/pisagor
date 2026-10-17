@@ -1,8 +1,7 @@
 /**
  * Client behavior for `component-preview.astro`: Preview/Code tabs, lazy code
  * blocks, per-preview light/dark toggle, surface + viewport menus (surface
- * choice is shared across previews and persisted), dependency popover and "open
- * in new tab".
+ * choice is shared across previews and persisted), and "open in new tab".
  */
 import { ensureLazyCodeBlock } from "#/lib/ensure-lazy-codeblock";
 
@@ -115,9 +114,6 @@ function bindPreview(root: HTMLElement) {
   const stage = root.querySelector<HTMLElement>("[data-preview-stage]");
   const themeBtn = root.querySelector<HTMLElement>("[data-theme-toggle]");
   const openTabBtn = root.querySelector<HTMLElement>("[data-open-tab]");
-  const depsRoot = root.querySelector<HTMLElement>("[data-deps]");
-  const depsToggle = root.querySelector<HTMLElement>("[data-deps-toggle]");
-  const depsPanel = root.querySelector<HTMLElement>("[data-deps-panel]");
   const menus = [...root.querySelectorAll<HTMLElement>("[data-preview-menu]")];
   const sun = themeBtn?.querySelector<HTMLElement>("[data-icon-sun]");
   const moon = themeBtn?.querySelector<HTMLElement>("[data-icon-moon]");
@@ -128,8 +124,9 @@ function bindPreview(root: HTMLElement) {
       tab.toggleAttribute("data-active", active);
       tab.setAttribute("aria-selected", active ? "true" : "false");
     }
-    previewPanel?.classList.toggle("hidden", view !== "preview");
-    codePanel?.classList.toggle("hidden", view !== "code");
+    // HTML `hidden` beats layout `display` utilities / `.docs-preview-frame`.
+    if (previewPanel) previewPanel.hidden = view !== "preview";
+    if (codePanel) codePanel.hidden = view !== "code";
     if (view === "code" && codePanel) {
       void ensureLazyCodeBlock(codePanel);
     }
@@ -202,14 +199,13 @@ function bindPreview(root: HTMLElement) {
     ]
       .map((node) => node.outerHTML)
       .join("\n");
-    const title = root.dataset.package || "Preview";
     const previewDark = previewTheme === "dark";
     const html = `<!doctype html>
 <html lang="en" class="${previewDark ? "dark" : ""}">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>${title}</title>
+<title>Preview</title>
   ${styles}
 </head>
 <body class="min-h-dvh bg-background p-0 text-foreground">
@@ -225,24 +221,11 @@ function bindPreview(root: HTMLElement) {
     win.document.close();
   });
 
-  function closeDeps() {
-    depsPanel?.classList.add("hidden");
-    depsToggle?.setAttribute("aria-expanded", "false");
-  }
-
   function closeMenus(except?: HTMLElement) {
     for (const menu of menus) {
       if (menu !== except) closeMenu(menu);
     }
   }
-
-  depsToggle?.addEventListener("click", (event) => {
-    event.stopPropagation();
-    closeMenus();
-    const willOpen = depsPanel?.classList.contains("hidden");
-    depsPanel?.classList.toggle("hidden", !willOpen);
-    depsToggle.setAttribute("aria-expanded", willOpen ? "true" : "false");
-  });
 
   for (const menu of menus) {
     const toggle = menu.querySelector<HTMLElement>(
@@ -250,7 +233,6 @@ function bindPreview(root: HTMLElement) {
     );
     toggle?.addEventListener("click", (event) => {
       event.stopPropagation();
-      closeDeps();
       const panel = menu.querySelector<HTMLElement>(
         "[data-preview-menu-panel]",
       );
@@ -284,14 +266,12 @@ function bindPreview(root: HTMLElement) {
 
   document.addEventListener("click", (event) => {
     const target = event.target as Node;
-    if (depsRoot && !depsRoot.contains(target)) closeDeps();
     for (const menu of menus) {
       if (!menu.contains(target)) closeMenu(menu);
     }
   });
   document.addEventListener("keydown", (event) => {
     if (event.key !== "Escape") return;
-    closeDeps();
     closeMenus();
   });
 }

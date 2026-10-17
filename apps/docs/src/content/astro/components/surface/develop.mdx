@@ -1,0 +1,75 @@
+import Example from "#/components/docs/example.astro";
+import Variants from "#examples/astro/surface/variants.astro";
+import Padding from "#examples/astro/surface/padding.astro";
+import Nested from "#examples/astro/surface/nested.astro";
+import CustomRecipe from "#examples/astro/surface/custom-recipe.astro";
+import VariantsSource from "#examples/astro/surface/variants.astro?raw";
+import PaddingSource from "#examples/astro/surface/padding.astro?raw";
+import NestedSource from "#examples/astro/surface/nested.astro?raw";
+import CustomRecipeSource from "#examples/astro/surface/custom-recipe.astro?raw";
+
+## Import
+
+```ts
+import { Surface } from "@pisagor/astro";
+```
+
+## Examples
+
+### Variants
+
+Choose surface elevation or tone to match hierarchy.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="surface"
+  framework="astro"
+  kind="component"
+>
+  <Variants />
+</Example>
+
+### Padding
+
+Adjust padding to match the density of the surrounding layout.
+
+<Example
+  name="Padding"
+  code={PaddingSource}
+  exampleId="surface"
+  framework="astro"
+  kind="component"
+>
+  <Padding />
+</Example>
+
+### Nested
+
+Nest another surface when hierarchy or layered structure is part of the content.
+
+<Example
+  name="Nested"
+  code={NestedSource}
+  exampleId="surface"
+  framework="astro"
+  kind="component"
+>
+  <Nested />
+</Example>
+
+## Customization
+
+### Custom recipe
+
+Extend `surfaceRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="surface"
+  framework="astro"
+  kind="component"
+>
+  <CustomRecipe />
+</Example>

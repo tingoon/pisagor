@@ -1,3 +1,4 @@
+import source from "./banner.tsx?raw";
 import { Announcement, AppShell, Badge, Button } from "@pisagor/solid";
 import { WarningIcon } from "@pisagor/solid/icons";
 import { createSignal, Show } from "solid-js";
@@ -29,3 +30,5 @@ export function Banner() {
     </AppShell>
   );
 }
+
+export { source as BannerSource };

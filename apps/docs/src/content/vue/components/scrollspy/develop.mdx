@@ -1,0 +1,35 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/scrollspy/default.vue?raw";
+import HorizontalSource from "#examples/vue/scrollspy/horizontal.vue?raw";
+
+## Import
+
+```ts
+import { Scrollspy } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Highlight the nav item that matches the section in view.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="scrollspy"
+  framework="vue"
+  kind="component"
+/>
+
+### Horizontal
+
+Use a horizontal layout when the scrollspy should read left to right.
+
+<Example
+  name="Horizontal"
+  code={HorizontalSource}
+  exampleId="scrollspy"
+  framework="vue"
+  kind="component"
+/>

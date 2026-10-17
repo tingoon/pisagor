@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { RadioGroup } from "@pisagor/react";
 
 export function Default() {
@@ -12,3 +13,5 @@ export function Default() {
     />
   );
 }
+
+export { source as DefaultSource };

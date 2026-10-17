@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { Skeleton } from "@pisagor/react";
 import { skeletonRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -19,3 +20,5 @@ export function CustomRecipe() {
     </div>
   );
 }
+
+export { source as CustomRecipeSource };

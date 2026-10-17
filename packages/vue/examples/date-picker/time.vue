@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./time.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { DatePicker, Field } from "@pisagor/vue";
 </script>

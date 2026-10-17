@@ -1,3 +1,4 @@
+import source from "./sanitize-value.tsx?raw";
 import { Field, TagsInput } from "@pisagor/react";
 export function SanitizeValue() {
   return (
@@ -21,3 +22,5 @@ export function SanitizeValue() {
     </Field>
   );
 }
+
+export { source as SanitizeValueSource };

@@ -1,3 +1,4 @@
+import source from "./media-capture.tsx?raw";
 import { Button, FileUpload } from "@pisagor/solid";
 import { CameraIcon } from "@pisagor/solid/icons";
 export function MediaCapture() {
@@ -17,3 +18,5 @@ export function MediaCapture() {
     </FileUpload>
   );
 }
+
+export { source as MediaCaptureSource };

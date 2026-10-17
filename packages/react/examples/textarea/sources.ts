@@ -1,21 +1,21 @@
-import autoresizeRaw from "./autoresize.tsx?raw";
-import clearableRaw from "./clearable.tsx?raw";
-import controlledRaw from "./controlled.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import invalidRaw from "./invalid.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
+import { AutoresizeSource as Autoresize } from "./autoresize";
+import { ClearableSource as Clearable } from "./clearable";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DisabledSource as Disabled } from "./disabled";
+import { InvalidSource as Invalid } from "./invalid";
+import { SizesSource as Sizes } from "./sizes";
+import { VariantsSource as Variants } from "./variants";
 
 export const imports = `import { Textarea } from "@pisagor/react";`;
 
 export const sources = {
-  Autoresize: autoresizeRaw,
-  Clearable: clearableRaw,
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Disabled: disabledRaw,
-  Invalid: invalidRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
+  Autoresize,
+  Clearable,
+  Controlled,
+  CustomRecipe,
+  Disabled,
+  Invalid,
+  Sizes,
+  Variants,
 } as const;

@@ -1,3 +1,4 @@
+import source from "./not-hoverable.tsx?raw";
 import { Table } from "@pisagor/react";
 import { workspaceUsers } from "./helpers";
 
@@ -24,3 +25,5 @@ export function NotHoverable() {
     </Table>
   );
 }
+
+export { source as NotHoverableSource };

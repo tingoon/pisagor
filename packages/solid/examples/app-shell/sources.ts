@@ -1,27 +1,23 @@
-import bannerRaw from "./banner.tsx?raw";
-import contentRaw from "./content.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import disable_hotkeyRaw from "./disable-hotkey.tsx?raw";
-import headerRaw from "./header.tsx?raw";
-import helpersRaw from "./helpers.tsx?raw";
-import inspectorsRaw from "./inspectors.tsx?raw";
-import mainRaw from "./main.tsx?raw";
-import navigationRaw from "./navigation.tsx?raw";
-import panelsRaw from "./panels.tsx?raw";
-import railsRaw from "./rails.tsx?raw";
+import { BannerSource as Banner } from "./banner";
+import { ContentSource as Content } from "./content";
+import { DefaultSource as Default } from "./default";
+import { HeaderSource as Header } from "./header";
+import { InspectorsSource as Inspectors } from "./inspectors";
+import { MainSource as Main } from "./main";
+import { NavigationSource as Navigation } from "./navigation";
+import { PanelsSource as Panels } from "./panels";
+import { RailsSource as Rails } from "./rails";
 
 export const imports = `import { AppShell } from "@pisagor/solid";`;
 
 export const sources = {
-  Banner: bannerRaw,
-  Content: contentRaw,
-  Default: defaultRaw,
-  DisableHotkey: disable_hotkeyRaw,
-  Header: headerRaw,
-  Helpers: helpersRaw,
-  Inspectors: inspectorsRaw,
-  Main: mainRaw,
-  Navigation: navigationRaw,
-  Panels: panelsRaw,
-  Rails: railsRaw,
+  Banner,
+  Content,
+  Default,
+  Header,
+  Inspectors,
+  Main,
+  Navigation,
+  Panels,
+  Rails,
 } as const;

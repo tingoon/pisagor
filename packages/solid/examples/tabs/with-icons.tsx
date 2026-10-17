@@ -1,3 +1,4 @@
+import source from "./with-icons.tsx?raw";
 import { Tabs } from "@pisagor/solid";
 import { GearIcon, ShieldIcon, UserIcon } from "@pisagor/solid/icons";
 
@@ -52,3 +53,5 @@ export function WithIcons() {
     />
   );
 }
+
+export { source as WithIconsSource };

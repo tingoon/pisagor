@@ -1,15 +1,15 @@
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import nestedRaw from "./nested.tsx?raw";
-import paddingRaw from "./padding.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
-import with_form_controlsRaw from "./with-form-controls.tsx?raw";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { NestedSource as Nested } from "./nested";
+import { PaddingSource as Padding } from "./padding";
+import { VariantsSource as Variants } from "./variants";
+import { WithFormControlsSource as WithFormControls } from "./with-form-controls";
 
 export const imports = `import { Surface } from "@pisagor/react";`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  Nested: nestedRaw,
-  Padding: paddingRaw,
-  Variants: variantsRaw,
-  WithFormControls: with_form_controlsRaw,
+  CustomRecipe,
+  Nested,
+  Padding,
+  Variants,
+  WithFormControls,
 } as const;

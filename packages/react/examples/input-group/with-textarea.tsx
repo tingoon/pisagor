@@ -1,3 +1,4 @@
+import source from "./with-textarea.tsx?raw";
 import { ArrowUpIcon, PlusIcon } from "@phosphor-icons/react";
 import { Button, InputGroup } from "@pisagor/react";
 export function WithTextarea() {
@@ -21,3 +22,5 @@ export function WithTextarea() {
     </InputGroup>
   );
 }
+
+export { source as WithTextareaSource };

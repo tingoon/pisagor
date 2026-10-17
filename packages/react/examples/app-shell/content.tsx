@@ -1,3 +1,4 @@
+import source from "./content.tsx?raw";
 import { AppShell } from "@pisagor/react";
 import { mainContent, regionTitle } from "./helpers";
 
@@ -12,3 +13,5 @@ export function Content() {
     </AppShell>
   );
 }
+
+export { source as ContentSource };

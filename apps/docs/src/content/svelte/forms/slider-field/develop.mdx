@@ -1,0 +1,50 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte-form/slider-field/default.svelte?raw";
+import DisabledSource from "#examples/svelte-form/slider-field/disabled.svelte?raw";
+import InvalidSource from "#examples/svelte-form/slider-field/invalid.svelte?raw";
+
+## Import
+
+```ts
+import { SliderField } from "@pisagor/svelte-form";
+```
+
+Part of `@pisagor/svelte-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+A slider with a label and live value for picking a number in a range.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="slider-field"
+  framework="svelte"
+  kind="form"
+/>
+
+### Disabled
+
+Show that the slider is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="slider-field"
+  framework="svelte"
+  kind="form"
+/>
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="slider-field"
+  framework="svelte"
+  kind="form"
+/>

@@ -1,0 +1,104 @@
+import Example from "#/components/docs/example.astro";
+import { VariantsSource } from "#examples/solid/badge/variants.tsx";
+import { SizesSource } from "#examples/solid/badge/sizes.tsx";
+import { PillSource } from "#examples/solid/badge/pill.tsx";
+import { WithLinkSource } from "#examples/solid/badge/with-link.tsx";
+import { WithSpinnerSource } from "#examples/solid/badge/with-spinner.tsx";
+import { CustomColorSource } from "#examples/solid/badge/custom-color.tsx";
+import { CustomRecipeSource } from "#examples/solid/badge/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Badge } from "@pisagor/solid";
+```
+
+## Examples
+
+### Variants
+
+Choose tone so the badge reflects status severity or category.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="badge"
+  framework="solid"
+  kind="component"
+/>
+
+### Sizes
+
+Match badge size to nearby text and controls.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="badge"
+  framework="solid"
+  kind="component"
+/>
+
+### Pill
+
+Use a fully rounded shape when softer, chip-like geometry fits the layout.
+
+<Example
+  name="Pill"
+  code={PillSource}
+  exampleId="badge"
+  framework="solid"
+  kind="component"
+/>
+
+### With Link
+
+Make the badge navigate when the label itself is a destination.
+
+<Example
+  name="WithLink"
+  code={WithLinkSource}
+  exampleId="badge"
+  framework="solid"
+  kind="component"
+/>
+
+### With Spinner
+
+Show a spinner inside the badge when the status is still loading.
+
+<Example
+  name="WithSpinner"
+  code={WithSpinnerSource}
+  exampleId="badge"
+  framework="solid"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Override the fill when a brand or contextual color matters more than the theme default.
+
+<Example
+  name="CustomColor"
+  code={CustomColorSource}
+  exampleId="badge"
+  framework="solid"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `badgeRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="badge"
+  framework="solid"
+  kind="component"
+/>

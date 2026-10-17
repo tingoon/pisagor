@@ -1,3 +1,4 @@
+import source from "./label-format-select.tsx?raw";
 import { ColorPicker, Input, parseColor } from "@pisagor/react";
 
 export function LabelFormatSelect() {
@@ -17,3 +18,5 @@ export function LabelFormatSelect() {
     </ColorPicker>
   );
 }
+
+export { source as LabelFormatSelectSource };

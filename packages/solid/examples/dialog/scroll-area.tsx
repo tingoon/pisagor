@@ -1,3 +1,4 @@
+import source from "./scroll-area.tsx?raw";
 import { Button, Dialog } from "@pisagor/solid";
 import { Portal } from "solid-js/web";
 export function ScrollArea() {
@@ -62,3 +63,5 @@ export function ScrollArea() {
     </Dialog.Root>
   );
 }
+
+export { source as ScrollAreaSource };

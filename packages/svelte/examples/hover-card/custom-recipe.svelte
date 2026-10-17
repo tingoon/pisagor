@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./custom-recipe.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { hoverCardRecipe } from "@pisagor/recipes";
   import { Avatar, Button, HoverCard } from "@pisagor/svelte";

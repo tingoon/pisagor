@@ -1,0 +1,115 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/switch/default.tsx";
+import { VariantsSource } from "#examples/react/switch/variants.tsx";
+import { SizesSource } from "#examples/react/switch/sizes.tsx";
+import { CompoundSource } from "#examples/react/switch/compound.tsx";
+import { ControlledSource } from "#examples/react/switch/controlled.tsx";
+import { DisabledSource } from "#examples/react/switch/disabled.tsx";
+import { InvalidSource } from "#examples/react/switch/invalid.tsx";
+import { CustomRecipeSource } from "#examples/react/switch/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Switch } from "@pisagor/react";
+```
+
+## Examples
+
+### Default
+
+Toggle a setting on or off with immediate effect.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="switch"
+  framework="react"
+  kind="component"
+/>
+
+### Variants
+
+Choose emphasis to match other controls in the form.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="switch"
+  framework="react"
+  kind="component"
+/>
+
+### Sizes
+
+Match switch size to surrounding form density.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="switch"
+  framework="react"
+  kind="component"
+/>
+
+### Compound
+
+Compose `Switch.Root`, `Switch.Control`, `Switch.Thumb` and `Switch.HiddenInput` when you need custom structure.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="switch"
+  framework="react"
+  kind="component"
+/>
+
+### Controlled
+
+Drive checked state from the parent when other UI depends on it.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="switch"
+  framework="react"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the setting cannot change.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="switch"
+  framework="react"
+  kind="component"
+/>
+
+### Invalid
+
+Surface a validation error when the setting is required or not allowed.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="switch"
+  framework="react"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `switchRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="switch"
+  framework="react"
+  kind="component"
+/>

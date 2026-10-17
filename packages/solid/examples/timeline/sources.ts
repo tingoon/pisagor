@@ -1,11 +1,11 @@
-import compoundRaw from "./compound.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import horizontalRaw from "./horizontal.tsx?raw";
+import { CompoundSource as Compound } from "./compound";
+import { DefaultSource as Default } from "./default";
+import { HorizontalSource as Horizontal } from "./horizontal";
 
 export const imports = `import { Timeline } from "@pisagor/solid";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  Default: defaultRaw,
-  Horizontal: horizontalRaw,
+  Compound,
+  Default,
+  Horizontal,
 } as const;

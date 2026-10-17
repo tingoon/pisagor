@@ -1,3 +1,4 @@
+import source from "./close-trigger.tsx?raw";
 import { ActionBar, Button } from "@pisagor/solid";
 import {
   ArchiveIcon,
@@ -58,3 +59,5 @@ export function CloseTrigger() {
     </ActionBar>
   );
 }
+
+export { source as CloseTriggerSource };

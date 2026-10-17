@@ -1,3 +1,4 @@
+import source from "./with-menu.tsx?raw";
 import { ActionBar, Button, DropdownMenu } from "@pisagor/solid";
 import {
   ArchiveIcon,
@@ -62,3 +63,5 @@ export function WithMenu() {
     </ActionBar>
   );
 }
+
+export { source as WithMenuSource };

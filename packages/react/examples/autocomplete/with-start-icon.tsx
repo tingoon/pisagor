@@ -1,3 +1,4 @@
+import source from "./with-start-icon.tsx?raw";
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { AppleLogoIcon } from "@phosphor-icons/react";
 import { Autocomplete, InputGroup } from "@pisagor/react";
@@ -37,3 +38,5 @@ export function WithStartIcon() {
     </Autocomplete.Root>
   );
 }
+
+export { source as WithStartIconSource };

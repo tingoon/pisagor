@@ -1,19 +1,19 @@
-import controlledRaw from "./controlled.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import indeterminateRaw from "./indeterminate.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-import thicknessRaw from "./thickness.tsx?raw";
-import with_valueRaw from "./with-value.tsx?raw";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { IndeterminateSource as Indeterminate } from "./indeterminate";
+import { SizesSource as Sizes } from "./sizes";
+import { ThicknessSource as Thickness } from "./thickness";
+import { WithValueSource as WithValue } from "./with-value";
 
 export const imports = `import { CircularProgress } from "@pisagor/react";`;
 
 export const sources = {
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Indeterminate: indeterminateRaw,
-  Sizes: sizesRaw,
-  Thickness: thicknessRaw,
-  WithValue: with_valueRaw,
+  Controlled,
+  CustomRecipe,
+  Default,
+  Indeterminate,
+  Sizes,
+  Thickness,
+  WithValue,
 } as const;

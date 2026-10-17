@@ -1,3 +1,4 @@
+import source from "./product.tsx?raw";
 import { Card } from "@pisagor/react";
 
 export function Product() {
@@ -11,3 +12,5 @@ export function Product() {
     </Card>
   );
 }
+
+export { source as ProductSource };

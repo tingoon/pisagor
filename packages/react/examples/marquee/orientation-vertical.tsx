@@ -1,3 +1,4 @@
+import source from "./orientation-vertical.tsx?raw";
 import {
   ArrowRightIcon,
   AtomIcon,
@@ -40,3 +41,5 @@ export function OrientationVertical() {
     </div>
   );
 }
+
+export { source as OrientationVerticalSource };

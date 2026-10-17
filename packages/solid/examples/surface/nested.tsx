@@ -1,3 +1,4 @@
+import source from "./nested.tsx?raw";
 import { Surface } from "@pisagor/solid";
 
 export function Nested() {
@@ -24,3 +25,5 @@ export function Nested() {
     </Surface>
   );
 }
+
+export { source as NestedSource };

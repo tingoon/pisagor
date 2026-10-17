@@ -1,3 +1,4 @@
+import source from "./default.ts?raw";
 import { PhTextB } from "@phosphor-icons/vue";
 import { Button, Tooltip } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
@@ -22,3 +23,5 @@ export default defineComponent({
       );
   },
 });
+
+export { source };

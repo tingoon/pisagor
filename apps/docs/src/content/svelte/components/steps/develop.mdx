@@ -1,0 +1,119 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/steps/default.svelte?raw";
+import VerticalSource from "#examples/svelte/steps/vertical.svelte?raw";
+import TitleSource from "#examples/svelte/steps/title.svelte?raw";
+import DescriptionSource from "#examples/svelte/steps/description.svelte?raw";
+import IconSource from "#examples/svelte/steps/icon.svelte?raw";
+import ControlledSource from "#examples/svelte/steps/controlled.svelte?raw";
+import LoadingSource from "#examples/svelte/steps/loading.svelte?raw";
+
+## Import
+
+```ts
+import { Steps } from "@pisagor/svelte";
+```
+
+## Anatomy
+
+```tsx
+<Steps>
+  <Steps.List>
+    <Steps.Item>
+      <Steps.Trigger>
+        <Steps.Indicator />
+      </Steps.Trigger>
+      <Steps.Separator />
+    </Steps.Item>
+  </Steps.List>
+  <Steps.Content />
+  <Steps.CompletedContent />
+  <Steps.PrevTrigger />
+  <Steps.NextTrigger />
+</Steps>
+```
+
+## Examples
+
+### Default
+
+Show progress through a linear multi-step flow.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="steps"
+  framework="svelte"
+  kind="component"
+/>
+
+### Vertical
+
+Use a vertical layout when the steps should read top to bottom.
+
+<Example
+  name="Vertical"
+  code={VerticalSource}
+  exampleId="steps"
+  framework="svelte"
+  kind="component"
+/>
+
+### Title
+
+Emphasize step titles for scannable wizard chrome.
+
+<Example
+  name="Title"
+  code={TitleSource}
+  exampleId="steps"
+  framework="svelte"
+  kind="component"
+/>
+
+### Description
+
+Add step descriptions when titles alone are not enough.
+
+<Example
+  name="Description"
+  code={DescriptionSource}
+  exampleId="steps"
+  framework="svelte"
+  kind="component"
+/>
+
+### Icon
+
+Lead steps with icons when symbols speed recognition.
+
+<Example
+  name="Icon"
+  code={IconSource}
+  exampleId="steps"
+  framework="svelte"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this steps.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="steps"
+  framework="svelte"
+  kind="component"
+/>
+
+### Loading
+
+Show a loading step while async work finishes before continuing.
+
+<Example
+  name="Loading"
+  code={LoadingSource}
+  exampleId="steps"
+  framework="svelte"
+  kind="component"
+/>

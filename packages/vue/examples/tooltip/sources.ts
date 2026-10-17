@@ -1,19 +1,19 @@
-import compoundRaw from "./compound.ts?raw";
-import custom_recipeRaw from "./custom-recipe.ts?raw";
-import defaultRaw from "./default.ts?raw";
-import disabledRaw from "./disabled.ts?raw";
-import placementsRaw from "./placements.ts?raw";
-import with_keyboard_shortcutRaw from "./with-keyboard-shortcut.ts?raw";
-import without_arrowRaw from "./without-arrow.vue?raw";
+import Compound from "./compound.ts?raw";
+import CustomRecipe from "./custom-recipe.ts?raw";
+import Default from "./default.ts?raw";
+import Disabled from "./disabled.ts?raw";
+import Placements from "./placements.ts?raw";
+import WithKeyboardShortcut from "./with-keyboard-shortcut.ts?raw";
+import WithoutArrow from "./without-arrow.vue?raw";
 
 export const imports = `import { Tooltip } from "@pisagor/vue";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  Placements: placementsRaw,
-  WithKeyboardShortcut: with_keyboard_shortcutRaw,
-  WithoutArrow: without_arrowRaw,
+  Compound,
+  CustomRecipe,
+  Default,
+  Disabled,
+  Placements,
+  WithKeyboardShortcut,
+  WithoutArrow,
 } as const;

@@ -1,3 +1,4 @@
+import source from "./checkbox-group-field.tsx?raw";
 import { Checkbox, Field } from "@pisagor/solid";
 export function CheckboxGroupField() {
   return (
@@ -31,3 +32,5 @@ export function CheckboxGroupField() {
     </Field.Set>
   );
 }
+
+export { source as CheckboxGroupFieldSource };

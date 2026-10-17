@@ -1,0 +1,91 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/highlight/default.tsx";
+import { SquiggleSource } from "#examples/react/highlight/squiggle.tsx";
+import { MultipleSource } from "#examples/react/highlight/multiple.tsx";
+import { SearchQuerySource } from "#examples/react/highlight/search-query.tsx";
+import { CustomStyleSource } from "#examples/react/highlight/custom-style.tsx";
+import { CustomRecipeSource } from "#examples/react/highlight/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Highlight } from "@pisagor/react";
+```
+
+## Examples
+
+### Default
+
+Emphasize matching substrings in text.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="highlight"
+  framework="react"
+  kind="component"
+/>
+
+### Squiggle
+
+Use a squiggle emphasis when the match needs a distinct treatment.
+
+<Example
+  name="Squiggle"
+  code={SquiggleSource}
+  exampleId="highlight"
+  framework="react"
+  kind="component"
+/>
+
+### Multiple
+
+Allow more than one open or selected item when users need several at once.
+
+<Example
+  name="Multiple"
+  code={MultipleSource}
+  exampleId="highlight"
+  framework="react"
+  kind="component"
+/>
+
+### Search Query
+
+Highlight query matches in search results.
+
+<Example
+  name="SearchQuery"
+  code={SearchQuerySource}
+  exampleId="highlight"
+  framework="react"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Override highlight style when brand treatment differs from the default.
+
+<Example
+  name="CustomStyle"
+  code={CustomStyleSource}
+  exampleId="highlight"
+  framework="react"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `highlightRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="highlight"
+  framework="react"
+  kind="component"
+/>

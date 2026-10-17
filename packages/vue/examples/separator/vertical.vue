@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./vertical.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Separator } from "@pisagor/vue";
 </script>

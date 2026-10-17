@@ -1,3 +1,4 @@
+import source from "./with-form-controls.tsx?raw";
 import { createListCollection } from "@ark-ui/react";
 import {
   Checkbox,
@@ -74,3 +75,5 @@ export function WithFormControls() {
     </Surface>
   );
 }
+
+export { source as WithFormControlsSource };

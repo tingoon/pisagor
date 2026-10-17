@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./horizontal.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, ScrollArea, Scrollspy } from "@pisagor/svelte";
   import { horizontalSections } from "./helpers";

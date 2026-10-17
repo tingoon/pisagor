@@ -1,0 +1,50 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue-form/rich-text-editor-field/default.vue?raw";
+import DisabledSource from "#examples/vue-form/rich-text-editor-field/disabled.vue?raw";
+import InvalidSource from "#examples/vue-form/rich-text-editor-field/invalid.vue?raw";
+
+## Import
+
+```ts
+import { RichTextEditorField } from "@pisagor/vue-form";
+```
+
+Part of `@pisagor/vue-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+A formatted text editor with label and helper text for long-form content.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="rich-text-editor-field"
+  framework="vue"
+  kind="form"
+/>
+
+### Disabled
+
+Show that the editor is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="rich-text-editor-field"
+  framework="vue"
+  kind="form"
+/>
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="rich-text-editor-field"
+  framework="vue"
+  kind="form"
+/>

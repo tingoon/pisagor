@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { parseDate } from "@pisagor/solid";
 import { useAppForm } from "@pisagor/solid-form/tanstack";
 import { cityOptions, countryOptions, planOptions } from "../options";
@@ -198,3 +199,5 @@ export function Default() {
     </form.Root>
   );
 }
+
+export { source as DefaultSource };

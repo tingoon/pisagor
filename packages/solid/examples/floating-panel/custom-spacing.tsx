@@ -1,3 +1,4 @@
+import source from "./custom-spacing.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import {
   Button,
@@ -69,3 +70,5 @@ export function CustomSpacing() {
     </FloatingPanel>
   );
 }
+
+export { source as CustomSpacingSource };

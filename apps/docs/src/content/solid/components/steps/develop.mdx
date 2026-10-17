@@ -1,0 +1,119 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid/steps/default.tsx";
+import { VerticalSource } from "#examples/solid/steps/vertical.tsx";
+import { TitleSource } from "#examples/solid/steps/title.tsx";
+import { DescriptionSource } from "#examples/solid/steps/description.tsx";
+import { IconSource } from "#examples/solid/steps/icon.tsx";
+import { ControlledSource } from "#examples/solid/steps/controlled.tsx";
+import { LoadingSource } from "#examples/solid/steps/loading.tsx";
+
+## Import
+
+```tsx
+import { Steps } from "@pisagor/solid";
+```
+
+## Anatomy
+
+```tsx
+<Steps>
+  <Steps.List>
+    <Steps.Item>
+      <Steps.Trigger>
+        <Steps.Indicator />
+      </Steps.Trigger>
+      <Steps.Separator />
+    </Steps.Item>
+  </Steps.List>
+  <Steps.Content />
+  <Steps.CompletedContent />
+  <Steps.PrevTrigger />
+  <Steps.NextTrigger />
+</Steps>
+```
+
+## Examples
+
+### Default
+
+Show progress through a linear multi-step flow.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="steps"
+  framework="solid"
+  kind="component"
+/>
+
+### Vertical
+
+Use a vertical layout when the steps should read top to bottom.
+
+<Example
+  name="Vertical"
+  code={VerticalSource}
+  exampleId="steps"
+  framework="solid"
+  kind="component"
+/>
+
+### Title
+
+Emphasize step titles for scannable wizard chrome.
+
+<Example
+  name="Title"
+  code={TitleSource}
+  exampleId="steps"
+  framework="solid"
+  kind="component"
+/>
+
+### Description
+
+Add step descriptions when titles alone are not enough.
+
+<Example
+  name="Description"
+  code={DescriptionSource}
+  exampleId="steps"
+  framework="solid"
+  kind="component"
+/>
+
+### Icon
+
+Lead steps with icons when symbols speed recognition.
+
+<Example
+  name="Icon"
+  code={IconSource}
+  exampleId="steps"
+  framework="solid"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this steps.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="steps"
+  framework="solid"
+  kind="component"
+/>
+
+### Loading
+
+Show a loading step while async work finishes before continuing.
+
+<Example
+  name="Loading"
+  code={LoadingSource}
+  exampleId="steps"
+  framework="solid"
+  kind="component"
+/>

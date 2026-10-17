@@ -1,3 +1,4 @@
+import source from "./countdown-date.tsx?raw";
 import { Card, Timer } from "@pisagor/solid";
 export function CountdownDate() {
   const formatDate = (date: Date) =>
@@ -43,3 +44,5 @@ export function CountdownDate() {
     </Card>
   );
 }
+
+export { source as CountdownDateSource };

@@ -1,3 +1,4 @@
+import source from "./variants.tsx?raw";
 import { Autocomplete } from "@pisagor/solid";
 
 const items = [
@@ -14,3 +15,5 @@ export function Variants() {
     </div>
   );
 }
+
+export { source as VariantsSource };

@@ -1,3 +1,4 @@
+import source from "./sizes.tsx?raw";
 import { InputGroup } from "@pisagor/solid";
 import { MagnifyingGlassIcon } from "@pisagor/solid/icons";
 
@@ -25,3 +26,5 @@ export function Sizes() {
     </div>
   );
 }
+
+export { source as SizesSource };

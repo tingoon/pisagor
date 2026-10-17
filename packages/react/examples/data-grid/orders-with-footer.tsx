@@ -1,3 +1,4 @@
+import source from "./orders-with-footer.tsx?raw";
 import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Table } from "@pisagor/react";
 import type { ColumnDef, SortingState } from "@pisagor/react/data-grid";
@@ -179,3 +180,5 @@ export function OrdersWithFooter() {
     </DataGridShell>
   );
 }
+
+export { source as OrdersWithFooterSource };

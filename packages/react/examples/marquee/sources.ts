@@ -1,25 +1,25 @@
-import autofillRaw from "./autofill.tsx?raw";
-import compoundRaw from "./compound.tsx?raw";
-import custom_speedRaw from "./custom-speed.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import fadeRaw from "./fade.tsx?raw";
-import orientation_horizontalRaw from "./orientation-horizontal.tsx?raw";
-import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
-import pause_on_hoverRaw from "./pause-on-hover.tsx?raw";
-import reverseRaw from "./reverse.tsx?raw";
-import spacingRaw from "./spacing.tsx?raw";
+import { AutofillSource as Autofill } from "./autofill";
+import { CompoundSource as Compound } from "./compound";
+import { CustomSpeedSource as CustomSpeed } from "./custom-speed";
+import { DefaultSource as Default } from "./default";
+import { FadeSource as Fade } from "./fade";
+import { OrientationHorizontalSource as OrientationHorizontal } from "./orientation-horizontal";
+import { OrientationVerticalSource as OrientationVertical } from "./orientation-vertical";
+import { PauseOnHoverSource as PauseOnHover } from "./pause-on-hover";
+import { ReverseSource as Reverse } from "./reverse";
+import { SpacingSource as Spacing } from "./spacing";
 
 export const imports = `import { Marquee } from "@pisagor/react";`;
 
 export const sources = {
-  Autofill: autofillRaw,
-  Compound: compoundRaw,
-  CustomSpeed: custom_speedRaw,
-  Default: defaultRaw,
-  Fade: fadeRaw,
-  OrientationHorizontal: orientation_horizontalRaw,
-  OrientationVertical: orientation_verticalRaw,
-  PauseOnHover: pause_on_hoverRaw,
-  Reverse: reverseRaw,
-  Spacing: spacingRaw,
+  Autofill,
+  Compound,
+  CustomSpeed,
+  Default,
+  Fade,
+  OrientationHorizontal,
+  OrientationVertical,
+  PauseOnHover,
+  Reverse,
+  Spacing,
 } as const;

@@ -1,15 +1,15 @@
-import compactRaw from "./compact.vue?raw";
-import compoundRaw from "./compound.vue?raw";
-import custom_recipeRaw from "./custom-recipe.vue?raw";
-import defaultRaw from "./default.vue?raw";
-import sizesRaw from "./sizes.vue?raw";
+import Compact from "./compact.vue?raw";
+import Compound from "./compound.vue?raw";
+import CustomRecipe from "./custom-recipe.vue?raw";
+import Default from "./default.vue?raw";
+import Sizes from "./sizes.vue?raw";
 
 export const imports = `import { EmptyState } from "@pisagor/vue";`;
 
 export const sources = {
-  Compact: compactRaw,
-  Compound: compoundRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Sizes: sizesRaw,
+  Compact,
+  Compound,
+  CustomRecipe,
+  Default,
+  Sizes,
 } as const;

@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./sizes.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, Editable, Input } from "@pisagor/svelte";
   import { CheckIcon, XIcon } from "@pisagor/svelte/icons";

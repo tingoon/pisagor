@@ -1,17 +1,17 @@
-import controlledRaw from "./controlled.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import nestedRaw from "./nested.tsx?raw";
-import partial_collapseRaw from "./partial-collapse.tsx?raw";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { DisabledSource as Disabled } from "./disabled";
+import { NestedSource as Nested } from "./nested";
+import { PartialCollapseSource as PartialCollapse } from "./partial-collapse";
 
 export const imports = `import { Collapsible } from "@pisagor/react";`;
 
 export const sources = {
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  Nested: nestedRaw,
-  PartialCollapse: partial_collapseRaw,
+  Controlled,
+  CustomRecipe,
+  Default,
+  Disabled,
+  Nested,
+  PartialCollapse,
 } as const;

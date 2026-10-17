@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { BottomNavigation } from "@pisagor/solid";
 
 export function Default() {
@@ -14,3 +15,5 @@ export function Default() {
     </BottomNavigation>
   );
 }
+
+export { source as DefaultSource };

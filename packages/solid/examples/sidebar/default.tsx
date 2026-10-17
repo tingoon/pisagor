@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Button, Sidebar } from "@pisagor/solid";
 
 export function Default() {
@@ -49,3 +50,5 @@ export function Default() {
     </Sidebar.Provider>
   );
 }
+
+export { source as DefaultSource };

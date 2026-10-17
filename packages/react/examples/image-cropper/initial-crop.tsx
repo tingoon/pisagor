@@ -1,3 +1,4 @@
+import source from "./initial-crop.tsx?raw";
 import { ImageCropper } from "@pisagor/react";
 
 export function InitialCrop() {
@@ -11,3 +12,5 @@ export function InitialCrop() {
     </ImageCropper>
   );
 }
+
+export { source as InitialCropSource };

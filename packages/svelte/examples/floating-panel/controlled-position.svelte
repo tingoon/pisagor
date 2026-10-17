@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./controlled-position.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, FloatingPanel } from "@pisagor/svelte";
   import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";

@@ -1,17 +1,17 @@
-import custom_recipeRaw from "./custom-recipe.vue?raw";
-import decorativeRaw from "./decorative.vue?raw";
-import defaultRaw from "./default.vue?raw";
-import inline_navigationRaw from "./inline-navigation.vue?raw";
-import listRaw from "./list.vue?raw";
-import verticalRaw from "./vertical.vue?raw";
+import CustomRecipe from "./custom-recipe.vue?raw";
+import Decorative from "./decorative.vue?raw";
+import Default from "./default.vue?raw";
+import InlineNavigation from "./inline-navigation.vue?raw";
+import List from "./list.vue?raw";
+import Vertical from "./vertical.vue?raw";
 
 export const imports = `import { Separator } from "@pisagor/vue";`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  Decorative: decorativeRaw,
-  Default: defaultRaw,
-  InlineNavigation: inline_navigationRaw,
-  List: listRaw,
-  Vertical: verticalRaw,
+  CustomRecipe,
+  Decorative,
+  Default,
+  InlineNavigation,
+  List,
+  Vertical,
 } as const;

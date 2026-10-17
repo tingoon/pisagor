@@ -1,3 +1,4 @@
+import source from "./number-compact.tsx?raw";
 import { Format } from "@pisagor/solid";
 
 export function NumberCompact() {
@@ -19,3 +20,5 @@ export function NumberCompact() {
     </div>
   );
 }
+
+export { source as NumberCompactSource };

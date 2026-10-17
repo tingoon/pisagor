@@ -1,3 +1,4 @@
+import source from "./separator.tsx?raw";
 import { DataList } from "@pisagor/solid";
 
 export function Separator() {
@@ -16,3 +17,5 @@ export function Separator() {
     </DataList.Root>
   );
 }
+
+export { source as SeparatorSource };

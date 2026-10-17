@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import type { NodeProviderProps } from "@pisagor/react";
 import { createTreeCollection, TreeView } from "@pisagor/react";
 export function Default() {
@@ -65,3 +66,5 @@ export function Default() {
     </div>
   );
 }
+
+export { source as DefaultSource };

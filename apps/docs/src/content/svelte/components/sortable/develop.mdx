@@ -1,0 +1,73 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/sortable/default.svelte?raw";
+import HorizontalSource from "#examples/svelte/sortable/horizontal.svelte?raw";
+import WithoutHandleSource from "#examples/svelte/sortable/without-handle.svelte?raw";
+import DisabledSource from "#examples/svelte/sortable/disabled.svelte?raw";
+
+## Import
+
+```ts
+import { Sortable } from "@pisagor/svelte";
+```
+
+## Anatomy
+
+```tsx
+<Sortable>
+  <Sortable.Item>
+    <Sortable.ItemContent>
+      <Sortable.Handle />
+    </Sortable.ItemContent>
+  </Sortable.Item>
+</Sortable>
+```
+
+## Examples
+
+### Default
+
+Reorder items by drag or keyboard.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="sortable"
+  framework="svelte"
+  kind="component"
+/>
+
+### Horizontal
+
+Use a horizontal layout when the sortable list should read left to right.
+
+<Example
+  name="Horizontal"
+  code={HorizontalSource}
+  exampleId="sortable"
+  framework="svelte"
+  kind="component"
+/>
+
+### Without Handle
+
+Drag from the whole row when a dedicated handle is unnecessary.
+
+<Example
+  name="WithoutHandle"
+  code={WithoutHandleSource}
+  exampleId="sortable"
+  framework="svelte"
+  kind="component"
+/>
+
+### Disabled
+
+Show that reordering is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="sortable"
+  framework="svelte"
+  kind="component"
+/>

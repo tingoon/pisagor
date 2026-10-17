@@ -1,0 +1,102 @@
+import Example from "#/components/docs/example.astro";
+import VariantsSource from "#examples/vue/phone-input/variants.vue?raw";
+import SizesSource from "#examples/vue/phone-input/sizes.vue?raw";
+import CustomPopupSource from "#examples/vue/phone-input/custom-popup.vue?raw";
+import ControlledSource from "#examples/vue/phone-input/controlled.vue?raw";
+import DisabledSource from "#examples/vue/phone-input/disabled.vue?raw";
+import InvalidSource from "#examples/vue/phone-input/invalid.vue?raw";
+import CustomRecipeSource from "#examples/vue/phone-input/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { PhoneInput } from "@pisagor/vue/phone-input";
+```
+
+## Examples
+
+### Variants
+
+Choose visual weight or emphasis so the phone input matches importance in the surrounding layout.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="phone-input"
+  framework="vue"
+  kind="component"
+/>
+
+### Sizes
+
+Match size to the surrounding layout — smaller in compact chrome, larger where the phone input needs emphasis.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="phone-input"
+  framework="vue"
+  kind="component"
+/>
+
+### Custom Popup
+
+Customize the country popup when the default list presentation is not enough.
+
+<Example
+  name="CustomPopup"
+  code={CustomPopupSource}
+  exampleId="phone-input"
+  framework="vue"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this phone input.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="phone-input"
+  framework="vue"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the phone input is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="phone-input"
+  framework="vue"
+  kind="component"
+/>
+
+### Invalid
+
+Surface a validation or error state so users know the phone input needs attention before continuing.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="phone-input"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `phoneInputRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="phone-input"
+  framework="vue"
+  kind="component"
+/>

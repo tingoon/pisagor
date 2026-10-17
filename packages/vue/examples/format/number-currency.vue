@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./number-currency.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Format } from "@pisagor/vue";
 </script>

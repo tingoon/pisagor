@@ -1,3 +1,4 @@
+import source from "./close-trigger.tsx?raw";
 import {
   ArchiveIcon,
   DownloadIcon,
@@ -47,3 +48,5 @@ export function CloseTrigger() {
     </ActionBar>
   );
 }
+
+export { source as CloseTriggerSource };

@@ -1,3 +1,4 @@
+import source from "./scroll-area.tsx?raw";
 import { Button, Sheet } from "@pisagor/solid";
 export function ScrollArea() {
   return (
@@ -78,3 +79,5 @@ export function ScrollArea() {
     </Sheet>
   );
 }
+
+export { source as ScrollAreaSource };

@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { Command } from "@pisagor/react";
 
@@ -61,3 +62,5 @@ export function Default() {
     </Command>
   );
 }
+
+export { source as DefaultSource };

@@ -10,6 +10,7 @@ import { assertExampleSource, PREVIEW_LANGUAGE } from "#/lib/component-doc";
 import { renderDevelopSegments } from "#/lib/develop-markdown";
 import type { Framework } from "#/lib/nav";
 import { withDocsBase } from "#/lib/nav";
+import { isOpenInNewTabPreview } from "#/lib/preview-config";
 
 interface Props {
   id: string;
@@ -85,9 +86,13 @@ const proseClass =
                   framework={framework}
                   kind="block"
                   language={language}
-                  previewHref={withDocsBase(
-                    `/preview/${framework}/${id}/${ex.exportName}`,
-                  )}
+                  previewHref={
+                    isOpenInNewTabPreview(id)
+                      ? withDocsBase(
+                          `/preview/${framework}/${id}/${ex.exportName}`,
+                        )
+                      : undefined
+                  }
                   title={ex.title === ex.exportName ? segment.title : ex.title}
                 >
                   <div

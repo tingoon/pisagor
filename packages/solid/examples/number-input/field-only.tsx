@@ -1,3 +1,4 @@
+import source from "./field-only.tsx?raw";
 import { NumberInput } from "@pisagor/solid";
 
 export function FieldOnly() {
@@ -9,3 +10,5 @@ export function FieldOnly() {
     </NumberInput>
   );
 }
+
+export { source as FieldOnlySource };

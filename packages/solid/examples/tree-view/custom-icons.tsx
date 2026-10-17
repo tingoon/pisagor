@@ -1,3 +1,4 @@
+import source from "./custom-icons.tsx?raw";
 import type { NodeProviderProps } from "@pisagor/solid";
 import {
   createFileIcons,
@@ -71,3 +72,5 @@ export function CustomIcons() {
     </div>
   );
 }
+
+export { source as CustomIconsSource };

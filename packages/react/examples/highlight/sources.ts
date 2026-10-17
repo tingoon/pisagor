@@ -1,17 +1,17 @@
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import custom_styleRaw from "./custom-style.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import multipleRaw from "./multiple.tsx?raw";
-import search_queryRaw from "./search-query.tsx?raw";
-import squiggleRaw from "./squiggle.tsx?raw";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { CustomStyleSource as CustomStyle } from "./custom-style";
+import { DefaultSource as Default } from "./default";
+import { MultipleSource as Multiple } from "./multiple";
+import { SearchQuerySource as SearchQuery } from "./search-query";
+import { SquiggleSource as Squiggle } from "./squiggle";
 
 export const imports = `import { Highlight } from "@pisagor/react";`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  CustomStyle: custom_styleRaw,
-  Default: defaultRaw,
-  Multiple: multipleRaw,
-  SearchQuery: search_queryRaw,
-  Squiggle: squiggleRaw,
+  CustomRecipe,
+  CustomStyle,
+  Default,
+  Multiple,
+  SearchQuery,
+  Squiggle,
 } as const;

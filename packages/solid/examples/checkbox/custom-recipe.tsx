@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { checkboxRecipe } from "@pisagor/recipes";
 import { Checkbox, Field } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -19,3 +20,5 @@ export function CustomRecipe() {
     </Field>
   );
 }
+
+export { source as CustomRecipeSource };

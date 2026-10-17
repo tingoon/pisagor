@@ -1,0 +1,89 @@
+import Example from "#/components/docs/example.astro";
+import VariantsSource from "#examples/svelte/kbd/variants.svelte?raw";
+import SizesSource from "#examples/svelte/kbd/sizes.svelte?raw";
+import KbdGroupSource from "#examples/svelte/kbd/kbd-group.svelte?raw";
+import WithButtonSource from "#examples/svelte/kbd/with-button.svelte?raw";
+import WithTooltipSource from "#examples/svelte/kbd/with-tooltip.svelte?raw";
+import CustomRecipeSource from "#examples/svelte/kbd/custom-recipe.svelte?raw";
+
+## Import
+
+```ts
+import { Kbd } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Variants
+
+Choose visual weight or emphasis so the keyboard badge matches importance in the surrounding layout.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="kbd"
+  framework="svelte"
+  kind="component"
+/>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="kbd"
+  framework="svelte"
+  kind="component"
+/>
+
+### Kbd Group
+
+Group several keys when the shortcut is a chord.
+
+<Example
+  name="KbdGroup"
+  code={KbdGroupSource}
+  exampleId="kbd"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Button
+
+Place the badge next to a button that performs the same action.
+
+<Example
+  name="WithButton"
+  code={WithButtonSource}
+  exampleId="kbd"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Tooltip
+
+Explain the shortcut with a short tooltip when the keys alone are unclear.
+
+<Example
+  name="WithTooltip"
+  code={WithTooltipSource}
+  exampleId="kbd"
+  framework="svelte"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `kbdRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="kbd"
+  framework="svelte"
+  kind="component"
+/>

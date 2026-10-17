@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./group.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhPlus } from "@phosphor-icons/vue";
 import { Avatar, Button, Item } from "@pisagor/vue";

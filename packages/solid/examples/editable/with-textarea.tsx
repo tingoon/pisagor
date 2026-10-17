@@ -1,3 +1,4 @@
+import source from "./with-textarea.tsx?raw";
 import { Button, Card, Editable, Field, Textarea } from "@pisagor/solid";
 import { CheckIcon, XIcon } from "@pisagor/solid/icons";
 export function WithTextarea() {
@@ -53,3 +54,5 @@ export function WithTextarea() {
     </Card>
   );
 }
+
+export { source as WithTextareaSource };

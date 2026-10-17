@@ -1,3 +1,4 @@
+import source from "./invalid.tsx?raw";
 import { NumberInput } from "@pisagor/solid";
 
 export function Invalid() {
@@ -11,3 +12,5 @@ export function Invalid() {
     </NumberInput>
   );
 }
+
+export { source as InvalidSource };

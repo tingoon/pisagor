@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Avatar, Button, HoverCard } from "@pisagor/solid";
 
 export function Default() {
@@ -29,3 +30,5 @@ export function Default() {
     </HoverCard>
   );
 }
+
+export { source as DefaultSource };

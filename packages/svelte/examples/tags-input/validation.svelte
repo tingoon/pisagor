@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./validation.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Field, TagsInput } from "@pisagor/svelte";
 

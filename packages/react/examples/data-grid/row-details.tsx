@@ -1,3 +1,4 @@
+import source from "./row-details.tsx?raw";
 import { CaretDownIcon, CaretRightIcon } from "@phosphor-icons/react";
 import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Table } from "@pisagor/react";
@@ -238,3 +239,5 @@ export function RowDetails() {
     </DataGridShell>
   );
 }
+
+export { source as RowDetailsSource };

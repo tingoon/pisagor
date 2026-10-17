@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { BellIcon, DatabaseIcon } from "@phosphor-icons/react";
 import { Avatar, Button, Navbar, NavigationMenu } from "@pisagor/react";
 export function Default() {
@@ -41,3 +42,5 @@ export function Default() {
     </Navbar>
   );
 }
+
+export { source as DefaultSource };

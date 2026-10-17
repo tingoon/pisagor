@@ -1,3 +1,4 @@
+import source from "./selection-extended.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Item, Kbd, Listbox } from "@pisagor/solid";
 export function SelectionExtended() {
@@ -30,3 +31,5 @@ export function SelectionExtended() {
     </div>
   );
 }
+
+export { source as SelectionExtendedSource };

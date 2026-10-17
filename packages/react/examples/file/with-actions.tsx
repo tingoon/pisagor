@@ -1,3 +1,4 @@
+import source from "./with-actions.tsx?raw";
 import { DownloadSimpleIcon, TrashIcon } from "@phosphor-icons/react";
 import { Button, FileItem } from "@pisagor/react";
 export function WithActions() {
@@ -19,3 +20,5 @@ export function WithActions() {
     />
   );
 }
+
+export { source as WithActionsSource };

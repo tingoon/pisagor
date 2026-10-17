@@ -1,29 +1,29 @@
-import compoundRaw from "./compound.tsx?raw";
-import controlledRaw from "./controlled.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import invalidRaw from "./invalid.tsx?raw";
-import marksRaw from "./marks.tsx?raw";
-import min_maxRaw from "./min-max.tsx?raw";
-import rangeRaw from "./range.tsx?raw";
-import stepRaw from "./step.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
-import verticalRaw from "./vertical.tsx?raw";
-import with_labelRaw from "./with-label.tsx?raw";
+import { CompoundSource as Compound } from "./compound";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DisabledSource as Disabled } from "./disabled";
+import { InvalidSource as Invalid } from "./invalid";
+import { MarksSource as Marks } from "./marks";
+import { MinMaxSource as MinMax } from "./min-max";
+import { RangeSource as Range } from "./range";
+import { StepSource as Step } from "./step";
+import { VariantsSource as Variants } from "./variants";
+import { VerticalSource as Vertical } from "./vertical";
+import { WithLabelSource as WithLabel } from "./with-label";
 
 export const imports = `import { Slider } from "@pisagor/react";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Disabled: disabledRaw,
-  Invalid: invalidRaw,
-  Marks: marksRaw,
-  MinMax: min_maxRaw,
-  Range: rangeRaw,
-  Step: stepRaw,
-  Variants: variantsRaw,
-  Vertical: verticalRaw,
-  WithLabel: with_labelRaw,
+  Compound,
+  Controlled,
+  CustomRecipe,
+  Disabled,
+  Invalid,
+  Marks,
+  MinMax,
+  Range,
+  Step,
+  Variants,
+  Vertical,
+  WithLabel,
 } as const;

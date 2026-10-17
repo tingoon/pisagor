@@ -1,25 +1,25 @@
-import controlledRaw from "./controlled.tsx?raw";
-import custom_markersRaw from "./custom-markers.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-import stepRaw from "./step.tsx?raw";
-import thicknessRaw from "./thickness.tsx?raw";
-import with_markersRaw from "./with-markers.tsx?raw";
-import with_valueRaw from "./with-value.tsx?raw";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomMarkersSource as CustomMarkers } from "./custom-markers";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { DisabledSource as Disabled } from "./disabled";
+import { SizesSource as Sizes } from "./sizes";
+import { StepSource as Step } from "./step";
+import { ThicknessSource as Thickness } from "./thickness";
+import { WithMarkersSource as WithMarkers } from "./with-markers";
+import { WithValueSource as WithValue } from "./with-value";
 
 export const imports = `import { CircularSlider } from "@pisagor/solid";`;
 
 export const sources = {
-  Controlled: controlledRaw,
-  CustomMarkers: custom_markersRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  Sizes: sizesRaw,
-  Step: stepRaw,
-  Thickness: thicknessRaw,
-  WithMarkers: with_markersRaw,
-  WithValue: with_valueRaw,
+  Controlled,
+  CustomMarkers,
+  CustomRecipe,
+  Default,
+  Disabled,
+  Sizes,
+  Step,
+  Thickness,
+  WithMarkers,
+  WithValue,
 } as const;

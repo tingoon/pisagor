@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { Button, Drawer, Field, Input } from "@pisagor/react";
 import { drawerRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -51,3 +52,5 @@ export function CustomRecipe() {
     </Drawer>
   );
 }
+
+export { source as CustomRecipeSource };

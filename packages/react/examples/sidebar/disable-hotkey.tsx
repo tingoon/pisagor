@@ -1,3 +1,4 @@
+import source from "./disable-hotkey.tsx?raw";
 import { HouseIcon, UserIcon } from "@phosphor-icons/react";
 import { Sidebar } from "@pisagor/react";
 
@@ -32,3 +33,5 @@ export function DisableHotkey() {
     </Sidebar.Provider>
   );
 }
+
+export { source as DisableHotkeySource };

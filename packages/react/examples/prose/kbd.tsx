@@ -1,3 +1,4 @@
+import source from "./kbd.tsx?raw";
 import { Prose } from "@pisagor/react";
 
 export function Kbd() {
@@ -9,3 +10,5 @@ export function Kbd() {
     </Prose>
   );
 }
+
+export { source as KbdSource };

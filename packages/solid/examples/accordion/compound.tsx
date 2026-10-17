@@ -1,3 +1,4 @@
+import source from "./compound.tsx?raw";
 import { Accordion } from "@pisagor/solid";
 import { For, type JSX } from "solid-js";
 
@@ -65,3 +66,5 @@ export function Compound() {
     </Accordion.Root>
   );
 }
+
+export { source as CompoundSource };

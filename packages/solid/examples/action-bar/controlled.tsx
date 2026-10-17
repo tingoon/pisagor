@@ -1,3 +1,4 @@
+import source from "./controlled.tsx?raw";
 import { ActionBar, Button } from "@pisagor/solid";
 import {
   ArchiveIcon,
@@ -54,3 +55,5 @@ export function Controlled() {
     </ActionBar>
   );
 }
+
+export { source as ControlledSource };

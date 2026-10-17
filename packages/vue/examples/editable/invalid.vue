@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./invalid.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhCheck, PhX } from "@phosphor-icons/vue";
 import { Button, Editable, Input } from "@pisagor/vue";

@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./orientation-horizontal.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, ButtonGroup } from "@pisagor/svelte";
   import PlayIcon from "phosphor-svelte/lib/PlayIcon";

@@ -1,9 +1,9 @@
-import emptyRaw from "./empty.tsx?raw";
-import sortingRaw from "./sorting.tsx?raw";
+import { EmptySource as Empty } from "./empty";
+import { SortingSource as Sorting } from "./sorting";
 
 export const imports = `import { DataTable } from "@pisagor/solid/data-table";`;
 
 export const sources = {
-  Empty: emptyRaw,
-  Sorting: sortingRaw,
+  Empty,
+  Sorting,
 } as const;

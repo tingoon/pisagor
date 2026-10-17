@@ -1,19 +1,19 @@
-import compoundRaw from "./compound.ts?raw";
-import custom_colorRaw from "./custom-color.ts?raw";
-import custom_recipeRaw from "./custom-recipe.ts?raw";
-import variantsRaw from "./variants.ts?raw";
-import with_actionRaw from "./with-action.ts?raw";
-import with_iconRaw from "./with-icon.ts?raw";
-import without_iconRaw from "./without-icon.vue?raw";
+import Compound from "./compound.ts?raw";
+import CustomColor from "./custom-color.ts?raw";
+import CustomRecipe from "./custom-recipe.ts?raw";
+import Variants from "./variants.ts?raw";
+import WithAction from "./with-action.ts?raw";
+import WithIcon from "./with-icon.ts?raw";
+import WithoutIcon from "./without-icon.vue?raw";
 
 export const imports = `import { Alert } from "@pisagor/vue";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  CustomColor: custom_colorRaw,
-  CustomRecipe: custom_recipeRaw,
-  Variants: variantsRaw,
-  WithAction: with_actionRaw,
-  WithIcon: with_iconRaw,
-  WithoutIcon: without_iconRaw,
+  Compound,
+  CustomColor,
+  CustomRecipe,
+  Variants,
+  WithAction,
+  WithIcon,
+  WithoutIcon,
 } as const;

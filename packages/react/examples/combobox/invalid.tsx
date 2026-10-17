@@ -1,3 +1,4 @@
+import source from "./invalid.tsx?raw";
 import { Combobox } from "@pisagor/react";
 
 export function Invalid() {
@@ -12,3 +13,5 @@ export function Invalid() {
     />
   );
 }
+
+export { source as InvalidSource };

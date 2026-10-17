@@ -1,23 +1,23 @@
-import close_behaviorRaw from "./close-behavior.ts?raw";
-import custom_recipeRaw from "./custom-recipe.ts?raw";
-import custom_spacingRaw from "./custom-spacing.ts?raw";
-import defaultRaw from "./default.ts?raw";
-import insetRaw from "./inset.ts?raw";
-import no_close_buttonRaw from "./no-close-button.ts?raw";
-import non_modalRaw from "./non-modal.ts?raw";
-import scroll_areaRaw from "./scroll-area.ts?raw";
-import sidesRaw from "./sides.ts?raw";
+import CloseBehavior from "./close-behavior.ts?raw";
+import CustomRecipe from "./custom-recipe.ts?raw";
+import CustomSpacing from "./custom-spacing.ts?raw";
+import Default from "./default.ts?raw";
+import Inset from "./inset.ts?raw";
+import NoCloseButton from "./no-close-button.ts?raw";
+import NonModal from "./non-modal.ts?raw";
+import ScrollArea from "./scroll-area.ts?raw";
+import Sides from "./sides.ts?raw";
 
 export const imports = `import { Sheet } from "@pisagor/vue";`;
 
 export const sources = {
-  CloseBehavior: close_behaviorRaw,
-  CustomRecipe: custom_recipeRaw,
-  CustomSpacing: custom_spacingRaw,
-  Default: defaultRaw,
-  Inset: insetRaw,
-  NoCloseButton: no_close_buttonRaw,
-  NonModal: non_modalRaw,
-  ScrollArea: scroll_areaRaw,
-  Sides: sidesRaw,
+  CloseBehavior,
+  CustomRecipe,
+  CustomSpacing,
+  Default,
+  Inset,
+  NoCloseButton,
+  NonModal,
+  ScrollArea,
+  Sides,
 } as const;

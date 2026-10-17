@@ -1,3 +1,4 @@
+import source from "./count.tsx?raw";
 import { Avatar, AvatarGroup } from "@pisagor/solid";
 
 const users = [
@@ -33,3 +34,5 @@ export function Count() {
     </AvatarGroup.Root>
   );
 }
+
+export { source as CountSource };

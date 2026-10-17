@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./popover-with-channel-editing.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Button, ColorPicker, Input } from "@pisagor/vue";
 </script>

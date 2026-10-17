@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { actionBarRecipe } from "@pisagor/recipes";
 import { ActionBar, Button } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -31,3 +32,5 @@ export function CustomRecipe() {
     </ActionBar>
   );
 }
+
+export { source as CustomRecipeSource };

@@ -1,3 +1,4 @@
+import source from "./sizes.tsx?raw";
 import { Button, Editable, Input } from "@pisagor/solid";
 import { CheckIcon, XIcon } from "@pisagor/solid/icons";
 export function Sizes() {
@@ -108,3 +109,5 @@ export function Sizes() {
     </div>
   );
 }
+
+export { source as SizesSource };

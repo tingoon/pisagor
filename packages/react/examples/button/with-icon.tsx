@@ -1,3 +1,4 @@
+import source from "./with-icon.tsx?raw";
 import {
   ArrowSquareOutIcon,
   DownloadIcon,
@@ -33,3 +34,5 @@ export function WithIcon() {
     </div>
   );
 }
+
+export { source as WithIconSource };

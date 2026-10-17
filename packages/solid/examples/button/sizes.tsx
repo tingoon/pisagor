@@ -1,3 +1,4 @@
+import source from "./sizes.tsx?raw";
 import { Button } from "@pisagor/solid";
 import { PlusIcon } from "@pisagor/solid/icons";
 
@@ -15,3 +16,5 @@ export function Sizes() {
     </div>
   );
 }
+
+export { source as SizesSource };

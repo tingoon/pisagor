@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { TextBIcon } from "@phosphor-icons/react";
 import { Button, Tooltip } from "@pisagor/react";
 export function Default() {
@@ -11,3 +12,5 @@ export function Default() {
     </Tooltip>
   );
 }
+
+export { source as DefaultSource };

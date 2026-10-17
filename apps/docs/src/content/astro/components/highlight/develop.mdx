@@ -1,0 +1,77 @@
+import Example from "#/components/docs/example.astro";
+import Default from "#examples/astro/highlight/default.astro";
+import Multiple from "#examples/astro/highlight/multiple.astro";
+import CustomStyle from "#examples/astro/highlight/custom-style.astro";
+import CustomRecipe from "#examples/astro/highlight/custom-recipe.astro";
+import DefaultSource from "#examples/astro/highlight/default.astro?raw";
+import MultipleSource from "#examples/astro/highlight/multiple.astro?raw";
+import CustomStyleSource from "#examples/astro/highlight/custom-style.astro?raw";
+import CustomRecipeSource from "#examples/astro/highlight/custom-recipe.astro?raw";
+
+## Import
+
+```ts
+import { Highlight } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Emphasize matching substrings in text.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="highlight"
+  framework="astro"
+  kind="component"
+>
+  <Default />
+</Example>
+
+### Multiple
+
+Allow more than one open or selected item when users need several at once.
+
+<Example
+  name="Multiple"
+  code={MultipleSource}
+  exampleId="highlight"
+  framework="astro"
+  kind="component"
+>
+  <Multiple />
+</Example>
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Override highlight style when brand treatment differs from the default.
+
+<Example
+  name="CustomStyle"
+  code={CustomStyleSource}
+  exampleId="highlight"
+  framework="astro"
+  kind="component"
+>
+  <CustomStyle />
+</Example>
+
+### Custom recipe
+
+Extend `highlightRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="highlight"
+  framework="astro"
+  kind="component"
+>
+  <CustomRecipe />
+</Example>

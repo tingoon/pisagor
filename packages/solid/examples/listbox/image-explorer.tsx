@@ -1,3 +1,4 @@
+import source from "./image-explorer.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Listbox } from "@pisagor/solid";
 import { createSignal } from "solid-js";
@@ -64,3 +65,5 @@ export function ImageExplorer() {
     </div>
   );
 }
+
+export { source as ImageExplorerSource };

@@ -1,3 +1,4 @@
+import source from "./placements.tsx?raw";
 import { Button, DropdownMenu } from "@pisagor/solid";
 export function Placements() {
   const placements = ["left", "top", "bottom", "right"] as const;
@@ -22,3 +23,5 @@ export function Placements() {
     </div>
   );
 }
+
+export { source as PlacementsSource };

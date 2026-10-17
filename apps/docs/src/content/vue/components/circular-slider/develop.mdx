@@ -1,0 +1,141 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/circular-slider/default.vue?raw";
+import SizesSource from "#examples/vue/circular-slider/sizes.vue?raw";
+import ThicknessSource from "#examples/vue/circular-slider/thickness.vue?raw";
+import WithValueSource from "#examples/vue/circular-slider/with-value.vue?raw";
+import WithMarkersSource from "#examples/vue/circular-slider/with-markers.vue?raw";
+import CustomMarkersSource from "#examples/vue/circular-slider/custom-markers.vue?raw";
+import ControlledSource from "#examples/vue/circular-slider/controlled.vue?raw";
+import DisabledSource from "#examples/vue/circular-slider/disabled.vue?raw";
+import StepSource from "#examples/vue/circular-slider/step.vue?raw";
+import CustomRecipeSource from "#examples/vue/circular-slider/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { CircularSlider } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Choose a value by dragging around a circular track.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="circular-slider"
+  framework="vue"
+  kind="component"
+/>
+
+### Sizes
+
+Match control size to the surrounding layout.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="circular-slider"
+  framework="vue"
+  kind="component"
+/>
+
+### Thickness
+
+Adjust track thickness for visibility and touch comfort.
+
+<Example
+  name="Thickness"
+  code={ThicknessSource}
+  exampleId="circular-slider"
+  framework="vue"
+  kind="component"
+/>
+
+### With Value
+
+Show the current value so the gesture stays understandable.
+
+<Example
+  name="WithValue"
+  code={WithValueSource}
+  exampleId="circular-slider"
+  framework="vue"
+  kind="component"
+/>
+
+### With Markers
+
+Show markers for key values along the circular track.
+
+<Example
+  name="WithMarkers"
+  code={WithMarkersSource}
+  exampleId="circular-slider"
+  framework="vue"
+  kind="component"
+/>
+
+### Custom Markers
+
+Place custom markers when meaningful points sit on the ring.
+
+<Example
+  name="CustomMarkers"
+  code={CustomMarkersSource}
+  exampleId="circular-slider"
+  framework="vue"
+  kind="component"
+/>
+
+### Controlled
+
+Drive the value from the parent when other UI depends on it.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="circular-slider"
+  framework="vue"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the control is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="circular-slider"
+  framework="vue"
+  kind="component"
+/>
+
+### Step
+
+Snap to increments when values should move in fixed steps.
+
+<Example
+  name="Step"
+  code={StepSource}
+  exampleId="circular-slider"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `circularSliderRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="circular-slider"
+  framework="vue"
+  kind="component"
+/>

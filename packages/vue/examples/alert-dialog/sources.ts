@@ -1,9 +1,9 @@
-import compositionRaw from "./composition.vue?raw";
-import variantsRaw from "./variants.ts?raw";
+import Composition from "./composition.vue?raw";
+import Variants from "./variants.ts?raw";
 
 export const imports = `import { AlertDialog } from "@pisagor/vue";`;
 
 export const sources = {
-  Composition: compositionRaw,
-  Variants: variantsRaw,
+  Composition,
+  Variants,
 } as const;

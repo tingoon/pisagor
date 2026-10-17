@@ -1,3 +1,4 @@
+import source from "./ol.tsx?raw";
 import { Prose } from "@pisagor/react";
 
 export function Ol() {
@@ -11,3 +12,5 @@ export function Ol() {
     </Prose>
   );
 }
+
+export { source as OlSource };

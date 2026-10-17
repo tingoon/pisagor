@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { badgeRecipe } from "@pisagor/recipes";
 import { Badge } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -20,3 +21,5 @@ export function CustomRecipe() {
     </div>
   );
 }
+
+export { source as CustomRecipeSource };

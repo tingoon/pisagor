@@ -1,3 +1,4 @@
+import source from "./with-button.tsx?raw";
 import { Button, Kbd } from "@pisagor/solid";
 import { FloppyDiskIcon } from "@pisagor/solid/icons";
 
@@ -12,3 +13,5 @@ export function WithButton() {
     </Button>
   );
 }
+
+export { source as WithButtonSource };

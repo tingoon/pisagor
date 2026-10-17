@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./with-scroll.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 import { Select } from "@pisagor/vue";

@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./custom-recipe.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { statRecipe } from "@pisagor/recipes";
 import { Stat } from "@pisagor/vue";

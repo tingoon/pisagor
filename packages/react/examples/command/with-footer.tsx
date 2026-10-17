@@ -1,3 +1,4 @@
+import source from "./with-footer.tsx?raw";
 import { useFilter, useListCollection } from "@ark-ui/react";
 import {
   ArrowBendDownLeftIcon,
@@ -65,3 +66,5 @@ export function WithFooter() {
     </Command>
   );
 }
+
+export { source as WithFooterSource };

@@ -1,3 +1,4 @@
+import source from "./grouping.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Select } from "@pisagor/solid";
 
@@ -30,3 +31,5 @@ export function Grouping() {
     </Select.Root>
   );
 }
+
+export { source as GroupingSource };

@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { ScrollArea, Separator } from "@pisagor/react";
 import { scrollAreaRecipe } from "@pisagor/recipes";
 import { Fragment } from "react";
@@ -28,3 +29,5 @@ export function CustomRecipe() {
     </ScrollArea>
   );
 }
+
+export { source as CustomRecipeSource };

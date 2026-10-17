@@ -1,3 +1,4 @@
+import source from "./custom-speed.tsx?raw";
 import {
   ArrowRightIcon,
   AtomIcon,
@@ -36,3 +37,5 @@ const items = marqueeIcons.map((IconComponent) => (
 export function CustomSpeed() {
   return <Marquee items={items} speed={20} />;
 }
+
+export { source as CustomSpeedSource };

@@ -1,3 +1,4 @@
+import source from "./description.tsx?raw";
 import { Steps } from "@pisagor/solid";
 
 export function Description() {
@@ -25,3 +26,5 @@ export function Description() {
     </Steps>
   );
 }
+
+export { source as DescriptionSource };

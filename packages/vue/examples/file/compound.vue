@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./compound.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhDownloadSimple } from "@phosphor-icons/vue";
 import { Button, File } from "@pisagor/vue";

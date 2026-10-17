@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./compound.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Stat } from "@pisagor/svelte";
   import ArrowUpIcon from "phosphor-svelte/lib/ArrowUpIcon";

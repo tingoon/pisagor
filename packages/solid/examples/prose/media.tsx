@@ -1,3 +1,4 @@
+import source from "./media.tsx?raw";
 import { Prose } from "@pisagor/solid";
 
 export function Media() {
@@ -15,3 +16,5 @@ export function Media() {
     </Prose>
   );
 }
+
+export { source as MediaSource };

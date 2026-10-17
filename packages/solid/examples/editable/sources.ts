@@ -1,35 +1,35 @@
-import activation_clickRaw from "./activation-click.tsx?raw";
-import activation_focusRaw from "./activation-focus.tsx?raw";
-import activation_noneRaw from "./activation-none.tsx?raw";
-import controlledRaw from "./controlled.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import dblclickRaw from "./dblclick.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import invalidRaw from "./invalid.tsx?raw";
-import orientation_horizontalRaw from "./orientation-horizontal.tsx?raw";
-import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
-import with_textareaRaw from "./with-textarea.tsx?raw";
-import without_controlsRaw from "./without-controls.tsx?raw";
+import { ActivationClickSource as ActivationClick } from "./activation-click";
+import { ActivationFocusSource as ActivationFocus } from "./activation-focus";
+import { ActivationNoneSource as ActivationNone } from "./activation-none";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DblclickSource as Dblclick } from "./dblclick";
+import { DefaultSource as Default } from "./default";
+import { DisabledSource as Disabled } from "./disabled";
+import { InvalidSource as Invalid } from "./invalid";
+import { OrientationHorizontalSource as OrientationHorizontal } from "./orientation-horizontal";
+import { OrientationVerticalSource as OrientationVertical } from "./orientation-vertical";
+import { SizesSource as Sizes } from "./sizes";
+import { VariantsSource as Variants } from "./variants";
+import { WithoutControlsSource as WithoutControls } from "./without-controls";
+import { WithTextareaSource as WithTextarea } from "./with-textarea";
 
 export const imports = `import { Editable } from "@pisagor/solid";`;
 
 export const sources = {
-  ActivationClick: activation_clickRaw,
-  ActivationFocus: activation_focusRaw,
-  ActivationNone: activation_noneRaw,
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Dblclick: dblclickRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  Invalid: invalidRaw,
-  OrientationHorizontal: orientation_horizontalRaw,
-  OrientationVertical: orientation_verticalRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
-  WithoutControls: without_controlsRaw,
-  WithTextarea: with_textareaRaw,
+  ActivationClick,
+  ActivationFocus,
+  ActivationNone,
+  Controlled,
+  CustomRecipe,
+  Dblclick,
+  Default,
+  Disabled,
+  Invalid,
+  OrientationHorizontal,
+  OrientationVertical,
+  Sizes,
+  Variants,
+  WithoutControls,
+  WithTextarea,
 } as const;

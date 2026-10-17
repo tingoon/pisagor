@@ -1,3 +1,4 @@
+import source from "./with-link.tsx?raw";
 import { LinkBox } from "@pisagor/react";
 
 export function WithLink() {
@@ -18,3 +19,5 @@ export function WithLink() {
     </LinkBox>
   );
 }
+
+export { source as WithLinkSource };

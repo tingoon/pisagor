@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./custom-recipe.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { circularSliderRecipe } from "@pisagor/recipes";
   import { CircularSlider } from "@pisagor/svelte";

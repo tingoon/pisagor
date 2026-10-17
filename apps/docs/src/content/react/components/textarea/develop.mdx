@@ -1,0 +1,115 @@
+import Example from "#/components/docs/example.astro";
+import { VariantsSource } from "#examples/react/textarea/variants.tsx";
+import { SizesSource } from "#examples/react/textarea/sizes.tsx";
+import { ControlledSource } from "#examples/react/textarea/controlled.tsx";
+import { DisabledSource } from "#examples/react/textarea/disabled.tsx";
+import { InvalidSource } from "#examples/react/textarea/invalid.tsx";
+import { AutoresizeSource } from "#examples/react/textarea/autoresize.tsx";
+import { ClearableSource } from "#examples/react/textarea/clearable.tsx";
+import { CustomRecipeSource } from "#examples/react/textarea/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Textarea } from "@pisagor/react";
+```
+
+## Examples
+
+### Variants
+
+Choose emphasis to match surrounding inputs.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="textarea"
+  framework="react"
+  kind="component"
+/>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="textarea"
+  framework="react"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this textarea.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="textarea"
+  framework="react"
+  kind="component"
+/>
+
+### Disabled
+
+Show that editing is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="textarea"
+  framework="react"
+  kind="component"
+/>
+
+### Invalid
+
+Surface a validation error when the text is missing or not allowed.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="textarea"
+  framework="react"
+  kind="component"
+/>
+
+### Autoresize
+
+Grow with content instead of showing an inner scrollbar early.
+
+<Example
+  name="Autoresize"
+  code={AutoresizeSource}
+  exampleId="textarea"
+  framework="react"
+  kind="component"
+/>
+
+### Clearable
+
+Allow clearing the value when an empty state is a valid reset.
+
+<Example
+  name="Clearable"
+  code={ClearableSource}
+  exampleId="textarea"
+  framework="react"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `textareaRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="textarea"
+  framework="react"
+  kind="component"
+/>

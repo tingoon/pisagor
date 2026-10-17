@@ -1,3 +1,4 @@
+import source from "./variants.tsx?raw";
 import { Checkbox } from "@pisagor/solid";
 
 export function Variants() {
@@ -8,3 +9,5 @@ export function Variants() {
     </div>
   );
 }
+
+export { source as VariantsSource };

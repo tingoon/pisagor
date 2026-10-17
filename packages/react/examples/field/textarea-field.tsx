@@ -1,3 +1,4 @@
+import source from "./textarea-field.tsx?raw";
 import { Field, Textarea } from "@pisagor/react";
 export function TextareaField() {
   return (
@@ -10,3 +11,5 @@ export function TextareaField() {
     </Field>
   );
 }
+
+export { source as TextareaFieldSource };

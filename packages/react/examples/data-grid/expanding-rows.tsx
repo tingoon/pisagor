@@ -1,3 +1,4 @@
+import source from "./expanding-rows.tsx?raw";
 import { CaretDownIcon, CaretRightIcon } from "@phosphor-icons/react";
 import { Table } from "@pisagor/react";
 import type { ColumnDef } from "@pisagor/react/data-grid";
@@ -185,3 +186,5 @@ export function ExpandingRows() {
     </DataGridShell>
   );
 }
+
+export { source as ExpandingRowsSource };

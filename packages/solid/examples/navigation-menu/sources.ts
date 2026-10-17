@@ -1,13 +1,13 @@
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import submenuRaw from "./submenu.tsx?raw";
-import wrappingRaw from "./wrapping.tsx?raw";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { SubmenuSource as Submenu } from "./submenu";
+import { WrappingSource as Wrapping } from "./wrapping";
 
 export const imports = `import { NavigationMenu } from "@pisagor/solid";`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Submenu: submenuRaw,
-  Wrapping: wrappingRaw,
+  CustomRecipe,
+  Default,
+  Submenu,
+  Wrapping,
 } as const;

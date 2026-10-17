@@ -2,29 +2,66 @@
 root: false
 targets:
   - "*"
-description: "Authoring rules for develop.md docs pages, their examples, and matching Storybook stories"
+description: "Authoring rules for develop.mdx docs pages, their examples, and matching Storybook stories"
 globs:
-  - apps/docs/src/content/**/develop.md
-  - packages/*/examples/**/*.tsx
+  - apps/docs/src/content/**/develop.mdx
+  - packages/*/examples/**/*
   - apps/*/src/**/*.stories.tsx
 cursor:
   alwaysApply: false
 ---
 
-# Develop docs (`develop.md`)
+# Develop docs (`develop.mdx`)
 
-Applies to `apps/docs/src/content/<framework>/{components,forms}/<id>/develop.md`, the examples in `packages/<framework>(-form)/examples/<id>/`, and `<id>.stories.tsx`. Judge each component on its own; never apply these rules mechanically.
+Applies to `apps/docs/src/content/<framework>/{components,forms}/<id>/develop.mdx`, the examples in `packages/<framework>(-form)/examples/<id>/`, and `<id>.stories.tsx`. Judge each component on its own; never apply these rules mechanically.
+
+Meta for the page lives in the sibling `../<id>.md` (title, description, api, taxonomy). Design copy is `<id>/design.mdx`.
 
 ## Page structure
 
 1. `## Import`
 2. `## Anatomy` — only for compound-only components (no shorthand). One short `tsx` block with the part tree, no props or content.
-3. `## Examples` — `###` per example, each followed by one short description and `:::example Name`.
+3. `## Examples` — `###` per example, each followed by one short description and an `<Example />`.
 4. `## Customization` — styling escape hatches (see below).
 5. `## Accessibility` — only when it adds real value (keyboard table, ARIA notes). Drop `## Usage` sections; their content belongs in examples.
 6. Props are appended by the page — never write them by hand.
 
 The docs engine renders every `##` section in place; TOC and page order follow the markdown exactly (`##` → h2, `###` → h3).
+
+## Examples
+
+Each example file dual-exports the live component and its source:
+
+```ts
+import source from "./default.tsx?raw";
+export function Default() {
+  /* … */
+}
+export { source as DefaultSource }; // React/Solid: unique name avoids `export *` clashes
+```
+
+Vue/Svelte keep `export { source }` (index uses `default as`, not `export *`). Astro `sources.ts` imports `?raw` directly (`.astro` cannot named-export `source` for Vite).
+
+In `develop.mdx`:
+
+```mdx
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/accordion/default.tsx";
+
+### Default
+
+Short description.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="accordion"
+  framework="react"
+  kind="component"
+/>
+```
+
+Use `#examples/<framework>` or `#examples/<framework>-form` aliases. Keep `sources.ts` as a map of those source exports. Astro previews pass the component as `<Example>` children.
 
 ## Example order
 
@@ -66,4 +103,4 @@ Short, task-focused, existing tone. No design best practices ("Prefer…", "Keep
 
 ## Storybook
 
-Story order matches `develop.md` order, with `Playground` first. Every `:::example` has a story; remove stories for deleted examples. Keep example barrels (`index.ts` + `sources.ts`) in sync.
+Story order matches `develop.mdx` order, with `Playground` first. Every `<Example name>` has a story; remove stories for deleted examples. Keep example barrels (`index.ts` + `sources.ts`) in sync.

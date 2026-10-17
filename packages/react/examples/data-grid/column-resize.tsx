@@ -1,3 +1,4 @@
+import source from "./column-resize.tsx?raw";
 import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
 import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Checkbox, Table } from "@pisagor/react";
@@ -252,3 +253,5 @@ export function ColumnResize() {
     </DataGridShell>
   );
 }
+
+export { source as ColumnResizeSource };

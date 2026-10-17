@@ -1,13 +1,13 @@
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import icon_onlyRaw from "./icon-only.tsx?raw";
-import with_linksRaw from "./with-links.tsx?raw";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { IconOnlySource as IconOnly } from "./icon-only";
+import { WithLinksSource as WithLinks } from "./with-links";
 
 export const imports = `import { BottomNavigation } from "@pisagor/react";`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  IconOnly: icon_onlyRaw,
-  WithLinks: with_linksRaw,
+  CustomRecipe,
+  Default,
+  IconOnly,
+  WithLinks,
 } as const;

@@ -1,3 +1,4 @@
+import source from "./activation-click.tsx?raw";
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Button, Card, Editable, Field, Input } from "@pisagor/react";
 export function ActivationClick() {
@@ -60,3 +61,5 @@ export function ActivationClick() {
     </Card>
   );
 }
+
+export { source as ActivationClickSource };

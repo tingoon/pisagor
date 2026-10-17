@@ -1,3 +1,4 @@
+import source from "./disable-hotkey.tsx?raw";
 import { Sidebar } from "@pisagor/solid";
 
 export function DisableHotkey() {
@@ -29,3 +30,5 @@ export function DisableHotkey() {
     </Sidebar.Provider>
   );
 }
+
+export { source as DisableHotkeySource };

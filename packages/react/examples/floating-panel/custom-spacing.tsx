@@ -1,3 +1,4 @@
+import source from "./custom-spacing.tsx?raw";
 import { createListCollection } from "@ark-ui/react";
 import { GearSixIcon, XIcon } from "@phosphor-icons/react";
 import {
@@ -65,3 +66,5 @@ export function CustomSpacing() {
     </FloatingPanel>
   );
 }
+
+export { source as CustomSpacingSource };

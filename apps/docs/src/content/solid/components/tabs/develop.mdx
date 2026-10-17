@@ -1,0 +1,154 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid/tabs/default.tsx";
+import { VariantsSource } from "#examples/solid/tabs/variants.tsx";
+import { SizesSource } from "#examples/solid/tabs/sizes.tsx";
+import { OrientationHorizontalSource } from "#examples/solid/tabs/orientation-horizontal.tsx";
+import { OrientationVerticalSource } from "#examples/solid/tabs/orientation-vertical.tsx";
+import { WithoutIndicatorSource } from "#examples/solid/tabs/without-indicator.tsx";
+import { WithIconsSource } from "#examples/solid/tabs/with-icons.tsx";
+import { CompoundSource } from "#examples/solid/tabs/compound.tsx";
+import { ControlledSource } from "#examples/solid/tabs/controlled.tsx";
+import { DisabledSource } from "#examples/solid/tabs/disabled.tsx";
+import { CustomRecipeSource } from "#examples/solid/tabs/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Tabs } from "@pisagor/solid";
+```
+
+## Examples
+
+### Default
+
+Switch between related panels without leaving the page.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="tabs"
+  framework="solid"
+  kind="component"
+/>
+
+### Variants
+
+Choose tab emphasis to match the surface.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="tabs"
+  framework="solid"
+  kind="component"
+/>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="tabs"
+  framework="solid"
+  kind="component"
+/>
+
+### Orientation Horizontal
+
+Lay tabs in a row for the common panel switcher.
+
+<Example
+  name="OrientationHorizontal"
+  code={OrientationHorizontalSource}
+  exampleId="tabs"
+  framework="solid"
+  kind="component"
+/>
+
+### Orientation Vertical
+
+Stack tabs vertically when the layout favors a side rail.
+
+<Example
+  name="OrientationVertical"
+  code={OrientationVerticalSource}
+  exampleId="tabs"
+  framework="solid"
+  kind="component"
+/>
+
+### Without Indicator
+
+Hide the moving indicator when triggers style the active state on their own.
+
+<Example
+  name="WithoutIndicator"
+  code={WithoutIndicatorSource}
+  exampleId="tabs"
+  framework="solid"
+  kind="component"
+/>
+
+### With Icons
+
+Lead tabs with icons when symbols speed recognition.
+
+<Example
+  name="WithIcons"
+  code={WithIconsSource}
+  exampleId="tabs"
+  framework="solid"
+  kind="component"
+/>
+
+### Compound
+
+Compose tab list and panels from parts for a custom layout.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="tabs"
+  framework="solid"
+  kind="component"
+/>
+
+### Controlled
+
+Drive the active tab from the parent when other UI depends on it.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="tabs"
+  framework="solid"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the tabs is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="tabs"
+  framework="solid"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `tabsRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="tabs"
+  framework="solid"
+  kind="component"
+/>

@@ -1,3 +1,4 @@
+import source from "./sides.tsx?raw";
 import { Button, Sheet } from "@pisagor/solid";
 export function Sides() {
   return (
@@ -81,3 +82,5 @@ export function Sides() {
     </div>
   );
 }
+
+export { source as SidesSource };

@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./with-clear-button.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 import { Autocomplete } from "@pisagor/vue";

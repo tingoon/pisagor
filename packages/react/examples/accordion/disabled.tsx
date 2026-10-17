@@ -1,3 +1,4 @@
+import source from "./disabled.tsx?raw";
 import { Accordion } from "@pisagor/react";
 import { shortFaqItems } from "./helpers";
 
@@ -11,3 +12,5 @@ export function Disabled() {
     />
   );
 }
+
+export { source as DisabledSource };

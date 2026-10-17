@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { RadioGroupField } from "@pisagor/react-form";
 import { planOptions } from "../options";
 
@@ -12,3 +13,5 @@ export function Default() {
     />
   );
 }
+
+export { source as DefaultSource };

@@ -1,3 +1,4 @@
+import source from "./step.tsx?raw";
 import { CircularSlider } from "@pisagor/solid";
 
 export function Step() {
@@ -11,3 +12,5 @@ export function Step() {
     />
   );
 }
+
+export { source as StepSource };

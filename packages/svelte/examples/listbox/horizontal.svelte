@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./horizontal.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { createListCollection } from "@ark-ui/svelte/collection";
   import { Field, Listbox } from "@pisagor/svelte";

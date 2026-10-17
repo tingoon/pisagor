@@ -1,3 +1,4 @@
+import source from "./custom-recipe.ts?raw";
 import { PhTextB } from "@phosphor-icons/vue";
 import { tooltipRecipe } from "@pisagor/recipes";
 import { Button, Tooltip } from "@pisagor/vue";
@@ -31,3 +32,5 @@ export default defineComponent({
       );
   },
 });
+
+export { source };

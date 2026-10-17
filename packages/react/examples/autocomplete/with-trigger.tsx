@@ -1,3 +1,4 @@
+import source from "./with-trigger.tsx?raw";
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { Autocomplete } from "@pisagor/react";
 
@@ -33,3 +34,5 @@ export function WithTrigger() {
     </Autocomplete.Root>
   );
 }
+
+export { source as WithTriggerSource };

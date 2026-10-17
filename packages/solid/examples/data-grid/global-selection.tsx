@@ -1,3 +1,4 @@
+import source from "./global-selection.tsx?raw";
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Button, Checkbox, Pagination, Table } from "@pisagor/solid";
 import type {
@@ -322,3 +323,5 @@ export function GlobalSelection() {
     </DataGridShell>
   );
 }
+
+export { source as GlobalSelectionSource };

@@ -1,0 +1,215 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/dropdown-menu/default.svelte?raw";
+import IconsSource from "#examples/svelte/dropdown-menu/icons.svelte?raw";
+import ShortcutsSource from "#examples/svelte/dropdown-menu/shortcuts.svelte?raw";
+import GroupLabelSource from "#examples/svelte/dropdown-menu/group-label.svelte?raw";
+import WithSeparatorSource from "#examples/svelte/dropdown-menu/with-separator.svelte?raw";
+import CheckboxesSource from "#examples/svelte/dropdown-menu/checkboxes.svelte?raw";
+import RadioGroupSource from "#examples/svelte/dropdown-menu/radio-group.svelte?raw";
+import DestructiveSource from "#examples/svelte/dropdown-menu/destructive.svelte?raw";
+import ItemIndicatorSource from "#examples/svelte/dropdown-menu/item-indicator.svelte?raw";
+import NestedSource from "#examples/svelte/dropdown-menu/nested.svelte?raw";
+import QuickItemSource from "#examples/svelte/dropdown-menu/quick-item.svelte?raw";
+import WithScrollSource from "#examples/svelte/dropdown-menu/with-scroll.svelte?raw";
+import LinkSource from "#examples/svelte/dropdown-menu/link.svelte?raw";
+import PlacementsSource from "#examples/svelte/dropdown-menu/placements.svelte?raw";
+
+## Import
+
+```ts
+import { DropdownMenu } from "@pisagor/svelte";
+```
+
+## Anatomy
+
+```tsx
+<DropdownMenu>
+  <DropdownMenu.Trigger />
+  <DropdownMenu.Content>
+    <DropdownMenu.ItemGroup>
+      <DropdownMenu.Item>
+        <DropdownMenu.Shortcut />
+      </DropdownMenu.Item>
+      <DropdownMenu.CheckboxItem />
+      <DropdownMenu.RadioItemGroup>
+        <DropdownMenu.RadioItem />
+      </DropdownMenu.RadioItemGroup>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Sub>
+        <DropdownMenu.TriggerItem />
+        <DropdownMenu.SubContent />
+      </DropdownMenu.Sub>
+    </DropdownMenu.ItemGroup>
+  </DropdownMenu.Content>
+</DropdownMenu>
+```
+
+## Examples
+
+### Default
+
+Open actions from a trigger button.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="dropdown-menu"
+  framework="svelte"
+  kind="component"
+/>
+
+### Icons
+
+Lead items with icons for faster recognition.
+
+<Example
+  name="Icons"
+  code={IconsSource}
+  exampleId="dropdown-menu"
+  framework="svelte"
+  kind="component"
+/>
+
+### Shortcuts
+
+Show keyboard shortcuts beside items for power users.
+
+<Example
+  name="Shortcuts"
+  code={ShortcutsSource}
+  exampleId="dropdown-menu"
+  framework="svelte"
+  kind="component"
+/>
+
+### Group Label
+
+Label groups of related menu items.
+
+<Example
+  name="GroupLabel"
+  code={GroupLabelSource}
+  exampleId="dropdown-menu"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Separator
+
+Separate groups so sections stay scannable.
+
+<Example
+  name="WithSeparator"
+  code={WithSeparatorSource}
+  exampleId="dropdown-menu"
+  framework="svelte"
+  kind="component"
+/>
+
+### Checkboxes
+
+Toggle multiple options inside the menu.
+
+<Example
+  name="Checkboxes"
+  code={CheckboxesSource}
+  exampleId="dropdown-menu"
+  framework="svelte"
+  kind="component"
+/>
+
+### Radio Group
+
+Pick exactly one option among menu items.
+
+<Example
+  name="RadioGroup"
+  code={RadioGroupSource}
+  exampleId="dropdown-menu"
+  framework="svelte"
+  kind="component"
+/>
+
+### Destructive
+
+Call out irreversible actions with destructive emphasis.
+
+<Example
+  name="Destructive"
+  code={DestructiveSource}
+  exampleId="dropdown-menu"
+  framework="svelte"
+  kind="component"
+/>
+
+### Item Indicator
+
+Compose `ItemText` and `ItemIndicator` inside checkbox or radio items. Checkbox and radio items also accept `variant="destructive"`.
+
+<Example
+  name="ItemIndicator"
+  code={ItemIndicatorSource}
+  exampleId="dropdown-menu"
+  framework="svelte"
+  kind="component"
+/>
+
+### Nested
+
+Open submenus for deeper action hierarchies.
+
+<Example
+  name="Nested"
+  code={NestedSource}
+  exampleId="dropdown-menu"
+  framework="svelte"
+  kind="component"
+/>
+
+### Quick Item
+
+Offer a compact item treatment for dense menus.
+
+<Example
+  name="QuickItem"
+  code={QuickItemSource}
+  exampleId="dropdown-menu"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Scroll
+
+Scroll long menus without growing past the viewport.
+
+<Example
+  name="WithScroll"
+  code={WithScrollSource}
+  exampleId="dropdown-menu"
+  framework="svelte"
+  kind="component"
+/>
+
+### As child
+
+Navigate with link items when the action leaves the page.
+
+<Example
+  name="Link"
+  code={LinkSource}
+  exampleId="dropdown-menu"
+  framework="svelte"
+  kind="component"
+/>
+
+### Placements
+
+Place the menu so it stays near the trigger.
+
+<Example
+  name="Placements"
+  code={PlacementsSource}
+  exampleId="dropdown-menu"
+  framework="svelte"
+  kind="component"
+/>

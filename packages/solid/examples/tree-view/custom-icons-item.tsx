@@ -1,3 +1,4 @@
+import source from "./custom-icons-item.tsx?raw";
 import type { NodeProviderProps } from "@pisagor/solid";
 import { createTreeCollection, TreeView } from "@pisagor/solid";
 import { StarIcon } from "@pisagor/solid/icons";
@@ -62,3 +63,5 @@ export function CustomIconsItem() {
     </div>
   );
 }
+
+export { source as CustomIconsItemSource };

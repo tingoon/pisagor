@@ -1,3 +1,4 @@
+import source from "./sizes.tsx?raw";
 import { QrCode } from "@pisagor/solid";
 
 export function Sizes() {
@@ -12,3 +13,5 @@ export function Sizes() {
     </div>
   );
 }
+
+export { source as SizesSource };

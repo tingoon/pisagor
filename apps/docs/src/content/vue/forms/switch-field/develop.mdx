@@ -1,0 +1,50 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue-form/switch-field/default.vue?raw";
+import DisabledSource from "#examples/vue-form/switch-field/disabled.vue?raw";
+import InvalidSource from "#examples/vue-form/switch-field/invalid.vue?raw";
+
+## Import
+
+```ts
+import { SwitchField } from "@pisagor/vue-form";
+```
+
+Part of `@pisagor/vue-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+An on/off toggle for settings that apply immediately.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="switch-field"
+  framework="vue"
+  kind="form"
+/>
+
+### Disabled
+
+Show that the switch is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="switch-field"
+  framework="vue"
+  kind="form"
+/>
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="switch-field"
+  framework="vue"
+  kind="form"
+/>

@@ -1,3 +1,4 @@
+import source from "./controlled.tsx?raw";
 import { RichTextEditor } from "@pisagor/react/rich-text-editor";
 import { useState } from "react";
 
@@ -13,3 +14,5 @@ export function Controlled() {
     </div>
   );
 }
+
+export { source as ControlledSource };

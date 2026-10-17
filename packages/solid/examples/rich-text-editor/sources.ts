@@ -1,17 +1,17 @@
-import compoundRaw from "./compound.tsx?raw";
-import controlledRaw from "./controlled.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import invalidRaw from "./invalid.tsx?raw";
+import { CompoundSource as Compound } from "./compound";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { DisabledSource as Disabled } from "./disabled";
+import { InvalidSource as Invalid } from "./invalid";
 
 export const imports = `import { RichTextEditor } from "@pisagor/solid/rich-text-editor";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  Invalid: invalidRaw,
+  Compound,
+  Controlled,
+  CustomRecipe,
+  Default,
+  Disabled,
+  Invalid,
 } as const;

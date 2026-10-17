@@ -1,3 +1,4 @@
+import source from "./icon.tsx?raw";
 import { Button, Item } from "@pisagor/solid";
 import { ShieldWarningIcon } from "@pisagor/solid/icons";
 export function Icon() {
@@ -20,3 +21,5 @@ export function Icon() {
     </Item>
   );
 }
+
+export { source as IconSource };

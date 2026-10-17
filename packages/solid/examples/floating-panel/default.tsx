@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Button, FloatingPanel } from "@pisagor/solid";
 
 export function Default() {
@@ -31,3 +32,5 @@ export function Default() {
     </FloatingPanel>
   );
 }
+
+export { source as DefaultSource };

@@ -1,0 +1,50 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte-form/checkbox-field/default.svelte?raw";
+import DisabledSource from "#examples/svelte-form/checkbox-field/disabled.svelte?raw";
+import InvalidSource from "#examples/svelte-form/checkbox-field/invalid.svelte?raw";
+
+## Import
+
+```ts
+import { CheckboxField } from "@pisagor/svelte-form";
+```
+
+Part of `@pisagor/svelte-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+A single checkbox with a label and helper text for opt-ins and agreements.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="checkbox-field"
+  framework="svelte"
+  kind="form"
+/>
+
+### Disabled
+
+Show that the checkbox is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="checkbox-field"
+  framework="svelte"
+  kind="form"
+/>
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="checkbox-field"
+  framework="svelte"
+  kind="form"
+/>

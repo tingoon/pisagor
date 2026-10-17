@@ -1,21 +1,21 @@
-import compoundRaw from "./compound.astro?raw";
-import custom_colorRaw from "./custom-color.astro?raw";
-import custom_recipeRaw from "./custom-recipe.astro?raw";
-import variantsRaw from "./variants.astro?raw";
-import with_actionRaw from "./with-action.astro?raw";
-import with_iconRaw from "./with-icon.astro?raw";
-import without_iconRaw from "./without-icon.astro?raw";
+import Compound from "./compound.astro?raw";
+import CustomColor from "./custom-color.astro?raw";
+import CustomRecipe from "./custom-recipe.astro?raw";
+import Variants from "./variants.astro?raw";
+import WithAction from "./with-action.astro?raw";
+import WithIcon from "./with-icon.astro?raw";
+import WithoutIcon from "./without-icon.astro?raw";
 
 export const imports = `---
 import { Alert } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  Compound: compoundRaw,
-  CustomColor: custom_colorRaw,
-  CustomRecipe: custom_recipeRaw,
-  Variants: variantsRaw,
-  WithAction: with_actionRaw,
-  WithIcon: with_iconRaw,
-  WithoutIcon: without_iconRaw,
+  Compound,
+  CustomColor,
+  CustomRecipe,
+  Variants,
+  WithAction,
+  WithIcon,
+  WithoutIcon,
 } as const;

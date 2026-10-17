@@ -1,3 +1,4 @@
+import source from "./virtualized.tsx?raw";
 import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
 import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Checkbox, Table } from "@pisagor/react";
@@ -256,3 +257,5 @@ export function Virtualized() {
     </DataGridShell>
   );
 }
+
+export { source as VirtualizedSource };

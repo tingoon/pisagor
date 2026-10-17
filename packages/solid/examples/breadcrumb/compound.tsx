@@ -1,3 +1,4 @@
+import source from "./compound.tsx?raw";
 import { Breadcrumb } from "@pisagor/solid";
 
 export function Compound() {
@@ -21,3 +22,5 @@ export function Compound() {
     </Breadcrumb.Root>
   );
 }
+
+export { source as CompoundSource };

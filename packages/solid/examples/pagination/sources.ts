@@ -1,19 +1,19 @@
-import controlledRaw from "./controlled.tsx?raw";
-import custom_compositionRaw from "./custom-composition.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import link_urlsRaw from "./link-urls.tsx?raw";
-import linksRaw from "./links.tsx?raw";
-import page_rangeRaw from "./page-range.tsx?raw";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomCompositionSource as CustomComposition } from "./custom-composition";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { LinksSource as Links } from "./links";
+import { LinkUrlsSource as LinkUrls } from "./link-urls";
+import { PageRangeSource as PageRange } from "./page-range";
 
 export const imports = `import { Pagination } from "@pisagor/solid";`;
 
 export const sources = {
-  Controlled: controlledRaw,
-  CustomComposition: custom_compositionRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Links: linksRaw,
-  LinkUrls: link_urlsRaw,
-  PageRange: page_rangeRaw,
+  Controlled,
+  CustomComposition,
+  CustomRecipe,
+  Default,
+  Links,
+  LinkUrls,
+  PageRange,
 } as const;

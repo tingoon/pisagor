@@ -1,21 +1,21 @@
-import custom_recipeRaw from "./custom-recipe.astro?raw";
-import defaultRaw from "./default.astro?raw";
-import nestedRaw from "./nested.astro?raw";
-import orientation_horizontalRaw from "./orientation-horizontal.astro?raw";
-import orientation_verticalRaw from "./orientation-vertical.astro?raw";
-import sizesRaw from "./sizes.astro?raw";
-import with_separatorRaw from "./with-separator.astro?raw";
+import CustomRecipe from "./custom-recipe.astro?raw";
+import Default from "./default.astro?raw";
+import Nested from "./nested.astro?raw";
+import OrientationHorizontal from "./orientation-horizontal.astro?raw";
+import OrientationVertical from "./orientation-vertical.astro?raw";
+import Sizes from "./sizes.astro?raw";
+import WithSeparator from "./with-separator.astro?raw";
 
 export const imports = `---
 import { Button, ButtonGroup } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Nested: nestedRaw,
-  OrientationHorizontal: orientation_horizontalRaw,
-  OrientationVertical: orientation_verticalRaw,
-  Sizes: sizesRaw,
-  WithSeparator: with_separatorRaw,
+  CustomRecipe,
+  Default,
+  Nested,
+  OrientationHorizontal,
+  OrientationVertical,
+  Sizes,
+  WithSeparator,
 } as const;

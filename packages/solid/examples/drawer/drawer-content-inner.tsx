@@ -1,3 +1,4 @@
+import source from "./drawer-content-inner.tsx?raw";
 import { Button, Drawer, Field, Input } from "@pisagor/solid";
 export function DrawerContentInner() {
   return (
@@ -46,3 +47,5 @@ export function DrawerContentInner() {
     </Drawer>
   );
 }
+
+export { source as DrawerContentInnerSource };

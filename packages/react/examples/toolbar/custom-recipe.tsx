@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { Button, Toolbar } from "@pisagor/react";
 import { toolbarRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -26,3 +27,5 @@ export function CustomRecipe() {
     />
   );
 }
+
+export { source as CustomRecipeSource };

@@ -1,3 +1,4 @@
+import source from "./loading-state.tsx?raw";
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Button, Checkbox, Skeleton, Table } from "@pisagor/solid";
 import type { ColumnDef } from "@pisagor/solid/data-grid";
@@ -334,3 +335,5 @@ export function LoadingState() {
     </DataGridShell>
   );
 }
+
+export { source as LoadingStateSource };

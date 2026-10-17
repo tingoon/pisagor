@@ -1,19 +1,19 @@
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import nestedRaw from "./nested.tsx?raw";
-import orientation_horizontalRaw from "./orientation-horizontal.tsx?raw";
-import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-import with_separatorRaw from "./with-separator.tsx?raw";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { NestedSource as Nested } from "./nested";
+import { OrientationHorizontalSource as OrientationHorizontal } from "./orientation-horizontal";
+import { OrientationVerticalSource as OrientationVertical } from "./orientation-vertical";
+import { SizesSource as Sizes } from "./sizes";
+import { WithSeparatorSource as WithSeparator } from "./with-separator";
 
 export const imports = `import { ButtonGroup } from "@pisagor/solid";`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Nested: nestedRaw,
-  OrientationHorizontal: orientation_horizontalRaw,
-  OrientationVertical: orientation_verticalRaw,
-  Sizes: sizesRaw,
-  WithSeparator: with_separatorRaw,
+  CustomRecipe,
+  Default,
+  Nested,
+  OrientationHorizontal,
+  OrientationVertical,
+  Sizes,
+  WithSeparator,
 } as const;

@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./banner.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Announcement, AppShell, Badge, Button } from "@pisagor/svelte";
   import WarningIcon from "phosphor-svelte/lib/WarningIcon";

@@ -1,0 +1,119 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/steps/default.vue?raw";
+import VerticalSource from "#examples/vue/steps/vertical.vue?raw";
+import TitleSource from "#examples/vue/steps/title.vue?raw";
+import DescriptionSource from "#examples/vue/steps/description.vue?raw";
+import IconSource from "#examples/vue/steps/icon.vue?raw";
+import ControlledSource from "#examples/vue/steps/controlled.vue?raw";
+import LoadingSource from "#examples/vue/steps/loading.vue?raw";
+
+## Import
+
+```ts
+import { Steps } from "@pisagor/vue";
+```
+
+## Anatomy
+
+```vue
+<Steps>
+  <Steps.List>
+    <Steps.Item>
+      <Steps.Trigger>
+        <Steps.Indicator />
+      </Steps.Trigger>
+      <Steps.Separator />
+    </Steps.Item>
+  </Steps.List>
+  <Steps.Content />
+  <Steps.CompletedContent />
+  <Steps.PrevTrigger />
+  <Steps.NextTrigger />
+</Steps>
+```
+
+## Examples
+
+### Default
+
+Show progress through a linear multi-step flow.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="steps"
+  framework="vue"
+  kind="component"
+/>
+
+### Vertical
+
+Use a vertical layout when the steps should read top to bottom.
+
+<Example
+  name="Vertical"
+  code={VerticalSource}
+  exampleId="steps"
+  framework="vue"
+  kind="component"
+/>
+
+### Title
+
+Emphasize step titles for scannable wizard chrome.
+
+<Example
+  name="Title"
+  code={TitleSource}
+  exampleId="steps"
+  framework="vue"
+  kind="component"
+/>
+
+### Description
+
+Add step descriptions when titles alone are not enough.
+
+<Example
+  name="Description"
+  code={DescriptionSource}
+  exampleId="steps"
+  framework="vue"
+  kind="component"
+/>
+
+### Icon
+
+Lead steps with icons when symbols speed recognition.
+
+<Example
+  name="Icon"
+  code={IconSource}
+  exampleId="steps"
+  framework="vue"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this steps.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="steps"
+  framework="vue"
+  kind="component"
+/>
+
+### Loading
+
+Show a loading step while async work finishes before continuing.
+
+<Example
+  name="Loading"
+  code={LoadingSource}
+  exampleId="steps"
+  framework="vue"
+  kind="component"
+/>

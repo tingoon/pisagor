@@ -1,0 +1,102 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/progress/default.svelte?raw";
+import OrientationHorizontalSource from "#examples/svelte/progress/orientation-horizontal.svelte?raw";
+import OrientationVerticalSource from "#examples/svelte/progress/orientation-vertical.svelte?raw";
+import WithLabelSource from "#examples/svelte/progress/with-label.svelte?raw";
+import ControlledSource from "#examples/svelte/progress/controlled.svelte?raw";
+import IndeterminateSource from "#examples/svelte/progress/indeterminate.svelte?raw";
+import CustomRecipeSource from "#examples/svelte/progress/custom-recipe.svelte?raw";
+
+## Import
+
+```ts
+import { Progress } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Default
+
+Show completion along a linear track.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="progress"
+  framework="svelte"
+  kind="component"
+/>
+
+### Orientation Horizontal
+
+Lay out the progress bar horizontally when items should read in a row.
+
+<Example
+  name="OrientationHorizontal"
+  code={OrientationHorizontalSource}
+  exampleId="progress"
+  framework="svelte"
+  kind="component"
+/>
+
+### Orientation Vertical
+
+Stack the progress bar vertically when items should read in a column.
+
+<Example
+  name="OrientationVertical"
+  code={OrientationVerticalSource}
+  exampleId="progress"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Label
+
+Label the progress so the percentage or status is readable.
+
+<Example
+  name="WithLabel"
+  code={WithLabelSource}
+  exampleId="progress"
+  framework="svelte"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this progress bar.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="progress"
+  framework="svelte"
+  kind="component"
+/>
+
+### Indeterminate
+
+Show an indeterminate state when progress or selection is partial or unknown.
+
+<Example
+  name="Indeterminate"
+  code={IndeterminateSource}
+  exampleId="progress"
+  framework="svelte"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `progressRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="progress"
+  framework="svelte"
+  kind="component"
+/>

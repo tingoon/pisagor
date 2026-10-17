@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./with-value.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhThermometer } from "@phosphor-icons/vue";
 import { CircularSlider } from "@pisagor/vue";

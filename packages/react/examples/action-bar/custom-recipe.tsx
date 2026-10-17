@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import {
   ArchiveIcon,
   DownloadIcon,
@@ -53,3 +54,5 @@ export function CustomRecipe() {
     </ActionBar>
   );
 }
+
+export { source as CustomRecipeSource };

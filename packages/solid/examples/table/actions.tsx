@@ -1,3 +1,4 @@
+import source from "./actions.tsx?raw";
 import { Button, DropdownMenu, Table } from "@pisagor/solid";
 import {
   DotsThreeVerticalIcon,
@@ -63,3 +64,5 @@ export function Actions() {
     </Table>
   );
 }
+
+export { source as ActionsSource };

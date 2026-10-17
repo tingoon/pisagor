@@ -1,7 +1,7 @@
-import variantsRaw from "./variants.tsx?raw";
+import { VariantsSource as Variants } from "./variants";
 
 export const imports = `import { Swap } from "@pisagor/solid";`;
 
 export const sources = {
-  Variants: variantsRaw,
+  Variants,
 } as const;

@@ -1,0 +1,126 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/password-input/default.tsx";
+import { SizesSource } from "#examples/react/password-input/sizes.tsx";
+import { AutocompleteSource } from "#examples/react/password-input/autocomplete.tsx";
+import { CompoundSource } from "#examples/react/password-input/compound.tsx";
+import { ControlledVisibilitySource } from "#examples/react/password-input/controlled-visibility.tsx";
+import { ControlledSource } from "#examples/react/password-input/controlled.tsx";
+import { DisabledSource } from "#examples/react/password-input/disabled.tsx";
+import { InvalidSource } from "#examples/react/password-input/invalid.tsx";
+import { AutoHideSource } from "#examples/react/password-input/auto-hide.tsx";
+
+## Import
+
+```tsx
+import { PasswordInput } from "@pisagor/react";
+```
+
+## Examples
+
+### Default
+
+Collect a password with a show-hide control.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="password-input"
+  framework="react"
+  kind="component"
+/>
+
+### Sizes
+
+Match size to the surrounding layout — smaller in compact chrome, larger where the password input needs emphasis.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="password-input"
+  framework="react"
+  kind="component"
+/>
+
+### Autocomplete
+
+Set autocomplete attributes so browsers can fill credentials safely.
+
+<Example
+  name="Autocomplete"
+  code={AutocompleteSource}
+  exampleId="password-input"
+  framework="react"
+  kind="component"
+/>
+
+### Compound
+
+Compose `PasswordInput.Root`, `Control`, `Input` and `VisibilityTrigger` for custom layouts.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="password-input"
+  framework="react"
+  kind="component"
+/>
+
+### Controlled Visibility
+
+Drive show-hide state from the parent when visibility is coordinated elsewhere.
+
+<Example
+  name="ControlledVisibility"
+  code={ControlledVisibilitySource}
+  exampleId="password-input"
+  framework="react"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this password input.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="password-input"
+  framework="react"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the password input is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="password-input"
+  framework="react"
+  kind="component"
+/>
+
+### Invalid
+
+Surface a validation or error state so users know the password input needs attention before continuing.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="password-input"
+  framework="react"
+  kind="component"
+/>
+
+### Auto Hide
+
+Hide the password again after a delay when brief visibility is enough.
+
+<Example
+  name="AutoHide"
+  code={AutoHideSource}
+  exampleId="password-input"
+  framework="react"
+  kind="component"
+/>

@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./with-trend.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Stat } from "@pisagor/vue";
 </script>

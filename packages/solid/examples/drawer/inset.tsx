@@ -1,3 +1,4 @@
+import source from "./inset.tsx?raw";
 import { Button, Drawer, Field, Input } from "@pisagor/solid";
 export function Inset() {
   return (
@@ -46,3 +47,5 @@ export function Inset() {
     </Drawer>
   );
 }
+
+export { source as InsetSource };

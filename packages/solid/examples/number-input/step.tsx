@@ -1,3 +1,4 @@
+import source from "./step.tsx?raw";
 import { Field, NumberInput } from "@pisagor/solid";
 export function Step() {
   return (
@@ -21,3 +22,5 @@ export function Step() {
     </div>
   );
 }
+
+export { source as StepSource };

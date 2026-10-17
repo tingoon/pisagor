@@ -1,3 +1,4 @@
+import source from "./partial-collapse.tsx?raw";
 import { Button, Collapsible } from "@pisagor/react";
 export function PartialCollapse() {
   return (
@@ -35,3 +36,5 @@ export function PartialCollapse() {
     </Collapsible>
   );
 }
+
+export { source as PartialCollapseSource };

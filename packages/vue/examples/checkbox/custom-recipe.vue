@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./custom-recipe.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { checkboxRecipe } from "@pisagor/recipes";
 import { Checkbox, Field } from "@pisagor/vue";

@@ -1,0 +1,102 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/button-group/default.svelte?raw";
+import SizesSource from "#examples/svelte/button-group/sizes.svelte?raw";
+import OrientationHorizontalSource from "#examples/svelte/button-group/orientation-horizontal.svelte?raw";
+import OrientationVerticalSource from "#examples/svelte/button-group/orientation-vertical.svelte?raw";
+import NestedSource from "#examples/svelte/button-group/nested.svelte?raw";
+import WithSeparatorSource from "#examples/svelte/button-group/with-separator.svelte?raw";
+import CustomRecipeSource from "#examples/svelte/button-group/custom-recipe.svelte?raw";
+
+## Import
+
+```ts
+import { ButtonGroup } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Default
+
+Related actions clustered as one visual group.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="button-group"
+  framework="svelte"
+  kind="component"
+/>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="button-group"
+  framework="svelte"
+  kind="component"
+/>
+
+### Orientation Horizontal
+
+Lay actions in a row for toolbars and footers.
+
+<Example
+  name="OrientationHorizontal"
+  code={OrientationHorizontalSource}
+  exampleId="button-group"
+  framework="svelte"
+  kind="component"
+/>
+
+### Orientation Vertical
+
+Stack actions when the group sits in a narrow column.
+
+<Example
+  name="OrientationVertical"
+  code={OrientationVerticalSource}
+  exampleId="button-group"
+  framework="svelte"
+  kind="component"
+/>
+
+### Nested
+
+Nest groups when primary and secondary clusters share one control strip.
+
+<Example
+  name="Nested"
+  code={NestedSource}
+  exampleId="button-group"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Separator
+
+Separate subgroups so distinct action sets stay scannable.
+
+<Example
+  name="WithSeparator"
+  code={WithSeparatorSource}
+  exampleId="button-group"
+  framework="svelte"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `buttonGroupRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="button-group"
+  framework="svelte"
+  kind="component"
+/>

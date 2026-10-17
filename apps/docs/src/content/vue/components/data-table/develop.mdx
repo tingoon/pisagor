@@ -1,0 +1,35 @@
+import Example from "#/components/docs/example.astro";
+import SortingSource from "#examples/vue/data-table/sorting.vue?raw";
+import EmptySource from "#examples/vue/data-table/empty.vue?raw";
+
+## Import
+
+```ts
+import { DataTable } from "@pisagor/vue/data-table";
+```
+
+## Examples
+
+### Sorting
+
+Sort columns so users can reorder records.
+
+<Example
+  name="Sorting"
+  code={SortingSource}
+  exampleId="data-table"
+  framework="vue"
+  kind="component"
+/>
+
+### Empty
+
+Show an empty presentation when there are no rows yet.
+
+<Example
+  name="Empty"
+  code={EmptySource}
+  exampleId="data-table"
+  framework="vue"
+  kind="component"
+/>

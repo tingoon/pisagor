@@ -1,29 +1,29 @@
-import compoundRaw from "./compound.svelte?raw";
-import controlledRaw from "./controlled.svelte?raw";
-import custom_recipeRaw from "./custom-recipe.svelte?raw";
-import disabledRaw from "./disabled.svelte?raw";
-import disabled_itemRaw from "./disabled-item.svelte?raw";
-import font_weightRaw from "./font-weight.svelte?raw";
-import horizontalRaw from "./horizontal.svelte?raw";
-import singleRaw from "./single.svelte?raw";
-import sizesRaw from "./sizes.svelte?raw";
-import spacingRaw from "./spacing.svelte?raw";
-import variantsRaw from "./variants.svelte?raw";
-import verticalRaw from "./vertical.svelte?raw";
+import Compound from "./compound.svelte?raw";
+import Controlled from "./controlled.svelte?raw";
+import CustomRecipe from "./custom-recipe.svelte?raw";
+import Disabled from "./disabled.svelte?raw";
+import DisabledItem from "./disabled-item.svelte?raw";
+import FontWeight from "./font-weight.svelte?raw";
+import Horizontal from "./horizontal.svelte?raw";
+import Single from "./single.svelte?raw";
+import Sizes from "./sizes.svelte?raw";
+import Spacing from "./spacing.svelte?raw";
+import Variants from "./variants.svelte?raw";
+import Vertical from "./vertical.svelte?raw";
 
 export const imports = `import { ToggleGroup } from "@pisagor/svelte";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Disabled: disabledRaw,
-  DisabledItem: disabled_itemRaw,
-  FontWeight: font_weightRaw,
-  Horizontal: horizontalRaw,
-  Single: singleRaw,
-  Sizes: sizesRaw,
-  Spacing: spacingRaw,
-  Variants: variantsRaw,
-  Vertical: verticalRaw,
+  Compound,
+  Controlled,
+  CustomRecipe,
+  Disabled,
+  DisabledItem,
+  FontWeight,
+  Horizontal,
+  Single,
+  Sizes,
+  Spacing,
+  Variants,
+  Vertical,
 } as const;

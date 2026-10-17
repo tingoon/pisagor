@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./controlled.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { SegmentGroup } from "@pisagor/vue";
 import { ref } from "vue";

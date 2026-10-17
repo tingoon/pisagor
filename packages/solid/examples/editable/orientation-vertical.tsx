@@ -1,3 +1,4 @@
+import source from "./orientation-vertical.tsx?raw";
 import { Button, Editable, Textarea } from "@pisagor/solid";
 import { CheckIcon, XIcon } from "@pisagor/solid/icons";
 export function OrientationVertical() {
@@ -38,3 +39,5 @@ export function OrientationVertical() {
     </Editable>
   );
 }
+
+export { source as OrientationVerticalSource };

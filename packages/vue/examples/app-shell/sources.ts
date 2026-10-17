@@ -1,25 +1,23 @@
-import bannerRaw from "./banner.ts?raw";
-import contentRaw from "./content.ts?raw";
-import defaultRaw from "./default.ts?raw";
-import disable_hotkeyRaw from "./disable-hotkey.vue?raw";
-import headerRaw from "./header.ts?raw";
-import inspectorsRaw from "./inspectors.ts?raw";
-import mainRaw from "./main.ts?raw";
-import navigationRaw from "./navigation.ts?raw";
-import panelsRaw from "./panels.ts?raw";
-import railsRaw from "./rails.ts?raw";
+import Banner from "./banner.ts?raw";
+import Content from "./content.ts?raw";
+import Default from "./default.ts?raw";
+import Header from "./header.ts?raw";
+import Inspectors from "./inspectors.ts?raw";
+import Main from "./main.ts?raw";
+import Navigation from "./navigation.ts?raw";
+import Panels from "./panels.ts?raw";
+import Rails from "./rails.ts?raw";
 
 export const imports = `import { AppShell } from "@pisagor/vue";`;
 
 export const sources = {
-  Banner: bannerRaw,
-  Content: contentRaw,
-  Default: defaultRaw,
-  DisableHotkey: disable_hotkeyRaw,
-  Header: headerRaw,
-  Inspectors: inspectorsRaw,
-  Main: mainRaw,
-  Navigation: navigationRaw,
-  Panels: panelsRaw,
-  Rails: railsRaw,
+  Banner,
+  Content,
+  Default,
+  Header,
+  Inspectors,
+  Main,
+  Navigation,
+  Panels,
+  Rails,
 } as const;

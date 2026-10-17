@@ -1,0 +1,50 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react-form/phone-field/default.tsx";
+import { DisabledSource } from "#examples/react-form/phone-field/disabled.tsx";
+import { InvalidSource } from "#examples/react-form/phone-field/invalid.tsx";
+
+## Import
+
+```tsx
+import { PhoneField } from "@pisagor/react-form";
+```
+
+Part of `@pisagor/react-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+A phone number input with a country picker set by `defaultCountry`.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="phone-field"
+  framework="react"
+  kind="form"
+/>
+
+### Disabled
+
+Show that the phone field is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="phone-field"
+  framework="react"
+  kind="form"
+/>
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="phone-field"
+  framework="react"
+  kind="form"
+/>

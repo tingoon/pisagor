@@ -1,17 +1,17 @@
-import compoundRaw from "./compound.vue?raw";
-import custom_recipeRaw from "./custom-recipe.vue?raw";
-import data_typesRaw from "./data-types.vue?raw";
-import defaultRaw from "./default.vue?raw";
-import expand_depthRaw from "./expand-depth.vue?raw";
-import map_setRaw from "./map-set.vue?raw";
+import Compound from "./compound.vue?raw";
+import CustomRecipe from "./custom-recipe.vue?raw";
+import DataTypes from "./data-types.vue?raw";
+import Default from "./default.vue?raw";
+import ExpandDepth from "./expand-depth.vue?raw";
+import MapSet from "./map-set.vue?raw";
 
 export const imports = `import { JsonTreeView } from "@pisagor/vue";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  CustomRecipe: custom_recipeRaw,
-  DataTypes: data_typesRaw,
-  Default: defaultRaw,
-  ExpandDepth: expand_depthRaw,
-  MapSet: map_setRaw,
+  Compound,
+  CustomRecipe,
+  DataTypes,
+  Default,
+  ExpandDepth,
+  MapSet,
 } as const;

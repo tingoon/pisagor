@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./nested.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { ScrollArea } from "@pisagor/svelte";
 </script>

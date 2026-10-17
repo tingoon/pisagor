@@ -1,19 +1,19 @@
-import controlledRaw from "./controlled.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import indeterminateRaw from "./indeterminate.tsx?raw";
-import orientation_horizontalRaw from "./orientation-horizontal.tsx?raw";
-import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
-import with_labelRaw from "./with-label.tsx?raw";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { IndeterminateSource as Indeterminate } from "./indeterminate";
+import { OrientationHorizontalSource as OrientationHorizontal } from "./orientation-horizontal";
+import { OrientationVerticalSource as OrientationVertical } from "./orientation-vertical";
+import { WithLabelSource as WithLabel } from "./with-label";
 
 export const imports = `import { Progress } from "@pisagor/react";`;
 
 export const sources = {
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Indeterminate: indeterminateRaw,
-  OrientationHorizontal: orientation_horizontalRaw,
-  OrientationVertical: orientation_verticalRaw,
-  WithLabel: with_labelRaw,
+  Controlled,
+  CustomRecipe,
+  Default,
+  Indeterminate,
+  OrientationHorizontal,
+  OrientationVertical,
+  WithLabel,
 } as const;

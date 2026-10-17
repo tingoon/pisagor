@@ -1,3 +1,4 @@
+import source from "./compound.tsx?raw";
 import { QrCode } from "@pisagor/react";
 
 export function Compound() {
@@ -7,3 +8,5 @@ export function Compound() {
     </QrCode>
   );
 }
+
+export { source as CompoundSource };

@@ -1,0 +1,107 @@
+import Example from "#/components/docs/example.astro";
+import Default from "#examples/astro/separator/default.astro";
+import Vertical from "#examples/astro/separator/vertical.astro";
+import List from "#examples/astro/separator/list.astro";
+import InlineNavigation from "#examples/astro/separator/inline-navigation.astro";
+import Decorative from "#examples/astro/separator/decorative.astro";
+import CustomRecipe from "#examples/astro/separator/custom-recipe.astro";
+import DefaultSource from "#examples/astro/separator/default.astro?raw";
+import VerticalSource from "#examples/astro/separator/vertical.astro?raw";
+import ListSource from "#examples/astro/separator/list.astro?raw";
+import InlineNavigationSource from "#examples/astro/separator/inline-navigation.astro?raw";
+import DecorativeSource from "#examples/astro/separator/decorative.astro?raw";
+import CustomRecipeSource from "#examples/astro/separator/custom-recipe.astro?raw";
+
+## Import
+
+```ts
+import { Separator } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Divide related groups of content.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="separator"
+  framework="astro"
+  kind="component"
+>
+  <Default />
+</Example>
+
+### Vertical
+
+Use a vertical layout when the separator should read top to bottom.
+
+<Example
+  name="Vertical"
+  code={VerticalSource}
+  exampleId="separator"
+  framework="astro"
+  kind="component"
+>
+  <Vertical />
+</Example>
+
+### List
+
+Separate list sections so groups stay scannable.
+
+<Example
+  name="List"
+  code={ListSource}
+  exampleId="separator"
+  framework="astro"
+  kind="component"
+>
+  <List />
+</Example>
+
+### Inline Navigation
+
+Separate inline nav items without looking like a heavy rule.
+
+<Example
+  name="InlineNavigation"
+  code={InlineNavigationSource}
+  exampleId="separator"
+  framework="astro"
+  kind="component"
+>
+  <InlineNavigation />
+</Example>
+
+## Customization
+
+### Decorative
+
+Hide purely visual separators from assistive technology.
+
+<Example
+  name="Decorative"
+  code={DecorativeSource}
+  exampleId="separator"
+  framework="astro"
+  kind="component"
+>
+  <Decorative />
+</Example>
+
+### Custom recipe
+
+Extend `separatorRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="separator"
+  framework="astro"
+  kind="component"
+>
+  <CustomRecipe />
+</Example>

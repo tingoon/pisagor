@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./with-textarea.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, InputGroup } from "@pisagor/svelte";
   import ArrowUpIcon from "phosphor-svelte/lib/ArrowUpIcon";

@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./slider-hsl-channels.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { ColorPicker } from "@pisagor/svelte";
 </script>

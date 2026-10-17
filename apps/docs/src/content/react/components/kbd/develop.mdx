@@ -1,0 +1,89 @@
+import Example from "#/components/docs/example.astro";
+import { VariantsSource } from "#examples/react/kbd/variants.tsx";
+import { SizesSource } from "#examples/react/kbd/sizes.tsx";
+import { KbdGroupSource } from "#examples/react/kbd/kbd-group.tsx";
+import { WithButtonSource } from "#examples/react/kbd/with-button.tsx";
+import { WithTooltipSource } from "#examples/react/kbd/with-tooltip.tsx";
+import { CustomRecipeSource } from "#examples/react/kbd/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Kbd } from "@pisagor/react";
+```
+
+## Examples
+
+### Variants
+
+Choose visual weight or emphasis so the keyboard badge matches importance in the surrounding layout.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="kbd"
+  framework="react"
+  kind="component"
+/>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="kbd"
+  framework="react"
+  kind="component"
+/>
+
+### Kbd Group
+
+Group several keys when the shortcut is a chord.
+
+<Example
+  name="KbdGroup"
+  code={KbdGroupSource}
+  exampleId="kbd"
+  framework="react"
+  kind="component"
+/>
+
+### With Button
+
+Place the badge next to a button that performs the same action.
+
+<Example
+  name="WithButton"
+  code={WithButtonSource}
+  exampleId="kbd"
+  framework="react"
+  kind="component"
+/>
+
+### With Tooltip
+
+Explain the shortcut with a short tooltip when the keys alone are unclear.
+
+<Example
+  name="WithTooltip"
+  code={WithTooltipSource}
+  exampleId="kbd"
+  framework="react"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `kbdRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="kbd"
+  framework="react"
+  kind="component"
+/>

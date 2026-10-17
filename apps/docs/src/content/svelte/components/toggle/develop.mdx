@@ -1,0 +1,102 @@
+import Example from "#/components/docs/example.astro";
+import VariantsSource from "#examples/svelte/toggle/variants.svelte?raw";
+import SizesSource from "#examples/svelte/toggle/sizes.svelte?raw";
+import WithIconSource from "#examples/svelte/toggle/with-icon.svelte?raw";
+import IconGroupSource from "#examples/svelte/toggle/icon-group.svelte?raw";
+import ControlledSource from "#examples/svelte/toggle/controlled.svelte?raw";
+import DisabledSource from "#examples/svelte/toggle/disabled.svelte?raw";
+import CustomRecipeSource from "#examples/svelte/toggle/custom-recipe.svelte?raw";
+
+## Import
+
+```ts
+import { Toggle } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Variants
+
+Choose emphasis to match surrounding controls.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="toggle"
+  framework="svelte"
+  kind="component"
+/>
+
+### Sizes
+
+Match size to toolbar density.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="toggle"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Icon
+
+Pair an icon with the label to reinforce meaning.
+
+<Example
+  name="WithIcon"
+  code={WithIconSource}
+  exampleId="toggle"
+  framework="svelte"
+  kind="component"
+/>
+
+### Icon Group
+
+Group icon toggles when several binary options sit together.
+
+<Example
+  name="IconGroup"
+  code={IconGroupSource}
+  exampleId="toggle"
+  framework="svelte"
+  kind="component"
+/>
+
+### Controlled
+
+Drive pressed state from the parent.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="toggle"
+  framework="svelte"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the toggle is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="toggle"
+  framework="svelte"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `toggleRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="toggle"
+  framework="svelte"
+  kind="component"
+/>

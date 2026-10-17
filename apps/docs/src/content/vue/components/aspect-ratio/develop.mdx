@@ -1,0 +1,74 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/aspect-ratio/default.vue?raw";
+import PortraitSource from "#examples/vue/aspect-ratio/portrait.vue?raw";
+import ResponsiveSource from "#examples/vue/aspect-ratio/responsive.vue?raw";
+import SquareSource from "#examples/vue/aspect-ratio/square.vue?raw";
+import VideoSource from "#examples/vue/aspect-ratio/video.vue?raw";
+
+## Import
+
+```ts
+import { AspectRatio } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Lock content to a ratio so media does not jump as it loads.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="aspect-ratio"
+  framework="vue"
+  kind="component"
+/>
+
+### Portrait
+
+Use a portrait ratio for tall media such as mobile screenshots.
+
+<Example
+  name="Portrait"
+  code={PortraitSource}
+  exampleId="aspect-ratio"
+  framework="vue"
+  kind="component"
+/>
+
+### Responsive
+
+Keep the ratio while the box grows and shrinks with the layout.
+
+<Example
+  name="Responsive"
+  code={ResponsiveSource}
+  exampleId="aspect-ratio"
+  framework="vue"
+  kind="component"
+/>
+
+### Square
+
+Use a 1:1 box for avatars, thumbnails, and tile media.
+
+<Example
+  name="Square"
+  code={SquareSource}
+  exampleId="aspect-ratio"
+  framework="vue"
+  kind="component"
+/>
+
+### Video
+
+Use a widescreen ratio for video and cinematic embeds.
+
+<Example
+  name="Video"
+  code={VideoSource}
+  exampleId="aspect-ratio"
+  framework="vue"
+  kind="component"
+/>

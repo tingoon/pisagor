@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./disabled-field.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Field, Input } from "@pisagor/vue";
 </script>

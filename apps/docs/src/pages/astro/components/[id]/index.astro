@@ -3,8 +3,9 @@ import RedirectPage from "#/components/docs/redirect-page.astro";
 import { listComponentIds } from "#/lib/component-doc";
 import { withDocsBase } from "#/lib/nav";
 
-export function getStaticPaths() {
-  return listComponentIds("astro").map((id) => ({
+export async function getStaticPaths() {
+  const ids = await listComponentIds("astro");
+  return ids.map((id) => ({
     params: { id },
   }));
 }

@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./column-visibility.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Checkbox, Table } from "@pisagor/svelte";
   import type { VisibilityState } from "@pisagor/svelte/data-grid";

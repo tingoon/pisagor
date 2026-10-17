@@ -1,3 +1,4 @@
+import source from "./disable-editing.tsx?raw";
 import { Field, TagsInput } from "@pisagor/solid";
 import { For } from "solid-js";
 
@@ -25,3 +26,5 @@ export function DisableEditing() {
     </Field>
   );
 }
+
+export { source as DisableEditingSource };

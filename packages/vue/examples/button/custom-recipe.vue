@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./custom-recipe.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { buttonRecipe } from "@pisagor/recipes";
 import { Button } from "@pisagor/vue";

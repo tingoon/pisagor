@@ -1,0 +1,121 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/drawer/default.svelte?raw";
+import InsetSource from "#examples/svelte/drawer/inset.svelte?raw";
+import DrawerContentInnerSource from "#examples/svelte/drawer/drawer-content-inner.svelte?raw";
+import SnapPointsSource from "#examples/svelte/drawer/snap-points.svelte?raw";
+import SwipeDirectionsSource from "#examples/svelte/drawer/swipe-directions.svelte?raw";
+import CustomSpacingSource from "#examples/svelte/drawer/custom-spacing.svelte?raw";
+import CustomRecipeSource from "#examples/svelte/drawer/custom-recipe.svelte?raw";
+
+## Import
+
+```ts
+import { Drawer } from "@pisagor/svelte";
+```
+
+## Anatomy
+
+```tsx
+<Drawer>
+  <Drawer.Trigger />
+  <Drawer.Content>
+    <Drawer.ContentInner>
+      <Drawer.Header />
+      <Drawer.Body />
+    </Drawer.ContentInner>
+    <Drawer.Footer>
+      <Drawer.CloseTrigger />
+    </Drawer.Footer>
+  </Drawer.Content>
+</Drawer>
+```
+
+## Examples
+
+### Default
+
+Slide a panel over the page for secondary detail or a short task.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="drawer"
+  framework="svelte"
+  kind="component"
+/>
+
+### Inset
+
+Inset the drawer from the viewport edge when a floating panel look fits better.
+
+<Example
+  name="Inset"
+  code={InsetSource}
+  exampleId="drawer"
+  framework="svelte"
+  kind="component"
+/>
+
+### Drawer Content Inner
+
+Structure inner content regions when the drawer needs a composed body.
+
+<Example
+  name="DrawerContentInner"
+  code={DrawerContentInnerSource}
+  exampleId="drawer"
+  framework="svelte"
+  kind="component"
+/>
+
+### Snap Points
+
+Snap to partial heights when users may peek or expand the panel.
+
+<Example
+  name="SnapPoints"
+  code={SnapPointsSource}
+  exampleId="drawer"
+  framework="svelte"
+  kind="component"
+/>
+
+### Swipe Directions
+
+Limit swipe dismiss directions to match the drawer placement.
+
+<Example
+  name="SwipeDirections"
+  code={SwipeDirectionsSource}
+  exampleId="drawer"
+  framework="svelte"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Override spacing when the default density does not match the surrounding layout.
+
+<Example
+  name="CustomSpacing"
+  code={CustomSpacingSource}
+  exampleId="drawer"
+  framework="svelte"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `drawerRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="drawer"
+  framework="svelte"
+  kind="component"
+/>

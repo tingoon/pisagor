@@ -1,0 +1,107 @@
+import Example from "#/components/docs/example.astro";
+import Default from "#examples/astro/progress/default.astro";
+import OrientationHorizontal from "#examples/astro/progress/orientation-horizontal.astro";
+import OrientationVertical from "#examples/astro/progress/orientation-vertical.astro";
+import WithLabel from "#examples/astro/progress/with-label.astro";
+import Indeterminate from "#examples/astro/progress/indeterminate.astro";
+import CustomRecipe from "#examples/astro/progress/custom-recipe.astro";
+import DefaultSource from "#examples/astro/progress/default.astro?raw";
+import OrientationHorizontalSource from "#examples/astro/progress/orientation-horizontal.astro?raw";
+import OrientationVerticalSource from "#examples/astro/progress/orientation-vertical.astro?raw";
+import WithLabelSource from "#examples/astro/progress/with-label.astro?raw";
+import IndeterminateSource from "#examples/astro/progress/indeterminate.astro?raw";
+import CustomRecipeSource from "#examples/astro/progress/custom-recipe.astro?raw";
+
+## Import
+
+```ts
+import { Progress } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Show completion along a linear track.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="progress"
+  framework="astro"
+  kind="component"
+>
+  <Default />
+</Example>
+
+### Orientation Horizontal
+
+Lay out the progress bar horizontally when items should read in a row.
+
+<Example
+  name="OrientationHorizontal"
+  code={OrientationHorizontalSource}
+  exampleId="progress"
+  framework="astro"
+  kind="component"
+>
+  <OrientationHorizontal />
+</Example>
+
+### Orientation Vertical
+
+Stack the progress bar vertically when items should read in a column.
+
+<Example
+  name="OrientationVertical"
+  code={OrientationVerticalSource}
+  exampleId="progress"
+  framework="astro"
+  kind="component"
+>
+  <OrientationVertical />
+</Example>
+
+### With Label
+
+Label the progress so the percentage or status is readable.
+
+<Example
+  name="WithLabel"
+  code={WithLabelSource}
+  exampleId="progress"
+  framework="astro"
+  kind="component"
+>
+  <WithLabel />
+</Example>
+
+### Indeterminate
+
+Show an indeterminate state when progress or selection is partial or unknown.
+
+<Example
+  name="Indeterminate"
+  code={IndeterminateSource}
+  exampleId="progress"
+  framework="astro"
+  kind="component"
+>
+  <Indeterminate />
+</Example>
+
+## Customization
+
+### Custom recipe
+
+Extend `progressRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="progress"
+  framework="astro"
+  kind="component"
+>
+  <CustomRecipe />
+</Example>

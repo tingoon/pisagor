@@ -1,0 +1,48 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/timeline/default.vue?raw";
+import HorizontalSource from "#examples/vue/timeline/horizontal.vue?raw";
+import CompoundSource from "#examples/vue/timeline/compound.vue?raw";
+
+## Import
+
+```ts
+import { Timeline } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Show events or milestones in chronological order.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="timeline"
+  framework="vue"
+  kind="component"
+/>
+
+### Horizontal
+
+Use a horizontal layout when the timeline should read left to right.
+
+<Example
+  name="Horizontal"
+  code={HorizontalSource}
+  exampleId="timeline"
+  framework="vue"
+  kind="component"
+/>
+
+### Compound
+
+Compose timeline parts for a custom history layout.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="timeline"
+  framework="vue"
+  kind="component"
+/>

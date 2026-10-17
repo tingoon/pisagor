@@ -1,0 +1,115 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/switch/default.svelte?raw";
+import VariantsSource from "#examples/svelte/switch/variants.svelte?raw";
+import SizesSource from "#examples/svelte/switch/sizes.svelte?raw";
+import CompoundSource from "#examples/svelte/switch/compound.svelte?raw";
+import ControlledSource from "#examples/svelte/switch/controlled.svelte?raw";
+import DisabledSource from "#examples/svelte/switch/disabled.svelte?raw";
+import InvalidSource from "#examples/svelte/switch/invalid.svelte?raw";
+import CustomRecipeSource from "#examples/svelte/switch/custom-recipe.svelte?raw";
+
+## Import
+
+```ts
+import { Switch } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Default
+
+Toggle a setting on or off with immediate effect.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="switch"
+  framework="svelte"
+  kind="component"
+/>
+
+### Variants
+
+Choose emphasis to match other controls in the form.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="switch"
+  framework="svelte"
+  kind="component"
+/>
+
+### Sizes
+
+Match switch size to surrounding form density.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="switch"
+  framework="svelte"
+  kind="component"
+/>
+
+### Compound
+
+Compose `Switch.Root`, `Switch.Control`, `Switch.Thumb` and `Switch.HiddenInput` when you need custom structure.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="switch"
+  framework="svelte"
+  kind="component"
+/>
+
+### Controlled
+
+Drive checked state from the parent when other UI depends on it.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="switch"
+  framework="svelte"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the setting cannot change.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="switch"
+  framework="svelte"
+  kind="component"
+/>
+
+### Invalid
+
+Surface a validation error when the setting is required or not allowed.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="switch"
+  framework="svelte"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `switchRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="switch"
+  framework="svelte"
+  kind="component"
+/>

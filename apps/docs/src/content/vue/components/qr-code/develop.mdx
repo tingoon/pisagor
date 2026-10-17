@@ -1,0 +1,102 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/qr-code/default.vue?raw";
+import SizesSource from "#examples/vue/qr-code/sizes.vue?raw";
+import ErrorCorrectionSource from "#examples/vue/qr-code/error-correction.vue?raw";
+import OverlaySource from "#examples/vue/qr-code/overlay.vue?raw";
+import CompoundSource from "#examples/vue/qr-code/compound.vue?raw";
+import DownloadSource from "#examples/vue/qr-code/download.vue?raw";
+import CustomRecipeSource from "#examples/vue/qr-code/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { QrCode } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Display a scannable QR code for a link or payload.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="qr-code"
+  framework="vue"
+  kind="component"
+/>
+
+### Sizes
+
+Match size to the surrounding layout — smaller in compact chrome, larger where the QR code needs emphasis.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="qr-code"
+  framework="vue"
+  kind="component"
+/>
+
+### Error Correction
+
+Raise error correction when the code may be partially covered or printed small.
+
+<Example
+  name="ErrorCorrection"
+  code={ErrorCorrectionSource}
+  exampleId="qr-code"
+  framework="vue"
+  kind="component"
+/>
+
+### Overlay
+
+Overlay a mark on the code when branding sits in the center.
+
+<Example
+  name="Overlay"
+  code={OverlaySource}
+  exampleId="qr-code"
+  framework="vue"
+  kind="component"
+/>
+
+### Compound
+
+Compose the frame and pattern parts when you need to place extra content around the code.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="qr-code"
+  framework="vue"
+  kind="component"
+/>
+
+### Download
+
+Offer download when users need to save or print the code.
+
+<Example
+  name="Download"
+  code={DownloadSource}
+  exampleId="qr-code"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `qrCodeRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="qr-code"
+  framework="vue"
+  kind="component"
+/>

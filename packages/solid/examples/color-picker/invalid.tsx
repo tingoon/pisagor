@@ -1,3 +1,4 @@
+import source from "./invalid.tsx?raw";
 import { ColorPicker, InputGroup } from "@pisagor/solid";
 export function Invalid() {
   return (
@@ -27,3 +28,5 @@ export function Invalid() {
     </ColorPicker>
   );
 }
+
+export { source as InvalidSource };

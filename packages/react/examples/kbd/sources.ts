@@ -1,17 +1,17 @@
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import kbd_groupRaw from "./kbd-group.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
-import with_buttonRaw from "./with-button.tsx?raw";
-import with_tooltipRaw from "./with-tooltip.tsx?raw";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { KbdGroupSource as KbdGroup } from "./kbd-group";
+import { SizesSource as Sizes } from "./sizes";
+import { VariantsSource as Variants } from "./variants";
+import { WithButtonSource as WithButton } from "./with-button";
+import { WithTooltipSource as WithTooltip } from "./with-tooltip";
 
 export const imports = `import { Kbd } from "@pisagor/react";`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  KbdGroup: kbd_groupRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
-  WithButton: with_buttonRaw,
-  WithTooltip: with_tooltipRaw,
+  CustomRecipe,
+  KbdGroup,
+  Sizes,
+  Variants,
+  WithButton,
+  WithTooltip,
 } as const;

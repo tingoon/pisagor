@@ -1,3 +1,4 @@
+import source from "./with-icon.tsx?raw";
 import { Alert } from "@pisagor/solid";
 import { SparkleIcon } from "@pisagor/solid/icons";
 
@@ -10,3 +11,5 @@ export function WithIcon() {
     />
   );
 }
+
+export { source as WithIconSource };

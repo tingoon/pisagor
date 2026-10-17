@@ -1,0 +1,48 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/download-trigger/default.vue?raw";
+import DownloadSvgSource from "#examples/vue/download-trigger/download-svg.vue?raw";
+import WithPromiseSource from "#examples/vue/download-trigger/with-promise.vue?raw";
+
+## Import
+
+```ts
+import { DownloadTrigger } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Start a download from a control without navigating away.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="download-trigger"
+  framework="vue"
+  kind="component"
+/>
+
+### Download Svg
+
+Download SVG content when the file is vector markup.
+
+<Example
+  name="DownloadSvg"
+  code={DownloadSvgSource}
+  exampleId="download-trigger"
+  framework="vue"
+  kind="component"
+/>
+
+### With Promise
+
+Resolve a promise for the file payload when generation is asynchronous.
+
+<Example
+  name="WithPromise"
+  code={WithPromiseSource}
+  exampleId="download-trigger"
+  framework="vue"
+  kind="component"
+/>

@@ -1,3 +1,4 @@
+import source from "./empty.tsx?raw";
 import { createListCollection } from "@ark-ui/react";
 import { Select } from "@pisagor/react";
 
@@ -18,3 +19,5 @@ export function Empty() {
     </Select.Root>
   );
 }
+
+export { source as EmptySource };

@@ -1,0 +1,138 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/resizable/default.svelte?raw";
+import OrientationHorizontalSource from "#examples/svelte/resizable/orientation-horizontal.svelte?raw";
+import OrientationVerticalSource from "#examples/svelte/resizable/orientation-vertical.svelte?raw";
+import HandleSource from "#examples/svelte/resizable/handle.svelte?raw";
+import EdgeHandleSource from "#examples/svelte/resizable/edge-handle.svelte?raw";
+import MultiplePanelsSource from "#examples/svelte/resizable/multiple-panels.svelte?raw";
+import MinMaxSource from "#examples/svelte/resizable/min-max.svelte?raw";
+import CollapsibleSource from "#examples/svelte/resizable/collapsible.svelte?raw";
+import CustomRecipeSource from "#examples/svelte/resizable/custom-recipe.svelte?raw";
+
+## Import
+
+```ts
+import { Resizable } from "@pisagor/svelte";
+```
+
+## Anatomy
+
+```tsx
+<Resizable>
+  <Resizable.Panel />
+  <Resizable.ResizeTrigger />
+  <Resizable.Panel />
+</Resizable>
+```
+
+## Examples
+
+### Default
+
+Drag handles to resize adjacent panels.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="resizable"
+  framework="svelte"
+  kind="component"
+/>
+
+### Orientation Horizontal
+
+Lay out the resizable layout horizontally when items should read in a row.
+
+<Example
+  name="OrientationHorizontal"
+  code={OrientationHorizontalSource}
+  exampleId="resizable"
+  framework="svelte"
+  kind="component"
+/>
+
+### Orientation Vertical
+
+Stack the resizable layout vertically when items should read in a column.
+
+<Example
+  name="OrientationVertical"
+  code={OrientationVerticalSource}
+  exampleId="resizable"
+  framework="svelte"
+  kind="component"
+/>
+
+### Handle
+
+Emphasize the resize handle when the divider should be easy to grab.
+
+<Example
+  name="Handle"
+  code={HandleSource}
+  exampleId="resizable"
+  framework="svelte"
+  kind="component"
+/>
+
+### Edge Handle
+
+Place handles on edges when that affordance matches the layout.
+
+<Example
+  name="EdgeHandle"
+  code={EdgeHandleSource}
+  exampleId="resizable"
+  framework="svelte"
+  kind="component"
+/>
+
+### Multiple Panels
+
+Split more than two panels when the workspace has several regions.
+
+<Example
+  name="MultiplePanels"
+  code={MultiplePanelsSource}
+  exampleId="resizable"
+  framework="svelte"
+  kind="component"
+/>
+
+### Min Max
+
+Clamp values to a minimum and maximum so users cannot pick out-of-range input.
+
+<Example
+  name="MinMax"
+  code={MinMaxSource}
+  exampleId="resizable"
+  framework="svelte"
+  kind="component"
+/>
+
+### Collapsible
+
+Allow a panel to collapse when users need maximum space for another region.
+
+<Example
+  name="Collapsible"
+  code={CollapsibleSource}
+  exampleId="resizable"
+  framework="svelte"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `resizableRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="resizable"
+  framework="svelte"
+  kind="component"
+/>

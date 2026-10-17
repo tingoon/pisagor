@@ -1,3 +1,4 @@
+import source from "./loading.tsx?raw";
 import { Steps } from "@pisagor/solid";
 import { CircleNotchIcon } from "@pisagor/solid/icons";
 
@@ -28,3 +29,5 @@ export function Loading() {
     </Steps>
   );
 }
+
+export { source as LoadingSource };

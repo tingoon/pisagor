@@ -1,3 +1,4 @@
+import source from "./with-badge.tsx?raw";
 import { Badge, InputGroup } from "@pisagor/solid";
 import { AtIcon } from "@pisagor/solid/icons";
 export function WithBadge() {
@@ -15,3 +16,5 @@ export function WithBadge() {
     </InputGroup>
   );
 }
+
+export { source as WithBadgeSource };

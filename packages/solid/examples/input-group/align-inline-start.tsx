@@ -1,3 +1,4 @@
+import source from "./align-inline-start.tsx?raw";
 import { InputGroup } from "@pisagor/solid";
 import { FunnelIcon } from "@pisagor/solid/icons";
 
@@ -14,3 +15,5 @@ export function AlignInlineStart() {
     </div>
   );
 }
+
+export { source as AlignInlineStartSource };

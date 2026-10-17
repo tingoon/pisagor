@@ -1,3 +1,4 @@
+import source from "./disabled.tsx?raw";
 import { TagsInputField } from "@pisagor/solid-form";
 
 export function Disabled() {
@@ -10,3 +11,5 @@ export function Disabled() {
     />
   );
 }
+
+export { source as DisabledSource };

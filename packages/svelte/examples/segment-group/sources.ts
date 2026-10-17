@@ -1,29 +1,29 @@
-import compoundRaw from "./compound.svelte?raw";
-import controlledRaw from "./controlled.svelte?raw";
-import custom_indicatorRaw from "./custom-indicator.svelte?raw";
-import custom_recipeRaw from "./custom-recipe.svelte?raw";
-import defaultRaw from "./default.svelte?raw";
-import disabledRaw from "./disabled.svelte?raw";
-import disabled_itemRaw from "./disabled-item.svelte?raw";
-import indicator_on_hoverRaw from "./indicator-on-hover.svelte?raw";
-import orientation_horizontalRaw from "./orientation-horizontal.svelte?raw";
-import orientation_verticalRaw from "./orientation-vertical.svelte?raw";
-import sizesRaw from "./sizes.svelte?raw";
-import variantsRaw from "./variants.svelte?raw";
+import Compound from "./compound.svelte?raw";
+import Controlled from "./controlled.svelte?raw";
+import CustomIndicator from "./custom-indicator.svelte?raw";
+import CustomRecipe from "./custom-recipe.svelte?raw";
+import Default from "./default.svelte?raw";
+import Disabled from "./disabled.svelte?raw";
+import DisabledItem from "./disabled-item.svelte?raw";
+import IndicatorOnHover from "./indicator-on-hover.svelte?raw";
+import OrientationHorizontal from "./orientation-horizontal.svelte?raw";
+import OrientationVertical from "./orientation-vertical.svelte?raw";
+import Sizes from "./sizes.svelte?raw";
+import Variants from "./variants.svelte?raw";
 
 export const imports = `import { SegmentGroup } from "@pisagor/svelte";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  Controlled: controlledRaw,
-  CustomIndicator: custom_indicatorRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  DisabledItem: disabled_itemRaw,
-  IndicatorOnHover: indicator_on_hoverRaw,
-  OrientationHorizontal: orientation_horizontalRaw,
-  OrientationVertical: orientation_verticalRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
+  Compound,
+  Controlled,
+  CustomIndicator,
+  CustomRecipe,
+  Default,
+  Disabled,
+  DisabledItem,
+  IndicatorOnHover,
+  OrientationHorizontal,
+  OrientationVertical,
+  Sizes,
+  Variants,
 } as const;

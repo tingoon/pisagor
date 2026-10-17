@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Card } from "@pisagor/react";
 
 export function Default() {
@@ -16,3 +17,5 @@ export function Default() {
     </Card>
   );
 }
+
+export { source as DefaultSource };

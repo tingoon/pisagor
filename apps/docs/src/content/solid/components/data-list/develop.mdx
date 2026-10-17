@@ -1,0 +1,87 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid/data-list/default.tsx";
+import { OrientationHorizontalSource } from "#examples/solid/data-list/orientation-horizontal.tsx";
+import { OrientationVerticalSource } from "#examples/solid/data-list/orientation-vertical.tsx";
+import { SeparatorSource } from "#examples/solid/data-list/separator.tsx";
+import { InfoTipSource } from "#examples/solid/data-list/info-tip.tsx";
+import { CompoundSource } from "#examples/solid/data-list/compound.tsx";
+
+## Import
+
+```tsx
+import { DataList } from "@pisagor/solid";
+```
+
+## Examples
+
+### Default
+
+Present label-value pairs for summaries and metadata.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="data-list"
+  framework="solid"
+  kind="component"
+/>
+
+### Orientation Horizontal
+
+Lay out the data list horizontally when items should read in a row.
+
+<Example
+  name="OrientationHorizontal"
+  code={OrientationHorizontalSource}
+  exampleId="data-list"
+  framework="solid"
+  kind="component"
+/>
+
+### Orientation Vertical
+
+Stack the data list vertically when items should read in a column.
+
+<Example
+  name="OrientationVertical"
+  code={OrientationVerticalSource}
+  exampleId="data-list"
+  framework="solid"
+  kind="component"
+/>
+
+### Separator
+
+Separate groups of pairs so sections stay scannable.
+
+<Example
+  name="Separator"
+  code={SeparatorSource}
+  exampleId="data-list"
+  framework="solid"
+  kind="component"
+/>
+
+### Info Tip
+
+Add a short tip on a label when the field needs explanation without crowding the row.
+
+<Example
+  name="InfoTip"
+  code={InfoTipSource}
+  exampleId="data-list"
+  framework="solid"
+  kind="component"
+/>
+
+### Compound
+
+Compose term and value parts for a custom list layout.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="data-list"
+  framework="solid"
+  kind="component"
+/>

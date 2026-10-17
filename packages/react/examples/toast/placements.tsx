@@ -1,3 +1,4 @@
+import source from "./placements.tsx?raw";
 import { createToaster } from "@ark-ui/react/toast";
 import { Button, Toaster } from "@pisagor/react";
 export function Placements() {
@@ -114,3 +115,5 @@ export function Placements() {
     </>
   );
 }
+
+export { source as PlacementsSource };

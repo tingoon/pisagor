@@ -1,0 +1,89 @@
+import Example from "#/components/docs/example.astro";
+import VariantsSource from "#examples/svelte/announcement/variants.svelte?raw";
+import WithIconSource from "#examples/svelte/announcement/with-icon.svelte?raw";
+import WithoutBadgeSource from "#examples/svelte/announcement/without-badge.svelte?raw";
+import CompoundSource from "#examples/svelte/announcement/compound.svelte?raw";
+import WithLinkSource from "#examples/svelte/announcement/with-link.svelte?raw";
+import CustomRecipeSource from "#examples/svelte/announcement/custom-recipe.svelte?raw";
+
+## Import
+
+```ts
+import { Announcement } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Variants
+
+Choose emphasis so the announcement matches how urgent or promotional the message is.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="announcement"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Icon
+
+Add an icon when a symbol helps users recognize the announcement type quickly.
+
+<Example
+  name="WithIcon"
+  code={WithIconSource}
+  exampleId="announcement"
+  framework="svelte"
+  kind="component"
+/>
+
+### Without Badge
+
+Drop the badge treatment when a plain text callout is enough.
+
+<Example
+  name="WithoutBadge"
+  code={WithoutBadgeSource}
+  exampleId="announcement"
+  framework="svelte"
+  kind="component"
+/>
+
+### Compound
+
+Assemble parts when you need a custom announcement layout.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="announcement"
+  framework="svelte"
+  kind="component"
+/>
+
+### As child
+
+Link through to details when the bar should stay short and the full story lives elsewhere.
+
+<Example
+  name="WithLink"
+  code={WithLinkSource}
+  exampleId="announcement"
+  framework="svelte"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `announcementRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="announcement"
+  framework="svelte"
+  kind="component"
+/>

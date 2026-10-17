@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./multiple-months.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Calendar, Card, parseDate } from "@pisagor/vue";
 import { ref } from "vue";

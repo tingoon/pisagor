@@ -1,3 +1,4 @@
+import source from "./controlled.tsx?raw";
 import { Carousel } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 import { numberedSlides } from "./helpers";
@@ -19,3 +20,5 @@ export function Controlled() {
     </div>
   );
 }
+
+export { source as ControlledSource };

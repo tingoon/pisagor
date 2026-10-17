@@ -1,3 +1,4 @@
+import source from "./indicator-on-hover.tsx?raw";
 import { SegmentGroup } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function IndicatorOnHover() {
@@ -25,3 +26,5 @@ export function IndicatorOnHover() {
     </SegmentGroup.Root>
   );
 }
+
+export { source as IndicatorOnHoverSource };

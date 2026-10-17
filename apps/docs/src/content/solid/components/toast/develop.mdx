@@ -1,0 +1,113 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid/toast/default.tsx";
+import { VariantsSource } from "#examples/solid/toast/variants.tsx";
+import { ActionSource } from "#examples/solid/toast/action.tsx";
+import { WithPromiseSource } from "#examples/solid/toast/with-promise.tsx";
+import { DurationSource } from "#examples/solid/toast/duration.tsx";
+import { ClosableSource } from "#examples/solid/toast/closable.tsx";
+import { DedupeSource } from "#examples/solid/toast/dedupe.tsx";
+import { PlacementsSource } from "#examples/solid/toast/placements.tsx";
+
+## Import
+
+```tsx
+import { toast } from "@pisagor/solid";
+```
+
+## Examples
+
+### Default
+
+Brief feedback that appears and dismisses after an action.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="toast"
+  framework="solid"
+  kind="component"
+/>
+
+### Variants
+
+Choose visual weight or emphasis so the toast matches importance in the surrounding layout.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="toast"
+  framework="solid"
+  kind="component"
+/>
+
+### Action
+
+Offer a follow-up action when the message leads somewhere.
+
+<Example
+  name="Action"
+  code={ActionSource}
+  exampleId="toast"
+  framework="solid"
+  kind="component"
+/>
+
+### With Promise
+
+Tie the toast to a promise so pending, success, and error states stay in sync.
+
+<Example
+  name="WithPromise"
+  code={WithPromiseSource}
+  exampleId="toast"
+  framework="solid"
+  kind="component"
+/>
+
+### Duration
+
+Control how long the toast stays visible.
+
+<Example
+  name="Duration"
+  code={DurationSource}
+  exampleId="toast"
+  framework="solid"
+  kind="component"
+/>
+
+### Closable
+
+Let users dismiss the toast before it expires.
+
+<Example
+  name="Closable"
+  code={ClosableSource}
+  exampleId="toast"
+  framework="solid"
+  kind="component"
+/>
+
+### Dedupe
+
+Prevent duplicate toasts when the same message would otherwise stack.
+
+<Example
+  name="Dedupe"
+  code={DedupeSource}
+  exampleId="toast"
+  framework="solid"
+  kind="component"
+/>
+
+### Placements
+
+Choose placement so the toast stays near its trigger without covering critical content.
+
+<Example
+  name="Placements"
+  code={PlacementsSource}
+  exampleId="toast"
+  framework="solid"
+  kind="component"
+/>

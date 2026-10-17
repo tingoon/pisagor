@@ -1,15 +1,15 @@
-import custom_recipeRaw from "./custom-recipe.svelte?raw";
-import defaultRaw from "./default.svelte?raw";
-import in_cardRaw from "./in-card.svelte?raw";
-import sizesRaw from "./sizes.svelte?raw";
-import skeleton_textRaw from "./skeleton-text.svelte?raw";
+import CustomRecipe from "./custom-recipe.svelte?raw";
+import Default from "./default.svelte?raw";
+import InCard from "./in-card.svelte?raw";
+import Sizes from "./sizes.svelte?raw";
+import SkeletonText from "./skeleton-text.svelte?raw";
 
 export const imports = `import { Skeleton } from "@pisagor/svelte";`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  InCard: in_cardRaw,
-  Sizes: sizesRaw,
-  SkeletonText: skeleton_textRaw,
+  CustomRecipe,
+  Default,
+  InCard,
+  Sizes,
+  SkeletonText,
 } as const;

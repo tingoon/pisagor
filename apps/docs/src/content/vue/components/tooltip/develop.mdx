@@ -1,0 +1,113 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/tooltip/default.ts?raw";
+import WithKeyboardShortcutSource from "#examples/vue/tooltip/with-keyboard-shortcut.ts?raw";
+import WithoutArrowSource from "#examples/vue/tooltip/without-arrow.vue?raw";
+import CompoundSource from "#examples/vue/tooltip/compound.ts?raw";
+import DisabledSource from "#examples/vue/tooltip/disabled.ts?raw";
+import PlacementsSource from "#examples/vue/tooltip/placements.ts?raw";
+import CustomRecipeSource from "#examples/vue/tooltip/custom-recipe.ts?raw";
+
+## Import
+
+```ts
+import { Tooltip } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Explain a control briefly on hover or focus.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="tooltip"
+  framework="vue"
+  kind="component"
+/>
+
+### With Keyboard Shortcut
+
+Include the shortcut in the tooltip when keys reinforce the action.
+
+<Example
+  name="WithKeyboardShortcut"
+  code={WithKeyboardShortcutSource}
+  exampleId="tooltip"
+  framework="vue"
+  kind="component"
+/>
+
+### Without Arrow
+
+Hide the arrow for a lighter, label-like tooltip.
+
+<Example
+  name="WithoutArrow"
+  code={WithoutArrowSource}
+  exampleId="tooltip"
+  framework="vue"
+  kind="component"
+/>
+
+### Compound
+
+Compose `Tooltip.Root`, `Trigger`, `Positioner`, `Content` and `Arrow` for full control. The shorthand stays available.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="tooltip"
+  framework="vue"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the tooltip is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="tooltip"
+  framework="vue"
+  kind="component"
+/>
+
+### Placements
+
+Place the tooltip so it stays near the trigger without covering critical UI.
+
+<Example
+  name="Placements"
+  code={PlacementsSource}
+  exampleId="tooltip"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `tooltipRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="tooltip"
+  framework="vue"
+  kind="component"
+/>
+
+## Accessibility
+
+Complies with the [Tooltip WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/) (via Ark UI).
+
+| Key    | Description                                                                        |
+| ------ | ---------------------------------------------------------------------------------- |
+| Tab    | Opens or closes the tooltip without delay when focus moves to or from the trigger. |
+| Escape | If open, closes the tooltip without delay.                                         |
+
+Icon-only triggers need an accessible name (`aria-label` or visible text).

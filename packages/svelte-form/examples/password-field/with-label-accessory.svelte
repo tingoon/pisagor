@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./with-label-accessory.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { PasswordField } from "@pisagor/svelte-form";
 </script>

@@ -1,3 +1,4 @@
+import source from "./non-collapsible.tsx?raw";
 import { Accordion } from "@pisagor/react";
 import { shortFaqItems } from "./helpers";
 
@@ -10,3 +11,5 @@ export function NonCollapsible() {
     />
   );
 }
+
+export { source as NonCollapsibleSource };

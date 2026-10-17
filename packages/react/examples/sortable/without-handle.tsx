@@ -1,3 +1,4 @@
+import source from "./without-handle.tsx?raw";
 import { Sortable } from "@pisagor/react";
 import { useState } from "react";
 
@@ -23,3 +24,5 @@ export function WithoutHandle() {
     </Sortable>
   );
 }
+
+export { source as WithoutHandleSource };

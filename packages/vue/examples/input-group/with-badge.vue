@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./with-badge.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhAt } from "@phosphor-icons/vue";
 import { Badge, InputGroup } from "@pisagor/vue";

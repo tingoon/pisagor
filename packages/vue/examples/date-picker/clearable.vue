@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./clearable.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhCalendar } from "@phosphor-icons/vue";
 import { Button, DatePicker, Field, parseDate } from "@pisagor/vue";

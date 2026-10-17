@@ -1,3 +1,4 @@
+import source from "./footer.tsx?raw";
 import { Table } from "@pisagor/solid";
 
 export function Footer() {
@@ -42,3 +43,5 @@ export function Footer() {
     </Table>
   );
 }
+
+export { source as FooterSource };

@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./orientation-vertical.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhMinus, PhPlus } from "@phosphor-icons/vue";
 import { Button, ButtonGroup } from "@pisagor/vue";

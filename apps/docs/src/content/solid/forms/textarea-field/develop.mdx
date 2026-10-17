@@ -1,0 +1,50 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid-form/textarea-field/default.tsx";
+import { DisabledSource } from "#examples/solid-form/textarea-field/disabled.tsx";
+import { InvalidSource } from "#examples/solid-form/textarea-field/invalid.tsx";
+
+## Import
+
+```tsx
+import { TextareaField } from "@pisagor/solid-form";
+```
+
+Part of `@pisagor/solid-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+A multi-line text input for longer free-form answers.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="textarea-field"
+  framework="solid"
+  kind="form"
+/>
+
+### Disabled
+
+Show that the textarea is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="textarea-field"
+  framework="solid"
+  kind="form"
+/>
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="textarea-field"
+  framework="solid"
+  kind="form"
+/>

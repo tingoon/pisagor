@@ -1,33 +1,33 @@
-import compoundRaw from "./compound.svelte?raw";
-import controlledRaw from "./controlled.svelte?raw";
-import countRaw from "./count.svelte?raw";
-import custom_colorRaw from "./custom-color.svelte?raw";
-import custom_iconRaw from "./custom-icon.svelte?raw";
-import custom_recipeRaw from "./custom-recipe.svelte?raw";
-import custom_sizeRaw from "./custom-size.svelte?raw";
-import defaultRaw from "./default.svelte?raw";
-import disabledRaw from "./disabled.svelte?raw";
-import half_starRaw from "./half-star.svelte?raw";
-import invalidRaw from "./invalid.svelte?raw";
-import readonlyRaw from "./readonly.svelte?raw";
-import sizesRaw from "./sizes.svelte?raw";
-import testimonialRaw from "./testimonial.svelte?raw";
+import Compound from "./compound.svelte?raw";
+import Controlled from "./controlled.svelte?raw";
+import Count from "./count.svelte?raw";
+import CustomColor from "./custom-color.svelte?raw";
+import CustomIcon from "./custom-icon.svelte?raw";
+import CustomRecipe from "./custom-recipe.svelte?raw";
+import CustomSize from "./custom-size.svelte?raw";
+import Default from "./default.svelte?raw";
+import Disabled from "./disabled.svelte?raw";
+import HalfStar from "./half-star.svelte?raw";
+import Invalid from "./invalid.svelte?raw";
+import Readonly from "./readonly.svelte?raw";
+import Sizes from "./sizes.svelte?raw";
+import Testimonial from "./testimonial.svelte?raw";
 
 export const imports = `import { Rating } from "@pisagor/svelte";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  Controlled: controlledRaw,
-  Count: countRaw,
-  CustomColor: custom_colorRaw,
-  CustomIcon: custom_iconRaw,
-  CustomRecipe: custom_recipeRaw,
-  CustomSize: custom_sizeRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  HalfStar: half_starRaw,
-  Invalid: invalidRaw,
-  Readonly: readonlyRaw,
-  Sizes: sizesRaw,
-  Testimonial: testimonialRaw,
+  Compound,
+  Controlled,
+  Count,
+  CustomColor,
+  CustomIcon,
+  CustomRecipe,
+  CustomSize,
+  Default,
+  Disabled,
+  HalfStar,
+  Invalid,
+  Readonly,
+  Sizes,
+  Testimonial,
 } as const;

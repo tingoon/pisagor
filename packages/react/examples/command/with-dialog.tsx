@@ -1,3 +1,4 @@
+import source from "./with-dialog.tsx?raw";
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { ArrowBendDownLeftIcon } from "@phosphor-icons/react";
 import { Button, Command, Kbd } from "@pisagor/react";
@@ -63,3 +64,5 @@ export function WithDialog() {
     </Command.Dialog>
   );
 }
+
+export { source as WithDialogSource };

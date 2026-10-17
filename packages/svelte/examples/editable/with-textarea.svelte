@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./with-textarea.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, Card, Editable, Field, Textarea } from "@pisagor/svelte";
   import { CheckIcon, XIcon } from "@pisagor/svelte/icons";

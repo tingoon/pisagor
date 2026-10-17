@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./panels.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { AppShell } from "@pisagor/svelte";
   import { loremParagraphs } from "./helpers";

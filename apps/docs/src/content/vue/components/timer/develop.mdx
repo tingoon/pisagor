@@ -1,0 +1,155 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/timer/default.vue?raw";
+import OrientationHorizontalSource from "#examples/vue/timer/orientation-horizontal.vue?raw";
+import OrientationVerticalSource from "#examples/vue/timer/orientation-vertical.vue?raw";
+import CustomSeparatorSource from "#examples/vue/timer/custom-separator.vue?raw";
+import CountdownSource from "#examples/vue/timer/countdown.vue?raw";
+import CountdownDateSource from "#examples/vue/timer/countdown-date.vue?raw";
+import PomodoroSource from "#examples/vue/timer/pomodoro.vue?raw";
+import ControlledSource from "#examples/vue/timer/controlled.vue?raw";
+import IntervalSource from "#examples/vue/timer/interval.vue?raw";
+import CustomRecipeSource from "#examples/vue/timer/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { Timer } from "@pisagor/vue";
+```
+
+## Anatomy
+
+```vue
+<Timer>
+  <Timer.Area>
+    <Timer.ItemGroup>
+      <Timer.Item />
+      <Timer.ItemLabel />
+    </Timer.ItemGroup>
+    <Timer.Separator />
+  </Timer.Area>
+</Timer>
+```
+
+## Examples
+
+### Default
+
+Count elapsed time with start and reset controls.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="timer"
+  framework="vue"
+  kind="component"
+/>
+
+### Orientation Horizontal
+
+Lay out the timer horizontally when items should read in a row.
+
+<Example
+  name="OrientationHorizontal"
+  code={OrientationHorizontalSource}
+  exampleId="timer"
+  framework="vue"
+  kind="component"
+/>
+
+### Orientation Vertical
+
+Stack the timer vertically when items should read in a column.
+
+<Example
+  name="OrientationVertical"
+  code={OrientationVerticalSource}
+  exampleId="timer"
+  framework="vue"
+  kind="component"
+/>
+
+### Custom Separator
+
+Override time separators when locale or brand needs different punctuation.
+
+<Example
+  name="CustomSeparator"
+  code={CustomSeparatorSource}
+  exampleId="timer"
+  framework="vue"
+  kind="component"
+/>
+
+### Countdown
+
+Count down toward zero when remaining time is the focus.
+
+<Example
+  name="Countdown"
+  code={CountdownSource}
+  exampleId="timer"
+  framework="vue"
+  kind="component"
+/>
+
+### Countdown Date
+
+Count down to a specific date or time.
+
+<Example
+  name="CountdownDate"
+  code={CountdownDateSource}
+  exampleId="timer"
+  framework="vue"
+  kind="component"
+/>
+
+### Pomodoro
+
+Run work-and-break cycles when the timer follows a pomodoro rhythm.
+
+<Example
+  name="Pomodoro"
+  code={PomodoroSource}
+  exampleId="timer"
+  framework="vue"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this timer.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="timer"
+  framework="vue"
+  kind="component"
+/>
+
+### Interval
+
+Fire on an interval when recurring ticks drive the UI.
+
+<Example
+  name="Interval"
+  code={IntervalSource}
+  exampleId="timer"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `timerRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="timer"
+  framework="vue"
+  kind="component"
+/>

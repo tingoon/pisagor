@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./product.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Card } from "@pisagor/vue";
 </script>

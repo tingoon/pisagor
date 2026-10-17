@@ -1,0 +1,139 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/format/default.tsx";
+import { NumberStorySource } from "#examples/react/format/number-story.tsx";
+import { NumberCurrencySource } from "#examples/react/format/number-currency.tsx";
+import { NumberPercentSource } from "#examples/react/format/number-percent.tsx";
+import { NumberCompactSource } from "#examples/react/format/number-compact.tsx";
+import { ByteSource } from "#examples/react/format/byte.tsx";
+import { ByteUnitSystemSource } from "#examples/react/format/byte-unit-system.tsx";
+import { ByteUnitDisplaySource } from "#examples/react/format/byte-unit-display.tsx";
+import { RelativeTimeSource } from "#examples/react/format/relative-time.tsx";
+import { RelativeTimeShortSource } from "#examples/react/format/relative-time-short.tsx";
+
+## Import
+
+```tsx
+import { Format } from "@pisagor/react";
+```
+
+## Examples
+
+### Default
+
+Format a value for readable display.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="format"
+  framework="react"
+  kind="component"
+/>
+
+### Number Story
+
+Format a general number for display.
+
+<Example
+  name="NumberStory"
+  code={NumberStorySource}
+  exampleId="format"
+  framework="react"
+  kind="component"
+/>
+
+### Number Currency
+
+Format money with the correct currency style.
+
+<Example
+  name="NumberCurrency"
+  code={NumberCurrencySource}
+  exampleId="format"
+  framework="react"
+  kind="component"
+/>
+
+### Number Percent
+
+Format a ratio as a percentage.
+
+<Example
+  name="NumberPercent"
+  code={NumberPercentSource}
+  exampleId="format"
+  framework="react"
+  kind="component"
+/>
+
+### Number Compact
+
+Shorten large numbers when space is tight.
+
+<Example
+  name="NumberCompact"
+  code={NumberCompactSource}
+  exampleId="format"
+  framework="react"
+  kind="component"
+/>
+
+### Byte
+
+Format a byte size for storage and download labels.
+
+<Example
+  name="Byte"
+  code={ByteSource}
+  exampleId="format"
+  framework="react"
+  kind="component"
+/>
+
+### Byte Unit System
+
+Switch between binary and decimal byte systems.
+
+<Example
+  name="ByteUnitSystem"
+  code={ByteUnitSystemSource}
+  exampleId="format"
+  framework="react"
+  kind="component"
+/>
+
+### Byte Unit Display
+
+Choose how byte units are labeled in the output.
+
+<Example
+  name="ByteUnitDisplay"
+  code={ByteUnitDisplaySource}
+  exampleId="format"
+  framework="react"
+  kind="component"
+/>
+
+### Relative Time
+
+Show a fuller relative time such as 2 hours ago.
+
+<Example
+  name="RelativeTime"
+  code={RelativeTimeSource}
+  exampleId="format"
+  framework="react"
+  kind="component"
+/>
+
+### Relative Time Short
+
+Show a short relative time such as 2h.
+
+<Example
+  name="RelativeTimeShort"
+  code={RelativeTimeShortSource}
+  exampleId="format"
+  framework="react"
+  kind="component"
+/>

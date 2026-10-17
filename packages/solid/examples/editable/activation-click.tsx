@@ -1,3 +1,4 @@
+import source from "./activation-click.tsx?raw";
 import { Button, Card, Editable, Field, Input } from "@pisagor/solid";
 import { CheckIcon, XIcon } from "@pisagor/solid/icons";
 export function ActivationClick() {
@@ -84,3 +85,5 @@ export function ActivationClick() {
     </Card>
   );
 }
+
+export { source as ActivationClickSource };

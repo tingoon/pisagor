@@ -1,3 +1,4 @@
+import source from "./with-icon.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Item, Listbox } from "@pisagor/solid";
 export function WithIcon() {
@@ -26,3 +27,5 @@ export function WithIcon() {
     </Item.Group>
   );
 }
+
+export { source as WithIconSource };

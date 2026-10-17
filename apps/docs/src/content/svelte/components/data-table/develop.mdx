@@ -1,0 +1,35 @@
+import Example from "#/components/docs/example.astro";
+import SortingSource from "#examples/svelte/data-table/sorting.svelte?raw";
+import EmptySource from "#examples/svelte/data-table/empty.svelte?raw";
+
+## Import
+
+```ts
+import { DataTable } from "@pisagor/svelte/data-table";
+```
+
+## Examples
+
+### Sorting
+
+Sort columns so users can reorder records.
+
+<Example
+  name="Sorting"
+  code={SortingSource}
+  exampleId="data-table"
+  framework="svelte"
+  kind="component"
+/>
+
+### Empty
+
+Show an empty presentation when there are no rows yet.
+
+<Example
+  name="Empty"
+  code={EmptySource}
+  exampleId="data-table"
+  framework="svelte"
+  kind="component"
+/>

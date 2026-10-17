@@ -1,3 +1,4 @@
+import source from "./custom-icons-folder.ts?raw";
 import { PhPackage } from "@phosphor-icons/vue";
 import type { TreeNodeType } from "@pisagor/vue";
 import { createTreeCollection, TreeView } from "@pisagor/vue";
@@ -75,3 +76,5 @@ export default defineComponent({
       ]);
   },
 });
+
+export { source };

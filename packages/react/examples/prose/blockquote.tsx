@@ -1,3 +1,4 @@
+import source from "./blockquote.tsx?raw";
 import { Prose } from "@pisagor/react";
 
 export function Blockquote() {
@@ -10,3 +11,5 @@ export function Blockquote() {
     </Prose>
   );
 }
+
+export { source as BlockquoteSource };

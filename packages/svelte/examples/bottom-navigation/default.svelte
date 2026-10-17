@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./default.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { BottomNavigation } from "@pisagor/svelte";
   import HouseIcon from "phosphor-svelte/lib/HouseIcon";

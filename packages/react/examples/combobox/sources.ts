@@ -1,33 +1,33 @@
-import autohighlightRaw from "./autohighlight.tsx?raw";
-import compoundRaw from "./compound.tsx?raw";
-import controlledRaw from "./controlled.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import groupRaw from "./group.tsx?raw";
-import invalidRaw from "./invalid.tsx?raw";
-import multipleRaw from "./multiple.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
-import with_clear_buttonRaw from "./with-clear-button.tsx?raw";
-import with_scrollRaw from "./with-scroll.tsx?raw";
-import with_start_iconRaw from "./with-start-icon.tsx?raw";
+import { AutohighlightSource as Autohighlight } from "./autohighlight";
+import { CompoundSource as Compound } from "./compound";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { DisabledSource as Disabled } from "./disabled";
+import { GroupSource as Group } from "./group";
+import { InvalidSource as Invalid } from "./invalid";
+import { MultipleSource as Multiple } from "./multiple";
+import { SizesSource as Sizes } from "./sizes";
+import { VariantsSource as Variants } from "./variants";
+import { WithClearButtonSource as WithClearButton } from "./with-clear-button";
+import { WithScrollSource as WithScroll } from "./with-scroll";
+import { WithStartIconSource as WithStartIcon } from "./with-start-icon";
 
 export const imports = `import { Combobox } from "@pisagor/react";`;
 
 export const sources = {
-  Autohighlight: autohighlightRaw,
-  Compound: compoundRaw,
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  Group: groupRaw,
-  Invalid: invalidRaw,
-  Multiple: multipleRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
-  WithClearButton: with_clear_buttonRaw,
-  WithScroll: with_scrollRaw,
-  WithStartIcon: with_start_iconRaw,
+  Autohighlight,
+  Compound,
+  Controlled,
+  CustomRecipe,
+  Default,
+  Disabled,
+  Group,
+  Invalid,
+  Multiple,
+  Sizes,
+  Variants,
+  WithClearButton,
+  WithScroll,
+  WithStartIcon,
 } as const;

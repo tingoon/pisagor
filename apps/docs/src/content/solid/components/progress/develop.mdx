@@ -1,0 +1,102 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid/progress/default.tsx";
+import { OrientationHorizontalSource } from "#examples/solid/progress/orientation-horizontal.tsx";
+import { OrientationVerticalSource } from "#examples/solid/progress/orientation-vertical.tsx";
+import { WithLabelSource } from "#examples/solid/progress/with-label.tsx";
+import { ControlledSource } from "#examples/solid/progress/controlled.tsx";
+import { IndeterminateSource } from "#examples/solid/progress/indeterminate.tsx";
+import { CustomRecipeSource } from "#examples/solid/progress/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Progress } from "@pisagor/solid";
+```
+
+## Examples
+
+### Default
+
+Show completion along a linear track.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="progress"
+  framework="solid"
+  kind="component"
+/>
+
+### Orientation Horizontal
+
+Lay out the progress bar horizontally when items should read in a row.
+
+<Example
+  name="OrientationHorizontal"
+  code={OrientationHorizontalSource}
+  exampleId="progress"
+  framework="solid"
+  kind="component"
+/>
+
+### Orientation Vertical
+
+Stack the progress bar vertically when items should read in a column.
+
+<Example
+  name="OrientationVertical"
+  code={OrientationVerticalSource}
+  exampleId="progress"
+  framework="solid"
+  kind="component"
+/>
+
+### With Label
+
+Label the progress so the percentage or status is readable.
+
+<Example
+  name="WithLabel"
+  code={WithLabelSource}
+  exampleId="progress"
+  framework="solid"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this progress bar.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="progress"
+  framework="solid"
+  kind="component"
+/>
+
+### Indeterminate
+
+Show an indeterminate state when progress or selection is partial or unknown.
+
+<Example
+  name="Indeterminate"
+  code={IndeterminateSource}
+  exampleId="progress"
+  framework="solid"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `progressRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="progress"
+  framework="solid"
+  kind="component"
+/>

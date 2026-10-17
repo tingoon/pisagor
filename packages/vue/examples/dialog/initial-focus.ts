@@ -1,3 +1,4 @@
+import source from "./initial-focus.ts?raw";
 import { Button, Dialog, Field, Input } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
@@ -47,3 +48,5 @@ export default defineComponent({
       ]);
   },
 });
+
+export { source };

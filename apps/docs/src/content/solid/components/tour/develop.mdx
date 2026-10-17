@@ -1,0 +1,188 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid/tour/default.tsx";
+import { ProgressSource } from "#examples/solid/tour/progress.tsx";
+import { StepTypesSource } from "#examples/solid/tour/step-types.tsx";
+import { AsyncSource } from "#examples/solid/tour/async.tsx";
+import { EventsSource } from "#examples/solid/tour/events.tsx";
+import { KeyboardNavigationSource } from "#examples/solid/tour/keyboard-navigation.tsx";
+import { SkipSource } from "#examples/solid/tour/skip.tsx";
+import { WaitForClickSource } from "#examples/solid/tour/wait-for-click.tsx";
+import { WaitForElementSource } from "#examples/solid/tour/wait-for-element.tsx";
+import { WaitForInputSource } from "#examples/solid/tour/wait-for-input.tsx";
+import { CustomSpacingSource } from "#examples/solid/tour/custom-spacing.tsx";
+import { CustomRecipeSource } from "#examples/solid/tour/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Tour } from "@pisagor/solid";
+```
+
+## Anatomy
+
+```tsx
+<Tour>
+  <Tour.Trigger />
+  <Tour.Content>
+    <Tour.Header>
+      <Tour.ProgressText />
+      <Tour.Title />
+      <Tour.Description />
+    </Tour.Header>
+    <Tour.Footer>
+      <Tour.PreviousStep />
+      <Tour.NextStep />
+    </Tour.Footer>
+  </Tour.Content>
+</Tour>
+```
+
+## Examples
+
+### Default
+
+Walk through key UI with guided highlight steps.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="tour"
+  framework="solid"
+  kind="component"
+/>
+
+### Progress
+
+Show how far through the tour the user has gone.
+
+<Example
+  name="Progress"
+  code={ProgressSource}
+  exampleId="tour"
+  framework="solid"
+  kind="component"
+/>
+
+### Step Types
+
+Use different step presentations for varied teaching moments.
+
+<Example
+  name="StepTypes"
+  code={StepTypesSource}
+  exampleId="tour"
+  framework="solid"
+  kind="component"
+/>
+
+### Async
+
+Load or advance steps asynchronously when targets appear later.
+
+<Example
+  name="Async"
+  code={AsyncSource}
+  exampleId="tour"
+  framework="solid"
+  kind="component"
+/>
+
+### Events
+
+Hook step lifecycle events to analytics or custom logic.
+
+<Example
+  name="Events"
+  code={EventsSource}
+  exampleId="tour"
+  framework="solid"
+  kind="component"
+/>
+
+### Keyboard Navigation
+
+Move between steps with the keyboard.
+
+<Example
+  name="KeyboardNavigation"
+  code={KeyboardNavigationSource}
+  exampleId="tour"
+  framework="solid"
+  kind="component"
+/>
+
+### Skip
+
+Let users exit the tour without finishing every step.
+
+<Example
+  name="Skip"
+  code={SkipSource}
+  exampleId="tour"
+  framework="solid"
+  kind="component"
+/>
+
+### Wait For Click
+
+Pause until the user clicks a target before continuing.
+
+<Example
+  name="WaitForClick"
+  code={WaitForClickSource}
+  exampleId="tour"
+  framework="solid"
+  kind="component"
+/>
+
+### Wait For Element
+
+Wait until a target exists in the DOM before highlighting it.
+
+<Example
+  name="WaitForElement"
+  code={WaitForElementSource}
+  exampleId="tour"
+  framework="solid"
+  kind="component"
+/>
+
+### Wait For Input
+
+Wait for input in a field before advancing.
+
+<Example
+  name="WaitForInput"
+  code={WaitForInputSource}
+  exampleId="tour"
+  framework="solid"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Override spacing when the default does not fit the surrounding layout.
+
+<Example
+  name="CustomSpacing"
+  code={CustomSpacingSource}
+  exampleId="tour"
+  framework="solid"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `tourRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="tour"
+  framework="solid"
+  kind="component"
+/>

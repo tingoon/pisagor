@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./custom-icon.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhHeart } from "@phosphor-icons/vue";
 import { Rating } from "@pisagor/vue";

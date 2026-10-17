@@ -1,0 +1,35 @@
+import Example from "#/components/docs/example.astro";
+import { SortingSource } from "#examples/react/data-table/sorting.tsx";
+import { EmptySource } from "#examples/react/data-table/empty.tsx";
+
+## Import
+
+```tsx
+import { DataTable } from "@pisagor/react/data-table";
+```
+
+## Examples
+
+### Sorting
+
+Sort columns so users can reorder records. Sortable headers expose `aria-sort`.
+
+<Example
+  name="Sorting"
+  code={SortingSource}
+  exampleId="data-table"
+  framework="react"
+  kind="component"
+/>
+
+### Empty
+
+Show an empty presentation when there are no rows yet.
+
+<Example
+  name="Empty"
+  code={EmptySource}
+  exampleId="data-table"
+  framework="react"
+  kind="component"
+/>

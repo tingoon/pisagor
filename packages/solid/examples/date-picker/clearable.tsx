@@ -1,3 +1,4 @@
+import source from "./clearable.tsx?raw";
 import { Button, DatePicker, Field, parseDate } from "@pisagor/solid";
 import { CalendarIcon } from "@pisagor/solid/icons";
 import { createSignal } from "solid-js";
@@ -36,3 +37,5 @@ export function Clearable() {
     </div>
   );
 }
+
+export { source as ClearableSource };

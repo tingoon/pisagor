@@ -1,9 +1,9 @@
-import defaultRaw from "./default.astro?raw";
+import Default from "./default.astro?raw";
 
 export const imports = `---
 import { SkipNav } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  Default: defaultRaw,
+  Default,
 } as const;

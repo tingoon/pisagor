@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./disable-hotkey.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhHouse, PhUser } from "@phosphor-icons/vue";
 import { Sidebar } from "@pisagor/vue";

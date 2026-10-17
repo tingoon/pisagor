@@ -1,0 +1,169 @@
+import Example from "#/components/docs/example.astro";
+import Default from "#examples/astro/format/default.astro";
+import NumberStory from "#examples/astro/format/number-story.astro";
+import NumberCurrency from "#examples/astro/format/number-currency.astro";
+import NumberPercent from "#examples/astro/format/number-percent.astro";
+import NumberCompact from "#examples/astro/format/number-compact.astro";
+import Byte from "#examples/astro/format/byte.astro";
+import ByteUnitSystem from "#examples/astro/format/byte-unit-system.astro";
+import ByteUnitDisplay from "#examples/astro/format/byte-unit-display.astro";
+import RelativeTime from "#examples/astro/format/relative-time.astro";
+import RelativeTimeShort from "#examples/astro/format/relative-time-short.astro";
+import DefaultSource from "#examples/astro/format/default.astro?raw";
+import NumberStorySource from "#examples/astro/format/number-story.astro?raw";
+import NumberCurrencySource from "#examples/astro/format/number-currency.astro?raw";
+import NumberPercentSource from "#examples/astro/format/number-percent.astro?raw";
+import NumberCompactSource from "#examples/astro/format/number-compact.astro?raw";
+import ByteSource from "#examples/astro/format/byte.astro?raw";
+import ByteUnitSystemSource from "#examples/astro/format/byte-unit-system.astro?raw";
+import ByteUnitDisplaySource from "#examples/astro/format/byte-unit-display.astro?raw";
+import RelativeTimeSource from "#examples/astro/format/relative-time.astro?raw";
+import RelativeTimeShortSource from "#examples/astro/format/relative-time-short.astro?raw";
+
+## Import
+
+```ts
+import { Format } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Format a value for readable display.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="format"
+  framework="astro"
+  kind="component"
+>
+  <Default />
+</Example>
+
+### Number Story
+
+Format a general number for display.
+
+<Example
+  name="NumberStory"
+  code={NumberStorySource}
+  exampleId="format"
+  framework="astro"
+  kind="component"
+>
+  <NumberStory />
+</Example>
+
+### Number Currency
+
+Format money with the correct currency style.
+
+<Example
+  name="NumberCurrency"
+  code={NumberCurrencySource}
+  exampleId="format"
+  framework="astro"
+  kind="component"
+>
+  <NumberCurrency />
+</Example>
+
+### Number Percent
+
+Format a ratio as a percentage.
+
+<Example
+  name="NumberPercent"
+  code={NumberPercentSource}
+  exampleId="format"
+  framework="astro"
+  kind="component"
+>
+  <NumberPercent />
+</Example>
+
+### Number Compact
+
+Shorten large numbers when space is tight.
+
+<Example
+  name="NumberCompact"
+  code={NumberCompactSource}
+  exampleId="format"
+  framework="astro"
+  kind="component"
+>
+  <NumberCompact />
+</Example>
+
+### Byte
+
+Format a byte size for storage and download labels.
+
+<Example
+  name="Byte"
+  code={ByteSource}
+  exampleId="format"
+  framework="astro"
+  kind="component"
+>
+  <Byte />
+</Example>
+
+### Byte Unit System
+
+Switch between binary and decimal byte systems.
+
+<Example
+  name="ByteUnitSystem"
+  code={ByteUnitSystemSource}
+  exampleId="format"
+  framework="astro"
+  kind="component"
+>
+  <ByteUnitSystem />
+</Example>
+
+### Byte Unit Display
+
+Choose how byte units are labeled in the output.
+
+<Example
+  name="ByteUnitDisplay"
+  code={ByteUnitDisplaySource}
+  exampleId="format"
+  framework="astro"
+  kind="component"
+>
+  <ByteUnitDisplay />
+</Example>
+
+### Relative Time
+
+Show a fuller relative time such as 2 hours ago.
+
+<Example
+  name="RelativeTime"
+  code={RelativeTimeSource}
+  exampleId="format"
+  framework="astro"
+  kind="component"
+>
+  <RelativeTime />
+</Example>
+
+### Relative Time Short
+
+Show a short relative time such as 2h.
+
+<Example
+  name="RelativeTimeShort"
+  code={RelativeTimeShortSource}
+  exampleId="format"
+  framework="astro"
+  kind="component"
+>
+  <RelativeTimeShort />
+</Example>

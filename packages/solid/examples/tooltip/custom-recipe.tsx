@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { tooltipRecipe } from "@pisagor/recipes";
 import { Button, Tooltip } from "@pisagor/solid";
 import { TextBIcon } from "@pisagor/solid/icons";
@@ -20,3 +21,5 @@ export function CustomRecipe() {
     </Tooltip>
   );
 }
+
+export { source as CustomRecipeSource };

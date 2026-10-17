@@ -1,29 +1,29 @@
-import blur_on_completeRaw from "./blur-on-complete.svelte?raw";
-import controlledRaw from "./controlled.svelte?raw";
-import custom_recipeRaw from "./custom-recipe.svelte?raw";
-import custom_sizeRaw from "./custom-size.svelte?raw";
-import disabledRaw from "./disabled.svelte?raw";
-import four_digitsRaw from "./four-digits.svelte?raw";
-import invalidRaw from "./invalid.svelte?raw";
-import maskRaw from "./mask.svelte?raw";
-import separatorRaw from "./separator.svelte?raw";
-import sizesRaw from "./sizes.svelte?raw";
-import variantsRaw from "./variants.svelte?raw";
-import with_placeholderRaw from "./with-placeholder.svelte?raw";
+import BlurOnComplete from "./blur-on-complete.svelte?raw";
+import Controlled from "./controlled.svelte?raw";
+import CustomRecipe from "./custom-recipe.svelte?raw";
+import CustomSize from "./custom-size.svelte?raw";
+import Disabled from "./disabled.svelte?raw";
+import FourDigits from "./four-digits.svelte?raw";
+import Invalid from "./invalid.svelte?raw";
+import Mask from "./mask.svelte?raw";
+import Separator from "./separator.svelte?raw";
+import Sizes from "./sizes.svelte?raw";
+import Variants from "./variants.svelte?raw";
+import WithPlaceholder from "./with-placeholder.svelte?raw";
 
 export const imports = `import { InputOtp } from "@pisagor/svelte";`;
 
 export const sources = {
-  BlurOnComplete: blur_on_completeRaw,
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  CustomSize: custom_sizeRaw,
-  Disabled: disabledRaw,
-  FourDigits: four_digitsRaw,
-  Invalid: invalidRaw,
-  Mask: maskRaw,
-  Separator: separatorRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
-  WithPlaceholder: with_placeholderRaw,
+  BlurOnComplete,
+  Controlled,
+  CustomRecipe,
+  CustomSize,
+  Disabled,
+  FourDigits,
+  Invalid,
+  Mask,
+  Separator,
+  Sizes,
+  Variants,
+  WithPlaceholder,
 } as const;

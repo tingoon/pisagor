@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Frame } from "@pisagor/solid";
 
 export function Default() {
@@ -19,3 +20,5 @@ export function Default() {
     </Frame>
   );
 }
+
+export { source as DefaultSource };

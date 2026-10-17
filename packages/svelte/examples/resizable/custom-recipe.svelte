@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./custom-recipe.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { resizableRecipe } from "@pisagor/recipes";
   import { Resizable } from "@pisagor/svelte";

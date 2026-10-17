@@ -1,3 +1,4 @@
+import source from "./invalid.tsx?raw";
 import { OtpField } from "@pisagor/solid-form";
 
 export function Invalid() {
@@ -11,3 +12,5 @@ export function Invalid() {
     />
   );
 }
+
+export { source as InvalidSource };

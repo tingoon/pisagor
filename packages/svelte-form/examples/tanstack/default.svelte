@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./default.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { parseDate } from "@pisagor/svelte";
   import { createAppForm, Root } from "@pisagor/svelte-form/tanstack";

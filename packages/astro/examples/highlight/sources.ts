@@ -1,15 +1,15 @@
-import custom_recipeRaw from "./custom-recipe.astro?raw";
-import custom_styleRaw from "./custom-style.astro?raw";
-import defaultRaw from "./default.astro?raw";
-import multipleRaw from "./multiple.astro?raw";
+import CustomRecipe from "./custom-recipe.astro?raw";
+import CustomStyle from "./custom-style.astro?raw";
+import Default from "./default.astro?raw";
+import Multiple from "./multiple.astro?raw";
 
 export const imports = `---
 import { Highlight } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  CustomStyle: custom_styleRaw,
-  Default: defaultRaw,
-  Multiple: multipleRaw,
+  CustomRecipe,
+  CustomStyle,
+  Default,
+  Multiple,
 } as const;

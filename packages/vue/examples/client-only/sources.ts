@@ -1,9 +1,9 @@
-import defaultRaw from "./default.vue?raw";
-import fallbackRaw from "./fallback.vue?raw";
+import Default from "./default.vue?raw";
+import Fallback from "./fallback.vue?raw";
 
 export const imports = `import { ClientOnly } from "@pisagor/vue";`;
 
 export const sources = {
-  Default: defaultRaw,
-  Fallback: fallbackRaw,
+  Default,
+  Fallback,
 } as const;

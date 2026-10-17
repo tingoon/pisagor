@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Progress } from "@pisagor/solid";
 import { createSignal, onCleanup, onMount } from "solid-js";
 
@@ -11,3 +12,5 @@ export function Default() {
 
   return <Progress value={progress()} />;
 }
+
+export { source as DefaultSource };

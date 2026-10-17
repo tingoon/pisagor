@@ -1,3 +1,4 @@
+import source from "./compound.tsx?raw";
 import { SegmentGroup } from "@pisagor/react";
 
 export function Compound() {
@@ -16,3 +17,5 @@ export function Compound() {
     </SegmentGroup.Root>
   );
 }
+
+export { source as CompoundSource };

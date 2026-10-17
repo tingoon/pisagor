@@ -1,3 +1,4 @@
+import source from "./with-presets.tsx?raw";
 import { CalendarIcon } from "@phosphor-icons/react";
 import { Button, Calendar, DatePicker, parseDate } from "@pisagor/react";
 export function WithPresets() {
@@ -59,3 +60,5 @@ export function WithPresets() {
     </DatePicker>
   );
 }
+
+export { source as WithPresetsSource };

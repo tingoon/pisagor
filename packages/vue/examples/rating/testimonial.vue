@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./testimonial.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Avatar, Card, Rating } from "@pisagor/vue";
 </script>

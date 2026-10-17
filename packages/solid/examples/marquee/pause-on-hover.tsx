@@ -1,3 +1,4 @@
+import source from "./pause-on-hover.tsx?raw";
 import { Card, Marquee } from "@pisagor/solid";
 import {
   ArrowRightIcon,
@@ -46,3 +47,5 @@ export function PauseOnHover() {
     </Marquee.Root>
   );
 }
+
+export { source as PauseOnHoverSource };

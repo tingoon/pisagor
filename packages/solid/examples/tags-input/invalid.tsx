@@ -1,3 +1,4 @@
+import source from "./invalid.tsx?raw";
 import { TagsInput } from "@pisagor/solid";
 import { For } from "solid-js";
 
@@ -18,3 +19,5 @@ export function Invalid() {
     </TagsInput>
   );
 }
+
+export { source as InvalidSource };

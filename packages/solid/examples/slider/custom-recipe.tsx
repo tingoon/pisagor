@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { sliderRecipe } from "@pisagor/recipes";
 import { Slider } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -14,3 +15,5 @@ const brandSliderRecipe = tv({
 export function CustomRecipe() {
   return <Slider defaultValue={[40]} recipe={brandSliderRecipe} />;
 }
+
+export { source as CustomRecipeSource };

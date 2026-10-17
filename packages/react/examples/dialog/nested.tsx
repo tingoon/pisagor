@@ -1,3 +1,4 @@
+import source from "./nested.tsx?raw";
 import { Portal } from "@ark-ui/react/portal";
 import { Button, Dialog, Field, Input } from "@pisagor/react";
 export function Nested() {
@@ -72,3 +73,5 @@ export function Nested() {
     </Dialog.Root>
   );
 }
+
+export { source as NestedSource };

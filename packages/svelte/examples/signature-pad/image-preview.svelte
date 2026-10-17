@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./image-preview.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Field, SignaturePad } from "@pisagor/svelte";
 

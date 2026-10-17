@@ -1,3 +1,4 @@
+import source from "./mouse-wheel.tsx?raw";
 import { NumberInput } from "@pisagor/solid";
 
 export function MouseWheel() {
@@ -11,3 +12,5 @@ export function MouseWheel() {
     </NumberInput>
   );
 }
+
+export { source as MouseWheelSource };

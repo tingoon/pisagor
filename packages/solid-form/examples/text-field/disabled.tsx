@@ -1,3 +1,4 @@
+import source from "./disabled.tsx?raw";
 import { TextField } from "@pisagor/solid-form";
 
 export function Disabled() {
@@ -12,3 +13,5 @@ export function Disabled() {
     />
   );
 }
+
+export { source as DisabledSource };

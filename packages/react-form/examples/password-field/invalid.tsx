@@ -1,3 +1,4 @@
+import source from "./invalid.tsx?raw";
 import { PasswordField } from "@pisagor/react-form";
 
 export function Invalid() {
@@ -13,3 +14,5 @@ export function Invalid() {
     />
   );
 }
+
+export { source as InvalidSource };

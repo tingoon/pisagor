@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./custom-recipe.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { listboxRecipe } from "@pisagor/recipes";
 import { Listbox } from "@pisagor/vue";

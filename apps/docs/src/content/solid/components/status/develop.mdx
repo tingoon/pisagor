@@ -1,0 +1,89 @@
+import Example from "#/components/docs/example.astro";
+import { VariantsSource } from "#examples/solid/status/variants.tsx";
+import { SizesSource } from "#examples/solid/status/sizes.tsx";
+import { WithIconSource } from "#examples/solid/status/with-icon.tsx";
+import { CustomColorSource } from "#examples/solid/status/custom-color.tsx";
+import { CustomSizeSource } from "#examples/solid/status/custom-size.tsx";
+import { CustomRecipeSource } from "#examples/solid/status/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Status } from "@pisagor/solid";
+```
+
+## Examples
+
+### Variants
+
+Choose color tone for availability or severity. Pair with text for accessibility.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="status"
+  framework="solid"
+  kind="component"
+/>
+
+### Sizes
+
+Match size to the surrounding chrome.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="status"
+  framework="solid"
+  kind="component"
+/>
+
+### With Icon
+
+Pair an icon with the label to reinforce meaning.
+
+<Example
+  name="WithIcon"
+  code={WithIconSource}
+  exampleId="status"
+  framework="solid"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Override the fill or accent when a brand or contextual color matters more than the theme default.
+
+<Example
+  name="CustomColor"
+  code={CustomColorSource}
+  exampleId="status"
+  framework="solid"
+  kind="component"
+/>
+
+Resize the indicator to match nearby text and density.
+
+<Example
+  name="CustomSize"
+  code={CustomSizeSource}
+  exampleId="status"
+  framework="solid"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `statusRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="status"
+  framework="solid"
+  kind="component"
+/>

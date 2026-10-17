@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { phoneInputRecipe } from "@pisagor/recipes";
 import { PhoneInput } from "@pisagor/solid/phone-input";
 import { tv } from "tailwind-variants";
@@ -11,3 +12,5 @@ const brandPhoneInputRecipe = tv({
 export function CustomRecipe() {
   return <PhoneInput recipe={brandPhoneInputRecipe} />;
 }
+
+export { source as CustomRecipeSource };

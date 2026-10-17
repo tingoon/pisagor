@@ -1,15 +1,15 @@
-import compactRaw from "./compact.svelte?raw";
-import compoundRaw from "./compound.svelte?raw";
-import custom_recipeRaw from "./custom-recipe.svelte?raw";
-import defaultRaw from "./default.svelte?raw";
-import sizesRaw from "./sizes.svelte?raw";
+import Compact from "./compact.svelte?raw";
+import Compound from "./compound.svelte?raw";
+import CustomRecipe from "./custom-recipe.svelte?raw";
+import Default from "./default.svelte?raw";
+import Sizes from "./sizes.svelte?raw";
 
 export const imports = `import { EmptyState } from "@pisagor/svelte";`;
 
 export const sources = {
-  Compact: compactRaw,
-  Compound: compoundRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Sizes: sizesRaw,
+  Compact,
+  Compound,
+  CustomRecipe,
+  Default,
+  Sizes,
 } as const;

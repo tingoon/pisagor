@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { AspectRatio } from "@pisagor/react";
 
 export function Default() {
@@ -9,3 +10,5 @@ export function Default() {
     </AspectRatio>
   );
 }
+
+export { source as DefaultSource };

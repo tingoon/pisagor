@@ -1,3 +1,4 @@
+import source from "./popover-with-channel-editing.tsx?raw";
 import { Button, ColorPicker, Input } from "@pisagor/react";
 export function PopoverWithChannelEditing() {
   return (
@@ -30,3 +31,5 @@ export function PopoverWithChannelEditing() {
     </ColorPicker>
   );
 }
+
+export { source as PopoverWithChannelEditingSource };

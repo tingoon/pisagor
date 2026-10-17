@@ -1,0 +1,115 @@
+import Example from "#/components/docs/example.astro";
+import { VariantsSource } from "#examples/react/input/variants.tsx";
+import { SizesSource } from "#examples/react/input/sizes.tsx";
+import { ClearableSource } from "#examples/react/input/clearable.tsx";
+import { FileSource } from "#examples/react/input/file.tsx";
+import { ControlledSource } from "#examples/react/input/controlled.tsx";
+import { DisabledSource } from "#examples/react/input/disabled.tsx";
+import { InvalidSource } from "#examples/react/input/invalid.tsx";
+import { CustomRecipeSource } from "#examples/react/input/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Input } from "@pisagor/react";
+```
+
+## Examples
+
+### Variants
+
+Choose visual weight or emphasis so the input matches importance in the surrounding layout.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="input"
+  framework="react"
+  kind="component"
+/>
+
+### Sizes
+
+Match size to the surrounding layout — smaller in compact chrome, larger where the input needs emphasis.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="input"
+  framework="react"
+  kind="component"
+/>
+
+### Clearable
+
+Offer a clear control for search-like fields where resetting quickly matters.
+
+<Example
+  name="Clearable"
+  code={ClearableSource}
+  exampleId="input"
+  framework="react"
+  kind="component"
+/>
+
+### File
+
+Use a file-styled input when the control picks a file path or upload target.
+
+<Example
+  name="File"
+  code={FileSource}
+  exampleId="input"
+  framework="react"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this input.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="input"
+  framework="react"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the input is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="input"
+  framework="react"
+  kind="component"
+/>
+
+### Invalid
+
+Surface a validation or error state so users know the input needs attention before continuing.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="input"
+  framework="react"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `inputRecipe` with `tv({ extend })` and pass it to `recipe` to restyle the clearable input's inner control across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="input"
+  framework="react"
+  kind="component"
+/>

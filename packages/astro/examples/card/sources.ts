@@ -1,19 +1,19 @@
-import custom_recipeRaw from "./custom-recipe.astro?raw";
-import custom_spacingRaw from "./custom-spacing.astro?raw";
-import defaultRaw from "./default.astro?raw";
-import iconRaw from "./icon.astro?raw";
-import productRaw from "./product.astro?raw";
-import sizesRaw from "./sizes.astro?raw";
+import CustomRecipe from "./custom-recipe.astro?raw";
+import CustomSpacing from "./custom-spacing.astro?raw";
+import Default from "./default.astro?raw";
+import Icon from "./icon.astro?raw";
+import Product from "./product.astro?raw";
+import Sizes from "./sizes.astro?raw";
 
 export const imports = `---
 import { Card } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  CustomSpacing: custom_spacingRaw,
-  Default: defaultRaw,
-  Icon: iconRaw,
-  Product: productRaw,
-  Sizes: sizesRaw,
+  CustomRecipe,
+  CustomSpacing,
+  Default,
+  Icon,
+  Product,
+  Sizes,
 } as const;

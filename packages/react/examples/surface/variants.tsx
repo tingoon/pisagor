@@ -1,3 +1,4 @@
+import source from "./variants.tsx?raw";
 import { Surface } from "@pisagor/react";
 
 export function Variants() {
@@ -50,3 +51,5 @@ export function Variants() {
     </div>
   );
 }
+
+export { source as VariantsSource };

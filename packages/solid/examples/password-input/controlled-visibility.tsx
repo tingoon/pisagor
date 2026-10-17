@@ -1,3 +1,4 @@
+import source from "./controlled-visibility.tsx?raw";
 import { PasswordInput } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function ControlledVisibility() {
@@ -11,3 +12,5 @@ export function ControlledVisibility() {
     />
   );
 }
+
+export { source as ControlledVisibilitySource };

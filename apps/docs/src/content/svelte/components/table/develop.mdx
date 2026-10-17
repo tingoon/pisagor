@@ -1,0 +1,121 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/table/default.svelte?raw";
+import VariantsSource from "#examples/svelte/table/variants.svelte?raw";
+import SizesSource from "#examples/svelte/table/sizes.svelte?raw";
+import FooterSource from "#examples/svelte/table/footer.svelte?raw";
+import ActionsSource from "#examples/svelte/table/actions.svelte?raw";
+import NotHoverableSource from "#examples/svelte/table/not-hoverable.svelte?raw";
+import CustomRecipeSource from "#examples/svelte/table/custom-recipe.svelte?raw";
+
+## Import
+
+```ts
+import { Table } from "@pisagor/svelte";
+```
+
+## Anatomy
+
+```tsx
+<Table>
+  <Table.Caption />
+  <Table.Header>
+    <Table.Row>
+      <Table.Head />
+    </Table.Row>
+  </Table.Header>
+  <Table.Body>
+    <Table.Row>
+      <Table.Cell />
+    </Table.Row>
+  </Table.Body>
+  <Table.Footer />
+</Table>
+```
+
+## Examples
+
+### Default
+
+Present comparable rows and columns for scanning.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="table"
+  framework="svelte"
+  kind="component"
+/>
+
+### Variants
+
+Choose visual weight or emphasis so the table matches importance in the surrounding layout.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="table"
+  framework="svelte"
+  kind="component"
+/>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="table"
+  framework="svelte"
+  kind="component"
+/>
+
+### Footer
+
+Add a footer for summaries beneath the rows.
+
+<Example
+  name="Footer"
+  code={FooterSource}
+  exampleId="table"
+  framework="svelte"
+  kind="component"
+/>
+
+### Actions
+
+Add row actions when operations belong with each record.
+
+<Example
+  name="Actions"
+  code={ActionsSource}
+  exampleId="table"
+  framework="svelte"
+  kind="component"
+/>
+
+### Not Hoverable
+
+Turn off row hover when hover affordance would distract.
+
+<Example
+  name="NotHoverable"
+  code={NotHoverableSource}
+  exampleId="table"
+  framework="svelte"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `tableRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="table"
+  framework="svelte"
+  kind="component"
+/>

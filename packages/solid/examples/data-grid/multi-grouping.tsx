@@ -1,3 +1,4 @@
+import source from "./multi-grouping.tsx?raw";
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Table } from "@pisagor/solid";
 import type { ColumnDef } from "@pisagor/solid/data-grid";
@@ -186,3 +187,5 @@ export function MultiGrouping() {
     </DataGridShell>
   );
 }
+
+export { source as MultiGroupingSource };

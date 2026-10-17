@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./squiggle.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { useHighlight } from "@ark-ui/vue/highlight";
 

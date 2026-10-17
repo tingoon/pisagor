@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./without-controls.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Card, Editable, Field, Input } from "@pisagor/vue";
 </script>

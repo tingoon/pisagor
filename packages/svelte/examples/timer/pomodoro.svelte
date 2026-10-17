@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./pomodoro.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, Card, Timer } from "@pisagor/svelte";
   import ArrowCounterClockwiseIcon from "phosphor-svelte/lib/ArrowCounterClockwiseIcon";

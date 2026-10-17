@@ -1,33 +1,33 @@
-import checkboxesRaw from "./checkboxes.svelte?raw";
-import defaultRaw from "./default.svelte?raw";
-import destructiveRaw from "./destructive.svelte?raw";
-import group_labelRaw from "./group-label.svelte?raw";
-import iconsRaw from "./icons.svelte?raw";
-import item_indicatorRaw from "./item-indicator.svelte?raw";
-import linkRaw from "./link.svelte?raw";
-import nestedRaw from "./nested.svelte?raw";
-import placementsRaw from "./placements.svelte?raw";
-import quick_itemRaw from "./quick-item.svelte?raw";
-import radio_groupRaw from "./radio-group.svelte?raw";
-import shortcutsRaw from "./shortcuts.svelte?raw";
-import with_scrollRaw from "./with-scroll.svelte?raw";
-import with_separatorRaw from "./with-separator.svelte?raw";
+import Checkboxes from "./checkboxes.svelte?raw";
+import Default from "./default.svelte?raw";
+import Destructive from "./destructive.svelte?raw";
+import GroupLabel from "./group-label.svelte?raw";
+import Icons from "./icons.svelte?raw";
+import ItemIndicator from "./item-indicator.svelte?raw";
+import Link from "./link.svelte?raw";
+import Nested from "./nested.svelte?raw";
+import Placements from "./placements.svelte?raw";
+import QuickItem from "./quick-item.svelte?raw";
+import RadioGroup from "./radio-group.svelte?raw";
+import Shortcuts from "./shortcuts.svelte?raw";
+import WithScroll from "./with-scroll.svelte?raw";
+import WithSeparator from "./with-separator.svelte?raw";
 
 export const imports = `import { DropdownMenu } from "@pisagor/svelte";`;
 
 export const sources = {
-  Checkboxes: checkboxesRaw,
-  Default: defaultRaw,
-  Destructive: destructiveRaw,
-  GroupLabel: group_labelRaw,
-  Icons: iconsRaw,
-  ItemIndicator: item_indicatorRaw,
-  Link: linkRaw,
-  Nested: nestedRaw,
-  Placements: placementsRaw,
-  QuickItem: quick_itemRaw,
-  RadioGroup: radio_groupRaw,
-  Shortcuts: shortcutsRaw,
-  WithScroll: with_scrollRaw,
-  WithSeparator: with_separatorRaw,
+  Checkboxes,
+  Default,
+  Destructive,
+  GroupLabel,
+  Icons,
+  ItemIndicator,
+  Link,
+  Nested,
+  Placements,
+  QuickItem,
+  RadioGroup,
+  Shortcuts,
+  WithScroll,
+  WithSeparator,
 } as const;

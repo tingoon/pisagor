@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./compact.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { EmptyState } from "@pisagor/svelte";
 </script>

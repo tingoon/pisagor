@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./disabled-item.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 import { Item, Listbox } from "@pisagor/vue";

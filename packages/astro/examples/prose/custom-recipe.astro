@@ -9,6 +9,8 @@ const brandProseRecipe = tv({
   ],
   extend: proseRecipe,
 });
+import source from "./custom-recipe.astro?raw";
+export { source };
 ---
 
 <Prose recipe={brandProseRecipe}>

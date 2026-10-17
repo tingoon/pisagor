@@ -1,19 +1,19 @@
-import actionsRaw from "./actions.vue?raw";
-import custom_recipeRaw from "./custom-recipe.vue?raw";
-import defaultRaw from "./default.vue?raw";
-import footerRaw from "./footer.vue?raw";
-import not_hoverableRaw from "./not-hoverable.vue?raw";
-import sizesRaw from "./sizes.vue?raw";
-import variantsRaw from "./variants.vue?raw";
+import Actions from "./actions.vue?raw";
+import CustomRecipe from "./custom-recipe.vue?raw";
+import Default from "./default.vue?raw";
+import Footer from "./footer.vue?raw";
+import NotHoverable from "./not-hoverable.vue?raw";
+import Sizes from "./sizes.vue?raw";
+import Variants from "./variants.vue?raw";
 
 export const imports = `import { Table } from "@pisagor/vue";`;
 
 export const sources = {
-  Actions: actionsRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Footer: footerRaw,
-  NotHoverable: not_hoverableRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
+  Actions,
+  CustomRecipe,
+  Default,
+  Footer,
+  NotHoverable,
+  Sizes,
+  Variants,
 } as const;

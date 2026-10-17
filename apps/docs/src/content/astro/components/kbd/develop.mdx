@@ -1,0 +1,91 @@
+import Example from "#/components/docs/example.astro";
+import Variants from "#examples/astro/kbd/variants.astro";
+import Sizes from "#examples/astro/kbd/sizes.astro";
+import KbdGroup from "#examples/astro/kbd/kbd-group.astro";
+import WithButton from "#examples/astro/kbd/with-button.astro";
+import CustomRecipe from "#examples/astro/kbd/custom-recipe.astro";
+import VariantsSource from "#examples/astro/kbd/variants.astro?raw";
+import SizesSource from "#examples/astro/kbd/sizes.astro?raw";
+import KbdGroupSource from "#examples/astro/kbd/kbd-group.astro?raw";
+import WithButtonSource from "#examples/astro/kbd/with-button.astro?raw";
+import CustomRecipeSource from "#examples/astro/kbd/custom-recipe.astro?raw";
+
+## Import
+
+```ts
+import { Kbd } from "@pisagor/astro";
+```
+
+## Examples
+
+### Variants
+
+Choose visual weight or emphasis so the keyboard badge matches importance in the surrounding layout.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="kbd"
+  framework="astro"
+  kind="component"
+>
+  <Variants />
+</Example>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="kbd"
+  framework="astro"
+  kind="component"
+>
+  <Sizes />
+</Example>
+
+### Kbd Group
+
+Group several keys when the shortcut is a chord.
+
+<Example
+  name="KbdGroup"
+  code={KbdGroupSource}
+  exampleId="kbd"
+  framework="astro"
+  kind="component"
+>
+  <KbdGroup />
+</Example>
+
+### With Button
+
+Place the badge next to a button that performs the same action.
+
+<Example
+  name="WithButton"
+  code={WithButtonSource}
+  exampleId="kbd"
+  framework="astro"
+  kind="component"
+>
+  <WithButton />
+</Example>
+
+## Customization
+
+### Custom recipe
+
+Extend `kbdRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="kbd"
+  framework="astro"
+  kind="component"
+>
+  <CustomRecipe />
+</Example>

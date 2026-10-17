@@ -1,0 +1,48 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/timeline/default.svelte?raw";
+import HorizontalSource from "#examples/svelte/timeline/horizontal.svelte?raw";
+import CompoundSource from "#examples/svelte/timeline/compound.svelte?raw";
+
+## Import
+
+```ts
+import { Timeline } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Default
+
+Show events or milestones in chronological order.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="timeline"
+  framework="svelte"
+  kind="component"
+/>
+
+### Horizontal
+
+Use a horizontal layout when the timeline should read left to right.
+
+<Example
+  name="Horizontal"
+  code={HorizontalSource}
+  exampleId="timeline"
+  framework="svelte"
+  kind="component"
+/>
+
+### Compound
+
+Compose timeline parts for a custom history layout.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="timeline"
+  framework="svelte"
+  kind="component"
+/>

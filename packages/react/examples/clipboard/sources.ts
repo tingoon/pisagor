@@ -1,19 +1,19 @@
-import controlledRaw from "./controlled.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import custom_timeoutRaw from "./custom-timeout.tsx?raw";
-import different_iconRaw from "./different-icon.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
-import with_labelRaw from "./with-label.tsx?raw";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { CustomTimeoutSource as CustomTimeout } from "./custom-timeout";
+import { DifferentIconSource as DifferentIcon } from "./different-icon";
+import { SizesSource as Sizes } from "./sizes";
+import { VariantsSource as Variants } from "./variants";
+import { WithLabelSource as WithLabel } from "./with-label";
 
 export const imports = `import { Clipboard } from "@pisagor/react";`;
 
 export const sources = {
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  CustomTimeout: custom_timeoutRaw,
-  DifferentIcon: different_iconRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
-  WithLabel: with_labelRaw,
+  Controlled,
+  CustomRecipe,
+  CustomTimeout,
+  DifferentIcon,
+  Sizes,
+  Variants,
+  WithLabel,
 } as const;

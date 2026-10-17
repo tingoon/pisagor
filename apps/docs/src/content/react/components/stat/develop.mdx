@@ -1,0 +1,76 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/stat/default.tsx";
+import { VariantsSource } from "#examples/react/stat/variants.tsx";
+import { WithTrendSource } from "#examples/react/stat/with-trend.tsx";
+import { CompoundSource } from "#examples/react/stat/compound.tsx";
+import { CustomRecipeSource } from "#examples/react/stat/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Stat } from "@pisagor/react";
+```
+
+## Examples
+
+### Default
+
+Highlight a key metric with supporting context.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="stat"
+  framework="react"
+  kind="component"
+/>
+
+### Variants
+
+Choose emphasis so the stat matches dashboard hierarchy.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="stat"
+  framework="react"
+  kind="component"
+/>
+
+### With Trend
+
+Show direction of change when trend matters alongside the value. The trend renders a matching arrow icon and screen-reader text, so direction is not conveyed by color alone. Override it with `icon`, or pass `icon={null}` to hide it.
+
+<Example
+  name="WithTrend"
+  code={WithTrendSource}
+  exampleId="stat"
+  framework="react"
+  kind="component"
+/>
+
+### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="stat"
+  framework="react"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `statRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="stat"
+  framework="react"
+  kind="component"
+/>

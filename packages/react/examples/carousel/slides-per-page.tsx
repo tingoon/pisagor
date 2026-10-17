@@ -1,3 +1,4 @@
+import source from "./slides-per-page.tsx?raw";
 import { Card, Carousel } from "@pisagor/react";
 export function SlidesPerPage() {
   return (
@@ -16,3 +17,5 @@ export function SlidesPerPage() {
     />
   );
 }
+
+export { source as SlidesPerPageSource };

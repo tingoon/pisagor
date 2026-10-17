@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./align-block-start.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { InputGroup } from "@pisagor/svelte";
   import CopyIcon from "phosphor-svelte/lib/CopyIcon";

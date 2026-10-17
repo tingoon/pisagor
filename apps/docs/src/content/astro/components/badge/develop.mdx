@@ -1,0 +1,125 @@
+import Example from "#/components/docs/example.astro";
+import Variants from "#examples/astro/badge/variants.astro";
+import Sizes from "#examples/astro/badge/sizes.astro";
+import Pill from "#examples/astro/badge/pill.astro";
+import WithLink from "#examples/astro/badge/with-link.astro";
+import WithSpinner from "#examples/astro/badge/with-spinner.astro";
+import CustomColor from "#examples/astro/badge/custom-color.astro";
+import CustomRecipe from "#examples/astro/badge/custom-recipe.astro";
+import VariantsSource from "#examples/astro/badge/variants.astro?raw";
+import SizesSource from "#examples/astro/badge/sizes.astro?raw";
+import PillSource from "#examples/astro/badge/pill.astro?raw";
+import WithLinkSource from "#examples/astro/badge/with-link.astro?raw";
+import WithSpinnerSource from "#examples/astro/badge/with-spinner.astro?raw";
+import CustomColorSource from "#examples/astro/badge/custom-color.astro?raw";
+import CustomRecipeSource from "#examples/astro/badge/custom-recipe.astro?raw";
+
+## Import
+
+```ts
+import { Badge } from "@pisagor/astro";
+```
+
+## Examples
+
+### Variants
+
+Choose tone so the badge reflects status severity or category.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="badge"
+  framework="astro"
+  kind="component"
+>
+  <Variants />
+</Example>
+
+### Sizes
+
+Match badge size to nearby text and controls.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="badge"
+  framework="astro"
+  kind="component"
+>
+  <Sizes />
+</Example>
+
+### Pill
+
+Use a fully rounded shape when softer, chip-like geometry fits the layout.
+
+<Example
+  name="Pill"
+  code={PillSource}
+  exampleId="badge"
+  framework="astro"
+  kind="component"
+>
+  <Pill />
+</Example>
+
+### With Link
+
+Make the badge navigate when the label itself is a destination.
+
+<Example
+  name="WithLink"
+  code={WithLinkSource}
+  exampleId="badge"
+  framework="astro"
+  kind="component"
+>
+  <WithLink />
+</Example>
+
+### With Spinner
+
+Show a spinner inside the badge when the status is still loading.
+
+<Example
+  name="WithSpinner"
+  code={WithSpinnerSource}
+  exampleId="badge"
+  framework="astro"
+  kind="component"
+>
+  <WithSpinner />
+</Example>
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Override the fill when a brand or contextual color matters more than the theme default.
+
+<Example
+  name="CustomColor"
+  code={CustomColorSource}
+  exampleId="badge"
+  framework="astro"
+  kind="component"
+>
+  <CustomColor />
+</Example>
+
+### Custom recipe
+
+Extend `badgeRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="badge"
+  framework="astro"
+  kind="component"
+>
+  <CustomRecipe />
+</Example>

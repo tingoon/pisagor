@@ -1,0 +1,146 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid/app-shell/default.tsx";
+import { BannerSource } from "#examples/solid/app-shell/banner.tsx";
+import { NavigationSource } from "#examples/solid/app-shell/navigation.tsx";
+import { InspectorsSource } from "#examples/solid/app-shell/inspectors.tsx";
+import { PanelsSource } from "#examples/solid/app-shell/panels.tsx";
+import { RailsSource } from "#examples/solid/app-shell/rails.tsx";
+import { HeaderSource } from "#examples/solid/app-shell/header.tsx";
+import { MainSource } from "#examples/solid/app-shell/main.tsx";
+import { ContentSource } from "#examples/solid/app-shell/content.tsx";
+
+## Import
+
+```tsx
+import { AppShell } from "@pisagor/solid";
+```
+
+## Anatomy
+
+```tsx
+<AppShell>
+  <AppShell.Banner />
+  <AppShell.Navigation />
+  <AppShell.Rail>
+    <AppShell.RailItem />
+  </AppShell.Rail>
+  <AppShell.Panel>
+    <AppShell.PanelContent />
+  </AppShell.Panel>
+  <AppShell.Main>
+    <AppShell.Header>
+      <AppShell.PanelTrigger />
+    </AppShell.Header>
+  </AppShell.Main>
+</AppShell>
+```
+
+## Examples
+
+### Default
+
+The full multi-region shell with the common layout slots wired together.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="app-shell"
+  framework="solid"
+  kind="component"
+/>
+
+### Banner
+
+Reserve a top banner region for system-wide notices.
+
+<Example
+  name="Banner"
+  code={BannerSource}
+  exampleId="app-shell"
+  framework="solid"
+  kind="component"
+/>
+
+### Navigation
+
+Place primary navigation in the shell's nav region.
+
+<Example
+  name="Navigation"
+  code={NavigationSource}
+  exampleId="app-shell"
+  framework="solid"
+  kind="component"
+/>
+
+### Inspectors
+
+Add inspector panels for tools that sit beside the main workspace.
+
+<Example
+  name="Inspectors"
+  code={InspectorsSource}
+  exampleId="app-shell"
+  framework="solid"
+  kind="component"
+/>
+
+### Panels
+
+Use side panels for secondary tools beside the main workspace.
+
+<Example
+  name="Panels"
+  code={PanelsSource}
+  exampleId="app-shell"
+  framework="solid"
+  kind="component"
+/>
+
+### Rails
+
+Provide side rails for persistent secondary chrome.
+
+<Example
+  name="Rails"
+  code={RailsSource}
+  exampleId="app-shell"
+  framework="solid"
+  kind="component"
+/>
+
+### Header
+
+Host brand and top-level actions in the header region.
+
+<Example
+  name="Header"
+  code={HeaderSource}
+  exampleId="app-shell"
+  framework="solid"
+  kind="component"
+/>
+
+### Main
+
+Put the primary workspace content in the main region.
+
+<Example
+  name="Main"
+  code={MainSource}
+  exampleId="app-shell"
+  framework="solid"
+  kind="component"
+/>
+
+### Content
+
+Fill the content slot with the page body inside the shell.
+
+<Example
+  name="Content"
+  code={ContentSource}
+  exampleId="app-shell"
+  framework="solid"
+  kind="component"
+/>

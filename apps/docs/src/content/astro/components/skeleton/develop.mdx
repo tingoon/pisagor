@@ -1,0 +1,91 @@
+import Example from "#/components/docs/example.astro";
+import Default from "#examples/astro/skeleton/default.astro";
+import Sizes from "#examples/astro/skeleton/sizes.astro";
+import SkeletonText from "#examples/astro/skeleton/skeleton-text.astro";
+import InCard from "#examples/astro/skeleton/in-card.astro";
+import CustomRecipe from "#examples/astro/skeleton/custom-recipe.astro";
+import DefaultSource from "#examples/astro/skeleton/default.astro?raw";
+import SizesSource from "#examples/astro/skeleton/sizes.astro?raw";
+import SkeletonTextSource from "#examples/astro/skeleton/skeleton-text.astro?raw";
+import InCardSource from "#examples/astro/skeleton/in-card.astro?raw";
+import CustomRecipeSource from "#examples/astro/skeleton/custom-recipe.astro?raw";
+
+## Import
+
+```ts
+import { Skeleton } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Pulse placeholders while content loads.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="skeleton"
+  framework="astro"
+  kind="component"
+>
+  <Default />
+</Example>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="skeleton"
+  framework="astro"
+  kind="component"
+>
+  <Sizes />
+</Example>
+
+### Skeleton Text
+
+Approximate lines of text so reading layout stays stable.
+
+<Example
+  name="SkeletonText"
+  code={SkeletonTextSource}
+  exampleId="skeleton"
+  framework="astro"
+  kind="component"
+>
+  <SkeletonText />
+</Example>
+
+### In Card
+
+Place skeletons inside a card when that surface is loading.
+
+<Example
+  name="InCard"
+  code={InCardSource}
+  exampleId="skeleton"
+  framework="astro"
+  kind="component"
+>
+  <InCard />
+</Example>
+
+## Customization
+
+### Custom recipe
+
+Extend `skeletonRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="skeleton"
+  framework="astro"
+  kind="component"
+>
+  <CustomRecipe />
+</Example>

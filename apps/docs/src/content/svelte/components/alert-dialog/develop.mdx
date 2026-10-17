@@ -1,0 +1,35 @@
+import Example from "#/components/docs/example.astro";
+import VariantsSource from "#examples/svelte/alert-dialog/variants.svelte?raw";
+import CompositionSource from "#examples/svelte/alert-dialog/composition.svelte?raw";
+
+## Import
+
+```ts
+import { AlertDialog } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Variants
+
+Match tone to severity — informative for caution, destructive for irreversible work.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="alert-dialog"
+  framework="svelte"
+  kind="component"
+/>
+
+### Compound
+
+Assemble title, description, and actions from parts when the shorthand layout is not enough.
+
+<Example
+  name="Composition"
+  code={CompositionSource}
+  exampleId="alert-dialog"
+  framework="svelte"
+  kind="component"
+/>

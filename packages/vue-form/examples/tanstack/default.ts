@@ -1,3 +1,4 @@
+import source from "./default.ts?raw";
 import { parseDate } from "@pisagor/vue";
 import { useAppForm } from "@pisagor/vue-form/tanstack";
 import { defineComponent, h } from "vue";
@@ -197,3 +198,5 @@ export default defineComponent({
       ]);
   },
 });
+
+export { source };

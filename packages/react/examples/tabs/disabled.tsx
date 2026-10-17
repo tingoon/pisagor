@@ -1,3 +1,4 @@
+import source from "./disabled.tsx?raw";
 import { Tabs } from "@pisagor/react";
 import { profileTabs } from "./helpers";
 
@@ -11,3 +12,5 @@ export function Disabled() {
     />
   );
 }
+
+export { source as DisabledSource };

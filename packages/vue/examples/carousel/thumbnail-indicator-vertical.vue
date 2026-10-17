@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./thumbnail-indicator-vertical.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Carousel } from "@pisagor/vue";
 import { imageSources } from "./helpers";

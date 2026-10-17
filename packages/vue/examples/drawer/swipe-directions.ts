@@ -1,3 +1,4 @@
+import source from "./swipe-directions.ts?raw";
 import { Button, Drawer } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
@@ -69,3 +70,5 @@ export default defineComponent({
       ]);
   },
 });
+
+export { source };

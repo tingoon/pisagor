@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./download.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhDownload } from "@phosphor-icons/vue";
 import { Button, Card, Input, QrCode } from "@pisagor/vue";

@@ -1,0 +1,63 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/toolbar/default.svelte?raw";
+import WrappedActionsSource from "#examples/svelte/toolbar/wrapped-actions.svelte?raw";
+import CompoundSource from "#examples/svelte/toolbar/compound.svelte?raw";
+import CustomRecipeSource from "#examples/svelte/toolbar/custom-recipe.svelte?raw";
+
+## Import
+
+```ts
+import { Toolbar } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Default
+
+Place a local heading with related actions in one row.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="toolbar"
+  framework="svelte"
+  kind="component"
+/>
+
+### Wrapped Actions
+
+Wrap actions when horizontal space is tight.
+
+<Example
+  name="WrappedActions"
+  code={WrappedActionsSource}
+  exampleId="toolbar"
+  framework="svelte"
+  kind="component"
+/>
+
+### Compound
+
+Compose toolbar parts for a custom chrome layout.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="toolbar"
+  framework="svelte"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `toolbarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="toolbar"
+  framework="svelte"
+  kind="component"
+/>

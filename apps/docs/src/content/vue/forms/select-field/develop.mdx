@@ -1,0 +1,50 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue-form/select-field/default.vue?raw";
+import DisabledSource from "#examples/vue-form/select-field/disabled.vue?raw";
+import InvalidSource from "#examples/vue-form/select-field/invalid.vue?raw";
+
+## Import
+
+```ts
+import { SelectField } from "@pisagor/vue-form";
+```
+
+Part of `@pisagor/vue-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+A dropdown for choosing one value from a fixed list.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="select-field"
+  framework="vue"
+  kind="form"
+/>
+
+### Disabled
+
+Show that the select is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="select-field"
+  framework="vue"
+  kind="form"
+/>
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="select-field"
+  framework="vue"
+  kind="form"
+/>

@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./error-correction.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { QrCode } from "@pisagor/vue";
 

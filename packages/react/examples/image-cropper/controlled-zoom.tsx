@@ -1,3 +1,4 @@
+import source from "./controlled-zoom.tsx?raw";
 import {
   MagnifyingGlassMinusIcon,
   MagnifyingGlassPlusIcon,
@@ -37,3 +38,5 @@ export function ControlledZoom() {
     </div>
   );
 }
+
+export { source as ControlledZoomSource };

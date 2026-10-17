@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./shorthand.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhCalendar, PhGear, PhUser } from "@phosphor-icons/vue";
 import { Command } from "@pisagor/vue";

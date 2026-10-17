@@ -1,0 +1,57 @@
+import Example from "#/components/docs/example.astro";
+import Default from "#examples/astro/timeline/default.astro";
+import Horizontal from "#examples/astro/timeline/horizontal.astro";
+import Compound from "#examples/astro/timeline/compound.astro";
+import DefaultSource from "#examples/astro/timeline/default.astro?raw";
+import HorizontalSource from "#examples/astro/timeline/horizontal.astro?raw";
+import CompoundSource from "#examples/astro/timeline/compound.astro?raw";
+
+## Import
+
+```ts
+import { Timeline } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Show events or milestones in chronological order.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="timeline"
+  framework="astro"
+  kind="component"
+>
+  <Default />
+</Example>
+
+### Horizontal
+
+Use a horizontal layout when the timeline should read left to right.
+
+<Example
+  name="Horizontal"
+  code={HorizontalSource}
+  exampleId="timeline"
+  framework="astro"
+  kind="component"
+>
+  <Horizontal />
+</Example>
+
+### Compound
+
+Compose timeline parts for a custom history layout.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="timeline"
+  framework="astro"
+  kind="component"
+>
+  <Compound />
+</Example>

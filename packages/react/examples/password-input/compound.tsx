@@ -1,3 +1,4 @@
+import source from "./compound.tsx?raw";
 import { PasswordInput } from "@pisagor/react";
 
 export function Compound() {
@@ -10,3 +11,5 @@ export function Compound() {
     </PasswordInput.Root>
   );
 }
+
+export { source as CompoundSource };

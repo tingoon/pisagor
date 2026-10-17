@@ -1,3 +1,4 @@
+import source from "./sizes.tsx?raw";
 import { Table } from "@pisagor/solid";
 import { For } from "solid-js";
 import { workspaceUsers } from "./helpers";
@@ -32,3 +33,5 @@ export function Sizes() {
     </div>
   );
 }
+
+export { source as SizesSource };

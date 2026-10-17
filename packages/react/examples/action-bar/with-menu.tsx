@@ -1,3 +1,4 @@
+import source from "./with-menu.tsx?raw";
 import {
   ArchiveIcon,
   CopyIcon,
@@ -49,3 +50,5 @@ export function WithMenu() {
     </ActionBar>
   );
 }
+
+export { source as WithMenuSource };

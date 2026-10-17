@@ -1,3 +1,4 @@
+import source from "./swatch-picker-controlled.tsx?raw";
 import { ColorPicker, parseColor } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function SwatchPickerControlled() {
@@ -23,3 +24,5 @@ export function SwatchPickerControlled() {
     </div>
   );
 }
+
+export { source as SwatchPickerControlledSource };

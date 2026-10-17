@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { clipboardRecipe } from "@pisagor/recipes";
 import { Clipboard } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -24,3 +25,5 @@ export function CustomRecipe() {
     </div>
   );
 }
+
+export { source as CustomRecipeSource };

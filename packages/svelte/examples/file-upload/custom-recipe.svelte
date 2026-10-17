@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./custom-recipe.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { fileUploadRecipe } from "@pisagor/recipes";
   import { Button, FileUpload, Separator } from "@pisagor/svelte";

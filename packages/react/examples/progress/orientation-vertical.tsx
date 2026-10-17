@@ -1,3 +1,4 @@
+import source from "./orientation-vertical.tsx?raw";
 import { Progress } from "@pisagor/react";
 
 export function OrientationVertical() {
@@ -7,3 +8,5 @@ export function OrientationVertical() {
     </div>
   );
 }
+
+export { source as OrientationVerticalSource };

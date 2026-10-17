@@ -1,3 +1,4 @@
+import source from "./header.tsx?raw";
 import { Item } from "@pisagor/react";
 
 export function Header() {
@@ -19,3 +20,5 @@ export function Header() {
     </Item>
   );
 }
+
+export { source as HeaderSource };

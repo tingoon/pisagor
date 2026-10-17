@@ -1,3 +1,4 @@
+import source from "./column-visibility.tsx?raw";
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Button, Checkbox, DropdownMenu, Table } from "@pisagor/solid";
 import type { ColumnDef, VisibilityState } from "@pisagor/solid/data-grid";
@@ -294,3 +295,5 @@ export function ColumnVisibility() {
     </DataGridShell>
   );
 }
+
+export { source as ColumnVisibilitySource };

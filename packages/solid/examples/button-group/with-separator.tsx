@@ -1,3 +1,4 @@
+import source from "./with-separator.tsx?raw";
 import { Button, ButtonGroup } from "@pisagor/solid";
 import { MinusIcon, PlusIcon } from "@pisagor/solid/icons";
 export function WithSeparator() {
@@ -13,3 +14,5 @@ export function WithSeparator() {
     </ButtonGroup>
   );
 }
+
+export { source as WithSeparatorSource };

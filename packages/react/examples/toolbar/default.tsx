@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Button, Toolbar } from "@pisagor/react";
 export function Default() {
   return (
@@ -13,3 +14,5 @@ export function Default() {
     />
   );
 }
+
+export { source as DefaultSource };

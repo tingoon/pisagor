@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Prose } from "@pisagor/solid";
 
 export function Default() {
@@ -7,3 +8,5 @@ export function Default() {
     </Prose>
   );
 }
+
+export { source as DefaultSource };

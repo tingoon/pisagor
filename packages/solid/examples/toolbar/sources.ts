@@ -1,13 +1,13 @@
-import compoundRaw from "./compound.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import wrapped_actionsRaw from "./wrapped-actions.tsx?raw";
+import { CompoundSource as Compound } from "./compound";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { WrappedActionsSource as WrappedActions } from "./wrapped-actions";
 
 export const imports = `import { Toolbar } from "@pisagor/solid";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  WrappedActions: wrapped_actionsRaw,
+  Compound,
+  CustomRecipe,
+  Default,
+  WrappedActions,
 } as const;

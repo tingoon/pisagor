@@ -1,17 +1,17 @@
-import compoundRaw from "./compound.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import data_typesRaw from "./data-types.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import expand_depthRaw from "./expand-depth.tsx?raw";
-import map_setRaw from "./map-set.tsx?raw";
+import { CompoundSource as Compound } from "./compound";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DataTypesSource as DataTypes } from "./data-types";
+import { DefaultSource as Default } from "./default";
+import { ExpandDepthSource as ExpandDepth } from "./expand-depth";
+import { MapSetSource as MapSet } from "./map-set";
 
 export const imports = `import { JsonTreeView } from "@pisagor/solid";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  CustomRecipe: custom_recipeRaw,
-  DataTypes: data_typesRaw,
-  Default: defaultRaw,
-  ExpandDepth: expand_depthRaw,
-  MapSet: map_setRaw,
+  Compound,
+  CustomRecipe,
+  DataTypes,
+  Default,
+  ExpandDepth,
+  MapSet,
 } as const;

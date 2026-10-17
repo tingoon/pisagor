@@ -1,3 +1,4 @@
+import source from "./circle-crop.tsx?raw";
 import { ImageCropper } from "@pisagor/solid";
 
 export function CircleCrop() {
@@ -11,3 +12,5 @@ export function CircleCrop() {
     </ImageCropper>
   );
 }
+
+export { source as CircleCropSource };

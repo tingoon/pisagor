@@ -1,3 +1,4 @@
+import source from "./responsive.tsx?raw";
 import { AspectRatio } from "@pisagor/solid";
 
 export function Responsive() {
@@ -11,3 +12,5 @@ export function Responsive() {
     </AspectRatio>
   );
 }
+
+export { source as ResponsiveSource };

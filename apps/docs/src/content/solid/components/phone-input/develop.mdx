@@ -1,0 +1,102 @@
+import Example from "#/components/docs/example.astro";
+import { VariantsSource } from "#examples/solid/phone-input/variants.tsx";
+import { SizesSource } from "#examples/solid/phone-input/sizes.tsx";
+import { CustomPopupSource } from "#examples/solid/phone-input/custom-popup.tsx";
+import { ControlledSource } from "#examples/solid/phone-input/controlled.tsx";
+import { DisabledSource } from "#examples/solid/phone-input/disabled.tsx";
+import { InvalidSource } from "#examples/solid/phone-input/invalid.tsx";
+import { CustomRecipeSource } from "#examples/solid/phone-input/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { PhoneInput } from "@pisagor/solid/phone-input";
+```
+
+## Examples
+
+### Variants
+
+Choose visual weight or emphasis so the phone input matches importance in the surrounding layout.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="phone-input"
+  framework="solid"
+  kind="component"
+/>
+
+### Sizes
+
+Match size to the surrounding layout — smaller in compact chrome, larger where the phone input needs emphasis.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="phone-input"
+  framework="solid"
+  kind="component"
+/>
+
+### Custom Popup
+
+Customize the country popup when the default list presentation is not enough.
+
+<Example
+  name="CustomPopup"
+  code={CustomPopupSource}
+  exampleId="phone-input"
+  framework="solid"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this phone input.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="phone-input"
+  framework="solid"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the phone input is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="phone-input"
+  framework="solid"
+  kind="component"
+/>
+
+### Invalid
+
+Surface a validation or error state so users know the phone input needs attention before continuing.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="phone-input"
+  framework="solid"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `phoneInputRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="phone-input"
+  framework="solid"
+  kind="component"
+/>

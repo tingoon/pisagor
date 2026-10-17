@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./custom-recipe.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { richTextEditorRecipe } from "@pisagor/recipes";
 import { RichTextEditor } from "@pisagor/vue/rich-text-editor";

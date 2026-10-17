@@ -1,3 +1,4 @@
+import source from "./compound.ts?raw";
 import { PhChecks } from "@phosphor-icons/vue";
 import { Alert, Button } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
@@ -18,3 +19,5 @@ export default defineComponent({
       ]);
   },
 });
+
+export { source };

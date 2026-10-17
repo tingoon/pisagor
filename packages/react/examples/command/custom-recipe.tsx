@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { Command } from "@pisagor/react";
 import { commandRecipe } from "@pisagor/recipes";
@@ -73,3 +74,5 @@ export function CustomRecipe() {
     </Command>
   );
 }
+
+export { source as CustomRecipeSource };

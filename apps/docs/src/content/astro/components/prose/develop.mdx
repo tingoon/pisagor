@@ -1,0 +1,395 @@
+import Example from "#/components/docs/example.astro";
+import Default from "#examples/astro/prose/default.astro";
+import A from "#examples/astro/prose/a.astro";
+import Blockquote from "#examples/astro/prose/blockquote.astro";
+import Details from "#examples/astro/prose/details.astro";
+import Dl from "#examples/astro/prose/dl.astro";
+import H1 from "#examples/astro/prose/h1.astro";
+import H2 from "#examples/astro/prose/h2.astro";
+import H3 from "#examples/astro/prose/h3.astro";
+import H4 from "#examples/astro/prose/h4.astro";
+import H5 from "#examples/astro/prose/h5.astro";
+import H6 from "#examples/astro/prose/h6.astro";
+import Html from "#examples/astro/prose/html.astro";
+import HtmlTable from "#examples/astro/prose/html-table.astro";
+import InlineCode from "#examples/astro/prose/inline-code.astro";
+import Kbd from "#examples/astro/prose/kbd.astro";
+import List from "#examples/astro/prose/list.astro";
+import Mark from "#examples/astro/prose/mark.astro";
+import Media from "#examples/astro/prose/media.astro";
+import NotProse from "#examples/astro/prose/not-prose.astro";
+import Ol from "#examples/astro/prose/ol.astro";
+import P from "#examples/astro/prose/p.astro";
+import Separator from "#examples/astro/prose/separator.astro";
+import Small from "#examples/astro/prose/small.astro";
+import CustomRecipe from "#examples/astro/prose/custom-recipe.astro";
+import DefaultSource from "#examples/astro/prose/default.astro?raw";
+import ASource from "#examples/astro/prose/a.astro?raw";
+import BlockquoteSource from "#examples/astro/prose/blockquote.astro?raw";
+import DetailsSource from "#examples/astro/prose/details.astro?raw";
+import DlSource from "#examples/astro/prose/dl.astro?raw";
+import H1Source from "#examples/astro/prose/h1.astro?raw";
+import H2Source from "#examples/astro/prose/h2.astro?raw";
+import H3Source from "#examples/astro/prose/h3.astro?raw";
+import H4Source from "#examples/astro/prose/h4.astro?raw";
+import H5Source from "#examples/astro/prose/h5.astro?raw";
+import H6Source from "#examples/astro/prose/h6.astro?raw";
+import HtmlSource from "#examples/astro/prose/html.astro?raw";
+import HtmlTableSource from "#examples/astro/prose/html-table.astro?raw";
+import InlineCodeSource from "#examples/astro/prose/inline-code.astro?raw";
+import KbdSource from "#examples/astro/prose/kbd.astro?raw";
+import ListSource from "#examples/astro/prose/list.astro?raw";
+import MarkSource from "#examples/astro/prose/mark.astro?raw";
+import MediaSource from "#examples/astro/prose/media.astro?raw";
+import NotProseSource from "#examples/astro/prose/not-prose.astro?raw";
+import OlSource from "#examples/astro/prose/ol.astro?raw";
+import PSource from "#examples/astro/prose/p.astro?raw";
+import SeparatorSource from "#examples/astro/prose/separator.astro?raw";
+import SmallSource from "#examples/astro/prose/small.astro?raw";
+import CustomRecipeSource from "#examples/astro/prose/custom-recipe.astro?raw";
+
+## Import
+
+```ts
+import { Prose } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Readable long-form text styled for articles and documentation.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <Default />
+</Example>
+
+### A
+
+Style inline links inside prose content.
+
+<Example
+  name="A"
+  code={ASource}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <A />
+</Example>
+
+### Blockquote
+
+Style quotations set apart from surrounding paragraphs.
+
+<Example
+  name="Blockquote"
+  code={BlockquoteSource}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <Blockquote />
+</Example>
+
+### Details
+
+Style expandable disclosure blocks inside prose.
+
+<Example
+  name="Details"
+  code={DetailsSource}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <Details />
+</Example>
+
+### Dl
+
+Style description lists for terms and definitions.
+
+<Example
+  name="Dl"
+  code={DlSource}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <Dl />
+</Example>
+
+### H1
+
+Style the top-level heading in a prose document.
+
+<Example
+  name="H1"
+  code={H1Source}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <H1 />
+</Example>
+
+### H2
+
+Style a section heading under the document title.
+
+<Example
+  name="H2"
+  code={H2Source}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <H2 />
+</Example>
+
+### H3
+
+Style a subsection heading within a section.
+
+<Example
+  name="H3"
+  code={H3Source}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <H3 />
+</Example>
+
+### H4
+
+Style a fourth-level heading for finer structure.
+
+<Example
+  name="H4"
+  code={H4Source}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <H4 />
+</Example>
+
+### H5
+
+Style a fifth-level heading when deep outline levels are needed.
+
+<Example
+  name="H5"
+  code={H5Source}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <H5 />
+</Example>
+
+### H6
+
+Style the deepest heading level supported in prose.
+
+<Example
+  name="H6"
+  code={H6Source}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <H6 />
+</Example>
+
+### Html
+
+Render rich HTML through the prose styles.
+
+<Example
+  name="Html"
+  code={HtmlSource}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <Html />
+</Example>
+
+### Html Table
+
+Style tables that appear inside HTML prose content.
+
+<Example
+  name="HtmlTable"
+  code={HtmlTableSource}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <HtmlTable />
+</Example>
+
+### Inline Code
+
+Style Inline Code elements inside long-form prose content.
+
+<Example
+  name="InlineCode"
+  code={InlineCodeSource}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <InlineCode />
+</Example>
+
+### Kbd
+
+Style Kbd elements inside long-form prose content.
+
+<Example
+  name="Kbd"
+  code={KbdSource}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <Kbd />
+</Example>
+
+### List
+
+Style List elements inside long-form prose content.
+
+<Example
+  name="List"
+  code={ListSource}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <List />
+</Example>
+
+### Mark
+
+Style Mark elements inside long-form prose content.
+
+<Example
+  name="Mark"
+  code={MarkSource}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <Mark />
+</Example>
+
+### Media
+
+Style Media elements inside long-form prose content.
+
+<Example
+  name="Media"
+  code={MediaSource}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <Media />
+</Example>
+
+### Not Prose
+
+Style Not Prose elements inside long-form prose content.
+
+<Example
+  name="NotProse"
+  code={NotProseSource}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <NotProse />
+</Example>
+
+### Ol
+
+Style Ol elements inside long-form prose content.
+
+<Example
+  name="Ol"
+  code={OlSource}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <Ol />
+</Example>
+
+### P
+
+Style P elements inside long-form prose content.
+
+<Example
+  name="P"
+  code={PSource}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <P />
+</Example>
+
+### Separator
+
+Style Separator elements inside long-form prose content.
+
+<Example
+  name="Separator"
+  code={SeparatorSource}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <Separator />
+</Example>
+
+### Small
+
+Style Small elements inside long-form prose content.
+
+<Example
+  name="Small"
+  code={SmallSource}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <Small />
+</Example>
+
+## Customization
+
+### Custom recipe
+
+Extend `proseRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="prose"
+  framework="astro"
+  kind="component"
+>
+  <CustomRecipe />
+</Example>

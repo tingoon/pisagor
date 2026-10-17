@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { Listbox } from "@pisagor/react";
 import { listboxRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -21,3 +22,5 @@ export function CustomRecipe() {
     />
   );
 }
+
+export { source as CustomRecipeSource };

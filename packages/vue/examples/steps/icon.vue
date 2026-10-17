@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./icon.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhCreditCard, PhHardDrive, PhUser } from "@phosphor-icons/vue";
 import { Steps } from "@pisagor/vue";

@@ -1,3 +1,4 @@
+import source from "./with-value.tsx?raw";
 import { ThermometerIcon } from "@phosphor-icons/react";
 import { CircularSlider } from "@pisagor/react";
 
@@ -11,3 +12,5 @@ export function WithValue() {
     </CircularSlider>
   );
 }
+
+export { source as WithValueSource };

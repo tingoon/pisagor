@@ -1,0 +1,50 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react-form/switch-field/default.tsx";
+import { DisabledSource } from "#examples/react-form/switch-field/disabled.tsx";
+import { InvalidSource } from "#examples/react-form/switch-field/invalid.tsx";
+
+## Import
+
+```tsx
+import { SwitchField } from "@pisagor/react-form";
+```
+
+Part of `@pisagor/react-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+An on/off toggle for settings that apply immediately.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="switch-field"
+  framework="react"
+  kind="form"
+/>
+
+### Disabled
+
+Show that the switch is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="switch-field"
+  framework="react"
+  kind="form"
+/>
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="switch-field"
+  framework="react"
+  kind="form"
+/>

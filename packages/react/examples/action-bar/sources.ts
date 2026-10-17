@@ -1,23 +1,23 @@
-import close_triggerRaw from "./close-trigger.tsx?raw";
-import controlledRaw from "./controlled.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import custom_spacingRaw from "./custom-spacing.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import gutterRaw from "./gutter.tsx?raw";
-import placementsRaw from "./placements.tsx?raw";
-import with_dialogRaw from "./with-dialog.tsx?raw";
-import with_menuRaw from "./with-menu.tsx?raw";
+import { CloseTriggerSource as CloseTrigger } from "./close-trigger";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { CustomSpacingSource as CustomSpacing } from "./custom-spacing";
+import { DefaultSource as Default } from "./default";
+import { GutterSource as Gutter } from "./gutter";
+import { PlacementsSource as Placements } from "./placements";
+import { WithDialogSource as WithDialog } from "./with-dialog";
+import { WithMenuSource as WithMenu } from "./with-menu";
 
 export const imports = `import { ActionBar } from "@pisagor/react";`;
 
 export const sources = {
-  CloseTrigger: close_triggerRaw,
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  CustomSpacing: custom_spacingRaw,
-  Default: defaultRaw,
-  Gutter: gutterRaw,
-  Placements: placementsRaw,
-  WithDialog: with_dialogRaw,
-  WithMenu: with_menuRaw,
+  CloseTrigger,
+  Controlled,
+  CustomRecipe,
+  CustomSpacing,
+  Default,
+  Gutter,
+  Placements,
+  WithDialog,
+  WithMenu,
 } as const;

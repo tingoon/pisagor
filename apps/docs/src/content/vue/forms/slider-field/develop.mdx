@@ -1,0 +1,50 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue-form/slider-field/default.vue?raw";
+import DisabledSource from "#examples/vue-form/slider-field/disabled.vue?raw";
+import InvalidSource from "#examples/vue-form/slider-field/invalid.vue?raw";
+
+## Import
+
+```ts
+import { SliderField } from "@pisagor/vue-form";
+```
+
+Part of `@pisagor/vue-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+A slider with a label and live value for picking a number in a range.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="slider-field"
+  framework="vue"
+  kind="form"
+/>
+
+### Disabled
+
+Show that the slider is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="slider-field"
+  framework="vue"
+  kind="form"
+/>
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="slider-field"
+  framework="vue"
+  kind="form"
+/>

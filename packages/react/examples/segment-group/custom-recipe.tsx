@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { SegmentGroup } from "@pisagor/react";
 import { segmentGroupRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -26,3 +27,5 @@ export function CustomRecipe() {
     />
   );
 }
+
+export { source as CustomRecipeSource };

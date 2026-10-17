@@ -1,19 +1,19 @@
-import both_directionsRaw from "./both-directions.vue?raw";
-import compoundRaw from "./compound.vue?raw";
-import custom_recipeRaw from "./custom-recipe.vue?raw";
-import defaultRaw from "./default.vue?raw";
-import horizontalRaw from "./horizontal.vue?raw";
-import nestedRaw from "./nested.vue?raw";
-import scroll_fadeRaw from "./scroll-fade.vue?raw";
+import BothDirections from "./both-directions.vue?raw";
+import Compound from "./compound.vue?raw";
+import CustomRecipe from "./custom-recipe.vue?raw";
+import Default from "./default.vue?raw";
+import Horizontal from "./horizontal.vue?raw";
+import Nested from "./nested.vue?raw";
+import ScrollFade from "./scroll-fade.vue?raw";
 
 export const imports = `import { ScrollArea } from "@pisagor/vue";`;
 
 export const sources = {
-  BothDirections: both_directionsRaw,
-  Compound: compoundRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Horizontal: horizontalRaw,
-  Nested: nestedRaw,
-  ScrollFade: scroll_fadeRaw,
+  BothDirections,
+  Compound,
+  CustomRecipe,
+  Default,
+  Horizontal,
+  Nested,
+  ScrollFade,
 } as const;

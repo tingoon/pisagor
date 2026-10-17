@@ -1,13 +1,13 @@
-import defaultRaw from "./default.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import horizontalRaw from "./horizontal.tsx?raw";
-import without_handleRaw from "./without-handle.tsx?raw";
+import { DefaultSource as Default } from "./default";
+import { DisabledSource as Disabled } from "./disabled";
+import { HorizontalSource as Horizontal } from "./horizontal";
+import { WithoutHandleSource as WithoutHandle } from "./without-handle";
 
 export const imports = `import { Sortable } from "@pisagor/solid";`;
 
 export const sources = {
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  Horizontal: horizontalRaw,
-  WithoutHandle: without_handleRaw,
+  Default,
+  Disabled,
+  Horizontal,
+  WithoutHandle,
 } as const;

@@ -1,3 +1,4 @@
+import source from "./with-label-accessory.tsx?raw";
 import { PasswordField } from "@pisagor/react-form";
 
 export function WithLabelAccessory() {
@@ -21,3 +22,5 @@ export function WithLabelAccessory() {
     />
   );
 }
+
+export { source as WithLabelAccessorySource };

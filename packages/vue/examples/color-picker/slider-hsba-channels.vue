@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./slider-hsba-channels.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { ColorPicker } from "@pisagor/vue";
 </script>

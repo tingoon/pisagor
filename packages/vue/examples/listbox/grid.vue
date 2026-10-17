@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./grid.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { createGridCollection } from "@ark-ui/vue/collection";
 import { Item, Listbox } from "@pisagor/vue";

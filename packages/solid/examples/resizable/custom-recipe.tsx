@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { resizableRecipe } from "@pisagor/recipes";
 import { Resizable } from "@pisagor/solid";
 import { cn } from "@pisagor/utils";
@@ -62,3 +63,5 @@ export function CustomRecipe() {
     </div>
   );
 }
+
+export { source as CustomRecipeSource };

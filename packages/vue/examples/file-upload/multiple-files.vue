@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./multiple-files.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Button, FileUpload, Separator } from "@pisagor/vue";
 </script>

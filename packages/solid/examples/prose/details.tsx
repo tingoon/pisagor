@@ -1,3 +1,4 @@
+import source from "./details.tsx?raw";
 import { Prose } from "@pisagor/solid";
 
 export function Details() {
@@ -13,3 +14,5 @@ export function Details() {
     </Prose>
   );
 }
+
+export { source as DetailsSource };

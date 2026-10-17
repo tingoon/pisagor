@@ -1,3 +1,4 @@
+import source from "./disabled.tsx?raw";
 import { ColorPicker, Input } from "@pisagor/react";
 export function Disabled() {
   return (
@@ -10,3 +11,5 @@ export function Disabled() {
     </ColorPicker>
   );
 }
+
+export { source as DisabledSource };

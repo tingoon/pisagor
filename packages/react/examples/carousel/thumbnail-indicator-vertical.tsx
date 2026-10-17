@@ -1,3 +1,4 @@
+import source from "./thumbnail-indicator-vertical.tsx?raw";
 import { Carousel } from "@pisagor/react";
 import { imageSources } from "./helpers";
 
@@ -37,3 +38,5 @@ export function ThumbnailIndicatorVertical() {
     </Carousel.Root>
   );
 }
+
+export { source as ThumbnailIndicatorVerticalSource };

@@ -1,19 +1,19 @@
-import controlledRaw from "./controlled.tsx?raw";
-import custom_popupRaw from "./custom-popup.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import invalidRaw from "./invalid.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomPopupSource as CustomPopup } from "./custom-popup";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DisabledSource as Disabled } from "./disabled";
+import { InvalidSource as Invalid } from "./invalid";
+import { SizesSource as Sizes } from "./sizes";
+import { VariantsSource as Variants } from "./variants";
 
 export const imports = `import { PhoneInput } from "@pisagor/solid/phone-input";`;
 
 export const sources = {
-  Controlled: controlledRaw,
-  CustomPopup: custom_popupRaw,
-  CustomRecipe: custom_recipeRaw,
-  Disabled: disabledRaw,
-  Invalid: invalidRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
+  Controlled,
+  CustomPopup,
+  CustomRecipe,
+  Disabled,
+  Invalid,
+  Sizes,
+  Variants,
 } as const;

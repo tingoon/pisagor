@@ -1,0 +1,50 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue-form/date-field/default.vue?raw";
+import DisabledSource from "#examples/vue-form/date-field/disabled.vue?raw";
+import InvalidSource from "#examples/vue-form/date-field/invalid.vue?raw";
+
+## Import
+
+```ts
+import { DateField } from "@pisagor/vue-form";
+```
+
+Part of `@pisagor/vue-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+A date input with a calendar popup for picking one day.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="date-field"
+  framework="vue"
+  kind="form"
+/>
+
+### Disabled
+
+Show that the date field is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="date-field"
+  framework="vue"
+  kind="form"
+/>
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="date-field"
+  framework="vue"
+  kind="form"
+/>

@@ -1,0 +1,50 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react-form/date-field/default.tsx";
+import { DisabledSource } from "#examples/react-form/date-field/disabled.tsx";
+import { InvalidSource } from "#examples/react-form/date-field/invalid.tsx";
+
+## Import
+
+```tsx
+import { DateField } from "@pisagor/react-form";
+```
+
+Part of `@pisagor/react-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+A date input with a calendar popup for picking one day.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="date-field"
+  framework="react"
+  kind="form"
+/>
+
+### Disabled
+
+Show that the date field is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="date-field"
+  framework="react"
+  kind="form"
+/>
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="date-field"
+  framework="react"
+  kind="form"
+/>

@@ -1,3 +1,4 @@
+import source from "./with-sidebar.ts?raw";
 import {
   PhBell,
   PhDatabase,
@@ -100,3 +101,5 @@ export default defineComponent({
       ]);
   },
 });
+
+export { source };

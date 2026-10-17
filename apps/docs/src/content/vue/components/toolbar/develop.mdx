@@ -1,0 +1,63 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/toolbar/default.ts?raw";
+import WrappedActionsSource from "#examples/vue/toolbar/wrapped-actions.ts?raw";
+import CompoundSource from "#examples/vue/toolbar/compound.vue?raw";
+import CustomRecipeSource from "#examples/vue/toolbar/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { Toolbar } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Place a local heading with related actions in one row.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="toolbar"
+  framework="vue"
+  kind="component"
+/>
+
+### Wrapped Actions
+
+Wrap actions when horizontal space is tight.
+
+<Example
+  name="WrappedActions"
+  code={WrappedActionsSource}
+  exampleId="toolbar"
+  framework="vue"
+  kind="component"
+/>
+
+### Compound
+
+Compose toolbar parts for a custom chrome layout.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="toolbar"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `toolbarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="toolbar"
+  framework="vue"
+  kind="component"
+/>

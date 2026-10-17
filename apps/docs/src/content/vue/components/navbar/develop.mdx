@@ -1,0 +1,60 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/navbar/default.vue?raw";
+import WithSidebarSource from "#examples/vue/navbar/with-sidebar.ts?raw";
+import CustomRecipeSource from "#examples/vue/navbar/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { Navbar } from "@pisagor/vue";
+```
+
+## Anatomy
+
+```vue
+<Navbar>
+  <Navbar.Brand />
+  <Navbar.Nav />
+  <Navbar.Actions />
+</Navbar>
+```
+
+## Examples
+
+### Default
+
+Top bar with brand, navigation, and action slots.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="navbar"
+  framework="vue"
+  kind="component"
+/>
+
+### With Sidebar
+
+Pair the navbar with a sidebar when primary nav lives on the side.
+
+<Example
+  name="WithSidebar"
+  code={WithSidebarSource}
+  exampleId="navbar"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `navbarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="navbar"
+  framework="vue"
+  kind="component"
+/>

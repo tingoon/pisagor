@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Button, Editable, Input } from "@pisagor/react";
 export function Default() {
@@ -24,3 +25,5 @@ export function Default() {
     </Editable>
   );
 }
+
+export { source as DefaultSource };

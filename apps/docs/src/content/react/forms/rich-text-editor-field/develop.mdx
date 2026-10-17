@@ -1,0 +1,50 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react-form/rich-text-editor-field/default.tsx";
+import { DisabledSource } from "#examples/react-form/rich-text-editor-field/disabled.tsx";
+import { InvalidSource } from "#examples/react-form/rich-text-editor-field/invalid.tsx";
+
+## Import
+
+```tsx
+import { RichTextEditorField } from "@pisagor/react-form";
+```
+
+Part of `@pisagor/react-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+A formatted text editor with label and helper text for long-form content.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="rich-text-editor-field"
+  framework="react"
+  kind="form"
+/>
+
+### Disabled
+
+Show that the editor is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="rich-text-editor-field"
+  framework="react"
+  kind="form"
+/>
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="rich-text-editor-field"
+  framework="react"
+  kind="form"
+/>

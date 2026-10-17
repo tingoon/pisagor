@@ -1,3 +1,4 @@
+import source from "./autohighlight.tsx?raw";
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { Combobox } from "@pisagor/react";
 
@@ -35,3 +36,5 @@ export function Autohighlight() {
     </Combobox.Root>
   );
 }
+
+export { source as AutohighlightSource };

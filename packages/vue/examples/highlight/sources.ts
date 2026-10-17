@@ -1,17 +1,17 @@
-import custom_recipeRaw from "./custom-recipe.vue?raw";
-import custom_styleRaw from "./custom-style.vue?raw";
-import defaultRaw from "./default.vue?raw";
-import multipleRaw from "./multiple.vue?raw";
-import search_queryRaw from "./search-query.vue?raw";
-import squiggleRaw from "./squiggle.vue?raw";
+import CustomRecipe from "./custom-recipe.vue?raw";
+import CustomStyle from "./custom-style.vue?raw";
+import Default from "./default.vue?raw";
+import Multiple from "./multiple.vue?raw";
+import SearchQuery from "./search-query.vue?raw";
+import Squiggle from "./squiggle.vue?raw";
 
 export const imports = `import { Highlight } from "@pisagor/vue";`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  CustomStyle: custom_styleRaw,
-  Default: defaultRaw,
-  Multiple: multipleRaw,
-  SearchQuery: search_queryRaw,
-  Squiggle: squiggleRaw,
+  CustomRecipe,
+  CustomStyle,
+  Default,
+  Multiple,
+  SearchQuery,
+  Squiggle,
 } as const;

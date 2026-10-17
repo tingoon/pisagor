@@ -1,3 +1,4 @@
+import source from "./disabled-item.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Item, Listbox } from "@pisagor/solid";
 export function DisabledItem() {
@@ -30,3 +31,5 @@ export function DisabledItem() {
     </Item.Group>
   );
 }
+
+export { source as DisabledItemSource };

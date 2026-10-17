@@ -1,3 +1,4 @@
+import source from "./collapsed.tsx?raw";
 import { Breadcrumb } from "@pisagor/react";
 
 export function Collapsed() {
@@ -25,3 +26,5 @@ export function Collapsed() {
     </Breadcrumb.Root>
   );
 }
+
+export { source as CollapsedSource };

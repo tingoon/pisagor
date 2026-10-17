@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./rich-cells.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import type { BadgeVariant } from "@pisagor/vue";
 import { Avatar, Badge, Table } from "@pisagor/vue";

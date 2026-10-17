@@ -1,3 +1,4 @@
+import source from "./custom-composition.tsx?raw";
 import { Pagination } from "@pisagor/solid";
 
 export function CustomComposition() {
@@ -9,3 +10,5 @@ export function CustomComposition() {
     </Pagination>
   );
 }
+
+export { source as CustomCompositionSource };

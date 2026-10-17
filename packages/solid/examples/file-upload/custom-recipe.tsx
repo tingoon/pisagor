@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { fileUploadRecipe } from "@pisagor/recipes";
 import { Button, FileUpload, Separator } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -34,3 +35,5 @@ export function CustomRecipe() {
     </FileUpload>
   );
 }
+
+export { source as CustomRecipeSource };

@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Button, Drawer, Field, Input } from "@pisagor/react";
 export function Default() {
   return (
@@ -38,3 +39,5 @@ export function Default() {
     </Drawer>
   );
 }
+
+export { source as DefaultSource };

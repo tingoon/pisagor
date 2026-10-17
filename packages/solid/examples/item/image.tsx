@@ -1,3 +1,4 @@
+import source from "./image.tsx?raw";
 import { Item } from "@pisagor/solid";
 
 export function Image() {
@@ -40,3 +41,5 @@ export function Image() {
     </Item.Group>
   );
 }
+
+export { source as ImageSource };

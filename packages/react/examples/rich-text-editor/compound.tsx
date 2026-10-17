@@ -1,3 +1,4 @@
+import source from "./compound.tsx?raw";
 import { RichTextEditor } from "@pisagor/react/rich-text-editor";
 
 export function Compound() {
@@ -8,3 +9,5 @@ export function Compound() {
     </RichTextEditor.Root>
   );
 }
+
+export { source as CompoundSource };

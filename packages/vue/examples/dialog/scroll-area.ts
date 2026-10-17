@@ -1,3 +1,4 @@
+import source from "./scroll-area.ts?raw";
 import { Button, Dialog } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
@@ -58,3 +59,5 @@ export default defineComponent({
       ]);
   },
 });
+
+export { source };

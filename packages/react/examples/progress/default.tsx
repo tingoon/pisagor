@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Progress } from "@pisagor/react";
 import { useEffect, useState } from "react";
 
@@ -11,3 +12,5 @@ export function Default() {
 
   return <Progress value={progress} />;
 }
+
+export { source as DefaultSource };

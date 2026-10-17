@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./custom-recipe.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { kbdRecipe } from "@pisagor/recipes";
   import { Kbd } from "@pisagor/svelte";

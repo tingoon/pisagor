@@ -1,3 +1,4 @@
+import source from "./presets.tsx?raw";
 import { Button, Calendar, Card } from "@pisagor/solid";
 export function Presets() {
   const presets = [
@@ -37,3 +38,5 @@ export function Presets() {
     </Calendar>
   );
 }
+
+export { source as PresetsSource };

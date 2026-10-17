@@ -1,3 +1,4 @@
+import source from "./banner.ts?raw";
 import { PhWarning } from "@phosphor-icons/vue";
 import { Announcement, AppShell, Badge, Button } from "@pisagor/vue";
 import { defineComponent, h, ref } from "vue";
@@ -39,3 +40,5 @@ export default defineComponent({
       ]);
   },
 });
+
+export { source };

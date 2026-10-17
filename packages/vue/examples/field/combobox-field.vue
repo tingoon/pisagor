@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./combobox-field.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 import { Combobox, Field } from "@pisagor/vue";

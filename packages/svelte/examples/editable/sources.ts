@@ -1,35 +1,35 @@
-import activation_clickRaw from "./activation-click.svelte?raw";
-import activation_focusRaw from "./activation-focus.svelte?raw";
-import activation_noneRaw from "./activation-none.svelte?raw";
-import controlledRaw from "./controlled.svelte?raw";
-import custom_recipeRaw from "./custom-recipe.svelte?raw";
-import dblclickRaw from "./dblclick.svelte?raw";
-import defaultRaw from "./default.svelte?raw";
-import disabledRaw from "./disabled.svelte?raw";
-import invalidRaw from "./invalid.svelte?raw";
-import orientation_horizontalRaw from "./orientation-horizontal.svelte?raw";
-import orientation_verticalRaw from "./orientation-vertical.svelte?raw";
-import sizesRaw from "./sizes.svelte?raw";
-import variantsRaw from "./variants.svelte?raw";
-import with_textareaRaw from "./with-textarea.svelte?raw";
-import without_controlsRaw from "./without-controls.svelte?raw";
+import ActivationClick from "./activation-click.svelte?raw";
+import ActivationFocus from "./activation-focus.svelte?raw";
+import ActivationNone from "./activation-none.svelte?raw";
+import Controlled from "./controlled.svelte?raw";
+import CustomRecipe from "./custom-recipe.svelte?raw";
+import Dblclick from "./dblclick.svelte?raw";
+import Default from "./default.svelte?raw";
+import Disabled from "./disabled.svelte?raw";
+import Invalid from "./invalid.svelte?raw";
+import OrientationHorizontal from "./orientation-horizontal.svelte?raw";
+import OrientationVertical from "./orientation-vertical.svelte?raw";
+import Sizes from "./sizes.svelte?raw";
+import Variants from "./variants.svelte?raw";
+import WithoutControls from "./without-controls.svelte?raw";
+import WithTextarea from "./with-textarea.svelte?raw";
 
 export const imports = `import { Editable } from "@pisagor/svelte";`;
 
 export const sources = {
-  ActivationClick: activation_clickRaw,
-  ActivationFocus: activation_focusRaw,
-  ActivationNone: activation_noneRaw,
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Dblclick: dblclickRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  Invalid: invalidRaw,
-  OrientationHorizontal: orientation_horizontalRaw,
-  OrientationVertical: orientation_verticalRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
-  WithoutControls: without_controlsRaw,
-  WithTextarea: with_textareaRaw,
+  ActivationClick,
+  ActivationFocus,
+  ActivationNone,
+  Controlled,
+  CustomRecipe,
+  Dblclick,
+  Default,
+  Disabled,
+  Invalid,
+  OrientationHorizontal,
+  OrientationVertical,
+  Sizes,
+  Variants,
+  WithoutControls,
+  WithTextarea,
 } as const;

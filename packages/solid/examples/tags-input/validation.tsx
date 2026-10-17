@@ -1,3 +1,4 @@
+import source from "./validation.tsx?raw";
 import { Field, TagsInput } from "@pisagor/solid";
 import { For } from "solid-js";
 
@@ -33,3 +34,5 @@ export function Validation() {
     </Field>
   );
 }
+
+export { source as ValidationSource };

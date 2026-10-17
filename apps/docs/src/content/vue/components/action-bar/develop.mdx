@@ -1,0 +1,144 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/action-bar/default.vue?raw";
+import GutterSource from "#examples/vue/action-bar/gutter.vue?raw";
+import CloseTriggerSource from "#examples/vue/action-bar/close-trigger.vue?raw";
+import WithDialogSource from "#examples/vue/action-bar/with-dialog.vue?raw";
+import WithMenuSource from "#examples/vue/action-bar/with-menu.vue?raw";
+import ControlledSource from "#examples/vue/action-bar/controlled.vue?raw";
+import PlacementsSource from "#examples/vue/action-bar/placements.vue?raw";
+import CustomSpacingSource from "#examples/vue/action-bar/custom-spacing.vue?raw";
+import CustomRecipeSource from "#examples/vue/action-bar/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { ActionBar } from "@pisagor/vue";
+```
+
+## Anatomy
+
+```vue
+<ActionBar>
+  <ActionBar.Trigger />
+  <ActionBar.Content>
+    <ActionBar.Value />
+    <ActionBar.Separator />
+    <ActionBar.Body />
+    <ActionBar.Close />
+  </ActionBar.Content>
+</ActionBar>
+```
+
+## Examples
+
+### Default
+
+The standard bar that appears when selection enables bulk actions.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="action-bar"
+  framework="vue"
+  kind="component"
+/>
+
+### Gutter
+
+Add side gutter spacing so actions align with the content column.
+
+<Example
+  name="Gutter"
+  code={GutterSource}
+  exampleId="action-bar"
+  framework="vue"
+  kind="component"
+/>
+
+### Close Trigger
+
+Let users dismiss the bar explicitly when clearing selection is not the only exit.
+
+<Example
+  name="CloseTrigger"
+  code={CloseTriggerSource}
+  exampleId="action-bar"
+  framework="vue"
+  kind="component"
+/>
+
+### With Dialog
+
+Open a dialog from a bulk action when the next step needs confirmation or extra input.
+
+<Example
+  name="WithDialog"
+  code={WithDialogSource}
+  exampleId="action-bar"
+  framework="vue"
+  kind="component"
+/>
+
+### With Menu
+
+Park secondary bulk actions in a menu so the bar stays focused on common work.
+
+<Example
+  name="WithMenu"
+  code={WithMenuSource}
+  exampleId="action-bar"
+  framework="vue"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this action bar.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="action-bar"
+  framework="vue"
+  kind="component"
+/>
+
+### Placements
+
+Choose placement so the action bar stays near its trigger without covering critical content.
+
+<Example
+  name="Placements"
+  code={PlacementsSource}
+  exampleId="action-bar"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Tighten or loosen padding when the bar sits in a denser or roomier toolbar.
+
+<Example
+  name="CustomSpacing"
+  code={CustomSpacingSource}
+  exampleId="action-bar"
+  framework="vue"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `actionBarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="action-bar"
+  framework="vue"
+  kind="component"
+/>

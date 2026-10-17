@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./custom-recipe.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { calendarRecipe } from "@pisagor/recipes";
   import { Calendar, Card } from "@pisagor/svelte";

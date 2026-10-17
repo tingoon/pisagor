@@ -1,3 +1,4 @@
+import source from "./dl.tsx?raw";
 import { Prose } from "@pisagor/react";
 
 export function Dl() {
@@ -12,3 +13,5 @@ export function Dl() {
     </Prose>
   );
 }
+
+export { source as DlSource };

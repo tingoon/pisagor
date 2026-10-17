@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./shortcuts.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhCopy, PhGear, PhSignOut, PhUser } from "@phosphor-icons/vue";
 import { Button, DropdownMenu } from "@pisagor/vue";

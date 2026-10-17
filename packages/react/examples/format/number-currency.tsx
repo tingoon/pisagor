@@ -1,3 +1,4 @@
+import source from "./number-currency.tsx?raw";
 import { Format } from "@pisagor/react";
 
 export function NumberCurrency() {
@@ -18,3 +19,5 @@ export function NumberCurrency() {
     </div>
   );
 }
+
+export { source as NumberCurrencySource };

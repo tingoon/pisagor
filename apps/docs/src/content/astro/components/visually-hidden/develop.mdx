@@ -1,0 +1,25 @@
+import Example from "#/components/docs/example.astro";
+import Default from "#examples/astro/visually-hidden/default.astro";
+import DefaultSource from "#examples/astro/visually-hidden/default.astro?raw";
+
+## Import
+
+```ts
+import { VisuallyHidden } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Expose text to assistive tech without showing it on screen.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="visually-hidden"
+  framework="astro"
+  kind="component"
+>
+  <Default />
+</Example>

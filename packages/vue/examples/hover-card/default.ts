@@ -1,3 +1,4 @@
+import source from "./default.ts?raw";
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { HoverCard } from "@pisagor/vue";
@@ -31,3 +32,5 @@ export default defineComponent({
       ]);
   },
 });
+
+export { source };

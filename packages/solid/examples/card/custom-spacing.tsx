@@ -1,3 +1,4 @@
+import source from "./custom-spacing.tsx?raw";
 import { Card } from "@pisagor/solid";
 
 export function CustomSpacing() {
@@ -16,3 +17,5 @@ export function CustomSpacing() {
     </Card>
   );
 }
+
+export { source as CustomSpacingSource };

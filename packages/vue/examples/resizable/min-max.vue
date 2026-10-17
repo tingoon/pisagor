@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./min-max.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { cn } from "@pisagor/utils";
 import { Resizable } from "@pisagor/vue";

@@ -1,53 +1,53 @@
-import aRaw from "./a.vue?raw";
-import blockquoteRaw from "./blockquote.vue?raw";
-import custom_recipeRaw from "./custom-recipe.vue?raw";
-import defaultRaw from "./default.vue?raw";
-import detailsRaw from "./details.vue?raw";
-import dlRaw from "./dl.vue?raw";
-import h1Raw from "./h1.vue?raw";
-import h2Raw from "./h2.vue?raw";
-import h3Raw from "./h3.vue?raw";
-import h4Raw from "./h4.vue?raw";
-import h5Raw from "./h5.vue?raw";
-import h6Raw from "./h6.vue?raw";
-import htmlRaw from "./html.vue?raw";
-import html_tableRaw from "./html-table.vue?raw";
-import inline_codeRaw from "./inline-code.vue?raw";
-import kbdRaw from "./kbd.vue?raw";
-import listRaw from "./list.vue?raw";
-import markRaw from "./mark.vue?raw";
-import mediaRaw from "./media.vue?raw";
-import not_proseRaw from "./not-prose.vue?raw";
-import olRaw from "./ol.vue?raw";
-import pRaw from "./p.vue?raw";
-import separatorRaw from "./separator.vue?raw";
-import smallRaw from "./small.vue?raw";
+import A from "./a.vue?raw";
+import Blockquote from "./blockquote.vue?raw";
+import CustomRecipe from "./custom-recipe.vue?raw";
+import Default from "./default.vue?raw";
+import Details from "./details.vue?raw";
+import Dl from "./dl.vue?raw";
+import H1 from "./h1.vue?raw";
+import H2 from "./h2.vue?raw";
+import H3 from "./h3.vue?raw";
+import H4 from "./h4.vue?raw";
+import H5 from "./h5.vue?raw";
+import H6 from "./h6.vue?raw";
+import Html from "./html.vue?raw";
+import HtmlTable from "./html-table.vue?raw";
+import InlineCode from "./inline-code.vue?raw";
+import Kbd from "./kbd.vue?raw";
+import List from "./list.vue?raw";
+import Mark from "./mark.vue?raw";
+import Media from "./media.vue?raw";
+import NotProse from "./not-prose.vue?raw";
+import Ol from "./ol.vue?raw";
+import P from "./p.vue?raw";
+import Separator from "./separator.vue?raw";
+import Small from "./small.vue?raw";
 
 export const imports = `import { Prose } from "@pisagor/vue";`;
 
 export const sources = {
-  A: aRaw,
-  Blockquote: blockquoteRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Details: detailsRaw,
-  Dl: dlRaw,
-  H1: h1Raw,
-  H2: h2Raw,
-  H3: h3Raw,
-  H4: h4Raw,
-  H5: h5Raw,
-  H6: h6Raw,
-  Html: htmlRaw,
-  HtmlTable: html_tableRaw,
-  InlineCode: inline_codeRaw,
-  Kbd: kbdRaw,
-  List: listRaw,
-  Mark: markRaw,
-  Media: mediaRaw,
-  NotProse: not_proseRaw,
-  Ol: olRaw,
-  P: pRaw,
-  Separator: separatorRaw,
-  Small: smallRaw,
+  A,
+  Blockquote,
+  CustomRecipe,
+  Default,
+  Details,
+  Dl,
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  Html,
+  HtmlTable,
+  InlineCode,
+  Kbd,
+  List,
+  Mark,
+  Media,
+  NotProse,
+  Ol,
+  P,
+  Separator,
+  Small,
 } as const;

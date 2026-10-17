@@ -1,0 +1,87 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/data-list/default.vue?raw";
+import OrientationHorizontalSource from "#examples/vue/data-list/orientation-horizontal.vue?raw";
+import OrientationVerticalSource from "#examples/vue/data-list/orientation-vertical.vue?raw";
+import SeparatorSource from "#examples/vue/data-list/separator.vue?raw";
+import InfoTipSource from "#examples/vue/data-list/info-tip.vue?raw";
+import CompoundSource from "#examples/vue/data-list/compound.vue?raw";
+
+## Import
+
+```ts
+import { DataList } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Present label-value pairs for summaries and metadata.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="data-list"
+  framework="vue"
+  kind="component"
+/>
+
+### Orientation Horizontal
+
+Lay out the data list horizontally when items should read in a row.
+
+<Example
+  name="OrientationHorizontal"
+  code={OrientationHorizontalSource}
+  exampleId="data-list"
+  framework="vue"
+  kind="component"
+/>
+
+### Orientation Vertical
+
+Stack the data list vertically when items should read in a column.
+
+<Example
+  name="OrientationVertical"
+  code={OrientationVerticalSource}
+  exampleId="data-list"
+  framework="vue"
+  kind="component"
+/>
+
+### Separator
+
+Separate groups of pairs so sections stay scannable.
+
+<Example
+  name="Separator"
+  code={SeparatorSource}
+  exampleId="data-list"
+  framework="vue"
+  kind="component"
+/>
+
+### Info Tip
+
+Add a short tip on a label when the field needs explanation without crowding the row.
+
+<Example
+  name="InfoTip"
+  code={InfoTipSource}
+  exampleId="data-list"
+  framework="vue"
+  kind="component"
+/>
+
+### Compound
+
+Compose term and value parts for a custom list layout.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="data-list"
+  framework="vue"
+  kind="component"
+/>

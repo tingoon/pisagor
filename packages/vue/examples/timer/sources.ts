@@ -1,25 +1,25 @@
-import controlledRaw from "./controlled.vue?raw";
-import countdownRaw from "./countdown.vue?raw";
-import countdown_dateRaw from "./countdown-date.vue?raw";
-import custom_recipeRaw from "./custom-recipe.vue?raw";
-import custom_separatorRaw from "./custom-separator.vue?raw";
-import defaultRaw from "./default.vue?raw";
-import intervalRaw from "./interval.vue?raw";
-import orientation_horizontalRaw from "./orientation-horizontal.vue?raw";
-import orientation_verticalRaw from "./orientation-vertical.vue?raw";
-import pomodoroRaw from "./pomodoro.vue?raw";
+import Controlled from "./controlled.vue?raw";
+import Countdown from "./countdown.vue?raw";
+import CountdownDate from "./countdown-date.vue?raw";
+import CustomRecipe from "./custom-recipe.vue?raw";
+import CustomSeparator from "./custom-separator.vue?raw";
+import Default from "./default.vue?raw";
+import Interval from "./interval.vue?raw";
+import OrientationHorizontal from "./orientation-horizontal.vue?raw";
+import OrientationVertical from "./orientation-vertical.vue?raw";
+import Pomodoro from "./pomodoro.vue?raw";
 
 export const imports = `import { Timer } from "@pisagor/vue";`;
 
 export const sources = {
-  Controlled: controlledRaw,
-  Countdown: countdownRaw,
-  CountdownDate: countdown_dateRaw,
-  CustomRecipe: custom_recipeRaw,
-  CustomSeparator: custom_separatorRaw,
-  Default: defaultRaw,
-  Interval: intervalRaw,
-  OrientationHorizontal: orientation_horizontalRaw,
-  OrientationVertical: orientation_verticalRaw,
-  Pomodoro: pomodoroRaw,
+  Controlled,
+  Countdown,
+  CountdownDate,
+  CustomRecipe,
+  CustomSeparator,
+  Default,
+  Interval,
+  OrientationHorizontal,
+  OrientationVertical,
+  Pomodoro,
 } as const;

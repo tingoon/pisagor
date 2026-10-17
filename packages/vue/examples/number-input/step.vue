@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./step.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Field, NumberInput } from "@pisagor/vue";
 </script>

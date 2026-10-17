@@ -1,3 +1,4 @@
+import source from "./combobox-field.tsx?raw";
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { Combobox, Field } from "@pisagor/react";
 export function ComboboxField() {
@@ -45,3 +46,5 @@ export function ComboboxField() {
     </Field>
   );
 }
+
+export { source as ComboboxFieldSource };

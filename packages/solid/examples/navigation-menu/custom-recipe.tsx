@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { navigationMenuRecipe } from "@pisagor/recipes";
 import { NavigationMenu } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -30,3 +31,5 @@ export function CustomRecipe() {
     </NavigationMenu>
   );
 }
+
+export { source as CustomRecipeSource };

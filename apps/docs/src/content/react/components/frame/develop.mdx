@@ -1,0 +1,89 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/frame/default.tsx";
+import { SizesSource } from "#examples/react/frame/sizes.tsx";
+import { SeparatedPanelsSource } from "#examples/react/frame/separated-panels.tsx";
+import { WithFormControlsSource } from "#examples/react/frame/with-form-controls.tsx";
+import { CustomRecipeSource } from "#examples/react/frame/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Frame } from "@pisagor/react";
+```
+
+## Anatomy
+
+```tsx
+<Frame>
+  <Frame.Header>
+    <Frame.Title />
+    <Frame.Description />
+  </Frame.Header>
+  <Frame.Panel />
+  <Frame.Footer />
+</Frame>
+```
+
+## Examples
+
+### Default
+
+Embed content inside consistent framed chrome.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="frame"
+  framework="react"
+  kind="component"
+/>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="frame"
+  framework="react"
+  kind="component"
+/>
+
+### Separated Panels
+
+Show multiple framed regions when the workspace splits embeds.
+
+<Example
+  name="SeparatedPanels"
+  code={SeparatedPanelsSource}
+  exampleId="frame"
+  framework="react"
+  kind="component"
+/>
+
+### With Form Controls
+
+Host form controls inside the frame when the embed includes settings.
+
+<Example
+  name="WithFormControls"
+  code={WithFormControlsSource}
+  exampleId="frame"
+  framework="react"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `frameRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="frame"
+  framework="react"
+  kind="component"
+/>

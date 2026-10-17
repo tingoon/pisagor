@@ -1,19 +1,19 @@
-import controlledRaw from "./controlled.svelte?raw";
-import defaultRaw from "./default.svelte?raw";
-import descriptionRaw from "./description.svelte?raw";
-import iconRaw from "./icon.svelte?raw";
-import loadingRaw from "./loading.svelte?raw";
-import titleRaw from "./title.svelte?raw";
-import verticalRaw from "./vertical.svelte?raw";
+import Controlled from "./controlled.svelte?raw";
+import Default from "./default.svelte?raw";
+import Description from "./description.svelte?raw";
+import Icon from "./icon.svelte?raw";
+import Loading from "./loading.svelte?raw";
+import Title from "./title.svelte?raw";
+import Vertical from "./vertical.svelte?raw";
 
 export const imports = `import { Steps } from "@pisagor/svelte";`;
 
 export const sources = {
-  Controlled: controlledRaw,
-  Default: defaultRaw,
-  Description: descriptionRaw,
-  Icon: iconRaw,
-  Loading: loadingRaw,
-  Title: titleRaw,
-  Vertical: verticalRaw,
+  Controlled,
+  Default,
+  Description,
+  Icon,
+  Loading,
+  Title,
+  Vertical,
 } as const;

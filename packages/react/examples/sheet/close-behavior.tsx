@@ -1,3 +1,4 @@
+import source from "./close-behavior.tsx?raw";
 import { Button, Sheet } from "@pisagor/react";
 export function CloseBehavior() {
   return (
@@ -33,3 +34,5 @@ export function CloseBehavior() {
     </div>
   );
 }
+
+export { source as CloseBehaviorSource };

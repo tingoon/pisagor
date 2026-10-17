@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./number-compact.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Format } from "@pisagor/svelte";
 </script>

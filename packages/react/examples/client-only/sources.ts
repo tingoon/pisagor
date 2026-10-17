@@ -1,9 +1,9 @@
-import defaultRaw from "./default.tsx?raw";
-import fallbackRaw from "./fallback.tsx?raw";
+import { DefaultSource as Default } from "./default";
+import { FallbackSource as Fallback } from "./fallback";
 
 export const imports = `import { ClientOnly } from "@pisagor/react";`;
 
 export const sources = {
-  Default: defaultRaw,
-  Fallback: fallbackRaw,
+  Default,
+  Fallback,
 } as const;

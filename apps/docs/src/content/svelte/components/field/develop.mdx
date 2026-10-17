@@ -1,0 +1,267 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/field/default.svelte?raw";
+import OrientationHorizontalSource from "#examples/svelte/field/orientation-horizontal.svelte?raw";
+import OrientationVerticalSource from "#examples/svelte/field/orientation-vertical.svelte?raw";
+import AutocompleteFieldSource from "#examples/svelte/field/autocomplete-field.svelte?raw";
+import CheckboxFieldSource from "#examples/svelte/field/checkbox-field.svelte?raw";
+import CheckboxGroupFieldSource from "#examples/svelte/field/checkbox-group-field.svelte?raw";
+import ComboboxFieldSource from "#examples/svelte/field/combobox-field.svelte?raw";
+import ComboboxMultipleFieldSource from "#examples/svelte/field/combobox-multiple-field.svelte?raw";
+import NumberInputStorySource from "#examples/svelte/field/number-input-story.svelte?raw";
+import RadioGroupFieldSource from "#examples/svelte/field/radio-group-field.svelte?raw";
+import SelectFieldSource from "#examples/svelte/field/select-field.svelte?raw";
+import SliderFieldSource from "#examples/svelte/field/slider-field.svelte?raw";
+import SwitchFieldSource from "#examples/svelte/field/switch-field.svelte?raw";
+import TextareaFieldSource from "#examples/svelte/field/textarea-field.svelte?raw";
+import FieldGroupSource from "#examples/svelte/field/field-group.svelte?raw";
+import WithInputGroupSource from "#examples/svelte/field/with-input-group.svelte?raw";
+import RequiredFieldSource from "#examples/svelte/field/required-field.svelte?raw";
+import DisabledFieldSource from "#examples/svelte/field/disabled-field.svelte?raw";
+import WithErrorSource from "#examples/svelte/field/with-error.svelte?raw";
+
+## Import
+
+```ts
+import { Field } from "@pisagor/svelte";
+```
+
+## Anatomy
+
+```tsx
+<Field>
+  <Field.Label />
+  {/* any form control, e.g. <Input /> */}
+  <Field.Description />
+  <Field.Error />
+</Field>
+```
+
+## Examples
+
+### Default
+
+Wrap a control with label, description, and error text.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="field"
+  framework="svelte"
+  kind="component"
+/>
+
+### Orientation Horizontal
+
+Place the label beside the control when horizontal forms fit better.
+
+<Example
+  name="OrientationHorizontal"
+  code={OrientationHorizontalSource}
+  exampleId="field"
+  framework="svelte"
+  kind="component"
+/>
+
+### Orientation Vertical
+
+Stack the label above the control for the common form layout.
+
+<Example
+  name="OrientationVertical"
+  code={OrientationVerticalSource}
+  exampleId="field"
+  framework="svelte"
+  kind="component"
+/>
+
+### Autocomplete Field
+
+Compose Field around Autocomplete when search-as-you-type needs label and error text.
+
+<Example
+  name="AutocompleteField"
+  code={AutocompleteFieldSource}
+  exampleId="field"
+  framework="svelte"
+  kind="component"
+/>
+
+### Checkbox Field
+
+Compose Field around Checkbox when the option needs label, description, or error text.
+
+<Example
+  name="CheckboxField"
+  code={CheckboxFieldSource}
+  exampleId="field"
+  framework="svelte"
+  kind="component"
+/>
+
+### Checkbox Group Field
+
+Compose Field around a checkbox group when related options share one label context.
+
+<Example
+  name="CheckboxGroupField"
+  code={CheckboxGroupFieldSource}
+  exampleId="field"
+  framework="svelte"
+  kind="component"
+/>
+
+### Combobox Field
+
+Compose Field around Combobox when a filterable list needs label and error text.
+
+<Example
+  name="ComboboxField"
+  code={ComboboxFieldSource}
+  exampleId="field"
+  framework="svelte"
+  kind="component"
+/>
+
+### Combobox Multiple Field
+
+Compose Field around a multi-select Combobox when several values share one field label.
+
+<Example
+  name="ComboboxMultipleField"
+  code={ComboboxMultipleFieldSource}
+  exampleId="field"
+  framework="svelte"
+  kind="component"
+/>
+
+### Number Input Story
+
+Compose Field around Number Input when a numeric value needs label and error text.
+
+<Example
+  name="NumberInputStory"
+  code={NumberInputStorySource}
+  exampleId="field"
+  framework="svelte"
+  kind="component"
+/>
+
+### Radio Group Field
+
+Compose Field around Radio Group when exclusive options share one field label.
+
+<Example
+  name="RadioGroupField"
+  code={RadioGroupFieldSource}
+  exampleId="field"
+  framework="svelte"
+  kind="component"
+/>
+
+### Select Field
+
+Compose Field around Select when a single choice needs label and error text.
+
+<Example
+  name="SelectField"
+  code={SelectFieldSource}
+  exampleId="field"
+  framework="svelte"
+  kind="component"
+/>
+
+### Slider Field
+
+Compose Field around Slider when a range value needs label and error text.
+
+<Example
+  name="SliderField"
+  code={SliderFieldSource}
+  exampleId="field"
+  framework="svelte"
+  kind="component"
+/>
+
+### Switch Field
+
+Compose Field around Switch when an on/off setting needs label and error text.
+
+<Example
+  name="SwitchField"
+  code={SwitchFieldSource}
+  exampleId="field"
+  framework="svelte"
+  kind="component"
+/>
+
+### Textarea Field
+
+Compose Field around Textarea when multi-line text needs label and error text.
+
+<Example
+  name="TextareaField"
+  code={TextareaFieldSource}
+  exampleId="field"
+  framework="svelte"
+  kind="component"
+/>
+
+### Field Group
+
+Group several fields under shared context.
+
+<Example
+  name="FieldGroup"
+  code={FieldGroupSource}
+  exampleId="field"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Input Group
+
+Combine Field with Input Group when addons sit on the control.
+
+<Example
+  name="WithInputGroup"
+  code={WithInputGroupSource}
+  exampleId="field"
+  framework="svelte"
+  kind="component"
+/>
+
+### Required Field
+
+Mark the field required and surface that expectation in the label.
+
+<Example
+  name="RequiredField"
+  code={RequiredFieldSource}
+  exampleId="field"
+  framework="svelte"
+  kind="component"
+/>
+
+### Disabled Field
+
+Show that the field is unavailable.
+
+<Example
+  name="DisabledField"
+  code={DisabledFieldSource}
+  exampleId="field"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Error
+
+Show error text under the control when validation fails.
+
+<Example
+  name="WithError"
+  code={WithErrorSource}
+  exampleId="field"
+  framework="svelte"
+  kind="component"
+/>

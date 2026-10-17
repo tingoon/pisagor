@@ -1,3 +1,4 @@
+import source from "./with-textarea.tsx?raw";
 import { Button, InputGroup } from "@pisagor/solid";
 import { ArrowUpIcon, PlusIcon } from "@pisagor/solid/icons";
 export function WithTextarea() {
@@ -21,3 +22,5 @@ export function WithTextarea() {
     </InputGroup>
   );
 }
+
+export { source as WithTextareaSource };

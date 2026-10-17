@@ -1,0 +1,35 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/scrollspy/default.svelte?raw";
+import HorizontalSource from "#examples/svelte/scrollspy/horizontal.svelte?raw";
+
+## Import
+
+```ts
+import { Scrollspy } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Default
+
+Highlight the nav item that matches the section in view.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="scrollspy"
+  framework="svelte"
+  kind="component"
+/>
+
+### Horizontal
+
+Use a horizontal layout when the scrollspy should read left to right.
+
+<Example
+  name="Horizontal"
+  code={HorizontalSource}
+  exampleId="scrollspy"
+  framework="svelte"
+  kind="component"
+/>

@@ -1,3 +1,4 @@
+import source from "./invalid.tsx?raw";
 import { InputGroup } from "@pisagor/solid";
 
 export function Invalid() {
@@ -10,3 +11,5 @@ export function Invalid() {
     </InputGroup>
   );
 }
+
+export { source as InvalidSource };

@@ -1,3 +1,4 @@
+import source from "./compound.tsx?raw";
 import { Button, Toolbar } from "@pisagor/react";
 export function Compound() {
   return (
@@ -15,3 +16,5 @@ export function Compound() {
     </Toolbar.Root>
   );
 }
+
+export { source as CompoundSource };

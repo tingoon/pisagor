@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Button, Drawer, Field, Input } from "@pisagor/solid";
 
 export function Default() {
@@ -47,3 +48,5 @@ export function Default() {
     </Drawer>
   );
 }
+
+export { source as DefaultSource };

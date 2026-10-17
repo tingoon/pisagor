@@ -1,3 +1,4 @@
+import source from "./accepted-file-types.tsx?raw";
 import { FileUpload } from "@pisagor/solid";
 
 export function AcceptedFileTypes() {
@@ -14,3 +15,5 @@ export function AcceptedFileTypes() {
     </FileUpload>
   );
 }
+
+export { source as AcceptedFileTypesSource };

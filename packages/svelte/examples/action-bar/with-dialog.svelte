@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./with-dialog.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { ActionBar, AlertDialog, Button } from "@pisagor/svelte";
   import { TrashIcon, XIcon } from "@pisagor/svelte/icons";

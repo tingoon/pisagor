@@ -1,3 +1,4 @@
+import source from "./compact.tsx?raw";
 import { EmptyState } from "@pisagor/solid";
 
 export function Compact() {
@@ -9,3 +10,5 @@ export function Compact() {
     />
   );
 }
+
+export { source as CompactSource };

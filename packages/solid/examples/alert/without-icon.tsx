@@ -1,3 +1,4 @@
+import source from "./without-icon.tsx?raw";
 import { Alert } from "@pisagor/solid";
 
 export function WithoutIcon() {
@@ -10,3 +11,5 @@ export function WithoutIcon() {
     />
   );
 }
+
+export { source as WithoutIconSource };

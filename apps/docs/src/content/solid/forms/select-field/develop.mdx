@@ -1,0 +1,50 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid-form/select-field/default.tsx";
+import { DisabledSource } from "#examples/solid-form/select-field/disabled.tsx";
+import { InvalidSource } from "#examples/solid-form/select-field/invalid.tsx";
+
+## Import
+
+```tsx
+import { SelectField } from "@pisagor/solid-form";
+```
+
+Part of `@pisagor/solid-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+A dropdown for choosing one value from a fixed list.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="select-field"
+  framework="solid"
+  kind="form"
+/>
+
+### Disabled
+
+Show that the select is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="select-field"
+  framework="solid"
+  kind="form"
+/>
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="select-field"
+  framework="solid"
+  kind="form"
+/>

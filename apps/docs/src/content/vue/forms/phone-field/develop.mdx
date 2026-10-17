@@ -1,0 +1,50 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue-form/phone-field/default.vue?raw";
+import DisabledSource from "#examples/vue-form/phone-field/disabled.vue?raw";
+import InvalidSource from "#examples/vue-form/phone-field/invalid.vue?raw";
+
+## Import
+
+```ts
+import { PhoneField } from "@pisagor/vue-form";
+```
+
+Part of `@pisagor/vue-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+A phone number input with a country picker set by `defaultCountry`.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="phone-field"
+  framework="vue"
+  kind="form"
+/>
+
+### Disabled
+
+Show that the phone field is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="phone-field"
+  framework="vue"
+  kind="form"
+/>
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="phone-field"
+  framework="vue"
+  kind="form"
+/>

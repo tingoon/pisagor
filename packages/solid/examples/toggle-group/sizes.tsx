@@ -1,3 +1,4 @@
+import source from "./sizes.tsx?raw";
 import { ToggleGroup } from "@pisagor/solid";
 import {
   TextBIcon,
@@ -33,3 +34,5 @@ export function Sizes() {
     </div>
   );
 }
+
+export { source as SizesSource };

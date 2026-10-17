@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./sanitize-value.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Field, TagsInput } from "@pisagor/svelte";
 

@@ -1,3 +1,4 @@
+import source from "./paste-behavior.tsx?raw";
 import { Field, TagsInput } from "@pisagor/react";
 export function PasteBehavior() {
   return (
@@ -17,3 +18,5 @@ export function PasteBehavior() {
     </Field>
   );
 }
+
+export { source as PasteBehaviorSource };

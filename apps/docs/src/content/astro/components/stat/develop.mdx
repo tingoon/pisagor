@@ -1,0 +1,91 @@
+import Example from "#/components/docs/example.astro";
+import Default from "#examples/astro/stat/default.astro";
+import Variants from "#examples/astro/stat/variants.astro";
+import WithTrend from "#examples/astro/stat/with-trend.astro";
+import Compound from "#examples/astro/stat/compound.astro";
+import CustomRecipe from "#examples/astro/stat/custom-recipe.astro";
+import DefaultSource from "#examples/astro/stat/default.astro?raw";
+import VariantsSource from "#examples/astro/stat/variants.astro?raw";
+import WithTrendSource from "#examples/astro/stat/with-trend.astro?raw";
+import CompoundSource from "#examples/astro/stat/compound.astro?raw";
+import CustomRecipeSource from "#examples/astro/stat/custom-recipe.astro?raw";
+
+## Import
+
+```ts
+import { Stat } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Highlight a key metric with supporting context.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="stat"
+  framework="astro"
+  kind="component"
+>
+  <Default />
+</Example>
+
+### Variants
+
+Choose emphasis so the stat matches dashboard hierarchy.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="stat"
+  framework="astro"
+  kind="component"
+>
+  <Variants />
+</Example>
+
+### With Trend
+
+Show direction of change when trend matters alongside the value.
+
+<Example
+  name="WithTrend"
+  code={WithTrendSource}
+  exampleId="stat"
+  framework="astro"
+  kind="component"
+>
+  <WithTrend />
+</Example>
+
+### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="stat"
+  framework="astro"
+  kind="component"
+>
+  <Compound />
+</Example>
+
+## Customization
+
+### Custom recipe
+
+Extend `statRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="stat"
+  framework="astro"
+  kind="component"
+>
+  <CustomRecipe />
+</Example>

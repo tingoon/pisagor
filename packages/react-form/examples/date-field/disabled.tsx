@@ -1,3 +1,4 @@
+import source from "./disabled.tsx?raw";
 import { DateField } from "@pisagor/react-form";
 
 export function Disabled() {
@@ -11,3 +12,5 @@ export function Disabled() {
     />
   );
 }
+
+export { source as DisabledSource };

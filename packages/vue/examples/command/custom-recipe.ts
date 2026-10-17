@@ -1,3 +1,4 @@
+import source from "./custom-recipe.ts?raw";
 import { useListCollection } from "@ark-ui/vue/collection";
 import { useFilter } from "@ark-ui/vue/locale";
 import { commandRecipe } from "@pisagor/recipes";
@@ -111,3 +112,5 @@ export default defineComponent({
       );
   },
 });
+
+export { source };

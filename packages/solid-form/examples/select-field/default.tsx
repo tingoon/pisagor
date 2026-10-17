@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { SelectField } from "@pisagor/solid-form";
 import { countryOptions } from "../options";
 
@@ -12,3 +13,5 @@ export function Default() {
     />
   );
 }
+
+export { source as DefaultSource };

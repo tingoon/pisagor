@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./invalid.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Calendar, DatePicker } from "@pisagor/vue";
 import { defineComponent, h } from "vue";

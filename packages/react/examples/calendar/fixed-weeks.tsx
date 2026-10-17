@@ -1,3 +1,4 @@
+import source from "./fixed-weeks.tsx?raw";
 import { Calendar, Card } from "@pisagor/react";
 export function FixedWeeks() {
   return (
@@ -19,3 +20,5 @@ export function FixedWeeks() {
     </Card>
   );
 }
+
+export { source as FixedWeeksSource };

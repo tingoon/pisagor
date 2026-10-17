@@ -1,0 +1,89 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/separator/default.vue?raw";
+import VerticalSource from "#examples/vue/separator/vertical.vue?raw";
+import ListSource from "#examples/vue/separator/list.vue?raw";
+import InlineNavigationSource from "#examples/vue/separator/inline-navigation.vue?raw";
+import DecorativeSource from "#examples/vue/separator/decorative.vue?raw";
+import CustomRecipeSource from "#examples/vue/separator/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { Separator } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Divide related groups of content.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="separator"
+  framework="vue"
+  kind="component"
+/>
+
+### Vertical
+
+Use a vertical layout when the separator should read top to bottom.
+
+<Example
+  name="Vertical"
+  code={VerticalSource}
+  exampleId="separator"
+  framework="vue"
+  kind="component"
+/>
+
+### List
+
+Separate list sections so groups stay scannable.
+
+<Example
+  name="List"
+  code={ListSource}
+  exampleId="separator"
+  framework="vue"
+  kind="component"
+/>
+
+### Inline Navigation
+
+Separate inline nav items without looking like a heavy rule.
+
+<Example
+  name="InlineNavigation"
+  code={InlineNavigationSource}
+  exampleId="separator"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Decorative
+
+Hide purely visual separators from assistive technology.
+
+<Example
+  name="Decorative"
+  code={DecorativeSource}
+  exampleId="separator"
+  framework="vue"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `separatorRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="separator"
+  framework="vue"
+  kind="component"
+/>

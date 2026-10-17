@@ -1,3 +1,4 @@
+import source from "./panels.tsx?raw";
 import { AppShell } from "@pisagor/solid";
 import { mainContent, regionTitle } from "./helpers";
 
@@ -46,3 +47,5 @@ export function Panels() {
     </AppShell>
   );
 }
+
+export { source as PanelsSource };

@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./submenu.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { NavigationMenu } from "@pisagor/vue";
 </script>

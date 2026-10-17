@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./avatar-group.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { AvatarGroup } from "@pisagor/vue";
 

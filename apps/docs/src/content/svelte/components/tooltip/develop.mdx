@@ -1,0 +1,113 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/tooltip/default.svelte?raw";
+import WithKeyboardShortcutSource from "#examples/svelte/tooltip/with-keyboard-shortcut.svelte?raw";
+import WithoutArrowSource from "#examples/svelte/tooltip/without-arrow.svelte?raw";
+import CompoundSource from "#examples/svelte/tooltip/compound.svelte?raw";
+import DisabledSource from "#examples/svelte/tooltip/disabled.svelte?raw";
+import PlacementsSource from "#examples/svelte/tooltip/placements.svelte?raw";
+import CustomRecipeSource from "#examples/svelte/tooltip/custom-recipe.svelte?raw";
+
+## Import
+
+```ts
+import { Tooltip } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Default
+
+Explain a control briefly on hover or focus.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="tooltip"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Keyboard Shortcut
+
+Include the shortcut in the tooltip when keys reinforce the action.
+
+<Example
+  name="WithKeyboardShortcut"
+  code={WithKeyboardShortcutSource}
+  exampleId="tooltip"
+  framework="svelte"
+  kind="component"
+/>
+
+### Without Arrow
+
+Hide the arrow for a lighter, label-like tooltip.
+
+<Example
+  name="WithoutArrow"
+  code={WithoutArrowSource}
+  exampleId="tooltip"
+  framework="svelte"
+  kind="component"
+/>
+
+### Compound
+
+Compose `Tooltip.Root`, `Trigger`, `Positioner`, `Content` and `Arrow` for full control. The shorthand stays available.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="tooltip"
+  framework="svelte"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the tooltip is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="tooltip"
+  framework="svelte"
+  kind="component"
+/>
+
+### Placements
+
+Place the tooltip so it stays near the trigger without covering critical UI.
+
+<Example
+  name="Placements"
+  code={PlacementsSource}
+  exampleId="tooltip"
+  framework="svelte"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `tooltipRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="tooltip"
+  framework="svelte"
+  kind="component"
+/>
+
+## Accessibility
+
+Complies with the [Tooltip WAI-ARIA design pattern](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/) (via Ark UI).
+
+| Key    | Description                                                                        |
+| ------ | ---------------------------------------------------------------------------------- |
+| Tab    | Opens or closes the tooltip without delay when focus moves to or from the trigger. |
+| Escape | If open, closes the tooltip without delay.                                         |
+
+Icon-only triggers need an accessible name (`aria-label` or visible text).

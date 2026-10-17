@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./avatar-group.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { AvatarGroup } from "@pisagor/svelte";
 

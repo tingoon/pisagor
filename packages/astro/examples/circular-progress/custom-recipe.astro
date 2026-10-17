@@ -8,6 +8,8 @@ const brandCircularProgressRecipe = tv({
   slots: { range: "stroke-emerald-600" },
   variants: {},
 });
+import source from "./custom-recipe.astro?raw";
+export { source };
 ---
 
 <CircularProgress recipe={brandCircularProgressRecipe} value={66} />

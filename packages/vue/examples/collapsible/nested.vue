@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./nested.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Button, Card, Clipboard, Collapsible } from "@pisagor/vue";
 </script>

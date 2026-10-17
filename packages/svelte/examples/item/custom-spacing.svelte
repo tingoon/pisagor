@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./custom-spacing.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Item } from "@pisagor/svelte";
   import UserIcon from "phosphor-svelte/lib/UserIcon";

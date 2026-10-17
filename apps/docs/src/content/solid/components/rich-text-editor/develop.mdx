@@ -1,0 +1,89 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid/rich-text-editor/default.tsx";
+import { CompoundSource } from "#examples/solid/rich-text-editor/compound.tsx";
+import { ControlledSource } from "#examples/solid/rich-text-editor/controlled.tsx";
+import { DisabledSource } from "#examples/solid/rich-text-editor/disabled.tsx";
+import { InvalidSource } from "#examples/solid/rich-text-editor/invalid.tsx";
+import { CustomRecipeSource } from "#examples/solid/rich-text-editor/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { RichTextEditor } from "@pisagor/solid/rich-text-editor";
+```
+
+## Examples
+
+### Default
+
+Render the editor with a toolbar and starting content.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="rich-text-editor"
+  framework="solid"
+  kind="component"
+/>
+
+### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="rich-text-editor"
+  framework="solid"
+  kind="component"
+/>
+
+### Controlled
+
+Drive editor value from the parent when form state lives above.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="rich-text-editor"
+  framework="solid"
+  kind="component"
+/>
+
+### Disabled
+
+Show that editing is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="rich-text-editor"
+  framework="solid"
+  kind="component"
+/>
+
+### Invalid
+
+Surface a validation error when content is missing or not allowed.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="rich-text-editor"
+  framework="solid"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `richTextEditorRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="rich-text-editor"
+  framework="solid"
+  kind="component"
+/>

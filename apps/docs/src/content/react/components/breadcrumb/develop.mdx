@@ -1,0 +1,102 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/breadcrumb/default.tsx";
+import { CollapsedSource } from "#examples/react/breadcrumb/collapsed.tsx";
+import { CustomSeparatorSource } from "#examples/react/breadcrumb/custom-separator.tsx";
+import { CompoundSource } from "#examples/react/breadcrumb/compound.tsx";
+import { WithMenuSource } from "#examples/react/breadcrumb/with-menu.tsx";
+import { WithLinkSource } from "#examples/react/breadcrumb/with-link.tsx";
+import { CustomRecipeSource } from "#examples/react/breadcrumb/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Breadcrumb } from "@pisagor/react";
+```
+
+## Examples
+
+### Default
+
+The full path from root to the current page.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="breadcrumb"
+  framework="react"
+  kind="component"
+/>
+
+### Collapsed
+
+Collapse middle segments when the path is long so the current page stays visible.
+
+<Example
+  name="Collapsed"
+  code={CollapsedSource}
+  exampleId="breadcrumb"
+  framework="react"
+  kind="component"
+/>
+
+### Custom Separator
+
+Replace the default separator when brand or locale needs a different divider.
+
+<Example
+  name="CustomSeparator"
+  code={CustomSeparatorSource}
+  exampleId="breadcrumb"
+  framework="react"
+  kind="component"
+/>
+
+### Compound
+
+Compose items and separators from parts for a custom breadcrumb layout.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="breadcrumb"
+  framework="react"
+  kind="component"
+/>
+
+### With Menu
+
+Park overflow ancestors in a menu when the path cannot show every level.
+
+<Example
+  name="WithMenu"
+  code={WithMenuSource}
+  exampleId="breadcrumb"
+  framework="react"
+  kind="component"
+/>
+
+### As child
+
+Link ancestors so users can jump back through the hierarchy.
+
+<Example
+  name="WithLink"
+  code={WithLinkSource}
+  exampleId="breadcrumb"
+  framework="react"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `breadcrumbRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="breadcrumb"
+  framework="react"
+  kind="component"
+/>

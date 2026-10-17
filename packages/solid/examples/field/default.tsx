@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Field, Input } from "@pisagor/solid";
 
 export function Default() {
@@ -9,3 +10,5 @@ export function Default() {
     </Field>
   );
 }
+
+export { source as DefaultSource };

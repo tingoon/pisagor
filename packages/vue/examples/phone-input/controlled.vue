@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./controlled.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Field } from "@pisagor/vue";
 import { PhoneInput } from "@pisagor/vue/phone-input";

@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./trigger.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhPaperclip } from "@phosphor-icons/vue";
 import { Button, FileUpload } from "@pisagor/vue";

@@ -1,3 +1,4 @@
+import source from "./with-presets.tsx?raw";
 import { Button, Calendar, DatePicker, parseDate } from "@pisagor/solid";
 import { CalendarIcon } from "@pisagor/solid/icons";
 export function WithPresets() {
@@ -61,3 +62,5 @@ export function WithPresets() {
     </DatePicker>
   );
 }
+
+export { source as WithPresetsSource };

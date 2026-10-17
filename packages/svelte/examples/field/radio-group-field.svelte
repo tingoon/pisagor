@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./radio-group-field.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Field, RadioGroup } from "@pisagor/svelte";
 </script>

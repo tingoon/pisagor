@@ -1,3 +1,4 @@
+import source from "./edge-handle.tsx?raw";
 import { Resizable } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
@@ -48,3 +49,5 @@ export function EdgeHandle() {
     </ResizableFrame>
   );
 }
+
+export { source as EdgeHandleSource };

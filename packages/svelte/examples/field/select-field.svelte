@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./select-field.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { createListCollection } from "@ark-ui/svelte/collection";
   import { Field, Select } from "@pisagor/svelte";

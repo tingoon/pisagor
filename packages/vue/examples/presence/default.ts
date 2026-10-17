@@ -1,3 +1,4 @@
+import source from "./default.ts?raw";
 import { cn } from "@pisagor/utils";
 import { Button, Presence } from "@pisagor/vue";
 import { defineComponent, h, ref } from "vue";
@@ -38,3 +39,5 @@ export default defineComponent({
       ]);
   },
 });
+
+export { source };

@@ -1,3 +1,4 @@
+import source from "./with-card.tsx?raw";
 import { Accordion, Card } from "@pisagor/solid";
 import { faqItems } from "./helpers";
 
@@ -14,3 +15,5 @@ export function WithCard() {
     </Card>
   );
 }
+
+export { source as WithCardSource };

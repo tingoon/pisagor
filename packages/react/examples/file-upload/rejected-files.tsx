@@ -1,3 +1,4 @@
+import source from "./rejected-files.tsx?raw";
 import { FileUpload } from "@pisagor/react";
 
 export function RejectedFiles() {
@@ -12,3 +13,5 @@ export function RejectedFiles() {
     </FileUpload>
   );
 }
+
+export { source as RejectedFilesSource };

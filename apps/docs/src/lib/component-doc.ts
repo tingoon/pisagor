@@ -1,11 +1,12 @@
+import { getCollection, getEntry, render } from "astro:content";
 import type { ComponentDocs } from "./component-docs-types";
 import type { Framework } from "./nav";
 import type { PropRow } from "./props/types";
 
-/** Astro markdown module from docs content. */
+/** Astro markdown/MDX module from docs content panes. */
 export type SkillMdModule = {
   // Astro component factory (not a framework UI component).
-  Content: (props?: Record<string, unknown>) => unknown;
+  Content: (...args: never[]) => unknown;
   frontmatter: ComponentDocs;
   getHeadings: () => { depth: number; slug: string; text: string }[];
 };
@@ -73,125 +74,108 @@ const PROPS_FILE_ALIASES: Record<string, string> = {
   "textarea-field": "textarea",
 };
 
-type PaneModules = Record<string, () => Promise<SkillMdModule>>;
+type CollectionName =
+  | "astroComponents"
+  | "reactComponents"
+  | "reactForms"
+  | "solidComponents"
+  | "solidForms"
+  | "svelteComponents"
+  | "svelteForms"
+  | "vueComponents"
+  | "vueForms";
 
-/**
- * Per-framework docs —
- * `content/<fw>/{components,forms}/<id>/{metadata,design,develop}.md`. Every
- * framework owns its copy so each URL tree only shows that library's content.
- */
+type PaneMdxModule = {
+  default: (props?: Record<string, unknown>) => unknown;
+  frontmatter?: Record<string, unknown>;
+  getHeadings?: () => { depth: number; slug: string; text: string }[];
+};
+
+type PaneModules = Record<string, () => Promise<PaneMdxModule>>;
+
 type FrameworkPaneGlobs = {
   design: PaneModules;
   develop: PaneModules;
-  metadata: PaneModules;
 };
 
 const componentPanesByFramework: Record<Framework, FrameworkPaneGlobs> = {
   astro: {
-    design: import.meta.glob<SkillMdModule>(
-      "../content/astro/components/*/design.md",
+    design: import.meta.glob<PaneMdxModule>(
+      "../content/astro/components/*/design.mdx",
     ),
-    develop: import.meta.glob<SkillMdModule>(
-      "../content/astro/components/*/develop.md",
-    ),
-    metadata: import.meta.glob<SkillMdModule>(
-      "../content/astro/components/*/metadata.md",
+    develop: import.meta.glob<PaneMdxModule>(
+      "../content/astro/components/*/develop.mdx",
     ),
   },
   react: {
-    design: import.meta.glob<SkillMdModule>(
-      "../content/react/components/*/design.md",
+    design: import.meta.glob<PaneMdxModule>(
+      "../content/react/components/*/design.mdx",
     ),
-    develop: import.meta.glob<SkillMdModule>(
-      "../content/react/components/*/develop.md",
-    ),
-    metadata: import.meta.glob<SkillMdModule>(
-      "../content/react/components/*/metadata.md",
+    develop: import.meta.glob<PaneMdxModule>(
+      "../content/react/components/*/develop.mdx",
     ),
   },
   solid: {
-    design: import.meta.glob<SkillMdModule>(
-      "../content/solid/components/*/design.md",
+    design: import.meta.glob<PaneMdxModule>(
+      "../content/solid/components/*/design.mdx",
     ),
-    develop: import.meta.glob<SkillMdModule>(
-      "../content/solid/components/*/develop.md",
-    ),
-    metadata: import.meta.glob<SkillMdModule>(
-      "../content/solid/components/*/metadata.md",
+    develop: import.meta.glob<PaneMdxModule>(
+      "../content/solid/components/*/develop.mdx",
     ),
   },
   svelte: {
-    design: import.meta.glob<SkillMdModule>(
-      "../content/svelte/components/*/design.md",
+    design: import.meta.glob<PaneMdxModule>(
+      "../content/svelte/components/*/design.mdx",
     ),
-    develop: import.meta.glob<SkillMdModule>(
-      "../content/svelte/components/*/develop.md",
-    ),
-    metadata: import.meta.glob<SkillMdModule>(
-      "../content/svelte/components/*/metadata.md",
+    develop: import.meta.glob<PaneMdxModule>(
+      "../content/svelte/components/*/develop.mdx",
     ),
   },
   vue: {
-    design: import.meta.glob<SkillMdModule>(
-      "../content/vue/components/*/design.md",
+    design: import.meta.glob<PaneMdxModule>(
+      "../content/vue/components/*/design.mdx",
     ),
-    develop: import.meta.glob<SkillMdModule>(
-      "../content/vue/components/*/develop.md",
-    ),
-    metadata: import.meta.glob<SkillMdModule>(
-      "../content/vue/components/*/metadata.md",
+    develop: import.meta.glob<PaneMdxModule>(
+      "../content/vue/components/*/develop.mdx",
     ),
   },
 };
 
 const formPanesByFramework: Partial<Record<Framework, FrameworkPaneGlobs>> = {
   react: {
-    design: import.meta.glob<SkillMdModule>(
-      "../content/react/forms/*/design.md",
+    design: import.meta.glob<PaneMdxModule>(
+      "../content/react/forms/*/design.mdx",
     ),
-    develop: import.meta.glob<SkillMdModule>(
-      "../content/react/forms/*/develop.md",
-    ),
-    metadata: import.meta.glob<SkillMdModule>(
-      "../content/react/forms/*/metadata.md",
+    develop: import.meta.glob<PaneMdxModule>(
+      "../content/react/forms/*/develop.mdx",
     ),
   },
   solid: {
-    design: import.meta.glob<SkillMdModule>(
-      "../content/solid/forms/*/design.md",
+    design: import.meta.glob<PaneMdxModule>(
+      "../content/solid/forms/*/design.mdx",
     ),
-    develop: import.meta.glob<SkillMdModule>(
-      "../content/solid/forms/*/develop.md",
-    ),
-    metadata: import.meta.glob<SkillMdModule>(
-      "../content/solid/forms/*/metadata.md",
+    develop: import.meta.glob<PaneMdxModule>(
+      "../content/solid/forms/*/develop.mdx",
     ),
   },
   svelte: {
-    design: import.meta.glob<SkillMdModule>(
-      "../content/svelte/forms/*/design.md",
+    design: import.meta.glob<PaneMdxModule>(
+      "../content/svelte/forms/*/design.mdx",
     ),
-    develop: import.meta.glob<SkillMdModule>(
-      "../content/svelte/forms/*/develop.md",
-    ),
-    metadata: import.meta.glob<SkillMdModule>(
-      "../content/svelte/forms/*/metadata.md",
+    develop: import.meta.glob<PaneMdxModule>(
+      "../content/svelte/forms/*/develop.mdx",
     ),
   },
   vue: {
-    design: import.meta.glob<SkillMdModule>("../content/vue/forms/*/design.md"),
-    develop: import.meta.glob<SkillMdModule>(
-      "../content/vue/forms/*/develop.md",
+    design: import.meta.glob<PaneMdxModule>(
+      "../content/vue/forms/*/design.mdx",
     ),
-    metadata: import.meta.glob<SkillMdModule>(
-      "../content/vue/forms/*/metadata.md",
+    develop: import.meta.glob<PaneMdxModule>(
+      "../content/vue/forms/*/develop.mdx",
     ),
   },
 };
 
-// Lazy example modules — one id per page.
-// Astro SSR previews need live components (`index.ts`); other frameworks only
-// need code sources (`sources.ts`) — client islands load `index.ts` separately.
 type ExampleLoaderMap = Record<string, () => Promise<ExampleModule>>;
 
 const examplesByFramework: Record<Framework, ExampleLoaderMap> = {
@@ -226,37 +210,96 @@ const formExamplesByFramework: Partial<Record<Framework, ExampleLoaderMap>> = {
     "../../../../packages/vue-form/examples/*/sources.ts",
   ),
 };
+
 const propsModules = import.meta.glob<Record<string, unknown>>(
   "./props/*.gen.ts",
-  {
-    eager: true,
-  },
+  { eager: true },
 );
+
+const paneRawByFramework: Record<Framework, Record<string, string>> = {
+  astro: import.meta.glob(
+    "../content/astro/components/*/{design,develop}.mdx",
+    {
+      eager: true,
+      import: "default",
+      query: "?raw",
+    },
+  ) as Record<string, string>,
+  react: {
+    ...(import.meta.glob("../content/react/components/*/{design,develop}.mdx", {
+      eager: true,
+      import: "default",
+      query: "?raw",
+    }) as Record<string, string>),
+    ...(import.meta.glob("../content/react/forms/*/{design,develop}.mdx", {
+      eager: true,
+      import: "default",
+      query: "?raw",
+    }) as Record<string, string>),
+  },
+  solid: {
+    ...(import.meta.glob("../content/solid/components/*/{design,develop}.mdx", {
+      eager: true,
+      import: "default",
+      query: "?raw",
+    }) as Record<string, string>),
+    ...(import.meta.glob("../content/solid/forms/*/{design,develop}.mdx", {
+      eager: true,
+      import: "default",
+      query: "?raw",
+    }) as Record<string, string>),
+  },
+  svelte: {
+    ...(import.meta.glob(
+      "../content/svelte/components/*/{design,develop}.mdx",
+      { eager: true, import: "default", query: "?raw" },
+    ) as Record<string, string>),
+    ...(import.meta.glob("../content/svelte/forms/*/{design,develop}.mdx", {
+      eager: true,
+      import: "default",
+      query: "?raw",
+    }) as Record<string, string>),
+  },
+  vue: {
+    ...(import.meta.glob("../content/vue/components/*/{design,develop}.mdx", {
+      eager: true,
+      import: "default",
+      query: "?raw",
+    }) as Record<string, string>),
+    ...(import.meta.glob("../content/vue/forms/*/{design,develop}.mdx", {
+      eager: true,
+      import: "default",
+      query: "?raw",
+    }) as Record<string, string>),
+  },
+};
 
 function toCamelCase(id: string): string {
   return id.replace(/-([a-z])/g, (_, char: string) => char.toUpperCase());
 }
 
-type PaneFile = "design" | "develop" | "metadata";
-
 function contentArea(kind: ComponentDocKind): "components" | "forms" {
   return kind === "form" ? "forms" : "components";
 }
 
-/** Develop doc `…/content/<fw>/{components,forms}/<id>/develop.md`. */
-function idFromDevelopPath(path: string): string | undefined {
-  return /\/content\/[^/]+\/(?:components|forms)\/([^/]+)\/develop\.md$/.exec(
-    path,
-  )?.[1];
+function collectionName(
+  framework: Framework,
+  kind: ComponentDocKind,
+): CollectionName | undefined {
+  if (kind === "form") {
+    if (framework === "astro") return undefined;
+    return `${framework}Forms` as CollectionName;
+  }
+  return `${framework}Components` as CollectionName;
 }
 
 function panePathSuffix(
   framework: Framework,
   id: string,
   kind: ComponentDocKind,
-  pane: PaneFile,
+  pane: SkillPaneId,
 ): string {
-  return `/content/${framework}/${contentArea(kind)}/${id}/${pane}.md`;
+  return `/content/${framework}/${contentArea(kind)}/${id}/${pane}.mdx`;
 }
 
 function findGlobKey(
@@ -269,7 +312,7 @@ function findGlobKey(
 function paneModules(
   framework: Framework,
   kind: ComponentDocKind,
-  pane: PaneFile,
+  pane: SkillPaneId,
 ): PaneModules | undefined {
   const globs =
     kind === "form"
@@ -282,39 +325,37 @@ function paneLoader(
   framework: Framework,
   id: string,
   kind: ComponentDocKind,
-  pane: PaneFile,
-): (() => Promise<SkillMdModule>) | undefined {
+  pane: SkillPaneId,
+): (() => Promise<PaneMdxModule>) | undefined {
   const modules = paneModules(framework, kind, pane);
   if (!modules) return undefined;
   const key = findGlobKey(modules, panePathSuffix(framework, id, kind, pane));
   return key ? modules[key] : undefined;
 }
 
-async function loadPane(
-  loader: () => Promise<SkillMdModule>,
+async function loadPaneMdx(
+  loader: () => Promise<PaneMdxModule>,
+  frontmatter: ComponentDocs,
 ): Promise<SkillMdModule> {
   const mod = await loader();
   return {
-    Content: mod.Content,
-    frontmatter: mod.frontmatter as ComponentDocs,
-    getHeadings: mod.getHeadings,
+    Content: mod.default,
+    frontmatter,
+    getHeadings: mod.getHeadings ?? (() => []),
   };
 }
 
-/** Component ids from `content/<fw>/{components,forms}/<id>/develop.md`. */
-export function listComponentIds(
+/** Component ids from content collection meta files. */
+export async function listComponentIds(
   framework: Framework,
   kind: ComponentDocKind = "component",
-): string[] {
-  const modules = paneModules(framework, kind, "develop");
-  if (!modules) return [];
-  const ids = new Set(
-    Object.keys(modules)
-      .map(idFromDevelopPath)
-      .filter((id): id is string => Boolean(id)),
-  );
-  return [...ids].sort();
+): Promise<string[]> {
+  const name = collectionName(framework, kind);
+  if (!name) return [];
+  const entries = await getCollection(name);
+  return entries.map((entry) => entry.id).sort();
 }
+
 export function defaultPackageName(
   framework: Framework,
   kind: ComponentDocKind = "component",
@@ -330,18 +371,24 @@ export async function loadSkillMd(
   id: string,
   kind: ComponentDocKind = "component",
 ): Promise<SkillMdModule> {
-  if (!hasDevelopDoc(framework, id, kind)) {
-    throw new Error(`Missing ${framework} develop docs for "${id}" (${kind})`);
+  const name = collectionName(framework, kind);
+  if (!name) {
+    throw new Error(`No collection for ${framework}/${kind}`);
   }
-  const loader = paneLoader(framework, id, kind, "metadata");
-  if (!loader) {
-    throw new Error(`Missing ${framework} metadata for "${id}" (${kind})`);
+  const entry = await getEntry(name, id);
+  if (!entry) {
+    throw new Error(`Missing ${framework} meta for "${id}" (${kind})`);
   }
-  return loadPane(loader);
+  const { Content, headings } = await render(entry);
+  return {
+    Content,
+    frontmatter: entry.data as ComponentDocs,
+    getHeadings: () => headings,
+  };
 }
 
-/** True when `content/<fw>/{components,forms}/<id>/develop.md` exists. */
-function hasDevelopDoc(
+/** True when develop MDX exists for the id. */
+export function hasDevelopDoc(
   framework: Framework,
   id: string,
   kind: ComponentDocKind = "component",
@@ -357,13 +404,33 @@ export async function loadSkillPanes(
 ): Promise<SkillPanes> {
   if (!hasDevelopDoc(framework, id, kind)) return {};
 
+  const { frontmatter } = await loadSkillMd(framework, id, kind);
   const panes: SkillPanes = {};
   for (const pane of ["develop", "design"] as const) {
     const loader = paneLoader(framework, id, kind, pane);
-    if (loader) panes[pane] = await loadPane(loader);
+    if (loader) panes[pane] = await loadPaneMdx(loader, frontmatter);
   }
   return panes;
 }
+
+/** Raw MDX body for TOC / tooling (no frontmatter required). */
+export function findDisplayedSkillBody(
+  framework: Framework,
+  id: string,
+  pane: SkillPaneId,
+  kind: ComponentDocKind = "component",
+): string {
+  const suffix = panePathSuffix(framework, id, kind, pane);
+  const raw = paneRawByFramework[framework];
+  const key = findGlobKey(raw, suffix);
+  if (!key) return "";
+  const text = raw[key];
+  if (typeof text !== "string") return "";
+  if (!text.startsWith("---")) return text.trim();
+  const match = /^---\r?\n[\s\S]*?\r?\n---\r?\n?([\s\S]*)$/.exec(text);
+  return (match?.[1] ?? text).trim();
+}
+
 const DOC_TAB_LABELS: Record<SkillPaneId, string> = {
   design: "Design",
   develop: "Develop",
@@ -395,7 +462,7 @@ export async function listComponentTabStaticPaths(
   framework: Framework,
   kind: ComponentDocKind = "component",
 ): Promise<{ params: { id: string; tab: SkillPaneId } }[]> {
-  const ids = listComponentIds(framework, kind);
+  const ids = await listComponentIds(framework, kind);
   const paths: { params: { id: string; tab: SkillPaneId } }[] = [];
   for (const id of ids) {
     const tabs = await listComponentDocTabs(framework, id, kind);
@@ -464,4 +531,15 @@ export function getExampleExport(
     throw new Error(`Missing example export "${exportName}"`);
   }
   return Comp;
+}
+
+/** Example export names referenced in develop MDX (`<Example name="…" />`). */
+export function extractExampleNames(developBody: string): string[] {
+  const names: string[] = [];
+  const re = /<Example\b[^>]*\bname=["']([^"']+)["']/g;
+  for (const match of developBody.matchAll(re)) {
+    const name = match[1];
+    if (name && !names.includes(name)) names.push(name);
+  }
+  return names;
 }

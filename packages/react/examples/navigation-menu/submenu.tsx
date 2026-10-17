@@ -1,3 +1,4 @@
+import source from "./submenu.tsx?raw";
 import { NavigationMenu } from "@pisagor/react";
 
 export function Submenu() {
@@ -34,3 +35,5 @@ export function Submenu() {
     </NavigationMenu>
   );
 }
+
+export { source as SubmenuSource };

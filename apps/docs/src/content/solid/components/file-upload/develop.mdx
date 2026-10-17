@@ -1,0 +1,223 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid/file-upload/default.tsx";
+import { VariantsSource } from "#examples/solid/file-upload/variants.tsx";
+import { DropzoneSource } from "#examples/solid/file-upload/dropzone.tsx";
+import { TriggerSource } from "#examples/solid/file-upload/trigger.tsx";
+import { MultipleFilesSource } from "#examples/solid/file-upload/multiple-files.tsx";
+import { AcceptedFileTypesSource } from "#examples/solid/file-upload/accepted-file-types.tsx";
+import { DirectoryUploadSource } from "#examples/solid/file-upload/directory-upload.tsx";
+import { MediaCaptureSource } from "#examples/solid/file-upload/media-capture.tsx";
+import { CustomPreviewSource } from "#examples/solid/file-upload/custom-preview.tsx";
+import { ClearTriggerSource } from "#examples/solid/file-upload/clear-trigger.tsx";
+import { RejectedFilesSource } from "#examples/solid/file-upload/rejected-files.tsx";
+import { DisabledSource } from "#examples/solid/file-upload/disabled.tsx";
+import { InvalidSource } from "#examples/solid/file-upload/invalid.tsx";
+import { CustomSpacingSource } from "#examples/solid/file-upload/custom-spacing.tsx";
+import { CustomRecipeSource } from "#examples/solid/file-upload/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { FileUpload } from "@pisagor/solid";
+```
+
+## Anatomy
+
+```tsx
+<FileUpload>
+  <FileUpload.Dropzone>
+    <FileUpload.DropzoneIcon />
+    <FileUpload.Title />
+    <FileUpload.Description />
+    <FileUpload.Trigger />
+    <FileUpload.Helper />
+  </FileUpload.Dropzone>
+  <FileUpload.List />
+</FileUpload>
+```
+
+## Examples
+
+### Default
+
+Choose files with a dropzone and file picker.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="file-upload"
+  framework="solid"
+  kind="component"
+/>
+
+### Variants
+
+Choose upload surface emphasis to match the form.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="file-upload"
+  framework="solid"
+  kind="component"
+/>
+
+### Dropzone
+
+Emphasize drag-and-drop as the primary way to add files.
+
+<Example
+  name="Dropzone"
+  code={DropzoneSource}
+  exampleId="file-upload"
+  framework="solid"
+  kind="component"
+/>
+
+### Trigger
+
+Open the file picker from an explicit trigger control.
+
+<Example
+  name="Trigger"
+  code={TriggerSource}
+  exampleId="file-upload"
+  framework="solid"
+  kind="component"
+/>
+
+### Multiple Files
+
+Allow more than one file in a single upload.
+
+<Example
+  name="MultipleFiles"
+  code={MultipleFilesSource}
+  exampleId="file-upload"
+  framework="solid"
+  kind="component"
+/>
+
+### Accepted File Types
+
+Limit selectable types so users only pick suitable files.
+
+<Example
+  name="AcceptedFileTypes"
+  code={AcceptedFileTypesSource}
+  exampleId="file-upload"
+  framework="solid"
+  kind="component"
+/>
+
+### Directory Upload
+
+Accept a folder when bulk directory import is required.
+
+<Example
+  name="DirectoryUpload"
+  code={DirectoryUploadSource}
+  exampleId="file-upload"
+  framework="solid"
+  kind="component"
+/>
+
+### Media Capture
+
+Capture from camera or microphone when device media is the source.
+
+<Example
+  name="MediaCapture"
+  code={MediaCaptureSource}
+  exampleId="file-upload"
+  framework="solid"
+  kind="component"
+/>
+
+### Custom Preview
+
+Customize previews when default thumbnails are not enough.
+
+<Example
+  name="CustomPreview"
+  code={CustomPreviewSource}
+  exampleId="file-upload"
+  framework="solid"
+  kind="component"
+/>
+
+### Clear Trigger
+
+Clear selected files in one action.
+
+<Example
+  name="ClearTrigger"
+  code={ClearTriggerSource}
+  exampleId="file-upload"
+  framework="solid"
+  kind="component"
+/>
+
+### Rejected Files
+
+`FileUpload.List` also lists rejected files with their validation errors, so users can see why a file was not accepted.
+
+<Example
+  name="RejectedFiles"
+  code={RejectedFilesSource}
+  exampleId="file-upload"
+  framework="solid"
+  kind="component"
+/>
+
+### Disabled
+
+Show that upload is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="file-upload"
+  framework="solid"
+  kind="component"
+/>
+
+### Invalid
+
+Surface rejected files or validation errors.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="file-upload"
+  framework="solid"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Adjust spacing for denser or roomier upload regions.
+
+<Example
+  name="CustomSpacing"
+  code={CustomSpacingSource}
+  exampleId="file-upload"
+  framework="solid"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `fileUploadRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="file-upload"
+  framework="solid"
+  kind="component"
+/>

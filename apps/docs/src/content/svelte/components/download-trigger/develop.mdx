@@ -1,0 +1,48 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/download-trigger/default.svelte?raw";
+import DownloadSvgSource from "#examples/svelte/download-trigger/download-svg.svelte?raw";
+import WithPromiseSource from "#examples/svelte/download-trigger/with-promise.svelte?raw";
+
+## Import
+
+```ts
+import { DownloadTrigger } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Default
+
+Start a download from a control without navigating away.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="download-trigger"
+  framework="svelte"
+  kind="component"
+/>
+
+### Download Svg
+
+Download SVG content when the file is vector markup.
+
+<Example
+  name="DownloadSvg"
+  code={DownloadSvgSource}
+  exampleId="download-trigger"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Promise
+
+Resolve a promise for the file payload when generation is asynchronous.
+
+<Example
+  name="WithPromise"
+  code={WithPromiseSource}
+  exampleId="download-trigger"
+  framework="svelte"
+  kind="component"
+/>

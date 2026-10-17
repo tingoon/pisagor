@@ -1,3 +1,4 @@
+import source from "./disabled-field.tsx?raw";
 import { Field, Input } from "@pisagor/solid";
 export function DisabledField() {
   return (
@@ -10,3 +11,5 @@ export function DisabledField() {
     </Field>
   );
 }
+
+export { source as DisabledFieldSource };

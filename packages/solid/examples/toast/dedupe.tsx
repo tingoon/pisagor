@@ -1,3 +1,4 @@
+import source from "./dedupe.tsx?raw";
 import { Button, toast } from "@pisagor/solid";
 export function Dedupe() {
   return (
@@ -28,3 +29,5 @@ export function Dedupe() {
     </div>
   );
 }
+
+export { source as DedupeSource };

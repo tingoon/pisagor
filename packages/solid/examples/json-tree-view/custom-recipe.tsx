@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { jsonTreeViewRecipe } from "@pisagor/recipes";
 import { JsonTreeView } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -20,3 +21,5 @@ export function CustomRecipe() {
     />
   );
 }
+
+export { source as CustomRecipeSource };

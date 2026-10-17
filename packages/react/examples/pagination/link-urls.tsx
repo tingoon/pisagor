@@ -1,3 +1,4 @@
+import source from "./link-urls.tsx?raw";
 import { Pagination } from "@pisagor/react";
 
 export function LinkUrls() {
@@ -15,3 +16,5 @@ export function LinkUrls() {
     </Pagination>
   );
 }
+
+export { source as LinkUrlsSource };

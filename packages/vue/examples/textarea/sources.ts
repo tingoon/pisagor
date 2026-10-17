@@ -1,21 +1,21 @@
-import autoresizeRaw from "./autoresize.vue?raw";
-import clearableRaw from "./clearable.vue?raw";
-import controlledRaw from "./controlled.vue?raw";
-import custom_recipeRaw from "./custom-recipe.vue?raw";
-import disabledRaw from "./disabled.vue?raw";
-import invalidRaw from "./invalid.vue?raw";
-import sizesRaw from "./sizes.vue?raw";
-import variantsRaw from "./variants.vue?raw";
+import Autoresize from "./autoresize.vue?raw";
+import Clearable from "./clearable.vue?raw";
+import Controlled from "./controlled.vue?raw";
+import CustomRecipe from "./custom-recipe.vue?raw";
+import Disabled from "./disabled.vue?raw";
+import Invalid from "./invalid.vue?raw";
+import Sizes from "./sizes.vue?raw";
+import Variants from "./variants.vue?raw";
 
 export const imports = `import { Textarea } from "@pisagor/vue";`;
 
 export const sources = {
-  Autoresize: autoresizeRaw,
-  Clearable: clearableRaw,
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Disabled: disabledRaw,
-  Invalid: invalidRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
+  Autoresize,
+  Clearable,
+  Controlled,
+  CustomRecipe,
+  Disabled,
+  Invalid,
+  Sizes,
+  Variants,
 } as const;

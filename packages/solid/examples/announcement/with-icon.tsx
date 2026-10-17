@@ -1,3 +1,4 @@
+import source from "./with-icon.tsx?raw";
 import { Announcement, Badge } from "@pisagor/solid";
 import { SparkleIcon } from "@pisagor/solid/icons";
 export function WithIcon() {
@@ -13,3 +14,5 @@ export function WithIcon() {
     />
   );
 }
+
+export { source as WithIconSource };

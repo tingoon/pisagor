@@ -1,3 +1,4 @@
+import source from "./icon-group.tsx?raw";
 import { Toggle } from "@pisagor/solid";
 import {
   TextBIcon,
@@ -20,3 +21,5 @@ export function IconGroup() {
     </div>
   );
 }
+
+export { source as IconGroupSource };

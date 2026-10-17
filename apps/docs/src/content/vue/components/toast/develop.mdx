@@ -1,0 +1,113 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/toast/default.vue?raw";
+import VariantsSource from "#examples/vue/toast/variants.vue?raw";
+import ActionSource from "#examples/vue/toast/action.vue?raw";
+import WithPromiseSource from "#examples/vue/toast/with-promise.vue?raw";
+import DurationSource from "#examples/vue/toast/duration.vue?raw";
+import ClosableSource from "#examples/vue/toast/closable.vue?raw";
+import DedupeSource from "#examples/vue/toast/dedupe.vue?raw";
+import PlacementsSource from "#examples/vue/toast/placements.vue?raw";
+
+## Import
+
+```ts
+import { Toast } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Brief feedback that appears and dismisses after an action.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="toast"
+  framework="vue"
+  kind="component"
+/>
+
+### Variants
+
+Choose visual weight or emphasis so the toast matches importance in the surrounding layout.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="toast"
+  framework="vue"
+  kind="component"
+/>
+
+### Action
+
+Offer a follow-up action when the message leads somewhere.
+
+<Example
+  name="Action"
+  code={ActionSource}
+  exampleId="toast"
+  framework="vue"
+  kind="component"
+/>
+
+### With Promise
+
+Tie the toast to a promise so pending, success, and error states stay in sync.
+
+<Example
+  name="WithPromise"
+  code={WithPromiseSource}
+  exampleId="toast"
+  framework="vue"
+  kind="component"
+/>
+
+### Duration
+
+Control how long the toast stays visible.
+
+<Example
+  name="Duration"
+  code={DurationSource}
+  exampleId="toast"
+  framework="vue"
+  kind="component"
+/>
+
+### Closable
+
+Let users dismiss the toast before it expires.
+
+<Example
+  name="Closable"
+  code={ClosableSource}
+  exampleId="toast"
+  framework="vue"
+  kind="component"
+/>
+
+### Dedupe
+
+Prevent duplicate toasts when the same message would otherwise stack.
+
+<Example
+  name="Dedupe"
+  code={DedupeSource}
+  exampleId="toast"
+  framework="vue"
+  kind="component"
+/>
+
+### Placements
+
+Choose placement so the toast stays near its trigger without covering critical content.
+
+<Example
+  name="Placements"
+  code={PlacementsSource}
+  exampleId="toast"
+  framework="vue"
+  kind="component"
+/>

@@ -1,3 +1,4 @@
+import source from "./disabled.tsx?raw";
 import { InputGroup } from "@pisagor/solid";
 import { MagnifyingGlassIcon } from "@pisagor/solid/icons";
 
@@ -11,3 +12,5 @@ export function Disabled() {
     </InputGroup>
   );
 }
+
+export { source as DisabledSource };

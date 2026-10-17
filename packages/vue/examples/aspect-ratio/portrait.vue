@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./portrait.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { AspectRatio } from "@pisagor/vue";
 </script>

@@ -1,21 +1,21 @@
-import autoresizeRaw from "./autoresize.svelte?raw";
-import clearableRaw from "./clearable.svelte?raw";
-import controlledRaw from "./controlled.svelte?raw";
-import custom_recipeRaw from "./custom-recipe.svelte?raw";
-import disabledRaw from "./disabled.svelte?raw";
-import invalidRaw from "./invalid.svelte?raw";
-import sizesRaw from "./sizes.svelte?raw";
-import variantsRaw from "./variants.svelte?raw";
+import Autoresize from "./autoresize.svelte?raw";
+import Clearable from "./clearable.svelte?raw";
+import Controlled from "./controlled.svelte?raw";
+import CustomRecipe from "./custom-recipe.svelte?raw";
+import Disabled from "./disabled.svelte?raw";
+import Invalid from "./invalid.svelte?raw";
+import Sizes from "./sizes.svelte?raw";
+import Variants from "./variants.svelte?raw";
 
 export const imports = `import { Textarea } from "@pisagor/svelte";`;
 
 export const sources = {
-  Autoresize: autoresizeRaw,
-  Clearable: clearableRaw,
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Disabled: disabledRaw,
-  Invalid: invalidRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
+  Autoresize,
+  Clearable,
+  Controlled,
+  CustomRecipe,
+  Disabled,
+  Invalid,
+  Sizes,
+  Variants,
 } as const;

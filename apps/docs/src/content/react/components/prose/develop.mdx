@@ -1,0 +1,323 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/prose/default.tsx";
+import { ASource } from "#examples/react/prose/a.tsx";
+import { BlockquoteSource } from "#examples/react/prose/blockquote.tsx";
+import { DetailsSource } from "#examples/react/prose/details.tsx";
+import { DlSource } from "#examples/react/prose/dl.tsx";
+import { H1Source } from "#examples/react/prose/h1.tsx";
+import { H2Source } from "#examples/react/prose/h2.tsx";
+import { H3Source } from "#examples/react/prose/h3.tsx";
+import { H4Source } from "#examples/react/prose/h4.tsx";
+import { H5Source } from "#examples/react/prose/h5.tsx";
+import { H6Source } from "#examples/react/prose/h6.tsx";
+import { HtmlSource } from "#examples/react/prose/html.tsx";
+import { HtmlTableSource } from "#examples/react/prose/html-table.tsx";
+import { InlineCodeSource } from "#examples/react/prose/inline-code.tsx";
+import { KbdSource } from "#examples/react/prose/kbd.tsx";
+import { ListSource } from "#examples/react/prose/list.tsx";
+import { MarkSource } from "#examples/react/prose/mark.tsx";
+import { MediaSource } from "#examples/react/prose/media.tsx";
+import { NotProseSource } from "#examples/react/prose/not-prose.tsx";
+import { OlSource } from "#examples/react/prose/ol.tsx";
+import { PSource } from "#examples/react/prose/p.tsx";
+import { SeparatorSource } from "#examples/react/prose/separator.tsx";
+import { SmallSource } from "#examples/react/prose/small.tsx";
+import { CustomRecipeSource } from "#examples/react/prose/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Prose } from "@pisagor/react";
+```
+
+## Examples
+
+### Default
+
+Readable long-form text styled for articles and documentation.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### A
+
+Style inline links inside prose content.
+
+<Example
+  name="A"
+  code={ASource}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### Blockquote
+
+Style quotations set apart from surrounding paragraphs.
+
+<Example
+  name="Blockquote"
+  code={BlockquoteSource}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### Details
+
+Style expandable disclosure blocks inside prose.
+
+<Example
+  name="Details"
+  code={DetailsSource}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### Dl
+
+Style description lists for terms and definitions.
+
+<Example
+  name="Dl"
+  code={DlSource}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### H1
+
+Style the top-level heading in a prose document.
+
+<Example
+  name="H1"
+  code={H1Source}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### H2
+
+Style a section heading under the document title.
+
+<Example
+  name="H2"
+  code={H2Source}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### H3
+
+Style a subsection heading within a section.
+
+<Example
+  name="H3"
+  code={H3Source}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### H4
+
+Style a fourth-level heading for finer structure.
+
+<Example
+  name="H4"
+  code={H4Source}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### H5
+
+Style a fifth-level heading when deep outline levels are needed.
+
+<Example
+  name="H5"
+  code={H5Source}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### H6
+
+Style the deepest heading level supported in prose.
+
+<Example
+  name="H6"
+  code={H6Source}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### Html
+
+Render rich HTML through the prose styles. Pass `sanitize` (for example DOMPurify's `sanitize`) when the HTML comes from users; it runs before the markup is injected.
+
+<Example
+  name="Html"
+  code={HtmlSource}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### Html Table
+
+Style tables that appear inside HTML prose content.
+
+<Example
+  name="HtmlTable"
+  code={HtmlTableSource}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### Inline Code
+
+Style Inline Code elements inside long-form prose content.
+
+<Example
+  name="InlineCode"
+  code={InlineCodeSource}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### Kbd
+
+Style Kbd elements inside long-form prose content.
+
+<Example
+  name="Kbd"
+  code={KbdSource}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### List
+
+Style List elements inside long-form prose content.
+
+<Example
+  name="List"
+  code={ListSource}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### Mark
+
+Style Mark elements inside long-form prose content.
+
+<Example
+  name="Mark"
+  code={MarkSource}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### Media
+
+Style Media elements inside long-form prose content.
+
+<Example
+  name="Media"
+  code={MediaSource}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### Not Prose
+
+Style Not Prose elements inside long-form prose content.
+
+<Example
+  name="NotProse"
+  code={NotProseSource}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### Ol
+
+Style Ol elements inside long-form prose content.
+
+<Example
+  name="Ol"
+  code={OlSource}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### P
+
+Style P elements inside long-form prose content.
+
+<Example
+  name="P"
+  code={PSource}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### Separator
+
+Style Separator elements inside long-form prose content.
+
+<Example
+  name="Separator"
+  code={SeparatorSource}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+### Small
+
+Style Small elements inside long-form prose content.
+
+<Example
+  name="Small"
+  code={SmallSource}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `proseRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="prose"
+  framework="react"
+  kind="component"
+/>

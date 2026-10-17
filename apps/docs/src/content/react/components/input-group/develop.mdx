@@ -1,0 +1,174 @@
+import Example from "#/components/docs/example.astro";
+import { VariantsSource } from "#examples/react/input-group/variants.tsx";
+import { SizesSource } from "#examples/react/input-group/sizes.tsx";
+import { AlignBlockEndSource } from "#examples/react/input-group/align-block-end.tsx";
+import { AlignBlockStartSource } from "#examples/react/input-group/align-block-start.tsx";
+import { AlignInlineEndSource } from "#examples/react/input-group/align-inline-end.tsx";
+import { AlignInlineStartSource } from "#examples/react/input-group/align-inline-start.tsx";
+import { WithTextareaSource } from "#examples/react/input-group/with-textarea.tsx";
+import { WithBadgeSource } from "#examples/react/input-group/with-badge.tsx";
+import { WithKeyboardShortcutSource } from "#examples/react/input-group/with-keyboard-shortcut.tsx";
+import { WithSpinnerSource } from "#examples/react/input-group/with-spinner.tsx";
+import { DisabledSource } from "#examples/react/input-group/disabled.tsx";
+import { InvalidSource } from "#examples/react/input-group/invalid.tsx";
+
+## Import
+
+```tsx
+import { InputGroup } from "@pisagor/react";
+```
+
+## Anatomy
+
+```tsx
+<InputGroup>
+  <InputGroup.Input />
+  <InputGroup.Addon />
+</InputGroup>
+```
+
+## Examples
+
+### Variants
+
+Choose emphasis to match surrounding inputs.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="input-group"
+  framework="react"
+  kind="component"
+/>
+
+### Sizes
+
+Match size to form density.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="input-group"
+  framework="react"
+  kind="component"
+/>
+
+### Align Block End
+
+Place addons at the block end of the field.
+
+<Example
+  name="AlignBlockEnd"
+  code={AlignBlockEndSource}
+  exampleId="input-group"
+  framework="react"
+  kind="component"
+/>
+
+### Align Block Start
+
+Place addons at the block start of the field.
+
+<Example
+  name="AlignBlockStart"
+  code={AlignBlockStartSource}
+  exampleId="input-group"
+  framework="react"
+  kind="component"
+/>
+
+### Align Inline End
+
+Place addons at the inline end of the field.
+
+<Example
+  name="AlignInlineEnd"
+  code={AlignInlineEndSource}
+  exampleId="input-group"
+  framework="react"
+  kind="component"
+/>
+
+### Align Inline Start
+
+Place addons at the inline start of the field.
+
+<Example
+  name="AlignInlineStart"
+  code={AlignInlineStartSource}
+  exampleId="input-group"
+  framework="react"
+  kind="component"
+/>
+
+### With Textarea
+
+Attach addons to a multi-line field.
+
+<Example
+  name="WithTextarea"
+  code={WithTextareaSource}
+  exampleId="input-group"
+  framework="react"
+  kind="component"
+/>
+
+### With Badge
+
+Attach a badge when status sits inside the field chrome.
+
+<Example
+  name="WithBadge"
+  code={WithBadgeSource}
+  exampleId="input-group"
+  framework="react"
+  kind="component"
+/>
+
+### With Keyboard Shortcut
+
+Show a shortcut hint inside the field.
+
+<Example
+  name="WithKeyboardShortcut"
+  code={WithKeyboardShortcutSource}
+  exampleId="input-group"
+  framework="react"
+  kind="component"
+/>
+
+### With Spinner
+
+Show a spinner addon while the field is waiting.
+
+<Example
+  name="WithSpinner"
+  code={WithSpinnerSource}
+  exampleId="input-group"
+  framework="react"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the grouped field is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="input-group"
+  framework="react"
+  kind="component"
+/>
+
+### Invalid
+
+Surface invalid state across the grouped control.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="input-group"
+  framework="react"
+  kind="component"
+/>

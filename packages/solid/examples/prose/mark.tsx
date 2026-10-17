@@ -1,3 +1,4 @@
+import source from "./mark.tsx?raw";
 import { Prose } from "@pisagor/solid";
 
 export function Mark() {
@@ -10,3 +11,5 @@ export function Mark() {
     </Prose>
   );
 }
+
+export { source as MarkSource };

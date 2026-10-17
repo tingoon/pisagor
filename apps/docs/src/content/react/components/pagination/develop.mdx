@@ -1,0 +1,102 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/pagination/default.tsx";
+import { PageRangeSource } from "#examples/react/pagination/page-range.tsx";
+import { LinksSource } from "#examples/react/pagination/links.tsx";
+import { LinkUrlsSource } from "#examples/react/pagination/link-urls.tsx";
+import { CustomCompositionSource } from "#examples/react/pagination/custom-composition.tsx";
+import { ControlledSource } from "#examples/react/pagination/controlled.tsx";
+import { CustomRecipeSource } from "#examples/react/pagination/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Pagination } from "@pisagor/react";
+```
+
+## Examples
+
+### Default
+
+Move through pages with previous, next, and page controls.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="pagination"
+  framework="react"
+  kind="component"
+/>
+
+### Page Range
+
+Show a window of page numbers when jumping more than one step matters.
+
+<Example
+  name="PageRange"
+  code={PageRangeSource}
+  exampleId="pagination"
+  framework="react"
+  kind="component"
+/>
+
+### Links
+
+Render items as links when navigation is the primary action.
+
+<Example
+  name="Links"
+  code={LinksSource}
+  exampleId="pagination"
+  framework="react"
+  kind="component"
+/>
+
+### Link URLs
+
+Build each page URL with `getHref` when routes do not use the `?page=` query.
+
+<Example
+  name="LinkUrls"
+  code={LinkUrlsSource}
+  exampleId="pagination"
+  framework="react"
+  kind="component"
+/>
+
+### Compound
+
+Compose pagination parts when the shorthand layout is not enough.
+
+<Example
+  name="CustomComposition"
+  code={CustomCompositionSource}
+  exampleId="pagination"
+  framework="react"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this pagination.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="pagination"
+  framework="react"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `paginationRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="pagination"
+  framework="react"
+  kind="component"
+/>

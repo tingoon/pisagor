@@ -1,3 +1,4 @@
+import source from "./controlled.tsx?raw";
 import { Field, TagsInput } from "@pisagor/solid";
 import { createSignal, For } from "solid-js";
 
@@ -24,3 +25,5 @@ export function Controlled() {
     </Field>
   );
 }
+
+export { source as ControlledSource };

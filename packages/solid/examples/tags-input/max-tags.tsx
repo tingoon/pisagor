@@ -1,3 +1,4 @@
+import source from "./max-tags.tsx?raw";
 import { Field, TagsInput } from "@pisagor/solid";
 import { For } from "solid-js";
 
@@ -21,3 +22,5 @@ export function MaxTags() {
     </Field>
   );
 }
+
+export { source as MaxTagsSource };

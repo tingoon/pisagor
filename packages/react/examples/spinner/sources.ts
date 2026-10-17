@@ -1,9 +1,11 @@
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { SizesSource as Sizes } from "./sizes";
 
 export const imports = `import { Spinner } from "@pisagor/react";`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  Sizes: sizesRaw,
+  CustomRecipe,
+  Default,
+  Sizes,
 } as const;

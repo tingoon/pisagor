@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./align-block-end.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { InputGroup } from "@pisagor/vue";
 </script>

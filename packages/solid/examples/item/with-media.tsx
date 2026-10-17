@@ -1,3 +1,4 @@
+import source from "./with-media.tsx?raw";
 import { Item } from "@pisagor/solid";
 import { CaretRightIcon, SealCheckIcon } from "@pisagor/solid/icons";
 
@@ -16,3 +17,5 @@ export function WithMedia() {
     </Item>
   );
 }
+
+export { source as WithMediaSource };

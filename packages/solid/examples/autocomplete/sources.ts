@@ -1,29 +1,29 @@
-import compoundRaw from "./compound.tsx?raw";
-import controlledRaw from "./controlled.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import groupRaw from "./group.tsx?raw";
-import invalidRaw from "./invalid.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
-import with_clear_buttonRaw from "./with-clear-button.tsx?raw";
-import with_start_iconRaw from "./with-start-icon.tsx?raw";
-import with_triggerRaw from "./with-trigger.tsx?raw";
+import { CompoundSource as Compound } from "./compound";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { DisabledSource as Disabled } from "./disabled";
+import { GroupSource as Group } from "./group";
+import { InvalidSource as Invalid } from "./invalid";
+import { SizesSource as Sizes } from "./sizes";
+import { VariantsSource as Variants } from "./variants";
+import { WithClearButtonSource as WithClearButton } from "./with-clear-button";
+import { WithStartIconSource as WithStartIcon } from "./with-start-icon";
+import { WithTriggerSource as WithTrigger } from "./with-trigger";
 
 export const imports = `import { Autocomplete } from "@pisagor/solid";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  Group: groupRaw,
-  Invalid: invalidRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
-  WithClearButton: with_clear_buttonRaw,
-  WithStartIcon: with_start_iconRaw,
-  WithTrigger: with_triggerRaw,
+  Compound,
+  Controlled,
+  CustomRecipe,
+  Default,
+  Disabled,
+  Group,
+  Invalid,
+  Sizes,
+  Variants,
+  WithClearButton,
+  WithStartIcon,
+  WithTrigger,
 } as const;

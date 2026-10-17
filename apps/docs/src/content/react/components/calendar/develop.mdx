@@ -1,0 +1,211 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/calendar/default.tsx";
+import { RangeSource } from "#examples/react/calendar/range.tsx";
+import { MultipleMonthsSource } from "#examples/react/calendar/multiple-months.tsx";
+import { MonthYearSelectorSource } from "#examples/react/calendar/month-year-selector.tsx";
+import { PresetsSource } from "#examples/react/calendar/presets.tsx";
+import { ControlledSource } from "#examples/react/calendar/controlled.tsx";
+import { DisabledSource } from "#examples/react/calendar/disabled.tsx";
+import { InvalidSource } from "#examples/react/calendar/invalid.tsx";
+import { MinMaxSource } from "#examples/react/calendar/min-max.tsx";
+import { BookedDatesSource } from "#examples/react/calendar/booked-dates.tsx";
+import { FixedWeeksSource } from "#examples/react/calendar/fixed-weeks.tsx";
+import { SelectTodaySource } from "#examples/react/calendar/select-today.tsx";
+import { CustomCellSizeSource } from "#examples/react/calendar/custom-cell-size.tsx";
+import { CustomRecipeSource } from "#examples/react/calendar/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Calendar } from "@pisagor/react";
+```
+
+## Anatomy
+
+```tsx
+<Calendar>
+  <Calendar.ViewControl>
+    <Calendar.PrevTrigger />
+    <Calendar.ViewDate />
+    <Calendar.NextTrigger />
+  </Calendar.ViewControl>
+  <Calendar.Table>
+    <Calendar.WeekDays />
+    <Calendar.TableDays />
+  </Calendar.Table>
+</Calendar>
+```
+
+## Examples
+
+### Default
+
+Browse and pick a single date on the calendar grid.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="calendar"
+  framework="react"
+  kind="component"
+/>
+
+### Range
+
+Pick a start and end date for spans such as trips or reports.
+
+<Example
+  name="Range"
+  code={RangeSource}
+  exampleId="calendar"
+  framework="react"
+  kind="component"
+/>
+
+### Multiple Months
+
+Show more than one month when comparing ranges across months.
+
+<Example
+  name="MultipleMonths"
+  code={MultipleMonthsSource}
+  exampleId="calendar"
+  framework="react"
+  kind="component"
+/>
+
+### Month Year Selector
+
+Jump by month or year when paging day-by-day would be slow.
+
+<Example
+  name="MonthYearSelector"
+  code={MonthYearSelectorSource}
+  exampleId="calendar"
+  framework="react"
+  kind="component"
+/>
+
+### Presets
+
+Offer common ranges so users can pick without hunting on the grid.
+
+<Example
+  name="Presets"
+  code={PresetsSource}
+  exampleId="calendar"
+  framework="react"
+  kind="component"
+/>
+
+### Controlled
+
+Drive the selected date from the parent when other UI depends on it.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="calendar"
+  framework="react"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the calendar cannot be used.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="calendar"
+  framework="react"
+  kind="component"
+/>
+
+### Invalid
+
+Show that the selected date is not allowed.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="calendar"
+  framework="react"
+  kind="component"
+/>
+
+### Min Max
+
+Limit selection to a valid window of dates.
+
+<Example
+  name="MinMax"
+  code={MinMaxSource}
+  exampleId="calendar"
+  framework="react"
+  kind="component"
+/>
+
+### Booked Dates
+
+Mark unavailable days when bookings or blackout dates matter.
+
+<Example
+  name="BookedDates"
+  code={BookedDatesSource}
+  exampleId="calendar"
+  framework="react"
+  kind="component"
+/>
+
+### Fixed Weeks
+
+Keep six rows every month so the calendar height stays stable.
+
+<Example
+  name="FixedWeeks"
+  code={FixedWeeksSource}
+  exampleId="calendar"
+  framework="react"
+  kind="component"
+/>
+
+### Select Today
+
+Jump to today when returning to the current date is a frequent action.
+
+<Example
+  name="SelectToday"
+  code={SelectTodaySource}
+  exampleId="calendar"
+  framework="react"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Resize day cells when the calendar must match a denser or larger layout.
+
+<Example
+  name="CustomCellSize"
+  code={CustomCellSizeSource}
+  exampleId="calendar"
+  framework="react"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `calendarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="calendar"
+  framework="react"
+  kind="component"
+/>

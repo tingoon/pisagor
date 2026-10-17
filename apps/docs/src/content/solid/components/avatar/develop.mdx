@@ -1,0 +1,128 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid/avatar/default.tsx";
+import { SizesSource } from "#examples/solid/avatar/sizes.tsx";
+import { ShapesSource } from "#examples/solid/avatar/shapes.tsx";
+import { CountSource } from "#examples/solid/avatar/count.tsx";
+import { FallbacksSource } from "#examples/solid/avatar/fallbacks.tsx";
+import { InitialsSource } from "#examples/solid/avatar/initials.tsx";
+import { GroupSource } from "#examples/solid/avatar/group.tsx";
+import { CompoundSource } from "#examples/solid/avatar/compound.tsx";
+import { CustomRecipeSource } from "#examples/solid/avatar/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Avatar } from "@pisagor/solid";
+```
+
+## Examples
+
+### Default
+
+The standard avatar for a single person.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="avatar"
+  framework="solid"
+  kind="component"
+/>
+
+### Sizes
+
+Match avatar size to list density — smaller in dense rows, larger in profiles.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="avatar"
+  framework="solid"
+  kind="component"
+/>
+
+### Shapes
+
+Choose round or squared geometry to match the surrounding visual language.
+
+<Example
+  name="Shapes"
+  code={ShapesSource}
+  exampleId="avatar"
+  framework="solid"
+  kind="component"
+/>
+
+### Count
+
+Show how many people are represented when listing everyone would take too much space.
+
+<Example
+  name="Count"
+  code={CountSource}
+  exampleId="avatar"
+  framework="solid"
+  kind="component"
+/>
+
+### Fallbacks
+
+Fall back to initials or an icon when no photo is available.
+
+<Example
+  name="Fallbacks"
+  code={FallbacksSource}
+  exampleId="avatar"
+  framework="solid"
+  kind="component"
+/>
+
+### Initials
+
+Pass `name` to derive initials when no `fallback` is set. The name is also used as the image alt text.
+
+<Example
+  name="Initials"
+  code={InitialsSource}
+  exampleId="avatar"
+  framework="solid"
+  kind="component"
+/>
+
+### Group
+
+Overlap several avatars in a row for shared ownership or participants.
+
+<Example
+  name="Group"
+  code={GroupSource}
+  exampleId="avatar"
+  framework="solid"
+  kind="component"
+/>
+
+### Compound
+
+Compose `AvatarGroup.Root` with `Avatar` children when each avatar needs its own props.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="avatar"
+  framework="solid"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `avatarRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="avatar"
+  framework="solid"
+  kind="component"
+/>

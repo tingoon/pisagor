@@ -1,3 +1,4 @@
+import source from "./orientation-vertical.tsx?raw";
 import { Card, Timer } from "@pisagor/react";
 export function OrientationVertical() {
   return (
@@ -25,3 +26,5 @@ export function OrientationVertical() {
     </Card>
   );
 }
+
+export { source as OrientationVerticalSource };

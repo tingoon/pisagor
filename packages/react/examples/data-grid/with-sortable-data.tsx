@@ -1,3 +1,4 @@
+import source from "./with-sortable-data.tsx?raw";
 import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
 import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Checkbox, Sortable, Table } from "@pisagor/react";
@@ -279,3 +280,5 @@ export function WithSortableData() {
     </DataGridShell>
   );
 }
+
+export { source as WithSortableDataSource };

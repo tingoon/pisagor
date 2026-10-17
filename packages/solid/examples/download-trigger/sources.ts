@@ -1,11 +1,11 @@
-import defaultRaw from "./default.tsx?raw";
-import download_svgRaw from "./download-svg.tsx?raw";
-import with_promiseRaw from "./with-promise.tsx?raw";
+import { DefaultSource as Default } from "./default";
+import { DownloadSvgSource as DownloadSvg } from "./download-svg";
+import { WithPromiseSource as WithPromise } from "./with-promise";
 
 export const imports = `import { DownloadTrigger } from "@pisagor/solid";`;
 
 export const sources = {
-  Default: defaultRaw,
-  DownloadSvg: download_svgRaw,
-  WithPromise: with_promiseRaw,
+  Default,
+  DownloadSvg,
+  WithPromise,
 } as const;

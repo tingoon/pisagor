@@ -1,0 +1,102 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/signature-pad/default.tsx";
+import { ImagePreviewSource } from "#examples/react/signature-pad/image-preview.tsx";
+import { CompoundSource } from "#examples/react/signature-pad/compound.tsx";
+import { ControlledSource } from "#examples/react/signature-pad/controlled.tsx";
+import { DisabledSource } from "#examples/react/signature-pad/disabled.tsx";
+import { InvalidSource } from "#examples/react/signature-pad/invalid.tsx";
+import { CustomRecipeSource } from "#examples/react/signature-pad/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { SignaturePad } from "@pisagor/react";
+```
+
+## Examples
+
+### Default
+
+Capture a handwritten signature with pointer or touch input.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="signature-pad"
+  framework="react"
+  kind="component"
+/>
+
+### Image Preview
+
+Preview the signature image before submit.
+
+<Example
+  name="ImagePreview"
+  code={ImagePreviewSource}
+  exampleId="signature-pad"
+  framework="react"
+  kind="component"
+/>
+
+### Compound
+
+Compose the pad from `Root`, `Control`, `Segment`, `Clear` and `Guide`.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="signature-pad"
+  framework="react"
+  kind="component"
+/>
+
+### Controlled
+
+Drive stroke data from the parent when signature state lives above.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="signature-pad"
+  framework="react"
+  kind="component"
+/>
+
+### Disabled
+
+Show that signing is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="signature-pad"
+  framework="react"
+  kind="component"
+/>
+
+### Invalid
+
+Surface a validation or error state so users know the signature pad needs attention before continuing.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="signature-pad"
+  framework="react"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `signaturePadRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="signature-pad"
+  framework="react"
+  kind="component"
+/>

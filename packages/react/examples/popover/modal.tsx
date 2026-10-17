@@ -1,3 +1,4 @@
+import source from "./modal.tsx?raw";
 import { Button, Popover } from "@pisagor/react";
 export function Modal() {
   return (
@@ -14,3 +15,5 @@ export function Modal() {
     </Popover>
   );
 }
+
+export { source as ModalSource };

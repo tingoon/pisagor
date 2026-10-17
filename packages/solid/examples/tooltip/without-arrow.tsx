@@ -1,3 +1,4 @@
+import source from "./without-arrow.tsx?raw";
 import { Button, Tooltip } from "@pisagor/solid";
 
 export function WithoutArrow() {
@@ -7,3 +8,5 @@ export function WithoutArrow() {
     </Tooltip>
   );
 }
+
+export { source as WithoutArrowSource };

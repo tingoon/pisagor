@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./no-close-button.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, Sheet } from "@pisagor/svelte";
 </script>

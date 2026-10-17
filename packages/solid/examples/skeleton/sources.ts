@@ -1,15 +1,15 @@
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import in_cardRaw from "./in-card.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-import skeleton_textRaw from "./skeleton-text.tsx?raw";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { InCardSource as InCard } from "./in-card";
+import { SizesSource as Sizes } from "./sizes";
+import { SkeletonTextSource as SkeletonText } from "./skeleton-text";
 
 export const imports = `import { Skeleton } from "@pisagor/solid";`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  InCard: in_cardRaw,
-  Sizes: sizesRaw,
-  SkeletonText: skeleton_textRaw,
+  CustomRecipe,
+  Default,
+  InCard,
+  Sizes,
+  SkeletonText,
 } as const;

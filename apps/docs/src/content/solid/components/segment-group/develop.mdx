@@ -1,0 +1,169 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid/segment-group/default.tsx";
+import { VariantsSource } from "#examples/solid/segment-group/variants.tsx";
+import { SizesSource } from "#examples/solid/segment-group/sizes.tsx";
+import { OrientationHorizontalSource } from "#examples/solid/segment-group/orientation-horizontal.tsx";
+import { OrientationVerticalSource } from "#examples/solid/segment-group/orientation-vertical.tsx";
+import { CompoundSource } from "#examples/solid/segment-group/compound.tsx";
+import { ControlledSource } from "#examples/solid/segment-group/controlled.tsx";
+import { DisabledSource } from "#examples/solid/segment-group/disabled.tsx";
+import { DisabledItemSource } from "#examples/solid/segment-group/disabled-item.tsx";
+import { IndicatorOnHoverSource } from "#examples/solid/segment-group/indicator-on-hover.tsx";
+import { CustomIndicatorSource } from "#examples/solid/segment-group/custom-indicator.tsx";
+import { CustomRecipeSource } from "#examples/solid/segment-group/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { SegmentGroup } from "@pisagor/solid";
+```
+
+## Examples
+
+### Default
+
+Switch between a few related modes in one compact control.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="segment-group"
+  framework="solid"
+  kind="component"
+/>
+
+### Variants
+
+Choose visual weight or emphasis so the segment group matches importance in the surrounding layout.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="segment-group"
+  framework="solid"
+  kind="component"
+/>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="segment-group"
+  framework="solid"
+  kind="component"
+/>
+
+### Orientation Horizontal
+
+Lay out the segment group horizontally when items should read in a row.
+
+<Example
+  name="OrientationHorizontal"
+  code={OrientationHorizontalSource}
+  exampleId="segment-group"
+  framework="solid"
+  kind="component"
+/>
+
+### Orientation Vertical
+
+Stack the segment group vertically when items should read in a column.
+
+<Example
+  name="OrientationVertical"
+  code={OrientationVerticalSource}
+  exampleId="segment-group"
+  framework="solid"
+  kind="component"
+/>
+
+### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="segment-group"
+  framework="solid"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this segment group.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="segment-group"
+  framework="solid"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the segment group is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="segment-group"
+  framework="solid"
+  kind="component"
+/>
+
+### Disabled Item
+
+Show that a specific segment is unavailable.
+
+<Example
+  name="DisabledItem"
+  code={DisabledItemSource}
+  exampleId="segment-group"
+  framework="solid"
+  kind="component"
+/>
+
+### Indicator On Hover
+
+Preview the indicator on hover when discovering segments should feel responsive.
+
+<Example
+  name="IndicatorOnHover"
+  code={IndicatorOnHoverSource}
+  exampleId="segment-group"
+  framework="solid"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Customize the active indicator when brand motion or shape differs from the default.
+
+<Example
+  name="CustomIndicator"
+  code={CustomIndicatorSource}
+  exampleId="segment-group"
+  framework="solid"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `segmentGroupRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="segment-group"
+  framework="solid"
+  kind="component"
+/>

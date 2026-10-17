@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./custom-preview.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { useFileUploadContext } from "@ark-ui/vue/file-upload";
 import { PhX } from "@phosphor-icons/vue";

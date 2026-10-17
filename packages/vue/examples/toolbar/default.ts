@@ -1,3 +1,4 @@
+import source from "./default.ts?raw";
 import { Button, Toolbar } from "@pisagor/vue";
 import { defineComponent, Fragment, h } from "vue";
 
@@ -15,3 +16,5 @@ export default defineComponent({
       });
   },
 });
+
+export { source };

@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./align-block-end.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { InputGroup } from "@pisagor/svelte";
 </script>

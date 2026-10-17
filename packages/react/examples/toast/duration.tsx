@@ -1,3 +1,4 @@
+import source from "./duration.tsx?raw";
 import { Button, toast } from "@pisagor/react";
 export function Duration() {
   return (
@@ -42,3 +43,5 @@ export function Duration() {
     </div>
   );
 }
+
+export { source as DurationSource };

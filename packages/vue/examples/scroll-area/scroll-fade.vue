@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./scroll-fade.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { ScrollArea, Separator } from "@pisagor/vue";
 

@@ -1,3 +1,4 @@
+import source from "./placements.tsx?raw";
 import {
   ArchiveIcon,
   DownloadIcon,
@@ -74,3 +75,5 @@ export function Placements() {
     </>
   );
 }
+
+export { source as PlacementsSource };

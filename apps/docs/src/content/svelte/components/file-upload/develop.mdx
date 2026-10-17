@@ -1,0 +1,223 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/file-upload/default.svelte?raw";
+import VariantsSource from "#examples/svelte/file-upload/variants.svelte?raw";
+import DropzoneSource from "#examples/svelte/file-upload/dropzone.svelte?raw";
+import TriggerSource from "#examples/svelte/file-upload/trigger.svelte?raw";
+import MultipleFilesSource from "#examples/svelte/file-upload/multiple-files.svelte?raw";
+import AcceptedFileTypesSource from "#examples/svelte/file-upload/accepted-file-types.svelte?raw";
+import DirectoryUploadSource from "#examples/svelte/file-upload/directory-upload.svelte?raw";
+import MediaCaptureSource from "#examples/svelte/file-upload/media-capture.svelte?raw";
+import CustomPreviewSource from "#examples/svelte/file-upload/custom-preview.svelte?raw";
+import ClearTriggerSource from "#examples/svelte/file-upload/clear-trigger.svelte?raw";
+import RejectedFilesSource from "#examples/svelte/file-upload/rejected-files.svelte?raw";
+import DisabledSource from "#examples/svelte/file-upload/disabled.svelte?raw";
+import InvalidSource from "#examples/svelte/file-upload/invalid.svelte?raw";
+import CustomSpacingSource from "#examples/svelte/file-upload/custom-spacing.svelte?raw";
+import CustomRecipeSource from "#examples/svelte/file-upload/custom-recipe.svelte?raw";
+
+## Import
+
+```ts
+import { FileUpload } from "@pisagor/svelte";
+```
+
+## Anatomy
+
+```tsx
+<FileUpload>
+  <FileUpload.Dropzone>
+    <FileUpload.DropzoneIcon />
+    <FileUpload.Title />
+    <FileUpload.Description />
+    <FileUpload.Trigger />
+    <FileUpload.Helper />
+  </FileUpload.Dropzone>
+  <FileUpload.List />
+</FileUpload>
+```
+
+## Examples
+
+### Default
+
+Choose files with a dropzone and file picker.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="file-upload"
+  framework="svelte"
+  kind="component"
+/>
+
+### Variants
+
+Choose upload surface emphasis to match the form.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="file-upload"
+  framework="svelte"
+  kind="component"
+/>
+
+### Dropzone
+
+Emphasize drag-and-drop as the primary way to add files.
+
+<Example
+  name="Dropzone"
+  code={DropzoneSource}
+  exampleId="file-upload"
+  framework="svelte"
+  kind="component"
+/>
+
+### Trigger
+
+Open the file picker from an explicit trigger control.
+
+<Example
+  name="Trigger"
+  code={TriggerSource}
+  exampleId="file-upload"
+  framework="svelte"
+  kind="component"
+/>
+
+### Multiple Files
+
+Allow more than one file in a single upload.
+
+<Example
+  name="MultipleFiles"
+  code={MultipleFilesSource}
+  exampleId="file-upload"
+  framework="svelte"
+  kind="component"
+/>
+
+### Accepted File Types
+
+Limit selectable types so users only pick suitable files.
+
+<Example
+  name="AcceptedFileTypes"
+  code={AcceptedFileTypesSource}
+  exampleId="file-upload"
+  framework="svelte"
+  kind="component"
+/>
+
+### Directory Upload
+
+Accept a folder when bulk directory import is required.
+
+<Example
+  name="DirectoryUpload"
+  code={DirectoryUploadSource}
+  exampleId="file-upload"
+  framework="svelte"
+  kind="component"
+/>
+
+### Media Capture
+
+Capture from camera or microphone when device media is the source.
+
+<Example
+  name="MediaCapture"
+  code={MediaCaptureSource}
+  exampleId="file-upload"
+  framework="svelte"
+  kind="component"
+/>
+
+### Custom Preview
+
+Customize previews when default thumbnails are not enough.
+
+<Example
+  name="CustomPreview"
+  code={CustomPreviewSource}
+  exampleId="file-upload"
+  framework="svelte"
+  kind="component"
+/>
+
+### Clear Trigger
+
+Clear selected files in one action.
+
+<Example
+  name="ClearTrigger"
+  code={ClearTriggerSource}
+  exampleId="file-upload"
+  framework="svelte"
+  kind="component"
+/>
+
+### Rejected Files
+
+`FileUpload.List` also lists rejected files with their validation errors, so users can see why a file was not accepted.
+
+<Example
+  name="RejectedFiles"
+  code={RejectedFilesSource}
+  exampleId="file-upload"
+  framework="svelte"
+  kind="component"
+/>
+
+### Disabled
+
+Show that upload is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="file-upload"
+  framework="svelte"
+  kind="component"
+/>
+
+### Invalid
+
+Surface rejected files or validation errors.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="file-upload"
+  framework="svelte"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Adjust spacing for denser or roomier upload regions.
+
+<Example
+  name="CustomSpacing"
+  code={CustomSpacingSource}
+  exampleId="file-upload"
+  framework="svelte"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `fileUploadRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="file-upload"
+  framework="svelte"
+  kind="component"
+/>

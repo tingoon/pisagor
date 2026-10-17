@@ -1,3 +1,4 @@
+import source from "./with-keyboard-shortcut.ts?raw";
 import { Button, Kbd, Tooltip } from "@pisagor/vue";
 import { defineComponent, Fragment, h } from "vue";
 
@@ -28,3 +29,5 @@ export default defineComponent({
       );
   },
 });
+
+export { source };

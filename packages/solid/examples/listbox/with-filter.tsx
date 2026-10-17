@@ -1,3 +1,4 @@
+import source from "./with-filter.tsx?raw";
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Input, Item, Listbox } from "@pisagor/solid";
@@ -52,3 +53,5 @@ export function WithFilter() {
     </Item.Group>
   );
 }
+
+export { source as WithFilterSource };

@@ -1,3 +1,4 @@
+import source from "./sizes.tsx?raw";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { EmptyState } from "@pisagor/react";
 
@@ -18,3 +19,5 @@ export function Sizes() {
     </div>
   );
 }
+
+export { source as SizesSource };

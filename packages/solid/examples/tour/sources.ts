@@ -1,29 +1,29 @@
-import asyncRaw from "./async.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import custom_spacingRaw from "./custom-spacing.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import eventsRaw from "./events.tsx?raw";
-import keyboard_navigationRaw from "./keyboard-navigation.tsx?raw";
-import progressRaw from "./progress.tsx?raw";
-import skipRaw from "./skip.tsx?raw";
-import step_typesRaw from "./step-types.tsx?raw";
-import wait_for_clickRaw from "./wait-for-click.tsx?raw";
-import wait_for_elementRaw from "./wait-for-element.tsx?raw";
-import wait_for_inputRaw from "./wait-for-input.tsx?raw";
+import { AsyncSource as Async } from "./async";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { CustomSpacingSource as CustomSpacing } from "./custom-spacing";
+import { DefaultSource as Default } from "./default";
+import { EventsSource as Events } from "./events";
+import { KeyboardNavigationSource as KeyboardNavigation } from "./keyboard-navigation";
+import { ProgressSource as Progress } from "./progress";
+import { SkipSource as Skip } from "./skip";
+import { StepTypesSource as StepTypes } from "./step-types";
+import { WaitForClickSource as WaitForClick } from "./wait-for-click";
+import { WaitForElementSource as WaitForElement } from "./wait-for-element";
+import { WaitForInputSource as WaitForInput } from "./wait-for-input";
 
 export const imports = `import { Tour } from "@pisagor/solid";`;
 
 export const sources = {
-  Async: asyncRaw,
-  CustomRecipe: custom_recipeRaw,
-  CustomSpacing: custom_spacingRaw,
-  Default: defaultRaw,
-  Events: eventsRaw,
-  KeyboardNavigation: keyboard_navigationRaw,
-  Progress: progressRaw,
-  Skip: skipRaw,
-  StepTypes: step_typesRaw,
-  WaitForClick: wait_for_clickRaw,
-  WaitForElement: wait_for_elementRaw,
-  WaitForInput: wait_for_inputRaw,
+  Async,
+  CustomRecipe,
+  CustomSpacing,
+  Default,
+  Events,
+  KeyboardNavigation,
+  Progress,
+  Skip,
+  StepTypes,
+  WaitForClick,
+  WaitForElement,
+  WaitForInput,
 } as const;

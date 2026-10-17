@@ -1,19 +1,19 @@
-import both_directionsRaw from "./both-directions.tsx?raw";
-import compoundRaw from "./compound.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import horizontalRaw from "./horizontal.tsx?raw";
-import nestedRaw from "./nested.tsx?raw";
-import scroll_fadeRaw from "./scroll-fade.tsx?raw";
+import { BothDirectionsSource as BothDirections } from "./both-directions";
+import { CompoundSource as Compound } from "./compound";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { HorizontalSource as Horizontal } from "./horizontal";
+import { NestedSource as Nested } from "./nested";
+import { ScrollFadeSource as ScrollFade } from "./scroll-fade";
 
 export const imports = `import { ScrollArea } from "@pisagor/react";`;
 
 export const sources = {
-  BothDirections: both_directionsRaw,
-  Compound: compoundRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Horizontal: horizontalRaw,
-  Nested: nestedRaw,
-  ScrollFade: scroll_fadeRaw,
+  BothDirections,
+  Compound,
+  CustomRecipe,
+  Default,
+  Horizontal,
+  Nested,
+  ScrollFade,
 } as const;

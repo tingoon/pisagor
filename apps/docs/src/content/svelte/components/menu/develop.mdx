@@ -1,0 +1,64 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/menu/default.svelte?raw";
+import WithGroupsSource from "#examples/svelte/menu/with-groups.svelte?raw";
+import CustomRecipeSource from "#examples/svelte/menu/custom-recipe.svelte?raw";
+
+## Import
+
+```ts
+import { Menu } from "@pisagor/svelte";
+```
+
+## Anatomy
+
+```tsx
+<Menu>
+  <Menu.List>
+    <Menu.Item>
+      <Menu.Shortcut />
+    </Menu.Item>
+    <Menu.Link />
+    <Menu.Separator />
+  </Menu.List>
+</Menu>
+```
+
+## Examples
+
+### Default
+
+An always-visible list of navigation links or actions.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="menu"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Groups
+
+Group related items so long menus stay scannable.
+
+<Example
+  name="WithGroups"
+  code={WithGroupsSource}
+  exampleId="menu"
+  framework="svelte"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `menuRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="menu"
+  framework="svelte"
+  kind="component"
+/>

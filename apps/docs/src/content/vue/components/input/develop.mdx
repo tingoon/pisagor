@@ -1,0 +1,115 @@
+import Example from "#/components/docs/example.astro";
+import VariantsSource from "#examples/vue/input/variants.vue?raw";
+import SizesSource from "#examples/vue/input/sizes.vue?raw";
+import ClearableSource from "#examples/vue/input/clearable.vue?raw";
+import FileSource from "#examples/vue/input/file.vue?raw";
+import ControlledSource from "#examples/vue/input/controlled.vue?raw";
+import DisabledSource from "#examples/vue/input/disabled.vue?raw";
+import InvalidSource from "#examples/vue/input/invalid.vue?raw";
+import CustomRecipeSource from "#examples/vue/input/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { Input } from "@pisagor/vue";
+```
+
+## Examples
+
+### Variants
+
+Choose visual weight or emphasis so the input matches importance in the surrounding layout.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="input"
+  framework="vue"
+  kind="component"
+/>
+
+### Sizes
+
+Match size to the surrounding layout — smaller in compact chrome, larger where the input needs emphasis.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="input"
+  framework="vue"
+  kind="component"
+/>
+
+### Clearable
+
+Offer a clear control for search-like fields where resetting quickly matters.
+
+<Example
+  name="Clearable"
+  code={ClearableSource}
+  exampleId="input"
+  framework="vue"
+  kind="component"
+/>
+
+### File
+
+Use a file-styled input when the control picks a file path or upload target.
+
+<Example
+  name="File"
+  code={FileSource}
+  exampleId="input"
+  framework="vue"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this input.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="input"
+  framework="vue"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the input is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="input"
+  framework="vue"
+  kind="component"
+/>
+
+### Invalid
+
+Surface a validation or error state so users know the input needs attention before continuing.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="input"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `inputRecipe` with `tv({ extend })` and pass it to `recipe` to restyle the clearable input's inner control across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="input"
+  framework="vue"
+  kind="component"
+/>

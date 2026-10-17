@@ -1,3 +1,4 @@
+import source from "./switch-field.tsx?raw";
 import { Field, Switch } from "@pisagor/react";
 export function SwitchField() {
   return (
@@ -7,3 +8,5 @@ export function SwitchField() {
     </Field>
   );
 }
+
+export { source as SwitchFieldSource };

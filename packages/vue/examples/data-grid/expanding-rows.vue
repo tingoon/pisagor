@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./expanding-rows.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhCaretDown, PhCaretRight } from "@phosphor-icons/vue";
 import { Table } from "@pisagor/vue";

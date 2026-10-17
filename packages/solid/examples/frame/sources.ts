@@ -1,15 +1,15 @@
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import separated_panelsRaw from "./separated-panels.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-import with_form_controlsRaw from "./with-form-controls.tsx?raw";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { SeparatedPanelsSource as SeparatedPanels } from "./separated-panels";
+import { SizesSource as Sizes } from "./sizes";
+import { WithFormControlsSource as WithFormControls } from "./with-form-controls";
 
 export const imports = `import { Frame } from "@pisagor/solid";`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  SeparatedPanels: separated_panelsRaw,
-  Sizes: sizesRaw,
-  WithFormControls: with_form_controlsRaw,
+  CustomRecipe,
+  Default,
+  SeparatedPanels,
+  Sizes,
+  WithFormControls,
 } as const;

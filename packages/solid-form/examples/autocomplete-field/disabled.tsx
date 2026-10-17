@@ -1,3 +1,4 @@
+import source from "./disabled.tsx?raw";
 import { AutocompleteField } from "@pisagor/solid-form";
 import { cityOptions } from "../options";
 
@@ -12,3 +13,5 @@ export function Disabled() {
     />
   );
 }
+
+export { source as DisabledSource };

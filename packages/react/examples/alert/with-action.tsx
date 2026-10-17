@@ -1,3 +1,4 @@
+import source from "./with-action.tsx?raw";
 import { ClockCounterClockwiseIcon } from "@phosphor-icons/react";
 import { Alert, Button } from "@pisagor/react";
 export function WithAction() {
@@ -17,3 +18,5 @@ export function WithAction() {
     />
   );
 }
+
+export { source as WithActionSource };

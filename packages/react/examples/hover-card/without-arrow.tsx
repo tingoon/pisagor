@@ -1,3 +1,4 @@
+import source from "./without-arrow.tsx?raw";
 import { Button, HoverCard } from "@pisagor/react";
 
 export function WithoutArrow() {
@@ -14,3 +15,5 @@ export function WithoutArrow() {
     </HoverCard>
   );
 }
+
+export { source as WithoutArrowSource };

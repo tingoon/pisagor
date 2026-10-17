@@ -1,3 +1,4 @@
+import source from "./disabled.tsx?raw";
 import { Button, HoverCard } from "@pisagor/solid";
 export function Disabled() {
   return (
@@ -13,3 +14,5 @@ export function Disabled() {
     </HoverCard>
   );
 }
+
+export { source as DisabledSource };

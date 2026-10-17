@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { Field, Switch } from "@pisagor/react";
 import { switchRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -16,3 +17,5 @@ export function CustomRecipe() {
     </Field>
   );
 }
+
+export { source as CustomRecipeSource };

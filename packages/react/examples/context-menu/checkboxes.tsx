@@ -1,3 +1,4 @@
+import source from "./checkboxes.tsx?raw";
 import { ContextMenu } from "@pisagor/react";
 import { useState } from "react";
 
@@ -32,3 +33,5 @@ export function Checkboxes() {
     </ContextMenu>
   );
 }
+
+export { source as CheckboxesSource };

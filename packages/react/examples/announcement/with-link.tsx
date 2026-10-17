@@ -1,3 +1,4 @@
+import source from "./with-link.tsx?raw";
 import { ArrowUpRightIcon } from "@phosphor-icons/react";
 import { Announcement, Badge } from "@pisagor/react";
 export function WithLink() {
@@ -13,3 +14,5 @@ export function WithLink() {
     </Announcement.Root>
   );
 }
+
+export { source as WithLinkSource };

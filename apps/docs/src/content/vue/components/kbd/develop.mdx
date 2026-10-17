@@ -1,0 +1,89 @@
+import Example from "#/components/docs/example.astro";
+import VariantsSource from "#examples/vue/kbd/variants.vue?raw";
+import SizesSource from "#examples/vue/kbd/sizes.vue?raw";
+import KbdGroupSource from "#examples/vue/kbd/kbd-group.vue?raw";
+import WithButtonSource from "#examples/vue/kbd/with-button.vue?raw";
+import WithTooltipSource from "#examples/vue/kbd/with-tooltip.ts?raw";
+import CustomRecipeSource from "#examples/vue/kbd/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { Kbd } from "@pisagor/vue";
+```
+
+## Examples
+
+### Variants
+
+Choose visual weight or emphasis so the keyboard badge matches importance in the surrounding layout.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="kbd"
+  framework="vue"
+  kind="component"
+/>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="kbd"
+  framework="vue"
+  kind="component"
+/>
+
+### Kbd Group
+
+Group several keys when the shortcut is a chord.
+
+<Example
+  name="KbdGroup"
+  code={KbdGroupSource}
+  exampleId="kbd"
+  framework="vue"
+  kind="component"
+/>
+
+### With Button
+
+Place the badge next to a button that performs the same action.
+
+<Example
+  name="WithButton"
+  code={WithButtonSource}
+  exampleId="kbd"
+  framework="vue"
+  kind="component"
+/>
+
+### With Tooltip
+
+Explain the shortcut with a short tooltip when the keys alone are unclear.
+
+<Example
+  name="WithTooltip"
+  code={WithTooltipSource}
+  exampleId="kbd"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `kbdRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="kbd"
+  framework="vue"
+  kind="component"
+/>

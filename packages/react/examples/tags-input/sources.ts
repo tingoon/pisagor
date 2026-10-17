@@ -1,37 +1,37 @@
-import blur_behaviorRaw from "./blur-behavior.tsx?raw";
-import controlledRaw from "./controlled.tsx?raw";
-import controlled_input_valueRaw from "./controlled-input-value.tsx?raw";
-import custom_delimiterRaw from "./custom-delimiter.tsx?raw";
-import disable_editingRaw from "./disable-editing.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import invalidRaw from "./invalid.tsx?raw";
-import max_lengthRaw from "./max-length.tsx?raw";
-import max_tagsRaw from "./max-tags.tsx?raw";
-import max_with_overflowRaw from "./max-with-overflow.tsx?raw";
-import paste_behaviorRaw from "./paste-behavior.tsx?raw";
-import sanitize_valueRaw from "./sanitize-value.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-import validationRaw from "./validation.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
-import with_comboboxRaw from "./with-combobox.tsx?raw";
+import { BlurBehaviorSource as BlurBehavior } from "./blur-behavior";
+import { ControlledSource as Controlled } from "./controlled";
+import { ControlledInputValueSource as ControlledInputValue } from "./controlled-input-value";
+import { CustomDelimiterSource as CustomDelimiter } from "./custom-delimiter";
+import { DisabledSource as Disabled } from "./disabled";
+import { DisableEditingSource as DisableEditing } from "./disable-editing";
+import { InvalidSource as Invalid } from "./invalid";
+import { MaxLengthSource as MaxLength } from "./max-length";
+import { MaxTagsSource as MaxTags } from "./max-tags";
+import { MaxWithOverflowSource as MaxWithOverflow } from "./max-with-overflow";
+import { PasteBehaviorSource as PasteBehavior } from "./paste-behavior";
+import { SanitizeValueSource as SanitizeValue } from "./sanitize-value";
+import { SizesSource as Sizes } from "./sizes";
+import { ValidationSource as Validation } from "./validation";
+import { VariantsSource as Variants } from "./variants";
+import { WithComboboxSource as WithCombobox } from "./with-combobox";
 
 export const imports = `import { TagsInput } from "@pisagor/react";`;
 
 export const sources = {
-  BlurBehavior: blur_behaviorRaw,
-  Controlled: controlledRaw,
-  ControlledInputValue: controlled_input_valueRaw,
-  CustomDelimiter: custom_delimiterRaw,
-  Disabled: disabledRaw,
-  DisableEditing: disable_editingRaw,
-  Invalid: invalidRaw,
-  MaxLength: max_lengthRaw,
-  MaxTags: max_tagsRaw,
-  MaxWithOverflow: max_with_overflowRaw,
-  PasteBehavior: paste_behaviorRaw,
-  SanitizeValue: sanitize_valueRaw,
-  Sizes: sizesRaw,
-  Validation: validationRaw,
-  Variants: variantsRaw,
-  WithCombobox: with_comboboxRaw,
+  BlurBehavior,
+  Controlled,
+  ControlledInputValue,
+  CustomDelimiter,
+  Disabled,
+  DisableEditing,
+  Invalid,
+  MaxLength,
+  MaxTags,
+  MaxWithOverflow,
+  PasteBehavior,
+  SanitizeValue,
+  Sizes,
+  Validation,
+  Variants,
+  WithCombobox,
 } as const;

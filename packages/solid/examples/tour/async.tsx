@@ -1,3 +1,4 @@
+import source from "./async.tsx?raw";
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour } from "@pisagor/solid";
 export function Async() {
@@ -68,3 +69,5 @@ export function Async() {
     </div>
   );
 }
+
+export { source as AsyncSource };

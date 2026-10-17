@@ -1,3 +1,4 @@
+import source from "./with-media.tsx?raw";
 import { CaretRightIcon, SealCheckIcon } from "@phosphor-icons/react";
 import { Item } from "@pisagor/react";
 
@@ -16,3 +17,5 @@ export function WithMedia() {
     </Item>
   );
 }
+
+export { source as WithMediaSource };

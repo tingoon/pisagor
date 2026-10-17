@@ -1,0 +1,89 @@
+import Example from "#/components/docs/example.astro";
+import Default from "#examples/astro/data-list/default.astro";
+import OrientationHorizontal from "#examples/astro/data-list/orientation-horizontal.astro";
+import OrientationVertical from "#examples/astro/data-list/orientation-vertical.astro";
+import Separator from "#examples/astro/data-list/separator.astro";
+import Compound from "#examples/astro/data-list/compound.astro";
+import DefaultSource from "#examples/astro/data-list/default.astro?raw";
+import OrientationHorizontalSource from "#examples/astro/data-list/orientation-horizontal.astro?raw";
+import OrientationVerticalSource from "#examples/astro/data-list/orientation-vertical.astro?raw";
+import SeparatorSource from "#examples/astro/data-list/separator.astro?raw";
+import CompoundSource from "#examples/astro/data-list/compound.astro?raw";
+
+## Import
+
+```ts
+import { DataList } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+Present label-value pairs for summaries and metadata.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="data-list"
+  framework="astro"
+  kind="component"
+>
+  <Default />
+</Example>
+
+### Orientation Horizontal
+
+Lay out the data list horizontally when items should read in a row.
+
+<Example
+  name="OrientationHorizontal"
+  code={OrientationHorizontalSource}
+  exampleId="data-list"
+  framework="astro"
+  kind="component"
+>
+  <OrientationHorizontal />
+</Example>
+
+### Orientation Vertical
+
+Stack the data list vertically when items should read in a column.
+
+<Example
+  name="OrientationVertical"
+  code={OrientationVerticalSource}
+  exampleId="data-list"
+  framework="astro"
+  kind="component"
+>
+  <OrientationVertical />
+</Example>
+
+### Separator
+
+Separate groups of pairs so sections stay scannable.
+
+<Example
+  name="Separator"
+  code={SeparatorSource}
+  exampleId="data-list"
+  framework="astro"
+  kind="component"
+>
+  <Separator />
+</Example>
+
+### Compound
+
+Compose term and value parts for a custom list layout.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="data-list"
+  framework="astro"
+  kind="component"
+>
+  <Compound />
+</Example>

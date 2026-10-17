@@ -1,29 +1,29 @@
-import compoundRaw from "./compound.svelte?raw";
-import controlledRaw from "./controlled.svelte?raw";
-import custom_recipeRaw from "./custom-recipe.svelte?raw";
-import defaultRaw from "./default.svelte?raw";
-import disabledRaw from "./disabled.svelte?raw";
-import groupRaw from "./group.svelte?raw";
-import invalidRaw from "./invalid.svelte?raw";
-import sizesRaw from "./sizes.svelte?raw";
-import variantsRaw from "./variants.svelte?raw";
-import with_clear_buttonRaw from "./with-clear-button.svelte?raw";
-import with_start_iconRaw from "./with-start-icon.svelte?raw";
-import with_triggerRaw from "./with-trigger.svelte?raw";
+import Compound from "./compound.svelte?raw";
+import Controlled from "./controlled.svelte?raw";
+import CustomRecipe from "./custom-recipe.svelte?raw";
+import Default from "./default.svelte?raw";
+import Disabled from "./disabled.svelte?raw";
+import Group from "./group.svelte?raw";
+import Invalid from "./invalid.svelte?raw";
+import Sizes from "./sizes.svelte?raw";
+import Variants from "./variants.svelte?raw";
+import WithClearButton from "./with-clear-button.svelte?raw";
+import WithStartIcon from "./with-start-icon.svelte?raw";
+import WithTrigger from "./with-trigger.svelte?raw";
 
 export const imports = `import { Autocomplete } from "@pisagor/svelte";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  Group: groupRaw,
-  Invalid: invalidRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
-  WithClearButton: with_clear_buttonRaw,
-  WithStartIcon: with_start_iconRaw,
-  WithTrigger: with_triggerRaw,
+  Compound,
+  Controlled,
+  CustomRecipe,
+  Default,
+  Disabled,
+  Group,
+  Invalid,
+  Sizes,
+  Variants,
+  WithClearButton,
+  WithStartIcon,
+  WithTrigger,
 } as const;

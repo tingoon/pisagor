@@ -1,19 +1,19 @@
-import controlledRaw from "./controlled.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import placementsRaw from "./placements.tsx?raw";
-import triggers_delaysRaw from "./triggers-delays.tsx?raw";
-import without_arrowRaw from "./without-arrow.tsx?raw";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { DisabledSource as Disabled } from "./disabled";
+import { PlacementsSource as Placements } from "./placements";
+import { TriggersDelaysSource as TriggersDelays } from "./triggers-delays";
+import { WithoutArrowSource as WithoutArrow } from "./without-arrow";
 
 export const imports = `import { HoverCard } from "@pisagor/solid";`;
 
 export const sources = {
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  Placements: placementsRaw,
-  TriggersDelays: triggers_delaysRaw,
-  WithoutArrow: without_arrowRaw,
+  Controlled,
+  CustomRecipe,
+  Default,
+  Disabled,
+  Placements,
+  TriggersDelays,
+  WithoutArrow,
 } as const;

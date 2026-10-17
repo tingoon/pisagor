@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./activation-none.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, Card, Editable, Field } from "@pisagor/svelte";
   import { CheckIcon, PencilSimpleIcon, XIcon } from "@pisagor/svelte/icons";

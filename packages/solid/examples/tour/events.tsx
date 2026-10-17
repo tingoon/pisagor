@@ -1,3 +1,4 @@
+import source from "./events.tsx?raw";
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour } from "@pisagor/solid";
 import { createSignal, For } from "solid-js";
@@ -101,3 +102,5 @@ export function Events() {
     </div>
   );
 }
+
+export { source as EventsSource };

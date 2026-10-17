@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { SkipNav } from "@pisagor/solid";
 
 export function Default() {
@@ -18,3 +19,5 @@ export function Default() {
     </>
   );
 }
+
+export { source as DefaultSource };

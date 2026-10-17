@@ -1,3 +1,4 @@
+import source from "./grouped-rows.tsx?raw";
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Select, Table } from "@pisagor/solid";
 import type { ColumnDef } from "@pisagor/solid/data-grid";
@@ -192,3 +193,5 @@ export function GroupedRows() {
     </DataGridShell>
   );
 }
+
+export { source as GroupedRowsSource };

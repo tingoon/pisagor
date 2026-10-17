@@ -1,0 +1,139 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/marquee/default.ts?raw";
+import OrientationHorizontalSource from "#examples/vue/marquee/orientation-horizontal.ts?raw";
+import OrientationVerticalSource from "#examples/vue/marquee/orientation-vertical.ts?raw";
+import SpacingSource from "#examples/vue/marquee/spacing.ts?raw";
+import FadeSource from "#examples/vue/marquee/fade.ts?raw";
+import CompoundSource from "#examples/vue/marquee/compound.ts?raw";
+import PauseOnHoverSource from "#examples/vue/marquee/pause-on-hover.ts?raw";
+import ReverseSource from "#examples/vue/marquee/reverse.ts?raw";
+import AutofillSource from "#examples/vue/marquee/autofill.ts?raw";
+import CustomSpeedSource from "#examples/vue/marquee/custom-speed.ts?raw";
+
+## Import
+
+```ts
+import { Marquee } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Scroll content in a continuous horizontal loop.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="marquee"
+  framework="vue"
+  kind="component"
+/>
+
+### Orientation Horizontal
+
+Lay out the marquee horizontally when items should read in a row.
+
+<Example
+  name="OrientationHorizontal"
+  code={OrientationHorizontalSource}
+  exampleId="marquee"
+  framework="vue"
+  kind="component"
+/>
+
+### Orientation Vertical
+
+Stack the marquee vertically when items should read in a column.
+
+<Example
+  name="OrientationVertical"
+  code={OrientationVerticalSource}
+  exampleId="marquee"
+  framework="vue"
+  kind="component"
+/>
+
+### Spacing
+
+Adjust gaps between parts when density needs to match the surrounding UI.
+
+<Example
+  name="Spacing"
+  code={SpacingSource}
+  exampleId="marquee"
+  framework="vue"
+  kind="component"
+/>
+
+### Fade
+
+Fade the edges so the loop feels less abrupt.
+
+<Example
+  name="Fade"
+  code={FadeSource}
+  exampleId="marquee"
+  framework="vue"
+  kind="component"
+/>
+
+### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="marquee"
+  framework="vue"
+  kind="component"
+/>
+
+### Pause On Hover
+
+Pause motion on hover so users can read or interact.
+
+<Example
+  name="PauseOnHover"
+  code={PauseOnHoverSource}
+  exampleId="marquee"
+  framework="vue"
+  kind="component"
+/>
+
+### Reverse
+
+Reverse direction when the strip should move the other way.
+
+<Example
+  name="Reverse"
+  code={ReverseSource}
+  exampleId="marquee"
+  framework="vue"
+  kind="component"
+/>
+
+### Autofill
+
+Duplicate items to fill the track when the source list is short.
+
+<Example
+  name="Autofill"
+  code={AutofillSource}
+  exampleId="marquee"
+  framework="vue"
+  kind="component"
+/>
+
+### Custom Speed
+
+Override speed when ambient motion should be slower or faster.
+
+<Example
+  name="CustomSpeed"
+  code={CustomSpeedSource}
+  exampleId="marquee"
+  framework="vue"
+  kind="component"
+/>

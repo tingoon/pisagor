@@ -1,13 +1,13 @@
-import compoundRaw from "./compound.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import with_actionsRaw from "./with-actions.tsx?raw";
+import { CompoundSource as Compound } from "./compound";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { WithActionsSource as WithActions } from "./with-actions";
 
 export const imports = `import { File } from "@pisagor/solid";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  WithActions: with_actionsRaw,
+  Compound,
+  CustomRecipe,
+  Default,
+  WithActions,
 } as const;

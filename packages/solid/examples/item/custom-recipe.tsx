@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { itemRecipe } from "@pisagor/recipes";
 import { Button, Item } from "@pisagor/solid";
 import { DotsThreeIcon } from "@pisagor/solid/icons";
@@ -31,3 +32,5 @@ export function CustomRecipe() {
     </Item>
   );
 }
+
+export { source as CustomRecipeSource };

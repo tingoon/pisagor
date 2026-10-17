@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./destructive.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhCopy, PhPencil, PhTrash } from "@phosphor-icons/vue";
 import { Button, DropdownMenu } from "@pisagor/vue";

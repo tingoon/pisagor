@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./slider-field.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Field, Slider } from "@pisagor/vue";
 </script>

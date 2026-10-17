@@ -1,3 +1,4 @@
+import source from "./without-handle.tsx?raw";
 import { Sortable } from "@pisagor/solid";
 import { createSignal, For } from "solid-js";
 
@@ -25,3 +26,5 @@ export function WithoutHandle() {
     </Sortable>
   );
 }
+
+export { source as WithoutHandleSource };

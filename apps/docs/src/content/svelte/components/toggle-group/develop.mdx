@@ -1,0 +1,167 @@
+import Example from "#/components/docs/example.astro";
+import VariantsSource from "#examples/svelte/toggle-group/variants.svelte?raw";
+import SizesSource from "#examples/svelte/toggle-group/sizes.svelte?raw";
+import HorizontalSource from "#examples/svelte/toggle-group/horizontal.svelte?raw";
+import VerticalSource from "#examples/svelte/toggle-group/vertical.svelte?raw";
+import SpacingSource from "#examples/svelte/toggle-group/spacing.svelte?raw";
+import FontWeightSource from "#examples/svelte/toggle-group/font-weight.svelte?raw";
+import CompoundSource from "#examples/svelte/toggle-group/compound.svelte?raw";
+import ControlledSource from "#examples/svelte/toggle-group/controlled.svelte?raw";
+import DisabledSource from "#examples/svelte/toggle-group/disabled.svelte?raw";
+import DisabledItemSource from "#examples/svelte/toggle-group/disabled-item.svelte?raw";
+import SingleSource from "#examples/svelte/toggle-group/single.svelte?raw";
+import CustomRecipeSource from "#examples/svelte/toggle-group/custom-recipe.svelte?raw";
+
+## Import
+
+```ts
+import { ToggleGroup } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Variants
+
+Choose visual weight or emphasis so the toggle group matches importance in the surrounding layout.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="toggle-group"
+  framework="svelte"
+  kind="component"
+/>
+
+### Sizes
+
+Match size to the surrounding layout — smaller in compact chrome, larger where the toggle group needs emphasis.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="toggle-group"
+  framework="svelte"
+  kind="component"
+/>
+
+### Horizontal
+
+Use a horizontal layout when the toggle group should read left to right.
+
+<Example
+  name="Horizontal"
+  code={HorizontalSource}
+  exampleId="toggle-group"
+  framework="svelte"
+  kind="component"
+/>
+
+### Vertical
+
+Use a vertical layout when the toggle group should read top to bottom.
+
+<Example
+  name="Vertical"
+  code={VerticalSource}
+  exampleId="toggle-group"
+  framework="svelte"
+  kind="component"
+/>
+
+### Spacing
+
+Adjust gaps between parts when density needs to match the surrounding UI.
+
+<Example
+  name="Spacing"
+  code={SpacingSource}
+  exampleId="toggle-group"
+  framework="svelte"
+  kind="component"
+/>
+
+### Font Weight
+
+Use the group for font-weight choices in a formatting toolbar.
+
+<Example
+  name="FontWeight"
+  code={FontWeightSource}
+  exampleId="toggle-group"
+  framework="svelte"
+  kind="component"
+/>
+
+### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="toggle-group"
+  framework="svelte"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this toggle group.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="toggle-group"
+  framework="svelte"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the toggle group is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="toggle-group"
+  framework="svelte"
+  kind="component"
+/>
+
+### Disabled Item
+
+Show that a specific toggle is unavailable.
+
+<Example
+  name="DisabledItem"
+  code={DisabledItemSource}
+  exampleId="toggle-group"
+  framework="svelte"
+  kind="component"
+/>
+
+### Single
+
+Allow only one pressed toggle when options are mutually exclusive.
+
+<Example
+  name="Single"
+  code={SingleSource}
+  exampleId="toggle-group"
+  framework="svelte"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `toggleGroupRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="toggle-group"
+  framework="svelte"
+  kind="component"
+/>

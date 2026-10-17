@@ -1,3 +1,4 @@
+import source from "./destructive.tsx?raw";
 import { Button, DropdownMenu } from "@pisagor/solid";
 import { CopyIcon, PencilIcon, TrashIcon } from "@pisagor/solid/icons";
 export function Destructive() {
@@ -28,3 +29,5 @@ export function Destructive() {
     </DropdownMenu>
   );
 }
+
+export { source as DestructiveSource };

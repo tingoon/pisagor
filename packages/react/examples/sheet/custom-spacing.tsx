@@ -1,3 +1,4 @@
+import source from "./custom-spacing.tsx?raw";
 import { Button, Field, Input, Sheet } from "@pisagor/react";
 export function CustomSpacing() {
   return (
@@ -36,3 +37,5 @@ export function CustomSpacing() {
     </Sheet>
   );
 }
+
+export { source as CustomSpacingSource };

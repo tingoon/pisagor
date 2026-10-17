@@ -1,21 +1,21 @@
-import compoundRaw from "./compound.vue?raw";
-import controlledRaw from "./controlled.vue?raw";
-import defaultRaw from "./default.vue?raw";
-import disabledRaw from "./disabled.vue?raw";
-import multipleRaw from "./multiple.vue?raw";
-import non_collapsibleRaw from "./non-collapsible.vue?raw";
-import sizesRaw from "./sizes.vue?raw";
-import with_cardRaw from "./with-card.vue?raw";
+import Compound from "./compound.vue?raw";
+import Controlled from "./controlled.vue?raw";
+import Default from "./default.vue?raw";
+import Disabled from "./disabled.vue?raw";
+import Multiple from "./multiple.vue?raw";
+import NonCollapsible from "./non-collapsible.vue?raw";
+import Sizes from "./sizes.vue?raw";
+import WithCard from "./with-card.vue?raw";
 
 export const imports = `import { Accordion } from "@pisagor/vue";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  Controlled: controlledRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  Multiple: multipleRaw,
-  NonCollapsible: non_collapsibleRaw,
-  Sizes: sizesRaw,
-  WithCard: with_cardRaw,
+  Compound,
+  Controlled,
+  Default,
+  Disabled,
+  Multiple,
+  NonCollapsible,
+  Sizes,
+  WithCard,
 } as const;

@@ -1,3 +1,4 @@
+import source from "./interval.tsx?raw";
 import { Button, Card, Timer } from "@pisagor/solid";
 import { PauseIcon, PlayIcon } from "@pisagor/solid/icons";
 export function Interval() {
@@ -47,3 +48,5 @@ export function Interval() {
     </Card>
   );
 }
+
+export { source as IntervalSource };

@@ -1,3 +1,4 @@
+import source from "./compound.ts?raw";
 import { Button, Tooltip } from "@pisagor/vue";
 import { defineComponent, h, Teleport } from "vue";
 
@@ -24,3 +25,5 @@ export default defineComponent({
       ]);
   },
 });
+
+export { source };

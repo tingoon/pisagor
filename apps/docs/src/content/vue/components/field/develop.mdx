@@ -1,0 +1,267 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/field/default.vue?raw";
+import OrientationHorizontalSource from "#examples/vue/field/orientation-horizontal.vue?raw";
+import OrientationVerticalSource from "#examples/vue/field/orientation-vertical.vue?raw";
+import AutocompleteFieldSource from "#examples/vue/field/autocomplete-field.vue?raw";
+import CheckboxFieldSource from "#examples/vue/field/checkbox-field.vue?raw";
+import CheckboxGroupFieldSource from "#examples/vue/field/checkbox-group-field.vue?raw";
+import ComboboxFieldSource from "#examples/vue/field/combobox-field.vue?raw";
+import ComboboxMultipleFieldSource from "#examples/vue/field/combobox-multiple-field.vue?raw";
+import NumberInputStorySource from "#examples/vue/field/number-input-story.vue?raw";
+import RadioGroupFieldSource from "#examples/vue/field/radio-group-field.vue?raw";
+import SelectFieldSource from "#examples/vue/field/select-field.vue?raw";
+import SliderFieldSource from "#examples/vue/field/slider-field.vue?raw";
+import SwitchFieldSource from "#examples/vue/field/switch-field.vue?raw";
+import TextareaFieldSource from "#examples/vue/field/textarea-field.vue?raw";
+import FieldGroupSource from "#examples/vue/field/field-group.vue?raw";
+import WithInputGroupSource from "#examples/vue/field/with-input-group.vue?raw";
+import RequiredFieldSource from "#examples/vue/field/required-field.vue?raw";
+import DisabledFieldSource from "#examples/vue/field/disabled-field.vue?raw";
+import WithErrorSource from "#examples/vue/field/with-error.vue?raw";
+
+## Import
+
+```ts
+import { Field } from "@pisagor/vue";
+```
+
+## Anatomy
+
+```vue
+<Field>
+  <Field.Label />
+  {/* any form control, e.g. <Input /> */}
+  <Field.Description />
+  <Field.Error />
+</Field>
+```
+
+## Examples
+
+### Default
+
+Wrap a control with label, description, and error text.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="field"
+  framework="vue"
+  kind="component"
+/>
+
+### Orientation Horizontal
+
+Place the label beside the control when horizontal forms fit better.
+
+<Example
+  name="OrientationHorizontal"
+  code={OrientationHorizontalSource}
+  exampleId="field"
+  framework="vue"
+  kind="component"
+/>
+
+### Orientation Vertical
+
+Stack the label above the control for the common form layout.
+
+<Example
+  name="OrientationVertical"
+  code={OrientationVerticalSource}
+  exampleId="field"
+  framework="vue"
+  kind="component"
+/>
+
+### Autocomplete Field
+
+Compose Field around Autocomplete when search-as-you-type needs label and error text.
+
+<Example
+  name="AutocompleteField"
+  code={AutocompleteFieldSource}
+  exampleId="field"
+  framework="vue"
+  kind="component"
+/>
+
+### Checkbox Field
+
+Compose Field around Checkbox when the option needs label, description, or error text.
+
+<Example
+  name="CheckboxField"
+  code={CheckboxFieldSource}
+  exampleId="field"
+  framework="vue"
+  kind="component"
+/>
+
+### Checkbox Group Field
+
+Compose Field around a checkbox group when related options share one label context.
+
+<Example
+  name="CheckboxGroupField"
+  code={CheckboxGroupFieldSource}
+  exampleId="field"
+  framework="vue"
+  kind="component"
+/>
+
+### Combobox Field
+
+Compose Field around Combobox when a filterable list needs label and error text.
+
+<Example
+  name="ComboboxField"
+  code={ComboboxFieldSource}
+  exampleId="field"
+  framework="vue"
+  kind="component"
+/>
+
+### Combobox Multiple Field
+
+Compose Field around a multi-select Combobox when several values share one field label.
+
+<Example
+  name="ComboboxMultipleField"
+  code={ComboboxMultipleFieldSource}
+  exampleId="field"
+  framework="vue"
+  kind="component"
+/>
+
+### Number Input Story
+
+Compose Field around Number Input when a numeric value needs label and error text.
+
+<Example
+  name="NumberInputStory"
+  code={NumberInputStorySource}
+  exampleId="field"
+  framework="vue"
+  kind="component"
+/>
+
+### Radio Group Field
+
+Compose Field around Radio Group when exclusive options share one field label.
+
+<Example
+  name="RadioGroupField"
+  code={RadioGroupFieldSource}
+  exampleId="field"
+  framework="vue"
+  kind="component"
+/>
+
+### Select Field
+
+Compose Field around Select when a single choice needs label and error text.
+
+<Example
+  name="SelectField"
+  code={SelectFieldSource}
+  exampleId="field"
+  framework="vue"
+  kind="component"
+/>
+
+### Slider Field
+
+Compose Field around Slider when a range value needs label and error text.
+
+<Example
+  name="SliderField"
+  code={SliderFieldSource}
+  exampleId="field"
+  framework="vue"
+  kind="component"
+/>
+
+### Switch Field
+
+Compose Field around Switch when an on/off setting needs label and error text.
+
+<Example
+  name="SwitchField"
+  code={SwitchFieldSource}
+  exampleId="field"
+  framework="vue"
+  kind="component"
+/>
+
+### Textarea Field
+
+Compose Field around Textarea when multi-line text needs label and error text.
+
+<Example
+  name="TextareaField"
+  code={TextareaFieldSource}
+  exampleId="field"
+  framework="vue"
+  kind="component"
+/>
+
+### Field Group
+
+Group several fields under shared context.
+
+<Example
+  name="FieldGroup"
+  code={FieldGroupSource}
+  exampleId="field"
+  framework="vue"
+  kind="component"
+/>
+
+### With Input Group
+
+Combine Field with Input Group when addons sit on the control.
+
+<Example
+  name="WithInputGroup"
+  code={WithInputGroupSource}
+  exampleId="field"
+  framework="vue"
+  kind="component"
+/>
+
+### Required Field
+
+Mark the field required and surface that expectation in the label.
+
+<Example
+  name="RequiredField"
+  code={RequiredFieldSource}
+  exampleId="field"
+  framework="vue"
+  kind="component"
+/>
+
+### Disabled Field
+
+Show that the field is unavailable.
+
+<Example
+  name="DisabledField"
+  code={DisabledFieldSource}
+  exampleId="field"
+  framework="vue"
+  kind="component"
+/>
+
+### With Error
+
+Show error text under the control when validation fails.
+
+<Example
+  name="WithError"
+  code={WithErrorSource}
+  exampleId="field"
+  framework="vue"
+  kind="component"
+/>

@@ -1,3 +1,4 @@
+import source from "./row-selection.tsx?raw";
 import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
 import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Button, Checkbox, Pagination, Table } from "@pisagor/react";
@@ -304,3 +305,5 @@ export function RowSelection() {
     </DataGridShell>
   );
 }
+
+export { source as RowSelectionSource };

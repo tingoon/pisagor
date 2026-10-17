@@ -1,23 +1,23 @@
-import compoundRaw from "./compound.tsx?raw";
-import countRaw from "./count.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import fallbacksRaw from "./fallbacks.tsx?raw";
-import groupRaw from "./group.tsx?raw";
-import initialsRaw from "./initials.tsx?raw";
-import shapesRaw from "./shapes.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
+import { CompoundSource as Compound } from "./compound";
+import { CountSource as Count } from "./count";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { FallbacksSource as Fallbacks } from "./fallbacks";
+import { GroupSource as Group } from "./group";
+import { InitialsSource as Initials } from "./initials";
+import { ShapesSource as Shapes } from "./shapes";
+import { SizesSource as Sizes } from "./sizes";
 
 export const imports = `import { Avatar } from "@pisagor/solid";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  Count: countRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Fallbacks: fallbacksRaw,
-  Group: groupRaw,
-  Initials: initialsRaw,
-  Shapes: shapesRaw,
-  Sizes: sizesRaw,
+  Compound,
+  Count,
+  CustomRecipe,
+  Default,
+  Fallbacks,
+  Group,
+  Initials,
+  Shapes,
+  Sizes,
 } as const;

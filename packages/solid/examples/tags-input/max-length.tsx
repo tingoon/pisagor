@@ -1,3 +1,4 @@
+import source from "./max-length.tsx?raw";
 import { Field, TagsInput } from "@pisagor/solid";
 import { For } from "solid-js";
 
@@ -21,3 +22,5 @@ export function MaxLength() {
     </Field>
   );
 }
+
+export { source as MaxLengthSource };

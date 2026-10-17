@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./icon-group.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhTextB, PhTextItalic, PhTextUnderline } from "@phosphor-icons/vue";
 import { Toggle } from "@pisagor/vue";

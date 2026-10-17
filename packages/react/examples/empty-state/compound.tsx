@@ -1,3 +1,4 @@
+import source from "./compound.tsx?raw";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { Button, EmptyState } from "@pisagor/react";
 export function Compound() {
@@ -18,3 +19,5 @@ export function Compound() {
     </EmptyState.Root>
   );
 }
+
+export { source as CompoundSource };

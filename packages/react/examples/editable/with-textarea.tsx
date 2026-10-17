@@ -1,3 +1,4 @@
+import source from "./with-textarea.tsx?raw";
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Button, Card, Editable, Field, Textarea } from "@pisagor/react";
 export function WithTextarea() {
@@ -37,3 +38,5 @@ export function WithTextarea() {
     </Card>
   );
 }
+
+export { source as WithTextareaSource };

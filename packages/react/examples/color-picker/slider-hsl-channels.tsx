@@ -1,3 +1,4 @@
+import source from "./slider-hsl-channels.tsx?raw";
 import { ColorPicker } from "@pisagor/react";
 
 export function SliderHslChannels() {
@@ -13,3 +14,5 @@ export function SliderHslChannels() {
     </ColorPicker>
   );
 }
+
+export { source as SliderHslChannelsSource };

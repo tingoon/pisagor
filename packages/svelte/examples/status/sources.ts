@@ -1,17 +1,17 @@
-import custom_colorRaw from "./custom-color.svelte?raw";
-import custom_recipeRaw from "./custom-recipe.svelte?raw";
-import custom_sizeRaw from "./custom-size.svelte?raw";
-import sizesRaw from "./sizes.svelte?raw";
-import variantsRaw from "./variants.svelte?raw";
-import with_iconRaw from "./with-icon.svelte?raw";
+import CustomColor from "./custom-color.svelte?raw";
+import CustomRecipe from "./custom-recipe.svelte?raw";
+import CustomSize from "./custom-size.svelte?raw";
+import Sizes from "./sizes.svelte?raw";
+import Variants from "./variants.svelte?raw";
+import WithIcon from "./with-icon.svelte?raw";
 
 export const imports = `import { Status } from "@pisagor/svelte";`;
 
 export const sources = {
-  CustomColor: custom_colorRaw,
-  CustomRecipe: custom_recipeRaw,
-  CustomSize: custom_sizeRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
-  WithIcon: with_iconRaw,
+  CustomColor,
+  CustomRecipe,
+  CustomSize,
+  Sizes,
+  Variants,
+  WithIcon,
 } as const;

@@ -1,3 +1,4 @@
+import source from "./autocomplete-field.tsx?raw";
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { Autocomplete, Combobox, Field } from "@pisagor/react";
 export function AutocompleteField() {
@@ -46,3 +47,5 @@ export function AutocompleteField() {
     </Field>
   );
 }
+
+export { source as AutocompleteFieldSource };

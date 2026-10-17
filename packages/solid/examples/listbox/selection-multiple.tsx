@@ -1,3 +1,4 @@
+import source from "./selection-multiple.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Item, Listbox } from "@pisagor/solid";
 export function SelectionMultiple() {
@@ -25,3 +26,5 @@ export function SelectionMultiple() {
     </Item.Group>
   );
 }
+
+export { source as SelectionMultipleSource };

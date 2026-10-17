@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./striped-variant.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Table } from "@pisagor/svelte";
   import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";

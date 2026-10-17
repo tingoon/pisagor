@@ -1,3 +1,4 @@
+import source from "./with-description.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Item, Listbox } from "@pisagor/solid";
 export function WithDescription() {
@@ -42,3 +43,5 @@ export function WithDescription() {
     </Item.Group>
   );
 }
+
+export { source as WithDescriptionSource };

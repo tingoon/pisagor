@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./gutter.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import {
   PhArchive,

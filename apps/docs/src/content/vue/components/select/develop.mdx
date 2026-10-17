@@ -1,0 +1,180 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/select/default.vue?raw";
+import VariantsSource from "#examples/vue/select/variants.vue?raw";
+import SizesSource from "#examples/vue/select/sizes.vue?raw";
+import MultipleSource from "#examples/vue/select/multiple.vue?raw";
+import GroupingSource from "#examples/vue/select/grouping.vue?raw";
+import WithScrollSource from "#examples/vue/select/with-scroll.vue?raw";
+import EmptySource from "#examples/vue/select/empty.vue?raw";
+import CompoundSource from "#examples/vue/select/compound.vue?raw";
+import ControlledSource from "#examples/vue/select/controlled.vue?raw";
+import DisabledSource from "#examples/vue/select/disabled.vue?raw";
+import InvalidSource from "#examples/vue/select/invalid.vue?raw";
+import MaxSelectionSource from "#examples/vue/select/max-selection.vue?raw";
+import CustomRecipeSource from "#examples/vue/select/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { Select } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Choose one option from a dropdown list.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="select"
+  framework="vue"
+  kind="component"
+/>
+
+### Variants
+
+Choose visual weight or emphasis so the select matches importance in the surrounding layout.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="select"
+  framework="vue"
+  kind="component"
+/>
+
+### Sizes
+
+Match size to the surrounding layout — smaller in compact chrome, larger where the select needs emphasis.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="select"
+  framework="vue"
+  kind="component"
+/>
+
+### Multiple
+
+Allow more than one open or selected item when users need several at once.
+
+<Example
+  name="Multiple"
+  code={MultipleSource}
+  exampleId="select"
+  framework="vue"
+  kind="component"
+/>
+
+### Grouped
+
+Group options under labels for long lists.
+
+<Example
+  name="Grouping"
+  code={GroupingSource}
+  exampleId="select"
+  framework="vue"
+  kind="component"
+/>
+
+### With Scroll
+
+Add scrolling when the list of items can grow beyond the available height.
+
+<Example
+  name="WithScroll"
+  code={WithScrollSource}
+  exampleId="select"
+  framework="vue"
+  kind="component"
+/>
+
+### Empty
+
+Show an empty list presentation when there are no options yet.
+
+<Example
+  name="Empty"
+  code={EmptySource}
+  exampleId="select"
+  framework="vue"
+  kind="component"
+/>
+
+### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="select"
+  framework="vue"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this select.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="select"
+  framework="vue"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the select is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="select"
+  framework="vue"
+  kind="component"
+/>
+
+### Invalid
+
+Surface a validation or error state so users know the select needs attention before continuing.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="select"
+  framework="vue"
+  kind="component"
+/>
+
+### Max Selection
+
+Cap how many options can be selected in multi-select mode.
+
+<Example
+  name="MaxSelection"
+  code={MaxSelectionSource}
+  exampleId="select"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `selectRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="select"
+  framework="vue"
+  kind="component"
+/>

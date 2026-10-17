@@ -1,0 +1,73 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/sortable/default.vue?raw";
+import HorizontalSource from "#examples/vue/sortable/horizontal.vue?raw";
+import WithoutHandleSource from "#examples/vue/sortable/without-handle.vue?raw";
+import DisabledSource from "#examples/vue/sortable/disabled.vue?raw";
+
+## Import
+
+```ts
+import { Sortable } from "@pisagor/vue";
+```
+
+## Anatomy
+
+```vue
+<Sortable>
+  <Sortable.Item>
+    <Sortable.ItemContent>
+      <Sortable.Handle />
+    </Sortable.ItemContent>
+  </Sortable.Item>
+</Sortable>
+```
+
+## Examples
+
+### Default
+
+Reorder items by drag or keyboard.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="sortable"
+  framework="vue"
+  kind="component"
+/>
+
+### Horizontal
+
+Use a horizontal layout when the sortable list should read left to right.
+
+<Example
+  name="Horizontal"
+  code={HorizontalSource}
+  exampleId="sortable"
+  framework="vue"
+  kind="component"
+/>
+
+### Without Handle
+
+Drag from the whole row when a dedicated handle is unnecessary.
+
+<Example
+  name="WithoutHandle"
+  code={WithoutHandleSource}
+  exampleId="sortable"
+  framework="vue"
+  kind="component"
+/>
+
+### Disabled
+
+Show that reordering is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="sortable"
+  framework="vue"
+  kind="component"
+/>

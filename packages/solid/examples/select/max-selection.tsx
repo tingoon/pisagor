@@ -1,3 +1,4 @@
+import source from "./max-selection.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Select } from "@pisagor/solid";
 import { createSignal, For } from "solid-js";
@@ -51,3 +52,5 @@ export function MaxSelection() {
     </Select.Root>
   );
 }
+
+export { source as MaxSelectionSource };

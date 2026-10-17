@@ -1,3 +1,4 @@
+import source from "./with-keyboard-shortcut.tsx?raw";
 import { Button, Kbd, Tooltip } from "@pisagor/react";
 export function WithKeyboardShortcut() {
   return (
@@ -17,3 +18,5 @@ export function WithKeyboardShortcut() {
     </Tooltip>
   );
 }
+
+export { source as WithKeyboardShortcutSource };

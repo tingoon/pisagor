@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./padding.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Surface } from "@pisagor/svelte";
 </script>

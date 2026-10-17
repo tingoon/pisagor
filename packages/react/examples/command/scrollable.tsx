@@ -1,3 +1,4 @@
+import source from "./scrollable.tsx?raw";
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { Command } from "@pisagor/react";
 
@@ -61,3 +62,5 @@ export function Scrollable() {
     </Command>
   );
 }
+
+export { source as ScrollableSource };

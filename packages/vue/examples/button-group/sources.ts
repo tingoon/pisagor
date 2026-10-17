@@ -1,19 +1,19 @@
-import custom_recipeRaw from "./custom-recipe.vue?raw";
-import defaultRaw from "./default.vue?raw";
-import nestedRaw from "./nested.vue?raw";
-import orientation_horizontalRaw from "./orientation-horizontal.vue?raw";
-import orientation_verticalRaw from "./orientation-vertical.vue?raw";
-import sizesRaw from "./sizes.vue?raw";
-import with_separatorRaw from "./with-separator.vue?raw";
+import CustomRecipe from "./custom-recipe.vue?raw";
+import Default from "./default.vue?raw";
+import Nested from "./nested.vue?raw";
+import OrientationHorizontal from "./orientation-horizontal.vue?raw";
+import OrientationVertical from "./orientation-vertical.vue?raw";
+import Sizes from "./sizes.vue?raw";
+import WithSeparator from "./with-separator.vue?raw";
 
 export const imports = `import { ButtonGroup } from "@pisagor/vue";`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Nested: nestedRaw,
-  OrientationHorizontal: orientation_horizontalRaw,
-  OrientationVertical: orientation_verticalRaw,
-  Sizes: sizesRaw,
-  WithSeparator: with_separatorRaw,
+  CustomRecipe,
+  Default,
+  Nested,
+  OrientationHorizontal,
+  OrientationVertical,
+  Sizes,
+  WithSeparator,
 } as const;

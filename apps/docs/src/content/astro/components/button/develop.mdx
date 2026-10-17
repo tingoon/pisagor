@@ -1,0 +1,173 @@
+import Example from "#/components/docs/example.astro";
+import Variants from "#examples/astro/button/variants.astro";
+import Sizes from "#examples/astro/button/sizes.astro";
+import Pill from "#examples/astro/button/pill.astro";
+import WithIcon from "#examples/astro/button/with-icon.astro";
+import Icon from "#examples/astro/button/icon.astro";
+import Disabled from "#examples/astro/button/disabled.astro";
+import Loading from "#examples/astro/button/loading.astro";
+import NoClickEffect from "#examples/astro/button/no-click-effect.astro";
+import CustomColor from "#examples/astro/button/custom-color.astro";
+import CustomRecipe from "#examples/astro/button/custom-recipe.astro";
+import VariantsSource from "#examples/astro/button/variants.astro?raw";
+import SizesSource from "#examples/astro/button/sizes.astro?raw";
+import PillSource from "#examples/astro/button/pill.astro?raw";
+import WithIconSource from "#examples/astro/button/with-icon.astro?raw";
+import IconSource from "#examples/astro/button/icon.astro?raw";
+import DisabledSource from "#examples/astro/button/disabled.astro?raw";
+import LoadingSource from "#examples/astro/button/loading.astro?raw";
+import NoClickEffectSource from "#examples/astro/button/no-click-effect.astro?raw";
+import CustomColorSource from "#examples/astro/button/custom-color.astro?raw";
+import CustomRecipeSource from "#examples/astro/button/custom-recipe.astro?raw";
+
+## Import
+
+```ts
+import { Button } from "@pisagor/astro";
+```
+
+## Examples
+
+### Variants
+
+Choose weight by importance: default for the primary action, secondary or outline for alternatives, destructive for irreversible work, ghost for low-emphasis chrome, and link when the control should read like inline text.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="button"
+  framework="astro"
+  kind="component"
+>
+  <Variants />
+</Example>
+
+### Sizes
+
+Match size to the surrounding layout — smaller in compact toolbars, larger for prominent calls to action. Icon sizes keep square hit targets aligned with text buttons.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="button"
+  framework="astro"
+  kind="component"
+>
+  <Sizes />
+</Example>
+
+### Pill
+
+Use a fully rounded shape for chip-like or toolbar actions where softer geometry fits the layout.
+
+<Example
+  name="Pill"
+  code={PillSource}
+  exampleId="button"
+  framework="astro"
+  kind="component"
+>
+  <Pill />
+</Example>
+
+### With icon
+
+Pair an icon with a label to reinforce meaning.
+
+<Example
+  name="WithIcon"
+  code={WithIconSource}
+  exampleId="button"
+  framework="astro"
+  kind="component"
+>
+  <WithIcon />
+</Example>
+
+### Icon
+
+An icon-only button for a single, well-known action. Always provide an accessible name.
+
+<Example
+  name="Icon"
+  code={IconSource}
+  exampleId="button"
+  framework="astro"
+  kind="component"
+>
+  <Icon />
+</Example>
+
+### Disabled
+
+Show that an action is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="button"
+  framework="astro"
+  kind="component"
+>
+  <Disabled />
+</Example>
+
+### Loading
+
+Keep the control visible while work is in progress and block another press until it finishes.
+
+<Example
+  name="Loading"
+  code={LoadingSource}
+  exampleId="button"
+  framework="astro"
+  kind="component"
+>
+  <Loading />
+</Example>
+
+### No click effect
+
+Turn off the press scale when motion would distract or conflict with surrounding interaction feedback.
+
+<Example
+  name="NoClickEffect"
+  code={NoClickEffectSource}
+  exampleId="button"
+  framework="astro"
+  kind="component"
+>
+  <NoClickEffect />
+</Example>
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Override the fill when a brand or contextual color matters more than the theme primary.
+
+<Example
+  name="CustomColor"
+  code={CustomColorSource}
+  exampleId="button"
+  framework="astro"
+  kind="component"
+>
+  <CustomColor />
+</Example>
+
+### Custom recipe
+
+Extend `buttonRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="button"
+  framework="astro"
+  kind="component"
+>
+  <CustomRecipe />
+</Example>

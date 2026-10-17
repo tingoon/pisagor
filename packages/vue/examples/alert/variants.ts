@@ -1,3 +1,4 @@
+import source from "./variants.ts?raw";
 import {
   PhCheckCircle,
   PhChecks,
@@ -48,3 +49,5 @@ export default defineComponent({
       ]);
   },
 });
+
+export { source };

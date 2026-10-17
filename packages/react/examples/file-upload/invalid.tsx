@@ -1,3 +1,4 @@
+import source from "./invalid.tsx?raw";
 import { Button, FileUpload } from "@pisagor/react";
 export function Invalid() {
   return (
@@ -14,3 +15,5 @@ export function Invalid() {
     </FileUpload>
   );
 }
+
+export { source as InvalidSource };

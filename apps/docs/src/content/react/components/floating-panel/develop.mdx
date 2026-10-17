@@ -1,0 +1,99 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/floating-panel/default.tsx";
+import { ControlledPositionSource } from "#examples/react/floating-panel/controlled-position.tsx";
+import { ControlledSizeSource } from "#examples/react/floating-panel/controlled-size.tsx";
+import { CustomSpacingSource } from "#examples/react/floating-panel/custom-spacing.tsx";
+import { CustomRecipeSource } from "#examples/react/floating-panel/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { FloatingPanel } from "@pisagor/react";
+```
+
+## Anatomy
+
+```tsx
+<FloatingPanel>
+  <FloatingPanel.Trigger />
+  <FloatingPanel.Content>
+    <FloatingPanel.Header>
+      <FloatingPanel.Title />
+      <FloatingPanel.Control>
+        <FloatingPanel.Minimize />
+        <FloatingPanel.Maximize />
+        <FloatingPanel.Restore />
+        <FloatingPanel.CloseTrigger />
+      </FloatingPanel.Control>
+    </FloatingPanel.Header>
+    <FloatingPanel.Body />
+    <FloatingPanel.Footer />
+  </FloatingPanel.Content>
+</FloatingPanel>
+```
+
+## Examples
+
+### Default
+
+Float a draggable, resizable tool above the workspace.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="floating-panel"
+  framework="react"
+  kind="component"
+/>
+
+### Controlled Position
+
+Drive position from the parent when layout must restore a saved place.
+
+<Example
+  name="ControlledPosition"
+  code={ControlledPositionSource}
+  exampleId="floating-panel"
+  framework="react"
+  kind="component"
+/>
+
+### Controlled Size
+
+Drive size from the parent when dimensions must restore a saved layout.
+
+<Example
+  name="ControlledSize"
+  code={ControlledSizeSource}
+  exampleId="floating-panel"
+  framework="react"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Override spacing when the default density does not match the surrounding layout.
+
+<Example
+  name="CustomSpacing"
+  code={CustomSpacingSource}
+  exampleId="floating-panel"
+  framework="react"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `floatingPanelRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="floating-panel"
+  framework="react"
+  kind="component"
+/>

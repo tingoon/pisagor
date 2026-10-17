@@ -1,3 +1,4 @@
+import source from "./custom-style.tsx?raw";
 import { Highlight } from "@pisagor/react";
 
 export function CustomStyle() {
@@ -11,3 +12,5 @@ export function CustomStyle() {
     </p>
   );
 }
+
+export { source as CustomStyleSource };

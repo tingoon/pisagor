@@ -1,7 +1,7 @@
-import defaultRaw from "./default.tsx?raw";
+import { DefaultSource as Default } from "./default";
 
 export const imports = `import { useAppForm } from "@pisagor/solid-form/tanstack";`;
 
 export const sources = {
-  Default: defaultRaw,
+  Default,
 } as const;

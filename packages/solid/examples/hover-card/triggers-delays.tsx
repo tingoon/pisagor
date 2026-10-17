@@ -1,3 +1,4 @@
+import source from "./triggers-delays.tsx?raw";
 import { Avatar, Button, HoverCard } from "@pisagor/solid";
 import { MapPinIcon } from "@pisagor/solid/icons";
 export function TriggersDelays() {
@@ -34,3 +35,5 @@ export function TriggersDelays() {
     </HoverCard>
   );
 }
+
+export { source as TriggersDelaysSource };

@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./icon-group.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Toggle } from "@pisagor/svelte";
   import TextBIcon from "phosphor-svelte/lib/TextBIcon";

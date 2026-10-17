@@ -1,3 +1,4 @@
+import source from "./disabled.tsx?raw";
 import { createListCollection } from "@ark-ui/solid/collection";
 import { Select } from "@pisagor/solid";
 
@@ -22,3 +23,5 @@ export function Disabled() {
     </Select.Root>
   );
 }
+
+export { source as DisabledSource };

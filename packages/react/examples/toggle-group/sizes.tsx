@@ -1,3 +1,4 @@
+import source from "./sizes.tsx?raw";
 import { ToggleGroup } from "@pisagor/react";
 
 const items = [
@@ -14,3 +15,5 @@ export function Sizes() {
     </div>
   );
 }
+
+export { source as SizesSource };

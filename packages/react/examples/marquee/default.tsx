@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import {
   ArrowRightIcon,
   AtomIcon,
@@ -38,3 +39,5 @@ export function Default() {
     />
   );
 }
+
+export { source as DefaultSource };

@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./font-weight.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { ToggleGroup } from "@pisagor/vue";
 import { ref } from "vue";

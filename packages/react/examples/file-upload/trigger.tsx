@@ -1,3 +1,4 @@
+import source from "./trigger.tsx?raw";
 import { PaperclipIcon } from "@phosphor-icons/react";
 import { Button, FileUpload } from "@pisagor/react";
 export function Trigger() {
@@ -15,3 +16,5 @@ export function Trigger() {
     </FileUpload>
   );
 }
+
+export { source as TriggerSource };

@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./sorting.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhCaretDown, PhCaretUp } from "@phosphor-icons/vue";
 import { Badge, Table } from "@pisagor/vue";

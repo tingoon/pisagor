@@ -1,19 +1,19 @@
-import controlledRaw from "./controlled.vue?raw";
-import custom_compositionRaw from "./custom-composition.vue?raw";
-import custom_recipeRaw from "./custom-recipe.vue?raw";
-import defaultRaw from "./default.vue?raw";
-import link_urlsRaw from "./link-urls.vue?raw";
-import linksRaw from "./links.vue?raw";
-import page_rangeRaw from "./page-range.vue?raw";
+import Controlled from "./controlled.vue?raw";
+import CustomComposition from "./custom-composition.vue?raw";
+import CustomRecipe from "./custom-recipe.vue?raw";
+import Default from "./default.vue?raw";
+import Links from "./links.vue?raw";
+import LinkUrls from "./link-urls.vue?raw";
+import PageRange from "./page-range.vue?raw";
 
 export const imports = `import { Pagination } from "@pisagor/vue";`;
 
 export const sources = {
-  Controlled: controlledRaw,
-  CustomComposition: custom_compositionRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Links: linksRaw,
-  LinkUrls: link_urlsRaw,
-  PageRange: page_rangeRaw,
+  Controlled,
+  CustomComposition,
+  CustomRecipe,
+  Default,
+  Links,
+  LinkUrls,
+  PageRange,
 } as const;

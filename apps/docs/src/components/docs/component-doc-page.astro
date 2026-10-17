@@ -1,28 +1,23 @@
 ---
 import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
 import PropsTable from "#/components/docs/props-table.astro";
 import DocsLayout from "#/layouts/docs-layout.astro";
 import { resolveAnatomySrc } from "#/lib/anatomy";
 import {
-  assertExampleSource,
   type ComponentDocKind,
   defaultPackageName,
-  getExampleExport,
+  extractExampleNames,
+  findDisplayedSkillBody,
   listComponentDocTabs,
-  loadExamples,
   loadProps,
   loadSkillMd,
   loadSkillPanes,
-  PREVIEW_LANGUAGE,
   type SkillPaneId,
 } from "#/lib/component-doc";
 import type { ComponentDocs } from "#/lib/component-docs-types";
-import { renderDevelopSegments } from "#/lib/develop-markdown";
 import type { Framework } from "#/lib/nav";
 import { frameworks, withDocsBase } from "#/lib/nav";
 import { extractTocHeadings } from "#/lib/parse-example-directives";
-import { findDisplayedSkillBody } from "#/lib/skill-doc";
 
 interface Props {
   id: string;
@@ -40,14 +35,10 @@ const anatomySrc = resolveAnatomySrc(id);
 const { frontmatter } = await loadSkillMd(framework, id, kind);
 const panes = await loadSkillPanes(framework, id, kind);
 const docs = frontmatter as ComponentDocs;
-const examples =
-  activeTab === "develop" ? await loadExamples(framework, id, kind) : null;
 const propsRows = loadProps(id);
 const pkg = docs.packageName ?? defaultPackageName(framework, kind);
-const language = PREVIEW_LANGUAGE[framework];
 const areaSlug = kind === "form" ? "forms" : "components";
 
-const skillOpts = { framework, packageName: pkg };
 const tabs = await listComponentDocTabs(framework, id, kind);
 
 if (!tabs.some((t) => t.id === activeTab)) {
@@ -55,15 +46,12 @@ if (!tabs.some((t) => t.id === activeTab)) {
 }
 
 const DesignContent = panes.design?.Content;
+const DevelopContent = panes.develop?.Content;
 
 const paneForToc = activeTab === "design" ? "design" : "develop";
-const developBody = findDisplayedSkillBody(id, "develop", skillOpts);
-const paneHeadings = extractTocHeadings(
-  findDisplayedSkillBody(id, paneForToc, skillOpts),
-);
-// Develop markdown is the SSOT: page sections and TOC follow its heading order.
-const developSegments =
-  activeTab === "develop" ? await renderDevelopSegments(developBody) : [];
+const paneBody = findDisplayedSkillBody(framework, id, paneForToc, kind);
+const developBody = findDisplayedSkillBody(framework, id, "develop", kind);
+const paneHeadings = extractTocHeadings(paneBody);
 const headings = [
   ...paneHeadings,
   ...(activeTab === "develop"
@@ -72,18 +60,7 @@ const headings = [
 ];
 
 const exampleExportNames =
-  examples == null
-    ? []
-    : developSegments.flatMap((segment) => {
-        if (segment.type !== "example-section") return [];
-        return segment.items.flatMap((item) => {
-          if (item.type !== "example") return [];
-          assertExampleSource(examples, item.doc.exportName);
-          return examples.sources[item.doc.exportName]
-            ? [item.doc.exportName]
-            : [];
-        });
-      });
+  activeTab === "develop" ? extractExampleNames(developBody) : [];
 
 function tabHref(tabId: SkillPaneId): string {
   return withDocsBase(`/${framework}/${areaSlug}/${id}/${tabId}`);
@@ -176,78 +153,15 @@ const tocTabLinkClass =
   )}
 
   <div>
-    {activeTab === "develop" ? (
+    {activeTab === "develop" && DevelopContent ? (
       <div
         aria-labelledby="doc-tab-develop"
         id="doc-panel-develop"
         role="tabpanel"
       >
-        {developSegments.length > 0 && examples ? (
-          <div class={proseClass}>
-            {developSegments.map((segment) => {
-              if (segment.type === "html") {
-                return <Fragment set:html={segment.html} />;
-              }
-
-              if (segment.type !== "example-section") return null;
-
-              return (
-                <>
-                  <h2 id={segment.id}>{segment.title}</h2>
-                  {segment.items.map((item) => {
-                    if (item.type === "html") {
-                      return <Fragment set:html={item.html} />;
-                    }
-                    const ex = item.doc;
-                    assertExampleSource(examples, ex.exportName);
-                    const Example =
-                      framework === "astro"
-                        ? getExampleExport(examples, ex.exportName)
-                        : null;
-                    if (!examples.sources[ex.exportName]) return null;
-                    const HeadingTag = `h${Math.min(Math.max(ex.depth, 3), 6)}`;
-                    return (
-                      <>
-                        {item.headed ? (
-                          <HeadingTag
-                            class="mt-10 mb-3 font-semibold text-xl tracking-tight"
-                            id={ex.id}
-                          >
-                            {ex.title}
-                          </HeadingTag>
-                        ) : null}
-                        {item.descriptionHtml ? (
-                          <div
-                            class="mb-3 text-foreground/80 text-sm leading-7 [&_p]:my-0!"
-                            set:html={item.descriptionHtml}
-                          />
-                        ) : null}
-                        <ComponentPreview
-                          exampleId={id}
-                          exportName={ex.exportName}
-                          framework={framework}
-                          kind={kind}
-                          language={language}
-                          packageName={pkg}
-                          title={ex.title}
-                        >
-                          {framework === "astro" ? (
-                            <Example />
-                          ) : (
-                            <div
-                              class="min-h-12 w-full"
-                              data-example-slot={ex.exportName}
-                            />
-                          )}
-                        </ComponentPreview>
-                      </>
-                    );
-                  })}
-                </>
-              );
-            })}
-          </div>
-        ) : null}
+        <div class={proseClass}>
+          <DevelopContent />
+        </div>
 
         {framework !== "astro" && exampleExportNames.length > 0 ? (
           <div

@@ -1,3 +1,4 @@
+import source from "./rename.ts?raw";
 import type { TreeNodeType } from "@pisagor/vue";
 import { createTreeCollection, TreeView } from "@pisagor/vue";
 import type { VNode } from "vue";
@@ -65,3 +66,5 @@ export default defineComponent({
       ]);
   },
 });
+
+export { source };

@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./popover-with-swatch-picker.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Button, ColorPicker } from "@pisagor/vue";
 

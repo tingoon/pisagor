@@ -1,3 +1,4 @@
+import source from "./blur-on-complete.tsx?raw";
 import { InputOTP } from "@pisagor/solid";
 
 export function BlurOnComplete() {
@@ -10,3 +11,5 @@ export function BlurOnComplete() {
     </InputOTP>
   );
 }
+
+export { source as BlurOnCompleteSource };

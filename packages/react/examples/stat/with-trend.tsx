@@ -1,3 +1,4 @@
+import source from "./with-trend.tsx?raw";
 import { Stat } from "@pisagor/react";
 
 export function WithTrend() {
@@ -20,3 +21,5 @@ export function WithTrend() {
     </div>
   );
 }
+
+export { source as WithTrendSource };

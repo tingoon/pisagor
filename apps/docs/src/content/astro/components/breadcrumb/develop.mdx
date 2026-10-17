@@ -1,0 +1,107 @@
+import Example from "#/components/docs/example.astro";
+import Default from "#examples/astro/breadcrumb/default.astro";
+import Collapsed from "#examples/astro/breadcrumb/collapsed.astro";
+import CustomSeparator from "#examples/astro/breadcrumb/custom-separator.astro";
+import Compound from "#examples/astro/breadcrumb/compound.astro";
+import WithLink from "#examples/astro/breadcrumb/with-link.astro";
+import CustomRecipe from "#examples/astro/breadcrumb/custom-recipe.astro";
+import DefaultSource from "#examples/astro/breadcrumb/default.astro?raw";
+import CollapsedSource from "#examples/astro/breadcrumb/collapsed.astro?raw";
+import CustomSeparatorSource from "#examples/astro/breadcrumb/custom-separator.astro?raw";
+import CompoundSource from "#examples/astro/breadcrumb/compound.astro?raw";
+import WithLinkSource from "#examples/astro/breadcrumb/with-link.astro?raw";
+import CustomRecipeSource from "#examples/astro/breadcrumb/custom-recipe.astro?raw";
+
+## Import
+
+```ts
+import { Breadcrumb } from "@pisagor/astro";
+```
+
+## Examples
+
+### Default
+
+The full path from root to the current page.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="breadcrumb"
+  framework="astro"
+  kind="component"
+>
+  <Default />
+</Example>
+
+### Collapsed
+
+Collapse middle segments when the path is long so the current page stays visible.
+
+<Example
+  name="Collapsed"
+  code={CollapsedSource}
+  exampleId="breadcrumb"
+  framework="astro"
+  kind="component"
+>
+  <Collapsed />
+</Example>
+
+### Custom Separator
+
+Replace the default separator when brand or locale needs a different divider.
+
+<Example
+  name="CustomSeparator"
+  code={CustomSeparatorSource}
+  exampleId="breadcrumb"
+  framework="astro"
+  kind="component"
+>
+  <CustomSeparator />
+</Example>
+
+### Compound
+
+Compose items and separators from parts for a custom breadcrumb layout.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="breadcrumb"
+  framework="astro"
+  kind="component"
+>
+  <Compound />
+</Example>
+
+### As child
+
+Link ancestors so users can jump back through the hierarchy.
+
+<Example
+  name="WithLink"
+  code={WithLinkSource}
+  exampleId="breadcrumb"
+  framework="astro"
+  kind="component"
+>
+  <WithLink />
+</Example>
+
+## Customization
+
+### Custom recipe
+
+Extend `breadcrumbRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="breadcrumb"
+  framework="astro"
+  kind="component"
+>
+  <CustomRecipe />
+</Example>

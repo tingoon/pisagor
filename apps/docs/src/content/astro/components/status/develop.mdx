@@ -1,0 +1,107 @@
+import Example from "#/components/docs/example.astro";
+import Variants from "#examples/astro/status/variants.astro";
+import Sizes from "#examples/astro/status/sizes.astro";
+import WithIcon from "#examples/astro/status/with-icon.astro";
+import CustomColor from "#examples/astro/status/custom-color.astro";
+import CustomSize from "#examples/astro/status/custom-size.astro";
+import CustomRecipe from "#examples/astro/status/custom-recipe.astro";
+import VariantsSource from "#examples/astro/status/variants.astro?raw";
+import SizesSource from "#examples/astro/status/sizes.astro?raw";
+import WithIconSource from "#examples/astro/status/with-icon.astro?raw";
+import CustomColorSource from "#examples/astro/status/custom-color.astro?raw";
+import CustomSizeSource from "#examples/astro/status/custom-size.astro?raw";
+import CustomRecipeSource from "#examples/astro/status/custom-recipe.astro?raw";
+
+## Import
+
+```ts
+import { Status } from "@pisagor/astro";
+```
+
+## Examples
+
+### Variants
+
+Choose color tone for availability or severity. Pair with text for accessibility.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="status"
+  framework="astro"
+  kind="component"
+>
+  <Variants />
+</Example>
+
+### Sizes
+
+Match size to the surrounding chrome.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="status"
+  framework="astro"
+  kind="component"
+>
+  <Sizes />
+</Example>
+
+### With Icon
+
+Pair an icon with the label to reinforce meaning.
+
+<Example
+  name="WithIcon"
+  code={WithIconSource}
+  exampleId="status"
+  framework="astro"
+  kind="component"
+>
+  <WithIcon />
+</Example>
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Override the fill or accent when a brand or contextual color matters more than the theme default.
+
+<Example
+  name="CustomColor"
+  code={CustomColorSource}
+  exampleId="status"
+  framework="astro"
+  kind="component"
+>
+  <CustomColor />
+</Example>
+
+Resize the indicator to match nearby text and density.
+
+<Example
+  name="CustomSize"
+  code={CustomSizeSource}
+  exampleId="status"
+  framework="astro"
+  kind="component"
+>
+  <CustomSize />
+</Example>
+
+### Custom recipe
+
+Extend `statusRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="status"
+  framework="astro"
+  kind="component"
+>
+  <CustomRecipe />
+</Example>

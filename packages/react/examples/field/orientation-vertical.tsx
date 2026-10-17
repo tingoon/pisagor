@@ -1,3 +1,4 @@
+import source from "./orientation-vertical.tsx?raw";
 import { Field, Input } from "@pisagor/react";
 export function OrientationVertical() {
   return (
@@ -10,3 +11,5 @@ export function OrientationVertical() {
     </Field>
   );
 }
+
+export { source as OrientationVerticalSource };

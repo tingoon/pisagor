@@ -1,3 +1,4 @@
+import source from "./wrapped-actions.tsx?raw";
 import { Button, Toolbar } from "@pisagor/solid";
 export function WrappedActions() {
   return (
@@ -18,3 +19,5 @@ export function WrappedActions() {
     />
   );
 }
+
+export { source as WrappedActionsSource };

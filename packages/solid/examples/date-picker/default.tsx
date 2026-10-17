@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { DatePicker } from "@pisagor/solid";
 
 export function Default() {
@@ -8,3 +9,5 @@ export function Default() {
     </DatePicker>
   );
 }
+
+export { source as DefaultSource };

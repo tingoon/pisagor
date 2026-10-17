@@ -1,3 +1,4 @@
+import source from "./striped-variant.tsx?raw";
 import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
 import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Checkbox, Table } from "@pisagor/react";
@@ -234,3 +235,5 @@ export function StripedVariant() {
     </DataGridShell>
   );
 }
+
+export { source as StripedVariantSource };

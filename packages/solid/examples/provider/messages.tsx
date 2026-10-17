@@ -1,3 +1,4 @@
+import source from "./messages.tsx?raw";
 import { Breadcrumb, Provider } from "@pisagor/solid";
 
 export function Messages() {
@@ -12,3 +13,5 @@ export function Messages() {
     </Provider>
   );
 }
+
+export { source as MessagesSource };

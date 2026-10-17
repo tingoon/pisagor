@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./default.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhArchive, PhPaperPlaneTilt } from "@phosphor-icons/vue";
 import { Button, DropdownMenu } from "@pisagor/vue";

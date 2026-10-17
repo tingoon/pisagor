@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./with-placeholder.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { InputOTP } from "@pisagor/vue";
 </script>

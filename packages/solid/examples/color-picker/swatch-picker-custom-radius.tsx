@@ -1,3 +1,4 @@
+import source from "./swatch-picker-custom-radius.tsx?raw";
 import { ColorPicker } from "@pisagor/solid";
 
 export function SwatchPickerCustomRadius() {
@@ -34,3 +35,5 @@ export function SwatchPickerCustomRadius() {
     </ColorPicker>
   );
 }
+
+export { source as SwatchPickerCustomRadiusSource };

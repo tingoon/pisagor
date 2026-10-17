@@ -1,3 +1,4 @@
+import source from "./variants.tsx?raw";
 import { InputGroup } from "@pisagor/solid";
 import { MagnifyingGlassIcon } from "@pisagor/solid/icons";
 
@@ -19,3 +20,5 @@ export function Variants() {
     </div>
   );
 }
+
+export { source as VariantsSource };

@@ -1,17 +1,17 @@
-import custom_recipeRaw from "./custom-recipe.vue?raw";
-import custom_spacingRaw from "./custom-spacing.vue?raw";
-import defaultRaw from "./default.vue?raw";
-import iconRaw from "./icon.vue?raw";
-import productRaw from "./product.vue?raw";
-import sizesRaw from "./sizes.vue?raw";
+import CustomRecipe from "./custom-recipe.vue?raw";
+import CustomSpacing from "./custom-spacing.vue?raw";
+import Default from "./default.vue?raw";
+import Icon from "./icon.vue?raw";
+import Product from "./product.vue?raw";
+import Sizes from "./sizes.vue?raw";
 
 export const imports = `import { Card } from "@pisagor/vue";`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  CustomSpacing: custom_spacingRaw,
-  Default: defaultRaw,
-  Icon: iconRaw,
-  Product: productRaw,
-  Sizes: sizesRaw,
+  CustomRecipe,
+  CustomSpacing,
+  Default,
+  Icon,
+  Product,
+  Sizes,
 } as const;

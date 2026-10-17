@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Button, DropdownMenu } from "@pisagor/solid";
 
 export function Default() {
@@ -21,3 +22,5 @@ export function Default() {
     </DropdownMenu>
   );
 }
+
+export { source as DefaultSource };

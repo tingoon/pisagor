@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./slides-per-page.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Card, Carousel } from "@pisagor/svelte";
 

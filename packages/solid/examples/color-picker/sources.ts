@@ -1,69 +1,69 @@
-import area_channelsRaw from "./area-channels.tsx?raw";
-import area_dotsRaw from "./area-dots.tsx?raw";
-import clearableRaw from "./clearable.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import custom_spacingRaw from "./custom-spacing.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import input_channelRaw from "./input-channel.tsx?raw";
-import input_compactRaw from "./input-compact.tsx?raw";
-import input_controlledRaw from "./input-controlled.tsx?raw";
-import input_with_popoverRaw from "./input-with-popover.tsx?raw";
-import input_with_swatch_previewRaw from "./input-with-swatch-preview.tsx?raw";
-import invalidRaw from "./invalid.tsx?raw";
-import label_format_selectRaw from "./label-format-select.tsx?raw";
-import popover_disabledRaw from "./popover-disabled.tsx?raw";
-import popover_sliders_onlyRaw from "./popover-sliders-only.tsx?raw";
-import popover_with_channel_editingRaw from "./popover-with-channel-editing.tsx?raw";
-import popover_with_swatch_pickerRaw from "./popover-with-swatch-picker.tsx?raw";
-import slider_alpha_channelRaw from "./slider-alpha-channel.tsx?raw";
-import slider_controlledRaw from "./slider-controlled.tsx?raw";
-import slider_disabledRaw from "./slider-disabled.tsx?raw";
-import slider_hsba_channelsRaw from "./slider-hsba-channels.tsx?raw";
-import slider_hsl_channelsRaw from "./slider-hsl-channels.tsx?raw";
-import slider_rgb_channelsRaw from "./slider-rgb-channels.tsx?raw";
-import slider_verticalRaw from "./slider-vertical.tsx?raw";
-import swatch_pickerRaw from "./swatch-picker.tsx?raw";
-import swatch_picker_controlledRaw from "./swatch-picker-controlled.tsx?raw";
-import swatch_picker_custom_indicatorRaw from "./swatch-picker-custom-indicator.tsx?raw";
-import swatch_picker_custom_radiusRaw from "./swatch-picker-custom-radius.tsx?raw";
-import swatch_picker_custom_sizeRaw from "./swatch-picker-custom-size.tsx?raw";
-import swatch_picker_disabledRaw from "./swatch-picker-disabled.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
+import { AreaChannelsSource as AreaChannels } from "./area-channels";
+import { AreaDotsSource as AreaDots } from "./area-dots";
+import { ClearableSource as Clearable } from "./clearable";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { CustomSpacingSource as CustomSpacing } from "./custom-spacing";
+import { DefaultSource as Default } from "./default";
+import { DisabledSource as Disabled } from "./disabled";
+import { InputChannelSource as InputChannel } from "./input-channel";
+import { InputCompactSource as InputCompact } from "./input-compact";
+import { InputControlledSource as InputControlled } from "./input-controlled";
+import { InputWithPopoverSource as InputWithPopover } from "./input-with-popover";
+import { InputWithSwatchPreviewSource as InputWithSwatchPreview } from "./input-with-swatch-preview";
+import { InvalidSource as Invalid } from "./invalid";
+import { LabelFormatSelectSource as LabelFormatSelect } from "./label-format-select";
+import { PopoverDisabledSource as PopoverDisabled } from "./popover-disabled";
+import { PopoverSlidersOnlySource as PopoverSlidersOnly } from "./popover-sliders-only";
+import { PopoverWithChannelEditingSource as PopoverWithChannelEditing } from "./popover-with-channel-editing";
+import { PopoverWithSwatchPickerSource as PopoverWithSwatchPicker } from "./popover-with-swatch-picker";
+import { SliderAlphaChannelSource as SliderAlphaChannel } from "./slider-alpha-channel";
+import { SliderControlledSource as SliderControlled } from "./slider-controlled";
+import { SliderDisabledSource as SliderDisabled } from "./slider-disabled";
+import { SliderHsbaChannelsSource as SliderHsbaChannels } from "./slider-hsba-channels";
+import { SliderHslChannelsSource as SliderHslChannels } from "./slider-hsl-channels";
+import { SliderRgbChannelsSource as SliderRgbChannels } from "./slider-rgb-channels";
+import { SliderVerticalSource as SliderVertical } from "./slider-vertical";
+import { SwatchPickerSource as SwatchPicker } from "./swatch-picker";
+import { SwatchPickerControlledSource as SwatchPickerControlled } from "./swatch-picker-controlled";
+import { SwatchPickerCustomIndicatorSource as SwatchPickerCustomIndicator } from "./swatch-picker-custom-indicator";
+import { SwatchPickerCustomRadiusSource as SwatchPickerCustomRadius } from "./swatch-picker-custom-radius";
+import { SwatchPickerCustomSizeSource as SwatchPickerCustomSize } from "./swatch-picker-custom-size";
+import { SwatchPickerDisabledSource as SwatchPickerDisabled } from "./swatch-picker-disabled";
+import { VariantsSource as Variants } from "./variants";
 
 export const imports = `import { ColorPicker } from "@pisagor/solid";`;
 
 export const sources = {
-  AreaChannels: area_channelsRaw,
-  AreaDots: area_dotsRaw,
-  Clearable: clearableRaw,
-  CustomRecipe: custom_recipeRaw,
-  CustomSpacing: custom_spacingRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  InputChannel: input_channelRaw,
-  InputCompact: input_compactRaw,
-  InputControlled: input_controlledRaw,
-  InputWithPopover: input_with_popoverRaw,
-  InputWithSwatchPreview: input_with_swatch_previewRaw,
-  Invalid: invalidRaw,
-  LabelFormatSelect: label_format_selectRaw,
-  PopoverDisabled: popover_disabledRaw,
-  PopoverSlidersOnly: popover_sliders_onlyRaw,
-  PopoverWithChannelEditing: popover_with_channel_editingRaw,
-  PopoverWithSwatchPicker: popover_with_swatch_pickerRaw,
-  SliderAlphaChannel: slider_alpha_channelRaw,
-  SliderControlled: slider_controlledRaw,
-  SliderDisabled: slider_disabledRaw,
-  SliderHsbaChannels: slider_hsba_channelsRaw,
-  SliderHslChannels: slider_hsl_channelsRaw,
-  SliderRgbChannels: slider_rgb_channelsRaw,
-  SliderVertical: slider_verticalRaw,
-  SwatchPicker: swatch_pickerRaw,
-  SwatchPickerControlled: swatch_picker_controlledRaw,
-  SwatchPickerCustomIndicator: swatch_picker_custom_indicatorRaw,
-  SwatchPickerCustomRadius: swatch_picker_custom_radiusRaw,
-  SwatchPickerCustomSize: swatch_picker_custom_sizeRaw,
-  SwatchPickerDisabled: swatch_picker_disabledRaw,
-  Variants: variantsRaw,
+  AreaChannels,
+  AreaDots,
+  Clearable,
+  CustomRecipe,
+  CustomSpacing,
+  Default,
+  Disabled,
+  InputChannel,
+  InputCompact,
+  InputControlled,
+  InputWithPopover,
+  InputWithSwatchPreview,
+  Invalid,
+  LabelFormatSelect,
+  PopoverDisabled,
+  PopoverSlidersOnly,
+  PopoverWithChannelEditing,
+  PopoverWithSwatchPicker,
+  SliderAlphaChannel,
+  SliderControlled,
+  SliderDisabled,
+  SliderHsbaChannels,
+  SliderHslChannels,
+  SliderRgbChannels,
+  SliderVertical,
+  SwatchPicker,
+  SwatchPickerControlled,
+  SwatchPickerCustomIndicator,
+  SwatchPickerCustomRadius,
+  SwatchPickerCustomSize,
+  SwatchPickerDisabled,
+  Variants,
 } as const;

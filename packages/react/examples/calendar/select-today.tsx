@@ -1,3 +1,4 @@
+import source from "./select-today.tsx?raw";
 import { Calendar, Card } from "@pisagor/react";
 export function SelectToday() {
   return (
@@ -22,3 +23,5 @@ export function SelectToday() {
     </Calendar>
   );
 }
+
+export { source as SelectTodaySource };

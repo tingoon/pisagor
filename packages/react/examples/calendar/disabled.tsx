@@ -1,3 +1,4 @@
+import source from "./disabled.tsx?raw";
 import { Calendar, Card } from "@pisagor/react";
 export function Disabled() {
   return (
@@ -18,3 +19,5 @@ export function Disabled() {
     </Card>
   );
 }
+
+export { source as DisabledSource };

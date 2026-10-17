@@ -1,3 +1,4 @@
+import source from "./compound.tsx?raw";
 import { Checkbox } from "@pisagor/solid";
 
 export function Compound() {
@@ -9,3 +10,5 @@ export function Compound() {
     </Checkbox.Root>
   );
 }
+
+export { source as CompoundSource };

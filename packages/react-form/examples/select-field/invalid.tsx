@@ -1,3 +1,4 @@
+import source from "./invalid.tsx?raw";
 import { SelectField } from "@pisagor/react-form";
 import { countryOptions } from "../options";
 
@@ -13,3 +14,5 @@ export function Invalid() {
     />
   );
 }
+
+export { source as InvalidSource };

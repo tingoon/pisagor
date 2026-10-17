@@ -1,0 +1,141 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid/circular-slider/default.tsx";
+import { SizesSource } from "#examples/solid/circular-slider/sizes.tsx";
+import { ThicknessSource } from "#examples/solid/circular-slider/thickness.tsx";
+import { WithValueSource } from "#examples/solid/circular-slider/with-value.tsx";
+import { WithMarkersSource } from "#examples/solid/circular-slider/with-markers.tsx";
+import { CustomMarkersSource } from "#examples/solid/circular-slider/custom-markers.tsx";
+import { ControlledSource } from "#examples/solid/circular-slider/controlled.tsx";
+import { DisabledSource } from "#examples/solid/circular-slider/disabled.tsx";
+import { StepSource } from "#examples/solid/circular-slider/step.tsx";
+import { CustomRecipeSource } from "#examples/solid/circular-slider/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { CircularSlider } from "@pisagor/solid";
+```
+
+## Examples
+
+### Default
+
+Choose a value by dragging around a circular track.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="circular-slider"
+  framework="solid"
+  kind="component"
+/>
+
+### Sizes
+
+Match control size to the surrounding layout.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="circular-slider"
+  framework="solid"
+  kind="component"
+/>
+
+### Thickness
+
+Adjust track thickness for visibility and touch comfort.
+
+<Example
+  name="Thickness"
+  code={ThicknessSource}
+  exampleId="circular-slider"
+  framework="solid"
+  kind="component"
+/>
+
+### With Value
+
+Show the current value so the gesture stays understandable.
+
+<Example
+  name="WithValue"
+  code={WithValueSource}
+  exampleId="circular-slider"
+  framework="solid"
+  kind="component"
+/>
+
+### With Markers
+
+Show markers for key values along the circular track.
+
+<Example
+  name="WithMarkers"
+  code={WithMarkersSource}
+  exampleId="circular-slider"
+  framework="solid"
+  kind="component"
+/>
+
+### Custom Markers
+
+Place custom markers when meaningful points sit on the ring.
+
+<Example
+  name="CustomMarkers"
+  code={CustomMarkersSource}
+  exampleId="circular-slider"
+  framework="solid"
+  kind="component"
+/>
+
+### Controlled
+
+Drive the value from the parent when other UI depends on it.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="circular-slider"
+  framework="solid"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the control is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="circular-slider"
+  framework="solid"
+  kind="component"
+/>
+
+### Step
+
+Snap to increments when values should move in fixed steps.
+
+<Example
+  name="Step"
+  code={StepSource}
+  exampleId="circular-slider"
+  framework="solid"
+  kind="component"
+/>
+
+## Customization
+
+### Custom recipe
+
+Extend `circularSliderRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="circular-slider"
+  framework="solid"
+  kind="component"
+/>

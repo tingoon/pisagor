@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./align-inline-start.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { InputGroup } from "@pisagor/svelte";
   import FunnelIcon from "phosphor-svelte/lib/FunnelIcon";

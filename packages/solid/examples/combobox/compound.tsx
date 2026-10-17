@@ -1,3 +1,4 @@
+import source from "./compound.tsx?raw";
 import { useListCollection } from "@ark-ui/solid/collection";
 import { useFilter } from "@ark-ui/solid/locale";
 import { Combobox } from "@pisagor/solid";
@@ -33,3 +34,5 @@ export function Compound() {
     </Combobox.Root>
   );
 }
+
+export { source as CompoundSource };

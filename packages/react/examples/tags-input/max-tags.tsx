@@ -1,3 +1,4 @@
+import source from "./max-tags.tsx?raw";
 import { Field, TagsInput } from "@pisagor/react";
 export function MaxTags() {
   return (
@@ -17,3 +18,5 @@ export function MaxTags() {
     </Field>
   );
 }
+
+export { source as MaxTagsSource };

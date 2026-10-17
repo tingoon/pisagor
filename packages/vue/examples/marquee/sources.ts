@@ -1,25 +1,25 @@
-import autofillRaw from "./autofill.ts?raw";
-import compoundRaw from "./compound.ts?raw";
-import custom_speedRaw from "./custom-speed.ts?raw";
-import defaultRaw from "./default.ts?raw";
-import fadeRaw from "./fade.ts?raw";
-import orientation_horizontalRaw from "./orientation-horizontal.ts?raw";
-import orientation_verticalRaw from "./orientation-vertical.ts?raw";
-import pause_on_hoverRaw from "./pause-on-hover.ts?raw";
-import reverseRaw from "./reverse.ts?raw";
-import spacingRaw from "./spacing.ts?raw";
+import Autofill from "./autofill.ts?raw";
+import Compound from "./compound.ts?raw";
+import CustomSpeed from "./custom-speed.ts?raw";
+import Default from "./default.ts?raw";
+import Fade from "./fade.ts?raw";
+import OrientationHorizontal from "./orientation-horizontal.ts?raw";
+import OrientationVertical from "./orientation-vertical.ts?raw";
+import PauseOnHover from "./pause-on-hover.ts?raw";
+import Reverse from "./reverse.ts?raw";
+import Spacing from "./spacing.ts?raw";
 
 export const imports = `import { Marquee } from "@pisagor/vue";`;
 
 export const sources = {
-  Autofill: autofillRaw,
-  Compound: compoundRaw,
-  CustomSpeed: custom_speedRaw,
-  Default: defaultRaw,
-  Fade: fadeRaw,
-  OrientationHorizontal: orientation_horizontalRaw,
-  OrientationVertical: orientation_verticalRaw,
-  PauseOnHover: pause_on_hoverRaw,
-  Reverse: reverseRaw,
-  Spacing: spacingRaw,
+  Autofill,
+  Compound,
+  CustomSpeed,
+  Default,
+  Fade,
+  OrientationHorizontal,
+  OrientationVertical,
+  PauseOnHover,
+  Reverse,
+  Spacing,
 } as const;

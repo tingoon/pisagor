@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./with-button.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhFloppyDisk } from "@phosphor-icons/vue";
 import { Button, Kbd } from "@pisagor/vue";

@@ -1,3 +1,4 @@
+import source from "./trigger.tsx?raw";
 import { Button, FileUpload } from "@pisagor/solid";
 import { PaperclipIcon } from "@pisagor/solid/icons";
 export function Trigger() {
@@ -17,3 +18,5 @@ export function Trigger() {
     </FileUpload>
   );
 }
+
+export { source as TriggerSource };

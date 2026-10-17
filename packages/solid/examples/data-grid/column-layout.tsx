@@ -1,3 +1,4 @@
+import source from "./column-layout.tsx?raw";
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Checkbox, Table } from "@pisagor/solid";
 import type { ColumnDef } from "@pisagor/solid/data-grid";
@@ -272,3 +273,5 @@ export function ColumnLayout() {
     </DataGridShell>
   );
 }
+
+export { source as ColumnLayoutSource };

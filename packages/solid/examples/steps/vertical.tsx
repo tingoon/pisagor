@@ -1,3 +1,4 @@
+import source from "./vertical.tsx?raw";
 import { Button, Steps } from "@pisagor/solid";
 import { CaretLeftIcon, CaretRightIcon } from "@pisagor/solid/icons";
 export function Vertical() {
@@ -56,3 +57,5 @@ export function Vertical() {
     </Steps>
   );
 }
+
+export { source as VerticalSource };

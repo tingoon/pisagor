@@ -1,0 +1,113 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte/toast/default.svelte?raw";
+import VariantsSource from "#examples/svelte/toast/variants.svelte?raw";
+import ActionSource from "#examples/svelte/toast/action.svelte?raw";
+import WithPromiseSource from "#examples/svelte/toast/with-promise.svelte?raw";
+import DurationSource from "#examples/svelte/toast/duration.svelte?raw";
+import ClosableSource from "#examples/svelte/toast/closable.svelte?raw";
+import DedupeSource from "#examples/svelte/toast/dedupe.svelte?raw";
+import PlacementsSource from "#examples/svelte/toast/placements.svelte?raw";
+
+## Import
+
+```ts
+import { toast } from "@pisagor/svelte";
+```
+
+## Examples
+
+### Default
+
+Brief feedback that appears and dismisses after an action.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="toast"
+  framework="svelte"
+  kind="component"
+/>
+
+### Variants
+
+Choose visual weight or emphasis so the toast matches importance in the surrounding layout.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="toast"
+  framework="svelte"
+  kind="component"
+/>
+
+### Action
+
+Offer a follow-up action when the message leads somewhere.
+
+<Example
+  name="Action"
+  code={ActionSource}
+  exampleId="toast"
+  framework="svelte"
+  kind="component"
+/>
+
+### With Promise
+
+Tie the toast to a promise so pending, success, and error states stay in sync.
+
+<Example
+  name="WithPromise"
+  code={WithPromiseSource}
+  exampleId="toast"
+  framework="svelte"
+  kind="component"
+/>
+
+### Duration
+
+Control how long the toast stays visible.
+
+<Example
+  name="Duration"
+  code={DurationSource}
+  exampleId="toast"
+  framework="svelte"
+  kind="component"
+/>
+
+### Closable
+
+Let users dismiss the toast before it expires.
+
+<Example
+  name="Closable"
+  code={ClosableSource}
+  exampleId="toast"
+  framework="svelte"
+  kind="component"
+/>
+
+### Dedupe
+
+Prevent duplicate toasts when the same message would otherwise stack.
+
+<Example
+  name="Dedupe"
+  code={DedupeSource}
+  exampleId="toast"
+  framework="svelte"
+  kind="component"
+/>
+
+### Placements
+
+Choose placement so the toast stays near its trigger without covering critical content.
+
+<Example
+  name="Placements"
+  code={PlacementsSource}
+  exampleId="toast"
+  framework="svelte"
+  kind="component"
+/>

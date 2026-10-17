@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./video.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { AspectRatio } from "@pisagor/svelte";
 </script>

@@ -1,3 +1,4 @@
+import source from "./column-pinning.tsx?raw";
 import { DotsThreeVerticalIcon } from "@phosphor-icons/react";
 import type { BadgeVariant } from "@pisagor/react";
 import { Badge, Button, Table } from "@pisagor/react";
@@ -200,3 +201,5 @@ export function ColumnPinning() {
     </DataGridShell>
   );
 }
+
+export { source as ColumnPinningSource };

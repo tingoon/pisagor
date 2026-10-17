@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./tour-progress-bar.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { useTourContext } from "@pisagor/svelte";
 

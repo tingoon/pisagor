@@ -1,3 +1,4 @@
+import source from "./empty.tsx?raw";
 import { Badge, Table } from "@pisagor/solid";
 import { type ColumnDef, DataTable } from "@pisagor/solid/data-table";
 import { createMemo } from "solid-js";
@@ -56,3 +57,5 @@ export function Empty() {
     </DataTable>
   );
 }
+
+export { source as EmptySource };

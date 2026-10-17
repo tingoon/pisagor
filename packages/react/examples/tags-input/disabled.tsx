@@ -1,3 +1,4 @@
+import source from "./disabled.tsx?raw";
 import { TagsInput } from "@pisagor/react";
 
 export function Disabled() {
@@ -15,3 +16,5 @@ export function Disabled() {
     </TagsInput>
   );
 }
+
+export { source as DisabledSource };

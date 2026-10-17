@@ -1,3 +1,4 @@
+import source from "./indeterminate.tsx?raw";
 import { Checkbox, Field } from "@pisagor/react";
 export function Indeterminate() {
   return (
@@ -11,3 +12,5 @@ export function Indeterminate() {
     </Field.Group>
   );
 }
+
+export { source as IndeterminateSource };

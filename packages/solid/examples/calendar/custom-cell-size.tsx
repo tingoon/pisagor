@@ -1,3 +1,4 @@
+import source from "./custom-cell-size.tsx?raw";
 import { Calendar, Card } from "@pisagor/solid";
 export function CustomCellSize() {
   return (
@@ -19,3 +20,5 @@ export function CustomCellSize() {
     </Card>
   );
 }
+
+export { source as CustomCellSizeSource };

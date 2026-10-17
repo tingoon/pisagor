@@ -1,3 +1,4 @@
+import source from "./with-tooltip.tsx?raw";
 import { Button, Kbd, Tooltip } from "@pisagor/solid";
 
 export function WithTooltip() {
@@ -19,3 +20,5 @@ export function WithTooltip() {
     </Tooltip>
   );
 }
+
+export { source as WithTooltipSource };

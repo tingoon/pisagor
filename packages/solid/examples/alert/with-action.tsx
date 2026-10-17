@@ -1,3 +1,4 @@
+import source from "./with-action.tsx?raw";
 import { Alert, Button } from "@pisagor/solid";
 import { ClockCounterClockwiseIcon } from "@pisagor/solid/icons";
 export function WithAction() {
@@ -17,3 +18,5 @@ export function WithAction() {
     />
   );
 }
+
+export { source as WithActionSource };

@@ -1,3 +1,4 @@
+import source from "./with-avatar.tsx?raw";
 import { Avatar, Button, Item } from "@pisagor/solid";
 export function WithAvatar() {
   return (
@@ -17,3 +18,5 @@ export function WithAvatar() {
     </Item>
   );
 }
+
+export { source as WithAvatarSource };

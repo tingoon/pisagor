@@ -1,15 +1,15 @@
-import custom_recipeRaw from "./custom-recipe.astro?raw";
-import defaultRaw from "./default.astro?raw";
-import separated_panelsRaw from "./separated-panels.astro?raw";
-import sizesRaw from "./sizes.astro?raw";
+import CustomRecipe from "./custom-recipe.astro?raw";
+import Default from "./default.astro?raw";
+import SeparatedPanels from "./separated-panels.astro?raw";
+import Sizes from "./sizes.astro?raw";
 
 export const imports = `---
 import { Frame } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  SeparatedPanels: separated_panelsRaw,
-  Sizes: sizesRaw,
+  CustomRecipe,
+  Default,
+  SeparatedPanels,
+  Sizes,
 } as const;

@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./keyboard-navigation.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhKeyboard } from "@phosphor-icons/vue";
 import { Button, Tour, type TourStepType } from "@pisagor/vue";

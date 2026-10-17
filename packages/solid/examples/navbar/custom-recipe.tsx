@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { navbarRecipe } from "@pisagor/recipes";
 import { Avatar, Button, Navbar, NavigationMenu } from "@pisagor/solid";
 import { BellIcon, DatabaseIcon } from "@pisagor/solid/icons";
@@ -53,3 +54,5 @@ export function CustomRecipe() {
     </Navbar>
   );
 }
+
+export { source as CustomRecipeSource };

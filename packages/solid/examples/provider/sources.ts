@@ -1,9 +1,9 @@
-import defaultRaw from "./default.tsx?raw";
-import messagesRaw from "./messages.tsx?raw";
+import { DefaultSource as Default } from "./default";
+import { MessagesSource as Messages } from "./messages";
 
 export const imports = `import { Provider } from "@pisagor/solid";`;
 
 export const sources = {
-  Default: defaultRaw,
-  Messages: messagesRaw,
+  Default,
+  Messages,
 } as const;

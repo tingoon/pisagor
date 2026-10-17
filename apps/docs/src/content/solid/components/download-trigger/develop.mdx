@@ -1,0 +1,48 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid/download-trigger/default.tsx";
+import { DownloadSvgSource } from "#examples/solid/download-trigger/download-svg.tsx";
+import { WithPromiseSource } from "#examples/solid/download-trigger/with-promise.tsx";
+
+## Import
+
+```tsx
+import { DownloadTrigger } from "@pisagor/solid";
+```
+
+## Examples
+
+### Default
+
+Start a download from a control without navigating away.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="download-trigger"
+  framework="solid"
+  kind="component"
+/>
+
+### Download Svg
+
+Download SVG content when the file is vector markup.
+
+<Example
+  name="DownloadSvg"
+  code={DownloadSvgSource}
+  exampleId="download-trigger"
+  framework="solid"
+  kind="component"
+/>
+
+### With Promise
+
+Resolve a promise for the file payload when generation is asynchronous.
+
+<Example
+  name="WithPromise"
+  code={WithPromiseSource}
+  exampleId="download-trigger"
+  framework="solid"
+  kind="component"
+/>

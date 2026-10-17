@@ -1,3 +1,4 @@
+import source from "./compound.ts?raw";
 import { Announcement, Badge } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
@@ -15,3 +16,5 @@ export default defineComponent({
       ]);
   },
 });
+
+export { source };

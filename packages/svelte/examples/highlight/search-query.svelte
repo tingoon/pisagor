@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./search-query.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Highlight, Input } from "@pisagor/svelte";
 

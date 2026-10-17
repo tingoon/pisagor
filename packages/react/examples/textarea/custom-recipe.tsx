@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { Textarea } from "@pisagor/react";
 import { textareaRecipe } from "@pisagor/recipes";
 import { tv } from "tailwind-variants";
@@ -17,3 +18,5 @@ export function CustomRecipe() {
     <Textarea placeholder="Write a message…" recipe={brandTextareaRecipe} />
   );
 }
+
+export { source as CustomRecipeSource };

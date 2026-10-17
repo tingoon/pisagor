@@ -1,3 +1,4 @@
+import source from "./orientation-horizontal.tsx?raw";
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Button, Editable, Input } from "@pisagor/react";
 export function OrientationHorizontal() {
@@ -24,3 +25,5 @@ export function OrientationHorizontal() {
     </Editable>
   );
 }
+
+export { source as OrientationHorizontalSource };

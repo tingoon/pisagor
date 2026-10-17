@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./checkbox-group.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { Checkbox, Field } from "@pisagor/vue";
 </script>

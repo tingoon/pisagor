@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { GearIcon, SignOutIcon, UserIcon } from "@phosphor-icons/react";
 import { Menu } from "@pisagor/react";
 
@@ -25,3 +26,5 @@ export function Default() {
     </div>
   );
 }
+
+export { source as DefaultSource };

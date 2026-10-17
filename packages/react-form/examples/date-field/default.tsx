@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { DateField } from "@pisagor/react-form";
 
 export function Default() {
@@ -10,3 +11,5 @@ export function Default() {
     />
   );
 }
+
+export { source as DefaultSource };

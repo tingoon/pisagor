@@ -1,3 +1,4 @@
+import source from "./grid.tsx?raw";
 import { createGridCollection } from "@ark-ui/react/collection";
 import { Item, Listbox } from "@pisagor/react";
 import type { CSSProperties } from "react";
@@ -50,3 +51,5 @@ export function Grid() {
     </Item.Group>
   );
 }
+
+export { source as GridSource };

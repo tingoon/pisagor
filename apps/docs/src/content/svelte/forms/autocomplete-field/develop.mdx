@@ -1,0 +1,50 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/svelte-form/autocomplete-field/default.svelte?raw";
+import DisabledSource from "#examples/svelte-form/autocomplete-field/disabled.svelte?raw";
+import InvalidSource from "#examples/svelte-form/autocomplete-field/invalid.svelte?raw";
+
+## Import
+
+```ts
+import { AutocompleteField } from "@pisagor/svelte-form";
+```
+
+Part of `@pisagor/svelte-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+A text input with suggestions that also accepts values outside the list.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="autocomplete-field"
+  framework="svelte"
+  kind="form"
+/>
+
+### Disabled
+
+Show that the autocomplete is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="autocomplete-field"
+  framework="svelte"
+  kind="form"
+/>
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="autocomplete-field"
+  framework="svelte"
+  kind="form"
+/>

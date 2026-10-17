@@ -1,3 +1,4 @@
+import source from "./clear-trigger.tsx?raw";
 import { Button, FileUpload } from "@pisagor/solid";
 import { TrashIcon } from "@pisagor/solid/icons";
 export function ClearTrigger() {
@@ -24,3 +25,5 @@ export function ClearTrigger() {
     </FileUpload>
   );
 }
+
+export { source as ClearTriggerSource };

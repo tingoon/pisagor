@@ -1,3 +1,4 @@
+import source from "./icon.tsx?raw";
 import { ShieldWarningIcon } from "@phosphor-icons/react";
 import { Button, Item } from "@pisagor/react";
 export function Icon() {
@@ -20,3 +21,5 @@ export function Icon() {
     </Item>
   );
 }
+
+export { source as IconSource };

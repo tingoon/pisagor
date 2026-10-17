@@ -1,3 +1,4 @@
+import source from "./portrait.tsx?raw";
 import { AspectRatio } from "@pisagor/react";
 
 export function Portrait() {
@@ -9,3 +10,5 @@ export function Portrait() {
     </AspectRatio>
   );
 }
+
+export { source as PortraitSource };

@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { PhoneField } from "@pisagor/react-form";
 
 export function Default() {
@@ -11,3 +12,5 @@ export function Default() {
     />
   );
 }
+
+export { source as DefaultSource };

@@ -1,3 +1,4 @@
+import source from "./variants.tsx?raw";
 import { Tabs } from "@pisagor/solid";
 import { variantTabs } from "./helpers";
 
@@ -19,3 +20,5 @@ export function Variants() {
     </div>
   );
 }
+
+export { source as VariantsSource };

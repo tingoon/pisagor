@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./custom-recipe.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { announcementRecipe } from "@pisagor/recipes";
   import { Announcement, Badge } from "@pisagor/svelte";

@@ -1,3 +1,4 @@
+import source from "./invalid.tsx?raw";
 import { RadioGroupField } from "@pisagor/solid-form";
 import { planOptions } from "../options";
 
@@ -12,3 +13,5 @@ export function Invalid() {
     />
   );
 }
+
+export { source as InvalidSource };

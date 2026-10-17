@@ -1,3 +1,4 @@
+import source from "./default.tsx?raw";
 import { Button, Presence } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import { useState } from "react";
@@ -28,3 +29,5 @@ export function Default() {
     </div>
   );
 }
+
+export { source as DefaultSource };

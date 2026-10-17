@@ -1,33 +1,33 @@
-import compoundRaw from "./compound.tsx?raw";
-import controlledRaw from "./controlled.tsx?raw";
-import countRaw from "./count.tsx?raw";
-import custom_colorRaw from "./custom-color.tsx?raw";
-import custom_iconRaw from "./custom-icon.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import custom_sizeRaw from "./custom-size.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import half_starRaw from "./half-star.tsx?raw";
-import invalidRaw from "./invalid.tsx?raw";
-import readonlyRaw from "./readonly.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-import testimonialRaw from "./testimonial.tsx?raw";
+import { CompoundSource as Compound } from "./compound";
+import { ControlledSource as Controlled } from "./controlled";
+import { CountSource as Count } from "./count";
+import { CustomColorSource as CustomColor } from "./custom-color";
+import { CustomIconSource as CustomIcon } from "./custom-icon";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { CustomSizeSource as CustomSize } from "./custom-size";
+import { DefaultSource as Default } from "./default";
+import { DisabledSource as Disabled } from "./disabled";
+import { HalfStarSource as HalfStar } from "./half-star";
+import { InvalidSource as Invalid } from "./invalid";
+import { ReadonlySource as Readonly } from "./readonly";
+import { SizesSource as Sizes } from "./sizes";
+import { TestimonialSource as Testimonial } from "./testimonial";
 
 export const imports = `import { Rating } from "@pisagor/solid";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  Controlled: controlledRaw,
-  Count: countRaw,
-  CustomColor: custom_colorRaw,
-  CustomIcon: custom_iconRaw,
-  CustomRecipe: custom_recipeRaw,
-  CustomSize: custom_sizeRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  HalfStar: half_starRaw,
-  Invalid: invalidRaw,
-  Readonly: readonlyRaw,
-  Sizes: sizesRaw,
-  Testimonial: testimonialRaw,
+  Compound,
+  Controlled,
+  Count,
+  CustomColor,
+  CustomIcon,
+  CustomRecipe,
+  CustomSize,
+  Default,
+  Disabled,
+  HalfStar,
+  Invalid,
+  Readonly,
+  Sizes,
+  Testimonial,
 } as const;

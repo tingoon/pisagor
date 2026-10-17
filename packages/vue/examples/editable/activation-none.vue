@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./activation-none.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { PhCheck, PhPencilSimple, PhX } from "@phosphor-icons/vue";
 import { Button, Card, Editable, Field, Input } from "@pisagor/vue";

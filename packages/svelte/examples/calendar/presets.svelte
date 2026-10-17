@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./presets.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Button, Calendar, Card } from "@pisagor/svelte";
 

@@ -1,17 +1,17 @@
-import compactRaw from "./compact.astro?raw";
-import compoundRaw from "./compound.astro?raw";
-import custom_recipeRaw from "./custom-recipe.astro?raw";
-import defaultRaw from "./default.astro?raw";
-import sizesRaw from "./sizes.astro?raw";
+import Compact from "./compact.astro?raw";
+import Compound from "./compound.astro?raw";
+import CustomRecipe from "./custom-recipe.astro?raw";
+import Default from "./default.astro?raw";
+import Sizes from "./sizes.astro?raw";
 
 export const imports = `---
 import { Button, EmptyState } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  Compact: compactRaw,
-  Compound: compoundRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Sizes: sizesRaw,
+  Compact,
+  Compound,
+  CustomRecipe,
+  Default,
+  Sizes,
 } as const;

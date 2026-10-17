@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./custom-recipe.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { scrollAreaRecipe } from "@pisagor/recipes";
   import { ScrollArea, Separator } from "@pisagor/svelte";

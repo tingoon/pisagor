@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./min-max.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Slider } from "@pisagor/svelte";
 </script>

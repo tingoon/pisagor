@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./custom-recipe.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { richTextEditorRecipe } from "@pisagor/recipes";
   import { RichTextEditor } from "@pisagor/svelte/rich-text-editor";

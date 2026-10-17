@@ -1,3 +1,4 @@
+import source from "./orientation-horizontal.tsx?raw";
 import { Button, ButtonGroup } from "@pisagor/solid";
 import { PlayIcon, SkipBackIcon, SkipForwardIcon } from "@pisagor/solid/icons";
 export function OrientationHorizontal() {
@@ -15,3 +16,5 @@ export function OrientationHorizontal() {
     </ButtonGroup>
   );
 }
+
+export { source as OrientationHorizontalSource };

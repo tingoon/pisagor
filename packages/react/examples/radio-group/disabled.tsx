@@ -1,3 +1,4 @@
+import source from "./disabled.tsx?raw";
 import { RadioGroup } from "@pisagor/react";
 
 export function Disabled() {
@@ -22,3 +23,5 @@ export function Disabled() {
     </div>
   );
 }
+
+export { source as DisabledSource };

@@ -1,3 +1,4 @@
+import source from "./validation.tsx?raw";
 import { Field, TagsInput } from "@pisagor/react";
 export function Validation() {
   const validTagPattern = /^[a-zA-Z0-9-]+$/;
@@ -29,3 +30,5 @@ export function Validation() {
     </Field>
   );
 }
+
+export { source as ValidationSource };

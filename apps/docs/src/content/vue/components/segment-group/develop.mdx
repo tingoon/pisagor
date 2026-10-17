@@ -1,0 +1,169 @@
+import Example from "#/components/docs/example.astro";
+import DefaultSource from "#examples/vue/segment-group/default.vue?raw";
+import VariantsSource from "#examples/vue/segment-group/variants.vue?raw";
+import SizesSource from "#examples/vue/segment-group/sizes.vue?raw";
+import OrientationHorizontalSource from "#examples/vue/segment-group/orientation-horizontal.vue?raw";
+import OrientationVerticalSource from "#examples/vue/segment-group/orientation-vertical.vue?raw";
+import CompoundSource from "#examples/vue/segment-group/compound.vue?raw";
+import ControlledSource from "#examples/vue/segment-group/controlled.vue?raw";
+import DisabledSource from "#examples/vue/segment-group/disabled.vue?raw";
+import DisabledItemSource from "#examples/vue/segment-group/disabled-item.vue?raw";
+import IndicatorOnHoverSource from "#examples/vue/segment-group/indicator-on-hover.vue?raw";
+import CustomIndicatorSource from "#examples/vue/segment-group/custom-indicator.vue?raw";
+import CustomRecipeSource from "#examples/vue/segment-group/custom-recipe.vue?raw";
+
+## Import
+
+```ts
+import { SegmentGroup } from "@pisagor/vue";
+```
+
+## Examples
+
+### Default
+
+Switch between a few related modes in one compact control.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="segment-group"
+  framework="vue"
+  kind="component"
+/>
+
+### Variants
+
+Choose visual weight or emphasis so the segment group matches importance in the surrounding layout.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="segment-group"
+  framework="vue"
+  kind="component"
+/>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="segment-group"
+  framework="vue"
+  kind="component"
+/>
+
+### Orientation Horizontal
+
+Lay out the segment group horizontally when items should read in a row.
+
+<Example
+  name="OrientationHorizontal"
+  code={OrientationHorizontalSource}
+  exampleId="segment-group"
+  framework="vue"
+  kind="component"
+/>
+
+### Orientation Vertical
+
+Stack the segment group vertically when items should read in a column.
+
+<Example
+  name="OrientationVertical"
+  code={OrientationVerticalSource}
+  exampleId="segment-group"
+  framework="vue"
+  kind="component"
+/>
+
+### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="segment-group"
+  framework="vue"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this segment group.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="segment-group"
+  framework="vue"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the segment group is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="segment-group"
+  framework="vue"
+  kind="component"
+/>
+
+### Disabled Item
+
+Show that a specific segment is unavailable.
+
+<Example
+  name="DisabledItem"
+  code={DisabledItemSource}
+  exampleId="segment-group"
+  framework="vue"
+  kind="component"
+/>
+
+### Indicator On Hover
+
+Preview the indicator on hover when discovering segments should feel responsive.
+
+<Example
+  name="IndicatorOnHover"
+  code={IndicatorOnHoverSource}
+  exampleId="segment-group"
+  framework="vue"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `class` for a one-off change to a single element.
+
+Customize the active indicator when brand motion or shape differs from the default.
+
+<Example
+  name="CustomIndicator"
+  code={CustomIndicatorSource}
+  exampleId="segment-group"
+  framework="vue"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `segmentGroupRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="segment-group"
+  framework="vue"
+  kind="component"
+/>

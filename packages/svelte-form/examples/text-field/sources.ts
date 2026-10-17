@@ -1,11 +1,11 @@
-import defaultRaw from "./default.svelte?raw";
-import disabledRaw from "./disabled.svelte?raw";
-import invalidRaw from "./invalid.svelte?raw";
+import Default from "./default.svelte?raw";
+import Disabled from "./disabled.svelte?raw";
+import Invalid from "./invalid.svelte?raw";
 
 export const imports = `import { TextField } from "@pisagor/svelte-form";`;
 
 export const sources = {
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  Invalid: invalidRaw,
+  Default,
+  Disabled,
+  Invalid,
 } as const;

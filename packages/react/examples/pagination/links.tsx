@@ -1,3 +1,4 @@
+import source from "./links.tsx?raw";
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
 import { Pagination } from "@pisagor/react";
 
@@ -16,3 +17,5 @@ export function Links() {
     </Pagination>
   );
 }
+
+export { source as LinksSource };

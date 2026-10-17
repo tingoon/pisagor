@@ -1,3 +1,4 @@
+import source from "./compound.tsx?raw";
 import { Portal } from "@ark-ui/react/portal";
 import { Button, Dialog, Field, Input, Select } from "@pisagor/react";
 
@@ -53,3 +54,5 @@ export function Compound() {
     </Dialog.Root>
   );
 }
+
+export { source as CompoundSource };

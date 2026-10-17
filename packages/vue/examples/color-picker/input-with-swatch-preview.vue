@@ -1,3 +1,8 @@
+<script lang="ts">
+import source from "./input-with-swatch-preview.vue?raw";
+export { source };
+</script>
+
 <script lang="ts" setup>
 import { ColorPicker, InputGroup } from "@pisagor/vue";
 </script>

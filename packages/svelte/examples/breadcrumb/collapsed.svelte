@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./collapsed.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Breadcrumb } from "@pisagor/svelte";
 </script>

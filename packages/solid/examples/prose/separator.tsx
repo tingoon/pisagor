@@ -1,3 +1,4 @@
+import source from "./separator.tsx?raw";
 import { Prose } from "@pisagor/solid";
 
 export function Separator() {
@@ -9,3 +10,5 @@ export function Separator() {
     </Prose>
   );
 }
+
+export { source as SeparatorSource };

@@ -1,0 +1,139 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid/marquee/default.tsx";
+import { OrientationHorizontalSource } from "#examples/solid/marquee/orientation-horizontal.tsx";
+import { OrientationVerticalSource } from "#examples/solid/marquee/orientation-vertical.tsx";
+import { SpacingSource } from "#examples/solid/marquee/spacing.tsx";
+import { FadeSource } from "#examples/solid/marquee/fade.tsx";
+import { CompoundSource } from "#examples/solid/marquee/compound.tsx";
+import { PauseOnHoverSource } from "#examples/solid/marquee/pause-on-hover.tsx";
+import { ReverseSource } from "#examples/solid/marquee/reverse.tsx";
+import { AutofillSource } from "#examples/solid/marquee/autofill.tsx";
+import { CustomSpeedSource } from "#examples/solid/marquee/custom-speed.tsx";
+
+## Import
+
+```tsx
+import { Marquee } from "@pisagor/solid";
+```
+
+## Examples
+
+### Default
+
+Scroll content in a continuous horizontal loop.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="marquee"
+  framework="solid"
+  kind="component"
+/>
+
+### Orientation Horizontal
+
+Lay out the marquee horizontally when items should read in a row.
+
+<Example
+  name="OrientationHorizontal"
+  code={OrientationHorizontalSource}
+  exampleId="marquee"
+  framework="solid"
+  kind="component"
+/>
+
+### Orientation Vertical
+
+Stack the marquee vertically when items should read in a column.
+
+<Example
+  name="OrientationVertical"
+  code={OrientationVerticalSource}
+  exampleId="marquee"
+  framework="solid"
+  kind="component"
+/>
+
+### Spacing
+
+Adjust gaps between parts when density needs to match the surrounding UI.
+
+<Example
+  name="Spacing"
+  code={SpacingSource}
+  exampleId="marquee"
+  framework="solid"
+  kind="component"
+/>
+
+### Fade
+
+Fade the edges so the loop feels less abrupt.
+
+<Example
+  name="Fade"
+  code={FadeSource}
+  exampleId="marquee"
+  framework="solid"
+  kind="component"
+/>
+
+### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="marquee"
+  framework="solid"
+  kind="component"
+/>
+
+### Pause On Hover
+
+Pause motion on hover so users can read or interact.
+
+<Example
+  name="PauseOnHover"
+  code={PauseOnHoverSource}
+  exampleId="marquee"
+  framework="solid"
+  kind="component"
+/>
+
+### Reverse
+
+Reverse direction when the strip should move the other way.
+
+<Example
+  name="Reverse"
+  code={ReverseSource}
+  exampleId="marquee"
+  framework="solid"
+  kind="component"
+/>
+
+### Autofill
+
+Duplicate items to fill the track when the source list is short.
+
+<Example
+  name="Autofill"
+  code={AutofillSource}
+  exampleId="marquee"
+  framework="solid"
+  kind="component"
+/>
+
+### Custom Speed
+
+Override speed when ambient motion should be slower or faster.
+
+<Example
+  name="CustomSpeed"
+  code={CustomSpeedSource}
+  exampleId="marquee"
+  framework="solid"
+  kind="component"
+/>

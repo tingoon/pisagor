@@ -1,3 +1,4 @@
+import source from "./font-weight.tsx?raw";
 import { ToggleGroup } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import { useState } from "react";
@@ -44,3 +45,5 @@ export function FontWeight() {
     </div>
   );
 }
+
+export { source as FontWeightSource };

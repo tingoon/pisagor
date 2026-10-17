@@ -1,3 +1,4 @@
+import source from "./sorting.tsx?raw";
 import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Checkbox, Table } from "@pisagor/solid";
 import type { ColumnDef, SortingState } from "@pisagor/solid/data-grid";
@@ -258,3 +259,5 @@ export function Sorting() {
     </DataGridShell>
   );
 }
+
+export { source as SortingSource };

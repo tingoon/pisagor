@@ -1,0 +1,100 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/react/radio-group/default.tsx";
+import { VariantsSource } from "#examples/react/radio-group/variants.tsx";
+import { WithDescriptionSource } from "#examples/react/radio-group/with-description.tsx";
+import { CompoundSource } from "#examples/react/radio-group/compound.tsx";
+import { ControlledSource } from "#examples/react/radio-group/controlled.tsx";
+import { DisabledSource } from "#examples/react/radio-group/disabled.tsx";
+import { InvalidSource } from "#examples/react/radio-group/invalid.tsx";
+
+## Import
+
+```tsx
+import { RadioGroup } from "@pisagor/react";
+```
+
+## Examples
+
+### Default
+
+Pick exactly one option from a short related set.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="radio-group"
+  framework="react"
+  kind="component"
+/>
+
+### Variants
+
+Choose visual weight or emphasis so the radio group matches importance in the surrounding layout.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="radio-group"
+  framework="react"
+  kind="component"
+/>
+
+### With Description
+
+Add secondary text under options when labels alone are not enough.
+
+<Example
+  name="WithDescription"
+  code={WithDescriptionSource}
+  exampleId="radio-group"
+  framework="react"
+  kind="component"
+/>
+
+### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="radio-group"
+  framework="react"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this radio group.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="radio-group"
+  framework="react"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the radio group is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="radio-group"
+  framework="react"
+  kind="component"
+/>
+
+### Invalid
+
+Surface a validation or error state so users know the radio group needs attention before continuing.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="radio-group"
+  framework="react"
+  kind="component"
+/>

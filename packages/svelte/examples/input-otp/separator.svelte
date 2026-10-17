@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./separator.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { InputOTP } from "@pisagor/svelte";
 </script>

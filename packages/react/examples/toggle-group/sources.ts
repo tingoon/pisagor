@@ -1,29 +1,29 @@
-import compoundRaw from "./compound.tsx?raw";
-import controlledRaw from "./controlled.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import disabled_itemRaw from "./disabled-item.tsx?raw";
-import font_weightRaw from "./font-weight.tsx?raw";
-import horizontalRaw from "./horizontal.tsx?raw";
-import singleRaw from "./single.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-import spacingRaw from "./spacing.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
-import verticalRaw from "./vertical.tsx?raw";
+import { CompoundSource as Compound } from "./compound";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DisabledSource as Disabled } from "./disabled";
+import { DisabledItemSource as DisabledItem } from "./disabled-item";
+import { FontWeightSource as FontWeight } from "./font-weight";
+import { HorizontalSource as Horizontal } from "./horizontal";
+import { SingleSource as Single } from "./single";
+import { SizesSource as Sizes } from "./sizes";
+import { SpacingSource as Spacing } from "./spacing";
+import { VariantsSource as Variants } from "./variants";
+import { VerticalSource as Vertical } from "./vertical";
 
 export const imports = `import { ToggleGroup } from "@pisagor/react";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  Disabled: disabledRaw,
-  DisabledItem: disabled_itemRaw,
-  FontWeight: font_weightRaw,
-  Horizontal: horizontalRaw,
-  Single: singleRaw,
-  Sizes: sizesRaw,
-  Spacing: spacingRaw,
-  Variants: variantsRaw,
-  Vertical: verticalRaw,
+  Compound,
+  Controlled,
+  CustomRecipe,
+  Disabled,
+  DisabledItem,
+  FontWeight,
+  Horizontal,
+  Single,
+  Sizes,
+  Spacing,
+  Variants,
+  Vertical,
 } as const;

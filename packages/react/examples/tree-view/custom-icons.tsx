@@ -1,3 +1,4 @@
+import source from "./custom-icons.tsx?raw";
 import { FileCodeIcon, FileJsIcon, FileTextIcon } from "@phosphor-icons/react";
 import type { NodeProviderProps } from "@pisagor/react";
 import {
@@ -75,3 +76,5 @@ export function CustomIcons() {
     </div>
   );
 }
+
+export { source as CustomIconsSource };

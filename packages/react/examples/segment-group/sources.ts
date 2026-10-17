@@ -1,29 +1,29 @@
-import compoundRaw from "./compound.tsx?raw";
-import controlledRaw from "./controlled.tsx?raw";
-import custom_indicatorRaw from "./custom-indicator.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import disabled_itemRaw from "./disabled-item.tsx?raw";
-import indicator_on_hoverRaw from "./indicator-on-hover.tsx?raw";
-import orientation_horizontalRaw from "./orientation-horizontal.tsx?raw";
-import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
-import sizesRaw from "./sizes.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
+import { CompoundSource as Compound } from "./compound";
+import { ControlledSource as Controlled } from "./controlled";
+import { CustomIndicatorSource as CustomIndicator } from "./custom-indicator";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { DisabledSource as Disabled } from "./disabled";
+import { DisabledItemSource as DisabledItem } from "./disabled-item";
+import { IndicatorOnHoverSource as IndicatorOnHover } from "./indicator-on-hover";
+import { OrientationHorizontalSource as OrientationHorizontal } from "./orientation-horizontal";
+import { OrientationVerticalSource as OrientationVertical } from "./orientation-vertical";
+import { SizesSource as Sizes } from "./sizes";
+import { VariantsSource as Variants } from "./variants";
 
 export const imports = `import { SegmentGroup } from "@pisagor/react";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  Controlled: controlledRaw,
-  CustomIndicator: custom_indicatorRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Disabled: disabledRaw,
-  DisabledItem: disabled_itemRaw,
-  IndicatorOnHover: indicator_on_hoverRaw,
-  OrientationHorizontal: orientation_horizontalRaw,
-  OrientationVertical: orientation_verticalRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
+  Compound,
+  Controlled,
+  CustomIndicator,
+  CustomRecipe,
+  Default,
+  Disabled,
+  DisabledItem,
+  IndicatorOnHover,
+  OrientationHorizontal,
+  OrientationVertical,
+  Sizes,
+  Variants,
 } as const;

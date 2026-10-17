@@ -1,19 +1,19 @@
-import controlledRaw from "./controlled.vue?raw";
-import custom_recipeRaw from "./custom-recipe.vue?raw";
-import custom_timeoutRaw from "./custom-timeout.vue?raw";
-import different_iconRaw from "./different-icon.ts?raw";
-import sizesRaw from "./sizes.vue?raw";
-import variantsRaw from "./variants.vue?raw";
-import with_labelRaw from "./with-label.vue?raw";
+import Controlled from "./controlled.vue?raw";
+import CustomRecipe from "./custom-recipe.vue?raw";
+import CustomTimeout from "./custom-timeout.vue?raw";
+import DifferentIcon from "./different-icon.ts?raw";
+import Sizes from "./sizes.vue?raw";
+import Variants from "./variants.vue?raw";
+import WithLabel from "./with-label.vue?raw";
 
 export const imports = `import { Clipboard } from "@pisagor/vue";`;
 
 export const sources = {
-  Controlled: controlledRaw,
-  CustomRecipe: custom_recipeRaw,
-  CustomTimeout: custom_timeoutRaw,
-  DifferentIcon: different_iconRaw,
-  Sizes: sizesRaw,
-  Variants: variantsRaw,
-  WithLabel: with_labelRaw,
+  Controlled,
+  CustomRecipe,
+  CustomTimeout,
+  DifferentIcon,
+  Sizes,
+  Variants,
+  WithLabel,
 } as const;

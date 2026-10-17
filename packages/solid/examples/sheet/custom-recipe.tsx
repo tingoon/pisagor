@@ -1,3 +1,4 @@
+import source from "./custom-recipe.tsx?raw";
 import { sheetRecipe } from "@pisagor/recipes";
 import { Button, Field, Input, Sheet } from "@pisagor/solid";
 import { tv } from "tailwind-variants";
@@ -53,3 +54,5 @@ export function CustomRecipe() {
     </Sheet>
   );
 }
+
+export { source as CustomRecipeSource };

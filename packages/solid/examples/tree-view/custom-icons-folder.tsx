@@ -1,3 +1,4 @@
+import source from "./custom-icons-folder.tsx?raw";
 import type { NodeProviderProps } from "@pisagor/solid";
 import { createTreeCollection, TreeView } from "@pisagor/solid";
 import { PackageIcon } from "@pisagor/solid/icons";
@@ -70,3 +71,5 @@ export function CustomIconsFolder() {
     </div>
   );
 }
+
+export { source as CustomIconsFolderSource };

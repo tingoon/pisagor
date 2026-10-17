@@ -1,3 +1,4 @@
+import source from "./download.tsx?raw";
 import { DownloadIcon } from "@phosphor-icons/react";
 import { Button, Card, Input, QrCode } from "@pisagor/react";
 import { useState } from "react";
@@ -72,3 +73,5 @@ export function Download() {
     </QrCode>
   );
 }
+
+export { source as DownloadSource };

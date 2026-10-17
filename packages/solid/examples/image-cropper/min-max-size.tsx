@@ -1,3 +1,4 @@
+import source from "./min-max-size.tsx?raw";
 import { ImageCropper } from "@pisagor/solid";
 
 export function MinMaxSize() {
@@ -11,3 +12,5 @@ export function MinMaxSize() {
     </ImageCropper>
   );
 }
+
+export { source as MinMaxSizeSource };

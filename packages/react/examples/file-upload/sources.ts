@@ -1,35 +1,35 @@
-import accepted_file_typesRaw from "./accepted-file-types.tsx?raw";
-import clear_triggerRaw from "./clear-trigger.tsx?raw";
-import custom_previewRaw from "./custom-preview.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import custom_spacingRaw from "./custom-spacing.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import directory_uploadRaw from "./directory-upload.tsx?raw";
-import disabledRaw from "./disabled.tsx?raw";
-import dropzoneRaw from "./dropzone.tsx?raw";
-import invalidRaw from "./invalid.tsx?raw";
-import media_captureRaw from "./media-capture.tsx?raw";
-import multiple_filesRaw from "./multiple-files.tsx?raw";
-import rejected_filesRaw from "./rejected-files.tsx?raw";
-import triggerRaw from "./trigger.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
+import { AcceptedFileTypesSource as AcceptedFileTypes } from "./accepted-file-types";
+import { ClearTriggerSource as ClearTrigger } from "./clear-trigger";
+import { CustomPreviewSource as CustomPreview } from "./custom-preview";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { CustomSpacingSource as CustomSpacing } from "./custom-spacing";
+import { DefaultSource as Default } from "./default";
+import { DirectoryUploadSource as DirectoryUpload } from "./directory-upload";
+import { DisabledSource as Disabled } from "./disabled";
+import { DropzoneSource as Dropzone } from "./dropzone";
+import { InvalidSource as Invalid } from "./invalid";
+import { MediaCaptureSource as MediaCapture } from "./media-capture";
+import { MultipleFilesSource as MultipleFiles } from "./multiple-files";
+import { RejectedFilesSource as RejectedFiles } from "./rejected-files";
+import { TriggerSource as Trigger } from "./trigger";
+import { VariantsSource as Variants } from "./variants";
 
 export const imports = `import { FileUpload } from "@pisagor/react";`;
 
 export const sources = {
-  AcceptedFileTypes: accepted_file_typesRaw,
-  ClearTrigger: clear_triggerRaw,
-  CustomPreview: custom_previewRaw,
-  CustomRecipe: custom_recipeRaw,
-  CustomSpacing: custom_spacingRaw,
-  Default: defaultRaw,
-  DirectoryUpload: directory_uploadRaw,
-  Disabled: disabledRaw,
-  Dropzone: dropzoneRaw,
-  Invalid: invalidRaw,
-  MediaCapture: media_captureRaw,
-  MultipleFiles: multiple_filesRaw,
-  RejectedFiles: rejected_filesRaw,
-  Trigger: triggerRaw,
-  Variants: variantsRaw,
+  AcceptedFileTypes,
+  ClearTrigger,
+  CustomPreview,
+  CustomRecipe,
+  CustomSpacing,
+  Default,
+  DirectoryUpload,
+  Disabled,
+  Dropzone,
+  Invalid,
+  MediaCapture,
+  MultipleFiles,
+  RejectedFiles,
+  Trigger,
+  Variants,
 } as const;

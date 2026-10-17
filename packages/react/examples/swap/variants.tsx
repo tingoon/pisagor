@@ -1,3 +1,4 @@
+import source from "./variants.tsx?raw";
 import { MoonIcon, SunIcon } from "@phosphor-icons/react";
 import { Button, Swap } from "@pisagor/react";
 import { useState } from "react";
@@ -63,3 +64,5 @@ export function Variants() {
     </div>
   );
 }
+
+export { source as VariantsSource };

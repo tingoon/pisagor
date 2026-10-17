@@ -1,3 +1,4 @@
+import source from "./controlled.tsx?raw";
 import { SegmentGroup } from "@pisagor/solid";
 import { createSignal } from "solid-js";
 export function Controlled() {
@@ -18,3 +19,5 @@ export function Controlled() {
     </SegmentGroup.Root>
   );
 }
+
+export { source as ControlledSource };

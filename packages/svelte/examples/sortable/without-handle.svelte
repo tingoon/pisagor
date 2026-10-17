@@ -1,3 +1,8 @@
+<script module lang="ts">
+  import source from "./without-handle.svelte?raw";
+  export { source };
+</script>
+
 <script lang="ts">
   import { Sortable } from "@pisagor/svelte";
 

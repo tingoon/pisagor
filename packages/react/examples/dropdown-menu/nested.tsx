@@ -1,3 +1,4 @@
+import source from "./nested.tsx?raw";
 import { Button, DropdownMenu } from "@pisagor/react";
 export function Nested() {
   return (
@@ -19,3 +20,5 @@ export function Nested() {
     </DropdownMenu>
   );
 }
+
+export { source as NestedSource };

@@ -1,0 +1,91 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid/highlight/default.tsx";
+import { SquiggleSource } from "#examples/solid/highlight/squiggle.tsx";
+import { MultipleSource } from "#examples/solid/highlight/multiple.tsx";
+import { SearchQuerySource } from "#examples/solid/highlight/search-query.tsx";
+import { CustomStyleSource } from "#examples/solid/highlight/custom-style.tsx";
+import { CustomRecipeSource } from "#examples/solid/highlight/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Highlight } from "@pisagor/solid";
+```
+
+## Examples
+
+### Default
+
+Emphasize matching substrings in text.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="highlight"
+  framework="solid"
+  kind="component"
+/>
+
+### Squiggle
+
+Use a squiggle emphasis when the match needs a distinct treatment.
+
+<Example
+  name="Squiggle"
+  code={SquiggleSource}
+  exampleId="highlight"
+  framework="solid"
+  kind="component"
+/>
+
+### Multiple
+
+Allow more than one open or selected item when users need several at once.
+
+<Example
+  name="Multiple"
+  code={MultipleSource}
+  exampleId="highlight"
+  framework="solid"
+  kind="component"
+/>
+
+### Search Query
+
+Highlight query matches in search results.
+
+<Example
+  name="SearchQuery"
+  code={SearchQuerySource}
+  exampleId="highlight"
+  framework="solid"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Override highlight style when brand treatment differs from the default.
+
+<Example
+  name="CustomStyle"
+  code={CustomStyleSource}
+  exampleId="highlight"
+  framework="solid"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `highlightRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="highlight"
+  framework="solid"
+  kind="component"
+/>

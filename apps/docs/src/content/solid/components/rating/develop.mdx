@@ -1,0 +1,193 @@
+import Example from "#/components/docs/example.astro";
+import { DefaultSource } from "#examples/solid/rating/default.tsx";
+import { SizesSource } from "#examples/solid/rating/sizes.tsx";
+import { CountSource } from "#examples/solid/rating/count.tsx";
+import { HalfStarSource } from "#examples/solid/rating/half-star.tsx";
+import { CustomIconSource } from "#examples/solid/rating/custom-icon.tsx";
+import { TestimonialSource } from "#examples/solid/rating/testimonial.tsx";
+import { CompoundSource } from "#examples/solid/rating/compound.tsx";
+import { ControlledSource } from "#examples/solid/rating/controlled.tsx";
+import { DisabledSource } from "#examples/solid/rating/disabled.tsx";
+import { InvalidSource } from "#examples/solid/rating/invalid.tsx";
+import { ReadonlySource } from "#examples/solid/rating/readonly.tsx";
+import { CustomColorSource } from "#examples/solid/rating/custom-color.tsx";
+import { CustomSizeSource } from "#examples/solid/rating/custom-size.tsx";
+import { CustomRecipeSource } from "#examples/solid/rating/custom-recipe.tsx";
+
+## Import
+
+```tsx
+import { Rating } from "@pisagor/solid";
+```
+
+## Examples
+
+### Default
+
+Let users pick a score from one to five stars.
+
+<Example
+  name="Default"
+  code={DefaultSource}
+  exampleId="rating"
+  framework="solid"
+  kind="component"
+/>
+
+### Sizes
+
+Use `size` to pick the sm, md or lg scale. `md` is the default.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="rating"
+  framework="solid"
+  kind="component"
+/>
+
+### Count
+
+Set `count` to change how many stars are shown.
+
+<Example
+  name="Count"
+  code={CountSource}
+  exampleId="rating"
+  framework="solid"
+  kind="component"
+/>
+
+### Half Star
+
+Allow half values when finer granularity matters.
+
+<Example
+  name="HalfStar"
+  code={HalfStarSource}
+  exampleId="rating"
+  framework="solid"
+  kind="component"
+/>
+
+### Custom Icon
+
+Replace stars with another symbol when the metaphor fits better.
+
+<Example
+  name="CustomIcon"
+  code={CustomIconSource}
+  exampleId="rating"
+  framework="solid"
+  kind="component"
+/>
+
+### Testimonial
+
+Present a readonly score in a testimonial-style layout.
+
+<Example
+  name="Testimonial"
+  code={TestimonialSource}
+  exampleId="rating"
+  framework="solid"
+  kind="component"
+/>
+
+### Compound
+
+Compose the rating from parts for custom item rendering.
+
+<Example
+  name="Compound"
+  code={CompoundSource}
+  exampleId="rating"
+  framework="solid"
+  kind="component"
+/>
+
+### Controlled
+
+Manage state from the parent when other UI must stay in sync with this rating.
+
+<Example
+  name="Controlled"
+  code={ControlledSource}
+  exampleId="rating"
+  framework="solid"
+  kind="component"
+/>
+
+### Disabled
+
+Show that the rating is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="rating"
+  framework="solid"
+  kind="component"
+/>
+
+### Invalid
+
+Surface a validation or error state so users know the rating needs attention before continuing.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="rating"
+  framework="solid"
+  kind="component"
+/>
+
+### Readonly
+
+Display the value without allowing edits when the score or data is informational only.
+
+<Example
+  name="Readonly"
+  code={ReadonlySource}
+  exampleId="rating"
+  framework="solid"
+  kind="component"
+/>
+
+## Customization
+
+### Class names
+
+Pass `className` for a one-off change to a single element.
+
+Override the fill or accent when a brand or contextual color matters more than the theme default.
+
+<Example
+  name="CustomColor"
+  code={CustomColorSource}
+  exampleId="rating"
+  framework="solid"
+  kind="component"
+/>
+
+Override dimensions when the default size does not fit the layout.
+
+<Example
+  name="CustomSize"
+  code={CustomSizeSource}
+  exampleId="rating"
+  framework="solid"
+  kind="component"
+/>
+
+### Custom recipe
+
+Extend `ratingRecipe` with `tv({ extend })` and pass it to `recipe` when the look should be reusable across the app.
+
+<Example
+  name="CustomRecipe"
+  code={CustomRecipeSource}
+  exampleId="rating"
+  framework="solid"
+  kind="component"
+/>

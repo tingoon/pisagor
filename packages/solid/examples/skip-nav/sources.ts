@@ -1,7 +1,7 @@
-import defaultRaw from "./default.tsx?raw";
+import { DefaultSource as Default } from "./default";
 
 export const imports = `import { SkipNav } from "@pisagor/solid";`;
 
 export const sources = {
-  Default: defaultRaw,
+  Default,
 } as const;

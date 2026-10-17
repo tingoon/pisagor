@@ -1,0 +1,210 @@
+import Example from "#/components/docs/example.astro";
+import Variants from "#examples/astro/input-group/variants.astro";
+import Sizes from "#examples/astro/input-group/sizes.astro";
+import AlignBlockEnd from "#examples/astro/input-group/align-block-end.astro";
+import AlignBlockStart from "#examples/astro/input-group/align-block-start.astro";
+import AlignInlineEnd from "#examples/astro/input-group/align-inline-end.astro";
+import AlignInlineStart from "#examples/astro/input-group/align-inline-start.astro";
+import WithTextarea from "#examples/astro/input-group/with-textarea.astro";
+import WithBadge from "#examples/astro/input-group/with-badge.astro";
+import WithKeyboardShortcut from "#examples/astro/input-group/with-keyboard-shortcut.astro";
+import WithSpinner from "#examples/astro/input-group/with-spinner.astro";
+import Disabled from "#examples/astro/input-group/disabled.astro";
+import Invalid from "#examples/astro/input-group/invalid.astro";
+import VariantsSource from "#examples/astro/input-group/variants.astro?raw";
+import SizesSource from "#examples/astro/input-group/sizes.astro?raw";
+import AlignBlockEndSource from "#examples/astro/input-group/align-block-end.astro?raw";
+import AlignBlockStartSource from "#examples/astro/input-group/align-block-start.astro?raw";
+import AlignInlineEndSource from "#examples/astro/input-group/align-inline-end.astro?raw";
+import AlignInlineStartSource from "#examples/astro/input-group/align-inline-start.astro?raw";
+import WithTextareaSource from "#examples/astro/input-group/with-textarea.astro?raw";
+import WithBadgeSource from "#examples/astro/input-group/with-badge.astro?raw";
+import WithKeyboardShortcutSource from "#examples/astro/input-group/with-keyboard-shortcut.astro?raw";
+import WithSpinnerSource from "#examples/astro/input-group/with-spinner.astro?raw";
+import DisabledSource from "#examples/astro/input-group/disabled.astro?raw";
+import InvalidSource from "#examples/astro/input-group/invalid.astro?raw";
+
+## Import
+
+```ts
+import { InputGroup } from "@pisagor/astro";
+```
+
+## Anatomy
+
+```tsx
+<InputGroup>
+  <InputGroup.Input />
+  <InputGroup.Addon />
+</InputGroup>
+```
+
+## Examples
+
+### Variants
+
+Choose emphasis to match surrounding inputs.
+
+<Example
+  name="Variants"
+  code={VariantsSource}
+  exampleId="input-group"
+  framework="astro"
+  kind="component"
+>
+  <Variants />
+</Example>
+
+### Sizes
+
+Match size to form density.
+
+<Example
+  name="Sizes"
+  code={SizesSource}
+  exampleId="input-group"
+  framework="astro"
+  kind="component"
+>
+  <Sizes />
+</Example>
+
+### Align Block End
+
+Place addons at the block end of the field.
+
+<Example
+  name="AlignBlockEnd"
+  code={AlignBlockEndSource}
+  exampleId="input-group"
+  framework="astro"
+  kind="component"
+>
+  <AlignBlockEnd />
+</Example>
+
+### Align Block Start
+
+Place addons at the block start of the field.
+
+<Example
+  name="AlignBlockStart"
+  code={AlignBlockStartSource}
+  exampleId="input-group"
+  framework="astro"
+  kind="component"
+>
+  <AlignBlockStart />
+</Example>
+
+### Align Inline End
+
+Place addons at the inline end of the field.
+
+<Example
+  name="AlignInlineEnd"
+  code={AlignInlineEndSource}
+  exampleId="input-group"
+  framework="astro"
+  kind="component"
+>
+  <AlignInlineEnd />
+</Example>
+
+### Align Inline Start
+
+Place addons at the inline start of the field.
+
+<Example
+  name="AlignInlineStart"
+  code={AlignInlineStartSource}
+  exampleId="input-group"
+  framework="astro"
+  kind="component"
+>
+  <AlignInlineStart />
+</Example>
+
+### With Textarea
+
+Attach addons to a multi-line field.
+
+<Example
+  name="WithTextarea"
+  code={WithTextareaSource}
+  exampleId="input-group"
+  framework="astro"
+  kind="component"
+>
+  <WithTextarea />
+</Example>
+
+### With Badge
+
+Attach a badge when status sits inside the field chrome.
+
+<Example
+  name="WithBadge"
+  code={WithBadgeSource}
+  exampleId="input-group"
+  framework="astro"
+  kind="component"
+>
+  <WithBadge />
+</Example>
+
+### With Keyboard Shortcut
+
+Show a shortcut hint inside the field.
+
+<Example
+  name="WithKeyboardShortcut"
+  code={WithKeyboardShortcutSource}
+  exampleId="input-group"
+  framework="astro"
+  kind="component"
+>
+  <WithKeyboardShortcut />
+</Example>
+
+### With Spinner
+
+Show a spinner addon while the field is waiting.
+
+<Example
+  name="WithSpinner"
+  code={WithSpinnerSource}
+  exampleId="input-group"
+  framework="astro"
+  kind="component"
+>
+  <WithSpinner />
+</Example>
+
+### Disabled
+
+Show that the grouped field is unavailable.
+
+<Example
+  name="Disabled"
+  code={DisabledSource}
+  exampleId="input-group"
+  framework="astro"
+  kind="component"
+>
+  <Disabled />
+</Example>
+
+### Invalid
+
+Surface invalid state across the grouped control.
+
+<Example
+  name="Invalid"
+  code={InvalidSource}
+  exampleId="input-group"
+  framework="astro"
+  kind="component"
+>
+  <Invalid />
+</Example>

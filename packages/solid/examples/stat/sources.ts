@@ -1,15 +1,15 @@
-import compoundRaw from "./compound.tsx?raw";
-import custom_recipeRaw from "./custom-recipe.tsx?raw";
-import defaultRaw from "./default.tsx?raw";
-import variantsRaw from "./variants.tsx?raw";
-import with_trendRaw from "./with-trend.tsx?raw";
+import { CompoundSource as Compound } from "./compound";
+import { CustomRecipeSource as CustomRecipe } from "./custom-recipe";
+import { DefaultSource as Default } from "./default";
+import { VariantsSource as Variants } from "./variants";
+import { WithTrendSource as WithTrend } from "./with-trend";
 
 export const imports = `import { Stat } from "@pisagor/solid";`;
 
 export const sources = {
-  Compound: compoundRaw,
-  CustomRecipe: custom_recipeRaw,
-  Default: defaultRaw,
-  Variants: variantsRaw,
-  WithTrend: with_trendRaw,
+  Compound,
+  CustomRecipe,
+  Default,
+  Variants,
+  WithTrend,
 } as const;
