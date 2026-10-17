@@ -1,5 +1,12 @@
 # @pisagor/react-form
 
+## 0.2.1
+
+### Patch Changes
+
+- Updated dependencies [2fc35e7]
+  - @pisagor/react@0.4.0
+
 ## 0.2.0
 
 ### Minor Changes

@@ -1,5 +1,13 @@
 # @pisagor/astro
 
+## 0.3.1
+
+### Patch Changes
+
+- Updated dependencies [2fc35e7]
+  - @pisagor/utils@0.3.0
+  - @pisagor/tokens@0.4.0
+
 ## 0.3.0
 
 ### Minor Changes

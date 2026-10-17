@@ -1,6 +1,6 @@
 {
   "name": "@pisagor/vue",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Accessible Vue UI components built on Ark UI and Tailwind CSS v4.",
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "bugs": {
