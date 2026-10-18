@@ -1,4 +1,4 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { ark, type PolymorphicProps } from "@ark-ui/react";
 import type {
   MenuItemProps as BaseMenuItemProps,
   MenuProps as BaseMenuRootProps,
@@ -6,7 +6,7 @@ import type {
 import { menuItemRecipe, menuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { createContext, use } from "react";
-import type { FunctionComponent, RefAttributes } from "react";
+import type { ComponentPropsWithRef, FunctionComponent } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
@@ -23,33 +23,32 @@ const {
 
 // #region Types
 export interface MenuRootProps
-  extends HTMLArkProps<"nav">, RefAttributes<HTMLElement>, BaseMenuRootProps {}
+  extends ComponentPropsWithRef<"nav">, PolymorphicProps, BaseMenuRootProps {}
 
-export type MenuPartProps = HTMLArkProps<"div"> & RefAttributes<HTMLDivElement>;
+export type MenuPartProps = ComponentPropsWithRef<"div"> & PolymorphicProps;
 
-export type MenuListProps = HTMLArkProps<"ul"> &
-  RefAttributes<HTMLUListElement>;
+export type MenuListProps = ComponentPropsWithRef<"ul"> & PolymorphicProps;
 
 export interface MenuItemProps
   extends
-    HTMLArkProps<"button">,
-    RefAttributes<HTMLButtonElement>,
+    ComponentPropsWithRef<"button">,
+    PolymorphicProps,
     BaseMenuItemProps {}
 
 export interface MenuLinkProps
-  extends HTMLArkProps<"a">, RefAttributes<HTMLAnchorElement> {
+  extends ComponentPropsWithRef<"a">, PolymorphicProps {
   /** Whether the link represents the current page */
   active?: boolean;
 }
 
-export type MenuGroupLabelProps = HTMLArkProps<"div"> &
-  RefAttributes<HTMLDivElement>;
+export type MenuGroupLabelProps = ComponentPropsWithRef<"div"> &
+  PolymorphicProps;
 
-export type MenuSeparatorProps = HTMLArkProps<"div"> &
-  RefAttributes<HTMLDivElement>;
+export type MenuSeparatorProps = ComponentPropsWithRef<"div"> &
+  PolymorphicProps;
 
-export type MenuShortcutProps = HTMLArkProps<"span"> &
-  RefAttributes<HTMLSpanElement>;
+export type MenuShortcutProps = ComponentPropsWithRef<"span"> &
+  PolymorphicProps;
 // #endregion
 
 // #region Parts
@@ -162,7 +161,7 @@ export function MenuSeparator(props: MenuSeparatorProps) {
 
   return insideList ? (
     <MenuSeparatorItem
-      {...(props as HTMLArkProps<"li"> & RefAttributes<HTMLLIElement>)}
+      {...(props as ComponentPropsWithRef<"li"> & PolymorphicProps)}
     />
   ) : (
     <MenuSeparatorDiv {...props} />

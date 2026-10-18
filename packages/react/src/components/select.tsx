@@ -7,7 +7,7 @@ import {
 } from "@ark-ui/react";
 import type {
   CollectionItem,
-  HTMLArkProps,
+  PolymorphicProps,
   SelectClearTriggerProps,
   SelectContentProps,
   SelectItemGroupLabelProps,
@@ -25,7 +25,7 @@ import {
   selectRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { ReactNode, RefAttributes } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import { createContext, use } from "react";
 import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
@@ -98,8 +98,7 @@ export interface SelectItemGroupProps extends SelectPrimitiveItemGroupProps {
   heading?: string | ReactNode;
 }
 
-export type SelectEmptyProps = HTMLArkProps<"div"> &
-  RefAttributes<HTMLDivElement>;
+export type SelectEmptyProps = ComponentPropsWithRef<"div"> & PolymorphicProps;
 // #endregion
 
 // #region Parts

@@ -1,6 +1,6 @@
 import { Timer as TimerPrimitive, ark, useTimerContext } from "@ark-ui/react";
 import type {
-  HTMLArkProps,
+  PolymorphicProps,
   TimerActionTriggerProps,
   TimerRootProps as TimerPrimitiveRootProps,
   TimerSeparatorProps,
@@ -10,7 +10,11 @@ import type {
   TimerProps as BaseTimerRootProps,
 } from "@pisagor/props";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, RefAttributes } from "react";
+import type {
+  ComponentProps,
+  ComponentPropsWithRef,
+  FunctionComponent,
+} from "react";
 import { Fragment, use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { type MessageKey, useLocale } from "./provider/context";
@@ -41,8 +45,8 @@ type TimerUnit = "hours" | "minutes" | "seconds";
 
 export interface TimerItemGroupProps
   extends
-    HTMLArkProps<"div">,
-    RefAttributes<HTMLDivElement>,
+    ComponentPropsWithRef<"div">,
+    PolymorphicProps,
     BaseTimerItemGroupProps {
   /**
    * The orientation of the timer item group.
@@ -64,8 +68,8 @@ export interface TimerRootProps
   isControlsVisible?: boolean;
 }
 
-export type TimerItemLabelProps = HTMLArkProps<"div"> &
-  RefAttributes<HTMLDivElement>;
+export type TimerItemLabelProps = ComponentPropsWithRef<"div"> &
+  PolymorphicProps;
 // #endregion
 
 // #region Parts
@@ -118,7 +122,7 @@ const TimerItemGroupBase = withTimerItemGroupProvider(ark.div, {
   name: "ItemGroup",
   slot: "base",
 }) as FunctionComponent<
-  HTMLArkProps<"div"> & RefAttributes<HTMLDivElement> & BaseTimerItemGroupProps
+  ComponentPropsWithRef<"div"> & PolymorphicProps & BaseTimerItemGroupProps
 >;
 
 export function TimerItemGroup({

@@ -1,16 +1,13 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { ark, type PolymorphicProps } from "@ark-ui/react";
 import type { BadgeProps as BaseBadgeProps } from "@pisagor/props";
 import { type BadgeVariantProps, badgeRecipe } from "@pisagor/recipes";
-import type { RefAttributes } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 // #region Types
 export type BadgeVariant = BadgeVariantProps["variant"];
 
 export interface BadgeProps
-  extends
-    HTMLArkProps<"span">,
-    RefAttributes<HTMLSpanElement>,
-    BaseBadgeProps {}
+  extends ComponentPropsWithRef<"span">, PolymorphicProps, BaseBadgeProps {}
 // #endregion
 
 // #region Component

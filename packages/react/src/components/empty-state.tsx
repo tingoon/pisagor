@@ -1,11 +1,11 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { ark, type PolymorphicProps } from "@ark-ui/react";
 import type { EmptyStateProps as BaseEmptyStateRootProps } from "@pisagor/props";
 import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
 import type {
   ComponentProps,
+  ComponentPropsWithRef,
   FunctionComponent,
   ReactNode,
-  RefAttributes,
 } from "react";
 import {
   type SizeScaleProps,
@@ -25,7 +25,7 @@ export const EmptyStateRoot = withProvider(ark.div, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  Omit<HTMLArkProps<"div"> & RefAttributes<HTMLDivElement>, "title"> &
+  Omit<ComponentPropsWithRef<"div"> & PolymorphicProps, "title"> &
     BaseEmptyStateRootProps &
     SizeScaleProps
 >;

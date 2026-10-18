@@ -1,12 +1,12 @@
 import { PinInput as PinInputPrimitive, ark } from "@ark-ui/react";
 import type {
-  HTMLArkProps,
   PinInputInputProps,
   PinInputRootProps,
+  PolymorphicProps,
 } from "@ark-ui/react";
 import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
 import { inputOtpRecipe, inputRootRecipe } from "@pisagor/recipes";
-import type { RefAttributes } from "react";
+import type { ComponentPropsWithRef } from "react";
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import type { InputProps } from "./input/input";
@@ -43,8 +43,8 @@ export interface InputOTPProps extends InputOTPRootProps, BaseInputOTPProps {
 export type InputOTPSlotProps = PinInputInputProps &
   Pick<InputProps, "size" | "variant">;
 
-export type InputOTPSeparatorProps = HTMLArkProps<"hr"> &
-  RefAttributes<HTMLHRElement>;
+export type InputOTPSeparatorProps = ComponentPropsWithRef<"hr"> &
+  PolymorphicProps;
 // #endregion
 
 // #region Parts

@@ -1,13 +1,13 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { ark, type PolymorphicProps } from "@ark-ui/react";
 import type { VisuallyHiddenProps as BaseVisuallyHiddenProps } from "@pisagor/props";
 import { visuallyHiddenRecipe } from "@pisagor/recipes";
-import type { RefAttributes } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 // #region Types
 export interface VisuallyHiddenProps
   extends
-    HTMLArkProps<"span">,
-    RefAttributes<HTMLSpanElement>,
+    ComponentPropsWithRef<"span">,
+    PolymorphicProps,
     BaseVisuallyHiddenProps {}
 // #endregion
 

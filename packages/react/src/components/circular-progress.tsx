@@ -5,7 +5,7 @@ import {
   useProgressContext,
 } from "@ark-ui/react";
 import type {
-  HTMLArkProps,
+  PolymorphicProps,
   ProgressRootProps,
   ProgressRootProviderProps,
   ProgressValueTextProps,
@@ -16,7 +16,11 @@ import {
   type CircularProgressRecipeSlot,
   circularProgressRecipe,
 } from "@pisagor/recipes";
-import type { FunctionComponent, ReactNode, RefAttributes } from "react";
+import type {
+  ComponentPropsWithRef,
+  FunctionComponent,
+  ReactNode,
+} from "react";
 import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -70,7 +74,7 @@ interface CircularProgressTrackPartProps {
   className?: string;
   rangeClassName?: string;
   trackProps?: Omit<
-    HTMLArkProps<"svg"> & RefAttributes<SVGSVGElement>,
+    ComponentPropsWithRef<"svg"> & PolymorphicProps,
     "className" | "height" | "viewBox" | "width"
   >;
 }
@@ -159,7 +163,7 @@ export interface CircularProgressProps
   classNames?: CircularProgressClassNames;
   /** Extra props forwarded to the circular progress track element */
   trackProps?: Omit<
-    HTMLArkProps<"svg"> & RefAttributes<SVGSVGElement>,
+    ComponentPropsWithRef<"svg"> & PolymorphicProps,
     "className" | "height" | "viewBox" | "width"
   >;
   /** Extra props forwarded to the circular progress value element */

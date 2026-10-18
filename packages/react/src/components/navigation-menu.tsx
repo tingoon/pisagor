@@ -1,9 +1,13 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { ark, type PolymorphicProps } from "@ark-ui/react";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
 import { navigationMenuRecipe } from "@pisagor/recipes";
 import { createContext, use, useId, useRef, useState } from "react";
-import type { FunctionComponent, KeyboardEvent, RefAttributes } from "react";
+import type {
+  ComponentPropsWithRef,
+  FunctionComponent,
+  KeyboardEvent,
+} from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
@@ -42,24 +46,24 @@ const NavigationMenuItemContext = createContext<NavigationMenuItemState | null>(
 // #region Types
 export interface NavigationMenuProps
   extends
-    HTMLArkProps<"nav">,
-    RefAttributes<HTMLElement>,
+    ComponentPropsWithRef<"nav">,
+    PolymorphicProps,
     BaseNavigationMenuProps {}
 
-export type NavigationMenuPartProps = HTMLArkProps<"ul"> &
-  RefAttributes<HTMLUListElement>;
+export type NavigationMenuPartProps = ComponentPropsWithRef<"ul"> &
+  PolymorphicProps;
 
-export type NavigationMenuItemProps = HTMLArkProps<"li"> &
-  RefAttributes<HTMLLIElement>;
+export type NavigationMenuItemProps = ComponentPropsWithRef<"li"> &
+  PolymorphicProps;
 
-export type NavigationMenuTriggerProps = HTMLArkProps<"button"> &
-  RefAttributes<HTMLButtonElement>;
+export type NavigationMenuTriggerProps = ComponentPropsWithRef<"button"> &
+  PolymorphicProps;
 
-export type NavigationMenuContentProps = HTMLArkProps<"ul"> &
-  RefAttributes<HTMLUListElement>;
+export type NavigationMenuContentProps = ComponentPropsWithRef<"ul"> &
+  PolymorphicProps;
 
 export interface NavigationMenuLinkProps
-  extends HTMLArkProps<"a">, RefAttributes<HTMLAnchorElement> {
+  extends ComponentPropsWithRef<"a">, PolymorphicProps {
   /** Whether the link represents the current page */
   active?: boolean;
 }

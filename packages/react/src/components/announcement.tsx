@@ -1,11 +1,11 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { ark, type PolymorphicProps } from "@ark-ui/react";
 import type { AnnouncementProps as BaseAnnouncementRootProps } from "@pisagor/props";
 import { announcementRecipe } from "@pisagor/recipes";
 import type {
   ComponentProps,
+  ComponentPropsWithRef,
   FunctionComponent,
   ReactNode,
-  RefAttributes,
 } from "react";
 import { createSlotRecipeContext } from "../internal";
 
@@ -21,7 +21,7 @@ export const AnnouncementRoot = withProvider(ark.div, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  Omit<HTMLArkProps<"div"> & RefAttributes<HTMLDivElement>, "title"> & {
+  Omit<ComponentPropsWithRef<"div"> & PolymorphicProps, "title"> & {
     role?: "status" | "alert";
   } & BaseAnnouncementRootProps
 >;

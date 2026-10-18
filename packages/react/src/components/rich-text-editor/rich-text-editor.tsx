@@ -1,4 +1,4 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { ark, type PolymorphicProps } from "@ark-ui/react";
 import {
   ListBulletsIcon,
   ListNumbersIcon,
@@ -12,7 +12,7 @@ import { cn } from "@pisagor/utils";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { useEffect, useMemo } from "react";
-import type { ReactNode, RefAttributes } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import { useLocale } from "../provider/context";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { Toggle } from "../toggle";
@@ -28,7 +28,7 @@ import {
 export interface RichTextEditorRootProps
   extends
     Omit<
-      HTMLArkProps<"div"> & RefAttributes<HTMLDivElement>,
+      ComponentPropsWithRef<"div"> & PolymorphicProps,
       "defaultValue" | "onChange"
     >,
     BaseRichTextEditorRootProps {
@@ -71,11 +71,11 @@ export interface RichTextEditorRootProps
   children?: ReactNode;
 }
 
-export type RichTextEditorToolbarProps = HTMLArkProps<"div"> &
-  RefAttributes<HTMLDivElement>;
+export type RichTextEditorToolbarProps = ComponentPropsWithRef<"div"> &
+  PolymorphicProps;
 
-export type RichTextEditorContentProps = HTMLArkProps<"div"> &
-  RefAttributes<HTMLDivElement>;
+export type RichTextEditorContentProps = ComponentPropsWithRef<"div"> &
+  PolymorphicProps;
 // #endregion
 
 // #region Parts

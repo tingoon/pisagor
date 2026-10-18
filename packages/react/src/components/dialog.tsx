@@ -6,12 +6,12 @@ import type {
   DialogPositionerProps as DialogPrimitivePositionerProps,
   DialogRootProps as DialogPrimitiveRootProps,
   DialogTriggerProps,
-  HTMLArkProps,
+  PolymorphicProps,
 } from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
 import type { DialogProps as BaseDialogRootProps } from "@pisagor/props";
 import { type DialogVariantProps, dialogRecipe } from "@pisagor/recipes";
-import type { ReactNode, RefAttributes } from "react";
+import type { ComponentPropsWithRef, ReactNode } from "react";
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
@@ -55,7 +55,7 @@ export interface DialogContentProps
 }
 
 export interface DialogBodyProps
-  extends HTMLArkProps<"div">, RefAttributes<HTMLDivElement> {
+  extends ComponentPropsWithRef<"div">, PolymorphicProps {
   /**
    * Whether to add a fade effect to the scroll area.
    *
@@ -64,15 +64,13 @@ export interface DialogBodyProps
   scrollFade?: boolean;
 }
 
-export type DialogHeaderProps = HTMLArkProps<"div"> &
-  RefAttributes<HTMLDivElement>;
+export type DialogHeaderProps = ComponentPropsWithRef<"div"> & PolymorphicProps;
 
 export interface DialogPositionerProps extends DialogPrimitivePositionerProps {
   bottomStickOnMobile?: boolean;
 }
 
-export type DialogFooterProps = HTMLArkProps<"div"> &
-  RefAttributes<HTMLDivElement>;
+export type DialogFooterProps = ComponentPropsWithRef<"div"> & PolymorphicProps;
 
 export interface DialogProps extends Omit<DialogRootProps, "title"> {
   /** Footer actions. */

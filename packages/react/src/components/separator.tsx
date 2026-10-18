@@ -1,14 +1,11 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { ark, type PolymorphicProps } from "@ark-ui/react";
 import type { SeparatorProps as BaseSeparatorProps } from "@pisagor/props";
 import { separatorRecipe } from "@pisagor/recipes";
-import type { RefAttributes } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 // #region Types
 export interface SeparatorProps
-  extends
-    HTMLArkProps<"div">,
-    RefAttributes<HTMLDivElement>,
-    BaseSeparatorProps {
+  extends ComponentPropsWithRef<"div">, PolymorphicProps, BaseSeparatorProps {
   /**
    * The orientation of the separator.
    *

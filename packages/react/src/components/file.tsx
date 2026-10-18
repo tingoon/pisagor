@@ -1,12 +1,12 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { ark, type PolymorphicProps } from "@ark-ui/react";
 import { FileIcon } from "@phosphor-icons/react";
 import type { FileProps as BaseFileRootProps } from "@pisagor/props";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
 import type {
   ComponentProps,
+  ComponentPropsWithRef,
   FunctionComponent,
   ReactNode,
-  RefAttributes,
 } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Format } from "./format";
@@ -27,7 +27,7 @@ export const FileRoot = withProvider(ark.div, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  HTMLArkProps<"div"> & RefAttributes<HTMLDivElement> & BaseFileRootProps
+  ComponentPropsWithRef<"div"> & PolymorphicProps & BaseFileRootProps
 >;
 
 export function FileMedia({
@@ -35,7 +35,7 @@ export function FileMedia({
   children,
   className,
   ...rest
-}: HTMLArkProps<"div"> & RefAttributes<HTMLDivElement> & FileVariantProps) {
+}: ComponentPropsWithRef<"div"> & PolymorphicProps & FileVariantProps) {
   const { slots } = useFile();
 
   return (
@@ -70,7 +70,7 @@ export function FileSize({
   value,
   className,
   ...rest
-}: Omit<HTMLArkProps<"div"> & RefAttributes<HTMLDivElement>, "children"> & {
+}: Omit<ComponentPropsWithRef<"div"> & PolymorphicProps, "children"> & {
   value: number;
 }) {
   const { slots } = useFile();

@@ -1,11 +1,11 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { ark, type PolymorphicProps } from "@ark-ui/react";
 import type { CardProps as BaseCardRootProps } from "@pisagor/props";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import type {
   ComponentProps,
+  ComponentPropsWithRef,
   FunctionComponent,
   ReactNode,
-  RefAttributes,
 } from "react";
 import { createSlotRecipeContext } from "../internal";
 
@@ -25,14 +25,14 @@ export const CardRoot = withProvider(ark.div, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  HTMLArkProps<"div"> & RefAttributes<HTMLDivElement> & BaseCardRootProps
+  ComponentPropsWithRef<"div"> & PolymorphicProps & BaseCardRootProps
 >;
 
 export function CardMedia({
   variant = "default",
   className,
   ...rest
-}: HTMLArkProps<"div"> & RefAttributes<HTMLDivElement> & CardVariantProps) {
+}: ComponentPropsWithRef<"div"> & PolymorphicProps & CardVariantProps) {
   const { slots } = useCard();
 
   return (
@@ -52,8 +52,8 @@ export function CardHeader({
   title,
   className,
   ...rest
-}: HTMLArkProps<"div"> &
-  RefAttributes<HTMLDivElement> & {
+}: ComponentPropsWithRef<"div"> &
+  PolymorphicProps & {
     /** Supporting text rendered in `Card.Description`. */
     description?: ReactNode;
     /**

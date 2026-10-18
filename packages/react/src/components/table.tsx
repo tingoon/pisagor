@@ -1,7 +1,7 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { ark, type PolymorphicProps } from "@ark-ui/react";
 import type { TableProps as BaseTableProps } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
-import type { RefAttributes } from "react";
+import type { ComponentPropsWithRef } from "react";
 import { type SizeScaleProps, createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -13,10 +13,7 @@ const { Context: TableStylesContext, withContext } = createSlotRecipeContext({
 
 // #region Types
 export interface TableProps
-  extends
-    HTMLArkProps<"table">,
-    RefAttributes<HTMLTableElement>,
-    BaseTableProps {
+  extends ComponentPropsWithRef<"table">, PolymorphicProps, BaseTableProps {
   /**
    * The variant of the table.
    *
@@ -31,20 +28,16 @@ export interface TableProps
   isHoverable?: boolean;
 }
 
-export type TableHeaderProps = HTMLArkProps<"thead"> &
-  RefAttributes<HTMLTableSectionElement>;
-export type TableBodyProps = HTMLArkProps<"tbody"> &
-  RefAttributes<HTMLTableSectionElement>;
-export type TableFooterProps = HTMLArkProps<"tfoot"> &
-  RefAttributes<HTMLTableSectionElement>;
-export type TableRowProps = HTMLArkProps<"tr"> &
-  RefAttributes<HTMLTableRowElement>;
-export type TableHeadProps = HTMLArkProps<"th"> &
-  RefAttributes<HTMLTableCellElement>;
-export type TableCellProps = HTMLArkProps<"td"> &
-  RefAttributes<HTMLTableCellElement>;
-export type TableCaptionProps = HTMLArkProps<"caption"> &
-  RefAttributes<HTMLTableCaptionElement>;
+export type TableHeaderProps = ComponentPropsWithRef<"thead"> &
+  PolymorphicProps;
+export type TableBodyProps = ComponentPropsWithRef<"tbody"> & PolymorphicProps;
+export type TableFooterProps = ComponentPropsWithRef<"tfoot"> &
+  PolymorphicProps;
+export type TableRowProps = ComponentPropsWithRef<"tr"> & PolymorphicProps;
+export type TableHeadProps = ComponentPropsWithRef<"th"> & PolymorphicProps;
+export type TableCellProps = ComponentPropsWithRef<"td"> & PolymorphicProps;
+export type TableCaptionProps = ComponentPropsWithRef<"caption"> &
+  PolymorphicProps;
 // #endregion
 
 // #region Parts

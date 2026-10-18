@@ -1,6 +1,6 @@
 import {
   ark,
-  type HTMLArkProps,
+  type PolymorphicProps,
   Portal,
   Presence,
   useHotkey,
@@ -10,10 +10,10 @@ import { XIcon } from "@phosphor-icons/react";
 import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
 import { actionBarRecipe } from "@pisagor/recipes";
 import type {
+  ComponentPropsWithRef,
   MouseEvent,
   PropsWithChildren,
   ReactNode,
-  RefAttributes,
 } from "react";
 import { createContext, use, useCallback, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal";
@@ -129,16 +129,16 @@ export interface ActionBarProps
   onOpenChange?: (open: boolean) => void;
 }
 
-export type ActionBarTriggerProps = HTMLArkProps<"button"> &
-  RefAttributes<HTMLButtonElement>;
+export type ActionBarTriggerProps = ComponentPropsWithRef<"button"> &
+  PolymorphicProps;
 
-export type ActionBarContentProps = HTMLArkProps<"div"> &
-  RefAttributes<HTMLDivElement>;
+export type ActionBarContentProps = ComponentPropsWithRef<"div"> &
+  PolymorphicProps;
 
 export type ActionBarSeparatorProps = SeparatorProps;
 
-export type ActionBarCloseProps = HTMLArkProps<"button"> &
-  RefAttributes<HTMLButtonElement>;
+export type ActionBarCloseProps = ComponentPropsWithRef<"button"> &
+  PolymorphicProps;
 
 export interface ActionBarValueProps extends BadgeProps {
   /** The number of items selected */
@@ -147,8 +147,8 @@ export interface ActionBarValueProps extends BadgeProps {
   label?: string;
 }
 
-export type ActionBarBodyProps = HTMLArkProps<"div"> &
-  RefAttributes<HTMLDivElement>;
+export type ActionBarBodyProps = ComponentPropsWithRef<"div"> &
+  PolymorphicProps;
 // #endregion
 
 // #region Constants

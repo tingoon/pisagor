@@ -10,7 +10,7 @@ import type {
   FieldRootProps as FieldPrimitiveRootProps,
   FieldsetLegendProps,
   FieldsetRootProps,
-  HTMLArkProps,
+  PolymorphicProps,
 } from "@ark-ui/react";
 import type {
   FieldProps as BaseFieldGroupProps,
@@ -18,7 +18,11 @@ import type {
   FieldProps as BaseFieldSetProps,
 } from "@pisagor/props";
 import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, RefAttributes } from "react";
+import type {
+  ComponentProps,
+  ComponentPropsWithRef,
+  FunctionComponent,
+} from "react";
 import { use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Separator } from "./separator";
@@ -56,26 +60,21 @@ export type FieldHelperProps = FieldHelperTextProps;
 export type FieldErrorProps = FieldErrorTextProps;
 
 export interface FieldGroupProps
-  extends
-    HTMLArkProps<"div">,
-    RefAttributes<HTMLDivElement>,
-    BaseFieldGroupProps {}
+  extends ComponentPropsWithRef<"div">, PolymorphicProps, BaseFieldGroupProps {}
 
-export type FieldContentProps = HTMLArkProps<"div"> &
-  RefAttributes<HTMLDivElement>;
+export type FieldContentProps = ComponentPropsWithRef<"div"> & PolymorphicProps;
 
-export type FieldRequiredIndicatorProps = HTMLArkProps<"span"> &
-  RefAttributes<HTMLSpanElement>;
+export type FieldRequiredIndicatorProps = ComponentPropsWithRef<"span"> &
+  PolymorphicProps;
 
-export type FieldTitleProps = HTMLArkProps<"div"> &
-  RefAttributes<HTMLDivElement>;
+export type FieldTitleProps = ComponentPropsWithRef<"div"> & PolymorphicProps;
 
 export type FieldDescriptionProps = ComponentProps<
   typeof FieldPrimitive.HelperText
 >;
 
-export type FieldSeparatorProps = HTMLArkProps<"div"> &
-  RefAttributes<HTMLDivElement>;
+export type FieldSeparatorProps = ComponentPropsWithRef<"div"> &
+  PolymorphicProps;
 // #endregion
 
 // #region Parts

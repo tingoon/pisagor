@@ -1,4 +1,4 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { ark, type PolymorphicProps } from "@ark-ui/react";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
 import type {
   SortableItemProps as BaseSortableItemProps,
@@ -6,7 +6,12 @@ import type {
 } from "@pisagor/props";
 import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes";
 import { formatMessage } from "@pisagor/utils";
-import type { DragEvent, KeyboardEvent, ReactNode, RefAttributes } from "react";
+import type {
+  ComponentPropsWithRef,
+  DragEvent,
+  KeyboardEvent,
+  ReactNode,
+} from "react";
 import {
   createContext,
   use,
@@ -85,7 +90,7 @@ function useSortableItem() {
 // #region Types
 export interface SortableRootProps
   extends
-    Omit<HTMLArkProps<"div"> & RefAttributes<HTMLDivElement>, "onDragStart">,
+    Omit<ComponentPropsWithRef<"div"> & PolymorphicProps, "onDragStart">,
     BaseSortableRootProps {
   /**
    * Layout axis for drop indicators and keyboard moves.
@@ -108,18 +113,18 @@ export interface SortableRootProps
 
 export interface SortableItemProps
   extends
-    HTMLArkProps<"div">,
-    RefAttributes<HTMLDivElement>,
+    ComponentPropsWithRef<"div">,
+    PolymorphicProps,
     BaseSortableItemProps {
   /** Stable id matching an entry in `Sortable.Root` `items`. */
   value: string;
 }
 
-export type SortableHandleProps = HTMLArkProps<"div"> &
-  RefAttributes<HTMLDivElement>;
+export type SortableHandleProps = ComponentPropsWithRef<"div"> &
+  PolymorphicProps;
 
-export type SortableItemContentProps = HTMLArkProps<"div"> &
-  RefAttributes<HTMLDivElement>;
+export type SortableItemContentProps = ComponentPropsWithRef<"div"> &
+  PolymorphicProps;
 // #endregion
 
 // #region Hooks

@@ -1,14 +1,11 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { ark, type PolymorphicProps } from "@ark-ui/react";
 import type { StatusProps as BaseStatusProps } from "@pisagor/props";
 import { statusRecipe } from "@pisagor/recipes";
-import type { RefAttributes } from "react";
+import type { ComponentPropsWithRef } from "react";
 
 // #region Types
 export interface StatusProps
-  extends
-    HTMLArkProps<"span">,
-    RefAttributes<HTMLSpanElement>,
-    BaseStatusProps {}
+  extends ComponentPropsWithRef<"span">, PolymorphicProps, BaseStatusProps {}
 // #endregion
 
 // #region Component

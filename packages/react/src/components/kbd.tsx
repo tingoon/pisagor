@@ -1,25 +1,22 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { ark, type PolymorphicProps } from "@ark-ui/react";
 import type {
   KbdGroupProps as BaseKbdGroupProps,
   KbdProps as BaseKbdProps,
 } from "@pisagor/props";
 import { kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes";
-import type { RefAttributes } from "react";
+import type { ComponentPropsWithRef } from "react";
 import type { SizeScaleProps } from "../internal";
 
 // #region Types
 export interface KbdProps
   extends
-    HTMLArkProps<"kbd">,
-    RefAttributes<HTMLElement>,
+    ComponentPropsWithRef<"kbd">,
+    PolymorphicProps,
     BaseKbdProps,
     SizeScaleProps {}
 
 export interface KbdGroupProps
-  extends
-    HTMLArkProps<"div">,
-    RefAttributes<HTMLDivElement>,
-    BaseKbdGroupProps {}
+  extends ComponentPropsWithRef<"div">, PolymorphicProps, BaseKbdGroupProps {}
 // #endregion
 
 // #region Parts

@@ -1,7 +1,11 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
+import { ark, type PolymorphicProps } from "@ark-ui/react";
 import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
 import { buttonGroupRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, RefAttributes } from "react";
+import type {
+  ComponentProps,
+  ComponentPropsWithRef,
+  FunctionComponent,
+} from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Separator, type SeparatorProps } from "./separator";
 
@@ -21,9 +25,7 @@ export const ButtonGroupRoot = withProvider(ark.fieldset, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  HTMLArkProps<"fieldset"> &
-    RefAttributes<HTMLFieldSetElement> &
-    BaseButtonGroupProps
+  ComponentPropsWithRef<"fieldset"> & PolymorphicProps & BaseButtonGroupProps
 >;
 
 export const ButtonGroupText = withContext(ark.div, {

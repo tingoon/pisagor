@@ -7,11 +7,11 @@ import type {
   DrawerPositionerProps as DrawerPrimitivePositionerProps,
   DrawerRootProps as DrawerPrimitiveRootProps,
   DrawerTriggerProps,
-  HTMLArkProps,
+  PolymorphicProps,
 } from "@ark-ui/react";
 import type { DrawerProps as BaseDrawerRootProps } from "@pisagor/props";
 import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";
-import type { ComponentProps, RefAttributes } from "react";
+import type { ComponentProps, ComponentPropsWithRef } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { ScrollArea } from "./scroll-area";
 
@@ -37,7 +37,7 @@ export type DrawerContentProps = DrawerPrimitiveContentProps &
   Pick<DrawerVariantProps, "variant">;
 
 export interface DrawerHeaderProps
-  extends HTMLArkProps<"div">, RefAttributes<HTMLDivElement> {
+  extends ComponentPropsWithRef<"div">, PolymorphicProps {
   /** The description of the drawer */
   description?: string;
   /** The title of the drawer */
@@ -45,7 +45,7 @@ export interface DrawerHeaderProps
 }
 
 export interface DrawerBodyProps
-  extends HTMLArkProps<"div">, RefAttributes<HTMLDivElement> {
+  extends ComponentPropsWithRef<"div">, PolymorphicProps {
   /**
    * Whether to add a fade effect to the scroll area.
    *
@@ -54,15 +54,14 @@ export interface DrawerBodyProps
   scrollFade?: boolean;
 }
 
-export type DrawerContentInnerProps = HTMLArkProps<"div"> &
-  RefAttributes<HTMLDivElement>;
+export type DrawerContentInnerProps = ComponentPropsWithRef<"div"> &
+  PolymorphicProps;
 
 export type DrawerDescriptionProps = ComponentProps<
   typeof DrawerPrimitive.Description
 >;
 
-export type DrawerFooterProps = HTMLArkProps<"div"> &
-  RefAttributes<HTMLDivElement>;
+export type DrawerFooterProps = ComponentPropsWithRef<"div"> & PolymorphicProps;
 // #endregion
 
 // #region Parts
