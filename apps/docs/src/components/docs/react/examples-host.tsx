@@ -30,15 +30,21 @@ export function ReactExamplesHost({
   exportNames,
   kind,
 }: ExamplesHostProps = {}) {
-  useEffect(
-    () =>
-      armExamplesHost(
-        globs,
-        { exportNames, id, kind },
-        (slot, comp, message) => {
-          const root = createRoot(slot);
-          const Comp =
-            typeof comp === "function" ? (comp as ComponentType) : null;
+  useEffect(() => {
+    console.info("[ReactExamplesHost] arm", { id, exportNames, kind });
+    return armExamplesHost(
+      globs,
+      { exportNames, id, kind },
+      (slot, comp, message) => {
+        console.info("[ReactExamplesHost] mount", {
+          slot: slot.getAttribute("data-example-slot"),
+          compType: typeof comp,
+          message,
+        });
+        const root = createRoot(slot);
+        const Comp =
+          typeof comp === "function" ? (comp as ComponentType) : null;
+        try {
           root.render(
             Comp ? (
               <Comp />
@@ -46,12 +52,17 @@ export function ReactExamplesHost({
               <p className="text-muted-foreground text-sm">{message}</p>
             ),
           );
-          // Defer so unmount never runs during a React commit (Strict Mode).
-          return () => queueMicrotask(() => root.unmount());
-        },
-      ),
-    [id, exportNames, kind],
-  );
+        } catch (error) {
+          console.error("[ReactExamplesHost] render threw", error);
+          root.render(
+            <p className="text-destructive text-sm">{String(error)}</p>,
+          );
+        }
+        // Defer so unmount never runs during a React commit (Strict Mode).
+        return () => queueMicrotask(() => root.unmount());
+      },
+    );
+  }, [id, exportNames, kind]);
 
   return (
     <>
