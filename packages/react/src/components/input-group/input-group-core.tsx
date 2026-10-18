@@ -1,4 +1,4 @@
-import { ark, type PolymorphicProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
   InputGroupAddonProps as BaseInputGroupAddonProps,
   InputGroupButtonProps as BaseInputGroupButtonProps,
@@ -14,7 +14,7 @@ import {
   inputGroupTextRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { ComponentPropsWithRef, MouseEvent } from "react";
+import type { MouseEvent } from "react";
 import type { FormControlVariant } from "../../internal";
 import { Button, type ButtonProps } from "../button";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -22,16 +22,10 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 // #region Types
 
 export interface InputGroupProps
-  extends
-    ComponentPropsWithRef<"div">,
-    PolymorphicProps,
-    FormControlGroupShellVariantProps {}
+  extends HTMLArkProps<"div">, FormControlGroupShellVariantProps {}
 
 export interface InputGroupAddonProps
-  extends
-    ComponentPropsWithRef<"div">,
-    PolymorphicProps,
-    BaseInputGroupAddonProps {}
+  extends HTMLArkProps<"div">, BaseInputGroupAddonProps {}
 
 export interface InputGroupButtonProps
   extends
@@ -40,10 +34,7 @@ export interface InputGroupButtonProps
     BaseInputGroupButtonProps {}
 
 export interface InputGroupTextProps
-  extends
-    ComponentPropsWithRef<"span">,
-    PolymorphicProps,
-    BaseInputGroupTextProps {}
+  extends HTMLArkProps<"span">, BaseInputGroupTextProps {}
 // #endregion
 
 // #region Parts

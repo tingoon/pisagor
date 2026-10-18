@@ -1,4 +1,9 @@
-import { Menu as MenuPrimitive, Portal, ark } from "@ark-ui/react";
+import {
+  Menu as MenuPrimitive,
+  Portal,
+  ark,
+  type HTMLArkProps,
+} from "@ark-ui/react";
 import type {
   MenuArrowProps,
   MenuCheckboxItemProps,
@@ -13,7 +18,6 @@ import type {
   MenuSeparatorProps,
   MenuTriggerItemProps,
   MenuTriggerProps,
-  PolymorphicProps,
 } from "@ark-ui/react";
 import { CaretRightIcon, CheckIcon } from "@phosphor-icons/react";
 import type {
@@ -25,7 +29,7 @@ import type {
   DropdownMenuItemProps as BaseDropdownMenuTriggerItemProps,
 } from "@pisagor/props";
 import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
-import type { ComponentProps, ComponentPropsWithRef } from "react";
+import type { ComponentProps } from "react";
 import { use } from "react";
 import { createSlotRecipeContext } from "../internal";
 
@@ -83,8 +87,7 @@ export interface DropdownMenuTriggerItemProps
 export interface DropdownMenuContentProps
   extends MenuContentProps, BaseDropdownMenuContentProps {}
 
-export type DropdownMenuShortcutProps = ComponentPropsWithRef<"span"> &
-  PolymorphicProps;
+export type DropdownMenuShortcutProps = HTMLArkProps<"span">;
 // #endregion
 
 // #region Parts

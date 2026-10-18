@@ -2,6 +2,7 @@ import {
   FloatingPanel as FloatingPanelPrimitive,
   Portal,
   ark,
+  type HTMLArkProps,
 } from "@ark-ui/react";
 import type {
   FloatingPanelBodyProps as FloatingPanelBodyPrimitiveProps,
@@ -15,12 +16,11 @@ import type {
   FloatingPanelStageTriggerProps,
   FloatingPanelTitleProps,
   FloatingPanelTriggerProps,
-  PolymorphicProps,
 } from "@ark-ui/react";
 import { ArrowsOutIcon, CornersInIcon, MinusIcon } from "@phosphor-icons/react";
 import type { FloatingPanelProps as BaseFloatingPanelRootProps } from "@pisagor/props";
 import { floatingPanelRecipe } from "@pisagor/recipes";
-import type { ComponentPropsWithRef } from "react";
+
 import { use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
@@ -73,8 +73,7 @@ export interface FloatingPanelBodyProps extends FloatingPanelBodyPrimitiveProps 
   scrollFade?: boolean;
 }
 
-export type FloatingPanelFooterProps = ComponentPropsWithRef<"div"> &
-  PolymorphicProps;
+export type FloatingPanelFooterProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Parts

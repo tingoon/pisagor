@@ -78,7 +78,7 @@ export interface PhoneInputProps
   popupProps?: Omit<ComboboxContentProps, "className" | "children">;
 }
 
-interface PhoneInputContainerProps extends ComponentProps<"div"> {}
+type PhoneInputContainerProps = ComponentProps<"div">;
 // #endregion
 
 // #region Parts

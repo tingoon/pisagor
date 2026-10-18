@@ -1,15 +1,10 @@
-import { ark, type PolymorphicProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
   TimelineItemProps as BaseTimelineItemProps,
   TimelineProps as BaseTimelineRootProps,
 } from "@pisagor/props";
 import { timelineItemRecipe, timelineRecipe } from "@pisagor/recipes";
-import type {
-  ComponentProps,
-  ComponentPropsWithRef,
-  FunctionComponent,
-  ReactNode,
-} from "react";
+import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -25,7 +20,7 @@ export function TimelineRoot({
   recipe = timelineRecipe,
   className,
   ...rest
-}: ComponentPropsWithRef<"ol"> & PolymorphicProps & BaseTimelineRootProps) {
+}: HTMLArkProps<"ol"> & BaseTimelineRootProps) {
   return (
     <ark.ol
       {...rest}
@@ -43,9 +38,7 @@ export const TimelineItem = withProvider(ark.li, {
   },
   name: "Item",
   slot: "base",
-}) as FunctionComponent<
-  ComponentPropsWithRef<"li"> & PolymorphicProps & BaseTimelineItemProps
->;
+}) as FunctionComponent<HTMLArkProps<"li"> & BaseTimelineItemProps>;
 
 export const TimelineIndicator = withContext(ark.div, {
   name: "Indicator",

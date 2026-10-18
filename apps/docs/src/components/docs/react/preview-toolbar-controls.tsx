@@ -48,17 +48,6 @@ export function PreviewToolbarControls({
     return classes;
   }
 
-  function applySurface(value: string) {
-    const root = previewRoot();
-    const wrapper = root?.querySelector<HTMLElement>("[data-preview-surface]");
-    if (!root || !wrapper) return;
-    const classes = surfaceClasses(root);
-    const next = classes.has(value) ? value : "page";
-    wrapper.className = classes.get(next) ?? "w-full";
-    wrapper.dataset.previewSurface = next;
-    setSurface(next);
-  }
-
   function chooseSurface(value: string) {
     try {
       localStorage.setItem(SURFACE_STORAGE_KEY, value);
@@ -81,10 +70,25 @@ export function PreviewToolbarControls({
   }
 
   useLayoutEffect(() => {
-    applySurface(readStoredSurface());
+    function syncSurface(value: string) {
+      const root = rootRef.current?.closest<HTMLElement>(
+        "[data-component-preview]",
+      );
+      const wrapper = root?.querySelector<HTMLElement>(
+        "[data-preview-surface]",
+      );
+      if (!root || !wrapper) return;
+      const classes = surfaceClasses(root);
+      const next = classes.has(value) ? value : "page";
+      wrapper.className = classes.get(next) ?? "w-full";
+      wrapper.dataset.previewSurface = next;
+      setSurface(next);
+    }
+
+    syncSurface(readStoredSurface());
     const onSurface = (event: Event) => {
       if (!rootRef.current?.isConnected) return;
-      applySurface(String((event as CustomEvent<string>).detail));
+      syncSurface(String((event as CustomEvent<string>).detail));
     };
     document.addEventListener(SURFACE_EVENT, onSurface);
 

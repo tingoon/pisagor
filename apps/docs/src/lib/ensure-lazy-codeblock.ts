@@ -37,7 +37,7 @@ export async function ensureLazyCodeBlock(root: ParentNode): Promise<void> {
   const mount = block.querySelector<HTMLElement>("[data-code-mount]");
   if (!mount) return;
 
-  let code = "";
+  let code: string;
 
   if (block.dataset.sourcePending !== undefined) {
     const ref = sourceRefFromBlock(block);

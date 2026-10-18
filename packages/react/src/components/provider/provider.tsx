@@ -29,7 +29,7 @@ export type LocaleProviderProps = PropsWithChildren<LocaleConfig>;
 
 export type MotionProviderProps = PropsWithChildren<Partial<MotionConfig>>;
 
-export interface ToasterProviderProps extends ToasterProps {}
+export type ToasterProviderProps = ToasterProps;
 // #endregion
 
 // #region Parts

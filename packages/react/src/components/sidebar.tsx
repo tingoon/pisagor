@@ -1,4 +1,4 @@
-import { ark, type PolymorphicProps, useHotkey } from "@ark-ui/react";
+import { ark, useHotkey, type HTMLArkProps } from "@ark-ui/react";
 import { SidebarSimpleIcon } from "@phosphor-icons/react";
 import type { SidebarProps as BaseSidebarProviderProps } from "@pisagor/props";
 import {
@@ -15,11 +15,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import type {
-  ComponentProps,
-  ComponentPropsWithRef,
-  CSSProperties,
-} from "react";
+import type { CSSProperties } from "react";
 import { useIsMobile } from "../hooks";
 import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
@@ -69,7 +65,7 @@ export function useSidebar(): SidebarContextProps {
 
 // #region Types
 export interface SidebarProviderProps
-  extends ComponentProps<"div">, BaseSidebarProviderProps {
+  extends HTMLArkProps<"div">, BaseSidebarProviderProps {
   /**
    * The default open state of the sidebar.
    *
@@ -113,7 +109,7 @@ export interface SidebarProps extends Omit<
   className?: string;
 }
 
-export interface SidebarContentProps extends ComponentProps<"div"> {
+export interface SidebarContentProps extends HTMLArkProps<"div"> {
   /**
    * Whether to add a scroll fade effect to the sidebar content.
    *
@@ -133,8 +129,7 @@ export interface SidebarMenuButtonProps extends ButtonProps {
   tooltip?: string | Omit<TooltipProps, "children">;
 }
 
-export interface SidebarMenuActionProps
-  extends ComponentPropsWithRef<"button">, PolymorphicProps {
+export interface SidebarMenuActionProps extends HTMLArkProps<"button"> {
   showOnHover?: boolean;
   /**
    * Button style recipe. Defaults to `buttonRecipe` from
@@ -145,13 +140,12 @@ export interface SidebarMenuActionProps
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export interface SidebarMenuSkeletonProps
-  extends ComponentPropsWithRef<"div">, PolymorphicProps {
+export interface SidebarMenuSkeletonProps extends HTMLArkProps<"div"> {
   showIcon?: boolean;
 }
 
 export interface SidebarMenuSubButtonProps
-  extends ComponentPropsWithRef<"a">, PolymorphicProps, ButtonVariantProps {
+  extends HTMLArkProps<"a">, ButtonVariantProps {
   isActive?: boolean;
   /**
    * Button style recipe. Defaults to `buttonRecipe` from
@@ -162,25 +156,19 @@ export interface SidebarMenuSubButtonProps
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export type SidebarRailProps = ComponentPropsWithRef<"button"> &
-  PolymorphicProps;
+export type SidebarRailProps = HTMLArkProps<"button">;
 
-export type SidebarInsetProps = ComponentPropsWithRef<"main"> &
-  PolymorphicProps;
+export type SidebarInsetProps = HTMLArkProps<"main">;
 
-export type SidebarHeaderProps = ComponentPropsWithRef<"div"> &
-  PolymorphicProps;
+export type SidebarHeaderProps = HTMLArkProps<"div">;
 
-export type SidebarFooterProps = ComponentPropsWithRef<"div"> &
-  PolymorphicProps;
+export type SidebarFooterProps = HTMLArkProps<"div">;
 
-export type SidebarGroupProps = ComponentPropsWithRef<"div"> & PolymorphicProps;
+export type SidebarGroupProps = HTMLArkProps<"div">;
 
-export type SidebarGroupLabelProps = ComponentPropsWithRef<"div"> &
-  PolymorphicProps;
+export type SidebarGroupLabelProps = HTMLArkProps<"div">;
 
-export interface SidebarGroupActionProps
-  extends ComponentPropsWithRef<"button">, PolymorphicProps {
+export interface SidebarGroupActionProps extends HTMLArkProps<"button"> {
   /**
    * Button style recipe. Defaults to `buttonRecipe` from
    * `@pisagor/recipes/button`.
@@ -190,22 +178,17 @@ export interface SidebarGroupActionProps
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export type SidebarGroupContentProps = ComponentPropsWithRef<"div"> &
-  PolymorphicProps;
+export type SidebarGroupContentProps = HTMLArkProps<"div">;
 
-export type SidebarMenuProps = ComponentPropsWithRef<"ul"> & PolymorphicProps;
+export type SidebarMenuProps = HTMLArkProps<"ul">;
 
-export type SidebarMenuItemProps = ComponentPropsWithRef<"li"> &
-  PolymorphicProps;
+export type SidebarMenuItemProps = HTMLArkProps<"li">;
 
-export type SidebarMenuBadgeProps = ComponentPropsWithRef<"div"> &
-  PolymorphicProps;
+export type SidebarMenuBadgeProps = HTMLArkProps<"div">;
 
-export type SidebarMenuSubProps = ComponentPropsWithRef<"ul"> &
-  PolymorphicProps;
+export type SidebarMenuSubProps = HTMLArkProps<"ul">;
 
-export type SidebarMenuSubItemProps = ComponentPropsWithRef<"li"> &
-  PolymorphicProps;
+export type SidebarMenuSubItemProps = HTMLArkProps<"li">;
 // #endregion
 
 // #region Constants

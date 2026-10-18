@@ -1,11 +1,11 @@
-import { ark, type PolymorphicProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
 import { aspectRatioRecipe } from "@pisagor/recipes";
-import type { ComponentPropsWithRef, CSSProperties } from "react";
+import type { CSSProperties } from "react";
 
 // #region Types
 export interface AspectRatioProps
-  extends ComponentPropsWithRef<"div">, PolymorphicProps, BaseAspectRatioProps {
+  extends HTMLArkProps<"div">, BaseAspectRatioProps {
   /**
    * Width divided by height, e.g. `16 / 9`. Overrides the `--ratio` CSS
    * variable.

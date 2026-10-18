@@ -1,12 +1,7 @@
-import { ark, type PolymorphicProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { CardProps as BaseCardRootProps } from "@pisagor/props";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
-import type {
-  ComponentProps,
-  ComponentPropsWithRef,
-  FunctionComponent,
-  ReactNode,
-} from "react";
+import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -20,15 +15,13 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 export const CardRoot = withProvider(ark.div, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<
-  ComponentPropsWithRef<"div"> & PolymorphicProps & BaseCardRootProps
->;
+}) as FunctionComponent<HTMLArkProps<"div"> & BaseCardRootProps>;
 
 export function CardMedia({
   variant = "default",
   className,
   ...rest
-}: ComponentPropsWithRef<"div"> & PolymorphicProps & CardVariantProps) {
+}: HTMLArkProps<"div"> & CardVariantProps) {
   const { slots } = useStyles();
 
   return (
@@ -48,16 +41,15 @@ export function CardHeader({
   title,
   className,
   ...rest
-}: ComponentPropsWithRef<"div"> &
-  PolymorphicProps & {
-    /** Supporting text rendered in `Card.Description`. */
-    description?: ReactNode;
-    /**
-     * Heading rendered in `Card.Title` (an `h3`; use `asChild` on `Card.Title`
-     * for another level).
-     */
-    title?: ReactNode;
-  }) {
+}: HTMLArkProps<"div"> & {
+  /** Supporting text rendered in `Card.Description`. */
+  description?: ReactNode;
+  /**
+   * Heading rendered in `Card.Title` (an `h3`; use `asChild` on `Card.Title`
+   * for another level).
+   */
+  title?: ReactNode;
+}) {
   const { slots } = useStyles();
 
   return (

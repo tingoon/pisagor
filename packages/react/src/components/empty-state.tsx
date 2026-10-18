@@ -1,12 +1,7 @@
-import { ark, type PolymorphicProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { EmptyStateProps as BaseEmptyStateRootProps } from "@pisagor/props";
 import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
-import type {
-  ComponentProps,
-  ComponentPropsWithRef,
-  FunctionComponent,
-  ReactNode,
-} from "react";
+import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -21,8 +16,7 @@ export const EmptyStateRoot = withProvider(ark.div, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  Omit<ComponentPropsWithRef<"div"> & PolymorphicProps, "title"> &
-    BaseEmptyStateRootProps
+  Omit<HTMLArkProps<"div">, "title"> & BaseEmptyStateRootProps
 >;
 
 export const EmptyStateMedia = withContext(ark.div, {

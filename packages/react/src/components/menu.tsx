@@ -1,4 +1,4 @@
-import { ark, type PolymorphicProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
   MenuItemProps as BaseMenuItemProps,
   MenuProps as BaseMenuRootProps,
@@ -6,7 +6,7 @@ import type {
 import { menuItemRecipe, menuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { createContext, use } from "react";
-import type { ComponentPropsWithRef, FunctionComponent } from "react";
+import type { FunctionComponent } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
@@ -18,33 +18,25 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface MenuRootProps
-  extends ComponentPropsWithRef<"nav">, PolymorphicProps, BaseMenuRootProps {}
+export interface MenuRootProps extends HTMLArkProps<"nav">, BaseMenuRootProps {}
 
-export type MenuPartProps = ComponentPropsWithRef<"div"> & PolymorphicProps;
+export type MenuPartProps = HTMLArkProps<"div">;
 
-export type MenuListProps = ComponentPropsWithRef<"ul"> & PolymorphicProps;
+export type MenuListProps = HTMLArkProps<"ul">;
 
 export interface MenuItemProps
-  extends
-    ComponentPropsWithRef<"button">,
-    PolymorphicProps,
-    BaseMenuItemProps {}
+  extends HTMLArkProps<"button">, BaseMenuItemProps {}
 
-export interface MenuLinkProps
-  extends ComponentPropsWithRef<"a">, PolymorphicProps {
+export interface MenuLinkProps extends HTMLArkProps<"a"> {
   /** Whether the link represents the current page */
   active?: boolean;
 }
 
-export type MenuGroupLabelProps = ComponentPropsWithRef<"div"> &
-  PolymorphicProps;
+export type MenuGroupLabelProps = HTMLArkProps<"div">;
 
-export type MenuSeparatorProps = ComponentPropsWithRef<"div"> &
-  PolymorphicProps;
+export type MenuSeparatorProps = HTMLArkProps<"div">;
 
-export type MenuShortcutProps = ComponentPropsWithRef<"span"> &
-  PolymorphicProps;
+export type MenuShortcutProps = HTMLArkProps<"span">;
 // #endregion
 
 // #region Parts
@@ -156,9 +148,7 @@ export function MenuSeparator(props: MenuSeparatorProps) {
   const insideList = use(MenuInsideListContext);
 
   return insideList ? (
-    <MenuSeparatorItem
-      {...(props as ComponentPropsWithRef<"li"> & PolymorphicProps)}
-    />
+    <MenuSeparatorItem {...(props as HTMLArkProps<"li">)} />
   ) : (
     <MenuSeparatorDiv {...props} />
   );

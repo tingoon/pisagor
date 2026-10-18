@@ -111,16 +111,16 @@ interface DataGridEmptyProps extends TableRowProps {
   children?: ReactNode;
 }
 
-interface DataGridColumnResizerProps extends ComponentProps<"div"> {}
+type DataGridColumnResizerProps = ComponentProps<"div">;
 
 interface DataGridRowProviderProps<TData extends RowData> {
   row: Row<DataGridFeatures, TData>;
   children: ReactNode;
 }
 
-interface DataGridToolbarProps extends ComponentProps<"div"> {}
+type DataGridToolbarProps = ComponentProps<"div">;
 
-interface DataGridFooterProps extends ComponentProps<"div"> {}
+type DataGridFooterProps = ComponentProps<"div">;
 // #endregion
 
 // #region Hooks

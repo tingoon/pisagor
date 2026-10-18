@@ -1,4 +1,9 @@
-import { Dialog as AlertDialogPrimitive, Portal, ark } from "@ark-ui/react";
+import {
+  Dialog as AlertDialogPrimitive,
+  Portal,
+  ark,
+  type HTMLArkProps,
+} from "@ark-ui/react";
 import type {
   DialogBackdropProps,
   DialogCloseTriggerProps,
@@ -6,7 +11,6 @@ import type {
   DialogPositionerProps as DialogPositionerPrimitiveProps,
   DialogRootProps as DialogRootPrimitiveProps,
   DialogTriggerProps,
-  PolymorphicProps,
 } from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
 import type { AlertDialogProps as BaseAlertDialogRootProps } from "@pisagor/props";
@@ -14,7 +18,7 @@ import {
   type AlertDialogVariantProps,
   alertDialogRecipe,
 } from "@pisagor/recipes";
-import type { ComponentPropsWithRef, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
@@ -51,8 +55,7 @@ export interface AlertDialogContentProps
   showCloseButton?: boolean;
 }
 
-export interface AlertDialogBodyProps
-  extends ComponentPropsWithRef<"div">, PolymorphicProps {
+export interface AlertDialogBodyProps extends HTMLArkProps<"div"> {
   /**
    * Whether to add a fade effect to the scroll area.
    *
@@ -61,15 +64,13 @@ export interface AlertDialogBodyProps
   scrollFade?: boolean;
 }
 
-export type AlertDialogHeaderProps = ComponentPropsWithRef<"div"> &
-  PolymorphicProps;
+export type AlertDialogHeaderProps = HTMLArkProps<"div">;
 
 export interface AlertDialogPositionerProps extends DialogPositionerPrimitiveProps {
   bottomStickOnMobile?: boolean;
 }
 
-export type AlertDialogFooterProps = ComponentPropsWithRef<"div"> &
-  PolymorphicProps;
+export type AlertDialogFooterProps = HTMLArkProps<"div">;
 
 export interface AlertDialogActionProps
   extends DialogCloseTriggerProps, Omit<ButtonProps, "variant"> {

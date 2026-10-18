@@ -1,7 +1,7 @@
-import { ark, type PolymorphicProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { SurfaceProps as BaseSurfaceProps } from "@pisagor/props";
 import { surfaceRecipe } from "@pisagor/recipes";
-import type { ComponentPropsWithRef } from "react";
+
 import { useMemo } from "react";
 import {
   SurfaceContext,
@@ -16,8 +16,7 @@ const AUTO_VARIANTS = [
   "tertiary",
 ] as const satisfies readonly SurfaceVariant[];
 
-export interface SurfaceProps
-  extends ComponentPropsWithRef<"div">, PolymorphicProps, BaseSurfaceProps {}
+export interface SurfaceProps extends HTMLArkProps<"div">, BaseSurfaceProps {}
 // #endregion
 
 // #region Component

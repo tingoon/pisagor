@@ -1,15 +1,15 @@
-import { ark, type PolymorphicProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
   SkipNavProps as BaseSkipNavContentProps,
   SkipNavProps as BaseSkipNavLinkProps,
 } from "@pisagor/props";
 import { skipNavRecipe } from "@pisagor/recipes";
-import type { ComponentPropsWithRef } from "react";
+
 import { useLocale } from "./provider/context";
 
 // #region Types
 export interface SkipNavLinkProps
-  extends ComponentPropsWithRef<"a">, PolymorphicProps, BaseSkipNavLinkProps {
+  extends HTMLArkProps<"a">, BaseSkipNavLinkProps {
   /**
    * The id of the element to skip to.
    *
@@ -21,10 +21,7 @@ export interface SkipNavLinkProps
 }
 
 export interface SkipNavContentProps
-  extends
-    ComponentPropsWithRef<"div">,
-    PolymorphicProps,
-    BaseSkipNavContentProps {
+  extends HTMLArkProps<"div">, BaseSkipNavContentProps {
   /**
    * The id that SkipNavLink links to.
    *

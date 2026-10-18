@@ -112,11 +112,11 @@ export interface SliderProps extends Omit<
   valueProps?: Omit<SliderValueProps, "children" | "className">;
 }
 
-interface SliderHeaderProps extends ComponentProps<"div"> {}
+type SliderHeaderProps = ComponentProps<"div">;
 
-interface SliderMarkerTickProps extends ComponentProps<"span"> {}
+type SliderMarkerTickProps = ComponentProps<"span">;
 
-interface SliderMarkerLabelProps extends ComponentProps<"span"> {}
+type SliderMarkerLabelProps = ComponentProps<"span">;
 // #endregion
 
 // #region Parts

@@ -1,4 +1,4 @@
-import { ark, type PolymorphicProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
 import {
   type FormControlGroupShellVariantProps,
@@ -7,11 +7,7 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useRef, useState } from "react";
-import type {
-  ChangeEventHandler,
-  ComponentProps,
-  ComponentPropsWithRef,
-} from "react";
+import type { ChangeEventHandler, ComponentProps } from "react";
 import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import {
   InputGroupAddon,
@@ -38,8 +34,7 @@ type NativeFileInputProps = Omit<
   "defaultValue" | "onChange" | "size" | "type" | "value"
 >;
 
-type FileInputRootProps = ComponentPropsWithRef<"div"> &
-  PolymorphicProps &
+type FileInputRootProps = HTMLArkProps<"div"> &
   FileInputVariantProps &
   BaseFileInputProps & {
     /** Disables the control and sets `data-disabled` on the root. */
@@ -59,9 +54,9 @@ export interface FileInputProps
   onFilesChange?: (files: File[]) => void;
 }
 
-interface FileInputControlProps extends ComponentProps<"input"> {}
+type FileInputControlProps = ComponentProps<"input">;
 
-interface FileInputLabelProps extends InputGroupTextProps {}
+type FileInputLabelProps = InputGroupTextProps;
 // #endregion
 
 // #region Helpers

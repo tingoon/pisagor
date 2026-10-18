@@ -78,9 +78,9 @@ interface DataTableEmptyProps extends TableRowProps {
   children?: ReactNode;
 }
 
-interface DataTableToolbarProps extends ComponentProps<"div"> {}
+type DataTableToolbarProps = ComponentProps<"div">;
 
-interface DataTableFooterProps extends ComponentProps<"div"> {}
+type DataTableFooterProps = ComponentProps<"div">;
 // #endregion
 
 // #region Hooks

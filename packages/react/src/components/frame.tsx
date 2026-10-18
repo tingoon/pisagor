@@ -1,7 +1,7 @@
-import { ark, type PolymorphicProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { FrameProps as BaseFrameRootProps } from "@pisagor/props";
 import { frameRecipe } from "@pisagor/recipes";
-import type { ComponentProps, ComponentPropsWithRef } from "react";
+import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { SurfaceContext } from "./surface/surface.context";
 
@@ -23,7 +23,7 @@ export function FrameRoot({
   recipe = frameRecipe,
   className,
   ...rest
-}: ComponentPropsWithRef<"div"> & PolymorphicProps & BaseFrameRootProps) {
+}: HTMLArkProps<"div"> & BaseFrameRootProps) {
   const slots = recipe({ size });
 
   return (
@@ -46,7 +46,7 @@ export function FramePanel({
   children,
   className,
   ...rest
-}: ComponentPropsWithRef<"div"> & PolymorphicProps) {
+}: HTMLArkProps<"div">) {
   const { slots } = useStyles();
 
   return (

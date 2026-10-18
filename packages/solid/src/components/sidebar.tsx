@@ -7,7 +7,7 @@ import {
   sidebarRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { Accessor, ComponentProps, JSX } from "solid-js";
+import type { Accessor, JSX } from "solid-js";
 import {
   createEffect,
   createMemo,
@@ -70,7 +70,7 @@ export function useSidebar(): SidebarContextProps {
 // #endregion
 
 export interface SidebarProviderProps
-  extends ComponentProps<"div">, Pick<BaseSidebarProps, "recipe"> {
+  extends HTMLArkProps<"div">, Pick<BaseSidebarProps, "recipe"> {
   /**
    * Initial open state. A stored value in `localStorage` (`sidebar_state`) wins
    * after mount.
@@ -97,7 +97,7 @@ export interface SidebarProps extends Omit<
   children?: JSX.Element;
 }
 
-export interface SidebarContentProps extends ComponentProps<"div"> {
+export interface SidebarContentProps extends HTMLArkProps<"div"> {
   scrollFade?: boolean;
 }
 

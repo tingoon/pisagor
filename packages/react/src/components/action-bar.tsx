@@ -1,20 +1,15 @@
 import {
   ark,
-  type PolymorphicProps,
   Portal,
   Presence,
   useHotkey,
+  type HTMLArkProps,
 } from "@ark-ui/react";
 import { useUncontrolled } from "@mantine/hooks";
 import { XIcon } from "@phosphor-icons/react";
 import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
 import { actionBarRecipe } from "@pisagor/recipes";
-import type {
-  ComponentPropsWithRef,
-  MouseEvent,
-  PropsWithChildren,
-  ReactNode,
-} from "react";
+import type { MouseEvent, PropsWithChildren, ReactNode } from "react";
 import { createContext, use, useCallback, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Badge, type BadgeProps } from "./badge";
@@ -129,16 +124,13 @@ export interface ActionBarProps
   onOpenChange?: (open: boolean) => void;
 }
 
-export type ActionBarTriggerProps = ComponentPropsWithRef<"button"> &
-  PolymorphicProps;
+export type ActionBarTriggerProps = HTMLArkProps<"button">;
 
-export type ActionBarContentProps = ComponentPropsWithRef<"div"> &
-  PolymorphicProps;
+export type ActionBarContentProps = HTMLArkProps<"div">;
 
 export type ActionBarSeparatorProps = SeparatorProps;
 
-export type ActionBarCloseProps = ComponentPropsWithRef<"button"> &
-  PolymorphicProps;
+export type ActionBarCloseProps = HTMLArkProps<"button">;
 
 export interface ActionBarValueProps extends BadgeProps {
   /** The number of items selected */
@@ -147,8 +139,7 @@ export interface ActionBarValueProps extends BadgeProps {
   label?: string;
 }
 
-export type ActionBarBodyProps = ComponentPropsWithRef<"div"> &
-  PolymorphicProps;
+export type ActionBarBodyProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Constants

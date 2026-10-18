@@ -4,6 +4,7 @@ import {
   ark,
   parseColor as parseColorArk,
   useColorPickerContext,
+  type HTMLArkProps,
 } from "@ark-ui/react";
 import type {
   ColorPickerAreaProps as ColorPickerAreaPrimitiveProps,
@@ -19,7 +20,6 @@ import type {
   ColorPickerValueSwatchProps,
   ColorPickerValueTextProps,
   ColorPickerViewProps,
-  PolymorphicProps,
 } from "@ark-ui/react";
 import { useUncontrolled } from "@mantine/hooks";
 import { CheckIcon, EyedropperIcon, XIcon } from "@phosphor-icons/react";
@@ -27,7 +27,7 @@ import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useMemo } from "react";
-import type { ComponentProps, ComponentPropsWithRef } from "react";
+import type { ComponentProps } from "react";
 import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { InputGroup, type InputGroupButtonProps } from "./input-group";
@@ -126,8 +126,7 @@ export type ColorPickerSwatchIndicatorProps = ComponentProps<
 
 export type ColorPickerInputProps = Partial<ColorPickerChannelInputProps>;
 
-export type ColorPickerSwatchPreviewProps = ComponentPropsWithRef<"div"> &
-  PolymorphicProps;
+export type ColorPickerSwatchPreviewProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Parts

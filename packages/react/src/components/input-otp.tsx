@@ -1,16 +1,16 @@
-import { PinInput as PinInputPrimitive, ark } from "@ark-ui/react";
-import type {
-  PinInputInputProps,
-  PinInputRootProps,
-  PolymorphicProps,
+import {
+  PinInput as PinInputPrimitive,
+  ark,
+  type HTMLArkProps,
 } from "@ark-ui/react";
+import type { PinInputInputProps, PinInputRootProps } from "@ark-ui/react";
 import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
 import {
   type FormControlShellVariantProps,
   inputOtpRecipe,
   inputRootRecipe,
 } from "@pisagor/recipes";
-import type { ComponentPropsWithRef } from "react";
+
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
@@ -42,8 +42,7 @@ export interface InputOTPProps extends InputOTPRootProps {
 
 export type InputOTPSlotProps = PinInputInputProps & BaseInputOTPProps;
 
-export type InputOTPSeparatorProps = ComponentPropsWithRef<"hr"> &
-  PolymorphicProps;
+export type InputOTPSeparatorProps = HTMLArkProps<"hr">;
 // #endregion
 
 // #region Parts

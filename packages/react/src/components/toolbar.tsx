@@ -1,10 +1,9 @@
-import { ark, type PolymorphicProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { ToolbarProps as BaseToolbarRootProps } from "@pisagor/props";
 import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes";
 import { handleRovingFocusKeyDown } from "@pisagor/utils";
 import type {
   ComponentProps,
-  ComponentPropsWithRef,
   FunctionComponent,
   KeyboardEvent,
   ReactNode,
@@ -23,8 +22,7 @@ export const ToolbarRoot = withProvider(ark.div, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  Omit<ComponentPropsWithRef<"div"> & PolymorphicProps, "title"> &
-    BaseToolbarRootProps
+  Omit<HTMLArkProps<"div">, "title"> & BaseToolbarRootProps
 >;
 
 export const ToolbarHeading = withContext(ark.div, {

@@ -1,7 +1,7 @@
-import { ark, type PolymorphicProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { TableProps as BaseTableProps } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
-import type { ComponentPropsWithRef } from "react";
+
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -12,8 +12,7 @@ const { Context: TableStylesContext, withContext } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface TableProps
-  extends ComponentPropsWithRef<"table">, PolymorphicProps, BaseTableProps {
+export interface TableProps extends HTMLArkProps<"table">, BaseTableProps {
   /**
    * The variant of the table.
    *
@@ -28,16 +27,13 @@ export interface TableProps
   isHoverable?: boolean;
 }
 
-export type TableHeaderProps = ComponentPropsWithRef<"thead"> &
-  PolymorphicProps;
-export type TableBodyProps = ComponentPropsWithRef<"tbody"> & PolymorphicProps;
-export type TableFooterProps = ComponentPropsWithRef<"tfoot"> &
-  PolymorphicProps;
-export type TableRowProps = ComponentPropsWithRef<"tr"> & PolymorphicProps;
-export type TableHeadProps = ComponentPropsWithRef<"th"> & PolymorphicProps;
-export type TableCellProps = ComponentPropsWithRef<"td"> & PolymorphicProps;
-export type TableCaptionProps = ComponentPropsWithRef<"caption"> &
-  PolymorphicProps;
+export type TableHeaderProps = HTMLArkProps<"thead">;
+export type TableBodyProps = HTMLArkProps<"tbody">;
+export type TableFooterProps = HTMLArkProps<"tfoot">;
+export type TableRowProps = HTMLArkProps<"tr">;
+export type TableHeadProps = HTMLArkProps<"th">;
+export type TableCellProps = HTMLArkProps<"td">;
+export type TableCaptionProps = HTMLArkProps<"caption">;
 // #endregion
 
 // #region Parts

@@ -27,7 +27,15 @@ Type imports: when an import has 3 or more inline `type X` specifiers, split it 
 
 Blank line before `return`: put one empty line between the preceding statements and a `return` (e.g. `const { m } = useLocale();`, an empty line, then `return (`). A `return` that is the first statement of its block or `case` needs none. This applies to `.ts`/`.tsx` and the script blocks of `.vue`, `.svelte` and `.astro` files. No tool enforces it: `bun lint` rejects `padding-line-between-statements` / `newline-before-return` as formatting rules, `bun fmt` has no such option, and Biome has no equivalent rule, so follow it by hand.
 
-Ark element props: never type `ark.*` hosts with `ComponentProps<typeof ark.tag>`. React: use `ComponentPropsWithRef<"tag"> & PolymorphicProps` (interfaces: `extends ComponentPropsWithRef<"div">, PolymorphicProps`), with `ComponentPropsWithRef` as a type import from `react` and `PolymorphicProps` from `@ark-ui/react`. This mirrors Ark's internal `ArkPropsWithRef` and keeps the React 19 `ref` prop, which Ark's `HTMLArkProps` (`ComponentPropsWithoutRef`) drops. Solid: use `HTMLArkProps<"tag">` from `@ark-ui/solid` (identical to `ComponentProps<typeof ark.tag>`). Vue components use runtime props/attrs, so there is nothing to type; Svelte keeps `HTMLAttributes<Element>` from `svelte/elements` because `@ark-ui/svelte` does not export `HTMLProps` / `PolymorphicProps` from its barrel.
+Host element props — match the runtime host, do not mix:
+
+| Host                            | React props type                            | Notes                                                                                                                                                                                                        |
+| ------------------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ark.button` / `ark.div` / …    | `HTMLArkProps<"tag">` from `@ark-ui/react`  | Includes `PolymorphicProps` (`asChild`). Do **not** also extend `ComponentPropsWithRef` / `PolymorphicProps`. When `ref` is forwarded (destructured or via `...rest`), also extend `RefAttributes<Element>`. |
+| Native `<button>` / `<div>` / … | `ComponentPropsWithRef<"tag">` from `react` | No Ark types.                                                                                                                                                                                                |
+| Never                           | `ComponentProps<typeof ark.tag>`            | Prefer `HTMLArkProps<"tag">`.                                                                                                                                                                                |
+
+Solid: `HTMLArkProps<"tag">` from `@ark-ui/solid` for `ark.*`. Vue: runtime props/attrs (nothing to type). Svelte: `HTMLAttributes<Element>` from `svelte/elements` (`@ark-ui/svelte` does not export `HTMLProps` / `PolymorphicProps` from its barrel).
 
 ---
 

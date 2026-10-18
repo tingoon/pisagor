@@ -1,4 +1,4 @@
-import { ark, type PolymorphicProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
   BottomNavigationItemProps as BaseBottomNavigationItemProps,
   BottomNavigationProps as BaseBottomNavigationRootProps,
@@ -8,7 +8,7 @@ import {
   bottomNavigationRecipe,
 } from "@pisagor/recipes";
 import { createContext, use } from "react";
-import type { ComponentPropsWithRef, FunctionComponent } from "react";
+import type { FunctionComponent } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
@@ -36,10 +36,7 @@ const BottomNavigationValueContext = createContext<string | undefined>(
 
 // #region Types
 export interface BottomNavigationRootProps
-  extends
-    ComponentPropsWithRef<"nav">,
-    PolymorphicProps,
-    BaseBottomNavigationRootProps {
+  extends HTMLArkProps<"nav">, BaseBottomNavigationRootProps {
   /**
    * Value of the item for the current page; that item gets
    * `aria-current="page"`.
@@ -49,14 +46,10 @@ export interface BottomNavigationRootProps
 
 export type BottomNavigationProps = BottomNavigationRootProps;
 
-export type BottomNavigationListProps = ComponentPropsWithRef<"div"> &
-  PolymorphicProps;
+export type BottomNavigationListProps = HTMLArkProps<"div">;
 
 export interface BottomNavigationItemProps
-  extends
-    ComponentPropsWithRef<"a">,
-    PolymorphicProps,
-    BaseBottomNavigationItemProps {
+  extends HTMLArkProps<"a">, BaseBottomNavigationItemProps {
   /** Marks the item as the current page. Defaults to `value === root value`. */
   current?: boolean;
   /** Whether the item is disabled. */
@@ -65,18 +58,16 @@ export interface BottomNavigationItemProps
   value?: string;
 }
 
-export type BottomNavigationItemIconProps = ComponentPropsWithRef<"span"> &
-  PolymorphicProps;
+export type BottomNavigationItemIconProps = HTMLArkProps<"span">;
 
-export type BottomNavigationItemLabelProps = ComponentPropsWithRef<"span"> &
-  PolymorphicProps;
+export type BottomNavigationItemLabelProps = HTMLArkProps<"span">;
 // #endregion
 
 // #region Parts
 const BottomNavigationNav = withBottomNavigationProvider(ark.nav, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<ComponentPropsWithRef<"nav"> & PolymorphicProps>;
+}) as FunctionComponent<HTMLArkProps<"nav">>;
 
 export function BottomNavigationRoot({
   value,
@@ -102,7 +93,7 @@ export const BottomNavigationList = withBottomNavigationContext(ark.div, {
 const BottomNavigationItemBase = withBottomNavigationItemProvider(ark.a, {
   name: "Item",
   slot: "base",
-}) as FunctionComponent<ComponentPropsWithRef<"a"> & PolymorphicProps>;
+}) as FunctionComponent<HTMLArkProps<"a">>;
 
 export function BottomNavigationItem({
   current,

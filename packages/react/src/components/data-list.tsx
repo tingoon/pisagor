@@ -1,11 +1,11 @@
-import { ark, type PolymorphicProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { DataListProps as BaseDataListRootProps } from "@pisagor/props";
 import {
   type DataListItemRecipeSlot,
   dataListItemRecipe,
   dataListRecipe,
 } from "@pisagor/recipes";
-import type { ComponentProps, ComponentPropsWithRef, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -22,8 +22,7 @@ export function DataListRoot({
   recipe = dataListRecipe,
   className,
   ...rest
-}: ComponentPropsWithRef<"dl"> &
-  PolymorphicProps &
+}: HTMLArkProps<"dl"> &
   BaseDataListRootProps & {
     orientation?: "horizontal" | "vertical";
   }) {

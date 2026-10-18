@@ -1,18 +1,14 @@
-import { ark, type PolymorphicProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
   SkeletonProps as BaseSkeletonCircleProps,
   SkeletonProps as BaseSkeletonRootProps,
   SkeletonProps as BaseSkeletonTextProps,
 } from "@pisagor/props";
 import { skeletonRecipe } from "@pisagor/recipes";
-import type { ComponentPropsWithRef } from "react";
 
 // #region Types
 export interface SkeletonTextProps
-  extends
-    ComponentPropsWithRef<"div">,
-    PolymorphicProps,
-    BaseSkeletonTextProps {
+  extends HTMLArkProps<"div">, BaseSkeletonTextProps {
   /**
    * The number of lines of the skeleton text.
    *
@@ -22,16 +18,10 @@ export interface SkeletonTextProps
 }
 
 export interface SkeletonRootProps
-  extends
-    ComponentPropsWithRef<"div">,
-    PolymorphicProps,
-    BaseSkeletonRootProps {}
+  extends HTMLArkProps<"div">, BaseSkeletonRootProps {}
 
 export interface SkeletonCircleProps
-  extends
-    ComponentPropsWithRef<"div">,
-    PolymorphicProps,
-    BaseSkeletonCircleProps {}
+  extends HTMLArkProps<"div">, BaseSkeletonCircleProps {}
 // #endregion
 
 // #region Parts

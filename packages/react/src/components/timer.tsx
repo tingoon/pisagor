@@ -1,6 +1,10 @@
-import { Timer as TimerPrimitive, ark, useTimerContext } from "@ark-ui/react";
+import {
+  Timer as TimerPrimitive,
+  ark,
+  useTimerContext,
+  type HTMLArkProps,
+} from "@ark-ui/react";
 import type {
-  PolymorphicProps,
   TimerActionTriggerProps,
   TimerRootProps as TimerRootPrimitiveProps,
   TimerSeparatorProps,
@@ -10,11 +14,7 @@ import type {
   TimerProps as BaseTimerRootProps,
 } from "@pisagor/props";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
-import type {
-  ComponentProps,
-  ComponentPropsWithRef,
-  FunctionComponent,
-} from "react";
+import type { ComponentProps, FunctionComponent } from "react";
 import { Fragment, use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { type MessageKey, useLocale } from "./provider/context";
@@ -44,10 +44,7 @@ const {
 type TimerUnit = "hours" | "minutes" | "seconds";
 
 export interface TimerItemGroupProps
-  extends
-    ComponentPropsWithRef<"div">,
-    PolymorphicProps,
-    BaseTimerItemGroupProps {
+  extends HTMLArkProps<"div">, BaseTimerItemGroupProps {
   /**
    * The orientation of the timer item group.
    *
@@ -56,10 +53,7 @@ export interface TimerItemGroupProps
   orientation?: "horizontal" | "vertical";
 }
 
-export interface TimerActionProps extends Omit<
-  TimerActionTriggerProps,
-  "action"
-> {}
+export type TimerActionProps = Omit<TimerActionTriggerProps, "action">;
 
 export interface TimerRootProps
   extends TimerRootPrimitiveProps, BaseTimerRootProps {
@@ -68,8 +62,7 @@ export interface TimerRootProps
   isControlsVisible?: boolean;
 }
 
-export type TimerItemLabelProps = ComponentPropsWithRef<"div"> &
-  PolymorphicProps;
+export type TimerItemLabelProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Parts
@@ -121,9 +114,7 @@ export const TimerArea = withTimerContext(TimerPrimitive.Area, {
 const TimerItemGroupBase = withTimerItemGroupProvider(ark.div, {
   name: "ItemGroup",
   slot: "base",
-}) as FunctionComponent<
-  ComponentPropsWithRef<"div"> & PolymorphicProps & BaseTimerItemGroupProps
->;
+}) as FunctionComponent<HTMLArkProps<"div"> & BaseTimerItemGroupProps>;
 
 export function TimerItemGroup({
   orientation = "vertical",

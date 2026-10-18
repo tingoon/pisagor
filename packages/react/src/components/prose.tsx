@@ -1,16 +1,10 @@
-import { ark, type PolymorphicProps } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { ProseProps as BaseProseProps } from "@pisagor/props";
 import { proseRecipe } from "@pisagor/recipes";
-import type { ComponentPropsWithRef } from "react";
 
 // #region Types
 export interface ProseProps
-  extends
-    Omit<
-      ComponentPropsWithRef<"div"> & PolymorphicProps,
-      "dangerouslySetInnerHTML"
-    >,
-    BaseProseProps {
+  extends Omit<HTMLArkProps<"div">, "dangerouslySetInnerHTML">, BaseProseProps {
   /**
    * Trusted HTML content rendered via `dangerouslySetInnerHTML`.
    *

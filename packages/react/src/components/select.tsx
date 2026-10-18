@@ -4,10 +4,10 @@ import {
   ark,
   createListCollection,
   useSelectContext,
+  type HTMLArkProps,
 } from "@ark-ui/react";
 import type {
   CollectionItem,
-  PolymorphicProps,
   SelectClearTriggerProps,
   SelectContentProps,
   SelectItemGroupLabelProps,
@@ -25,7 +25,7 @@ import {
   selectRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { ComponentPropsWithRef, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { createContext, use } from "react";
 import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
@@ -98,7 +98,7 @@ export interface SelectItemGroupProps extends SelectItemGroupPrimitiveProps {
   heading?: string | ReactNode;
 }
 
-export type SelectEmptyProps = ComponentPropsWithRef<"div"> & PolymorphicProps;
+export type SelectEmptyProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Parts

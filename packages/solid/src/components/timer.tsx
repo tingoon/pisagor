@@ -43,10 +43,7 @@ export interface TimerItemGroupProps
   orientation?: "horizontal" | "vertical";
 }
 
-export interface TimerActionProps extends Omit<
-  TimerActionTriggerProps,
-  "action"
-> {}
+export type TimerActionProps = Omit<TimerActionTriggerProps, "action">;
 
 export interface TimerRootProps
   extends TimerRootPrimitiveProps, BaseTimerRootProps {

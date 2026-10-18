@@ -54,8 +54,8 @@ export interface FileInputProps
   onValueChange?: (files: globalThis.File[]) => void;
 }
 
-interface FileInputControlProps extends ComponentProps<"input"> {}
-interface FileInputLabelProps extends InputGroupTextProps {}
+type FileInputControlProps = ComponentProps<"input">;
+type FileInputLabelProps = InputGroupTextProps;
 
 function getSelectedFiles(input: HTMLInputElement): globalThis.File[] {
   return input.files ? Array.from(input.files) : [];

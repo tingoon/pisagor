@@ -1,4 +1,9 @@
-import { Drawer as DrawerPrimitive, Portal, ark } from "@ark-ui/react";
+import {
+  Drawer as DrawerPrimitive,
+  Portal,
+  ark,
+  type HTMLArkProps,
+} from "@ark-ui/react";
 import type {
   DrawerBackdropProps,
   DrawerCloseTriggerProps,
@@ -7,11 +12,10 @@ import type {
   DrawerPositionerProps as DrawerPositionerPrimitiveProps,
   DrawerRootProps as DrawerRootPrimitiveProps,
   DrawerTriggerProps,
-  PolymorphicProps,
 } from "@ark-ui/react";
 import type { DrawerProps as BaseDrawerRootProps } from "@pisagor/props";
 import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";
-import type { ComponentProps, ComponentPropsWithRef } from "react";
+import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { ScrollArea } from "./scroll-area";
 
@@ -36,16 +40,14 @@ export type DrawerPositionerProps = DrawerPositionerPrimitiveProps &
 export type DrawerContentProps = DrawerContentPrimitiveProps &
   DrawerVariantProps;
 
-export interface DrawerHeaderProps
-  extends ComponentPropsWithRef<"div">, PolymorphicProps {
+export interface DrawerHeaderProps extends HTMLArkProps<"div"> {
   /** The description of the drawer */
   description?: string;
   /** The title of the drawer */
   title?: string;
 }
 
-export interface DrawerBodyProps
-  extends ComponentPropsWithRef<"div">, PolymorphicProps {
+export interface DrawerBodyProps extends HTMLArkProps<"div"> {
   /**
    * Whether to add a fade effect to the scroll area.
    *
@@ -54,14 +56,13 @@ export interface DrawerBodyProps
   scrollFade?: boolean;
 }
 
-export type DrawerContentInnerProps = ComponentPropsWithRef<"div"> &
-  PolymorphicProps;
+export type DrawerContentInnerProps = HTMLArkProps<"div">;
 
 export type DrawerDescriptionProps = ComponentProps<
   typeof DrawerPrimitive.Description
 >;
 
-export type DrawerFooterProps = ComponentPropsWithRef<"div"> & PolymorphicProps;
+export type DrawerFooterProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Parts
