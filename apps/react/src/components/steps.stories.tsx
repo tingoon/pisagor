@@ -1,6 +1,6 @@
 import { Steps } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/steps";
+import * as Examples from "#/react/examples/navigation/steps";
 
 const meta = preview.meta({
   component: Steps,

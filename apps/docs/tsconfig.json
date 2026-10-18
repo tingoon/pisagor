@@ -5,23 +5,132 @@
     "paths": {
       "#/*": ["./src/*"],
       "#/changelog/*": ["../../packages/*/CHANGELOG.md"],
-      "#examples/astro/*": ["../../packages/astro/examples/*"],
-      "#examples/react-blocks/*": ["./src/examples/react/*"],
-      "#examples/react-form/*": ["../../packages/react-form/examples/*"],
-      "#examples/react/*": ["../../packages/react/examples/*"],
-      "#examples/solid-blocks/*": ["./src/examples/solid/*"],
-      "#examples/solid-form/*": ["../../packages/solid-form/examples/*"],
-      "#examples/solid/*": ["../../packages/solid/examples/*"],
-      "#examples/svelte-blocks/*": ["./src/examples/svelte/*"],
-      "#examples/svelte-form/*": ["../../packages/svelte-form/examples/*"],
-      "#examples/svelte/*": ["../../packages/svelte/examples/*"],
-      "#examples/vue-blocks/*": ["./src/examples/vue/*"],
-      "#examples/vue-form/*": ["../../packages/vue-form/examples/*"],
-      "#examples/vue/*": ["../../packages/vue/examples/*"]
+      "#examples/astro/actions/*": ["../../packages/astro/examples/actions/*"],
+      "#examples/astro/data-display/*": [
+        "../../packages/astro/examples/data-display/*"
+      ],
+      "#examples/astro/feedback/*": [
+        "../../packages/astro/examples/feedback/*"
+      ],
+      "#examples/astro/forms/*": ["../../packages/astro/examples/forms/*"],
+      "#examples/astro/layout/*": ["../../packages/astro/examples/layout/*"],
+      "#examples/astro/media/*": ["../../packages/astro/examples/media/*"],
+      "#examples/astro/navigation/*": [
+        "../../packages/astro/examples/navigation/*"
+      ],
+      "#examples/astro/utilities/*": [
+        "../../packages/astro/examples/utilities/*"
+      ],
+      "#examples/react-blocks/*": ["./src/blocks/react/*"],
+      "#examples/react-form/fields/*": [
+        "../../packages/react-form/examples/fields/*"
+      ],
+      "#examples/react-form/integrations/*": [
+        "../../packages/react-form/examples/integrations/*"
+      ],
+      "#examples/react/actions/*": ["../../packages/react/examples/actions/*"],
+      "#examples/react/data-display/*": [
+        "../../packages/react/examples/data-display/*"
+      ],
+      "#examples/react/feedback/*": [
+        "../../packages/react/examples/feedback/*"
+      ],
+      "#examples/react/forms/*": ["../../packages/react/examples/forms/*"],
+      "#examples/react/layout/*": ["../../packages/react/examples/layout/*"],
+      "#examples/react/marketing/*": [
+        "../../packages/react/examples/marketing/*"
+      ],
+      "#examples/react/media/*": ["../../packages/react/examples/media/*"],
+      "#examples/react/navigation/*": [
+        "../../packages/react/examples/navigation/*"
+      ],
+      "#examples/react/overlay/*": ["../../packages/react/examples/overlay/*"],
+      "#examples/react/utilities/*": [
+        "../../packages/react/examples/utilities/*"
+      ],
+      "#examples/solid-blocks/*": ["./src/blocks/solid/*"],
+      "#examples/solid-form/fields/*": [
+        "../../packages/solid-form/examples/fields/*"
+      ],
+      "#examples/solid-form/integrations/*": [
+        "../../packages/solid-form/examples/integrations/*"
+      ],
+      "#examples/solid/actions/*": ["../../packages/solid/examples/actions/*"],
+      "#examples/solid/data-display/*": [
+        "../../packages/solid/examples/data-display/*"
+      ],
+      "#examples/solid/feedback/*": [
+        "../../packages/solid/examples/feedback/*"
+      ],
+      "#examples/solid/forms/*": ["../../packages/solid/examples/forms/*"],
+      "#examples/solid/layout/*": ["../../packages/solid/examples/layout/*"],
+      "#examples/solid/marketing/*": [
+        "../../packages/solid/examples/marketing/*"
+      ],
+      "#examples/solid/media/*": ["../../packages/solid/examples/media/*"],
+      "#examples/solid/navigation/*": [
+        "../../packages/solid/examples/navigation/*"
+      ],
+      "#examples/solid/overlay/*": ["../../packages/solid/examples/overlay/*"],
+      "#examples/solid/utilities/*": [
+        "../../packages/solid/examples/utilities/*"
+      ],
+      "#examples/svelte-blocks/*": ["./src/blocks/svelte/*"],
+      "#examples/svelte-form/fields/*": [
+        "../../packages/svelte-form/examples/fields/*"
+      ],
+      "#examples/svelte-form/integrations/*": [
+        "../../packages/svelte-form/examples/integrations/*"
+      ],
+      "#examples/svelte/actions/*": [
+        "../../packages/svelte/examples/actions/*"
+      ],
+      "#examples/svelte/data-display/*": [
+        "../../packages/svelte/examples/data-display/*"
+      ],
+      "#examples/svelte/feedback/*": [
+        "../../packages/svelte/examples/feedback/*"
+      ],
+      "#examples/svelte/forms/*": ["../../packages/svelte/examples/forms/*"],
+      "#examples/svelte/layout/*": ["../../packages/svelte/examples/layout/*"],
+      "#examples/svelte/marketing/*": [
+        "../../packages/svelte/examples/marketing/*"
+      ],
+      "#examples/svelte/media/*": ["../../packages/svelte/examples/media/*"],
+      "#examples/svelte/navigation/*": [
+        "../../packages/svelte/examples/navigation/*"
+      ],
+      "#examples/svelte/overlay/*": [
+        "../../packages/svelte/examples/overlay/*"
+      ],
+      "#examples/svelte/utilities/*": [
+        "../../packages/svelte/examples/utilities/*"
+      ],
+      "#examples/vue-blocks/*": ["./src/blocks/vue/*"],
+      "#examples/vue-form/fields/*": [
+        "../../packages/vue-form/examples/fields/*"
+      ],
+      "#examples/vue-form/integrations/*": [
+        "../../packages/vue-form/examples/integrations/*"
+      ],
+      "#examples/vue/actions/*": ["../../packages/vue/examples/actions/*"],
+      "#examples/vue/data-display/*": [
+        "../../packages/vue/examples/data-display/*"
+      ],
+      "#examples/vue/feedback/*": ["../../packages/vue/examples/feedback/*"],
+      "#examples/vue/forms/*": ["../../packages/vue/examples/forms/*"],
+      "#examples/vue/layout/*": ["../../packages/vue/examples/layout/*"],
+      "#examples/vue/marketing/*": ["../../packages/vue/examples/marketing/*"],
+      "#examples/vue/media/*": ["../../packages/vue/examples/media/*"],
+      "#examples/vue/navigation/*": [
+        "../../packages/vue/examples/navigation/*"
+      ],
+      "#examples/vue/overlay/*": ["../../packages/vue/examples/overlay/*"],
+      "#examples/vue/utilities/*": ["../../packages/vue/examples/utilities/*"]
     },
     "types": ["astro/client"]
   },
-  "exclude": ["src/examples/solid"],
+  "exclude": ["src/blocks/solid", "src/components/docs/solid"],
   "extends": "../../tsconfig.json",
   "include": [".astro/types.d.ts", "src", "astro.config.ts"]
 }

@@ -179,7 +179,7 @@ function solidPerIconImports() {
   const importRe =
     /import\s*\{([^}]*)\}\s*from\s*["']@pisagor\/solid\/icons["'];?/g;
   const owned =
-    /[\\/](packages[\\/]solid(-[\w-]+)?|apps[\\/]docs[\\/]src[\\/]examples[\\/]solid)[\\/]/;
+    /[\\/](packages[\\/]solid(-[\w-]+)?|apps[\\/]docs[\\/]src[\\/]blocks[\\/]solid)[\\/]/;
 
   return {
     enforce: "pre" as const,
@@ -230,7 +230,7 @@ const frameworkSources = {
       "packages/react",
       "packages/react-*",
       "apps/react",
-      "apps/docs/src/examples/react",
+      "apps/docs/src/blocks/react",
     ],
   },
   solid: {
@@ -246,16 +246,16 @@ const frameworkSources = {
       "packages/solid",
       "packages/solid-*",
       "apps/solid",
-      "apps/docs/src/examples/solid",
+      "apps/docs/src/blocks/solid",
     ],
-    files: ["apps/docs/src/components/docs/solid-examples-host.tsx"],
+    files: ["apps/docs/src/components/docs/solid/examples-host.tsx"],
   },
   svelte: {
     dirs: [
       "packages/svelte",
       "packages/svelte-*",
       "apps/svelte",
-      "apps/docs/src/examples/svelte",
+      "apps/docs/src/blocks/svelte",
     ],
   },
   vue: {
@@ -263,7 +263,7 @@ const frameworkSources = {
       "packages/vue",
       "packages/vue-*",
       "apps/vue",
-      "apps/docs/src/examples/vue",
+      "apps/docs/src/blocks/vue",
     ],
   },
 } satisfies Record<
@@ -308,11 +308,10 @@ const solidInclude = ownedGlobs("solid", JS_EXT);
 /** Keep redirects and standalone preview frames out of the sitemap. */
 function isSitemapPage(page: string): boolean {
   const path = new URL(page).pathname.slice(base.replace(/\/$/, "").length);
-  if (path === "/" || path === "/404/" || path.startsWith("/preview/"))
-    return false;
-  // `/x/components/`, `/x/blocks/`, `/x/components/<id>/`, `/x/forms/<id>/`
-  // only redirect to the real page.
-  if (/^\/[^/]+\/(components|blocks)\/$/.test(path)) return false;
+  if (path === "/404/" || path.startsWith("/preview/")) return false;
+  // `/x/` redirects to `/x/components/`. Intro pages live at
+  // `/x/components/` and `/x/blocks/`. `/x/components|<forms>/<id>/` redirect.
+  if (/^\/[^/]+\/$/.test(path)) return false;
   if (/^\/[^/]+\/(components|forms)\/[^/]+\/$/.test(path)) return false;
   return true;
 }
@@ -362,7 +361,7 @@ export default defineConfig({
         },
         {
           find: "#examples/react-blocks",
-          replacement: join(docsSrc, "examples/react"),
+          replacement: join(docsSrc, "blocks/react"),
         },
         {
           find: "#examples/react-form",
@@ -374,7 +373,7 @@ export default defineConfig({
         },
         {
           find: "#examples/solid-blocks",
-          replacement: join(docsSrc, "examples/solid"),
+          replacement: join(docsSrc, "blocks/solid"),
         },
         {
           find: "#examples/solid-form",
@@ -386,7 +385,7 @@ export default defineConfig({
         },
         {
           find: "#examples/svelte-blocks",
-          replacement: join(docsSrc, "examples/svelte"),
+          replacement: join(docsSrc, "blocks/svelte"),
         },
         {
           find: "#examples/svelte-form",
@@ -398,7 +397,7 @@ export default defineConfig({
         },
         {
           find: "#examples/vue-blocks",
-          replacement: join(docsSrc, "examples/vue"),
+          replacement: join(docsSrc, "blocks/vue"),
         },
         {
           find: "#examples/vue-form",

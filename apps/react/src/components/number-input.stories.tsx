@@ -1,6 +1,6 @@
 import { NumberInput } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/number-input";
+import * as Examples from "#/react/examples/forms/number-input";
 
 const meta = preview.meta({
   component: NumberInput,

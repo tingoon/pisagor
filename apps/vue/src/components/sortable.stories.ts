@@ -1,7 +1,7 @@
 import { Sortable } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/sortable";
+import * as Examples from "#/vue/examples/actions/sortable";
 
 const meta = preview.meta({
   component: Sortable.Root,

@@ -1,6 +1,6 @@
 import { Dialog } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/dialog";
+import * as Examples from "#/react/examples/overlay/dialog";
 
 const meta = preview.meta({
   component: Dialog,

@@ -1,7 +1,7 @@
 import { ClientOnly } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/client-only";
+import * as Examples from "#/vue/examples/utilities/client-only";
 
 const meta = preview.meta({
   component: ClientOnly,

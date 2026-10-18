@@ -1,6 +1,6 @@
 import { DatePicker } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/date-picker";
+import * as Examples from "#/react/examples/forms/date-picker";
 
 const meta = preview.meta({
   component: DatePicker,

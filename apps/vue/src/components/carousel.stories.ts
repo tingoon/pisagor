@@ -1,7 +1,7 @@
 import { Carousel } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/carousel";
+import * as Examples from "#/vue/examples/media/carousel";
 
 const meta = preview.meta({
   component: Carousel,

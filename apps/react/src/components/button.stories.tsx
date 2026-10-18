@@ -1,6 +1,6 @@
 import { Button } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/button";
+import * as Examples from "#/react/examples/actions/button";
 
 const meta = preview.meta({
   component: Button,

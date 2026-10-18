@@ -11,7 +11,7 @@ const fallback = "react" as const;
 const homes = Object.fromEntries(
   frameworks.map((item) => [
     item.id,
-    { href: frameworkPath(item.id), label: item.label },
+    { href: frameworkPath(item.id, "components"), label: item.label },
   ]),
 );
 ---
@@ -42,7 +42,7 @@ const homes = Object.fromEntries(
       {frameworks.map((item) => (
         <a
           class="docs-press inline-flex h-9 items-center rounded-lg border border-border/70 px-3 text-sm hover:bg-accent/60"
-          href={frameworkPath(item.id)}
+          href={frameworkPath(item.id, "components")}
         >
           {item.label}
         </a>

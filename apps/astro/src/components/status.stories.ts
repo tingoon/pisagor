@@ -1,6 +1,6 @@
 import { Status } from "@pisagor/astro";
 import preview from "#/storybook/preview";
-import * as Examples from "#/astro/examples/status";
+import * as Examples from "#/astro/examples/feedback/status";
 
 const meta = preview.meta({
   component: Status,

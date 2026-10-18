@@ -58,4 +58,4 @@ resolve: {
 @import "@pisagor/recipes/styles";
 ```
 
-Block demos own their recipes under `apps/docs/src/recipes/blocks/` — not this package.
+Block demos own their recipes under `apps/docs/src/styles/recipes/` — not this package.

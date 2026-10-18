@@ -1,6 +1,6 @@
 import { FloatingPanel } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/floating-panel";
+import * as Examples from "#/react/examples/overlay/floating-panel";
 
 const meta = preview.meta({
   component: FloatingPanel,

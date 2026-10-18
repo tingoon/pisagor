@@ -1,6 +1,6 @@
 import { Tour } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/tour";
+import * as Examples from "#/react/examples/overlay/tour";
 
 const meta = preview.meta({
   component: Tour,

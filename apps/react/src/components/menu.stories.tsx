@@ -1,6 +1,6 @@
 import { Menu } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/menu";
+import * as Examples from "#/react/examples/navigation/menu";
 
 const meta = preview.meta({
   component: Menu,

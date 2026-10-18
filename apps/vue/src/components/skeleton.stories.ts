@@ -1,7 +1,7 @@
 import { Skeleton } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/skeleton";
+import * as Examples from "#/vue/examples/feedback/skeleton";
 
 const meta = preview.meta({
   component: Skeleton,

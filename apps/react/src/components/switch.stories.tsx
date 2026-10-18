@@ -1,6 +1,6 @@
 import { Switch } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/switch";
+import * as Examples from "#/react/examples/forms/switch";
 
 const meta = preview.meta({
   component: Switch,

@@ -1,6 +1,6 @@
 import { PhoneInput } from "@pisagor/react/phone-input";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/phone-input";
+import * as Examples from "#/react/examples/forms/phone-input";
 
 const meta = preview.meta({
   component: PhoneInput,

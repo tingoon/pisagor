@@ -1,6 +1,6 @@
 import { Navbar } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/navbar";
+import * as Examples from "#/react/examples/navigation/navbar";
 
 const meta = preview.meta({
   component: Navbar,

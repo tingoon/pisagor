@@ -1,6 +1,6 @@
 import { Avatar, AvatarGroup } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/avatar";
+import * as Examples from "#/react/examples/data-display/avatar";
 
 const users = [
   {

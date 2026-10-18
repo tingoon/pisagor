@@ -41,7 +41,7 @@ src/components/index.ts        # export { default as Foo } from "./foo.astro"
 - Flatten to `src/components/<name>.astro` whenever the folder would only hold `index.ts` + one `.astro` file.
 - The root part is always `<name>-root.astro`; `<name>.astro` is reserved for the shorthand.
 - Folders re-export from the root barrel with `export * from "./<name>"`.
-- Package source stays **story-free**. Storybook lives in `apps/astro`; doc examples live in `packages/astro/examples/<id>/`.
+- Package source stays **story-free**. Storybook lives in `apps/astro`; doc examples live in `packages/astro/examples/<group>/<id>/`.
 
 ---
 

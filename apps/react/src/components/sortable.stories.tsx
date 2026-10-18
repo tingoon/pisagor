@@ -1,6 +1,6 @@
 import { Sortable } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/sortable";
+import * as Examples from "#/react/examples/actions/sortable";
 
 const meta = preview.meta({
   component: Sortable,

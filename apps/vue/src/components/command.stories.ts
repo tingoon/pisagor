@@ -1,7 +1,7 @@
 import { Command } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/command";
+import * as Examples from "#/vue/examples/overlay/command";
 
 const meta = preview.meta({
   component: Command,

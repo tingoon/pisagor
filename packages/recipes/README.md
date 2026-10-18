@@ -11,4 +11,4 @@ import { buttonRecipe } from "@pisagor/recipes";
 @import "@pisagor/recipes/styles";
 ```
 
-To use another preset, change this package’s JS and CSS re-exports together (see `@pisagor/presets` README — do not alias only the JS entry). Do not put block recipes here — they live in `apps/docs/src/recipes/blocks/`.
+To use another preset, change this package’s JS and CSS re-exports together (see `@pisagor/presets` README — do not alias only the JS entry). Do not put block recipes here — they live in `apps/docs/src/styles/recipes/`.

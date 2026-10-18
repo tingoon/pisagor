@@ -1,7 +1,7 @@
 import { Toolbar } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/toolbar";
+import * as Examples from "#/vue/examples/layout/toolbar";
 
 const meta = preview.meta({
   component: Toolbar,

@@ -17,6 +17,6 @@ Human docs: docs site (`/develop` + `/design`).
 
 Local sources in this package:
 
-- `examples/<id>/` — runnable examples
+- `examples/<group>/<id>/` — runnable examples
 
 Docs: `apps/docs/src/content/astro/components/<id>/{metadata,design,develop}.md`.

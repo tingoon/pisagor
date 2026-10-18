@@ -1,6 +1,6 @@
 import { ClientOnly } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/client-only";
+import * as Examples from "#/react/examples/utilities/client-only";
 
 const meta = preview.meta({
   component: ClientOnly,

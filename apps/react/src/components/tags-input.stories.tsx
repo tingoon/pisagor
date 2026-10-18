@@ -1,6 +1,6 @@
 import { TagsInput } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/tags-input";
+import * as Examples from "#/react/examples/forms/tags-input";
 
 const meta = preview.meta({
   component: TagsInput,

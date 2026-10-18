@@ -1,7 +1,7 @@
 import { Tooltip } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/tooltip";
+import * as Examples from "#/vue/examples/overlay/tooltip";
 
 const meta = preview.meta({
   component: Tooltip,

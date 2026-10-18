@@ -1,6 +1,6 @@
 import { FormatNumber } from "@pisagor/astro";
 import preview from "#/storybook/preview";
-import * as Examples from "#/astro/examples/format";
+import * as Examples from "#/astro/examples/data-display/format";
 
 const meta = preview.meta({
   component: FormatNumber,

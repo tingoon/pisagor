@@ -1,7 +1,7 @@
 import { defineComponent } from "vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue-form/examples/tanstack";
+import * as Examples from "#/vue-form/examples/integrations/tanstack";
 
 const meta = preview.meta({
   component: defineComponent({ name: "TanStackFormDemo" }),
@@ -19,4 +19,8 @@ const meta = preview.meta({
 export const Playground = meta.story({
   render: exampleRender(Examples.Default),
   tags: ["autodocs"],
+});
+
+export const QuickStart = meta.story({
+  render: exampleRender(Examples.QuickStart),
 });

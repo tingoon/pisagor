@@ -1,7 +1,7 @@
 import { Timeline } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/timeline";
+import * as Examples from "#/vue/examples/data-display/timeline";
 
 const meta = preview.meta({
   component: Timeline,

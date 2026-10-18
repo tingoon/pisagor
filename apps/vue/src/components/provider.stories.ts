@@ -1,7 +1,7 @@
 import { Provider } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/provider";
+import * as Examples from "#/vue/examples/utilities/provider";
 
 const meta = preview.meta({
   component: Provider,

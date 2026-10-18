@@ -2,7 +2,7 @@ import { AutocompleteField } from "@pisagor/react-form";
 import { fn } from "storybook/test";
 import { cityOptions } from "#/storybook/fixtures";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react-form/examples/autocomplete-field";
+import * as Examples from "#/react-form/examples/fields/autocomplete-field";
 
 const meta = preview.meta({
   component: AutocompleteField,

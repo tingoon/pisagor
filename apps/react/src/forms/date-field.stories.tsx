@@ -1,7 +1,7 @@
 import { DateField } from "@pisagor/react-form";
 import { fn } from "storybook/test";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react-form/examples/date-field";
+import * as Examples from "#/react-form/examples/fields/date-field";
 
 const meta = preview.meta({
   component: DateField,

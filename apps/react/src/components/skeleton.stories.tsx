@@ -1,6 +1,6 @@
 import { Skeleton } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/skeleton";
+import * as Examples from "#/react/examples/feedback/skeleton";
 
 const meta = preview.meta({
   component: Skeleton,

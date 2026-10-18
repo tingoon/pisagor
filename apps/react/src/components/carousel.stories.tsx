@@ -1,6 +1,6 @@
 import { Carousel } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/carousel";
+import * as Examples from "#/react/examples/media/carousel";
 
 const meta = preview.meta({
   component: Carousel,

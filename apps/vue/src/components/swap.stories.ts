@@ -1,7 +1,7 @@
 import { Swap } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/swap";
+import * as Examples from "#/vue/examples/actions/swap";
 
 const meta = preview.meta({
   component: Swap,

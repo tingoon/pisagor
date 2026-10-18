@@ -1,7 +1,7 @@
 import { Surface } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/surface";
+import * as Examples from "#/vue/examples/layout/surface";
 
 const meta = preview.meta({
   component: Surface,

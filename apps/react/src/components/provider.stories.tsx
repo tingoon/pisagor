@@ -1,6 +1,6 @@
 import { Provider } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/provider";
+import * as Examples from "#/react/examples/utilities/provider";
 
 const meta = preview.meta({
   component: Provider,

@@ -1,7 +1,7 @@
 import { CheckboxField } from "@pisagor/react-form";
 import { fn } from "storybook/test";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react-form/examples/checkbox-field";
+import * as Examples from "#/react-form/examples/fields/checkbox-field";
 
 const meta = preview.meta({
   component: CheckboxField,

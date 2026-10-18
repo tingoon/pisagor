@@ -1,7 +1,7 @@
 import { SegmentGroup } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/segment-group";
+import * as Examples from "#/vue/examples/actions/segment-group";
 
 const meta = preview.meta({
   component: SegmentGroup,

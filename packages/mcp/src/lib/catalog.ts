@@ -121,7 +121,7 @@ export function getExample(
   const entry = getCatalogComponent(config, params.framework, params.component);
   if (entry.examples.length === 0) {
     throw new Error(
-      `No examples for "${params.component}" (${params.framework}). Expected examples/${params.component}/.`,
+      `No examples for "${params.component}" (${params.framework}). Expected examples/<group>/${params.component}/.`,
     );
   }
 

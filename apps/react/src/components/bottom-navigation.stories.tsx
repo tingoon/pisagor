@@ -1,6 +1,6 @@
 import { BottomNavigation } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/bottom-navigation";
+import * as Examples from "#/react/examples/navigation/bottom-navigation";
 
 const meta = preview.meta({
   component: BottomNavigation,

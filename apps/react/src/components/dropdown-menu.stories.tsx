@@ -1,6 +1,6 @@
 import { DropdownMenu } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/dropdown-menu";
+import * as Examples from "#/react/examples/navigation/dropdown-menu";
 
 const meta = preview.meta({
   component: DropdownMenu,

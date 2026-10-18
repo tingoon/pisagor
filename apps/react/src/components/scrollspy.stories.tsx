@@ -1,6 +1,6 @@
 import { Scrollspy } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/scrollspy";
+import * as Examples from "#/react/examples/navigation/scrollspy";
 
 const meta = preview.meta({
   component: Scrollspy,

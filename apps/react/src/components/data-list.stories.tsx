@@ -1,6 +1,6 @@
 import { DataList } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/data-list";
+import * as Examples from "#/react/examples/data-display/data-list";
 
 const meta = preview.meta({
   component: DataList,

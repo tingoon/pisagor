@@ -1,7 +1,7 @@
 import { LinkBox } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/link-box";
+import * as Examples from "#/vue/examples/utilities/link-box";
 
 const meta = preview.meta({
   component: LinkBox,

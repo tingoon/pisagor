@@ -1,6 +1,6 @@
 import { Avatar } from "@pisagor/astro";
 import preview from "#/storybook/preview";
-import * as Examples from "#/astro/examples/avatar";
+import * as Examples from "#/astro/examples/data-display/avatar";
 
 const meta = preview.meta({
   component: Avatar,

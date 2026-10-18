@@ -2,8 +2,32 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "paths": {
-      "#/react-form/examples/*": ["../../packages/react-form/examples/*"],
-      "#/react/examples/*": ["../../packages/react/examples/*"],
+      "#/react-form/examples/fields/*": [
+        "../../packages/react-form/examples/fields/*"
+      ],
+      "#/react-form/examples/integrations/*": [
+        "../../packages/react-form/examples/integrations/*"
+      ],
+      "#/react/examples/actions/*": ["../../packages/react/examples/actions/*"],
+      "#/react/examples/data-display/*": [
+        "../../packages/react/examples/data-display/*"
+      ],
+      "#/react/examples/feedback/*": [
+        "../../packages/react/examples/feedback/*"
+      ],
+      "#/react/examples/forms/*": ["../../packages/react/examples/forms/*"],
+      "#/react/examples/layout/*": ["../../packages/react/examples/layout/*"],
+      "#/react/examples/marketing/*": [
+        "../../packages/react/examples/marketing/*"
+      ],
+      "#/react/examples/media/*": ["../../packages/react/examples/media/*"],
+      "#/react/examples/navigation/*": [
+        "../../packages/react/examples/navigation/*"
+      ],
+      "#/react/examples/overlay/*": ["../../packages/react/examples/overlay/*"],
+      "#/react/examples/utilities/*": [
+        "../../packages/react/examples/utilities/*"
+      ],
       "#/storybook/*": ["./.storybook/*"]
     },
     "types": ["vite/client", "bun"]

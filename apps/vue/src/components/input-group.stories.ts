@@ -1,7 +1,7 @@
 import { InputGroup } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/input-group";
+import * as Examples from "#/vue/examples/forms/input-group";
 
 const meta = preview.meta({
   component: InputGroup,

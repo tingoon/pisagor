@@ -1,7 +1,7 @@
 import { Marquee } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/marquee";
+import * as Examples from "#/vue/examples/marketing/marquee";
 
 const meta = preview.meta({
   component: Marquee,

@@ -2,7 +2,7 @@ import { RadioGroupField } from "@pisagor/react-form";
 import { fn } from "storybook/test";
 import { planOptions } from "#/storybook/fixtures";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react-form/examples/radio-group-field";
+import * as Examples from "#/react-form/examples/fields/radio-group-field";
 
 const meta = preview.meta({
   component: RadioGroupField,

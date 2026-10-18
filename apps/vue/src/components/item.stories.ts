@@ -1,7 +1,7 @@
 import { Item } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/item";
+import * as Examples from "#/vue/examples/data-display/item";
 
 const meta = preview.meta({
   component: Item,

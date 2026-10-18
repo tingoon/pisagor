@@ -1,7 +1,7 @@
 import { PasswordField } from "@pisagor/react-form";
 import { fn } from "storybook/test";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react-form/examples/password-field";
+import * as Examples from "#/react-form/examples/fields/password-field";
 
 const meta = preview.meta({
   component: PasswordField,

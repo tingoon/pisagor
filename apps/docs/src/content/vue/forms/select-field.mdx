@@ -3,7 +3,7 @@ title: Select Field
 description: "Lets the user pick one option from a dropdown with label and optional validation message."
 api: closed
 taxonomy: standard
-packageName: "@pisagor/react-form"
+packageName: "@pisagor/vue-form"
 ---
 
 ## When to use
@@ -11,3 +11,31 @@ packageName: "@pisagor/react-form"
 - Pick one option from a known list when showing every choice inline would take too much space.
 - Prefer over a bare Select when you need a label, description, or error text with the control.
 - Prefer AutocompleteField when the list is long and users benefit from typing to filter.
+
+## Import
+
+```ts
+import { SelectField } from "@pisagor/vue-form";
+```
+
+Part of `@pisagor/vue-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
+### Default
+
+A dropdown for choosing one value from a fixed list.
+
+<Example name="Default" />
+
+### Disabled
+
+Show that the select is unavailable.
+
+<Example name="Disabled" />
+
+### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
+
+<Example name="Invalid" />

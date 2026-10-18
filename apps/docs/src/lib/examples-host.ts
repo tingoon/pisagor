@@ -114,8 +114,8 @@ export function armExamplesHost(
     if (!slot) continue;
     stops.push(
       whenVisible(slot, () => {
-        void loadExampleComponent(globs, target, exportName).then(
-          (component) => {
+        void loadExampleComponent(globs, target, exportName)
+          .then((component) => {
             if (cancelled) return;
             const dispose = mount(
               slot,
@@ -123,8 +123,20 @@ export function armExamplesHost(
               `Missing example “${exportName}” for ${label}“${target.id}”.`,
             );
             if (dispose) disposers.push(dispose);
-          },
-        );
+          })
+          .catch((error) => {
+            console.error(
+              `[examples-host] failed to load “${exportName}” for ${label}“${target.id}”`,
+              error,
+            );
+            if (cancelled) return;
+            const dispose = mount(
+              slot,
+              null,
+              `Failed to load example “${exportName}” for ${label}“${target.id}”: ${String(error)}`,
+            );
+            if (dispose) disposers.push(dispose);
+          });
       }),
     );
   }

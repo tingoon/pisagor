@@ -1,0 +1,63 @@
+---
+import { GithubLogoIcon, PiIcon } from "@phosphor-icons/react";
+import BaseHead from "#/components/base-head.astro";
+import ThemeToggle from "#/components/docs/theme-toggle.astro";
+import { withDocsBase } from "#/lib/nav";
+import { frameworkStylesheetUrls } from "#/styles/load-framework-css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const stylesheets = await frameworkStylesheetUrls();
+const homeHref = withDocsBase("/");
+const githubHref = "https://github.com/tingoon/pisagor";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead description={Astro.props.description} title={Astro.props.title} />
+    {stylesheets.map((href) => <link href={href} rel="stylesheet">)}
+  </head>
+  <body>
+    <div class="relative z-10 min-h-dvh bg-background">
+      <header
+        class="sticky top-0 z-40 border-border/60 border-b bg-background/80 backdrop-blur-md"
+      >
+        <div
+          class="mx-auto flex h-12 w-full max-w-6xl items-center gap-2 px-4 sm:gap-3 sm:px-5"
+        >
+          <a
+            aria-label="Pisagor home"
+            class="docs-press group flex items-center gap-2.5 font-semibold tracking-tight"
+            href={homeHref}
+          >
+            <span
+              class="inline-flex size-7 items-center justify-center rounded-lg bg-primary text-primary-foreground transition duration-100 group-hover:scale-[1.03] group-active:scale-[0.97]"
+            >
+              <PiIcon aria-hidden size={16} weight="bold" />
+            </span>
+            <span class="hidden sm:inline">Pisagor</span>
+          </a>
+
+          <div class="ms-auto flex items-center gap-1.5 sm:gap-2">
+            <a
+              aria-label="GitHub repository"
+              class="docs-press inline-flex size-8 items-center justify-center rounded-lg border border-border/70 bg-background text-foreground hover:bg-accent/60"
+              href={githubHref}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <GithubLogoIcon aria-hidden size={16} weight="fill" />
+            </a>
+            <ThemeToggle />
+          </div>
+        </div>
+      </header>
+
+      <slot />
+    </div>
+  </body>
+</html>

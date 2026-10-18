@@ -183,9 +183,18 @@ function resolveExampleDir(
   if (!examplesRoot) {
     return null;
   }
-  const nested = path.join(examplesRoot, componentName);
-  if (existsSync(nested) && statSync(nested).isDirectory()) {
-    return nested;
+  // Flat (legacy) or grouped: examples/<group>/<id>
+  const flat = path.join(examplesRoot, componentName);
+  if (existsSync(flat) && statSync(flat).isDirectory()) {
+    return flat;
+  }
+  for (const entry of readdirSync(examplesRoot)) {
+    const groupDir = path.join(examplesRoot, entry);
+    if (!statSync(groupDir).isDirectory()) continue;
+    const nested = path.join(groupDir, componentName);
+    if (existsSync(nested) && statSync(nested).isDirectory()) {
+      return nested;
+    }
   }
   return null;
 }

@@ -1,6 +1,6 @@
 import { Command } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/command";
+import * as Examples from "#/react/examples/overlay/command";
 
 const meta = preview.meta({
   component: Command,

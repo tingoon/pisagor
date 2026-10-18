@@ -1,10 +1,14 @@
 import type { JSX, JSX as SolidJSX } from "solid-js";
 import { splitProps } from "solid-js";
 
-type IconProps = SolidJSX.SvgSVGAttributes<SVGSVGElement>;
+type IconWeight = "fill" | "regular";
+
+type IconProps = SolidJSX.SvgSVGAttributes<SVGSVGElement> & {
+  weight?: IconWeight;
+};
 
 function BaseIcon(props: IconProps & { path: string }): JSX.Element {
-  const [local, rest] = splitProps(props, ["path", "class"]);
+  const [local, rest] = splitProps(props, ["path", "class", "weight"]);
   return (
     <svg
       {...rest}
@@ -20,15 +24,24 @@ function BaseIcon(props: IconProps & { path: string }): JSX.Element {
   );
 }
 
+/** Phosphor Star regular (outline) path. */
+const STAR_REGULAR_PATH =
+  "M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z";
+
+/** Phosphor Star fill path. */
+const STAR_FILL_PATH =
+  "M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z";
+
 /**
- * Phosphor Star (regular) path stand-in until a Solid phosphor package is
- * adopted.
+ * Phosphor Star stand-in. Pass `weight="fill"` for the solid glyph used by
+ * Rating’s foreground layer.
  */
 export function StarIcon(props: IconProps): JSX.Element {
+  const [local, rest] = splitProps(props, ["weight"]);
   return (
     <BaseIcon
-      {...props}
-      path="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.08-31-51.06,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.06-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.54,0l23.21,55.36,59.46,5.15A16,16,0,0,1,234.5,114.38Z"
+      {...rest}
+      path={local.weight === "fill" ? STAR_FILL_PATH : STAR_REGULAR_PATH}
     />
   );
 }

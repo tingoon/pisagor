@@ -17,6 +17,6 @@ Human docs: docs site (`/develop` + shared `/design`).
 
 Local sources in this package:
 
-- `examples/<id>/` — runnable examples
+- `examples/<group>/<id>/` — runnable examples
 
 Develop notes: `apps/docs/src/content/svelte/components/<id>/{metadata,design,develop}.md`.

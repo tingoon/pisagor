@@ -1,5 +1,5 @@
 ---
-import { Badge, Button } from "@pisagor/astro";
+import { Badge, Button, Spinner } from "@pisagor/astro";
 import { highlightCode } from "#/lib/tanstack-highlight";
 
 interface Props {
@@ -121,7 +121,16 @@ const highlightedHtml = lazy ? "" : await highlightCode(code, lang);
       data-code-mount
       data-copy-source={copyId}
     >
-      {deferred ? null : (
+      {deferred ? (
+        <div
+          aria-busy="true"
+          aria-live="polite"
+          class="flex min-h-28 items-center justify-center py-8 text-muted-foreground"
+          data-code-loading
+        >
+          <Spinner aria-label="Loading code" class="size-5 animate-spin" />
+        </div>
+      ) : (
         <pre class="th-code">
           <code>{code}</code>
         </pre>

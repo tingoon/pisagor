@@ -1,7 +1,7 @@
 import { FileInput } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/file-input";
+import * as Examples from "#/vue/examples/forms/file-input";
 
 const meta = preview.meta({
   component: FileInput,

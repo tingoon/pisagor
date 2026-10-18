@@ -1,7 +1,7 @@
 ---
 import { PiIcon } from "@phosphor-icons/react";
 import type { DocsArea, Framework, NavSection } from "#/lib/nav";
-import { frameworkPath } from "#/lib/nav";
+import { withDocsBase } from "#/lib/nav";
 import DocsSearch from "./docs/docs-search.astro";
 import FrameworkSwitcher from "./docs/framework-switcher.astro";
 import MainNav from "./docs/main-nav.astro";
@@ -28,7 +28,7 @@ interface Props {
     <a
       aria-label="Pisagor home"
       class="docs-press group flex items-center gap-2.5 font-semibold tracking-tight"
-      href={frameworkPath(Astro.props.framework)}
+      href={withDocsBase("/")}
     >
       <span
         class="inline-flex size-7 items-center justify-center rounded-lg bg-primary text-primary-foreground transition duration-100 group-hover:scale-[1.03] group-active:scale-[0.97]"

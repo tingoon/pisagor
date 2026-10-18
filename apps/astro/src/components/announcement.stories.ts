@@ -1,6 +1,6 @@
 import { Announcement, Badge } from "@pisagor/astro";
 import preview from "#/storybook/preview";
-import * as Examples from "#/astro/examples/announcement";
+import * as Examples from "#/astro/examples/feedback/announcement";
 
 const meta = preview.meta({
   component: Announcement,

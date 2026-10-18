@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react-form/examples/tanstack";
+import * as Examples from "#/react-form/examples/integrations/tanstack";
 
 const meta = preview.meta({
   component: Fragment,
@@ -18,4 +18,8 @@ const meta = preview.meta({
 export const Playground = meta.story({
   render: Examples.Default,
   tags: ["autodocs"],
+});
+
+export const QuickStart = meta.story({
+  render: Examples.QuickStart,
 });

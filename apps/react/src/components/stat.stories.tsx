@@ -1,6 +1,6 @@
 import { Stat } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/stat";
+import * as Examples from "#/react/examples/data-display/stat";
 
 const meta = preview.meta({
   component: Stat,

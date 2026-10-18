@@ -1,6 +1,6 @@
 import { Frame } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/frame";
+import * as Examples from "#/react/examples/media/frame";
 
 const meta = preview.meta({
   component: Frame,

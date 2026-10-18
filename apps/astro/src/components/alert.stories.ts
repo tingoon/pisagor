@@ -1,6 +1,6 @@
 import { Alert } from "@pisagor/astro";
 import preview from "#/storybook/preview";
-import * as Examples from "#/astro/examples/alert";
+import * as Examples from "#/astro/examples/feedback/alert";
 
 const meta = preview.meta({
   component: Alert,

@@ -1,7 +1,7 @@
 import { Presence } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/presence";
+import * as Examples from "#/vue/examples/utilities/presence";
 
 const meta = preview.meta({
   component: Presence,

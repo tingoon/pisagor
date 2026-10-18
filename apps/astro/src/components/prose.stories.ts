@@ -1,6 +1,6 @@
 import { Prose } from "@pisagor/astro";
 import preview from "#/storybook/preview";
-import * as Examples from "#/astro/examples/prose";
+import * as Examples from "#/astro/examples/data-display/prose";
 
 const meta = preview.meta({
   component: Prose,

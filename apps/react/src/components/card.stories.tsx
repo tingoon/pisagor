@@ -1,6 +1,6 @@
 import { Card } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/card";
+import * as Examples from "#/react/examples/layout/card";
 
 const meta = preview.meta({
   component: Card,

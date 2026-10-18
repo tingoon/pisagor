@@ -1,5 +1,6 @@
 ---
 import FormDocPage from "#/components/docs/form-doc-page.astro";
+import { ReactExamplesHost } from "#/components/docs/react/examples-host";
 import { listFormStaticPaths } from "#/lib/form-doc";
 
 export async function getStaticPaths() {
@@ -10,3 +11,4 @@ const id = Astro.params.id as string;
 ---
 
 <FormDocPage framework="react" id={id} />
+<ReactExamplesHost client:only="react" />

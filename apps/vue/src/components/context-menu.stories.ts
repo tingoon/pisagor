@@ -1,7 +1,7 @@
 import { ContextMenu } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/context-menu";
+import * as Examples from "#/vue/examples/overlay/context-menu";
 
 const meta = preview.meta({
   component: ContextMenu,

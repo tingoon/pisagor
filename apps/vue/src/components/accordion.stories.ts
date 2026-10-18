@@ -2,7 +2,7 @@ import { Accordion } from "@pisagor/vue";
 import { h } from "vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/accordion";
+import * as Examples from "#/vue/examples/layout/accordion";
 
 const meta = preview.meta({
   component: Accordion,

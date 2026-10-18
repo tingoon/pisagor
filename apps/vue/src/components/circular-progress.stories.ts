@@ -1,7 +1,7 @@
 import { CircularProgress } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/circular-progress";
+import * as Examples from "#/vue/examples/feedback/circular-progress";
 
 const meta = preview.meta({
   component: CircularProgress,

@@ -1,6 +1,6 @@
 import { Slider } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/slider";
+import * as Examples from "#/react/examples/forms/slider";
 
 const meta = preview.meta({
   component: Slider,

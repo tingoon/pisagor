@@ -1,6 +1,6 @@
 import { Presence } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/presence";
+import * as Examples from "#/react/examples/utilities/presence";
 
 const meta = preview.meta({
   component: Presence,

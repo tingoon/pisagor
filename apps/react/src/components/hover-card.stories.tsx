@@ -1,6 +1,6 @@
 import { HoverCard } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/hover-card";
+import * as Examples from "#/react/examples/overlay/hover-card";
 
 const meta = preview.meta({
   component: HoverCard,

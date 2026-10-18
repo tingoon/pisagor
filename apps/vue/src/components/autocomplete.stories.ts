@@ -1,7 +1,7 @@
 import { Autocomplete } from "@pisagor/vue";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
-import * as Examples from "#/vue/examples/autocomplete";
+import * as Examples from "#/vue/examples/forms/autocomplete";
 
 const meta = preview.meta({
   component: Autocomplete,

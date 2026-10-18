@@ -1,6 +1,6 @@
 import { Kbd } from "@pisagor/astro";
 import preview from "#/storybook/preview";
-import * as Examples from "#/astro/examples/kbd";
+import * as Examples from "#/astro/examples/data-display/kbd";
 
 const meta = preview.meta({
   component: Kbd,

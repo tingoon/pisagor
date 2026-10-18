@@ -1,6 +1,6 @@
 import { Frame } from "@pisagor/astro";
 import preview from "#/storybook/preview";
-import * as Examples from "#/astro/examples/frame";
+import * as Examples from "#/astro/examples/media/frame";
 
 const meta = preview.meta({
   component: Frame,

@@ -1,6 +1,6 @@
 import { Select } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/select";
+import * as Examples from "#/react/examples/forms/select";
 
 const meta = preview.meta({
   component: Select,

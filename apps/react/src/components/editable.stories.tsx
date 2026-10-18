@@ -1,6 +1,6 @@
 import { Editable } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import * as Examples from "#/react/examples/editable";
+import * as Examples from "#/react/examples/forms/editable";
 
 const meta = preview.meta({
   component: Editable,
