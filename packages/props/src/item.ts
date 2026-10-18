@@ -1,7 +1,10 @@
 import type { ItemRecipeFn, ItemVariantProps } from "@pisagor/recipes";
 
-/** Item props. */
-export interface ItemProps extends ItemVariantProps {
+/**
+ * Shared Item root contract: visual variants and recipe override. Used by
+ * compound roots; excludes host DOM attributes.
+ */
+export interface ItemRootContract extends ItemVariantProps {
   /**
    * Style recipe override.
    *

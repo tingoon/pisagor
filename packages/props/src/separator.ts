@@ -1,7 +1,10 @@
 import type { SeparatorRecipeFn } from "@pisagor/recipes";
 
-/** Separator props. */
-export interface SeparatorProps {
+/**
+ * Shared Separator root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface SeparatorRootContract {
   /**
    * Style recipe override.
    *

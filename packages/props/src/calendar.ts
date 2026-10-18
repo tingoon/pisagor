@@ -3,8 +3,11 @@ import type {
   CalendarTableCellRecipeFn,
 } from "@pisagor/recipes";
 
-/** Calendar props. */
-export interface CalendarProps {
+/**
+ * Shared Calendar root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface CalendarRootContract {
   /**
    * Style recipe override.
    *
@@ -13,8 +16,11 @@ export interface CalendarProps {
   recipe?: CalendarRecipeFn;
 }
 
-/** CalendarTableCell props. */
-export interface CalendarTableCellProps {
+/**
+ * Shared CalendarTableCell root contract: recipe override. Used by compound
+ * roots; excludes host DOM attributes.
+ */
+export interface CalendarTableCellRootContract {
   /**
    * Style recipe override.
    *

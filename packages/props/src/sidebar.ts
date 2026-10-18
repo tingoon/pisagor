@@ -1,7 +1,10 @@
 import type { SidebarRecipeFn, SidebarVariantProps } from "@pisagor/recipes";
 
-/** Sidebar props. */
-export interface SidebarProps extends SidebarVariantProps {
+/**
+ * Shared Sidebar root contract: visual variants and recipe override. Used by
+ * compound roots; excludes host DOM attributes.
+ */
+export interface SidebarRootContract extends SidebarVariantProps {
   /**
    * Style recipe override.
    *

@@ -1,7 +1,10 @@
 import type { FieldRecipeFn, FieldVariantProps } from "@pisagor/recipes";
 
-/** Field props. */
-export interface FieldProps extends FieldVariantProps {
+/**
+ * Shared Field root contract: visual variants and recipe override. Used by
+ * compound roots; excludes host DOM attributes.
+ */
+export interface FieldRootContract extends FieldVariantProps {
   /**
    * Style recipe override.
    *

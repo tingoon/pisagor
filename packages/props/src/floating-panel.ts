@@ -1,7 +1,10 @@
 import type { FloatingPanelRecipeFn } from "@pisagor/recipes";
 
-/** FloatingPanel props. */
-export interface FloatingPanelProps {
+/**
+ * Shared FloatingPanel root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface FloatingPanelRootContract {
   /**
    * Style recipe override.
    *

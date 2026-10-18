@@ -1,7 +1,10 @@
 import type { LinkBoxRecipeFn } from "@pisagor/recipes";
 
-/** LinkBox props. */
-export interface LinkBoxProps {
+/**
+ * Shared LinkBox root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface LinkBoxRootContract {
   /**
    * Style recipe override.
    *

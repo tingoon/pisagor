@@ -4,8 +4,11 @@ import type {
   SortableVariantProps,
 } from "@pisagor/recipes";
 
-/** Sortable props. */
-export interface SortableProps extends SortableVariantProps {
+/**
+ * Shared Sortable root contract: visual variants and recipe override. Used by
+ * compound roots; excludes host DOM attributes.
+ */
+export interface SortableRootContract extends SortableVariantProps {
   /**
    * Style recipe override.
    *
@@ -14,8 +17,11 @@ export interface SortableProps extends SortableVariantProps {
   recipe?: SortableRecipeFn;
 }
 
-/** SortableItem props. */
-export interface SortableItemProps {
+/**
+ * Shared SortableItem root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface SortableItemRootContract {
   /**
    * Style recipe override.
    *

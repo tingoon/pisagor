@@ -3,8 +3,12 @@ import type {
   PasswordInputRecipeFn,
 } from "@pisagor/recipes";
 
-/** PasswordInput props. Shell variants from `formControlGroupShellRecipe`. */
-export interface PasswordInputProps extends FormControlGroupShellVariantProps {
+/**
+ * Shared PasswordInput root contract: visual variants and recipe override.
+ * Shell variants from `formControlGroupShellRecipe`. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface PasswordInputRootContract extends FormControlGroupShellVariantProps {
   /**
    * Style recipe override.
    *

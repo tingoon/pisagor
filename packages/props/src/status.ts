@@ -1,7 +1,10 @@
 import type { StatusRecipeFn, StatusVariantProps } from "@pisagor/recipes";
 
-/** Status props. */
-export interface StatusProps extends StatusVariantProps {
+/**
+ * Shared Status root contract: visual variants and recipe override. Used by
+ * compound roots; excludes host DOM attributes.
+ */
+export interface StatusRootContract extends StatusVariantProps {
   /**
    * Style recipe override.
    *

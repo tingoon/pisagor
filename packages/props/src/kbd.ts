@@ -4,8 +4,11 @@ import type {
   KbdVariantProps,
 } from "@pisagor/recipes";
 
-/** Kbd props. */
-export interface KbdProps extends KbdVariantProps {
+/**
+ * Shared Kbd root contract: visual variants and recipe override. Used by
+ * compound roots; excludes host DOM attributes.
+ */
+export interface KbdRootContract extends KbdVariantProps {
   /**
    * Style recipe override.
    *
@@ -14,8 +17,11 @@ export interface KbdProps extends KbdVariantProps {
   recipe?: KbdRecipeFn;
 }
 
-/** KbdGroup props. */
-export interface KbdGroupProps {
+/**
+ * Shared KbdGroup root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface KbdGroupRootContract {
   /**
    * Style recipe override.
    *

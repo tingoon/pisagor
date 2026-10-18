@@ -2,9 +2,9 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const clipboardRecipe = tv({
   defaultVariants: {
-    /** Size scale. */
+    /** Size scale of the input, label, and copy control. */
     size: "md",
-    /** Value size. */
+    /** Height scale when showing the value text. */
     valueSize: "md",
   },
   slots: {

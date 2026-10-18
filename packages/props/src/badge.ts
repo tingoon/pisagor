@@ -1,7 +1,10 @@
 import type { BadgeRecipeFn, BadgeVariantProps } from "@pisagor/recipes";
 
-/** Badge props. */
-export interface BadgeProps extends BadgeVariantProps {
+/**
+ * Shared Badge root contract: visual variants and recipe override. Used by
+ * compound roots; excludes host DOM attributes.
+ */
+export interface BadgeRootContract extends BadgeVariantProps {
   /**
    * Style recipe override.
    *

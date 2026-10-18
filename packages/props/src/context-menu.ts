@@ -1,7 +1,10 @@
 import type { ContextMenuRecipeFn } from "@pisagor/recipes";
 
-/** ContextMenu props. */
-export interface ContextMenuProps {
+/**
+ * Shared ContextMenu root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface ContextMenuRootContract {
   /**
    * Style recipe override.
    *

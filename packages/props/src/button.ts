@@ -1,7 +1,10 @@
 import type { ButtonRecipeFn, ButtonVariantProps } from "@pisagor/recipes";
 
-/** Button props (`variant`, `size`, `pill`, `loading`, `clickEffect`). */
-export interface ButtonProps extends ButtonVariantProps {
+/**
+ * Shared Button root contract: visual variants and recipe override. Used by
+ * compound roots; excludes host DOM attributes.
+ */
+export interface ButtonRootContract extends ButtonVariantProps {
   /**
    * Style recipe override.
    *

@@ -4,8 +4,11 @@ import type {
   InputOtpVariantProps,
 } from "@pisagor/recipes";
 
-/** InputOtp props. */
-export interface InputOtpProps
+/**
+ * Shared InputOtp root contract: visual variants and recipe override. Used by
+ * compound roots; excludes host DOM attributes.
+ */
+export interface InputOtpRootContract
   extends InputOtpVariantProps, FormControlShellVariantProps {
   /**
    * Style recipe override.

@@ -1,7 +1,10 @@
 import type { StepsItemRecipeFn, StepsRecipeFn } from "@pisagor/recipes";
 
-/** Steps props. */
-export interface StepsProps {
+/**
+ * Shared Steps root contract: recipe override. Used by compound roots; excludes
+ * host DOM attributes.
+ */
+export interface StepsRootContract {
   /**
    * Style recipe override.
    *
@@ -10,8 +13,11 @@ export interface StepsProps {
   recipe?: StepsRecipeFn;
 }
 
-/** StepsItem props. */
-export interface StepsItemProps {
+/**
+ * Shared StepsItem root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface StepsItemRootContract {
   /**
    * Style recipe override.
    *

@@ -4,8 +4,12 @@ import type {
   TagsInputRecipeFn,
 } from "@pisagor/recipes";
 
-/** TagsInput props. Shell variants from `formControlGroupShellRecipe`. */
-export interface TagsInputProps extends FormControlGroupShellVariantProps {
+/**
+ * Shared TagsInput root contract: visual variants and recipe override. Shell
+ * variants from `formControlGroupShellRecipe`. Used by compound roots; excludes
+ * host DOM attributes.
+ */
+export interface TagsInputRootContract extends FormControlGroupShellVariantProps {
   /**
    * Style recipe override.
    *
@@ -14,8 +18,12 @@ export interface TagsInputProps extends FormControlGroupShellVariantProps {
   recipe?: TagsInputRecipeFn;
 }
 
-/** TagsInputItem props. */
-export interface TagsInputItemProps extends FormControlGroupShellVariantProps {
+/**
+ * Shared TagsInputItem root contract: visual variants and recipe override.
+ * Shell variants from `formControlGroupShellRecipe`. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface TagsInputItemRootContract extends FormControlGroupShellVariantProps {
   /**
    * Style recipe override.
    *

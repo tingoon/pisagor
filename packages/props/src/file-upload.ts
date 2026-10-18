@@ -3,8 +3,11 @@ import type {
   FileUploadRecipeFn,
 } from "@pisagor/recipes";
 
-/** FileUpload props. */
-export interface FileUploadProps {
+/**
+ * Shared FileUpload root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface FileUploadRootContract {
   /**
    * Style recipe override.
    *
@@ -13,8 +16,11 @@ export interface FileUploadProps {
   recipe?: FileUploadRecipeFn;
 }
 
-/** FileUploadItem props. */
-export interface FileUploadItemProps {
+/**
+ * Shared FileUploadItem root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface FileUploadItemRootContract {
   /**
    * Style recipe override.
    *

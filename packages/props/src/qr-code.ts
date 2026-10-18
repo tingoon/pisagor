@@ -1,7 +1,10 @@
 import type { QrCodeRecipeFn, QrCodeVariantProps } from "@pisagor/recipes";
 
-/** QrCode props. */
-export interface QrCodeProps extends QrCodeVariantProps {
+/**
+ * Shared QrCode root contract: visual variants and recipe override. Used by
+ * compound roots; excludes host DOM attributes.
+ */
+export interface QrCodeRootContract extends QrCodeVariantProps {
   /**
    * Style recipe override.
    *

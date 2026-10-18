@@ -8,8 +8,11 @@ import type {
   InputGroupTextRecipeFn,
 } from "@pisagor/recipes";
 
-/** InputGroupAddon props. */
-export interface InputGroupAddonProps extends InputGroupAddonVariantProps {
+/**
+ * Shared InputGroupAddon root contract: visual variants and recipe override.
+ * Used by compound roots; excludes host DOM attributes.
+ */
+export interface InputGroupAddonRootContract extends InputGroupAddonVariantProps {
   /**
    * Style recipe override.
    *
@@ -18,8 +21,11 @@ export interface InputGroupAddonProps extends InputGroupAddonVariantProps {
   recipe?: InputGroupAddonRecipeFn;
 }
 
-/** InputGroupButton props. */
-export interface InputGroupButtonProps extends InputGroupButtonVariantProps {
+/**
+ * Shared InputGroupButton root contract: visual variants and recipe override.
+ * Used by compound roots; excludes host DOM attributes.
+ */
+export interface InputGroupButtonRootContract extends InputGroupButtonVariantProps {
   /**
    * Style recipe override.
    *
@@ -28,8 +34,11 @@ export interface InputGroupButtonProps extends InputGroupButtonVariantProps {
   recipe?: InputGroupButtonRecipeFn;
 }
 
-/** InputGroupText props. */
-export interface InputGroupTextProps {
+/**
+ * Shared InputGroupText root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface InputGroupTextRootContract {
   /**
    * Style recipe override.
    *
@@ -38,8 +47,11 @@ export interface InputGroupTextProps {
   recipe?: InputGroupTextRecipeFn;
 }
 
-/** InputGroupControl props. */
-export interface InputGroupControlProps {
+/**
+ * Shared InputGroupControl root contract: recipe override. Used by compound
+ * roots; excludes host DOM attributes.
+ */
+export interface InputGroupControlRootContract {
   /**
    * Style recipe override.
    *
@@ -48,8 +60,11 @@ export interface InputGroupControlProps {
   recipe?: InputGroupControlRecipeFn;
 }
 
-/** InputGroupTextareaControl props. */
-export interface InputGroupTextareaControlProps {
+/**
+ * Shared InputGroupTextareaControl root contract: recipe override. Used by
+ * compound roots; excludes host DOM attributes.
+ */
+export interface InputGroupTextareaControlRootContract {
   /**
    * Style recipe override.
    *

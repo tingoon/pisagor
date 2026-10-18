@@ -1,7 +1,10 @@
 import type { SpinnerRecipeFn } from "@pisagor/recipes";
 
-/** Spinner props. */
-export interface SpinnerProps {
+/**
+ * Shared Spinner root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface SpinnerRootContract {
   /**
    * Style recipe override.
    *

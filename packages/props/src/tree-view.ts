@@ -4,8 +4,11 @@ import type {
   TreeViewRecipeFn,
 } from "@pisagor/recipes";
 
-/** TreeView props. */
-export interface TreeViewProps {
+/**
+ * Shared TreeView root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface TreeViewRootContract {
   /**
    * Style recipe override.
    *
@@ -14,8 +17,11 @@ export interface TreeViewProps {
   recipe?: TreeViewRecipeFn;
 }
 
-/** TreeViewBranch props. */
-export interface TreeViewBranchProps {
+/**
+ * Shared TreeViewBranch root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface TreeViewBranchRootContract {
   /**
    * Style recipe override.
    *
@@ -24,8 +30,11 @@ export interface TreeViewBranchProps {
   recipe?: TreeViewBranchRecipeFn;
 }
 
-/** TreeViewItem props. */
-export interface TreeViewItemProps {
+/**
+ * Shared TreeViewItem root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface TreeViewItemRootContract {
   /**
    * Style recipe override.
    *

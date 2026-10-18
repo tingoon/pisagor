@@ -1,7 +1,10 @@
 import type { TimerItemGroupRecipeFn, TimerRecipeFn } from "@pisagor/recipes";
 
-/** Timer props. */
-export interface TimerProps {
+/**
+ * Shared Timer root contract: recipe override. Used by compound roots; excludes
+ * host DOM attributes.
+ */
+export interface TimerRootContract {
   /**
    * Style recipe override.
    *
@@ -10,8 +13,11 @@ export interface TimerProps {
   recipe?: TimerRecipeFn;
 }
 
-/** TimerItemGroup props. */
-export interface TimerItemGroupProps {
+/**
+ * Shared TimerItemGroup root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface TimerItemGroupRootContract {
   /**
    * Style recipe override.
    *

@@ -13,8 +13,11 @@ import type {
   FormControlZoneVariantProps,
 } from "@pisagor/recipes";
 
-/** FormControlShell props. */
-export interface FormControlShellProps extends FormControlShellVariantProps {
+/**
+ * Shared FormControlShell root contract: visual variants and recipe override.
+ * Used by compound roots; excludes host DOM attributes.
+ */
+export interface FormControlShellRootContract extends FormControlShellVariantProps {
   /**
    * Style recipe override.
    *
@@ -23,8 +26,11 @@ export interface FormControlShellProps extends FormControlShellVariantProps {
   recipe?: FormControlShellRecipeFn;
 }
 
-/** FormControlGroupShell props. */
-export interface FormControlGroupShellProps extends FormControlGroupShellVariantProps {
+/**
+ * Shared FormControlGroupShell root contract: visual variants and recipe
+ * override. Used by compound roots; excludes host DOM attributes.
+ */
+export interface FormControlGroupShellRootContract extends FormControlGroupShellVariantProps {
   /**
    * Style recipe override.
    *
@@ -33,8 +39,11 @@ export interface FormControlGroupShellProps extends FormControlGroupShellVariant
   recipe?: FormControlGroupShellRecipeFn;
 }
 
-/** FormControlToggle props. */
-export interface FormControlToggleProps extends FormControlToggleVariantProps {
+/**
+ * Shared FormControlToggle root contract: visual variants and recipe override.
+ * Used by compound roots; excludes host DOM attributes.
+ */
+export interface FormControlToggleRootContract extends FormControlToggleVariantProps {
   /**
    * Style recipe override.
    *
@@ -43,8 +52,11 @@ export interface FormControlToggleProps extends FormControlToggleVariantProps {
   recipe?: FormControlToggleRecipeFn;
 }
 
-/** FormControlRadioToggle props. */
-export interface FormControlRadioToggleProps extends FormControlRadioToggleVariantProps {
+/**
+ * Shared FormControlRadioToggle root contract: visual variants and recipe
+ * override. Used by compound roots; excludes host DOM attributes.
+ */
+export interface FormControlRadioToggleRootContract extends FormControlRadioToggleVariantProps {
   /**
    * Style recipe override.
    *
@@ -53,8 +65,11 @@ export interface FormControlRadioToggleProps extends FormControlRadioToggleVaria
   recipe?: FormControlRadioToggleRecipeFn;
 }
 
-/** FormControlSeparator props. */
-export interface FormControlSeparatorProps extends FormControlSeparatorVariantProps {
+/**
+ * Shared FormControlSeparator root contract: visual variants and recipe
+ * override. Used by compound roots; excludes host DOM attributes.
+ */
+export interface FormControlSeparatorRootContract extends FormControlSeparatorVariantProps {
   /**
    * Style recipe override.
    *
@@ -63,8 +78,11 @@ export interface FormControlSeparatorProps extends FormControlSeparatorVariantPr
   recipe?: FormControlSeparatorRecipeFn;
 }
 
-/** FormControlZone props. */
-export interface FormControlZoneProps extends FormControlZoneVariantProps {
+/**
+ * Shared FormControlZone root contract: visual variants and recipe override.
+ * Used by compound roots; excludes host DOM attributes.
+ */
+export interface FormControlZoneRootContract extends FormControlZoneVariantProps {
   /**
    * Style recipe override.
    *

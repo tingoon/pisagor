@@ -1,7 +1,10 @@
 import type { VisuallyHiddenRecipeFn } from "@pisagor/recipes";
 
-/** VisuallyHidden props. */
-export interface VisuallyHiddenProps {
+/**
+ * Shared VisuallyHidden root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface VisuallyHiddenRootContract {
   /**
    * Style recipe override.
    *

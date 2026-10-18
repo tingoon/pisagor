@@ -3,8 +3,11 @@ import type {
   ButtonGroupVariantProps,
 } from "@pisagor/recipes";
 
-/** ButtonGroup props. */
-export interface ButtonGroupProps extends ButtonGroupVariantProps {
+/**
+ * Shared ButtonGroup root contract: visual variants and recipe override. Used
+ * by compound roots; excludes host DOM attributes.
+ */
+export interface ButtonGroupRootContract extends ButtonGroupVariantProps {
   /**
    * Style recipe override.
    *

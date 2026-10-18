@@ -1,7 +1,10 @@
 import type { ImageCropperRecipeFn } from "@pisagor/recipes";
 
-/** ImageCropper props. */
-export interface ImageCropperProps {
+/**
+ * Shared ImageCropper root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface ImageCropperRootContract {
   /**
    * Style recipe override.
    *

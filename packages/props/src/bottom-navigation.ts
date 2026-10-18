@@ -3,8 +3,11 @@ import type {
   BottomNavigationRecipeFn,
 } from "@pisagor/recipes";
 
-/** BottomNavigation props. */
-export interface BottomNavigationProps {
+/**
+ * Shared BottomNavigation root contract: recipe override. Used by compound
+ * roots; excludes host DOM attributes.
+ */
+export interface BottomNavigationRootContract {
   /**
    * Style recipe override.
    *
@@ -13,8 +16,11 @@ export interface BottomNavigationProps {
   recipe?: BottomNavigationRecipeFn;
 }
 
-/** BottomNavigationItem props. */
-export interface BottomNavigationItemProps {
+/**
+ * Shared BottomNavigationItem root contract: recipe override. Used by compound
+ * roots; excludes host DOM attributes.
+ */
+export interface BottomNavigationItemRootContract {
   /**
    * Style recipe override.
    *

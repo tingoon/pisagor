@@ -1,7 +1,10 @@
 import type { HighlightRecipeFn } from "@pisagor/recipes";
 
-/** Highlight props. */
-export interface HighlightProps {
+/**
+ * Shared Highlight root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface HighlightRootContract {
   /**
    * Style recipe override.
    *

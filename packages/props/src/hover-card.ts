@@ -1,7 +1,10 @@
 import type { HoverCardRecipeFn } from "@pisagor/recipes";
 
-/** HoverCard props. */
-export interface HoverCardProps {
+/**
+ * Shared HoverCard root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface HoverCardRootContract {
   /**
    * Style recipe override.
    *

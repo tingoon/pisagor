@@ -1,7 +1,10 @@
 import type { FileInputRecipeFn } from "@pisagor/recipes";
 
-/** FileInput props. */
-export interface FileInputProps {
+/**
+ * Shared FileInput root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface FileInputRootContract {
   /**
    * Style recipe override.
    *

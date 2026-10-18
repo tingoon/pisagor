@@ -1,11 +1,15 @@
 import type {
-  InputRecipeFn,
+  InputRecipeSlot,
   InputRootRecipeFn,
   InputRootVariantProps,
 } from "@pisagor/recipes";
+import type { SlotClassNames } from "./internal";
 
-/** InputRoot props. */
-export interface InputRootProps extends InputRootVariantProps {
+/**
+ * Shared Input root contract: visual variants and root recipe override. Used by
+ * compound roots; excludes host DOM attributes.
+ */
+export interface InputRootContract extends InputRootVariantProps {
   /**
    * Style recipe override.
    *
@@ -14,12 +18,12 @@ export interface InputRootProps extends InputRootVariantProps {
   recipe?: InputRootRecipeFn;
 }
 
-/** Input props. */
-export interface InputProps extends InputRootVariantProps {
-  /**
-   * Style recipe override.
-   *
-   * @defaultValue inputRecipe
-   */
-  recipe?: InputRecipeFn;
+/**
+ * Input field shorthand content contract. Compose with `InputRootContract` /
+ * framework `InputRootProps` — do not extend the root here so root fields are
+ * not applied twice.
+ */
+export interface InputContract {
+  /** Per-slot class name overrides. */
+  classNames?: SlotClassNames<InputRecipeSlot>;
 }

@@ -4,8 +4,11 @@ import type {
   ResizableRecipeFn,
 } from "@pisagor/recipes";
 
-/** Resizable props. */
-export interface ResizableProps {
+/**
+ * Shared Resizable root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface ResizableRootContract {
   /**
    * Style recipe override.
    *
@@ -14,8 +17,11 @@ export interface ResizableProps {
   recipe?: ResizableRecipeFn;
 }
 
-/** ResizableEdgeHandle props. */
-export interface ResizableEdgeHandleProps extends ResizableEdgeHandleVariantProps {
+/**
+ * Shared ResizableEdgeHandle root contract: visual variants and recipe
+ * override. Used by compound roots; excludes host DOM attributes.
+ */
+export interface ResizableEdgeHandleRootContract extends ResizableEdgeHandleVariantProps {
   /**
    * Style recipe override.
    *

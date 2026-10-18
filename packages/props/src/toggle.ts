@@ -1,7 +1,10 @@
 import type { ToggleRecipeFn, ToggleVariantProps } from "@pisagor/recipes";
 
-/** Toggle props. */
-export interface ToggleProps extends ToggleVariantProps {
+/**
+ * Shared Toggle root contract: visual variants and recipe override. Used by
+ * compound roots; excludes host DOM attributes.
+ */
+export interface ToggleRootContract extends ToggleVariantProps {
   /**
    * Style recipe override.
    *

@@ -1,7 +1,10 @@
 import type { CollapsibleRecipeFn } from "@pisagor/recipes";
 
-/** Collapsible props. */
-export interface CollapsibleProps {
+/**
+ * Shared Collapsible root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface CollapsibleRootContract {
   /**
    * Style recipe override.
    *

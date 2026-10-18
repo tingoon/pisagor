@@ -1,7 +1,10 @@
 import type { RichTextEditorRecipeFn } from "@pisagor/recipes";
 
-/** RichTextEditor props. */
-export interface RichTextEditorProps {
+/**
+ * Shared RichTextEditor root contract: recipe override. Used by compound roots;
+ * excludes host DOM attributes.
+ */
+export interface RichTextEditorRootContract {
   /**
    * Style recipe override.
    *
