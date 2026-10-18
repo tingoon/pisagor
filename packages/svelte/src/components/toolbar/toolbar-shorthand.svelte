@@ -8,7 +8,10 @@
   import ToolbarRoot from "./toolbar-root.svelte";
   import ToolbarTitle from "./toolbar-title.svelte";
 
-  type Props = Omit<ComponentProps<typeof ToolbarRoot>, "children"> & {
+  type Props = Omit<
+    ComponentProps<typeof ToolbarRoot>,
+    "children" | "title"
+  > & {
     actions?: Snippet;
     classNames?: VariantClassNames<ToolbarRecipeSlot>;
     description?: Snippet | string;

@@ -1,18 +1,15 @@
 <script lang="ts">
-  import type { AnnouncementProps as BaseAnnouncementProps } from "@pisagor/props";
-  import type { Snippet } from "svelte";
-  import type { HTMLAttributes } from "svelte/elements";
+  import type { ComponentProps, Snippet } from "svelte";
   import AnnouncementRoot from "./announcement-root.svelte";
   import AnnouncementTitle from "./announcement-title.svelte";
 
   type Props = Omit<
-    HTMLAttributes<HTMLDivElement>,
-    "title" | "children" | "role"
+    ComponentProps<typeof AnnouncementRoot>,
+    "title" | "children"
   > & {
     badge?: Snippet;
-    role?: "status" | "alert";
     title?: string | Snippet;
-  } & BaseAnnouncementProps;
+  };
 
   let {
     badge,

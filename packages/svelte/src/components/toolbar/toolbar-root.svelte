@@ -3,7 +3,7 @@
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./toolbar.context";
 
-  type Props = Omit<HTMLAttributes<HTMLDivElement>, "title"> & BaseToolbarProps;
+  type Props = HTMLAttributes<HTMLDivElement> & BaseToolbarProps;
 
   let { children, ...rest }: Props = $props();
 

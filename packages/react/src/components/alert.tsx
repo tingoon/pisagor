@@ -4,14 +4,8 @@ import {
   WarningCircleIcon,
   WarningIcon,
 } from "@phosphor-icons/react";
-import type { AlertProps as BaseAlertRootProps } from "@pisagor/props";
 import { type AlertRecipeSlot, alertRecipe } from "@pisagor/recipes";
-import type {
-  ComponentProps,
-  FunctionComponent,
-  HTMLAttributes,
-  ReactNode,
-} from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -25,9 +19,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 export const AlertRoot = withProvider("div", {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<
-  Omit<HTMLAttributes<HTMLDivElement>, "title"> & BaseAlertRootProps
->;
+});
 
 export const AlertTitle = withContext("div", {
   name: "Title",
@@ -51,7 +43,7 @@ export type AlertDescriptionProps = ComponentProps<typeof AlertDescription>;
 
 export type AlertActionProps = ComponentProps<typeof AlertAction>;
 
-export interface AlertProps extends Omit<AlertRootProps, "children"> {
+export interface AlertProps extends Omit<AlertRootProps, "children" | "title"> {
   /** Trailing action area. */
   action?: ReactNode;
   /** Description content. */

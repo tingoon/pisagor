@@ -3,7 +3,7 @@ import type { AlertProps as BaseAlertProps } from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
 import { withProvider } from "./alert.context";
 
-type Props = Omit<HTMLAttributes<"div">, "title"> & BaseAlertProps;
+type Props = HTMLAttributes<"div"> & BaseAlertProps;
 
 const root = withProvider(Astro.props, { name: "Root", slot: "base" });
 ---

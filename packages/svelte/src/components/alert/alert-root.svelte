@@ -3,7 +3,7 @@
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./alert.context";
 
-  type Props = Omit<HTMLAttributes<HTMLDivElement>, "title"> & {
+  type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
   } & BaseAlertProps;
 

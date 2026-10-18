@@ -4,7 +4,7 @@ import type { HTMLAttributes } from "astro/types";
 import { withProvider } from "./announcement.context";
 
 interface Props
-  extends Omit<HTMLAttributes<"div">, "title">,
+  extends Omit<HTMLAttributes<"div">, "role">,
     BaseAnnouncementProps {
   /**
    * The ARIA role of the announcement.

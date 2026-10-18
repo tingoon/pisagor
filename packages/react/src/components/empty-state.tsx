@@ -1,7 +1,6 @@
-import { ark, type HTMLArkProps } from "@ark-ui/react";
-import type { EmptyStateProps as BaseEmptyStateRootProps } from "@pisagor/props";
+import { ark } from "@ark-ui/react";
 import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -15,9 +14,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 export const EmptyStateRoot = withProvider(ark.div, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<
-  Omit<HTMLArkProps<"div">, "title"> & BaseEmptyStateRootProps
->;
+});
 
 export const EmptyStateMedia = withContext("div", {
   name: "Media",
@@ -49,7 +46,10 @@ export type EmptyStateDescriptionProps = ComponentProps<
 >;
 export type EmptyStateActionsProps = ComponentProps<typeof EmptyStateActions>;
 
-export interface EmptyStateProps extends Omit<EmptyStateRootProps, "children"> {
+export interface EmptyStateProps extends Omit<
+  EmptyStateRootProps,
+  "children" | "title"
+> {
   /** Action buttons or links. */
   actions?: ReactNode;
   /** Supporting copy. */

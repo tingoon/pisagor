@@ -16,7 +16,7 @@ export const AnnouncementRoot = withProvider(ark.div, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  Omit<HTMLArkProps<"div">, "title"> & {
+  HTMLArkProps<"div"> & {
     role?: "status" | "alert";
   } & BaseAnnouncementRootProps
 >;
@@ -33,7 +33,7 @@ export type AnnouncementTitleProps = ComponentProps<typeof AnnouncementTitle>;
 
 export interface AnnouncementProps extends Omit<
   AnnouncementRootProps,
-  "children"
+  "children" | "title"
 > {
   /** Optional badge or label rendered before the title. */
   badge?: ReactNode;

@@ -4,7 +4,7 @@
   import type { HTMLAttributes } from "svelte/elements";
   import { withProvider } from "./announcement.context";
 
-  type Props = Omit<HTMLAttributes<HTMLDivElement>, "title" | "role"> & {
+  type Props = Omit<HTMLAttributes<HTMLDivElement>, "role"> & {
     children?: import("svelte").Snippet;
     role?: "status" | "alert";
   } & BaseAnnouncementProps;

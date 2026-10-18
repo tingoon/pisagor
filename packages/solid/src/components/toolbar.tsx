@@ -18,10 +18,12 @@ export type ToolbarDescriptionProps = ComponentProps<"p">;
 export type ToolbarActionsProps = ComponentProps<"div">;
 type ToolbarHeadingProps = ComponentProps<"div">;
 
-export type ToolbarRootProps = Omit<ComponentProps<"div">, "title"> &
-  BaseToolbarProps;
+export type ToolbarRootProps = ComponentProps<"div"> & BaseToolbarProps;
 
-export interface ToolbarProps extends Omit<ToolbarRootProps, "children"> {
+export interface ToolbarProps extends Omit<
+  ToolbarRootProps,
+  "children" | "title"
+> {
   actions?: JSX.Element;
   description?: JSX.Element;
   title?: JSX.Element;

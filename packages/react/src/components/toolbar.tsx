@@ -1,14 +1,7 @@
 import { ark } from "@ark-ui/react";
-import type { ToolbarProps as BaseToolbarRootProps } from "@pisagor/props";
 import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes";
 import { handleRovingFocusKeyDown } from "@pisagor/utils";
-import type {
-  ComponentProps,
-  ComponentPropsWithRef,
-  FunctionComponent,
-  KeyboardEvent,
-  ReactNode,
-} from "react";
+import type { ComponentProps, KeyboardEvent, ReactNode } from "react";
 import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -22,9 +15,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 export const ToolbarRoot = withProvider("div", {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<
-  Omit<ComponentPropsWithRef<"div">, "title"> & BaseToolbarRootProps
->;
+});
 
 export const ToolbarHeading = withContext("div", {
   name: "Heading",
@@ -55,7 +46,10 @@ export type ToolbarTitleProps = ComponentProps<typeof ToolbarTitle>;
 export type ToolbarDescriptionProps = ComponentProps<typeof ToolbarDescription>;
 export type ToolbarActionsProps = ComponentProps<typeof ToolbarActions>;
 
-export interface ToolbarProps extends Omit<ToolbarRootProps, "children"> {
+export interface ToolbarProps extends Omit<
+  ToolbarRootProps,
+  "children" | "title"
+> {
   /** Trailing action buttons or controls. */
   actions?: ReactNode;
   /** Supporting copy below the title. */

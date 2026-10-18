@@ -5,7 +5,7 @@
 
   import { withProvider } from "./empty-state.context";
 
-  type Props = Omit<HTMLAttributes<HTMLDivElement>, "title"> & {
+  type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
   } & BaseEmptyStateProps;
 

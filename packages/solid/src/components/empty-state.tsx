@@ -13,14 +13,16 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export type EmptyStateRootProps = Omit<HTMLArkProps<"div">, "title"> &
-  BaseEmptyStateRootProps;
+export type EmptyStateRootProps = HTMLArkProps<"div"> & BaseEmptyStateRootProps;
 export type EmptyStateMediaProps = ComponentProps<"div">;
 export type EmptyStateTitleProps = HTMLArkProps<"h3">;
 export type EmptyStateDescriptionProps = ComponentProps<"p">;
 export type EmptyStateActionsProps = ComponentProps<"div">;
 
-export interface EmptyStateProps extends Omit<EmptyStateRootProps, "children"> {
+export interface EmptyStateProps extends Omit<
+  EmptyStateRootProps,
+  "children" | "title"
+> {
   /** Action buttons or links. */
   actions?: JSX.Element;
   /** Supporting copy. */

@@ -19,8 +19,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export type AlertRootProps = Omit<ComponentProps<"div">, "title"> &
-  BaseAlertRootProps;
+export type AlertRootProps = ComponentProps<"div"> & BaseAlertRootProps;
 
 export type AlertTitleProps = ComponentProps<"div">;
 
@@ -28,7 +27,7 @@ export type AlertDescriptionProps = ComponentProps<"div">;
 
 export type AlertActionProps = ComponentProps<"div">;
 
-export interface AlertProps extends Omit<AlertRootProps, "children"> {
+export interface AlertProps extends Omit<AlertRootProps, "children" | "title"> {
   /** Trailing action area. */
   action?: JSX.Element;
   /** Description content. */

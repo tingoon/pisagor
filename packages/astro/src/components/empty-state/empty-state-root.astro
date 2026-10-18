@@ -3,7 +3,7 @@ import type { EmptyStateProps as BaseEmptyStateProps } from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
 import { withProvider } from "./empty-state.context";
 
-type Props = Omit<HTMLAttributes<"div">, "title"> & BaseEmptyStateProps;
+type Props = HTMLAttributes<"div"> & BaseEmptyStateProps;
 
 const root = withProvider(Astro.props, { name: "Root", slot: "base" });
 ---

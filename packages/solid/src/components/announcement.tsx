@@ -13,7 +13,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export type AnnouncementRootProps = Omit<HTMLArkProps<"div">, "title"> &
+export type AnnouncementRootProps = HTMLArkProps<"div"> &
   BaseAnnouncementRootProps & {
     role?: "status" | "alert";
   };
@@ -22,7 +22,7 @@ export type AnnouncementTitleProps = ComponentProps<"span">;
 
 export interface AnnouncementProps extends Omit<
   AnnouncementRootProps,
-  "children"
+  "children" | "title"
 > {
   /** Optional badge or label rendered before the title. */
   badge?: JSX.Element;
