@@ -26,37 +26,75 @@ const frameworkIcons = {
 
 const { framework, pathname } = Astro.props;
 const ActiveIcon = frameworkIcons[framework];
+const activeLabel =
+  frameworks.find((item) => item.id === framework)?.label ?? framework;
 ---
 
 <div class="inline-flex shrink-0 items-center">
-  <label class="relative inline-flex max-w-[9.5rem] items-center lg:hidden">
-    <span class="sr-only">Framework</span>
-    <span
-      aria-hidden="true"
-      class="pointer-events-none absolute start-2.5 inline-flex items-center"
+  <div class="relative lg:hidden" data-framework-menu>
+    <button
+      aria-controls="docs-framework-menu"
+      aria-expanded="false"
+      aria-haspopup="menu"
+      aria-label={`Framework: ${activeLabel}`}
+      class="docs-press inline-flex h-8 items-center gap-1.5 rounded-lg border border-border/70 bg-background px-2 text-foreground hover:bg-accent/60"
+      data-framework-menu-trigger
+      type="button"
     >
       <ActiveIcon className="opacity-90" size={13} />
-    </span>
-    <select
-      aria-label="Framework"
-      class="docs-press h-8 w-full appearance-none truncate rounded-full border border-border/70 bg-muted/40 py-1 ps-8 pe-7 text-xs font-semibold text-foreground"
-      data-framework-select
+      <span class="text-xs font-semibold">{activeLabel}</span>
+      <CaretDownIcon
+        aria-hidden
+        className="size-3 text-muted-foreground"
+        weight="bold"
+      />
+    </button>
+
+    <div
+      class="docs-sheet-panel docs-sheet-panel-end absolute inset-e-0 z-50 mt-2 min-w-40 overflow-hidden rounded-xl border border-border/70 bg-background p-1 text-popover-foreground shadow-md"
+      data-framework-menu-list
+      hidden
+      id="docs-framework-menu"
+      role="menu"
     >
-      {frameworks.map((item) => (
-        <option
-          selected={item.id === framework}
-          value={swapFrameworkPath(pathname, item.id)}
-        >
-          {item.label}
-        </option>
-      ))}
-    </select>
-    <CaretDownIcon
-      aria-hidden
-      className="pointer-events-none absolute end-2 size-3 text-muted-foreground"
-      weight="bold"
-    />
-  </label>
+      {frameworks.map((item) => {
+        const active = item.id === framework;
+        const Icon = frameworkIcons[item.id];
+        return (
+          <a
+            aria-checked={active ? "true" : "false"}
+            class:list={[
+              "docs-press flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-left text-sm hover:bg-accent/60 focus-visible:bg-accent/60",
+              active && "bg-accent text-accent-foreground",
+            ]}
+            data-active={active ? "" : undefined}
+            data-framework-option={item.id}
+            href={swapFrameworkPath(pathname, item.id)}
+            role="menuitemradio"
+            tabindex="-1"
+          >
+            <Icon className="opacity-90" size={14} />
+            <span class="flex-1">{item.label}</span>
+            <svg
+              aria-hidden="true"
+              class:list={["size-3.5 opacity-80", !active && "invisible"]}
+              data-framework-check
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="m5 12 5 5L20 7"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+              ></path>
+            </svg>
+          </a>
+        );
+      })}
+    </div>
+  </div>
 
   <nav
     aria-label="Framework"
@@ -86,19 +124,62 @@ const ActiveIcon = frameworkIcons[framework];
 </div>
 
 <script>
-function bindFrameworkSelects() {
-  document
-    .querySelectorAll<HTMLSelectElement>("[data-framework-select]")
-    .forEach((el) => {
-      if (el.dataset.bound) return;
-      el.dataset.bound = "";
-      el.addEventListener("change", () => {
-        if (!el.value) return;
-        window.location.assign(el.value);
-      });
-    });
+function bindFrameworkMenu(root: HTMLElement) {
+  if (root.dataset.bound === "1") return;
+  root.dataset.bound = "1";
+  const trigger = root.querySelector<HTMLButtonElement>(
+    "[data-framework-menu-trigger]",
+  );
+  const list = root.querySelector<HTMLElement>("[data-framework-menu-list]");
+  if (!trigger || !list) return;
+  const items = [
+    ...list.querySelectorAll<HTMLElement>("[data-framework-option]"),
+  ];
+
+  function setOpen(next: boolean, focusTrigger = false) {
+    if (!trigger || !list) return;
+    list.hidden = !next;
+    trigger.setAttribute("aria-expanded", String(next));
+    if (next) {
+      const checked =
+        items.find((item) => item.getAttribute("aria-checked") === "true") ??
+        items[0];
+      checked?.focus();
+    } else if (focusTrigger) {
+      trigger.focus();
+    }
+  }
+
+  trigger.addEventListener("click", () => setOpen(list.hidden));
+  list.addEventListener("keydown", (event) => {
+    const index = items.indexOf(document.activeElement as HTMLElement);
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      event.preventDefault();
+      const delta = event.key === "ArrowDown" ? 1 : -1;
+      items[(index + delta + items.length) % items.length]?.focus();
+    } else if (event.key === "Home" || event.key === "End") {
+      event.preventDefault();
+      items[event.key === "Home" ? 0 : items.length - 1]?.focus();
+    } else if (event.key === "Tab") {
+      setOpen(false);
+    }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !list.hidden) setOpen(false, true);
+  });
+  document.addEventListener("mousedown", (event) => {
+    if (!list.hidden && !root.contains(event.target as Node)) setOpen(false);
+  });
 }
 
-bindFrameworkSelects();
-document.addEventListener("astro:page-load", bindFrameworkSelects);
+function bindFrameworkMenus() {
+  for (const root of document.querySelectorAll<HTMLElement>(
+    "[data-framework-menu]",
+  )) {
+    bindFrameworkMenu(root);
+  }
+}
+
+bindFrameworkMenus();
+document.addEventListener("astro:page-load", bindFrameworkMenus);
 </script>
