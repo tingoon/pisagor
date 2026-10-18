@@ -1,6 +1,6 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import { useCard } from "./card.context";
+import { useStyles } from "./card.context";
 import CardDescription from "./card-description.astro";
 import CardTitle from "./card-title.astro";
 
@@ -12,7 +12,7 @@ interface Props extends HTMLAttributes<"div"> {
 }
 
 const { description, title, class: className, ...rest } = Astro.props;
-const { slots } = useCard();
+const { slots } = useStyles();
 ---
 
 <div

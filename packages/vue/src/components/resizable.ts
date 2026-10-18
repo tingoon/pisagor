@@ -10,11 +10,7 @@ import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
 // #region Slot recipe context
-const {
-  useStyles: useResizable,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Resizable",
   recipe: resizableRecipe,
 });
@@ -252,7 +248,7 @@ export const ResizableResizeTrigger = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const { m } = useLocale();
-    const styles = useResizable();
+    const styles = useStyles();
 
     return () =>
       h(

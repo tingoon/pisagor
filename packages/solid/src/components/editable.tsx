@@ -21,7 +21,7 @@ import { useFormControlSurface } from "./surface/use-form-control-surface";
 // #region Context
 const {
   Context: EditableStylesContext,
-  useStyles: useEditable,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Editable",
@@ -106,7 +106,7 @@ export function EditablePreview(props: EditablePreviewProps): JSX.Element {
     "buttonRecipe",
     "class",
   ]);
-  const styles = useEditable();
+  const styles = useStyles();
   const size = () => local.size ?? "md";
   const variant = () => local.variant ?? "outline";
   const buttonRecipeProp = () => local.buttonRecipe ?? buttonRecipe;

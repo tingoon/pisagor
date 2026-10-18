@@ -20,7 +20,7 @@ import { useLocale } from "./provider/context";
 
 // #region Context
 const {
-  useStyles: useTimer,
+  useStyles,
   withContext: withTimerContext,
   withProvider: withTimerProvider,
 } = createSlotRecipeContext({ name: "Timer", recipe: timerRecipe });
@@ -149,7 +149,7 @@ export const TimerItemLabel: Component<TimerItemLabelProps> =
 
 export function TimerSeparator(props: TimerSeparatorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useTimer();
+  const styles = useStyles();
 
   return (
     <TimerPrimitive.Separator

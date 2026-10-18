@@ -23,11 +23,7 @@ import {
 } from "../internal";
 
 // #region Context
-const {
-  useStyles: useCircularProgress,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "CircularProgress",
   recipe: circularProgressRecipe,
 });
@@ -81,7 +77,7 @@ const CircularProgressTrack = defineComponent({
     },
   },
   setup(props) {
-    const styles = useCircularProgress();
+    const styles = useStyles();
     const progress = useProgressContext();
 
     return () => {

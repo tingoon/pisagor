@@ -12,11 +12,10 @@ import { For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useTabs,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({ name: "Tabs", recipe: tabsRecipe });
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+  name: "Tabs",
+  recipe: tabsRecipe,
+});
 // #endregion
 
 export interface LocalTabsRootProps
@@ -63,7 +62,7 @@ export function TabsList(props: TabsListProps): JSX.Element {
     "class",
     "showIndicator",
   ]);
-  const styles = useTabs();
+  const styles = useStyles();
   const variant = () => local.variant ?? "default";
 
   return (

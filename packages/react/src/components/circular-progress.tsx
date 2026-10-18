@@ -24,11 +24,7 @@ import type {
 import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useCircularProgress,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "CircularProgress",
   recipe: circularProgressRecipe,
 });
@@ -86,7 +82,7 @@ function CircularProgressTrack({
   trackProps,
   className,
 }: CircularProgressTrackPartProps) {
-  const { slots } = useCircularProgress();
+  const { slots } = useStyles();
   const { max, min, value } = useProgressContext();
 
   const radius = size / 2 - thickness / 2;

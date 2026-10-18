@@ -3,15 +3,11 @@ import { actionBarRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils/create-context";
 
-export const {
-  Context,
-  useStyles: useActionBarStyles,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "ActionBar",
-  recipe: actionBarRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "ActionBar",
+    recipe: actionBarRecipe,
+  });
 
 interface ActionBarPositioning {
   gutter?: string;
@@ -32,7 +28,7 @@ export const setActionBarStateContext = stateCtx.setContext;
 export const useActionBarState = stateCtx.getContext;
 
 export function useActionBar() {
-  const styles = useActionBarStyles();
+  const styles = useStyles();
   const state = useActionBarState();
 
   return {

@@ -16,11 +16,10 @@ import { splitProps } from "solid-js";
 import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useScrollArea,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({ name: "ScrollArea", recipe: scrollAreaRecipe });
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+  name: "ScrollArea",
+  recipe: scrollAreaRecipe,
+});
 // #endregion
 
 type ScrollAreaClassNames = VariantClassNames<ScrollAreaRecipeSlot>;
@@ -47,7 +46,7 @@ const ScrollAreaRoot: Component<ScrollAreaRootProps> = withProvider(
 
 function ScrollAreaViewport(props: ScrollAreaViewportProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useScrollArea();
+  const styles = useStyles();
 
   return (
     <ScrollAreaPrimitive.Viewport

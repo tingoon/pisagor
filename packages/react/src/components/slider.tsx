@@ -25,11 +25,10 @@ import {
 } from "../internal";
 
 // #region Context
-const { Context: SliderStylesContext, useStyles: useSliderStyles } =
-  createSlotRecipeContext({
-    name: "Slider",
-    recipe: sliderRecipe,
-  });
+const { Context: SliderStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Slider",
+  recipe: sliderRecipe,
+});
 
 interface SliderExtras {
   thumbShadowClass?: string;
@@ -40,7 +39,7 @@ const SliderExtrasContext = createContext<SliderExtras | undefined>(undefined);
 SliderExtrasContext.displayName = "SliderExtrasContext";
 
 function useSlider() {
-  const styles = useSliderStyles();
+  const styles = useStyles();
   const extras = use(SliderExtrasContext);
   if (extras === undefined) {
     throw new Error("useSlider must be used within SliderExtrasContext.");

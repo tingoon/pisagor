@@ -21,7 +21,7 @@ import { useLocale } from "./provider/context";
 // #region Context
 const {
   Context: ResizableStylesContext,
-  useStyles: useResizable,
+  useStyles,
   withContext,
   withProvider,
 } = createSlotRecipeContext({ name: "Resizable", recipe: resizableRecipe });
@@ -223,7 +223,7 @@ export function ResizableResizeTrigger(
 ): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "withHandle", "class"]);
-  const styles = useResizable();
+  const styles = useStyles();
   const withHandle = () => local.withHandle ?? false;
 
   return (

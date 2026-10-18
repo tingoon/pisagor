@@ -1,14 +1,14 @@
 <script lang="ts">
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
-  import { useRating } from "./rating.context";
+  import { useStyles } from "./rating.context";
 
   let {
     class: className,
     children,
     ...rest
   }: HTMLAttributes<HTMLSpanElement> = $props();
-  const styles = useRating();
+  const styles = useStyles();
 </script>
 
 <span

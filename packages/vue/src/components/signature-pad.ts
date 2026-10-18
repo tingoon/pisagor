@@ -30,7 +30,7 @@ import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: SignaturePadStylesContext, useStyles: useSignaturePadStyles } =
+const { Context: SignaturePadStylesContext, useStyles } =
   createSlotRecipeContext({
     name: "SignaturePad",
     recipe: signaturePadRecipe,
@@ -130,7 +130,7 @@ const SignaturePadControl = defineComponent({
   name: "SignaturePad.Control",
   props: { class: classProp },
   setup(props, { attrs, slots }) {
-    const styles = useSignaturePadStyles();
+    const styles = useStyles();
     const surfaceVariant = useFormControlSurface();
     const variant = inject(SignaturePadVariantKey, () => "primary" as const);
 
@@ -158,7 +158,7 @@ const SignaturePadSegment = defineComponent({
   name: "SignaturePad.Segment",
   props: { class: classProp },
   setup(props, { attrs }) {
-    const styles = useSignaturePadStyles();
+    const styles = useStyles();
 
     return () =>
       h(SignaturePadPrimitive.Segment as ArkPart, {
@@ -175,7 +175,7 @@ const SignaturePadGuide = defineComponent({
   name: "SignaturePad.Guide",
   props: { class: classProp },
   setup(props, { attrs, slots }) {
-    const styles = useSignaturePadStyles();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -197,7 +197,7 @@ const SignaturePadClear = defineComponent({
   props: { class: classProp },
   setup(props, { attrs, slots }) {
     const { m } = useLocale();
-    const styles = useSignaturePadStyles();
+    const styles = useStyles();
 
     return () =>
       h(

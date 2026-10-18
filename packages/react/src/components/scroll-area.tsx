@@ -11,11 +11,7 @@ import type { ComponentProps, FunctionComponent } from "react";
 import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useScrollArea,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "ScrollArea",
   recipe: scrollAreaRecipe,
 });
@@ -32,7 +28,7 @@ function ScrollAreaViewport({
   className,
   ...rest
 }: ScrollAreaViewportProps) {
-  const { slots } = useScrollArea();
+  const { slots } = useStyles();
 
   return (
     <ScrollAreaPrimitive.Viewport

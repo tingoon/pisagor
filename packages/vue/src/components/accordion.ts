@@ -9,7 +9,7 @@ import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
+const { useStyles, withProvider } = createSlotRecipeContext({
   name: "Accordion",
   recipe: accordionItemRecipe,
 });
@@ -85,7 +85,7 @@ export const AccordionItemTrigger = defineComponent({
     },
   },
   setup(props, { attrs, slots: children }) {
-    const styles = useAccordionItem();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -114,7 +114,7 @@ export const AccordionItemContent = defineComponent({
     },
   },
   setup(props, { attrs, slots: children }) {
-    const styles = useAccordionItem();
+    const styles = useStyles();
 
     return () =>
       h(

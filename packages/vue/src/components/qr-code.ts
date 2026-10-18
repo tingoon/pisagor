@@ -5,11 +5,7 @@ import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useQrCode,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "QrCode",
   recipe: qrCodeRecipe,
 });
@@ -54,7 +50,7 @@ export const QrCodeFrame = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useQrCode();
+    const styles = useStyles();
 
     return () =>
       h(

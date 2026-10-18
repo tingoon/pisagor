@@ -22,7 +22,7 @@ import { Separator, type SeparatorProps } from "./separator";
 // #region Context
 const {
   Context: ActionBarStylesContext,
-  useStyles: useActionBarStyles,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({ name: "ActionBar", recipe: actionBarRecipe });
 
@@ -222,7 +222,7 @@ export function ActionBarTrigger(props: ActionBarTriggerProps): JSX.Element {
 
 export function ActionBarContent(props: ActionBarContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "aria-labelledby"]);
-  const styles = useActionBarStyles();
+  const styles = useStyles();
   const state = useActionBarState();
   const placement = () => state.positioning.placement;
   const gutter = () => state.positioning.gutter;
@@ -262,7 +262,7 @@ export function ActionBarSeparator(
   props: ActionBarSeparatorProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useActionBarStyles();
+  const styles = useStyles();
 
   return (
     <Separator
@@ -278,7 +278,7 @@ export function ActionBarSeparator(
 export function ActionBarClose(props: ActionBarCloseProps): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["onClick", "class", "children"]);
-  const styles = useActionBarStyles();
+  const styles = useStyles();
   const state = useActionBarState();
 
   return (
@@ -307,7 +307,7 @@ export function ActionBarValue(props: ActionBarValueProps): JSX.Element {
     "label",
     "class",
   ]);
-  const styles = useActionBarStyles();
+  const styles = useStyles();
 
   return (
     <Badge

@@ -37,7 +37,7 @@ type ClassValue = Parameters<typeof cn>[0];
 const {
   Context: DatePickerStylesContext,
   useOptionalStyles: useOptionalDatePickerStyles,
-  useStyles: useDatePickerStyles,
+  useStyles,
 } = createSlotRecipeContext({
   name: "DatePicker",
   recipe: datePickerRecipe,
@@ -172,7 +172,7 @@ export const DatePickerControl = defineComponent({
   inheritAttrs: false,
   name: "DatePicker.Control",
   setup(_, { attrs, slots }) {
-    const styles = useDatePickerStyles();
+    const styles = useStyles();
     provide(DatePickerInsideControlKey, true);
 
     return () =>
@@ -191,7 +191,7 @@ export const DatePickerTrigger = defineComponent({
     clearable: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    const styles = useDatePickerStyles();
+    const styles = useStyles();
     const insideControl = inject(DatePickerInsideControlKey, false);
     if (!insideControl) provide(DatePickerInsideControlKey, true);
 
@@ -426,7 +426,7 @@ export const DatePickerContent = defineComponent({
     showCalendar: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    const styles = useDatePickerStyles();
+    const styles = useStyles();
 
     return () => {
       const content = [
@@ -464,7 +464,7 @@ export const DatePickerValueText = defineComponent({
   inheritAttrs: false,
   name: "DatePicker.ValueText",
   setup(_, { attrs }) {
-    const styles = useDatePickerStyles();
+    const styles = useStyles();
 
     return () =>
       h(DatePickerPrimitive.ValueText as ArkPart, {

@@ -7,7 +7,7 @@
   import { cn } from "@pisagor/utils";
   import { CaretRightIcon } from "phosphor-svelte";
   import { useLocale } from "../provider/context";
-  import { useCalendar } from "./calendar.context";
+  import { useStyles } from "./calendar.context";
 
   const { m } = useLocale();
 
@@ -16,7 +16,7 @@
     children,
     ...rest
   }: DatePickerNextTriggerProps = $props();
-  const styles = useCalendar();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

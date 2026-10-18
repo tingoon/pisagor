@@ -7,7 +7,7 @@ import type {
   AppShellPlacement,
   AppShellRegionPosition,
 } from "./app-shell.context";
-import { useAppShellState, useAppShellStyles } from "./app-shell.context";
+import { useAppShellState, useStyles } from "./app-shell.context";
 import { APP_SHELL_RAIL_WIDTH } from "./constants";
 import { AppShellRailContext, useAppShellRail } from "./rail.context";
 import {
@@ -47,7 +47,7 @@ export function AppShellRail(props: AppShellRailProps): JSX.Element {
   ]);
   const placement = () => local.placement ?? "start";
   const position = () => local.position ?? "fixed";
-  const styles = useAppShellStyles();
+  const styles = useStyles();
   const { railStates } = useAppShellState();
   const regionVar = regionVarFor(placement(), "rail");
   const railState = useRegisteredRailState({
@@ -108,7 +108,7 @@ export function AppShellRailItem(props: AppShellRailItemProps): JSX.Element {
     setActiveRailId,
   } = useAppShellRail();
   const panelPlacement = () => local.panelPlacement ?? railPlacement;
-  const styles = useAppShellStyles();
+  const styles = useStyles();
   const { panelStates } = useAppShellState();
   const active = () =>
     local.isActive ??

@@ -7,11 +7,7 @@ import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Format } from "./format";
 
 // #region Slot recipe context
-const {
-  useStyles: useFile,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "File",
   recipe: fileRecipe,
 });
@@ -55,7 +51,7 @@ export const FileMedia = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useFile();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;
@@ -104,7 +100,7 @@ export const FileSize = defineComponent({
     value: { required: true, type: Number },
   },
   setup(props, { attrs }) {
-    const styles = useFile();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;

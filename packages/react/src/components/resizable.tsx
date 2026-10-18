@@ -33,7 +33,7 @@ export {
 // #region Context
 const {
   Context: ResizableStylesContext,
-  useStyles: useResizable,
+  useStyles,
   withContext,
   withProvider,
 } = createSlotRecipeContext({
@@ -239,7 +239,7 @@ export function ResizableResizeTrigger({
   ...rest
 }: ResizableResizeTriggerProps) {
   const { m } = useLocale();
-  const { slots } = useResizable();
+  const { slots } = useStyles();
 
   return (
     <SplitterPrimitive.ResizeTrigger

@@ -1,12 +1,12 @@
 ---
 import type { CardVariantProps } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
-import { useCard } from "./card.context";
+import { useStyles } from "./card.context";
 
 type Props = HTMLAttributes<"div"> & CardVariantProps;
 
 const { variant = "default", class: className, ...rest } = Astro.props;
-const { slots } = useCard();
+const { slots } = useStyles();
 ---
 
 <div

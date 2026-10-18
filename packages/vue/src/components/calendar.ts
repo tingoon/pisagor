@@ -24,7 +24,7 @@ import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Slot recipe context
-const { provideStyles: provideCalendarStyles, useStyles: useCalendar } =
+const { provideStyles: provideCalendarStyles, useStyles } =
   createSlotRecipeContext({
     name: "Calendar",
     recipe: calendarRecipe,
@@ -148,7 +148,7 @@ export const CalendarControl = defineComponent({
   inheritAttrs: false,
   name: "Calendar.Control",
   setup(_props, { attrs, slots }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -163,7 +163,7 @@ export const CalendarLabel = defineComponent({
   inheritAttrs: false,
   name: "Calendar.Label",
   setup(_props, { attrs, slots }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -201,7 +201,7 @@ export const CalendarViewDate = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     return () =>
       h(DatePickerPrimitive.RangeText as ArkPart, {
@@ -260,7 +260,7 @@ export const CalendarYearSelect = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     const surfaceVariant = useFormControlSurface();
 
@@ -308,7 +308,7 @@ export const CalendarMonthSelect = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     const surfaceVariant = useFormControlSurface();
 
@@ -356,7 +356,7 @@ export const CalendarView = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -390,7 +390,7 @@ export const CalendarViewControl = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -409,7 +409,7 @@ export const CalendarPrevTrigger = defineComponent({
   name: "Calendar.PrevTrigger",
   setup(_props, { attrs }) {
     const { m } = useLocale();
-    const styles = useCalendar();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -439,7 +439,7 @@ export const CalendarNextTrigger = defineComponent({
   name: "Calendar.NextTrigger",
   setup(_props, { attrs }) {
     const { m } = useLocale();
-    const styles = useCalendar();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -474,7 +474,7 @@ export const CalendarTable = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -611,7 +611,7 @@ export const CalendarTableRow = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -635,7 +635,7 @@ export const CalendarTableHeader = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     return () =>
       h(

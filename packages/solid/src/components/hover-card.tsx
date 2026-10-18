@@ -13,11 +13,10 @@ import { Portal } from "solid-js/web";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { Context: HoverCardStylesContext, useStyles: useHoverCard } =
-  createSlotRecipeContext({
-    name: "HoverCard",
-    recipe: hoverCardRecipe,
-  });
+const { Context: HoverCardStylesContext, useStyles } = createSlotRecipeContext({
+  name: "HoverCard",
+  recipe: hoverCardRecipe,
+});
 // #endregion
 
 // #region Types
@@ -71,7 +70,7 @@ export function HoverCardTrigger(props: HoverCardTriggerProps): JSX.Element {
 
 export function HoverCardArrow(props: HoverCardArrowProps): JSX.Element {
   const [local, rest] = splitProps(props, ["style"]);
-  const styles = useHoverCard();
+  const styles = useStyles();
 
   return (
     <HoverCardPrimitive.Arrow
@@ -91,7 +90,7 @@ export function HoverCardArrow(props: HoverCardArrowProps): JSX.Element {
 
 export function HoverCardContent(props: HoverCardContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class", "showArrow"]);
-  const styles = useHoverCard();
+  const styles = useStyles();
 
   return (
     <Portal>

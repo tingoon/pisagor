@@ -21,7 +21,7 @@ import { type MessageKey, useLocale } from "./provider/context";
 
 // #region Context
 const {
-  useStyles: useTimer,
+  useStyles,
   withContext: withTimerContext,
   withProvider: withTimerProvider,
 } = createSlotRecipeContext({
@@ -172,7 +172,7 @@ export function TimerSeparator({
   className,
   ...rest
 }: TimerSeparatorProps) {
-  const { slots } = useTimer();
+  const { slots } = useStyles();
 
   return (
     <TimerPrimitive.Separator

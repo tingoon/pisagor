@@ -38,7 +38,7 @@ import { useLocale } from "./provider/context";
 import { Spinner } from "./spinner";
 
 // #region Context
-const { useStyles: useToastItem, withProvider } = createSlotRecipeContext({
+const { useStyles, withProvider } = createSlotRecipeContext({
   name: "Toast",
   recipe: toastItemRecipe,
 });
@@ -138,7 +138,7 @@ function ToastItemContent(
     "toast",
     "classNames",
   ]);
-  const styles = useToastItem();
+  const styles = useStyles();
   const toastData = () => local.toast;
   const ToastIcon = () => {
     const type = toastData().type;

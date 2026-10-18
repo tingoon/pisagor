@@ -7,12 +7,12 @@
   import { cn } from "@pisagor/utils";
   import { CaretRightIcon } from "phosphor-svelte";
   import { useLocale } from "../provider/context";
-  import { useCarousel } from "./carousel.context";
+  import { useStyles } from "./carousel.context";
 
   const { m } = useLocale();
 
   let { class: className, ...rest }: CarouselNextTriggerProps = $props();
-  const styles = useCarousel();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

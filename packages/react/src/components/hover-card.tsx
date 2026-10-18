@@ -10,11 +10,10 @@ import { hoverCardRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { Context: HoverCardStylesContext, useStyles: useHoverCard } =
-  createSlotRecipeContext({
-    name: "HoverCard",
-    recipe: hoverCardRecipe,
-  });
+const { Context: HoverCardStylesContext, useStyles } = createSlotRecipeContext({
+  name: "HoverCard",
+  recipe: hoverCardRecipe,
+});
 // #endregion
 
 // #region Types
@@ -62,7 +61,7 @@ export function HoverCardTrigger(props: HoverCardTriggerProps) {
 }
 
 export function HoverCardArrow({ style, ...rest }: HoverCardArrowProps) {
-  const { slots } = useHoverCard();
+  const { slots } = useStyles();
 
   return (
     <HoverCardPrimitive.Arrow
@@ -84,7 +83,7 @@ export function HoverCardContent({
   className,
   ...rest
 }: HoverCardContentProps) {
-  const { slots } = useHoverCard();
+  const { slots } = useStyles();
 
   return (
     <Portal>

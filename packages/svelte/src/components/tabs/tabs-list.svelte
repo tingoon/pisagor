@@ -5,7 +5,7 @@
   } from "@ark-ui/svelte";
   import type { TabsProps as BaseTabsProps } from "@pisagor/props";
   import { cn } from "@pisagor/utils";
-  import { useTabs } from "./tabs.context";
+  import { useStyles } from "./tabs.context";
 
   type Props = ArkTabsListProps &
     BaseTabsProps & {
@@ -24,7 +24,7 @@
     class: className,
     ...rest
   }: Props = $props();
-  const styles = useTabs();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

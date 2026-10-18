@@ -15,7 +15,7 @@ import { For, splitProps } from "solid-js";
 import { CaretDownIcon, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
+const { useStyles, withProvider } = createSlotRecipeContext({
   name: "Accordion",
   recipe: accordionItemRecipe,
 });
@@ -59,7 +59,7 @@ export function AccordionItemTrigger(
   props: AccordionItemTriggerProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useAccordionItem();
+  const styles = useStyles();
 
   return (
     <AccordionPrimitive.ItemTrigger
@@ -78,7 +78,7 @@ export function AccordionItemContent(
   props: AccordionItemContentProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useAccordionItem();
+  const styles = useStyles();
 
   return (
     <AccordionPrimitive.ItemContent

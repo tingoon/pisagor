@@ -25,8 +25,10 @@ import { Dialog } from "./dialog";
 import { useLocale } from "./provider/context";
 
 // #region Context
-const { Context: SheetStylesContext, useStyles: useSheet } =
-  createSlotRecipeContext({ name: "Sheet", recipe: sheetRecipe });
+const { Context: SheetStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Sheet",
+  recipe: sheetRecipe,
+});
 // #endregion
 
 export type SheetPositionerProps = DialogPositionerProps & SheetVariantProps;
@@ -70,7 +72,7 @@ export function SheetBackdrop(props: DialogBackdropProps): JSX.Element {
 
 export function SheetPositioner(props: SheetPositionerProps): JSX.Element {
   const [local, rest] = splitProps(props, ["placement", "variant", "class"]);
-  const styles = useSheet();
+  const styles = useStyles();
 
   return (
     <DialogPrimitive.Positioner
@@ -93,7 +95,7 @@ export function SheetContent(props: SheetContentProps): JSX.Element {
     "children",
     "class",
   ]);
-  const styles = useSheet();
+  const styles = useStyles();
   const placement = () => local.placement ?? "right";
   const variant = () => local.variant ?? "default";
   const showCloseButton = () => local.showCloseButton ?? true;
@@ -145,7 +147,7 @@ export function SheetDescription(props: DialogDescriptionProps): JSX.Element {
 
 export function SheetBody(props: DialogBodyProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSheet();
+  const styles = useStyles();
 
   return (
     <Dialog.Body
@@ -163,7 +165,7 @@ export function SheetCloseTrigger(props: SheetCloseTriggerProps): JSX.Element {
 
 export function SheetFooter(props: DialogFooterProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSheet();
+  const styles = useStyles();
 
   return (
     <Dialog.Footer

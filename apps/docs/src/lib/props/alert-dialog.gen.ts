@@ -20,8 +20,8 @@ export const alertDialogProps: PropRow[] = [
   },
   {
     name: "recipe",
-    type: "DialogRecipeFn | undefined",
-    defaultValue: "dialogRecipe",
+    type: "AlertDialogRecipeFn | undefined",
+    defaultValue: "alertDialogRecipe",
     description: "Style recipe override.",
   }
 ];

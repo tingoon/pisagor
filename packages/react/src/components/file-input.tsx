@@ -23,11 +23,10 @@ import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: FileInputStylesContext, useStyles: useFileInput } =
-  createSlotRecipeContext({
-    name: "FileInput",
-    recipe: fileInputRecipe,
-  });
+const { Context: FileInputStylesContext, useStyles } = createSlotRecipeContext({
+  name: "FileInput",
+  recipe: fileInputRecipe,
+});
 // #endregion
 
 // #region Types
@@ -127,7 +126,7 @@ function FileInputRoot({
 }
 
 function FileInputControl({ className, ...rest }: FileInputControlProps) {
-  const { slots } = useFileInput();
+  const { slots } = useStyles();
 
   return (
     <input
@@ -141,7 +140,7 @@ function FileInputControl({ className, ...rest }: FileInputControlProps) {
 }
 
 function FileInputLabel({ children, className, ...rest }: FileInputLabelProps) {
-  const { slots } = useFileInput();
+  const { slots } = useStyles();
 
   return (
     <InputGroupText {...rest} className={slots.label({ className })}>

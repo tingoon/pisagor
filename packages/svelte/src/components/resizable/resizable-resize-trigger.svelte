@@ -6,7 +6,7 @@
   import { cn } from "@pisagor/utils";
   import { DotsSixVerticalIcon } from "phosphor-svelte";
   import { useLocale } from "../provider/context";
-  import { useResizable } from "./resizable.context";
+  import { useStyles } from "./resizable.context";
   import ResizableResizeTriggerIndicator from "./resizable-resize-trigger-indicator.svelte";
 
   const { m } = useLocale();
@@ -19,7 +19,7 @@
     class: className,
     ...rest
   }: Props = $props();
-  const styles = useResizable();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

@@ -11,11 +11,7 @@ import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
 // #region Context
-const {
-  useStyles: useMenu,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Menu",
   recipe: menuRecipe,
 });
@@ -101,7 +97,7 @@ export function MenuItem({
   className,
   ...rest
 }: MenuItemProps) {
-  const { slots } = useMenu();
+  const { slots } = useStyles();
 
   return (
     <ark.li
@@ -126,7 +122,7 @@ export function MenuLink({
   className,
   ...rest
 }: MenuLinkProps) {
-  const { slots } = useMenu();
+  const { slots } = useStyles();
 
   return (
     <ark.li

@@ -2,14 +2,12 @@ import type { UseProgressReturn } from "@ark-ui/svelte";
 import { circularProgressRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../../internal";
 
-export const {
-  useStyles: useCircularProgress,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "CircularProgress",
-  recipe: circularProgressRecipe,
-});
+export const { useStyles, withContext, withProvider } = createSlotRecipeContext(
+  {
+    name: "CircularProgress",
+    recipe: circularProgressRecipe,
+  },
+);
 
 /**
  * Progressbar semantics for the root. Ark only exposes them on `Track` /

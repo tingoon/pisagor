@@ -5,10 +5,10 @@
   } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { DotsThreeIcon } from "phosphor-svelte";
-  import { usePagination } from "./pagination.context";
+  import { useStyles } from "./pagination.context";
 
   let { class: className, ...rest }: PaginationEllipsisProps = $props();
-  const styles = usePagination();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

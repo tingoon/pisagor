@@ -33,7 +33,7 @@ import { Spinner } from "./spinner";
 type ClassValue = Parameters<typeof cn>[0];
 
 // #region Context
-const { useStyles: useToastItem, withProvider } = createSlotRecipeContext({
+const { useStyles, withProvider } = createSlotRecipeContext({
   name: "Toast",
   recipe: toastItemRecipe,
 });
@@ -178,7 +178,7 @@ const ToastItemContent = defineComponent({
   props: itemBagProps,
   setup(props) {
     const { m } = useLocale();
-    const styles = useToastItem();
+    const styles = useStyles();
 
     return () => {
       const slots = styles.slots;

@@ -16,7 +16,7 @@ import type { FormControlVariant, VariantClassNames } from "../internal";
 // #region Context
 const {
   Context: RatingStylesContext,
-  useStyles: useRating,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Rating",
@@ -129,7 +129,7 @@ function RatingIndicator({
   className,
   ...rest
 }: RatingIndicatorProps) {
-  const { slots } = useRating();
+  const { slots } = useStyles();
 
   return (
     <span

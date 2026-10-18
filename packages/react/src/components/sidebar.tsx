@@ -32,11 +32,10 @@ import { Skeleton } from "./skeleton";
 import { Tooltip, type TooltipProps } from "./tooltip";
 
 // #region Context
-const { Context: SidebarStylesContext, useStyles: useSidebarStyles } =
-  createSlotRecipeContext({
-    name: "Sidebar",
-    recipe: sidebarRecipe,
-  });
+const { Context: SidebarStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Sidebar",
+  recipe: sidebarRecipe,
+});
 
 interface SidebarState {
   isMobile: boolean;
@@ -58,7 +57,7 @@ export type SidebarContextProps = SidebarState & {
 
 /** Returns the nearest sidebar styles + state. */
 export function useSidebar(): SidebarContextProps {
-  const styles = useSidebarStyles();
+  const styles = useStyles();
   const state = use(SidebarStateContext);
   if (state === undefined) {
     throw new Error("useSidebar must be used within SidebarStateContext.");

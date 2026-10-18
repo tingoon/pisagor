@@ -3,15 +3,11 @@ import { datePickerRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils/create-context";
 
-export const {
-  Context,
-  useStyles: useDatePickerStyles,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "DatePicker",
-  recipe: datePickerRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "DatePicker",
+    recipe: datePickerRecipe,
+  });
 
 type FormControlVariant = "primary" | "secondary";
 

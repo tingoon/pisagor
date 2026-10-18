@@ -662,7 +662,7 @@ function generateSourceTables(skip: Set<string>): void {
     if (skip.has(slug)) continue;
     let parsed = parsePropsFile(slug);
     if (!parsed.length) {
-      // e.g. alert-dialog.ts: `export type { DialogProps as AlertDialogProps } from "./dialog"`
+      // e.g. thin re-exports: `export type { FooProps as BarProps } from "./foo"`
       const src = fs.readFileSync(path.join(PROPS_DIR, `${slug}.ts`), "utf8");
       const re =
         /export\s+type\s*\{\s*([A-Za-z0-9_]+)\s+as\s+([A-Za-z0-9_]+)\s*\}\s*from\s*["']\.\/([^"']+)["']/;

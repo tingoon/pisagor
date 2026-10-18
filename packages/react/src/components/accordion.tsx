@@ -15,7 +15,7 @@ import type { FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
+const { useStyles, withProvider } = createSlotRecipeContext({
   name: "Accordion",
   recipe: accordionItemRecipe,
 });
@@ -61,7 +61,7 @@ export function AccordionItemTrigger({
   className,
   ...rest
 }: AccordionItemTriggerProps) {
-  const { slots } = useAccordionItem();
+  const { slots } = useStyles();
 
   return (
     <AccordionPrimitive.ItemTrigger
@@ -82,7 +82,7 @@ export function AccordionItemContent({
   className,
   ...rest
 }: AccordionItemContentProps) {
-  const { slots } = useAccordionItem();
+  const { slots } = useStyles();
 
   return (
     <AccordionPrimitive.ItemContent

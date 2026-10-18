@@ -1,15 +1,11 @@
 import { navigationMenuRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../../internal";
 
-export const {
-  Context,
-  useStyles: useNavigationMenu,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "NavigationMenu",
-  recipe: navigationMenuRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "NavigationMenu",
+    recipe: navigationMenuRecipe,
+  });
 
 import { getContext, setContext } from "svelte";
 

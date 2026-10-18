@@ -8,7 +8,7 @@ import { SurfaceContext } from "./surface/surface.context";
 // #region Context
 const {
   Context: FrameStylesContext,
-  useStyles: useFrame,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Frame",
@@ -47,7 +47,7 @@ export function FramePanel({
   className,
   ...rest
 }: ComponentPropsWithRef<"div"> & PolymorphicProps) {
-  const { slots } = useFrame();
+  const { slots } = useStyles();
 
   return (
     <ark.div

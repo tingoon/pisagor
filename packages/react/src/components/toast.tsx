@@ -41,7 +41,7 @@ import { useLocale } from "./provider/context";
 import { Spinner } from "./spinner";
 
 // #region Context
-const { useStyles: useToastItem, withProvider } = createSlotRecipeContext({
+const { useStyles, withProvider } = createSlotRecipeContext({
   name: "Toast",
   recipe: toastItemRecipe,
 });
@@ -144,7 +144,7 @@ function ToastItemContent({
 }: Omit<ToastItemProps, keyof ToastItemRootProps> &
   Pick<ToastItemProps, "toast">) {
   const { m } = useLocale();
-  const { slots } = useToastItem();
+  const { slots } = useStyles();
   const ToastIcon = toastData.type
     ? TOAST_ICONS[toastData.type as keyof typeof TOAST_ICONS]
     : null;

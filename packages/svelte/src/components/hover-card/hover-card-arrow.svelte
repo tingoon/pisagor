@@ -3,10 +3,10 @@
     HoverCard as HoverCardPrimitive,
     type HoverCardArrowProps,
   } from "@ark-ui/svelte";
-  import { useHoverCard } from "./hover-card.context";
+  import { useStyles } from "./hover-card.context";
 
   let { style, ...rest }: HoverCardArrowProps = $props();
-  const styles = useHoverCard();
+  const styles = useStyles();
 </script>
 
 <HoverCardPrimitive.Arrow

@@ -24,7 +24,7 @@ import { ScrollArea } from "./scroll-area";
 // #region Context
 const {
   Context: DialogStylesContext,
-  useStyles: useDialog,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({ name: "Dialog", recipe: dialogRecipe });
 
@@ -35,8 +35,6 @@ interface DialogModalState {
 
 const { DialogModalContext, useDialogModal } =
   createContext("DialogModal")<DialogModalState>();
-
-export { useDialog };
 // #endregion
 
 export interface LocalDialogRootProps
@@ -106,7 +104,7 @@ export function DialogTrigger(props: DialogTriggerProps): JSX.Element {
 
 export function DialogBackdrop(props: DialogBackdropProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useDialog();
+  const styles = useStyles();
   const state = useDialogModal();
 
   return (
@@ -121,7 +119,7 @@ export function DialogBackdrop(props: DialogBackdropProps): JSX.Element {
 
 export function DialogPositioner(props: DialogPositionerProps): JSX.Element {
   const [local, rest] = splitProps(props, ["bottomStickOnMobile", "class"]);
-  const styles = useDialog();
+  const styles = useStyles();
 
   return (
     <DialogPrimitive.Positioner
@@ -143,7 +141,7 @@ export function DialogContent(props: DialogContentProps): JSX.Element {
     "children",
     "class",
   ]);
-  const styles = useDialog();
+  const styles = useStyles();
   const size = () => local.size ?? "md";
   const bottomStickOnMobile = () => local.bottomStickOnMobile ?? true;
   const showCloseButton = () => local.showCloseButton ?? true;
@@ -178,7 +176,7 @@ export function DialogContent(props: DialogContentProps): JSX.Element {
 
 export function DialogBody(props: DialogBodyProps): JSX.Element {
   const [local, rest] = splitProps(props, ["scrollFade", "class"]);
-  const styles = useDialog();
+  const styles = useStyles();
 
   return (
     <ScrollArea scrollFade={local.scrollFade ?? false}>
@@ -194,7 +192,7 @@ export function DialogBody(props: DialogBodyProps): JSX.Element {
 
 export function DialogHeader(props: DialogHeaderProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useDialog();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -224,7 +222,7 @@ export function DialogCloseTrigger(
 
 export function DialogFooter(props: DialogFooterProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useDialog();
+  const styles = useStyles();
 
   return (
     <ark.div

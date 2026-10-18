@@ -18,7 +18,7 @@ import { useFormControlSurface } from "./surface/use-form-control-surface";
 // #region Context
 const {
   Context: InputOTPStylesContext,
-  useStyles: useInputOTPStyles,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "InputOTP",
@@ -28,7 +28,7 @@ const {
 const InputOTPOptionsContext = createContext<FormControlShellVariantProps>({});
 
 function useInputOTP() {
-  return { ...useInputOTPStyles(), ...use(InputOTPOptionsContext) };
+  return { ...useStyles(), ...use(InputOTPOptionsContext) };
 }
 // #endregion
 

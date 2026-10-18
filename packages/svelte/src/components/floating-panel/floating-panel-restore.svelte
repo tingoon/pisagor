@@ -7,7 +7,7 @@
   import { cn } from "@pisagor/utils";
   import { ArrowsOutIcon, CornersInIcon } from "phosphor-svelte";
   import { useLocale } from "../provider/context";
-  import { useFloatingPanel } from "./floating-panel.context";
+  import { useStyles } from "./floating-panel.context";
 
   const { m } = useLocale();
 
@@ -22,7 +22,7 @@
     class: className,
     ...rest
   }: Props = $props();
-  const ctx = useFloatingPanel();
+  const ctx = useStyles();
   const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
 </script>
 

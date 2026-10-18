@@ -5,11 +5,7 @@ import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useMarquee,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Marquee",
   recipe: marqueeRecipe,
 });
@@ -97,7 +93,7 @@ export const MarqueeContent = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useMarquee();
+    const styles = useStyles();
 
     return () =>
       h(

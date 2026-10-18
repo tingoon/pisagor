@@ -4,10 +4,10 @@
     type ColorPickerViewProps,
   } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import { useColorPicker } from "./color-picker.context";
+  import { useStyles } from "./color-picker.context";
 
   let { children, class: className, ...rest }: ColorPickerViewProps = $props();
-  const styles = useColorPicker();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

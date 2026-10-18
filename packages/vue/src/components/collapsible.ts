@@ -8,7 +8,7 @@ import { type ClassValue, createSlotRecipeContext } from "../internal";
 // #region Slot recipe context
 const {
   provideStyles: provideCollapsibleStyles,
-  useStyles: useCollapsible,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Collapsible",
@@ -89,7 +89,7 @@ export const CollapsibleContent = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCollapsible();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;
@@ -116,7 +116,7 @@ export const CollapsibleIndicator = defineComponent({
     },
   },
   setup(props, { attrs, slots: children }) {
-    const styles = useCollapsible();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;

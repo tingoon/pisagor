@@ -2,15 +2,11 @@ import { dialogRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils/create-context";
 
-export const {
-  Context,
-  useStyles: useDialogStyles,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "Dialog",
-  recipe: dialogRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "Dialog",
+    recipe: dialogRecipe,
+  });
 
 const modalCtx = createContext("DialogModal")<boolean>();
 export const setDialogModalContext = modalCtx.setContext;
@@ -18,7 +14,7 @@ export const useDialogModal = modalCtx.getContext;
 
 /** Combined styles + modal (getter object — do not destructure once). */
 export function useDialog() {
-  const styles = useDialogStyles();
+  const styles = useStyles();
 
   return {
     get modal() {

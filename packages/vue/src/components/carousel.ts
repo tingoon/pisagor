@@ -14,11 +14,7 @@ import { Button } from "./button";
 import { useLocale } from "./provider/context";
 
 // #region Context
-const {
-  useStyles: useCarousel,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Carousel",
   recipe: carouselRecipe,
 });
@@ -92,7 +88,7 @@ function createNavTrigger(
     },
     setup(props, { attrs }) {
       const { m } = useLocale();
-      const styles = useCarousel();
+      const styles = useStyles();
 
       return () =>
         h(

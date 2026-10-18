@@ -3,7 +3,7 @@
   import type { ComponentProps } from "svelte";
   import ComboboxEmpty from "../combobox/combobox-empty.svelte";
   import { useLocale } from "../provider/context";
-  import { useCommand } from "./command.context";
+  import { useStyles } from "./command.context";
 
   let {
     children,
@@ -11,7 +11,7 @@
     ...rest
   }: ComponentProps<typeof ComboboxEmpty> = $props();
   const { m } = useLocale();
-  const styles = useCommand();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

@@ -20,13 +20,11 @@ import { createContext } from "../utils";
 import { Field } from "./field";
 
 // #region Context
-const {
-  Context: CircularSliderStylesContext,
-  useStyles: useCircularSliderStyles,
-} = createSlotRecipeContext({
-  name: "CircularSlider",
-  recipe: circularSliderRecipe,
-});
+const { Context: CircularSliderStylesContext, useStyles } =
+  createSlotRecipeContext({
+    name: "CircularSlider",
+    recipe: circularSliderRecipe,
+  });
 
 /** Ring geometry derived from Root's size/thickness (not styles). */
 export interface CircularSliderGeometry {
@@ -42,7 +40,7 @@ const { CircularSliderGeometryContext, useCircularSliderGeometry } =
 
 /** Styles + geometry; getters keep reads reactive. */
 function useCircularSlider() {
-  const styles = useCircularSliderStyles();
+  const styles = useStyles();
   const geometry = useCircularSliderGeometry();
 
   return {
@@ -194,7 +192,7 @@ export function CircularSliderControl(
     "markersAtSteps",
     "class",
   ]);
-  const styles = useCircularSliderStyles();
+  const styles = useStyles();
   const step = () => local.step ?? 1;
 
   const markerValues = createMemo(() => {
@@ -297,7 +295,7 @@ export function CircularSliderValueText(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["prefix", "suffix", "class"]);
   const api = useAngleSliderContext();
-  const styles = useCircularSliderStyles();
+  const styles = useStyles();
 
   return (
     <Field.Label

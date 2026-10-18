@@ -47,11 +47,10 @@ import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: CalendarSlotsContext, useStyles: useCalendar } =
-  createSlotRecipeContext({
-    name: "Calendar",
-    recipe: calendarRecipe,
-  });
+const { Context: CalendarSlotsContext, useStyles } = createSlotRecipeContext({
+  name: "Calendar",
+  recipe: calendarRecipe,
+});
 
 export { CalendarSlotsContext };
 
@@ -97,7 +96,7 @@ export interface CalendarProps extends CalendarRootProps, BaseCalendarProps {
 }
 
 function useCalendarSelectShell(className?: string) {
-  const styles = useCalendar();
+  const styles = useStyles();
   const surfaceVariant = useFormControlSurface();
   const variant = "primary" as FormControlVariant;
 
@@ -144,7 +143,7 @@ export function CalendarRoot(props: CalendarProps): JSX.Element {
 
 export function CalendarControl(props: CalendarControlProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCalendar();
+  const styles = useStyles();
 
   return (
     <CalendarPrimitive.Control
@@ -156,7 +155,7 @@ export function CalendarControl(props: CalendarControlProps): JSX.Element {
 
 export function CalendarLabel(props: CalendarLabelProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCalendar();
+  const styles = useStyles();
 
   return (
     <CalendarPrimitive.Label
@@ -178,7 +177,7 @@ export function CalendarPresetTrigger(
 
 export function CalendarViewDate(props: CalendarViewDateProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCalendar();
+  const styles = useStyles();
 
   return (
     <CalendarPrimitive.RangeText
@@ -219,7 +218,7 @@ export function CalendarYearSelect(
   props: CalendarYearSelectProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCalendar();
+  const styles = useStyles();
   const shell = useCalendarSelectShell(local.class);
 
   return (
@@ -246,7 +245,7 @@ export function CalendarMonthSelect(
   props: CalendarMonthSelectProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCalendar();
+  const styles = useStyles();
   const shell = useCalendarSelectShell(local.class);
 
   return (
@@ -271,7 +270,7 @@ export function CalendarMonthSelect(
 
 export function CalendarView(props: CalendarViewProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCalendar();
+  const styles = useStyles();
 
   return (
     <CalendarPrimitive.View
@@ -289,7 +288,7 @@ export function CalendarViewControl(
   props: CalendarViewControlProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCalendar();
+  const styles = useStyles();
 
   return (
     <CalendarPrimitive.ViewControl
@@ -303,7 +302,7 @@ export function CalendarPrevTrigger(
   props: CalendarPrevTriggerProps,
 ): JSX.Element {
   const { m } = useLocale();
-  const styles = useCalendar();
+  const styles = useStyles();
 
   return (
     <CalendarPrimitive.PrevTrigger
@@ -326,7 +325,7 @@ export function CalendarNextTrigger(
   props: CalendarNextTriggerProps,
 ): JSX.Element {
   const { m } = useLocale();
-  const styles = useCalendar();
+  const styles = useStyles();
 
   return (
     <CalendarPrimitive.NextTrigger
@@ -347,7 +346,7 @@ export function CalendarNextTrigger(
 
 export function CalendarTable(props: CalendarTableProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCalendar();
+  const styles = useStyles();
 
   return (
     <CalendarPrimitive.Table
@@ -450,7 +449,7 @@ export function CalendarTableHead(props: CalendarTableHeadProps): JSX.Element {
 
 export function CalendarTableRow(props: CalendarTableRowProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCalendar();
+  const styles = useStyles();
 
   return (
     <CalendarPrimitive.TableRow
@@ -464,7 +463,7 @@ export function CalendarTableHeader(
   props: CalendarTableHeaderProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCalendar();
+  const styles = useStyles();
 
   return (
     <CalendarPrimitive.TableHeader

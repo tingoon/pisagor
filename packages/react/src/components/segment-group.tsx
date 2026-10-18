@@ -9,11 +9,7 @@ import type { FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useSegmentGroup,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "SegmentGroup",
   recipe: segmentGroupRecipe,
 });
@@ -89,7 +85,7 @@ export function SegmentGroupItem({
   className,
   ...rest
 }: SegmentGroupItemProps) {
-  const { slots } = useSegmentGroup();
+  const { slots } = useStyles();
   const content = children ?? text;
 
   return (

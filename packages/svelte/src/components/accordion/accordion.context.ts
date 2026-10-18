@@ -1,12 +1,8 @@
 import { accordionItemRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../../internal";
 
-export const {
-  Context,
-  useStyles: useAccordionItem,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "Accordion",
-  recipe: accordionItemRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "Accordion",
+    recipe: accordionItemRecipe,
+  });

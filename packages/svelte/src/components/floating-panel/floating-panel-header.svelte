@@ -5,7 +5,7 @@
   } from "@ark-ui/svelte";
   import { floatingPanelRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import { useFloatingPanel } from "./floating-panel.context";
+  import { useStyles } from "./floating-panel.context";
   import FloatingPanelDragTrigger from "./floating-panel-drag-trigger.svelte";
 
   let {
@@ -13,7 +13,7 @@
     class: className,
     ...rest
   }: FloatingPanelHeaderProps = $props();
-  const ctx = useFloatingPanel();
+  const ctx = useStyles();
   const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
 </script>
 

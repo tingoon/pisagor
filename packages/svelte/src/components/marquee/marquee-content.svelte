@@ -4,10 +4,10 @@
     type MarqueeContentProps,
   } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import { useMarquee } from "./marquee.context";
+  import { useStyles } from "./marquee.context";
 
   let { class: className, children, ...rest }: MarqueeContentProps = $props();
-  const styles = useMarquee();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

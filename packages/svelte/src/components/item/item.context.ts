@@ -2,18 +2,14 @@ import type { ItemVariantProps } from "@pisagor/recipes";
 import { itemRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../../internal";
 
-export const {
-  Context,
-  useStyles: useItemStyles,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "Item",
-  recipe: itemRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "Item",
+    recipe: itemRecipe,
+  });
 
 export function useItem() {
-  return useItemStyles();
+  return useStyles();
 }
 
 export function setItemContext(

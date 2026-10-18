@@ -27,11 +27,10 @@ import { Button } from "./button";
 import { useLocale } from "./provider/context";
 
 // #region Context
-const {
-  useStyles: useCarousel,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({ name: "Carousel", recipe: carouselRecipe });
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+  name: "Carousel",
+  recipe: carouselRecipe,
+});
 // #endregion
 
 export interface CarouselRootProps
@@ -77,7 +76,7 @@ export function CarouselPrevTrigger(
 ): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCarousel();
+  const styles = useStyles();
 
   return (
     <CarouselPrimitive.PrevTrigger
@@ -105,7 +104,7 @@ export function CarouselNextTrigger(
 ): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCarousel();
+  const styles = useStyles();
 
   return (
     <CarouselPrimitive.NextTrigger

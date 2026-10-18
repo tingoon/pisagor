@@ -8,11 +8,10 @@ import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: SliderStylesContext, useStyles: useSliderStyles } =
-  createSlotRecipeContext({
-    name: "Slider",
-    recipe: sliderRecipe,
-  });
+const { Context: SliderStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Slider",
+  recipe: sliderRecipe,
+});
 // #endregion
 
 type FormControlVariant = "primary" | "secondary";
@@ -73,7 +72,7 @@ function sliderPart(
     name: `Slider.${name}`,
     props: { class: classProp },
     setup(props, { attrs, slots }) {
-      const styles = useSliderStyles();
+      const styles = useStyles();
       const variant = useSliderVariant();
 
       return () =>

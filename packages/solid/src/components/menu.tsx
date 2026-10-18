@@ -11,11 +11,7 @@ import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
 // #region Context
-const {
-  useStyles: useMenu,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Menu",
   recipe: menuRecipe,
 });
@@ -88,7 +84,7 @@ export function MenuItem(props: MenuItemProps): JSX.Element {
     "recipe",
     "class",
   ]);
-  const styles = useMenu();
+  const styles = useStyles();
   const variant = () => local.variant ?? "default";
   const recipe = () => local.recipe ?? menuItemRecipe;
 
@@ -112,7 +108,7 @@ export function MenuItem(props: MenuItemProps): JSX.Element {
 
 export function MenuLink(props: MenuLinkProps): JSX.Element {
   const [local, rest] = splitProps(props, ["active", "class"]);
-  const styles = useMenu();
+  const styles = useStyles();
   const active = () => local.active ?? false;
 
   return (

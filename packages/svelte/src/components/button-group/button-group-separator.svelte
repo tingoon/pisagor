@@ -2,7 +2,7 @@
   import { cn } from "@pisagor/utils";
   import type { ClassValue } from "svelte/elements";
   import Separator from "../separator.svelte";
-  import { useButtonGroup } from "./button-group.context";
+  import { useStyles } from "./button-group.context";
 
   type Props = {
     class?: ClassValue;
@@ -11,7 +11,7 @@
 
   let { orientation = "vertical", class: className, ...rest }: Props = $props();
 
-  const styles = useButtonGroup();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

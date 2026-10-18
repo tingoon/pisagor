@@ -2,11 +2,11 @@
   import { cn } from "@pisagor/utils";
   import type { ComponentProps } from "svelte";
   import DialogBody from "../dialog/dialog-body.svelte";
-  import { useSheet } from "./sheet.context";
+  import { useStyles } from "./sheet.context";
 
   let { class: className, ...rest }: ComponentProps<typeof DialogBody> =
     $props();
-  const styles = useSheet();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

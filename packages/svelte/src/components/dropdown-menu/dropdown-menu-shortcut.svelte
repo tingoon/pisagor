@@ -4,14 +4,14 @@
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import { useDropdownMenu } from "./dropdown-menu.context";
+  import { useStyles } from "./dropdown-menu.context";
 
   type Props = HTMLAttributes<HTMLSpanElement> & {
     children?: Snippet;
   };
 
   let { class: className, children, ...rest }: Props = $props();
-  const context = useDropdownMenu();
+  const context = useStyles();
   const slots = $derived(context?.slots ?? dropdownMenuRecipe());
 </script>
 

@@ -48,13 +48,14 @@ Internal helper at `src/internal/create-slot-recipe-context.tsx` (not public `ut
 ```ts
 const {
   Context: FooStylesContext,
-  useStyles: useFoo,
+  useStyles,
   withContext,
   withProvider,
 } = createSlotRecipeContext({ name: "Foo", recipe: fooRecipe });
 ```
 
 - Factory options: `{ name, recipe }` — PascalCase `name` (kebab-cased for `data-scope`). Part options: `{ name, slot?, defaultProps? }`; `slot` defaults to kebab-case of the part `name` (`Root` → `base`, emitted as `data-part="root"`). For camelCase recipe keys pass `slot` explicitly and set the kebab `data-part` via `defaultProps`.
+- Keep `useStyles` unaliased when the module has a single recipe context. Alias only when two or more `useStyles` hooks share a file (e.g. `useStyles: useTagsInput` + `useStyles: useTagsInputItem`). Public re-exports can use `export { useStyles as useFoo }`.
 - `withProvider` / `withContext` wrap a host element or Ark part. Prefer a **native** tag / `ark.*` by default; use Ark primitives when `asChild` or polymorphism is required.
 - Hand-written roots that need dual providers: `<FooStylesContext value={{ slots, variants }}>` around the primitive (and a thin state context when needed).
 - Thin **non-style** state uses `createContext` from package `utils` (or raw React `createContext`) — keep it separate from the slot-recipe Context.

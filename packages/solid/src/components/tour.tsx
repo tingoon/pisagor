@@ -45,8 +45,10 @@ import type {
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
-const { Context: TourStylesContext, useStyles: useTourStyles } =
-  createSlotRecipeContext({ name: "Tour", recipe: tourRecipe });
+const { Context: TourStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Tour",
+  recipe: tourRecipe,
+});
 
 /** Non-style tour state (Ark tour machine + start handler). */
 interface TourState {
@@ -59,7 +61,7 @@ const { TourStateContext, useTourState } =
 
 /** Returns the nearest tour styles + state (getters stay reactive). */
 export function useTourContext() {
-  const styles = useTourStyles();
+  const styles = useStyles();
   const state = useTourState();
 
   return {

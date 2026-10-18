@@ -16,7 +16,7 @@ const { withContext: withStepsContext, withProvider: withStepsProvider } =
   });
 
 const {
-  useStyles: useStepsItem,
+  useStyles,
   withContext: withStepsItemContext,
   withProvider: withStepsItemProvider,
 } = createSlotRecipeContext({
@@ -66,7 +66,7 @@ export const StepsIndicator = defineComponent({
     },
   },
   setup(props, { attrs, slots: children }) {
-    const styles = useStepsItem();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;

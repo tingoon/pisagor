@@ -15,7 +15,7 @@ import { type ClassValue, createSlotRecipeContext } from "../internal";
 // #region Slot recipe context
 const {
   provideStyles: provideImageCropperStyles,
-  useStyles: useImageCropper,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "ImageCropper",
@@ -208,7 +208,7 @@ export const ImageCropperGrid = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useImageCropper();
+    const styles = useStyles();
 
     return () =>
       h(ImageCropperPrimitive.Grid as ArkPart, {
@@ -233,7 +233,7 @@ export const ImageCropperHandle = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useImageCropper();
+    const styles = useStyles();
 
     return () => {
       const slots = styles.slots;
@@ -265,7 +265,7 @@ export const ImageCropperSelection = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useImageCropper();
+    const styles = useStyles();
 
     return () =>
       h(

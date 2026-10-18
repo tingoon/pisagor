@@ -2,7 +2,7 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import type { AppShellRegionPosition } from "./app-shell.context";
-import { useAppShellStyles } from "./app-shell.context";
+import { useStyles } from "./app-shell.context";
 import { APP_SHELL_NAVIGATION_HEIGHT_VAR } from "./constants";
 import { regionPositionClasses, useSyncFixedRegionHeight } from "./region";
 
@@ -15,7 +15,7 @@ export function AppShellNavigation(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["position", "class", "style"]);
   let navigationEl: HTMLElement | undefined;
-  const styles = useAppShellStyles();
+  const styles = useStyles();
   const position = () => local.position ?? "fixed";
   useSyncFixedRegionHeight(
     () => navigationEl,

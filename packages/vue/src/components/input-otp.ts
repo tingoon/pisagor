@@ -20,7 +20,7 @@ type FormControlVariant = "primary" | "secondary";
 // #region Context
 const {
   Context: InputOTPStylesContext,
-  useStyles: useInputOTPStyles,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "InputOTP",
@@ -167,7 +167,7 @@ export const InputOTPSlot = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useInputOTPStyles();
+    const styles = useStyles();
     const optionsRef = useInputOTPOptionsRef();
     const surfaceVariant = useFormControlSurface();
 

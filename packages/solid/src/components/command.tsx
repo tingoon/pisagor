@@ -34,8 +34,10 @@ import { useLocale } from "./provider/context";
 import { Separator } from "./separator";
 
 // #region Context
-const { Context: CommandStylesContext, useStyles: useCommand } =
-  createSlotRecipeContext({ name: "Command", recipe: commandRecipe });
+const { Context: CommandStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Command",
+  recipe: commandRecipe,
+});
 // #endregion
 
 export interface CommandDialogContentProps
@@ -105,7 +107,7 @@ function CommandDialogFrame(
     "title",
     "class",
   ]);
-  const styles = useCommand();
+  const styles = useStyles();
 
   return (
     <Portal>
@@ -153,7 +155,7 @@ export function CommandDialogContent(
 
 function CommandRootFrame(props: Omit<CommandProps, "recipe">): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCommand();
+  const styles = useStyles();
 
   return (
     <Combobox.Root
@@ -192,7 +194,7 @@ export function CommandRoot<T extends CollectionItem = CollectionItem>(
 
 export function CommandContent(props: CommandContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCommand();
+  const styles = useStyles();
 
   return (
     <Combobox.Content
@@ -205,7 +207,7 @@ export function CommandContent(props: CommandContentProps): JSX.Element {
 
 export function CommandInput(props: CommandInputProps): JSX.Element {
   const [local, rest] = splitProps(props, ["size", "class"]);
-  const styles = useCommand();
+  const styles = useStyles();
 
   return (
     <Combobox.Control class={styles.slots.control()}>
@@ -229,7 +231,7 @@ export function CommandInput(props: CommandInputProps): JSX.Element {
 
 export function CommandList(props: CommandListProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCommand();
+  const styles = useStyles();
 
   return (
     <div class={styles.slots.listWrapper()}>
@@ -244,7 +246,7 @@ export function CommandList(props: CommandListProps): JSX.Element {
 export function CommandEmpty(props: ComboboxEmptyProps): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useCommand();
+  const styles = useStyles();
 
   return (
     <Combobox.Empty
@@ -274,7 +276,7 @@ export function CommandItem(props: ComboboxItemProps): JSX.Element {
 
 export function CommandSeparator(props: CommandSeparatorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCommand();
+  const styles = useStyles();
 
   return (
     <Separator
@@ -288,7 +290,7 @@ export function CommandSeparator(props: CommandSeparatorProps): JSX.Element {
 
 export function CommandShortcut(props: CommandShortcutProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCommand();
+  const styles = useStyles();
 
   return (
     <span
@@ -302,7 +304,7 @@ export function CommandShortcut(props: CommandShortcutProps): JSX.Element {
 
 export function CommandFooter(props: CommandFooterProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCommand();
+  const styles = useStyles();
 
   return (
     <div

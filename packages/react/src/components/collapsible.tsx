@@ -12,7 +12,7 @@ import { createSlotRecipeContext } from "../internal";
 // #region Context
 const {
   Context: CollapsibleStylesContext,
-  useStyles: useCollapsible,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Collapsible",
@@ -62,7 +62,7 @@ export function CollapsibleContent({
   className,
   ...rest
 }: CollapsibleContentProps) {
-  const { slots } = useCollapsible();
+  const { slots } = useStyles();
 
   return (
     <CollapsiblePrimitive.Content {...rest} className={slots.content()}>
@@ -75,7 +75,7 @@ export function CollapsibleIndicator({
   className,
   ...rest
 }: CollapsibleIndicatorProps) {
-  const { slots } = useCollapsible();
+  const { slots } = useStyles();
 
   return (
     <CollapsiblePrimitive.Indicator

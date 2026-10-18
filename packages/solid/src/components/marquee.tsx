@@ -12,11 +12,10 @@ import { For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useMarquee,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({ name: "Marquee", recipe: marqueeRecipe });
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+  name: "Marquee",
+  recipe: marqueeRecipe,
+});
 // #endregion
 
 export interface MarqueeRootProps
@@ -60,7 +59,7 @@ export function MarqueeRoot(props: MarqueeRootProps): JSX.Element {
 
 export function MarqueeContent(props: MarqueeContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useMarquee();
+  const styles = useStyles();
 
   return (
     <MarqueePrimitive.Viewport class={styles.slots.viewport()}>

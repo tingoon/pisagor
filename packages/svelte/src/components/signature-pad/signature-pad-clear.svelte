@@ -7,7 +7,7 @@
   import { ArrowCounterClockwiseIcon } from "phosphor-svelte";
   import Button from "../button.svelte";
   import { useLocale } from "../provider/context";
-  import { useSignaturePad } from "./signature-pad.context";
+  import { useStyles } from "./signature-pad.context";
 
   const { m } = useLocale();
 
@@ -15,7 +15,7 @@
     class: className,
     ...rest
   }: Omit<SignaturePadClearTriggerProps, "asChild" | "children"> = $props();
-  const styles = useSignaturePad();
+  const styles = useStyles();
 </script>
 
 <SignaturePadPrimitive.ClearTrigger {...rest}>

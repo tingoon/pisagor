@@ -1,8 +1,33 @@
 <script lang="ts">
-  import type { ComponentProps } from "svelte";
-  import DialogRoot from "../dialog/dialog-root.svelte";
+  import {
+    Dialog as AlertDialogPrimitive,
+    type DialogRootProps,
+  } from "@ark-ui/svelte";
+  import type { AlertDialogProps as BaseAlertDialogProps } from "@pisagor/props";
+  import { alertDialogRecipe } from "@pisagor/recipes";
+  import { setAlertDialogContext } from "./alert-dialog.context";
 
-  let { children, ...rest }: ComponentProps<typeof DialogRoot> = $props();
+  type Props = DialogRootProps & BaseAlertDialogProps;
+
+  let {
+    modal = true,
+    recipe = alertDialogRecipe,
+    role = "alertdialog",
+    children,
+    ...rest
+  }: Props = $props();
+  const slots = $derived(recipe());
+
+  setAlertDialogContext({
+    get modal() {
+      return modal;
+    },
+    get slots() {
+      return slots;
+    },
+  });
 </script>
 
-<DialogRoot {...rest} role="alertdialog">{@render children?.()}</DialogRoot>
+<AlertDialogPrimitive.Root {...rest} {modal} {role}>
+  {@render children?.()}
+</AlertDialogPrimitive.Root>

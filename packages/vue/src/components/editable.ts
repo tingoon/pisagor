@@ -13,7 +13,7 @@ import { useFormControlSurface } from "./surface/use-form-control-surface";
 // #region Slot recipe context
 const {
   provideStyles: provideEditableStyles,
-  useStyles: useEditable,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Editable",
@@ -220,7 +220,7 @@ export const EditablePreview = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useEditable();
+    const styles = useStyles();
 
     const surfaceVariant = useFormControlSurface();
 

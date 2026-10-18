@@ -11,13 +11,13 @@
   import ComboboxControl from "../combobox/combobox-control.svelte";
   import ComboboxFieldInput from "../combobox/combobox-field-input.svelte";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
-  import { useCommand } from "./command.context";
+  import { useStyles } from "./command.context";
 
   type Props = Omit<ComboboxInputProps, "size"> &
     FormControlGroupShellVariantProps;
 
   let { size = "md", class: className, ...rest }: Props = $props();
-  const styles = useCommand();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
   const surfaceVariant = useFormControlSurface();
 

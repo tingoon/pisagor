@@ -9,7 +9,7 @@
   import { cn } from "@pisagor/utils";
   import { XIcon } from "phosphor-svelte";
   import { useLocale } from "../provider/context";
-  import { useSheet } from "./sheet.context";
+  import { useStyles } from "./sheet.context";
   import SheetBackdrop from "./sheet-backdrop.svelte";
   import SheetPositioner from "./sheet-positioner.svelte";
 
@@ -28,7 +28,7 @@
     ...rest
   }: Props = $props();
 
-  const styles = useSheet();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

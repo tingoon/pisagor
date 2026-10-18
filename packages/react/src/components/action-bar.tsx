@@ -25,7 +25,7 @@ import { Separator, type SeparatorProps } from "./separator";
 // #region Context
 const {
   Context: ActionBarStylesContext,
-  useStyles: useActionBarStyles,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "ActionBar",
@@ -76,7 +76,7 @@ function useActionBarState() {
 }
 
 function useActionBar() {
-  return { ...useActionBarStyles(), ...useActionBarState() };
+  return { ...useStyles(), ...useActionBarState() };
 }
 // #endregion
 
@@ -331,7 +331,7 @@ export function ActionBarSeparator({
   className,
   ...rest
 }: ActionBarSeparatorProps) {
-  const { slots } = useActionBarStyles();
+  const { slots } = useStyles();
 
   return (
     <Separator
@@ -378,7 +378,7 @@ export function ActionBarValue({
   className,
   ...rest
 }: ActionBarValueProps) {
-  const { slots } = useActionBarStyles();
+  const { slots } = useStyles();
 
   return (
     <Badge

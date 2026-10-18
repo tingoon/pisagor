@@ -13,7 +13,7 @@ import { createSlotRecipeContext } from "../internal";
 // #region Context
 const {
   Context: ImageCropperStylesContext,
-  useStyles: useImageCropper,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "ImageCropper",
@@ -94,7 +94,7 @@ export function ImageCropperSelection({
   className,
   ...rest
 }: ImageCropperSelectionProps) {
-  const { slots } = useImageCropper();
+  const { slots } = useStyles();
 
   return (
     <ImageCropperPrimitive.Selection
@@ -126,7 +126,7 @@ export function ImageCropperHandle({
   className,
   ...rest
 }: ImageCropperHandleProps) {
-  const { slots } = useImageCropper();
+  const { slots } = useStyles();
 
   return (
     <ImageCropperPrimitive.Handle
@@ -142,7 +142,7 @@ export function ImageCropperGrid({
   className,
   ...rest
 }: ImageCropperGridProps) {
-  const { slots } = useImageCropper();
+  const { slots } = useStyles();
 
   return (
     <ImageCropperPrimitive.Grid

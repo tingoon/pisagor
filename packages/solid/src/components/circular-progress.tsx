@@ -21,11 +21,7 @@ import { Show, splitProps } from "solid-js";
 import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useCircularProgress,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "CircularProgress",
   recipe: circularProgressRecipe,
 });
@@ -99,7 +95,7 @@ const CircularProgressValue: Component<CircularProgressValueProps> =
 function CircularProgressTrack(
   props: CircularProgressTrackPartProps,
 ): JSX.Element {
-  const styles = useCircularProgress();
+  const styles = useStyles();
   const progress = useProgressContext();
   const size = () => props.size ?? 32;
   const thickness = () => props.thickness ?? 4;

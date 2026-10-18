@@ -3,15 +3,11 @@ import { sliderRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils/create-context";
 
-export const {
-  Context,
-  useStyles: useSliderStyles,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "Slider",
-  recipe: sliderRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "Slider",
+    recipe: sliderRecipe,
+  });
 
 export interface SliderExtrasValue {
   thumbShadowClass: string | undefined;

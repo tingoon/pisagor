@@ -5,11 +5,7 @@ import { defineComponent, h, type PropType } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useCard,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Card",
   recipe: cardRecipe,
 });
@@ -45,7 +41,7 @@ export const CardMedia = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const { slots: styleSlots } = useCard();
+    const { slots: styleSlots } = useStyles();
 
     return () =>
       h(
@@ -77,7 +73,7 @@ export const CardHeader = defineComponent({
     title: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
-    const { slots: styleSlots } = useCard();
+    const { slots: styleSlots } = useStyles();
 
     return () =>
       h(

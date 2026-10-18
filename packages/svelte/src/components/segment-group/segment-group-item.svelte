@@ -5,12 +5,12 @@
   } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
-  import { useSegmentGroup } from "./segment-group.context";
+  import { useStyles } from "./segment-group.context";
 
   type Props = ArkItemProps & { text?: Snippet | string };
 
   let { children, text, class: className, ...rest }: Props = $props();
-  const styles = useSegmentGroup();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

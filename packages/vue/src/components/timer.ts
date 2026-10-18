@@ -15,7 +15,7 @@ import { useLocale } from "./provider/context";
 
 // #region Context
 const {
-  useStyles: useTimerStyles,
+  useStyles,
   withContext: withTimerContext,
   withProvider: withTimerProvider,
 } = createSlotRecipeContext({
@@ -187,7 +187,7 @@ export const TimerSeparator = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useTimerStyles();
+    const styles = useStyles();
 
     return () =>
       h(

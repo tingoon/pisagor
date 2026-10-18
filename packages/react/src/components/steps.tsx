@@ -24,7 +24,7 @@ const { withContext: withStepsContext, withProvider: withStepsProvider } =
   });
 
 const {
-  useStyles: useStepsItem,
+  useStyles,
   withContext: withStepsItemContext,
   withProvider: withStepsItemProvider,
 } = createSlotRecipeContext({
@@ -70,7 +70,7 @@ export function StepsIndicator({
   className,
   ...rest
 }: StepsIndicatorProps) {
-  const { slots } = useStepsItem();
+  const { slots } = useStyles();
 
   return (
     <StepsPrimitive.Indicator

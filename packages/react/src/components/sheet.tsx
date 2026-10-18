@@ -23,11 +23,10 @@ import { Dialog } from "./dialog";
 import { useLocale } from "./provider/context";
 
 // #region Context
-const { Context: SheetStylesContext, useStyles: useSheet } =
-  createSlotRecipeContext({
-    name: "Sheet",
-    recipe: sheetRecipe,
-  });
+const { Context: SheetStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Sheet",
+  recipe: sheetRecipe,
+});
 // #endregion
 
 // #region Types
@@ -75,7 +74,7 @@ export function SheetPositioner({
   className,
   ...rest
 }: SheetPositionerProps) {
-  const { slots } = useSheet();
+  const { slots } = useStyles();
 
   return (
     <DialogPrimitive.Positioner
@@ -94,7 +93,7 @@ export function SheetContent({
   ...rest
 }: SheetContentProps) {
   const { m } = useLocale();
-  const { slots } = useSheet();
+  const { slots } = useStyles();
 
   return (
     <Portal>
@@ -138,7 +137,7 @@ export function SheetDescription(props: DialogDescriptionProps) {
 }
 
 export function SheetBody({ className, ...rest }: DialogBodyProps) {
-  const { slots } = useSheet();
+  const { slots } = useStyles();
 
   return (
     <Dialog.Body
@@ -155,7 +154,7 @@ export function SheetCloseTrigger(props: SheetCloseTriggerProps) {
 }
 
 export function SheetFooter({ className, ...rest }: DialogFooterProps) {
-  const { slots } = useSheet();
+  const { slots } = useStyles();
 
   return (
     <Dialog.Footer

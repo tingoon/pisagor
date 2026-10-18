@@ -13,7 +13,7 @@ import type {
   AppShellRegionPosition,
   AppShellResizableProps,
 } from "./app-shell.context";
-import { useAppShellState, useAppShellStyles } from "./app-shell.context";
+import { useAppShellState, useStyles } from "./app-shell.context";
 import {
   gridAreaFor,
   mergeResizableProps,
@@ -65,7 +65,7 @@ export function AppShellInspector(props: AppShellInspectorProps): JSX.Element {
   ]);
   const placement = () => local.placement ?? "end";
   const position = () => local.position ?? "fixed";
-  const styles = useAppShellStyles();
+  const styles = useStyles();
   const { defaultInspectorResizableProps, inspectorStates } =
     useAppShellState();
   const resizableProps = () =>
@@ -133,7 +133,7 @@ export function AppShellInspectorHeader(
   props: AppShellInspectorHeaderProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useAppShellStyles();
+  const styles = useStyles();
 
   return (
     <div
@@ -149,7 +149,7 @@ export function AppShellInspectorContent(
   props: AppShellInspectorContentProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useAppShellStyles();
+  const styles = useStyles();
 
   return (
     <ScrollArea class={styles.slots.scrollArea()}>
@@ -167,7 +167,7 @@ export function AppShellInspectorFooter(
   props: AppShellInspectorFooterProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useAppShellStyles();
+  const styles = useStyles();
 
   return (
     <div

@@ -10,11 +10,7 @@ import type { FunctionComponent } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useQrCode,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "QrCode",
   recipe: qrCodeRecipe,
 });
@@ -40,7 +36,7 @@ export function QrCodeRoot({ children, ...rest }: QrCodeRootProps) {
 }
 
 export function QrCodeFrame({ className, ...rest }: QrCodeFrameProps) {
-  const { slots } = useQrCode();
+  const { slots } = useStyles();
 
   return (
     <QrCodePrimitive.Frame {...rest} className={slots.frame({ className })}>

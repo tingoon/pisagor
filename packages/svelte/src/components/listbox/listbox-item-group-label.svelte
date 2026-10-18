@@ -4,14 +4,14 @@
     type ListboxItemGroupLabelProps,
   } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import { useListbox } from "./listbox.context";
+  import { useStyles } from "./listbox.context";
 
   let {
     class: className,
     children,
     ...rest
   }: ListboxItemGroupLabelProps = $props();
-  const styles = useListbox();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

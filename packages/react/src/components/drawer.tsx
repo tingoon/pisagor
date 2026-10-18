@@ -18,7 +18,7 @@ import { ScrollArea } from "./scroll-area";
 // #region Context
 const {
   Context: DrawerStylesContext,
-  useStyles: useDrawer,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Drawer",
@@ -83,7 +83,7 @@ export function DrawerTrigger(props: DrawerTriggerProps) {
 }
 
 export function DrawerBackdrop({ className, ...rest }: DrawerBackdropProps) {
-  const { slots } = useDrawer();
+  const { slots } = useStyles();
 
   return (
     <DrawerPrimitive.Backdrop
@@ -98,7 +98,7 @@ export function DrawerPositioner({
   className,
   ...rest
 }: DrawerPositionerProps) {
-  const { slots } = useDrawer();
+  const { slots } = useStyles();
 
   return (
     <DrawerPrimitive.Positioner
@@ -121,7 +121,7 @@ export function DrawerContent({
   className,
   ...rest
 }: DrawerContentProps) {
-  const { slots } = useDrawer();
+  const { slots } = useStyles();
 
   return (
     <Portal>
@@ -152,7 +152,7 @@ export function DrawerContentInner({
   className,
   ...rest
 }: DrawerContentInnerProps) {
-  const { slots } = useDrawer();
+  const { slots } = useStyles();
 
   return (
     <ark.div
@@ -165,7 +165,7 @@ export function DrawerContentInner({
 }
 
 export function DrawerGrabber({ className, ...rest }: DrawerGrabberProps) {
-  const { slots } = useDrawer();
+  const { slots } = useStyles();
 
   return (
     <ark.div className={slots.grabberWrapper()}>
@@ -186,7 +186,7 @@ export function DrawerHeader({
   className,
   ...rest
 }: DrawerHeaderProps) {
-  const { slots } = useDrawer();
+  const { slots } = useStyles();
 
   return (
     <ark.div
@@ -212,7 +212,7 @@ export function DrawerDescription({
   className,
   ...rest
 }: DrawerDescriptionProps) {
-  const { slots } = useDrawer();
+  const { slots } = useStyles();
 
   return (
     <DrawerPrimitive.Description
@@ -229,7 +229,7 @@ export function DrawerBody({
   className,
   ...rest
 }: DrawerBodyProps) {
-  const { slots } = useDrawer();
+  const { slots } = useStyles();
 
   return (
     <ScrollArea scrollFade={scrollFade}>
@@ -248,7 +248,7 @@ export function DrawerCloseTrigger(props: DrawerCloseTriggerProps) {
 }
 
 export function DrawerFooter({ className, ...rest }: DrawerFooterProps) {
-  const { slots } = useDrawer();
+  const { slots } = useStyles();
 
   return (
     <ark.div

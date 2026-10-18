@@ -12,11 +12,10 @@ import { splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useQrCode,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({ name: "QrCode", recipe: qrCodeRecipe });
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+  name: "QrCode",
+  recipe: qrCodeRecipe,
+});
 // #endregion
 
 export interface LocalQrCodeRootProps
@@ -41,7 +40,7 @@ export function QrCodeRoot(props: LocalQrCodeRootProps): JSX.Element {
 
 export function QrCodeFrame(props: QrCodeFrameProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useQrCode();
+  const styles = useStyles();
 
   return (
     <QrCodePrimitive.Frame

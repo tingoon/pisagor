@@ -21,7 +21,7 @@ import { ScrollArea } from "./scroll-area";
 // #region Context
 const {
   Context: DrawerStylesContext,
-  useStyles: useDrawer,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({ name: "Drawer", recipe: drawerRecipe });
 // #endregion
@@ -72,7 +72,7 @@ export function DrawerTrigger(props: DrawerTriggerProps): JSX.Element {
 
 export function DrawerBackdrop(props: DrawerBackdropProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useDrawer();
+  const styles = useStyles();
 
   return (
     <DrawerPrimitive.Backdrop
@@ -84,7 +84,7 @@ export function DrawerBackdrop(props: DrawerBackdropProps): JSX.Element {
 
 export function DrawerPositioner(props: DrawerPositionerProps): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "class"]);
-  const styles = useDrawer();
+  const styles = useStyles();
 
   return (
     <DrawerPrimitive.Positioner
@@ -106,7 +106,7 @@ const SWIPE_DIRECTION_TO_PLACEMENT = {
 
 export function DrawerContent(props: DrawerContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "children", "class"]);
-  const styles = useDrawer();
+  const styles = useStyles();
   const variant = () => local.variant ?? "default";
 
   return (
@@ -138,7 +138,7 @@ export function DrawerContentInner(
   props: DrawerContentInnerProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useDrawer();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -152,7 +152,7 @@ export function DrawerContentInner(
 
 export function DrawerGrabber(props: DrawerGrabberProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useDrawer();
+  const styles = useStyles();
 
   return (
     <ark.div class={styles.slots.grabberWrapper()}>
@@ -173,7 +173,7 @@ export function DrawerHeader(props: DrawerHeaderProps): JSX.Element {
     "title",
     "class",
   ]);
-  const styles = useDrawer();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -200,7 +200,7 @@ export const DrawerTitle: Component<DrawerTitleProps> = withContext(
 
 export function DrawerDescription(props: DrawerDescriptionProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useDrawer();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -214,7 +214,7 @@ export function DrawerDescription(props: DrawerDescriptionProps): JSX.Element {
 
 export function DrawerBody(props: DrawerBodyProps): JSX.Element {
   const [local, rest] = splitProps(props, ["scrollFade", "class"]);
-  const styles = useDrawer();
+  const styles = useStyles();
 
   return (
     <ScrollArea scrollFade={local.scrollFade ?? false}>
@@ -236,7 +236,7 @@ export function DrawerCloseTrigger(
 
 export function DrawerFooter(props: DrawerFooterProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useDrawer();
+  const styles = useStyles();
 
   return (
     <ark.div

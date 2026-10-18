@@ -9,7 +9,7 @@ import { useItemGroup } from "./item-group.context";
 // #region Context
 const {
   Context: ItemStylesContext,
-  useStyles: useItem,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({ name: "Item", recipe: itemRecipe });
 // #endregion
@@ -66,7 +66,7 @@ export function ItemRoot(props: ItemProps): JSX.Element {
 
 export function ItemMedia(props: ItemMediaProps): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "children", "class"]);
-  const styles = useItem();
+  const styles = useStyles();
   const variant = () => local.variant ?? "default";
 
   return (

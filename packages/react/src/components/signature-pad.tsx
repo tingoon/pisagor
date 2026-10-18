@@ -24,7 +24,7 @@ import { useFormControlSurface } from "./surface/use-form-control-surface";
 // #region Context
 const {
   Context: SignaturePadStylesContext,
-  useStyles: useSignaturePad,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "SignaturePad",
@@ -90,7 +90,7 @@ function SignaturePadControl({
   invalid?: boolean;
   variant?: FormControlVariant;
 }) {
-  const { slots } = useSignaturePad();
+  const { slots } = useStyles();
   const resolved = {
     surfaceVariant: useFormControlSurface(),
     variant,
@@ -125,7 +125,7 @@ const SignaturePadSegment = withContext(SignaturePadPrimitive.Segment, {
 
 function SignaturePadClear({ className, ...rest }: SignaturePadClearProps) {
   const { m } = useLocale();
-  const { slots } = useSignaturePad();
+  const { slots } = useStyles();
 
   return (
     <SignaturePadPrimitive.ClearTrigger

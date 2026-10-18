@@ -22,8 +22,10 @@ import {
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: TextareaStylesContext, useStyles: useTextarea } =
-  createSlotRecipeContext({ name: "Textarea", recipe: textareaRecipe });
+const { Context: TextareaStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Textarea",
+  recipe: textareaRecipe,
+});
 // #endregion
 
 type FormControlVariant = "primary" | "secondary";
@@ -83,7 +85,7 @@ function TextareaField(
     "size",
     "ref",
   ]);
-  const styles = useTextarea();
+  const styles = useStyles();
   const surfaceVariant = useFormControlSurface();
   const variant = () => local.variant ?? ("primary" as FormControlVariant);
 
@@ -122,7 +124,7 @@ function TextareaField(
 function TextareaGroup(
   props: ParentProps<{ class?: string; variant?: FormControlVariant }>,
 ): JSX.Element {
-  const styles = useTextarea();
+  const styles = useStyles();
 
   return (
     <InputGroupRoot
@@ -146,7 +148,7 @@ function TextareaClearableField(
     "classNames",
     "defaultValue",
   ]);
-  const styles = useTextarea();
+  const styles = useStyles();
 
   return (
     <FieldPrimitive.Textarea
@@ -160,7 +162,7 @@ function TextareaClearableField(
 }
 
 function TextareaClearAddon(props: { onClear: () => void }): JSX.Element {
-  const styles = useTextarea();
+  const styles = useStyles();
 
   return (
     <InputGroupAddon align="inline-end" class={styles.slots.clearAddon()}>

@@ -6,11 +6,7 @@ import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Separator } from "./separator";
 
 // #region Context
-const {
-  useStyles: useButtonGroup,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "ButtonGroup",
   recipe: buttonGroupRecipe,
 });
@@ -49,7 +45,7 @@ export const ButtonGroupSeparator = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const { slots } = useButtonGroup();
+    const { slots } = useStyles();
 
     return () =>
       h(Separator as ArkPart, {

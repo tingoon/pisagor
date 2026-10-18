@@ -1,8 +1,14 @@
 <script lang="ts">
-  import type { ComponentProps } from "svelte";
-  import DialogDescription from "../dialog/dialog-description.svelte";
+  import {
+    Dialog as AlertDialogPrimitive,
+    type DialogDescriptionProps,
+  } from "@ark-ui/svelte";
+  import { withContext } from "./alert-dialog.context";
 
-  let props: ComponentProps<typeof DialogDescription> = $props();
+  let { children, ...rest }: DialogDescriptionProps = $props();
+  const part = withContext(() => rest, { name: "Description" });
 </script>
 
-<DialogDescription {...props} />
+<AlertDialogPrimitive.Description {...part.props}>
+  {@render children?.()}
+</AlertDialogPrimitive.Description>

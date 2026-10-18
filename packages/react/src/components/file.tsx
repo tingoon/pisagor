@@ -12,11 +12,7 @@ import { createSlotRecipeContext } from "../internal";
 import { Format } from "./format";
 
 // #region Context
-const {
-  useStyles: useFile,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "File",
   recipe: fileRecipe,
 });
@@ -36,7 +32,7 @@ export function FileMedia({
   className,
   ...rest
 }: ComponentPropsWithRef<"div"> & PolymorphicProps & FileVariantProps) {
-  const { slots } = useFile();
+  const { slots } = useStyles();
 
   return (
     <ark.div
@@ -73,7 +69,7 @@ export function FileSize({
 }: Omit<ComponentPropsWithRef<"div"> & PolymorphicProps, "children"> & {
   value: number;
 }) {
-  const { slots } = useFile();
+  const { slots } = useStyles();
 
   return (
     <ark.div

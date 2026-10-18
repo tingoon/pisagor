@@ -4,10 +4,10 @@
     type DrawerBackdropProps,
   } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import { useDrawer } from "./drawer.context";
+  import { useStyles } from "./drawer.context";
 
   let { class: className, ...rest }: DrawerBackdropProps = $props();
-  const styles = useDrawer();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

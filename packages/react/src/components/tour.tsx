@@ -31,11 +31,10 @@ import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
-const { Context: TourStylesContext, useStyles: useTourStyles } =
-  createSlotRecipeContext({
-    name: "Tour",
-    recipe: tourRecipe,
-  });
+const { Context: TourStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Tour",
+  recipe: tourRecipe,
+});
 
 interface TourStateValue {
   handleStart: () => void;
@@ -47,7 +46,7 @@ TourStateContext.displayName = "TourStateContext";
 
 /** Returns the nearest tour styles + state context. */
 export function useTourContext() {
-  const styles = useTourStyles();
+  const styles = useStyles();
   const state = use(TourStateContext);
   if (state === undefined) {
     throw new Error("useTourContext must be used within TourStateContext.");

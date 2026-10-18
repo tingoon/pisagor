@@ -21,7 +21,7 @@ import { ScrollArea } from "./scroll-area";
 // #region Context
 const {
   Context: DialogStylesContext,
-  useStyles: useDialog,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Dialog",
@@ -30,8 +30,6 @@ const {
 
 const DialogModalContext = createContext<boolean>(true);
 DialogModalContext.displayName = "DialogModalContext";
-
-export { useDialog };
 // #endregion
 
 // #region Types
@@ -107,7 +105,7 @@ export function DialogTrigger(props: DialogTriggerProps) {
 
 export function DialogBackdrop({ className, ...rest }: DialogBackdropProps) {
   const modal = use(DialogModalContext);
-  const { slots } = useDialog();
+  const { slots } = useStyles();
 
   if (!modal) {
     return null;
@@ -126,7 +124,7 @@ export function DialogPositioner({
   className,
   ...rest
 }: DialogPositionerProps) {
-  const { slots } = useDialog();
+  const { slots } = useStyles();
 
   return (
     <DialogPrimitive.Positioner
@@ -145,7 +143,7 @@ export function DialogContent({
   ...rest
 }: DialogContentProps) {
   const { m } = useLocale();
-  const { slots } = useDialog();
+  const { slots } = useStyles();
 
   return (
     <DialogPrimitive.Content
@@ -175,7 +173,7 @@ export function DialogBody({
   className,
   ...rest
 }: DialogBodyProps) {
-  const { slots } = useDialog();
+  const { slots } = useStyles();
 
   return (
     <ScrollArea scrollFade={scrollFade}>
@@ -194,7 +192,7 @@ export function DialogHeader({
   className,
   ...rest
 }: DialogHeaderProps) {
-  const { slots } = useDialog();
+  const { slots } = useStyles();
 
   return (
     <ark.div
@@ -221,7 +219,7 @@ export function DialogCloseTrigger(props: DialogCloseTriggerProps) {
 }
 
 export function DialogFooter({ className, ...rest }: DialogFooterProps) {
-  const { slots } = useDialog();
+  const { slots } = useStyles();
 
   return (
     <ark.div

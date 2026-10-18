@@ -5,7 +5,7 @@
   } from "@ark-ui/svelte";
   import type { SheetProps as BaseSheetProps } from "@pisagor/props";
   import { cn } from "@pisagor/utils";
-  import { useSheet } from "./sheet.context";
+  import { useStyles } from "./sheet.context";
 
   type Props = DialogPositionerProps & BaseSheetProps;
 
@@ -16,7 +16,7 @@
     children,
     ...rest
   }: Props = $props();
-  const styles = useSheet();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

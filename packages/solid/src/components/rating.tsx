@@ -19,7 +19,7 @@ import {
 // #region Context
 const {
   Context: RatingStylesContext,
-  useStyles: useRating,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Rating",
@@ -110,7 +110,7 @@ const RatingItem: Component<RatingItemProps> = withContext(
 
 function RatingIndicator(props: RatingIndicatorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useRating();
+  const styles = useStyles();
 
   return (
     <span

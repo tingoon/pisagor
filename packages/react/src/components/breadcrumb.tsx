@@ -18,7 +18,7 @@ import { useLocale } from "./provider/context";
 // #region Context
 const {
   Context: BreadcrumbStylesContext,
-  useStyles: useBreadcrumb,
+  useStyles,
   withContext: withBreadcrumbContext,
 } = createSlotRecipeContext({
   name: "Breadcrumb",
@@ -122,7 +122,7 @@ export function BreadcrumbSeparator({
   className,
   ...rest
 }: BreadcrumbSeparatorProps) {
-  const { slots } = useBreadcrumb();
+  const { slots } = useStyles();
 
   return (
     <ark.li
@@ -143,7 +143,7 @@ export function BreadcrumbEllipsis({
   ...rest
 }: BreadcrumbEllipsisProps) {
   const { m } = useLocale();
-  const { slots } = useBreadcrumb();
+  const { slots } = useStyles();
 
   return (
     <ark.span

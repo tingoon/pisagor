@@ -2,7 +2,7 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import type { AppShellRegionPosition } from "./app-shell.context";
-import { useAppShellStyles } from "./app-shell.context";
+import { useStyles } from "./app-shell.context";
 import { APP_SHELL_BANNER_HEIGHT_VAR } from "./constants";
 import { regionPositionClasses, useSyncFixedRegionHeight } from "./region";
 
@@ -13,7 +13,7 @@ export interface AppShellBannerProps extends ComponentProps<"div"> {
 export function AppShellBanner(props: AppShellBannerProps): JSX.Element {
   const [local, rest] = splitProps(props, ["position", "class", "style"]);
   let bannerEl: HTMLDivElement | undefined;
-  const styles = useAppShellStyles();
+  const styles = useStyles();
   const position = () => local.position ?? "fixed";
   useSyncFixedRegionHeight(
     () => bannerEl,

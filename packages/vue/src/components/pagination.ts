@@ -12,7 +12,7 @@ import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 
 // #region Context
-const { useStyles: usePagination, withProvider } = createSlotRecipeContext({
+const { useStyles, withProvider } = createSlotRecipeContext({
   name: "Pagination",
   recipe: paginationRecipe,
 });
@@ -108,7 +108,7 @@ export const PaginationItem = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = usePagination();
+    const styles = useStyles();
 
     return () => {
       return h(
@@ -248,7 +248,7 @@ export const PaginationEllipsis = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = usePagination();
+    const styles = useStyles();
 
     return () => {
       return h(

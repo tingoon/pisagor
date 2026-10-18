@@ -7,6 +7,12 @@ export type { PropRow };
 /** Own props from `@pisagor/props` (`packages/props/src/frame.ts`, native HTML attributes omitted). */
 export const frameProps: PropRow[] = [
   {
+    name: "size",
+    type: "\"lg\" | \"md\" | \"sm\" | undefined",
+    defaultValue: "`md`",
+    description: "Size scale.",
+  },
+  {
     name: "recipe",
     type: "FrameRecipeFn | undefined",
     defaultValue: "frameRecipe",

@@ -1,8 +1,23 @@
 <script lang="ts">
-  import type { ComponentProps } from "svelte";
-  import DialogHeader from "../dialog/dialog-header.svelte";
+  import { Ark } from "@ark-ui/svelte";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { useAlertDialog } from "./alert-dialog.context";
 
-  let props: ComponentProps<typeof DialogHeader> = $props();
+  type Props = HTMLAttributes<HTMLDivElement> & {
+    children?: import("svelte").Snippet;
+  };
+
+  let { children, class: className, ...rest }: Props = $props();
+  const { slots } = useAlertDialog();
 </script>
 
-<DialogHeader {...props} data-part="header" data-scope="alert-dialog" />
+<Ark
+  as="div"
+  {...rest}
+  class={slots.header({ class: cn(className) })}
+  data-part="header"
+  data-scope="alert-dialog"
+>
+  {@render children?.()}
+</Ark>

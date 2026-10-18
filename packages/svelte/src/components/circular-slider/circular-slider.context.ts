@@ -3,15 +3,11 @@ import { circularSliderRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils/create-context";
 
-export const {
-  Context,
-  useStyles: useCircularSliderStyles,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "CircularSlider",
-  recipe: circularSliderRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "CircularSlider",
+    recipe: circularSliderRecipe,
+  });
 
 export interface CircularSliderMetricsValue {
   ringCircumference: number;
@@ -33,7 +29,7 @@ export const setCircularSliderMetricsContext = metricsCtx.setContext;
 export const useCircularSliderMetrics = metricsCtx.getContext;
 
 export function useCircularSlider() {
-  const styles = useCircularSliderStyles();
+  const styles = useStyles();
   const metrics = useCircularSliderMetrics();
 
   return {

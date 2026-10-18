@@ -21,7 +21,7 @@
   import Button from "../button.svelte";
   import { useLocale } from "../provider/context";
   import Spinner from "../spinner.svelte";
-  import { useToastItem } from "./toast.context";
+  import { useStyles } from "./toast.context";
 
   const { m } = useLocale();
 
@@ -53,7 +53,7 @@
     classNames,
   }: Props = $props();
 
-  const styles = useToastItem();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
   const isExplicitClosable = $derived(toastData.closable === false);
 

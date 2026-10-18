@@ -19,11 +19,7 @@ import { callEventHandler } from "../utils";
 import { useLocale } from "./provider/context";
 
 // #region Context
-const {
-  useStyles: useNavigationMenu,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "NavigationMenu",
   recipe: navigationMenuRecipe,
 });
@@ -176,7 +172,7 @@ export function NavigationMenuTrigger(
     "onClick",
     "onKeyDown",
   ]);
-  const styles = useNavigationMenu();
+  const styles = useStyles();
   const item = useNavigationMenuItem("Trigger");
 
   return (
@@ -215,7 +211,7 @@ export function NavigationMenuContent(
   props: NavigationMenuContentProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "onKeyDown"]);
-  const styles = useNavigationMenu();
+  const styles = useStyles();
   const item = useNavigationMenuItem("Content");
 
   return (
@@ -239,7 +235,7 @@ export function NavigationMenuLink(
   props: NavigationMenuLinkProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["active", "class"]);
-  const styles = useNavigationMenu();
+  const styles = useStyles();
   const active = () => local.active ?? false;
 
   return (

@@ -19,8 +19,10 @@ import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: FileInputStylesContext, useStyles: useFileInput } =
-  createSlotRecipeContext({ name: "FileInput", recipe: fileInputRecipe });
+const { Context: FileInputStylesContext, useStyles } = createSlotRecipeContext({
+  name: "FileInput",
+  recipe: fileInputRecipe,
+});
 // #endregion
 
 type FormControlVariant = "primary" | "secondary";
@@ -109,7 +111,7 @@ function FileInputRoot(props: FileInputRootProps): JSX.Element {
 
 function FileInputControl(props: FileInputControlProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useFileInput();
+  const styles = useStyles();
 
   return (
     <input
@@ -124,7 +126,7 @@ function FileInputControl(props: FileInputControlProps): JSX.Element {
 
 function FileInputLabel(props: FileInputLabelProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useFileInput();
+  const styles = useStyles();
 
   return (
     <InputGroupText

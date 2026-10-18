@@ -15,7 +15,7 @@ import { createSlotRecipeContext } from "../internal";
 // #region Context
 const {
   Context: ImageCropperStylesContext,
-  useStyles: useImageCropper,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "ImageCropper",
@@ -80,7 +80,7 @@ export function ImageCropperSelection(
   props: ImageCropperSelectionProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["axis", "children", "class"]);
-  const styles = useImageCropper();
+  const styles = useStyles();
   const axis = () => local.axis ?? "both";
 
   return (
@@ -111,7 +111,7 @@ export function ImageCropperHandle(
   props: ImageCropperHandleProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useImageCropper();
+  const styles = useStyles();
 
   return (
     <ImageCropperPrimitive.Handle
@@ -125,7 +125,7 @@ export function ImageCropperHandle(
 
 export function ImageCropperGrid(props: ImageCropperGridProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useImageCropper();
+  const styles = useStyles();
 
   return (
     <ImageCropperPrimitive.Grid

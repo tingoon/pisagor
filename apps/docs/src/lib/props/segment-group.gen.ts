@@ -7,6 +7,12 @@ export type { PropRow };
 /** Own props from `@pisagor/props` (`packages/props/src/segment-group.ts`, native HTML attributes omitted). */
 export const segmentGroupProps: PropRow[] = [
   {
+    name: "size",
+    type: "\"lg\" | \"md\" | \"sm\" | undefined",
+    defaultValue: "`md`",
+    description: "Size scale.",
+  },
+  {
     name: "recipe",
     type: "SegmentGroupRecipeFn | undefined",
     defaultValue: "segmentGroupRecipe",

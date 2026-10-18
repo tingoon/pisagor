@@ -16,7 +16,7 @@ import { useLocale } from "./provider/context";
 // #region Context
 const {
   Context: BreadcrumbStylesContext,
-  useStyles: useBreadcrumb,
+  useStyles,
   withContext: withBreadcrumbContext,
 } = createSlotRecipeContext({ name: "Breadcrumb", recipe: breadcrumbRecipe });
 
@@ -103,7 +103,7 @@ export function BreadcrumbSeparator(
   props: BreadcrumbSeparatorProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useBreadcrumb();
+  const styles = useStyles();
 
   return (
     <ark.li
@@ -122,7 +122,7 @@ export function BreadcrumbSeparator(
 export function BreadcrumbEllipsis(
   props: BreadcrumbEllipsisProps,
 ): JSX.Element {
-  const styles = useBreadcrumb();
+  const styles = useStyles();
 
   return (
     <ark.span

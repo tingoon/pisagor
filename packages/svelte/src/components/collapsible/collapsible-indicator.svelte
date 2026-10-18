@@ -5,14 +5,14 @@
   } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { CaretDownIcon } from "phosphor-svelte";
-  import { useCollapsible } from "./collapsible.context";
+  import { useStyles } from "./collapsible.context";
 
   let {
     class: className,
     children,
     ...rest
   }: CollapsibleIndicatorProps = $props();
-  const styles = useCollapsible();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

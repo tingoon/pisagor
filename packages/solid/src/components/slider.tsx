@@ -23,11 +23,10 @@ import { createContext } from "../utils";
 import { Field } from "./field";
 
 // #region Context
-const { Context: SliderStylesContext, useStyles: useSliderStyles } =
-  createSlotRecipeContext({
-    name: "Slider",
-    recipe: sliderRecipe,
-  });
+const { Context: SliderStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Slider",
+  recipe: sliderRecipe,
+});
 
 interface SliderExtras {
   thumbShadowClass?: string;
@@ -38,7 +37,7 @@ const { SliderExtrasContext, useSliderExtras } =
   createContext("SliderExtras")<SliderExtras>();
 
 function useSlider() {
-  const styles = useSliderStyles();
+  const styles = useStyles();
   const extras = useSliderExtras();
 
   return {

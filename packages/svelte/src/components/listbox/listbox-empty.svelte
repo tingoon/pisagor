@@ -5,10 +5,10 @@
   } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useLocale } from "../provider/context";
-  import { useListbox } from "./listbox.context";
+  import { useStyles } from "./listbox.context";
 
   let { class: className, children, ...rest }: ListboxEmptyProps = $props();
-  const styles = useListbox();
+  const styles = useStyles();
   const { m } = useLocale();
   const slots = $derived(styles.slots);
 </script>

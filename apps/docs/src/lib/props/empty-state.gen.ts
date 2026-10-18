@@ -7,6 +7,12 @@ export type { PropRow };
 /** Own props from `@pisagor/props` (`packages/props/src/empty-state.ts`, native HTML attributes omitted). */
 export const emptyStateProps: PropRow[] = [
   {
+    name: "size",
+    type: "\"lg\" | \"md\" | \"sm\" | undefined",
+    defaultValue: "`md`",
+    description: "Size scale.",
+  },
+  {
     name: "recipe",
     type: "EmptyStateRecipeFn | undefined",
     defaultValue: "emptyStateRecipe",

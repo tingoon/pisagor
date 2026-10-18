@@ -25,13 +25,11 @@ import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Slot recipe context
-const {
-  provideStyles: provideFloatingPanelStyles,
-  useStyles: useFloatingPanelStyles,
-} = createSlotRecipeContext({
-  name: "FloatingPanel",
-  recipe: floatingPanelRecipe,
-});
+const { provideStyles: provideFloatingPanelStyles, useStyles } =
+  createSlotRecipeContext({
+    name: "FloatingPanel",
+    recipe: floatingPanelRecipe,
+  });
 // #endregion
 
 // #region Types
@@ -167,7 +165,7 @@ export const FloatingPanelContent = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useFloatingPanelStyles();
+    const styles = useStyles();
 
     const floatingPanelContext = useFloatingPanel();
 

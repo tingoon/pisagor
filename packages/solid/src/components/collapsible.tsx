@@ -14,7 +14,7 @@ import { CaretDownIcon, createSlotRecipeContext } from "../internal";
 // #region Context
 const {
   Context: CollapsibleStylesContext,
-  useStyles: useCollapsible,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Collapsible",
@@ -71,7 +71,7 @@ export function CollapsibleContent(
   props: CollapsibleContentProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useCollapsible();
+  const styles = useStyles();
 
   return (
     <CollapsiblePrimitive.Content {...rest} class={styles.slots.content()}>
@@ -84,7 +84,7 @@ export function CollapsibleIndicator(
   props: CollapsibleIndicatorProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCollapsible();
+  const styles = useStyles();
 
   return (
     <CollapsiblePrimitive.Indicator

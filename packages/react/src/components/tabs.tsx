@@ -11,11 +11,7 @@ import type { FunctionComponent, ReactNode } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useTabs,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Tabs",
   recipe: tabsRecipe,
 });
@@ -65,7 +61,7 @@ export function TabsList({
   className,
   ...rest
 }: TabsListProps) {
-  const { slots } = useTabs();
+  const { slots } = useStyles();
 
   return (
     <TabsPrimitive.List

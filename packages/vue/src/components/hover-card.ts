@@ -12,7 +12,7 @@ import {
 import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { provideStyles: provideHoverCardStyles, useStyles: useHoverCard } =
+const { provideStyles: provideHoverCardStyles, useStyles } =
   createSlotRecipeContext({
     name: "HoverCard",
     recipe: hoverCardRecipe,
@@ -100,7 +100,7 @@ export const HoverCardArrow = defineComponent({
     style: { default: undefined, type: Object as PropType<CSSProperties> },
   },
   setup(props, { attrs, slots }) {
-    const styles = useHoverCard();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -134,7 +134,7 @@ export const HoverCardContent = defineComponent({
     showArrow: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    const styles = useHoverCard();
+    const styles = useStyles();
 
     return () =>
       hoverCardTeleport(

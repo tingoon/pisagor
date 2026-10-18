@@ -12,7 +12,7 @@ import {
 // #region Slot recipe context
 const {
   provideStyles: provideFrameStyles,
-  useStyles: useFrame,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Frame",
@@ -92,7 +92,7 @@ export const FramePanel = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useFrame();
+    const styles = useStyles();
 
     const parent = useSurface();
 

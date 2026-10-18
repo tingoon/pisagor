@@ -11,7 +11,7 @@ type ArkPart = Parameters<typeof h>[0];
 // #region Context
 const {
   provideStyles: provideItemStyles,
-  useStyles: useItem,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Item",
@@ -107,7 +107,7 @@ export const ItemMedia = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useItem();
+    const styles = useStyles();
 
     return () =>
       h(

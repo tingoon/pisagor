@@ -21,11 +21,7 @@ import {
 import { useLocale } from "./provider/context";
 
 // #region Slot recipe context
-const {
-  useStyles: useNavigationMenu,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "NavigationMenu",
   recipe: navigationMenuRecipe,
 });
@@ -179,7 +175,7 @@ export const NavigationMenuTrigger = defineComponent({
   name: "NavigationMenu.Trigger",
   props: { class: classProp },
   setup(props, { attrs, slots }) {
-    const styles = useNavigationMenu();
+    const styles = useStyles();
     const item = useNavigationMenuItem("Trigger");
 
     return () =>
@@ -228,7 +224,7 @@ export const NavigationMenuContent = defineComponent({
   name: "NavigationMenu.Content",
   props: { class: classProp },
   setup(props, { attrs, slots }) {
-    const styles = useNavigationMenu();
+    const styles = useStyles();
     const item = useNavigationMenuItem("Content");
 
     return () =>
@@ -269,7 +265,7 @@ export const NavigationMenuLink = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useNavigationMenu();
+    const styles = useStyles();
 
     return () => {
       const slots$ = styles.slots;

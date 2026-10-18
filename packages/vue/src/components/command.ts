@@ -31,7 +31,7 @@ import { useLocale } from "./provider/context";
 import { Separator } from "./separator";
 
 // #region Slot recipe context
-const { provideStyles: provideCommandStyles, useStyles: useCommand } =
+const { provideStyles: provideCommandStyles, useStyles } =
   createSlotRecipeContext({
     name: "Command",
     recipe: commandRecipe,
@@ -249,7 +249,7 @@ export const CommandContent = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCommand();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;
@@ -281,7 +281,7 @@ export const CommandInput = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useCommand();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;
@@ -327,7 +327,7 @@ export const CommandList = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCommand();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;
@@ -360,7 +360,7 @@ export const CommandEmpty = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const { m } = useLocale();
-    const styles = useCommand();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;
@@ -460,7 +460,7 @@ export const CommandSeparator = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useCommand();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;
@@ -486,7 +486,7 @@ export const CommandShortcut = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCommand();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;
@@ -516,7 +516,7 @@ export const CommandFooter = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCommand();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;

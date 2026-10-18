@@ -19,7 +19,7 @@ import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: NumberInputStylesContext, useStyles: useNumberInput } =
+const { Context: NumberInputStylesContext, useStyles } =
   createSlotRecipeContext({
     name: "NumberInput",
     recipe: numberInputRecipe,
@@ -115,7 +115,7 @@ export function NumberInputControl(
   props: NumberInputControlProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "clearable", "class"]);
-  const styles = useNumberInput();
+  const styles = useStyles();
   const surfaceVariant = useFormControlSurface();
   const variant = () => local.variant ?? ("primary" as FormControlVariant);
   const size = () =>
@@ -141,7 +141,7 @@ export function NumberInputControl(
 }
 
 export function NumberInputClearTrigger(): JSX.Element {
-  const styles = useNumberInput();
+  const styles = useStyles();
 
   return (
     <NumberInputPrimitive.Context>
@@ -172,7 +172,7 @@ export function NumberInputDecrementTrigger(
 ): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useNumberInput();
+  const styles = useStyles();
 
   return (
     <NumberInputPrimitive.DecrementTrigger
@@ -197,7 +197,7 @@ export function NumberInputIncrementTrigger(
 ): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useNumberInput();
+  const styles = useStyles();
 
   return (
     <NumberInputPrimitive.IncrementTrigger
@@ -224,7 +224,7 @@ export function NumberInputInput(props: InputProps): JSX.Element {
     "class",
     "classNames",
   ]);
-  const styles = useNumberInput();
+  const styles = useStyles();
 
   return (
     <NumberInputPrimitive.Input
@@ -245,7 +245,7 @@ export function NumberInputScrubber(
   props: NumberInputScrubberProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useNumberInput();
+  const styles = useStyles();
 
   return (
     <NumberInputPrimitive.Scrubber

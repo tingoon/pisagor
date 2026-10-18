@@ -17,7 +17,7 @@ import { useFormControlSurface } from "./surface/use-form-control-surface";
 // #region Context
 const {
   Context: EditableStylesContext,
-  useStyles: useEditable,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Editable",
@@ -140,7 +140,7 @@ export function EditablePreview({
   className,
   ...rest
 }: EditablePreviewProps) {
-  const { slots } = useEditable();
+  const { slots } = useStyles();
   const resolved = {
     surfaceVariant: useFormControlSurface(),
     variant: controlVariant ?? ("primary" as FormControlVariant),

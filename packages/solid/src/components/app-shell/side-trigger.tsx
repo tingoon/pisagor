@@ -3,7 +3,7 @@ import { splitProps } from "solid-js";
 import { Button, type ButtonProps } from "../button";
 import { Swap } from "../swap";
 import type { AppShellPlacement } from "./app-shell.context";
-import { useAppShellStyles } from "./app-shell.context";
+import { useStyles } from "./app-shell.context";
 
 export function AppShellSideTrigger(
   props: {
@@ -33,7 +33,7 @@ export function AppShellSideTrigger(
     "onClick",
     "class",
   ]);
-  const styles = useAppShellStyles();
+  const styles = useStyles();
   const resolvedOff = () => local.off ?? local.defaultOff;
   const resolvedOn = () => local.on ?? local.defaultOn;
 

@@ -24,11 +24,10 @@ import { InputGroup } from "./input-group";
 import { useLocale } from "./provider/context";
 
 // #region Context
-const { Context: DatePickerSlotsContext, useStyles: useDatePickerStyles } =
-  createSlotRecipeContext({
-    name: "DatePicker",
-    recipe: datePickerRecipe,
-  });
+const { Context: DatePickerSlotsContext, useStyles } = createSlotRecipeContext({
+  name: "DatePicker",
+  recipe: datePickerRecipe,
+});
 
 const DatePickerVariantContext = createContext<
   "primary" | "secondary" | undefined
@@ -36,7 +35,7 @@ const DatePickerVariantContext = createContext<
 DatePickerVariantContext.displayName = "DatePickerVariantContext";
 
 function useDatePicker() {
-  const styles = useDatePickerStyles();
+  const styles = useStyles();
   const variant = use(DatePickerVariantContext);
 
   return { ...styles, variant };

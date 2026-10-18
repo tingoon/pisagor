@@ -3,15 +3,11 @@ import { inputOtpRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils/create-context";
 
-export const {
-  Context,
-  useStyles: useInputOTPStyles,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "InputOTP",
-  recipe: inputOtpRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "InputOTP",
+    recipe: inputOtpRecipe,
+  });
 
 export interface InputOTPOptionsValue {
   size?: "sm" | "md" | "lg";
@@ -23,7 +19,7 @@ export const setInputOTPOptionsContext = optionsCtx.setContext;
 export const useInputOTPOptions = optionsCtx.getContext;
 
 export function useInputOTP() {
-  const styles = useInputOTPStyles();
+  const styles = useStyles();
   const options = useInputOTPOptions();
 
   return {

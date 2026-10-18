@@ -26,7 +26,7 @@ const { withContext: withStepsContext, withProvider: withStepsProvider } =
   createSlotRecipeContext({ name: "Steps", recipe: stepsRecipe });
 
 const {
-  useStyles: useStepsItem,
+  useStyles,
   withContext: withStepsItemContext,
   withProvider: withStepsItemProvider,
 } = createSlotRecipeContext({ name: "Steps", recipe: stepsItemRecipe });
@@ -63,7 +63,7 @@ export const StepsTrigger: Component<StepsTriggerProps> = withStepsItemContext(
 
 export function StepsIndicator(props: StepsIndicatorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useStepsItem();
+  const styles = useStyles();
 
   return (
     <StepsPrimitive.Indicator

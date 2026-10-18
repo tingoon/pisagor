@@ -29,7 +29,7 @@ type ArkPart = Parameters<typeof h>[0];
 // #region Context
 const {
   Context: ActionBarStylesContext,
-  useStyles: useActionBarStyles,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "ActionBar",
@@ -68,7 +68,7 @@ function useActionBarState(): ActionBarStateValue {
 
 function useActionBar() {
   return {
-    ...useActionBarStyles(),
+    ...useStyles(),
     ...useActionBarState(),
   };
 }
@@ -389,7 +389,7 @@ export const ActionBarSeparator = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const { slots } = useActionBarStyles();
+    const { slots } = useStyles();
 
     return () =>
       h(Separator as ArkPart, {
@@ -452,7 +452,7 @@ export const ActionBarValue = defineComponent({
     label: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
-    const { slots: styleSlots } = useActionBarStyles();
+    const { slots: styleSlots } = useStyles();
 
     return () =>
       h(

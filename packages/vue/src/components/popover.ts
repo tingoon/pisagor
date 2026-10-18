@@ -19,7 +19,7 @@ import { useLocale } from "./provider/context";
 // #region Slot recipe context
 const {
   provideStyles: providePopoverStyles,
-  useStyles: usePopover,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Popover",
@@ -170,7 +170,7 @@ export const PopoverHeader = defineComponent({
     title: String,
   },
   setup(props, { attrs, slots }) {
-    const styles = usePopover();
+    const styles = useStyles();
 
     return () => {
       const recipe = styles.slots;
@@ -213,7 +213,7 @@ export const PopoverBody = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = usePopover();
+    const styles = useStyles();
 
     return () => {
       const recipe = styles.slots;
@@ -252,7 +252,7 @@ export const PopoverArrow = defineComponent({
     style: { default: undefined, type: Object as PropType<CSSProperties> },
   },
   setup(props, { attrs, slots }) {
-    const styles = usePopover();
+    const styles = useStyles();
 
     return () => {
       const recipe = styles.slots;

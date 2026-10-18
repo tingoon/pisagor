@@ -58,7 +58,7 @@ interface SortableContextValue {
 export const { SortableContext, useSortable } =
   createNamedContext("Sortable")<SortableContextValue>();
 
-const { Context: SortableItemStylesContext, useStyles: useSortableItemStyles } =
+const { Context: SortableItemStylesContext, useStyles } =
   createSlotRecipeContext({
     name: "Sortable",
     recipe: sortableItemRecipe,
@@ -75,7 +75,7 @@ const SortableItemStateContext = createContext<SortableItemState | undefined>(
 SortableItemStateContext.displayName = "SortableItemStateContext";
 
 function useSortableItem() {
-  const styles = useSortableItemStyles();
+  const styles = useStyles();
   const state = use(SortableItemStateContext);
   if (state === undefined) {
     throw new Error(

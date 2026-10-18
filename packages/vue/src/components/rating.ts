@@ -10,7 +10,7 @@ import { useFormControlSurface } from "./surface/use-form-control-surface";
 // #region Context
 const {
   Context: RatingStylesContext,
-  useStyles: useRating,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Rating",
@@ -66,7 +66,7 @@ const RatingIndicator = defineComponent({
     highlighted: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    const styles = useRating();
+    const styles = useStyles();
 
     return () =>
       h(

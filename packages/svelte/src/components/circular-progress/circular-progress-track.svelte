@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Ark, useProgressContext } from "@ark-ui/svelte";
   import type { SVGAttributes } from "svelte/elements";
-  import { useCircularProgress } from "./circular-progress.context";
+  import { useStyles } from "./circular-progress.context";
 
   type Props = {
     class?: string;
@@ -22,7 +22,7 @@
     class: className,
   }: Props = $props();
 
-  const styles = useCircularProgress();
+  const styles = useStyles();
   const progress = useProgressContext();
 
   const metrics = $derived.by(() => {

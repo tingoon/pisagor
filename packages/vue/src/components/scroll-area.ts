@@ -9,11 +9,7 @@ import {
 } from "../internal";
 
 // #region Context
-const {
-  useStyles: useScrollArea,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "ScrollArea",
   recipe: scrollAreaRecipe,
 });
@@ -43,7 +39,7 @@ const ScrollAreaViewport = defineComponent({
     class: { default: undefined, type: String as PropType<string> },
   },
   setup(props, { attrs, slots }) {
-    const styles = useScrollArea();
+    const styles = useStyles();
 
     return () =>
       h(

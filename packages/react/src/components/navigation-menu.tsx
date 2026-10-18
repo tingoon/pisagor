@@ -12,11 +12,7 @@ import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
 // #region Context
-const {
-  useStyles: useNavigationMenu,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "NavigationMenu",
   recipe: navigationMenuRecipe,
 });
@@ -210,7 +206,7 @@ export function NavigationMenuTrigger({
   onKeyDown,
   ...rest
 }: NavigationMenuTriggerProps) {
-  const { slots } = useNavigationMenu();
+  const { slots } = useStyles();
   const item = use(NavigationMenuItemContext);
 
   if (!item) {
@@ -256,7 +252,7 @@ export function NavigationMenuContent({
   onKeyDown,
   ...rest
 }: NavigationMenuContentProps) {
-  const { slots } = useNavigationMenu();
+  const { slots } = useStyles();
   const item = use(NavigationMenuItemContext);
 
   if (!item) {
@@ -299,7 +295,7 @@ export function NavigationMenuLink({
   className,
   ...rest
 }: NavigationMenuLinkProps) {
-  const { slots } = useNavigationMenu();
+  const { slots } = useStyles();
 
   return (
     <ark.a

@@ -7,6 +7,12 @@ export type { PropRow };
 /** Own props from `@pisagor/props` (`packages/props/src/qr-code.ts`, native HTML attributes omitted). */
 export const qrCodeProps: PropRow[] = [
   {
+    name: "size",
+    type: "\"lg\" | \"md\" | \"sm\" | undefined",
+    defaultValue: "`md`",
+    description: "Size scale.",
+  },
+  {
     name: "recipe",
     type: "QrCodeRecipeFn | undefined",
     defaultValue: "qrCodeRecipe",

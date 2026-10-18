@@ -12,11 +12,7 @@ import { For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useSegmentGroup,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "SegmentGroup",
   recipe: segmentGroupRecipe,
 });
@@ -83,7 +79,7 @@ export function SegmentGroupRoot(props: SegmentGroupRootProps): JSX.Element {
 
 export function SegmentGroupItem(props: SegmentGroupItemProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "text", "class"]);
-  const styles = useSegmentGroup();
+  const styles = useStyles();
   const content = () => local.children ?? local.text;
 
   return (

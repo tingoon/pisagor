@@ -3,10 +3,10 @@
     Popover as PopoverPrimitive,
     type PopoverArrowProps,
   } from "@ark-ui/svelte";
-  import { usePopoverContent } from "./popover.context";
+  import { useStyles } from "./popover.context";
 
   let { style, ...rest }: PopoverArrowProps = $props();
-  const styles = usePopoverContent();
+  const styles = useStyles();
 </script>
 
 <PopoverPrimitive.Arrow

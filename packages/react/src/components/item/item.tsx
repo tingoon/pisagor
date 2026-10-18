@@ -8,7 +8,7 @@ import { useItemGroup } from "./item-group.context";
 // #region Context
 const {
   Context: ItemStylesContext,
-  useStyles: useItem,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Item",
@@ -56,7 +56,7 @@ export function ItemMedia({
   className,
   ...rest
 }: ComponentPropsWithRef<"div"> & PolymorphicProps & ItemVariantProps) {
-  const { slots } = useItem();
+  const { slots } = useStyles();
 
   return (
     <ark.div

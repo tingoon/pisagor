@@ -20,7 +20,7 @@ import { useLocale } from "./provider/context";
 type SortableOrientation = "vertical" | "horizontal";
 
 // #region Context
-const { Context: SortableItemStylesContext, useStyles: useSortableItemStyles } =
+const { Context: SortableItemStylesContext, useStyles } =
   createSlotRecipeContext({ name: "Sortable", recipe: sortableItemRecipe });
 
 /** Drag/reorder state shared by items and handles (not styles). */
@@ -331,7 +331,7 @@ export function SortableItem(props: SortableItemProps): JSX.Element {
 export function SortableHandle(props: SortableHandleProps): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "class", "aria-label"]);
-  const styles = useSortableItemStyles();
+  const styles = useStyles();
   const item = useSortableItemState();
   const sortable = useSortable();
   const disabled = () => sortable.disabled;
@@ -392,7 +392,7 @@ export function SortableItemContent(
   props: SortableItemContentProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSortableItemStyles();
+  const styles = useStyles();
 
   return (
     <ark.div

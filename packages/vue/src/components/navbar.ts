@@ -11,11 +11,7 @@ import {
 import { useLocale } from "./provider/context";
 
 // #region Slot recipe context
-const {
-  useStyles: useNavbarStyles,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Navbar",
   recipe: navbarRecipe,
 });
@@ -61,7 +57,7 @@ export const NavbarNav = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const { m } = useLocale();
-    const styles = useNavbarStyles();
+    const styles = useStyles();
 
     return () => {
       const slots$ = styles.slots;

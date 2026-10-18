@@ -22,7 +22,7 @@ export const useSortable = root.getContext;
 
 export const {
   Context: SortableItemStylesContext,
-  useStyles: useSortableItemStyles,
+  useStyles,
   withContext: withSortableItemContext,
   withProvider: withSortableItemProvider,
 } = createSlotRecipeContext({
@@ -40,7 +40,7 @@ export const setSortableItemStateContext = itemState.setContext;
 export const useSortableItemState = itemState.getContext;
 
 export function useSortableItem() {
-  const styles = useSortableItemStyles();
+  const styles = useStyles();
   const state = useSortableItemState();
 
   return {

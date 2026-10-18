@@ -4,14 +4,14 @@
     type ColorPickerSwatchTriggerProps,
   } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import { useColorPicker } from "./color-picker.context";
+  import { useStyles } from "./color-picker.context";
 
   let {
     class: className,
     children,
     ...rest
   }: ColorPickerSwatchTriggerProps = $props();
-  const styles = useColorPicker();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

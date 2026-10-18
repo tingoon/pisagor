@@ -5,7 +5,7 @@
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
   import type { HTMLButtonAttributes } from "svelte/elements";
-  import { useMenu } from "./menu.context";
+  import { useStyles } from "./menu.context";
 
   type Props = Omit<HTMLButtonAttributes, "type"> & {
     children?: Snippet;
@@ -21,7 +21,7 @@
     ...rest
   }: Props = $props();
 
-  const styles = useMenu();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

@@ -4,7 +4,7 @@
   import type { Snippet } from "svelte";
   import type { HTMLButtonAttributes } from "svelte/elements";
   import {
-    useNavigationMenu,
+    useStyles,
     useNavigationMenuItemState,
   } from "./navigation-menu.context";
 
@@ -17,7 +17,7 @@
     onkeydown,
     ...rest
   }: Props = $props();
-  const styles = useNavigationMenu();
+  const styles = useStyles();
   const item = useNavigationMenuItemState("Trigger");
   let element = $state<HTMLButtonElement | null>(null);
 

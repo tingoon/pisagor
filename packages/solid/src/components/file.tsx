@@ -7,11 +7,10 @@ import { FileIcon, createSlotRecipeContext } from "../internal";
 import { Format } from "./format";
 
 // #region Context
-const {
-  useStyles: useFile,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({ name: "File", recipe: fileRecipe });
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+  name: "File",
+  recipe: fileRecipe,
+});
 // #endregion
 
 export interface FileRootProps extends HTMLArkProps<"div">, BaseFileRootProps {}
@@ -42,7 +41,7 @@ export const FileRoot: Component<FileRootProps> = withProvider(ark.div, {
 
 export function FileMedia(props: FileMediaProps): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "children", "class"]);
-  const styles = useFile();
+  const styles = useStyles();
   const variant = () => local.variant ?? "icon";
 
   return (
@@ -72,7 +71,7 @@ export const FileMeta: Component<FileMetaProps> = withContext(ark.div, {
 
 export function FileSize(props: FileSizeProps): JSX.Element {
   const [local, rest] = splitProps(props, ["value", "class"]);
-  const styles = useFile();
+  const styles = useStyles();
 
   return (
     <ark.div

@@ -24,7 +24,7 @@ import { ScrollArea } from "./scroll-area";
 // #region Context
 const {
   Context: PopoverStylesContext,
-  useStyles: usePopover,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Popover",
@@ -117,7 +117,7 @@ export function PopoverHeader(props: PopoverHeaderProps): JSX.Element {
     "title",
     "class",
   ]);
-  const styles = usePopover();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -148,7 +148,7 @@ export const PopoverDescription: Component<PopoverDescriptionProps> =
 /** Body wraps its content in a ScrollArea. */
 export function PopoverBody(props: PopoverBodyProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = usePopover();
+  const styles = useStyles();
 
   return (
     <ScrollArea>
@@ -174,7 +174,7 @@ export function PopoverCloseTrigger(
 
 export function PopoverArrow(props: PopoverArrowProps): JSX.Element {
   const [local, rest] = splitProps(props, ["style"]);
-  const styles = usePopover();
+  const styles = useStyles();
 
   return (
     <PopoverPrimitive.Arrow

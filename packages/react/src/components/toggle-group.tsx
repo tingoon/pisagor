@@ -11,7 +11,7 @@ import { createSlotRecipeContext } from "../internal";
 import { Toggle, type ToggleProps } from "./toggle";
 
 // #region Context
-const { Context: ToggleGroupStylesContext, useStyles: useToggleGroupStyles } =
+const { Context: ToggleGroupStylesContext, useStyles } =
   createSlotRecipeContext({
     name: "ToggleGroup",
     recipe: toggleGroupRecipe,
@@ -36,7 +36,7 @@ const ToggleGroupItemOptionsContext = createContext<ToggleGroupItemOptions>({
 });
 
 function useToggleGroup() {
-  const styles = useToggleGroupStyles();
+  const styles = useStyles();
   const options = use(ToggleGroupItemOptionsContext);
 
   return { ...styles, ...options };

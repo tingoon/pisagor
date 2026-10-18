@@ -6,11 +6,7 @@ import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Slot recipe context
-const {
-  useStyles: useTabs,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Tabs",
   recipe: tabsRecipe,
 });
@@ -52,7 +48,7 @@ export const TabsList = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useTabs();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;

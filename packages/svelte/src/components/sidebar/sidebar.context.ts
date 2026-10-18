@@ -5,7 +5,7 @@ import { createContext } from "../../utils/create-context";
 
 export const {
   Context: SidebarStylesContext,
-  useStyles: useSidebarStyles,
+  useStyles,
   withContext,
   withProvider,
 } = createSlotRecipeContext({
@@ -32,7 +32,7 @@ export type SidebarContextProps = SidebarStateValue & {
 };
 
 export function useSidebar() {
-  const styles = useSidebarStyles();
+  const styles = useStyles();
   const state = useSidebarState();
 
   return {

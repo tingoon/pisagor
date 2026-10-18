@@ -10,11 +10,7 @@ import type {
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useCard,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Card",
   recipe: cardRecipe,
 });
@@ -33,7 +29,7 @@ export function CardMedia({
   className,
   ...rest
 }: ComponentPropsWithRef<"div"> & PolymorphicProps & CardVariantProps) {
-  const { slots } = useCard();
+  const { slots } = useStyles();
 
   return (
     <ark.div
@@ -62,7 +58,7 @@ export function CardHeader({
      */
     title?: ReactNode;
   }) {
-  const { slots } = useCard();
+  const { slots } = useStyles();
 
   return (
     <ark.div

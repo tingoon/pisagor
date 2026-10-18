@@ -93,20 +93,19 @@ export const ZERO_REGION_VARS: Record<AppShellRegionVar, string> = {
   "--app-shell-start-rail-width": "0px",
 };
 
-const { Context: AppShellStylesContext, useStyles: useAppShellStyles } =
-  createSlotRecipeContext({
-    name: "AppShell",
-    recipe: appShellRecipe,
-  });
+const { Context: AppShellStylesContext, useStyles } = createSlotRecipeContext({
+  name: "AppShell",
+  recipe: appShellRecipe,
+});
 
-export { AppShellStylesContext, useAppShellStyles };
+export { AppShellStylesContext, useStyles };
 
 export const { AppShellContext, useAppShell: useAppShellState } =
   createContext("AppShell")<AppShellStateValue>();
 
 /** Nearest app-shell styles + layout state (`slots` stays reactive). */
 export function useAppShell() {
-  const styles = useAppShellStyles();
+  const styles = useStyles();
   const state = useAppShellState();
 
   return {

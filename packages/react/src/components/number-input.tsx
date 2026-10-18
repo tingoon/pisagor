@@ -20,7 +20,7 @@ import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: NumberInputStylesContext, useStyles: useNumberInput } =
+const { Context: NumberInputStylesContext, useStyles } =
   createSlotRecipeContext({
     name: "NumberInput",
     recipe: numberInputRecipe,
@@ -108,7 +108,7 @@ export function NumberInputControl({
   className,
   ...rest
 }: NumberInputControlProps) {
-  const { slots, variants } = useNumberInput();
+  const { slots, variants } = useStyles();
   const size = (variants as { size?: "sm" | "md" | "lg" } | undefined)?.size;
   const resolved = {
     surfaceVariant: useFormControlSurface(),
@@ -135,7 +135,7 @@ export function NumberInputControl({
 }
 
 export function NumberInputClearTrigger() {
-  const { slots } = useNumberInput();
+  const { slots } = useStyles();
 
   return (
     <NumberInputPrimitive.Context>
@@ -165,7 +165,7 @@ export function NumberInputDecrementTrigger({
   ...rest
 }: NumberInputDecrementTriggerProps) {
   const { m } = useLocale();
-  const { slots } = useNumberInput();
+  const { slots } = useStyles();
 
   return (
     <NumberInputPrimitive.DecrementTrigger
@@ -185,7 +185,7 @@ export function NumberInputIncrementTrigger({
   ...rest
 }: NumberInputIncrementTriggerProps) {
   const { m } = useLocale();
-  const { slots } = useNumberInput();
+  const { slots } = useStyles();
 
   return (
     <NumberInputPrimitive.IncrementTrigger
@@ -207,7 +207,7 @@ export function NumberInputInput({
   classNames,
   ...rest
 }: InputProps) {
-  const { slots } = useNumberInput();
+  const { slots } = useStyles();
 
   return (
     <NumberInputPrimitive.Input {...rest} asChild>
@@ -226,7 +226,7 @@ export function NumberInputScrubber({
   className,
   ...rest
 }: NumberInputScrubberProps) {
-  const { slots } = useNumberInput();
+  const { slots } = useStyles();
 
   return (
     <NumberInputPrimitive.Scrubber

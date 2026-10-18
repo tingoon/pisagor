@@ -2,7 +2,7 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import type { AppShellRegionPosition } from "./app-shell.context";
-import { useAppShellStyles } from "./app-shell.context";
+import { useStyles } from "./app-shell.context";
 import { regionPositionClasses } from "./region";
 
 export interface AppShellHeaderProps extends ComponentProps<"header"> {
@@ -14,7 +14,7 @@ export type AppShellContentProps = ComponentProps<"div">;
 
 export function AppShellMain(props: AppShellMainProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "style"]);
-  const styles = useAppShellStyles();
+  const styles = useStyles();
 
   return (
     <main
@@ -36,7 +36,7 @@ export function AppShellMain(props: AppShellMainProps): JSX.Element {
 
 export function AppShellHeader(props: AppShellHeaderProps): JSX.Element {
   const [local, rest] = splitProps(props, ["position", "class"]);
-  const styles = useAppShellStyles();
+  const styles = useStyles();
   const position = () => local.position ?? "fixed";
 
   return (
@@ -56,7 +56,7 @@ export function AppShellHeader(props: AppShellHeaderProps): JSX.Element {
 
 export function AppShellContent(props: AppShellContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useAppShellStyles();
+  const styles = useStyles();
 
   return (
     <div

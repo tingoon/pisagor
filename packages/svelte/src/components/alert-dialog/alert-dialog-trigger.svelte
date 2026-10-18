@@ -1,8 +1,12 @@
 <script lang="ts">
-  import type { ComponentProps } from "svelte";
-  import DialogTrigger from "../dialog/dialog-trigger.svelte";
+  import {
+    Dialog as AlertDialogPrimitive,
+    type DialogTriggerProps,
+  } from "@ark-ui/svelte";
 
-  let props: ComponentProps<typeof DialogTrigger> = $props();
+  let { children, ...rest }: DialogTriggerProps = $props();
 </script>
 
-<DialogTrigger {...props} />
+<AlertDialogPrimitive.Trigger {...rest}>
+  {@render children?.()}
+</AlertDialogPrimitive.Trigger>

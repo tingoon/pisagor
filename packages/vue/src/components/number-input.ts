@@ -17,7 +17,7 @@ import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Slot recipe context
-const { provideStyles: provideNumberInputStyles, useStyles: useNumberInput } =
+const { provideStyles: provideNumberInputStyles, useStyles } =
   createSlotRecipeContext({
     name: "NumberInput",
     recipe: numberInputRecipe,
@@ -149,7 +149,7 @@ export const NumberInputControl = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useNumberInput();
+    const styles = useStyles();
 
     const surfaceVariant = useFormControlSurface();
 
@@ -190,7 +190,7 @@ export const NumberInputControl = defineComponent({
 export const NumberInputClearTrigger = defineComponent({
   name: "NumberInputClearTrigger",
   setup(_props) {
-    const styles = useNumberInput();
+    const styles = useStyles();
 
     return () =>
       h(NumberInputPrimitive.Context as ArkPart, null, {
@@ -227,7 +227,7 @@ export const NumberInputDecrementTrigger = defineComponent({
   },
   setup(props, { attrs }) {
     const { m } = useLocale();
-    const styles = useNumberInput();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -261,7 +261,7 @@ export const NumberInputIncrementTrigger = defineComponent({
   },
   setup(props, { attrs }) {
     const { m } = useLocale();
-    const styles = useNumberInput();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -307,7 +307,7 @@ export const NumberInputInput = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useNumberInput();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -336,7 +336,7 @@ export const NumberInputScrubber = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useNumberInput();
+    const styles = useStyles();
 
     return () =>
       h(

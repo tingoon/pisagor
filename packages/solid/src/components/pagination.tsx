@@ -23,7 +23,7 @@ import {
 import { Button, type ButtonProps } from "./button";
 
 // #region Context
-const { useStyles: usePagination, withProvider } = createSlotRecipeContext({
+const { useStyles, withProvider } = createSlotRecipeContext({
   name: "Pagination",
   recipe: paginationRecipe,
 });
@@ -102,7 +102,7 @@ export function PaginationNextTrigger(
 
 export function PaginationItem(props: PaginationItemProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = usePagination();
+  const styles = useStyles();
 
   return (
     <PaginationPrimitive.Item
@@ -181,7 +181,7 @@ export function PaginationEllipsis(
   props: PaginationEllipsisProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = usePagination();
+  const styles = useStyles();
 
   return (
     <PaginationPrimitive.Ellipsis

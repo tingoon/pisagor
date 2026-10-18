@@ -35,11 +35,10 @@ import { useLocale } from "./provider/context";
 import { Separator } from "./separator";
 
 // #region Context
-const { Context: CommandStylesContext, useStyles: useCommand } =
-  createSlotRecipeContext({
-    name: "Command",
-    recipe: commandRecipe,
-  });
+const { Context: CommandStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Command",
+  recipe: commandRecipe,
+});
 // #endregion
 
 // #region Types
@@ -184,7 +183,7 @@ export function CommandRoot<T extends CollectionItem = CollectionItem>({
 }
 
 export function CommandContent({ className, ...rest }: CommandContentProps) {
-  const { slots } = useCommand();
+  const { slots } = useStyles();
 
   return (
     <Combobox.Content
@@ -196,7 +195,7 @@ export function CommandContent({ className, ...rest }: CommandContentProps) {
 }
 
 export function CommandInput({ size, className, ...rest }: CommandInputProps) {
-  const { slots } = useCommand();
+  const { slots } = useStyles();
 
   return (
     <Combobox.Control className={slots.control()}>
@@ -213,7 +212,7 @@ export function CommandInput({ size, className, ...rest }: CommandInputProps) {
 }
 
 export function CommandList({ className, ...rest }: CommandListProps) {
-  const { slots } = useCommand();
+  const { slots } = useStyles();
 
   return (
     <div className={slots.listWrapper()}>
@@ -228,7 +227,7 @@ export function CommandEmpty({
   ...rest
 }: ComboboxEmptyProps) {
   const { m } = useLocale();
-  const { slots } = useCommand();
+  const { slots } = useStyles();
 
   return (
     <Combobox.Empty {...rest} className={slots.empty({ className })}>
@@ -255,7 +254,7 @@ export function CommandSeparator({
   className,
   ...rest
 }: CommandSeparatorProps) {
-  const { slots } = useCommand();
+  const { slots } = useStyles();
 
   return (
     <Separator
@@ -268,7 +267,7 @@ export function CommandSeparator({
 }
 
 export function CommandShortcut({ className, ...rest }: CommandShortcutProps) {
-  const { slots } = useCommand();
+  const { slots } = useStyles();
 
   return (
     <span
@@ -281,7 +280,7 @@ export function CommandShortcut({ className, ...rest }: CommandShortcutProps) {
 }
 
 export function CommandFooter({ className, ...rest }: CommandFooterProps) {
-  const { slots } = useCommand();
+  const { slots } = useStyles();
 
   return (
     <div

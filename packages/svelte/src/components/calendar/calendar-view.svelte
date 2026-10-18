@@ -4,10 +4,10 @@
     type DatePickerViewProps,
   } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import { useCalendar } from "./calendar.context";
+  import { useStyles } from "./calendar.context";
 
   let { class: className, children, ...rest }: DatePickerViewProps = $props();
-  const styles = useCalendar();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

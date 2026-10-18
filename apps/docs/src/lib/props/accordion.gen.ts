@@ -39,4 +39,9 @@ export const accordionProps: PropRow[] = [
     defaultValue: "false",
     description: "Disable the accordion.",
   },
+  {
+    name: "size",
+    type: "\"md\" | \"lg\" | \"sm\" | undefined",
+    description: "",
+  },
 ];

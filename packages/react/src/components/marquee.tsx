@@ -10,11 +10,7 @@ import { Children, isValidElement } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useMarquee,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Marquee",
   recipe: marqueeRecipe,
 });
@@ -78,7 +74,7 @@ export function MarqueeRoot({
 }
 
 export function MarqueeContent({ className, ...rest }: MarqueeContentProps) {
-  const { slots } = useMarquee();
+  const { slots } = useStyles();
 
   return (
     <MarqueePrimitive.Viewport className={slots.viewport()}>

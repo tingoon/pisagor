@@ -7,11 +7,7 @@ import { createSlotRecipeContext } from "../internal";
 import { Separator, type SeparatorProps } from "./separator";
 
 // #region Context
-const {
-  useStyles: useButtonGroup,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "ButtonGroup",
   recipe: buttonGroupRecipe,
 });
@@ -34,7 +30,7 @@ export const ButtonGroupText = withContext(ark.div, { name: "Text" });
 
 export function ButtonGroupSeparator(props: SeparatorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["orientation", "class"]);
-  const styles = useButtonGroup();
+  const styles = useStyles();
 
   return (
     <Separator

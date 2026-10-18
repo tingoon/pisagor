@@ -18,7 +18,7 @@ import { useLocale } from "./provider/context";
 // #region Context
 const {
   provideStyles: provideBreadcrumbStyles,
-  useStyles: useBreadcrumb,
+  useStyles,
   withContext: withBreadcrumbContext,
 } = createSlotRecipeContext({
   name: "Breadcrumb",
@@ -126,7 +126,7 @@ export const BreadcrumbSeparator = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useBreadcrumb();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -148,7 +148,7 @@ export const BreadcrumbEllipsis = defineComponent({
   inheritAttrs: false,
   name: "Breadcrumb.Ellipsis",
   setup(_, { attrs }) {
-    const styles = useBreadcrumb();
+    const styles = useStyles();
 
     return () =>
       h(

@@ -22,7 +22,7 @@ import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 
 // #region Context
-const { useStyles: usePagination, withProvider } = createSlotRecipeContext({
+const { useStyles, withProvider } = createSlotRecipeContext({
   name: "Pagination",
   recipe: paginationRecipe,
 });
@@ -93,7 +93,7 @@ export function PaginationItem({
   className,
   ...rest
 }: PaginationItemProps) {
-  const { slots } = usePagination();
+  const { slots } = useStyles();
 
   return (
     <PaginationPrimitive.Item {...rest} asChild>
@@ -180,7 +180,7 @@ export function PaginationEllipsis({
   className,
   ...rest
 }: PaginationEllipsisProps) {
-  const { slots } = usePagination();
+  const { slots } = useStyles();
 
   return (
     <PaginationPrimitive.Ellipsis

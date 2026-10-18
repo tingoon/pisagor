@@ -17,13 +17,11 @@ import {
 import { Toggle } from "./toggle";
 
 // #region Slot recipe context
-const {
-  provideStyles: provideToggleGroupStyles,
-  useStyles: useToggleGroupStyles,
-} = createSlotRecipeContext({
-  name: "ToggleGroup",
-  recipe: toggleGroupRecipe,
-});
+const { provideStyles: provideToggleGroupStyles, useStyles } =
+  createSlotRecipeContext({
+    name: "ToggleGroup",
+    recipe: toggleGroupRecipe,
+  });
 // #endregion
 
 export type ToggleGroupVariant = "ghost" | "outline";
@@ -169,7 +167,7 @@ export const ToggleGroupItem = defineComponent({
     value: { required: true, type: String },
   },
   setup(props, { attrs, slots }) {
-    const styles = useToggleGroupStyles();
+    const styles = useStyles();
 
     return () => {
       const ctx = useToggleGroupContext();

@@ -6,11 +6,7 @@ import { Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useCard,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Card",
   recipe: cardRecipe,
 });
@@ -42,7 +38,7 @@ export const CardRoot: Component<CardRootProps> = withProvider(ark.div, {
 /** Part-level `variant` stays on Media (not lifted to Root). */
 export function CardMedia(props: CardMediaProps): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "class"]);
-  const styles = useCard();
+  const styles = useStyles();
   const variant = () => local.variant ?? "default";
 
   return (
@@ -73,7 +69,7 @@ export function CardHeader(props: CardHeaderProps): JSX.Element {
     "title",
     "class",
   ]);
-  const styles = useCard();
+  const styles = useStyles();
 
   return (
     <ark.div

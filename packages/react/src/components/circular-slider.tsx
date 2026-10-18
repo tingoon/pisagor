@@ -18,13 +18,11 @@ import { createContext, use, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  Context: CircularSliderStylesContext,
-  useStyles: useCircularSliderStyles,
-} = createSlotRecipeContext({
-  name: "CircularSlider",
-  recipe: circularSliderRecipe,
-});
+const { Context: CircularSliderStylesContext, useStyles } =
+  createSlotRecipeContext({
+    name: "CircularSlider",
+    recipe: circularSliderRecipe,
+  });
 
 export interface CircularSliderGeometry {
   ringCircumference: number;
@@ -40,7 +38,7 @@ const CircularSliderGeometryContext = createContext<
 CircularSliderGeometryContext.displayName = "CircularSliderGeometryContext";
 
 function useCircularSlider() {
-  const { slots } = useCircularSliderStyles();
+  const { slots } = useStyles();
   const geometry = use(CircularSliderGeometryContext);
   if (geometry === undefined) {
     throw new Error(

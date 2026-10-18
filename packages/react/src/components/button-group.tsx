@@ -10,11 +10,7 @@ import { createSlotRecipeContext } from "../internal";
 import { Separator, type SeparatorProps } from "./separator";
 
 // #region Context
-const {
-  useStyles: useButtonGroup,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "ButtonGroup",
   recipe: buttonGroupRecipe,
 });
@@ -38,7 +34,7 @@ export function ButtonGroupSeparator({
   className,
   ...rest
 }: SeparatorProps) {
-  const { slots } = useButtonGroup();
+  const { slots } = useStyles();
 
   return (
     <Separator

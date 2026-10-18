@@ -1,8 +1,23 @@
 <script lang="ts">
-  import type { ComponentProps } from "svelte";
-  import DialogFooter from "../dialog/dialog-footer.svelte";
+  import { Ark } from "@ark-ui/svelte";
+  import { cn } from "@pisagor/utils";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { useAlertDialog } from "./alert-dialog.context";
 
-  let props: ComponentProps<typeof DialogFooter> = $props();
+  type Props = HTMLAttributes<HTMLDivElement> & {
+    children?: import("svelte").Snippet;
+  };
+
+  let { children, class: className, ...rest }: Props = $props();
+  const { slots } = useAlertDialog();
 </script>
 
-<DialogFooter {...props} data-part="footer" data-scope="alert-dialog" />
+<Ark
+  as="div"
+  {...rest}
+  class={slots.footer({ class: cn(className) })}
+  data-part="footer"
+  data-scope="alert-dialog"
+>
+  {@render children?.()}
+</Ark>

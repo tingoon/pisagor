@@ -7,6 +7,12 @@ export type { PropRow };
 /** Own props from `@pisagor/props` (`packages/props/src/input-otp.ts`, native HTML attributes omitted). */
 export const inputOtpProps: PropRow[] = [
   {
+    name: "size",
+    type: "\"lg\" | \"md\" | \"sm\" | undefined",
+    defaultValue: "`md`",
+    description: "Size scale.",
+  },
+  {
     name: "recipe",
     type: "InputOtpRecipeFn | undefined",
     defaultValue: "inputOtpRecipe",

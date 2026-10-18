@@ -35,11 +35,10 @@ import { InputGroup } from "./input-group";
 import { useLocale } from "./provider/context";
 
 // #region Context
-const { Context: DatePickerSlotsContext, useStyles: useDatePickerStyles } =
-  createSlotRecipeContext({
-    name: "DatePicker",
-    recipe: datePickerRecipe,
-  });
+const { Context: DatePickerSlotsContext, useStyles } = createSlotRecipeContext({
+  name: "DatePicker",
+  recipe: datePickerRecipe,
+});
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -49,7 +48,7 @@ const { DatePickerVariantContext, useDatePickerVariant } = createContext(
 
 /** Recipe styles plus the optional shell `variant` (getters stay reactive). */
 function useDatePicker() {
-  const styles = useDatePickerStyles();
+  const styles = useStyles();
   const options = useDatePickerVariant();
 
   return {
