@@ -14,8 +14,7 @@
     formControlShellRecipe,
   } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CheckIcon from "phosphor-svelte/lib/CheckIcon";
-  import ClipboardIcon from "phosphor-svelte/lib/ClipboardIcon";
+  import { CheckIcon, ClipboardIcon } from "phosphor-svelte";
   import type { Snippet } from "svelte";
   import type { VariantClassNames } from "../../internal/types";
   import Button from "../button.svelte";

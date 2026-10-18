@@ -4,7 +4,7 @@
     type TreeViewBranchIndicatorProps,
   } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
+  import { CaretRightIcon } from "phosphor-svelte";
   import { useTreeViewBranch } from "./tree-view.context";
 
   let { class: className, ...rest }: TreeViewBranchIndicatorProps = $props();

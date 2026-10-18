@@ -1,7 +1,6 @@
 <script lang="ts">
   import { InputGroup } from "@pisagor/svelte";
-  import CopyIcon from "phosphor-svelte/lib/CopyIcon";
-  import FileCodeIcon from "phosphor-svelte/lib/FileCodeIcon";
+  import { CopyIcon, FileCodeIcon } from "phosphor-svelte";
 </script>
 
 <div class="flex flex-col gap-2">

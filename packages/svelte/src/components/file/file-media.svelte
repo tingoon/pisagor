@@ -2,7 +2,7 @@
   import { Ark } from "@ark-ui/svelte";
   import type { FileProps as BaseFileProps } from "@pisagor/props";
   import { cn } from "@pisagor/utils";
-  import FileIcon from "phosphor-svelte/lib/FileIcon";
+  import { FileIcon } from "phosphor-svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { useFile } from "./file.context";
 

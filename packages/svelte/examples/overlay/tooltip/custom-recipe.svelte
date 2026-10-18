@@ -1,7 +1,7 @@
 <script lang="ts">
   import { tooltipRecipe } from "@pisagor/recipes";
   import { Button, Tooltip } from "@pisagor/svelte";
-  import TextBIcon from "phosphor-svelte/lib/TextBIcon";
+  import { TextBIcon } from "phosphor-svelte";
   import { tv } from "tailwind-variants";
 
   const brandTooltipRecipe = tv({

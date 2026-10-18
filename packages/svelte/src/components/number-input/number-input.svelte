@@ -10,8 +10,7 @@
     numberInputRecipe,
   } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import MinusIcon from "phosphor-svelte/lib/MinusIcon";
-  import PlusIcon from "phosphor-svelte/lib/PlusIcon";
+  import { MinusIcon, PlusIcon } from "phosphor-svelte";
   import InputClearButton from "../input/input-clear-button.svelte";
   import { useMessageResolver } from "../provider/context";
   import { useFormControlSurface } from "../surface/use-form-control-surface";

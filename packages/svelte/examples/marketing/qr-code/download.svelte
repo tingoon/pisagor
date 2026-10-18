@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, Card, Input, QrCode } from "@pisagor/svelte";
-  import DownloadIcon from "phosphor-svelte/lib/DownloadIcon";
+  import { DownloadIcon } from "phosphor-svelte";
 
   const QUALITY_BY_LEVEL = {
     0: "L",

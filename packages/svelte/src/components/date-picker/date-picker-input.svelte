@@ -10,7 +10,7 @@
     inputGroupControlRecipe,
   } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
+  import { CalendarIcon } from "phosphor-svelte";
   import {
     isInsideControl,
     setInsideControl,

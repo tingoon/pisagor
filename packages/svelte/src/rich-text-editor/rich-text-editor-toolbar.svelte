@@ -1,11 +1,13 @@
 <script lang="ts">
   import { Ark } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import ListBulletsIcon from "phosphor-svelte/lib/ListBulletsIcon";
-  import ListNumbersIcon from "phosphor-svelte/lib/ListNumbersIcon";
-  import TextBIcon from "phosphor-svelte/lib/TextBIcon";
-  import TextItalicIcon from "phosphor-svelte/lib/TextItalicIcon";
-  import TextStrikethroughIcon from "phosphor-svelte/lib/TextStrikethroughIcon";
+  import {
+    ListBulletsIcon,
+    ListNumbersIcon,
+    TextBIcon,
+    TextItalicIcon,
+    TextStrikethroughIcon,
+  } from "phosphor-svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { useMessageResolver } from "../components/provider/context";
   import Toggle from "../components/toggle.svelte";

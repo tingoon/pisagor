@@ -14,8 +14,7 @@
     getCountryCallingCode,
     parsePhoneNumberFromString,
   } from "libphonenumber-js";
-  import CaretUpDownIcon from "phosphor-svelte/lib/CaretUpDownIcon";
-  import GlobeIcon from "phosphor-svelte/lib/GlobeIcon";
+  import { CaretUpDownIcon, GlobeIcon } from "phosphor-svelte";
   import { type ComponentProps, untrack } from "svelte";
   import type { ClassValue } from "svelte/elements";
   import { Combobox } from "../components/combobox";

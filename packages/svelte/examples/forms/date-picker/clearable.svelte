@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, DatePicker, Field, parseDate } from "@pisagor/svelte";
-  import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
+  import { CalendarIcon } from "phosphor-svelte";
 
   let value = $state([parseDate("2025-06-15")]);
 </script>

@@ -2,7 +2,7 @@
   import type { SpinnerProps as BaseSpinnerProps } from "@pisagor/props";
   import { spinnerRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CircleNotchIcon from "phosphor-svelte/lib/CircleNotchIcon";
+  import { CircleNotchIcon } from "phosphor-svelte";
   import type { ClassValue } from "svelte/elements";
   import { useMessageResolver } from "./provider/context";
 

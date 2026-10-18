@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Steps } from "@pisagor/svelte";
-  import CircleNotchIcon from "phosphor-svelte/lib/CircleNotchIcon";
+  import { CircleNotchIcon } from "phosphor-svelte";
 
   const items = [
     { id: "step-1", loading: true },

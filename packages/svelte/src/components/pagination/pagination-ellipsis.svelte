@@ -4,7 +4,7 @@
     type PaginationEllipsisProps,
   } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import DotsThreeIcon from "phosphor-svelte/lib/DotsThreeIcon";
+  import { DotsThreeIcon } from "phosphor-svelte";
   import { usePagination } from "./pagination.context";
 
   let { class: className, ...rest }: PaginationEllipsisProps = $props();

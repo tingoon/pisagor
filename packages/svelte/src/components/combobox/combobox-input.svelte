@@ -12,7 +12,7 @@
     inputGroupControlRecipe,
   } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { XIcon } from "phosphor-svelte";
   import { isInsideControl } from "../../internal/inside-control";
   import { useMessageResolver } from "../provider/context";
   import { useFormControlSurface } from "../surface/use-form-control-surface";

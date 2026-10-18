@@ -4,7 +4,7 @@
     type CollapsibleIndicatorProps,
   } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
+  import { CaretDownIcon } from "phosphor-svelte";
   import { useCollapsible } from "./collapsible.context";
 
   let {

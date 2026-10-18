@@ -1,10 +1,12 @@
 <script lang="ts">
   import { Avatar, Button, Navbar, Sidebar } from "@pisagor/svelte";
-  import BellIcon from "phosphor-svelte/lib/BellIcon";
-  import DatabaseIcon from "phosphor-svelte/lib/DatabaseIcon";
-  import HouseIcon from "phosphor-svelte/lib/HouseIcon";
-  import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
-  import UserIcon from "phosphor-svelte/lib/UserIcon";
+  import {
+    BellIcon,
+    DatabaseIcon,
+    HouseIcon,
+    MagnifyingGlassIcon,
+    UserIcon,
+  } from "phosphor-svelte";
 </script>
 
 <Sidebar.Provider>

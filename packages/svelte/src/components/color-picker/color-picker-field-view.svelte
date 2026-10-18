@@ -1,6 +1,6 @@
 <script lang="ts">
   import { buttonRecipe } from "@pisagor/recipes";
-  import EyedropperIcon from "phosphor-svelte/lib/EyedropperIcon";
+  import { EyedropperIcon } from "phosphor-svelte";
   import { useColorPicker } from "./color-picker.context";
   import ColorPickerChannelSlider from "./color-picker-channel-slider.svelte";
   import ColorPickerEyeDropperTrigger from "./color-picker-eye-dropper-trigger.svelte";

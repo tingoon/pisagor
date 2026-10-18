@@ -30,7 +30,7 @@ ignorePatterns = [
 "no-restricted-imports" = [
   "error",
   { patterns = [
-    { group = ["@ark-ui/*/*"], message = "Import Ark UI from the framework barrel (@ark-ui/react, @ark-ui/vue, @ark-ui/solid, @ark-ui/svelte), never subpaths." },
+    { group = ["@*/*/**", "phosphor-svelte/lib/**", "!@pisagor/*/styles", "!@pisagor/*/icons", "!@pisagor/*/utils", "!@pisagor/*/hooks", "!@pisagor/*/data-grid", "!@pisagor/*/data-table", "!@pisagor/*/phone-input", "!@pisagor/*/rich-text-editor", "!@pisagor/*/tanstack", "!@pisagor/presets/pisagor", "!@modelcontextprotocol/sdk/**", "!@squidlab/phosphor-solid/icons", "!@storybook/*/node", "!@tanstack/highlight/**"], message = "Import from the package barrel. Subpaths are only for CSS, separate entries, or names missing from the root (see .rulesync component rules)." },
   ] },
 ]
 

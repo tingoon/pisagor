@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, Item } from "@pisagor/svelte";
-  import ShieldWarningIcon from "phosphor-svelte/lib/ShieldWarningIcon";
+  import { ShieldWarningIcon } from "phosphor-svelte";
 </script>
 
 <Item variant="outline">

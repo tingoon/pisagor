@@ -7,7 +7,7 @@
   } from "@ark-ui/svelte";
   import type { RatingProps as BaseRatingProps } from "@pisagor/props";
   import type { RatingRecipeSlot } from "@pisagor/recipes";
-  import StarIcon from "phosphor-svelte/lib/StarIcon";
+  import { StarIcon } from "phosphor-svelte";
   import type { Component } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import type { SizeScaleProps, VariantClassNames } from "../../internal/types";

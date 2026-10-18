@@ -1,9 +1,11 @@
 <script lang="ts">
   import { Button, DropdownMenu, Table } from "@pisagor/svelte";
-  import DotsThreeVerticalIcon from "phosphor-svelte/lib/DotsThreeVerticalIcon";
-  import EyeIcon from "phosphor-svelte/lib/EyeIcon";
-  import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";
-  import TrashIcon from "phosphor-svelte/lib/TrashIcon";
+  import {
+    DotsThreeVerticalIcon,
+    EyeIcon,
+    PencilSimpleIcon,
+    TrashIcon,
+  } from "phosphor-svelte";
   import { workspaceUsers } from "./helpers";
 </script>
 

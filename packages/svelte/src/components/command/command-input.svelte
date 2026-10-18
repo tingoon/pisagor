@@ -6,7 +6,7 @@
     inputGroupControlRecipe,
   } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
+  import { MagnifyingGlassIcon } from "phosphor-svelte";
   import { onMount } from "svelte";
   import ComboboxControl from "../combobox/combobox-control.svelte";
   import ComboboxFieldInput from "../combobox/combobox-field-input.svelte";

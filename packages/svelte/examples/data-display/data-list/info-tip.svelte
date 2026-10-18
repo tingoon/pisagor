@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, DataList, Popover } from "@pisagor/svelte";
-  import InfoIcon from "phosphor-svelte/lib/InfoIcon";
+  import { InfoIcon } from "phosphor-svelte";
 
   const data = [
     {

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, FileUpload } from "@pisagor/svelte";
-  import TrashIcon from "phosphor-svelte/lib/TrashIcon";
+  import { TrashIcon } from "phosphor-svelte";
 </script>
 
 <FileUpload>

@@ -6,8 +6,7 @@
   import type { CheckboxProps as BaseCheckboxProps } from "@pisagor/props";
   import { checkboxRecipe, formControlToggleRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CheckIcon from "phosphor-svelte/lib/CheckIcon";
-  import MinusIcon from "phosphor-svelte/lib/MinusIcon";
+  import { CheckIcon, MinusIcon } from "phosphor-svelte";
   import type { SizeScaleProps } from "../../internal/types";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
 

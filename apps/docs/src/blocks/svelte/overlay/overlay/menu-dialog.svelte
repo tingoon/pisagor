@@ -1,8 +1,6 @@
 <script lang="ts">
   import { Button, Dialog, DropdownMenu } from "@pisagor/svelte";
-  import GearIcon from "phosphor-svelte/lib/GearIcon";
-  import InfoIcon from "phosphor-svelte/lib/InfoIcon";
-  import UserIcon from "phosphor-svelte/lib/UserIcon";
+  import { GearIcon, InfoIcon, UserIcon } from "phosphor-svelte";
   import { menuDialogBlock } from "#/styles/recipes/overlay";
 
   const styles = menuDialogBlock();

@@ -1,8 +1,7 @@
 <script lang="ts">
   import { NumberInput as ArkNumberInput } from "@ark-ui/svelte";
   import { NumberInput } from "@pisagor/svelte";
-  import MinusIcon from "phosphor-svelte/lib/MinusIcon";
-  import PlusIcon from "phosphor-svelte/lib/PlusIcon";
+  import { MinusIcon, PlusIcon } from "phosphor-svelte";
 </script>
 
 <NumberInput defaultValue="1">

@@ -5,8 +5,7 @@
   } from "@ark-ui/svelte";
   import { inputGroupButtonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import EyeIcon from "phosphor-svelte/lib/EyeIcon";
-  import EyeSlashIcon from "phosphor-svelte/lib/EyeSlashIcon";
+  import { EyeIcon, EyeSlashIcon } from "phosphor-svelte";
   import InputGroupAddon from "../input-group/input-group-addon.svelte";
   import { useMessageResolver } from "../provider/context";
 

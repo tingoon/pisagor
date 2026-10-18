@@ -2,7 +2,7 @@
   import { waitForElement, waitForEvent } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { Button, Tour, type TourStepDetails } from "@pisagor/svelte";
-  import PlusIcon from "phosphor-svelte/lib/PlusIcon";
+  import { PlusIcon } from "phosphor-svelte";
 
   const steps: TourStepDetails[] = [
     {

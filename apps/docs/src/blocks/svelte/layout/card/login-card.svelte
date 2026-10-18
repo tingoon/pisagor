@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Button, Card, Field, Input } from "@pisagor/svelte";
   import { cn } from "@pisagor/utils";
-  import GlobeIcon from "phosphor-svelte/lib/GlobeIcon";
+  import { GlobeIcon } from "phosphor-svelte";
   import { loginCardBlock } from "#/styles/recipes/card";
 
   const styles = loginCardBlock();

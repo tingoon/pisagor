@@ -1,10 +1,12 @@
 <script lang="ts">
   import { bottomNavigationRecipe } from "@pisagor/recipes";
   import { BottomNavigation, ScrollArea } from "@pisagor/svelte";
-  import BellIcon from "phosphor-svelte/lib/BellIcon";
-  import HouseIcon from "phosphor-svelte/lib/HouseIcon";
-  import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
-  import UserIcon from "phosphor-svelte/lib/UserIcon";
+  import {
+    BellIcon,
+    HouseIcon,
+    MagnifyingGlassIcon,
+    UserIcon,
+  } from "phosphor-svelte";
   import { tv } from "tailwind-variants";
 
   const brandBottomNavigationRecipe = tv({

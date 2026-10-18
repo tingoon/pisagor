@@ -1,7 +1,6 @@
 <script lang="ts">
   import { Stat } from "@pisagor/svelte";
-  import ArrowDownIcon from "phosphor-svelte/lib/ArrowDownIcon";
-  import ArrowUpIcon from "phosphor-svelte/lib/ArrowUpIcon";
+  import { ArrowDownIcon, ArrowUpIcon } from "phosphor-svelte";
 </script>
 
 <div class="grid gap-2 sm:grid-cols-2">

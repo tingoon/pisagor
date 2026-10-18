@@ -1,6 +1,6 @@
 <script lang="ts">
   import { focusNavigationMenuContentLink } from "@pisagor/utils";
-  import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
+  import { CaretDownIcon } from "phosphor-svelte";
   import type { Snippet } from "svelte";
   import type { HTMLButtonAttributes } from "svelte/elements";
   import {

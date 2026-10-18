@@ -108,7 +108,7 @@ For **foldered** multi-file components. Export `createSlotRecipeContext` binding
 
 - Relative sibling imports; public map for apps.
 - Relative by depth: `../utils` / `../../utils`, `../internal/…`, `../hooks`.
-- Icons: `phosphor-svelte` (e.g. `import XIcon from "phosphor-svelte/lib/XIcon"`).
+- Icons: `phosphor-svelte` (e.g. `import { XIcon } from "phosphor-svelte"`).
 - Class merging: `cn` from `@pisagor/utils`.
 
 ### Shared props (`@pisagor/props`)

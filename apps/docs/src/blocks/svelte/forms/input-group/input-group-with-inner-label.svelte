@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, Field, InputGroup, Tooltip } from "@pisagor/svelte";
-  import InfoIcon from "phosphor-svelte/lib/InfoIcon";
+  import { InfoIcon } from "phosphor-svelte";
   import { inputGroupWithInnerLabelBlock } from "#/styles/recipes/input-group";
 
   const styles = inputGroupWithInnerLabelBlock();

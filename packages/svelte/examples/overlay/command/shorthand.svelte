@@ -1,8 +1,6 @@
 <script lang="ts">
   import { Command } from "@pisagor/svelte";
-  import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
-  import GearIcon from "phosphor-svelte/lib/GearIcon";
-  import UserIcon from "phosphor-svelte/lib/UserIcon";
+  import { CalendarIcon, GearIcon, UserIcon } from "phosphor-svelte";
 
   const items = [
     {

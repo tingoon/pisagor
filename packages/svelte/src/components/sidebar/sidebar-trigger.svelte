@@ -1,6 +1,6 @@
 <script lang="ts">
   import { cn } from "@pisagor/utils";
-  import SidebarSimpleIcon from "phosphor-svelte/lib/SidebarSimpleIcon";
+  import { SidebarSimpleIcon } from "phosphor-svelte";
   import type { ComponentProps } from "svelte";
   import Button from "../button.svelte";
   import { useSidebar } from "./sidebar.context";

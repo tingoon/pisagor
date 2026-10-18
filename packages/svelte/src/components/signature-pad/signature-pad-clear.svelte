@@ -4,7 +4,7 @@
     type SignaturePadClearTriggerProps,
   } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import ArrowCounterClockwiseIcon from "phosphor-svelte/lib/ArrowCounterClockwiseIcon";
+  import { ArrowCounterClockwiseIcon } from "phosphor-svelte";
   import Button from "../button.svelte";
   import { useMessageResolver } from "../provider/context";
   import { useSignaturePad } from "./signature-pad.context";

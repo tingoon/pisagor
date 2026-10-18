@@ -6,8 +6,7 @@
   } from "@ark-ui/svelte";
   import { buttonRecipe, dialogRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
-  import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
+  import { CaretLeftIcon, CaretRightIcon } from "phosphor-svelte";
   import { isInsideControl } from "../../internal/inside-control";
   import { TOUR_INSIDE_CONTROL, useTourContext } from "./tour.context";
 

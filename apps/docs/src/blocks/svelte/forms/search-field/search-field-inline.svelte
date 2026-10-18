@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, Field, Input } from "@pisagor/svelte";
-  import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
+  import { MagnifyingGlassIcon } from "phosphor-svelte";
 </script>
 
 <Field orientation="horizontal">

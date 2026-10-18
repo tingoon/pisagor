@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, FileUpload } from "@pisagor/svelte";
-  import PaperclipIcon from "phosphor-svelte/lib/PaperclipIcon";
+  import { PaperclipIcon } from "phosphor-svelte";
 </script>
 
 <FileUpload>

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Announcement, AppShell, Badge, Button } from "@pisagor/svelte";
-  import WarningIcon from "phosphor-svelte/lib/WarningIcon";
+  import { WarningIcon } from "phosphor-svelte";
   import { loremParagraphs } from "./helpers";
 
   let opened = $state(true);

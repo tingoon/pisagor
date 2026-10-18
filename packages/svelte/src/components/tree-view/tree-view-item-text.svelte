@@ -5,7 +5,7 @@
   } from "@ark-ui/svelte";
   import { treeViewItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import FileIcon from "phosphor-svelte/lib/FileIcon";
+  import { FileIcon } from "phosphor-svelte";
   import type { Component } from "svelte";
   import { useTreeView, useTreeViewItem } from "./tree-view.context";
   import TreeViewNodeInput from "./tree-view-node-input.svelte";

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { useFilter, useListCollection } from "@ark-ui/svelte";
   import { Button, Input, Listbox, Popover } from "@pisagor/svelte";
-  import CaretUpDownIcon from "phosphor-svelte/lib/CaretUpDownIcon";
+  import { CaretUpDownIcon } from "phosphor-svelte";
 
   let search = $state("");
   let isOpen = $state(false);

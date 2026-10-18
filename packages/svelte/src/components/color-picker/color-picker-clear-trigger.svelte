@@ -1,6 +1,6 @@
 <script lang="ts">
   import { parseColor, useColorPickerContext } from "@ark-ui/svelte";
-  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { XIcon } from "phosphor-svelte";
   import type { ClassValue } from "svelte/elements";
   import { InputGroup } from "../input-group";
   import { useMessageResolver } from "../provider/context";

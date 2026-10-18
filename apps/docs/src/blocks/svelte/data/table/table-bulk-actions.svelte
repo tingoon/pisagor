@@ -9,12 +9,14 @@
     Table,
   } from "@pisagor/svelte";
   import { cn } from "@pisagor/utils";
-  import ArchiveIcon from "phosphor-svelte/lib/ArchiveIcon";
-  import CopyIcon from "phosphor-svelte/lib/CopyIcon";
-  import DotsThreeIcon from "phosphor-svelte/lib/DotsThreeIcon";
-  import PaperPlaneTiltIcon from "phosphor-svelte/lib/PaperPlaneTiltIcon";
-  import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";
-  import TrashIcon from "phosphor-svelte/lib/TrashIcon";
+  import {
+    ArchiveIcon,
+    CopyIcon,
+    DotsThreeIcon,
+    PaperPlaneTiltIcon,
+    PencilSimpleIcon,
+    TrashIcon,
+  } from "phosphor-svelte";
   import { tableBulkActionsBlock } from "#/styles/recipes/table";
 
   const styles = tableBulkActionsBlock();

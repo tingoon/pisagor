@@ -2,7 +2,7 @@
   import { Tour as TourPrimitive } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
+  import { CaretLeftIcon } from "phosphor-svelte";
   import type { Snippet } from "svelte";
   import type { ClassValue } from "svelte/elements";
   import { useTourContext } from "./tour.context";

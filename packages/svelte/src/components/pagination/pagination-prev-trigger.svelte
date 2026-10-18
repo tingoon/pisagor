@@ -5,7 +5,7 @@
   } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
+  import { CaretLeftIcon } from "phosphor-svelte";
 
   let {
     children,

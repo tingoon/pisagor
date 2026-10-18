@@ -5,7 +5,7 @@
   } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import MinusIcon from "phosphor-svelte/lib/MinusIcon";
+  import { MinusIcon } from "phosphor-svelte";
   import { useMessageResolver } from "../provider/context";
 
   const t = useMessageResolver();

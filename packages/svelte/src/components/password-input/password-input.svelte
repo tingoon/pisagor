@@ -11,9 +11,7 @@
     passwordInputRecipe,
   } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import EyeIcon from "phosphor-svelte/lib/EyeIcon";
-  import EyeSlashIcon from "phosphor-svelte/lib/EyeSlashIcon";
-  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { EyeIcon, EyeSlashIcon, XIcon } from "phosphor-svelte";
   import InputGroupAddon from "../input-group/input-group-addon.svelte";
   import InputGroupButton from "../input-group/input-group-button.svelte";
   import InputGroupRoot from "../input-group/input-group-root.svelte";

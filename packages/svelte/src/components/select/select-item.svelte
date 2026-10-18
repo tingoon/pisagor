@@ -5,7 +5,7 @@
   } from "@ark-ui/svelte";
   import { selectRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CheckIcon from "phosphor-svelte/lib/CheckIcon";
+  import { CheckIcon } from "phosphor-svelte";
   import { useSelectRoot } from "./select.context";
 
   let { class: className, children, ...rest }: SelectItemProps = $props();

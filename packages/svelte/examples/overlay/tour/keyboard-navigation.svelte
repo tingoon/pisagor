@@ -1,7 +1,7 @@
 <script lang="ts">
   import { buttonRecipe } from "@pisagor/recipes";
   import { Tour, type TourStepDetails } from "@pisagor/svelte";
-  import KeyboardIcon from "phosphor-svelte/lib/KeyboardIcon";
+  import { KeyboardIcon } from "phosphor-svelte";
 
   const steps: TourStepDetails[] = [
     {

@@ -7,7 +7,7 @@
     TreeView,
   } from "@pisagor/svelte";
   import { cn } from "@pisagor/utils";
-  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { XIcon } from "phosphor-svelte";
   import { ideLayoutBlock } from "#/styles/recipes/editors";
 
   const styles = ideLayoutBlock();

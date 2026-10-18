@@ -1,7 +1,7 @@
 <script lang="ts">
   import { hoverCardRecipe } from "@pisagor/recipes";
   import { Avatar, Button, HoverCard } from "@pisagor/svelte";
-  import MapPinIcon from "phosphor-svelte/lib/MapPinIcon";
+  import { MapPinIcon } from "phosphor-svelte";
   import { tv } from "tailwind-variants";
 
   const brandHoverCardRecipe = tv({

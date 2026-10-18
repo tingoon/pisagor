@@ -5,7 +5,7 @@
   } from "@ark-ui/svelte";
   import { formControlShellRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
+  import { CaretDownIcon } from "phosphor-svelte";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
   import { useCalendar } from "./calendar.context";
 

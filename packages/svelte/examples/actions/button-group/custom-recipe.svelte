@@ -1,8 +1,7 @@
 <script lang="ts">
   import { buttonGroupRecipe } from "@pisagor/recipes";
   import { Button, ButtonGroup } from "@pisagor/svelte";
-  import MinusIcon from "phosphor-svelte/lib/MinusIcon";
-  import PlusIcon from "phosphor-svelte/lib/PlusIcon";
+  import { MinusIcon, PlusIcon } from "phosphor-svelte";
   import { tv } from "tailwind-variants";
 
   const brandButtonGroupRecipe = tv({

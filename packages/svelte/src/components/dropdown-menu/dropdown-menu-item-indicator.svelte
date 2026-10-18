@@ -5,7 +5,7 @@
   } from "@ark-ui/svelte";
   import { dropdownMenuItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CheckIcon from "phosphor-svelte/lib/CheckIcon";
+  import { CheckIcon } from "phosphor-svelte";
 
   let {
     class: className,

@@ -1,8 +1,6 @@
 <script lang="ts">
   import { ContextMenu, Table } from "@pisagor/svelte";
-  import EyeIcon from "phosphor-svelte/lib/EyeIcon";
-  import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";
-  import TrashIcon from "phosphor-svelte/lib/TrashIcon";
+  import { EyeIcon, PencilSimpleIcon, TrashIcon } from "phosphor-svelte";
   import { tableRowMenuBlock } from "#/styles/recipes/table";
 
   const styles = tableRowMenuBlock();

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, Calendar, DatePicker, parseDate } from "@pisagor/svelte";
-  import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
+  import { CalendarIcon } from "phosphor-svelte";
 </script>
 
 <DatePicker focusedValue={parseDate(new Date())} selectionMode="range">

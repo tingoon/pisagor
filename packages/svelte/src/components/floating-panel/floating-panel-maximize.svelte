@@ -5,7 +5,7 @@
   } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import ArrowsOutIcon from "phosphor-svelte/lib/ArrowsOutIcon";
+  import { ArrowsOutIcon } from "phosphor-svelte";
   import { useMessageResolver } from "../provider/context";
 
   const t = useMessageResolver();

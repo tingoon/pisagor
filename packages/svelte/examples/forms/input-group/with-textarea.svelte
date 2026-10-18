@@ -1,7 +1,6 @@
 <script lang="ts">
   import { Button, InputGroup } from "@pisagor/svelte";
-  import ArrowUpIcon from "phosphor-svelte/lib/ArrowUpIcon";
-  import PlusIcon from "phosphor-svelte/lib/PlusIcon";
+  import { ArrowUpIcon, PlusIcon } from "phosphor-svelte";
 </script>
 
 <InputGroup>

@@ -5,7 +5,7 @@
   } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
+  import { CaretRightIcon } from "phosphor-svelte";
   import { useMessageResolver } from "../provider/context";
   import { useCalendar } from "./calendar.context";
 

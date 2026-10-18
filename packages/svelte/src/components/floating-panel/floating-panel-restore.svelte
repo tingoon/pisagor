@@ -5,8 +5,7 @@
   } from "@ark-ui/svelte";
   import { buttonRecipe, floatingPanelRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import ArrowsOutIcon from "phosphor-svelte/lib/ArrowsOutIcon";
-  import CornersInIcon from "phosphor-svelte/lib/CornersInIcon";
+  import { ArrowsOutIcon, CornersInIcon } from "phosphor-svelte";
   import { useMessageResolver } from "../provider/context";
   import { useFloatingPanel } from "./floating-panel.context";
 

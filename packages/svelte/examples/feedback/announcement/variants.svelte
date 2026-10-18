@@ -1,8 +1,10 @@
 <script lang="ts">
   import { Announcement, Badge } from "@pisagor/svelte";
-  import ArrowUpRightIcon from "phosphor-svelte/lib/ArrowUpRightIcon";
-  import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
-  import WarningIcon from "phosphor-svelte/lib/WarningIcon";
+  import {
+    ArrowUpRightIcon,
+    CheckCircleIcon,
+    WarningIcon,
+  } from "phosphor-svelte";
 </script>
 
 <div class="flex flex-col gap-2">

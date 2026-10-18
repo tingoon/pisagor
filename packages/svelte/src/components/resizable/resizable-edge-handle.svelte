@@ -2,7 +2,7 @@
   import type { ResizableEdgeHandleProps as BaseResizableEdgeHandleProps } from "@pisagor/props";
   import { resizableEdgeHandleRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import DotsSixVerticalIcon from "phosphor-svelte/lib/DotsSixVerticalIcon";
+  import { DotsSixVerticalIcon } from "phosphor-svelte";
   import type { HTMLButtonAttributes } from "svelte/elements";
 
   type ResizableHandlePosition = "bottom" | "center" | "top";

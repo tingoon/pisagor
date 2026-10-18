@@ -6,8 +6,7 @@
   } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import PauseIcon from "phosphor-svelte/lib/PauseIcon";
-  import PlayIcon from "phosphor-svelte/lib/PlayIcon";
+  import { PauseIcon, PlayIcon } from "phosphor-svelte";
   import { useMessageResolver } from "../provider/context";
 
   const t = useMessageResolver();

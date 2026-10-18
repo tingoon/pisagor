@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Rating } from "@pisagor/svelte";
-  import StarIcon from "phosphor-svelte/lib/StarIcon";
+  import { StarIcon } from "phosphor-svelte";
 </script>
 
 <Rating.Root count={5} defaultValue={3}>

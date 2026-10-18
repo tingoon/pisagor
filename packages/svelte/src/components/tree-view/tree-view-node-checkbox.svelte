@@ -8,8 +8,7 @@
     treeViewItemRecipe,
   } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CheckIcon from "phosphor-svelte/lib/CheckIcon";
-  import MinusIcon from "phosphor-svelte/lib/MinusIcon";
+  import { CheckIcon, MinusIcon } from "phosphor-svelte";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
   import { useTreeViewItem } from "./tree-view.context";
 

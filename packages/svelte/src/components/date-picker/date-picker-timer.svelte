@@ -7,7 +7,7 @@
     inputGroupControlRecipe,
   } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import ClockIcon from "phosphor-svelte/lib/ClockIcon";
+  import { ClockIcon } from "phosphor-svelte";
   import type { Snippet } from "svelte";
   import type { HTMLInputAttributes } from "svelte/elements";
   import InputClearButton from "../input/input-clear-button.svelte";

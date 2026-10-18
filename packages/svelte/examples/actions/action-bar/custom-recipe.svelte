@@ -1,11 +1,13 @@
 <script lang="ts">
   import { actionBarRecipe } from "@pisagor/recipes";
   import { ActionBar, Button } from "@pisagor/svelte";
-  import ArchiveIcon from "phosphor-svelte/lib/ArchiveIcon";
-  import DownloadIcon from "phosphor-svelte/lib/DownloadIcon";
-  import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";
-  import TrashIcon from "phosphor-svelte/lib/TrashIcon";
-  import XIcon from "phosphor-svelte/lib/XIcon";
+  import {
+    ArchiveIcon,
+    DownloadIcon,
+    PencilSimpleIcon,
+    TrashIcon,
+    XIcon,
+  } from "phosphor-svelte";
   import { tv } from "tailwind-variants";
 
   const brandActionBarRecipe = tv({

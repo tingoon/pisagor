@@ -9,8 +9,7 @@
     selectRecipe,
   } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CaretUpDownIcon from "phosphor-svelte/lib/CaretUpDownIcon";
-  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { CaretUpDownIcon, XIcon } from "phosphor-svelte";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
   import { useSelectControl, useSelectRoot } from "./select.context";
   import SelectClearTrigger from "./select-clear-trigger.svelte";

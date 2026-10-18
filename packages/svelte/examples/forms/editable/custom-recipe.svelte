@@ -1,8 +1,7 @@
 <script lang="ts">
   import { editableRecipe } from "@pisagor/recipes";
   import { Button, Editable, Input } from "@pisagor/svelte";
-  import CheckIcon from "phosphor-svelte/lib/CheckIcon";
-  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { CheckIcon, XIcon } from "phosphor-svelte";
   import { tv } from "tailwind-variants";
 
   const brandEditableRecipe = tv({

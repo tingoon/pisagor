@@ -4,9 +4,7 @@
   import { statTrendRecipe } from "@pisagor/recipes";
   import type { MessageKey } from "@pisagor/utils";
   import { cn } from "@pisagor/utils";
-  import ArrowDownIcon from "phosphor-svelte/lib/ArrowDownIcon";
-  import ArrowUpIcon from "phosphor-svelte/lib/ArrowUpIcon";
-  import MinusIcon from "phosphor-svelte/lib/MinusIcon";
+  import { ArrowDownIcon, ArrowUpIcon, MinusIcon } from "phosphor-svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { useMessageResolver } from "../provider/context";
 

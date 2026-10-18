@@ -1,8 +1,6 @@
 <script lang="ts">
   import { Steps } from "@pisagor/svelte";
-  import CreditCardIcon from "phosphor-svelte/lib/CreditCardIcon";
-  import HardDriveIcon from "phosphor-svelte/lib/HardDriveIcon";
-  import UserIcon from "phosphor-svelte/lib/UserIcon";
+  import { CreditCardIcon, HardDriveIcon, UserIcon } from "phosphor-svelte";
 
   const items = [
     { icon: UserIcon, id: "user" },

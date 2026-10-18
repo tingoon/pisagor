@@ -1,7 +1,7 @@
 <script lang="ts">
   import { useFilter, useListCollection } from "@ark-ui/svelte";
   import { Autocomplete, InputGroup } from "@pisagor/svelte";
-  import AppleLogoIcon from "phosphor-svelte/lib/AppleLogoIcon";
+  import { AppleLogoIcon } from "phosphor-svelte";
 
   const initialItems = [
     { label: "Apple", value: "apple" },

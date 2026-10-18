@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, FileUpload } from "@pisagor/svelte";
-  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { XIcon } from "phosphor-svelte";
 
   let files = $state<File[]>([]);
 </script>

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, Card } from "@pisagor/svelte";
-  import CurrencyDollarIcon from "phosphor-svelte/lib/CurrencyDollarIcon";
+  import { CurrencyDollarIcon } from "phosphor-svelte";
 </script>
 
 <Card>

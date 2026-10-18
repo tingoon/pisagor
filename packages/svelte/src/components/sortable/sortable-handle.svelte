@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Ark } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import DotsSixVerticalIcon from "phosphor-svelte/lib/DotsSixVerticalIcon";
+  import { DotsSixVerticalIcon } from "phosphor-svelte";
   import { onMount } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { useMessageResolver } from "../provider/context";

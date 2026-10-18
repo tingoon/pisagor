@@ -4,7 +4,7 @@
     type SplitterResizeTriggerProps,
   } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import DotsSixVerticalIcon from "phosphor-svelte/lib/DotsSixVerticalIcon";
+  import { DotsSixVerticalIcon } from "phosphor-svelte";
   import { useMessageResolver } from "../provider/context";
   import { useResizable } from "./resizable.context";
   import ResizableResizeTriggerIndicator from "./resizable-resize-trigger-indicator.svelte";

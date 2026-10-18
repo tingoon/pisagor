@@ -1,6 +1,6 @@
 <script lang="ts">
   import { InputGroup } from "@pisagor/svelte";
-  import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
+  import { MagnifyingGlassIcon } from "phosphor-svelte";
 </script>
 
 <div class="flex flex-col gap-2">

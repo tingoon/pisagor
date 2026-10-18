@@ -1,8 +1,7 @@
 <script lang="ts">
   import { Field, PasswordInput } from "@pisagor/svelte";
   import { cn } from "@pisagor/utils";
-  import CheckIcon from "phosphor-svelte/lib/CheckIcon";
-  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { CheckIcon, XIcon } from "phosphor-svelte";
   import {
     passwordStrengthBlock,
     passwordStrengthTone,

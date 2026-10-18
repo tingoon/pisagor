@@ -1,7 +1,6 @@
 <script lang="ts">
   import { Button, Card, Timer } from "@pisagor/svelte";
-  import ArrowCounterClockwiseIcon from "phosphor-svelte/lib/ArrowCounterClockwiseIcon";
-  import PlayIcon from "phosphor-svelte/lib/PlayIcon";
+  import { ArrowCounterClockwiseIcon, PlayIcon } from "phosphor-svelte";
 
   let ticks = $state(0);
   let completed = $state(false);

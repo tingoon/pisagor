@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Stat } from "@pisagor/svelte";
-  import ArrowUpIcon from "phosphor-svelte/lib/ArrowUpIcon";
+  import { ArrowUpIcon } from "phosphor-svelte";
 </script>
 
 <Stat.Root>

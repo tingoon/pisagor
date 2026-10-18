@@ -7,7 +7,7 @@
   import type { PopoverProps as BasePopoverProps } from "@pisagor/props";
   import { buttonRecipe, popoverRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { XIcon } from "phosphor-svelte";
   import { useMessageResolver } from "../provider/context";
   import { Context } from "./popover.context";
   import PopoverPositioner from "./popover-positioner.svelte";

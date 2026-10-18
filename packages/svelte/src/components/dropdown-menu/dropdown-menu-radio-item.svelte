@@ -6,7 +6,7 @@
   import type { DropdownMenuItemProps as BaseDropdownMenuItemProps } from "@pisagor/props";
   import { dropdownMenuItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CheckIcon from "phosphor-svelte/lib/CheckIcon";
+  import { CheckIcon } from "phosphor-svelte";
 
   type Props = MenuRadioItemProps & BaseDropdownMenuItemProps;
 

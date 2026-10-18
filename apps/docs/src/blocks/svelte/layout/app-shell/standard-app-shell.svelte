@@ -1,11 +1,13 @@
 <script lang="ts">
   import { AppShell, Button } from "@pisagor/svelte";
   import { cn } from "@pisagor/utils";
-  import GearIcon from "phosphor-svelte/lib/GearIcon";
-  import HouseIcon from "phosphor-svelte/lib/HouseIcon";
-  import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
-  import SquaresFourIcon from "phosphor-svelte/lib/SquaresFourIcon";
-  import UsersIcon from "phosphor-svelte/lib/UsersIcon";
+  import {
+    GearIcon,
+    HouseIcon,
+    MagnifyingGlassIcon,
+    SquaresFourIcon,
+    UsersIcon,
+  } from "phosphor-svelte";
   import type { Snippet } from "svelte";
   import { standardAppShellBlock } from "#/styles/recipes/app-shell";
   import ActiveRailTitle from "./active-rail-title.svelte";

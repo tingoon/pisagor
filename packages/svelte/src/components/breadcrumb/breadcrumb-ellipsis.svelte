@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Ark } from "@ark-ui/svelte";
-  import DotsThreeIcon from "phosphor-svelte/lib/DotsThreeIcon";
+  import { DotsThreeIcon } from "phosphor-svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import { useBreadcrumb } from "./breadcrumb.context";
 

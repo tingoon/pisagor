@@ -5,7 +5,7 @@
   } from "@ark-ui/svelte";
   import { buttonRecipe, comboboxRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CaretUpDownIcon from "phosphor-svelte/lib/CaretUpDownIcon";
+  import { CaretUpDownIcon } from "phosphor-svelte";
   import { useMessageResolver } from "../provider/context";
   import { useComboboxRoot } from "./combobox.context";
 
