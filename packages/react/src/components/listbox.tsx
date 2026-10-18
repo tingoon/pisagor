@@ -19,7 +19,7 @@ import type {
 import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
 
 import { type ReactNode, useMemo } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "./dropdown-menu";
 import { useMessage } from "./provider/context";
 

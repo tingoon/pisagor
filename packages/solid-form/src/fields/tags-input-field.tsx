@@ -1,9 +1,6 @@
 import { TagsInput, type TagsInputProps } from "@pisagor/solid";
 import { splitProps } from "solid-js";
-import {
-  type FieldPresentationProps,
-  FieldShell,
-} from "../internal/field-shell";
+import { type FieldPresentationProps, FieldShell } from "../internal";
 
 // #region Types
 type TagsInputControlProps = Omit<TagsInputProps, "invalid" | "name">;

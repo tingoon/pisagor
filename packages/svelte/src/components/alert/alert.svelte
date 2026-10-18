@@ -9,7 +9,7 @@
   } from "phosphor-svelte";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import AlertAction from "./alert-action.svelte";
   import AlertDescription from "./alert-description.svelte";
   import AlertRoot from "./alert-root.svelte";

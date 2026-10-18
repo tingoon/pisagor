@@ -19,7 +19,7 @@ import type {
 } from "@pisagor/props";
 import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { InputGroup, type InputGroupProps } from "./input-group";
 import { useMessage } from "./provider/context";
 

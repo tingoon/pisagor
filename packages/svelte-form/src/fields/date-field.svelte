@@ -1,7 +1,7 @@
 <script lang="ts">
   import { DatePicker } from "@pisagor/svelte";
   import type { ComponentProps, Snippet } from "svelte";
-  import FieldShell from "../internal/field-shell.svelte";
+  import { FieldShell } from "../internal";
 
   type DatePickerProps = ComponentProps<typeof DatePicker>;
 

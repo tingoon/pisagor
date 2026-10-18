@@ -12,8 +12,11 @@ import { cn } from "@pisagor/utils";
 import type { JSX, ParentProps } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { useClearableInput } from "../hooks";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { SizeScaleProps, VariantClassNames } from "../internal/types";
+import {
+  type SizeScaleProps,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 import { callEventHandler } from "../utils";
 import { Input } from "./input";
 import {

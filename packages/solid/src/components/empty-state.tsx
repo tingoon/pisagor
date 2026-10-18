@@ -3,8 +3,11 @@ import type { EmptyStateProps as BaseEmptyStateRootProps } from "@pisagor/props"
 import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { SizeScaleProps, VariantClassNames } from "../internal/types";
+import {
+  type SizeScaleProps,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({

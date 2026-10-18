@@ -1,6 +1,6 @@
 import type { ItemVariantProps } from "@pisagor/recipes";
 import { itemRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 
 export const {
   Context,

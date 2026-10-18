@@ -16,7 +16,7 @@
   import { cn } from "@pisagor/utils";
   import { CheckIcon, ClipboardIcon } from "phosphor-svelte";
   import type { Snippet } from "svelte";
-  import type { VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import Button from "../button.svelte";
   import { useMessageResolver } from "../provider/context";
   import { useFormControlSurface } from "../surface/use-form-control-surface";

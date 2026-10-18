@@ -4,7 +4,7 @@ import { createSignal, Show, splitProps } from "solid-js";
 import {
   ArrowsInLineHorizontalIcon,
   ArrowsOutLineHorizontalIcon,
-} from "../../internal/icons";
+} from "../../internal";
 import type { ButtonProps } from "../button";
 import { Resizable } from "../resizable";
 import { ScrollArea } from "../scroll-area";

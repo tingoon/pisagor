@@ -3,7 +3,7 @@ import {
   bottomNavigationRecipe,
 } from "@pisagor/recipes";
 import { getContext, setContext } from "svelte";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 
 export const {
   Context,

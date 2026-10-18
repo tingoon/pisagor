@@ -18,7 +18,7 @@ import {
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import type { SizeScaleProps } from "../internal/types";
+import type { SizeScaleProps } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";

@@ -18,7 +18,7 @@ import {
   type PropType,
   type UnwrapRef,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { useTranslation } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";

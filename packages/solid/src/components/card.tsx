@@ -3,7 +3,7 @@ import type { CardProps as BaseCardRootProps } from "@pisagor/props";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {

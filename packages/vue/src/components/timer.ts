@@ -10,8 +10,7 @@ import type {
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { useTranslation } from "./provider/context";
 
 // #region Context

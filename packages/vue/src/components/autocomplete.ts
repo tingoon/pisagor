@@ -5,7 +5,7 @@ import {
   createListCollection,
 } from "@ark-ui/vue";
 import { defineComponent, h, type PropType } from "vue";
-import type { ClassValue } from "../internal/types";
+import type { ClassValue } from "../internal";
 import type { ComboboxInputProps, ComboboxRootProps } from "./combobox";
 import { Combobox } from "./combobox";
 import { Separator } from "./separator";

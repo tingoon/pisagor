@@ -13,7 +13,7 @@ import type { CircularSliderProps as BaseCircularSliderProps } from "@pisagor/pr
 import { circularSliderRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
 import { Field } from "./field";
 

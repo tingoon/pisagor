@@ -3,7 +3,7 @@ import type { AvatarGroupProps as BaseAvatarGroupRootProps } from "@pisagor/prop
 import { avatarGroupRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../../internal";
 import { Avatar } from "./avatar";
 
 // #region Context

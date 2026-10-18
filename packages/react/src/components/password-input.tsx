@@ -10,7 +10,7 @@ import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/prop
 import { passwordInputRecipe } from "@pisagor/recipes";
 import type { RefAttributes } from "react";
 import { useClearableInput } from "../hooks";
-import type { FormControlVariant } from "../internal/types";
+import type { FormControlVariant } from "../internal";
 import {
   InputGroup,
   type InputGroupButtonProps,

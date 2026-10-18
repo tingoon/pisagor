@@ -9,8 +9,7 @@ import type { CollapsibleProps as BaseCollapsibleRootProps } from "@pisagor/prop
 import { collapsibleRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CaretDownIcon } from "../internal/icons";
+import { CaretDownIcon, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {

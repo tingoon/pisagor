@@ -11,10 +11,7 @@
   } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { CalendarIcon } from "phosphor-svelte";
-  import {
-    isInsideControl,
-    setInsideControl,
-  } from "../../internal/inside-control";
+  import { isInsideControl, setInsideControl } from "../../internal";
   import { useMessageResolver } from "../provider/context";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
   import {

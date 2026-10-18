@@ -7,12 +7,12 @@ import {
 } from "@ark-ui/react";
 import type { SwitchProps as BaseSwitchRootProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type {
-  FormControlVariant,
-  SizeScaleProps,
-  VariantClassNames,
-} from "../internal/types";
+import {
+  type FormControlVariant,
+  type SizeScaleProps,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context

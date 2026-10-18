@@ -12,8 +12,7 @@ import { cn } from "@pisagor/utils";
 import type { Component, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { Context: TooltipStylesContext, withContext } = createSlotRecipeContext({

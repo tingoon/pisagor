@@ -16,9 +16,12 @@ import {
 import { cn } from "@pisagor/utils";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CheckIcon, ClipboardIcon } from "../internal/icons";
-import type { VariantClassNames } from "../internal/types";
+import {
+  CheckIcon,
+  ClipboardIcon,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { useTranslation } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";

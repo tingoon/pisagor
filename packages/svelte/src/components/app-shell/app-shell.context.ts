@@ -1,5 +1,5 @@
 import { type AppShellRecipe, appShellRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils/create-context";
 
 export type AppShellPlacement = "start" | "end";

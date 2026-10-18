@@ -7,7 +7,7 @@ import {
   type ClearableChangeEvent,
   useClearableInput,
 } from "../hooks/use-clearable-input";
-import type { ClassValue } from "../internal/types";
+import type { ClassValue } from "../internal";
 import { InputGroup } from "./input-group";
 import type {
   InputGroupButtonProps,

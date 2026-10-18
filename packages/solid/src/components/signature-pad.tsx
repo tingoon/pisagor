@@ -15,9 +15,11 @@ import {
 import { cn } from "@pisagor/utils";
 import type { Component, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { ArrowCounterClockwiseIcon } from "../internal/icons";
-import type { VariantClassNames } from "../internal/types";
+import {
+  ArrowCounterClockwiseIcon,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button } from "./button";
 import { useTranslation } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";

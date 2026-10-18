@@ -7,7 +7,7 @@ import {
 import { CaretDownIcon } from "@phosphor-icons/react";
 import type { CollapsibleProps as BaseCollapsibleRootProps } from "@pisagor/props";
 import { collapsibleRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {

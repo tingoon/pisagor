@@ -11,7 +11,7 @@ import type {
 } from "@pisagor/props";
 import { commandRecipe } from "@pisagor/recipes";
 import { type ComponentProps, Fragment, type ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import type {
   ComboboxContentProps,
   ComboboxEmptyProps,

@@ -10,12 +10,12 @@ import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactElement, ReactNode } from "react";
 import { cloneElement } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type {
-  FormControlVariant,
-  SizeScaleProps,
-  VariantClassNames,
-} from "../internal/types";
+import {
+  type FormControlVariant,
+  type SizeScaleProps,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 
 // #region Context
 const {

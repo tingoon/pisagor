@@ -12,8 +12,7 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { MinusIcon, PlusIcon } from "../internal/icons";
+import { MinusIcon, PlusIcon, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { Input, type InputProps } from "./input";
 import { useTranslation } from "./provider/context";

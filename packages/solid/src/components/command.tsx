@@ -11,8 +11,7 @@ import { commandRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { MagnifyingGlassIcon } from "../internal/icons";
+import { MagnifyingGlassIcon, createSlotRecipeContext } from "../internal";
 import type {
   ComboboxContentProps,
   ComboboxEmptyProps,

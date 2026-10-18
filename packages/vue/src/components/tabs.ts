@@ -3,8 +3,7 @@ import type { TabsProps as BaseTabsRootProps } from "@pisagor/props";
 import { tabsRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Slot recipe context
 const {

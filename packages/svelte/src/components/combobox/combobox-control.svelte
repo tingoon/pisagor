@@ -5,7 +5,7 @@
   } from "@ark-ui/svelte";
   import { comboboxRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import { setInsideControl } from "../../internal/inside-control";
+  import { setInsideControl } from "../../internal";
   import { COMBOBOX_INSIDE_CONTROL, useComboboxRoot } from "./combobox.context";
 
   let { class: className, children, ...rest }: ComboboxControlProps = $props();

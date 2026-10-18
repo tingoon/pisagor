@@ -1,7 +1,7 @@
 import type { UseTourReturn } from "@ark-ui/svelte";
 import type { TourRecipe } from "@pisagor/recipes";
 import { tourRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils/create-context";
 
 export const {

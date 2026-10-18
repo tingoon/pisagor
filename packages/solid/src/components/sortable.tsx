@@ -13,8 +13,7 @@ import {
   onMount,
   splitProps,
 } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { DotsSixVerticalIcon } from "../internal/icons";
+import { DotsSixVerticalIcon, createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
 import { useTranslation } from "./provider/context";
 

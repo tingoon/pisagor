@@ -2,8 +2,11 @@ import { ark } from "@ark-ui/react";
 import type { EmptyStateProps as BaseEmptyStateRootProps } from "@pisagor/props";
 import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { SizeScaleProps, VariantClassNames } from "../internal/types";
+import {
+  type SizeScaleProps,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({

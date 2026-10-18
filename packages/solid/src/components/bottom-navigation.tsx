@@ -9,7 +9,7 @@ import {
 } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createContext, splitProps, useContext } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { useTranslation } from "./provider/context";
 
 // #region Context

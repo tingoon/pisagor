@@ -4,7 +4,7 @@
   import { skeletonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { SizeScaleProps } from "../../internal/types";
+  import type { SizeScaleProps } from "../../internal";
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     lines?: number;

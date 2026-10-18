@@ -7,9 +7,11 @@ import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
 import { inputOtpRecipe, inputRootRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, unref } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
-import { createContext } from "../internal/utils/create-context";
+import {
+  type ClassValue,
+  createContext,
+  createSlotRecipeContext,
+} from "../internal";
 import type { InputProps } from "./input";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 

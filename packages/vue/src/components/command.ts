@@ -18,8 +18,11 @@ import {
   Teleport,
   type VNodeChild,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue, LoosePropValue } from "../internal/types";
+import {
+  type ClassValue,
+  type LoosePropValue,
+  createSlotRecipeContext,
+} from "../internal";
 import { Combobox, type ComboboxRootProps } from "./combobox";
 import { Dialog, type DialogContentProps } from "./dialog";
 import type { InputProps } from "./input";

@@ -6,7 +6,7 @@
   import type { JsonTreeViewProps as BaseJsonTreeViewProps } from "@pisagor/props";
   import type { JsonTreeViewRecipeSlot } from "@pisagor/recipes";
   import { CaretRightIcon } from "phosphor-svelte";
-  import type { VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import JsonTreeViewRoot from "./json-tree-view-root.svelte";
   import JsonTreeViewTree from "./json-tree-view-tree.svelte";
 

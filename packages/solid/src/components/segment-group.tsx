@@ -9,8 +9,7 @@ import type { SegmentGroupProps as BaseSegmentGroupRootProps } from "@pisagor/pr
 import { segmentGroupRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { SizeScaleProps } from "../internal/types";
+import { type SizeScaleProps, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {

@@ -15,10 +15,12 @@ import {
   type VNodeChild,
   watchEffect,
 } from "vue";
-import { renderIconCloseButton } from "../internal/close-button";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
-import { createContext } from "../internal/utils/create-context";
+import {
+  type ClassValue,
+  createContext,
+  createSlotRecipeContext,
+  renderIconCloseButton,
+} from "../internal";
 
 // #region Slot recipe context
 const { provideStyles: provideDialogStyles, withContext } =

@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react";
 import type { AnnouncementProps as BaseAnnouncementRootProps } from "@pisagor/props";
 import { announcementRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({

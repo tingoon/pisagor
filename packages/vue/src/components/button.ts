@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/vue";
 import type { ButtonProps as BaseButtonProps } from "@pisagor/props";
 import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
-import type { ClassValue } from "../internal/types";
+import type { ClassValue } from "../internal";
 import { Spinner } from "./spinner";
 
 // #region Types

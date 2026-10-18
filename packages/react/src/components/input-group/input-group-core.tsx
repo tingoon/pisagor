@@ -15,7 +15,7 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, MouseEvent } from "react";
-import type { FormControlVariant } from "../../internal/types";
+import type { FormControlVariant } from "../../internal";
 import { Button, type ButtonProps } from "../button";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 

@@ -15,8 +15,7 @@ import type {
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { DotsSixVerticalIcon } from "../internal/icons";
+import { DotsSixVerticalIcon, createSlotRecipeContext } from "../internal";
 import { useTranslation } from "./provider/context";
 
 // #region Context

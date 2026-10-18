@@ -28,7 +28,7 @@ import type {
 import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { use } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { Context: DropdownMenuStylesContext } = createSlotRecipeContext({

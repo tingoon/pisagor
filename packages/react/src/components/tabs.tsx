@@ -8,7 +8,7 @@ import {
 import type { TabsProps as BaseTabsRootProps } from "@pisagor/props";
 import { type TabsVariantProps, tabsRecipe } from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {

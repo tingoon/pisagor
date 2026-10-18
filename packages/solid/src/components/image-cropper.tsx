@@ -10,7 +10,7 @@ import type { ImageCropperProps as BaseImageCropperRootProps } from "@pisagor/pr
 import { imageCropperRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {

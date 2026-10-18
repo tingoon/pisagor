@@ -9,9 +9,11 @@ import {
   reactive,
   Teleport,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
-import { createContext } from "../internal/utils/create-context";
+import {
+  type ClassValue,
+  createContext,
+  createSlotRecipeContext,
+} from "../internal";
 
 // #region Slot recipe context
 const { provideStyles: provideDrawerStyles, withContext } =

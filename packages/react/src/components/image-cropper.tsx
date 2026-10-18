@@ -8,7 +8,7 @@ import {
 import type { ImageCropperProps as BaseImageCropperRootProps } from "@pisagor/props";
 import { imageCropperRecipe } from "@pisagor/recipes";
 
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {

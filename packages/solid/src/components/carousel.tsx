@@ -14,13 +14,13 @@ import type { CarouselProps as BaseCarouselRootProps } from "@pisagor/props";
 import { carouselRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import {
   CaretLeftIcon,
   CaretRightIcon,
   PauseIcon,
   PlayIcon,
-} from "../internal/icons";
+  createSlotRecipeContext,
+} from "../internal";
 import { Button } from "./button";
 import { useTranslation } from "./provider/context";
 

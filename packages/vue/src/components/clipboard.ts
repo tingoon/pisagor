@@ -9,7 +9,7 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { ClassValue, VariantClassNames } from "../internal/types";
+import type { ClassValue, VariantClassNames } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { useTranslation } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";

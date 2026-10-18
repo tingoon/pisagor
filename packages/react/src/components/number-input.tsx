@@ -12,8 +12,7 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { FormControlVariant } from "../internal/types";
+import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { Field } from "./field";
 import { Input, type InputProps } from "./input";

@@ -20,8 +20,12 @@ import {
 } from "solid-js";
 import { Portal } from "solid-js/web";
 import { useClearableInput } from "../hooks";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CalendarIcon, ClockIcon, XIcon } from "../internal/icons";
+import {
+  CalendarIcon,
+  ClockIcon,
+  XIcon,
+  createSlotRecipeContext,
+} from "../internal";
 import { createContext } from "../utils";
 import { Calendar, CalendarSlotsContext } from "./calendar";
 import { Input, type InputProps } from "./input";

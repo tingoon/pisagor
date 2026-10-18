@@ -10,8 +10,7 @@ import {
 import type { EditableProps as BaseEditableProps } from "@pisagor/props";
 import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { FormControlVariant } from "../internal/types";
+import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import type { ButtonProps } from "./button";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 

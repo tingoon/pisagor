@@ -9,7 +9,7 @@
   import type { ScrollAreaProps as BaseScrollAreaProps } from "@pisagor/props";
   import type { ScrollAreaRecipeSlot } from "@pisagor/recipes";
   import type { Snippet } from "svelte";
-  import type { VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import ScrollAreaRoot from "./scroll-area-root.svelte";
   import ScrollAreaScrollbar from "./scroll-area-scrollbar.svelte";
   import ScrollAreaThumb from "./scroll-area-thumb.svelte";

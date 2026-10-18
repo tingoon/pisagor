@@ -14,7 +14,7 @@ import { XIcon } from "@phosphor-icons/react";
 import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
 import { popoverRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { useMessage } from "./provider/context";
 import { ScrollArea } from "./scroll-area";

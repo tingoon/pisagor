@@ -3,8 +3,7 @@ import type { FileProps as BaseFileRootProps } from "@pisagor/props";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { FileIcon } from "../internal/icons";
+import { FileIcon, createSlotRecipeContext } from "../internal";
 import { Format } from "./format";
 
 // #region Context

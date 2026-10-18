@@ -24,8 +24,7 @@ import {
 import { cn, type MessageKey } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { UploadIcon, XIcon } from "../internal/icons";
+import { UploadIcon, XIcon, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { useTranslation } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";

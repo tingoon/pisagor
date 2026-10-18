@@ -20,9 +20,11 @@ import {
   unref,
   type VNodeChild,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { LoosePropValue } from "../internal/types";
-import { createContext } from "../internal/utils/create-context";
+import {
+  type LoosePropValue,
+  createContext,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button } from "./button";
 import { provideCalendarStyles } from "./calendar";
 import type { InputProps } from "./input";

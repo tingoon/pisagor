@@ -8,7 +8,7 @@ import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
 import { inputOtpRecipe, inputRootRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { createContext, use } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import type { InputProps } from "./input/input";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 

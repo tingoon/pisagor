@@ -14,8 +14,7 @@ import {
   splitProps,
   useContext,
 } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CaretDownIcon } from "../internal/icons";
+import { CaretDownIcon, createSlotRecipeContext } from "../internal";
 import { callEventHandler } from "../utils";
 import { useTranslation } from "./provider/context";
 

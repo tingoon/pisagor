@@ -23,8 +23,11 @@ import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps, useContext } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CaretRightIcon, CheckIcon } from "../internal/icons";
+import {
+  CaretRightIcon,
+  CheckIcon,
+  createSlotRecipeContext,
+} from "../internal";
 
 // #region Context
 const { Context: DropdownMenuStylesContext } = createSlotRecipeContext({

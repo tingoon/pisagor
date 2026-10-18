@@ -4,8 +4,7 @@ import type { RatingProps as BaseRatingProps } from "@pisagor/props";
 import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { type Component, defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context

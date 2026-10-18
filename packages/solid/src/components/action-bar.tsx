@@ -18,8 +18,7 @@ import {
   splitProps,
 } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { XIcon } from "../internal/icons";
+import { XIcon, createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
 import { Badge, type BadgeProps } from "./badge";
 import { Button } from "./button";

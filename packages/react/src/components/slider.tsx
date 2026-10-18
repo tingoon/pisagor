@@ -18,8 +18,11 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { createContext, use, useMemo } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { FormControlVariant, VariantClassNames } from "../internal/types";
+import {
+  type FormControlVariant,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 
 // #region Context
 const { Context: SliderStylesContext, useStyles: useSliderStyles } =

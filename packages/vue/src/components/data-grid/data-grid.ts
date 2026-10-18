@@ -33,8 +33,7 @@ import {
 } from "vue";
 import { useTranslation } from "../provider/context";
 import { Table } from "../table";
-import type { ClassValue } from "../../internal/types";
-import { createContext } from "../../internal/utils/create-context";
+import { type ClassValue, createContext } from "../../internal";
 import { type DataGridFeatures, dataGridFeatures } from "./data-grid.features";
 
 type ArkPart = Parameters<typeof h>[0];

@@ -8,7 +8,7 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, createSignal, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import {
   InputGroupAddon,
   InputGroupButton,

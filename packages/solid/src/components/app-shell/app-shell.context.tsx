@@ -1,7 +1,7 @@
 import { appShellRecipe } from "@pisagor/recipes";
 import type { Accessor } from "solid-js";
 import { createMemo, createSignal } from "solid-js";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils";
 
 export type AppShellPlacement = "start" | "end";

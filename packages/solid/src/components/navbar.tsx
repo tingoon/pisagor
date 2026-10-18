@@ -3,7 +3,7 @@ import type { NavbarProps as BaseNavbarRootProps } from "@pisagor/props";
 import { navbarRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { useTranslation } from "./provider/context";
 
 // #region Context

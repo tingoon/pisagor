@@ -2,8 +2,7 @@ import { ark } from "@ark-ui/vue";
 import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
 import { buttonGroupRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Separator } from "./separator";
 
 // #region Context

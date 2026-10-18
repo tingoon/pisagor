@@ -1,5 +1,5 @@
 import { jsonTreeViewRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 
 export const { withContext, withProvider } = createSlotRecipeContext({
   name: "JsonTreeView",

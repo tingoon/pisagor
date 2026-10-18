@@ -7,7 +7,7 @@
     textareaRecipe,
   } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import type { SizeScaleProps, VariantClassNames } from "../internal/types";
+  import type { SizeScaleProps, VariantClassNames } from "../internal";
   import InputClearButton from "./input/input-clear-button.svelte";
   import InputGroupAddon from "./input-group/input-group-addon.svelte";
   import InputGroupRoot from "./input-group/input-group-root.svelte";

@@ -10,7 +10,7 @@ import { passwordInputRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { useClearableInput } from "../hooks";
-import { EyeIcon, EyeSlashIcon, XIcon } from "../internal/icons";
+import { EyeIcon, EyeSlashIcon, XIcon } from "../internal";
 import { callEventHandler } from "../utils";
 import {
   InputGroup,

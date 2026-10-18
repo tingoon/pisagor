@@ -1,6 +1,6 @@
 import type { SortableItemRecipe } from "@pisagor/recipes";
 import { sortableItemRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils/create-context";
 
 export interface SortableContextValue {

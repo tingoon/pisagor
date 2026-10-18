@@ -13,7 +13,7 @@ import type { FieldProps as BaseFieldProps } from "@pisagor/props";
 import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps, useContext } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Separator } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 

@@ -3,8 +3,7 @@ import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
-import type { SizeScaleProps } from "../../internal/types";
+import { type SizeScaleProps, createSlotRecipeContext } from "../../internal";
 import { useItemGroup } from "./item-group.context";
 
 // #region Context

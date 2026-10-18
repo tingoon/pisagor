@@ -15,7 +15,7 @@ import { Combobox } from "../combobox";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
 import { useTranslation } from "../provider/context";
-import type { ClassValue, VariantClassNames } from "../../internal/types";
+import type { ClassValue, VariantClassNames } from "../../internal";
 import { phoneInputFlags } from "./phone-input-flags";
 
 type FormControlVariant = "primary" | "secondary";

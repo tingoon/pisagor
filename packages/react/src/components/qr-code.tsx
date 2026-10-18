@@ -7,8 +7,7 @@ import {
 import type { QrCodeProps as BaseQrCodeRootProps } from "@pisagor/props";
 import { qrCodeRecipe } from "@pisagor/recipes";
 import type { FunctionComponent } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { SizeScaleProps } from "../internal/types";
+import { type SizeScaleProps, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {

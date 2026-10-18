@@ -7,7 +7,7 @@
   import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
-  import type { VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import { setSliderContext } from "./slider.context";
 
   type FormControlVariant = "primary" | "secondary";

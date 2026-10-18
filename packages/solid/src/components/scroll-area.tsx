@@ -13,8 +13,7 @@ import {
 } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {

@@ -4,7 +4,7 @@
   import { frameRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { SizeScaleProps } from "../../internal/types";
+  import type { SizeScaleProps } from "../../internal";
   import { setSurfaceContext } from "../surface/surface.context";
   import { Context } from "./frame.context";
 

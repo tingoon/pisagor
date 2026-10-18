@@ -8,8 +8,7 @@ import {
 import type { ScrollAreaProps as BaseScrollAreaRootProps } from "@pisagor/props";
 import { type ScrollAreaRecipeSlot, scrollAreaRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {

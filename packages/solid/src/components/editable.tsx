@@ -14,7 +14,7 @@ import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import type { ButtonProps } from "./button";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 

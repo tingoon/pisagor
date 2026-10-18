@@ -7,7 +7,7 @@ import type { ToggleGroupProps as BaseToggleGroupRootProps } from "@pisagor/prop
 import { toggleGroupRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { createMemo, For, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
 import { Toggle, type ToggleProps } from "./toggle";
 

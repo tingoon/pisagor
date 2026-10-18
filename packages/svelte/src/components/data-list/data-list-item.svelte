@@ -8,7 +8,7 @@
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import { Context } from "./data-list.context";
   import DataListItemLabel from "./data-list-item-label.svelte";
   import DataListItemValue from "./data-list-item-value.svelte";

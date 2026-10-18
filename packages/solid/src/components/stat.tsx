@@ -10,9 +10,13 @@ import {
 } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { ArrowDownIcon, ArrowUpIcon, MinusIcon } from "../internal/icons";
-import type { VariantClassNames } from "../internal/types";
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  MinusIcon,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 import { type MessageKey, useTranslation } from "./provider/context";
 
 // #region Context

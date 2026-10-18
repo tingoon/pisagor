@@ -9,9 +9,11 @@ import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/prop
 import { accordionItemRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CaretDownIcon } from "../internal/icons";
-import type { SizeScaleProps } from "../internal/types";
+import {
+  CaretDownIcon,
+  type SizeScaleProps,
+  createSlotRecipeContext,
+} from "../internal";
 
 // #region Context
 const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({

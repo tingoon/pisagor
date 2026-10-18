@@ -3,7 +3,7 @@ import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
 import { aspectRatioRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { ClassValue } from "../internal/types";
+import type { ClassValue } from "../internal";
 
 type ArkPart = Parameters<typeof h>[0];
 

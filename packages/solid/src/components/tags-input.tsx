@@ -18,8 +18,7 @@ import type {
 import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { XIcon } from "../internal/icons";
+import { XIcon, createSlotRecipeContext } from "../internal";
 import { InputGroup, type InputGroupProps } from "./input-group";
 import { useTranslation } from "./provider/context";
 

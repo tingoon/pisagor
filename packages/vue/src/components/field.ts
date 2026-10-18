@@ -8,8 +8,7 @@ import type { FieldProps as BaseFieldProps } from "@pisagor/props";
 import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Separator } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 

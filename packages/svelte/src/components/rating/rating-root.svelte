@@ -6,7 +6,7 @@
   import type { RatingProps as BaseRatingProps } from "@pisagor/props";
   import { ratingRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import type { SizeScaleProps } from "../../internal/types";
+  import type { SizeScaleProps } from "../../internal";
   import { Context } from "./rating.context";
 
   type FormControlVariant = "primary" | "secondary";

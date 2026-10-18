@@ -26,8 +26,7 @@ import {
 } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { createContext, use } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { FormControlVariant } from "../internal/types";
+import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
 import { useMessage } from "./provider/context";

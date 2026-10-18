@@ -1,5 +1,5 @@
 import { itemRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../../internal";
 
 export const {
   useStyles: useItem,

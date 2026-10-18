@@ -1,7 +1,7 @@
 import { buttonRecipe, dialogRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { ClassValue } from "../internal/types";
+import type { ClassValue } from "../internal";
 import type {
   DialogBodyProps,
   DialogContentProps,

@@ -9,7 +9,7 @@ import type { TabsProps as BaseTabsRootProps } from "@pisagor/props";
 import { type TabsVariantProps, tabsRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {

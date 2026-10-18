@@ -10,7 +10,7 @@ import type {
   ReactNode,
 } from "react";
 import { createContext, use, useCallback, useMemo } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Badge, type BadgeProps } from "./badge";
 import { Button } from "./button";
 import { useMessage } from "./provider/context";

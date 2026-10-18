@@ -6,8 +6,7 @@ import {
   dataListRecipe,
 } from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({

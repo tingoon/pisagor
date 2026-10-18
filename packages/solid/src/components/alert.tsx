@@ -2,14 +2,14 @@ import type { AlertProps as BaseAlertRootProps } from "@pisagor/props";
 import { type AlertRecipeSlot, alertRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import {
   CheckCircleIcon,
   InfoIcon,
+  type VariantClassNames,
   WarningCircleIcon,
   WarningIcon,
-} from "../internal/icons";
-import type { VariantClassNames } from "../internal/types";
+  createSlotRecipeContext,
+} from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({

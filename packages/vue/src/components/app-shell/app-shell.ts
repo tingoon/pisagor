@@ -17,9 +17,11 @@ import {
   ref,
   watchEffect,
 } from "vue";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
-import type { ClassValue } from "../../internal/types";
-import { createContext } from "../../internal/utils/create-context";
+import {
+  type ClassValue,
+  createContext,
+  createSlotRecipeContext,
+} from "../../internal";
 import { Button } from "../button";
 import { Resizable } from "../resizable";
 import { ScrollArea } from "../scroll-area";

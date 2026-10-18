@@ -12,8 +12,11 @@ import {
   type ClearableChangeEvent,
   useClearableInput,
 } from "../hooks/use-clearable-input";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue, VariantClassNames } from "../internal/types";
+import {
+  type ClassValue,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 import { InputClearButton } from "./input/input-clear-button";
 import {
   InputGroupAddon,

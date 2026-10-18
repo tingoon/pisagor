@@ -13,7 +13,7 @@ import {
 import type { DrawerProps as BaseDrawerRootProps } from "@pisagor/props";
 import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context

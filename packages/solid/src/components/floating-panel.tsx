@@ -18,8 +18,12 @@ import { floatingPanelRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps, useContext } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { ArrowsOutIcon, CornersInIcon, MinusIcon } from "../internal/icons";
+import {
+  ArrowsOutIcon,
+  CornersInIcon,
+  MinusIcon,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { useTranslation } from "./provider/context";
 import { ScrollArea } from "./scroll-area";

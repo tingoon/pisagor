@@ -23,9 +23,12 @@ import {
   unref,
   type VNodeChild,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue, LoosePropValue } from "../internal/types";
-import { createContext } from "../internal/utils/create-context";
+import {
+  type ClassValue,
+  type LoosePropValue,
+  createContext,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
 import { useTranslation } from "./provider/context";

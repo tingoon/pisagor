@@ -2,8 +2,7 @@ import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
 import { fileInputRecipe, formControlGroupShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, ref } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import {
   InputGroupAddon,
   InputGroupButton,

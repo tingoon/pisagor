@@ -15,7 +15,7 @@ import type {
 } from "@pisagor/props";
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import { type ComponentProps, useCallback, useRef } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { useMessage } from "./provider/context";
 
 export {

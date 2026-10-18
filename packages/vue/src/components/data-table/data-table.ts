@@ -18,8 +18,7 @@ import {
   type VNodeChild,
 } from "vue";
 import { Table } from "../table";
-import type { ClassValue } from "../../internal/types";
-import { createContext } from "../../internal/utils/create-context";
+import { type ClassValue, createContext } from "../../internal";
 import {
   type DataTableFeatures,
   dataTableFeatures,

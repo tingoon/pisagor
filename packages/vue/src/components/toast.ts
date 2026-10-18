@@ -21,8 +21,11 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, Teleport } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { LoosePropValue, VariantClassNames } from "../internal/types";
+import {
+  type LoosePropValue,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button } from "./button";
 import { useTranslation } from "./provider/context";
 import { Spinner } from "./spinner";

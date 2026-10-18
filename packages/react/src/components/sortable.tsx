@@ -20,7 +20,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { createContext as createNamedContext } from "../utils";
 import { useMessage } from "./provider/context";
 

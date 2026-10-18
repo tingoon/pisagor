@@ -3,8 +3,7 @@ import { PhFile } from "@phosphor-icons/vue";
 import type { FileProps as BaseFileProps } from "@pisagor/props";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Format } from "./format";
 
 // #region Slot recipe context

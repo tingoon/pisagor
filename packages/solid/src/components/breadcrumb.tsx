@@ -6,8 +6,11 @@ import type {
 import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CaretRightIcon, DotsThreeIcon } from "../internal/icons";
+import {
+  CaretRightIcon,
+  DotsThreeIcon,
+  createSlotRecipeContext,
+} from "../internal";
 import { useTranslation } from "./provider/context";
 
 // #region Context

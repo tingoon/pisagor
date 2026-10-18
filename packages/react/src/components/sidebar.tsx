@@ -18,7 +18,7 @@ import {
   useState,
 } from "react";
 import { useIsMobile } from "../hooks";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { Input, type InputProps } from "./input";
 import { useMessage } from "./provider/context";

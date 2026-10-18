@@ -1,7 +1,7 @@
 ---
 import type { CardProps as BaseCardProps } from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
-import type { SizeScaleProps } from "../../internal/types";
+import type { SizeScaleProps } from "../../internal";
 import { withProvider } from "./card.context";
 
 type Props = HTMLAttributes<"div"> & BaseCardProps & SizeScaleProps;

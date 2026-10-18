@@ -12,12 +12,12 @@ import type { PaginationProps as BasePaginationRootProps } from "@pisagor/props"
 import { paginationRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import {
   CaretLeftIcon,
   CaretRightIcon,
   DotsThreeIcon,
-} from "../internal/icons";
+  createSlotRecipeContext,
+} from "../internal";
 import { Button, type ButtonProps } from "./button";
 
 // #region Context

@@ -12,8 +12,7 @@ import type { TooltipProps as BaseTooltipRootProps } from "@pisagor/props";
 import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ReactElement, ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { Context: TooltipStylesContext, withContext } = createSlotRecipeContext({

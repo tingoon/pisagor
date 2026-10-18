@@ -9,7 +9,7 @@ import type { QrCodeProps as BaseQrCodeRootProps } from "@pisagor/props";
 import { qrCodeRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {

@@ -10,8 +10,7 @@ import { type SheetVariantProps, sheetRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { XIcon } from "../internal/icons";
+import { XIcon, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import type {
   DialogBackdropProps,

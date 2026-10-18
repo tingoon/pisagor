@@ -8,8 +8,7 @@ import {
 import type { ProgressProps as BaseProgressRootProps } from "@pisagor/props";
 import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({

@@ -8,8 +8,7 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { FieldLabel } from "./field";
 import { Input, type InputProps } from "./input";

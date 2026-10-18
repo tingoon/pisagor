@@ -7,7 +7,7 @@ import type {
 import { skeletonRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
-import type { SizeScaleProps } from "../internal/types";
+import type { SizeScaleProps } from "../internal";
 
 export interface SkeletonTextProps
   extends

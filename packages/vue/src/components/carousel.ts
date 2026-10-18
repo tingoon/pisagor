@@ -9,8 +9,7 @@ import type { CarouselProps as BaseCarouselProps } from "@pisagor/props";
 import { carouselRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { useTranslation } from "./provider/context";
 

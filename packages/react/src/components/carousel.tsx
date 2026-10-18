@@ -14,7 +14,7 @@ import {
 import type { CarouselProps as BaseCarouselRootProps } from "@pisagor/props";
 import { carouselRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { useMessage } from "./provider/context";
 

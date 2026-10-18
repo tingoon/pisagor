@@ -3,8 +3,7 @@ import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, unref } from "vue";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
-import type { ClassValue } from "../../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../../internal";
 import { useItemGroupContextRef } from "./item-group.context";
 
 type ArkPart = Parameters<typeof h>[0];

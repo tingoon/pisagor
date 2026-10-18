@@ -16,7 +16,7 @@ import type {
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps, useContext } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { useTranslation } from "./provider/context";
 
 // #region Context

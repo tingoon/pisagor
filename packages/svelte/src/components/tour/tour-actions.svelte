@@ -7,7 +7,7 @@
   import { buttonRecipe, dialogRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { CaretLeftIcon, CaretRightIcon } from "phosphor-svelte";
-  import { isInsideControl } from "../../internal/inside-control";
+  import { isInsideControl } from "../../internal";
   import { TOUR_INSIDE_CONTROL, useTourContext } from "./tour.context";
 
   let { class: className, ...rest }: Omit<TourControlProps, "children"> =

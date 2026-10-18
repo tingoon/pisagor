@@ -17,8 +17,7 @@ import {
   watchEffect,
 } from "vue";
 import { useIsMobile } from "../hooks/use-is-mobile";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { createContext } from "../internal/utils/create-context";
+import { createContext, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { Sheet } from "./sheet";
 import { Tooltip, type TooltipProps } from "./tooltip";

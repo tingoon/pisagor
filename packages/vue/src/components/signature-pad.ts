@@ -20,8 +20,11 @@ import {
   type PropType,
   provide,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue, VariantClassNames } from "../internal/types";
+import {
+  type ClassValue,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button } from "./button";
 import { useTranslation } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";

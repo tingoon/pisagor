@@ -1,7 +1,7 @@
 <script lang="ts">
   import { PhoneInput } from "@pisagor/svelte/phone-input";
   import type { ComponentProps, Snippet } from "svelte";
-  import FieldShell from "../internal/field-shell.svelte";
+  import { FieldShell } from "../internal";
 
   type PhoneInputProps = ComponentProps<typeof PhoneInput>;
 

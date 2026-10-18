@@ -12,8 +12,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { FormControlVariant } from "../internal/types";
+import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import {
   InputGroupAddon,
   InputGroupButton,

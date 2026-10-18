@@ -34,12 +34,12 @@ import {
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { createMemo, For, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import {
   CaretDownIcon,
   CaretLeftIcon,
   CaretRightIcon,
-} from "../internal/icons";
+  createSlotRecipeContext,
+} from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { useTranslation } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";

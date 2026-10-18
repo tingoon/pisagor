@@ -12,8 +12,11 @@ import {
   signaturePadRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { FormControlVariant, VariantClassNames } from "../internal/types";
+import {
+  type FormControlVariant,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button } from "./button";
 import { useMessage } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";

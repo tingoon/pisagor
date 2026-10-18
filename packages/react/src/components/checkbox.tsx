@@ -17,7 +17,7 @@ import {
   formControlToggleRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { FormControlVariant, SizeScaleProps } from "../internal/types";
+import type { FormControlVariant, SizeScaleProps } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Types

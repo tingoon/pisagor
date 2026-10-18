@@ -16,7 +16,7 @@ import { useMessage } from "../provider/context";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { Toggle } from "../toggle";
 import { VisuallyHidden } from "../visually-hidden";
-import type { FormControlVariant } from "../../internal/types";
+import type { FormControlVariant } from "../../internal";
 import {
   RichTextEditorContext,
   useRichTextEditorState,

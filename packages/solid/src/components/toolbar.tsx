@@ -4,8 +4,7 @@ import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes";
 import { handleRovingFocusKeyDown } from "@pisagor/utils";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({

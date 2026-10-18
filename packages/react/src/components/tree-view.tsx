@@ -39,7 +39,7 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "react";
 import { createContext, use } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context

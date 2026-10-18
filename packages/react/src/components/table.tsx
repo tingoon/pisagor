@@ -2,8 +2,7 @@ import { ark } from "@ark-ui/react";
 import type { TableProps as BaseTableProps } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { SizeScaleProps } from "../internal/types";
+import { type SizeScaleProps, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { Context: TableStylesContext, withContext } = createSlotRecipeContext({

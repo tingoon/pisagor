@@ -17,8 +17,11 @@ import {
   type PropType,
   type VNodeChild,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue, VariantClassNames } from "../internal/types";
+import {
+  type ClassValue,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({

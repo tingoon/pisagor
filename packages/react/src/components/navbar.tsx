@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react";
 import type { NavbarProps as BaseNavbarRootProps } from "@pisagor/props";
 import { navbarRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { useMessage } from "./provider/context";
 
 // #region Context

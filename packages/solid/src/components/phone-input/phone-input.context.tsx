@@ -5,7 +5,7 @@ import type {
 } from "@pisagor/recipes";
 import type { ComboboxContentProps } from "../combobox";
 import type { InputProps } from "../input";
-import type { VariantClassNames } from "../../internal/types";
+import type { VariantClassNames } from "../../internal";
 import { createContext } from "../../utils";
 
 type FormControlVariant = "primary" | "secondary";

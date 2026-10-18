@@ -8,7 +8,7 @@
   import type { ProgressProps as BaseProgressProps } from "@pisagor/props";
   import type { ProgressRecipeSlot } from "@pisagor/recipes";
   import type { Snippet } from "svelte";
-  import type { VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import { Field } from "../field";
   import ProgressHeader from "./progress-header.svelte";
   import ProgressRange from "./progress-range.svelte";

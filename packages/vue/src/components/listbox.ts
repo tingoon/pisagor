@@ -17,8 +17,11 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue, LoosePropValue } from "../internal/types";
+import {
+  type ClassValue,
+  type LoosePropValue,
+  createSlotRecipeContext,
+} from "../internal";
 import { DropdownMenu } from "./dropdown-menu";
 import { useTranslation } from "./provider/context";
 

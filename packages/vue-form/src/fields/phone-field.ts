@@ -1,9 +1,6 @@
 import { PhoneInput, type PhoneInputProps } from "@pisagor/vue/phone-input";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import {
-  type FieldPresentationProps,
-  FieldShell,
-} from "../internal/field-shell";
+import { type FieldPresentationProps, FieldShell } from "../internal";
 
 type ArkPart = Parameters<typeof h>[0];
 

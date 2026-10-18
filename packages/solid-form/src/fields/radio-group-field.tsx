@@ -1,7 +1,7 @@
 import { Field, RadioGroup, type RadioGroupRootProps } from "@pisagor/solid";
 import type { JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
-import type { FieldPresentationProps } from "../internal/field-shell";
+import type { FieldPresentationProps } from "../internal";
 
 // #region Types
 interface RadioGroupOption {

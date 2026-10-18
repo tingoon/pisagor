@@ -10,7 +10,7 @@ import {
 import { XIcon } from "@phosphor-icons/react";
 import type { SheetProps as BaseSheetProps } from "@pisagor/props";
 import { type SheetVariantProps, sheetRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import type {
   DialogBackdropProps,

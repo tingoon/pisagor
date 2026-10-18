@@ -37,8 +37,7 @@ import {
   formControlShellRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { FormControlVariant } from "../internal/types";
+import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { useMessage } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";

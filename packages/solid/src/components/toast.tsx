@@ -22,15 +22,15 @@ import {
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import {
   CheckCircleIcon,
   InfoIcon,
+  type VariantClassNames,
   WarningCircleIcon,
   WarningIcon,
   XIcon,
-} from "../internal/icons";
-import type { VariantClassNames } from "../internal/types";
+  createSlotRecipeContext,
+} from "../internal";
 import { Button } from "./button";
 import { useTranslation } from "./provider/context";
 import { Spinner } from "./spinner";

@@ -11,7 +11,7 @@ import {
   type FunctionComponent,
   use,
 } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { useMessage } from "./provider/context";
 
 // #region Context

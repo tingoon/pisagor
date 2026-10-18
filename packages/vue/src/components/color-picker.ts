@@ -16,8 +16,7 @@ type FormControlVariant = "primary" | "secondary";
 type ClassValue = Parameters<typeof cn>[0];
 
 import { computed, defineComponent, h, type PropType, Teleport } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { LoosePropValue } from "../internal/types";
+import { type LoosePropValue, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
 

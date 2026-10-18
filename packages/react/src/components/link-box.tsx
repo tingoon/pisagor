@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react";
 import type { LinkBoxProps as BaseLinkBoxRootProps } from "@pisagor/props";
 import { linkBoxRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({

@@ -2,8 +2,7 @@ import { ark } from "@ark-ui/react";
 import type { FrameProps as BaseFrameRootProps } from "@pisagor/props";
 import { frameRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { SizeScaleProps } from "../internal/types";
+import { type SizeScaleProps, createSlotRecipeContext } from "../internal";
 import { SurfaceContext } from "./surface/surface.context";
 
 // #region Context

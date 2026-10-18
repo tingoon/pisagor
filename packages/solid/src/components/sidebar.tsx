@@ -18,8 +18,7 @@ import {
   splitProps,
 } from "solid-js";
 import { useIsMobile } from "../hooks";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { SidebarSimpleIcon } from "../internal/icons";
+import { SidebarSimpleIcon, createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
 import { Button, type ButtonProps } from "./button";
 import { Input, type InputProps } from "./input";

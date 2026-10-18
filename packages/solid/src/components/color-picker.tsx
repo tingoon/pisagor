@@ -23,8 +23,12 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, createSignal, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CheckIcon, EyedropperIcon, XIcon } from "../internal/icons";
+import {
+  CheckIcon,
+  EyedropperIcon,
+  XIcon,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { InputGroup, type InputGroupButtonProps } from "./input-group";
 import { useTranslation } from "./provider/context";

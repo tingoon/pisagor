@@ -9,8 +9,7 @@ import type { ProgressProps as BaseProgressProps } from "@pisagor/props";
 import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 import { Field } from "./field";
 
 // #region Context

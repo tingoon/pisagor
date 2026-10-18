@@ -21,7 +21,7 @@ import { dialogRecipe, tourRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, MouseEvent } from "react";
 import { createContext, use, useCallback, useEffect, useMemo } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import type {
   DialogBackdropProps,

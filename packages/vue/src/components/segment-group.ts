@@ -3,8 +3,7 @@ import type { SegmentGroupProps as BaseSegmentGroupRootProps } from "@pisagor/pr
 import { segmentGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {

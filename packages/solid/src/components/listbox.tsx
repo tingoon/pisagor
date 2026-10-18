@@ -19,8 +19,7 @@ import type {
 import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CheckIcon } from "../internal/icons";
+import { CheckIcon, createSlotRecipeContext } from "../internal";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "./dropdown-menu";
 import { useTranslation } from "./provider/context";
 

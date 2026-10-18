@@ -24,8 +24,7 @@ import {
   type UnwrapRef,
   watchEffect,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { createContext } from "../internal/utils/create-context";
+import { createContext, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { DialogBody, DialogFooter, DialogHeader } from "./dialog";
 import { useTranslation } from "./provider/context";

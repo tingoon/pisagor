@@ -16,7 +16,7 @@ import {
 import type { PaginationProps as BasePaginationRootProps } from "@pisagor/props";
 import { paginationRecipe } from "@pisagor/recipes";
 import type { FunctionComponent } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 
 // #region Context

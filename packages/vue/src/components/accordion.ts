@@ -6,8 +6,7 @@ import { PhCaretDown } from "@phosphor-icons/vue";
 import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
 import { accordionItemRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({

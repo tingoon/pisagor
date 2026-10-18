@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { ToolbarRecipeSlot } from "@pisagor/recipes";
   import type { ComponentProps, Snippet } from "svelte";
-  import type { VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import ToolbarActions from "./toolbar-actions.svelte";
   import ToolbarDescription from "./toolbar-description.svelte";
   import ToolbarHeading from "./toolbar-heading.svelte";

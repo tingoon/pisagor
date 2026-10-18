@@ -5,10 +5,7 @@ import type {
 } from "@pisagor/recipes";
 import type { ComboboxContentProps } from "../combobox";
 import type { InputProps } from "../input";
-import type {
-  FormControlVariant,
-  VariantClassNames,
-} from "../../internal/types";
+import type { FormControlVariant, VariantClassNames } from "../../internal";
 import { createContext } from "../../utils";
 
 type PhoneInputClassNames = VariantClassNames<PhoneInputRecipeSlot>;

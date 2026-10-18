@@ -4,7 +4,7 @@ import type {
   ToggleVariantProps,
 } from "@pisagor/recipes";
 import { toggleGroupRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils/create-context";
 
 export const {

@@ -9,8 +9,7 @@ import { CaretDownIcon } from "@phosphor-icons/react";
 import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
 import { accordionItemRecipe } from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { SizeScaleProps } from "../internal/types";
+import { type SizeScaleProps, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({

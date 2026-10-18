@@ -24,7 +24,7 @@ import {
   TextBIcon,
   TextItalicIcon,
   TextStrikethroughIcon,
-} from "../../internal/icons";
+} from "../../internal";
 import {
   RichTextEditorContext,
   useRichTextEditorState,

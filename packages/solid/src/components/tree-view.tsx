@@ -32,7 +32,6 @@ import {
 import { cn } from "@pisagor/utils";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps, useContext } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import {
   CaretRightIcon,
   CheckIcon,
@@ -40,7 +39,8 @@ import {
   FolderIcon,
   FolderOpenIcon,
   MinusIcon,
-} from "../internal/icons";
+  createSlotRecipeContext,
+} from "../internal";
 import { createContext } from "../utils";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 

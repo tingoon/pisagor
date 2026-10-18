@@ -15,8 +15,7 @@ import {
 } from "@pisagor/recipes";
 import { cn, type MessageKey, resolveMessage } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { useTranslations } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";

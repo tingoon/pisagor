@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/solid";
 import type { LinkBoxProps as BaseLinkBoxRootProps } from "@pisagor/props";
 import { linkBoxRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({

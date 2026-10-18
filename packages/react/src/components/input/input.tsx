@@ -11,10 +11,7 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ChangeEventHandler, RefAttributes } from "react";
 import { useClearableInput } from "../../hooks";
-import type {
-  FormControlVariant,
-  VariantClassNames,
-} from "../../internal/types";
+import type { FormControlVariant, VariantClassNames } from "../../internal";
 import { InputGroupRoot } from "../input-group/input-group-core";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { InputClearAddon } from "./input-clear-button";

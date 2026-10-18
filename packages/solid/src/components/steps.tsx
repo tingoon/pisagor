@@ -19,8 +19,7 @@ import type {
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CheckIcon } from "../internal/icons";
+import { CheckIcon, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext: withStepsContext, withProvider: withStepsProvider } =

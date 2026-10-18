@@ -1,4 +1,4 @@
-export type { FormControlVariant } from "../internal/types";
+export type { FormControlVariant } from "../internal";
 export * from "./accordion";
 export * from "./action-bar";
 export * from "./alert";

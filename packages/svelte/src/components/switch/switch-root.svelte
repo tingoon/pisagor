@@ -6,7 +6,7 @@
   import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
   import { switchRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import type { SizeScaleProps } from "../../internal/types";
+  import type { SizeScaleProps } from "../../internal";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
   import { Context } from "./switch.context";
 

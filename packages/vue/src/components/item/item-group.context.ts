@@ -1,5 +1,5 @@
 import type { ItemVariantProps } from "@pisagor/recipes";
-import { createContext } from "../../internal/utils/create-context";
+import { createContext } from "../../internal";
 
 export interface ItemGroupContextValue extends ItemVariantProps {}
 

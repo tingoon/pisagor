@@ -30,8 +30,12 @@ import {
   useContext,
 } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CaretLeftIcon, CaretRightIcon, XIcon } from "../internal/icons";
+import {
+  CaretLeftIcon,
+  CaretRightIcon,
+  XIcon,
+  createSlotRecipeContext,
+} from "../internal";
 import { createContext } from "../utils";
 import { Button } from "./button";
 import type {

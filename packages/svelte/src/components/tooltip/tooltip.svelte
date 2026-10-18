@@ -13,7 +13,7 @@
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
   import type { ClassValue } from "svelte/elements";
-  import type { VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import TooltipArrow from "./tooltip-arrow.svelte";
   import TooltipContent from "./tooltip-content.svelte";
   import TooltipRoot from "./tooltip-root.svelte";

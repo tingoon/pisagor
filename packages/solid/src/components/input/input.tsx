@@ -12,7 +12,7 @@ import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { useClearableInput } from "../../hooks";
-import type { VariantClassNames } from "../../internal/types";
+import type { VariantClassNames } from "../../internal";
 import { callEventHandler } from "../../utils";
 import { InputGroupRoot } from "../input-group/input-group-core";
 import { useFormControlSurface } from "../surface/use-form-control-surface";

@@ -10,7 +10,7 @@
   import { StarIcon } from "phosphor-svelte";
   import type { Component } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { SizeScaleProps, VariantClassNames } from "../../internal/types";
+  import type { SizeScaleProps, VariantClassNames } from "../../internal";
   import RatingControl from "./rating-control.svelte";
   import RatingIndicator from "./rating-indicator.svelte";
   import RatingItem from "./rating-item.svelte";

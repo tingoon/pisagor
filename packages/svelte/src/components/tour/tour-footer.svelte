@@ -2,7 +2,7 @@
   import { Tour as TourPrimitive, type TourControlProps } from "@ark-ui/svelte";
   import { dialogRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import { setInsideControl } from "../../internal/inside-control";
+  import { setInsideControl } from "../../internal";
   import { TOUR_INSIDE_CONTROL } from "./tour.context";
 
   let { children, class: className, ...rest }: TourControlProps = $props();

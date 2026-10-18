@@ -4,7 +4,7 @@ import {
   treeViewRecipe,
 } from "@pisagor/recipes";
 import type { Component } from "svelte";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils/create-context";
 
 export const {

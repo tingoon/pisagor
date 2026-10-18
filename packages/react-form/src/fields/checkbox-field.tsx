@@ -1,5 +1,5 @@
 import { Checkbox, type CheckboxProps, Field } from "@pisagor/react";
-import type { FieldPresentationProps } from "../internal/field-shell";
+import type { FieldPresentationProps } from "../internal";
 
 // #region Types
 export interface CheckboxFieldProps

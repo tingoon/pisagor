@@ -2,10 +2,7 @@ import {
   RichTextEditor,
   type RichTextEditorRootProps,
 } from "@pisagor/react/rich-text-editor";
-import {
-  type FieldPresentationProps,
-  FieldShell,
-} from "../internal/field-shell";
+import { type FieldPresentationProps, FieldShell } from "../internal";
 
 // #region Types
 type RichTextEditorControlProps = Omit<

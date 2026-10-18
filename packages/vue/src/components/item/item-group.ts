@@ -3,7 +3,7 @@ import type { ItemProps as BaseItemGroupProps } from "@pisagor/props";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
-import type { ClassValue } from "../../internal/types";
+import type { ClassValue } from "../../internal";
 import { Separator } from "../separator";
 import { provideItemGroupContext } from "./item-group.context";
 

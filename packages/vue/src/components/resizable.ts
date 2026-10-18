@@ -6,8 +6,7 @@ import type {
 } from "@pisagor/props";
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, ref } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { useTranslation } from "./provider/context";
 
 // #region Slot recipe context

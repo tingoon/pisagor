@@ -30,8 +30,12 @@ import {
   useContext,
 } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CaretUpDownIcon, CheckIcon, XIcon } from "../internal/icons";
+import {
+  CaretUpDownIcon,
+  CheckIcon,
+  XIcon,
+  createSlotRecipeContext,
+} from "../internal";
 import { useTranslation } from "./provider/context";
 import { Separator, type SeparatorProps } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";

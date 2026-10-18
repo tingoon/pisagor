@@ -14,7 +14,7 @@ import type { DialogProps as BaseDialogRootProps } from "@pisagor/props";
 import { type DialogVariantProps, dialogRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
 import { createContext, use } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { useMessage } from "./provider/context";
 import { ScrollArea } from "./scroll-area";

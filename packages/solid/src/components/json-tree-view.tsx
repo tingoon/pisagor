@@ -10,9 +10,11 @@ import {
 } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CaretRightIcon } from "../internal/icons";
-import type { VariantClassNames } from "../internal/types";
+import {
+  CaretRightIcon,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({

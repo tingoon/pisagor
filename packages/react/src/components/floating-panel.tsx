@@ -19,7 +19,7 @@ import type { FloatingPanelProps as BaseFloatingPanelRootProps } from "@pisagor/
 import { floatingPanelRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { use } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { useMessage } from "./provider/context";
 import { ScrollArea } from "./scroll-area";

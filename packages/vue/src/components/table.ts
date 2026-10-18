@@ -2,8 +2,7 @@ import { ark } from "@ark-ui/vue";
 import type { TableProps as BaseTableProps } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Slot recipe context
 const { provideStyles: provideTableStyles, withContext } =

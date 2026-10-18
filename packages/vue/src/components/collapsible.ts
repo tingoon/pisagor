@@ -3,8 +3,7 @@ import { PhCaretDown } from "@phosphor-icons/vue";
 import type { CollapsibleProps as BaseCollapsibleRootProps } from "@pisagor/props";
 import { collapsibleRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Slot recipe context
 const {

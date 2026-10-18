@@ -8,8 +8,10 @@ import type { AvatarProps as BaseAvatarRootProps } from "@pisagor/props";
 import { type AvatarRecipeSlot, avatarRecipe } from "@pisagor/recipes";
 import { getInitials } from "@pisagor/utils";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../../internal/types";
+import {
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({

@@ -3,7 +3,7 @@ import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
 import { buttonGroupRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Separator, type SeparatorProps } from "./separator";
 
 // #region Context

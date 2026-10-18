@@ -10,7 +10,7 @@ import { hoverCardRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { Context: HoverCardStylesContext, useStyles: useHoverCard } =

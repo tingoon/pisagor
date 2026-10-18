@@ -27,8 +27,7 @@ import { useTranslation } from "../provider/context";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { Toggle } from "../toggle";
 import { VisuallyHidden } from "../visually-hidden";
-import type { ClassValue } from "../../internal/types";
-import { createContext } from "../../internal/utils/create-context";
+import { type ClassValue, createContext } from "../../internal";
 
 type FormControlVariant = "primary" | "secondary";
 

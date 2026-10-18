@@ -26,8 +26,11 @@ import { Combobox, type ComboboxContentProps } from "../combobox";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
 import { useTranslation } from "../provider/context";
-import { CaretUpDownIcon, GlobeIcon } from "../../internal/icons";
-import type { VariantClassNames } from "../../internal/types";
+import {
+  CaretUpDownIcon,
+  GlobeIcon,
+  type VariantClassNames,
+} from "../../internal";
 import { PhoneInputContext, usePhoneInput } from "./phone-input.context";
 import { phoneInputFlags } from "./phone-input-flags";
 

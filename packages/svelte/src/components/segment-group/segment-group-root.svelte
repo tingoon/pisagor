@@ -4,7 +4,7 @@
     type SegmentGroupRootProps as ArkRootProps,
   } from "@ark-ui/svelte";
   import type { SegmentGroupProps as BaseSegmentGroupProps } from "@pisagor/props";
-  import type { SizeScaleProps } from "../../internal/types";
+  import type { SizeScaleProps } from "../../internal";
   import { withProvider } from "./segment-group.context";
   import SegmentGroupIndicator from "./segment-group-indicator.svelte";
 

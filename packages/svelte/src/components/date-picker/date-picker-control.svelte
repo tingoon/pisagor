@@ -4,7 +4,7 @@
     type DatePickerControlProps,
   } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import { setInsideControl } from "../../internal/inside-control";
+  import { setInsideControl } from "../../internal";
   import {
     DATE_PICKER_INSIDE_CONTROL,
     useDatePicker,

@@ -17,7 +17,7 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
-import type { FormControlVariant } from "../internal/types";
+import type { FormControlVariant } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Types

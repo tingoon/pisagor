@@ -7,7 +7,7 @@
   import { checkboxRecipe, formControlToggleRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { CheckIcon, MinusIcon } from "phosphor-svelte";
-  import type { SizeScaleProps } from "../../internal/types";
+  import type { SizeScaleProps } from "../../internal";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
 
   type FormControlVariant = "primary" | "secondary";
