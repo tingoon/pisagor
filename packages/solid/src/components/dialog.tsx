@@ -8,10 +8,11 @@ import type {
   DialogRootProps as DialogPrimitiveRootProps,
   DialogTitleProps,
   DialogTriggerProps,
+  HTMLArkProps,
 } from "@ark-ui/solid";
 import type { DialogProps as BaseDialogRootProps } from "@pisagor/props";
 import { type DialogVariantProps, dialogRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import { XIcon, createSlotRecipeContext } from "../internal";
@@ -47,17 +48,17 @@ export interface DialogContentProps
   showCloseButton?: boolean;
 }
 
-export interface DialogBodyProps extends ComponentProps<typeof ark.div> {
+export interface DialogBodyProps extends HTMLArkProps<"div"> {
   scrollFade?: boolean;
 }
 
-export type DialogHeaderProps = ComponentProps<typeof ark.div>;
+export type DialogHeaderProps = HTMLArkProps<"div">;
 
 export interface DialogPositionerProps extends DialogPrimitivePositionerProps {
   bottomStickOnMobile?: boolean;
 }
 
-export type DialogFooterProps = ComponentProps<typeof ark.div>;
+export type DialogFooterProps = HTMLArkProps<"div">;
 
 export interface DialogProps extends Omit<LocalDialogRootProps, "title"> {
   actions?: JSX.Element;

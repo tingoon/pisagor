@@ -1,7 +1,7 @@
-import { ark } from "@ark-ui/solid";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { FrameProps as BaseFrameRootProps } from "@pisagor/props";
 import { frameRecipe } from "@pisagor/recipes";
-import type { ComponentProps, JSX } from "solid-js";
+import type { JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
 import { type SizeScaleProps, createSlotRecipeContext } from "../internal";
 import { SurfaceContext } from "./surface/surface.context";
@@ -19,13 +19,13 @@ const {
 
 // #region Types
 export interface FrameRootProps
-  extends ComponentProps<typeof ark.div>, BaseFrameRootProps, SizeScaleProps {}
+  extends HTMLArkProps<"div">, BaseFrameRootProps, SizeScaleProps {}
 
-export type FramePanelProps = ComponentProps<typeof ark.div>;
-export type FrameHeaderProps = ComponentProps<typeof ark.header>;
-export type FrameTitleProps = ComponentProps<typeof ark.div>;
-export type FrameDescriptionProps = ComponentProps<typeof ark.div>;
-export type FrameFooterProps = ComponentProps<typeof ark.footer>;
+export type FramePanelProps = HTMLArkProps<"div">;
+export type FrameHeaderProps = HTMLArkProps<"header">;
+export type FrameTitleProps = HTMLArkProps<"div">;
+export type FrameDescriptionProps = HTMLArkProps<"div">;
+export type FrameFooterProps = HTMLArkProps<"footer">;
 // #endregion
 
 // #region Parts

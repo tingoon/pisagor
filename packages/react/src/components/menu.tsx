@@ -1,16 +1,12 @@
-import { ark } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
   MenuItemProps as BaseMenuItemProps,
   MenuProps as BaseMenuRootProps,
 } from "@pisagor/props";
 import { menuItemRecipe, menuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import {
-  type ComponentProps,
-  createContext,
-  type FunctionComponent,
-  use,
-} from "react";
+import { createContext, use } from "react";
+import type { FunctionComponent, RefAttributes } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
@@ -27,25 +23,33 @@ const {
 
 // #region Types
 export interface MenuRootProps
-  extends ComponentProps<typeof ark.nav>, BaseMenuRootProps {}
+  extends HTMLArkProps<"nav">, RefAttributes<HTMLElement>, BaseMenuRootProps {}
 
-export type MenuPartProps = ComponentProps<typeof ark.div>;
+export type MenuPartProps = HTMLArkProps<"div"> & RefAttributes<HTMLDivElement>;
 
-export type MenuListProps = ComponentProps<typeof ark.ul>;
+export type MenuListProps = HTMLArkProps<"ul"> &
+  RefAttributes<HTMLUListElement>;
 
 export interface MenuItemProps
-  extends ComponentProps<typeof ark.button>, BaseMenuItemProps {}
+  extends
+    HTMLArkProps<"button">,
+    RefAttributes<HTMLButtonElement>,
+    BaseMenuItemProps {}
 
-export interface MenuLinkProps extends ComponentProps<typeof ark.a> {
+export interface MenuLinkProps
+  extends HTMLArkProps<"a">, RefAttributes<HTMLAnchorElement> {
   /** Whether the link represents the current page */
   active?: boolean;
 }
 
-export type MenuGroupLabelProps = ComponentProps<typeof ark.div>;
+export type MenuGroupLabelProps = HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement>;
 
-export type MenuSeparatorProps = ComponentProps<typeof ark.div>;
+export type MenuSeparatorProps = HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement>;
 
-export type MenuShortcutProps = ComponentProps<typeof ark.span>;
+export type MenuShortcutProps = HTMLArkProps<"span"> &
+  RefAttributes<HTMLSpanElement>;
 // #endregion
 
 // #region Parts
@@ -157,7 +161,9 @@ export function MenuSeparator(props: MenuSeparatorProps) {
   const insideList = use(MenuInsideListContext);
 
   return insideList ? (
-    <MenuSeparatorItem {...(props as ComponentProps<typeof ark.li>)} />
+    <MenuSeparatorItem
+      {...(props as HTMLArkProps<"li"> & RefAttributes<HTMLLIElement>)}
+    />
   ) : (
     <MenuSeparatorDiv {...props} />
   );

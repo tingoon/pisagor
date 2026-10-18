@@ -5,6 +5,7 @@ import {
   useProgressContext,
 } from "@ark-ui/solid";
 import type {
+  HTMLArkProps,
   ProgressRootProps,
   ProgressRootProviderProps,
   ProgressValueTextProps,
@@ -15,7 +16,7 @@ import {
   type CircularProgressRecipeSlot,
   circularProgressRecipe,
 } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
@@ -30,7 +31,7 @@ const {
 });
 // #endregion
 
-type CircularProgressTrackProps = ComponentProps<typeof ark.svg>;
+type CircularProgressTrackProps = HTMLArkProps<"svg">;
 type CircularProgressValueProps = ProgressValueTextProps;
 type CircularProgressClassNames = VariantClassNames<CircularProgressRecipeSlot>;
 

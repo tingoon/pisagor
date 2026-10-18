@@ -27,6 +27,8 @@ Type imports: when an import has 3 or more inline `type X` specifiers, split it 
 
 Blank line before `return`: put one empty line between the preceding statements and a `return` (e.g. `const { m } = useLocale();`, an empty line, then `return (`). A `return` that is the first statement of its block or `case` needs none. This applies to `.ts`/`.tsx` and the script blocks of `.vue`, `.svelte` and `.astro` files. No tool enforces it: `bun lint` rejects `padding-line-between-statements` / `newline-before-return` as formatting rules, `bun fmt` has no such option, and Biome has no equivalent rule, so follow it by hand.
 
+Ark element props: type `ark.*` hosts with Ark's `HTMLArkProps<"tag">`, imported as a type from the framework barrel (`import type { HTMLArkProps } from "@ark-ui/react"`), never `ComponentProps<typeof ark.tag>`. React: `HTMLArkProps` is `ComponentPropsWithoutRef<tag> & PolymorphicProps`, so add `RefAttributes<Element>` (e.g. `HTMLArkProps<"div"> & RefAttributes<HTMLDivElement>`) to keep the React 19 `ref` prop. Solid: `HTMLArkProps<"div">` is exactly `ComponentProps<typeof ark.div>`. Vue components use runtime props/attrs, so there is nothing to type; Svelte keeps `HTMLAttributes<Element>` from `svelte/elements` because `@ark-ui/svelte` does not export `HTMLProps` / `PolymorphicProps` from its barrel.
+
 ---
 
 ## Overlay vs modal

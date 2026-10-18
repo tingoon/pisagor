@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import {
   ListBulletsIcon,
   ListNumbersIcon,
@@ -11,7 +11,8 @@ import { formControlShellRecipe, richTextEditorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { type ComponentProps, type ReactNode, useEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
+import type { ReactNode, RefAttributes } from "react";
 import { useLocale } from "../provider/context";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { Toggle } from "../toggle";
@@ -26,7 +27,10 @@ import {
 
 export interface RichTextEditorRootProps
   extends
-    Omit<ComponentProps<typeof ark.div>, "defaultValue" | "onChange">,
+    Omit<
+      HTMLArkProps<"div"> & RefAttributes<HTMLDivElement>,
+      "defaultValue" | "onChange"
+    >,
     BaseRichTextEditorRootProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
@@ -67,9 +71,11 @@ export interface RichTextEditorRootProps
   children?: ReactNode;
 }
 
-export type RichTextEditorToolbarProps = ComponentProps<typeof ark.div>;
+export type RichTextEditorToolbarProps = HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement>;
 
-export type RichTextEditorContentProps = ComponentProps<typeof ark.div>;
+export type RichTextEditorContentProps = HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement>;
 // #endregion
 
 // #region Parts

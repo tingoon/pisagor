@@ -1,7 +1,7 @@
-import { ark } from "@ark-ui/solid";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { NavbarProps as BaseNavbarRootProps } from "@pisagor/props";
 import { navbarRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
@@ -14,10 +14,10 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export interface NavbarRootProps
-  extends ComponentProps<typeof ark.header>, BaseNavbarRootProps {}
+  extends HTMLArkProps<"header">, BaseNavbarRootProps {}
 
-export type NavbarPartProps = ComponentProps<typeof ark.div>;
-export type NavbarNavProps = ComponentProps<typeof ark.nav>;
+export type NavbarPartProps = HTMLArkProps<"div">;
+export type NavbarNavProps = HTMLArkProps<"nav">;
 
 export const NavbarRoot: Component<NavbarRootProps> = withProvider(ark.header, {
   name: "Root",

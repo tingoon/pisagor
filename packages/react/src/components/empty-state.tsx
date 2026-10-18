@@ -1,7 +1,12 @@
-import { ark } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { EmptyStateProps as BaseEmptyStateRootProps } from "@pisagor/props";
 import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, ReactNode } from "react";
+import type {
+  ComponentProps,
+  FunctionComponent,
+  ReactNode,
+  RefAttributes,
+} from "react";
 import {
   type SizeScaleProps,
   type VariantClassNames,
@@ -20,7 +25,7 @@ export const EmptyStateRoot = withProvider(ark.div, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  Omit<ComponentProps<typeof ark.div>, "title"> &
+  Omit<HTMLArkProps<"div"> & RefAttributes<HTMLDivElement>, "title"> &
     BaseEmptyStateRootProps &
     SizeScaleProps
 >;

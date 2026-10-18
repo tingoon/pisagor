@@ -1,11 +1,11 @@
-import { ark } from "@ark-ui/solid";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   SortableItemProps as BaseSortableItemProps,
   SortableProps as BaseSortableRootProps,
 } from "@pisagor/props";
 import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes";
 import { formatMessage } from "@pisagor/utils";
-import type { Accessor, ComponentProps, JSX } from "solid-js";
+import type { Accessor, JSX } from "solid-js";
 import {
   createMemo,
   createSignal,
@@ -63,9 +63,7 @@ const { SortableItemStateContext, useSortableItemState } =
 // #endregion
 
 export interface SortableRootProps
-  extends
-    Omit<ComponentProps<typeof ark.div>, "onDragStart">,
-    BaseSortableRootProps {
+  extends Omit<HTMLArkProps<"div">, "onDragStart">, BaseSortableRootProps {
   orientation?: SortableOrientation;
   disabled?: boolean;
   items: string[];
@@ -73,12 +71,12 @@ export interface SortableRootProps
 }
 
 export interface SortableItemProps
-  extends ComponentProps<typeof ark.div>, BaseSortableItemProps {
+  extends HTMLArkProps<"div">, BaseSortableItemProps {
   value: string;
 }
 
-export type SortableHandleProps = ComponentProps<typeof ark.div>;
-export type SortableItemContentProps = ComponentProps<typeof ark.div>;
+export type SortableHandleProps = HTMLArkProps<"div">;
+export type SortableItemContentProps = HTMLArkProps<"div">;
 
 function reorder(list: string[], from: number, to: number) {
   if (from === to || from < 0 || to < 0) return list;

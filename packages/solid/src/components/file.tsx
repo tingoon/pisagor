@@ -1,7 +1,7 @@
-import { ark } from "@ark-ui/solid";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { FileProps as BaseFileRootProps } from "@pisagor/props";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { FileIcon, createSlotRecipeContext } from "../internal";
 import { Format } from "./format";
@@ -14,23 +14,18 @@ const {
 } = createSlotRecipeContext({ name: "File", recipe: fileRecipe });
 // #endregion
 
-export interface FileRootProps
-  extends ComponentProps<typeof ark.div>, BaseFileRootProps {}
+export interface FileRootProps extends HTMLArkProps<"div">, BaseFileRootProps {}
 
-export interface FileMediaProps
-  extends ComponentProps<typeof ark.div>, FileVariantProps {}
-export type FileNameProps = ComponentProps<typeof ark.div>;
-export type FileMetaProps = ComponentProps<typeof ark.div>;
+export interface FileMediaProps extends HTMLArkProps<"div">, FileVariantProps {}
+export type FileNameProps = HTMLArkProps<"div">;
+export type FileMetaProps = HTMLArkProps<"div">;
 
-export interface FileSizeProps extends Omit<
-  ComponentProps<typeof ark.div>,
-  "children"
-> {
+export interface FileSizeProps extends Omit<HTMLArkProps<"div">, "children"> {
   value: number;
 }
 
-export type FileActionsProps = ComponentProps<typeof ark.div>;
-export type FileContentProps = ComponentProps<typeof ark.div>;
+export type FileActionsProps = HTMLArkProps<"div">;
+export type FileContentProps = HTMLArkProps<"div">;
 
 export interface FileProps extends Omit<FileRootProps, "children" | "title"> {
   size?: number;

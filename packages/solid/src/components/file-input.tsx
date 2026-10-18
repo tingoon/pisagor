@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
 import {
   type FormControlGroupShellVariantProps,
@@ -31,7 +31,7 @@ type NativeFileInputProps = Omit<
   "defaultValue" | "onChange" | "size" | "type" | "value"
 >;
 
-type FileInputRootProps = ComponentProps<typeof ark.div> &
+type FileInputRootProps = HTMLArkProps<"div"> &
   FileInputVariantProps &
   BaseFileInputProps & {
     disabled?: boolean;

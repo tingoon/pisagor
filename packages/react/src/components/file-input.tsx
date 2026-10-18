@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
 import {
   type FormControlGroupShellVariantProps,
@@ -6,12 +6,8 @@ import {
   formControlGroupShellRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import {
-  type ChangeEventHandler,
-  type ComponentProps,
-  useRef,
-  useState,
-} from "react";
+import { useRef, useState } from "react";
+import type { ChangeEventHandler, ComponentProps, RefAttributes } from "react";
 import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import {
   InputGroupAddon,
@@ -39,7 +35,8 @@ type NativeFileInputProps = Omit<
   "defaultValue" | "onChange" | "size" | "type" | "value"
 >;
 
-type FileInputRootProps = ComponentProps<typeof ark.div> &
+type FileInputRootProps = HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement> &
   FileInputVariantProps &
   BaseFileInputProps & {
     /** Disables the control and sets `data-disabled` on the root. */

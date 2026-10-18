@@ -1,16 +1,19 @@
-import { ark } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
   ItemProps as BaseItemGroupProps,
   ItemProps as BaseItemSeparatorProps,
 } from "@pisagor/props";
 import { itemRecipe } from "@pisagor/recipes";
-import type { ComponentProps } from "react";
+import type { RefAttributes } from "react";
 import { Separator, type SeparatorProps } from "../separator";
 import { ItemGroupContext } from "./item-group.context";
 
 // #region Types
 export interface ItemGroupProps
-  extends ComponentProps<typeof ark.div>, BaseItemGroupProps {}
+  extends
+    HTMLArkProps<"div">,
+    RefAttributes<HTMLDivElement>,
+    BaseItemGroupProps {}
 
 export interface ItemSeparatorProps
   extends Omit<SeparatorProps, "recipe">, BaseItemSeparatorProps {}

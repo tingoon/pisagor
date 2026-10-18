@@ -13,6 +13,7 @@ import type {
   FileUploadItemSizeTextProps,
   FileUploadRootProps as FileUploadPrimitiveRootProps,
   FileUploadTriggerProps,
+  HTMLArkProps,
 } from "@ark-ui/solid";
 import type {
   FileUploadItemProps as BaseFileUploadItemRootProps,
@@ -65,10 +66,10 @@ export type FileUploadItemSizeProps = FileUploadItemSizeTextProps;
 export type FileUploadItemDeleteTriggerProps = ComponentProps<
   typeof FileUploadPrimitive.ItemDeleteTrigger
 >;
-export type FileUploadDropzoneIconProps = ComponentProps<typeof ark.div>;
-export type FileUploadTitleProps = ComponentProps<typeof ark.div>;
-export type FileUploadDescriptionProps = ComponentProps<typeof ark.div>;
-export type FileUploadHelperProps = ComponentProps<typeof ark.div>;
+export type FileUploadDropzoneIconProps = HTMLArkProps<"div">;
+export type FileUploadTitleProps = HTMLArkProps<"div">;
+export type FileUploadDescriptionProps = HTMLArkProps<"div">;
+export type FileUploadHelperProps = HTMLArkProps<"div">;
 
 export function FileUploadRoot(props: FileUploadRootProps): JSX.Element {
   const [local, rest] = splitProps(props, [

@@ -1,12 +1,12 @@
-import {
-  PinInput as PinInputPrimitive,
-  type PinInputInputProps,
-  type PinInputRootProps,
-  ark,
+import { PinInput as PinInputPrimitive, ark } from "@ark-ui/solid";
+import type {
+  HTMLArkProps,
+  PinInputInputProps,
+  PinInputRootProps,
 } from "@ark-ui/solid";
 import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
 import { inputOtpRecipe, inputRootRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
@@ -56,7 +56,7 @@ export interface InputOTPProps extends InputOTPRootProps, BaseInputOTPProps {
 export type InputOTPSlotProps = PinInputInputProps &
   Pick<InputProps, "size" | "variant">;
 
-export type InputOTPSeparatorProps = ComponentProps<typeof ark.hr>;
+export type InputOTPSeparatorProps = HTMLArkProps<"hr">;
 
 /** `class` targets the control; size/variant flow to each slot input. */
 export function InputOTPRoot(props: InputOTPProps): JSX.Element {

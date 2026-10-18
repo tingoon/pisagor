@@ -1,5 +1,6 @@
 import { Steps as StepsPrimitive, ark } from "@ark-ui/react";
 import type {
+  HTMLArkProps,
   StepsIndicatorProps,
   StepsItemProps as StepsPrimitiveItemProps,
   StepsNextTriggerProps,
@@ -12,7 +13,7 @@ import type {
   StepsProps as BaseStepsRootProps,
 } from "@pisagor/props";
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent } from "react";
+import type { FunctionComponent, RefAttributes } from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -39,9 +40,11 @@ export interface StepsRootProps
 export interface StepsItemProps
   extends StepsPrimitiveItemProps, BaseStepsItemProps {}
 
-export type StepsTitleProps = ComponentProps<typeof ark.span>;
+export type StepsTitleProps = HTMLArkProps<"span"> &
+  RefAttributes<HTMLSpanElement>;
 
-export type StepsDescriptionProps = ComponentProps<typeof ark.span>;
+export type StepsDescriptionProps = HTMLArkProps<"span"> &
+  RefAttributes<HTMLSpanElement>;
 // #endregion
 
 // #region Parts

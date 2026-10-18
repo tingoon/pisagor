@@ -15,11 +15,12 @@ import type {
   FloatingPanelStageTriggerProps,
   FloatingPanelTitleProps,
   FloatingPanelTriggerProps,
+  HTMLArkProps,
 } from "@ark-ui/react";
 import { ArrowsOutIcon, CornersInIcon, MinusIcon } from "@phosphor-icons/react";
 import type { FloatingPanelProps as BaseFloatingPanelRootProps } from "@pisagor/props";
 import { floatingPanelRecipe } from "@pisagor/recipes";
-import type { ComponentProps } from "react";
+import type { RefAttributes } from "react";
 import { use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
@@ -72,7 +73,8 @@ export interface FloatingPanelBodyProps extends FloatingPanelPrimitiveBodyProps 
   scrollFade?: boolean;
 }
 
-export type FloatingPanelFooterProps = ComponentProps<typeof ark.div>;
+export type FloatingPanelFooterProps = HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement>;
 // #endregion
 
 // #region Parts

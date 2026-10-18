@@ -1,7 +1,7 @@
-import { ark } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { NavbarProps as BaseNavbarRootProps } from "@pisagor/props";
 import { navbarRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent } from "react";
+import type { ComponentProps, FunctionComponent, RefAttributes } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
@@ -17,7 +17,7 @@ export const NavbarRoot = withProvider(ark.header, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  ComponentProps<typeof ark.header> & BaseNavbarRootProps
+  HTMLArkProps<"header"> & RefAttributes<HTMLElement> & BaseNavbarRootProps
 >;
 
 export const NavbarBrand = withContext(ark.div, {
@@ -35,7 +35,7 @@ const NavbarNavBase = withContext(ark.nav, {
 export function NavbarNav({
   "aria-label": ariaLabelProp,
   ...rest
-}: ComponentProps<typeof ark.nav>) {
+}: HTMLArkProps<"nav"> & RefAttributes<HTMLElement>) {
   const { m } = useLocale();
   const ariaLabel = m("navbar.label", ariaLabelProp);
 
@@ -50,7 +50,7 @@ export const NavbarActions = withContext(ark.div, {
 // #region Types
 export type NavbarRootProps = ComponentProps<typeof NavbarRoot>;
 export type NavbarPartProps = ComponentProps<typeof NavbarBrand>;
-export type NavbarNavProps = ComponentProps<typeof ark.nav>;
+export type NavbarNavProps = HTMLArkProps<"nav"> & RefAttributes<HTMLElement>;
 // #endregion
 
 // #region Display Names

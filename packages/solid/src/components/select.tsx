@@ -6,6 +6,7 @@ import {
 } from "@ark-ui/solid";
 import type {
   CollectionItem,
+  HTMLArkProps,
   SelectClearTriggerProps,
   SelectContentProps,
   SelectItemGroupLabelProps,
@@ -22,7 +23,7 @@ import {
   selectRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { ComponentProps, JSX } from "solid-js";
+import type { JSX } from "solid-js";
 import {
   createContext,
   createMemo,
@@ -97,7 +98,7 @@ export interface SelectItemGroupProps extends SelectPrimitiveItemGroupProps {
   heading?: string | JSX.Element;
 }
 
-export type SelectEmptyProps = ComponentProps<typeof ark.div>;
+export type SelectEmptyProps = HTMLArkProps<"div">;
 
 export const SelectContext = SelectPrimitive.Context;
 

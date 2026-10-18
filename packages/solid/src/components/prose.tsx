@@ -1,11 +1,11 @@
-import { ark } from "@ark-ui/solid";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { ProseProps as BaseProseProps } from "@pisagor/props";
 import { proseRecipe } from "@pisagor/recipes";
-import type { ComponentProps, JSX } from "solid-js";
+import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 
 export interface ProseProps
-  extends Omit<ComponentProps<typeof ark.div>, "innerHTML">, BaseProseProps {
+  extends Omit<HTMLArkProps<"div">, "innerHTML">, BaseProseProps {
   html?: string;
   /**
    * Sanitizer applied to `html` before injection, e.g. `(html) =>

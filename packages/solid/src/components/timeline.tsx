@@ -1,10 +1,10 @@
-import { ark } from "@ark-ui/solid";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   TimelineItemProps as BaseTimelineItemProps,
   TimelineProps as BaseTimelineRootProps,
 } from "@pisagor/props";
 import { timelineItemRecipe, timelineRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
@@ -17,16 +17,16 @@ const { withContext, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface TimelineRootProps
-  extends ComponentProps<typeof ark.ol>, BaseTimelineRootProps {}
+  extends HTMLArkProps<"ol">, BaseTimelineRootProps {}
 
 export interface TimelineItemProps
-  extends ComponentProps<typeof ark.li>, BaseTimelineItemProps {}
+  extends HTMLArkProps<"li">, BaseTimelineItemProps {}
 
-export type TimelineIndicatorProps = ComponentProps<typeof ark.div>;
-export type TimelineContentProps = ComponentProps<typeof ark.div>;
-export type TimelineTitleProps = ComponentProps<typeof ark.div>;
-export type TimelineDescriptionProps = ComponentProps<typeof ark.div>;
-export type TimelineSeparatorProps = ComponentProps<typeof ark.div>;
+export type TimelineIndicatorProps = HTMLArkProps<"div">;
+export type TimelineContentProps = HTMLArkProps<"div">;
+export type TimelineTitleProps = HTMLArkProps<"div">;
+export type TimelineDescriptionProps = HTMLArkProps<"div">;
+export type TimelineSeparatorProps = HTMLArkProps<"div">;
 
 export interface TimelinePresetItem {
   id?: string;

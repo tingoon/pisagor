@@ -1,7 +1,12 @@
-import { ark } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { CardProps as BaseCardRootProps } from "@pisagor/props";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, ReactNode } from "react";
+import type {
+  ComponentProps,
+  FunctionComponent,
+  ReactNode,
+  RefAttributes,
+} from "react";
 import { createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -19,13 +24,15 @@ const {
 export const CardRoot = withProvider(ark.div, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<ComponentProps<typeof ark.div> & BaseCardRootProps>;
+}) as FunctionComponent<
+  HTMLArkProps<"div"> & RefAttributes<HTMLDivElement> & BaseCardRootProps
+>;
 
 export function CardMedia({
   variant = "default",
   className,
   ...rest
-}: ComponentProps<typeof ark.div> & CardVariantProps) {
+}: HTMLArkProps<"div"> & RefAttributes<HTMLDivElement> & CardVariantProps) {
   const { slots } = useCard();
 
   return (
@@ -45,15 +52,16 @@ export function CardHeader({
   title,
   className,
   ...rest
-}: ComponentProps<typeof ark.div> & {
-  /** Supporting text rendered in `Card.Description`. */
-  description?: ReactNode;
-  /**
-   * Heading rendered in `Card.Title` (an `h3`; use `asChild` on `Card.Title`
-   * for another level).
-   */
-  title?: ReactNode;
-}) {
+}: HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement> & {
+    /** Supporting text rendered in `Card.Description`. */
+    description?: ReactNode;
+    /**
+     * Heading rendered in `Card.Title` (an `h3`; use `asChild` on `Card.Title`
+     * for another level).
+     */
+    title?: ReactNode;
+  }) {
   const { slots } = useCard();
 
   return (

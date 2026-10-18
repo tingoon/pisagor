@@ -1,5 +1,6 @@
 import { Portal, Tour as TourPrimitive, ark, useTour } from "@ark-ui/react";
 import type {
+  HTMLArkProps,
   TourActionTriggerProps,
   TourCloseTriggerProps,
   TourContentProps as TourPrimitiveContentProps,
@@ -16,7 +17,7 @@ import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react";
 import type { TourProps as BaseTourProps } from "@pisagor/props";
 import { dialogRecipe, tourRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { ComponentProps, MouseEvent } from "react";
+import type { MouseEvent, RefAttributes } from "react";
 import { createContext, use, useCallback, useEffect, useMemo } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
@@ -76,7 +77,8 @@ export interface TourProps extends TourRootProps, BaseTourProps {
   onStepChange?: (details: { stepId: string | null }) => void;
 }
 
-export type TourTriggerProps = ComponentProps<typeof ark.button>;
+export type TourTriggerProps = HTMLArkProps<"button"> &
+  RefAttributes<HTMLButtonElement>;
 
 export interface TourBackdropProps extends DialogBackdropProps {
   /**

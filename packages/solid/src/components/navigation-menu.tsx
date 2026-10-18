@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
 import { navigationMenuRecipe } from "@pisagor/recipes";
 import {
@@ -6,7 +6,7 @@ import {
   handleNavigationMenuContentKeyDown,
   handleNavigationMenuListKeyDown,
 } from "@pisagor/utils";
-import type { Accessor, Component, ComponentProps, JSX } from "solid-js";
+import type { Accessor, Component, JSX } from "solid-js";
 import {
   createSignal,
   createContext as createSolidContext,
@@ -62,14 +62,14 @@ function useNavigationMenuItem(part: string) {
 
 // #region Types
 export interface NavigationMenuProps
-  extends ComponentProps<typeof ark.nav>, BaseNavigationMenuProps {}
+  extends HTMLArkProps<"nav">, BaseNavigationMenuProps {}
 
-export type NavigationMenuPartProps = ComponentProps<typeof ark.ul>;
-export type NavigationMenuItemProps = ComponentProps<typeof ark.li>;
-export type NavigationMenuTriggerProps = ComponentProps<typeof ark.button>;
-export type NavigationMenuContentProps = ComponentProps<typeof ark.ul>;
+export type NavigationMenuPartProps = HTMLArkProps<"ul">;
+export type NavigationMenuItemProps = HTMLArkProps<"li">;
+export type NavigationMenuTriggerProps = HTMLArkProps<"button">;
+export type NavigationMenuContentProps = HTMLArkProps<"ul">;
 
-export interface NavigationMenuLinkProps extends ComponentProps<typeof ark.a> {
+export interface NavigationMenuLinkProps extends HTMLArkProps<"a"> {
   /** Whether the link represents the current page */
   active?: boolean;
 }

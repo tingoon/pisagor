@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { ArrowDownIcon, ArrowUpIcon, MinusIcon } from "@phosphor-icons/react";
 import type {
   StatProps as BaseStatRootProps,
@@ -9,7 +9,12 @@ import {
   statRecipe,
   statTrendRecipe,
 } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, ReactNode } from "react";
+import type {
+  ComponentProps,
+  FunctionComponent,
+  ReactNode,
+  RefAttributes,
+} from "react";
 import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 import { useLocale, type MessageKey } from "./provider/context";
 
@@ -24,7 +29,9 @@ const { withContext, withProvider } = createSlotRecipeContext({
 export const StatRoot = withProvider(ark.div, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<ComponentProps<typeof ark.div> & BaseStatRootProps>;
+}) as FunctionComponent<
+  HTMLArkProps<"div"> & RefAttributes<HTMLDivElement> & BaseStatRootProps
+>;
 
 export const StatLabel = withContext(ark.div, {
   name: "Label",
@@ -62,7 +69,10 @@ export function StatTrend({
   children,
   className,
   ...rest
-}: ComponentProps<typeof ark.div> & BaseStatTrendProps & StatTrendOwnProps) {
+}: HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement> &
+  BaseStatTrendProps &
+  StatTrendOwnProps) {
   const { m } = useLocale();
 
   return (

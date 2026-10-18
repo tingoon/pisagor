@@ -4,6 +4,7 @@ import {
   createTreeCollection as arkCreateTreeCollection,
 } from "@ark-ui/solid";
 import type {
+  HTMLArkProps,
   TreeCollection as arkTreeCollection,
   TreeViewBranchContentProps,
   TreeViewBranchControlProps as TreeViewPrimitiveBranchControlProps,
@@ -32,7 +33,7 @@ import {
   treeViewRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { createMemo, Show, splitProps, useContext } from "solid-js";
 import {
   CaretRightIcon,
@@ -111,7 +112,7 @@ export interface TreeViewItemTextProps extends TreeViewItemTitleProps {
 
 export type TreeViewNodeInputProps = TreeViewNodeRenameInputProps;
 
-type TreeViewItemIconProps = ComponentProps<typeof ark.span>;
+type TreeViewItemIconProps = HTMLArkProps<"span">;
 
 export const createTreeCollection = <T extends TreeNodeType>(
   options: Parameters<typeof arkCreateTreeCollection<T>>[0],

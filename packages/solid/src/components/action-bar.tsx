@@ -1,13 +1,7 @@
-import { Presence, ark } from "@ark-ui/solid";
+import { ark, type HTMLArkProps, Presence } from "@ark-ui/solid";
 import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
 import { actionBarRecipe } from "@pisagor/recipes";
-import type {
-  Accessor,
-  Component,
-  ComponentProps,
-  JSX,
-  ParentProps,
-} from "solid-js";
+import type { Accessor, Component, JSX, ParentProps } from "solid-js";
 import {
   createEffect,
   createMemo,
@@ -73,17 +67,17 @@ export interface ActionBarProps
   onOpenChange?: (open: boolean) => void;
 }
 
-export type ActionBarTriggerProps = ComponentProps<typeof ark.button>;
-export type ActionBarContentProps = ComponentProps<typeof ark.div>;
+export type ActionBarTriggerProps = HTMLArkProps<"button">;
+export type ActionBarContentProps = HTMLArkProps<"div">;
 export type ActionBarSeparatorProps = SeparatorProps;
-export type ActionBarCloseProps = ComponentProps<typeof ark.button>;
+export type ActionBarCloseProps = HTMLArkProps<"button">;
 
 export interface ActionBarValueProps extends BadgeProps {
   count: number;
   label?: string;
 }
 
-export type ActionBarBodyProps = ComponentProps<typeof ark.div>;
+export type ActionBarBodyProps = HTMLArkProps<"div">;
 
 const defaultPositioning = { gutter: "16px", placement: "bottom" as const };
 

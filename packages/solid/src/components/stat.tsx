@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   StatProps as BaseStatRootProps,
   StatTrendProps as BaseStatTrendProps,
@@ -8,7 +8,7 @@ import {
   statRecipe,
   statTrendRecipe,
 } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import {
   ArrowDownIcon,
@@ -27,11 +27,11 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export type StatRootProps = ComponentProps<typeof ark.div> & BaseStatRootProps;
-export type StatLabelProps = ComponentProps<typeof ark.div>;
-export type StatValueProps = ComponentProps<typeof ark.div>;
-export type StatDescriptionProps = ComponentProps<typeof ark.p>;
-export type StatTrendProps = ComponentProps<typeof ark.div> &
+export type StatRootProps = HTMLArkProps<"div"> & BaseStatRootProps;
+export type StatLabelProps = HTMLArkProps<"div">;
+export type StatValueProps = HTMLArkProps<"div">;
+export type StatDescriptionProps = HTMLArkProps<"p">;
+export type StatTrendProps = HTMLArkProps<"div"> &
   BaseStatTrendProps & {
     /**
      * Icon shown before the content. Defaults to an arrow matching `trend`;

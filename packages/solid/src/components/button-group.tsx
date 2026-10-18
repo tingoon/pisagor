@@ -1,7 +1,7 @@
-import { ark } from "@ark-ui/solid";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
 import { buttonGroupRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 import { Separator, type SeparatorProps } from "./separator";
@@ -19,9 +19,9 @@ const {
 
 // #region Types
 export interface ButtonGroupProps
-  extends ComponentProps<typeof ark.fieldset>, BaseButtonGroupProps {}
+  extends HTMLArkProps<"fieldset">, BaseButtonGroupProps {}
 
-export type ButtonGroupTextProps = ComponentProps<typeof ark.div>;
+export type ButtonGroupTextProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Parts

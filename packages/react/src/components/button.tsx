@@ -1,12 +1,15 @@
-import { ark } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { ButtonProps as BaseButtonProps } from "@pisagor/props";
 import { buttonRecipe } from "@pisagor/recipes";
-import type { ComponentProps } from "react";
+import type { RefAttributes } from "react";
 import { Spinner } from "./spinner";
 
 // #region Types
 export interface ButtonProps
-  extends ComponentProps<typeof ark.button>, BaseButtonProps {}
+  extends
+    HTMLArkProps<"button">,
+    RefAttributes<HTMLButtonElement>,
+    BaseButtonProps {}
 // #endregion
 
 // #region Component

@@ -1,11 +1,16 @@
-import { ark } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { CaretRightIcon, DotsThreeIcon } from "@phosphor-icons/react";
 import type {
   BreadcrumbItemProps as BaseBreadcrumbItemProps,
   BreadcrumbProps as BaseBreadcrumbRootProps,
 } from "@pisagor/props";
 import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, ReactNode } from "react";
+import type {
+  ComponentProps,
+  FunctionComponent,
+  ReactNode,
+  RefAttributes,
+} from "react";
 import { Fragment } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
@@ -36,14 +41,22 @@ interface BreadcrumbPresetItem {
   isCurrentPage?: boolean;
 }
 
-export type BreadcrumbListProps = ComponentProps<typeof ark.ol>;
-export type BreadcrumbLinkProps = ComponentProps<typeof ark.a>;
-export type BreadcrumbPageProps = ComponentProps<typeof ark.span>;
-export type BreadcrumbSeparatorProps = ComponentProps<typeof ark.li>;
-export type BreadcrumbEllipsisProps = ComponentProps<typeof ark.span>;
+export type BreadcrumbListProps = HTMLArkProps<"ol"> &
+  RefAttributes<HTMLOListElement>;
+export type BreadcrumbLinkProps = HTMLArkProps<"a"> &
+  RefAttributes<HTMLAnchorElement>;
+export type BreadcrumbPageProps = HTMLArkProps<"span"> &
+  RefAttributes<HTMLSpanElement>;
+export type BreadcrumbSeparatorProps = HTMLArkProps<"li"> &
+  RefAttributes<HTMLLIElement>;
+export type BreadcrumbEllipsisProps = HTMLArkProps<"span"> &
+  RefAttributes<HTMLSpanElement>;
 
 export interface BreadcrumbRootProps
-  extends ComponentProps<typeof ark.nav>, BaseBreadcrumbRootProps {
+  extends
+    HTMLArkProps<"nav">,
+    RefAttributes<HTMLElement>,
+    BaseBreadcrumbRootProps {
   /**
    * Accessible label for the breadcrumb navigation landmark.
    *
@@ -91,7 +104,7 @@ export const BreadcrumbItem = withBreadcrumbItemProvider(ark.li, {
   name: "Item",
   slot: "base",
 }) as FunctionComponent<
-  ComponentProps<typeof ark.li> & BaseBreadcrumbItemProps
+  HTMLArkProps<"li"> & RefAttributes<HTMLLIElement> & BaseBreadcrumbItemProps
 >;
 
 export type BreadcrumbItemProps = ComponentProps<typeof BreadcrumbItem>;

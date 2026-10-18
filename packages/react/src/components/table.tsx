@@ -1,7 +1,7 @@
-import { ark } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { TableProps as BaseTableProps } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
-import type { ComponentProps } from "react";
+import type { RefAttributes } from "react";
 import { type SizeScaleProps, createSlotRecipeContext } from "../internal";
 
 // #region Context
@@ -13,7 +13,10 @@ const { Context: TableStylesContext, withContext } = createSlotRecipeContext({
 
 // #region Types
 export interface TableProps
-  extends ComponentProps<typeof ark.table>, BaseTableProps {
+  extends
+    HTMLArkProps<"table">,
+    RefAttributes<HTMLTableElement>,
+    BaseTableProps {
   /**
    * The variant of the table.
    *
@@ -28,13 +31,20 @@ export interface TableProps
   isHoverable?: boolean;
 }
 
-export type TableHeaderProps = ComponentProps<typeof ark.thead>;
-export type TableBodyProps = ComponentProps<typeof ark.tbody>;
-export type TableFooterProps = ComponentProps<typeof ark.tfoot>;
-export type TableRowProps = ComponentProps<typeof ark.tr>;
-export type TableHeadProps = ComponentProps<typeof ark.th>;
-export type TableCellProps = ComponentProps<typeof ark.td>;
-export type TableCaptionProps = ComponentProps<typeof ark.caption>;
+export type TableHeaderProps = HTMLArkProps<"thead"> &
+  RefAttributes<HTMLTableSectionElement>;
+export type TableBodyProps = HTMLArkProps<"tbody"> &
+  RefAttributes<HTMLTableSectionElement>;
+export type TableFooterProps = HTMLArkProps<"tfoot"> &
+  RefAttributes<HTMLTableSectionElement>;
+export type TableRowProps = HTMLArkProps<"tr"> &
+  RefAttributes<HTMLTableRowElement>;
+export type TableHeadProps = HTMLArkProps<"th"> &
+  RefAttributes<HTMLTableCellElement>;
+export type TableCellProps = HTMLArkProps<"td"> &
+  RefAttributes<HTMLTableCellElement>;
+export type TableCaptionProps = HTMLArkProps<"caption"> &
+  RefAttributes<HTMLTableCaptionElement>;
 // #endregion
 
 // #region Parts

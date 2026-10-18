@@ -1,4 +1,4 @@
-import { ark, useHotkey } from "@ark-ui/react";
+import { ark, type HTMLArkProps, useHotkey } from "@ark-ui/react";
 import { SidebarSimpleIcon } from "@phosphor-icons/react";
 import type { SidebarProps as BaseSidebarProviderProps } from "@pisagor/props";
 import {
@@ -8,8 +8,6 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
-  type ComponentProps,
-  type CSSProperties,
   createContext,
   use,
   useCallback,
@@ -17,6 +15,7 @@ import {
   useMemo,
   useState,
 } from "react";
+import type { ComponentProps, CSSProperties, RefAttributes } from "react";
 import { useIsMobile } from "../hooks";
 import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
@@ -131,9 +130,8 @@ export interface SidebarMenuButtonProps extends ButtonProps {
   tooltip?: string | Omit<TooltipProps, "children">;
 }
 
-export interface SidebarMenuActionProps extends ComponentProps<
-  typeof ark.button
-> {
+export interface SidebarMenuActionProps
+  extends HTMLArkProps<"button">, RefAttributes<HTMLButtonElement> {
   showOnHover?: boolean;
   /**
    * Button style recipe. Defaults to `buttonRecipe` from
@@ -144,14 +142,16 @@ export interface SidebarMenuActionProps extends ComponentProps<
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export interface SidebarMenuSkeletonProps extends ComponentProps<
-  typeof ark.div
-> {
+export interface SidebarMenuSkeletonProps
+  extends HTMLArkProps<"div">, RefAttributes<HTMLDivElement> {
   showIcon?: boolean;
 }
 
 export interface SidebarMenuSubButtonProps
-  extends ComponentProps<typeof ark.a>, ButtonVariantProps {
+  extends
+    HTMLArkProps<"a">,
+    RefAttributes<HTMLAnchorElement>,
+    ButtonVariantProps {
   isActive?: boolean;
   /**
    * Button style recipe. Defaults to `buttonRecipe` from
@@ -162,21 +162,26 @@ export interface SidebarMenuSubButtonProps
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export type SidebarRailProps = ComponentProps<typeof ark.button>;
+export type SidebarRailProps = HTMLArkProps<"button"> &
+  RefAttributes<HTMLButtonElement>;
 
-export type SidebarInsetProps = ComponentProps<typeof ark.main>;
+export type SidebarInsetProps = HTMLArkProps<"main"> &
+  RefAttributes<HTMLElement>;
 
-export type SidebarHeaderProps = ComponentProps<typeof ark.div>;
+export type SidebarHeaderProps = HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement>;
 
-export type SidebarFooterProps = ComponentProps<typeof ark.div>;
+export type SidebarFooterProps = HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement>;
 
-export type SidebarGroupProps = ComponentProps<typeof ark.div>;
+export type SidebarGroupProps = HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement>;
 
-export type SidebarGroupLabelProps = ComponentProps<typeof ark.div>;
+export type SidebarGroupLabelProps = HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement>;
 
-export interface SidebarGroupActionProps extends ComponentProps<
-  typeof ark.button
-> {
+export interface SidebarGroupActionProps
+  extends HTMLArkProps<"button">, RefAttributes<HTMLButtonElement> {
   /**
    * Button style recipe. Defaults to `buttonRecipe` from
    * `@pisagor/recipes/button`.
@@ -186,17 +191,23 @@ export interface SidebarGroupActionProps extends ComponentProps<
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export type SidebarGroupContentProps = ComponentProps<typeof ark.div>;
+export type SidebarGroupContentProps = HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement>;
 
-export type SidebarMenuProps = ComponentProps<typeof ark.ul>;
+export type SidebarMenuProps = HTMLArkProps<"ul"> &
+  RefAttributes<HTMLUListElement>;
 
-export type SidebarMenuItemProps = ComponentProps<typeof ark.li>;
+export type SidebarMenuItemProps = HTMLArkProps<"li"> &
+  RefAttributes<HTMLLIElement>;
 
-export type SidebarMenuBadgeProps = ComponentProps<typeof ark.div>;
+export type SidebarMenuBadgeProps = HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement>;
 
-export type SidebarMenuSubProps = ComponentProps<typeof ark.ul>;
+export type SidebarMenuSubProps = HTMLArkProps<"ul"> &
+  RefAttributes<HTMLUListElement>;
 
-export type SidebarMenuSubItemProps = ComponentProps<typeof ark.li>;
+export type SidebarMenuSubItemProps = HTMLArkProps<"li"> &
+  RefAttributes<HTMLLIElement>;
 // #endregion
 
 // #region Constants

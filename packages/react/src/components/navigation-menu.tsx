@@ -1,9 +1,9 @@
-import { ark } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
 import { navigationMenuRecipe } from "@pisagor/recipes";
 import { createContext, use, useId, useRef, useState } from "react";
-import type { ComponentProps, FunctionComponent, KeyboardEvent } from "react";
+import type { FunctionComponent, KeyboardEvent, RefAttributes } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useLocale } from "./provider/context";
 
@@ -41,17 +41,25 @@ const NavigationMenuItemContext = createContext<NavigationMenuItemState | null>(
 
 // #region Types
 export interface NavigationMenuProps
-  extends ComponentProps<typeof ark.nav>, BaseNavigationMenuProps {}
+  extends
+    HTMLArkProps<"nav">,
+    RefAttributes<HTMLElement>,
+    BaseNavigationMenuProps {}
 
-export type NavigationMenuPartProps = ComponentProps<typeof ark.ul>;
+export type NavigationMenuPartProps = HTMLArkProps<"ul"> &
+  RefAttributes<HTMLUListElement>;
 
-export type NavigationMenuItemProps = ComponentProps<typeof ark.li>;
+export type NavigationMenuItemProps = HTMLArkProps<"li"> &
+  RefAttributes<HTMLLIElement>;
 
-export type NavigationMenuTriggerProps = ComponentProps<typeof ark.button>;
+export type NavigationMenuTriggerProps = HTMLArkProps<"button"> &
+  RefAttributes<HTMLButtonElement>;
 
-export type NavigationMenuContentProps = ComponentProps<typeof ark.ul>;
+export type NavigationMenuContentProps = HTMLArkProps<"ul"> &
+  RefAttributes<HTMLUListElement>;
 
-export interface NavigationMenuLinkProps extends ComponentProps<typeof ark.a> {
+export interface NavigationMenuLinkProps
+  extends HTMLArkProps<"a">, RefAttributes<HTMLAnchorElement> {
   /** Whether the link represents the current page */
   active?: boolean;
 }

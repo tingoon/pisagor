@@ -1,22 +1,22 @@
-import { ark } from "@ark-ui/solid";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   SkipNavProps as BaseSkipNavContentProps,
   SkipNavProps as BaseSkipNavLinkProps,
 } from "@pisagor/props";
 import { skipNavRecipe } from "@pisagor/recipes";
-import type { ComponentProps, JSX } from "solid-js";
+import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { useLocale } from "./provider/context";
 
 const SKIP_NAV_ID = "skip-nav-content";
 
 export interface SkipNavLinkProps
-  extends ComponentProps<typeof ark.a>, BaseSkipNavLinkProps {
+  extends HTMLArkProps<"a">, BaseSkipNavLinkProps {
   id?: string;
 }
 
 export interface SkipNavContentProps
-  extends ComponentProps<typeof ark.div>, BaseSkipNavContentProps {
+  extends HTMLArkProps<"div">, BaseSkipNavContentProps {
   id?: string;
 }
 

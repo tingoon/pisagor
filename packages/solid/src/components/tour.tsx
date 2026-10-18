@@ -1,5 +1,6 @@
 import { Tour as TourPrimitive, ark, useTour } from "@ark-ui/solid";
 import type {
+  HTMLArkProps,
   TourActionTriggerProps,
   TourCloseTriggerProps,
   TourContentProps as TourPrimitiveContentProps,
@@ -81,7 +82,7 @@ export interface TourProps extends TourRootProps, BaseTourProps {
   onStepChange?: (details: { stepId: string | null }) => void;
 }
 
-export type TourTriggerProps = ComponentProps<typeof ark.button>;
+export type TourTriggerProps = HTMLArkProps<"button">;
 
 export interface TourBackdropProps extends ComponentProps<
   typeof TourPrimitive.Backdrop

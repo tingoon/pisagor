@@ -11,10 +11,11 @@ import type {
   FloatingPanelStageTriggerProps,
   FloatingPanelTitleProps,
   FloatingPanelTriggerProps,
+  HTMLArkProps,
 } from "@ark-ui/solid";
 import type { FloatingPanelProps as BaseFloatingPanelRootProps } from "@pisagor/props";
 import { floatingPanelRecipe } from "@pisagor/recipes";
-import type { ComponentProps, JSX } from "solid-js";
+import type { JSX } from "solid-js";
 import { createMemo, Show, splitProps, useContext } from "solid-js";
 import { Portal } from "solid-js/web";
 import {
@@ -60,7 +61,7 @@ export interface FloatingPanelBodyProps extends FloatingPanelPrimitiveBodyProps 
   scrollFade?: boolean;
 }
 
-export type FloatingPanelFooterProps = ComponentProps<typeof ark.div>;
+export type FloatingPanelFooterProps = HTMLArkProps<"div">;
 
 export function FloatingPanelRoot(
   props: LocalFloatingPanelRootProps,

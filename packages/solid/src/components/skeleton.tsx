@@ -1,33 +1,24 @@
-import { ark } from "@ark-ui/solid";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   SkeletonProps as BaseSkeletonCircleProps,
   SkeletonProps as BaseSkeletonRootProps,
   SkeletonProps as BaseSkeletonTextProps,
 } from "@pisagor/props";
 import { skeletonRecipe } from "@pisagor/recipes";
-import type { ComponentProps, JSX } from "solid-js";
+import type { JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
 import type { SizeScaleProps } from "../internal";
 
 export interface SkeletonTextProps
-  extends
-    ComponentProps<typeof ark.div>,
-    BaseSkeletonTextProps,
-    SizeScaleProps {
+  extends HTMLArkProps<"div">, BaseSkeletonTextProps, SizeScaleProps {
   lines?: number;
 }
 
 export interface SkeletonRootProps
-  extends
-    ComponentProps<typeof ark.div>,
-    BaseSkeletonRootProps,
-    SizeScaleProps {}
+  extends HTMLArkProps<"div">, BaseSkeletonRootProps, SizeScaleProps {}
 
 export interface SkeletonCircleProps
-  extends
-    ComponentProps<typeof ark.div>,
-    BaseSkeletonCircleProps,
-    SizeScaleProps {}
+  extends HTMLArkProps<"div">, BaseSkeletonCircleProps, SizeScaleProps {}
 
 export function SkeletonRoot(props: SkeletonRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["recipe", "size", "class"]);

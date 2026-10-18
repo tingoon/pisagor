@@ -1,7 +1,7 @@
-import { ark } from "@ark-ui/solid";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { CardProps as BaseCardRootProps } from "@pisagor/props";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 
@@ -17,24 +17,20 @@ const {
 // #endregion
 
 // #region Types
-export interface CardRootProps
-  extends ComponentProps<typeof ark.div>, BaseCardRootProps {}
+export interface CardRootProps extends HTMLArkProps<"div">, BaseCardRootProps {}
 
-export type CardMediaProps = ComponentProps<typeof ark.div> & CardVariantProps;
+export type CardMediaProps = HTMLArkProps<"div"> & CardVariantProps;
 
-export interface CardHeaderProps extends Omit<
-  ComponentProps<typeof ark.div>,
-  "title"
-> {
+export interface CardHeaderProps extends Omit<HTMLArkProps<"div">, "title"> {
   description?: JSX.Element;
   title?: JSX.Element;
 }
 
-export type CardTitleProps = ComponentProps<typeof ark.h3>;
-export type CardDescriptionProps = ComponentProps<typeof ark.p>;
-export type CardActionProps = ComponentProps<typeof ark.div>;
-export type CardContentProps = ComponentProps<typeof ark.div>;
-export type CardFooterProps = ComponentProps<typeof ark.div>;
+export type CardTitleProps = HTMLArkProps<"h3">;
+export type CardDescriptionProps = HTMLArkProps<"p">;
+export type CardActionProps = HTMLArkProps<"div">;
+export type CardContentProps = HTMLArkProps<"div">;
+export type CardFooterProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Parts

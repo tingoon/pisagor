@@ -4,6 +4,7 @@ import {
   createTreeCollection as arkCreateTreeCollection,
 } from "@ark-ui/react";
 import type {
+  HTMLArkProps,
   TreeCollection as arkTreeCollection,
   TreeViewBranchContentProps,
   TreeViewBranchControlProps as TreeViewPrimitiveBranchControlProps,
@@ -39,7 +40,7 @@ import {
 } from "@pisagor/recipes";
 
 import { cn } from "@pisagor/utils";
-import type { ComponentProps, JSX } from "react";
+import type { JSX, RefAttributes } from "react";
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
@@ -142,7 +143,8 @@ export interface TreeViewItemTextProps extends TreeViewItemTitleProps {
 
 export type TreeViewNodeInputProps = TreeViewNodeRenameInputProps;
 
-interface TreeViewItemIconProps extends ComponentProps<typeof ark.span> {}
+interface TreeViewItemIconProps
+  extends HTMLArkProps<"span">, RefAttributes<HTMLSpanElement> {}
 // #endregion
 
 // #region Parts

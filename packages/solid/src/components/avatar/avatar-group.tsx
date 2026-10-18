@@ -1,7 +1,7 @@
-import { ark } from "@ark-ui/solid";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { AvatarGroupProps as BaseAvatarGroupRootProps } from "@pisagor/props";
 import { avatarGroupRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../../internal";
 import { Avatar } from "./avatar";
@@ -14,7 +14,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export interface AvatarGroupRootProps
-  extends ComponentProps<typeof ark.div>, BaseAvatarGroupRootProps {}
+  extends HTMLArkProps<"div">, BaseAvatarGroupRootProps {}
 
 export interface AvatarGroupProps extends Omit<
   AvatarGroupRootProps,
@@ -30,7 +30,7 @@ export interface AvatarGroupProps extends Omit<
   }>;
 }
 
-export type AvatarGroupCountProps = ComponentProps<typeof ark.div>;
+export type AvatarGroupCountProps = HTMLArkProps<"div">;
 
 export const AvatarGroupRoot: Component<AvatarGroupRootProps> = withProvider(
   ark.div,

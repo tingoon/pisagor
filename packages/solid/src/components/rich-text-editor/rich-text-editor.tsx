@@ -1,10 +1,10 @@
-import { ark } from "@ark-ui/solid";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { RichTextEditorProps as BaseRichTextEditorRootProps } from "@pisagor/props";
 import { formControlShellRecipe, richTextEditorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { Editor } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
-import type { ComponentProps, JSX } from "solid-js";
+import type { JSX } from "solid-js";
 import {
   createEffect,
   createSignal,
@@ -34,7 +34,7 @@ type FormControlVariant = "primary" | "secondary";
 
 export interface RichTextEditorRootProps
   extends
-    Omit<ComponentProps<typeof ark.div>, "defaultValue" | "onChange">,
+    Omit<HTMLArkProps<"div">, "defaultValue" | "onChange">,
     BaseRichTextEditorRootProps {
   variant?: FormControlVariant;
   defaultValue?: string;
@@ -49,8 +49,8 @@ export interface RichTextEditorRootProps
   children?: JSX.Element;
 }
 
-export type RichTextEditorToolbarProps = ComponentProps<typeof ark.div>;
-export type RichTextEditorContentProps = ComponentProps<typeof ark.div>;
+export type RichTextEditorToolbarProps = HTMLArkProps<"div">;
+export type RichTextEditorContentProps = HTMLArkProps<"div">;
 
 export function RichTextEditorRoot(
   props: RichTextEditorRootProps,

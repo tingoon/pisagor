@@ -1,10 +1,10 @@
-import { ark } from "@ark-ui/solid";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   BreadcrumbItemProps as BaseBreadcrumbItemProps,
   BreadcrumbProps as BaseBreadcrumbProps,
 } from "@pisagor/props";
 import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
 import {
   CaretRightIcon,
@@ -35,16 +35,16 @@ interface BreadcrumbPresetItem {
   isCurrentPage?: boolean;
 }
 
-export type BreadcrumbListProps = ComponentProps<typeof ark.ol>;
+export type BreadcrumbListProps = HTMLArkProps<"ol">;
 export interface BreadcrumbItemProps
-  extends ComponentProps<typeof ark.li>, BaseBreadcrumbItemProps {}
-export type BreadcrumbLinkProps = ComponentProps<typeof ark.a>;
-export type BreadcrumbPageProps = ComponentProps<typeof ark.span>;
-export type BreadcrumbSeparatorProps = ComponentProps<typeof ark.li>;
-export type BreadcrumbEllipsisProps = ComponentProps<typeof ark.span>;
+  extends HTMLArkProps<"li">, BaseBreadcrumbItemProps {}
+export type BreadcrumbLinkProps = HTMLArkProps<"a">;
+export type BreadcrumbPageProps = HTMLArkProps<"span">;
+export type BreadcrumbSeparatorProps = HTMLArkProps<"li">;
+export type BreadcrumbEllipsisProps = HTMLArkProps<"span">;
 
 export interface BreadcrumbRootProps
-  extends ComponentProps<typeof ark.nav>, BaseBreadcrumbProps {
+  extends HTMLArkProps<"nav">, BaseBreadcrumbProps {
   "aria-label"?: string;
 }
 

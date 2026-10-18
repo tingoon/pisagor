@@ -13,6 +13,7 @@ import type {
   FileUploadItemSizeTextProps,
   FileUploadRootProps as FileUploadPrimitiveRootProps,
   FileUploadTriggerProps,
+  HTMLArkProps,
 } from "@ark-ui/react";
 import { UploadIcon, XIcon } from "@phosphor-icons/react";
 import type {
@@ -25,7 +26,7 @@ import {
   formControlZoneRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { ComponentProps } from "react";
+import type { ComponentProps, RefAttributes } from "react";
 import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { type MessageKey, useLocale } from "./provider/context";
@@ -72,13 +73,17 @@ export type FileUploadItemDeleteTriggerProps = ComponentProps<
   typeof FileUploadPrimitive.ItemDeleteTrigger
 >;
 
-export type FileUploadDropzoneIconProps = ComponentProps<typeof ark.div>;
+export type FileUploadDropzoneIconProps = HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement>;
 
-export type FileUploadTitleProps = ComponentProps<typeof ark.div>;
+export type FileUploadTitleProps = HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement>;
 
-export type FileUploadDescriptionProps = ComponentProps<typeof ark.div>;
+export type FileUploadDescriptionProps = HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement>;
 
-export type FileUploadHelperProps = ComponentProps<typeof ark.div>;
+export type FileUploadHelperProps = HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement>;
 // #endregion
 
 // #region Parts

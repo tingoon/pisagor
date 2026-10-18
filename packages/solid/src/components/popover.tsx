@@ -1,5 +1,6 @@
 import { Popover as PopoverPrimitive, ark } from "@ark-ui/solid";
 import type {
+  HTMLArkProps,
   PopoverAnchorProps,
   PopoverArrowProps,
   PopoverCloseTriggerProps,
@@ -12,7 +13,7 @@ import type {
 } from "@ark-ui/solid";
 import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
 import { popoverRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import { XIcon, createSlotRecipeContext } from "../internal";
@@ -36,13 +37,13 @@ export interface PopoverContentProps
   showCloseButton?: boolean;
 }
 
-export interface PopoverHeaderProps extends ComponentProps<typeof ark.div> {
+export interface PopoverHeaderProps extends HTMLArkProps<"div"> {
   description?: string;
   title?: string;
 }
 
-export type PopoverBodyProps = ComponentProps<typeof ark.div>;
-export type PopoverFooterProps = ComponentProps<typeof ark.div>;
+export type PopoverBodyProps = HTMLArkProps<"div">;
+export type PopoverFooterProps = HTMLArkProps<"div">;
 
 export function PopoverRoot(props: PopoverRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["modal"]);

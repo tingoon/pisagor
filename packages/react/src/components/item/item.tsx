@@ -1,7 +1,7 @@
-import { ark } from "@ark-ui/react";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
-import type { ComponentProps } from "react";
+import type { ComponentProps, RefAttributes } from "react";
 import { type SizeScaleProps, createSlotRecipeContext } from "../../internal";
 import { useItemGroup } from "./item-group.context";
 
@@ -24,7 +24,10 @@ export function ItemRoot({
   recipe = itemRecipe,
   className,
   ...rest
-}: ComponentProps<typeof ark.div> & BaseItemProps & SizeScaleProps) {
+}: HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement> &
+  BaseItemProps &
+  SizeScaleProps) {
   const group = useItemGroup();
   const variant = variantProp ?? group?.variant ?? "default";
   const resolved = {
@@ -55,7 +58,7 @@ export function ItemMedia({
   children,
   className,
   ...rest
-}: ComponentProps<typeof ark.div> & ItemVariantProps) {
+}: HTMLArkProps<"div"> & RefAttributes<HTMLDivElement> & ItemVariantProps) {
   const { slots } = useItem();
 
   return (

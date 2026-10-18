@@ -1,5 +1,6 @@
 import { Popover as PopoverPrimitive, Portal, ark } from "@ark-ui/react";
 import type {
+  HTMLArkProps,
   PopoverAnchorProps,
   PopoverArrowProps,
   PopoverCloseTriggerProps,
@@ -11,7 +12,7 @@ import type {
 import { XIcon } from "@phosphor-icons/react";
 import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
 import { popoverRecipe } from "@pisagor/recipes";
-import type { ComponentProps } from "react";
+import type { RefAttributes } from "react";
 import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { useLocale } from "./provider/context";
@@ -39,16 +40,19 @@ export interface PopoverContentProps
   showCloseButton?: boolean;
 }
 
-export interface PopoverHeaderProps extends ComponentProps<typeof ark.div> {
+export interface PopoverHeaderProps
+  extends HTMLArkProps<"div">, RefAttributes<HTMLDivElement> {
   /** The description of the popover header */
   description?: string;
   /** The title of the popover header */
   title?: string;
 }
 
-export type PopoverBodyProps = ComponentProps<typeof ark.div>;
+export type PopoverBodyProps = HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement>;
 
-export type PopoverFooterProps = ComponentProps<typeof ark.div>;
+export type PopoverFooterProps = HTMLArkProps<"div"> &
+  RefAttributes<HTMLDivElement>;
 // #endregion
 
 // #region Parts

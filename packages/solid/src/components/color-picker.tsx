@@ -18,6 +18,7 @@ import type {
   ColorPickerValueSwatchProps,
   ColorPickerValueTextProps,
   ColorPickerViewProps,
+  HTMLArkProps,
 } from "@ark-ui/solid";
 import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
 import { colorPickerRecipe } from "@pisagor/recipes";
@@ -94,7 +95,7 @@ export type ColorPickerSwatchIndicatorProps = ComponentProps<
 
 export type ColorPickerInputProps = Partial<ColorPickerChannelInputProps>;
 
-export type ColorPickerSwatchPreviewProps = ComponentProps<typeof ark.div>;
+export type ColorPickerSwatchPreviewProps = HTMLArkProps<"div">;
 
 export const parseColor = parseColorArk;
 

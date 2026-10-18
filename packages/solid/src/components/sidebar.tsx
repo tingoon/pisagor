@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { SidebarProps as BaseSidebarProps } from "@pisagor/props";
 import {
   type ButtonVariantProps,
@@ -104,44 +104,38 @@ export interface SidebarMenuButtonProps extends ButtonProps {
   tooltip?: string | Omit<TooltipProps, "children">;
 }
 
-export interface SidebarMenuActionProps extends ComponentProps<
-  typeof ark.button
-> {
+export interface SidebarMenuActionProps extends HTMLArkProps<"button"> {
   showOnHover?: boolean;
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export interface SidebarMenuSkeletonProps extends ComponentProps<
-  typeof ark.div
-> {
+export interface SidebarMenuSkeletonProps extends HTMLArkProps<"div"> {
   showIcon?: boolean;
 }
 
 export interface SidebarMenuSubButtonProps
-  extends ComponentProps<typeof ark.a>, ButtonVariantProps {
+  extends HTMLArkProps<"a">, ButtonVariantProps {
   isActive?: boolean;
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export type SidebarRailProps = ComponentProps<typeof ark.button>;
-export type SidebarInsetProps = ComponentProps<typeof ark.main>;
-export type SidebarHeaderProps = ComponentProps<typeof ark.div>;
-export type SidebarFooterProps = ComponentProps<typeof ark.div>;
-export type SidebarGroupProps = ComponentProps<typeof ark.div>;
-export type SidebarGroupLabelProps = ComponentProps<typeof ark.div>;
+export type SidebarRailProps = HTMLArkProps<"button">;
+export type SidebarInsetProps = HTMLArkProps<"main">;
+export type SidebarHeaderProps = HTMLArkProps<"div">;
+export type SidebarFooterProps = HTMLArkProps<"div">;
+export type SidebarGroupProps = HTMLArkProps<"div">;
+export type SidebarGroupLabelProps = HTMLArkProps<"div">;
 
-export interface SidebarGroupActionProps extends ComponentProps<
-  typeof ark.button
-> {
+export interface SidebarGroupActionProps extends HTMLArkProps<"button"> {
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export type SidebarGroupContentProps = ComponentProps<typeof ark.div>;
-export type SidebarMenuProps = ComponentProps<typeof ark.ul>;
-export type SidebarMenuItemProps = ComponentProps<typeof ark.li>;
-export type SidebarMenuBadgeProps = ComponentProps<typeof ark.div>;
-export type SidebarMenuSubProps = ComponentProps<typeof ark.ul>;
-export type SidebarMenuSubItemProps = ComponentProps<typeof ark.li>;
+export type SidebarGroupContentProps = HTMLArkProps<"div">;
+export type SidebarMenuProps = HTMLArkProps<"ul">;
+export type SidebarMenuItemProps = HTMLArkProps<"li">;
+export type SidebarMenuBadgeProps = HTMLArkProps<"div">;
+export type SidebarMenuSubProps = HTMLArkProps<"ul">;
+export type SidebarMenuSubItemProps = HTMLArkProps<"li">;
 
 const SIDEBAR_STORAGE_KEY = "sidebar_state";
 const SIDEBAR_WIDTH = "16rem";

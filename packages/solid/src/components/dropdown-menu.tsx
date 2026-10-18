@@ -1,5 +1,6 @@
 import { Menu as MenuPrimitive, ark } from "@ark-ui/solid";
 import type {
+  HTMLArkProps,
   MenuArrowProps,
   MenuCheckboxItemProps,
   MenuContentProps,
@@ -77,7 +78,7 @@ export interface DropdownMenuTriggerItemProps
 export interface DropdownMenuContentProps
   extends MenuContentProps, BaseDropdownMenuProps {}
 
-export type DropdownMenuShortcutProps = ComponentProps<typeof ark.span>;
+export type DropdownMenuShortcutProps = HTMLArkProps<"span">;
 
 export function DropdownMenuRoot(props: DropdownMenuRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["positioning"]);

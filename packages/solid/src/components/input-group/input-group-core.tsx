@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   InputGroupAddonProps as BaseInputGroupAddonProps,
   InputGroupButtonProps as BaseInputGroupButtonProps,
@@ -14,7 +14,7 @@ import {
   inputGroupTextRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { ComponentProps, JSX } from "solid-js";
+import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { Button, type ButtonProps } from "../button";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -22,10 +22,10 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 type FormControlVariant = "primary" | "secondary";
 
 export interface InputGroupProps
-  extends ComponentProps<typeof ark.div>, FormControlGroupShellVariantProps {}
+  extends HTMLArkProps<"div">, FormControlGroupShellVariantProps {}
 
 export interface InputGroupAddonProps
-  extends ComponentProps<typeof ark.div>, BaseInputGroupAddonProps {}
+  extends HTMLArkProps<"div">, BaseInputGroupAddonProps {}
 
 export interface InputGroupButtonProps
   extends
@@ -34,7 +34,7 @@ export interface InputGroupButtonProps
     BaseInputGroupButtonProps {}
 
 export interface InputGroupTextProps
-  extends ComponentProps<typeof ark.span>, BaseInputGroupTextProps {}
+  extends HTMLArkProps<"span">, BaseInputGroupTextProps {}
 
 export function InputGroupRoot(props: InputGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["size", "variant", "class"]);

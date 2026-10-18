@@ -8,10 +8,11 @@ import type {
   DrawerRootProps as DrawerPrimitiveRootProps,
   DrawerTitleProps,
   DrawerTriggerProps,
+  HTMLArkProps,
 } from "@ark-ui/solid";
 import type { DrawerProps as BaseDrawerRootProps } from "@pisagor/props";
 import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
 import { createSlotRecipeContext } from "../internal";
@@ -34,18 +35,18 @@ export type DrawerPositionerProps = DrawerPrimitivePositionerProps &
 export type DrawerContentProps = DrawerPrimitiveContentProps &
   Pick<DrawerVariantProps, "variant">;
 
-export interface DrawerHeaderProps extends ComponentProps<typeof ark.div> {
+export interface DrawerHeaderProps extends HTMLArkProps<"div"> {
   description?: string;
   title?: string;
 }
 
-export interface DrawerBodyProps extends ComponentProps<typeof ark.div> {
+export interface DrawerBodyProps extends HTMLArkProps<"div"> {
   scrollFade?: boolean;
 }
 
-export type DrawerContentInnerProps = ComponentProps<typeof ark.div>;
-export type DrawerDescriptionProps = ComponentProps<typeof ark.div>;
-export type DrawerFooterProps = ComponentProps<typeof ark.div>;
+export type DrawerContentInnerProps = HTMLArkProps<"div">;
+export type DrawerDescriptionProps = HTMLArkProps<"div">;
+export type DrawerFooterProps = HTMLArkProps<"div">;
 
 export function DrawerRoot(props: LocalDrawerRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["recipe"]);
