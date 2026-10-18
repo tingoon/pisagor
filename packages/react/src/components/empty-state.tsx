@@ -49,8 +49,6 @@ export type EmptyStateDescriptionProps = ComponentProps<
 >;
 export type EmptyStateActionsProps = ComponentProps<typeof EmptyStateActions>;
 
-type EmptyStateClassNames = VariantClassNames<EmptyStateRecipeSlot>;
-
 export interface EmptyStateProps extends Omit<EmptyStateRootProps, "children"> {
   /** Action buttons or links. */
   actions?: ReactNode;
@@ -61,7 +59,7 @@ export interface EmptyStateProps extends Omit<EmptyStateRootProps, "children"> {
   /** Primary heading. */
   title?: ReactNode;
   /** Slot class names */
-  classNames?: EmptyStateClassNames;
+  classNames?: VariantClassNames<EmptyStateRecipeSlot>;
   /** Extra props forwarded to the actions element */
   actionsProps?: Omit<EmptyStateActionsProps, "children" | "className">;
   /** Extra props forwarded to the description element */

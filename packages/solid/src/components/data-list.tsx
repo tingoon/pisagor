@@ -19,8 +19,6 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-type DataListClassNames = VariantClassNames<DataListItemRecipeSlot>;
-
 interface DataListPresetItem {
   label: JSX.Element;
   value: JSX.Element;
@@ -42,7 +40,7 @@ export interface DataListItemProps extends Omit<
   "value"
 > {
   value?: JSX.Element;
-  classNames?: DataListClassNames;
+  classNames?: VariantClassNames<DataListItemRecipeSlot>;
 }
 // #endregion
 

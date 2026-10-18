@@ -28,8 +28,6 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-type NavigationMenuClassNames = VariantClassNames<NavigationMenuRecipeSlot>;
-
 export interface NavigationMenuRootProps extends BaseNavigationMenuRootProps {
   class?: unknown;
 }
@@ -261,7 +259,7 @@ export const NavigationMenuLink = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<NavigationMenuClassNames>,
+      type: Object as PropType<VariantClassNames<NavigationMenuRecipeSlot>>,
     },
   },
   setup(props, { attrs, slots }) {

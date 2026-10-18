@@ -31,7 +31,6 @@ type FormControlVariant = "primary" | "secondary";
 type RatingControlProps = RatingGroupControlProps;
 type RatingItemProps = RatingGroupItemProps;
 type RatingIndicatorProps = ComponentProps<"span">;
-type RatingClassNames = VariantClassNames<RatingRecipeSlot>;
 type RatingIconProps = {
   "data-bg"?: string;
   "data-fg"?: string;
@@ -56,7 +55,7 @@ export interface RatingProps extends Omit<
    */
   icon?: Component<RatingIconProps>;
   onValueChange?: (value: number) => void;
-  classNames?: RatingClassNames;
+  classNames?: VariantClassNames<RatingRecipeSlot>;
   controlProps?: Omit<RatingControlProps, "children" | "class">;
   indicatorProps?: Omit<RatingIndicatorProps, "children" | "class">;
   itemProps?: Omit<RatingItemProps, "children" | "index" | "class">;

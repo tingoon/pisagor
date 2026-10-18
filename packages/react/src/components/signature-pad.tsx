@@ -33,9 +33,6 @@ const {
 // #endregion
 
 // #region Types
-
-type SignaturePadClassNames = VariantClassNames<SignaturePadRecipeSlot>;
-
 type SignaturePadRootProps = SignaturePadRootPrimitiveProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
@@ -48,7 +45,7 @@ export interface SignaturePadProps extends Omit<
   "children"
 > {
   /** Slot class names */
-  classNames?: SignaturePadClassNames;
+  classNames?: VariantClassNames<SignaturePadRecipeSlot>;
 }
 
 type SignaturePadClearProps = SignaturePadClearTriggerProps;

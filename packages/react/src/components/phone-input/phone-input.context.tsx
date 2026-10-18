@@ -8,12 +8,10 @@ import type { InputProps } from "../input";
 import type { FormControlVariant, VariantClassNames } from "../../internal";
 import { createContext } from "../../utils";
 
-type PhoneInputClassNames = VariantClassNames<PhoneInputRecipeSlot>;
-
 type PhoneInputSize = NonNullable<PhoneInputVariantProps["size"]>;
 
 interface PhoneInputContextValue {
-  classNames?: PhoneInputClassNames;
+  classNames?: VariantClassNames<PhoneInputRecipeSlot>;
   inputProps?: Omit<
     InputProps,
     "className" | "onChange" | "onBlur" | "size" | "type" | "value"

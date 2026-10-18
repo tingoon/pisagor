@@ -27,7 +27,6 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 
 type CircularProgressTrackProps = ComponentProps<"svg">;
 type CircularProgressValueProps = ProgressValueTextProps;
-type CircularProgressClassNames = VariantClassNames<CircularProgressRecipeSlot>;
 
 type CircularProgressRootProps = ProgressRootProviderProps &
   BaseCircularProgressProps;
@@ -39,7 +38,7 @@ export interface CircularProgressProps
   indeterminate?: boolean;
   isValueVisible?: boolean;
   children?: JSX.Element;
-  classNames?: CircularProgressClassNames;
+  classNames?: VariantClassNames<CircularProgressRecipeSlot>;
   trackProps?: Omit<
     CircularProgressTrackProps,
     "class" | "height" | "viewBox" | "width"

@@ -25,8 +25,6 @@ const { withContext, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-type AvatarClassNames = VariantClassNames<AvatarRecipeSlot>;
-
 type AvatarRootProps = AvatarRootPrimitiveProps &
   AvatarVariantProps &
   BaseAvatarRootProps;
@@ -40,7 +38,7 @@ export interface AvatarProps extends Omit<AvatarRootProps, "children"> {
    */
   name?: string;
   src?: string;
-  classNames?: AvatarClassNames;
+  classNames?: VariantClassNames<AvatarRecipeSlot>;
   fallbackProps?: Omit<AvatarFallbackProps, "children" | "class">;
   imageProps?: Omit<AvatarImageProps, "alt" | "class" | "src">;
 }

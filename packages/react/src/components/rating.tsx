@@ -25,14 +25,11 @@ const {
 // #endregion
 
 // #region Types
-
 type RatingControlProps = RatingGroupControlProps;
 
 type RatingItemProps = RatingGroupItemProps;
 
 type RatingIndicatorProps = ComponentProps<"span">;
-
-type RatingClassNames = VariantClassNames<RatingRecipeSlot>;
 
 type RatingRootProps = RatingGroupRootProps & {
   /** Visual shell variant. Defaults to `primary`. */
@@ -72,7 +69,7 @@ export interface RatingProps extends Omit<
    */
   onValueChange?: (value: number) => void;
   /** Slot class names */
-  classNames?: RatingClassNames;
+  classNames?: VariantClassNames<RatingRecipeSlot>;
   /** Extra props forwarded to the rating control element */
   controlProps?: Omit<RatingControlProps, "children" | "className">;
   /** Extra props forwarded to each rating item indicator element */

@@ -20,7 +20,6 @@ const { Context: SwitchStylesContext, withContext } = createSlotRecipeContext({
 // #endregion
 
 type FormControlVariant = "primary" | "secondary";
-type SwitchClassNames = VariantClassNames<SwitchRecipeSlot>;
 
 type SwitchRootProps = SwitchRootPrimitiveProps & {
   variant?: FormControlVariant;
@@ -28,7 +27,7 @@ type SwitchRootProps = SwitchRootPrimitiveProps & {
 
 export interface SwitchProps extends Omit<SwitchRootProps, "children"> {
   onValueChange?: (value: boolean) => void;
-  classNames?: SwitchClassNames;
+  classNames?: VariantClassNames<SwitchRecipeSlot>;
   controlProps?: Omit<SwitchControlProps, "children" | "class">;
   hiddenInputProps?: Omit<SwitchHiddenInputProps, "class">;
   thumbProps?: Omit<SwitchThumbProps, "children" | "class">;

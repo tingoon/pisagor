@@ -56,7 +56,6 @@ function useSlider() {
 
 type FormControlVariant = "primary" | "secondary";
 type SliderValueProps = SliderValueTextProps;
-type SliderClassNames = VariantClassNames<SliderRecipeSlot>;
 
 type SliderRootProps = SliderRootPrimitiveProps &
   BaseSliderProps & {
@@ -74,7 +73,7 @@ export interface SliderProps extends Omit<
   children?: JSX.Element;
   label?: JSX.Element;
   onValueChange?: (value: number[]) => void;
-  classNames?: SliderClassNames;
+  classNames?: VariantClassNames<SliderRecipeSlot>;
   controlProps?: Omit<SliderControlProps, "children" | "class">;
   rangeProps?: Omit<SliderRangeProps, "children" | "class">;
   thumbProps?: Omit<SliderThumbProps, "children" | "index" | "class">;

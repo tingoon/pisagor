@@ -36,7 +36,6 @@ const {
 // #endregion
 
 type FormControlVariant = "primary" | "secondary";
-type SignaturePadClassNames = VariantClassNames<SignaturePadRecipeSlot>;
 
 type SignaturePadRootProps = SignaturePadRootPrimitiveProps & {
   variant?: FormControlVariant;
@@ -47,7 +46,7 @@ export interface SignaturePadProps extends Omit<
   SignaturePadRootProps,
   "children"
 > {
-  classNames?: SignaturePadClassNames;
+  classNames?: VariantClassNames<SignaturePadRecipeSlot>;
 }
 
 type SignaturePadClearProps = SignaturePadClearTriggerProps;

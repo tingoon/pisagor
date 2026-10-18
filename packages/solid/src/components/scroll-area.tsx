@@ -22,15 +22,13 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-type ScrollAreaClassNames = VariantClassNames<ScrollAreaRecipeSlot>;
-
 type ScrollAreaRootProps = ScrollAreaRootPrimitiveProps &
   ScrollAreaVariantProps &
   BaseScrollAreaRootProps;
 
 export interface ScrollAreaProps extends Omit<ScrollAreaRootProps, "children"> {
   children?: JSX.Element;
-  classNames?: ScrollAreaClassNames;
+  classNames?: VariantClassNames<ScrollAreaRecipeSlot>;
   scrollbarProps?: Omit<
     ScrollAreaScrollbarProps,
     "children" | "class" | "orientation"

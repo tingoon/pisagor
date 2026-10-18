@@ -35,7 +35,6 @@ import { PhoneInputContext, usePhoneInput } from "./phone-input.context";
 import { phoneInputFlags } from "./phone-input-flags";
 
 type FormControlVariant = "primary" | "secondary";
-type PhoneInputClassNames = VariantClassNames<PhoneInputRecipeSlot>;
 export type Country = CountryCode;
 
 interface CountrySelectOption {
@@ -57,7 +56,7 @@ export interface PhoneInputProps extends BasePhoneInputProps {
   name?: string;
   id?: string;
   class?: string;
-  classNames?: PhoneInputClassNames;
+  classNames?: VariantClassNames<PhoneInputRecipeSlot>;
   inputProps?: Omit<
     InputProps,
     "class" | "onChange" | "onBlur" | "size" | "type" | "value"

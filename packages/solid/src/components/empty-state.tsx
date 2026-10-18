@@ -20,8 +20,6 @@ export type EmptyStateTitleProps = HTMLArkProps<"h3">;
 export type EmptyStateDescriptionProps = ComponentProps<"p">;
 export type EmptyStateActionsProps = ComponentProps<"div">;
 
-type EmptyStateClassNames = VariantClassNames<EmptyStateRecipeSlot>;
-
 export interface EmptyStateProps extends Omit<EmptyStateRootProps, "children"> {
   /** Action buttons or links. */
   actions?: JSX.Element;
@@ -32,7 +30,7 @@ export interface EmptyStateProps extends Omit<EmptyStateRootProps, "children"> {
   /** Primary heading. */
   title?: JSX.Element;
   /** Slot class names */
-  classNames?: EmptyStateClassNames;
+  classNames?: VariantClassNames<EmptyStateRecipeSlot>;
   /** Extra props forwarded to the actions element */
   actionsProps?: Omit<EmptyStateActionsProps, "children" | "class">;
   /** Extra props forwarded to the description element */

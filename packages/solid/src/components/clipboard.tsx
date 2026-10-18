@@ -35,7 +35,6 @@ const { Context: ClipboardStylesContext, withContext } =
 // #endregion
 
 type FormControlVariant = "primary" | "secondary";
-type ClipboardClassNames = VariantClassNames<ClipboardRecipeSlot>;
 
 export interface ClipboardProps
   extends Omit<ClipboardRootProps, "children">, BaseClipboardProps {
@@ -49,7 +48,7 @@ export interface ClipboardProps
   copiedIcon?: JSX.Element;
   copyIcon?: JSX.Element;
   label?: string;
-  classNames?: ClipboardClassNames;
+  classNames?: VariantClassNames<ClipboardRecipeSlot>;
   labelProps?: Omit<
     ComponentProps<typeof ClipboardPrimitive.Label>,
     "children" | "class"

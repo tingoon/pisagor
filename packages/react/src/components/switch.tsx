@@ -19,9 +19,6 @@ const { Context: SwitchStylesContext, withContext } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-
-type SwitchClassNames = VariantClassNames<SwitchRecipeSlot>;
-
 type SwitchRootProps = SwitchRootPrimitiveProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
@@ -29,7 +26,7 @@ type SwitchRootProps = SwitchRootPrimitiveProps & {
 
 export interface SwitchProps extends Omit<SwitchRootProps, "children"> {
   /** Slot class names */
-  classNames?: SwitchClassNames;
+  classNames?: VariantClassNames<SwitchRecipeSlot>;
   /** Extra props forwarded to the switch control element */
   controlProps?: Omit<SwitchControlProps, "children" | "className">;
   /** Extra props forwarded to the hidden input element (e.g. tabIndex) */

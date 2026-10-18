@@ -128,8 +128,6 @@ function CircularProgressTrack({
 // #endregion
 
 // #region Types
-type CircularProgressClassNames = VariantClassNames<CircularProgressRecipeSlot>;
-
 export interface CircularProgressProps
   extends Omit<ProgressRootProps, "children">, BaseCircularProgressRootProps {
   /**
@@ -154,7 +152,7 @@ export interface CircularProgressProps
   isValueVisible?: boolean;
   children?: ReactNode;
   /** Slot class names */
-  classNames?: CircularProgressClassNames;
+  classNames?: VariantClassNames<CircularProgressRecipeSlot>;
   /** Extra props forwarded to the circular progress track element */
   trackProps?: Omit<
     ComponentPropsWithRef<"svg">,

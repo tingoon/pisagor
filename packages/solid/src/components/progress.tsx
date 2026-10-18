@@ -20,7 +20,6 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 type ProgressHeaderProps = ComponentProps<"div">;
-type ProgressClassNames = VariantClassNames<ProgressRecipeSlot>;
 
 type ProgressRootProps = Omit<ProgressRootPrimitiveProps, "value"> &
   BaseProgressProps & {
@@ -33,7 +32,7 @@ export interface ProgressProps extends Omit<ProgressRootProps, "children"> {
   value?: number;
   children?: JSX.Element;
   label?: string;
-  classNames?: ProgressClassNames;
+  classNames?: VariantClassNames<ProgressRecipeSlot>;
   rangeProps?: Omit<ProgressRangeProps, "children" | "class">;
   trackProps?: Omit<ProgressTrackProps, "children" | "class">;
   valueProps?: Omit<ProgressValueTextProps, "children" | "class">;

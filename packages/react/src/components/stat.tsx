@@ -92,8 +92,6 @@ export type StatValueProps = ComponentProps<typeof StatValue>;
 export type StatDescriptionProps = ComponentProps<typeof StatDescription>;
 export type StatTrendProps = ComponentProps<typeof StatTrend>;
 
-type StatClassNames = VariantClassNames<StatRecipeSlot>;
-
 export interface StatProps extends Omit<StatRootProps, "children"> {
   /** Supporting copy below the value. */
   description?: ReactNode;
@@ -104,7 +102,7 @@ export interface StatProps extends Omit<StatRootProps, "children"> {
   /** Primary metric value (display copy — not a controlled input). */
   value?: ReactNode;
   /** Slot class names */
-  classNames?: StatClassNames;
+  classNames?: VariantClassNames<StatRecipeSlot>;
   /** Extra props forwarded to the description element */
   descriptionProps?: Omit<StatDescriptionProps, "children" | "className">;
   /** Extra props forwarded to the label element */

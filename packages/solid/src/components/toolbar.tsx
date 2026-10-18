@@ -17,7 +17,6 @@ export type ToolbarTitleProps = HTMLArkProps<"h2">;
 export type ToolbarDescriptionProps = ComponentProps<"p">;
 export type ToolbarActionsProps = ComponentProps<"div">;
 type ToolbarHeadingProps = ComponentProps<"div">;
-type ToolbarClassNames = VariantClassNames<ToolbarRecipeSlot>;
 
 export type ToolbarRootProps = Omit<ComponentProps<"div">, "title"> &
   BaseToolbarProps;
@@ -26,7 +25,7 @@ export interface ToolbarProps extends Omit<ToolbarRootProps, "children"> {
   actions?: JSX.Element;
   description?: JSX.Element;
   title?: JSX.Element;
-  classNames?: ToolbarClassNames;
+  classNames?: VariantClassNames<ToolbarRecipeSlot>;
   actionsProps?: Omit<ToolbarActionsProps, "children" | "class">;
   descriptionProps?: Omit<ToolbarDescriptionProps, "children" | "class">;
   titleProps?: Omit<ToolbarTitleProps, "children" | "class">;

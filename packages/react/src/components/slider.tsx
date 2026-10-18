@@ -50,10 +50,7 @@ function useSlider() {
 // #endregion
 
 // #region Types
-
 type SliderValueProps = SliderValueTextProps;
-
-type SliderClassNames = VariantClassNames<SliderRecipeSlot>;
 
 type SliderRootProps = SliderRootPrimitiveProps & {
   /** Visual shell variant. Defaults to `primary`. */
@@ -99,7 +96,7 @@ export interface SliderProps extends Omit<
    */
   onValueChange?: (value: number[]) => void;
   /** Slot class names */
-  classNames?: SliderClassNames;
+  classNames?: VariantClassNames<SliderRecipeSlot>;
   /** Extra props forwarded to the slider control element */
   controlProps?: Omit<SliderControlProps, "children" | "className">;
   /** Extra props forwarded to the slider range element */

@@ -19,7 +19,6 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { InputClearAddon } from "./input-clear-button";
 
 type FormControlVariant = "primary" | "secondary";
-type InputClassNames = VariantClassNames<InputRecipeSlot>;
 export interface InputProps
   extends Omit<FieldInputProps, "size">, BaseInputProps {
   /**
@@ -30,7 +29,7 @@ export interface InputProps
   clearable?: boolean;
   onValueChange?: (value: string) => void;
   rootRecipe?: typeof inputRootRecipe;
-  classNames?: InputClassNames;
+  classNames?: VariantClassNames<InputRecipeSlot>;
 }
 
 export function Input(props: InputProps): JSX.Element {

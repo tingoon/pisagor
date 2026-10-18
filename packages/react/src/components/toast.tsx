@@ -48,8 +48,6 @@ const { useStyles, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-type ToastItemClassNames = VariantClassNames<ToastItemRecipeSlot>;
-
 export interface ToasterRootProps
   extends
     Omit<ToasterPrimitiveProps, "toaster" | "children">,
@@ -65,7 +63,7 @@ export interface ToastItemRootProps
 
 export interface ToastItemProps extends ToastItemRootProps {
   /** Slot class names */
-  classNames?: ToastItemClassNames;
+  classNames?: VariantClassNames<ToastItemRecipeSlot>;
   /** Extra props forwarded to the toast actions container element */
   actionsProps?: Omit<ComponentProps<"div">, "className">;
   /** Extra props forwarded to the toast action trigger element */

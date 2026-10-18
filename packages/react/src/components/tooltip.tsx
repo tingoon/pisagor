@@ -34,8 +34,6 @@ export type TooltipTriggerHandle = (
   props: TooltipTriggerHandleProps,
 ) => ReactElement;
 
-type TooltipClassNames = VariantClassNames<TooltipRecipeSlot>;
-
 export interface TooltipProps extends Omit<TooltipRootProps, "children"> {
   /**
    * Trigger element or render function that receives trigger props from the
@@ -47,7 +45,7 @@ export interface TooltipProps extends Omit<TooltipRootProps, "children"> {
   /** Class merged onto the tooltip content element */
   className?: string;
   /** Slot class names */
-  classNames?: TooltipClassNames;
+  classNames?: VariantClassNames<TooltipRecipeSlot>;
   /**
    * Whether to render the arrow pointing at the trigger.
    *

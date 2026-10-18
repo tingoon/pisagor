@@ -31,14 +31,12 @@ export type TooltipTriggerHandle = (
   props: TooltipTriggerHandleProps,
 ) => JSX.Element;
 
-type TooltipClassNames = VariantClassNames<TooltipRecipeSlot>;
-
 export interface TooltipProps extends Omit<TooltipRootProps, "children"> {
   children: JSX.Element | TooltipTriggerHandle;
   content: JSX.Element;
   /** Class merged onto the tooltip content element */
   class?: string;
-  classNames?: TooltipClassNames;
+  classNames?: VariantClassNames<TooltipRecipeSlot>;
   /**
    * Whether to render the arrow.
    *

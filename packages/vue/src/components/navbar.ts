@@ -17,8 +17,6 @@ const { useStyles, withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-type NavbarClassNames = VariantClassNames<NavbarRecipeSlot>;
-
 export interface NavbarRootProps extends BaseNavbarRootProps {
   class?: unknown;
 }
@@ -49,7 +47,7 @@ export const NavbarNav = defineComponent({
     },
     classNames: {
       default: undefined,
-      type: Object as PropType<NavbarClassNames>,
+      type: Object as PropType<VariantClassNames<NavbarRecipeSlot>>,
     },
   },
   setup(props, { attrs, slots }) {

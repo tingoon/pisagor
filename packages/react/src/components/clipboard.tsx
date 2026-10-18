@@ -30,9 +30,6 @@ const { Context: ClipboardStylesContext, withContext } =
 // #endregion
 
 // #region Types
-
-type ClipboardClassNames = VariantClassNames<ClipboardRecipeSlot>;
-
 export interface ClipboardProps
   extends Omit<ClipboardRootProps, "children">, BaseClipboardProps {
   /**
@@ -66,7 +63,7 @@ export interface ClipboardProps
   /** Optional label rendered above the control. */
   label?: string;
   /** Slot class names */
-  classNames?: ClipboardClassNames;
+  classNames?: VariantClassNames<ClipboardRecipeSlot>;
   /** Extra props forwarded to the label element */
   labelProps?: Omit<
     ComponentProps<typeof ClipboardPrimitive.Label>,

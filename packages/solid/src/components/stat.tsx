@@ -39,14 +39,12 @@ export type StatTrendProps = ComponentProps<"div"> &
     icon?: JSX.Element;
   };
 
-type StatClassNames = VariantClassNames<StatRecipeSlot>;
-
 export interface StatProps extends Omit<StatRootProps, "children"> {
   description?: JSX.Element;
   label?: JSX.Element;
   trend?: JSX.Element;
   value?: JSX.Element;
-  classNames?: StatClassNames;
+  classNames?: VariantClassNames<StatRecipeSlot>;
   descriptionProps?: Omit<StatDescriptionProps, "children" | "class">;
   labelProps?: Omit<StatLabelProps, "children" | "class">;
   trendProps?: Omit<StatTrendProps, "children" | "class">;

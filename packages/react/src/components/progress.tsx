@@ -44,8 +44,6 @@ const ProgressRange = withContext(ProgressPrimitive.Range, {
 // #endregion
 
 // #region Types
-type ProgressClassNames = VariantClassNames<ProgressRecipeSlot>;
-
 export interface ProgressProps extends Omit<
   ComponentProps<typeof ProgressRoot>,
   "children" | "value"
@@ -68,7 +66,7 @@ export interface ProgressProps extends Omit<
   /** Optional label rendered above the progress bar. */
   label?: string;
   /** Slot class names */
-  classNames?: ProgressClassNames;
+  classNames?: VariantClassNames<ProgressRecipeSlot>;
   /** Extra props forwarded to the progress range element */
   rangeProps?: Omit<ProgressRangeProps, "children" | "className">;
   /** Extra props forwarded to the progress track element */

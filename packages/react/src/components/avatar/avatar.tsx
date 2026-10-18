@@ -36,8 +36,6 @@ const AvatarFallback = withContext(AvatarPrimitive.Fallback, {
 // #endregion
 
 // #region Types
-type AvatarClassNames = VariantClassNames<AvatarRecipeSlot>;
-
 export interface AvatarProps extends Omit<
   ComponentProps<typeof AvatarRoot>,
   "children"
@@ -54,7 +52,7 @@ export interface AvatarProps extends Omit<
   /** Renders the avatar image with the provided src */
   src?: string;
   /** Slot class names */
-  classNames?: AvatarClassNames;
+  classNames?: VariantClassNames<AvatarRecipeSlot>;
   /** Extra props forwarded to the avatar fallback element */
   fallbackProps?: Omit<AvatarFallbackProps, "children" | "className">;
   /** Extra props forwarded to the avatar image element */

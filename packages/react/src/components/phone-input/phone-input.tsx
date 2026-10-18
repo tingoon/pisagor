@@ -22,9 +22,6 @@ import { PhoneInputContext, usePhoneInput } from "./phone-input.context";
 import { phoneInputFlags } from "./phone-input-flags";
 
 // #region Types
-
-type PhoneInputClassNames = VariantClassNames<PhoneInputRecipeSlot>;
-
 interface CountrySelectOption {
   label: string;
   value?: Country;
@@ -65,7 +62,7 @@ export interface PhoneInputProps
   /** Called with the E.164 phone number when the value changes */
   onChange?: (value: string) => void;
   /** Slot class names */
-  classNames?: PhoneInputClassNames;
+  classNames?: VariantClassNames<PhoneInputRecipeSlot>;
   /** Tel input props (except `className`). */
   inputProps?: Omit<
     InputProps,

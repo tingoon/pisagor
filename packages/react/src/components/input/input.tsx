@@ -17,9 +17,6 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { InputClearAddon } from "./input-clear-button";
 
 // #region Types
-
-type InputClassNames = VariantClassNames<InputRecipeSlot>;
-
 export interface InputProps
   extends
     Omit<FieldInputProps, "size">,
@@ -44,7 +41,7 @@ export interface InputProps
    */
   rootRecipe?: typeof inputRootRecipe;
   /** Slot class names */
-  classNames?: InputClassNames;
+  classNames?: VariantClassNames<InputRecipeSlot>;
 }
 // #endregion
 

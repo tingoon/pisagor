@@ -50,8 +50,6 @@ export const ToolbarActions = withContext("div", {
 // #endregion
 
 // #region Types
-type ToolbarClassNames = VariantClassNames<ToolbarRecipeSlot>;
-
 export type ToolbarRootProps = ComponentProps<typeof ToolbarRoot>;
 export type ToolbarTitleProps = ComponentProps<typeof ToolbarTitle>;
 export type ToolbarDescriptionProps = ComponentProps<typeof ToolbarDescription>;
@@ -65,7 +63,7 @@ export interface ToolbarProps extends Omit<ToolbarRootProps, "children"> {
   /** Section heading. */
   title?: ReactNode;
   /** Slot class names */
-  classNames?: ToolbarClassNames;
+  classNames?: VariantClassNames<ToolbarRecipeSlot>;
   /** Extra props forwarded to the actions element */
   actionsProps?: Omit<ToolbarActionsProps, "children" | "className">;
   /** Extra props forwarded to the description element */

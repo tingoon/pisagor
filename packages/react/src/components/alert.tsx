@@ -51,8 +51,6 @@ export type AlertDescriptionProps = ComponentProps<typeof AlertDescription>;
 
 export type AlertActionProps = ComponentProps<typeof AlertAction>;
 
-type AlertClassNames = VariantClassNames<AlertRecipeSlot>;
-
 export interface AlertProps extends Omit<AlertRootProps, "children"> {
   /** Trailing action area. */
   action?: ReactNode;
@@ -66,7 +64,7 @@ export interface AlertProps extends Omit<AlertRootProps, "children"> {
   /** Bold title line. */
   title?: ReactNode;
   /** Slot class names */
-  classNames?: AlertClassNames;
+  classNames?: VariantClassNames<AlertRecipeSlot>;
   /** Extra props forwarded to the alert action element */
   actionProps?: Omit<AlertActionProps, "children" | "className">;
   /** Extra props forwarded to the alert description element */
