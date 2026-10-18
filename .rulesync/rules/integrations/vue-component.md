@@ -25,7 +25,7 @@ How to build shared UI components in `packages/vue` (`@pisagor/vue`). General Vu
 
 Light components live under `src/components/`. Prefer a **flat single file** `src/components/<name>.ts` (kebab-case → PascalCase export, e.g. `accordion.ts` → `Accordion`). Use a **folder** only when the component is multi-file (extra modules, shared context, or sibling parts that need their own files) — keep the same folder set as React (`app-shell`, `avatar`, `input`, `input-group`, `item`, `provider`, `surface`).
 
-**Heavy** modules live under `src/<name>/` with dedicated package exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/vue-form`.
+**Heavy** modules live under `src/components/<name>/` like other components, with dedicated package exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/vue-form`.
 
 ```text
 # Typical (single-file)

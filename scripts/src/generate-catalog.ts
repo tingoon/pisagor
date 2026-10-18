@@ -9,13 +9,6 @@ import {
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const HEAVY = [
-  "data-grid",
-  "data-table",
-  "phone-input",
-  "rich-text-editor",
-] as const;
-
 const EXAMPLE_EXTENSIONS = new Set([
   ".astro",
   ".svelte",
@@ -76,7 +69,6 @@ interface ScanTarget {
   packageDir: string;
   framework: Framework;
   componentsRoot: string;
-  extraDirs?: string[];
 }
 
 const COMPONENT_FILE_EXTENSIONS = [".tsx", ".ts", ".astro", ".svelte"];
@@ -288,20 +280,6 @@ function buildComponentsCatalog(target: ScanTarget): ComponentsCatalog {
     );
   }
 
-  for (const dir of target.extraDirs ?? []) {
-    const name = path.basename(dir);
-    byName.set(
-      name,
-      buildComponent(
-        findSources(dir, name),
-        name,
-        target.package,
-        target.packageDir,
-        examplesRoot,
-      ),
-    );
-  }
-
   return {
     components: [...byName.values()].sort((a, b) =>
       a.name.localeCompare(b.name),
@@ -350,9 +328,6 @@ function frameworkTargets(
   const targets: ScanTarget[] = [
     {
       componentsRoot: path.join(base, "src/components"),
-      extraDirs: HEAVY.map((name) => path.join(base, "src", name)).filter(
-        (dir) => existsSync(dir),
-      ),
       framework,
       package: `@pisagor/${pkg}`,
       packageDir: base,
@@ -403,10 +378,7 @@ function main() {
   ];
 
   for (const target of targets) {
-    if (
-      !existsSync(target.componentsRoot) &&
-      !(target.extraDirs?.length ?? 0)
-    ) {
+    if (!existsSync(target.componentsRoot)) {
       console.warn(`skip ${target.package}: missing sources`);
       continue;
     }

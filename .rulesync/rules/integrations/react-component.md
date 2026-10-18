@@ -24,7 +24,7 @@ How to build shared UI components in `packages/react` (`@pisagor/react`). Genera
 
 Light components live under `src/components/`. Prefer a **flat single file** `src/components/<name>.tsx` (kebab-case → PascalCase export, e.g. `accordion.tsx` → `Accordion`). Use a **folder** only when the component is multi-file (extra modules, shared context, or sibling parts that need their own files).
 
-**Heavy** modules live under `src/<name>/` with dedicated package exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/react-form`.
+**Heavy** modules live under `src/components/<name>/` like other components, with dedicated package exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/react-form`.
 
 ```text
 # Typical (single-file)

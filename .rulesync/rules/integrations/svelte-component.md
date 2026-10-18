@@ -23,7 +23,7 @@ How to build shared UI components in `packages/svelte` (`@pisagor/svelte`).
 
 Light components live under `src/components/`. Prefer a **folder** with one `.svelte` file per part (Svelte compounds need multiple SFCs). Flatten to a single file at `src/components/<name>.svelte` (plus a root-barrel export) **only** when the folder would otherwise be just `index.ts` + one implementation file.
 
-**Heavy** modules live under `src/<name>/` with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/svelte-form`.
+**Heavy** modules live under `src/components/<name>/` like other components, with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/svelte-form`.
 
 ```text
 # Typical compound (multi-file folder)

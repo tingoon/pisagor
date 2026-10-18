@@ -23,7 +23,7 @@ How to build shared UI components in `packages/solid` (`@pisagor/solid`).
 
 Light components live under `src/components/`. Prefer a **flat single file** `src/components/<name>.tsx` (kebab-case → PascalCase export). Use a **folder** only when the component is multi-file.
 
-**Heavy** modules live under `src/<name>/` with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/solid-form`.
+**Heavy** modules live under `src/components/<name>/` like other components, with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/solid-form`.
 
 ```text
 # Typical (single-file)
