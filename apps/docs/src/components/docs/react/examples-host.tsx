@@ -8,7 +8,7 @@ import {
 } from "#/lib/examples-host";
 
 const globs: ExampleGlobs = {
-  block: import.meta.glob("../../../blocks/react/*/*.{ts,tsx}"),
+  block: import.meta.glob("../../../blocks/react/**/*.{ts,tsx}"),
   component: import.meta.glob(
     "../../../../../../packages/react/examples/*/*/*.{ts,tsx}",
   ),

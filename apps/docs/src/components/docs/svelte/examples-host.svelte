@@ -9,7 +9,7 @@
   } from "#/lib/examples-host";
 
   const globs: ExampleGlobs = {
-    block: import.meta.glob("../../../blocks/svelte/*/*.svelte"),
+    block: import.meta.glob("../../../blocks/svelte/**/*.svelte"),
     component: import.meta.glob(
       "../../../../../../packages/svelte/examples/*/*/*.svelte",
     ),

@@ -17,7 +17,7 @@ import {
 } from "#/lib/examples-host";
 
 const globs: ExampleGlobs = {
-  block: import.meta.glob("../../../blocks/solid/*/*.{ts,tsx}"),
+  block: import.meta.glob("../../../blocks/solid/**/*.{ts,tsx}"),
   component: import.meta.glob(
     "../../../../../../packages/solid/examples/*/*/*.{ts,tsx}",
   ),
