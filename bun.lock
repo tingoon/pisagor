@@ -56,6 +56,7 @@
         "@pisagor/astro": "workspace:*",
         "@pisagor/react": "workspace:*",
         "@pisagor/react-form": "workspace:*",
+        "@pisagor/recipes": "workspace:*",
         "@pisagor/solid": "workspace:*",
         "@pisagor/solid-form": "workspace:*",
         "@pisagor/svelte": "workspace:*",
