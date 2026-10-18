@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { waitForEvent } from "@ark-ui/vue/tour";
+import { waitForEvent } from "@ark-ui/vue";
 import {
   Button,
   Checkbox,

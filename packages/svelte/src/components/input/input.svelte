@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Field, type FieldInputProps } from "@ark-ui/svelte/field";
+  import { Field, type FieldInputProps } from "@ark-ui/svelte";
   import type { InputProps as BaseInputProps } from "@pisagor/props";
   import {
     type InputRecipeSlot,

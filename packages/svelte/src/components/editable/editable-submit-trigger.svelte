@@ -2,7 +2,7 @@
   import {
     Editable as EditablePrimitive,
     type EditableSubmitTriggerProps,
-  } from "@ark-ui/svelte/editable";
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: EditableSubmitTriggerProps = $props();
 </script>

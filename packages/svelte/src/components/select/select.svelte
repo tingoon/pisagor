@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { createListCollection } from "@ark-ui/svelte";
   import type { ComponentProps } from "svelte";
   import SelectContent from "./select-content.svelte";
   import SelectItem from "./select-item.svelte";

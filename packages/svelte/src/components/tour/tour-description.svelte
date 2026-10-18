@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type TourDescriptionProps,
     Tour as TourPrimitive,
-  } from "@ark-ui/svelte/tour";
+    type TourDescriptionProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useTourContext } from "./tour.context";
 

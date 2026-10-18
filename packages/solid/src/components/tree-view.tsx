@@ -1,25 +1,23 @@
-import { ark } from "@ark-ui/solid/factory";
-import type {
-  TreeCollection as arkTreeCollection,
-  TreeViewBranchContentProps,
-  TreeViewBranchIndentGuideProps,
-  TreeViewBranchIndicatorProps,
-  TreeViewBranchTextProps,
-  TreeViewLabelProps,
-  TreeViewNodeCheckboxProps,
-  TreeViewNodeProviderProps,
-  TreeViewNodeRenameInputProps,
-  TreeViewBranchControlProps as TreeViewPrimitiveBranchControlProps,
-  TreeViewBranchProps as TreeViewPrimitiveBranchProps,
-  TreeViewItemProps as TreeViewPrimitiveItemProps,
-  TreeViewItemTextProps as TreeViewPrimitiveItemTextProps,
-  TreeViewRootComponentProps,
-  TreeViewTreeProps,
-} from "@ark-ui/solid/tree-view";
 import {
-  createTreeCollection as arkCreateTreeCollection,
+  type TreeCollection as arkTreeCollection,
   TreeView as TreeViewPrimitive,
-} from "@ark-ui/solid/tree-view";
+  type TreeViewBranchContentProps,
+  type TreeViewBranchControlProps as TreeViewPrimitiveBranchControlProps,
+  type TreeViewBranchIndentGuideProps,
+  type TreeViewBranchIndicatorProps,
+  type TreeViewBranchProps as TreeViewPrimitiveBranchProps,
+  type TreeViewBranchTextProps,
+  type TreeViewItemProps as TreeViewPrimitiveItemProps,
+  type TreeViewItemTextProps as TreeViewPrimitiveItemTextProps,
+  type TreeViewLabelProps,
+  type TreeViewNodeCheckboxProps,
+  type TreeViewNodeProviderProps,
+  type TreeViewNodeRenameInputProps,
+  type TreeViewRootComponentProps,
+  type TreeViewTreeProps,
+  ark,
+  createTreeCollection as arkCreateTreeCollection,
+} from "@ark-ui/solid";
 import type {
   TreeViewBranchProps as BaseTreeViewBranchProps,
   TreeViewItemProps as BaseTreeViewItemProps,
@@ -463,7 +461,7 @@ export type {
   TreeViewNodeCheckboxProps,
   TreeViewNodeRenameInputProps,
   TreeViewTreeProps,
-} from "@ark-ui/solid/tree-view";
+} from "@ark-ui/solid";
 
 export const TreeView = Object.assign(TreeViewRoot, {
   Branch: TreeViewBranch,

@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark } from "@ark-ui/react";
 import type { ScrollspyProps as BaseScrollspyProps } from "@pisagor/props";
 import { scrollspyRecipe } from "@pisagor/recipes";
 import {

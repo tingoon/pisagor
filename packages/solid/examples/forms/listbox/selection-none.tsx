@@ -1,4 +1,4 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import { Item, Listbox, Separator } from "@pisagor/solid";
 import {
   PencilSimpleIcon,

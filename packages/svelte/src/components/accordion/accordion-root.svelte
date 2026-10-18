@@ -2,7 +2,7 @@
   import {
     Accordion as AccordionPrimitive,
     type AccordionRootProps,
-  } from "@ark-ui/svelte/accordion";
+  } from "@ark-ui/svelte";
 
   let { collapsible = true, children, ...rest }: AccordionRootProps = $props();
 </script>

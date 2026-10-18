@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { waitForEvent } from "@ark-ui/svelte/tour";
+  import { waitForEvent } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import {
     Checkbox,

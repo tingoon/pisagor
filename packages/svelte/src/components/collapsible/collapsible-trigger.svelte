@@ -2,7 +2,7 @@
   import {
     Collapsible as CollapsiblePrimitive,
     type CollapsibleTriggerProps,
-  } from "@ark-ui/svelte/collapsible";
+  } from "@ark-ui/svelte";
   import { withContext } from "./collapsible.context";
 
   let { children, ...rest }: CollapsibleTriggerProps = $props();

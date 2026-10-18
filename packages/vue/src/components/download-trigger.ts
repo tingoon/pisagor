@@ -1,4 +1,4 @@
-import { DownloadTrigger as DownloadTriggerPrimitive } from "@ark-ui/vue/download-trigger";
+import { DownloadTrigger as DownloadTriggerPrimitive } from "@ark-ui/vue";
 import { defineComponent, h } from "vue";
 
 // #region Types

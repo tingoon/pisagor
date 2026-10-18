@@ -1,4 +1,4 @@
-import { JsonTreeView as JsonTreeViewPrimitive } from "@ark-ui/vue/json-tree-view";
+import { JsonTreeView as JsonTreeViewPrimitive } from "@ark-ui/vue";
 import { PhCaretRight } from "@phosphor-icons/vue";
 import type { JsonTreeViewProps as BaseJsonTreeViewProps } from "@pisagor/props";
 import {

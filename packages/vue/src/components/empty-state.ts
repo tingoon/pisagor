@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type { EmptyStateProps as BaseEmptyStateRootProps } from "@pisagor/props";
 import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/svelte/password-input";
+  import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/svelte";
   import { passwordInputRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { ComponentProps } from "svelte";

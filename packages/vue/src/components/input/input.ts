@@ -1,4 +1,4 @@
-import { Field as FieldPrimitive } from "@ark-ui/vue/field";
+import { Field as FieldPrimitive } from "@ark-ui/vue";
 import type { InputProps as BaseInputProps } from "@pisagor/props";
 import {
   type InputRecipeSlot,

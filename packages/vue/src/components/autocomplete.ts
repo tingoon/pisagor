@@ -1,6 +1,9 @@
-import type { CollectionItem, ListCollection } from "@ark-ui/vue/collection";
-import { createListCollection } from "@ark-ui/vue/collection";
-import type { ComboboxInputValueChangeDetails } from "@ark-ui/vue/combobox";
+import {
+  type CollectionItem,
+  type ComboboxInputValueChangeDetails,
+  type ListCollection,
+  createListCollection,
+} from "@ark-ui/vue";
 import { defineComponent, h, type PropType } from "vue";
 import type { ClassValue } from "../internal/types";
 import type { ComboboxInputProps, ComboboxRootProps } from "./combobox";

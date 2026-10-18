@@ -2,7 +2,7 @@
   import {
     type TimerActionTriggerProps,
     useTimerContext,
-  } from "@ark-ui/svelte/timer";
+  } from "@ark-ui/svelte";
   import TimerResume from "./timer-resume.svelte";
   import TimerStart from "./timer-start.svelte";
 

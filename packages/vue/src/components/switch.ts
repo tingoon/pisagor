@@ -1,4 +1,4 @@
-import { Switch as SwitchPrimitive } from "@ark-ui/vue/switch";
+import { Switch as SwitchPrimitive } from "@ark-ui/vue";
 import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";

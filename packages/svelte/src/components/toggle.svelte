@@ -2,7 +2,7 @@
   import {
     Toggle as TogglePrimitive,
     type ToggleRootProps,
-  } from "@ark-ui/svelte/toggle";
+  } from "@ark-ui/svelte";
   import type { ToggleProps as BaseToggleProps } from "@pisagor/props";
   import {
     type ButtonVariantProps,

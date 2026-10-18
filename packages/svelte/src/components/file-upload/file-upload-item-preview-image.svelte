@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { FileUpload as FileUploadPrimitive } from "@ark-ui/svelte/file-upload";
+  import { FileUpload as FileUploadPrimitive } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { ClassValue } from "svelte/elements";
   import { useFileUploadItem } from "./file-upload.context";

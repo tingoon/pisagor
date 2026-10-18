@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { LocaleProvider } from "@ark-ui/svelte/locale";
+  import { LocaleProvider } from "@ark-ui/svelte";
   import type { Snippet } from "svelte";
   import { setLocaleConfig } from "./context";
   import ProviderDir from "./dir.svelte";

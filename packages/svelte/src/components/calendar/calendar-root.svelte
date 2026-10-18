@@ -2,7 +2,7 @@
   import {
     DatePicker as CalendarPrimitive,
     type DatePickerRootProps,
-  } from "@ark-ui/svelte/date-picker";
+  } from "@ark-ui/svelte";
   import type { CalendarProps as BaseCalendarProps } from "@pisagor/props";
   import { calendarRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

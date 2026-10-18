@@ -1,4 +1,4 @@
-import { Slider as SliderPrimitive } from "@ark-ui/vue/slider";
+import { Slider as SliderPrimitive } from "@ark-ui/vue";
 import type { SliderProps as BaseSliderProps } from "@pisagor/props";
 import { fieldRecipe, sliderRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";

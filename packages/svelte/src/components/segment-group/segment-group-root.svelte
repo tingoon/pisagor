@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type SegmentGroupRootProps as ArkRootProps,
     SegmentGroup as SegmentGroupPrimitive,
-  } from "@ark-ui/svelte/segment-group";
+    type SegmentGroupRootProps as ArkRootProps,
+  } from "@ark-ui/svelte";
   import type { SegmentGroupProps as BaseSegmentGroupProps } from "@pisagor/props";
   import type { SizeScaleProps } from "../../internal/types";
   import { withProvider } from "./segment-group.context";

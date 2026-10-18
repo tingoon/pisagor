@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type ImageCropperSelectionProps as ArkSelectionProps,
     ImageCropper as ImageCropperPrimitive,
-  } from "@ark-ui/svelte/image-cropper";
+    type ImageCropperSelectionProps as ArkSelectionProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useImageCropper } from "./image-cropper.context";
   import ImageCropperGrid from "./image-cropper-grid.svelte";

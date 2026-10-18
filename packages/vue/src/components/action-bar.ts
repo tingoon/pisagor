@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import { PhX } from "@phosphor-icons/vue";
 import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
 import { actionBarRecipe } from "@pisagor/recipes";

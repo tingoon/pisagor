@@ -2,7 +2,7 @@ import {
   JsonTreeView as JsonTreeViewPrimitive,
   type JsonTreeViewRootProps as JsonTreeViewPrimitiveRootProps,
   type JsonTreeViewTreeProps,
-} from "@ark-ui/react/json-tree-view";
+} from "@ark-ui/react";
 import { CaretRightIcon } from "@phosphor-icons/react";
 import type { JsonTreeViewProps as BaseJsonTreeViewRootProps } from "@pisagor/props";
 import {
@@ -79,7 +79,7 @@ JsonTreeViewShorthand.displayName = "JsonTreeView";
 
 // #endregion
 
-export type { JsonTreeViewTreeProps } from "@ark-ui/react/json-tree-view";
+export type { JsonTreeViewTreeProps } from "@ark-ui/react";
 
 export const JsonTreeView = Object.assign(JsonTreeViewShorthand, {
   Root: JsonTreeViewRoot,

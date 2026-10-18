@@ -1,14 +1,14 @@
-import type {
-  SliderControlProps,
-  SliderMarkerGroupProps,
-  SliderMarkerProps,
-  SliderRootProps as SliderPrimitiveRootProps,
-  SliderRangeProps,
-  SliderThumbProps,
-  SliderTrackProps,
-  SliderValueTextProps,
-} from "@ark-ui/react/slider";
-import { Slider as SliderPrimitive } from "@ark-ui/react/slider";
+import {
+  Slider as SliderPrimitive,
+  type SliderControlProps,
+  type SliderMarkerGroupProps,
+  type SliderMarkerProps,
+  type SliderRangeProps,
+  type SliderRootProps as SliderPrimitiveRootProps,
+  type SliderThumbProps,
+  type SliderTrackProps,
+  type SliderValueTextProps,
+} from "@ark-ui/react";
 import type { SliderProps as BaseSliderRootProps } from "@pisagor/props";
 import {
   fieldRecipe,
@@ -406,7 +406,7 @@ export type {
   SliderRangeProps,
   SliderThumbProps,
   SliderTrackProps,
-} from "@ark-ui/react/slider";
+} from "@ark-ui/react";
 
 export const Slider = Object.assign(SliderShorthand, {
   Control: SliderControl,

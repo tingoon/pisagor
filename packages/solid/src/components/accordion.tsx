@@ -1,10 +1,10 @@
 import {
-  type AccordionItemContentProps,
-  type AccordionItemTriggerProps,
   Accordion as AccordionPrimitive,
+  type AccordionItemContentProps,
   type AccordionItemProps as AccordionPrimitiveItemProps,
+  type AccordionItemTriggerProps,
   type AccordionRootProps,
-} from "@ark-ui/solid/accordion";
+} from "@ark-ui/solid";
 import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
 import { accordionItemRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
@@ -119,7 +119,7 @@ export type {
   AccordionItemProps,
   AccordionItemTriggerProps,
   AccordionRootProps,
-} from "@ark-ui/solid/accordion";
+} from "@ark-ui/solid";
 
 export const Accordion = Object.assign(AccordionShorthand, {
   Item: AccordionItem,

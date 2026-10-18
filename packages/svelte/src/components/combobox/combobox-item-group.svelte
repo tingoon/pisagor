@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type ComboboxItemGroupProps as ArkProps,
     Combobox as ComboboxPrimitive,
-  } from "@ark-ui/svelte/combobox";
+    type ComboboxItemGroupProps as ArkProps,
+  } from "@ark-ui/svelte";
   import type { Snippet } from "svelte";
   import ComboboxItemGroupLabel from "./combobox-item-group-label.svelte";
 

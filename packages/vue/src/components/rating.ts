@@ -1,4 +1,4 @@
-import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/vue/rating-group";
+import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/vue";
 import { PhStar } from "@phosphor-icons/vue";
 import type { RatingProps as BaseRatingProps } from "@pisagor/props";
 import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes";

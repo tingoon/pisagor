@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark } from "@ark-ui/react";
 import type { SurfaceProps as BaseSurfaceProps } from "@pisagor/props";
 import { surfaceRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";

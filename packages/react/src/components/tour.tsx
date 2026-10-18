@@ -1,19 +1,20 @@
-import { Portal } from "@ark-ui/react";
-import { ark } from "@ark-ui/react/factory";
-import type {
-  TourActionTriggerProps,
-  TourCloseTriggerProps,
-  TourDescriptionProps,
-  TourPositionerProps,
-  TourContentProps as TourPrimitiveContentProps,
-  TourRootProps as TourPrimitiveRootProps,
-  TourProgressTextProps,
-  TourSpotlightProps,
-  TourStepDetails,
-  TourTitleProps,
-  UseTourReturn,
-} from "@ark-ui/react/tour";
-import { Tour as TourPrimitive, useTour } from "@ark-ui/react/tour";
+import {
+  Portal,
+  Tour as TourPrimitive,
+  type TourActionTriggerProps,
+  type TourCloseTriggerProps,
+  type TourContentProps as TourPrimitiveContentProps,
+  type TourDescriptionProps,
+  type TourPositionerProps,
+  type TourProgressTextProps,
+  type TourRootProps as TourPrimitiveRootProps,
+  type TourSpotlightProps,
+  type TourStepDetails,
+  type TourTitleProps,
+  type UseTourReturn,
+  ark,
+  useTour,
+} from "@ark-ui/react";
 import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react";
 import type { TourProps as BaseTourProps } from "@pisagor/props";
 import { dialogRecipe, tourRecipe } from "@pisagor/recipes";
@@ -494,7 +495,7 @@ export type {
   TourProgressTextProps,
   TourSpotlightProps,
   TourTitleProps,
-} from "@ark-ui/react/tour";
+} from "@ark-ui/react";
 
 export const Tour = Object.assign(TourRoot, {
   Actions: TourActions,

@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type DrawerPositionerProps,
     Drawer as DrawerPrimitive,
-  } from "@ark-ui/svelte/drawer";
+    type DrawerPositionerProps,
+  } from "@ark-ui/svelte";
   import type { DrawerProps as BaseDrawerProps } from "@pisagor/props";
   import { cn } from "@pisagor/utils";
   import { useDrawer } from "./drawer.context";

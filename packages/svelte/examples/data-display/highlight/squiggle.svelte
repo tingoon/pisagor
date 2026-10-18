@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { useHighlight } from "@ark-ui/svelte/highlight";
+  import { useHighlight } from "@ark-ui/svelte";
 
   const chunks = useHighlight({
     query: "real humans",

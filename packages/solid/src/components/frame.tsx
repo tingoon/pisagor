@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark } from "@ark-ui/solid";
 import type { FrameProps as BaseFrameRootProps } from "@pisagor/props";
 import { frameRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";

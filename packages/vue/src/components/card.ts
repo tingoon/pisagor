@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type { CardProps as BaseCardRootProps } from "@pisagor/props";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";

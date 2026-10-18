@@ -1,9 +1,9 @@
-import type {
-  QrCodeDownloadTriggerProps,
-  QrCodeFrameProps,
-  QrCodeRootProps as QrCodePrimitiveRootProps,
-} from "@ark-ui/react/qr-code";
-import { QrCode as QrCodePrimitive } from "@ark-ui/react/qr-code";
+import {
+  QrCode as QrCodePrimitive,
+  type QrCodeDownloadTriggerProps,
+  type QrCodeFrameProps,
+  type QrCodeRootProps as QrCodePrimitiveRootProps,
+} from "@ark-ui/react";
 import type { QrCodeProps as BaseQrCodeRootProps } from "@pisagor/props";
 import { qrCodeRecipe } from "@pisagor/recipes";
 import type { FunctionComponent } from "react";
@@ -70,7 +70,7 @@ export type {
   QrCodeDownloadTriggerProps,
   QrCodeFrameProps,
   QrCodeOverlayProps,
-} from "@ark-ui/react/qr-code";
+} from "@ark-ui/react";
 
 export const QrCode = Object.assign(QrCodeRoot, {
   Download: QrCodeDownload,

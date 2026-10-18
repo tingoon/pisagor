@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { StatTrendProps as BaseStatTrendProps } from "@pisagor/props";
   import { statTrendRecipe } from "@pisagor/recipes";
   import type { MessageKey } from "@pisagor/utils";

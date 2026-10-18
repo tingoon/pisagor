@@ -1,4 +1,4 @@
-import { Splitter as SplitterPrimitive } from "@ark-ui/vue/splitter";
+import { Splitter as SplitterPrimitive } from "@ark-ui/vue";
 import { PhDotsSixVertical } from "@phosphor-icons/vue";
 import type {
   ResizableEdgeHandleProps as BaseResizableEdgeHandleProps,

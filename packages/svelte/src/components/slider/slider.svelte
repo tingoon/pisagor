@@ -2,7 +2,7 @@
   import {
     Slider as SliderPrimitive,
     type SliderRootProps,
-  } from "@ark-ui/svelte/slider";
+  } from "@ark-ui/svelte";
   import type { SliderProps as BaseSliderProps } from "@pisagor/props";
   import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

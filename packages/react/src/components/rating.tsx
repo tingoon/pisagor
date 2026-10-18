@@ -1,9 +1,9 @@
 import {
+  RatingGroup as RatingGroupPrimitive,
   type RatingGroupControlProps,
   type RatingGroupItemProps,
-  RatingGroup as RatingGroupPrimitive,
   type RatingGroupRootProps,
-} from "@ark-ui/react/rating-group";
+} from "@ark-ui/react";
 import { StarIcon } from "@phosphor-icons/react";
 import type { RatingProps as BaseRatingRootProps } from "@pisagor/props";
 import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes";

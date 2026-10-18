@@ -1,25 +1,21 @@
 import {
   type CollectionItem,
-  createListCollection,
-} from "@ark-ui/solid/collection";
-import type {
-  ComboboxClearTriggerProps,
-  ComboboxControlProps,
-  ComboboxEmptyProps,
-  ComboboxItemGroupLabelProps,
-  ComboboxListProps,
-  ComboboxPositionerProps,
-  ComboboxContentProps as ComboboxPrimitiveContentProps,
-  ComboboxInputProps as ComboboxPrimitiveInputProps,
-  ComboboxItemGroupProps as ComboboxPrimitiveItemGroupProps,
-  ComboboxItemProps as ComboboxPrimitiveItemProps,
-  ComboboxRootProps as ComboboxPrimitiveRootProps,
-  ComboboxTriggerProps,
-} from "@ark-ui/solid/combobox";
-import {
   Combobox as ComboboxPrimitive,
+  type ComboboxClearTriggerProps,
+  type ComboboxContentProps as ComboboxPrimitiveContentProps,
+  type ComboboxControlProps,
+  type ComboboxEmptyProps,
+  type ComboboxInputProps as ComboboxPrimitiveInputProps,
+  type ComboboxItemGroupLabelProps,
+  type ComboboxItemGroupProps as ComboboxPrimitiveItemGroupProps,
+  type ComboboxItemProps as ComboboxPrimitiveItemProps,
+  type ComboboxListProps,
+  type ComboboxPositionerProps,
+  type ComboboxRootProps as ComboboxPrimitiveRootProps,
+  type ComboboxTriggerProps,
+  createListCollection,
   useComboboxContext,
-} from "@ark-ui/solid/combobox";
+} from "@ark-ui/solid";
 import type { ComboboxProps as BaseComboboxRootProps } from "@pisagor/props";
 import {
   type ComboboxVariantProps,
@@ -439,7 +435,7 @@ export type {
   ComboboxListProps,
   ComboboxPositionerProps,
   ComboboxTriggerProps,
-} from "@ark-ui/solid/combobox";
+} from "@ark-ui/solid";
 
 export const Combobox = Object.assign(ComboboxShorthand, {
   ClearTrigger: ComboboxClearTrigger,

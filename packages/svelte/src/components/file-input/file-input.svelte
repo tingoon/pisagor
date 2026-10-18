@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
   import {
     type FormControlGroupShellVariantProps,

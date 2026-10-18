@@ -1,12 +1,12 @@
-import type {
-  EditableCancelTriggerProps,
-  EditableEditTriggerProps,
-  EditableInputProps as EditablePrimitiveInputProps,
-  EditablePreviewProps as EditablePrimitivePreviewProps,
-  EditableRootProps as EditablePrimitiveRootProps,
-  EditableSubmitTriggerProps,
-} from "@ark-ui/react/editable";
-import { Editable as EditablePrimitive } from "@ark-ui/react/editable";
+import {
+  Editable as EditablePrimitive,
+  type EditableCancelTriggerProps,
+  type EditableEditTriggerProps,
+  type EditableInputProps as EditablePrimitiveInputProps,
+  type EditablePreviewProps as EditablePrimitivePreviewProps,
+  type EditableRootProps as EditablePrimitiveRootProps,
+  type EditableSubmitTriggerProps,
+} from "@ark-ui/react";
 import type { EditableProps as BaseEditableProps } from "@pisagor/props";
 import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -204,7 +204,7 @@ export type {
   EditableControlProps,
   EditableEditTriggerProps,
   EditableSubmitTriggerProps,
-} from "@ark-ui/react/editable";
+} from "@ark-ui/react";
 
 export const Editable = Object.assign(EditableRoot, {
   Area: EditableArea,

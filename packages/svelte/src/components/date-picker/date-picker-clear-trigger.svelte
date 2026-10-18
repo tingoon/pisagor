@@ -2,7 +2,7 @@
   import {
     DatePicker as DatePickerPrimitive,
     useDatePickerContext,
-  } from "@ark-ui/svelte/date-picker";
+  } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import XIcon from "phosphor-svelte/lib/XIcon";
   import { useMessageResolver } from "../provider/context";

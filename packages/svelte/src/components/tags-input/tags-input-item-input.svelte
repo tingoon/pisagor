@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type TagsInputItemInputProps,
     TagsInput as TagsInputPrimitive,
-  } from "@ark-ui/svelte/tags-input";
+    type TagsInputItemInputProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useTagsInputItem } from "./tags-input.context";
 

@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
-  import { useProgressContext } from "@ark-ui/svelte/progress";
+  import { Ark, useProgressContext } from "@ark-ui/svelte";
   import type { SVGAttributes } from "svelte/elements";
   import { useCircularProgress } from "./circular-progress.context";
 

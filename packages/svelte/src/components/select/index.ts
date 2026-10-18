@@ -1,4 +1,4 @@
-import { Select as SelectPrimitive } from "@ark-ui/svelte/select";
+import { Select as SelectPrimitive } from "@ark-ui/svelte";
 import SelectShorthand from "./select.svelte";
 import SelectClearTrigger from "./select-clear-trigger.svelte";
 import SelectContent from "./select-content.svelte";

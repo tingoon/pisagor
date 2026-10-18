@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { CardProps as BaseCardProps } from "@pisagor/props";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";

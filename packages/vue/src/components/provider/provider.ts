@@ -1,4 +1,4 @@
-import { LocaleProvider as ArkLocaleProvider } from "@ark-ui/vue/locale";
+import { LocaleProvider as ArkLocaleProvider } from "@ark-ui/vue";
 import {
   defaultLocale,
   defaultMotion,

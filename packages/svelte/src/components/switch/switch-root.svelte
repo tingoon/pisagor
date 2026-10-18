@@ -2,7 +2,7 @@
   import {
     Switch as SwitchPrimitive,
     type SwitchRootProps,
-  } from "@ark-ui/svelte/switch";
+  } from "@ark-ui/svelte";
   import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
   import { switchRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

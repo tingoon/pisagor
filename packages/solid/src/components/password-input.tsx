@@ -1,10 +1,10 @@
 import {
+  PasswordInput as PasswordInputPrimitive,
   type PasswordInputIndicatorProps,
   type PasswordInputInputProps,
-  PasswordInput as PasswordInputPrimitive,
   type PasswordInputRootProps as PasswordInputPrimitiveRootProps,
   type PasswordInputVisibilityTriggerProps as PasswordInputPrimitiveVisibilityTriggerProps,
-} from "@ark-ui/solid/password-input";
+} from "@ark-ui/solid";
 import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
 import { passwordInputRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
@@ -276,4 +276,4 @@ export const PasswordInput = Object.assign(PasswordInputShorthand, {
   VisibilityTrigger: PasswordInputVisibilityTrigger,
 });
 
-export type { PasswordInputIndicatorProps } from "@ark-ui/solid/password-input";
+export type { PasswordInputIndicatorProps } from "@ark-ui/solid";

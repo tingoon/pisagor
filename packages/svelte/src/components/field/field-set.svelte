@@ -2,7 +2,7 @@
   import {
     Fieldset as FieldsetPrimitive,
     type FieldsetRootProps,
-  } from "@ark-ui/svelte/fieldset";
+  } from "@ark-ui/svelte";
   import type { FieldProps as BaseFieldProps } from "@pisagor/props";
   import { fieldRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

@@ -1,23 +1,21 @@
-import { ark } from "@ark-ui/react/factory";
-import type {
-  TreeCollection as arkTreeCollection,
-  TreeViewBranchContentProps,
-  TreeViewBranchIndentGuideProps,
-  TreeViewBranchIndicatorProps,
-  TreeViewBranchTextProps,
-  TreeViewLabelProps,
-  TreeViewNodeCheckboxProps,
-  TreeViewNodeRenameInputProps,
-  TreeViewBranchControlProps as TreeViewPrimitiveBranchControlProps,
-  TreeViewBranchProps as TreeViewPrimitiveBranchProps,
-  TreeViewItemProps as TreeViewPrimitiveItemProps,
-  TreeViewItemTextProps as TreeViewPrimitiveItemTextProps,
-  TreeViewTreeProps,
-} from "@ark-ui/react/tree-view";
 import {
-  createTreeCollection as arkCreateTreeCollection,
+  type TreeCollection as arkTreeCollection,
   TreeView as TreeViewPrimitive,
-} from "@ark-ui/react/tree-view";
+  type TreeViewBranchContentProps,
+  type TreeViewBranchControlProps as TreeViewPrimitiveBranchControlProps,
+  type TreeViewBranchIndentGuideProps,
+  type TreeViewBranchIndicatorProps,
+  type TreeViewBranchProps as TreeViewPrimitiveBranchProps,
+  type TreeViewBranchTextProps,
+  type TreeViewItemProps as TreeViewPrimitiveItemProps,
+  type TreeViewItemTextProps as TreeViewPrimitiveItemTextProps,
+  type TreeViewLabelProps,
+  type TreeViewNodeCheckboxProps,
+  type TreeViewNodeRenameInputProps,
+  type TreeViewTreeProps,
+  ark,
+  createTreeCollection as arkCreateTreeCollection,
+} from "@ark-ui/react";
 import {
   CaretRightIcon,
   CheckIcon,
@@ -481,7 +479,7 @@ export type {
   TreeViewNodeCheckboxProps,
   TreeViewNodeRenameInputProps,
   TreeViewTreeProps,
-} from "@ark-ui/react/tree-view";
+} from "@ark-ui/react";
 
 export const TreeView = Object.assign(
   TreeViewRoot as TreeViewPrimitive.RootComponent<TreeViewProps>,

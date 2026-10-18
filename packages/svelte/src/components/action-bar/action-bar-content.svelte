@@ -1,7 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
-  import { Portal } from "@ark-ui/svelte/portal";
-  import { Presence } from "@ark-ui/svelte/presence";
+  import { Ark, Portal, Presence } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
   import { useActionBar } from "./action-bar.context";

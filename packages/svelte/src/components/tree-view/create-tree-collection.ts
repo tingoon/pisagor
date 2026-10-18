@@ -1,7 +1,7 @@
 import {
-  createTreeCollection as arkCreateTreeCollection,
   type TreeCollection,
-} from "@ark-ui/svelte/tree-view";
+  createTreeCollection as arkCreateTreeCollection,
+} from "@ark-ui/svelte";
 
 export interface TreeNodeType<T = unknown> {
   children?: TreeNodeType<T>[] | undefined;

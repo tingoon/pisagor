@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark } from "@ark-ui/react";
 import type { NavbarProps as BaseNavbarRootProps } from "@pisagor/props";
 import { navbarRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";

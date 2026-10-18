@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { ComboboxInputProps } from "@ark-ui/svelte/combobox";
+  import type { ComboboxInputProps } from "@ark-ui/svelte";
   import {
     type FormControlGroupShellVariantProps,
     formControlGroupShellRecipe,

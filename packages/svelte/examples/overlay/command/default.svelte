@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { createListCollection } from "@ark-ui/svelte";
   import { Command } from "@pisagor/svelte";
 
   const items = [

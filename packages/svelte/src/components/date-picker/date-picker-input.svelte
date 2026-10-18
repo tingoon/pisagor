@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type DatePickerInputProps as ArkInputProps,
     DatePicker as DatePickerPrimitive,
-  } from "@ark-ui/svelte/date-picker";
+    type DatePickerInputProps as ArkInputProps,
+  } from "@ark-ui/svelte";
   import {
     buttonRecipe,
     type FormControlGroupShellVariantProps,

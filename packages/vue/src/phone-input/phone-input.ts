@@ -1,4 +1,4 @@
-import { createListCollection } from "@ark-ui/vue/collection";
+import { createListCollection } from "@ark-ui/vue";
 import { PhCaretUpDown, PhGlobe } from "@phosphor-icons/vue";
 import type { PhoneInputProps as BasePhoneInputProps } from "@pisagor/props";
 import { type PhoneInputRecipeSlot, phoneInputRecipe } from "@pisagor/recipes";

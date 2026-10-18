@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type TreeViewItemTextProps as ArkProps,
     TreeView as TreeViewPrimitive,
-  } from "@ark-ui/svelte/tree-view";
+    type TreeViewItemTextProps as ArkProps,
+  } from "@ark-ui/svelte";
   import { treeViewItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import FileIcon from "phosphor-svelte/lib/FileIcon";

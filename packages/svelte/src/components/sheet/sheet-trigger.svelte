@@ -2,7 +2,7 @@
   import {
     Dialog as DialogPrimitive,
     type DialogTriggerProps,
-  } from "@ark-ui/svelte/dialog";
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: DialogTriggerProps = $props();
 </script>

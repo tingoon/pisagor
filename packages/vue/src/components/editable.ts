@@ -1,7 +1,7 @@
 import {
   Editable as EditablePrimitive,
   type EditableValueChangeDetails,
-} from "@ark-ui/vue/editable";
+} from "@ark-ui/vue";
 import type { EditableProps as BaseEditableProps } from "@pisagor/props";
 import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";

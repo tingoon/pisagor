@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type FieldsetLegendProps,
     Fieldset as FieldsetPrimitive,
-  } from "@ark-ui/svelte/fieldset";
+    type FieldsetLegendProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useFieldSlots } from "./field.context";
 

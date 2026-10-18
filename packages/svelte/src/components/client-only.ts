@@ -1,1 +1,1 @@
-export { ClientOnly, type ClientOnlyProps } from "@ark-ui/svelte/client-only";
+export { ClientOnly, type ClientOnlyProps } from "@ark-ui/svelte";

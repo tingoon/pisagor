@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark } from "@ark-ui/solid";
 import type {
   BreadcrumbItemProps as BaseBreadcrumbItemProps,
   BreadcrumbProps as BaseBreadcrumbProps,

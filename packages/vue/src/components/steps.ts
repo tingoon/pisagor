@@ -1,5 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
-import { Steps as StepsPrimitive } from "@ark-ui/vue/steps";
+import { Steps as StepsPrimitive, ark } from "@ark-ui/vue";
 import { PhCheck } from "@phosphor-icons/vue";
 import type {
   StepsItemProps as BaseStepsItemProps,

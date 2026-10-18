@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { FrameProps as BaseFrameProps } from "@pisagor/props";
   import { frameRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

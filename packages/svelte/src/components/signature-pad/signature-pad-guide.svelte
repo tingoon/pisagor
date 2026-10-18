@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type SignaturePadGuideProps,
     SignaturePad as SignaturePadPrimitive,
-  } from "@ark-ui/svelte/signature-pad";
+    type SignaturePadGuideProps,
+  } from "@ark-ui/svelte";
   import { withContext } from "./signature-pad.context";
 
   let { children, ...rest }: SignaturePadGuideProps = $props();

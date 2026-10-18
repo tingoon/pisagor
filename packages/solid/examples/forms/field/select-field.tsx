@@ -1,4 +1,4 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import { Field, Select } from "@pisagor/solid";
 export function SelectField() {
   const collection = createListCollection({

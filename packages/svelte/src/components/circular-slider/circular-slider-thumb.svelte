@@ -2,7 +2,7 @@
   import {
     AngleSlider as AngleSliderPrimitive,
     type AngleSliderThumbProps,
-  } from "@ark-ui/svelte/angle-slider";
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useCircularSlider } from "./circular-slider.context";
 

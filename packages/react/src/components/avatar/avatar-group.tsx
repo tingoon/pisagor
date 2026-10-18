@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark } from "@ark-ui/react";
 import type { AvatarGroupProps as BaseAvatarGroupRootProps } from "@pisagor/props";
 import { avatarGroupRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";

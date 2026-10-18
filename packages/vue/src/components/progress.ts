@@ -1,4 +1,4 @@
-import { Progress as ProgressPrimitive } from "@ark-ui/vue/progress";
+import { Progress as ProgressPrimitive } from "@ark-ui/vue";
 import type { ProgressProps as BaseProgressProps } from "@pisagor/props";
 import {
   fieldRecipe,

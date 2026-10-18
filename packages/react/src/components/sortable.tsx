@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark } from "@ark-ui/react";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
 import type {
   SortableItemProps as BaseSortableItemProps,

@@ -1,5 +1,4 @@
-import { useListCollection } from "@ark-ui/vue/collection";
-import { useFilter } from "@ark-ui/vue/locale";
+import { useFilter, useListCollection } from "@ark-ui/vue";
 import { commandRecipe } from "@pisagor/recipes";
 import { Command } from "@pisagor/vue";
 import { tv } from "tailwind-variants";

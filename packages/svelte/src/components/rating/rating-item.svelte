@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type RatingGroupItemProps,
     RatingGroup as RatingGroupPrimitive,
-  } from "@ark-ui/svelte/rating-group";
+    type RatingGroupItemProps,
+  } from "@ark-ui/svelte";
   import { withContext } from "./rating.context";
 
   let { children, ...rest }: RatingGroupItemProps = $props();

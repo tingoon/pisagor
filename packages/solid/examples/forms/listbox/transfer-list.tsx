@@ -1,4 +1,4 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import { Button, Item, Listbox } from "@pisagor/solid";
 import { CaretLeftIcon, CaretRightIcon } from "@pisagor/solid/icons";
 import { createMemo, createSignal, For } from "solid-js";

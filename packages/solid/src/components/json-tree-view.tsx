@@ -2,7 +2,7 @@ import {
   JsonTreeView as JsonTreeViewPrimitive,
   type JsonTreeViewRootProps as JsonTreeViewPrimitiveRootProps,
   type JsonTreeViewTreeProps,
-} from "@ark-ui/solid/json-tree-view";
+} from "@ark-ui/solid";
 import type { JsonTreeViewProps as BaseJsonTreeViewRootProps } from "@pisagor/props";
 import {
   type JsonTreeViewRecipeSlot,
@@ -65,7 +65,7 @@ function JsonTreeViewShorthand(props: JsonTreeViewProps): JSX.Element {
   );
 }
 
-export type { JsonTreeViewTreeProps } from "@ark-ui/solid/json-tree-view";
+export type { JsonTreeViewTreeProps } from "@ark-ui/solid";
 
 export const JsonTreeView = Object.assign(JsonTreeViewShorthand, {
   Root: JsonTreeViewRoot,

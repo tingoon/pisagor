@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark } from "@ark-ui/solid";
 import type { ScrollspyProps as BaseScrollspyProps } from "@pisagor/props";
 import { scrollspyRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";

@@ -1,11 +1,11 @@
-import type {
-  ClipboardControlProps,
-  ClipboardIndicatorProps,
-  ClipboardInputProps,
-  ClipboardRootProps,
-  ClipboardValueTextProps,
-} from "@ark-ui/solid/clipboard";
-import { Clipboard as ClipboardPrimitive } from "@ark-ui/solid/clipboard";
+import {
+  Clipboard as ClipboardPrimitive,
+  type ClipboardControlProps,
+  type ClipboardIndicatorProps,
+  type ClipboardInputProps,
+  type ClipboardRootProps,
+  type ClipboardValueTextProps,
+} from "@ark-ui/solid";
 import type { ClipboardProps as BaseClipboardProps } from "@pisagor/props";
 import {
   type ClipboardRecipeSlot,

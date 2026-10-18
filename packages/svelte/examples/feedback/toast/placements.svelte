@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createToaster } from "@ark-ui/svelte/toast";
+  import { createToaster } from "@ark-ui/svelte";
   import { Button, Toaster } from "@pisagor/svelte";
 
   const topStartToaster = createToaster({

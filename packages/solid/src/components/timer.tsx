@@ -1,13 +1,14 @@
-import { ark } from "@ark-ui/solid/factory";
-import type {
-  TimerActionTriggerProps,
-  TimerAreaProps,
-  TimerControlProps,
-  TimerItemProps,
-  TimerRootProps as TimerPrimitiveRootProps,
-  TimerSeparatorProps,
-} from "@ark-ui/solid/timer";
-import { Timer as TimerPrimitive, useTimerContext } from "@ark-ui/solid/timer";
+import {
+  Timer as TimerPrimitive,
+  type TimerActionTriggerProps,
+  type TimerAreaProps,
+  type TimerControlProps,
+  type TimerItemProps,
+  type TimerRootProps as TimerPrimitiveRootProps,
+  type TimerSeparatorProps,
+  ark,
+  useTimerContext,
+} from "@ark-ui/solid";
 import type {
   TimerItemGroupProps as BaseTimerItemGroupProps,
   TimerProps as BaseTimerRootProps,
@@ -234,7 +235,7 @@ export type {
   TimerControlProps,
   TimerItemProps,
   TimerSeparatorProps,
-} from "@ark-ui/solid/timer";
+} from "@ark-ui/solid";
 
 export const Timer = Object.assign(TimerRoot, {
   ActionTrigger: TimerActionTrigger,

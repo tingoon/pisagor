@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { Portal } from "@ark-ui/svelte/portal";
   import {
+    Portal,
+    Tooltip as TooltipPrimitive,
     type TooltipArrowProps,
     type TooltipContentProps,
     type TooltipPositionerProps,
-    Tooltip as TooltipPrimitive,
     type TooltipRootProps,
     type TooltipTriggerProps,
-  } from "@ark-ui/svelte/tooltip";
+  } from "@ark-ui/svelte";
   import type { TooltipProps as BaseTooltipProps } from "@pisagor/props";
   import type { TooltipRecipeSlot } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

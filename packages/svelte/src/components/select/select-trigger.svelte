@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type SelectTriggerProps as ArkSelectTriggerProps,
     Select as SelectPrimitive,
-  } from "@ark-ui/svelte/select";
+    type SelectTriggerProps as ArkSelectTriggerProps,
+  } from "@ark-ui/svelte";
   import {
     type FormControlShellVariantProps,
     formControlShellRecipe,

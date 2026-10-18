@@ -1,10 +1,10 @@
 import {
+  Switch as SwitchPrimitive,
   type SwitchControlProps,
   type SwitchHiddenInputProps,
-  Switch as SwitchPrimitive,
   type SwitchRootProps as SwitchPrimitiveRootProps,
   type SwitchThumbProps,
-} from "@ark-ui/solid/switch";
+} from "@ark-ui/solid";
 import type { SwitchProps as BaseSwitchRootProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
@@ -127,7 +127,7 @@ export type {
   SwitchControlProps,
   SwitchHiddenInputProps,
   SwitchThumbProps,
-} from "@ark-ui/solid/switch";
+} from "@ark-ui/solid";
 
 export const Switch = Object.assign(SwitchShorthand, {
   Control: SwitchControl,

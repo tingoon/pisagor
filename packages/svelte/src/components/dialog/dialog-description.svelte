@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type DialogDescriptionProps,
     Dialog as DialogPrimitive,
-  } from "@ark-ui/svelte/dialog";
+    type DialogDescriptionProps,
+  } from "@ark-ui/svelte";
   import { withContext } from "./dialog.context";
 
   let { children, ...rest }: DialogDescriptionProps = $props();

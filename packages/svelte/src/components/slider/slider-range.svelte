@@ -2,7 +2,7 @@
   import {
     Slider as SliderPrimitive,
     type SliderRangeProps,
-  } from "@ark-ui/svelte/slider";
+  } from "@ark-ui/svelte";
   import { withContext } from "./slider.context";
 
   let { children, ...rest }: SliderRangeProps = $props();

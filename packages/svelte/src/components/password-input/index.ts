@@ -1,4 +1,4 @@
-import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/svelte/password-input";
+import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/svelte";
 import PasswordInputShorthand from "./password-input.svelte";
 import PasswordInputControl from "./password-input-control.svelte";
 import PasswordInputInput from "./password-input-input.svelte";

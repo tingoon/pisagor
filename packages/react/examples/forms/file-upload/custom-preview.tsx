@@ -1,4 +1,4 @@
-import { useFileUpload } from "@ark-ui/react/file-upload";
+import { useFileUpload } from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
 import { Button, FileUpload } from "@pisagor/react";
 export function CustomPreview() {

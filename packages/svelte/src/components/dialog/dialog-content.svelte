@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type DialogContentProps as ArkDialogContentProps,
     Dialog as DialogPrimitive,
-  } from "@ark-ui/svelte/dialog";
+    type DialogContentProps as ArkDialogContentProps,
+  } from "@ark-ui/svelte";
   import type { DialogProps as BaseDialogProps } from "@pisagor/props";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

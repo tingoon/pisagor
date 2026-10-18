@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark } from "@ark-ui/react";
 import type { SeparatorProps as BaseSeparatorProps } from "@pisagor/props";
 import { separatorRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";

@@ -1,14 +1,14 @@
 import {
+  Slider as SliderPrimitive,
   type SliderControlProps,
   type SliderMarkerGroupProps,
   type SliderMarkerProps,
-  Slider as SliderPrimitive,
-  type SliderRootProps as SliderPrimitiveRootProps,
   type SliderRangeProps,
+  type SliderRootProps as SliderPrimitiveRootProps,
   type SliderThumbProps,
   type SliderTrackProps,
   type SliderValueTextProps,
-} from "@ark-ui/solid/slider";
+} from "@ark-ui/solid";
 import type { SliderProps as BaseSliderProps } from "@pisagor/props";
 import {
   fieldRecipe,
@@ -375,7 +375,7 @@ export type {
   SliderRangeProps,
   SliderThumbProps,
   SliderTrackProps,
-} from "@ark-ui/solid/slider";
+} from "@ark-ui/solid";
 
 export const Slider = Object.assign(SliderShorthand, {
   Control: SliderControl,

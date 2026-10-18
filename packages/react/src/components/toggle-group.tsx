@@ -1,8 +1,8 @@
 import {
-  type ToggleGroupItemProps,
   ToggleGroup as ToggleGroupPrimitive,
+  type ToggleGroupItemProps,
   type ToggleGroupRootProps as ToggleGroupPrimitiveRootProps,
-} from "@ark-ui/react/toggle-group";
+} from "@ark-ui/react";
 import type { ToggleGroupProps as BaseToggleGroupRootProps } from "@pisagor/props";
 import { toggleGroupRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
@@ -155,7 +155,7 @@ ToggleGroupShorthand.displayName = "ToggleGroup";
 
 // #endregion
 
-export type { ToggleGroupItemProps } from "@ark-ui/react/toggle-group";
+export type { ToggleGroupItemProps } from "@ark-ui/react";
 
 export const ToggleGroup = Object.assign(ToggleGroupShorthand, {
   Item: ToggleGroupItem,

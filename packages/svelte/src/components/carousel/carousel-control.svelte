@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type CarouselControlProps,
     Carousel as CarouselPrimitive,
-  } from "@ark-ui/svelte/carousel";
+    type CarouselControlProps,
+  } from "@ark-ui/svelte";
   import { withContext } from "./carousel.context";
 
   let { children, ...rest }: CarouselControlProps = $props();

@@ -2,7 +2,7 @@
   import {
     Progress as ProgressPrimitive,
     type ProgressRangeProps,
-  } from "@ark-ui/svelte/progress";
+  } from "@ark-ui/svelte";
   import { withContext } from "./progress.context";
 
   let { children, ...rest }: ProgressRangeProps = $props();

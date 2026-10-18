@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark } from "@ark-ui/solid";
 import type { ProseProps as BaseProseProps } from "@pisagor/props";
 import { proseRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";

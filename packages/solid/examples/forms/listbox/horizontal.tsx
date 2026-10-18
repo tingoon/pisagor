@@ -1,4 +1,4 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import { Field, Listbox } from "@pisagor/solid";
 export function Horizontal() {
   const collection = createListCollection({

@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type DialogPositionerProps,
     Dialog as DialogPrimitive,
-  } from "@ark-ui/svelte/dialog";
+    type DialogPositionerProps,
+  } from "@ark-ui/svelte";
   import type { SheetProps as BaseSheetProps } from "@pisagor/props";
   import { cn } from "@pisagor/utils";
   import { useSheet } from "./sheet.context";

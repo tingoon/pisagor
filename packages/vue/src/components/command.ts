@@ -1,11 +1,11 @@
 import {
   type CollectionItem,
+  Combobox as ComboboxPrimitive,
+  Dialog as DialogPrimitive,
   type ListCollection,
+  useFilter,
   useListCollection,
-} from "@ark-ui/vue/collection";
-import { Combobox as ComboboxPrimitive } from "@ark-ui/vue/combobox";
-import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
-import { useFilter } from "@ark-ui/vue/locale";
+} from "@ark-ui/vue";
 import { PhMagnifyingGlass } from "@phosphor-icons/vue";
 import type { CommandProps as BaseCommandProps } from "@pisagor/props";
 import { comboboxRecipe, commandRecipe, dialogRecipe } from "@pisagor/recipes";

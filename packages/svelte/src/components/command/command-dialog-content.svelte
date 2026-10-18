@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Portal } from "@ark-ui/svelte/portal";
+  import { Portal } from "@ark-ui/svelte";
   import type { CommandProps as BaseCommandProps } from "@pisagor/props";
   import { commandRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

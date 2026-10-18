@@ -1,16 +1,16 @@
-import { ark } from "@ark-ui/solid/factory";
-import type {
-  PopoverAnchorProps,
-  PopoverArrowProps,
-  PopoverCloseTriggerProps,
-  PopoverDescriptionProps,
-  PopoverPositionerProps,
-  PopoverContentProps as PopoverPrimitiveContentProps,
-  PopoverRootProps,
-  PopoverTitleProps,
-  PopoverTriggerProps,
-} from "@ark-ui/solid/popover";
-import { Popover as PopoverPrimitive } from "@ark-ui/solid/popover";
+import {
+  Popover as PopoverPrimitive,
+  type PopoverAnchorProps,
+  type PopoverArrowProps,
+  type PopoverCloseTriggerProps,
+  type PopoverContentProps as PopoverPrimitiveContentProps,
+  type PopoverDescriptionProps,
+  type PopoverPositionerProps,
+  type PopoverRootProps,
+  type PopoverTitleProps,
+  type PopoverTriggerProps,
+  ark,
+} from "@ark-ui/solid";
 import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
 import { popoverRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
@@ -199,7 +199,7 @@ export type {
   PopoverRootProps,
   PopoverTitleProps,
   PopoverTriggerProps,
-} from "@ark-ui/solid/popover";
+} from "@ark-ui/solid";
 
 export const Popover = Object.assign(PopoverRoot, {
   Anchor: PopoverAnchor,

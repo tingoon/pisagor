@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark } from "@ark-ui/react";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
 import { navigationMenuRecipe } from "@pisagor/recipes";

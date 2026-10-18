@@ -1,7 +1,7 @@
 import {
-  type MenuContextTriggerProps,
   Menu as MenuPrimitive,
-} from "@ark-ui/react/menu";
+  type MenuContextTriggerProps,
+} from "@ark-ui/react";
 import type { ContextMenuProps as BaseContextMenuContextTriggerProps } from "@pisagor/props";
 import { contextMenuRecipe } from "@pisagor/recipes";
 import type {

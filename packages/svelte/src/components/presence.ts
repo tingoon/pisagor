@@ -2,9 +2,9 @@
  * Alias matching React's `PresenceBaseProps` (Ark Svelte exports
  * `UsePresenceProps`).
  */
-export type { UsePresenceProps as PresenceBaseProps } from "@ark-ui/svelte/presence";
 export {
   Presence,
   type PresenceProps,
+  type UsePresenceProps as PresenceBaseProps,
   type UsePresenceProps,
-} from "@ark-ui/svelte/presence";
+} from "@ark-ui/svelte";

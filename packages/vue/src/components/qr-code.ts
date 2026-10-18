@@ -1,4 +1,4 @@
-import { QrCode as QrCodePrimitive } from "@ark-ui/vue/qr-code";
+import { QrCode as QrCodePrimitive } from "@ark-ui/vue";
 import type { QrCodeProps as BaseQrCodeRootProps } from "@pisagor/props";
 import { qrCodeRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";

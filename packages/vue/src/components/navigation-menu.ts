@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import { PhCaretDown } from "@phosphor-icons/vue";
 import type { NavigationMenuProps as BaseNavigationMenuRootProps } from "@pisagor/props";
 import {

@@ -1,7 +1,10 @@
-import type { CollectionItem, ListCollection } from "@ark-ui/vue/collection";
-import { createListCollection } from "@ark-ui/vue/collection";
-import type { ListboxRootProps as ArkListboxRootProps } from "@ark-ui/vue/listbox";
-import { Listbox as ListboxPrimitive } from "@ark-ui/vue/listbox";
+import {
+  type CollectionItem,
+  type ListCollection,
+  Listbox as ListboxPrimitive,
+  type ListboxRootProps as ArkListboxRootProps,
+  createListCollection,
+} from "@ark-ui/vue";
 import { PhCheck } from "@phosphor-icons/vue";
 import type {
   ListboxItemProps as BaseListboxItemProps,

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { useLocaleContext } from "@ark-ui/svelte/locale";
+  import { useLocaleContext } from "@ark-ui/svelte";
   import type { Snippet } from "svelte";
 
   let {

@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type PinInputInputProps,
     PinInput as PinInputPrimitive,
-  } from "@ark-ui/svelte/pin-input";
+    type PinInputInputProps,
+  } from "@ark-ui/svelte";
   import { inputRootRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { useFormControlSurface } from "../surface/use-form-control-surface";

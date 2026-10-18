@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type FileUploadItemDeleteTriggerProps,
     FileUpload as FileUploadPrimitive,
-  } from "@ark-ui/svelte/file-upload";
+    type FileUploadItemDeleteTriggerProps,
+  } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import XIcon from "phosphor-svelte/lib/XIcon";

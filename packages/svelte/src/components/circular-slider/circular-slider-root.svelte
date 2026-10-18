@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type {
-    AngleSliderHiddenInputProps,
-    AngleSliderRootProps,
-  } from "@ark-ui/svelte/angle-slider";
-  import { AngleSlider as AngleSliderPrimitive } from "@ark-ui/svelte/angle-slider";
+  import {
+    AngleSlider as AngleSliderPrimitive,
+    type AngleSliderHiddenInputProps,
+    type AngleSliderRootProps,
+  } from "@ark-ui/svelte";
   import type { CircularSliderProps as BaseCircularSliderProps } from "@pisagor/props";
   import { circularSliderRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

@@ -2,7 +2,7 @@
   import {
     FloatingPanel as FloatingPanelPrimitive,
     type FloatingPanelTitleProps,
-  } from "@ark-ui/svelte/floating-panel";
+  } from "@ark-ui/svelte";
   import { floatingPanelRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { useFloatingPanel } from "./floating-panel.context";

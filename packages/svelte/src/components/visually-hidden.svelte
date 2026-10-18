@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { VisuallyHiddenProps as BaseVisuallyHiddenProps } from "@pisagor/props";
   import { visuallyHiddenRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

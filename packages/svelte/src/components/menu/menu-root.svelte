@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { MenuProps as BaseMenuProps } from "@pisagor/props";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";

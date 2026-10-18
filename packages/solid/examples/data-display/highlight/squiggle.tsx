@@ -1,4 +1,4 @@
-import { useHighlight } from "@ark-ui/solid/highlight";
+import { useHighlight } from "@ark-ui/solid";
 import { For, Show } from "solid-js";
 
 export function Squiggle() {

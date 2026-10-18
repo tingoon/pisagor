@@ -2,7 +2,7 @@
   import {
     Menu as MenuPrimitive,
     type MenuRadioItemProps,
-  } from "@ark-ui/svelte/menu";
+  } from "@ark-ui/svelte";
   import type { DropdownMenuItemProps as BaseDropdownMenuItemProps } from "@pisagor/props";
   import { dropdownMenuItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

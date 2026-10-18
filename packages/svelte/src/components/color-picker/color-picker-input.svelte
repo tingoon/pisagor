@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type ColorPickerChannelInputProps,
     ColorPicker as ColorPickerPrimitive,
-  } from "@ark-ui/svelte/color-picker";
+    type ColorPickerChannelInputProps,
+  } from "@ark-ui/svelte";
 
   let { channel = "hex", ...rest }: ColorPickerChannelInputProps = $props();
 </script>

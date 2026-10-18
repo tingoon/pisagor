@@ -1,15 +1,15 @@
-import type {
-  DrawerBackdropProps,
-  DrawerCloseTriggerProps,
-  DrawerGrabberProps,
-  DrawerContentProps as DrawerPrimitiveContentProps,
-  DrawerPositionerProps as DrawerPrimitivePositionerProps,
-  DrawerRootProps as DrawerPrimitiveRootProps,
-  DrawerTitleProps,
-  DrawerTriggerProps,
-} from "@ark-ui/solid/drawer";
-import { Drawer as DrawerPrimitive } from "@ark-ui/solid/drawer";
-import { ark } from "@ark-ui/solid/factory";
+import {
+  Drawer as DrawerPrimitive,
+  type DrawerBackdropProps,
+  type DrawerCloseTriggerProps,
+  type DrawerContentProps as DrawerPrimitiveContentProps,
+  type DrawerGrabberProps,
+  type DrawerPositionerProps as DrawerPrimitivePositionerProps,
+  type DrawerRootProps as DrawerPrimitiveRootProps,
+  type DrawerTitleProps,
+  type DrawerTriggerProps,
+  ark,
+} from "@ark-ui/solid";
 import type { DrawerProps as BaseDrawerRootProps } from "@pisagor/props";
 import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
@@ -255,7 +255,7 @@ export type {
   DrawerRootProps,
   DrawerTitleProps,
   DrawerTriggerProps,
-} from "@ark-ui/solid/drawer";
+} from "@ark-ui/solid";
 
 export const Drawer = Object.assign(DrawerRoot, {
   Backdrop: DrawerBackdrop,

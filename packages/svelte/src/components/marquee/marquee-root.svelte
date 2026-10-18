@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type MarqueeRootProps as ArkRootProps,
     Marquee as MarqueePrimitive,
-  } from "@ark-ui/svelte/marquee";
+    type MarqueeRootProps as ArkRootProps,
+  } from "@ark-ui/svelte";
   import type { MarqueeProps as BaseMarqueeProps } from "@pisagor/props";
   import { withProvider } from "./marquee.context";
   import MarqueeEdge from "./marquee-edge.svelte";

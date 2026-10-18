@@ -1,4 +1,4 @@
-import { Portal } from "@ark-ui/react/portal";
+import { Portal } from "@ark-ui/react";
 import { Button, Dialog } from "@pisagor/react";
 export function ScrollArea() {
   return (

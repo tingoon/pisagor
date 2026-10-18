@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type AccordionItemContentProps,
     Accordion as AccordionPrimitive,
-  } from "@ark-ui/svelte/accordion";
+    type AccordionItemContentProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useAccordionItem } from "./accordion.context";
 

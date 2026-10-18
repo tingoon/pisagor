@@ -1,4 +1,4 @@
-import { Menu as MenuPrimitive } from "@ark-ui/vue/menu";
+import { Menu as MenuPrimitive } from "@ark-ui/vue";
 import type { ContextMenuProps as BaseContextMenuContextTriggerProps } from "@pisagor/props";
 import { contextMenuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";

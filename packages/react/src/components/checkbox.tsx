@@ -1,11 +1,11 @@
 import {
+  Checkbox as CheckboxPrimitive,
   type CheckboxControlProps,
+  type CheckboxGroupProps as CheckboxPrimitiveGroupProps,
   type CheckboxIndicatorProps,
   type CheckboxLabelProps,
-  Checkbox as CheckboxPrimitive,
-  type CheckboxGroupProps as CheckboxPrimitiveGroupProps,
   type CheckboxRootProps,
-} from "@ark-ui/react/checkbox";
+} from "@ark-ui/react";
 import { CheckIcon, MinusIcon } from "@phosphor-icons/react";
 import type {
   CheckboxGroupProps as BaseCheckboxGroupProps,
@@ -196,10 +196,7 @@ CheckboxIndicator.displayName = "Checkbox.Indicator";
 
 // #endregion
 
-export type {
-  CheckboxCheckedState,
-  CheckboxRootProps,
-} from "@ark-ui/react/checkbox";
+export type { CheckboxCheckedState, CheckboxRootProps } from "@ark-ui/react";
 
 export const Checkbox = Object.assign(CheckboxRoot, {
   Control: CheckboxControl,

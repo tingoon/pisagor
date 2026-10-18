@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import { PhDotsSixVertical } from "@phosphor-icons/vue";
 import type {
   SortableItemProps as BaseSortableItemProps,

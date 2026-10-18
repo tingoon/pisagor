@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type DatePickerControlProps,
     DatePicker as DatePickerPrimitive,
-  } from "@ark-ui/svelte/date-picker";
+    type DatePickerControlProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { setInsideControl } from "../../internal/inside-control";
   import {

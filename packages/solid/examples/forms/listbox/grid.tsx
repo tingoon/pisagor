@@ -1,4 +1,4 @@
-import { createGridCollection } from "@ark-ui/solid/collection";
+import { createGridCollection } from "@ark-ui/solid";
 import { Item, Listbox } from "@pisagor/solid";
 import { For, type JSX } from "solid-js";
 

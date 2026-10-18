@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type { AvatarGroupProps as BaseAvatarGroupProps } from "@pisagor/props";
 import { avatarGroupRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";

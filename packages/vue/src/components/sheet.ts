@@ -1,4 +1,4 @@
-import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
+import { Dialog as DialogPrimitive } from "@ark-ui/vue";
 import type { SheetProps as BaseSheetProps } from "@pisagor/props";
 import { type SheetRecipe, sheetRecipe } from "@pisagor/recipes";
 import {

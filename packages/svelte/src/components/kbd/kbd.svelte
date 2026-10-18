@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { KbdProps as BaseKbdProps } from "@pisagor/props";
   import { kbdRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

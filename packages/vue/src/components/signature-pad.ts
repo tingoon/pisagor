@@ -1,9 +1,9 @@
 import {
+  SignaturePad as SignaturePadPrimitive,
   type SignaturePadDrawDetails,
   type SignaturePadDrawEndDetails,
   type SignaturePadDrawingOptions,
-  SignaturePad as SignaturePadPrimitive,
-} from "@ark-ui/vue/signature-pad";
+} from "@ark-ui/vue";
 import { PhArrowCounterClockwise } from "@phosphor-icons/vue";
 import type { SignaturePadProps as BaseSignaturePadProps } from "@pisagor/props";
 import {

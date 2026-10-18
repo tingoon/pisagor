@@ -1,4 +1,4 @@
-import { useFileUploadContext } from "@ark-ui/solid/file-upload";
+import { useFileUploadContext } from "@ark-ui/solid";
 import { Button, FileUpload } from "@pisagor/solid";
 import { XIcon } from "@pisagor/solid/icons";
 import { For, Show } from "solid-js";

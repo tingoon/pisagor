@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type ListboxItemGroupProps as ArkProps,
     Listbox as ListboxPrimitive,
-  } from "@ark-ui/svelte/listbox";
+    type ListboxItemGroupProps as ArkProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useListbox } from "./listbox.context";
   import ListboxItemGroupLabel from "./listbox-item-group-label.svelte";

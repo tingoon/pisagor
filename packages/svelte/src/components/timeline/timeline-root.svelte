@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { TimelineProps as BaseTimelineProps } from "@pisagor/props";
   import { timelineRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

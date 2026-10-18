@@ -6,10 +6,7 @@ import AvatarGroupRoot from "./avatar-group-root.svelte";
 import AvatarImage from "./avatar-image.svelte";
 import AvatarRoot from "./avatar-root.svelte";
 
-export type {
-  AvatarFallbackProps,
-  AvatarImageProps,
-} from "@ark-ui/svelte/avatar";
+export type { AvatarFallbackProps, AvatarImageProps } from "@ark-ui/svelte";
 
 export const AvatarGroup = Object.assign(AvatarGroupShorthand, {
   Count: AvatarGroupCount,

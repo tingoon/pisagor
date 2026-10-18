@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type { SkipNavProps as BaseSkipNavLinkProps } from "@pisagor/props";
 import { skipNavRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";

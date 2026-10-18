@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type DrawerBackdropProps,
     Drawer as DrawerPrimitive,
-  } from "@ark-ui/svelte/drawer";
+    type DrawerBackdropProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useDrawer } from "./drawer.context";
 

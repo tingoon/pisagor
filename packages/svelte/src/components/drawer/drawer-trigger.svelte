@@ -2,7 +2,7 @@
   import {
     Drawer as DrawerPrimitive,
     type DrawerTriggerProps,
-  } from "@ark-ui/svelte/drawer";
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: DrawerTriggerProps = $props();
 </script>

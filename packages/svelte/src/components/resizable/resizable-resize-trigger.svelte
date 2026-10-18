@@ -2,7 +2,7 @@
   import {
     Splitter as SplitterPrimitive,
     type SplitterResizeTriggerProps,
-  } from "@ark-ui/svelte/splitter";
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import DotsSixVerticalIcon from "phosphor-svelte/lib/DotsSixVerticalIcon";
   import { useMessageResolver } from "../provider/context";

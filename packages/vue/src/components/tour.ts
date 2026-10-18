@@ -1,10 +1,10 @@
-import { ark } from "@ark-ui/vue/factory";
 import {
   Tour as TourPrimitive,
   type TourStepDetails,
   type UseTourReturn,
+  ark,
   useTour,
-} from "@ark-ui/vue/tour";
+} from "@ark-ui/vue";
 import { PhCaretLeft, PhCaretRight, PhX } from "@phosphor-icons/vue";
 import type { TourProps as BaseTourRootProps } from "@pisagor/props";
 import { dialogRecipe, type TourRecipe, tourRecipe } from "@pisagor/recipes";

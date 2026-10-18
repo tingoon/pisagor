@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark } from "@ark-ui/solid";
 import type { AvatarGroupProps as BaseAvatarGroupRootProps } from "@pisagor/props";
 import { avatarGroupRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";

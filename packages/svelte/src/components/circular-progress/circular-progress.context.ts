@@ -1,4 +1,4 @@
-import type { UseProgressReturn } from "@ark-ui/svelte/progress";
+import type { UseProgressReturn } from "@ark-ui/svelte";
 import { circularProgressRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
 

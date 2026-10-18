@@ -1,15 +1,15 @@
-import type {
-  DrawerBackdropProps,
-  DrawerCloseTriggerProps,
-  DrawerGrabberProps,
-  DrawerContentProps as DrawerPrimitiveContentProps,
-  DrawerPositionerProps as DrawerPrimitivePositionerProps,
-  DrawerRootProps as DrawerPrimitiveRootProps,
-  DrawerTriggerProps,
-} from "@ark-ui/react/drawer";
-import { Drawer as DrawerPrimitive } from "@ark-ui/react/drawer";
-import { ark } from "@ark-ui/react/factory";
-import { Portal } from "@ark-ui/react/portal";
+import {
+  Drawer as DrawerPrimitive,
+  type DrawerBackdropProps,
+  type DrawerCloseTriggerProps,
+  type DrawerContentProps as DrawerPrimitiveContentProps,
+  type DrawerGrabberProps,
+  type DrawerPositionerProps as DrawerPrimitivePositionerProps,
+  type DrawerRootProps as DrawerPrimitiveRootProps,
+  type DrawerTriggerProps,
+  Portal,
+  ark,
+} from "@ark-ui/react";
 import type { DrawerProps as BaseDrawerRootProps } from "@pisagor/props";
 import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
@@ -281,7 +281,7 @@ export type {
   DrawerGrabberProps,
   DrawerTitleProps,
   DrawerTriggerProps,
-} from "@ark-ui/react/drawer";
+} from "@ark-ui/react";
 
 export const Drawer = Object.assign(DrawerRoot, {
   Backdrop: DrawerBackdrop,

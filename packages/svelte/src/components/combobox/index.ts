@@ -1,4 +1,4 @@
-import { Combobox as ComboboxPrimitive } from "@ark-ui/svelte/combobox";
+import { Combobox as ComboboxPrimitive } from "@ark-ui/svelte";
 import { useComboboxRoot } from "./combobox.context";
 import ComboboxShorthand from "./combobox.svelte";
 import ComboboxClearTrigger from "./combobox-clear-trigger.svelte";

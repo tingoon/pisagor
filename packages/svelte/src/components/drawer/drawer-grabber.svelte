@@ -1,9 +1,9 @@
 <script lang="ts">
   import {
-    type DrawerGrabberProps,
+    Ark,
     Drawer as DrawerPrimitive,
-  } from "@ark-ui/svelte/drawer";
-  import { Ark } from "@ark-ui/svelte/factory";
+    type DrawerGrabberProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useDrawer } from "./drawer.context";
 

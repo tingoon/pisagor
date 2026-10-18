@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import { formControlSeparatorRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";

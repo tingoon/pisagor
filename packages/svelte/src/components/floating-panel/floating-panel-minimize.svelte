@@ -2,7 +2,7 @@
   import {
     FloatingPanel as FloatingPanelPrimitive,
     type FloatingPanelStageTriggerProps,
-  } from "@ark-ui/svelte/floating-panel";
+  } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import MinusIcon from "phosphor-svelte/lib/MinusIcon";

@@ -2,7 +2,7 @@ import {
   DatePicker as DatePickerPrimitive,
   type DatePickerValueChangeDetails,
   useDatePickerContext as useDatePicker,
-} from "@ark-ui/vue/date-picker";
+} from "@ark-ui/vue";
 import { PhCalendar, PhClock, PhX } from "@phosphor-icons/vue";
 import type { DatePickerProps as BaseDatePickerRootProps } from "@pisagor/props";
 import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";

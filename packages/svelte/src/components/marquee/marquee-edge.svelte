@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type MarqueeEdgeProps,
     Marquee as MarqueePrimitive,
-  } from "@ark-ui/svelte/marquee";
+    type MarqueeEdgeProps,
+  } from "@ark-ui/svelte";
   import { withContext } from "./marquee.context";
 
   let { ...rest }: MarqueeEdgeProps = $props();

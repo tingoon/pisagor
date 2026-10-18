@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { createToaster } from "@ark-ui/vue/toast";
+import { createToaster } from "@ark-ui/vue";
 import { Button, Toaster, toast } from "@pisagor/vue";
 
 const topEndToaster = createToaster({

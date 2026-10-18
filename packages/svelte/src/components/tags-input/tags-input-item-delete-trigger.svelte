@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type TagsInputItemDeleteTriggerProps,
     TagsInput as TagsInputPrimitive,
-  } from "@ark-ui/svelte/tags-input";
+    type TagsInputItemDeleteTriggerProps,
+  } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import XIcon from "phosphor-svelte/lib/XIcon";

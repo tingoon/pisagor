@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type EditableCancelTriggerProps,
     Editable as EditablePrimitive,
-  } from "@ark-ui/svelte/editable";
+    type EditableCancelTriggerProps,
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: EditableCancelTriggerProps = $props();
 </script>

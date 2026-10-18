@@ -1,4 +1,4 @@
-import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/vue/radio-group";
+import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/vue";
 import type {
   RadioGroupItemProps as BaseRadioGroupItemProps,
   RadioGroupProps as BaseRadioGroupRootProps,

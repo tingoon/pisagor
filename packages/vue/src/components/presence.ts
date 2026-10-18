@@ -1,4 +1,4 @@
-import { Presence as PresencePrimitive } from "@ark-ui/vue/presence";
+import { Presence as PresencePrimitive } from "@ark-ui/vue";
 import { defineComponent, h } from "vue";
 
 // #region Component

@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type RadioGroupRootProps as ArkRadioGroupRootProps,
     RadioGroup as RadioGroupPrimitive,
-  } from "@ark-ui/svelte/radio-group";
+    type RadioGroupRootProps as ArkRadioGroupRootProps,
+  } from "@ark-ui/svelte";
   import type { RadioGroupProps as BaseRadioGroupProps } from "@pisagor/props";
   import { radioGroupRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type SegmentGroupIndicatorProps,
     SegmentGroup as SegmentGroupPrimitive,
-  } from "@ark-ui/svelte/segment-group";
+    type SegmentGroupIndicatorProps,
+  } from "@ark-ui/svelte";
   import { withContext } from "./segment-group.context";
 
   let { ...rest }: SegmentGroupIndicatorProps = $props();

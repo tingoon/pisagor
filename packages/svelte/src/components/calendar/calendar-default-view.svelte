@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
+  import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte";
   import type { Snippet } from "svelte";
 
   /**

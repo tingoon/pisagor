@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte/color-picker";
+  import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte";
   import type { ClassValue } from "svelte/elements";
   import { useMessageResolver } from "../provider/context";
 

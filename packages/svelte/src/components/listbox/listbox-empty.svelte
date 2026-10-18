@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type ListboxEmptyProps,
     Listbox as ListboxPrimitive,
-  } from "@ark-ui/svelte/listbox";
+    type ListboxEmptyProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useMessageResolver } from "../provider/context";
   import { useListbox } from "./listbox.context";

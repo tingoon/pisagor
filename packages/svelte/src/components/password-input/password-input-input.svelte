@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type PasswordInputInputProps,
     PasswordInput as PasswordInputPrimitive,
-  } from "@ark-ui/svelte/password-input";
+    type PasswordInputInputProps,
+  } from "@ark-ui/svelte";
   import { inputGroupControlRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 

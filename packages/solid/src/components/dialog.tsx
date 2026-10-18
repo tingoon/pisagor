@@ -1,15 +1,15 @@
-import type {
-  DialogBackdropProps,
-  DialogCloseTriggerProps,
-  DialogDescriptionProps,
-  DialogContentProps as DialogPrimitiveContentProps,
-  DialogPositionerProps as DialogPrimitivePositionerProps,
-  DialogRootProps as DialogPrimitiveRootProps,
-  DialogTitleProps,
-  DialogTriggerProps,
-} from "@ark-ui/solid/dialog";
-import { Dialog as DialogPrimitive } from "@ark-ui/solid/dialog";
-import { ark } from "@ark-ui/solid/factory";
+import {
+  Dialog as DialogPrimitive,
+  type DialogBackdropProps,
+  type DialogCloseTriggerProps,
+  type DialogContentProps as DialogPrimitiveContentProps,
+  type DialogDescriptionProps,
+  type DialogPositionerProps as DialogPrimitivePositionerProps,
+  type DialogRootProps as DialogPrimitiveRootProps,
+  type DialogTitleProps,
+  type DialogTriggerProps,
+  ark,
+} from "@ark-ui/solid";
 import type { DialogProps as BaseDialogRootProps } from "@pisagor/props";
 import { type DialogVariantProps, dialogRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
@@ -300,7 +300,7 @@ export type {
   DialogRootProps,
   DialogTitleProps,
   DialogTriggerProps,
-} from "@ark-ui/solid/dialog";
+} from "@ark-ui/solid";
 
 export const Dialog = Object.assign(DialogShorthand, {
   Backdrop: DialogBackdrop,

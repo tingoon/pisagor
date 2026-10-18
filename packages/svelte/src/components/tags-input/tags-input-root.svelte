@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type TagsInputRootProps as ArkRootProps,
     TagsInput as TagsInputPrimitive,
-  } from "@ark-ui/svelte/tags-input";
+    type TagsInputRootProps as ArkRootProps,
+  } from "@ark-ui/svelte";
   import type { TagsInputProps as BaseTagsInputProps } from "@pisagor/props";
   import {
     type FormControlGroupShellVariantProps,

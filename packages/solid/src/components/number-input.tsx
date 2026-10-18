@@ -3,7 +3,7 @@ import {
   type NumberInputControlProps as NumberInputPrimitiveControlProps,
   type NumberInputRootProps as NumberInputPrimitiveRootProps,
   type NumberInputScrubberProps,
-} from "@ark-ui/solid/number-input";
+} from "@ark-ui/solid";
 import type { NumberInputProps as BaseNumberInputProps } from "@pisagor/props";
 import {
   formControlGroupShellRecipe,
@@ -256,7 +256,7 @@ export function NumberInputScrubber(
   );
 }
 
-export type { NumberInputScrubberProps } from "@ark-ui/solid/number-input";
+export type { NumberInputScrubberProps } from "@ark-ui/solid";
 
 export const NumberInput = Object.assign(NumberInputRoot, {
   ClearTrigger: NumberInputClearTrigger,

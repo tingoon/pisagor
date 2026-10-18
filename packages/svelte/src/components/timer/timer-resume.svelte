@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { TimerActionTriggerProps } from "@ark-ui/svelte/timer";
+  import type { TimerActionTriggerProps } from "@ark-ui/svelte";
   import { useMessageResolver } from "../provider/context";
   import TimerActionTrigger from "./timer-action-trigger.svelte";
 

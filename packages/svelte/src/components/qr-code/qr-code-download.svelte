@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type QrCodeDownloadTriggerProps,
     QrCode as QrCodePrimitive,
-  } from "@ark-ui/svelte/qr-code";
+    type QrCodeDownloadTriggerProps,
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: QrCodeDownloadTriggerProps = $props();
 </script>

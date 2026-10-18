@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
   import {
-    type TourControlProps,
+    Ark,
     Tour as TourPrimitive,
-  } from "@ark-ui/svelte/tour";
+    type TourControlProps,
+  } from "@ark-ui/svelte";
   import { buttonRecipe, dialogRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";

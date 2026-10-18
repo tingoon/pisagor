@@ -1,12 +1,12 @@
-import type {
-  SplitterContextProps,
-  SplitterPanelProps,
-  SplitterResizeTriggerIndicatorProps,
-  SplitterResizeTriggerProps,
-  SplitterRootProps,
-  SplitterRootProviderProps,
-} from "@ark-ui/react/splitter";
-import { Splitter as SplitterPrimitive } from "@ark-ui/react/splitter";
+import {
+  Splitter as SplitterPrimitive,
+  type SplitterContextProps,
+  type SplitterPanelProps,
+  type SplitterResizeTriggerIndicatorProps,
+  type SplitterResizeTriggerProps,
+  type SplitterRootProps,
+  type SplitterRootProviderProps,
+} from "@ark-ui/react";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
 import type {
   ResizableEdgeHandleProps as BaseResizableEdgeHandleProps,
@@ -18,19 +18,17 @@ import { type ComponentProps, useCallback, useRef } from "react";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import { useMessage } from "./provider/context";
 
-export type {
-  SplitterExpandCollapseDetails as ExpandCollapseDetails,
-  SplitterPanelData as PanelData,
-  SplitterResizeDetails as ResizeDetails,
-  SplitterResizeEndDetails as ResizeEndDetails,
-  UseSplitterProps,
-  UseSplitterReturn,
-} from "@ark-ui/react/splitter";
 export {
+  type SplitterExpandCollapseDetails as ExpandCollapseDetails,
+  type SplitterPanelData as PanelData,
+  type SplitterResizeDetails as ResizeDetails,
+  type SplitterResizeEndDetails as ResizeEndDetails,
+  type UseSplitterProps,
+  type UseSplitterReturn,
   createSplitterRegistry as createRegistry,
   useSplitter,
   useSplitterContext,
-} from "@ark-ui/react/splitter";
+} from "@ark-ui/react";
 
 // #region Context
 const {

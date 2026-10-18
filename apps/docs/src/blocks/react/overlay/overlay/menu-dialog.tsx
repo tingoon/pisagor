@@ -1,4 +1,4 @@
-import { Portal } from "@ark-ui/react/portal";
+import { Portal } from "@ark-ui/react";
 import { GearIcon, InfoIcon, UserIcon } from "@phosphor-icons/react";
 import { Button, Dialog, DropdownMenu } from "@pisagor/react";
 import { useState } from "react";

@@ -1,18 +1,18 @@
-import { ark } from "@ark-ui/solid/factory";
-import type {
-  FloatingPanelCloseTriggerProps,
-  FloatingPanelControlProps,
-  FloatingPanelDragTriggerProps,
-  FloatingPanelHeaderProps,
-  FloatingPanelBodyProps as FloatingPanelPrimitiveBodyProps,
-  FloatingPanelContentProps as FloatingPanelPrimitiveContentProps,
-  FloatingPanelRootProps as FloatingPanelPrimitiveRootProps,
-  FloatingPanelResizeTriggerProps,
-  FloatingPanelStageTriggerProps,
-  FloatingPanelTitleProps,
-  FloatingPanelTriggerProps,
-} from "@ark-ui/solid/floating-panel";
-import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/solid/floating-panel";
+import {
+  FloatingPanel as FloatingPanelPrimitive,
+  type FloatingPanelBodyProps as FloatingPanelPrimitiveBodyProps,
+  type FloatingPanelCloseTriggerProps,
+  type FloatingPanelContentProps as FloatingPanelPrimitiveContentProps,
+  type FloatingPanelControlProps,
+  type FloatingPanelDragTriggerProps,
+  type FloatingPanelHeaderProps,
+  type FloatingPanelResizeTriggerProps,
+  type FloatingPanelRootProps as FloatingPanelPrimitiveRootProps,
+  type FloatingPanelStageTriggerProps,
+  type FloatingPanelTitleProps,
+  type FloatingPanelTriggerProps,
+  ark,
+} from "@ark-ui/solid";
 import type { FloatingPanelProps as BaseFloatingPanelRootProps } from "@pisagor/props";
 import { floatingPanelRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
@@ -306,7 +306,7 @@ export type {
   FloatingPanelStageTriggerProps,
   FloatingPanelTitleProps,
   FloatingPanelTriggerProps,
-} from "@ark-ui/solid/floating-panel";
+} from "@ark-ui/solid";
 
 export const FloatingPanel = Object.assign(FloatingPanelRoot, {
   Body: FloatingPanelBody,

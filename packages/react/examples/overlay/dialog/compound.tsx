@@ -1,4 +1,4 @@
-import { Portal } from "@ark-ui/react/portal";
+import { Portal } from "@ark-ui/react";
 import { Button, Dialog, Field, Input, Select } from "@pisagor/react";
 
 export function Compound() {

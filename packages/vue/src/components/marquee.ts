@@ -1,4 +1,4 @@
-import { Marquee as MarqueePrimitive } from "@ark-ui/vue/marquee";
+import { Marquee as MarqueePrimitive } from "@ark-ui/vue";
 import type { MarqueeProps as BaseMarqueeProps } from "@pisagor/props";
 import { marqueeRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";

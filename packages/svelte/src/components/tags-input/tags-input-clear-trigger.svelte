@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type TagsInputClearTriggerProps,
     TagsInput as TagsInputPrimitive,
-  } from "@ark-ui/svelte/tags-input";
+    type TagsInputClearTriggerProps,
+  } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import XIcon from "phosphor-svelte/lib/XIcon";

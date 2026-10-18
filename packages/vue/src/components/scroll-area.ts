@@ -1,4 +1,4 @@
-import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/vue/scroll-area";
+import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/vue";
 import type { ScrollAreaProps as BaseScrollAreaRootProps } from "@pisagor/props";
 import { type ScrollAreaRecipeSlot, scrollAreaRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";

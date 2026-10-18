@@ -1,5 +1,4 @@
-import { useListCollection } from "@ark-ui/solid/collection";
-import { useFilter } from "@ark-ui/solid/locale";
+import { useFilter, useListCollection } from "@ark-ui/solid";
 import { Autocomplete, InputGroup } from "@pisagor/solid";
 import { AppleLogoIcon } from "@pisagor/solid/icons";
 import { For } from "solid-js";

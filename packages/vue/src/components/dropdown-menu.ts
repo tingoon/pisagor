@@ -1,5 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
-import { Menu as MenuPrimitive } from "@ark-ui/vue/menu";
+import { Menu as MenuPrimitive, ark } from "@ark-ui/vue";
 import { PhCaretRight, PhCheck } from "@phosphor-icons/vue";
 import type {
   DropdownMenuItemProps as BaseDropdownMenuItemProps,

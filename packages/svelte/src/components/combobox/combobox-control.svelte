@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type ComboboxControlProps,
     Combobox as ComboboxPrimitive,
-  } from "@ark-ui/svelte/combobox";
+    type ComboboxControlProps,
+  } from "@ark-ui/svelte";
   import { comboboxRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { setInsideControl } from "../../internal/inside-control";

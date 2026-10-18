@@ -1,18 +1,16 @@
-import type {
-  TagsInputClearTriggerProps,
-  TagsInputInputProps,
-  TagsInputItemInputProps,
-  TagsInputItemPreviewProps,
-  TagsInputItemTextProps,
-  TagsInputControlProps as TagsInputPrimitiveControlProps,
-  TagsInputItemProps as TagsInputPrimitiveItemProps,
-  TagsInputRootProps as TagsInputPrimitiveRootProps,
-  TagsInputRootProviderProps as TagsInputPrimitiveRootProviderProps,
-} from "@ark-ui/react/tags-input";
 import {
   TagsInput as TagsInputPrimitive,
+  type TagsInputClearTriggerProps,
+  type TagsInputControlProps as TagsInputPrimitiveControlProps,
+  type TagsInputInputProps,
+  type TagsInputItemInputProps,
+  type TagsInputItemPreviewProps,
+  type TagsInputItemProps as TagsInputPrimitiveItemProps,
+  type TagsInputItemTextProps,
+  type TagsInputRootProps as TagsInputPrimitiveRootProps,
+  type TagsInputRootProviderProps as TagsInputPrimitiveRootProviderProps,
   useTagsInputContext,
-} from "@ark-ui/react/tags-input";
+} from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
 import type {
   TagsInputItemProps as BaseTagsInputItemProps,
@@ -335,7 +333,7 @@ export type {
   TagsInputItemInputProps,
   TagsInputItemPreviewProps,
   TagsInputItemTextProps,
-} from "@ark-ui/react/tags-input";
+} from "@ark-ui/react";
 
 export const TagsInput = Object.assign(TagsInputRoot, {
   ClearTrigger: TagsInputClearTrigger,

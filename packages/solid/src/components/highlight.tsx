@@ -1,7 +1,7 @@
 import {
   Highlight as HighlightPrimitive,
   type HighlightProps as HighlightPrimitiveProps,
-} from "@ark-ui/solid/highlight";
+} from "@ark-ui/solid";
 import type { HighlightProps as BaseHighlightProps } from "@pisagor/props";
 import { highlightRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";

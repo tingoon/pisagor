@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark } from "@ark-ui/react";
 import type { VisuallyHiddenProps as BaseVisuallyHiddenProps } from "@pisagor/props";
 import { visuallyHiddenRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";

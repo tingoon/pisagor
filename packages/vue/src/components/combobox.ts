@@ -1,13 +1,12 @@
-import type { CollectionItem, ListCollection } from "@ark-ui/vue/collection";
-import { createListCollection } from "@ark-ui/vue/collection";
-import type {
-  ComboboxRootProps as ArkComboboxRootProps,
-  ComboboxInputValueChangeDetails,
-} from "@ark-ui/vue/combobox";
 import {
+  type CollectionItem,
   Combobox as ComboboxPrimitive,
+  type ComboboxInputValueChangeDetails,
+  type ComboboxRootProps as ArkComboboxRootProps,
+  type ListCollection,
+  createListCollection,
   useComboboxContext as useCombobox,
-} from "@ark-ui/vue/combobox";
+} from "@ark-ui/vue";
 import { PhCaretUpDown, PhCheck, PhX } from "@phosphor-icons/vue";
 import type { ComboboxProps as BaseComboboxRootProps } from "@pisagor/props";
 import { comboboxRecipe } from "@pisagor/recipes";

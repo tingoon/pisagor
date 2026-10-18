@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type SplitterContextProps,
     Splitter as SplitterPrimitive,
-  } from "@ark-ui/svelte/splitter";
+    type SplitterContextProps,
+  } from "@ark-ui/svelte";
 
   let props: SplitterContextProps = $props();
 </script>

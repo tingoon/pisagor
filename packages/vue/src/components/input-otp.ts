@@ -1,8 +1,8 @@
-import { ark } from "@ark-ui/vue/factory";
 import {
   PinInput as PinInputPrimitive,
   type PinInputValueChangeDetails,
-} from "@ark-ui/vue/pin-input";
+  ark,
+} from "@ark-ui/vue";
 import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
 import { inputOtpRecipe, inputRootRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";

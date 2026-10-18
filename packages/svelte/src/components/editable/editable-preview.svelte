@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type EditablePreviewProps as ArkEditablePreviewProps,
     Editable as EditablePrimitive,
-  } from "@ark-ui/svelte/editable";
+    type EditablePreviewProps as ArkEditablePreviewProps,
+  } from "@ark-ui/svelte";
   import type { ButtonProps } from "@pisagor/props";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

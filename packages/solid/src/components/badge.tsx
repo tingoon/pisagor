@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark } from "@ark-ui/solid";
 import type { BadgeProps as BaseBadgeProps } from "@pisagor/props";
 import { type BadgeVariantProps, badgeRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";

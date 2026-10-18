@@ -3,7 +3,7 @@
     type ProgressRootProps,
     type ProgressValueTextProps,
     useProgress,
-  } from "@ark-ui/svelte/progress";
+  } from "@ark-ui/svelte";
   import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
   import type { CircularProgressRecipeSlot } from "@pisagor/recipes";
   import type { Snippet } from "svelte";

@@ -2,7 +2,7 @@
   import {
     Listbox as ListboxPrimitive,
     type ListboxValueTextProps,
-  } from "@ark-ui/svelte/listbox";
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useListbox } from "./listbox.context";
 

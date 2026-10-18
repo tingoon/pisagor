@@ -1,16 +1,14 @@
-import type {
-  DatePickerPresetTriggerProps,
-  DatePickerContentProps as DatePickerPrimitiveContentProps,
-  DatePickerInputProps as DatePickerPrimitiveInputProps,
-  DatePickerRootProps as DatePickerPrimitiveRootProps,
-  DatePickerTriggerProps as DatePickerPrimitiveTriggerProps,
-  DatePickerValueTextProps,
-} from "@ark-ui/react/date-picker";
 import {
   DatePicker as DatePickerPrimitive,
+  type DatePickerContentProps as DatePickerPrimitiveContentProps,
+  type DatePickerInputProps as DatePickerPrimitiveInputProps,
+  type DatePickerPresetTriggerProps,
+  type DatePickerRootProps as DatePickerPrimitiveRootProps,
+  type DatePickerTriggerProps as DatePickerPrimitiveTriggerProps,
+  type DatePickerValueTextProps,
+  Portal,
   useDatePickerContext,
-} from "@ark-ui/react/date-picker";
-import { Portal } from "@ark-ui/react/portal";
+} from "@ark-ui/react";
 import { CalendarIcon, ClockIcon, XIcon } from "@phosphor-icons/react";
 import type { DatePickerProps as BaseDatePickerProps } from "@pisagor/props";
 import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
@@ -397,7 +395,7 @@ DatePickerPresetTrigger.displayName = "DatePicker.PresetTrigger";
 export type {
   DatePickerPresetTriggerProps,
   DatePickerValueTextProps,
-} from "@ark-ui/react/date-picker";
+} from "@ark-ui/react";
 
 export type { DatePickerRootProps as DatePickerProps };
 

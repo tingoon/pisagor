@@ -1,4 +1,4 @@
-import { HoverCard as HoverCardPrimitive } from "@ark-ui/vue/hover-card";
+import { HoverCard as HoverCardPrimitive } from "@ark-ui/vue";
 import type { HoverCardProps as BaseHoverCardProps } from "@pisagor/props";
 import { hoverCardRecipe } from "@pisagor/recipes";
 import {

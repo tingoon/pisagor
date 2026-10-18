@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark } from "@ark-ui/react";
 import type { BadgeProps as BaseBadgeProps } from "@pisagor/props";
 import { type BadgeVariantProps, badgeRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";

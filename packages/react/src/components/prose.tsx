@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark } from "@ark-ui/react";
 import type { ProseProps as BaseProseProps } from "@pisagor/props";
 import { proseRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";

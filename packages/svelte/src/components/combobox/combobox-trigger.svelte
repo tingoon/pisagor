@@ -2,7 +2,7 @@
   import {
     Combobox as ComboboxPrimitive,
     type ComboboxTriggerProps,
-  } from "@ark-ui/svelte/combobox";
+  } from "@ark-ui/svelte";
   import { buttonRecipe, comboboxRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import CaretUpDownIcon from "phosphor-svelte/lib/CaretUpDownIcon";

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Field, type FieldTextareaProps } from "@ark-ui/svelte/field";
+  import { Field, type FieldTextareaProps } from "@ark-ui/svelte";
   import type { TextareaProps as BaseTextareaProps } from "@pisagor/props";
   import {
     formControlShellRecipe,

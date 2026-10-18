@@ -1,10 +1,10 @@
-import type {
-  ScrollAreaRootProps as ScrollAreaPrimitiveRootProps,
-  ScrollAreaScrollbarProps,
-  ScrollAreaThumbProps,
-  ScrollAreaViewportProps,
-} from "@ark-ui/solid/scroll-area";
-import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/solid/scroll-area";
+import {
+  ScrollArea as ScrollAreaPrimitive,
+  type ScrollAreaRootProps as ScrollAreaPrimitiveRootProps,
+  type ScrollAreaScrollbarProps,
+  type ScrollAreaThumbProps,
+  type ScrollAreaViewportProps,
+} from "@ark-ui/solid";
 import type { ScrollAreaProps as BaseScrollAreaRootProps } from "@pisagor/props";
 import {
   type ScrollAreaRecipeSlot,
@@ -120,7 +120,7 @@ export type {
   ScrollAreaScrollbarProps,
   ScrollAreaThumbProps,
   ScrollAreaViewportProps,
-} from "@ark-ui/solid/scroll-area";
+} from "@ark-ui/solid";
 
 export const ScrollArea = Object.assign(ScrollAreaShorthand, {
   Corner: ScrollAreaPrimitive.Corner,

@@ -1,15 +1,15 @@
-import { ark } from "@ark-ui/react/factory";
-import type {
-  PopoverAnchorProps,
-  PopoverArrowProps,
-  PopoverCloseTriggerProps,
-  PopoverPositionerProps,
-  PopoverContentProps as PopoverPrimitiveContentProps,
-  PopoverRootProps,
-  PopoverTriggerProps,
-} from "@ark-ui/react/popover";
-import { Popover as PopoverPrimitive } from "@ark-ui/react/popover";
-import { Portal } from "@ark-ui/react/portal";
+import {
+  Popover as PopoverPrimitive,
+  type PopoverAnchorProps,
+  type PopoverArrowProps,
+  type PopoverCloseTriggerProps,
+  type PopoverContentProps as PopoverPrimitiveContentProps,
+  type PopoverPositionerProps,
+  type PopoverRootProps,
+  type PopoverTriggerProps,
+  Portal,
+  ark,
+} from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
 import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
 import { popoverRecipe } from "@pisagor/recipes";
@@ -207,7 +207,7 @@ export type {
   PopoverRootProps,
   PopoverTitleProps,
   PopoverTriggerProps,
-} from "@ark-ui/react/popover";
+} from "@ark-ui/react";
 
 export const Popover = Object.assign(PopoverRoot, {
   Anchor: PopoverAnchor,

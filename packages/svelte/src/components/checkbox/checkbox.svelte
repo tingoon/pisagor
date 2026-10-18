@@ -2,7 +2,7 @@
   import {
     Checkbox as CheckboxPrimitive,
     type CheckboxRootProps,
-  } from "@ark-ui/svelte/checkbox";
+  } from "@ark-ui/svelte";
   import type { CheckboxProps as BaseCheckboxProps } from "@pisagor/props";
   import { checkboxRecipe, formControlToggleRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

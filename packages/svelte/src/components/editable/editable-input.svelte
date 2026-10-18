@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type EditableInputProps,
     Editable as EditablePrimitive,
-  } from "@ark-ui/svelte/editable";
+    type EditableInputProps,
+  } from "@ark-ui/svelte";
 
   type Props = Omit<EditableInputProps, "size">;
   let props: Props = $props();

@@ -1,10 +1,10 @@
 import {
   Progress as ProgressPrimitive,
-  type ProgressRootProps as ProgressPrimitiveRootProps,
   type ProgressRangeProps,
+  type ProgressRootProps as ProgressPrimitiveRootProps,
   type ProgressTrackProps,
   type ProgressValueTextProps,
-} from "@ark-ui/solid/progress";
+} from "@ark-ui/solid";
 import type { ProgressProps as BaseProgressProps } from "@pisagor/props";
 import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
@@ -120,4 +120,4 @@ export type {
   ProgressRangeProps,
   ProgressTrackProps,
   ProgressValueTextProps,
-} from "@ark-ui/solid/progress";
+} from "@ark-ui/solid";

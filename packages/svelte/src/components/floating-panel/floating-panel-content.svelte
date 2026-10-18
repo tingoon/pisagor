@@ -1,9 +1,9 @@
 <script lang="ts">
   import {
-    type FloatingPanelContentProps as ArkProps,
     FloatingPanel as FloatingPanelPrimitive,
-  } from "@ark-ui/svelte/floating-panel";
-  import { Portal } from "@ark-ui/svelte/portal";
+    type FloatingPanelContentProps as ArkProps,
+    Portal,
+  } from "@ark-ui/svelte";
   import { floatingPanelRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { useFloatingPanel } from "./floating-panel.context";

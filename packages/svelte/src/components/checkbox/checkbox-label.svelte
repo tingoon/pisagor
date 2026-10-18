@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type CheckboxLabelProps,
     Checkbox as CheckboxPrimitive,
-  } from "@ark-ui/svelte/checkbox";
+    type CheckboxLabelProps,
+  } from "@ark-ui/svelte";
   import { checkboxRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 

@@ -1,11 +1,11 @@
-import type {
-  ImageCropperGridProps,
-  ImageCropperHandleProps,
-  ImageCropperImageProps,
-  ImageCropperRootProps as ImageCropperPrimitiveRootProps,
-  ImageCropperSelectionProps as ImageCropperPrimitiveSelectionProps,
-} from "@ark-ui/solid/image-cropper";
-import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/solid/image-cropper";
+import {
+  ImageCropper as ImageCropperPrimitive,
+  type ImageCropperGridProps,
+  type ImageCropperHandleProps,
+  type ImageCropperImageProps,
+  type ImageCropperRootProps as ImageCropperPrimitiveRootProps,
+  type ImageCropperSelectionProps as ImageCropperPrimitiveSelectionProps,
+} from "@ark-ui/solid";
 import type { ImageCropperProps as BaseImageCropperRootProps } from "@pisagor/props";
 import { imageCropperRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
@@ -138,7 +138,7 @@ export type {
   ImageCropperGridProps,
   ImageCropperHandleProps,
   ImageCropperImageProps,
-} from "@ark-ui/solid/image-cropper";
+} from "@ark-ui/solid";
 
 export const ImageCropper = Object.assign(ImageCropperRoot, {
   Grid: ImageCropperGrid,

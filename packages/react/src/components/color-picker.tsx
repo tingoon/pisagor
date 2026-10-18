@@ -1,25 +1,23 @@
-import type {
-  ColorPickerAreaThumbProps,
-  ColorPickerChannelInputProps,
-  ColorPickerContentProps,
-  ColorPickerAreaProps as ColorPickerPrimitiveAreaProps,
-  ColorPickerControlProps as ColorPickerPrimitiveControlProps,
-  ColorPickerRootProps as ColorPickerPrimitiveRootProps,
-  ColorPickerSwatchGroupProps,
-  ColorPickerSwatchProps,
-  ColorPickerTriggerProps,
-  ColorPickerValueChangeDetails,
-  ColorPickerValueSwatchProps,
-  ColorPickerValueTextProps,
-  ColorPickerViewProps,
-} from "@ark-ui/react/color-picker";
 import {
   ColorPicker as ColorPickerPrimitive,
+  type ColorPickerAreaProps as ColorPickerPrimitiveAreaProps,
+  type ColorPickerAreaThumbProps,
+  type ColorPickerChannelInputProps,
+  type ColorPickerContentProps,
+  type ColorPickerControlProps as ColorPickerPrimitiveControlProps,
+  type ColorPickerRootProps as ColorPickerPrimitiveRootProps,
+  type ColorPickerSwatchGroupProps,
+  type ColorPickerSwatchProps,
+  type ColorPickerTriggerProps,
+  type ColorPickerValueChangeDetails,
+  type ColorPickerValueSwatchProps,
+  type ColorPickerValueTextProps,
+  type ColorPickerViewProps,
+  Portal,
+  ark,
   parseColor as parseColorArk,
   useColorPickerContext,
-} from "@ark-ui/react/color-picker";
-import { ark } from "@ark-ui/react/factory";
-import { Portal } from "@ark-ui/react/portal";
+} from "@ark-ui/react";
 import { useUncontrolled } from "@mantine/hooks";
 import { CheckIcon, EyedropperIcon, XIcon } from "@phosphor-icons/react";
 import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
@@ -612,7 +610,7 @@ export type {
   ColorPickerValueSwatchProps,
   ColorPickerValueTextProps,
   ColorPickerViewProps,
-} from "@ark-ui/react/color-picker";
+} from "@ark-ui/react";
 
 export const ColorPicker = Object.assign(ColorPickerRoot, {
   Area: ColorPickerArea,

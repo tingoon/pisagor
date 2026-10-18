@@ -2,7 +2,7 @@
   import {
     Avatar as AvatarPrimitive,
     type AvatarRootProps,
-  } from "@ark-ui/svelte/avatar";
+  } from "@ark-ui/svelte";
   import type { AvatarProps as BaseAvatarProps } from "@pisagor/props";
   import { withProvider } from "./avatar.context";
 

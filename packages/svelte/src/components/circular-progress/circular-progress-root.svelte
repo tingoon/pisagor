@@ -2,7 +2,7 @@
   import {
     Progress as ProgressPrimitive,
     type ProgressRootProviderProps,
-  } from "@ark-ui/svelte/progress";
+  } from "@ark-ui/svelte";
   import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
   import { withProvider } from "./circular-progress.context";
 

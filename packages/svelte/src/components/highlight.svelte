@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type HighlightProps as ArkHighlightProps,
     Highlight as HighlightPrimitive,
-  } from "@ark-ui/svelte/highlight";
+    type HighlightProps as ArkHighlightProps,
+  } from "@ark-ui/svelte";
   import type { HighlightProps as BaseHighlightProps } from "@pisagor/props";
   import { highlightRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

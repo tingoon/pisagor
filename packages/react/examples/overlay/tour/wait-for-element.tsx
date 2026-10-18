@@ -1,4 +1,4 @@
-import { waitForElement, waitForEvent } from "@ark-ui/react/tour";
+import { waitForElement, waitForEvent } from "@ark-ui/react";
 import { PlusIcon } from "@phosphor-icons/react";
 import type { TourStepType } from "@pisagor/react";
 import { Button, Tour } from "@pisagor/react";

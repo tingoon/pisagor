@@ -1,10 +1,10 @@
-import type {
-  PasswordInputIndicatorProps,
-  PasswordInputInputProps,
-  PasswordInputRootProps as PasswordInputPrimitiveRootProps,
-  PasswordInputVisibilityTriggerProps as PasswordInputPrimitiveVisibilityTriggerProps,
-} from "@ark-ui/react/password-input";
-import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/react/password-input";
+import {
+  PasswordInput as PasswordInputPrimitive,
+  type PasswordInputIndicatorProps,
+  type PasswordInputInputProps,
+  type PasswordInputRootProps as PasswordInputPrimitiveRootProps,
+  type PasswordInputVisibilityTriggerProps as PasswordInputPrimitiveVisibilityTriggerProps,
+} from "@ark-ui/react";
 import { EyeIcon, EyeSlashIcon, XIcon } from "@phosphor-icons/react";
 import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
 import { passwordInputRecipe } from "@pisagor/recipes";
@@ -247,4 +247,4 @@ export const PasswordInput = Object.assign(PasswordInputShorthand, {
   VisibilityTrigger: PasswordInputVisibilityTrigger,
 });
 
-export type { PasswordInputIndicatorProps } from "@ark-ui/react/password-input";
+export type { PasswordInputIndicatorProps } from "@ark-ui/react";

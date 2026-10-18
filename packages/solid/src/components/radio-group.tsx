@@ -1,10 +1,10 @@
 import {
-  type RadioGroupItemTextProps,
-  type RadioGroupLabelProps,
   RadioGroup as RadioGroupPrimitive,
   type RadioGroupItemProps as RadioGroupPrimitiveItemProps,
+  type RadioGroupItemTextProps,
+  type RadioGroupLabelProps,
   type RadioGroupRootProps as RadioGroupPrimitiveRootProps,
-} from "@ark-ui/solid/radio-group";
+} from "@ark-ui/solid";
 import type {
   RadioGroupItemProps as BaseRadioGroupItemProps,
   RadioGroupProps as BaseRadioGroupRootProps,
@@ -151,7 +151,7 @@ export function RadioGroupShorthand(props: RadioGroupProps): JSX.Element {
 export type {
   RadioGroupItemTextProps,
   RadioGroupLabelProps,
-} from "@ark-ui/solid/radio-group";
+} from "@ark-ui/solid";
 
 export const RadioGroup = Object.assign(RadioGroupShorthand, {
   Item: RadioGroupItem,

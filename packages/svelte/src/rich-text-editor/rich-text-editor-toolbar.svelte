@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import ListBulletsIcon from "phosphor-svelte/lib/ListBulletsIcon";
   import ListNumbersIcon from "phosphor-svelte/lib/ListNumbersIcon";

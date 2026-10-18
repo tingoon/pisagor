@@ -4,7 +4,7 @@
     ProgressRootProps,
     ProgressTrackProps,
     ProgressValueTextProps,
-  } from "@ark-ui/svelte/progress";
+  } from "@ark-ui/svelte";
   import type { ProgressProps as BaseProgressProps } from "@pisagor/props";
   import type { ProgressRecipeSlot } from "@pisagor/recipes";
   import type { Snippet } from "svelte";

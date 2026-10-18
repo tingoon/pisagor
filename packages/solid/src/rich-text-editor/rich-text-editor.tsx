@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark } from "@ark-ui/solid";
 import type { RichTextEditorProps as BaseRichTextEditorRootProps } from "@pisagor/props";
 import { formControlShellRecipe, richTextEditorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";

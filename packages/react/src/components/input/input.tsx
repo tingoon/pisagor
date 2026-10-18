@@ -1,7 +1,7 @@
 import {
-  type FieldInputProps,
   FieldInput as InputPrimitive,
-} from "@ark-ui/react/field";
+  type FieldInputProps,
+} from "@ark-ui/react";
 import type { InputProps as BaseInputProps } from "@pisagor/props";
 import {
   type InputRecipeSlot,

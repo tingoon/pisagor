@@ -1,13 +1,13 @@
-import { ark } from "@ark-ui/solid/factory";
 import {
   Progress as ProgressPrimitive,
   type ProgressRootProps,
   type ProgressRootProviderProps,
   type ProgressValueTextProps,
   type UseProgressReturn,
+  ark,
   useProgress,
   useProgressContext,
-} from "@ark-ui/solid/progress";
+} from "@ark-ui/solid";
 import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
 import {
   type CircularProgressRecipeSlot,

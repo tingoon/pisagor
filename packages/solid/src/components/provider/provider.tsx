@@ -1,7 +1,7 @@
 import {
   LocaleProvider as ArkLocaleProvider,
   useLocaleContext,
-} from "@ark-ui/solid/locale";
+} from "@ark-ui/solid";
 import {
   defaultLocale,
   defaultMotion,

@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type DialogPositionerProps as ArkDialogPositionerProps,
     Dialog as DialogPrimitive,
-  } from "@ark-ui/svelte/dialog";
+    type DialogPositionerProps as ArkDialogPositionerProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useDialog } from "./dialog.context";
 

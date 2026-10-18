@@ -2,7 +2,7 @@
   import {
     Pagination as PaginationPrimitive,
     type PaginationRootProps,
-  } from "@ark-ui/svelte/pagination";
+  } from "@ark-ui/svelte";
   import type { PaginationProps as BasePaginationProps } from "@pisagor/props";
   import { withProvider } from "./pagination.context";
   import PaginationItems from "./pagination-items.svelte";

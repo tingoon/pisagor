@@ -1,4 +1,4 @@
-import { NumberInput as NumberInputPrimitive } from "@ark-ui/vue/number-input";
+import { NumberInput as NumberInputPrimitive } from "@ark-ui/vue";
 import { PhMinus, PhPlus } from "@phosphor-icons/vue";
 import type { NumberInputProps as BaseNumberInputProps } from "@pisagor/props";
 import {

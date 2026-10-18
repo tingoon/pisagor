@@ -1,22 +1,18 @@
 import {
   type CollectionItem,
-  createListCollection,
-} from "@ark-ui/solid/collection";
-import { ark } from "@ark-ui/solid/factory";
-import type {
-  SelectClearTriggerProps,
-  SelectContentProps,
-  SelectItemGroupLabelProps,
-  SelectItemProps,
-  SelectItemGroupProps as SelectPrimitiveItemGroupProps,
-  SelectRootProps as SelectPrimitiveRootProps,
-  SelectTriggerProps as SelectPrimitiveTriggerProps,
-  SelectValueTextProps,
-} from "@ark-ui/solid/select";
-import {
   Select as SelectPrimitive,
+  type SelectClearTriggerProps,
+  type SelectContentProps,
+  type SelectItemGroupLabelProps,
+  type SelectItemGroupProps as SelectPrimitiveItemGroupProps,
+  type SelectItemProps,
+  type SelectRootProps as SelectPrimitiveRootProps,
+  type SelectTriggerProps as SelectPrimitiveTriggerProps,
+  type SelectValueTextProps,
+  ark,
+  createListCollection,
   useSelectContext,
-} from "@ark-ui/solid/select";
+} from "@ark-ui/solid";
 import type { SelectProps as BaseSelectRootProps } from "@pisagor/props";
 import {
   type FormControlShellVariantProps,
@@ -346,7 +342,7 @@ export type {
   SelectItemGroupLabelProps,
   SelectItemProps,
   SelectValueTextProps,
-} from "@ark-ui/solid/select";
+} from "@ark-ui/solid";
 
 export const Select = Object.assign(SelectShorthand, {
   ClearTrigger: SelectClearTrigger,

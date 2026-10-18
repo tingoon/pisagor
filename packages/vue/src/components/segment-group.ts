@@ -1,4 +1,4 @@
-import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/vue/segment-group";
+import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/vue";
 import type { SegmentGroupProps as BaseSegmentGroupRootProps } from "@pisagor/props";
 import { segmentGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";

@@ -1,10 +1,10 @@
-import type {
-  SegmentGroupIndicatorProps,
-  SegmentGroupItemTextProps,
-  SegmentGroupItemProps as SegmentGroupPrimitiveItemProps,
-  SegmentGroupRootProps as SegmentGroupPrimitiveRootProps,
-} from "@ark-ui/solid/segment-group";
-import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/solid/segment-group";
+import {
+  SegmentGroup as SegmentGroupPrimitive,
+  type SegmentGroupIndicatorProps,
+  type SegmentGroupItemProps as SegmentGroupPrimitiveItemProps,
+  type SegmentGroupItemTextProps,
+  type SegmentGroupRootProps as SegmentGroupPrimitiveRootProps,
+} from "@ark-ui/solid";
 import type { SegmentGroupProps as BaseSegmentGroupRootProps } from "@pisagor/props";
 import { segmentGroupRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
@@ -134,7 +134,7 @@ export function SegmentGroupShorthand(props: SegmentGroupProps): JSX.Element {
 export type {
   SegmentGroupIndicatorProps,
   SegmentGroupItemTextProps,
-} from "@ark-ui/solid/segment-group";
+} from "@ark-ui/solid";
 
 export const SegmentGroup = Object.assign(SegmentGroupShorthand, {
   Indicator: SegmentGroupIndicator,

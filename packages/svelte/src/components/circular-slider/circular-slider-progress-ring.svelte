@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { useAngleSliderContext } from "@ark-ui/svelte/angle-slider";
+  import { useAngleSliderContext } from "@ark-ui/svelte";
   import { useCircularSlider } from "./circular-slider.context";
 
   const api = useAngleSliderContext();

@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark } from "@ark-ui/react";
 import { CaretRightIcon, DotsThreeIcon } from "@phosphor-icons/react";
 import type {
   BreadcrumbItemProps as BaseBreadcrumbItemProps,

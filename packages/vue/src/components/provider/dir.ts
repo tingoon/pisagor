@@ -1,4 +1,4 @@
-import { useLocaleContext } from "@ark-ui/vue/locale";
+import { useLocaleContext } from "@ark-ui/vue";
 import { defineComponent, h, type PropType } from "vue";
 
 /** Renders a `display: contents` wrapper carrying Ark's `dir`. */

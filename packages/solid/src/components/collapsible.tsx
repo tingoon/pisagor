@@ -1,10 +1,10 @@
 import {
+  Collapsible as CollapsiblePrimitive,
   type CollapsibleContentProps,
   type CollapsibleIndicatorProps,
-  Collapsible as CollapsiblePrimitive,
   type CollapsibleRootProps as CollapsiblePrimitiveRootProps,
   type CollapsibleTriggerProps,
-} from "@ark-ui/solid/collapsible";
+} from "@ark-ui/solid";
 import type { CollapsibleProps as BaseCollapsibleRootProps } from "@pisagor/props";
 import { collapsibleRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
@@ -103,7 +103,7 @@ export type {
   CollapsibleIndicatorProps,
   CollapsibleRootProps,
   CollapsibleTriggerProps,
-} from "@ark-ui/solid/collapsible";
+} from "@ark-ui/solid";
 
 export const Collapsible = Object.assign(CollapsibleRoot, {
   Content: CollapsibleContent,

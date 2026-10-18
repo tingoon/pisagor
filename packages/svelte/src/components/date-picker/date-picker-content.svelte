@@ -1,9 +1,9 @@
 <script lang="ts">
   import {
-    type DatePickerContentProps as ArkContentProps,
     DatePicker as DatePickerPrimitive,
-  } from "@ark-ui/svelte/date-picker";
-  import { Portal } from "@ark-ui/svelte/portal";
+    type DatePickerContentProps as ArkContentProps,
+    Portal,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { Calendar } from "../calendar";
   import CalendarDefaultView from "../calendar/calendar-default-view.svelte";

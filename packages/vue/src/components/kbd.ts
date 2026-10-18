@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type {
   KbdGroupProps as BaseKbdGroupProps,
   KbdProps as BaseKbdProps,

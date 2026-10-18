@@ -3,7 +3,7 @@ import {
   type NumberInputControlProps as NumberInputPrimitiveControlProps,
   type NumberInputRootProps as NumberInputPrimitiveRootProps,
   type NumberInputScrubberProps,
-} from "@ark-ui/react/number-input";
+} from "@ark-ui/react";
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
 import type { NumberInputProps as BaseNumberInputProps } from "@pisagor/props";
 import {
@@ -253,7 +253,7 @@ NumberInputScrubber.displayName = "NumberInput.Scrubber";
 
 // #endregion
 
-export type { NumberInputScrubberProps } from "@ark-ui/react/number-input";
+export type { NumberInputScrubberProps } from "@ark-ui/react";
 
 export const NumberInput = Object.assign(NumberInputRoot, {
   ClearTrigger: NumberInputClearTrigger,

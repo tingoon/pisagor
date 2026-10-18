@@ -2,7 +2,7 @@
   import {
     Dialog as DialogPrimitive,
     type DialogTitleProps,
-  } from "@ark-ui/svelte/dialog";
+  } from "@ark-ui/svelte";
   import { withContext } from "./dialog.context";
 
   let { children, ...rest }: DialogTitleProps = $props();

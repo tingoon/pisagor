@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark } from "@ark-ui/solid";
 import type { ButtonProps as BaseButtonProps } from "@pisagor/props";
 import { buttonRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";

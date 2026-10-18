@@ -1,10 +1,10 @@
-import type {
-  DialogCloseTriggerProps,
-  DialogContentProps,
-  DialogPositionerProps,
-  DialogTriggerProps,
-} from "@ark-ui/solid/dialog";
-import { Dialog as DialogPrimitive } from "@ark-ui/solid/dialog";
+import {
+  Dialog as DialogPrimitive,
+  type DialogCloseTriggerProps,
+  type DialogContentProps,
+  type DialogPositionerProps,
+  type DialogTriggerProps,
+} from "@ark-ui/solid";
 import type { SheetProps as BaseSheetProps } from "@pisagor/props";
 import { type SheetVariantProps, sheetRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";

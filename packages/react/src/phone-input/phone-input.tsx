@@ -1,4 +1,4 @@
-import { createListCollection } from "@ark-ui/react/collection";
+import { createListCollection } from "@ark-ui/react";
 import { CaretUpDownIcon, GlobeIcon } from "@phosphor-icons/react";
 import type { PhoneInputProps as BasePhoneInputProps } from "@pisagor/props";
 import { type PhoneInputRecipeSlot, phoneInputRecipe } from "@pisagor/recipes";

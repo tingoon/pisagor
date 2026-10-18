@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark } from "@ark-ui/react";
 import type { CardProps as BaseCardRootProps } from "@pisagor/props";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";

@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import { PhFile } from "@phosphor-icons/vue";
 import type { FileProps as BaseFileProps } from "@pisagor/props";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";

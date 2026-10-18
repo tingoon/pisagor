@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type DialogCloseTriggerProps,
     Dialog as DialogPrimitive,
-  } from "@ark-ui/svelte/dialog";
+    type DialogCloseTriggerProps,
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: DialogCloseTriggerProps = $props();
 </script>

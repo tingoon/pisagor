@@ -1,5 +1,4 @@
-import { useHotkey } from "@ark-ui/react";
-import { ark } from "@ark-ui/react/factory";
+import { ark, useHotkey } from "@ark-ui/react";
 import { SidebarSimpleIcon } from "@phosphor-icons/react";
 import type { SidebarProps as BaseSidebarProviderProps } from "@pisagor/props";
 import {

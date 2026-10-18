@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type PopoverCloseTriggerProps,
     Popover as PopoverPrimitive,
-  } from "@ark-ui/svelte/popover";
+    type PopoverCloseTriggerProps,
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: PopoverCloseTriggerProps = $props();
 </script>

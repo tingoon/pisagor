@@ -2,7 +2,7 @@ import {
   TagsInput as TagsInputPrimitive,
   type TagsInputValueChangeDetails,
   useTagsInputContext,
-} from "@ark-ui/vue/tags-input";
+} from "@ark-ui/vue";
 import { PhX } from "@phosphor-icons/vue";
 import type {
   TagsInputItemProps as BaseTagsInputItemProps,

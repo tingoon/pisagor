@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type RadioGroupLabelProps,
     RadioGroup as RadioGroupPrimitive,
-  } from "@ark-ui/svelte/radio-group";
+    type RadioGroupLabelProps,
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: RadioGroupLabelProps = $props();
 </script>

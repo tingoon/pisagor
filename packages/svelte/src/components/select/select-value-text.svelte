@@ -2,7 +2,7 @@
   import {
     Select as SelectPrimitive,
     type SelectValueTextProps,
-  } from "@ark-ui/svelte/select";
+  } from "@ark-ui/svelte";
   import { selectRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { useSelectRoot } from "./select.context";

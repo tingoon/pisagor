@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark } from "@ark-ui/solid";
 import type { SurfaceProps as BaseSurfaceProps } from "@pisagor/props";
 import { surfaceRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";

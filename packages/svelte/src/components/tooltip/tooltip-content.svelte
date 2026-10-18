@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type TooltipContentProps,
     Tooltip as TooltipPrimitive,
-  } from "@ark-ui/svelte/tooltip";
+    type TooltipContentProps,
+  } from "@ark-ui/svelte";
   import { withContext } from "./tooltip.context";
 
   let { children, ...rest }: TooltipContentProps = $props();

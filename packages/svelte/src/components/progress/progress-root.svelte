@@ -2,7 +2,7 @@
   import {
     Progress as ProgressPrimitive,
     type ProgressRootProps,
-  } from "@ark-ui/svelte/progress";
+  } from "@ark-ui/svelte";
   import type { ProgressProps as BaseProgressProps } from "@pisagor/props";
   import { withProvider } from "./progress.context";
 

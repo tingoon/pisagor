@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { createListCollection } from "@ark-ui/vue/collection";
+import { createListCollection } from "@ark-ui/vue";
 import { Field, Listbox } from "@pisagor/vue";
 
 const collection = createListCollection({

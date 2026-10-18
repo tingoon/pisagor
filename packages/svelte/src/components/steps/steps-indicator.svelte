@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type StepsIndicatorProps,
     Steps as StepsPrimitive,
-  } from "@ark-ui/svelte/steps";
+    type StepsIndicatorProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import CheckIcon from "phosphor-svelte/lib/CheckIcon";
   import { useStepsItem } from "./steps.context";

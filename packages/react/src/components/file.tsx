@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark } from "@ark-ui/react";
 import { FileIcon } from "@phosphor-icons/react";
 import type { FileProps as BaseFileRootProps } from "@pisagor/props";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";

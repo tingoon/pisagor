@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { createListCollection } from "@ark-ui/svelte";
   import type { ComponentProps } from "svelte";
   import ComboboxContent from "./combobox-content.svelte";
   import ComboboxInput from "./combobox-input.svelte";

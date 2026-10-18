@@ -16,8 +16,7 @@
 </script>
 
 <script lang="ts">
-  import { useListCollection } from "@ark-ui/svelte/collection";
-  import { useFilter } from "@ark-ui/svelte/locale";
+  import { useFilter, useListCollection } from "@ark-ui/svelte";
   import type { ComponentProps } from "svelte";
   import { useMessageResolver } from "../provider/context";
   import CommandContent from "./command-content.svelte";

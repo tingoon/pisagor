@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { ButtonProps as BaseButtonProps } from "@pisagor/props";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

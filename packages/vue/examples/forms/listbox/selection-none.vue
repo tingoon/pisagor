@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { createListCollection } from "@ark-ui/vue/collection";
+import { createListCollection } from "@ark-ui/vue";
 import { PhPencilSimple, PhPlusSquare, PhTrash } from "@phosphor-icons/vue";
 import { Item, Listbox, Separator } from "@pisagor/vue";
 

@@ -8,7 +8,7 @@ export type {
   QrCodeFrameProps,
   QrCodeOverlayProps,
   QrCodeRootProps,
-} from "@ark-ui/svelte/qr-code";
+} from "@ark-ui/svelte";
 
 export const QrCode = Object.assign(QrCodeRoot, {
   Download: QrCodeDownload,

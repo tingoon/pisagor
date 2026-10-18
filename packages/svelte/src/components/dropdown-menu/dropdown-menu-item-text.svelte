@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type MenuItemTextProps,
     Menu as MenuPrimitive,
-  } from "@ark-ui/svelte/menu";
+    type MenuItemTextProps,
+  } from "@ark-ui/svelte";
   import { dropdownMenuItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 

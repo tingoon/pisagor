@@ -1,10 +1,10 @@
-import type {
-  ProgressRootProps as ProgressPrimitiveRootProps,
-  ProgressRangeProps,
-  ProgressTrackProps,
-  ProgressValueTextProps,
-} from "@ark-ui/react/progress";
-import { Progress as ProgressPrimitive } from "@ark-ui/react/progress";
+import {
+  Progress as ProgressPrimitive,
+  type ProgressRangeProps,
+  type ProgressRootProps as ProgressPrimitiveRootProps,
+  type ProgressTrackProps,
+  type ProgressValueTextProps,
+} from "@ark-ui/react";
 import type { ProgressProps as BaseProgressRootProps } from "@pisagor/props";
 import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
@@ -133,4 +133,4 @@ export type {
   ProgressRangeProps,
   ProgressTrackProps,
   ProgressValueTextProps,
-} from "@ark-ui/react/progress";
+} from "@ark-ui/react";

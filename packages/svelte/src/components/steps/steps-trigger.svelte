@@ -2,7 +2,7 @@
   import {
     Steps as StepsPrimitive,
     type StepsTriggerProps,
-  } from "@ark-ui/svelte/steps";
+  } from "@ark-ui/svelte";
   import { withStepsItemContext } from "./steps.context";
 
   let { children, ...rest }: StepsTriggerProps = $props();

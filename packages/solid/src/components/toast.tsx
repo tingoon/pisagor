@@ -1,17 +1,15 @@
-import type {
-  CreateToasterReturn,
-  ToastActionTriggerProps,
-  ToastCloseTriggerProps,
-  ToastDescriptionProps,
-  ToasterProps as ToasterPrimitiveProps,
-  ToastRootProps,
-  ToastTitleProps,
-} from "@ark-ui/solid/toast";
 import {
-  createToaster,
-  Toaster as ToasterPrimitive,
+  type CreateToasterReturn,
   Toast as ToastPrimitive,
-} from "@ark-ui/solid/toast";
+  type ToastActionTriggerProps,
+  type ToastCloseTriggerProps,
+  type ToastDescriptionProps,
+  type ToastRootProps,
+  type ToastTitleProps,
+  Toaster as ToasterPrimitive,
+  type ToasterProps as ToasterPrimitiveProps,
+  createToaster,
+} from "@ark-ui/solid";
 import type {
   ToastProps as BaseToasterRootProps,
   ToastItemProps as BaseToastItemRootProps,
@@ -251,7 +249,7 @@ export type {
   ToastCloseTriggerProps,
   ToastDescriptionProps,
   ToastTitleProps,
-} from "@ark-ui/solid/toast";
+} from "@ark-ui/solid";
 
 export const Toaster = Object.assign(ToasterRoot, {
   Item: ToastItem,

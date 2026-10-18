@@ -1,4 +1,4 @@
-import { Drawer as DrawerPrimitive } from "@ark-ui/vue/drawer";
+import { Drawer as DrawerPrimitive } from "@ark-ui/vue";
 import type { DrawerProps as BaseDrawerProps } from "@pisagor/props";
 import { type DrawerRecipe, drawerRecipe } from "@pisagor/recipes";
 import {

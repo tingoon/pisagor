@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { HTMLButtonAttributes } from "svelte/elements";
   import { useMessageResolver } from "../provider/context";

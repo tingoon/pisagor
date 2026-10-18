@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark } from "@ark-ui/solid";
 import type { ToolbarProps as BaseToolbarProps } from "@pisagor/props";
 import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes";
 import { handleRovingFocusKeyDown } from "@pisagor/utils";

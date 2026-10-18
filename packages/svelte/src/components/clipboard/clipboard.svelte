@@ -1,9 +1,9 @@
 <script lang="ts">
   import {
-    type ClipboardLabelProps,
     Clipboard as ClipboardPrimitive,
+    type ClipboardLabelProps,
     type ClipboardRootProps,
-  } from "@ark-ui/svelte/clipboard";
+  } from "@ark-ui/svelte";
   import type {
     ClipboardProps as BaseClipboardProps,
     ButtonProps,

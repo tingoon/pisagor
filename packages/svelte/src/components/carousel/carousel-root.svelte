@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type CarouselRootProps as ArkRootProps,
     Carousel as CarouselPrimitive,
-  } from "@ark-ui/svelte/carousel";
+    type CarouselRootProps as ArkRootProps,
+  } from "@ark-ui/svelte";
   import type { CarouselProps as BaseCarouselProps } from "@pisagor/props";
   import { withProvider } from "./carousel.context";
 

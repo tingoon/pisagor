@@ -1,8 +1,8 @@
 import {
-  type ToggleGroupItemProps,
   ToggleGroup as ToggleGroupPrimitive,
+  type ToggleGroupItemProps,
   type ToggleGroupRootProps as ToggleGroupPrimitiveRootProps,
-} from "@ark-ui/solid/toggle-group";
+} from "@ark-ui/solid";
 import type { ToggleGroupProps as BaseToggleGroupRootProps } from "@pisagor/props";
 import { toggleGroupRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
@@ -177,7 +177,7 @@ export function ToggleGroupShorthand(props: ToggleGroupProps): JSX.Element {
   );
 }
 
-export type { ToggleGroupItemProps } from "@ark-ui/solid/toggle-group";
+export type { ToggleGroupItemProps } from "@ark-ui/solid";
 
 export const ToggleGroup = Object.assign(ToggleGroupShorthand, {
   Item: ToggleGroupItem,

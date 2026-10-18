@@ -1,4 +1,4 @@
-import { Tooltip as TooltipPrimitive } from "@ark-ui/vue/tooltip";
+import { Tooltip as TooltipPrimitive } from "@ark-ui/vue";
 import type { TooltipProps as BaseTooltipProps } from "@pisagor/props";
 import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes";
 import {

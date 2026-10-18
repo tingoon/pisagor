@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark } from "@ark-ui/solid";
 import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
 import { navigationMenuRecipe } from "@pisagor/recipes";
 import {

@@ -2,7 +2,7 @@
   import {
     DatePicker as CalendarPrimitive,
     type DatePickerTableBodyProps,
-  } from "@ark-ui/svelte/date-picker";
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: DatePickerTableBodyProps = $props();
 </script>

@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark } from "@ark-ui/react";
 import type { FrameProps as BaseFrameRootProps } from "@pisagor/props";
 import { frameRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";

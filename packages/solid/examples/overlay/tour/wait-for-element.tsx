@@ -1,4 +1,4 @@
-import { waitForElement, waitForEvent } from "@ark-ui/solid/tour";
+import { waitForElement, waitForEvent } from "@ark-ui/solid";
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour } from "@pisagor/solid";
 import { PlusIcon } from "@pisagor/solid/icons";

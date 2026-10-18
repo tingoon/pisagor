@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type MenuItemGroupLabelProps,
     Menu as MenuPrimitive,
-  } from "@ark-ui/svelte/menu";
+    type MenuItemGroupLabelProps,
+  } from "@ark-ui/svelte";
   import { dropdownMenuRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { useDropdownMenu } from "./dropdown-menu.context";

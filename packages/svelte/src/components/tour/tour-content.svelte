@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { Portal } from "@ark-ui/svelte/portal";
   import {
-    type TourContentProps as ArkProps,
+    Portal,
     Tour as TourPrimitive,
-  } from "@ark-ui/svelte/tour";
+    type TourContentProps as ArkProps,
+  } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import XIcon from "phosphor-svelte/lib/XIcon";

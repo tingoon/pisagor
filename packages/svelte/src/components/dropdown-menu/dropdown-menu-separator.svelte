@@ -2,7 +2,7 @@
   import {
     Menu as MenuPrimitive,
     type MenuSeparatorProps,
-  } from "@ark-ui/svelte/menu";
+  } from "@ark-ui/svelte";
   import { dropdownMenuRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { useDropdownMenu } from "./dropdown-menu.context";

@@ -49,7 +49,7 @@ Package UI is **Svelte 5 SFCs** (`.svelte`) with runes (`$props()`, `$derived`, 
 - One **file per part** for compounds; barrel `Object.assign`s them into `Foo.Root` / `Foo.Part`.
 - Destructure `$props()` with `class: className` when you need a local binding (Svelte reserves `class`); prefer `let { children, ...rest } = $props()` when using slot-recipe helpers.
 - Prefer `Snippet` for slot-like content on shorthand APIs; render with `{@render children?.()}`.
-- Alias Ark roots: `Accordion as AccordionPrimitive`; plain nodes via native elements or `Ark` from `@ark-ui/svelte/factory` when `asChild` / polymorphism is needed.
+- Alias Ark roots: `Accordion as AccordionPrimitive`; plain nodes via native elements or `Ark` from `@ark-ui/svelte` when `asChild` / polymorphism is needed.
 - Styling prop is **`class`**, not React’s `className`.
 
 ### Slot recipe context (`createSlotRecipeContext`)

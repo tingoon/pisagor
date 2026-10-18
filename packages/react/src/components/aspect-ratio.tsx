@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark } from "@ark-ui/react";
 import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
 import { aspectRatioRecipe } from "@pisagor/recipes";
 import type { ComponentProps, CSSProperties } from "react";

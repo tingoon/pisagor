@@ -1,6 +1,4 @@
-import { Portal, useHotkey } from "@ark-ui/react";
-import { ark } from "@ark-ui/react/factory";
-import { Presence } from "@ark-ui/react/presence";
+import { Portal, Presence, ark, useHotkey } from "@ark-ui/react";
 import { useUncontrolled } from "@mantine/hooks";
 import { XIcon } from "@phosphor-icons/react";
 import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";

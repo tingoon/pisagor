@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type FileUploadItemPreviewProps,
     FileUpload as FileUploadPrimitive,
-  } from "@ark-ui/svelte/file-upload";
+    type FileUploadItemPreviewProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useFileUploadItem } from "./file-upload.context";
 

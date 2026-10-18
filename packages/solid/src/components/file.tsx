@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark } from "@ark-ui/solid";
 import type { FileProps as BaseFileRootProps } from "@pisagor/props";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";

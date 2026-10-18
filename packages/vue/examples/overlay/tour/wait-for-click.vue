@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { waitForEvent } from "@ark-ui/vue/tour";
+import { waitForEvent } from "@ark-ui/vue";
 import { Button, Tour, type TourStepType } from "@pisagor/vue";
 
 const steps: TourStepType[] = [

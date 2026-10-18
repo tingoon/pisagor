@@ -1,8 +1,8 @@
 import {
   type CollectionItem,
+  useFilter,
   useListCollection,
-} from "@ark-ui/solid/collection";
-import { useFilter } from "@ark-ui/solid/locale";
+} from "@ark-ui/solid";
 import type {
   CommandProps as BaseCommandDialogContentProps,
   CommandProps as BaseCommandProps,

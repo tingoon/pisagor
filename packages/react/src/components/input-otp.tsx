@@ -1,9 +1,9 @@
-import { ark } from "@ark-ui/react/factory";
 import {
-  type PinInputInputProps,
   PinInput as PinInputPrimitive,
+  type PinInputInputProps,
   type PinInputRootProps,
-} from "@ark-ui/react/pin-input";
+  ark,
+} from "@ark-ui/react";
 import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
 import { inputOtpRecipe, inputRootRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";

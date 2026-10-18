@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { FieldProps as BaseFieldProps } from "@pisagor/props";
   import { fieldRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

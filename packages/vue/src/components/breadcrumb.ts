@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import { PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
 import type {
   BreadcrumbItemProps as BaseBreadcrumbItemProps,

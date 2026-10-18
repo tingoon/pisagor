@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type TreeViewItemProps,
     TreeView as TreeViewPrimitive,
-  } from "@ark-ui/svelte/tree-view";
+    type TreeViewItemProps,
+  } from "@ark-ui/svelte";
   import type { TreeViewItemProps as BaseTreeViewItemProps } from "@pisagor/props";
   import { treeViewItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

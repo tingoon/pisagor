@@ -21,6 +21,8 @@ Framework-agnostic product naming and catalog policy for Pisagor component packa
 
 Import paths below use `@pisagor/{pkg}` for light components — substitute `react`, `vue`, `solid`, `svelte`, or `astro` as appropriate. Heavy modules stay on dedicated subpaths (`data-grid`, `data-table`, `phone-input`, `rich-text-editor`).
 
+Import Ark from the framework barrel (`@ark-ui/react`, `@ark-ui/vue`, `@ark-ui/solid`, `@ark-ui/svelte`), never subpaths such as `@ark-ui/react/dialog`. Lint enforces this (`no-restricted-imports` in `bunfig.toml`, `noRestrictedImports` in `biome.json`). The only exception is a name missing from the barrel, such as React `createGridCollection` from `@ark-ui/react/collection`, with a disable comment that says why. Zag (`@zag-js/*`) imports are unaffected.
+
 ---
 
 ## Overlay vs modal

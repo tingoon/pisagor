@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type { ProseProps as BaseProseProps } from "@pisagor/props";
 import { proseRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";

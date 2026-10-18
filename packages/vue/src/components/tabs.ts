@@ -1,4 +1,4 @@
-import { Tabs as TabsPrimitive } from "@ark-ui/vue/tabs";
+import { Tabs as TabsPrimitive } from "@ark-ui/vue";
 import type { TabsProps as BaseTabsRootProps } from "@pisagor/props";
 import { tabsRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";

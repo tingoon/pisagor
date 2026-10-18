@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type ListboxItemIndicatorProps,
     Listbox as ListboxPrimitive,
-  } from "@ark-ui/svelte/listbox";
+    type ListboxItemIndicatorProps,
+  } from "@ark-ui/svelte";
   import { listboxItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import CheckIcon from "phosphor-svelte/lib/CheckIcon";

@@ -1,4 +1,4 @@
-import { parseColor } from "@ark-ui/svelte/color-picker";
+import { parseColor } from "@ark-ui/svelte";
 import ColorPickerArea from "./color-picker-area.svelte";
 import ColorPickerAreaThumb from "./color-picker-area-thumb.svelte";
 import ColorPickerChannelSlider from "./color-picker-channel-slider.svelte";

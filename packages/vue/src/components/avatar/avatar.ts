@@ -2,7 +2,7 @@ import {
   AvatarFallback as AvatarFallbackPrimitive,
   AvatarImage as AvatarImagePrimitive,
   AvatarRoot as AvatarRootPrimitive,
-} from "@ark-ui/vue/avatar";
+} from "@ark-ui/vue";
 import type { AvatarProps as BaseAvatarProps } from "@pisagor/props";
 import {
   type AvatarRecipeSlot,

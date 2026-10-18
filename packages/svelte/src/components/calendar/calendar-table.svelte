@@ -2,7 +2,7 @@
   import {
     DatePicker as CalendarPrimitive,
     type DatePickerTableProps,
-  } from "@ark-ui/svelte/date-picker";
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useCalendar } from "./calendar.context";
 

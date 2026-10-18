@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { SortableProps as BaseSortableProps } from "@pisagor/props";
   import { sortableRecipe } from "@pisagor/recipes";
   import { cn, formatMessage } from "@pisagor/utils";

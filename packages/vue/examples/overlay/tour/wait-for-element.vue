@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { waitForElement, waitForEvent } from "@ark-ui/vue/tour";
+import { waitForElement, waitForEvent } from "@ark-ui/vue";
 import { PhPlus } from "@phosphor-icons/vue";
 import { Button, Tour, type TourStepType } from "@pisagor/vue";
 import { ref } from "vue";

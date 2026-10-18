@@ -1,4 +1,4 @@
-import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/vue/toggle-group";
+import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/vue";
 import type { ToggleGroupProps as BaseToggleGroupRootProps } from "@pisagor/props";
 import { type ToggleGroupRecipe, toggleGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";

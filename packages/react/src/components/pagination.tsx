@@ -1,15 +1,13 @@
-import type {
-  PaginationContextProps,
-  PaginationEllipsisProps,
-  PaginationItemProps,
-  PaginationNextTriggerProps,
-  PaginationPrevTriggerProps,
-  PaginationRootProps as PaginationPrimitiveRootProps,
-} from "@ark-ui/react/pagination";
 import {
   Pagination as PaginationPrimitive,
+  type PaginationContextProps,
+  type PaginationEllipsisProps,
+  type PaginationItemProps,
+  type PaginationNextTriggerProps,
+  type PaginationPrevTriggerProps,
+  type PaginationRootProps as PaginationPrimitiveRootProps,
   usePaginationContext,
-} from "@ark-ui/react/pagination";
+} from "@ark-ui/react";
 import {
   CaretLeftIcon,
   CaretRightIcon,
@@ -210,7 +208,7 @@ export type {
   PaginationItemProps,
   PaginationNextTriggerProps,
   PaginationPrevTriggerProps,
-} from "@ark-ui/react/pagination";
+} from "@ark-ui/react";
 
 export const Pagination = Object.assign(PaginationRoot, {
   Ellipsis: PaginationEllipsis,

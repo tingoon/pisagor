@@ -2,7 +2,7 @@ import {
   type HighlightChunk,
   type UseHighlightProps,
   useHighlight,
-} from "@ark-ui/vue/highlight";
+} from "@ark-ui/vue";
 import type { HighlightProps as BaseHighlightProps } from "@pisagor/props";
 import { highlightRecipe } from "@pisagor/recipes";
 import type { ClassValue } from "tailwind-variants";

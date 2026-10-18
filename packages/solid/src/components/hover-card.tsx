@@ -1,10 +1,10 @@
-import type {
-  HoverCardArrowProps,
-  HoverCardContentProps as HoverCardPrimitiveContentProps,
-  HoverCardRootProps as HoverCardPrimitiveRootProps,
-  HoverCardTriggerProps,
-} from "@ark-ui/solid/hover-card";
-import { HoverCard as HoverCardPrimitive } from "@ark-ui/solid/hover-card";
+import {
+  HoverCard as HoverCardPrimitive,
+  type HoverCardArrowProps,
+  type HoverCardContentProps as HoverCardPrimitiveContentProps,
+  type HoverCardRootProps as HoverCardPrimitiveRootProps,
+  type HoverCardTriggerProps,
+} from "@ark-ui/solid";
 import type { HoverCardProps as BaseHoverCardRootProps } from "@pisagor/props";
 import { hoverCardRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
@@ -115,7 +115,7 @@ export type {
   HoverCardArrowProps,
   HoverCardRootProps,
   HoverCardTriggerProps,
-} from "@ark-ui/solid/hover-card";
+} from "@ark-ui/solid";
 
 export const HoverCard = Object.assign(HoverCardRoot, {
   Arrow: HoverCardArrow,

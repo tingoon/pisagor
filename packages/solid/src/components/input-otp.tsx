@@ -1,9 +1,9 @@
-import { ark } from "@ark-ui/solid/factory";
 import {
-  type PinInputInputProps,
   PinInput as PinInputPrimitive,
+  type PinInputInputProps,
   type PinInputRootProps,
-} from "@ark-ui/solid/pin-input";
+  ark,
+} from "@ark-ui/solid";
 import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
 import { inputOtpRecipe, inputRootRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";

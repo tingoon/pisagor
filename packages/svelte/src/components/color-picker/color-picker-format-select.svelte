@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte/color-picker";
+  import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { ComponentProps } from "svelte";
   import { useColorPicker } from "./color-picker.context";

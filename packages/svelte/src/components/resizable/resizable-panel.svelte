@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type SplitterPanelProps,
     Splitter as SplitterPrimitive,
-  } from "@ark-ui/svelte/splitter";
+    type SplitterPanelProps,
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: SplitterPanelProps = $props();
 </script>

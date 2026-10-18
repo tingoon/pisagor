@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark } from "@ark-ui/solid";
 import type { VisuallyHiddenProps as BaseVisuallyHiddenProps } from "@pisagor/props";
 import { visuallyHiddenRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";

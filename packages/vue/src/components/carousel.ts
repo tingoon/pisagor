@@ -1,7 +1,4 @@
-import {
-  Carousel as CarouselPrimitive,
-  useCarouselContext,
-} from "@ark-ui/vue/carousel";
+import { Carousel as CarouselPrimitive, useCarouselContext } from "@ark-ui/vue";
 import {
   PhCaretLeft,
   PhCaretRight,

@@ -1,9 +1,9 @@
 <script lang="ts">
   import {
-    type PopoverContentProps as ArkPopoverContentProps,
     Popover as PopoverPrimitive,
-  } from "@ark-ui/svelte/popover";
-  import { Portal } from "@ark-ui/svelte/portal";
+    type PopoverContentProps as ArkPopoverContentProps,
+    Portal,
+  } from "@ark-ui/svelte";
   import type { PopoverProps as BasePopoverProps } from "@pisagor/props";
   import { buttonRecipe, popoverRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

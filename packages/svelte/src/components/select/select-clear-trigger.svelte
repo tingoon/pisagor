@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type SelectClearTriggerProps,
     Select as SelectPrimitive,
-  } from "@ark-ui/svelte/select";
+    type SelectClearTriggerProps,
+  } from "@ark-ui/svelte";
   import { selectRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { useMessageResolver } from "../provider/context";

@@ -1,14 +1,14 @@
-import type {
-  DialogBackdropProps,
-  DialogCloseTriggerProps,
-  DialogContentProps as DialogPrimitiveContentProps,
-  DialogPositionerProps as DialogPrimitivePositionerProps,
-  DialogRootProps as DialogPrimitiveRootProps,
-  DialogTriggerProps,
-} from "@ark-ui/react/dialog";
-import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog";
-import { ark } from "@ark-ui/react/factory";
-import { Portal } from "@ark-ui/react/portal";
+import {
+  Dialog as DialogPrimitive,
+  type DialogBackdropProps,
+  type DialogCloseTriggerProps,
+  type DialogContentProps as DialogPrimitiveContentProps,
+  type DialogPositionerProps as DialogPrimitivePositionerProps,
+  type DialogRootProps as DialogPrimitiveRootProps,
+  type DialogTriggerProps,
+  Portal,
+  ark,
+} from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
 import type { DialogProps as BaseDialogRootProps } from "@pisagor/props";
 import { type DialogVariantProps, dialogRecipe } from "@pisagor/recipes";
@@ -295,7 +295,7 @@ export type {
   DialogDescriptionProps,
   DialogTitleProps,
   DialogTriggerProps,
-} from "@ark-ui/react/dialog";
+} from "@ark-ui/react";
 
 export const Dialog = Object.assign(DialogShorthand, {
   Backdrop: DialogBackdrop,

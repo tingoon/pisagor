@@ -2,7 +2,7 @@
   import {
     ScrollArea as ScrollAreaPrimitive,
     type ScrollAreaViewportProps,
-  } from "@ark-ui/svelte/scroll-area";
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useScrollArea } from "./scroll-area.context";
 

@@ -1,19 +1,19 @@
-import { ark } from "@ark-ui/react/factory";
-import type {
-  FloatingPanelCloseTriggerProps,
-  FloatingPanelControlProps,
-  FloatingPanelDragTriggerProps,
-  FloatingPanelHeaderProps,
-  FloatingPanelBodyProps as FloatingPanelPrimitiveBodyProps,
-  FloatingPanelContentProps as FloatingPanelPrimitiveContentProps,
-  FloatingPanelRootProps as FloatingPanelPrimitiveRootProps,
-  FloatingPanelResizeTriggerProps,
-  FloatingPanelStageTriggerProps,
-  FloatingPanelTitleProps,
-  FloatingPanelTriggerProps,
-} from "@ark-ui/react/floating-panel";
-import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/react/floating-panel";
-import { Portal } from "@ark-ui/react/portal";
+import {
+  FloatingPanel as FloatingPanelPrimitive,
+  type FloatingPanelBodyProps as FloatingPanelPrimitiveBodyProps,
+  type FloatingPanelCloseTriggerProps,
+  type FloatingPanelContentProps as FloatingPanelPrimitiveContentProps,
+  type FloatingPanelControlProps,
+  type FloatingPanelDragTriggerProps,
+  type FloatingPanelHeaderProps,
+  type FloatingPanelResizeTriggerProps,
+  type FloatingPanelRootProps as FloatingPanelPrimitiveRootProps,
+  type FloatingPanelStageTriggerProps,
+  type FloatingPanelTitleProps,
+  type FloatingPanelTriggerProps,
+  Portal,
+  ark,
+} from "@ark-ui/react";
 import { ArrowsOutIcon, CornersInIcon, MinusIcon } from "@phosphor-icons/react";
 import type { FloatingPanelProps as BaseFloatingPanelRootProps } from "@pisagor/props";
 import { floatingPanelRecipe } from "@pisagor/recipes";
@@ -328,7 +328,7 @@ export type {
   FloatingPanelStageTriggerProps,
   FloatingPanelTitleProps,
   FloatingPanelTriggerProps,
-} from "@ark-ui/react/floating-panel";
+} from "@ark-ui/react";
 
 export const FloatingPanel = Object.assign(FloatingPanelRoot, {
   Body: FloatingPanelBody,

@@ -1,12 +1,12 @@
 <script lang="ts">
   import {
+    Toast as ToastPrimitive,
     type ToastActionTriggerProps,
     type ToastCloseTriggerProps,
     type ToastDescriptionProps,
     type ToastOptions,
-    Toast as ToastPrimitive,
     type ToastTitleProps,
-  } from "@ark-ui/svelte/toast";
+  } from "@ark-ui/svelte";
   import type { ToastItemRecipeSlot } from "@pisagor/recipes";
   import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
   import InfoIcon from "phosphor-svelte/lib/InfoIcon";

@@ -1,4 +1,4 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import type { PhoneInputProps as BasePhoneInputProps } from "@pisagor/props";
 import {
   type PhoneInputRecipeSlot,

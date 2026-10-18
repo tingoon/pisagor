@@ -1,10 +1,10 @@
-import type {
-  AccordionItemContentProps,
-  AccordionItemTriggerProps,
-  AccordionItemProps as AccordionPrimitiveItemProps,
-  AccordionRootProps,
-} from "@ark-ui/react/accordion";
-import { Accordion as AccordionPrimitive } from "@ark-ui/react/accordion";
+import {
+  Accordion as AccordionPrimitive,
+  type AccordionItemContentProps,
+  type AccordionItemProps as AccordionPrimitiveItemProps,
+  type AccordionItemTriggerProps,
+  type AccordionRootProps,
+} from "@ark-ui/react";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
 import { accordionItemRecipe } from "@pisagor/recipes";
@@ -130,7 +130,7 @@ export type {
   AccordionItemContentProps,
   AccordionItemTriggerProps,
   AccordionRootProps,
-} from "@ark-ui/react/accordion";
+} from "@ark-ui/react";
 
 export const Accordion = Object.assign(AccordionShorthand, {
   Item: AccordionItem,

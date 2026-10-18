@@ -1,11 +1,11 @@
-import { Portal } from "@ark-ui/react";
-import type {
-  HoverCardArrowProps,
-  HoverCardContentProps as HoverCardPrimitiveContentProps,
-  HoverCardRootProps as HoverCardPrimitiveRootProps,
-  HoverCardTriggerProps,
-} from "@ark-ui/react/hover-card";
-import { HoverCard as HoverCardPrimitive } from "@ark-ui/react/hover-card";
+import {
+  HoverCard as HoverCardPrimitive,
+  type HoverCardArrowProps,
+  type HoverCardContentProps as HoverCardPrimitiveContentProps,
+  type HoverCardRootProps as HoverCardPrimitiveRootProps,
+  type HoverCardTriggerProps,
+  Portal,
+} from "@ark-ui/react";
 import type { HoverCardProps as BaseHoverCardRootProps } from "@pisagor/props";
 import { hoverCardRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
@@ -112,10 +112,7 @@ HoverCardContent.displayName = "HoverCard.Content";
 
 // #endregion
 
-export type {
-  HoverCardArrowProps,
-  HoverCardTriggerProps,
-} from "@ark-ui/react/hover-card";
+export type { HoverCardArrowProps, HoverCardTriggerProps } from "@ark-ui/react";
 
 export const HoverCard = Object.assign(HoverCardRoot, {
   Arrow: HoverCardArrow,

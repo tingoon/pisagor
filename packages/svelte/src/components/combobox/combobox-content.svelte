@@ -1,9 +1,9 @@
 <script lang="ts">
   import {
-    type ComboboxContentProps as ArkContentProps,
     Combobox as ComboboxPrimitive,
-  } from "@ark-ui/svelte/combobox";
-  import { Portal } from "@ark-ui/svelte/portal";
+    type ComboboxContentProps as ArkContentProps,
+    Portal,
+  } from "@ark-ui/svelte";
   import { comboboxRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { useComboboxRoot } from "./combobox.context";

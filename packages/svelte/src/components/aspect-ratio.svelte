@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
   import { aspectRatioRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

@@ -1,8 +1,8 @@
 import {
-  createToaster,
-  Toaster as ToasterPrimitive,
   Toast as ToastPrimitive,
-} from "@ark-ui/vue/toast";
+  Toaster as ToasterPrimitive,
+  createToaster,
+} from "@ark-ui/vue";
 import {
   PhCheckCircle,
   PhInfo,

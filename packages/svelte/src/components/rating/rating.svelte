@@ -1,10 +1,10 @@
 <script lang="ts">
   import {
+    RatingGroup as RatingGroupPrimitive,
     type RatingGroupControlProps,
     type RatingGroupItemProps,
-    RatingGroup as RatingGroupPrimitive,
     type RatingGroupRootProps,
-  } from "@ark-ui/svelte/rating-group";
+  } from "@ark-ui/svelte";
   import type { RatingProps as BaseRatingProps } from "@pisagor/props";
   import type { RatingRecipeSlot } from "@pisagor/recipes";
   import StarIcon from "phosphor-svelte/lib/StarIcon";

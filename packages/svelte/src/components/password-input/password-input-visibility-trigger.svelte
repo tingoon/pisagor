@@ -2,7 +2,7 @@
   import {
     PasswordInput as PasswordInputPrimitive,
     type PasswordInputVisibilityTriggerProps,
-  } from "@ark-ui/svelte/password-input";
+  } from "@ark-ui/svelte";
   import { inputGroupButtonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import EyeIcon from "phosphor-svelte/lib/EyeIcon";

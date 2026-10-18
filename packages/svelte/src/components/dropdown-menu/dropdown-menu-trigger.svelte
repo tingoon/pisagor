@@ -1,8 +1,5 @@
 <script lang="ts">
-  import {
-    Menu as MenuPrimitive,
-    type MenuTriggerProps,
-  } from "@ark-ui/svelte/menu";
+  import { Menu as MenuPrimitive, type MenuTriggerProps } from "@ark-ui/svelte";
 
   let { children, ...rest }: MenuTriggerProps = $props();
 </script>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { useHotkey } from "@ark-ui/svelte/hotkeys";
+  import { useHotkey } from "@ark-ui/svelte";
   import type { AppShellProps as BaseAppShellProps } from "@pisagor/props";
   import { appShellRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

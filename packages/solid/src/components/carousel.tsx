@@ -1,17 +1,15 @@
-import type {
-  CarouselControlProps,
-  CarouselIndicatorGroupProps,
-  CarouselIndicatorProps,
-  CarouselItemGroupProps,
-  CarouselItemProps,
-  CarouselNextTriggerProps,
-  CarouselPrevTriggerProps,
-  CarouselRootProps as CarouselPrimitiveRootProps,
-} from "@ark-ui/solid/carousel";
 import {
   Carousel as CarouselPrimitive,
+  type CarouselControlProps,
+  type CarouselIndicatorGroupProps,
+  type CarouselIndicatorProps,
+  type CarouselItemGroupProps,
+  type CarouselItemProps,
+  type CarouselNextTriggerProps,
+  type CarouselPrevTriggerProps,
+  type CarouselRootProps as CarouselPrimitiveRootProps,
   useCarouselContext,
-} from "@ark-ui/solid/carousel";
+} from "@ark-ui/solid";
 import type { CarouselProps as BaseCarouselRootProps } from "@pisagor/props";
 import { carouselRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
@@ -220,7 +218,7 @@ export type {
   CarouselItemProps,
   CarouselNextTriggerProps,
   CarouselPrevTriggerProps,
-} from "@ark-ui/solid/carousel";
+} from "@ark-ui/solid";
 
 export const Carousel = Object.assign(CarouselShorthand, {
   AutoplayTrigger: CarouselAutoplayTrigger,

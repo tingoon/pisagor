@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import { PhArrowDown, PhArrowUp, PhMinus } from "@phosphor-icons/vue";
 import type {
   StatProps as BaseStatProps,

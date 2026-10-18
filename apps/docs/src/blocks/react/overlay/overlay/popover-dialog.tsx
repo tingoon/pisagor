@@ -1,4 +1,4 @@
-import { Portal } from "@ark-ui/react/portal";
+import { Portal } from "@ark-ui/react";
 import { Button, Dialog, Popover } from "@pisagor/react";
 
 export function PopoverDialog() {

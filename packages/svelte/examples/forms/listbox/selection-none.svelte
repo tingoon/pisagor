@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { createListCollection } from "@ark-ui/svelte";
   import { Item, Listbox, Separator } from "@pisagor/svelte";
   import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";
   import PlusSquareIcon from "phosphor-svelte/lib/PlusSquareIcon";

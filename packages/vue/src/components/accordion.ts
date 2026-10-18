@@ -1,7 +1,7 @@
 import {
   Accordion as AccordionPrimitive,
   type AccordionItemProps as AccordionPrimitiveItemProps,
-} from "@ark-ui/vue/accordion";
+} from "@ark-ui/vue";
 import { PhCaretDown } from "@phosphor-icons/vue";
 import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
 import { accordionItemRecipe } from "@pisagor/recipes";
@@ -182,7 +182,7 @@ export type {
   AccordionItemContentProps,
   AccordionItemTriggerProps,
   AccordionRootProps,
-} from "@ark-ui/vue/accordion";
+} from "@ark-ui/vue";
 
 export type AccordionItemProps = LocalAccordionItemProps;
 

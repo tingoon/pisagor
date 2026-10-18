@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type CollapsibleContentProps,
     Collapsible as CollapsiblePrimitive,
-  } from "@ark-ui/svelte/collapsible";
+    type CollapsibleContentProps,
+  } from "@ark-ui/svelte";
   import { useCollapsible } from "./collapsible.context";
 
   let {

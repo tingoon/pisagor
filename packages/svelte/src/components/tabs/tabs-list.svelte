@@ -2,7 +2,7 @@
   import {
     type TabListProps as ArkTabsListProps,
     Tabs as TabsPrimitive,
-  } from "@ark-ui/svelte/tabs";
+  } from "@ark-ui/svelte";
   import type { TabsProps as BaseTabsProps } from "@pisagor/props";
   import { cn } from "@pisagor/utils";
   import { useTabs } from "./tabs.context";

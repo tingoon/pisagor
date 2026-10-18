@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type SignaturePadClearTriggerProps,
     SignaturePad as SignaturePadPrimitive,
-  } from "@ark-ui/svelte/signature-pad";
+    type SignaturePadClearTriggerProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import ArrowCounterClockwiseIcon from "phosphor-svelte/lib/ArrowCounterClockwiseIcon";
   import Button from "../button.svelte";

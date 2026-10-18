@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import UploadIcon from "phosphor-svelte/lib/UploadIcon";
   import type { HTMLAttributes } from "svelte/elements";
   import { withFileUploadContext } from "./file-upload.context";

@@ -27,6 +27,12 @@ ignorePatterns = [
 
 [lint.rules]
 "import/no-cycle" = "error"
+"no-restricted-imports" = [
+  "error",
+  { patterns = [
+    { group = ["@ark-ui/*/*"], message = "Import Ark UI from the framework barrel (@ark-ui/react, @ark-ui/vue, @ark-ui/solid, @ark-ui/svelte), never subpaths." },
+  ] },
+]
 
 [[lint.overrides]]
 files = ["**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}"]

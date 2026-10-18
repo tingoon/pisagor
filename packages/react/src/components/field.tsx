@@ -1,16 +1,14 @@
-import { ark } from "@ark-ui/react/factory";
-import type {
-  FieldErrorTextProps,
-  FieldHelperTextProps,
-  FieldLabelProps,
-  FieldRootProps as FieldPrimitiveRootProps,
-} from "@ark-ui/react/field";
-import { Field as FieldPrimitive } from "@ark-ui/react/field";
 import {
-  type FieldsetLegendProps,
+  Field as FieldPrimitive,
+  type FieldErrorTextProps,
+  type FieldHelperTextProps,
+  type FieldLabelProps,
+  type FieldRootProps as FieldPrimitiveRootProps,
   Fieldset as FieldsetPrimitive,
+  type FieldsetLegendProps,
   type FieldsetRootProps,
-} from "@ark-ui/react/fieldset";
+  ark,
+} from "@ark-ui/react";
 import type {
   FieldProps as BaseFieldGroupProps,
   FieldProps as BaseFieldRootProps,
@@ -268,7 +266,7 @@ FieldError.displayName = "Field.Error";
 
 // #endregion
 
-export type { FieldLabelProps } from "@ark-ui/react/field";
+export type { FieldLabelProps } from "@ark-ui/react";
 
 export const Field = Object.assign(FieldRoot, {
   Content: FieldContent,

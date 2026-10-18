@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type ComboboxClearTriggerProps,
     Combobox as ComboboxPrimitive,
-  } from "@ark-ui/svelte/combobox";
+    type ComboboxClearTriggerProps,
+  } from "@ark-ui/svelte";
   import { useMessageResolver } from "../provider/context";
 
   const t = useMessageResolver();

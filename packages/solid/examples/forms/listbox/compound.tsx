@@ -1,4 +1,4 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import { Listbox } from "@pisagor/solid";
 export function Compound() {
   const collection = createListCollection({

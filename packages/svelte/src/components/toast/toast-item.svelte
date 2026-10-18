@@ -6,7 +6,7 @@
     ToastOptions,
     ToastRootProps,
     ToastTitleProps,
-  } from "@ark-ui/svelte/toast";
+  } from "@ark-ui/svelte";
   import type { ToastItemProps as BaseToastItemProps } from "@pisagor/props";
   import type { ToastItemRecipeSlot } from "@pisagor/recipes";
   import type { HTMLAttributes } from "svelte/elements";

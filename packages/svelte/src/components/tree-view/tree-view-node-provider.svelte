@@ -1,8 +1,8 @@
 <script generics="T = unknown" lang="ts">
   import {
-    type TreeViewNodeProviderProps,
     TreeView as TreeViewPrimitive,
-  } from "@ark-ui/svelte/tree-view";
+    type TreeViewNodeProviderProps,
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: TreeViewNodeProviderProps<T> = $props();
 </script>

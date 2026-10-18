@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { Portal } from "@ark-ui/svelte/portal";
   import {
-    type SelectContentProps,
+    Portal,
     Select as SelectPrimitive,
-  } from "@ark-ui/svelte/select";
+    type SelectContentProps,
+  } from "@ark-ui/svelte";
   import { selectRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { useSelectRoot } from "./select.context";

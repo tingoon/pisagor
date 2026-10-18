@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type MenuCheckboxItemProps,
     Menu as MenuPrimitive,
-  } from "@ark-ui/svelte/menu";
+    type MenuCheckboxItemProps,
+  } from "@ark-ui/svelte";
   import type { DropdownMenuItemProps as BaseDropdownMenuItemProps } from "@pisagor/props";
   import { dropdownMenuItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

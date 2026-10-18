@@ -1,4 +1,4 @@
-import type { CollectionItem } from "@ark-ui/react/collection";
+import type { CollectionItem } from "@ark-ui/react";
 import type {
   ComboboxClearTriggerProps,
   ComboboxContentProps,

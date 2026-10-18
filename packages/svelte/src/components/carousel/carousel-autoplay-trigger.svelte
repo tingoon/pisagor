@@ -1,9 +1,9 @@
 <script lang="ts">
   import {
-    type CarouselAutoplayTriggerProps,
     Carousel as CarouselPrimitive,
+    type CarouselAutoplayTriggerProps,
     useCarouselContext,
-  } from "@ark-ui/svelte/carousel";
+  } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import PauseIcon from "phosphor-svelte/lib/PauseIcon";

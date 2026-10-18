@@ -1,17 +1,17 @@
-import { ark } from "@ark-ui/solid/factory";
-import type {
-  StepsCompletedContentProps,
-  StepsContentProps,
-  StepsIndicatorProps,
-  StepsListProps,
-  StepsNextTriggerProps,
-  StepsPrevTriggerProps,
-  StepsItemProps as StepsPrimitiveItemProps,
-  StepsRootProps as StepsPrimitiveRootProps,
-  StepsSeparatorProps,
-  StepsTriggerProps,
-} from "@ark-ui/solid/steps";
-import { Steps as StepsPrimitive } from "@ark-ui/solid/steps";
+import {
+  Steps as StepsPrimitive,
+  type StepsCompletedContentProps,
+  type StepsContentProps,
+  type StepsIndicatorProps,
+  type StepsItemProps as StepsPrimitiveItemProps,
+  type StepsListProps,
+  type StepsNextTriggerProps,
+  type StepsPrevTriggerProps,
+  type StepsRootProps as StepsPrimitiveRootProps,
+  type StepsSeparatorProps,
+  type StepsTriggerProps,
+  ark,
+} from "@ark-ui/solid";
 import type {
   StepsItemProps as BaseStepsItemProps,
   StepsProps as BaseStepsRootProps,
@@ -119,7 +119,7 @@ export type {
   StepsRootProps,
   StepsSeparatorProps,
   StepsTriggerProps,
-} from "@ark-ui/solid/steps";
+} from "@ark-ui/solid";
 
 export const Steps = Object.assign(StepsRoot, {
   CompletedContent: StepsCompletedContent,

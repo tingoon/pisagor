@@ -1,8 +1,8 @@
-import type {
-  SegmentGroupItemProps as SegmentGroupPrimitiveItemProps,
-  SegmentGroupRootProps as SegmentGroupPrimitiveRootProps,
-} from "@ark-ui/react/segment-group";
-import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/react/segment-group";
+import {
+  SegmentGroup as SegmentGroupPrimitive,
+  type SegmentGroupItemProps as SegmentGroupPrimitiveItemProps,
+  type SegmentGroupRootProps as SegmentGroupPrimitiveRootProps,
+} from "@ark-ui/react";
 import type { SegmentGroupProps as BaseSegmentGroupRootProps } from "@pisagor/props";
 import { segmentGroupRecipe } from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode } from "react";
@@ -147,7 +147,7 @@ SegmentGroupShorthand.displayName = "SegmentGroup";
 export type {
   SegmentGroupIndicatorProps,
   SegmentGroupItemTextProps,
-} from "@ark-ui/react/segment-group";
+} from "@ark-ui/react";
 
 export const SegmentGroup = Object.assign(SegmentGroupShorthand, {
   Indicator: SegmentGroupIndicator,

@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark } from "@ark-ui/solid";
 import type { AnnouncementProps as BaseAnnouncementRootProps } from "@pisagor/props";
 import { announcementRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";

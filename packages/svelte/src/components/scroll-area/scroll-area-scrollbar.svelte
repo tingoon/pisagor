@@ -2,7 +2,7 @@
   import {
     ScrollArea as ScrollAreaPrimitive,
     type ScrollAreaScrollbarProps,
-  } from "@ark-ui/svelte/scroll-area";
+  } from "@ark-ui/svelte";
   import { withContext } from "./scroll-area.context";
 
   let { children, ...rest }: ScrollAreaScrollbarProps = $props();

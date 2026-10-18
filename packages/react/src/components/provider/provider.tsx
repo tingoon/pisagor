@@ -1,7 +1,7 @@
 import {
   LocaleProvider as ArkLocaleProvider,
   useLocaleContext,
-} from "@ark-ui/react/locale";
+} from "@ark-ui/react";
 import { IconContext } from "@phosphor-icons/react";
 import {
   defaultLocale,

@@ -1,8 +1,8 @@
 import {
-  type FileUploadFileChangeDetails,
   FileUpload as FileUploadPrimitive,
+  type FileUploadFileChangeDetails,
   useFileUploadContext,
-} from "@ark-ui/vue/file-upload";
+} from "@ark-ui/vue";
 import { PhUpload, PhX } from "@phosphor-icons/vue";
 import type {
   FileUploadItemProps as BaseFileUploadItemProps,

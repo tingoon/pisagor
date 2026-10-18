@@ -1,7 +1,7 @@
 import {
   Highlight as HighlightPrimitive,
   type HighlightProps as HighlightPrimitiveProps,
-} from "@ark-ui/react/highlight";
+} from "@ark-ui/react";
 import type { HighlightProps as BaseHighlightProps } from "@pisagor/props";
 import { highlightRecipe } from "@pisagor/recipes";
 

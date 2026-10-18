@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type SliderMarkerProps,
     Slider as SliderPrimitive,
-  } from "@ark-ui/svelte/slider";
+    type SliderMarkerProps,
+  } from "@ark-ui/svelte";
   import { withContext } from "./slider.context";
 
   let { children, ...rest }: SliderMarkerProps = $props();

@@ -1,19 +1,17 @@
 import {
   type CollectionItem,
+  Listbox as ListboxPrimitive,
+  type ListboxContentProps,
+  type ListboxEmptyProps,
+  type ListboxItemGroupLabelProps,
+  type ListboxItemGroupProps as ListboxPrimitiveItemGroupProps,
+  type ListboxItemIndicatorProps,
+  type ListboxItemProps as ListboxPrimitiveItemProps,
+  type ListboxItemTextProps,
+  type ListboxRootProps as ListboxPrimitiveRootProps,
+  type ListboxValueTextProps,
   createListCollection,
-} from "@ark-ui/solid/collection";
-import type {
-  ListboxContentProps,
-  ListboxEmptyProps,
-  ListboxItemGroupLabelProps,
-  ListboxItemIndicatorProps,
-  ListboxItemTextProps,
-  ListboxItemGroupProps as ListboxPrimitiveItemGroupProps,
-  ListboxItemProps as ListboxPrimitiveItemProps,
-  ListboxRootProps as ListboxPrimitiveRootProps,
-  ListboxValueTextProps,
-} from "@ark-ui/solid/listbox";
-import { Listbox as ListboxPrimitive } from "@ark-ui/solid/listbox";
+} from "@ark-ui/solid";
 import type {
   ListboxItemProps as BaseListboxItemProps,
   ListboxProps as BaseListboxRootProps,
@@ -253,15 +251,15 @@ export function ListboxShorthand(props: ListboxProps): JSX.Element {
   );
 }
 
-export { createListCollection } from "@ark-ui/solid/collection";
-export type {
-  ListboxContentProps,
-  ListboxEmptyProps,
-  ListboxItemGroupLabelProps,
-  ListboxItemIndicatorProps,
-  ListboxItemTextProps,
-  ListboxValueTextProps,
-} from "@ark-ui/solid/listbox";
+export {
+  type ListboxContentProps,
+  type ListboxEmptyProps,
+  type ListboxItemGroupLabelProps,
+  type ListboxItemIndicatorProps,
+  type ListboxItemTextProps,
+  type ListboxValueTextProps,
+  createListCollection,
+} from "@ark-ui/solid";
 
 export const Listbox = Object.assign(ListboxShorthand, {
   Content: ListboxContent,

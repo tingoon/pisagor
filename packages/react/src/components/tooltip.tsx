@@ -1,13 +1,13 @@
-import { Portal } from "@ark-ui/react/portal";
-import type {
-  TooltipArrowProps,
-  TooltipContentProps,
-  TooltipContextProps,
-  TooltipPositionerProps,
-  TooltipRootProps as TooltipPrimitiveRootProps,
-  TooltipTriggerProps,
-} from "@ark-ui/react/tooltip";
-import { Tooltip as TooltipPrimitive } from "@ark-ui/react/tooltip";
+import {
+  Portal,
+  Tooltip as TooltipPrimitive,
+  type TooltipArrowProps,
+  type TooltipContentProps,
+  type TooltipContextProps,
+  type TooltipPositionerProps,
+  type TooltipRootProps as TooltipPrimitiveRootProps,
+  type TooltipTriggerProps,
+} from "@ark-ui/react";
 import type { TooltipProps as BaseTooltipRootProps } from "@pisagor/props";
 import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -186,7 +186,7 @@ export type {
   TooltipContentProps,
   TooltipPositionerProps,
   TooltipTriggerProps,
-} from "@ark-ui/react/tooltip";
+} from "@ark-ui/react";
 
 export const Tooltip = Object.assign(TooltipShorthand, {
   Arrow: TooltipArrow,

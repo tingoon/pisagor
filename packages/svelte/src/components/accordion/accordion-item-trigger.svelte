@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type AccordionItemTriggerProps,
     Accordion as AccordionPrimitive,
-  } from "@ark-ui/svelte/accordion";
+    type AccordionItemTriggerProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
   import { useAccordionItem } from "./accordion.context";

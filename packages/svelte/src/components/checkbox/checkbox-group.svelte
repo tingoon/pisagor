@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type CheckboxGroupProps as ArkCheckboxGroupProps,
     Checkbox as CheckboxPrimitive,
-  } from "@ark-ui/svelte/checkbox";
+    type CheckboxGroupProps as ArkCheckboxGroupProps,
+  } from "@ark-ui/svelte";
   import type { CheckboxGroupProps as BaseCheckboxGroupProps } from "@pisagor/props";
   import { checkboxGroupRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

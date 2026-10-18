@@ -1,5 +1,4 @@
-import { useListCollection } from "@ark-ui/react/collection";
-import { useFilter } from "@ark-ui/react/locale";
+import { useFilter, useListCollection } from "@ark-ui/react";
 import { Input, Item, Listbox } from "@pisagor/react";
 import { useState } from "react";
 export function WithFilter() {

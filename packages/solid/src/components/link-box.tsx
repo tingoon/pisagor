@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark } from "@ark-ui/solid";
 import type { LinkBoxProps as BaseLinkBoxRootProps } from "@pisagor/props";
 import { linkBoxRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps } from "solid-js";

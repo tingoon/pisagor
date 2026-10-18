@@ -1,10 +1,10 @@
-import type {
-  RadioGroupItemTextProps,
-  RadioGroupLabelProps,
-  RadioGroupItemProps as RadioGroupPrimitiveItemProps,
-  RadioGroupRootProps as RadioGroupPrimitiveRootProps,
-} from "@ark-ui/react/radio-group";
-import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/react/radio-group";
+import {
+  RadioGroup as RadioGroupPrimitive,
+  type RadioGroupItemProps as RadioGroupPrimitiveItemProps,
+  type RadioGroupItemTextProps,
+  type RadioGroupLabelProps,
+  type RadioGroupRootProps as RadioGroupPrimitiveRootProps,
+} from "@ark-ui/react";
 import type {
   RadioGroupItemProps as BaseRadioGroupItemProps,
   RadioGroupProps as BaseRadioGroupRootProps,
@@ -161,7 +161,7 @@ RadioGroupShorthand.displayName = "RadioGroup";
 export type {
   RadioGroupItemTextProps,
   RadioGroupLabelProps,
-} from "@ark-ui/react/radio-group";
+} from "@ark-ui/react";
 
 export const RadioGroup = Object.assign(RadioGroupShorthand, {
   Item: RadioGroupItem,

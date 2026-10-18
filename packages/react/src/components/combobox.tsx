@@ -1,26 +1,22 @@
 import {
   type CollectionItem,
-  createListCollection,
-} from "@ark-ui/react/collection";
-import type {
-  ComboboxClearTriggerProps,
-  ComboboxControlProps,
-  ComboboxEmptyProps,
-  ComboboxItemGroupLabelProps,
-  ComboboxListProps,
-  ComboboxPositionerProps,
-  ComboboxContentProps as ComboboxPrimitiveContentProps,
-  ComboboxInputProps as ComboboxPrimitiveInputProps,
-  ComboboxItemGroupProps as ComboboxPrimitiveItemGroupProps,
-  ComboboxItemProps as ComboboxPrimitiveItemProps,
-  ComboboxRootProps as ComboboxPrimitiveRootProps,
-  ComboboxTriggerProps,
-} from "@ark-ui/react/combobox";
-import {
   Combobox as ComboboxPrimitive,
+  type ComboboxClearTriggerProps,
+  type ComboboxContentProps as ComboboxPrimitiveContentProps,
+  type ComboboxControlProps,
+  type ComboboxEmptyProps,
+  type ComboboxInputProps as ComboboxPrimitiveInputProps,
+  type ComboboxItemGroupLabelProps,
+  type ComboboxItemGroupProps as ComboboxPrimitiveItemGroupProps,
+  type ComboboxItemProps as ComboboxPrimitiveItemProps,
+  type ComboboxListProps,
+  type ComboboxPositionerProps,
+  type ComboboxRootProps as ComboboxPrimitiveRootProps,
+  type ComboboxTriggerProps,
+  Portal,
+  createListCollection,
   useComboboxContext,
-} from "@ark-ui/react/combobox";
-import { Portal } from "@ark-ui/react/portal";
+} from "@ark-ui/react";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
 import type { ComboboxProps as BaseComboboxRootProps } from "@pisagor/props";
 import {
@@ -445,7 +441,7 @@ export type {
   ComboboxListProps,
   ComboboxPositionerProps,
   ComboboxTriggerProps,
-} from "@ark-ui/react/combobox";
+} from "@ark-ui/react";
 
 export const Combobox = Object.assign(ComboboxShorthand, {
   ClearTrigger: ComboboxClearTrigger,

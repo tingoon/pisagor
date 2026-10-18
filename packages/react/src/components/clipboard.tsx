@@ -1,5 +1,7 @@
-import type { ClipboardRootProps } from "@ark-ui/react/clipboard";
-import { Clipboard as ClipboardPrimitive } from "@ark-ui/react/clipboard";
+import {
+  Clipboard as ClipboardPrimitive,
+  type ClipboardRootProps,
+} from "@ark-ui/react";
 import { CheckIcon, ClipboardIcon } from "@phosphor-icons/react";
 import type { ClipboardProps as BaseClipboardProps } from "@pisagor/props";
 import {

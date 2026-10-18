@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type { VisuallyHiddenProps as BaseVisuallyHiddenProps } from "@pisagor/props";
 import { visuallyHiddenRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";

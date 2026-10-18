@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type QrCodeFrameProps,
     QrCode as QrCodePrimitive,
-  } from "@ark-ui/svelte/qr-code";
+    type QrCodeFrameProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useQrCode } from "./qr-code.context";
 

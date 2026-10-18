@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type TreeViewNodeCheckboxProps,
     TreeView as TreeViewPrimitive,
-  } from "@ark-ui/svelte/tree-view";
+    type TreeViewNodeCheckboxProps,
+  } from "@ark-ui/svelte";
   import {
     formControlToggleRecipe,
     treeViewItemRecipe,

@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark } from "@ark-ui/react";
 import type { AnnouncementProps as BaseAnnouncementRootProps } from "@pisagor/props";
 import { announcementRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";

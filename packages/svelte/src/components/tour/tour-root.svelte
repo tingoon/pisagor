@@ -1,10 +1,11 @@
 <script lang="ts">
-  import type {
-    TourRootProps as ArkRootProps,
-    TourStepDetails,
-    UseTourProps,
-  } from "@ark-ui/svelte/tour";
-  import { Tour as TourPrimitive, useTour } from "@ark-ui/svelte/tour";
+  import {
+    Tour as TourPrimitive,
+    type TourRootProps as ArkRootProps,
+    type TourStepDetails,
+    type UseTourProps,
+    useTour,
+  } from "@ark-ui/svelte";
   import type { TourProps as BaseTourProps } from "@pisagor/props";
   import { tourRecipe } from "@pisagor/recipes";
   import { onDestroy } from "svelte";

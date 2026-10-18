@@ -1,5 +1,4 @@
-import type { DialogRootProps } from "@ark-ui/react/dialog";
-import { Portal } from "@ark-ui/react/portal";
+import { type DialogRootProps, Portal } from "@ark-ui/react";
 import type { ReactNode } from "react";
 import { Button, type ButtonProps } from "./button";
 import type {

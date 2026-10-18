@@ -1,10 +1,10 @@
-import type {
-  SwitchControlProps,
-  SwitchHiddenInputProps,
-  SwitchRootProps as SwitchPrimitiveRootProps,
-  SwitchThumbProps,
-} from "@ark-ui/react/switch";
-import { Switch as SwitchPrimitive } from "@ark-ui/react/switch";
+import {
+  Switch as SwitchPrimitive,
+  type SwitchControlProps,
+  type SwitchHiddenInputProps,
+  type SwitchRootProps as SwitchPrimitiveRootProps,
+  type SwitchThumbProps,
+} from "@ark-ui/react";
 import type { SwitchProps as BaseSwitchRootProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
@@ -126,7 +126,7 @@ export type {
   SwitchControlProps,
   SwitchHiddenInputProps,
   SwitchThumbProps,
-} from "@ark-ui/react/switch";
+} from "@ark-ui/react";
 
 export const Switch = Object.assign(SwitchShorthand, {
   Control: SwitchControl,

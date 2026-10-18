@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type RadioGroupItemProps as ArkRadioGroupItemProps,
     RadioGroup as RadioGroupPrimitive,
-  } from "@ark-ui/svelte/radio-group";
+    type RadioGroupItemProps as ArkRadioGroupItemProps,
+  } from "@ark-ui/svelte";
   import type { RadioGroupItemProps as BaseRadioGroupItemProps } from "@pisagor/props";
   import {
     formControlRadioToggleRecipe,

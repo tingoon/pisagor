@@ -1,11 +1,11 @@
 import {
+  Checkbox as CheckboxPrimitive,
   type CheckboxControlProps,
+  type CheckboxGroupProps as CheckboxPrimitiveGroupProps,
   type CheckboxIndicatorProps,
   type CheckboxLabelProps,
-  Checkbox as CheckboxPrimitive,
-  type CheckboxGroupProps as CheckboxPrimitiveGroupProps,
   type CheckboxRootProps,
-} from "@ark-ui/solid/checkbox";
+} from "@ark-ui/solid";
 import type {
   CheckboxGroupProps as BaseCheckboxGroupProps,
   CheckboxProps as BaseCheckboxProps,
@@ -221,10 +221,7 @@ export function CheckboxLabel(
   );
 }
 
-export type {
-  CheckboxCheckedState,
-  CheckboxRootProps,
-} from "@ark-ui/solid/checkbox";
+export type { CheckboxCheckedState, CheckboxRootProps } from "@ark-ui/solid";
 
 export const Checkbox = Object.assign(CheckboxRoot, {
   Control: CheckboxControl,

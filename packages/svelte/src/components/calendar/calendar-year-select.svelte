@@ -2,7 +2,7 @@
   import {
     DatePicker as CalendarPrimitive,
     type DatePickerYearSelectProps,
-  } from "@ark-ui/svelte/date-picker";
+  } from "@ark-ui/svelte";
   import { formControlShellRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";

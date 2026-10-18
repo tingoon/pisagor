@@ -1,5 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
-import { Popover as PopoverPrimitive } from "@ark-ui/vue/popover";
+import { Popover as PopoverPrimitive, ark } from "@ark-ui/vue";
 import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
 import { popoverRecipe } from "@pisagor/recipes";
 import {

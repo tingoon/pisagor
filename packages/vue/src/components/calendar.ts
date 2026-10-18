@@ -1,8 +1,8 @@
 import {
-  parseDate as arkParseDate,
   DatePicker as DatePickerPrimitive,
   type UseDatePickerContext,
-} from "@ark-ui/vue/date-picker";
+  parseDate as arkParseDate,
+} from "@ark-ui/vue";
 import { PhCaretDown, PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
 import type { CalendarProps as BaseCalendarProps } from "@pisagor/props";
 import {

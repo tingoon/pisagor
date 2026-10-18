@@ -1,21 +1,19 @@
-import { ark } from "@ark-ui/solid/factory";
-import type {
-  TourActionTriggerProps,
-  TourCloseTriggerProps,
-  TourDescriptionProps,
-  TourPositionerProps,
-  TourContentProps as TourPrimitiveContentProps,
-  TourRootProps as TourPrimitiveRootProps,
-  TourProgressTextProps,
-  TourSpotlightProps,
-  TourStepDetails,
-  TourTitleProps,
-} from "@ark-ui/solid/tour";
 import {
   Tour as TourPrimitive,
+  type TourActionTriggerProps,
+  type TourCloseTriggerProps,
+  type TourContentProps as TourPrimitiveContentProps,
+  type TourDescriptionProps,
+  type TourPositionerProps,
+  type TourProgressTextProps,
+  type TourRootProps as TourPrimitiveRootProps,
+  type TourSpotlightProps,
+  type TourStepDetails,
+  type TourTitleProps,
   type UseTourReturn,
+  ark,
   useTour,
-} from "@ark-ui/solid/tour";
+} from "@ark-ui/solid";
 import type { TourProps as BaseTourProps } from "@pisagor/props";
 import { dialogRecipe, tourRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -471,7 +469,7 @@ export type {
   TourProgressTextProps,
   TourSpotlightProps,
   TourTitleProps,
-} from "@ark-ui/solid/tour";
+} from "@ark-ui/solid";
 
 export const Tour = Object.assign(TourRoot, {
   Actions: TourActions,

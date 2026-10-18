@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Portal } from "@ark-ui/svelte/portal";
+  import { Portal } from "@ark-ui/svelte";
   import type { ComponentProps } from "svelte";
   import DialogBackdrop from "../dialog/dialog-backdrop.svelte";
   import DialogContent from "../dialog/dialog-content.svelte";

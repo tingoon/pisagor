@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
 import { buttonGroupRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";

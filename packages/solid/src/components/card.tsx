@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark } from "@ark-ui/solid";
 import type { CardProps as BaseCardRootProps } from "@pisagor/props";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";

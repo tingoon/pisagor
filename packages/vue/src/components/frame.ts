@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type { FrameProps as BaseFrameRootProps } from "@pisagor/props";
 import { frameRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";

@@ -1,18 +1,16 @@
 import {
   type CollectionItem,
+  Listbox as ListboxPrimitive,
+  type ListboxEmptyProps,
+  type ListboxItemGroupLabelProps,
+  type ListboxItemGroupProps as ListboxPrimitiveItemGroupProps,
+  type ListboxItemIndicatorProps,
+  type ListboxItemProps as ListboxPrimitiveItemProps,
+  type ListboxItemTextProps,
+  type ListboxRootProps as ListboxPrimitiveRootProps,
+  type ListboxValueTextProps,
   createListCollection,
-} from "@ark-ui/react/collection";
-import type {
-  ListboxEmptyProps,
-  ListboxItemGroupLabelProps,
-  ListboxItemIndicatorProps,
-  ListboxItemTextProps,
-  ListboxItemGroupProps as ListboxPrimitiveItemGroupProps,
-  ListboxItemProps as ListboxPrimitiveItemProps,
-  ListboxRootProps as ListboxPrimitiveRootProps,
-  ListboxValueTextProps,
-} from "@ark-ui/react/listbox";
-import { Listbox as ListboxPrimitive } from "@ark-ui/react/listbox";
+} from "@ark-ui/react";
 import { CheckIcon } from "@phosphor-icons/react";
 import type {
   ListboxItemProps as BaseListboxItemProps,
@@ -280,7 +278,7 @@ export type {
   ListboxItemIndicatorProps,
   ListboxItemTextProps,
   ListboxValueTextProps,
-} from "@ark-ui/react/listbox";
+} from "@ark-ui/react";
 export { createListCollection };
 
 export const Listbox = Object.assign(ListboxShorthand, {

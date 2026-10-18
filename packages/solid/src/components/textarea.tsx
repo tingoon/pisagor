@@ -1,7 +1,7 @@
 import {
   Field as FieldPrimitive,
   type FieldTextareaProps,
-} from "@ark-ui/solid/field";
+} from "@ark-ui/solid";
 import type { TextareaProps as BaseTextareaProps } from "@pisagor/props";
 import {
   formControlShellRecipe,

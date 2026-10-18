@@ -1,9 +1,9 @@
 import {
+  Avatar as AvatarPrimitive,
   type AvatarFallbackProps,
   type AvatarImageProps,
-  Avatar as AvatarPrimitive,
   type AvatarRootProps as AvatarPrimitiveRootProps,
-} from "@ark-ui/react/avatar";
+} from "@ark-ui/react";
 import type { AvatarProps as BaseAvatarRootProps } from "@pisagor/props";
 import { type AvatarRecipeSlot, avatarRecipe } from "@pisagor/recipes";
 import { getInitials } from "@pisagor/utils";

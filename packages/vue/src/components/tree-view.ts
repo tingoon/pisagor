@@ -1,9 +1,9 @@
-import { ark } from "@ark-ui/vue/factory";
 import {
-  createTreeCollection as arkCreateTreeCollection,
   type TreeCollection as arkTreeCollection,
   TreeView as TreeViewPrimitive,
-} from "@ark-ui/vue/tree-view";
+  ark,
+  createTreeCollection as arkCreateTreeCollection,
+} from "@ark-ui/vue";
 import {
   PhCaretRight,
   PhCheck,

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { SkipNavProps as BaseSkipNavProps } from "@pisagor/props";
   import { skipNavRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type PaginationEllipsisProps,
     Pagination as PaginationPrimitive,
-  } from "@ark-ui/svelte/pagination";
+    type PaginationEllipsisProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import DotsThreeIcon from "phosphor-svelte/lib/DotsThreeIcon";
   import { usePagination } from "./pagination.context";

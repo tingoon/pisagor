@@ -1,18 +1,16 @@
-import { Portal } from "@ark-ui/react/portal";
-import type {
-  CreateToasterReturn,
-  ToastActionTriggerProps,
-  ToastCloseTriggerProps,
-  ToastDescriptionProps,
-  ToasterProps as ToasterPrimitiveProps,
-  ToastRootProps,
-  ToastTitleProps,
-} from "@ark-ui/react/toast";
 import {
-  createToaster,
-  Toaster as ToasterPrimitive,
+  type CreateToasterReturn,
+  Portal,
   Toast as ToastPrimitive,
-} from "@ark-ui/react/toast";
+  type ToastActionTriggerProps,
+  type ToastCloseTriggerProps,
+  type ToastDescriptionProps,
+  type ToastRootProps,
+  type ToastTitleProps,
+  Toaster as ToasterPrimitive,
+  type ToasterProps as ToasterPrimitiveProps,
+  createToaster,
+} from "@ark-ui/react";
 import {
   CheckCircleIcon,
   InfoIcon,
@@ -257,7 +255,7 @@ export type {
   ToastCloseTriggerProps,
   ToastDescriptionProps,
   ToastTitleProps,
-} from "@ark-ui/react/toast";
+} from "@ark-ui/react";
 
 export const Toaster = Object.assign(ToasterRoot, {
   Item: ToastItem,

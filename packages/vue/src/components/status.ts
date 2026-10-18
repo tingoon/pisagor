@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type { StatusProps as BaseStatusProps } from "@pisagor/props";
 import { statusRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";

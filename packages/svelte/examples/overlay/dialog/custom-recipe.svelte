@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Portal } from "@ark-ui/svelte/portal";
+  import { Portal } from "@ark-ui/svelte";
   import { dialogRecipe } from "@pisagor/recipes";
   import { Button, Dialog, Field, Input, Select } from "@pisagor/svelte";
   import { tv } from "tailwind-variants";

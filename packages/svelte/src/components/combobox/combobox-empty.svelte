@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type ComboboxEmptyProps,
     Combobox as ComboboxPrimitive,
-  } from "@ark-ui/svelte/combobox";
+    type ComboboxEmptyProps,
+  } from "@ark-ui/svelte";
   import { comboboxRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { useComboboxRoot } from "./combobox.context";

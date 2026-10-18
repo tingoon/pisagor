@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type FloatingPanelCloseTriggerProps,
     FloatingPanel as FloatingPanelPrimitive,
-  } from "@ark-ui/svelte/floating-panel";
+    type FloatingPanelCloseTriggerProps,
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: FloatingPanelCloseTriggerProps = $props();
 </script>

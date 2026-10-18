@@ -1,8 +1,5 @@
 <script lang="ts">
-  import {
-    type TourControlProps,
-    Tour as TourPrimitive,
-  } from "@ark-ui/svelte/tour";
+  import { Tour as TourPrimitive, type TourControlProps } from "@ark-ui/svelte";
   import { dialogRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { setInsideControl } from "../../internal/inside-control";

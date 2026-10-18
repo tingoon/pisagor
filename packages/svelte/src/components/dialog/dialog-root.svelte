@@ -2,7 +2,7 @@
   import {
     Dialog as DialogPrimitive,
     type DialogRootProps,
-  } from "@ark-ui/svelte/dialog";
+  } from "@ark-ui/svelte";
   import type { DialogProps as BaseDialogProps } from "@pisagor/props";
   import { dialogRecipe } from "@pisagor/recipes";
   import { setDialogContext } from "./dialog.context";

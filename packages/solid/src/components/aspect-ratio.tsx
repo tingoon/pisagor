@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark } from "@ark-ui/solid";
 import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
 import { aspectRatioRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";

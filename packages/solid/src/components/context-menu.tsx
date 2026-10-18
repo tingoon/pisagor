@@ -1,7 +1,7 @@
 import {
-  type MenuContextTriggerProps,
   Menu as MenuPrimitive,
-} from "@ark-ui/solid/menu";
+  type MenuContextTriggerProps,
+} from "@ark-ui/solid";
 import type { ContextMenuProps as BaseContextMenuProps } from "@pisagor/props";
 import { contextMenuRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";

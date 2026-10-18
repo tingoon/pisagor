@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { FileProps as BaseFileProps } from "@pisagor/props";
   import { cn } from "@pisagor/utils";
   import FileIcon from "phosphor-svelte/lib/FileIcon";

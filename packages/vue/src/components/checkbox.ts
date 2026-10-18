@@ -1,4 +1,4 @@
-import { Checkbox as CheckboxPrimitive } from "@ark-ui/vue/checkbox";
+import { Checkbox as CheckboxPrimitive } from "@ark-ui/vue";
 import { PhCheck, PhMinus } from "@phosphor-icons/vue";
 import type {
   CheckboxGroupProps as BaseCheckboxGroupProps,

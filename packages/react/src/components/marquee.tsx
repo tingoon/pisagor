@@ -1,8 +1,8 @@
-import type {
-  MarqueeContentProps,
-  MarqueeRootProps as MarqueePrimitiveRootProps,
-} from "@ark-ui/react/marquee";
-import { Marquee as MarqueePrimitive } from "@ark-ui/react/marquee";
+import {
+  Marquee as MarqueePrimitive,
+  type MarqueeContentProps,
+  type MarqueeRootProps as MarqueePrimitiveRootProps,
+} from "@ark-ui/react";
 import type { MarqueeProps as BaseMarqueeRootProps } from "@pisagor/props";
 import { marqueeRecipe } from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode } from "react";
@@ -130,7 +130,7 @@ export type {
   MarqueeContentProps,
   MarqueeEdgeProps,
   MarqueeItemProps,
-} from "@ark-ui/react/marquee";
+} from "@ark-ui/react";
 
 export const Marquee = Object.assign(MarqueeShorthand, {
   Content: MarqueeContent,

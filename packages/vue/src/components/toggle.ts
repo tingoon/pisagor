@@ -1,4 +1,4 @@
-import { Toggle as TogglePrimitive } from "@ark-ui/vue/toggle";
+import { Toggle as TogglePrimitive } from "@ark-ui/vue";
 import type { ToggleProps as BaseToggleProps } from "@pisagor/props";
 import {
   type ButtonVariantProps,

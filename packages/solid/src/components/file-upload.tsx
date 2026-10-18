@@ -1,19 +1,17 @@
-import { ark } from "@ark-ui/solid/factory";
-import type {
-  FileUploadClearTriggerProps,
-  FileUploadItemGroupProps,
-  FileUploadItemNameProps,
-  FileUploadItemPreviewProps,
-  FileUploadItemProps,
-  FileUploadItemSizeTextProps,
-  FileUploadDropzoneProps as FileUploadPrimitiveDropzoneProps,
-  FileUploadRootProps as FileUploadPrimitiveRootProps,
-  FileUploadTriggerProps,
-} from "@ark-ui/solid/file-upload";
 import {
   FileUpload as FileUploadPrimitive,
+  type FileUploadClearTriggerProps,
+  type FileUploadDropzoneProps as FileUploadPrimitiveDropzoneProps,
+  type FileUploadItemGroupProps,
+  type FileUploadItemNameProps,
+  type FileUploadItemPreviewProps,
+  type FileUploadItemProps,
+  type FileUploadItemSizeTextProps,
+  type FileUploadRootProps as FileUploadPrimitiveRootProps,
+  type FileUploadTriggerProps,
+  ark,
   useFileUploadContext,
-} from "@ark-ui/solid/file-upload";
+} from "@ark-ui/solid";
 import type {
   FileUploadItemProps as BaseFileUploadItemRootProps,
   FileUploadProps as BaseFileUploadProps,
@@ -382,7 +380,7 @@ export type {
   FileUploadItemProps,
   FileUploadItemSizeTextProps,
   FileUploadTriggerProps,
-} from "@ark-ui/solid/file-upload";
+} from "@ark-ui/solid";
 
 export const FileUpload = Object.assign(FileUploadRoot, {
   ClearTrigger: FileUploadClearTrigger,

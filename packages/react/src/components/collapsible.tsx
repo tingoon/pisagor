@@ -1,9 +1,9 @@
-import type {
-  CollapsibleContentProps,
-  CollapsibleIndicatorProps,
-  CollapsibleRootProps as CollapsiblePrimitiveRootProps,
-} from "@ark-ui/react/collapsible";
-import { Collapsible as CollapsiblePrimitive } from "@ark-ui/react/collapsible";
+import {
+  Collapsible as CollapsiblePrimitive,
+  type CollapsibleContentProps,
+  type CollapsibleIndicatorProps,
+  type CollapsibleRootProps as CollapsiblePrimitiveRootProps,
+} from "@ark-ui/react";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import type { CollapsibleProps as BaseCollapsibleRootProps } from "@pisagor/props";
 import { collapsibleRecipe } from "@pisagor/recipes";
@@ -99,7 +99,7 @@ export type {
   CollapsibleContentProps,
   CollapsibleIndicatorProps,
   CollapsibleTriggerProps,
-} from "@ark-ui/react/collapsible";
+} from "@ark-ui/react";
 
 export const Collapsible = Object.assign(CollapsibleRoot, {
   Content: CollapsibleContent,

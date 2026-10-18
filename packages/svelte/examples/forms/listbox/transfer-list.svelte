@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { createListCollection } from "@ark-ui/svelte";
   import { Button, Item, Listbox } from "@pisagor/svelte";
   import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
   import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";

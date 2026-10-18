@@ -1,9 +1,9 @@
 <script lang="ts">
   import {
-    type DialogContentProps,
     Dialog as DialogPrimitive,
-  } from "@ark-ui/svelte/dialog";
-  import { Portal } from "@ark-ui/svelte/portal";
+    type DialogContentProps,
+    Portal,
+  } from "@ark-ui/svelte";
   import type { SheetProps as BaseSheetProps } from "@pisagor/props";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

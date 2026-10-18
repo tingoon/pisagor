@@ -1,12 +1,12 @@
-import { ark } from "@ark-ui/react/factory";
-import type {
-  StepsIndicatorProps,
-  StepsNextTriggerProps,
-  StepsPrevTriggerProps,
-  StepsItemProps as StepsPrimitiveItemProps,
-  StepsRootProps as StepsPrimitiveRootProps,
-} from "@ark-ui/react/steps";
-import { Steps as StepsPrimitive } from "@ark-ui/react/steps";
+import {
+  Steps as StepsPrimitive,
+  type StepsIndicatorProps,
+  type StepsItemProps as StepsPrimitiveItemProps,
+  type StepsNextTriggerProps,
+  type StepsPrevTriggerProps,
+  type StepsRootProps as StepsPrimitiveRootProps,
+  ark,
+} from "@ark-ui/react";
 import { CheckIcon } from "@phosphor-icons/react";
 import type {
   StepsItemProps as BaseStepsItemProps,
@@ -132,7 +132,7 @@ export type {
   StepsPrevTriggerProps,
   StepsSeparatorProps,
   StepsTriggerProps,
-} from "@ark-ui/react/steps";
+} from "@ark-ui/react";
 
 export const Steps = Object.assign(StepsRoot, {
   CompletedContent: StepsCompletedContent,

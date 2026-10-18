@@ -1,9 +1,9 @@
 <script lang="ts">
   import {
-    type DrawerContentProps,
     Drawer as DrawerPrimitive,
-  } from "@ark-ui/svelte/drawer";
-  import { Portal } from "@ark-ui/svelte/portal";
+    type DrawerContentProps,
+    Portal,
+  } from "@ark-ui/svelte";
   import type { DrawerProps as BaseDrawerProps } from "@pisagor/props";
   import { cn } from "@pisagor/utils";
   import { useDrawer } from "./drawer.context";

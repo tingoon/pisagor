@@ -1,4 +1,4 @@
-import { Field as FieldPrimitive } from "@ark-ui/vue/field";
+import { Field as FieldPrimitive } from "@ark-ui/vue";
 import type { TextareaProps as BaseTextareaProps } from "@pisagor/props";
 import {
   type FormControlShellVariantProps,

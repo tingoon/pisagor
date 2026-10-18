@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type FormatNumberProps,
     Format as FormatPrimitive,
-  } from "@ark-ui/svelte/format";
+    type FormatNumberProps,
+  } from "@ark-ui/svelte";
 
   let props: FormatNumberProps = $props();
 </script>

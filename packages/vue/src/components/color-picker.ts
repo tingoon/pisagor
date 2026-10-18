@@ -1,10 +1,10 @@
 import {
   ColorPicker as ColorPickerPrimitive,
   type ColorPickerValueChangeDetails,
+  ark,
   parseColor as parseColorArk,
   useColorPickerContext as useColorPicker,
-} from "@ark-ui/vue/color-picker";
-import { ark } from "@ark-ui/vue/factory";
+} from "@ark-ui/vue";
 import { PhCheck, PhEyedropper, PhX } from "@phosphor-icons/vue";
 import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
 import { colorPickerRecipe } from "@pisagor/recipes";

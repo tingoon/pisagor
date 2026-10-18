@@ -2,7 +2,7 @@
   import {
     NumberInput as NumberInputPrimitive,
     type NumberInputRootProps,
-  } from "@ark-ui/svelte/number-input";
+  } from "@ark-ui/svelte";
   import type { NumberInputProps as BaseNumberInputProps } from "@pisagor/props";
   import {
     buttonRecipe,

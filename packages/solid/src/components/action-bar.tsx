@@ -1,5 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
-import { Presence } from "@ark-ui/solid/presence";
+import { Presence, ark } from "@ark-ui/solid";
 import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
 import { actionBarRecipe } from "@pisagor/recipes";
 import type {

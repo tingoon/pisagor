@@ -1,5 +1,4 @@
-import { useListCollection } from "@ark-ui/solid/collection";
-import { useFilter } from "@ark-ui/solid/locale";
+import { useFilter, useListCollection } from "@ark-ui/solid";
 import { Autocomplete, Combobox, Field } from "@pisagor/solid";
 import { For } from "solid-js";
 export function AutocompleteField() {

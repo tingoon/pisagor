@@ -1,23 +1,19 @@
-import { Portal } from "@ark-ui/react";
 import {
   type CollectionItem,
-  createListCollection,
-} from "@ark-ui/react/collection";
-import { ark } from "@ark-ui/react/factory";
-import type {
-  SelectClearTriggerProps,
-  SelectContentProps,
-  SelectItemGroupLabelProps,
-  SelectItemProps,
-  SelectItemGroupProps as SelectPrimitiveItemGroupProps,
-  SelectRootProps as SelectPrimitiveRootProps,
-  SelectTriggerProps as SelectPrimitiveTriggerProps,
-  SelectValueTextProps,
-} from "@ark-ui/react/select";
-import {
+  Portal,
   Select as SelectPrimitive,
+  type SelectClearTriggerProps,
+  type SelectContentProps,
+  type SelectItemGroupLabelProps,
+  type SelectItemGroupProps as SelectPrimitiveItemGroupProps,
+  type SelectItemProps,
+  type SelectRootProps as SelectPrimitiveRootProps,
+  type SelectTriggerProps as SelectPrimitiveTriggerProps,
+  type SelectValueTextProps,
+  ark,
+  createListCollection,
   useSelectContext,
-} from "@ark-ui/react/select";
+} from "@ark-ui/react";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
 import type { SelectProps as BaseSelectRootProps } from "@pisagor/props";
 import {
@@ -354,7 +350,7 @@ export type {
   SelectItemGroupLabelProps,
   SelectItemProps,
   SelectValueTextProps,
-} from "@ark-ui/react/select";
+} from "@ark-ui/react";
 
 export const Select = Object.assign(SelectShorthand, {
   ClearTrigger: SelectClearTrigger,

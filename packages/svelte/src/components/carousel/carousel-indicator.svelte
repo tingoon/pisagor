@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type CarouselIndicatorProps,
     Carousel as CarouselPrimitive,
-  } from "@ark-ui/svelte/carousel";
+    type CarouselIndicatorProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useCarousel } from "./carousel.context";
 

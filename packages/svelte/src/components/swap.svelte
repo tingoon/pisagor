@@ -1,6 +1,9 @@
 <script lang="ts">
-  import type { SwapIndicatorProps, SwapRootProps } from "@ark-ui/svelte/swap";
-  import { Swap as SwapPrimitive } from "@ark-ui/svelte/swap";
+  import {
+    Swap as SwapPrimitive,
+    type SwapIndicatorProps,
+    type SwapRootProps,
+  } from "@ark-ui/svelte";
   import type { SwapProps as BaseSwapProps } from "@pisagor/props";
   import { swapRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

@@ -1,4 +1,4 @@
-import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/vue/password-input";
+import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/vue";
 import { PhEye, PhEyeSlash, PhX } from "@phosphor-icons/vue";
 import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
 import { passwordInputRecipe } from "@pisagor/recipes";

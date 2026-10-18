@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark } from "@ark-ui/react";
 import type {
   MenuItemProps as BaseMenuItemProps,
   MenuProps as BaseMenuRootProps,

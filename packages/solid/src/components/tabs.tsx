@@ -1,10 +1,10 @@
-import type {
-  TabContentProps,
-  TabListProps,
-  TabsRootProps as TabsPrimitiveRootProps,
-  TabTriggerProps,
-} from "@ark-ui/solid/tabs";
-import { Tabs as TabsPrimitive } from "@ark-ui/solid/tabs";
+import {
+  type TabContentProps,
+  type TabListProps,
+  type TabTriggerProps,
+  Tabs as TabsPrimitive,
+  type TabsRootProps as TabsPrimitiveRootProps,
+} from "@ark-ui/solid";
 import type { TabsProps as BaseTabsRootProps } from "@pisagor/props";
 import { type TabsVariantProps, tabsRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
@@ -119,7 +119,7 @@ export function TabsShorthand(props: TabsProps): JSX.Element {
   );
 }
 
-export type { TabsRootProps } from "@ark-ui/solid/tabs";
+export type { TabsRootProps } from "@ark-ui/solid";
 
 export const Tabs = Object.assign(TabsShorthand, {
   Content: TabsContent,

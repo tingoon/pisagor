@@ -2,7 +2,7 @@
   import {
     FloatingPanel as FloatingPanelPrimitive,
     type FloatingPanelTriggerProps,
-  } from "@ark-ui/svelte/floating-panel";
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: FloatingPanelTriggerProps = $props();
 </script>

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { useFilter, useListCollection } from "@ark-ui/vue";
-import { useTagsInput } from "@ark-ui/vue/tags-input";
+import { useFilter, useListCollection, useTagsInput } from "@ark-ui/vue";
 import { Combobox, Field, TagsInput } from "@pisagor/vue";
 import { computed, useId } from "vue";
 import { tagsWithComboboxBlock } from "#/styles/recipes/tags-input";

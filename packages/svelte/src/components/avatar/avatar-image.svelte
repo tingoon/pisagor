@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type AvatarImageProps,
     Avatar as AvatarPrimitive,
-  } from "@ark-ui/svelte/avatar";
+    type AvatarImageProps,
+  } from "@ark-ui/svelte";
   import { withContext } from "./avatar.context";
 
   let { ...rest }: AvatarImageProps = $props();

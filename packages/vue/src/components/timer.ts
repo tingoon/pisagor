@@ -1,8 +1,8 @@
-import { ark } from "@ark-ui/vue/factory";
 import {
   Timer as TimerPrimitive,
+  ark,
   useTimerContext as useTimer,
-} from "@ark-ui/vue/timer";
+} from "@ark-ui/vue";
 import type {
   TimerItemGroupProps as BaseTimerItemGroupProps,
   TimerProps as BaseTimerRootProps,

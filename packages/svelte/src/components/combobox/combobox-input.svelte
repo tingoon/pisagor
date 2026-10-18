@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { ComboboxInputProps as ArkInputProps } from "@ark-ui/svelte/combobox";
   import {
     Combobox as ComboboxPrimitive,
+    type ComboboxInputProps as ArkInputProps,
     useComboboxContext,
-  } from "@ark-ui/svelte/combobox";
+  } from "@ark-ui/svelte";
   import {
     buttonRecipe,
     comboboxRecipe,

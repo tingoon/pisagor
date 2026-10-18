@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type HoverCardArrowProps,
     HoverCard as HoverCardPrimitive,
-  } from "@ark-ui/svelte/hover-card";
+    type HoverCardArrowProps,
+  } from "@ark-ui/svelte";
   import { useHoverCard } from "./hover-card.context";
 
   let { style, ...rest }: HoverCardArrowProps = $props();

@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type MenuItemIndicatorProps,
     Menu as MenuPrimitive,
-  } from "@ark-ui/svelte/menu";
+    type MenuItemIndicatorProps,
+  } from "@ark-ui/svelte";
   import { dropdownMenuItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import CheckIcon from "phosphor-svelte/lib/CheckIcon";

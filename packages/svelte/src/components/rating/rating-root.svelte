@@ -2,7 +2,7 @@
   import {
     RatingGroup as RatingGroupPrimitive,
     type RatingGroupRootProps,
-  } from "@ark-ui/svelte/rating-group";
+  } from "@ark-ui/svelte";
   import type { RatingProps as BaseRatingProps } from "@pisagor/props";
   import { ratingRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

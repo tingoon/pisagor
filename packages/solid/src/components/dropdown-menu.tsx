@@ -1,20 +1,20 @@
-import { ark } from "@ark-ui/solid/factory";
-import type {
-  MenuArrowProps,
-  MenuCheckboxItemProps,
-  MenuContentProps,
-  MenuItemGroupLabelProps,
-  MenuItemGroupProps,
-  MenuItemProps,
-  MenuPositionerProps,
-  MenuRadioItemGroupProps,
-  MenuRadioItemProps,
-  MenuRootProps,
-  MenuSeparatorProps,
-  MenuTriggerItemProps,
-  MenuTriggerProps,
-} from "@ark-ui/solid/menu";
-import { Menu as MenuPrimitive } from "@ark-ui/solid/menu";
+import {
+  Menu as MenuPrimitive,
+  type MenuArrowProps,
+  type MenuCheckboxItemProps,
+  type MenuContentProps,
+  type MenuItemGroupLabelProps,
+  type MenuItemGroupProps,
+  type MenuItemProps,
+  type MenuPositionerProps,
+  type MenuRadioItemGroupProps,
+  type MenuRadioItemProps,
+  type MenuRootProps,
+  type MenuSeparatorProps,
+  type MenuTriggerItemProps,
+  type MenuTriggerProps,
+  ark,
+} from "@ark-ui/solid";
 import type {
   DropdownMenuItemProps as BaseDropdownMenuItemProps,
   DropdownMenuProps as BaseDropdownMenuProps,

@@ -1,9 +1,9 @@
 import {
+  Format as FormatPrimitive,
   type FormatByteProps,
   type FormatNumberProps,
-  Format as FormatPrimitive,
   type FormatRelativeTimeProps,
-} from "@ark-ui/react/format";
+} from "@ark-ui/react";
 
 // #region Parts
 export function FormatByte({ ...rest }: FormatByteProps) {
@@ -30,7 +30,7 @@ export type {
   FormatByteProps,
   FormatNumberProps,
   FormatRelativeTimeProps,
-} from "@ark-ui/react/format";
+} from "@ark-ui/react";
 
 export const Format = {
   Byte: FormatByte,

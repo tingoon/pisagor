@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { CollectionItem } from "@ark-ui/svelte/collection";
   import {
-    type ListboxRootProps as ArkListboxRootProps,
+    type CollectionItem,
     Listbox as ListboxPrimitive,
-  } from "@ark-ui/svelte/listbox";
+    type ListboxRootProps as ArkListboxRootProps,
+  } from "@ark-ui/svelte";
   import type { ListboxProps as BaseListboxProps } from "@pisagor/props";
   import { listboxRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

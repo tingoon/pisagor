@@ -1,4 +1,4 @@
-import { createToaster } from "@ark-ui/solid/toast";
+import { createToaster } from "@ark-ui/solid";
 import { Button, Toaster } from "@pisagor/solid";
 export function Placements() {
   const topStartToaster = createToaster({

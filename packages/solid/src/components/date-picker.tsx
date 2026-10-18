@@ -1,15 +1,13 @@
-import type {
-  DatePickerPresetTriggerProps,
-  DatePickerContentProps as DatePickerPrimitiveContentProps,
-  DatePickerInputProps as DatePickerPrimitiveInputProps,
-  DatePickerRootProps as DatePickerPrimitiveRootProps,
-  DatePickerTriggerProps as DatePickerPrimitiveTriggerProps,
-  DatePickerValueTextProps,
-} from "@ark-ui/solid/date-picker";
 import {
   DatePicker as DatePickerPrimitive,
+  type DatePickerContentProps as DatePickerPrimitiveContentProps,
+  type DatePickerInputProps as DatePickerPrimitiveInputProps,
+  type DatePickerPresetTriggerProps,
+  type DatePickerRootProps as DatePickerPrimitiveRootProps,
+  type DatePickerTriggerProps as DatePickerPrimitiveTriggerProps,
+  type DatePickerValueTextProps,
   useDatePickerContext,
-} from "@ark-ui/solid/date-picker";
+} from "@ark-ui/solid";
 import type { DatePickerProps as BaseDatePickerProps } from "@pisagor/props";
 import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
@@ -414,7 +412,7 @@ export function DatePickerPresetTrigger(
 export type {
   DatePickerPresetTriggerProps,
   DatePickerValueTextProps,
-} from "@ark-ui/solid/date-picker";
+} from "@ark-ui/solid";
 
 export type { DatePickerRootProps as DatePickerProps };
 

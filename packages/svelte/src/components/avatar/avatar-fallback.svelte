@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type AvatarFallbackProps,
     Avatar as AvatarPrimitive,
-  } from "@ark-ui/svelte/avatar";
+    type AvatarFallbackProps,
+  } from "@ark-ui/svelte";
   import { withContext } from "./avatar.context";
 
   let { children, ...rest }: AvatarFallbackProps = $props();

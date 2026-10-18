@@ -1,12 +1,10 @@
-import type {
-  CarouselNextTriggerProps,
-  CarouselPrevTriggerProps,
-  CarouselRootProps as CarouselPrimitiveRootProps,
-} from "@ark-ui/react/carousel";
 import {
   Carousel as CarouselPrimitive,
+  type CarouselNextTriggerProps,
+  type CarouselPrevTriggerProps,
+  type CarouselRootProps as CarouselPrimitiveRootProps,
   useCarouselContext,
-} from "@ark-ui/react/carousel";
+} from "@ark-ui/react";
 import {
   CaretLeftIcon,
   CaretRightIcon,
@@ -223,7 +221,7 @@ export type {
   CarouselItemProps,
   CarouselNextTriggerProps,
   CarouselPrevTriggerProps,
-} from "@ark-ui/react/carousel";
+} from "@ark-ui/react";
 
 export const Carousel = Object.assign(CarouselShorthand, {
   AutoplayTrigger: CarouselAutoplayTrigger,

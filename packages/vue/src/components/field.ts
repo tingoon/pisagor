@@ -1,6 +1,9 @@
-import { ark } from "@ark-ui/vue/factory";
-import { Field as FieldPrimitive, useFieldContext } from "@ark-ui/vue/field";
-import { Fieldset as FieldsetPrimitive } from "@ark-ui/vue/fieldset";
+import {
+  Field as FieldPrimitive,
+  Fieldset as FieldsetPrimitive,
+  ark,
+  useFieldContext,
+} from "@ark-ui/vue";
 import type { FieldProps as BaseFieldProps } from "@pisagor/props";
 import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";

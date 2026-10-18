@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark } from "@ark-ui/solid";
 import type { SidebarProps as BaseSidebarProps } from "@pisagor/props";
 import {
   type ButtonVariantProps,

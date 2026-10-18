@@ -1,3 +1,5 @@
+// createGridCollection is not exported from the @ark-ui/react barrel.
+// eslint-disable-next-line no-restricted-imports
 import { createGridCollection } from "@ark-ui/react/collection";
 import { Item, Listbox } from "@pisagor/react";
 import type { CSSProperties } from "react";

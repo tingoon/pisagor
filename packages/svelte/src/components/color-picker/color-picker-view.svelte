@@ -2,7 +2,7 @@
   import {
     ColorPicker as ColorPickerPrimitive,
     type ColorPickerViewProps,
-  } from "@ark-ui/svelte/color-picker";
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useColorPicker } from "./color-picker.context";
 

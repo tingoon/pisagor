@@ -1,4 +1,4 @@
-import { Collapsible as CollapsiblePrimitive } from "@ark-ui/vue/collapsible";
+import { Collapsible as CollapsiblePrimitive } from "@ark-ui/vue";
 import { PhCaretDown } from "@phosphor-icons/vue";
 import type { CollapsibleProps as BaseCollapsibleRootProps } from "@pisagor/props";
 import { collapsibleRecipe } from "@pisagor/recipes";

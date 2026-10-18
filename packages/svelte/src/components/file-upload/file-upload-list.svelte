@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { useFileUploadContext } from "@ark-ui/svelte/file-upload";
+  import { useFileUploadContext } from "@ark-ui/svelte";
   import type { FileUploadItemProps as BaseFileUploadItemProps } from "@pisagor/props";
   import { fileUploadItemRecipe } from "@pisagor/recipes";
   import { cn, type MessageKey } from "@pisagor/utils";

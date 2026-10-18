@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type CheckboxControlProps,
     Checkbox as CheckboxPrimitive,
-  } from "@ark-ui/svelte/checkbox";
+    type CheckboxControlProps,
+  } from "@ark-ui/svelte";
   import { checkboxRecipe, formControlToggleRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import CheckIcon from "phosphor-svelte/lib/CheckIcon";
