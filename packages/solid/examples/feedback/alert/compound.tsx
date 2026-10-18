@@ -1,5 +1,5 @@
 import { Alert, Button } from "@pisagor/solid";
-import { ChecksIcon } from "@pisagor/solid/icons";
+import { ChecksIcon } from "@squidlab/phosphor-solid/icons";
 export function Compound() {
   return (
     <Alert.Root variant="info">

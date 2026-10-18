@@ -1,5 +1,5 @@
 import { Button, Steps } from "@pisagor/solid";
-import { CaretLeftIcon, CaretRightIcon } from "@pisagor/solid/icons";
+import { CaretLeftIcon, CaretRightIcon } from "@squidlab/phosphor-solid/icons";
 export function Vertical() {
   const items = [
     { description: "Personal", title: "Info" },

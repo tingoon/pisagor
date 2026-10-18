@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, Card, Editable, Field } from "@pisagor/svelte";
-  import { CheckIcon, PencilSimpleIcon } from "@pisagor/svelte/icons";
+  import { CheckIcon, PencilSimpleIcon } from "phosphor-svelte";
 
   let isEditing = $state(false);
 </script>

@@ -1,5 +1,5 @@
 import { Stat } from "@pisagor/solid";
-import { ArrowUpIcon } from "@pisagor/solid/icons";
+import { ArrowUpIcon } from "@squidlab/phosphor-solid/icons";
 
 export function Compound() {
   return (

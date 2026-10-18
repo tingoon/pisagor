@@ -4,7 +4,7 @@ import {
   EyeIcon,
   PencilSimpleIcon,
   TrashIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 import { workspaceUsers } from "./helpers";
 export function Actions() {
   return (

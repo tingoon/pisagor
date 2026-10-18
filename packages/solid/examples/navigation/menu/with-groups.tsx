@@ -3,7 +3,7 @@ import {
   ArchiveIcon,
   HouseIcon,
   MagnifyingGlassIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 
 export function WithGroups() {
   return (

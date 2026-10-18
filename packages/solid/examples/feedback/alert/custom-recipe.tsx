@@ -1,6 +1,6 @@
 import { alertRecipe } from "@pisagor/recipes";
 import { Alert } from "@pisagor/solid";
-import { CheckCircleIcon } from "@pisagor/solid/icons";
+import { CheckCircleIcon } from "@squidlab/phosphor-solid/icons";
 import { tv } from "tailwind-variants";
 
 const brandAlertRecipe = tv({

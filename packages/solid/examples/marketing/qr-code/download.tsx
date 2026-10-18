@@ -1,5 +1,5 @@
 import { Button, Card, Input, QrCode } from "@pisagor/solid";
-import { DownloadIcon } from "@pisagor/solid/icons";
+import { DownloadIcon } from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
 export function Download() {
   const QUALITY_BY_LEVEL = {

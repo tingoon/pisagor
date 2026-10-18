@@ -53,7 +53,6 @@
                   "@*/*/**",
                   "phosphor-svelte/lib/**",
                   "!@pisagor/*/styles",
-                  "!@pisagor/*/icons",
                   "!@pisagor/*/utils",
                   "!@pisagor/*/hooks",
                   "!@pisagor/*/data-grid",

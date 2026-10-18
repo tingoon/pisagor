@@ -4,7 +4,11 @@ import {
   createTreeCollection,
   TreeView,
 } from "@pisagor/solid";
-import { FileCodeIcon, FileJsIcon, FileTextIcon } from "@pisagor/solid/icons";
+import {
+  FileCodeIcon,
+  FileJsIcon,
+  FileTextIcon,
+} from "@squidlab/phosphor-solid/icons";
 export function CustomIcons() {
   const fileIcons = createFileIcons({
     ".json": FileJsIcon,

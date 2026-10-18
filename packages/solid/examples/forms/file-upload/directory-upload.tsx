@@ -1,5 +1,5 @@
 import { Button, FileUpload } from "@pisagor/solid";
-import { FolderIcon } from "@pisagor/solid/icons";
+import { FolderIcon } from "@squidlab/phosphor-solid/icons";
 export function DirectoryUpload() {
   return (
     <FileUpload directory>

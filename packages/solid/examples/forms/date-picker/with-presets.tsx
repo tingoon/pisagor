@@ -1,5 +1,5 @@
 import { Button, Calendar, DatePicker, parseDate } from "@pisagor/solid";
-import { CalendarIcon } from "@pisagor/solid/icons";
+import { CalendarIcon } from "@squidlab/phosphor-solid/icons";
 export function WithPresets() {
   const presets = [
     { days: 0, label: "Today" },

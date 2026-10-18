@@ -6,7 +6,7 @@ import {
   HandIcon,
   PencilIcon,
   ShareIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 export function QuickItem() {
   return (
     <DropdownMenu>

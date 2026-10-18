@@ -1,7 +1,7 @@
 /** @jsxImportSource solid-js */
 
 import { InputGroup } from "@pisagor/solid";
-import { CopyIcon, FileCodeIcon } from "@pisagor/solid/icons";
+import { CopyIcon, FileCodeIcon } from "@squidlab/phosphor-solid/icons";
 import { codeEditorInputBlock } from "#/styles/recipes/input-group";
 
 const styles = codeEditorInputBlock();

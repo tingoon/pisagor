@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, DropdownMenu } from "@pisagor/svelte";
-  import { ArrowSquareOutIcon } from "@pisagor/svelte/icons";
+  import { ArrowSquareOutIcon } from "phosphor-svelte";
 </script>
 
 <DropdownMenu>

@@ -1,5 +1,9 @@
 import { Button, DropdownMenu } from "@pisagor/solid";
-import { CopyIcon, PencilIcon, TrashIcon } from "@pisagor/solid/icons";
+import {
+  CopyIcon,
+  PencilIcon,
+  TrashIcon,
+} from "@squidlab/phosphor-solid/icons";
 export function Destructive() {
   return (
     <DropdownMenu>

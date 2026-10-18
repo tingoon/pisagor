@@ -1,5 +1,9 @@
 import { Button, ButtonGroup } from "@pisagor/solid";
-import { PlayIcon, SkipBackIcon, SkipForwardIcon } from "@pisagor/solid/icons";
+import {
+  PlayIcon,
+  SkipBackIcon,
+  SkipForwardIcon,
+} from "@squidlab/phosphor-solid/icons";
 export function OrientationHorizontal() {
   return (
     <ButtonGroup>

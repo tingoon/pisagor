@@ -1,5 +1,5 @@
 import { Clipboard } from "@pisagor/solid";
-import { SparkleIcon } from "@pisagor/solid/icons";
+import { SparkleIcon } from "@squidlab/phosphor-solid/icons";
 
 export function DifferentIcon() {
   return (

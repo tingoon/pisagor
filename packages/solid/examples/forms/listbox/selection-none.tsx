@@ -4,7 +4,7 @@ import {
   PencilSimpleIcon,
   PlusSquareIcon,
   TrashIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 export function SelectionNone() {
   const collection = createListCollection({
     items: [

@@ -1,5 +1,5 @@
 import { Button } from "@pisagor/solid";
-import { StarIcon } from "@pisagor/solid/icons";
+import { StarIcon } from "@squidlab/phosphor-solid/icons";
 
 export function Icon() {
   return (

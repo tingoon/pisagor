@@ -71,7 +71,7 @@ Only for **foldered** multi-file components. Same rules as React — provide wit
 
 - Relative sibling imports; public map for apps.
 - Relative by depth: `../utils` / `../../utils`, `../internal/…`, `../hooks`.
-- Icons: `@squidlab/phosphor-solid` (also `@pisagor/solid/icons`). Shared SVG stand-ins may live in `src/internal/icons`.
+- Icons: `@squidlab/phosphor-solid` (icons from `@squidlab/phosphor-solid/icons`, `IconProvider` and types from the root). Shared SVG stand-ins may live in `src/internal/icons`.
 - Class merging: `cn` from `@pisagor/utils`.
 
 ### Shared props (`@pisagor/props`)

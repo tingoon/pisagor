@@ -5,7 +5,7 @@ import {
   TextBIcon,
   TextItalicIcon,
   TextUnderlineIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 export function Nested() {
   return (
     <ButtonGroup>

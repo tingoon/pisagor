@@ -1,5 +1,5 @@
 import { Button, Swap } from "@pisagor/solid";
-import { MoonIcon, SunIcon } from "@pisagor/solid/icons";
+import { MoonIcon, SunIcon } from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
 export function Variants() {
   const [fade, setFade] = createSignal(false);

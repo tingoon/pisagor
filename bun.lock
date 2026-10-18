@@ -63,6 +63,7 @@
         "@pisagor/utils": "workspace:*",
         "@pisagor/vue": "workspace:*",
         "@pisagor/vue-form": "workspace:*",
+        "@squidlab/phosphor-solid": "^1.1.2",
         "@tanstack/highlight": "^0.1.0",
         "@tanstack/react-form": "^1.33.5",
         "@tanstack/solid-form": "^1.33.5",

@@ -6,7 +6,7 @@ import type {
   RowSelectionState,
 } from "@pisagor/solid/data-grid";
 import { DataGrid, useDataGrid } from "@pisagor/solid/data-grid";
-import { CaretDownIcon, CaretUpIcon } from "@pisagor/solid/icons";
+import { CaretDownIcon, CaretUpIcon } from "@squidlab/phosphor-solid/icons";
 import type { RowData } from "@tanstack/solid-table";
 import type { JSX } from "solid-js";
 import { createMemo, createSignal } from "solid-js";

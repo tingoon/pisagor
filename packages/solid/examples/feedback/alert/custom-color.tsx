@@ -1,5 +1,5 @@
 import { Alert } from "@pisagor/solid";
-import { MagicWandIcon } from "@pisagor/solid/icons";
+import { MagicWandIcon } from "@squidlab/phosphor-solid/icons";
 
 export function CustomColor() {
   return (

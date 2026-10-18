@@ -1,6 +1,6 @@
 import { itemRecipe } from "@pisagor/recipes";
 import { Button, Item } from "@pisagor/solid";
-import { DotsThreeIcon } from "@pisagor/solid/icons";
+import { DotsThreeIcon } from "@squidlab/phosphor-solid/icons";
 import { tv } from "tailwind-variants";
 
 const brandItemRecipe = tv({

@@ -5,7 +5,7 @@ import {
   PencilSimpleIcon,
   TrashIcon,
   XIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
 export function Gutter() {
   const gutters = ["24px", "32px"] as const;

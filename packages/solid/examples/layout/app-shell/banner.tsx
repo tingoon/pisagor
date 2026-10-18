@@ -1,5 +1,5 @@
 import { Announcement, AppShell, Badge, Button } from "@pisagor/solid";
-import { WarningIcon } from "@pisagor/solid/icons";
+import { WarningIcon } from "@squidlab/phosphor-solid/icons";
 import { createSignal, Show } from "solid-js";
 import { mainContent } from "./helpers";
 

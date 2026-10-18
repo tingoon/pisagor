@@ -1,5 +1,5 @@
 import { InputGroup } from "@pisagor/solid";
-import { EyeIcon } from "@pisagor/solid/icons";
+import { EyeIcon } from "@squidlab/phosphor-solid/icons";
 
 export function AlignInlineEnd() {
   return (

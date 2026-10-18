@@ -1,5 +1,9 @@
 import { Button, Card, Editable, Field, Input } from "@pisagor/solid";
-import { CheckIcon, PencilSimpleIcon, XIcon } from "@pisagor/solid/icons";
+import {
+  CheckIcon,
+  PencilSimpleIcon,
+  XIcon,
+} from "@squidlab/phosphor-solid/icons";
 export function ActivationNone() {
   return (
     <Card>

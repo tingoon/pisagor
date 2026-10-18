@@ -1,6 +1,6 @@
 import { useFilter, useListCollection } from "@ark-ui/solid";
 import { Button, Command, Kbd } from "@pisagor/solid";
-import { ArrowBendDownLeftIcon } from "@pisagor/solid/icons";
+import { ArrowBendDownLeftIcon } from "@squidlab/phosphor-solid/icons";
 import { createSignal, For } from "solid-js";
 
 export function WithDialog() {

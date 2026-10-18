@@ -1,6 +1,6 @@
 import type { NodeProviderProps, TreeNodeType } from "@pisagor/solid";
 import { createTreeCollection, TreeView } from "@pisagor/solid";
-import { ArrowSquareOutIcon, LinkIcon } from "@pisagor/solid/icons";
+import { ArrowSquareOutIcon, LinkIcon } from "@squidlab/phosphor-solid/icons";
 export function Links() {
   interface TreeNodeWithLinks extends TreeNodeType<unknown> {
     href?: string;

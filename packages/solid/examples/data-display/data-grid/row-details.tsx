@@ -10,7 +10,7 @@ import {
   renderDataGridCell,
   useDataGrid,
 } from "@pisagor/solid/data-grid";
-import { CaretDownIcon, CaretRightIcon } from "@pisagor/solid/icons";
+import { CaretDownIcon, CaretRightIcon } from "@squidlab/phosphor-solid/icons";
 import type { ExpandedState, RowData } from "@tanstack/solid-table";
 import type { JSX } from "solid-js";
 import { createMemo, createSignal } from "solid-js";

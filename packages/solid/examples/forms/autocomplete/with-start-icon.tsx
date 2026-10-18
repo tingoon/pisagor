@@ -1,6 +1,6 @@
 import { useFilter, useListCollection } from "@ark-ui/solid";
 import { Autocomplete, InputGroup } from "@pisagor/solid";
-import { AppleLogoIcon } from "@pisagor/solid/icons";
+import { AppleLogoIcon } from "@squidlab/phosphor-solid/icons";
 import { For } from "solid-js";
 export function WithStartIcon() {
   const initialItems = [

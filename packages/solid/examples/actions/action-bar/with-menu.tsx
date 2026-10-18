@@ -5,7 +5,7 @@ import {
   DotsThreeIcon,
   TrashIcon,
   XIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 export function WithMenu() {
   return (
     <ActionBar>

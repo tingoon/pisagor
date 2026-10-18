@@ -1,5 +1,5 @@
 import { Alert, Button } from "@pisagor/solid";
-import { ClockCounterClockwiseIcon } from "@pisagor/solid/icons";
+import { ClockCounterClockwiseIcon } from "@squidlab/phosphor-solid/icons";
 export function WithAction() {
   return (
     <Alert

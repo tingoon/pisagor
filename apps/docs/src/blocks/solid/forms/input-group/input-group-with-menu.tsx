@@ -6,7 +6,7 @@ import {
   DotsThreeIcon,
   FileIcon,
   FolderIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 import { inputGroupWithMenuBlock } from "#/styles/recipes/input-group";
 
 const styles = inputGroupWithMenuBlock();

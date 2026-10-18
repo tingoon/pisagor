@@ -1,5 +1,5 @@
 import { Button, FileUpload } from "@pisagor/solid";
-import { CameraIcon } from "@pisagor/solid/icons";
+import { CameraIcon } from "@squidlab/phosphor-solid/icons";
 export function MediaCapture() {
   return (
     <FileUpload capture="environment">

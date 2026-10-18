@@ -4,7 +4,7 @@ import {
   ArrowBendDownLeftIcon,
   ArrowDownIcon,
   ArrowUpIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 import { For } from "solid-js";
 
 export function WithFooter() {

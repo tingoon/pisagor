@@ -1,5 +1,5 @@
 import { Button, EmptyState } from "@pisagor/solid";
-import { MagnifyingGlassIcon } from "@pisagor/solid/icons";
+import { MagnifyingGlassIcon } from "@squidlab/phosphor-solid/icons";
 export function Compound() {
   return (
     <EmptyState.Root>

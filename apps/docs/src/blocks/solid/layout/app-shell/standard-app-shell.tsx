@@ -7,7 +7,7 @@ import {
   MagnifyingGlassIcon,
   SquaresFourIcon,
   UsersIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { For, Show } from "solid-js";

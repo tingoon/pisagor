@@ -5,7 +5,7 @@ import {
   PencilSimpleIcon,
   TrashIcon,
   XIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
 export function Placements() {
   type Placement = "bottom" | "bottom-start" | "bottom-end";

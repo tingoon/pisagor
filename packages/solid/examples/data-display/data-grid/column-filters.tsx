@@ -16,7 +16,7 @@ import {
   CaretUpIcon,
   FunnelIcon,
   MagnifyingGlassIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 import type { ColumnFiltersState, RowData } from "@tanstack/solid-table";
 import type { JSX } from "solid-js";
 import { createMemo, createSignal } from "solid-js";

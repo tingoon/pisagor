@@ -1,5 +1,5 @@
 import { Button, DropdownMenu } from "@pisagor/solid";
-import { ArrowSquareOutIcon } from "@pisagor/solid/icons";
+import { ArrowSquareOutIcon } from "@squidlab/phosphor-solid/icons";
 export function Link() {
   return (
     <DropdownMenu>

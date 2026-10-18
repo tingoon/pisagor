@@ -1,5 +1,5 @@
 import { Avatar, Button, HoverCard } from "@pisagor/solid";
-import { MapPinIcon } from "@pisagor/solid/icons";
+import { MapPinIcon } from "@squidlab/phosphor-solid/icons";
 export function TriggersDelays() {
   return (
     <HoverCard closeDelay={300} openDelay={200}>

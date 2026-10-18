@@ -1,7 +1,11 @@
 /** @jsxImportSource solid-js */
 
 import { ContextMenu, Table } from "@pisagor/solid";
-import { EyeIcon, PencilSimpleIcon, TrashIcon } from "@pisagor/solid/icons";
+import {
+  EyeIcon,
+  PencilSimpleIcon,
+  TrashIcon,
+} from "@squidlab/phosphor-solid/icons";
 import { For } from "solid-js";
 import { tableRowMenuBlock } from "#/styles/recipes/table";
 

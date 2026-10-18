@@ -1,7 +1,7 @@
 /** @jsxImportSource solid-js */
 
 import { Button, Field, InputGroup, Tooltip } from "@pisagor/solid";
-import { InfoIcon } from "@pisagor/solid/icons";
+import { InfoIcon } from "@squidlab/phosphor-solid/icons";
 import { inputGroupWithInnerLabelBlock } from "#/styles/recipes/input-group";
 
 const styles = inputGroupWithInnerLabelBlock();

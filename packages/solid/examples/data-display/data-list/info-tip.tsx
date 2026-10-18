@@ -1,5 +1,5 @@
 import { Button, DataList, Popover } from "@pisagor/solid";
-import { InfoIcon } from "@pisagor/solid/icons";
+import { InfoIcon } from "@squidlab/phosphor-solid/icons";
 export function InfoTip() {
   const data = [
     {

@@ -1,7 +1,7 @@
 import { waitForElement, waitForEvent } from "@ark-ui/solid";
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour } from "@pisagor/solid";
-import { PlusIcon } from "@pisagor/solid/icons";
+import { PlusIcon } from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
 export function WaitForElement() {
   const steps: TourStepType[] = [

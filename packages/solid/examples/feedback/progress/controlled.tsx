@@ -1,5 +1,5 @@
 import { Button, ButtonGroup, Field, Progress } from "@pisagor/solid";
-import { MinusIcon, PlusIcon } from "@pisagor/solid/icons";
+import { MinusIcon, PlusIcon } from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
 export function Controlled() {
   const [value, setValue] = createSignal(50);

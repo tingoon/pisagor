@@ -1,15 +1,15 @@
 import { Card, Marquee } from "@pisagor/solid";
+import type { IconProps } from "@squidlab/phosphor-solid";
 import {
   ArrowRightIcon,
   AtomIcon,
   DeviceMobileIcon,
   GlobeIcon,
-  type IconProps,
   LightningIcon,
   RobotIcon,
   SparkleIcon,
   StackIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 import type { Component } from "solid-js";
 
 const marqueeIcons: Component<IconProps>[] = [

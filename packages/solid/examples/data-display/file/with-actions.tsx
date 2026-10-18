@@ -1,5 +1,5 @@
 import { Button, File } from "@pisagor/solid";
-import { DownloadSimpleIcon, TrashIcon } from "@pisagor/solid/icons";
+import { DownloadSimpleIcon, TrashIcon } from "@squidlab/phosphor-solid/icons";
 export function WithActions() {
   return (
     <File

@@ -2,7 +2,7 @@ import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Select, Table } from "@pisagor/solid";
 import type { ColumnDef } from "@pisagor/solid/data-grid";
 import { DataGrid } from "@pisagor/solid/data-grid";
-import { CaretDownIcon, CaretRightIcon } from "@pisagor/solid/icons";
+import { CaretDownIcon, CaretRightIcon } from "@squidlab/phosphor-solid/icons";
 import type { ExpandedState, GroupingState } from "@tanstack/solid-table";
 import type { JSX } from "solid-js";
 import { createMemo, createSignal } from "solid-js";

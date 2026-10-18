@@ -1,5 +1,9 @@
 import { ActionBar, Button } from "@pisagor/solid";
-import { PencilSimpleIcon, TrashIcon, XIcon } from "@pisagor/solid/icons";
+import {
+  PencilSimpleIcon,
+  TrashIcon,
+  XIcon,
+} from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
 export function CustomSpacing() {
   const [isOpen, setIsOpen] = createSignal(false);

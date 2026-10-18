@@ -1,5 +1,5 @@
 import { Field, InputGroup } from "@pisagor/solid";
-import { ArrowRightIcon } from "@pisagor/solid/icons";
+import { ArrowRightIcon } from "@squidlab/phosphor-solid/icons";
 export function WithInputGroup() {
   return (
     <Field>

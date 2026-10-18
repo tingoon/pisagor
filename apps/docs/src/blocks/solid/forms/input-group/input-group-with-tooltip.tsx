@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 import { Button, InputGroup, Tooltip } from "@pisagor/solid";
-import { InfoIcon } from "@pisagor/solid/icons";
+import { InfoIcon } from "@squidlab/phosphor-solid/icons";
 
 export function InputGroupWithTooltip() {
   return (

@@ -1,7 +1,7 @@
 /** @jsxImportSource solid-js */
 
 import { Button, Dialog, DropdownMenu } from "@pisagor/solid";
-import { GearIcon, InfoIcon, UserIcon } from "@pisagor/solid/icons";
+import { GearIcon, InfoIcon, UserIcon } from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
 import { Portal } from "solid-js/web";
 import { menuDialogBlock } from "#/styles/recipes/overlay";

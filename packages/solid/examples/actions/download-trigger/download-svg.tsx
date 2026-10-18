@@ -1,5 +1,5 @@
 import { Button, DownloadTrigger } from "@pisagor/solid";
-import { DownloadIcon } from "@pisagor/solid/icons";
+import { DownloadIcon } from "@squidlab/phosphor-solid/icons";
 import { sampleSvg } from "./helpers";
 
 export function DownloadSvg() {

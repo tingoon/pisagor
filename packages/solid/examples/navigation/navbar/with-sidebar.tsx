@@ -5,7 +5,7 @@ import {
   HouseIcon,
   MagnifyingGlassIcon,
   UserIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 export function WithSidebar() {
   return (
     <Sidebar.Provider>

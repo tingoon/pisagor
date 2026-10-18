@@ -1,6 +1,6 @@
 <script lang="ts">
   import { ActionBar, Button } from "@pisagor/svelte";
-  import { PencilSimpleIcon, TrashIcon, XIcon } from "@pisagor/svelte/icons";
+  import { PencilSimpleIcon, TrashIcon, XIcon } from "phosphor-svelte";
 
   let isOpen = $state(false);
 </script>

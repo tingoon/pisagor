@@ -1,5 +1,5 @@
 import { QrCode } from "@pisagor/solid";
-import { FishIcon } from "@pisagor/solid/icons";
+import { FishIcon } from "@squidlab/phosphor-solid/icons";
 
 export function Overlay() {
   return (

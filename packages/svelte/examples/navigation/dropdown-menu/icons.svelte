@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, DropdownMenu } from "@pisagor/svelte";
-  import { CopyIcon, PencilIcon, ShareIcon } from "@pisagor/svelte/icons";
+  import { CopyIcon, PencilIcon, ShareIcon } from "phosphor-svelte";
 </script>
 
 <DropdownMenu>

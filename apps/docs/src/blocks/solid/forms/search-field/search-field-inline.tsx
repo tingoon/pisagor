@@ -1,6 +1,6 @@
 /** @jsxImportSource solid-js */
 import { Button, Field, Input } from "@pisagor/solid";
-import { MagnifyingGlassIcon } from "@pisagor/solid/icons";
+import { MagnifyingGlassIcon } from "@squidlab/phosphor-solid/icons";
 
 export function SearchFieldInline() {
   return (

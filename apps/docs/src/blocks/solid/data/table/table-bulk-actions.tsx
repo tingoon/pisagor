@@ -16,7 +16,7 @@ import {
   PaperPlaneTiltIcon,
   PencilSimpleIcon,
   TrashIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 import { cn } from "@pisagor/utils";
 import { createMemo, createSignal, For, Show } from "solid-js";
 import { tableBulkActionsBlock } from "#/styles/recipes/table";

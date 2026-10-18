@@ -2,7 +2,7 @@
 
 import type { NodeProviderProps, TreeNodeType } from "@pisagor/solid";
 import { Button, createTreeCollection, Tabs, TreeView } from "@pisagor/solid";
-import { XIcon } from "@pisagor/solid/icons";
+import { XIcon } from "@squidlab/phosphor-solid/icons";
 import { cn } from "@pisagor/utils";
 import { createSignal, For, Show } from "solid-js";
 import { ideLayoutBlock } from "#/styles/recipes/editors";

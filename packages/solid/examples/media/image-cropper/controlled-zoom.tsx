@@ -2,7 +2,7 @@ import { Button, ImageCropper } from "@pisagor/solid";
 import {
   MagnifyingGlassMinusIcon,
   MagnifyingGlassPlusIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
 export function ControlledZoom() {
   const [zoom, setZoom] = createSignal(1);

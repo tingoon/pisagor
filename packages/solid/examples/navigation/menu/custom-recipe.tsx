@@ -1,6 +1,10 @@
 import { menuRecipe } from "@pisagor/recipes";
 import { Menu } from "@pisagor/solid";
-import { GearIcon, SignOutIcon, UserIcon } from "@pisagor/solid/icons";
+import {
+  GearIcon,
+  SignOutIcon,
+  UserIcon,
+} from "@squidlab/phosphor-solid/icons";
 import { tv } from "tailwind-variants";
 
 const brandMenuRecipe = tv({

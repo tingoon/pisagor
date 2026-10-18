@@ -1,7 +1,7 @@
 /** @jsxImportSource solid-js */
 
 import { Button, Card, Field, Input } from "@pisagor/solid";
-import { GlobeIcon } from "@pisagor/solid/icons";
+import { GlobeIcon } from "@squidlab/phosphor-solid/icons";
 import { cn } from "@pisagor/utils";
 import { loginCardBlock } from "#/styles/recipes/card";
 

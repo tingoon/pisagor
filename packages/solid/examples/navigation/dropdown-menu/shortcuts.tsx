@@ -4,7 +4,7 @@ import {
   GearIcon,
   SignOutIcon,
   UserIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 export function Shortcuts() {
   return (
     <DropdownMenu>

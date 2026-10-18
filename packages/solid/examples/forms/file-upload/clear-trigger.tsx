@@ -1,5 +1,5 @@
 import { Button, FileUpload } from "@pisagor/solid";
-import { TrashIcon } from "@pisagor/solid/icons";
+import { TrashIcon } from "@squidlab/phosphor-solid/icons";
 export function ClearTrigger() {
   return (
     <FileUpload>

@@ -149,12 +149,11 @@ function fakerLiteForExamples() {
 }
 
 /**
- * Solid examples import icons from the `@pisagor/solid/icons` barrel (`export
- * *` of `@squidlab/phosphor-solid/icons`). Solid's compiled templates are
- * top-level calls, so every icon any example touches lands in one shared ~280
- * KB chunk that every Solid page downloads. Rewrite named icon imports to the
- * per-icon source files so Rolldown can split them per example. Types and
- * non-icon exports keep using the barrel.
+ * Solid examples import icons from the `@squidlab/phosphor-solid/icons` barrel.
+ * Solid's compiled templates are top-level calls, so every icon any example
+ * touches lands in one shared ~280 KB chunk that every Solid page downloads.
+ * Rewrite named icon imports to the per-icon source files so Rolldown can split
+ * them per example. Types and non-icon exports keep using the barrel.
  */
 function solidPerIconImports() {
   const requireFromSolid = createRequire(
@@ -177,7 +176,7 @@ function solidPerIconImports() {
       iconFiles.set(name, join(pkgRoot, `src/icons/${file}.tsx`));
   }
   const importRe =
-    /import\s*\{([^}]*)\}\s*from\s*["']@pisagor\/solid\/icons["'];?/g;
+    /import\s*\{([^}]*)\}\s*from\s*["']@squidlab\/phosphor-solid\/icons["'];?/g;
   const owned =
     /[\\/](packages[\\/]solid(-[\w-]+)?|apps[\\/]docs[\\/]src[\\/]blocks[\\/]solid)[\\/]/;
 
@@ -185,7 +184,7 @@ function solidPerIconImports() {
     enforce: "pre" as const,
     name: "pisagor:solid-per-icon-imports",
     transform(code: string, id: string) {
-      if (!code.includes("@pisagor/solid/icons") || !owned.test(id))
+      if (!code.includes("@squidlab/phosphor-solid/icons") || !owned.test(id))
         return null;
       if (id.includes("?")) return null;
       let changed = false;
@@ -208,7 +207,9 @@ function solidPerIconImports() {
         return [
           ...direct,
           ...(rest.length
-            ? [`import { ${rest.join(", ")} } from "@pisagor/solid/icons";`]
+            ? [
+                `import { ${rest.join(", ")} } from "@squidlab/phosphor-solid/icons";`,
+              ]
             : []),
         ].join("\n");
       });

@@ -1,5 +1,5 @@
 import { Button, Kbd } from "@pisagor/solid";
-import { FloppyDiskIcon } from "@pisagor/solid/icons";
+import { FloppyDiskIcon } from "@squidlab/phosphor-solid/icons";
 
 export function WithButton() {
   return (

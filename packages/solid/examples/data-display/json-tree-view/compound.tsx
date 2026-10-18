@@ -1,5 +1,5 @@
 import { JsonTreeView } from "@pisagor/solid";
-import { CaretRightIcon } from "@pisagor/solid/icons";
+import { CaretRightIcon } from "@squidlab/phosphor-solid/icons";
 import { defaultData } from "./helpers";
 
 export function Compound() {

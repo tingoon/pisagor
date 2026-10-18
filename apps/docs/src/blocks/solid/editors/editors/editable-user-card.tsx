@@ -1,7 +1,7 @@
 /** @jsxImportSource solid-js */
 
 import { Button, Card, Editable, Field, Input } from "@pisagor/solid";
-import { CheckIcon, XIcon } from "@pisagor/solid/icons";
+import { CheckIcon, XIcon } from "@squidlab/phosphor-solid/icons";
 import { cn } from "@pisagor/utils";
 import { editableUserCardBlock } from "#/styles/recipes/editors";
 

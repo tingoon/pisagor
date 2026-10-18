@@ -1,6 +1,6 @@
 <script lang="ts">
   import { ActionBar, AlertDialog, Button } from "@pisagor/svelte";
-  import { TrashIcon, XIcon } from "@pisagor/svelte/icons";
+  import { TrashIcon, XIcon } from "phosphor-svelte";
 </script>
 
 <ActionBar>

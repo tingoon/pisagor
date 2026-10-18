@@ -1,6 +1,6 @@
 import { buttonGroupRecipe } from "@pisagor/recipes";
 import { Button, ButtonGroup } from "@pisagor/solid";
-import { MinusIcon, PlusIcon } from "@pisagor/solid/icons";
+import { MinusIcon, PlusIcon } from "@squidlab/phosphor-solid/icons";
 import { tv } from "tailwind-variants";
 
 const brandButtonGroupRecipe = tv({

@@ -1,7 +1,7 @@
 /** @jsxImportSource solid-js */
 
 import { Field, PasswordInput } from "@pisagor/solid";
-import { CheckIcon, XIcon } from "@pisagor/solid/icons";
+import { CheckIcon, XIcon } from "@squidlab/phosphor-solid/icons";
 import { cn } from "@pisagor/utils";
 import { createSignal, createUniqueId, For, Show } from "solid-js";
 import {
