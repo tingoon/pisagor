@@ -1,16 +1,12 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
 import { buttonGroupRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Separator, type SeparatorProps } from "./separator";
 
 // #region Context
-const {
-  useStyles: useButtonGroup,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "ButtonGroup",
   recipe: buttonGroupRecipe,
 });
@@ -20,9 +16,7 @@ const {
 export const ButtonGroupRoot = withProvider(ark.fieldset, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<
-  ComponentProps<typeof ark.fieldset> & BaseButtonGroupProps
->;
+}) as FunctionComponent<HTMLArkProps<"fieldset"> & BaseButtonGroupProps>;
 
 export const ButtonGroupText = withContext(ark.div, {
   name: "Text",
@@ -34,7 +28,7 @@ export function ButtonGroupSeparator({
   className,
   ...rest
 }: SeparatorProps) {
-  const { slots } = useButtonGroup();
+  const { slots } = useStyles();
 
   return (
     <Separator

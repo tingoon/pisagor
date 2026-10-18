@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { waitForEvent } from "@ark-ui/svelte/tour";
+  import { waitForEvent } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import {
     Checkbox,
@@ -32,6 +32,7 @@
           },
         );
         promise.then(() => next());
+
         return cancel;
       },
       id: "enter-name",
@@ -51,6 +52,7 @@
           },
         );
         promise.then(() => next());
+
         return cancel;
       },
       id: "enter-email",
@@ -70,6 +72,7 @@
           },
         );
         promise.then(() => next());
+
         return cancel;
       },
       id: "check-terms",

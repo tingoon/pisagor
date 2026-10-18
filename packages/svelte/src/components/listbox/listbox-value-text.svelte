@@ -2,12 +2,12 @@
   import {
     Listbox as ListboxPrimitive,
     type ListboxValueTextProps,
-  } from "@ark-ui/svelte/listbox";
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import { useListbox } from "./listbox.context";
+  import { useStyles } from "./listbox.context";
 
   let { class: className, ...rest }: ListboxValueTextProps = $props();
-  const styles = useListbox();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

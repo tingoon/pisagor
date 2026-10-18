@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type FieldErrorTextProps,
     Field as FieldPrimitive,
-  } from "@ark-ui/svelte/field";
+    type FieldErrorTextProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useFieldSlots } from "./field.context";
 

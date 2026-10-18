@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { createListCollection } from "@ark-ui/svelte";
   import { Combobox, Field, TagsInput } from "@pisagor/svelte";
 
   const frameworks = [

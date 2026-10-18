@@ -2,7 +2,7 @@
   import {
     PasswordInput as PasswordInputPrimitive,
     type PasswordInputRootProps,
-  } from "@ark-ui/svelte/password-input";
+  } from "@ark-ui/svelte";
   import { passwordInputRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 

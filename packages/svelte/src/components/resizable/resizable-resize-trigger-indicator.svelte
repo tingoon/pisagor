@@ -2,7 +2,7 @@
   import {
     Splitter as SplitterPrimitive,
     type SplitterResizeTriggerIndicatorProps,
-  } from "@ark-ui/svelte/splitter";
+  } from "@ark-ui/svelte";
   import { withContext } from "./resizable.context";
 
   let { ...rest }: SplitterResizeTriggerIndicatorProps = $props();

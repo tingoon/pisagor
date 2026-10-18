@@ -9,13 +9,6 @@ import {
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const HEAVY = [
-  "data-grid",
-  "data-table",
-  "phone-input",
-  "rich-text-editor",
-] as const;
-
 const EXAMPLE_EXTENSIONS = new Set([
   ".astro",
   ".svelte",
@@ -76,7 +69,6 @@ interface ScanTarget {
   packageDir: string;
   framework: Framework;
   componentsRoot: string;
-  extraDirs?: string[];
 }
 
 const COMPONENT_FILE_EXTENSIONS = [".tsx", ".ts", ".astro", ".svelte"];
@@ -85,6 +77,7 @@ function listDirs(dir: string): string[] {
   if (!existsSync(dir)) {
     return [];
   }
+
   return readdirSync(dir)
     .filter((name) => {
       if (name.startsWith(".") || name === "index.ts" || name === "internal") {
@@ -122,6 +115,7 @@ function listFlatFiles(dir: string): Map<string, string> {
       files.set(name, abs);
     }
   }
+
   return files;
 }
 
@@ -146,6 +140,7 @@ function findSources(dir: string, name: string): string[] {
     if (base === "index") {
       return 3;
     }
+
     return 2;
   };
 
@@ -165,6 +160,7 @@ function findExamplesRoot(packageDir: string): string | null {
   if (existsSync(examples) && statSync(examples).isDirectory()) {
     return examples;
   }
+
   return null;
 }
 
@@ -196,6 +192,7 @@ function resolveExampleDir(
       return nested;
     }
   }
+
   return null;
 }
 
@@ -234,6 +231,7 @@ function loadExamples(
       path: path.relative(packageDir, abs),
     });
   }
+
   return examples;
 }
 
@@ -288,20 +286,6 @@ function buildComponentsCatalog(target: ScanTarget): ComponentsCatalog {
     );
   }
 
-  for (const dir of target.extraDirs ?? []) {
-    const name = path.basename(dir);
-    byName.set(
-      name,
-      buildComponent(
-        findSources(dir, name),
-        name,
-        target.package,
-        target.packageDir,
-        examplesRoot,
-      ),
-    );
-  }
-
   return {
     components: [...byName.values()].sort((a, b) =>
       a.name.localeCompare(b.name),
@@ -333,6 +317,7 @@ function buildRecipesCatalog(): RecipesCatalog {
       };
     }
   }
+
   return {
     kind: "recipes",
     package: "@pisagor/recipes",
@@ -350,9 +335,6 @@ function frameworkTargets(
   const targets: ScanTarget[] = [
     {
       componentsRoot: path.join(base, "src/components"),
-      extraDirs: HEAVY.map((name) => path.join(base, "src", name)).filter(
-        (dir) => existsSync(dir),
-      ),
       framework,
       package: `@pisagor/${pkg}`,
       packageDir: base,
@@ -403,10 +385,7 @@ function main() {
   ];
 
   for (const target of targets) {
-    if (
-      !existsSync(target.componentsRoot) &&
-      !(target.extraDirs?.length ?? 0)
-    ) {
+    if (!existsSync(target.componentsRoot)) {
       console.warn(`skip ${target.package}: missing sources`);
       continue;
     }

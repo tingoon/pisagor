@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type TimerControlProps,
     Timer as TimerPrimitive,
-  } from "@ark-ui/svelte/timer";
+    type TimerControlProps,
+  } from "@ark-ui/svelte";
   import { withTimerContext } from "./timer.context";
 
   let { children, ...rest }: TimerControlProps = $props();

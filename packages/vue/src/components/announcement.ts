@@ -1,9 +1,8 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type { AnnouncementProps as BaseAnnouncementRootProps } from "@pisagor/props";
 import { announcementRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -70,6 +69,7 @@ export const AnnouncementShorthand = defineComponent({
           h(AnnouncementTitle, props.titleProps ?? null, () => props.title),
         );
       }
+
       return h(AnnouncementRoot, { ...attrs, class: props.class }, () => nodes);
     };
   },

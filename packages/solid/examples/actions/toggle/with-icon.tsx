@@ -1,5 +1,5 @@
 import { Toggle } from "@pisagor/solid";
-import { TextBIcon } from "@pisagor/solid/icons";
+import { TextBIcon } from "@squidlab/phosphor-solid/icons";
 
 export function WithIcon() {
   return (

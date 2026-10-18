@@ -8,7 +8,7 @@ import {
 } from "#/lib/examples-host";
 
 const globs: ExampleGlobs = {
-  block: import.meta.glob("../../../blocks/vue/*/*.{ts,tsx,vue}"),
+  block: import.meta.glob("../../../blocks/vue/**/*.{ts,tsx,vue}"),
   component: import.meta.glob(
     "../../../../../../packages/vue/examples/*/*/*.{ts,tsx,vue}",
   ),
@@ -48,6 +48,7 @@ onMounted(() => {
         target,
       };
       mounted.value = [...mounted.value, entry];
+
       return () => {
         mounted.value = mounted.value.filter((item) => item !== entry);
       };

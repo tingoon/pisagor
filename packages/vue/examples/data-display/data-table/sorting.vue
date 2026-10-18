@@ -47,6 +47,7 @@ const SortableHead = defineComponent({
       return h(DataTable.HeaderRow, null, () =>
         headerGroup.headers.map((header) => {
           const sorted = header.column.getIsSorted();
+
           return h(
             Table.Head,
             { "data-part": "head", "data-scope": "data-table", key: header.id },

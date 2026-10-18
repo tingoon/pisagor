@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type ImageCropperRootProps as ArkRootProps,
     ImageCropper as ImageCropperPrimitive,
-  } from "@ark-ui/svelte/image-cropper";
+    type ImageCropperRootProps as ArkRootProps,
+  } from "@ark-ui/svelte";
   import type { ImageCropperProps as BaseImageCropperProps } from "@pisagor/props";
   import { imageCropperRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

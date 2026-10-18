@@ -1,11 +1,11 @@
+import { Clipboard as ClipboardPrimitive } from "@ark-ui/solid";
 import type {
   ClipboardControlProps,
   ClipboardIndicatorProps,
   ClipboardInputProps,
   ClipboardRootProps,
   ClipboardValueTextProps,
-} from "@ark-ui/solid/clipboard";
-import { Clipboard as ClipboardPrimitive } from "@ark-ui/solid/clipboard";
+} from "@ark-ui/solid";
 import type { ClipboardProps as BaseClipboardProps } from "@pisagor/props";
 import {
   type ClipboardRecipeSlot,
@@ -16,11 +16,14 @@ import {
 import { cn } from "@pisagor/utils";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CheckIcon, ClipboardIcon } from "../internal/icons";
-import type { VariantClassNames } from "../internal/types";
+import {
+  CheckIcon,
+  ClipboardIcon,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button, type ButtonProps } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -121,6 +124,7 @@ const ClipboardLabel = withContext(ClipboardPrimitive.Label, { name: "Label" });
 
 // #region Shorthand
 export function Clipboard(props: ClipboardProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "buttonSize",
     "buttonVariant",
@@ -143,8 +147,7 @@ export function Clipboard(props: ClipboardProps): JSX.Element {
   const variant = () => local.variant ?? "input";
   const buttonSize = () =>
     local.buttonSize ?? (`icon-${local.size ?? "md"}` as ButtonProps["size"]);
-  const buttonAriaLabel = () =>
-    local.buttonAriaLabel ?? useTranslation("clipboard.copy");
+  const buttonAriaLabel = () => m("clipboard.copy", local.buttonAriaLabel);
   const copyIcon = () => local.copyIcon ?? <ClipboardIcon />;
   const copiedIcon = () => local.copiedIcon ?? <CheckIcon />;
   const shellClassName = () =>

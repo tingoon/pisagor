@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type TourActionTriggerProps,
     Tour as TourPrimitive,
-  } from "@ark-ui/svelte/tour";
+    type TourActionTriggerProps,
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: TourActionTriggerProps = $props();
 </script>

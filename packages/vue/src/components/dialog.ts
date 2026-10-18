@@ -1,4 +1,4 @@
-import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
+import { Dialog as DialogPrimitive } from "@ark-ui/vue";
 import type { DialogProps as BaseDialogProps } from "@pisagor/props";
 import {
   type DialogRecipe,
@@ -15,10 +15,13 @@ import {
   type VNodeChild,
   watchEffect,
 } from "vue";
-import { renderIconCloseButton } from "../internal/close-button";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
-import { createContext } from "../internal/utils/create-context";
+import {
+  type ClassValue,
+  createContext,
+  createSlotRecipeContext,
+  renderIconCloseButton,
+} from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Slot recipe context
 const { provideStyles: provideDialogStyles, withContext } =
@@ -217,6 +220,7 @@ export const DialogContent = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const dialogContext = useDialogLocal();
 
     return () => {
@@ -244,7 +248,10 @@ export const DialogContent = defineComponent({
                 slots.default?.(),
                 props.showCloseButton
                   ? h(DialogCloseTrigger, { asChild: true }, () =>
-                      renderIconCloseButton(dialogContext.slots.inline()),
+                      renderIconCloseButton(
+                        m("dialog.close"),
+                        dialogContext.slots.inline(),
+                      ),
                     )
                   : null,
               ],

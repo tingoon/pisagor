@@ -1,10 +1,10 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type { SkipNavProps as BaseSkipNavLinkProps } from "@pisagor/props";
 import { skipNavRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { ClassValue } from "../internal/types";
-import { useTranslation } from "./provider/context";
+import type { ClassValue } from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Types
 export interface SkipNavLinkProps extends BaseSkipNavLinkProps {
@@ -44,6 +44,7 @@ export const SkipNavLink = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const variantSlots = props.recipe();
 
     return () =>
@@ -56,7 +57,7 @@ export const SkipNavLink = defineComponent({
           "data-scope": "skip-nav",
           href: `#${props.id}`,
         },
-        slots.default ?? (() => useTranslation("skipNav.label")),
+        slots.default ?? (() => m("skipNav.label")),
       );
   },
 });

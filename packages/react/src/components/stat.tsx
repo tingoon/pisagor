@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { ArrowDownIcon, ArrowUpIcon, MinusIcon } from "@phosphor-icons/react";
 import type {
   StatProps as BaseStatRootProps,
@@ -10,9 +10,8 @@ import {
   statTrendRecipe,
 } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
-import { useMessage, type MessageKey } from "./provider/context";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
+import { useLocale, type MessageKey } from "./provider/context";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -25,7 +24,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 export const StatRoot = withProvider(ark.div, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<ComponentProps<typeof ark.div> & BaseStatRootProps>;
+}) as FunctionComponent<HTMLArkProps<"div"> & BaseStatRootProps>;
 
 export const StatLabel = withContext(ark.div, {
   name: "Label",
@@ -63,7 +62,9 @@ export function StatTrend({
   children,
   className,
   ...rest
-}: ComponentProps<typeof ark.div> & BaseStatTrendProps & StatTrendOwnProps) {
+}: HTMLArkProps<"div"> & BaseStatTrendProps & StatTrendOwnProps) {
+  const { m } = useLocale();
+
   return (
     <ark.div
       {...rest}
@@ -73,9 +74,7 @@ export function StatTrend({
       data-trend={trend}
     >
       {icon === undefined ? TREND_ICONS[trend] : icon}
-      <span className="sr-only">
-        {useMessage(`stat.trend.${trend}` as MessageKey)}
-      </span>
+      <span className="sr-only">{m(`stat.trend.${trend}` as MessageKey)}</span>
       {children}
     </ark.div>
   );

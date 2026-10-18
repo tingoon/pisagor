@@ -1,46 +1,45 @@
-import { ark } from "@ark-ui/solid/factory";
+import { Steps as StepsPrimitive, ark } from "@ark-ui/solid";
 import type {
+  HTMLArkProps,
   StepsCompletedContentProps,
   StepsContentProps,
   StepsIndicatorProps,
+  StepsItemProps as StepsItemPrimitiveProps,
   StepsListProps,
   StepsNextTriggerProps,
   StepsPrevTriggerProps,
-  StepsItemProps as StepsPrimitiveItemProps,
-  StepsRootProps as StepsPrimitiveRootProps,
+  StepsRootProps as StepsRootPrimitiveProps,
   StepsSeparatorProps,
   StepsTriggerProps,
-} from "@ark-ui/solid/steps";
-import { Steps as StepsPrimitive } from "@ark-ui/solid/steps";
+} from "@ark-ui/solid";
 import type {
   StepsItemProps as BaseStepsItemProps,
   StepsProps as BaseStepsRootProps,
 } from "@pisagor/props";
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CheckIcon } from "../internal/icons";
+import { CheckIcon, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext: withStepsContext, withProvider: withStepsProvider } =
   createSlotRecipeContext({ name: "Steps", recipe: stepsRecipe });
 
 const {
-  useStyles: useStepsItem,
+  useStyles,
   withContext: withStepsItemContext,
   withProvider: withStepsItemProvider,
 } = createSlotRecipeContext({ name: "Steps", recipe: stepsItemRecipe });
 // #endregion
 
 export interface LocalStepsRootProps
-  extends StepsPrimitiveRootProps, BaseStepsRootProps {}
+  extends StepsRootPrimitiveProps, BaseStepsRootProps {}
 
 export interface LocalStepsItemProps
-  extends StepsPrimitiveItemProps, BaseStepsItemProps {}
+  extends StepsItemPrimitiveProps, BaseStepsItemProps {}
 
-export type StepsTitleProps = ComponentProps<typeof ark.span>;
-export type StepsDescriptionProps = ComponentProps<typeof ark.span>;
+export type StepsTitleProps = HTMLArkProps<"span">;
+export type StepsDescriptionProps = HTMLArkProps<"span">;
 
 export const StepsRoot: Component<LocalStepsRootProps> = withStepsProvider(
   StepsPrimitive.Root,
@@ -64,7 +63,7 @@ export const StepsTrigger: Component<StepsTriggerProps> = withStepsItemContext(
 
 export function StepsIndicator(props: StepsIndicatorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useStepsItem();
+  const styles = useStyles();
 
   return (
     <StepsPrimitive.Indicator
@@ -119,7 +118,7 @@ export type {
   StepsRootProps,
   StepsSeparatorProps,
   StepsTriggerProps,
-} from "@ark-ui/solid/steps";
+} from "@ark-ui/solid";
 
 export const Steps = Object.assign(StepsRoot, {
   CompletedContent: StepsCompletedContent,

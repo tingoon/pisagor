@@ -21,6 +21,23 @@ Framework-agnostic product naming and catalog policy for Pisagor component packa
 
 Import paths below use `@pisagor/{pkg}` for light components — substitute `react`, `vue`, `solid`, `svelte`, or `astro` as appropriate. Heavy modules stay on dedicated subpaths (`data-grid`, `data-table`, `phone-input`, `rich-text-editor`).
 
+Import from package barrels; use subpaths only for CSS, separate entries, or names missing from the root. This covers Ark (`@ark-ui/<fw>`), Zag, Phosphor (`phosphor-svelte`, not `phosphor-svelte/lib/*`) and our own packages. Allowed subpaths: CSS (`@pisagor/*/styles`); separate runtime or tooling entries (`react-dom/client`, `solid-js/web`, `svelte/elements`, `astro/*`, `storybook/test`, `@storybook/*/node`); packages whose root does not export the name (`@squidlab/phosphor-solid/icons`, `@modelcontextprotocol/sdk/server/*`, React `createGridCollection` from `@ark-ui/react/collection`); lazy-loaded heavy modules (`@tanstack/highlight/core` and `/languages/*`); and our intentional subpaths (`/hooks`, `/utils`, `data-grid`, `data-table`, `phone-input`, `rich-text-editor`, form `/tanstack`, `@pisagor/presets/pisagor`). Lint enforces this (`no-restricted-imports` in `bunfig.toml`, `noRestrictedImports` in `biome.json`); add a new exception there, or a disable comment that says why.
+
+Type imports: when an import has 3 or more inline `type X` specifiers, split it into a value import plus one `import type { … } from "…"` with all the types (keep aliases, e.g. `SliderRootProps as SliderRootPrimitiveProps`). An import with only types is always a pure `import type`. Imports with 1–2 inline types stay inline. No linter enforces the 3+ threshold: Biome `useImportType` (`auto`, `inlineType`, `separatedType`) and oxlint `consistent-type-imports` (`fixStyle`) only pick one style for every import, so follow this by hand. `bun fmt` and Biome `useImportType` (`auto`) leave both forms as they are.
+
+Blank line before `return`: put one empty line between the preceding statements and a `return` (e.g. `const { m } = useLocale();`, an empty line, then `return (`). A `return` that is the first statement of its block or `case` needs none. This applies to `.ts`/`.tsx` and the script blocks of `.vue`, `.svelte` and `.astro` files. No tool enforces it: `bun lint` rejects `padding-line-between-statements` / `newline-before-return` as formatting rules, `bun fmt` has no such option, and Biome has no equivalent rule, so follow it by hand.
+
+Host element props — match the runtime host, do not mix:
+
+| Host                            | React props type                                                | Notes                                                                                                              |
+| ------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `ark.button` / `ark.div` / …    | `HTMLArkProps<"tag">` from `@ark-ui/react`                      | Includes `PolymorphicProps` (`asChild`). Do **not** also extend `ComponentPropsWithRef` / `PolymorphicProps`.      |
+| `ark.*` when `ref` is forwarded | `HTMLArkPropsWithRef<"tag">` from `packages/react/src/internal` | Use instead of `HTMLArkProps` + `RefAttributes`. Do **not** mix with `HTMLArkProps` / separate `PolymorphicProps`. |
+| Native `<button>` / `<div>` / … | `ComponentPropsWithRef<"tag">` from `react`                     | No Ark types.                                                                                                      |
+| Never                           | `ComponentProps<typeof ark.tag>`                                | Prefer `HTMLArkProps<"tag">` (or `HTMLArkPropsWithRef` when forwarding `ref`).                                     |
+
+Solid: `HTMLArkProps<"tag">` from `@ark-ui/solid` for `ark.*`. Vue: runtime props/attrs (nothing to type). Svelte: `HTMLAttributes<Element>` from `svelte/elements` (`@ark-ui/svelte` does not export `HTMLProps` / `PolymorphicProps` from its barrel).
+
 ---
 
 ## Overlay vs modal
@@ -71,7 +88,7 @@ Prefer public components in app code; only extend `combobox` when building packa
 
 ## i18n and direction
 
-- **Library defaults** (aria-labels, placeholders) ship in English. Consumers override via `Provider` `translations` (`useTranslation` / framework equivalent) or by passing props.
+- **Library defaults** (aria-labels, placeholders) ship as English UI messages. Consumers override them via `Provider` `messages` or by passing props. Components call `const { m } = useLocale();` once at the top of the component/setup and use `m(key, prop)` in markup (the prop wins when it is not `null`/`undefined`); use `formatMessage(m(key), values)` for placeholders.
 - **Direction:** inferred from `Provider` `locale` (RTL for `ar` / `he` / `fa` / `ur`). Icon mirroring follows resolved direction.
 - Consumers own localization; packages do not ship locale catalogs.
 

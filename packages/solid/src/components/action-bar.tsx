@@ -1,14 +1,7 @@
-import { ark } from "@ark-ui/solid/factory";
-import { Presence } from "@ark-ui/solid/presence";
+import { ark, type HTMLArkProps, Presence } from "@ark-ui/solid";
 import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
 import { actionBarRecipe } from "@pisagor/recipes";
-import type {
-  Accessor,
-  Component,
-  ComponentProps,
-  JSX,
-  ParentProps,
-} from "solid-js";
+import type { Accessor, Component, JSX, ParentProps } from "solid-js";
 import {
   createEffect,
   createMemo,
@@ -19,18 +12,17 @@ import {
   splitProps,
 } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { XIcon } from "../internal/icons";
+import { XIcon, createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
 import { Badge, type BadgeProps } from "./badge";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Separator, type SeparatorProps } from "./separator";
 
 // #region Context
 const {
   Context: ActionBarStylesContext,
-  useStyles: useActionBarStyles,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({ name: "ActionBar", recipe: actionBarRecipe });
 
@@ -75,17 +67,17 @@ export interface ActionBarProps
   onOpenChange?: (open: boolean) => void;
 }
 
-export type ActionBarTriggerProps = ComponentProps<typeof ark.button>;
-export type ActionBarContentProps = ComponentProps<typeof ark.div>;
+export type ActionBarTriggerProps = HTMLArkProps<"button">;
+export type ActionBarContentProps = HTMLArkProps<"div">;
 export type ActionBarSeparatorProps = SeparatorProps;
-export type ActionBarCloseProps = ComponentProps<typeof ark.button>;
+export type ActionBarCloseProps = HTMLArkProps<"button">;
 
 export interface ActionBarValueProps extends BadgeProps {
   count: number;
   label?: string;
 }
 
-export type ActionBarBodyProps = ComponentProps<typeof ark.div>;
+export type ActionBarBodyProps = HTMLArkProps<"div">;
 
 const defaultPositioning = { gutter: "16px", placement: "bottom" as const };
 
@@ -230,7 +222,7 @@ export function ActionBarTrigger(props: ActionBarTriggerProps): JSX.Element {
 
 export function ActionBarContent(props: ActionBarContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "aria-labelledby"]);
-  const styles = useActionBarStyles();
+  const styles = useStyles();
   const state = useActionBarState();
   const placement = () => state.positioning.placement;
   const gutter = () => state.positioning.gutter;
@@ -270,7 +262,7 @@ export function ActionBarSeparator(
   props: ActionBarSeparatorProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useActionBarStyles();
+  const styles = useStyles();
 
   return (
     <Separator
@@ -284,13 +276,14 @@ export function ActionBarSeparator(
 }
 
 export function ActionBarClose(props: ActionBarCloseProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["onClick", "class", "children"]);
-  const styles = useActionBarStyles();
+  const styles = useStyles();
   const state = useActionBarState();
 
   return (
     <ark.button
-      aria-label={useTranslation("actionBar.close")}
+      aria-label={m("actionBar.close")}
       {...rest}
       class={styles.slots.close({ class: local.class })}
       data-part="close"
@@ -314,7 +307,7 @@ export function ActionBarValue(props: ActionBarValueProps): JSX.Element {
     "label",
     "class",
   ]);
-  const styles = useActionBarStyles();
+  const styles = useStyles();
 
   return (
     <Badge

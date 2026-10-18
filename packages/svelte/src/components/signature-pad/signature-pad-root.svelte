@@ -2,7 +2,7 @@
   import {
     SignaturePad as SignaturePadPrimitive,
     type SignaturePadRootProps,
-  } from "@ark-ui/svelte/signature-pad";
+  } from "@ark-ui/svelte";
   import type { SignaturePadProps as BaseSignaturePadProps } from "@pisagor/props";
   import { signaturePadRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

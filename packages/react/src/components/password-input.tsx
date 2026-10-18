@@ -1,32 +1,31 @@
+import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/react";
 import type {
   PasswordInputIndicatorProps,
   PasswordInputInputProps,
-  PasswordInputRootProps as PasswordInputPrimitiveRootProps,
-  PasswordInputVisibilityTriggerProps as PasswordInputPrimitiveVisibilityTriggerProps,
-} from "@ark-ui/react/password-input";
-import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/react/password-input";
+  PasswordInputRootProps as PasswordInputRootPrimitiveProps,
+  PasswordInputVisibilityTriggerProps as PasswordInputVisibilityTriggerPrimitiveProps,
+} from "@ark-ui/react";
 import { EyeIcon, EyeSlashIcon, XIcon } from "@phosphor-icons/react";
 import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
 import { passwordInputRecipe } from "@pisagor/recipes";
 import type { RefAttributes } from "react";
 import { useClearableInput } from "../hooks";
-import type { FormControlVariant } from "../internal/types";
 import {
   InputGroup,
   type InputGroupButtonProps,
   type InputGroupProps,
 } from "./input-group";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Types
 
 export type PasswordInputRootProps = Pick<
-  PasswordInputPrimitiveRootProps,
+  PasswordInputRootPrimitiveProps,
   "className" | "defaultVisible" | "invalid" | "onVisibilityChange" | "visible"
 >;
 
 export type PasswordInputVisibilityTriggerProps = Omit<
-  PasswordInputPrimitiveVisibilityTriggerProps,
+  PasswordInputVisibilityTriggerPrimitiveProps,
   "asChild"
 >;
 
@@ -36,9 +35,6 @@ export interface PasswordInputProps
     Omit<PasswordInputInputProps, "className" | "size">,
     RefAttributes<HTMLInputElement>,
     BasePasswordInputProps {
-  size?: InputGroupProps["size"];
-  /** Visual shell variant. Defaults to `primary`. */
-  variant?: FormControlVariant;
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -79,7 +75,7 @@ function PasswordInputShorthand({
   className,
   ...inputProps
 }: PasswordInputProps) {
-  const passwordInputClearMessage = useMessage("passwordInput.clear");
+  const { m } = useLocale();
   const { fallback, children, ...restIndicatorProps } = indicatorProps ?? {};
   const {
     onClick: onClearClick,
@@ -132,7 +128,7 @@ function PasswordInputShorthand({
             <InputGroup.Addon align="inline-end" className={slots.clearAddon()}>
               <InputGroup.Button
                 {...restClearButtonProps}
-                aria-label={passwordInputClearMessage}
+                aria-label={m("passwordInput.clear")}
                 data-part="clear-trigger"
                 data-scope="password-input"
                 onClick={(event) => {
@@ -153,9 +149,7 @@ function PasswordInputShorthand({
               asChild
             >
               <InputGroup.Button
-                aria-label={useMessage(
-                  "passwordInput.togglePasswordVisibility",
-                )}
+                aria-label={m("passwordInput.togglePasswordVisibility")}
                 size="icon-xs"
                 variant="ghost"
               >
@@ -179,7 +173,7 @@ function PasswordInputRoot({
   recipe = passwordInputRecipe,
   className,
   ...rest
-}: PasswordInputPrimitiveRootProps & { recipe?: typeof passwordInputRecipe }) {
+}: PasswordInputRootPrimitiveProps & { recipe?: typeof passwordInputRecipe }) {
   return (
     <PasswordInputPrimitive.Root
       {...rest}
@@ -210,12 +204,14 @@ function PasswordInputInput(props: PasswordInputInputProps) {
 function PasswordInputVisibilityTrigger({
   children,
   ...rest
-}: PasswordInputPrimitiveVisibilityTriggerProps) {
+}: PasswordInputVisibilityTriggerPrimitiveProps) {
+  const { m } = useLocale();
+
   return (
     <InputGroup.Addon align="inline-end">
       <PasswordInputPrimitive.VisibilityTrigger {...rest} asChild>
         <InputGroup.Button
-          aria-label={useMessage("passwordInput.togglePasswordVisibility")}
+          aria-label={m("passwordInput.togglePasswordVisibility")}
           size="icon-xs"
           variant="ghost"
         >
@@ -247,4 +243,4 @@ export const PasswordInput = Object.assign(PasswordInputShorthand, {
   VisibilityTrigger: PasswordInputVisibilityTrigger,
 });
 
-export type { PasswordInputIndicatorProps } from "@ark-ui/react/password-input";
+export type { PasswordInputIndicatorProps } from "@ark-ui/react";

@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import { PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
 import type {
   BreadcrumbItemProps as BaseBreadcrumbItemProps,
@@ -12,14 +12,13 @@ import {
   type PropType,
   type VNodeChild,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
-import { useTranslation } from "./provider/context";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
   provideStyles: provideBreadcrumbStyles,
-  useStyles: useBreadcrumb,
+  useStyles,
   withContext: withBreadcrumbContext,
 } = createSlotRecipeContext({
   name: "Breadcrumb",
@@ -74,6 +73,7 @@ export const BreadcrumbRoot = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const recipeSlots = computed(() => props.recipe());
 
     provideBreadcrumbStyles({
@@ -88,7 +88,7 @@ export const BreadcrumbRoot = defineComponent({
         ark.nav as ArkPart,
         {
           ...attrs,
-          "aria-label": props.ariaLabel ?? useTranslation("breadcrumb.label"),
+          "aria-label": m("breadcrumb.label", props.ariaLabel),
           "data-part": "root",
           "data-scope": "breadcrumb",
         },
@@ -126,7 +126,7 @@ export const BreadcrumbSeparator = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useBreadcrumb();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -148,7 +148,7 @@ export const BreadcrumbEllipsis = defineComponent({
   inheritAttrs: false,
   name: "Breadcrumb.Ellipsis",
   setup(_, { attrs }) {
-    const styles = useBreadcrumb();
+    const styles = useStyles();
 
     return () =>
       h(

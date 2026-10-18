@@ -1,13 +1,14 @@
-import type { CollectionItem, ListCollection } from "@ark-ui/vue/collection";
-import { createListCollection } from "@ark-ui/vue/collection";
-import type {
-  ComboboxRootProps as ArkComboboxRootProps,
-  ComboboxInputValueChangeDetails,
-} from "@ark-ui/vue/combobox";
 import {
   Combobox as ComboboxPrimitive,
+  createListCollection,
   useComboboxContext as useCombobox,
-} from "@ark-ui/vue/combobox";
+} from "@ark-ui/vue";
+import type {
+  CollectionItem,
+  ComboboxInputValueChangeDetails,
+  ComboboxRootProps as ArkComboboxRootProps,
+  ListCollection,
+} from "@ark-ui/vue";
 import { PhCaretUpDown, PhCheck, PhX } from "@phosphor-icons/vue";
 import type { ComboboxProps as BaseComboboxRootProps } from "@pisagor/props";
 import { comboboxRecipe } from "@pisagor/recipes";
@@ -16,20 +17,21 @@ import {
   computed,
   defineComponent,
   h,
-  type InjectionKey,
   inject,
-  type PropType,
   provide,
   Teleport,
   unref,
-  type VNodeChild,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue, LoosePropValue } from "../internal/types";
-import { createContext } from "../internal/utils/create-context";
+import type { InjectionKey, PropType, VNodeChild } from "vue";
+import {
+  type ClassValue,
+  type LoosePropValue,
+  createContext,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -351,12 +353,14 @@ export const ComboboxClearTrigger = defineComponent({
     "aria-label": { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
+
     return () =>
       h(
         ComboboxPrimitive.ClearTrigger as ArkPart,
         {
           ...attrs,
-          "aria-label": props["aria-label"] ?? useTranslation("select.clear"),
+          "aria-label": m("select.clear", props["aria-label"]),
         },
         () => slots.default?.(),
       );
@@ -534,6 +538,7 @@ export const ComboboxEmpty = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const getSlots = useComboboxSlots();
 
     return () => {
@@ -545,7 +550,7 @@ export const ComboboxEmpty = defineComponent({
           ...attrs,
           class: cn(styleSlots.empty(), props.class, attrs.class),
         },
-        () => slots.default?.() ?? useTranslation("combobox.empty"),
+        () => slots.default?.() ?? m("combobox.empty"),
       );
     };
   },

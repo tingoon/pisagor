@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   StatProps as BaseStatRootProps,
   StatTrendProps as BaseStatTrendProps,
@@ -8,12 +8,16 @@ import {
   statRecipe,
   statTrendRecipe,
 } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { ArrowDownIcon, ArrowUpIcon, MinusIcon } from "../internal/icons";
-import type { VariantClassNames } from "../internal/types";
-import { type MessageKey, useTranslation } from "./provider/context";
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  MinusIcon,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
+import { type MessageKey, useLocale } from "./provider/context";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -23,11 +27,11 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export type StatRootProps = ComponentProps<typeof ark.div> & BaseStatRootProps;
-export type StatLabelProps = ComponentProps<typeof ark.div>;
-export type StatValueProps = ComponentProps<typeof ark.div>;
-export type StatDescriptionProps = ComponentProps<typeof ark.p>;
-export type StatTrendProps = ComponentProps<typeof ark.div> &
+export type StatRootProps = HTMLArkProps<"div"> & BaseStatRootProps;
+export type StatLabelProps = HTMLArkProps<"div">;
+export type StatValueProps = HTMLArkProps<"div">;
+export type StatDescriptionProps = HTMLArkProps<"p">;
+export type StatTrendProps = HTMLArkProps<"div"> &
   BaseStatTrendProps & {
     /**
      * Icon shown before the content. Defaults to an arrow matching `trend`;
@@ -65,6 +69,7 @@ export const StatDescription = withContext(ark.p, { name: "Description" });
 
 /** Leaf with its own recipe (`trend` variant stays on the part). */
 export function StatTrend(props: StatTrendProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "trend",
     "recipe",
@@ -94,9 +99,7 @@ export function StatTrend(props: StatTrendProps): JSX.Element {
       ) : (
         <MinusIcon aria-hidden />
       )}
-      <span class="sr-only">
-        {useTranslation(`stat.trend.${trend()}` as MessageKey)}
-      </span>
+      <span class="sr-only">{m(`stat.trend.${trend()}` as MessageKey)}</span>
       {local.children}
     </ark.div>
   );

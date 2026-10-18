@@ -36,6 +36,7 @@ function metaCollection(
   // Components: folder page (`accordion/meta.md` + design/develop).
   // Forms / blocks: single page file (`text-field.mdx`, `app-shell.mdx`).
   const singleMdx = area === "blocks" || area === "forms";
+
   return defineCollection({
     loader: glob({
       // Relative to the docs project root (not import.meta.url — that breaks when
@@ -44,6 +45,7 @@ function metaCollection(
       generateId: ({ entry }) => {
         const normalized = entry.replace(/\\/g, "/");
         if (singleMdx) return normalized.replace(/\.mdx$/, "");
+
         // `accordion/meta.md` → `accordion`
         return normalized.replace(/\/meta\.md$/, "").replace(/\.md$/, "");
       },

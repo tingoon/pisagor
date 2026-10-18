@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type ImageCropperImageProps,
     ImageCropper as ImageCropperPrimitive,
-  } from "@ark-ui/svelte/image-cropper";
+    type ImageCropperImageProps,
+  } from "@ark-ui/svelte";
   import { withContext } from "./image-cropper.context";
 
   let { ...rest }: ImageCropperImageProps = $props();

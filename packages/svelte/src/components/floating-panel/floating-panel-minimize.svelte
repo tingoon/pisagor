@@ -2,13 +2,13 @@
   import {
     FloatingPanel as FloatingPanelPrimitive,
     type FloatingPanelStageTriggerProps,
-  } from "@ark-ui/svelte/floating-panel";
+  } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import MinusIcon from "phosphor-svelte/lib/MinusIcon";
-  import { useMessageResolver } from "../provider/context";
+  import { MinusIcon } from "phosphor-svelte";
+  import { useLocale } from "../provider/context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type Props = Omit<FloatingPanelStageTriggerProps, "stage"> & {
     size?: "icon-xs" | "icon-sm" | "icon-md";
@@ -24,7 +24,7 @@
 </script>
 
 <FloatingPanelPrimitive.StageTrigger
-  aria-label={t("floatingPanel.minimize")}
+  aria-label={m("floatingPanel.minimize")}
   {...rest}
   class={cn(buttonRecipe({ size, variant }).base(), className)}
   stage="minimized"

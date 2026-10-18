@@ -1,17 +1,13 @@
 import type { ClassValue, VariantProps } from "tailwind-variants";
-import {
-  type Component,
-  type ComponentObjectPropsOptions,
-  computed,
-  type DefineSetupFnComponent,
-  defineComponent,
-  h,
-  type InjectionKey,
-  inject,
-  type Prop,
-  provide,
-  type Slots,
-  type VNode,
+import { computed, defineComponent, h, inject, provide } from "vue";
+import type {
+  Component,
+  ComponentObjectPropsOptions,
+  DefineSetupFnComponent,
+  InjectionKey,
+  Prop,
+  Slots,
+  VNode,
 } from "vue";
 
 type SlotClassProps = {

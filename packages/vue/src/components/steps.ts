@@ -1,5 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
-import { Steps as StepsPrimitive } from "@ark-ui/vue/steps";
+import { Steps as StepsPrimitive, ark } from "@ark-ui/vue";
 import { PhCheck } from "@phosphor-icons/vue";
 import type {
   StepsItemProps as BaseStepsItemProps,
@@ -7,8 +6,7 @@ import type {
 } from "@pisagor/props";
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Slot recipe context
 const { withContext: withStepsContext, withProvider: withStepsProvider } =
@@ -18,7 +16,7 @@ const { withContext: withStepsContext, withProvider: withStepsProvider } =
   });
 
 const {
-  useStyles: useStepsItem,
+  useStyles,
   withContext: withStepsItemContext,
   withProvider: withStepsItemProvider,
 } = createSlotRecipeContext({
@@ -68,7 +66,7 @@ export const StepsIndicator = defineComponent({
     },
   },
   setup(props, { attrs, slots: children }) {
-    const styles = useStepsItem();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;

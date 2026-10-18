@@ -2,6 +2,7 @@ import { SegmentGroup } from "@pisagor/react";
 
 export function Compound() {
   const items = ["Profile", "Account", "Security", "Notifications"];
+
   return (
     <SegmentGroup.Root className="rounded-lg" defaultValue="Profile">
       {items.map((item) => (

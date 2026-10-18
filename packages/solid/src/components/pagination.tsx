@@ -1,36 +1,36 @@
+import {
+  Pagination as PaginationPrimitive,
+  usePaginationContext,
+} from "@ark-ui/solid";
 import type {
   PaginationContextProps,
   PaginationEllipsisProps,
   PaginationItemProps,
   PaginationNextTriggerProps,
   PaginationPrevTriggerProps,
-  PaginationRootProps as PaginationPrimitiveRootProps,
-} from "@ark-ui/solid/pagination";
-import {
-  Pagination as PaginationPrimitive,
-  usePaginationContext,
-} from "@ark-ui/solid/pagination";
+  PaginationRootProps as PaginationRootPrimitiveProps,
+} from "@ark-ui/solid";
 import type { PaginationProps as BasePaginationRootProps } from "@pisagor/props";
 import { paginationRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import {
   CaretLeftIcon,
   CaretRightIcon,
   DotsThreeIcon,
-} from "../internal/icons";
+  createSlotRecipeContext,
+} from "../internal";
 import { Button, type ButtonProps } from "./button";
 
 // #region Context
-const { useStyles: usePagination, withProvider } = createSlotRecipeContext({
+const { useStyles, withProvider } = createSlotRecipeContext({
   name: "Pagination",
   recipe: paginationRecipe,
 });
 // #endregion
 
 export interface LocalPaginationRootProps
-  extends PaginationPrimitiveRootProps, BasePaginationRootProps {}
+  extends PaginationRootPrimitiveProps, BasePaginationRootProps {}
 
 export type PaginationItemsProps = Omit<PaginationContextProps, "children">;
 
@@ -102,7 +102,7 @@ export function PaginationNextTrigger(
 
 export function PaginationItem(props: PaginationItemProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = usePagination();
+  const styles = useStyles();
 
   return (
     <PaginationPrimitive.Item
@@ -152,6 +152,7 @@ export function PaginationItemLink(
   const pageValue = () => {
     if (local.page === "previous") return pagination().previousPage;
     if (local.page === "next") return pagination().nextPage;
+
     return local.page;
   };
 
@@ -180,7 +181,7 @@ export function PaginationEllipsis(
   props: PaginationEllipsisProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = usePagination();
+  const styles = useStyles();
 
   return (
     <PaginationPrimitive.Ellipsis
@@ -199,7 +200,7 @@ export type {
   PaginationNextTriggerProps,
   PaginationPrevTriggerProps,
   PaginationRootProps,
-} from "@ark-ui/solid/pagination";
+} from "@ark-ui/solid";
 
 export const Pagination = Object.assign(PaginationRoot, {
   Ellipsis: PaginationEllipsis,

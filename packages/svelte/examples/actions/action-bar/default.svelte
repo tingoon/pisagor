@@ -6,7 +6,7 @@
     PencilSimpleIcon,
     TrashIcon,
     XIcon,
-  } from "@pisagor/svelte/icons";
+  } from "phosphor-svelte";
 </script>
 
 <ActionBar>

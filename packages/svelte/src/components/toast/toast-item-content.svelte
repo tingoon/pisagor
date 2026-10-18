@@ -1,27 +1,29 @@
 <script lang="ts">
-  import {
-    type ToastActionTriggerProps,
-    type ToastCloseTriggerProps,
-    type ToastDescriptionProps,
-    type ToastOptions,
-    Toast as ToastPrimitive,
-    type ToastTitleProps,
-  } from "@ark-ui/svelte/toast";
+  import { Toast as ToastPrimitive } from "@ark-ui/svelte";
+  import type {
+    ToastActionTriggerProps,
+    ToastCloseTriggerProps,
+    ToastDescriptionProps,
+    ToastOptions,
+    ToastTitleProps,
+  } from "@ark-ui/svelte";
   import type { ToastItemRecipeSlot } from "@pisagor/recipes";
-  import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
-  import InfoIcon from "phosphor-svelte/lib/InfoIcon";
-  import WarningCircleIcon from "phosphor-svelte/lib/WarningCircleIcon";
-  import WarningIcon from "phosphor-svelte/lib/WarningIcon";
-  import XIcon from "phosphor-svelte/lib/XIcon";
+  import {
+    CheckCircleIcon,
+    InfoIcon,
+    WarningCircleIcon,
+    WarningIcon,
+    XIcon,
+  } from "phosphor-svelte";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import Button from "../button.svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import Spinner from "../spinner.svelte";
-  import { useToastItem } from "./toast.context";
+  import { useStyles } from "./toast.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type Props = {
     actionsProps?: Omit<HTMLAttributes<HTMLDivElement>, "class">;
@@ -51,7 +53,7 @@
     classNames,
   }: Props = $props();
 
-  const styles = useToastItem();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
   const isExplicitClosable = $derived(toastData.closable === false);
 
@@ -126,7 +128,7 @@
       {#snippet asChild(props)}
         <Button
           {...props({ class: slots.close({ class: classNames?.close }) })}
-          aria-label={t("toast.close")}
+          aria-label={m("toast.close")}
           size="icon-xs"
           variant="ghost"
         >

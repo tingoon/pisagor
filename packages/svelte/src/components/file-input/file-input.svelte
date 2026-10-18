@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
   import {
     type FormControlGroupShellVariantProps,
@@ -9,11 +9,11 @@
   import { cn } from "@pisagor/utils";
   import type { HTMLInputAttributes } from "svelte/elements";
   import { InputGroup } from "../input-group";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
   import { Context } from "./file-input.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type FormControlVariant = "primary" | "secondary";
 
@@ -38,10 +38,10 @@
     multiple,
     name,
     required,
-    browseLabel = t("fileInput.browse"),
+    browseLabel = m("fileInput.browse"),
     capture,
     id,
-    placeholder = t("fileInput.placeholder"),
+    placeholder = m("fileInput.placeholder"),
     onchange,
     onFilesChange,
     onValueChange,
@@ -66,6 +66,7 @@
   function formatFileLabel(files: globalThis.File[]): string | undefined {
     if (files.length === 0) return undefined;
     if (files.length === 1) return files[0]?.name;
+
     return `${files.length} files selected`;
   }
 

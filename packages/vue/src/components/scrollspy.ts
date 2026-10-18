@@ -9,7 +9,7 @@ import {
   type PropType,
   ref,
 } from "vue";
-import type { ClassValue } from "../internal/types";
+import type { ClassValue } from "../internal";
 
 // #region Types
 type ScrollTarget = HTMLElement | Document | null | undefined;
@@ -298,6 +298,7 @@ export const Scrollspy = defineComponent({
       const anchorListeners = anchorElements.map((item) => {
         const listener = scrollTo(item as HTMLElement);
         item.addEventListener("click", listener);
+
         return { item, listener };
       });
 

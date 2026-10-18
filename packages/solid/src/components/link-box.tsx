@@ -1,8 +1,8 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { LinkBoxProps as BaseLinkBoxRootProps } from "@pisagor/props";
 import { linkBoxRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { Component } from "solid-js";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -13,9 +13,9 @@ const { withContext, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface LinkBoxRootProps
-  extends ComponentProps<typeof ark.div>, BaseLinkBoxRootProps {}
+  extends HTMLArkProps<"div">, BaseLinkBoxRootProps {}
 
-export type LinkOverlayLinkProps = ComponentProps<typeof ark.a>;
+export type LinkOverlayLinkProps = HTMLArkProps<"a">;
 // #endregion
 
 // #region Parts

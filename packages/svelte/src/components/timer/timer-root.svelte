@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type TimerRootProps as ArkRootProps,
     Timer as TimerPrimitive,
-  } from "@ark-ui/svelte/timer";
+    type TimerRootProps as ArkRootProps,
+  } from "@ark-ui/svelte";
   import type { TimerProps as BaseTimerProps } from "@pisagor/props";
   import { withTimerProvider } from "./timer.context";
   import TimerArea from "./timer-area.svelte";

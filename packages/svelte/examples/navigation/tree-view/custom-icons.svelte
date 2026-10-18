@@ -4,9 +4,7 @@
     createTreeCollection,
     TreeView,
   } from "@pisagor/svelte";
-  import FileCodeIcon from "phosphor-svelte/lib/FileCodeIcon";
-  import FileJsIcon from "phosphor-svelte/lib/FileJsIcon";
-  import FileTextIcon from "phosphor-svelte/lib/FileTextIcon";
+  import { FileCodeIcon, FileJsIcon, FileTextIcon } from "phosphor-svelte";
   import TreeNode from "./tree-node.svelte";
 
   const fileIcons = createFileIcons({

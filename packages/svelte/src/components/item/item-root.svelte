@@ -1,17 +1,16 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { ItemProps as BaseItemProps } from "@pisagor/props";
   import { itemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { SizeScaleProps } from "../../internal/types";
+
   import { setItemContext } from "./item.context";
   import { useItemGroup } from "./item-group.context";
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
-  } & BaseItemProps &
-    SizeScaleProps;
+  } & BaseItemProps;
 
   let {
     variant: variantProp,

@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type ClipboardInputProps,
     Clipboard as ClipboardPrimitive,
-  } from "@ark-ui/svelte/clipboard";
+    type ClipboardInputProps,
+  } from "@ark-ui/svelte";
   import { withContext } from "./clipboard.context";
 
   let { ...rest }: ClipboardInputProps = $props();

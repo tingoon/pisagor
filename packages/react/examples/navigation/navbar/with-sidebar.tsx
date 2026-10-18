@@ -6,6 +6,7 @@ import {
   UserIcon,
 } from "@phosphor-icons/react";
 import { Avatar, Button, Navbar, Sidebar } from "@pisagor/react";
+
 export function WithSidebar() {
   return (
     <Sidebar.Provider>

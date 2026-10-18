@@ -1,11 +1,11 @@
+import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/solid";
 import type {
   SignaturePadClearTriggerProps,
   SignaturePadControlProps,
   SignaturePadGuideProps,
-  SignaturePadRootProps as SignaturePadPrimitiveRootProps,
+  SignaturePadRootProps as SignaturePadRootPrimitiveProps,
   SignaturePadSegmentProps,
-} from "@ark-ui/solid/signature-pad";
-import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/solid/signature-pad";
+} from "@ark-ui/solid";
 import type { SignaturePadProps as BaseSignaturePadRootProps } from "@pisagor/props";
 import {
   formControlZoneRecipe,
@@ -15,17 +15,19 @@ import {
 import { cn } from "@pisagor/utils";
 import type { Component, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { ArrowCounterClockwiseIcon } from "../internal/icons";
-import type { VariantClassNames } from "../internal/types";
+import {
+  ArrowCounterClockwiseIcon,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
 const {
   Context: SignaturePadStylesContext,
-  useStyles: useSignaturePad,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "SignaturePad",
@@ -36,7 +38,7 @@ const {
 type FormControlVariant = "primary" | "secondary";
 type SignaturePadClassNames = VariantClassNames<SignaturePadRecipeSlot>;
 
-type SignaturePadRootProps = SignaturePadPrimitiveRootProps & {
+type SignaturePadRootProps = SignaturePadRootPrimitiveProps & {
   variant?: FormControlVariant;
   invalid?: boolean;
 } & BaseSignaturePadRootProps;
@@ -86,7 +88,7 @@ function SignaturePadControl(
     "children",
     "class",
   ]);
-  const styles = useSignaturePad();
+  const styles = useStyles();
   const surfaceVariant = useFormControlSurface();
   const variant = () => local.variant ?? ("primary" as FormControlVariant);
 
@@ -114,8 +116,10 @@ const SignaturePadSegment: Component<SignaturePadSegmentProps> = withContext(
 );
 
 function SignaturePadClear(props: SignaturePadClearProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSignaturePad();
+  const styles = useStyles();
+
   return (
     <SignaturePadPrimitive.ClearTrigger
       {...rest}
@@ -124,7 +128,7 @@ function SignaturePadClear(props: SignaturePadClearProps): JSX.Element {
           {...triggerProps({
             class: styles.slots.clear({ class: local.class }),
           })}
-          aria-label={useTranslation("signaturePad.clearSignature")}
+          aria-label={m("signaturePad.clearSignature")}
           size="icon-md"
           variant="ghost"
         >

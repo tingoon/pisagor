@@ -1,5 +1,6 @@
 import { InputGroup } from "@pisagor/solid";
-import { CopyIcon, FileCodeIcon } from "@pisagor/solid/icons";
+import { CopyIcon, FileCodeIcon } from "@squidlab/phosphor-solid/icons";
+
 export function AlignBlockStart() {
   return (
     <div class="flex flex-col gap-2">

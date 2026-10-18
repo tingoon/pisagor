@@ -2,7 +2,7 @@
   import {
     Timer as TimerPrimitive,
     type TimerSeparatorProps,
-  } from "@ark-ui/svelte/timer";
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useTimer } from "./timer.context";
 

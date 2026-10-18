@@ -1,11 +1,5 @@
-import {
-  type ComponentProps,
-  createContext,
-  createElement,
-  type ElementType,
-  type FunctionComponent,
-  use,
-} from "react";
+import { createContext, createElement, use } from "react";
+import type { ComponentProps, ElementType, FunctionComponent } from "react";
 import type { ClassValue, VariantProps } from "tailwind-variants";
 
 type SlotClassProps = {

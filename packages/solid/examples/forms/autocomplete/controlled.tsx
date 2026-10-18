@@ -1,5 +1,4 @@
-import { useListCollection } from "@ark-ui/solid/collection";
-import { useFilter } from "@ark-ui/solid/locale";
+import { useFilter, useListCollection } from "@ark-ui/solid";
 import { Autocomplete } from "@pisagor/solid";
 import { createSignal, For } from "solid-js";
 
@@ -13,6 +12,7 @@ export function Controlled() {
   const [value, setValue] = createSignal<string | undefined>("banana");
   const selected = () => {
     const current = value();
+
     return current ? [current] : [];
   };
 

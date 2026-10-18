@@ -1,5 +1,6 @@
 import { TrashIcon, XIcon } from "@phosphor-icons/react";
 import { ActionBar, AlertDialog, Button } from "@pisagor/react";
+
 export function WithDialog() {
   return (
     <ActionBar>

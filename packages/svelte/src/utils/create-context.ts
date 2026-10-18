@@ -1,4 +1,4 @@
-import { createContext as createArkContext } from "@ark-ui/svelte/utils";
+import { createContext as createArkContext } from "@ark-ui/svelte";
 
 export interface CreateContextOptions<T> {
   /** Value returned when no provider is present and `strict` is false. */

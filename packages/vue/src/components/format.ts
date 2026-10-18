@@ -2,7 +2,7 @@ import {
   FormatByte as FormatBytePrimitive,
   FormatNumber as FormatNumberPrimitive,
   FormatRelativeTime as FormatRelativeTimePrimitive,
-} from "@ark-ui/vue/format";
+} from "@ark-ui/vue";
 import { defineComponent, h } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

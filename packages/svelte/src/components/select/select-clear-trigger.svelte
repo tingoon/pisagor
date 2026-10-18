@@ -1,14 +1,14 @@
 <script lang="ts">
   import {
-    type SelectClearTriggerProps,
     Select as SelectPrimitive,
-  } from "@ark-ui/svelte/select";
+    type SelectClearTriggerProps,
+  } from "@ark-ui/svelte";
   import { selectRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useSelectRoot } from "./select.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   let {
     class: className,
@@ -20,7 +20,7 @@
 </script>
 
 <SelectPrimitive.ClearTrigger
-  aria-label={t("select.clear")}
+  aria-label={m("select.clear")}
   {...rest}
   class={slots.clearTrigger({ class: cn(className) })}
 >

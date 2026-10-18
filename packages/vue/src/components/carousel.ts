@@ -1,7 +1,4 @@
-import {
-  Carousel as CarouselPrimitive,
-  useCarouselContext,
-} from "@ark-ui/vue/carousel";
+import { Carousel as CarouselPrimitive, useCarouselContext } from "@ark-ui/vue";
 import {
   PhCaretLeft,
   PhCaretRight,
@@ -12,17 +9,12 @@ import type { CarouselProps as BaseCarouselProps } from "@pisagor/props";
 import { carouselRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
-const {
-  useStyles: useCarousel,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Carousel",
   recipe: carouselRecipe,
 });
@@ -95,7 +87,8 @@ function createNavTrigger(
       },
     },
     setup(props, { attrs }) {
-      const styles = useCarousel();
+      const { m } = useLocale();
+      const styles = useStyles();
 
       return () =>
         h(
@@ -112,8 +105,8 @@ function createNavTrigger(
               Button as ArkPart,
               {
                 "aria-label": isPrev
-                  ? useTranslation("carousel.previous")
-                  : useTranslation("carousel.next"),
+                  ? m("carousel.previous")
+                  : m("carousel.next"),
                 clickEffect: false,
                 pill: true,
                 size: "icon-md",
@@ -142,12 +135,12 @@ export const CarouselAutoplayTrigger = defineComponent({
   inheritAttrs: false,
   name: "Carousel.AutoplayTrigger",
   setup(_, { attrs }) {
+    const { m } = useLocale();
     const carousel = useCarouselContext();
-    const playLabel = useTranslation("carousel.play");
-    const pauseLabel = useTranslation("carousel.pause");
 
     return () => {
       const isPlaying = carousel.value.isPlaying;
+
       return h(
         CarouselPrimitive.AutoplayTrigger as ArkPart,
         { ...attrs, asChild: true },
@@ -155,7 +148,9 @@ export const CarouselAutoplayTrigger = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": isPlaying ? pauseLabel : playLabel,
+              "aria-label": isPlaying
+                ? m("carousel.pause")
+                : m("carousel.play"),
               clickEffect: false,
               pill: true,
               size: "icon-md",

@@ -1,33 +1,31 @@
-import {
-  type PasswordInputIndicatorProps,
-  type PasswordInputInputProps,
-  PasswordInput as PasswordInputPrimitive,
-  type PasswordInputRootProps as PasswordInputPrimitiveRootProps,
-  type PasswordInputVisibilityTriggerProps as PasswordInputPrimitiveVisibilityTriggerProps,
-} from "@ark-ui/solid/password-input";
+import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/solid";
+import type {
+  PasswordInputIndicatorProps,
+  PasswordInputInputProps,
+  PasswordInputRootProps as PasswordInputRootPrimitiveProps,
+  PasswordInputVisibilityTriggerProps as PasswordInputVisibilityTriggerPrimitiveProps,
+} from "@ark-ui/solid";
 import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
 import { passwordInputRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { useClearableInput } from "../hooks";
-import { EyeIcon, EyeSlashIcon, XIcon } from "../internal/icons";
+import { EyeIcon, EyeSlashIcon, XIcon } from "../internal";
 import { callEventHandler } from "../utils";
 import {
   InputGroup,
   type InputGroupButtonProps,
   type InputGroupProps,
 } from "./input-group";
-import { useTranslation } from "./provider/context";
-
-type FormControlVariant = "primary" | "secondary";
+import { useLocale } from "./provider/context";
 
 export type PasswordInputRootProps = Pick<
-  PasswordInputPrimitiveRootProps,
+  PasswordInputRootPrimitiveProps,
   "class" | "defaultVisible" | "invalid" | "onVisibilityChange" | "visible"
 >;
 
 export type PasswordInputVisibilityTriggerProps = Omit<
-  PasswordInputPrimitiveVisibilityTriggerProps,
+  PasswordInputVisibilityTriggerPrimitiveProps,
   "asChild"
 >;
 
@@ -36,8 +34,6 @@ export interface PasswordInputProps
     PasswordInputRootProps,
     Omit<PasswordInputInputProps, "class" | "size">,
     BasePasswordInputProps {
-  size?: InputGroupProps["size"];
-  variant?: FormControlVariant;
   defaultValue?: string | number | readonly string[];
   clearable?: boolean;
   onValueChange?: (value: string) => void;
@@ -47,7 +43,7 @@ export interface PasswordInputProps
 }
 
 function PasswordInputRoot(
-  props: PasswordInputPrimitiveRootProps & {
+  props: PasswordInputRootPrimitiveProps & {
     recipe?: typeof passwordInputRecipe;
   },
 ): JSX.Element {
@@ -92,8 +88,8 @@ function PasswordInputInput(props: PasswordInputInputProps): JSX.Element {
 function PasswordInputVisibilityTrigger(
   props: PasswordInputVisibilityTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children"]);
-  const label = useTranslation("passwordInput.togglePasswordVisibility");
 
   return (
     <InputGroup.Addon align="inline-end">
@@ -101,7 +97,7 @@ function PasswordInputVisibilityTrigger(
         {...rest}
         asChild={(triggerProps) => (
           <InputGroup.Button
-            aria-label={label}
+            aria-label={m("passwordInput.togglePasswordVisibility")}
             {...triggerProps()}
             size="icon-xs"
             variant="ghost"
@@ -119,6 +115,7 @@ function PasswordInputVisibilityTrigger(
 }
 
 function PasswordInputShorthand(props: PasswordInputProps): JSX.Element {
+  const { m } = useLocale();
   const [local, inputProps] = splitProps(props, [
     "size",
     "variant",
@@ -223,7 +220,7 @@ function PasswordInputShorthand(props: PasswordInputProps): JSX.Element {
             <Show when={canClear()}>
               <InputGroup.Addon align="inline-end" class={slots().clearAddon()}>
                 <InputGroup.Button
-                  aria-label={useTranslation("passwordInput.clear")}
+                  aria-label={m("passwordInput.clear")}
                   {...restClearButtonProps}
                   data-part="clear-trigger"
                   data-scope="password-input"
@@ -245,9 +242,7 @@ function PasswordInputShorthand(props: PasswordInputProps): JSX.Element {
                 asChild={(triggerProps) => (
                   <InputGroup.Button
                     {...triggerProps()}
-                    aria-label={useTranslation(
-                      "passwordInput.togglePasswordVisibility",
-                    )}
+                    aria-label={m("passwordInput.togglePasswordVisibility")}
                     size="icon-xs"
                     variant="ghost"
                   >
@@ -276,4 +271,4 @@ export const PasswordInput = Object.assign(PasswordInputShorthand, {
   VisibilityTrigger: PasswordInputVisibilityTrigger,
 });
 
-export type { PasswordInputIndicatorProps } from "@ark-ui/solid/password-input";
+export type { PasswordInputIndicatorProps } from "@ark-ui/solid";

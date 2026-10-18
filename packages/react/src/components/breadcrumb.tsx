@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { CaretRightIcon, DotsThreeIcon } from "@phosphor-icons/react";
 import type {
   BreadcrumbItemProps as BaseBreadcrumbItemProps,
@@ -7,13 +7,13 @@ import type {
 import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
 import { Fragment } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { useMessage } from "./provider/context";
+import { createSlotRecipeContext } from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
   Context: BreadcrumbStylesContext,
-  useStyles: useBreadcrumb,
+  useStyles,
   withContext: withBreadcrumbContext,
 } = createSlotRecipeContext({
   name: "Breadcrumb",
@@ -36,14 +36,14 @@ interface BreadcrumbPresetItem {
   isCurrentPage?: boolean;
 }
 
-export type BreadcrumbListProps = ComponentProps<typeof ark.ol>;
-export type BreadcrumbLinkProps = ComponentProps<typeof ark.a>;
-export type BreadcrumbPageProps = ComponentProps<typeof ark.span>;
-export type BreadcrumbSeparatorProps = ComponentProps<typeof ark.li>;
-export type BreadcrumbEllipsisProps = ComponentProps<typeof ark.span>;
+export type BreadcrumbListProps = HTMLArkProps<"ol">;
+export type BreadcrumbLinkProps = HTMLArkProps<"a">;
+export type BreadcrumbPageProps = HTMLArkProps<"span">;
+export type BreadcrumbSeparatorProps = HTMLArkProps<"li">;
+export type BreadcrumbEllipsisProps = HTMLArkProps<"span">;
 
 export interface BreadcrumbRootProps
-  extends ComponentProps<typeof ark.nav>, BaseBreadcrumbRootProps {
+  extends HTMLArkProps<"nav">, BaseBreadcrumbRootProps {
   /**
    * Accessible label for the breadcrumb navigation landmark.
    *
@@ -64,7 +64,8 @@ export function BreadcrumbRoot({
   recipe = breadcrumbRecipe,
   ...rest
 }: BreadcrumbRootProps) {
-  const ariaLabel = useMessage("breadcrumb.label", ariaLabelProp);
+  const { m } = useLocale();
+  const ariaLabel = m("breadcrumb.label", ariaLabelProp);
   const slots = recipe();
 
   return (
@@ -89,9 +90,7 @@ export const BreadcrumbList = withBreadcrumbContext(ark.ol, {
 export const BreadcrumbItem = withBreadcrumbItemProvider(ark.li, {
   name: "Item",
   slot: "base",
-}) as FunctionComponent<
-  ComponentProps<typeof ark.li> & BaseBreadcrumbItemProps
->;
+}) as FunctionComponent<HTMLArkProps<"li"> & BaseBreadcrumbItemProps>;
 
 export type BreadcrumbItemProps = ComponentProps<typeof BreadcrumbItem>;
 
@@ -109,7 +108,7 @@ export function BreadcrumbSeparator({
   className,
   ...rest
 }: BreadcrumbSeparatorProps) {
-  const { slots } = useBreadcrumb();
+  const { slots } = useStyles();
 
   return (
     <ark.li
@@ -129,7 +128,8 @@ export function BreadcrumbEllipsis({
   className,
   ...rest
 }: BreadcrumbEllipsisProps) {
-  const { slots } = useBreadcrumb();
+  const { m } = useLocale();
+  const { slots } = useStyles();
 
   return (
     <ark.span
@@ -139,7 +139,7 @@ export function BreadcrumbEllipsis({
       data-scope="breadcrumb"
     >
       <DotsThreeIcon aria-hidden />
-      <span className="sr-only">{useMessage("breadcrumb.more")}</span>
+      <span className="sr-only">{m("breadcrumb.more")}</span>
     </ark.span>
   );
 }

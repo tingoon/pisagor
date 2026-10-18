@@ -2,7 +2,7 @@
   import {
     Splitter as SplitterPrimitive,
     type SplitterRootProps,
-  } from "@ark-ui/svelte/splitter";
+  } from "@ark-ui/svelte";
   import type { ResizableProps as BaseResizableProps } from "@pisagor/props";
   import { withProvider } from "./resizable.context";
 

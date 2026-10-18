@@ -1,17 +1,13 @@
 import type { DatePickerRecipe } from "@pisagor/recipes";
 import { datePickerRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils/create-context";
 
-export const {
-  Context,
-  useStyles: useDatePickerStyles,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "DatePicker",
-  recipe: datePickerRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "DatePicker",
+    recipe: datePickerRecipe,
+  });
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -27,6 +23,7 @@ export const useDatePickerVariant = variantCtx.getContext;
 export function useDatePicker() {
   const styles = Context.get();
   if (!styles) return undefined;
+
   return {
     get slots() {
       return styles.slots;

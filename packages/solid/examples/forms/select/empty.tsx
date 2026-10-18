@@ -1,10 +1,11 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import { Select } from "@pisagor/solid";
 
 export function Empty() {
   const collection = createListCollection({
     items: [] as Array<{ label: string; value: string }>,
   });
+
   return (
     <Select.Root collection={collection}>
       <Select.Trigger>

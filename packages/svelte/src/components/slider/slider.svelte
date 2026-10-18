@@ -2,12 +2,12 @@
   import {
     Slider as SliderPrimitive,
     type SliderRootProps,
-  } from "@ark-ui/svelte/slider";
+  } from "@ark-ui/svelte";
   import type { SliderProps as BaseSliderProps } from "@pisagor/props";
   import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
-  import type { VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import { setSliderContext } from "./slider.context";
 
   type FormControlVariant = "primary" | "secondary";
@@ -57,6 +57,7 @@
   const thumbCount = $derived.by(() => {
     if (Array.isArray(value)) return value.length;
     if (Array.isArray(defaultValue)) return defaultValue.length;
+
     return 1;
   });
 

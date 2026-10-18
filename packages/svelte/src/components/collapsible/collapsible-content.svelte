@@ -1,16 +1,16 @@
 <script lang="ts">
   import {
-    type CollapsibleContentProps,
     Collapsible as CollapsiblePrimitive,
-  } from "@ark-ui/svelte/collapsible";
-  import { useCollapsible } from "./collapsible.context";
+    type CollapsibleContentProps,
+  } from "@ark-ui/svelte";
+  import { useStyles } from "./collapsible.context";
 
   let {
     class: className,
     children,
     ...rest
   }: CollapsibleContentProps = $props();
-  const styles = useCollapsible();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

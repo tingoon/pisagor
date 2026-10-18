@@ -1,11 +1,10 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { ToolbarProps as BaseToolbarProps } from "@pisagor/props";
 import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes";
 import { handleRovingFocusKeyDown } from "@pisagor/utils";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -14,13 +13,13 @@ const { withContext, withProvider } = createSlotRecipeContext({
 });
 // #endregion
 
-export type ToolbarTitleProps = ComponentProps<typeof ark.h2>;
-export type ToolbarDescriptionProps = ComponentProps<typeof ark.p>;
-export type ToolbarActionsProps = ComponentProps<typeof ark.div>;
-type ToolbarHeadingProps = ComponentProps<typeof ark.div>;
+export type ToolbarTitleProps = HTMLArkProps<"h2">;
+export type ToolbarDescriptionProps = HTMLArkProps<"p">;
+export type ToolbarActionsProps = HTMLArkProps<"div">;
+type ToolbarHeadingProps = HTMLArkProps<"div">;
 type ToolbarClassNames = VariantClassNames<ToolbarRecipeSlot>;
 
-export type ToolbarRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
+export type ToolbarRootProps = Omit<HTMLArkProps<"div">, "title"> &
   BaseToolbarProps;
 
 export interface ToolbarProps extends Omit<ToolbarRootProps, "children"> {

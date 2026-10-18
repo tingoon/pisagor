@@ -1,6 +1,7 @@
 import { Button, Calendar, DatePicker, parseDate } from "@pisagor/solid";
-import { CalendarIcon } from "@pisagor/solid/icons";
+import { CalendarIcon } from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
+
 export function CustomFormat() {
   const [value, setValue] = createSignal([parseDate("2025-01-15")]);
 

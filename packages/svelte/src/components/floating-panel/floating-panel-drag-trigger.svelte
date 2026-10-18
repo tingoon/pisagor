@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type FloatingPanelDragTriggerProps,
     FloatingPanel as FloatingPanelPrimitive,
-  } from "@ark-ui/svelte/floating-panel";
+    type FloatingPanelDragTriggerProps,
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: FloatingPanelDragTriggerProps = $props();
 </script>

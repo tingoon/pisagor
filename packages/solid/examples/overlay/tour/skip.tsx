@@ -1,5 +1,6 @@
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour } from "@pisagor/solid";
+
 export function Skip() {
   const steps: TourStepType[] = [
     {
@@ -37,6 +38,7 @@ export function Skip() {
       type: "tooltip",
     },
   ];
+
   return (
     <div class="flex flex-col gap-2">
       <Tour steps={steps}>

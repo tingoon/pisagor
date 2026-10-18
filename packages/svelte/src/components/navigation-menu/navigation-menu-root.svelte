@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import {
     setNavigationMenuOpenState,
     withProvider,
@@ -14,7 +14,7 @@
   } & BaseNavigationMenuProps;
 
   let { children, ...rest }: Props = $props();
-  const t = useMessageResolver();
+  const { m } = useLocale();
   const root = withProvider(() => rest, { name: "Root", slot: "base" });
 
   let openId = $state<string | null>(null);
@@ -28,6 +28,6 @@
   });
 </script>
 
-<Ark aria-label={t("navigationMenu.label")} as="nav" {...root.props}>
+<Ark aria-label={m("navigationMenu.label")} as="nav" {...root.props}>
   {@render children?.()}
 </Ark>

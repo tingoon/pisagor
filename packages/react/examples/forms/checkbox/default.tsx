@@ -1,4 +1,5 @@
 import { Checkbox, Field } from "@pisagor/react";
+
 export function Default() {
   return (
     <Field orientation="horizontal">

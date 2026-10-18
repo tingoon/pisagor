@@ -2,7 +2,7 @@
   import {
     Tooltip as TooltipPrimitive,
     type TooltipRootProps,
-  } from "@ark-ui/svelte/tooltip";
+  } from "@ark-ui/svelte";
   import type { TooltipProps as BaseTooltipProps } from "@pisagor/props";
   import { tooltipRecipe } from "@pisagor/recipes";
   import { Context } from "./tooltip.context";

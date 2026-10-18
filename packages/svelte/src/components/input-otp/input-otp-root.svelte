@@ -2,7 +2,7 @@
   import {
     PinInput as PinInputPrimitive,
     type PinInputRootProps,
-  } from "@ark-ui/svelte/pin-input";
+  } from "@ark-ui/svelte";
   import type { InputOtpProps as BaseInputOtpProps } from "@pisagor/props";
   import { inputOtpRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

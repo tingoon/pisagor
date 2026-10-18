@@ -1,23 +1,18 @@
+import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/solid";
 import type {
   SegmentGroupIndicatorProps,
+  SegmentGroupItemProps as SegmentGroupItemPrimitiveProps,
   SegmentGroupItemTextProps,
-  SegmentGroupItemProps as SegmentGroupPrimitiveItemProps,
-  SegmentGroupRootProps as SegmentGroupPrimitiveRootProps,
-} from "@ark-ui/solid/segment-group";
-import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/solid/segment-group";
+  SegmentGroupRootProps as SegmentGroupRootPrimitiveProps,
+} from "@ark-ui/solid";
 import type { SegmentGroupProps as BaseSegmentGroupRootProps } from "@pisagor/props";
 import { segmentGroupRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { SizeScaleProps } from "../internal/types";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useSegmentGroup,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "SegmentGroup",
   recipe: segmentGroupRecipe,
 });
@@ -33,9 +28,8 @@ interface SegmentGroupPresetItem {
 
 export interface SegmentGroupRootProps
   extends
-    Omit<SegmentGroupPrimitiveRootProps, "onValueChange">,
-    BaseSegmentGroupRootProps,
-    SizeScaleProps {
+    Omit<SegmentGroupRootPrimitiveProps, "onValueChange">,
+    BaseSegmentGroupRootProps {
   variant?: SegmentGroupVariant;
   onValueChange?: (value: string | null) => void;
 }
@@ -47,12 +41,12 @@ export interface SegmentGroupProps extends Omit<
   items?: SegmentGroupPresetItem[];
 }
 
-export interface SegmentGroupItemProps extends SegmentGroupPrimitiveItemProps {
+export interface SegmentGroupItemProps extends SegmentGroupItemPrimitiveProps {
   text?: JSX.Element;
 }
 
 const SegmentGroupRootBase: Component<
-  SegmentGroupPrimitiveRootProps & BaseSegmentGroupRootProps & SizeScaleProps
+  SegmentGroupRootPrimitiveProps & BaseSegmentGroupRootProps
 > = withProvider(SegmentGroupPrimitive.Root, {
   name: "Root",
   slot: "base",
@@ -85,7 +79,7 @@ export function SegmentGroupRoot(props: SegmentGroupRootProps): JSX.Element {
 
 export function SegmentGroupItem(props: SegmentGroupItemProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "text", "class"]);
-  const styles = useSegmentGroup();
+  const styles = useStyles();
   const content = () => local.children ?? local.text;
 
   return (
@@ -116,6 +110,7 @@ export const SegmentGroupIndicator: Component<SegmentGroupIndicatorProps> =
 
 export function SegmentGroupShorthand(props: SegmentGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["items"]);
+
   return (
     <SegmentGroupRoot {...rest}>
       <For each={local.items ?? []}>
@@ -134,7 +129,7 @@ export function SegmentGroupShorthand(props: SegmentGroupProps): JSX.Element {
 export type {
   SegmentGroupIndicatorProps,
   SegmentGroupItemTextProps,
-} from "@ark-ui/solid/segment-group";
+} from "@ark-ui/solid";
 
 export const SegmentGroup = Object.assign(SegmentGroupShorthand, {
   Indicator: SegmentGroupIndicator,

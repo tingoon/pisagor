@@ -1,10 +1,10 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import { useBreadcrumb } from "./breadcrumb.context";
+import { useStyles } from "./breadcrumb.context";
 
 type Props = HTMLAttributes<"span">;
 
-const { slots } = useBreadcrumb();
+const { slots } = useStyles();
 ---
 
 <span

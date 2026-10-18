@@ -1,4 +1,4 @@
-import { TagsInput as TagsInputPrimitive } from "@ark-ui/svelte/tags-input";
+import { TagsInput as TagsInputPrimitive } from "@ark-ui/svelte";
 import TagsInputClearTrigger from "./tags-input-clear-trigger.svelte";
 import TagsInputControl from "./tags-input-control.svelte";
 import TagsInputInput from "./tags-input-input.svelte";

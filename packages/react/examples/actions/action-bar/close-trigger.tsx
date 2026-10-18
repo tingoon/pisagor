@@ -7,6 +7,7 @@ import {
 } from "@phosphor-icons/react";
 import { ActionBar, Button } from "@pisagor/react";
 import { useState } from "react";
+
 export function CloseTrigger() {
   const [isOpen, setIsOpen] = useState(false);
 

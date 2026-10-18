@@ -4,10 +4,7 @@ import {
   type SelectRootProps,
 } from "@pisagor/solid";
 import { createMemo, For, splitProps } from "solid-js";
-import {
-  type FieldPresentationProps,
-  FieldShell,
-} from "../internal/field-shell";
+import { type FieldPresentationProps, FieldShell } from "../internal";
 
 // #region Types
 interface SelectOption {

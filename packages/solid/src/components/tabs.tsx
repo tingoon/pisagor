@@ -1,26 +1,25 @@
+import { Tabs as TabsPrimitive } from "@ark-ui/solid";
 import type {
   TabContentProps,
   TabListProps,
-  TabsRootProps as TabsPrimitiveRootProps,
   TabTriggerProps,
-} from "@ark-ui/solid/tabs";
-import { Tabs as TabsPrimitive } from "@ark-ui/solid/tabs";
+  TabsRootProps as TabsRootPrimitiveProps,
+} from "@ark-ui/solid";
 import type { TabsProps as BaseTabsRootProps } from "@pisagor/props";
 import { type TabsVariantProps, tabsRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useTabs,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({ name: "Tabs", recipe: tabsRecipe });
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+  name: "Tabs",
+  recipe: tabsRecipe,
+});
 // #endregion
 
 export interface LocalTabsRootProps
-  extends TabsPrimitiveRootProps, BaseTabsRootProps {}
+  extends TabsRootPrimitiveProps, BaseTabsRootProps {}
 
 interface TabsPresetItem {
   value: string;
@@ -30,7 +29,7 @@ interface TabsPresetItem {
 }
 
 export type TabsListProps = TabListProps &
-  Pick<TabsVariantProps, "variant"> & {
+  TabsVariantProps & {
     /**
      * Whether to render the animated active-tab indicator.
      *
@@ -41,10 +40,7 @@ export type TabsListProps = TabListProps &
 export type TabsTriggerProps = TabTriggerProps;
 export type TabsContentProps = TabContentProps;
 
-export interface TabsProps
-  extends
-    Omit<LocalTabsRootProps, "children">,
-    Pick<TabsVariantProps, "variant"> {
+export interface TabsProps extends Omit<LocalTabsRootProps, "children"> {
   items?: TabsPresetItem[];
   /**
    * Whether to render the animated active-tab indicator.
@@ -66,7 +62,7 @@ export function TabsList(props: TabsListProps): JSX.Element {
     "class",
     "showIndicator",
   ]);
-  const styles = useTabs();
+  const styles = useStyles();
   const variant = () => local.variant ?? "default";
 
   return (
@@ -119,7 +115,7 @@ export function TabsShorthand(props: TabsProps): JSX.Element {
   );
 }
 
-export type { TabsRootProps } from "@ark-ui/solid/tabs";
+export type { TabsRootProps } from "@ark-ui/solid";
 
 export const Tabs = Object.assign(TabsShorthand, {
   Content: TabsContent,

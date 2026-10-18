@@ -1,11 +1,10 @@
 <script lang="ts">
   import {
-    type TreeViewBranchControlProps as ArkProps,
     TreeView as TreeViewPrimitive,
-  } from "@ark-ui/svelte/tree-view";
+    type TreeViewBranchControlProps as ArkProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import FolderIcon from "phosphor-svelte/lib/FolderIcon";
-  import FolderOpenIcon from "phosphor-svelte/lib/FolderOpenIcon";
+  import { FolderIcon, FolderOpenIcon } from "phosphor-svelte";
   import type { Component } from "svelte";
   import { useTreeView, useTreeViewBranch } from "./tree-view.context";
   import TreeViewBranchIndicator from "./tree-view-branch-indicator.svelte";

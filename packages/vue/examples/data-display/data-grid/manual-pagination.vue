@@ -2,14 +2,13 @@
 import { PhCaretDown, PhCaretUp } from "@phosphor-icons/vue";
 import type { BadgeVariant } from "@pisagor/vue";
 import { Badge, Checkbox, Pagination, Spinner, Table } from "@pisagor/vue";
-import {
-  type CellContext,
-  type ColumnDef,
-  DataGrid,
-  type HeaderContext,
-  type PaginationState,
-  type SortingState,
-  useDataGrid,
+import { DataGrid, useDataGrid } from "@pisagor/vue/data-grid";
+import type {
+  CellContext,
+  ColumnDef,
+  HeaderContext,
+  PaginationState,
+  SortingState,
 } from "@pisagor/vue/data-grid";
 import {
   computed,
@@ -313,6 +312,7 @@ const sortedData = computed(() => {
     const leftValue = left[sort.id as keyof FullUser];
     const rightValue = right[sort.id as keyof FullUser];
     const comparison = String(leftValue).localeCompare(String(rightValue));
+
     return sort.desc ? -comparison : comparison;
   });
 

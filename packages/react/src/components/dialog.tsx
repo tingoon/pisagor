@@ -1,28 +1,31 @@
+import {
+  Dialog as DialogPrimitive,
+  Portal,
+  ark,
+  type HTMLArkProps,
+} from "@ark-ui/react";
 import type {
   DialogBackdropProps,
   DialogCloseTriggerProps,
-  DialogContentProps as DialogPrimitiveContentProps,
-  DialogPositionerProps as DialogPrimitivePositionerProps,
-  DialogRootProps as DialogPrimitiveRootProps,
+  DialogContentProps as DialogContentPrimitiveProps,
+  DialogPositionerProps as DialogPositionerPrimitiveProps,
+  DialogRootProps as DialogRootPrimitiveProps,
   DialogTriggerProps,
-} from "@ark-ui/react/dialog";
-import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog";
-import { ark } from "@ark-ui/react/factory";
-import { Portal } from "@ark-ui/react/portal";
+} from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
 import type { DialogProps as BaseDialogRootProps } from "@pisagor/props";
 import { type DialogVariantProps, dialogRecipe } from "@pisagor/recipes";
-import type { ComponentProps, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { createContext, use } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
 const {
   Context: DialogStylesContext,
-  useStyles: useDialog,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Dialog",
@@ -31,16 +34,14 @@ const {
 
 const DialogModalContext = createContext<boolean>(true);
 DialogModalContext.displayName = "DialogModalContext";
-
-export { useDialog };
 // #endregion
 
 // #region Types
 export interface DialogRootProps
-  extends DialogPrimitiveRootProps, BaseDialogRootProps {}
+  extends DialogRootPrimitiveProps, BaseDialogRootProps {}
 
 export interface DialogContentProps
-  extends DialogPrimitiveContentProps, DialogVariantProps {
+  extends DialogContentPrimitiveProps, DialogVariantProps {
   /**
    * Whether to stick the dialog to the bottom of the screen on mobile.
    *
@@ -55,7 +56,7 @@ export interface DialogContentProps
   showCloseButton?: boolean;
 }
 
-export interface DialogBodyProps extends ComponentProps<typeof ark.div> {
+export interface DialogBodyProps extends HTMLArkProps<"div"> {
   /**
    * Whether to add a fade effect to the scroll area.
    *
@@ -64,13 +65,13 @@ export interface DialogBodyProps extends ComponentProps<typeof ark.div> {
   scrollFade?: boolean;
 }
 
-export type DialogHeaderProps = ComponentProps<typeof ark.div>;
+export type DialogHeaderProps = HTMLArkProps<"div">;
 
-export interface DialogPositionerProps extends DialogPrimitivePositionerProps {
+export interface DialogPositionerProps extends DialogPositionerPrimitiveProps {
   bottomStickOnMobile?: boolean;
 }
 
-export type DialogFooterProps = ComponentProps<typeof ark.div>;
+export type DialogFooterProps = HTMLArkProps<"div">;
 
 export interface DialogProps extends Omit<DialogRootProps, "title"> {
   /** Footer actions. */
@@ -107,7 +108,7 @@ export function DialogTrigger(props: DialogTriggerProps) {
 
 export function DialogBackdrop({ className, ...rest }: DialogBackdropProps) {
   const modal = use(DialogModalContext);
-  const { slots } = useDialog();
+  const { slots } = useStyles();
 
   if (!modal) {
     return null;
@@ -126,7 +127,7 @@ export function DialogPositioner({
   className,
   ...rest
 }: DialogPositionerProps) {
-  const { slots } = useDialog();
+  const { slots } = useStyles();
 
   return (
     <DialogPrimitive.Positioner
@@ -144,8 +145,8 @@ export function DialogContent({
   className,
   ...rest
 }: DialogContentProps) {
-  const dialogCloseMessage = useMessage("dialog.close");
-  const { slots } = useDialog();
+  const { m } = useLocale();
+  const { slots } = useStyles();
 
   return (
     <DialogPrimitive.Content
@@ -157,7 +158,7 @@ export function DialogContent({
       {!!showCloseButton && (
         <DialogCloseTrigger asChild>
           <Button
-            aria-label={dialogCloseMessage}
+            aria-label={m("dialog.close")}
             className={slots.inline()}
             size="icon-sm"
             variant="ghost"
@@ -175,7 +176,7 @@ export function DialogBody({
   className,
   ...rest
 }: DialogBodyProps) {
-  const { slots } = useDialog();
+  const { slots } = useStyles();
 
   return (
     <ScrollArea scrollFade={scrollFade}>
@@ -194,7 +195,7 @@ export function DialogHeader({
   className,
   ...rest
 }: DialogHeaderProps) {
-  const { slots } = useDialog();
+  const { slots } = useStyles();
 
   return (
     <ark.div
@@ -221,7 +222,7 @@ export function DialogCloseTrigger(props: DialogCloseTriggerProps) {
 }
 
 export function DialogFooter({ className, ...rest }: DialogFooterProps) {
-  const { slots } = useDialog();
+  const { slots } = useStyles();
 
   return (
     <ark.div
@@ -295,7 +296,7 @@ export type {
   DialogDescriptionProps,
   DialogTitleProps,
   DialogTriggerProps,
-} from "@ark-ui/react/dialog";
+} from "@ark-ui/react";
 
 export const Dialog = Object.assign(DialogShorthand, {
   Backdrop: DialogBackdrop,

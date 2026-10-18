@@ -4,7 +4,8 @@ import {
   GearIcon,
   PauseIcon,
   PlayIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
+
 export function Pomodoro() {
   return (
     <Card class="rounded-3xl [--space:--spacing(6)]">

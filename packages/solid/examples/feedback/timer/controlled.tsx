@@ -1,6 +1,10 @@
 import { Button, Card, Timer } from "@pisagor/solid";
-import { ArrowCounterClockwiseIcon, PlayIcon } from "@pisagor/solid/icons";
+import {
+  ArrowCounterClockwiseIcon,
+  PlayIcon,
+} from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
+
 export function Controlled() {
   const [ticks, setTicks] = createSignal(0);
   const [completed, setCompleted] = createSignal(false);

@@ -2,6 +2,7 @@ import { SegmentGroup } from "@pisagor/solid";
 
 export function CustomIndicator() {
   const items = ["Profile", "Account", "Security", "Notifications"];
+
   return (
     <SegmentGroup.Root
       class="*:data-[slot=segment-group-indicator]:bg-primary/40 rounded-lg"

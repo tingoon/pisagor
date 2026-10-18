@@ -1,10 +1,12 @@
 import { Card, Timer } from "@pisagor/react";
+
 export function CountdownDate() {
   const formatDate = (date: Date) =>
     date.toLocaleDateString(undefined, { dateStyle: "medium" });
 
   const targetDate = new Date();
   targetDate.setDate(targetDate.getDate() + 7);
+
   return (
     <Card className="rounded-3xl [--space:--spacing(6)]">
       <Card.Content className="flex flex-col items-center gap-3">

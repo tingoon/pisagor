@@ -1,3 +1,7 @@
+import {
+  Carousel as CarouselPrimitive,
+  useCarouselContext,
+} from "@ark-ui/solid";
 import type {
   CarouselControlProps,
   CarouselIndicatorGroupProps,
@@ -6,36 +10,31 @@ import type {
   CarouselItemProps,
   CarouselNextTriggerProps,
   CarouselPrevTriggerProps,
-  CarouselRootProps as CarouselPrimitiveRootProps,
-} from "@ark-ui/solid/carousel";
-import {
-  Carousel as CarouselPrimitive,
-  useCarouselContext,
-} from "@ark-ui/solid/carousel";
+  CarouselRootProps as CarouselRootPrimitiveProps,
+} from "@ark-ui/solid";
 import type { CarouselProps as BaseCarouselRootProps } from "@pisagor/props";
 import { carouselRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import {
   CaretLeftIcon,
   CaretRightIcon,
   PauseIcon,
   PlayIcon,
-} from "../internal/icons";
+  createSlotRecipeContext,
+} from "../internal";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
-const {
-  useStyles: useCarousel,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({ name: "Carousel", recipe: carouselRecipe });
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+  name: "Carousel",
+  recipe: carouselRecipe,
+});
 // #endregion
 
 export interface CarouselRootProps
-  extends CarouselPrimitiveRootProps, BaseCarouselRootProps {}
+  extends CarouselRootPrimitiveProps, BaseCarouselRootProps {}
 
 interface CarouselPresetItem {
   content: JSX.Element;
@@ -75,8 +74,10 @@ export const CarouselControl: Component<CarouselControlProps> = withContext(
 export function CarouselPrevTrigger(
   props: CarouselPrevTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCarousel();
+  const styles = useStyles();
+
   return (
     <CarouselPrimitive.PrevTrigger
       {...rest}
@@ -85,7 +86,7 @@ export function CarouselPrevTrigger(
           {...triggerProps({
             class: styles.slots.prevTrigger({ class: local.class }),
           })}
-          aria-label={useTranslation("carousel.previous")}
+          aria-label={m("carousel.previous")}
           clickEffect={false}
           pill
           size="icon-md"
@@ -101,8 +102,10 @@ export function CarouselPrevTrigger(
 export function CarouselNextTrigger(
   props: CarouselNextTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCarousel();
+  const styles = useStyles();
+
   return (
     <CarouselPrimitive.NextTrigger
       {...rest}
@@ -111,7 +114,7 @@ export function CarouselNextTrigger(
           {...triggerProps({
             class: styles.slots.nextTrigger({ class: local.class }),
           })}
-          aria-label={useTranslation("carousel.next")}
+          aria-label={m("carousel.next")}
           clickEffect={false}
           pill
           size="icon-md"
@@ -127,9 +130,8 @@ export function CarouselNextTrigger(
 export function CarouselAutoplayTrigger(
   props: ComponentProps<typeof CarouselPrimitive.AutoplayTrigger>,
 ): JSX.Element {
+  const { m } = useLocale();
   const carousel = useCarouselContext();
-  const playLabel = useTranslation("carousel.play");
-  const pauseLabel = useTranslation("carousel.pause");
 
   return (
     <CarouselPrimitive.AutoplayTrigger
@@ -137,7 +139,9 @@ export function CarouselAutoplayTrigger(
       asChild={(triggerProps) => (
         <Button
           {...triggerProps()}
-          aria-label={carousel().isPlaying ? pauseLabel : playLabel}
+          aria-label={
+            carousel().isPlaying ? m("carousel.pause") : m("carousel.play")
+          }
           clickEffect={false}
           pill
           size="icon-md"
@@ -220,7 +224,7 @@ export type {
   CarouselItemProps,
   CarouselNextTriggerProps,
   CarouselPrevTriggerProps,
-} from "@ark-ui/solid/carousel";
+} from "@ark-ui/solid";
 
 export const Carousel = Object.assign(CarouselShorthand, {
   AutoplayTrigger: CarouselAutoplayTrigger,

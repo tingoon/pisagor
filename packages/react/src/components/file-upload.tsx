@@ -1,19 +1,20 @@
-import { ark } from "@ark-ui/react/factory";
+import {
+  FileUpload as FileUploadPrimitive,
+  ark,
+  useFileUploadContext,
+  type HTMLArkProps,
+} from "@ark-ui/react";
 import type {
   FileUploadClearTriggerProps,
+  FileUploadDropzoneProps as FileUploadDropzonePrimitiveProps,
   FileUploadItemGroupProps,
   FileUploadItemNameProps,
   FileUploadItemPreviewProps,
   FileUploadItemProps,
   FileUploadItemSizeTextProps,
-  FileUploadDropzoneProps as FileUploadPrimitiveDropzoneProps,
-  FileUploadRootProps as FileUploadPrimitiveRootProps,
+  FileUploadRootProps as FileUploadRootPrimitiveProps,
   FileUploadTriggerProps,
-} from "@ark-ui/react/file-upload";
-import {
-  FileUpload as FileUploadPrimitive,
-  useFileUploadContext,
-} from "@ark-ui/react/file-upload";
+} from "@ark-ui/react";
 import { UploadIcon, XIcon } from "@phosphor-icons/react";
 import type {
   FileUploadItemProps as BaseFileUploadItemProps,
@@ -26,14 +27,9 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { FormControlVariant } from "../internal/types";
+import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
-import {
-  type MessageKey,
-  useMessage,
-  useMessageResolver,
-} from "./provider/context";
+import { type MessageKey, useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -58,11 +54,11 @@ export interface FileUploadItemRootProps
 export type FileUploadListProps = Omit<FileUploadItemRootProps, "file">;
 
 export interface FileUploadRootProps
-  extends FileUploadPrimitiveRootProps, BaseFileUploadRootProps {
+  extends FileUploadRootPrimitiveProps, BaseFileUploadRootProps {
   onValueChange?: (value: File[]) => void;
 }
 
-export interface FileUploadDropzoneProps extends FileUploadPrimitiveDropzoneProps {
+export interface FileUploadDropzoneProps extends FileUploadDropzonePrimitiveProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
 }
@@ -77,13 +73,13 @@ export type FileUploadItemDeleteTriggerProps = ComponentProps<
   typeof FileUploadPrimitive.ItemDeleteTrigger
 >;
 
-export type FileUploadDropzoneIconProps = ComponentProps<typeof ark.div>;
+export type FileUploadDropzoneIconProps = HTMLArkProps<"div">;
 
-export type FileUploadTitleProps = ComponentProps<typeof ark.div>;
+export type FileUploadTitleProps = HTMLArkProps<"div">;
 
-export type FileUploadDescriptionProps = ComponentProps<typeof ark.div>;
+export type FileUploadDescriptionProps = HTMLArkProps<"div">;
 
-export type FileUploadHelperProps = ComponentProps<typeof ark.div>;
+export type FileUploadHelperProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Parts
@@ -221,8 +217,7 @@ export function FileUploadList({
   recipe = fileUploadItemRecipe,
   ...rest
 }: FileUploadListProps) {
-  const fileUploadRemoveFileMessage = useMessage("fileUpload.removeFile");
-  const resolveMessage = useMessageResolver();
+  const { m } = useLocale();
   const fileUpload = useFileUploadContext();
   const { slots } = useFileUpload();
   const itemSlots = recipe();
@@ -262,14 +257,14 @@ export function FileUploadList({
           <FileUploadItemSize />
           {errors?.map((code) => (
             <div className={itemSlots.error()} key={code}>
-              {resolveMessage(`fileUpload.error.${code}` as MessageKey) ?? code}
+              {m(`fileUpload.error.${code}` as MessageKey) ?? code}
             </div>
           ))}
         </div>
 
         <FileUploadItemDeleteTrigger asChild>
           <Button
-            aria-label={fileUploadRemoveFileMessage}
+            aria-label={m("fileUpload.removeFile")}
             className={itemSlots.deleteButton()}
             size="icon-xs"
             variant="ghost"
@@ -422,7 +417,7 @@ export type {
   FileUploadItemProps,
   FileUploadItemSizeTextProps,
   FileUploadTriggerProps,
-} from "@ark-ui/react/file-upload";
+} from "@ark-ui/react";
 
 export const FileUpload = Object.assign(FileUploadRoot, {
   ClearTrigger: FileUploadClearTrigger,

@@ -2,7 +2,7 @@
   import {
     TreeView as TreeViewPrimitive,
     type TreeViewTreeProps,
-  } from "@ark-ui/svelte/tree-view";
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useTreeView } from "./tree-view.context";
 

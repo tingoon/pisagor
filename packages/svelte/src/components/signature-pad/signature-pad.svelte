@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { SignaturePadRootProps } from "@ark-ui/svelte/signature-pad";
+  import type { SignaturePadRootProps } from "@ark-ui/svelte";
   import type { SignaturePadProps as BaseSignaturePadProps } from "@pisagor/props";
   import type { SignaturePadRecipeSlot } from "@pisagor/recipes";
-  import type { VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import SignaturePadClear from "./signature-pad-clear.svelte";
   import SignaturePadControl from "./signature-pad-control.svelte";
   import SignaturePadGuide from "./signature-pad-guide.svelte";

@@ -1,21 +1,20 @@
-import {
-  type CollapsibleContentProps,
-  type CollapsibleIndicatorProps,
-  Collapsible as CollapsiblePrimitive,
-  type CollapsibleRootProps as CollapsiblePrimitiveRootProps,
-  type CollapsibleTriggerProps,
-} from "@ark-ui/solid/collapsible";
+import { Collapsible as CollapsiblePrimitive } from "@ark-ui/solid";
+import type {
+  CollapsibleContentProps,
+  CollapsibleIndicatorProps,
+  CollapsibleRootProps as CollapsibleRootPrimitiveProps,
+  CollapsibleTriggerProps,
+} from "@ark-ui/solid";
 import type { CollapsibleProps as BaseCollapsibleRootProps } from "@pisagor/props";
 import { collapsibleRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CaretDownIcon } from "../internal/icons";
+import { CaretDownIcon, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {
   Context: CollapsibleStylesContext,
-  useStyles: useCollapsible,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Collapsible",
@@ -25,7 +24,7 @@ const {
 
 // #region Types
 export interface LocalCollapsibleRootProps
-  extends CollapsiblePrimitiveRootProps, BaseCollapsibleRootProps {}
+  extends CollapsibleRootPrimitiveProps, BaseCollapsibleRootProps {}
 // #endregion
 
 // #region Parts
@@ -72,7 +71,7 @@ export function CollapsibleContent(
   props: CollapsibleContentProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useCollapsible();
+  const styles = useStyles();
 
   return (
     <CollapsiblePrimitive.Content {...rest} class={styles.slots.content()}>
@@ -85,7 +84,7 @@ export function CollapsibleIndicator(
   props: CollapsibleIndicatorProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCollapsible();
+  const styles = useStyles();
 
   return (
     <CollapsiblePrimitive.Indicator
@@ -103,7 +102,7 @@ export type {
   CollapsibleIndicatorProps,
   CollapsibleRootProps,
   CollapsibleTriggerProps,
-} from "@ark-ui/solid/collapsible";
+} from "@ark-ui/solid";
 
 export const Collapsible = Object.assign(CollapsibleRoot, {
   Content: CollapsibleContent,

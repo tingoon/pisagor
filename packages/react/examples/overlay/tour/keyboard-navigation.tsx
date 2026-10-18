@@ -1,6 +1,7 @@
 import { KeyboardIcon } from "@phosphor-icons/react";
 import type { TourStepType } from "@pisagor/react";
 import { Button, Tour } from "@pisagor/react";
+
 export function KeyboardNavigation() {
   const steps: TourStepType[] = [
     {
@@ -34,6 +35,7 @@ export function KeyboardNavigation() {
       type: "tooltip",
     },
   ];
+
   return (
     <div className="flex flex-col gap-2">
       <Tour keyboardNavigation steps={steps}>

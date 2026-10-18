@@ -2,9 +2,8 @@
 import type { SkeletonProps as BaseSkeletonProps } from "@pisagor/props";
 import { skeletonRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
-import type { SizeScaleProps } from "../../internal/types";
 
-type Props = HTMLAttributes<"div"> & BaseSkeletonProps & SizeScaleProps;
+type Props = HTMLAttributes<"div"> & BaseSkeletonProps;
 
 const {
   size = "md",

@@ -5,6 +5,7 @@ import {
   ArrowUpIcon,
 } from "@phosphor-icons/react";
 import { Command, Kbd } from "@pisagor/react";
+
 export function WithFooter() {
   const initialItems = [
     { group: "App", label: "Settings", shortcut: "⌘,", value: "settings" },

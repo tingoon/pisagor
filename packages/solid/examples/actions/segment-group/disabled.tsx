@@ -2,6 +2,7 @@ import { SegmentGroup } from "@pisagor/solid";
 
 export function Disabled() {
   const items = ["Profile", "Account", "Security", "Notifications"];
+
   return (
     <SegmentGroup.Root class="rounded-lg" defaultValue="Profile" disabled>
       {items.map((item) => (

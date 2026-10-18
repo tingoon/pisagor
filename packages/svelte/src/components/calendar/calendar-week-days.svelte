@@ -2,7 +2,7 @@
   import {
     DatePicker as CalendarPrimitive,
     type DatePickerTableHeadProps,
-  } from "@ark-ui/svelte/date-picker";
+  } from "@ark-ui/svelte";
   import CalendarTableHead from "./calendar-table-head.svelte";
   import CalendarTableHeader from "./calendar-table-header.svelte";
   import CalendarTableRow from "./calendar-table-row.svelte";

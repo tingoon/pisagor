@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
   BottomNavigationItemProps as BaseBottomNavigationItemProps,
   BottomNavigationProps as BaseBottomNavigationRootProps,
@@ -7,14 +7,10 @@ import {
   bottomNavigationItemRecipe,
   bottomNavigationRecipe,
 } from "@pisagor/recipes";
-import {
-  type ComponentProps,
-  createContext,
-  type FunctionComponent,
-  use,
-} from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { useMessage } from "./provider/context";
+import { createContext, use } from "react";
+import type { FunctionComponent } from "react";
+import { createSlotRecipeContext } from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -40,7 +36,7 @@ const BottomNavigationValueContext = createContext<string | undefined>(
 
 // #region Types
 export interface BottomNavigationRootProps
-  extends ComponentProps<typeof ark.nav>, BaseBottomNavigationRootProps {
+  extends HTMLArkProps<"nav">, BaseBottomNavigationRootProps {
   /**
    * Value of the item for the current page; that item gets
    * `aria-current="page"`.
@@ -50,10 +46,10 @@ export interface BottomNavigationRootProps
 
 export type BottomNavigationProps = BottomNavigationRootProps;
 
-export type BottomNavigationListProps = ComponentProps<typeof ark.div>;
+export type BottomNavigationListProps = HTMLArkProps<"div">;
 
 export interface BottomNavigationItemProps
-  extends ComponentProps<typeof ark.a>, BaseBottomNavigationItemProps {
+  extends HTMLArkProps<"a">, BaseBottomNavigationItemProps {
   /** Marks the item as the current page. Defaults to `value === root value`. */
   current?: boolean;
   /** Whether the item is disabled. */
@@ -62,27 +58,29 @@ export interface BottomNavigationItemProps
   value?: string;
 }
 
-export type BottomNavigationItemIconProps = ComponentProps<typeof ark.span>;
+export type BottomNavigationItemIconProps = HTMLArkProps<"span">;
 
-export type BottomNavigationItemLabelProps = ComponentProps<typeof ark.span>;
+export type BottomNavigationItemLabelProps = HTMLArkProps<"span">;
 // #endregion
 
 // #region Parts
 const BottomNavigationNav = withBottomNavigationProvider(ark.nav, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<ComponentProps<typeof ark.nav>>;
+}) as FunctionComponent<HTMLArkProps<"nav">>;
 
 export function BottomNavigationRoot({
   value,
   "aria-label": ariaLabel,
   ...rest
 }: BottomNavigationRootProps) {
+  const { m } = useLocale();
+
   return (
     <BottomNavigationValueContext value={value}>
       <BottomNavigationNav
         {...rest}
-        aria-label={useMessage("bottomNavigation.label", ariaLabel)}
+        aria-label={m("bottomNavigation.label", ariaLabel)}
       />
     </BottomNavigationValueContext>
   );
@@ -95,7 +93,7 @@ export const BottomNavigationList = withBottomNavigationContext(ark.div, {
 const BottomNavigationItemBase = withBottomNavigationItemProvider(ark.a, {
   name: "Item",
   slot: "base",
-}) as FunctionComponent<ComponentProps<typeof ark.a>>;
+}) as FunctionComponent<HTMLArkProps<"a">>;
 
 export function BottomNavigationItem({
   current,

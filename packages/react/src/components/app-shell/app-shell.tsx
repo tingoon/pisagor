@@ -129,6 +129,7 @@ export function AppShellRoot({
       if (current[name] === value) {
         return current;
       }
+
       return { ...current, [name]: value };
     });
   }, []);
@@ -139,6 +140,7 @@ export function AppShellRoot({
         if (current[name] === value) {
           return current;
         }
+
         return { ...current, [name]: value };
       });
     },

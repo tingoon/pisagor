@@ -1,10 +1,9 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { TableProps as BaseTableProps } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { SizeScaleProps } from "../internal/types";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { Context: TableStylesContext, withContext } = createSlotRecipeContext({
@@ -13,19 +12,18 @@ const { Context: TableStylesContext, withContext } = createSlotRecipeContext({
 });
 // #endregion
 
-export interface TableProps
-  extends ComponentProps<typeof ark.table>, BaseTableProps, SizeScaleProps {
+export interface TableProps extends HTMLArkProps<"table">, BaseTableProps {
   variant?: "plain" | "striped";
   isHoverable?: boolean;
 }
 
-export type TableHeaderProps = ComponentProps<typeof ark.thead>;
-export type TableBodyProps = ComponentProps<typeof ark.tbody>;
-export type TableFooterProps = ComponentProps<typeof ark.tfoot>;
-export type TableRowProps = ComponentProps<typeof ark.tr>;
-export type TableHeadProps = ComponentProps<typeof ark.th>;
-export type TableCellProps = ComponentProps<typeof ark.td>;
-export type TableCaptionProps = ComponentProps<typeof ark.caption>;
+export type TableHeaderProps = HTMLArkProps<"thead">;
+export type TableBodyProps = HTMLArkProps<"tbody">;
+export type TableFooterProps = HTMLArkProps<"tfoot">;
+export type TableRowProps = HTMLArkProps<"tr">;
+export type TableHeadProps = HTMLArkProps<"th">;
+export type TableCellProps = HTMLArkProps<"td">;
+export type TableCaptionProps = HTMLArkProps<"caption">;
 
 export function TableRoot(props: TableProps): JSX.Element {
   const [local, rest] = splitProps(props, [

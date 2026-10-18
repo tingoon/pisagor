@@ -1,4 +1,4 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import { Select } from "@pisagor/solid";
 
 export function Invalid() {
@@ -9,6 +9,7 @@ export function Invalid() {
       { label: "Astro", value: "astro" },
     ],
   });
+
   return (
     <Select.Root collection={collection} invalid>
       <Select.Trigger>

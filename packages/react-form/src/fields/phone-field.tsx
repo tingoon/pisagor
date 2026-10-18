@@ -1,8 +1,5 @@
 import { PhoneInput, type PhoneInputProps } from "@pisagor/react/phone-input";
-import {
-  type FieldPresentationProps,
-  FieldShell,
-} from "../internal/field-shell";
+import { type FieldPresentationProps, FieldShell } from "../internal";
 
 // #region Types
 export interface PhoneFieldProps

@@ -1,9 +1,6 @@
 import { PhoneInput, type PhoneInputProps } from "@pisagor/solid/phone-input";
 import { splitProps } from "solid-js";
-import {
-  type FieldPresentationProps,
-  FieldShell,
-} from "../internal/field-shell";
+import { type FieldPresentationProps, FieldShell } from "../internal";
 
 // #region Types
 export interface PhoneFieldProps

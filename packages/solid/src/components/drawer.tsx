@@ -1,52 +1,52 @@
+import { Drawer as DrawerPrimitive, ark } from "@ark-ui/solid";
 import type {
   DrawerBackdropProps,
   DrawerCloseTriggerProps,
+  DrawerContentProps as DrawerContentPrimitiveProps,
   DrawerGrabberProps,
-  DrawerContentProps as DrawerPrimitiveContentProps,
-  DrawerPositionerProps as DrawerPrimitivePositionerProps,
-  DrawerRootProps as DrawerPrimitiveRootProps,
+  DrawerPositionerProps as DrawerPositionerPrimitiveProps,
+  DrawerRootProps as DrawerRootPrimitiveProps,
   DrawerTitleProps,
   DrawerTriggerProps,
-} from "@ark-ui/solid/drawer";
-import { Drawer as DrawerPrimitive } from "@ark-ui/solid/drawer";
-import { ark } from "@ark-ui/solid/factory";
+  HTMLArkProps,
+} from "@ark-ui/solid";
 import type { DrawerProps as BaseDrawerRootProps } from "@pisagor/props";
 import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
 const {
   Context: DrawerStylesContext,
-  useStyles: useDrawer,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({ name: "Drawer", recipe: drawerRecipe });
 // #endregion
 
 export interface LocalDrawerRootProps
-  extends DrawerPrimitiveRootProps, BaseDrawerRootProps {}
+  extends DrawerRootPrimitiveProps, BaseDrawerRootProps {}
 
-export type DrawerPositionerProps = DrawerPrimitivePositionerProps &
-  Pick<DrawerVariantProps, "variant">;
+export type DrawerPositionerProps = DrawerPositionerPrimitiveProps &
+  DrawerVariantProps;
 
-export type DrawerContentProps = DrawerPrimitiveContentProps &
-  Pick<DrawerVariantProps, "variant">;
+export type DrawerContentProps = DrawerContentPrimitiveProps &
+  DrawerVariantProps;
 
-export interface DrawerHeaderProps extends ComponentProps<typeof ark.div> {
+export interface DrawerHeaderProps extends HTMLArkProps<"div"> {
   description?: string;
   title?: string;
 }
 
-export interface DrawerBodyProps extends ComponentProps<typeof ark.div> {
+export interface DrawerBodyProps extends HTMLArkProps<"div"> {
   scrollFade?: boolean;
 }
 
-export type DrawerContentInnerProps = ComponentProps<typeof ark.div>;
-export type DrawerDescriptionProps = ComponentProps<typeof ark.div>;
-export type DrawerFooterProps = ComponentProps<typeof ark.div>;
+export type DrawerContentInnerProps = HTMLArkProps<"div">;
+export type DrawerDescriptionProps = HTMLArkProps<"div">;
+export type DrawerFooterProps = HTMLArkProps<"div">;
 
 export function DrawerRoot(props: LocalDrawerRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["recipe"]);
@@ -72,7 +72,7 @@ export function DrawerTrigger(props: DrawerTriggerProps): JSX.Element {
 
 export function DrawerBackdrop(props: DrawerBackdropProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useDrawer();
+  const styles = useStyles();
 
   return (
     <DrawerPrimitive.Backdrop
@@ -84,7 +84,7 @@ export function DrawerBackdrop(props: DrawerBackdropProps): JSX.Element {
 
 export function DrawerPositioner(props: DrawerPositionerProps): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "class"]);
-  const styles = useDrawer();
+  const styles = useStyles();
 
   return (
     <DrawerPrimitive.Positioner
@@ -106,7 +106,7 @@ const SWIPE_DIRECTION_TO_PLACEMENT = {
 
 export function DrawerContent(props: DrawerContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "children", "class"]);
-  const styles = useDrawer();
+  const styles = useStyles();
   const variant = () => local.variant ?? "default";
 
   return (
@@ -138,7 +138,7 @@ export function DrawerContentInner(
   props: DrawerContentInnerProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useDrawer();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -152,7 +152,7 @@ export function DrawerContentInner(
 
 export function DrawerGrabber(props: DrawerGrabberProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useDrawer();
+  const styles = useStyles();
 
   return (
     <ark.div class={styles.slots.grabberWrapper()}>
@@ -173,7 +173,7 @@ export function DrawerHeader(props: DrawerHeaderProps): JSX.Element {
     "title",
     "class",
   ]);
-  const styles = useDrawer();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -200,7 +200,7 @@ export const DrawerTitle: Component<DrawerTitleProps> = withContext(
 
 export function DrawerDescription(props: DrawerDescriptionProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useDrawer();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -214,7 +214,7 @@ export function DrawerDescription(props: DrawerDescriptionProps): JSX.Element {
 
 export function DrawerBody(props: DrawerBodyProps): JSX.Element {
   const [local, rest] = splitProps(props, ["scrollFade", "class"]);
-  const styles = useDrawer();
+  const styles = useStyles();
 
   return (
     <ScrollArea scrollFade={local.scrollFade ?? false}>
@@ -236,7 +236,7 @@ export function DrawerCloseTrigger(
 
 export function DrawerFooter(props: DrawerFooterProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useDrawer();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -255,7 +255,7 @@ export type {
   DrawerRootProps,
   DrawerTitleProps,
   DrawerTriggerProps,
-} from "@ark-ui/solid/drawer";
+} from "@ark-ui/solid";
 
 export const Drawer = Object.assign(DrawerRoot, {
   Backdrop: DrawerBackdrop,

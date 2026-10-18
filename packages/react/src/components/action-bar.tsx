@@ -1,27 +1,26 @@
-import { Portal, useHotkey } from "@ark-ui/react";
-import { ark } from "@ark-ui/react/factory";
-import { Presence } from "@ark-ui/react/presence";
+import {
+  ark,
+  Portal,
+  Presence,
+  useHotkey,
+  type HTMLArkProps,
+} from "@ark-ui/react";
 import { useUncontrolled } from "@mantine/hooks";
 import { XIcon } from "@phosphor-icons/react";
 import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
 import { actionBarRecipe } from "@pisagor/recipes";
-import type {
-  ComponentProps,
-  MouseEvent,
-  PropsWithChildren,
-  ReactNode,
-} from "react";
+import type { MouseEvent, PropsWithChildren, ReactNode } from "react";
 import { createContext, use, useCallback, useMemo } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Badge, type BadgeProps } from "./badge";
 import { Button } from "./button";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Separator, type SeparatorProps } from "./separator";
 
 // #region Context
 const {
   Context: ActionBarStylesContext,
-  useStyles: useActionBarStyles,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "ActionBar",
@@ -67,11 +66,12 @@ function useActionBarState() {
   if (state === undefined) {
     throw new Error("useActionBar must be used within ActionBarContext.");
   }
+
   return state;
 }
 
 function useActionBar() {
-  return { ...useActionBarStyles(), ...useActionBarState() };
+  return { ...useStyles(), ...useActionBarState() };
 }
 // #endregion
 
@@ -124,13 +124,13 @@ export interface ActionBarProps
   onOpenChange?: (open: boolean) => void;
 }
 
-export type ActionBarTriggerProps = ComponentProps<typeof ark.button>;
+export type ActionBarTriggerProps = HTMLArkProps<"button">;
 
-export type ActionBarContentProps = ComponentProps<typeof ark.div>;
+export type ActionBarContentProps = HTMLArkProps<"div">;
 
 export type ActionBarSeparatorProps = SeparatorProps;
 
-export type ActionBarCloseProps = ComponentProps<typeof ark.button>;
+export type ActionBarCloseProps = HTMLArkProps<"button">;
 
 export interface ActionBarValueProps extends BadgeProps {
   /** The number of items selected */
@@ -139,7 +139,7 @@ export interface ActionBarValueProps extends BadgeProps {
   label?: string;
 }
 
-export type ActionBarBodyProps = ComponentProps<typeof ark.div>;
+export type ActionBarBodyProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Constants
@@ -322,7 +322,7 @@ export function ActionBarSeparator({
   className,
   ...rest
 }: ActionBarSeparatorProps) {
-  const { slots } = useActionBarStyles();
+  const { slots } = useStyles();
 
   return (
     <Separator
@@ -340,6 +340,7 @@ export function ActionBarClose({
   className,
   ...rest
 }: ActionBarCloseProps) {
+  const { m } = useLocale();
   const { onClose, isOpen, slots } = useActionBar();
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -349,7 +350,7 @@ export function ActionBarClose({
 
   return (
     <ark.button
-      aria-label={useMessage("actionBar.close")}
+      aria-label={m("actionBar.close")}
       {...rest}
       className={slots.close({ className })}
       data-part="close"
@@ -368,7 +369,7 @@ export function ActionBarValue({
   className,
   ...rest
 }: ActionBarValueProps) {
-  const { slots } = useActionBarStyles();
+  const { slots } = useStyles();
 
   return (
     <Badge

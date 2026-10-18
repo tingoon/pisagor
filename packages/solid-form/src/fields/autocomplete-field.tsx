@@ -1,9 +1,6 @@
 import { Autocomplete, type AutocompleteProps } from "@pisagor/solid";
 import { splitProps } from "solid-js";
-import {
-  type FieldPresentationProps,
-  FieldShell,
-} from "../internal/field-shell";
+import { type FieldPresentationProps, FieldShell } from "../internal";
 
 // #region Types
 interface AutocompleteOption {

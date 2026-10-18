@@ -1,7 +1,7 @@
 import {
   AngleSlider as AngleSliderPrimitive,
   useAngleSliderContext,
-} from "@ark-ui/vue/angle-slider";
+} from "@ark-ui/vue";
 import type { CircularSliderProps as BaseCircularSliderProps } from "@pisagor/props";
 import { circularSliderRecipe } from "@pisagor/recipes";
 import {
@@ -15,9 +15,11 @@ import {
   type VNodeChild,
   watchEffect,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
-import { createContext } from "../internal/utils/create-context";
+import {
+  type ClassValue,
+  createContext,
+  createSlotRecipeContext,
+} from "../internal";
 import { FieldLabel } from "./field";
 
 // #region Slot recipe context

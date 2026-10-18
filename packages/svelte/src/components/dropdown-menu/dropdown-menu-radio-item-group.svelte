@@ -2,7 +2,7 @@
   import {
     Menu as MenuPrimitive,
     type MenuRadioItemGroupProps,
-  } from "@ark-ui/svelte/menu";
+  } from "@ark-ui/svelte";
   import DropdownMenuItemGroupLabel from "./dropdown-menu-item-group-label.svelte";
 
   type Props = MenuRadioItemGroupProps & { heading?: string };

@@ -1,18 +1,18 @@
-import type {
-  TagsInputClearTriggerProps,
-  TagsInputInputProps,
-  TagsInputItemInputProps,
-  TagsInputItemPreviewProps,
-  TagsInputItemTextProps,
-  TagsInputControlProps as TagsInputPrimitiveControlProps,
-  TagsInputItemProps as TagsInputPrimitiveItemProps,
-  TagsInputRootProps as TagsInputPrimitiveRootProps,
-  TagsInputRootProviderProps as TagsInputPrimitiveRootProviderProps,
-} from "@ark-ui/solid/tags-input";
 import {
   TagsInput as TagsInputPrimitive,
   useTagsInputContext,
-} from "@ark-ui/solid/tags-input";
+} from "@ark-ui/solid";
+import type {
+  TagsInputClearTriggerProps,
+  TagsInputControlProps as TagsInputControlPrimitiveProps,
+  TagsInputInputProps,
+  TagsInputItemInputProps,
+  TagsInputItemPreviewProps,
+  TagsInputItemProps as TagsInputItemPrimitiveProps,
+  TagsInputItemTextProps,
+  TagsInputRootProps as TagsInputRootPrimitiveProps,
+  TagsInputRootProviderProps as TagsInputRootProviderPrimitiveProps,
+} from "@ark-ui/solid";
 import type {
   TagsInputItemProps as BaseTagsInputItemProps,
   TagsInputProps as BaseTagsInputProps,
@@ -20,10 +20,9 @@ import type {
 import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { XIcon } from "../internal/icons";
-import { InputGroup, type InputGroupProps } from "./input-group";
-import { useTranslation } from "./provider/context";
+import { XIcon, createSlotRecipeContext } from "../internal";
+import { InputGroup } from "./input-group";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const { Context: TagsInputStylesContext, useStyles: useTagsInput } =
@@ -34,37 +33,29 @@ const { Context: TagsInputItemStylesContext, useStyles: useTagsInputItem } =
 // #endregion
 
 export type TagsInputRootProps = Omit<
-  TagsInputPrimitiveRootProps,
+  TagsInputRootPrimitiveProps,
   "onValueChange"
 > &
-  Pick<InputGroupProps, "size" | "variant">;
+  BaseTagsInputProps;
 
-export interface TagsInputProps extends TagsInputRootProps, BaseTagsInputProps {
+export interface TagsInputProps extends TagsInputRootProps {
   clearable?: boolean;
   placeholder?: string;
   onValueChange?: (value: string[]) => void;
 }
 
 export interface TagsInputControlProps
-  extends
-    TagsInputPrimitiveControlProps,
-    Pick<InputGroupProps, "size" | "variant"> {
+  extends TagsInputControlPrimitiveProps, BaseTagsInputProps {
   clearable?: boolean;
 }
 
 export interface TagsInputItemProps
-  extends
-    TagsInputPrimitiveItemProps,
-    Pick<InputGroupProps, "size">,
-    BaseTagsInputItemProps {
+  extends TagsInputItemPrimitiveProps, BaseTagsInputItemProps {
   showDelete?: boolean;
 }
 
 export interface TagsInputRootProviderProps
-  extends
-    TagsInputPrimitiveRootProviderProps,
-    Pick<InputGroupProps, "size">,
-    BaseTagsInputProps {
+  extends TagsInputRootProviderPrimitiveProps, BaseTagsInputProps {
   clearable?: boolean;
 }
 
@@ -131,6 +122,7 @@ export function TagsInputRoot(props: TagsInputProps): JSX.Element {
 }
 
 export function TagsInputControl(props: TagsInputControlProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "size",
     "variant",
@@ -155,9 +147,7 @@ export function TagsInputControl(props: TagsInputControlProps): JSX.Element {
         >
           {local.children}
           <Show when={clearable() && api().value.length > 0}>
-            <TagsInputClearTrigger
-              aria-label={useTranslation("tagsInput.clearAllTags")}
-            />
+            <TagsInputClearTrigger aria-label={m("tagsInput.clearAllTags")} />
           </Show>
         </InputGroup>
       )}
@@ -230,6 +220,7 @@ export function TagsInputItemText(props: TagsInputItemTextProps): JSX.Element {
 export function TagsInputItemDeleteTrigger(
   props: TagsInputItemDeleteTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "class"]);
   const styles = useTagsInputItem();
 
@@ -241,7 +232,7 @@ export function TagsInputItemDeleteTrigger(
           {...triggerProps({
             class: styles.slots.delete({ class: local.class }),
           })}
-          aria-label={useTranslation("tagsInput.removeTag")}
+          aria-label={m("tagsInput.removeTag")}
           size="icon-xs"
           variant="ghost"
         >
@@ -256,6 +247,7 @@ export function TagsInputItemInput(
   props: TagsInputItemInputProps,
 ): JSX.Element {
   const styles = useTagsInputItem();
+
   return (
     <TagsInputPrimitive.ItemInput
       {...props}
@@ -268,6 +260,7 @@ export function TagsInputItemInput(
 
 export function TagsInputInput(props: TagsInputInputProps): JSX.Element {
   const styles = useTagsInput();
+
   return (
     <TagsInputPrimitive.Input
       {...props}
@@ -281,6 +274,7 @@ export function TagsInputInput(props: TagsInputInputProps): JSX.Element {
 export function TagsInputClearTrigger(
   props: TagsInputClearTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "class"]);
   const styles = useTagsInput();
 
@@ -292,7 +286,7 @@ export function TagsInputClearTrigger(
           {...triggerProps({
             class: styles.slots.clearTrigger({ class: local.class }),
           })}
-          aria-label={useTranslation("tagsInput.clear")}
+          aria-label={m("tagsInput.clear")}
           size="icon-xs"
           variant="ghost"
         >
@@ -346,7 +340,7 @@ export type {
   TagsInputItemInputProps,
   TagsInputItemPreviewProps,
   TagsInputItemTextProps,
-} from "@ark-ui/solid/tags-input";
+} from "@ark-ui/solid";
 
 export const TagsInput = Object.assign(TagsInputRoot, {
   ClearTrigger: TagsInputClearTrigger,

@@ -4,7 +4,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/button-group` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (`packages/props/src/button-group.ts`, native HTML attributes omitted). */
 export const buttonGroupProps: PropRow[] = [
   {
     name: "orientation",

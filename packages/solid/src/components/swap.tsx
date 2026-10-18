@@ -1,8 +1,8 @@
 import {
-  type SwapIndicatorProps,
   Swap as SwapPrimitive,
+  type SwapIndicatorProps,
   type SwapRootProps,
-} from "@ark-ui/solid/swap";
+} from "@ark-ui/solid";
 import type { SwapProps as BaseSwapProps } from "@pisagor/props";
 import { swapRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
@@ -56,4 +56,4 @@ export function Swap(props: SwapProps): JSX.Element {
   );
 }
 
-export type { SwapIndicatorProps } from "@ark-ui/solid/swap";
+export type { SwapIndicatorProps } from "@ark-ui/solid";

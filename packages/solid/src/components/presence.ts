@@ -1,1 +1,1 @@
-export { Presence, type PresenceProps } from "@ark-ui/solid/presence";
+export { Presence, type PresenceProps } from "@ark-ui/solid";

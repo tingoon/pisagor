@@ -1,14 +1,14 @@
 <script lang="ts">
   import {
-    type PaginationItemProps,
     Pagination as PaginationPrimitive,
-  } from "@ark-ui/svelte/pagination";
+    type PaginationItemProps,
+  } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import { usePagination } from "./pagination.context";
+  import { useStyles } from "./pagination.context";
 
   let { class: className, children, ...rest }: PaginationItemProps = $props();
-  const styles = usePagination();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

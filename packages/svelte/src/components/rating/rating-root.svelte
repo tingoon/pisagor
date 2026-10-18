@@ -2,11 +2,11 @@
   import {
     RatingGroup as RatingGroupPrimitive,
     type RatingGroupRootProps,
-  } from "@ark-ui/svelte/rating-group";
+  } from "@ark-ui/svelte";
   import type { RatingProps as BaseRatingProps } from "@pisagor/props";
   import { ratingRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import type { SizeScaleProps } from "../../internal/types";
+
   import { Context } from "./rating.context";
 
   type FormControlVariant = "primary" | "secondary";
@@ -14,8 +14,7 @@
   type Props = RatingGroupRootProps & {
     /** Visual shell variant. Defaults to `primary`. */
     variant?: FormControlVariant;
-  } & BaseRatingProps &
-    SizeScaleProps;
+  } & BaseRatingProps;
 
   let {
     variant: variantProp,

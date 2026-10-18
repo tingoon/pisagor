@@ -2,8 +2,7 @@
 import type { AvatarProps as BaseAvatarProps } from "@pisagor/props";
 import { type AvatarRecipeSlot, avatarRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 interface Props extends HTMLAttributes<"div">, BaseAvatarProps {
   /** Alt text for the avatar image */

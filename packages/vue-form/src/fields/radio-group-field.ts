@@ -1,6 +1,6 @@
 import { Field, RadioGroup, type RadioGroupRootProps } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { FieldPresentationProps } from "../internal/field-shell";
+import type { FieldPresentationProps } from "../internal";
 
 type ArkPart = Parameters<typeof h>[0];
 

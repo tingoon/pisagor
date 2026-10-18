@@ -1,11 +1,11 @@
 import {
   type CollectionItem,
+  Combobox as ComboboxPrimitive,
+  Dialog as DialogPrimitive,
   type ListCollection,
+  useFilter,
   useListCollection,
-} from "@ark-ui/vue/collection";
-import { Combobox as ComboboxPrimitive } from "@ark-ui/vue/combobox";
-import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
-import { useFilter } from "@ark-ui/vue/locale";
+} from "@ark-ui/vue";
 import { PhMagnifyingGlass } from "@phosphor-icons/vue";
 import type { CommandProps as BaseCommandProps } from "@pisagor/props";
 import { comboboxRecipe, commandRecipe, dialogRecipe } from "@pisagor/recipes";
@@ -18,17 +18,20 @@ import {
   Teleport,
   type VNodeChild,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue, LoosePropValue } from "../internal/types";
+import {
+  type ClassValue,
+  type LoosePropValue,
+  createSlotRecipeContext,
+} from "../internal";
 import { Combobox, type ComboboxRootProps } from "./combobox";
 import { Dialog, type DialogContentProps } from "./dialog";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Separator } from "./separator";
 
 // #region Slot recipe context
-const { provideStyles: provideCommandStyles, useStyles: useCommand } =
+const { provideStyles: provideCommandStyles, useStyles } =
   createSlotRecipeContext({
     name: "Command",
     recipe: commandRecipe,
@@ -132,6 +135,7 @@ export const CommandDialogContent = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const recipeSlots = computed(() => props.recipe());
 
     provideCommandStyles({
@@ -162,7 +166,7 @@ export const CommandDialogContent = defineComponent({
               h(Dialog.Header as ArkPart, {
                 class: variantSlots.dialogHeader(),
                 description: props.description,
-                title: props.title ?? useTranslation("command.title"),
+                title: m("command.title", props.title),
               }),
               slots.default?.(),
             ],
@@ -245,7 +249,7 @@ export const CommandContent = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCommand();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;
@@ -277,7 +281,7 @@ export const CommandInput = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useCommand();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;
@@ -323,7 +327,7 @@ export const CommandList = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCommand();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;
@@ -355,7 +359,8 @@ export const CommandEmpty = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCommand();
+    const { m } = useLocale();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;
@@ -366,7 +371,7 @@ export const CommandEmpty = defineComponent({
           ...attrs,
           class: cn(variantSlots.empty(), props.class, attrs.class),
         },
-        slots.default?.() ?? useTranslation("command.empty"),
+        slots.default?.() ?? m("command.empty"),
       );
     };
   },
@@ -455,7 +460,7 @@ export const CommandSeparator = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useCommand();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;
@@ -481,7 +486,7 @@ export const CommandShortcut = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCommand();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;
@@ -511,7 +516,7 @@ export const CommandFooter = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCommand();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;
@@ -546,6 +551,7 @@ export const CommandShorthand = defineComponent({
     placeholder: { default: undefined, type: String },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
     const filterFn = useFilter({ sensitivity: "base" });
     const { collection, filter } = useListCollection<CommandShorthandItem>({
       filter: (itemText, query) => filterFn.value.contains(itemText, query),
@@ -554,7 +560,6 @@ export const CommandShorthand = defineComponent({
       itemToString: (item) => item.label,
       itemToValue: (item) => item.value,
     });
-    const placeholder = useTranslation("command.placeholder");
 
     return () => {
       const groups = collection.value.group();
@@ -572,7 +577,9 @@ export const CommandShorthand = defineComponent({
           },
         },
         () => [
-          h(CommandInput, { placeholder: props.placeholder ?? placeholder }),
+          h(CommandInput, {
+            placeholder: m("command.placeholder", props.placeholder),
+          }),
           h(CommandContent, null, () => [
             h(
               CommandEmpty,

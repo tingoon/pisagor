@@ -2,7 +2,7 @@
   import {
     HoverCard as HoverCardPrimitive,
     type HoverCardRootProps,
-  } from "@ark-ui/svelte/hover-card";
+  } from "@ark-ui/svelte";
   import type { HoverCardProps as BaseHoverCardProps } from "@pisagor/props";
   import { hoverCardRecipe } from "@pisagor/recipes";
   import { Context } from "./hover-card.context";

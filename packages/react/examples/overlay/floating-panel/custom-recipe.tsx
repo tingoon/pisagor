@@ -24,6 +24,7 @@ export function CustomRecipe() {
   const collection = createListCollection({
     items: ["Inter", "Roboto", "Helvetica", "Geist"],
   });
+
   return (
     <FloatingPanel
       defaultSize={{ height: 300, width: 360 }}

@@ -1,4 +1,5 @@
 import { Card, Carousel } from "@pisagor/solid";
+
 export function SlidesPerPage() {
   return (
     <Carousel

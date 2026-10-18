@@ -2,15 +2,14 @@
   import {
     FloatingPanel as FloatingPanelPrimitive,
     type FloatingPanelStageTriggerProps,
-  } from "@ark-ui/svelte/floating-panel";
+  } from "@ark-ui/svelte";
   import { buttonRecipe, floatingPanelRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import ArrowsOutIcon from "phosphor-svelte/lib/ArrowsOutIcon";
-  import CornersInIcon from "phosphor-svelte/lib/CornersInIcon";
-  import { useMessageResolver } from "../provider/context";
-  import { useFloatingPanel } from "./floating-panel.context";
+  import { ArrowsOutIcon, CornersInIcon } from "phosphor-svelte";
+  import { useLocale } from "../provider/context";
+  import { useStyles } from "./floating-panel.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type Props = Omit<FloatingPanelStageTriggerProps, "stage"> & {
     size?: "icon-xs" | "icon-sm" | "icon-md";
@@ -23,12 +22,12 @@
     class: className,
     ...rest
   }: Props = $props();
-  const ctx = useFloatingPanel();
+  const ctx = useStyles();
   const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
 </script>
 
 <FloatingPanelPrimitive.StageTrigger
-  aria-label={t("floatingPanel.restore")}
+  aria-label={m("floatingPanel.restore")}
   {...rest}
   class={cn(buttonRecipe({ size, variant }).base(), className)}
   stage="default"

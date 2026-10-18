@@ -1,7 +1,7 @@
-import type { SkeletonRecipeFn } from "@pisagor/recipes";
+import type { SkeletonRecipeFn, SkeletonVariantProps } from "@pisagor/recipes";
 
 /** Skeleton props. */
-export interface SkeletonProps {
+export interface SkeletonProps extends SkeletonVariantProps {
   /**
    * Style recipe override.
    *

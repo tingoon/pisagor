@@ -1,3 +1,7 @@
+import {
+  AngleSlider as AngleSliderPrimitive,
+  useAngleSliderContext,
+} from "@ark-ui/solid";
 import type {
   AngleSliderControlProps,
   AngleSliderHiddenInputProps,
@@ -6,27 +10,21 @@ import type {
   AngleSliderRootProps,
   AngleSliderThumbProps,
   AngleSliderValueTextProps,
-} from "@ark-ui/solid/angle-slider";
-import {
-  AngleSlider as AngleSliderPrimitive,
-  useAngleSliderContext,
-} from "@ark-ui/solid/angle-slider";
+} from "@ark-ui/solid";
 import type { CircularSliderProps as BaseCircularSliderProps } from "@pisagor/props";
 import { circularSliderRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
 import { Field } from "./field";
 
 // #region Context
-const {
-  Context: CircularSliderStylesContext,
-  useStyles: useCircularSliderStyles,
-} = createSlotRecipeContext({
-  name: "CircularSlider",
-  recipe: circularSliderRecipe,
-});
+const { Context: CircularSliderStylesContext, useStyles } =
+  createSlotRecipeContext({
+    name: "CircularSlider",
+    recipe: circularSliderRecipe,
+  });
 
 /** Ring geometry derived from Root's size/thickness (not styles). */
 export interface CircularSliderGeometry {
@@ -42,8 +40,9 @@ const { CircularSliderGeometryContext, useCircularSliderGeometry } =
 
 /** Styles + geometry; getters keep reads reactive. */
 function useCircularSlider() {
-  const styles = useCircularSliderStyles();
+  const styles = useStyles();
   const geometry = useCircularSliderGeometry();
+
   return {
     get ringCircumference() {
       return geometry.ringCircumference;
@@ -193,7 +192,7 @@ export function CircularSliderControl(
     "markersAtSteps",
     "class",
   ]);
-  const styles = useCircularSliderStyles();
+  const styles = useStyles();
   const step = () => local.step ?? 1;
 
   const markerValues = createMemo(() => {
@@ -205,6 +204,7 @@ export function CircularSliderControl(
         ? Array.from({ length: Math.floor(360 / step()) }, (_, i) => i * step())
         : CLOCK_MARKER_ANGLES;
     }
+
     return null;
   });
 
@@ -295,7 +295,7 @@ export function CircularSliderValueText(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["prefix", "suffix", "class"]);
   const api = useAngleSliderContext();
-  const styles = useCircularSliderStyles();
+  const styles = useStyles();
 
   return (
     <Field.Label

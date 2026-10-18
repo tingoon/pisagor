@@ -1,20 +1,19 @@
-import { ark } from "@ark-ui/react/factory";
+import { Steps as StepsPrimitive, ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
   StepsIndicatorProps,
+  StepsItemProps as StepsItemPrimitiveProps,
   StepsNextTriggerProps,
   StepsPrevTriggerProps,
-  StepsItemProps as StepsPrimitiveItemProps,
-  StepsRootProps as StepsPrimitiveRootProps,
-} from "@ark-ui/react/steps";
-import { Steps as StepsPrimitive } from "@ark-ui/react/steps";
+  StepsRootProps as StepsRootPrimitiveProps,
+} from "@ark-ui/react";
 import { CheckIcon } from "@phosphor-icons/react";
 import type {
   StepsItemProps as BaseStepsItemProps,
   StepsProps as BaseStepsRootProps,
 } from "@pisagor/props";
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import type { FunctionComponent } from "react";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext: withStepsContext, withProvider: withStepsProvider } =
@@ -24,7 +23,7 @@ const { withContext: withStepsContext, withProvider: withStepsProvider } =
   });
 
 const {
-  useStyles: useStepsItem,
+  useStyles,
   withContext: withStepsItemContext,
   withProvider: withStepsItemProvider,
 } = createSlotRecipeContext({
@@ -35,14 +34,14 @@ const {
 
 // #region Types
 export interface StepsRootProps
-  extends StepsPrimitiveRootProps, BaseStepsRootProps {}
+  extends StepsRootPrimitiveProps, BaseStepsRootProps {}
 
 export interface StepsItemProps
-  extends StepsPrimitiveItemProps, BaseStepsItemProps {}
+  extends StepsItemPrimitiveProps, BaseStepsItemProps {}
 
-export type StepsTitleProps = ComponentProps<typeof ark.span>;
+export type StepsTitleProps = HTMLArkProps<"span">;
 
-export type StepsDescriptionProps = ComponentProps<typeof ark.span>;
+export type StepsDescriptionProps = HTMLArkProps<"span">;
 // #endregion
 
 // #region Parts
@@ -69,7 +68,7 @@ export function StepsIndicator({
   className,
   ...rest
 }: StepsIndicatorProps) {
-  const { slots } = useStepsItem();
+  const { slots } = useStyles();
 
   return (
     <StepsPrimitive.Indicator
@@ -132,7 +131,7 @@ export type {
   StepsPrevTriggerProps,
   StepsSeparatorProps,
   StepsTriggerProps,
-} from "@ark-ui/react/steps";
+} from "@ark-ui/react";
 
 export const Steps = Object.assign(StepsRoot, {
   CompletedContent: StepsCompletedContent,

@@ -1,12 +1,8 @@
 import { announcementRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 
-export const {
-  Context,
-  useStyles: useAnnouncement,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "Announcement",
-  recipe: announcementRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "Announcement",
+    recipe: announcementRecipe,
+  });

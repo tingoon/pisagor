@@ -1,13 +1,8 @@
 import { z } from "zod";
 import { listComponents, listExamples } from "../lib/catalog";
 import { INSTALL_GUIDE } from "../lib/resolve";
-import {
-  type Framework,
-  frameworkInputSchema,
-  resolveFramework,
-  type Tool,
-  type ToolConfig,
-} from "../lib/types";
+import { frameworkInputSchema, resolveFramework } from "../lib/types";
+import type { Framework, Tool, ToolConfig } from "../lib/types";
 
 function componentNames(config: ToolConfig): string[] {
   const names = new Set<string>();
@@ -16,6 +11,7 @@ function componentNames(config: ToolConfig): string[] {
       names.add(entry.name);
     }
   }
+
   return [...names].sort();
 }
 
@@ -24,6 +20,7 @@ export const listExamplesTool: Tool<{ componentList: string[] }> = {
     if (config.packages.length === 0) {
       return { componentList: [] };
     }
+
     return { componentList: componentNames(config) };
   },
   description:

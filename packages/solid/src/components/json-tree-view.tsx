@@ -1,8 +1,8 @@
 import {
   JsonTreeView as JsonTreeViewPrimitive,
-  type JsonTreeViewRootProps as JsonTreeViewPrimitiveRootProps,
+  type JsonTreeViewRootProps as JsonTreeViewRootPrimitiveProps,
   type JsonTreeViewTreeProps,
-} from "@ark-ui/solid/json-tree-view";
+} from "@ark-ui/solid";
 import type { JsonTreeViewProps as BaseJsonTreeViewRootProps } from "@pisagor/props";
 import {
   type JsonTreeViewRecipeSlot,
@@ -10,9 +10,11 @@ import {
 } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CaretRightIcon } from "../internal/icons";
-import type { VariantClassNames } from "../internal/types";
+import {
+  CaretRightIcon,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -22,7 +24,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export interface JsonTreeViewRootProps
-  extends JsonTreeViewPrimitiveRootProps, BaseJsonTreeViewRootProps {}
+  extends JsonTreeViewRootPrimitiveProps, BaseJsonTreeViewRootProps {}
 
 type JsonTreeViewClassNames = VariantClassNames<JsonTreeViewRecipeSlot>;
 
@@ -65,7 +67,7 @@ function JsonTreeViewShorthand(props: JsonTreeViewProps): JSX.Element {
   );
 }
 
-export type { JsonTreeViewTreeProps } from "@ark-ui/solid/json-tree-view";
+export type { JsonTreeViewTreeProps } from "@ark-ui/solid";
 
 export const JsonTreeView = Object.assign(JsonTreeViewShorthand, {
   Root: JsonTreeViewRoot,

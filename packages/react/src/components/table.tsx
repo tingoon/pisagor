@@ -1,9 +1,8 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { TableProps as BaseTableProps } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
-import type { ComponentProps } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { SizeScaleProps } from "../internal/types";
+
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { Context: TableStylesContext, withContext } = createSlotRecipeContext({
@@ -13,8 +12,7 @@ const { Context: TableStylesContext, withContext } = createSlotRecipeContext({
 // #endregion
 
 // #region Types
-export interface TableProps
-  extends ComponentProps<typeof ark.table>, BaseTableProps {
+export interface TableProps extends HTMLArkProps<"table">, BaseTableProps {
   /**
    * The variant of the table.
    *
@@ -29,13 +27,13 @@ export interface TableProps
   isHoverable?: boolean;
 }
 
-export type TableHeaderProps = ComponentProps<typeof ark.thead>;
-export type TableBodyProps = ComponentProps<typeof ark.tbody>;
-export type TableFooterProps = ComponentProps<typeof ark.tfoot>;
-export type TableRowProps = ComponentProps<typeof ark.tr>;
-export type TableHeadProps = ComponentProps<typeof ark.th>;
-export type TableCellProps = ComponentProps<typeof ark.td>;
-export type TableCaptionProps = ComponentProps<typeof ark.caption>;
+export type TableHeaderProps = HTMLArkProps<"thead">;
+export type TableBodyProps = HTMLArkProps<"tbody">;
+export type TableFooterProps = HTMLArkProps<"tfoot">;
+export type TableRowProps = HTMLArkProps<"tr">;
+export type TableHeadProps = HTMLArkProps<"th">;
+export type TableCellProps = HTMLArkProps<"td">;
+export type TableCaptionProps = HTMLArkProps<"caption">;
 // #endregion
 
 // #region Parts
@@ -46,7 +44,7 @@ export function TableRoot({
   recipe = tableRecipe,
   className,
   ...rest
-}: TableProps & SizeScaleProps) {
+}: TableProps) {
   const slots = recipe({ size });
 
   return (

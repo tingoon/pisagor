@@ -1,22 +1,17 @@
+import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/react";
 import type {
-  ScrollAreaRootProps as ScrollAreaPrimitiveRootProps,
+  ScrollAreaRootProps as ScrollAreaRootPrimitiveProps,
   ScrollAreaScrollbarProps,
   ScrollAreaThumbProps,
   ScrollAreaViewportProps,
-} from "@ark-ui/react/scroll-area";
-import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/react/scroll-area";
+} from "@ark-ui/react";
 import type { ScrollAreaProps as BaseScrollAreaRootProps } from "@pisagor/props";
 import { type ScrollAreaRecipeSlot, scrollAreaRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useScrollArea,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "ScrollArea",
   recipe: scrollAreaRecipe,
 });
@@ -26,14 +21,14 @@ const {
 const ScrollAreaRoot = withProvider(ScrollAreaPrimitive.Root, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<ScrollAreaPrimitiveRootProps & BaseScrollAreaRootProps>;
+}) as FunctionComponent<ScrollAreaRootPrimitiveProps & BaseScrollAreaRootProps>;
 
 function ScrollAreaViewport({
   children,
   className,
   ...rest
 }: ScrollAreaViewportProps) {
-  const { slots } = useScrollArea();
+  const { slots } = useStyles();
 
   return (
     <ScrollAreaPrimitive.Viewport
@@ -125,7 +120,7 @@ export type {
   ScrollAreaScrollbarProps,
   ScrollAreaThumbProps,
   ScrollAreaViewportProps,
-} from "@ark-ui/react/scroll-area";
+} from "@ark-ui/react";
 
 export const ScrollArea = Object.assign(ScrollAreaShorthand, {
   Corner: ScrollAreaPrimitive.Corner,

@@ -18,6 +18,7 @@ export function Image() {
       src: "https://picsum.photos/seed/3/500/300",
     },
   ];
+
   return (
     <Item.Group className="gap-2" variant="outline">
       {images.map((image) => (

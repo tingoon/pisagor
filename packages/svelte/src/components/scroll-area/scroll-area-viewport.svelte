@@ -2,16 +2,16 @@
   import {
     ScrollArea as ScrollAreaPrimitive,
     type ScrollAreaViewportProps,
-  } from "@ark-ui/svelte/scroll-area";
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import { useScrollArea } from "./scroll-area.context";
+  import { useStyles } from "./scroll-area.context";
 
   let {
     class: className,
     children,
     ...rest
   }: ScrollAreaViewportProps = $props();
-  const styles = useScrollArea();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

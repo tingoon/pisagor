@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { createListCollection } from "@ark-ui/vue/collection";
+import { createListCollection } from "@ark-ui/vue";
 import { Combobox, Field, TagsInput } from "@pisagor/vue";
 import { computed, ref } from "vue";
 

@@ -1,9 +1,9 @@
-import { ark } from "@ark-ui/vue/factory";
 import {
-  createTreeCollection as arkCreateTreeCollection,
   type TreeCollection as arkTreeCollection,
   TreeView as TreeViewPrimitive,
-} from "@ark-ui/vue/tree-view";
+  ark,
+  createTreeCollection as arkCreateTreeCollection,
+} from "@ark-ui/vue";
 import {
   PhCaretRight,
   PhCheck,
@@ -26,9 +26,11 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, Fragment, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
-import { createContext } from "../internal/utils/create-context";
+import {
+  type ClassValue,
+  createContext,
+  createSlotRecipeContext,
+} from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -157,6 +159,7 @@ const getFileExtension = (file: string) => {
   const name = file.includes(".")
     ? file.split(".").at(-1)?.toLowerCase()
     : null;
+
   return name ? `.${name}` : null;
 };
 // #endregion
@@ -621,6 +624,7 @@ export const TreeViewItemText = defineComponent({
       const resolved = extension
         ? treeViewContext?.fileIcons?.[extension]
         : undefined;
+
       return (resolved ?? props.icon) as ArkPart;
     };
 

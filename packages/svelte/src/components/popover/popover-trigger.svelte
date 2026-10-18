@@ -2,7 +2,7 @@
   import {
     Popover as PopoverPrimitive,
     type PopoverTriggerProps,
-  } from "@ark-ui/svelte/popover";
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: PopoverTriggerProps = $props();
 </script>

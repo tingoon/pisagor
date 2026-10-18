@@ -2,7 +2,7 @@
   import {
     Field as FieldPrimitive,
     type FieldRequiredIndicatorProps,
-  } from "@ark-ui/svelte/field";
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useFieldSlots } from "./field.context";
 

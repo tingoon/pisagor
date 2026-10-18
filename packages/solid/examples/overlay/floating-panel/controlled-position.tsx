@@ -6,8 +6,9 @@ import {
   CaretUpIcon,
   GearSixIcon,
   XIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
+
 export function ControlledPosition() {
   const [position, setPosition] = createSignal({ x: 200, y: 200 });
 

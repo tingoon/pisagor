@@ -7,7 +7,7 @@
     HandIcon,
     PencilIcon,
     ShareIcon,
-  } from "@pisagor/svelte/icons";
+  } from "phosphor-svelte";
 </script>
 
 <DropdownMenu>

@@ -240,6 +240,7 @@ function ManualPaginationBar({ total }: { total: number }) {
   const pageCount = Math.max(1, Math.ceil(total / pageSize));
   const from = total === 0 ? 0 : pageIndex * pageSize + 1;
   const to = Math.min((pageIndex + 1) * pageSize, total);
+
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 border-t pt-3">
       <p className="text-muted-foreground text-sm">
@@ -292,6 +293,7 @@ export function ManualPagination() {
       const leftValue = left[sort.id as keyof User];
       const rightValue = right[sort.id as keyof User];
       const comparison = String(leftValue).localeCompare(String(rightValue));
+
       return sort.desc ? -comparison : comparison;
     });
 
@@ -308,6 +310,7 @@ export function ManualPagination() {
   useEffect(() => {
     setIsFetching(true);
     const timer = window.setTimeout(() => setIsFetching(false), 450);
+
     return () => window.clearTimeout(timer);
   }, [pagination.pageIndex, pagination.pageSize, sorting]);
 

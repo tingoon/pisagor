@@ -23,7 +23,7 @@ How to build shared UI components in `packages/svelte` (`@pisagor/svelte`).
 
 Light components live under `src/components/`. Prefer a **folder** with one `.svelte` file per part (Svelte compounds need multiple SFCs). Flatten to a single file at `src/components/<name>.svelte` (plus a root-barrel export) **only** when the folder would otherwise be just `index.ts` + one implementation file.
 
-**Heavy** modules live under `src/<name>/` with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/svelte-form`.
+**Heavy** modules live under `src/components/<name>/` like other components, with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/svelte-form`.
 
 ```text
 # Typical compound (multi-file folder)
@@ -49,7 +49,7 @@ Package UI is **Svelte 5 SFCs** (`.svelte`) with runes (`$props()`, `$derived`, 
 - One **file per part** for compounds; barrel `Object.assign`s them into `Foo.Root` / `Foo.Part`.
 - Destructure `$props()` with `class: className` when you need a local binding (Svelte reserves `class`); prefer `let { children, ...rest } = $props()` when using slot-recipe helpers.
 - Prefer `Snippet` for slot-like content on shorthand APIs; render with `{@render children?.()}`.
-- Alias Ark roots: `Accordion as AccordionPrimitive`; plain nodes via native elements or `Ark` from `@ark-ui/svelte/factory` when `asChild` / polymorphism is needed.
+- Alias Ark roots: `Accordion as AccordionPrimitive`; plain nodes via native elements or `Ark` from `@ark-ui/svelte` when `asChild` / polymorphism is needed.
 - Styling prop is **`class`**, not React’s `className`.
 
 ### Slot recipe context (`createSlotRecipeContext`)
@@ -108,7 +108,7 @@ For **foldered** multi-file components. Export `createSlotRecipeContext` binding
 
 - Relative sibling imports; public map for apps.
 - Relative by depth: `../utils` / `../../utils`, `../internal/…`, `../hooks`.
-- Icons: `phosphor-svelte` (e.g. `import XIcon from "phosphor-svelte/lib/XIcon"`).
+- Icons: `phosphor-svelte` (e.g. `import { XIcon } from "phosphor-svelte"`).
 - Class merging: `cn` from `@pisagor/utils`.
 
 ### Shared props (`@pisagor/props`)

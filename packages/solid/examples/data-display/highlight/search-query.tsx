@@ -1,5 +1,6 @@
 import { Highlight, Input } from "@pisagor/solid";
 import { createSignal } from "solid-js";
+
 export function SearchQuery() {
   const searchResults = ["Spotlight bulb", "Spot cleaner", "Spot ceiling"];
   const [query, setQuery] = createSignal("spot");

@@ -1,11 +1,11 @@
 <script lang="ts">
   import {
-    type DrawerPositionerProps,
     Drawer as DrawerPrimitive,
-  } from "@ark-ui/svelte/drawer";
+    type DrawerPositionerProps,
+  } from "@ark-ui/svelte";
   import type { DrawerProps as BaseDrawerProps } from "@pisagor/props";
   import { cn } from "@pisagor/utils";
-  import { useDrawer } from "./drawer.context";
+  import { useStyles } from "./drawer.context";
 
   type Props = DrawerPositionerProps & BaseDrawerProps;
 
@@ -15,7 +15,7 @@
     children,
     ...rest
   }: Props = $props();
-  const styles = useDrawer();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

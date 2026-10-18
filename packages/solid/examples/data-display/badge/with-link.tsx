@@ -1,5 +1,8 @@
 import { Badge } from "@pisagor/solid";
-import { ArrowUpRightIcon, PlusCircleIcon } from "@pisagor/solid/icons";
+import {
+  ArrowUpRightIcon,
+  PlusCircleIcon,
+} from "@squidlab/phosphor-solid/icons";
 
 export function WithLink() {
   return (

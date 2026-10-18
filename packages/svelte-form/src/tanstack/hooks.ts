@@ -32,10 +32,12 @@ export function getFieldErrorMessage(field: AnyFieldApi): string | undefined {
 
 export function useSubmissionAttempts() {
   const form = useFormContext();
+
   return form.useSelector((state) => state.submissionAttempts);
 }
 
 export function useFieldInvalid(field: AnyFieldApi) {
   const submissionAttempts = useSubmissionAttempts();
+
   return isFieldInvalid(field, submissionAttempts.current);
 }

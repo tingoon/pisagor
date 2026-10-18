@@ -6,8 +6,8 @@ import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import {
   type FieldPresentationProps,
   FieldShell,
-} from "../internal/field-shell";
-import type { SetRequired } from "../internal/types";
+  type SetRequired,
+} from "../internal";
 
 type ArkPart = Parameters<typeof h>[0];
 

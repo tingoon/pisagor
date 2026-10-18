@@ -23,6 +23,7 @@ export async function listBlockIds(framework: Framework): Promise<string[]> {
   const name = blockCollectionName[framework];
   if (!name) return [];
   const entries = await getCollection(name);
+
   return entries.map((entry) => entry.id).sort();
 }
 
@@ -30,6 +31,7 @@ export async function listBlockStaticPaths(
   framework: Framework,
 ): Promise<{ params: { id: string } }[]> {
   const ids = await listBlockIds(framework);
+
   return ids.map((id) => ({ params: { id } }));
 }
 
@@ -46,6 +48,7 @@ export async function loadBlockDocs(
   if (!entry) {
     throw new Error(`Missing ${framework} block docs for "${id}"`);
   }
+
   return {
     description: entry.data.description,
     title: entry.data.title,
@@ -70,6 +73,7 @@ export async function loadBlockPage(
     throw new Error(`Missing ${framework} block docs for "${id}"`);
   }
   const { Content, headings } = await render(entry);
+
   return {
     Content,
     docs: {
@@ -93,6 +97,7 @@ export async function loadBlockBody(
   if (!entry) {
     throw new Error(`Missing ${framework} block docs for "${id}"`);
   }
+
   return entry.body ?? "";
 }
 

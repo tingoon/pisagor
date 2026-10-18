@@ -1,5 +1,6 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import { Field, Listbox } from "@pisagor/solid";
+
 export function Horizontal() {
   const collection = createListCollection({
     items: [
@@ -11,6 +12,7 @@ export function Horizontal() {
     itemToString: (item) => item.title,
     itemToValue: (item) => item.title,
   });
+
   return (
     <Field>
       <Field.Label>Favorite album</Field.Label>

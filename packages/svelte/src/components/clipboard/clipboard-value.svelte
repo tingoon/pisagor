@@ -2,7 +2,7 @@
   import {
     Clipboard as ClipboardPrimitive,
     type ClipboardValueTextProps,
-  } from "@ark-ui/svelte/clipboard";
+  } from "@ark-ui/svelte";
   import { withContext } from "./clipboard.context";
 
   let { children, ...rest }: ClipboardValueTextProps = $props();

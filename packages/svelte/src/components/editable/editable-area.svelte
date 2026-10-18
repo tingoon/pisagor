@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type EditableAreaProps,
     Editable as EditablePrimitive,
-  } from "@ark-ui/svelte/editable";
+    type EditableAreaProps,
+  } from "@ark-ui/svelte";
   import { withContext } from "./editable.context";
 
   let { children, ...rest }: EditableAreaProps = $props();

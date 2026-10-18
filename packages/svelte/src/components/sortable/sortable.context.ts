@@ -1,6 +1,6 @@
 import type { SortableItemRecipe } from "@pisagor/recipes";
 import { sortableItemRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils/create-context";
 
 export interface SortableContextValue {
@@ -22,7 +22,7 @@ export const useSortable = root.getContext;
 
 export const {
   Context: SortableItemStylesContext,
-  useStyles: useSortableItemStyles,
+  useStyles,
   withContext: withSortableItemContext,
   withProvider: withSortableItemProvider,
 } = createSlotRecipeContext({
@@ -40,8 +40,9 @@ export const setSortableItemStateContext = itemState.setContext;
 export const useSortableItemState = itemState.getContext;
 
 export function useSortableItem() {
-  const styles = useSortableItemStyles();
+  const styles = useStyles();
   const state = useSortableItemState();
+
   return {
     get id() {
       return state.id;

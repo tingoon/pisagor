@@ -1,3 +1,4 @@
+import { Splitter as SplitterPrimitive } from "@ark-ui/react";
 import type {
   SplitterContextProps,
   SplitterPanelProps,
@@ -5,8 +6,7 @@ import type {
   SplitterResizeTriggerProps,
   SplitterRootProps,
   SplitterRootProviderProps,
-} from "@ark-ui/react/splitter";
-import { Splitter as SplitterPrimitive } from "@ark-ui/react/splitter";
+} from "@ark-ui/react";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
 import type {
   ResizableEdgeHandleProps as BaseResizableEdgeHandleProps,
@@ -15,27 +15,25 @@ import type {
 } from "@pisagor/props";
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import { type ComponentProps, useCallback, useRef } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { useMessage } from "./provider/context";
+import { createSlotRecipeContext } from "../internal";
+import { useLocale } from "./provider/context";
 
-export type {
-  SplitterExpandCollapseDetails as ExpandCollapseDetails,
-  SplitterPanelData as PanelData,
-  SplitterResizeDetails as ResizeDetails,
-  SplitterResizeEndDetails as ResizeEndDetails,
-  UseSplitterProps,
-  UseSplitterReturn,
-} from "@ark-ui/react/splitter";
 export {
+  type SplitterExpandCollapseDetails as ExpandCollapseDetails,
+  type SplitterPanelData as PanelData,
+  type SplitterResizeDetails as ResizeDetails,
+  type SplitterResizeEndDetails as ResizeEndDetails,
+  type UseSplitterProps,
+  type UseSplitterReturn,
   createSplitterRegistry as createRegistry,
   useSplitter,
   useSplitterContext,
-} from "@ark-ui/react/splitter";
+} from "@ark-ui/react";
 
 // #region Context
 const {
   Context: ResizableStylesContext,
-  useStyles: useResizable,
+  useStyles,
   withContext,
   withProvider,
 } = createSlotRecipeContext({
@@ -240,11 +238,12 @@ export function ResizableResizeTrigger({
   className,
   ...rest
 }: ResizableResizeTriggerProps) {
-  const { slots } = useResizable();
+  const { m } = useLocale();
+  const { slots } = useStyles();
 
   return (
     <SplitterPrimitive.ResizeTrigger
-      aria-label={useMessage("resizable.resize")}
+      aria-label={m("resizable.resize")}
       {...rest}
       className={slots.resizeTrigger({ className })}
     >

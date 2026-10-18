@@ -6,7 +6,7 @@
     PencilSimpleIcon,
     TrashIcon,
     XIcon,
-  } from "@pisagor/svelte/icons";
+  } from "phosphor-svelte";
 
   let isOpen = $state(false);
   let gutter: (typeof gutters)[number] = $state("24px");

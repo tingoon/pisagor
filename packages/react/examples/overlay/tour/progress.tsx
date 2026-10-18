@@ -1,8 +1,10 @@
 import type { TourStepType } from "@pisagor/react";
 import { Button, Tour, useTourContext } from "@pisagor/react";
+
 export function Progress() {
   const TourProgressBar = () => {
     const { tour } = useTourContext();
+
     return (
       <div className="bg-muted absolute right-0 bottom-0 left-0 h-1 overflow-hidden rounded-b-2xl">
         <div
@@ -56,6 +58,7 @@ export function Progress() {
       type: "tooltip",
     },
   ];
+
   return (
     <div className="flex flex-col gap-2">
       <Tour steps={steps}>

@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type {
-    PasswordInputInputProps,
-    PasswordInputRootProps as PasswordInputPrimitiveRootProps,
-  } from "@ark-ui/svelte/password-input";
-  import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/svelte/password-input";
+  import {
+    PasswordInput as PasswordInputPrimitive,
+    type PasswordInputInputProps,
+    type PasswordInputRootProps as PasswordInputRootPrimitiveProps,
+  } from "@ark-ui/svelte";
   import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
   import {
     inputGroupButtonRecipe,
@@ -11,34 +11,29 @@
     passwordInputRecipe,
   } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import EyeIcon from "phosphor-svelte/lib/EyeIcon";
-  import EyeSlashIcon from "phosphor-svelte/lib/EyeSlashIcon";
-  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { EyeIcon, EyeSlashIcon, XIcon } from "phosphor-svelte";
   import InputGroupAddon from "../input-group/input-group-addon.svelte";
   import InputGroupButton from "../input-group/input-group-button.svelte";
   import InputGroupRoot from "../input-group/input-group-root.svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
 
-  const t = useMessageResolver();
-
-  type FormControlVariant = "primary" | "secondary";
+  const { m } = useLocale();
 
   type PasswordInputRootProps = Pick<
-    PasswordInputPrimitiveRootProps,
+    PasswordInputRootPrimitiveProps,
     "defaultVisible" | "invalid" | "onVisibilityChange" | "visible"
   >;
 
   type Props = PasswordInputRootProps &
-    Omit<PasswordInputInputProps, "size" | "children"> & {
+    Omit<PasswordInputInputProps, "size" | "children"> &
+    BasePasswordInputProps & {
       clearable?: boolean;
       disabled?: boolean | null;
       onValueChange?: (value: string) => void;
       placeholder?: string | null | undefined;
       readonly?: boolean | null;
-      size?: "sm" | "md" | "lg";
       value?: string | undefined;
-      variant?: FormControlVariant;
-    } & BasePasswordInputProps;
+    };
 
   let {
     size = "md",
@@ -105,7 +100,7 @@
       {#if canClear}
         <InputGroupAddon align="inline-end" class={slots.clearAddon()}>
           <InputGroupButton
-            aria-label={t("passwordInput.clear")}
+            aria-label={m("passwordInput.clear")}
             data-part="clear-trigger"
             data-scope="password-input"
             onclick={handleClear}
@@ -120,7 +115,7 @@
 
       <InputGroupAddon align="inline-end">
         <PasswordInputPrimitive.VisibilityTrigger
-          aria-label={t("passwordInput.togglePasswordVisibility")}
+          aria-label={m("passwordInput.togglePasswordVisibility")}
           class={inputGroupButtonRecipe({ size: "icon-xs" })}
           type="button"
         >

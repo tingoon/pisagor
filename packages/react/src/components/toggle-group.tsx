@@ -1,17 +1,17 @@
 import {
-  type ToggleGroupItemProps,
   ToggleGroup as ToggleGroupPrimitive,
-  type ToggleGroupRootProps as ToggleGroupPrimitiveRootProps,
-} from "@ark-ui/react/toggle-group";
+  type ToggleGroupItemProps,
+  type ToggleGroupRootProps as ToggleGroupRootPrimitiveProps,
+} from "@ark-ui/react";
 import type { ToggleGroupProps as BaseToggleGroupRootProps } from "@pisagor/props";
 import { toggleGroupRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { createContext, use, useMemo } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Toggle, type ToggleProps } from "./toggle";
 
 // #region Context
-const { Context: ToggleGroupStylesContext, useStyles: useToggleGroupStyles } =
+const { Context: ToggleGroupStylesContext, useStyles } =
   createSlotRecipeContext({
     name: "ToggleGroup",
     recipe: toggleGroupRecipe,
@@ -36,8 +36,9 @@ const ToggleGroupItemOptionsContext = createContext<ToggleGroupItemOptions>({
 });
 
 function useToggleGroup() {
-  const styles = useToggleGroupStyles();
+  const styles = useStyles();
   const options = use(ToggleGroupItemOptionsContext);
+
   return { ...styles, ...options };
 }
 // #endregion
@@ -51,7 +52,7 @@ interface ToggleGroupPresetItem {
 
 export interface ToggleGroupRootProps
   extends
-    Omit<ToggleGroupPrimitiveRootProps, "onValueChange">,
+    Omit<ToggleGroupRootPrimitiveProps, "onValueChange">,
     ToggleGroupItemOptions,
     BaseToggleGroupRootProps {
   onValueChange?: (value: string | string[]) => void;
@@ -155,7 +156,7 @@ ToggleGroupShorthand.displayName = "ToggleGroup";
 
 // #endregion
 
-export type { ToggleGroupItemProps } from "@ark-ui/react/toggle-group";
+export type { ToggleGroupItemProps } from "@ark-ui/react";
 
 export const ToggleGroup = Object.assign(ToggleGroupShorthand, {
   Item: ToggleGroupItem,

@@ -2,7 +2,7 @@
   import {
     Drawer as DrawerPrimitive,
     type DrawerTitleProps,
-  } from "@ark-ui/svelte/drawer";
+  } from "@ark-ui/svelte";
   import { withContext } from "./drawer.context";
 
   let { children, ...rest }: DrawerTitleProps = $props();

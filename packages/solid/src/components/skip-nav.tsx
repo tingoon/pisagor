@@ -1,26 +1,27 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   SkipNavProps as BaseSkipNavContentProps,
   SkipNavProps as BaseSkipNavLinkProps,
 } from "@pisagor/props";
 import { skipNavRecipe } from "@pisagor/recipes";
-import type { ComponentProps, JSX } from "solid-js";
+import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 const SKIP_NAV_ID = "skip-nav-content";
 
 export interface SkipNavLinkProps
-  extends ComponentProps<typeof ark.a>, BaseSkipNavLinkProps {
+  extends HTMLArkProps<"a">, BaseSkipNavLinkProps {
   id?: string;
 }
 
 export interface SkipNavContentProps
-  extends ComponentProps<typeof ark.div>, BaseSkipNavContentProps {
+  extends HTMLArkProps<"div">, BaseSkipNavContentProps {
   id?: string;
 }
 
 export function SkipNavLink(props: SkipNavLinkProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "children",
     "id",
@@ -38,7 +39,7 @@ export function SkipNavLink(props: SkipNavLinkProps): JSX.Element {
       data-scope="skip-nav"
       href={`#${id()}`}
     >
-      {local.children ?? useTranslation("skipNav.label")}
+      {m("skipNav.label", local.children)}
     </ark.a>
   );
 }

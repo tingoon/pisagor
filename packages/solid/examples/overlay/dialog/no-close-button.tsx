@@ -1,5 +1,6 @@
 import { Button, Dialog } from "@pisagor/solid";
 import { Portal } from "solid-js/web";
+
 export function NoCloseButton() {
   return (
     <Dialog.Root>

@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte/color-picker";
+  import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { ClassValue } from "svelte/elements";
-  import { useColorPicker } from "./color-picker.context";
+  import { useStyles } from "./color-picker.context";
 
   type Props = {
     class?: ClassValue;
@@ -10,7 +10,7 @@
     [key: string]: unknown;
   };
   let { children, class: className, ...rest }: Props = $props();
-  const styles = useColorPicker();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

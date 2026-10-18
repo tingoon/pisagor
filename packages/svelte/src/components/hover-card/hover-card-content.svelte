@@ -1,11 +1,11 @@
 <script lang="ts">
   import {
-    type HoverCardContentProps,
     HoverCard as HoverCardPrimitive,
-  } from "@ark-ui/svelte/hover-card";
-  import { Portal } from "@ark-ui/svelte/portal";
+    type HoverCardContentProps,
+    Portal,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import { useHoverCard } from "./hover-card.context";
+  import { useStyles } from "./hover-card.context";
   import HoverCardArrow from "./hover-card-arrow.svelte";
 
   type Props = HoverCardContentProps & {
@@ -23,7 +23,7 @@
     showArrow = true,
     ...rest
   }: Props = $props();
-  const styles = useHoverCard();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

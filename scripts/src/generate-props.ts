@@ -1,17 +1,13 @@
 import fs, { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import {
-  type InterfaceDeclaration,
-  Node,
-  type ObjectLiteralExpression,
-  Project,
-  type PropertyAssignment,
-  type PropertySignature,
-  SyntaxKind,
-  type Symbol as TsSymbol,
-  TypeFormatFlags,
-  ts,
+import { Node, Project, SyntaxKind, TypeFormatFlags, ts } from "ts-morph";
+import type {
+  InterfaceDeclaration,
+  ObjectLiteralExpression,
+  PropertyAssignment,
+  PropertySignature,
+  Symbol as TsSymbol,
 } from "ts-morph";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
@@ -63,6 +59,7 @@ const COMPONENTS: ComponentSpec[] = [
 function jsDocCommentText(comment: ts.JSDoc["comment"]): string {
   if (comment === undefined) return "";
   if (typeof comment === "string") return comment.trim();
+
   return comment
     .map((part) => ("text" in part ? String(part.text) : ""))
     .join("")
@@ -80,6 +77,7 @@ function jsDocDescriptionFromNode(node: Node): string {
   const parts = compilerJsDocs(node)
     .map((doc) => jsDocCommentText(doc.comment))
     .filter(Boolean);
+
   return parts.join(" ").replace(/\s+/g, " ").trim();
 }
 
@@ -91,6 +89,7 @@ function jsDocTagFromNode(node: Node, tagName: string): string | undefined {
       }
     }
   }
+
   return undefined;
 }
 
@@ -121,6 +120,7 @@ function typeTextFromSymbol(
   const flags =
     TypeFormatFlags.UseAliasDefinedOutsideCurrentScope |
     TypeFormatFlags.NoTruncation;
+
   return formatTypeText(type.getText(location, flags));
 }
 
@@ -128,6 +128,7 @@ function typeTextFromOwn(prop: PropertySignature): string | undefined {
   const typeNode = prop.getTypeNode();
   if (!typeNode) return undefined;
   const text = formatTypeText(typeNode.getText());
+
   return prop.hasQuestionToken() ? `${text} | undefined` : text;
 }
 
@@ -138,6 +139,7 @@ function formatDefaultLiteral(init: Node): string {
   if (init.getKind() === SyntaxKind.TrueKeyword) return "`true`";
   if (init.getKind() === SyntaxKind.FalseKeyword) return "`false`";
   if (Node.isNumericLiteral(init)) return `\`${init.getLiteralValue()}\``;
+
   return `\`${init.getText()}\``;
 }
 
@@ -148,6 +150,7 @@ function getObjectProperty(
   for (const prop of obj.getProperties()) {
     if (Node.isPropertyAssignment(prop) && prop.getName() === name) return prop;
   }
+
   return undefined;
 }
 
@@ -282,6 +285,7 @@ function serializeRows(rows: PropRow[]): string {
       }
       lines.push(`    description: ${JSON.stringify(row.description)},`);
       lines.push(`  }`);
+
       return lines.join("\n");
     })
     .join(",\n");
@@ -335,7 +339,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from \`@pisagor/props/${spec.id}\` (native HTML attributes omitted). */
+/** Own props from \`@pisagor/props\` (\`packages/props/src/${spec.id}.ts\`, native HTML attributes omitted). */
 export const ${exportName}: PropRow[] = [
 ${serializeRows(rows)},
 ];
@@ -360,6 +364,7 @@ function kebabToCamel(kebab: string): string {
 
 function kebabToPascal(kebab: string): string {
   const camel = kebabToCamel(kebab);
+
   return camel.charAt(0).toUpperCase() + camel.slice(1);
 }
 
@@ -389,6 +394,7 @@ function parseJsDoc(doc: string): {
     if (line.startsWith("@")) continue;
     descLines.push(line);
   }
+
   return {
     defaultValue,
     description: descLines.join(" ").replace(/\s+/g, " ").trim(),
@@ -405,6 +411,7 @@ function extractBraceBlock(src: string, openIdx: number): string {
       if (depth === 0) return src.slice(openIdx, i + 1);
     }
   }
+
   return "";
 }
 
@@ -415,6 +422,7 @@ function niceDefault(v: string): string {
   if (q) return `\`${q[1]}\``;
   if (t === "true" || t === "false" || /^-?\d+(\.\d+)?$/.test(t))
     return `\`${t}\``;
+
   return t;
 }
 
@@ -467,6 +475,7 @@ function topLevelKeysBeforeColon(block: string): string[] {
     }
     i++;
   }
+
   return keys;
 }
 
@@ -494,6 +503,7 @@ function parseInterfaceFields(body: string): PropRow[] {
     if (meta.defaultValue) row.defaultValue = niceDefault(meta.defaultValue);
     fields.push(row);
   }
+
   return fields;
 }
 
@@ -562,6 +572,7 @@ function parseRecipeVariantFields(slug: string): PropRow[] {
       type,
     });
   }
+
   return fields;
 }
 
@@ -596,6 +607,7 @@ function parsePropsFile(
     for (const f of own) merged.set(f.name, f);
     results.push({ fields: [...merged.values()], interfaceName });
   }
+
   return results;
 }
 
@@ -614,6 +626,7 @@ function emitFile(
         parts.push(`    defaultValue: ${JSON.stringify(f.defaultValue)},`);
       }
       parts.push(`    description: ${JSON.stringify(f.description)},`);
+
       return `  {\n${parts.join("\n")}\n  }`;
     })
     .join(",\n");
@@ -624,7 +637,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from \`@pisagor/props/${slug}\` (native HTML attributes omitted). */
+/** Own props from \`@pisagor/props\` (\`packages/props/src/${slug}.ts\`, native HTML attributes omitted). */
 export const ${exportName}: PropRow[] = [
 ${rows}
 ];
@@ -649,7 +662,7 @@ function generateSourceTables(skip: Set<string>): void {
     if (skip.has(slug)) continue;
     let parsed = parsePropsFile(slug);
     if (!parsed.length) {
-      // e.g. alert-dialog.ts: `export type { DialogProps as AlertDialogProps } from "./dialog"`
+      // e.g. thin re-exports: `export type { FooProps as BarProps } from "./foo"`
       const src = fs.readFileSync(path.join(PROPS_DIR, `${slug}.ts`), "utf8");
       const re =
         /export\s+type\s*\{\s*([A-Za-z0-9_]+)\s+as\s+([A-Za-z0-9_]+)\s*\}\s*from\s*["']\.\/([^"']+)["']/;

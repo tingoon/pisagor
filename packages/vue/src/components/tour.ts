@@ -1,10 +1,10 @@
-import { ark } from "@ark-ui/vue/factory";
 import {
   Tour as TourPrimitive,
   type TourStepDetails,
   type UseTourReturn,
+  ark,
   useTour,
-} from "@ark-ui/vue/tour";
+} from "@ark-ui/vue";
 import { PhCaretLeft, PhCaretRight, PhX } from "@phosphor-icons/vue";
 import type { TourProps as BaseTourRootProps } from "@pisagor/props";
 import { dialogRecipe, type TourRecipe, tourRecipe } from "@pisagor/recipes";
@@ -13,22 +13,19 @@ import {
   computed,
   defineComponent,
   h,
-  type InjectionKey,
   inject,
-  type PropType,
   provide,
   reactive,
   ref,
   Teleport,
   toValue,
-  type UnwrapRef,
   watchEffect,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { createContext } from "../internal/utils/create-context";
+import type { InjectionKey, PropType, UnwrapRef } from "vue";
+import { createContext, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { DialogBody, DialogFooter, DialogHeader } from "./dialog";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Slot recipe context
 const { provideStyles: provideTourStyles } = createSlotRecipeContext({
@@ -273,6 +270,8 @@ export const TourContent = defineComponent({
     showCloseButton: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
+
     return () => {
       const ctx = toValue(useTourContextRef());
       if (!ctx) return null;
@@ -312,7 +311,7 @@ export const TourContent = defineComponent({
                           h(
                             "span",
                             { class: recipeSlots.closeLabel() },
-                            useTranslation("tour.close"),
+                            m("tour.close"),
                           ),
                         ],
                       ),
@@ -466,6 +465,7 @@ export const TourFooter = defineComponent({
   name: "Tour.Footer",
   setup(_, { attrs, slots }) {
     provide(TourInsideControlKey, true);
+
     return () =>
       h(TourPrimitive.Control as ArkPart, { ...attrs, asChild: true }, () =>
         h(DialogFooter, { dataPart: "control", dataScope: "tour" }, slots),
@@ -484,6 +484,7 @@ export const TourActions = defineComponent({
   },
   setup(props, { attrs }) {
     const insideControl = inject(TourInsideControlKey, false);
+
     return () => {
       const ctx = toValue(useTourContextRef());
       if (!ctx) return null;

@@ -6,6 +6,7 @@ import {
 } from "@phosphor-icons/react";
 import type { NodeProviderProps } from "@pisagor/react";
 import { ContextMenu, createTreeCollection, TreeView } from "@pisagor/react";
+
 export function WithContextMenu() {
   const collection = createTreeCollection({
     rootNode: {
@@ -97,6 +98,7 @@ export function WithContextMenu() {
       </TreeView.NodeProvider>
     );
   };
+
   return (
     <div>
       <TreeView collection={collection}>

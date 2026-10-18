@@ -1,4 +1,5 @@
 import { Field, Switch } from "@pisagor/react";
+
 export function SwitchField() {
   return (
     <Field orientation="horizontal">

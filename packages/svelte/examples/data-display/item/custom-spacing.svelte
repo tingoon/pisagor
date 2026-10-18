@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Item } from "@pisagor/svelte";
-  import UserIcon from "phosphor-svelte/lib/UserIcon";
+  import { UserIcon } from "phosphor-svelte";
 </script>
 
 <Item.Group class="gap-2" variant="outline">

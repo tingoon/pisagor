@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Alert } from "@pisagor/svelte";
-  import MagicWandIcon from "phosphor-svelte/lib/MagicWandIcon";
+  import { MagicWandIcon } from "phosphor-svelte";
 </script>
 
 <Alert

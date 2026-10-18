@@ -1,14 +1,14 @@
+import { Slider as SliderPrimitive } from "@ark-ui/react";
 import type {
   SliderControlProps,
   SliderMarkerGroupProps,
   SliderMarkerProps,
-  SliderRootProps as SliderPrimitiveRootProps,
   SliderRangeProps,
+  SliderRootProps as SliderRootPrimitiveProps,
   SliderThumbProps,
   SliderTrackProps,
   SliderValueTextProps,
-} from "@ark-ui/react/slider";
-import { Slider as SliderPrimitive } from "@ark-ui/react/slider";
+} from "@ark-ui/react";
 import type { SliderProps as BaseSliderRootProps } from "@pisagor/props";
 import {
   fieldRecipe,
@@ -18,15 +18,17 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { createContext, use, useMemo } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { FormControlVariant, VariantClassNames } from "../internal/types";
+import {
+  type FormControlVariant,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 
 // #region Context
-const { Context: SliderStylesContext, useStyles: useSliderStyles } =
-  createSlotRecipeContext({
-    name: "Slider",
-    recipe: sliderRecipe,
-  });
+const { Context: SliderStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Slider",
+  recipe: sliderRecipe,
+});
 
 interface SliderExtras {
   thumbShadowClass?: string;
@@ -37,11 +39,12 @@ const SliderExtrasContext = createContext<SliderExtras | undefined>(undefined);
 SliderExtrasContext.displayName = "SliderExtrasContext";
 
 function useSlider() {
-  const styles = useSliderStyles();
+  const styles = useStyles();
   const extras = use(SliderExtrasContext);
   if (extras === undefined) {
     throw new Error("useSlider must be used within SliderExtrasContext.");
   }
+
   return { ...styles, ...extras };
 }
 // #endregion
@@ -52,7 +55,7 @@ type SliderValueProps = SliderValueTextProps;
 
 type SliderClassNames = VariantClassNames<SliderRecipeSlot>;
 
-type SliderRootProps = SliderPrimitiveRootProps & {
+type SliderRootProps = SliderRootPrimitiveProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
 } & BaseSliderRootProps;
@@ -109,11 +112,11 @@ export interface SliderProps extends Omit<
   valueProps?: Omit<SliderValueProps, "children" | "className">;
 }
 
-interface SliderHeaderProps extends ComponentProps<"div"> {}
+type SliderHeaderProps = ComponentProps<"div">;
 
-interface SliderMarkerTickProps extends ComponentProps<"span"> {}
+type SliderMarkerTickProps = ComponentProps<"span">;
 
-interface SliderMarkerLabelProps extends ComponentProps<"span"> {}
+type SliderMarkerLabelProps = ComponentProps<"span">;
 // #endregion
 
 // #region Parts
@@ -304,6 +307,7 @@ function SliderShorthand({
     if (Array.isArray(defaultValue)) {
       return defaultValue;
     }
+
     // Uncontrolled default is a single thumb (zag defaults `value` to `[min]`).
     return [min];
   }, [value, defaultValue, min]);
@@ -406,7 +410,7 @@ export type {
   SliderRangeProps,
   SliderThumbProps,
   SliderTrackProps,
-} from "@ark-ui/react/slider";
+} from "@ark-ui/react";
 
 export const Slider = Object.assign(SliderShorthand, {
   Control: SliderControl,

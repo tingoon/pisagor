@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type TreeViewNodeRenameInputProps,
     TreeView as TreeViewPrimitive,
-  } from "@ark-ui/svelte/tree-view";
+    type TreeViewNodeRenameInputProps,
+  } from "@ark-ui/svelte";
   import { treeViewItemRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { useTreeViewItem } from "./tree-view.context";

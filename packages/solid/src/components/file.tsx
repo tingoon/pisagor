@@ -1,37 +1,30 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { FileProps as BaseFileRootProps } from "@pisagor/props";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { FileIcon } from "../internal/icons";
+import { FileIcon, createSlotRecipeContext } from "../internal";
 import { Format } from "./format";
 
 // #region Context
-const {
-  useStyles: useFile,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({ name: "File", recipe: fileRecipe });
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+  name: "File",
+  recipe: fileRecipe,
+});
 // #endregion
 
-export interface FileRootProps
-  extends ComponentProps<typeof ark.div>, BaseFileRootProps {}
+export interface FileRootProps extends HTMLArkProps<"div">, BaseFileRootProps {}
 
-export interface FileMediaProps
-  extends ComponentProps<typeof ark.div>, FileVariantProps {}
-export type FileNameProps = ComponentProps<typeof ark.div>;
-export type FileMetaProps = ComponentProps<typeof ark.div>;
+export interface FileMediaProps extends HTMLArkProps<"div">, FileVariantProps {}
+export type FileNameProps = HTMLArkProps<"div">;
+export type FileMetaProps = HTMLArkProps<"div">;
 
-export interface FileSizeProps extends Omit<
-  ComponentProps<typeof ark.div>,
-  "children"
-> {
+export interface FileSizeProps extends Omit<HTMLArkProps<"div">, "children"> {
   value: number;
 }
 
-export type FileActionsProps = ComponentProps<typeof ark.div>;
-export type FileContentProps = ComponentProps<typeof ark.div>;
+export type FileActionsProps = HTMLArkProps<"div">;
+export type FileContentProps = HTMLArkProps<"div">;
 
 export interface FileProps extends Omit<FileRootProps, "children" | "title"> {
   size?: number;
@@ -48,8 +41,9 @@ export const FileRoot: Component<FileRootProps> = withProvider(ark.div, {
 
 export function FileMedia(props: FileMediaProps): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "children", "class"]);
-  const styles = useFile();
+  const styles = useStyles();
   const variant = () => local.variant ?? "icon";
+
   return (
     <ark.div
       {...rest}
@@ -77,7 +71,8 @@ export const FileMeta: Component<FileMetaProps> = withContext(ark.div, {
 
 export function FileSize(props: FileSizeProps): JSX.Element {
   const [local, rest] = splitProps(props, ["value", "class"]);
-  const styles = useFile();
+  const styles = useStyles();
+
   return (
     <ark.div
       {...rest}
@@ -102,6 +97,7 @@ export function FileShorthand(props: FileProps): JSX.Element {
     "media",
     "meta",
   ]);
+
   return (
     <FileRoot {...rest}>
       <FileMedia>{local.media}</FileMedia>

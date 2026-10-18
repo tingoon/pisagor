@@ -1,27 +1,30 @@
-import { ark } from "@ark-ui/react/factory";
+import {
+  FloatingPanel as FloatingPanelPrimitive,
+  Portal,
+  ark,
+  type HTMLArkProps,
+} from "@ark-ui/react";
 import type {
+  FloatingPanelBodyProps as FloatingPanelBodyPrimitiveProps,
   FloatingPanelCloseTriggerProps,
+  FloatingPanelContentProps as FloatingPanelContentPrimitiveProps,
   FloatingPanelControlProps,
   FloatingPanelDragTriggerProps,
   FloatingPanelHeaderProps,
-  FloatingPanelBodyProps as FloatingPanelPrimitiveBodyProps,
-  FloatingPanelContentProps as FloatingPanelPrimitiveContentProps,
-  FloatingPanelRootProps as FloatingPanelPrimitiveRootProps,
   FloatingPanelResizeTriggerProps,
+  FloatingPanelRootProps as FloatingPanelRootPrimitiveProps,
   FloatingPanelStageTriggerProps,
   FloatingPanelTitleProps,
   FloatingPanelTriggerProps,
-} from "@ark-ui/react/floating-panel";
-import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/react/floating-panel";
-import { Portal } from "@ark-ui/react/portal";
+} from "@ark-ui/react";
 import { ArrowsOutIcon, CornersInIcon, MinusIcon } from "@phosphor-icons/react";
 import type { FloatingPanelProps as BaseFloatingPanelRootProps } from "@pisagor/props";
 import { floatingPanelRecipe } from "@pisagor/recipes";
-import type { ComponentProps } from "react";
+
 import { use } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
@@ -33,15 +36,16 @@ const { Context: FloatingPanelStylesContext } = createSlotRecipeContext({
 /** Optional fallback so consumers outside Root still resolve slots. */
 function useFloatingPanelSlots() {
   const styles = use(FloatingPanelStylesContext);
+
   return styles?.slots ?? floatingPanelRecipe();
 }
 // #endregion
 
 // #region Types
 export interface FloatingPanelRootProps
-  extends FloatingPanelPrimitiveRootProps, BaseFloatingPanelRootProps {}
+  extends FloatingPanelRootPrimitiveProps, BaseFloatingPanelRootProps {}
 
-export interface FloatingPanelContentProps extends FloatingPanelPrimitiveContentProps {
+export interface FloatingPanelContentProps extends FloatingPanelContentPrimitiveProps {
   /**
    * Whether to enable a resizable panel.
    *
@@ -60,7 +64,7 @@ export type FloatingPanelMaximizeProps = FloatingPanelMinimizeProps;
 
 export type FloatingPanelRestoreProps = FloatingPanelMinimizeProps;
 
-export interface FloatingPanelBodyProps extends FloatingPanelPrimitiveBodyProps {
+export interface FloatingPanelBodyProps extends FloatingPanelBodyPrimitiveProps {
   /**
    * Whether to add a fade effect to the scroll area.
    *
@@ -69,7 +73,7 @@ export interface FloatingPanelBodyProps extends FloatingPanelPrimitiveBodyProps 
   scrollFade?: boolean;
 }
 
-export type FloatingPanelFooterProps = ComponentProps<typeof ark.div>;
+export type FloatingPanelFooterProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Parts
@@ -173,10 +177,12 @@ export function FloatingPanelMinimize({
   variant = "ghost",
   ...rest
 }: FloatingPanelMinimizeProps) {
+  const { m } = useLocale();
+
   return (
     <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="minimized">
       <Button
-        aria-label={useMessage("floatingPanel.minimize")}
+        aria-label={m("floatingPanel.minimize")}
         size={size}
         variant={variant}
       >
@@ -191,10 +197,12 @@ export function FloatingPanelMaximize({
   variant = "ghost",
   ...rest
 }: FloatingPanelMaximizeProps) {
+  const { m } = useLocale();
+
   return (
     <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="maximized">
       <Button
-        aria-label={useMessage("floatingPanel.maximize")}
+        aria-label={m("floatingPanel.maximize")}
         size={size}
         variant={variant}
       >
@@ -209,12 +217,13 @@ export function FloatingPanelRestore({
   variant = "outline",
   ...rest
 }: FloatingPanelRestoreProps) {
+  const { m } = useLocale();
   const slots = useFloatingPanelSlots();
 
   return (
     <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="default">
       <Button
-        aria-label={useMessage("floatingPanel.restore")}
+        aria-label={m("floatingPanel.restore")}
         size={size}
         variant={variant}
       >
@@ -328,7 +337,7 @@ export type {
   FloatingPanelStageTriggerProps,
   FloatingPanelTitleProps,
   FloatingPanelTriggerProps,
-} from "@ark-ui/react/floating-panel";
+} from "@ark-ui/react";
 
 export const FloatingPanel = Object.assign(FloatingPanelRoot, {
   Body: FloatingPanelBody,

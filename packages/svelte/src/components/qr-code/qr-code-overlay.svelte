@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type QrCodeOverlayProps,
     QrCode as QrCodePrimitive,
-  } from "@ark-ui/svelte/qr-code";
+    type QrCodeOverlayProps,
+  } from "@ark-ui/svelte";
   import { withContext } from "./qr-code.context";
 
   let { children, ...rest }: QrCodeOverlayProps = $props();

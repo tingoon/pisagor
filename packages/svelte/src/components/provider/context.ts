@@ -1,35 +1,33 @@
+import { useLocaleContext } from "@ark-ui/svelte";
 import {
   defaultLocale,
   defaultMotion,
-  defaultProviderConfig,
-  defaultTranslations,
-  type LocaleConfig,
-  type MessageKey,
-  type MotionConfig,
-  type ProviderConfig,
-  type ProviderContextValue,
-  resolveMessage,
   resolveProviderValue,
-  type TranslationsConfig,
 } from "@pisagor/utils";
-import { isNullish, merge, mergeDeep, omitBy } from "remeda";
+import type {
+  LocaleContextValue,
+  MessageKey,
+  MessageLookup,
+  MotionConfig,
+  ProviderConfig,
+  ProviderContextValue,
+  ResolvedLocale,
+} from "@pisagor/utils";
+import { isNullish, mergeDeep, omitBy } from "remeda";
 import { createContext } from "../../utils/create-context";
 
 export type {
   LocaleConfig,
+  LocaleContextValue,
   MessageKey,
+  MessageLookup,
+  Messages,
   MotionConfig,
   ProviderContextValue,
-  TranslationsConfig,
 } from "@pisagor/utils";
 
-const localeCtx = createContext("Locale")<LocaleConfig>({
+const localeCtx = createContext("Locale")<ResolvedLocale>({
   defaultValue: defaultLocale,
-  strict: false,
-});
-
-const translationsCtx = createContext("Translations")<TranslationsConfig>({
-  defaultValue: defaultTranslations,
   strict: false,
 });
 
@@ -42,67 +40,73 @@ const providerCtx = createContext("Provider")<ProviderConfig>({
   strict: false,
 });
 
-export const setLocaleContext = localeCtx.setContext;
-export const useLocale = (): LocaleConfig =>
-  localeCtx.getContext() ?? defaultLocale;
-
-export const setTranslationsContext = translationsCtx.setContext;
-export const useTranslations = (): TranslationsConfig =>
-  translationsCtx.getContext() ?? defaultTranslations;
-
-export const setMotionContext = motionCtx.setContext;
-export const useMotion = (): MotionConfig =>
-  motionCtx.getContext() ?? defaultMotion;
-
-export const setProviderContext = providerCtx.setContext;
-export const useProvider = (): ProviderConfig | undefined =>
-  providerCtx.getContext();
-
-/** Resolve a library translation key from the nearest `Provider`. */
-export function useTranslation(key: MessageKey): string {
-  return resolveMessage(useTranslations(), key);
-}
-
 /**
- * Return a resolver bound to the nearest `Provider` translations. Call during
- * component init and use the returned function in markup.
+ * Nearest locale context: `{ locale, dir, messages, m }`. Call once during
+ * component init (context is only readable there) and use `m(key, override)` in
+ * markup, e.g. `m("spinner.loading", ariaLabel)`. `dir` comes from Ark's locale
+ * context. The properties are getters over the current state, so markup stays
+ * reactive (avoid destructuring `locale` / `dir` / `messages` in the script).
+ * Safe outside a `Provider` (English defaults, `en-US`, `ltr`).
  */
-export function useMessageResolver(): (key: MessageKey) => string {
-  const translations = useTranslations();
-  return (key) => resolveMessage(translations, key);
-}
+export function useLocale(): LocaleContextValue {
+  const value = useResolvedLocale();
+  const ark = useLocaleContext();
 
-/**
- * Full library context: `{ locale, translations, motion }`. Safe outside a
- * `Provider` — English defaults apply.
- */
-export function useProviderValue(): ProviderContextValue {
-  const config = useProvider() ?? defaultProviderConfig;
-  const translations = useTranslations();
-  const motion = useMotion();
-  const locale = useLocale();
   return {
-    ...resolveProviderValue({ ...config, locale, motion }, translations),
-    locale,
-    motion,
+    get dir() {
+      return ark().dir;
+    },
+    get locale() {
+      return value.locale;
+    },
+    get messages() {
+      return value.messages;
+    },
+    m: value.m,
   };
 }
 
-export function setLocaleConfig(partial?: Partial<LocaleConfig>): LocaleConfig {
-  const config = mergeDeep(
-    mergeDeep(defaultLocale, useLocale()),
-    omitBy(partial ?? {}, isNullish),
-  ) as LocaleConfig;
-  setLocaleContext(config);
-  return config;
+/** Stored locale (no `dir`), for nested `Provider` merging. */
+export const useResolvedLocale = (): ResolvedLocale =>
+  localeCtx.getContext() ?? defaultLocale;
+
+export const useMotion = (): MotionConfig =>
+  motionCtx.getContext() ?? defaultMotion;
+
+export const useProvider = (): ProviderConfig | undefined =>
+  providerCtx.getContext();
+
+/**
+ * Full library context: `{ locale, motion }`. Safe outside a `Provider` —
+ * defaults apply.
+ */
+export function useProviderValue(): ProviderContextValue {
+  return resolveProviderValue(useLocale(), useMotion());
 }
 
-export function setTranslationsConfig(
-  translations?: TranslationsConfig,
-): TranslationsConfig {
-  const config = merge(useTranslations(), translations ?? {});
-  setTranslationsContext(config);
-  return config;
+/**
+ * Wrap a resolved locale getter (e.g. a `$derived` value) in a getter object so
+ * `locale`, `messages` and `m` stay reactive for consumers.
+ */
+export function createLocaleValue(
+  resolved: () => ResolvedLocale,
+): ResolvedLocale {
+  return {
+    get locale() {
+      return resolved().locale;
+    },
+    get messages() {
+      return resolved().messages;
+    },
+    m: ((key: MessageKey, override?: unknown) =>
+      override ?? resolved().messages[key]) as MessageLookup,
+  };
+}
+
+export function setLocaleValue(value: ResolvedLocale): ResolvedLocale {
+  localeCtx.setContext(value);
+
+  return value;
 }
 
 export function setMotionConfig(partial?: Partial<MotionConfig>): MotionConfig {
@@ -110,11 +114,13 @@ export function setMotionConfig(partial?: Partial<MotionConfig>): MotionConfig {
     mergeDeep(defaultMotion, useMotion()),
     omitBy(partial ?? {}, isNullish),
   ) as MotionConfig;
-  setMotionContext(config);
+  motionCtx.setContext(config);
+
   return config;
 }
 
 export function setProviderConfig(value: ProviderConfig): ProviderConfig {
-  setProviderContext(value);
+  providerCtx.setContext(value);
+
   return value;
 }

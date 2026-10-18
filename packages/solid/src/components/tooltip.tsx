@@ -1,19 +1,18 @@
+import { Tooltip as TooltipPrimitive } from "@ark-ui/solid";
 import type {
   TooltipArrowProps,
   TooltipContentProps,
   TooltipPositionerProps,
-  TooltipRootProps as TooltipPrimitiveRootProps,
+  TooltipRootProps as TooltipRootPrimitiveProps,
   TooltipTriggerProps,
-} from "@ark-ui/solid/tooltip";
-import { Tooltip as TooltipPrimitive } from "@ark-ui/solid/tooltip";
+} from "@ark-ui/solid";
 import type { TooltipProps as BaseTooltipRootProps } from "@pisagor/props";
 import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { Context: TooltipStylesContext, withContext } = createSlotRecipeContext({
@@ -24,7 +23,7 @@ const { Context: TooltipStylesContext, withContext } = createSlotRecipeContext({
 
 // #region Types
 export interface TooltipRootProps
-  extends TooltipPrimitiveRootProps, BaseTooltipRootProps {}
+  extends TooltipRootPrimitiveProps, BaseTooltipRootProps {}
 
 export type TooltipTriggerHandleProps =
   JSX.ButtonHTMLAttributes<HTMLButtonElement>;
@@ -163,4 +162,4 @@ export type {
   TooltipContentProps,
   TooltipPositionerProps,
   TooltipTriggerProps,
-} from "@ark-ui/solid/tooltip";
+} from "@ark-ui/solid";

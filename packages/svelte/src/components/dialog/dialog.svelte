@@ -1,6 +1,5 @@
 <script lang="ts">
-  import type { DialogRootProps } from "@ark-ui/svelte/dialog";
-  import { Portal } from "@ark-ui/svelte/portal";
+  import { type DialogRootProps, Portal } from "@ark-ui/svelte";
   import type { Snippet } from "svelte";
   import DialogBackdrop from "./dialog-backdrop.svelte";
   import DialogBody from "./dialog-body.svelte";

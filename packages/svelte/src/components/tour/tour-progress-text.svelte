@@ -2,7 +2,7 @@
   import {
     Tour as TourPrimitive,
     type TourProgressTextProps,
-  } from "@ark-ui/svelte/tour";
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useTourContext } from "./tour.context";
 

@@ -2,7 +2,7 @@
   import {
     NumberInput as NumberInputPrimitive,
     type NumberInputRootProps,
-  } from "@ark-ui/svelte/number-input";
+  } from "@ark-ui/svelte";
   import type { NumberInputProps as BaseNumberInputProps } from "@pisagor/props";
   import {
     buttonRecipe,
@@ -10,14 +10,13 @@
     numberInputRecipe,
   } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import MinusIcon from "phosphor-svelte/lib/MinusIcon";
-  import PlusIcon from "phosphor-svelte/lib/PlusIcon";
+  import { MinusIcon, PlusIcon } from "phosphor-svelte";
   import InputClearButton from "../input/input-clear-button.svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
   import { Context } from "./number-input.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type FormControlVariant = "primary" | "secondary";
 
@@ -83,7 +82,7 @@
       data-variant={variant}
     >
       <NumberInputPrimitive.DecrementTrigger
-        aria-label={t("numberInput.decrement")}
+        aria-label={m("numberInput.decrement")}
         class={cn(slots.decrementTrigger(), triggerClass)}
         type="button"
       >
@@ -108,7 +107,7 @@
       </NumberInputPrimitive.Context>
 
       <NumberInputPrimitive.IncrementTrigger
-        aria-label={t("numberInput.increment")}
+        aria-label={m("numberInput.increment")}
         class={cn(slots.incrementTrigger(), triggerClass)}
         type="button"
       >

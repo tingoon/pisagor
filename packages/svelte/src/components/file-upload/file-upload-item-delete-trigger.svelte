@@ -1,15 +1,15 @@
 <script lang="ts">
   import {
-    type FileUploadItemDeleteTriggerProps,
     FileUpload as FileUploadPrimitive,
-  } from "@ark-ui/svelte/file-upload";
+    type FileUploadItemDeleteTriggerProps,
+  } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import XIcon from "phosphor-svelte/lib/XIcon";
-  import { useMessageResolver } from "../provider/context";
+  import { XIcon } from "phosphor-svelte";
+  import { useLocale } from "../provider/context";
   import { useFileUploadItem } from "./file-upload.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   let {
     class: className,
@@ -21,7 +21,7 @@
 </script>
 
 <FileUploadPrimitive.ItemDeleteTrigger
-  aria-label={t("fileUpload.removeFile")}
+  aria-label={m("fileUpload.removeFile")}
   {...rest}
   class={cn(
     buttonRecipe({ size: "icon-xs", variant: "ghost" }).base(),

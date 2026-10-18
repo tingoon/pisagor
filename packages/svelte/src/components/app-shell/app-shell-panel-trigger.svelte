@@ -1,6 +1,8 @@
 <script lang="ts">
-  import ArrowsInLineHorizontalIcon from "phosphor-svelte/lib/ArrowsInLineHorizontalIcon";
-  import ArrowsOutLineHorizontalIcon from "phosphor-svelte/lib/ArrowsOutLineHorizontalIcon";
+  import {
+    ArrowsInLineHorizontalIcon,
+    ArrowsOutLineHorizontalIcon,
+  } from "phosphor-svelte";
   import type { ComponentProps, Snippet } from "svelte";
   import { type AppShellPlacement, useAppShell } from "./app-shell.context";
   import AppShellSideTrigger from "./app-shell-side-trigger.svelte";
@@ -33,6 +35,7 @@
   const open = $derived(
     (() => {
       void ctx.regionRevision;
+
       return ctx.panelStates[placement]?.open ?? false;
     })(),
   );

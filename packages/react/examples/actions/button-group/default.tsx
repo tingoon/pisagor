@@ -1,5 +1,6 @@
 import { ArrowLeftIcon, DotsThreeIcon } from "@phosphor-icons/react";
 import { Button, ButtonGroup } from "@pisagor/react";
+
 export function Default() {
   return (
     <ButtonGroup>

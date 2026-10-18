@@ -1,5 +1,5 @@
 /**
- * Built-in English defaults for every library string. `Provider` `translations`
+ * Built-in English defaults for every library UI message. `Provider` `messages`
  * are merged over these, so any subset can be overridden.
  */
 export const defaultMessages = {
@@ -97,31 +97,72 @@ export const defaultMessages = {
 /** Every message key the library looks up. */
 export type MessageKey = keyof typeof defaultMessages;
 
-/** Locale settings shared through `Provider` `locale`. */
+/** Partial UI message overrides, merged over the English defaults. */
+export type Messages = Partial<Record<MessageKey, string>>;
+
+/**
+ * Message lookup returned as `useLocale().m`. Returns `override` when it is not
+ * `null`/`undefined`, otherwise the resolved message for `key`.
+ */
+export interface MessageLookup {
+  (key: MessageKey): string;
+  <T>(key: MessageKey, override: T): NonNullable<T> | string;
+}
+
+/** Locale settings accepted by `Provider` and `Provider.Locale`. */
 export interface LocaleConfig {
-  /** BCP 47 locale for Ark components (date / number formatting, `dir`). */
+  /** BCP 47 locale, fed to Ark's `LocaleProvider` (formatting, `dir`). */
+  locale?: string;
+  /** Partial UI message overrides merged over the parent `Provider`. */
+  messages?: Messages;
+}
+
+/** Resolved locale context returned by `useLocale()`. */
+export interface LocaleContextValue {
+  /** BCP 47 locale. Defaults to `en-US`. */
   locale: string;
+  /** Text direction, read from Ark's locale context. */
+  dir: "ltr" | "rtl";
+  /** Every UI message: English defaults merged with `Provider` overrides. */
+  messages: Record<MessageKey, string>;
+  /** Look up a message, preferring `override` when it is set. */
+  m: MessageLookup;
 }
 
-/** Default `Provider` locale settings. */
-export const defaultLocale: LocaleConfig = { locale: "en-US" };
+/** Locale context stored by `Provider` (`dir` is read from Ark separately). */
+export type ResolvedLocale = Omit<LocaleContextValue, "dir">;
 
-/** Partial overrides passed to `Provider` `translations`. */
-export type TranslationsConfig = Partial<Record<MessageKey, string>>;
-
-/** @deprecated Use {@link TranslationsConfig}. */
-export type ProviderMessages = TranslationsConfig;
-
-/** Default (empty) translation overrides. */
-export const defaultTranslations: TranslationsConfig = {};
-
-/** Resolve `key` from translations, falling back to the English default. */
-export function resolveMessage(
-  translations: TranslationsConfig | undefined,
-  key: MessageKey,
-): string {
-  return translations?.[key] ?? defaultMessages[key];
+/** Bind a message lookup to a fully resolved message record. */
+export function createMessageLookup(
+  messages: Record<MessageKey, string>,
+): MessageLookup {
+  return ((key: MessageKey, override?: unknown) =>
+    override ?? messages[key]) as MessageLookup;
 }
+
+/**
+ * Resolve the stored locale context from `config` merged over `parent` (or the
+ * English defaults).
+ */
+export function resolveLocale(
+  config: LocaleConfig = {},
+  parent?: ResolvedLocale,
+): ResolvedLocale {
+  const locale = config.locale ?? parent?.locale ?? "en-US";
+  const overrides: Messages = {};
+  for (const [key, value] of Object.entries(config.messages ?? {})) {
+    if (value != null) overrides[key as MessageKey] = value;
+  }
+  const messages = {
+    ...(parent?.messages ?? defaultMessages),
+    ...overrides,
+  } as Record<MessageKey, string>;
+
+  return { locale, m: createMessageLookup(messages), messages };
+}
+
+/** Default stored locale context: `en-US`, English messages. */
+export const defaultLocale: ResolvedLocale = resolveLocale();
 
 /** Replace `{name}` placeholders in a message. */
 export function formatMessage(
@@ -147,14 +188,13 @@ export const defaultMotion: MotionConfig = { disabled: false };
 
 /** Resolved value returned by `useProviderValue()`. */
 export interface ProviderContextValue {
-  locale: LocaleConfig;
-  translations: Record<MessageKey, string>;
+  locale: LocaleContextValue;
   motion: MotionConfig;
 }
 
 /** Presence + resolved defaults shared with nested Providers. */
 export interface ProviderConfig {
-  locale: LocaleConfig;
+  locale: ResolvedLocale;
   motion: MotionConfig;
 }
 
@@ -163,14 +203,10 @@ export const defaultProviderConfig: ProviderConfig = {
   motion: defaultMotion,
 };
 
-/** Build the `useProviderValue()` value from config and (partial) translations. */
+/** Build the `useProviderValue()` value, filling in defaults. */
 export function resolveProviderValue(
-  config: ProviderConfig,
-  translations: TranslationsConfig | undefined,
+  locale: LocaleContextValue,
+  motion: MotionConfig | undefined,
 ): ProviderContextValue {
-  return {
-    locale: config.locale,
-    motion: config.motion,
-    translations: { ...defaultMessages, ...translations },
-  };
+  return { locale, motion: motion ?? defaultMotion };
 }

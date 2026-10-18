@@ -1,5 +1,6 @@
 import { DownloadSimpleIcon } from "@phosphor-icons/react";
 import { Button, FileItem } from "@pisagor/react";
+
 export function Compound() {
   return (
     <FileItem.Root>

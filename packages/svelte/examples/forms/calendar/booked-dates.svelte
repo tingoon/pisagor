@@ -3,6 +3,7 @@
 
   const isWeekend = (date: { year: number; month: number; day: number }) => {
     const dayOfWeek = new Date(date.year, date.month - 1, date.day).getDay();
+
     return dayOfWeek === 0 || dayOfWeek === 6;
   };
 </script>

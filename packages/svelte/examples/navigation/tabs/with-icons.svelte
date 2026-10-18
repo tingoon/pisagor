@@ -1,8 +1,6 @@
 <script lang="ts">
   import { Tabs } from "@pisagor/svelte";
-  import GearIcon from "phosphor-svelte/lib/GearIcon";
-  import ShieldIcon from "phosphor-svelte/lib/ShieldIcon";
-  import UserIcon from "phosphor-svelte/lib/UserIcon";
+  import { GearIcon, ShieldIcon, UserIcon } from "phosphor-svelte";
 </script>
 
 <Tabs.Root defaultValue="tab-1">

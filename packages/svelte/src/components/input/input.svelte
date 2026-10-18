@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Field, type FieldInputProps } from "@ark-ui/svelte/field";
+  import { Field, type FieldInputProps } from "@ark-ui/svelte";
   import type { InputProps as BaseInputProps } from "@pisagor/props";
   import {
     type InputRecipeSlot,
@@ -8,7 +8,7 @@
     inputRootRecipe,
   } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import type { VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import InputGroupRoot from "../input-group/input-group-root.svelte";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
   import InputClearAddon from "./input-clear-addon.svelte";

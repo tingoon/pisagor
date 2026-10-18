@@ -4,7 +4,7 @@ import {
   ChecksIcon,
   ClockCounterClockwiseIcon,
   WarningIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 
 export function Variants() {
   return (

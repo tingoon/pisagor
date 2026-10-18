@@ -1,5 +1,5 @@
 import { Rating } from "@pisagor/solid";
-import { StarIcon } from "@pisagor/solid/icons";
+import { StarIcon } from "@squidlab/phosphor-solid/icons";
 import { For } from "solid-js";
 
 export function Compound() {

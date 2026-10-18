@@ -1,11 +1,11 @@
-import {
-  type CheckboxControlProps,
-  type CheckboxIndicatorProps,
-  type CheckboxLabelProps,
-  Checkbox as CheckboxPrimitive,
-  type CheckboxGroupProps as CheckboxPrimitiveGroupProps,
-  type CheckboxRootProps,
-} from "@ark-ui/react/checkbox";
+import { Checkbox as CheckboxPrimitive } from "@ark-ui/react";
+import type {
+  CheckboxControlProps,
+  CheckboxGroupProps as CheckboxGroupPrimitiveProps,
+  CheckboxIndicatorProps,
+  CheckboxLabelProps,
+  CheckboxRootProps,
+} from "@ark-ui/react";
 import { CheckIcon, MinusIcon } from "@phosphor-icons/react";
 import type {
   CheckboxGroupProps as BaseCheckboxGroupProps,
@@ -17,23 +17,19 @@ import {
   formControlToggleRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { FormControlVariant, SizeScaleProps } from "../internal/types";
+import type { FormControlVariant } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Types
 
 export interface CheckboxGroupProps
   extends
-    Omit<CheckboxPrimitiveGroupProps, "onValueChange">,
+    Omit<CheckboxGroupPrimitiveProps, "onValueChange">,
     BaseCheckboxGroupProps {
   onValueChange?: (value: string[]) => void;
 }
 
-export interface CheckboxProps
-  extends CheckboxRootProps, BaseCheckboxProps, SizeScaleProps {
-  /** Visual shell variant. Defaults to `primary`. */
-  variant?: FormControlVariant;
-}
+export interface CheckboxProps extends CheckboxRootProps, BaseCheckboxProps {}
 
 type CheckboxIndicatorPartProps = CheckboxIndicatorProps & {
   recipe?: typeof checkboxRecipe;
@@ -140,9 +136,8 @@ export function CheckboxControl({
   className,
   ...rest
 }: CheckboxControlProps &
-  SizeScaleProps & {
+  BaseCheckboxProps & {
     recipe?: typeof checkboxRecipe;
-    variant?: FormControlVariant;
   }) {
   const surfaceVariant = useFormControlSurface();
   const variant = variantProp ?? "primary";
@@ -196,10 +191,7 @@ CheckboxIndicator.displayName = "Checkbox.Indicator";
 
 // #endregion
 
-export type {
-  CheckboxCheckedState,
-  CheckboxRootProps,
-} from "@ark-ui/react/checkbox";
+export type { CheckboxCheckedState, CheckboxRootProps } from "@ark-ui/react";
 
 export const Checkbox = Object.assign(CheckboxRoot, {
   Control: CheckboxControl,

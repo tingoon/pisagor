@@ -1,17 +1,16 @@
-import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/vue/rating-group";
+import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/vue";
 import { PhStar } from "@phosphor-icons/vue";
 import type { RatingProps as BaseRatingProps } from "@pisagor/props";
 import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { type Component, defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
 const {
   Context: RatingStylesContext,
-  useStyles: useRating,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Rating",
@@ -67,7 +66,7 @@ const RatingIndicator = defineComponent({
     highlighted: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    const styles = useRating();
+    const styles = useStyles();
 
     return () =>
       h(

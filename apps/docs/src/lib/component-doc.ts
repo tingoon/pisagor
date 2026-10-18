@@ -178,6 +178,7 @@ function paneLoader(
   const modules = paneModules(framework, pane);
   if (!modules) return undefined;
   const key = findGlobKey(modules, panePathSuffix(framework, id, pane));
+
   return key ? modules[key] : undefined;
 }
 
@@ -186,6 +187,7 @@ async function loadPaneMdx(
   frontmatter: ComponentDocs,
 ): Promise<SkillMdModule> {
   const mod = await loader();
+
   return {
     Content: mod.default,
     frontmatter,
@@ -200,6 +202,7 @@ export async function listComponentIds(
   const name = collectionName(framework);
   if (!name) return [];
   const entries = await getCollection(name);
+
   return entries.map((entry) => entry.id).sort();
 }
 
@@ -220,6 +223,7 @@ export async function loadSkillMd(
     throw new Error(`Missing ${framework} meta for "${id}"`);
   }
   const { Content, headings } = await render(entry);
+
   return {
     Content,
     frontmatter: entry.data as ComponentDocs,
@@ -243,12 +247,14 @@ export async function loadSkillPane(
     throw new Error(`Missing ${framework} ${pane} for "${id}"`);
   }
   const { frontmatter } = await loadSkillMd(framework, id);
+
   return loadPaneMdx(loader, frontmatter);
 }
 
 function stripMdxFrontmatter(text: string): string {
   if (!text.startsWith("---")) return text.trim();
   const match = /^---\r?\n[\s\S]*?\r?\n---\r?\n?([\s\S]*)$/.exec(text);
+
   return (match?.[1] ?? text).trim();
 }
 
@@ -264,6 +270,7 @@ export async function loadSkillBody(
   const loader = key ? raw[key] : undefined;
   if (!loader) return "";
   const text = await loader();
+
   return typeof text === "string" ? stripMdxFrontmatter(text) : "";
 }
 
@@ -288,6 +295,7 @@ export function listComponentDocTabs(
   if (hasDesignDoc(framework, id)) {
     tabs.push({ id: "design", label: DOC_TAB_LABELS.design });
   }
+
   return tabs;
 }
 
@@ -297,6 +305,7 @@ export async function listComponentPaneStaticPaths(
   pane: SkillPaneId,
 ): Promise<{ params: { id: string } }[]> {
   const ids = await listComponentIds(framework);
+
   return ids
     .filter((id) => Boolean(paneLoader(framework, id, pane)))
     .map((id) => ({ params: { id } }));
@@ -311,6 +320,7 @@ export function loadProps(id: string): PropRow[] | null {
   const exportName = `${toCamelCase(propsId)}Props`;
   const rows = mod[exportName];
   if (!Array.isArray(rows)) return null;
+
   return rows as PropRow[];
 }
 
@@ -322,5 +332,6 @@ export function extractExampleNames(developBody: string): string[] {
     const name = match[1];
     if (name && !names.includes(name)) names.push(name);
   }
+
   return names;
 }

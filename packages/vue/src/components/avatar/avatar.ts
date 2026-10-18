@@ -2,7 +2,7 @@ import {
   AvatarFallback as AvatarFallbackPrimitive,
   AvatarImage as AvatarImagePrimitive,
   AvatarRoot as AvatarRootPrimitive,
-} from "@ark-ui/vue/avatar";
+} from "@ark-ui/vue";
 import type { AvatarProps as BaseAvatarProps } from "@pisagor/props";
 import {
   type AvatarRecipeSlot,
@@ -11,8 +11,11 @@ import {
 } from "@pisagor/recipes";
 import { getInitials } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
-import type { ClassValue, VariantClassNames } from "../../internal/types";
+import {
+  type ClassValue,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -100,6 +103,7 @@ const AvatarShorthand = defineComponent({
         props.fallback === undefined && props.name
           ? getInitials(props.name)
           : props.fallback;
+
       return h(
         AvatarRoot,
         { ...attrs, class: props.class, shape: props.shape, size: props.size },

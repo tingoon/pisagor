@@ -1,4 +1,5 @@
 import { ColorPicker, InputGroup } from "@pisagor/react";
+
 export function CustomSpacing() {
   return (
     <ColorPicker defaultValue="#eb5e41" format="hsla">

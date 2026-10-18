@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type ListboxContentProps,
     Listbox as ListboxPrimitive,
-  } from "@ark-ui/svelte/listbox";
+    type ListboxContentProps,
+  } from "@ark-ui/svelte";
   import { withListboxContext } from "./listbox.context";
 
   let { children, ...rest }: ListboxContentProps = $props();

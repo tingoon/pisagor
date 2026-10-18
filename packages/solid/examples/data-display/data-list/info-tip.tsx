@@ -1,5 +1,6 @@
 import { Button, DataList, Popover } from "@pisagor/solid";
-import { InfoIcon } from "@pisagor/solid/icons";
+import { InfoIcon } from "@squidlab/phosphor-solid/icons";
+
 export function InfoTip() {
   const data = [
     {
@@ -14,6 +15,7 @@ export function InfoTip() {
       value: "3,450",
     },
   ];
+
   return (
     <DataList.Root>
       {data.map((item) => (

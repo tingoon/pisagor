@@ -1,7 +1,7 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { ScrollspyProps as BaseScrollspyProps } from "@pisagor/props";
 import { scrollspyRecipe } from "@pisagor/recipes";
-import type { ComponentProps, JSX } from "solid-js";
+import type { JSX } from "solid-js";
 import { onCleanup, onMount, splitProps } from "solid-js";
 
 type ScrollTarget = HTMLElement | Document | null | undefined;
@@ -11,7 +11,7 @@ const SCROLLSPY_OFFSET = "data-scrollspy-offset";
 const SCROLLSPY_ANCHOR_SELECTOR = `[${SCROLLSPY_ANCHOR}]`;
 
 export interface ScrollspyProps
-  extends ComponentProps<typeof ark.div>, BaseScrollspyProps {
+  extends HTMLArkProps<"div">, BaseScrollspyProps {
   history?: boolean;
   offset?: number;
   smooth?: boolean;
@@ -27,6 +27,7 @@ function resolveScrollElement(target: ScrollTarget): HTMLElement | null {
     '[data-scope="scroll-area"][data-part="viewport"]',
   );
   if (viewport instanceof HTMLElement) return viewport;
+
   return target;
 }
 
@@ -37,8 +38,10 @@ function resolveScrollTarget(target: ScrollTarget): HTMLElement | Window {
       '[data-scope="scroll-area"][data-part="viewport"]',
     );
     if (viewport instanceof HTMLElement) return viewport;
+
     return target;
   }
+
   return window;
 }
 
@@ -51,6 +54,7 @@ function getSectionScrollOffset(
   }
   const sectionRect = sectionElement.getBoundingClientRect();
   const scrollRect = scrollElement.getBoundingClientRect();
+
   return sectionRect.top - scrollRect.top + scrollElement.scrollTop;
 }
 

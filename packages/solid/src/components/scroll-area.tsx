@@ -1,10 +1,10 @@
+import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/solid";
 import type {
-  ScrollAreaRootProps as ScrollAreaPrimitiveRootProps,
+  ScrollAreaRootProps as ScrollAreaRootPrimitiveProps,
   ScrollAreaScrollbarProps,
   ScrollAreaThumbProps,
   ScrollAreaViewportProps,
-} from "@ark-ui/solid/scroll-area";
-import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/solid/scroll-area";
+} from "@ark-ui/solid";
 import type { ScrollAreaProps as BaseScrollAreaRootProps } from "@pisagor/props";
 import {
   type ScrollAreaRecipeSlot,
@@ -13,20 +13,18 @@ import {
 } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useScrollArea,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({ name: "ScrollArea", recipe: scrollAreaRecipe });
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+  name: "ScrollArea",
+  recipe: scrollAreaRecipe,
+});
 // #endregion
 
 type ScrollAreaClassNames = VariantClassNames<ScrollAreaRecipeSlot>;
 
-type ScrollAreaRootProps = ScrollAreaPrimitiveRootProps &
+type ScrollAreaRootProps = ScrollAreaRootPrimitiveProps &
   ScrollAreaVariantProps &
   BaseScrollAreaRootProps;
 
@@ -48,7 +46,7 @@ const ScrollAreaRoot: Component<ScrollAreaRootProps> = withProvider(
 
 function ScrollAreaViewport(props: ScrollAreaViewportProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useScrollArea();
+  const styles = useStyles();
 
   return (
     <ScrollAreaPrimitive.Viewport
@@ -120,7 +118,7 @@ export type {
   ScrollAreaScrollbarProps,
   ScrollAreaThumbProps,
   ScrollAreaViewportProps,
-} from "@ark-ui/solid/scroll-area";
+} from "@ark-ui/solid";
 
 export const ScrollArea = Object.assign(ScrollAreaShorthand, {
   Corner: ScrollAreaPrimitive.Corner,

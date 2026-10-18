@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Avatar, Button, HoverCard } from "@pisagor/svelte";
-  import { MapPinIcon } from "@pisagor/svelte/icons";
+  import { MapPinIcon } from "phosphor-svelte";
 </script>
 
 <HoverCard closeDelay={300} openDelay={200}>

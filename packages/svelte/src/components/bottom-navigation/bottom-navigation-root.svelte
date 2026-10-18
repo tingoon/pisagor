@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { BottomNavigationProps as BaseBottomNavigationProps } from "@pisagor/props";
   import type { HTMLAttributes } from "svelte/elements";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import {
     setBottomNavigationValue,
     withBottomNavigationProvider,
@@ -18,7 +18,7 @@
     };
 
   let { children, value, ...rest }: Props = $props();
-  const t = useMessageResolver();
+  const { m } = useLocale();
   setBottomNavigationValue(() => value);
   const root = withBottomNavigationProvider(() => rest, {
     name: "Root",
@@ -26,6 +26,6 @@
   });
 </script>
 
-<Ark aria-label={t("bottomNavigation.label")} as="nav" {...root.props}>
+<Ark aria-label={m("bottomNavigation.label")} as="nav" {...root.props}>
   {@render children?.()}
 </Ark>

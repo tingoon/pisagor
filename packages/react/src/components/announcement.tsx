@@ -1,8 +1,8 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { AnnouncementProps as BaseAnnouncementRootProps } from "@pisagor/props";
 import { announcementRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -16,7 +16,7 @@ export const AnnouncementRoot = withProvider(ark.div, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  Omit<ComponentProps<typeof ark.div>, "title"> & {
+  Omit<HTMLArkProps<"div">, "title"> & {
     role?: "status" | "alert";
   } & BaseAnnouncementRootProps
 >;

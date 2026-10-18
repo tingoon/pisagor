@@ -1,4 +1,5 @@
 import { ColorPicker, Field, Input, parseColor } from "@pisagor/react";
+
 export function InputChannel() {
   return (
     <div className="flex flex-col gap-2">

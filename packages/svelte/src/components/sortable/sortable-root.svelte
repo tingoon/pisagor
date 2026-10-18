@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { SortableProps as BaseSortableProps } from "@pisagor/props";
   import { sortableRecipe } from "@pisagor/recipes";
   import { cn, formatMessage } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { setSortableContext } from "./sortable.context";
 
   type Props = HTMLAttributes<HTMLUListElement> & {
@@ -25,6 +25,7 @@
     ...rest
   }: Props = $props();
 
+  const { m } = useLocale();
   let activeId = $state<string | null>(null);
   let overId = $state<string | null>(null);
   let handleIds = $state(new Set<string>());
@@ -36,6 +37,7 @@
     const [moved] = next.splice(from, 1);
     if (moved === undefined) return list;
     next.splice(to, 0, moved);
+
     return next;
   }
 
@@ -78,7 +80,6 @@
     onValueChange?.(reorder(items, from, to));
   }
 
-  const movedTemplate = useMessageResolver()("sortable.moved");
   let moved = $state("");
   const keyShortcuts = $derived(
     orientation === "vertical"
@@ -92,7 +93,7 @@
     const targetIndex = index + delta;
     if (index === -1 || targetIndex < 0 || targetIndex >= items.length) return;
     onValueChange?.(reorder(items, index, targetIndex));
-    moved = formatMessage(movedTemplate, {
+    moved = formatMessage(m("sortable.moved"), {
       position: targetIndex + 1,
       total: items.length,
     });
@@ -100,6 +101,7 @@
 
   function getItemProps(id: string) {
     const itemHasHandle = handleIds.has(id);
+
     return {
       "aria-disabled": disabled || undefined,
       "aria-keyshortcuts": itemHasHandle ? undefined : keyShortcuts,
@@ -124,6 +126,7 @@
       ondragstart: (event: DragEvent) => {
         if (disabled || handleIds.has(id)) {
           event.preventDefault();
+
           return;
         }
         startDrag(id, event);

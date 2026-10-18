@@ -1,9 +1,9 @@
+import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/react";
 import type {
   SignaturePadClearTriggerProps,
   SignaturePadControlProps,
-  SignaturePadRootProps as SignaturePadPrimitiveRootProps,
-} from "@ark-ui/react/signature-pad";
-import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/react/signature-pad";
+  SignaturePadRootProps as SignaturePadRootPrimitiveProps,
+} from "@ark-ui/react";
 import { ArrowCounterClockwiseIcon } from "@phosphor-icons/react";
 import type { SignaturePadProps as BaseSignaturePadRootProps } from "@pisagor/props";
 import {
@@ -12,16 +12,19 @@ import {
   signaturePadRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { FormControlVariant, VariantClassNames } from "../internal/types";
+import {
+  type FormControlVariant,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button } from "./button";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
 const {
   Context: SignaturePadStylesContext,
-  useStyles: useSignaturePad,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "SignaturePad",
@@ -33,7 +36,7 @@ const {
 
 type SignaturePadClassNames = VariantClassNames<SignaturePadRecipeSlot>;
 
-type SignaturePadRootProps = SignaturePadPrimitiveRootProps & {
+type SignaturePadRootProps = SignaturePadRootPrimitiveProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   /** Marks the control as invalid for styling and assistive tech. */
@@ -87,7 +90,7 @@ function SignaturePadControl({
   invalid?: boolean;
   variant?: FormControlVariant;
 }) {
-  const { slots } = useSignaturePad();
+  const { slots } = useStyles();
   const resolved = {
     surfaceVariant: useFormControlSurface(),
     variant,
@@ -121,7 +124,8 @@ const SignaturePadSegment = withContext(SignaturePadPrimitive.Segment, {
 });
 
 function SignaturePadClear({ className, ...rest }: SignaturePadClearProps) {
-  const { slots } = useSignaturePad();
+  const { m } = useLocale();
+  const { slots } = useStyles();
 
   return (
     <SignaturePadPrimitive.ClearTrigger
@@ -130,7 +134,7 @@ function SignaturePadClear({ className, ...rest }: SignaturePadClearProps) {
       className={slots.clear({ className })}
     >
       <Button
-        aria-label={useMessage("signaturePad.clearSignature")}
+        aria-label={m("signaturePad.clearSignature")}
         size="icon-md"
         variant="ghost"
       >

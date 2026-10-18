@@ -34,11 +34,13 @@ function loadPagefind(base: string): Promise<PagefindApi | null> {
         excerptLength: 18,
       });
       await api.init?.();
+
       return api;
     } catch {
       return null;
     }
   })();
+
   return pagefindPromise;
 }
 
@@ -111,12 +113,14 @@ export function bindDocsSearch(root: HTMLElement) {
       list.replaceChildren();
       input.setAttribute("aria-expanded", "false");
       setStatus(`Type to search the ${framework} docs.`);
+
       return;
     }
     const pagefind = await loadPagefind(base);
     if (ticket !== seq) return;
     if (!pagefind) {
       setStatus("Search is available on the built site (run the docs build).");
+
       return;
     }
     const search = await pagefind.debouncedSearch(
@@ -141,6 +145,7 @@ export function bindDocsSearch(root: HTMLElement) {
         a.innerHTML = `<span class="block font-medium">${escapeHtml(
           item.meta.title ?? item.url,
         )}</span><span class="mt-0.5 line-clamp-2 block text-muted-foreground text-xs">${item.excerpt}</span>`;
+
         return a;
       }),
     );

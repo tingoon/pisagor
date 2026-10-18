@@ -1,12 +1,11 @@
 <script lang="ts" setup>
 import type { BadgeVariant } from "@pisagor/vue";
 import { Badge, Table } from "@pisagor/vue";
-import {
-  type CellContext,
-  type ColumnDef,
-  DataGrid,
-  type SortingState,
-  useDataGrid,
+import { DataGrid, useDataGrid } from "@pisagor/vue/data-grid";
+import type {
+  CellContext,
+  ColumnDef,
+  SortingState,
 } from "@pisagor/vue/data-grid";
 import { computed, defineComponent, h, ref } from "vue";
 

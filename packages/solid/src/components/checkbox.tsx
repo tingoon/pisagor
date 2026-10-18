@@ -1,11 +1,11 @@
-import {
-  type CheckboxControlProps,
-  type CheckboxIndicatorProps,
-  type CheckboxLabelProps,
-  Checkbox as CheckboxPrimitive,
-  type CheckboxGroupProps as CheckboxPrimitiveGroupProps,
-  type CheckboxRootProps,
-} from "@ark-ui/solid/checkbox";
+import { Checkbox as CheckboxPrimitive } from "@ark-ui/solid";
+import type {
+  CheckboxControlProps,
+  CheckboxGroupProps as CheckboxGroupPrimitiveProps,
+  CheckboxIndicatorProps,
+  CheckboxLabelProps,
+  CheckboxRootProps,
+} from "@ark-ui/solid";
 import type {
   CheckboxGroupProps as BaseCheckboxGroupProps,
   CheckboxProps as BaseCheckboxProps,
@@ -18,21 +18,18 @@ import {
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import type { SizeScaleProps } from "../internal/types";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
 export interface CheckboxGroupProps
   extends
-    Omit<CheckboxPrimitiveGroupProps, "onValueChange">,
+    Omit<CheckboxGroupPrimitiveProps, "onValueChange">,
     BaseCheckboxGroupProps {
   onValueChange?: (value: string[]) => void;
 }
 
-export interface CheckboxProps
-  extends CheckboxRootProps, BaseCheckboxProps, SizeScaleProps {
-  variant?: FormControlVariant;
+export interface CheckboxProps extends CheckboxRootProps, BaseCheckboxProps {
   onValueChange?: (value: boolean) => void;
 }
 
@@ -164,9 +161,8 @@ export function CheckboxCompoundRoot(
 /** The styled box; renders check / minus indicators when empty. */
 export function CheckboxControl(
   props: CheckboxControlProps &
-    SizeScaleProps & {
+    BaseCheckboxProps & {
       recipe?: typeof checkboxRecipe;
-      variant?: FormControlVariant;
     },
 ): JSX.Element {
   const [local, rest] = splitProps(props, [
@@ -221,10 +217,7 @@ export function CheckboxLabel(
   );
 }
 
-export type {
-  CheckboxCheckedState,
-  CheckboxRootProps,
-} from "@ark-ui/solid/checkbox";
+export type { CheckboxCheckedState, CheckboxRootProps } from "@ark-ui/solid";
 
 export const Checkbox = Object.assign(CheckboxRoot, {
   Control: CheckboxControl,

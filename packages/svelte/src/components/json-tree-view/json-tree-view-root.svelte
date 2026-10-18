@@ -2,7 +2,7 @@
   import {
     JsonTreeView as JsonTreeViewPrimitive,
     type JsonTreeViewRootProps,
-  } from "@ark-ui/svelte/json-tree-view";
+  } from "@ark-ui/svelte";
   import type { JsonTreeViewProps as BaseJsonTreeViewProps } from "@pisagor/props";
   import { withProvider } from "./json-tree-view.context";
 

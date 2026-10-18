@@ -1,4 +1,5 @@
 import { InputGroup, Kbd } from "@pisagor/react";
+
 export function WithKeyboardShortcut() {
   return (
     <InputGroup>

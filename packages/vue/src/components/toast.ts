@@ -1,8 +1,8 @@
 import {
-  createToaster,
-  Toaster as ToasterPrimitive,
   Toast as ToastPrimitive,
-} from "@ark-ui/vue/toast";
+  Toaster as ToasterPrimitive,
+  createToaster,
+} from "@ark-ui/vue";
 import {
   PhCheckCircle,
   PhInfo,
@@ -21,16 +21,19 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, Teleport } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { LoosePropValue, VariantClassNames } from "../internal/types";
+import {
+  type LoosePropValue,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Spinner } from "./spinner";
 
 type ClassValue = Parameters<typeof cn>[0];
 
 // #region Context
-const { useStyles: useToastItem, withProvider } = createSlotRecipeContext({
+const { useStyles, withProvider } = createSlotRecipeContext({
   name: "Toast",
   recipe: toastItemRecipe,
 });
@@ -174,7 +177,8 @@ const ToastItemContent = defineComponent({
   name: "Toaster.ItemContent",
   props: itemBagProps,
   setup(props) {
-    const styles = useToastItem();
+    const { m } = useLocale();
+    const styles = useStyles();
 
     return () => {
       const slots = styles.slots;
@@ -279,7 +283,7 @@ const ToastItemContent = defineComponent({
                     h(
                       Button as ArkPart,
                       {
-                        "aria-label": useTranslation("toast.close"),
+                        "aria-label": m("toast.close"),
                         class: slots.close({
                           class: props.classNames?.close,
                         }),

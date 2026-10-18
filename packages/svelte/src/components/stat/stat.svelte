@@ -3,7 +3,7 @@
   import type { StatRecipeSlot } from "@pisagor/recipes";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import StatDescription from "./stat-description.svelte";
   import StatLabel from "./stat-label.svelte";
   import StatRoot from "./stat-root.svelte";

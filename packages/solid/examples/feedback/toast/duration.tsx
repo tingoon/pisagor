@@ -1,4 +1,5 @@
 import { Button, toast } from "@pisagor/solid";
+
 export function Duration() {
   return (
     <div class="flex flex-wrap gap-2">

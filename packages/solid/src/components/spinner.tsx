@@ -2,12 +2,13 @@ import type { SpinnerProps as BaseSpinnerProps } from "@pisagor/props";
 import { spinnerRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 export interface SpinnerProps
   extends JSX.SvgSVGAttributes<SVGSVGElement>, BaseSpinnerProps {}
 
 export function Spinner(props: SpinnerProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "class",
     "recipe",
@@ -23,7 +24,7 @@ export function Spinner(props: SpinnerProps): JSX.Element {
       aria-label={
         local["aria-hidden"]
           ? undefined
-          : (local["aria-label"] ?? useTranslation("spinner.loading"))
+          : m("spinner.loading", local["aria-label"])
       }
       class={recipe()({ class: local.class })}
       data-part="root"

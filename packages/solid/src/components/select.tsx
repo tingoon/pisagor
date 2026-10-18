@@ -1,22 +1,21 @@
 import {
-  type CollectionItem,
+  Select as SelectPrimitive,
+  ark,
   createListCollection,
-} from "@ark-ui/solid/collection";
-import { ark } from "@ark-ui/solid/factory";
+  useSelectContext,
+} from "@ark-ui/solid";
 import type {
+  CollectionItem,
+  HTMLArkProps,
   SelectClearTriggerProps,
   SelectContentProps,
   SelectItemGroupLabelProps,
+  SelectItemGroupProps as SelectItemGroupPrimitiveProps,
   SelectItemProps,
-  SelectItemGroupProps as SelectPrimitiveItemGroupProps,
-  SelectRootProps as SelectPrimitiveRootProps,
-  SelectTriggerProps as SelectPrimitiveTriggerProps,
+  SelectRootProps as SelectRootPrimitiveProps,
+  SelectTriggerProps as SelectTriggerPrimitiveProps,
   SelectValueTextProps,
-} from "@ark-ui/solid/select";
-import {
-  Select as SelectPrimitive,
-  useSelectContext,
-} from "@ark-ui/solid/select";
+} from "@ark-ui/solid";
 import type { SelectProps as BaseSelectRootProps } from "@pisagor/props";
 import {
   type FormControlShellVariantProps,
@@ -24,7 +23,7 @@ import {
   selectRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { ComponentProps, JSX } from "solid-js";
+import type { JSX } from "solid-js";
 import {
   createContext,
   createMemo,
@@ -34,9 +33,13 @@ import {
   useContext,
 } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CaretUpDownIcon, CheckIcon, XIcon } from "../internal/icons";
-import { useTranslation } from "./provider/context";
+import {
+  CaretUpDownIcon,
+  CheckIcon,
+  XIcon,
+  createSlotRecipeContext,
+} from "../internal";
+import { useLocale } from "./provider/context";
 import { Separator, type SeparatorProps } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -49,6 +52,7 @@ const { Context: SelectStylesContext } = createSlotRecipeContext({
 /** Parts may render under a bare Ark root, so fall back to the default recipe. */
 function useSelectSlots() {
   const styles = useContext(SelectStylesContext);
+
   return () => styles?.slots ?? selectRecipe();
 }
 
@@ -64,7 +68,7 @@ interface SelectPresetItem {
 }
 
 export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  SelectPrimitiveRootProps<T>,
+  SelectRootPrimitiveProps<T>,
   "onValueChange"
 > & {
   /** Visual shell variant applied to the trigger. Defaults to `primary`. */
@@ -85,16 +89,16 @@ export interface SelectProps extends Omit<
 
 export interface SelectTriggerProps
   extends
-    Omit<SelectPrimitiveTriggerProps, "size">,
+    Omit<SelectTriggerPrimitiveProps, "size">,
     FormControlShellVariantProps {
   clearable?: boolean;
 }
 
-export interface SelectItemGroupProps extends SelectPrimitiveItemGroupProps {
+export interface SelectItemGroupProps extends SelectItemGroupPrimitiveProps {
   heading?: string | JSX.Element;
 }
 
-export type SelectEmptyProps = ComponentProps<typeof ark.div>;
+export type SelectEmptyProps = HTMLArkProps<"div">;
 
 export const SelectContext = SelectPrimitive.Context;
 
@@ -209,6 +213,7 @@ export function SelectSeparator(props: SeparatorProps): JSX.Element {
 export function SelectValueText(props: SelectValueTextProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useSelectSlots();
+
   return (
     <SelectPrimitive.ValueText
       {...rest}
@@ -251,6 +256,7 @@ export function SelectItemGroupLabel(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useSelectSlots();
+
   return (
     <SelectPrimitive.ItemGroupLabel
       {...rest}
@@ -283,12 +289,13 @@ export function SelectItem(props: SelectItemProps): JSX.Element {
 export function SelectClearTrigger(
   props: SelectClearTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useSelectSlots();
 
   return (
     <SelectPrimitive.ClearTrigger
-      aria-label={useTranslation("select.clear")}
+      aria-label={m("select.clear")}
       {...rest}
       class={slots().clearTrigger({ class: local.class })}
     />
@@ -346,7 +353,7 @@ export type {
   SelectItemGroupLabelProps,
   SelectItemProps,
   SelectValueTextProps,
-} from "@ark-ui/solid/select";
+} from "@ark-ui/solid";
 
 export const Select = Object.assign(SelectShorthand, {
   ClearTrigger: SelectClearTrigger,

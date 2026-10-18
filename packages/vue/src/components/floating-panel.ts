@@ -1,4 +1,4 @@
-import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/vue/floating-panel";
+import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/vue";
 import { PhArrowsOut, PhCornersIn, PhMinus } from "@phosphor-icons/vue";
 import type { FloatingPanelProps as BaseFloatingPanelRootProps } from "@pisagor/props";
 import {
@@ -15,21 +15,21 @@ import {
   Teleport,
   type VNodeChild,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
-import { createContext } from "../internal/utils/create-context";
+import {
+  type ClassValue,
+  createContext,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button, type ButtonProps } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Slot recipe context
-const {
-  provideStyles: provideFloatingPanelStyles,
-  useStyles: useFloatingPanelStyles,
-} = createSlotRecipeContext({
-  name: "FloatingPanel",
-  recipe: floatingPanelRecipe,
-});
+const { provideStyles: provideFloatingPanelStyles, useStyles } =
+  createSlotRecipeContext({
+    name: "FloatingPanel",
+    recipe: floatingPanelRecipe,
+  });
 // #endregion
 
 // #region Types
@@ -165,7 +165,7 @@ export const FloatingPanelContent = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useFloatingPanelStyles();
+    const styles = useStyles();
 
     const floatingPanelContext = useFloatingPanel();
 
@@ -271,6 +271,8 @@ export const FloatingPanelMinimize = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
+
     return () =>
       h(
         FloatingPanelPrimitive.StageTrigger as ArkPart,
@@ -279,7 +281,7 @@ export const FloatingPanelMinimize = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useTranslation("floatingPanel.minimize"),
+              "aria-label": m("floatingPanel.minimize"),
               class: props.class,
               size: props.size,
               variant: props.variant,
@@ -308,6 +310,8 @@ export const FloatingPanelMaximize = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
+
     return () =>
       h(
         FloatingPanelPrimitive.StageTrigger as ArkPart,
@@ -316,7 +320,7 @@ export const FloatingPanelMaximize = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useTranslation("floatingPanel.maximize"),
+              "aria-label": m("floatingPanel.maximize"),
               class: props.class,
               size: props.size,
               variant: props.variant,
@@ -345,6 +349,8 @@ export const FloatingPanelRestore = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
+
     return () => {
       const panelSlots = useFloatingPanelSlots();
 
@@ -355,7 +361,7 @@ export const FloatingPanelRestore = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useTranslation("floatingPanel.restore"),
+              "aria-label": m("floatingPanel.restore"),
               class: props.class,
               size: props.size,
               variant: props.variant,

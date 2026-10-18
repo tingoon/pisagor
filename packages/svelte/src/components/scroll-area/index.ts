@@ -1,4 +1,4 @@
-import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/svelte/scroll-area";
+import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/svelte";
 import ScrollAreaShorthand from "./scroll-area.svelte";
 import ScrollAreaRoot from "./scroll-area-root.svelte";
 import ScrollAreaScrollbar from "./scroll-area-scrollbar.svelte";

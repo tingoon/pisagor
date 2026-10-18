@@ -1,9 +1,9 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type { StatusProps as BaseStatusProps } from "@pisagor/props";
 import { statusRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { ClassValue } from "../internal/types";
+import type { ClassValue } from "../internal";
 
 // #region Types
 export interface StatusProps extends BaseStatusProps {

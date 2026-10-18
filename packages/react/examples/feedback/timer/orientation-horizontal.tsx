@@ -1,4 +1,5 @@
 import { Card, Timer } from "@pisagor/react";
+
 export function OrientationHorizontal() {
   return (
     <Card className="rounded-3xl [--space:--spacing(6)]">

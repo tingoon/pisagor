@@ -1,16 +1,14 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
   SkeletonProps as BaseSkeletonCircleProps,
   SkeletonProps as BaseSkeletonRootProps,
   SkeletonProps as BaseSkeletonTextProps,
 } from "@pisagor/props";
 import { skeletonRecipe } from "@pisagor/recipes";
-import type { ComponentProps } from "react";
-import type { SizeScaleProps } from "../internal/types";
 
 // #region Types
 export interface SkeletonTextProps
-  extends ComponentProps<typeof ark.div>, BaseSkeletonTextProps {
+  extends HTMLArkProps<"div">, BaseSkeletonTextProps {
   /**
    * The number of lines of the skeleton text.
    *
@@ -20,10 +18,10 @@ export interface SkeletonTextProps
 }
 
 export interface SkeletonRootProps
-  extends ComponentProps<typeof ark.div>, BaseSkeletonRootProps {}
+  extends HTMLArkProps<"div">, BaseSkeletonRootProps {}
 
 export interface SkeletonCircleProps
-  extends ComponentProps<typeof ark.div>, BaseSkeletonCircleProps {}
+  extends HTMLArkProps<"div">, BaseSkeletonCircleProps {}
 // #endregion
 
 // #region Parts
@@ -32,7 +30,7 @@ export function SkeletonRoot({
   recipe = skeletonRecipe,
   className,
   ...rest
-}: SkeletonRootProps & SizeScaleProps) {
+}: SkeletonRootProps) {
   const slots = recipe({ size });
 
   return (
@@ -50,7 +48,7 @@ export function SkeletonCircle({
   recipe = skeletonRecipe,
   className,
   ...rest
-}: SkeletonCircleProps & SizeScaleProps) {
+}: SkeletonCircleProps) {
   const slots = recipe({ size });
 
   return (
@@ -69,7 +67,7 @@ export function SkeletonText({
   recipe = skeletonRecipe,
   className,
   ...rest
-}: SkeletonTextProps & SizeScaleProps) {
+}: SkeletonTextProps) {
   const slots = recipe({ size });
 
   return (

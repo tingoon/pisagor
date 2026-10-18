@@ -4,6 +4,7 @@ import {
 } from "@phosphor-icons/react";
 import { Button, ImageCropper } from "@pisagor/react";
 import { useState } from "react";
+
 export function ControlledZoom() {
   const [zoom, setZoom] = useState(1);
 

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button } from "@pisagor/svelte";
-  import PlusIcon from "phosphor-svelte/lib/PlusIcon";
+  import { PlusIcon } from "phosphor-svelte";
 
   const sizes = ["xs", "sm", "md", "lg", "xl"] as const;
 </script>

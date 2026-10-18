@@ -1,8 +1,8 @@
 import {
-  type FileUploadFileChangeDetails,
   FileUpload as FileUploadPrimitive,
+  type FileUploadFileChangeDetails,
   useFileUploadContext,
-} from "@ark-ui/vue/file-upload";
+} from "@ark-ui/vue";
 import { PhUpload, PhX } from "@phosphor-icons/vue";
 import type {
   FileUploadItemProps as BaseFileUploadItemProps,
@@ -13,12 +13,11 @@ import {
   fileUploadRecipe,
   formControlZoneRecipe,
 } from "@pisagor/recipes";
-import { cn, type MessageKey, resolveMessage } from "@pisagor/utils";
+import { cn, type MessageKey } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
-import { useTranslations } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -510,7 +509,7 @@ export const FileUploadList = defineComponent({
 
     const fileUpload = useFileUploadContext();
 
-    const translations = useTranslations();
+    const { m } = useLocale();
 
     return () => {
       const { acceptedFiles, rejectedFiles } = fileUpload.value;
@@ -556,10 +555,7 @@ export const FileUploadList = defineComponent({
                 h(
                   "div",
                   { class: itemSlots.error(), key: code },
-                  resolveMessage(
-                    translations,
-                    `fileUpload.error.${code}` as MessageKey,
-                  ) ?? code,
+                  m(`fileUpload.error.${code}` as MessageKey) ?? code,
                 ),
               ),
             ]),
@@ -567,10 +563,7 @@ export const FileUploadList = defineComponent({
               h(
                 Button as ArkPart,
                 {
-                  "aria-label": resolveMessage(
-                    translations,
-                    "fileUpload.removeFile",
-                  ),
+                  "aria-label": m("fileUpload.removeFile"),
                   class: itemSlots.deleteButton(),
                   size: "icon-xs",
                   variant: "ghost",

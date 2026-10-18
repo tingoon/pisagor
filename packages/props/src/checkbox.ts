@@ -1,4 +1,8 @@
-import type { CheckboxGroupRecipeFn, CheckboxRecipeFn } from "@pisagor/recipes";
+import type {
+  CheckboxGroupRecipeFn,
+  CheckboxRecipeFn,
+  FormControlToggleVariantProps,
+} from "@pisagor/recipes";
 
 /** CheckboxGroup props. */
 export interface CheckboxGroupProps {
@@ -10,8 +14,8 @@ export interface CheckboxGroupProps {
   recipe?: CheckboxGroupRecipeFn;
 }
 
-/** Checkbox props. */
-export interface CheckboxProps {
+/** Checkbox props. Shell variants from `formControlToggleRecipe`. */
+export interface CheckboxProps extends FormControlToggleVariantProps {
   /**
    * Style recipe override.
    *

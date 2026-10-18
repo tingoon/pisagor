@@ -1,8 +1,5 @@
 <script lang="ts">
-  import {
-    type TabContentProps,
-    Tabs as TabsPrimitive,
-  } from "@ark-ui/svelte/tabs";
+  import { type TabContentProps, Tabs as TabsPrimitive } from "@ark-ui/svelte";
   import { withContext } from "./tabs.context";
 
   let { children, ...rest }: TabContentProps = $props();

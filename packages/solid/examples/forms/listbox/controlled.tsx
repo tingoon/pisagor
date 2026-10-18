@@ -1,6 +1,7 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import { Item, Listbox } from "@pisagor/solid";
 import { createSignal } from "solid-js";
+
 export function Controlled() {
   const collection = createListCollection({
     items: [

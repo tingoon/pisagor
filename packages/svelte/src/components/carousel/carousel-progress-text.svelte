@@ -2,7 +2,7 @@
   import {
     Carousel as CarouselPrimitive,
     type CarouselProgressTextProps,
-  } from "@ark-ui/svelte/carousel";
+  } from "@ark-ui/svelte";
   import { withContext } from "./carousel.context";
 
   let { children, ...rest }: CarouselProgressTextProps = $props();

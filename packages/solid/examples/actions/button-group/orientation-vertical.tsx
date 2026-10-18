@@ -1,5 +1,6 @@
 import { Button, ButtonGroup } from "@pisagor/solid";
-import { MinusIcon, PlusIcon } from "@pisagor/solid/icons";
+import { MinusIcon, PlusIcon } from "@squidlab/phosphor-solid/icons";
+
 export function OrientationVertical() {
   return (
     <ButtonGroup>

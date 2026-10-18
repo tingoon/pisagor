@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { HTMLAnchorAttributes } from "svelte/elements";
   import { withContext } from "./link-box.context";
 

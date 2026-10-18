@@ -1,5 +1,9 @@
 import { Timeline } from "@pisagor/solid";
-import { CheckCircleIcon, CircleIcon, RocketIcon } from "@pisagor/solid/icons";
+import {
+  CheckCircleIcon,
+  CircleIcon,
+  RocketIcon,
+} from "@squidlab/phosphor-solid/icons";
 
 export function Compound() {
   return (

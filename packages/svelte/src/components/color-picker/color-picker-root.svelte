@@ -1,9 +1,9 @@
 <script lang="ts">
   import {
-    type ColorPickerRootProps as ArkRootProps,
     ColorPicker as ColorPickerPrimitive,
+    type ColorPickerRootProps as ArkRootProps,
     parseColor,
-  } from "@ark-ui/svelte/color-picker";
+  } from "@ark-ui/svelte";
   import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
   import { colorPickerRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

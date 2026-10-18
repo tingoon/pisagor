@@ -1,7 +1,7 @@
-import type { RatingRecipeFn } from "@pisagor/recipes";
+import type { RatingRecipeFn, RatingVariantProps } from "@pisagor/recipes";
 
 /** Rating props. */
-export interface RatingProps {
+export interface RatingProps extends RatingVariantProps {
   /**
    * Style recipe override.
    *

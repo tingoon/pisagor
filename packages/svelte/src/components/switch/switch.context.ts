@@ -1,5 +1,5 @@
 import { switchRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 
 export const { Context, withContext } = createSlotRecipeContext({
   name: "Switch",

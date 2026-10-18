@@ -8,7 +8,7 @@ import {
 } from "#/lib/examples-host";
 
 const globs: ExampleGlobs = {
-  block: import.meta.glob("../../../blocks/react/*/*.{ts,tsx}"),
+  block: import.meta.glob("../../../blocks/react/**/*.{ts,tsx}"),
   component: import.meta.glob(
     "../../../../../../packages/react/examples/*/*/*.{ts,tsx}",
   ),
@@ -32,6 +32,7 @@ export function ReactExamplesHost({
 }: ExamplesHostProps = {}) {
   useEffect(() => {
     console.info("[ReactExamplesHost] arm", { id, exportNames, kind });
+
     return armExamplesHost(
       globs,
       { exportNames, id, kind },
@@ -58,6 +59,7 @@ export function ReactExamplesHost({
             <p className="text-destructive text-sm">{String(error)}</p>,
           );
         }
+
         // Defer so unmount never runs during a React commit (Strict Mode).
         return () => queueMicrotask(() => root.unmount());
       },

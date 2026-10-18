@@ -1,27 +1,17 @@
-import { Slider as SliderPrimitive } from "@ark-ui/vue/slider";
+import { Slider as SliderPrimitive } from "@ark-ui/vue";
 import type { SliderProps as BaseSliderProps } from "@pisagor/props";
 import { fieldRecipe, sliderRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import {
-  computed,
-  defineComponent,
-  h,
-  type InjectionKey,
-  inject,
-  type PropType,
-  provide,
-  type VNodeChild,
-} from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { computed, defineComponent, h, inject, provide } from "vue";
+import type { InjectionKey, PropType, VNodeChild } from "vue";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: SliderStylesContext, useStyles: useSliderStyles } =
-  createSlotRecipeContext({
-    name: "Slider",
-    recipe: sliderRecipe,
-  });
+const { Context: SliderStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Slider",
+  recipe: sliderRecipe,
+});
 // #endregion
 
 type FormControlVariant = "primary" | "secondary";
@@ -82,7 +72,7 @@ function sliderPart(
     name: `Slider.${name}`,
     props: { class: classProp },
     setup(props, { attrs, slots }) {
-      const styles = useSliderStyles();
+      const styles = useStyles();
       const variant = useSliderVariant();
 
       return () =>

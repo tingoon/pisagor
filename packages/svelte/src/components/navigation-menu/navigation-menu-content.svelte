@@ -3,14 +3,14 @@
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
   import {
-    useNavigationMenu,
+    useStyles,
     useNavigationMenuItemState,
   } from "./navigation-menu.context";
 
   type Props = HTMLAttributes<HTMLUListElement> & { children?: Snippet };
 
   let { children, class: className, onkeydown, ...rest }: Props = $props();
-  const styles = useNavigationMenu();
+  const styles = useStyles();
   const item = useNavigationMenuItemState("Content");
 
   function handleKeyDown(

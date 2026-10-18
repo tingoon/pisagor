@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Avatar, Button, Item } from "@pisagor/svelte";
-  import PlusIcon from "phosphor-svelte/lib/PlusIcon";
+  import { PlusIcon } from "phosphor-svelte";
   import { people } from "./helpers";
 </script>
 

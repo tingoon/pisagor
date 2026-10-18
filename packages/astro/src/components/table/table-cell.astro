@@ -1,10 +1,10 @@
 ---
+import type { TableProps } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
-import type { SizeScaleProps } from "../../internal/types";
 import { withContext } from "./table.context";
 
-interface Props extends HTMLAttributes<"td">, SizeScaleProps {}
+interface Props extends HTMLAttributes<"td">, TableProps {}
 
 /**
  * Astro parts cannot read the root's size, so pass the same `size` as

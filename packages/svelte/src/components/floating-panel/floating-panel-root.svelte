@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type FloatingPanelRootProps as ArkRootProps,
     FloatingPanel as FloatingPanelPrimitive,
-  } from "@ark-ui/svelte/floating-panel";
+    type FloatingPanelRootProps as ArkRootProps,
+  } from "@ark-ui/svelte";
   import type { FloatingPanelProps as BaseFloatingPanelProps } from "@pisagor/props";
   import { floatingPanelRecipe } from "@pisagor/recipes";
   import { Context } from "./floating-panel.context";

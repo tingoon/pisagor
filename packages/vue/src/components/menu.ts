@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type {
   MenuItemProps as BaseMenuItemProps,
   MenuProps as BaseMenuRootProps,
@@ -13,16 +13,11 @@ import {
   type PropType,
   provide,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
-import { useTranslation } from "./provider/context";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Context
-const {
-  useStyles: useMenu,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Menu",
   recipe: menuRecipe,
 });
@@ -56,12 +51,14 @@ export const MenuRoot = defineComponent({
   inheritAttrs: false,
   name: "Menu",
   setup(_, { attrs, slots }) {
+    const { m } = useLocale();
+
     return () =>
       h(
         MenuRootBase,
         {
           ...attrs,
-          "aria-label": attrs["aria-label"] ?? useTranslation("menu.label"),
+          "aria-label": m("menu.label", attrs["aria-label"]),
         },
         slots,
       );
@@ -81,6 +78,7 @@ export const MenuList = defineComponent({
   name: "Menu.List",
   setup(_, { attrs, slots }) {
     provide(MenuInsideListKey, true);
+
     return () => h(MenuListBase, attrs, slots);
   },
 });
@@ -115,7 +113,7 @@ export const MenuItem = defineComponent({
     },
   },
   setup(props, { attrs, slots: children }) {
-    const styles = useMenu();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -153,7 +151,7 @@ export const MenuLink = defineComponent({
     },
   },
   setup(props, { attrs, slots: children }) {
-    const styles = useMenu();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -195,6 +193,7 @@ export const MenuSeparator = defineComponent({
   name: "Menu.Separator",
   setup(_, { attrs }) {
     const insideList = inject(MenuInsideListKey, false);
+
     return () => h(insideList ? MenuSeparatorItem : MenuSeparatorDiv, attrs);
   },
 });

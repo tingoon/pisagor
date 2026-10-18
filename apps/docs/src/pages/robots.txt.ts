@@ -12,6 +12,7 @@ export const GET: APIRoute = ({ site }) => {
     `Disallow: ${base}preview/`,
     ...(sitemap ? ["", `Sitemap: ${sitemap.href}`] : []),
   ];
+
   return new Response(`${lines.join("\n")}\n`, {
     headers: { "Content-Type": "text/plain; charset=utf-8" },
   });

@@ -1,16 +1,16 @@
 <script lang="ts">
-  import {
-    type RatingGroupControlProps,
-    type RatingGroupItemProps,
-    RatingGroup as RatingGroupPrimitive,
-    type RatingGroupRootProps,
-  } from "@ark-ui/svelte/rating-group";
+  import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/svelte";
+  import type {
+    RatingGroupControlProps,
+    RatingGroupItemProps,
+    RatingGroupRootProps,
+  } from "@ark-ui/svelte";
   import type { RatingProps as BaseRatingProps } from "@pisagor/props";
   import type { RatingRecipeSlot } from "@pisagor/recipes";
-  import StarIcon from "phosphor-svelte/lib/StarIcon";
+  import { StarIcon } from "phosphor-svelte";
   import type { Component } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { SizeScaleProps, VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import RatingControl from "./rating-control.svelte";
   import RatingIndicator from "./rating-indicator.svelte";
   import RatingItem from "./rating-item.svelte";
@@ -44,8 +44,7 @@
     onValueChange?: (value: number) => void;
     /** Visual shell variant. Defaults to `primary`. */
     variant?: FormControlVariant;
-  } & BaseRatingProps &
-    SizeScaleProps;
+  } & BaseRatingProps;
 
   let {
     controlProps,

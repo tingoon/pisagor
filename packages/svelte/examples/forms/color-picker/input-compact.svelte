@@ -5,7 +5,7 @@
     parseColor,
     Separator,
   } from "@pisagor/svelte";
-  import { PercentIcon } from "@pisagor/svelte/icons";
+  import { PercentIcon } from "phosphor-svelte";
 </script>
 
 <ColorPicker format="hsla" value={parseColor("#0485F7").toString("hsla")}>

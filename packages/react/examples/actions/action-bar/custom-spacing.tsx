@@ -1,6 +1,7 @@
 import { PencilSimpleIcon, TrashIcon, XIcon } from "@phosphor-icons/react";
 import { ActionBar, Button } from "@pisagor/react";
 import { useState } from "react";
+
 export function CustomSpacing() {
   const [isOpen, setIsOpen] = useState(false);
 

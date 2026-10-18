@@ -1,4 +1,5 @@
 import { InputGroup, Spinner } from "@pisagor/solid";
+
 export function WithSpinner() {
   return (
     <InputGroup data-disabled>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createGridCollection } from "@ark-ui/svelte/collection";
+  import { createGridCollection } from "@ark-ui/svelte";
   import { Item, Listbox } from "@pisagor/svelte";
 
   const collection = createGridCollection({

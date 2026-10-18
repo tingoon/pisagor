@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type AngleSliderControlProps,
     AngleSlider as AngleSliderPrimitive,
-  } from "@ark-ui/svelte/angle-slider";
+    type AngleSliderControlProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useCircularSlider } from "./circular-slider.context";
   import CircularSliderMarker from "./circular-slider-marker.svelte";
@@ -34,6 +34,7 @@
         ? Array.from({ length: Math.floor(360 / step) }, (_, i) => i * step)
         : CLOCK_MARKER_ANGLES;
     }
+
     return null as number[] | null;
   });
 </script>

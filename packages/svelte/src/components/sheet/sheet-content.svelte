@@ -1,19 +1,19 @@
 <script lang="ts">
   import {
-    type DialogContentProps,
     Dialog as DialogPrimitive,
-  } from "@ark-ui/svelte/dialog";
-  import { Portal } from "@ark-ui/svelte/portal";
+    type DialogContentProps,
+    Portal,
+  } from "@ark-ui/svelte";
   import type { SheetProps as BaseSheetProps } from "@pisagor/props";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import XIcon from "phosphor-svelte/lib/XIcon";
-  import { useMessageResolver } from "../provider/context";
-  import { useSheet } from "./sheet.context";
+  import { XIcon } from "phosphor-svelte";
+  import { useLocale } from "../provider/context";
+  import { useStyles } from "./sheet.context";
   import SheetBackdrop from "./sheet-backdrop.svelte";
   import SheetPositioner from "./sheet-positioner.svelte";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type Props = DialogContentProps & {
     showCloseButton?: boolean;
@@ -28,7 +28,7 @@
     ...rest
   }: Props = $props();
 
-  const styles = useSheet();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 
@@ -42,7 +42,7 @@
       {@render children?.()}
       {#if showCloseButton}
         <DialogPrimitive.CloseTrigger
-          aria-label={t("sheet.close")}
+          aria-label={m("sheet.close")}
           class={cn(
             buttonRecipe({ size: "icon-sm", variant: "ghost" }).base(),
             slots.inline(),

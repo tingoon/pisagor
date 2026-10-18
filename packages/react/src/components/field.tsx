@@ -1,16 +1,17 @@
-import { ark } from "@ark-ui/react/factory";
+import {
+  Field as FieldPrimitive,
+  Fieldset as FieldsetPrimitive,
+  ark,
+  type HTMLArkProps,
+} from "@ark-ui/react";
 import type {
   FieldErrorTextProps,
   FieldHelperTextProps,
   FieldLabelProps,
-  FieldRootProps as FieldPrimitiveRootProps,
-} from "@ark-ui/react/field";
-import { Field as FieldPrimitive } from "@ark-ui/react/field";
-import {
-  type FieldsetLegendProps,
-  Fieldset as FieldsetPrimitive,
-  type FieldsetRootProps,
-} from "@ark-ui/react/fieldset";
+  FieldRootProps as FieldRootPrimitiveProps,
+  FieldsetLegendProps,
+  FieldsetRootProps,
+} from "@ark-ui/react";
 import type {
   FieldProps as BaseFieldGroupProps,
   FieldProps as BaseFieldRootProps,
@@ -19,7 +20,7 @@ import type {
 import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
 import { use } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Separator } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -32,13 +33,14 @@ const { Context: FieldStylesContext, withProvider } = createSlotRecipeContext({
 /** Resolves recipe slots from the nearest Field/Group/Set, or a default recipe. */
 export function useFieldSlots(recipe: typeof fieldRecipe = fieldRecipe) {
   const styles = use(FieldStylesContext);
+
   return styles?.slots ?? recipe();
 }
 // #endregion
 
 // #region Types
 export interface FieldRootProps
-  extends FieldPrimitiveRootProps, BaseFieldRootProps {}
+  extends FieldRootPrimitiveProps, BaseFieldRootProps {}
 
 export type FieldProps = FieldRootProps;
 
@@ -54,19 +56,19 @@ export type FieldHelperProps = FieldHelperTextProps;
 export type FieldErrorProps = FieldErrorTextProps;
 
 export interface FieldGroupProps
-  extends ComponentProps<typeof ark.div>, BaseFieldGroupProps {}
+  extends HTMLArkProps<"div">, BaseFieldGroupProps {}
 
-export type FieldContentProps = ComponentProps<typeof ark.div>;
+export type FieldContentProps = HTMLArkProps<"div">;
 
-export type FieldRequiredIndicatorProps = ComponentProps<typeof ark.span>;
+export type FieldRequiredIndicatorProps = HTMLArkProps<"span">;
 
-export type FieldTitleProps = ComponentProps<typeof ark.div>;
+export type FieldTitleProps = HTMLArkProps<"div">;
 
 export type FieldDescriptionProps = ComponentProps<
   typeof FieldPrimitive.HelperText
 >;
 
-export type FieldSeparatorProps = ComponentProps<typeof ark.div>;
+export type FieldSeparatorProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Parts
@@ -268,7 +270,7 @@ FieldError.displayName = "Field.Error";
 
 // #endregion
 
-export type { FieldLabelProps } from "@ark-ui/react/field";
+export type { FieldLabelProps } from "@ark-ui/react";
 
 export const Field = Object.assign(FieldRoot, {
   Content: FieldContent,

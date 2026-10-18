@@ -17,8 +17,7 @@ import {
   watchEffect,
 } from "vue";
 import { useIsMobile } from "../hooks/use-is-mobile";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { createContext } from "../internal/utils/create-context";
+import { createContext, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { Sheet } from "./sheet";
 import { Tooltip, type TooltipProps } from "./tooltip";
@@ -561,6 +560,7 @@ export const SidebarTrigger = defineComponent({
     const getSlots = useSidebarSlots();
 
     const ctx = useSidebarContext();
+
     return () => {
       const variantSlots = getSlots();
 
@@ -834,6 +834,7 @@ export const SidebarMenuButton = defineComponent({
         typeof props.tooltip === "string"
           ? { content: props.tooltip }
           : props.tooltip;
+
       return h(
         Tooltip as ArkPart,
         { ...tooltipArgs, positioning: { placement: "right" } },

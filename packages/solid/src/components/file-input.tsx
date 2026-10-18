@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
 import {
   type FormControlGroupShellVariantProps,
@@ -8,19 +8,21 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, createSignal, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupText,
   type InputGroupTextProps,
 } from "./input-group/input-group-core";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: FileInputStylesContext, useStyles: useFileInput } =
-  createSlotRecipeContext({ name: "FileInput", recipe: fileInputRecipe });
+const { Context: FileInputStylesContext, useStyles } = createSlotRecipeContext({
+  name: "FileInput",
+  recipe: fileInputRecipe,
+});
 // #endregion
 
 type FormControlVariant = "primary" | "secondary";
@@ -31,7 +33,7 @@ type NativeFileInputProps = Omit<
   "defaultValue" | "onChange" | "size" | "type" | "value"
 >;
 
-type FileInputRootProps = ComponentProps<typeof ark.div> &
+type FileInputRootProps = HTMLArkProps<"div"> &
   FileInputVariantProps &
   BaseFileInputProps & {
     disabled?: boolean;
@@ -52,8 +54,8 @@ export interface FileInputProps
   onValueChange?: (files: globalThis.File[]) => void;
 }
 
-interface FileInputControlProps extends ComponentProps<"input"> {}
-interface FileInputLabelProps extends InputGroupTextProps {}
+type FileInputControlProps = ComponentProps<"input">;
+type FileInputLabelProps = InputGroupTextProps;
 
 function getSelectedFiles(input: HTMLInputElement): globalThis.File[] {
   return input.files ? Array.from(input.files) : [];
@@ -62,6 +64,7 @@ function getSelectedFiles(input: HTMLInputElement): globalThis.File[] {
 function formatFileLabel(files: globalThis.File[]): string | undefined {
   if (files.length === 0) return undefined;
   if (files.length === 1) return files[0]?.name;
+
   return `${files.length} files selected`;
 }
 
@@ -108,7 +111,7 @@ function FileInputRoot(props: FileInputRootProps): JSX.Element {
 
 function FileInputControl(props: FileInputControlProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useFileInput();
+  const styles = useStyles();
 
   return (
     <input
@@ -123,7 +126,8 @@ function FileInputControl(props: FileInputControlProps): JSX.Element {
 
 function FileInputLabel(props: FileInputLabelProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useFileInput();
+  const styles = useStyles();
+
   return (
     <InputGroupText
       {...rest}
@@ -135,6 +139,7 @@ function FileInputLabel(props: FileInputLabelProps): JSX.Element {
 }
 
 export function FileInput(props: FileInputProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "size",
     "variant",
@@ -205,13 +210,11 @@ export function FileInput(props: FileInputProps): JSX.Element {
           onClick={openPicker}
           type="button"
         >
-          {local.browseLabel ?? useTranslation("fileInput.browse")}
+          {m("fileInput.browse", local.browseLabel)}
         </InputGroupButton>
       </InputGroupAddon>
       <FileInputLabel onClick={local.disabled ? undefined : openPicker}>
-        {fileLabel() ??
-          local.placeholder ??
-          useTranslation("fileInput.placeholder")}
+        {fileLabel() ?? m("fileInput.placeholder", local.placeholder)}
       </FileInputLabel>
     </FileInputRoot>
   );

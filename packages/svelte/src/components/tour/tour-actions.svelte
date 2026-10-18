@@ -1,14 +1,13 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
   import {
-    type TourControlProps,
+    Ark,
     Tour as TourPrimitive,
-  } from "@ark-ui/svelte/tour";
+    type TourControlProps,
+  } from "@ark-ui/svelte";
   import { buttonRecipe, dialogRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
-  import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
-  import { isInsideControl } from "../../internal/inside-control";
+  import { CaretLeftIcon, CaretRightIcon } from "phosphor-svelte";
+  import { isInsideControl } from "../../internal";
   import { TOUR_INSIDE_CONTROL, useTourContext } from "./tour.context";
 
   let { class: className, ...rest }: Omit<TourControlProps, "children"> =

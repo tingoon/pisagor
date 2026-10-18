@@ -1,10 +1,13 @@
-import type { CollectionItem, ListCollection } from "@ark-ui/vue/collection";
-import { createListCollection } from "@ark-ui/vue/collection";
-import type { SelectRootProps as ArkSelectRootProps } from "@ark-ui/vue/select";
 import {
   Select as SelectPrimitive,
+  createListCollection,
   useSelectContext as useSelect,
-} from "@ark-ui/vue/select";
+} from "@ark-ui/vue";
+import type {
+  CollectionItem,
+  ListCollection,
+  SelectRootProps as ArkSelectRootProps,
+} from "@ark-ui/vue";
 import { PhCaretUpDown, PhCheck, PhX } from "@phosphor-icons/vue";
 import type { SelectProps as BaseSelectRootProps } from "@pisagor/props";
 import {
@@ -22,10 +25,13 @@ import {
   unref,
   type VNodeChild,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue, LoosePropValue } from "../internal/types";
-import { createContext } from "../internal/utils/create-context";
-import { useTranslation } from "./provider/context";
+import {
+  type ClassValue,
+  type LoosePropValue,
+  createContext,
+  createSlotRecipeContext,
+} from "../internal";
+import { useLocale } from "./provider/context";
 import { Separator } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -435,6 +441,7 @@ export const SelectClearTrigger = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const getSlots = useSelectSlots();
 
     return () => {
@@ -444,7 +451,7 @@ export const SelectClearTrigger = defineComponent({
         SelectPrimitive.ClearTrigger as ArkPart,
         {
           ...attrs,
-          "aria-label": props["aria-label"] ?? useTranslation("select.clear"),
+          "aria-label": m("select.clear", props["aria-label"]),
           class: cn(styleSlots.clearTrigger(), props.class, attrs.class),
         },
         () => slots.default?.(),

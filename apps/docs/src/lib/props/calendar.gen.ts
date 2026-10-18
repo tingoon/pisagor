@@ -4,7 +4,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/calendar` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (`packages/props/src/calendar.ts`, native HTML attributes omitted). */
 export const calendarProps: PropRow[] = [
   {
     name: "recipe",

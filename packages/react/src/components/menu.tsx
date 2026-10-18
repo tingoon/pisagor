@@ -1,51 +1,42 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type {
   MenuItemProps as BaseMenuItemProps,
   MenuProps as BaseMenuRootProps,
 } from "@pisagor/props";
 import { menuItemRecipe, menuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import {
-  type ComponentProps,
-  createContext,
-  type FunctionComponent,
-  use,
-} from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { useMessage } from "./provider/context";
+import { createContext, use } from "react";
+import type { FunctionComponent } from "react";
+import { createSlotRecipeContext } from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Context
-const {
-  useStyles: useMenu,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Menu",
   recipe: menuRecipe,
 });
 // #endregion
 
 // #region Types
-export interface MenuRootProps
-  extends ComponentProps<typeof ark.nav>, BaseMenuRootProps {}
+export interface MenuRootProps extends HTMLArkProps<"nav">, BaseMenuRootProps {}
 
-export type MenuPartProps = ComponentProps<typeof ark.div>;
+export type MenuPartProps = HTMLArkProps<"div">;
 
-export type MenuListProps = ComponentProps<typeof ark.ul>;
+export type MenuListProps = HTMLArkProps<"ul">;
 
 export interface MenuItemProps
-  extends ComponentProps<typeof ark.button>, BaseMenuItemProps {}
+  extends HTMLArkProps<"button">, BaseMenuItemProps {}
 
-export interface MenuLinkProps extends ComponentProps<typeof ark.a> {
+export interface MenuLinkProps extends HTMLArkProps<"a"> {
   /** Whether the link represents the current page */
   active?: boolean;
 }
 
-export type MenuGroupLabelProps = ComponentProps<typeof ark.div>;
+export type MenuGroupLabelProps = HTMLArkProps<"div">;
 
-export type MenuSeparatorProps = ComponentProps<typeof ark.div>;
+export type MenuSeparatorProps = HTMLArkProps<"div">;
 
-export type MenuShortcutProps = ComponentProps<typeof ark.span>;
+export type MenuShortcutProps = HTMLArkProps<"span">;
 // #endregion
 
 // #region Parts
@@ -58,7 +49,9 @@ export function MenuRoot({
   "aria-label": ariaLabelProp,
   ...rest
 }: MenuRootProps) {
-  const ariaLabel = useMessage("menu.label", ariaLabelProp);
+  const { m } = useLocale();
+  const ariaLabel = m("menu.label", ariaLabelProp);
+
   return <MenuRootBase {...rest} aria-label={ariaLabel} />;
 }
 
@@ -96,7 +89,7 @@ export function MenuItem({
   className,
   ...rest
 }: MenuItemProps) {
-  const { slots } = useMenu();
+  const { slots } = useStyles();
 
   return (
     <ark.li
@@ -121,7 +114,7 @@ export function MenuLink({
   className,
   ...rest
 }: MenuLinkProps) {
-  const { slots } = useMenu();
+  const { slots } = useStyles();
 
   return (
     <ark.li
@@ -155,7 +148,7 @@ export function MenuSeparator(props: MenuSeparatorProps) {
   const insideList = use(MenuInsideListContext);
 
   return insideList ? (
-    <MenuSeparatorItem {...(props as ComponentProps<typeof ark.li>)} />
+    <MenuSeparatorItem {...(props as HTMLArkProps<"li">)} />
   ) : (
     <MenuSeparatorDiv {...props} />
   );

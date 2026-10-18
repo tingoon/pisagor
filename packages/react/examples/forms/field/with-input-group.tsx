@@ -1,5 +1,6 @@
 import { ArrowRightIcon } from "@phosphor-icons/react";
 import { Field, InputGroup } from "@pisagor/react";
+
 export function WithInputGroup() {
   return (
     <Field>

@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   DataListItemProps as BaseDataListItemProps,
   DataListProps as BaseDataListRootProps,
@@ -8,10 +8,9 @@ import {
   dataListItemRecipe,
   dataListRecipe,
 } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -29,7 +28,7 @@ interface DataListPresetItem {
 }
 
 export interface DataListRootProps
-  extends ComponentProps<typeof ark.dl>, BaseDataListRootProps {
+  extends HTMLArkProps<"dl">, BaseDataListRootProps {
   orientation?: "horizontal" | "vertical";
 }
 
@@ -37,8 +36,7 @@ export interface DataListProps extends Omit<DataListRootProps, "children"> {
   items?: DataListPresetItem[];
 }
 
-type DataListItemRootProps = ComponentProps<typeof ark.div> &
-  BaseDataListItemProps;
+type DataListItemRootProps = HTMLArkProps<"div"> & BaseDataListItemProps;
 
 export interface DataListItemProps extends Omit<
   DataListItemRootProps,

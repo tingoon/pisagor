@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { SidebarProps as BaseSidebarProps } from "@pisagor/props";
 import {
   type ButtonVariantProps,
@@ -7,7 +7,7 @@ import {
   sidebarRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { Accessor, ComponentProps, JSX } from "solid-js";
+import type { Accessor, JSX } from "solid-js";
 import {
   createEffect,
   createMemo,
@@ -18,12 +18,11 @@ import {
   splitProps,
 } from "solid-js";
 import { useIsMobile } from "../hooks";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { SidebarSimpleIcon } from "../internal/icons";
+import { SidebarSimpleIcon, createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
 import { Button, type ButtonProps } from "./button";
 import { Input, type InputProps } from "./input";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 import { Separator, type SeparatorProps } from "./separator";
 import { Sheet, type SheetProps } from "./sheet";
@@ -31,8 +30,10 @@ import { Skeleton } from "./skeleton";
 import { Tooltip, type TooltipProps } from "./tooltip";
 
 // #region Context
-const { Context: SidebarStylesContext, useStyles: useSidebarStyles } =
-  createSlotRecipeContext({ name: "Sidebar", recipe: sidebarRecipe });
+const { Context: SidebarStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Sidebar",
+  recipe: sidebarRecipe,
+});
 
 /** Open/collapse state shared by sidebar parts (not styles). */
 interface SidebarState {
@@ -55,8 +56,9 @@ export interface SidebarContextProps extends SidebarState {
 
 /** Returns the nearest sidebar styles + state (`slots` stays reactive). */
 export function useSidebar(): SidebarContextProps {
-  const styles = useSidebarStyles();
+  const styles = useStyles();
   const state = useSidebarState();
+
   return {
     ...state,
     get slots() {
@@ -68,7 +70,7 @@ export function useSidebar(): SidebarContextProps {
 // #endregion
 
 export interface SidebarProviderProps
-  extends ComponentProps<"div">, Pick<BaseSidebarProps, "recipe"> {
+  extends HTMLArkProps<"div">, Pick<BaseSidebarProps, "recipe"> {
   /**
    * Initial open state. A stored value in `localStorage` (`sidebar_state`) wins
    * after mount.
@@ -95,7 +97,7 @@ export interface SidebarProps extends Omit<
   children?: JSX.Element;
 }
 
-export interface SidebarContentProps extends ComponentProps<"div"> {
+export interface SidebarContentProps extends HTMLArkProps<"div"> {
   scrollFade?: boolean;
 }
 
@@ -104,44 +106,38 @@ export interface SidebarMenuButtonProps extends ButtonProps {
   tooltip?: string | Omit<TooltipProps, "children">;
 }
 
-export interface SidebarMenuActionProps extends ComponentProps<
-  typeof ark.button
-> {
+export interface SidebarMenuActionProps extends HTMLArkProps<"button"> {
   showOnHover?: boolean;
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export interface SidebarMenuSkeletonProps extends ComponentProps<
-  typeof ark.div
-> {
+export interface SidebarMenuSkeletonProps extends HTMLArkProps<"div"> {
   showIcon?: boolean;
 }
 
 export interface SidebarMenuSubButtonProps
-  extends ComponentProps<typeof ark.a>, ButtonVariantProps {
+  extends HTMLArkProps<"a">, ButtonVariantProps {
   isActive?: boolean;
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export type SidebarRailProps = ComponentProps<typeof ark.button>;
-export type SidebarInsetProps = ComponentProps<typeof ark.main>;
-export type SidebarHeaderProps = ComponentProps<typeof ark.div>;
-export type SidebarFooterProps = ComponentProps<typeof ark.div>;
-export type SidebarGroupProps = ComponentProps<typeof ark.div>;
-export type SidebarGroupLabelProps = ComponentProps<typeof ark.div>;
+export type SidebarRailProps = HTMLArkProps<"button">;
+export type SidebarInsetProps = HTMLArkProps<"main">;
+export type SidebarHeaderProps = HTMLArkProps<"div">;
+export type SidebarFooterProps = HTMLArkProps<"div">;
+export type SidebarGroupProps = HTMLArkProps<"div">;
+export type SidebarGroupLabelProps = HTMLArkProps<"div">;
 
-export interface SidebarGroupActionProps extends ComponentProps<
-  typeof ark.button
-> {
+export interface SidebarGroupActionProps extends HTMLArkProps<"button"> {
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export type SidebarGroupContentProps = ComponentProps<typeof ark.div>;
-export type SidebarMenuProps = ComponentProps<typeof ark.ul>;
-export type SidebarMenuItemProps = ComponentProps<typeof ark.li>;
-export type SidebarMenuBadgeProps = ComponentProps<typeof ark.div>;
-export type SidebarMenuSubProps = ComponentProps<typeof ark.ul>;
-export type SidebarMenuSubItemProps = ComponentProps<typeof ark.li>;
+export type SidebarGroupContentProps = HTMLArkProps<"div">;
+export type SidebarMenuProps = HTMLArkProps<"ul">;
+export type SidebarMenuItemProps = HTMLArkProps<"li">;
+export type SidebarMenuBadgeProps = HTMLArkProps<"div">;
+export type SidebarMenuSubProps = HTMLArkProps<"ul">;
+export type SidebarMenuSubItemProps = HTMLArkProps<"li">;
 
 const SIDEBAR_STORAGE_KEY = "sidebar_state";
 const SIDEBAR_WIDTH = "16rem";
@@ -234,6 +230,7 @@ export function SidebarProvider(props: SidebarProviderProps): JSX.Element {
     if (s && typeof s === "object" && !Array.isArray(s)) {
       return { ...base, ...(s as Record<string, string>) };
     }
+
     return base;
   };
 
@@ -271,7 +268,7 @@ export function SidebarRoot(props: SidebarProps): JSX.Element {
     "class",
     "children",
   ]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
   const { isMobile, openMobile, setOpenMobile, state } = useSidebarState();
   const collapsible = () => local.collapsible ?? "offcanvas";
   const placement = () => local.placement ?? "left";
@@ -364,7 +361,7 @@ export function SidebarRoot(props: SidebarProps): JSX.Element {
 
 export function SidebarTrigger(props: ButtonProps): JSX.Element {
   const [local, rest] = splitProps(props, ["onClick", "class"]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
   const { toggleSidebar } = useSidebarState();
 
   return (
@@ -388,13 +385,14 @@ export function SidebarTrigger(props: ButtonProps): JSX.Element {
 }
 
 export function SidebarRail(props: SidebarRailProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
   const { toggleSidebar } = useSidebarState();
 
   return (
     <ark.button
-      aria-label={useTranslation("sidebar.toggle")}
+      aria-label={m("sidebar.toggle")}
       {...rest}
       class={styles.slots.rail({ class: local.class })}
       data-part="rail"
@@ -402,7 +400,7 @@ export function SidebarRail(props: SidebarRailProps): JSX.Element {
       data-sidebar="rail"
       onClick={toggleSidebar}
       tabIndex={-1}
-      title={useTranslation("sidebar.toggle")}
+      title={m("sidebar.toggle")}
       type="button"
     />
   );
@@ -410,7 +408,7 @@ export function SidebarRail(props: SidebarRailProps): JSX.Element {
 
 export function SidebarInset(props: SidebarInsetProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
 
   return (
     <ark.main
@@ -424,7 +422,8 @@ export function SidebarInset(props: SidebarInsetProps): JSX.Element {
 
 export function SidebarInput(props: InputProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "classNames"]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
+
   return (
     <Input
       {...rest}
@@ -437,7 +436,7 @@ export function SidebarInput(props: InputProps): JSX.Element {
 
 export function SidebarHeader(props: SidebarHeaderProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -452,7 +451,7 @@ export function SidebarHeader(props: SidebarHeaderProps): JSX.Element {
 
 export function SidebarFooter(props: SidebarFooterProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -467,7 +466,7 @@ export function SidebarFooter(props: SidebarFooterProps): JSX.Element {
 
 export function SidebarSeparator(props: SeparatorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
 
   return (
     <Separator
@@ -482,7 +481,8 @@ export function SidebarSeparator(props: SeparatorProps): JSX.Element {
 
 export function SidebarContent(props: SidebarContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["scrollFade", "class"]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
+
   return (
     <ScrollArea
       class={styles.slots.scrollArea()}
@@ -501,7 +501,7 @@ export function SidebarContent(props: SidebarContentProps): JSX.Element {
 
 export function SidebarGroup(props: SidebarGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -516,7 +516,7 @@ export function SidebarGroup(props: SidebarGroupProps): JSX.Element {
 
 export function SidebarGroupLabel(props: SidebarGroupLabelProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -533,7 +533,7 @@ export function SidebarGroupAction(
   props: SidebarGroupActionProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["buttonRecipe", "class"]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
   const recipe = () => local.buttonRecipe ?? buttonRecipe;
 
   return (
@@ -560,7 +560,7 @@ export function SidebarGroupContent(
   props: SidebarGroupContentProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -575,7 +575,7 @@ export function SidebarGroupContent(
 
 export function SidebarMenu(props: SidebarMenuProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
 
   return (
     <ark.ul
@@ -590,7 +590,7 @@ export function SidebarMenu(props: SidebarMenuProps): JSX.Element {
 
 export function SidebarMenuItem(props: SidebarMenuItemProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
 
   return (
     <ark.li
@@ -612,7 +612,7 @@ export function SidebarMenuButton(props: SidebarMenuButtonProps): JSX.Element {
     "class",
     "children",
   ]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
   const { isMobile, state } = useSidebarState();
   const size = () => local.size ?? "md";
   const variant = () => local.variant ?? "ghost";
@@ -641,6 +641,7 @@ export function SidebarMenuButton(props: SidebarMenuButtonProps): JSX.Element {
           typeof tip() === "string"
             ? ({ content: tip() as string } as Omit<TooltipProps, "children">)
             : (tip() as Omit<TooltipProps, "children">);
+
         return (
           <Tooltip
             {...tooltipProps}
@@ -664,7 +665,7 @@ export function SidebarMenuAction(props: SidebarMenuActionProps): JSX.Element {
     "buttonRecipe",
     "class",
   ]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
   const recipe = () => local.buttonRecipe ?? buttonRecipe;
   const showOnHover = () => local.showOnHover ?? false;
 
@@ -692,7 +693,7 @@ export function SidebarMenuAction(props: SidebarMenuActionProps): JSX.Element {
 
 export function SidebarMenuBadge(props: SidebarMenuBadgeProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -709,7 +710,7 @@ export function SidebarMenuSkeleton(
   props: SidebarMenuSkeletonProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["showIcon", "class"]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -736,7 +737,7 @@ export function SidebarMenuSkeleton(
 
 export function SidebarMenuSub(props: SidebarMenuSubProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
 
   return (
     <ark.ul
@@ -753,7 +754,7 @@ export function SidebarMenuSubItem(
   props: SidebarMenuSubItemProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
 
   return (
     <ark.li
@@ -775,7 +776,7 @@ export function SidebarMenuSubButton(
     "buttonRecipe",
     "class",
   ]);
-  const styles = useSidebarStyles();
+  const styles = useStyles();
   const size = () => local.size ?? "md";
   const recipe = () => local.buttonRecipe ?? buttonRecipe;
 

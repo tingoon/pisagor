@@ -1,4 +1,5 @@
 import { Button, ColorPicker } from "@pisagor/react";
+
 export function PopoverWithSwatchPicker() {
   const swatches = [
     "#ef4444",
@@ -11,6 +12,7 @@ export function PopoverWithSwatchPicker() {
     "#ec4899",
     "#f43f5e",
   ];
+
   return (
     <ColorPicker defaultValue="#eb5e41" format="hsla">
       <ColorPicker.Control>

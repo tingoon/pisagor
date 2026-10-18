@@ -1,8 +1,5 @@
 import { Textarea, type TextareaProps } from "@pisagor/react";
-import {
-  type FieldPresentationProps,
-  FieldShell,
-} from "../internal/field-shell";
+import { type FieldPresentationProps, FieldShell } from "../internal";
 
 // #region Types
 type TextareaControlProps = Omit<

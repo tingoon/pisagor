@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type EditableRootProps as ArkEditableRootProps,
     Editable as EditablePrimitive,
-  } from "@ark-ui/svelte/editable";
+    type EditableRootProps as ArkEditableRootProps,
+  } from "@ark-ui/svelte";
   import type { EditableProps as BaseEditableProps } from "@pisagor/props";
   import { editableRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

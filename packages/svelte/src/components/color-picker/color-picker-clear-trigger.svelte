@@ -1,14 +1,11 @@
 <script lang="ts">
-  import {
-    parseColor,
-    useColorPickerContext,
-  } from "@ark-ui/svelte/color-picker";
-  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { parseColor, useColorPickerContext } from "@ark-ui/svelte";
+  import { XIcon } from "phosphor-svelte";
   import type { ClassValue } from "svelte/elements";
   import { InputGroup } from "../input-group";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type Props = {
     class?: ClassValue;
@@ -24,6 +21,7 @@
       readOnly?: boolean;
     };
     if (controlProps.disabled || controlProps.readOnly) return false;
+
     return api().value.getChannelValue("alpha") !== 0;
   });
 
@@ -35,7 +33,7 @@
 {#if visible}
   <InputGroup.Addon align="inline-end">
     <InputGroup.Button
-      aria-label={t("colorPicker.clearColor")}
+      aria-label={m("colorPicker.clearColor")}
       class={className}
       data-part="clear-trigger"
       data-scope="color-picker"

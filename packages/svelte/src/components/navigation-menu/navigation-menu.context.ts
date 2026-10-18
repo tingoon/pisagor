@@ -1,15 +1,11 @@
 import { navigationMenuRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 
-export const {
-  Context,
-  useStyles: useNavigationMenu,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "NavigationMenu",
-  recipe: navigationMenuRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "NavigationMenu",
+    recipe: navigationMenuRecipe,
+  });
 
 import { getContext, setContext } from "svelte";
 
@@ -54,5 +50,6 @@ export function useNavigationMenuItemState(
       `NavigationMenu.${part} must be used in NavigationMenu.Item`,
     );
   }
+
   return item;
 }

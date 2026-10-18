@@ -1,6 +1,7 @@
 import { PackageIcon } from "@phosphor-icons/react";
 import type { NodeProviderProps } from "@pisagor/react";
 import { createTreeCollection, TreeView } from "@pisagor/react";
+
 export function CustomIconsFolder() {
   const collection = createTreeCollection({
     rootNode: {
@@ -62,6 +63,7 @@ export function CustomIconsFolder() {
       </TreeView.NodeProvider>
     );
   };
+
   return (
     <div>
       <TreeView collection={collection}>

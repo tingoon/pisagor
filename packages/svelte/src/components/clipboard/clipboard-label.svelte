@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type ClipboardLabelProps,
     Clipboard as ClipboardPrimitive,
-  } from "@ark-ui/svelte/clipboard";
+    type ClipboardLabelProps,
+  } from "@ark-ui/svelte";
   import { withContext } from "./clipboard.context";
 
   let { children, ...rest }: ClipboardLabelProps = $props();

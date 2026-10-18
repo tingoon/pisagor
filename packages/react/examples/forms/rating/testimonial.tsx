@@ -1,4 +1,5 @@
 import { Avatar, Card, Rating } from "@pisagor/react";
+
 export function Testimonial() {
   return (
     <Card>

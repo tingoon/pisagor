@@ -1,4 +1,5 @@
 import { Field, Progress } from "@pisagor/solid";
+
 export function Indeterminate() {
   return (
     <Field>

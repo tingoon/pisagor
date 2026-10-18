@@ -1,6 +1,7 @@
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour } from "@pisagor/solid";
-import { KeyboardIcon } from "@pisagor/solid/icons";
+import { KeyboardIcon } from "@squidlab/phosphor-solid/icons";
+
 export function KeyboardNavigation() {
   const steps: TourStepType[] = [
     {
@@ -34,6 +35,7 @@ export function KeyboardNavigation() {
       type: "tooltip",
     },
   ];
+
   return (
     <div class="flex flex-col gap-2">
       <Tour keyboardNavigation steps={steps}>

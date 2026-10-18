@@ -1,4 +1,5 @@
 import { Card, Timer } from "@pisagor/solid";
+
 export function Countdown() {
   return (
     <Card class="rounded-3xl [--space:--spacing(6)]">

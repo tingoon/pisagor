@@ -1,5 +1,6 @@
 import { PlayIcon, SkipBackIcon, SkipForwardIcon } from "@phosphor-icons/react";
 import { Button, ButtonGroup } from "@pisagor/react";
+
 export function OrientationHorizontal() {
   return (
     <ButtonGroup>

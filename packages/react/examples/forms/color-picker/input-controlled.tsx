@@ -1,5 +1,6 @@
 import { ColorPicker, Input, parseColor } from "@pisagor/react";
 import { useState } from "react";
+
 export function InputControlled() {
   const [value, setValue] = useState("#eb5e41");
 

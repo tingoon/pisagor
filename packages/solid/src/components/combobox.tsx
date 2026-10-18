@@ -1,25 +1,23 @@
 import {
-  type CollectionItem,
+  Combobox as ComboboxPrimitive,
   createListCollection,
-} from "@ark-ui/solid/collection";
+  useComboboxContext,
+} from "@ark-ui/solid";
 import type {
+  CollectionItem,
   ComboboxClearTriggerProps,
+  ComboboxContentProps as ComboboxContentPrimitiveProps,
   ComboboxControlProps,
   ComboboxEmptyProps,
+  ComboboxInputProps as ComboboxInputPrimitiveProps,
   ComboboxItemGroupLabelProps,
+  ComboboxItemGroupProps as ComboboxItemGroupPrimitiveProps,
+  ComboboxItemProps as ComboboxItemPrimitiveProps,
   ComboboxListProps,
   ComboboxPositionerProps,
-  ComboboxContentProps as ComboboxPrimitiveContentProps,
-  ComboboxInputProps as ComboboxPrimitiveInputProps,
-  ComboboxItemGroupProps as ComboboxPrimitiveItemGroupProps,
-  ComboboxItemProps as ComboboxPrimitiveItemProps,
-  ComboboxRootProps as ComboboxPrimitiveRootProps,
+  ComboboxRootProps as ComboboxRootPrimitiveProps,
   ComboboxTriggerProps,
-} from "@ark-ui/solid/combobox";
-import {
-  Combobox as ComboboxPrimitive,
-  useComboboxContext,
-} from "@ark-ui/solid/combobox";
+} from "@ark-ui/solid";
 import type { ComboboxProps as BaseComboboxRootProps } from "@pisagor/props";
 import {
   type ComboboxVariantProps,
@@ -37,11 +35,15 @@ import {
   useContext,
 } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CaretUpDownIcon, CheckIcon, XIcon } from "../internal/icons";
+import {
+  CaretUpDownIcon,
+  CheckIcon,
+  XIcon,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const { Context: ComboboxStylesContext } = createSlotRecipeContext({
@@ -52,6 +54,7 @@ const { Context: ComboboxStylesContext } = createSlotRecipeContext({
 /** Parts may render under a bare Ark root, so fall back to the default recipe. */
 function useComboboxSlots() {
   const styles = useContext(ComboboxStylesContext);
+
   return () => styles?.slots ?? comboboxRecipe();
 }
 
@@ -67,6 +70,7 @@ const ComboboxInsideControlContext = createContext(false);
 export function useComboboxRoot() {
   const styles = useContext(ComboboxStylesContext);
   if (!styles) return undefined;
+
   return {
     get slots() {
       return styles.slots;
@@ -83,7 +87,7 @@ interface ComboboxPresetItem {
 }
 
 export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  ComboboxPrimitiveRootProps<T>,
+  ComboboxRootPrimitiveProps<T>,
   "onValueChange"
 > & {
   /** Visual shell variant applied to the input. Defaults to `primary`. */
@@ -102,22 +106,22 @@ export interface ComboboxProps extends Omit<
 }
 
 export interface ComboboxInputProps
-  extends Omit<ComboboxPrimitiveInputProps, "size">, InputRootVariantProps {
+  extends Omit<ComboboxInputPrimitiveProps, "size">, InputRootVariantProps {
   clearable?: boolean;
   disabled?: boolean;
   showTrigger?: boolean;
 }
 
-export interface ComboboxItemGroupProps extends ComboboxPrimitiveItemGroupProps {
+export interface ComboboxItemGroupProps extends ComboboxItemGroupPrimitiveProps {
   heading?: string | JSX.Element;
 }
 
 export interface ComboboxItemProps
-  extends ComboboxPrimitiveItemProps, ComboboxVariantProps {}
+  extends ComboboxItemPrimitiveProps, ComboboxVariantProps {}
 
-export type ComboboxFieldInputProps = ComboboxPrimitiveInputProps;
+export type ComboboxFieldInputProps = ComboboxInputPrimitiveProps;
 
-export interface ComboboxContentProps extends ComboboxPrimitiveContentProps {
+export interface ComboboxContentProps extends ComboboxContentPrimitiveProps {
   portalled?: boolean;
 }
 
@@ -174,6 +178,7 @@ export const ComboboxContext = ComboboxPrimitive.Context;
 export function ComboboxControl(props: ComboboxControlProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useComboboxSlots();
+
   return (
     <ComboboxInsideControlContext.Provider value={true}>
       <ComboboxPrimitive.Control
@@ -185,6 +190,7 @@ export function ComboboxControl(props: ComboboxControlProps): JSX.Element {
 }
 
 export function ComboboxInput(props: ComboboxInputProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "size",
     "variant",
@@ -229,7 +235,7 @@ export function ComboboxInput(props: ComboboxInputProps): JSX.Element {
             asChild={(triggerProps) => (
               <InputGroup.Button
                 {...triggerProps()}
-                aria-label={useTranslation("combobox.clear")}
+                aria-label={m("combobox.clear")}
                 size="icon-xs"
                 variant="ghost"
               >
@@ -250,6 +256,7 @@ export function ComboboxInput(props: ComboboxInputProps): JSX.Element {
 }
 
 export function ComboboxTrigger(props: ComboboxTriggerProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "class", "asChild"]);
   const slots = useComboboxSlots();
 
@@ -269,7 +276,7 @@ export function ComboboxTrigger(props: ComboboxTriggerProps): JSX.Element {
       asChild={(triggerProps) => (
         <Button
           {...triggerProps({ class: cn(slots().trigger(), local.class) })}
-          aria-label={useTranslation("combobox.toggle")}
+          aria-label={m("combobox.toggle")}
           class={slots().triggerButton()}
           variant="ghost"
         >
@@ -283,11 +290,13 @@ export function ComboboxTrigger(props: ComboboxTriggerProps): JSX.Element {
 export function ComboboxClearTrigger(
   props: ComboboxClearTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["aria-label"]);
+
   return (
     <ComboboxPrimitive.ClearTrigger
       {...rest}
-      aria-label={local["aria-label"] ?? useTranslation("select.clear")}
+      aria-label={m("select.clear", local["aria-label"])}
     />
   );
 }
@@ -329,6 +338,7 @@ export function ComboboxContent(props: ComboboxContentProps): JSX.Element {
 
 export function ComboboxItemGroup(props: ComboboxItemGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "heading"]);
+
   return (
     <ComboboxPrimitive.ItemGroup {...rest}>
       <Show when={!!local.heading}>
@@ -344,6 +354,7 @@ export function ComboboxItemGroupLabel(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useComboboxSlots();
+
   return (
     <ComboboxPrimitive.ItemGroupLabel
       {...rest}
@@ -383,14 +394,16 @@ export function ComboboxItem(props: ComboboxItemProps): JSX.Element {
 }
 
 export function ComboboxEmpty(props: ComboboxEmptyProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "class"]);
   const slots = useComboboxSlots();
+
   return (
     <ComboboxPrimitive.Empty
       {...rest}
       class={slots().empty({ class: local.class })}
     >
-      {local.children || useTranslation("combobox.empty")}
+      {local.children || m("combobox.empty")}
     </ComboboxPrimitive.Empty>
   );
 }
@@ -398,6 +411,7 @@ export function ComboboxEmpty(props: ComboboxEmptyProps): JSX.Element {
 export function ComboboxList(props: ComboboxListProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useComboboxSlots();
+
   return (
     <ComboboxPrimitive.List
       {...rest}
@@ -439,7 +453,7 @@ export type {
   ComboboxListProps,
   ComboboxPositionerProps,
   ComboboxTriggerProps,
-} from "@ark-ui/solid/combobox";
+} from "@ark-ui/solid";
 
 export const Combobox = Object.assign(ComboboxShorthand, {
   ClearTrigger: ComboboxClearTrigger,

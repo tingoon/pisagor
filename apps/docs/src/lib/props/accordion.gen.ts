@@ -4,7 +4,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/accordion` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (`packages/props/src/accordion.ts`, native HTML attributes omitted). */
 export const accordionProps: PropRow[] = [
   {
     name: "items",
@@ -38,5 +38,10 @@ export const accordionProps: PropRow[] = [
     type: "boolean | undefined",
     defaultValue: "false",
     description: "Disable the accordion.",
+  },
+  {
+    name: "size",
+    type: "\"md\" | \"lg\" | \"sm\" | undefined",
+    description: "",
   },
 ];

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { alertRecipe } from "@pisagor/recipes";
   import { Alert } from "@pisagor/svelte";
-  import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
+  import { CheckCircleIcon } from "phosphor-svelte";
   import { tv } from "tailwind-variants";
 
   const brandAlertRecipe = tv({

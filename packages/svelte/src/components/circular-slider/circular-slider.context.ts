@@ -1,17 +1,13 @@
 import type { CircularSliderRecipe } from "@pisagor/recipes";
 import { circularSliderRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils/create-context";
 
-export const {
-  Context,
-  useStyles: useCircularSliderStyles,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "CircularSlider",
-  recipe: circularSliderRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "CircularSlider",
+    recipe: circularSliderRecipe,
+  });
 
 export interface CircularSliderMetricsValue {
   ringCircumference: number;
@@ -33,8 +29,9 @@ export const setCircularSliderMetricsContext = metricsCtx.setContext;
 export const useCircularSliderMetrics = metricsCtx.getContext;
 
 export function useCircularSlider() {
-  const styles = useCircularSliderStyles();
+  const styles = useStyles();
   const metrics = useCircularSliderMetrics();
+
   return {
     get ringCircumference() {
       return metrics.ringCircumference;

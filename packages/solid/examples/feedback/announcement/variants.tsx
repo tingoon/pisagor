@@ -3,7 +3,8 @@ import {
   ArrowUpRightIcon,
   CheckCircleIcon,
   WarningIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
+
 export function Variants() {
   return (
     <div class="flex flex-col gap-2">

@@ -1,23 +1,21 @@
 <script lang="ts">
   import {
-    type CheckboxControlProps,
     Checkbox as CheckboxPrimitive,
-  } from "@ark-ui/svelte/checkbox";
+    type CheckboxControlProps,
+  } from "@ark-ui/svelte";
+  import type { CheckboxProps as BaseCheckboxProps } from "@pisagor/props";
   import { checkboxRecipe, formControlToggleRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CheckIcon from "phosphor-svelte/lib/CheckIcon";
-  import MinusIcon from "phosphor-svelte/lib/MinusIcon";
-  import type { SizeScaleProps } from "../../internal/types";
+  import { CheckIcon, MinusIcon } from "phosphor-svelte";
+
   import { useFormControlSurface } from "../surface/use-form-control-surface";
   import CheckboxIndicator from "./checkbox-indicator.svelte";
 
   type FormControlVariant = "primary" | "secondary";
 
   type Props = CheckboxControlProps &
-    SizeScaleProps & {
+    BaseCheckboxProps & {
       recipe?: typeof checkboxRecipe;
-      /** Visual shell variant. Defaults to `primary`. */
-      variant?: FormControlVariant;
     };
 
   let {

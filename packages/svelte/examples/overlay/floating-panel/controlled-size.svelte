@@ -1,7 +1,6 @@
 <script lang="ts">
   import { Button, FloatingPanel } from "@pisagor/svelte";
-  import GearSixIcon from "phosphor-svelte/lib/GearSixIcon";
-  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { GearSixIcon, XIcon } from "phosphor-svelte";
 
   let size = $state({ height: 200, width: 360 });
 

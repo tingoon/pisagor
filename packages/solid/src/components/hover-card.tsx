@@ -1,32 +1,31 @@
+import { HoverCard as HoverCardPrimitive } from "@ark-ui/solid";
 import type {
   HoverCardArrowProps,
-  HoverCardContentProps as HoverCardPrimitiveContentProps,
-  HoverCardRootProps as HoverCardPrimitiveRootProps,
+  HoverCardContentProps as HoverCardContentPrimitiveProps,
+  HoverCardRootProps as HoverCardRootPrimitiveProps,
   HoverCardTriggerProps,
-} from "@ark-ui/solid/hover-card";
-import { HoverCard as HoverCardPrimitive } from "@ark-ui/solid/hover-card";
+} from "@ark-ui/solid";
 import type { HoverCardProps as BaseHoverCardRootProps } from "@pisagor/props";
 import { hoverCardRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { Context: HoverCardStylesContext, useStyles: useHoverCard } =
-  createSlotRecipeContext({
-    name: "HoverCard",
-    recipe: hoverCardRecipe,
-  });
+const { Context: HoverCardStylesContext, useStyles } = createSlotRecipeContext({
+  name: "HoverCard",
+  recipe: hoverCardRecipe,
+});
 // #endregion
 
 // #region Types
 export interface LocalHoverCardRootProps
-  extends HoverCardPrimitiveRootProps, BaseHoverCardRootProps {}
+  extends HoverCardRootPrimitiveProps, BaseHoverCardRootProps {}
 
 export type HoverCardProps = LocalHoverCardRootProps;
 
-export interface HoverCardContentProps extends HoverCardPrimitiveContentProps {
+export interface HoverCardContentProps extends HoverCardContentPrimitiveProps {
   /**
    * Whether to render the arrow pointing at the trigger.
    *
@@ -71,7 +70,7 @@ export function HoverCardTrigger(props: HoverCardTriggerProps): JSX.Element {
 
 export function HoverCardArrow(props: HoverCardArrowProps): JSX.Element {
   const [local, rest] = splitProps(props, ["style"]);
-  const styles = useHoverCard();
+  const styles = useStyles();
 
   return (
     <HoverCardPrimitive.Arrow
@@ -91,7 +90,7 @@ export function HoverCardArrow(props: HoverCardArrowProps): JSX.Element {
 
 export function HoverCardContent(props: HoverCardContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class", "showArrow"]);
-  const styles = useHoverCard();
+  const styles = useStyles();
 
   return (
     <Portal>
@@ -115,7 +114,7 @@ export type {
   HoverCardArrowProps,
   HoverCardRootProps,
   HoverCardTriggerProps,
-} from "@ark-ui/solid/hover-card";
+} from "@ark-ui/solid";
 
 export const HoverCard = Object.assign(HoverCardRoot, {
   Arrow: HoverCardArrow,

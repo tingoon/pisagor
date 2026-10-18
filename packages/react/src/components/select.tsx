@@ -1,23 +1,22 @@
-import { Portal } from "@ark-ui/react";
 import {
-  type CollectionItem,
+  Portal,
+  Select as SelectPrimitive,
+  ark,
   createListCollection,
-} from "@ark-ui/react/collection";
-import { ark } from "@ark-ui/react/factory";
+  useSelectContext,
+  type HTMLArkProps,
+} from "@ark-ui/react";
 import type {
+  CollectionItem,
   SelectClearTriggerProps,
   SelectContentProps,
   SelectItemGroupLabelProps,
+  SelectItemGroupProps as SelectItemGroupPrimitiveProps,
   SelectItemProps,
-  SelectItemGroupProps as SelectPrimitiveItemGroupProps,
-  SelectRootProps as SelectPrimitiveRootProps,
-  SelectTriggerProps as SelectPrimitiveTriggerProps,
+  SelectRootProps as SelectRootPrimitiveProps,
+  SelectTriggerProps as SelectTriggerPrimitiveProps,
   SelectValueTextProps,
-} from "@ark-ui/react/select";
-import {
-  Select as SelectPrimitive,
-  useSelectContext,
-} from "@ark-ui/react/select";
+} from "@ark-ui/react";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
 import type { SelectProps as BaseSelectRootProps } from "@pisagor/props";
 import {
@@ -26,11 +25,10 @@ import {
   selectRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { ComponentProps, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { createContext, use } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { FormControlVariant } from "../internal/types";
-import { useMessage } from "./provider/context";
+import { type FormControlVariant, createSlotRecipeContext } from "../internal";
+import { useLocale } from "./provider/context";
 import { Separator, type SeparatorProps } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -42,6 +40,7 @@ const { Context: SelectStylesContext } = createSlotRecipeContext({
 
 function useSelectSlots() {
   const styles = use(SelectStylesContext);
+
   return styles?.slots ?? selectRecipe();
 }
 
@@ -58,7 +57,7 @@ interface SelectPresetItem {
 }
 
 export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  SelectPrimitiveRootProps<T>,
+  SelectRootPrimitiveProps<T>,
   "onValueChange"
 > & {
   /** Visual shell variant applied to the trigger. Defaults to `primary`. */
@@ -84,7 +83,7 @@ export interface SelectProps extends Omit<
 
 export interface SelectTriggerProps
   extends
-    Omit<SelectPrimitiveTriggerProps, "size">,
+    Omit<SelectTriggerPrimitiveProps, "size">,
     FormControlShellVariantProps {
   /**
    * Whether to show a clear button when a value is selected.
@@ -94,12 +93,12 @@ export interface SelectTriggerProps
   clearable?: boolean;
 }
 
-export interface SelectItemGroupProps extends SelectPrimitiveItemGroupProps {
+export interface SelectItemGroupProps extends SelectItemGroupPrimitiveProps {
   /** The heading of the group */
   heading?: string | ReactNode;
 }
 
-export type SelectEmptyProps = ComponentProps<typeof ark.div>;
+export type SelectEmptyProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Parts
@@ -275,11 +274,12 @@ export function SelectClearTrigger({
   className,
   ...rest
 }: SelectClearTriggerProps) {
+  const { m } = useLocale();
   const slots = useSelectSlots();
 
   return (
     <SelectPrimitive.ClearTrigger
-      aria-label={useMessage("select.clear")}
+      aria-label={m("select.clear")}
       {...rest}
       className={slots.clearTrigger({ className })}
     />
@@ -354,7 +354,7 @@ export type {
   SelectItemGroupLabelProps,
   SelectItemProps,
   SelectValueTextProps,
-} from "@ark-ui/react/select";
+} from "@ark-ui/react";
 
 export const Select = Object.assign(SelectShorthand, {
   ClearTrigger: SelectClearTrigger,

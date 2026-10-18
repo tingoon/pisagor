@@ -1,13 +1,10 @@
-import {
-  type Component,
-  type ComponentProps,
-  createContext,
-  createMemo,
-  type JSX,
-  type ParentProps,
-  splitProps,
-  useContext,
-  type ValidComponent,
+import { createContext, createMemo, splitProps, useContext } from "solid-js";
+import type {
+  Component,
+  ComponentProps,
+  JSX,
+  ParentProps,
+  ValidComponent,
 } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import type { ClassValue, VariantProps } from "tailwind-variants";

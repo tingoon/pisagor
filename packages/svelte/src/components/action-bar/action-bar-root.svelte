@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { useHotkey } from "@ark-ui/svelte/hotkeys";
+  import { useHotkey } from "@ark-ui/svelte";
   import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
   import { actionBarRecipe, buttonRecipe } from "@pisagor/recipes";
-  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { XIcon } from "phosphor-svelte";
   import type { Snippet } from "svelte";
   import { setActionBarContext } from "./action-bar.context";
   import ActionBarBody from "./action-bar-body.svelte";

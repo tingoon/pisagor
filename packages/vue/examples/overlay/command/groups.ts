@@ -1,5 +1,4 @@
-import { useListCollection } from "@ark-ui/vue/collection";
-import { useFilter } from "@ark-ui/vue/locale";
+import { useFilter, useListCollection } from "@ark-ui/vue";
 import { Command } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 

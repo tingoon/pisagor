@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type FileUploadRootProps as ArkRootProps,
     FileUpload as FileUploadPrimitive,
-  } from "@ark-ui/svelte/file-upload";
+    type FileUploadRootProps as ArkRootProps,
+  } from "@ark-ui/svelte";
   import type { FileUploadProps as BaseFileUploadProps } from "@pisagor/props";
   import { fileUploadRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

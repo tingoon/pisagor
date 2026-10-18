@@ -1,4 +1,5 @@
 import { Button, Collapsible } from "@pisagor/solid";
+
 export function PartialCollapse() {
   return (
     <Collapsible class="w-96" collapsedHeight="50px">

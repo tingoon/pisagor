@@ -1,11 +1,11 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   SortableItemProps as BaseSortableItemProps,
   SortableProps as BaseSortableRootProps,
 } from "@pisagor/props";
 import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes";
 import { formatMessage } from "@pisagor/utils";
-import type { Accessor, ComponentProps, JSX } from "solid-js";
+import type { Accessor, JSX } from "solid-js";
 import {
   createMemo,
   createSignal,
@@ -13,15 +13,14 @@ import {
   onMount,
   splitProps,
 } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { DotsSixVerticalIcon } from "../internal/icons";
+import { DotsSixVerticalIcon, createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 type SortableOrientation = "vertical" | "horizontal";
 
 // #region Context
-const { Context: SortableItemStylesContext, useStyles: useSortableItemStyles } =
+const { Context: SortableItemStylesContext, useStyles } =
   createSlotRecipeContext({ name: "Sortable", recipe: sortableItemRecipe });
 
 /** Drag/reorder state shared by items and handles (not styles). */
@@ -64,9 +63,7 @@ const { SortableItemStateContext, useSortableItemState } =
 // #endregion
 
 export interface SortableRootProps
-  extends
-    Omit<ComponentProps<typeof ark.div>, "onDragStart">,
-    BaseSortableRootProps {
+  extends Omit<HTMLArkProps<"div">, "onDragStart">, BaseSortableRootProps {
   orientation?: SortableOrientation;
   disabled?: boolean;
   items: string[];
@@ -74,12 +71,12 @@ export interface SortableRootProps
 }
 
 export interface SortableItemProps
-  extends ComponentProps<typeof ark.div>, BaseSortableItemProps {
+  extends HTMLArkProps<"div">, BaseSortableItemProps {
   value: string;
 }
 
-export type SortableHandleProps = ComponentProps<typeof ark.div>;
-export type SortableItemContentProps = ComponentProps<typeof ark.div>;
+export type SortableHandleProps = HTMLArkProps<"div">;
+export type SortableItemContentProps = HTMLArkProps<"div">;
 
 function reorder(list: string[], from: number, to: number) {
   if (from === to || from < 0 || to < 0) return list;
@@ -87,10 +84,12 @@ function reorder(list: string[], from: number, to: number) {
   const [moved] = next.splice(from, 1);
   if (moved === undefined) return list;
   next.splice(to, 0, moved);
+
   return next;
 }
 
 export function SortableRoot(props: SortableRootProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "orientation",
     "disabled",
@@ -120,6 +119,7 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
       if (current.has(id)) return current;
       const next = new Set(current);
       next.add(id);
+
       return next;
     });
   };
@@ -129,6 +129,7 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
       if (!current.has(id)) return current;
       const next = new Set(current);
       next.delete(id);
+
       return next;
     });
   };
@@ -155,7 +156,6 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
     local.onValueChange?.(reorder(current, from, to));
   };
 
-  const movedTemplate = useTranslation("sortable.moved");
   const [moved, setMoved] = createSignal("");
   const keyShortcuts = () =>
     orientation() === "vertical"
@@ -171,7 +171,7 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
       return;
     local.onValueChange?.(reorder(current, index, targetIndex));
     setMoved(
-      formatMessage(movedTemplate, {
+      formatMessage(m("sortable.moved"), {
         position: targetIndex + 1,
         total: current.length,
       }),
@@ -180,6 +180,7 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
 
   const getItemProps = (id: string) => {
     const itemHasHandle = handleIds().has(id);
+
     return {
       "aria-disabled": disabled() || undefined,
       "aria-keyshortcuts": itemHasHandle ? undefined : keyShortcuts(),
@@ -207,6 +208,7 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
       onDragStart: (event: DragEvent) => {
         if (disabled() || handleIds().has(id)) {
           event.preventDefault();
+
           return;
         }
         startDrag(id, event);
@@ -327,8 +329,9 @@ export function SortableItem(props: SortableItemProps): JSX.Element {
 }
 
 export function SortableHandle(props: SortableHandleProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "class", "aria-label"]);
-  const styles = useSortableItemStyles();
+  const styles = useStyles();
   const item = useSortableItemState();
   const sortable = useSortable();
   const disabled = () => sortable.disabled;
@@ -348,7 +351,7 @@ export function SortableHandle(props: SortableHandleProps): JSX.Element {
           ? "Alt+ArrowUp Alt+ArrowDown"
           : "Alt+ArrowLeft Alt+ArrowRight"
       }
-      aria-label={local["aria-label"] ?? useTranslation("sortable.dragHandle")}
+      aria-label={m("sortable.dragHandle", local["aria-label"])}
       class={styles.slots.handle({ class: local.class, disabled: disabled() })}
       data-part="handle"
       data-scope="sortable"
@@ -357,6 +360,7 @@ export function SortableHandle(props: SortableHandleProps): JSX.Element {
       onDragStart={(event) => {
         if (disabled()) {
           event.preventDefault();
+
           return;
         }
         event.stopPropagation();
@@ -388,7 +392,7 @@ export function SortableItemContent(
   props: SortableItemContentProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useSortableItemStyles();
+  const styles = useStyles();
 
   return (
     <ark.div

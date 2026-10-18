@@ -1,5 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
-import { Popover as PopoverPrimitive } from "@ark-ui/vue/popover";
+import { Popover as PopoverPrimitive, ark } from "@ark-ui/vue";
 import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
 import { popoverRecipe } from "@pisagor/recipes";
 import {
@@ -10,14 +9,17 @@ import {
   type PropType,
   Teleport,
 } from "vue";
-import { renderIconCloseButton } from "../internal/close-button";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import {
+  type ClassValue,
+  createSlotRecipeContext,
+  renderIconCloseButton,
+} from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Slot recipe context
 const {
   provideStyles: providePopoverStyles,
-  useStyles: usePopover,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Popover",
@@ -120,6 +122,7 @@ export const PopoverContent = defineComponent({
     showCloseButton: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots: children }) {
+    const { m } = useLocale();
     const recipeSlots = computed(() => props.recipe());
 
     providePopoverStyles({
@@ -144,7 +147,7 @@ export const PopoverContent = defineComponent({
               children.default?.(),
               props.showCloseButton
                 ? h(PopoverCloseTrigger, { asChild: true }, () =>
-                    renderIconCloseButton(slots.close()),
+                    renderIconCloseButton(m("dialog.close"), slots.close()),
                   )
                 : null,
             ],
@@ -167,7 +170,7 @@ export const PopoverHeader = defineComponent({
     title: String,
   },
   setup(props, { attrs, slots }) {
-    const styles = usePopover();
+    const styles = useStyles();
 
     return () => {
       const recipe = styles.slots;
@@ -210,7 +213,7 @@ export const PopoverBody = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = usePopover();
+    const styles = useStyles();
 
     return () => {
       const recipe = styles.slots;
@@ -249,7 +252,7 @@ export const PopoverArrow = defineComponent({
     style: { default: undefined, type: Object as PropType<CSSProperties> },
   },
   setup(props, { attrs, slots }) {
-    const styles = usePopover();
+    const styles = useStyles();
 
     return () => {
       const recipe = styles.slots;

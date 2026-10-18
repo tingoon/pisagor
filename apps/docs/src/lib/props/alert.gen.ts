@@ -4,7 +4,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/alert` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (`packages/props/src/alert.ts`, native HTML attributes omitted). */
 export const alertProps: PropRow[] = [
   {
     name: "variant",

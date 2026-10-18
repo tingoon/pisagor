@@ -1,5 +1,6 @@
 import type { TourStepType } from "@pisagor/react";
 import { Button, Tour } from "@pisagor/react";
+
 export function CustomSpacing() {
   const steps: TourStepType[] = [
     {
@@ -19,6 +20,7 @@ export function CustomSpacing() {
       type: "dialog",
     },
   ];
+
   return (
     <Tour steps={steps}>
       <Tour.Trigger asChild>

@@ -22,15 +22,13 @@
   ],
   "exports": {
     ".": "./src/components/index.ts",
-    "./data-grid": "./src/data-grid/index.ts",
-    "./data-table": "./src/data-table/index.ts",
+    "./data-grid": "./src/components/data-grid/index.ts",
+    "./data-table": "./src/components/data-table/index.ts",
     "./hooks": "./src/hooks/index.ts",
-    "./icons": "./src/icons/index.ts",
-    "./phone-input": "./src/phone-input/index.ts",
-    "./rich-text-editor": "./src/rich-text-editor/index.ts",
+    "./phone-input": "./src/components/phone-input/index.ts",
+    "./rich-text-editor": "./src/components/rich-text-editor/index.ts",
     "./styles": "./src/styles.css",
-    "./utils": "./src/utils/index.ts",
-    "./utils/*": "./src/utils/*.ts"
+    "./utils": "./src/utils/index.ts"
   },
   "scripts": {
     "typecheck": "bun check"

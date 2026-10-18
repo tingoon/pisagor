@@ -1,5 +1,6 @@
 import { createListCollection } from "@ark-ui/react";
 import { Listbox } from "@pisagor/react";
+
 export function Compound() {
   const collection = createListCollection({
     items: [
@@ -8,6 +9,7 @@ export function Compound() {
       { label: "Ireland", value: "ie" },
     ],
   });
+
   return (
     <Listbox.Root collection={collection} defaultValue={["br"]}>
       <Listbox.Content>

@@ -41,6 +41,7 @@ export type MountExample = (
 function readExportNames(el: HTMLElement): string[] {
   try {
     const parsed: unknown = JSON.parse(el.dataset.exportNames ?? "[]");
+
     return Array.isArray(parsed)
       ? parsed.filter((n): n is string => typeof n === "string")
       : [];
@@ -75,6 +76,7 @@ function resolveTarget(explicit: ExamplesHostProps): ExamplesHostTarget | null {
       : el.dataset.kind === "form"
         ? "form"
         : "component";
+
   return { exportNames, id, kind };
 }
 
@@ -88,6 +90,7 @@ async function loadExampleComponent(
   const loader = findExampleFileLoader(modules, target.id, stem);
   if (!loader) return null;
   const mod = (await loader()) as Record<string, unknown>;
+
   return resolveExampleExport(mod, exportName);
 }
 
@@ -101,45 +104,57 @@ export function armExamplesHost(
   props: ExamplesHostProps,
   mount: MountExample,
 ): () => void {
-  const target = resolveTarget(props);
-  if (!target) return () => {};
+  const resolved = resolveTarget(props);
+  if (!resolved) return () => {};
+  const target: ExamplesHostTarget = resolved;
 
   let cancelled = false;
   const disposers: Array<() => void> = [];
   const stops: Array<() => void> = [];
   const label = target.kind === "block" ? "block " : "";
 
-  for (const exportName of target.exportNames) {
+  function armSlot(exportName: string, eager: boolean) {
     const slot = document.querySelector(slotSelector(exportName));
-    if (!slot) continue;
-    stops.push(
-      whenVisible(slot, () => {
-        void loadExampleComponent(globs, target, exportName)
-          .then((component) => {
-            if (cancelled) return;
-            const dispose = mount(
-              slot,
-              component,
-              `Missing example “${exportName}” for ${label}“${target.id}”.`,
-            );
-            if (dispose) disposers.push(dispose);
-          })
-          .catch((error) => {
-            console.error(
-              `[examples-host] failed to load “${exportName}” for ${label}“${target.id}”`,
-              error,
-            );
-            if (cancelled) return;
-            const dispose = mount(
-              slot,
-              null,
-              `Failed to load example “${exportName}” for ${label}“${target.id}”: ${String(error)}`,
-            );
-            if (dispose) disposers.push(dispose);
-          });
-      }),
-    );
+    if (!slot) return;
+
+    const load = () => {
+      void loadExampleComponent(globs, target, exportName)
+        .then((component) => {
+          if (cancelled) return;
+          const dispose = mount(
+            slot,
+            component,
+            `Missing example “${exportName}” for ${label}“${target.id}”.`,
+          );
+          if (dispose) disposers.push(dispose);
+        })
+        .catch((error) => {
+          console.error(
+            `[examples-host] failed to load “${exportName}” for ${label}“${target.id}”`,
+            error,
+          );
+          if (cancelled) return;
+          const dispose = mount(
+            slot,
+            null,
+            `Failed to load example “${exportName}” for ${label}“${target.id}”: ${String(error)}`,
+          );
+          if (dispose) disposers.push(dispose);
+        });
+    };
+
+    // First develop.mdx `<Example />` mounts immediately — no IO wait for LCP preview.
+    if (eager) {
+      load();
+      return;
+    }
+
+    stops.push(whenVisible(slot, load));
   }
+
+  target.exportNames.forEach((exportName, index) => {
+    armSlot(exportName, index === 0);
+  });
 
   return () => {
     cancelled = true;
@@ -154,5 +169,6 @@ export function renderMissingExample(slot: Element, message: string) {
   p.className = "text-muted-foreground text-sm";
   p.textContent = message;
   slot.replaceChildren(p);
+
   return () => slot.replaceChildren();
 }

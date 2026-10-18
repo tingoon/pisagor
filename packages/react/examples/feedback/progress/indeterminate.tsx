@@ -1,4 +1,5 @@
 import { Field, Progress } from "@pisagor/react";
+
 export function Indeterminate() {
   return (
     <Field>

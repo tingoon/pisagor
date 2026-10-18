@@ -2,7 +2,7 @@
   import {
     Popover as PopoverPrimitive,
     type PopoverTitleProps,
-  } from "@ark-ui/svelte/popover";
+  } from "@ark-ui/svelte";
   import { withContext } from "./popover.context";
 
   let { children, ...rest }: PopoverTitleProps = $props();

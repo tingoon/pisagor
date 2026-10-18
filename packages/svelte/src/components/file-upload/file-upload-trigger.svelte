@@ -2,7 +2,7 @@
   import {
     FileUpload as FileUploadPrimitive,
     type FileUploadTriggerProps,
-  } from "@ark-ui/svelte/file-upload";
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: FileUploadTriggerProps = $props();
 </script>

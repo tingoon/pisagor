@@ -1,4 +1,4 @@
-import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/vue/password-input";
+import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/vue";
 import { PhEye, PhEyeSlash, PhX } from "@phosphor-icons/vue";
 import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
 import { passwordInputRecipe } from "@pisagor/recipes";
@@ -7,21 +7,17 @@ import {
   type ClearableChangeEvent,
   useClearableInput,
 } from "../hooks/use-clearable-input";
-import type { ClassValue } from "../internal/types";
+import type { ClassValue } from "../internal";
 import { InputGroup } from "./input-group";
-import type {
-  InputGroupButtonProps,
-  InputGroupProps,
-} from "./input-group/input-group-core";
-import { useTranslation } from "./provider/context";
+import type { InputGroupButtonProps } from "./input-group/input-group-core";
+import { useLocale } from "./provider/context";
 
 type ArkPart = Parameters<typeof h>[0];
 
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
-export interface PasswordInputProps
-  extends Pick<InputGroupProps, "size" | "variant">, BasePasswordInputProps {
+export interface PasswordInputProps extends BasePasswordInputProps {
   class?: unknown;
   clearButtonProps?: InputGroupButtonProps;
   clearable?: boolean;
@@ -103,7 +99,7 @@ const PasswordInputVisibilityTrigger = defineComponent({
   inheritAttrs: false,
   name: "PasswordInput.VisibilityTrigger",
   setup(_, { attrs, slots }) {
-    const label = useTranslation("passwordInput.togglePasswordVisibility");
+    const { m } = useLocale();
 
     return () =>
       h(InputGroup.Addon as ArkPart, { align: "inline-end" }, () =>
@@ -114,7 +110,7 @@ const PasswordInputVisibilityTrigger = defineComponent({
             h(
               InputGroup.Button as ArkPart,
               {
-                "aria-label": label,
+                "aria-label": m("passwordInput.togglePasswordVisibility"),
                 size: "icon-xs",
                 type: "button",
                 variant: "ghost",
@@ -188,6 +184,7 @@ const PasswordInputShorthand = defineComponent({
     visible: { default: undefined, type: Boolean },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const { canClear, handleChange, handleClear, inputRef } = useClearableInput(
       {
         clearable: () => props.clearable,
@@ -250,7 +247,7 @@ const PasswordInputShorthand = defineComponent({
                         h(
                           InputGroup.Button as ArkPart,
                           {
-                            "aria-label": useTranslation("passwordInput.clear"),
+                            "aria-label": m("passwordInput.clear"),
                             ...restClearButtonProps,
                             "data-part": "clear-trigger",
                             "data-scope": "password-input",
@@ -277,7 +274,7 @@ const PasswordInputShorthand = defineComponent({
                       h(
                         InputGroup.Button as ArkPart,
                         {
-                          "aria-label": useTranslation(
+                          "aria-label": m(
                             "passwordInput.togglePasswordVisibility",
                           ),
                           size: "icon-xs",

@@ -1,9 +1,9 @@
-import {
-  NumberInput as NumberInputPrimitive,
-  type NumberInputControlProps as NumberInputPrimitiveControlProps,
-  type NumberInputRootProps as NumberInputPrimitiveRootProps,
-  type NumberInputScrubberProps,
-} from "@ark-ui/solid/number-input";
+import { NumberInput as NumberInputPrimitive } from "@ark-ui/solid";
+import type {
+  NumberInputControlProps as NumberInputControlPrimitiveProps,
+  NumberInputRootProps as NumberInputRootPrimitiveProps,
+  NumberInputScrubberProps,
+} from "@ark-ui/solid";
 import type { NumberInputProps as BaseNumberInputProps } from "@pisagor/props";
 import {
   formControlGroupShellRecipe,
@@ -12,15 +12,14 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { MinusIcon, PlusIcon } from "../internal/icons";
+import { MinusIcon, PlusIcon, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { Input, type InputProps } from "./input";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: NumberInputStylesContext, useStyles: useNumberInput } =
+const { Context: NumberInputStylesContext, useStyles } =
   createSlotRecipeContext({
     name: "NumberInput",
     recipe: numberInputRecipe,
@@ -30,19 +29,18 @@ const { Context: NumberInputStylesContext, useStyles: useNumberInput } =
 type FormControlVariant = "primary" | "secondary";
 
 export type NumberInputRootProps = Omit<
-  NumberInputPrimitiveRootProps,
+  NumberInputRootPrimitiveProps,
   "onValueChange"
 > &
-  Pick<InputProps, "size" | "variant">;
+  BaseNumberInputProps;
 
-export interface NumberInputProps
-  extends NumberInputRootProps, BaseNumberInputProps {
+export interface NumberInputProps extends NumberInputRootProps {
   clearable?: boolean;
   placeholder?: string;
   onValueChange?: (value: number) => void;
 }
 
-export interface NumberInputControlProps extends NumberInputPrimitiveControlProps {
+export interface NumberInputControlProps extends NumberInputControlPrimitiveProps {
   variant?: FormControlVariant;
   clearable?: boolean;
 }
@@ -117,7 +115,7 @@ export function NumberInputControl(
   props: NumberInputControlProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "clearable", "class"]);
-  const styles = useNumberInput();
+  const styles = useStyles();
   const surfaceVariant = useFormControlSurface();
   const variant = () => local.variant ?? ("primary" as FormControlVariant);
   const size = () =>
@@ -143,13 +141,14 @@ export function NumberInputControl(
 }
 
 export function NumberInputClearTrigger(): JSX.Element {
-  const styles = useNumberInput();
+  const styles = useStyles();
 
   return (
     <NumberInputPrimitive.Context>
       {(api) => {
         const hasValue = () => {
           const value = api().value;
+
           return (
             value !== undefined && value !== null && String(value).length > 0
           );
@@ -171,8 +170,9 @@ export function NumberInputClearTrigger(): JSX.Element {
 export function NumberInputDecrementTrigger(
   props: NumberInputDecrementTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useNumberInput();
+  const styles = useStyles();
 
   return (
     <NumberInputPrimitive.DecrementTrigger
@@ -182,7 +182,7 @@ export function NumberInputDecrementTrigger(
           {...triggerProps({
             class: styles.slots.decrementTrigger({ class: local.class }),
           })}
-          aria-label={useTranslation("numberInput.decrement")}
+          aria-label={m("numberInput.decrement")}
           variant="ghost"
         >
           <MinusIcon />
@@ -195,8 +195,9 @@ export function NumberInputDecrementTrigger(
 export function NumberInputIncrementTrigger(
   props: NumberInputIncrementTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useNumberInput();
+  const styles = useStyles();
 
   return (
     <NumberInputPrimitive.IncrementTrigger
@@ -206,7 +207,7 @@ export function NumberInputIncrementTrigger(
           {...triggerProps({
             class: styles.slots.incrementTrigger({ class: local.class }),
           })}
-          aria-label={useTranslation("numberInput.increment")}
+          aria-label={m("numberInput.increment")}
           variant="ghost"
         >
           <PlusIcon />
@@ -223,7 +224,7 @@ export function NumberInputInput(props: InputProps): JSX.Element {
     "class",
     "classNames",
   ]);
-  const styles = useNumberInput();
+  const styles = useStyles();
 
   return (
     <NumberInputPrimitive.Input
@@ -244,7 +245,7 @@ export function NumberInputScrubber(
   props: NumberInputScrubberProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useNumberInput();
+  const styles = useStyles();
 
   return (
     <NumberInputPrimitive.Scrubber
@@ -256,7 +257,7 @@ export function NumberInputScrubber(
   );
 }
 
-export type { NumberInputScrubberProps } from "@ark-ui/solid/number-input";
+export type { NumberInputScrubberProps } from "@ark-ui/solid";
 
 export const NumberInput = Object.assign(NumberInputRoot, {
   ClearTrigger: NumberInputClearTrigger,

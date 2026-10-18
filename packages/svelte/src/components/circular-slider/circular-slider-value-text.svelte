@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { AngleSliderValueTextProps } from "@ark-ui/svelte/angle-slider";
   import {
     AngleSlider as AngleSliderPrimitive,
+    type AngleSliderValueTextProps,
     useAngleSliderContext,
-  } from "@ark-ui/svelte/angle-slider";
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useCircularSlider } from "./circular-slider.context";
 

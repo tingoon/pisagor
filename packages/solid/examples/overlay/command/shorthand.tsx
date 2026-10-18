@@ -1,5 +1,9 @@
 import { Command } from "@pisagor/solid";
-import { CalendarIcon, GearIcon, UserIcon } from "@pisagor/solid/icons";
+import {
+  CalendarIcon,
+  GearIcon,
+  UserIcon,
+} from "@squidlab/phosphor-solid/icons";
 
 const items = [
   {

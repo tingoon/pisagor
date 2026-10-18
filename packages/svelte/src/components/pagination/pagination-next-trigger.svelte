@@ -1,11 +1,11 @@
 <script lang="ts">
   import {
-    type PaginationNextTriggerProps,
     Pagination as PaginationPrimitive,
-  } from "@ark-ui/svelte/pagination";
+    type PaginationNextTriggerProps,
+  } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
+  import { CaretRightIcon } from "phosphor-svelte";
 
   let {
     children,

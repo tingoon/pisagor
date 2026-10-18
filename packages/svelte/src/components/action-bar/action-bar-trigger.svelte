@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { HTMLButtonAttributes } from "svelte/elements";
   import { useActionBar } from "./action-bar.context";
 

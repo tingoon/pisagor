@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
-  import { useHotkey } from "@ark-ui/svelte/hotkeys";
+  import { Ark, useHotkey } from "@ark-ui/svelte";
   import type { SidebarProps as BaseSidebarProps } from "@pisagor/props";
   import { sidebarRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
@@ -66,6 +65,7 @@
     };
     update();
     query.addEventListener("change", update);
+
     return () => query.removeEventListener("change", update);
   });
 

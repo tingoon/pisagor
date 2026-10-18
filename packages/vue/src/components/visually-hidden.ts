@@ -1,9 +1,9 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type { VisuallyHiddenProps as BaseVisuallyHiddenProps } from "@pisagor/props";
 import { visuallyHiddenRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { ClassValue } from "../internal/types";
+import type { ClassValue } from "../internal";
 
 // #region Types
 export interface VisuallyHiddenProps extends BaseVisuallyHiddenProps {

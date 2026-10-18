@@ -1,7 +1,7 @@
 <script lang="ts">
   import { datePickerRecipe } from "@pisagor/recipes";
   import { Button, Calendar, DatePicker } from "@pisagor/svelte";
-  import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
+  import { CalendarIcon } from "phosphor-svelte";
   import { tv } from "tailwind-variants";
 
   const brandDatePickerRecipe = tv({

@@ -1,5 +1,6 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import { Item, Kbd, Listbox } from "@pisagor/solid";
+
 export function SelectionExtended() {
   const collection = createListCollection({
     items: [
@@ -8,6 +9,7 @@ export function SelectionExtended() {
       { label: "Ireland", value: "ie" },
     ],
   });
+
   return (
     <div class="flex flex-col gap-2">
       <p class="text-muted-foreground text-center text-sm">

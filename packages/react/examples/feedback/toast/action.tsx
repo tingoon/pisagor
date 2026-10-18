@@ -1,4 +1,5 @@
 import { Button, toast } from "@pisagor/react";
+
 export function Action() {
   const handleAction = () => {
     const id = toast.create({

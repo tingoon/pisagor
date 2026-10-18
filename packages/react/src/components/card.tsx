@@ -1,15 +1,11 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { CardProps as BaseCardRootProps } from "@pisagor/props";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useCard,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Card",
   recipe: cardRecipe,
 });
@@ -19,14 +15,14 @@ const {
 export const CardRoot = withProvider(ark.div, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<ComponentProps<typeof ark.div> & BaseCardRootProps>;
+}) as FunctionComponent<HTMLArkProps<"div"> & BaseCardRootProps>;
 
 export function CardMedia({
   variant = "default",
   className,
   ...rest
-}: ComponentProps<typeof ark.div> & CardVariantProps) {
-  const { slots } = useCard();
+}: HTMLArkProps<"div"> & CardVariantProps) {
+  const { slots } = useStyles();
 
   return (
     <ark.div
@@ -45,7 +41,7 @@ export function CardHeader({
   title,
   className,
   ...rest
-}: ComponentProps<typeof ark.div> & {
+}: HTMLArkProps<"div"> & {
   /** Supporting text rendered in `Card.Description`. */
   description?: ReactNode;
   /**
@@ -54,7 +50,7 @@ export function CardHeader({
    */
   title?: ReactNode;
 }) {
-  const { slots } = useCard();
+  const { slots } = useStyles();
 
   return (
     <ark.div

@@ -1,4 +1,4 @@
-import { Tooltip as TooltipPrimitive } from "@ark-ui/svelte/tooltip";
+import { Tooltip as TooltipPrimitive } from "@ark-ui/svelte";
 import TooltipShorthand from "./tooltip.svelte";
 import TooltipArrow from "./tooltip-arrow.svelte";
 import TooltipContent from "./tooltip-content.svelte";
@@ -9,7 +9,7 @@ export type {
   TooltipContentProps,
   TooltipPositionerProps,
   TooltipTriggerProps,
-} from "@ark-ui/svelte/tooltip";
+} from "@ark-ui/svelte";
 
 export const Tooltip = Object.assign(TooltipShorthand, {
   Arrow: TooltipArrow,

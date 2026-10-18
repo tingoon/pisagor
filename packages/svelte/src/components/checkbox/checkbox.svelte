@@ -2,24 +2,22 @@
   import {
     Checkbox as CheckboxPrimitive,
     type CheckboxRootProps,
-  } from "@ark-ui/svelte/checkbox";
+  } from "@ark-ui/svelte";
   import type { CheckboxProps as BaseCheckboxProps } from "@pisagor/props";
   import { checkboxRecipe, formControlToggleRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CheckIcon from "phosphor-svelte/lib/CheckIcon";
-  import MinusIcon from "phosphor-svelte/lib/MinusIcon";
-  import type { SizeScaleProps } from "../../internal/types";
+  import { CheckIcon, MinusIcon } from "phosphor-svelte";
+
   import { useFormControlSurface } from "../surface/use-form-control-surface";
 
   type FormControlVariant = "primary" | "secondary";
 
-  type Props = CheckboxRootProps & {
-    /** Visual shell variant. Defaults to `primary`. */ variant?: FormControlVariant;
-    onValueChange?: (value: boolean) => void;
-    /** Forwarded to the hidden input (Svelte DOM attr). */
-    tabindex?: number | null;
-  } & BaseCheckboxProps &
-    SizeScaleProps;
+  type Props = CheckboxRootProps &
+    BaseCheckboxProps & {
+      onValueChange?: (value: boolean) => void;
+      /** Forwarded to the hidden input (Svelte DOM attr). */
+      tabindex?: number | null;
+    };
 
   let {
     variant: variantProp,

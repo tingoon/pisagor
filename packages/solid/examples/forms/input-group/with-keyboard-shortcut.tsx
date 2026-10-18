@@ -1,4 +1,5 @@
 import { InputGroup, Kbd } from "@pisagor/solid";
+
 export function WithKeyboardShortcut() {
   return (
     <InputGroup>

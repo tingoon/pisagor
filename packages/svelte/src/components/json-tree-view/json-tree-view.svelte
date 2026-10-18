@@ -2,11 +2,11 @@
   import type {
     JsonTreeViewRootProps,
     JsonTreeViewTreeProps,
-  } from "@ark-ui/svelte/json-tree-view";
+  } from "@ark-ui/svelte";
   import type { JsonTreeViewProps as BaseJsonTreeViewProps } from "@pisagor/props";
   import type { JsonTreeViewRecipeSlot } from "@pisagor/recipes";
-  import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
-  import type { VariantClassNames } from "../../internal/types";
+  import { CaretRightIcon } from "phosphor-svelte";
+  import type { VariantClassNames } from "../../internal";
   import JsonTreeViewRoot from "./json-tree-view-root.svelte";
   import JsonTreeViewTree from "./json-tree-view-tree.svelte";
 

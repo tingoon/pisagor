@@ -17,7 +17,7 @@ import TourSpotlight from "./tour-spotlight.svelte";
 import TourTitle from "./tour-title.svelte";
 import TourTrigger from "./tour-trigger.svelte";
 
-export type { TourStepDetails } from "@ark-ui/svelte/tour";
+export type { TourStepDetails } from "@ark-ui/svelte";
 export { useTourContext };
 
 export const Tour = Object.assign(TourRoot, {

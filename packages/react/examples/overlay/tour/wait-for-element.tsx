@@ -1,8 +1,9 @@
-import { waitForElement, waitForEvent } from "@ark-ui/react/tour";
+import { waitForElement, waitForEvent } from "@ark-ui/react";
 import { PlusIcon } from "@phosphor-icons/react";
 import type { TourStepType } from "@pisagor/react";
 import { Button, Tour } from "@pisagor/react";
 import { useState } from "react";
+
 export function WaitForElement() {
   const steps: TourStepType[] = [
     {
@@ -19,6 +20,7 @@ export function WaitForElement() {
         show();
         const [promise, cancel] = waitForEvent(target, "click");
         promise.then(() => next());
+
         return cancel;
       },
       id: "add-item",
@@ -36,6 +38,7 @@ export function WaitForElement() {
           { timeout: 5000 },
         );
         promise.then(() => show());
+
         return () => cancel();
       },
       id: "new-item",

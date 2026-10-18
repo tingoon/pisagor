@@ -1,26 +1,26 @@
-import { ark } from "@ark-ui/solid/factory";
+import { Timer as TimerPrimitive, ark, useTimerContext } from "@ark-ui/solid";
 import type {
+  HTMLArkProps,
   TimerActionTriggerProps,
   TimerAreaProps,
   TimerControlProps,
   TimerItemProps,
-  TimerRootProps as TimerPrimitiveRootProps,
+  TimerRootProps as TimerRootPrimitiveProps,
   TimerSeparatorProps,
-} from "@ark-ui/solid/timer";
-import { Timer as TimerPrimitive, useTimerContext } from "@ark-ui/solid/timer";
+} from "@ark-ui/solid";
 import type {
   TimerItemGroupProps as BaseTimerItemGroupProps,
   TimerProps as BaseTimerRootProps,
 } from "@pisagor/props";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { For, Show, splitProps, useContext } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { useTranslation } from "./provider/context";
+import { createSlotRecipeContext } from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
-  useStyles: useTimer,
+  useStyles,
   withContext: withTimerContext,
   withProvider: withTimerProvider,
 } = createSlotRecipeContext({ name: "Timer", recipe: timerRecipe });
@@ -39,25 +39,22 @@ const {
 type TimerUnit = "hours" | "minutes" | "seconds";
 
 export interface TimerItemGroupProps
-  extends ComponentProps<typeof ark.div>, BaseTimerItemGroupProps {
+  extends HTMLArkProps<"div">, BaseTimerItemGroupProps {
   orientation?: "horizontal" | "vertical";
 }
 
-export interface TimerActionProps extends Omit<
-  TimerActionTriggerProps,
-  "action"
-> {}
+export type TimerActionProps = Omit<TimerActionTriggerProps, "action">;
 
 export interface TimerRootProps
-  extends TimerPrimitiveRootProps, BaseTimerRootProps {
+  extends TimerRootPrimitiveProps, BaseTimerRootProps {
   units?: TimerUnit[];
   isControlsVisible?: boolean;
 }
 
-export type TimerItemLabelProps = ComponentProps<typeof ark.div>;
+export type TimerItemLabelProps = HTMLArkProps<"div">;
 
 const TimerRootProvider: Component<
-  TimerPrimitiveRootProps & BaseTimerRootProps
+  TimerRootPrimitiveProps & BaseTimerRootProps
 > = withTimerProvider(TimerPrimitive.Root, { name: "Root", slot: "base" });
 
 export function TimerRoot(props: TimerRootProps): JSX.Element {
@@ -103,7 +100,7 @@ export const TimerArea: Component<TimerAreaProps> = withTimerContext(
 );
 
 const TimerItemGroupBase: Component<
-  ComponentProps<typeof ark.div> & BaseTimerItemGroupProps
+  HTMLArkProps<"div"> & BaseTimerItemGroupProps
 > = withTimerItemGroupProvider(ark.div, {
   name: "ItemGroup",
   slot: "base",
@@ -111,6 +108,7 @@ const TimerItemGroupBase: Component<
 
 export function TimerItemGroup(props: TimerItemGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["orientation"]);
+
   return (
     <TimerItemGroupBase
       {...rest}
@@ -128,6 +126,7 @@ export function TimerItem(props: TimerItemProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useContext(TimerItemGroupStylesContext);
   const slots = () => styles?.slots ?? timerItemGroupRecipe();
+
   return (
     <TimerPrimitive.Item
       data-part="item"
@@ -147,7 +146,8 @@ export const TimerItemLabel: Component<TimerItemLabelProps> =
 
 export function TimerSeparator(props: TimerSeparatorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useTimer();
+  const styles = useStyles();
+
   return (
     <TimerPrimitive.Separator
       {...rest}
@@ -170,9 +170,11 @@ export function TimerActionTrigger(
 }
 
 export function TimerPause(props: TimerActionProps): JSX.Element {
+  const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useTranslation("timer.pause")}
+      aria-label={m("timer.pause")}
       {...props}
       action="pause"
     />
@@ -180,9 +182,11 @@ export function TimerPause(props: TimerActionProps): JSX.Element {
 }
 
 export function TimerResume(props: TimerActionProps): JSX.Element {
+  const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useTranslation("timer.resume")}
+      aria-label={m("timer.resume")}
       {...props}
       action="resume"
     />
@@ -190,9 +194,11 @@ export function TimerResume(props: TimerActionProps): JSX.Element {
 }
 
 export function TimerStart(props: TimerActionProps): JSX.Element {
+  const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useTranslation("timer.start")}
+      aria-label={m("timer.start")}
       {...props}
       action="start"
     />
@@ -200,9 +206,11 @@ export function TimerStart(props: TimerActionProps): JSX.Element {
 }
 
 export function TimerReset(props: TimerActionProps): JSX.Element {
+  const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useTranslation("timer.reset")}
+      aria-label={m("timer.reset")}
       {...props}
       action="reset"
     />
@@ -210,9 +218,11 @@ export function TimerReset(props: TimerActionProps): JSX.Element {
 }
 
 export function TimerRestart(props: TimerActionProps): JSX.Element {
+  const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
-      aria-label={useTranslation("timer.restart")}
+      aria-label={m("timer.restart")}
       {...props}
       action="restart"
     />
@@ -221,6 +231,7 @@ export function TimerRestart(props: TimerActionProps): JSX.Element {
 
 export function TimerPlay(props: TimerActionProps): JSX.Element {
   const timer = useTimerContext();
+
   return (
     <Show fallback={<TimerStart {...props} />} when={timer().paused}>
       <TimerResume {...props} />
@@ -234,7 +245,7 @@ export type {
   TimerControlProps,
   TimerItemProps,
   TimerSeparatorProps,
-} from "@ark-ui/solid/timer";
+} from "@ark-ui/solid";
 
 export const Timer = Object.assign(TimerRoot, {
   ActionTrigger: TimerActionTrigger,

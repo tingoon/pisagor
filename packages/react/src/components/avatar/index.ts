@@ -4,10 +4,7 @@ import {
   AvatarGroupShorthand,
 } from "./avatar-group";
 
-export type {
-  AvatarFallbackProps,
-  AvatarImageProps,
-} from "@ark-ui/react/avatar";
+export type { AvatarFallbackProps, AvatarImageProps } from "@ark-ui/react";
 
 export { Avatar, type AvatarProps } from "./avatar";
 export type {

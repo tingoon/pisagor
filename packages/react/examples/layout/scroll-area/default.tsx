@@ -1,7 +1,9 @@
 import { ScrollArea, Separator } from "@pisagor/react";
 import { Fragment } from "react";
+
 export function Default() {
   const tags = Array.from({ length: 50 }, (_, i) => `v1.0.0-beta.${i}`);
+
   return (
     <ScrollArea className="h-64 w-48 rounded-md border">
       <div className="p-4">

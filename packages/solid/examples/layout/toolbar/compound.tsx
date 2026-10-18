@@ -1,4 +1,5 @@
 import { Button, Toolbar } from "@pisagor/solid";
+
 export function Compound() {
   return (
     <Toolbar.Root>

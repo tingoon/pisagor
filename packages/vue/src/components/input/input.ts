@@ -1,4 +1,4 @@
-import { Field as FieldPrimitive } from "@ark-ui/vue/field";
+import { Field as FieldPrimitive } from "@ark-ui/vue";
 import type { InputProps as BaseInputProps } from "@pisagor/props";
 import {
   type InputRecipeSlot,
@@ -11,7 +11,7 @@ import {
   type ClearableChangeEvent,
   useClearableInput,
 } from "../../hooks/use-clearable-input";
-import type { ClassValue, VariantClassNames } from "../../internal/types";
+import type { ClassValue, VariantClassNames } from "../../internal";
 import { InputGroupRoot } from "../input-group/input-group-core";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { InputClearAddon } from "./input-clear-button";

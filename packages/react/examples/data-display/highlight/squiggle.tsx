@@ -1,4 +1,4 @@
-import { useHighlight } from "@ark-ui/react/highlight";
+import { useHighlight } from "@ark-ui/react";
 import { Fragment } from "react";
 
 export function Squiggle() {

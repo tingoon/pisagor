@@ -1,5 +1,6 @@
-import { Portal } from "@ark-ui/react/portal";
+import { Portal } from "@ark-ui/react";
 import { Button, Dialog, Field, Input } from "@pisagor/react";
+
 export function Nested() {
   return (
     <Dialog.Root>

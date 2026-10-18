@@ -2,7 +2,7 @@
   import {
     Steps as StepsPrimitive,
     type StepsSeparatorProps,
-  } from "@ark-ui/svelte/steps";
+  } from "@ark-ui/svelte";
   import { withStepsItemContext } from "./steps.context";
 
   let { ...rest }: StepsSeparatorProps = $props();

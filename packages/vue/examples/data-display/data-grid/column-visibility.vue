@@ -2,13 +2,12 @@
 import { PhCaretDown, PhCaretUp, PhEye } from "@phosphor-icons/vue";
 import type { BadgeVariant } from "@pisagor/vue";
 import { Badge, Button, Checkbox, DropdownMenu, Table } from "@pisagor/vue";
-import {
-  type CellContext,
-  type ColumnDef,
-  DataGrid,
-  type HeaderContext,
-  useDataGrid,
-  type VisibilityState,
+import { DataGrid, useDataGrid } from "@pisagor/vue/data-grid";
+import type {
+  CellContext,
+  ColumnDef,
+  HeaderContext,
+  VisibilityState,
 } from "@pisagor/vue/data-grid";
 import { computed, defineComponent, h, type PropType, ref } from "vue";
 

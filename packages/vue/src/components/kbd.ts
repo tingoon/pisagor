@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type {
   KbdGroupProps as BaseKbdGroupProps,
   KbdProps as BaseKbdProps,
@@ -6,7 +6,7 @@ import type {
 import { kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { ClassValue } from "../internal/types";
+import type { ClassValue } from "../internal";
 
 // #region Types
 export interface KbdProps extends BaseKbdProps {

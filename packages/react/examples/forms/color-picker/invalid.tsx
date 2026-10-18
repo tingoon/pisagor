@@ -1,4 +1,5 @@
 import { ColorPicker, InputGroup } from "@pisagor/react";
+
 export function Invalid() {
   return (
     <ColorPicker defaultValue="#eb5e41" invalid>

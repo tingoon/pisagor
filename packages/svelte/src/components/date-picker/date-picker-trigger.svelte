@@ -1,13 +1,10 @@
 <script lang="ts">
   import {
-    type DatePickerTriggerProps as ArkTriggerProps,
     DatePicker as DatePickerPrimitive,
-  } from "@ark-ui/svelte/date-picker";
+    type DatePickerTriggerProps as ArkTriggerProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import {
-    isInsideControl,
-    setInsideControl,
-  } from "../../internal/inside-control";
+  import { isInsideControl, setInsideControl } from "../../internal";
   import {
     DATE_PICKER_INSIDE_CONTROL,
     useDatePicker,

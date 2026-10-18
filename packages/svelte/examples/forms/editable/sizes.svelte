@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, Editable, Input } from "@pisagor/svelte";
-  import { CheckIcon, XIcon } from "@pisagor/svelte/icons";
+  import { CheckIcon, XIcon } from "phosphor-svelte";
 </script>
 
 <div class="flex flex-col gap-2">

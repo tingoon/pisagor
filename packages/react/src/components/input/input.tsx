@@ -1,7 +1,7 @@
 import {
-  type FieldInputProps,
   FieldInput as InputPrimitive,
-} from "@ark-ui/react/field";
+  type FieldInputProps,
+} from "@ark-ui/react";
 import type { InputProps as BaseInputProps } from "@pisagor/props";
 import {
   type InputRecipeSlot,
@@ -11,10 +11,7 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ChangeEventHandler, RefAttributes } from "react";
 import { useClearableInput } from "../../hooks";
-import type {
-  FormControlVariant,
-  VariantClassNames,
-} from "../../internal/types";
+import type { FormControlVariant, VariantClassNames } from "../../internal";
 import { InputGroupRoot } from "../input-group/input-group-core";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { InputClearAddon } from "./input-clear-button";

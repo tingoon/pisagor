@@ -1,3 +1,7 @@
+import {
+  DatePicker as CalendarPrimitive,
+  parseDate as arkParseDate,
+} from "@ark-ui/react";
 import type {
   DatePickerClearTriggerProps,
   DatePickerContextProps,
@@ -11,19 +15,15 @@ import type {
   DatePickerRootProps,
   DatePickerTableBodyProps,
   DatePickerTableCellProps,
-  DatePickerTableHeaderProps,
   DatePickerTableHeadProps,
+  DatePickerTableHeaderProps,
   DatePickerTableProps,
   DatePickerTableRowProps,
   DatePickerTriggerProps,
   DatePickerViewControlProps,
   DatePickerViewProps,
   DatePickerYearSelectProps,
-} from "@ark-ui/react/date-picker";
-import {
-  parseDate as arkParseDate,
-  DatePicker as CalendarPrimitive,
-} from "@ark-ui/react/date-picker";
+} from "@ark-ui/react";
 import {
   CaretDownIcon,
   CaretLeftIcon,
@@ -39,18 +39,16 @@ import {
   formControlShellRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { FormControlVariant } from "../internal/types";
+import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: CalendarSlotsContext, useStyles: useCalendar } =
-  createSlotRecipeContext({
-    name: "Calendar",
-    recipe: calendarRecipe,
-  });
+const { Context: CalendarSlotsContext, useStyles } = createSlotRecipeContext({
+  name: "Calendar",
+  recipe: calendarRecipe,
+});
 
 export { CalendarSlotsContext };
 
@@ -125,7 +123,7 @@ export interface CalendarProps extends CalendarRootProps, BaseCalendarProps {
 
 // #region Parts
 function useCalendarSelectShell(className?: string) {
-  const { slots, variants } = useCalendar();
+  const { slots, variants } = useStyles();
   const resolved = {
     surfaceVariant: useFormControlSurface(),
     variant:
@@ -183,7 +181,7 @@ export function CalendarRoot({
 }
 
 export function CalendarControl({ className, ...rest }: CalendarControlProps) {
-  const { slots } = useCalendar();
+  const { slots } = useStyles();
 
   return (
     <CalendarPrimitive.Control
@@ -194,7 +192,7 @@ export function CalendarControl({ className, ...rest }: CalendarControlProps) {
 }
 
 export function CalendarLabel({ className, ...rest }: CalendarLabelProps) {
-  const { slots } = useCalendar();
+  const { slots } = useStyles();
 
   return (
     <CalendarPrimitive.Label {...rest} className={slots.label({ className })} />
@@ -213,7 +211,7 @@ export function CalendarViewDate({
   className,
   ...rest
 }: CalendarViewDateProps) {
-  const { slots } = useCalendar();
+  const { slots } = useStyles();
 
   return (
     <CalendarPrimitive.RangeText
@@ -228,7 +226,8 @@ export function CalendarTodayTrigger({
   variant = "outline",
   ...rest
 }: ButtonProps) {
-  const calendarTodayMessage = useMessage("calendar.today");
+  const { m } = useLocale();
+
   return (
     <CalendarContext>
       {(calendar) => (
@@ -240,7 +239,7 @@ export function CalendarTodayTrigger({
           size={size}
           variant={variant}
         >
-          {calendarTodayMessage}
+          {m("calendar.today")}
         </Button>
       )}
     </CalendarContext>
@@ -255,7 +254,7 @@ export function CalendarYearSelect({
   className,
   ...rest
 }: CalendarYearSelectProps) {
-  const { slots } = useCalendar();
+  const { slots } = useStyles();
   const { className: selectClassName, controlProps } =
     useCalendarSelectShell(className);
 
@@ -283,7 +282,7 @@ export function CalendarMonthSelect({
   className,
   ...rest
 }: CalendarMonthSelectProps) {
-  const { slots } = useCalendar();
+  const { slots } = useStyles();
   const { className: selectClassName, controlProps } =
     useCalendarSelectShell(className);
 
@@ -308,7 +307,7 @@ export function CalendarMonthSelect({
 }
 
 export function CalendarView({ className, ...rest }: CalendarViewProps) {
-  const { slots } = useCalendar();
+  const { slots } = useStyles();
 
   return (
     <CalendarPrimitive.View {...rest} className={slots.view({ className })} />
@@ -323,7 +322,7 @@ export function CalendarViewControl({
   className,
   ...rest
 }: CalendarViewControlProps) {
-  const { slots } = useCalendar();
+  const { slots } = useStyles();
 
   return (
     <CalendarPrimitive.ViewControl
@@ -334,12 +333,13 @@ export function CalendarViewControl({
 }
 
 export function CalendarPrevTrigger(props: CalendarPrevTriggerProps) {
-  const { slots } = useCalendar();
+  const { m } = useLocale();
+  const { slots } = useStyles();
 
   return (
     <CalendarPrimitive.PrevTrigger {...props} asChild>
       <Button
-        aria-label={useMessage("calendar.previousMonth")}
+        aria-label={m("calendar.previousMonth")}
         className={slots.prevTrigger()}
         size="icon-md"
         variant="ghost"
@@ -351,12 +351,13 @@ export function CalendarPrevTrigger(props: CalendarPrevTriggerProps) {
 }
 
 export function CalendarNextTrigger(props: CalendarNextTriggerProps) {
-  const { slots } = useCalendar();
+  const { m } = useLocale();
+  const { slots } = useStyles();
 
   return (
     <CalendarPrimitive.NextTrigger {...props} asChild>
       <Button
-        aria-label={useMessage("calendar.nextMonth")}
+        aria-label={m("calendar.nextMonth")}
         className={slots.nextTrigger()}
         size="icon-md"
         variant="ghost"
@@ -368,7 +369,7 @@ export function CalendarNextTrigger(props: CalendarNextTriggerProps) {
 }
 
 export function CalendarTable({ className, ...rest }: CalendarTableProps) {
-  const { slots } = useCalendar();
+  const { slots } = useStyles();
 
   return (
     <CalendarPrimitive.Table {...rest} className={slots.table({ className })} />
@@ -464,7 +465,7 @@ export function CalendarTableRow({
   className,
   ...rest
 }: CalendarTableRowProps) {
-  const { slots } = useCalendar();
+  const { slots } = useStyles();
 
   return (
     <CalendarPrimitive.TableRow
@@ -478,7 +479,7 @@ export function CalendarTableHeader({
   className,
   ...rest
 }: CalendarTableHeaderProps) {
-  const { slots } = useCalendar();
+  const { slots } = useStyles();
 
   return (
     <CalendarPrimitive.TableHeader

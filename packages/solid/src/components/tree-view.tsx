@@ -1,25 +1,26 @@
-import { ark } from "@ark-ui/solid/factory";
+import {
+  TreeView as TreeViewPrimitive,
+  ark,
+  createTreeCollection as arkCreateTreeCollection,
+} from "@ark-ui/solid";
 import type {
+  HTMLArkProps,
   TreeCollection as arkTreeCollection,
   TreeViewBranchContentProps,
+  TreeViewBranchControlProps as TreeViewBranchControlPrimitiveProps,
   TreeViewBranchIndentGuideProps,
   TreeViewBranchIndicatorProps,
+  TreeViewBranchProps as TreeViewBranchPrimitiveProps,
   TreeViewBranchTextProps,
+  TreeViewItemProps as TreeViewItemPrimitiveProps,
+  TreeViewItemTextProps as TreeViewItemTextPrimitiveProps,
   TreeViewLabelProps,
   TreeViewNodeCheckboxProps,
   TreeViewNodeProviderProps,
   TreeViewNodeRenameInputProps,
-  TreeViewBranchControlProps as TreeViewPrimitiveBranchControlProps,
-  TreeViewBranchProps as TreeViewPrimitiveBranchProps,
-  TreeViewItemProps as TreeViewPrimitiveItemProps,
-  TreeViewItemTextProps as TreeViewPrimitiveItemTextProps,
   TreeViewRootComponentProps,
   TreeViewTreeProps,
-} from "@ark-ui/solid/tree-view";
-import {
-  createTreeCollection as arkCreateTreeCollection,
-  TreeView as TreeViewPrimitive,
-} from "@ark-ui/solid/tree-view";
+} from "@ark-ui/solid";
 import type {
   TreeViewBranchProps as BaseTreeViewBranchProps,
   TreeViewItemProps as BaseTreeViewItemProps,
@@ -32,9 +33,8 @@ import {
   treeViewRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { createMemo, Show, splitProps, useContext } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import {
   CaretRightIcon,
   CheckIcon,
@@ -42,7 +42,8 @@ import {
   FolderIcon,
   FolderOpenIcon,
   MinusIcon,
-} from "../internal/icons";
+  createSlotRecipeContext,
+} from "../internal";
 import { createContext } from "../utils";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -68,6 +69,7 @@ const { Context: TreeViewItemStylesContext } = createSlotRecipeContext({
 /** Item parts may render outside Item, so fall back to the default recipe. */
 function useTreeViewItemSlots() {
   const styles = useContext(TreeViewItemStylesContext);
+
   return () => styles?.slots ?? treeViewItemRecipe();
 }
 // #endregion
@@ -86,15 +88,15 @@ export interface TreeViewProps
   extends TreeViewRootComponentProps, TreeViewContextProps, BaseTreeViewProps {}
 
 export interface TreeViewBranchProps
-  extends TreeViewPrimitiveBranchProps, BaseTreeViewBranchProps {}
+  extends TreeViewBranchPrimitiveProps, BaseTreeViewBranchProps {}
 
 export interface TreeViewItemProps
-  extends TreeViewPrimitiveItemProps, BaseTreeViewItemProps {}
+  extends TreeViewItemPrimitiveProps, BaseTreeViewItemProps {}
 
 export type NodeProviderProps<T extends TreeNodeType = TreeNodeType> =
   TreeViewNodeProviderProps<T>;
 
-export type TreeViewBranchControlProps = TreeViewPrimitiveBranchControlProps &
+export type TreeViewBranchControlProps = TreeViewBranchControlPrimitiveProps &
   Pick<TreeViewBranchTitleProps, "icon" | "expandedIcon">;
 
 export interface TreeViewBranchTitleProps extends TreeViewBranchTextProps {
@@ -102,7 +104,7 @@ export interface TreeViewBranchTitleProps extends TreeViewBranchTextProps {
   icon?: Component | null;
 }
 
-export type TreeViewItemTitleProps = TreeViewPrimitiveItemTextProps;
+export type TreeViewItemTitleProps = TreeViewItemTextPrimitiveProps;
 
 export interface TreeViewItemTextProps extends TreeViewItemTitleProps {
   icon?: Component;
@@ -110,7 +112,7 @@ export interface TreeViewItemTextProps extends TreeViewItemTitleProps {
 
 export type TreeViewNodeInputProps = TreeViewNodeRenameInputProps;
 
-type TreeViewItemIconProps = ComponentProps<typeof ark.span>;
+type TreeViewItemIconProps = HTMLArkProps<"span">;
 
 export const createTreeCollection = <T extends TreeNodeType>(
   options: Parameters<typeof arkCreateTreeCollection<T>>[0],
@@ -251,6 +253,7 @@ function TreeViewBranchTitle(props: TreeViewBranchTitleProps): JSX.Element {
                   <Show fallback={<FolderIcon />} when={Icon()}>
                     {(Comp) => {
                       const C = Comp();
+
                       return C ? <C /> : null;
                     }}
                   </Show>
@@ -261,6 +264,7 @@ function TreeViewBranchTitle(props: TreeViewBranchTitleProps): JSX.Element {
                   <Show fallback={<FolderOpenIcon />} when={ExpandedIcon()}>
                     {(Comp) => {
                       const C = Comp();
+
                       return C ? <C /> : null;
                     }}
                   </Show>
@@ -356,6 +360,7 @@ export function TreeViewItemText(props: TreeViewItemTextProps): JSX.Element {
   const getFileIcon = (value: string): Component => {
     const extension = getFileExtension(value);
     const resolved = extension ? files.fileIcons?.[extension] : undefined;
+
     return resolved ?? Icon();
   };
 
@@ -363,6 +368,7 @@ export function TreeViewItemText(props: TreeViewItemTextProps): JSX.Element {
     <TreeViewPrimitive.NodeContext>
       {(nodeState) => {
         const ResolvedIcon = getFileIcon(nodeState().value);
+
         return (
           <>
             <TreeViewItemIcon>
@@ -402,6 +408,7 @@ function TreeViewItemIcon(props: TreeViewItemIconProps): JSX.Element {
 function TreeViewItemTitle(props: TreeViewItemTitleProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useTreeViewItemSlots();
+
   return (
     <TreeViewPrimitive.ItemText
       {...rest}
@@ -436,6 +443,7 @@ export function TreeViewNodeCheckbox(
 function TreeViewNodeInput(props: TreeViewNodeInputProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useTreeViewItemSlots();
+
   return (
     <TreeViewPrimitive.NodeRenameInput
       {...rest}
@@ -452,6 +460,7 @@ const getFileExtension = (file: string) => {
   const name = file.includes(".")
     ? file.split(".").at(-1)?.toLowerCase()
     : null;
+
   return name ? `.${name}` : null;
 };
 
@@ -463,7 +472,7 @@ export type {
   TreeViewNodeCheckboxProps,
   TreeViewNodeRenameInputProps,
   TreeViewTreeProps,
-} from "@ark-ui/solid/tree-view";
+} from "@ark-ui/solid";
 
 export const TreeView = Object.assign(TreeViewRoot, {
   Branch: TreeViewBranch,

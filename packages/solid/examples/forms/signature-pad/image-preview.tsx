@@ -1,5 +1,6 @@
 import { Field, SignaturePad } from "@pisagor/solid";
 import { createSignal } from "solid-js";
+
 export function ImagePreview() {
   const [imageUrl, setImageUrl] = createSignal<string | null>(null);
 

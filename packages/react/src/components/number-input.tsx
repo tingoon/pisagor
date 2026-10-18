@@ -1,9 +1,9 @@
-import {
-  NumberInput as NumberInputPrimitive,
-  type NumberInputControlProps as NumberInputPrimitiveControlProps,
-  type NumberInputRootProps as NumberInputPrimitiveRootProps,
-  type NumberInputScrubberProps,
-} from "@ark-ui/react/number-input";
+import { NumberInput as NumberInputPrimitive } from "@ark-ui/react";
+import type {
+  NumberInputControlProps as NumberInputControlPrimitiveProps,
+  NumberInputRootProps as NumberInputRootPrimitiveProps,
+  NumberInputScrubberProps,
+} from "@ark-ui/react";
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
 import type { NumberInputProps as BaseNumberInputProps } from "@pisagor/props";
 import {
@@ -12,16 +12,15 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { FormControlVariant } from "../internal/types";
+import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { Field } from "./field";
 import { Input, type InputProps } from "./input";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: NumberInputStylesContext, useStyles: useNumberInput } =
+const { Context: NumberInputStylesContext, useStyles } =
   createSlotRecipeContext({
     name: "NumberInput",
     recipe: numberInputRecipe,
@@ -31,13 +30,12 @@ const { Context: NumberInputStylesContext, useStyles: useNumberInput } =
 // #region Types
 
 export type NumberInputRootProps = Omit<
-  NumberInputPrimitiveRootProps,
+  NumberInputRootPrimitiveProps,
   "onValueChange"
 > &
-  Pick<InputProps, "size" | "variant">;
+  BaseNumberInputProps;
 
-export interface NumberInputProps
-  extends NumberInputRootProps, BaseNumberInputProps {
+export interface NumberInputProps extends NumberInputRootProps {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -50,7 +48,7 @@ export interface NumberInputProps
   onValueChange?: (value: number) => void;
 }
 
-export interface NumberInputControlProps extends NumberInputPrimitiveControlProps {
+export interface NumberInputControlProps extends NumberInputControlPrimitiveProps {
   variant?: FormControlVariant;
   clearable?: boolean;
 }
@@ -110,7 +108,7 @@ export function NumberInputControl({
   className,
   ...rest
 }: NumberInputControlProps) {
-  const { slots, variants } = useNumberInput();
+  const { slots, variants } = useStyles();
   const size = (variants as { size?: "sm" | "md" | "lg" } | undefined)?.size;
   const resolved = {
     surfaceVariant: useFormControlSurface(),
@@ -137,7 +135,7 @@ export function NumberInputControl({
 }
 
 export function NumberInputClearTrigger() {
-  const { slots } = useNumberInput();
+  const { slots } = useStyles();
 
   return (
     <NumberInputPrimitive.Context>
@@ -166,7 +164,8 @@ export function NumberInputDecrementTrigger({
   className,
   ...rest
 }: NumberInputDecrementTriggerProps) {
-  const { slots } = useNumberInput();
+  const { m } = useLocale();
+  const { slots } = useStyles();
 
   return (
     <NumberInputPrimitive.DecrementTrigger
@@ -174,7 +173,7 @@ export function NumberInputDecrementTrigger({
       asChild
       className={slots.decrementTrigger({ className })}
     >
-      <Button aria-label={useMessage("numberInput.decrement")} variant="ghost">
+      <Button aria-label={m("numberInput.decrement")} variant="ghost">
         <MinusIcon aria-hidden />
       </Button>
     </NumberInputPrimitive.DecrementTrigger>
@@ -185,7 +184,8 @@ export function NumberInputIncrementTrigger({
   className,
   ...rest
 }: NumberInputIncrementTriggerProps) {
-  const { slots } = useNumberInput();
+  const { m } = useLocale();
+  const { slots } = useStyles();
 
   return (
     <NumberInputPrimitive.IncrementTrigger
@@ -193,7 +193,7 @@ export function NumberInputIncrementTrigger({
       asChild
       className={slots.incrementTrigger({ className })}
     >
-      <Button aria-label={useMessage("numberInput.increment")} variant="ghost">
+      <Button aria-label={m("numberInput.increment")} variant="ghost">
         <PlusIcon aria-hidden />
       </Button>
     </NumberInputPrimitive.IncrementTrigger>
@@ -207,7 +207,7 @@ export function NumberInputInput({
   classNames,
   ...rest
 }: InputProps) {
-  const { slots } = useNumberInput();
+  const { slots } = useStyles();
 
   return (
     <NumberInputPrimitive.Input {...rest} asChild>
@@ -226,7 +226,7 @@ export function NumberInputScrubber({
   className,
   ...rest
 }: NumberInputScrubberProps) {
-  const { slots } = useNumberInput();
+  const { slots } = useStyles();
 
   return (
     <NumberInputPrimitive.Scrubber
@@ -253,7 +253,7 @@ NumberInputScrubber.displayName = "NumberInput.Scrubber";
 
 // #endregion
 
-export type { NumberInputScrubberProps } from "@ark-ui/react/number-input";
+export type { NumberInputScrubberProps } from "@ark-ui/react";
 
 export const NumberInput = Object.assign(NumberInputRoot, {
   ClearTrigger: NumberInputClearTrigger,

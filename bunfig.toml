@@ -27,6 +27,12 @@ ignorePatterns = [
 
 [lint.rules]
 "import/no-cycle" = "error"
+"no-restricted-imports" = [
+  "error",
+  { patterns = [
+    { group = ["@*/*/**", "phosphor-svelte/lib/**", "!@pisagor/*/styles", "!@pisagor/*/utils", "!@pisagor/*/hooks", "!@pisagor/*/data-grid", "!@pisagor/*/data-table", "!@pisagor/*/phone-input", "!@pisagor/*/rich-text-editor", "!@pisagor/*/tanstack", "!@pisagor/presets/pisagor", "!@modelcontextprotocol/sdk/**", "!@squidlab/phosphor-solid/icons", "!@storybook/*/node", "!@tanstack/highlight/**"], message = "Import from the package barrel. Subpaths are only for CSS, separate entries, or names missing from the root (see .rulesync component rules)." },
+  ] },
+]
 
 [[lint.overrides]]
 files = ["**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}"]

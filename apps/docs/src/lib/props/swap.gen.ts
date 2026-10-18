@@ -4,7 +4,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/swap` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (`packages/props/src/swap.ts`, native HTML attributes omitted). */
 export const swapProps: PropRow[] = [
   {
     name: "variant",

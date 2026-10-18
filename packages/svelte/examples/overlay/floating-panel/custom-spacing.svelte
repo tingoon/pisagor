@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { createListCollection } from "@ark-ui/svelte";
   import {
     Button,
     Field,
@@ -7,8 +7,7 @@
     NumberInput,
     Select,
   } from "@pisagor/svelte";
-  import GearSixIcon from "phosphor-svelte/lib/GearSixIcon";
-  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { GearSixIcon, XIcon } from "phosphor-svelte";
 
   const collection = createListCollection({
     items: ["Inter", "Roboto", "Helvetica", "Geist"],

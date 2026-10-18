@@ -1,5 +1,6 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import { Item, Listbox } from "@pisagor/solid";
+
 export function Disabled() {
   const collection = createListCollection({
     items: [
@@ -8,6 +9,7 @@ export function Disabled() {
       { label: "Ireland", value: "ie" },
     ],
   });
+
   return (
     <Item.Group variant="outline">
       <Item class="p-1">

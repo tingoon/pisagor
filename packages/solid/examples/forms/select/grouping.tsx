@@ -1,4 +1,4 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import { Select } from "@pisagor/solid";
 
 export function Grouping() {
@@ -13,6 +13,7 @@ export function Grouping() {
       { category: "Backend", label: "NestJS", value: "nestjs" },
     ],
   });
+
   return (
     <Select.Root collection={collection}>
       <Select.Trigger>

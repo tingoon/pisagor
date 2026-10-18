@@ -1,11 +1,11 @@
 import type { SidebarRecipe } from "@pisagor/recipes";
 import { sidebarRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils/create-context";
 
 export const {
   Context: SidebarStylesContext,
-  useStyles: useSidebarStyles,
+  useStyles,
   withContext,
   withProvider,
 } = createSlotRecipeContext({
@@ -32,8 +32,9 @@ export type SidebarContextProps = SidebarStateValue & {
 };
 
 export function useSidebar() {
-  const styles = useSidebarStyles();
+  const styles = useStyles();
   const state = useSidebarState();
+
   return {
     get isMobile() {
       return state.isMobile;

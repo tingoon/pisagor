@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import { PhX } from "@phosphor-icons/vue";
 import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
 import { actionBarRecipe } from "@pisagor/recipes";
@@ -14,12 +14,14 @@ import {
   type VNodeChild,
   watchEffect,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
-import { createContext } from "../internal/utils/create-context";
+import {
+  type ClassValue,
+  createContext,
+  createSlotRecipeContext,
+} from "../internal";
 import { Badge, type BadgeProps } from "./badge";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Separator, type SeparatorProps } from "./separator";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -27,7 +29,7 @@ type ArkPart = Parameters<typeof h>[0];
 // #region Context
 const {
   Context: ActionBarStylesContext,
-  useStyles: useActionBarStyles,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "ActionBar",
@@ -60,12 +62,13 @@ function useActionBarState(): ActionBarStateValue {
       "useActionBarState must be used within ActionBarStateContext.",
     );
   }
+
   return state;
 }
 
 function useActionBar() {
   return {
-    ...useActionBarStyles(),
+    ...useStyles(),
     ...useActionBarState(),
   };
 }
@@ -386,7 +389,7 @@ export const ActionBarSeparator = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const { slots } = useActionBarStyles();
+    const { slots } = useStyles();
 
     return () =>
       h(Separator as ArkPart, {
@@ -413,13 +416,14 @@ export const ActionBarClose = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const { onClose, isOpen, slots: styleSlots } = useActionBar();
 
     return () =>
       h(
         ark.button as ArkPart,
         {
-          "aria-label": useTranslation("actionBar.close"),
+          "aria-label": m("actionBar.close"),
           ...attrs,
           class: styleSlots.close({ class: props.class }),
           "data-part": "close",
@@ -448,7 +452,7 @@ export const ActionBarValue = defineComponent({
     label: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
-    const { slots: styleSlots } = useActionBarStyles();
+    const { slots: styleSlots } = useStyles();
 
     return () =>
       h(

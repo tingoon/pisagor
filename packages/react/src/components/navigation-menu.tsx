@@ -1,26 +1,14 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
 import { navigationMenuRecipe } from "@pisagor/recipes";
-import {
-  type ComponentProps,
-  createContext,
-  type FunctionComponent,
-  type KeyboardEvent,
-  use,
-  useId,
-  useRef,
-  useState,
-} from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { useMessage } from "./provider/context";
+import { createContext, use, useId, useRef, useState } from "react";
+import type { FunctionComponent, KeyboardEvent } from "react";
+import { createSlotRecipeContext } from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Context
-const {
-  useStyles: useNavigationMenu,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "NavigationMenu",
   recipe: navigationMenuRecipe,
 });
@@ -49,17 +37,17 @@ const NavigationMenuItemContext = createContext<NavigationMenuItemState | null>(
 
 // #region Types
 export interface NavigationMenuProps
-  extends ComponentProps<typeof ark.nav>, BaseNavigationMenuProps {}
+  extends HTMLArkProps<"nav">, BaseNavigationMenuProps {}
 
-export type NavigationMenuPartProps = ComponentProps<typeof ark.ul>;
+export type NavigationMenuPartProps = HTMLArkProps<"ul">;
 
-export type NavigationMenuItemProps = ComponentProps<typeof ark.li>;
+export type NavigationMenuItemProps = HTMLArkProps<"li">;
 
-export type NavigationMenuTriggerProps = ComponentProps<typeof ark.button>;
+export type NavigationMenuTriggerProps = HTMLArkProps<"button">;
 
-export type NavigationMenuContentProps = ComponentProps<typeof ark.ul>;
+export type NavigationMenuContentProps = HTMLArkProps<"ul">;
 
-export interface NavigationMenuLinkProps extends ComponentProps<typeof ark.a> {
+export interface NavigationMenuLinkProps extends HTMLArkProps<"a"> {
   /** Whether the link represents the current page */
   active?: boolean;
 }
@@ -123,13 +111,14 @@ export function NavigationMenuRoot({
   "aria-label": ariaLabel,
   ...rest
 }: NavigationMenuProps) {
+  const { m } = useLocale();
   const [openId, setOpenId] = useState<string | null>(null);
 
   return (
     <NavigationMenuStateContext value={{ openId, setOpenId }}>
       <NavigationMenuNav
         {...rest}
-        aria-label={useMessage("navigationMenu.label", ariaLabel)}
+        aria-label={m("navigationMenu.label", ariaLabel)}
       />
     </NavigationMenuStateContext>
   );
@@ -205,7 +194,7 @@ export function NavigationMenuTrigger({
   onKeyDown,
   ...rest
 }: NavigationMenuTriggerProps) {
-  const { slots } = useNavigationMenu();
+  const { slots } = useStyles();
   const item = use(NavigationMenuItemContext);
 
   if (!item) {
@@ -251,7 +240,7 @@ export function NavigationMenuContent({
   onKeyDown,
   ...rest
 }: NavigationMenuContentProps) {
-  const { slots } = useNavigationMenu();
+  const { slots } = useStyles();
   const item = use(NavigationMenuItemContext);
 
   if (!item) {
@@ -294,7 +283,7 @@ export function NavigationMenuLink({
   className,
   ...rest
 }: NavigationMenuLinkProps) {
-  const { slots } = useNavigationMenu();
+  const { slots } = useStyles();
 
   return (
     <ark.a

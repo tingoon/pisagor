@@ -1,5 +1,5 @@
 import { Button, Steps } from "@pisagor/solid";
-import { CaretLeftIcon, CaretRightIcon } from "@pisagor/solid/icons";
+import { CaretLeftIcon, CaretRightIcon } from "@squidlab/phosphor-solid/icons";
 import { For } from "solid-js";
 
 export function Default() {

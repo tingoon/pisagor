@@ -1,6 +1,7 @@
-import { waitForEvent } from "@ark-ui/react/tour";
+import { waitForEvent } from "@ark-ui/react";
 import type { TourStepType } from "@pisagor/react";
 import { Button, Checkbox, Field, Input, Tour } from "@pisagor/react";
+
 export function WaitForInput() {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -25,6 +26,7 @@ export function WaitForInput() {
           },
         );
         promise.then(() => next());
+
         return cancel;
       },
       id: "enter-name",
@@ -44,6 +46,7 @@ export function WaitForInput() {
           },
         );
         promise.then(() => next());
+
         return cancel;
       },
       id: "enter-email",
@@ -63,6 +66,7 @@ export function WaitForInput() {
           },
         );
         promise.then(() => next());
+
         return cancel;
       },
       id: "check-terms",
@@ -78,6 +82,7 @@ export function WaitForInput() {
       type: "dialog",
     },
   ];
+
   return (
     <div className="flex flex-col gap-2">
       <Tour steps={steps}>

@@ -1,9 +1,11 @@
 <script lang="ts">
   import { ContextMenu, type TreeNodeType, TreeView } from "@pisagor/svelte";
-  import FilePlusIcon from "phosphor-svelte/lib/FilePlusIcon";
-  import FolderPlusIcon from "phosphor-svelte/lib/FolderPlusIcon";
-  import PencilSimpleIcon from "phosphor-svelte/lib/PencilSimpleIcon";
-  import TrashIcon from "phosphor-svelte/lib/TrashIcon";
+  import {
+    FilePlusIcon,
+    FolderPlusIcon,
+    PencilSimpleIcon,
+    TrashIcon,
+  } from "phosphor-svelte";
   import TreeNodeContext from "./tree-node-context.svelte";
 
   type Props = {

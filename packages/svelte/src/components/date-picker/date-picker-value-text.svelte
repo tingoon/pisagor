@@ -2,7 +2,7 @@
   import {
     DatePicker as DatePickerPrimitive,
     type DatePickerValueTextProps,
-  } from "@ark-ui/svelte/date-picker";
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useDatePicker } from "./date-picker.context";
 

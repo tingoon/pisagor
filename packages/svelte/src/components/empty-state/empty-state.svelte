@@ -3,7 +3,7 @@
   import type { EmptyStateRecipeSlot } from "@pisagor/recipes";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { SizeScaleProps, VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import EmptyStateActions from "./empty-state-actions.svelte";
   import EmptyStateDescription from "./empty-state-description.svelte";
   import EmptyStateMedia from "./empty-state-media.svelte";
@@ -16,8 +16,7 @@
     description?: string | Snippet;
     media?: Snippet;
     title?: string | Snippet;
-  } & BaseEmptyStateProps &
-    SizeScaleProps;
+  } & BaseEmptyStateProps;
 
   let {
     actions,

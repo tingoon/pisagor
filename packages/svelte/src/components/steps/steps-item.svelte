@@ -1,8 +1,5 @@
 <script lang="ts">
-  import {
-    type StepsItemProps,
-    Steps as StepsPrimitive,
-  } from "@ark-ui/svelte/steps";
+  import { Steps as StepsPrimitive, type StepsItemProps } from "@ark-ui/svelte";
   import type { StepsItemProps as BaseStepsItemProps } from "@pisagor/props";
   import { withStepsItemProvider } from "./steps.context";
 

@@ -1,10 +1,10 @@
-import {
-  type RadioGroupItemTextProps,
-  type RadioGroupLabelProps,
-  RadioGroup as RadioGroupPrimitive,
-  type RadioGroupItemProps as RadioGroupPrimitiveItemProps,
-  type RadioGroupRootProps as RadioGroupPrimitiveRootProps,
-} from "@ark-ui/solid/radio-group";
+import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/solid";
+import type {
+  RadioGroupItemProps as RadioGroupItemPrimitiveProps,
+  RadioGroupItemTextProps,
+  RadioGroupLabelProps,
+  RadioGroupRootProps as RadioGroupRootPrimitiveProps,
+} from "@ark-ui/solid";
 import type {
   RadioGroupItemProps as BaseRadioGroupItemProps,
   RadioGroupProps as BaseRadioGroupRootProps,
@@ -30,7 +30,7 @@ interface RadioGroupPresetItem {
 
 export interface RadioGroupRootProps
   extends
-    Omit<RadioGroupPrimitiveRootProps, "onValueChange">,
+    Omit<RadioGroupRootPrimitiveProps, "onValueChange">,
     BaseRadioGroupRootProps {
   onValueChange?: (value: string | null) => void;
 }
@@ -40,7 +40,7 @@ export interface RadioGroupProps extends Omit<RadioGroupRootProps, "children"> {
 }
 
 export interface RadioGroupItemProps
-  extends RadioGroupPrimitiveItemProps, BaseRadioGroupItemProps {
+  extends RadioGroupItemPrimitiveProps, BaseRadioGroupItemProps {
   variant?: FormControlVariant;
 }
 
@@ -104,6 +104,7 @@ export function RadioGroupItemText(
   props: RadioGroupItemTextProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
+
   return (
     <Field.Label
       asChild={(labelProps) => (
@@ -121,6 +122,7 @@ export function RadioGroupItemText(
 
 export function RadioGroupLabel(props: RadioGroupLabelProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children"]);
+
   return (
     <Field.Label
       asChild={(labelProps) => (
@@ -151,7 +153,7 @@ export function RadioGroupShorthand(props: RadioGroupProps): JSX.Element {
 export type {
   RadioGroupItemTextProps,
   RadioGroupLabelProps,
-} from "@ark-ui/solid/radio-group";
+} from "@ark-ui/solid";
 
 export const RadioGroup = Object.assign(RadioGroupShorthand, {
   Item: RadioGroupItem,

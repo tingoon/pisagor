@@ -1,10 +1,10 @@
 import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 
 export const {
   Context,
   Context: ListboxStylesContext,
-  useStyles: useListbox,
+  useStyles,
   withContext: withListboxContext,
   withProvider: withListboxProvider,
 } = createSlotRecipeContext({

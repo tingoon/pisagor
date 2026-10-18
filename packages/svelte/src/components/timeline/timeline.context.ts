@@ -1,12 +1,8 @@
 import { timelineItemRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 
-export const {
-  Context,
-  useStyles: useTimelineItem,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "Timeline",
-  recipe: timelineItemRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "Timeline",
+    recipe: timelineItemRecipe,
+  });

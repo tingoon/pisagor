@@ -1,12 +1,14 @@
 <script module lang="ts">
-  import ArrowRightIcon from "phosphor-svelte/lib/ArrowRightIcon";
-  import AtomIcon from "phosphor-svelte/lib/AtomIcon";
-  import DeviceMobileIcon from "phosphor-svelte/lib/DeviceMobileIcon";
-  import GlobeIcon from "phosphor-svelte/lib/GlobeIcon";
-  import LightningIcon from "phosphor-svelte/lib/LightningIcon";
-  import RobotIcon from "phosphor-svelte/lib/RobotIcon";
-  import SparkleIcon from "phosphor-svelte/lib/SparkleIcon";
-  import StackIcon from "phosphor-svelte/lib/StackIcon";
+  import {
+    ArrowRightIcon,
+    AtomIcon,
+    DeviceMobileIcon,
+    GlobeIcon,
+    LightningIcon,
+    RobotIcon,
+    SparkleIcon,
+    StackIcon,
+  } from "phosphor-svelte";
 
   export const marqueeIcons = [
     GlobeIcon,

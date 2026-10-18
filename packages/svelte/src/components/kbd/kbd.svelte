@@ -1,15 +1,13 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { KbdProps as BaseKbdProps } from "@pisagor/props";
   import { kbdRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { SizeScaleProps } from "../../internal/types";
 
   type Props = HTMLAttributes<HTMLElement> & {
     children?: import("svelte").Snippet;
-  } & BaseKbdProps &
-    SizeScaleProps;
+  } & BaseKbdProps;
 
   let {
     variant = "default",

@@ -2,7 +2,7 @@
   import {
     Collapsible as CollapsiblePrimitive,
     type CollapsibleRootProps,
-  } from "@ark-ui/svelte/collapsible";
+  } from "@ark-ui/svelte";
   import type { CollapsibleProps as BaseCollapsibleProps } from "@pisagor/props";
   import { collapsibleRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

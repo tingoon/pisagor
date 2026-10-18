@@ -1,5 +1,5 @@
 import { Avatar } from "@pisagor/solid";
-import { UserIcon } from "@pisagor/solid/icons";
+import { UserIcon } from "@squidlab/phosphor-solid/icons";
 
 export function Fallbacks() {
   return (

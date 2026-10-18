@@ -1,16 +1,15 @@
+import { Dialog as DialogPrimitive, Portal } from "@ark-ui/react";
 import type {
   DialogCloseTriggerProps,
   DialogContentProps,
   DialogPositionerProps,
   DialogRootProps,
   DialogTriggerProps,
-} from "@ark-ui/react/dialog";
-import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog";
-import { Portal } from "@ark-ui/react/portal";
+} from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
 import type { SheetProps as BaseSheetProps } from "@pisagor/props";
 import { type SheetVariantProps, sheetRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import type {
   DialogBackdropProps,
@@ -21,14 +20,13 @@ import type {
   DialogTitleProps,
 } from "./dialog";
 import { Dialog } from "./dialog";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
-const { Context: SheetStylesContext, useStyles: useSheet } =
-  createSlotRecipeContext({
-    name: "Sheet",
-    recipe: sheetRecipe,
-  });
+const { Context: SheetStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Sheet",
+  recipe: sheetRecipe,
+});
 // #endregion
 
 // #region Types
@@ -76,7 +74,7 @@ export function SheetPositioner({
   className,
   ...rest
 }: SheetPositionerProps) {
-  const { slots } = useSheet();
+  const { slots } = useStyles();
 
   return (
     <DialogPrimitive.Positioner
@@ -94,8 +92,8 @@ export function SheetContent({
   className,
   ...rest
 }: SheetContentProps) {
-  const sheetCloseMessage = useMessage("sheet.close");
-  const { slots } = useSheet();
+  const { m } = useLocale();
+  const { slots } = useStyles();
 
   return (
     <Portal>
@@ -111,7 +109,7 @@ export function SheetContent({
           {!!showCloseButton && (
             <SheetCloseTrigger asChild>
               <Button
-                aria-label={sheetCloseMessage}
+                aria-label={m("sheet.close")}
                 className={slots.inline()}
                 size="icon-sm"
                 variant="ghost"
@@ -139,7 +137,7 @@ export function SheetDescription(props: DialogDescriptionProps) {
 }
 
 export function SheetBody({ className, ...rest }: DialogBodyProps) {
-  const { slots } = useSheet();
+  const { slots } = useStyles();
 
   return (
     <Dialog.Body
@@ -156,7 +154,7 @@ export function SheetCloseTrigger(props: SheetCloseTriggerProps) {
 }
 
 export function SheetFooter({ className, ...rest }: DialogFooterProps) {
-  const { slots } = useSheet();
+  const { slots } = useStyles();
 
   return (
     <Dialog.Footer

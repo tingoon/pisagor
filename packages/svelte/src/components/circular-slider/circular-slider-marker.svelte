@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type AngleSliderMarkerProps,
     AngleSlider as AngleSliderPrimitive,
-  } from "@ark-ui/svelte/angle-slider";
+    type AngleSliderMarkerProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useCircularSlider } from "./circular-slider.context";
 

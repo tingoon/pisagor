@@ -1,3 +1,7 @@
+import {
+  AngleSlider as AngleSliderPrimitive,
+  useAngleSliderContext,
+} from "@ark-ui/react";
 import type {
   AngleSliderControlProps,
   AngleSliderHiddenInputProps,
@@ -6,25 +10,19 @@ import type {
   AngleSliderRootProps,
   AngleSliderThumbProps,
   AngleSliderValueTextProps,
-} from "@ark-ui/react/angle-slider";
-import {
-  AngleSlider as AngleSliderPrimitive,
-  useAngleSliderContext,
-} from "@ark-ui/react/angle-slider";
+} from "@ark-ui/react";
 import type { CircularSliderProps as BaseCircularSliderProps } from "@pisagor/props";
 import { circularSliderRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { createContext, use, useMemo } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  Context: CircularSliderStylesContext,
-  useStyles: useCircularSliderStyles,
-} = createSlotRecipeContext({
-  name: "CircularSlider",
-  recipe: circularSliderRecipe,
-});
+const { Context: CircularSliderStylesContext, useStyles } =
+  createSlotRecipeContext({
+    name: "CircularSlider",
+    recipe: circularSliderRecipe,
+  });
 
 export interface CircularSliderGeometry {
   ringCircumference: number;
@@ -40,13 +38,14 @@ const CircularSliderGeometryContext = createContext<
 CircularSliderGeometryContext.displayName = "CircularSliderGeometryContext";
 
 function useCircularSlider() {
-  const { slots } = useCircularSliderStyles();
+  const { slots } = useStyles();
   const geometry = use(CircularSliderGeometryContext);
   if (geometry === undefined) {
     throw new Error(
       "useCircularSlider must be used within CircularSliderGeometryContext.",
     );
   }
+
   return { slots, ...geometry };
 }
 
@@ -175,6 +174,7 @@ export function CircularSliderControl({
         ? Array.from({ length: Math.floor(360 / step) }, (_, i) => i * step)
         : CLOCK_MARKER_ANGLES;
     }
+
     return null;
   }, [markers, markersAtSteps, step]);
 

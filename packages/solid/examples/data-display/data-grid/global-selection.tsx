@@ -6,7 +6,7 @@ import type {
   RowSelectionState,
 } from "@pisagor/solid/data-grid";
 import { DataGrid, useDataGrid } from "@pisagor/solid/data-grid";
-import { CaretDownIcon, CaretUpIcon } from "@pisagor/solid/icons";
+import { CaretDownIcon, CaretUpIcon } from "@squidlab/phosphor-solid/icons";
 import type { RowData } from "@tanstack/solid-table";
 import type { JSX } from "solid-js";
 import { createMemo, createSignal } from "solid-js";
@@ -273,6 +273,7 @@ function SelectionSummary<TData extends RowData>({
   if (selected === 0) {
     return null;
   }
+
   return (
     <div class="flex items-center justify-between gap-3 pt-1">
       <p class="text-muted-foreground text-sm">{selected} selected</p>

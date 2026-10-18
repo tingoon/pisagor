@@ -54,6 +54,7 @@ export function CustomRecipe() {
       type: "dialog",
     },
   ];
+
   return (
     <Tour recipe={brandTourRecipe} steps={steps}>
       <Tour.Trigger asChild>

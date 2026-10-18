@@ -1,9 +1,9 @@
-import {
-  type FormatByteProps,
-  type FormatNumberProps,
-  Format as FormatPrimitive,
-  type FormatRelativeTimeProps,
-} from "@ark-ui/solid/format";
+import { Format as FormatPrimitive } from "@ark-ui/solid";
+import type {
+  FormatByteProps,
+  FormatNumberProps,
+  FormatRelativeTimeProps,
+} from "@ark-ui/solid";
 import type { JSX } from "solid-js";
 
 export function FormatByte(props: FormatByteProps): JSX.Element {
@@ -24,7 +24,7 @@ export type {
   FormatByteProps,
   FormatNumberProps,
   FormatRelativeTimeProps,
-} from "@ark-ui/solid/format";
+} from "@ark-ui/solid";
 
 export const Format = {
   Byte: FormatByte,

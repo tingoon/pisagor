@@ -1,12 +1,9 @@
 <script lang="ts">
-  import {
-    type MenuItemProps,
-    Menu as MenuPrimitive,
-  } from "@ark-ui/svelte/menu";
+  import { Menu as MenuPrimitive, type MenuItemProps } from "@ark-ui/svelte";
   import type { DropdownMenuItemProps as BaseDropdownMenuItemProps } from "@pisagor/props";
   import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import { useDropdownMenu } from "./dropdown-menu.context";
+  import { useStyles } from "./dropdown-menu.context";
 
   type Props = MenuItemProps & BaseDropdownMenuItemProps;
 
@@ -18,7 +15,7 @@
     ...rest
   }: Props = $props();
 
-  const context = useDropdownMenu();
+  const context = useStyles();
   const menuSlots = $derived(context?.slots ?? dropdownMenuRecipe());
 </script>
 

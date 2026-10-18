@@ -1,6 +1,6 @@
-import { useFileUploadContext } from "@ark-ui/solid/file-upload";
+import { useFileUploadContext } from "@ark-ui/solid";
 import { Button, FileUpload } from "@pisagor/solid";
-import { XIcon } from "@pisagor/solid/icons";
+import { XIcon } from "@squidlab/phosphor-solid/icons";
 import { For, Show } from "solid-js";
 
 export function CustomPreview() {
@@ -40,6 +40,7 @@ export function CustomPreview() {
       </Show>
     );
   };
+
   return (
     <FileUpload accept="image/*">
       <FileUpload.Dropzone>

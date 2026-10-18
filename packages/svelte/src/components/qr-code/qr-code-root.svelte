@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type QrCodeRootProps as ArkRootProps,
     QrCode as QrCodePrimitive,
-  } from "@ark-ui/svelte/qr-code";
+    type QrCodeRootProps as ArkRootProps,
+  } from "@ark-ui/svelte";
   import type { QrCodeProps as BaseQrCodeProps } from "@pisagor/props";
   import { withProvider } from "./qr-code.context";
   import QrCodeFrame from "./qr-code-frame.svelte";

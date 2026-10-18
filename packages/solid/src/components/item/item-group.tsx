@@ -1,16 +1,16 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   ItemProps as BaseItemGroupProps,
   ItemProps as BaseItemSeparatorProps,
 } from "@pisagor/props";
 import { itemRecipe } from "@pisagor/recipes";
-import type { ComponentProps, JSX } from "solid-js";
+import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { Separator, type SeparatorProps } from "../separator";
 import { ItemGroupContext } from "./item-group.context";
 
 export interface ItemGroupProps
-  extends ComponentProps<typeof ark.div>, BaseItemGroupProps {}
+  extends HTMLArkProps<"div">, BaseItemGroupProps {}
 
 export interface ItemSeparatorProps
   extends Omit<SeparatorProps, "recipe">, BaseItemSeparatorProps {}

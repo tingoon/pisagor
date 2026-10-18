@@ -1,8 +1,5 @@
 import { Input, type InputProps } from "@pisagor/react";
-import {
-  type FieldPresentationProps,
-  FieldShell,
-} from "../internal/field-shell";
+import { type FieldPresentationProps, FieldShell } from "../internal";
 
 // #region Types
 type InputControlProps = Omit<

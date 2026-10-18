@@ -1,16 +1,11 @@
-import { Marquee as MarqueePrimitive } from "@ark-ui/vue/marquee";
+import { Marquee as MarqueePrimitive } from "@ark-ui/vue";
 import type { MarqueeProps as BaseMarqueeProps } from "@pisagor/props";
 import { marqueeRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useMarquee,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Marquee",
   recipe: marqueeRecipe,
 });
@@ -98,7 +93,7 @@ export const MarqueeContent = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useMarquee();
+    const styles = useStyles();
 
     return () =>
       h(

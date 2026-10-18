@@ -7,10 +7,12 @@ import {
   NumberInput,
   Select,
 } from "@pisagor/react";
+
 export function Default() {
   const collection = createListCollection({
     items: ["Inter", "Roboto", "Helvetica", "Geist"],
   });
+
   return (
     <FloatingPanel defaultSize={{ height: 300, width: 360 }}>
       <FloatingPanel.Trigger asChild>

@@ -1,8 +1,5 @@
 <script lang="ts">
-  import {
-    Tabs as TabsPrimitive,
-    type TabsRootProps,
-  } from "@ark-ui/svelte/tabs";
+  import { Tabs as TabsPrimitive, type TabsRootProps } from "@ark-ui/svelte";
   import type { TabsProps as BaseTabsProps } from "@pisagor/props";
   import { withProvider } from "./tabs.context";
 

@@ -1,17 +1,13 @@
 import type { ActionBarRecipe } from "@pisagor/recipes";
 import { actionBarRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils/create-context";
 
-export const {
-  Context,
-  useStyles: useActionBarStyles,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "ActionBar",
-  recipe: actionBarRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "ActionBar",
+    recipe: actionBarRecipe,
+  });
 
 interface ActionBarPositioning {
   gutter?: string;
@@ -32,8 +28,9 @@ export const setActionBarStateContext = stateCtx.setContext;
 export const useActionBarState = stateCtx.getContext;
 
 export function useActionBar() {
-  const styles = useActionBarStyles();
+  const styles = useStyles();
   const state = useActionBarState();
+
   return {
     get isOpen() {
       return state.isOpen;

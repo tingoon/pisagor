@@ -1,5 +1,6 @@
 import type { NodeProviderProps } from "@pisagor/solid";
 import { createTreeCollection, TreeView } from "@pisagor/solid";
+
 export function MultipleSelection() {
   const collection = createTreeCollection({
     rootNode: {
@@ -49,6 +50,7 @@ export function MultipleSelection() {
       </TreeView.NodeProvider>
     );
   };
+
   return (
     <div>
       <TreeView collection={collection} selectionMode="multiple">

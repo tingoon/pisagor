@@ -1,6 +1,6 @@
 import { emptyStateRecipe } from "@pisagor/recipes";
 import { Button, EmptyState } from "@pisagor/solid";
-import { MagnifyingGlassIcon } from "@pisagor/solid/icons";
+import { MagnifyingGlassIcon } from "@squidlab/phosphor-solid/icons";
 import { tv } from "tailwind-variants";
 
 const brandEmptyStateRecipe = tv({

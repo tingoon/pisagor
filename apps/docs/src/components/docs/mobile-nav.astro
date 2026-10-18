@@ -89,6 +89,7 @@ function bindMobileNav(root: HTMLElement) {
     const inPanel = [
       ...(panel?.querySelectorAll<HTMLElement>(FOCUSABLE) ?? []),
     ].filter((el) => el.offsetParent !== null || el === document.activeElement);
+
     return toggle ? [toggle, ...inPanel] : inPanel;
   }
 
@@ -138,6 +139,7 @@ function bindMobileNav(root: HTMLElement) {
     if (event.key === "Escape") {
       event.preventDefault();
       setOpen(false);
+
       return;
     }
     if (event.key !== "Tab") return;

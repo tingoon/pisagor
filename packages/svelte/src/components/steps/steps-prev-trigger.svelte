@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type StepsPrevTriggerProps,
     Steps as StepsPrimitive,
-  } from "@ark-ui/svelte/steps";
+    type StepsPrevTriggerProps,
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: StepsPrevTriggerProps = $props();
 </script>

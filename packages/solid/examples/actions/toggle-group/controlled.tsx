@@ -3,8 +3,9 @@ import {
   TextBIcon,
   TextItalicIcon,
   TextUnderlineIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
+
 export function Controlled() {
   const [value, setValue] = createSignal(["bold"]);
 

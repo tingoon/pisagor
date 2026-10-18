@@ -17,7 +17,7 @@ import {
 } from "#/lib/examples-host";
 
 const globs: ExampleGlobs = {
-  block: import.meta.glob("../../../blocks/solid/*/*.{ts,tsx}"),
+  block: import.meta.glob("../../../blocks/solid/**/*.{ts,tsx}"),
   component: import.meta.glob(
     "../../../../../../packages/solid/examples/*/*/*.{ts,tsx}",
   ),
@@ -36,6 +36,7 @@ export function SolidExamplesHost(props: ExamplesHostProps): JSX.Element {
         if (typeof comp !== "function") {
           return renderMissingExample(slot, message);
         }
+
         return render(
           () => createComponent(comp as Component, {}),
           slot as HTMLElement,

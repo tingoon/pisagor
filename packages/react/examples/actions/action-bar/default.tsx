@@ -6,6 +6,7 @@ import {
   XIcon,
 } from "@phosphor-icons/react";
 import { ActionBar, Button } from "@pisagor/react";
+
 export function Default() {
   return (
     <ActionBar>

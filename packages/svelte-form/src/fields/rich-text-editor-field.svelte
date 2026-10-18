@@ -1,7 +1,7 @@
 <script lang="ts">
   import { RichTextEditor } from "@pisagor/svelte/rich-text-editor";
   import type { ComponentProps, Snippet } from "svelte";
-  import FieldShell from "../internal/field-shell.svelte";
+  import { FieldShell } from "../internal";
 
   type RichTextEditorProps = ComponentProps<typeof RichTextEditor>;
 

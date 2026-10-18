@@ -1,4 +1,4 @@
-import { NumberInput as NumberInputPrimitive } from "@ark-ui/vue/number-input";
+import { NumberInput as NumberInputPrimitive } from "@ark-ui/vue";
 import { PhMinus, PhPlus } from "@phosphor-icons/vue";
 import type { NumberInputProps as BaseNumberInputProps } from "@pisagor/props";
 import {
@@ -8,17 +8,16 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { FieldLabel } from "./field";
 import { Input, type InputProps } from "./input";
 import { InputClearButton } from "./input/input-clear-button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Slot recipe context
-const { provideStyles: provideNumberInputStyles, useStyles: useNumberInput } =
+const { provideStyles: provideNumberInputStyles, useStyles } =
   createSlotRecipeContext({
     name: "NumberInput",
     recipe: numberInputRecipe,
@@ -45,10 +44,7 @@ export interface NumberInputProps
   value?: string;
 }
 
-export interface NumberInputControlProps extends Pick<
-  FormControlGroupShellVariantProps,
-  "variant"
-> {
+export interface NumberInputControlProps extends FormControlGroupShellVariantProps {
   class?: unknown;
   clearable?: boolean;
 }
@@ -153,7 +149,7 @@ export const NumberInputControl = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useNumberInput();
+    const styles = useStyles();
 
     const surfaceVariant = useFormControlSurface();
 
@@ -194,7 +190,7 @@ export const NumberInputControl = defineComponent({
 export const NumberInputClearTrigger = defineComponent({
   name: "NumberInputClearTrigger",
   setup(_props) {
-    const styles = useNumberInput();
+    const styles = useStyles();
 
     return () =>
       h(NumberInputPrimitive.Context as ArkPart, null, {
@@ -230,7 +226,8 @@ export const NumberInputDecrementTrigger = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useNumberInput();
+    const { m } = useLocale();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -244,7 +241,7 @@ export const NumberInputDecrementTrigger = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useTranslation("numberInput.decrement"),
+              "aria-label": m("numberInput.decrement"),
               variant: "ghost",
             },
             () => h(PhMinus, { "aria-hidden": true }),
@@ -263,7 +260,8 @@ export const NumberInputIncrementTrigger = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useNumberInput();
+    const { m } = useLocale();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -277,7 +275,7 @@ export const NumberInputIncrementTrigger = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useTranslation("numberInput.increment"),
+              "aria-label": m("numberInput.increment"),
               variant: "ghost",
             },
             () => h(PhPlus, { "aria-hidden": true }),
@@ -309,7 +307,7 @@ export const NumberInputInput = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useNumberInput();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -338,7 +336,7 @@ export const NumberInputScrubber = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useNumberInput();
+    const styles = useStyles();
 
     return () =>
       h(

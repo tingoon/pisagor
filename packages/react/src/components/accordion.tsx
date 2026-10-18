@@ -1,19 +1,21 @@
+import { Accordion as AccordionPrimitive } from "@ark-ui/react";
 import type {
   AccordionItemContentProps,
+  AccordionItemProps as AccordionItemPrimitiveProps,
   AccordionItemTriggerProps,
-  AccordionItemProps as AccordionPrimitiveItemProps,
   AccordionRootProps,
-} from "@ark-ui/react/accordion";
-import { Accordion as AccordionPrimitive } from "@ark-ui/react/accordion";
+} from "@ark-ui/react";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
-import { accordionItemRecipe } from "@pisagor/recipes";
+import {
+  type AccordionItemVariantProps,
+  accordionItemRecipe,
+} from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { SizeScaleProps } from "../internal/types";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
+const { useStyles, withProvider } = createSlotRecipeContext({
   name: "Accordion",
   recipe: accordionItemRecipe,
 });
@@ -21,7 +23,7 @@ const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface AccordionItemProps
-  extends AccordionPrimitiveItemProps, BaseAccordionItemProps, SizeScaleProps {}
+  extends AccordionItemPrimitiveProps, BaseAccordionItemProps {}
 
 interface AccordionPresetItem {
   value: string;
@@ -30,14 +32,9 @@ interface AccordionPresetItem {
   disabled?: boolean;
 }
 
-export interface AccordionProps extends Omit<AccordionRootProps, "children"> {
+export interface AccordionProps
+  extends Omit<AccordionRootProps, "children">, AccordionItemVariantProps {
   items?: AccordionPresetItem[];
-  /**
-   * Size scale applied to every item.
-   *
-   * @defaultValue "md"
-   */
-  size?: "sm" | "md" | "lg";
 }
 // #endregion
 
@@ -64,7 +61,7 @@ export function AccordionItemTrigger({
   className,
   ...rest
 }: AccordionItemTriggerProps) {
-  const { slots } = useAccordionItem();
+  const { slots } = useStyles();
 
   return (
     <AccordionPrimitive.ItemTrigger
@@ -85,7 +82,7 @@ export function AccordionItemContent({
   className,
   ...rest
 }: AccordionItemContentProps) {
-  const { slots } = useAccordionItem();
+  const { slots } = useStyles();
 
   return (
     <AccordionPrimitive.ItemContent
@@ -130,7 +127,7 @@ export type {
   AccordionItemContentProps,
   AccordionItemTriggerProps,
   AccordionRootProps,
-} from "@ark-ui/react/accordion";
+} from "@ark-ui/react";
 
 export const Accordion = Object.assign(AccordionShorthand, {
   Item: AccordionItem,

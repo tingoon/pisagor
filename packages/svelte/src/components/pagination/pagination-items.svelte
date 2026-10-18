@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Pagination as PaginationPrimitive } from "@ark-ui/svelte/pagination";
+  import { Pagination as PaginationPrimitive } from "@ark-ui/svelte";
   import PaginationEllipsis from "./pagination-ellipsis.svelte";
   import PaginationItem from "./pagination-item.svelte";
 </script>

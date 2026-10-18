@@ -1,10 +1,10 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { NavbarProps as BaseNavbarRootProps } from "@pisagor/props";
 import { navbarRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { useTranslation } from "./provider/context";
+import { createSlotRecipeContext } from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -14,10 +14,10 @@ const { withContext, withProvider } = createSlotRecipeContext({
 // #endregion
 
 export interface NavbarRootProps
-  extends ComponentProps<typeof ark.header>, BaseNavbarRootProps {}
+  extends HTMLArkProps<"header">, BaseNavbarRootProps {}
 
-export type NavbarPartProps = ComponentProps<typeof ark.div>;
-export type NavbarNavProps = ComponentProps<typeof ark.nav>;
+export type NavbarPartProps = HTMLArkProps<"div">;
+export type NavbarNavProps = HTMLArkProps<"nav">;
 
 export const NavbarRoot: Component<NavbarRootProps> = withProvider(ark.header, {
   name: "Root",
@@ -37,12 +37,13 @@ const NavbarNavBase: Component<NavbarNavProps> = withContext(ark.nav, {
 });
 
 export function NavbarNav(props: NavbarNavProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["aria-label"]);
 
   return (
     <NavbarNavBase
       {...rest}
-      aria-label={local["aria-label"] ?? useTranslation("navbar.label")}
+      aria-label={m("navbar.label", local["aria-label"])}
     />
   );
 }

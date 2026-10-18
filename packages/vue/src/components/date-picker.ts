@@ -2,7 +2,7 @@ import {
   DatePicker as DatePickerPrimitive,
   type DatePickerValueChangeDetails,
   useDatePickerContext as useDatePicker,
-} from "@ark-ui/vue/date-picker";
+} from "@ark-ui/vue";
 import { PhCalendar, PhClock, PhX } from "@phosphor-icons/vue";
 import type { DatePickerProps as BaseDatePickerRootProps } from "@pisagor/props";
 import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
@@ -11,24 +11,24 @@ import {
   computed,
   defineComponent,
   h,
-  type InjectionKey,
   inject,
-  type PropType,
   provide,
   ref,
   Teleport,
   unref,
-  type VNodeChild,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { LoosePropValue } from "../internal/types";
-import { createContext } from "../internal/utils/create-context";
+import type { InjectionKey, PropType, VNodeChild } from "vue";
+import {
+  type LoosePropValue,
+  createContext,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button } from "./button";
 import { provideCalendarStyles } from "./calendar";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
 import { InputGroupRoot } from "./input-group/input-group-core";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 type FormControlVariant = "primary" | "secondary";
 type ClassValue = Parameters<typeof cn>[0];
@@ -37,7 +37,7 @@ type ClassValue = Parameters<typeof cn>[0];
 const {
   Context: DatePickerStylesContext,
   useOptionalStyles: useOptionalDatePickerStyles,
-  useStyles: useDatePickerStyles,
+  useStyles,
 } = createSlotRecipeContext({
   name: "DatePicker",
   recipe: datePickerRecipe,
@@ -172,7 +172,7 @@ export const DatePickerControl = defineComponent({
   inheritAttrs: false,
   name: "DatePicker.Control",
   setup(_, { attrs, slots }) {
-    const styles = useDatePickerStyles();
+    const styles = useStyles();
     provide(DatePickerInsideControlKey, true);
 
     return () =>
@@ -191,7 +191,7 @@ export const DatePickerTrigger = defineComponent({
     clearable: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    const styles = useDatePickerStyles();
+    const styles = useStyles();
     const insideControl = inject(DatePickerInsideControlKey, false);
     if (!insideControl) provide(DatePickerInsideControlKey, true);
 
@@ -229,6 +229,7 @@ export const DatePickerInput = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
     const variantRef = useDatePickerVariantRef();
     const insideControl = inject(DatePickerInsideControlKey, false);
     if (!insideControl) provide(DatePickerInsideControlKey, true);
@@ -257,7 +258,7 @@ export const DatePickerInput = defineComponent({
                 h(
                   Button as ArkPart,
                   {
-                    "aria-label": useTranslation("datePicker.openCalendar"),
+                    "aria-label": m("datePicker.openCalendar"),
                     size: "icon-md",
                     variant: "ghost",
                   },
@@ -425,7 +426,7 @@ export const DatePickerContent = defineComponent({
     showCalendar: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    const styles = useDatePickerStyles();
+    const styles = useStyles();
 
     return () => {
       const content = [
@@ -463,7 +464,7 @@ export const DatePickerValueText = defineComponent({
   inheritAttrs: false,
   name: "DatePicker.ValueText",
   setup(_, { attrs }) {
-    const styles = useDatePickerStyles();
+    const styles = useStyles();
 
     return () =>
       h(DatePickerPrimitive.ValueText as ArkPart, {

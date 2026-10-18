@@ -2,7 +2,11 @@ import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Button, Checkbox, DropdownMenu, Table } from "@pisagor/solid";
 import type { ColumnDef, VisibilityState } from "@pisagor/solid/data-grid";
 import { DataGrid, useDataGrid } from "@pisagor/solid/data-grid";
-import { CaretDownIcon, CaretUpIcon, EyeIcon } from "@pisagor/solid/icons";
+import {
+  CaretDownIcon,
+  CaretUpIcon,
+  EyeIcon,
+} from "@squidlab/phosphor-solid/icons";
 import type { RowData } from "@tanstack/solid-table";
 import type { JSX } from "solid-js";
 import { createMemo, createSignal } from "solid-js";

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { waitForEvent } from "@ark-ui/svelte/tour";
+  import { waitForEvent } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { Button, Tour, type TourStepDetails } from "@pisagor/svelte";
 
@@ -18,6 +18,7 @@
         show();
         const [promise, cancel] = waitForEvent(target, "click");
         promise.then(() => next());
+
         return cancel;
       },
       id: "click-add",
@@ -31,6 +32,7 @@
         show();
         const [promise, cancel] = waitForEvent(target, "click");
         promise.then(() => next());
+
         return cancel;
       },
       id: "click-edit",
@@ -44,6 +46,7 @@
         show();
         const [promise, cancel] = waitForEvent(target, "click");
         promise.then(() => next());
+
         return cancel;
       },
       id: "click-delete",

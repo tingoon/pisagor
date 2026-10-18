@@ -1,13 +1,13 @@
 <script lang="ts">
   import {
-    type QrCodeFrameProps,
     QrCode as QrCodePrimitive,
-  } from "@ark-ui/svelte/qr-code";
+    type QrCodeFrameProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import { useQrCode } from "./qr-code.context";
+  import { useStyles } from "./qr-code.context";
 
   let { class: className, ...rest }: QrCodeFrameProps = $props();
-  const styles = useQrCode();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

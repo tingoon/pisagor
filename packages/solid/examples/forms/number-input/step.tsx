@@ -1,4 +1,5 @@
 import { Field, NumberInput } from "@pisagor/solid";
+
 export function Step() {
   return (
     <div class="flex flex-col gap-2">

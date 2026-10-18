@@ -1,8 +1,6 @@
 <script lang="ts">
   import { Menu } from "@pisagor/svelte";
-  import ArchiveIcon from "phosphor-svelte/lib/ArchiveIcon";
-  import HouseIcon from "phosphor-svelte/lib/HouseIcon";
-  import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
+  import { ArchiveIcon, HouseIcon, MagnifyingGlassIcon } from "phosphor-svelte";
 </script>
 
 <div class="bg-background w-56 rounded-xl border p-1 shadow-xs/5">

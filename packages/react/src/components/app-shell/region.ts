@@ -21,6 +21,7 @@ export function useRegionWidth(name: AppShellRegionVar, width: string) {
 
   useLayoutEffect(() => {
     setRegionVar(name, width);
+
     return () => {
       setRegionVar(name, "0px");
     };
@@ -112,6 +113,7 @@ export function useSyncFixedRegionHeight(
 
     if (position !== "fixed" || !element) {
       setFixedStackVar(cssVar, "0px");
+
       return;
     }
 
@@ -154,28 +156,32 @@ export function useRegisteredSideState({
   statesRef: RefObject<Partial<Record<AppShellPlacement, AppShellSideState>>>;
 }) {
   const { notifyRegionChange } = useAppShell();
-  const side = useSideState({ controlledOpen, defaultOpen, onOpenChange });
+  const {
+    open,
+    setOpen: setSideOpen,
+    toggle: toggleSide,
+  } = useSideState({ controlledOpen, defaultOpen, onOpenChange });
 
   const setOpen = useCallback(
     (value: boolean | ((current: boolean) => boolean)) => {
-      side.setOpen(value);
+      setSideOpen(value);
       notifyRegionChange();
     },
-    [notifyRegionChange, side.setOpen],
+    [notifyRegionChange, setSideOpen],
   );
 
   const toggle = useCallback(() => {
-    side.toggle();
+    toggleSide();
     notifyRegionChange();
-  }, [notifyRegionChange, side.toggle]);
+  }, [notifyRegionChange, toggleSide]);
 
   const registeredSide = useMemo(
     () => ({
-      open: side.open,
+      open,
       setOpen,
       toggle,
     }),
-    [setOpen, side.open, toggle],
+    [setOpen, open, toggle],
   );
 
   useLayoutEffect(() => {
@@ -184,8 +190,10 @@ export function useRegisteredSideState({
   }, [notifyRegionChange, placement, registeredSide, statesRef]);
 
   useLayoutEffect(() => {
+    const states = statesRef.current;
+
     return () => {
-      delete statesRef.current[placement];
+      delete states[placement];
     };
   }, [placement, statesRef]);
 
@@ -221,8 +229,10 @@ export function useRegisteredRailState({
   }, [placement, railState, statesRef]);
 
   useLayoutEffect(() => {
+    const states = statesRef.current;
+
     return () => {
-      delete statesRef.current[placement];
+      delete states[placement];
     };
   }, [placement, statesRef]);
 

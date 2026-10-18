@@ -1,10 +1,10 @@
+import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/react";
 import type {
+  RadioGroupItemProps as RadioGroupItemPrimitiveProps,
   RadioGroupItemTextProps,
   RadioGroupLabelProps,
-  RadioGroupItemProps as RadioGroupPrimitiveItemProps,
-  RadioGroupRootProps as RadioGroupPrimitiveRootProps,
-} from "@ark-ui/react/radio-group";
-import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/react/radio-group";
+  RadioGroupRootProps as RadioGroupRootPrimitiveProps,
+} from "@ark-ui/react";
 import type {
   RadioGroupItemProps as BaseRadioGroupItemProps,
   RadioGroupProps as BaseRadioGroupRootProps,
@@ -17,7 +17,7 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
-import type { FormControlVariant } from "../internal/types";
+import type { FormControlVariant } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Types
@@ -30,7 +30,7 @@ interface RadioGroupPresetItem {
 
 export interface RadioGroupRootProps
   extends
-    Omit<RadioGroupPrimitiveRootProps, "onValueChange">,
+    Omit<RadioGroupRootPrimitiveProps, "onValueChange">,
     BaseRadioGroupRootProps {
   onValueChange?: (value: string | null) => void;
 }
@@ -40,7 +40,7 @@ export interface RadioGroupProps extends Omit<RadioGroupRootProps, "children"> {
 }
 
 export interface RadioGroupItemProps
-  extends RadioGroupPrimitiveItemProps, BaseRadioGroupItemProps {
+  extends RadioGroupItemPrimitiveProps, BaseRadioGroupItemProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
 }
@@ -161,7 +161,7 @@ RadioGroupShorthand.displayName = "RadioGroup";
 export type {
   RadioGroupItemTextProps,
   RadioGroupLabelProps,
-} from "@ark-ui/react/radio-group";
+} from "@ark-ui/react";
 
 export const RadioGroup = Object.assign(RadioGroupShorthand, {
   Item: RadioGroupItem,

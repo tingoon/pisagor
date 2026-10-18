@@ -4,7 +4,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/floating-panel` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (`packages/props/src/floating-panel.ts`, native HTML attributes omitted). */
 export const floatingPanelProps: PropRow[] = [
   {
     name: "recipe",

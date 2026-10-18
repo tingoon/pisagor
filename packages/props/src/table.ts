@@ -1,7 +1,7 @@
-import type { TableRecipeFn } from "@pisagor/recipes";
+import type { TableRecipeFn, TableVariantProps } from "@pisagor/recipes";
 
 /** Table props. */
-export interface TableProps {
+export interface TableProps extends TableVariantProps {
   /**
    * Style recipe override.
    *

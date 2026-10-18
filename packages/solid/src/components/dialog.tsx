@@ -1,31 +1,30 @@
+import { Dialog as DialogPrimitive, ark } from "@ark-ui/solid";
 import type {
   DialogBackdropProps,
   DialogCloseTriggerProps,
+  DialogContentProps as DialogContentPrimitiveProps,
   DialogDescriptionProps,
-  DialogContentProps as DialogPrimitiveContentProps,
-  DialogPositionerProps as DialogPrimitivePositionerProps,
-  DialogRootProps as DialogPrimitiveRootProps,
+  DialogPositionerProps as DialogPositionerPrimitiveProps,
+  DialogRootProps as DialogRootPrimitiveProps,
   DialogTitleProps,
   DialogTriggerProps,
-} from "@ark-ui/solid/dialog";
-import { Dialog as DialogPrimitive } from "@ark-ui/solid/dialog";
-import { ark } from "@ark-ui/solid/factory";
+  HTMLArkProps,
+} from "@ark-ui/solid";
 import type { DialogProps as BaseDialogRootProps } from "@pisagor/props";
 import { type DialogVariantProps, dialogRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { XIcon } from "../internal/icons";
+import { XIcon, createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
 const {
   Context: DialogStylesContext,
-  useStyles: useDialog,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({ name: "Dialog", recipe: dialogRecipe });
 
@@ -36,30 +35,28 @@ interface DialogModalState {
 
 const { DialogModalContext, useDialogModal } =
   createContext("DialogModal")<DialogModalState>();
-
-export { useDialog };
 // #endregion
 
 export interface LocalDialogRootProps
-  extends DialogPrimitiveRootProps, BaseDialogRootProps {}
+  extends DialogRootPrimitiveProps, BaseDialogRootProps {}
 
 export interface DialogContentProps
-  extends DialogPrimitiveContentProps, DialogVariantProps {
+  extends DialogContentPrimitiveProps, DialogVariantProps {
   bottomStickOnMobile?: boolean;
   showCloseButton?: boolean;
 }
 
-export interface DialogBodyProps extends ComponentProps<typeof ark.div> {
+export interface DialogBodyProps extends HTMLArkProps<"div"> {
   scrollFade?: boolean;
 }
 
-export type DialogHeaderProps = ComponentProps<typeof ark.div>;
+export type DialogHeaderProps = HTMLArkProps<"div">;
 
-export interface DialogPositionerProps extends DialogPrimitivePositionerProps {
+export interface DialogPositionerProps extends DialogPositionerPrimitiveProps {
   bottomStickOnMobile?: boolean;
 }
 
-export type DialogFooterProps = ComponentProps<typeof ark.div>;
+export type DialogFooterProps = HTMLArkProps<"div">;
 
 export interface DialogProps extends Omit<LocalDialogRootProps, "title"> {
   actions?: JSX.Element;
@@ -107,7 +104,7 @@ export function DialogTrigger(props: DialogTriggerProps): JSX.Element {
 
 export function DialogBackdrop(props: DialogBackdropProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useDialog();
+  const styles = useStyles();
   const state = useDialogModal();
 
   return (
@@ -122,7 +119,7 @@ export function DialogBackdrop(props: DialogBackdropProps): JSX.Element {
 
 export function DialogPositioner(props: DialogPositionerProps): JSX.Element {
   const [local, rest] = splitProps(props, ["bottomStickOnMobile", "class"]);
-  const styles = useDialog();
+  const styles = useStyles();
 
   return (
     <DialogPrimitive.Positioner
@@ -136,6 +133,7 @@ export function DialogPositioner(props: DialogPositionerProps): JSX.Element {
 }
 
 export function DialogContent(props: DialogContentProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "size",
     "bottomStickOnMobile",
@@ -143,7 +141,7 @@ export function DialogContent(props: DialogContentProps): JSX.Element {
     "children",
     "class",
   ]);
-  const styles = useDialog();
+  const styles = useStyles();
   const size = () => local.size ?? "md";
   const bottomStickOnMobile = () => local.bottomStickOnMobile ?? true;
   const showCloseButton = () => local.showCloseButton ?? true;
@@ -163,7 +161,7 @@ export function DialogContent(props: DialogContentProps): JSX.Element {
           asChild={(triggerProps) => (
             <Button
               {...triggerProps({ class: styles.slots.inline() })}
-              aria-label={useTranslation("dialog.close")}
+              aria-label={m("dialog.close")}
               size="icon-sm"
               variant="ghost"
             >
@@ -178,7 +176,7 @@ export function DialogContent(props: DialogContentProps): JSX.Element {
 
 export function DialogBody(props: DialogBodyProps): JSX.Element {
   const [local, rest] = splitProps(props, ["scrollFade", "class"]);
-  const styles = useDialog();
+  const styles = useStyles();
 
   return (
     <ScrollArea scrollFade={local.scrollFade ?? false}>
@@ -194,7 +192,7 @@ export function DialogBody(props: DialogBodyProps): JSX.Element {
 
 export function DialogHeader(props: DialogHeaderProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useDialog();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -224,7 +222,7 @@ export function DialogCloseTrigger(
 
 export function DialogFooter(props: DialogFooterProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useDialog();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -253,6 +251,7 @@ export function DialogShorthand(props: DialogProps): JSX.Element {
             if (typeof local.trigger === "function") {
               return local.trigger(triggerProps());
             }
+
             return (
               <ark.span {...triggerProps()} style={{ display: "contents" }}>
                 {local.trigger}
@@ -300,7 +299,7 @@ export type {
   DialogRootProps,
   DialogTitleProps,
   DialogTriggerProps,
-} from "@ark-ui/solid/dialog";
+} from "@ark-ui/solid";
 
 export const Dialog = Object.assign(DialogShorthand, {
   Backdrop: DialogBackdrop,

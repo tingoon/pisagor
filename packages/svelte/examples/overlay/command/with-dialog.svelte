@@ -1,8 +1,7 @@
 <script lang="ts">
-  import { useListCollection } from "@ark-ui/svelte/collection";
-  import { useFilter } from "@ark-ui/svelte/locale";
+  import { useFilter, useListCollection } from "@ark-ui/svelte";
   import { Button, Command, Kbd } from "@pisagor/svelte";
-  import ArrowBendDownLeftIcon from "phosphor-svelte/lib/ArrowBendDownLeftIcon";
+  import { ArrowBendDownLeftIcon } from "phosphor-svelte";
 
   const initialItems = [
     { group: "File", label: "New file", shortcut: "⌘N", value: "new" },

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Autocomplete } from "@pisagor/svelte";
   import type { ComponentProps, Snippet } from "svelte";
-  import FieldShell from "../internal/field-shell.svelte";
+  import { FieldShell } from "../internal";
 
   type AutocompleteProps = ComponentProps<typeof Autocomplete>;
 

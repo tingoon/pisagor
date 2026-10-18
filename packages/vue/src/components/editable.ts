@@ -1,20 +1,19 @@
 import {
   Editable as EditablePrimitive,
   type EditableValueChangeDetails,
-} from "@ark-ui/vue/editable";
+} from "@ark-ui/vue";
 import type { EditableProps as BaseEditableProps } from "@pisagor/props";
 import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import type { ButtonProps } from "./button";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Slot recipe context
 const {
   provideStyles: provideEditableStyles,
-  useStyles: useEditable,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Editable",
@@ -221,7 +220,7 @@ export const EditablePreview = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useEditable();
+    const styles = useStyles();
 
     const surfaceVariant = useFormControlSurface();
 

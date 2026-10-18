@@ -1,5 +1,6 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import { Listbox } from "@pisagor/solid";
+
 export function Compound() {
   const collection = createListCollection({
     items: [
@@ -8,6 +9,7 @@ export function Compound() {
       { label: "Ireland", value: "ie" },
     ],
   });
+
   return (
     <Listbox.Root collection={collection} defaultValue={["br"]}>
       <Listbox.Content>

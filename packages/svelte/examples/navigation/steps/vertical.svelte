@@ -1,7 +1,6 @@
 <script lang="ts">
   import { Button, Steps } from "@pisagor/svelte";
-  import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
-  import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
+  import { CaretLeftIcon, CaretRightIcon } from "phosphor-svelte";
 
   const items = [
     { description: "Personal", title: "Info" },

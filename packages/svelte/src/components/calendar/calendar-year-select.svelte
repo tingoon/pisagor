@@ -2,15 +2,15 @@
   import {
     DatePicker as CalendarPrimitive,
     type DatePickerYearSelectProps,
-  } from "@ark-ui/svelte/date-picker";
+  } from "@ark-ui/svelte";
   import { formControlShellRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
+  import { CaretDownIcon } from "phosphor-svelte";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
-  import { useCalendar } from "./calendar.context";
+  import { useStyles } from "./calendar.context";
 
   let { class: className, ...rest }: DatePickerYearSelectProps = $props();
-  const styles = useCalendar();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
   const surfaceVariant = useFormControlSurface();
   const selectClassName = $derived(

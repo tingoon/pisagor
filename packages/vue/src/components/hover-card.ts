@@ -1,4 +1,4 @@
-import { HoverCard as HoverCardPrimitive } from "@ark-ui/vue/hover-card";
+import { HoverCard as HoverCardPrimitive } from "@ark-ui/vue";
 import type { HoverCardProps as BaseHoverCardProps } from "@pisagor/props";
 import { hoverCardRecipe } from "@pisagor/recipes";
 import {
@@ -9,11 +9,10 @@ import {
   type PropType,
   Teleport,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { provideStyles: provideHoverCardStyles, useStyles: useHoverCard } =
+const { provideStyles: provideHoverCardStyles, useStyles } =
   createSlotRecipeContext({
     name: "HoverCard",
     recipe: hoverCardRecipe,
@@ -101,7 +100,7 @@ export const HoverCardArrow = defineComponent({
     style: { default: undefined, type: Object as PropType<CSSProperties> },
   },
   setup(props, { attrs, slots }) {
-    const styles = useHoverCard();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -135,7 +134,7 @@ export const HoverCardContent = defineComponent({
     showArrow: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    const styles = useHoverCard();
+    const styles = useStyles();
 
     return () =>
       hoverCardTeleport(

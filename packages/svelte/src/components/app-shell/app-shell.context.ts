@@ -1,5 +1,5 @@
 import { type AppShellRecipe, appShellRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils/create-context";
 
 export type AppShellPlacement = "start" | "end";
@@ -98,7 +98,7 @@ export type AppShellContextValue = AppShellStateValue & {
   slots: AppShellRecipe;
 };
 
-export const { Context: AppShellStylesContext, useStyles: useAppShellStyles } =
+export const { Context: AppShellStylesContext, useStyles } =
   createSlotRecipeContext({
     name: "AppShell",
     recipe: appShellRecipe,
@@ -110,8 +110,9 @@ export const useAppShellState = stateCtx.getContext;
 
 /** Nearest app-shell styles + layout state (getter object — read lazily). */
 export function useAppShell(): AppShellContextValue {
-  const styles = useAppShellStyles();
+  const styles = useStyles();
   const state = useAppShellState();
+
   return {
     get defaultInspectorResizableProps() {
       return state.defaultInspectorResizableProps;

@@ -1,6 +1,6 @@
 import { navbarRecipe } from "@pisagor/recipes";
 import { Avatar, Button, Navbar, NavigationMenu } from "@pisagor/solid";
-import { BellIcon, DatabaseIcon } from "@pisagor/solid/icons";
+import { BellIcon, DatabaseIcon } from "@squidlab/phosphor-solid/icons";
 import { tv } from "tailwind-variants";
 
 const brandNavbarRecipe = tv({

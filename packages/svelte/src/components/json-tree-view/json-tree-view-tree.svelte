@@ -2,7 +2,7 @@
   import {
     JsonTreeView as JsonTreeViewPrimitive,
     type JsonTreeViewTreeProps,
-  } from "@ark-ui/svelte/json-tree-view";
+  } from "@ark-ui/svelte";
   import { withContext } from "./json-tree-view.context";
 
   let { ...rest }: JsonTreeViewTreeProps = $props();

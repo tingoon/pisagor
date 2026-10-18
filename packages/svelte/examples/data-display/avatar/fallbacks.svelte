@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Avatar } from "@pisagor/svelte";
-  import UserIcon from "phosphor-svelte/lib/UserIcon";
+  import { UserIcon } from "phosphor-svelte";
 </script>
 
 <div class="flex flex-wrap items-center gap-2">

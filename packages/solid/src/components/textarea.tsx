@@ -1,7 +1,7 @@
 import {
   Field as FieldPrimitive,
   type FieldTextareaProps,
-} from "@ark-ui/solid/field";
+} from "@ark-ui/solid";
 import type { TextareaProps as BaseTextareaProps } from "@pisagor/props";
 import {
   formControlShellRecipe,
@@ -12,8 +12,7 @@ import { cn } from "@pisagor/utils";
 import type { JSX, ParentProps } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { useClearableInput } from "../hooks";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { SizeScaleProps, VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 import { callEventHandler } from "../utils";
 import { Input } from "./input";
 import {
@@ -23,15 +22,17 @@ import {
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: TextareaStylesContext, useStyles: useTextarea } =
-  createSlotRecipeContext({ name: "Textarea", recipe: textareaRecipe });
+const { Context: TextareaStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Textarea",
+  recipe: textareaRecipe,
+});
 // #endregion
 
 type FormControlVariant = "primary" | "secondary";
 type TextareaClassNames = VariantClassNames<TextareaRecipeSlot>;
 
 type TextareaRootProps = FieldTextareaProps &
-  SizeScaleProps & {
+  BaseTextareaProps & {
     variant?: FormControlVariant;
     /**
      * Initial value when uncontrolled. Solid has no native defaultValue on
@@ -40,7 +41,7 @@ type TextareaRootProps = FieldTextareaProps &
     defaultValue?: string | number | readonly string[];
   };
 
-export interface TextareaProps extends TextareaRootProps, BaseTextareaProps {
+export interface TextareaProps extends TextareaRootProps {
   clearable?: boolean;
   onValueChange?: (value: string) => void;
   classNames?: TextareaClassNames;
@@ -84,7 +85,7 @@ function TextareaField(
     "size",
     "ref",
   ]);
-  const styles = useTextarea();
+  const styles = useStyles();
   const surfaceVariant = useFormControlSurface();
   const variant = () => local.variant ?? ("primary" as FormControlVariant);
 
@@ -123,7 +124,7 @@ function TextareaField(
 function TextareaGroup(
   props: ParentProps<{ class?: string; variant?: FormControlVariant }>,
 ): JSX.Element {
-  const styles = useTextarea();
+  const styles = useStyles();
 
   return (
     <InputGroupRoot
@@ -147,7 +148,7 @@ function TextareaClearableField(
     "classNames",
     "defaultValue",
   ]);
-  const styles = useTextarea();
+  const styles = useStyles();
 
   return (
     <FieldPrimitive.Textarea
@@ -161,7 +162,7 @@ function TextareaClearableField(
 }
 
 function TextareaClearAddon(props: { onClear: () => void }): JSX.Element {
-  const styles = useTextarea();
+  const styles = useStyles();
 
   return (
     <InputGroupAddon align="inline-end" class={styles.slots.clearAddon()}>

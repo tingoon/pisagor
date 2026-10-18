@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import { PhCaretDown } from "@phosphor-icons/vue";
 import type { NavigationMenuProps as BaseNavigationMenuRootProps } from "@pisagor/props";
 import {
@@ -11,28 +11,17 @@ import {
   handleNavigationMenuContentKeyDown,
   handleNavigationMenuListKeyDown,
 } from "@pisagor/utils";
+import { computed, defineComponent, h, inject, provide, ref, useId } from "vue";
+import type { InjectionKey, PropType, Ref } from "vue";
 import {
-  computed,
-  defineComponent,
-  h,
-  type InjectionKey,
-  inject,
-  type PropType,
-  provide,
-  type Ref,
-  ref,
-  useId,
-} from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue, VariantClassNames } from "../internal/types";
-import { useTranslation } from "./provider/context";
+  type ClassValue,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Slot recipe context
-const {
-  useStyles: useNavigationMenu,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "NavigationMenu",
   recipe: navigationMenuRecipe,
 });
@@ -67,6 +56,7 @@ function useNavigationMenuItem(part: string) {
       `NavigationMenu.${part} must be used in NavigationMenu.Item`,
     );
   }
+
   return item;
 }
 
@@ -91,12 +81,16 @@ export const NavigationMenuRoot = defineComponent({
   inheritAttrs: false,
   name: "NavigationMenu",
   setup(_, { attrs, slots }) {
+    const { m } = useLocale();
     const openId = ref<string | null>(null);
     provide(NavigationMenuOpenKey, openId);
-    const label = useTranslation("navigationMenu.label");
 
     return () =>
-      h(NavigationMenuNav as ArkPart, { "aria-label": label, ...attrs }, slots);
+      h(
+        NavigationMenuNav as ArkPart,
+        { "aria-label": m("navigationMenu.label"), ...attrs },
+        slots,
+      );
   },
 });
 
@@ -181,7 +175,7 @@ export const NavigationMenuTrigger = defineComponent({
   name: "NavigationMenu.Trigger",
   props: { class: classProp },
   setup(props, { attrs, slots }) {
-    const styles = useNavigationMenu();
+    const styles = useStyles();
     const item = useNavigationMenuItem("Trigger");
 
     return () =>
@@ -230,7 +224,7 @@ export const NavigationMenuContent = defineComponent({
   name: "NavigationMenu.Content",
   props: { class: classProp },
   setup(props, { attrs, slots }) {
-    const styles = useNavigationMenu();
+    const styles = useStyles();
     const item = useNavigationMenuItem("Content");
 
     return () =>
@@ -271,7 +265,7 @@ export const NavigationMenuLink = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useNavigationMenu();
+    const styles = useStyles();
 
     return () => {
       const slots$ = styles.slots;

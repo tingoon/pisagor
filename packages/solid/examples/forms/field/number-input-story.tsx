@@ -1,4 +1,5 @@
 import { Field, NumberInput } from "@pisagor/solid";
+
 export function NumberInputStory() {
   return (
     <Field>

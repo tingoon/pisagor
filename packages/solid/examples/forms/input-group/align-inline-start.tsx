@@ -1,5 +1,5 @@
 import { InputGroup } from "@pisagor/solid";
-import { FunnelIcon } from "@pisagor/solid/icons";
+import { FunnelIcon } from "@squidlab/phosphor-solid/icons";
 
 export function AlignInlineStart() {
   return (

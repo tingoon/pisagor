@@ -1,48 +1,31 @@
 import {
   LocaleProvider as ArkLocaleProvider,
   useLocaleContext,
-} from "@ark-ui/solid/locale";
-import {
-  defaultLocale,
-  defaultMotion,
-  type LocaleConfig,
-  type MotionConfig,
-  type TranslationsConfig,
-} from "@pisagor/utils";
-import { isNullish, merge, mergeDeep, omitBy } from "remeda";
+} from "@ark-ui/solid";
+import { defaultMotion, resolveLocale } from "@pisagor/utils";
+import type { LocaleConfig, MotionConfig } from "@pisagor/utils";
+import { isNullish, mergeDeep, omitBy } from "remeda";
 import type { JSX, ParentProps } from "solid-js";
-import { Show, splitProps } from "solid-js";
+import { createMemo, Show, splitProps } from "solid-js";
 import { Toaster, type ToasterProps } from "../toast";
 import {
+  createLocaleValue,
   LocaleContext,
   MotionContext,
   ProviderContext,
-  TranslationsContext,
-  useLocale,
   useMotion,
   useProvider,
-  useTranslations,
+  useResolvedLocale,
 } from "./context";
 
 // #region Types
-export interface ProviderProps extends ParentProps {
-  /** Locale settings merged over the parent `Provider`. */
-  locale?: Partial<LocaleConfig>;
-  /**
-   * Partial translation overrides merged over the parent `Provider`
-   * translations and the built-in English defaults.
-   */
-  translations?: TranslationsConfig;
+export interface ProviderProps extends ParentProps, LocaleConfig {
   /** Animation settings merged over the parent `Provider`. */
   motion?: Partial<MotionConfig>;
 }
 
-export interface LocaleProviderProps
-  extends ParentProps, Partial<LocaleConfig> {}
-
-export interface TranslationsProviderProps extends ParentProps {
-  translations?: TranslationsConfig;
-}
+/** `locale` and partial `messages` merged over the parent `Provider`. */
+export interface LocaleProviderProps extends ParentProps, LocaleConfig {}
 
 export type MotionProviderProps = ParentProps & Partial<MotionConfig>;
 
@@ -50,27 +33,35 @@ export type ToasterProviderProps = ToasterProps;
 // #endregion
 
 // #region Parts
-/** Override only the locale (and Ark-derived `dir`) for a subtree. */
+/**
+ * Override the locale and/or UI messages for a subtree. Feeds Ark's
+ * `LocaleProvider`, which derives `dir`.
+ */
 export function LocaleProvider(props: LocaleProviderProps): JSX.Element {
-  const [local] = splitProps(props, ["children", "locale"]);
-  const parentLocale = useLocale();
-  const config = () =>
-    mergeDeep(
-      mergeDeep(defaultLocale, parentLocale ?? {}),
-      omitBy({ locale: local.locale }, isNullish),
-    ) as LocaleConfig;
+  const [local] = splitProps(props, ["children", "locale", "messages"]);
+  const parentLocale = useResolvedLocale();
+  const value = createLocaleValue(
+    createMemo(() =>
+      resolveLocale(
+        { locale: local.locale, messages: local.messages },
+        parentLocale,
+      ),
+    ),
+  );
 
   return (
-    <ArkLocaleProvider locale={config().locale}>
-      <LocaleContext value={config()}>
+    <ArkLocaleProvider locale={value.locale}>
+      <LocaleContext value={value}>
         <LocaleDir>{local.children}</LocaleDir>
       </LocaleContext>
     </ArkLocaleProvider>
   );
 }
 
+/** Sets `dir` from the nearest Ark locale. */
 function LocaleDir(props: ParentProps): JSX.Element {
   const locale = useLocaleContext();
+
   return (
     <div
       data-part="locale"
@@ -80,20 +71,6 @@ function LocaleDir(props: ParentProps): JSX.Element {
     >
       {props.children}
     </div>
-  );
-}
-
-/** Override only translations for a subtree. */
-export function TranslationsProvider(
-  props: TranslationsProviderProps,
-): JSX.Element {
-  const [local] = splitProps(props, ["children", "translations"]);
-  const parentTranslations = useTranslations();
-  const config = () =>
-    merge(parentTranslations ?? {}, local.translations ?? {});
-
-  return (
-    <TranslationsContext value={config()}>{local.children}</TranslationsContext>
   );
 }
 
@@ -128,37 +105,42 @@ export function ToasterProvider(props: ToasterProviderProps): JSX.Element {
 
 function ProviderRoot(props: ProviderProps): JSX.Element {
   const [local] = splitProps(props, [
-    "locale",
     "children",
-    "translations",
+    "locale",
+    "messages",
     "motion",
   ]);
   const parentConfig = useProvider();
   const parentMotion = useMotion();
-  const parentLocale = useLocale();
+  const parentLocale = useResolvedLocale();
   const root = !parentConfig;
 
-  const config = () => ({
-    locale: mergeDeep(
-      mergeDeep(defaultLocale, parentLocale ?? {}),
-      omitBy(local.locale ?? {}, isNullish),
-    ) as LocaleConfig,
-    motion: mergeDeep(
-      mergeDeep(defaultMotion, parentMotion ?? {}),
-      omitBy(local.motion ?? {}, isNullish),
-    ) as MotionConfig,
-  });
+  const locale = createLocaleValue(
+    createMemo(() =>
+      resolveLocale(
+        { locale: local.locale, messages: local.messages },
+        parentLocale,
+      ),
+    ),
+  );
+  const config = {
+    locale,
+    get motion() {
+      return mergeDeep(
+        mergeDeep(defaultMotion, parentMotion ?? {}),
+        omitBy(local.motion ?? {}, isNullish),
+      ) as MotionConfig;
+    },
+  };
 
   return (
-    <ProviderContext value={config()}>
-      <LocaleProvider {...local.locale}>
+    <ProviderContext value={config}>
+      <LocaleProvider locale={local.locale} messages={local.messages}>
         <MotionProvider {...local.motion}>
-          <TranslationsProvider translations={local.translations}>
-            <Show when={root}>
-              <ToasterProvider />
-            </Show>
-            {local.children}
-          </TranslationsProvider>
+          <Show when={root}>
+            <ToasterProvider />
+          </Show>
+          {local.children}
         </MotionProvider>
       </LocaleProvider>
     </ProviderContext>
@@ -170,5 +152,4 @@ export const Provider = Object.assign(ProviderRoot, {
   Locale: LocaleProvider,
   Motion: MotionProvider,
   Toaster: ToasterProvider,
-  Translations: TranslationsProvider,
 });

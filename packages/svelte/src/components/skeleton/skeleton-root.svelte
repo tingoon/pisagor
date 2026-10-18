@@ -1,15 +1,13 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { SkeletonProps as BaseSkeletonProps } from "@pisagor/props";
   import { skeletonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { SizeScaleProps } from "../../internal/types";
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
-  } & BaseSkeletonProps &
-    SizeScaleProps;
+  } & BaseSkeletonProps;
 
   let {
     size = "md",

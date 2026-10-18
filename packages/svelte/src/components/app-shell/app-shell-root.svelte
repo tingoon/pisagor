@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { useHotkey } from "@ark-ui/svelte/hotkeys";
+  import { useHotkey } from "@ark-ui/svelte";
   import type { AppShellProps as BaseAppShellProps } from "@pisagor/props";
   import { appShellRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
@@ -8,14 +8,16 @@
   import {
     APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS,
     APP_SHELL_DEFAULT_PANEL_RESIZABLE_PROPS,
-    type AppShellFixedStackVar,
-    type AppShellPlacement,
-    type AppShellRailState,
-    type AppShellRegionVar,
-    type AppShellSideState,
     setAppShellContext,
     ZERO_FIXED_STACK_VARS,
     ZERO_REGION_VARS,
+  } from "./app-shell.context";
+  import type {
+    AppShellFixedStackVar,
+    AppShellPlacement,
+    AppShellRailState,
+    AppShellRegionVar,
+    AppShellSideState,
   } from "./app-shell.context";
 
   type Props = Omit<HTMLAttributes<HTMLDivElement>, "style"> & {
@@ -75,6 +77,7 @@
 
   function registerBanner() {
     bannerCount += 1;
+
     return () => {
       bannerCount = Math.max(0, bannerCount - 1);
     };
@@ -82,6 +85,7 @@
 
   function registerNavigation() {
     navigationCount += 1;
+
     return () => {
       navigationCount = Math.max(0, navigationCount - 1);
     };
@@ -162,6 +166,7 @@
     }
     if (hasBanner) return `${APP_SHELL_BANNER_ROW}\n${APP_SHELL_CONTENT_ROW}`;
     if (hasNavigation) return `${APP_SHELL_NAV_ROW}\n${APP_SHELL_CONTENT_ROW}`;
+
     return APP_SHELL_CONTENT_ROW;
   });
 

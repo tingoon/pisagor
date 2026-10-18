@@ -18,6 +18,7 @@ export async function listFormIds(framework: Framework): Promise<string[]> {
   const name = formCollectionName[framework];
   if (!name) return [];
   const entries = await getCollection(name);
+
   return entries.map((entry) => entry.id).sort();
 }
 
@@ -25,6 +26,7 @@ export async function listFormStaticPaths(
   framework: Framework,
 ): Promise<{ params: { id: string } }[]> {
   const ids = await listFormIds(framework);
+
   return ids.map((id) => ({ params: { id } }));
 }
 
@@ -46,6 +48,7 @@ export async function loadFormPage(
     throw new Error(`Missing ${framework} form docs for "${id}"`);
   }
   const { Content, headings } = await render(entry);
+
   return {
     Content,
     docs: entry.data as ComponentDocs,
@@ -66,6 +69,7 @@ export async function loadFormBody(
   if (!entry) {
     throw new Error(`Missing ${framework} form docs for "${id}"`);
   }
+
   return entry.body ?? "";
 }
 

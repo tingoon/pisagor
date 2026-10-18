@@ -4,7 +4,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/switch` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (`packages/props/src/switch.ts`, native HTML attributes omitted). */
 export const switchProps: PropRow[] = [
   {
     name: "size",

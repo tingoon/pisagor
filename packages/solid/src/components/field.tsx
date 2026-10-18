@@ -1,21 +1,22 @@
-import { ark } from "@ark-ui/solid/factory";
+import {
+  Field as FieldPrimitive,
+  Fieldset as FieldsetPrimitive,
+  ark,
+} from "@ark-ui/solid";
 import type {
   FieldErrorTextProps,
   FieldHelperTextProps,
   FieldLabelProps,
-  FieldRootProps as FieldPrimitiveRootProps,
-} from "@ark-ui/solid/field";
-import { Field as FieldPrimitive } from "@ark-ui/solid/field";
-import {
-  type FieldsetLegendProps,
-  Fieldset as FieldsetPrimitive,
-  type FieldsetRootProps,
-} from "@ark-ui/solid/fieldset";
+  FieldRootProps as FieldRootPrimitiveProps,
+  FieldsetLegendProps,
+  FieldsetRootProps,
+  HTMLArkProps,
+} from "@ark-ui/solid";
 import type { FieldProps as BaseFieldProps } from "@pisagor/props";
 import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { createMemo, Show, splitProps, useContext } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Separator } from "./separator";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -28,12 +29,13 @@ const { Context: FieldStylesContext, withProvider } = createSlotRecipeContext({
 /** Resolves recipe slots from the nearest Field/Group/Set, or a default recipe. */
 export function useFieldSlots(recipe: typeof fieldRecipe = fieldRecipe) {
   const styles = useContext(FieldStylesContext);
+
   return () => styles?.slots ?? recipe();
 }
 // #endregion
 
 export interface FieldRootProps
-  extends FieldPrimitiveRootProps, BaseFieldProps {}
+  extends FieldRootPrimitiveProps, BaseFieldProps {}
 
 export type FieldProps = FieldRootProps;
 
@@ -46,14 +48,13 @@ export interface FieldSetProps extends FieldsetRootProps, BaseFieldProps {}
 export type FieldHelperProps = FieldHelperTextProps;
 export type FieldErrorProps = FieldErrorTextProps;
 
-export interface FieldGroupProps
-  extends ComponentProps<typeof ark.div>, BaseFieldProps {}
+export interface FieldGroupProps extends HTMLArkProps<"div">, BaseFieldProps {}
 
-export type FieldContentProps = ComponentProps<typeof ark.div>;
-export type FieldRequiredIndicatorProps = ComponentProps<typeof ark.span>;
-export type FieldTitleProps = ComponentProps<typeof ark.div>;
-export type FieldDescriptionProps = ComponentProps<typeof ark.p>;
-export type FieldSeparatorProps = ComponentProps<typeof ark.div>;
+export type FieldContentProps = HTMLArkProps<"div">;
+export type FieldRequiredIndicatorProps = HTMLArkProps<"span">;
+export type FieldTitleProps = HTMLArkProps<"div">;
+export type FieldDescriptionProps = HTMLArkProps<"p">;
+export type FieldSeparatorProps = HTMLArkProps<"div">;
 
 export const FieldRoot: Component<FieldRootProps> = withProvider(
   FieldPrimitive.Root,
@@ -63,6 +64,7 @@ export const FieldRoot: Component<FieldRootProps> = withProvider(
 function FieldSetElement(props: FieldsetRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
+
   return (
     <FieldsetPrimitive.Root
       {...rest}
@@ -92,6 +94,7 @@ export function FieldSet(props: FieldSetProps): JSX.Element {
 export function FieldLegend(props: FieldLegendProps): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "class"]);
   const slots = useFieldSlots();
+
   return (
     <FieldsetPrimitive.Legend
       {...rest}
@@ -101,9 +104,10 @@ export function FieldLegend(props: FieldLegendProps): JSX.Element {
   );
 }
 
-function FieldGroupElement(props: ComponentProps<typeof ark.div>): JSX.Element {
+function FieldGroupElement(props: HTMLArkProps<"div">): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
+
   return (
     <ark.div
       {...rest}
@@ -135,6 +139,7 @@ export function FieldGroup(props: FieldGroupProps): JSX.Element {
 export function FieldContent(props: FieldContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
+
   return (
     <ark.div
       {...rest}
@@ -148,6 +153,7 @@ export function FieldContent(props: FieldContentProps): JSX.Element {
 export function FieldLabel(props: FieldLabelProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
+
   return (
     <FieldPrimitive.Label
       {...rest}
@@ -176,6 +182,7 @@ export function FieldRequiredIndicator(
 export function FieldTitle(props: FieldTitleProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
+
   return (
     <ark.div
       {...rest}
@@ -189,6 +196,7 @@ export function FieldTitle(props: FieldTitleProps): JSX.Element {
 export function FieldDescription(props: FieldDescriptionProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
+
   return (
     <ark.p
       {...rest}
@@ -230,6 +238,7 @@ export function FieldSeparator(props: FieldSeparatorProps): JSX.Element {
 export function FieldHelper(props: FieldHelperProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
+
   return (
     <FieldPrimitive.HelperText
       {...rest}
@@ -241,6 +250,7 @@ export function FieldHelper(props: FieldHelperProps): JSX.Element {
 export function FieldError(props: FieldErrorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
+
   return (
     <FieldPrimitive.ErrorText
       {...rest}
@@ -249,7 +259,7 @@ export function FieldError(props: FieldErrorProps): JSX.Element {
   );
 }
 
-export type { FieldLabelProps } from "@ark-ui/solid/field";
+export type { FieldLabelProps } from "@ark-ui/solid";
 
 export const Field = Object.assign(FieldRoot, {
   Content: FieldContent,

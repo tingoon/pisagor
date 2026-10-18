@@ -1,18 +1,18 @@
 <script lang="ts">
   import {
-    type FloatingPanelControlProps,
     FloatingPanel as FloatingPanelPrimitive,
-  } from "@ark-ui/svelte/floating-panel";
+    type FloatingPanelControlProps,
+  } from "@ark-ui/svelte";
   import { floatingPanelRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import { useFloatingPanel } from "./floating-panel.context";
+  import { useStyles } from "./floating-panel.context";
 
   let {
     children,
     class: className,
     ...rest
   }: FloatingPanelControlProps = $props();
-  const ctx = useFloatingPanel();
+  const ctx = useStyles();
   const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
 </script>
 

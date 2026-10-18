@@ -1,9 +1,12 @@
-import { Switch as SwitchPrimitive } from "@ark-ui/vue/switch";
+import { Switch as SwitchPrimitive } from "@ark-ui/vue";
 import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue, VariantClassNames } from "../internal/types";
+import {
+  type ClassValue,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context

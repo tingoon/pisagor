@@ -1,28 +1,29 @@
-import { ark } from "@ark-ui/vue/factory";
 import {
-  type ProgressRootProps,
   ProgressRootProvider,
-  type ProgressValueChangeDetails,
   ProgressValueText,
-  type UseProgressReturn,
+  ark,
   useProgress,
   useProgressContext,
-} from "@ark-ui/vue/progress";
+} from "@ark-ui/vue";
+import type {
+  ProgressRootProps,
+  ProgressValueChangeDetails,
+  UseProgressReturn,
+} from "@ark-ui/vue";
 import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
 import {
   type CircularProgressRecipeSlot,
   circularProgressRecipe,
 } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType, type VNode } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue, VariantClassNames } from "../internal/types";
+import {
+  type ClassValue,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 
 // #region Context
-const {
-  useStyles: useCircularProgress,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "CircularProgress",
   recipe: circularProgressRecipe,
 });
@@ -76,7 +77,7 @@ const CircularProgressTrack = defineComponent({
     },
   },
   setup(props) {
-    const styles = useCircularProgress();
+    const styles = useStyles();
     const progress = useProgressContext();
 
     return () => {

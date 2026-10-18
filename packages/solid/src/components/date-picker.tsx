@@ -1,15 +1,15 @@
-import type {
-  DatePickerPresetTriggerProps,
-  DatePickerContentProps as DatePickerPrimitiveContentProps,
-  DatePickerInputProps as DatePickerPrimitiveInputProps,
-  DatePickerRootProps as DatePickerPrimitiveRootProps,
-  DatePickerTriggerProps as DatePickerPrimitiveTriggerProps,
-  DatePickerValueTextProps,
-} from "@ark-ui/solid/date-picker";
 import {
   DatePicker as DatePickerPrimitive,
   useDatePickerContext,
-} from "@ark-ui/solid/date-picker";
+} from "@ark-ui/solid";
+import type {
+  DatePickerContentProps as DatePickerContentPrimitiveProps,
+  DatePickerInputProps as DatePickerInputPrimitiveProps,
+  DatePickerPresetTriggerProps,
+  DatePickerRootProps as DatePickerRootPrimitiveProps,
+  DatePickerTriggerProps as DatePickerTriggerPrimitiveProps,
+  DatePickerValueTextProps,
+} from "@ark-ui/solid";
 import type { DatePickerProps as BaseDatePickerProps } from "@pisagor/props";
 import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
@@ -22,20 +22,23 @@ import {
 } from "solid-js";
 import { Portal } from "solid-js/web";
 import { useClearableInput } from "../hooks";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CalendarIcon, ClockIcon, XIcon } from "../internal/icons";
+import {
+  CalendarIcon,
+  ClockIcon,
+  XIcon,
+  createSlotRecipeContext,
+} from "../internal";
 import { createContext } from "../utils";
 import { Calendar, CalendarSlotsContext } from "./calendar";
 import { Input, type InputProps } from "./input";
 import { InputGroup } from "./input-group";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
-const { Context: DatePickerSlotsContext, useStyles: useDatePickerStyles } =
-  createSlotRecipeContext({
-    name: "DatePicker",
-    recipe: datePickerRecipe,
-  });
+const { Context: DatePickerSlotsContext, useStyles } = createSlotRecipeContext({
+  name: "DatePicker",
+  recipe: datePickerRecipe,
+});
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -45,8 +48,9 @@ const { DatePickerVariantContext, useDatePickerVariant } = createContext(
 
 /** Recipe styles plus the optional shell `variant` (getters stay reactive). */
 function useDatePicker() {
-  const styles = useDatePickerStyles();
+  const styles = useStyles();
   const options = useDatePickerVariant();
+
   return {
     get slots() {
       return styles.slots;
@@ -58,12 +62,12 @@ function useDatePicker() {
 }
 // #endregion
 
-export interface DatePickerTriggerProps extends DatePickerPrimitiveTriggerProps {
+export interface DatePickerTriggerProps extends DatePickerTriggerPrimitiveProps {
   clearable?: boolean;
 }
 
 export interface DatePickerInputProps
-  extends Omit<DatePickerPrimitiveInputProps, "size">, InputProps {
+  extends Omit<DatePickerInputPrimitiveProps, "size">, InputProps {
   clearable?: boolean;
 }
 
@@ -72,13 +76,13 @@ export interface DatePickerTimerProps
   clearable?: boolean;
 }
 
-export interface DatePickerContentProps extends DatePickerPrimitiveContentProps {
+export interface DatePickerContentProps extends DatePickerContentPrimitiveProps {
   showCalendar?: boolean;
 }
 
 export interface DatePickerRootProps
   extends
-    Omit<DatePickerPrimitiveRootProps, "onValueChange">,
+    Omit<DatePickerRootPrimitiveProps, "onValueChange">,
     BaseDatePickerProps {
   variant?: FormControlVariant;
   onValueChange?: (value: DatePickerRootProps["value"]) => void;
@@ -247,6 +251,7 @@ export function DatePickerInput(props: DatePickerInputProps): JSX.Element {
 }
 
 export function DatePickerClearTrigger(): JSX.Element {
+  const { m } = useLocale();
   const api = useDatePickerContext();
 
   return (
@@ -255,7 +260,7 @@ export function DatePickerClearTrigger(): JSX.Element {
         asChild={(triggerProps) => (
           <InputGroup.Button
             {...triggerProps()}
-            aria-label={useTranslation("datePicker.clear")}
+            aria-label={m("datePicker.clear")}
             size="icon-xs"
             type="button"
             variant="ghost"
@@ -397,6 +402,7 @@ export function DatePickerValueText(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useDatePicker();
+
   return (
     <DatePickerPrimitive.ValueText
       {...rest}
@@ -414,7 +420,7 @@ export function DatePickerPresetTrigger(
 export type {
   DatePickerPresetTriggerProps,
   DatePickerValueTextProps,
-} from "@ark-ui/solid/date-picker";
+} from "@ark-ui/solid";
 
 export type { DatePickerRootProps as DatePickerProps };
 

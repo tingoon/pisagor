@@ -1,5 +1,9 @@
 import { Steps } from "@pisagor/solid";
-import { CreditCardIcon, HardDriveIcon, UserIcon } from "@pisagor/solid/icons";
+import {
+  CreditCardIcon,
+  HardDriveIcon,
+  UserIcon,
+} from "@squidlab/phosphor-solid/icons";
 
 export function Icon() {
   const items = [
@@ -7,6 +11,7 @@ export function Icon() {
     { icon: HardDriveIcon, id: "drive" },
     { icon: CreditCardIcon, id: "card" },
   ];
+
   return (
     <Steps count={items.length}>
       <Steps.List>

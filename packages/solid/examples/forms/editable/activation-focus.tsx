@@ -1,5 +1,6 @@
 import { Button, Card, Editable, Field, Input } from "@pisagor/solid";
-import { CheckIcon, XIcon } from "@pisagor/solid/icons";
+import { CheckIcon, XIcon } from "@squidlab/phosphor-solid/icons";
+
 export function ActivationFocus() {
   return (
     <Card>

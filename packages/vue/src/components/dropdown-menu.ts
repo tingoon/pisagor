@@ -1,5 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
-import { Menu as MenuPrimitive } from "@ark-ui/vue/menu";
+import { Menu as MenuPrimitive, ark } from "@ark-ui/vue";
 import { PhCaretRight, PhCheck } from "@phosphor-icons/vue";
 import type {
   DropdownMenuItemProps as BaseDropdownMenuItemProps,
@@ -14,8 +13,7 @@ import {
   h,
   type PropType,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Slot recipe context
 const {
@@ -34,6 +32,7 @@ function useDropdownMenuStyles(): {
   readonly slots: ReturnType<typeof dropdownMenuRecipe>;
 } {
   const styles = useOptionalDropdownMenuStyles();
+
   return {
     get slots() {
       return styles?.slots ?? dropdownMenuRecipe();

@@ -1,26 +1,24 @@
 import {
-  type CollectionItem,
+  Combobox as ComboboxPrimitive,
+  Portal,
   createListCollection,
-} from "@ark-ui/react/collection";
+  useComboboxContext,
+} from "@ark-ui/react";
 import type {
+  CollectionItem,
   ComboboxClearTriggerProps,
+  ComboboxContentProps as ComboboxContentPrimitiveProps,
   ComboboxControlProps,
   ComboboxEmptyProps,
+  ComboboxInputProps as ComboboxInputPrimitiveProps,
   ComboboxItemGroupLabelProps,
+  ComboboxItemGroupProps as ComboboxItemGroupPrimitiveProps,
+  ComboboxItemProps as ComboboxItemPrimitiveProps,
   ComboboxListProps,
   ComboboxPositionerProps,
-  ComboboxContentProps as ComboboxPrimitiveContentProps,
-  ComboboxInputProps as ComboboxPrimitiveInputProps,
-  ComboboxItemGroupProps as ComboboxPrimitiveItemGroupProps,
-  ComboboxItemProps as ComboboxPrimitiveItemProps,
-  ComboboxRootProps as ComboboxPrimitiveRootProps,
+  ComboboxRootProps as ComboboxRootPrimitiveProps,
   ComboboxTriggerProps,
-} from "@ark-ui/react/combobox";
-import {
-  Combobox as ComboboxPrimitive,
-  useComboboxContext,
-} from "@ark-ui/react/combobox";
-import { Portal } from "@ark-ui/react/portal";
+} from "@ark-ui/react";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
 import type { ComboboxProps as BaseComboboxRootProps } from "@pisagor/props";
 import {
@@ -30,11 +28,10 @@ import {
 } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { createContext, use } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { FormControlVariant } from "../internal/types";
+import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const { Context: ComboboxStylesContext } = createSlotRecipeContext({
@@ -44,6 +41,7 @@ const { Context: ComboboxStylesContext } = createSlotRecipeContext({
 
 function useComboboxSlots() {
   const styles = use(ComboboxStylesContext);
+
   return styles?.slots ?? comboboxRecipe();
 }
 
@@ -59,6 +57,7 @@ const ComboboxInsideControlContext = createContext(false);
 /** @deprecated Prefer composing within Combobox.Root; kept for public API. */
 export function useComboboxRoot() {
   const styles = use(ComboboxStylesContext);
+
   return styles ? { slots: styles.slots } : undefined;
 }
 // #endregion
@@ -71,7 +70,7 @@ interface ComboboxPresetItem {
 }
 
 export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  ComboboxPrimitiveRootProps<T>,
+  ComboboxRootPrimitiveProps<T>,
   "onValueChange"
 > & {
   /** Visual shell variant applied to the input. Defaults to `primary`. */
@@ -95,7 +94,7 @@ export interface ComboboxProps extends Omit<
 }
 
 export interface ComboboxInputProps
-  extends Omit<ComboboxPrimitiveInputProps, "size">, InputRootVariantProps {
+  extends Omit<ComboboxInputPrimitiveProps, "size">, InputRootVariantProps {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -116,17 +115,17 @@ export interface ComboboxInputProps
   showTrigger?: boolean;
 }
 
-export interface ComboboxItemGroupProps extends ComboboxPrimitiveItemGroupProps {
+export interface ComboboxItemGroupProps extends ComboboxItemGroupPrimitiveProps {
   /** The heading of the group */
   heading?: string | ReactNode;
 }
 
 export interface ComboboxItemProps
-  extends ComboboxPrimitiveItemProps, ComboboxVariantProps {}
+  extends ComboboxItemPrimitiveProps, ComboboxVariantProps {}
 
-export type ComboboxFieldInputProps = ComboboxPrimitiveInputProps;
+export type ComboboxFieldInputProps = ComboboxInputPrimitiveProps;
 
-export interface ComboboxContentProps extends ComboboxPrimitiveContentProps {
+export interface ComboboxContentProps extends ComboboxContentPrimitiveProps {
   /**
    * Whether to render the content in a portal with a positioner.
    *
@@ -192,7 +191,7 @@ export function ComboboxInput({
   className,
   ...rest
 }: ComboboxInputProps) {
-  const comboboxClearMessage = useMessage("combobox.clear");
+  const { m } = useLocale();
   const { inputValue } = useComboboxContext();
   const slots = useComboboxSlots();
   const control = use(ComboboxControlContext);
@@ -220,7 +219,7 @@ export function ComboboxInput({
         {clearable && inputValue && (
           <ComboboxClearTrigger asChild>
             <InputGroup.Button
-              aria-label={comboboxClearMessage}
+              aria-label={m("combobox.clear")}
               size="icon-xs"
               variant="ghost"
             >
@@ -244,7 +243,7 @@ export function ComboboxTrigger({
   className,
   ...rest
 }: ComboboxTriggerProps) {
-  const comboboxToggleMessage = useMessage("combobox.toggle");
+  const { m } = useLocale();
   const slots = useComboboxSlots();
 
   return (
@@ -255,7 +254,7 @@ export function ComboboxTrigger({
     >
       {children ?? (
         <Button
-          aria-label={comboboxToggleMessage}
+          aria-label={m("combobox.toggle")}
           className={slots.triggerButton()}
           variant="ghost"
         >
@@ -270,7 +269,9 @@ export function ComboboxClearTrigger({
   "aria-label": ariaLabelProp,
   ...rest
 }: ComboboxClearTriggerProps) {
-  const ariaLabel = useMessage("combobox.clear", ariaLabelProp);
+  const { m } = useLocale();
+  const ariaLabel = m("combobox.clear", ariaLabelProp);
+
   return <ComboboxPrimitive.ClearTrigger {...rest} aria-label={ariaLabel} />;
 }
 
@@ -371,12 +372,12 @@ export function ComboboxEmpty({
   className,
   ...rest
 }: ComboboxEmptyProps) {
-  const comboboxEmptyMessage = useMessage("combobox.empty");
+  const { m } = useLocale();
   const slots = useComboboxSlots();
 
   return (
     <ComboboxPrimitive.Empty {...rest} className={slots.empty({ className })}>
-      {children || comboboxEmptyMessage}
+      {children || m("combobox.empty")}
     </ComboboxPrimitive.Empty>
   );
 }
@@ -445,7 +446,7 @@ export type {
   ComboboxListProps,
   ComboboxPositionerProps,
   ComboboxTriggerProps,
-} from "@ark-ui/react/combobox";
+} from "@ark-ui/react";
 
 export const Combobox = Object.assign(ComboboxShorthand, {
   ClearTrigger: ComboboxClearTrigger,

@@ -10,6 +10,7 @@ import {
   TrashIcon,
 } from "@phosphor-icons/react";
 import { Button, DropdownMenu } from "@pisagor/react";
+
 export function Default() {
   return (
     <DropdownMenu>

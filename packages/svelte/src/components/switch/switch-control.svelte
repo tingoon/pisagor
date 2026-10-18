@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type SwitchControlProps,
     Switch as SwitchPrimitive,
-  } from "@ark-ui/svelte/switch";
+    type SwitchControlProps,
+  } from "@ark-ui/svelte";
   import { withContext } from "./switch.context";
 
   let { children, ...rest }: SwitchControlProps = $props();

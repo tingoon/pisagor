@@ -2,11 +2,11 @@
   import { cn } from "@pisagor/utils";
   import type { ComponentProps } from "svelte";
   import ComboboxContent from "../combobox/combobox-content.svelte";
-  import { useCommand } from "./command.context";
+  import { useStyles } from "./command.context";
 
   let { class: className, ...rest }: ComponentProps<typeof ComboboxContent> =
     $props();
-  const styles = useCommand();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

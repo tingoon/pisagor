@@ -1,7 +1,7 @@
 <script lang="ts">
   import { itemRecipe } from "@pisagor/recipes";
   import { Button, Item } from "@pisagor/svelte";
-  import DotsThreeIcon from "phosphor-svelte/lib/DotsThreeIcon";
+  import { DotsThreeIcon } from "phosphor-svelte";
   import { tv } from "tailwind-variants";
 
   const brandItemRecipe = tv({

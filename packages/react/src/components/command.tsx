@@ -1,9 +1,9 @@
 import {
   type CollectionItem,
+  Portal,
+  useFilter,
   useListCollection,
-} from "@ark-ui/react/collection";
-import { useFilter } from "@ark-ui/react/locale";
-import { Portal } from "@ark-ui/react/portal";
+} from "@ark-ui/react";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import type {
   CommandProps as BaseCommandDialogContentProps,
@@ -11,7 +11,7 @@ import type {
 } from "@pisagor/props";
 import { commandRecipe } from "@pisagor/recipes";
 import { type ComponentProps, Fragment, type ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import type {
   ComboboxContentProps,
   ComboboxEmptyProps,
@@ -23,23 +23,22 @@ import type {
   ComboboxRootProps,
 } from "./combobox";
 import { Combobox } from "./combobox";
-import {
-  Dialog,
-  type DialogContentProps,
-  type DialogRootProps,
-  type DialogTriggerProps,
+import { Dialog } from "./dialog";
+import type {
+  DialogContentProps,
+  DialogRootProps,
+  DialogTriggerProps,
 } from "./dialog";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Separator } from "./separator";
 
 // #region Context
-const { Context: CommandStylesContext, useStyles: useCommand } =
-  createSlotRecipeContext({
-    name: "Command",
-    recipe: commandRecipe,
-  });
+const { Context: CommandStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Command",
+  recipe: commandRecipe,
+});
 // #endregion
 
 // #region Types
@@ -130,8 +129,9 @@ export function CommandDialogContent({
   className,
   ...rest
 }: CommandDialogContentProps) {
-  const title = useMessage("command.title", titleProp);
-  const description = useMessage("command.description", descriptionProp);
+  const { m } = useLocale();
+  const title = m("command.title", titleProp);
+  const description = m("command.description", descriptionProp);
   const slots = recipe();
 
   return (
@@ -183,7 +183,7 @@ export function CommandRoot<T extends CollectionItem = CollectionItem>({
 }
 
 export function CommandContent({ className, ...rest }: CommandContentProps) {
-  const { slots } = useCommand();
+  const { slots } = useStyles();
 
   return (
     <Combobox.Content
@@ -195,7 +195,7 @@ export function CommandContent({ className, ...rest }: CommandContentProps) {
 }
 
 export function CommandInput({ size, className, ...rest }: CommandInputProps) {
-  const { slots } = useCommand();
+  const { slots } = useStyles();
 
   return (
     <Combobox.Control className={slots.control()}>
@@ -212,7 +212,7 @@ export function CommandInput({ size, className, ...rest }: CommandInputProps) {
 }
 
 export function CommandList({ className, ...rest }: CommandListProps) {
-  const { slots } = useCommand();
+  const { slots } = useStyles();
 
   return (
     <div className={slots.listWrapper()}>
@@ -226,12 +226,12 @@ export function CommandEmpty({
   className,
   ...rest
 }: ComboboxEmptyProps) {
-  const commandEmptyMessage = useMessage("command.empty");
-  const { slots } = useCommand();
+  const { m } = useLocale();
+  const { slots } = useStyles();
 
   return (
     <Combobox.Empty {...rest} className={slots.empty({ className })}>
-      {children || commandEmptyMessage}
+      {children || m("command.empty")}
     </Combobox.Empty>
   );
 }
@@ -254,7 +254,7 @@ export function CommandSeparator({
   className,
   ...rest
 }: CommandSeparatorProps) {
-  const { slots } = useCommand();
+  const { slots } = useStyles();
 
   return (
     <Separator
@@ -267,7 +267,7 @@ export function CommandSeparator({
 }
 
 export function CommandShortcut({ className, ...rest }: CommandShortcutProps) {
-  const { slots } = useCommand();
+  const { slots } = useStyles();
 
   return (
     <span
@@ -280,7 +280,7 @@ export function CommandShortcut({ className, ...rest }: CommandShortcutProps) {
 }
 
 export function CommandFooter({ className, ...rest }: CommandFooterProps) {
-  const { slots } = useCommand();
+  const { slots } = useStyles();
 
   return (
     <div
@@ -318,6 +318,7 @@ export function CommandShorthand({
   onInputValueChange,
   ...rest
 }: CommandShorthandProps) {
+  const { m } = useLocale();
   const { contains } = useFilter({ sensitivity: "base" });
   const { collection, filter } = useListCollection({
     filter: contains,
@@ -337,9 +338,7 @@ export function CommandShorthand({
         onInputValueChange?.(details);
       }}
     >
-      <CommandInput
-        placeholder={useMessage("command.placeholder", placeholder)}
-      />
+      <CommandInput placeholder={m("command.placeholder", placeholder)} />
       <CommandContent>
         <CommandEmpty>{emptyText}</CommandEmpty>
         <CommandList>

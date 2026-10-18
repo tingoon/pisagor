@@ -1,4 +1,5 @@
 import { Field, TagsInput } from "@pisagor/react";
+
 export function MaxTags() {
   return (
     <Field>

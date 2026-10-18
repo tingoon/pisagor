@@ -1,5 +1,4 @@
-import { useHotkey } from "@ark-ui/react";
-import { ark } from "@ark-ui/react/factory";
+import { ark, useHotkey, type HTMLArkProps } from "@ark-ui/react";
 import { SidebarSimpleIcon } from "@phosphor-icons/react";
 import type { SidebarProps as BaseSidebarProviderProps } from "@pisagor/props";
 import {
@@ -9,8 +8,6 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
-  type ComponentProps,
-  type CSSProperties,
   createContext,
   use,
   useCallback,
@@ -18,11 +15,12 @@ import {
   useMemo,
   useState,
 } from "react";
+import type { CSSProperties } from "react";
 import { useIsMobile } from "../hooks";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { Input, type InputProps } from "./input";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 import { Separator, type SeparatorProps } from "./separator";
 import { Sheet, type SheetProps } from "./sheet";
@@ -30,11 +28,10 @@ import { Skeleton } from "./skeleton";
 import { Tooltip, type TooltipProps } from "./tooltip";
 
 // #region Context
-const { Context: SidebarStylesContext, useStyles: useSidebarStyles } =
-  createSlotRecipeContext({
-    name: "Sidebar",
-    recipe: sidebarRecipe,
-  });
+const { Context: SidebarStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Sidebar",
+  recipe: sidebarRecipe,
+});
 
 interface SidebarState {
   isMobile: boolean;
@@ -56,18 +53,19 @@ export type SidebarContextProps = SidebarState & {
 
 /** Returns the nearest sidebar styles + state. */
 export function useSidebar(): SidebarContextProps {
-  const styles = useSidebarStyles();
+  const styles = useStyles();
   const state = use(SidebarStateContext);
   if (state === undefined) {
     throw new Error("useSidebar must be used within SidebarStateContext.");
   }
+
   return { ...styles, ...state };
 }
 // #endregion
 
 // #region Types
 export interface SidebarProviderProps
-  extends ComponentProps<"div">, BaseSidebarProviderProps {
+  extends HTMLArkProps<"div">, BaseSidebarProviderProps {
   /**
    * The default open state of the sidebar.
    *
@@ -111,7 +109,7 @@ export interface SidebarProps extends Omit<
   className?: string;
 }
 
-export interface SidebarContentProps extends ComponentProps<"div"> {
+export interface SidebarContentProps extends HTMLArkProps<"div"> {
   /**
    * Whether to add a scroll fade effect to the sidebar content.
    *
@@ -131,9 +129,7 @@ export interface SidebarMenuButtonProps extends ButtonProps {
   tooltip?: string | Omit<TooltipProps, "children">;
 }
 
-export interface SidebarMenuActionProps extends ComponentProps<
-  typeof ark.button
-> {
+export interface SidebarMenuActionProps extends HTMLArkProps<"button"> {
   showOnHover?: boolean;
   /**
    * Button style recipe. Defaults to `buttonRecipe` from
@@ -144,14 +140,12 @@ export interface SidebarMenuActionProps extends ComponentProps<
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export interface SidebarMenuSkeletonProps extends ComponentProps<
-  typeof ark.div
-> {
+export interface SidebarMenuSkeletonProps extends HTMLArkProps<"div"> {
   showIcon?: boolean;
 }
 
 export interface SidebarMenuSubButtonProps
-  extends ComponentProps<typeof ark.a>, ButtonVariantProps {
+  extends HTMLArkProps<"a">, ButtonVariantProps {
   isActive?: boolean;
   /**
    * Button style recipe. Defaults to `buttonRecipe` from
@@ -162,21 +156,19 @@ export interface SidebarMenuSubButtonProps
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export type SidebarRailProps = ComponentProps<typeof ark.button>;
+export type SidebarRailProps = HTMLArkProps<"button">;
 
-export type SidebarInsetProps = ComponentProps<typeof ark.main>;
+export type SidebarInsetProps = HTMLArkProps<"main">;
 
-export type SidebarHeaderProps = ComponentProps<typeof ark.div>;
+export type SidebarHeaderProps = HTMLArkProps<"div">;
 
-export type SidebarFooterProps = ComponentProps<typeof ark.div>;
+export type SidebarFooterProps = HTMLArkProps<"div">;
 
-export type SidebarGroupProps = ComponentProps<typeof ark.div>;
+export type SidebarGroupProps = HTMLArkProps<"div">;
 
-export type SidebarGroupLabelProps = ComponentProps<typeof ark.div>;
+export type SidebarGroupLabelProps = HTMLArkProps<"div">;
 
-export interface SidebarGroupActionProps extends ComponentProps<
-  typeof ark.button
-> {
+export interface SidebarGroupActionProps extends HTMLArkProps<"button"> {
   /**
    * Button style recipe. Defaults to `buttonRecipe` from
    * `@pisagor/recipes/button`.
@@ -186,17 +178,17 @@ export interface SidebarGroupActionProps extends ComponentProps<
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export type SidebarGroupContentProps = ComponentProps<typeof ark.div>;
+export type SidebarGroupContentProps = HTMLArkProps<"div">;
 
-export type SidebarMenuProps = ComponentProps<typeof ark.ul>;
+export type SidebarMenuProps = HTMLArkProps<"ul">;
 
-export type SidebarMenuItemProps = ComponentProps<typeof ark.li>;
+export type SidebarMenuItemProps = HTMLArkProps<"li">;
 
-export type SidebarMenuBadgeProps = ComponentProps<typeof ark.div>;
+export type SidebarMenuBadgeProps = HTMLArkProps<"div">;
 
-export type SidebarMenuSubProps = ComponentProps<typeof ark.ul>;
+export type SidebarMenuSubProps = HTMLArkProps<"ul">;
 
-export type SidebarMenuSubItemProps = ComponentProps<typeof ark.li>;
+export type SidebarMenuSubItemProps = HTMLArkProps<"li">;
 // #endregion
 
 // #region Constants
@@ -303,8 +295,7 @@ export function SidebarProvider({
 }
 
 export function SidebarRoot(props: SidebarProps) {
-  const sidebarDescriptionMessage = useMessage("sidebar.description");
-  const sidebarTitleMessage = useMessage("sidebar.title");
+  const { m } = useLocale();
   const {
     collapsible = "offcanvas",
     placement = "left",
@@ -345,8 +336,8 @@ export function SidebarRoot(props: SidebarProps) {
           }
         >
           <Sheet.Header className={slots.mobileHeader()}>
-            <Sheet.Title>{sidebarTitleMessage}</Sheet.Title>
-            <Sheet.Description>{sidebarDescriptionMessage}</Sheet.Description>
+            <Sheet.Title>{m("sidebar.title")}</Sheet.Title>
+            <Sheet.Description>{m("sidebar.description")}</Sheet.Description>
           </Sheet.Header>
           <ark.div className={slots.mobileBody()}>{children}</ark.div>
         </Sheet.Content>
@@ -389,6 +380,7 @@ export function SidebarRoot(props: SidebarProps) {
 }
 
 export function SidebarTrigger({ onClick, className, ...rest }: ButtonProps) {
+  const { m } = useLocale();
   const { slots, toggleSidebar } = useSidebar();
 
   return (
@@ -407,18 +399,19 @@ export function SidebarTrigger({ onClick, className, ...rest }: ButtonProps) {
     >
       <SidebarSimpleIcon className={slots.triggerIcon()} />
       <ark.span className={slots.triggerLabel()}>
-        {useMessage("sidebar.toggle")}
+        {m("sidebar.toggle")}
       </ark.span>
     </Button>
   );
 }
 
 export function SidebarRail({ className, ...rest }: SidebarRailProps) {
+  const { m } = useLocale();
   const { slots, toggleSidebar } = useSidebar();
 
   return (
     <ark.button
-      aria-label={useMessage("sidebar.toggle")}
+      aria-label={m("sidebar.toggle")}
       {...rest}
       className={slots.rail({ className })}
       data-part="rail"

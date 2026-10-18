@@ -1,11 +1,11 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { SeparatorProps as BaseSeparatorProps } from "@pisagor/props";
 import { separatorRecipe } from "@pisagor/recipes";
-import type { ComponentProps, JSX } from "solid-js";
+import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
 export interface SeparatorProps
-  extends ComponentProps<typeof ark.div>, BaseSeparatorProps {
+  extends HTMLArkProps<"div">, BaseSeparatorProps {
   orientation?: "horizontal" | "vertical";
   /**
    * Purely visual separator: hidden from assistive tech (`role="none"`).

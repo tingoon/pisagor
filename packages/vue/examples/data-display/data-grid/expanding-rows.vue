@@ -170,6 +170,7 @@ const columns: ColumnDef<OrgNode>[] = [
   {
     cell: ({ row }: CellContext<OrgNode, unknown>) => {
       const leafCount = countLeaves(row as DataGridRow<OrgNode>);
+
       return h(
         "span",
         { class: "text-muted-foreground tabular-nums" },

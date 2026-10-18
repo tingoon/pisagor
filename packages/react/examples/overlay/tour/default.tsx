@@ -1,5 +1,6 @@
 import type { TourStepType } from "@pisagor/react";
 import { Button, Tour } from "@pisagor/react";
+
 export function Default() {
   const steps: TourStepType[] = [
     {
@@ -41,6 +42,7 @@ export function Default() {
       type: "dialog",
     },
   ];
+
   return (
     <Tour steps={steps}>
       <Tour.Trigger asChild>

@@ -2,13 +2,13 @@
   import {
     Menu as MenuPrimitive,
     type MenuSeparatorProps,
-  } from "@ark-ui/svelte/menu";
+  } from "@ark-ui/svelte";
   import { dropdownMenuRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import { useDropdownMenu } from "./dropdown-menu.context";
+  import { useStyles } from "./dropdown-menu.context";
 
   let { class: className, ...rest }: MenuSeparatorProps = $props();
-  const context = useDropdownMenu();
+  const context = useStyles();
   const slots = $derived(context?.slots ?? dropdownMenuRecipe());
 </script>
 

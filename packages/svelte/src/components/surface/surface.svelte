@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { SurfaceProps as BaseSurfaceProps } from "@pisagor/props";
   import { surfaceRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
@@ -40,6 +40,7 @@
       variantProp ??
       AUTO_VARIANTS[Math.min(depth, AUTO_VARIANTS.length - 1)] ??
       "default";
+
     return { depth, variant };
   });
 

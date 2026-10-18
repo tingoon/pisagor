@@ -3,8 +3,8 @@ import type { SpinnerProps as BaseSpinnerProps } from "@pisagor/props";
 import { spinnerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { ClassValue } from "../internal/types";
-import { useTranslation } from "./provider/context";
+import type { ClassValue } from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Types
 export interface SpinnerProps extends BaseSpinnerProps {
@@ -29,10 +29,12 @@ export const Spinner = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
+
     return () =>
       h(PhCircleNotch as ArkPart, {
         ...attrs,
-        "aria-label": attrs["aria-label"] ?? useTranslation("spinner.loading"),
+        "aria-label": m("spinner.loading", attrs["aria-label"]),
         class: cn(props.recipe(), props.class),
         "data-part": "root",
         "data-scope": "spinner",

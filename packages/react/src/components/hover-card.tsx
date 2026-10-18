@@ -1,28 +1,26 @@
-import { Portal } from "@ark-ui/react";
+import { HoverCard as HoverCardPrimitive, Portal } from "@ark-ui/react";
 import type {
   HoverCardArrowProps,
-  HoverCardContentProps as HoverCardPrimitiveContentProps,
-  HoverCardRootProps as HoverCardPrimitiveRootProps,
+  HoverCardContentProps as HoverCardContentPrimitiveProps,
+  HoverCardRootProps as HoverCardRootPrimitiveProps,
   HoverCardTriggerProps,
-} from "@ark-ui/react/hover-card";
-import { HoverCard as HoverCardPrimitive } from "@ark-ui/react/hover-card";
+} from "@ark-ui/react";
 import type { HoverCardProps as BaseHoverCardRootProps } from "@pisagor/props";
 import { hoverCardRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { Context: HoverCardStylesContext, useStyles: useHoverCard } =
-  createSlotRecipeContext({
-    name: "HoverCard",
-    recipe: hoverCardRecipe,
-  });
+const { Context: HoverCardStylesContext, useStyles } = createSlotRecipeContext({
+  name: "HoverCard",
+  recipe: hoverCardRecipe,
+});
 // #endregion
 
 // #region Types
 export interface HoverCardRootProps
-  extends HoverCardPrimitiveRootProps, BaseHoverCardRootProps {}
+  extends HoverCardRootPrimitiveProps, BaseHoverCardRootProps {}
 
-export interface HoverCardContentProps extends HoverCardPrimitiveContentProps {
+export interface HoverCardContentProps extends HoverCardContentPrimitiveProps {
   /**
    * Whether to render the arrow pointing at the trigger.
    *
@@ -63,7 +61,7 @@ export function HoverCardTrigger(props: HoverCardTriggerProps) {
 }
 
 export function HoverCardArrow({ style, ...rest }: HoverCardArrowProps) {
-  const { slots } = useHoverCard();
+  const { slots } = useStyles();
 
   return (
     <HoverCardPrimitive.Arrow
@@ -85,7 +83,7 @@ export function HoverCardContent({
   className,
   ...rest
 }: HoverCardContentProps) {
-  const { slots } = useHoverCard();
+  const { slots } = useStyles();
 
   return (
     <Portal>
@@ -112,10 +110,7 @@ HoverCardContent.displayName = "HoverCard.Content";
 
 // #endregion
 
-export type {
-  HoverCardArrowProps,
-  HoverCardTriggerProps,
-} from "@ark-ui/react/hover-card";
+export type { HoverCardArrowProps, HoverCardTriggerProps } from "@ark-ui/react";
 
 export const HoverCard = Object.assign(HoverCardRoot, {
   Arrow: HoverCardArrow,

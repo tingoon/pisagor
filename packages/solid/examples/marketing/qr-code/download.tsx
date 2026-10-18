@@ -1,6 +1,7 @@
 import { Button, Card, Input, QrCode } from "@pisagor/solid";
-import { DownloadIcon } from "@pisagor/solid/icons";
+import { DownloadIcon } from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
+
 export function Download() {
   const QUALITY_BY_LEVEL = {
     0: "L",
@@ -19,6 +20,7 @@ export function Download() {
     if (length < 60) {
       return 40;
     }
+
     return 60;
   };
   const [value, setValue] = createSignal("");

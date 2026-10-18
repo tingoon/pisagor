@@ -1,8 +1,5 @@
 <script lang="ts">
-  import {
-    type TimerAreaProps,
-    Timer as TimerPrimitive,
-  } from "@ark-ui/svelte/timer";
+  import { Timer as TimerPrimitive, type TimerAreaProps } from "@ark-ui/svelte";
   import { withTimerContext } from "./timer.context";
 
   let { children, ...rest }: TimerAreaProps = $props();

@@ -1,17 +1,15 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   KbdGroupProps as BaseKbdGroupProps,
   KbdProps as BaseKbdProps,
 } from "@pisagor/props";
 import { kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes";
-import type { ComponentProps, JSX } from "solid-js";
+import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
-export interface KbdProps
-  extends ComponentProps<typeof ark.kbd>, BaseKbdProps {}
+export interface KbdProps extends HTMLArkProps<"kbd">, BaseKbdProps {}
 
-export interface KbdGroupProps
-  extends ComponentProps<typeof ark.div>, BaseKbdGroupProps {}
+export interface KbdGroupProps extends HTMLArkProps<"div">, BaseKbdGroupProps {}
 
 export function KbdRoot(props: KbdProps): JSX.Element {
   const [local, rest] = splitProps(props, [
@@ -20,6 +18,7 @@ export function KbdRoot(props: KbdProps): JSX.Element {
     "size",
     "variant",
   ]);
+
   return (
     <ark.kbd
       {...rest}
@@ -36,6 +35,7 @@ export function KbdRoot(props: KbdProps): JSX.Element {
 
 export function KbdGroup(props: KbdGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "recipe"]);
+
   return (
     <ark.div
       {...rest}

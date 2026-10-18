@@ -1,4 +1,5 @@
 import { Card, Skeleton } from "@pisagor/react";
+
 export function InCard() {
   return (
     <Card>

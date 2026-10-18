@@ -1,17 +1,32 @@
 <script lang="ts">
+  import { Ark } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import type { ComponentProps } from "svelte";
-  import { useDialog } from "../dialog/dialog.context";
-  import DialogBody from "../dialog/dialog-body.svelte";
+  import type { HTMLAttributes } from "svelte/elements";
+  import { ScrollArea } from "../scroll-area";
+  import { useAlertDialog } from "./alert-dialog.context";
 
-  let { class: className, ...rest }: ComponentProps<typeof DialogBody> =
-    $props();
-  const { slots } = useDialog();
+  type Props = HTMLAttributes<HTMLDivElement> & {
+    children?: import("svelte").Snippet;
+    scrollFade?: boolean;
+  };
+
+  let {
+    children,
+    class: className,
+    scrollFade = false,
+    ...rest
+  }: Props = $props();
+  const { slots } = useAlertDialog();
 </script>
 
-<DialogBody
-  {...rest}
-  class={slots.alertBody({ class: cn(className) })}
-  data-part="body"
-  data-scope="alert-dialog"
-/>
+<ScrollArea {scrollFade}>
+  <Ark
+    as="div"
+    {...rest}
+    class={slots.body({ class: cn(className) })}
+    data-part="body"
+    data-scope="alert-dialog"
+  >
+    {@render children?.()}
+  </Ark>
+</ScrollArea>

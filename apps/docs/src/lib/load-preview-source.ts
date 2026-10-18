@@ -63,19 +63,19 @@ const formRaws: Record<string, RawLoaderMap> = {
 };
 
 const blockRaws: Record<string, RawLoaderMap> = {
-  react: import.meta.glob<string>("../blocks/react/*/*.{ts,tsx}", {
+  react: import.meta.glob<string>("../blocks/react/**/*.{ts,tsx}", {
     import: "default",
     query: "?raw",
   }),
-  solid: import.meta.glob<string>("../blocks/solid/*/*.{ts,tsx}", {
+  solid: import.meta.glob<string>("../blocks/solid/**/*.{ts,tsx}", {
     import: "default",
     query: "?raw",
   }),
-  svelte: import.meta.glob<string>("../blocks/svelte/*/*.svelte", {
+  svelte: import.meta.glob<string>("../blocks/svelte/**/*.svelte", {
     import: "default",
     query: "?raw",
   }),
-  vue: import.meta.glob<string>("../blocks/vue/*/*.{ts,tsx,vue}", {
+  vue: import.meta.glob<string>("../blocks/vue/**/*.{ts,tsx,vue}", {
     import: "default",
     query: "?raw",
   }),
@@ -95,6 +95,7 @@ function loaderFor(ref: PreviewSourceRef): (() => Promise<string>) | undefined {
   else modules = componentRaws[ref.framework];
 
   if (!modules) return undefined;
+
   return findExampleFileLoader(modules, ref.id, stem) as
     (() => Promise<string>) | undefined;
 }
@@ -115,6 +116,7 @@ export async function loadPreviewSource(
     pending = loader();
     moduleCache.set(cacheKey, pending);
   }
+
   return pending;
 }
 
@@ -132,5 +134,6 @@ export function resolvePreviewLang(
     return "vue";
   }
   if (hasVueSfcBlock) return "vue";
+
   return "ts";
 }

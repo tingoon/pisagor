@@ -1,18 +1,18 @@
-import type {
-  TagsInputClearTriggerProps,
-  TagsInputInputProps,
-  TagsInputItemInputProps,
-  TagsInputItemPreviewProps,
-  TagsInputItemTextProps,
-  TagsInputControlProps as TagsInputPrimitiveControlProps,
-  TagsInputItemProps as TagsInputPrimitiveItemProps,
-  TagsInputRootProps as TagsInputPrimitiveRootProps,
-  TagsInputRootProviderProps as TagsInputPrimitiveRootProviderProps,
-} from "@ark-ui/react/tags-input";
 import {
   TagsInput as TagsInputPrimitive,
   useTagsInputContext,
-} from "@ark-ui/react/tags-input";
+} from "@ark-ui/react";
+import type {
+  TagsInputClearTriggerProps,
+  TagsInputControlProps as TagsInputControlPrimitiveProps,
+  TagsInputInputProps,
+  TagsInputItemInputProps,
+  TagsInputItemPreviewProps,
+  TagsInputItemProps as TagsInputItemPrimitiveProps,
+  TagsInputItemTextProps,
+  TagsInputRootProps as TagsInputRootPrimitiveProps,
+  TagsInputRootProviderProps as TagsInputRootProviderPrimitiveProps,
+} from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
 import type {
   TagsInputItemProps as BaseTagsInputItemProps,
@@ -21,9 +21,9 @@ import type {
 } from "@pisagor/props";
 import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { InputGroup, type InputGroupProps } from "./input-group";
-import { useMessage } from "./provider/context";
+import { createSlotRecipeContext } from "../internal";
+import { InputGroup } from "./input-group";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const { Context: TagsInputStylesContext, useStyles: useTagsInput } =
@@ -41,12 +41,12 @@ const { Context: TagsInputItemStylesContext, useStyles: useTagsInputItem } =
 
 // #region Types
 export type TagsInputRootProps = Omit<
-  TagsInputPrimitiveRootProps,
+  TagsInputRootPrimitiveProps,
   "onValueChange"
 > &
-  Pick<InputGroupProps, "size" | "variant">;
+  BaseTagsInputProps;
 
-export interface TagsInputProps extends TagsInputRootProps, BaseTagsInputProps {
+export interface TagsInputProps extends TagsInputRootProps {
   /**
    * Whether to show the clear button.
    *
@@ -59,9 +59,7 @@ export interface TagsInputProps extends TagsInputRootProps, BaseTagsInputProps {
 }
 
 export interface TagsInputControlProps
-  extends
-    TagsInputPrimitiveControlProps,
-    Pick<InputGroupProps, "size" | "variant"> {
+  extends TagsInputControlPrimitiveProps, BaseTagsInputProps {
   /**
    * Whether to show the clear button.
    *
@@ -71,10 +69,7 @@ export interface TagsInputControlProps
 }
 
 export interface TagsInputItemProps
-  extends
-    TagsInputPrimitiveItemProps,
-    Pick<InputGroupProps, "size">,
-    BaseTagsInputItemProps {
+  extends TagsInputItemPrimitiveProps, BaseTagsInputItemProps {
   /**
    * Whether to show the clear trigger.
    *
@@ -84,10 +79,7 @@ export interface TagsInputItemProps
 }
 
 export interface TagsInputRootProviderProps
-  extends
-    TagsInputPrimitiveRootProviderProps,
-    Pick<InputGroupProps, "size">,
-    BaseTagsInputRootProviderProps {
+  extends TagsInputRootProviderPrimitiveProps, BaseTagsInputRootProviderProps {
   /**
    * Whether to show the clear button.
    *
@@ -157,7 +149,7 @@ export function TagsInputControl({
   className,
   ...rest
 }: TagsInputControlProps) {
-  const tagsInputClearAllTagsMessage = useMessage("tagsInput.clearAllTags");
+  const { m } = useLocale();
   const api = useTagsInputContext();
   const { slots } = useTagsInput();
 
@@ -171,7 +163,7 @@ export function TagsInputControl({
       >
         {children}
         {clearable && api.value.length > 0 && (
-          <TagsInputClearTrigger aria-label={tagsInputClearAllTagsMessage} />
+          <TagsInputClearTrigger aria-label={m("tagsInput.clearAllTags")} />
         )}
       </InputGroup>
     </TagsInputPrimitive.Control>
@@ -233,12 +225,13 @@ export function TagsInputItemDeleteTrigger({
   className,
   ...rest
 }: TagsInputItemDeleteTriggerProps) {
+  const { m } = useLocale();
   const { slots } = useTagsInputItem();
 
   return (
     <TagsInputPrimitive.ItemDeleteTrigger {...rest} asChild>
       <InputGroup.Button
-        aria-label={useMessage("tagsInput.removeTag")}
+        aria-label={m("tagsInput.removeTag")}
         className={slots.delete({ className })}
         size="icon-xs"
         variant="ghost"
@@ -274,12 +267,13 @@ export function TagsInputClearTrigger({
   className,
   ...rest
 }: TagsInputClearTriggerProps) {
+  const { m } = useLocale();
   const { slots } = useTagsInput();
 
   return (
     <TagsInputPrimitive.ClearTrigger {...rest} asChild>
       <InputGroup.Button
-        aria-label={useMessage("tagsInput.clear")}
+        aria-label={m("tagsInput.clear")}
         className={slots.clearTrigger({ className })}
         size="icon-xs"
         variant="ghost"
@@ -335,7 +329,7 @@ export type {
   TagsInputItemInputProps,
   TagsInputItemPreviewProps,
   TagsInputItemTextProps,
-} from "@ark-ui/react/tags-input";
+} from "@ark-ui/react";
 
 export const TagsInput = Object.assign(TagsInputRoot, {
   ClearTrigger: TagsInputClearTrigger,

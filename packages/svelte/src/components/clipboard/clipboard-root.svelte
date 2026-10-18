@@ -2,7 +2,7 @@
   import {
     Clipboard as ClipboardPrimitive,
     type ClipboardRootProps,
-  } from "@ark-ui/svelte/clipboard";
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: ClipboardRootProps = $props();
 </script>

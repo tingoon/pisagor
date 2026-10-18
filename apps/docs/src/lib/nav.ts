@@ -46,8 +46,10 @@ export function withDocsBase(path = ""): string {
   const clean = path.replace(/^\/+/, "");
   if (!clean) {
     const trimmed = base.replace(/\/$/, "");
+
     return trimmed || "/";
   }
+
   return `${base}${clean}`;
 }
 
@@ -57,6 +59,7 @@ export function stripDocsBase(pathname: string): string {
   if (base && (pathname === base || pathname.startsWith(`${base}/`))) {
     return pathname.slice(base.length) || "/";
   }
+
   return pathname || "/";
 }
 
@@ -65,6 +68,7 @@ export function getDocsArea(pathname: string): DocsArea {
   const section = parts[1];
   if (section === "blocks") return "blocks";
   if (section === "forms") return "forms";
+
   return "components";
 }
 
@@ -90,10 +94,12 @@ export function getSidebarNav(
     if (framework === "astro") {
       return soonGettingStarted("forms");
     }
+
     return formSections;
   }
 
   if (framework === "astro") return astroComponentSections;
+
   return componentSections;
 }
 
@@ -112,6 +118,7 @@ const frameworkAreas: Record<Framework, DocsArea[]> = {
 
 export function getMainNav(framework: Framework) {
   const allowed = new Set(frameworkAreas[framework]);
+
   return mainNav.filter((item) => allowed.has(item.id));
 }
 
@@ -119,6 +126,7 @@ export function getMainNav(framework: Framework) {
 function areaIntroSlug(area: DocsArea): string {
   if (area === "blocks") return "blocks";
   if (area === "forms") return "forms";
+
   return "components";
 }
 
@@ -137,6 +145,7 @@ function stripComponentDocTab(slug: string): string {
   ) {
     return segments.slice(0, -1).join("/");
   }
+
   return slug;
 }
 
@@ -158,6 +167,7 @@ export function getDocsKicker(
         : section.title;
     }
   }
+
   return undefined;
 }
 

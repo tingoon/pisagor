@@ -1,4 +1,4 @@
-import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/svelte/rating-group";
+import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/svelte";
 import RatingShorthand from "./rating.svelte";
 import RatingControl from "./rating-control.svelte";
 import RatingIndicator from "./rating-indicator.svelte";

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { createListCollection } from "@ark-ui/vue/collection";
+import { createListCollection } from "@ark-ui/vue";
 import { PhAppleLogo } from "@phosphor-icons/vue";
 import { Combobox, InputGroup } from "@pisagor/vue";
 

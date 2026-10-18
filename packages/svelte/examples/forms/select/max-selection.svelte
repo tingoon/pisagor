@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { createListCollection } from "@ark-ui/svelte";
   import { Select } from "@pisagor/svelte";
 
   const MAX_SELECTION = 3;
@@ -11,6 +11,7 @@
     const firstValue = current.at(0) ?? "";
     const additionalValues =
       current.length > 1 ? ` (+${current.length - 1} more)` : "";
+
     return firstValue + additionalValues;
   };
 

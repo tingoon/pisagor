@@ -1,6 +1,7 @@
 import type { NodeProviderProps } from "@pisagor/solid";
 import { createTreeCollection, TreeView } from "@pisagor/solid";
-import { StarIcon } from "@pisagor/solid/icons";
+import { StarIcon } from "@squidlab/phosphor-solid/icons";
+
 export function CustomIconsItem() {
   const collection = createTreeCollection({
     rootNode: {
@@ -50,6 +51,7 @@ export function CustomIconsItem() {
       </TreeView.NodeProvider>
     );
   };
+
   return (
     <div>
       <TreeView collection={collection}>

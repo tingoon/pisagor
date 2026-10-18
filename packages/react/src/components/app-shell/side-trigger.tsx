@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Button, type ButtonProps } from "../button";
-import { useMessage, type MessageKey } from "../provider/context";
+import { useLocale, type MessageKey } from "../provider/context";
 import { Swap } from "../swap";
 import type { AppShellPlacement } from "./app-shell.context";
 import { useAppShell } from "./app-shell.context";
@@ -30,6 +30,7 @@ export function AppShellSideTrigger({
   on?: ReactNode;
   off?: ReactNode;
 } & Omit<ButtonProps, "aria-label" | "children" | "onClick">) {
+  const { m } = useLocale();
   const { slots } = useAppShell();
   const resolvedOff = offContent ?? defaultOff;
   const resolvedOn = onContent ?? defaultOn;
@@ -37,10 +38,7 @@ export function AppShellSideTrigger({
   return (
     <Button
       {...rest}
-      aria-label={useMessage(
-        `appShell.toggle.${placement}` as MessageKey,
-        ariaLabel,
-      )}
+      aria-label={m(`appShell.toggle.${placement}` as MessageKey, ariaLabel)}
       aria-pressed={open}
       className={slots.inline({ className })}
       data-placement={placement}

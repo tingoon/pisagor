@@ -1,8 +1,8 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type { SkeletonProps as BaseSkeletonProps } from "@pisagor/props";
 import { skeletonRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
-import type { ClassValue } from "../internal/types";
+import type { ClassValue } from "../internal";
 
 // #region Types
 export interface SkeletonTextProps {

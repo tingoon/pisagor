@@ -1,21 +1,23 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import { PhArrowDown, PhArrowUp, PhMinus } from "@phosphor-icons/vue";
 import type {
   StatProps as BaseStatProps,
   StatTrendProps as BaseStatTrendProps,
 } from "@pisagor/props";
-import {
-  type StatRecipeSlot,
-  type StatTrendVariantProps,
-  type StatVariantProps,
-  statRecipe,
-  statTrendRecipe,
+import { statRecipe, statTrendRecipe } from "@pisagor/recipes";
+import type {
+  StatRecipeSlot,
+  StatTrendVariantProps,
+  StatVariantProps,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue, VariantClassNames } from "../internal/types";
-import { type MessageKey, useTranslation } from "./provider/context";
+import {
+  type ClassValue,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
+import { type MessageKey, useLocale } from "./provider/context";
 
 // #region Slot recipe context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -99,6 +101,8 @@ export const StatTrend = defineComponent({
     trend: { default: "neutral", type: String as PropType<StatTrendVariant> },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
+
     return () => {
       return h(
         ark.div as ArkPart,
@@ -119,7 +123,7 @@ export const StatTrend = defineComponent({
           h(
             "span",
             { class: "sr-only" },
-            useTranslation(`stat.trend.${props.trend}` as MessageKey),
+            m(`stat.trend.${props.trend}` as MessageKey),
           ),
           slots.default?.(),
         ],

@@ -3,12 +3,12 @@
     type ProgressRootProps,
     type ProgressValueTextProps,
     useProgress,
-  } from "@ark-ui/svelte/progress";
+  } from "@ark-ui/svelte";
   import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
   import type { CircularProgressRecipeSlot } from "@pisagor/recipes";
   import type { Snippet } from "svelte";
   import type { SVGAttributes } from "svelte/elements";
-  import type { VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import { getProgressbarProps } from "./circular-progress.context";
   import CircularProgressRoot from "./circular-progress-root.svelte";
   import CircularProgressTrack from "./circular-progress-track.svelte";

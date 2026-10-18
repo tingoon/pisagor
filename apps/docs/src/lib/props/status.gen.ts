@@ -4,7 +4,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/status` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (`packages/props/src/status.ts`, native HTML attributes omitted). */
 export const statusProps: PropRow[] = [
   {
     name: "size",

@@ -1,4 +1,4 @@
-import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/vue/toggle-group";
+import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/vue";
 import type { ToggleGroupProps as BaseToggleGroupRootProps } from "@pisagor/props";
 import { type ToggleGroupRecipe, toggleGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -9,19 +9,19 @@ import {
   type PropType,
   type VNodeChild,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
-import { createContext } from "../internal/utils/create-context";
+import {
+  type ClassValue,
+  createContext,
+  createSlotRecipeContext,
+} from "../internal";
 import { Toggle } from "./toggle";
 
 // #region Slot recipe context
-const {
-  provideStyles: provideToggleGroupStyles,
-  useStyles: useToggleGroupStyles,
-} = createSlotRecipeContext({
-  name: "ToggleGroup",
-  recipe: toggleGroupRecipe,
-});
+const { provideStyles: provideToggleGroupStyles, useStyles } =
+  createSlotRecipeContext({
+    name: "ToggleGroup",
+    recipe: toggleGroupRecipe,
+  });
 // #endregion
 
 export type ToggleGroupVariant = "ghost" | "outline";
@@ -134,6 +134,7 @@ export const ToggleGroupRoot = defineComponent({
                 const nextValue = props.multiple
                   ? details.value
                   : (details.value[0] ?? "");
+
                 return props.onValueChange?.(nextValue);
               }
             : undefined,
@@ -166,7 +167,7 @@ export const ToggleGroupItem = defineComponent({
     value: { required: true, type: String },
   },
   setup(props, { attrs, slots }) {
-    const styles = useToggleGroupStyles();
+    const styles = useStyles();
 
     return () => {
       const ctx = useToggleGroupContext();

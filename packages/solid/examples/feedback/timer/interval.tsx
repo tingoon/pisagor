@@ -1,5 +1,6 @@
 import { Button, Card, Timer } from "@pisagor/solid";
-import { PauseIcon, PlayIcon } from "@pisagor/solid/icons";
+import { PauseIcon, PlayIcon } from "@squidlab/phosphor-solid/icons";
+
 export function Interval() {
   return (
     <Card class="rounded-3xl [--space:--spacing(6)]">

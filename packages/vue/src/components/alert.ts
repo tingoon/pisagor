@@ -10,15 +10,13 @@ import {
   type AlertVariantProps,
   alertRecipe,
 } from "@pisagor/recipes";
+import { defineComponent, h } from "vue";
+import type { Component, PropType, VNodeChild } from "vue";
 import {
-  type Component,
-  defineComponent,
-  h,
-  type PropType,
-  type VNodeChild,
-} from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue, VariantClassNames } from "../internal/types";
+  type ClassValue,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({

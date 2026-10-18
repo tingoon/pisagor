@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type FileUploadClearTriggerProps,
     FileUpload as FileUploadPrimitive,
-  } from "@ark-ui/svelte/file-upload";
+    type FileUploadClearTriggerProps,
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: FileUploadClearTriggerProps = $props();
 </script>

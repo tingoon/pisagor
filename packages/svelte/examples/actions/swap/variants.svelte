@@ -1,7 +1,6 @@
 <script lang="ts">
   import { Button, Swap } from "@pisagor/svelte";
-  import MoonIcon from "phosphor-svelte/lib/MoonIcon";
-  import SunIcon from "phosphor-svelte/lib/SunIcon";
+  import { MoonIcon, SunIcon } from "phosphor-svelte";
 
   let fade = $state(false);
   let flip = $state(false);

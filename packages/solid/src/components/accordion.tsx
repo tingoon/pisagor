@@ -1,20 +1,21 @@
-import {
-  type AccordionItemContentProps,
-  type AccordionItemTriggerProps,
-  Accordion as AccordionPrimitive,
-  type AccordionItemProps as AccordionPrimitiveItemProps,
-  type AccordionRootProps,
-} from "@ark-ui/solid/accordion";
+import { Accordion as AccordionPrimitive } from "@ark-ui/solid";
+import type {
+  AccordionItemContentProps,
+  AccordionItemProps as AccordionItemPrimitiveProps,
+  AccordionItemTriggerProps,
+  AccordionRootProps,
+} from "@ark-ui/solid";
 import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
-import { accordionItemRecipe } from "@pisagor/recipes";
+import {
+  type AccordionItemVariantProps,
+  accordionItemRecipe,
+} from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CaretDownIcon } from "../internal/icons";
-import type { SizeScaleProps } from "../internal/types";
+import { CaretDownIcon, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
+const { useStyles, withProvider } = createSlotRecipeContext({
   name: "Accordion",
   recipe: accordionItemRecipe,
 });
@@ -22,7 +23,7 @@ const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface LocalAccordionItemProps
-  extends AccordionPrimitiveItemProps, BaseAccordionItemProps, SizeScaleProps {}
+  extends AccordionItemPrimitiveProps, BaseAccordionItemProps {}
 
 interface AccordionPresetItem {
   value: string;
@@ -31,10 +32,9 @@ interface AccordionPresetItem {
   disabled?: boolean;
 }
 
-export interface AccordionProps extends Omit<AccordionRootProps, "children"> {
+export interface AccordionProps
+  extends Omit<AccordionRootProps, "children">, AccordionItemVariantProps {
   items?: AccordionPresetItem[];
-  /** Size scale applied to every item. */
-  size?: "sm" | "md" | "lg";
 }
 // #endregion
 
@@ -42,6 +42,7 @@ export interface AccordionProps extends Omit<AccordionRootProps, "children"> {
 
 export function AccordionRoot(props: AccordionRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["collapsible", "children"]);
+
   return (
     <AccordionPrimitive.Root {...rest} collapsible={local.collapsible ?? true}>
       {local.children}
@@ -58,7 +59,7 @@ export function AccordionItemTrigger(
   props: AccordionItemTriggerProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useAccordionItem();
+  const styles = useStyles();
 
   return (
     <AccordionPrimitive.ItemTrigger
@@ -77,7 +78,7 @@ export function AccordionItemContent(
   props: AccordionItemContentProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useAccordionItem();
+  const styles = useStyles();
 
   return (
     <AccordionPrimitive.ItemContent
@@ -119,7 +120,7 @@ export type {
   AccordionItemProps,
   AccordionItemTriggerProps,
   AccordionRootProps,
-} from "@ark-ui/solid/accordion";
+} from "@ark-ui/solid";
 
 export const Accordion = Object.assign(AccordionShorthand, {
   Item: AccordionItem,

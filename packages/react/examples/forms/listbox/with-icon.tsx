@@ -1,5 +1,6 @@
 import { createListCollection } from "@ark-ui/react";
 import { Item, Listbox } from "@pisagor/react";
+
 export function WithIcon() {
   const collection = createListCollection({
     items: [
@@ -8,6 +9,7 @@ export function WithIcon() {
       { icon: "🇮🇪", label: "Ireland", value: "ireland" },
     ],
   });
+
   return (
     <Item.Group variant="outline">
       <Item className="p-1">

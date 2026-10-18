@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type ComboboxInputProps,
     Combobox as ComboboxPrimitive,
-  } from "@ark-ui/svelte/combobox";
+    type ComboboxInputProps,
+  } from "@ark-ui/svelte";
 
   let props: ComboboxInputProps = $props();
 </script>

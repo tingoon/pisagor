@@ -1,6 +1,4 @@
-import { useListCollection } from "@ark-ui/solid/collection";
-import { useFilter } from "@ark-ui/solid/locale";
-import { useTagsInput } from "@ark-ui/solid/tags-input";
+import { useFilter, useListCollection, useTagsInput } from "@ark-ui/solid";
 import { Combobox, Field, TagsInput } from "@pisagor/solid";
 import { createMemo, createUniqueId, For } from "solid-js";
 

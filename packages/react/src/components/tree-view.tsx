@@ -1,23 +1,24 @@
-import { ark } from "@ark-ui/react/factory";
+import {
+  TreeView as TreeViewPrimitive,
+  ark,
+  createTreeCollection as arkCreateTreeCollection,
+  type HTMLArkProps,
+} from "@ark-ui/react";
 import type {
   TreeCollection as arkTreeCollection,
   TreeViewBranchContentProps,
+  TreeViewBranchControlProps as TreeViewBranchControlPrimitiveProps,
   TreeViewBranchIndentGuideProps,
   TreeViewBranchIndicatorProps,
+  TreeViewBranchProps as TreeViewBranchPrimitiveProps,
   TreeViewBranchTextProps,
+  TreeViewItemProps as TreeViewItemPrimitiveProps,
+  TreeViewItemTextProps as TreeViewItemTextPrimitiveProps,
   TreeViewLabelProps,
   TreeViewNodeCheckboxProps,
   TreeViewNodeRenameInputProps,
-  TreeViewBranchControlProps as TreeViewPrimitiveBranchControlProps,
-  TreeViewBranchProps as TreeViewPrimitiveBranchProps,
-  TreeViewItemProps as TreeViewPrimitiveItemProps,
-  TreeViewItemTextProps as TreeViewPrimitiveItemTextProps,
   TreeViewTreeProps,
-} from "@ark-ui/react/tree-view";
-import {
-  createTreeCollection as arkCreateTreeCollection,
-  TreeView as TreeViewPrimitive,
-} from "@ark-ui/react/tree-view";
+} from "@ark-ui/react";
 import {
   CaretRightIcon,
   CheckIcon,
@@ -39,9 +40,9 @@ import {
 } from "@pisagor/recipes";
 
 import { cn } from "@pisagor/utils";
-import type { ComponentProps, JSX } from "react";
+import type { JSX } from "react";
 import { createContext, use } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -64,6 +65,7 @@ TreeViewFileIconsContext.displayName = "TreeViewFileIconsContext";
 function useTreeView() {
   const styles = useTreeViewStyles();
   const fileIcons = use(TreeViewFileIconsContext);
+
   return { ...styles, fileIcons };
 }
 
@@ -102,15 +104,15 @@ export interface TreeViewProps
     BaseTreeViewProps {}
 
 export interface TreeViewBranchProps
-  extends TreeViewPrimitiveBranchProps, BaseTreeViewBranchProps {}
+  extends TreeViewBranchPrimitiveProps, BaseTreeViewBranchProps {}
 
 export interface TreeViewItemProps
-  extends TreeViewPrimitiveItemProps, BaseTreeViewItemProps {}
+  extends TreeViewItemPrimitiveProps, BaseTreeViewItemProps {}
 
 export type NodeProviderProps<T extends TreeNodeType = TreeNodeType> =
   TreeViewPrimitive.NodeProviderProps<T>;
 
-export type TreeViewBranchControlProps = TreeViewPrimitiveBranchControlProps &
+export type TreeViewBranchControlProps = TreeViewBranchControlPrimitiveProps &
   Pick<TreeViewBranchTitleProps, "icon" | "expandedIcon">;
 
 export interface TreeViewBranchTitleProps extends TreeViewBranchTextProps {
@@ -128,7 +130,7 @@ export interface TreeViewBranchTitleProps extends TreeViewBranchTextProps {
   icon?: JSX.ElementType | null;
 }
 
-export type TreeViewItemTitleProps = TreeViewPrimitiveItemTextProps;
+export type TreeViewItemTitleProps = TreeViewItemTextPrimitiveProps;
 
 export interface TreeViewItemTextProps extends TreeViewItemTitleProps {
   /**
@@ -141,7 +143,7 @@ export interface TreeViewItemTextProps extends TreeViewItemTitleProps {
 
 export type TreeViewNodeInputProps = TreeViewNodeRenameInputProps;
 
-interface TreeViewItemIconProps extends ComponentProps<typeof ark.span> {}
+type TreeViewItemIconProps = HTMLArkProps<"span">;
 // #endregion
 
 // #region Parts
@@ -355,6 +357,7 @@ export function TreeViewItemText({
   const getFileIcon = (value: string): JSX.ElementType => {
     const extension = getFileExtension(value);
     const resolved = extension ? fileIcons?.[extension] : undefined;
+
     return resolved ?? Icon;
   };
 
@@ -481,7 +484,7 @@ export type {
   TreeViewNodeCheckboxProps,
   TreeViewNodeRenameInputProps,
   TreeViewTreeProps,
-} from "@ark-ui/react/tree-view";
+} from "@ark-ui/react";
 
 export const TreeView = Object.assign(
   TreeViewRoot as TreeViewPrimitive.RootComponent<TreeViewProps>,

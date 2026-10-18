@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type DatePickerInputProps as ArkInputProps,
     DatePicker as DatePickerPrimitive,
-  } from "@ark-ui/svelte/date-picker";
+    type DatePickerInputProps as ArkInputProps,
+  } from "@ark-ui/svelte";
   import {
     buttonRecipe,
     type FormControlGroupShellVariantProps,
@@ -10,12 +10,9 @@
     inputGroupControlRecipe,
   } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
-  import {
-    isInsideControl,
-    setInsideControl,
-  } from "../../internal/inside-control";
-  import { useMessageResolver } from "../provider/context";
+  import { CalendarIcon } from "phosphor-svelte";
+  import { isInsideControl, setInsideControl } from "../../internal";
+  import { useLocale } from "../provider/context";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
   import {
     DATE_PICKER_INSIDE_CONTROL,
@@ -23,7 +20,7 @@
   } from "./date-picker.context";
   import DatePickerClearTrigger from "./date-picker-clear-trigger.svelte";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type Props = Omit<ArkInputProps, "size"> &
     FormControlGroupShellVariantProps & { clearable?: boolean };
@@ -64,7 +61,7 @@
           <DatePickerClearTrigger />
         {/if}
         <DatePickerPrimitive.Trigger
-          aria-label={t("datePicker.openCalendar")}
+          aria-label={m("datePicker.openCalendar")}
           class={buttonRecipe({ size: "icon-xs", variant: "ghost" }).base()}
           type="button"
         >

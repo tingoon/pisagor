@@ -1,5 +1,6 @@
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Button, Editable, Input } from "@pisagor/react";
+
 export function Disabled() {
   return (
     <Editable defaultValue="Click to edit" disabled>

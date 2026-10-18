@@ -1,12 +1,8 @@
 import { floatingPanelRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 
-export const {
-  Context,
-  useStyles: useFloatingPanel,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "FloatingPanel",
-  recipe: floatingPanelRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "FloatingPanel",
+    recipe: floatingPanelRecipe,
+  });

@@ -4,8 +4,20 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/textarea` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (`packages/props/src/textarea.ts`, native HTML attributes omitted). */
 export const textareaProps: PropRow[] = [
+  {
+    name: "clearable",
+    type: "boolean | undefined",
+    defaultValue: "`false`",
+    description: "Reserve end padding for the clear control.",
+  },
+  {
+    name: "size",
+    type: "\"lg\" | \"md\" | \"sm\" | undefined",
+    defaultValue: "`md`",
+    description: "Size scale.",
+  },
   {
     name: "recipe",
     type: "TextareaRecipeFn | undefined",

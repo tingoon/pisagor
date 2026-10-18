@@ -33,9 +33,11 @@ export const ActiveRailPanelContent = defineComponent({
   name: "ActiveRailPanelContent",
   setup() {
     const context = useAppShell();
+
     return () => {
       if (!context) return null;
       const { railStates } = context;
+
       return h(AppShell.PanelContent, null, () =>
         regionTitle(
           railStates.start?.activeRailId

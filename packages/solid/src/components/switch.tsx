@@ -1,16 +1,15 @@
-import {
-  type SwitchControlProps,
-  type SwitchHiddenInputProps,
-  Switch as SwitchPrimitive,
-  type SwitchRootProps as SwitchPrimitiveRootProps,
-  type SwitchThumbProps,
-} from "@ark-ui/solid/switch";
+import { Switch as SwitchPrimitive } from "@ark-ui/solid";
+import type {
+  SwitchControlProps,
+  SwitchHiddenInputProps,
+  SwitchRootProps as SwitchRootPrimitiveProps,
+  SwitchThumbProps,
+} from "@ark-ui/solid";
 import type { SwitchProps as BaseSwitchRootProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -23,7 +22,7 @@ const { Context: SwitchStylesContext, withContext } = createSlotRecipeContext({
 type FormControlVariant = "primary" | "secondary";
 type SwitchClassNames = VariantClassNames<SwitchRecipeSlot>;
 
-type SwitchRootProps = SwitchPrimitiveRootProps & {
+type SwitchRootProps = SwitchRootPrimitiveProps & {
   variant?: FormControlVariant;
 } & BaseSwitchRootProps;
 
@@ -127,7 +126,7 @@ export type {
   SwitchControlProps,
   SwitchHiddenInputProps,
   SwitchThumbProps,
-} from "@ark-ui/solid/switch";
+} from "@ark-ui/solid";
 
 export const Switch = Object.assign(SwitchShorthand, {
   Control: SwitchControl,

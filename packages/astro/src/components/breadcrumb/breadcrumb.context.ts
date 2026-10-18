@@ -1,7 +1,7 @@
 import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../../internal";
 
-export const { useStyles: useBreadcrumb, withContext: withBreadcrumbContext } =
+export const { useStyles, withContext: withBreadcrumbContext } =
   createSlotRecipeContext({
     name: "Breadcrumb",
     recipe: breadcrumbRecipe,

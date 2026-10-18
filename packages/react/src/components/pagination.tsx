@@ -1,15 +1,15 @@
+import {
+  Pagination as PaginationPrimitive,
+  usePaginationContext,
+} from "@ark-ui/react";
 import type {
   PaginationContextProps,
   PaginationEllipsisProps,
   PaginationItemProps,
   PaginationNextTriggerProps,
   PaginationPrevTriggerProps,
-  PaginationRootProps as PaginationPrimitiveRootProps,
-} from "@ark-ui/react/pagination";
-import {
-  Pagination as PaginationPrimitive,
-  usePaginationContext,
-} from "@ark-ui/react/pagination";
+  PaginationRootProps as PaginationRootPrimitiveProps,
+} from "@ark-ui/react";
 import {
   CaretLeftIcon,
   CaretRightIcon,
@@ -18,11 +18,11 @@ import {
 import type { PaginationProps as BasePaginationRootProps } from "@pisagor/props";
 import { paginationRecipe } from "@pisagor/recipes";
 import type { FunctionComponent } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 
 // #region Context
-const { useStyles: usePagination, withProvider } = createSlotRecipeContext({
+const { useStyles, withProvider } = createSlotRecipeContext({
   name: "Pagination",
   recipe: paginationRecipe,
 });
@@ -30,7 +30,7 @@ const { useStyles: usePagination, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface PaginationRootProps
-  extends PaginationPrimitiveRootProps, BasePaginationRootProps {}
+  extends PaginationRootPrimitiveProps, BasePaginationRootProps {}
 
 export type PaginationItemsProps = Omit<PaginationContextProps, "children">;
 
@@ -93,7 +93,7 @@ export function PaginationItem({
   className,
   ...rest
 }: PaginationItemProps) {
-  const { slots } = usePagination();
+  const { slots } = useStyles();
 
   return (
     <PaginationPrimitive.Item {...rest} asChild>
@@ -180,7 +180,7 @@ export function PaginationEllipsis({
   className,
   ...rest
 }: PaginationEllipsisProps) {
-  const { slots } = usePagination();
+  const { slots } = useStyles();
 
   return (
     <PaginationPrimitive.Ellipsis
@@ -210,7 +210,7 @@ export type {
   PaginationItemProps,
   PaginationNextTriggerProps,
   PaginationPrevTriggerProps,
-} from "@ark-ui/react/pagination";
+} from "@ark-ui/react";
 
 export const Pagination = Object.assign(PaginationRoot, {
   Ellipsis: PaginationEllipsis,

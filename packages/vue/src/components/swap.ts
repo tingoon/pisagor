@@ -1,9 +1,9 @@
-import { Swap as SwapPrimitive } from "@ark-ui/vue/swap";
+import { Swap as SwapPrimitive } from "@ark-ui/vue";
 import type { SwapProps as BaseSwapProps } from "@pisagor/props";
 import { type SwapVariantProps, swapRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { ClassValue } from "../internal/types";
+import type { ClassValue } from "../internal";
 
 // #region Types
 export type SwapVariant = NonNullable<SwapVariantProps["variant"]>;

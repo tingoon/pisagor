@@ -1,28 +1,26 @@
-import { ark } from "@ark-ui/react/factory";
 import {
   Progress as ProgressPrimitive,
-  type ProgressRootProps,
-  type ProgressRootProviderProps,
-  type ProgressValueTextProps,
-  type UseProgressReturn,
+  ark,
   useProgress,
   useProgressContext,
-} from "@ark-ui/react/progress";
+  type HTMLArkProps,
+} from "@ark-ui/react";
+import type {
+  ProgressRootProps,
+  ProgressRootProviderProps,
+  ProgressValueTextProps,
+  UseProgressReturn,
+} from "@ark-ui/react";
 import type { CircularProgressProps as BaseCircularProgressRootProps } from "@pisagor/props";
 import {
   type CircularProgressRecipeSlot,
   circularProgressRecipe,
 } from "@pisagor/recipes";
-import type { ComponentProps, FunctionComponent, ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import type { FunctionComponent, ReactNode } from "react";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useCircularProgress,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "CircularProgress",
   recipe: circularProgressRecipe,
 });
@@ -68,7 +66,7 @@ interface CircularProgressTrackPartProps {
   className?: string;
   rangeClassName?: string;
   trackProps?: Omit<
-    ComponentProps<typeof ark.svg>,
+    HTMLArkProps<"svg">,
     "className" | "height" | "viewBox" | "width"
   >;
 }
@@ -80,7 +78,7 @@ function CircularProgressTrack({
   trackProps,
   className,
 }: CircularProgressTrackPartProps) {
-  const { slots } = useCircularProgress();
+  const { slots } = useStyles();
   const { max, min, value } = useProgressContext();
 
   const radius = size / 2 - thickness / 2;
@@ -157,7 +155,7 @@ export interface CircularProgressProps
   classNames?: CircularProgressClassNames;
   /** Extra props forwarded to the circular progress track element */
   trackProps?: Omit<
-    ComponentProps<typeof ark.svg>,
+    HTMLArkProps<"svg">,
     "className" | "height" | "viewBox" | "width"
   >;
   /** Extra props forwarded to the circular progress value element */

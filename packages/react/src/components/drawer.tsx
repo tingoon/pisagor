@@ -1,25 +1,28 @@
+import {
+  Drawer as DrawerPrimitive,
+  Portal,
+  ark,
+  type HTMLArkProps,
+} from "@ark-ui/react";
 import type {
   DrawerBackdropProps,
   DrawerCloseTriggerProps,
+  DrawerContentProps as DrawerContentPrimitiveProps,
   DrawerGrabberProps,
-  DrawerContentProps as DrawerPrimitiveContentProps,
-  DrawerPositionerProps as DrawerPrimitivePositionerProps,
-  DrawerRootProps as DrawerPrimitiveRootProps,
+  DrawerPositionerProps as DrawerPositionerPrimitiveProps,
+  DrawerRootProps as DrawerRootPrimitiveProps,
   DrawerTriggerProps,
-} from "@ark-ui/react/drawer";
-import { Drawer as DrawerPrimitive } from "@ark-ui/react/drawer";
-import { ark } from "@ark-ui/react/factory";
-import { Portal } from "@ark-ui/react/portal";
+} from "@ark-ui/react";
 import type { DrawerProps as BaseDrawerRootProps } from "@pisagor/props";
 import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
 const {
   Context: DrawerStylesContext,
-  useStyles: useDrawer,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Drawer",
@@ -29,22 +32,22 @@ const {
 
 // #region Types
 export interface DrawerRootProps
-  extends DrawerPrimitiveRootProps, BaseDrawerRootProps {}
+  extends DrawerRootPrimitiveProps, BaseDrawerRootProps {}
 
-export type DrawerPositionerProps = DrawerPrimitivePositionerProps &
-  Pick<DrawerVariantProps, "variant">;
+export type DrawerPositionerProps = DrawerPositionerPrimitiveProps &
+  DrawerVariantProps;
 
-export type DrawerContentProps = DrawerPrimitiveContentProps &
-  Pick<DrawerVariantProps, "variant">;
+export type DrawerContentProps = DrawerContentPrimitiveProps &
+  DrawerVariantProps;
 
-export interface DrawerHeaderProps extends ComponentProps<typeof ark.div> {
+export interface DrawerHeaderProps extends HTMLArkProps<"div"> {
   /** The description of the drawer */
   description?: string;
   /** The title of the drawer */
   title?: string;
 }
 
-export interface DrawerBodyProps extends ComponentProps<typeof ark.div> {
+export interface DrawerBodyProps extends HTMLArkProps<"div"> {
   /**
    * Whether to add a fade effect to the scroll area.
    *
@@ -53,13 +56,13 @@ export interface DrawerBodyProps extends ComponentProps<typeof ark.div> {
   scrollFade?: boolean;
 }
 
-export type DrawerContentInnerProps = ComponentProps<typeof ark.div>;
+export type DrawerContentInnerProps = HTMLArkProps<"div">;
 
 export type DrawerDescriptionProps = ComponentProps<
   typeof DrawerPrimitive.Description
 >;
 
-export type DrawerFooterProps = ComponentProps<typeof ark.div>;
+export type DrawerFooterProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Parts
@@ -81,7 +84,7 @@ export function DrawerTrigger(props: DrawerTriggerProps) {
 }
 
 export function DrawerBackdrop({ className, ...rest }: DrawerBackdropProps) {
-  const { slots } = useDrawer();
+  const { slots } = useStyles();
 
   return (
     <DrawerPrimitive.Backdrop
@@ -96,7 +99,7 @@ export function DrawerPositioner({
   className,
   ...rest
 }: DrawerPositionerProps) {
-  const { slots } = useDrawer();
+  const { slots } = useStyles();
 
   return (
     <DrawerPrimitive.Positioner
@@ -119,7 +122,7 @@ export function DrawerContent({
   className,
   ...rest
 }: DrawerContentProps) {
-  const { slots } = useDrawer();
+  const { slots } = useStyles();
 
   return (
     <Portal>
@@ -150,7 +153,7 @@ export function DrawerContentInner({
   className,
   ...rest
 }: DrawerContentInnerProps) {
-  const { slots } = useDrawer();
+  const { slots } = useStyles();
 
   return (
     <ark.div
@@ -163,7 +166,7 @@ export function DrawerContentInner({
 }
 
 export function DrawerGrabber({ className, ...rest }: DrawerGrabberProps) {
-  const { slots } = useDrawer();
+  const { slots } = useStyles();
 
   return (
     <ark.div className={slots.grabberWrapper()}>
@@ -184,7 +187,7 @@ export function DrawerHeader({
   className,
   ...rest
 }: DrawerHeaderProps) {
-  const { slots } = useDrawer();
+  const { slots } = useStyles();
 
   return (
     <ark.div
@@ -210,7 +213,7 @@ export function DrawerDescription({
   className,
   ...rest
 }: DrawerDescriptionProps) {
-  const { slots } = useDrawer();
+  const { slots } = useStyles();
 
   return (
     <DrawerPrimitive.Description
@@ -227,7 +230,7 @@ export function DrawerBody({
   className,
   ...rest
 }: DrawerBodyProps) {
-  const { slots } = useDrawer();
+  const { slots } = useStyles();
 
   return (
     <ScrollArea scrollFade={scrollFade}>
@@ -246,7 +249,7 @@ export function DrawerCloseTrigger(props: DrawerCloseTriggerProps) {
 }
 
 export function DrawerFooter({ className, ...rest }: DrawerFooterProps) {
-  const { slots } = useDrawer();
+  const { slots } = useStyles();
 
   return (
     <ark.div
@@ -281,7 +284,7 @@ export type {
   DrawerGrabberProps,
   DrawerTitleProps,
   DrawerTriggerProps,
-} from "@ark-ui/react/drawer";
+} from "@ark-ui/react";
 
 export const Drawer = Object.assign(DrawerRoot, {
   Backdrop: DrawerBackdrop,

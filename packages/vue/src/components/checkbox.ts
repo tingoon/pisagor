@@ -1,4 +1,4 @@
-import { Checkbox as CheckboxPrimitive } from "@ark-ui/vue/checkbox";
+import { Checkbox as CheckboxPrimitive } from "@ark-ui/vue";
 import { PhCheck, PhMinus } from "@phosphor-icons/vue";
 import type {
   CheckboxGroupProps as BaseCheckboxGroupProps,
@@ -11,7 +11,7 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { ClassValue } from "../internal/types";
+import type { ClassValue } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";

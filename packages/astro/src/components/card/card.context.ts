@@ -1,11 +1,9 @@
 import { cardRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../../internal";
 
-export const {
-  useStyles: useCard,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "Card",
-  recipe: cardRecipe,
-});
+export const { useStyles, withContext, withProvider } = createSlotRecipeContext(
+  {
+    name: "Card",
+    recipe: cardRecipe,
+  },
+);

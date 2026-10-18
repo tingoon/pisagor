@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { InputGroupAddonProps as BaseInputGroupAddonProps } from "@pisagor/props";
   import { inputGroupAddonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

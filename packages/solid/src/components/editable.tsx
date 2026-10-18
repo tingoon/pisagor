@@ -1,27 +1,27 @@
+import { Editable as EditablePrimitive } from "@ark-ui/solid";
 import type {
   EditableAreaProps,
   EditableCancelTriggerProps,
   EditableControlProps,
   EditableEditTriggerProps,
-  EditableInputProps as EditablePrimitiveInputProps,
-  EditablePreviewProps as EditablePrimitivePreviewProps,
-  EditableRootProps as EditablePrimitiveRootProps,
+  EditableInputProps as EditableInputPrimitiveProps,
+  EditablePreviewProps as EditablePreviewPrimitiveProps,
+  EditableRootProps as EditableRootPrimitiveProps,
   EditableSubmitTriggerProps,
-} from "@ark-ui/solid/editable";
-import { Editable as EditablePrimitive } from "@ark-ui/solid/editable";
+} from "@ark-ui/solid";
 import type { EditableProps as BaseEditableProps } from "@pisagor/props";
 import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import type { ButtonProps } from "./button";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
 const {
   Context: EditableStylesContext,
-  useStyles: useEditable,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Editable",
@@ -32,7 +32,7 @@ const {
 type FormControlVariant = "primary" | "secondary";
 
 export type EditableRootProps = Omit<
-  EditablePrimitiveRootProps,
+  EditableRootPrimitiveProps,
   "onValueChange" | "value" | "defaultValue"
 >;
 
@@ -43,12 +43,9 @@ export interface EditableProps extends EditableRootProps, BaseEditableProps {
   onValueChange?: (value: string) => void;
 }
 
-export interface EditableInputProps extends Omit<
-  EditablePrimitiveInputProps,
-  "size"
-> {}
+export type EditableInputProps = Omit<EditableInputPrimitiveProps, "size">;
 
-export interface EditablePreviewProps extends EditablePrimitivePreviewProps {
+export interface EditablePreviewProps extends EditablePreviewPrimitiveProps {
   controlVariant?: FormControlVariant;
   size?: ButtonProps["size"];
   variant?: ButtonProps["variant"];
@@ -106,7 +103,7 @@ export function EditablePreview(props: EditablePreviewProps): JSX.Element {
     "buttonRecipe",
     "class",
   ]);
-  const styles = useEditable();
+  const styles = useStyles();
   const size = () => local.size ?? "md";
   const variant = () => local.variant ?? "outline";
   const buttonRecipeProp = () => local.buttonRecipe ?? buttonRecipe;
@@ -125,6 +122,7 @@ export function EditablePreview(props: EditablePreviewProps): JSX.Element {
     if (resolvedVariant === "secondary") {
       return "bg-muted/40 shadow-none hover:bg-muted/40 dark:hover:bg-muted/40";
     }
+
     return undefined;
   };
 
@@ -176,7 +174,7 @@ export type {
   EditableControlProps,
   EditableEditTriggerProps,
   EditableSubmitTriggerProps,
-} from "@ark-ui/solid/editable";
+} from "@ark-ui/solid";
 
 export const Editable = Object.assign(EditableRoot, {
   Area: EditableArea,

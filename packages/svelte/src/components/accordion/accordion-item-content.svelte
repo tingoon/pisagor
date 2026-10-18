@@ -1,17 +1,17 @@
 <script lang="ts">
   import {
-    type AccordionItemContentProps,
     Accordion as AccordionPrimitive,
-  } from "@ark-ui/svelte/accordion";
+    type AccordionItemContentProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import { useAccordionItem } from "./accordion.context";
+  import { useStyles } from "./accordion.context";
 
   let {
     children,
     class: className,
     ...rest
   }: AccordionItemContentProps = $props();
-  const styles = useAccordionItem();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, FileUpload } from "@pisagor/svelte";
-  import CameraIcon from "phosphor-svelte/lib/CameraIcon";
+  import { CameraIcon } from "phosphor-svelte";
 </script>
 
 <FileUpload capture="environment">

@@ -1,5 +1,5 @@
 import { CircularSlider } from "@pisagor/solid";
-import { ThermometerIcon } from "@pisagor/solid/icons";
+import { ThermometerIcon } from "@squidlab/phosphor-solid/icons";
 
 export function WithValue() {
   return (

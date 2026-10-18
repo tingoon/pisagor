@@ -1,20 +1,16 @@
-import type {
-  MarqueeContentProps,
-  MarqueeRootProps as MarqueePrimitiveRootProps,
-} from "@ark-ui/react/marquee";
-import { Marquee as MarqueePrimitive } from "@ark-ui/react/marquee";
+import {
+  Marquee as MarqueePrimitive,
+  type MarqueeContentProps,
+  type MarqueeRootProps as MarqueeRootPrimitiveProps,
+} from "@ark-ui/react";
 import type { MarqueeProps as BaseMarqueeRootProps } from "@pisagor/props";
 import { marqueeRecipe } from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode } from "react";
 import { Children, isValidElement } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useMarquee,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Marquee",
   recipe: marqueeRecipe,
 });
@@ -22,7 +18,7 @@ const {
 
 // #region Types
 export interface MarqueeRootProps
-  extends Omit<MarqueePrimitiveRootProps, "side">, BaseMarqueeRootProps {
+  extends Omit<MarqueeRootPrimitiveProps, "side">, BaseMarqueeRootProps {
   /** @defaultValue "horizontal" */
   orientation?: "horizontal" | "vertical";
   /**
@@ -46,7 +42,7 @@ export interface MarqueeProps extends Omit<MarqueeRootProps, "children"> {
 const MarqueeRootBase = withProvider(MarqueePrimitive.Root, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<MarqueePrimitiveRootProps & BaseMarqueeRootProps>;
+}) as FunctionComponent<MarqueeRootPrimitiveProps & BaseMarqueeRootProps>;
 
 export function MarqueeRoot({
   orientation = "horizontal",
@@ -78,7 +74,7 @@ export function MarqueeRoot({
 }
 
 export function MarqueeContent({ className, ...rest }: MarqueeContentProps) {
-  const { slots } = useMarquee();
+  const { slots } = useStyles();
 
   return (
     <MarqueePrimitive.Viewport className={slots.viewport()}>
@@ -130,7 +126,7 @@ export type {
   MarqueeContentProps,
   MarqueeEdgeProps,
   MarqueeItemProps,
-} from "@ark-ui/react/marquee";
+} from "@ark-ui/react";
 
 export const Marquee = Object.assign(MarqueeShorthand, {
   Content: MarqueeContent,

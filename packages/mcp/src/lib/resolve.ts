@@ -91,6 +91,7 @@ function tryResolveRoot(specifier: string, from: string): string | null {
   } catch {
     // ignore
   }
+
   return null;
 }
 

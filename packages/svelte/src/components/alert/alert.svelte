@@ -1,13 +1,15 @@
 <script lang="ts">
   import type { AlertProps as BaseAlertProps } from "@pisagor/props";
   import type { AlertRecipeSlot } from "@pisagor/recipes";
-  import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
-  import InfoIcon from "phosphor-svelte/lib/InfoIcon";
-  import WarningCircleIcon from "phosphor-svelte/lib/WarningCircleIcon";
-  import WarningIcon from "phosphor-svelte/lib/WarningIcon";
+  import {
+    CheckCircleIcon,
+    InfoIcon,
+    WarningCircleIcon,
+    WarningIcon,
+  } from "phosphor-svelte";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import AlertAction from "./alert-action.svelte";
   import AlertDescription from "./alert-description.svelte";
   import AlertRoot from "./alert-root.svelte";

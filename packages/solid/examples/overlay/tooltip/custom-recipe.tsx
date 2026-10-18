@@ -1,6 +1,6 @@
 import { tooltipRecipe } from "@pisagor/recipes";
 import { Button, Tooltip } from "@pisagor/solid";
-import { TextBIcon } from "@pisagor/solid/icons";
+import { TextBIcon } from "@squidlab/phosphor-solid/icons";
 import { tv } from "tailwind-variants";
 
 const brandTooltipRecipe = tv({

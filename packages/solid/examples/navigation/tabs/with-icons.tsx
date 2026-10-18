@@ -1,5 +1,5 @@
 import { Tabs } from "@pisagor/solid";
-import { GearIcon, ShieldIcon, UserIcon } from "@pisagor/solid/icons";
+import { GearIcon, ShieldIcon, UserIcon } from "@squidlab/phosphor-solid/icons";
 
 export function WithIcons() {
   return (

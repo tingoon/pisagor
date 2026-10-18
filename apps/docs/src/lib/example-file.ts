@@ -29,8 +29,10 @@ export function findExampleFileLoader(
     if (!path.includes(needle)) return false;
     const base = path.split("/").pop() ?? "";
     const fileStem = base.replace(/\.[^.]+$/, "");
+
     return fileStem === stem && !EXAMPLE_SKIP_STEMS.has(fileStem);
   });
+
   return key ? modules[key] : undefined;
 }
 
@@ -47,5 +49,6 @@ export function resolveExampleExport(
   if (named != null && typeof named !== "string") return named;
   const def = mod.default;
   if (def != null && typeof def !== "string") return def;
+
   return null;
 }

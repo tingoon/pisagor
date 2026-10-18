@@ -1,8 +1,6 @@
 <script lang="ts">
   import { Timeline } from "@pisagor/svelte";
-  import CheckCircleIcon from "phosphor-svelte/lib/CheckCircleIcon";
-  import CircleIcon from "phosphor-svelte/lib/CircleIcon";
-  import RocketIcon from "phosphor-svelte/lib/RocketIcon";
+  import { CheckCircleIcon, CircleIcon, RocketIcon } from "phosphor-svelte";
 </script>
 
 <Timeline.Root>

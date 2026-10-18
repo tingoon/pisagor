@@ -2,14 +2,13 @@ import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
 import { fileInputRecipe, formControlGroupShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, ref } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupText,
 } from "./input-group/input-group-core";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -109,6 +108,7 @@ export const FileInput = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
     const surfaceVariant = useFormControlSurface();
 
     const inputRef = ref<HTMLInputElement | null>(null);
@@ -187,7 +187,7 @@ export const FileInput = defineComponent({
                     onClick: openPicker,
                     type: "button",
                   },
-                  () => props.browseLabel ?? useTranslation("fileInput.browse"),
+                  () => m("fileInput.browse", props.browseLabel),
                 ),
               ),
               h(
@@ -198,8 +198,7 @@ export const FileInput = defineComponent({
                 },
                 () =>
                   fileLabel.value ??
-                  props.placeholder ??
-                  useTranslation("fileInput.placeholder"),
+                  m("fileInput.placeholder", props.placeholder),
               ),
             ],
           ),

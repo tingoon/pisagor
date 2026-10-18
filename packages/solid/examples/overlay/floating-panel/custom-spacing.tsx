@@ -1,4 +1,4 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import {
   Button,
   Field,
@@ -6,11 +6,13 @@ import {
   NumberInput,
   Select,
 } from "@pisagor/solid";
-import { GearSixIcon, XIcon } from "@pisagor/solid/icons";
+import { GearSixIcon, XIcon } from "@squidlab/phosphor-solid/icons";
+
 export function CustomSpacing() {
   const collection = createListCollection({
     items: ["Inter", "Roboto", "Helvetica", "Geist"],
   });
+
   return (
     <FloatingPanel defaultSize={{ height: 300, width: 360 }}>
       <FloatingPanel.Trigger

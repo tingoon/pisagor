@@ -6,7 +6,7 @@ export type {
   FormatByteProps,
   FormatNumberProps,
   FormatRelativeTimeProps,
-} from "@ark-ui/svelte/format";
+} from "@ark-ui/svelte";
 
 export const Format = {
   Byte: FormatByte,

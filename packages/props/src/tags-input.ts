@@ -1,10 +1,11 @@
 import type {
+  FormControlGroupShellVariantProps,
   TagsInputItemRecipeFn,
   TagsInputRecipeFn,
 } from "@pisagor/recipes";
 
-/** TagsInput props. */
-export interface TagsInputProps {
+/** TagsInput props. Shell variants from `formControlGroupShellRecipe`. */
+export interface TagsInputProps extends FormControlGroupShellVariantProps {
   /**
    * Style recipe override.
    *
@@ -14,7 +15,7 @@ export interface TagsInputProps {
 }
 
 /** TagsInputItem props. */
-export interface TagsInputItemProps {
+export interface TagsInputItemProps extends FormControlGroupShellVariantProps {
   /**
    * Style recipe override.
    *

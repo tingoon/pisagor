@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type StepsCompletedContentProps,
     Steps as StepsPrimitive,
-  } from "@ark-ui/svelte/steps";
+    type StepsCompletedContentProps,
+  } from "@ark-ui/svelte";
   import { withStepsContext } from "./steps.context";
 
   let { children, ...rest }: StepsCompletedContentProps = $props();

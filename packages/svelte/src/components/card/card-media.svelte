@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { CardProps as BaseCardProps } from "@pisagor/props";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
-  import { useCard } from "./card.context";
+  import { useStyles } from "./card.context";
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
@@ -16,7 +16,7 @@
     ...rest
   }: Props = $props();
 
-  const styles = useCard();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

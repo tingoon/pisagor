@@ -1,15 +1,17 @@
-import {
-  type AvatarFallbackProps,
-  type AvatarImageProps,
-  Avatar as AvatarPrimitive,
-  type AvatarRootProps as AvatarPrimitiveRootProps,
-} from "@ark-ui/react/avatar";
+import { Avatar as AvatarPrimitive } from "@ark-ui/react";
+import type {
+  AvatarFallbackProps,
+  AvatarImageProps,
+  AvatarRootProps as AvatarRootPrimitiveProps,
+} from "@ark-ui/react";
 import type { AvatarProps as BaseAvatarRootProps } from "@pisagor/props";
 import { type AvatarRecipeSlot, avatarRecipe } from "@pisagor/recipes";
 import { getInitials } from "@pisagor/utils";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../../internal/types";
+import {
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -22,7 +24,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 const AvatarRoot = withProvider(AvatarPrimitive.Root, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<AvatarPrimitiveRootProps & BaseAvatarRootProps>;
+}) as FunctionComponent<AvatarRootPrimitiveProps & BaseAvatarRootProps>;
 
 const AvatarImage = withContext(AvatarPrimitive.Image, {
   name: "Image",

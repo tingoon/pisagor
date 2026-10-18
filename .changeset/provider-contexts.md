@@ -7,6 +7,6 @@
 "@pisagor/tokens": minor
 ---
 
-Split `Provider` into composable `Provider.Locale`, `Provider.Translations` and `Provider.Motion` parts. Nested providers merge over their parent, the root `Provider` mounts the toaster once, `motion={{ disabled: true }}` collapses animations through `data-motion="disabled"`, `useProvider` reads the resolved values, and `dir` comes only from Ark's locale context.
+Split `Provider` into composable `Provider.Locale` and `Provider.Motion` parts. Nested providers merge over their parent, the root `Provider` mounts the toaster once, `motion={{ disabled: true }}` collapses animations through `data-motion="disabled"`, and `useProvider` reads the resolved values.
 
-**Breaking:** `messages` is renamed to `translations` and `useProviderMessage` to `useTranslation`. In React, `getMessage` is replaced by `useMessage`. Migrate `prop ?? getMessage(key)` to `useMessage(key, prop)`, and use `useMessageResolver()` for keys built inside loops or callbacks.
+**Breaking:** `useProviderMessage` and React's `getMessage` are replaced by `useLocale().m`. Migrate `prop ?? getMessage(key)` to `const { m } = useLocale();` and `m(key, prop)`.

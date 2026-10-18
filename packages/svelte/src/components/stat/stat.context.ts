@@ -1,12 +1,8 @@
 import { statRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 
-export const {
-  Context,
-  useStyles: useStat,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "Stat",
-  recipe: statRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "Stat",
+    recipe: statRecipe,
+  });

@@ -5,7 +5,7 @@ import {
   InputGroupButton,
   type InputGroupButtonProps,
 } from "../input-group/input-group-core";
-import { useTranslation } from "../provider/context";
+import { useLocale } from "../provider/context";
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -23,12 +23,14 @@ export const InputClearButton = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
+
     return () =>
       h(
         InputGroupButton as ArkPart,
         {
           ...(attrs as object),
-          "aria-label": useTranslation("inputClearButton.clear"),
+          "aria-label": m("inputClearButton.clear"),
           "data-part": "clear-button",
           "data-scope": "input",
           onClick: props.onClear,

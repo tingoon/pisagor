@@ -2,7 +2,7 @@
   import {
     Progress as ProgressPrimitive,
     type ProgressValueTextProps,
-  } from "@ark-ui/svelte/progress";
+  } from "@ark-ui/svelte";
   import { withContext } from "./circular-progress.context";
 
   let { children, ...rest }: ProgressValueTextProps = $props();

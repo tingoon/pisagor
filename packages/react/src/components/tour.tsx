@@ -1,26 +1,30 @@
-import { Portal } from "@ark-ui/react";
-import { ark } from "@ark-ui/react/factory";
+import {
+  Portal,
+  Tour as TourPrimitive,
+  ark,
+  useTour,
+  type HTMLArkProps,
+} from "@ark-ui/react";
 import type {
   TourActionTriggerProps,
   TourCloseTriggerProps,
+  TourContentProps as TourContentPrimitiveProps,
   TourDescriptionProps,
   TourPositionerProps,
-  TourContentProps as TourPrimitiveContentProps,
-  TourRootProps as TourPrimitiveRootProps,
   TourProgressTextProps,
+  TourRootProps as TourRootPrimitiveProps,
   TourSpotlightProps,
   TourStepDetails,
   TourTitleProps,
   UseTourReturn,
-} from "@ark-ui/react/tour";
-import { Tour as TourPrimitive, useTour } from "@ark-ui/react/tour";
+} from "@ark-ui/react";
 import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react";
 import type { TourProps as BaseTourProps } from "@pisagor/props";
 import { dialogRecipe, tourRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { ComponentProps, MouseEvent } from "react";
+import type { MouseEvent } from "react";
 import { createContext, use, useCallback, useEffect, useMemo } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import type {
   DialogBackdropProps,
@@ -28,15 +32,14 @@ import type {
   DialogFooterProps,
   DialogHeaderProps,
 } from "./dialog";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
-const { Context: TourStylesContext, useStyles: useTourStyles } =
-  createSlotRecipeContext({
-    name: "Tour",
-    recipe: tourRecipe,
-  });
+const { Context: TourStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Tour",
+  recipe: tourRecipe,
+});
 
 interface TourStateValue {
   handleStart: () => void;
@@ -48,11 +51,12 @@ TourStateContext.displayName = "TourStateContext";
 
 /** Returns the nearest tour styles + state context. */
 export function useTourContext() {
-  const styles = useTourStyles();
+  const styles = useStyles();
   const state = use(TourStateContext);
   if (state === undefined) {
     throw new Error("useTourContext must be used within TourStateContext.");
   }
+
   return { ...styles, ...state };
 }
 // #endregion
@@ -60,7 +64,7 @@ export function useTourContext() {
 // #region Types
 export type TourStepType = TourStepDetails;
 
-export type TourRootProps = Omit<TourPrimitiveRootProps, "tour">;
+export type TourRootProps = Omit<TourRootPrimitiveProps, "tour">;
 
 export interface TourProps extends TourRootProps, BaseTourProps {
   /** Whether to enable arrow key navigation between steps */
@@ -77,7 +81,7 @@ export interface TourProps extends TourRootProps, BaseTourProps {
   onStepChange?: (details: { stepId: string | null }) => void;
 }
 
-export type TourTriggerProps = ComponentProps<typeof ark.button>;
+export type TourTriggerProps = HTMLArkProps<"button">;
 
 export interface TourBackdropProps extends DialogBackdropProps {
   /**
@@ -89,7 +93,7 @@ export interface TourBackdropProps extends DialogBackdropProps {
   dialogRecipe?: typeof dialogRecipe;
 }
 
-export interface TourContentProps extends TourPrimitiveContentProps {
+export interface TourContentProps extends TourContentPrimitiveProps {
   /**
    * Whether to show a close button at the top right corner.
    *
@@ -195,7 +199,7 @@ export function TourContent({
   className,
   ...rest
 }: TourContentProps) {
-  const tourCloseMessage = useMessage("tour.close");
+  const { m } = useLocale();
   const { slots } = useTourContext();
 
   return (
@@ -231,7 +235,7 @@ export function TourContent({
               >
                 <XIcon />
 
-                <span className={slots.closeLabel()}>{tourCloseMessage}</span>
+                <span className={slots.closeLabel()}>{m("tour.close")}</span>
               </Button>
             </TourCloseTrigger>
           )}
@@ -494,7 +498,7 @@ export type {
   TourProgressTextProps,
   TourSpotlightProps,
   TourTitleProps,
-} from "@ark-ui/react/tour";
+} from "@ark-ui/react";
 
 export const Tour = Object.assign(TourRoot, {
   Actions: TourActions,

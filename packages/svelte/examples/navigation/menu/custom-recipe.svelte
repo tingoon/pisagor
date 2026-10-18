@@ -1,9 +1,7 @@
 <script lang="ts">
   import { menuRecipe } from "@pisagor/recipes";
   import { Menu } from "@pisagor/svelte";
-  import GearIcon from "phosphor-svelte/lib/GearIcon";
-  import SignOutIcon from "phosphor-svelte/lib/SignOutIcon";
-  import UserIcon from "phosphor-svelte/lib/UserIcon";
+  import { GearIcon, SignOutIcon, UserIcon } from "phosphor-svelte";
   import { tv } from "tailwind-variants";
 
   const brandMenuRecipe = tv({

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { waitForEvent } from "@ark-ui/vue/tour";
+import { waitForEvent } from "@ark-ui/vue";
 import { Button, Tour, type TourStepType } from "@pisagor/vue";
 
 const steps: TourStepType[] = [
@@ -17,6 +17,7 @@ const steps: TourStepType[] = [
       show();
       const [promise, cancel] = waitForEvent(target, "click");
       promise.then(() => next());
+
       return cancel;
     },
     id: "click-add",
@@ -30,6 +31,7 @@ const steps: TourStepType[] = [
       show();
       const [promise, cancel] = waitForEvent(target, "click");
       promise.then(() => next());
+
       return cancel;
     },
     id: "click-edit",
@@ -43,6 +45,7 @@ const steps: TourStepType[] = [
       show();
       const [promise, cancel] = waitForEvent(target, "click");
       promise.then(() => next());
+
       return cancel;
     },
     id: "click-delete",

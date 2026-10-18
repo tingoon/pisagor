@@ -1,4 +1,5 @@
 import { Button, Popover } from "@pisagor/react";
+
 export function Modal() {
   return (
     <Popover modal>

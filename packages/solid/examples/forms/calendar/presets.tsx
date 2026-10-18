@@ -1,4 +1,5 @@
 import { Button, Calendar, Card } from "@pisagor/solid";
+
 export function Presets() {
   const presets = [
     { label: "Last 7 days", value: "last7Days" as const },
@@ -6,6 +7,7 @@ export function Presets() {
     { label: "Last 30 days", value: "last30Days" as const },
     { label: "This month", value: "thisMonth" as const },
   ];
+
   return (
     <Calendar class="[--cell-size:--spacing(8)]" selectionMode="range">
       <Card class="[--space:--spacing(2)]">

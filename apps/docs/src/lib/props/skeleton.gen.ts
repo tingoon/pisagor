@@ -4,8 +4,14 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/skeleton` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (`packages/props/src/skeleton.ts`, native HTML attributes omitted). */
 export const skeletonProps: PropRow[] = [
+  {
+    name: "size",
+    type: "\"lg\" | \"md\" | \"sm\" | undefined",
+    defaultValue: "`md`",
+    description: "Size scale.",
+  },
   {
     name: "recipe",
     type: "SkeletonRecipeFn | undefined",

@@ -1,21 +1,18 @@
-import { ark } from "@ark-ui/solid/factory";
+import { Tour as TourPrimitive, ark, useTour } from "@ark-ui/solid";
 import type {
+  HTMLArkProps,
   TourActionTriggerProps,
   TourCloseTriggerProps,
+  TourContentProps as TourContentPrimitiveProps,
   TourDescriptionProps,
   TourPositionerProps,
-  TourContentProps as TourPrimitiveContentProps,
-  TourRootProps as TourPrimitiveRootProps,
   TourProgressTextProps,
+  TourRootProps as TourRootPrimitiveProps,
   TourSpotlightProps,
   TourStepDetails,
   TourTitleProps,
-} from "@ark-ui/solid/tour";
-import {
-  Tour as TourPrimitive,
-  type UseTourReturn,
-  useTour,
-} from "@ark-ui/solid/tour";
+  UseTourReturn,
+} from "@ark-ui/solid";
 import type { TourProps as BaseTourProps } from "@pisagor/props";
 import { dialogRecipe, tourRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -32,8 +29,12 @@ import {
   useContext,
 } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CaretLeftIcon, CaretRightIcon, XIcon } from "../internal/icons";
+import {
+  CaretLeftIcon,
+  CaretRightIcon,
+  XIcon,
+  createSlotRecipeContext,
+} from "../internal";
 import { createContext } from "../utils";
 import { Button } from "./button";
 import type {
@@ -44,8 +45,10 @@ import type {
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
-const { Context: TourStylesContext, useStyles: useTourStyles } =
-  createSlotRecipeContext({ name: "Tour", recipe: tourRecipe });
+const { Context: TourStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Tour",
+  recipe: tourRecipe,
+});
 
 /** Non-style tour state (Ark tour machine + start handler). */
 interface TourState {
@@ -58,8 +61,9 @@ const { TourStateContext, useTourState } =
 
 /** Returns the nearest tour styles + state (getters stay reactive). */
 export function useTourContext() {
-  const styles = useTourStyles();
+  const styles = useStyles();
   const state = useTourState();
+
   return {
     handleStart: state.handleStart,
     get slots() {
@@ -71,7 +75,7 @@ export function useTourContext() {
 // #endregion
 
 export type TourStepType = TourStepDetails;
-export type TourRootProps = Omit<TourPrimitiveRootProps, "tour">;
+export type TourRootProps = Omit<TourRootPrimitiveProps, "tour">;
 
 export interface TourProps extends TourRootProps, BaseTourProps {
   keyboardNavigation?: boolean;
@@ -80,7 +84,7 @@ export interface TourProps extends TourRootProps, BaseTourProps {
   onStepChange?: (details: { stepId: string | null }) => void;
 }
 
-export type TourTriggerProps = ComponentProps<typeof ark.button>;
+export type TourTriggerProps = HTMLArkProps<"button">;
 
 export interface TourBackdropProps extends ComponentProps<
   typeof TourPrimitive.Backdrop
@@ -88,7 +92,7 @@ export interface TourBackdropProps extends ComponentProps<
   dialogRecipe?: typeof dialogRecipe;
 }
 
-export interface TourContentProps extends TourPrimitiveContentProps {
+export interface TourContentProps extends TourContentPrimitiveProps {
   showCloseButton?: boolean;
 }
 
@@ -168,6 +172,7 @@ export function TourBackdrop(props: TourBackdropProps): JSX.Element {
 
 export function TourPositioner(props: TourPositionerProps): JSX.Element {
   const ctx = useTourContext();
+
   return <TourPrimitive.Positioner {...props} class={ctx.slots.positioner()} />;
 }
 
@@ -249,6 +254,7 @@ export function TourBody(props: DialogBodyProps): JSX.Element {
 
 export function TourSpotlight(props: TourSpotlightProps): JSX.Element {
   const ctx = useTourContext();
+
   return <TourPrimitive.Spotlight {...props} class={ctx.slots.spotlight()} />;
 }
 
@@ -471,7 +477,7 @@ export type {
   TourProgressTextProps,
   TourSpotlightProps,
   TourTitleProps,
-} from "@ark-ui/solid/tour";
+} from "@ark-ui/solid";
 
 export const Tour = Object.assign(TourRoot, {
   Actions: TourActions,

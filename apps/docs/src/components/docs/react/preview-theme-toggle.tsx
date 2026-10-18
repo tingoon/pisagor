@@ -28,7 +28,15 @@ export function PreviewThemeToggle() {
   }
 
   useLayoutEffect(() => {
-    apply(docsTheme());
+    const panel = buttonRef.current
+      ?.closest("[data-component-preview]")
+      ?.querySelector<HTMLElement>('[data-panel="preview"]');
+    if (!panel) return;
+    const next = docsTheme();
+    panel.dataset.previewTheme = next;
+    panel.classList.toggle("dark", next === "dark");
+    panel.classList.toggle("light", next === "light");
+    setTheme(next);
   }, []);
 
   const dark = theme === "dark";

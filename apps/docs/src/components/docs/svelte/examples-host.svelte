@@ -9,7 +9,7 @@
   } from "#/lib/examples-host";
 
   const globs: ExampleGlobs = {
-    block: import.meta.glob("../../../blocks/svelte/*/*.svelte"),
+    block: import.meta.glob("../../../blocks/svelte/**/*.svelte"),
     component: import.meta.glob(
       "../../../../../../packages/svelte/examples/*/*/*.svelte",
     ),
@@ -26,6 +26,7 @@
       if (comp == null) return renderMissingExample(slot, message);
       slot.replaceChildren();
       const instance = mount(comp as Component, { target: slot });
+
       return () => {
         void unmount(instance);
       };

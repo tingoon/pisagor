@@ -1,10 +1,18 @@
+import {
+  ColorPicker as ColorPickerPrimitive,
+  Portal,
+  ark,
+  parseColor as parseColorArk,
+  useColorPickerContext,
+  type HTMLArkProps,
+} from "@ark-ui/react";
 import type {
+  ColorPickerAreaProps as ColorPickerAreaPrimitiveProps,
   ColorPickerAreaThumbProps,
   ColorPickerChannelInputProps,
   ColorPickerContentProps,
-  ColorPickerAreaProps as ColorPickerPrimitiveAreaProps,
-  ColorPickerControlProps as ColorPickerPrimitiveControlProps,
-  ColorPickerRootProps as ColorPickerPrimitiveRootProps,
+  ColorPickerControlProps as ColorPickerControlPrimitiveProps,
+  ColorPickerRootProps as ColorPickerRootPrimitiveProps,
   ColorPickerSwatchGroupProps,
   ColorPickerSwatchProps,
   ColorPickerTriggerProps,
@@ -12,38 +20,32 @@ import type {
   ColorPickerValueSwatchProps,
   ColorPickerValueTextProps,
   ColorPickerViewProps,
-} from "@ark-ui/react/color-picker";
-import {
-  ColorPicker as ColorPickerPrimitive,
-  parseColor as parseColorArk,
-  useColorPickerContext,
-} from "@ark-ui/react/color-picker";
-import { ark } from "@ark-ui/react/factory";
-import { Portal } from "@ark-ui/react/portal";
+} from "@ark-ui/react";
 import { useUncontrolled } from "@mantine/hooks";
 import { CheckIcon, EyedropperIcon, XIcon } from "@phosphor-icons/react";
 import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { type ComponentProps, useMemo } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { FormControlVariant } from "../internal/types";
+import { useMemo } from "react";
+import type { ComponentProps } from "react";
+import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { InputGroup, type InputGroupButtonProps } from "./input-group";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
-const { Context: ColorPickerSlotsContext, useStyles: useColorPicker } =
-  createSlotRecipeContext({
+const { Context: ColorPickerSlotsContext, useStyles } = createSlotRecipeContext(
+  {
     name: "ColorPicker",
     recipe: colorPickerRecipe,
-  });
+  },
+);
 // #endregion
 
 // #region Types
 
 export type ColorPickerRootProps = Omit<
-  ColorPickerPrimitiveRootProps,
+  ColorPickerRootPrimitiveProps,
   "defaultValue" | "value" | "onValueChange"
 >;
 
@@ -88,7 +90,7 @@ export interface ColorPickerClearTriggerProps extends InputGroupButtonProps {
   clearable?: boolean;
 }
 
-export interface ColorPickerControlProps extends ColorPickerPrimitiveControlProps {
+export interface ColorPickerControlProps extends ColorPickerControlPrimitiveProps {
   /**
    * Whether to show a clear button when a color is selected.
    *
@@ -102,7 +104,7 @@ export type ColorPickerEyeDropperTriggerProps = ComponentProps<
 > &
   ButtonProps;
 
-export interface ColorPickerAreaProps extends ColorPickerPrimitiveAreaProps {
+export interface ColorPickerAreaProps extends ColorPickerAreaPrimitiveProps {
   showDots?: boolean;
 }
 
@@ -124,7 +126,7 @@ export type ColorPickerSwatchIndicatorProps = ComponentProps<
 
 export type ColorPickerInputProps = Partial<ColorPickerChannelInputProps>;
 
-export type ColorPickerSwatchPreviewProps = ComponentProps<typeof ark.div>;
+export type ColorPickerSwatchPreviewProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Parts
@@ -188,7 +190,7 @@ export function ColorPickerClearTrigger({
   className,
   ...rest
 }: ColorPickerClearTriggerProps) {
-  const colorPickerClearColorMessage = useMessage("colorPicker.clearColor");
+  const { m } = useLocale();
   const api = useColorPickerContext();
 
   if (!clearable) {
@@ -211,7 +213,7 @@ export function ColorPickerClearTrigger({
   return (
     <InputGroup.Addon align="inline-end">
       <InputGroup.Button
-        aria-label={colorPickerClearColorMessage}
+        aria-label={m("colorPicker.clearColor")}
         {...rest}
         className={className}
         data-part="clear-trigger"
@@ -236,7 +238,7 @@ export function ColorPickerControl({
   className,
   ...rest
 }: ColorPickerControlProps) {
-  const { slots } = useColorPicker();
+  const { slots } = useStyles();
 
   return (
     <ColorPickerPrimitive.Control
@@ -257,7 +259,7 @@ export function ColorPickerTransparencyGrid({
   className,
   ...rest
 }: ColorPickerTransparencyGridProps) {
-  const { slots } = useColorPicker();
+  const { slots } = useStyles();
 
   return (
     <ColorPickerPrimitive.TransparencyGrid
@@ -271,7 +273,7 @@ export function ColorPickerContent({
   className,
   ...rest
 }: ColorPickerContentProps) {
-  const { slots } = useColorPicker();
+  const { slots } = useStyles();
 
   return (
     <Portal>
@@ -286,7 +288,7 @@ export function ColorPickerContent({
 }
 
 export function ColorPickerView({ className, ...rest }: ColorPickerViewProps) {
-  const { slots } = useColorPicker();
+  const { slots } = useStyles();
 
   return (
     <ColorPickerPrimitive.View
@@ -301,7 +303,7 @@ export function ColorPickerChannelSlider({
   className,
   ...rest
 }: ColorPickerChannelSliderProps) {
-  const { slots } = useColorPicker();
+  const { slots } = useStyles();
 
   return (
     <ColorPickerPrimitive.ChannelSlider
@@ -326,9 +328,11 @@ export function ColorPickerEyeDropperTrigger({
   children,
   ...rest
 }: ColorPickerEyeDropperTriggerProps) {
+  const { m } = useLocale();
+
   return (
     <ColorPickerPrimitive.EyeDropperTrigger
-      aria-label={useMessage("colorPicker.eyeDropper")}
+      aria-label={m("colorPicker.eyeDropper")}
       {...rest}
       asChild
     >
@@ -343,7 +347,7 @@ export function ColorPickerSwatchGroup({
   className,
   ...rest
 }: ColorPickerSwatchGroupProps) {
-  const { slots } = useColorPicker();
+  const { slots } = useStyles();
 
   return (
     <ColorPickerPrimitive.SwatchGroup
@@ -357,7 +361,7 @@ export function ColorPickerSwatchTrigger({
   className,
   ...rest
 }: ColorPickerSwatchTriggerProps) {
-  const { slots } = useColorPicker();
+  const { slots } = useStyles();
 
   return (
     <ColorPickerPrimitive.SwatchTrigger
@@ -371,7 +375,7 @@ export function ColorPickerSwatch({
   className,
   ...rest
 }: ColorPickerSwatchProps) {
-  const { slots } = useColorPicker();
+  const { slots } = useStyles();
 
   return (
     <ColorPickerPrimitive.Swatch
@@ -386,7 +390,7 @@ export function ColorPickerSwatchIndicator({
   className,
   ...rest
 }: ColorPickerSwatchIndicatorProps) {
-  const { slots } = useColorPicker();
+  const { slots } = useStyles();
 
   return (
     <ColorPickerPrimitive.SwatchIndicator
@@ -402,7 +406,7 @@ export function ColorPickerValueText({
   className,
   ...rest
 }: ColorPickerValueTextProps) {
-  const { slots } = useColorPicker();
+  const { slots } = useStyles();
 
   return (
     <ColorPickerPrimitive.ValueText
@@ -416,7 +420,7 @@ export function ColorPickerValueSwatch({
   className,
   ...rest
 }: ColorPickerValueSwatchProps) {
-  const { slots } = useColorPicker();
+  const { slots } = useStyles();
 
   return (
     <ColorPickerPrimitive.ValueSwatch
@@ -432,7 +436,7 @@ export function ColorPickerArea({
   className,
   ...rest
 }: ColorPickerAreaProps) {
-  const { slots } = useColorPicker();
+  const { slots } = useStyles();
 
   return (
     <ColorPickerPrimitive.Area
@@ -458,7 +462,7 @@ export function ColorPickerAreaThumb({
   className,
   ...rest
 }: ColorPickerAreaThumbProps) {
-  const { slots } = useColorPicker();
+  const { slots } = useStyles();
 
   return (
     <ColorPickerPrimitive.AreaThumb
@@ -479,7 +483,7 @@ export function ColorPickerLabel({
   className,
   ...rest
 }: ComponentProps<typeof ColorPickerPrimitive.Label>) {
-  const { slots } = useColorPicker();
+  const { slots } = useStyles();
 
   return (
     <ColorPickerPrimitive.Label
@@ -493,7 +497,7 @@ export function ColorPickerFormatSelect({
   className,
   ...rest
 }: ComponentProps<typeof ColorPickerPrimitive.FormatSelect>) {
-  const { slots } = useColorPicker();
+  const { slots } = useStyles();
 
   return (
     <ColorPickerPrimitive.FormatSelect
@@ -507,7 +511,7 @@ export function ColorPickerSwatchPreview({
   className,
   ...rest
 }: ColorPickerSwatchPreviewProps) {
-  const { slots } = useColorPicker();
+  const { slots } = useStyles();
 
   return (
     <ark.div
@@ -560,7 +564,7 @@ export function ColorPickerField({
 }
 
 function ColorPickerFieldView() {
-  const { slots } = useColorPicker();
+  const { slots } = useStyles();
 
   return (
     <ColorPickerView format="hsla">
@@ -612,7 +616,7 @@ export type {
   ColorPickerValueSwatchProps,
   ColorPickerValueTextProps,
   ColorPickerViewProps,
-} from "@ark-ui/react/color-picker";
+} from "@ark-ui/react";
 
 export const ColorPicker = Object.assign(ColorPickerRoot, {
   Area: ColorPickerArea,

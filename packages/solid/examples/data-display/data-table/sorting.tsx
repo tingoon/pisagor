@@ -5,7 +5,7 @@ import {
   type SortingState,
   useDataTable,
 } from "@pisagor/solid/data-table";
-import { CaretDownIcon, CaretUpIcon } from "@pisagor/solid/icons";
+import { CaretDownIcon, CaretUpIcon } from "@squidlab/phosphor-solid/icons";
 import { flexRender } from "@tanstack/solid-table";
 import { createMemo, createSignal } from "solid-js";
 

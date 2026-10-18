@@ -1,4 +1,4 @@
-import { Toggle as TogglePrimitive } from "@ark-ui/vue/toggle";
+import { Toggle as TogglePrimitive } from "@ark-ui/vue";
 import type { ToggleProps as BaseToggleProps } from "@pisagor/props";
 import {
   type ButtonVariantProps,
@@ -8,7 +8,7 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { ClassValue } from "../internal/types";
+import type { ClassValue } from "../internal";
 
 type ArkPart = Parameters<typeof h>[0];
 

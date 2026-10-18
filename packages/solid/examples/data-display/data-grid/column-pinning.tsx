@@ -2,7 +2,7 @@ import type { BadgeVariant } from "@pisagor/solid";
 import { Badge, Button, Table } from "@pisagor/solid";
 import type { ColumnDef } from "@pisagor/solid/data-grid";
 import { DataGrid } from "@pisagor/solid/data-grid";
-import { DotsThreeVerticalIcon } from "@pisagor/solid/icons";
+import { DotsThreeVerticalIcon } from "@squidlab/phosphor-solid/icons";
 import type { ColumnPinningState } from "@tanstack/solid-table";
 import type { JSX } from "solid-js";
 import { createMemo, createSignal } from "solid-js";

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { InputGroup } from "@pisagor/svelte";
-  import EyeIcon from "phosphor-svelte/lib/EyeIcon";
+  import { EyeIcon } from "phosphor-svelte";
 </script>
 
 <div class="flex flex-col gap-2">

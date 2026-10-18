@@ -99,5 +99,6 @@ export function resolveFramework(
       `Framework "${framework}" is not installed. Available: ${config.frameworks.join(", ")}.`,
     );
   }
+
   return framework;
 }

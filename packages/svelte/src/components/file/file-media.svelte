@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { FileProps as BaseFileProps } from "@pisagor/props";
   import { cn } from "@pisagor/utils";
-  import FileIcon from "phosphor-svelte/lib/FileIcon";
+  import { FileIcon } from "phosphor-svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import { useFile } from "./file.context";
+  import { useStyles } from "./file.context";
 
   type Props = HTMLAttributes<HTMLDivElement> & BaseFileProps;
 
@@ -14,7 +14,7 @@
     class: className,
     ...rest
   }: Props = $props();
-  const styles = useFile();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

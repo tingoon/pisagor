@@ -3,12 +3,14 @@ import { PhCaretDown, PhCaretRight } from "@phosphor-icons/vue";
 import type { BadgeVariant } from "@pisagor/vue";
 import { Badge, Table } from "@pisagor/vue";
 import {
-  type CellContext,
-  type ColumnDef,
   DataGrid,
-  type DataGridFeatures,
   renderDataGridCell,
   useDataGrid,
+} from "@pisagor/vue/data-grid";
+import type {
+  CellContext,
+  ColumnDef,
+  DataGridFeatures,
 } from "@pisagor/vue/data-grid";
 import type { ExpandedState, Row, RowData } from "@tanstack/vue-table";
 import {

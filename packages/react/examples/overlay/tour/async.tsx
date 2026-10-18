@@ -1,5 +1,6 @@
 import type { TourStepType } from "@pisagor/react";
 import { Button, Tour } from "@pisagor/react";
+
 export function Async() {
   const steps: TourStepType[] = [
     {
@@ -40,6 +41,7 @@ export function Async() {
       type: "dialog",
     },
   ];
+
   return (
     <div className="flex flex-col gap-2">
       <Tour steps={steps}>

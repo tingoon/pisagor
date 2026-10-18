@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type PopoverPositionerProps,
     Popover as PopoverPrimitive,
-  } from "@ark-ui/svelte/popover";
+    type PopoverPositionerProps,
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: PopoverPositionerProps = $props();
 </script>

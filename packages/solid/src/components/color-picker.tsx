@@ -1,10 +1,16 @@
+import {
+  ColorPicker as ColorPickerPrimitive,
+  ark,
+  parseColor as parseColorArk,
+  useColorPickerContext,
+} from "@ark-ui/solid";
 import type {
+  ColorPickerAreaProps as ColorPickerAreaPrimitiveProps,
   ColorPickerAreaThumbProps,
   ColorPickerChannelInputProps,
   ColorPickerContentProps,
-  ColorPickerAreaProps as ColorPickerPrimitiveAreaProps,
-  ColorPickerControlProps as ColorPickerPrimitiveControlProps,
-  ColorPickerRootProps as ColorPickerPrimitiveRootProps,
+  ColorPickerControlProps as ColorPickerControlPrimitiveProps,
+  ColorPickerRootProps as ColorPickerRootPrimitiveProps,
   ColorPickerSwatchGroupProps,
   ColorPickerSwatchProps,
   ColorPickerTriggerProps,
@@ -12,37 +18,37 @@ import type {
   ColorPickerValueSwatchProps,
   ColorPickerValueTextProps,
   ColorPickerViewProps,
-} from "@ark-ui/solid/color-picker";
-import {
-  ColorPicker as ColorPickerPrimitive,
-  parseColor as parseColorArk,
-  useColorPickerContext,
-} from "@ark-ui/solid/color-picker";
-import { ark } from "@ark-ui/solid/factory";
+  HTMLArkProps,
+} from "@ark-ui/solid";
 import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, createSignal, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CheckIcon, EyedropperIcon, XIcon } from "../internal/icons";
+import {
+  CheckIcon,
+  EyedropperIcon,
+  XIcon,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button, type ButtonProps } from "./button";
 import { InputGroup, type InputGroupButtonProps } from "./input-group";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
-const { Context: ColorPickerSlotsContext, useStyles: useColorPicker } =
-  createSlotRecipeContext({
+const { Context: ColorPickerSlotsContext, useStyles } = createSlotRecipeContext(
+  {
     name: "ColorPicker",
     recipe: colorPickerRecipe,
-  });
+  },
+);
 // #endregion
 
 type FormControlVariant = "primary" | "secondary";
 
 export type ColorPickerRootProps = Omit<
-  ColorPickerPrimitiveRootProps,
+  ColorPickerRootPrimitiveProps,
   "defaultValue" | "value" | "onValueChange"
 >;
 
@@ -59,7 +65,7 @@ export interface ColorPickerClearTriggerProps extends InputGroupButtonProps {
   clearable?: boolean;
 }
 
-export interface ColorPickerControlProps extends ColorPickerPrimitiveControlProps {
+export interface ColorPickerControlProps extends ColorPickerControlPrimitiveProps {
   clearable?: boolean;
 }
 
@@ -68,7 +74,7 @@ export type ColorPickerEyeDropperTriggerProps = ComponentProps<
 > &
   ButtonProps;
 
-export interface ColorPickerAreaProps extends ColorPickerPrimitiveAreaProps {
+export interface ColorPickerAreaProps extends ColorPickerAreaPrimitiveProps {
   showDots?: boolean;
 }
 
@@ -90,7 +96,7 @@ export type ColorPickerSwatchIndicatorProps = ComponentProps<
 
 export type ColorPickerInputProps = Partial<ColorPickerChannelInputProps>;
 
-export type ColorPickerSwatchPreviewProps = ComponentProps<typeof ark.div>;
+export type ColorPickerSwatchPreviewProps = HTMLArkProps<"div">;
 
 export const parseColor = parseColorArk;
 
@@ -115,6 +121,7 @@ export function ColorPickerRoot(props: ColorPickerProps): JSX.Element {
   );
   const parsedColor = createMemo(() => {
     const value = color();
+
     return value ? parseColor(value) : undefined;
   });
 
@@ -150,6 +157,7 @@ export function ColorPickerRoot(props: ColorPickerProps): JSX.Element {
 export function ColorPickerClearTrigger(
   props: ColorPickerClearTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["clearable", "onClick", "class"]);
   const api = useColorPickerContext();
   const clearable = () => local.clearable ?? false;
@@ -161,6 +169,7 @@ export function ColorPickerClearTrigger(
       readOnly?: boolean;
     };
     if (controlProps.disabled || controlProps.readOnly) return false;
+
     return api().value.getChannelValue("alpha") !== 0;
   });
 
@@ -168,7 +177,7 @@ export function ColorPickerClearTrigger(
     <Show when={visible()}>
       <InputGroup.Addon align="inline-end">
         <InputGroup.Button
-          aria-label={useTranslation("colorPicker.clearColor")}
+          aria-label={m("colorPicker.clearColor")}
           {...rest}
           class={local.class}
           data-part="clear-trigger"
@@ -192,7 +201,7 @@ export function ColorPickerControl(
   props: ColorPickerControlProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["clearable", "children", "class"]);
-  const styles = useColorPicker();
+  const styles = useStyles();
 
   return (
     <ColorPickerPrimitive.Control
@@ -217,7 +226,7 @@ export function ColorPickerTransparencyGrid(
   props: ColorPickerTransparencyGridProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useColorPicker();
+  const styles = useStyles();
 
   return (
     <ColorPickerPrimitive.TransparencyGrid
@@ -231,7 +240,7 @@ export function ColorPickerContent(
   props: ColorPickerContentProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useColorPicker();
+  const styles = useStyles();
 
   return (
     <Portal>
@@ -247,7 +256,7 @@ export function ColorPickerContent(
 
 export function ColorPickerView(props: ColorPickerViewProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useColorPicker();
+  const styles = useStyles();
 
   return (
     <ColorPickerPrimitive.View
@@ -261,7 +270,7 @@ export function ColorPickerChannelSlider(
   props: ColorPickerChannelSliderProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useColorPicker();
+  const styles = useStyles();
 
   return (
     <ColorPickerPrimitive.ChannelSlider
@@ -282,11 +291,12 @@ export function ColorPickerChannelSlider(
 export function ColorPickerEyeDropperTrigger(
   props: ColorPickerEyeDropperTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["size", "variant", "children"]);
-  const label = useTranslation("colorPicker.eyeDropper");
+
   return (
     <ColorPickerPrimitive.EyeDropperTrigger
-      aria-label={label}
+      aria-label={m("colorPicker.eyeDropper")}
       {...rest}
       asChild={(triggerProps) => (
         <Button
@@ -305,7 +315,7 @@ export function ColorPickerSwatchGroup(
   props: ColorPickerSwatchGroupProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useColorPicker();
+  const styles = useStyles();
 
   return (
     <ColorPickerPrimitive.SwatchGroup
@@ -319,7 +329,7 @@ export function ColorPickerSwatchTrigger(
   props: ColorPickerSwatchTriggerProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useColorPicker();
+  const styles = useStyles();
 
   return (
     <ColorPickerPrimitive.SwatchTrigger
@@ -331,7 +341,7 @@ export function ColorPickerSwatchTrigger(
 
 export function ColorPickerSwatch(props: ColorPickerSwatchProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useColorPicker();
+  const styles = useStyles();
 
   return (
     <ColorPickerPrimitive.Swatch
@@ -345,7 +355,7 @@ export function ColorPickerSwatchIndicator(
   props: ColorPickerSwatchIndicatorProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useColorPicker();
+  const styles = useStyles();
 
   return (
     <ColorPickerPrimitive.SwatchIndicator
@@ -361,7 +371,7 @@ export function ColorPickerValueText(
   props: ColorPickerValueTextProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useColorPicker();
+  const styles = useStyles();
 
   return (
     <ColorPickerPrimitive.ValueText
@@ -375,7 +385,7 @@ export function ColorPickerValueSwatch(
   props: ColorPickerValueSwatchProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useColorPicker();
+  const styles = useStyles();
 
   return (
     <ColorPickerPrimitive.ValueSwatch
@@ -387,7 +397,7 @@ export function ColorPickerValueSwatch(
 
 export function ColorPickerArea(props: ColorPickerAreaProps): JSX.Element {
   const [local, rest] = splitProps(props, ["showDots", "children", "class"]);
-  const styles = useColorPicker();
+  const styles = useStyles();
 
   return (
     <ColorPickerPrimitive.Area
@@ -412,7 +422,7 @@ export function ColorPickerAreaThumb(
   props: ColorPickerAreaThumbProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useColorPicker();
+  const styles = useStyles();
 
   return (
     <ColorPickerPrimitive.AreaThumb
@@ -426,7 +436,7 @@ export function ColorPickerLabel(
   props: ComponentProps<typeof ColorPickerPrimitive.Label>,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useColorPicker();
+  const styles = useStyles();
 
   return (
     <ColorPickerPrimitive.Label
@@ -440,7 +450,7 @@ export function ColorPickerFormatSelect(
   props: ComponentProps<typeof ColorPickerPrimitive.FormatSelect>,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useColorPicker();
+  const styles = useStyles();
 
   return (
     <ColorPickerPrimitive.FormatSelect
@@ -452,6 +462,7 @@ export function ColorPickerFormatSelect(
 
 export function ColorPickerInput(props: ColorPickerInputProps): JSX.Element {
   const [local, rest] = splitProps(props, ["channel"]);
+
   return (
     <ColorPickerPrimitive.ChannelInput
       {...rest}
@@ -464,7 +475,7 @@ export function ColorPickerSwatchPreview(
   props: ColorPickerSwatchPreviewProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useColorPicker();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -519,7 +530,7 @@ export function ColorPickerField(props: ColorPickerProps): JSX.Element {
 }
 
 function ColorPickerFieldView(): JSX.Element {
-  const styles = useColorPicker();
+  const styles = useStyles();
 
   return (
     <ColorPickerView format="hsla">
@@ -546,7 +557,7 @@ export type {
   ColorPickerValueSwatchProps,
   ColorPickerValueTextProps,
   ColorPickerViewProps,
-} from "@ark-ui/solid/color-picker";
+} from "@ark-ui/solid";
 
 export const ColorPicker = Object.assign(ColorPickerRoot, {
   Area: ColorPickerArea,

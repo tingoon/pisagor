@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type MenuContextTriggerProps,
     Menu as MenuPrimitive,
-  } from "@ark-ui/svelte/menu";
+    type MenuContextTriggerProps,
+  } from "@ark-ui/svelte";
   import type { ContextMenuProps as BaseContextMenuProps } from "@pisagor/props";
   import { contextMenuRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

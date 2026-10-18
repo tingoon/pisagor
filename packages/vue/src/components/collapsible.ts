@@ -1,15 +1,14 @@
-import { Collapsible as CollapsiblePrimitive } from "@ark-ui/vue/collapsible";
+import { Collapsible as CollapsiblePrimitive } from "@ark-ui/vue";
 import { PhCaretDown } from "@phosphor-icons/vue";
 import type { CollapsibleProps as BaseCollapsibleRootProps } from "@pisagor/props";
 import { collapsibleRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Slot recipe context
 const {
   provideStyles: provideCollapsibleStyles,
-  useStyles: useCollapsible,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Collapsible",
@@ -90,7 +89,7 @@ export const CollapsibleContent = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCollapsible();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;
@@ -117,7 +116,7 @@ export const CollapsibleIndicator = defineComponent({
     },
   },
   setup(props, { attrs, slots: children }) {
-    const styles = useCollapsible();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;

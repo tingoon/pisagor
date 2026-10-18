@@ -1,18 +1,17 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type { NavbarProps as BaseNavbarRootProps } from "@pisagor/props";
 import { type NavbarRecipeSlot, navbarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue, VariantClassNames } from "../internal/types";
-import { useTranslation } from "./provider/context";
+import {
+  type ClassValue,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Slot recipe context
-const {
-  useStyles: useNavbarStyles,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Navbar",
   recipe: navbarRecipe,
 });
@@ -57,7 +56,8 @@ export const NavbarNav = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useNavbarStyles();
+    const { m } = useLocale();
+    const styles = useStyles();
 
     return () => {
       const slots$ = styles.slots;
@@ -66,7 +66,7 @@ export const NavbarNav = defineComponent({
         ark.nav as ArkPart,
         {
           ...attrs,
-          "aria-label": props.ariaLabel ?? useTranslation("navbar.label"),
+          "aria-label": m("navbar.label", props.ariaLabel),
           class: slots$.nav({
             class: cn(props.class, attrs.class, props.classNames?.nav),
           }),

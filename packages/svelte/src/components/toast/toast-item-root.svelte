@@ -1,8 +1,5 @@
 <script lang="ts">
-  import {
-    Toast as ToastPrimitive,
-    type ToastRootProps,
-  } from "@ark-ui/svelte/toast";
+  import { Toast as ToastPrimitive, type ToastRootProps } from "@ark-ui/svelte";
   import type { ToastItemProps as BaseToastItemProps } from "@pisagor/props";
   import { withProvider } from "./toast.context";
 

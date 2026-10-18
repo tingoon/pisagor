@@ -1,62 +1,55 @@
 <script lang="ts">
-  import type {
-    LocaleConfig,
-    MotionConfig,
-    TranslationsConfig,
-  } from "@pisagor/utils";
-  import { defaultLocale, defaultMotion } from "@pisagor/utils";
+  import type { LocaleConfig, MotionConfig } from "@pisagor/utils";
+  import { defaultMotion, resolveLocale } from "@pisagor/utils";
   import { isNullish, mergeDeep, omitBy } from "remeda";
   import type { Snippet } from "svelte";
   import { Toaster } from "../toast";
   import {
+    createLocaleValue,
     setProviderConfig,
-    useLocale,
     useMotion,
     useProvider,
+    useResolvedLocale,
   } from "./context";
   import LocaleProvider from "./locale.svelte";
   import MotionProvider from "./motion.svelte";
-  import TranslationsProvider from "./translations.svelte";
 
-  type Props = {
+  type Props = LocaleConfig & {
     children?: Snippet;
-    /** Locale settings merged over the parent `Provider`. */
-    locale?: Partial<LocaleConfig>;
-    /**
-     * Partial translation overrides merged over the parent `Provider`
-     * translations and the built-in English defaults.
-     */
-    translations?: TranslationsConfig;
     /** Animation settings merged over the parent `Provider`. */
     motion?: Partial<MotionConfig>;
   };
 
-  let { locale, children, translations, motion }: Props = $props();
+  let { children, locale, messages, motion }: Props = $props();
 
   const parentConfig = useProvider();
-  const parentLocale = useLocale();
+  const parentLocale = useResolvedLocale();
   const parentMotion = useMotion();
   const root = !parentConfig;
 
-  setProviderConfig({
-    locale: mergeDeep(
-      mergeDeep(defaultLocale, parentLocale),
-      omitBy(locale ?? {}, isNullish),
-    ) as LocaleConfig,
-    motion: mergeDeep(
+  const resolvedLocale = $derived(
+    resolveLocale({ locale, messages }, parentLocale),
+  );
+  const resolvedMotion = $derived(
+    mergeDeep(
       mergeDeep(defaultMotion, parentMotion),
       omitBy(motion ?? {}, isNullish),
     ) as MotionConfig,
+  );
+
+  setProviderConfig({
+    locale: createLocaleValue(() => resolvedLocale),
+    get motion() {
+      return resolvedMotion;
+    },
   });
 </script>
 
-<LocaleProvider locale={locale?.locale}>
+<LocaleProvider {locale} {messages}>
   <MotionProvider disabled={motion?.disabled}>
-    <TranslationsProvider {translations}>
-      {#if root}
-        <Toaster />
-      {/if}
-      {@render children?.()}
-    </TranslationsProvider>
+    {#if root}
+      <Toaster />
+    {/if}
+    {@render children?.()}
   </MotionProvider>
 </LocaleProvider>

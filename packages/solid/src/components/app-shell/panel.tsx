@@ -4,7 +4,7 @@ import { createSignal, Show, splitProps } from "solid-js";
 import {
   ArrowsInLineHorizontalIcon,
   ArrowsOutLineHorizontalIcon,
-} from "../../internal/icons";
+} from "../../internal";
 import type { ButtonProps } from "../button";
 import { Resizable } from "../resizable";
 import { ScrollArea } from "../scroll-area";
@@ -13,7 +13,7 @@ import type {
   AppShellRegionPosition,
   AppShellResizableProps,
 } from "./app-shell.context";
-import { useAppShellState, useAppShellStyles } from "./app-shell.context";
+import { useAppShellState, useStyles } from "./app-shell.context";
 import {
   gridAreaFor,
   mergeResizableProps,
@@ -65,7 +65,7 @@ export function AppShellPanel(props: AppShellPanelProps): JSX.Element {
   ]);
   const placement = () => local.placement ?? "start";
   const position = () => local.position ?? "fixed";
-  const styles = useAppShellStyles();
+  const styles = useStyles();
   const { defaultPanelResizableProps, panelStates } = useAppShellState();
   const resizableProps = () =>
     mergeResizableProps(defaultPanelResizableProps, local.resizableProps);
@@ -128,7 +128,8 @@ export function AppShellPanelHeader(
   props: AppShellPanelHeaderProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useAppShellStyles();
+  const styles = useStyles();
+
   return (
     <div
       {...rest}
@@ -143,7 +144,8 @@ export function AppShellPanelContent(
   props: AppShellPanelContentProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useAppShellStyles();
+  const styles = useStyles();
+
   return (
     <ScrollArea class={styles.slots.scrollArea()}>
       <div
@@ -160,7 +162,8 @@ export function AppShellPanelFooter(
   props: AppShellPanelFooterProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useAppShellStyles();
+  const styles = useStyles();
+
   return (
     <div
       {...rest}

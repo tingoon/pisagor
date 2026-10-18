@@ -52,6 +52,7 @@ const highlighterPending = new Map<string, Promise<Highlighter>>();
 
 function resolveHighlightLang(lang: string): string {
   const key = lang.trim().toLowerCase();
+
   return LANG_ALIASES[key] ?? key;
 }
 
@@ -78,6 +79,7 @@ function langsFor(resolved: string): LangId[] {
     default:
       break;
   }
+
   return [...new Set<LangId>([...BASE_LANGS, ...extra])];
 }
 
@@ -96,11 +98,13 @@ async function getHighlighter(langIds: LangId[]): Promise<Highlighter> {
         });
         highlighterCache.set(key, highlighter);
         highlighterPending.delete(key);
+
         return highlighter;
       },
     );
     highlighterPending.set(key, pending);
   }
+
   return pending;
 }
 
@@ -111,5 +115,6 @@ export async function highlightCode(
 ): Promise<string> {
   const resolved = resolveHighlightLang(lang);
   const highlighter = await getHighlighter(langsFor(resolved));
+
   return highlighter.highlight(code, { lang: resolved }).html;
 }

@@ -1,35 +1,33 @@
-import { ark } from "@ark-ui/solid/factory";
 import {
   Progress as ProgressPrimitive,
-  type ProgressRootProps,
-  type ProgressRootProviderProps,
-  type ProgressValueTextProps,
-  type UseProgressReturn,
+  ark,
   useProgress,
   useProgressContext,
-} from "@ark-ui/solid/progress";
+} from "@ark-ui/solid";
+import type {
+  HTMLArkProps,
+  ProgressRootProps,
+  ProgressRootProviderProps,
+  ProgressValueTextProps,
+  UseProgressReturn,
+} from "@ark-ui/solid";
 import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
 import {
   type CircularProgressRecipeSlot,
   circularProgressRecipe,
 } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useCircularProgress,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "CircularProgress",
   recipe: circularProgressRecipe,
 });
 // #endregion
 
-type CircularProgressTrackProps = ComponentProps<typeof ark.svg>;
+type CircularProgressTrackProps = HTMLArkProps<"svg">;
 type CircularProgressValueProps = ProgressValueTextProps;
 type CircularProgressClassNames = VariantClassNames<CircularProgressRecipeSlot>;
 
@@ -97,7 +95,7 @@ const CircularProgressValue: Component<CircularProgressValueProps> =
 function CircularProgressTrack(
   props: CircularProgressTrackPartProps,
 ): JSX.Element {
-  const styles = useCircularProgress();
+  const styles = useStyles();
   const progress = useProgressContext();
   const size = () => props.size ?? 32;
   const thickness = () => props.thickness ?? 4;
@@ -107,6 +105,7 @@ function CircularProgressTrack(
   const range = () => Math.max(api().max - api().min, 1);
   const normalizedValue = () => {
     const value = api().value;
+
     return value == null
       ? api().min
       : Math.min(Math.max(value, api().min), api().max);

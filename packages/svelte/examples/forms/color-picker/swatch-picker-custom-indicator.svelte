@@ -1,6 +1,6 @@
 <script lang="ts">
   import { ColorPicker } from "@pisagor/svelte";
-  import SparkleIcon from "phosphor-svelte/lib/SparkleIcon";
+  import { SparkleIcon } from "phosphor-svelte";
 
   const swatches = ["#0485F7", "#EF4444", "#F59E0B", "#10B981"];
 </script>

@@ -1,4 +1,5 @@
 import { Card, Editable, Field, Input } from "@pisagor/solid";
+
 export function WithoutControls() {
   return (
     <Card>

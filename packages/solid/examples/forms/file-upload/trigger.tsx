@@ -1,5 +1,6 @@
 import { Button, FileUpload } from "@pisagor/solid";
-import { PaperclipIcon } from "@pisagor/solid/icons";
+import { PaperclipIcon } from "@squidlab/phosphor-solid/icons";
+
 export function Trigger() {
   return (
     <FileUpload>

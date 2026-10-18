@@ -1,1 +1,1 @@
-export { ClientOnly, type ClientOnlyProps } from "@ark-ui/react/client-only";
+export { ClientOnly, type ClientOnlyProps } from "@ark-ui/react";

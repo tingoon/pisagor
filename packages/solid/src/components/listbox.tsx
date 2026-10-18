@@ -1,19 +1,19 @@
 import {
-  type CollectionItem,
+  Listbox as ListboxPrimitive,
   createListCollection,
-} from "@ark-ui/solid/collection";
+} from "@ark-ui/solid";
 import type {
+  CollectionItem,
   ListboxContentProps,
   ListboxEmptyProps,
   ListboxItemGroupLabelProps,
+  ListboxItemGroupProps as ListboxItemGroupPrimitiveProps,
   ListboxItemIndicatorProps,
+  ListboxItemProps as ListboxItemPrimitiveProps,
   ListboxItemTextProps,
-  ListboxItemGroupProps as ListboxPrimitiveItemGroupProps,
-  ListboxItemProps as ListboxPrimitiveItemProps,
-  ListboxRootProps as ListboxPrimitiveRootProps,
+  ListboxRootProps as ListboxRootPrimitiveProps,
   ListboxValueTextProps,
-} from "@ark-ui/solid/listbox";
-import { Listbox as ListboxPrimitive } from "@ark-ui/solid/listbox";
+} from "@ark-ui/solid";
 import type {
   ListboxItemProps as BaseListboxItemProps,
   ListboxProps as BaseListboxRootProps,
@@ -21,10 +21,9 @@ import type {
 import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CheckIcon } from "../internal/icons";
+import { CheckIcon, createSlotRecipeContext } from "../internal";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "./dropdown-menu";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -44,7 +43,7 @@ interface ListboxPresetItem extends CollectionItem {
 }
 
 export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  ListboxPrimitiveRootProps<T>,
+  ListboxRootPrimitiveProps<T>,
   "onValueChange"
 > & {
   onValueChange?: (value: string | string[]) => void;
@@ -61,9 +60,9 @@ export interface ListboxProps extends Omit<
 }
 
 export interface ListboxItemProps
-  extends ListboxPrimitiveItemProps, BaseListboxItemProps {}
+  extends ListboxItemPrimitiveProps, BaseListboxItemProps {}
 
-export interface ListboxItemGroupProps extends ListboxPrimitiveItemGroupProps {
+export interface ListboxItemGroupProps extends ListboxItemGroupPrimitiveProps {
   heading?: string;
 }
 
@@ -190,6 +189,7 @@ export function ListboxItemIndicator(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const styles = useListboxItem();
+
   return (
     <ListboxPrimitive.ItemIndicator
       {...rest}
@@ -201,6 +201,7 @@ export function ListboxItemIndicator(
 }
 
 export function ListboxEmpty(props: ListboxEmptyProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class", "children"]);
   const styles = useListbox();
 
@@ -209,7 +210,7 @@ export function ListboxEmpty(props: ListboxEmptyProps): JSX.Element {
       {...rest}
       class={styles.slots.empty({ class: local.class })}
     >
-      {local.children || useTranslation("listbox.empty")}
+      {local.children || m("listbox.empty")}
     </ListboxPrimitive.Empty>
   );
 }
@@ -253,15 +254,15 @@ export function ListboxShorthand(props: ListboxProps): JSX.Element {
   );
 }
 
-export { createListCollection } from "@ark-ui/solid/collection";
-export type {
-  ListboxContentProps,
-  ListboxEmptyProps,
-  ListboxItemGroupLabelProps,
-  ListboxItemIndicatorProps,
-  ListboxItemTextProps,
-  ListboxValueTextProps,
-} from "@ark-ui/solid/listbox";
+export {
+  type ListboxContentProps,
+  type ListboxEmptyProps,
+  type ListboxItemGroupLabelProps,
+  type ListboxItemIndicatorProps,
+  type ListboxItemTextProps,
+  type ListboxValueTextProps,
+  createListCollection,
+} from "@ark-ui/solid";
 
 export const Listbox = Object.assign(ListboxShorthand, {
   Content: ListboxContent,

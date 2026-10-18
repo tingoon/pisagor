@@ -1,23 +1,23 @@
 <script lang="ts">
   import {
-    type CarouselNextTriggerProps,
     Carousel as CarouselPrimitive,
-  } from "@ark-ui/svelte/carousel";
+    type CarouselNextTriggerProps,
+  } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
-  import { useMessageResolver } from "../provider/context";
-  import { useCarousel } from "./carousel.context";
+  import { CaretRightIcon } from "phosphor-svelte";
+  import { useLocale } from "../provider/context";
+  import { useStyles } from "./carousel.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   let { class: className, ...rest }: CarouselNextTriggerProps = $props();
-  const styles = useCarousel();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 
 <CarouselPrimitive.NextTrigger
-  aria-label={t("carousel.next")}
+  aria-label={m("carousel.next")}
   {...rest}
   class={cn(
     buttonRecipe({ pill: true, size: "icon-md", variant: "outline" }).base(),

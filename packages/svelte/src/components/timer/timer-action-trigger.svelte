@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type TimerActionTriggerProps,
     Timer as TimerPrimitive,
-  } from "@ark-ui/svelte/timer";
+    type TimerActionTriggerProps,
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: TimerActionTriggerProps = $props();
 </script>

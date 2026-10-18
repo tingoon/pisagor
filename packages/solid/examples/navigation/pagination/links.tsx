@@ -1,5 +1,5 @@
 import { Pagination } from "@pisagor/solid";
-import { CaretLeftIcon, CaretRightIcon } from "@pisagor/solid/icons";
+import { CaretLeftIcon, CaretRightIcon } from "@squidlab/phosphor-solid/icons";
 
 export function Links() {
   return (

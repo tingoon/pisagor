@@ -2,7 +2,7 @@
   import {
     Switch as SwitchPrimitive,
     type SwitchThumbProps,
-  } from "@ark-ui/svelte/switch";
+  } from "@ark-ui/svelte";
   import { withContext } from "./switch.context";
 
   let { children, ...rest }: SwitchThumbProps = $props();

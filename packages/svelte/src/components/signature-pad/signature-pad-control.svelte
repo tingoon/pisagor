@@ -1,12 +1,12 @@
 <script lang="ts">
   import {
-    type SignaturePadControlProps,
     SignaturePad as SignaturePadPrimitive,
-  } from "@ark-ui/svelte/signature-pad";
+    type SignaturePadControlProps,
+  } from "@ark-ui/svelte";
   import { formControlZoneRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
-  import { useSignaturePad } from "./signature-pad.context";
+  import { useStyles } from "./signature-pad.context";
 
   type FormControlVariant = "primary" | "secondary";
 
@@ -24,7 +24,7 @@
     ...rest
   }: Props = $props();
 
-  const styles = useSignaturePad();
+  const styles = useStyles();
   const surfaceVariant = useFormControlSurface();
   const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 </script>

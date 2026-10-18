@@ -1,5 +1,5 @@
 import { Stat } from "@pisagor/solid";
-import { ArrowDownIcon, ArrowUpIcon } from "@pisagor/solid/icons";
+import { ArrowDownIcon, ArrowUpIcon } from "@squidlab/phosphor-solid/icons";
 
 export function WithTrend() {
   return (

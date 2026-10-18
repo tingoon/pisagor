@@ -1,18 +1,18 @@
+import { Collapsible as CollapsiblePrimitive } from "@ark-ui/react";
 import type {
   CollapsibleContentProps,
   CollapsibleIndicatorProps,
-  CollapsibleRootProps as CollapsiblePrimitiveRootProps,
-} from "@ark-ui/react/collapsible";
-import { Collapsible as CollapsiblePrimitive } from "@ark-ui/react/collapsible";
+  CollapsibleRootProps as CollapsibleRootPrimitiveProps,
+} from "@ark-ui/react";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import type { CollapsibleProps as BaseCollapsibleRootProps } from "@pisagor/props";
 import { collapsibleRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {
   Context: CollapsibleStylesContext,
-  useStyles: useCollapsible,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Collapsible",
@@ -22,7 +22,7 @@ const {
 
 // #region Types
 export interface CollapsibleRootProps
-  extends CollapsiblePrimitiveRootProps, BaseCollapsibleRootProps {}
+  extends CollapsibleRootPrimitiveProps, BaseCollapsibleRootProps {}
 // #endregion
 
 // #region Parts
@@ -62,7 +62,7 @@ export function CollapsibleContent({
   className,
   ...rest
 }: CollapsibleContentProps) {
-  const { slots } = useCollapsible();
+  const { slots } = useStyles();
 
   return (
     <CollapsiblePrimitive.Content {...rest} className={slots.content()}>
@@ -75,7 +75,7 @@ export function CollapsibleIndicator({
   className,
   ...rest
 }: CollapsibleIndicatorProps) {
-  const { slots } = useCollapsible();
+  const { slots } = useStyles();
 
   return (
     <CollapsiblePrimitive.Indicator
@@ -99,7 +99,7 @@ export type {
   CollapsibleContentProps,
   CollapsibleIndicatorProps,
   CollapsibleTriggerProps,
-} from "@ark-ui/react/collapsible";
+} from "@ark-ui/react";
 
 export const Collapsible = Object.assign(CollapsibleRoot, {
   Content: CollapsibleContent,

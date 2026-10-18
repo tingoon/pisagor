@@ -1,5 +1,6 @@
 import { RichTextEditor } from "@pisagor/solid/rich-text-editor";
 import { createSignal } from "solid-js";
+
 export function Controlled() {
   const [value, setValue] = createSignal("<p>Controlled content</p>");
 

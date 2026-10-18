@@ -1,4 +1,4 @@
-import { Splitter as SplitterPrimitive } from "@ark-ui/vue/splitter";
+import { Splitter as SplitterPrimitive } from "@ark-ui/vue";
 import { PhDotsSixVertical } from "@phosphor-icons/vue";
 import type {
   ResizableEdgeHandleProps as BaseResizableEdgeHandleProps,
@@ -6,16 +6,11 @@ import type {
 } from "@pisagor/props";
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, ref } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
-import { useTranslation } from "./provider/context";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Slot recipe context
-const {
-  useStyles: useResizable,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Resizable",
   recipe: resizableRecipe,
 });
@@ -252,13 +247,14 @@ export const ResizableResizeTrigger = defineComponent({
     withHandle: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    const styles = useResizable();
+    const { m } = useLocale();
+    const styles = useStyles();
 
     return () =>
       h(
         SplitterPrimitive.ResizeTrigger as ArkPart,
         {
-          "aria-label": useTranslation("resizable.resize"),
+          "aria-label": m("resizable.resize"),
           ...attrs,
           class: styles.slots.resizeTrigger({ class: props.class }),
         },

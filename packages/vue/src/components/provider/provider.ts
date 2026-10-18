@@ -1,56 +1,73 @@
-import { LocaleProvider as ArkLocaleProvider } from "@ark-ui/vue/locale";
 import {
-  defaultLocale,
-  defaultMotion,
-  type LocaleConfig,
-  type MotionConfig,
-  type TranslationsConfig,
-} from "@pisagor/utils";
-import { isNullish, merge, mergeDeep, omitBy } from "remeda";
+  LocaleProvider as ArkLocaleProvider,
+  useLocaleContext,
+} from "@ark-ui/vue";
+import { defaultMotion, resolveLocale } from "@pisagor/utils";
+import type { LocaleConfig, Messages, MotionConfig } from "@pisagor/utils";
+import { isNullish, mergeDeep, omitBy } from "remeda";
 import { computed, defineComponent, h, type PropType, provide } from "vue";
 import { Toaster } from "../toast";
 import {
   LocaleKey,
   MotionKey,
   ProviderKey,
-  TranslationsKey,
-  useLocale,
   useMotion,
   useProvider,
-  useTranslations,
+  useResolvedLocale,
 } from "./context";
-import { ProviderDir } from "./dir";
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface ProviderProps {
-  locale?: Partial<LocaleConfig>;
-  translations?: TranslationsConfig;
+export interface ProviderProps extends LocaleConfig {
   motion?: Partial<MotionConfig>;
 }
 
-export type LocaleProviderProps = Partial<LocaleConfig>;
-export type TranslationsProviderProps = {
-  translations?: TranslationsConfig;
-};
+/** `locale` and partial `messages` merged over the parent `Provider`. */
+export type LocaleProviderProps = LocaleConfig;
 export type MotionProviderProps = Partial<MotionConfig>;
 // #endregion
 
+const localeProps = {
+  locale: { default: undefined, type: String },
+  messages: { default: undefined, type: Object as PropType<Messages> },
+};
+
 // #region Parts
+/** Sets `dir` from the nearest Ark locale. */
+const LocaleDir = defineComponent({
+  name: "PisagorLocaleDir",
+  setup(_, { slots }) {
+    const locale = useLocaleContext();
+
+    return () =>
+      h(
+        "div",
+        {
+          "data-part": "locale",
+          "data-scope": "provider",
+          dir: locale.value.dir,
+          style: "display: contents",
+        },
+        slots.default?.(),
+      );
+  },
+});
+
+/**
+ * Override the locale and/or UI messages for a subtree. Feeds Ark's
+ * `LocaleProvider`, which derives `dir`.
+ */
 export const LocaleProvider = defineComponent({
   name: "PisagorLocaleProvider",
-  props: {
-    locale: { default: undefined, type: String },
-  },
+  props: localeProps,
   setup(props, { slots }) {
-    const parentLocale = useLocale();
-    const config = computed(
-      () =>
-        mergeDeep(
-          mergeDeep(defaultLocale, parentLocale),
-          omitBy({ locale: props.locale }, isNullish),
-        ) as LocaleConfig,
+    const parentLocale = useResolvedLocale();
+    const config = computed(() =>
+      resolveLocale(
+        { locale: props.locale, messages: props.messages },
+        parentLocale(),
+      ),
     );
     provide(LocaleKey, config);
 
@@ -60,33 +77,10 @@ export const LocaleProvider = defineComponent({
         { locale: config.value.locale },
         {
           default: () => [
-            h(
-              ProviderDir,
-              { part: "locale" },
-              { default: () => slots.default?.() },
-            ),
+            h(LocaleDir, null, { default: () => slots.default?.() }),
           ],
         },
       );
-  },
-});
-
-export const TranslationsProvider = defineComponent({
-  name: "PisagorTranslationsProvider",
-  props: {
-    translations: {
-      default: undefined,
-      type: Object as PropType<TranslationsConfig>,
-    },
-  },
-  setup(props, { slots }) {
-    const parentTranslations = useTranslations();
-    const config = computed(() =>
-      merge(parentTranslations, props.translations ?? {}),
-    );
-    provide(TranslationsKey, config);
-
-    return () => slots.default?.();
   },
 });
 
@@ -131,30 +125,23 @@ const ProviderRoot = defineComponent({
   inheritAttrs: false,
   name: "PisagorProvider",
   props: {
-    locale: {
-      default: undefined,
-      type: Object as PropType<Partial<LocaleConfig>>,
-    },
+    ...localeProps,
     motion: {
       default: undefined,
       type: Object as PropType<Partial<MotionConfig>>,
     },
-    translations: {
-      default: undefined,
-      type: Object as PropType<TranslationsConfig>,
-    },
   },
   setup(props, { attrs, slots }) {
     const parentConfig = useProvider();
-    const parentLocale = useLocale();
+    const parentLocale = useResolvedLocale();
     const parentMotion = useMotion();
     const root = !parentConfig;
 
     const config = computed(() => ({
-      locale: mergeDeep(
-        mergeDeep(defaultLocale, parentLocale),
-        omitBy(props.locale ?? {}, isNullish),
-      ) as LocaleConfig,
+      locale: resolveLocale(
+        { locale: props.locale, messages: props.messages },
+        parentLocale(),
+      ),
       motion: mergeDeep(
         mergeDeep(defaultMotion, parentMotion),
         omitBy(props.motion ?? {}, isNullish),
@@ -166,24 +153,21 @@ const ProviderRoot = defineComponent({
     return () =>
       h(
         LocaleProvider,
-        { ...attrs, locale: props.locale?.locale },
+        {
+          ...attrs,
+          locale: props.locale,
+          messages: props.messages,
+        },
         {
           default: () =>
             h(
               MotionProvider,
               { disabled: props.motion?.disabled },
               {
-                default: () =>
-                  h(
-                    TranslationsProvider,
-                    { translations: props.translations },
-                    {
-                      default: () => [
-                        root ? h(ToasterProvider) : null,
-                        slots.default?.(),
-                      ],
-                    },
-                  ),
+                default: () => [
+                  root ? h(ToasterProvider) : null,
+                  slots.default?.(),
+                ],
               },
             ),
         },
@@ -195,6 +179,5 @@ export const Provider = Object.assign(ProviderRoot, {
   Locale: LocaleProvider,
   Motion: MotionProvider,
   Toaster: ToasterProvider,
-  Translations: TranslationsProvider,
 });
 // #endregion

@@ -1,21 +1,63 @@
-import type { JSX } from "solid-js";
-import { Show, splitProps } from "solid-js";
-import { Portal } from "solid-js/web";
-import { Button, type ButtonProps } from "./button";
+import { Dialog as AlertDialogPrimitive, ark } from "@ark-ui/solid";
 import type {
-  DialogBodyProps,
+  DialogBackdropProps,
   DialogCloseTriggerProps,
-  DialogContentProps,
+  DialogContentProps as DialogContentPrimitiveProps,
   DialogDescriptionProps,
-  DialogFooterProps,
-  DialogHeaderProps,
-  DialogRootProps,
+  DialogPositionerProps as DialogPositionerPrimitiveProps,
+  DialogRootProps as DialogRootPrimitiveProps,
   DialogTitleProps,
   DialogTriggerProps,
-} from "./dialog";
-import { Dialog, useDialog } from "./dialog";
+  HTMLArkProps,
+} from "@ark-ui/solid";
+import type { AlertDialogProps as BaseAlertDialogRootProps } from "@pisagor/props";
+import {
+  type AlertDialogVariantProps,
+  alertDialogRecipe,
+} from "@pisagor/recipes";
+import type { Component, JSX } from "solid-js";
+import { Show, createMemo, splitProps } from "solid-js";
+import { Portal } from "solid-js/web";
+import { XIcon, createSlotRecipeContext } from "../internal";
+import { createContext } from "../utils";
+import { Button, type ButtonProps } from "./button";
+import { useLocale } from "./provider/context";
+import { ScrollArea } from "./scroll-area";
 
-export type AlertDialogRootProps = DialogRootProps;
+// #region Context
+const { Context, useStyles, withContext } = createSlotRecipeContext({
+  name: "AlertDialog",
+  recipe: alertDialogRecipe,
+});
+
+interface AlertDialogModalState {
+  readonly modal: boolean;
+}
+
+const { AlertDialogModalContext, useAlertDialogModal } =
+  createContext("AlertDialogModal")<AlertDialogModalState>();
+// #endregion
+
+export interface AlertDialogRootProps
+  extends DialogRootPrimitiveProps, BaseAlertDialogRootProps {}
+
+export interface AlertDialogContentProps
+  extends DialogContentPrimitiveProps, AlertDialogVariantProps {
+  bottomStickOnMobile?: boolean;
+  showCloseButton?: boolean;
+}
+
+export interface AlertDialogBodyProps extends HTMLArkProps<"div"> {
+  scrollFade?: boolean;
+}
+
+export type AlertDialogHeaderProps = HTMLArkProps<"div">;
+
+export interface AlertDialogPositionerProps extends DialogPositionerPrimitiveProps {
+  bottomStickOnMobile?: boolean;
+}
+
+export type AlertDialogFooterProps = HTMLArkProps<"div">;
 
 export interface AlertDialogActionProps
   extends DialogCloseTriggerProps, Omit<ButtonProps, "variant"> {
@@ -38,87 +80,205 @@ export interface AlertDialogProps extends Omit<
 }
 
 export function AlertDialogRoot(props: AlertDialogRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children"]);
+  const [local, rest] = splitProps(props, [
+    "modal",
+    "recipe",
+    "role",
+    "children",
+  ]);
+  const modal = () => local.modal ?? true;
+  const slots = createMemo(() => (local.recipe ?? alertDialogRecipe)());
+
   return (
-    <Dialog.Root {...rest} role="alertdialog">
-      {local.children}
-    </Dialog.Root>
+    <Context
+      value={{
+        get slots() {
+          return slots();
+        },
+        variants: {},
+      }}
+    >
+      <AlertDialogModalContext
+        value={{
+          get modal() {
+            return modal();
+          },
+        }}
+      >
+        <AlertDialogPrimitive.Root
+          {...rest}
+          modal={modal()}
+          role={local.role ?? "alertdialog"}
+        >
+          {local.children}
+        </AlertDialogPrimitive.Root>
+      </AlertDialogModalContext>
+    </Context>
   );
 }
 
 export function AlertDialogTrigger(props: DialogTriggerProps): JSX.Element {
-  return <Dialog.Trigger {...props} />;
+  return <AlertDialogPrimitive.Trigger {...props} />;
 }
 
-export function AlertDialogContent(props: DialogContentProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["bottomStickOnMobile", "children"]);
+export function AlertDialogBackdrop(props: DialogBackdropProps): JSX.Element {
+  const [local, rest] = splitProps(props, ["class"]);
+  const styles = useStyles();
+  const state = useAlertDialogModal();
+
+  return (
+    <Show when={state.modal}>
+      <AlertDialogPrimitive.Backdrop
+        {...rest}
+        class={styles.slots.backdrop({ class: local.class })}
+      />
+    </Show>
+  );
+}
+
+export function AlertDialogPositioner(
+  props: AlertDialogPositionerProps,
+): JSX.Element {
+  const [local, rest] = splitProps(props, ["bottomStickOnMobile", "class"]);
+  const styles = useStyles();
+
+  return (
+    <AlertDialogPrimitive.Positioner
+      {...rest}
+      class={styles.slots.positioner({
+        bottomStickOnMobile: local.bottomStickOnMobile,
+        class: local.class,
+      })}
+    />
+  );
+}
+
+export function AlertDialogContent(
+  props: AlertDialogContentProps,
+): JSX.Element {
+  const { m } = useLocale();
+  const [local, rest] = splitProps(props, [
+    "size",
+    "bottomStickOnMobile",
+    "showCloseButton",
+    "children",
+    "class",
+  ]);
+  const styles = useStyles();
+  const size = () => local.size ?? "md";
   const bottomStickOnMobile = () => local.bottomStickOnMobile ?? true;
+  const showCloseButton = () => local.showCloseButton ?? false;
 
   return (
     <Portal>
-      <Dialog.Backdrop />
-      <Dialog.Positioner bottomStickOnMobile={bottomStickOnMobile()}>
-        <Dialog.Content
+      <AlertDialogBackdrop />
+      <AlertDialogPositioner bottomStickOnMobile={bottomStickOnMobile()}>
+        <AlertDialogPrimitive.Content
           {...rest}
-          bottomStickOnMobile={bottomStickOnMobile()}
-          showCloseButton={false}
+          class={styles.slots.content({
+            bottomStickOnMobile: bottomStickOnMobile(),
+            class: local.class,
+            size: size(),
+          })}
         >
           {local.children}
-        </Dialog.Content>
-      </Dialog.Positioner>
+          <Show when={showCloseButton()}>
+            <AlertDialogCloseTrigger
+              asChild={(triggerProps) => (
+                <Button
+                  {...triggerProps({ class: styles.slots.inline() })}
+                  aria-label={m("dialog.close")}
+                  size="icon-sm"
+                  variant="ghost"
+                >
+                  <XIcon />
+                </Button>
+              )}
+            />
+          </Show>
+        </AlertDialogPrimitive.Content>
+      </AlertDialogPositioner>
     </Portal>
   );
 }
 
-export function AlertDialogBody(props: DialogBodyProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const styles = useDialog();
+export function AlertDialogBody(props: AlertDialogBodyProps): JSX.Element {
+  const [local, rest] = splitProps(props, ["scrollFade", "class"]);
+  const styles = useStyles();
 
   return (
-    <Dialog.Body
+    <ScrollArea scrollFade={local.scrollFade ?? false}>
+      <ark.div
+        {...rest}
+        class={styles.slots.body({ class: local.class })}
+        data-part="body"
+        data-scope="alert-dialog"
+      />
+    </ScrollArea>
+  );
+}
+
+export function AlertDialogHeader(props: AlertDialogHeaderProps): JSX.Element {
+  const [local, rest] = splitProps(props, ["class"]);
+  const styles = useStyles();
+
+  return (
+    <ark.div
       {...rest}
-      class={styles.slots.alertBody({ class: local.class })}
-      data-part="body"
+      class={styles.slots.header({ class: local.class })}
+      data-part="header"
       data-scope="alert-dialog"
     />
   );
 }
 
-export function AlertDialogHeader(props: DialogHeaderProps): JSX.Element {
-  return (
-    <Dialog.Header {...props} data-part="header" data-scope="alert-dialog" />
-  );
-}
+export const AlertDialogTitle: Component<DialogTitleProps> = withContext(
+  AlertDialogPrimitive.Title,
+  { name: "Title" },
+);
 
-export function AlertDialogTitle(props: DialogTitleProps): JSX.Element {
-  return <Dialog.Title {...props} />;
-}
-
-export function AlertDialogDescription(
-  props: DialogDescriptionProps,
-): JSX.Element {
-  return <Dialog.Description {...props} />;
-}
+export const AlertDialogDescription: Component<DialogDescriptionProps> =
+  withContext(AlertDialogPrimitive.Description, { name: "Description" });
 
 export function AlertDialogCloseTrigger(
   props: DialogCloseTriggerProps,
 ): JSX.Element {
-  return <Dialog.CloseTrigger {...props} />;
+  return <AlertDialogPrimitive.CloseTrigger {...props} />;
 }
 
-export function AlertDialogFooter(props: DialogFooterProps): JSX.Element {
+export function AlertDialogFooter(props: AlertDialogFooterProps): JSX.Element {
+  const [local, rest] = splitProps(props, ["class"]);
+  const styles = useStyles();
+
   return (
-    <Dialog.Footer {...props} data-part="footer" data-scope="alert-dialog" />
+    <ark.div
+      {...rest}
+      class={styles.slots.footer({ class: local.class })}
+      data-part="footer"
+      data-scope="alert-dialog"
+    />
   );
 }
 
 export function AlertDialogAction(props: AlertDialogActionProps): JSX.Element {
   const [local, rest] = splitProps(props, ["variant"]);
-  return <Button {...rest} variant={local.variant ?? "default"} />;
+
+  return (
+    <AlertDialogCloseTrigger
+      asChild={(triggerProps) => (
+        <Button
+          {...triggerProps()}
+          {...rest}
+          variant={local.variant ?? "default"}
+        />
+      )}
+    />
+  );
 }
 
 export function AlertDialogCancel(props: AlertDialogCancelProps): JSX.Element {
   const [local, rest] = splitProps(props, ["asChild", "class"]);
+
   return (
     <AlertDialogCloseTrigger
       asChild={(triggerProps) => (
@@ -148,10 +308,11 @@ export function AlertDialogShorthand(props: AlertDialogProps): JSX.Element {
             if (typeof local.trigger === "function") {
               return local.trigger(triggerProps());
             }
+
             return (
-              <span {...triggerProps()} style={{ display: "contents" }}>
+              <ark.span {...triggerProps()} style={{ display: "contents" }}>
                 {local.trigger}
-              </span>
+              </ark.span>
             );
           }}
         />
@@ -180,8 +341,17 @@ export function AlertDialogShorthand(props: AlertDialogProps): JSX.Element {
   );
 }
 
+export type {
+  DialogBackdropProps as AlertDialogBackdropProps,
+  DialogCloseTriggerProps as AlertDialogCloseTriggerProps,
+  DialogDescriptionProps as AlertDialogDescriptionProps,
+  DialogTitleProps as AlertDialogTitleProps,
+  DialogTriggerProps as AlertDialogTriggerProps,
+} from "@ark-ui/solid";
+
 export const AlertDialog = Object.assign(AlertDialogShorthand, {
   Action: AlertDialogAction,
+  Backdrop: AlertDialogBackdrop,
   Body: AlertDialogBody,
   Cancel: AlertDialogCancel,
   CloseTrigger: AlertDialogCloseTrigger,
@@ -189,6 +359,7 @@ export const AlertDialog = Object.assign(AlertDialogShorthand, {
   Description: AlertDialogDescription,
   Footer: AlertDialogFooter,
   Header: AlertDialogHeader,
+  Positioner: AlertDialogPositioner,
   Root: AlertDialogRoot,
   Title: AlertDialogTitle,
   Trigger: AlertDialogTrigger,

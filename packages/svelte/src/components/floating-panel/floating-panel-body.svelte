@@ -1,12 +1,12 @@
 <script lang="ts">
   import {
-    type FloatingPanelBodyProps as ArkProps,
     FloatingPanel as FloatingPanelPrimitive,
-  } from "@ark-ui/svelte/floating-panel";
+    type FloatingPanelBodyProps as ArkProps,
+  } from "@ark-ui/svelte";
   import { floatingPanelRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { ScrollArea } from "../scroll-area";
-  import { useFloatingPanel } from "./floating-panel.context";
+  import { useStyles } from "./floating-panel.context";
 
   type Props = ArkProps & { scrollFade?: boolean };
 
@@ -16,7 +16,7 @@
     class: className,
     ...rest
   }: Props = $props();
-  const ctx = useFloatingPanel();
+  const ctx = useStyles();
   const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
 </script>
 

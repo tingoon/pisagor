@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import DotsSixVerticalIcon from "phosphor-svelte/lib/DotsSixVerticalIcon";
+  import { DotsSixVerticalIcon } from "phosphor-svelte";
   import { onMount } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useSortable, useSortableItem } from "./sortable.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   let {
     children,
@@ -19,12 +19,14 @@
 
   onMount(() => {
     sortable.registerHandle(item.id);
+
     return () => sortable.unregisterHandle(item.id);
   });
 
   function handleDragStart(event: DragEvent) {
     if (sortable.disabled) {
       event.preventDefault();
+
       return;
     }
     event.stopPropagation();
@@ -55,7 +57,7 @@
     ? "Alt+ArrowUp Alt+ArrowDown"
     : "Alt+ArrowLeft Alt+ArrowRight"}
   aria-label={(rest as { "aria-label"?: string })["aria-label"] ??
-    t("sortable.dragHandle")}
+    m("sortable.dragHandle")}
   class={item.slots.handle({
     class: cn(className),
     disabled: sortable.disabled,

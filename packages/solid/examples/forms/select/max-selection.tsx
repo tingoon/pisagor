@@ -1,4 +1,4 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import { Select } from "@pisagor/solid";
 import { createSignal, For } from "solid-js";
 

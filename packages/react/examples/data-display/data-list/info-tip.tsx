@@ -1,5 +1,6 @@
 import { InfoIcon } from "@phosphor-icons/react";
 import { Button, DataList, Popover } from "@pisagor/react";
+
 export function InfoTip() {
   const data = [
     {
@@ -14,6 +15,7 @@ export function InfoTip() {
       value: "3,450",
     },
   ];
+
   return (
     <DataList.Root>
       {data.map((item) => (

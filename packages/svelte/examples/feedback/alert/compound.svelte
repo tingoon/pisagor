@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Alert, Button } from "@pisagor/svelte";
-  import ChecksIcon from "phosphor-svelte/lib/ChecksIcon";
+  import { ChecksIcon } from "phosphor-svelte";
 </script>
 
 <Alert.Root variant="info">

@@ -1,5 +1,6 @@
 import { TrashIcon } from "@phosphor-icons/react";
 import { Button, FileUpload } from "@pisagor/react";
+
 export function ClearTrigger() {
   return (
     <FileUpload>

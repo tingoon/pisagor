@@ -1,5 +1,6 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import { Item, Listbox } from "@pisagor/solid";
+
 export function Grouping() {
   const collection = createListCollection({
     groupBy: (item) => (item as { region: string }).region,
@@ -10,6 +11,7 @@ export function Grouping() {
       { label: "Canada", region: "North America", value: "ca" },
     ],
   });
+
   return (
     <Item.Group variant="outline">
       <Item class="p-1">

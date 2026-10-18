@@ -1,23 +1,22 @@
 import {
   ColorPicker as ColorPickerPrimitive,
   type ColorPickerValueChangeDetails,
+  ark,
   parseColor as parseColorArk,
   useColorPickerContext as useColorPicker,
-} from "@ark-ui/vue/color-picker";
-import { ark } from "@ark-ui/vue/factory";
+} from "@ark-ui/vue";
 import { PhCheck, PhEyedropper, PhX } from "@phosphor-icons/vue";
 import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 type FormControlVariant = "primary" | "secondary";
 
 type ClassValue = Parameters<typeof cn>[0];
 
 import { computed, defineComponent, h, type PropType, Teleport } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { LoosePropValue } from "../internal/types";
+import { type LoosePropValue, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
 import { InputGroup } from "./input-group";
 
@@ -166,6 +165,8 @@ export const ColorPickerClearTrigger = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
+
     return () => {
       const api = useColorPicker();
 
@@ -198,7 +199,7 @@ export const ColorPickerClearTrigger = defineComponent({
         h(
           InputGroup.Button as ArkPart,
           {
-            "aria-label": useTranslation("colorPicker.clearColor"),
+            "aria-label": m("colorPicker.clearColor"),
             ...attrs,
             class: cn(props.class, (attrs as { class?: ClassValue }).class),
             "data-part": "clear-trigger",
@@ -397,13 +398,13 @@ export const ColorPickerEyeDropperTrigger = defineComponent({
     variant: { default: "outline", type: String },
   },
   setup(props, { attrs, slots }) {
-    const label = useTranslation("colorPicker.eyeDropper");
+    const { m } = useLocale();
 
     return () =>
       h(
         ColorPickerPrimitive.EyeDropperTrigger as ArkPart,
         {
-          "aria-label": label,
+          "aria-label": m("colorPicker.eyeDropper"),
           ...attrs,
           asChild: true,
         } as unknown as Parameters<typeof h>[1],
@@ -679,6 +680,7 @@ export const ColorPickerLabel = defineComponent({
   name: "ColorPicker.Label",
   setup(_, { attrs, slots }) {
     const getSlots = useColorPickerSlots();
+
     return () =>
       h(
         ColorPickerPrimitive.Label as ArkPart,
@@ -698,6 +700,7 @@ export const ColorPickerFormatSelect = defineComponent({
   name: "ColorPicker.FormatSelect",
   setup(_, { attrs }) {
     const getSlots = useColorPickerSlots();
+
     return () =>
       h(ColorPickerPrimitive.FormatSelect as ArkPart, {
         ...attrs,

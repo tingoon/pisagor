@@ -100,6 +100,7 @@ function countLeaves(row: {
     return row.getLeafRows().length;
   }
   if (!row.subRows?.length) return 1;
+
   return row.subRows.reduce(
     (sum: number, child) => sum + countLeaves(child as typeof row),
     0,
@@ -149,6 +150,7 @@ export function ExpandingRows() {
       {
         cell: ({ row }) => {
           const leafCount = countLeaves(row);
+
           return (
             <span className="text-muted-foreground tabular-nums">
               {row.subRows?.length

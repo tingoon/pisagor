@@ -24,6 +24,7 @@
           });
           show();
         }, 800);
+
         return () => window.clearTimeout(timer);
       },
       id: "user-info",

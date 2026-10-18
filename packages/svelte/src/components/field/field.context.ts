@@ -1,15 +1,11 @@
 import { fieldRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 
-export const {
-  Context,
-  useStyles: useFieldRequired,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "Field",
-  recipe: fieldRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "Field",
+    recipe: fieldRecipe,
+  });
 
 /** Optional — Field parts may render outside a provider (Group/Set shells). */
 export function useField() {

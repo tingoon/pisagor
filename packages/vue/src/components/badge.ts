@@ -1,8 +1,8 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type { BadgeProps as BaseBadgeProps } from "@pisagor/props";
 import { type BadgeVariantProps, badgeRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
-import type { ClassValue } from "../internal/types";
+import type { ClassValue } from "../internal";
 
 // #region Types
 export type BadgeVariant = NonNullable<BadgeVariantProps["variant"]>;

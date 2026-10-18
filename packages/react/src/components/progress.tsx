@@ -1,15 +1,14 @@
+import { Progress as ProgressPrimitive } from "@ark-ui/react";
 import type {
-  ProgressRootProps as ProgressPrimitiveRootProps,
   ProgressRangeProps,
+  ProgressRootProps as ProgressRootPrimitiveProps,
   ProgressTrackProps,
   ProgressValueTextProps,
-} from "@ark-ui/react/progress";
-import { Progress as ProgressPrimitive } from "@ark-ui/react/progress";
+} from "@ark-ui/react";
 import type { ProgressProps as BaseProgressRootProps } from "@pisagor/props";
 import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -23,7 +22,7 @@ const ProgressRoot = withProvider(ProgressPrimitive.Root, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  Omit<ProgressPrimitiveRootProps, "value"> &
+  Omit<ProgressRootPrimitiveProps, "value"> &
     BaseProgressRootProps & { value?: number | null }
 >;
 
@@ -133,4 +132,4 @@ export type {
   ProgressRangeProps,
   ProgressTrackProps,
   ProgressValueTextProps,
-} from "@ark-ui/react/progress";
+} from "@ark-ui/react";

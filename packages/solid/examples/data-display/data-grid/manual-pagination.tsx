@@ -6,7 +6,7 @@ import type {
   SortingState,
 } from "@pisagor/solid/data-grid";
 import { DataGrid, useDataGrid } from "@pisagor/solid/data-grid";
-import { CaretDownIcon, CaretUpIcon } from "@pisagor/solid/icons";
+import { CaretDownIcon, CaretUpIcon } from "@squidlab/phosphor-solid/icons";
 import type { JSX } from "solid-js";
 import { createEffect, createMemo, createSignal, onCleanup } from "solid-js";
 
@@ -242,6 +242,7 @@ function ManualPaginationBar(props: { total: number }) {
   const pageCount = () => Math.max(1, Math.ceil(props.total / pageSize()));
   const from = () => (props.total === 0 ? 0 : pageIndex() * pageSize() + 1);
   const to = () => Math.min((pageIndex() + 1) * pageSize(), props.total);
+
   return (
     <div class="flex flex-wrap items-center justify-between gap-3 border-t pt-3">
       <p class="text-muted-foreground text-sm">
@@ -294,6 +295,7 @@ export function ManualPagination() {
       const leftValue = left[sort.id as keyof User];
       const rightValue = right[sort.id as keyof User];
       const comparison = String(leftValue).localeCompare(String(rightValue));
+
       return sort.desc ? -comparison : comparison;
     });
 

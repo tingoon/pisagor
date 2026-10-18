@@ -1,7 +1,7 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 import Separator from "../separator.astro";
-import { useButtonGroup } from "./button-group.context";
+import { useStyles } from "./button-group.context";
 
 interface Props extends HTMLAttributes<"div"> {
   /**
@@ -13,7 +13,7 @@ interface Props extends HTMLAttributes<"div"> {
 }
 
 const { orientation = "vertical", class: className, ...rest } = Astro.props;
-const { slots } = useButtonGroup();
+const { slots } = useStyles();
 ---
 
 <Separator

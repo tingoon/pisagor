@@ -1,5 +1,6 @@
 import { PauseIcon, PlayIcon } from "@phosphor-icons/react";
 import { Button, Card, Timer } from "@pisagor/react";
+
 export function Interval() {
   return (
     <Card className="rounded-3xl [--space:--spacing(6)]">

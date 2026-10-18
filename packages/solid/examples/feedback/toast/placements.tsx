@@ -1,5 +1,6 @@
-import { createToaster } from "@ark-ui/solid/toast";
+import { createToaster } from "@ark-ui/solid";
 import { Button, Toaster } from "@pisagor/solid";
+
 export function Placements() {
   const topStartToaster = createToaster({
     overlap: true,
@@ -30,6 +31,7 @@ export function Placements() {
     overlap: true,
     placement: "bottom-end",
   });
+
   return (
     <>
       <Toaster toaster={topStartToaster} />

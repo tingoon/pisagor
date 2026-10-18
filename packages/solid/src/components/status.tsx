@@ -1,11 +1,10 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { StatusProps as BaseStatusProps } from "@pisagor/props";
 import { type StatusVariantProps, statusRecipe } from "@pisagor/recipes";
-import type { ComponentProps, JSX } from "solid-js";
+import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
-export interface StatusProps
-  extends ComponentProps<typeof ark.span>, BaseStatusProps {
+export interface StatusProps extends HTMLArkProps<"span">, BaseStatusProps {
   size?: StatusVariantProps["size"];
   variant?: StatusVariantProps["variant"];
 }

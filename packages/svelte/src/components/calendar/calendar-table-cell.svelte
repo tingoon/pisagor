@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type {
-    DatePickerTableCellProps,
-    DatePickerTableCellTriggerProps,
-  } from "@ark-ui/svelte/date-picker";
-  import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
+  import {
+    DatePicker as CalendarPrimitive,
+    type DatePickerTableCellProps,
+    type DatePickerTableCellTriggerProps,
+  } from "@ark-ui/svelte";
   import type { CalendarTableCellProps as BaseCalendarTableCellProps } from "@pisagor/props";
   import { calendarTableCellRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

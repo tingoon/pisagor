@@ -1,5 +1,6 @@
 import { Rating } from "@pisagor/solid";
 import { createSignal } from "solid-js";
+
 export function Controlled() {
   const [value, setValue] = createSignal(0);
 

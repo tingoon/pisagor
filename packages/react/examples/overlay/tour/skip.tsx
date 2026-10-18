@@ -1,5 +1,6 @@
 import type { TourStepType } from "@pisagor/react";
 import { Button, Tour } from "@pisagor/react";
+
 export function Skip() {
   const steps: TourStepType[] = [
     {
@@ -37,6 +38,7 @@ export function Skip() {
       type: "tooltip",
     },
   ];
+
   return (
     <div className="flex flex-col gap-2">
       <Tour steps={steps}>

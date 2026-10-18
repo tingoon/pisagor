@@ -1,26 +1,25 @@
+import { QrCode as QrCodePrimitive } from "@ark-ui/solid";
 import type {
   QrCodeDownloadTriggerProps,
   QrCodeFrameProps,
   QrCodeOverlayProps,
-  QrCodeRootProps as QrCodePrimitiveRootProps,
-} from "@ark-ui/solid/qr-code";
-import { QrCode as QrCodePrimitive } from "@ark-ui/solid/qr-code";
+  QrCodeRootProps as QrCodeRootPrimitiveProps,
+} from "@ark-ui/solid";
 import type { QrCodeProps as BaseQrCodeRootProps } from "@pisagor/props";
 import { qrCodeRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useQrCode,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({ name: "QrCode", recipe: qrCodeRecipe });
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+  name: "QrCode",
+  recipe: qrCodeRecipe,
+});
 // #endregion
 
 export interface LocalQrCodeRootProps
-  extends QrCodePrimitiveRootProps, BaseQrCodeRootProps {}
+  extends QrCodeRootPrimitiveProps, BaseQrCodeRootProps {}
 
 export type QrCodeDownloadProps = QrCodeDownloadTriggerProps;
 
@@ -41,7 +40,8 @@ export function QrCodeRoot(props: LocalQrCodeRootProps): JSX.Element {
 
 export function QrCodeFrame(props: QrCodeFrameProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useQrCode();
+  const styles = useStyles();
+
   return (
     <QrCodePrimitive.Frame
       {...rest}
@@ -66,7 +66,7 @@ export type {
   QrCodeFrameProps,
   QrCodeOverlayProps,
   QrCodeRootProps,
-} from "@ark-ui/solid/qr-code";
+} from "@ark-ui/solid";
 
 export const QrCode = Object.assign(QrCodeRoot, {
   Download: QrCodeDownload,

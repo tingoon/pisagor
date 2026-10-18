@@ -1,4 +1,4 @@
-import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
+import { Dialog as DialogPrimitive } from "@ark-ui/vue";
 import type { SheetProps as BaseSheetProps } from "@pisagor/props";
 import { type SheetRecipe, sheetRecipe } from "@pisagor/recipes";
 import {
@@ -9,23 +9,24 @@ import {
   reactive,
   Teleport,
 } from "vue";
-import { renderIconCloseButton } from "../internal/close-button";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
-import { createContext } from "../internal/utils/create-context";
+import {
+  type ClassValue,
+  createContext,
+  createSlotRecipeContext,
+  renderIconCloseButton,
+} from "../internal";
 import {
   DialogBackdrop,
   DialogBody,
-  type DialogBodyProps,
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  type DialogHeaderProps,
-  type DialogProps,
   DialogRoot,
   DialogTitle,
   useDialog,
 } from "./dialog";
+import type { DialogBodyProps, DialogHeaderProps, DialogProps } from "./dialog";
+import { useLocale } from "./provider/context";
 
 // #region Slot recipe context
 const { provideStyles: provideSheetStyles } = createSlotRecipeContext({
@@ -166,6 +167,7 @@ export const SheetContent = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const dialogContext = useDialog();
 
     return () => {
@@ -195,7 +197,10 @@ export const SheetContent = defineComponent({
                 slots.default?.(),
                 props.showCloseButton
                   ? h(SheetCloseTrigger, { asChild: true }, () =>
-                      renderIconCloseButton(sheetSlots.inline()),
+                      renderIconCloseButton(
+                        m("dialog.close"),
+                        sheetSlots.inline(),
+                      ),
                     )
                   : null,
               ],

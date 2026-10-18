@@ -1,26 +1,25 @@
+import { Marquee as MarqueePrimitive } from "@ark-ui/solid";
 import type {
   MarqueeContentProps,
   MarqueeEdgeProps,
   MarqueeItemProps,
-  MarqueeRootProps as MarqueePrimitiveRootProps,
-} from "@ark-ui/solid/marquee";
-import { Marquee as MarqueePrimitive } from "@ark-ui/solid/marquee";
+  MarqueeRootProps as MarqueeRootPrimitiveProps,
+} from "@ark-ui/solid";
 import type { MarqueeProps as BaseMarqueeRootProps } from "@pisagor/props";
 import { marqueeRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useMarquee,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({ name: "Marquee", recipe: marqueeRecipe });
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
+  name: "Marquee",
+  recipe: marqueeRecipe,
+});
 // #endregion
 
 export interface MarqueeRootProps
-  extends Omit<MarqueePrimitiveRootProps, "side">, BaseMarqueeRootProps {
+  extends Omit<MarqueeRootPrimitiveProps, "side">, BaseMarqueeRootProps {
   orientation?: "horizontal" | "vertical";
   showEdges?: boolean;
 }
@@ -30,7 +29,7 @@ export interface MarqueeProps extends Omit<MarqueeRootProps, "children"> {
 }
 
 const MarqueeRootProvider: Component<
-  MarqueePrimitiveRootProps & BaseMarqueeRootProps
+  MarqueeRootPrimitiveProps & BaseMarqueeRootProps
 > = withProvider(MarqueePrimitive.Root, { name: "Root", slot: "base" });
 
 export function MarqueeRoot(props: MarqueeRootProps): JSX.Element {
@@ -60,7 +59,8 @@ export function MarqueeRoot(props: MarqueeRootProps): JSX.Element {
 
 export function MarqueeContent(props: MarqueeContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useMarquee();
+  const styles = useStyles();
+
   return (
     <MarqueePrimitive.Viewport class={styles.slots.viewport()}>
       <MarqueePrimitive.Content
@@ -83,6 +83,7 @@ export const MarqueeEdge: Component<MarqueeEdgeProps> = withContext(
 
 export function MarqueeShorthand(props: MarqueeProps): JSX.Element {
   const [local, rest] = splitProps(props, ["items"]);
+
   return (
     <MarqueeRoot {...rest}>
       <Show when={local.items}>
@@ -100,7 +101,7 @@ export type {
   MarqueeContentProps,
   MarqueeEdgeProps,
   MarqueeItemProps,
-} from "@ark-ui/solid/marquee";
+} from "@ark-ui/solid";
 
 export const Marquee = Object.assign(MarqueeShorthand, {
   Content: MarqueeContent,

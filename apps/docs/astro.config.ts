@@ -138,23 +138,24 @@ function fakerLiteForExamples() {
   const shim = fileURLToPath(
     new URL("./src/lib/faker-lite.ts", import.meta.url),
   );
+
   return {
     enforce: "pre" as const,
     name: "pisagor:faker-lite",
     resolveId(id: string, importer?: string) {
       if (id !== "@faker-js/faker" || !importer) return null;
+
       return /[\\/]examples[\\/]/.test(importer) ? shim : null;
     },
   };
 }
 
 /**
- * Solid examples import icons from the `@pisagor/solid/icons` barrel (`export
- * *` of `@squidlab/phosphor-solid/icons`). Solid's compiled templates are
- * top-level calls, so every icon any example touches lands in one shared ~280
- * KB chunk that every Solid page downloads. Rewrite named icon imports to the
- * per-icon source files so Rolldown can split them per example. Types and
- * non-icon exports keep using the barrel.
+ * Solid examples import icons from the `@squidlab/phosphor-solid/icons` barrel.
+ * Solid's compiled templates are top-level calls, so every icon any example
+ * touches lands in one shared ~280 KB chunk that every Solid page downloads.
+ * Rewrite named icon imports to the per-icon source files so Rolldown can split
+ * them per example. Types and non-icon exports keep using the barrel.
  */
 function solidPerIconImports() {
   const requireFromSolid = createRequire(
@@ -177,7 +178,7 @@ function solidPerIconImports() {
       iconFiles.set(name, join(pkgRoot, `src/icons/${file}.tsx`));
   }
   const importRe =
-    /import\s*\{([^}]*)\}\s*from\s*["']@pisagor\/solid\/icons["'];?/g;
+    /import\s*\{([^}]*)\}\s*from\s*["']@squidlab\/phosphor-solid\/icons["'];?/g;
   const owned =
     /[\\/](packages[\\/]solid(-[\w-]+)?|apps[\\/]docs[\\/]src[\\/]blocks[\\/]solid)[\\/]/;
 
@@ -185,7 +186,7 @@ function solidPerIconImports() {
     enforce: "pre" as const,
     name: "pisagor:solid-per-icon-imports",
     transform(code: string, id: string) {
-      if (!code.includes("@pisagor/solid/icons") || !owned.test(id))
+      if (!code.includes("@squidlab/phosphor-solid/icons") || !owned.test(id))
         return null;
       if (id.includes("?")) return null;
       let changed = false;
@@ -205,13 +206,17 @@ function solidPerIconImports() {
         }
         if (direct.length === 0) return statement;
         changed = true;
+
         return [
           ...direct,
           ...(rest.length
-            ? [`import { ${rest.join(", ")} } from "@pisagor/solid/icons";`]
+            ? [
+                `import { ${rest.join(", ")} } from "@squidlab/phosphor-solid/icons";`,
+              ]
             : []),
         ].join("\n");
       });
+
       return changed ? { code: next, map: null } : null;
     },
   };
@@ -280,6 +285,7 @@ function ownedGlobs(id: FrameworkId, ext?: string): string[] {
   const entry: { dirs: string[]; files?: string[]; deps?: string[] } =
     frameworkSources[id];
   const tail = ext ? `/**/*.${ext}` : "/**";
+
   return [
     ...entry.dirs.map((dir) => `**/${dir}${tail}`),
     ...(entry.files ?? []).map((file) => `**/${file}`),
@@ -313,6 +319,7 @@ function isSitemapPage(page: string): boolean {
   // `/x/components/` and `/x/blocks/`. `/x/components|<forms>/<id>/` redirect.
   if (/^\/[^/]+\/$/.test(path)) return false;
   if (/^\/[^/]+\/(components|forms)\/[^/]+\/$/.test(path)) return false;
+
   return true;
 }
 

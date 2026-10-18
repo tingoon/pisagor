@@ -1,18 +1,18 @@
 import {
-  type CollectionItem,
+  Listbox as ListboxPrimitive,
   createListCollection,
-} from "@ark-ui/react/collection";
+} from "@ark-ui/react";
 import type {
+  CollectionItem,
   ListboxEmptyProps,
   ListboxItemGroupLabelProps,
+  ListboxItemGroupProps as ListboxItemGroupPrimitiveProps,
   ListboxItemIndicatorProps,
+  ListboxItemProps as ListboxItemPrimitiveProps,
   ListboxItemTextProps,
-  ListboxItemGroupProps as ListboxPrimitiveItemGroupProps,
-  ListboxItemProps as ListboxPrimitiveItemProps,
-  ListboxRootProps as ListboxPrimitiveRootProps,
+  ListboxRootProps as ListboxRootPrimitiveProps,
   ListboxValueTextProps,
-} from "@ark-ui/react/listbox";
-import { Listbox as ListboxPrimitive } from "@ark-ui/react/listbox";
+} from "@ark-ui/react";
 import { CheckIcon } from "@phosphor-icons/react";
 import type {
   ListboxItemProps as BaseListboxItemProps,
@@ -21,9 +21,9 @@ import type {
 import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
 
 import { type ReactNode, useMemo } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "./dropdown-menu";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -50,7 +50,7 @@ interface ListboxPresetItem extends CollectionItem {
 }
 
 export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  ListboxPrimitiveRootProps<T>,
+  ListboxRootPrimitiveProps<T>,
   "onValueChange"
 > & {
   onValueChange?: (value: string | string[]) => void;
@@ -67,9 +67,9 @@ export interface ListboxProps extends Omit<
 }
 
 export interface ListboxItemProps
-  extends ListboxPrimitiveItemProps, BaseListboxItemProps {}
+  extends ListboxItemPrimitiveProps, BaseListboxItemProps {}
 
-export interface ListboxItemGroupProps extends ListboxPrimitiveItemGroupProps {
+export interface ListboxItemGroupProps extends ListboxItemGroupPrimitiveProps {
   /** The heading of the listbox item group. */
   heading?: string;
 }
@@ -207,12 +207,12 @@ export function ListboxEmpty({
   className,
   ...rest
 }: ListboxEmptyProps) {
-  const listboxEmptyMessage = useMessage("listbox.empty");
+  const { m } = useLocale();
   const { slots } = useListbox();
 
   return (
     <ListboxPrimitive.Empty {...rest} className={slots.empty({ className })}>
-      {children || listboxEmptyMessage}
+      {children || m("listbox.empty")}
     </ListboxPrimitive.Empty>
   );
 }
@@ -280,7 +280,7 @@ export type {
   ListboxItemIndicatorProps,
   ListboxItemTextProps,
   ListboxValueTextProps,
-} from "@ark-ui/react/listbox";
+} from "@ark-ui/react";
 export { createListCollection };
 
 export const Listbox = Object.assign(ListboxShorthand, {

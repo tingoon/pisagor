@@ -12,7 +12,7 @@ export default defineConfig({
       ignoreDependencies: ["@astrojs/check", "chromatic"],
     },
     "apps/docs": {
-      entry: ["scripts/**/*.ts", "src/**/*.{astro,ts,tsx,vue,svelte}"],
+      entry: ["src/**/*.{astro,ts,tsx,vue,svelte}"],
       ignoreDependencies: ["@astrojs/check"],
       // Knip parses Astro `{pkg.tanstack}` expressions as import specifiers.
       ignoreIssues: {

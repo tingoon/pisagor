@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
 import {
   type FormControlGroupShellVariantProps,
@@ -6,29 +6,23 @@ import {
   formControlGroupShellRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import {
-  type ChangeEventHandler,
-  type ComponentProps,
-  useRef,
-  useState,
-} from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { FormControlVariant } from "../internal/types";
+import { useRef, useState } from "react";
+import type { ChangeEventHandler, ComponentProps } from "react";
+import { type FormControlVariant, createSlotRecipeContext } from "../internal";
 import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupText,
   type InputGroupTextProps,
 } from "./input-group/input-group-core";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: FileInputStylesContext, useStyles: useFileInput } =
-  createSlotRecipeContext({
-    name: "FileInput",
-    recipe: fileInputRecipe,
-  });
+const { Context: FileInputStylesContext, useStyles } = createSlotRecipeContext({
+  name: "FileInput",
+  recipe: fileInputRecipe,
+});
 // #endregion
 
 // #region Types
@@ -40,7 +34,7 @@ type NativeFileInputProps = Omit<
   "defaultValue" | "onChange" | "size" | "type" | "value"
 >;
 
-type FileInputRootProps = ComponentProps<typeof ark.div> &
+type FileInputRootProps = HTMLArkProps<"div"> &
   FileInputVariantProps &
   BaseFileInputProps & {
     /** Disables the control and sets `data-disabled` on the root. */
@@ -60,9 +54,9 @@ export interface FileInputProps
   onFilesChange?: (files: File[]) => void;
 }
 
-interface FileInputControlProps extends ComponentProps<"input"> {}
+type FileInputControlProps = ComponentProps<"input">;
 
-interface FileInputLabelProps extends InputGroupTextProps {}
+type FileInputLabelProps = InputGroupTextProps;
 // #endregion
 
 // #region Helpers
@@ -127,7 +121,7 @@ function FileInputRoot({
 }
 
 function FileInputControl({ className, ...rest }: FileInputControlProps) {
-  const { slots } = useFileInput();
+  const { slots } = useStyles();
 
   return (
     <input
@@ -141,7 +135,7 @@ function FileInputControl({ className, ...rest }: FileInputControlProps) {
 }
 
 function FileInputLabel({ children, className, ...rest }: FileInputLabelProps) {
-  const { slots } = useFileInput();
+  const { slots } = useStyles();
 
   return (
     <InputGroupText {...rest} className={slots.label({ className })}>
@@ -172,8 +166,9 @@ export function FileInput({
   className,
   ...rest
 }: FileInputProps) {
-  const placeholder = useMessage("fileInput.placeholder", placeholderProp);
-  const browseLabel = useMessage("fileInput.browse", browseLabelProp);
+  const { m } = useLocale();
+  const placeholder = m("fileInput.placeholder", placeholderProp);
+  const browseLabel = m("fileInput.browse", browseLabelProp);
   const inputRef = useRef<HTMLInputElement>(null);
   const [fileLabel, setFileLabel] = useState<string>();
 
@@ -182,6 +177,7 @@ export function FileInput({
 
     if (typeof ref === "function") {
       ref(node);
+
       return;
     }
 

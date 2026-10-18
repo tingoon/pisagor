@@ -4,7 +4,7 @@ import type { PropRow } from "./types";
 
 export type { PropRow };
 
-/** Own props from `@pisagor/props/app-shell` (native HTML attributes omitted). */
+/** Own props from `@pisagor/props` (`packages/props/src/app-shell.ts`, native HTML attributes omitted). */
 export const appShellProps: PropRow[] = [
   {
     name: "recipe",

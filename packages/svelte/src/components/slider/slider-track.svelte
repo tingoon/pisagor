@@ -2,7 +2,7 @@
   import {
     Slider as SliderPrimitive,
     type SliderTrackProps,
-  } from "@ark-ui/svelte/slider";
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useSliderExtras, withContext } from "./slider.context";
 

@@ -2,16 +2,16 @@
   import {
     ColorPicker as ColorPickerPrimitive,
     type ColorPickerSwatchProps,
-  } from "@ark-ui/svelte/color-picker";
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import { useColorPicker } from "./color-picker.context";
+  import { useStyles } from "./color-picker.context";
 
   let {
     class: className,
     children,
     ...rest
   }: ColorPickerSwatchProps = $props();
-  const styles = useColorPicker();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

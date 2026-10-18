@@ -2,12 +2,8 @@
 import type { SkeletonProps as BaseSkeletonProps } from "@pisagor/props";
 import { skeletonRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
-import type { SizeScaleProps } from "../../internal/types";
 
-interface Props
-  extends HTMLAttributes<"div">,
-    BaseSkeletonProps,
-    SizeScaleProps {
+interface Props extends HTMLAttributes<"div">, BaseSkeletonProps {
   /**
    * The number of lines of the skeleton text.
    *

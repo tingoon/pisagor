@@ -5,6 +5,7 @@ import {
   TrashIcon,
 } from "@phosphor-icons/react";
 import { Item, Listbox, Separator } from "@pisagor/react";
+
 export function SelectionNone() {
   const collection = createListCollection({
     items: [
@@ -17,6 +18,7 @@ export function SelectionNone() {
       },
     ],
   });
+
   return (
     <Item.Group variant="outline">
       <Item className="p-1">

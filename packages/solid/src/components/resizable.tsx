@@ -1,3 +1,4 @@
+import { Splitter as SplitterPrimitive } from "@ark-ui/solid";
 import type {
   SplitterContextProps,
   SplitterPanelProps,
@@ -5,8 +6,7 @@ import type {
   SplitterResizeTriggerProps,
   SplitterRootProps,
   SplitterRootProviderProps,
-} from "@ark-ui/solid/splitter";
-import { Splitter as SplitterPrimitive } from "@ark-ui/solid/splitter";
+} from "@ark-ui/solid";
 import type {
   ResizableEdgeHandleProps as BaseResizableEdgeHandleProps,
   ResizableProps as BaseResizableProps,
@@ -15,33 +15,30 @@ import type {
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { DotsSixVerticalIcon } from "../internal/icons";
-import { useTranslation } from "./provider/context";
+import { DotsSixVerticalIcon, createSlotRecipeContext } from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
   Context: ResizableStylesContext,
-  useStyles: useResizable,
+  useStyles,
   withContext,
   withProvider,
 } = createSlotRecipeContext({ name: "Resizable", recipe: resizableRecipe });
 
 // #endregion
 
-export type {
-  SplitterExpandCollapseDetails as ExpandCollapseDetails,
-  SplitterPanelData as PanelData,
-  SplitterResizeDetails as ResizeDetails,
-  SplitterResizeEndDetails as ResizeEndDetails,
-  UseSplitterProps,
-  UseSplitterReturn,
-} from "@ark-ui/solid/splitter";
 export {
+  type SplitterExpandCollapseDetails as ExpandCollapseDetails,
+  type SplitterPanelData as PanelData,
+  type SplitterResizeDetails as ResizeDetails,
+  type SplitterResizeEndDetails as ResizeEndDetails,
+  type UseSplitterProps,
+  type UseSplitterReturn,
   createSplitterRegistry as createRegistry,
   useSplitter,
   useSplitterContext,
-} from "@ark-ui/solid/splitter";
+} from "@ark-ui/solid";
 
 export type ResizableHandlePosition = "bottom" | "center" | "top";
 export type ResizableEdgePlacement = "end" | "start";
@@ -224,13 +221,14 @@ export const ResizableResizeTriggerIndicator: Component<ResizableResizeTriggerIn
 export function ResizableResizeTrigger(
   props: ResizableResizeTriggerProps,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "withHandle", "class"]);
-  const styles = useResizable();
+  const styles = useStyles();
   const withHandle = () => local.withHandle ?? false;
 
   return (
     <SplitterPrimitive.ResizeTrigger
-      aria-label={useTranslation("resizable.resize")}
+      aria-label={m("resizable.resize")}
       {...rest}
       class={styles.slots.resizeTrigger({ class: local.class })}
     >

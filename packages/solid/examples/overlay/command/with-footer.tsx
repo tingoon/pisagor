@@ -1,11 +1,10 @@
-import { useListCollection } from "@ark-ui/solid/collection";
-import { useFilter } from "@ark-ui/solid/locale";
+import { useFilter, useListCollection } from "@ark-ui/solid";
 import { Command, Kbd } from "@pisagor/solid";
 import {
   ArrowBendDownLeftIcon,
   ArrowDownIcon,
   ArrowUpIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
 import { For } from "solid-js";
 
 export function WithFooter() {

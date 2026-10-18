@@ -1,17 +1,17 @@
+import {
+  Toast as ToastPrimitive,
+  Toaster as ToasterPrimitive,
+  createToaster,
+} from "@ark-ui/solid";
 import type {
   CreateToasterReturn,
   ToastActionTriggerProps,
   ToastCloseTriggerProps,
   ToastDescriptionProps,
-  ToasterProps as ToasterPrimitiveProps,
   ToastRootProps,
   ToastTitleProps,
-} from "@ark-ui/solid/toast";
-import {
-  createToaster,
-  Toaster as ToasterPrimitive,
-  Toast as ToastPrimitive,
-} from "@ark-ui/solid/toast";
+  ToasterProps as ToasterPrimitiveProps,
+} from "@ark-ui/solid";
 import type {
   ToastProps as BaseToasterRootProps,
   ToastItemProps as BaseToastItemRootProps,
@@ -24,21 +24,21 @@ import {
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
 import {
   CheckCircleIcon,
   InfoIcon,
+  type VariantClassNames,
   WarningCircleIcon,
   WarningIcon,
   XIcon,
-} from "../internal/icons";
-import type { VariantClassNames } from "../internal/types";
+  createSlotRecipeContext,
+} from "../internal";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Spinner } from "./spinner";
 
 // #region Context
-const { useStyles: useToastItem, withProvider } = createSlotRecipeContext({
+const { useStyles, withProvider } = createSlotRecipeContext({
   name: "Toast",
   recipe: toastItemRecipe,
 });
@@ -127,6 +127,7 @@ function ToastItemContent(
   props: Omit<ToastItemProps, keyof ToastItemRootProps> &
     Pick<ToastItemProps, "toast">,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local] = splitProps(props, [
     "actionsProps",
     "actionTriggerProps",
@@ -137,11 +138,12 @@ function ToastItemContent(
     "toast",
     "classNames",
   ]);
-  const styles = useToastItem();
+  const styles = useStyles();
   const toastData = () => local.toast;
   const ToastIcon = () => {
     const type = toastData().type;
     if (!type || !(type in TOAST_ICONS)) return null;
+
     return TOAST_ICONS[type as keyof typeof TOAST_ICONS]();
   };
   const isExplicitClosable = () => toastData().closable === false;
@@ -203,7 +205,7 @@ function ToastItemContent(
                 {...triggerProps({
                   class: styles.slots.close({ class: local.classNames?.close }),
                 })}
-                aria-label={useTranslation("toast.close")}
+                aria-label={m("toast.close")}
                 size="icon-xs"
                 variant="ghost"
               >
@@ -251,7 +253,7 @@ export type {
   ToastCloseTriggerProps,
   ToastDescriptionProps,
   ToastTitleProps,
-} from "@ark-ui/solid/toast";
+} from "@ark-ui/solid";
 
 export const Toaster = Object.assign(ToasterRoot, {
   Item: ToastItem,

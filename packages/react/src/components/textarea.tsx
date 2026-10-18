@@ -1,7 +1,7 @@
 import {
   Field as FieldPrimitive,
   type FieldTextareaProps,
-} from "@ark-ui/react/field";
+} from "@ark-ui/react";
 import type { TextareaProps as BaseTextareaProps } from "@pisagor/props";
 import {
   formControlShellRecipe,
@@ -11,12 +11,8 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ChangeEventHandler, ReactNode, RefAttributes } from "react";
 import { useClearableInput } from "../hooks";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type {
-  FormControlVariant,
-  SizeScaleProps,
-  VariantClassNames,
-} from "../internal/types";
+import { createSlotRecipeContext } from "../internal";
+import type { FormControlVariant, VariantClassNames } from "../internal";
 import { Input } from "./input";
 import {
   InputGroupAddon,
@@ -25,11 +21,10 @@ import {
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: TextareaStylesContext, useStyles: useTextarea } =
-  createSlotRecipeContext({
-    name: "Textarea",
-    recipe: textareaRecipe,
-  });
+const { Context: TextareaStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Textarea",
+  recipe: textareaRecipe,
+});
 // #endregion
 
 // #region Types
@@ -42,8 +37,7 @@ type TextareaRootProps = FieldTextareaProps &
     variant?: FormControlVariant;
   };
 
-export interface TextareaProps
-  extends TextareaRootProps, BaseTextareaProps, SizeScaleProps {
+export interface TextareaProps extends TextareaRootProps, BaseTextareaProps {
   /**
    * Whether to show a clear button when the textarea has a value.
    *
@@ -62,15 +56,8 @@ function TextareaProvider({
   children,
   size = "md",
   recipe = textareaRecipe,
-}: SizeScaleProps & {
+}: BaseTextareaProps & {
   children: ReactNode;
-  /**
-   * Style recipe. Defaults to `textareaRecipe` from
-   * `@pisagor/recipes/textarea`.
-   *
-   * @defaultValue textareaRecipe
-   */
-  recipe?: typeof textareaRecipe;
 }) {
   const slots = recipe({ size });
 
@@ -87,7 +74,7 @@ function TextareaField({
   classNames,
   ...rest
 }: TextareaRootProps & { classNames?: TextareaClassNames }) {
-  const { slots } = useTextarea();
+  const { slots } = useStyles();
   const resolved = {
     surfaceVariant: useFormControlSurface(),
     variant: variantProp ?? ("primary" as FormControlVariant),
@@ -119,7 +106,7 @@ function TextareaGroup({
   className?: string;
   variant?: FormControlVariant;
 }) {
-  const { slots } = useTextarea();
+  const { slots } = useStyles();
 
   return (
     <InputGroupRoot className={slots.group({ className })} variant={variant}>
@@ -137,7 +124,7 @@ function TextareaClearableField({
   canClear?: boolean;
   classNames?: TextareaClassNames;
 }) {
-  const { slots } = useTextarea();
+  const { slots } = useStyles();
 
   return (
     <FieldPrimitive.Textarea
@@ -151,7 +138,7 @@ function TextareaClearableField({
 }
 
 function TextareaClearAddon({ onClear }: { onClear: () => void }) {
-  const { slots } = useTextarea();
+  const { slots } = useStyles();
 
   return (
     <InputGroupAddon align="inline-end" className={slots.clearAddon()}>

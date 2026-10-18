@@ -4,18 +4,14 @@ import type {
   ToggleVariantProps,
 } from "@pisagor/recipes";
 import { toggleGroupRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils/create-context";
 
-export const {
-  Context,
-  useStyles: useToggleGroupStyles,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "ToggleGroup",
-  recipe: toggleGroupRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "ToggleGroup",
+    recipe: toggleGroupRecipe,
+  });
 
 export interface ToggleGroupItemOptionsValue {
   size: NonNullable<ToggleVariantProps["size"]>;
@@ -30,8 +26,9 @@ export const setToggleGroupItemOptionsContext = optionsCtx.setContext;
 export const useToggleGroupItemOptions = optionsCtx.getContext;
 
 export function useToggleGroup() {
-  const styles = useToggleGroupStyles();
+  const styles = useStyles();
   const options = useToggleGroupItemOptions();
+
   return {
     get size() {
       return options.size;

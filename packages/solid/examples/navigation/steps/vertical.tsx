@@ -1,11 +1,13 @@
 import { Button, Steps } from "@pisagor/solid";
-import { CaretLeftIcon, CaretRightIcon } from "@pisagor/solid/icons";
+import { CaretLeftIcon, CaretRightIcon } from "@squidlab/phosphor-solid/icons";
+
 export function Vertical() {
   const items = [
     { description: "Personal", title: "Info" },
     { description: "Company", title: "Docs" },
     { description: "Create", title: "Team" },
   ];
+
   return (
     <Steps class="h-64" count={items.length} orientation="vertical">
       <Steps.List>

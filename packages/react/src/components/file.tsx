@@ -1,17 +1,13 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import { FileIcon } from "@phosphor-icons/react";
 import type { FileProps as BaseFileRootProps } from "@pisagor/props";
 import { type FileVariantProps, fileRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Format } from "./format";
 
 // #region Context
-const {
-  useStyles: useFile,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "File",
   recipe: fileRecipe,
 });
@@ -21,15 +17,15 @@ const {
 export const FileRoot = withProvider(ark.div, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<ComponentProps<typeof ark.div> & BaseFileRootProps>;
+}) as FunctionComponent<HTMLArkProps<"div"> & BaseFileRootProps>;
 
 export function FileMedia({
   variant = "icon",
   children,
   className,
   ...rest
-}: ComponentProps<typeof ark.div> & FileVariantProps) {
-  const { slots } = useFile();
+}: HTMLArkProps<"div"> & FileVariantProps) {
+  const { slots } = useStyles();
 
   return (
     <ark.div
@@ -63,10 +59,10 @@ export function FileSize({
   value,
   className,
   ...rest
-}: Omit<ComponentProps<typeof ark.div>, "children"> & {
+}: Omit<HTMLArkProps<"div">, "children"> & {
   value: number;
 }) {
-  const { slots } = useFile();
+  const { slots } = useStyles();
 
   return (
     <ark.div

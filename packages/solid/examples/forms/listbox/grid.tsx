@@ -1,4 +1,4 @@
-import { createGridCollection } from "@ark-ui/solid/collection";
+import { createGridCollection } from "@ark-ui/solid";
 import { Item, Listbox } from "@pisagor/solid";
 import { For, type JSX } from "solid-js";
 
@@ -28,6 +28,7 @@ export function Grid() {
       { label: "🌈", value: "rainbow" },
     ],
   });
+
   return (
     <Item.Group variant="outline">
       <Item class="p-1">

@@ -1,28 +1,31 @@
-import { ark } from "@ark-ui/react/factory";
+import {
+  Popover as PopoverPrimitive,
+  Portal,
+  ark,
+  type HTMLArkProps,
+} from "@ark-ui/react";
 import type {
   PopoverAnchorProps,
   PopoverArrowProps,
   PopoverCloseTriggerProps,
+  PopoverContentProps as PopoverContentPrimitiveProps,
   PopoverPositionerProps,
-  PopoverContentProps as PopoverPrimitiveContentProps,
   PopoverRootProps,
   PopoverTriggerProps,
-} from "@ark-ui/react/popover";
-import { Popover as PopoverPrimitive } from "@ark-ui/react/popover";
-import { Portal } from "@ark-ui/react/portal";
+} from "@ark-ui/react";
 import { XIcon } from "@phosphor-icons/react";
 import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
 import { popoverRecipe } from "@pisagor/recipes";
-import type { ComponentProps } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+
+import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
 const {
   Context: PopoverStylesContext,
-  useStyles: usePopover,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Popover",
@@ -32,7 +35,7 @@ const {
 
 // #region Types
 export interface PopoverContentProps
-  extends PopoverPrimitiveContentProps, BasePopoverContentProps {
+  extends PopoverContentPrimitiveProps, BasePopoverContentProps {
   /**
    * Whether to show a close button at the top right corner.
    *
@@ -41,16 +44,16 @@ export interface PopoverContentProps
   showCloseButton?: boolean;
 }
 
-export interface PopoverHeaderProps extends ComponentProps<typeof ark.div> {
+export interface PopoverHeaderProps extends HTMLArkProps<"div"> {
   /** The description of the popover header */
   description?: string;
   /** The title of the popover header */
   title?: string;
 }
 
-export type PopoverBodyProps = ComponentProps<typeof ark.div>;
+export type PopoverBodyProps = HTMLArkProps<"div">;
 
-export type PopoverFooterProps = ComponentProps<typeof ark.div>;
+export type PopoverFooterProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Parts
@@ -77,7 +80,7 @@ export function PopoverContent({
   className,
   ...rest
 }: PopoverContentProps) {
-  const popoverCloseMessage = useMessage("popover.close");
+  const { m } = useLocale();
   const slots = recipe();
 
   return (
@@ -93,7 +96,7 @@ export function PopoverContent({
             {!!showCloseButton && (
               <PopoverCloseTrigger asChild>
                 <Button
-                  aria-label={popoverCloseMessage}
+                  aria-label={m("popover.close")}
                   className={slots.close()}
                   size="icon-sm"
                   variant="ghost"
@@ -116,7 +119,7 @@ export function PopoverHeader({
   className,
   ...rest
 }: PopoverHeaderProps) {
-  const { slots } = usePopover();
+  const { slots } = useStyles();
 
   return (
     <ark.div
@@ -143,7 +146,7 @@ export const PopoverDescription = withContext(PopoverPrimitive.Description, {
 });
 
 export function PopoverBody({ className, ...rest }: PopoverBodyProps) {
-  const { slots } = usePopover();
+  const { slots } = useStyles();
 
   return (
     <ScrollArea>
@@ -168,7 +171,7 @@ export function PopoverCloseTrigger(props: PopoverCloseTriggerProps) {
 }
 
 export function PopoverArrow({ style, ...rest }: PopoverArrowProps) {
-  const { slots } = usePopover();
+  const { slots } = useStyles();
 
   return (
     <PopoverPrimitive.Arrow
@@ -207,7 +210,7 @@ export type {
   PopoverRootProps,
   PopoverTitleProps,
   PopoverTriggerProps,
-} from "@ark-ui/react/popover";
+} from "@ark-ui/react";
 
 export const Popover = Object.assign(PopoverRoot, {
   Anchor: PopoverAnchor,

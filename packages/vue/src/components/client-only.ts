@@ -1,4 +1,4 @@
-import { ClientOnly as ClientOnlyPrimitive } from "@ark-ui/vue/client-only";
+import { ClientOnly as ClientOnlyPrimitive } from "@ark-ui/vue";
 import { defineComponent, h } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

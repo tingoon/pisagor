@@ -1,19 +1,19 @@
+import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/react";
 import type {
   ImageCropperGridProps,
   ImageCropperHandleProps,
-  ImageCropperRootProps as ImageCropperPrimitiveRootProps,
-  ImageCropperSelectionProps as ImageCropperPrimitiveSelectionProps,
-} from "@ark-ui/react/image-cropper";
-import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/react/image-cropper";
+  ImageCropperRootProps as ImageCropperRootPrimitiveProps,
+  ImageCropperSelectionProps as ImageCropperSelectionPrimitiveProps,
+} from "@ark-ui/react";
 import type { ImageCropperProps as BaseImageCropperRootProps } from "@pisagor/props";
 import { imageCropperRecipe } from "@pisagor/recipes";
 
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {
   Context: ImageCropperStylesContext,
-  useStyles: useImageCropper,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "ImageCropper",
@@ -24,7 +24,7 @@ const {
 // #region Types
 export interface ImageCropperRootProps
   extends
-    Omit<ImageCropperPrimitiveRootProps, "src" | "cropShape">,
+    Omit<ImageCropperRootPrimitiveProps, "src" | "cropShape">,
     BaseImageCropperRootProps {
   /**
    * Image URL for the auto-rendered cropper layout.
@@ -40,7 +40,7 @@ export interface ImageCropperRootProps
   cropShape?: "rectangle" | "circle";
 }
 
-export interface ImageCropperSelectionProps extends ImageCropperPrimitiveSelectionProps {
+export interface ImageCropperSelectionProps extends ImageCropperSelectionPrimitiveProps {
   /**
    * The axis of the grid to show.
    *
@@ -94,7 +94,7 @@ export function ImageCropperSelection({
   className,
   ...rest
 }: ImageCropperSelectionProps) {
-  const { slots } = useImageCropper();
+  const { slots } = useStyles();
 
   return (
     <ImageCropperPrimitive.Selection
@@ -126,7 +126,7 @@ export function ImageCropperHandle({
   className,
   ...rest
 }: ImageCropperHandleProps) {
-  const { slots } = useImageCropper();
+  const { slots } = useStyles();
 
   return (
     <ImageCropperPrimitive.Handle
@@ -142,7 +142,7 @@ export function ImageCropperGrid({
   className,
   ...rest
 }: ImageCropperGridProps) {
-  const { slots } = useImageCropper();
+  const { slots } = useStyles();
 
   return (
     <ImageCropperPrimitive.Grid
@@ -165,7 +165,7 @@ export type {
   ImageCropperGridProps,
   ImageCropperHandleProps,
   ImageCropperImageProps,
-} from "@ark-ui/react/image-cropper";
+} from "@ark-ui/react";
 
 export const ImageCropper = Object.assign(ImageCropperRoot, {
   Grid: ImageCropperGrid,

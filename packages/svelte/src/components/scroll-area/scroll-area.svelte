@@ -1,15 +1,15 @@
 <script lang="ts">
+  import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/svelte";
   import type {
     ScrollAreaRootProps,
     ScrollAreaScrollbarProps,
     ScrollAreaThumbProps,
     ScrollAreaViewportProps,
-  } from "@ark-ui/svelte/scroll-area";
-  import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/svelte/scroll-area";
+  } from "@ark-ui/svelte";
   import type { ScrollAreaProps as BaseScrollAreaProps } from "@pisagor/props";
   import type { ScrollAreaRecipeSlot } from "@pisagor/recipes";
   import type { Snippet } from "svelte";
-  import type { VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import ScrollAreaRoot from "./scroll-area-root.svelte";
   import ScrollAreaScrollbar from "./scroll-area-scrollbar.svelte";
   import ScrollAreaThumb from "./scroll-area-thumb.svelte";

@@ -1,9 +1,8 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type { FrameProps as BaseFrameRootProps } from "@pisagor/props";
 import { frameRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import {
   provideSurfaceContext,
   type SurfaceVariant,
@@ -13,7 +12,7 @@ import {
 // #region Slot recipe context
 const {
   provideStyles: provideFrameStyles,
-  useStyles: useFrame,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Frame",
@@ -93,7 +92,7 @@ export const FramePanel = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useFrame();
+    const styles = useStyles();
 
     const parent = useSurface();
 

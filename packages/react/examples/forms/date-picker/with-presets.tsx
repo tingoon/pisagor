@@ -1,5 +1,6 @@
 import { CalendarIcon } from "@phosphor-icons/react";
 import { Button, Calendar, DatePicker, parseDate } from "@pisagor/react";
+
 export function WithPresets() {
   const presets = [
     { days: 0, label: "Today" },
@@ -7,6 +8,7 @@ export function WithPresets() {
     { days: 3, label: "In 3 days" },
     { days: 7, label: "In a week" },
   ] as const;
+
   return (
     <DatePicker defaultValue={[parseDate(new Date())]}>
       <DatePicker.Trigger asChild>

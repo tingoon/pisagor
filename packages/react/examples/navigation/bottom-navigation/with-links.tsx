@@ -5,6 +5,7 @@ import {
   UserIcon,
 } from "@phosphor-icons/react";
 import { BottomNavigation, ScrollArea } from "@pisagor/react";
+
 export function WithLinks() {
   return (
     <div className="bg-muted flex h-72 flex-col overflow-y-auto rounded-lg border shadow-lg/5">

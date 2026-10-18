@@ -1,11 +1,9 @@
 import { buttonGroupRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../../internal";
 
-export const {
-  useStyles: useButtonGroup,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "ButtonGroup",
-  recipe: buttonGroupRecipe,
-});
+export const { useStyles, withContext, withProvider } = createSlotRecipeContext(
+  {
+    name: "ButtonGroup",
+    recipe: buttonGroupRecipe,
+  },
+);

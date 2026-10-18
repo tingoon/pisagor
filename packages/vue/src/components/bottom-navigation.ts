@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type {
   BottomNavigationItemProps as BaseBottomNavigationItemProps,
   BottomNavigationProps as BaseBottomNavigationRootProps,
@@ -16,8 +16,8 @@ import {
   provide,
   type Ref,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { useTranslation } from "./provider/context";
+import { createSlotRecipeContext } from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -77,13 +77,18 @@ export const BottomNavigationRoot = defineComponent({
     value: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
-    const label = useTranslation("bottomNavigation.label");
+    const { m } = useLocale();
     provide(
       BottomNavigationValueKey,
       computed(() => props.value),
     );
+
     return () =>
-      h(BottomNavigationNav, { "aria-label": label, ...attrs }, slots);
+      h(
+        BottomNavigationNav,
+        { "aria-label": m("bottomNavigation.label"), ...attrs },
+        slots,
+      );
   },
 });
 
@@ -106,6 +111,7 @@ export const BottomNavigationItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const rootValue = inject(BottomNavigationValueKey, undefined);
+
     return () => {
       const root = rootValue?.value;
       const isCurrent =
@@ -113,6 +119,7 @@ export const BottomNavigationItem = defineComponent({
         (props.value !== undefined &&
           root !== undefined &&
           props.value === root);
+
       return h(
         BottomNavigationItemBase,
         {

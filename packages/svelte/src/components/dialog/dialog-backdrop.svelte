@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type DialogBackdropProps,
     Dialog as DialogPrimitive,
-  } from "@ark-ui/svelte/dialog";
+    type DialogBackdropProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import { useDialog } from "./dialog.context";
 

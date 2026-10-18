@@ -1,5 +1,6 @@
 import { Announcement, Badge } from "@pisagor/solid";
-import { ArrowUpRightIcon } from "@pisagor/solid/icons";
+import { ArrowUpRightIcon } from "@squidlab/phosphor-solid/icons";
+
 export function WithLink() {
   return (
     <Announcement.Root

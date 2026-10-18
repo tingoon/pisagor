@@ -2,7 +2,7 @@
   import {
     Checkbox as CheckboxPrimitive,
     type CheckboxRootProps,
-  } from "@ark-ui/svelte/checkbox";
+  } from "@ark-ui/svelte";
   import { checkboxRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 

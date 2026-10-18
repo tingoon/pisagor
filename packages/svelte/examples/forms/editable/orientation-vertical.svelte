@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, Editable, Textarea } from "@pisagor/svelte";
-  import { CheckIcon, XIcon } from "@pisagor/svelte/icons";
+  import { CheckIcon, XIcon } from "phosphor-svelte";
 </script>
 
 <Editable>

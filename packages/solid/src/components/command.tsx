@@ -1,8 +1,8 @@
 import {
   type CollectionItem,
+  useFilter,
   useListCollection,
-} from "@ark-ui/solid/collection";
-import { useFilter } from "@ark-ui/solid/locale";
+} from "@ark-ui/solid";
 import type {
   CommandProps as BaseCommandDialogContentProps,
   CommandProps as BaseCommandProps,
@@ -11,8 +11,7 @@ import { commandRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { MagnifyingGlassIcon } from "../internal/icons";
+import { MagnifyingGlassIcon, createSlotRecipeContext } from "../internal";
 import type {
   ComboboxContentProps,
   ComboboxEmptyProps,
@@ -31,12 +30,14 @@ import {
 } from "./dialog";
 import type { InputProps } from "./input";
 import { InputGroup } from "./input-group";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Separator } from "./separator";
 
 // #region Context
-const { Context: CommandStylesContext, useStyles: useCommand } =
-  createSlotRecipeContext({ name: "Command", recipe: commandRecipe });
+const { Context: CommandStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Command",
+  recipe: commandRecipe,
+});
 // #endregion
 
 export interface CommandDialogContentProps
@@ -98,6 +99,7 @@ export function CommandDialogTrigger(props: DialogTriggerProps): JSX.Element {
 function CommandDialogFrame(
   props: Omit<CommandDialogContentProps, "recipe">,
 ): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "size",
     "children",
@@ -105,7 +107,7 @@ function CommandDialogFrame(
     "title",
     "class",
   ]);
-  const styles = useCommand();
+  const styles = useStyles();
 
   return (
     <Portal>
@@ -118,9 +120,7 @@ function CommandDialogFrame(
           size={local.size ?? "lg"}
         >
           <Dialog.Header class={styles.slots.dialogHeader()}>
-            <Dialog.Title>
-              {local.title ?? useTranslation("command.title")}
-            </Dialog.Title>
+            <Dialog.Title>{m("command.title", local.title)}</Dialog.Title>
             <Dialog.Description>
               {local.description ?? "Search for a command to run..."}
             </Dialog.Description>
@@ -155,7 +155,7 @@ export function CommandDialogContent(
 
 function CommandRootFrame(props: Omit<CommandProps, "recipe">): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCommand();
+  const styles = useStyles();
 
   return (
     <Combobox.Root
@@ -194,7 +194,7 @@ export function CommandRoot<T extends CollectionItem = CollectionItem>(
 
 export function CommandContent(props: CommandContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCommand();
+  const styles = useStyles();
 
   return (
     <Combobox.Content
@@ -207,7 +207,7 @@ export function CommandContent(props: CommandContentProps): JSX.Element {
 
 export function CommandInput(props: CommandInputProps): JSX.Element {
   const [local, rest] = splitProps(props, ["size", "class"]);
-  const styles = useCommand();
+  const styles = useStyles();
 
   return (
     <Combobox.Control class={styles.slots.control()}>
@@ -231,7 +231,8 @@ export function CommandInput(props: CommandInputProps): JSX.Element {
 
 export function CommandList(props: CommandListProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCommand();
+  const styles = useStyles();
+
   return (
     <div class={styles.slots.listWrapper()}>
       <Combobox.List
@@ -243,14 +244,16 @@ export function CommandList(props: CommandListProps): JSX.Element {
 }
 
 export function CommandEmpty(props: ComboboxEmptyProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useCommand();
+  const styles = useStyles();
+
   return (
     <Combobox.Empty
       {...rest}
       class={styles.slots.empty({ class: local.class })}
     >
-      {local.children || useTranslation("command.empty")}
+      {local.children || m("command.empty")}
     </Combobox.Empty>
   );
 }
@@ -267,12 +270,13 @@ export function CommandItemGroupLabel(
 
 export function CommandItem(props: ComboboxItemProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
+
   return <Combobox.Item {...rest} class={local.class} showIndicator={false} />;
 }
 
 export function CommandSeparator(props: CommandSeparatorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCommand();
+  const styles = useStyles();
 
   return (
     <Separator
@@ -286,7 +290,7 @@ export function CommandSeparator(props: CommandSeparatorProps): JSX.Element {
 
 export function CommandShortcut(props: CommandShortcutProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCommand();
+  const styles = useStyles();
 
   return (
     <span
@@ -300,7 +304,7 @@ export function CommandShortcut(props: CommandShortcutProps): JSX.Element {
 
 export function CommandFooter(props: CommandFooterProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useCommand();
+  const styles = useStyles();
 
   return (
     <div
@@ -313,6 +317,7 @@ export function CommandFooter(props: CommandFooterProps): JSX.Element {
 }
 
 export function CommandShorthand(props: CommandShorthandProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "emptyText",
     "items",
@@ -327,7 +332,6 @@ export function CommandShorthand(props: CommandShorthandProps): JSX.Element {
     itemToString: (item) => item.label,
     itemToValue: (item) => item.value,
   });
-  const placeholder = useTranslation("command.placeholder");
 
   return (
     <CommandRoot
@@ -338,7 +342,7 @@ export function CommandShorthand(props: CommandShorthandProps): JSX.Element {
         local.onInputValueChange?.(details);
       }}
     >
-      <CommandInput placeholder={local.placeholder ?? placeholder} />
+      <CommandInput placeholder={m("command.placeholder", local.placeholder)} />
       <CommandContent>
         <CommandEmpty>{local.emptyText}</CommandEmpty>
         <CommandList>

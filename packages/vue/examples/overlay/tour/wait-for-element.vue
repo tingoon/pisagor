@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { waitForElement, waitForEvent } from "@ark-ui/vue/tour";
+import { waitForElement, waitForEvent } from "@ark-ui/vue";
 import { PhPlus } from "@phosphor-icons/vue";
 import { Button, Tour, type TourStepType } from "@pisagor/vue";
 import { ref } from "vue";
@@ -27,6 +27,7 @@ const steps: TourStepType[] = [
       show();
       const [promise, cancel] = waitForEvent(target, "click");
       promise.then(() => next());
+
       return cancel;
     },
     id: "add-item",
@@ -44,6 +45,7 @@ const steps: TourStepType[] = [
         { timeout: 5000 },
       );
       promise.then(() => show());
+
       return () => cancel();
     },
     id: "new-item",

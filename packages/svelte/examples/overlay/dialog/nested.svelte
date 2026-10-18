@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Portal } from "@ark-ui/svelte/portal";
+  import { Portal } from "@ark-ui/svelte";
   import { Button, Dialog, Field, Input } from "@pisagor/svelte";
 </script>
 

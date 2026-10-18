@@ -1,25 +1,23 @@
 <script lang="ts">
-  import type { TagsInputControlProps as ArkControlProps } from "@ark-ui/svelte/tags-input";
   import {
     TagsInput as TagsInputPrimitive,
+    type TagsInputControlProps as ArkControlProps,
     useTagsInputContext,
-  } from "@ark-ui/svelte/tags-input";
-  import {
-    type FormControlGroupShellVariantProps,
-    formControlGroupShellRecipe,
-  } from "@pisagor/recipes";
+  } from "@ark-ui/svelte";
+  import type { TagsInputProps as BaseTagsInputProps } from "@pisagor/props";
+  import { formControlGroupShellRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
   import { useTagsInput } from "./tags-input.context";
   import TagsInputClearTrigger from "./tags-input-clear-trigger.svelte";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type FormControlVariant = "primary" | "secondary";
 
   type Props = ArkControlProps &
-    Pick<FormControlGroupShellVariantProps, "size" | "variant"> & {
+    BaseTagsInputProps & {
       clearable?: boolean;
     };
 
@@ -48,6 +46,6 @@
 >
   {@render children?.()}
   {#if clearable && api().value.length > 0}
-    <TagsInputClearTrigger aria-label={t("tagsInput.clearAllTags")} />
+    <TagsInputClearTrigger aria-label={m("tagsInput.clearAllTags")} />
   {/if}
 </TagsInputPrimitive.Control>

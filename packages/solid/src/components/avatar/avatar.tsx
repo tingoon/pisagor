@@ -1,9 +1,9 @@
-import {
-  type AvatarFallbackProps,
-  type AvatarImageProps,
-  Avatar as AvatarPrimitive,
-  type AvatarRootProps as AvatarPrimitiveRootProps,
-} from "@ark-ui/solid/avatar";
+import { Avatar as AvatarPrimitive } from "@ark-ui/solid";
+import type {
+  AvatarFallbackProps,
+  AvatarImageProps,
+  AvatarRootProps as AvatarRootPrimitiveProps,
+} from "@ark-ui/solid";
 import type { AvatarProps as BaseAvatarRootProps } from "@pisagor/props";
 import {
   type AvatarRecipeSlot,
@@ -13,8 +13,10 @@ import {
 import { getInitials } from "@pisagor/utils";
 import type { Component, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../../internal/types";
+import {
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -25,7 +27,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 
 type AvatarClassNames = VariantClassNames<AvatarRecipeSlot>;
 
-type AvatarRootProps = AvatarPrimitiveRootProps &
+type AvatarRootProps = AvatarRootPrimitiveProps &
   AvatarVariantProps &
   BaseAvatarRootProps;
 

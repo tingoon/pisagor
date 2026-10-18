@@ -4,7 +4,7 @@ import {
   treeViewRecipe,
 } from "@pisagor/recipes";
 import type { Component } from "svelte";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils/create-context";
 
 export const {
@@ -50,6 +50,7 @@ export const useTreeViewIcons = iconsCtx.getContext;
 export function useTreeView() {
   const styles = useTreeViewStyles();
   const icons = useTreeViewIcons() ?? {};
+
   return {
     get fileIcons() {
       return icons.fileIcons;

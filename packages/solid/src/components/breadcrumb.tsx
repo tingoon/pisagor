@@ -1,19 +1,22 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type {
   BreadcrumbItemProps as BaseBreadcrumbItemProps,
   BreadcrumbProps as BaseBreadcrumbProps,
 } from "@pisagor/props";
 import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { CaretRightIcon, DotsThreeIcon } from "../internal/icons";
-import { useTranslation } from "./provider/context";
+import {
+  CaretRightIcon,
+  DotsThreeIcon,
+  createSlotRecipeContext,
+} from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
   Context: BreadcrumbStylesContext,
-  useStyles: useBreadcrumb,
+  useStyles,
   withContext: withBreadcrumbContext,
 } = createSlotRecipeContext({ name: "Breadcrumb", recipe: breadcrumbRecipe });
 
@@ -32,16 +35,16 @@ interface BreadcrumbPresetItem {
   isCurrentPage?: boolean;
 }
 
-export type BreadcrumbListProps = ComponentProps<typeof ark.ol>;
+export type BreadcrumbListProps = HTMLArkProps<"ol">;
 export interface BreadcrumbItemProps
-  extends ComponentProps<typeof ark.li>, BaseBreadcrumbItemProps {}
-export type BreadcrumbLinkProps = ComponentProps<typeof ark.a>;
-export type BreadcrumbPageProps = ComponentProps<typeof ark.span>;
-export type BreadcrumbSeparatorProps = ComponentProps<typeof ark.li>;
-export type BreadcrumbEllipsisProps = ComponentProps<typeof ark.span>;
+  extends HTMLArkProps<"li">, BaseBreadcrumbItemProps {}
+export type BreadcrumbLinkProps = HTMLArkProps<"a">;
+export type BreadcrumbPageProps = HTMLArkProps<"span">;
+export type BreadcrumbSeparatorProps = HTMLArkProps<"li">;
+export type BreadcrumbEllipsisProps = HTMLArkProps<"span">;
 
 export interface BreadcrumbRootProps
-  extends ComponentProps<typeof ark.nav>, BaseBreadcrumbProps {
+  extends HTMLArkProps<"nav">, BaseBreadcrumbProps {
   "aria-label"?: string;
 }
 
@@ -50,6 +53,7 @@ export interface BreadcrumbProps extends Omit<BreadcrumbRootProps, "children"> {
 }
 
 export function BreadcrumbRoot(props: BreadcrumbRootProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, ["aria-label", "children", "recipe"]);
   const slots = createMemo(() => (local.recipe ?? breadcrumbRecipe)());
 
@@ -64,7 +68,7 @@ export function BreadcrumbRoot(props: BreadcrumbRootProps): JSX.Element {
     >
       <ark.nav
         {...rest}
-        aria-label={local["aria-label"] ?? useTranslation("breadcrumb.label")}
+        aria-label={m("breadcrumb.label", local["aria-label"])}
         data-part="root"
         data-scope="breadcrumb"
       >
@@ -99,7 +103,8 @@ export function BreadcrumbSeparator(
   props: BreadcrumbSeparatorProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
-  const styles = useBreadcrumb();
+  const styles = useStyles();
+
   return (
     <ark.li
       {...rest}
@@ -117,7 +122,8 @@ export function BreadcrumbSeparator(
 export function BreadcrumbEllipsis(
   props: BreadcrumbEllipsisProps,
 ): JSX.Element {
-  const styles = useBreadcrumb();
+  const styles = useStyles();
+
   return (
     <ark.span
       {...props}

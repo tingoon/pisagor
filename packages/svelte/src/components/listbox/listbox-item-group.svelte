@@ -1,16 +1,16 @@
 <script lang="ts">
   import {
-    type ListboxItemGroupProps as ArkProps,
     Listbox as ListboxPrimitive,
-  } from "@ark-ui/svelte/listbox";
+    type ListboxItemGroupProps as ArkProps,
+  } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
-  import { useListbox } from "./listbox.context";
+  import { useStyles } from "./listbox.context";
   import ListboxItemGroupLabel from "./listbox-item-group-label.svelte";
 
   type Props = ArkProps & { heading?: string };
 
   let { children, heading, class: className, ...rest }: Props = $props();
-  const styles = useListbox();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

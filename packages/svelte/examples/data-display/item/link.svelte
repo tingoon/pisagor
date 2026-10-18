@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Item } from "@pisagor/svelte";
-  import ArrowSquareOutIcon from "phosphor-svelte/lib/ArrowSquareOutIcon";
+  import { ArrowSquareOutIcon } from "phosphor-svelte";
 </script>
 
 <Item.Group class="gap-2">

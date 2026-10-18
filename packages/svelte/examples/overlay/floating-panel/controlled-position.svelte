@@ -1,11 +1,13 @@
 <script lang="ts">
   import { Button, FloatingPanel } from "@pisagor/svelte";
-  import CaretDownIcon from "phosphor-svelte/lib/CaretDownIcon";
-  import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
-  import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
-  import CaretUpIcon from "phosphor-svelte/lib/CaretUpIcon";
-  import GearSixIcon from "phosphor-svelte/lib/GearSixIcon";
-  import XIcon from "phosphor-svelte/lib/XIcon";
+  import {
+    CaretDownIcon,
+    CaretLeftIcon,
+    CaretRightIcon,
+    CaretUpIcon,
+    GearSixIcon,
+    XIcon,
+  } from "phosphor-svelte";
 
   let position = $state({ x: 120, y: 80 });
 </script>

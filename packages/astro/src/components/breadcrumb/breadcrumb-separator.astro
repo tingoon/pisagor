@@ -1,11 +1,11 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import { useBreadcrumb } from "./breadcrumb.context";
+import { useStyles } from "./breadcrumb.context";
 
 type Props = HTMLAttributes<"li">;
 
 const { class: className, ...rest } = Astro.props;
-const { slots } = useBreadcrumb();
+const { slots } = useStyles();
 const hasDefault = Astro.slots.has("default");
 ---
 

@@ -1,16 +1,11 @@
-import { QrCode as QrCodePrimitive } from "@ark-ui/vue/qr-code";
+import { QrCode as QrCodePrimitive } from "@ark-ui/vue";
 import type { QrCodeProps as BaseQrCodeRootProps } from "@pisagor/props";
 import { qrCodeRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useQrCode,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "QrCode",
   recipe: qrCodeRecipe,
 });
@@ -55,7 +50,7 @@ export const QrCodeFrame = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useQrCode();
+    const styles = useStyles();
 
     return () =>
       h(

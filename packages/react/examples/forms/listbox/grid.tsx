@@ -1,6 +1,9 @@
+// createGridCollection is not exported from the @ark-ui/react barrel.
+// eslint-disable-next-line no-restricted-imports
 import { createGridCollection } from "@ark-ui/react/collection";
 import { Item, Listbox } from "@pisagor/react";
 import type { CSSProperties } from "react";
+
 export function Grid() {
   const collection = createGridCollection({
     columnCount: 5,
@@ -27,6 +30,7 @@ export function Grid() {
       { label: "🌈", value: "rainbow" },
     ],
   });
+
   return (
     <Item.Group variant="outline">
       <Item className="p-1">

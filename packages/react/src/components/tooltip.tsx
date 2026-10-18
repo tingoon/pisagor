@@ -1,19 +1,17 @@
-import { Portal } from "@ark-ui/react/portal";
+import { Portal, Tooltip as TooltipPrimitive } from "@ark-ui/react";
 import type {
   TooltipArrowProps,
   TooltipContentProps,
   TooltipContextProps,
   TooltipPositionerProps,
-  TooltipRootProps as TooltipPrimitiveRootProps,
+  TooltipRootProps as TooltipRootPrimitiveProps,
   TooltipTriggerProps,
-} from "@ark-ui/react/tooltip";
-import { Tooltip as TooltipPrimitive } from "@ark-ui/react/tooltip";
+} from "@ark-ui/react";
 import type { TooltipProps as BaseTooltipRootProps } from "@pisagor/props";
 import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ReactElement, ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { Context: TooltipStylesContext, withContext } = createSlotRecipeContext({
@@ -24,7 +22,7 @@ const { Context: TooltipStylesContext, withContext } = createSlotRecipeContext({
 
 // #region Types
 export interface TooltipRootProps
-  extends TooltipPrimitiveRootProps, BaseTooltipRootProps {}
+  extends TooltipRootPrimitiveProps, BaseTooltipRootProps {}
 
 type TooltipContextApi = Parameters<TooltipContextProps["children"]>[0];
 
@@ -186,7 +184,7 @@ export type {
   TooltipContentProps,
   TooltipPositionerProps,
   TooltipTriggerProps,
-} from "@ark-ui/react/tooltip";
+} from "@ark-ui/react";
 
 export const Tooltip = Object.assign(TooltipShorthand, {
   Arrow: TooltipArrow,

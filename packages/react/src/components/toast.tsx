@@ -1,18 +1,18 @@
-import { Portal } from "@ark-ui/react/portal";
+import {
+  Portal,
+  Toast as ToastPrimitive,
+  Toaster as ToasterPrimitive,
+  createToaster,
+} from "@ark-ui/react";
 import type {
   CreateToasterReturn,
   ToastActionTriggerProps,
   ToastCloseTriggerProps,
   ToastDescriptionProps,
-  ToasterProps as ToasterPrimitiveProps,
   ToastRootProps,
   ToastTitleProps,
-} from "@ark-ui/react/toast";
-import {
-  createToaster,
-  Toaster as ToasterPrimitive,
-  Toast as ToastPrimitive,
-} from "@ark-ui/react/toast";
+  ToasterProps as ToasterPrimitiveProps,
+} from "@ark-ui/react";
 import {
   CheckCircleIcon,
   InfoIcon,
@@ -35,14 +35,13 @@ import type {
   FunctionComponent,
   ReactNode,
 } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { Spinner } from "./spinner";
 
 // #region Context
-const { useStyles: useToastItem, withProvider } = createSlotRecipeContext({
+const { useStyles, withProvider } = createSlotRecipeContext({
   name: "Toast",
   recipe: toastItemRecipe,
 });
@@ -144,8 +143,8 @@ function ToastItemContent({
   classNames,
 }: Omit<ToastItemProps, keyof ToastItemRootProps> &
   Pick<ToastItemProps, "toast">) {
-  const toastCloseMessage = useMessage("toast.close");
-  const { slots } = useToastItem();
+  const { m } = useLocale();
+  const { slots } = useStyles();
   const ToastIcon = toastData.type
     ? TOAST_ICONS[toastData.type as keyof typeof TOAST_ICONS]
     : null;
@@ -203,7 +202,7 @@ function ToastItemContent({
         {!isNotClosable && (
           <ToastPrimitive.CloseTrigger {...closeTriggerProps} asChild>
             <Button
-              aria-label={toastCloseMessage}
+              aria-label={m("toast.close")}
               className={slots.close({ className: classNames?.close })}
               size="icon-xs"
               variant="ghost"
@@ -257,7 +256,7 @@ export type {
   ToastCloseTriggerProps,
   ToastDescriptionProps,
   ToastTitleProps,
-} from "@ark-ui/react/toast";
+} from "@ark-ui/react";
 
 export const Toaster = Object.assign(ToasterRoot, {
   Item: ToastItem,

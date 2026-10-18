@@ -1,16 +1,11 @@
-import { ark } from "@ark-ui/vue/factory";
+import { ark } from "@ark-ui/vue";
 import type { CardProps as BaseCardRootProps } from "@pisagor/props";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useCard,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Card",
   recipe: cardRecipe,
 });
@@ -46,7 +41,7 @@ export const CardMedia = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const { slots: styleSlots } = useCard();
+    const { slots: styleSlots } = useStyles();
 
     return () =>
       h(
@@ -78,7 +73,7 @@ export const CardHeader = defineComponent({
     title: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
-    const { slots: styleSlots } = useCard();
+    const { slots: styleSlots } = useStyles();
 
     return () =>
       h(

@@ -2,7 +2,7 @@
   import {
     ColorPicker as ColorPickerPrimitive,
     type ColorPickerTriggerProps,
-  } from "@ark-ui/svelte/color-picker";
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: ColorPickerTriggerProps = $props();
 </script>

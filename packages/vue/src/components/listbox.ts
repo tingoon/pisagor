@@ -1,7 +1,9 @@
-import type { CollectionItem, ListCollection } from "@ark-ui/vue/collection";
-import { createListCollection } from "@ark-ui/vue/collection";
-import type { ListboxRootProps as ArkListboxRootProps } from "@ark-ui/vue/listbox";
-import { Listbox as ListboxPrimitive } from "@ark-ui/vue/listbox";
+import { Listbox as ListboxPrimitive, createListCollection } from "@ark-ui/vue";
+import type {
+  CollectionItem,
+  ListCollection,
+  ListboxRootProps as ArkListboxRootProps,
+} from "@ark-ui/vue";
 import { PhCheck } from "@phosphor-icons/vue";
 import type {
   ListboxItemProps as BaseListboxItemProps,
@@ -14,10 +16,13 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue, LoosePropValue } from "../internal/types";
+import {
+  type ClassValue,
+  type LoosePropValue,
+  createSlotRecipeContext,
+} from "../internal";
 import { DropdownMenu } from "./dropdown-menu";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
@@ -381,6 +386,7 @@ export const ListboxEmpty = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const { m } = useLocale();
     const getSlots = useListboxSlots();
 
     return () => {
@@ -392,7 +398,7 @@ export const ListboxEmpty = defineComponent({
           ...attrs,
           class: variantSlots.empty({ class: cn(props.class, attrs.class) }),
         },
-        slots.default?.() ?? useTranslation("listbox.empty"),
+        slots.default?.() ?? m("listbox.empty"),
       );
     };
   },

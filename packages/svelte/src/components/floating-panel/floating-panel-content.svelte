@@ -1,12 +1,12 @@
 <script lang="ts">
   import {
-    type FloatingPanelContentProps as ArkProps,
     FloatingPanel as FloatingPanelPrimitive,
-  } from "@ark-ui/svelte/floating-panel";
-  import { Portal } from "@ark-ui/svelte/portal";
+    type FloatingPanelContentProps as ArkProps,
+    Portal,
+  } from "@ark-ui/svelte";
   import { floatingPanelRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import { useFloatingPanel } from "./floating-panel.context";
+  import { useStyles } from "./floating-panel.context";
   import FloatingPanelResizeTrigger from "./floating-panel-resize-trigger.svelte";
 
   type Props = ArkProps & { resizable?: boolean };
@@ -17,7 +17,7 @@
     class: className,
     ...rest
   }: Props = $props();
-  const ctx = useFloatingPanel();
+  const ctx = useStyles();
   const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
 </script>
 

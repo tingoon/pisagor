@@ -1,19 +1,18 @@
-import { ark } from "@ark-ui/vue/factory";
 import {
   Pagination as PaginationPrimitive,
+  ark,
   usePaginationContext,
-} from "@ark-ui/vue/pagination";
+} from "@ark-ui/vue";
 import { PhCaretLeft, PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
 import type { PaginationProps as BasePaginationRootProps } from "@pisagor/props";
 import { buttonRecipe, paginationRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
 
 // #region Context
-const { useStyles: usePagination, withProvider } = createSlotRecipeContext({
+const { useStyles, withProvider } = createSlotRecipeContext({
   name: "Pagination",
   recipe: paginationRecipe,
 });
@@ -109,7 +108,7 @@ export const PaginationItem = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = usePagination();
+    const styles = useStyles();
 
     return () => {
       return h(
@@ -249,7 +248,7 @@ export const PaginationEllipsis = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = usePagination();
+    const styles = useStyles();
 
     return () => {
       return h(

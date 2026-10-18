@@ -1,21 +1,17 @@
+import { Tabs as TabsPrimitive } from "@ark-ui/react";
 import type {
   TabContentProps,
   TabListProps,
-  TabsRootProps as TabsPrimitiveRootProps,
   TabTriggerProps,
-} from "@ark-ui/react/tabs";
-import { Tabs as TabsPrimitive } from "@ark-ui/react/tabs";
+  TabsRootProps as TabsRootPrimitiveProps,
+} from "@ark-ui/react";
 import type { TabsProps as BaseTabsRootProps } from "@pisagor/props";
 import { type TabsVariantProps, tabsRecipe } from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useTabs,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Tabs",
   recipe: tabsRecipe,
 });
@@ -23,7 +19,7 @@ const {
 
 // #region Types
 export interface TabsRootProps
-  extends TabsPrimitiveRootProps, BaseTabsRootProps {}
+  extends TabsRootPrimitiveProps, BaseTabsRootProps {}
 
 interface TabsPresetItem {
   value: string;
@@ -32,8 +28,7 @@ interface TabsPresetItem {
   disabled?: boolean;
 }
 
-export interface TabsListProps
-  extends TabListProps, Pick<TabsVariantProps, "variant"> {
+export interface TabsListProps extends TabListProps, TabsVariantProps {
   /**
    * Whether to render the animated active-tab indicator.
    *
@@ -46,8 +41,7 @@ export type TabsTriggerProps = TabTriggerProps;
 
 export type TabsContentProps = TabContentProps;
 
-export interface TabsProps
-  extends Omit<TabsRootProps, "children">, Pick<TabsVariantProps, "variant"> {
+export interface TabsProps extends Omit<TabsRootProps, "children"> {
   items?: TabsPresetItem[];
   /** Whether to render the animated active-tab indicator. */
   showIndicator?: boolean;
@@ -67,7 +61,7 @@ export function TabsList({
   className,
   ...rest
 }: TabsListProps) {
-  const { slots } = useTabs();
+  const { slots } = useStyles();
 
   return (
     <TabsPrimitive.List

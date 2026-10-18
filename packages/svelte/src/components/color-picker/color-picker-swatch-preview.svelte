@@ -1,12 +1,11 @@
 <script lang="ts">
-  import { ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte/color-picker";
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark, ColorPicker as ColorPickerPrimitive } from "@ark-ui/svelte";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
-  import { useColorPicker } from "./color-picker.context";
+  import { useStyles } from "./color-picker.context";
 
   let { class: className, ...rest }: HTMLAttributes<HTMLDivElement> = $props();
-  const styles = useColorPicker();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 

@@ -1,4 +1,4 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import { Select } from "@pisagor/solid";
 
 export function WithScroll() {
@@ -8,6 +8,7 @@ export function WithScroll() {
       value: `framework-${i + 1}`,
     })),
   });
+
   return (
     <Select.Root collection={collection} positioning={{ fitViewport: true }}>
       <Select.Trigger>

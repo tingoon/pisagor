@@ -15,7 +15,7 @@ cursor:
 
 # Develop docs (`develop.mdx`)
 
-Applies to `apps/docs/src/content/<framework>/components/<id>/develop.mdx`, form pages at `…/forms/<id>.mdx`, block pages at `…/blocks/<id>.mdx`, the examples in `packages/<framework>(-form)/examples/<group>/<id>/` (or `apps/docs/src/blocks/<framework>/` for blocks), and `<id>.stories.tsx`. Groups match docs sidebar sections (`actions`, `fields`, …). Judge each component on its own; never apply these rules mechanically.
+Applies to `apps/docs/src/content/<framework>/components/<id>/develop.mdx`, form pages at `…/forms/<id>.mdx`, block pages at `…/blocks/<id>.mdx`, the examples in `packages/<framework>(-form)/examples/<group>/<id>/` (or `apps/docs/src/blocks/<framework>/<group>/<id>/` for blocks), and `<id>.stories.tsx`. Groups match docs sidebar sections (`actions`, `fields`, …). Judge each component on its own; never apply these rules mechanically.
 
 Components: one folder `<id>/` with `meta.md` (title, description, api, taxonomy), `design.mdx`, and `develop.mdx`. Forms: one file `forms/<id>.mdx` with frontmatter + **When to use** + develop body (`## Import`, `## Examples`, …) — no design/develop tabs. Blocks: one file `blocks/<id>.mdx` with frontmatter (`title`, `description`) and the page body.
 

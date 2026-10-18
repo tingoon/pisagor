@@ -3,7 +3,7 @@
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
   import type { ClassValue } from "svelte/elements";
-  import DialogCloseTrigger from "../dialog/dialog-close-trigger.svelte";
+  import AlertDialogCloseTrigger from "./alert-dialog-close-trigger.svelte";
 
   type Props = {
     class?: ClassValue;
@@ -13,9 +13,9 @@
   let { children, class: className }: Props = $props();
 </script>
 
-<DialogCloseTrigger
+<AlertDialogCloseTrigger
   class={cn(buttonRecipe({ variant: "outline" }).base(), className)}
   type="button"
 >
   {@render children?.()}
-</DialogCloseTrigger>
+</AlertDialogCloseTrigger>

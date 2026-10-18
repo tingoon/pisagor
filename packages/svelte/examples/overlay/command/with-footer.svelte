@@ -1,10 +1,11 @@
 <script lang="ts">
-  import { useListCollection } from "@ark-ui/svelte/collection";
-  import { useFilter } from "@ark-ui/svelte/locale";
+  import { useFilter, useListCollection } from "@ark-ui/svelte";
   import { Command, Kbd } from "@pisagor/svelte";
-  import ArrowBendDownLeftIcon from "phosphor-svelte/lib/ArrowBendDownLeftIcon";
-  import ArrowDownIcon from "phosphor-svelte/lib/ArrowDownIcon";
-  import ArrowUpIcon from "phosphor-svelte/lib/ArrowUpIcon";
+  import {
+    ArrowBendDownLeftIcon,
+    ArrowDownIcon,
+    ArrowUpIcon,
+  } from "phosphor-svelte";
 
   const initialItems = [
     { group: "App", label: "Settings", shortcut: "⌘,", value: "settings" },

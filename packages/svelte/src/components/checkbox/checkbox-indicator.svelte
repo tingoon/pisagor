@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type CheckboxIndicatorProps,
     Checkbox as CheckboxPrimitive,
-  } from "@ark-ui/svelte/checkbox";
+    type CheckboxIndicatorProps,
+  } from "@ark-ui/svelte";
   import { checkboxRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 

@@ -1,15 +1,17 @@
-import { ark } from "@ark-ui/vue/factory";
 import {
   PinInput as PinInputPrimitive,
   type PinInputValueChangeDetails,
-} from "@ark-ui/vue/pin-input";
+  ark,
+} from "@ark-ui/vue";
 import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
 import { inputOtpRecipe, inputRootRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, unref } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
-import { createContext } from "../internal/utils/create-context";
+import {
+  type ClassValue,
+  createContext,
+  createSlotRecipeContext,
+} from "../internal";
 import type { InputProps } from "./input";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
@@ -18,7 +20,7 @@ type FormControlVariant = "primary" | "secondary";
 // #region Context
 const {
   Context: InputOTPStylesContext,
-  useStyles: useInputOTPStyles,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "InputOTP",
@@ -165,7 +167,7 @@ export const InputOTPSlot = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useInputOTPStyles();
+    const styles = useStyles();
     const optionsRef = useInputOTPOptionsRef();
     const surfaceVariant = useFormControlSurface();
 

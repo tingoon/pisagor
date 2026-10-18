@@ -7,12 +7,11 @@ import {
 } from "@phosphor-icons/vue";
 import type { BadgeVariant } from "@pisagor/vue";
 import { Badge, Checkbox, InputGroup, Pagination, Table } from "@pisagor/vue";
-import {
-  type CellContext,
-  type ColumnDef,
-  DataGrid,
-  type HeaderContext,
-  useDataGrid,
+import { DataGrid, useDataGrid } from "@pisagor/vue/data-grid";
+import type {
+  CellContext,
+  ColumnDef,
+  HeaderContext,
 } from "@pisagor/vue/data-grid";
 import type { ColumnFiltersState } from "@tanstack/vue-table";
 import { computed, defineComponent, h, type PropType, ref } from "vue";

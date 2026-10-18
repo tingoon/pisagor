@@ -1,5 +1,6 @@
 import { ActionBar, AlertDialog, Button } from "@pisagor/solid";
-import { TrashIcon, XIcon } from "@pisagor/solid/icons";
+import { TrashIcon, XIcon } from "@squidlab/phosphor-solid/icons";
+
 export function WithDialog() {
   return (
     <ActionBar>

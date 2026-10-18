@@ -12,8 +12,23 @@ Wrap the app once so locale, icons, and toasts are shared by child components.
 
 <Example name="Default" />
 
-### Translations
+### Messages
 
-Override built-in labels (aria labels, empty states, button text) by key. Every key has an English default in `defaultMessages` from `@pisagor/utils`; the `translations` you pass are merged over it, so a partial object is enough. Keys are typed as `MessageKey`, so they autocomplete.
+Pass `locale` (BCP 47, default `en-US`) and `messages` to override built-in UI messages (aria labels, empty states, button text) by key. Every key has an English default in `defaultMessages` from `@pisagor/utils`; the `messages` you pass are merged over it and over any parent `Provider`, so a partial object is enough. Keys are typed as `MessageKey`, so they autocomplete. Use `Provider.Locale` to change these for a subtree only.
 
 <Example name="Messages" />
+
+### useLocale
+
+`useLocale()` returns `{ locale, dir, messages, m }`: the BCP 47 `locale`, the text `dir` (`"ltr"` or `"rtl"`, read from Ark's locale context, which derives it from `locale`), every resolved UI message in `messages`, and `m(key, override?)`, which returns `override` when it is not `null`/`undefined`, otherwise `messages[key]`. Call it during component init (context is only readable there). `m` and the `locale` / `dir` / `messages` getters read the current `Provider` state, so markup stays reactive. Use `formatMessage(m(key), values)` from `@pisagor/utils` for messages with placeholders.
+
+```svelte
+<script lang="ts">
+  import { useLocale } from "@pisagor/svelte";
+
+  let { ariaLabel }: { ariaLabel?: string } = $props();
+  const { m } = useLocale();
+</script>
+
+<span aria-label={m("spinner.loading", ariaLabel)}></span>
+```

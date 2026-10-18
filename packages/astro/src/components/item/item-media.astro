@@ -1,12 +1,12 @@
 ---
 import type { ItemVariantProps } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
-import { useItem } from "./item.context";
+import { useStyles } from "./item.context";
 
 type Props = HTMLAttributes<"div"> & ItemVariantProps;
 
 const { variant = "default", class: className, ...rest } = Astro.props;
-const { slots } = useItem();
+const { slots } = useStyles();
 ---
 
 <div

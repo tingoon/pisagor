@@ -8,8 +8,6 @@ export const dialogRecipe = tv({
     size: "md",
   },
   slots: {
-    alertBody:
-      "in-[[data-scope=dialog][data-part=content]:has([data-scope=alert-dialog][data-part=header])]:pt-0",
     backdrop: [
       "z-modal fixed inset-0",
       "bg-overlay/32 backdrop-blur-sm",

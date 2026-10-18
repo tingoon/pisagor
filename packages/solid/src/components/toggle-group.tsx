@@ -1,18 +1,18 @@
 import {
-  type ToggleGroupItemProps,
   ToggleGroup as ToggleGroupPrimitive,
-  type ToggleGroupRootProps as ToggleGroupPrimitiveRootProps,
-} from "@ark-ui/solid/toggle-group";
+  type ToggleGroupItemProps,
+  type ToggleGroupRootProps as ToggleGroupRootPrimitiveProps,
+} from "@ark-ui/solid";
 import type { ToggleGroupProps as BaseToggleGroupRootProps } from "@pisagor/props";
 import { toggleGroupRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { createMemo, For, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
 import { Toggle, type ToggleProps } from "./toggle";
 
 // #region Context
-const { Context: ToggleGroupStylesContext, useStyles: useToggleGroupStyles } =
+const { Context: ToggleGroupStylesContext, useStyles } =
   createSlotRecipeContext({
     name: "ToggleGroup",
     recipe: toggleGroupRecipe,
@@ -34,8 +34,9 @@ const { ToggleGroupItemOptionsContext, useToggleGroupItemOptions } =
   createContext("ToggleGroupItemOptions")<ToggleGroupItemOptions>();
 
 function useToggleGroup() {
-  const styles = useToggleGroupStyles();
+  const styles = useStyles();
   const options = useToggleGroupItemOptions();
+
   return {
     get size() {
       return options.size;
@@ -61,7 +62,7 @@ interface ToggleGroupPresetItem {
 
 export interface ToggleGroupRootProps
   extends
-    Omit<ToggleGroupPrimitiveRootProps, "onValueChange">,
+    Omit<ToggleGroupRootPrimitiveProps, "onValueChange">,
     ToggleGroupItemOptions,
     BaseToggleGroupRootProps {
   onValueChange?: (value: string[]) => void;
@@ -177,7 +178,7 @@ export function ToggleGroupShorthand(props: ToggleGroupProps): JSX.Element {
   );
 }
 
-export type { ToggleGroupItemProps } from "@ark-ui/solid/toggle-group";
+export type { ToggleGroupItemProps } from "@ark-ui/solid";
 
 export const ToggleGroup = Object.assign(ToggleGroupShorthand, {
   Item: ToggleGroupItem,

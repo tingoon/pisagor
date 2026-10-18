@@ -1,8 +1,8 @@
 import {
   JsonTreeView as JsonTreeViewPrimitive,
-  type JsonTreeViewRootProps as JsonTreeViewPrimitiveRootProps,
+  type JsonTreeViewRootProps as JsonTreeViewRootPrimitiveProps,
   type JsonTreeViewTreeProps,
-} from "@ark-ui/react/json-tree-view";
+} from "@ark-ui/react";
 import { CaretRightIcon } from "@phosphor-icons/react";
 import type { JsonTreeViewProps as BaseJsonTreeViewRootProps } from "@pisagor/props";
 import {
@@ -11,8 +11,7 @@ import {
 } from "@pisagor/recipes";
 
 import type { FunctionComponent } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -23,7 +22,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface JsonTreeViewRootProps
-  extends JsonTreeViewPrimitiveRootProps, BaseJsonTreeViewRootProps {}
+  extends JsonTreeViewRootPrimitiveProps, BaseJsonTreeViewRootProps {}
 
 type JsonTreeViewClassNames = VariantClassNames<JsonTreeViewRecipeSlot>;
 
@@ -79,7 +78,7 @@ JsonTreeViewShorthand.displayName = "JsonTreeView";
 
 // #endregion
 
-export type { JsonTreeViewTreeProps } from "@ark-ui/react/json-tree-view";
+export type { JsonTreeViewTreeProps } from "@ark-ui/react";
 
 export const JsonTreeView = Object.assign(JsonTreeViewShorthand, {
   Root: JsonTreeViewRoot,

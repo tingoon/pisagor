@@ -1,9 +1,9 @@
-import { Menu as MenuPrimitive } from "@ark-ui/vue/menu";
+import { Menu as MenuPrimitive } from "@ark-ui/vue";
 import type { ContextMenuProps as BaseContextMenuContextTriggerProps } from "@pisagor/props";
 import { contextMenuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNode } from "vue";
-import type { ClassValue } from "../internal/types";
+import type { ClassValue } from "../internal";
 import type { DropdownMenuRootProps } from "./dropdown-menu";
 import {
   DropdownMenuArrow,

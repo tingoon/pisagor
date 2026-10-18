@@ -22,6 +22,7 @@ export function getColumnAriaSort(
   if (sorted === "asc") {
     return "ascending";
   }
+
   return sorted === "desc" ? "descending" : "none";
 }
 
@@ -37,6 +38,7 @@ export function handleColumnResizeKeyDown(
   if (event.key === "Enter") {
     event.preventDefault();
     column.resetSize();
+
     return;
   }
   const delta =

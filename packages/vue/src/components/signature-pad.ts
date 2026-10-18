@@ -1,9 +1,9 @@
-import {
-  type SignaturePadDrawDetails,
-  type SignaturePadDrawEndDetails,
-  type SignaturePadDrawingOptions,
-  SignaturePad as SignaturePadPrimitive,
-} from "@ark-ui/vue/signature-pad";
+import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/vue";
+import type {
+  SignaturePadDrawDetails,
+  SignaturePadDrawEndDetails,
+  SignaturePadDrawingOptions,
+} from "@ark-ui/vue";
 import { PhArrowCounterClockwise } from "@phosphor-icons/vue";
 import type { SignaturePadProps as BaseSignaturePadProps } from "@pisagor/props";
 import {
@@ -20,14 +20,17 @@ import {
   type PropType,
   provide,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue, VariantClassNames } from "../internal/types";
+import {
+  type ClassValue,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
-const { Context: SignaturePadStylesContext, useStyles: useSignaturePadStyles } =
+const { Context: SignaturePadStylesContext, useStyles } =
   createSlotRecipeContext({
     name: "SignaturePad",
     recipe: signaturePadRecipe,
@@ -127,7 +130,7 @@ const SignaturePadControl = defineComponent({
   name: "SignaturePad.Control",
   props: { class: classProp },
   setup(props, { attrs, slots }) {
-    const styles = useSignaturePadStyles();
+    const styles = useStyles();
     const surfaceVariant = useFormControlSurface();
     const variant = inject(SignaturePadVariantKey, () => "primary" as const);
 
@@ -155,7 +158,7 @@ const SignaturePadSegment = defineComponent({
   name: "SignaturePad.Segment",
   props: { class: classProp },
   setup(props, { attrs }) {
-    const styles = useSignaturePadStyles();
+    const styles = useStyles();
 
     return () =>
       h(SignaturePadPrimitive.Segment as ArkPart, {
@@ -172,7 +175,7 @@ const SignaturePadGuide = defineComponent({
   name: "SignaturePad.Guide",
   props: { class: classProp },
   setup(props, { attrs, slots }) {
-    const styles = useSignaturePadStyles();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -193,8 +196,8 @@ const SignaturePadClear = defineComponent({
   name: "SignaturePad.Clear",
   props: { class: classProp },
   setup(props, { attrs, slots }) {
-    const styles = useSignaturePadStyles();
-    const label = useTranslation("signaturePad.clearSignature");
+    const { m } = useLocale();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -209,7 +212,11 @@ const SignaturePadClear = defineComponent({
         () =>
           h(
             Button as ArkPart,
-            { "aria-label": label, size: "icon-md", variant: "ghost" },
+            {
+              "aria-label": m("signaturePad.clearSignature"),
+              size: "icon-md",
+              variant: "ghost",
+            },
             () => slots.default?.() ?? h(PhArrowCounterClockwise),
           ),
       );
@@ -265,6 +272,7 @@ const SignaturePadShorthand = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const { m } = useLocale();
     const surfaceVariant = useFormControlSurface();
 
     return () => {
@@ -328,9 +336,7 @@ const SignaturePadShorthand = defineComponent({
                       h(
                         Button as ArkPart,
                         {
-                          "aria-label": useTranslation(
-                            "signaturePad.clearSignature",
-                          ),
+                          "aria-label": m("signaturePad.clearSignature"),
                           size: "icon-md",
                           variant: "ghost",
                         },

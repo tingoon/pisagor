@@ -1,26 +1,22 @@
-import {
-  type RatingGroupControlProps,
-  type RatingGroupItemProps,
-  RatingGroup as RatingGroupPrimitive,
-  type RatingGroupRootProps,
-} from "@ark-ui/react/rating-group";
+import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/react";
+import type {
+  RatingGroupControlProps,
+  RatingGroupItemProps,
+  RatingGroupRootProps,
+} from "@ark-ui/react";
 import { StarIcon } from "@phosphor-icons/react";
 import type { RatingProps as BaseRatingRootProps } from "@pisagor/props";
 import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactElement, ReactNode } from "react";
 import { cloneElement } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type {
-  FormControlVariant,
-  SizeScaleProps,
-  VariantClassNames,
-} from "../internal/types";
+import { createSlotRecipeContext } from "../internal";
+import type { FormControlVariant, VariantClassNames } from "../internal";
 
 // #region Context
 const {
   Context: RatingStylesContext,
-  useStyles: useRating,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Rating",
@@ -41,8 +37,7 @@ type RatingClassNames = VariantClassNames<RatingRecipeSlot>;
 type RatingRootProps = RatingGroupRootProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-} & BaseRatingRootProps &
-  SizeScaleProps;
+} & BaseRatingRootProps;
 
 export interface RatingProps extends Omit<
   RatingRootProps,
@@ -97,7 +92,7 @@ function RatingRoot({
   recipe = ratingRecipe,
   className,
   ...rest
-}: RatingRootProps & SizeScaleProps) {
+}: RatingRootProps) {
   const resolved = {
     surfaceVariant: undefined,
     variant: variantProp ?? ("primary" as FormControlVariant),
@@ -134,7 +129,7 @@ function RatingIndicator({
   className,
   ...rest
 }: RatingIndicatorProps) {
-  const { slots } = useRating();
+  const { slots } = useStyles();
 
   return (
     <span

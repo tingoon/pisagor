@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useHighlight } from "@ark-ui/vue/highlight";
+import { useHighlight } from "@ark-ui/vue";
 
 const chunks = useHighlight({
   query: "real humans",

@@ -1,5 +1,7 @@
-import type { ClipboardRootProps } from "@ark-ui/react/clipboard";
-import { Clipboard as ClipboardPrimitive } from "@ark-ui/react/clipboard";
+import {
+  Clipboard as ClipboardPrimitive,
+  type ClipboardRootProps,
+} from "@ark-ui/react";
 import { CheckIcon, ClipboardIcon } from "@phosphor-icons/react";
 import type { ClipboardProps as BaseClipboardProps } from "@pisagor/props";
 import {
@@ -10,10 +12,13 @@ import {
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { FormControlVariant, VariantClassNames } from "../internal/types";
+import {
+  type FormControlVariant,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 import { Button, type ButtonProps } from "./button";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -150,7 +155,8 @@ export function Clipboard({
   classNames,
   ...rest
 }: ClipboardProps) {
-  const buttonAriaLabel = useMessage("clipboard.copy", buttonAriaLabelProp);
+  const { m } = useLocale();
+  const buttonAriaLabel = m("clipboard.copy", buttonAriaLabelProp);
   const resolved = {
     surfaceVariant: useFormControlSurface(),
     variant: controlVariantProp ?? ("primary" as FormControlVariant),

@@ -23,7 +23,7 @@ How to build shared UI components in `packages/solid` (`@pisagor/solid`).
 
 Light components live under `src/components/`. Prefer a **flat single file** `src/components/<name>.tsx` (kebab-case → PascalCase export). Use a **folder** only when the component is multi-file.
 
-**Heavy** modules live under `src/<name>/` with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/solid-form`.
+**Heavy** modules live under `src/components/<name>/` like other components, with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/solid-form`.
 
 ```text
 # Typical (single-file)
@@ -71,7 +71,7 @@ Only for **foldered** multi-file components. Same rules as React — provide wit
 
 - Relative sibling imports; public map for apps.
 - Relative by depth: `../utils` / `../../utils`, `../internal/…`, `../hooks`.
-- Icons: `@squidlab/phosphor-solid` (also `@pisagor/solid/icons`). Shared SVG stand-ins may live in `src/internal/icons`.
+- Icons: `@squidlab/phosphor-solid` (icons from `@squidlab/phosphor-solid/icons`, `IconProvider` and types from the root). Shared SVG stand-ins may live in `src/internal/icons`.
 - Class merging: `cn` from `@pisagor/utils`.
 
 ### Shared props (`@pisagor/props`)

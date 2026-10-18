@@ -1,4 +1,5 @@
 import { Button, Collapsible } from "@pisagor/react";
+
 export function PartialCollapse() {
   return (
     <Collapsible className="w-96" collapsedHeight="50px">

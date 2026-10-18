@@ -17,9 +17,11 @@ import {
   ref,
   watchEffect,
 } from "vue";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
-import type { ClassValue } from "../../internal/types";
-import { createContext } from "../../internal/utils/create-context";
+import {
+  type ClassValue,
+  createContext,
+  createSlotRecipeContext,
+} from "../../internal";
 import { Button } from "../button";
 import { Resizable } from "../resizable";
 import { ScrollArea } from "../scroll-area";
@@ -137,6 +139,7 @@ function buildGridAreas(hasBanner: boolean, hasNavigation: boolean) {
   if (hasNavigation) {
     return `${APP_SHELL_NAV_ROW}\n${APP_SHELL_CONTENT_ROW}`;
   }
+
   return APP_SHELL_CONTENT_ROW;
 }
 
@@ -189,11 +192,13 @@ function regionPositionClasses(
 
   if (orientation === "column") {
     if (columnLayer === "inspector") return styles.regionStickyInspector();
+
     return styles.regionStickyColumn();
   }
 
   if (rowLayer === "banner") return styles.regionStickyBanner();
   if (rowLayer === "navigation") return styles.regionStickyNavigation();
+
   return styles.regionStickyHeader();
 }
 
@@ -280,8 +285,10 @@ function getDisplayName(type: unknown): string | undefined {
   if (typeof type === "function") return type.name;
   if (typeof type === "object" && type !== null) {
     const t = type as { displayName?: string; name?: string };
+
     return t.displayName ?? t.name;
   }
+
   return undefined;
 }
 
@@ -424,6 +431,7 @@ function useSyncFixedRegionHeight(
     const element = elementRef.value;
     if (position !== "fixed" || !element) {
       setFixedStackVar(cssVar, "0px");
+
       return;
     }
 
@@ -728,6 +736,7 @@ export const AppShellMain = defineComponent({
   name: "AppShell.Main",
   setup(_, { attrs, slots }) {
     const getSlots = useAppShellSlots();
+
     return () =>
       h(
         "main",
@@ -754,6 +763,7 @@ export const AppShellHeader = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const getSlots = useAppShellSlots();
+
     return () =>
       h(
         "header",
@@ -778,6 +788,7 @@ export const AppShellContent = defineComponent({
   name: "AppShell.Content",
   setup(_, { attrs, slots }) {
     const getSlots = useAppShellSlots();
+
     return () =>
       h(
         "div",
@@ -901,6 +912,7 @@ export const AppShellPanelHeader = defineComponent({
   name: "AppShell.PanelHeader",
   setup(_, { attrs, slots }) {
     const getSlots = useAppShellSlots();
+
     return () =>
       h(
         "div",
@@ -923,6 +935,7 @@ export const AppShellPanelContent = defineComponent({
   name: "AppShell.PanelContent",
   setup(_, { attrs, slots }) {
     const getSlots = useAppShellSlots();
+
     return () =>
       h(
         ScrollArea as Component,
@@ -950,6 +963,7 @@ export const AppShellPanelFooter = defineComponent({
   name: "AppShell.PanelFooter",
   setup(_, { attrs, slots }) {
     const getSlots = useAppShellSlots();
+
     return () =>
       h(
         "div",
@@ -998,6 +1012,7 @@ export const AppShellPanelTrigger = defineComponent({
     return () => {
       const side = panelStates[props.placement];
       const open = side?.open ?? false;
+
       return h(
         AppShellSideTrigger,
         {
@@ -1130,6 +1145,7 @@ export const AppShellInspectorHeader = defineComponent({
   name: "AppShell.InspectorHeader",
   setup(_, { attrs, slots }) {
     const getSlots = useAppShellSlots();
+
     return () =>
       h(
         "div",
@@ -1152,6 +1168,7 @@ export const AppShellInspectorContent = defineComponent({
   name: "AppShell.InspectorContent",
   setup(_, { attrs, slots }) {
     const getSlots = useAppShellSlots();
+
     return () =>
       h(
         ScrollArea as Component,
@@ -1179,6 +1196,7 @@ export const AppShellInspectorFooter = defineComponent({
   name: "AppShell.InspectorFooter",
   setup(_, { attrs, slots }) {
     const getSlots = useAppShellSlots();
+
     return () =>
       h(
         "div",

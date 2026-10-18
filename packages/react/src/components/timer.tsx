@@ -1,10 +1,14 @@
-import { ark } from "@ark-ui/react/factory";
+import {
+  Timer as TimerPrimitive,
+  ark,
+  useTimerContext,
+  type HTMLArkProps,
+} from "@ark-ui/react";
 import type {
   TimerActionTriggerProps,
-  TimerRootProps as TimerPrimitiveRootProps,
+  TimerRootProps as TimerRootPrimitiveProps,
   TimerSeparatorProps,
-} from "@ark-ui/react/timer";
-import { Timer as TimerPrimitive, useTimerContext } from "@ark-ui/react/timer";
+} from "@ark-ui/react";
 import type {
   TimerItemGroupProps as BaseTimerItemGroupProps,
   TimerProps as BaseTimerRootProps,
@@ -12,16 +16,12 @@ import type {
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent } from "react";
 import { Fragment, use } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import {
-  type MessageKey,
-  useMessage,
-  useMessageResolver,
-} from "./provider/context";
+import { createSlotRecipeContext } from "../internal";
+import { type MessageKey, useLocale } from "./provider/context";
 
 // #region Context
 const {
-  useStyles: useTimer,
+  useStyles,
   withContext: withTimerContext,
   withProvider: withTimerProvider,
 } = createSlotRecipeContext({
@@ -44,7 +44,7 @@ const {
 type TimerUnit = "hours" | "minutes" | "seconds";
 
 export interface TimerItemGroupProps
-  extends ComponentProps<typeof ark.div>, BaseTimerItemGroupProps {
+  extends HTMLArkProps<"div">, BaseTimerItemGroupProps {
   /**
    * The orientation of the timer item group.
    *
@@ -53,26 +53,23 @@ export interface TimerItemGroupProps
   orientation?: "horizontal" | "vertical";
 }
 
-export interface TimerActionProps extends Omit<
-  TimerActionTriggerProps,
-  "action"
-> {}
+export type TimerActionProps = Omit<TimerActionTriggerProps, "action">;
 
 export interface TimerRootProps
-  extends TimerPrimitiveRootProps, BaseTimerRootProps {
+  extends TimerRootPrimitiveProps, BaseTimerRootProps {
   units?: TimerUnit[];
   /** Auto-render Timer.Control with play and reset buttons */
   isControlsVisible?: boolean;
 }
 
-export type TimerItemLabelProps = ComponentProps<typeof ark.div>;
+export type TimerItemLabelProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Parts
 const TimerRootBase = withTimerProvider(TimerPrimitive.Root, {
   name: "Root",
   slot: "base",
-}) as FunctionComponent<TimerPrimitiveRootProps & BaseTimerRootProps>;
+}) as FunctionComponent<TimerRootPrimitiveProps & BaseTimerRootProps>;
 
 export function TimerRoot({
   isControlsVisible,
@@ -80,7 +77,8 @@ export function TimerRoot({
   units,
   ...rest
 }: TimerRootProps) {
-  const resolveMessage = useMessageResolver();
+  const { m } = useLocale();
+
   return (
     <TimerRootBase {...rest}>
       {units && (
@@ -91,7 +89,7 @@ export function TimerRoot({
               <TimerItemGroup>
                 <TimerItem type={unit} />
                 <TimerItemLabel>
-                  {resolveMessage(`timer.${unit}` as MessageKey)}
+                  {m(`timer.${unit}` as MessageKey)}
                 </TimerItemLabel>
               </TimerItemGroup>
             </Fragment>
@@ -116,9 +114,7 @@ export const TimerArea = withTimerContext(TimerPrimitive.Area, {
 const TimerItemGroupBase = withTimerItemGroupProvider(ark.div, {
   name: "ItemGroup",
   slot: "base",
-}) as FunctionComponent<
-  ComponentProps<typeof ark.div> & BaseTimerItemGroupProps
->;
+}) as FunctionComponent<HTMLArkProps<"div"> & BaseTimerItemGroupProps>;
 
 export function TimerItemGroup({
   orientation = "vertical",
@@ -167,7 +163,7 @@ export function TimerSeparator({
   className,
   ...rest
 }: TimerSeparatorProps) {
-  const { slots } = useTimer();
+  const { slots } = useStyles();
 
   return (
     <TimerPrimitive.Separator
@@ -188,51 +184,61 @@ export function TimerActionTrigger(props: TimerActionTriggerProps) {
 }
 
 export function TimerPause(props: TimerActionProps) {
+  const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
       {...props}
       action="pause"
-      aria-label={useMessage("timer.pause")}
+      aria-label={m("timer.pause")}
     />
   );
 }
 
 export function TimerResume(props: TimerActionProps) {
+  const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
       {...props}
       action="resume"
-      aria-label={useMessage("timer.resume")}
+      aria-label={m("timer.resume")}
     />
   );
 }
 
 export function TimerStart(props: TimerActionProps) {
+  const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
       {...props}
       action="start"
-      aria-label={useMessage("timer.start")}
+      aria-label={m("timer.start")}
     />
   );
 }
 
 export function TimerReset(props: TimerActionProps) {
+  const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
       {...props}
       action="reset"
-      aria-label={useMessage("timer.reset")}
+      aria-label={m("timer.reset")}
     />
   );
 }
 
 export function TimerRestart(props: TimerActionProps) {
+  const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
       {...props}
       action="restart"
-      aria-label={useMessage("timer.restart")}
+      aria-label={m("timer.restart")}
     />
   );
 }
@@ -272,7 +278,7 @@ export type {
   TimerControlProps,
   TimerItemProps,
   TimerSeparatorProps,
-} from "@ark-ui/react/timer";
+} from "@ark-ui/react";
 
 export const Timer = Object.assign(TimerRoot, {
   ActionTrigger: TimerActionTrigger,

@@ -1,21 +1,21 @@
+import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/solid";
 import type {
   ImageCropperGridProps,
   ImageCropperHandleProps,
   ImageCropperImageProps,
-  ImageCropperRootProps as ImageCropperPrimitiveRootProps,
-  ImageCropperSelectionProps as ImageCropperPrimitiveSelectionProps,
-} from "@ark-ui/solid/image-cropper";
-import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/solid/image-cropper";
+  ImageCropperRootProps as ImageCropperRootPrimitiveProps,
+  ImageCropperSelectionProps as ImageCropperSelectionPrimitiveProps,
+} from "@ark-ui/solid";
 import type { ImageCropperProps as BaseImageCropperRootProps } from "@pisagor/props";
 import { imageCropperRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {
   Context: ImageCropperStylesContext,
-  useStyles: useImageCropper,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "ImageCropper",
@@ -25,14 +25,14 @@ const {
 
 export interface ImageCropperRootProps
   extends
-    Omit<ImageCropperPrimitiveRootProps, "src" | "cropShape">,
+    Omit<ImageCropperRootPrimitiveProps, "src" | "cropShape">,
     BaseImageCropperRootProps {
   src?: string;
   alt?: string;
   cropShape?: "rectangle" | "circle";
 }
 
-export interface ImageCropperSelectionProps extends ImageCropperPrimitiveSelectionProps {
+export interface ImageCropperSelectionProps extends ImageCropperSelectionPrimitiveProps {
   axis?: "horizontal" | "vertical" | "both";
 }
 
@@ -80,7 +80,7 @@ export function ImageCropperSelection(
   props: ImageCropperSelectionProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["axis", "children", "class"]);
-  const styles = useImageCropper();
+  const styles = useStyles();
   const axis = () => local.axis ?? "both";
 
   return (
@@ -111,7 +111,8 @@ export function ImageCropperHandle(
   props: ImageCropperHandleProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useImageCropper();
+  const styles = useStyles();
+
   return (
     <ImageCropperPrimitive.Handle
       {...rest}
@@ -124,7 +125,7 @@ export function ImageCropperHandle(
 
 export function ImageCropperGrid(props: ImageCropperGridProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useImageCropper();
+  const styles = useStyles();
 
   return (
     <ImageCropperPrimitive.Grid
@@ -138,7 +139,7 @@ export type {
   ImageCropperGridProps,
   ImageCropperHandleProps,
   ImageCropperImageProps,
-} from "@ark-ui/solid/image-cropper";
+} from "@ark-ui/solid";
 
 export const ImageCropper = Object.assign(ImageCropperRoot, {
   Grid: ImageCropperGrid,

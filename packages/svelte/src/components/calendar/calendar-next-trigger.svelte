@@ -2,26 +2,26 @@
   import {
     DatePicker as CalendarPrimitive,
     type DatePickerNextTriggerProps,
-  } from "@ark-ui/svelte/date-picker";
+  } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
-  import { useMessageResolver } from "../provider/context";
-  import { useCalendar } from "./calendar.context";
+  import { CaretRightIcon } from "phosphor-svelte";
+  import { useLocale } from "../provider/context";
+  import { useStyles } from "./calendar.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   let {
     class: className,
     children,
     ...rest
   }: DatePickerNextTriggerProps = $props();
-  const styles = useCalendar();
+  const styles = useStyles();
   const slots = $derived(styles.slots);
 </script>
 
 <CalendarPrimitive.NextTrigger
-  aria-label={t("calendar.nextMonth")}
+  aria-label={m("calendar.nextMonth")}
   {...rest}
   class={cn(
     buttonRecipe({ size: "icon-md", variant: "ghost" }).base(),

@@ -5,7 +5,7 @@
   import {
     TreeView as TreeViewPrimitive,
     type TreeViewRootProps,
-  } from "@ark-ui/svelte/tree-view";
+  } from "@ark-ui/svelte";
   import type { TreeViewProps as BaseTreeViewProps } from "@pisagor/props";
   import { treeViewRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";

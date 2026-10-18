@@ -1,23 +1,25 @@
-import {
-  type RatingGroupControlProps,
-  type RatingGroupItemProps,
-  RatingGroup as RatingGroupPrimitive,
-  type RatingGroupRootProps,
-} from "@ark-ui/solid/rating-group";
+import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/solid";
+import type {
+  RatingGroupControlProps,
+  RatingGroupItemProps,
+  RatingGroupRootProps,
+} from "@ark-ui/solid";
 import type { RatingProps as BaseRatingProps } from "@pisagor/props";
 import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, For, splitProps } from "solid-js";
 import { Dynamic } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { StarIcon } from "../internal/icons";
-import type { SizeScaleProps, VariantClassNames } from "../internal/types";
+import {
+  StarIcon,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 
 // #region Context
 const {
   Context: RatingStylesContext,
-  useStyles: useRating,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Rating",
@@ -37,7 +39,6 @@ type RatingIconProps = {
 };
 
 type RatingRootProps = RatingGroupRootProps &
-  SizeScaleProps &
   BaseRatingProps & {
     variant?: FormControlVariant;
   };
@@ -109,7 +110,7 @@ const RatingItem: Component<RatingItemProps> = withContext(
 
 function RatingIndicator(props: RatingIndicatorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = useRating();
+  const styles = useStyles();
 
   return (
     <span
@@ -158,6 +159,7 @@ function RatingShorthand(props: RatingProps): JSX.Element {
                   <RatingGroupPrimitive.ItemContext>
                     {(itemApi) => {
                       const state = () => itemApi();
+
                       return (
                         <RatingIndicator
                           {...local.indicatorProps}

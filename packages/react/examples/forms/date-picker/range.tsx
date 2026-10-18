@@ -1,5 +1,6 @@
 import { CalendarIcon } from "@phosphor-icons/react";
 import { Button, Calendar, DatePicker, parseDate } from "@pisagor/react";
+
 export function Range() {
   return (
     <DatePicker focusedValue={parseDate(new Date())} selectionMode="range">

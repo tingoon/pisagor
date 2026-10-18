@@ -1,7 +1,6 @@
 <script lang="ts">
   import { type TreeNodeType, TreeView } from "@pisagor/svelte";
-  import ArrowSquareOutIcon from "phosphor-svelte/lib/ArrowSquareOutIcon";
-  import LinkIcon from "phosphor-svelte/lib/LinkIcon";
+  import { ArrowSquareOutIcon, LinkIcon } from "phosphor-svelte";
   import TreeNodeLink from "./tree-node-link.svelte";
 
   type Node = TreeNodeType & { href?: string };

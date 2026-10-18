@@ -1,4 +1,4 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { ToolbarProps as BaseToolbarRootProps } from "@pisagor/props";
 import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes";
 import { handleRovingFocusKeyDown } from "@pisagor/utils";
@@ -8,8 +8,7 @@ import type {
   KeyboardEvent,
   ReactNode,
 } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -23,7 +22,7 @@ export const ToolbarRoot = withProvider(ark.div, {
   name: "Root",
   slot: "base",
 }) as FunctionComponent<
-  Omit<ComponentProps<typeof ark.div>, "title"> & BaseToolbarRootProps
+  Omit<HTMLArkProps<"div">, "title"> & BaseToolbarRootProps
 >;
 
 export const ToolbarHeading = withContext(ark.div, {

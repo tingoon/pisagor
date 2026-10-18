@@ -1,7 +1,7 @@
 <script lang="ts">
   import { emptyStateRecipe } from "@pisagor/recipes";
   import { Button, EmptyState } from "@pisagor/svelte";
-  import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
+  import { MagnifyingGlassIcon } from "phosphor-svelte";
   import { tv } from "tailwind-variants";
 
   const brandEmptyStateRecipe = tv({

@@ -1,8 +1,8 @@
 import {
-  type SwapIndicatorProps,
   Swap as SwapPrimitive,
+  type SwapIndicatorProps,
   type SwapRootProps,
-} from "@ark-ui/react/swap";
+} from "@ark-ui/react";
 import type { SwapProps as BaseSwapProps } from "@pisagor/props";
 import { swapRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
@@ -62,4 +62,4 @@ export function Swap({
 }
 // #endregion
 
-export type { SwapIndicatorProps } from "@ark-ui/react/swap";
+export type { SwapIndicatorProps } from "@ark-ui/react";

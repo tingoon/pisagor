@@ -2,7 +2,7 @@ import { useUncontrolled } from "@mantine/hooks";
 import { appShellRecipe } from "@pisagor/recipes";
 
 import { type RefObject, useCallback } from "react";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../../internal";
 import { createContext } from "../../utils";
 
 export type AppShellPlacement = "start" | "end";
@@ -105,11 +105,10 @@ export const ZERO_REGION_VARS: Record<AppShellRegionVar, string> = {
   "--app-shell-start-rail-width": "0px",
 };
 
-const { Context: AppShellStylesContext, useStyles: useAppShellStyles } =
-  createSlotRecipeContext({
-    name: "AppShell",
-    recipe: appShellRecipe,
-  });
+const { Context: AppShellStylesContext, useStyles } = createSlotRecipeContext({
+  name: "AppShell",
+  recipe: appShellRecipe,
+});
 
 export { AppShellStylesContext };
 
@@ -118,7 +117,7 @@ export const { AppShellContext, useAppShell: useAppShellState } =
 
 /** Nearest app-shell styles + layout state. */
 export function useAppShell() {
-  return { ...useAppShellStyles(), ...useAppShellState() };
+  return { ...useStyles(), ...useAppShellState() };
 }
 
 export function useSideState({

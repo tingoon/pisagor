@@ -1,18 +1,14 @@
+import { Switch as SwitchPrimitive } from "@ark-ui/react";
 import type {
   SwitchControlProps,
   SwitchHiddenInputProps,
-  SwitchRootProps as SwitchPrimitiveRootProps,
+  SwitchRootProps as SwitchRootPrimitiveProps,
   SwitchThumbProps,
-} from "@ark-ui/react/switch";
-import { Switch as SwitchPrimitive } from "@ark-ui/react/switch";
+} from "@ark-ui/react";
 import type { SwitchProps as BaseSwitchRootProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type {
-  FormControlVariant,
-  SizeScaleProps,
-  VariantClassNames,
-} from "../internal/types";
+import { createSlotRecipeContext } from "../internal";
+import type { FormControlVariant, VariantClassNames } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -26,11 +22,10 @@ const { Context: SwitchStylesContext, withContext } = createSlotRecipeContext({
 
 type SwitchClassNames = VariantClassNames<SwitchRecipeSlot>;
 
-type SwitchRootProps = SwitchPrimitiveRootProps & {
+type SwitchRootProps = SwitchRootPrimitiveProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-} & BaseSwitchRootProps &
-  SizeScaleProps;
+} & BaseSwitchRootProps;
 
 export interface SwitchProps extends Omit<SwitchRootProps, "children"> {
   /** Slot class names */
@@ -126,7 +121,7 @@ export type {
   SwitchControlProps,
   SwitchHiddenInputProps,
   SwitchThumbProps,
-} from "@ark-ui/react/switch";
+} from "@ark-ui/react";
 
 export const Switch = Object.assign(SwitchShorthand, {
   Control: SwitchControl,

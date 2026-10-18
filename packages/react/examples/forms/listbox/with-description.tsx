@@ -1,5 +1,6 @@
 import { createListCollection } from "@ark-ui/react";
 import { Item, Listbox } from "@pisagor/react";
+
 export function WithDescription() {
   const collection = createListCollection({
     items: [
@@ -20,6 +21,7 @@ export function WithDescription() {
       },
     ],
   });
+
   return (
     <Item.Group variant="outline">
       <Item className="p-1">

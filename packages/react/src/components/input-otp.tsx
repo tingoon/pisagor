@@ -1,49 +1,48 @@
-import { ark } from "@ark-ui/react/factory";
 import {
-  type PinInputInputProps,
   PinInput as PinInputPrimitive,
-  type PinInputRootProps,
-} from "@ark-ui/react/pin-input";
+  ark,
+  type HTMLArkProps,
+} from "@ark-ui/react";
+import type { PinInputInputProps, PinInputRootProps } from "@ark-ui/react";
 import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
-import { inputOtpRecipe, inputRootRecipe } from "@pisagor/recipes";
-import type { ComponentProps } from "react";
+import {
+  type FormControlShellVariantProps,
+  inputOtpRecipe,
+  inputRootRecipe,
+} from "@pisagor/recipes";
+
 import { createContext, use } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { InputProps } from "./input/input";
+import { createSlotRecipeContext } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
 const {
   Context: InputOTPStylesContext,
-  useStyles: useInputOTPStyles,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "InputOTP",
   recipe: inputOtpRecipe,
 });
 
-const InputOTPOptionsContext = createContext<{
-  size?: InputProps["size"];
-  variant?: InputProps["variant"];
-}>({});
+const InputOTPOptionsContext = createContext<FormControlShellVariantProps>({});
 
 function useInputOTP() {
-  return { ...useInputOTPStyles(), ...use(InputOTPOptionsContext) };
+  return { ...useStyles(), ...use(InputOTPOptionsContext) };
 }
 // #endregion
 
 // #region Types
 export type InputOTPRootProps = Omit<PinInputRootProps, "onValueChange"> &
-  Pick<InputProps, "size" | "variant">;
+  BaseInputOTPProps;
 
-export interface InputOTPProps extends InputOTPRootProps, BaseInputOTPProps {
+export interface InputOTPProps extends InputOTPRootProps {
   onValueChange?: (value: string[]) => void;
 }
 
-export type InputOTPSlotProps = PinInputInputProps &
-  Pick<InputProps, "size" | "variant">;
+export type InputOTPSlotProps = PinInputInputProps & BaseInputOTPProps;
 
-export type InputOTPSeparatorProps = ComponentProps<typeof ark.hr>;
+export type InputOTPSeparatorProps = HTMLArkProps<"hr">;
 // #endregion
 
 // #region Parts

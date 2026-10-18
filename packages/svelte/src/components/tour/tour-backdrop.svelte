@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type TourBackdropProps as ArkProps,
     Tour as TourPrimitive,
-  } from "@ark-ui/svelte/tour";
+    type TourBackdropProps as ArkProps,
+  } from "@ark-ui/svelte";
   import { dialogRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { useTourContext } from "./tour.context";

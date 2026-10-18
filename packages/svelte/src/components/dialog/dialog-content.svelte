@@ -1,16 +1,16 @@
 <script lang="ts">
   import {
-    type DialogContentProps as ArkDialogContentProps,
     Dialog as DialogPrimitive,
-  } from "@ark-ui/svelte/dialog";
+    type DialogContentProps as ArkDialogContentProps,
+  } from "@ark-ui/svelte";
   import type { DialogProps as BaseDialogProps } from "@pisagor/props";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import XIcon from "phosphor-svelte/lib/XIcon";
-  import { useMessageResolver } from "../provider/context";
+  import { XIcon } from "phosphor-svelte";
+  import { useLocale } from "../provider/context";
   import { useDialog } from "./dialog.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type Props = ArkDialogContentProps & {
     bottomStickOnMobile?: boolean;
@@ -36,7 +36,7 @@
   {@render children?.()}
   {#if showCloseButton}
     <DialogPrimitive.CloseTrigger
-      aria-label={t("dialog.close")}
+      aria-label={m("dialog.close")}
       class={cn(
         buttonRecipe({ size: "icon-sm", variant: "ghost" }).base(),
         slots.inline(),

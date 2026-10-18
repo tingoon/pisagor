@@ -1,8 +1,9 @@
-import { waitForElement, waitForEvent } from "@ark-ui/solid/tour";
+import { waitForElement, waitForEvent } from "@ark-ui/solid";
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour } from "@pisagor/solid";
-import { PlusIcon } from "@pisagor/solid/icons";
+import { PlusIcon } from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
+
 export function WaitForElement() {
   const steps: TourStepType[] = [
     {
@@ -19,6 +20,7 @@ export function WaitForElement() {
         show();
         const [promise, cancel] = waitForEvent(target, "click");
         promise.then(() => next());
+
         return cancel;
       },
       id: "add-item",
@@ -36,6 +38,7 @@ export function WaitForElement() {
           { timeout: 5000 },
         );
         promise.then(() => show());
+
         return () => cancel();
       },
       id: "new-item",

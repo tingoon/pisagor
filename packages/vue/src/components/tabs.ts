@@ -1,17 +1,12 @@
-import { Tabs as TabsPrimitive } from "@ark-ui/vue/tabs";
+import { Tabs as TabsPrimitive } from "@ark-ui/vue";
 import type { TabsProps as BaseTabsRootProps } from "@pisagor/props";
 import { tabsRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Slot recipe context
-const {
-  useStyles: useTabs,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Tabs",
   recipe: tabsRecipe,
 });
@@ -53,7 +48,7 @@ export const TabsList = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useTabs();
+    const styles = useStyles();
 
     return () => {
       const variantSlots = styles.slots;

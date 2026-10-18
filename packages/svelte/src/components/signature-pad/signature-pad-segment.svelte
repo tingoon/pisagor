@@ -2,7 +2,7 @@
   import {
     SignaturePad as SignaturePadPrimitive,
     type SignaturePadSegmentProps,
-  } from "@ark-ui/svelte/signature-pad";
+  } from "@ark-ui/svelte";
   import { withContext } from "./signature-pad.context";
 
   let { ...rest }: SignaturePadSegmentProps = $props();

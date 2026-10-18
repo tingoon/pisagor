@@ -1,8 +1,5 @@
 <script lang="ts">
-  import {
-    type TimerItemProps,
-    Timer as TimerPrimitive,
-  } from "@ark-ui/svelte/timer";
+  import { Timer as TimerPrimitive, type TimerItemProps } from "@ark-ui/svelte";
   import { timerItemGroupRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { TimerItemGroupStylesContext } from "./timer.context";

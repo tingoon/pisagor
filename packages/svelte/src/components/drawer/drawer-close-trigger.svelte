@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type DrawerCloseTriggerProps,
     Drawer as DrawerPrimitive,
-  } from "@ark-ui/svelte/drawer";
+    type DrawerCloseTriggerProps,
+  } from "@ark-ui/svelte";
 
   let { children, ...rest }: DrawerCloseTriggerProps = $props();
 </script>

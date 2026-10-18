@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Field, type FieldTextareaProps } from "@ark-ui/svelte/field";
+  import { Field, type FieldTextareaProps } from "@ark-ui/svelte";
   import type { TextareaProps as BaseTextareaProps } from "@pisagor/props";
   import {
     formControlShellRecipe,
@@ -7,7 +7,7 @@
     textareaRecipe,
   } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import type { SizeScaleProps, VariantClassNames } from "../internal/types";
+  import type { VariantClassNames } from "../internal";
   import InputClearButton from "./input/input-clear-button.svelte";
   import InputGroupAddon from "./input-group/input-group-addon.svelte";
   import InputGroupRoot from "./input-group/input-group-root.svelte";
@@ -27,8 +27,7 @@
     onValueChange?: (value: string) => void;
     /** Visual shell variant. Defaults to `primary`. */
     variant?: FormControlVariant;
-  } & BaseTextareaProps &
-    SizeScaleProps;
+  } & BaseTextareaProps;
 
   let {
     variant: variantProp,

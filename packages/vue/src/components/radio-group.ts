@@ -1,4 +1,4 @@
-import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/vue/radio-group";
+import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/vue";
 import type {
   RadioGroupItemProps as BaseRadioGroupItemProps,
   RadioGroupProps as BaseRadioGroupRootProps,
@@ -11,7 +11,7 @@ import {
 } from "@pisagor/recipes";
 import { type ClassValue, cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { ClassValue as PropClassValue } from "../internal/types";
+import type { ClassValue as PropClassValue } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";

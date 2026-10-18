@@ -5,6 +5,7 @@ import { withDocsBase } from "#/lib/nav";
 
 export async function getStaticPaths() {
   const ids = await listComponentIds("astro");
+
   return ids.map((id) => ({
     params: { id },
   }));

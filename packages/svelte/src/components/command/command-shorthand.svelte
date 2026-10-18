@@ -16,10 +16,9 @@
 </script>
 
 <script lang="ts">
-  import { useListCollection } from "@ark-ui/svelte/collection";
-  import { useFilter } from "@ark-ui/svelte/locale";
+  import { useFilter, useListCollection } from "@ark-ui/svelte";
   import type { ComponentProps } from "svelte";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import CommandContent from "./command-content.svelte";
   import CommandEmpty from "./command-empty.svelte";
   import CommandInput from "./command-input.svelte";
@@ -45,7 +44,7 @@
   let { emptyText, items, placeholder, onInputValueChange, ...rest }: Props =
     $props();
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
   const filters = useFilter({ sensitivity: "base" });
   const { collection, filter } = useListCollection<CommandShorthandItem>({
     filter(itemString, filterText) {
@@ -82,9 +81,9 @@
     onInputValueChange?.(details);
   }}
 >
-  <CommandInput placeholder={placeholder ?? t("command.placeholder")} />
+  <CommandInput placeholder={m("command.placeholder", placeholder)} />
   <CommandContent>
-    <CommandEmpty>{emptyText ?? t("command.empty")}</CommandEmpty>
+    <CommandEmpty>{m("command.empty", emptyText)}</CommandEmpty>
     <CommandList>
       {#each groups as [group, groupItems], index (group)}
         {#if group}

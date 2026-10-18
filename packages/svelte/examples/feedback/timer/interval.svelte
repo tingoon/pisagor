@@ -1,7 +1,6 @@
 <script lang="ts">
   import { Button, Card, Timer } from "@pisagor/svelte";
-  import PauseIcon from "phosphor-svelte/lib/PauseIcon";
-  import PlayIcon from "phosphor-svelte/lib/PlayIcon";
+  import { PauseIcon, PlayIcon } from "phosphor-svelte";
 </script>
 
 <Card class="rounded-3xl [--space:--spacing(6)]">

@@ -1,31 +1,30 @@
-import { ark } from "@ark-ui/solid/factory";
+import { Popover as PopoverPrimitive, ark } from "@ark-ui/solid";
 import type {
+  HTMLArkProps,
   PopoverAnchorProps,
   PopoverArrowProps,
   PopoverCloseTriggerProps,
+  PopoverContentProps as PopoverContentPrimitiveProps,
   PopoverDescriptionProps,
   PopoverPositionerProps,
-  PopoverContentProps as PopoverPrimitiveContentProps,
   PopoverRootProps,
   PopoverTitleProps,
   PopoverTriggerProps,
-} from "@ark-ui/solid/popover";
-import { Popover as PopoverPrimitive } from "@ark-ui/solid/popover";
+} from "@ark-ui/solid";
 import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
 import { popoverRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import { XIcon } from "../internal/icons";
+import { XIcon, createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { ScrollArea } from "./scroll-area";
 
 // #region Context
 const {
   Context: PopoverStylesContext,
-  useStyles: usePopover,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Popover",
@@ -34,20 +33,21 @@ const {
 // #endregion
 
 export interface PopoverContentProps
-  extends PopoverPrimitiveContentProps, BasePopoverContentProps {
+  extends PopoverContentPrimitiveProps, BasePopoverContentProps {
   showCloseButton?: boolean;
 }
 
-export interface PopoverHeaderProps extends ComponentProps<typeof ark.div> {
+export interface PopoverHeaderProps extends HTMLArkProps<"div"> {
   description?: string;
   title?: string;
 }
 
-export type PopoverBodyProps = ComponentProps<typeof ark.div>;
-export type PopoverFooterProps = ComponentProps<typeof ark.div>;
+export type PopoverBodyProps = HTMLArkProps<"div">;
+export type PopoverFooterProps = HTMLArkProps<"div">;
 
 export function PopoverRoot(props: PopoverRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["modal"]);
+
   return <PopoverPrimitive.Root {...rest} modal={local.modal ?? false} />;
 }
 
@@ -64,6 +64,7 @@ export function PopoverPositioner(props: PopoverPositionerProps): JSX.Element {
 }
 
 export function PopoverContent(props: PopoverContentProps): JSX.Element {
+  const { m } = useLocale();
   const [local, rest] = splitProps(props, [
     "showCloseButton",
     "children",
@@ -93,7 +94,7 @@ export function PopoverContent(props: PopoverContentProps): JSX.Element {
                 asChild={(triggerProps) => (
                   <Button
                     {...triggerProps({ class: slots().close() })}
-                    aria-label={useTranslation("popover.close")}
+                    aria-label={m("popover.close")}
                     size="icon-sm"
                     variant="ghost"
                   >
@@ -116,7 +117,7 @@ export function PopoverHeader(props: PopoverHeaderProps): JSX.Element {
     "title",
     "class",
   ]);
-  const styles = usePopover();
+  const styles = useStyles();
 
   return (
     <ark.div
@@ -147,7 +148,7 @@ export const PopoverDescription: Component<PopoverDescriptionProps> =
 /** Body wraps its content in a ScrollArea. */
 export function PopoverBody(props: PopoverBodyProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
-  const styles = usePopover();
+  const styles = useStyles();
 
   return (
     <ScrollArea>
@@ -173,7 +174,8 @@ export function PopoverCloseTrigger(
 
 export function PopoverArrow(props: PopoverArrowProps): JSX.Element {
   const [local, rest] = splitProps(props, ["style"]);
-  const styles = usePopover();
+  const styles = useStyles();
+
   return (
     <PopoverPrimitive.Arrow
       {...rest}
@@ -199,7 +201,7 @@ export type {
   PopoverRootProps,
   PopoverTitleProps,
   PopoverTriggerProps,
-} from "@ark-ui/solid/popover";
+} from "@ark-ui/solid";
 
 export const Popover = Object.assign(PopoverRoot, {
   Anchor: PopoverAnchor,

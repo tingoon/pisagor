@@ -1,12 +1,12 @@
-import type {
-  CarouselNextTriggerProps,
-  CarouselPrevTriggerProps,
-  CarouselRootProps as CarouselPrimitiveRootProps,
-} from "@ark-ui/react/carousel";
 import {
   Carousel as CarouselPrimitive,
   useCarouselContext,
-} from "@ark-ui/react/carousel";
+} from "@ark-ui/react";
+import type {
+  CarouselNextTriggerProps,
+  CarouselPrevTriggerProps,
+  CarouselRootProps as CarouselRootPrimitiveProps,
+} from "@ark-ui/react";
 import {
   CaretLeftIcon,
   CaretRightIcon,
@@ -16,16 +16,12 @@ import {
 import type { CarouselProps as BaseCarouselRootProps } from "@pisagor/props";
 import { carouselRecipe } from "@pisagor/recipes";
 import type { ComponentProps, FunctionComponent, ReactNode } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Button } from "./button";
-import { useMessage } from "./provider/context";
+import { useLocale } from "./provider/context";
 
 // #region Context
-const {
-  useStyles: useCarousel,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "Carousel",
   recipe: carouselRecipe,
 });
@@ -33,7 +29,7 @@ const {
 
 // #region Types
 export interface CarouselRootProps
-  extends CarouselPrimitiveRootProps, BaseCarouselRootProps {}
+  extends CarouselRootPrimitiveProps, BaseCarouselRootProps {}
 
 interface CarouselPresetItem {
   content: ReactNode;
@@ -74,7 +70,8 @@ export function CarouselPrevTrigger({
   className,
   ...rest
 }: CarouselPrevTriggerProps) {
-  const { slots } = useCarousel();
+  const { m } = useLocale();
+  const { slots } = useStyles();
 
   return (
     <CarouselPrimitive.PrevTrigger
@@ -83,7 +80,7 @@ export function CarouselPrevTrigger({
       className={slots.prevTrigger({ className })}
     >
       <Button
-        aria-label={useMessage("carousel.previous")}
+        aria-label={m("carousel.previous")}
         clickEffect={false}
         pill
         size="icon-md"
@@ -99,7 +96,8 @@ export function CarouselNextTrigger({
   className,
   ...rest
 }: CarouselNextTriggerProps) {
-  const { slots } = useCarousel();
+  const { m } = useLocale();
+  const { slots } = useStyles();
 
   return (
     <CarouselPrimitive.NextTrigger
@@ -108,7 +106,7 @@ export function CarouselNextTrigger({
       className={slots.nextTrigger({ className })}
     >
       <Button
-        aria-label={useMessage("carousel.next")}
+        aria-label={m("carousel.next")}
         clickEffect={false}
         pill
         size="icon-md"
@@ -124,14 +122,13 @@ export function CarouselAutoplayTrigger({
   className,
   ...rest
 }: ComponentProps<typeof CarouselPrimitive.AutoplayTrigger>) {
+  const { m } = useLocale();
   const carousel = useCarouselContext();
 
   return (
     <CarouselPrimitive.AutoplayTrigger {...rest} asChild className={className}>
       <Button
-        aria-label={useMessage(
-          carousel.isPlaying ? "carousel.pause" : "carousel.play",
-        )}
+        aria-label={m(carousel.isPlaying ? "carousel.pause" : "carousel.play")}
         clickEffect={false}
         pill
         size="icon-md"
@@ -223,7 +220,7 @@ export type {
   CarouselItemProps,
   CarouselNextTriggerProps,
   CarouselPrevTriggerProps,
-} from "@ark-ui/react/carousel";
+} from "@ark-ui/react";
 
 export const Carousel = Object.assign(CarouselShorthand, {
   AutoplayTrigger: CarouselAutoplayTrigger,

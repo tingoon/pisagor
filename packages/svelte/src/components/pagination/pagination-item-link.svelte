@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { usePaginationContext } from "@ark-ui/svelte/pagination";
+  import { usePaginationContext } from "@ark-ui/svelte";
   import { buttonRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { Snippet } from "svelte";
@@ -29,6 +29,7 @@
     const api = pagination();
     if (page === "previous") return api.previousPage;
     if (page === "next") return api.nextPage;
+
     return page;
   });
 

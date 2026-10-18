@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { Ark } from "@ark-ui/svelte/factory";
+  import { Ark } from "@ark-ui/svelte";
   import type { MenuProps as BaseMenuProps } from "@pisagor/props";
   import type { Snippet } from "svelte";
   import type { HTMLAttributes } from "svelte/elements";
-  import { useMessageResolver } from "../provider/context";
+  import { useLocale } from "../provider/context";
   import { withProvider } from "./menu.context";
 
-  const t = useMessageResolver();
+  const { m } = useLocale();
 
   type Props = HTMLAttributes<HTMLElement> & {
     children?: Snippet;
@@ -15,7 +15,7 @@
   let { children, ...rest }: Props = $props();
 
   const root = withProvider(() => rest, {
-    defaultProps: { "aria-label": t("menu.label") },
+    defaultProps: { "aria-label": m("menu.label") },
     name: "Root",
     slot: "base",
   });

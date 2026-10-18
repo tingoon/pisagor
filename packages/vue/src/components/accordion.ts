@@ -1,16 +1,15 @@
 import {
   Accordion as AccordionPrimitive,
-  type AccordionItemProps as AccordionPrimitiveItemProps,
-} from "@ark-ui/vue/accordion";
+  type AccordionItemProps as AccordionItemPrimitiveProps,
+} from "@ark-ui/vue";
 import { PhCaretDown } from "@phosphor-icons/vue";
 import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
 import { accordionItemRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
+const { useStyles, withProvider } = createSlotRecipeContext({
   name: "Accordion",
   recipe: accordionItemRecipe,
 });
@@ -18,7 +17,7 @@ const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface LocalAccordionItemProps
-  extends AccordionPrimitiveItemProps, BaseAccordionItemProps {}
+  extends AccordionItemPrimitiveProps, BaseAccordionItemProps {}
 
 export interface AccordionPresetItem {
   value: string;
@@ -86,7 +85,7 @@ export const AccordionItemTrigger = defineComponent({
     },
   },
   setup(props, { attrs, slots: children }) {
-    const styles = useAccordionItem();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -115,7 +114,7 @@ export const AccordionItemContent = defineComponent({
     },
   },
   setup(props, { attrs, slots: children }) {
-    const styles = useAccordionItem();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -182,7 +181,7 @@ export type {
   AccordionItemContentProps,
   AccordionItemTriggerProps,
   AccordionRootProps,
-} from "@ark-ui/vue/accordion";
+} from "@ark-ui/vue";
 
 export type AccordionItemProps = LocalAccordionItemProps;
 

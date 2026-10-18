@@ -1,10 +1,11 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import { Item, Listbox, Separator } from "@pisagor/solid";
 import {
   PencilSimpleIcon,
   PlusSquareIcon,
   TrashIcon,
-} from "@pisagor/solid/icons";
+} from "@squidlab/phosphor-solid/icons";
+
 export function SelectionNone() {
   const collection = createListCollection({
     items: [
@@ -17,6 +18,7 @@ export function SelectionNone() {
       },
     ],
   });
+
   return (
     <Item.Group variant="outline">
       <Item class="p-1">

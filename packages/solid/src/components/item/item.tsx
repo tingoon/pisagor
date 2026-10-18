@@ -1,30 +1,28 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context";
-import type { SizeScaleProps } from "../../internal/types";
+import { createSlotRecipeContext } from "../../internal";
 import { useItemGroup } from "./item-group.context";
 
 // #region Context
 const {
   Context: ItemStylesContext,
-  useStyles: useItem,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({ name: "Item", recipe: itemRecipe });
 // #endregion
 
-export interface ItemProps
-  extends ComponentProps<typeof ark.div>, BaseItemProps, SizeScaleProps {}
+export interface ItemProps extends HTMLArkProps<"div">, BaseItemProps {}
 
-export type ItemMediaProps = ComponentProps<typeof ark.div> & ItemVariantProps;
-export type ItemHeaderProps = ComponentProps<typeof ark.div>;
-export type ItemContentProps = ComponentProps<typeof ark.div>;
-export type ItemTitleProps = ComponentProps<typeof ark.div>;
-export type ItemDescriptionProps = ComponentProps<typeof ark.p>;
-export type ItemActionsProps = ComponentProps<typeof ark.div>;
-export type ItemFooterProps = ComponentProps<typeof ark.div>;
+export type ItemMediaProps = HTMLArkProps<"div"> & ItemVariantProps;
+export type ItemHeaderProps = HTMLArkProps<"div">;
+export type ItemContentProps = HTMLArkProps<"div">;
+export type ItemTitleProps = HTMLArkProps<"div">;
+export type ItemDescriptionProps = HTMLArkProps<"p">;
+export type ItemActionsProps = HTMLArkProps<"div">;
+export type ItemFooterProps = HTMLArkProps<"div">;
 
 /** Inherits `variant` from the nearest ItemGroup when not set. */
 export function ItemRoot(props: ItemProps): JSX.Element {
@@ -68,7 +66,7 @@ export function ItemRoot(props: ItemProps): JSX.Element {
 
 export function ItemMedia(props: ItemMediaProps): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "children", "class"]);
-  const styles = useItem();
+  const styles = useStyles();
   const variant = () => local.variant ?? "default";
 
   return (

@@ -1,4 +1,7 @@
-import type { AccordionItemRecipeFn } from "@pisagor/recipes";
+import type {
+  AccordionItemRecipeFn,
+  AccordionItemVariantProps,
+} from "@pisagor/recipes";
 
 export interface AccordionPresetItem {
   value: string;
@@ -9,7 +12,7 @@ export interface AccordionPresetItem {
   disabled?: boolean;
 }
 
-export interface AccordionProps {
+export interface AccordionProps extends AccordionItemVariantProps {
   /** Shorthand items (Root + Item + Trigger + Content). */
   items?: AccordionPresetItem[];
   /** Uncontrolled open values. */
@@ -36,7 +39,7 @@ export interface AccordionProps {
   disabled?: boolean;
 }
 
-export interface AccordionItemProps {
+export interface AccordionItemProps extends AccordionItemVariantProps {
   /**
    * Style recipe override.
    *

@@ -1,8 +1,7 @@
 <script lang="ts">
   import { navbarRecipe } from "@pisagor/recipes";
   import { Avatar, Button, Navbar, NavigationMenu } from "@pisagor/svelte";
-  import BellIcon from "phosphor-svelte/lib/BellIcon";
-  import DatabaseIcon from "phosphor-svelte/lib/DatabaseIcon";
+  import { BellIcon, DatabaseIcon } from "phosphor-svelte";
   import { tv } from "tailwind-variants";
 
   const brandNavbarRecipe = tv({

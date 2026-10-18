@@ -1,17 +1,12 @@
-import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/vue/segment-group";
+import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/vue";
 import type { SegmentGroupProps as BaseSegmentGroupRootProps } from "@pisagor/props";
 import { segmentGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
 
 // #region Context
-const {
-  useStyles: useSegmentGroup,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "SegmentGroup",
   recipe: segmentGroupRecipe,
 });
@@ -143,7 +138,7 @@ export const SegmentGroupItem = defineComponent({
     value: { required: true, type: String },
   },
   setup(props, { attrs, slots }) {
-    const styles = useSegmentGroup();
+    const styles = useStyles();
 
     return () => {
       const content = slots.default?.() ?? props.text;

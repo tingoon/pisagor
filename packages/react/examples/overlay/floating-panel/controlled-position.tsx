@@ -8,6 +8,7 @@ import {
 } from "@phosphor-icons/react";
 import { Button, FloatingPanel } from "@pisagor/react";
 import { useState } from "react";
+
 export function ControlledPosition() {
   const [position, setPosition] = useState({ x: 200, y: 200 });
 

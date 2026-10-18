@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Button, EmptyState } from "@pisagor/svelte";
-  import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
+  import { MagnifyingGlassIcon } from "phosphor-svelte";
 </script>
 
 <EmptyState.Root>

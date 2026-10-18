@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { useListCollection } from "@ark-ui/vue/collection";
-import { useFilter } from "@ark-ui/vue/locale";
+import { useFilter, useListCollection } from "@ark-ui/vue";
 import { Input, Item, Listbox } from "@pisagor/vue";
 import { computed, ref } from "vue";
 

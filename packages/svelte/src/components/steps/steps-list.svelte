@@ -1,8 +1,5 @@
 <script lang="ts">
-  import {
-    type StepsListProps,
-    Steps as StepsPrimitive,
-  } from "@ark-ui/svelte/steps";
+  import { Steps as StepsPrimitive, type StepsListProps } from "@ark-ui/svelte";
   import { withStepsContext } from "./steps.context";
 
   let { children, ...rest }: StepsListProps = $props();

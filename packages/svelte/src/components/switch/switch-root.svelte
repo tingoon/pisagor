@@ -2,11 +2,11 @@
   import {
     Switch as SwitchPrimitive,
     type SwitchRootProps,
-  } from "@ark-ui/svelte/switch";
+  } from "@ark-ui/svelte";
   import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
   import { switchRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import type { SizeScaleProps } from "../../internal/types";
+
   import { useFormControlSurface } from "../surface/use-form-control-surface";
   import { Context } from "./switch.context";
 
@@ -15,8 +15,7 @@
   type Props = SwitchRootProps & {
     /** Visual shell variant. Defaults to `primary`. */
     variant?: FormControlVariant;
-  } & BaseSwitchProps &
-    SizeScaleProps;
+  } & BaseSwitchProps;
 
   let {
     variant: variantProp,

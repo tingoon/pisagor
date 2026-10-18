@@ -3,12 +3,12 @@
     AvatarFallbackProps,
     AvatarImageProps,
     AvatarRootProps,
-  } from "@ark-ui/svelte/avatar";
+  } from "@ark-ui/svelte";
   import type { AvatarProps as BaseAvatarProps } from "@pisagor/props";
   import type { AvatarRecipeSlot } from "@pisagor/recipes";
   import { getInitials } from "@pisagor/utils";
   import type { Snippet } from "svelte";
-  import type { VariantClassNames } from "../../internal/types";
+  import type { VariantClassNames } from "../../internal";
   import AvatarFallback from "./avatar-fallback.svelte";
   import AvatarImage from "./avatar-image.svelte";
   import AvatarRoot from "./avatar-root.svelte";

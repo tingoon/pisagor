@@ -1,8 +1,8 @@
-import { ark } from "@ark-ui/vue/factory";
 import {
   Timer as TimerPrimitive,
+  ark,
   useTimerContext as useTimer,
-} from "@ark-ui/vue/timer";
+} from "@ark-ui/vue";
 import type {
   TimerItemGroupProps as BaseTimerItemGroupProps,
   TimerProps as BaseTimerRootProps,
@@ -10,13 +10,12 @@ import type {
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue } from "../internal/types";
-import { useTranslation } from "./provider/context";
+import { type ClassValue, createSlotRecipeContext } from "../internal";
+import { useLocale } from "./provider/context";
 
 // #region Context
 const {
-  useStyles: useTimerStyles,
+  useStyles,
   withContext: withTimerContext,
   withProvider: withTimerProvider,
 } = createSlotRecipeContext({
@@ -188,7 +187,7 @@ export const TimerSeparator = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useTimerStyles();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -215,11 +214,13 @@ export const TimerPause = defineComponent({
   inheritAttrs: false,
   name: "TimerPause",
   setup(_, { attrs, slots }) {
+    const { m } = useLocale();
+
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
         {
-          "aria-label": useTranslation("timer.pause"),
+          "aria-label": m("timer.pause"),
           ...attrs,
           action: "pause",
         },
@@ -232,11 +233,13 @@ export const TimerResume = defineComponent({
   inheritAttrs: false,
   name: "TimerResume",
   setup(_, { attrs, slots }) {
+    const { m } = useLocale();
+
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
         {
-          "aria-label": useTranslation("timer.resume"),
+          "aria-label": m("timer.resume"),
           ...attrs,
           action: "resume",
         },
@@ -249,11 +252,13 @@ export const TimerStart = defineComponent({
   inheritAttrs: false,
   name: "TimerStart",
   setup(_, { attrs, slots }) {
+    const { m } = useLocale();
+
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
         {
-          "aria-label": useTranslation("timer.start"),
+          "aria-label": m("timer.start"),
           ...attrs,
           action: "start",
         },
@@ -266,11 +271,13 @@ export const TimerReset = defineComponent({
   inheritAttrs: false,
   name: "TimerReset",
   setup(_, { attrs, slots }) {
+    const { m } = useLocale();
+
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
         {
-          "aria-label": useTranslation("timer.reset"),
+          "aria-label": m("timer.reset"),
           ...attrs,
           action: "reset",
         },
@@ -283,11 +290,13 @@ export const TimerRestart = defineComponent({
   inheritAttrs: false,
   name: "TimerRestart",
   setup(_, { attrs, slots }) {
+    const { m } = useLocale();
+
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
         {
-          "aria-label": useTranslation("timer.restart"),
+          "aria-label": m("timer.restart"),
           ...attrs,
           action: "restart",
         },
@@ -301,6 +310,7 @@ export const TimerPlay = defineComponent({
   name: "TimerPlay",
   setup(_, { attrs, slots }) {
     const timer = useTimer();
+
     return () =>
       timer.value.paused
         ? h(TimerResume, { ...attrs }, slots)

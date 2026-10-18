@@ -1,12 +1,8 @@
 import { qrCodeRecipe } from "@pisagor/recipes";
-import { createSlotRecipeContext } from "../../internal/create-slot-recipe-context.svelte";
+import { createSlotRecipeContext } from "../../internal";
 
-export const {
-  Context,
-  useStyles: useQrCode,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
-  name: "QrCode",
-  recipe: qrCodeRecipe,
-});
+export const { Context, useStyles, withContext, withProvider } =
+  createSlotRecipeContext({
+    name: "QrCode",
+    recipe: qrCodeRecipe,
+  });

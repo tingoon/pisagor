@@ -1,5 +1,6 @@
 import { CameraIcon } from "@phosphor-icons/react";
 import { Button, FileUpload } from "@pisagor/react";
+
 export function MediaCapture() {
   return (
     <FileUpload capture="environment">

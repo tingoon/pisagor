@@ -1,4 +1,4 @@
-import { createListCollection } from "@ark-ui/solid/collection";
+import { createListCollection } from "@ark-ui/solid";
 import { Select } from "@pisagor/solid";
 import { For } from "solid-js";
 
@@ -23,6 +23,7 @@ export function Multiple() {
       { label: "Rust", value: "rust" },
     ],
   });
+
   return (
     <Select.Root
       collection={collection}

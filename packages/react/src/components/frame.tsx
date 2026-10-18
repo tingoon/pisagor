@@ -1,15 +1,14 @@
-import { ark } from "@ark-ui/react/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/react";
 import type { FrameProps as BaseFrameRootProps } from "@pisagor/props";
 import { frameRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { SizeScaleProps } from "../internal/types";
+import { createSlotRecipeContext } from "../internal";
 import { SurfaceContext } from "./surface/surface.context";
 
 // #region Context
 const {
   Context: FrameStylesContext,
-  useStyles: useFrame,
+  useStyles,
   withContext,
 } = createSlotRecipeContext({
   name: "Frame",
@@ -24,7 +23,7 @@ export function FrameRoot({
   recipe = frameRecipe,
   className,
   ...rest
-}: ComponentProps<typeof ark.div> & BaseFrameRootProps & SizeScaleProps) {
+}: HTMLArkProps<"div"> & BaseFrameRootProps) {
   const slots = recipe({ size });
 
   return (
@@ -47,8 +46,8 @@ export function FramePanel({
   children,
   className,
   ...rest
-}: ComponentProps<typeof ark.div>) {
-  const { slots } = useFrame();
+}: HTMLArkProps<"div">) {
+  const { slots } = useStyles();
 
   return (
     <ark.div

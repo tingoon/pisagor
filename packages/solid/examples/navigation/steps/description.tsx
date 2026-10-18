@@ -6,6 +6,7 @@ export function Description() {
     { description: "Company", title: "Docs" },
     { description: "Create", title: "Team" },
   ];
+
   return (
     <Steps count={items.length}>
       <Steps.List>

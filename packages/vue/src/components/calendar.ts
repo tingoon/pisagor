@@ -1,8 +1,8 @@
 import {
-  parseDate as arkParseDate,
   DatePicker as DatePickerPrimitive,
   type UseDatePickerContext,
-} from "@ark-ui/vue/date-picker";
+  parseDate as arkParseDate,
+} from "@ark-ui/vue";
 import { PhCaretDown, PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
 import type { CalendarProps as BaseCalendarProps } from "@pisagor/props";
 import {
@@ -18,13 +18,13 @@ import {
   type PropType,
   type UnwrapRef,
 } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Button, type ButtonProps } from "./button";
-import { useTranslation } from "./provider/context";
+import { useLocale } from "./provider/context";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Slot recipe context
-const { provideStyles: provideCalendarStyles, useStyles: useCalendar } =
+const { provideStyles: provideCalendarStyles, useStyles } =
   createSlotRecipeContext({
     name: "Calendar",
     recipe: calendarRecipe,
@@ -148,7 +148,7 @@ export const CalendarControl = defineComponent({
   inheritAttrs: false,
   name: "Calendar.Control",
   setup(_props, { attrs, slots }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -163,7 +163,7 @@ export const CalendarLabel = defineComponent({
   inheritAttrs: false,
   name: "Calendar.Label",
   setup(_props, { attrs, slots }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -201,7 +201,7 @@ export const CalendarViewDate = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     return () =>
       h(DatePickerPrimitive.RangeText as ArkPart, {
@@ -260,7 +260,7 @@ export const CalendarYearSelect = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     const surfaceVariant = useFormControlSurface();
 
@@ -308,7 +308,7 @@ export const CalendarMonthSelect = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     const surfaceVariant = useFormControlSurface();
 
@@ -356,7 +356,7 @@ export const CalendarView = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -390,7 +390,7 @@ export const CalendarViewControl = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -408,7 +408,8 @@ export const CalendarPrevTrigger = defineComponent({
   inheritAttrs: false,
   name: "Calendar.PrevTrigger",
   setup(_props, { attrs }) {
-    const styles = useCalendar();
+    const { m } = useLocale();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -418,7 +419,7 @@ export const CalendarPrevTrigger = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useTranslation("calendar.previousMonth"),
+              "aria-label": m("calendar.previousMonth"),
               class: styles.slots.prevTrigger(),
               size: "icon-md",
               variant: "ghost",
@@ -437,7 +438,8 @@ export const CalendarNextTrigger = defineComponent({
   inheritAttrs: false,
   name: "Calendar.NextTrigger",
   setup(_props, { attrs }) {
-    const styles = useCalendar();
+    const { m } = useLocale();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -447,7 +449,7 @@ export const CalendarNextTrigger = defineComponent({
           h(
             Button as ArkPart,
             {
-              "aria-label": useTranslation("calendar.nextMonth"),
+              "aria-label": m("calendar.nextMonth"),
               class: styles.slots.nextTrigger(),
               size: "icon-md",
               variant: "ghost",
@@ -472,7 +474,7 @@ export const CalendarTable = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -609,7 +611,7 @@ export const CalendarTableRow = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -633,7 +635,7 @@ export const CalendarTableHeader = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const styles = useCalendar();
+    const styles = useStyles();
 
     return () =>
       h(

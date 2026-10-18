@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type SliderLabelProps,
     Slider as SliderPrimitive,
-  } from "@ark-ui/svelte/slider";
+    type SliderLabelProps,
+  } from "@ark-ui/svelte";
   import { fieldRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
 

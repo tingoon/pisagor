@@ -1,16 +1,15 @@
-import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/vue/scroll-area";
+import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/vue";
 import type { ScrollAreaProps as BaseScrollAreaRootProps } from "@pisagor/props";
 import { type ScrollAreaRecipeSlot, scrollAreaRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { ClassValue, VariantClassNames } from "../internal/types";
+import {
+  type ClassValue,
+  type VariantClassNames,
+  createSlotRecipeContext,
+} from "../internal";
 
 // #region Context
-const {
-  useStyles: useScrollArea,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "ScrollArea",
   recipe: scrollAreaRecipe,
 });
@@ -40,7 +39,7 @@ const ScrollAreaViewport = defineComponent({
     class: { default: undefined, type: String as PropType<string> },
   },
   setup(props, { attrs, slots }) {
-    const styles = useScrollArea();
+    const styles = useStyles();
 
     return () =>
       h(
@@ -124,6 +123,7 @@ const ScrollAreaShorthand = defineComponent({
           }
 
           children.push(h(ScrollAreaPrimitive.Corner as ArkPart));
+
           return children;
         },
       );

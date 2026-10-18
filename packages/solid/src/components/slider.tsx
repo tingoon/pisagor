@@ -1,14 +1,14 @@
-import {
-  type SliderControlProps,
-  type SliderMarkerGroupProps,
-  type SliderMarkerProps,
-  Slider as SliderPrimitive,
-  type SliderRootProps as SliderPrimitiveRootProps,
-  type SliderRangeProps,
-  type SliderThumbProps,
-  type SliderTrackProps,
-  type SliderValueTextProps,
-} from "@ark-ui/solid/slider";
+import { Slider as SliderPrimitive } from "@ark-ui/solid";
+import type {
+  SliderControlProps,
+  SliderMarkerGroupProps,
+  SliderMarkerProps,
+  SliderRangeProps,
+  SliderRootProps as SliderRootPrimitiveProps,
+  SliderThumbProps,
+  SliderTrackProps,
+  SliderValueTextProps,
+} from "@ark-ui/solid";
 import type { SliderProps as BaseSliderProps } from "@pisagor/props";
 import {
   fieldRecipe,
@@ -18,17 +18,15 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
-import type { VariantClassNames } from "../internal/types";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
 import { Field } from "./field";
 
 // #region Context
-const { Context: SliderStylesContext, useStyles: useSliderStyles } =
-  createSlotRecipeContext({
-    name: "Slider",
-    recipe: sliderRecipe,
-  });
+const { Context: SliderStylesContext, useStyles } = createSlotRecipeContext({
+  name: "Slider",
+  recipe: sliderRecipe,
+});
 
 interface SliderExtras {
   thumbShadowClass?: string;
@@ -39,8 +37,9 @@ const { SliderExtrasContext, useSliderExtras } =
   createContext("SliderExtras")<SliderExtras>();
 
 function useSlider() {
-  const styles = useSliderStyles();
+  const styles = useStyles();
   const extras = useSliderExtras();
+
   return {
     get slots() {
       return styles.slots;
@@ -59,7 +58,7 @@ type FormControlVariant = "primary" | "secondary";
 type SliderValueProps = SliderValueTextProps;
 type SliderClassNames = VariantClassNames<SliderRecipeSlot>;
 
-type SliderRootProps = SliderPrimitiveRootProps &
+type SliderRootProps = SliderRootPrimitiveProps &
   BaseSliderProps & {
     variant?: FormControlVariant;
   };
@@ -126,6 +125,7 @@ function SliderRoot(props: SliderRootProps): JSX.Element {
 function SliderHeader(props: SliderHeaderProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const styles = useSlider();
+
   return (
     <div {...rest} class={styles.slots.header({ class: local.class })}>
       {local.children}
@@ -228,6 +228,7 @@ function SliderMarker(props: SliderMarkerProps): JSX.Element {
 function SliderMarkerTick(props: SliderMarkerTickProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useSlider();
+
   return (
     <span {...rest} class={styles.slots.markerTick({ class: local.class })} />
   );
@@ -236,6 +237,7 @@ function SliderMarkerTick(props: SliderMarkerTickProps): JSX.Element {
 function SliderMarkerLabel(props: SliderMarkerLabelProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const styles = useSlider();
+
   return (
     <span {...rest} class={styles.slots.markerLabel({ class: local.class })}>
       {local.children}
@@ -288,6 +290,7 @@ function SliderShorthand(props: SliderProps): JSX.Element {
   const values = createMemo(() => {
     if (Array.isArray(local.value)) return local.value;
     if (Array.isArray(local.defaultValue)) return local.defaultValue;
+
     // Uncontrolled default is a single thumb (zag defaults `value` to `[min]`).
     return [min()];
   });
@@ -375,7 +378,7 @@ export type {
   SliderRangeProps,
   SliderThumbProps,
   SliderTrackProps,
-} from "@ark-ui/solid/slider";
+} from "@ark-ui/solid";
 
 export const Slider = Object.assign(SliderShorthand, {
   Control: SliderControl,

@@ -1,5 +1,5 @@
 import { Steps } from "@pisagor/solid";
-import { CircleNotchIcon } from "@pisagor/solid/icons";
+import { CircleNotchIcon } from "@squidlab/phosphor-solid/icons";
 
 export function Loading() {
   const items = [
@@ -7,6 +7,7 @@ export function Loading() {
     { id: "step-2", loading: false },
     { id: "step-3", loading: false },
   ];
+
   return (
     <Steps count={items.length}>
       <Steps.List>

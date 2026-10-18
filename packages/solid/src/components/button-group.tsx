@@ -1,17 +1,13 @@
-import { ark } from "@ark-ui/solid/factory";
+import { ark, type HTMLArkProps } from "@ark-ui/solid";
 import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
 import { buttonGroupRecipe } from "@pisagor/recipes";
-import type { Component, ComponentProps, JSX } from "solid-js";
+import type { Component, JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import { createSlotRecipeContext } from "../internal/create-slot-recipe-context";
+import { createSlotRecipeContext } from "../internal";
 import { Separator, type SeparatorProps } from "./separator";
 
 // #region Context
-const {
-  useStyles: useButtonGroup,
-  withContext,
-  withProvider,
-} = createSlotRecipeContext({
+const { useStyles, withContext, withProvider } = createSlotRecipeContext({
   name: "ButtonGroup",
   recipe: buttonGroupRecipe,
 });
@@ -19,9 +15,9 @@ const {
 
 // #region Types
 export interface ButtonGroupProps
-  extends ComponentProps<typeof ark.fieldset>, BaseButtonGroupProps {}
+  extends HTMLArkProps<"fieldset">, BaseButtonGroupProps {}
 
-export type ButtonGroupTextProps = ComponentProps<typeof ark.div>;
+export type ButtonGroupTextProps = HTMLArkProps<"div">;
 // #endregion
 
 // #region Parts
@@ -34,7 +30,7 @@ export const ButtonGroupText = withContext(ark.div, { name: "Text" });
 
 export function ButtonGroupSeparator(props: SeparatorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["orientation", "class"]);
-  const styles = useButtonGroup();
+  const styles = useStyles();
 
   return (
     <Separator

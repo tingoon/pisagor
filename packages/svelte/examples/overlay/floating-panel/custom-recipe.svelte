@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createListCollection } from "@ark-ui/svelte/collection";
+  import { createListCollection } from "@ark-ui/svelte";
   import { floatingPanelRecipe } from "@pisagor/recipes";
   import {
     Button,
@@ -8,8 +8,7 @@
     NumberInput,
     Select,
   } from "@pisagor/svelte";
-  import GearSixIcon from "phosphor-svelte/lib/GearSixIcon";
-  import XIcon from "phosphor-svelte/lib/XIcon";
+  import { GearSixIcon, XIcon } from "phosphor-svelte";
   import { tv } from "tailwind-variants";
 
   const brandFloatingPanelRecipe = tv({

@@ -1,8 +1,8 @@
 <script lang="ts">
   import {
-    type FieldRootProps as ArkRootProps,
     Field as FieldPrimitive,
-  } from "@ark-ui/svelte/field";
+    type FieldRootProps as ArkRootProps,
+  } from "@ark-ui/svelte";
   import type { FieldProps as BaseFieldProps } from "@pisagor/props";
   import { withProvider } from "./field.context";
 
