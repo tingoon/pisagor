@@ -3,6 +3,7 @@ import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour } from "@pisagor/solid";
 import { PlusIcon } from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
+
 export function WaitForElement() {
   const steps: TourStepType[] = [
     {

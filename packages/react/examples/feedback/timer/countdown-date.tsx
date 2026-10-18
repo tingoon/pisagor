@@ -1,4 +1,5 @@
 import { Card, Timer } from "@pisagor/react";
+
 export function CountdownDate() {
   const formatDate = (date: Date) =>
     date.toLocaleDateString(undefined, { dateStyle: "medium" });

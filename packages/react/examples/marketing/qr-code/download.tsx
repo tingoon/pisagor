@@ -1,6 +1,7 @@
 import { DownloadIcon } from "@phosphor-icons/react";
 import { Button, Card, Input, QrCode } from "@pisagor/react";
 import { useState } from "react";
+
 export function Download() {
   const QUALITY_BY_LEVEL = {
     0: "L",

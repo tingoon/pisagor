@@ -1,4 +1,5 @@
 import { Button, ColorPicker, Input } from "@pisagor/solid";
+
 export function PopoverWithChannelEditing() {
   return (
     <ColorPicker format="rgba">

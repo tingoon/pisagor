@@ -6,6 +6,7 @@ import {
   TrashIcon,
 } from "@squidlab/phosphor-solid/icons";
 import { workspaceUsers } from "./helpers";
+
 export function Actions() {
   return (
     <Table>

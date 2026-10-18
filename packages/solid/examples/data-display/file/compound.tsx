@@ -1,5 +1,6 @@
 import { Button, File } from "@pisagor/solid";
 import { DownloadSimpleIcon } from "@squidlab/phosphor-solid/icons";
+
 export function Compound() {
   return (
     <File.Root>

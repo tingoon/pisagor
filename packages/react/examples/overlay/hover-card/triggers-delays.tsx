@@ -1,5 +1,6 @@
 import { MapPinIcon } from "@phosphor-icons/react";
 import { Avatar, Button, HoverCard } from "@pisagor/react";
+
 export function TriggersDelays() {
   return (
     <HoverCard closeDelay={300} openDelay={200}>

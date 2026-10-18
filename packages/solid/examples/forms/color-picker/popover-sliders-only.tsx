@@ -1,4 +1,5 @@
 import { Button, ColorPicker, Field } from "@pisagor/solid";
+
 export function PopoverSlidersOnly() {
   return (
     <ColorPicker defaultValue="#eb5e41" format="hsla">

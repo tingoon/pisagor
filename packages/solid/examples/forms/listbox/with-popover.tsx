@@ -2,6 +2,7 @@ import { useFilter, useListCollection } from "@ark-ui/solid";
 import { Button, Input, Listbox, Popover } from "@pisagor/solid";
 import { CaretUpDownIcon } from "@squidlab/phosphor-solid/icons";
 import { createSignal, For } from "solid-js";
+
 export function WithPopover() {
   const [search, setSearch] = createSignal("");
   const [isOpen, setIsOpen] = createSignal(false);

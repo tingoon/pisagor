@@ -1,5 +1,6 @@
 import { Button, Card } from "@pisagor/solid";
 import { CurrencyDollarIcon } from "@squidlab/phosphor-solid/icons";
+
 export function Icon() {
   return (
     <Card>

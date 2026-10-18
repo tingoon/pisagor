@@ -1,5 +1,6 @@
 import { Button, Dialog } from "@pisagor/solid";
 import { Portal } from "solid-js/web";
+
 export function NonModal() {
   return (
     <Dialog.Root modal={false}>

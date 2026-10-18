@@ -1,6 +1,7 @@
 import { MoonIcon, SunIcon } from "@phosphor-icons/react";
 import { Button, Swap } from "@pisagor/react";
 import { useState } from "react";
+
 export function Variants() {
   const [fade, setFade] = useState(false);
   const [blur, setBlur] = useState(false);

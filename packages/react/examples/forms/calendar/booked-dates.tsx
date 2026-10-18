@@ -1,4 +1,5 @@
 import { Calendar, Card } from "@pisagor/react";
+
 export function BookedDates() {
   const isWeekend = (date: { year: number; month: number; day: number }) => {
     const dayOfWeek = new Date(date.year, date.month - 1, date.day).getDay();

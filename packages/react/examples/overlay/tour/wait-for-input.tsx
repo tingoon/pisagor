@@ -1,6 +1,7 @@
 import { waitForEvent } from "@ark-ui/react";
 import type { TourStepType } from "@pisagor/react";
 import { Button, Checkbox, Field, Input, Tour } from "@pisagor/react";
+
 export function WaitForInput() {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

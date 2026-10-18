@@ -1,5 +1,6 @@
 import { createListCollection } from "@ark-ui/react";
 import { Item, Listbox } from "@pisagor/react";
+
 export function WithIcon() {
   const collection = createListCollection({
     items: [

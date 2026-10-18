@@ -1,4 +1,5 @@
 import { ScrollArea, Separator } from "@pisagor/solid";
+
 export function ScrollFade() {
   const tags = Array.from({ length: 50 }, (_, i) => `v1.0.0-beta.${i}`);
 

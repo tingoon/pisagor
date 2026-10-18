@@ -7,6 +7,7 @@ import {
   XIcon,
 } from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
+
 export function CloseTrigger() {
   const [isOpen, setIsOpen] = createSignal(false);
 

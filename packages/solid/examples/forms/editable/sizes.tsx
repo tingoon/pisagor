@@ -1,5 +1,6 @@
 import { Button, Editable, Input } from "@pisagor/solid";
 import { CheckIcon, XIcon } from "@squidlab/phosphor-solid/icons";
+
 export function Sizes() {
   return (
     <div class="flex flex-col gap-2">

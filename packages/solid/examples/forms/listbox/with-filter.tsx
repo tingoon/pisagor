@@ -1,6 +1,7 @@
 import { useFilter, useListCollection } from "@ark-ui/solid";
 import { Input, Item, Listbox } from "@pisagor/solid";
 import { createSignal, For } from "solid-js";
+
 export function WithFilter() {
   const [search, setSearch] = createSignal("");
 

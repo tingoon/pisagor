@@ -7,6 +7,7 @@ import {
   NumberInput,
   Select,
 } from "@pisagor/react";
+
 export function Default() {
   const collection = createListCollection({
     items: ["Inter", "Roboto", "Helvetica", "Geist"],

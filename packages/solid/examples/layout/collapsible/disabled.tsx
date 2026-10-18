@@ -1,4 +1,5 @@
 import { Button, Collapsible } from "@pisagor/solid";
+
 export function Disabled() {
   return (
     <div>

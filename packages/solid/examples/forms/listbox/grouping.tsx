@@ -1,5 +1,6 @@
 import { createListCollection } from "@ark-ui/solid";
 import { Item, Listbox } from "@pisagor/solid";
+
 export function Grouping() {
   const collection = createListCollection({
     groupBy: (item) => (item as { region: string }).region,

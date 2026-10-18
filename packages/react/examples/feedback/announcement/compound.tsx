@@ -1,4 +1,5 @@
 import { Announcement, Badge } from "@pisagor/react";
+
 export function Compound() {
   return (
     <Announcement.Root>

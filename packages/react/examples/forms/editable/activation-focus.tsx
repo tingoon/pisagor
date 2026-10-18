@@ -1,5 +1,6 @@
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Button, Card, Editable, Field, Input } from "@pisagor/react";
+
 export function ActivationFocus() {
   return (
     <Card>

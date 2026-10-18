@@ -6,6 +6,7 @@ import {
   PencilSimpleIcon,
   TrashIcon,
 } from "@squidlab/phosphor-solid/icons";
+
 export function WithContextMenu() {
   const collection = createTreeCollection({
     rootNode: {

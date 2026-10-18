@@ -1,5 +1,6 @@
 import { SegmentGroup } from "@pisagor/solid";
 import { createSignal } from "solid-js";
+
 export function Controlled() {
   const items = ["Profile", "Account", "Security", "Notifications"];
   const [value, setValue] = createSignal<string | null>("Profile");

@@ -2,6 +2,7 @@ import { useFilter, useListCollection } from "@ark-ui/react";
 import { ArrowBendDownLeftIcon } from "@phosphor-icons/react";
 import { Button, Command, Kbd } from "@pisagor/react";
 import { useState } from "react";
+
 export function WithDialog() {
   const initialItems = [
     { group: "File", label: "New file", shortcut: "⌘N", value: "new" },

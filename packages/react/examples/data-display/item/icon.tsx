@@ -1,5 +1,6 @@
 import { ShieldWarningIcon } from "@phosphor-icons/react";
 import { Button, Item } from "@pisagor/react";
+
 export function Icon() {
   return (
     <Item variant="outline">

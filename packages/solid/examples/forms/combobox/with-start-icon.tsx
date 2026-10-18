@@ -2,6 +2,7 @@ import { useFilter, useListCollection } from "@ark-ui/solid";
 import { Combobox, InputGroup } from "@pisagor/solid";
 import { AppleLogoIcon } from "@squidlab/phosphor-solid/icons";
 import { For } from "solid-js";
+
 export function WithStartIcon() {
   const initialItems = [
     { label: "Apple", value: "apple" },

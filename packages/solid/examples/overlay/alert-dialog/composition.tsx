@@ -1,4 +1,5 @@
 import { AlertDialog, Button } from "@pisagor/solid";
+
 export function Composition() {
   return (
     <AlertDialog.Root>

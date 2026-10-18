@@ -1,5 +1,6 @@
 import { PaperclipIcon } from "@phosphor-icons/react";
 import { Button, FileUpload } from "@pisagor/react";
+
 export function Trigger() {
   return (
     <FileUpload>

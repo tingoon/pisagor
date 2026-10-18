@@ -1,5 +1,6 @@
 import { Badge, InputGroup } from "@pisagor/solid";
 import { AtIcon } from "@squidlab/phosphor-solid/icons";
+
 export function WithBadge() {
   return (
     <InputGroup>

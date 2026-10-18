@@ -1,4 +1,5 @@
 import { Calendar, Card, parseDate } from "@pisagor/react";
+
 export function MinMax() {
   return (
     <Card className="[--space:--spacing(2)]">

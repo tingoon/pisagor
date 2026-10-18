@@ -1,5 +1,6 @@
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour, useTourContext } from "@pisagor/solid";
+
 export function Progress() {
   const TourProgressBar = () => {
     const { tour } = useTourContext();

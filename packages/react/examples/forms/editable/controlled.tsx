@@ -1,6 +1,7 @@
 import { CheckIcon, PencilSimpleIcon } from "@phosphor-icons/react";
 import { Button, Card, Editable, Field, Input } from "@pisagor/react";
 import { useState } from "react";
+
 export function Controlled() {
   const [isEditing, setIsEditing] = useState(false);
 

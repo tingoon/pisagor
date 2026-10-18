@@ -1,4 +1,5 @@
 import { ColorPicker, Input } from "@pisagor/solid";
+
 export function Disabled() {
   return (
     <ColorPicker defaultValue="#eb5e41" disabled>

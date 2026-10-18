@@ -1,5 +1,6 @@
 import { Calendar, Card, parseDate } from "@pisagor/solid";
 import { createSignal } from "solid-js";
+
 export function MultipleMonths() {
   const [value, setValue] = createSignal([parseDate(new Date(Date.now()))]);
 

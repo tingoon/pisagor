@@ -1,5 +1,6 @@
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
 import { Button, Steps } from "@pisagor/react";
+
 export function Vertical() {
   const items = [
     { description: "Personal", title: "Info" },

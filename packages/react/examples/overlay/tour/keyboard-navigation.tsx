@@ -1,6 +1,7 @@
 import { KeyboardIcon } from "@phosphor-icons/react";
 import type { TourStepType } from "@pisagor/react";
 import { Button, Tour } from "@pisagor/react";
+
 export function KeyboardNavigation() {
   const steps: TourStepType[] = [
     {

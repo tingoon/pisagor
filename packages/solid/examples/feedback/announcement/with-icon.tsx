@@ -1,5 +1,6 @@
 import { Announcement, Badge } from "@pisagor/solid";
 import { SparkleIcon } from "@squidlab/phosphor-solid/icons";
+
 export function WithIcon() {
   return (
     <Announcement

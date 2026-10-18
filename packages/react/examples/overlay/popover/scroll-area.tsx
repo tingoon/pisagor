@@ -1,4 +1,5 @@
 import { Button, Popover } from "@pisagor/react";
+
 export function ScrollArea() {
   const items = Array.from({ length: 12 }, (_, i) => ({
     id: i + 1,

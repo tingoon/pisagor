@@ -1,4 +1,5 @@
 import { Button, Collapsible } from "@pisagor/react";
+
 export function Disabled() {
   return (
     <div>

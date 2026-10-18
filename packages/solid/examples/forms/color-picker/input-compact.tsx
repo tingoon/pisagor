@@ -1,5 +1,6 @@
 import { ColorPicker, InputGroup, parseColor, Separator } from "@pisagor/solid";
 import { PercentIcon } from "@squidlab/phosphor-solid/icons";
+
 export function InputCompact() {
   return (
     <ColorPicker

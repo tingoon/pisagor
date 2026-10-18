@@ -5,6 +5,7 @@ import {
   createTreeCollection,
   TreeView,
 } from "@pisagor/react";
+
 export function CustomIcons() {
   const fileIcons = createFileIcons({
     ".json": FileJsIcon,

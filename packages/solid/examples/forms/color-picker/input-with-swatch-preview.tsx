@@ -1,4 +1,5 @@
 import { ColorPicker, InputGroup } from "@pisagor/solid";
+
 export function InputWithSwatchPreview() {
   return (
     <ColorPicker defaultValue="#eb5e41">

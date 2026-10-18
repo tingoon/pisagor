@@ -1,5 +1,6 @@
 import { ColorPicker, parseColor } from "@pisagor/react";
 import { useState } from "react";
+
 export function SwatchPickerControlled() {
   const swatches = ["#0485F7", "#EF4444", "#F59E0B", "#10B981"];
   const [value, setValue] = useState("#0485F7");

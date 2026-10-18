@@ -1,4 +1,5 @@
 import { Button, toast } from "@pisagor/react";
+
 export function Closable() {
   return (
     <div className="flex flex-wrap gap-2">

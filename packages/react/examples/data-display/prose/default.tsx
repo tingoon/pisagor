@@ -1,4 +1,5 @@
 import { Prose, ScrollArea } from "@pisagor/react";
+
 export function Default() {
   return (
     <div className="overflow-hidden">

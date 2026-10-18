@@ -5,6 +5,7 @@ import {
   PlusSquareIcon,
   TrashIcon,
 } from "@squidlab/phosphor-solid/icons";
+
 export function SelectionNone() {
   const collection = createListCollection({
     items: [

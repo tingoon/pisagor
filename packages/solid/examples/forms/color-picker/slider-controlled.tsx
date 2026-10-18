@@ -1,5 +1,6 @@
 import { ColorPicker } from "@pisagor/solid";
 import { createSignal } from "solid-js";
+
 export function SliderControlled() {
   const [color, setColor] = createSignal("rgba(82, 65, 235, 1)");
 

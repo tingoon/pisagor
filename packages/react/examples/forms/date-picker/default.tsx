@@ -1,5 +1,6 @@
 import { CalendarIcon } from "@phosphor-icons/react";
 import { Button, Calendar, DatePicker } from "@pisagor/react";
+
 export function Default() {
   return (
     <DatePicker>

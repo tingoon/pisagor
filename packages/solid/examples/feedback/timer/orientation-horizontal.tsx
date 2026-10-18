@@ -1,4 +1,5 @@
 import { Card, Timer } from "@pisagor/solid";
+
 export function OrientationHorizontal() {
   return (
     <Card class="rounded-3xl [--space:--spacing(6)]">

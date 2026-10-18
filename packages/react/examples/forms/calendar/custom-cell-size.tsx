@@ -1,4 +1,5 @@
 import { Calendar, Card } from "@pisagor/react";
+
 export function CustomCellSize() {
   return (
     <Card className="[--space:--spacing(2)]">

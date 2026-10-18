@@ -1,4 +1,5 @@
 import { AlertDialog, Button } from "@pisagor/react";
+
 export function Composition() {
   return (
     <AlertDialog.Root>

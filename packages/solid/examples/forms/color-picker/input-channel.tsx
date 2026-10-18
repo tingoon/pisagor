@@ -1,4 +1,5 @@
 import { ColorPicker, Field, Input, parseColor } from "@pisagor/solid";
+
 export function InputChannel() {
   return (
     <div class="flex flex-col gap-2">

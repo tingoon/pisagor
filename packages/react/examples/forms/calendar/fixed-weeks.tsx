@@ -1,4 +1,5 @@
 import { Calendar, Card } from "@pisagor/react";
+
 export function FixedWeeks() {
   return (
     <Card className="[--space:--spacing(2)]">

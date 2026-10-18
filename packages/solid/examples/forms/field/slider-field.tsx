@@ -1,4 +1,5 @@
 import { Field, Slider } from "@pisagor/solid";
+
 export function SliderField() {
   return (
     <Field class="items-stretch gap-3">

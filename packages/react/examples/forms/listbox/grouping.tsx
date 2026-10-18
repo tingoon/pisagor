@@ -1,5 +1,6 @@
 import { createListCollection } from "@ark-ui/react";
 import { Item, Listbox } from "@pisagor/react";
+
 export function Grouping() {
   const collection = createListCollection({
     groupBy: (item) => (item as { region: string }).region,

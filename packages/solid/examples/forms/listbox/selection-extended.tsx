@@ -1,5 +1,6 @@
 import { createListCollection } from "@ark-ui/solid";
 import { Item, Kbd, Listbox } from "@pisagor/solid";
+
 export function SelectionExtended() {
   const collection = createListCollection({
     items: [

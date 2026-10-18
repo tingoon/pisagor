@@ -1,5 +1,6 @@
 import { createListCollection } from "@ark-ui/react";
 import { Listbox } from "@pisagor/react";
+
 export function Compound() {
   const collection = createListCollection({
     items: [

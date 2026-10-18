@@ -1,4 +1,5 @@
 import { CircularProgress, Field } from "@pisagor/react";
+
 export function Indeterminate() {
   return (
     <Field>

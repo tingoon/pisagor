@@ -1,6 +1,7 @@
 import { waitForEvent } from "@ark-ui/react";
 import type { TourStepType } from "@pisagor/react";
 import { Button, Tour } from "@pisagor/react";
+
 export function WaitForClick() {
   const steps: TourStepType[] = [
     {

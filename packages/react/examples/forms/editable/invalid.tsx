@@ -1,5 +1,6 @@
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Button, Editable, Input } from "@pisagor/react";
+
 export function Invalid() {
   return (
     <Editable defaultValue="Click to edit" invalid>

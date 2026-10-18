@@ -5,6 +5,7 @@ import {
   SignOutIcon,
   UserIcon,
 } from "@squidlab/phosphor-solid/icons";
+
 export function Shortcuts() {
   return (
     <DropdownMenu>

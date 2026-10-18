@@ -5,6 +5,7 @@ import {
   TextUnderlineIcon,
 } from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
+
 export function Controlled() {
   const [value, setValue] = createSignal(["bold"]);
 

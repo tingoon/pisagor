@@ -1,5 +1,6 @@
 import { InfoIcon } from "@phosphor-icons/react";
 import { Button, DataList, Popover } from "@pisagor/react";
+
 export function InfoTip() {
   const data = [
     {

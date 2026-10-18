@@ -1,6 +1,7 @@
 import { Button, FloatingPanel } from "@pisagor/solid";
 import { GearSixIcon, XIcon } from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
+
 export function ControlledSize() {
   const [size, setSize] = createSignal({ height: 200, width: 360 });
 

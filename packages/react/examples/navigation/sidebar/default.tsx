@@ -4,6 +4,7 @@ import {
   UserIcon,
 } from "@phosphor-icons/react";
 import { Button, Sidebar } from "@pisagor/react";
+
 export function Default() {
   return (
     <Sidebar.Provider>

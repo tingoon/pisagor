@@ -1,4 +1,5 @@
 import { Button, VisuallyHidden } from "@pisagor/react";
+
 export function Default() {
   return (
     <Button aria-label="Close" size="icon-md" variant="outline">

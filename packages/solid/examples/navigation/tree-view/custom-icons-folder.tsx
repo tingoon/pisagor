@@ -1,6 +1,7 @@
 import type { NodeProviderProps } from "@pisagor/solid";
 import { createTreeCollection, TreeView } from "@pisagor/solid";
 import { PackageIcon } from "@squidlab/phosphor-solid/icons";
+
 export function CustomIconsFolder() {
   const collection = createTreeCollection({
     rootNode: {

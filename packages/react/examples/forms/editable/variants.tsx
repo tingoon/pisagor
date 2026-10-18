@@ -1,4 +1,5 @@
 import { Editable, Input } from "@pisagor/react";
+
 export function Variants() {
   return (
     <div className="flex flex-col gap-2">

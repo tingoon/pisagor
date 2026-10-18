@@ -1,5 +1,6 @@
 import { Field, TagsInput } from "@pisagor/react";
 import { useState } from "react";
+
 export function Controlled() {
   const initialValue = ["React", "Solid"];
   const [value, setValue] = useState(initialValue);

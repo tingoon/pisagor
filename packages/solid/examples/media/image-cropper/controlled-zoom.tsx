@@ -4,6 +4,7 @@ import {
   MagnifyingGlassPlusIcon,
 } from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
+
 export function ControlledZoom() {
   const [zoom, setZoom] = createSignal(1);
 

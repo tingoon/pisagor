@@ -1,4 +1,5 @@
 import { Button, ColorPicker } from "@pisagor/react";
+
 export function PopoverWithSwatchPicker() {
   const swatches = [
     "#ef4444",

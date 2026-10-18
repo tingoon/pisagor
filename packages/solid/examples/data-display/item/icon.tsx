@@ -1,5 +1,6 @@
 import { Button, Item } from "@pisagor/solid";
 import { ShieldWarningIcon } from "@squidlab/phosphor-solid/icons";
+
 export function Icon() {
   return (
     <Item variant="outline">

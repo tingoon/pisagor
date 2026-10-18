@@ -7,6 +7,7 @@ import {
   Select,
 } from "@pisagor/solid";
 import { GearSixIcon, XIcon } from "@squidlab/phosphor-solid/icons";
+
 export function CustomSpacing() {
   const collection = createListCollection({
     items: ["Inter", "Roboto", "Helvetica", "Geist"],

@@ -1,5 +1,6 @@
 import { CurrencyDollarIcon } from "@phosphor-icons/react";
 import { Button, Card } from "@pisagor/react";
+
 export function Icon() {
   return (
     <Card>

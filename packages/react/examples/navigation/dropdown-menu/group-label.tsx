@@ -1,4 +1,5 @@
 import { Button, DropdownMenu } from "@pisagor/react";
+
 export function GroupLabel() {
   return (
     <DropdownMenu>

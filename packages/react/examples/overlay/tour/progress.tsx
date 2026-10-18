@@ -1,5 +1,6 @@
 import type { TourStepType } from "@pisagor/react";
 import { Button, Tour, useTourContext } from "@pisagor/react";
+
 export function Progress() {
   const TourProgressBar = () => {
     const { tour } = useTourContext();

@@ -4,6 +4,7 @@ import {
   PlayIcon,
 } from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
+
 export function Controlled() {
   const [ticks, setTicks] = createSignal(0);
   const [completed, setCompleted] = createSignal(false);

@@ -6,6 +6,7 @@ import {
   MagnifyingGlassIcon,
   UserIcon,
 } from "@squidlab/phosphor-solid/icons";
+
 export function WithSidebar() {
   return (
     <Sidebar.Provider>

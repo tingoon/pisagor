@@ -8,6 +8,7 @@ import {
   XIcon,
 } from "@squidlab/phosphor-solid/icons";
 import { createSignal } from "solid-js";
+
 export function ControlledPosition() {
   const [position, setPosition] = createSignal({ x: 200, y: 200 });
 

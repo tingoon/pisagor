@@ -9,6 +9,7 @@ import {
   FileJsIcon,
   FileTextIcon,
 } from "@squidlab/phosphor-solid/icons";
+
 export function CustomIcons() {
   const fileIcons = createFileIcons({
     ".json": FileJsIcon,

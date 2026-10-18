@@ -6,6 +6,7 @@ import {
   XIcon,
 } from "@phosphor-icons/react";
 import { ActionBar, Button, DropdownMenu } from "@pisagor/react";
+
 export function WithMenu() {
   return (
     <ActionBar>

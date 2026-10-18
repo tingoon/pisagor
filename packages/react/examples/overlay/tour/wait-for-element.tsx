@@ -3,6 +3,7 @@ import { PlusIcon } from "@phosphor-icons/react";
 import type { TourStepType } from "@pisagor/react";
 import { Button, Tour } from "@pisagor/react";
 import { useState } from "react";
+
 export function WaitForElement() {
   const steps: TourStepType[] = [
     {

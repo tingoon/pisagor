@@ -1,6 +1,7 @@
 import type { NodeProviderProps } from "@pisagor/react";
 import { createTreeCollection, TreeView } from "@pisagor/react";
 import { useState } from "react";
+
 export function Controlled() {
   const collection = createTreeCollection({
     rootNode: {

@@ -1,5 +1,6 @@
 import { Highlight, Input } from "@pisagor/react";
 import { useState } from "react";
+
 export function SearchQuery() {
   const searchResults = ["Spotlight bulb", "Spot cleaner", "Spot ceiling"];
   const [query, setQuery] = useState("spot");

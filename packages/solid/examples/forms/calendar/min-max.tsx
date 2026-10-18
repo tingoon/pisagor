@@ -1,4 +1,5 @@
 import { Calendar, Card, parseDate } from "@pisagor/solid";
+
 export function MinMax() {
   return (
     <Card class="[--space:--spacing(2)]">

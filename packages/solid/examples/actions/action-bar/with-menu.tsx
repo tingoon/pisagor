@@ -6,6 +6,7 @@ import {
   TrashIcon,
   XIcon,
 } from "@squidlab/phosphor-solid/icons";
+
 export function WithMenu() {
   return (
     <ActionBar>

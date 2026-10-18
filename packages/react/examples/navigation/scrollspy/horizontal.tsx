@@ -1,6 +1,7 @@
 import { Button, ScrollArea, Scrollspy } from "@pisagor/react";
 import { useRef } from "react";
 import { horizontalSections } from "./helpers";
+
 export function Horizontal() {
   const parentRef = useRef<HTMLDivElement>(null);
 

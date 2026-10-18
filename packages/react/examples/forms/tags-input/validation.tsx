@@ -1,4 +1,5 @@
 import { Field, TagsInput } from "@pisagor/react";
+
 export function Validation() {
   const validTagPattern = /^[a-zA-Z0-9-]+$/;
 

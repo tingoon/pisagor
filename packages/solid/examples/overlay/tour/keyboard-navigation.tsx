@@ -1,6 +1,7 @@
 import type { TourStepType } from "@pisagor/solid";
 import { Button, Tour } from "@pisagor/solid";
 import { KeyboardIcon } from "@squidlab/phosphor-solid/icons";
+
 export function KeyboardNavigation() {
   const steps: TourStepType[] = [
     {

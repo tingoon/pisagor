@@ -1,4 +1,5 @@
 import { Button, DropdownMenu } from "@pisagor/solid";
+
 export function GroupLabel() {
   return (
     <DropdownMenu>

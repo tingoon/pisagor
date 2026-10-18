@@ -1,5 +1,6 @@
 import { ChecksIcon } from "@phosphor-icons/react";
 import { Alert, Button } from "@pisagor/react";
+
 export function Compound() {
   return (
     <Alert.Root variant="info">

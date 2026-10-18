@@ -5,6 +5,7 @@ import {
   MagnifyingGlassIcon,
   UserIcon,
 } from "@squidlab/phosphor-solid/icons";
+
 export function WithLinks() {
   return (
     <div class="bg-muted flex h-72 flex-col overflow-y-auto rounded-lg border shadow-lg/5">

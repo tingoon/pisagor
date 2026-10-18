@@ -1,5 +1,6 @@
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { Button, EmptyState } from "@pisagor/react";
+
 export function Compound() {
   return (
     <EmptyState.Root>

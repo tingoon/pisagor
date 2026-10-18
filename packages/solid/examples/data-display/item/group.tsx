@@ -1,6 +1,7 @@
 import { Avatar, Button, Item } from "@pisagor/solid";
 import { PlusIcon } from "@squidlab/phosphor-solid/icons";
 import { people } from "./helpers";
+
 export function Group() {
   return (
     <Item.Group variant="outline">

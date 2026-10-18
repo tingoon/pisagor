@@ -1,6 +1,7 @@
 import { ArrowCounterClockwiseIcon, PlayIcon } from "@phosphor-icons/react";
 import { Button, Card, Timer } from "@pisagor/react";
 import { useState } from "react";
+
 export function Controlled() {
   const [ticks, setTicks] = useState(0);
   const [completed, setCompleted] = useState(false);
