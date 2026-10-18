@@ -12,11 +12,7 @@ import { cn } from "@pisagor/utils";
 import type { JSX, ParentProps } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
 import { useClearableInput } from "../hooks";
-import {
-  type SizeScaleProps,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 import { callEventHandler } from "../utils";
 import { Input } from "./input";
 import {
@@ -34,7 +30,7 @@ type FormControlVariant = "primary" | "secondary";
 type TextareaClassNames = VariantClassNames<TextareaRecipeSlot>;
 
 type TextareaRootProps = FieldTextareaProps &
-  SizeScaleProps & {
+  BaseTextareaProps & {
     variant?: FormControlVariant;
     /**
      * Initial value when uncontrolled. Solid has no native defaultValue on
@@ -43,7 +39,7 @@ type TextareaRootProps = FieldTextareaProps &
     defaultValue?: string | number | readonly string[];
   };
 
-export interface TextareaProps extends TextareaRootProps, BaseTextareaProps {
+export interface TextareaProps extends TextareaRootProps {
   clearable?: boolean;
   onValueChange?: (value: string) => void;
   classNames?: TextareaClassNames;

@@ -8,11 +8,7 @@ import type {
 import type { SwitchProps as BaseSwitchRootProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
 import { createSlotRecipeContext } from "../internal";
-import type {
-  FormControlVariant,
-  SizeScaleProps,
-  VariantClassNames,
-} from "../internal";
+import type { FormControlVariant, VariantClassNames } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -29,8 +25,7 @@ type SwitchClassNames = VariantClassNames<SwitchRecipeSlot>;
 type SwitchRootProps = SwitchRootPrimitiveProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-} & BaseSwitchRootProps &
-  SizeScaleProps;
+} & BaseSwitchRootProps;
 
 export interface SwitchProps extends Omit<SwitchRootProps, "children"> {
   /** Slot class names */

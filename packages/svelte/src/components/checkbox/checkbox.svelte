@@ -7,18 +7,17 @@
   import { checkboxRecipe, formControlToggleRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { CheckIcon, MinusIcon } from "phosphor-svelte";
-  import type { SizeScaleProps } from "../../internal";
+
   import { useFormControlSurface } from "../surface/use-form-control-surface";
 
   type FormControlVariant = "primary" | "secondary";
 
-  type Props = CheckboxRootProps & {
-    /** Visual shell variant. Defaults to `primary`. */ variant?: FormControlVariant;
-    onValueChange?: (value: boolean) => void;
-    /** Forwarded to the hidden input (Svelte DOM attr). */
-    tabindex?: number | null;
-  } & BaseCheckboxProps &
-    SizeScaleProps;
+  type Props = CheckboxRootProps &
+    BaseCheckboxProps & {
+      onValueChange?: (value: boolean) => void;
+      /** Forwarded to the hidden input (Svelte DOM attr). */
+      tabindex?: number | null;
+    };
 
   let {
     variant: variantProp,

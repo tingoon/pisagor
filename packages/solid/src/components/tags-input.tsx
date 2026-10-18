@@ -21,7 +21,7 @@ import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
 import { XIcon, createSlotRecipeContext } from "../internal";
-import { InputGroup, type InputGroupProps } from "./input-group";
+import { InputGroup } from "./input-group";
 import { useLocale } from "./provider/context";
 
 // #region Context
@@ -36,34 +36,26 @@ export type TagsInputRootProps = Omit<
   TagsInputRootPrimitiveProps,
   "onValueChange"
 > &
-  Pick<InputGroupProps, "size" | "variant">;
+  BaseTagsInputProps;
 
-export interface TagsInputProps extends TagsInputRootProps, BaseTagsInputProps {
+export interface TagsInputProps extends TagsInputRootProps {
   clearable?: boolean;
   placeholder?: string;
   onValueChange?: (value: string[]) => void;
 }
 
 export interface TagsInputControlProps
-  extends
-    TagsInputControlPrimitiveProps,
-    Pick<InputGroupProps, "size" | "variant"> {
+  extends TagsInputControlPrimitiveProps, BaseTagsInputProps {
   clearable?: boolean;
 }
 
 export interface TagsInputItemProps
-  extends
-    TagsInputItemPrimitiveProps,
-    Pick<InputGroupProps, "size">,
-    BaseTagsInputItemProps {
+  extends TagsInputItemPrimitiveProps, BaseTagsInputItemProps {
   showDelete?: boolean;
 }
 
 export interface TagsInputRootProviderProps
-  extends
-    TagsInputRootProviderPrimitiveProps,
-    Pick<InputGroupProps, "size">,
-    BaseTagsInputProps {
+  extends TagsInputRootProviderPrimitiveProps, BaseTagsInputProps {
   clearable?: boolean;
 }
 

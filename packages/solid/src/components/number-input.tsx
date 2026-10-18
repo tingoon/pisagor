@@ -32,10 +32,9 @@ export type NumberInputRootProps = Omit<
   NumberInputRootPrimitiveProps,
   "onValueChange"
 > &
-  Pick<InputProps, "size" | "variant">;
+  BaseNumberInputProps;
 
-export interface NumberInputProps
-  extends NumberInputRootProps, BaseNumberInputProps {
+export interface NumberInputProps extends NumberInputRootProps {
   clearable?: boolean;
   placeholder?: string;
   onValueChange?: (value: number) => void;

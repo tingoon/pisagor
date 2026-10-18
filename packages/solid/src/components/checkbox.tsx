@@ -18,7 +18,6 @@ import {
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import type { SizeScaleProps } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
@@ -30,9 +29,7 @@ export interface CheckboxGroupProps
   onValueChange?: (value: string[]) => void;
 }
 
-export interface CheckboxProps
-  extends CheckboxRootProps, BaseCheckboxProps, SizeScaleProps {
-  variant?: FormControlVariant;
+export interface CheckboxProps extends CheckboxRootProps, BaseCheckboxProps {
   onValueChange?: (value: boolean) => void;
 }
 
@@ -164,9 +161,8 @@ export function CheckboxCompoundRoot(
 /** The styled box; renders check / minus indicators when empty. */
 export function CheckboxControl(
   props: CheckboxControlProps &
-    SizeScaleProps & {
+    BaseCheckboxProps & {
       recipe?: typeof checkboxRecipe;
-      variant?: FormControlVariant;
     },
 ): JSX.Element {
   const [local, rest] = splitProps(props, [

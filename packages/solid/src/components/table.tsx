@@ -3,7 +3,7 @@ import type { TableProps as BaseTableProps } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
-import { type SizeScaleProps, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { Context: TableStylesContext, withContext } = createSlotRecipeContext({
@@ -12,8 +12,7 @@ const { Context: TableStylesContext, withContext } = createSlotRecipeContext({
 });
 // #endregion
 
-export interface TableProps
-  extends HTMLArkProps<"table">, BaseTableProps, SizeScaleProps {
+export interface TableProps extends HTMLArkProps<"table">, BaseTableProps {
   variant?: "plain" | "striped";
   isHoverable?: boolean;
 }

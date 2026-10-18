@@ -6,14 +6,13 @@ import type {
   AccordionRootProps,
 } from "@ark-ui/solid";
 import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
-import { accordionItemRecipe } from "@pisagor/recipes";
+import {
+  type AccordionItemVariantProps,
+  accordionItemRecipe,
+} from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
-import {
-  CaretDownIcon,
-  type SizeScaleProps,
-  createSlotRecipeContext,
-} from "../internal";
+import { CaretDownIcon, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
@@ -24,7 +23,7 @@ const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface LocalAccordionItemProps
-  extends AccordionItemPrimitiveProps, BaseAccordionItemProps, SizeScaleProps {}
+  extends AccordionItemPrimitiveProps, BaseAccordionItemProps {}
 
 interface AccordionPresetItem {
   value: string;
@@ -33,10 +32,9 @@ interface AccordionPresetItem {
   disabled?: boolean;
 }
 
-export interface AccordionProps extends Omit<AccordionRootProps, "children"> {
+export interface AccordionProps
+  extends Omit<AccordionRootProps, "children">, AccordionItemVariantProps {
   items?: AccordionPresetItem[];
-  /** Size scale applied to every item. */
-  size?: "sm" | "md" | "lg";
 }
 // #endregion
 

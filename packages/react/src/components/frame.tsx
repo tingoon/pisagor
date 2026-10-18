@@ -2,7 +2,7 @@ import { ark, type PolymorphicProps } from "@ark-ui/react";
 import type { FrameProps as BaseFrameRootProps } from "@pisagor/props";
 import { frameRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ComponentPropsWithRef } from "react";
-import { type SizeScaleProps, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 import { SurfaceContext } from "./surface/surface.context";
 
 // #region Context
@@ -23,10 +23,7 @@ export function FrameRoot({
   recipe = frameRecipe,
   className,
   ...rest
-}: ComponentPropsWithRef<"div"> &
-  PolymorphicProps &
-  BaseFrameRootProps &
-  SizeScaleProps) {
+}: ComponentPropsWithRef<"div"> & PolymorphicProps & BaseFrameRootProps) {
   const slots = recipe({ size });
 
   return (

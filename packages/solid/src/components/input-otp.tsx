@@ -5,12 +5,15 @@ import type {
   PinInputRootProps,
 } from "@ark-ui/solid";
 import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
-import { inputOtpRecipe, inputRootRecipe } from "@pisagor/recipes";
+import {
+  type FormControlShellVariantProps,
+  inputOtpRecipe,
+  inputRootRecipe,
+} from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
 import { createSlotRecipeContext } from "../internal";
 import { createContext } from "../utils";
-import type { InputProps } from "./input/input";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -23,10 +26,8 @@ const {
   recipe: inputOtpRecipe,
 });
 
-interface InputOTPOptions extends Pick<InputProps, "size" | "variant"> {}
-
 const { InputOTPOptionsContext, useInputOTPOptions } =
-  createContext("InputOTPOptions")<InputOTPOptions>();
+  createContext("InputOTPOptions")<FormControlShellVariantProps>();
 
 function useInputOTP() {
   const styles = useInputOTPStyles();
@@ -47,14 +48,13 @@ function useInputOTP() {
 // #endregion
 
 export type InputOTPRootProps = Omit<PinInputRootProps, "onValueChange"> &
-  Pick<InputProps, "size" | "variant">;
+  BaseInputOTPProps;
 
-export interface InputOTPProps extends InputOTPRootProps, BaseInputOTPProps {
+export interface InputOTPProps extends InputOTPRootProps {
   onValueChange?: (value: string[]) => void;
 }
 
-export type InputOTPSlotProps = PinInputInputProps &
-  Pick<InputProps, "size" | "variant">;
+export type InputOTPSlotProps = PinInputInputProps & BaseInputOTPProps;
 
 export type InputOTPSeparatorProps = HTMLArkProps<"hr">;
 

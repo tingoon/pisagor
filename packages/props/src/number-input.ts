@@ -1,7 +1,10 @@
-import type { NumberInputRecipeFn } from "@pisagor/recipes";
+import type {
+  FormControlGroupShellVariantProps,
+  NumberInputRecipeFn,
+} from "@pisagor/recipes";
 
-/** NumberInput props. */
-export interface NumberInputProps {
+/** NumberInput props. Shell variants from `formControlGroupShellRecipe`. */
+export interface NumberInputProps extends FormControlGroupShellVariantProps {
   /**
    * Style recipe override.
    *

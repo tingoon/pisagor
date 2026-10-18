@@ -44,10 +44,7 @@ export interface NumberInputProps
   value?: string;
 }
 
-export interface NumberInputControlProps extends Pick<
-  FormControlGroupShellVariantProps,
-  "variant"
-> {
+export interface NumberInputControlProps extends FormControlGroupShellVariantProps {
   class?: unknown;
   clearable?: boolean;
 }

@@ -6,7 +6,7 @@ import {
 import type { SegmentGroupProps as BaseSegmentGroupRootProps } from "@pisagor/props";
 import { segmentGroupRecipe } from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode } from "react";
-import { type SizeScaleProps, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {
@@ -31,8 +31,7 @@ interface SegmentGroupPresetItem {
 export interface SegmentGroupRootProps
   extends
     Omit<SegmentGroupRootPrimitiveProps, "onValueChange">,
-    BaseSegmentGroupRootProps,
-    SizeScaleProps {
+    BaseSegmentGroupRootProps {
   /**
    * The visual variant of the segment group.
    *

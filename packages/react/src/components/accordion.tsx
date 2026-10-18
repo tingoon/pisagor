@@ -7,9 +7,12 @@ import type {
 } from "@ark-ui/react";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import type { AccordionItemProps as BaseAccordionItemProps } from "@pisagor/props";
-import { accordionItemRecipe } from "@pisagor/recipes";
+import {
+  type AccordionItemVariantProps,
+  accordionItemRecipe,
+} from "@pisagor/recipes";
 import type { FunctionComponent, ReactNode } from "react";
-import { type SizeScaleProps, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
@@ -20,7 +23,7 @@ const { useStyles: useAccordionItem, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export interface AccordionItemProps
-  extends AccordionItemPrimitiveProps, BaseAccordionItemProps, SizeScaleProps {}
+  extends AccordionItemPrimitiveProps, BaseAccordionItemProps {}
 
 interface AccordionPresetItem {
   value: string;
@@ -29,14 +32,9 @@ interface AccordionPresetItem {
   disabled?: boolean;
 }
 
-export interface AccordionProps extends Omit<AccordionRootProps, "children"> {
+export interface AccordionProps
+  extends Omit<AccordionRootProps, "children">, AccordionItemVariantProps {
   items?: AccordionPresetItem[];
-  /**
-   * Size scale applied to every item.
-   *
-   * @defaultValue "md"
-   */
-  size?: "sm" | "md" | "lg";
 }
 // #endregion
 

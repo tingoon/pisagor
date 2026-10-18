@@ -6,7 +6,7 @@
   import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
   import { switchRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import type { SizeScaleProps } from "../../internal";
+
   import { useFormControlSurface } from "../surface/use-form-control-surface";
   import { Context } from "./switch.context";
 
@@ -15,8 +15,7 @@
   type Props = SwitchRootProps & {
     /** Visual shell variant. Defaults to `primary`. */
     variant?: FormControlVariant;
-  } & BaseSwitchProps &
-    SizeScaleProps;
+  } & BaseSwitchProps;
 
   let {
     variant: variantProp,

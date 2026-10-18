@@ -19,24 +19,21 @@
 
   const { m } = useLocale();
 
-  type FormControlVariant = "primary" | "secondary";
-
   type PasswordInputRootProps = Pick<
     PasswordInputRootPrimitiveProps,
     "defaultVisible" | "invalid" | "onVisibilityChange" | "visible"
   >;
 
   type Props = PasswordInputRootProps &
-    Omit<PasswordInputInputProps, "size" | "children"> & {
+    Omit<PasswordInputInputProps, "size" | "children"> &
+    BasePasswordInputProps & {
       clearable?: boolean;
       disabled?: boolean | null;
       onValueChange?: (value: string) => void;
       placeholder?: string | null | undefined;
       readonly?: boolean | null;
-      size?: "sm" | "md" | "lg";
       value?: string | undefined;
-      variant?: FormControlVariant;
-    } & BasePasswordInputProps;
+    };
 
   let {
     size = "md",

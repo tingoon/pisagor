@@ -6,7 +6,6 @@ import type {
 } from "@pisagor/props";
 import { skeletonRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef } from "react";
-import type { SizeScaleProps } from "../internal";
 
 // #region Types
 export interface SkeletonTextProps
@@ -41,7 +40,7 @@ export function SkeletonRoot({
   recipe = skeletonRecipe,
   className,
   ...rest
-}: SkeletonRootProps & SizeScaleProps) {
+}: SkeletonRootProps) {
   const slots = recipe({ size });
 
   return (
@@ -59,7 +58,7 @@ export function SkeletonCircle({
   recipe = skeletonRecipe,
   className,
   ...rest
-}: SkeletonCircleProps & SizeScaleProps) {
+}: SkeletonCircleProps) {
   const slots = recipe({ size });
 
   return (
@@ -78,7 +77,7 @@ export function SkeletonText({
   recipe = skeletonRecipe,
   className,
   ...rest
-}: SkeletonTextProps & SizeScaleProps) {
+}: SkeletonTextProps) {
   const slots = recipe({ size });
 
   return (

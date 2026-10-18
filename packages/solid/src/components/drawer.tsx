@@ -30,10 +30,10 @@ export interface LocalDrawerRootProps
   extends DrawerRootPrimitiveProps, BaseDrawerRootProps {}
 
 export type DrawerPositionerProps = DrawerPositionerPrimitiveProps &
-  Pick<DrawerVariantProps, "variant">;
+  DrawerVariantProps;
 
 export type DrawerContentProps = DrawerContentPrimitiveProps &
-  Pick<DrawerVariantProps, "variant">;
+  DrawerVariantProps;
 
 export interface DrawerHeaderProps extends HTMLArkProps<"div"> {
   description?: string;

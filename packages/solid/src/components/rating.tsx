@@ -11,7 +11,6 @@ import type { Component, ComponentProps, JSX } from "solid-js";
 import { createMemo, For, splitProps } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import {
-  type SizeScaleProps,
   StarIcon,
   type VariantClassNames,
   createSlotRecipeContext,
@@ -40,7 +39,6 @@ type RatingIconProps = {
 };
 
 type RatingRootProps = RatingGroupRootProps &
-  SizeScaleProps &
   BaseRatingProps & {
     variant?: FormControlVariant;
   };

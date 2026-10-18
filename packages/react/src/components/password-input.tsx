@@ -10,7 +10,6 @@ import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/prop
 import { passwordInputRecipe } from "@pisagor/recipes";
 import type { RefAttributes } from "react";
 import { useClearableInput } from "../hooks";
-import type { FormControlVariant } from "../internal";
 import {
   InputGroup,
   type InputGroupButtonProps,
@@ -36,9 +35,6 @@ export interface PasswordInputProps
     Omit<PasswordInputInputProps, "className" | "size">,
     RefAttributes<HTMLInputElement>,
     BasePasswordInputProps {
-  size?: InputGroupProps["size"];
-  /** Visual shell variant. Defaults to `primary`. */
-  variant?: FormControlVariant;
   /**
    * Whether to show a clear button when the input has a value.
    *

@@ -4,14 +4,13 @@
   import { tableRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { SizeScaleProps } from "../../internal";
+
   import { Context } from "./table.context";
 
   type Props = HTMLAttributes<HTMLTableElement> & {
     isHoverable?: boolean;
     variant?: "plain" | "striped";
-  } & BaseTableProps &
-    SizeScaleProps;
+  } & BaseTableProps;
 
   let {
     variant = "plain",

@@ -17,7 +17,7 @@ import {
   formControlToggleRecipe,
 } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
-import type { FormControlVariant, SizeScaleProps } from "../internal";
+import type { FormControlVariant } from "../internal";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Types
@@ -29,11 +29,7 @@ export interface CheckboxGroupProps
   onValueChange?: (value: string[]) => void;
 }
 
-export interface CheckboxProps
-  extends CheckboxRootProps, BaseCheckboxProps, SizeScaleProps {
-  /** Visual shell variant. Defaults to `primary`. */
-  variant?: FormControlVariant;
-}
+export interface CheckboxProps extends CheckboxRootProps, BaseCheckboxProps {}
 
 type CheckboxIndicatorPartProps = CheckboxIndicatorProps & {
   recipe?: typeof checkboxRecipe;
@@ -140,9 +136,8 @@ export function CheckboxControl({
   className,
   ...rest
 }: CheckboxControlProps &
-  SizeScaleProps & {
+  BaseCheckboxProps & {
     recipe?: typeof checkboxRecipe;
-    variant?: FormControlVariant;
   }) {
   const surfaceVariant = useFormControlSurface();
   const variant = variantProp ?? "primary";

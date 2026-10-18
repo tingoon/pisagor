@@ -1,10 +1,9 @@
 ---
 import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
-import type { SizeScaleProps } from "../../internal";
 import { withProvider } from "./item.context";
 
-type Props = HTMLAttributes<"div"> & BaseItemProps & SizeScaleProps;
+type Props = HTMLAttributes<"div"> & BaseItemProps;
 
 const root = withProvider(Astro.props, { name: "Root", slot: "base" });
 ---

@@ -2,7 +2,7 @@ import { ark, type PolymorphicProps } from "@ark-ui/react";
 import type { TableProps as BaseTableProps } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef } from "react";
-import { type SizeScaleProps, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { Context: TableStylesContext, withContext } = createSlotRecipeContext({
@@ -48,7 +48,7 @@ export function TableRoot({
   recipe = tableRecipe,
   className,
   ...rest
-}: TableProps & SizeScaleProps) {
+}: TableProps) {
   const slots = recipe({ size });
 
   return (

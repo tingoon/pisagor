@@ -33,10 +33,9 @@ export type NumberInputRootProps = Omit<
   NumberInputRootPrimitiveProps,
   "onValueChange"
 > &
-  Pick<InputProps, "size" | "variant">;
+  BaseNumberInputProps;
 
-export interface NumberInputProps
-  extends NumberInputRootProps, BaseNumberInputProps {
+export interface NumberInputProps extends NumberInputRootProps {
   /**
    * Whether to show a clear button when the input has a value.
    *

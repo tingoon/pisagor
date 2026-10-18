@@ -9,10 +9,7 @@ import {
 } from "../hooks/use-clearable-input";
 import type { ClassValue } from "../internal";
 import { InputGroup } from "./input-group";
-import type {
-  InputGroupButtonProps,
-  InputGroupProps,
-} from "./input-group/input-group-core";
+import type { InputGroupButtonProps } from "./input-group/input-group-core";
 import { useLocale } from "./provider/context";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -20,8 +17,7 @@ type ArkPart = Parameters<typeof h>[0];
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
-export interface PasswordInputProps
-  extends Pick<InputGroupProps, "size" | "variant">, BasePasswordInputProps {
+export interface PasswordInputProps extends BasePasswordInputProps {
   class?: unknown;
   clearButtonProps?: InputGroupButtonProps;
   clearable?: boolean;

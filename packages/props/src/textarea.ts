@@ -1,7 +1,7 @@
-import type { TextareaRecipeFn } from "@pisagor/recipes";
+import type { TextareaRecipeFn, TextareaVariantProps } from "@pisagor/recipes";
 
 /** Textarea props. */
-export interface TextareaProps {
+export interface TextareaProps extends TextareaVariantProps {
   /**
    * Style recipe override.
    *

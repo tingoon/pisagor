@@ -1,7 +1,7 @@
-import type { FrameRecipeFn } from "@pisagor/recipes";
+import type { FrameRecipeFn, FrameVariantProps } from "@pisagor/recipes";
 
 /** Frame props. */
-export interface FrameProps {
+export interface FrameProps extends FrameVariantProps {
   /**
    * Style recipe override.
    *

@@ -12,11 +12,7 @@ import { cn } from "@pisagor/utils";
 import type { ChangeEventHandler, ReactNode, RefAttributes } from "react";
 import { useClearableInput } from "../hooks";
 import { createSlotRecipeContext } from "../internal";
-import type {
-  FormControlVariant,
-  SizeScaleProps,
-  VariantClassNames,
-} from "../internal";
+import type { FormControlVariant, VariantClassNames } from "../internal";
 import { Input } from "./input";
 import {
   InputGroupAddon,
@@ -42,8 +38,7 @@ type TextareaRootProps = FieldTextareaProps &
     variant?: FormControlVariant;
   };
 
-export interface TextareaProps
-  extends TextareaRootProps, BaseTextareaProps, SizeScaleProps {
+export interface TextareaProps extends TextareaRootProps, BaseTextareaProps {
   /**
    * Whether to show a clear button when the textarea has a value.
    *
@@ -62,15 +57,8 @@ function TextareaProvider({
   children,
   size = "md",
   recipe = textareaRecipe,
-}: SizeScaleProps & {
+}: BaseTextareaProps & {
   children: ReactNode;
-  /**
-   * Style recipe. Defaults to `textareaRecipe` from
-   * `@pisagor/recipes/textarea`.
-   *
-   * @defaultValue textareaRecipe
-   */
-  recipe?: typeof textareaRecipe;
 }) {
   const slots = recipe({ size });
 

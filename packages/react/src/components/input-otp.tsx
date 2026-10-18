@@ -5,11 +5,14 @@ import type {
   PolymorphicProps,
 } from "@ark-ui/react";
 import type { InputOtpProps as BaseInputOTPProps } from "@pisagor/props";
-import { inputOtpRecipe, inputRootRecipe } from "@pisagor/recipes";
+import {
+  type FormControlShellVariantProps,
+  inputOtpRecipe,
+  inputRootRecipe,
+} from "@pisagor/recipes";
 import type { ComponentPropsWithRef } from "react";
 import { createContext, use } from "react";
 import { createSlotRecipeContext } from "../internal";
-import type { InputProps } from "./input/input";
 import { useFormControlSurface } from "./surface/use-form-control-surface";
 
 // #region Context
@@ -22,10 +25,7 @@ const {
   recipe: inputOtpRecipe,
 });
 
-const InputOTPOptionsContext = createContext<{
-  size?: InputProps["size"];
-  variant?: InputProps["variant"];
-}>({});
+const InputOTPOptionsContext = createContext<FormControlShellVariantProps>({});
 
 function useInputOTP() {
   return { ...useInputOTPStyles(), ...use(InputOTPOptionsContext) };
@@ -34,14 +34,13 @@ function useInputOTP() {
 
 // #region Types
 export type InputOTPRootProps = Omit<PinInputRootProps, "onValueChange"> &
-  Pick<InputProps, "size" | "variant">;
+  BaseInputOTPProps;
 
-export interface InputOTPProps extends InputOTPRootProps, BaseInputOTPProps {
+export interface InputOTPProps extends InputOTPRootProps {
   onValueChange?: (value: string[]) => void;
 }
 
-export type InputOTPSlotProps = PinInputInputProps &
-  Pick<InputProps, "size" | "variant">;
+export type InputOTPSlotProps = PinInputInputProps & BaseInputOTPProps;
 
 export type InputOTPSeparatorProps = ComponentPropsWithRef<"hr"> &
   PolymorphicProps;

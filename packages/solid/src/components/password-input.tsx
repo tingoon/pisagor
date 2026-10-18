@@ -19,8 +19,6 @@ import {
 } from "./input-group";
 import { useLocale } from "./provider/context";
 
-type FormControlVariant = "primary" | "secondary";
-
 export type PasswordInputRootProps = Pick<
   PasswordInputRootPrimitiveProps,
   "class" | "defaultVisible" | "invalid" | "onVisibilityChange" | "visible"
@@ -36,8 +34,6 @@ export interface PasswordInputProps
     PasswordInputRootProps,
     Omit<PasswordInputInputProps, "class" | "size">,
     BasePasswordInputProps {
-  size?: InputGroupProps["size"];
-  variant?: FormControlVariant;
   defaultValue?: string | number | readonly string[];
   clearable?: boolean;
   onValueChange?: (value: string) => void;

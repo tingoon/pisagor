@@ -4,14 +4,13 @@
   import { frameRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { SizeScaleProps } from "../../internal";
+
   import { setSurfaceContext } from "../surface/surface.context";
   import { Context } from "./frame.context";
 
   type Props = HTMLAttributes<HTMLDivElement> & {
     children?: import("svelte").Snippet;
-  } & BaseFrameProps &
-    SizeScaleProps;
+  } & BaseFrameProps;
 
   let {
     children,

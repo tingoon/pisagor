@@ -6,7 +6,7 @@
   import type { RatingProps as BaseRatingProps } from "@pisagor/props";
   import { ratingRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
-  import type { SizeScaleProps } from "../../internal";
+
   import { Context } from "./rating.context";
 
   type FormControlVariant = "primary" | "secondary";
@@ -14,8 +14,7 @@
   type Props = RatingGroupRootProps & {
     /** Visual shell variant. Defaults to `primary`. */
     variant?: FormControlVariant;
-  } & BaseRatingProps &
-    SizeScaleProps;
+  } & BaseRatingProps;
 
   let {
     variant: variantProp,

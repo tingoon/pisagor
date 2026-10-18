@@ -7,18 +7,17 @@ import type {
 import { skeletonRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
-import type { SizeScaleProps } from "../internal";
 
 export interface SkeletonTextProps
-  extends HTMLArkProps<"div">, BaseSkeletonTextProps, SizeScaleProps {
+  extends HTMLArkProps<"div">, BaseSkeletonTextProps {
   lines?: number;
 }
 
 export interface SkeletonRootProps
-  extends HTMLArkProps<"div">, BaseSkeletonRootProps, SizeScaleProps {}
+  extends HTMLArkProps<"div">, BaseSkeletonRootProps {}
 
 export interface SkeletonCircleProps
-  extends HTMLArkProps<"div">, BaseSkeletonCircleProps, SizeScaleProps {}
+  extends HTMLArkProps<"div">, BaseSkeletonCircleProps {}
 
 export function SkeletonRoot(props: SkeletonRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["recipe", "size", "class"]);

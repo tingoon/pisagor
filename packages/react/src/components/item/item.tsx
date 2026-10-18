@@ -2,7 +2,7 @@ import { ark, type PolymorphicProps } from "@ark-ui/react";
 import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ComponentPropsWithRef } from "react";
-import { type SizeScaleProps, createSlotRecipeContext } from "../../internal";
+import { createSlotRecipeContext } from "../../internal";
 import { useItemGroup } from "./item-group.context";
 
 // #region Context
@@ -24,10 +24,7 @@ export function ItemRoot({
   recipe = itemRecipe,
   className,
   ...rest
-}: ComponentPropsWithRef<"div"> &
-  PolymorphicProps &
-  BaseItemProps &
-  SizeScaleProps) {
+}: ComponentPropsWithRef<"div"> & PolymorphicProps & BaseItemProps) {
   const group = useItemGroup();
   const variant = variantProp ?? group?.variant ?? "default";
   const resolved = {

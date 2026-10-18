@@ -31,10 +31,10 @@ export interface DrawerRootProps
   extends DrawerRootPrimitiveProps, BaseDrawerRootProps {}
 
 export type DrawerPositionerProps = DrawerPositionerPrimitiveProps &
-  Pick<DrawerVariantProps, "variant">;
+  DrawerVariantProps;
 
 export type DrawerContentProps = DrawerContentPrimitiveProps &
-  Pick<DrawerVariantProps, "variant">;
+  DrawerVariantProps;
 
 export interface DrawerHeaderProps
   extends ComponentPropsWithRef<"div">, PolymorphicProps {

@@ -3,11 +3,7 @@ import type { EmptyStateProps as BaseEmptyStateRootProps } from "@pisagor/props"
 import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
-import {
-  type SizeScaleProps,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -18,8 +14,7 @@ const { withContext, withProvider } = createSlotRecipeContext({
 
 // #region Types
 export type EmptyStateRootProps = Omit<HTMLArkProps<"div">, "title"> &
-  BaseEmptyStateRootProps &
-  SizeScaleProps;
+  BaseEmptyStateRootProps;
 export type EmptyStateMediaProps = HTMLArkProps<"div">;
 export type EmptyStateTitleProps = HTMLArkProps<"h3">;
 export type EmptyStateDescriptionProps = HTMLArkProps<"p">;

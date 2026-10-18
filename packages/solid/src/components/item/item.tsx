@@ -3,7 +3,7 @@ import type { ItemProps as BaseItemProps } from "@pisagor/props";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import type { Component, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
-import { type SizeScaleProps, createSlotRecipeContext } from "../../internal";
+import { createSlotRecipeContext } from "../../internal";
 import { useItemGroup } from "./item-group.context";
 
 // #region Context
@@ -14,8 +14,7 @@ const {
 } = createSlotRecipeContext({ name: "Item", recipe: itemRecipe });
 // #endregion
 
-export interface ItemProps
-  extends HTMLArkProps<"div">, BaseItemProps, SizeScaleProps {}
+export interface ItemProps extends HTMLArkProps<"div">, BaseItemProps {}
 
 export type ItemMediaProps = HTMLArkProps<"div"> & ItemVariantProps;
 export type ItemHeaderProps = HTMLArkProps<"div">;

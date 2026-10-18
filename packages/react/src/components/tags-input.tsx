@@ -22,7 +22,7 @@ import type {
 import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { createSlotRecipeContext } from "../internal";
-import { InputGroup, type InputGroupProps } from "./input-group";
+import { InputGroup } from "./input-group";
 import { useLocale } from "./provider/context";
 
 // #region Context
@@ -44,9 +44,9 @@ export type TagsInputRootProps = Omit<
   TagsInputRootPrimitiveProps,
   "onValueChange"
 > &
-  Pick<InputGroupProps, "size" | "variant">;
+  BaseTagsInputProps;
 
-export interface TagsInputProps extends TagsInputRootProps, BaseTagsInputProps {
+export interface TagsInputProps extends TagsInputRootProps {
   /**
    * Whether to show the clear button.
    *
@@ -59,9 +59,7 @@ export interface TagsInputProps extends TagsInputRootProps, BaseTagsInputProps {
 }
 
 export interface TagsInputControlProps
-  extends
-    TagsInputControlPrimitiveProps,
-    Pick<InputGroupProps, "size" | "variant"> {
+  extends TagsInputControlPrimitiveProps, BaseTagsInputProps {
   /**
    * Whether to show the clear button.
    *
@@ -71,10 +69,7 @@ export interface TagsInputControlProps
 }
 
 export interface TagsInputItemProps
-  extends
-    TagsInputItemPrimitiveProps,
-    Pick<InputGroupProps, "size">,
-    BaseTagsInputItemProps {
+  extends TagsInputItemPrimitiveProps, BaseTagsInputItemProps {
   /**
    * Whether to show the clear trigger.
    *
@@ -84,10 +79,7 @@ export interface TagsInputItemProps
 }
 
 export interface TagsInputRootProviderProps
-  extends
-    TagsInputRootProviderPrimitiveProps,
-    Pick<InputGroupProps, "size">,
-    BaseTagsInputRootProviderProps {
+  extends TagsInputRootProviderPrimitiveProps, BaseTagsInputRootProviderProps {
   /**
    * Whether to show the clear button.
    *

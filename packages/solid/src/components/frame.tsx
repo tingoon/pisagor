@@ -3,7 +3,7 @@ import type { FrameProps as BaseFrameRootProps } from "@pisagor/props";
 import { frameRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
-import { type SizeScaleProps, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 import { SurfaceContext } from "./surface/surface.context";
 
 // #region Context
@@ -19,7 +19,7 @@ const {
 
 // #region Types
 export interface FrameRootProps
-  extends HTMLArkProps<"div">, BaseFrameRootProps, SizeScaleProps {}
+  extends HTMLArkProps<"div">, BaseFrameRootProps {}
 
 export type FramePanelProps = HTMLArkProps<"div">;
 export type FrameHeaderProps = HTMLArkProps<"header">;

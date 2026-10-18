@@ -14,7 +14,7 @@
   import { useCommand } from "./command.context";
 
   type Props = Omit<ComboboxInputProps, "size"> &
-    Pick<FormControlGroupShellVariantProps, "size">;
+    FormControlGroupShellVariantProps;
 
   let { size = "md", class: className, ...rest }: Props = $props();
   const styles = useCommand();

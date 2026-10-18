@@ -1,7 +1,10 @@
-import type { EmptyStateRecipeFn } from "@pisagor/recipes";
+import type {
+  EmptyStateRecipeFn,
+  EmptyStateVariantProps,
+} from "@pisagor/recipes";
 
 /** EmptyState props. */
-export interface EmptyStateProps {
+export interface EmptyStateProps extends EmptyStateVariantProps {
   /**
    * Style recipe override.
    *

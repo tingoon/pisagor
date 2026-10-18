@@ -11,11 +11,7 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactElement, ReactNode } from "react";
 import { cloneElement } from "react";
 import { createSlotRecipeContext } from "../internal";
-import type {
-  FormControlVariant,
-  SizeScaleProps,
-  VariantClassNames,
-} from "../internal";
+import type { FormControlVariant, VariantClassNames } from "../internal";
 
 // #region Context
 const {
@@ -41,8 +37,7 @@ type RatingClassNames = VariantClassNames<RatingRecipeSlot>;
 type RatingRootProps = RatingGroupRootProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-} & BaseRatingRootProps &
-  SizeScaleProps;
+} & BaseRatingRootProps;
 
 export interface RatingProps extends Omit<
   RatingRootProps,
@@ -97,7 +92,7 @@ function RatingRoot({
   recipe = ratingRecipe,
   className,
   ...rest
-}: RatingRootProps & SizeScaleProps) {
+}: RatingRootProps) {
   const resolved = {
     surfaceVariant: undefined,
     variant: variantProp ?? ("primary" as FormControlVariant),

@@ -32,8 +32,7 @@ interface TabsPresetItem {
   disabled?: boolean;
 }
 
-export interface TabsListProps
-  extends TabListProps, Pick<TabsVariantProps, "variant"> {
+export interface TabsListProps extends TabListProps, TabsVariantProps {
   /**
    * Whether to render the animated active-tab indicator.
    *
@@ -46,8 +45,7 @@ export type TabsTriggerProps = TabTriggerProps;
 
 export type TabsContentProps = TabContentProps;
 
-export interface TabsProps
-  extends Omit<TabsRootProps, "children">, Pick<TabsVariantProps, "variant"> {
+export interface TabsProps extends Omit<TabsRootProps, "children"> {
   items?: TabsPresetItem[];
   /** Whether to render the animated active-tab indicator. */
   showIndicator?: boolean;

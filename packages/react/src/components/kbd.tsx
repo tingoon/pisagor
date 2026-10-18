@@ -5,15 +5,10 @@ import type {
 } from "@pisagor/props";
 import { kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes";
 import type { ComponentPropsWithRef } from "react";
-import type { SizeScaleProps } from "../internal";
 
 // #region Types
 export interface KbdProps
-  extends
-    ComponentPropsWithRef<"kbd">,
-    PolymorphicProps,
-    BaseKbdProps,
-    SizeScaleProps {}
+  extends ComponentPropsWithRef<"kbd">, PolymorphicProps, BaseKbdProps {}
 
 export interface KbdGroupProps
   extends ComponentPropsWithRef<"div">, PolymorphicProps, BaseKbdGroupProps {}

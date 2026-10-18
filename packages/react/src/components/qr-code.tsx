@@ -7,7 +7,7 @@ import type {
 import type { QrCodeProps as BaseQrCodeRootProps } from "@pisagor/props";
 import { qrCodeRecipe } from "@pisagor/recipes";
 import type { FunctionComponent } from "react";
-import { type SizeScaleProps, createSlotRecipeContext } from "../internal";
+import { createSlotRecipeContext } from "../internal";
 
 // #region Context
 const {
@@ -22,7 +22,7 @@ const {
 
 // #region Types
 export interface QrCodeRootProps
-  extends QrCodeRootPrimitiveProps, BaseQrCodeRootProps, SizeScaleProps {}
+  extends QrCodeRootPrimitiveProps, BaseQrCodeRootProps {}
 
 export type QrCodeDownloadProps = QrCodeDownloadTriggerProps;
 // #endregion

@@ -4,12 +4,10 @@
   import { kbdRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import type { HTMLAttributes } from "svelte/elements";
-  import type { SizeScaleProps } from "../../internal";
 
   type Props = HTMLAttributes<HTMLElement> & {
     children?: import("svelte").Snippet;
-  } & BaseKbdProps &
-    SizeScaleProps;
+  } & BaseKbdProps;
 
   let {
     variant = "default",

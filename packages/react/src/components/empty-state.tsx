@@ -7,11 +7,7 @@ import type {
   FunctionComponent,
   ReactNode,
 } from "react";
-import {
-  type SizeScaleProps,
-  type VariantClassNames,
-  createSlotRecipeContext,
-} from "../internal";
+import { type VariantClassNames, createSlotRecipeContext } from "../internal";
 
 // #region Context
 const { withContext, withProvider } = createSlotRecipeContext({
@@ -26,8 +22,7 @@ export const EmptyStateRoot = withProvider(ark.div, {
   slot: "base",
 }) as FunctionComponent<
   Omit<ComponentPropsWithRef<"div"> & PolymorphicProps, "title"> &
-    BaseEmptyStateRootProps &
-    SizeScaleProps
+    BaseEmptyStateRootProps
 >;
 
 export const EmptyStateMedia = withContext(ark.div, {

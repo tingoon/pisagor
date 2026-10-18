@@ -4,10 +4,8 @@
     type TagsInputControlProps as ArkControlProps,
     useTagsInputContext,
   } from "@ark-ui/svelte";
-  import {
-    type FormControlGroupShellVariantProps,
-    formControlGroupShellRecipe,
-  } from "@pisagor/recipes";
+  import type { TagsInputProps as BaseTagsInputProps } from "@pisagor/props";
+  import { formControlGroupShellRecipe } from "@pisagor/recipes";
   import { cn } from "@pisagor/utils";
   import { useLocale } from "../provider/context";
   import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -19,7 +17,7 @@
   type FormControlVariant = "primary" | "secondary";
 
   type Props = ArkControlProps &
-    Pick<FormControlGroupShellVariantProps, "size" | "variant"> & {
+    BaseTagsInputProps & {
       clearable?: boolean;
     };
 
