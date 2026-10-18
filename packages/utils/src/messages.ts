@@ -100,9 +100,6 @@ export type MessageKey = keyof typeof defaultMessages;
 /** Partial UI message overrides, merged over the English defaults. */
 export type Messages = Partial<Record<MessageKey, string>>;
 
-/** Text direction of a locale. */
-export type LocaleDir = "ltr" | "rtl";
-
 /**
  * Message lookup returned as `useLocale().m`. Returns `override` when it is not
  * `null`/`undefined`, otherwise the resolved message for `key`.
@@ -114,10 +111,8 @@ export interface MessageLookup {
 
 /** Locale settings accepted by `Provider` and `Provider.Locale`. */
 export interface LocaleConfig {
-  /** BCP 47 locale for Ark components (date / number formatting). */
+  /** BCP 47 locale, fed to Ark's `LocaleProvider` (formatting, `dir`). */
   locale?: string;
-  /** Text direction. Derived from `locale` when omitted. */
-  dir?: LocaleDir;
   /** Partial UI message overrides merged over the parent `Provider`. */
   messages?: Messages;
 }
@@ -126,63 +121,16 @@ export interface LocaleConfig {
 export interface LocaleContextValue {
   /** BCP 47 locale. Defaults to `en-US`. */
   locale: string;
-  /** Text direction, derived from `locale` unless explicitly given. */
-  dir: LocaleDir;
+  /** Text direction, read from Ark's locale context. */
+  dir: "ltr" | "rtl";
   /** Every UI message: English defaults merged with `Provider` overrides. */
   messages: Record<MessageKey, string>;
   /** Look up a message, preferring `override` when it is set. */
   m: MessageLookup;
 }
 
-const RTL_SCRIPTS = new Set([
-  "Adlm",
-  "Arab",
-  "Armi",
-  "Avst",
-  "Hebr",
-  "Mand",
-  "Mend",
-  "Nkoo",
-  "Rohg",
-  "Samr",
-  "Syrc",
-  "Thaa",
-]);
-
-const RTL_LANGS = new Set([
-  "ae",
-  "ar",
-  "arc",
-  "bcc",
-  "bqi",
-  "ckb",
-  "dv",
-  "fa",
-  "glk",
-  "he",
-  "ku",
-  "mzn",
-  "nqo",
-  "pnb",
-  "ps",
-  "sd",
-  "ug",
-  "ur",
-  "yi",
-]);
-
-/** Text direction of a BCP 47 locale (same rules as Ark's `LocaleProvider`). */
-export function getLocaleDir(locale: string): LocaleDir {
-  try {
-    const script = new Intl.Locale(locale).maximize().script;
-    if (script) return RTL_SCRIPTS.has(script) ? "rtl" : "ltr";
-  } catch {
-    // Invalid tag or no Intl.Locale: fall back to the language subtag.
-  }
-  return RTL_LANGS.has(locale.split(/[-_]/)[0]?.toLowerCase() ?? "")
-    ? "rtl"
-    : "ltr";
-}
+/** Locale context stored by `Provider` (`dir` is read from Ark separately). */
+export type ResolvedLocale = Omit<LocaleContextValue, "dir">;
 
 /** Bind a message lookup to a fully resolved message record. */
 export function createMessageLookup(
@@ -193,17 +141,14 @@ export function createMessageLookup(
 }
 
 /**
- * Resolve a locale context from `config` merged over `parent` (or the English
- * defaults). A new `locale` without `dir` re-derives the direction.
+ * Resolve the stored locale context from `config` merged over `parent` (or the
+ * English defaults).
  */
 export function resolveLocale(
   config: LocaleConfig = {},
-  parent?: LocaleContextValue,
-): LocaleContextValue {
+  parent?: ResolvedLocale,
+): ResolvedLocale {
   const locale = config.locale ?? parent?.locale ?? "en-US";
-  const dir =
-    config.dir ??
-    (config.locale == null && parent ? parent.dir : getLocaleDir(locale));
   const overrides: Messages = {};
   for (const [key, value] of Object.entries(config.messages ?? {})) {
     if (value != null) overrides[key as MessageKey] = value;
@@ -212,11 +157,11 @@ export function resolveLocale(
     ...(parent?.messages ?? defaultMessages),
     ...overrides,
   } as Record<MessageKey, string>;
-  return { dir, locale, m: createMessageLookup(messages), messages };
+  return { locale, m: createMessageLookup(messages), messages };
 }
 
-/** Default locale context: `en-US`, `ltr`, English messages. */
-export const defaultLocale: LocaleContextValue = resolveLocale();
+/** Default stored locale context: `en-US`, English messages. */
+export const defaultLocale: ResolvedLocale = resolveLocale();
 
 /** Replace `{name}` placeholders in a message. */
 export function formatMessage(
@@ -247,7 +192,10 @@ export interface ProviderContextValue {
 }
 
 /** Presence + resolved defaults shared with nested Providers. */
-export type ProviderConfig = ProviderContextValue;
+export interface ProviderConfig {
+  locale: ResolvedLocale;
+  motion: MotionConfig;
+}
 
 export const defaultProviderConfig: ProviderConfig = {
   locale: defaultLocale,
@@ -256,8 +204,8 @@ export const defaultProviderConfig: ProviderConfig = {
 
 /** Build the `useProviderValue()` value, filling in defaults. */
 export function resolveProviderValue(
-  locale: LocaleContextValue | undefined,
+  locale: LocaleContextValue,
   motion: MotionConfig | undefined,
 ): ProviderContextValue {
-  return { locale: locale ?? defaultLocale, motion: motion ?? defaultMotion };
+  return { locale, motion: motion ?? defaultMotion };
 }

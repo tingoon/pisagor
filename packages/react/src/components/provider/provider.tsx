@@ -1,4 +1,7 @@
-import { LocaleProvider as ArkLocaleProvider } from "@ark-ui/react";
+import {
+  LocaleProvider as ArkLocaleProvider,
+  useLocaleContext,
+} from "@ark-ui/react";
 import { IconContext } from "@phosphor-icons/react";
 import { defaultMotion, resolveLocale } from "@pisagor/utils";
 import type { LocaleConfig, MotionConfig } from "@pisagor/utils";
@@ -9,9 +12,9 @@ import {
   LocaleContext,
   MotionContext,
   ProviderContext,
-  useLocale,
   useMotion,
   useProvider,
+  useResolvedLocale,
 } from "./context";
 
 // #region Types
@@ -21,10 +24,7 @@ export interface ProviderProps extends LocaleConfig {
   motion?: Partial<MotionConfig>;
 }
 
-/**
- * `locale`, `dir` and partial `messages` merged over the parent `Provider` for
- * a subtree.
- */
+/** `locale` and partial `messages` merged over the parent `Provider`. */
 export type LocaleProviderProps = PropsWithChildren<LocaleConfig>;
 
 export type MotionProviderProps = PropsWithChildren<Partial<MotionConfig>>;
@@ -33,43 +33,51 @@ export interface ToasterProviderProps extends ToasterProps {}
 // #endregion
 
 // #region Parts
+/** Mirrors Phosphor icons and sets `dir` from the nearest Ark locale. */
+function LocaleDir({ children }: { children: ReactNode }) {
+  const { dir } = useLocaleContext();
+
+  return (
+    <IconContext
+      value={{
+        color: "currentColor",
+        mirrored: dir === "rtl",
+        size: "1em",
+        weight: "regular",
+      }}
+    >
+      <div
+        className="contents"
+        data-part="locale"
+        data-scope="provider"
+        dir={dir}
+      >
+        {children}
+      </div>
+    </IconContext>
+  );
+}
+
 /**
- * Override the locale, direction and/or UI messages for a subtree. Feeds Ark's
- * `LocaleProvider` and mirrors Phosphor icons for `rtl`.
+ * Override the locale and/or UI messages for a subtree. Feeds Ark's
+ * `LocaleProvider`, which derives `dir`.
  */
 export function LocaleProvider({
   children,
-  dir,
   locale,
   messages,
 }: LocaleProviderProps) {
-  const parentLocale = useLocale();
+  const parentLocale = useResolvedLocale();
 
   const value = useMemo(
-    () => resolveLocale({ dir, locale, messages }, parentLocale),
-    [dir, locale, messages, parentLocale],
+    () => resolveLocale({ locale, messages }, parentLocale),
+    [locale, messages, parentLocale],
   );
 
   return (
     <ArkLocaleProvider locale={value.locale}>
       <LocaleContext value={value}>
-        <IconContext
-          value={{
-            color: "currentColor",
-            mirrored: value.dir === "rtl",
-            size: "1em",
-            weight: "regular",
-          }}
-        >
-          <div
-            className="contents"
-            data-part="locale"
-            data-scope="provider"
-            dir={value.dir}
-          >
-            {children}
-          </div>
-        </IconContext>
+        <LocaleDir>{children}</LocaleDir>
       </LocaleContext>
     </ArkLocaleProvider>
   );
@@ -107,32 +115,26 @@ export function ToasterProvider(props: ToasterProviderProps) {
   return <Toaster {...props} />;
 }
 
-function ProviderRoot({
-  children,
-  dir,
-  locale,
-  messages,
-  motion,
-}: ProviderProps) {
+function ProviderRoot({ children, locale, messages, motion }: ProviderProps) {
   const parentConfig = useProvider();
   const parentMotion = useMotion();
-  const parentLocale = useLocale();
+  const parentLocale = useResolvedLocale();
   const root = !parentConfig;
 
   const config = useMemo(
     () => ({
-      locale: resolveLocale({ dir, locale, messages }, parentLocale),
+      locale: resolveLocale({ locale, messages }, parentLocale),
       motion: mergeDeep(
         mergeDeep(defaultMotion, parentMotion ?? {}),
         omitBy(motion ?? {}, isNullish),
       ) as MotionConfig,
     }),
-    [dir, locale, messages, parentLocale, motion, parentMotion],
+    [locale, messages, parentLocale, motion, parentMotion],
   );
 
   return (
     <ProviderContext value={config}>
-      <LocaleProvider dir={dir} locale={locale} messages={messages}>
+      <LocaleProvider locale={locale} messages={messages}>
         <MotionProvider {...motion}>
           {root ? <ToasterProvider /> : null}
           {children}

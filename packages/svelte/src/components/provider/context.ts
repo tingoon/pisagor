@@ -1,3 +1,4 @@
+import { useLocaleContext } from "@ark-ui/svelte";
 import {
   defaultLocale,
   defaultMotion,
@@ -10,6 +11,7 @@ import type {
   MotionConfig,
   ProviderConfig,
   ProviderContextValue,
+  ResolvedLocale,
 } from "@pisagor/utils";
 import { isNullish, mergeDeep, omitBy } from "remeda";
 import { createContext } from "../../utils/create-context";
@@ -17,7 +19,6 @@ import { createContext } from "../../utils/create-context";
 export type {
   LocaleConfig,
   LocaleContextValue,
-  LocaleDir,
   MessageKey,
   MessageLookup,
   Messages,
@@ -25,7 +26,7 @@ export type {
   ProviderContextValue,
 } from "@pisagor/utils";
 
-const localeCtx = createContext("Locale")<LocaleContextValue>({
+const localeCtx = createContext("Locale")<ResolvedLocale>({
   defaultValue: defaultLocale,
   strict: false,
 });
@@ -42,12 +43,30 @@ const providerCtx = createContext("Provider")<ProviderConfig>({
 /**
  * Nearest locale context: `{ locale, dir, messages, m }`. Call once during
  * component init (context is only readable there) and use `m(key, override)` in
- * markup, e.g. `m("spinner.loading", ariaLabel)`. The properties are getters
- * over the `Provider` state, so markup stays reactive (avoid destructuring
- * `locale` / `dir` / `messages` in the script). Safe outside a `Provider`
- * (English defaults, `en-US`, `ltr`).
+ * markup, e.g. `m("spinner.loading", ariaLabel)`. `dir` comes from Ark's locale
+ * context. The properties are getters over the current state, so markup stays
+ * reactive (avoid destructuring `locale` / `dir` / `messages` in the script).
+ * Safe outside a `Provider` (English defaults, `en-US`, `ltr`).
  */
-export const useLocale = (): LocaleContextValue =>
+export function useLocale(): LocaleContextValue {
+  const value = useResolvedLocale();
+  const ark = useLocaleContext();
+  return {
+    get dir() {
+      return ark().dir;
+    },
+    get locale() {
+      return value.locale;
+    },
+    get messages() {
+      return value.messages;
+    },
+    m: value.m,
+  };
+}
+
+/** Stored locale (no `dir`), for nested `Provider` merging. */
+export const useResolvedLocale = (): ResolvedLocale =>
   localeCtx.getContext() ?? defaultLocale;
 
 export const useMotion = (): MotionConfig =>
@@ -66,15 +85,12 @@ export function useProviderValue(): ProviderContextValue {
 
 /**
  * Wrap a resolved locale getter (e.g. a `$derived` value) in a getter object so
- * `locale`, `dir`, `messages` and `m` stay reactive for consumers.
+ * `locale`, `messages` and `m` stay reactive for consumers.
  */
 export function createLocaleValue(
-  resolved: () => LocaleContextValue,
-): LocaleContextValue {
+  resolved: () => ResolvedLocale,
+): ResolvedLocale {
   return {
-    get dir() {
-      return resolved().dir;
-    },
     get locale() {
       return resolved().locale;
     },
@@ -86,7 +102,7 @@ export function createLocaleValue(
   };
 }
 
-export function setLocaleValue(value: LocaleContextValue): LocaleContextValue {
+export function setLocaleValue(value: ResolvedLocale): ResolvedLocale {
   localeCtx.setContext(value);
   return value;
 }

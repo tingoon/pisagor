@@ -5,7 +5,6 @@ import ProviderRoot from "./provider.svelte";
 export type {
   LocaleConfig,
   LocaleContextValue,
-  LocaleDir,
   MessageKey,
   MessageLookup,
   Messages,

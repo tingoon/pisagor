@@ -1,4 +1,7 @@
-import { LocaleProvider as ArkLocaleProvider } from "@ark-ui/solid";
+import {
+  LocaleProvider as ArkLocaleProvider,
+  useLocaleContext,
+} from "@ark-ui/solid";
 import { defaultMotion, resolveLocale } from "@pisagor/utils";
 import type { LocaleConfig, MotionConfig } from "@pisagor/utils";
 import { isNullish, mergeDeep, omitBy } from "remeda";
@@ -10,9 +13,9 @@ import {
   LocaleContext,
   MotionContext,
   ProviderContext,
-  useLocale,
   useMotion,
   useProvider,
+  useResolvedLocale,
 } from "./context";
 
 // #region Types
@@ -21,10 +24,7 @@ export interface ProviderProps extends ParentProps, LocaleConfig {
   motion?: Partial<MotionConfig>;
 }
 
-/**
- * `locale`, `dir` and partial `messages` merged over the parent `Provider` for
- * a subtree.
- */
+/** `locale` and partial `messages` merged over the parent `Provider`. */
 export interface LocaleProviderProps extends ParentProps, LocaleConfig {}
 
 export type MotionProviderProps = ParentProps & Partial<MotionConfig>;
@@ -33,31 +33,43 @@ export type ToasterProviderProps = ToasterProps;
 // #endregion
 
 // #region Parts
-/** Override the locale, direction and/or UI messages for a subtree. */
+/**
+ * Override the locale and/or UI messages for a subtree. Feeds Ark's
+ * `LocaleProvider`, which derives `dir`.
+ */
 export function LocaleProvider(props: LocaleProviderProps): JSX.Element {
-  const [local] = splitProps(props, ["children", "dir", "locale", "messages"]);
-  const parentLocale = useLocale();
-  const resolved = createMemo(() =>
-    resolveLocale(
-      { dir: local.dir, locale: local.locale, messages: local.messages },
-      parentLocale,
+  const [local] = splitProps(props, ["children", "locale", "messages"]);
+  const parentLocale = useResolvedLocale();
+  const value = createLocaleValue(
+    createMemo(() =>
+      resolveLocale(
+        { locale: local.locale, messages: local.messages },
+        parentLocale,
+      ),
     ),
   );
-  const value = createLocaleValue(resolved);
 
   return (
     <ArkLocaleProvider locale={value.locale}>
       <LocaleContext value={value}>
-        <div
-          data-part="locale"
-          data-scope="provider"
-          dir={value.dir}
-          style={{ display: "contents" }}
-        >
-          {local.children}
-        </div>
+        <LocaleDir>{local.children}</LocaleDir>
       </LocaleContext>
     </ArkLocaleProvider>
+  );
+}
+
+/** Sets `dir` from the nearest Ark locale. */
+function LocaleDir(props: ParentProps): JSX.Element {
+  const locale = useLocaleContext();
+  return (
+    <div
+      data-part="locale"
+      data-scope="provider"
+      dir={locale().dir}
+      style={{ display: "contents" }}
+    >
+      {props.children}
+    </div>
   );
 }
 
@@ -93,20 +105,19 @@ export function ToasterProvider(props: ToasterProviderProps): JSX.Element {
 function ProviderRoot(props: ProviderProps): JSX.Element {
   const [local] = splitProps(props, [
     "children",
-    "dir",
     "locale",
     "messages",
     "motion",
   ]);
   const parentConfig = useProvider();
   const parentMotion = useMotion();
-  const parentLocale = useLocale();
+  const parentLocale = useResolvedLocale();
   const root = !parentConfig;
 
   const locale = createLocaleValue(
     createMemo(() =>
       resolveLocale(
-        { dir: local.dir, locale: local.locale, messages: local.messages },
+        { locale: local.locale, messages: local.messages },
         parentLocale,
       ),
     ),
@@ -123,11 +134,7 @@ function ProviderRoot(props: ProviderProps): JSX.Element {
 
   return (
     <ProviderContext value={config}>
-      <LocaleProvider
-        dir={local.dir}
-        locale={local.locale}
-        messages={local.messages}
-      >
+      <LocaleProvider locale={local.locale} messages={local.messages}>
         <MotionProvider {...local.motion}>
           <Show when={root}>
             <ToasterProvider />

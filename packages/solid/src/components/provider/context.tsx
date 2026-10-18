@@ -1,3 +1,4 @@
+import { useLocaleContext } from "@ark-ui/solid";
 import {
   defaultLocale,
   defaultMotion,
@@ -10,6 +11,7 @@ import type {
   MotionConfig,
   ProviderConfig,
   ProviderContextValue,
+  ResolvedLocale,
 } from "@pisagor/utils";
 import type { Accessor } from "solid-js";
 import { createContext } from "../../utils";
@@ -17,7 +19,6 @@ import { createContext } from "../../utils";
 export type {
   LocaleConfig,
   LocaleContextValue,
-  LocaleDir,
   MessageKey,
   MessageLookup,
   Messages,
@@ -25,26 +26,21 @@ export type {
   ProviderContextValue,
 } from "@pisagor/utils";
 
-const { LocaleContext, useLocale: useLocaleContextValue } = createContext(
+export const { LocaleContext, useLocale: useResolvedLocale } = createContext(
   "Locale",
-)<LocaleContextValue>({
+)<ResolvedLocale>({
   defaultValue: defaultLocale,
   strict: false,
 });
 
-export { LocaleContext };
-
 /**
- * Wrap a resolved locale accessor in a getter object so `locale`, `dir`,
- * `messages` and `m` stay reactive for consumers.
+ * Wrap a resolved locale accessor in a getter object so `locale`, `messages`
+ * and `m` stay reactive for consumers.
  */
 export function createLocaleValue(
-  resolved: Accessor<LocaleContextValue>,
-): LocaleContextValue {
+  resolved: Accessor<ResolvedLocale>,
+): ResolvedLocale {
   return {
-    get dir() {
-      return resolved().dir;
-    },
     get locale() {
       return resolved().locale;
     },
@@ -59,13 +55,26 @@ export function createLocaleValue(
 /**
  * Nearest locale context: `{ locale, dir, messages, m }`. Call once during
  * component setup and use `m(key, override)` in JSX, e.g. `m("spinner.loading",
- * local.ariaLabel)`. `m` and the getters read the current `Provider` values, so
- * they stay reactive (avoid destructuring `locale` / `dir` / `messages` outside
- * a tracked scope). Safe outside a `Provider` (English defaults, `en-US`,
- * `ltr`).
+ * local.ariaLabel)`. `dir` comes from Ark's locale context. `m` and the getters
+ * read the current values, so they stay reactive (avoid destructuring `locale`
+ * / `dir` / `messages` outside a tracked scope). Safe outside a `Provider`
+ * (English defaults, `en-US`, `ltr`).
  */
 export function useLocale(): LocaleContextValue {
-  return useLocaleContextValue() ?? defaultLocale;
+  const value = useResolvedLocale() ?? defaultLocale;
+  const ark = useLocaleContext();
+  return {
+    get dir() {
+      return ark().dir;
+    },
+    get locale() {
+      return value.locale;
+    },
+    get messages() {
+      return value.messages;
+    },
+    m: value.m,
+  };
 }
 
 export const { MotionContext, useMotion } = createContext(

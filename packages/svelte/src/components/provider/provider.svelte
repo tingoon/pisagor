@@ -7,9 +7,9 @@
   import {
     createLocaleValue,
     setProviderConfig,
-    useLocale,
     useMotion,
     useProvider,
+    useResolvedLocale,
   } from "./context";
   import LocaleProvider from "./locale.svelte";
   import MotionProvider from "./motion.svelte";
@@ -20,15 +20,15 @@
     motion?: Partial<MotionConfig>;
   };
 
-  let { children, dir, locale, messages, motion }: Props = $props();
+  let { children, locale, messages, motion }: Props = $props();
 
   const parentConfig = useProvider();
-  const parentLocale = useLocale();
+  const parentLocale = useResolvedLocale();
   const parentMotion = useMotion();
   const root = !parentConfig;
 
   const resolvedLocale = $derived(
-    resolveLocale({ dir, locale, messages }, parentLocale),
+    resolveLocale({ locale, messages }, parentLocale),
   );
   const resolvedMotion = $derived(
     mergeDeep(
@@ -45,7 +45,7 @@
   });
 </script>
 
-<LocaleProvider {dir} {locale} {messages}>
+<LocaleProvider {locale} {messages}>
   <MotionProvider disabled={motion?.disabled}>
     {#if root}
       <Toaster />

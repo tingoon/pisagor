@@ -1,11 +1,9 @@
-import { LocaleProvider as ArkLocaleProvider } from "@ark-ui/vue";
+import {
+  LocaleProvider as ArkLocaleProvider,
+  useLocaleContext,
+} from "@ark-ui/vue";
 import { defaultMotion, resolveLocale } from "@pisagor/utils";
-import type {
-  LocaleConfig,
-  LocaleDir,
-  Messages,
-  MotionConfig,
-} from "@pisagor/utils";
+import type { LocaleConfig, Messages, MotionConfig } from "@pisagor/utils";
 import { isNullish, mergeDeep, omitBy } from "remeda";
 import { computed, defineComponent, h, type PropType, provide } from "vue";
 import { Toaster } from "../toast";
@@ -13,9 +11,9 @@ import {
   LocaleKey,
   MotionKey,
   ProviderKey,
-  useLocale,
   useMotion,
   useProvider,
+  useResolvedLocale,
 } from "./context";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -25,31 +23,49 @@ export interface ProviderProps extends LocaleConfig {
   motion?: Partial<MotionConfig>;
 }
 
-/**
- * `locale`, `dir` and partial `messages` merged over the parent `Provider` for
- * a subtree.
- */
+/** `locale` and partial `messages` merged over the parent `Provider`. */
 export type LocaleProviderProps = LocaleConfig;
 export type MotionProviderProps = Partial<MotionConfig>;
 // #endregion
 
 const localeProps = {
-  dir: { default: undefined, type: String as PropType<LocaleDir> },
   locale: { default: undefined, type: String },
   messages: { default: undefined, type: Object as PropType<Messages> },
 };
 
 // #region Parts
-/** Override the locale, direction and/or UI messages for a subtree. */
+/** Sets `dir` from the nearest Ark locale. */
+const LocaleDir = defineComponent({
+  name: "PisagorLocaleDir",
+  setup(_, { slots }) {
+    const locale = useLocaleContext();
+    return () =>
+      h(
+        "div",
+        {
+          "data-part": "locale",
+          "data-scope": "provider",
+          dir: locale.value.dir,
+          style: "display: contents",
+        },
+        slots.default?.(),
+      );
+  },
+});
+
+/**
+ * Override the locale and/or UI messages for a subtree. Feeds Ark's
+ * `LocaleProvider`, which derives `dir`.
+ */
 export const LocaleProvider = defineComponent({
   name: "PisagorLocaleProvider",
   props: localeProps,
   setup(props, { slots }) {
-    const parentLocale = useLocale();
+    const parentLocale = useResolvedLocale();
     const config = computed(() =>
       resolveLocale(
-        { dir: props.dir, locale: props.locale, messages: props.messages },
-        parentLocale,
+        { locale: props.locale, messages: props.messages },
+        parentLocale(),
       ),
     );
     provide(LocaleKey, config);
@@ -60,16 +76,7 @@ export const LocaleProvider = defineComponent({
         { locale: config.value.locale },
         {
           default: () => [
-            h(
-              "div",
-              {
-                "data-part": "locale",
-                "data-scope": "provider",
-                dir: config.value.dir,
-                style: "display: contents",
-              },
-              slots.default?.(),
-            ),
+            h(LocaleDir, null, { default: () => slots.default?.() }),
           ],
         },
       );
@@ -125,14 +132,14 @@ const ProviderRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const parentConfig = useProvider();
-    const parentLocale = useLocale();
+    const parentLocale = useResolvedLocale();
     const parentMotion = useMotion();
     const root = !parentConfig;
 
     const config = computed(() => ({
       locale: resolveLocale(
-        { dir: props.dir, locale: props.locale, messages: props.messages },
-        parentLocale,
+        { locale: props.locale, messages: props.messages },
+        parentLocale(),
       ),
       motion: mergeDeep(
         mergeDeep(defaultMotion, parentMotion),
@@ -147,7 +154,6 @@ const ProviderRoot = defineComponent({
         LocaleProvider,
         {
           ...attrs,
-          dir: props.dir,
           locale: props.locale,
           messages: props.messages,
         },

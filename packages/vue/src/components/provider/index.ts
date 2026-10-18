@@ -1,7 +1,6 @@
 export type {
   LocaleConfig,
   LocaleContextValue,
-  LocaleDir,
   MessageKey,
   MessageLookup,
   Messages,
