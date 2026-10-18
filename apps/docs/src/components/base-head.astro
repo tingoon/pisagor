@@ -21,6 +21,7 @@ const fullTitle =
 /** Absolute URL from `site` + current path (Astro.url already includes `base`). */
 function absolute(path: string): string | undefined {
   if (!Astro.site) return undefined;
+
   return new URL(path, Astro.site.origin).href;
 }
 

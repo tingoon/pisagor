@@ -31,6 +31,7 @@ const { InputOTPOptionsContext, useInputOTPOptions } =
 function useInputOTP() {
   const styles = useInputOTPStyles();
   const options = useInputOTPOptions();
+
   return {
     get size() {
       return options.size;

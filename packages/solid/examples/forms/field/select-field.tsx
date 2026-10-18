@@ -4,6 +4,7 @@ export function SelectField() {
   const collection = createListCollection({
     items: ["Brazil", "Mexico", "Ireland"],
   });
+
   return (
     <Field>
       <Field.Label>Country</Field.Label>

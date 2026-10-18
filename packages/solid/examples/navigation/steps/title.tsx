@@ -2,6 +2,7 @@ import { Steps } from "@pisagor/solid";
 
 export function Title() {
   const items = ["Info", "Docs", "Team"];
+
   return (
     <Steps count={items.length}>
       <Steps.List>

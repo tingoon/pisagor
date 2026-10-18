@@ -252,6 +252,7 @@ export function DialogShorthand(props: DialogProps): JSX.Element {
             if (typeof local.trigger === "function") {
               return local.trigger(triggerProps());
             }
+
             return (
               <ark.span {...triggerProps()} style={{ display: "contents" }}>
                 {local.trigger}

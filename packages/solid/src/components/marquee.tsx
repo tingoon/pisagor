@@ -61,6 +61,7 @@ export function MarqueeRoot(props: MarqueeRootProps): JSX.Element {
 export function MarqueeContent(props: MarqueeContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useMarquee();
+
   return (
     <MarqueePrimitive.Viewport class={styles.slots.viewport()}>
       <MarqueePrimitive.Content
@@ -83,6 +84,7 @@ export const MarqueeEdge: Component<MarqueeEdgeProps> = withContext(
 
 export function MarqueeShorthand(props: MarqueeProps): JSX.Element {
   const [local, rest] = splitProps(props, ["items"]);
+
   return (
     <MarqueeRoot {...rest}>
       <Show when={local.items}>

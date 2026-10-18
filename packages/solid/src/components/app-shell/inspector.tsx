@@ -134,6 +134,7 @@ export function AppShellInspectorHeader(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useAppShellStyles();
+
   return (
     <div
       {...rest}
@@ -149,6 +150,7 @@ export function AppShellInspectorContent(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useAppShellStyles();
+
   return (
     <ScrollArea class={styles.slots.scrollArea()}>
       <div
@@ -166,6 +168,7 @@ export function AppShellInspectorFooter(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useAppShellStyles();
+
   return (
     <div
       {...rest}

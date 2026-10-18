@@ -18,6 +18,7 @@ export function whenVisible(
     isNearViewport(element, rootMarginPx)
   ) {
     callback();
+
     return () => {};
   }
 
@@ -47,6 +48,7 @@ export function whenVisible(
 function isNearViewport(element: Element, marginPx: number): boolean {
   const rect = element.getBoundingClientRect();
   const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+
   return rect.top < vh + marginPx && rect.bottom > -marginPx;
 }
 
@@ -56,5 +58,6 @@ function parseRootMarginY(rootMargin: string | undefined): number | undefined {
   const first = rootMargin.trim().split(/\s+/)[0];
   if (!first?.endsWith("px")) return undefined;
   const n = Number.parseFloat(first);
+
   return Number.isFinite(n) ? Math.abs(n) : undefined;
 }

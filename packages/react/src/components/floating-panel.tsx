@@ -35,6 +35,7 @@ const { Context: FloatingPanelStylesContext } = createSlotRecipeContext({
 /** Optional fallback so consumers outside Root still resolve slots. */
 function useFloatingPanelSlots() {
   const styles = use(FloatingPanelStylesContext);
+
   return styles?.slots ?? floatingPanelRecipe();
 }
 // #endregion
@@ -176,6 +177,7 @@ export function FloatingPanelMinimize({
   ...rest
 }: FloatingPanelMinimizeProps) {
   const { m } = useLocale();
+
   return (
     <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="minimized">
       <Button
@@ -195,6 +197,7 @@ export function FloatingPanelMaximize({
   ...rest
 }: FloatingPanelMaximizeProps) {
   const { m } = useLocale();
+
   return (
     <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="maximized">
       <Button

@@ -64,6 +64,7 @@ TreeViewFileIconsContext.displayName = "TreeViewFileIconsContext";
 function useTreeView() {
   const styles = useTreeViewStyles();
   const fileIcons = use(TreeViewFileIconsContext);
+
   return { ...styles, fileIcons };
 }
 
@@ -355,6 +356,7 @@ export function TreeViewItemText({
   const getFileIcon = (value: string): JSX.ElementType => {
     const extension = getFileExtension(value);
     const resolved = extension ? fileIcons?.[extension] : undefined;
+
     return resolved ?? Icon;
   };
 

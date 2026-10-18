@@ -19,6 +19,7 @@ function random(): number {
   seed = (seed + 0x6d2b79f5) | 0;
   let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
   t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+
   return ((t ^ (t >>> 14)) >>> 0) / 4_294_967_296;
 }
 
@@ -27,6 +28,7 @@ type Count = number | { min: number; max: number };
 function count(value: Count | undefined, fallback: Count): number {
   const v = value ?? fallback;
   if (typeof v === "number") return v;
+
   return v.min + Math.floor(random() * (v.max - v.min + 1));
 }
 

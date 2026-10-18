@@ -38,6 +38,7 @@ DatePickerVariantContext.displayName = "DatePickerVariantContext";
 function useDatePicker() {
   const styles = useDatePickerStyles();
   const variant = use(DatePickerVariantContext);
+
   return { ...styles, variant };
 }
 // #endregion

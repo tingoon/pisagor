@@ -138,11 +138,13 @@ function fakerLiteForExamples() {
   const shim = fileURLToPath(
     new URL("./src/lib/faker-lite.ts", import.meta.url),
   );
+
   return {
     enforce: "pre" as const,
     name: "pisagor:faker-lite",
     resolveId(id: string, importer?: string) {
       if (id !== "@faker-js/faker" || !importer) return null;
+
       return /[\\/]examples[\\/]/.test(importer) ? shim : null;
     },
   };
@@ -204,6 +206,7 @@ function solidPerIconImports() {
         }
         if (direct.length === 0) return statement;
         changed = true;
+
         return [
           ...direct,
           ...(rest.length
@@ -213,6 +216,7 @@ function solidPerIconImports() {
             : []),
         ].join("\n");
       });
+
       return changed ? { code: next, map: null } : null;
     },
   };
@@ -281,6 +285,7 @@ function ownedGlobs(id: FrameworkId, ext?: string): string[] {
   const entry: { dirs: string[]; files?: string[]; deps?: string[] } =
     frameworkSources[id];
   const tail = ext ? `/**/*.${ext}` : "/**";
+
   return [
     ...entry.dirs.map((dir) => `**/${dir}${tail}`),
     ...(entry.files ?? []).map((file) => `**/${file}`),
@@ -314,6 +319,7 @@ function isSitemapPage(page: string): boolean {
   // `/x/components/` and `/x/blocks/`. `/x/components|<forms>/<id>/` redirect.
   if (/^\/[^/]+\/$/.test(path)) return false;
   if (/^\/[^/]+\/(components|forms)\/[^/]+\/$/.test(path)) return false;
+
   return true;
 }
 

@@ -25,6 +25,7 @@ export const useInputOTPOptions = optionsCtx.getContext;
 export function useInputOTP() {
   const styles = useInputOTPStyles();
   const options = useInputOTPOptions();
+
   return {
     get size() {
       return options.size;

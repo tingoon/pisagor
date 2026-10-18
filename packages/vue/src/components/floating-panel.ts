@@ -274,6 +274,7 @@ export const FloatingPanelMinimize = defineComponent({
   },
   setup(props, { attrs }) {
     const { m } = useLocale();
+
     return () =>
       h(
         FloatingPanelPrimitive.StageTrigger as ArkPart,
@@ -312,6 +313,7 @@ export const FloatingPanelMaximize = defineComponent({
   },
   setup(props, { attrs }) {
     const { m } = useLocale();
+
     return () =>
       h(
         FloatingPanelPrimitive.StageTrigger as ArkPart,
@@ -350,6 +352,7 @@ export const FloatingPanelRestore = defineComponent({
   },
   setup(props, { attrs }) {
     const { m } = useLocale();
+
     return () => {
       const panelSlots = useFloatingPanelSlots();
 

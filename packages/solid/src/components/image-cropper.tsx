@@ -112,6 +112,7 @@ export function ImageCropperHandle(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useImageCropper();
+
   return (
     <ImageCropperPrimitive.Handle
       {...rest}

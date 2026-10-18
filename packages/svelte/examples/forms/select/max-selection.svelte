@@ -11,6 +11,7 @@
     const firstValue = current.at(0) ?? "";
     const additionalValues =
       current.length > 1 ? ` (+${current.length - 1} more)` : "";
+
     return firstValue + additionalValues;
   };
 

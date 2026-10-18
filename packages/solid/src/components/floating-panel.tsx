@@ -36,6 +36,7 @@ const { Context: FloatingPanelStylesContext } = createSlotRecipeContext({
 /** Parts also render standalone, so styles fall back to the default recipe. */
 function useFloatingPanelSlots() {
   const styles = useContext(FloatingPanelStylesContext);
+
   return () => styles?.slots ?? floatingPanelRecipe();
 }
 // #endregion
@@ -163,6 +164,7 @@ export function FloatingPanelMinimize(
 ): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["size", "variant", "children"]);
+
   return (
     <FloatingPanelPrimitive.StageTrigger
       {...rest}
@@ -186,6 +188,7 @@ export function FloatingPanelMaximize(
 ): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["size", "variant", "children"]);
+
   return (
     <FloatingPanelPrimitive.StageTrigger
       {...rest}

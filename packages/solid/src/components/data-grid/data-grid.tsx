@@ -112,6 +112,7 @@ function columnSizeStyle<TData extends RowData>(
   enabled: boolean,
 ): JSX.CSSProperties | undefined {
   if (!enabled) return undefined;
+
   return {
     "min-width": `${column.columnDef.minSize}px`,
     width: `${column.getSize()}px`,
@@ -122,6 +123,7 @@ function DataGridHeader<TData extends RowData>(
   props: DataGridHeaderProps,
 ): JSX.Element {
   const table = useDataGridContext<TData>().table;
+
   return (
     <For each={table.getHeaderGroups()}>
       {(headerGroup) => (
@@ -149,6 +151,7 @@ function DataGridColumnResizer(props: DataGridColumnResizerProps): JSX.Element {
     <Show when={headerCell}>
       {(cell) => {
         const header = () => cell().header;
+
         return (
           <Show when={header().column.getCanResize()}>
             {/* biome-ignore lint/a11y/useSemanticElements: focusable window-splitter handle; <hr> cannot take focus */}
@@ -266,6 +269,7 @@ function DataGridHead<TData extends RowData>(
         const header = headerGroup.headers.find(
           (item) => item.column.id === columnId(),
         );
+
         return (
           <Show when={header}>
             {(h) => (
@@ -295,6 +299,7 @@ export function renderDataGridCell<TData extends RowData>(
       cell.getContext(),
     );
   }
+
   return flexRender(cell.column.columnDef.cell, cell.getContext());
 }
 
@@ -369,6 +374,7 @@ function DataGridVirtualBody<TData extends RowData>(
   const paddingTop = () => virtualRows()[0]?.start ?? 0;
   const paddingBottom = () => {
     const items = virtualRows();
+
     return virtualizer.getTotalSize() - (items[items.length - 1]?.end ?? 0);
   };
 
@@ -400,6 +406,7 @@ function DataGridVirtualBody<TData extends RowData>(
       <For each={virtualRows()}>
         {(virtualRow) => {
           const row = () => rows()[virtualRow.index];
+
           return (
             <Show when={row()}>
               {(r) => (
@@ -500,6 +507,7 @@ function DataGridCell<TData extends RowData>(
         const cell = row
           .getVisibleCells()
           .find((item) => item.column.id === columnId());
+
         return (
           <Show when={cell}>
             {(c) => (
@@ -546,6 +554,7 @@ function DataGridEmpty(props: DataGridEmptyProps): JSX.Element {
 function DataGridToolbar(props: DataGridToolbarProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useDataGridContext();
+
   return (
     <div
       {...rest}
@@ -559,6 +568,7 @@ function DataGridToolbar(props: DataGridToolbarProps): JSX.Element {
 function DataGridFooter(props: DataGridFooterProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useDataGridContext();
+
   return (
     <div
       {...rest}

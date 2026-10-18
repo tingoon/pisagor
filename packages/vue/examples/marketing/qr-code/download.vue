@@ -20,6 +20,7 @@ function getQualityLevel(length: number) {
   if (length < 60) {
     return 40;
   }
+
   return 60;
 }
 

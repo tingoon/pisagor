@@ -29,6 +29,7 @@
     const api = pagination();
     if (page === "previous") return api.previousPage;
     if (page === "next") return api.nextPage;
+
     return page;
   });
 

@@ -29,6 +29,7 @@ export function Grid() {
       { label: "🌈", value: "rainbow" },
     ],
   });
+
   return (
     <Item.Group variant="outline">
       <Item className="p-1">

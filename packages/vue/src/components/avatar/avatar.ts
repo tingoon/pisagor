@@ -103,6 +103,7 @@ const AvatarShorthand = defineComponent({
         props.fallback === undefined && props.name
           ? getInitials(props.name)
           : props.fallback;
+
       return h(
         AvatarRoot,
         { ...attrs, class: props.class, shape: props.shape, size: props.size },

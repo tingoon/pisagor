@@ -56,6 +56,7 @@ export const MenuRoot = defineComponent({
   name: "Menu",
   setup(_, { attrs, slots }) {
     const { m } = useLocale();
+
     return () =>
       h(
         MenuRootBase,
@@ -81,6 +82,7 @@ export const MenuList = defineComponent({
   name: "Menu.List",
   setup(_, { attrs, slots }) {
     provide(MenuInsideListKey, true);
+
     return () => h(MenuListBase, attrs, slots);
   },
 });
@@ -195,6 +197,7 @@ export const MenuSeparator = defineComponent({
   name: "Menu.Separator",
   setup(_, { attrs }) {
     const insideList = inject(MenuInsideListKey, false);
+
     return () => h(insideList ? MenuSeparatorItem : MenuSeparatorDiv, attrs);
   },
 });

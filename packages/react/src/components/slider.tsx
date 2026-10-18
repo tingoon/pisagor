@@ -45,6 +45,7 @@ function useSlider() {
   if (extras === undefined) {
     throw new Error("useSlider must be used within SliderExtrasContext.");
   }
+
   return { ...styles, ...extras };
 }
 // #endregion
@@ -307,6 +308,7 @@ function SliderShorthand({
     if (Array.isArray(defaultValue)) {
       return defaultValue;
     }
+
     // Uncontrolled default is a single thumb (zag defaults `value` to `[min]`).
     return [min];
   }, [value, defaultValue, min]);

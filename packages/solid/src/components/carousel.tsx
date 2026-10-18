@@ -78,6 +78,7 @@ export function CarouselPrevTrigger(
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useCarousel();
+
   return (
     <CarouselPrimitive.PrevTrigger
       {...rest}
@@ -105,6 +106,7 @@ export function CarouselNextTrigger(
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useCarousel();
+
   return (
     <CarouselPrimitive.NextTrigger
       {...rest}

@@ -46,6 +46,7 @@ export type PopoverFooterProps = ComponentProps<typeof ark.div>;
 
 export function PopoverRoot(props: PopoverRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["modal"]);
+
   return <PopoverPrimitive.Root {...rest} modal={local.modal ?? false} />;
 }
 
@@ -173,6 +174,7 @@ export function PopoverCloseTrigger(
 export function PopoverArrow(props: PopoverArrowProps): JSX.Element {
   const [local, rest] = splitProps(props, ["style"]);
   const styles = usePopover();
+
   return (
     <PopoverPrimitive.Arrow
       {...rest}

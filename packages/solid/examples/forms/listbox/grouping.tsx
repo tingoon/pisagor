@@ -10,6 +10,7 @@ export function Grouping() {
       { label: "Canada", region: "North America", value: "ca" },
     ],
   });
+
   return (
     <Item.Group variant="outline">
       <Item class="p-1">

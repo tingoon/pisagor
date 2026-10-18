@@ -82,6 +82,7 @@ export function RadioGroupField(props: RadioGroupFieldProps) {
             const optionId = local.id
               ? `${local.id}-${option.value}`
               : undefined;
+
             return (
               <Show
                 fallback={

@@ -40,6 +40,7 @@ export const { LocaleContext, useLocale: useResolvedLocale } = createContext(
 export function useLocale(): LocaleContextValue {
   const value = useResolvedLocale() ?? defaultLocale;
   const { dir } = useLocaleContext();
+
   return useMemo(() => ({ ...value, dir }), [value, dir]);
 }
 
@@ -63,5 +64,6 @@ export const { ProviderContext, useProvider } = createContext(
 export function useProviderValue(): ProviderContextValue {
   const locale = useLocale();
   const motion = useMotion();
+
   return useMemo(() => resolveProviderValue(locale, motion), [locale, motion]);
 }

@@ -54,5 +54,6 @@ export function useNavigationMenuItemState(
       `NavigationMenu.${part} must be used in NavigationMenu.Item`,
     );
   }
+
   return item;
 }

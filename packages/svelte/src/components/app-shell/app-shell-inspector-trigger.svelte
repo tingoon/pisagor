@@ -35,6 +35,7 @@
   const open = $derived(
     (() => {
       void ctx.regionRevision;
+
       return ctx.inspectorStates[placement]?.open ?? false;
     })(),
   );

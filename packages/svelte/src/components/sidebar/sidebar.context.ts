@@ -34,6 +34,7 @@ export type SidebarContextProps = SidebarStateValue & {
 export function useSidebar() {
   const styles = useSidebarStyles();
   const state = useSidebarState();
+
   return {
     get isMobile() {
       return state.isMobile;

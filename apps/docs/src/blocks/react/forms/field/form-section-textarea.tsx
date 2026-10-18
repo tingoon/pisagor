@@ -11,6 +11,7 @@ export function FormSectionTextarea() {
 
     if (message.trim().length < 10) {
       setError("Message must be at least 10 characters.");
+
       return;
     }
     setError(null);

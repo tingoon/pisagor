@@ -17,6 +17,7 @@ const steps: TourStepType[] = [
       show();
       const [promise, cancel] = waitForEvent(target, "click");
       promise.then(() => next());
+
       return cancel;
     },
     id: "click-add",
@@ -30,6 +31,7 @@ const steps: TourStepType[] = [
       show();
       const [promise, cancel] = waitForEvent(target, "click");
       promise.then(() => next());
+
       return cancel;
     },
     id: "click-edit",
@@ -43,6 +45,7 @@ const steps: TourStepType[] = [
       show();
       const [promise, cancel] = waitForEvent(target, "click");
       promise.then(() => next());
+
       return cancel;
     },
     id: "click-delete",

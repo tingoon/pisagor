@@ -127,6 +127,7 @@ const ScrollAreaShorthand = defineComponent({
           }
 
           children.push(h(ScrollAreaPrimitive.Corner as ArkPart));
+
           return children;
         },
       );

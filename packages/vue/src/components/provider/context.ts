@@ -46,6 +46,7 @@ export function useLocale(): LocaleContextValue {
   const injected = inject(LocaleKey, defaultLocale);
   const ark = useLocaleContext(DEFAULT_LOCALE);
   const current = () => unref(injected);
+
   return {
     get dir() {
       return ark.value.dir;
@@ -67,6 +68,7 @@ export function useLocale(): LocaleContextValue {
  */
 export function useResolvedLocale(): () => ResolvedLocale {
   const injected = inject(LocaleKey, defaultLocale);
+
   return () => unref(injected);
 }
 
@@ -76,6 +78,7 @@ export function useMotion(): MotionConfig {
 
 export function useProvider(): ProviderConfig | undefined {
   const value = inject(ProviderKey, undefined);
+
   return value === undefined ? undefined : unref(value);
 }
 

@@ -42,8 +42,10 @@
         '[data-scope="scroll-area"][data-part="viewport"]',
       );
       if (viewport instanceof HTMLElement) return viewport;
+
       return t;
     }
+
     return document.documentElement;
   }
 
@@ -54,8 +56,10 @@
         '[data-scope="scroll-area"][data-part="viewport"]',
       );
       if (viewport instanceof HTMLElement) return viewport;
+
       return t;
     }
+
     return window;
   }
 
@@ -65,6 +69,7 @@
   ): number {
     const sectionOffset = section.getAttribute(SCROLLSPY_OFFSET);
     const local = sectionOffset ? Number(sectionOffset) || 0 : 0;
+
     return offset + local;
   }
 
@@ -154,6 +159,7 @@
     updateActive();
     scrollTarget.addEventListener("scroll", updateActive, { passive: true });
     window.addEventListener("resize", updateActive);
+
     return () => {
       scrollTarget.removeEventListener("scroll", updateActive);
       window.removeEventListener("resize", updateActive);

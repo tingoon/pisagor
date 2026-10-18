@@ -42,6 +42,7 @@ export function QrCodeRoot(props: LocalQrCodeRootProps): JSX.Element {
 export function QrCodeFrame(props: QrCodeFrameProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useQrCode();
+
   return (
     <QrCodePrimitive.Frame
       {...rest}

@@ -6,6 +6,7 @@ export function Presets() {
     { label: "Last 30 days", value: "last30Days" as const },
     { label: "This month", value: "thisMonth" as const },
   ];
+
   return (
     <Calendar className="[--cell-size:--spacing(8)]" selectionMode="range">
       <Card className="[--space:--spacing(2)]">

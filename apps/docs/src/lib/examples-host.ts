@@ -41,6 +41,7 @@ export type MountExample = (
 function readExportNames(el: HTMLElement): string[] {
   try {
     const parsed: unknown = JSON.parse(el.dataset.exportNames ?? "[]");
+
     return Array.isArray(parsed)
       ? parsed.filter((n): n is string => typeof n === "string")
       : [];
@@ -75,6 +76,7 @@ function resolveTarget(explicit: ExamplesHostProps): ExamplesHostTarget | null {
       : el.dataset.kind === "form"
         ? "form"
         : "component";
+
   return { exportNames, id, kind };
 }
 
@@ -88,6 +90,7 @@ async function loadExampleComponent(
   const loader = findExampleFileLoader(modules, target.id, stem);
   if (!loader) return null;
   const mod = (await loader()) as Record<string, unknown>;
+
   return resolveExampleExport(mod, exportName);
 }
 
@@ -154,5 +157,6 @@ export function renderMissingExample(slot: Element, message: string) {
   p.className = "text-muted-foreground text-sm";
   p.textContent = message;
   slot.replaceChildren(p);
+
   return () => slot.replaceChildren();
 }

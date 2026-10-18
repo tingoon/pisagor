@@ -62,6 +62,7 @@ function useActionBarState(): ActionBarStateValue {
       "useActionBarState must be used within ActionBarStateContext.",
     );
   }
+
   return state;
 }
 

@@ -326,6 +326,7 @@ export function ColorPickerEyeDropperTrigger({
   ...rest
 }: ColorPickerEyeDropperTriggerProps) {
   const { m } = useLocale();
+
   return (
     <ColorPickerPrimitive.EyeDropperTrigger
       aria-label={m("colorPicker.eyeDropper")}

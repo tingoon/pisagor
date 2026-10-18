@@ -51,6 +51,7 @@ const providerCtx = createContext("Provider")<ProviderConfig>({
 export function useLocale(): LocaleContextValue {
   const value = useResolvedLocale();
   const ark = useLocaleContext();
+
   return {
     get dir() {
       return ark().dir;
@@ -104,6 +105,7 @@ export function createLocaleValue(
 
 export function setLocaleValue(value: ResolvedLocale): ResolvedLocale {
   localeCtx.setContext(value);
+
   return value;
 }
 
@@ -113,10 +115,12 @@ export function setMotionConfig(partial?: Partial<MotionConfig>): MotionConfig {
     omitBy(partial ?? {}, isNullish),
   ) as MotionConfig;
   motionCtx.setContext(config);
+
   return config;
 }
 
 export function setProviderConfig(value: ProviderConfig): ProviderConfig {
   providerCtx.setContext(value);
+
   return value;
 }

@@ -100,6 +100,7 @@
 
   $effect(() => {
     ctx.setRegionVar(regionVar, resolvedWidth);
+
     return () => {
       ctx.setRegionVar(regionVar, "0px");
     };

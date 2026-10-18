@@ -68,6 +68,7 @@ const { Context: TreeViewItemStylesContext } = createSlotRecipeContext({
 /** Item parts may render outside Item, so fall back to the default recipe. */
 function useTreeViewItemSlots() {
   const styles = useContext(TreeViewItemStylesContext);
+
   return () => styles?.slots ?? treeViewItemRecipe();
 }
 // #endregion
@@ -251,6 +252,7 @@ function TreeViewBranchTitle(props: TreeViewBranchTitleProps): JSX.Element {
                   <Show fallback={<FolderIcon />} when={Icon()}>
                     {(Comp) => {
                       const C = Comp();
+
                       return C ? <C /> : null;
                     }}
                   </Show>
@@ -261,6 +263,7 @@ function TreeViewBranchTitle(props: TreeViewBranchTitleProps): JSX.Element {
                   <Show fallback={<FolderOpenIcon />} when={ExpandedIcon()}>
                     {(Comp) => {
                       const C = Comp();
+
                       return C ? <C /> : null;
                     }}
                   </Show>
@@ -356,6 +359,7 @@ export function TreeViewItemText(props: TreeViewItemTextProps): JSX.Element {
   const getFileIcon = (value: string): Component => {
     const extension = getFileExtension(value);
     const resolved = extension ? files.fileIcons?.[extension] : undefined;
+
     return resolved ?? Icon();
   };
 
@@ -363,6 +367,7 @@ export function TreeViewItemText(props: TreeViewItemTextProps): JSX.Element {
     <TreeViewPrimitive.NodeContext>
       {(nodeState) => {
         const ResolvedIcon = getFileIcon(nodeState().value);
+
         return (
           <>
             <TreeViewItemIcon>
@@ -402,6 +407,7 @@ function TreeViewItemIcon(props: TreeViewItemIconProps): JSX.Element {
 function TreeViewItemTitle(props: TreeViewItemTitleProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useTreeViewItemSlots();
+
   return (
     <TreeViewPrimitive.ItemText
       {...rest}
@@ -436,6 +442,7 @@ export function TreeViewNodeCheckbox(
 function TreeViewNodeInput(props: TreeViewNodeInputProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useTreeViewItemSlots();
+
   return (
     <TreeViewPrimitive.NodeRenameInput
       {...rest}
@@ -452,6 +459,7 @@ const getFileExtension = (file: string) => {
   const name = file.includes(".")
     ? file.split(".").at(-1)?.toLowerCase()
     : null;
+
   return name ? `.${name}` : null;
 };
 

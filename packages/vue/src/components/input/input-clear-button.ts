@@ -24,6 +24,7 @@ export const InputClearButton = defineComponent({
   },
   setup(props, { attrs }) {
     const { m } = useLocale();
+
     return () =>
       h(
         InputGroupButton as ArkPart,

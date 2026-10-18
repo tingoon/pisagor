@@ -5,6 +5,7 @@ export function Compound() {
   const collection = createListCollection({
     items: ["Banana", "Apple", "Orange", "Pineapple"],
   });
+
   return (
     <Select.Root collection={collection}>
       <Select.Trigger>

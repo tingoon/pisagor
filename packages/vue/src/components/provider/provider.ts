@@ -39,6 +39,7 @@ const LocaleDir = defineComponent({
   name: "PisagorLocaleDir",
   setup(_, { slots }) {
     const locale = useLocaleContext();
+
     return () =>
       h(
         "div",

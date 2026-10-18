@@ -21,6 +21,7 @@
       readOnly?: boolean;
     };
     if (controlProps.disabled || controlProps.readOnly) return false;
+
     return api().value.getChannelValue("alpha") !== 0;
   });
 

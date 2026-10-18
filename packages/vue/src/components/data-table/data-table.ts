@@ -102,6 +102,7 @@ function flexRender(template: unknown, context: unknown): VNodeChild {
   if (template === null || template === undefined) return null;
   if (typeof template === "function")
     return (template as (ctx: unknown) => VNodeChild)(context);
+
   return template as VNodeChild;
 }
 
@@ -284,6 +285,7 @@ export const DataTableHead = defineComponent({
         const header = headerGroup.headers.find(
           (item) => item.column.id === props.columnId,
         );
+
         return header ? renderHeader(header) : null;
       }
 

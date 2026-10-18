@@ -21,6 +21,7 @@ export function useRegionWidth(name: AppShellRegionVar, width: string) {
 
   useLayoutEffect(() => {
     setRegionVar(name, width);
+
     return () => {
       setRegionVar(name, "0px");
     };
@@ -112,6 +113,7 @@ export function useSyncFixedRegionHeight(
 
     if (position !== "fixed" || !element) {
       setFixedStackVar(cssVar, "0px");
+
       return;
     }
 

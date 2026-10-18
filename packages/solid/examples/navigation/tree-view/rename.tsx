@@ -63,6 +63,7 @@ export function Rename() {
             if (!node) {
               return prev;
             }
+
             return prev.replace(details.indexPath, {
               ...node,
               name: details.label,

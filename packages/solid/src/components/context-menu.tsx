@@ -30,6 +30,7 @@ export function ContextMenuContextTrigger(
   props: ContextMenuContextTriggerProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["recipe", "class"]);
+
   return (
     <MenuPrimitive.ContextTrigger
       {...rest}

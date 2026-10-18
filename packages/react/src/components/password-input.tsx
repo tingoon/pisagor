@@ -210,6 +210,7 @@ function PasswordInputVisibilityTrigger({
   ...rest
 }: PasswordInputPrimitiveVisibilityTriggerProps) {
   const { m } = useLocale();
+
   return (
     <InputGroup.Addon align="inline-end">
       <PasswordInputPrimitive.VisibilityTrigger {...rest} asChild>

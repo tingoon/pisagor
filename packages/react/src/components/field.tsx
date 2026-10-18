@@ -32,6 +32,7 @@ const { Context: FieldStylesContext, withProvider } = createSlotRecipeContext({
 /** Resolves recipe slots from the nearest Field/Group/Set, or a default recipe. */
 export function useFieldSlots(recipe: typeof fieldRecipe = fieldRecipe) {
   const styles = use(FieldStylesContext);
+
   return styles?.slots ?? recipe();
 }
 // #endregion

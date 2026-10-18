@@ -6,6 +6,7 @@ export function Vertical() {
     { description: "Company", title: "Docs" },
     { description: "Create", title: "Team" },
   ];
+
   return (
     <Steps className="h-64" count={items.length} orientation="vertical">
       <Steps.List>

@@ -26,6 +26,7 @@ export const useTourState = stateCtx.getContext;
 export function useTourContext() {
   const styles = useTourStyles();
   const state = useTourState();
+
   return {
     get handleStart() {
       return state.handleStart;

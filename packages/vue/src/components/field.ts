@@ -29,6 +29,7 @@ const {
  */
 function useFieldStyles(): { readonly slots: ReturnType<typeof fieldRecipe> } {
   const styles = useOptionalFieldStyles();
+
   return {
     get slots() {
       return styles?.slots ?? fieldRecipe();

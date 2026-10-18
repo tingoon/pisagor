@@ -2,6 +2,7 @@ import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
 import { Button, Steps } from "@pisagor/react";
 export function Default() {
   const steps = Array.from({ length: 3 }, (_, index) => index + 1);
+
   return (
     <Steps className="size-full" count={steps.length}>
       <Steps.List>

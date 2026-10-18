@@ -560,6 +560,7 @@ export const SidebarTrigger = defineComponent({
     const getSlots = useSidebarSlots();
 
     const ctx = useSidebarContext();
+
     return () => {
       const variantSlots = getSlots();
 
@@ -833,6 +834,7 @@ export const SidebarMenuButton = defineComponent({
         typeof props.tooltip === "string"
           ? { content: props.tooltip }
           : props.tooltip;
+
       return h(
         Tooltip as ArkPart,
         { ...tooltipArgs, positioning: { placement: "right" } },

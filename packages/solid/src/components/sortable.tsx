@@ -86,6 +86,7 @@ function reorder(list: string[], from: number, to: number) {
   const [moved] = next.splice(from, 1);
   if (moved === undefined) return list;
   next.splice(to, 0, moved);
+
   return next;
 }
 
@@ -120,6 +121,7 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
       if (current.has(id)) return current;
       const next = new Set(current);
       next.add(id);
+
       return next;
     });
   };
@@ -129,6 +131,7 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
       if (!current.has(id)) return current;
       const next = new Set(current);
       next.delete(id);
+
       return next;
     });
   };
@@ -179,6 +182,7 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
 
   const getItemProps = (id: string) => {
     const itemHasHandle = handleIds().has(id);
+
     return {
       "aria-disabled": disabled() || undefined,
       "aria-keyshortcuts": itemHasHandle ? undefined : keyShortcuts(),
@@ -206,6 +210,7 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
       onDragStart: (event: DragEvent) => {
         if (disabled() || handleIds().has(id)) {
           event.preventDefault();
+
           return;
         }
         startDrag(id, event);
@@ -357,6 +362,7 @@ export function SortableHandle(props: SortableHandleProps): JSX.Element {
       onDragStart={(event) => {
         if (disabled()) {
           event.preventDefault();
+
           return;
         }
         event.stopPropagation();

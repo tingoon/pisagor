@@ -62,6 +62,7 @@ function getSelectedFiles(input: HTMLInputElement): globalThis.File[] {
 function formatFileLabel(files: globalThis.File[]): string | undefined {
   if (files.length === 0) return undefined;
   if (files.length === 1) return files[0]?.name;
+
   return `${files.length} files selected`;
 }
 
@@ -124,6 +125,7 @@ function FileInputControl(props: FileInputControlProps): JSX.Element {
 function FileInputLabel(props: FileInputLabelProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const styles = useFileInput();
+
   return (
     <InputGroupText
       {...rest}

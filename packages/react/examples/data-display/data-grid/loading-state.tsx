@@ -236,6 +236,7 @@ export function LoadingState() {
 
   useEffect(() => {
     const timer = window.setTimeout(() => setIsLoading(false), 1200);
+
     return () => window.clearTimeout(timer);
   }, []);
 

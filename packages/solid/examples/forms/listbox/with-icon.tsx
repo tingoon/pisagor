@@ -8,6 +8,7 @@ export function WithIcon() {
       { icon: "🇮🇪", label: "Ireland", value: "ireland" },
     ],
   });
+
   return (
     <Item.Group variant="outline">
       <Item class="p-1">

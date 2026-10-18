@@ -56,6 +56,7 @@ export interface SidebarContextProps extends SidebarState {
 export function useSidebar(): SidebarContextProps {
   const styles = useSidebarStyles();
   const state = useSidebarState();
+
   return {
     ...state,
     get slots() {
@@ -233,6 +234,7 @@ export function SidebarProvider(props: SidebarProviderProps): JSX.Element {
     if (s && typeof s === "object" && !Array.isArray(s)) {
       return { ...base, ...(s as Record<string, string>) };
     }
+
     return base;
   };
 
@@ -425,6 +427,7 @@ export function SidebarInset(props: SidebarInsetProps): JSX.Element {
 export function SidebarInput(props: InputProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "classNames"]);
   const styles = useSidebarStyles();
+
   return (
     <Input
       {...rest}
@@ -483,6 +486,7 @@ export function SidebarSeparator(props: SeparatorProps): JSX.Element {
 export function SidebarContent(props: SidebarContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["scrollFade", "class"]);
   const styles = useSidebarStyles();
+
   return (
     <ScrollArea
       class={styles.slots.scrollArea()}
@@ -641,6 +645,7 @@ export function SidebarMenuButton(props: SidebarMenuButtonProps): JSX.Element {
           typeof tip() === "string"
             ? ({ content: tip() as string } as Omit<TooltipProps, "children">)
             : (tip() as Omit<TooltipProps, "children">);
+
         return (
           <Tooltip
             {...tooltipProps}

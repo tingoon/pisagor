@@ -57,6 +57,7 @@
   const thumbCount = $derived.by(() => {
     if (Array.isArray(value)) return value.length;
     if (Array.isArray(defaultValue)) return defaultValue.length;
+
     return 1;
   });
 

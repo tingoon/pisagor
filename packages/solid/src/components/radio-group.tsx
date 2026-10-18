@@ -104,6 +104,7 @@ export function RadioGroupItemText(
   props: RadioGroupItemTextProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
+
   return (
     <Field.Label
       asChild={(labelProps) => (
@@ -121,6 +122,7 @@ export function RadioGroupItemText(
 
 export function RadioGroupLabel(props: RadioGroupLabelProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children"]);
+
   return (
     <Field.Label
       asChild={(labelProps) => (

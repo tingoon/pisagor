@@ -49,6 +49,7 @@ export function FileMedia(props: FileMediaProps): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "children", "class"]);
   const styles = useFile();
   const variant = () => local.variant ?? "icon";
+
   return (
     <ark.div
       {...rest}
@@ -77,6 +78,7 @@ export const FileMeta: Component<FileMetaProps> = withContext(ark.div, {
 export function FileSize(props: FileSizeProps): JSX.Element {
   const [local, rest] = splitProps(props, ["value", "class"]);
   const styles = useFile();
+
   return (
     <ark.div
       {...rest}
@@ -101,6 +103,7 @@ export function FileShorthand(props: FileProps): JSX.Element {
     "media",
     "meta",
   ]);
+
   return (
     <FileRoot {...rest}>
       <FileMedia>{local.media}</FileMedia>

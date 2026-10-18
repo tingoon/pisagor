@@ -36,6 +36,7 @@ const { ToggleGroupItemOptionsContext, useToggleGroupItemOptions } =
 function useToggleGroup() {
   const styles = useToggleGroupStyles();
   const options = useToggleGroupItemOptions();
+
   return {
     get size() {
       return options.size;

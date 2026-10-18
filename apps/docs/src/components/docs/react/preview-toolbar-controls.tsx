@@ -44,6 +44,7 @@ export function PreviewToolbarControls({
         classes.set(tpl.dataset.surfaceTemplate, el.className);
       }
     }
+
     return classes;
   }
 
@@ -86,6 +87,7 @@ export function PreviewToolbarControls({
       applySurface(String((event as CustomEvent<string>).detail));
     };
     document.addEventListener(SURFACE_EVENT, onSurface);
+
     return () => document.removeEventListener(SURFACE_EVENT, onSurface);
   }, []);
 

@@ -41,6 +41,7 @@ export function Default() {
       type: "dialog",
     },
   ];
+
   return (
     <Tour steps={steps}>
       <Tour.Trigger asChild>

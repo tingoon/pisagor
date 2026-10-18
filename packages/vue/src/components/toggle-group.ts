@@ -136,6 +136,7 @@ export const ToggleGroupRoot = defineComponent({
                 const nextValue = props.multiple
                   ? details.value
                   : (details.value[0] ?? "");
+
                 return props.onValueChange?.(nextValue);
               }
             : undefined,

@@ -37,6 +37,7 @@ const { Context: DropdownMenuStylesContext } = createSlotRecipeContext({
 /** Parts also render outside Content, so styles fall back to the default recipe. */
 function useDropdownMenuSlots() {
   const styles = useContext(DropdownMenuStylesContext);
+
   return () => styles?.slots ?? dropdownMenuRecipe();
 }
 // #endregion
@@ -80,6 +81,7 @@ export type DropdownMenuShortcutProps = ComponentProps<typeof ark.span>;
 
 export function DropdownMenuRoot(props: DropdownMenuRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["positioning"]);
+
   return (
     <MenuPrimitive.Root
       {...rest}
@@ -99,6 +101,7 @@ export function DropdownMenuPositioner(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useDropdownMenuSlots();
+
   return (
     <MenuPrimitive.Positioner
       {...rest}
@@ -138,6 +141,7 @@ export function DropdownMenuItemGroup(
   props: DropdownMenuItemGroupProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "heading"]);
+
   return (
     <MenuPrimitive.ItemGroup {...rest}>
       <Show when={!!local.heading}>
@@ -153,6 +157,7 @@ export function DropdownMenuSeparator(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useDropdownMenuSlots();
+
   return (
     <MenuPrimitive.Separator
       {...rest}
@@ -165,6 +170,7 @@ export function DropdownMenuItem(props: DropdownMenuItemProps): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "recipe", "class"]);
   const variant = () => local.variant ?? "default";
   const recipe = () => local.recipe ?? dropdownMenuItemRecipe;
+
   return (
     <MenuPrimitive.Item
       {...rest}
@@ -228,6 +234,7 @@ export function DropdownMenuItemText(
   props: ComponentProps<typeof MenuPrimitive.ItemText>,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
+
   return (
     <MenuPrimitive.ItemText
       {...rest}
@@ -240,6 +247,7 @@ export function DropdownMenuItemIndicator(
   props: ComponentProps<typeof MenuPrimitive.ItemIndicator>,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
+
   return (
     <MenuPrimitive.ItemIndicator
       {...rest}
@@ -254,6 +262,7 @@ export function DropdownMenuRadioItemGroup(
   props: DropdownMenuRadioItemGroupProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "heading"]);
+
   return (
     <MenuPrimitive.RadioItemGroup {...rest}>
       <Show when={!!local.heading}>
@@ -269,6 +278,7 @@ export function DropdownMenuItemGroupLabel(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useDropdownMenuSlots();
+
   return (
     <MenuPrimitive.ItemGroupLabel
       {...rest}
@@ -311,6 +321,7 @@ export function DropdownMenuRadioItem(
 
 export function DropdownMenuSub(props: DropdownMenuRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["positioning"]);
+
   return (
     <MenuPrimitive.Root
       {...rest}
@@ -370,6 +381,7 @@ export function DropdownMenuShortcut(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useDropdownMenuSlots();
+
   return (
     <ark.span
       {...rest}

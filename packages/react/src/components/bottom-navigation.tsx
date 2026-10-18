@@ -79,6 +79,7 @@ export function BottomNavigationRoot({
   ...rest
 }: BottomNavigationRootProps) {
   const { m } = useLocale();
+
   return (
     <BottomNavigationValueContext value={value}>
       <BottomNavigationNav

@@ -63,5 +63,6 @@ export function passwordStrengthTone(score: number) {
   if (score <= 2) return "orange" as const;
   if (score <= 3) return "amber" as const;
   if (score <= 4) return "green" as const;
+
   return "emerald" as const;
 }

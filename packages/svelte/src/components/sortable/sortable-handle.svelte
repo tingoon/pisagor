@@ -19,12 +19,14 @@
 
   onMount(() => {
     sortable.registerHandle(item.id);
+
     return () => sortable.unregisterHandle(item.id);
   });
 
   function handleDragStart(event: DragEvent) {
     if (sortable.disabled) {
       event.preventDefault();
+
       return;
     }
     event.stopPropagation();

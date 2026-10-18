@@ -149,6 +149,7 @@ function getAriaSort(column: {
     return undefined;
   }
   const sorted = column.getIsSorted();
+
   return sorted === "asc"
     ? "ascending"
     : sorted === "desc"

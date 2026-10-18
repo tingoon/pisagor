@@ -14,6 +14,7 @@ export function reactiveTableOptions<T extends object>(
       if (Reflect.getOwnPropertyDescriptor(target, prop)) {
         return Reflect.get(target, prop, receiver);
       }
+
       return Reflect.get(getRest(), prop);
     },
     getOwnPropertyDescriptor(target, prop) {
@@ -28,6 +29,7 @@ export function reactiveTableOptions<T extends object>(
           },
         };
       }
+
       return undefined;
     },
     has(target, prop) {

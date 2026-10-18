@@ -9,6 +9,7 @@ type IconProps = SolidJSX.SvgSVGAttributes<SVGSVGElement> & {
 
 function BaseIcon(props: IconProps & { path: string }): JSX.Element {
   const [local, rest] = splitProps(props, ["path", "class", "weight"]);
+
   return (
     <svg
       {...rest}
@@ -38,6 +39,7 @@ const STAR_FILL_PATH =
  */
 export function StarIcon(props: IconProps): JSX.Element {
   const [local, rest] = splitProps(props, ["weight"]);
+
   return (
     <BaseIcon
       {...rest}

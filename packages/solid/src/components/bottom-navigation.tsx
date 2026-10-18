@@ -75,6 +75,7 @@ export function BottomNavigationRoot(
 ): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["value", "aria-label"]);
+
   return (
     <BottomNavigationValueContext.Provider value={() => local.value}>
       <BottomNavigationNav

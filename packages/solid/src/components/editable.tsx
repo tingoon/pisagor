@@ -125,6 +125,7 @@ export function EditablePreview(props: EditablePreviewProps): JSX.Element {
     if (resolvedVariant === "secondary") {
       return "bg-muted/40 shadow-none hover:bg-muted/40 dark:hover:bg-muted/40";
     }
+
     return undefined;
   };
 

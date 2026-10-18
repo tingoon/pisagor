@@ -5,6 +5,7 @@ export function Empty() {
   const collection = createListCollection({
     items: [] as Array<{ label: string; value: string }>,
   });
+
   return (
     <Select.Root collection={collection}>
       <Select.Trigger>

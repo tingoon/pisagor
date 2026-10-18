@@ -51,6 +51,7 @@ const { Context: SelectStylesContext } = createSlotRecipeContext({
 /** Parts may render under a bare Ark root, so fall back to the default recipe. */
 function useSelectSlots() {
   const styles = useContext(SelectStylesContext);
+
   return () => styles?.slots ?? selectRecipe();
 }
 
@@ -211,6 +212,7 @@ export function SelectSeparator(props: SeparatorProps): JSX.Element {
 export function SelectValueText(props: SelectValueTextProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useSelectSlots();
+
   return (
     <SelectPrimitive.ValueText
       {...rest}
@@ -253,6 +255,7 @@ export function SelectItemGroupLabel(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useSelectSlots();
+
   return (
     <SelectPrimitive.ItemGroupLabel
       {...rest}

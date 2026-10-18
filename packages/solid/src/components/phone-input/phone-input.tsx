@@ -78,6 +78,7 @@ function countryLabel(code: Country): string {
 function PhoneInputContainer(props: PhoneInputContainerProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "children"]);
   const ctx = usePhoneInput();
+
   return (
     <InputGroup
       {...rest}
@@ -230,6 +231,7 @@ function PhoneInputCountrySelect(props: {
 function resolveCountry(value: string | undefined, fallback: Country): Country {
   if (!value) return fallback;
   const parsed = parsePhoneNumberFromString(value);
+
   return (parsed?.country as Country | undefined) ?? fallback;
 }
 
@@ -243,6 +245,7 @@ function formatNational(value: string | undefined, country: Country): string {
       return parsed.nationalNumber;
     }
   }
+
   return new AsYouType(country).input(value);
 }
 
@@ -284,6 +287,7 @@ export function PhoneInput(props: PhoneInputProps): JSX.Element {
     if (local.value !== undefined) {
       return resolveCountry(local.value, internalCountry());
     }
+
     return internalCountry();
   });
 

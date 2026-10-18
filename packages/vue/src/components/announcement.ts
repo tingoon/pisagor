@@ -69,6 +69,7 @@ export const AnnouncementShorthand = defineComponent({
           h(AnnouncementTitle, props.titleProps ?? null, () => props.title),
         );
       }
+
       return h(AnnouncementRoot, { ...attrs, class: props.class }, () => nodes);
     };
   },

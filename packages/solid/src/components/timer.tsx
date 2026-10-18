@@ -110,6 +110,7 @@ const TimerItemGroupBase: Component<
 
 export function TimerItemGroup(props: TimerItemGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["orientation"]);
+
   return (
     <TimerItemGroupBase
       {...rest}
@@ -127,6 +128,7 @@ export function TimerItem(props: TimerItemProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useContext(TimerItemGroupStylesContext);
   const slots = () => styles?.slots ?? timerItemGroupRecipe();
+
   return (
     <TimerPrimitive.Item
       data-part="item"
@@ -147,6 +149,7 @@ export const TimerItemLabel: Component<TimerItemLabelProps> =
 export function TimerSeparator(props: TimerSeparatorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const styles = useTimer();
+
   return (
     <TimerPrimitive.Separator
       {...rest}
@@ -170,6 +173,7 @@ export function TimerActionTrigger(
 
 export function TimerPause(props: TimerActionProps): JSX.Element {
   const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
       aria-label={m("timer.pause")}
@@ -181,6 +185,7 @@ export function TimerPause(props: TimerActionProps): JSX.Element {
 
 export function TimerResume(props: TimerActionProps): JSX.Element {
   const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
       aria-label={m("timer.resume")}
@@ -192,6 +197,7 @@ export function TimerResume(props: TimerActionProps): JSX.Element {
 
 export function TimerStart(props: TimerActionProps): JSX.Element {
   const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
       aria-label={m("timer.start")}
@@ -203,6 +209,7 @@ export function TimerStart(props: TimerActionProps): JSX.Element {
 
 export function TimerReset(props: TimerActionProps): JSX.Element {
   const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
       aria-label={m("timer.reset")}
@@ -214,6 +221,7 @@ export function TimerReset(props: TimerActionProps): JSX.Element {
 
 export function TimerRestart(props: TimerActionProps): JSX.Element {
   const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
       aria-label={m("timer.restart")}
@@ -225,6 +233,7 @@ export function TimerRestart(props: TimerActionProps): JSX.Element {
 
 export function TimerPlay(props: TimerActionProps): JSX.Element {
   const timer = useTimerContext();
+
   return (
     <Show fallback={<TimerStart {...props} />} when={timer().paused}>
       <TimerResume {...props} />

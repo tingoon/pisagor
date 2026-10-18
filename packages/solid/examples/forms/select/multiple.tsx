@@ -23,6 +23,7 @@ export function Multiple() {
       { label: "Rust", value: "rust" },
     ],
   });
+
   return (
     <Select.Root
       collection={collection}

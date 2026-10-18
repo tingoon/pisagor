@@ -11,6 +11,7 @@ export function CustomSpacing() {
   const collection = createListCollection({
     items: ["Inter", "Roboto", "Helvetica", "Geist"],
   });
+
   return (
     <FloatingPanel defaultSize={{ height: 300, width: 360 }}>
       <FloatingPanel.Trigger

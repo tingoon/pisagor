@@ -63,6 +63,7 @@ export function CustomIcons() {
       </TreeView.NodeProvider>
     );
   };
+
   return (
     <div>
       <TreeView collection={collection} fileIcons={fileIcons}>

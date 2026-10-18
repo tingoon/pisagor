@@ -13,6 +13,7 @@
 
   $effect(() => {
     const timer = setTimeout(() => (progress = 72), 500);
+
     return () => clearTimeout(timer);
   });
 </script>

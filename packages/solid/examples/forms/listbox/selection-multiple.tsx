@@ -8,6 +8,7 @@ export function SelectionMultiple() {
       { label: "Ireland", value: "ie" },
     ],
   });
+
   return (
     <Item.Group variant="outline">
       <Item class="p-1">

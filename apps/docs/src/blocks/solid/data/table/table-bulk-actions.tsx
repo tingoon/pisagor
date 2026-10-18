@@ -86,6 +86,7 @@ export function TableBulkActions(props: TableBulkActionsProps) {
             <For each={orders}>
               {(order) => {
                 const isSelected = () => selectedIds().includes(order.id);
+
                 return (
                   <Table.Row data-state={isSelected() ? "selected" : undefined}>
                     <Table.Cell class={styles.check()}>
@@ -165,6 +166,7 @@ export function TableBulkActions(props: TableBulkActionsProps) {
                     <For each={selectedIds()}>
                       {(id) => {
                         const order = () => orders.find((o) => o.id === id);
+
                         return (
                           <Show when={order()}>
                             {(o) => (

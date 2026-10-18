@@ -119,6 +119,7 @@ function SignaturePadClear(props: SignaturePadClearProps): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useSignaturePad();
+
   return (
     <SignaturePadPrimitive.ClearTrigger
       {...rest}

@@ -76,6 +76,7 @@ export function TimerRoot({
   ...rest
 }: TimerRootProps) {
   const { m } = useLocale();
+
   return (
     <TimerRootBase {...rest}>
       {units && (
@@ -184,6 +185,7 @@ export function TimerActionTrigger(props: TimerActionTriggerProps) {
 
 export function TimerPause(props: TimerActionProps) {
   const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
       {...props}
@@ -195,6 +197,7 @@ export function TimerPause(props: TimerActionProps) {
 
 export function TimerResume(props: TimerActionProps) {
   const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
       {...props}
@@ -206,6 +209,7 @@ export function TimerResume(props: TimerActionProps) {
 
 export function TimerStart(props: TimerActionProps) {
   const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
       {...props}
@@ -217,6 +221,7 @@ export function TimerStart(props: TimerActionProps) {
 
 export function TimerReset(props: TimerActionProps) {
   const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
       {...props}
@@ -228,6 +233,7 @@ export function TimerReset(props: TimerActionProps) {
 
 export function TimerRestart(props: TimerActionProps) {
   const { m } = useLocale();
+
   return (
     <TimerPrimitive.ActionTrigger
       {...props}

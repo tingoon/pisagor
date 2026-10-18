@@ -42,6 +42,7 @@ export function StepTypes() {
       type: "dialog",
     },
   ];
+
   return (
     <div class="flex flex-col gap-2">
       <Tour steps={steps}>

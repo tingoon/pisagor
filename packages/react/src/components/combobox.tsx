@@ -41,6 +41,7 @@ const { Context: ComboboxStylesContext } = createSlotRecipeContext({
 
 function useComboboxSlots() {
   const styles = use(ComboboxStylesContext);
+
   return styles?.slots ?? comboboxRecipe();
 }
 
@@ -56,6 +57,7 @@ const ComboboxInsideControlContext = createContext(false);
 /** @deprecated Prefer composing within Combobox.Root; kept for public API. */
 export function useComboboxRoot() {
   const styles = use(ComboboxStylesContext);
+
   return styles ? { slots: styles.slots } : undefined;
 }
 // #endregion
@@ -269,6 +271,7 @@ export function ComboboxClearTrigger({
 }: ComboboxClearTriggerProps) {
   const { m } = useLocale();
   const ariaLabel = m("combobox.clear", ariaLabelProp);
+
   return <ComboboxPrimitive.ClearTrigger {...rest} aria-label={ariaLabel} />;
 }
 

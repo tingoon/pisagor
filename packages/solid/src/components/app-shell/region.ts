@@ -77,6 +77,7 @@ export function regionPositionClasses(
     if (columnLayer === "inspector") {
       return slots.regionStickyInspector();
     }
+
     return slots.regionStickyColumn();
   }
 
@@ -104,6 +105,7 @@ export function useSyncFixedRegionHeight(
 
     if (pos !== "fixed" || !element) {
       setFixedStackVar(cssVar, "0px");
+
       return;
     }
 
@@ -127,8 +129,10 @@ export function useAppShellSideOpen(
   statesRef: MutableRef<Partial<Record<AppShellPlacement, AppShellSideState>>>,
 ) {
   const { regionRevision } = useAppShellState();
+
   return () => {
     regionRevision();
+
     return statesRef.current[placement]?.open() ?? false;
   };
 }
@@ -193,6 +197,7 @@ export function useRegisteredRailState({
   const [uncontrolled, setUncontrolled] = createSignal(defaultActiveRailId);
   const activeRailId = createMemo(() => {
     const controlled = getActiveRailId?.();
+
     return controlled !== undefined ? controlled : uncontrolled();
   });
 

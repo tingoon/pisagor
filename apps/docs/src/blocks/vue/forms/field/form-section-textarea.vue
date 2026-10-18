@@ -8,6 +8,7 @@ const error = ref<string | null>(null);
 function onSubmit() {
   if (message.value.trim().length < 10) {
     error.value = "Message must be at least 10 characters.";
+
     return;
   }
   error.value = null;

@@ -5,6 +5,7 @@
 export function callEventHandler(handler: unknown, event: Event): void {
   if (typeof handler === "function") {
     (handler as (event: Event) => void)(event);
+
     return;
   }
   if (Array.isArray(handler) && typeof handler[0] === "function") {

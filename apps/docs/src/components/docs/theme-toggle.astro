@@ -80,11 +80,13 @@ function readPreference(): ThemePreference {
   } catch {
     /* storage blocked */
   }
+
   return "system";
 }
 
 function resolve(preference: ThemePreference): "light" | "dark" {
   if (preference !== "system") return preference;
+
   return media.matches ? "dark" : "light";
 }
 

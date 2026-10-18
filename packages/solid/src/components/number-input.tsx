@@ -149,6 +149,7 @@ export function NumberInputClearTrigger(): JSX.Element {
       {(api) => {
         const hasValue = () => {
           const value = api().value;
+
           return (
             value !== undefined && value !== null && String(value).length > 0
           );

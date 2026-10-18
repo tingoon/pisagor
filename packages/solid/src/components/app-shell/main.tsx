@@ -57,6 +57,7 @@ export function AppShellHeader(props: AppShellHeaderProps): JSX.Element {
 export function AppShellContent(props: AppShellContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useAppShellStyles();
+
   return (
     <div
       {...rest}

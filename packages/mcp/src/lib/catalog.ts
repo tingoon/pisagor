@@ -24,6 +24,7 @@ function recipesCatalog(config: ToolConfig): RecipesCatalog | null {
       return pkg.catalog;
     }
   }
+
   return null;
 }
 
@@ -40,6 +41,7 @@ function componentsForFramework(
       byName.set(component.name, component);
     }
   }
+
   return [...byName.values()].sort((a, b) => a.name.localeCompare(b.name));
 }
 
@@ -56,6 +58,7 @@ function getCatalogComponent(
       `Unknown component "${component}" for framework "${framework}". Call list_components first.`,
     );
   }
+
   return entry;
 }
 
@@ -81,6 +84,7 @@ export function listComponents(
   framework: Framework,
 ): ComponentEntry[] {
   assertHasPackages(config);
+
   return componentsForFramework(config, framework).map((entry) => ({
     hasExamples: entry.examples.length > 0,
     name: entry.name,
@@ -94,6 +98,7 @@ export function listExamples(
   component: string,
 ): ExampleEntry[] {
   assertHasPackages(config);
+
   return getCatalogComponent(config, framework, component).examples.map(
     (example) => ({
       exportName: example.exportName,
@@ -133,6 +138,7 @@ export function getExample(
         `Unknown example "${exampleId}" for "${params.component}". Call list_examples first.`,
       );
     }
+
     return {
       component: params.component,
       content: match.content,
@@ -149,6 +155,7 @@ export function getExample(
       ? first.path.slice(0, first.path.lastIndexOf("/"))
       : "."
     : `examples/${params.component}`;
+
   return {
     component: params.component,
     content: entry.examples
@@ -207,6 +214,7 @@ export function getRecipe(
   if (!recipe) {
     throw new Error(`No recipe for "${component}" in @pisagor/recipes.`);
   }
+
   return {
     component,
     content: recipe.content,

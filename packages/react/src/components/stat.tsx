@@ -64,6 +64,7 @@ export function StatTrend({
   ...rest
 }: ComponentProps<typeof ark.div> & BaseStatTrendProps & StatTrendOwnProps) {
   const { m } = useLocale();
+
   return (
     <ark.div
       {...rest}

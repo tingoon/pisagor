@@ -32,6 +32,7 @@ export const useToggleGroupItemOptions = optionsCtx.getContext;
 export function useToggleGroup() {
   const styles = useToggleGroupStyles();
   const options = useToggleGroupItemOptions();
+
   return {
     get size() {
       return options.size;

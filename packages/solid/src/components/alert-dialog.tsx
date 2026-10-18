@@ -39,6 +39,7 @@ export interface AlertDialogProps extends Omit<
 
 export function AlertDialogRoot(props: AlertDialogRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children"]);
+
   return (
     <Dialog.Root {...rest} role="alertdialog">
       {local.children}
@@ -114,11 +115,13 @@ export function AlertDialogFooter(props: DialogFooterProps): JSX.Element {
 
 export function AlertDialogAction(props: AlertDialogActionProps): JSX.Element {
   const [local, rest] = splitProps(props, ["variant"]);
+
   return <Button {...rest} variant={local.variant ?? "default"} />;
 }
 
 export function AlertDialogCancel(props: AlertDialogCancelProps): JSX.Element {
   const [local, rest] = splitProps(props, ["asChild", "class"]);
+
   return (
     <AlertDialogCloseTrigger
       asChild={(triggerProps) => (
@@ -148,6 +151,7 @@ export function AlertDialogShorthand(props: AlertDialogProps): JSX.Element {
             if (typeof local.trigger === "function") {
               return local.trigger(triggerProps());
             }
+
             return (
               <span {...triggerProps()} style={{ display: "contents" }}>
                 {local.trigger}

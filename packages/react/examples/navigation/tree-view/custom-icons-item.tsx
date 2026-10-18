@@ -54,6 +54,7 @@ export function CustomIconsItem() {
       </TreeView.NodeProvider>
     );
   };
+
   return (
     <div>
       <TreeView collection={collection}>

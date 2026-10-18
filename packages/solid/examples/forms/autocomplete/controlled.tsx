@@ -12,6 +12,7 @@ export function Controlled() {
   const [value, setValue] = createSignal<string | undefined>("banana");
   const selected = () => {
     const current = value();
+
     return current ? [current] : [];
   };
 

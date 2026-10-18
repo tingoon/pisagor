@@ -12,6 +12,7 @@ function sourceRefFromBlock(block: HTMLElement) {
   const exportName = block.dataset.sourceExport;
   const kind = (block.dataset.sourceKind ?? "component") as PreviewSourceKind;
   if (!framework || !id || !exportName) return null;
+
   return { exportName, framework, id, kind };
 }
 
@@ -66,6 +67,7 @@ export async function ensureLazyCodeBlock(root: ParentNode): Promise<void> {
       delete block.dataset.sourcePending;
       delete block.dataset.sourceLoading;
       block.removeAttribute("aria-busy");
+
       return;
     }
   } else {
@@ -75,6 +77,7 @@ export async function ensureLazyCodeBlock(root: ParentNode): Promise<void> {
   if (!code.trim()) {
     delete block.dataset.sourceLoading;
     block.removeAttribute("aria-busy");
+
     return;
   }
 

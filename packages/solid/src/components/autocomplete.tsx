@@ -47,6 +47,7 @@ export function AutocompleteControl(props: ComboboxControlProps): JSX.Element {
 
 export function AutocompleteInput(props: ComboboxInputProps): JSX.Element {
   const [local, rest] = splitProps(props, ["clearable", "showTrigger"]);
+
   return (
     <Combobox.Input
       {...rest}
@@ -106,6 +107,7 @@ export function AutocompleteSeparator(props: SeparatorProps): JSX.Element {
 
 export function AutocompleteShorthand(props: AutocompleteProps): JSX.Element {
   const [local, rest] = splitProps(props, ["clearable", "items"]);
+
   return (
     <Combobox
       {...rest}

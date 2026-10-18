@@ -28,6 +28,7 @@
       : null;
     const extension = name ? `.${name}` : null;
     const resolved = extension ? fileIcons?.[extension] : undefined;
+
     return (resolved ?? Icon) as Component;
   }
 </script>

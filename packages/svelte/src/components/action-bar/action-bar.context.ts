@@ -34,6 +34,7 @@ export const useActionBarState = stateCtx.getContext;
 export function useActionBar() {
   const styles = useActionBarStyles();
   const state = useActionBarState();
+
   return {
     get isOpen() {
       return state.isOpen;

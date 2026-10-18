@@ -2,6 +2,7 @@ import { QrCode } from "@pisagor/react";
 
 export function ErrorCorrection() {
   const eccLevels = ["L", "M", "Q", "H"] as const;
+
   return (
     <div className="flex flex-wrap items-center gap-2">
       {eccLevels.map((ecc) => (

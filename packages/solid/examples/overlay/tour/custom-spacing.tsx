@@ -19,6 +19,7 @@ export function CustomSpacing() {
       type: "dialog",
     },
   ];
+
   return (
     <Tour steps={steps}>
       <Tour.Trigger

@@ -43,6 +43,7 @@
     const element = el;
     if (position !== "fixed" || !element) {
       ctx.setFixedStackVar(APP_SHELL_NAVIGATION_HEIGHT_VAR, "0px");
+
       return;
     }
     const syncHeight = () => {
@@ -54,6 +55,7 @@
     syncHeight();
     const observer = new ResizeObserver(syncHeight);
     observer.observe(element);
+
     return () => {
       observer.disconnect();
       ctx.setFixedStackVar(APP_SHELL_NAVIGATION_HEIGHT_VAR, "0px");

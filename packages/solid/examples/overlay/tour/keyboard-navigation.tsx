@@ -34,6 +34,7 @@ export function KeyboardNavigation() {
       type: "tooltip",
     },
   ];
+
   return (
     <div class="flex flex-col gap-2">
       <Tour keyboardNavigation steps={steps}>

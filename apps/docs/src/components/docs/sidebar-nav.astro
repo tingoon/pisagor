@@ -28,6 +28,7 @@ const navHrefs = sections.flatMap((section) =>
 function isNavActive(href: string): boolean {
   if (path === href) return true;
   if (href === "/" || !path.startsWith(`${href}/`)) return false;
+
   return !navHrefs.some(
     (other) =>
       other !== href &&

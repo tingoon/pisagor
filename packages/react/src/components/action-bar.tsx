@@ -65,6 +65,7 @@ function useActionBarState() {
   if (state === undefined) {
     throw new Error("useActionBar must be used within ActionBarContext.");
   }
+
   return state;
 }
 

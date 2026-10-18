@@ -8,6 +8,7 @@
     e.preventDefault();
     if (message.trim().length < 10) {
       error = "Message must be at least 10 characters.";
+
       return;
     }
     error = null;

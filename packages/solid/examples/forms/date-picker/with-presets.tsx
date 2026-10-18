@@ -7,6 +7,7 @@ export function WithPresets() {
     { days: 3, label: "In 3 days" },
     { days: 7, label: "In a week" },
   ] as const;
+
   return (
     <DatePicker defaultValue={[parseDate(new Date())]}>
       <DatePicker.Trigger

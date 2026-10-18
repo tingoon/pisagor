@@ -152,6 +152,7 @@ export function PaginationItemLink(
   const pageValue = () => {
     if (local.page === "previous") return pagination().previousPage;
     if (local.page === "next") return pagination().nextPage;
+
     return local.page;
   };
 

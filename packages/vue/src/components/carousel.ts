@@ -144,6 +144,7 @@ export const CarouselAutoplayTrigger = defineComponent({
 
     return () => {
       const isPlaying = carousel.value.isPlaying;
+
       return h(
         CarouselPrimitive.AutoplayTrigger as ArkPart,
         { ...attrs, asChild: true },

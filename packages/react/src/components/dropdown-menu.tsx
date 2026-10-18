@@ -36,6 +36,7 @@ const { Context: DropdownMenuStylesContext } = createSlotRecipeContext({
 
 function useDropdownMenuSlots() {
   const styles = use(DropdownMenuStylesContext);
+
   return styles?.slots ?? dropdownMenuRecipe();
 }
 // #endregion

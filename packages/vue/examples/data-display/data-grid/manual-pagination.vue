@@ -312,6 +312,7 @@ const sortedData = computed(() => {
     const leftValue = left[sort.id as keyof FullUser];
     const rightValue = right[sort.id as keyof FullUser];
     const comparison = String(leftValue).localeCompare(String(rightValue));
+
     return sort.desc ? -comparison : comparison;
   });
 

@@ -273,6 +273,7 @@ function SelectionSummary<TData extends RowData>({
   if (selected === 0) {
     return null;
   }
+
   return (
     <div class="flex items-center justify-between gap-3 pt-1">
       <p class="text-muted-foreground text-sm">{selected} selected</p>

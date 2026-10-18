@@ -82,6 +82,7 @@ export const BottomNavigationRoot = defineComponent({
       BottomNavigationValueKey,
       computed(() => props.value),
     );
+
     return () =>
       h(
         BottomNavigationNav,
@@ -110,6 +111,7 @@ export const BottomNavigationItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const rootValue = inject(BottomNavigationValueKey, undefined);
+
     return () => {
       const root = rootValue?.value;
       const isCurrent =
@@ -117,6 +119,7 @@ export const BottomNavigationItem = defineComponent({
         (props.value !== undefined &&
           root !== undefined &&
           props.value === root);
+
       return h(
         BottomNavigationItemBase,
         {

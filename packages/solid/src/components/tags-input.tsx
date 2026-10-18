@@ -255,6 +255,7 @@ export function TagsInputItemInput(
   props: TagsInputItemInputProps,
 ): JSX.Element {
   const styles = useTagsInputItem();
+
   return (
     <TagsInputPrimitive.ItemInput
       {...props}
@@ -267,6 +268,7 @@ export function TagsInputItemInput(
 
 export function TagsInputInput(props: TagsInputInputProps): JSX.Element {
   const styles = useTagsInput();
+
   return (
     <TagsInputPrimitive.Input
       {...props}

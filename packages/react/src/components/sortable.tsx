@@ -82,6 +82,7 @@ function useSortableItem() {
       "useSortableItem must be used within SortableItemStateContext.",
     );
   }
+
   return { ...styles, ...state };
 }
 // #endregion

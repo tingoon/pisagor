@@ -9,6 +9,7 @@ type RefCleanup = undefined | (() => void);
 export function assignRef<T>(ref: PossibleRef<T>, value: T | null): RefCleanup {
   if (typeof ref === "function") {
     ref(value);
+
     return undefined;
   }
 

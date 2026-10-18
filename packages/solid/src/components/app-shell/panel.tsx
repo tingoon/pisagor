@@ -129,6 +129,7 @@ export function AppShellPanelHeader(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useAppShellStyles();
+
   return (
     <div
       {...rest}
@@ -144,6 +145,7 @@ export function AppShellPanelContent(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useAppShellStyles();
+
   return (
     <ScrollArea class={styles.slots.scrollArea()}>
       <div
@@ -161,6 +163,7 @@ export function AppShellPanelFooter(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useAppShellStyles();
+
   return (
     <div
       {...rest}

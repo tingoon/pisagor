@@ -145,6 +145,7 @@ export function AppShellRailItem(props: AppShellRailItemProps): JSX.Element {
           typeof tip() === "string"
             ? ({ content: tip() as string } as Omit<TooltipProps, "children">)
             : (tip() as Omit<TooltipProps, "children">);
+
         return (
           <Tooltip
             {...tooltipProps}

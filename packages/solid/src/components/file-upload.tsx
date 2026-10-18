@@ -211,6 +211,7 @@ export function FileUploadList(props: FileUploadListProps): JSX.Element {
   const renderItem = (file: File, errors?: readonly string[]) => {
     const isImage = () => file.type.startsWith("image/");
     const extension = () => file.name.split(".").pop();
+
     return (
       <FileUploadItem
         {...rest}

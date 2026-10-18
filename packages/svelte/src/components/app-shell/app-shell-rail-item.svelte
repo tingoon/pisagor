@@ -55,6 +55,7 @@
   const tooltipProps = $derived.by((): TooltipConfig | undefined => {
     if (!tooltip) return undefined;
     if (typeof tooltip === "string") return { content: tooltip };
+
     return tooltip;
   });
 

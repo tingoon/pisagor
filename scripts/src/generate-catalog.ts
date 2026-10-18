@@ -77,6 +77,7 @@ function listDirs(dir: string): string[] {
   if (!existsSync(dir)) {
     return [];
   }
+
   return readdirSync(dir)
     .filter((name) => {
       if (name.startsWith(".") || name === "index.ts" || name === "internal") {
@@ -114,6 +115,7 @@ function listFlatFiles(dir: string): Map<string, string> {
       files.set(name, abs);
     }
   }
+
   return files;
 }
 
@@ -138,6 +140,7 @@ function findSources(dir: string, name: string): string[] {
     if (base === "index") {
       return 3;
     }
+
     return 2;
   };
 
@@ -157,6 +160,7 @@ function findExamplesRoot(packageDir: string): string | null {
   if (existsSync(examples) && statSync(examples).isDirectory()) {
     return examples;
   }
+
   return null;
 }
 
@@ -188,6 +192,7 @@ function resolveExampleDir(
       return nested;
     }
   }
+
   return null;
 }
 
@@ -226,6 +231,7 @@ function loadExamples(
       path: path.relative(packageDir, abs),
     });
   }
+
   return examples;
 }
 
@@ -311,6 +317,7 @@ function buildRecipesCatalog(): RecipesCatalog {
       };
     }
   }
+
   return {
     kind: "recipes",
     package: "@pisagor/recipes",

@@ -36,6 +36,7 @@ export function CustomPreview() {
       </FileUpload.ItemGroup>
     );
   };
+
   return (
     <FileUpload accept="image/*">
       <FileUpload.Dropzone>

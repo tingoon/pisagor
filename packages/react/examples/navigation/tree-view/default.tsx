@@ -53,6 +53,7 @@ export function Default() {
       </TreeView.NodeProvider>
     );
   };
+
   return (
     <div>
       <TreeView collection={collection}>

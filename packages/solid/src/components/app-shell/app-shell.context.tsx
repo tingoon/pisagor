@@ -108,6 +108,7 @@ export const { AppShellContext, useAppShell: useAppShellState } =
 export function useAppShell() {
   const styles = useAppShellStyles();
   const state = useAppShellState();
+
   return {
     ...state,
     get slots() {
@@ -124,6 +125,7 @@ export function useSideState({
   const [uncontrolled, setUncontrolled] = createSignal(defaultOpen);
   const open = createMemo(() => {
     const controlled = getControlledOpen?.();
+
     return controlled !== undefined ? !!controlled : uncontrolled();
   });
 

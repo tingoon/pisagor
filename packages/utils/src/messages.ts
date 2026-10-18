@@ -157,6 +157,7 @@ export function resolveLocale(
     ...(parent?.messages ?? defaultMessages),
     ...overrides,
   } as Record<MessageKey, string>;
+
   return { locale, m: createMessageLookup(messages), messages };
 }
 

@@ -66,6 +66,7 @@
   function formatFileLabel(files: globalThis.File[]): string | undefined {
     if (files.length === 0) return undefined;
     if (files.length === 1) return files[0]?.name;
+
     return `${files.length} files selected`;
   }
 

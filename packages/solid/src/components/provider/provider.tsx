@@ -61,6 +61,7 @@ export function LocaleProvider(props: LocaleProviderProps): JSX.Element {
 /** Sets `dir` from the nearest Ark locale. */
 function LocaleDir(props: ParentProps): JSX.Element {
   const locale = useLocaleContext();
+
   return (
     <div
       data-part="locale"

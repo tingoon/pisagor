@@ -48,6 +48,7 @@ onMounted(() => {
         target,
       };
       mounted.value = [...mounted.value, entry];
+
       return () => {
         mounted.value = mounted.value.filter((item) => item !== entry);
       };

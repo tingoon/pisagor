@@ -26,30 +26,35 @@
   const bold = $derived(
     (() => {
       void ctx.revision;
+
       return ctx.editor?.isActive("bold") ?? false;
     })(),
   );
   const italic = $derived(
     (() => {
       void ctx.revision;
+
       return ctx.editor?.isActive("italic") ?? false;
     })(),
   );
   const strike = $derived(
     (() => {
       void ctx.revision;
+
       return ctx.editor?.isActive("strike") ?? false;
     })(),
   );
   const bulletList = $derived(
     (() => {
       void ctx.revision;
+
       return ctx.editor?.isActive("bulletList") ?? false;
     })(),
   );
   const orderedList = $derived(
     (() => {
       void ctx.revision;
+
       return ctx.editor?.isActive("orderedList") ?? false;
     })(),
   );

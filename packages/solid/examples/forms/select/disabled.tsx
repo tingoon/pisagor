@@ -9,6 +9,7 @@ export function Disabled() {
       { label: "Astro", value: "astro" },
     ],
   });
+
   return (
     <Select.Root collection={collection} disabled>
       <Select.Trigger>

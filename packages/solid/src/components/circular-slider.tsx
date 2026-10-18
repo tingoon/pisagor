@@ -44,6 +44,7 @@ const { CircularSliderGeometryContext, useCircularSliderGeometry } =
 function useCircularSlider() {
   const styles = useCircularSliderStyles();
   const geometry = useCircularSliderGeometry();
+
   return {
     get ringCircumference() {
       return geometry.ringCircumference;
@@ -205,6 +206,7 @@ export function CircularSliderControl(
         ? Array.from({ length: Math.floor(360 / step()) }, (_, i) => i * step())
         : CLOCK_MARKER_ANGLES;
     }
+
     return null;
   });
 

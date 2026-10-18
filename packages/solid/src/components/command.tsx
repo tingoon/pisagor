@@ -230,6 +230,7 @@ export function CommandInput(props: CommandInputProps): JSX.Element {
 export function CommandList(props: CommandListProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useCommand();
+
   return (
     <div class={styles.slots.listWrapper()}>
       <Combobox.List
@@ -244,6 +245,7 @@ export function CommandEmpty(props: ComboboxEmptyProps): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "class"]);
   const styles = useCommand();
+
   return (
     <Combobox.Empty
       {...rest}
@@ -266,6 +268,7 @@ export function CommandItemGroupLabel(
 
 export function CommandItem(props: ComboboxItemProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
+
   return <Combobox.Item {...rest} class={local.class} showIndicator={false} />;
 }
 

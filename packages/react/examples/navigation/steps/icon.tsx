@@ -7,6 +7,7 @@ export function Icon() {
     { icon: HardDriveIcon, id: "drive" },
     { icon: CreditCardIcon, id: "card" },
   ];
+
   return (
     <Steps count={items.length}>
       <Steps.List>

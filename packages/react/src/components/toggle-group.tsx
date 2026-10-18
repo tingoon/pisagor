@@ -38,6 +38,7 @@ const ToggleGroupItemOptionsContext = createContext<ToggleGroupItemOptions>({
 function useToggleGroup() {
   const styles = useToggleGroupStyles();
   const options = use(ToggleGroupItemOptionsContext);
+
   return { ...styles, ...options };
 }
 // #endregion

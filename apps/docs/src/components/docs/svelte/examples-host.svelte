@@ -26,6 +26,7 @@
       if (comp == null) return renderMissingExample(slot, message);
       slot.replaceChildren();
       const instance = mount(comp as Component, { target: slot });
+
       return () => {
         void unmount(instance);
       };

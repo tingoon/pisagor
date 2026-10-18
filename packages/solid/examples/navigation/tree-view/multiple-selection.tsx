@@ -49,6 +49,7 @@ export function MultipleSelection() {
       </TreeView.NodeProvider>
     );
   };
+
   return (
     <div>
       <TreeView collection={collection} selectionMode="multiple">

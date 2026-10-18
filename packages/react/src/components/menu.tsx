@@ -60,6 +60,7 @@ export function MenuRoot({
 }: MenuRootProps) {
   const { m } = useLocale();
   const ariaLabel = m("menu.label", ariaLabelProp);
+
   return <MenuRootBase {...rest} aria-label={ariaLabel} />;
 }
 

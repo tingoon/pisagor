@@ -51,6 +51,7 @@ const { DatePickerVariantContext, useDatePickerVariant } = createContext(
 function useDatePicker() {
   const styles = useDatePickerStyles();
   const options = useDatePickerVariant();
+
   return {
     get slots() {
       return styles.slots;
@@ -402,6 +403,7 @@ export function DatePickerValueText(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useDatePicker();
+
   return (
     <DatePickerPrimitive.ValueText
       {...rest}

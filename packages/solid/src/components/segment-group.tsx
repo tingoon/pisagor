@@ -115,6 +115,7 @@ export const SegmentGroupIndicator: Component<SegmentGroupIndicatorProps> =
 
 export function SegmentGroupShorthand(props: SegmentGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["items"]);
+
   return (
     <SegmentGroupRoot {...rest}>
       <For each={local.items ?? []}>

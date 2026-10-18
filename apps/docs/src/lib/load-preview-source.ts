@@ -95,6 +95,7 @@ function loaderFor(ref: PreviewSourceRef): (() => Promise<string>) | undefined {
   else modules = componentRaws[ref.framework];
 
   if (!modules) return undefined;
+
   return findExampleFileLoader(modules, ref.id, stem) as
     (() => Promise<string>) | undefined;
 }
@@ -115,6 +116,7 @@ export async function loadPreviewSource(
     pending = loader();
     moduleCache.set(cacheKey, pending);
   }
+
   return pending;
 }
 
@@ -132,5 +134,6 @@ export function resolvePreviewLang(
     return "vue";
   }
   if (hasVueSfcBlock) return "vue";
+
   return "ts";
 }

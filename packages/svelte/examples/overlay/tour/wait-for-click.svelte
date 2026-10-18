@@ -18,6 +18,7 @@
         show();
         const [promise, cancel] = waitForEvent(target, "click");
         promise.then(() => next());
+
         return cancel;
       },
       id: "click-add",
@@ -31,6 +32,7 @@
         show();
         const [promise, cancel] = waitForEvent(target, "click");
         promise.then(() => next());
+
         return cancel;
       },
       id: "click-edit",
@@ -44,6 +46,7 @@
         show();
         const [promise, cancel] = waitForEvent(target, "click");
         promise.then(() => next());
+
         return cancel;
       },
       id: "click-delete",

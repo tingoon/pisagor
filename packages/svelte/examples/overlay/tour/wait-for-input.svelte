@@ -32,6 +32,7 @@
           },
         );
         promise.then(() => next());
+
         return cancel;
       },
       id: "enter-name",
@@ -51,6 +52,7 @@
           },
         );
         promise.then(() => next());
+
         return cancel;
       },
       id: "enter-email",
@@ -70,6 +72,7 @@
           },
         );
         promise.then(() => next());
+
         return cancel;
       },
       id: "check-terms",

@@ -10,6 +10,7 @@ export function Fallback() {
       </div>
     );
   };
+
   return (
     <ClientOnly
       fallback={

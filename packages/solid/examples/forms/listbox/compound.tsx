@@ -8,6 +8,7 @@ export function Compound() {
       { label: "Ireland", value: "ie" },
     ],
   });
+
   return (
     <Listbox.Root collection={collection} defaultValue={["br"]}>
       <Listbox.Content>

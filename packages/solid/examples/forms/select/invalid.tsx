@@ -9,6 +9,7 @@ export function Invalid() {
       { label: "Astro", value: "astro" },
     ],
   });
+
   return (
     <Select.Root collection={collection} invalid>
       <Select.Trigger>

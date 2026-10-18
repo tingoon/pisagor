@@ -99,6 +99,7 @@ function reorder(list: string[], from: number, to: number) {
   const moved = next.splice(from, 1)[0];
   if (moved === undefined) return list;
   next.splice(to, 0, moved);
+
   return next;
 }
 
@@ -244,6 +245,7 @@ export const SortableRoot = defineComponent({
         onDragStart: (event: DragEvent) => {
           if (props.disabled || hasHandle(id)) {
             event.preventDefault();
+
             return;
           }
           startDrag(id, event);
@@ -432,6 +434,7 @@ export const SortableHandle = defineComponent({
           onDragStart: (event: DragEvent) => {
             if (sortable.disabled) {
               event.preventDefault();
+
               return;
             }
 

@@ -30,6 +30,7 @@ export const Spinner = defineComponent({
   },
   setup(props, { attrs }) {
     const { m } = useLocale();
+
     return () =>
       h(PhCircleNotch as ArkPart, {
         ...attrs,

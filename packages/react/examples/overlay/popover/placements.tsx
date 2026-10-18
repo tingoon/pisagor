@@ -1,6 +1,7 @@
 import { Button, Popover } from "@pisagor/react";
 export function Placements() {
   const placements = ["left", "top", "bottom", "right"] as const;
+
   return (
     <div className="flex flex-wrap justify-center gap-2">
       {placements.map((placement) => (

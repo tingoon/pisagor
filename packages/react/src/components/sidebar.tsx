@@ -60,6 +60,7 @@ export function useSidebar(): SidebarContextProps {
   if (state === undefined) {
     throw new Error("useSidebar must be used within SidebarStateContext.");
   }
+
   return { ...styles, ...state };
 }
 // #endregion

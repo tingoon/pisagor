@@ -13,6 +13,7 @@
     if (length < 20) return 0;
     if (length < 40) return 20;
     if (length < 60) return 40;
+
     return 60;
   };
 

@@ -52,6 +52,7 @@ const FieldContextProvider = defineComponent({
   },
   setup(props, { slots }) {
     provide(fieldContextKey, props as FieldContextValue);
+
     return () => slots.default?.();
   },
 });
@@ -103,6 +104,7 @@ function createFormHook({
       name: "AppForm",
       setup(_, { slots }) {
         provide(formContextKey, form as unknown as FormContextValue);
+
         return () => slots.default?.();
       },
     });
@@ -122,6 +124,7 @@ function createFormHook({
               default: ({ field }: { field: AnyFieldApi }) =>
                 h(FieldContextProvider, { field }, () => {
                   const connected = Object.assign(field, fieldComponents);
+
                   return slots.default?.(connected);
                 }),
             },

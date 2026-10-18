@@ -19,6 +19,7 @@ export const useDialogModal = modalCtx.getContext;
 /** Combined styles + modal (getter object — do not destructure once). */
 export function useDialog() {
   const styles = useDialogStyles();
+
   return {
     get modal() {
       return useDialogModal();

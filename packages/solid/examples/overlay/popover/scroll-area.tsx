@@ -4,6 +4,7 @@ export function ScrollArea() {
     id: i + 1,
     label: `Item ${i + 1}`,
   }));
+
   return (
     <Popover>
       <Popover.Trigger

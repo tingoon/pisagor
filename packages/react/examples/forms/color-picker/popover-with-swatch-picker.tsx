@@ -11,6 +11,7 @@ export function PopoverWithSwatchPicker() {
     "#ec4899",
     "#f43f5e",
   ];
+
   return (
     <ColorPicker defaultValue="#eb5e41" format="hsla">
       <ColorPicker.Control>

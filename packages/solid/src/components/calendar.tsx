@@ -100,6 +100,7 @@ function useCalendarSelectShell(className?: string) {
   const styles = useCalendar();
   const surfaceVariant = useFormControlSurface();
   const variant = "primary" as FormControlVariant;
+
   return {
     className: cn(
       formControlShellRecipe({ size: "md", surfaceVariant, variant }),
@@ -189,6 +190,7 @@ export function CalendarViewDate(props: CalendarViewDateProps): JSX.Element {
 
 export function CalendarTodayTrigger(props: ButtonProps): JSX.Element {
   const [local, rest] = splitProps(props, ["size", "variant"]);
+
   return (
     <CalendarContext>
       {(calendar) => (
@@ -302,6 +304,7 @@ export function CalendarPrevTrigger(
 ): JSX.Element {
   const { m } = useLocale();
   const styles = useCalendar();
+
   return (
     <CalendarPrimitive.PrevTrigger
       {...props}
@@ -324,6 +327,7 @@ export function CalendarNextTrigger(
 ): JSX.Element {
   const { m } = useLocale();
   const styles = useCalendar();
+
   return (
     <CalendarPrimitive.NextTrigger
       {...props}
@@ -413,6 +417,7 @@ export function CalendarTableNextMonth(
     <CalendarContext>
       {(calendar) => {
         const offset = () => calendar().getOffset({ months: months() });
+
         return (
           <CalendarTableBody {...rest}>
             <For each={offset().weeks}>

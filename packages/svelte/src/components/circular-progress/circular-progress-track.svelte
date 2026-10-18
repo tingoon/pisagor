@@ -34,6 +34,7 @@
       value == null ? min : Math.min(Math.max(value, min), max);
     const percent = (normalizedValue - min) / range;
     const dashOffset = circumference * (1 - percent);
+
     return { circumference, dashOffset, radius, value };
   });
 </script>

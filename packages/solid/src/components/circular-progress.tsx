@@ -108,6 +108,7 @@ function CircularProgressTrack(
   const range = () => Math.max(api().max - api().min, 1);
   const normalizedValue = () => {
     const value = api().value;
+
     return value == null
       ? api().min
       : Math.min(Math.max(value, api().min), api().max);

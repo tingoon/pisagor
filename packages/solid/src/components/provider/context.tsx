@@ -63,6 +63,7 @@ export function createLocaleValue(
 export function useLocale(): LocaleContextValue {
   const value = useResolvedLocale() ?? defaultLocale;
   const ark = useLocaleContext();
+
   return {
     get dir() {
       return ark().dir;

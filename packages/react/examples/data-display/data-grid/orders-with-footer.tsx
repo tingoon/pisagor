@@ -91,8 +91,10 @@ function OrdersTableFooter() {
   const rows = table.getFilteredRowModel().rows;
   const total = rows.reduce((sum, row) => {
     const amount = Number((row.original as { amount?: number }).amount ?? 0);
+
     return sum + amount;
   }, 0);
+
   return (
     <Table.Footer>
       <Table.Row>

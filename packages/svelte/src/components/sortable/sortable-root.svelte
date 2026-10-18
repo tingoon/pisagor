@@ -37,6 +37,7 @@
     const [moved] = next.splice(from, 1);
     if (moved === undefined) return list;
     next.splice(to, 0, moved);
+
     return next;
   }
 
@@ -100,6 +101,7 @@
 
   function getItemProps(id: string) {
     const itemHasHandle = handleIds.has(id);
+
     return {
       "aria-disabled": disabled || undefined,
       "aria-keyshortcuts": itemHasHandle ? undefined : keyShortcuts,
@@ -124,6 +126,7 @@
       ondragstart: (event: DragEvent) => {
         if (disabled || handleIds.has(id)) {
           event.preventDefault();
+
           return;
         }
         startDrag(id, event);

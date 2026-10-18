@@ -143,6 +143,7 @@ function ToastItemContent(
   const ToastIcon = () => {
     const type = toastData().type;
     if (!type || !(type in TOAST_ICONS)) return null;
+
     return TOAST_ICONS[type as keyof typeof TOAST_ICONS]();
   };
   const isExplicitClosable = () => toastData().closable === false;

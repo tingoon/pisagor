@@ -166,6 +166,7 @@ export const ColorPickerClearTrigger = defineComponent({
   },
   setup(props, { attrs }) {
     const { m } = useLocale();
+
     return () => {
       const api = useColorPicker();
 
@@ -679,6 +680,7 @@ export const ColorPickerLabel = defineComponent({
   name: "ColorPicker.Label",
   setup(_, { attrs, slots }) {
     const getSlots = useColorPickerSlots();
+
     return () =>
       h(
         ColorPickerPrimitive.Label as ArkPart,
@@ -698,6 +700,7 @@ export const ColorPickerFormatSelect = defineComponent({
   name: "ColorPicker.FormatSelect",
   setup(_, { attrs }) {
     const getSlots = useColorPickerSlots();
+
     return () =>
       h(ColorPickerPrimitive.FormatSelect as ArkPart, {
         ...attrs,

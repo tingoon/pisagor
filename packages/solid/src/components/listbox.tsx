@@ -189,6 +189,7 @@ export function ListboxItemIndicator(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const styles = useListboxItem();
+
   return (
     <ListboxPrimitive.ItemIndicator
       {...rest}

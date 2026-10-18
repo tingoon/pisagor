@@ -60,7 +60,9 @@ export function resolvePackageLinks(
   }
   if (packageName) {
     const dir = packageName.replace("@pisagor/", "");
+
     return pkg(dir, packageName, packages[framework].storybook);
   }
+
   return packages[framework];
 }

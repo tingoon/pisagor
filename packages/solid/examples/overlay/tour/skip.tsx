@@ -37,6 +37,7 @@ export function Skip() {
       type: "tooltip",
     },
   ];
+
   return (
     <div class="flex flex-col gap-2">
       <Tour steps={steps}>

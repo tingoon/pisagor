@@ -40,6 +40,7 @@
       variantProp ??
       AUTO_VARIANTS[Math.min(depth, AUTO_VARIANTS.length - 1)] ??
       "default";
+
     return { depth, variant };
   });
 

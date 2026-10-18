@@ -99,6 +99,7 @@ export function WithContextMenu() {
       </TreeView.NodeProvider>
     );
   };
+
   return (
     <div>
       <TreeView collection={collection}>

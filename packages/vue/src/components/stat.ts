@@ -102,6 +102,7 @@ export const StatTrend = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const { m } = useLocale();
+
     return () => {
       return h(
         ark.div as ArkPart,

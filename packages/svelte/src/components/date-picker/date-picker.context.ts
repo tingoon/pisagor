@@ -27,6 +27,7 @@ export const useDatePickerVariant = variantCtx.getContext;
 export function useDatePicker() {
   const styles = Context.get();
   if (!styles) return undefined;
+
   return {
     get slots() {
       return styles.slots;

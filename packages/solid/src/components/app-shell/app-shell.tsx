@@ -82,6 +82,7 @@ export function AppShellRoot(props: AppShellRootProps): JSX.Element {
   const setRegionVar = (name: AppShellRegionVar, value: string) => {
     setRegionVars((current) => {
       if (current[name] === value) return current;
+
       return { ...current, [name]: value };
     });
   };
@@ -89,6 +90,7 @@ export function AppShellRoot(props: AppShellRootProps): JSX.Element {
   const setFixedStackVar = (name: AppShellFixedStackVar, value: string) => {
     setFixedStackVars((current) => {
       if (current[name] === value) return current;
+
       return { ...current, [name]: value };
     });
   };

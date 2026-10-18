@@ -47,6 +47,7 @@ function useCircularSlider() {
       "useCircularSlider must be used within CircularSliderGeometryContext.",
     );
   }
+
   return { slots, ...geometry };
 }
 
@@ -175,6 +176,7 @@ export function CircularSliderControl({
         ? Array.from({ length: Math.floor(360 / step) }, (_, i) => i * step)
         : CLOCK_MARKER_ANGLES;
     }
+
     return null;
   }, [markers, markersAtSteps, step]);
 

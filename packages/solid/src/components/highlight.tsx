@@ -12,6 +12,7 @@ export interface HighlightProps
 
 export function Highlight(props: HighlightProps): JSX.Element {
   const [local, rest] = splitProps(props, ["recipe", "class"]);
+
   return (
     <HighlightPrimitive
       {...rest}

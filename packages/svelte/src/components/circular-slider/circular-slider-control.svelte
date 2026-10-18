@@ -34,6 +34,7 @@
         ? Array.from({ length: Math.floor(360 / step) }, (_, i) => i * step)
         : CLOCK_MARKER_ANGLES;
     }
+
     return null as number[] | null;
   });
 </script>

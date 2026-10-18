@@ -33,6 +33,7 @@
     getSize: () => number;
   }) {
     if (!sizingEnabled) return undefined;
+
     return `min-width: ${column.columnDef.minSize}px; width: ${column.getSize()}px`;
   }
 </script>

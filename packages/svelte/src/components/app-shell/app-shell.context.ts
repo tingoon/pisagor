@@ -112,6 +112,7 @@ export const useAppShellState = stateCtx.getContext;
 export function useAppShell(): AppShellContextValue {
   const styles = useAppShellStyles();
   const state = useAppShellState();
+
   return {
     get defaultInspectorResizableProps() {
       return state.defaultInspectorResizableProps;

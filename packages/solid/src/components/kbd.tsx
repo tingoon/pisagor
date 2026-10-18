@@ -20,6 +20,7 @@ export function KbdRoot(props: KbdProps): JSX.Element {
     "size",
     "variant",
   ]);
+
   return (
     <ark.kbd
       {...rest}
@@ -36,6 +37,7 @@ export function KbdRoot(props: KbdProps): JSX.Element {
 
 export function KbdGroup(props: KbdGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "recipe"]);
+
   return (
     <ark.div
       {...rest}

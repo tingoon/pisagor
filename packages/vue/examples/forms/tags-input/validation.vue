@@ -11,6 +11,7 @@ const validate = ({
   inputValue: string;
 }) => {
   const next = inputValue.trim();
+
   return (
     Boolean(next) &&
     !value.includes(next) &&

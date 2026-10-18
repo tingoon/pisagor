@@ -15,6 +15,7 @@ interface InputClearButtonProps extends InputGroupButtonProps {
 // #region Parts
 export function InputClearButton({ onClear, ...rest }: InputClearButtonProps) {
   const { m } = useLocale();
+
   return (
     <InputGroupButton
       aria-label={m("inputClearButton.clear")}

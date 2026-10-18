@@ -13,6 +13,7 @@ export function Grouping() {
       { category: "Backend", label: "NestJS", value: "nestjs" },
     ],
   });
+
   return (
     <Select.Root collection={collection}>
       <Select.Trigger>

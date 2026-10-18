@@ -77,6 +77,7 @@ function DataTableHeader<TData extends RowData>(
   props: DataTableHeaderProps,
 ): JSX.Element {
   const table = useDataTableContext<TData>().table;
+
   return (
     <For each={table.getHeaderGroups()}>
       {(headerGroup) => (
@@ -124,6 +125,7 @@ function DataTableHead<TData extends RowData>(
         const header = headerGroup.headers.find(
           (item) => item.column.id === columnId(),
         );
+
         return (
           <Show when={header}>
             {(h) => (
@@ -148,6 +150,7 @@ export function renderDataTableCell<TData extends RowData>(
   cell: Cell<DataTableFeatures, TData, unknown>,
 ) {
   if (cell.getIsPlaceholder()) return null;
+
   return flexRender(cell.column.columnDef.cell, cell.getContext());
 }
 
@@ -213,6 +216,7 @@ function DataTableCell<TData extends RowData>(
         const cell = row
           .getVisibleCells()
           .find((item) => item.column.id === columnId());
+
         return (
           <Show when={cell}>
             {(c) => (
@@ -250,6 +254,7 @@ function DataTableEmpty(props: DataTableEmptyProps): JSX.Element {
 function DataTableToolbar(props: DataTableToolbarProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useDataTableContext();
+
   return (
     <div
       {...rest}
@@ -263,6 +268,7 @@ function DataTableToolbar(props: DataTableToolbarProps): JSX.Element {
 function DataTableFooter(props: DataTableFooterProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useDataTableContext();
+
   return (
     <div
       {...rest}

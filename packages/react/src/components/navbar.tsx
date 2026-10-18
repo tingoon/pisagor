@@ -38,6 +38,7 @@ export function NavbarNav({
 }: ComponentProps<typeof ark.nav>) {
   const { m } = useLocale();
   const ariaLabel = m("navbar.label", ariaLabelProp);
+
   return <NavbarNavBase {...rest} aria-label={ariaLabel} />;
 }
 

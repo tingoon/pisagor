@@ -60,6 +60,7 @@ const { TourStateContext, useTourState } =
 export function useTourContext() {
   const styles = useTourStyles();
   const state = useTourState();
+
   return {
     handleStart: state.handleStart,
     get slots() {
@@ -168,6 +169,7 @@ export function TourBackdrop(props: TourBackdropProps): JSX.Element {
 
 export function TourPositioner(props: TourPositionerProps): JSX.Element {
   const ctx = useTourContext();
+
   return <TourPrimitive.Positioner {...props} class={ctx.slots.positioner()} />;
 }
 
@@ -249,6 +251,7 @@ export function TourBody(props: DialogBodyProps): JSX.Element {
 
 export function TourSpotlight(props: TourSpotlightProps): JSX.Element {
   const ctx = useTourContext();
+
   return <TourPrimitive.Spotlight {...props} class={ctx.slots.spotlight()} />;
 }
 

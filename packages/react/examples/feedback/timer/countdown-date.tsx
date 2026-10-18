@@ -5,6 +5,7 @@ export function CountdownDate() {
 
   const targetDate = new Date();
   targetDate.setDate(targetDate.getDate() + 7);
+
   return (
     <Card className="rounded-3xl [--space:--spacing(6)]">
       <Card.Content className="flex flex-col items-center gap-3">

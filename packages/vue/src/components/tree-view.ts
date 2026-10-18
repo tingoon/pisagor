@@ -159,6 +159,7 @@ const getFileExtension = (file: string) => {
   const name = file.includes(".")
     ? file.split(".").at(-1)?.toLowerCase()
     : null;
+
   return name ? `.${name}` : null;
 };
 // #endregion
@@ -623,6 +624,7 @@ export const TreeViewItemText = defineComponent({
       const resolved = extension
         ? treeViewContext?.fileIcons?.[extension]
         : undefined;
+
       return (resolved ?? props.icon) as ArkPart;
     };
 

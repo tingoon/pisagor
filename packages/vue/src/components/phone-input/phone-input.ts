@@ -82,6 +82,7 @@ function countryLabel(code: Country): string {
 function resolveCountry(value: string | undefined, fallback: Country): Country {
   if (!value) return fallback;
   const parsed = parsePhoneNumberFromString(value);
+
   return (parsed?.country as Country | undefined) ?? fallback;
 }
 
@@ -95,6 +96,7 @@ function formatNational(value: string | undefined, country: Country): string {
       return parsed.nationalNumber;
     }
   }
+
   return new AsYouType(country).input(value);
 }
 

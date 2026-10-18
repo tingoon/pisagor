@@ -11,6 +11,7 @@ function componentNames(config: ToolConfig): string[] {
       names.add(entry.name);
     }
   }
+
   return [...names].sort();
 }
 
@@ -19,6 +20,7 @@ export const getExampleTool: Tool<{ componentList: string[] }> = {
     if (config.packages.length === 0) {
       return { componentList: [] };
     }
+
     return { componentList: componentNames(config) };
   },
   description:

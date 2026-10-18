@@ -228,6 +228,7 @@ export function CalendarTodayTrigger({
   ...rest
 }: ButtonProps) {
   const { m } = useLocale();
+
   return (
     <CalendarContext>
       {(calendar) => (

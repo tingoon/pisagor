@@ -35,6 +35,7 @@ export const useCircularSliderMetrics = metricsCtx.getContext;
 export function useCircularSlider() {
   const styles = useCircularSliderStyles();
   const metrics = useCircularSliderMetrics();
+
   return {
     get ringCircumference() {
       return metrics.ringCircumference;

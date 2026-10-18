@@ -16,6 +16,7 @@ export function Spinner({
   ...rest
 }: SpinnerProps) {
   const { m } = useLocale();
+
   return (
     <CircleNotchIcon
       {...rest}

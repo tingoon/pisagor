@@ -104,6 +104,7 @@ export function BreadcrumbSeparator(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const styles = useBreadcrumb();
+
   return (
     <ark.li
       {...rest}
@@ -122,6 +123,7 @@ export function BreadcrumbEllipsis(
   props: BreadcrumbEllipsisProps,
 ): JSX.Element {
   const styles = useBreadcrumb();
+
   return (
     <ark.span
       {...props}

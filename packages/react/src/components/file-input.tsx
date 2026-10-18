@@ -182,6 +182,7 @@ export function FileInput({
 
     if (typeof ref === "function") {
       ref(node);
+
       return;
     }
 

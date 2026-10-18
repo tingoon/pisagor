@@ -119,6 +119,7 @@ export function ColorPickerRoot(props: ColorPickerProps): JSX.Element {
   );
   const parsedColor = createMemo(() => {
     const value = color();
+
     return value ? parseColor(value) : undefined;
   });
 
@@ -166,6 +167,7 @@ export function ColorPickerClearTrigger(
       readOnly?: boolean;
     };
     if (controlProps.disabled || controlProps.readOnly) return false;
+
     return api().value.getChannelValue("alpha") !== 0;
   });
 
@@ -289,6 +291,7 @@ export function ColorPickerEyeDropperTrigger(
 ): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["size", "variant", "children"]);
+
   return (
     <ColorPickerPrimitive.EyeDropperTrigger
       aria-label={m("colorPicker.eyeDropper")}
@@ -457,6 +460,7 @@ export function ColorPickerFormatSelect(
 
 export function ColorPickerInput(props: ColorPickerInputProps): JSX.Element {
   const [local, rest] = splitProps(props, ["channel"]);
+
   return (
     <ColorPickerPrimitive.ChannelInput
       {...rest}

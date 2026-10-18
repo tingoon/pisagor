@@ -14,6 +14,7 @@ export function InfoTip() {
       value: "3,450",
     },
   ];
+
   return (
     <DataList.Root>
       {data.map((item) => (

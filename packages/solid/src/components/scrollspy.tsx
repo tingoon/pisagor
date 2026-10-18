@@ -27,6 +27,7 @@ function resolveScrollElement(target: ScrollTarget): HTMLElement | null {
     '[data-scope="scroll-area"][data-part="viewport"]',
   );
   if (viewport instanceof HTMLElement) return viewport;
+
   return target;
 }
 
@@ -37,8 +38,10 @@ function resolveScrollTarget(target: ScrollTarget): HTMLElement | Window {
       '[data-scope="scroll-area"][data-part="viewport"]',
     );
     if (viewport instanceof HTMLElement) return viewport;
+
     return target;
   }
+
   return window;
 }
 
@@ -51,6 +54,7 @@ function getSectionScrollOffset(
   }
   const sectionRect = sectionElement.getBoundingClientRect();
   const scrollRect = scrollElement.getBoundingClientRect();
+
   return sectionRect.top - scrollRect.top + scrollElement.scrollTop;
 }
 

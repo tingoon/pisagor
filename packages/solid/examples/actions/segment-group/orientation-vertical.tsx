@@ -2,6 +2,7 @@ import { SegmentGroup } from "@pisagor/solid";
 
 export function OrientationVertical() {
   const items = ["Profile", "Account", "Security", "Notifications"];
+
   return (
     <SegmentGroup.Root
       class="rounded-lg"

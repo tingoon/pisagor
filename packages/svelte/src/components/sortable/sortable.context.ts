@@ -42,6 +42,7 @@ export const useSortableItemState = itemState.getContext;
 export function useSortableItem() {
   const styles = useSortableItemStyles();
   const state = useSortableItemState();
+
   return {
     get id() {
       return state.id;

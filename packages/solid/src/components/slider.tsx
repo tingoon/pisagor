@@ -40,6 +40,7 @@ const { SliderExtrasContext, useSliderExtras } =
 function useSlider() {
   const styles = useSliderStyles();
   const extras = useSliderExtras();
+
   return {
     get slots() {
       return styles.slots;
@@ -125,6 +126,7 @@ function SliderRoot(props: SliderRootProps): JSX.Element {
 function SliderHeader(props: SliderHeaderProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const styles = useSlider();
+
   return (
     <div {...rest} class={styles.slots.header({ class: local.class })}>
       {local.children}
@@ -227,6 +229,7 @@ function SliderMarker(props: SliderMarkerProps): JSX.Element {
 function SliderMarkerTick(props: SliderMarkerTickProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const styles = useSlider();
+
   return (
     <span {...rest} class={styles.slots.markerTick({ class: local.class })} />
   );
@@ -235,6 +238,7 @@ function SliderMarkerTick(props: SliderMarkerTickProps): JSX.Element {
 function SliderMarkerLabel(props: SliderMarkerLabelProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const styles = useSlider();
+
   return (
     <span {...rest} class={styles.slots.markerLabel({ class: local.class })}>
       {local.children}
@@ -287,6 +291,7 @@ function SliderShorthand(props: SliderProps): JSX.Element {
   const values = createMemo(() => {
     if (Array.isArray(local.value)) return local.value;
     if (Array.isArray(local.defaultValue)) return local.defaultValue;
+
     // Uncontrolled default is a single thumb (zag defaults `value` to `[min]`).
     return [min()];
   });

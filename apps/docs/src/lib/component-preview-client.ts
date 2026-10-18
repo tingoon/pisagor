@@ -50,6 +50,7 @@ function bindPreview(root: HTMLElement) {
   function getPreviewTheme(): "light" | "dark" {
     const stored = previewThemeRoot?.dataset.previewTheme;
     if (stored === "dark" || stored === "light") return stored;
+
     return getDocsTheme();
   }
 
@@ -62,6 +63,7 @@ function bindPreview(root: HTMLElement) {
       const url = new URL(href, window.location.href);
       url.searchParams.set("theme", previewTheme);
       window.open(url.href, "_blank", "noopener,noreferrer");
+
       return;
     }
 

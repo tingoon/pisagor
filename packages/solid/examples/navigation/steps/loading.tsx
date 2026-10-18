@@ -7,6 +7,7 @@ export function Loading() {
     { id: "step-2", loading: false },
     { id: "step-3", loading: false },
   ];
+
   return (
     <Steps count={items.length}>
       <Steps.List>

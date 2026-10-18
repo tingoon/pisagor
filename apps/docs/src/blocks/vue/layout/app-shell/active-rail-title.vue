@@ -13,6 +13,7 @@ const appShell = useAppShell();
 
 const label = computed(() => {
   const activeRailId = appShell?.railStates.start?.activeRailId;
+
   return (
     props.items.find((item) => item.id === activeRailId)?.label ?? "Navigation"
   );

@@ -51,6 +51,7 @@ export function useTourContext() {
   if (state === undefined) {
     throw new Error("useTourContext must be used within TourStateContext.");
   }
+
   return { ...styles, ...state };
 }
 // #endregion

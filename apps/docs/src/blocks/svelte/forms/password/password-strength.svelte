@@ -28,6 +28,7 @@
     if (score === 0) return "Enter a password";
     if (score <= 2) return "Weak security";
     if (score <= 4) return "Medium security";
+
     return "Strong security";
   }
 

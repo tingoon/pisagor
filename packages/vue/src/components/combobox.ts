@@ -354,6 +354,7 @@ export const ComboboxClearTrigger = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const { m } = useLocale();
+
     return () =>
       h(
         ComboboxPrimitive.ClearTrigger as ArkPart,

@@ -11,6 +11,7 @@ function anatomyFile(componentId: string): string {
   const name = `${componentId}.svg`;
   const fromPackage = join(process.cwd(), "public/images/anatomy", name);
   if (existsSync(fromPackage)) return fromPackage;
+
   return join(process.cwd(), "apps/docs/public/images/anatomy", name);
 }
 
@@ -20,5 +21,6 @@ function anatomyFile(componentId: string): string {
  */
 export function resolveAnatomySrc(componentId: string): string | null {
   if (!existsSync(anatomyFile(componentId))) return null;
+
   return withDocsBase(`/images/anatomy/${componentId}.svg`);
 }

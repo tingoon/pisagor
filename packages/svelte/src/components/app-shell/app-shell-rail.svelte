@@ -67,6 +67,7 @@
 
   $effect(() => {
     ctx.setRegionVar(regionVar, APP_SHELL_RAIL_WIDTH);
+
     return () => {
       ctx.setRegionVar(regionVar, "0px");
     };

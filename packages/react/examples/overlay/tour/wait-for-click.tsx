@@ -17,6 +17,7 @@ export function WaitForClick() {
         show();
         const [promise, cancel] = waitForEvent(target, "click");
         promise.then(() => next());
+
         return cancel;
       },
       id: "click-add",
@@ -30,6 +31,7 @@ export function WaitForClick() {
         show();
         const [promise, cancel] = waitForEvent(target, "click");
         promise.then(() => next());
+
         return cancel;
       },
       id: "click-edit",
@@ -43,6 +45,7 @@ export function WaitForClick() {
         show();
         const [promise, cancel] = waitForEvent(target, "click");
         promise.then(() => next());
+
         return cancel;
       },
       id: "click-delete",
@@ -58,6 +61,7 @@ export function WaitForClick() {
       type: "dialog",
     },
   ];
+
   return (
     <div className="flex flex-col gap-2">
       <Tour steps={steps}>

@@ -9,6 +9,7 @@
 
   const register: Action<HTMLDivElement> = (node) => {
     ctx.registerHost(node);
+
     return {
       destroy() {
         ctx.registerHost(null);

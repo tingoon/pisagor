@@ -8,6 +8,7 @@ export function WithScroll() {
       value: `framework-${i + 1}`,
     })),
   });
+
   return (
     <Select.Root collection={collection} positioning={{ fitViewport: true }}>
       <Select.Trigger>

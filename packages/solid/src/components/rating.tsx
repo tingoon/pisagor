@@ -161,6 +161,7 @@ function RatingShorthand(props: RatingProps): JSX.Element {
                   <RatingGroupPrimitive.ItemContext>
                     {(itemApi) => {
                       const state = () => itemApi();
+
                       return (
                         <RatingIndicator
                           {...local.indicatorProps}

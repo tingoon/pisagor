@@ -50,6 +50,7 @@ export const useTreeViewIcons = iconsCtx.getContext;
 export function useTreeView() {
   const styles = useTreeViewStyles();
   const icons = useTreeViewIcons() ?? {};
+
   return {
     get fileIcons() {
       return icons.fileIcons;

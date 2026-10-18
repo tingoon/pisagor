@@ -6,5 +6,6 @@ export function renderDataGridCell<TData extends RowData>(
   cell: Cell<DataGridFeatures, TData, unknown>,
 ) {
   if (cell.getIsPlaceholder()) return null;
+
   return cell;
 }

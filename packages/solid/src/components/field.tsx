@@ -28,6 +28,7 @@ const { Context: FieldStylesContext, withProvider } = createSlotRecipeContext({
 /** Resolves recipe slots from the nearest Field/Group/Set, or a default recipe. */
 export function useFieldSlots(recipe: typeof fieldRecipe = fieldRecipe) {
   const styles = useContext(FieldStylesContext);
+
   return () => styles?.slots ?? recipe();
 }
 // #endregion
@@ -63,6 +64,7 @@ export const FieldRoot: Component<FieldRootProps> = withProvider(
 function FieldSetElement(props: FieldsetRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
+
   return (
     <FieldsetPrimitive.Root
       {...rest}
@@ -92,6 +94,7 @@ export function FieldSet(props: FieldSetProps): JSX.Element {
 export function FieldLegend(props: FieldLegendProps): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "class"]);
   const slots = useFieldSlots();
+
   return (
     <FieldsetPrimitive.Legend
       {...rest}
@@ -104,6 +107,7 @@ export function FieldLegend(props: FieldLegendProps): JSX.Element {
 function FieldGroupElement(props: ComponentProps<typeof ark.div>): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
+
   return (
     <ark.div
       {...rest}
@@ -135,6 +139,7 @@ export function FieldGroup(props: FieldGroupProps): JSX.Element {
 export function FieldContent(props: FieldContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
+
   return (
     <ark.div
       {...rest}
@@ -148,6 +153,7 @@ export function FieldContent(props: FieldContentProps): JSX.Element {
 export function FieldLabel(props: FieldLabelProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
+
   return (
     <FieldPrimitive.Label
       {...rest}
@@ -176,6 +182,7 @@ export function FieldRequiredIndicator(
 export function FieldTitle(props: FieldTitleProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
+
   return (
     <ark.div
       {...rest}
@@ -189,6 +196,7 @@ export function FieldTitle(props: FieldTitleProps): JSX.Element {
 export function FieldDescription(props: FieldDescriptionProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
+
   return (
     <ark.p
       {...rest}
@@ -230,6 +238,7 @@ export function FieldSeparator(props: FieldSeparatorProps): JSX.Element {
 export function FieldHelper(props: FieldHelperProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
+
   return (
     <FieldPrimitive.HelperText
       {...rest}
@@ -241,6 +250,7 @@ export function FieldHelper(props: FieldHelperProps): JSX.Element {
 export function FieldError(props: FieldErrorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
+
   return (
     <FieldPrimitive.ErrorText
       {...rest}

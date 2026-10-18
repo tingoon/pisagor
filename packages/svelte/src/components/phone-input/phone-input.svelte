@@ -146,6 +146,7 @@
   function resolveCountry(val: string | undefined, fallback: Country): Country {
     if (!val) return fallback;
     const parsed = parsePhoneNumberFromString(val);
+
     return (parsed?.country as Country | undefined) ?? fallback;
   }
 
@@ -162,6 +163,7 @@
         return parsed.nationalNumber;
       }
     }
+
     return new AsYouType(nextCountry).input(val);
   }
 

@@ -110,6 +110,7 @@ const [provideDataGridRowContext, useDataGridRowContextBase] =
 export function useDataGrid<TData extends RowData>() {
   const context =
     useDataGridContextBase() as unknown as DataGridContextValue<TData>;
+
   return context.table;
 }
 
@@ -159,6 +160,7 @@ function flexRender(template: unknown, context: unknown): VNodeChild {
   if (template === null || template === undefined) return null;
   if (typeof template === "function")
     return (template as (ctx: unknown) => VNodeChild)(context);
+
   return template as VNodeChild;
 }
 
@@ -353,6 +355,7 @@ export const DataGridColumnResizer = defineComponent({
   },
   setup(props, { attrs }) {
     const { m } = useLocale();
+
     return () => {
       const headerCell = useDataGridHeaderCellContext<RowData>();
       const { slots: variantSlots, table } =
@@ -744,6 +747,7 @@ export const DataGridEmpty = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const { m } = useLocale();
+
     return () => {
       const { slots: variantSlots, table } =
         useDataGridContextBase() as unknown as DataGridContextValue<RowData>;

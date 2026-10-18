@@ -49,6 +49,7 @@ export function regionPositionClasses(
     if (columnLayer === "inspector") {
       return slots.regionStickyInspector();
     }
+
     return slots.regionStickyColumn();
   }
 

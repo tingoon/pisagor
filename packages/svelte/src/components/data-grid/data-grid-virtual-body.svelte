@@ -34,6 +34,7 @@
     if (wrapper) {
       wrapper.style.height = viewportHeight;
     }
+
     return () => {
       if (wrapper) wrapper.style.height = "";
     };

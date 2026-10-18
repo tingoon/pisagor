@@ -162,6 +162,7 @@ function getAriaSort(column: {
     return undefined;
   }
   const sorted = column.getIsSorted();
+
   return sorted === "asc"
     ? "ascending"
     : sorted === "desc"
@@ -247,6 +248,7 @@ function DataGridColumnResizer({
         if (event.key === "Enter") {
           event.preventDefault();
           header.column.resetSize();
+
           return;
         }
         if (!delta) {

@@ -271,6 +271,7 @@ export const TourContent = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const { m } = useLocale();
+
     return () => {
       const ctx = toValue(useTourContextRef());
       if (!ctx) return null;
@@ -464,6 +465,7 @@ export const TourFooter = defineComponent({
   name: "Tour.Footer",
   setup(_, { attrs, slots }) {
     provide(TourInsideControlKey, true);
+
     return () =>
       h(TourPrimitive.Control as ArkPart, { ...attrs, asChild: true }, () =>
         h(DialogFooter, { dataPart: "control", dataScope: "tour" }, slots),
@@ -482,6 +484,7 @@ export const TourActions = defineComponent({
   },
   setup(props, { attrs }) {
     const insideControl = inject(TourInsideControlKey, false);
+
     return () => {
       const ctx = toValue(useTourContextRef());
       if (!ctx) return null;

@@ -40,6 +40,7 @@ export function CustomPreview() {
       </Show>
     );
   };
+
   return (
     <FileUpload accept="image/*">
       <FileUpload.Dropzone>

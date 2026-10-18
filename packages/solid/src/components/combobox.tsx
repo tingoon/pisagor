@@ -54,6 +54,7 @@ const { Context: ComboboxStylesContext } = createSlotRecipeContext({
 /** Parts may render under a bare Ark root, so fall back to the default recipe. */
 function useComboboxSlots() {
   const styles = useContext(ComboboxStylesContext);
+
   return () => styles?.slots ?? comboboxRecipe();
 }
 
@@ -69,6 +70,7 @@ const ComboboxInsideControlContext = createContext(false);
 export function useComboboxRoot() {
   const styles = useContext(ComboboxStylesContext);
   if (!styles) return undefined;
+
   return {
     get slots() {
       return styles.slots;
@@ -176,6 +178,7 @@ export const ComboboxContext = ComboboxPrimitive.Context;
 export function ComboboxControl(props: ComboboxControlProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useComboboxSlots();
+
   return (
     <ComboboxInsideControlContext.Provider value={true}>
       <ComboboxPrimitive.Control
@@ -289,6 +292,7 @@ export function ComboboxClearTrigger(
 ): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["aria-label"]);
+
   return (
     <ComboboxPrimitive.ClearTrigger
       {...rest}
@@ -334,6 +338,7 @@ export function ComboboxContent(props: ComboboxContentProps): JSX.Element {
 
 export function ComboboxItemGroup(props: ComboboxItemGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "heading"]);
+
   return (
     <ComboboxPrimitive.ItemGroup {...rest}>
       <Show when={!!local.heading}>
@@ -349,6 +354,7 @@ export function ComboboxItemGroupLabel(
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useComboboxSlots();
+
   return (
     <ComboboxPrimitive.ItemGroupLabel
       {...rest}
@@ -391,6 +397,7 @@ export function ComboboxEmpty(props: ComboboxEmptyProps): JSX.Element {
   const { m } = useLocale();
   const [local, rest] = splitProps(props, ["children", "class"]);
   const slots = useComboboxSlots();
+
   return (
     <ComboboxPrimitive.Empty
       {...rest}
@@ -404,6 +411,7 @@ export function ComboboxEmpty(props: ComboboxEmptyProps): JSX.Element {
 export function ComboboxList(props: ComboboxListProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useComboboxSlots();
+
   return (
     <ComboboxPrimitive.List
       {...rest}

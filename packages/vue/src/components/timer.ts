@@ -215,6 +215,7 @@ export const TimerPause = defineComponent({
   name: "TimerPause",
   setup(_, { attrs, slots }) {
     const { m } = useLocale();
+
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
@@ -233,6 +234,7 @@ export const TimerResume = defineComponent({
   name: "TimerResume",
   setup(_, { attrs, slots }) {
     const { m } = useLocale();
+
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
@@ -251,6 +253,7 @@ export const TimerStart = defineComponent({
   name: "TimerStart",
   setup(_, { attrs, slots }) {
     const { m } = useLocale();
+
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
@@ -269,6 +272,7 @@ export const TimerReset = defineComponent({
   name: "TimerReset",
   setup(_, { attrs, slots }) {
     const { m } = useLocale();
+
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
@@ -287,6 +291,7 @@ export const TimerRestart = defineComponent({
   name: "TimerRestart",
   setup(_, { attrs, slots }) {
     const { m } = useLocale();
+
     return () =>
       h(
         TimerPrimitive.ActionTrigger as ArkPart,
@@ -305,6 +310,7 @@ export const TimerPlay = defineComponent({
   name: "TimerPlay",
   setup(_, { attrs, slots }) {
     const timer = useTimer();
+
     return () =>
       timer.value.paused
         ? h(TimerResume, { ...attrs }, slots)

@@ -77,6 +77,7 @@
 
   function registerBanner() {
     bannerCount += 1;
+
     return () => {
       bannerCount = Math.max(0, bannerCount - 1);
     };
@@ -84,6 +85,7 @@
 
   function registerNavigation() {
     navigationCount += 1;
+
     return () => {
       navigationCount = Math.max(0, navigationCount - 1);
     };
@@ -164,6 +166,7 @@
     }
     if (hasBanner) return `${APP_SHELL_BANNER_ROW}\n${APP_SHELL_CONTENT_ROW}`;
     if (hasNavigation) return `${APP_SHELL_NAV_ROW}\n${APP_SHELL_CONTENT_ROW}`;
+
     return APP_SHELL_CONTENT_ROW;
   });
 

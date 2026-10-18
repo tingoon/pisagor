@@ -19,6 +19,7 @@
         show();
         const [promise, cancel] = waitForEvent(target, "click");
         promise.then(() => next());
+
         return cancel;
       },
       id: "add-item",
@@ -36,6 +37,7 @@
           { timeout: 5000 },
         );
         promise.then(() => show());
+
         return () => cancel();
       },
       id: "new-item",

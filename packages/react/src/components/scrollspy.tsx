@@ -272,6 +272,7 @@ export function Scrollspy({
     const clickHandlers = (currentAnchors ?? []).map((item) => {
       const handler = scrollTo(item as HTMLElement);
       item.addEventListener("click", handler);
+
       return [item, handler] as const;
     });
 

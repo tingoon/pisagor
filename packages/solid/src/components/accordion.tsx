@@ -44,6 +44,7 @@ export interface AccordionProps extends Omit<AccordionRootProps, "children"> {
 
 export function AccordionRoot(props: AccordionRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["collapsible", "children"]);
+
   return (
     <AccordionPrimitive.Root {...rest} collapsible={local.collapsible ?? true}>
       {local.children}

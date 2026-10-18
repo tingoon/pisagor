@@ -39,6 +39,7 @@ const { Context: SelectStylesContext } = createSlotRecipeContext({
 
 function useSelectSlots() {
   const styles = use(SelectStylesContext);
+
   return styles?.slots ?? selectRecipe();
 }
 

@@ -32,6 +32,7 @@ function useDropdownMenuStyles(): {
   readonly slots: ReturnType<typeof dropdownMenuRecipe>;
 } {
   const styles = useOptionalDropdownMenuStyles();
+
   return {
     get slots() {
       return styles?.slots ?? dropdownMenuRecipe();
